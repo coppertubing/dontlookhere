@@ -2055,7 +2055,7 @@ lockcyst
                 "NOTHING TO SHARE YET":"ЕЩЁ НЕЧЕМ ПОДЕЛИТЬСЯ",
                 
                 "HAVE YOU SEEN YOUR 'VELZIE' LATELY?":"ДАВНО ЛИ ТЕБЕ ВСТРЕЧАЛСЯ ТВОЙ 'ВЕЛЗИ'?",
-                "IT STILL HAS NOT APPEARED TO ME":"Я ДО СИХ ПОР ЕГО НЕ ВИДЕЛ",
+                "IT STILL HAS NOT APPEARED TO ME":"Я ДО СИХ ПОР НЕ ВИДЕЛ НИЧЕГО ПОДОБНОГО",
 
                 "I HAVE GOOD NEWS FOR YOU!":"У МЕНЯ ДЛЯ ТЕБЯ ХОРОШИЕ НОВОСТИ!",
 
@@ -2216,7 +2216,7 @@ document.head.appendChild(document.createElement('style').appendChild(document.c
 
 
 env.dialogueActors["corruru"] = {
-    name: "corru-ru",
+    name: "cor-ru",
     image: "/img/textures/yeyetran.gif",
     type: "corruru portrait-contain",
     voice: ()=>{play('talkcroak', 1.75)}
