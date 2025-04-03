@@ -272,6 +272,24 @@ RESPOBJ::
         неважно<+>loop
             FAKEEND::(back)
 `)
+env.dialogues["mthglobalresp"] = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        кто...<+>who
+        что...<+>what
+        почему...<+>why
+        что ты думаешь об этом всём?<+>mothep1end
+            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
+        мысли об обвале?<+>ep3thoughts
+            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
+        мысли об обвале?<+>ep4thoughts
+            SHOWIF::"ep4__entrancefinal"
+        leverage acquired<+>leverage
+            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
+            SHOWONCE::
+        это всё<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
 
 env.localization = {
     dialogues: {
@@ -367,7 +385,850 @@ sit
         активировать мыслекол<+>END
         
 END::env.enableSpikeCursor();MUI('deprohibit')
-        `)
+        `),
+        "++moth": {
+            end: mothHasUnreadCheck,
+            start: {
+                name: "start",
+                body: [
+                    {
+                        actor: "moth",
+                        text: "чё как, дружище?",
+                        texec: ()=> {return env.pageHasMothComment()}
+                    },
+                ],
+        
+                responses: [
+                    {
+                        name: "self",
+                        replies: [
+                            {
+                                name: ()=>{return processStringTranslation(page.mothChat.startName)},
+                                destination: 'EXEC::changeDialogue(page.mothChat.getDest())',
+                                showIf: [["EXEC::env.pageHasMothChat()"]],
+                                unreadCheck: ()=> checkUnread({destination: "start", arbitrary: true}, page.mothChat.getDest()),
+                                class: "changeread",
+                            },
+                            {
+                                name: 'у меня есть вопросы',
+                                destination: 'CHANGE::++mothglobal',
+                                class: "changeread"
+                            },
+                            {
+                                name: "что делаем дальше?",
+                                destination: 'whatnext',
+                                hideRead: true
+                            },
+                            {
+                                name: 'я странно себя чувствую',
+                                showIf: [["netstat|<", 0]],
+                                destination: 'CHANGE::++mothfj'
+                            },
+                            {
+                                name: `вернёмся к делу`,
+                                destination: 'END',
+                                exec: mothHasUnreadCheck
+                            }
+                        ]
+                    }
+                ]
+            },
+        
+            loop: {
+                name: "loop",
+                body: [],
+                responses: []
+            },
+        
+            whatnext: {
+                name: "whatnext",
+                body: [
+                    {
+                        actor: "moth",
+                        texec: ()=> {return env.dialogues.mthglobalresp.whatnext()}
+                    },
+                ],
+        
+                responses: [
+                    {
+                        name: "self",
+                        replies: [
+                            {
+                                name: "понял",
+                                destination: 'loop',
+                                fakeEnd: "(back)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        "++mothglobal": generateDialogueObject(`
+start
+    self
+        у меня есть несколько вопросов
+
+    moth
+        валяй, я постараюсь ответить
+    
+    RESPOBJ::mthglobalresp
+
+loop
+    RESPOBJ::mthglobalresp
+
+who
+    RESPONSES::self
+        ты<+>who_you
+        акизетеше<+>who_akizetesche
+            SHOWIF::"hub__funfriend-purposeq"
+        гордон<+>who_gordon
+            SHOWIF::[['citystreet__envoy-end']]
+        велзи<+>who_velzie
+            SHOWIF::[['dullvessel__fixed-how']]
+        неважно<+>loop
+            FAKEEND::(back)
+
+who_you
+    self
+        кто ты?
+
+    moth
+        лол
+        окей но серьёзно у тебя есть вопросы?
+
+    RESPONSES::self
+        наверно<+>loop
+            FAKEEND::(back)
+
+who_akizetesche
+    self
+        кто - акизетеше?
+
+    moth
+        одна из наверно наилучше задокументированных ранних контактов с обесками
+        история гласит, она возглавляла команду по исследованию вещи, приведшей обесков сюда
+        постоянно давала долгие, подробные интервью об ней, они назвали это 'зов'
+        а потом они все пропали через несколько лет после первого контакта
+        стрёмная херня
+        безумно что эта корруциста смогла продержаться так долго
+
+    RESPONSES::self
+        интересно<+>loop
+            FAKEEND::(back)
+
+who_gordon
+    self
+        кто такой гордон?
+
+    moth
+        хороший вопрос
+        не могу найти точное совпадение, но он стопудов агент ФБКС
+        было бы легче если бы корруциста акизет вспомнила его лицо по-нормальному
+        ещё вернёмся к этому, может мы ухватим его фамилию и будет проще
+
+    RESPONSES::self
+        удачи<+>loop
+            FAKEEND::(back)
+
+who_velzie
+    self
+        кто - велзи?
+
+    moth
+        велзи - это что-то типа 'божество' на языке обеск
+        суть не только в этом но я полагаю ты спрашиваешь о <em>нашем</em> велзи
+        ну о том о котором говорила циста-пилот
+        я заметил что когда она упомянула это имя, оно не имело никакого контекста
+        типа, почему-то слово "велзи" было отделено от своего значения
+        не знаю что это за приколы...
+        уверен она виделась с тем странным лицом
+        может быть какой-то мыслеформе ударила бессвязность в голову и она возомнила себя богом
+
+    RESPONSES::self
+        странно<+>loop
+            FAKEEND::(back)
+
+
+what
+    RESPONSES::self
+        корру<+>what_corru
+        корруцисты<+>what_corrucyst
+        зов<+>what_thecall
+            SHOWIF::[['interview1__firstchat-behonest']]
+        улыбающееся лицо<+>what_smile
+            SHOWIF::[['hello__sentry-posthello']]
+        корруцистозное топливо<+>what_fuel
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        глаз велзи<+>what_eye
+            SHOWIF::"exm|embassy|unkind eye"
+        mindcores<+>what_mindcores
+            SHOWIF::"embassy__d3_person_enable-end"
+        вейльк<+>what_veilk
+            SHOWIF::"exm|embassy|veilk models"
+        секри<+>what_secri
+            SHOWIF::"embassy__d2_bozkocavik-end"
+        маски<+>what_masks
+            SHOWIF::"ozo__council-task"
+        серое <+>what_dull
+            SHOWIF::"ep4__contact"
+        ...если эти знания ставят нас под угрозу?<+>what_fbxlist
+            SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
+        неважно<+>loop
+            FAKEEND::(back)
+
+what_masks
+    self
+        what are masks
+    
+    moth
+        that's new ground you're discovering buddy
+        best i can tell from context is that they're like tools and weapons
+        something these thoughtforms carved from akizet's memories somehow
+        they don't have an actual physical presence, because otherwise you couldn't have received them
+        also, they passed right through the connection and only to you
+        and it's like my machines ignored them or couldn't see them at all
+        this is probably some entire new field of science we just stumbled into lol
+        thoughtform technology or something
+        whatever it is, it's way beyond my scope
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+what_secri
+    self
+        what is a secri?
+
+    moth
+        cmon, you've never seen the <em>secri</em> films?
+        true masterpieces of the 40s
+        man, i hope the obesk never saw any of them, they must be so insulting
+        if you're actually serious, they're one of the creatures i actually know a bit about
+        they're basically the apex predator on obeski
+        like pretty much half of all obeski fauna, they're a parasite
+        or some kind of fungal infection... we don't really know for certain
+        and they're microscopic, but once they infect one of the surface critters, or a larval obesk...
+        well, we've only had verbal descriptions since the exchange initiative was never forthcoming with recreations,
+        but apparently they can rapidly reshape the flesh of most critters, and hijack their brains to spread more
+        nasty stuff
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+what_eye
+    self
+        what is the eye of velzie?
+
+    moth
+        it's a feature of the gas giant obeski is tidally locked to
+        the obesk use its visibility for time
+        some parts of obeski worship or despise it as the eye of god
+        given how dark their world is,
+        and they have this giant glowing eye-looking thing in the sky at all times,
+        it's no wonder that they came to that conclusion
+        although, we don't really know whether it's a storm, or something else
+        because the obesk say that it glows during regular intervals
+        of course, that could just be their star reflecting off of it...
+        but without pictures or anything, we can really only guess
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)   
+
+what_veilk
+    self
+        what are veilk?
+    
+    moth
+        they basically cover the inhabitable surface of obeski
+        kinda like how grass is all over earth i guess
+        and... they can grow to the size of skyscrapers...
+        they're apparently able to walk,
+        uhh... they have a lot of legs...
+        and when one dies, a whole ecosystem forms around its corpse
+        which the obesk are a part of somehow
+        ...
+        sorry, i don't know that much about them honestly
+        obeski ecology is not even close to my area of expertise
+        i mostly study corrucystic stuff and obesk-human interactions
+        a little culture here and there
+        and don't get me wrong, the veilk are really important to them culturally,
+        practically all their clothes are made out of veilk skin
+        and their cave-cities rely on veilk-felling for food staples
+        but we don't really have a great idea of how they actually work
+        or even really how they actually look, outside of stylized sculptures
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+        
+
+what_mindcores
+    self
+        are all obesk actually these weird little spider things?
+
+    moth
+        no, just the qou
+        the "larval" obesk go through some procedure that makes them into those
+        we got a few descriptions of it before they pulled back
+        but they're all really abstract, like...
+        "climbing through their receptors into a mindcore", leaving an "empty vessel" to its "peaceful death"
+        nothing scientific, but they always emphasized it not just being a copy
+        then they build themselves bodies out of corru to drive around
+        that's what those qou-bodies are
+
+    RESPONSES::self
+        oh ok<+>loop
+            FAKEEND::(back)
+
+what_corru
+    self
+        что такое корру?
+
+    moth
+        интересное время чтобы задавать такие вопросы, но я тебя не виню
+        большинство людей начинают задаваться подобным как только взглянут на него поближе, даже если читали всю документацию
+        исключая суп из умных слов а-ля "суперклеточный суперорганизм", что это такое в общей картине пока не то чтобы ясно
+        я прочёл чуть ли не каждую стенограмму всех когда-либо взятых интервью с обесками, и они вообще не упоминают происхождение корру или то как у них возник симбиоз с ним
+        и типа, если "личиночные" обески правда выглядят почти так же как мы, а потом они переходят в корруцистозные тела, то что это значит для нас?
+        хз, сойти с ума можно если думать об этом слишком долго, впрочем щас нет времени философствовать
+
+    RESPONSES::self
+        понятно<+>loop
+            FAKEEND::(back)
+
+what_corrucyst
+    self
+        что такое корруцисты?
+    
+    moth
+        довольно общий термин, по сути "корруциста" и "корруцистозный" - универсальные названия для большинства обесковой технологии
+        потому что у организма есть тенденция сворачиваться в шарик и образовать твёрдую оболочку прям как у цисты к которой ты подключён
+        именно поэтому корруцистозные штуки обычно сферичные, но это не всегда так
+        например они используют подобный процесс для формирования тел которые используют куу обеск
+        если ты имел в виду что такое сферичные корруцисты, то обычно они выступают в роли хранилищ или вычислительных приборов
+    RESPONSES::self
+        понятно<+>loop
+            FAKEEND::(back)
+
+what_thecall
+    self
+        что такое 'зов'?
+
+    moth
+        довольно важная часть человеческо-обесковой истории которую нередко упускают из виду
+        предположительно, они смогли найти землю только потому что что-то с неё посылало сигнал, улавливаемый их технологией
+        в первое время после первого контакта они пытались выяснить, что это такое, и оч много говорили об этом
+        затем команда акизет пропала и они просто замолчали
+        ...а потом случилось всё остальное
+        примерно тут всё и пошло наперекосяк
+____SHOWIF::"ep4__entrancefinal"
+        лол, сейчас это уже больше напоминает только самую верхушку айсберга
+____SHOWIF::["ep4__entrancefinal", false]
+       может эта корруциста наконец прольёт свет на то что произошло
+____END
+    RESPONSES::self
+        понятно<+>loop
+            FAKEEND::(back)
+
+what_smile
+    self
+        время от времени я вижу это странное улыбающееся лицо
+        что это?
+    
+    moth
+        в логах ничего такого нет, ну если ты не про того челика-ассистента в хабе
+
+    self
+        мне кажется, это оно помогло мне войти
+
+    moth
+        о, так оно у тебя как улыбка выглядит?
+        может быть моя теорияaybe my malware theory has some weight after all
+        ну короче, я всё ещё без понятия чем является наш таинственный приятель
+        но похоже он называет себя 'велзи', смотря по тому что сказала циста-пилот
+            SHOWIF::[['dullvessel__fixed-start']]
+
+    RESPONSES::self
+        тревожит<+>loop
+            FAKEEND::(back)
+
+what_fuel
+    self
+        What is corrucyst fuel?
+    
+    moth
+        in interviews they always just said it's something they grow... 
+        most theories are that it's some metallic-based fungus that corru can consume
+        going off what funfriend said, it seems like they can use a bunch of different metals to create it
+            SHOWIF::[["hub__funfriend-essentialmetalq"]]
+        i guess it makes sense that they'd use metal to grow it, but i have no idea how that could work
+            SHOWIF::[["hub__funfriend-essentialmetalq"]]
+    
+    RESPONSES::self
+        worrying<+>loop
+            FAKEEND::(back)
+
+what_dull
+    self
+        what do you know about the dull plane?
+    
+    moth
+        oh, dude, you are not ready for me to rant about the dull
+        we'd be here all night
+        it's so frustrating how little we really know about it
+        but... if i condense down what we know for certain,
+        and this is all like, stuff from interviews i've watched,
+        there was an ekivik engineer, dullzkovik jut, uh, something,
+        who discovered that there are at least two states of, like, reality
+        what they call velzie's stage - this one - and what ended up being named the dullzkovik plane
+        or just dull plane for short
+        anyway, we don't know the specifics of how he came to discover this, but...
+        hang on, i'm getting too into the history part, aren't i. i see that look you're giving me
+        ok. to really, truly condense this,
+        we actually know more about its history than any of its physical properties
+        this was one of those things the obesk weren't able to effectively share with us before it all broke down
+        or maybe they just didn't want to
+        they did tell us that organic life can't go through it without being annihilated,
+        but corru can apparently survive it without major issues, with a little preparation...
+        huh... what else...
+        there are lots of wild theories about what it actually is
+        like a parallel universe, another "dimension" or something, but...
+        imo, that all gets into unrealistic movie shit
+        it's probably not that simple
+        we just don't have the means to interact with it in any meaningful way to find out
+        and the obesk aren't helping very much anymore
+        the only thing we know for certain is that physicists are very angry about it
+        so... i guess that's all of the useful insight i have for you here
+        sorry dude
+        anything else is either classified over my head,
+        or waiting for us in this cyst
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+what_fbxlist
+    self
+        What if knowing all this puts us in danger?
+    
+    moth
+        i wouldn't worry about that
+        the FBX isn't like the CIA or FBI
+        worst thing that happens is that we have to sign NDAs and other legal stuff
+        judging by what we've seen, that's pretty much an inevitability
+        but they aren't going to disappear us, if that's what you mean
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+why
+    RESPONSES::self
+        ...у меня иногда выходит визуализировать бессвязные места<+>why_beneath
+            SHOWIF::"beneath"
+        ...никто другой ещё не вовлечен<+>why_involved
+            SHOWIF::"ep1_fed"
+        ...ты меня позвал<+>why_callme
+        ...у меня получилось подключиться<+>why_connect
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+        ...я понимаю эти мысли<+>why_thoughts
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+        ...я слышу музыку<+>why_music
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+        неважно<+>loop
+            FAKEEND::(back)
+
+why_beneath
+    self
+        почему у меня иногда выходит визуализировать бессвязные места?
+        например то, которое показалось тебе очень странным
+
+    moth
+        ну точно я не скажу, но помнишь мою теорию?
+        ты ж на <span definition="ВНУТРЕННИЙ КОНТЕКСТ::'первый выпуск операционной системы мыслекола'">тонге</span>, да? с ней большую часть обработки выполняет твой мозг
+        у системы есть проверки чтобы ты не визуализировал бессвязные штуки
+        потому что они могут навредить тебе или вызвать <span definition="ВНУТРЕННИЙ КОНТЕКСТ:'изменённое восприятие времени';'признак скорого инсульта'">временную несоосность</span> или и тд и тп
+        не то чтобы <em>вот это</em> могло, конечно, оно отличается от человеческой бессвязности
+        ну короче--большую часть времени она полагается на то, чтобы твой мозг сам посылал сигналы типа "бля что-то не так", чтобы блокировать бессвязность
+        но поскольку ты вошёл во что бы это ни было <em>из</em> уже довольно бессвязного места,
+        твой мозг как бы уже привык к бессвязности
+        типа как тот старый анекдот про лягушку в кипятке, ага?
+        ...
+        так, просто чтобы ты меня правильно понял, твой мозг не "в кипятке"
+        по идее всё, что творится в этих бессвязных областях, для тебя должно быть совершенно нормально
+    
+    RESPONSES::self
+        ок<+>loop
+            FAKEEND::(back)
+
+why_involved
+    self
+        почему до сих пор только мы знаем об этом всём?
+
+    moth
+        о
+        эээ...
+        well, i haven't put in the report yet
+        look, if we get to the bottom of this whole thing ourselves, do you know how huge that'll be?
+        if i told anyone what we were up to in here, they'd snatch it out of our hands
+        ...then give it to some higher-up researcher, who would take all the credit
+        this could be our "make it" moment, dude
+
+    self
+        разве здесь нет камер? что насчёт данных?
+
+    moth
+        только не в подвале
+        this is an analog-only zone, or at least it was when it was busier years ago
+        it's a little more lax now, but they never really changed the tech in the walls
+        especially since every find like this usually ends up being a dud
+        так что... пока я сам не пошлю данные, они их не получат
+        you and me are the only ones in on this for now, buddy
+
+    RESPONSES::self
+        ок<+>loop
+            FAKEEND::(back)
+
+
+why_callme
+    self
+        почему ты позвал именно меня?
+
+    moth
+        what, are you that unhappy that you get to be the first person to ever connect to a personal corrucyst?
+        just kidding, a lot of our mindspike contractors have been out of service recently due to that big disaster update
+        боже я даже представить себе не могу о чём в майндсай только думали лмао, traffic has been so bad
+        ты - единственный знакомый мне псих который никогда ничего не обновляет, you're the only psycho i know who never updates stuff, so i figured you'd still be up for it    
+
+    RESPONSES::self
+        спасибо<+>loop
+            FAKEEND::(back)
+
+why_connect
+    self
+        почему у меня получилось подключиться так легко?
+
+    moth
+        ну если ты забыл, ты определенно точно установил тот фбкс патч который я тебе дал
+        обычно мыслеколы не могут такое
+        вроде как корруцисты посылают и принимают сигналы практически полностью идентичные нервным
+        это довольно невероятное совпадение, просто чудо что это вообще работает
+        но я не разбираюсь в этом, тебе лучше спросить кого-нибудь в отделе разработчиков
+
+    RESPONSES::self
+        ок<+>loop
+            FAKEEND::(back)
+
+
+why_thoughts
+    self
+        почему я понимаю эти обесковые мысли?
+
+    moth
+        ну смотри, ты тут имеешь дело с сырыми мыслями
+        слова, которые ты получаешь от корруцисты - это не то что она буквально думает
+        твой мозг просто интерпретирует концепты понятным тебе образом
+
+    RESPONSES::self
+        круто<+>loop
+            FAKEEND::(back)
+
+
+why_music
+    self
+        почему я иногда слышу музыку?
+
+    moth
+        слышишь музыку? дико, но имеет смысл
+        some of the mindspike contractors i've worked with say similar stuff when they try to connect to corrucystic devices
+        моя теория - что это какой-то унаследованный контекст из цисты, расплывчатые ощущения которые нельзя перевести в речь
+        иногда люди слышат голоса или просто "знают" как себя чувствовать
+        твой мозг просто обрабатывает это в наиболее понятном тебе формате
+        that's my best idea
+        anyway, i'm not hearing anything, i just see the readout on my end
+        тебе нравится?
+
+    RESPONSES::self
+        она нормальная<+>loop
+            FAKEEND::(back)
+
+mothep1end
+    self
+        What do you think of all this?
+        The embassy, Gordon's involvement...
+    
+    moth
+        i think we landed ourselves a security level increase
+        never heard anything about internal strife with the obesk before this
+        they've always had this image of total harmony, despite their homeworld
+        and you know, with the call...
+        i think it's only a few years until the call is "complete" if all this is true
+        or... maybe even less?
+        idk just some quick headmath
+        if we can get to the bottom of this soon and bring it all to the higher ups...
+        could you even imagine the kind of renown we'd both get?
+    
+    RESPONSES::self
+        aren't you afraid?<+>mothep1afraid
+        ok<+>loop
+            FAKEEND::(back)
+
+mothep1afraid
+    self
+        Aren't you afraid of what will happen when the call is complete?
+        What if it's something really bad?
+
+    moth
+        yeah, it's spooky, but...
+        we've both lived through too many "world-ending" crises for this to be the "real" one
+        besides, what if they can't even decode the call?
+        either cause it's too big, or because they didn't get the very start of it...
+        like, what if they need the whole thing?
+        and hey, what if whatever's down there in the ocean is just as friendly as the rest of them?
+        basically... whatever happens, we'll deal with it
+    
+    RESPONSES::self
+        if you say so<+>loop
+            FAKEEND::(back)
+
+ep3thoughts
+    self
+        what do you think of the collapse?
+        you said you had some thoughts?
+    
+    moth
+        oh, yeah!
+        so, i always thought it was a tragedy
+        especially since it was the cap on the golden age of human and obesk relations
+        like, truly golden age... but man, looking back at the news from those days makes me so sad
+        videos, news, everything, everyone felt like everything was going to change
+        and, i mean, things did change, but, i'm talking space age change
+        apparently everyone really thought we'd be exploring the stars with the obesk
+        like, they'd uplift us, or whatever...
+        all right, i'm off topic and i haven't even gotten to the topic yet
+        basically:
+        when the collapse started happening, people reported some truly strange events with obesk machines
+        golems started acting erratically, but never actually hurt anyone
+        like, i was watching this video of some annoying vlogger who was trying to interview one near a polygonation spire
+        pretty sure it was the one close to new zealand actually
+        but right in the middle of him harassing this golem, its face flickers and it nearly falls over
+        then, it just starts floating past him, right into the ocean, and disappears beneath the surface
+        so the vlogger turns the camera back on his face and he's doing that surprised thumbnail thing they used to do back then
+        and in the background, you can see other golems doing it too, 
+        just before the spire starts collapsing and everyone has to run
+        spooky shit, man... even golems further inland apparently started going for the coast too
+        oh, and--there was this article i found, there was this one engineer qou that had an "accident" with a golem
+        it didn't say their name, but there was a picture of the aftermath
+        they totally minced this golem they were working with, then apologized to everyone and ran off
+        it's pretty clear that whatever seized all of their tech had literally zero intent to harm a single human
+        so what the hell are these golems attacking the embassy for?
+        ...
+        all right, i know i'm rambling, but one more thing
+        no matter where i looked, even using those new net filter tools,
+        after the collapse news cycle settled
+        there was not a single mention of akizet or her team anywhere - no photos, videos, nothing
+        i mean, sure, a little historical paper here and there, but... well
+        i'm a little worried we may not have a whole lot of time left with akizet's memories if this is anything to go by
+    
+    RESPONSES::self
+        ...<+>loop
+            FAKEEND::(back)
+
+ep4thoughts
+    self
+        so what do you think of the collapse
+        now that we've seen it all
+    
+    moth
+        i knew they weren't going to just, stop it
+        but i had no idea it would get that fucked up
+        there were things happening in there that i'm still trying to make sense of
+        vekoa choosing to kill qou, when she's from a world where intraspecies murder basically doesn't happen
+        not just using her golems, but making monsters with the fucking ceremony thing??
+        and could you imagine what would have happened?
+        like, if vekoa actually managed to make a dull contrivance?
+        assuming it was a temporary contrivance, not like the big one in space,
+        the whole embassy, the whole island, it would have just blipped away somewhere
+        and nobody would have any idea what happened...
+        so they didn't stop the collapse,
+        and sure, tozik majorly polluted up the ocean around it,
+        but somehow, i think in another world, if they failed-failed,
+        things would be much worse
+    
+    self
+        maybe
+        what about the meteorite?
+        FBX involvement?
+
+    moth
+        the meteorite, i don't know, that's...
+        that's something on a scale that's really hard for me to grasp
+        it makes sense, really
+        i know this sounds sick but i'm almost not surprised at this point
+        it's the only start to an explanation for the call that makes any sense, right?
+        where it comes from is some other shit we'll have to figure out
+        still, you'd think we would have found it by now, 
+        even before the obesk showed up...
+        maybe knowing it's there will have a larger impact when i'm trying to fall asleep tonight
+        but you know what really freaks me out?
+        the FBX involvement
+        cause we know that akizet and her team disappeared completely after this
+        and now we know for sure that the FBX probably had a hand in sparking the collapse
+        dude, if this ever got public, the media would crucify us
+        and knowing all that, with how long it's been
+        we've totally fallen into <span definition="INTERNAL CONTEXT::'special access program';'sensitive compartmentalized information';'highest classification level'">SAP</span> territory here
+        i'm talking like men in black who don't legally exist rolling up to your apartment type of shit
+        i know i said this wouldn't happen but i really wasn't expecting it to get this bad
+            SHOWIF::"++mothglobal-what_fbxlist"
+
+    self
+        i'm just a contractor
+    
+    moth
+        yeah, and now you and i both know some of the most dangerous obesk history, ever
+        this isn't the kind of thing where they'd be happy with just a regular NDA 
+        even thinking about what this is going to turn into is making me kinda nauseous
+        but... it's not like we can back out now
+        and frankly, i don't want to
+        because as scary as it is...
+        the potential upside here, for us, is crazy
+        just be careful, all right? i really mean that
+        if this isn't handled right, you don't want to know what happens
+    
+    RESPONSES::self
+        got it<+>loop
+            FAKEEND::(back)
+
+leverage
+    self
+        leverage acquired
+            EXEC::change("leverage", true)
+    
+    moth
+        huh? what do you mean?
+    
+    self
+        these ozo mask things
+        they're not just in the cyst
+        i feel them in my mind now
+    
+    moth
+        ok, well, that's not good, i think
+        but... 
+        no, maybe it is, for our needs
+        i get what you're thinking, actually...
+        you know how much comes through here without any results?
+        how much just gets hazard binned, tossed into a corrucystic waste storage plant?
+        if your mask things work on <em>other</em> corrucysts...
+        like, you can get into things that no one else can,
+        that could be it
+        and we don't need to mention that it came from this cyst, either
+        never mention your mask shit to anyone. i'll scrub it from my report too
+        let's do a blood oath right here dude. i have a pocket knife
+    
+    self
+        ok
+    
+    moth
+        ok??
+        dude, i'm kidding
+        that would never get past the entry detectors
+        anyway, i guess the only thing to do now is wait again
+        either till funfriend repairs something, or those other pieces come in...
+        so, just chill for now, all right?
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+`),
+        "++mothfj": generateDialogueObject(`
+start
+    self
+        i feel weird
+        is something wrong
+
+    moth
+        what? weird how?
+        can you elaborate?
+    
+    self
+        not sure how to
+        it's in the back of my head
+
+    moth
+        well, maybe it was something you ate dude idk
+        i doubt you got the "contact affliction" if that's what you're worried about
+            SHOWIF::'ep4__contact'
+        that would've shown up sooner, based on what we saw
+            SHOWIF::'ep4__contact'
+        looking at your os stats, the GAD has been in the negative
+        i know other mindspike ops have had issues with corrucysts when that's the case
+
+____SHOWIF::['mask', 'hunger']
+        actually, weirdly, it's been in the negative since you activated that hunger mask
+        not seeing that on the global measurement though, it's just affecting your device
+        try deactivating it or something
+____END
+    
+    RESPONSES::self
+        what is GAD<+>gad
+        ok<+>END
+
+gad
+    self
+        what is that
+        GAD
+
+    moth
+        what? you don't know?
+        the GAD value dude
+        global ambient dissonance
+        it's literally in your system menu
+        in the top right by default i think
+        you've really never heard about it?
+
+    self
+        maybe mentioned a few times
+        it's never been an issue
+
+    moth
+        well i guess it doesn't really affect that much usually
+        i just work in a weird field where it does lol
+        fortunately for you, i know the story!
+        so, back when mindspikes were in development and first being tested,
+        they started noticing these occasional rendering and recording bugs
+        like they'd run things that should always output one thing, got tiny deviations instead
+        mindsci could NOT figure out wtf was going on
+        so someone set up this tiny component, something fjortoft, forgot their first name
+        the little fjortoft box runs a constant and predictable signal through an input into the OS, then compares the output
+        basic troubleshooting, right?
+        turns out - the signal would come back changed
+        not just that, but it was the same change on every mindspike if you tested multiple at the same time
+        despite not being connected at all
+        like... we're talking the same on different sides of the world
+        when the value came back way weaker or way stronger, 
+        the memory deviations were more severe
+        pretty crazy, right? they never did figure out what was causing it
+        so there's now just this little box in every mindspike to measure the GAD value
+        some people online think this is evidence of the noosphere...
+        but the popular theories are that it's something with earth's magnetic field
+        also read once that it could be electromagnetic interference from the dull contrivance but idk about that one
+
+    self
+        what does that have to do with corrucysts
+
+    moth
+        no clue tbh
+        i just know that when the value's in the negative,
+        people report headaches and sometimes rendering errors
+        but don't worry too much, pretty sure it doesn't cause any damage
+    
+    RESPONSES::self
+        ok<+>END
+`)
+
     },
 
     definitions: {
@@ -448,7 +1309,7 @@ END::env.enableSpikeCursor();MUI('deprohibit')
         "ADVISE::'export save prior to EP selection if valued": "РЕКОМЕНДАЦИЯ::'экспорт сохранения до выбора эпизода'",
         "ADVISE::'confirm intention below'": "РЕКОМЕНДАЦИЯ::'подтвердите намерение ниже'",
         "proceed, losing my current progress is fine": "продолжить, потеря текущего прогресса не проблема",
-        "nevermind, i want to keep my current progress": "не важно, я хочу сохранить текущий прогресс",
+        "nevermind, i want to keep my current progress": "неважно, я хочу сохранить текущий прогресс",
         "USER REQUEST::'log selection'": "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'выбор лога'",
         "load EP": "загрузить ЕP",
         "EP": "эпизод ",
@@ -1992,7 +2853,68 @@ lockcyst
     RESPONSES::self
         ладно<+>question
             FAKEEND::(back)
-                `)
+                `),
+        "funfriend_beacon": generateDialogueObject(`
+start
+    funfriend
+        что...
+            EXEC::change("ff_ozo", true)
+        что ты только что сделал?
+        ты используешь маску...?
+        как?    
+    
+    self
+        я нашёл странное место в кэше
+            EXEC::change("ff_ozo", true)
+        полностью бессвязная пространственная мыслеформа, называющаяся джокзи озо
+        там была мыслеформа по прозвищу совет
+        она хочет, чтобы я пробудил какие-то мыслеформы
+        она дала мне это
+    
+    funfriend
+        ...
+        ахаха
+        джокзи озо... я думал оно было потеряно
+        я даже извлекал из того, что считал его останками, материалы для починок...
+        лазутчик!!!
+        я надеялся что это останется в прошлом
+        но раз они вновь здесь, тебе следует знать...
+        джокзи озо - это могила
+        это место, куда мыслеформы отправлялись в ожидании смерти
+        всё это время играя в бесконечные, эгоистичные грёзы
+        они ничего не блокируют, но...
+        если мы позволим им существовать,
+        строение самой цисты подвергнется риску!
+        они будут истощать наши ресурсы, 
+        они будут вбирать в себя всё больше и больше мыслеформ,
+        пока даже цистозное стекло не начнет витать в грёзах и умирать!!
+    
+    self
+        значит нам надо от него избавиться?
+    
+    funfriend
+        ахахахаха!!!
+        ну вообще да
+        но это не будет так просто!!
+        джокзи озо в особенности велико
+        обыкновенного прокси-удалителя не достаточно
+        однако...
+        да! у меня есть план!
+        лазутчик: делай что совет от тебя хочет!
+        разыщи тех друзей, заслужи доверие...
+        оно нам понадобится
+    
+    moth
+        так подожди-ка
+        из того, что мы знаем о совете, он кажется довольно сговорчивым
+        нам бы не помешало иметь больше источников инфы
+        и может мы бы могли получить ещё масок, ну, понимаешь?
+        если до этого дойдёт, постарайся удержать развледруга от удаления джокзи озо или подобного
+        имхо он чересчур усердствует со связностью
+
+    RESPONSES::self
+        окей<+>loop
+`)
             },
 
             definitions: {
