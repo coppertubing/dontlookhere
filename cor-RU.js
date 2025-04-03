@@ -93,7 +93,7 @@ var css = `
 }
 
 body[state="corru-loaded"][menu="none"]:not(.in-dialogue)::before, body.loading::after, body.corru-refreshing::after {
-    content: "ПРЕДУПРЕЖДЕНИЕ:'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАЗРЕШЕНИЯ могут мешать производительности';\\A'Продолжение по усмотрению пользователя.'";
+    content: "ПРЕДУПРЕЖДЕНИЕ:'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАЗРЕШЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
     font-family: spacemono;
     font-size: 0.75em;
     max-width: 600px;
@@ -454,7 +454,7 @@ END::env.enableSpikeCursor();MUI('deprohibit')
                         name: "self",
                         replies: [
                             {
-                                name: "понял",
+                                name: "понятно",
                                 destination: 'loop',
                                 fakeEnd: "(back)"
                             }
@@ -569,7 +569,7 @@ what
             SHOWIF::"embassy__d2_bozkocavik-end"
         маски<+>what_masks
             SHOWIF::"ozo__council-task"
-        серое <+>what_dull
+        серое<+>what_dull
             SHOWIF::"ep4__contact"
         ...если эти знания ставят нас под угрозу?<+>what_fbxlist
             SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
@@ -597,28 +597,28 @@ what_masks
 
 what_secri
     self
-        what is a secri?
+        что такое секри?
 
     moth
-        cmon, you've never seen the <em>secri</em> films?
-        true masterpieces of the 40s
-        man, i hope the obesk never saw any of them, they must be so insulting
-        if you're actually serious, they're one of the creatures i actually know a bit about
-        they're basically the apex predator on obeski
-        like pretty much half of all obeski fauna, they're a parasite
-        or some kind of fungal infection... we don't really know for certain
-        and they're microscopic, but once they infect one of the surface critters, or a larval obesk...
-        well, we've only had verbal descriptions since the exchange initiative was never forthcoming with recreations,
-        but apparently they can rapidly reshape the flesh of most critters, and hijack their brains to spread more
-        nasty stuff
+        да лааадно, не можешь же ты не знать про <em>секри</em> фильмы
+        истинные шедевры сороковых
+        бож, надеюсь никто из обесков никогда не видел их, они должно быть такие издевательские
+        если ты всерьёз, то это одно из существ о которых я правда немного знаю
+        по сути они - сверххищники на обески
+        и как и остальная половина всей фауны на обески, они также паразиты
+        или какого-то рода грибковая инфекция... мы на самом деле не знаем точно
+        а ещё они микроскопические, но вот стоит им заразить какую-нибудь поверхностную зверюшку или личиночного обеска...
+        ну, на руках у нас только устные описания ибо инициатива по обмену не спешила с реконструкциями,
+        но по-видимому они могут быстро видоизменять плоть большинства существ и захватывать их мозг, чтобы распространяться дальше
+        противные штуки
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(back)
 
 what_eye
     self
-        what is the eye of velzie?
+        что такое глаз велзи?
 
     moth
         it's a feature of the gas giant obeski is tidally locked to
@@ -633,34 +633,34 @@ what_eye
         but without pictures or anything, we can really only guess
 
     RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)   
+        понятно<+>loop
+            FAKEEND::(back)  
 
 what_veilk
     self
-        what are veilk?
+        что такое вейльк?
     
     moth
-        they basically cover the inhabitable surface of obeski
-        kinda like how grass is all over earth i guess
-        and... they can grow to the size of skyscrapers...
-        they're apparently able to walk,
-        uhh... they have a lot of legs...
-        and when one dies, a whole ecosystem forms around its corpse
-        which the obesk are a part of somehow
+        они, в принципе, покрывают всю обитаемую поверхность обески
+        типа как трава растёт по всей земле, наверно
+        и... они вырастают до размера небоскрёбов...
+        они видимо умеют ходить,
+        ээ... у них куча ног...
+        и когда один из них умирает, целая экосистема образуется вокруг его трупа
+        частью которой каким-то образом являются обески
         ...
-        sorry, i don't know that much about them honestly
-        obeski ecology is not even close to my area of expertise
-        i mostly study corrucystic stuff and obesk-human interactions
-        a little culture here and there
-        and don't get me wrong, the veilk are really important to them culturally,
-        practically all their clothes are made out of veilk skin
-        and their cave-cities rely on veilk-felling for food staples
-        but we don't really have a great idea of how they actually work
-        or even really how they actually look, outside of stylized sculptures
+        сорян, если честно я не так много о них знаю
+        экология на обески даже близко не стоит с моей специализацией
+        я в основном изучаю корруцистозные штуки и взаимоотношение людей с обесками
+        чуть-чуть культуры там и тут
+        и не пойми меня неправильно, вейльки очень важны для них в культурном плане,
+        практически вся их одежда делается из вейльковой кожи
+        и их пещерные города зависят от вейльковых падений для добычи пропитания
+        но у нас на самом деле нет хорошего представления о том, как они устроены
+        или как они даже выглядят, исключая стилизованные скульптуры
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(back)
         
 
@@ -669,7 +669,7 @@ what_mindcores
         are all obesk actually these weird little spider things?
 
     moth
-        no, just the qou
+        не, только куу
         the "larval" obesk go through some procedure that makes them into those
         we got a few descriptions of it before they pulled back
         but they're all really abstract, like...
@@ -679,7 +679,7 @@ what_mindcores
         that's what those qou-bodies are
 
     RESPONSES::self
-        oh ok<+>loop
+        а, хорошо<+>loop
             FAKEEND::(back)
 
 what_corru
@@ -860,7 +860,7 @@ why_beneath
         по идее всё, что творится в этих бессвязных областях, для тебя должно быть совершенно нормально
     
     RESPONSES::self
-        ок<+>loop
+        ладно<+>loop
             FAKEEND::(back)
 
 why_involved
@@ -971,8 +971,8 @@ mothep1end
         could you even imagine the kind of renown we'd both get?
     
     RESPONSES::self
-        aren't you afraid?<+>mothep1afraid
-        ok<+>loop
+        тебе не страшно?<+>mothep1afraid
+        окей<+>loop
             FAKEEND::(back)
 
 mothep1afraid
@@ -990,7 +990,7 @@ mothep1afraid
         basically... whatever happens, we'll deal with it
     
     RESPONSES::self
-        if you say so<+>loop
+        раз ты так говоришь<+>loop
             FAKEEND::(back)
 
 ep3thoughts
@@ -1126,72 +1126,72 @@ leverage
         that could be it
         and we don't need to mention that it came from this cyst, either
         never mention your mask shit to anyone. i'll scrub it from my report too
-        let's do a blood oath right here dude. i have a pocket knife
+        давай прям здесь дадим клятву крови. у меня есть карманный ножик
     
     self
-        ok
+        ок
     
     moth
-        ok??
-        dude, i'm kidding
+        ок??
+        чел я шучу
         that would never get past the entry detectors
         anyway, i guess the only thing to do now is wait again
         either till funfriend repairs something, or those other pieces come in...
         so, just chill for now, all right?
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(back)
 `),
         "++mothfj": generateDialogueObject(`
 start
     self
-        i feel weird
-        is something wrong
+        я странно себя чувствую
+        там всё нормально?
 
     moth
-        what? weird how?
-        can you elaborate?
+        что? в каком смысле странно?
+        можешь поподробнее?
     
     self
-        not sure how to
-        it's in the back of my head
+        не знаю как это описать
+        что-то с моей головой
 
     moth
-        well, maybe it was something you ate dude idk
-        i doubt you got the "contact affliction" if that's what you're worried about
+        ну не знаю может ты что-то съел чел хз well, maybe it was something you ate dude idk
+        сомневаюсь что дело в "contact affliction" если это тебя забеспокоило
             SHOWIF::'ep4__contact'
-        that would've shown up sooner, based on what we saw
+        судя по тому что мы видели, эт бы раньше проявилось
             SHOWIF::'ep4__contact'
-        looking at your os stats, the GAD has been in the negative
-        i know other mindspike ops have had issues with corrucysts when that's the case
+        смотря на статы твоей операционки, ГАН бывало в минусе
+        я знаю что другие мыслекольщики, работающие с корруцистами, сталкивались с проблемами в таком случае
 
 ____SHOWIF::['mask', 'hunger']
-        actually, weirdly, it's been in the negative since you activated that hunger mask
+        вообще, actually, weirdly, it's been in the negative since you activated that hunger mask
         not seeing that on the global measurement though, it's just affecting your device
         try deactivating it or something
 ____END
     
     RESPONSES::self
-        what is GAD<+>gad
-        ok<+>END
+        что такое ГАН<+>gad
+        окей<+>END
 
 gad
     self
-        what is that
-        GAD
+        что это такое
+        ГАН
 
     moth
-        what? you don't know?
-        the GAD value dude
-        global ambient dissonance
-        it's literally in your system menu
-        in the top right by default i think
-        you've really never heard about it?
+        что? ты не знаешь?
+        ГАН значение, чел
+        глобальное амбиентное несходство
+        оно у тебя буквально в системной менюшке
+        в правом верхнем углу по умолчанию вроде
+        ты реально о нём не в курсе?
 
     self
-        maybe mentioned a few times
-        it's never been an issue
+        ну может пару раз упоминали
+        оно никогда не вызывало проблем
 
     moth
         well i guess it doesn't really affect that much usually
@@ -1217,16 +1217,16 @@ gad
         also read once that it could be electromagnetic interference from the dull contrivance but idk about that one
 
     self
-        what does that have to do with corrucysts
+        и как это связано с корруцистами
 
     moth
-        no clue tbh
-        i just know that when the value's in the negative,
-        people report headaches and sometimes rendering errors
-        but don't worry too much, pretty sure it doesn't cause any damage
+        понятия не имею чг
+        просто знаю что когда значение уходит в минус,
+        люди сообщают о головной боли или ошибках в визуализациях
+        но ты не волнуйся, скорее всего оно безвредно
     
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 
     },
