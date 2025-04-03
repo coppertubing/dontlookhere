@@ -284,7 +284,7 @@ RESPOBJ::
             SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
         мысли об обвале?<+>ep4thoughts
             SHOWIF::"ep4__entrancefinal"
-        leverage acquired<+>leverage
+        leverage acquired<+>leverage //untranslated
             SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
             SHOWONCE::
         это всё<+>CHANGE::++moth
