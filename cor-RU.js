@@ -3083,13 +3083,6 @@ function ouch(selector, inside = false, altAtr = false, thenWhat = 'endtext') {
     env.localization.strings["REALITY::'no effect'"] = "РЕАЛЬНОСТЬ::'не имеет эффекта'"
     env.localization.strings["UNITY::'enables additional ACT on responsive thoughtforms'"] = "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'"
     env.localization.strings["HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'"] = "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'"
-
-    env.localization.strings["NOTE::'has no unutilized responses'"] = "ПРИМЕЧАНИЕ::'не имеет неиспользованных ответов'"
-    env.localization.strings["NOTE::'has unutilized responses'"] = "ПРИМЕЧАНИЕ::'имеет неиспользованные ответы'"
-    env.localization.strings["NOTE::'previously utilized response'"] = "ПРИМЕЧАНИЕ::'ранее использованный ответ'"
-    env.localization.strings["NOTE::'response not yet utilized'"] = "ПРИМЕЧАНИЕ::'неиспользованный ответ'"
-    env.localization.strings["NOTE::'response leads to unused responses'"] = "ПРИМЕЧАНИЕ::'ответ ведёт к неиспользованным ответам'"
-    env.localization.strings["NOTE::'dynamic response'"] = "ПРИМЕЧАНИЕ::'динамичный ответ'"
     
     env.localization.strings["GAD"] = "ГАН"
     env.localization.strings["'overcoherency block, exercise caution'"] = "'блок сверхсвязности, соблюдайте осторожность'"
@@ -3156,6 +3149,244 @@ console.log('observer all good!')
 
 document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(css)).parentElement);
 
+function sendDialogue(dialogue, i = 0) {
+    try {
+        env.currentDialogue.branch = dialogue
+        let queue = dialogue.body
+        if(!dBox) dBox = document.getElementById('dialogue-box') // defined here bc this script is loaded ahead of page content
+        var dMenu = document.getElementById('dialogue-menu') //this is redefined later
+
+        //removes ID and adds dialogue-menu class to set it inactive, effectively preparing the next one
+        //may not exist if starting dialogue
+        clearDialogueMenu()
+
+        //removes the listener after it's started so it can't be called multiple times, useful for ones with 'wait'
+        dBox.removeEventListener('mousedown', dialogueProgressEvent)
+        document.removeEventListener('keydown', dialogueProgressEvent)
+
+        if(i < queue.length) {
+            if(shouldItShow(queue[i])) {
+                dBox.classList.add('dialogue-click-proceed')
+                let current = queue[i]
+                let currentActor = getDialogueActor(current.actor)
+
+                //the current dialogue bubble doesn't have text - therefore it has a texec (text exec) to generate the response
+                if(typeof current.texec == 'function') {
+                    current.text = current.texec()
+                }
+
+                //log the dialogue in the readout too
+                if(current.actor != "unknown") readoutAdd({message: current.text, image: currentActor.image, name: current.actor, displayName: currentActor.name, type: currentActor.type, sfx: false, actor: current.actor})
+
+                //execute any code attached to the message
+                if(current.exec) {
+                    try { current.exec() } catch(e) {printError(e); console.log(e)}
+                }
+
+                //play any actor voice sfx, stop any previous voices
+                if(currentActor.voice !== false && env.currentDialogue.prevSpeaker != current.actor && env.currentDialogue.prevSpeaker != "nobody stupid" && env.currentDialogue.prevSpeaker != "dialogue choice") sfxmap.stop()
+                if(typeof currentActor.voice == "function") {
+                    if(currentActor.activeVoice) currentActor.activeVoice(); else currentActor.voice()
+                } else if(currentActor.voice !== false) {
+                    play('muiReadout')
+                }
+
+                //hide the portrait if it's the last person who talked, otherwise add one
+                var portrait = ""
+                if(current.actor != env.currentDialogue.prevSpeaker && currentActor.image) portrait += `<div class="dialogue-portrait" style="--background-image: url(${currentActor.image});"></div>`
+                env.currentDialogue.prevSpeaker = current.actor
+
+                //create the dialogue message block
+                let newLine = `
+                    <div class="dialogue-message actor-${current.actor.replace("::", " expression__")} ${currentActor.player ? "from-player" : ""} ${currentActor.type} ${current.class || ""}">
+                        ${portrait}
+                        <div class="dialogue-text">
+                            ${currentActor.noProcess ? current.text : processDefinitionsInString(current.text)}
+                        </div>
+                    </div>
+                    `
+                dBox.insertAdjacentHTML('beforeend', newLine)
+                setTimeout(()=>{document.querySelector('.dialogue-message:last-of-type').classList.add('sent')}, current.autoAdvance ? 0 : 50)
+
+                //update the event listener to proceed to the next line
+                if(current.wait) dBox.classList.remove('dialogue-click-proceed')
+                env.dialogueWaitTimeout = setTimeout(()=>{
+                    if(current.autoAdvance) {
+                        sendDialogue(dialogue, i + 1)
+
+                    } else {
+                        dialogueProgressEvent = (event)=>{
+                            let key = event.key || false
+                            if(env.cutscene || (key && (key != "Enter" && key != " "))) return
+                            sendDialogue(dialogue, i + 1)
+                        }
+        
+                        setTimeout(function(){
+                            dBox.addEventListener('mousedown', dialogueProgressEvent);
+                            document.addEventListener('keydown', dialogueProgressEvent);
+                            dBox.classList.add('dialogue-click-proceed')
+                        }, 100)
+                    }
+
+                    delete env.dialogueWaitTimeout
+                }, (current.wait || 1))
+            } else {
+                sendDialogue(dialogue, i + 1)
+            }
+
+        } else { //the dialogue chain is over, show responses
+            env.currentDialogue.prevSpeaker = "nobody stupid"
+            env.currentDialogue.justChanged = false
+            dBox.classList.remove('dialogue-click-proceed')
+            dBox.removeEventListener('mousedown', dialogueProgressEvent)
+            document.removeEventListener('keydown', dialogueProgressEvent)
+            dBox.insertAdjacentHTML('beforeend', `<div id="dialogue-menu"></div>`)
+
+            dMenu = document.getElementById('dialogue-menu') //there's a new dialogue menu--the old one is now inactive
+
+            //marks the dialogue as being seen
+            let seenName
+            if(env.currentDialogue.chainName.includes('++')) seenName = `${env.currentDialogue.chainName}-${slugify(dialogue.name)}`
+            else seenName = `${page.dialoguePrefix}__${env.currentDialogue.chainName}-${slugify(dialogue.name)}`
+            seenDialogue(seenName)
+
+            dialogue.responses.forEach(actor => {
+                let actorObj = getDialogueActor(actor.name, true)
+                dMenu.insertAdjacentHTML('beforeend', `
+                    <div class="dialogue-actor ${actorObj.type} dialogue-options-${actor.name} actor-${actor.name}">
+                        <div class="dialogue-portrait" style="--background-image: url(${actorObj.image})"></div>
+                        <div class="dialogue-options"></div>                    
+                    </div>
+                `)
+
+                actor.replies.forEach(reply => {
+                    console.log(`SHOULD REPLY ${reply.name} SHOW? ::: ${shouldItShow(reply)}`)
+                    let show = shouldItShow(reply)
+
+                    if(show) {
+                        console.log(`determined ${show}, so showing reply`)
+                        //programmatically decide the reply name that shows if the reply name is a function
+                        var nameToUse, destToUse
+                        if(typeof reply.name == "function") nameToUse = reply.name(); else nameToUse = reply.name.trim()
+                        
+                        //determine what kind of unread it is, if any
+                        let readState
+                        if(typeof reply.unreadCheck == "function") readState = reply.unreadCheck();
+                        else readState = checkUnread(reply);
+
+                        if(readState == false) readState = "read"
+                        var readAttribute = reply.hideRead ? 'read="hidden"' : `read=${readState}`
+
+                        //detect if it's an end reply, and if it should have custom 'tiny' text
+                        var isEnd
+                        if(reply.fakeEnd || reply.destination == "END") isEnd = reply.fakeEnd || processStringTranslation("(end chat)")
+
+                        //detect what definition to show
+                        var tooltip 
+                        if(!isEnd){
+                            tooltip = "ПРИМЕЧАНИЕ::"
+                            if(!reply.hideRead) {
+                                if(reply.class) {
+                                    switch(readState) {
+                                        case "read":
+                                            tooltip += `'не имеет неиспользованных ответов'`;
+                                        break
+
+                                        case "unread":
+                                        case "within":
+                                            tooltip += `'имеет неиспользованные ответы'`;
+                                    }
+                                } else {
+                                    switch(readState) {
+                                        case "read":
+                                            tooltip += `'ранее использованный ответ'`
+                                        break
+
+                                        case "unread":
+                                            tooltip += `'неиспользованный ответ'`
+                                        break
+
+                                        case "within":
+                                            tooltip += `'ответ ведёт к неиспользованным ответам'`
+                                    }
+                                }
+                            } else {
+                                tooltip += `'динамичный ответ'`
+                            }
+                        }
+
+                        if(reply.definition) tooltip = reply.definition;
+
+                        //add the reply and set up its click handler
+                        document.querySelector(`#dialogue-menu .dialogue-options-${actor.name} .dialogue-options`).insertAdjacentHTML('beforeend', `
+                            <span
+                                class="
+                                    reply
+                                    ${isEnd ? "end-reply" : ""}
+                                    ${reply.class || ""}
+                                "
+                                reply="${reply.destination}" 
+                                name="${nameToUse}"
+                                ${tooltip ? `definition="${tooltip}"` : ""}
+                                ${!isEnd ? readAttribute : ""} 
+                                ${isEnd ? `endtext="${isEnd}"` : ''}
+                            >${nameToUse}</span>`
+                        )
+
+                        //on option click, remove event listeners and add classes to indicate choice
+                        document.querySelector(`#dialogue-menu .dialogue-options span[name="${nameToUse}"]`).addEventListener('mousedown', function(e) {
+                            console.log(nameToUse)
+
+                            if(reply.exec) {
+                                try { reply.exec() } catch(e) {printError(e); console.log(e)}
+                            }
+
+                            var dest = reply.destination
+                            //redefine dest as something more readable if it's a function
+                            if(dest.includes('EXEC::')) {
+                                dest = `EX-${slugify(nameToUse.slice(0, 10))}`
+                            }
+                            
+                            document.querySelectorAll('#dialogue-menu .dialogue-options span').forEach(el => el.innerHTML += '') //destroys event listeners in one easy step
+                            this.classList.add('chosen')
+                            this.closest('.dialogue-actor').classList.add('chosen')
+
+                            //determine how to handle the reply based on any special prefixes or names
+                            let replyValue = this.attributes.reply.value
+                            if(replyValue == "END") { //end of dialogue
+                                endDialogue(env.currentDialogue.chain.end)
+                            } else if(replyValue.includes('CHANGE::')) { //changing to different dialogue
+                                let changeValue = replyValue.replace('CHANGE::', '')
+                                changeDialogue(changeValue)
+                            } else if(replyValue.includes('EXEC::')) { //executing a function - the function given should end dialogue or change it, otherwise may softlock
+                                Function(`${replyValue.replace('EXEC::', '')}`)()
+                                clearDialogueMenu()
+                            } else {
+                                sendDialogue(env.currentDialogue.chain[replyValue])
+                            }
+                        })
+                    }
+                })
+            })
+
+            document.querySelectorAll(`#dialogue-menu .dialogue-options span`).forEach(e=>{
+                e.addEventListener('mouseenter', ()=>play('muiHover'))
+                e.addEventListener('click', ()=> play('muiClick'))
+            })
+
+            //show only if the actor has any valid/choosable options
+            setTimeout(()=>{document.querySelectorAll('#dialogue-menu .dialogue-actor').forEach(e=> {
+                if(e.querySelector('.dialogue-options').childElementCount) e.classList.add('sent')
+                else e.remove()
+            })}, 50)
+        }
+        
+        dBox.scrollTop = dBox.scrollHeight
+    } catch(e) {
+        printError(e)
+        if(!check("TEMP!!debug")) endDialogue()
+    }
+}
 
 env.dialogueActors["corruru"] = {
     name: "cor-ru",
