@@ -599,7 +599,7 @@ what_secri
         да лааадно, не можешь же ты не знать про <em>секри</em> фильмы
         истинные шедевры сороковых
         бож, надеюсь никто из обесков никогда не видел их, они должно быть такие издевательские
-        если ты всерьёз, то это одно из существ о которых я правда немного знаю
+        если ты всерьёз, то это одно из существ о которых я и впрямь немного знаю
         по сути они - сверххищники на обески
         и как и остальная половина всей фауны на обески, они также паразиты
         или какого-то рода грибковая инфекция... мы на самом деле не знаем точно
@@ -743,7 +743,7 @@ what_smile
         о, так оно у тебя как улыбка выглядит?
         может быть моя теорияaybe my malware theory has some weight after all
         ну короче, я всё ещё без понятия чем является наш таинственный приятель
-        но похоже он называет себя 'велзи', смотря по тому что сказала циста-пилот
+        но похоже это 'велзи', смотря по тому что сказала циста-пилот
             SHOWIF::[['dullvessel__fixed-start']]
 
     RESPONSES::self
@@ -752,57 +752,57 @@ what_smile
 
 what_fuel
     self
-        What is corrucyst fuel?
+        чем является корруцистозное топливо?
     
     moth
-        in interviews they always just said it's something they grow... 
-        most theories are that it's some metallic-based fungus that corru can consume
-        going off what funfriend said, it seems like they can use a bunch of different metals to create it
+        в интервью они всегда говорили что это что-то выращиваемое... 
+        большинство теорий сходится в том что это какой-то металлический грибок который корру способно потреблять
+        судя по словам равзледруга, они применяют кучу разных металлов для его изготовления
             SHOWIF::[["hub__funfriend-essentialmetalq"]]
-        i guess it makes sense that they'd use metal to grow it, but i have no idea how that could work
+        наверно логично что они используют металлы, но я не представляю себе как это работает
             SHOWIF::[["hub__funfriend-essentialmetalq"]]
     
     RESPONSES::self
-        worrying<+>loop
+        тревожит<+>loop
             FAKEEND::(назад)
 
 what_dull
     self
-        what do you know about the dull plane?
+        что ты знаешь о среде серое?
     
     moth
-        oh, dude, you are not ready for me to rant about the dull
-        we'd be here all night
-        it's so frustrating how little we really know about it
-        but... if i condense down what we know for certain,
-        and this is all like, stuff from interviews i've watched,
-        there was an ekivik engineer, dullzkovik jut, uh, something,
-        who discovered that there are at least two states of, like, reality
-        what they call velzie's stage - this one - and what ended up being named the dullzkovik plane
-        or just dull plane for short
-        anyway, we don't know the specifics of how he came to discover this, but...
-        hang on, i'm getting too into the history part, aren't i. i see that look you're giving me
-        ok. to really, truly condense this,
-        we actually know more about its history than any of its physical properties
-        this was one of those things the obesk weren't able to effectively share with us before it all broke down
-        or maybe they just didn't want to
-        they did tell us that organic life can't go through it without being annihilated,
-        but corru can apparently survive it without major issues, with a little preparation...
-        huh... what else...
-        there are lots of wild theories about what it actually is
-        like a parallel universe, another "dimension" or something, but...
-        imo, that all gets into unrealistic movie shit
-        it's probably not that simple
-        we just don't have the means to interact with it in any meaningful way to find out
-        and the obesk aren't helping very much anymore
-        the only thing we know for certain is that physicists are very angry about it
-        so... i guess that's all of the useful insight i have for you here
-        sorry dude
-        anything else is either classified over my head,
-        or waiting for us in this cyst
+        о, чел, ты не готов к моим разглагольствованиям о серое
+        мы б тут всю ночь просидели
+        такое разочарование что мы не так уж и много о ней знаем
+        но... если вкратце о том, что мы знаем точно,
+        и это всё типа штуки с интервью,
+        был да жил один инженер-экивик - сероезковик жат, э, чётотам,
+        который открыл что существует как минимум два вида, типа, реальности
+        то что они называют сценой велзи - вот эта - и то что они в итоге назвали средой сероезковика
+        или просто среда серое
+        короче, мы не знаем как именно ему удалось совершить это открытие, но...
+        погоди, я слишком увлёкся историей не так ли. я вижу как ты на меня смотришь
+        окей. правда, серьёзно вкратце,
+        мы знаем больше о её истории чем о всех её физических свойствах вместе взятых
+        это одна из вещей, которой обески не успели полноценно с нами поделиться до того как всё рухнуло
+        а может они просто не хотели
+        они успели рассказать мол органическая жизнь не может пройти через неё, не будучи уничтоженной,
+        однако вот корру без особых проблем выжить может, при условии небольшой подготовки...
+        м... что ещё...
+        ходит куча безумных теорий о том, чем она является взаправду
+        типа паралелльная вселенная, другое "измерение" или такое, но...
+        имхо, это уже заходит на территорию какого-то нереалистичного кино
+        всё вряд ли так просто
+        у нас просто нет средств на какое-либо осмысленное взаимодействие с ней
+        и обески больше особо больше не помогают
+        единственное что можно сказать с уверенностью это то что физики очень бесятся по этому поводу
+        тек-с... думаю, больше ничего полезного я тебе предоставить не могу
+        сорянчик
+        всё остальное либо запредельно засекречено,
+        либо ждёт нас в этой цисте
     
     RESPONSES::self
-        all right<+>loop
+        хорошо<+>loop
             FAKEEND::(назад)
 
 what_fbxlist
