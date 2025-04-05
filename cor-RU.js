@@ -294,94 +294,57 @@ RESPOBJ::
 env.localization = {
     dialogues: {
         "index": generateDialogueObject(`
-start
-        
+start 
     moth
-        
         эй, дружище, добро пожаловать 
-        
         честно не был уверен, что ты появишься на такой мелкий улов
-        
         в последнее время находят столько кораблекрушений
-        
         в любом случае сейчас я всё запущу, можешь пока осмотреться
         
     sourceless
-        
         декодирующие машины включаются, бросая свет на паутину проводов.
-        
             EXEC::document.querySelectorAll('.backwall').forEach(e=>e.classList.add('active'))
         
     RESPONSES::self
-        
         что это<+>whatis
-        
         сесть<+>sit
-        
             SHOWIF::["PAGE!!intrositting", false]
-        
             EXEC::change('PAGE!!intrositting', true)
-        
-        
+
 whatis
-        
     self
-        
         что это?
-        
     moth
-        
         находка с обескового крушения возле новой зеландии
-        
         в записях сказали, почти всё расплавилось, что немного странно...
-        
         во всяком случае... главная часть это вот эта большая
-        
         пьедесталы обычно означают «важно», но этот не помеченный
-        
         алекс сделал базовый скан, сказал напоминает сетевой узел
-        
         мы даже не знаем наверняка, примет ли оно мыслекол
-        
         ну, тебе платят так или иначе, так что… пробуй
         
     RESPONSES::self
-        
         сесть<+>sit
-        
             SHOWIF::["PAGE!!intrositting", false]
-        
             EXEC::change('PAGE!!intrositting', true)
-        
         активировать мыслекол<+>END
-        
             SHOWIF::"PAGE!!intrositting"
         
-        
 sit
-        
     sourceless
-        
         металлический стул царапает бетон. ты садишься.
-        
             EXEC::env.introSit()
-        
             WAIT::3500
-        
+
     sourceless
-        
         сиденье холодное и неудобное. свет от твоего защитного снаряжения рассеивается в перламутровых цистах.
         
     moth
-        
         как по старинке - мыслекол на готове
-        
+
     RESPONSES::self
-        
         что это<+>whatis
-        
             SHOWONCE::
-        
         активировать мыслекол<+>END
         
 END::env.enableSpikeCursor();MUI('deprohibit')
