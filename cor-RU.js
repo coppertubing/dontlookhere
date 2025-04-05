@@ -270,7 +270,7 @@ RESPOBJ::
             SHOWIF::[["ff_ozo"], ["ozo__isabel-funfriend"]]
 
         неважно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 env.dialogues["mthglobalresp"] = generateDialogueObject(`
 RESPOBJ::
@@ -288,7 +288,7 @@ RESPOBJ::
             SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
             SHOWONCE::
         это всё<+>CHANGE::++moth
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization = {
@@ -386,6 +386,39 @@ sit
         
 END::env.enableSpikeCursor();MUI('deprohibit')
         `),
+        "++epselect": generateDialogueObject(`
+start
+    sys
+        ВНИМАНИЕ::'выбор любого эпизода сбросит текущий прогресс'
+        РЕКОМЕНДАЦИЯ::'экспортируйте сохранение до выбора эпизода'
+        РЕКОМЕНДАЦИЯ::'подтвердите намерение ниже'
+    
+    RESPONSES::self
+        продолжить, потеря текущего прогресса не проблема<+>proceed
+            HIDEREAD::
+        неважно, я хочу сохранить текущий прогресс<+>END
+
+proceed
+    sys
+        ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'выбор лога'
+
+    RESPONSES::sys
+        эпизод 0<+>END
+            EXEC::cutscene(true);setTimeout(()=>deleteSave(), 1000)
+            FAKEEND::(загрузить EP0)
+        эпизод 1<+>END
+            EXEC::mountSave(GlobalSaves.ep1start)
+            FAKEEND::(загрузить EP1)
+        эпизод 2<+>END
+            EXEC::mountSave(GlobalSaves.ep2start)
+            FAKEEND::(загрузить EP2)
+        эпизод 3<+>END
+            EXEC::mountSave(GlobalSaves.ep3start)
+            FAKEEND::(загрузить EP3)
+    
+    RESPONSES::self
+        неважно, я хочу сохранить текущий прогресс<+>END
+`),
         "++moth": {
             end: mothHasUnreadCheck,
             start: {
@@ -456,7 +489,7 @@ END::env.enableSpikeCursor();MUI('deprohibit')
                             {
                                 name: "понятно",
                                 destination: 'loop',
-                                fakeEnd: "(back)"
+                                fakeEnd: "(назад)"
                             }
                         ]
                     }
@@ -486,7 +519,7 @@ who
         велзи<+>who_velzie
             SHOWIF::[['dullvessel__fixed-how']]
         неважно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 who_you
     self
@@ -498,7 +531,7 @@ who_you
 
     RESPONSES::self
         наверно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 who_akizetesche
     self
@@ -514,7 +547,7 @@ who_akizetesche
 
     RESPONSES::self
         интересно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 who_gordon
     self
@@ -528,7 +561,7 @@ who_gordon
 
     RESPONSES::self
         удачи<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 who_velzie
     self
@@ -546,7 +579,7 @@ who_velzie
 
     RESPONSES::self
         странно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 what
@@ -574,7 +607,7 @@ what
         ...если эти знания ставят нас под угрозу?<+>what_fbxlist
             SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
         неважно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_masks
     self
@@ -593,7 +626,7 @@ what_masks
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_secri
     self
@@ -614,7 +647,7 @@ what_secri
 
     RESPONSES::self
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_eye
     self
@@ -634,7 +667,7 @@ what_eye
 
     RESPONSES::self
         понятно<+>loop
-            FAKEEND::(back)  
+            FAKEEND::(назад)  
 
 what_veilk
     self
@@ -661,7 +694,7 @@ what_veilk
 
     RESPONSES::self
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
         
 
 what_mindcores
@@ -680,7 +713,7 @@ what_mindcores
 
     RESPONSES::self
         а, хорошо<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_corru
     self
@@ -696,7 +729,7 @@ what_corru
 
     RESPONSES::self
         понятно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_corrucyst
     self
@@ -710,7 +743,7 @@ what_corrucyst
         если ты имеешь в виду что такое сферичные корруцисты, то обычно они выступают в роли хранилищ или вычислительных приборов
     RESPONSES::self
         понятно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_thecall
     self
@@ -730,7 +763,7 @@ ____SHOWIF::["ep4__entrancefinal", false]
 ____END
     RESPONSES::self
         понятно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_smile
     self
@@ -752,7 +785,7 @@ what_smile
 
     RESPONSES::self
         тревожит<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_fuel
     self
@@ -768,7 +801,7 @@ what_fuel
     
     RESPONSES::self
         worrying<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_dull
     self
@@ -807,7 +840,7 @@ what_dull
     
     RESPONSES::self
         all right<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 what_fbxlist
     self
@@ -822,7 +855,7 @@ what_fbxlist
     
     RESPONSES::self
         all right<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 why
     RESPONSES::self
@@ -838,7 +871,7 @@ why
         ...я слышу музыку<+>why_music
             SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         неважно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 why_beneath
     self
@@ -861,7 +894,7 @@ why_beneath
     
     RESPONSES::self
         ладно<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 why_involved
     self
@@ -889,7 +922,7 @@ why_involved
 
     RESPONSES::self
         ок<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 why_callme
@@ -904,7 +937,7 @@ why_callme
 
     RESPONSES::self
         спасибо<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 why_connect
     self
@@ -919,7 +952,7 @@ why_connect
 
     RESPONSES::self
         ок<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 why_thoughts
@@ -933,7 +966,7 @@ why_thoughts
 
     RESPONSES::self
         круто<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 why_music
@@ -952,7 +985,7 @@ why_music
 
     RESPONSES::self
         она нормальная<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 mothep1end
     self
@@ -973,7 +1006,7 @@ mothep1end
     RESPONSES::self
         тебе не страшно?<+>mothep1afraid
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 mothep1afraid
     self
@@ -991,7 +1024,7 @@ mothep1afraid
     
     RESPONSES::self
         раз ты так говоришь<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ep3thoughts
     self
@@ -1034,7 +1067,7 @@ ep3thoughts
     
     RESPONSES::self
         ...<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ep4thoughts
     self
@@ -1099,7 +1132,7 @@ ep4thoughts
     
     RESPONSES::self
         got it<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 leverage
     self
@@ -1141,7 +1174,7 @@ leverage
 
     RESPONSES::self
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `),
         "++mothfj": generateDialogueObject(`
 start
@@ -1282,8 +1315,7 @@ gad
 
         "ATTENTION::'additional ACT enabled';'rescan": "ВНИМАНИЕ::'доступно дополнительное ДЕЙСТ';'пересканируйте",
 
-        "end chat": "закончить чат",
-        "back": "назад",
+        "end chat": "закончить разговор",
 
         "enter": "войти",
 
@@ -1305,14 +1337,6 @@ gad
         "'clearing mindspike cache';'in ": "'очистка кэша мыслекола';'через ",
         " seconds';'refresh to cancel'": " секунд';'обновите страницу для отмены'",
         "'clearing mindspike cache';'now'": "'очистка кэша мыслекола';'прямо сейчас'",
-        "'selecting any EP will delete current log progress'": "'выбор любого эпизода сбросит текущий прогресс'",
-        "ADVISE::'export save prior to EP selection if valued": "РЕКОМЕНДАЦИЯ::'экспорт сохранения до выбора эпизода'",
-        "ADVISE::'confirm intention below'": "РЕКОМЕНДАЦИЯ::'подтвердите намерение ниже'",
-        "proceed, losing my current progress is fine": "продолжить, потеря текущего прогресса не проблема",
-        "nevermind, i want to keep my current progress": "неважно, я хочу сохранить текущий прогресс",
-        "USER REQUEST::'log selection'": "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'выбор лога'",
-        "load EP": "загрузить ЕP",
-        "EP": "эпизод ",
         "NOTE::'data imported';'packed data format'": "ПРИМЕЧАНИЕ::'данные импортированы';'сжатый формат данных'",
         "NOTE::'data imported';'string data format'": "ПРИМЕЧАНИЕ::'данные импортированы';'строчный формат данных'",
         "NOTE::'data exported as file'": "ПРИМЕЧАНИЕ::'данные экспортированы в виде файла'",
@@ -2369,7 +2393,7 @@ ah1
         что такое 'безпространство'<+>ah1whatuncosm
         как использовать прокси<+>ah1proxy
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ah1uncosm
     self
@@ -2389,7 +2413,7 @@ ah1uncosm
         что такое 'безпространство'<+>ah1whatuncosm
         как использовать прокси<+>ah1proxy
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ah1whatuncosm
     self
@@ -2416,7 +2440,7 @@ ah1whatuncosm
         что такое 'безпространство'<+>ah1whatuncosm
         как использовать прокси<+>ah1proxy
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ah1proxy
     self
@@ -2447,7 +2471,7 @@ ah1proxy
         что такое 'безпространство'<+>ah1whatuncosm
         как использовать прокси<+>ah1proxy
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ah1end
     self
@@ -2462,7 +2486,7 @@ ah1end
 
     RESPONSES::self
         без проблем<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ep2start
     self
@@ -2491,7 +2515,7 @@ ep2start
 
     RESPONSES::self
         круто, спасибо<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 mothframe
     self
@@ -2587,7 +2611,7 @@ ep3start
 
     RESPONSES::self
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ep4start
     self
@@ -2619,7 +2643,7 @@ ep4start
 
     RESPONSES::self
         ладно?<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozogate
     self
@@ -2645,7 +2669,7 @@ ozogate
 
     RESPONSES::self
         это уже хорошо<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozo
     self
@@ -2700,7 +2724,7 @@ ozo
 
     RESPONSES::self
         окей<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozodestroy
     self
@@ -2726,7 +2750,7 @@ ozodestroy
     
     RESPONSES::self
         ладно<+>question
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozohistory
     self
@@ -2756,7 +2780,7 @@ ozohistory
 
     RESPONSES::self
         ага<+>question
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 masks
     self
@@ -2781,7 +2805,7 @@ masks
 
     RESPONSES::self
         разумеется<+>question
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 isabel
     self
@@ -2819,7 +2843,7 @@ isabel
 
     RESPONSES::self
         хорошо<+>question
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 lockcyst
     self
@@ -2852,7 +2876,7 @@ lockcyst
 
     RESPONSES::self
         ладно<+>question
-            FAKEEND::(back)
+            FAKEEND::(назад)
                 `),
         "funfriend_beacon": generateDialogueObject(`
 start
@@ -2991,9 +3015,7 @@ start
 
                 "YES, I KNOW, INTERLOPER":"ДА, Я ЗНАЮ, ЛАЗУТЧИК",
                 "DO NOT SHOVE IT IN MY FACE":"НЕ СУЙ МНЕ ЭТО В ЛИЦО",
-                "WE WILL DEAL WITH IT IN TIME":"МЫ РАЗБЕРЁМСЯ С ЭТИМ КОГДА ПРИДЁТ ВРЕМЯ",
-
-                "OK I WILL BE HERE":"ОКЕЙ Я БУДУ ЗДЕСЬ",
+                "WE WILL DEAL WITH IT IN TIME":"МЫ РАЗБЕРЁМСЯ С ЭТИМ КОГДА ПРИДЁТ ВРЕМЯ"
             },
 
             entityDescriptions: {
@@ -3099,7 +3121,6 @@ function ouch(selector, inside = false, altAtr = false, thenWhat = 'endtext') {
     processTranslation(document.querySelector("#system-menu",true))
     processTranslation(document.querySelector(`#mindspike-scanner`,true))
     processTranslation(document.querySelector(`#static`,true))
-    processTranslation(document.querySelector(`#dialogue-box`,true));
     processTranslation(document.querySelector(`#minireadout`,true));
     processTranslation(document.querySelector(`#readout`,true));
     processTranslation(document.querySelector(`#definition-box`,true));
@@ -3117,7 +3138,6 @@ env.mutateObserver = new MutationObserver(()=>{
     processTranslation(document.querySelector(`#mindspike-scanner`))
     processTranslation(document.querySelector(`#static`))
     processTranslation(document.querySelector(`#definition-box`))
-    processTranslation(document.querySelector(`#dialogue-box`));
     processTranslation(document.querySelector(`#minireadout`));
     processTranslation(document.querySelector(`#readout`));
     processTranslation(document.querySelector(`#definition-box`,true));
