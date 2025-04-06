@@ -474,13 +474,6 @@ proceed
                     }
                 ]
             },
-        
-            loop: {
-                name: "loop",
-                body: [],
-                responses: []
-            },
-        
             whatnext: {
                 name: "whatnext",
                 body: [
@@ -496,7 +489,7 @@ proceed
                         replies: [
                             {
                                 name: "понятно",
-                                destination: 'loop',
+                                destination: 'CHANGE::++moth',
                                 fakeEnd: "(назад)"
                             }
                         ]
@@ -767,7 +760,7 @@ what_thecall
 ____SHOWIF::"ep4__entrancefinal"
         лол, сейчас это уже больше напоминает только самую верхушку айсберга
 ____SHOWIF::["ep4__entrancefinal", false]
-       может эта корруциста наконец прольёт свет на то что произошло
+        может эта корруциста наконец прольёт свет на то что произошло
 ____END
     RESPONSES::self
         понятно<+>loop
