@@ -76,6 +76,15 @@ var css = `
 }
 
 @font-face {
+    font-family: 'barcode';
+    src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barc.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barc.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'barcodetext';
     src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barcode.woff2') format('woff2'),
         url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barcode.woff') format('woff');
