@@ -290,6 +290,51 @@ RESPOBJ::
         это всё<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
+env.dialogues.mthglobalresp.whatnext = ()=>{
+    if(!check('interview1__firstchat-behonest')) { /* before velziebreak */
+             if(check('visited_localcitystreet') && check('visited_localoceanshipinterview') && check('visited_localdullvessel'))           return "выглядит так, что интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие-нить нейронные пути"
+        else if(check('visited_localcitystreet') && check('visited_localoceanship') && check('visited_localdullvessel'))                    return "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё раз"
+        else if(check('visited_localcitystreet') && check('visited_localocean') && check('visited_localdullvessel'))                        return "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?"
+        else if(check('visited_localcitystreet') && check('visited_localorbit') && !check('visited_localdullvessel'))                       return "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать"
+        else if(check('visited_localcitystreet') && !check('visited_localorbit'))                                                           return "думаю тут есть путь к другому мыслепространству, я вижу что-то в непространственной части города но не могу сказать точно где. кажись оно двигается, наверно просто плавает где-то"
+        else if(!check('visited_localcitystreet') && check('visited_localorbit'))                                                           return "что-нибудь наверняка ещё прячется в городской местности, я вижу достаточный объём данных чтобы подозревать что мы что-то пропустили"
+        else /* scroll to the right if you don't see anything */                                                                            return "о чём ты меня спрашиваешь? ты ток подключился, делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то 'прокручиваешь'"
+    } else if(!check('ep1_showmaterials')) { /* post velziebreak, pre ep1 */
+             if(check('ep0_epilogue', 'done'))                                                                                              return "теперь мы ждём когда прибудут наши инструменты-открывашки контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт"
+        else if(check('ep0_epilogue', 'started') && check('hub__funfriend-fuelthanks') && check('dullvessel_container_examined'))           return "похоже мы могли бы воспользоваться тем, что внутри дендритного контейнера, чтобы сохранить цисту живой, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи"
+        else if(check('ep0_epilogue', 'started') && check('hub__funfriend-fuelthanks'))                                                     return "ну-п, теперь мы просто убиваем время до тех пока не придёт заказ на медь. не волнуйся, я дам знать как только его доставят"
+        else if(check('ep0_epilogue', 'started') && check('dullvessel_container_examined'))                                                 return "значит в том контейнере 'обработанные металлы'... блин, я надеялся это будет нашей зацепкой. может спросить ту развледружную штуку в хабе об идеях?"
+        else if(check('ep0_epilogue', 'started') && !check('dullvessel_container_examined'))                                                return "нам надо разобраться, как сохранить эту штуку живой. может поговори с той развледружной фигнюшкой в хабе, вдруг у неё есть идеи"
+        else if(check('depths_depth') && !check('ep0_epilogue'))                                                                            return "тут чё-т реально странное в глубинах, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. поищи там хоть что-нибудь"
+        else if(!check('depths_depth') && check('dullvessel_dive'))                                                                         return "тут подскочила активность когда серое судно нырнуло, что-то точно изменилось в океане. попробуй найти, что это"
+        else if(check('dullvessel_position', 'ocean'))                                                                                      return "ну должна же быть причина почему серое судно может передвигаться между космосом и океаном. не могла же эта безконтрольная сущность взять и сделать это просто так"
+        else if(check('dullvessel_position', 'orbit') && check('dullvessel__fixed-hello'))                                                  return "кажись твоя улыбка починила цисту-пилота... и теперь она предлагает переместить серое судно куда-то. почему бы не попробовать?"
+        else if(check('dullvessel__pilot-end'))                                                                                             return "проверь как там циста-пилот на корабле, я помню там были какие-то искажённые данные"
+        else                                                                                                                                return "ну твой мыслекол сообщил о какой-то деятельности в мыслеформе серое судна, почему бы не разведать там обстановку? твоя таинственная улыбка похоже там что-то изменила"
+    } else if(!check('fbx__ep2intro-end')) { //ep 1, after materials have been shown to the user for the first time
+        //special check for if someone's looking for hints in the embassy days
+        if(check("PAGE!!embassy_day"))  return "если ты спрашиваешь об этой мыслеформе, попробуй повзаимодействовать с акизет--для этого нужно отдалиться"
+
+             if(check('hub__funfriend-ep1comms'))                                                                                           return "похоже что нам остаётся только ждать починок от развледруга. сделай перерыв?"
+        else if(check('ep1_end'))                                                                                                           return "давай-ка поговорим с развледругом о починке связи, даже без угрозы велзи это было бы моей первой просьбой"
+        else if(check('embassy_d2_complete'))                                                                                               return "я тут вижу что количество данных в районе городской улицы прибавилось... обязательно загляни туда"
+        else if(check('embassy_d1_complete'))                                                                                               return "насколько я вижу, в посольстве ещё что-то есть"
+        else if(check('hub__funfriend-ep1fed'))                                                                                             return "отправляйся в посольство, развледруг сказал что починил там что-то"
+        else if(check('ep1_fed'))                                                                                                           return "давай проведаем развледруга, посмотрим что он думает"
+        else                                                                                                                                return "надо бы цисту покормить, ты решай когда этим заняться, но как по мне - лучше сейчас"
+    } else if(!check('fbx__ep3intro')) { //ep 2, has done sitdown intro
+        if(check("embassy__d3_movefriend_finish-end"))                                                                                      return "nothing for now, just gotta wait for funfriend <span definition=\"NOTE::'advance log'\">to finish more of the memory</span>"
+        else if(check("embassy__d3_start-end"))                                                                                             return "just keep working your way through the collapse memory, we've got more to see"
+        else if(check("hub__funfriend-mothframe2"))                                                                                         return "looks like we're all set with the framing device, go check out the collapse memory again"
+        else if(check("embassy__mothframe-end"))                                                                                            return "gotta talk to funfriend about installing my framing device"
+        else if(check("hub__funfriend-ep2start"))                                                                                           return "let's go check out the embassy, funfriend said it fixed some stuff in there up"
+        else                                                                                                                                return "we gotta see what's new! talk to funfriend, it'll probably tell you what's up"
+    } else { //ep3!
+        if(check("gol__bossclear"))                                                                                                         return "we're on the wait again. can't do anything till funfriend fixes <span definition=\"NOTE::'indicates end of current main content';'observe @corruworks for updates'\">more of the memory</span>"
+        if(page.name == "golem-maintenance")                                                                                                return "just keep looking around in that memory! it looks like the framing device added an <span definition=\"NOTE::'top right when not speaking'\">objectives list</span>, take a look at that"
+        else                                                                                                                                return "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo"
+    }
+}
 
 env.localization = {
     dialogues: {
@@ -1224,7 +1269,6 @@ gad
     RESPONSES::self
         окей<+>END
 `)
-
     },
 
     definitions: {
