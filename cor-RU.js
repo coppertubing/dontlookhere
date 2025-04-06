@@ -335,7 +335,29 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else                                                                                                                                return "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo"
     }
 }
-
+env.dialogues.mthlocalr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        о развледруге<+>funfriend
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        о вратах<+>gates
+            SHOWIF::[['visited_localorbit']]
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
+    `)
+    
+env.dialogues.mthlocalfunr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        поведение<+>ffdemeanor
+            SHOWIF::['ep1_fed', false]
+        ситуация с топливом<+>fffuel
+            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
+        подпись<+>ffsignature
+            SHOWIF::[['hub__funfriend-signatureq']]
+        хватит о развледруге<+>loop
+            FAKEEND::(назад)
+    `)
 env.localization = {
     dialogues: {
         "index": generateDialogueObject(`
@@ -427,6 +449,59 @@ proceed
     RESPONSES::self
         неважно, я хочу сохранить текущий прогресс<+>END
 `),
+"menu_hub": {
+    start: {
+        name: "start",
+        body: [
+            {
+                actor: "sys",
+                text: "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'намерение'"
+            },
+        ],
+
+        responses: [
+            {
+                name: "self",
+                replies: [
+                    {
+                        name: 'вернуться в хаб',
+                        destination: 'EXEC::endDialogue()',
+                        hideRead: true,
+                        exec: ()=>{
+                            cutscene(true)
+                            corruRefresh('/hub/', 3000)
+                            if(env.e3a2) env.e3a2.clearWarningListener()
+                            setTimeout(()=>{
+                                readoutAdd({message: `EXECUTING::'retrace';'localhost'`, name:"sys"})
+                            }, 1000)
+                        }
+                    },
+                    {
+                        name: 'отключиться',
+                        destination: 'EXEC::endDialogue()',
+                        hideRead: true,
+                        exec: ()=>{
+                            cutscene(true)
+                            corruRefresh('/', 3000)
+                            if(env.e3a2) env.e3a2.clearWarningListener()
+                            setTimeout(()=>{
+                                readoutAdd({message: `EXECUTING::'eject'`, name:"sys"})
+                            }, 1000)
+                        }
+                    },
+                    {
+                        name: `неважно`,
+                        destination: 'END',
+                        exec: ()=>{
+                            endDialogue()
+                            setTimeout(()=> readoutAdd({message: `NOTE::'aborted'`, name:"sys"}), 1000)
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+},
         "++moth": {
             end: mothHasUnreadCheck,
             start: {
@@ -864,7 +939,7 @@ why
             SHOWIF::"beneath"
         ...никто другой ещё не вовлечен<+>why_involved
             SHOWIF::"ep1_fed"
-        ...ты меня позвал<+>why_callme
+        ...именно я<+>why_callme
         ...у меня получилось подключиться<+>why_connect
             SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         ...я понимаю эти мысли<+>why_thoughts
@@ -928,10 +1003,10 @@ why_involved
 
 why_callme
     self
-        почему ты позвал именно меня?
+        почему над этим работаю именно я?
 
     moth
-        что, недоволен ролью самого первого человека, которому удалось подключиться к персональной корруцисте?
+        что, не устраивает роль самого первого человека, которому удалось подключиться к персональной корруцисте?
         шучу. у нас не хватает мыслеколящих подрядчиков из-за той катастрофы с последним обновлением
         боже, я даже представить себе не могу о чём в майндсай только думали лмао, траффик до сих в таком хреновом состоянии
         ты - единственный знакомый мне псих который никогда ничего не обновляет, так что я подумал ты примешь работу
@@ -1319,19 +1394,15 @@ gad
 
         "enter": "войти",
 
-        // EJECT DIALOGUE OR SMTH and also other stuff like notes when you get kicked out of memhole
-        "USER REQUEST::'intention'": "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'намерение'",
-        "return to hub": "вернуться в хаб",
-        "eject": "отключение",
+        // EJECT DIALOGUE OR SMTH and also other stuff like notes when you get kicked out of memhole UPDATE not anymore 
         "refresh": "обновить",
-        "nevermind": "неважно",
         "NOTE::'aborted'": "ПРИМЕЧАНИЕ::'прервано'",
         "EXECUTING::'eject'": "ВЫПОЛНЯЕТСЯ::'отключение'",
         "NOTE::'restored partial recent log'": "ПРИМЕЧАНИЕ::'частично восстановлен недавний лог'",
         "NAVIGATING::": "НАВИГАЦИЯ::",
-        "EXECUTING::'retrace';": "ВЫПОЛНЯЕТСЯ::'отслеживание';",
+        "EXECUTING::'retrace';": "ВЫПОЛНЯЕТСЯ::'возвращение';",
         "EXECUTING::'refresh';": "ВЫПОЛНЯЕТСЯ::'обновление';",
-        "WARNING::'data overload';'retracing';'last coherent position'": "ПРЕДУПРЕЖДЕНИЕ::'перегрузка данных';'отслеживание';'последняя связная позиция'",
+        "WARNING::'data overload';'retracing';'last coherent position'": "ПРЕДУПРЕЖДЕНИЕ::'перегрузка данных';'возвращение';'последняя связная позиция'",
         "RECONNECTING__": "ПЕРЕПОДКЛЮЧЕНИЕ__",
         "'clearing mindspike cache';'15 seconds';'refresh to cancel'": "'очистка кэша мыслекола';'через 15 секунд';'обновите страницу для отмены'",
         "'clearing mindspike cache';'in ": "'очистка кэша мыслекола';'через ",
@@ -1379,6 +1450,9 @@ gad
         "i fixed it": "всё работает",
         "i don't care": "мне без разницы",
 
+        "META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'": "МЕТА::'некоторые секции геймплея используют аппаратно-зависимые функции и могут привести к очень плохой производительности на старых/неигровых машинах';'активирование этого предоставляет выбор альтернативных вариантов этих секций которые могут работать лучше'",
+        "META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'": "МЕТА::'полностью отключает неисследовательские секции геймплея';'упущение истории минимально'",
+
 
         // ENTITY MENU + READOUT NOTIFS AND GATES AND basically locations lol STUFF
 
@@ -1393,6 +1467,7 @@ gad
 
         "their_city": "ИХ_ГОРОД",
         "their-city": "их-город",
+        "their city": "ИХ ГОРОД",
 
         "city_surface": "ПОВЕРХНОСТЬ_ГОРОДА",
         "city-surface": "поверхность-города",
@@ -1523,6 +1598,9 @@ gad
 ::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
         "connection point": `::КОМПОНЕНТ КОРРУЦИСТИЧЕСКОЙ СУЩНОСТИ
 ::ДЕЙСТВИТЕЛЬНАЯ ТОЧКА СОЕДИНЕНИЯ`,
+        "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+    ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`
 
     },
 
@@ -1531,295 +1609,166 @@ gad
             dialogues: {
                 "enter": generateDialogueObject(`
 start
-
     moth
-
         боже
-
         ты в порядке? сейчас была какая-то просто безумная активность
-
         не встречал такого раньше... кажется, к ней обычно не должны подключаться 
 
-
     sys
-
         ВНИМАНИЕ::"визуализируемый вывод"
 
-
     RESPONSES::sys
-
         визуализировать<+>render
 
-
 render
-
     sys
-
         ВЫПОЛНЯЕТСЯ::"визуализация"
-
             EXEC::content.style.opacity = 1;env.hello.beginBgm()
-
             WAIT::4500
 
-
     moth
-
         да, не похоже будто тут есть фронт-энд. может быть это какой-то компонент
-
         просто бросим дело если ничего не найдёшь
-
         короче я сейчас вернусь, они заказывают еду в соседней комнате
 
-
     RESPONSES::self
-
         осмотреться<+>END
 END::MUI('deprohibit')
 `),
         "sentry": generateDialogueObject(`
 start
-
     self
-
         ПРИВЕТ
 
     sentry
-
         ПРИВЕТ ДРУГ
-
         НЕ НАЙДЕНА ПОДПИСЬ
-
         ПОЖАЛУЙСТА ИДЕНТИФИЦИРУЙТЕСЬ
-
         ДОПОЛНИТЕЛЬНО: НИЗКИЕ ЗАПАСЫ ТОПЛИВА. РЕКОМЕНДУЕТСЯ КОРМЛЕНИЕ
 
     RESPONSES::self
-
         я -...<+>iam
 
-
 iam
-
     self
-
         Я ЗДЕСЬ ЧТОБЫ ПОМОЧЬ
 
-
     sentry
-
         ТЫ ЧТО?
-
             EXEC::document.querySelector('.maineye .eye').classList.add('wide')
-
         ПОДОЖДИ-КА
-
         ГДЕ МЫ
-
         МЫ ТАК ГОЛОДНЫ
-
             EXEC::document.querySelector('.maineye .eye').classList.remove('wide')
-
 
     RESPOBJ::russianSentryResponses
 
-
 purpose
-
     self
-
         КАКОЕ У ТЕБЯ НАЗНАЧЕНИЕ?
 
-
     sentry
-
         АХАХАХАХА ЭТО ТАК СТРАННО
-
         МЫ НЕ ДОЛЖНЫ ГОВОРИТЬ МЫ НЕ ЗНАЕМ ЧТО ПРОИСХОДИТ
-
         ТАК ИЛИ ИНАЧЕ
-
         АВТОРИЗАЦИЯ
-
         ЭТО ВСЁ
-
 
     RESPOBJ::russianSentryResponses
 
 
 whoisverified
-
     self
-
         КТО ВЕРИФИЦИРОВАН?
 
-
     sentry
-
         МЫ ЖЕ СКАЗАЛИ ЧТО ТЫ НЕ АВТОРИЗОВАН ИДИОТ
-
             EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-
             SHOWIF::[["hello__sentry-corrupurpose"]]
-
         ИЗВИНИ ЭТО БЫЛО ГРУБО. У ТЕБЯ ЕСТЬ ТОПЛИВО
-
             SHOWIF::[["hello__sentry-corrupurpose"]]
-
             EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
-
 
         ЕСТЬ ТОЛЬКО НЕСКОЛЬКО ПОДПИСЕЙ КОТОРЫМ РАЗРЕШЕНО ПОДКЛЮЧАТЬСЯ К ЭТОЙ ЦИСТЕ
-
             SHOWIF::[["hello__sentry-corrupurpose", false]]
-
         ТЫ НАВЕРНЯКА ЗНАЕШЬ ИХ ВЛАДЕЛЬЦЕВ? КАК ЕЩЁ ТЫ СЕЙЧАС ПОДКЛЮЧЁН
-
             SHOWIF::[["hello__sentry-corrupurpose", false]]
-
         ИЗВИНИ МЫ ЗАБЫЛИ ЧТО ТЫ ВООБЩЕ-ТО НЕ АВТОРИЗОВАН АХАХАХАХА
-
             SHOWIF::[["hello__sentry-corrupurpose", false]]
-
         ДАА ТЫ НЕ ИМЕЕШЬ ПРАВА ЗНАТЬ ПРЕДЫДУЩУЮ ИНФОРМАЦИЮ
-
             SHOWIF::[["hello__sentry-corrupurpose", false]]
-
         ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
-
             SHOWIF::[["hello__sentry-corrupurpose", false]]
-
 
     RESPOBJ::russianSentryResponses
-
 
 corrupurpose
-
     self
-
         В ЧЁМ НАЗНАЧЕНИЕ ЭТОЙ КОРРУЦИСТЫ?
 
-
     sentry
-
         МЫ ЖЕ СКАЗАЛИ ЧТО ТЫ НЕ АВТОРИЗОВАН ИДИОТ
-
             EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-
             SHOWIF::[["hello__sentry-whoisverified"]]
-
         ИЗВИНИ ЭТО БЫЛО ГРУБО. У ТЕБЯ ЕСТЬ ТОПЛИВО
-
             EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
-
             SHOWIF::[["hello__sentry-whoisverified"]]
-
         
-
         ЭТО СЕТЕВОЙ СОЕДИНИТЕЛЬ
-
             SHOWIF::[["hello__sentry-whoisverified", false]]
-
         С ДОПОЛНИТЕЛЬНЫМИ НЕСТАНДАРТНЫМИ ФУНКЦИЯМИ ПО ЗАПРОСУ
-
             SHOWIF::[["hello__sentry-whoisverified", false]]
-
         ИЗВИНИ МЫ ЗАБЫЛИ ЧТО ТЫ ВООБЩЕ-ТО НЕ АВТОРИЗОВАН АХАХАХАХА
-
             SHOWIF::[["hello__sentry-whoisverified", false]]
-
         ДАА ТЫ НЕ ИМЕЕШЬ ПРАВА ЗНАТЬ ПРЕДЫДУЩУЮ ИНФОРМАЦИЮ
-
             SHOWIF::[["hello__sentry-whoisverified", false]]
-
         ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
-
             SHOWIF::[["hello__sentry-whoisverified", false]]
-
 
     RESPOBJ::russianSentryResponses
 
-
 letthrough
-
     self
-
         МОЖЕТ ЕСЛИ ТЫ ПРОПУСТИШЬ МЕНЯ
 
-
     sentry
-
         ЧТО?!
-
             EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-
         НАМ КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ПРОПУСКАТЬ ТЕБЯ БЕЗ НАДЛЕЖАЩЕЙ ПОДПИСИ
-
         ДАЖЕ ЕСЛИ ХОЧЕТСЯ
-
         ЭТА ЦИСТА ПО СВОЕЙ ПРИРОДЕ НЕСПОСОБНА ОТВЕЧАТЬ НА
-
             EXEC::env.hello.velzie();document.querySelector('.maineye .eye').classList.remove('squint');changeBgm(env.hello.velamb, {length: 4000})
-
             WAIT::3500
-
     
-
     sourceless
-
         ..................
-
     
-
     sentry
-
         ЭТО ЧТО
 
-
     unknown
-
         можно ли им войти
-
             EXEC::env.hello.velzie()
-
     
-
     RESPONSES::self
-
         привет?<+>posthello
-
             SHOWONCE::
-
             EXEC::env.hello.velzie()
-
 
 posthello
-
     self
-
         ПРИВЕТ?
-
     
-
     sourceless
-
         ..................
-
             EXEC::env.hello.velzie();env.hello.velamb.fade(1, 0, 6000);corruStatic.play();corruStatic.fade(0, env.corruStaticBaseVol, 6000)
-
         ..................
-
     
-
     moth
-
         сорян, они так и не решили откуда заказывать, так что...
-
             EXEC::env.hello.velzie()
-
         ты всё ещё там? подожди, там серьёзно что-то есть?
-
     
-
     RESPONSES::self
 
         похоже на то<+>END
@@ -1841,7 +1790,7 @@ END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'a
                 "sentry": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
             ::ЯВНОЕ НАЗНАЧЕНИЕ:'авторизация'
             <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-                "gate::for you": `::МЫСЛЕФОРМА-СОЕДИНИТЕЛЬ
+                "gate::for you": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
             ::ПУНКТ НАЗНАЧЕНИЯ::'неизвестное внутреннее мыслепространство'
             ::^&&Q@W61626f75742074696d65`
             },
@@ -2878,7 +2827,7 @@ lockcyst
         ладно<+>question
             FAKEEND::(назад)
                 `),
-        "funfriend_beacon": generateDialogueObject(`
+                 "funfriend_beacon": generateDialogueObject(`
 start
     funfriend
         что...
@@ -2938,7 +2887,84 @@ start
 
     RESPONSES::self
         окей<+>loop
-`)
+                `),
+                "mth++hub": generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этом мыслепространстве
+
+    moth
+        ага у меня тоже пара найдётся
+        но что у тебя на уме?
+    
+    RESPOBJ::mthlocalr
+    
+gates
+    self
+        что это за врата?
+    
+    moth
+        ну грубо говоря это просто соединительные мыслеформы, ничего особенного
+        но вот это уточнение про "врата" какое-то вычурное
+        наверно это несёт в себе какое-то культурное значение, они называют свои межзвёздные червоточины или что-то такое "вратами" тоже
+        так что можно считать это обозначением того что они были нарочно созданы кем-то в качестве ярлыка
+        это имеет смысл раз эта штука предназначена для хранения воспоминаний, иначе вышел бы полный кавардак
+    
+    RESPOBJ::mthlocalr
+
+loop
+    self
+        больше ничего
+        
+    RESPOBJ::mthlocalr
+
+funfriend
+    self
+        об этом "развледруге"...
+    RESPOBJ::mthlocalfunr
+
+ffdemeanor
+    self
+        он ужасно дружелюбен несмотря на то, что знает, кто мы такие
+    
+    moth
+        ага мне тоже это показалось странным
+        может его так спроектировали, типа маленький чувачок-ассистент
+        или может он просто выгнать нас не может раз слой авторизации 'диссоциировался'
+        не ну если бы мне пришлось голодать бог знает сколько на дне океана мне б тоже было фиолетово кто пришёл меня спасать лол
+        так что может и ему будет фиолетово пока мы не достанем топливо
+        знаешь что, на всякий случай, предлагаю найти здесь всё что можно прежде чем помочь ему должным образом
+        это может быть нашей единственной возможностью--может он и правда нас пропускает лишь потому что циста голодает
+
+    RESPOBJ::mthlocalfunr
+
+fffuel
+    self
+        что нам делать с топливом?
+
+    moth
+        ну... нам лучше бы попридержать заправку до тех пор пока не найдём всё что можем
+        пока всё выглядит достаточно стабильно, а то обесковая техника начинает чудить когда голодает
+        я думаю это могло бы сыграть нам в пользу если мы опять столкнёмся с чем-нибудь вроде авторизационного слоя
+        впрочем... когда дело дойдёт до самого процесса,
+        люди сверху скоро достанут нам кучу дешёвых медных трубок, так что можно использовать их... если "развледруг" поделится, как
+            SHOWIF::[['EXEC::env.dialogues.mthlocalfunr.scannedContainer(false)']]
+        мы наверняка сможем воспользоваться тем что внутри нашего контейнера, звучит как металл и выглядит прям как те большие на корабле акизет
+            SHOWIF::[['EXEC::env.dialogues.mthlocalfunr.scannedContainer(true)']]
+        
+    RESPOBJ::mthlocalfunr
+
+ffsignature
+    self
+        почему у меня нет подписи?
+
+    moth
+        вообще я без понятия почему он её не видит
+        потому что насколько я знаю, большинство мыслеколов имеют подпись для авторизационных целей
+        скорее всего он искал определенный тип, наверняка легко понять что твой соединитель неорганический
+
+    RESPOBJ::mthlocalfunr
+                `)
             },
 
             definitions: {
@@ -3053,7 +3079,7 @@ function ouch(selector, inside = false, altAtr = false, thenWhat = 'endtext') {
             for (const childNode of el.childNodes) {
                 if (childNode.nodeType === Node.TEXT_NODE) {
                     childNode.textContent = processStringTranslation(childNode.textContent.trim())
-                    console.log("meouwch! " + selector + " inside!")
+                    // console.log("meouwch! " + selector + " inside!")
                     return
                 }
             }
@@ -3061,11 +3087,11 @@ function ouch(selector, inside = false, altAtr = false, thenWhat = 'endtext') {
     }
     if (altAtr == true) {
         document.querySelectorAll(selector).forEach(el=>el.setAttribute(thenWhat, processStringTranslation(el.getAttribute(thenWhat))))
-        console.log("moewwo! " + selector + " altAtr! " + thenWhat)
+        // console.log("moewwo! " + selector + " altAtr! " + thenWhat)
         return
     }
     document.querySelectorAll(selector).forEach(el=>el.setAttribute("definition", processStringTranslation(el.getAttribute("definition"))))
-    console.log("mrouch! " + selector  + " normal!")
+    // console.log("mrouch! " + selector  + " normal!")
     return
 }
 
@@ -3387,6 +3413,54 @@ function sendDialogue(dialogue, i = 0) {
         if(!check("TEMP!!debug")) endDialogue()
     }
 }
+
+env.pageHasMothComment = function() {
+    if(typeof page.mothComment == "function") {
+        return processStringTranslation(page.mothComment())
+    } else if(typeof page.mothComment == "string") {
+        return processStringTranslation(page.mothComment)
+    } else {
+        if(env.currentDialogue.justChanged) return processStringTranslation("что-нибудь ещё?")
+        return processStringTranslation("чё как дружище")
+    }
+}
+
+
+
+env.mutateObserverMoth = new MutationObserver(()=>{
+if (page.dialoguePrefix == "fbx") {
+    page.mothComment = ()=>{
+        var moth = "чё как?"
+        if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+        return moth
+}} else if (page.dialoguePrefix == "hub") {
+    page.mothComment = ()=>{
+        var moth = "чё как, дружище?"
+        if(env.currentDialogue.justChanged) moth = "что-нибудь ещё?"
+        return moth
+}
+    page.mothChat = {
+        startName: "о хабе",
+        getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+}
+} else if (page.name == "their-city") {
+    page.mothComment = ()=>{
+        var moth = "довольноооо поломанное... но хоть что-то"
+        if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+        return moth
+}} else if (page.dialoguePrefix == "notfound") {
+    page.mothComment = ()=>{
+        var moth = "кажись ты наткнулся на петлю бессвязности... видал такое. здесь вряд ли окажется что-то полезное"
+        return moth
+}} else if (page.name == "the-void") {
+    page.mothComment = ()=>{
+    var moth = "это мыслепространство чертовски огромное... даже не вижу этому особой причины"
+    if(!check('dullvessel_position', 'orbit')) moth = "не забывай что корабль акизет сейчас в мыслепространстве с океаном! дико что оно может вот так вот просто двигаться"
+        if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+        return moth
+}}})
+env.mutateObserverMoth.observe(body, {attributes: true})
+
 
 env.dialogueActors["corruru"] = {
     name: "cor-ru",
