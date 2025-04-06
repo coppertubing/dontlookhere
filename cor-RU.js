@@ -284,7 +284,7 @@ RESPOBJ::
             SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
         мысли об обвале?<+>ep4thoughts
             SHOWIF::"ep4__entrancefinal"
-        leverage acquired<+>leverage //untranslated
+        преимущество получено<+>leverage //untranslated
             SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
             SHOWONCE::
         это всё<+>CHANGE::++moth
@@ -741,7 +741,7 @@ what_smile
 
     moth
         о, так оно у тебя как улыбка выглядит?
-        может быть моя теорияaybe my malware theory has some weight after all
+        может быть моя теория о вирусах не так уж плоха
         ну короче, я всё ещё без понятия чем является наш таинственный приятель
         но похоже это 'велзи', смотря по тому что сказала циста-пилот
             SHOWIF::[['dullvessel__fixed-start']]
@@ -807,17 +807,17 @@ what_dull
 
 what_fbxlist
     self
-        What if knowing all this puts us in danger?
+        что если эти знания ставят нас под угрозу?
     
     moth
-        i wouldn't worry about that
-        the FBX isn't like the CIA or FBI
-        worst thing that happens is that we have to sign NDAs and other legal stuff
-        judging by what we've seen, that's pretty much an inevitability
-        but they aren't going to disappear us, if that's what you mean
+        да об этом можно не беспокоиться
+        ФБКС не похоже на ЦРУ или ФБР
+        худшее что может случиться это пара подписей на договорах о неразглашении
+        и судя по тому что мы уже увидели, они неизбежны
+        но в вечный отпуск они нас не отправят, если ты это имеешь в виду
     
     RESPONSES::self
-        all right<+>loop
+        хорошо<+>loop
             FAKEEND::(назад)
 
 why
@@ -866,22 +866,22 @@ why_involved
     moth
         о
         эээ...
-        well, i haven't put in the report yet
-        look, if we get to the bottom of this whole thing ourselves, do you know how huge that'll be?
-        if i told anyone what we were up to in here, they'd snatch it out of our hands
-        ...then give it to some higher-up researcher, who would take all the credit
-        this could be our "make it" moment, dude
+        ну, отчёт ещё типа не отдан
+        гляди, если мы сами докопаемся до сути всего этого, ты понимаешь насколько огромным событием это будет?
+        если я проболтаюсь хоть кому-нибудь о том, что у нас тут за дела, они это выхватят из наших рук
+        ...и передадут какому-нибудь высокопоставленному исследователю который пригребёт себе каждую заслугу
+        чел, мы можем добиться такого успеха
 
     self
         разве здесь нет камер? что насчёт данных?
 
     moth
         только не в подвале
-        this is an analog-only zone, or at least it was when it was busier years ago
-        it's a little more lax now, but they never really changed the tech in the walls
-        especially since every find like this usually ends up being a dud
-        так что... пока я сам не пошлю данные, они их не получат
-        you and me are the only ones in on this for now, buddy
+        это зона аналоговых устройств, ну или по крайней мере была ей в более загруженные года
+        сейчас всё пораспущеннее, но они никогда не меняли что внутри стен
+        особенно при том что все подобные находки обычно оказываются пустышками
+        так что... пока я не пошлю данные, они их не получат
+        пока что ты и я занимаемся этим в одиночку, дружище
 
     RESPONSES::self
         ок<+>loop
@@ -893,10 +893,10 @@ why_callme
         почему ты позвал именно меня?
 
     moth
-        what, are you that unhappy that you get to be the first person to ever connect to a personal corrucyst?
-        just kidding, a lot of our mindspike contractors have been out of service recently due to that big disaster update
-        боже я даже представить себе не могу о чём в майндсай только думали лмао, traffic has been so bad
-        ты - единственный знакомый мне псих который никогда ничего не обновляет, you're the only psycho i know who never updates stuff, so i figured you'd still be up for it    
+        что, недоволен ролью самого первого человека, которому удалось подключиться к персональной корруцисте?
+        шучу. у нас не хватает мыслеколящих подрядчиков из-за той катастрофы с последним обновлением
+        боже, я даже представить себе не могу о чём в майндсай только думали лмао, траффик до сих в таком хреновом состоянии
+        ты - единственный знакомый мне псих который никогда ничего не обновляет, так что я подумал ты примешь работу
 
     RESPONSES::self
         спасибо<+>loop
@@ -938,12 +938,12 @@ why_music
 
     moth
         слышишь музыку? дико, но имеет смысл
-        some of the mindspike contractors i've worked with say similar stuff when they try to connect to corrucystic devices
-        моя теория - что это какой-то унаследованный контекст из цисты, расплывчатые ощущения которые нельзя перевести в речь
+        некоторые мыслеколящие подрядчики, с которыми мне доводилось работать, говорили похожие вещи когда подключались к корруцистозным устройствам
+        моя теория - это какой-то унаследованный контекст из цисты, расплывчатые ощущения которые нельзя перевести в речь
         иногда люди слышат голоса или просто "знают" как себя чувствовать
         твой мозг просто обрабатывает это в наиболее понятном тебе формате
-        that's my best idea
-        anyway, i'm not hearing anything, i just see the readout on my end
+        идей получше у меня нет
+        так или иначе, на моей стороне ничего не слышно, просто вывод данных
         тебе нравится?
 
     RESPONSES::self
@@ -991,11 +991,11 @@ mothep1afraid
 
 ep3thoughts
     self
-        what do you think of the collapse?
-        you said you had some thoughts?
+        что ты думаешь об обвале?
+        у тебя вроде были мысли?
     
     moth
-        oh, yeah!
+        о, да!
         so, i always thought it was a tragedy
         especially since it was the cap on the golden age of human and obesk relations
         like, truly golden age... but man, looking back at the news from those days makes me so sad
@@ -1034,8 +1034,8 @@ ep3thoughts
 
 ep4thoughts
     self
-        so what do you think of the collapse
-        now that we've seen it all
+        что ты думаешь об обвале
+        раз мы теперь всё увидели
     
     moth
         i knew they weren't going to just, stop it
@@ -1054,9 +1054,9 @@ ep4thoughts
         things would be much worse
     
     self
-        maybe
-        what about the meteorite?
-        FBX involvement?
+        может
+        что насчёт метеорита?
+        вовлечённости ФБКС?
 
     moth
         the meteorite, i don't know, that's...
@@ -1074,16 +1074,16 @@ ep4thoughts
         and now we know for sure that the FBX probably had a hand in sparking the collapse
         dude, if this ever got public, the media would crucify us
         and knowing all that, with how long it's been
-        we've totally fallen into <span definition="INTERNAL CONTEXT::'special access program';'sensitive compartmentalized information';'highest classification level'">SAP</span> territory here
+        we've totally fallen into <span definition="ВНУТРЕННИЙ КОНТЕКСТ::'программа особого доступа';'sensitive compartmentalized information';'highest classification level'">ПОД</span> territory here
         i'm talking like men in black who don't legally exist rolling up to your apartment type of shit
         i know i said this wouldn't happen but i really wasn't expecting it to get this bad
             SHOWIF::"++mothglobal-what_fbxlist"
 
     self
-        i'm just a contractor
+        я просто подрядчик
     
     moth
-        yeah, and now you and i both know some of the most dangerous obesk history, ever
+        ага, а ещё мы с тобой теперь оба знаем об одной из самых опасных частей истории обесков
         this isn't the kind of thing where they'd be happy with just a regular NDA 
         even thinking about what this is going to turn into is making me kinda nauseous
         but... it's not like we can back out now
@@ -1094,35 +1094,35 @@ ep4thoughts
         if this isn't handled right, you don't want to know what happens
     
     RESPONSES::self
-        got it<+>loop
+        понятно<+>loop
             FAKEEND::(назад)
 
 leverage
     self
-        leverage acquired
+        преимущество получено
             EXEC::change("leverage", true)
     
     moth
-        huh? what do you mean?
+        а? в каком смысле?
     
     self
-        these ozo mask things
-        they're not just in the cyst
-        i feel them in my mind now
+        это озо-маско-штуки
+        они не просто в цисте
+        я чувствую их у себя в голове
     
     moth
-        ok, well, that's not good, i think
-        but... 
-        no, maybe it is, for our needs
-        i get what you're thinking, actually...
-        you know how much comes through here without any results?
-        how much just gets hazard binned, tossed into a corrucystic waste storage plant?
-        if your mask things work on <em>other</em> corrucysts...
-        like, you can get into things that no one else can,
-        that could be it
-        and we don't need to mention that it came from this cyst, either
-        never mention your mask shit to anyone. i'll scrub it from my report too
-        давай прям здесь дадим клятву крови. у меня есть карманный ножик
+        окей, ну, эт не очень хорошо, думаю
+        хотя... 
+        нет, может быть и хорошо, для наших планов
+        я вижу о чём ты думаешь на самом деле...
+        ты в курсе сколько всего пребывает и убывает отсюда без единого результата?
+        сколько всего просто выбрасывается в мусорку, на хранилище корруцистозных отходов?
+        если твои маски работают на <em>других</em> корруцистах...
+        типа, ты если бы пробирался туда, куда никто другой не может,
+        то вот и наш выигрышный билет
+        и нам не то чтобы надо упоминать что эти маски произошли из этой цисты
+        слушай - никому ни слова о масках. я тоже вычеркну это из отчёта
+        чел давай прям здесь дадим клятву крови. у меня есть карманный ножик
     
     self
         ок
@@ -1130,10 +1130,10 @@ leverage
     moth
         ок??
         чел я шучу
-        that would never get past the entry detectors
-        anyway, i guess the only thing to do now is wait again
-        either till funfriend repairs something, or those other pieces come in...
-        so, just chill for now, all right?
+        такое не пронесёшь через металлоискатели
+        в любом случае, думаю единственное что теперь остается делать это снова ждать
+        пока развледруг не починит ещё что-нибудь, или всплывут новые фрагменты...
+        так что пока расслабимся, хорошо?
 
     RESPONSES::self
         окей<+>loop
@@ -1846,7 +1846,7 @@ something
 
         но не вижу, что это за "что-то". серьёзно, взгляни на логи
 
-        не знаю, что и думать об этом. у корруцист бывает вредоносное ПО?
+        не знаю, что и думать об этом. у корруцист бывают вирусы?
 
         но честно говоря это, скорее всего, просто бессвязность. я бы не беспокоился об этом, не то чтобы она может передаться тебе
 
