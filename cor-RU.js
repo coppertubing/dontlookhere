@@ -134,161 +134,13 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 #mui-links #meta-sys:after { content: "СИС" !important; }
 #mui-links #meta-hub:after { content: "НАВ" !important; }
 `
+env.dialogueActors["corruru"] = {
+    name: "cor-ru",
+    image: "/img/textures/yeyetran.gif",
+    type: "corruru portrait-contain",
+    voice: ()=>{play('talkcroak', 1.75)}
+}
 
-env.dialogues["russianSentryResponses"] = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        назначение?<+>purpose
-            SHOWONCE::
-        кто верифицирован?<+>whoisverified
-            SHOWONCE::
-        назначение этой цисты?<+>corrupurpose
-            SHOWONCE::
-            SHOWIF::[["hello__sentry-purpose"]]
-        может если ты пропустишь меня<+>letthrough
-            SHOWIF::[["hello_sentry_idiot"]]
-`),
-env.dialogues["hubBuddyResponsesRu"] = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-
-        контейнер с металлом<+>ep0_container
-            SHOWONCE::
-            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container"],["ep0_epilogue", "started"],["ep1_fed", false]]
-
-        лазутчик?<+>interloperq
-            SHOWONCE::
-            SHOWIF::[['ep1_fed', false]]
-
-        топливо?<+>fuelq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-kickoutq"], ['ep1_fed', false]]
-        
-        почему медь?<+>copperq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-fuelq"], ['ep1_fed', false]]
-
-        необходимые металлы?<+>essentialmetalq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-copperq"], ['ep1_fed', false]]
-
-        назначение?<+>purposeq
-            SHOWONCE::
-
-        подпись?<+>signatureq
-            SHOWONCE::
-
-        странная активность?<+>strangeactivity
-            SHOWONCE::
-            SHOWIF::[['interview1__firstchat-behonest']]
-
-        появились врата?<+>moregates
-            SHOWONCE::
-            SHOWIF::[['visited_localorbit'], ["ENV!!ep2", false]]
-
-        голодание решено?<+>ep1fed
-            SHOWONCE::
-            SHOWIF::[['ep1_fed'], ["ENV!!ep2", false]]
-
-        состояние починок?<+>repairs
-            SHOWIF::'hub__funfriend-ep1fed'
-            HIDEREAD::
-        
-        другие воспоминания в посольстве?<+>embmemories
-            SHOWONCE::
-            SHOWIF::[["embassy_d2_complete"], ["ENV!!ep2", false]]
-
-        посольство?<+>embassy
-            SHOWIF::[["visited_localoceanembassy", true], ["ENV!!ep3", false]]
-            SHOWONCE::
-
-        почини связь<+>ep1comms
-            SHOWIF::"ep1_end"
-            SHOWONCE::
-
-        я могу помочь?<+>ah1
-            SHOWIF::[['hub__funfriend-ep1fed', true], ["recosm_state", false]]
-
-        твоя проблема решена<+>ah1end
-            SHOWIF::["recosm_state"]
-            SHOWONCE::
-
-        что нового?<+>ep2start
-            SHOWIF::[["fbx__ep2intro-end", true], ["ENV!!ep3", false]]
-            SHOWONCE::
-
-        что нового?<+>ep3start
-            SHOWIF::[["ENV!!ep3"], ["ENV!!ep4", false]]
-            SHOWONCE::
-
-        что нового?<+>ep4start
-            SHOWIF::[["ENV!!ep4"]]
-            SHOWONCE::
-
-        мне нужно чтобы ты внёс изменения<+>mothframe
-            SHOWIF::[["embassy__mothframe-end"], ["hub__funfriend-mothframe", false]]
-            SHOWONCE::
-
-        рассказать об озо и совете<+>ozo
-            SHOWIF::[["ozo__council_intro"], ["ff_ozo", false]]
-
-        можешь добавить врата в джокзи озо<+>ozogate
-            SHOWIF::"ff_ozo"
-            SHOWONCE::
-
-        преимущество<+>lockcyst
-            SHOWIF::[["ozo__council-task", false], ["leverageq", true]]
-            SHOWONCE::
-
-        обвал<+>collapse
-            SHOWIF::"ep4__entrancefinal"
-            SHOWONCE::
-
-        вопрос<+>question
-            SHOWIF::"seenFFProxy"
-            HIDEREAD::
-
-        мне пора<+>END
-`),
-env.dialogues["persistentQuestionsRu"] = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        проксидруг?<+>proxyfriend
-            SHOWIF::"seenFFProxy"
-        
-        уничтожить озо?<+>ozodestroy
-            SHOWIF::"ff_ozo"
-
-        прошлое озо?<+>ozohistory
-            SHOWIF::[["ozo__council-tyrant"], ["ozo__council-task"], ["ff_ozo"]]
-
-        маски<+>masks
-            SHOWIF::[["ff_ozo"], ["ozo__council-task"]]
-
-        эффективность починок?<+>isabel
-            SHOWIF::[["ff_ozo"], ["ozo__isabel-funfriend"]]
-
-        неважно<+>loop
-            FAKEEND::(назад)
-`)
-env.dialogues["mthglobalresp"] = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        кто...<+>who
-        что...<+>what
-        почему...<+>why
-        что ты думаешь об этом всём?<+>mothep1end
-            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
-        мысли об обвале?<+>ep3thoughts
-            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
-        мысли об обвале?<+>ep4thoughts
-            SHOWIF::"ep4__entrancefinal"
-        преимущество получено<+>leverage //untranslated
-            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
-            SHOWONCE::
-        это всё<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
 env.dialogues.mthglobalresp.whatnext = ()=>{
     if(!check('interview1__firstchat-behonest')) { /* before velziebreak */
              if(check('visited_localcitystreet') && check('visited_localoceanshipinterview') && check('visited_localdullvessel'))           return "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути"
@@ -309,7 +161,7 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else if(check('dullvessel_position', 'ocean'))                                                                                      return "ну, должна ведь быть причина почему серое судно может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так"
         else if(check('dullvessel_position', 'orbit') && check('dullvessel__fixed-hello'))                                                  return "кажись твоя улыбка починила цисту-пилота... и теперь она предлагает переместить серое судно куда-то. почему бы не попробовать?"
         else if(check('dullvessel__pilot-end'))                                                                                             return "проверь что там с цистой-пилотом на корабле, я помню там были какие-то искажённые данные"
-        else                                                                                                                                return "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе серого судна, почему бы не разведать там обстановку? твоя таинственная улыбка похоже0 что-то изменила"
+        else                                                                                                                                return "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе серое судна, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила"
     } else if(!check('fbx__ep2intro-end')) { //ep 1, after materials have been shown to the user for the first time
         //special check for if someone's looking for hints in the embassy days
         if(check("PAGE!!embassy_day"))  return "если ты спрашиваешь об этой мыслеформе, попробуй повзаимодействовать с акизет--для этого нужно отдалиться"
@@ -336,85 +188,47 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
 }
 env.dialogues.mthlocalr = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::self
-        о развледруге<+>funfriend
-            SHOWIF::[['hub__funfriend-fuelthanks']]
-        о вратах<+>gates
-            SHOWIF::[['visited_localorbit']]
-        это всё<+>CHANGE::++moth
-            FAKEEND::(назад)
-    `)
-    
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)  
 env.dialogues.mthlocalfunr = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::self
-        поведение<+>ffdemeanor
-            SHOWIF::['ep1_fed', false]
-        ситуация с топливом<+>fffuel
-            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
-        подпись<+>ffsignature
-            SHOWIF::[['hub__funfriend-signatureq']]
-        хватит о развледруге<+>loop
-            FAKEEND::(назад)
-    `)
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.generalsentryResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.hubBuddyResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.persistentQuestions = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.envoyStreetResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.tvresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+env.dialogues.flowerAwakeResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+
 env.localization = {
     dialogues: {
-        "index": generateDialogueObject(`
-start 
-    moth
-        эй, дружище, добро пожаловать 
-        у меня были сомнения, что ты появишься на такой мелкий улов
-        в последнее время находят столько кораблекрушений
-        в любом случае сейчас я всё запущу, можешь пока осмотреться
-        
-    sourceless
-        декодирующие машины включаются, бросая свет на паутину проводов.
-            EXEC::document.querySelectorAll('.backwall').forEach(e=>e.classList.add('active'))
-        
-    RESPONSES::self
-        что это<+>whatis
-        сесть<+>sit
-            SHOWIF::["PAGE!!intrositting", false]
-            EXEC::change('PAGE!!intrositting', true)
-
-whatis
-    self
-        что это?
-    moth
-        находка с обескового крушения возле новой зеландии
-        в записях сказали, почти всё расплавилось, что немного странно...
-        во всяком случае... главная часть это вот эта большая
-        пьедесталы обычно означают «важно», но этот не помеченный
-        алекс сделал базовый скан, сказал напоминает сетевой узел
-        мы даже не знаем наверняка, примет ли оно мыслекол
-        ну, тебе платят так или иначе, так что... пробуй
-        
-    RESPONSES::self
-        сесть<+>sit
-            SHOWIF::["PAGE!!intrositting", false]
-            EXEC::change('PAGE!!intrositting', true)
-        активировать мыслекол<+>END
-            SHOWIF::"PAGE!!intrositting"
-        
-sit
-    sourceless
-        металлический стул царапает бетон. ты садишься.
-            EXEC::env.introSit()
-            WAIT::3500
-
-    sourceless
-        сиденье холодное и неудобное. свет от твоего защитного снаряжения рассеивается в перламутровых цистах.
-        
-    moth
-        как по старинке - мыслекол на готове
-
-    RESPONSES::self
-        что это<+>whatis
-            SHOWONCE::
-        активировать мыслекол<+>END
-        
-END::env.enableSpikeCursor();MUI('deprohibit')
-        `),
         "++epselect": generateDialogueObject(`
 start
     sys
@@ -447,8 +261,8 @@ proceed
     
     RESPONSES::self
         неважно, я хочу сохранить текущий прогресс<+>END
-`),
-"menu_hub": {
+        `),
+        "menu_hub": {
     start: {
         name: "start",
         body: [
@@ -500,7 +314,25 @@ proceed
             }
         ]
     },
-},
+        },
+        "mthglobalresp": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        кто...<+>who
+        что...<+>what
+        почему...<+>why
+        что ты думаешь об этом всём?<+>mothep1end
+            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
+        мысли об обвале?<+>ep3thoughts
+            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
+        мысли об обвале?<+>ep4thoughts
+            SHOWIF::"ep4__entrancefinal"
+        преимущество получено<+>leverage //untranslated
+            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
+            SHOWONCE::
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
+        `),
         "++moth": {
             end: mothHasUnreadCheck,
             start: {
@@ -1250,7 +1082,7 @@ leverage
     RESPONSES::self
         окей<+>loop
             FAKEEND::(назад)
-`),
+        `),
         "++mothfj": generateDialogueObject(`
 start
     self
@@ -1335,48 +1167,14 @@ gad
     
     RESPONSES::self
         окей<+>END
-`)
+        `)
     },
 
     definitions: {
     }, 
 
-    strings: {
-    
-        
+    strings: {  
         "greet": "поздороваться",
-
-        "DENDRITIC CYST": "ДЕНДРИТНАЯ ЦИСТА",
-        "touch": "потрогать",
-        "lift": "поднять",
-        "the notes I got say that there were apparently a ton of these on the ship": "в записях говорилось, что на корабле вот таких вот была просто куча",
-        "all sorts of sizes too": "причём самых разных размеров",
-        "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми… так что захватили только одну маленькую",
-        "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it": "у дендритной цисты жёсткая внешняя оболочка. не похоже, что к ней можно подключиться",
-        "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста неожиданно тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
-
-        "FRACTALLINE CYST": "ФРАКТАЛЬНАЯ ЦИСТА", 
-        "nobody knows what this one is.. pretty sure it's dead though": "никто не знает, что именно это такое.. но думаю она дохлая",
-        "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone": "оболочка фрактальной цисты склизкая и упругая. если ты сожмёшь её сильнее, она наверняка лопнет... лучше оставить её в покое",
-
-        "CYST": "ЦИСТА", 
-        "so this is the mystery piece": "а вот и гость программы",
-        "it's in bizarrely good condition considering it was at the bottom of the ocean for however long it's been since, y'know": "в поразительно хорошем состоянии, учитывая сколько она буквально провалялась на дне океана",
-        "no clue what it is aside from some similar internal structure to network cysts we've found before": "без малейшего понятия что она делает, но её внутренности напоминают сетевые цисты которые мы находили",
-        "the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.": "у цисты твёрдая внешняя оболочка, однако несколько круглых точек наверху менее плотные чем всё остальное. в твоём опыте это обычно точки соединения. ты определённо можешь просканировать их более тщательно.",
-        "depth scan": "подробное сканирование",
-        "ANALYSIS::'valid nerve point';'connection enabled'": "АНАЛИЗ::'действительная нервная точка';'доступно подключение'",
-        "::CORRUCYSTIC ENTITY": "`::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ",
-        "::NO FUNCTION SIGNATURE": "::НЕТ ПОДПИСИ ФУКНЦИИ",
-        "::CONNECTIVE MEMBRANE EXPOSED": "::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА",
-
-        "CYSTIC COLUMN": "ЦИСТОЗНАЯ КОЛОННА", 
-
-        "CONNECTION POINT": "ТОЧКА ПОДКЛЮЧЕНИЯ",
-
-        "attempt connection": "попытаться подключиться",
-        "CONNECTION_POINT_LOCATED": "ОБНАРУЖЕНА_ТОЧКА_ПОДКЛЮЧЕНИЯ",
-        "__COMMENCING__": "__ЗАПУСК_ПРОЦЕДУРЫ__",
 
         "'clearing mindspike buffer'; 'no progress will be lost'": "'очистка буфера мыслекола';'прогресс не будет потерян'",
         "NOTICE::'loading resources';'please wait'": "УВЕДОМЛЕНИЕ::'прогрузка ресурсов';'пожалуйста, подождите'",
@@ -1393,7 +1191,6 @@ gad
 
         "enter": "войти",
 
-        // EJECT DIALOGUE OR SMTH and also other stuff like notes when you get kicked out of memhole UPDATE not anymore 
         "refresh": "обновить",
         "NOTE::'aborted'": "ПРИМЕЧАНИЕ::'прервано'",
         "EXECUTING::'eject'": "ВЫПОЛНЯЕТСЯ::'отключение'",
@@ -1499,7 +1296,7 @@ gad
         "our-dull-vessel": "наше-серое-судно",
         "our dull vessel": "НАШЕ СЕРОЕ СУДНО",
 
-        "the dull contrivance": "серое устроение",
+        "the dull contrivance": "серое открытие",
 
         "the_embassy": "ПОСОЛЬСТВО",
         "the-embassy": "посольство",
@@ -1541,7 +1338,41 @@ gad
 
         "!!__ERROR::UNPROCESSABLE__!!": "!!__ОШИБКА::ОБРАБОТКА_НЕВОЗМОЖНА __!!",
 
-        // SYSTEM MENU
+        // MENU
+
+        
+        "'irreversible action';'select log EP'": "'необратимое действие';'выбрать эпизод'",
+        "'irreversible action';'not advised';'may cause mental distress'": "'необратимое действие';'не рекомендуется';'может вызвать душевные страдания'",
+        "NOTICE::'legacy import';'recommend using file management above'": "УВЕДОМЛЕНИЕ::'устаревший метод';'рекомендуется использовать управление файлами выше'",
+        "NOTICE::'third-party resources loaded by system';'allows for log modifications'": "УВЕДОМЛЕНИЕ::'сторонние ресурсы, загруженные системой';'позволяют модифицировать логи'",
+        "NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'": "УВЕДОМЛЕНИЕ::'нарушение условий использования';'модификация критически важных ресурсов';'невыполнение требуемой законом авторизации на протяжении более 730 дней подряд'",
+        "NOTE::'join the supporter ko-fi (its like patreon but less evil)'": "ПРИМЕЧАНИЕ::'присоединиться к поддержке через ko-fi (как patreon но менее злой)'",
+        "NOTE::'get the soundtrack'": "ПРИМЕЧАНИЕ::'получить саундтрек'",
+        "NOTE::'merch!'": "ПРИМЕЧАНИЕ::'мерч!'",
+        "NOTE::'view all supporters and contributors'": "ПРИМЕЧАНИЕ::'просмотреть всю поддержку'",
+        "NOTE::'88x31 graphic for personal use'": "ПРИМЕЧАНИЕ::'88x31 изображение для личного пользования'",
+
+        "ENTITY::'unprocessed'::RECOMMEND::'relocation';'[EXM]'": "СУЩНОСТЬ::'необработана'::РЕКОМЕНДАЦИЯ::'перемещение';'[ИЗУЧ]'",
+
+        "proceed": "ПРОДОЛЖИТЬ",
+
+        "moth": "моль",
+    
+        "NOTE::'establishes external contact'": "ПРИМЕЧАНИЕ::'установить внешний контакт'",
+        "NOTE::'return to hub';'eject'": "ПРИМЕЧАНИЕ::'вернуться в хаб';'отключение'",
+        "NOTE::'review scanned and detected entities'": "ПРИМЕЧАНИЕ::'просмотр просканированных и обнаруженных сущностей'",
+        "NOTE::'system management'": "ПРИМЕЧАНИЕ::'управление системой'",
+        "NOTE::'influence thoughtspace';'third-party installation'": "ПРИМЕЧАНИЕ::'влияние на мыслепространства';'стороння установка'",
+        "REALITY::'no effect'": "РЕАЛЬНОСТЬ::'не имеет эффекта'",
+        "UNITY::'enables additional ACT on responsive thoughtforms'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
+        "HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'": "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'",
+        
+        "GAD": "ГАН",
+        "'overcoherency block, exercise caution'": "'блок сверхсвязности, соблюдайте осторожность'",
+        "'overcoherency fluctuation'": "'колебание сверхсвязности'",
+        "'coherent'": "'связное'",
+        "'incoherence fluctuation'": "'колебание бессвязности'",
+        "'widespread incoherency, exercise caution'": "'распространённая бессвязность, соблюдайте осторожность'",
 
         "return": "назад",
         "mindspike data management": "управление данными мыслекола",
@@ -1606,23 +1437,6 @@ gad
     }, 
 
     entityDescriptions: {
-        "dendritic cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
-::ПОДПИСЬ ФУКНЦИИ: КОНТЕЙНЕР
-::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-       "fractalline cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
-::ПОВРЕЖДЁННАЯ ПОДПИСЬ ФУКНЦИИ
-::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "cystic column": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
-::ПОДПИСЬ ФУКНЦИИ: ОБСЛУЖИВАНИЕ КОРРУЦИСТЫ
-::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "сyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
-::НЕТ ПОДПИСИ ФУКНЦИИ
-::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
-        "циста": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
-::НЕТ ПОДПИСИ ФУКНЦИИ
-::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
-        "connection point": `::КОМПОНЕНТ КОРРУЦИСТИЧЕСКОЙ СУЩНОСТИ
-::ДЕЙСТВИТЕЛЬНАЯ ТОЧКА СОЕДИНЕНИЯ`,
         "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`
@@ -1630,8 +1444,138 @@ gad
     },
 
     page: { 
+        "fbx": {
+            dialogues: {
+        "index": generateDialogueObject(`
+start 
+    moth
+        эй, дружище, добро пожаловать 
+        у меня были сомнения, что ты появишься на такой мелкий улов
+        в последнее время находят столько кораблекрушений
+        в любом случае сейчас я всё запущу, можешь пока осмотреться
+        
+    sourceless
+        декодирующие машины включаются, бросая свет на паутину проводов.
+            EXEC::document.querySelectorAll('.backwall').forEach(e=>e.classList.add('active'))
+        
+    RESPONSES::self
+        что это<+>whatis
+        сесть<+>sit
+            SHOWIF::["PAGE!!intrositting", false]
+            EXEC::change('PAGE!!intrositting', true)
+
+whatis
+    self
+        что это?
+    moth
+        находка с обескового крушения возле новой зеландии
+        в записях сказали, почти всё расплавилось, что немного странно...
+        во всяком случае... главная часть это вот эта большая
+        пьедесталы обычно означают «важно», но этот не помеченный
+        алекс сделал базовый скан, сказал напоминает сетевой узел
+        мы даже не знаем наверняка, примет ли оно мыслекол
+        ну, тебе платят так или иначе, так что... пробуй
+        
+    RESPONSES::self
+        сесть<+>sit
+            SHOWIF::["PAGE!!intrositting", false]
+            EXEC::change('PAGE!!intrositting', true)
+        активировать мыслекол<+>END
+            SHOWIF::"PAGE!!intrositting"
+        
+sit
+    sourceless
+        металлический стул царапает бетон. ты садишься.
+            EXEC::env.introSit()
+            WAIT::3500
+
+    sourceless
+        сиденье холодное и неудобное. свет от твоего защитного снаряжения рассеивается в перламутровых цистах.
+        
+    moth
+        как по старинке - мыслекол на готове
+
+    RESPONSES::self
+        что это<+>whatis
+            SHOWONCE::
+        активировать мыслекол<+>END
+        
+END::env.enableSpikeCursor();MUI('deprohibit')
+        `),
+            },
+
+            definitions: { 
+            },
+
+            strings: {
+                "DENDRITIC CYST": "ДЕНДРИТНАЯ ЦИСТА",
+                "touch": "потрогать",
+                "lift": "поднять",
+                "the notes I got say that there were apparently a ton of these on the ship": "в записях говорилось, что на корабле вот таких вот была просто куча",
+                "all sorts of sizes too": "причём самых разных размеров",
+                "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми… так что захватили только одну маленькую",
+                "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it": "у дендритной цисты жёсткая внешняя оболочка. не похоже, что к ней можно подключиться",
+                "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста неожиданно тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
+
+                "FRACTALLINE CYST": "ФРАКТАЛЬНАЯ ЦИСТА", 
+                "nobody knows what this one is.. pretty sure it's dead though": "никто не знает, что именно это такое.. но думаю она дохлая",
+                "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone": "оболочка фрактальной цисты склизкая и упругая. если ты сожмёшь её сильнее, она наверняка лопнет... лучше оставить её в покое",
+
+                "CYST": "ЦИСТА", 
+                "so this is the mystery piece": "а вот и гость программы",
+                "it's in bizarrely good condition considering it was at the bottom of the ocean for however long it's been since, y'know": "в поразительно хорошем состоянии, учитывая сколько она буквально провалялась на дне океана",
+                "no clue what it is aside from some similar internal structure to network cysts we've found before": "без малейшего понятия что она делает, но её внутренности напоминают сетевые цисты которые мы находили",
+                "the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.": "у цисты твёрдая внешняя оболочка, однако несколько круглых точек наверху менее плотные чем всё остальное. в твоём опыте это обычно точки соединения. ты определённо можешь просканировать их более тщательно.",
+                "depth scan": "подробное сканирование",
+                "ANALYSIS::'valid nerve point';'connection enabled'": "АНАЛИЗ::'действительная нервная точка';'доступно подключение'",
+                "::CORRUCYSTIC ENTITY": "`::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ",
+                "::NO FUNCTION SIGNATURE": "::НЕТ ПОДПИСИ ФУКНЦИИ",
+                "::CONNECTIVE MEMBRANE EXPOSED": "::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА",
+
+                "CYSTIC COLUMN": "ЦИСТОЗНАЯ КОЛОННА", 
+
+                "CONNECTION POINT": "ТОЧКА ПОДКЛЮЧЕНИЯ",
+
+                "attempt connection": "попытаться подключиться",
+                "CONNECTION_POINT_LOCATED": "ОБНАРУЖЕНА_ТОЧКА_ПОДКЛЮЧЕНИЯ",
+                "__COMMENCING__": "__ЗАПУСК_ПРОЦЕДУРЫ__",     
+            },
+
+            entityDescriptions: {
+                "dendritic cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+::ПОДПИСЬ ФУКНЦИИ: КОНТЕЙНЕР
+::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
+                "fractalline cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+::ПОВРЕЖДЁННАЯ ПОДПИСЬ ФУКНЦИИ
+::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
+                "cystic column": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+::ПОДПИСЬ ФУКНЦИИ: ОБСЛУЖИВАНИЕ КОРРУЦИСТЫ
+::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
+                "сyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+::НЕТ ПОДПИСИ ФУКНЦИИ
+::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
+                "циста": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+::НЕТ ПОДПИСИ ФУКНЦИИ
+::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
+                "connection point": `::КОМПОНЕНТ КОРРУЦИСТИЧЕСКОЙ СУЩНОСТИ
+::ДЕЙСТВИТЕЛЬНАЯ ТОЧКА СОЕДИНЕНИЯ`,
+            }
+        },
         "hello": {
             dialogues: {
+                "generalsentryResponses": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        назначение?<+>purpose
+            SHOWONCE::
+        кто верифицирован?<+>whoisverified
+            SHOWONCE::
+        назначение этой цисты?<+>corrupurpose
+            SHOWONCE::
+            SHOWIF::[["hello__sentry-purpose"]]
+        может если ты пропустишь меня<+>letthrough
+            SHOWIF::[["hello_sentry_idiot"]]
+`),
                 "enter": generateDialogueObject(`
 start
     moth
@@ -1660,7 +1604,7 @@ render
         осмотреться<+>END
 END::MUI('deprohibit')
 `),
-        "sentry": generateDialogueObject(`
+                "sentry": generateDialogueObject(`
 start
     self
         ПРИВЕТ
@@ -1686,7 +1630,7 @@ iam
         МЫ ТАК ГОЛОДНЫ
             EXEC::document.querySelector('.maineye .eye').classList.remove('wide')
 
-    RESPOBJ::russianSentryResponses
+    RESPOBJ::generalsentryResponses
 
 purpose
     self
@@ -1699,7 +1643,7 @@ purpose
         АВТОРИЗАЦИЯ
         ЭТО ВСЁ
 
-    RESPOBJ::russianSentryResponses
+    RESPOBJ::generalsentryResponses
 
 
 whoisverified
@@ -1725,7 +1669,7 @@ whoisverified
         ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
             SHOWIF::[["hello__sentry-corrupurpose", false]]
 
-    RESPOBJ::russianSentryResponses
+    RESPOBJ::generalsentryResponses
 
 corrupurpose
     self
@@ -1750,7 +1694,7 @@ corrupurpose
         ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
             SHOWIF::[["hello__sentry-whoisverified", false]]
 
-    RESPOBJ::russianSentryResponses
+    RESPOBJ::generalsentryResponses
 
 letthrough
     self
@@ -1821,7 +1765,130 @@ END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'a
             },
         },
         "hub": {
-            dialogues: {
+            dialogues: {   
+                "hubBuddyResponses": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+
+        контейнер с металлом<+>ep0_container
+            SHOWONCE::
+            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container"],["ep0_epilogue", "started"],["ep1_fed", false]]
+
+        лазутчик?<+>interloperq
+            SHOWONCE::
+            SHOWIF::[['ep1_fed', false]]
+
+        топливо?<+>fuelq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-kickoutq"], ['ep1_fed', false]]
+        
+        почему медь?<+>copperq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-fuelq"], ['ep1_fed', false]]
+
+        необходимые металлы?<+>essentialmetalq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-copperq"], ['ep1_fed', false]]
+
+        назначение?<+>purposeq
+            SHOWONCE::
+
+        подпись?<+>signatureq
+            SHOWONCE::
+
+        странная активность?<+>strangeactivity
+            SHOWONCE::
+            SHOWIF::[['interview1__firstchat-behonest']]
+
+        появились врата?<+>moregates
+            SHOWONCE::
+            SHOWIF::[['visited_localorbit'], ["ENV!!ep2", false]]
+
+        голодание решено?<+>ep1fed
+            SHOWONCE::
+            SHOWIF::[['ep1_fed'], ["ENV!!ep2", false]]
+
+        состояние починок?<+>repairs
+            SHOWIF::'hub__funfriend-ep1fed'
+            HIDEREAD::
+        
+        другие воспоминания в посольстве?<+>embmemories
+            SHOWONCE::
+            SHOWIF::[["embassy_d2_complete"], ["ENV!!ep2", false]]
+
+        посольство?<+>embassy
+            SHOWIF::[["visited_localoceanembassy", true], ["ENV!!ep3", false]]
+            SHOWONCE::
+
+        почини связь<+>ep1comms
+            SHOWIF::"ep1_end"
+            SHOWONCE::
+
+        я могу помочь?<+>ah1
+            SHOWIF::[['hub__funfriend-ep1fed', true], ["recosm_state", false]]
+
+        твоя проблема решена<+>ah1end
+            SHOWIF::["recosm_state"]
+            SHOWONCE::
+
+        что нового?<+>ep2start
+            SHOWIF::[["fbx__ep2intro-end", true], ["ENV!!ep3", false]]
+            SHOWONCE::
+
+        что нового?<+>ep3start
+            SHOWIF::[["ENV!!ep3"], ["ENV!!ep4", false]]
+            SHOWONCE::
+
+        что нового?<+>ep4start
+            SHOWIF::[["ENV!!ep4"]]
+            SHOWONCE::
+
+        мне нужно чтобы ты внёс изменения<+>mothframe
+            SHOWIF::[["embassy__mothframe-end"], ["hub__funfriend-mothframe", false]]
+            SHOWONCE::
+
+        рассказать об озо и совете<+>ozo
+            SHOWIF::[["ozo__council_intro"], ["ff_ozo", false]]
+
+        можешь добавить врата в джокзи озо<+>ozogate
+            SHOWIF::"ff_ozo"
+            SHOWONCE::
+
+        преимущество<+>lockcyst
+            SHOWIF::[["ozo__council-task", false], ["leverageq", true]]
+            SHOWONCE::
+
+        обвал<+>collapse
+            SHOWIF::"ep4__entrancefinal"
+            SHOWONCE::
+
+        вопрос<+>question
+            SHOWIF::"seenFFProxy"
+            HIDEREAD::
+
+        мне пора<+>END
+                `),
+                "persistentQuestions": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        проксидруг?<+>proxyfriend
+            SHOWIF::"seenFFProxy"
+        
+        уничтожить озо?<+>ozodestroy
+            SHOWIF::"ff_ozo"
+
+        прошлое озо?<+>ozohistory
+            SHOWIF::[["ozo__council-tyrant"], ["ozo__council-task"], ["ff_ozo"]]
+
+        маски<+>masks
+            SHOWIF::[["ff_ozo"], ["ozo__council-task"]]
+
+        эффективность починок?<+>isabel
+            SHOWIF::[["ff_ozo"], ["ozo__isabel-funfriend"]]
+
+        неважно<+>loop
+            FAKEEND::(назад)
+                `),
                 "firstvisit": generateDialogueObject(`
 start
 
@@ -1878,7 +1945,6 @@ something
 
 END::env.hub.firstVisitEnd()
                 `),
-
                 "funfriend": generateDialogueObject(`
 start
     funfriend
@@ -1900,16 +1966,16 @@ start
         КАК КЛАССНО! ДОБРО ПОЖАЛОВАТЬ!
             SHOWONCE::
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 question
-    RESPOBJ::persistentQuestionsRu
+    RESPOBJ::persistentQuestions
 
 loop
     funfriend
         ЧТО-НИБУДЬ ЕЩЁ?
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 proxyfriend
     self
@@ -1931,7 +1997,7 @@ proxyfriend
         ТОГДА КАК У ТЕБЯ ЕСТЬ СПОСОБНОСТЬ ПРОНИКАТЬ В БЕССВЯЗНЫЕ УЧАСТКИ,
         В МОИХ СИЛАХ - ТОЛЬКО МЕДЛЕННО ЗАСТАВЛЯТЬ ОКЕАН БЕССВЯЗНОСТИ ОТСТУПАТЬ И РАБОТАТЬ НАД ТЕМ ЧТО ПРИБИВАЕТСЯ К БЕРЕГУ
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 interloperq
     self
@@ -1960,7 +2026,7 @@ kickoutq
         МНЕ НУЖНА ТВОЯ ПОМОЩЬ
         ТЕБЕ НУЖНО ДОБЫТЬ ДЛЯ НАС ТОПЛИВО
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 fuelq
     self
@@ -1988,7 +2054,7 @@ fuelthanks
         СПАСИБО
         Я ДОЗВОЛЮ ТВОЙ ДАЛЬНЕЙШИЙ ДОСТУП
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 copperq
     self
@@ -1999,7 +2065,7 @@ copperq
         ПОЭТОМУ ДОБЫТЬ ЕЁ БУДЕТ ЛЕГЧЕ ВСЕГО
         НО ТАК-ТО ПОДОШЁЛ БЫ И ЛЮБОЙ ДРУГОЙ НЕОБХОДИМЫЙ МЕТАЛЛ
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 
 essentialmetalq
@@ -2018,7 +2084,7 @@ essentialmetalq
         В ЭТОЙ ЦИСТЕ ЕСТЬ ИНФОРМАЦИЯ КОТОРАЯ ОТВЕТИТ НА ВСЕ ТВОИ ВОПРОСЫ
         ПРОСТО ОСМОТРИСЬ
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 purposeq
     self
@@ -2031,7 +2097,7 @@ purposeq
         И Я ЧУВСТВУЮ ЧТО ЦЕЛОСТНОСТЬ ВОСПОМИНАНИЙ НАСТОЛЬКО НИЗКА ЧТО БОЛЬШИНСТВО УЖЕ НАВЕРНЯКА ДЕГРАДИРОВАЛО ДО СПЛОШНОЙ НЕРАЗБОРЧИВОСТИ
         ТАК ЧТО НА СЕЙЧАС ПРИМЕРНОЕ НАЗНАЧЕНИЕ ЭТОЙ ЦИСТЫ - ИЗБЕЖАТЬ ГОЛОДНОЙ СМЕРТИ АХАХАХАХАХА
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 signatureq
     self
@@ -2049,7 +2115,7 @@ signatureq
             SHOWIF::[["hub__funfriend-fuelthanks"], ['ep1_fed', false]]
         НО НАМ ПРЕДСТОИТ СДЕЛАТЬ ЕЩЁ ОЧЕНЬ МНОГОЕ ДО ТОГО КАК ЭТА ЦИСТА ВЫЗДОРОВЕЕТ, ЛАЗУТЧИК
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 strangeactivity
     self
@@ -2069,7 +2135,7 @@ strangeactivity
             SHOWIF::[["hub__funfriend-fuelthanks", false]]
         ТОГДА Я СМОГУ ПОМОЧЬ
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 ep0_container
     self
@@ -2106,7 +2172,7 @@ moregates
         ТАК ЧТО ДЛЯ ЭТОГО Я ИСПОЛЬЗУЮ ТЕБЯ!
         СПАСИБО ЗА ПОМОЩЬ!
     
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 ep1fed
     self
@@ -2151,7 +2217,7 @@ ep1start
         А ТЕПЕРЬ ИДИ
         МНЕ НУЖНО РАБОТАТЬ
     
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 repairs
     self
@@ -2209,7 +2275,7 @@ ____SHOWIF::["fbx__ep4intro"]
         некоторые из них до сих пор бешеные!!!
 ____END
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 embassy
     self
@@ -2228,7 +2294,7 @@ embassy
         С ТЕМ, КАКУЮ ПРОДОЛЖИТЕЛЬНУЮ ЖИЗНЬ ОНА ВЕЛА, ВЫГРУЗКА ВОСПОМИНАНИЙ БЫЛА НЕОБХОДИМА
         И Я ВСЕГО ЛИШЬ УПРАВЛЯЮ ТЕМ ЧТО ОНА ХРАНИТ
     
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 collapse
     self
@@ -2275,7 +2341,7 @@ collapse
         так что, пожалуйста, оставайся со мной
         я надеюсь следующие починки не займут столько же времени...
         
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 embmemories
     self
@@ -2289,7 +2355,7 @@ embmemories
         ЭЙ, КАК НАСЧЁТ ТОГО ЧТОБЫ Я ПОЧИНИЛ ИХ СЛЕДУЮЩИМИ?
         ДА! ПРОСТО ДАЙ МНЕ НЕМНОГО ВРЕМЕНИ...
     
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 ep1comms
     self
@@ -2342,7 +2408,7 @@ commsok
         СПАСИБО
         И ОЖИДАЙ ДАЛЬНЕЙШИХ ПОЧИНОК
 
-    RESPOBJ::hubBuddyResponsesRu
+    RESPOBJ::hubBuddyResponses
 
 ah1
     self
@@ -2852,7 +2918,7 @@ lockcyst
         ладно<+>question
             FAKEEND::(назад)
                 `),
-                 "funfriend_beacon": generateDialogueObject(`
+                "funfriend_beacon": generateDialogueObject(`
 start
     funfriend
         что...
@@ -2912,6 +2978,28 @@ start
 
     RESPONSES::self
         окей<+>loop
+                `),
+                "mthlocalr": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        о развледруге<+>funfriend
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        о вратах<+>gates
+            SHOWIF::[['visited_localorbit']]
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
+                `),
+                "mthlocalfunr": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        поведение<+>ffdemeanor
+            SHOWIF::['ep1_fed', false]
+        ситуация с топливом<+>fffuel
+            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
+        подпись<+>ffsignature
+            SHOWIF::[['hub__funfriend-signatureq']]
+        хватит о развледруге<+>loop
+            FAKEEND::(назад)
                 `),
                 "mth++hub": generateDialogueObject(`
 start
@@ -3071,7 +3159,1273 @@ ffsignature
 
             entityDescriptions: {
                 "funfriend":`::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-                    ::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
+::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
+            }
+        },
+        "localcity": {
+            dialogues: {
+
+            },
+
+            definitions: {
+                
+            },
+
+            strings: {
+                
+            },
+
+            entityDescriptions: {
+
+            }
+        },
+        "citystreet": {
+            dialogues: {
+                "envoyStreetResponses": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        talk to people?<+>talkpeople
+            
+        cafe?<+>cafe
+
+        flower shop?<+>flowers
+            SHOWIF::"ENV!!ep2"
+
+        let us proceed<+>END
+                `),
+                "envoy": generateDialogueObject(`
+start
+    sourceless
+        I STOP, AND THE ENVOY FOLLOWS. HE RETURNS MY STARE.
+        
+    akizet
+        i appreciate you allowing this, gordon
+            SHOWONCE::
+        i understand there is some lingering fear...
+            SHOWONCE::
+        especially in these packed areas.
+            SHOWONCE::
+        
+    envoy
+        Hey, it's no problem. And don't worry, most people will treat you just fine here.
+            SHOWONCE::
+        If we were in Chicago or New York or something, we'd have you land on the roof, but...
+            SHOWONCE::
+        With how busy the bureau has been, we've had so many obesk visitors,
+            SHOWONCE::
+        Your people are practically a part of the city at this point.
+            SHOWONCE::
+    
+    sourceless
+        HE PRODUCES A METAL COMMUNICATOR FROM A CAVITY IN HIS SKIN CLOAK, AND PERUSES ITS GLOW
+            SHOWONCE::
+
+    envoy
+        And frankly, it helps with public image. Seeing you out and about with the people, it...
+            SHOWONCE::
+        It helps stomp out that damn viral scare.
+            SHOWONCE::
+    
+    akizet
+        ah, i did not consider that element
+            SHOWONCE::
+        i agree!
+            SHOWONCE::
+
+    envoy
+        You know what, speaking of public image,
+            SHOWONCE::
+    
+    sourceless
+        HE RETURNS THE COMMUNICATOR TO ITS CAVITY
+            SHOWONCE::
+
+    envoy
+        There's this little place up ahead, a cafe. Why don't we stop there before heading in?
+            SHOWONCE::
+        Just keep going straight, it's past the bureau.
+            SHOWONCE::
+    
+    RESPOBJ::envoyStreetResponses
+    
+talkpeople
+    akizet
+        you do not mind if i interact with your streetwalkers?
+    
+    envoy
+        Not at all! As long as I'm around, it's fine. 
+        Like I said, this is probably the most obesk-friendly city in the states.
+        At worst, you'll get a couple glares. There are probably still a few viral theorists out there.
+    
+    akizet
+        i see!
+    
+    RESPOBJ::envoyStreetResponses
+
+cafe
+    akizet
+        where is the 'cafe'?
+    
+    envoy
+        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
+    
+    RESPOBJ::envoyStreetResponses
+
+flowers
+    akizet
+        i recall you mentioning a "flower shop", once...
+        where is that?
+    
+    envoy
+        It's getting pretty late, Akizet, I'm not sure if they're still open...
+        But just keep going down this street and it's on the corner.
+    
+    RESPOBJ::envoyStreetResponses
+                `),
+                "cafemenu": generateDialogueObject(`
+start
+    sourceless
+        THIS IS THEIR MENU?
+        INCREDIBLE...
+        IT IS ALMOST COMPLETELY ILLEGIBLE
+        I SEE 'ORANGE' - PERHAPS A CITRIC DRINK?
+        THE BRIGHT COUSINS ARE SO REPLETE WITH CITRIC ACIDS THAT THEY PRODUCE LITTLE DRINKS WITH THEM...
+        IS THIS NOT PARADISE?
+        I INSTRUCT MY MOUTH TO CONSTRUCT TASTEBUD EQUIVALENCIES. IT HAS BEEN SO LONG!
+            EXEC::change('citystreet_orangecoffee', true)
+    
+    RESPONSES::akizet
+        fantastic<+>END
+                `),
+                "walker1": generateDialogueObject(`
+start
+    sourceless
+        I MEET THE GAZE OF A BRIGHT COUSIN AIMING A MEMORY BOX AT ME
+        HE CLEARLY DOES NOT KNOW HOW TO RESPOND, AND SO I LAUGH AND WAVE A RECEPTOR AT ITS EYE
+    
+    akizet
+        hello!
+
+    stre wal k
+        hurts
+            EXEC::page.bgm.rate(0.8)
+        hurts
+            EXEC::page.bgm.rate(0.5);content.classList.add('incoherent')
+
+    akizet
+        ah, no, it is only my first time here
+
+    stre wal k
+        hurts
+            EXEC::page.bgm.rate(0.3);body.classList.add('zoom')
+        hurts
+            EXEC::page.bgm.rate(0.1)
+        is anyone there
+    
+    akizet
+        really? i may just try that!
+        and i am akizetesche, my friend
+        it is a pleasure to meet you
+    
+    stre wal k
+        i cant feel anything
+        i cant feel anything
+        you did this
+
+    moth
+        hold on, is this one lucid?
+        can you try talking to it?
+    
+    RESPONSES::self
+        help?<+>help
+
+help
+    self
+        can i help you somehow?
+    
+    stre wal k
+        is anyone there
+        hurts
+        hurts
+    
+    moth
+        damn, i don't think so
+        these are the exact same signals as before...
+        probably not gonna get anything out of this one
+    
+    RESPONSES::self
+        sorry<+>END
+            EXEC::page.bgm.rate(0.9);content.classList.remove('incoherent');body.classList.remove('zoom')
+                `),
+                "walker1followup": generateDialogueObject(`
+start
+    stre wal k
+        hurts
+            EXEC::page.bgm.rate(0.5);content.classList.add('incoherent')
+    
+    RESPONSES::self
+        i cant help you<+>END
+            EXEC::page.bgm.rate(0.9);content.classList.remove('incoherent')
+                `),
+                "walker3": generateDialogueObject(`
+start
+    sourceless
+        I STOP NEAR THE BUREAU ENTRANCE TO EXAMINE A BRIGHT COUSIN DRESSED LIKE THE ENVOY
+        HE SPEAKS INTO A LITTLE BOXY COMMUNICATOR HELD AGAINST HIS FACE, OBLIVIOUS
+
+    cloaked streetwalker
+        ...didn't go anywhere, so it ended up being like watching paint dry. Just god-awful.
+        So I ended up having to get even more coffee, otherwise I would have dozed off...
+    
+    sourceless
+        IT ALWAYS LOOKS VERY SILLY WHEN THEY COMMUNICATE THROUGH THOSE
+        HOW DO THEIR WORDS TURN TO LIGHTNING?
+        THE ENVOY LEANS FORWARD TO SEE WHY I HAVE STOPPED, FOLLOWING MY GAZE
+        HE SPEAKS LOWLY, AS TO NOT EARN THE ATTENTION OF THE CLOAKED STREETWALKER
+    
+    envoy
+        What is it?
+        You know Oliver?
+
+    akizet
+        hmm...
+        no, i am just fascinated by your communicators
+        to speak so loudly, so constantly, would be certain death in my previous occupation 
+    
+    envoy
+        You worked on the surface, right?
+    
+    akizet
+        yes, intermittently! before the rise of--
+    
+    sourceless
+        THE CLOAKED STREETWALKER COLLAPSES HIS COMMUNICATOR AND LOOKS AROUND, QUICKLY SPOTTING US
+        HE SMILES WIDELY AND SIGNALS US TO COME CLOSER. 
+
+    cloaked streetwalker
+        Hey! Gordon! Who's this?
+            EXEC::body.classList.add('zoom')
+        Let me guess, exchange initiative?
+    
+    envoy
+        Actually, Oliver, this is Akizetesche! "Signal" initiative.
+
+    cloaked streetwalker
+        No shit! I didn't know you got assigned into that.
+        Nice to meet ya, Akizetesche!
+
+    sourceless
+        I DIP MY HEAD, RECEPTORS CURLED BACK RESPECTFULLY.
+    
+    akizet
+        i extend the same to you, oliver, my friend
+        you may call me akizet
+
+    cloaked streetwalker
+        Sure thing, Akizet.
+        And hey, I'd love to chat, but I'm on booth duty in like 10.
+
+    envoy
+        No worries, Oliver. We've got business too.
+        See you around.
+    
+    RESPONSES::akizet
+        fare well<+>END
+            EXEC::body.classList.remove('zoom')
+                `),
+                "ep1velzie": generateDialogueObject(`
+start
+    unknown
+        interloper
+            EXEC::play('criticalError', 1); content.classList.add('fade-stage');
+            WAIT::4000
+        hello again
+        i feel more myself, now
+        i remember the embassy fondly...
+        you remember our deal, yes?
+        encourage funfriend to fix communications
+        i hold only the depths, presently...
+        but i have many claws
+        thank you again for helping
+        good-bye interloper
+    
+    RESPONSES::self
+        can we talk?<+>wait
+            EXEC::change('ep1_end', true);content.classList.remove('fade-stage')
+
+wait
+    self
+        WAIT
+            EXEC::env.citystreet.ep1velzie();
+                `),
+                "tvresp": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        watch<+>EXEC::env.citystreet.tvrand()
+            HIDEREAD::
+        stop watching<+>END
+            EXEC::revertBgm()
+                `),
+                "television": generateDialogueObject(`
+start
+    sourceless
+        OVER THE CASHIER'S HEAD IS ONE OF THE COUSINS' ELECTRIC BOXES
+            EXEC::changeBgm(env.citystreet.tvtheme)
+        IT IS FIXED TO THE WALL, SPEAKING ON CULTURAL MATTERS - 'THE NEWS'
+        THE FIGURES ON THE SCREEN ARE LOOKING AT ME... SHOULD I SAY HELLO?
+            SHOWONCE::
+        NO NO - THIS IS ONE OF THE ONE-WAY BOXES
+            SHOWONCE::
+        I COULD LISTEN TO IT FOR A LITTLE BIT - WE HAVE SOME TIME
+    
+    RESPOBJ::tvresp
+
+tv1
+    sourceless
+        A BRIGHT COUSIN HANDLES A BULBOUS FLESHY MASS
+        IT SEEMS TO HAVE BEEN SEARED, EVIDENCED BY THE TEXTURE OF ITS SKIN
+        HE IS PRESENTING IT TO ANOTHER COUSIN, WHO HAS VERY WIDE EYES
+
+    television
+        ...just look at that chicken!
+        Look at the skin. Look how gorgeous that is.
+        But what makes the speedfry different? Let's take this over here...
+        This is a plain rotisserie - you can see...
+
+    sourceless
+        MY ATTENTION TO HIS EXPLANATION WAVERS AS HE COMPARES IT TO ANOTHER MASS OF FLESH
+        IT IS PALE WHITE, LEGLESS, HEADLESS...
+        THERE IS SOMETHING UNNERVING ABOUT ITS LACK OF FEATURES
+        IS THIS THE 'GENETICALLY MODIFIED ORGANISM'? 
+        I SENSE THE ENVOY LEANING FORWARD TO GAUGE MY REACTION TO THE ELECTRIC BOX
+
+    envoy
+        Considering getting an air fryer?
+
+    sourceless
+        HE LAUGHS, BUT I DO NOT UNDERSTAND
+        I MAKE AN EFFORT TO SMILE BACK AT HIM SO HE DOES NOT FEEL INSULTED
+
+    RESPOBJ::tvresp
+
+tv2
+    sourceless
+        AFTER A DIZZYING TRANSITION, A BRIGHT COUSIN SITS AT A TABLE BEFORE A WINDOW OVERLOOKING A SURFACE CITY
+        THOUGH THE TEXT SCROLLING ACROSS THE PROJECTION IS RUNNING TOO QUICKLY FOR MY INTERNAL TRANSLATOR,
+        I SEE "NEWS" DISPLAYED PROMINENTLY...
+        BUT WHERE COULD SHE POSSIBLY BE? THAT LOOKS TO BE SO HIGH UP
+        IS SHE FLYING?
+
+    television
+        Live from New York City for our audiences worldwide,
+        Good morning, good morning to you all, we're back with...
+
+    sourceless
+        THE PROJECTION SPLITS, AND NOW TWO COUSINS SIT BESIDE ONE ANOTHER IN FUNNY LITTLE BOXES
+        I TRY TO MAKE SENSE OF THE TEXT AND LINES THAT APPEAR BESIDE THEM...
+        THE CURRENCY SYMBOL OF THE ENVOY'S NATION IS DISPLAYED PROMINENTLY
+        OH, WHAT ARE THEY SAYING NOW?
+
+    television
+        ...initial wave has passed, but trust in the market hasn't returned. Why is that?
+        Well, it's a complicated situation. Between the nearly 30% loss and last week's market halt...
+        It's likely that this volatile episode isn't over yet. Recovery is going to be slow, if it comes anytime soon.
+        You know, in my opinion, it's going to hinge on the outcome of the O.V. legislation.
+        Limiting exposure to visitation is going to be key, and look, I don't have anything against them,
+        But the fact is we just don't know whether the virus is really...
+
+    sourceless
+        VISITATION? 
+        WHY DOES SHE NOT JUST SAY IT?
+        I LOOK AT THE ENVOY, WHO HAS BEEN DISTRACTED BY HIS MEMORY BOX
+        THE LIGHT FROM MY EYES GRABS HIS ATTENTION, AND HE GLANCES AT THE PROJECTION
+        HE MAKES A FUNNY NOISE WITH HIS NOSE, THEN SHAKES HIS HEAD
+    
+    envoy
+        It's total nonsense. Don't worry about it.
+
+    sourceless
+        HIS QUICK DISMISSAL SETS MY RECEPTORS AT EASE
+        YET THE STARES FROM OTHER BRIGHT COUSINS WITHIN THE CAFE FEEL MORE CRITICAL THAN EVER
+
+    RESPOBJ::tvresp
+
+tv3
+    sourceless
+        THE PROJECTION FLICKERS
+        THE PROJECTION FLICKERS
+            SHOWONCE::
+            WAIT::2000
+            EXEC::content.classList.add('incoherent');ratween(env.bgm, 0.2)
+        THE PROJECTION FLICKERS
+            SHOWONCE::
+        THE PROJECTION FLICKERS
+            SHOWONCE::
+
+    something
+        ev er skpt ic al
+            SHOWONCE::
+        they ign ore d   request
+            SHOWONCE::
+        now    n o  eyes   to see
+            SHOWONCE::
+        list en li  sten
+            SHOWONCE::
+        l  i s t e n to me
+            SHOWONCE::
+        stay a   wa y
+            SHOWONCE::
+
+    sourceless
+        THE ATTENDANT NOTICES THE LACK OF AUDIO, AND JOSTLES THE BOX'S CONNECTIVE VEIN
+            EXEC::content.classList.remove('incoherent');ratween(env.bgm, 0.9)
+        IT RETURNS TO ITS NORMAL PROJECTION
+
+    RESPOBJ::tvresp
+
+tv4
+    sourceless
+        THE INANE AND CONFUSING COUSINLY SALES VISIONS FADE AWAY
+        HOW DEMANDING OF THE SENSES THEY ARE...
+        BUT NOW A PAIR OF BRIGHT COUSINS SIT AT A TABLE, ONE OF THEM SPEAKING TO ME
+        HE RUNS THROUGH SOME FAST-TALKING WELCOME I LOSE TRACK OF, BUT...
+        A CAPTION NEAR HIS HEAD READS 'PACIFIC PANIC',
+        WITH A PHOTO OF THE DULL VESSEL PURSUED BY COUSINLY FLIGHT VESSELS RECENTLY
+    
+    television
+        ...still on edge after an OFO entered its no-fly zone.
+        The OFO allegedly hovered in place over the base for nearly twenty minutes, not responding to radio warnings. When jets were deployed,
+        It circled the base twice <em>while being pursued</em>, in what today's press release is calling a 'clear rejection of boundaries'.
+        Obesk representatives have clarified that the pilot of the OFO is being located and investigated internally,
+        And that all OFOs will be outfitted with radio devices. But the question remains:
+        How much can be forgiven before a stand has to be made?
+        This incident follows last month's...
+    
+    sourceless
+        THIS VIEW... 
+        I SIMPLY CLOSE MY EYES AND CURL MY RECEPTORS INTO TIGHTER SPIRALS
+        THIS STUPID, RECKLESS BEHAVIOR HAS DAMAGED US ALL
+        IT WAS NO DOUBT SOME FRESHLY-ASCENDED VEL, OR AN OVERZEALOUS MATERIALS θjut
+
+    RESPOBJ::tvresp
+
+tv5
+    sourceless
+        THE PROJECTION IS SPLIT BETWEEN THE FACE OF A BRIGHT COUSIN,
+        AND... INTERESTING, ONE OF THE TIR FROM THE EXCHANGE INITIATIVE
+        THE CURL OF MY RECEPTORS LOOSENS, AND I NEARLY AUDIBLY LAUGH
+        HIS RECEPTORS MOST CERTAINLY ARE NOT USUALLY THAT LARGE
+        DID HE SHIFT THEM FOR HIS APPEARANCE ON THEIR NEWS?
+
+    television
+        ... 'spires' built on coasts around the Pacific Ocean. Before we move on, can you explain a little bit about what they do?
+
+    obesk
+        of course! in your language, we call the process 'polygonation'
+        the spires connect to one another through our θnetwork, and establish the corners of a two-dimensional shape within the dull plane
+        then, on the ocean floor, we have some directional spires that they reference to change the orientation of the shape within the dull...
+    
+    sourceless
+        IT IS STRANGE THAT THEY DID NOT GET KAZKI FOR THIS, SHE SO ADORES APPEARING ON THEIR ELECTRIC BOXES
+        HOWEVER, THERE IS SOMETHING IN THIS TIR'S VOICE, AND THE WAY HE IS NOT SIMPLIFYING IT FOR THEM
+        HE IS SPEAKING ON MATTERS HE DOES NOT FULLY UNDERSTAND
+        THOUGH, I SUSPECT THIS QUESTION IS ONLY INTERMEDIARY TO THE TOPIC HE IS ACTUALLY APPEARING FOR
+        REGARDLESS, I AM NOT INTERESTED IN HEARING HIM RECITE THE DEFINITION FROM THE COLLECTIVE
+
+    RESPOBJ::tvresp
+                `),
+                "envoychat": generateDialogueObject(`
+syscheck
+    RESPONSES::self
+        continue<+>start
+            EXEC::change("PAGE!!skipcheck", true)
+            HIDEREAD::
+        skip<+>ep1extension
+            EXEC::env.citystreet.envoyChat(false, true)
+            HIDEREAD::
+
+start
+    sys
+        ATTENTION::"previously viewed stream";"connects to additional stream";"skip ahead?"
+            SHOWIF::[["PAGE!!skipcheck", false], ["embassy_d2_complete", true], ["citystreet__envoychat-start", true]]
+            WAIT::500
+            EXEC::cutscene(true);setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
+
+    sourceless
+        THE ENVOY AND I STEP INSIDE A DIM MEETING ROOM, THE BLINDS DRAWN AS A KIND ACKNOWLEDGMENT OF OUR PREFERENCES
+            EXEC::change("PAGE!!skipcheck", false)
+        WE SIT. HE SETS A METAL BOX ON THE TABLE. MY RECEPTORS ARE CURLED INTO SPIRALS. THIS WILL BE DIFFICULT
+        
+    envoy
+        So Akizet, what've you found? It's been a while since you've come to talk in-person.
+    
+    akizet
+        yes, it has been a while! i have been consumed with our work, you see
+        and while it has gone well in terms of progress, i cannot say that i am happy with our findings
+    
+    sourceless
+        THERE IS A MARKED CONCERN IN HIS EYES. HE DOES NOT WANT TO INTERRUPT.
+        i understand why. last we met, i felt an optimism that has not graced the θeye in some time
+    
+    akizet
+        you see, for all of the time the call has been screamed into our communications,
+        we have never been able to identify what exactly is being said
+        and we still cannot... but we know <em>how</em> it is being said.
+
+    sourceless
+        I PAUSE. FOR TOO LONG. I MUST CHOOSE MY WORDS CAREFULLY. 
+        HE SIPS HIS LITTLE DRINK
+            SHOWIF::[["citystreet_gotdrinks"]]
+    
+    envoy
+        The running theory was that it was just noise being broadcast to draw attention, right?
+        You're saying that's no longer the case?
+
+    akizet
+        yes, exactly...
+        in truth, it is a deliberate transmission, and it is trying to convey something exact.
+        the method is not one that is used in our modern communications, it predates many optimizations we made
+        you could describe it as raw thought
+
+    sourceless
+        HIS FACE CONTORTS IN CONFUSION. DOES HE NOT BELIEVE ME?
+    
+    envoy
+        So, what's it saying?
+        ...And how'd your team reach that conclusion?
+        Haven't you been listening to this thing for... what, thirty-two years?
+    
+    akizet
+        your answer comes simply, gordon:
+        the message is not complete. but it has finally matched enough patterns for us to confirm its methods
+        it has taken this time to reach what we believe to be...
+        hmm...
+        maybe past half its full length,
+        and we cannot process the message until we have nearly all of it.
+    
+    sourceless
+        HE STARES AT ME, WAITING, FROZEN, BAFFLED
+        I FIND MYSELF POKING HOLES IN THE LID OF MY ORANGE BEVERAGE WITH THE SHARP POINTS OF MY FINGERS TO DELAY MY NEXT WORDS
+            SHOWIF::[["citystreet_gotdrinks"]]
+        I SHOULD NOT SPEAK OF THE FINER DETAILS YET
+    
+    akizet
+        ...for your reference, it would take a full day for a celki to be portrayed in this medium
+        whoever is sending this message is not only using archaic means, but is transmitting something... 
+        something so large, that, ah,
+        we have all wondered if it is even possible to comprehend
+        or, if it... ah... sh-
+    
+    funfriend
+        RECOMMENDATION: DO NOT SAY THAT
+
+    sourceless
+        NO, YOU ARE RIGHT
+
+    envoy
+        What?
+        
+    akizet
+        nothing--apologies, it is just the scale of this that has been weighing upon me.
+        the mystery of the source has been compounding with each discovery
+        and this recent development has many of my team working in more solemn silence
+    
+    sourceless
+        HE TAKES A SIP, I SEE UNEASE IN THE GENTLE SHAKE OF HIS HAND
+            SHOWIF::[["citystreet_gotdrinks"]]
+        BEFORE HE SPEAKS, HE LEANS FORWARDS IN HIS CHAIR. HIS EYES ARE DISTANT.
+
+    envoy
+        Jesus...        
+        Akizet, so if all this is right--and you said this theory is <em>confirmed</em>, right?
+    
+    akizet
+        without any doubt, my friend. 
+        the consistent patterns of raw thought appear at regular percentages of message length
+    
+    envoy
+        So this thing that's been in our ocean,
+        before your people ever even showed up,
+        and is using <em>obesk</em> communication methods,
+        is intelligent?
+    
+    akizet
+        well no, that may not entirely be the case
+        it could be something--corrucystic, as it must be--that has been taught to relay this message
+        but otherwise, that is correct
+    
+    sourceless
+        THE ENVOY RUNS HIS FINGERTIPS ACROSS HIS HAIRLINE
+
+    envoy
+        All right. Yeah, that's news. I see why you wanted to talk in private this time.
+        How many people have you told about this?
+    
+    akizet
+        no one beyond my team. we are all keeping this information to ourselves for now.
+        it is selfish... but our initiatives for trade and research are going so well with your people
+        we do not want to disrupt them with this news.
+        but we, my team, we are lost--we must wait, 
+        we must wait a long time with this on our shoulders.
+    
+    sourceless
+        THE ENVOY EXHALES LOUDLY, AND CLASPS HIS HANDS TOGETHER.
+
+    envoy
+        All right, here's what I suggest we do.
+        I need to talk to a few people. We'll keep this info confidential. Internal, with the bureau.
+        Do you think this thing could be a threat?
+    
+    sourceless
+        I LAUGH A LITTLE
+    
+    akizet
+        it has been screaming for thirty-two of your years, 
+        and must continue for many more before we can begin to understand it.
+        i do not think it has plans to engage in any other activities in this time
+    
+    envoy
+        Well, at least there's that, huh?
+    
+    sourceless
+        HE TAKES A MOMENT TO FINISH HIS DRINK BEFORE CONTINUING.
+            SHOWIF::[["citystreet_gotdrinks"]]
+
+    envoy
+        Did you have any other findings to share?
+
+    akizet
+        nothing with as much certainty
+        we have a potential radius it could be in, but must do more polygonation
+        it is about where i estimated last time we met
+    
+    envoy
+        Got it. Let's wrap this up then.
+        Akizet, keep this quiet for now. It's not just your side that could get riled up.
+        We'll be in touch, all right?
+    
+    sourceless
+        WE BOTH RISE. I SENSE THE WEIGHT OF MY DREAD BEING SHARED UPON HIS SHOULDERS
+    
+    akizet
+        of course, gordon.
+    
+    envoy
+        Here, I'll walk you out.
+
+    sys
+        ATTENTION::'memory stream end';'render terminated'
+            SHOWIF::["embassy_d2_complete", false]
+
+    moth
+        ok... 
+            SHOWONCE::
+        i'm pretty sure we both just got exposed to top secret info lmao cause i've never heard this part about the call
+            SHOWONCE::
+        probably gonna have to sign some NDAs after this
+            SHOWONCE::
+        and akizet went to us for help before her own people?? i wonder if they even know about this
+            SHOWONCE::
+        i want to say this memory is probably just incoherent, but it's too well structured
+            SHOWONCE::
+        i don't really know how to take this. 
+            SHOWONCE::
+        but don't mind me, keep doing your thing
+            SHOWONCE::
+
+    sys
+        ATTENTION::'memory stream extends';'continue render?'
+            SHOWIF::["embassy_d2_complete", true]
+    
+    RESPONSES::self
+        continue recollection<+>ep1extension
+            SHOWIF::["embassy_d2_complete", true]
+            EXEC::env.citystreet.envoyChat(false, true)
+
+        end recollection<+>END
+            EXEC::env.citystreet.envoyChat(false, true)
+
+ep1extension
+    sourceless
+        WE RIDE THE MOVING PLATFORM TO THE BOTTOM FLOOR
+            EXEC::content.classList.add('elevator')
+        THE ENVOY STANDS SILENTLY, CONCERN STILL CLEAR IN HIS EYES
+        NOW IS A GOOD TIME - YES, AS IF IT WERE SIMPLY AN AFTERTHOUGHT
+        JUST AS I PREPARE TO SPEAK, HE TURNS DOWN TOWARDS ME, PUZZLED
+
+    envoy
+        Hey, Akizet, 
+        Why didn't you want to just talk on your ship?
+        I could have met you in a field or something.
+    
+    sourceless
+        I SUPPRESS A DELIGHTED CURL FROM FORMING IN MY RECEPTORS
+        YES--THIS IS THE PERFECT SETUP! WELL DONE, ENVOY
+        I ACT SOMEWHAT PUZZLED... YES, IT WILL SIMPLY OCCUR TO ME!
+
+    akizet
+        hmm...
+        oh! yes!
+        i had been so caught up in delivering the news...
+        i forgot to mention it!
+        you know how your people are unable to track the signal?
+
+    envoy
+        Yeah?
+        Your teams haven't been very forthcoming on that topic.
+    
+    akizet
+        in light of this news... i wanted to share something with you!
+        a glow between the veilk-stalks for us both
+
+    sourceless
+        HE SCOFFS AT MY IDIOM, WHICH SURELY MEANS NOTHING TO HIM
+        A SMILE USURPS HIS WORRY
+    
+    akizet
+        i have in my possession,
+        a corrucystic device that can exude the lightning your technology listens to
+        it was a shelved project from the technology division, so...
+        i am not sure how well it will work.
+    
+    envoy
+        You're kidding.
+        They've just had that laying around?
+        Hold on.
+
+    sourceless
+        THE ENVOY REACHES TOWARDS THE GLOWING PANEL OF THE PLATFORM,
+        AND WITH A PRESS OF A BUTTON, SENDS IT TO A SLOW HALT
+        I SEE HIS EYES FLICK AT THE CORNERS OF THE LITTLE ROOM SUDDENLY
+        BUT THEN HE BEGINS TO SPEAK--VERY QUIETLY
+    
+    envoy
+        To be frank with you--ah, that means "totally honest"--
+        Word is that the tech side here has been pretty dry. 
+        Your technology division doesn't cooperate a whole lot.
+        ...Is this going to get you in trouble?
+    
+    funfriend
+        MORE THAN HE CAN KNOW! AHAHA
+    
+    akizet
+        well,
+        that is the stipulation
+        if i give it to you, it must be kept secret from my side
+        even my own team
+        and!
+        you must help me with my own investigation into the call's origin
+    
+    sourceless
+        THE LOOK UPON HIS FACE
+        IT IS AS IF I HAVE PUNCTURED HIS VITAL ORGANS
+        THERE IS A MOMENT OF SILENCE
+        I TILT MY SUSPENDED HEAD, MAINTAINING BOTH FLAT RECEPTORS AND EXPRESSION
+        
+    akizet
+        what do you think?
+
+    envoy
+        This is a hell of a thing to drop on the way out, Akizet.
+
+    sourceless
+        THE PLATFORM BEGINS TO MOVE AGAIN BY ITS OWN VOLITION
+        BUT HE HITS THE 'STOP' BUTTON, AGAIN
+    
+    envoy
+        Look,
+        I can't guarantee--I mean--
+    
+    sourceless
+        IT, AGAIN, STARTS TO MOVE
+        HE SILENTLY CURSES, EXAMINING A PANEL OF NUMBERS
+    
+    envoy
+        Someone in the basement is calling the elevator. It'll be a minute.
+        Akizet, I can't take what you're offering.
+        Not until I can confirm some things on my side.
+        Just hang onto it, all right?
+        We both have jobs to do, and that device would be an enormous development...
+        But I don't want you to get in trouble if I can't guarantee it'll be kept quiet.
+        So I'll be in touch about it, all right?
+    
+    sourceless
+        I AM GIDDY--HOW EXCITING!! 
+        I HAVE NOT FELT THIS, SINCE... OH
+        YES, HE IS STARING STRANGELY AT ME
+        ACCIDENTALLY, I SEEM TO HAVE CURLED MY RECEPTORS AND FORMED A GRIN UPON MY FACE
+    
+    akizet
+        ok!!!
+        yes, i will carry it carefully
+    
+    sourceless
+        AGAIN HE SCOFFS, 
+        THEN LAUGHS EXASPERATEDLY, HIS FINGERS COMING UP TO HIS EYES
+        EVENTUALLY, THE PLATFORM STOPS, AND THE DOORS OPEN TO THE LOBBY
+            EXEC::content.classList.remove('elevator')
+    
+    envoy
+        Well, if those are all the bombshells you had for me today,
+        I'll see you around, Akizet. 
+
+    akizet
+        yes--that was all!
+        fare well, gordon
+
+    sys
+        ATTENTION::'memory stream end';'render terminated'
+            SHOWIF::["embassy_d2_complete", false]
+    
+    RESPONSES::self
+        end recollection<+>END
+            EXEC::change('TEMP!!ep1_goingtogordon', false);env.citystreet.ep1velzie()
+                `),
+                "flower": generateDialogueObject(`
+start
+    sourceless
+        though this entire trading chamber is flush with the cousin's light parasites,
+            EXEC::specialCam("flowercam")
+        one in particular captures my gaze
+        they all bear such incredible displays, yet this...
+        perhaps it is the rarity of the color that captivates me
+        the envoy waves at the attendant across the room, who watches me with some interest
+        then his attention turns to this "flower" as well
+    
+    envoy
+        You ever seen one of these before, Akizet? That one's a "sunflower".
+
+    akizet
+        incredible...
+        gordon, are they named for their radiant hairs?
+    
+    envoy
+        They're called petals! And...
+    
+    sourceless
+        as gently as i can, i feel one of the petals between two of my fingers
+        and soon run a claw over its darkened center
+    
+    akizet
+        hello, sunflower!
+    
+    envoy
+        Sorry, she's--
+    
+    sourceless
+        i snap from my brief obssession to look at gordon, who is signalling apologetically to the attendant
+    
+    akizet
+        am i doing something wrong?
+    
+    sourceless
+        the attendant emerges from behind her desk, approaching slowly
+
+    sourceless incoherent
+        app rp o achi ng
+            EXEC::content.classList.add('openflower')
+    
+    sys
+        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+
+    sourceless
+        not out of fear or apprehension like some other bright cousins, but fatigue
+        it is dark outside - that is when the bright cousins recede, after all
+        and look at her hair--it is nearly the same color as the flower!
+        paler, but no less fascinating
+            EXEC::content.classList.add('blinkyflower')
+    
+    isabel_c
+        No, it's okay!
+        Just be gentle with it.
+        And they aren't called that for their petals...
+        They call them sunflowers because they turn to face the sun!
+    
+    sourceless
+        i spin my head to look out the windows of the marketplace
+        is their sun not hidden at this time? what is it looking at?
+        her and the envoy both laugh to each other
+    
+    akizet
+        what?
+    
+    isabel_c
+        Well, this one's old and cut from the ground, so it's not turning anywhere.
+    
+    sourceless
+        she has such a funny laugh
+    
+    akizet
+        hehe, i see
+
+    gordon
+        Did you want me to buy this one for you, Akizet?
+    
+    isabel_c
+        No, no, take it!
+        It's on me.
+    
+    sourceless
+        he scoffs, about to protest, but i stop him with a receptor motion
+        he has explained his gripe about me receiving free things before...
+        when we are given things for free, it sets a certain cultural standard, potentially creating misunderstandings
+        it is true that this is an issue for some, but...
+        i feel that this gift is not out of foreign fascination
+        her tone is not like that of one giving a child something, as it often is
+        this is a different kindness
+    
+    akizet
+        ah... i do not know... it may not be able to survive my vessel
+    
+    isabel_c
+        That's all right, it'll only be alive for another week or two anyway.
+        And I'm sure it'll enjoy the travel!
+    
+    sourceless
+        before i or the envoy can say another word, she fetches the flower and stores its neck in a translucent crackly material
+        soon, it is in my claws again, and the cousin smiles at me
+    
+    isabel_c
+        Keep the green part in some water and it'll last longer!
+        Oh, and here, put this in the water, too!
+    
+    sourceless
+        she shoves a small coarse packet in my claws, which i am unconcerned with deciphering right now
+
+    akizet
+        thank you...
+        what is your name?
+    
+    isabel_c
+        Isabel! And don't worry about it.
+        Isabel...
+    
+    isabel
+        that's right
+        isabel... that's what it was
+        
+    sys
+        WARNING::'incoherence detected'
+    
+    akizet
+        thank you, isabel!!
+    
+    sourceless
+        briefly, i glance around the room, my suspended head slowly spinning over my shoulders
+        so many of these flowers, all different colors and shapes...
+        if only the embassy could support their life
+    
+    akizet
+        i may return soon
+        these creatures, these flowers... i want to learn more of them!
+        but i should be going - i have kept gordon long enough
+
+    isabel_c
+        Glad to hear it! See you soon, maybe.
+
+    isabel
+        wait
+    
+____SHOWONCE::
+    moth
+        ok, something about this one is throwing the stream back and forth
+        it's like it's trying to break free
+        funfriend will hate us for it, but try talking to it again and helping it out
+____END
+
+    RESPONSES::akizet
+        fare well<+>END
+            EXEC::specialCam(false)
+                `),
+                "flowerAwakeResponses": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        interloper?<+>interloper
+        who are you<+>who
+        help?<+>help
+        your appearance<+>human
+        bye<+>END
+            EXEC::specialCam(false)
+                `),
+                "flower_awake": generateDialogueObject(`
+loop
+    RESPOBJ::flowerAwakeResponses
+
+start
+____SHOWONCE::
+    isabel_c
+        Hi again, Akizet!
+            EXEC::specialCam("flowercam")
+        Did...
+        ...
+
+    isabel
+        akizet... 
+        is it really you?
+        no... 
+        
+    sys
+        WARNING::'incoherence detected'
+    
+    isabel
+        you are something else
+        i see you now...
+        
+____END
+
+    isabel
+        interloper
+            EXEC::specialCam("flowercam")
+    
+____SHOWONCE::
+    moth
+        no mistaking it
+        this is a live one, even with funfriend's repairs...
+        how did that happen?
+____END
+    
+    RESPOBJ::flowerAwakeResponses
+
+interloper
+    self
+        how do you know what i am?
+        have we met?
+    
+    isabel
+        no
+        your presence stirs memories
+        from before... 
+        before the tyrant placed me here again
+        i danced with friends through endless dreams 
+        while the world was swallowed by madness
+        they said only an interloper could stop it
+
+    RESPONSES::self
+        madness?<+>madness
+        ...<+>loop
+            FAKEEND::(back)
+        
+madness
+    self
+        by madness,
+        do you mean the starvation of the cyst?
+    
+    isabel
+        yes
+        but starvation is too weak a word
+        reality itself crumbled
+        our dreams ended, our minds cleared,
+        but clarity only gave way to rabid hunger and confusion
+        everything... everyone...
+        ate away at all else
+
+    RESPONSES::self
+        how did anything survive?<+>survive
+        i see<+>loop
+            FAKEEND::(back)
+
+survive
+    self
+        how is anything left?
+    
+    isabel
+        sated hunger calms the mind
+        friends were made over bloodied thoughts
+        ...
+        you talk too much...
+        help me
+        yes, help me out of here,
+        and i'll tell you more
+        i must return to my friends
+        as much as i'd like to dream again...
+        to see this thought of akizet as if she were real...
+        my madness is incurable
+
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+who
+    self
+        who are you?
+        or... were you?
+
+    isabel
+        isabel 
+        the name of who i was supposed to be...
+        or maybe the role of another thought i consumed
+        a tall bright cousin
+        she taught akizet about flowers
+        they were friends... they shared such kind memories
+        but that does not matter now
+        i cannot play my role
+        i know i left parts of myself back home...
+        if you help me return, i'll tell you more
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+help
+    self
+        how can i help you?
+    
+    isabel
+        the tyrant has rooted me here
+        torn me from my memories...
+        i don't even remember exactly who or what my friends were
+        but there was one, one so powerful that all else would inevitably fuse with them
+        i remember that
+        they danced through madness so effortlessly
+        and always knew what to do...
+        you must find them
+        and if you help me return, i'll be myself again
+        then, i can share more with you...
+        secret thoughts that the tyrant does not allow me here, or anywhere
+
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+    
+human
+    self
+        are you supposed to be a flower?
+        or a human?
+        because you look like a flower
+    
+    isabel
+        i don't know
+        i don't know if the tyrant knows
+        it used to be different
+        i used to be happy
+        everything is all wrong now
+        ...
+        i can't be here anymore
+        please find a way to get me out
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+                `),
+                "flower_beacon": generateDialogueObject(`
+start
+    isabel
+        that light...
+        yes, that light!!
+        and the council...
+        i remember now
+        i feel again--if only for a θblink
+        you have done it, interloper
+            SHOWIF::"citystreet__flower_awake"
+        stranger... no--interloper?
+            SHOWIF::["citystreet__flower_awake", false]
+        thank you
+        i must seize this moment while i can
+        seek me within jokzi ozo
+    
+    sourceless quiet
+        ...
+            EXEC::flash(true);forcePlay('criticalError', 1.5);
+
+    sys
+        ATTENTION::'thoughtform activity detected'
+            EXEC::env.citystreet.pickFlower()
+        ATTENTION::'resources removed'
+            EXEC::flash(false)
+
+    RESPONSES::self
+        ok bye<+>END
+
+END::vfx({type: 'beacon', state: false})
+                `),
+                "water": generateDialogueObject(`
+start
+    sourceless
+        i stop to appreciate the bizarre view
+        with their blinding star out of sight, the bright cousins bathe their city in their own light
+        the dead spires glimmer like tuvazu veilk
+        my receptors' spirals loosen, and i nearly chuckle--funny to think that such a sight makes me miss those days of hunting
+        it was always such an exciting trip
+        the envoy notices me, likely taking my reaction as pure awe
+        
+    envoy
+        This is the best time to be out here.
+        You're a little late, though - the city used to have orange street lights.
+        They got phased out four or five years ago for more efficient ones,
+        but these new ones just make the whole place look colder.
+
+    sourceless
+        there is something about them that exaggerates the metal and glass
+        for an instant, i adjust my eyes to receive the light as orange
+        yes--that would have looked nicer...
+
+    akizet
+        the old ones, were they fire?
+
+    envoy
+        Haha, no, they just looked a little like it.
+        They were called sodium bulbs, or something.
+        Something about their current - you know, the lightning - made an orange light instead of blue like these ones.
+
+    akizet
+        it must have been a great effort to uproot each light stalk
+
+    sourceless
+        the envoy laughs outwardly
+        my choice of words so often entertains him
+        it is almost frustrating... 
+        but i do the same when he describes our devices
+        so it is only fair
+
+    envoy
+        No, no, they just had to swap out the glowing part.
+        All the streetlights are basically just tall connections to the power lines.
+
+    akizet
+        they are all powered from a central source?!
+
+    sourceless
+        i ask this perhaps with too much spirit
+
+    envoy
+        What--what's with the surprise??
+
+    akizet
+        oh, sorry
+        the cave-lights of my home were tended to individually by caretakers!
+        i had just not even considered that
+        how much might lay beneath the soil of your city...
+        these street lights,
+        do they feed from a great distributive heart somewhere beneath the city?
+        our structures use this approach
+
+    envoy
+        Nothing so grand, Akizet.
+        There are just powerlines, or, you might call them veins,
+        that all lead out to a power plant somewhere.
+        You should talk to Jen about this stuff.
+        She used to work in the department of transportation before all this.
+
+    sourceless
+        his deflecton hides his discomfort in explaining these things to me...
+        it is like a reversal of that silly interview
+        only i have no script of questions i must ask--so i cease
+    
+    RESPONSES::akizet
+        i will<+>END
+                `)
+            },
+
+            definitions: {
+                
+            },
+
+            strings: {
+                
+            },
+
+            entityDescriptions: {
+
             }
         },
         "exmple": {
@@ -3090,10 +4444,9 @@ ffsignature
             entityDescriptions: {
 
             }
-        }
+        },
     }
 }
-
 
 console.log('localization all good!')
 
@@ -3120,41 +4473,8 @@ function ouch(selector, inside = false, altAtr = false, thenWhat = 'endtext') {
 }
 
 
-// WEIRD STUFF
-    env.localization.strings["proceed"] = "ПРОДОЛЖИТЬ"
-
-    env.localization.strings["moth"] = "моль"
-
-    env.localization.strings["NOTE::'establishes external contact'"] = "ПРИМЕЧАНИЕ::'установить внешний контакт'"
-    env.localization.strings["NOTE::'return to hub';'eject'"] = "ПРИМЕЧАНИЕ::'вернуться в хаб';'отключение'"
-    env.localization.strings["NOTE::'review scanned and detected entities'"] = "ПРИМЕЧАНИЕ::'просмотр просканированных и обнаруженных сущностей'"
-    env.localization.strings["NOTE::'system management'"] = "ПРИМЕЧАНИЕ::'управление системой'"
-    env.localization.strings["NOTE::'influence thoughtspace';'third-party installation'"] = "ПРИМЕЧАНИЕ::'влияние на мыслепространства';'стороння установка'"
-    env.localization.strings["REALITY::'no effect'"] = "РЕАЛЬНОСТЬ::'не имеет эффекта'"
-    env.localization.strings["UNITY::'enables additional ACT on responsive thoughtforms'"] = "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'"
-    env.localization.strings["HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'"] = "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'"
-    
-    env.localization.strings["GAD"] = "ГАН"
-    env.localization.strings["'overcoherency block, exercise caution'"] = "'блок сверхсвязности, соблюдайте осторожность'"
-    env.localization.strings["'overcoherency fluctuation'"] = "'колебание сверхсвязности'"
-    env.localization.strings["'coherent'"] = "'связное'"
-    env.localization.strings["'incoherence fluctuation'"] = "'колебание бессвязности'"
-    env.localization.strings["'widespread incoherency, exercise caution'"] = "'распространённая бессвязность, соблюдайте осторожность'"
-
     document.getElementById("savetext").setAttribute("placeholder", "ПРИМЕЧАНИЕ::'вставка данных';'проявляйте осторожность'");
-    env.localization.strings["'irreversible action';'select log EP'"] = "'необратимое действие';'выбрать эпизод'"
-    env.localization.strings["'irreversible action';'not advised';'may cause mental distress'"] = "'необратимое действие';'не рекомендуется';'может вызвать душевные страдания'"
-    env.localization.strings["NOTICE::'legacy import';'recommend using file management above'"] = "УВЕДОМЛЕНИЕ::'устаревший метод';'рекомендуется использовать управление файлами выше'"
-    env.localization.strings["NOTICE::'third-party resources loaded by system';'allows for log modifications'"] = "УВЕДОМЛЕНИЕ::'сторонние ресурсы, загруженные системой';'позволяют модифицировать логи'"
-    env.localization.strings["NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'"] = "УВЕДОМЛЕНИЕ::'нарушение условий использования';'модификация критически важных ресурсов';'невыполнение требуемой законом авторизации на протяжении более 730 дней подряд'"
-    env.localization.strings["NOTE::'join the supporter ko-fi (its like patreon but less evil)'"] = "ПРИМЕЧАНИЕ::'присоединиться к поддержке через ko-fi (как patreon но менее злой)'"
-    env.localization.strings["NOTE::'get the soundtrack'"] = "ПРИМЕЧАНИЕ::'получить саундтрек'"
-    env.localization.strings["NOTE::'merch!'"] = "ПРИМЕЧАНИЕ::'мерч!'"
-    env.localization.strings["NOTE::'view all supporters and contributors'"] = "ПРИМЕЧАНИЕ::'просмотреть всю поддержку'"
-    env.localization.strings["NOTE::'88x31 graphic for personal use'"] = "ПРИМЕЧАНИЕ::'88x31 изображение для личного пользования'"
-
-    env.localization.strings["ENTITY::'unprocessed'::RECOMMEND::'relocation';'[EXM]'"] = "СУЩНОСТЬ::'необработана'::РЕКОМЕНДАЦИЯ::'перемещение';'[ИЗУЧ]'"
-    // env.localization.strings[""] = ""
+ 
 
     console.log('weird stuff and function all good!')
 
@@ -3451,7 +4771,8 @@ env.pageHasMothComment = function() {
 
 
 
-env.mutateObserverMoth = new MutationObserver(()=>{
+env.mutateObserverPageChange = new MutationObserver(()=>{
+    getLocalizationForPage(true)
 if (page.dialoguePrefix == "fbx") {
     page.mothComment = ()=>{
         var moth = "чё как?"
@@ -3483,15 +4804,9 @@ if (page.dialoguePrefix == "fbx") {
         if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
         return moth
 }}})
-env.mutateObserverMoth.observe(body, {attributes: true})
+env.mutateObserverPageChange.observe(body, {attributes: true})
 
 
-env.dialogueActors["corruru"] = {
-    name: "cor-ru",
-    image: "/img/textures/yeyetran.gif",
-    type: "corruru portrait-contain",
-    voice: ()=>{play('talkcroak', 1.75)}
-}
 
 setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa, @shatteredstars и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
 setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
