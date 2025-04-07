@@ -1,7 +1,7 @@
 /* 
     cor-RU - a full russian adaptation mod
-    by @tozik-observer (tumblr) and @shatteredstars (discord)
-    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
+    by @dutokrisa, @shatteredstars and @bra1nslug_
+    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks)
 
     adaptation up until the end of EP0 currently availible
 
@@ -10,7 +10,7 @@
          ----------
 
     cor-RU - мод на полную русскую адаптацию
-    от @tozik-observer (tumblr) и @shatteredstars (discord)
+    от @dutokrisa, @shatteredstars и @bra1nslug_
     на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
 
     в данный момент доступна полноценная адаптация до EP0
@@ -3477,5 +3477,5 @@ env.dialogueActors["corruru"] = {
     voice: ()=>{play('talkcroak', 1.75)}
 }
 
-setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @tozik-observer (tumblr) и @shatteredstars (discord) благодарят вас за использование`, readout: true}), 500)
+setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa, @shatteredstars и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
 setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
