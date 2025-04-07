@@ -1,7 +1,7 @@
 /* 
     cor-RU - a full russian adaptation mod
     by @dutokrisa, @shatteredstars and @bra1nslug_
-    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks)
+    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
 
     adaptation up until the end of EP0 currently availible
 
@@ -137,25 +137,15 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
 env.dialogues["russianSentryResponses"] = generateDialogueObject(`
 RESPOBJ::
-    
     RESPONSES::self
-    
         назначение?<+>purpose
-    
             SHOWONCE::
-    
         кто верифицирован?<+>whoisverified
-    
             SHOWONCE::
-    
         назначение этой цисты?<+>corrupurpose
-    
             SHOWONCE::
-    
             SHOWIF::[["hello__sentry-purpose"]]
-    
         может если ты пропустишь меня<+>letthrough
-    
             SHOWIF::[["hello_sentry_idiot"]]
 `),
 env.dialogues["hubBuddyResponsesRu"] = generateDialogueObject(`
