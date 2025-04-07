@@ -1457,6 +1457,8 @@ gad
 
         "ENTITY": "СУЩНОСТЬ",
 
+        "__incomplete_thoughtform__": "__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__",
+
         "funfriend": "развледруг",
 
         "GATE": "ВРАТА",
@@ -1470,28 +1472,46 @@ gad
 
         "city_surface": "ПОВЕРХНОСТЬ_ГОРОДА",
         "city-surface": "поверхность-города",
+        "THEY WATCH": "ОНИ СМОТРЯТ",
 
         "the_void": "ПУСТОТА",
         "the-void": "пустота",
+        "the void": "ПУСТОТА",
 
         "their_waters": "ИХ_ВОДЫ",
         "their-waters": "их-воды",
+        "their waters": "ИХ ВОДЫ",
 
         "their_vessel": "ИХ_СУДНО",
         "their-vessel": "их-судно",
+        "their vessel": "ИХ СУДНО",
 
         "the_funny_little_room": "ЗАБАВНАЯ_МАЛЕНЬКАЯ_КОМНАТА",
         "first_chat": "ПЕРВАЯ_БЕСЕДА",
         "first-chat": "первая-беседа",
+        "the funny little room": "ЗАБАВНАЯ МАЛЕНЬКАЯ КОМНАТА",
 
         "clemens_romanus": "КЛИМЕНТ_РИМСКИЙ",
         "clemens-romanus": "климент-римский",
+        "clemens romanus": "КЛИМЕНТ РИМСКИЙ",
 
         "our_dull_vessel": "НАШЕ_СЕРОЕ_СУДНО",
         "our-dull-vessel": "наше-серое-судно",
+        "our dull vessel": "НАШЕ СЕРОЕ СУДНО",
+
+        "the dull contrivance": "серое устроение",
 
         "the_embassy": "ПОСОЛЬСТВО",
         "the-embassy": "посольство",
+        "the embassy": "ПОСОЛЬСТВО",
+
+        "GOLEM_MAINTENANCE": "ОБСЛУЖИВАНИЕ_ГОЛЕМОВ",
+        "golem-maintenance": "обслуживание-големов",
+        "GOLEM MAINTENANCE": "ОБСЛУЖИВАНИЕ ГОЛЕМОВ",
+
+        "PALE_HALLS": "БЛЕДНЫЕ_КОРРИДОРЫ",
+        "pale-halls": "бледные-коридоры",
+        "PALE HALLS": "БЛЕДНЫЕ КОРРИДОРЫ",
 
         "..__DEPTHS__..": "..__ГЛУБИНЫ__..",
         "depths": "глубины",
@@ -1502,6 +1522,7 @@ gad
         "my beautiful world": "мой дивный мир",
 
         "MEMBRANE_LESION": "РАЗРЫВ_В_МЕМБРАНЕ",
+        "MEMBRANE LESION": "РАЗРЫВ В МЕМБРАНЕ",
         "..__CACHE__..": "..__КЭШ__..",
         "cache": "кэш",
 
@@ -1514,6 +1535,11 @@ gad
         "a?-?b?-????-y?s?": "б?-?ез?-????-н?а?",
         "a-b-y-s": "б-ез-н-а",
 
+        "PARASITE PLANE": "ПАРАЗИТНАЯ ПРОЕКЦИЯ",
+        "p-a-r-s-t-e": "п-а-р-з-и-т",
+        "p?a-??r?-???s?-t?e?": "п?а-??р?-???з?-и?т?",
+
+        "!!__ERROR::UNPROCESSABLE__!!": "!!__ОШИБКА::ОБРАБОТКА_НЕВОЗМОЖНА __!!",
 
         // SYSTEM MENU
 
