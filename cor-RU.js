@@ -1,4 +1,4 @@
-/* 
+//* 
     cor-RU - a full russian adaptation mod
     by @dutokrisa, @shatteredstars and @bra1nslug_
     based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
@@ -3207,13 +3207,13 @@ start
             SHOWONCE::
         
     envoy
-        Hey, it's no problem. And don't worry, most people will treat you just fine here.
+        Хей, без проблем. И не беспокойся об этом, большинство людей тут отнесутся к вам неплохо.
             SHOWONCE::
-        If we were in Chicago or New York or something, we'd have you land on the roof, but...
+        Если бы мы были в Чикаго или Нью-Йорке, нам бы пришлось приземлиться на крыше, но...
             SHOWONCE::
-        With how busy the bureau has been, we've had so many obesk visitors,
+        Учитывая насколько загружно бюро, у нас полно гостей-обесков,
             SHOWONCE::
-        Your people are practically a part of the city at this point.
+        На этом моменте можно сказать что ваш народ почти что часть города теперь.
             SHOWONCE::
     
     sourceless
@@ -3221,9 +3221,9 @@ start
             SHOWONCE::
 
     envoy
-        And frankly, it helps with public image. Seeing you out and about with the people, it...
+         И признаться честно, это помогает с общественным имиджем. Видеть вас здесь, среди всех этих людей...
             SHOWONCE::
-        It helps stomp out that damn viral scare.
+         Это помогает вытравить грёбанный viral fear.
             SHOWONCE::
     
     akizet
@@ -3233,7 +3233,7 @@ start
             SHOWONCE::
 
     envoy
-        You know what, speaking of public image,
+        Кстати говоря об общественном имидже,
             SHOWONCE::
     
     sourceless
@@ -3241,9 +3241,9 @@ start
             SHOWONCE::
 
     envoy
-        There's this little place up ahead, a cafe. Why don't we stop there before heading in?
+        Здесь есть местечко впереди - кафе. Перед тем как продолжить, почему бы нам не остановиться в нём?
             SHOWONCE::
-        Just keep going straight, it's past the bureau.
+         Просто продолжайте идти вперёд, оно сразу после бюро.
             SHOWONCE::
     
     RESPOBJ::envoyStreetResponses
@@ -3253,9 +3253,9 @@ talkpeople
         you do not mind if i interact with your streetwalkers?
     
     envoy
-        Not at all! As long as I'm around, it's fine. 
-        Like I said, this is probably the most obesk-friendly city in the states.
-        At worst, you'll get a couple glares. There are probably still a few viral theorists out there.
+        Вовсе нет! Пока я здесь всё в порядке 
+        Как я и говорил, это пожалуй наиболее дружелюбный к обескам город в штатах.
+        В худшем случае ты наткнёшься на парочку угрюмых взглядов. Наверняка ещё остались некоторые viral theorists.
     
     akizet
         i see!
@@ -3267,7 +3267,7 @@ cafe
         where is the 'cafe'?
     
     envoy
-        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
+        Это совсем по-близости. Просто продолжай идти вдоль улицы, ищи ˜/ŒôfªœДŠ/d 0E@яҏkϒю жёлтую дверь.
     
     RESPOBJ::envoyStreetResponses
 
@@ -3277,8 +3277,8 @@ flowers
         where is that?
     
     envoy
-        It's getting pretty late, Akizet, I'm not sure if they're still open...
-        But just keep going down this street and it's on the corner.
+        Уже довольно поздно, Акизет, я даже не уверен, что они будут открыты...
+        Но просто продолжай идти прямо по улице, он должен быть сразу за углом.
     
     RESPOBJ::envoyStreetResponses
                 `),
@@ -3384,8 +3384,8 @@ start
         HE SPEAKS LOWLY, AS TO NOT EARN THE ATTENTION OF THE CLOAKED STREETWALKER
     
     envoy
-        What is it?
-        You know Oliver?
+        Что такое?
+        Ты знакома с Оливером?
 
     akizet
         hmm...
@@ -3393,7 +3393,7 @@ start
         to speak so loudly, so constantly, would be certain death in my previous occupation 
     
     envoy
-        You worked on the surface, right?
+        Ты работала на поверхности, верно?
     
     akizet
         yes, intermittently! before the rise of--
@@ -3403,16 +3403,16 @@ start
         HE SMILES WIDELY AND SIGNALS US TO COME CLOSER. 
 
     cloaked streetwalker
-        Hey! Gordon! Who's this?
+        Эй! Гордон! Кто это?
             EXEC::body.classList.add('zoom')
-        Let me guess, exchange initiative?
+        Дай-ка угадаю, инициатива по обмену?
     
     envoy
-        Actually, Oliver, this is Akizetesche! "Signal" initiative.
+        Вообще-то, Оливер, это Акизетеше! Инициатива "Сигнал".
 
     cloaked streetwalker
-        No shit! I didn't know you got assigned into that.
-        Nice to meet ya, Akizetesche!
+        Ахереть! Не знал, что тебя назначили для этого.
+        Рад встрече, Акизетеше!
 
     sourceless
         I DIP MY HEAD, RECEPTORS CURLED BACK RESPECTFULLY.
@@ -3422,8 +3422,8 @@ start
         you may call me akizet
 
     cloaked streetwalker
-        Sure thing, Akizet.
-        And hey, I'd love to chat, but I'm on booth duty in like 10.
+        Без б, Акизет.
+        И эй, я бы даже рад поговорить, только вот я заступаю на дежурство около десяти. 
 
     envoy
         No worries, Oliver. We've got business too.
@@ -3500,7 +3500,7 @@ tv1
         I SENSE THE ENVOY LEANING FORWARD TO GAUGE MY REACTION TO THE ELECTRIC BOX
 
     envoy
-        Considering getting an air fryer?
+        Задумались о покупке аэрогриля?
 
     sourceless
         HE LAUGHS, BUT I DO NOT UNDERSTAND
@@ -3542,7 +3542,7 @@ tv2
         HE MAKES A FUNNY NOISE WITH HIS NOSE, THEN SHAKES HIS HEAD
     
     envoy
-        It's total nonsense. Don't worry about it.
+        Это полная чушь. Не зацикливайся на этом.
 
     sourceless
         HIS QUICK DISMISSAL SETS MY RECEPTORS AT EASE
@@ -3657,7 +3657,7 @@ start
         WE SIT. HE SETS A METAL BOX ON THE TABLE. MY RECEPTORS ARE CURLED INTO SPIRALS. THIS WILL BE DIFFICULT
         
     envoy
-        So Akizet, what've you found? It's been a while since you've come to talk in-person.
+        Итак, Акизет, что вы нашли? Мы довольно-таки давно не разговаривали вживую.
     
     akizet
         yes, it has been a while! i have been consumed with our work, you see
@@ -3678,8 +3678,8 @@ start
             SHOWIF::[["citystreet_gotdrinks"]]
     
     envoy
-        The running theory was that it was just noise being broadcast to draw attention, right?
-        You're saying that's no longer the case?
+        Текущая теория говорила о том, что это просто звук транслируемый для привлечения внимания, верно?
+        Хочешь сказать это больше не причина?
 
     akizet
         yes, exactly...
@@ -3691,9 +3691,9 @@ start
         HIS FACE CONTORTS IN CONFUSION. DOES HE NOT BELIEVE ME?
     
     envoy
-        So, what's it saying?
-        ...And how'd your team reach that conclusion?
-        Haven't you been listening to this thing for... what, thirty-two years?
+        Итак, что оно говорит?
+        ...И как твоя команда пришла к этому?
+        Haven't you been listening to this thing for... what, thirty-two years? Разве вы не слушали это на протяжении... кажется, тридцати двух лет? 
     
     akizet
         your answer comes simply, gordon:
@@ -3723,7 +3723,7 @@ start
         NO, YOU ARE RIGHT
 
     envoy
-        What?
+        Что?
         
     akizet
         nothing--apologies, it is just the scale of this that has been weighing upon me.
@@ -3736,18 +3736,18 @@ start
         BEFORE HE SPEAKS, HE LEANS FORWARDS IN HIS CHAIR. HIS EYES ARE DISTANT.
 
     envoy
-        Jesus...        
-        Akizet, so if all this is right--and you said this theory is <em>confirmed</em>, right?
+        Господи...        
+        Акизет, если это и в самом деле правда--и ты говоришь что эта теория <em>подтверждена</em>, верно?
     
     akizet
         without any doubt, my friend. 
         the consistent patterns of raw thought appear at regular percentages of message length
     
     envoy
-        So this thing that's been in our ocean,
-        before your people ever even showed up,
-        and is using <em>obesk</em> communication methods,
-        is intelligent?
+        Получается эта вещь, что была у нас в океане
+        ещё до того, как твой народ даже показался,
+        и использует <em>обесковые</em> методы коммцникации,
+        ...разумна?
     
     akizet
         well no, that may not entirely be the case
@@ -3758,8 +3758,8 @@ start
         THE ENVOY RUNS HIS FINGERTIPS ACROSS HIS HAIRLINE
 
     envoy
-        All right. Yeah, that's news. I see why you wanted to talk in private this time.
-        How many people have you told about this?
+        Что же. Да, это определённо что-то новенькое. Теперь я понимаю для чего в этот раз ты хотела поговорить приватно.
+        И как много тех, кому ты рассказала об этом?
     
     akizet
         no one beyond my team. we are all keeping this information to ourselves for now.
@@ -3772,9 +3772,9 @@ start
         THE ENVOY EXHALES LOUDLY, AND CLASPS HIS HANDS TOGETHER.
 
     envoy
-        All right, here's what I suggest we do.
-        I need to talk to a few people. We'll keep this info confidential. Internal, with the bureau.
-        Do you think this thing could be a threat?
+        Что же, вот что я предлагаю.
+        Мне нужно поговорить с несколькими людьми. Мы будем держать эту инфрмацию в конфиденциальности. Внутри, с бюро.
+        Ты считаешь эта вещь может оказаться угрозой?
     
     sourceless
         I LAUGH A LITTLE
@@ -3785,14 +3785,14 @@ start
         i do not think it has plans to engage in any other activities in this time
     
     envoy
-        Well, at least there's that, huh?
+        Хорошо, по крайней мере что-то, а?
     
     sourceless
         HE TAKES A MOMENT TO FINISH HIS DRINK BEFORE CONTINUING.
             SHOWIF::[["citystreet_gotdrinks"]]
 
     envoy
-        Did you have any other findings to share?
+        Есть ещё чем поделиться?
 
     akizet
         nothing with as much certainty
@@ -3800,9 +3800,9 @@ start
         it is about where i estimated last time we met
     
     envoy
-        Got it. Let's wrap this up then.
-        Akizet, keep this quiet for now. It's not just your side that could get riled up.
-        We'll be in touch, all right?
+        Понял. Тогда давай закончим на этом.
+        Акизет, пока что держи это в тайне. Это может взбаломутить на только вашу сторону.
+        Будем на связи, хорошо?
     
     sourceless
         WE BOTH RISE. I SENSE THE WEIGHT OF MY DREAD BEING SHARED UPON HIS SHOULDERS
@@ -3811,7 +3811,7 @@ start
         of course, gordon.
     
     envoy
-        Here, I'll walk you out.
+        Пойдём, я тебя провожу.
 
     sys
         ATTENTION::'memory stream end';'render terminated'
