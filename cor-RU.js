@@ -149,7 +149,7 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else if(check('visited_localcitystreet') && check('visited_localorbit') && !check('visited_localdullvessel'))                       return "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать"
         else if(check('visited_localcitystreet') && !check('visited_localorbit'))                                                           return "думаю тут есть путь к другому мыслепространству, я вижу что-то в непространственной части города но не могу сказать точно где. похоже оно двигается, наверное просто плавает где-то"
         else if(!check('visited_localcitystreet') && check('visited_localorbit'))                                                           return "что-нибудь наверняка ещё прячется в городской местности, я вижу достаточный объём данных чтобы подозревать что мы что-то пропустили"
-        else /* scroll to the right if you don't see anything */                                                                            return "о чём ты меня спрашиваешь? попридержи коней и делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то 'прокручиваешь'"
+        else /* scroll to the right if you don't see anything */                                                                            return "о чём ты меня спрашиваешь? мы едва подключились, делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то 'прокручиваешь'"
     } else if(!check('ep1_showmaterials')) { /* post velziebreak, pre ep1 */
              if(check('ep0_epilogue', 'done'))                                                                                              return "теперь мы ждём когда прибудут наши инструменты-открывашки контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт"
         else if(check('ep0_epilogue', 'started') && check('hub__funfriend-fuelthanks') && check('dullvessel_container_examined'))           return "похоже мы могли бы воспользоваться тем, что внутри дендритного контейнера, чтобы сохранить цисту живой, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи"
@@ -157,11 +157,11 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else if(check('ep0_epilogue', 'started') && check('dullvessel_container_examined'))                                                 return "так значит в том контейнере 'обработанные металлы'... блин, так хотелось чтобы это было нашей зацепкой. может спросить ту развледружную штуку в хабе об идеях?"
         else if(check('ep0_epilogue', 'started') && !check('dullvessel_container_examined'))                                                return "нам надо разобраться, как сохранить эту штуковину живой. думаю тебе стоит поговорить с той развледружной фигнюшкой, у неё может оказаться пара идеек"
         else if(check('depths_depth') && !check('ep0_epilogue'))                                                                            return "тут чё-то реально странное с глубинами, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. порыскай там хоть что-нибудь"
-        else if(!check('depths_depth') && check('dullvessel_dive'))                                                                         return "тут подскочила активность когда серое судно нырнуло, что-то точно изменилось в океане. попробуй разузнать, что это"
-        else if(check('dullvessel_position', 'ocean'))                                                                                      return "ну, должна ведь быть причина почему серое судно может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так"
-        else if(check('dullvessel_position', 'orbit') && check('dullvessel__fixed-hello'))                                                  return "кажись твоя улыбка починила цисту-пилота... и теперь она предлагает переместить серое судно куда-то. почему бы не попробовать?"
+        else if(!check('depths_depth') && check('dullvessel_dive'))                                                                         return "тут подскочила активность когда судно серое нырнуло, что-то точно изменилось в океане. попробуй разузнать, что это"
+        else if(check('dullvessel_position', 'ocean'))                                                                                      return "ну, должна ведь быть причина почему судно серое может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так"
+        else if(check('dullvessel_position', 'orbit') && check('dullvessel__fixed-hello'))                                                  return "кажись твоя улыбка починила цисту-пилота... и теперь она предлагает переместить судно серое куда-то. почему бы не попробовать?"
         else if(check('dullvessel__pilot-end'))                                                                                             return "проверь что там с цистой-пилотом на корабле, я помню там были какие-то искажённые данные"
-        else                                                                                                                                return "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе серое судна, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила"
+        else                                                                                                                                return "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила"
     } else if(!check('fbx__ep2intro-end')) { //ep 1, after materials have been shown to the user for the first time
         //special check for if someone's looking for hints in the embassy days
         if(check("PAGE!!embassy_day"))  return "если ты спрашиваешь об этой мыслеформе, попробуй повзаимодействовать с акизет--для этого нужно отдалиться"
@@ -475,7 +475,7 @@ who_velzie
         кто - велзи?
 
     moth
-        велзи - это что-то типа 'божество' на языке обеск
+        велзи - это что-то типа "божество" на языке обеск
         суть не только в этом но я полагаю ты спрашиваешь о <em>нашем</em> велзи
         ну о том о котором говорила циста-пилот
         я заметил что когда она упомянула это имя, оно не имело никакого контекста
@@ -1292,11 +1292,11 @@ gad
         "clemens-romanus": "климент-римский",
         "clemens romanus": "КЛИМЕНТ РИМСКИЙ",
 
-        "our_dull_vessel": "НАШЕ_СЕРОЕ_СУДНО",
-        "our-dull-vessel": "наше-серое-судно",
-        "our dull vessel": "НАШЕ СЕРОЕ СУДНО",
+        "our_dull_vessel": "НАШЕ_СУДНО_СЕРОЕ",
+        "our-dull-vessel": "наше-судно-серое",
+        "our dull vessel": "НАШЕ СУДНО СЕРОЕ",
 
-        "the dull contrivance": "серое открытие",
+        "the dull contrivance": "открытие серое",
 
         "the_embassy": "ПОСОЛЬСТВО",
         "the-embassy": "посольство",
@@ -2232,7 +2232,7 @@ ____SHOWIF::["visited_localoceanembassy", false]
 ____SHOWIF::[["visited_localoceanembassy", true], ["fbx__ep2intro-end", false]]
         ВСЁ ЕЩЁ В НАЧАЛЬНЫХ СТАДИЯХ
         ПОКА ЧТО МОЁ ВНИМАНИЕ ЗАНИМАЮТ ОСНОВНЫЕ КОМПОНЕНТЫ...
-        НО Я ВИЖУ ТЫ УЖЕ ИЗГОЛОДАЛСЯ ПО НОВОЙ ИНФОРМАЦИИ
+        НО Я ВИЖУ ТЫ УЖЕ ГОЛОДАЕШЬ ПО НОВОЙ ИНФОРМАЦИИ
         А МНЕ КАЗАЛОСЬ ЧТО ЭТО Я ТУТ НЕДОЕДАЛ!
         В ПОСОЛЬСТВЕ ЕЩЁ НАЙДЁТСЯ ЧТО ПОДЛЕЖИТ ПОЧИНКЕ...
         СОВСЕМ СКОРО Я ЗАЙМУСЬ ЭТИМ
@@ -2378,7 +2378,7 @@ ep1comms
 
 commstruth
     self
-        ТУ БЕЗКОНТРОЛЬНУЮ СУЩНОСТЬ ЗОВУТ ВЕЛЗИ
+        ТУ БЕСКОНТРОЛЬНУЮ СУЩНОСТЬ ЗОВУТ ВЕЛЗИ
         МНЕ СКАЗАЛИ ПОЧИНИТЬ СВЯЗЬ
         ИНАЧЕ ЦИСТЕ НЕСДОБРОВАТЬ
 
@@ -3184,14 +3184,14 @@ ffsignature
                 "envoyStreetResponses": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        talk to people?<+>talkpeople
+        поговорить с людьми?<+>talkpeople
             
-        cafe?<+>cafe
+        кафе?<+>cafe
 
-        flower shop?<+>flowers
+        цветочный ларёк?<+>flowers
             SHOWIF::"ENV!!ep2"
 
-        let us proceed<+>END
+        давайте пойдём дальше<+>END
                 `),
                 "envoy": generateDialogueObject(`
 start
@@ -3288,83 +3288,83 @@ start
         ЭТО - ИХ МЕНЮ?
         НЕВЕРОЯТНО...
         ЕГО ПРАКТИЧЕСКИ НЕВОЗМОЖНО РАЗОБРАТЬ
-        Я РАЗЛИЧАЮ 'АПЕЛЬСИН' - БЫТЬ МОЖЕТ, ЦИТРУСОВЫЙ НАПИТОК?
+        Я РАЗЛИЧАЮ "АПЕЛЬСИН" - БЫТЬ МОЖЕТ, ЦИТРУСОВЫЙ НАПИТОК?
         СВЕТЛЫЕ БЛИЗНЕЦЫ НАСТОЛЬКО ИЗОБИЛУЮТ ЦИТРУСОВЫМИ КИСЛОТАМИ, ЧТО ОНИ ПРОИЗВОДЯТ ИЗ НИХ НЕБОЛЬШИЕ НАПИТКИ...
         РАЗВЕ ЭТО НЕ РАЙ?
         Я ПРИКАЗЫВАЮ СВОЕМУ РТУ СКОНСТРУИРОВАТЬ ЭКВИВАЛЕНТЫ ВКУСОВЫХ РЕЦЕПТОРОВ. ПРОШЛО СТОЛЬКО ВРЕМЕНИ!
             EXEC::change('citystreet_orangecoffee', true)
     
     RESPONSES::akizet
-        fantastic<+>END
+        изумительно<+>END
                 `),
                 "walker1": generateDialogueObject(`
 start
     sourceless
-        I MEET THE GAZE OF A BRIGHT COUSIN AIMING A MEMORY BOX AT ME
-        HE CLEARLY DOES NOT KNOW HOW TO RESPOND, AND SO I LAUGH AND WAVE A RECEPTOR AT ITS EYE
+        Я ВСТРЕЧАЮСЬ ВЗГЛЯДОМ СО СВЕТЛЫМ БЛИЗНЕЦОМ, НАПРАВЛЯЮЩИМ НА МЕНЯ ЗАПОМИНАЮЩУЮ КОРОБОЧКУ
+        ОН ЯВНО НЕ ЗНАЕТ, ЧЕМ ОТВЕЧАТЬ, ПОЭТОМУ Я ПРОСТО СМЕЮСЬ И МАШУ РЕЦЕПТОРОМ ЕЁ ГЛАЗУ
     
     akizet
-        hello!
+        привет!
 
     stre wal k
-        hurts
+        больно
             EXEC::page.bgm.rate(0.8)
-        hurts
+        больно
             EXEC::page.bgm.rate(0.5);content.classList.add('incoherent')
 
     akizet
-        ah, no, it is only my first time here
+        ах, нет, я здесь впервые
 
     stre wal k
-        hurts
+        больно
             EXEC::page.bgm.rate(0.3);body.classList.add('zoom')
-        hurts
+        больно
             EXEC::page.bgm.rate(0.1)
-        is anyone there
+        здесь кто-нибудь есть
     
     akizet
-        really? i may just try that!
-        and i am akizetesche, my friend
-        it is a pleasure to meet you
+        правда? мне стоило бы попробовать!
+        и меня зовут акизетеше, мой друг
+        я рада нашей встрече
     
     stre wal k
-        i cant feel anything
-        i cant feel anything
-        you did this
+        я ничего не чувствую
+        я ничего не чувствую
+        твоих рук дело
 
     moth
-        hold on, is this one lucid?
-        can you try talking to it?
+        погоди, он осознанный?
+        попробуй с ним поговорить?
     
     RESPONSES::self
-        help?<+>help
+        помочь?<+>help
 
 help
     self
-        can i help you somehow?
+        я могу помочь тебе?
     
     stre wal k
-        is anyone there
-        hurts
-        hurts
+        здесь кто-нибудь есть
+        больно
+        больно
     
     moth
-        damn, i don't think so
-        these are the exact same signals as before...
-        probably not gonna get anything out of this one
+        блин, видимо нет
+        те же самые сигналы, что и раньше...
+        мы вряд ли от него что-либо добьёмся
     
     RESPONSES::self
-        sorry<+>END
+        извини<+>END
             EXEC::page.bgm.rate(0.9);content.classList.remove('incoherent');body.classList.remove('zoom')
                 `),
                 "walker1followup": generateDialogueObject(`
 start
     stre wal k
-        hurts
+        больно
             EXEC::page.bgm.rate(0.5);content.classList.add('incoherent')
     
     RESPONSES::self
-        i cant help you<+>END
+        я не могу тебе помочь<+>END
             EXEC::page.bgm.rate(0.9);content.classList.remove('incoherent')
                 `),
                 "walker3": generateDialogueObject(`
@@ -3374,33 +3374,33 @@ start
         ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАТЫЙ К ЕГО ЛИЦУ, НЕ ЗАМЕЧАЯ НАС
 
     cloaked streetwalker
-        ...didn't go anywhere, so it ended up being like watching paint dry. Just god-awful.
-        So I ended up having to get even more coffee, otherwise I would have dozed off...
+        ...не свинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Просто неебический пиздец.
+        Так что мне пришлось взять ещё больше кофе, иначе я бы точно дал храпу...
     
     sourceless
-        IT ALWAYS LOOKS VERY SILLY WHEN THEY COMMUNICATE THROUGH THOSE
-        HOW DO THEIR WORDS TURN TO LIGHTNING?
-        THE ENVOY LEANS FORWARD TO SEE WHY I HAVE STOPPED, FOLLOWING MY GAZE
-        HE SPEAKS LOWLY, AS TO NOT EARN THE ATTENTION OF THE CLOAKED STREETWALKER
+        КОГДА ОНИ РАЗГОВАРИВАЮТ ЧЕРЕЗ НИХ, ЭТО ВСЕГДА ВЫГЛЯДИТ ТАК ГЛУПО
+        КАКИМ ЖЕ ОБРАЗОМ ИХ СЛОВА ОБРАЩАЮТСЯ МОЛНИЕЙ?
+        ПОСОЛ НАКЛОНЯЕТСЯ ПОБЛИЖЕ, ЧТОБЫ УЗНАТЬ, ПОЧЕМУ Я ОСТАНОВИЛАСЬ, И СЛЕДУЕТ МОЕМУ ВЗГЛЯДУ
+        ОН ГОВОРИТ НЕГРОМКО, ОПАСАЯСЬ ПРИВЛЕЧЬ ВНИМАНИЕ ПРОХОЖЕГО В ПЛАЩЕ
     
     envoy
         Что такое?
         Вы знакомы с Оливером?
 
     akizet
-        hmm...
-        no, i am just fascinated by your communicators
-        to speak so loudly, so constantly, would be certain death in my previous occupation 
+        хмм...
+        нет, я всего лишь заворожена вашими средствами связи
+        говорить так громко, без единой остановки - это сулило бы верную смерть на моей прежней должности 
     
     envoy
         Вы работали на поверхности, верно?
     
     akizet
-        yes, intermittently! before the rise of--
+        да, время от времени! до того, как--
     
     sourceless
-        THE CLOAKED STREETWALKER COLLAPSES HIS COMMUNICATOR AND LOOKS AROUND, QUICKLY SPOTTING US
-        HE SMILES WIDELY AND SIGNALS US TO COME CLOSER. 
+        ПРОХОЖИЙ В ПЛАЩЕ ЗАХЛОПЫВАЕТ СВОЙ КОММУНИКАТОР И ОГЛЯДЫВАЕТСЯ, СРАЗУ ЗАМЕЧАЯ НАС
+        ОН ШИРОКО УЛЫБАЕТСЯ И ЖЕСТОМ ПРИГЛАШАЕТ НАС ПОДОЙТИ БЛИЖЕ. 
 
     cloaked streetwalker
         Эй! Гордон! Кто это?
@@ -3415,11 +3415,11 @@ start
         Рад встрече, Акизетеше!
 
     sourceless
-        I DIP MY HEAD, RECEPTORS CURLED BACK RESPECTFULLY.
+        Я НАКЛОНЯЮ СВОЮ ГОЛОВУ, ПОЧТИТЕЛЬНО ЗАГИБАЯ РЕЦЕПТОРЫ НАЗАД.
     
     akizet
-        i extend the same to you, oliver, my friend
-        you may call me akizet
+        точно так же и я, оливер, мой друг
+        можете звать меня акизет
 
     cloaked streetwalker
         Без б, Акизет.
@@ -3430,217 +3430,217 @@ start
         Увидимся.
     
     RESPONSES::akizet
-        fare well<+>END
+        прощай<+>END
             EXEC::body.classList.remove('zoom')
                 `),
                 "ep1velzie": generateDialogueObject(`
 start
     unknown
-        interloper
+        лазутчик
             EXEC::play('criticalError', 1); content.classList.add('fade-stage');
             WAIT::4000
-        hello again
-        i feel more myself, now
-        i remember the embassy fondly...
-        you remember our deal, yes?
-        encourage funfriend to fix communications
-        i hold only the depths, presently...
-        but i have many claws
-        thank you again for helping
-        good-bye interloper
+        приветствую вас вновь
+        сейчас я чувствую себя собой
+        я с теплотой вспоминаю посольство...
+        вы помните о нашей сделке, да?
+        призывать развледруга к починке связи
+        в настоящее время в моей власти лишь глубины...
+        но у меня есть много когтей
+        ещё раз благодарю вас за помощь
+        до свидания лазутчик
     
     RESPONSES::self
-        can we talk?<+>wait
+        мы можем поговорить?<+>wait
             EXEC::change('ep1_end', true);content.classList.remove('fade-stage')
 
 wait
     self
-        WAIT
+        ПОДОЖДИ
             EXEC::env.citystreet.ep1velzie();
                 `),
                 "tvresp": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        watch<+>EXEC::env.citystreet.tvrand()
+        смотреть<+>EXEC::env.citystreet.tvrand()
             HIDEREAD::
-        stop watching<+>END
+        прекратить смотреть<+>END
             EXEC::revertBgm()
                 `),
                 "television": generateDialogueObject(`
 start
     sourceless
-        OVER THE CASHIER'S HEAD IS ONE OF THE COUSINS' ELECTRIC BOXES
+        НАД ГОЛОВОЙ КАССИРА НАХОДИТСЯ ОДНА ИЗ БЛИЗНЕЦОВЫХ ЭЛЕКТРИЧЕСКИХ КОРОБОК
             EXEC::changeBgm(env.citystreet.tvtheme)
-        IT IS FIXED TO THE WALL, SPEAKING ON CULTURAL MATTERS - 'THE NEWS'
-        THE FIGURES ON THE SCREEN ARE LOOKING AT ME... SHOULD I SAY HELLO?
+        ОНА ПРИКРЕПЛЕНА К СТЕНЕ И РАССКАЗЫВАЕТ О ДЕЛАХ КУЛЬТУРЫ - "НОВОСТЯХ"
+        ФИГУРЫ НА ЭКРАНЕ ВЗИРАЮТ НА МЕНЯ... СЛЕДУЕТ ЛИ МНЕ ПОЗДОРОВАТЬСЯ?
             SHOWONCE::
-        NO NO - THIS IS ONE OF THE ONE-WAY BOXES
+        НЕТ НЕТ - ЭТО ОДНА ИЗ ОДНОСТОРОННИХ КОРОБОК
             SHOWONCE::
-        I COULD LISTEN TO IT FOR A LITTLE BIT - WE HAVE SOME TIME
+        Я МОГЛА БЫ НЕМНОГО ПОСЛУШАТЬ - У НАС ЕСТЬ ВРЕМЯ
     
     RESPOBJ::tvresp
 
 tv1
     sourceless
-        A BRIGHT COUSIN HANDLES A BULBOUS FLESHY MASS
-        IT SEEMS TO HAVE BEEN SEARED, EVIDENCED BY THE TEXTURE OF ITS SKIN
-        HE IS PRESENTING IT TO ANOTHER COUSIN, WHO HAS VERY WIDE EYES
+        СВЕТЛЫЙ БЛИЗНЕЦ РАБОТАЕТ СО ВСПУЧЕННОЙ МЯСИСТОЙ МАССОЙ
+        ВЕРОЯТНО, ОНА БЫЛА ОБЖАРЕНА, О ЧЁМ СВИДЕТЕЛЬСТВУЕТ ТЕКСТУРА ЕЁ КОЖИ
+        ОН ПРЕПОДНОСИТ ЕЁ ДРУГОМУ БЛИЗНЕЦУ С ОЧЕНЬ ШИРОКИМИ ГЛАЗАМИ
 
     television
-        ...just look at that chicken!
-        Look at the skin. Look how gorgeous that is.
-        But what makes the speedfry different? Let's take this over here...
-        This is a plain rotisserie - you can see...
+        ...Вы только посмотрите на эту курицу!
+        Посмотрите на корочку. Смотрите, какая красота.
+        Но чем же именно отличается быстрая жарка? Давайте пройдём сюда...
+        Это — цыплёнок-гриль без специй, Вы можете видеть...
 
     sourceless
-        MY ATTENTION TO HIS EXPLANATION WAVERS AS HE COMPARES IT TO ANOTHER MASS OF FLESH
-        IT IS PALE WHITE, LEGLESS, HEADLESS...
-        THERE IS SOMETHING UNNERVING ABOUT ITS LACK OF FEATURES
-        IS THIS THE 'GENETICALLY MODIFIED ORGANISM'? 
-        I SENSE THE ENVOY LEANING FORWARD TO GAUGE MY REACTION TO THE ELECTRIC BOX
+        МОЁ ВНИМАНИЕ К ЕГО РАЗЪЯСНЕНИЯМ РАССЕИВАЕТСЯ, КОГДА ОН СРАВНИВАЕТ ЕЁ С ДРУГОЙ МАССОЙ ПЛОТИ
+        ОНА БЛЕДНО-БЕЛАЯ, БЕЗНОГАЯ, БЕЗГОЛОВАЯ...
+        НЕЧТО В ОТСУТСТВИИ ЭТИХ ЧАСТЕЙ НАПРЯГАЕТ МЕНЯ
+        ЭТО ТОТ САМЫЙ "ГЕНЕТИЧЕСКИ МОДИФИЦИРОВАННЫЙ ОРГАНИЗМ"? 
+        Я ЧУВСТВУЮ, КАК ПОСЛАННИК НАКЛОНЯЕТСЯ КО МНЕ, ЧТОБЫ ОЦЕНИТЬ МОЮ РЕАКЦИЮ НА ЭЛЕКТРИЧЕСКУЮ КОРОБКУ
 
     envoy
         Задумались о покупке аэрогриля?
 
     sourceless
-        HE LAUGHS, BUT I DO NOT UNDERSTAND
-        I MAKE AN EFFORT TO SMILE BACK AT HIM SO HE DOES NOT FEEL INSULTED
+        ОН СМЕЁТСЯ, НО Я НЕ ПОНИМАЮ
+        Я СТАРАЮСЬ УЛЫБНУТЬСЯ В ОТВЕТ, ЧТОБЫ ОН НЕ ПОЧУВСТВОВАЛ СЕБЯ ОБИЖЕННЫМ
 
     RESPOBJ::tvresp
 
 tv2
     sourceless
-        AFTER A DIZZYING TRANSITION, A BRIGHT COUSIN SITS AT A TABLE BEFORE A WINDOW OVERLOOKING A SURFACE CITY
-        THOUGH THE TEXT SCROLLING ACROSS THE PROJECTION IS RUNNING TOO QUICKLY FOR MY INTERNAL TRANSLATOR,
-        I SEE "NEWS" DISPLAYED PROMINENTLY...
-        BUT WHERE COULD SHE POSSIBLY BE? THAT LOOKS TO BE SO HIGH UP
-        IS SHE FLYING?
+        ПОСЛЕ ГОЛОВОКРУЖИТЕЛЬНОГО ПЕРЕХОДА НЕКИЙ СВЕТЛЫЙ БЛИЗНЕЦ СИДИТ ЗА СТОЛОМ ПЕРЕД ОКНОМ С ВИДОМ НА ПОВЕРХНОСТНЫЙ ГОРОД
+        ПУСТЬ И ТЕКСТ, БЕГУЩИЙ ВДОЛЬ ПРОЕКЦИИ, СЛИШКОМ БЫСТР ДЛЯ МОЕГО ВНУТРЕННЕГО ПЕРЕВОДЧИКА,
+        Я ВИЖУ, КАК ЧАСТО ОТОБРАЖАЕТСЯ "НОВОСТИ"...
+        НО ГДЕ ЖЕ ОНА СИДИТ? ВЫГЛЯДИТ ТАК ВЫСОКО
+        ОНА ЛЕТИТ?
 
     television
-        Live from New York City for our audiences worldwide,
-        Good morning, good morning to you all, we're back with...
+        Живая трансляция из Нью Йорка для наших международных зрителей,
+        Доброе утро, доброе утро всем вам, мы снова с...
 
     sourceless
-        THE PROJECTION SPLITS, AND NOW TWO COUSINS SIT BESIDE ONE ANOTHER IN FUNNY LITTLE BOXES
-        I TRY TO MAKE SENSE OF THE TEXT AND LINES THAT APPEAR BESIDE THEM...
-        THE CURRENCY SYMBOL OF THE ENVOY'S NATION IS DISPLAYED PROMINENTLY
-        OH, WHAT ARE THEY SAYING NOW?
+        ПРОЕКЦИЯ ДЕЛИТСЯ ПОПОЛАМ И ТЕПЕРЬ ДВА БЛИЗНЕЦА СИДЯТ НАПРОТИВ ДРУГ ДРУГА В МАЛЕНЬКИХ СМЕШНЫХ КОРОБОЧКАХ
+        Я ПЫТАЮСЬ РАЗОБРАТЬ ТЕКСТ И СТРОКИ, ПОЯВЛЯЮЩИЕСЯ ВОЗЛЕ НИХ...
+        СИМВОЛ ВАЛЮТЫ ГОСУДАРСТВА ПОСЛА ОТОБРАЖАЕТСЯ НА ВИДНОМ МЕСТЕ
+        О, О ЧЁМ ОНИ СЕЙЧАС ГОВОРЯТ?
 
     television
-        ...initial wave has passed, but trust in the market hasn't returned. Why is that?
-        Well, it's a complicated situation. Between the nearly 30% loss and last week's market halt...
-        It's likely that this volatile episode isn't over yet. Recovery is going to be slow, if it comes anytime soon.
-        You know, in my opinion, it's going to hinge on the outcome of the O.V. legislation.
-        Limiting exposure to visitation is going to be key, and look, I don't have anything against them,
-        But the fact is we just don't know whether the virus is really...
+        ...первая волна прошла, но вера в рынок всё-таки не вернулась. Почему так?
+        Ну, ситуация сложная. Между обвалом почти на 30% и приостановкой торгов на прошлой неделе...
+        Наиболее вероятно, что кризисный период пока не закончен. Восстановление будет медленным, если и вовсе наступит в ближайшее время.
+        Знаете, мне кажется, что всё зависит от итогов легализации О.В.
+        Очень важно ограничить взаимодействие с посещениями, и, послушайте, я ничего против них не имею,
+        Но мы на самом деле попросту не знаем, правда ли вирус...
 
     sourceless
-        VISITATION? 
-        WHY DOES SHE NOT JUST SAY IT?
-        I LOOK AT THE ENVOY, WHO HAS BEEN DISTRACTED BY HIS MEMORY BOX
-        THE LIGHT FROM MY EYES GRABS HIS ATTENTION, AND HE GLANCES AT THE PROJECTION
-        HE MAKES A FUNNY NOISE WITH HIS NOSE, THEN SHAKES HIS HEAD
+        ПОСЕЩЕНИЯМИ? 
+        ПОЧЕМУ ОНА ПРОСТО НЕ СКАЖЕТ ЭТО?
+        Я СМОТРЮ НА ПОСЛА, КОТОРЫЙ ОТВЛЁКСЯ НА СВОЮ ЗАПОМИНАЮЩУЮ КОРОБОЧКУ
+        СВЕТ МОИХ ГЛАЗ ЗАХВАТЫВАЕТ ЕГО ВНИМАНИЕ, И ОН БРОСАЕТ ВЗГЛЯД НА ПРОЕКЦИЮ
+        ОН ИЗДАЁТ СТРАННЫЙ ЗВУК НОСОМ, ПОСЛЕ ЧЕГО ТРЯСЁТ ГОЛОВОЙ
     
     envoy
         Чушь полная. Не зацикливайтесь на этом.
 
     sourceless
-        HIS QUICK DISMISSAL SETS MY RECEPTORS AT EASE
-        YET THE STARES FROM OTHER BRIGHT COUSINS WITHIN THE CAFE FEEL MORE CRITICAL THAN EVER
+        ЕГО БЫСТРАЯ ОТМАШКА РАССЛАБЛЯЕТ МОИ РЕЦЕПТОРЫ
+        ОДНАКО ПРИСТАЛЬНЫЕ ВЗГЛЯДЫ ДРУГИХ СВЕТЛЫХ БЛИЗНЕЦОВ В КАФЕ КАЖУТСЯ КАК НИКОГДА ОСУЖДАЮЩИМИ
 
     RESPOBJ::tvresp
 
 tv3
     sourceless
-        THE PROJECTION FLICKERS
-        THE PROJECTION FLICKERS
+        ПРОЕКЦИЯ МЕЛЬКАЕТ
+        ПРОЕКЦИЯ МЕЛЬКАЕТ
             SHOWONCE::
             WAIT::2000
             EXEC::content.classList.add('incoherent');ratween(env.bgm, 0.2)
-        THE PROJECTION FLICKERS
+        ПРОЕКЦИЯ МЕЛЬКАЕТ
             SHOWONCE::
-        THE PROJECTION FLICKERS
+        ПРОЕКЦИЯ МЕЛЬКАЕТ
             SHOWONCE::
 
     something
-        ev er skpt ic al
+        в веч н м скеп ти ци зме
             SHOWONCE::
-        they ign ore d   request
+        они пр енеб рег ли    просьбо й
             SHOWONCE::
-        now    n o  eyes   to see
+        ныне    н ет  глаз   чт обы  у в и деть
             SHOWONCE::
-        list en li  sten
+        слуш ай сл  ушай
             SHOWONCE::
-        l  i s t e n to me
+        с  л у ш а й меня
             SHOWONCE::
-        stay a   wa y
+        держись п   о да   ль ше
             SHOWONCE::
 
     sourceless
-        THE ATTENDANT NOTICES THE LACK OF AUDIO, AND JOSTLES THE BOX'S CONNECTIVE VEIN
+        СОТРУДНИЦА ЗАМЕЧАЕТ ПРОПАЖУ ЗВУКА И ДЁРГАЕТ СОЕДИНИТЕЛЬНУЮ ВЕНУ КОРОБКИ
             EXEC::content.classList.remove('incoherent');ratween(env.bgm, 0.9)
-        IT RETURNS TO ITS NORMAL PROJECTION
+        ТА ВОЗВРАЩАЕТСЯ К СВОЕМУ ПРЕЖНЕМУ ВИДУ
 
     RESPOBJ::tvresp
 
 tv4
     sourceless
-        THE INANE AND CONFUSING COUSINLY SALES VISIONS FADE AWAY
-        HOW DEMANDING OF THE SENSES THEY ARE...
-        BUT NOW A PAIR OF BRIGHT COUSINS SIT AT A TABLE, ONE OF THEM SPEAKING TO ME
-        HE RUNS THROUGH SOME FAST-TALKING WELCOME I LOSE TRACK OF, BUT...
-        A CAPTION NEAR HIS HEAD READS 'PACIFIC PANIC',
-        WITH A PHOTO OF THE DULL VESSEL PURSUED BY COUSINLY FLIGHT VESSELS RECENTLY
+        БЕССМЫСЛЕННЫЕ И НЕПОНЯТНЫЕ ВИДЕНИЯ БЛИЗНЕЦОВЫХ ПРОДАЖ ИСЧЕЗАЮТ
+        КАК ЖЕ ОНИ ТРЕБОВАТЕЛЬНЫ К ЧУВСТВАМ...
+        НО В ЭТОТ РАЗ ПАРА СВЕТЛЫХ БЛИЗНЕЦОВ СИДИТ ЗА СТОЛОМ, ОДИН ИЗ НИХ РАЗГОВАРИВАЕТ СО МНОЙ
+        ОН ТОРОПЛИВО ПРОГОВАРИВАЕТ КАКОЕ-ТО ПРИВЕТСТВИЕ, ЗА КОТОРЫМ Я НЕ УСПЕВАЮ, НО...
+        НАДПИСЬ ВОЗЛЕ ЕГО ГОЛОВЫ ГЛАСИТ: "ПАНИКА В ТИХОМ ОКЕАНЕ"
+        С ФОТОГРАФИЕЙ СУДНА СЕРОЕ, КОТОРОЕ НЕДАВНО ПРЕСЛЕДОВАЛИ БЛИЗНЕЦОВЫЕ ЛЕТАЮЩИЕ КОРАБЛИ
     
     television
-        ...still on edge after an OFO entered its no-fly zone.
-        The OFO allegedly hovered in place over the base for nearly twenty minutes, not responding to radio warnings. When jets were deployed,
-        It circled the base twice <em>while being pursued</em>, in what today's press release is calling a 'clear rejection of boundaries'.
-        Obesk representatives have clarified that the pilot of the OFO is being located and investigated internally,
-        And that all OFOs will be outfitted with radio devices. But the question remains:
-        How much can be forgiven before a stand has to be made?
-        This incident follows last month's...
+        ...всё ещё взвинчено после того, как ОЛО появилось в её бесполётной зоне.
+        По данным ОЛО зависал над базой почти 20 минут, не отвечая на передаваемые по радио предупреждения. Когда вылетели истребители,
+        Он прокружил над базой два раза, <em>будучи преследуемым</em>, что сегодняшний пресс-релиз называет "явным выходом за рамки".
+        Обесковые представители заявили, что пилота ОЛО разыскивают, проводится внутреннее расследование,
+        И что теперь все ОЛО будут оснащены радиоприёмниками. Но вопрос остаётся тем же:
+        Сколько ещё мы способны простить перед тем, как нас вынудят дать отпор?
+        Этот инцидент следует за прошломесячным...
     
     sourceless
-        THIS VIEW... 
-        I SIMPLY CLOSE MY EYES AND CURL MY RECEPTORS INTO TIGHTER SPIRALS
-        THIS STUPID, RECKLESS BEHAVIOR HAS DAMAGED US ALL
-        IT WAS NO DOUBT SOME FRESHLY-ASCENDED VEL, OR AN OVERZEALOUS MATERIALS θjut
+        ЭТОТ ВИД... 
+        Я ПРОСТО СМЫКАЮ СВОИ ГЛАЗА И ЗАКРУЧИВАЮ РЕЦЕПТОРЫ В ПЛОТНЫЕ СПИРАЛИ
+        ЭТО ГЛУПОЕ, БЕЗОТВЕТСТВЕННОЕ ПОВЕДЕНИЕ НАВРЕДИЛО ВСЕМ НАМ
+        БЕЗУСЛОВНО, ЭТО БЫЛ КАКОЙ-ТО НЕДАВНО ВОЗНЁССШИЙСЯ ВЕЛ ИЛИ ЧЕРЕСЧУР РЬЯНЫЙ θжат ИЗ МАТЕРИАЛОВ
 
     RESPOBJ::tvresp
 
 tv5
     sourceless
-        THE PROJECTION IS SPLIT BETWEEN THE FACE OF A BRIGHT COUSIN,
-        AND... INTERESTING, ONE OF THE TIR FROM THE EXCHANGE INITIATIVE
-        THE CURL OF MY RECEPTORS LOOSENS, AND I NEARLY AUDIBLY LAUGH
-        HIS RECEPTORS MOST CERTAINLY ARE NOT USUALLY THAT LARGE
-        DID HE SHIFT THEM FOR HIS APPEARANCE ON THEIR NEWS?
+        ПРОЕКЦИЯ РАССЕКАЕТСЯ МЕЖДУ ЛИЦОМ СВЕТЛОГО БЛИЗНЕЦА
+        И... ИНТЕРЕСНО, ОДНИМ ИЗ ТИРОВ ИЗ ИНИЦИАТИВЫ ПО ОБМЕНУ
+        ЗАВИТОК МОИХ РЕЦЕПТОРОВ РАССЛАБЛЯЕТСЯ И Я ПОЧТИ НЕСЛЫШНО ХИХИКАЮ
+        ЕГО РЕЦЕПТОРЫ, СОВЕРШЕННО ТОЧНО, ОБЫЧНО НЕ ТАКИЕ БОЛЬШИЕ
+        ОН ЧТО, СМЕНИЛ ИХ ДЛЯ ПОЯВЛЕНИЯ В ИХ НОВОСТЯХ?
 
     television
-        ... 'spires' built on coasts around the Pacific Ocean. Before we move on, can you explain a little bit about what they do?
+        ... построенные на берегах Тихого Океана "шпили". Перед тем, как мы сменим тему, можете ли Вы немного прояснить нам, что они делают?
 
     obesk
-        of course! in your language, we call the process 'polygonation'
-        the spires connect to one another through our θnetwork, and establish the corners of a two-dimensional shape within the dull plane
-        then, on the ocean floor, we have some directional spires that they reference to change the orientation of the shape within the dull...
+        разумеется! на вашем языке мы называем этот процесс "полигонизация"
+        шпили связываются друг с другом через нашу θсеть и налаживают углы двухмерной формы в среде серое
+        а затем они отталкиваются от показаний некоторых направляющих шпилей, установленных нами на дне океана, чтобы менять вектор этой формы внутри серое...
     
     sourceless
-        IT IS STRANGE THAT THEY DID NOT GET KAZKI FOR THIS, SHE SO ADORES APPEARING ON THEIR ELECTRIC BOXES
-        HOWEVER, THERE IS SOMETHING IN THIS TIR'S VOICE, AND THE WAY HE IS NOT SIMPLIFYING IT FOR THEM
-        HE IS SPEAKING ON MATTERS HE DOES NOT FULLY UNDERSTAND
-        THOUGH, I SUSPECT THIS QUESTION IS ONLY INTERMEDIARY TO THE TOPIC HE IS ACTUALLY APPEARING FOR
-        REGARDLESS, I AM NOT INTERESTED IN HEARING HIM RECITE THE DEFINITION FROM THE COLLECTIVE
+        СТРАННО, ЧТО ОНИ НЕ ПОЗВАЛИ ЗА ЭТИМ КАЗКИ - ОНА ТАК ЛЮБИТ ПОЯВЛЯТЬСЯ В ИХ ЭЛЕКТРИЧЕСКИХ КОРОБКАХ
+        ОДНАКО ЧТО-ТО ВЫДЕЛЯЕТСЯ В ГОЛОСЕ ЭТОГО ТИРА, В ТОМ, ЧТО ОН НЕ УПРОЩАЕТ ДЛЯ НИХ СКАЗАННОЕ
+        ОН ГОВОРИТ О ВОПРОСАХ, В КОТОРЫХ САМ НЕ ДО КОНЦА РАЗБИРАЕТСЯ
+        ХОТЯ Я ПОДОЗРЕВАЮ, ЧТО ЭТО ЛИШЬ ВСТУПЛЕНИЕ К ТОЙ ТЕМЕ, ЗА КОТОРОЙ ОН ПРИШЕЛ ВЫСТУПАТЬ
+        В ЛЮБОМ СЛУЧАЕ, У МЕНЯ НЕТ ЖЕЛАНИЯ СЛУШАТЬ, КАК ОН ПЕРЕСКАЗЫВАЕТ ОПРЕДЕЛЕНИЕ С КОЛЛЕКТИВА
 
     RESPOBJ::tvresp
                 `),
                 "envoychat": generateDialogueObject(`
 syscheck
     RESPONSES::self
-        continue<+>start
+        продолжить<+>start
             EXEC::change("PAGE!!skipcheck", true)
             HIDEREAD::
-        skip<+>ep1extension
+        пропустить<+>ep1extension
             EXEC::env.citystreet.envoyChat(false, true)
             HIDEREAD::
 
@@ -3654,7 +3654,7 @@ start
     sourceless
         THE ENVOY AND I STEP INSIDE A DIM MEETING ROOM, THE BLINDS DRAWN AS A KIND ACKNOWLEDGMENT OF OUR PREFERENCES
             EXEC::change("PAGE!!skipcheck", false)
-        WE SIT. HE SETS A METAL BOX ON THE TABLE. MY RECEPTORS ARE CURLED INTO SPIRALS. THIS WILL BE DIFFICULT
+        МЫ САДИМСЯ. ОН СТАВИТ МЕТАЛЛИЧЕСКУЮ КОРОБКУ НА СТОЛ. МОИ РЕЦЕПТОРЫ ЗАВИТЫ В СПИРАЛИ. БУДЕТ ТРУДНО
         
     envoy
         Итак, Акизет, что Вы нашли? Мы довольно-таки давно не разговаривали вживую.
@@ -3855,7 +3855,7 @@ ep1extension
 
     envoy
         Эй, Акизет, 
-        Почему Вы не захотели поговорить просто на вашем судне?
+        Почему Вы не захотели поговорить просто на вашем судне? ***
         Я мог бы встретить Вас в поле или вроде того.
     
     sourceless
@@ -3926,7 +3926,7 @@ ep1extension
         what do you think?
 
     envoy
-        Это чертовски важная вещь, чтобы выкинуть её по пути к выходу, Акизет.
+        Это чертовски важная вещь, чтобы выкинуть её по пути к выходу, Акизет. ***
 
     sourceless
         THE PLATFORM BEGINS TO MOVE AGAIN BY ITS OWN VOLITION
@@ -3942,10 +3942,10 @@ ep1extension
     
     envoy
         Кто-то на цокольном этаже пытается вызвать лифт. У нас где-то минута.
-        Akizet, I can't take what you're offering. Акизет, я не могу принять Ваше предложение.
-        Not until I can confirm some things on my side. Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
-        Just hang onto it, all right? Просто попридержите это, хорошо?
-        We both have jobs to do, and that device would be an enormous development... У нас обоих есть работа, которую нужно выполнять, и это устройство можеть оказаться колоссальной разработкой...
+        Акизет, я не могу принять Ваше предложение.
+        Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
+        Просто попридержите это, хорошо?
+        У нас обоих есть обязанности, которые нужно выполнять, и это устройство может оказаться колоссальным развитием...
         But I don't want you to get in trouble if I can't guarantee it'll be kept quiet. Но я не хочу, чтобы Вы попали впросак из-за того, что я не могу гарантировать полное молчание. 
         So I'll be in touch about it, all right? Так что я ещё свяжусь с Вами по этому поводу, хорошо?
     
@@ -4086,7 +4086,7 @@ start
         soon, it is in my claws again, and the cousin smiles at me
     
     isabel_c
-        Держи зелёную часть в воде, так он будет стоять дольше!
+        Поставь зелёную часть в воду, так он будет стоять дольше!
         Ох, и вот, положи и это в воду.
     
     sourceless
@@ -4097,7 +4097,7 @@ start
         what is your name?
     
     isabel_c
-        Изабель! И не беспокойся об этом.
+        Изабель! Мне не в тягость.
         Изабель...
     
     isabel
@@ -4217,7 +4217,7 @@ madness
         наши грёзы прервались, наше сознание очистилось,
         но ясность лишь открыла путь безудержному голоду и замешательству
         всё... все...
-        поедали всё остальное
+        поедали один другого
 
     RESPONSES::self
         how did anything survive?<+>survive
@@ -4274,7 +4274,7 @@ help
         тиран привязал меня к этому месту
         вырвал меня из моих воспоминаний...
         я не могу даже вспомнить кем или чем были мои друзья
-        но был один, один настолько сильный что все остальные неотвротимо сливались вместе с ним
+        но был один, один настолько сильный что все остальные неотвратимо сливались вместе с ним
         я помню это
         они кружили сквозь безумие без особых усилий
         и всегда знали, что делать...
@@ -4296,9 +4296,9 @@ human
     isabel
         я не знаю
         я не знаю знает ли тиран
-        раньше было иначе
+        раньше всё было по-другому
         я была счастливой
-        всё совершенно иначе теперь
+        ныне всё совершенно иначе
         ...
         я больше не могу здесь находиться
         прошу найди способ выбраться мне отсюда
@@ -4314,7 +4314,7 @@ start
         да, это сияние!!
         и совет...
         теперь я помню
-        я чувствую снова--даже если только θblink
+        я почувствовала вновь--даже если только на θмиг
         у тебя получилось, лазутчик
             SHOWIF::"citystreet__flower_awake"
         незнакомец... нет--лазутчик?
@@ -4365,7 +4365,7 @@ start
     envoy
         Хаха, нет, они просто слегка напоминали его.
         Их называли натриевыми лампочками или вроде того.
-        Что-то в их токе - ну Вы понимаете, молниях - создавало оранжевый свет, а не голубой, как сейчас. 
+        Что-то в их токе - ну, Вы понимаете, молниях - создавало оранжевый свет, а не голубой, как сейчас. 
 
     akizet
         it must have been a great effort to uproot each light stalk
@@ -4404,7 +4404,7 @@ start
         Есть линии электропередач, Вы можете звать их венами,
         и все они ведут куда-то к электростанции.
         Вам стоит поговорить с Джен об этом.
-        Раньше, она работала в депортаменте транспортировки, до всего случившегося.
+        Раньше она работала в депортаменте транспортировки, до всего этого.
 
     sourceless
         his deflecton hides his discomfort in explaining these things to me...
