@@ -3942,7 +3942,7 @@ ep1extension
     
     envoy
         Кто-то на цокольном этаже пытается вызвать лифт. У нас где-то минута.
-        Akizet, I can't take what you're offering. Акизет, я не могу принять Выше предложение.
+        Akizet, I can't take what you're offering. Акизет, я не могу принять Ваше предложение.
         Not until I can confirm some things on my side. Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
         Just hang onto it, all right? Просто попридержите это, хорошо?
         We both have jobs to do, and that device would be an enormous development... У нас обоих есть работа, которую нужно выполнять, и это устройство можеть оказаться колоссальной разработкой...
