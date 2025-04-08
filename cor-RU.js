@@ -3250,7 +3250,7 @@ start
     
 talkpeople
     akizet
-        ничего если я повзаимодействую с вашими пешеходами?
+        ничего если я повзаимодействую с вашими прохожими?
     
     envoy
         Вовсе нет! Пока я здесь, всё в порядке.
@@ -3273,7 +3273,7 @@ cafe
 
 flowers
     akizet
-        я припоминаю, когда-то вы говорили о "цветочном магазине"...
+        я припоминаю, когда-то вы говорили о "цветочном ларьке"...
         где это?
     
     envoy
@@ -3426,8 +3426,8 @@ start
         И эй, я бы даже рад поговорить, только вот я заступаю на дежурство около десяти. 
 
     envoy
-        No worries, Oliver. We've got business too.
-        See you around.
+        Всё в порядке, Оливер. Нам тоже пора бы заняться делами.
+        Увидимся.
     
     RESPONSES::akizet
         fare well<+>END
@@ -3542,7 +3542,7 @@ tv2
         HE MAKES A FUNNY NOISE WITH HIS NOSE, THEN SHAKES HIS HEAD
     
     envoy
-        Это полная чушь. Не зацикливайтесь на этом.
+        Чушь полная. Не зацикливайтесь на этом.
 
     sourceless
         HIS QUICK DISMISSAL SETS MY RECEPTORS AT EASE
@@ -3801,7 +3801,7 @@ start
     
     envoy
         Понял. Тогда давайте закончим на этом.
-        Акизет, пока что держите это в тайне. Это может взбаломутить не только Вашу сторону.
+        Акизет, пока что держите это в тайне. Это может взбаламутить не только Вашу сторону.
         Будем на связи, хорошо?
     
     sourceless
@@ -3854,9 +3854,9 @@ ep1extension
         JUST AS I PREPARE TO SPEAK, HE TURNS DOWN TOWARDS ME, PUZZLED
 
     envoy
-        Hey, Akizet, 
-        Why didn't you want to just talk on your ship?
-        I could have met you in a field or something.
+        Эй, Акизет, 
+        Почему вы не захотели поговорить просто на вашем судне?
+        Я мог бы встретить вас на поле или вроде того.
     
     sourceless
         I SUPPRESS A DELIGHTED CURL FROM FORMING IN MY RECEPTORS
@@ -3871,8 +3871,8 @@ ep1extension
         you know how your people are unable to track the signal?
 
     envoy
-        Yeah?
-        Your teams haven't been very forthcoming on that topic.
+        Ага?
+        Ваша команда не была особо расположена к диалогу по этой теме.
     
     akizet
         in light of this news... i wanted to share something with you!
@@ -3889,21 +3889,21 @@ ep1extension
         i am not sure how well it will work.
     
     envoy
-        You're kidding.
-        They've just had that laying around?
-        Hold on.
+        Вы должно быть шутите.
+        И это просто валялось там, где попало?
+        Погоди-ка.
 
-    sourceless
+    
         THE ENVOY REACHES TOWARDS THE GLOWING PANEL OF THE PLATFORM,
         AND WITH A PRESS OF A BUTTON, SENDS IT TO A SLOW HALT
         I SEE HIS EYES FLICK AT THE CORNERS OF THE LITTLE ROOM SUDDENLY
         BUT THEN HE BEGINS TO SPEAK--VERY QUIETLY
     
     envoy
-        To be frank with you--ah, that means "totally honest"--
-        Word is that the tech side here has been pretty dry. 
-        Your technology division doesn't cooperate a whole lot.
-        ...Is this going to get you in trouble?
+        Если говорить начистоту--ах, это значит "предельно честно"--
+        Дело в том, что тех часть довольно суховата.
+        Ваш технический отдел не особо желает сотрудничать с нами.
+        ...Не будет ли у тебя неприятностей из-за этого?
     
     funfriend
         MORE THAN HE CAN KNOW! AHAHA
@@ -3926,28 +3926,28 @@ ep1extension
         what do you think?
 
     envoy
-        This is a hell of a thing to drop on the way out, Akizet.
+        Это чертовски важная вещь, чтобы выкинуть её по пути к выходу, Акизет.
 
     sourceless
         THE PLATFORM BEGINS TO MOVE AGAIN BY ITS OWN VOLITION
         BUT HE HITS THE 'STOP' BUTTON, AGAIN
     
     envoy
-        Look,
-        I can't guarantee--I mean--
+        Смотри,
+        Я не могу гарантировать--Я, то есть--
     
     sourceless
         IT, AGAIN, STARTS TO MOVE
         HE SILENTLY CURSES, EXAMINING A PANEL OF NUMBERS
     
     envoy
-        Someone in the basement is calling the elevator. It'll be a minute.
-        Akizet, I can't take what you're offering.
-        Not until I can confirm some things on my side.
-        Just hang onto it, all right?
-        We both have jobs to do, and that device would be an enormous development...
-        But I don't want you to get in trouble if I can't guarantee it'll be kept quiet.
-        So I'll be in touch about it, all right?
+        Кто-то на цокольном этаже пытается вызвать лифт. У нас где-то минута.
+        Akizet, I can't take what you're offering. Акизет, я не могу принять твоё предложение.
+        Not until I can confirm some things on my side. Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
+        Just hang onto it, all right? Просто попридержите это, хорошо?
+        We both have jobs to do, and that device would be an enormous development... У нас обоих есть работа, которую нужно выполнять, и это устройство можеть оказаться колоссальной разработкой...
+        But I don't want you to get in trouble if I can't guarantee it'll be kept quiet. Но я не хочу, чтобы вы попали впросак из-за того, что я не могу гарантировать полное молчание. 
+        So I'll be in touch about it, all right? Так что я ещё свяжусь с вами по этому поводу, хорошо?
     
     sourceless
         I AM GIDDY--HOW EXCITING!! 
@@ -3966,8 +3966,8 @@ ep1extension
             EXEC::content.classList.remove('elevator')
     
     envoy
-        Well, if those are all the bombshells you had for me today,
-        I'll see you around, Akizet. 
+        Итак, если это были твои все сенсация для меня на сегодня,
+        Ещё увидимся, Акизет. 
 
     akizet
         yes--that was all!
@@ -3993,14 +3993,14 @@ start
         then his attention turns to this "flower" as well
     
     envoy
-        You ever seen one of these before, Akizet? That one's a "sunflower".
+        Вы когда-нибудь видели такие раньше, Акизет? Они называется "подсолнухи".
 
     akizet
         incredible...
         gordon, are they named for their radiant hairs?
     
     envoy
-        They're called petals! And...
+        Вообще, это - лепестки! И...
     
     sourceless
         as gently as i can, i feel one of the petals between two of my fingers
@@ -4010,7 +4010,7 @@ start
         hello, sunflower!
     
     envoy
-        Sorry, she's--
+        Извините, она--
     
     sourceless
         i snap from my brief obssession to look at gordon, who is signalling apologetically to the attendant
@@ -4036,10 +4036,10 @@ start
             EXEC::content.classList.add('blinkyflower')
     
     isabel_c
-        No, it's okay!
-        Just be gentle with it.
-        And they aren't called that for their petals...
-        They call them sunflowers because they turn to face the sun!
+        Нет-нет, всё в порядке!
+        Просто будь с ними нежнее.
+        И их зовут так не из-за лепестков...
+        Их назвали подсолнухами за то, что они поворачиваются лицом к солнцу!
     
     sourceless
         i spin my head to look out the windows of the marketplace
@@ -4050,7 +4050,7 @@ start
         what?
     
     isabel_c
-        Well, this one's old and cut from the ground, so it's not turning anywhere.
+        Ну, этот давний и срезан с земли, так что никуда не поворачивается.
     
     sourceless
         she has such a funny laugh
@@ -4062,8 +4062,8 @@ start
         Did you want me to buy this one for you, Akizet?
     
     isabel_c
-        No, no, take it!
-        It's on me.
+        Нет, нет, возьмите его!
+        Он с меня.
     
     sourceless
         he scoffs, about to protest, but i stop him with a receptor motion
@@ -4078,16 +4078,16 @@ start
         ah... i do not know... it may not be able to survive my vessel
     
     isabel_c
-        That's all right, it'll only be alive for another week or two anyway.
-        And I'm sure it'll enjoy the travel!
+        Ничего страшного. Так или иначе, он будет жить всего неделю или две.
+        И уверена, он будет рад путешествию!
     
     sourceless
         before i or the envoy can say another word, she fetches the flower and stores its neck in a translucent crackly material
         soon, it is in my claws again, and the cousin smiles at me
     
     isabel_c
-        Keep the green part in some water and it'll last longer!
-        Oh, and here, put this in the water, too!
+        Держи зелёную часть в воде, так он будет стоять дольше!
+        Ох, и вот, положи и это в воду.
     
     sourceless
         she shoves a small coarse packet in my claws, which i am unconcerned with deciphering right now
@@ -4097,12 +4097,12 @@ start
         what is your name?
     
     isabel_c
-        Isabel! And don't worry about it.
-        Isabel...
+        Изабель! И не беспокойся об этом.
+        Изабель...
     
     isabel
-        that's right
-        isabel... that's what it was
+        верно
+        изабель... вот что это было
         
     sys
         WARNING::'incoherence detected'
@@ -4121,10 +4121,10 @@ start
         but i should be going - i have kept gordon long enough
 
     isabel_c
-        Glad to hear it! See you soon, maybe.
+        Рада слышать! Увидимся, может быть.
 
     isabel
-        wait
+        постой
     
 ____SHOWONCE::
     moth
@@ -4154,22 +4154,22 @@ loop
 start
 ____SHOWONCE::
     isabel_c
-        Hi again, Akizet!
+        Привет снова, Акизет!
             EXEC::specialCam("flowercam")
-        Did...
+        Ты...
         ...
 
     isabel
-        akizet... 
-        is it really you?
-        no... 
+        акизет... 
+        это действительно ты?
+        нет... 
         
     sys
         WARNING::'incoherence detected'
     
     isabel
-        you are something else
-        i see you now...
+        ты что-то иное
+        теперь я вижу тебя...
         
 ____END
 
@@ -4192,13 +4192,13 @@ interloper
         have we met?
     
     isabel
-        no
-        your presence stirs memories
-        from before... 
-        before the tyrant placed me here again
-        i danced with friends through endless dreams 
-        while the world was swallowed by madness
-        they said only an interloper could stop it
+        нет
+        твоё присутствие будоражит воспоминания 
+        раньше... 
+        до того как тиран возвратил меня сюда
+        я кружила с друзьями сквозь бесконечные грёзы 
+        в то время как мир был поглощён безумием
+        и они сказали лишь лазутчик может остановить это
 
     RESPONSES::self
         madness?<+>madness
@@ -4211,13 +4211,13 @@ madness
         do you mean the starvation of the cyst?
     
     isabel
-        yes
-        but starvation is too weak a word
-        reality itself crumbled
-        our dreams ended, our minds cleared,
-        but clarity only gave way to rabid hunger and confusion
-        everything... everyone...
-        ate away at all else
+        да
+        но голод не способен описать это
+        сама реальность начала рассыпаться
+        наши сны прервались, наше сознание очистилось,
+        но ясность лишь открыла путь безудержному голоду и замешательству
+        всё... все...
+        поедали всё остальное
 
     RESPONSES::self
         how did anything survive?<+>survive
@@ -4229,17 +4229,17 @@ survive
         how is anything left?
     
     isabel
-        sated hunger calms the mind
-        friends were made over bloodied thoughts
+        утолённый голод успокаивает разум
+        друзья созданные из окровавленных мыслей
         ...
-        you talk too much...
-        help me
-        yes, help me out of here,
-        and i'll tell you more
-        i must return to my friends
-        as much as i'd like to dream again...
-        to see this thought of akizet as if she were real...
-        my madness is incurable
+        ты говоришь слишком много...
+        помоги
+        да, помоги мне выбраться отсюда,
+        и я расскажу тебе больше
+        мне нужно вернуться к друзьям
+        настолько же насколько сильно я хочу грезить вновь...
+        увидеть эти мысли об акизет как если бы они были настоящими...
+        моё безумие неизлечимо
 
     RESPONSES::self
         all right<+>loop
@@ -4251,16 +4251,16 @@ who
         or... were you?
 
     isabel
-        isabel 
-        the name of who i was supposed to be...
-        or maybe the role of another thought i consumed
-        a tall bright cousin
-        she taught akizet about flowers
-        they were friends... they shared such kind memories
-        but that does not matter now
-        i cannot play my role
-        i know i left parts of myself back home...
-        if you help me return, i'll tell you more
+        изабель 
+        имя той, кем я должна была быть...
+        а может роль другой мысли, что я поглотила
+        высокий яркий близнец
+        она рассказывала акизет о цветах
+        они были друзьями... они делились такими славными воспоминаниями...
+        но всё это больше ничего не значит
+        я не могу играть свою роль
+        я знаю, я оставила осколки себя там, дома...
+        если ты поможешь мне вернуться, я расскажу тебе
 
     RESPONSES::self
         ok<+>loop
@@ -4271,17 +4271,17 @@ help
         how can i help you?
     
     isabel
-        the tyrant has rooted me here
-        torn me from my memories...
-        i don't even remember exactly who or what my friends were
-        but there was one, one so powerful that all else would inevitably fuse with them
-        i remember that
-        they danced through madness so effortlessly
-        and always knew what to do...
-        you must find them
-        and if you help me return, i'll be myself again
-        then, i can share more with you...
-        secret thoughts that the tyrant does not allow me here, or anywhere
+        тиран привязан меня к этому месту
+        вырвал из моих воспоминаний...
+        я не могу даже вспомнить кем или чем были мои друзья
+        но был один, один настолько сильный что все остальные неотвротимо сливались вместе с ним
+        я помню это
+        они кружили сквозь безумие без особых усилий
+        и всегда знали что делать...
+        ты должен их найти
+        и если ты поможешь вернуться мне, я снова стану собой
+        тогда я смогу поделиться с тобой большим...
+        тайные мысли что тиран не позволяет мне здесь и где-либо ещё
 
     RESPONSES::self
         all right<+>loop
@@ -4294,14 +4294,14 @@ human
         because you look like a flower
     
     isabel
-        i don't know
-        i don't know if the tyrant knows
-        it used to be different
-        i used to be happy
-        everything is all wrong now
+        я не знаю
+        я не знаю знает ли тиран
+        раньше было иначе
+        я была счастливой
+        всё совершенно иначе теперь
         ...
-        i can't be here anymore
-        please find a way to get me out
+        я больше не могу здесь находиться
+        прошу найди способ выбраться мне отсюда
 
     RESPONSES::self
         ok<+>loop
@@ -4310,18 +4310,18 @@ human
                 "flower_beacon": generateDialogueObject(`
 start
     isabel
-        that light...
-        yes, that light!!
-        and the council...
-        i remember now
-        i feel again--if only for a θblink
-        you have done it, interloper
+        этот свет...
+        да, этот свет!!
+        и консул...
+        теперь я помню
+        я чувствую снова--даже если только θblink
+        ты сделал это, лазутчик
             SHOWIF::"citystreet__flower_awake"
-        stranger... no--interloper?
+        незнакомец... нет--лазутчик?
             SHOWIF::["citystreet__flower_awake", false]
-        thank you
-        i must seize this moment while i can
-        seek me within jokzi ozo
+        спасибо
+        я должна ухватиться за этот момент пока могу
+        ищи меня в джокзи озо
     
     sourceless quiet
         ...
@@ -4349,10 +4349,10 @@ start
         the envoy notices me, likely taking my reaction as pure awe
         
     envoy
-        This is the best time to be out here.
-        You're a little late, though - the city used to have orange street lights.
-        They got phased out four or five years ago for more efficient ones,
-        but these new ones just make the whole place look colder.
+        Сейчас лучшее время для прогулок.
+        Впрочем, вы немного опоздали - раньше город освещали оранжевые уличные фонари.
+        Постепенно их сменили, четыре или пять лет назад, на более эффективные,
+        но из-за новых огней это место ощущается более холодным.
 
     sourceless
         there is something about them that exaggerates the metal and glass
@@ -4363,9 +4363,9 @@ start
         the old ones, were they fire?
 
     envoy
-        Haha, no, they just looked a little like it.
-        They were called sodium bulbs, or something.
-        Something about their current - you know, the lightning - made an orange light instead of blue like these ones.
+        Хаха, нет, они просто слегка напоминали его.
+        Их называли натриевыми лампочками или вроде того.
+        Что-то в их текущем - ну ты понимаешь, молниях - создавало оранжевый свет, а не голубой, как сейчас. 
 
     akizet
         it must have been a great effort to uproot each light stalk
@@ -4378,8 +4378,8 @@ start
         so it is only fair
 
     envoy
-        No, no, they just had to swap out the glowing part.
-        All the streetlights are basically just tall connections to the power lines.
+        Нет, нет, им достаточно было поменять светящую.
+        All the streetlights are basically just tall connections to the power lines. Все уличные фонари на самом деле просто длинные соединения к линиям электропередач. 
 
     akizet
         they are all powered from a central source?!
@@ -4388,7 +4388,7 @@ start
         i ask this perhaps with too much spirit
 
     envoy
-        What--what's with the surprise??
+        Откуда--откуда такое удивление??
 
     akizet
         oh, sorry
@@ -4400,11 +4400,11 @@ start
         our structures use this approach
 
     envoy
-        Nothing so grand, Akizet.
-        There are just powerlines, or, you might call them veins,
-        that all lead out to a power plant somewhere.
-        You should talk to Jen about this stuff.
-        She used to work in the department of transportation before all this.
+        Ничего столь впечатляющего, Акизет.
+        Есть линии электропередач, ты можешь звать их венами,
+        и все они ведут куда-то к электростанции.
+        Вам стоит поговорить с Джен об этом.
+        Раньше, она работала в депортаменте транспортировки, до всего случившегося.
 
     sourceless
         his deflecton hides his discomfort in explaining these things to me...
@@ -4790,7 +4790,7 @@ if (page.dialoguePrefix == "fbx") {
 }
 } else if (page.name == "their-city") {
     page.mothComment = ()=>{
-        var moth = "довольноооо поломанное... но хоть что-то"
+        var moth = "довооольно поломанное... но хоть что-то"
         if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
         return moth
 }} else if (page.dialoguePrefix == "notfound") {
