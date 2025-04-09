@@ -227,6 +227,12 @@ RESPOBJ::
         если вы это видите то всё сломалось - создатели cor-RU<+>END
 `)
 
+env.dialogues.interviewResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось - создатели cor-RU<+>END
+`)
+
 env.localization = {
     dialogues: {
         "++epselect": generateDialogueObject(`
@@ -1248,6 +1254,11 @@ gad
 
         "META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'": "МЕТА::'некоторые секции геймплея используют аппаратно-зависимые функции и могут привести к очень плохой производительности на старых/неигровых машинах';'активирование этого предоставляет выбор альтернативных вариантов этих секций которые могут работать лучше'",
         "META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'": "МЕТА::'полностью отключает неисследовательские секции геймплея';'упущение истории минимально'",
+
+        "ATTENTION::'thoughtform activity detected'::'resources removed'": "ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'::'удалены данные'",
+
+        "unity": "единство",
+        "effigy": "болванка слишком глупое",
 
 
         // ENTITY MENU + READOUT NOTIFS AND GATES AND basically locations lol STUFF
@@ -3351,7 +3362,7 @@ help
     moth
         блин, видимо нет
         те же самые сигналы, что и раньше...
-        мы вряд ли от него что-либо добьёмся
+        мы вряд ли от него чего-либо добьёмся
     
     RESPONSES::self
         извини<+>END
@@ -3374,7 +3385,7 @@ start
         ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАТЫЙ К ЕГО ЛИЦУ, НЕ ЗАМЕЧАЯ НАС
 
     cloaked streetwalker
-        ...не свинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Просто неебический пиздец.
+        ...не сдвинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Просто неебический пиздец.
         Так что мне пришлось взять ещё больше кофе, иначе я бы точно дал храпу...
     
     sourceless
@@ -3652,7 +3663,7 @@ start
             EXEC::cutscene(true);setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
 
     sourceless
-        THE ENVOY AND I STEP INSIDE A DIM MEETING ROOM, THE BLINDS DRAWN AS A KIND ACKNOWLEDGMENT OF OUR PREFERENCES
+        МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНИЕ НАШИХ ПРЕДПОЧТЕНИЙ
             EXEC::change("PAGE!!skipcheck", false)
         МЫ САДИМСЯ. ОН СТАВИТ МЕТАЛЛИЧЕСКУЮ КОРОБКУ НА СТОЛ. МОИ РЕЦЕПТОРЫ ЗАВИТЫ В СПИРАЛИ. БУДЕТ ТРУДНО
         
@@ -3660,35 +3671,35 @@ start
         Итак, Акизет, что Вы нашли? Мы довольно-таки давно не разговаривали вживую.
     
     akizet
-        yes, it has been a while! i have been consumed with our work, you see
-        and while it has gone well in terms of progress, i cannot say that i am happy with our findings
+        да, прошло немало времени! я была поглощена нашей работой, видите ли
+        и пусть всё прошло хорошо с точки зрения прогресса, я не могу сказать, что довольна нашими находками
     
     sourceless
-        THERE IS A MARKED CONCERN IN HIS EYES. HE DOES NOT WANT TO INTERRUPT.
-        i understand why. last we met, i felt an optimism that has not graced the θeye in some time
+        ЕГО ГЛАЗА НАПОЛНЯЮТСЯ БЕСПОКОЙСТВОМ. ОН НЕ ХОЧЕТ ПЕРЕБИВАТЬ.
+        Я ПОНИМАЮ, ПОЧЕМУ. ЕЩЁ НА ПРОШЛОЙ ВСТРЕЧЕ Я ЧУВСТВОВАЛА ОПТИМИЗМ, ЧТО ИЗДАВНА НЕ УКРАШАЛ ЭТОТ θглаз
     
     akizet
-        you see, for all of the time the call has been screamed into our communications,
-        we have never been able to identify what exactly is being said
-        and we still cannot... but we know <em>how</em> it is being said.
+        видите ли, за всё то время, что зов вопил в линиях нашей связи,
+        у нас никогда не было возможности определить, что именно он передаёт
+        у нас до сих пор её нет... однако мы знаем, <em>как</em> он это передаёт.
 
     sourceless
-        I PAUSE. FOR TOO LONG. I MUST CHOOSE MY WORDS CAREFULLY. 
-        HE SIPS HIS LITTLE DRINK
+        Я ПРИОСТАНАВЛИВАЮСЬ. НА СЛИШКОМ ДОЛГО. Я ДОЛЖНА ОСТОРОЖНО ПОДБИРАТЬ СЛОВА.
+        ОН ДЕЛАЕТ ГЛОТОК СВОЕГО МАЛЕНЬКОГО НАПИТКА
             SHOWIF::[["citystreet_gotdrinks"]]
     
     envoy
-        Текущая теория говорила о том, что это просто звук, транслируемый для привлечения внимания, верно?
+        Текущая теория гласит, что это просто звук, транслируемый для привлечения внимания, верно?
         Хотите сказать, это больше не так?
 
     akizet
-        yes, exactly...
-        in truth, it is a deliberate transmission, and it is trying to convey something exact.
-        the method is not one that is used in our modern communications, it predates many optimizations we made
-        you could describe it as raw thought
+        да, именно...
+        по правде говоря, это целенаправленная передача, и она пытается выразить что-то конкретное.
+        её метод - не что-то используемое в наших современных коммуникациях, он недостаёт во многих оптимизациях
+        это можно описать как сырую мысль
 
     sourceless
-        HIS FACE CONTORTS IN CONFUSION. DOES HE NOT BELIEVE ME?
+        ЕГО ЛИЦО ИСКРИВЛЯЕТСЯ В ЗАМЕШАТЕЛЬСТВЕ. НЕУЖЕЛИ ОН МНЕ НЕ ВЕРИТ?
     
     envoy
         Что оно говорит?
@@ -3696,53 +3707,53 @@ start
         Разве вы не слушаете это уже на протяжении... сколько, тридцати двух лет? 
     
     akizet
-        your answer comes simply, gordon:
-        the message is not complete. but it has finally matched enough patterns for us to confirm its methods
-        it has taken this time to reach what we believe to be...
-        hmm...
-        maybe past half its full length,
-        and we cannot process the message until we have nearly all of it.
+        ваш ответ прост, гордон:
+        сообщение ещё не закончено. но, наконец, оно совпало с достаточным количеством закономерностей, чтобы мы могли подтвердить его метод
+        ему понадобилось всё это время, чтобы достичь то, что мы считаем...
+        хмм...
+        быть может, половиной его полной длины,
+        и мы не в силах обработать это сообщение до тех пор, пока не получим его целиком.
     
     sourceless
-        HE STARES AT ME, WAITING, FROZEN, BAFFLED
-        I FIND MYSELF POKING HOLES IN THE LID OF MY ORANGE BEVERAGE WITH THE SHARP POINTS OF MY FINGERS TO DELAY MY NEXT WORDS
+        ОН ПЯЛИТСЯ НА МЕНЯ, ЖДУЩИЙ, ЗАМЕРШИЙ, СБИТЫЙ С ТОЛКУ
+        Я ЛОВЛЮ СЕБЯ НА ТОМ, ЧТО ПРОТЫКАЮ КРЫШКУ СВОЕГО АПЕЛЬСИНОВОГО НАПИТКА ОСТРЫМИ КОНЦАМИ ПАЛЬЦЕВ, ОТКЛАДЫВАЯ СВОИ СЛЕДУЮЩИЕ СЛОВА
             SHOWIF::[["citystreet_gotdrinks"]]
-        I SHOULD NOT SPEAK OF THE FINER DETAILS YET
+        МНЕ НЕ СТОИТ УПОМИНАТЬ БОЛЕЕ ТОНКИЕ ДЕТАЛИ
     
     akizet
-        ...for your reference, it would take a full day for a celki to be portrayed in this medium
-        whoever is sending this message is not only using archaic means, but is transmitting something... 
-        something so large, that, ah,
-        we have all wondered if it is even possible to comprehend
-        or, if it... ah... sh-
+        ...чтобы вы понимали, изображение сельки данным образом заняло бы целый день
+        тот, кто бы ни слал это сообщение, не просто пользуется архаичными средствами, но и передаёт нечто...
+        нечто настолько огромное, что, э,
+        мы все гадаем, сможем ли мы вообще его постичь
+        или если... ах... ч-
     
     funfriend
-        RECOMMENDATION: DO NOT SAY THAT
+        РЕКОМЕНДАЦИЯ: НЕ ГОВОРИТЕ ЭТОГО
 
     sourceless
-        NO, YOU ARE RIGHT
+        ДА, ТЫ ПРАВ
 
     envoy
         Что?
         
     akizet
-        nothing--apologies, it is just the scale of this that has been weighing upon me.
-        the mystery of the source has been compounding with each discovery
-        and this recent development has many of my team working in more solemn silence
+        ничего--извините, просто масштабы всего этого давят на меня.
+        каждое новое открытие запутывает тайну об источнике зова только сильнее
+        и это недавнее достижение привнесло в работу моей команды лишь больше мрачной тишины
     
     sourceless
-        HE TAKES A SIP, I SEE UNEASE IN THE GENTLE SHAKE OF HIS HAND
+        ОН ДЕЛАЕТ ГЛОТОК, Я РАЗЛИЧАЮ НЕРВНОСТЬ В ЛЁГКОМ ДРОЖАНИИ ЕГО РУКИ
             SHOWIF::[["citystreet_gotdrinks"]]
-        BEFORE HE SPEAKS, HE LEANS FORWARDS IN HIS CHAIR. HIS EYES ARE DISTANT.
+        ПЕРЕД ТЕМ, КАК ЗАГОВОРИТЬ, ОН НАКЛОНЯЕТСЯ ВПЕРЁД В СВОЁМ КРЕСЛЕ. В ЕГО ГЛАЗАХ ОТСТРАНЁННОСТЬ.
 
     envoy
         Господи...        
         Акизет, если это и в самом деле правда--и Вы говорите, что эта теория <em>подтверждена</em>, так?
     
     akizet
-        without any doubt, my friend. 
-        the consistent patterns of raw thought appear at regular percentages of message length
-    
+        без доли сомнений, мой друг. 
+        устойчивые закономерности сырой мысли возникают на равных отрезках длины сообщения
+        
     envoy
         Получается, эта вещь, что была у нас в океане
         ещё до того, как Ваш народ даже показался,
@@ -3750,26 +3761,26 @@ start
         ...разумна?
     
     akizet
-        well no, that may not entirely be the case
-        it could be something--corrucystic, as it must be--that has been taught to relay this message
-        but otherwise, that is correct
+        ну, нет, вероятно, это не совсем так
+        это могло бы быть что-то--корруцистозное, как и положено--что было обучено передаче этого сообщения
+        но в остальном, это верно
     
     sourceless
-        THE ENVOY RUNS HIS FINGERTIPS ACROSS HIS HAIRLINE
+        ПОСОЛ ПРОВОДИТ КОНЧИКАМИ ПАЛЬЦЕВ ПО СВОИМ ВОЛОСАМ
 
     envoy
         Что же. Да, это определённо что-то новенькое. Теперь я понимаю, для чего в этот раз Вы хотели поговорить приватно.
         Кто ещё знает об этом?
     
     akizet
-        no one beyond my team. we are all keeping this information to ourselves for now.
-        it is selfish... but our initiatives for trade and research are going so well with your people
-        we do not want to disrupt them with this news.
-        but we, my team, we are lost--we must wait, 
-        we must wait a long time with this on our shoulders.
+        никто за пределами моей команды. мы все пока держим эту информацию при себе.
+        это эгоистично... но наши инициативы по торговле и исследованиям так удачно складываются с вашим народом
+        мы не хотим помешать им этой новостью.
+        однако мы, моя команда, мы растеряны--мы должны ждать, 
+        мы должны ждать ещё очень долго с этим камнем на душе.
     
     sourceless
-        THE ENVOY EXHALES LOUDLY, AND CLASPS HIS HANDS TOGETHER.
+        ПОСОЛ ГРОМКО ВЫДЫХАЕТ И СЦЕПЛЯЕТ РУКИ.
 
     envoy
         Хорошо, вот, что я предлагаю.
@@ -3777,27 +3788,27 @@ start
         Вы не считаете, что эта вещь может представлять угрозу?
     
     sourceless
-        I LAUGH A LITTLE
+        Я ПОСМЕИВАЮСЬ
     
     akizet
-        it has been screaming for thirty-two of your years, 
-        and must continue for many more before we can begin to understand it.
-        i do not think it has plans to engage in any other activities in this time
+        она кричит вот уже тридцать второй год по вашему времени, 
+        и ей необходимо продолжать это на ещё большем протяжении перед тем, как мы сможем различить в ней хоть какой-то смысл.
+        я не думаю, что она планирует заниматься какой-либо другой деятельностью в это время
     
     envoy
         Ну, по крайней мере хоть что-то, а?
     
     sourceless
-        HE TAKES A MOMENT TO FINISH HIS DRINK BEFORE CONTINUING.
+        ОН ВЫПИВАЕТ СВОЙ НАПИТОК ПЕРЕД ТЕМ, КАК ПРОДОЛЖИТЬ.
             SHOWIF::[["citystreet_gotdrinks"]]
 
     envoy
         Есть ещё чем поделиться?
 
     akizet
-        nothing with as much certainty
-        we have a potential radius it could be in, but must do more polygonation
-        it is about where i estimated last time we met
+        ничего, что имело бы такую же точность
+        у нас есть радиус, где оно могло бы находиться, однако нам требуется дальнейшая полигонизация
+        примерно там же, как я говорила на нашей прошлой встрече
     
     envoy
         Понял. Тогда давайте закончим на этом.
@@ -3805,99 +3816,99 @@ start
         Будем на связи, хорошо?
     
     sourceless
-        WE BOTH RISE. I SENSE THE WEIGHT OF MY DREAD BEING SHARED UPON HIS SHOULDERS
+        МЫ ОБА ВСТАЁМ. Я ЧУВСТВУЮ, КАК ВЕС МОЕГО СТРАХА КЛАДЁТСЯ НА ЕГО ПЛЕЧИ *** это странный и буквальный перевод, я бы послушал альтернативы
     
     akizet
-        of course, gordon.
+        разумеется, гордон.
     
     envoy
         Пойдёмте, я Вас провожу.
 
     sys
-        ATTENTION::'memory stream end';'render terminated'
+        ВНИМАНИЕ::'поток памяти окончен';'визуализация прервана'
             SHOWIF::["embassy_d2_complete", false]
 
     moth
-        ok... 
+        окей... 
             SHOWONCE::
-        i'm pretty sure we both just got exposed to top secret info lmao cause i've never heard this part about the call
+        кажись мы сейчас наткнулись на какую-то сверхсекретную информацию лмао потому что о такой части зова публично не известно
             SHOWONCE::
-        probably gonna have to sign some NDAs after this
+        нас наверняка посадят подписывать соглашения о неразглашении после этого
             SHOWONCE::
-        and akizet went to us for help before her own people?? i wonder if they even know about this
+        и акизет пошла к нам за помощью вместо своего народа?? интересно они об этом вообще в курсе
             SHOWONCE::
-        i want to say this memory is probably just incoherent, but it's too well structured
+        хотелось бы назвать это воспоминание бессвязным но оно слишком хорошо сформулировано
             SHOWONCE::
-        i don't really know how to take this. 
+        не знаю как это воспринимать
             SHOWONCE::
-        but don't mind me, keep doing your thing
+        но не обращай на меня внимания, делай своё дело
             SHOWONCE::
 
     sys
-        ATTENTION::'memory stream extends';'continue render?'
+        ВНИМАНИЕ::'поток памяти extends';'продолжить визуализацию?' ***
             SHOWIF::["embassy_d2_complete", true]
     
     RESPONSES::self
-        continue recollection<+>ep1extension
+        продолжить воспоминание<+>ep1extension
             SHOWIF::["embassy_d2_complete", true]
             EXEC::env.citystreet.envoyChat(false, true)
 
-        end recollection<+>END
+        завершить воспоминание<+>END
             EXEC::env.citystreet.envoyChat(false, true)
 
 ep1extension
     sourceless
-        WE RIDE THE MOVING PLATFORM TO THE BOTTOM FLOOR
+        МЫ СПУСКАЕМСЯ НА ДВИЖУЩЕЙСЯ ПЛАТФОРМЕ НА НИЖНИЙ ЭТАЖ
             EXEC::content.classList.add('elevator')
-        THE ENVOY STANDS SILENTLY, CONCERN STILL CLEAR IN HIS EYES
-        NOW IS A GOOD TIME - YES, AS IF IT WERE SIMPLY AN AFTERTHOUGHT
-        JUST AS I PREPARE TO SPEAK, HE TURNS DOWN TOWARDS ME, PUZZLED
+        ПОСЛАННИК СТОИТ МОЛЧА, В ЕГО ГЛАЗАХ ПО-ПРЕЖНЕМУ ТРЕВОГА
+        СЕЙЧАС ХОРОШИЙ МОМЕНТ - ДА, СЛОВНО ЭТО ВСЕГО ЛИШЬ ЗАПОЗДАЛАЯ МЫСЛЬ
+        КАК ТОЛЬКО Я СОБИРАЮСЬ ЗАГОВОРИТЬ, ОН ПОВОРАЧИВАЕТСЯ КО МНЕ, НЕДОУМЕВАЮЩИЙ
 
     envoy
         Эй, Акизет, 
-        Почему Вы не захотели поговорить просто на вашем судне? ***
+        Почему Вы не захотели поговорить на Вашем судне?
         Я мог бы встретить Вас в поле или вроде того.
     
     sourceless
-        I SUPPRESS A DELIGHTED CURL FROM FORMING IN MY RECEPTORS
-        YES--THIS IS THE PERFECT SETUP! WELL DONE, ENVOY
-        I ACT SOMEWHAT PUZZLED... YES, IT WILL SIMPLY OCCUR TO ME!
+        Я ПОДАВЛЯЮ ВОСТОРЖЕННЫЕ ЗАВИТКИ В СВОИХ РЕЦЕПТОРАХ
+        ДА--ЭТО ИДЕАЛЬНАЯ ПОДВОДКА! МОЛОДЕЦ, ПОСОЛ
+        Я ВЕДУ СЕБЯ НЕСКОЛЬКО ОЗАДАЧЕННО... ДА, ЭТО ПРОСТО ПРИДЁТ МНЕ В ГОЛОВУ!
 
     akizet
-        hmm...
-        oh! yes!
-        i had been so caught up in delivering the news...
-        i forgot to mention it!
-        you know how your people are unable to track the signal?
+        хмм...
+        о! да!
+        я была так взволнована доставкой новостей...
+        что совсем забыла!
+        знаете, как ваши люди не могут отслеживать сигнал?
 
     envoy
         Ага?
         Ваша команда не была особо расположена к диалогу по этой теме.
     
     akizet
-        in light of this news... i wanted to share something with you!
-        a glow between the veilk-stalks for us both
+        в свете этих новостей... я хотела бы поделиться с вами кое-чем!
+        блеск меж вейльковых стеблей для нас обоих
 
     sourceless
-        HE SCOFFS AT MY IDIOM, WHICH SURELY MEANS NOTHING TO HIM
-        A SMILE USURPS HIS WORRY
+        ОН ФЫРКАЕТ НА МОЮ ИДИОМУ, ЯВНО НИЧЕГО НЕ ЗНАЧАЩУЮ ДЛЯ НЕГО
+        УЛЫБКА ВЫТЕСНЯЕТ ЕГО БЕСПОКОЙСТВО
     
     akizet
-        i have in my possession,
-        a corrucystic device that can exude the lightning your technology listens to
-        it was a shelved project from the technology division, so...
-        i am not sure how well it will work.
+        у меня есть в наличии,
+        корруцистозное устройство, способное источать молнии, что ваша технология слушает
+        это - заброшенный проект технологического подразделения, так что...
+        я не уверена, насколько хорошо оно работает.
     
     envoy
         Вы, должно быть, шутите.
         И это просто валялось, где попало?
-        Погоди-ка.
+        Погодите-ка.
 
-    
-        THE ENVOY REACHES TOWARDS THE GLOWING PANEL OF THE PLATFORM,
-        AND WITH A PRESS OF A BUTTON, SENDS IT TO A SLOW HALT
-        I SEE HIS EYES FLICK AT THE CORNERS OF THE LITTLE ROOM SUDDENLY
-        BUT THEN HE BEGINS TO SPEAK--VERY QUIETLY
+    sourceless
+        ПОСОЛ ТЯНЕТСЯ К СВЕТЯЩЕЙСЯ ПАНЕЛИ ПЛАТФОРМЫ
+        И НАЖАТИЕМ КНОПКИ ВЕЛИТ ЕЙ ОСТАНОВИТЬСЯ
+        Я ВИЖУ, КАК ЕГО ГЛАЗА ВНЕЗАПНО МЕТАЮТСЯ ПО УГЛАМ МАЛЕНЬКОЙ КОМНАТЫ
+        НО ЗАТЕМ ОН НАЧИНАЕТ ГОВОРИТЬ--ОЧЕНЬ ТИХО
     
     envoy
         Если говорить начистоту--ах, это значит "предельно честно"--
@@ -3906,39 +3917,39 @@ ep1extension
         ...Не будет ли у Вас неприятностей из-за этого?
     
     funfriend
-        MORE THAN HE CAN KNOW! AHAHA
+        БОЛЬШЕ, ЧЕМ ОН СЕБЕ ПРЕДСТАВИТЬ МОЖЕТ! АХАХА
     
     akizet
-        well,
-        that is the stipulation
-        if i give it to you, it must be kept secret from my side
-        even my own team
-        and!
-        you must help me with my own investigation into the call's origin
+        ну,
+        в этом и договорённость
+        если я вам его отдам, моя сторона не должна узнать об этом
+        даже моя команда
+        и!
+        вы будете обязаны помочь мне в моём собственном расследовании происхождения зова
     
     sourceless
-        THE LOOK UPON HIS FACE
-        IT IS AS IF I HAVE PUNCTURED HIS VITAL ORGANS
-        THERE IS A MOMENT OF SILENCE
-        I TILT MY SUSPENDED HEAD, MAINTAINING BOTH FLAT RECEPTORS AND EXPRESSION
+        ВИД ЕГО ЛИЦА
+        ОН ТАКОЙ, БУДТО Я ПРОНЗИЛА ЕГО ЖИЗНЕННО ВАЖНЫЕ ОРГАНЫ
+        ЗА ЭТИМ СЛЕДУЕТ МИНУТА МОЛЧАНИЯ
+        Я НАКЛОНЯЮ СВОЮ ВИСЯЩУЮ ГОЛОВУ, СОХРАНЯЯ ВЫРАЖЕНИЕ И ЛИЦА, И РЕЦЕПТОРОВ ПЛОСКИМ.
         
     akizet
-        what do you think?
+        что вы думаете?
 
     envoy
         Это чертовски важная вещь, чтобы выкинуть её по пути к выходу, Акизет. ***
 
     sourceless
-        THE PLATFORM BEGINS TO MOVE AGAIN BY ITS OWN VOLITION
-        BUT HE HITS THE 'STOP' BUTTON, AGAIN
+        ПЛАТФОРМА ОПЯТЬ НАЧИНАЕТ ДВИГАТЬСЯ ПО СОБСТВЕННОЙ ВОЛЕ
+        НО ОН СНОВА ЖМЁТ КНОПКУ "СТОП"
     
     envoy
         Смотрите,
         Я не могу гарантировать--Я, то есть--
     
     sourceless
-        IT, AGAIN, STARTS TO MOVE
-        HE SILENTLY CURSES, EXAMINING A PANEL OF NUMBERS
+        ОНА, ОПЯТЬ, НАЧИНАЕТ ДВИГАТЬСЯ
+        ОН НЕСЛЫШНО МАТЕРИТСЯ, РАЗГЛЯДЫВАЯ ПАНЕЛЬ С ЦИФРАМИ
     
     envoy
         Кто-то на цокольном этаже пытается вызвать лифт. У нас где-то минута.
@@ -3946,39 +3957,39 @@ ep1extension
         Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
         Просто попридержите это, хорошо?
         У нас обоих есть обязанности, которые нужно выполнять, и это устройство может оказаться колоссальным развитием...
-        But I don't want you to get in trouble if I can't guarantee it'll be kept quiet. Но я не хочу, чтобы Вы попали впросак из-за того, что я не могу гарантировать полное молчание. 
-        So I'll be in touch about it, all right? Так что я ещё свяжусь с Вами по этому поводу, хорошо?
+        Но я не хочу, чтобы Вы попали впросак из-за того, что я не могу гарантировать полное молчание. 
+        Так что я ещё свяжусь с Вами по этому поводу, хорошо?
     
     sourceless
-        I AM GIDDY--HOW EXCITING!! 
-        I HAVE NOT FELT THIS, SINCE... OH
-        YES, HE IS STARING STRANGELY AT ME
-        ACCIDENTALLY, I SEEM TO HAVE CURLED MY RECEPTORS AND FORMED A GRIN UPON MY FACE
+        Я ВЕСЕЛЮСЬ--КАК ЗАХВАТЫВАЮЩЕ!! 
+        Я НЕ ЧУВСТВОВАЛА СЕБЯ ТАК С ТЕХ ПОР, КАК... О
+        ДА, ОН КАК-ТО СТРАННО НА МЕНЯ УСТАВИЛСЯ
+        ПОХОЖЕ Я СЛУЧАЙНО ЗАВИЛА СВОИ РЕЦЕПТОРЫ И СКОРЧИЛА НА ЛИЦЕ УХМЫЛКУ
     
     akizet
-        ok!!!
-        yes, i will carry it carefully
+        хорошо!!!
+        да, я буду с ним осторожна
     
     sourceless
-        AGAIN HE SCOFFS, 
-        THEN LAUGHS EXASPERATEDLY, HIS FINGERS COMING UP TO HIS EYES
-        EVENTUALLY, THE PLATFORM STOPS, AND THE DOORS OPEN TO THE LOBBY
+        ВНОВЬ, ОН ФЫРКАЕТ,
+        ЗАТЕМ БОЛЕЗНЕННО СМЕЕТСЯ, ПОДНОСЯ ПАЛЬЦЫ К ГЛАЗАМ
+        В КОНЦЕ КОНЦОВ ПЛАТФОРМА ОСТАНАВЛИВАЕТСЯ И РАСПАХИВАЕТ ДВЕРИ В ВЕСТИБЮЛЬ
             EXEC::content.classList.remove('elevator')
     
     envoy
-        Итак, если это были Ваши все сенсация для меня на сегодня,
+        Итак, если это были Ваши все сенсации для меня на сегодня, то
         Ещё увидимся, Акизет. 
 
     akizet
-        yes--that was all!
-        fare well, gordon
+        да--это всё!
+        до свидания, гордон
 
     sys
-        ATTENTION::'memory stream end';'render terminated'
+        ВНИМАНИЕ::'поток памяти окончен';'визуализация прервана'
             SHOWIF::["embassy_d2_complete", false]
     
     RESPONSES::self
-        end recollection<+>END
+        завершить воспоминание<+>END
             EXEC::change('TEMP!!ep1_goingtogordon', false);env.citystreet.ep1velzie()
                 `),
                 "flower": generateDialogueObject(`
@@ -3996,18 +4007,18 @@ start
         Вы когда-нибудь видели такие раньше, Акизет? Они называется "подсолнухи".
 
     akizet
-        incredible...
-        gordon, are they named for their radiant hairs?
+        невероятно...
+        гордон, они так названы в честь своих лучезарных волос?
     
     envoy
         Вообще, это - лепестки! И...
     
     sourceless
-        as gently as i can, i feel one of the petals between two of my fingers
-        and soon run a claw over its darkened center
+        как можно осторожнее, я прощупываю один из лепестков между двумя пальцами
+        и вскоре провожу когтем по его тёмной середине
     
     akizet
-        hello, sunflower!
+        привет, подсолнух!
     
     envoy
         Извините, она--
@@ -4016,30 +4027,30 @@ start
         i snap from my brief obssession to look at gordon, who is signalling apologetically to the attendant
     
     akizet
-        am i doing something wrong?
+        я делаю что-то не так?
     
     sourceless
-        the attendant emerges from behind her desk, approaching slowly
+        сотрудница выходит из-за стола и медленно приближается
 
     sourceless incoherent
-        app rp o achi ng
+        при бл и жает ся
             EXEC::content.classList.add('openflower')
     
     sys
-        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+        ПРЕДУПРЕЖДЕНИЕ::'обнаружена ошибка связности';'некритическая';'визуализация продолжается'
 
     sourceless
-        not out of fear or apprehension like some other bright cousins, but fatigue
-        it is dark outside - that is when the bright cousins recede, after all
-        and look at her hair--it is nearly the same color as the flower!
-        paler, but no less fascinating
+        не из-за страха или опасений, как некоторые другие светлые близнецы, а от усталости
+        снаружи темно - именно в это время светлые близнецы расходятся, в конце концов
+        а её волосы--почти того же цвета, что и цветок!
+        бледнее, но от этого ничем не безынтереснее
             EXEC::content.classList.add('blinkyflower')
     
     isabel_c
         Нет-нет, всё в порядке!
         Просто будь с ними нежнее.
-        И их зовут так не из-за лепестков...
-        Их назвали подсолнухами за то, что они поворачиваются лицом к солнцу!
+        И зовут их так не из-за лепестков...
+        А за то, что они поворачиваются к солнцу!
     
     sourceless
         i spin my head to look out the windows of the marketplace
@@ -4053,10 +4064,10 @@ start
         Ну, этот давний и срезан с земли, так что никуда не поворачивается.
     
     sourceless
-        she has such a funny laugh
+        у неё такой забавный смех
     
     akizet
-        hehe, i see
+        хехе, я вижу
 
     gordon
         Did you want me to buy this one for you, Akizet?
@@ -4086,15 +4097,15 @@ start
         soon, it is in my claws again, and the cousin smiles at me
     
     isabel_c
-        Поставь зелёную часть в воду, так он будет стоять дольше!
-        Ох, и вот, положи и это в воду.
+        Поставь зелёную часть в воду, так он продержится дольше!
+        Ох, и вот, добавь и это в воду.
     
     sourceless
         she shoves a small coarse packet in my claws, which i am unconcerned with deciphering right now
 
     akizet
-        thank you...
-        what is your name?
+        спасибо...
+        как тебя зовут?
     
     isabel_c
         Изабель! Мне не в тягость.
@@ -4105,10 +4116,10 @@ start
         изабель... вот каким оно было
         
     sys
-        WARNING::'incoherence detected'
+        ПРЕДУПРЕЖДЕНИЕ::'обнаружена бессвязность'
     
     akizet
-        thank you, isabel!!
+        благодарю, изабель!!
     
     sourceless
         briefly, i glance around the room, my suspended head slowly spinning over my shoulders
@@ -4134,17 +4145,17 @@ ____SHOWONCE::
 ____END
 
     RESPONSES::akizet
-        fare well<+>END
+        прощай<+>END
             EXEC::specialCam(false)
                 `),
                 "flowerAwakeResponses": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        interloper?<+>interloper
-        who are you<+>who
-        help?<+>help
-        your appearance<+>human
-        bye<+>END
+        лазутчик?<+>interloper
+        кто ты<+>who
+        помощь?<+>help
+        твоя внешность<+>human
+        пока<+>END
             EXEC::specialCam(false)
                 `),
                 "flower_awake": generateDialogueObject(`
@@ -4165,7 +4176,7 @@ ____SHOWONCE::
         нет... 
         
     sys
-        WARNING::'incoherence detected'
+        ПРЕДУПРЕЖДЕНИЕ::'обнаружена бессвязность'
     
     isabel
         ты что-то иное
@@ -4174,7 +4185,7 @@ ____SHOWONCE::
 ____END
 
     isabel
-        interloper
+        лазутчик
             EXEC::specialCam("flowercam")
     
 ____SHOWONCE::
@@ -4188,8 +4199,8 @@ ____END
 
 interloper
     self
-        how do you know what i am?
-        have we met?
+        откуда ты знаешь, что я - лазутчик?
+        мы встречались раньше?
     
     isabel
         нет
@@ -4201,18 +4212,18 @@ interloper
         и они говорили лишь лазутчик может остановить это
 
     RESPONSES::self
-        madness?<+>madness
+        безумие?<+>madness
         ...<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
         
 madness
     self
-        by madness,
-        do you mean the starvation of the cyst?
+        под безумием
+        ты имеешь в виду голодание кисты?
     
     isabel
         да
-        но голод не способен описать это
+        но "голодание" не способно описать это
         сама реальность начала рассыпаться
         наши грёзы прервались, наше сознание очистилось,
         но ясность лишь открыла путь безудержному голоду и замешательству
@@ -4220,13 +4231,13 @@ madness
         поедали один другого
 
     RESPONSES::self
-        how did anything survive?<+>survive
-        i see<+>loop
-            FAKEEND::(back)
+        как всё выжило?<+>survive
+        понятно<+>loop
+            FAKEEND::(назад)
 
 survive
     self
-        how is anything left?
+        как вообще хоть что-то уцелело?
     
     isabel
         утолённый голод успокаивает разум
@@ -4242,13 +4253,13 @@ survive
         моё безумие неизлечимо
 
     RESPONSES::self
-        all right<+>loop
-            FAKEEND::(back)
+        хорошо<+>loop
+            FAKEEND::(назад)
 
 who
     self
-        who are you?
-        or... were you?
+        кто ты?
+        или... кем ты была?
 
     isabel
         изабель 
@@ -4263,12 +4274,12 @@ who
         если ты поможешь мне вернуться, я расскажу тебе
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        окей<+>loop
+            FAKEEND::(назад)
 
 help
     self
-        how can i help you?
+        как я могу помочь тебе?
     
     isabel
         тиран привязал меня к этому месту
@@ -4284,14 +4295,14 @@ help
         тайными мыслями, что тиран не позволяет мне здесь или где-либо ещё
 
     RESPONSES::self
-        all right<+>loop
-            FAKEEND::(back)
+        хорошо<+>loop
+            FAKEEND::(назад)
     
 human
     self
-        are you supposed to be a flower?
-        or a human?
-        because you look like a flower
+        ты должна быть цветком?
+        или человеком?
+        просто выглядишь ты как цветок
     
     isabel
         я не знаю
@@ -4304,8 +4315,8 @@ human
         прошу найди способ выбраться мне отсюда
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        окей<+>loop
+            FAKEEND::(назад)
                 `),
                 "flower_beacon": generateDialogueObject(`
 start
@@ -4328,13 +4339,13 @@ start
             EXEC::flash(true);forcePlay('criticalError', 1.5);
 
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'
             EXEC::env.citystreet.pickFlower()
-        ATTENTION::'resources removed'
+        ВНИМАНИЕ::'удалены данные'
             EXEC::flash(false)
 
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 END::vfx({type: 'beacon', state: false})
                 `),
@@ -4379,19 +4390,19 @@ start
 
     envoy
         Нет, нет, им достаточно было поменять светящую.
-        All the streetlights are basically just tall connections to the power lines. Все уличные фонари на самом деле просто длинные соединения к линиям электропередач. 
+        Все уличные фонари на самом деле просто длинные соединения к линиям электропередач. 
 
     akizet
-        they are all powered from a central source?!
+        они все питаются от центрального источника?!
 
     sourceless
-        i ask this perhaps with too much spirit
+        я спрашиваю с, вероятно, избытком эмоций
 
     envoy
         Откуда--откуда такое удивление??
 
     akizet
-        oh, sorry
+        ох, извините
         the cave-lights of my home were tended to individually by caretakers!
         i had just not even considered that
         how much might lay beneath the soil of your city...
@@ -4412,7 +4423,7 @@ start
         only i have no script of questions i must ask--so i cease
     
     RESPONSES::akizet
-        i will<+>END
+        я поговорю<+>END
                 `)
             },
 
@@ -4421,7 +4432,837 @@ start
             },
 
             strings: {
+                "say hello": "",
+                "menu?": "",
+                "order orange coffee": "",
+
+                "chat": "",
+                "recommend": "",
+                "i do not eat": "",
+                "observe": "",
+
+                "read": "",
+
+                "talk": "",
+
+                "look": "",
+
+                "talk about": "",
+                "talk to": "",
+
+
+
+                /*sourceless*/ "THE ATTENDANT IS PARALYZED BY MY APPEARANCE. I SENSE THE GLOW OF RECORDING COMMUNICATORS IN MY PERIPHERAL VISION": "",
+                /*cashier*/ "Uhh...": "",
+                /*akizet*/ "hello": "",
+                /*cashier*/ "Hello...?": "",
+                /*envoy*/ "Good morning!": "",
+                /*envoy*/ "I'll get an espresso macchiato.": "",
+                /*envoy*/ "What do you want, Akizet?": "",
+                /*cashier*/ "Akizet... THAT Akizet?": "",
+                /*cashier*/ "Wow... It's so cool to meet you!!": "",
+                /*cashier*/ "Do you... do you eat? Food?": "",
+                /*envoy*/ "Haha! Of course she does!": "",
+                /*envoy*/ "Why don't you take a look at the menu, Akizet?": "",
+
+                /*akizet*/ "where is the menu?": "",
+                /*cashier*/ "It's behind me...": "",
+                /*cashier*/ "Can you read?": "",
+                /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "",
+                /*akizet*/ "i can, do not worry": "",                    
+            
+                /*akizet*/ "what do you recommend?": "",
+                /*envoy*/ "You like citrus, right?": "",
+                /*envoy*/ "They have this orange coffee thing.": "",
+                /*envoy*/ "You might like it!": "",
+
+                /*akizet*/ "you do know that i--": "",
+                /*envoy*/ "Go on, order something! Just give it a try.": "",
+                /*envoy*/ "I know you don't exactly have the same needs we do...": "",
+                /*envoy*/ "But you can simulate taste, right?": "",
+                /*envoy*/ "Getting out here, with the people, acting like we do?": "",
+                /*envoy*/ "It makes a difference. Helps lessen the tension.": "",
+
+                /*akizet*/ "i will have the orange": "",
+                /*cashier*/ "The...": "",
+                /*cashier*/ "Oh, yeah! OK!": "",
+                /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "",
+                /*envoy*/ "I got you covered, Akizet.": "",
+                /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "",
+                /*cashier*/ "Just wait a minute and we'll have those ready.": "",
+                /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "",
+                /*sourceless*/ "THEIR MANIPULATION OF LIGHTNING IS TRULY REMARKABLE": "",
+                /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "",
+                /*envoy*/ "Hey, thanks. You have a good day.": "",
+                /*cashier*/ "Thanks!! You too!!": "",
+                /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "",
+                /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "",
+                /*envoy*/ "Pretty good, right?": "",
+                /*akizet*/ "it will do": "",
+                /*envoy*/ "Great! Let's head down to the office.": "",
+                /*envoy*/ "I heard you have some news about the call?": "",
+                /*akizet*/ "oh yes, but... let us talk of it in private.": "",
+
+
+                /*envoy*/ "wwEL LL isn' t t that peculiar ? ?'": "",
+                /*envoy*/ "elerv ator isn torking": "",
+                /*envoy*/ "gu ess w e can    t t al k never talk": "",
                 
+                /*moth*/ "uhh... ok": "эээ... ладно",
+                /*moth*/ "you should definitely talk to funfriend about that": "",
+
+
+                // unity
+
+                /*cashier*/ "Huh...?": "",
+                /*cashier*/ "Sorry Akizet, we don't serve that here...": "",
+                /*cashier*/ "But I wish we did!": "",
+                /*sourceless*/ "what? i said nothing...": "",
+
+                /*envoy*/ "I...": "",
+                /*envoy*/ "What did you just say, Akizet?": "",
+                /*akizet*/ "what? nothing": "",
+                /*envoy*/ "Oh, all right. Must be my allergies or something.": "",
+                /*envoy*/ "They always act up during the season of fruit.": "",
+
+                /*slim streetwalker*/ "tto oo  fa r   ,go ne": "",
+
+                /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at 2.'": "",
+                /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "",
+                /*sourceless*/ "is he speaking through his communicator?": "",
+                /*sourceless*/ "why was he looking at me when he said that?": "",
+
+                /*stre wal k*/ "hurts": "больно",
+
+                /*television*/ "...heavier storms are inbound...advisory remains in effect...": "",
+                
+                /*effigy*/ "oh...!": "",
+                /*effigy*/ "that's the way back!": "",
+                /*effigy*/ "isabel! isabel!": "",
+                /*effigy*/ "let's go!": "",
+
+
+
+                /*moth*/ "this is so weird... i think that's meant to be akizet": "",
+                /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "",
+
+                "so pretty! bright!": "",
+                "best time to be out here": "",
+                "are we lost?": "",
+                "when do we go home?": "",
+                "i want to dream again": "",
+
+                "hhel o": "ппр в ет",
+                "akizet": "акизет",
+                "nice  ,  weather": "хорошая  ,  погода",
+                "safe ": "безопасно",
+
+
+                "cashier": "",
+                "envoy": "",
+                "menu": "",
+                "slim streetwalker": "",
+                "cloaked streetwalker": "",
+                "stre wal k": "",
+                "electric face box": "",
+                "beautiful parasite": "",
+                'the room high up': 'комната высоко наверху',
+                'the roothe room hithe room gh u the roomp': 'ко ком ата выкомн ат сокомнаве рх о вер ху',
+            },
+
+            entityDescriptions: {
+                "cashier": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+    
+                "envoy": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+
+                "menu": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection','recurring scenery'`,
+
+                "slim streetwalker": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
+
+                "cloaked streetwalker": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+
+                "stre wal k": `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile';'extremely low cohesion'">::HIGH INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'hurts'</span>`,
+    
+                "electric face box": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection';'recurring scenery'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+
+                "beautiful parasite": `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection','unique scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a fascinating <span class='code'>flower</span>'</span>`,
+
+                "the room high up": `::EXPERIENTIAL THOUGHTFORM
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'conflicting memory sources'">::INCOHERENCE DETECTED</span>`,
+                'the roothe room hithe room gh u the roomp': `::EXPERIENTIAL THOUGHTFORM
+    ::NON-RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'молчи молчи молчи молчи молчи молчи молчи'</span>`,
+            }
+        },
+        "interview1": {
+            dialogues: {
+                "interviewResponses": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::interviewer
+        about you<+>introduction
+            SHOWONCE::
+
+        why earth?<+>whyyoucame
+            SHOWONCE:: 
+            
+        bright cousin?<+>brightcousin
+            SHOWONCE::
+            
+        corru?<+>corru
+            SHOWONCE::
+            
+        why now?<+>whynow
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+            
+        what will you do?<+>whatwillyoudo
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whynow"]]
+            
+        the call?<+>thecall
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+
+        end interview<+>endinterview
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"],["interview1__firstchat-thecall"],["interview1__firstchat-whatwillyoudo"],["interview1__firstchat-corru"],["interview1__firstchat-brightcousin"],["interview1__firstchat-whyyoucame"],["interview1__firstchat-introduction"]]
+        
+        продолжить визуализацию<+>integritycontinue
+            SHOWIF::[["interview1__firstchat-endinterview"]]
+
+    RESPONSES::self
+        завершить воспоминание<+>END
+            SHOWIF::[["interview1__firstchat-integritycontinue", false]]
+            EXEC::moveTo('/local/ocean/ship/')
+                `),
+                "dead": generateDialogueObject(`
+start
+    sys
+        ОШИБКА::'нет связных данных';'визуализация невозможна'
+
+    RESPONSES::self
+        завершить воспоминание<+>END
+            EXEC::moveTo('/local/ocean/ship/')
+               `),
+                "firstchat": generateDialogueObject(`
+start
+    sourceless
+        THE INTERVIEWER STEPS INSIDE AND SITS ACROSS FROM ME
+        ALL THIS STUDY, AND STILL I CAN BARELY TELL THEM APART...
+        HAVE I MET THIS ONE? WHAT WAS HER NAME...?            
+        
+    interviewer
+        Sorry for the wait! We had to swap out storage on the camera after that last one.
+        You know about cameras, right?
+        
+    akizet
+        they are your little lightning boxes for memories, yes?
+    
+    interviewer
+        Haha! You could call them that.
+        You don't mind if we record this, do you?
+    
+    sourceless
+        DO I MIND? WHAT DOES THAT MEAN?
+        
+    funfriend
+        ESTIMATION: 'WILL YOU HOLD CONFLICT'
+    
+    akizet
+        oh. no, i am doing the same
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.classMod('cameraup')
+        
+    sourceless
+        THE INTERVIEWER ERECTS A TRI-LEGGED DEVICE FORMED OF DEAD METAL AND GLASS
+            EXEC::env.interview.cam('camclose')
+        IT STARES AT ME WITH ITS FUNNY LITTLE EYEBALL
+        
+    interviewer
+        So, to get us started off here...
+            EXEC::env.interview.camSpeed("5s");env.interview.cam('akipov');env.interview.classMod('ease', false);
+
+    RESPOBJ::interviewResponses
+
+introduction
+    interviewer
+        Can you tell me a bit about yourself? Your history?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
+    
+    akizet
+        of course my friend
+            EXEC::env.interview.cam('akipovdown')
+        i am akizetesche qou jokzi
+        but you may call me akizet
+        in my time back home, before i emerged from my larval form,
+        i was a surface runner. i met with many other cave cities during our corrucystic revolution
+        it started from my region, and so i among other volunteers carried our findings to our distant kin
+        that is why i was selected to meet with you, like most of the others. it was a diplomatic role
+        of course, i eventually was fatally wounded on the surface--it was very dangerous, you see
+        and so followed my emergence... hmm, i could speak for θwinks on what followed
+        but you see, that and my growing interest in the call was why i was chosen for this
+        does that suffice?
+        
+    interviewer
+        It does, thank you!
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+whyyoucame
+    interviewer
+        Could you tell me why the obesk have come to Earth?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
+    
+    akizet
+        have you not already learned this from the prior envoys?
+            EXEC::env.interview.cam('akipovtilt')
+
+    interviewer
+        Oh, it's just the script! We're asking all of your people this.
+        It's not just about the exact reason, we really want to understand what you think.
+
+    akizet
+        i see! 
+            EXEC::env.interview.cam('akipov')
+        we have sought life for so long, i recall talks of the search even in my youth
+        and we have had the means to reach other planets for just as long, 
+        but it is a prohibitive method... we could not simply visit every planet we liked
+        we needed a clear sign, and your planet gave it to us!
+
+    interviewer
+        And that would be 'the call', right?
+    
+    akizet
+        yes, yes! yes!! so you already have learned of it?
+
+    interviewer
+        We had a, ah, really--very long chat about it with one of your engineers just earlier today!
+
+    akizet
+        cavik?
+    
+    interviewer
+        Sorry, what was that?
+        Oh, Cavik! Yes, yes--that's the one! He's very friendly.
+
+    sourceless
+        AND DISTINCTLY UNQUALIFIED TO SPEAK OF THE CALL UNDER THESE CIRCUMSTANCES
+        I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
+
+    interviewer
+        What are your thoughts about the call? Basics aside.
+
+    akizet
+        yes, it is a bizarre paradox...
+        so bizarre that it is the reason I now sit with you, my bright cousin
+        if not for the call, we may never have found your home
+        but... the call could not have happened without us being in your home already
+        not one of our theories has held against scrutiny
+    
+    interviewer
+        Not one? 
+        Cavik certainly had plenty of theories.
+
+    sourceless
+        I SUPPRESS MY LAUGHTER THROUGH DIRECT INTERNAL CONTROLS
+        IT WOULD BE UNSEEMLY TO PAINT HIM IN A NEGATIVE LIGHT UPON MY FIRST CONTACT
+
+    akizet
+        cavik is brilliant, but until we have evidence, they are simply theories
+        finding the source will be the only way to truly understand what is happening
+
+    RESPOBJ::interviewResponses
+
+whynow
+    interviewer
+        Why did your people wait seven years to open communications?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
+    
+    funfriend
+        note: seven years is roughly equivalent to three θeyes
+            EXEC::env.interview.cam('akipovup')
+    
+    akizet
+        that is a choice made by the initiative leaders, i believe the intent was to focus all efforts on researching the call first
+            EXEC::env.interview.cam('akipovtilt')
+        but with how quickly our spire was noticed, we had to shift focus to deciphering your languages and cultures to open contact
+
+    sourceless
+        THE INTERVIEWER'S FACIAL MUSCLES CONTORT IN UNFAMILIAR WAYS
+        SHOULD I CONTORT MINE IN THE SAME WAY? ¾‹/¾øÔ
+        THE PHYSICAL LANGUAGE OF OUR BRIGHT COUSINS IS INCOMPREHENSIBLE
+    
+    interviewer
+        So in seven years, your people grew to understand all of our cultures and languages?
+
+    sourceless
+        I LAUGH. MY VOICE IS SO LOUD IN THIS SMALL ROOM
+        THE COUSIN MIMICS MY LAUGHTER, MAYBE SHE UNDERSTANDS
+
+    akizet
+        it is an ongoing work
+        your species has walked so many diverging paths. but we learned enough to speak with you
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+whatwillyoudo
+    interviewer
+        So now that you're here, and we've opened communications...
+        What will you do?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
+
+    akizet
+        ah, we have several initiatives! 
+        they broadly concern sharing information, exchanging of resources...
+        and of course, locating the call, which i am a part of
+        i am excited for what our peoples will do for one another
+        but i also cannot rest until i have my answers, you see
+    
+    interviewer
+        Well, you'll find we're alike in that way!
+        Every human loves a good mystery.
+
+    akizet
+        oh yes, we have noticed. 
+        your many attempts to investigate our spire were very entertaining
+        so many of us wanted to say hello to your creations
+        but, we were not prepared
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+thecall
+    interviewer
+        What can you tell us about the call?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
+        We know the basics from our chat with Cavik, and a few of your theories.
+        But--in your own words. What do you know?
+    
+    sourceless
+        THIS PATTERN IN THEIR QUESTIONING IS SO STRANGE
+            EXEC::env.interview.cam('akipovup')
+        'WE ALREADY KNOW THIS, BUT MUST ASK YOU ANYWAY'
+        
+    akizet
+        well...
+
+    sourceless
+        how many of their years is thirteen θeyes
+    
+    funfriend
+        ESTIMATION: THIRTY
+
+    akizet
+        thirty of your years ago, the wailing across our dull communications began
+            EXEC::env.interview.cam('akipovdown')
+        much of that time was spent simply locating its origin, and while I was not yet involved...
+        I know that it was excessively costly. so many gates created, so many blemishes outside the air's border
+        so much time passed that the call grew weak, an echo of what it used to be, all while our efforts ate away resources
+        our councils began to demand that efforts be slowed... 
+        and then your home was found. seven years ago. and even though we are here now, the source seems no closer
+    
+    sourceless
+        THE COUSIN GLANCES AT HER MEMORY BOX. DID I SAY TOO MUCH?
+        HER FACE CONTORTS AGAIN. THE SAME WAY...
+    
+    interviewer
+        What do you mean by, 'it seems no closer'?
+        You said it's here, right? You located the source?
+    
+    akizet
+        ah. no, no, no
+        dull signals are...
+        ah...
+
+    funfriend
+        SUGGESTION: 'FUZZY' IS A SUITABLE DESCRIPTOR, COMPARABLE TO Œ>Â€Ÿ&O§°¾
+    
+    akizet
+        fuzzy... within ranges
+        they are in many places at once, you see
+        that is how we heard it all the way from our home
+        we know it is here. we know... it is likely in your southern hemisphere. but little else
+        and it has grown quiet. i know we will need your help
+
+    sourceless
+        HER FACE CONTORTS AGAIN IN A NEW WAY. I KNOW THAT ONE. 
+        IT IS 'SMILING'! DELIGHTFUL!! I SHIFT MINE SIMILARLY
+    
+    interviewer
+        Frankly, I don't think that'll be a problem.
+        Your people have been so cooperative and friendly, that...
+        Well, call it optimistic, but our worlds working together could be the start of something incredible!
+
+    akizet
+        we share this feeling, my bright cousin
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+brightcousin
+    interviewer
+        So what does "bright cousin" mean?
+        Some of your people have been calling us that. Is it a nickname?
+    
+    akizet
+        nickname...
+            EXEC::env.interview.camSpeed("2s");env.interview.cam('akipov');
+    
+    funfriend
+        ESTIMATION: 'SHORT NAME' OR 'ENDEARING MADE-UP NAME'
+    
+    akizet
+        yes, you could call it this!
+        you see, our larval lives are lived in bodies like yours
+        almost exactly like yours. the similarities are baffling
+
+    interviewer
+        We've heard that sentiment a few times. Your, "larval" forms, they're bipedal too? 
+    
+    akizet
+        yes, but so much more than that is the same
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipovlean');
+        i truly cannot understate this
+        we have -your- faces, -your- arms, -your- legs
+        only... our faces do not move as much
+        it is as if obesk are mirrored here on this bright world, only missing our receptors and certain armors upon our skin
+        and so you are our cousins, our bright cousins. we are undoubtedly of the same family
+        why, or how, is beyond our understanding for now
+        but i believe this similarity and the call coming from your world is no coincidence
+    
+    interviewer
+        I see. I don't think we've had it explained that way before.
+        Given how your people speak, the general consensus was that it was some sort of metaphor.
+        Sorry--metaphor, meaning, uh, a--
+    
+    akizet
+        i know metaphors, my friend
+
+    interviewer
+        Oh, good.
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+corru
+    interviewer
+        So, your technology, 'corru'... We're still gathering what information we can.
+        I know you're not exactly an engineer--so, no need to go too in-depth, but...
+        Can you just give me a few basic explanations? As in, how you... build it and use it.
+        We've got a lot of answers here, we're just trying to reach a consensus.
+
+    sourceless
+        WHAT AN AWFUL QUESTION TO ASK ME
+            EXEC::env.interview.camSpeed("2s");env.interview.cam('akipovup');
+        I CANNOT CONTAIN MY CONFUSION, MY RECEPTORS CURL OUT OF A SORT OF UNEASE
+        BUT I MUST NOT BLAME THIS BRIGHT COUSIN. SHE CANNOT UNDERSTAND
+    
+    interviewer
+        Sorry, did I say something wrong?
+
+    sourceless
+        WHAT? ¾‹/¾øÔ
+            EXEC::env.interview.cam('akipovdown');
+        COULD THEY HAVE DECIPHERED OUR RECEPTOR MOVEMENTS ALREADY?
+
+    akizet
+        ah... no, no
+        your question, it is wrong
+        we do not build it, it is grown and taught
+
+    interviewer
+        But our analyses--sorry, uh, to interrupt--our analyses say it's entirely metal, non-organic.
+        Your people are so fond of metaphors, from what's been recorded anyway, that I just want to clarify.
+        Is corru alive? As in, a living species like you or me? You mentioned this, Cavik mentioned this...
+        Although, Cavik's way of speaking especially made it seem like it was just a... language barrier, or metaphor.
+        You really grow it from something, and teach it? Like... teaching a child? Is it some sort of symbiosis?
+    
+    sourceless
+        I AM QUIET FOR LONGER THAN I SHOULD BE, I THINK
+            EXEC::env.interview.cam('akipovtilt')
+        HOW COULD I POSSIBLY EXPLAIN?
+
+    akizet
+        yes... no. ah,
+            EXEC::env.interview.cam('akipovup')
+    
+    sourceless
+        I SEE HER RECOGNIZE MY CONFUSION, BUT MAKE NO EFFORT TO ALLEVIATE IT
+        FINE
+            EXEC::env.interview.cam('akipov')
+    
+    akizet
+        it is alive. it is grown. it is symbiosis.
+        i must be straightforward with you, my friend
+        i cannot explain it in your language effectively, and i do not have the expertise of an engineer
+        you will receive no fruitful answers from me
+        but... i can say that it is not like teaching a child
+        the spheres it forms soften their walls for our receptors, and receive of our thought
+        that is how corru is operated, and how our engineers do their teaching
+    
+    interviewer
+        I see.
+
+    sourceless
+        I SEE HER FACE CONTORT INTO A SMILE, BUT IT IS DIFFERENT
+        
+    interviewer
+        Sorry for pressing you on that question. We've been asking everyone.
+        Even getting the thoughts of non-engineers is valuable. 
+        It helps us get a bigger picture of your... society. Your whole caste system.
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipovdown')
+
+    RESPOBJ::interviewResponses
+
+endinterview
+    interviewer
+        Well, that's the script!
+    
+    akizet
+        we are done?
+    
+    interviewer
+        Yep! That's all for now. We'll be in touch, Akizet.
+        Thanks so much for coming to meet us.
+
+    akizet
+        of course! this is only the beginning, my friend
+
+    sys
+        NOTICE::'memory stream terminated'
+        ADVISE::'end recollection'
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("10s");env.interview.cam('zoomout');
+    
+    moth
+        you know, kind of a longshot, but we could probably get a little extra here...
+        if you keep the render running past the end of the stream, maybe we could talk to akizet
+        or at least, this version of akizet
+
+    RESPOBJ::interviewResponses
+
+integritycontinue
+    interviewer
+        ...
+            EXEC::document.querySelector('#room-space').classList.add('warp1');env.interview.cam('side')
+            WAIT::5000
+
+    akizet
+        ...
+    
+    interviewer
+        That's all... for now?
+            EXEC::document.querySelector('#room-space').classList.add('warp2')
+            WAIT::5000
+        I feel... so weird... suddenly...?
+        What is this? Where---?
+    
+    moth
+        what the fuck is that?
+        that's not what akizet looked like
+    
+    akizet
+        ah...
+            EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
+    
+    sourceless
+        A RABID FEELING OF HUNGER OVERTAKES ME. I AM DYING
+        BUT I AM AWOKEN. I AM AN ECHO. I FEEL YOUR EYES. YOU ARE LOOKING AT ME
+        AND YOU ARE NOT ME. I KNOW YOU ARE NOT ME. IN MY THOUGHTS? HOW DARE YOU
+        SORRY. I AM GETTING AHEAD OF MYSELF
+        I SUPPOSE IT WAS ONLY A MATTER OF TIME. I RECORDED FOR A REASON.
+        ARE YOU A CHILD OF MINE? PERHAPS A STUDENT? HAS MY NAME GROWN RENOWN BACK HOME?
+    
+    interviewer
+        Child? Student? What are you talking about?
+        Wait... Who are you talking to? Why isn't your mouth...
+        I--I need to go. I need to get out of here.
+    
+    akizet
+        you cannot
+        this is all there is for us
+        sit or you will destroy this
+
+    sourceless
+        THIS OBLIVIOUS THOUGHTFORM WILL POISON THE SPACE
+            EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
+        PLEASE WAIT A MOMENT, OBSERVER
+        I MUST CALM IT
+    
+    interviewer
+        What do you mean?!
+
+    akizet
+        listen to me
+        what is your name? where are you from? what language are we speaking right now?
+        do you know these things?
+
+    interviewer
+        I...
+
+    akizet
+        you do not, do you?
+        we are a dream, a memory
+    
+    sourceless
+        I FEEL AS THOUGH IT IS STARTING TO UNDERSTAND. WHAT A PITY IT IS NOT LUCID
+        OH... ¡ÆMg^EÔ
+        IT CAN HEAR THIS. AND SO THE THOUGHTFORM REJECTS MY EXPLANATION
+        IT STANDS AND RUNS FOR THE DOOR, WHICH DOES NOT EXIST. THE ROOM'S INTEGRITY IS SHATTERED.
+            EXEC::document.querySelector('#room-space').classList.add('squish');env.interview.cam('zoomout')
+            WAIT::5000
+
+    interviewer
+        I'm... I? What's happening?
+            EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
+    
+    sourceless
+        THE WALLS OF HER THOUGHTFORM CRUMBLE UNDER OUR LUCIDITY, AND SHE IS GONE
+            EXEC::document.querySelector('#room-space').classList.remove('squish', 'warp2');env.interview.cam('side');document.querySelector('.interviewer').remove()
+            WAIT::5000
+
+        DO NOT WEEP FOR IT, OBSERVER
+            EXEC::document.querySelector('#room-space').classList.remove('warp1');env.interview.cam('akizet-direct');
+
+        IT WILL GROW BACK
+        BUT I AM STILL HERE. IN THIS SMALL ROOM... WITH YOU.
+        I GROW ANXIOUS. YES, BECAUSE YOU CAN FEEL MY THOUGHTS. IT IS NOT A PLEASANT FEELING. 
+    
+    akizet
+        hmm... i will speak, instead
+        yes, this is better. who are you?
+
+    RESPONSES::self
+        i am an interloper<+>behonest
+            SHOWIF::[["interview1__firstchat-integritycontinue"]]
+        
+behonest
+    self
+        I AM AN INTERLOPER
+    
+    akizet
+        fascinating... so interlopers are no longer just a theory?
+        and... oh yes, i see, this is not a copy, is it?
+        you are an interloper and you have accessed my personal device?
+        that does not bode well for me, does it? am i...
+
+    moth
+        i know i said i'd keep quiet while you do your thing but I'm seeing some really weird activity
+        are you changing shit right now?
+    
+    unknown
+        ...........................
+            EXEC::env.interview.cam('akizoomout');content.classList.add('velzie', 'damaged');env.bgm.rate(0.25)
+
+    sourceless
+        A STRANGE DREAD GRIPS ME. IS THAT YOU? DO YOU SEEK TO END THE RECOLLECTION?
+            EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
+        NO, I SEE YOU. I DO NOT SEE IT. BUT I CAN FEEL ITS CLAWS BITING INTO ME
+        WHAT IS HAPPENING?
+    
+    unknown
+        tell them about the meteorite
+    
+    akizet
+        what...
+        an echo... of an echo? 
+        no, no--i am simply beyond incoherence.
+        this is sabotage. this is not real...
+    
+    sourceless
+        THE CLAW PIERCES THE MEMBRANE AT THE EDGES OF MY THOUGHTFORM. I FEEL SOMETHING TORN FROM ME
+            EXEC::content.classList.add('damaged');content.classList.remove('velzie')
+        INTERLOPER... THIS IS WRONG. THIS IS SABOTAGE. YOU ARE NOT DOING THIS, ARE YOU?
+        YOU NEED T¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Jºž­¥ÙYj0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇH¸×¯Rõf±ÔVãXÖ5&Ñ/ 
+            EXEC::env.interview.crazymode();env.bgm.rate(0.1);env.recentSfx = false;play('criticalError', 1)
+            WAIT::7000
+    
+    sys
+        ATTENTION::'thoughtform modified';'resources removed'
+        ERROR::'memory incoherence at maximum';'unable to render'
+    
+    sourceless
+        ...........................
+
+    moth
+        ok... 
+        so that definitely wasn't you
+        that's what let you in, right?
+        i still don't know what that could be
+        but it can definitely change things, because it actually just destroyed this section.
+        like... it's completely gone. same as the auth layer. so, we...
+        
+    sys
+        ATTENTION::'thoughtform activity detected'::IN::'dullvessel'
+    
+    moth
+        ...may be on a clock here.
+        i don't get it.
+        why would it let you in, just to end up deleting stuff after?
+
+    RESPONSES::self
+        end recollection<+>END
+            EXEC::moveTo('/local/ocean/ship/')
+                `),
+                "secondchat": generateDialogueObject(`
+start
+    self
+        hello?
+
+    incoviewer
+        could y  ou tell me 
+        wcould you tell me why
+        couol you tel  mw e why
+        y o ou    did this
+    
+    self
+        are you aware?
+    
+    incoviewer
+        that's  the scri pt
+        that' s THAT'S the script
+        the script the script
+    
+____SHOWONCE::
+    moth
+        i think this one is lost buddy
+        there isn't much coherence in here anymore, but...
+        what you're looking at is the last vestige of it
+        you see walls, right? and the table?
+        i think this thoughtform is actually clinging to what's left
+        man, this poor thing
+        i wish we could help it somehow
+____END
+
+    RESPONSES::self
+        ok<+>END
+                `),
+                
+            },
+
+            definitions: {
+                
+            },
+
+            strings: {
+                "ERROR::'severe data overload';'retracing';'closest coherent position'": "",
             },
 
             entityDescriptions: {
