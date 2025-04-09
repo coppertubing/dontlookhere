@@ -4669,15 +4669,15 @@ start
         HAVE I MET THIS ONE? WHAT WAS HER NAME...?            
         
     interviewer
-        Sorry for the wait! We had to swap out storage on the camera after that last one.
-        You know about cameras, right?
+        Извините за ожидание! Нам понадобилось вставить новую карту памяти после прошлого интервью.
+        Вам ведь знакомы камеры?
         
     akizet
         they are your little lightning boxes for memories, yes?
     
     interviewer
-        Haha! You could call them that.
-        You don't mind if we record this, do you?
+        Хаха! Их можно описать и так.
+        Ничего, если мы будем записывать это?
     
     sourceless
         DO I MIND? WHAT DOES THAT MEAN?
@@ -4695,14 +4695,14 @@ start
         IT STARES AT ME WITH ITS FUNNY LITTLE EYEBALL
         
     interviewer
-        So, to get us started off here...
+        Так, для начала...
             EXEC::env.interview.camSpeed("5s");env.interview.cam('akipov');env.interview.classMod('ease', false);
 
     RESPOBJ::interviewResponses
 
 introduction
     interviewer
-        Can you tell me a bit about yourself? Your history?
+        Можете ли Вы немного рассказать о себе? О Вашем прошлом?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
     
     akizet
@@ -4720,14 +4720,14 @@ introduction
         does that suffice?
         
     interviewer
-        It does, thank you!
+        Да, спасибо!
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
 
     RESPOBJ::interviewResponses
 
 whyyoucame
     interviewer
-        Could you tell me why the obesk have come to Earth?
+        Можешь ли ты рассказать мне, почему обески прибыли на Землю?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
     
     akizet
@@ -4735,8 +4735,8 @@ whyyoucame
             EXEC::env.interview.cam('akipovtilt')
 
     interviewer
-        Oh, it's just the script! We're asking all of your people this.
-        It's not just about the exact reason, we really want to understand what you think.
+        О, это по сценарию! Мы задаём этот вопрос всему вашему народу.
+        Нам хочется узнать не только конкретную причину, но и то, что вы об этом думаете.
 
     akizet
         i see! 
@@ -4747,27 +4747,27 @@ whyyoucame
         we needed a clear sign, and your planet gave it to us!
 
     interviewer
-        And that would be 'the call', right?
+        И им является 'зов', верно?<—может поменяться в зависимости перевода прошлой строки. "им" как "знаком"
     
     akizet
         yes, yes! yes!! so you already have learned of it?
 
     interviewer
-        We had a, ah, really--very long chat about it with one of your engineers just earlier today!
+        Ранее сегодня мы, ах, крайне--очень долго разговаривали об этом с одним из ваших инженеров!
 
     akizet
         cavik?
     
     interviewer
-        Sorry, what was that?
-        Oh, Cavik! Yes, yes--that's the one! He's very friendly.
+        Можешь ли ты, пожалуйста, повторить?
+        А, Кавик! Да, да--именно с ним! Он очень дружелюбный.
 
     sourceless
         AND DISTINCTLY UNQUALIFIED TO SPEAK OF THE CALL UNDER THESE CIRCUMSTANCES
         I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
 
     interviewer
-        What are your thoughts about the call? Basics aside.
+        Что ты думаешь о зове? Помимо самых основ.
 
     akizet
         yes, it is a bizarre paradox...
@@ -4777,8 +4777,8 @@ whyyoucame
         not one of our theories has held against scrutiny
     
     interviewer
-        Not one? 
-        Cavik certainly had plenty of theories.
+        перевести после прошлой строки
+        У Кавика уж точно было полным-полно теорий.
 
     sourceless
         I SUPPRESS MY LAUGHTER THROUGH DIRECT INTERNAL CONTROLS
@@ -4792,7 +4792,7 @@ whyyoucame
 
 whynow
     interviewer
-        Why did your people wait seven years to open communications?
+        Почему ваш народ ждал семь лет перед тем, как открыть линии связи?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
     
     funfriend
@@ -4810,7 +4810,7 @@ whynow
         THE PHYSICAL LANGUAGE OF OUR BRIGHT COUSINS IS INCOMPREHENSIBLE
     
     interviewer
-        So in seven years, your people grew to understand all of our cultures and languages?
+        Выходит, за семь лет ваш народ научился понимать все наши культуры и языки?
 
     sourceless
         I LAUGH. MY VOICE IS SO LOUD IN THIS SMALL ROOM
@@ -4825,8 +4825,8 @@ whynow
 
 whatwillyoudo
     interviewer
-        So now that you're here, and we've opened communications...
-        What will you do?
+        Раз уж вы здесь, и мы начали коммуникации...
+        Что вы будете делать дальше?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
 
     akizet
@@ -4837,8 +4837,8 @@ whatwillyoudo
         but i also cannot rest until i have my answers, you see
     
     interviewer
-        Well, you'll find we're alike in that way!
-        Every human loves a good mystery.
+        Ну, в этом смысле мы похожи!
+        Каждому человеку нравятся загадки.
 
     akizet
         oh yes, we have noticed. 
@@ -4851,10 +4851,10 @@ whatwillyoudo
 
 thecall
     interviewer
-        What can you tell us about the call?
+        Что ты можешь рассказать нам о зове?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
-        We know the basics from our chat with Cavik, and a few of your theories.
-        But--in your own words. What do you know?
+        Мы знаем об основах из разговора с Кавиком и нескольких ваших теорий. <<< воспринял "ваших" за общее, акизет не особо делилась теориями
+        Но--своими собственными словами. Что тебе известно?
     
     sourceless
         THIS PATTERN IN THEIR QUESTIONING IS SO STRANGE
@@ -4884,8 +4884,8 @@ thecall
         HER FACE CONTORTS AGAIN. THE SAME WAY...
     
     interviewer
-        What do you mean by, 'it seems no closer'?
-        You said it's here, right? You located the source?
+        Что ты имеешь в виду под 'речьречьречь'?
+        Ты сказала, что он здесь, не так ли? Что вы нашли источник?
     
     akizet
         ah. no, no, no
@@ -4907,9 +4907,9 @@ thecall
         IT IS 'SMILING'! DELIGHTFUL!! I SHIFT MINE SIMILARLY
     
     interviewer
-        Frankly, I don't think that'll be a problem.
-        Your people have been so cooperative and friendly, that...
-        Well, call it optimistic, but our worlds working together could be the start of something incredible!
+        Если честно, не думаю, что с этим будут проблемы.
+        Ваш народ настолько кооперативен и дружелюбен, что...
+        Ну, прозвучит оптимистично, но совместная работа наших миров может стать началом чего-то невероятного!
 
     akizet
         we share this feeling, my bright cousin
@@ -4919,8 +4919,8 @@ thecall
 
 brightcousin
     interviewer
-        So what does "bright cousin" mean?
-        Some of your people have been calling us that. Is it a nickname?
+        Что значит "светлый близнец"?
+        Некоторые представители вашего народа нас так называют. Это прозвище?
     
     akizet
         nickname...
@@ -4935,7 +4935,7 @@ brightcousin
         almost exactly like yours. the similarities are baffling
 
     interviewer
-        We've heard that sentiment a few times. Your, "larval" forms, they're bipedal too? 
+        Нам несколько раз говорили подобное. Ваши, "личиночные" формы <????, тоже бипедальны?
     
     akizet
         yes, but so much more than that is the same
@@ -4949,25 +4949,25 @@ brightcousin
         but i believe this similarity and the call coming from your world is no coincidence
     
     interviewer
-        I see. I don't think we've had it explained that way before.
-        Given how your people speak, the general consensus was that it was some sort of metaphor.
-        Sorry--metaphor, meaning, uh, a--
+        Понятно. Не думаю, что нам раньше объясняли это подобным образом.
+        Учитывая манеру речи вашего народа мы решили, что это является некой метафорой.
+        Извини--метафора это, ах, когда--
     
     akizet
         i know metaphors, my friend
 
     interviewer
-        Oh, good.
+        А, хорошо.
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
 
     RESPOBJ::interviewResponses
 
 corru
     interviewer
-        So, your technology, 'corru'... We're still gathering what information we can.
-        I know you're not exactly an engineer--so, no need to go too in-depth, but...
-        Can you just give me a few basic explanations? As in, how you... build it and use it.
-        We've got a lot of answers here, we're just trying to reach a consensus.
+        Ваша технология, 'корру'... Мы всё ещё пытаемся собрать как можно больше информации.
+        Я знаю, что ты не инженер--так что тебе не обязательно углубляться в детали, но...
+        Можешь ли ты рассказать нам о самых основах? То есть, как вы... создаёте и используете это.
+        У нас есть много ответов на это, мы просто пытаемся прийти к единому мнению.
 
     sourceless
         WHAT AN AWFUL QUESTION TO ASK ME
@@ -4976,7 +4976,7 @@ corru
         BUT I MUST NOT BLAME THIS BRIGHT COUSIN. SHE CANNOT UNDERSTAND
     
     interviewer
-        Sorry, did I say something wrong?
+        Извините, я спросила что-то не то?
 
     sourceless
         WHAT? ¾‹/¾øÔ
@@ -4989,11 +4989,11 @@ corru
         we do not build it, it is grown and taught
 
     interviewer
-        But our analyses--sorry, uh, to interrupt--our analyses say it's entirely metal, non-organic.
-        Your people are so fond of metaphors, from what's been recorded anyway, that I just want to clarify.
-        Is corru alive? As in, a living species like you or me? You mentioned this, Cavik mentioned this...
-        Although, Cavik's way of speaking especially made it seem like it was just a... language barrier, or metaphor.
-        You really grow it from something, and teach it? Like... teaching a child? Is it some sort of symbiosis?
+        Но наши анализы--простите, ах, что перебиваю--по нашим анализам оно состоит целиком из металла, неорганики.
+        Вашему народу так нравятся метафоры, во всяком случае судя по прошлым записям, что я просто хочу уточнить.
+        Живое ли корру? Имеется в виду, живой ли это организм, как ты или я? Ты это упомянула, Кавик это упомянул...
+        Хотя с манерой речи Кавика это особенно звучало, будто просто... языковой барьер или метафора.
+        Вы и правда выращиваете его из чего-то и учите? Словно... учите ребёнка? Это некий симбиоз?
     
     sourceless
         I AM QUIET FOR LONGER THAN I SHOULD BE, I THINK
@@ -5019,29 +5019,29 @@ corru
         that is how corru is operated, and how our engineers do their teaching
     
     interviewer
-        I see.
+        Хорошо.
 
     sourceless
         I SEE HER FACE CONTORT INTO A SMILE, BUT IT IS DIFFERENT
         
     interviewer
-        Sorry for pressing you on that question. We've been asking everyone.
-        Even getting the thoughts of non-engineers is valuable. 
-        It helps us get a bigger picture of your... society. Your whole caste system.
+        Извини, что задержались на этом вопросе. Мы всех расспрашиваем.
+        Здесь ценны мысли не только инженеров.
+        Это помогает нам лучше понять ваше... общество. Всю вашу систему каст.
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipovdown')
 
     RESPOBJ::interviewResponses
 
 endinterview
     interviewer
-        Well, that's the script!
+        Ну, по сценарию всё!
     
     akizet
         we are done?
     
     interviewer
-        Yep! That's all for now. We'll be in touch, Akizet.
-        Thanks so much for coming to meet us.
+        Да! На сегодня это всё. Ещё увидимся, Акизет. <<< мне не нравится второе предложение
+        Спасибо большое за то, что встретилась с нами.
 
     akizet
         of course! this is only the beginning, my friend
@@ -5068,11 +5068,11 @@ integritycontinue
         ...
     
     interviewer
-        That's all... for now?
+        На сегодня... всё?
             EXEC::document.querySelector('#room-space').classList.add('warp2')
             WAIT::5000
-        I feel... so weird... suddenly...?
-        What is this? Where---?
+        Мне почему-то... так... странно?
+        Что это? Где---?
     
     moth
         what the fuck is that?
@@ -5091,9 +5091,9 @@ integritycontinue
         ARE YOU A CHILD OF MINE? PERHAPS A STUDENT? HAS MY NAME GROWN RENOWN BACK HOME?
     
     interviewer
-        Child? Student? What are you talking about?
-        Wait... Who are you talking to? Why isn't your mouth...
-        I--I need to go. I need to get out of here.
+        слово? слово? О чём ты говоришь?
+        Подожди... С кем ты разговариваешь? Почему твой рот не...
+        Мне--Мне нужно идти. Мне нужно отсюда выбраться.
     
     akizet
         you cannot
@@ -5107,7 +5107,7 @@ integritycontinue
         I MUST CALM IT
     
     interviewer
-        What do you mean?!
+        Что ты имеешь в виду?!
 
     akizet
         listen to me
@@ -5115,7 +5115,7 @@ integritycontinue
         do you know these things?
 
     interviewer
-        I...
+        Я...
 
     akizet
         you do not, do you?
@@ -5130,7 +5130,7 @@ integritycontinue
             WAIT::5000
 
     interviewer
-        I'm... I? What's happening?
+        Я... Я? Что происходит?
             EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
     
     sourceless
@@ -5227,7 +5227,7 @@ start
         hello?
 
     incoviewer
-        could y  ou tell me 
+        could y  ou tell me
         wcould you tell me why
         couol you tel  mw e why
         y o ou    did this
