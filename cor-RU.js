@@ -4071,7 +4071,7 @@ start
         Будем на связи, хорошо?
     
     sourceless
-        МЫ ОБА ВСТАЁМ. Я ЧУВСТВУЮ, КАК ВЕС МОЕГО СТРАХА КЛАДЁТСЯ НА ЕГО ПЛЕЧИ *** это странный и буквальный перевод, я бы послушал альтернативы
+        МЫ ОБА ВСТАЁМ. Я ЧУВСТВУЮ, КАК КАК ТА ЖЕ ТРЕВОГА ТЯЖЕСТЬЮ ОСЕДАЕТ У НЕГО НА ДУШЕ.
     
     akizet
         разумеется, гордон.
@@ -4115,7 +4115,7 @@ ep1extension
     sourceless
         МЫ СПУСКАЕМСЯ НА ДВИЖУЩЕЙСЯ ПЛАТФОРМЕ НА НИЖНИЙ ЭТАЖ
             EXEC::content.classList.add('elevator')
-        ПОСЛАННИК СТОИТ МОЛЧА, В ЕГО ГЛАЗАХ ПО-ПРЕЖНЕМУ ТРЕВОГА
+        ПОСОЛ СТОИТ МОЛЧА, В ЕГО ГЛАЗАХ ПО-ПРЕЖНЕМУ ТРЕВОГА
         СЕЙЧАС ХОРОШИЙ МОМЕНТ - ДА, СЛОВНО ЭТО ВСЕГО ЛИШЬ ЗАПОЗДАЛАЯ МЫСЛЬ
         КАК ТОЛЬКО Я СОБИРАЮСЬ ЗАГОВОРИТЬ, ОН ПОВОРАЧИВАЕТСЯ КО МНЕ, НЕДОУМЕВАЮЩИЙ
 
@@ -4207,7 +4207,7 @@ ep1extension
         ОН НЕСЛЫШНО МАТЕРИТСЯ, РАЗГЛЯДЫВАЯ ПАНЕЛЬ С ЦИФРАМИ
     
     envoy
-        Кто-то на цокольном этаже пытается вызвать лифт. У нас где-то минута.
+        Кто-то вызывает лифт на цокольном этаже. У нас где-то минута.
         Акизет, я не могу принять Ваше предложение.
         Не до тех пор, пока я не смогу утвердить несколько вещей со своей стороны.
         Просто попридержите это, хорошо?
@@ -4325,11 +4325,11 @@ start
         хехе, я вижу
 
     gordon
-        Did you want me to buy this one for you, Akizet?
+        Хочешь, чтобы я купил его тебе, Акизет?
     
     isabel_c
         Нет, нет, возьмите его!
-        Он с меня.
+        Это от меня.
     
     sourceless
         he scoffs, about to protest, but i stop him with a receptor motion
@@ -4708,60 +4708,60 @@ start
 
 
                 /*sourceless*/ "THE ATTENDANT IS PARALYZED BY MY APPEARANCE. I SENSE THE GLOW OF RECORDING COMMUNICATORS IN MY PERIPHERAL VISION": "СОТРУДНИЦА ПАРАЛИЗОВАНА МОИМ ВОЗНИКНОВЕНИЕМ. ПЕРИФЕРИЙНЫМ ЗРЕНИЕМ Я ЗАМЕЧАЮ СВЕЧЕНИЕ ЗАПИСЫВАЮЩИХ КОММУНИКАТОРОВ",
-                /*cashier*/ "Uhh...": "",
+                /*cashier*/ "Uhh...": "Эээ...",
                 /*akizet*/ "hello": "здравствуйте",
-                /*cashier*/ "Hello...?": "",
-                /*envoy*/ "Good morning!": "",
-                /*envoy*/ "I'll get an espresso macchiato.": "",
-                /*envoy*/ "What do you want, Akizet?": "",
-                /*cashier*/ "Akizet... THAT Akizet?": "",
-                /*cashier*/ "Wow... It's so cool to meet you!!": "",
-                /*cashier*/ "Do you... do you eat? Food?": "",
-                /*envoy*/ "Haha! Of course she does!": "",
-                /*envoy*/ "Why don't you take a look at the menu, Akizet?": "",
+                /*cashier*/ "Hello...?": "Здравствуйте...?",
+                /*envoy*/ "Good morning!": "Доброе утро!",
+                /*envoy*/ "I'll get an espresso macchiato.": "Я буду эспрессо макиато.",
+                /*envoy*/ "What do you want, Akizet?": "Что Вам взять, Акизет?",
+                /*cashier*/ "Akizet... THAT Akizet?": "Акизет... ВОТ ЭТО Акизет?",
+                /*cashier*/ "Wow... It's so cool to meet you!!": "Воу... Так классно встретиться с тобой!!",
+                /*cashier*/ "Do you... do you eat? Food?": "Ты... Вы едите? Еда?",
+                /*envoy*/ "Haha! Of course she does!": "Хаха! Конечно же она ест!",
+                /*envoy*/ "Why don't you take a look at the menu, Akizet?": "Почему бы Вам не взглянуть на меню, Акизет?",
 
                 /*akizet*/ "where is the menu?": "где ваше меню?",
-                /*cashier*/ "It's behind me...": "",
-                /*cashier*/ "Can you read?": "",
-                /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "",
+                /*cashier*/ "It's behind me...": "Оно за мною...",
+                /*cashier*/ "Can you read?": "Вы умеете читать?",
+                /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "Простите... Я не хотела, чтобы это прозвучало грубо...",
                 /*akizet*/ "i can, do not worry": "я умею, не волнуйтесь",                    
             
                 /*akizet*/ "what do you recommend?": "что вы можете посоветовать?",
-                /*envoy*/ "You like citrus, right?": "",
-                /*envoy*/ "They have this orange coffee thing.": "",
-                /*envoy*/ "You might like it!": "",
+                /*envoy*/ "You like citrus, right?": "Вам нравятся цитрусы, верно?",
+                /*envoy*/ "They have this orange coffee thing.": "У них есть этот кофе с апельсинами.",
+                /*envoy*/ "You might like it!": "Вам могло бы понравиться!",
 
                 /*akizet*/ "you do know that i--": "вы ведь знаете, что я--",
-                /*envoy*/ "Go on, order something! Just give it a try.": "",
-                /*envoy*/ "I know you don't exactly have the same needs we do...": "",
-                /*envoy*/ "But you can simulate taste, right?": "",
-                /*envoy*/ "Getting out here, with the people, acting like we do?": "",
-                /*envoy*/ "It makes a difference. Helps lessen the tension.": "",
+                /*envoy*/ "Go on, order something! Just give it a try.": "Ну же, закажите что-нибудь! Просто дайте шанс.",
+                /*envoy*/ "I know you don't exactly have the same needs we do...": "Я знаю, у Вас нет точно тех же потребностей, что у нас...",
+                /*envoy*/ "But you can simulate taste, right?": "Но вы способны симулировать вкус, верно?",
+                /*envoy*/ "Getting out here, with the people, acting like we do?": "Выбираться куда-нибудь в люди, вести себя как мы?",
+                /*envoy*/ "It makes a difference. Helps lessen the tension.": "Это имеет значение. Помогает ослабить напряжение.",
 
                 /*akizet*/ "i will have the orange": "апельсин, пожалуйста",
-                /*cashier*/ "The...": "",
-                /*cashier*/ "Oh, yeah! OK!": "",
-                /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "",
-                /*envoy*/ "I got you covered, Akizet.": "",
+                /*cashier*/ "The...": "Апель...",
+                /*cashier*/ "Oh, yeah! OK!": "Ах, ага! Да!",
+                /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновое кофе... Это будет стоить bõXÖf±ÔVã5Öf±Ô",
+                /*envoy*/ "I got you covered, Akizet.": "Я прикрою вас, Акизет.", *** мне нравится ставить звёздочки :)) но почему они красные. уверен я чтото сломал в любом случае я не уверен что оно должно переводиться так 
                 /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ.",
-                /*cashier*/ "Just wait a minute and we'll have those ready.": "",
+                /*cashier*/ "Just wait a minute and we'll have those ready.": "Одну минутку, пожалуйста, сейчас будет готово.",
                 /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "КАК ЖЕ ХОЧЕТСЯ ВСКРЫТЬ ЭТИ МАШИНЫ И УВИДЕТЬ, КАК ОНИ РАБОТАЮТ...",
                 /*sourceless*/ "THEIR MANIPULATION OF LIGHTNING IS TRULY REMARKABLE": "ИХ УМЕНИЕ УПРАВЛЯТЬ МОЛНИЕЙ ВЗАПРАВДУ ПОРАЖАЕТ",
                 /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "ПРОХОДИТ НЕСКОЛЬКО МГНОВЕНИЙ, И СОТРУДНИЦА ВОЗВРАЩАЕТСЯ С ДВУМЯ ХЛИПКИМИ ОРГАНИЧЕСКИМИ СТАКАНЧИКАМИ.",
-                /*envoy*/ "Hey, thanks. You have a good day.": "",
-                /*cashier*/ "Thanks!! You too!!": "",
+                /*envoy*/ "Hey, thanks. You have a good day.": "Ага, благодарю. Хорошего Вам дня.",
+                /*cashier*/ "Thanks!! You too!!": "Спасибо!! И вам!!",
                 /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТИЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНЕ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
                 /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
-                /*envoy*/ "Pretty good, right?": "",
+                /*envoy*/ "Pretty good, right?": "Недурно, верно?",
                 /*akizet*/ "it will do": "неплохо",
-                /*envoy*/ "Great! Let's head down to the office.": "",
-                /*envoy*/ "I heard you have some news about the call?": "",
+                /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
+                /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу Зова?",
                 /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине.",
 
 
-                /*envoy*/ "wwEL LL isn' t t that peculiar ? ?'": "",
-                /*envoy*/ "elerv ator isn torking": "",
-                /*envoy*/ "gu ess w e can    t t al k never talk": "",
+                /*envoy*/ "wwEL LL isn' t t that peculiar ? ?'": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
+                /*envoy*/ "elerv ator isn torking": "литф н еработает",
+                /*envoy*/ "gu ess w e can    t t al k never talk": "пола гга ю мы може м пого гово ор и т ть никогда не поговорить",
                 
                 /*moth*/ "uhh... ok": "эээ... ладно",
                 /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить с развледругом об этом",
@@ -4769,23 +4769,23 @@ start
 
                 // unity
 
-                /*cashier*/ "Huh...?": "",
-                /*cashier*/ "Sorry Akizet, we don't serve that here...": "",
-                /*cashier*/ "But I wish we did!": "",
+                /*cashier*/ "Huh...?": "Ох...?",
+                /*cashier*/ "Sorry Akizet, we don't serve that here...": "Простите, Акизет, но у нас ничего такого не подают...",
+                /*cashier*/ "But I wish we did!": "Хотя я бы хотела!",
                 /*sourceless*/ "what? i said nothing...": "что? я ничего не говорила...",
 
-                /*envoy*/ "I...": "",
-                /*envoy*/ "What did you just say, Akizet?": "",
+                /*envoy*/ "I...": "Я...",
+                /*envoy*/ "What did you just say, Akizet?": "Вы что-то сказали, Акизет?",
                 /*akizet*/ "what? nothing": "что? ничего",
-                /*envoy*/ "Oh, all right. Must be my allergies or something.": "",
-                /*envoy*/ "They always act up during the season of fruit.": "",
+                /*envoy*/ "Oh, all right. Must be my allergies or something.": "Ох, что ж. Должно быть моя аллергия или вроде того.",
+                /*envoy*/ "They always act up during the season of fruit.": "Она постоянно возвращается в сезон цветения.",
 
                 /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
-                /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at 2.'": "",
-                /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "",
+                /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at 2.'": "Что? Простите, я не могу пойти с вами, у меня назначена встреча в 2.",
+                /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "Впрочем, хотелось бы--звучит весело!",
                 /*sourceless*/ "is he speaking through his communicator?": "он разговаривает через свой коммуникатор?",
-                /*sourceless*/ "why was he looking at me when he said that?": "почему он взглянул на меня, как сказал это?",
+                /*sourceless*/ "why was he looking at me when he said that?": "почему он взглянул на меня, как только сказал это?",
 
                 /*stre wal k*/ "hurts": "больно",
 
