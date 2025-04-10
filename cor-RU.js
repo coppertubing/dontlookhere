@@ -4750,7 +4750,7 @@ start
                 /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "ПРОХОДИТ НЕСКОЛЬКО МГНОВЕНИЙ, И СОТРУДНИЦА ВОЗВРАЩАЕТСЯ С ДВУМЯ ХЛИПКИМИ ОРГАНИЧЕСКИМИ СТАКАНЧИКАМИ.",
                 /*envoy*/ "Hey, thanks. You have a good day.": "",
                 /*cashier*/ "Thanks!! You too!!": "",
-                /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТИЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНУ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
+                /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТИЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНЕ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
                 /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
                 /*envoy*/ "Pretty good, right?": "",
                 /*akizet*/ "it will do": "неплохо",
@@ -5288,6 +5288,9 @@ corru
             SHOWIF::[["interview1__firstchat-introduction", false]]
         Вашему народу так нравятся метафоры, во всяком случае судя по прошлым записям, что я просто хочу уточнить.
         Живое ли корру? Имеется в виду, живой ли это организм, как ты или я? Ты это упомянула, Кавик это упомянул...
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Живое ли корру? Имеется в виду, живой ли это организм, как Вы или я? Вы это упомянули, Кавик это упомянул...
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         Хотя с манерой речи Кавика это особенно звучало, будто просто... языковой барьер или метафора.
         Вы и правда выращиваете его из чего-то и учите? Словно... учите ребёнка? Это некий симбиоз?
     
@@ -5476,7 +5479,7 @@ behonest
     sourceless
         СТРАННЫЙ УЖАС ОХВАТЫВАЕТ МЕНЯ. ЭТО ТЫ? ТЫ ХОЧЕШЬ ЗАВЕРШИТЬ ВСПОМИНАНИЕ?
             EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
-        НЕТ, ТЕБЯ Я ВИЖУ. Я НЕ ВИЖУ ЭТО. НО Я ЧУВСТВУЮ, КАК КОГТИ ВПИВАЮТСЯ В МЕНЯ
+        НЕТ, ТЕБЯ Я ВИЖУ. Я НЕ ВИЖУ ЭТО. НО Я ЧУВСТВУЮ, КАК В МЕНЯ ВПИВАЮТСЯ КОГТИ
         ЧТО ПРОИСХОДИТ?
     
     unknown
