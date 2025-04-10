@@ -1173,11 +1173,238 @@ gad
     
     RESPONSES::self
         окей<+>END
-        `)
+        `),
+        "++mothbeneath": generateDialogueObject(`
+start
+    sourceless
+        beyond your connection, moth's shoes scrape against the concrete in panic
+            EXEC::change("beneath", true)
+
+    moth
+        oh shit
+        you all right? what are you doing in there?
+
+____SHOWIF::"EXEC::env.pagePath == \`/local/beneath/parasite/\`"
+    self
+        fine
+        i just entered the parasite board somehow
+
+____SHOWIF::"EXEC::env.pagePath != \`/local/beneath/parasite/\` && env.pagePath != \`/local/ocean/ship/interview/\`"
+    self
+        fine
+        i just entered a thoughtspace through a weird gate
+
+____SHOWIF::"EXEC::env.pagePath == \`/local/ocean/ship/interview/\`"
+    self
+        fine
+        i just tried to render the interview again
+____END
+
+    moth
+        wtf
+        that's all?
+        ok, i don't know how this is working
+        maybe it's something to do with those 'mask' things
+            SHOWIF::['mask', 'hunger']
+        but you actually aren't inside any one thoughtspace right now
+        my readout is fucked, it looks like it's reading in multiple thoughtspaces
+        you're still rendering something?
+
+    self
+        yes
+        can you still see the output
+    
+    moth
+        well kinda, but it's surrounded with error spam
+        mindspikes would usually eject with this amount of incoherence
+        ...but lucky you, you're running <span definition="INTERNAL CONTEXT::'first release mindspike operating system'">tonga</span>, right?
+        i always forget if that was the third one or the first one
+    
+    self
+        first one
+    
+    moth
+        ok, right, i know what this could be then
+        you remember the <span definition="INTERNAL CONTEXT::'early mindspike scandal';'hard removing memory sources mid-render to induce hallucination';'first cases of chronos misalignment'">memory pulling</span> stuff?
+        tonga offloads most processing to your brain
+        and the system won't let you render incoherent stuff outright,
+        but since you entered whatever this is <em>from</em> an already kind of incoherent place,
+        your brain was already kinda warmed up to the incoherence
+        the difference wasn't big enough for it to run another check
+        so i think you're like, getting signals from bits of thoughtforms floating around
+        probably won't find a lot here
+        but it's worth a look anyway
+        so carry on, i'll just try and filter stuff on my end
+    
+    RESPONSES::self
+        ok<+>END
+`)
     },
 
     definitions: {
+        "θжат": "'инженер';'каста'",
+        "θжата": "'инженер';'каста'",
+        "θжату": "'инженер';'каста'",
+        "θжатом": "'инженер';'каста'",
+        "θжате": "'инженер';'каста'",
+                        
+        "θвел": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θвела": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θвелу": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θвелом": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θвеле": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+    
+        "θтир": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θтира": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θтиру": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θтиром": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "θтире": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+    
+        "кив": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "кива": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "киву": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "кивом": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+        "киве": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+    
+        "куу": "'каста';'частичная потеря значения из-за поврежденного контекста'",
+    
+    
+        "велзи": "'бог'",
+    
+        "вейльк": "'поверхностная фауна';'основа всей экосистемы';'огромные и нескончаемые'",
+    
+        "указни озо": "'surface city';'mountainous fortress';'origin of dull pulse weaponry'",
+    
+        "секри": "'хищник';'инфекция';'первобытный ужас'",
+    
+        "зузукри": "'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'",
+    
+    
+        "голем": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "голема": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "голему": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големом": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големе": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    
+        "големы": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големов": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големам": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големами": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "големах": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    
+    
+        "сцена велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+        "сцены велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+        "сцене велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+        "сцену велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+        "сценой велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+        "сценою велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
+    
+    
+    
+        "θглаз": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглаза": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазу": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазом": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазе": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазу": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+    
+        "θглазам": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазами": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+        "θглазах": "'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'",
+    
+    
+        "θвзор": "'отрезок времени';'многочислены в глазах'",
+        "θвзора": "'отрезок времени';'многочислены в глазах'",
+        "θвзору": "'отрезок времени';'многочислены в глазах'",
+        "θвзором": "'отрезок времени';'многочислены в глазах'",
+        "θвзоре": "'отрезок времени';'многочислены в глазах'",
+    
+        "θвзоры": "'отрезок времени';'многочислены в глазах'",
+        "θвзоров": "'отрезок времени';'многочислены в глазах'",
+        "θвзорам": "'отрезок времени';'многочислены в глазах'",
+        "θвзорами": "'отрезок времени';'многочислены в глазах'",
+        "θвзорах": "'отрезок времени';'многочислены в глазах'",
+    
+    
+        "θподмиг": "'отрезок времени';'многочислены во взорах'",
+        "θподмига": "'отрезок времени';'многочислены во взорах'",
+        "θподмигу": "'отрезок времени';'многочислены во взорах'",
+        "θподмигом": "'отрезок времени';'многочислены во взорах'",
+        "θподмиге": "'отрезок времени';'многочислены во взорах'",
+    
+        "θподмиги": "'отрезок времени';'многочислены во взорах'",
+        "θподмигов": "'отрезок времени';'многочислены во взорах'",
+        "θподмигам": "'отрезок времени';'многочислены во взорах'",
+        "θподмигами": "'отрезок времени';'многочислены во взорах'",
+        "θподмигах": "'отрезок времени';'многочислены во взорах'",
+    
+    
+        "θмиг": "'отрезок времени';'многочислены в подмигах'",
+        "θмига": "'отрезок времени';'многочислены в подмигах'",
+        "θмигу": "'отрезок времени';'многочислены в подмигах'",
+        "θмигом": "'отрезок времени';'многочислены в подмигах'",
+        "θмиге": "'отрезок времени';'многочислены в подмигах'",
+    
+        "θмиги": "'отрезок времени';'многочислены в подмигах'",
+        "θмигов": "'отрезок времени';'многочислены в подмигах'",
+        "θмигам": "'отрезок времени';'многочислены в подмигах'",
+        "θмигами": "'отрезок времени';'многочислены в подмигах'",
+        "θмигах": "'отрезок времени';'многочислены в подмигах'",
+    
+        
+        
+        "беспространство": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
+        "беспространства": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
+        "беспространству": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
+        "беспространством": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
+        "беспространстве": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
+    
+    
+        "джокзи озо": "'дом';'крепость на джокзи'",
+    
+        
+        "θсмерть": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмерти": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертью": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        "θсмертей": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертям": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертями": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертях": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        
+        "θсмертный": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертного": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертному": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертным": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертном": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертен": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        "θсмертное": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертно": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        "θсмертная": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертной": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертную": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертною": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертна": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        "θсмертные": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертных": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертным": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертными": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+        "θсмертны": { "type": "ПРИМЕЧАНИЕ", "text": "'подразумевает изменённое состояние проживания'"},
+    
+        
+        "фея": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "феи": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "фее": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "фею": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "феей": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+        "феею": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
     }, 
+    
 
     strings: {  
         "greet": "поздороваться",
@@ -1349,6 +1576,8 @@ gad
 
         "!!__ERROR::UNPROCESSABLE__!!": "!!__ОШИБКА::ОБРАБОТКА_НЕВОЗМОЖНА __!!",
 
+        "gate::gate::gate::": "врата::врата::врата::",
+
         // MENU
 
         
@@ -1450,8 +1679,34 @@ gad
     entityDescriptions: {
         "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`,
 
+        "gate::their waters": `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'their vast inner void';'our stilted shore';'the end'</span>`,
+
+        "gate::the void": `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the domain of the <span definition="NOTE::INHERITED CONTEXT::'implies altered living state'">dead</span>'</span>`,
+
+        "gate::the embassy": `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'spatial thoughtform';'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the performance';'velzie cackles with delight'</span>`,
+
+        "our dull vessel": `::SPATIAL THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection';'recurrent location';'alter thoughtform state'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'some elements suffer extremely low cohesion'">::INCOHERENCE DETECTED</span>`,
+
+        "gate::gate::gate::": `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'maximum incoherence';'render possible';'not advised'">::PROCESSING ERROR</span>`,
+
+        "membrane incision": `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+
+        "advance log": `::SYSTEM COMPONENT
+    ::ALERT::<span style="color:var(--bright-color)">'current mindspike log procession concluded';'static environment sustained'</span>
+    ::NOTE::'log state will advance on next visit';'utilize ACT:advance to immediately proceed to next state'`,
     },
 
     page: { 
@@ -3324,7 +3579,7 @@ start
             EXEC::page.bgm.rate(0.5);content.classList.add('incoherent')
 
     akizet
-        ах, нет, я здесь впервые
+        а, нет, я здесь впервые
 
     stre wal k
         больно
@@ -3335,7 +3590,7 @@ start
     
     akizet
         правда? мне стоило бы попробовать!
-        и меня зовут акизетеше, мой друг
+        и меня зовут акизетеше, мой друг, можно на "ты"
         я рада нашей встрече
     
     stre wal k
@@ -3849,11 +4104,11 @@ start
             SHOWIF::["embassy_d2_complete", true]
     
     RESPONSES::self
-        продолжить воспоминание<+>ep1extension
+        продолжить вспоминание<+>ep1extension
             SHOWIF::["embassy_d2_complete", true]
             EXEC::env.citystreet.envoyChat(false, true)
 
-        завершить воспоминание<+>END
+        завершить вспоминание<+>END
             EXEC::env.citystreet.envoyChat(false, true)
 
 ep1extension
@@ -3989,7 +4244,7 @@ ep1extension
             SHOWIF::["embassy_d2_complete", false]
     
     RESPONSES::self
-        завершить воспоминание<+>END
+        завершить вспоминание<+>END
             EXEC::change('TEMP!!ep1_goingtogordon', false);env.citystreet.ep1velzie()
                 `),
                 "flower": generateDialogueObject(`
@@ -4432,29 +4687,29 @@ start
             },
 
             strings: {
-                "say hello": "",
-                "menu?": "",
-                "order orange coffee": "",
+                "say hello": "сказать привет",
+                "menu?": "меню?",
+                "order orange coffee": "заказать апельсиновый кофе",
 
-                "chat": "",
-                "recommend": "",
-                "i do not eat": "",
-                "observe": "",
+                "chat": "поговорить",
+                "recommend": "совет",
+                "i do not eat": "я не ем",
+                "observe": "наблюдать",
 
-                "read": "",
+                "read": "прочитать",
 
-                "talk": "",
+                "talk": "поговорить",
 
-                "look": "",
+                "look": "посмотреть",
 
-                "talk about": "",
-                "talk to": "",
+                "talk about": "поговорить о",
+                "talk to": "поговорить с",
 
 
 
-                /*sourceless*/ "THE ATTENDANT IS PARALYZED BY MY APPEARANCE. I SENSE THE GLOW OF RECORDING COMMUNICATORS IN MY PERIPHERAL VISION": "",
+                /*sourceless*/ "THE ATTENDANT IS PARALYZED BY MY APPEARANCE. I SENSE THE GLOW OF RECORDING COMMUNICATORS IN MY PERIPHERAL VISION": "СОТРУДНИЦА ПАРАЛИЗОВАНА МОИМ ВОЗНИКНОВЕНИЕМ. ПЕРИФЕРИЙНЫМ ЗРЕНИЕМ Я ЗАМЕЧАЮ СВЕЧЕНИЕ ЗАПИСЫВАЮЩИХ КОММУНИКАТОРОВ",
                 /*cashier*/ "Uhh...": "",
-                /*akizet*/ "hello": "",
+                /*akizet*/ "hello": "здравствуйте",
                 /*cashier*/ "Hello...?": "",
                 /*envoy*/ "Good morning!": "",
                 /*envoy*/ "I'll get an espresso macchiato.": "",
@@ -4465,43 +4720,43 @@ start
                 /*envoy*/ "Haha! Of course she does!": "",
                 /*envoy*/ "Why don't you take a look at the menu, Akizet?": "",
 
-                /*akizet*/ "where is the menu?": "",
+                /*akizet*/ "where is the menu?": "где ваше меню?",
                 /*cashier*/ "It's behind me...": "",
                 /*cashier*/ "Can you read?": "",
                 /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "",
-                /*akizet*/ "i can, do not worry": "",                    
+                /*akizet*/ "i can, do not worry": "я умею, не волнуйтесь",                    
             
-                /*akizet*/ "what do you recommend?": "",
+                /*akizet*/ "what do you recommend?": "что вы можете посоветовать?",
                 /*envoy*/ "You like citrus, right?": "",
                 /*envoy*/ "They have this orange coffee thing.": "",
                 /*envoy*/ "You might like it!": "",
 
-                /*akizet*/ "you do know that i--": "",
+                /*akizet*/ "you do know that i--": "вы ведь знаете, что я--",
                 /*envoy*/ "Go on, order something! Just give it a try.": "",
                 /*envoy*/ "I know you don't exactly have the same needs we do...": "",
                 /*envoy*/ "But you can simulate taste, right?": "",
                 /*envoy*/ "Getting out here, with the people, acting like we do?": "",
                 /*envoy*/ "It makes a difference. Helps lessen the tension.": "",
 
-                /*akizet*/ "i will have the orange": "",
+                /*akizet*/ "i will have the orange": "апельсин, пожалуйста",
                 /*cashier*/ "The...": "",
                 /*cashier*/ "Oh, yeah! OK!": "",
                 /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "",
                 /*envoy*/ "I got you covered, Akizet.": "",
-                /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "",
+                /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ.",
                 /*cashier*/ "Just wait a minute and we'll have those ready.": "",
-                /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "",
-                /*sourceless*/ "THEIR MANIPULATION OF LIGHTNING IS TRULY REMARKABLE": "",
-                /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "",
+                /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "КАК ЖЕ ХОЧЕТСЯ ВСКРЫТЬ ЭТИ МАШИНЫ И УВИДЕТЬ, КАК ОНИ РАБОТАЮТ...",
+                /*sourceless*/ "THEIR MANIPULATION OF LIGHTNING IS TRULY REMARKABLE": "ИХ УМЕНИЕ УПРАВЛЯТЬ МОЛНИЕЙ ВЗАПРАВДУ ПОРАЖАЕТ",
+                /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "ПРОХОДИТ НЕСКОЛЬКО МГНОВЕНИЙ, И СОТРУДНИЦА ВОЗВРАЩАЕТСЯ С ДВУМЯ ХЛИПКИМИ ОРГАНИЧЕСКИМИ СТАКАНЧИКАМИ.",
                 /*envoy*/ "Hey, thanks. You have a good day.": "",
                 /*cashier*/ "Thanks!! You too!!": "",
-                /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "",
-                /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "",
+                /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТИЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНУ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
+                /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
                 /*envoy*/ "Pretty good, right?": "",
-                /*akizet*/ "it will do": "",
+                /*akizet*/ "it will do": "неплохо",
                 /*envoy*/ "Great! Let's head down to the office.": "",
                 /*envoy*/ "I heard you have some news about the call?": "",
-                /*akizet*/ "oh yes, but... let us talk of it in private.": "",
+                /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине.",
 
 
                 /*envoy*/ "wwEL LL isn' t t that peculiar ? ?'": "",
@@ -4509,7 +4764,7 @@ start
                 /*envoy*/ "gu ess w e can    t t al k never talk": "",
                 
                 /*moth*/ "uhh... ok": "эээ... ладно",
-                /*moth*/ "you should definitely talk to funfriend about that": "",
+                /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить с развледругом об этом",
 
 
                 // unity
@@ -4517,40 +4772,40 @@ start
                 /*cashier*/ "Huh...?": "",
                 /*cashier*/ "Sorry Akizet, we don't serve that here...": "",
                 /*cashier*/ "But I wish we did!": "",
-                /*sourceless*/ "what? i said nothing...": "",
+                /*sourceless*/ "what? i said nothing...": "что? я ничего не говорила...",
 
                 /*envoy*/ "I...": "",
                 /*envoy*/ "What did you just say, Akizet?": "",
-                /*akizet*/ "what? nothing": "",
+                /*akizet*/ "what? nothing": "что? ничего",
                 /*envoy*/ "Oh, all right. Must be my allergies or something.": "",
                 /*envoy*/ "They always act up during the season of fruit.": "",
 
-                /*slim streetwalker*/ "tto oo  fa r   ,go ne": "",
+                /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
                 /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at 2.'": "",
                 /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "",
-                /*sourceless*/ "is he speaking through his communicator?": "",
-                /*sourceless*/ "why was he looking at me when he said that?": "",
+                /*sourceless*/ "is he speaking through his communicator?": "он разговаривает через свой коммуникатор?",
+                /*sourceless*/ "why was he looking at me when he said that?": "почему он взглянул на меня, как сказал это?",
 
                 /*stre wal k*/ "hurts": "больно",
 
                 /*television*/ "...heavier storms are inbound...advisory remains in effect...": "",
                 
-                /*effigy*/ "oh...!": "",
-                /*effigy*/ "that's the way back!": "",
-                /*effigy*/ "isabel! isabel!": "",
-                /*effigy*/ "let's go!": "",
+                /*effigy*/ "oh...!": "о...!",
+                /*effigy*/ "that's the way back!": "вот она, дорога обратно!",
+                /*effigy*/ "isabel! isabel!": "изабель! изабель!",
+                /*effigy*/ "let's go!": "вперёд!",
 
 
 
-                /*moth*/ "this is so weird... i think that's meant to be akizet": "",
-                /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "",
+                /*moth*/ "this is so weird... i think that's meant to be akizet": "очень странно... я думаю она должна была быть акизет",
+                /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
 
-                "so pretty! bright!": "",
-                "best time to be out here": "",
-                "are we lost?": "",
-                "when do we go home?": "",
-                "i want to dream again": "",
+                "so pretty! bright!": "как красиво! светло!",
+                "best time to be out here": "лучшее время для прогулок",
+                "are we lost?": "мы потерялись?",
+                "when do we go home?": "когда мы пойдём домой?",
+                "i want to dream again": "я хочу грезить снова",
 
                 "hhel o": "ппр в ет",
                 "akizet": "акизет",
@@ -4558,57 +4813,57 @@ start
                 "safe ": "безопасно",
 
 
-                "cashier": "",
-                "envoy": "",
-                "menu": "",
-                "slim streetwalker": "",
-                "cloaked streetwalker": "",
-                "stre wal k": "",
-                "electric face box": "",
-                "beautiful parasite": "",
+                "cashier": "кассир",
+                "envoy": "посол",
+                "menu": "меню",
+                "slim streetwalker": "худой прохожий",
+                "cloaked streetwalker": "прохожий в плаще",
+                "stre wal k": "прох ож й",
+                "electric face box": "электрическая коробка с лицами",
+                "beautiful parasite": "прекрасный паразит",
                 'the room high up': 'комната высоко наверху',
                 'the roothe room hithe room gh u the roomp': 'ко ком ата выкомн ат сокомнаве рх о вер ху',
             },
 
             entityDescriptions: {
-                "cashier": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+                "cashier": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
     
-                "envoy": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+                "envoy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
 
-                "menu": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','recurring scenery'`,
+                "menu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','повторяющаяся обстановка'`,
 
-                "slim streetwalker": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
+                "slim streetwalker": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'предельно деградированный визуальный профиль','низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>`,
 
-                "cloaked streetwalker": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+                "cloaked streetwalker": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
 
-                "stre wal k": `::INCOMPLETE THOUGHTFORM
-    ::SIGNATURE ILLEGIBLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile';'extremely low cohesion'">::HIGH INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'hurts'</span>`,
+                "stre wal k": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'больно'</span>`,
     
-                "electric face box": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';'recurring scenery'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+                "electric face box": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся обстановка'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
 
-                "beautiful parasite": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a fascinating <span class='code'>flower</span>'</span>`,
+                "beautiful parasite": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательный <span class='code'>цветок</span>'</span>`,
 
-                "the room high up": `::EXPERIENTIAL THOUGHTFORM
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'conflicting memory sources'">::INCOHERENCE DETECTED</span>`,
-                'the roothe room hithe room gh u the roomp': `::EXPERIENTIAL THOUGHTFORM
-    ::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'молчи молчи молчи молчи молчи молчи молчи'</span>`,
+                "the room high up": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+                'the roothe room hithe room gh u the roomp': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'молчи молчи молчи молчи молчи молчи молчи'</span>`,
             }
         },
         "interview1": {
@@ -4616,31 +4871,31 @@ start
                 "interviewResponses": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::interviewer
-        about you<+>introduction
+        о вас<+>introduction
             SHOWONCE::
 
-        why earth?<+>whyyoucame
+        почему земля?<+>whyyoucame
             SHOWONCE:: 
             
-        bright cousin?<+>brightcousin
+        светлый близнец?<+>brightcousin
             SHOWONCE::
             
-        corru?<+>corru
+        корру?<+>corru
             SHOWONCE::
             
-        why now?<+>whynow
+        почему сейчас?<+>whynow
             SHOWONCE::  
             SHOWIF::[["interview1__firstchat-whyyoucame"]]
             
-        what will you do?<+>whatwillyoudo
+        что будете делать?<+>whatwillyoudo
             SHOWONCE::  
             SHOWIF::[["interview1__firstchat-whynow"]]
             
-        the call?<+>thecall
+        Зов?<+>thecall
             SHOWONCE::  
             SHOWIF::[["interview1__firstchat-whyyoucame"]]
 
-        end interview<+>endinterview
+        закончить интервью<+>endinterview
             SHOWONCE::  
             SHOWIF::[["interview1__firstchat-whyyoucame"],["interview1__firstchat-thecall"],["interview1__firstchat-whatwillyoudo"],["interview1__firstchat-corru"],["interview1__firstchat-brightcousin"],["interview1__firstchat-whyyoucame"],["interview1__firstchat-introduction"]]
         
@@ -4648,7 +4903,7 @@ RESPOBJ::
             SHOWIF::[["interview1__firstchat-endinterview"]]
 
     RESPONSES::self
-        завершить воспоминание<+>END
+        завершить вспоминание<+>END
             SHOWIF::[["interview1__firstchat-integritycontinue", false]]
             EXEC::moveTo('/local/ocean/ship/')
                 `),
@@ -4658,41 +4913,41 @@ start
         ОШИБКА::'нет связных данных';'визуализация невозможна'
 
     RESPONSES::self
-        завершить воспоминание<+>END
+        завершить вспоминание<+>END
             EXEC::moveTo('/local/ocean/ship/')
                `),
                 "firstchat": generateDialogueObject(`
 start
     sourceless
-        THE INTERVIEWER STEPS INSIDE AND SITS ACROSS FROM ME
-        ALL THIS STUDY, AND STILL I CAN BARELY TELL THEM APART...
-        HAVE I MET THIS ONE? WHAT WAS HER NAME...?            
+        ИНТЕРВЬЮЕР ЗАХОДИТ ВНУТРЬ И САЖИТСЯ НАПРОТИВ МЕНЯ
+        ВСЕ ЭТИ ИССЛЕДОВАНИЯ, И ВСЁ РАВНО Я ЕЛЕ РАЗЛИЧАЮ ИХ...
+        Я ЕЁ ВСТРЕЧАЛА? КАК ЕЁ ЗВАЛИ...?            
         
     interviewer
         Извините за ожидание! Нам понадобилось вставить новую карту памяти после прошлого интервью.
         Вам ведь знакомы камеры?
         
     akizet
-        they are your little lightning boxes for memories, yes?
+        это ваши маленькие молниевые коробки для воспоминаний, да?
     
     interviewer
         Хаха! Их можно описать и так.
         Ничего, если мы будем записывать это?
     
     sourceless
-        DO I MIND? WHAT DOES THAT MEAN?
+        "НИЧЕГО, ЕСЛИ"? ЧТО ЭТО ЗНАЧИТ?
         
     funfriend
-        ESTIMATION: 'WILL YOU HOLD CONFLICT'
+        РАСЧЁТ: "ВЫ НЕ ВОЗДЕРЖИТЕ КОНФЛИКТА?"
     
     akizet
-        oh. no, i am doing the same
+        о. нет, я делаю то же самое
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.classMod('cameraup')
         
     sourceless
-        THE INTERVIEWER ERECTS A TRI-LEGGED DEVICE FORMED OF DEAD METAL AND GLASS
+        ИНТЕРВЬЮЕР ВЫПРЯМЛЯЕТ ТРЁХНОЖНОЕ УСТРОЙСТВО ИЗ МЕРТВОГО МЕТАЛЛА И СТЕКЛА
             EXEC::env.interview.cam('camclose')
-        IT STARES AT ME WITH ITS FUNNY LITTLE EYEBALL
+        ОНО ПЯЛИТСЯ НА МЕНЯ СВОИМ СМЕШНЫМ МАЛЕНЬКИМ ГЛАЗИКОМ
         
     interviewer
         Так, для начала...
@@ -4706,10 +4961,10 @@ introduction
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
     
     akizet
-        of course my friend
+        конечно моя подруга
             EXEC::env.interview.cam('akipovdown')
-        i am akizetesche qou jokzi
-        but you may call me akizet
+        я - акизетеше куу джокзи
+        но можно звать меня акизет, на "ты"
         in my time back home, before i emerged from my larval form,
         i was a surface runner. i met with many other cave cities during our corrucystic revolution
         it started from my region, and so i among other volunteers carried our findings to our distant kin
@@ -4717,7 +4972,7 @@ introduction
         of course, i eventually was fatally wounded on the surface--it was very dangerous, you see
         and so followed my emergence... hmm, i could speak for θwinks on what followed
         but you see, that and my growing interest in the call was why i was chosen for this
-        does that suffice?
+        этого достаточно?
         
     interviewer
         Да, спасибо!
@@ -4728,10 +4983,15 @@ introduction
 whyyoucame
     interviewer
         Можешь ли ты рассказать мне, почему обески прибыли на Землю?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
+
+        Можете ли Вы рассказать мне, почему обески прибыли на Землю?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
     
     akizet
-        have you not already learned this from the prior envoys?
+        разве предыдущие послы не говорили об этом?
             EXEC::env.interview.cam('akipovtilt')
 
     interviewer
@@ -4739,7 +4999,7 @@ whyyoucame
         Нам хочется узнать не только конкретную причину, но и то, что вы об этом думаете.
 
     akizet
-        i see! 
+        я вижу! 
             EXEC::env.interview.cam('akipov')
         we have sought life for so long, i recall talks of the search even in my youth
         and we have had the means to reach other planets for just as long, 
@@ -4747,19 +5007,25 @@ whyyoucame
         we needed a clear sign, and your planet gave it to us!
 
     interviewer
-        И им является 'зов', верно?<—может поменяться в зависимости перевода прошлой строки. "им" как "знаком"
+        И им является "Зов", верно?<—может поменяться в зависимости перевода прошлой строки. "им" как "знаком"
     
     akizet
-        yes, yes! yes!! so you already have learned of it?
+        да, да! да!! так значит ты о нём уже знаешь?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        да, да! да!! так значит вы о нём уже знаете?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
 
     interviewer
         Ранее сегодня мы, ах, очень--крайне долго разговаривали об этом с одним из ваших инженеров!
 
     akizet
-        cavik?
+        с кавиком?
     
     interviewer
-        Можешь ли ты, пожалуйста, повторить?
+        Что, прости?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Что, простите?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         А, Кавик! Да, да--именно с ним! Он очень дружелюбный.
 
     sourceless
@@ -4767,17 +5033,23 @@ whyyoucame
         I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
 
     interviewer
-        Что ты думаешь о зове? Помимо самых основ.
+        Что ты думаешь о Зове? Помимо самых основ.
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Что Вы думаете о Зове? Помимо самых основ.
+            SHOWIF::[["interview1__firstchat-introduction", false]]
 
     akizet
-        yes, it is a bizarre paradox...
-        so bizarre that it is the reason I now sit with you, my bright cousin
-        if not for the call, we may never have found your home
-        but... the call could not have happened without us being in your home already
-        not one of our theories has held against scrutiny
+        да, это поразительный парадокс...
+        настолько поразительный, что стал причиной тому, почему я сейчас сижу с тобой, мой светлый близнец
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        настолько поразительный, что стал причиной тому, почему я сейчас сижу с вами, мой светлый близнец
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+        если бы не зов, мы, быть может, так и не нашли бы ваш дом
+        но... зов не смог бы начаться без того, чтобы мы уже были у вас дома
+        ни одна из наших теорий не выдержала проверки логикой
     
     interviewer
-        перевести после прошлой строки
+        Ни одна?
         У Кавика уж точно было полным-полно теорий.
 
     sourceless
@@ -4796,7 +5068,7 @@ whynow
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
     
     funfriend
-        note: seven years is roughly equivalent to three θeyes
+        примечание: семь лет примерно равны трём θглазам
             EXEC::env.interview.cam('akipovup')
     
     akizet
@@ -4851,18 +5123,24 @@ whatwillyoudo
 
 thecall
     interviewer
-        Что ты можешь рассказать нам о зове?
+        Что ты можешь рассказать нам о Зове?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Что Вы можете рассказать нам о Зове?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
         Мы знаем об основах из разговора с Кавиком и нескольких ваших теорий. <<< воспринял "ваших" за общее, акизет не особо делилась теориями
         Но--своими собственными словами. Что тебе известно?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Но--своими собственными словами. Что Вам известно?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
     
     sourceless
         THIS PATTERN IN THEIR QUESTIONING IS SO STRANGE
             EXEC::env.interview.cam('akipovup')
-        'WE ALREADY KNOW THIS, BUT MUST ASK YOU ANYWAY'
+        "МЫ ЭТО УЖЕ ЗНАЕМ, НО ВСЕ РАВНО ДОЛЖНЫ СПРОСИТЬ"
         
     akizet
-        well...
+        что ж...
 
     sourceless
         how many of their years is thirteen θeyes
@@ -4885,7 +5163,13 @@ thecall
     
     interviewer
         Что ты имеешь в виду под 'речьречьречь'?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Что Вы имеете в виду под 'речьречьречь'?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         Ты сказала, что он здесь, не так ли? Что вы нашли источник?
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Вы сказали, что он здесь, не так ли? Что вы нашли источник?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
     
     akizet
         ah. no, no, no
@@ -4950,11 +5234,11 @@ brightcousin
     
     interviewer
         Понятно. Не думаю, что нам раньше объясняли это подобным образом.
-        Учитывая манеру речи вашего народа мы решили, что это является некой метафорой.
+        Учитывая манеру речи вашего народа, мы решили, что это является некой метафорой.
         Извини--метафора это, ах, когда--
     
     akizet
-        i know metaphors, my friend
+        я знаю о метафорах, моя подруга
 
     interviewer
         А, хорошо.
@@ -4966,7 +5250,13 @@ corru
     interviewer
         Ваша технология, 'корру'... Мы всё ещё пытаемся собрать как можно больше информации.
         Я знаю, что ты не инженер--так что тебе не обязательно углубляться в детали, но...
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Я знаю, что Вы не инженер--так что Вам не обязательно углубляться в детали, но...
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         Можешь ли ты рассказать нам о самых основах? То есть, как вы... создаёте и используете это.
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Можете ли Вы рассказать нам о самых основах? То есть, как вы... создаёте и используете это.
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         У нас есть много ответов на это, мы просто пытаемся прийти к единому мнению.
 
     sourceless
@@ -4976,10 +5266,13 @@ corru
         BUT I MUST NOT BLAME THIS BRIGHT COUSIN. SHE CANNOT UNDERSTAND
     
     interviewer
+        Извини, я спросила что-то не то?
+            SHOWIF::[["interview1__firstchat-introduction"]]
         Извините, я спросила что-то не то?
+            SHOWIF::[["interview1__firstchat-introduction", false]]
 
     sourceless
-        WHAT? ¾‹/¾øÔ
+        ЧТО? ¾‹/¾øÔ
             EXEC::env.interview.cam('akipovdown');
         COULD THEY HAVE DECIPHERED OUR RECEPTOR MOVEMENTS ALREADY?
 
@@ -4989,7 +5282,10 @@ corru
         we do not build it, it is grown and taught
 
     interviewer
+        Но наши анализы--прости, ах, что перебиваю--по нашим анализам оно состоит целиком из металла, неорганики.
+            SHOWIF::[["interview1__firstchat-introduction"]]
         Но наши анализы--простите, ах, что перебиваю--по нашим анализам оно состоит целиком из металла, неорганики.
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         Вашему народу так нравятся метафоры, во всяком случае судя по прошлым записям, что я просто хочу уточнить.
         Живое ли корру? Имеется в виду, живой ли это организм, как ты или я? Ты это упомянула, Кавик это упомянул...
         Хотя с манерой речи Кавика это особенно звучало, будто просто... языковой барьер или метафора.
@@ -5026,6 +5322,9 @@ corru
         
     interviewer
         Извини, что задержались на этом вопросе. Мы всех расспрашиваем.
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Извините, что задержались на этом вопросе. Мы всех расспрашиваем.
+            SHOWIF::[["interview1__firstchat-introduction", false]]
         Здесь ценны мысли не только инженеров.
         Это помогает нам лучше понять ваше... общество. Всю вашу систему каст.
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipovdown')
@@ -5037,18 +5336,21 @@ endinterview
         Ну, по сценарию всё!
     
     akizet
-        we are done?
+        мы закончили?
     
     interviewer
         Да! На сегодня это всё. Ещё увидимся, Акизет. <<< мне не нравится второе предложение
         Спасибо большое за то, что встретилась с нами.
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        Спасибо большое за то, что встретились с нами.
+            SHOWIF::[["interview1__firstchat-introduction", false]]
 
     akizet
         of course! this is only the beginning, my friend
 
     sys
-        NOTICE::'memory stream terminated'
-        ADVISE::'end recollection'
+        УВЕДОМЛЕНИЕ::'поток памяти прерван'
+        РЕКОМЕНДАЦИЯ::'завершить вспоминание'
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("10s");env.interview.cam('zoomout');
     
     moth
@@ -5075,57 +5377,57 @@ integritycontinue
         Что это? Где---?
     
     moth
-        what the fuck is that?
-        that's not what akizet looked like
+        чё это за хуйня?
+        акизет не так выглядела
     
     akizet
-        ah...
+        ах...
             EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
     
     sourceless
-        A RABID FEELING OF HUNGER OVERTAKES ME. I AM DYING
-        BUT I AM AWOKEN. I AM AN ECHO. I FEEL YOUR EYES. YOU ARE LOOKING AT ME
-        AND YOU ARE NOT ME. I KNOW YOU ARE NOT ME. IN MY THOUGHTS? HOW DARE YOU
-        SORRY. I AM GETTING AHEAD OF MYSELF
-        I SUPPOSE IT WAS ONLY A MATTER OF TIME. I RECORDED FOR A REASON.
-        ARE YOU A CHILD OF MINE? PERHAPS A STUDENT? HAS MY NAME GROWN RENOWN BACK HOME?
+        БЕШЕНОЕ ЧУВСТВО ГОЛОДА ОВЛАДЕВАЕТ МНОЙ. Я УМИРАЮ
+        НО Я ОЧНУЛАСЬ. Я - ЭХО. Я ЧУВСТВУЮ ТВОИ ГЛАЗА. ТЫ СМОТРИШЬ НА МЕНЯ
+        И ТЫ - НЕ Я. Я ЗНАЮ, ЧТО ТЫ - НЕ Я. В МОИХ МЫСЛЯХ? КАК ТЫ СМЕЕШЬ
+        ИЗВИНИ. Я ЗАБЕГАЮ ВПЕРЁД
+        ПОЛАГАЮ, ЭТО БЫЛ ЛИШЬ ВОПРОС ВРЕМЕНИ. Я ЗАПИСЫВАЛА НЕ ПРОСТО ТАК.
+        ТЫ - МОЁ ДИТЯ? ИЛИ, ВОЗМОЖНО, УЧЕНИК? СТАЛО ЛИ МОЁ ИМЯ ИЗВЕСТНЫМ НА РОДИНЕ?
     
     interviewer
-        слово? слово? О чём ты говоришь?
+        Дитя? Ученик? О чём ты говоришь?
         Подожди... С кем ты разговариваешь? Почему твой рот не...
         Мне--Мне нужно идти. Мне нужно отсюда выбраться.
     
     akizet
-        you cannot
-        this is all there is for us
-        sit or you will destroy this
+        ты не можешь
+        это всё, что для нас осталось
+        сядь или ты разрушишь это
 
     sourceless
-        THIS OBLIVIOUS THOUGHTFORM WILL POISON THE SPACE
+        ЭТА БЕЗДУМНАЯ МЫСЛЕФОРМА ОТРАВИТ ПРОСТРАНСТВО
             EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
-        PLEASE WAIT A MOMENT, OBSERVER
-        I MUST CALM IT
+        ПОЖАЛУЙСТА, ПОДОЖДИ НЕМНОГО, НАБЛЮДАТЕЛЬ
+        Я ДОЛЖНА ЕЁ УСПОКОИТЬ
     
     interviewer
         Что ты имеешь в виду?!
 
     akizet
-        listen to me
-        what is your name? where are you from? what language are we speaking right now?
-        do you know these things?
+        слушай меня
+        как тебя зовут? откуда ты родом? на каком языке мы сейчас говорим?
+        ты знаешь эти вещи?
 
     interviewer
         Я...
 
     akizet
-        you do not, do you?
-        we are a dream, a memory
+        ты не знаешь, не так ли?
+        мы - грёза, воспоминание
     
     sourceless
-        I FEEL AS THOUGH IT IS STARTING TO UNDERSTAND. WHAT A PITY IT IS NOT LUCID
-        OH... ¡ÆMg^EÔ
-        IT CAN HEAR THIS. AND SO THE THOUGHTFORM REJECTS MY EXPLANATION
-        IT STANDS AND RUNS FOR THE DOOR, WHICH DOES NOT EXIST. THE ROOM'S INTEGRITY IS SHATTERED.
+        МНЕ КАЖЕТСЯ, БУДТО ОНА НАЧИНАЕТ ПОНИМАТЬ. КАКАЯ ЖАЛОСТЬ, ЧТО ОНА НЕ В СОЗНАНИИ
+        ОХ... ¡ÆMg^EÔ
+        ОНА СЛЫШИТ ЭТО. И ПОЭТОМУ МЫСЛЕФОРМА ОТВЕРГАЕТ МОЕ ОБЪЯСНЕНИЕ
+        ОНА ВСТАЁТ И БЕЖИТ К ДВЕРИ, КОТОРАЯ НЕ СУЩЕСТВУЕТ. ЦЕЛОСТНОСТЬ КОМНАТЫ РАЗБИВАЕТСЯ В ОСКОЛКИ.
             EXEC::document.querySelector('#room-space').classList.add('squish');env.interview.cam('zoomout')
             WAIT::5000
 
@@ -5134,75 +5436,75 @@ integritycontinue
             EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
     
     sourceless
-        THE WALLS OF HER THOUGHTFORM CRUMBLE UNDER OUR LUCIDITY, AND SHE IS GONE
+        СТЕНКИ ЕЁ МЫСЛЕФОРМЫ КРОШАТСЯ ПОД НАШЕЙ СОЗНАТЕЛЬНОСТЬЮ, И ОНА ИСЧЕЗАЕТ
             EXEC::document.querySelector('#room-space').classList.remove('squish', 'warp2');env.interview.cam('side');document.querySelector('.interviewer').remove()
             WAIT::5000
 
-        DO NOT WEEP FOR IT, OBSERVER
+        НЕ ОПЛАКИВАЙ ЕЁ, НАБЛЮДАТЕЛЬ
             EXEC::document.querySelector('#room-space').classList.remove('warp1');env.interview.cam('akizet-direct');
 
-        IT WILL GROW BACK
-        BUT I AM STILL HERE. IN THIS SMALL ROOM... WITH YOU.
-        I GROW ANXIOUS. YES, BECAUSE YOU CAN FEEL MY THOUGHTS. IT IS NOT A PLEASANT FEELING. 
+        ОНА СНОВА ВЫРАСТЕТ
+        НО Я ВСЁ ЕЩЁ ЗДЕСЬ. В ЭТОЙ МАЛЕНЬКОЙ КОМНАТЕ... С ТОБОЙ.
+        ВО МНЕ ЗАВОДИТСЯ ТРЕВОГА. ДА, ПОТОМУ ЧТО ТЫ МОЖЕШЬ ЧУВСТВОВАТЬ МОИ МЫСЛИ. ЭТО НЕПРИЯТНОЕ ОЩУЩЕНИЕ. 
     
     akizet
-        hmm... i will speak, instead
-        yes, this is better. who are you?
+        хмм... вместо этого я буду говорить
+        да, так лучше. кто ты?
 
     RESPONSES::self
-        i am an interloper<+>behonest
+        я - лазутчик<+>behonest
             SHOWIF::[["interview1__firstchat-integritycontinue"]]
         
 behonest
     self
-        I AM AN INTERLOPER
+        Я - ЛАЗУТЧИК
     
     akizet
-        fascinating... so interlopers are no longer just a theory?
-        and... oh yes, i see, this is not a copy, is it?
-        you are an interloper and you have accessed my personal device?
-        that does not bode well for me, does it? am i...
+        удивительно... так значит лазутчики - больше не теория?
+        и... о, да, я вижу, что это не копия, так ведь?
+        ты - лазутчик, получивший доступ к моему личному устройству?
+        это не сулит мне ничего хорошего, не правда ли? я...
 
     moth
-        i know i said i'd keep quiet while you do your thing but I'm seeing some really weird activity
-        are you changing shit right now?
+        знаю - обещал молчать пока ты работаешь, но тут сейчас происходит что-то очень странное
+        ты щас что-то трогаешь?
     
     unknown
         ...........................
             EXEC::env.interview.cam('akizoomout');content.classList.add('velzie', 'damaged');env.bgm.rate(0.25)
 
     sourceless
-        A STRANGE DREAD GRIPS ME. IS THAT YOU? DO YOU SEEK TO END THE RECOLLECTION?
+        СТРАННЫЙ УЖАС ОХВАТЫВАЕТ МЕНЯ. ЭТО ТЫ? ТЫ ХОЧЕШЬ ЗАВЕРШИТЬ ВСПОМИНАНИЕ?
             EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
-        NO, I SEE YOU. I DO NOT SEE IT. BUT I CAN FEEL ITS CLAWS BITING INTO ME
-        WHAT IS HAPPENING?
+        НЕТ, ТЕБЯ Я ВИЖУ. Я НЕ ВИЖУ ЭТО. НО Я ЧУВСТВУЮ, КАК КОГТИ ВПИВАЮТСЯ В МЕНЯ
+        ЧТО ПРОИСХОДИТ?
     
     unknown
-        tell them about the meteorite
+        скажи им о метеорите
     
     akizet
-        what...
-        an echo... of an echo? 
-        no, no--i am simply beyond incoherence.
-        this is sabotage. this is not real...
+        что...
+        эхо... другого эха? 
+        нет, нет--я просто за гранью бессвязности.
+        это саботаж. это не реально...
     
     sourceless
-        THE CLAW PIERCES THE MEMBRANE AT THE EDGES OF MY THOUGHTFORM. I FEEL SOMETHING TORN FROM ME
+        КОГОТЬ ПРОКАЛЫВАЕТ МЕМБРАНУ ПО КРАЯМ МОЕЙ МЫСЛЕФОРМЫ. Я ЧУВСТВУЮ, КАК ЧТО-ТО ВЫРЫВАЕТСЯ ИЗ МЕНЯ
             EXEC::content.classList.add('damaged');content.classList.remove('velzie')
-        INTERLOPER... THIS IS WRONG. THIS IS SABOTAGE. YOU ARE NOT DOING THIS, ARE YOU?
-        YOU NEED T¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Jºž­¥ÙYj0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇH¸×¯Rõf±ÔVãXÖ5&Ñ/ 
+        ЛАЗУТЧИК... ЭТО НЕПРАВИЛЬНО. ЭТО САБОТАЖ. ЭТО ЖЕ НЕ ТЫ ДЕЛАЕШЬ, ТАК?
+        ТЕБЕ НУЖᾞ¶º½mõ‹SK’æÃE:Ž‹©é·0³Jºž­¥ÙYj0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇH¸×¯Rõf±ÔVãXÖ5&Ñ/ 
             EXEC::env.interview.crazymode();env.bgm.rate(0.1);env.recentSfx = false;play('criticalError', 1)
             WAIT::7000
     
     sys
-        ATTENTION::'thoughtform modified';'resources removed'
-        ERROR::'memory incoherence at maximum';'unable to render'
+        ВНИМАНИЕ::'изменена мыслеформа';'удалены данные'
+        ОШИЮКА::'бессвязность памяти на максимуме';'визуализация невозможна'
     
     sourceless
         ...........................
 
     moth
-        ok... 
+        окей... 
         so that definitely wasn't you
         that's what let you in, right?
         i still don't know what that could be
@@ -5210,51 +5512,50 @@ behonest
         like... it's completely gone. same as the auth layer. so, we...
         
     sys
-        ATTENTION::'thoughtform activity detected'::IN::'dullvessel'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'::В::'судносерое'
     
     moth
         ...may be on a clock here.
-        i don't get it.
-        why would it let you in, just to end up deleting stuff after?
+        я не понимаю.
+        зачем впускать нас чтобы потом просто удалять штуки?
 
     RESPONSES::self
-        end recollection<+>END
+        завершить вспоминание<+>END
             EXEC::moveTo('/local/ocean/ship/')
                 `),
                 "secondchat": generateDialogueObject(`
 start
     self
-        hello?
+        привет?
 
     incoviewer
-        could y  ou tell me
-        wcould you tell me why
-        couol you tel  mw e why
-        y o ou    did this
+        может е  ли Вы рас  к
+        пможе ли рассказ почму
+        можушть л  ты   ска почему
+        т В ы  ыы    сдела это
     
     self
-        are you aware?
+        ты в сознании?
     
     incoviewer
-        that's  the scri pt
-        that' s THAT'S the script
-        the script the script
+        по   по сцена рию
+        всё  п ПО СЦЕ нар ию всё
+        сценарию  сценарию
     
 ____SHOWONCE::
     moth
-        i think this one is lost buddy
-        there isn't much coherence in here anymore, but...
-        what you're looking at is the last vestige of it
-        you see walls, right? and the table?
-        i think this thoughtform is actually clinging to what's left
-        man, this poor thing
-        i wish we could help it somehow
+        думаю с этой уже ничего не поделать, приятель
+        здесь больше не так много связности, но...
+        то на что ты смотришь - это её последний ошмёток
+        видишь стены, так ведь? и стол?
+        я думаю эта мыслеформа старается удержаться за то что осталось
+        блин, вот же бедняжка
+        был бы способ ей помочь
 ____END
 
     RESPONSES::self
-        ok<+>END
+        ок<+>END
                 `),
-                
             },
 
             definitions: {
@@ -5262,11 +5563,18 @@ ____END
             },
 
             strings: {
+                "interviewer": "интервьюер",
+
+                "hello?": "привет?",
                 "ERROR::'severe data overload';'retracing';'closest coherent position'": "",
+
+                "yeah i saw don't worry": "",
+                "not sure where it went": "",
             },
 
             entityDescriptions: {
-
+                "interviewer": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+            ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`,
             }
         },
         "exmple": {
