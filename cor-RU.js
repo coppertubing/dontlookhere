@@ -4714,9 +4714,9 @@ start
                 /*envoy*/ "Good morning!": "Доброе утро!",
                 /*envoy*/ "I'll get an espresso macchiato.": "Я буду эспрессо макиато.",
                 /*envoy*/ "What do you want, Akizet?": "Что Вам взять, Акизет?",
-                /*cashier*/ "Akizet... THAT Akizet?": "Акизет... ВОТ ЭТО Акизет?",
+                /*cashier*/ "Akizet... THAT Akizet?": "Акизет... ТА САМАЯ Акизет?", //мне кажется в оригинале была такой более "ебать я встретил знаменитость" подтекст чем "оно разумное??"
                 /*cashier*/ "Wow... It's so cool to meet you!!": "Воу... Так классно встретиться с тобой!!",
-                /*cashier*/ "Do you... do you eat? Food?": "Ты... Вы едите? Еда?",
+                /*cashier*/ "Do you... do you eat? Food?": "Ты... Вы едите? Еду?",
                 /*envoy*/ "Haha! Of course she does!": "Хаха! Конечно же она ест!",
                 /*envoy*/ "Why don't you take a look at the menu, Akizet?": "Почему бы Вам не взглянуть на меню, Акизет?",
 
@@ -4741,8 +4741,8 @@ start
                 /*akizet*/ "i will have the orange": "апельсин, пожалуйста",
                 /*cashier*/ "The...": "Апель...",
                 /*cashier*/ "Oh, yeah! OK!": "Ах, ага! Да!",
-                /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновое кофе... Это будет стоить bõXÖf±ÔVã5Öf±Ô",
-                /*envoy*/ "I got you covered, Akizet.": "Я прикрою вас, Акизет.", *** мне нравится ставить звёздочки :)) но почему они красные. уверен я чтото сломал в любом случае я не уверен что оно должно переводиться так 
+                /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновый кофе... Это будет стоить bõXÖf±ÔVã5Öf±Ô",
+                /*envoy*/ "I got you covered, Akizet.": "Счёт на мне, Акизет.", 
                 /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ.",
                 /*cashier*/ "Just wait a minute and we'll have those ready.": "Одну минутку, пожалуйста, сейчас будет готово.",
                 /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "КАК ЖЕ ХОЧЕТСЯ ВСКРЫТЬ ЭТИ МАШИНЫ И УВИДЕТЬ, КАК ОНИ РАБОТАЮТ...",
@@ -4752,8 +4752,8 @@ start
                 /*cashier*/ "Thanks!! You too!!": "Спасибо!! И вам!!",
                 /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТИЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНЕ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
                 /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
-                /*envoy*/ "Pretty good, right?": "Недурно, верно?",
-                /*akizet*/ "it will do": "неплохо",
+                /*envoy*/ "Pretty good, right?": "Недурно, а?", //помогает с течением речи думаю
+                /*akizet*/ "it will do": "сойдёт",
                 /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
                 /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу Зова?",
                 /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине.",
@@ -4771,14 +4771,14 @@ start
 
                 /*cashier*/ "Huh...?": "Ох...?",
                 /*cashier*/ "Sorry Akizet, we don't serve that here...": "Простите, Акизет, но у нас ничего такого не подают...",
-                /*cashier*/ "But I wish we did!": "Хотя я бы хотела!",
+                /*cashier*/ "But I wish we did!": "Хотя хотелось бы!", //пред вариант  звучит не совсем связанно с прошлой строкой имхо
                 /*sourceless*/ "what? i said nothing...": "что? я ничего не говорила...",
 
                 /*envoy*/ "I...": "Я...",
                 /*envoy*/ "What did you just say, Akizet?": "Вы что-то сказали, Акизет?",
                 /*akizet*/ "what? nothing": "что? ничего",
                 /*envoy*/ "Oh, all right. Must be my allergies or something.": "Ох, что ж. Должно быть моя аллергия или вроде того.",
-                /*envoy*/ "They always act up during the season of fruit.": "Она постоянно возвращается в сезон цветения.",
+                /*envoy*/ "They always act up during the season of fruit.": "Она постоянно возвращается в сезон цветения.", //вроде бы season of fruit не то чтобы частая фраза в английском, и в коррукорде я видел теорию мол циста акизет просто не знает как весна называется и поэтому так ее назвала. хотя я не знаю насколько редкое "сезон цветения". короче может сделать название страннее? мнения?
 
                 /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
@@ -4965,13 +4965,13 @@ introduction
             EXEC::env.interview.cam('akipovdown')
         я - акизетеше куу джокзи
         но можно звать меня акизет, на "ты"
-        in my time back home, before i emerged from my larval form,
-        i was a surface runner. i met with many other cave cities during our corrucystic revolution
-        it started from my region, and so i among other volunteers carried our findings to our distant kin
-        that is why i was selected to meet with you, like most of the others. it was a diplomatic role
-        of course, i eventually was fatally wounded on the surface--it was very dangerous, you see
-        and so followed my emergence... hmm, i could speak for θwinks on what followed
-        but you see, that and my growing interest in the call was why i was chosen for this
+        в своё время дома, до того, как я вознеслась из своего личиночного облика, *** был вариант "покинула свой личиночный облик", который мне нравился больше, но блин. надо как-то сочетать со строчкой где подмиги
+        я была наземнобежцем. я бывала во множестве других пещерных городов во время нашей корруцистозной революции
+        она началась с моих краёв, и вместе с другими добровольцами я понесла эти открытия нашим дальним родичам
+        именно поэтому меня, как и большинство других, выбрали для встречи с вами. это была дипломатическая роль
+        естественно, в конце концов я оказалась смертельно ранена на поверхности--там очень опасно, видишь ли
+        и вот так я вознеслась... хмм, я могла бы говорить θподмигами о том, что за этим последовало
+        но как ты видишь, всё то и мой растущий интерес в зове стало причиной тому, почему я была выбрана для этого *** странное
         этого достаточно?
         
     interviewer
@@ -5001,13 +5001,13 @@ whyyoucame
     akizet
         я вижу! 
             EXEC::env.interview.cam('akipov')
-        we have sought life for so long, i recall talks of the search even in my youth
-        and we have had the means to reach other planets for just as long, 
-        but it is a prohibitive method... we could not simply visit every planet we liked
-        we needed a clear sign, and your planet gave it to us!
+        мы столь долго мечтали найти другую жизнь, что я помню разговоры о поисках даже в своей юности *** неточный перевод во имя избегания тавтологии
+        и примерно столько же времени у нас была возможность достичь другие планеты,
+        but it is a prohibitive method... мы не могли просто навещать каждую планету, что попадалась нам на глаза *** помогите
+        мы нуждались в явном знаке - и ваша планета подала его!
 
     interviewer
-        И им является "Зов", верно?<—может поменяться в зависимости перевода прошлой строки. "им" как "знаком"
+        И им является "Зов", верно?
     
     akizet
         да, да! да!! так значит ты о нём уже знаешь?
@@ -5026,11 +5026,11 @@ whyyoucame
             SHOWIF::[["interview1__firstchat-introduction"]]
         Что, простите?
             SHOWIF::[["interview1__firstchat-introduction", false]]
-        А, Кавик! Да, да--именно с ним! Он очень дружелюбный.
+        А, Кавик! Да, да--именно с ним! Он очень дружелюбен.
 
     sourceless
-        AND DISTINCTLY UNQUALIFIED TO SPEAK OF THE CALL UNDER THESE CIRCUMSTANCES
-        I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
+        И ОПРЕДЕЛЁННО НЕКВАЛИФИЦИРОВАН ДЛЯ ОБСУЖДЕНИЯ ЗОВА В ПОДОБНЫХ ОБСТОЯТЕЛЬСТВАХ
+        ПРЕДСТАВИТЬ СЕБЕ НЕ МОГУ, КАКИХ СКАЗОК ОН НАРАССКАЗЫВАЛ НАШИМ БЛИЗНЕЦАМ
 
     interviewer
         Что ты думаешь о Зове? Помимо самых основ.
@@ -5053,13 +5053,12 @@ whyyoucame
         У Кавика уж точно было полным-полно теорий.
 
     sourceless
-        I SUPPRESS MY LAUGHTER THROUGH DIRECT INTERNAL CONTROLS
-        IT WOULD BE UNSEEMLY TO PAINT HIM IN A NEGATIVE LIGHT UPON MY FIRST CONTACT
+        Я ПОДАВЛЯЮ СВОЙ СМЕХ ЧЕРЕЗ ПРЯМОЕ ВНУТРЕННЕЕ УПРАВЛЕНИЕ
+        БЫЛО БЫ НЕКРАСИВО ВЫСТАВИТЬ ЕГО В ПЛОХОМ СВЕТЕ ПРИ ПЕРВОМ ЖЕ КОНТАКТЕ
 
     akizet
-        cavik is brilliant, but until we have evidence, they are simply theories
-        finding the source will be the only way to truly understand what is happening
-
+        кавик блестящ, но пока у нас нет доказательств, это только теории
+        поиск источника - единственный способ по-настоящему понять, что происходит
     RESPOBJ::interviewResponses
 
 whynow
@@ -5072,25 +5071,25 @@ whynow
             EXEC::env.interview.cam('akipovup')
     
     akizet
-        that is a choice made by the initiative leaders, i believe the intent was to focus all efforts on researching the call first
+        это решение вынесли лидеры инициатив. я полагаю, было задумано сосредоточить все силы на изучении зова
             EXEC::env.interview.cam('akipovtilt')
-        but with how quickly our spire was noticed, we had to shift focus to deciphering your languages and cultures to open contact
+        однако с тем, как быстро наш шпиль обнаружили, нам пришлось сместить приоритеты на расшифровку ваших языков и культур, чтобы наладить контакт
 
     sourceless
-        THE INTERVIEWER'S FACIAL MUSCLES CONTORT IN UNFAMILIAR WAYS
-        SHOULD I CONTORT MINE IN THE SAME WAY? ¾‹/¾øÔ
-        THE PHYSICAL LANGUAGE OF OUR BRIGHT COUSINS IS INCOMPREHENSIBLE
+        ЛИЦЕВЫЕ МЫШЦЫ ИНТЕРВЬЮЕРА КОРЧАТСЯ В НЕЗНАКОМОМ МНЕ ВЫРАЖЕНИИ
+        МОЖЕТ МНЕ СТОИТ СКОРЧИТЬСЯ ТАКИМ ЖЕ ОБРАЗОМ? ¾‹/¾øÔ
+        ЯЗЫК ТЕЛА НАШИХ БЛИЗНЕЦОВ НЕВРАЗУМИТЕЛЕН
     
     interviewer
         Выходит, за семь лет ваш народ научился понимать все наши культуры и языки?
 
     sourceless
-        I LAUGH. MY VOICE IS SO LOUD IN THIS SMALL ROOM
-        THE COUSIN MIMICS MY LAUGHTER, MAYBE SHE UNDERSTANDS
+        Я СМЕЮСЬ. МОЙ ГОЛОС ЗВУЧИТ ТАК ГРОМКО В ЭТОЙ МАЛЕНЬКОЙ КОМНАТЕ
+        БЛИЗНЕЦ ПОВТОРЯЕТ ЗА МОИМ СМЕХОМ, БЫТЬ МОЖЕТ, ОНА ПОНИМАЕТ
 
     akizet
-        it is an ongoing work
-        your species has walked so many diverging paths. but we learned enough to speak with you
+        это работа в процессе
+        ваш род прошёл столько ветвящихся путей. но мы научились достаточному, чтобы говорить с вами
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
 
     RESPOBJ::interviewResponses
@@ -5102,21 +5101,24 @@ whatwillyoudo
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
 
     akizet
-        ah, we have several initiatives! 
-        they broadly concern sharing information, exchanging of resources...
-        and of course, locating the call, which i am a part of
-        i am excited for what our peoples will do for one another
-        but i also cannot rest until i have my answers, you see
-    
+        ах, у нас есть несколько инициатив!
+        они в целом касаются обмена информацией, обмена ресурсами...
+        и, конечно, определения источника зова, частью чего я являюсь
+        я с нетерпением предвкушаю то, что наши народы сделают друг для друга
+        но я не смогу вздохнуть спокойно до тех пор, пока не получу свои ответы, видишь ли
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        но я не смогу вздохнуть спокойно до тех пор, пока не получу свои ответы, видите ли
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+
     interviewer
         Ну, в этом смысле мы похожи!
         Каждому человеку нравятся загадки.
 
     akizet
-        oh yes, we have noticed. 
-        your many attempts to investigate our spire were very entertaining
-        so many of us wanted to say hello to your creations
-        but, we were not prepared
+        о да, мы заметили. 
+        ваши многочисленные попытки расследовать наш шпиль были очень занимательны
+        многие из нас хотели передать привет вашим созданиям
+        но мы не были готовы
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
 
     RESPOBJ::interviewResponses
@@ -5128,38 +5130,38 @@ thecall
         Что Вы можете рассказать нам о Зове?
             SHOWIF::[["interview1__firstchat-introduction", false]]
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
-        Мы знаем об основах из разговора с Кавиком и нескольких ваших теорий. <<< воспринял "ваших" за общее, акизет не особо делилась теориями
+        Мы знаем об основах из разговора с Кавиком и нескольких ваших теорий.
         Но--своими собственными словами. Что тебе известно?
             SHOWIF::[["interview1__firstchat-introduction"]]
         Но--своими собственными словами. Что Вам известно?
             SHOWIF::[["interview1__firstchat-introduction", false]]
     
     sourceless
-        THIS PATTERN IN THEIR QUESTIONING IS SO STRANGE
+        МЕТОД, ПО КОТОРОМУ ОНИ ВЫСТРАИВАЮТ СВОИ ДОПРОСЫ, ТАКОЙ СТРАННЫЙ
             EXEC::env.interview.cam('akipovup')
-        "МЫ ЭТО УЖЕ ЗНАЕМ, НО ВСЕ РАВНО ДОЛЖНЫ СПРОСИТЬ"
+        "МЫ ЭТО УЖЕ ЗНАЕМ, НО ВСЁ РАВНО ДОЛЖНЫ СПРОСИТЬ"
         
     akizet
         что ж...
 
     sourceless
-        how many of their years is thirteen θeyes
+        сколько их лет составляют тринадцать θглаз
     
     funfriend
-        ESTIMATION: THIRTY
+        РАСЧЁТ: ТРИДЦАТЬ
 
     akizet
-        thirty of your years ago, the wailing across our dull communications began
+        тридцать ваших лет назад по нашим коммуникациям серое пронёсся вой
             EXEC::env.interview.cam('akipovdown')
-        much of that time was spent simply locating its origin, and while I was not yet involved...
-        I know that it was excessively costly. so many gates created, so many blemishes outside the air's border
-        so much time passed that the call grew weak, an echo of what it used to be, all while our efforts ate away resources
-        our councils began to demand that efforts be slowed... 
-        and then your home was found. seven years ago. and even though we are here now, the source seems no closer
+        значительная часть этого времени была потрачена на то, чтобы просто выявить его местоположение, и хотя я ещё не была вовлечена...
+        я знаю, что это было чрезвычайно затратно. столько врат открыто, so many blemishes outside the air's border *** опомгите
+        прошло столько времени, что зов ослаб, превратился в отголосок того, чем являлся прежде, и всё, пока наши труды сжирали ресурсы
+        наши советы стали требовать замедления усилий... 
+        а потом мы нашли ваш дом. семь лет назад. и пусть ныне мы здесь, его источник кажется ничуть не ближе
     
     sourceless
-        THE COUSIN GLANCES AT HER MEMORY BOX. DID I SAY TOO MUCH?
-        HER FACE CONTORTS AGAIN. THE SAME WAY...
+        БЛИЗНЕЦ ОЗИРАЕТСЯ НА СВОЮ ЗАПОМИНАЮЩУЮ КОРОБКУ. НЕ СКАЗАЛА ЛИ Я ЛИШНЕГО?
+        ЕЁ ЛИЦО ВНОВЬ КОРЧИТСЯ. ТОЧНО ТАК ЖЕ...
     
     interviewer
         Что ты имеешь в виду под 'речьречьречь'?
@@ -5172,23 +5174,26 @@ thecall
             SHOWIF::[["interview1__firstchat-introduction", false]]
     
     akizet
-        ah. no, no, no
-        dull signals are...
-        ah...
+        а. нет, нет, нет
+        сигналы серое, они...
+        э...
 
     funfriend
-        SUGGESTION: 'FUZZY' IS A SUITABLE DESCRIPTOR, COMPARABLE TO Œ>Â€Ÿ&O§°¾
+        ПРЕДЛОЖЕНИЕ: 'НЕЧЁТКИЕ' - ПОДХОДЯЩЕЕ ОПИСАНИЕ, СРАВНИМОЕ С Œ>Â€Ÿ&O§°¾
     
     akizet
-        fuzzy... within ranges
-        they are in many places at once, you see
-        that is how we heard it all the way from our home
-        we know it is here. we know... it is likely in your southern hemisphere. but little else
-        and it has grown quiet. i know we will need your help
+        нечёткие... в пределах диапазона
+        они в нескольких местах одновременно, видишь ли
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        они в нескольких местах одновременно, видите ли
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+        только так мы смогли услышать его аж с нашей родины
+        мы знаем, он здесь. мы знаем... что, наиболее вероятно, он в южном полушарии. но ничего более
+        и он стихает. нам безусловно понадобится ваша помощь
 
     sourceless
-        HER FACE CONTORTS AGAIN IN A NEW WAY. I KNOW THAT ONE. 
-        IT IS 'SMILING'! DELIGHTFUL!! I SHIFT MINE SIMILARLY
+        ЕЁ ЛИЦО ИСКРИВЛЯЕТСЯ ПО-НОВОМУ. ЭТО Я УЗНАЮ.
+        ОНА "УЛЫБАЕТСЯ"! ВОСХИТИТЕЛЬНО!! Я ДВИГАЮ СВОЁ АНАЛОГИЧНО
     
     interviewer
         Если честно, не думаю, что с этим будут проблемы.
@@ -5196,7 +5201,7 @@ thecall
         Ну, прозвучит оптимистично, но совместная работа наших миров может стать началом чего-то невероятного!
 
     akizet
-        we share this feeling, my bright cousin
+        мы разделяем это чувство, мой светлый близнец
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
 
     RESPOBJ::interviewResponses
@@ -5207,30 +5212,32 @@ brightcousin
         Некоторые представители вашего народа нас так называют. Это прозвище?
     
     akizet
-        nickname...
+        прозвище...
             EXEC::env.interview.camSpeed("2s");env.interview.cam('akipov');
     
     funfriend
-        ESTIMATION: 'SHORT NAME' OR 'ENDEARING MADE-UP NAME'
+        РАСЧЁТ: "УКОРОЧЕННОЕ ИМЯ" ИЛИ "ЛАСКАЮЩЕЕ ВЫДУМАННОЕ ИМЯ"
     
     akizet
-        yes, you could call it this!
-        you see, our larval lives are lived in bodies like yours
-        almost exactly like yours. the similarities are baffling
-
+        да, так можно сказать!
+        видишь ли, наши личиночные жизни проживаются в телах, похожих на ваши
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        видите ли, наши личиночные жизни проживаются в телах, похожих на ваши
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+        очень похожих на ваши. в это даже не верится *** неточный перевод чтобы вышло красиво в строчке попозже
     interviewer
-        Нам несколько раз говорили подобное. Ваши, "личиночные" формы <????, тоже бипедальны?
+        Нам несколько раз говорили подобное. Ваши, "личиночные" облики <????, тоже двуногие?
     
     akizet
-        yes, but so much more than that is the same
+        да, но сходства далеко не кончаются на этом
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipovlean');
-        i truly cannot understate this
-        we have -your- faces, -your- arms, -your- legs
-        only... our faces do not move as much
-        it is as if obesk are mirrored here on this bright world, only missing our receptors and certain armors upon our skin
-        and so you are our cousins, our bright cousins. we are undoubtedly of the same family
-        why, or how, is beyond our understanding for now
-        but i believe this similarity and the call coming from your world is no coincidence
+        i truly cannot understate this *** помогиет
+        у нас -ваши- лица, -ваши- руки, -ваши- ноги
+        разве что... наши лица не двигаются так много
+        это так, словно it is as if obesk are mirrored here on this bright world, просто без наших рецепторов и некоторых панцирей на коже *** ПОМОГИТЕ
+        и потому вы - наши близнецы, наши светлые близнецы. мы несомненно принадлежим одному и тому же семейству
+        почему или как - пока что вопросы за пределами нашего понимания
+        но я верю, что это сходство и зов, исходящий из вашего мира, не являются совпадением
     
     interviewer
         Понятно. Не думаю, что нам раньше объясняли это подобным образом.
@@ -5260,10 +5267,11 @@ corru
         У нас есть много ответов на это, мы просто пытаемся прийти к единому мнению.
 
     sourceless
-        WHAT AN AWFUL QUESTION TO ASK ME
+        ЧТО ЗА УЖАСНЫЙ ВОПРОС
+        НЕ МНЕ СЛЕДУЕТ ОТВЕЧАТЬ НА ЭТО *** что я делаю это ЛИШНЯЯ СТРОЧКА. но я считаю, что не существует более адекватного способа а) выразить весьма резкое и негрузное отвержение б) сохранить смысл question to ask -me-
             EXEC::env.interview.camSpeed("2s");env.interview.cam('akipovup');
-        I CANNOT CONTAIN MY CONFUSION, MY RECEPTORS CURL OUT OF A SORT OF UNEASE
-        BUT I MUST NOT BLAME THIS BRIGHT COUSIN. SHE CANNOT UNDERSTAND
+        Я НЕ СДЕРЖИВАЮ НЕДОУМЕНИЕ И МОИ РЕЦЕПТОРЫ ВЫКРУЧИВАЮТСЯ В НЕКОМ ВОЛНЕНИИ
+        НО Я НЕ ДОЛЖНА ВИНИТЬ СВЕТЛОГО БЛИЗНЕЦА. ОНА НЕ ПОНИМАЕТ
     
     interviewer
         Извини, я спросила что-то не то?
@@ -5274,12 +5282,15 @@ corru
     sourceless
         ЧТО? ¾‹/¾øÔ
             EXEC::env.interview.cam('akipovdown');
-        COULD THEY HAVE DECIPHERED OUR RECEPTOR MOVEMENTS ALREADY?
+        НЕУЖЕЛИ ОНИ УЖЕ РАСШИФРОВАЛИ ДВИЖЕНИЯ НАШИХ РЕЦЕПТОРОВ?
 
     akizet
-        ah... no, no
-        your question, it is wrong
-        we do not build it, it is grown and taught
+        а... нет, нет
+        твой вопрос, он неправильный
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        ваш вопрос, он неправильный
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+        мы не создаём его, мы выращиваем и учим его 
 
     interviewer
         Но наши анализы--прости, ах, что перебиваю--по нашим анализам оно состоит целиком из металла, неорганики.
@@ -5295,33 +5306,40 @@ corru
         Вы и правда выращиваете его из чего-то и учите? Словно... учите ребёнка? Это некий симбиоз?
     
     sourceless
-        I AM QUIET FOR LONGER THAN I SHOULD BE, I THINK
+        Я МОЛЧУ ДОЛЬШЕ, ЧЕМ СЛЕДОВАЛО БЫ, МНЕ КАЖЕТСЯ
             EXEC::env.interview.cam('akipovtilt')
-        HOW COULD I POSSIBLY EXPLAIN?
+        КАК ЭТО ОБЪЯСНИТЬ?
 
     akizet
-        yes... no. ah,
+        да... нет. э,
             EXEC::env.interview.cam('akipovup')
     
     sourceless
-        I SEE HER RECOGNIZE MY CONFUSION, BUT MAKE NO EFFORT TO ALLEVIATE IT
-        FINE
+        Я ВИЖУ, ЧТО ОНА РАСПОЗНАЁТ МОЮ РАСТЕРЯННОСТЬ, НО НЕ НИЧЕГО ПРЕДПРИНИМАЕТ, ЧТОБЫ РАЗВЕЯТЬ ЕЁ
+        ЛАДНО
             EXEC::env.interview.cam('akipov')
     
     akizet
-        it is alive. it is grown. it is symbiosis.
-        i must be straightforward with you, my friend
-        i cannot explain it in your language effectively, and i do not have the expertise of an engineer
-        you will receive no fruitful answers from me
-        but... i can say that it is not like teaching a child
-        the spheres it forms soften their walls for our receptors, and receive of our thought
-        that is how corru is operated, and how our engineers do their teaching
+        оно живо. оно выращиваемо. это симбиоз.
+        мне придётся быть откровенной с тобой, моя подруга
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        мне придётся быть откровенной с вами, моя подруга
+            SHOWIF::[["interview1__firstchat-introduction", false]]
+        я не могу эффективно описать это на вашем языке, и у меня нет знаний инженера
+        ты не получишь от меня плодотворных ответов
+            SHOWIF::[["interview1__firstchat-introduction"]]
+        вы не получите от меня плодотворных ответов
+            SHOWIF::[["interview1__firstchat-introduction", false]] 
+        вы не получите от меня плодотворных ответов
+        но... я могу сказать, что это не то же самое, что учить ребёнка
+        сферы, которые оно формирует, размягчают свои стенки для наших рецепторов и принимают наши мысли
+        таким образом корру используется, и таким образом наши инженеры учат его
     
     interviewer
         Хорошо.
 
     sourceless
-        I SEE HER FACE CONTORT INTO A SMILE, BUT IT IS DIFFERENT
+        Я ВИЖУ, КАК ЕЁ ЛИЦО ИСКАЖАЕТСЯ В УЛЫБКЕ, НО ОНА ДРУГАЯ
         
     interviewer
         Извини, что задержались на этом вопросе. Мы всех расспрашиваем.
@@ -5349,7 +5367,7 @@ endinterview
             SHOWIF::[["interview1__firstchat-introduction", false]]
 
     akizet
-        of course! this is only the beginning, my friend
+        разумеется! это лишь только начало, моя подруга
 
     sys
         УВЕДОМЛЕНИЕ::'поток памяти прерван'
@@ -5357,9 +5375,9 @@ endinterview
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("10s");env.interview.cam('zoomout');
     
     moth
-        you know, kind of a longshot, but we could probably get a little extra here...
-        if you keep the render running past the end of the stream, maybe we could talk to akizet
-        or at least, this version of akizet
+        знаешь, шанс конечно мелкий, но мы могли бы вытянуть ещё что-нибудь из этого...
+        если ты дашь визуализации продолжиться за пределами потока памяти, может выйдет поболтать с акизет
+        ну или хотя бы с этой версией акизет
 
     RESPOBJ::interviewResponses
 
@@ -5569,10 +5587,10 @@ ____END
                 "interviewer": "интервьюер",
 
                 "hello?": "привет?",
-                "ERROR::'severe data overload';'retracing';'closest coherent position'": "",
+                "ERROR::'severe data overload';'retracing';'closest coherent position'": "ОШИБКА::'значительная перегрузка данных';'возвращение';'ближайшая связная позиция'",
 
-                "yeah i saw don't worry": "",
-                "not sure where it went": "",
+                "yeah i saw don't worry": "ага, я видел, не волнуйся",
+                "not sure where it went": "не знаю куда она делась",
             },
 
             entityDescriptions: {
