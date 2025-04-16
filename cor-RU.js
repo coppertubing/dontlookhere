@@ -1888,9 +1888,9 @@ ____END
         "a familiar feeling": "знакомое ощущение",
         "thank you": "спасибо",
         "we are unstoppable": "мы неостановимы",
-        "every cell... awake...": "каждая клетка... очнувшаяся...",
+        "every cell... awake...": "каждая клетка... пробуждается...",
         "that was close...": "было близко...",
-        "i need to fix this": "мне нужно заделать это", // речь о получении урона от puncture. альтернативы или уже норм?
+        "i need to fix this": "мне нужно заделать это",
         "tozik!": "тозик!",
         "i need help!": "мне нужна помощь!",
         "cavik!": "кавик!",
@@ -1914,7 +1914,7 @@ ____END
         "no!!": "нет!!",
         "woaah!!": "воуу!!",
         "clean...": "чисто...",
-        "it is simply that easy": "",
+        "it is simply that easy": "", << дуто агде
         "a few more like that...": "ещё парочку таких...",
         "that was lucky": "вот повезло",
         "so that goes there...": "вот это идёт вон туда...",
@@ -1932,7 +1932,7 @@ ____END
         "feeling better": "уже лучше",
         "feeling good": "уже хорошо",
         "where did my eyes go?!": "куда делись мои глаза?!",
-        "so heavy": "так",
+        "so heavy": "так тяжело", << агде 2x
         "thanks cavik": "спасибо кавик",
         "stop looking at me!!": "прекрати на меня пялиться!!",
         "get away from me!": "отстань от меня!",
@@ -1945,13 +1945,13 @@ ____END
         "keep going": "продолжай",
         "i hear it calling": "я слышу его зов",
         "let us finish this": "покончим с этим",
-        "i need to fix this": "мне нужно заделать это", // речь о получении урона от puncture. альтернативы или уже норм?
+        "i need to fix this": "мне нужно заделать это",
         "where...": "где...",
         "thank you": "спасибо тебе",
         "that is better": "это лучше",
         "there is nothing here": "здесь ничего нет",
-        "hollowed out...": "опустошённое...", // альтернативы?
-        "and yet it moves": "и всё же оно двигается",
+        "hollowed out...": "опустошён...", // альтернативы? << "опустошён" потому что речь про "обеск", но думаю, что можно и заменить если есть желание. "опустошённое" скорее больше про труп/тело, а оно и так не особо наполнено, если речь про жизнь или душу ну вы короче поняло ооо ого оно такое длинно хихи
+        "and yet it moves": "и всё же двигается", << думаю это продолжение строчки выше. видел такое в других диалогах
         "where are you?": "где ты?",
         "what happened to you?": "что с тобой случилось?",
         "that cannot be": "не может быть",
@@ -1963,7 +1963,7 @@ ____END
         "is that better??": "так лучше??",
         "how does it move like that?!": "как оно так двигается?!",
         "next time": "в следующий раз",
-        "restorative, quick!": "", // <<< как
+        "restorative, quick!": "", // <<< как <<< звёзды используй звёздочки я занял себе стрелочки
         "thank you!": "спасибо!",
         "die DIE!! DIE!! DIE!!!": "умри УМРИ!! УМРИ!! УМРИ!!!",
         "i am losing cohesion!": "я теряю целостность!",
@@ -1971,7 +1971,7 @@ ____END
         "a shell!": "", // <<< как
         "thank you, thank you!": "спасибо, спасибо!",
         "so much better": "гораздо лучше",
-        "this cannot be real": "это не реально",
+        "this cannot be real": "это не может быть реально", <<< показалось немного далековато от оригинального смысла?
         "that one looks like...!": "эта выглядит как...!",
         "stop...": "перестань...",
         "velzie take me from here": "велзи забери меня отсюда",
@@ -1979,28 +1979,28 @@ ____END
         "what??": "что??",
         "oh, thank you!": "ох, спасибо!",
         // бозко
-        "no": "",
-        "not so easy": "",
-        "get away from them": "",
-        "smashed to pieces": "",
-        "take this": "",
-        "get back up...": "",
-        "you!": "",
-        "cavik!": "",
-        "it punched through...": "",
-        "keep it up": "",
-        "i hear them again...": "",
-        "blood everywhere": "",
-        "what--": "",
-        "good": "",
-        "no...": "",
-        "stay back!": "",
-        "so many lost": "",
-        "is it really you...?": "",
-        "come on": "",
-        "strike me now...": "",
-        "stay behind": "",
-        "look at me!": "",
+        "no": "не-а",
+        "not so easy": "не так просто",
+        "get away from them": "прочь от них",
+        "smashed to pieces": "вдребезги",
+        "take this": "возьми это",
+        "get back up...": "поднимайся...",
+        "you!": "ты!",
+        "cavik!": "кавик!",
+        "it punched through...": "прошло насквозь...",
+        "keep it up": "продолжай в том же духе",
+        "i hear them again...": "снова слышу их...",
+        "blood everywhere": "кровь повсюду",
+        "what--": "что--",
+        "good": "славно",
+        "no...": "нет...",
+        "stay back!": "не приближайся!",
+        "so many lost": "так много пошибших",
+        "is it really you...?": "это действительно ты...?",
+        "come on": "вперёд",
+        "strike me now...": "попробуй ударить теперь",
+        "stay behind": "держись за мной",
+        "look at me!": "посмотри на меня!",
         // кавик
         "ow!!": "ой!!",
         "coming together again!": "собираюсь с силами!",
@@ -2050,38 +2050,38 @@ ____END
         "what did this to you?!": "что с тобой такое?!",
         "i feel sick...": "меня тошнит...",
         "what?": "что?",
-        "unnecessary, but thanks": "ненужно, но спасибо",
+        "unnecessary, but thanks": "не стоило, но спасибо",
         // husk + дозкалльви
-        "s tŒ¥ó y  aw œ y": "",
-        "n o  c l os er": "",
-        "Ü� di¢ö1€Oe Î": "",
-        "R E TU RN": "",
-        "hu r ts": "",
-        "h¿(‰n g er": "",
-        "e}vªer ytíh&i ng": "",
-        "%�ÿoÛÙ": "",
-        "h¿(‰n g er": "",
-        "e}vªer ytíh&i ng": "",
-        "%�ÿoÛÙ": "",
-        "µÿÁiK�p%Ñ": "",
-        "âª¥lé§ÎéýÁ": "",
-        "dÆis co ne ct": "",
-        "ƒøÊ=è¶": "",
-        "s e e": "",
-        "MËºY¾Ñ": "",
-        "f ina l ly aw  ake": "",
-        "o u  t ou t o ut": "",
-        "ou to u t o  ut": "",
-        "m y f  le sh": "",
-        "cl o½ se ®±… r": "",
-        "m¿ ó+r  e": "",
-        "cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De": "",
-        "ÐⱤ0 Ø Ⱳƞ ": "",
-        "§±ÂⱤ ṾḮɲG─": "",
-        "YºŮ ɃěC ‰ Ṃể": "",
-        "šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ": "",
-        "ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ": "",
-        "ⱤEMŒM BEɌ": "",
+        "s tŒ¥ó y  aw œ y": "нỄ п˶риҔሎижẳйся",
+        "n o  c l os er": "ни н а ша г",
+        "Ü� di¢ö1€Oe Î": "Ü� di¢ö1€Oe Î",
+        "R E TU RN": "В Е РН ИСЬ",
+        "hu r ts": "бо ль но",
+        "h¿(‰n g er": "гоሌ (‰оˇд",
+        "e}vªer ytíh&i ng": "всӪ",
+        "%�ÿoÛÙ": "ты",
+        "h¿(‰n g er": "гоሌ (‰оˇд",
+        "e}vªer ytíh&i ng": "всё",
+        "%�ÿoÛÙ": "%�ŦЫҌ≀",
+        "µÿÁiK�p%Ñ": "µÿÁiK�p%Ñ",
+        "âª¥lé§ÎéýÁ": "âª¥lé§ÎéýÁ",
+        "dÆis co ne ct": "отcоединён", 
+        "ƒøÊ=è¶": "ƒøÊ=è¶",
+        "s e e": "в ид и шь",
+        "MËºY¾Ñ": "MËºY¾Ñ",
+        "f ina l ly aw  ake": "на к конец-то просн улс я",
+        "o u  t ou t o ut": "н ар у жу на р ужу",
+        "ou to u t o  ut": "н ар уж у нар уж у",
+        "m y f  le sh": "м оя  пл о ть",
+        "cl o½ se ®±… r": "бሌиже",
+        "m¿ ó+r  e": "боᏁьше",
+        "cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De": "ǾТᵽ₱®Ê ±₭…นсь 0Ŧ½ÿ С%еЬჰ",
+        "ÐⱤ0 Ø Ⱳƞ ": "ТОНУ",
+        "§±ÂⱤ ṾḮɲG─": "ГОሎОДНО", 
+        "YºŮ ɃěC ‰ Ṃể": "ТЫ С Т∀НОВ ‰ ИШЬСЯ,
+        "šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ": "источниĶ поˇ—Ḿоги мн∬ иĉточн¿ᶄ", 
+        "ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ": "помоги мнœ поwо˶ги мне ПОмОГИ МНЕ",
+        "ⱤEMŒM BEɌ": "ПОМ НИ",
     }, 
 
     entityDescriptions: {
@@ -2225,7 +2225,7 @@ whatnow_lk
         ну...
         нам нужно починить эту штуку. просто представь что мы могли бы в ней найти, серьёзно
         вот только одна проблемка...
-        всё, что сюда поступает, рано или поздно умирает тк мы не знаем как поддерживать жизнь корру
+        всё, что сюда поступает, рано или поздно умирает так как мы не знаем как поддерживать жизнь корру
         и не то чтобы мы могли бы спросить совета у обесков          
         похоже, что на сейчас лучший вариант - переподключиться и найти способ сохранить цисту в живых... 
         не забывай насколько долго эта штука продержалась на дне океана, там должно быть хоть что-то полезное
@@ -6065,7 +6065,7 @@ start
             SHOWIF::"localorbit__fairy"
         незнакомец--найди меня в моем пристанище
             SHOWIF::["localorbit__fairy", false]
-        мы будем пировать! мы будем плясать на кронах вейльков!
+        мы будем пировать! мы будем плясать в кронах вейльков!
         ахахаха!!! ура! ура!!
         в джокзи озо!!
     
@@ -6644,7 +6644,7 @@ start
                 "firstchat": generateDialogueObject(`
 start
     sourceless
-        ИНТЕРВЬЮЕР ЗАХОДИТ ВНУТРЬ И САЖИТСЯ НАПРОТИВ МЕНЯ
+        ИНТЕРВЬЮЕР ЗАХОДИТ ВНУТРЬ И САДИТСЯ НАПРОТИВ МЕНЯ
         ВСЕ ЭТИ ИССЛЕДОВАНИЯ, И ВСЁ РАВНО Я ЕЛЕ РАЗЛИЧАЮ ИХ...
         Я ЕЁ ВСТРЕЧАЛА? КАК ЕЁ ЗВАЛИ...?            
         
@@ -8746,7 +8746,7 @@ start
         i even talked a little about that story from the kozazni excavation--you know the one, ah, when i was first starting work there
     
     bozko
-        oh, no
+        о, нет
 
     kazki
         and while i was saying these things, my funfriend was attempting to warn me about something, but i kept talking...
@@ -8761,7 +8761,7 @@ start
             EXEC::specialCam('kazkibozko');vnp({bg: true, kazki: "show", bozko: "show"})
 
     bozko
-        hello, akizet
+        здравствуй, акизет
 
     kazki
         hi akizet!!
@@ -8791,7 +8791,7 @@ story
         which!! by the way! the construction was approved!
     
     bozko
-        through some giggle of velzie, it occurred to her to share the events of her early larval work
+        под какое-то хихиканье велзи ей пришло в голову поделиться событиями её ранней личиночной работы
     
     sourceless
         THE KOZAZNI EXCAVATION STORY...
@@ -8817,10 +8817,10 @@ talk
         BOZKO PEERS INTO THE ESTIMATION OF THE <span definition="NOTE::'partial translation';'implied closest functional equivalent';'technological implication'">WINDOW</span>
     
     bozko
-        outside of our works,
-        i have been observing the creatures of the water nearby
-        a few dispatched <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">golems</span> with relays
-        here, look at this--see how they form great organized clouds?
+        вне нашей работы,
+        я наблюдал за существами в водах поблизости
+        несколько погружённых <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">големов</span> с ретрансляторами <<< непонятная строчка
+        вот, взгляни на это--видишь как они формируют великолепно организованные облака?
 
     sourceless
         BOZKO REACHES INTO THE WINDOW, DISRUPTING THE DISPLAY, TO PULL A CONNECTIVE CYST FROM ITS INTERNAL DOCK
@@ -8835,7 +8835,7 @@ talk
         remarkable
 
     bozko
-        and i am not the sole observer of the bright world's creatures among us
+        и я не единственный среди нас наблюдатель существ светлого мира
     
     sourceless
         BOZKO RETURNS THE CONNECTOR BENEATH THE WINDOW'S SURFACE
@@ -8848,7 +8848,7 @@ talk
         bozko!
     
     bozko
-        although, she is taking a more live approach
+        впрочем, она придерживается более живого подхода
 
     kazki
         bozko!!
@@ -8871,7 +8871,7 @@ talk
         IT IS LIKE SHE EXPECTS ME TO SAY SHE SHOULD PUT IT BACK
 
     bozko
-        so she made a cavity in her head
+        так что она сделала полость в своей голове
             EXEC::vnp({kazki: "defocus"})
     
     akizet
@@ -8950,8 +8950,8 @@ focus
         i arranged for the timestopper to be used this time, so it will be quick
     
     bozko
-        excellent
-        we will be there shortly, you go ahead
+        замечательно
+        мы скоро будем, иди без нас
 
     RESPOBJ::d1_kazkibozkoresp
 `),
@@ -8975,8 +8975,8 @@ start
         ready to proceed, bozko?
     
     bozko
-        of course
-        i only wish i had more to share given our amenities this θgaze
+        конечно
+        мне лишь бы хотелось иметь больше чем поделиться учитывая наши средства в этот θвзор
     
     akizet
         true!
@@ -9383,13 +9383,13 @@ start
         so a spire would be lucrative for us both! 
 
     bozko
-        it does not need to be of the highest strength or quality
+        ему не обязательно быть огромнейших прочности или качества
             EXEC::env.embassy.setFocus('bozko')
-        there is no hard data backing my decision
-        but... kazki's contacts have suggested the trench multiple times
-        and if what they say is true, 
-        it is one of the least explored places on this planet
-        so there is certainly potential for the origin to be there, never seen 
+        у меня нет достоверных данных, подтверждающих моё решение
+        но... контакты казки не раз предлагали жёлоб
+        и если то что они говорят - правда, 
+        это одно из наименее изученных мест на их планете
+        так что есть определённые шансы что источник может находиться там, никем не найденный
 
     timestopper
         makes sense! no argument!
@@ -9879,7 +9879,7 @@ who
                 "ohoho": "охохо",
                 "hmhmhm": "хмхмхм",
                 "there!": "вон там!",
-                "i see an opening": "",
+                "i see an opening": "", << агде x3 
                 "aaÍ": "ааҊ",
                 "this will need to be fixed": "это потребует внимания",
                 "do not delay in mending me": "не медлите с моим лечением",
@@ -9898,7 +9898,7 @@ who
                 //claws
                 "ha! HA HA!!": "ха! ХА ХА!!",
                 "HA! idiot!!": "ХА! идиот!!",
-                "BURN! BLEED! DIE! DIE DIE DIE!": "КРОВЬ! ПЛАМЯ! УМРИ УМРИ УМРИ!",
+                "BURN! BLEED! DIE! DIE DIE DIE!": "КРОВЬ! ПЛАМЯ! УМРИ УМРИ УМРИ!", <<< глаголы превратились в существительные?
                 "BLEED! BURN!": "РЕЗНЯ!",
                 "DIEDIEDIEDIEDIEDIE!!": "УМРИУМРИУМРИУМРИУМРИУМРИ",
                 "DIE!": "СДОХНИ!",
@@ -9908,7 +9908,7 @@ who
                 "USELESS!!": "БЕСПОЛЕЗНО!!",
                 "i cannot fight like this!!!": "я не могу так драться!!!",
                 "help me! NOW NOW NOW NOW!": "помогите мне! СЕЙЧАС СЕЙЧАС СЕЙЧАС!",
-                "better than before..!": "лучше чем раньше.!",
+                "better than before..!": "лучше чем раньше..!",
                 "not healing FAST ENOUGH!": "заживает СЛИШКОМ ДОЛГО!",
                 "heheôíhôhehe": "хихеôíхôехе",
                 "eåeaaaåauu": "эåэаааåауу",
@@ -9926,7 +9926,7 @@ who
                 "HEHEHËHæ æAA!!!!": "ХИХИХӤХæ æАА!!!!",
                 "NOTHING can stop me! NOTHING!": "НИЧТО меня не остановит! НИЧТО!",
                 "time to DIE!": "время УМИРАТЬ!",
-                "they will not leave a scratch on me!!": "",
+                "they will not leave a scratch on me!!": "", <<< агде x4
                 "good! more, NOW!": "отлично! ещё, СЕЙЧАС!",
                 "ugh!! finally!!": "тьфу!! наконец-то!!",
                 "this... changes NOTHING...!": "это... НИЧЕГО не меняет...!",
@@ -9988,7 +9988,7 @@ who
                 "i have blood??": "у меня есть кровь??",
                 "ohh haha that is verý¯Ÿ bad for m£+¤": "ооо хаха вот эт̌ о нԙ оҹенҍ¯љ хорøш+¤",
                 "yess¬": "даа¬",
-                "it mæm¬îV°0kes my voice funny": "у мæ¬îV°0ня голос страннꙑй",
+                "it mæm¬îV°0kes my voice funny": "у мæ¬îV°0ня голос смешной",
                 "hahaaå¬¬h#±aaahaha": "хахааå¬¬х#±ааахаха",
                 "yo*¼u-„should ƒ„eel this¤": "поч*¼u-„увствуҋ ӭ́„то¤",
                 "heavyy": "тяжелоо",
