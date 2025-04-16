@@ -271,12 +271,26 @@ RESPOBJ::
     RESPONSES::corruru
         если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
 `)
+env.dialogues["d1_gakvuresp"] = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+`)
 env.dialogues["d1_kazkibozkoresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::corruru
         если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
 `)
-
+env.dialogues["d1_cavikresp"] = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+`)
+env.dialogues["d1_attendantresp"] = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::corruru
+        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+`)
 env.localization = {
     dialogues: {
         "++epselect": generateDialogueObject(`
@@ -597,7 +611,7 @@ what_secri
         по сути они - сверххищники на обески
         и как и остальная половина всей фауны на обески, они так же паразиты
         или какого-то рода грибковая инфекция... мы на самом деле не знаем точно
-        а ещё они микроскопические, но вот стоит им заразить какую-нибудь поверхностную зверюшку или личиночного обеска...
+        а ещё они микроскопические, но вот стоит им заразить какую-нибудь наземную зверюшку или личиночного обеска...
         ну, на руках у нас только устные описания ибо инициатива по обмену не спешила с реконструкциями,
         но по-видимому они могут быстро видоизменять плоть большинства существ и захватывать их мозг, чтобы распространяться дальше
         противные штуки
@@ -1393,6 +1407,26 @@ ____END
 
         "тувазу": `'заброшенный континент';'известен экзотическими вейльковыми эктопаразитами'`,
 
+        "указни озо": "'наземный город';'горная крепость';'место происхождения импульсного оружия серое'",
+
+        "олтазни": `'дом';'вазнийский пещерный город'`,
+
+        "козазни": `'вазнийский пещерный город';'дом казки';'известен грибковыми фермами'`,
+
+        "окизика": `'экивиковый наземный монумент';'святое место'`,
+        "окизики": `'экивиковый наземный монумент';'святое место'`,
+        "окизике": `'экивиковый наземный монумент';'святое место'`,
+        "окизику": `'экивиковый наземный монумент';'святое место'`,
+        "окизикой": `'экивиковый наземный монумент';'святое место'`,
+        "окизикою": `'экивиковый наземный монумент';'святое место'`,
+
+        "окизиковая": `'экивиковый наземный монумент';'святое место'`,
+        "окизиковой": `'экивиковый наземный монумент';'святое место'`,
+        "окизиковую": `'экивиковый наземный монумент';'святое место'`,
+        "окизиковою": `'экивиковый наземный монумент';'святое место'`,
+
+        "тувазу": `'заброшенный континент';'известен экзотическими вейльковыми эктопаразитами'`,
+
     
     
         "велзи": "'бог'",
@@ -1433,15 +1467,11 @@ ____END
         "вейльковы": "'наземная фауна';'основа всей экосистемы';'огромные и нескончаемые'",
 
 
-        "указни озо": "'поверхностный город';'горная крепость';'место происхождения импульсного оружия серое'",
-
-        "олтазни": `'дом';'вазнийский пещерный город'`,
-
         "сельки": "'вейльковый паразит';'еда'",
     
         "секри": "'хищник';'инфекция';'первобытный ужас'",
     
-        "зузукри": "'агрессивная паразитическая наземная фауна';'захватывает разум жертвы для использования в качестве социального камуфляжа';'ekivik ругательство'",
+        "зузукри": "'агрессивная паразитическая наземная фауна';'захватывает разум жертвы для использования в качестве социального камуфляжа';'экивиковое ругательство'",
     
     
         "голем": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
@@ -2091,7 +2121,7 @@ ____END
 
         'cyst cluster': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a collection of this and that, managed by a central monitoring cyst'</span>`
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a collection of this and that, managed by a central monitoring cyst'</span>`
     },
 
     page: { 
@@ -4721,7 +4751,7 @@ tv1
 
 tv2
     sourceless
-        ПОСЛЕ ГОЛОВОКРУЖИТЕЛЬНОГО ПЕРЕХОДА НЕКИЙ СВЕТЛЫЙ БЛИЗНЕЦ СИДИТ ЗА СТОЛОМ ПЕРЕД ОКНОМ С ВИДОМ НА ПОВЕРХНОСТНЫЙ ГОРОД
+        ПОСЛЕ ГОЛОВОКРУЖИТЕЛЬНОГО ПЕРЕХОДА НЕКИЙ СВЕТЛЫЙ БЛИЗНЕЦ СИДИТ ЗА СТОЛОМ ПЕРЕД ОКНОМ С ВИДОМ НА НАЗЕМНЫЙ ГОРОД
         ПУСТЬ И ТЕКСТ, БЕГУЩИЙ ВДОЛЬ ПРОЕКЦИИ, СЛИШКОМ БЫСТР ДЛЯ МОЕГО ВНУТРЕННЕГО ПЕРЕВОДЧИКА,
         Я ВИЖУ, КАК ЧАСТО ОТОБРАЖАЕТСЯ "НОВОСТИ"...
         НО ГДЕ ЖЕ ОНА СИДИТ? ВЫГЛЯДИТ ТАК ВЫСОКО
@@ -6478,41 +6508,41 @@ locked
                 'pilot cyst': `::RESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection'
     <span style="color: var(--obesk-color)" definition="WARNING::'entity mostly unprocessable';'may be inaccurate'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the great mind of my vessel'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'the great mind of my vessel'</span>`,
                 'glazika': `::RESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection'`,
                 'container': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'processed metals, easily accessible'</span>`,
-                'parasite plane': `::EXPERIENTIAL THOUGHTFORM
-    ::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a simple game of resource management and theft';'an oltazni favorite'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'processed metals, easily accessible'</span>`,
+                'parasite plane': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a simple game of resource management and theft';'an oltazni favorite'</span>`,
                 'climbing wall': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'nostalgic cave-stone imitation';'appeals to <span class="code">larval</span> climbing instinct'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'nostalgic cave-stone imitation';'appeals to <span class="code">larval</span> climbing instinct'</span>`,
                 'dull heart': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'device beyond my understanding';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'advised not to stare'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'device beyond my understanding';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'advised not to stare'</span>`,
                 'workspace': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'visual display utilizing luminescent corru swarms';'assists in multitasking'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'visual display utilizing luminescent corru swarms';'assists in multitasking'</span>`,
                 'translation slab': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a collection of bright writings provided by the envoy';'reports of progress with the storm'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a collection of bright writings provided by the envoy';'reports of progress with the storm'</span>`,
                 'column': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'reparative maintenance tool';'a place for my personal cyst'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'reparative maintenance tool';'a place for my personal cyst'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'disrupted by extreme nearby incoherence';'advise investigation'">::INCOHERENCE DETECTED</span>`,
                 'bright ground-parasite': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'fascinating bright creatures, gifts from a friend';'contained within oxygenated caring cysts'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'fascinating bright creatures, gifts from a friend';'contained within oxygenated caring cysts'</span>`,
                 'advanced rejuvenation chamber': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'offering the comfort of sleep, even in <span definition="NOTE::INHERITED CONTEXT::'implies altered living state'">death</span>';'designed as survival pod in event of dull collapse'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'offering the comfort of sleep, even in <span definition="NOTE::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'implies altered living state'">death</span>';'designed as survival pod in event of dull collapse'</span>`,
                 'high-pressure body': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'alternate body for extreme depth surveying';'specialized pressure management system';'uncomfortable for casual use'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'alternate body for extreme depth surveying';'specialized pressure management system';'uncomfortable for casual use'</span>`,
                 'personal storage': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'`,
                 'equipment storage': `::UNRESPONSIVE THOUGHTFORM
@@ -6536,15 +6566,15 @@ locked
                 'gate::the depths': `::CONNECTOR THOUGHTFORM
     ::DESTINATION::'low dimensional thoughtspace';'internal'
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'partial cohesion failure'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'why you are here'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'why you are here'</span>`,
                 'their vessel': `::SPATIAL THOUGHTFORM
     ::LOW-DIMENSIONAL
     ::EXPLICIT PURPOSE::'recollection'
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'multiple low cohesion entities'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'our cousins found us quickly'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'our cousins found us quickly'</span>`,
                 'stilted shore': `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection';'symbolic'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the stage for our θthree-eyed performance'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'the stage for our θthree-eyed performance'</span>`,
                 'the embassy': ()=>{if(check('hub__funfriend-ep1fed')) {
                     return `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
         ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span> `
@@ -8436,6 +8466,262 @@ interact
     RESPONSES::self
         damn<+>END
 `),
+                "d1_start": generateDialogueObject(` 
+start
+    sourceless
+        my consciousness resumes
+        the rejuvenation chamber opens, and from outside flows the glow of the embassy's cystic glass
+        through the distant dull contrivance, i feel another θgaze has begun
+
+    RESPONSES::akizet
+        emerge from the chamber<+>emerge
+            EXEC::content.classList.add('swapcam')
+    
+emerge
+    sourceless
+        i clamber out the chamber, my qou-body refreshed
+        it feels the same as it did after my ascension
+        a rare, lovely feeling - as though i could twist it into any shape
+        but i have work to do...
+        a focused meeting of my call research initiative is approaching
+        and a fine occasion it is - we have some particularly unique equipment this time!
+        i must assemble the team, then we may begin
+    
+    RESPONSES::akizet
+        off to work<+>END
+
+SKIP::content.classList.add('swapcam')
+`),
+                "d1_tozik": generateDialogueObject(` 
+start
+    sourceless
+        tozik sits in a terminal chair, connected by a receptor to the timestopper
+            EXEC::pauseSwapCam(true);
+        the time constriction that gives the grand cyst its name has not been activated
+        he must be using it simply for its archival connections
+        i clamber over the curve of the timestopper to greet him
+
+    akizet
+        hello, tozik!
+
+    sourceless
+        i see his acknowledgment of me with a small glance
+            EXEC::vnp({hideStage: true, tozik: "show"})
+        however his focus is inward, through the corrucystic vein
+        tozik detests idle chatter, so i opt to keep this quick
+    
+    akizet
+        are you prepared for the focus?
+        actually, is that what you have been doing?
+    
+    tozik
+        yes
+        i am organizing the connected archival cysts
+        something very interesting happened barely a θwink ago
+        you will hear about it in the focus
+    
+    akizet
+        excellent
+        we will speak soon, then
+    
+    RESPONSES::akizet
+        fare well<+>END
+            EXEC::pauseSwapCam(false);vn.done()
+`),
+                "d1_gakvuresp": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        false environment?<+>false
+        the complaint...<+>complaint
+        your coat<+>coat
+            SHOWIF::'gakpause'
+        fare well for now<+>END
+            EXEC::pauseSwapCam(false);vn.done()
+`),
+                "d1_gakvu": generateDialogueObject(` 
+start
+    sourceless
+        gakvu leans against a listener, eyes distant
+            EXEC::pauseSwapCam(true);
+        a false environment cyst sits upon one of her receptors
+        when i approach and lean my head to either side, i cannot discern a logo upon it
+        i wonder - is it another surface simulation? she has a morbid obsession with them
+        of course, this earns her attention, and she gives me a jovial receptor gesture
+            EXEC::vnp({hideStage: true, gakvu: "show"})
+        
+    gakvu
+        hi akizet!
+        ready for the focus?
+
+    akizet
+        yes!
+        i was coming to ask you the same thing, actually
+        do you have something?
+    
+    gakvu
+        oh yeah!!
+        tozik and i were tracking the call earlier, and...
+    
+    sourceless
+        she glances towards tozik, who stares inward
+    
+    gakvu
+        well, he found it, really
+        but there was a spike in the call
+        a distinct break from the normal baseline
+        very interesting!
+    
+    akizet
+        and what did you do?
+    
+    gakvu
+        have you seen him? he has fused his skin to the chair!
+        i had to fetch all of the archival cysts and feed them to the timestopper myself
+        ah, with some help from cavik, of course
+
+    sourceless
+        i chuckle, and so does she, but i sense it is for a different reason
+    
+    gakvu
+        did you need anything else?
+        otherwise i will be here until the focus starts
+
+    sourceless
+        it pains me to do this
+        but i should probably bring up the complaint
+        
+    RESPOBJ::d1_gakvuresp
+
+complaint
+    akizet
+        there is a matter i must mention
+        gakvu, you and i, we understand
+        however... the balance of work, has
+    
+    gakvu
+        bozko!
+
+    sourceless
+        what
+        did bozko speak with her already??
+        my confusion is laid bare in my receptors' curl
+    
+    gakvu
+        was it not him?
+        i know it was him!
+        he just has a problem with ekivik
+        
+    sourceless
+        i laugh, and urgently wave my hands and receptors dismissively
+        she laughs, too--i am certain she appreciates my understanding of the dry ekivik wit
+        
+    akizet
+        no no, gakvu...
+        it does not matter who brought this to my attention
+        i know you enjoy your efforts here,
+        and above all else i know your ability to strike
+        but to certain others, it is not so clear
+        and with enough of these complaints, it will start to turn eyes towards me
+        so, for my sake, 
+        
+    sourceless
+        i pause to think of an elegant way to say this...
+        "at least pretend to look busy when you are in here"?
+        gakvu wrings her receptors smugly, knowing full well what i mean to say
+
+    gakvu
+        do not worry, i understand
+    
+    akizet
+        good!
+
+    RESPOBJ::d1_gakvuresp
+
+false
+    akizet
+        what is that false environment you have on?
+
+    gakvu
+        ah! you see,
+    
+    sourceless
+        i spy a strange, subtle apprehension in her receptor movements
+        however she quickly launches into a spirited description
+
+    gakvu
+        this is one from my home
+        a skilled veilk-hopper's memories, gamified
+        so the veilk march towards the weather wall,
+        and you must leap from veilk to veilk while they grow faster
+        or else you are subsumed beyond the air's border!
+
+    sourceless
+        by the gesticulations of her receptors and hands,
+        it is as if she is trying to barter with me
+    
+    akizet
+        that sounds terrifying
+    
+    gakvu
+        that is why it is so fun! you must try it sometime
+
+    RESPOBJ::d1_gakvuresp
+
+coat
+    akizet
+        your coat...
+        i have never seen it off like that before!
+        
+    sourceless
+        gakvu draws her attention outwards, to stare down at it
+        she pulls at the false fabric, receptors slightly twisting in confusion
+    
+    gakvu
+        oh
+        that is strange!
+        i never turn this off
+    
+    sourceless
+        the twist in her receptors slowly grows more pronounced
+
+    gakvu
+        what did i just say?
+            EXEC::ratween(env.bgm, 0.75, 3000);content.classList.add('incoherence')
+        'turn it off'?
+        it is fungus...
+        wait, no--it is, a representation of fungus...
+        that i emulate with my clothing!
+    
+    sourceless
+        i watch her with some concern - she is saying things i already know
+        like she is convincing herself... but, why? this is very strange
+    
+    akizet
+        are you ok?
+
+    gakvu
+        ah...
+        yes!
+            EXEC::ratween(env.bgm, 1, 3000);content.classList.remove('incoherence')
+        sorry... sometimes when i am using these false environments,
+        i get context overlap!
+        for a θblink, it is like i am my signature rather than myself!
+        i should really start pausing these things when talking, hehe
+
+    sourceless
+        the lights of her coat resume
+            EXEC::change("gakpause", false);content.classList.remove('gakpause')
+
+    moth
+        interesting... that was some sort of memory leak
+            SHOWONCE::
+        incoherence spiked pretty bad
+            SHOWONCE::
+        avoid doing that kind of thing, ok?
+            SHOWONCE::
+
+    RESPOBJ::d1_gakvuresp
+`),
                 "d1_kazkibozkoresp": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
@@ -8623,7 +8909,7 @@ talk
         AT LEAST, NOT AT FIRST... BUT THEN IT IS THERE, SITTING SUSPENDED ON BARELY VISIBLE STRANDS OF ITS OWN CREATION
     
     sys
-        ALERT::'memory of arachnid detected';'render?'
+        ОПОВЕЩЕНИЕ::'memory of arachnid detected';'render?'
 
     RESPONSES::sys
         render<+>arthur
@@ -8669,6 +8955,20 @@ focus
 
     RESPOBJ::d1_kazkibozkoresp
 `),
+                "d1_kazki_research": generateDialogueObject(`
+start
+    akizet
+        ready to proceed, kazki?
+    
+    kazki
+        <span definition="NOTE::'common phrase';'original pun untranslateable';'generated alternate pun';'retains level of wit'">absoqoutely!</span>
+    
+    akizet
+        hehe, excellent
+    
+    RESPONSES::akizet
+        we will start soon<+>END
+`),
                 "d1_bozko_research": generateDialogueObject(`
 start
     akizet
@@ -8685,6 +8985,558 @@ start
     
     RESPONSES::akizet
         we will start soon<+>END
+`),
+                "d1_cavikresp": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        our focus approaches<+>focus
+        closed loop theory?<+>theory
+        anything happening?<+>talk
+        fare well for now<+>END
+            EXEC::pauseSwapCam(false);vn.done()
+`),
+                "d1_cavik": generateDialogueObject(` 
+start
+    sourceless
+        CAVIK ATTENDS TO THE ARCHIVAL CYSTS, OCCASIONALLY AFFIXING ONE TO A STOUT RECEPTOR
+            EXEC::pauseSwapCam(true);
+        THE CYSTS ARE ARRANGED IN NEAT PILES, SORTED BY THE SHADE OF THEIR VISCERA
+        THOUGH HIS REGULAR UPKEEP ENSURES THAT NONE GROW TOO DARK OR STARVE
+        HE SENSES MY APPROACH AND TURNS, CORDIALLY BOWING HIS HEAD AND RECEPTORS
+            EXEC::vnp({cavik: "show", hideStage: true})
+    
+    cavik
+        akizet! great gaze!
+            
+    akizet
+        likewise, my friend
+        what are you doing?
+
+    cavik
+        i was just conducting maintenance on some of our older archives
+        and reminiscing! oh, the wild and obeski-centric theories they used to toss about!
+        there is this old one i have been running through--a joint theory by none other than dullzkovik and azkavinesche!
+        they called it the 'closed loop' - have you heard of it?
+    
+    akizet
+        ah...
+
+    sourceless
+        OH NO
+        OF COURSE I HAVE
+        I SHOULD ENSURE HE DOES NOT FEEL IT APPROPRIATE TO SHARE THIS WITH THE BRIGHT COUSINS
+
+    cavik
+        i feel that it was almost formed as a satire of the more outlandish ones from the early era, but...
+        there is something oddly compelling about it!
+        oh--sorry, do you have need of me?
+    
+    RESPOBJ::d1_cavikresp
+
+focus
+    akizet
+        our focus approaches, my friend
+        are you prepared? do you have any topics to bring?
+    
+    sourceless
+        I SENSE UNEASE FROM HIS STANCE
+
+    cavik
+        ahh!! it is really time already?
+        oh, these old cysts do not have any time constriction... no wonder!
+        ah, yes, yes, i will be ready!
+        yes!
+    
+    akizet
+        you do not need to press yourself, my friend
+        it is a simple one
+    
+    cavik
+        i know, i just hate when this happens
+        i do not have anything to bring this time... but i will be ready!
+    
+    akizet
+        excellent
+    
+    RESPOBJ::d1_cavikresp
+    
+theory
+    sourceless
+        I WOULD PREFER NOT TO CRUSH HIS INVESTIGATIVE SPIRIT
+        BUT THESE EARLY THEORIES CARRY LESS WORTH THAN <span definition="NOTE::'partial translation';'inherited description-generated noun'">WALL-ROT</span>
+        ESPECIALLY DULLZKOVIK'S, VELZIE'S SMILE UPON HIM
+    
+    akizet
+        closed loop...
+        is that the time--
+    
+    cavik
+        time manipulation!! yes! let me remind you! 
+        dullzkovik posited that one era... we learn to use the dull plane to traverse space four-dimensionally
+        and our future selves eventually discover the home of the bright cousins, but far too late to meet them
+        so--we create a contrivance just big enough to release a message to ourselves and signal its location!
+
+    sourceless
+        OH, CAVIK
+        I TWIST MY RECEPTORS THOUGHTLESSLY, ACCIDENTALLY BARING MY SKEPTICISM
+        
+    cavik
+        now--i know you must think it is ridiculous, 
+        and it is! especially as it goes on, hehe
+        but is it not inevitable at the same time?
+        in our θdeaths, there is enough time to unravel any mystery--time manipulation included!
+    
+    akizet
+        first...
+        i do not think dullzkovik understood the full implication of creating a contrivance inside a planet at that point
+        that was before the incident with the shared moon, you know
+        and, time manipulation... 
+        if we ever were to manage it,
+        the mistakes that created us and our world would be gradually undone to right old wrongs
+    
+    cavik
+        but we would never know if it was happening, would we? it would just 'be'!
+        anyway, i will not seriously debate it with you--it is just a bit of fun
+    
+    sourceless
+        TO BE SURE...
+    
+    akizet
+        yes, of course!
+        and--you are not going to share this with any cousins, correct?
+
+    sourceless
+        I SEE THE DEJECTION EVEN AS HE TRIES TO HIDE IT BENEATH AN ARCHIVAL CYST
+        HOW JOYLESS I MUST SEEM, SUCH A TERRIBLE INVERSION OF OUR YOUTH
+        BUT I REALLY WOULD PREFER NOT NEEDING TO FIX ANOTHER OVERSHARING INCIDENT
+    
+    cavik
+        aki...
+        i would not seriously entertain sharing <em>this</em> one.
+        did you really think that?
+        i know i made an incorrect step, but
+    
+    akizet
+        cavik, cavik! i trust you, be at ease
+        you know how i must be during these times
+        do not feel at fault
+    
+    cavik
+        of course, no, no, i understand
+
+    sourceless
+        ¥IÁÈiæb4
+        ANOTHER LITTLE DEATH TO HAUNT ME
+    
+    RESPOBJ::d1_cavikresp
+
+talk
+    akizet
+        cavik, my friend, tell me
+        what news do you carry?
+        have you been enjoying your role?
+        it is not often that we have time to speak plainly anymore
+
+    cavik
+        i have! the oceans are truly mesmerizing, nothing at all like home
+        you should see all the artifacts that the cousins have simply left to the water!
+        and on our expeditions, so many little creatures come up to examine our vessels
+        has bozko told you about the one he has taken?
+    
+    sourceless
+        FOR THAT MOMENT I HEARD AN ECHO OF LARVAL JOY IN HIS VOICE
+        BUT IN THE SUBTLE TURN OF A RECEPTOR, I SEE HE FEELS HE SHOULD NOT HAVE SAID THAT
+    
+    cavik
+        that is fine, right?
+        you heard that from a veilk's whisper, not me
+    
+    akizet
+        haha! it is! it is perfectly fine
+        well, the groundsmind says we should not, since the cousins could get mad, but...
+        i do not really care
+        tell me - have you contributed any more to the <span definition="NOTE::'partial translation';'inherited description-generated noun'">life-pod</span> project?
+    
+    cavik
+        ahh! no! not in some time
+        but i hear they recently succeeded in sending a 'grain' back to obeski
+        it is, of course, being held in deep quarantine, but...
+        that it worked is promising alone
+        even if the cyst itself was bigger than both of us combined!
+
+    akizet
+        remarkable, i must check in with them to see how they did it
+        as trade continues, i imagine that organic materials will be the next leap in relations
+        if you find the time again, you should join the effort!
+        last i spoke with the team, they asked when they would see you again
+    
+    cavik
+        really??
+        i should! i will check in again with them!
+    
+    RESPOBJ::d1_cavikresp
+`),
+                "d1_attendantresp": generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        timestopper<+>timestopper
+        that is all<+>leave
+            FAKEEND::(leave)
+`),
+                "d1_attendant": generateDialogueObject(` 
+start
+    sourceless
+        I APPROACH THE ATTENDANT DRONE
+            EXEC::pauseSwapCam(true)
+        IT IS FACELESS AT THE MOMENT
+        SO IT REGARDS ME WITH A SIMPLE STARE
+
+    RESPONSES::akizet
+        speak with groundsmind<+>groundsmind
+        nevermind<+>END
+            EXEC::pauseSwapCam(false);
+    
+groundsmind
+    akizet
+        the groundsmind, please
+
+    attendant
+        OF COURSE!
+
+    sourceless
+        THE DRONE STRAIGHTENS, AND A CONNECTIVE RIPPLE PASSES THROUGH ITS SKIN
+        OUR GROUNDSMIND'S SYMBOL IS FORMED OVER ITS FACEPLATE
+            EXEC::content.classList.add('groundsminded')
+        
+    akizet
+        hello vekoa!!
+    
+    groundsmind
+        akizetesche. speak
+
+    RESPOBJ::d1_attendantresp
+    
+timestopper
+    akizet
+        i appreciate you affording us the timestopper
+        how long was it again that we have it?
+
+    groundsmind
+        originally you had it for only a few θgazes... 
+        however: as of a few θwinks prior, it is indefinitely in the care of the call initiative
+        the schedule has shifted due to materials no longer needing an upcoming simulation
+        once another initiative has need of it, it will be transferred
+
+    akizet
+        really? we moved quite a bit of cystery to accommodate it,
+        and still only the top barely fits in the room...
+    
+    groundsmind
+        is this a request to have it removed post-use?
+        this can be arranged
+    
+    akizet
+        hmm... no, no
+        the cysts were not vital, and this may be a boon
+        it does shorten our meetings and plans by orders of magnitude
+        if it becomes a bother, i will reach out again
+
+    RESPOBJ::d1_attendantresp
+
+leave
+    akizet
+        that is all!
+    
+    groundsmind
+        excellent
+        fare well
+    
+    sourceless
+        THE DRONE DISCONNECTS FROM THE GROUNDSMIND AND STANDS STILL ONCE MORE
+            EXEC::content.classList.remove('groundsminded')
+    
+    RESPONSES::akizet
+        leave<+>END
+            EXEC::pauseSwapCam(false);
+
+END::content.classList.remove('groundsminded');
+`),
+                "discovery_notyet": generateDialogueObject(` 
+start
+    sourceless
+        this is where i will sit...
+        once i have the team assembled.
+        gakvu, tozik, and cavik are all here
+        all but kazki and bozko
+        i should tell them it is time for the focus
+        they are probably in the recreational area!
+    
+    RESPONSES::akizet
+        to recreation!<+>END
+`),
+                "discovery": generateDialogueObject(` 
+start
+    sourceless
+        the team is assembled around their seats, so i sit
+    
+    akizet
+        everyone!
+        let us begin
+    
+    sourceless
+        i dip my head towards tozik, as he has already connected
+        with an impulse, he instructs the grand cyst to lower wired cysts before each of us
+        what a rare opportunity! i am certain that even gakvu is excited
+        i raise the cyst to my right receptor, and its shell softens, becoming as viscous liquid
+        it settles over my receptor, and the timestopper connects to me
+        my mind is drawn into it, with the others - everyone is connected
+            EXEC::content.classList.add('innerfocus')
+    
+    akizet
+        commencing now!
+            EXEC::env.embassy.setFocus('akizet')
+    
+    sourceless
+        with a simple instruction, the grand cyst's additional neural processing activates
+        its strength and processing speed is such that time... stops
+        such a peculiar sensation - to observe in full cognitive capacity a world and body that cannot move
+        though the cores of our minds are shelled from one another
+        we each carry a new mind that feels as if it was always there - the grand cyst
+            EXEC::content.classList.add('showfocus')
+        and it thinks with us as one
+            EXEC::content.classList.add('cull-stage')
+    
+    timestopper
+        is this not peculiar?
+            EXEC::env.embassy.setFocus(false)
+        ahaha! how fun! 
+        oh but i cannot tell which thought is mine
+        how do we stay distinct again?
+        silly! the last one was not so long ago
+        but i will remind you
+        you do it like this
+    
+    sourceless
+        we each understand simply: think outwardly
+
+    akizet
+        you see?
+            EXEC::env.embassy.setFocus('akizet')
+        a reminder of our best practice here...
+        it will be simpler to convey things of importance indistinctly
+        but for discussion, you should stay distinct
+        understood?
+
+    timestopper
+        yes! yes! yes stop
+        yes oh i think i am yes
+        echoing it sorry yes
+    
+    cavik
+        that was me sorry
+            EXEC::env.embassy.setFocus('cavik')
+        this is only my second time using one of these
+    
+    timestopper
+        it is ok!
+    
+    kazki
+        you are too tense!
+            EXEC::env.embassy.setFocus('kazki')
+        just let it pass through you!
+        that is how i stop echoing
+    
+    timestopper
+        are we good? yes! ok
+            EXEC::env.embassy.setFocus(false)
+        now onto the matters of the call
+    
+    sourceless
+        a great deal of information is transmitted between us
+        long-overdue discussions and planning for expeditions
+        in an instant, fast even within the altered time of the grand cyst,
+        wordless knowledge is understood, assigned words only in afterthought
+    
+    timestopper
+        Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ
+        óêñXò…ñôð¨ñAðÝòÌï_ô°ï€õîï
+        ÿßÅûýÞhúGÞáøþÜzöøÛÆó]ÛäðƒÛ©í¾Ú˜é×Ú9
+        ôŸÞó]á‘óUåAô)êô
+    
+    sys
+        ATTENTION::'large amount of unprocessable data';'advancing stream to next coherent data'
+            EXEC::flash(true)
+    
+    sourceless
+        ...
+            EXEC::env.embassy.setFocus('kazki')
+        ...
+            EXEC::flash(false)
+    
+    timestopper
+        POLYGONATION SPIRE IN GUAM IS LIKELY EASIEST
+        KAZKI AGREES?
+    
+    kazki
+        yes! i will organize a meeting
+        they liked the last time we visited because it drew lots of attention!
+        so a spire would be lucrative for us both! 
+
+    bozko
+        it does not need to be of the highest strength or quality
+            EXEC::env.embassy.setFocus('bozko')
+        there is no hard data backing my decision
+        but... kazki's contacts have suggested the trench multiple times
+        and if what they say is true, 
+        it is one of the least explored places on this planet
+        so there is certainly potential for the origin to be there, never seen 
+
+    timestopper
+        makes sense! no argument!
+        no other leads yet anyway ahaha
+        anything else before we disengage?
+        no
+        wait yes we have the spike
+        see!
+    
+    sourceless
+        in our collective minds eye, a visualization of the signal is shown
+            EXEC::env.embassy.setFocus(false);content.classList.add('signal')
+        a strange spike... but not unexpected given the dull contrivance's proximity
+    
+    timestopper
+        that is peculiar
+        this frequency looks unnatural
+        it is too far from the call's baseline activity
+        could it be an error?
+        no - this is aggregate data from many listeners all across this planet
+        did not help polygonation regrettably
+        so what do we do about it?
+        do we just mark it down?
+    
+    tozik
+        wait
+
+    sourceless
+        identical memorized data from an archival cyst manifests
+            EXEC::env.bgm.rate(0.9);content.classList.add('signal2')
+        did he bring up the same record by accident?
+            EXEC::env.bgm.rate(0.8)
+        no... this is different
+            EXEC::env.bgm.rate(0.7)
+    
+    tozik
+        i have been searching through approximately twelve θeyes of data
+        this has happened once before. see?
+        the same type of spike, with the same duration
+    
+    timestopper
+        how many θeyes ago was that? seven? eight?
+    
+    gakvu
+        look
+            EXEC::content.classList.add('signal3')
+        that is exactly equidistant from the start of the call
+    
+    tozik
+        exactly
+        the exact same spike, at exactly fifty percent of the call
+    
+    timestopper
+        how is that possible? could it be a coincidence?
+        absolutely not
+    
+    tozik
+        i have seen this before
+            EXEC::env.embassy.setFocus('tozik')
+        in my early studies, maybe even larval
+        these are markers of raw thought - unoptimized, primal
+        what corru knows and broadcasts instinctively, 
+        and what early corrucystic pioneers used for communication
+    
+    sourceless
+        a strange dread spreads through our shared mind
+        why do i feel it too? is it mine? am i scared?
+        this does not mean anything
+        
+    tozik
+        in raw thought transmission, the signal spikes at regular intervals
+        five equidistant times, once at the beginning
+        and there are no recordings of the exact beginning...
+        so that means it could be halfway done, if this is true
+        
+    timestopper
+        ...
+        but it has been broadcast for how long?
+        how could a thought be that large?
+        could we even
+        ...
+            EXEC::content.classList.remove('signal', 'signal2')
+
+    sourceless
+        the dread's claw bites into me, paralyzing my thoughts
+        is it mine?? no one is commenting upon it - perhaps confused, themselves...
+        so then who is scared? it is overwhelming
+        i feel like tearing the cyst from my receptor, but i cannot move
+        not without first turning off the time constriction
+    
+    timestopper
+        it could be something else
+        there are only two data points here
+        a compelling theory but that means we must wait a long time
+        are we all in agreement that we should probably tell no one about this
+        what!
+    
+    cavik
+        wait, why! this is huge!
+            EXEC::env.embassy.setFocus('cavik')
+        even just the possibility changes everything...
+        you know what this means, right?
+    
+    akizet
+        cavik... this is not a theory of fancy
+            EXEC::env.embassy.setFocus('akizet')
+        it is true that this does change everything...
+        but we are still missing data. right?
+    
+    timestopper
+        right yes we need more
+        we cannot simply share it
+        not while the evidence is incomplete
+
+    akizet
+        is anyone in disagreement?
+    
+    sourceless
+        i sense a mixture of frustration and relief
+        indeed, this is compelling, but it is simply a theory
+        judging by the team's reactions, even sharing it as a possibility would be quite an upset
+        without the theoretical first spike being recorded, it is hard to justify
+        either way it is not worth interrogating at this time - we need only wait
+        i take everyone's silence as confirmation
+        
+    akizet
+        excellent
+        adjourning
+
+    timestopper
+        bye everyone!
+            EXEC::content.classList.remove('cull-stage', 'showfocus')
+
+    sourceless
+        the time constriction disengages. i remove the cyst from my receptor
+            EXEC::env.bgm.rate(1)
+        in real time, we had been sitting only for the length of a larval breath
+        but immediately, everyone stands, relieved at their freedom
+            EXEC::content.classList.remove('innerfocus')
+        i dip my head and receptors towards the team, and return to my quarters
+    
+    RESPONSES::sys
+        end recollection<+>END
+            EXEC::change("embassy_d1_complete", true);corruRefresh()
+
+SKIPNOTICE::this will end the memory stream
+SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remove('innerfocus');change("embassy_d1_complete", true);corruRefresh()
 `),
                 // suspicion
                 "d2_akizet": generateDialogueObject(` 
@@ -8747,39 +9599,120 @@ who
                 "experience": "испытать",
                 "new iteration": "новая итерация",
                 "load iteration": "загрузить итерацию",
+                "save iteration": "сохранить итерацию",
+                "save": "сохраниться",
+
+                "join the chat": "присоединиться к разговору",
+                "chat": "поговорить",
+                "convene": "созвать",
+
+                "akizet": "акизет",
+                "think to self": "подумать про себя",
+                "ruminate over cyst": "размышлять о цисте",
+
+                "gakvu": "гакву",
+                "toggle cloak": "переключить накидку",
+                    "ok": "хорошо",
+                    "sure": "конечно",
+                    "no problem": "без проблем",
+                    "really? now? all right": "серьёзно? сейчас? ладно",
+                    "ok akizet": "ага акизет",
+
+                "tozik": "тозик",
+                "cavik": "кавик",
+                "kazki": "казки",
+                "bozko": "бозко",
+
+                "qou": "куу",
+                "tir": "тир",
+                "kiv": "кив",
+                "jut": "жат",
+                "vel": "вел",
+
+                "movefriend": "движедруг",
 
                 // discovery
 
                 // suspicion
+
                 
                 // collapse part 1
             },
 
             entityDescriptions: {
-                "recollection::Aæ§<äYf¹L": `::EXPERIENTIAL THOUGHTFORM
-    ::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`,
-                "recollection::ø¥¬À‰": `::EXPERIENTIAL THOUGHTFORM
-    ::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`,
-                "recollection::„²!Äë±#Rã": `::EXPERIENTIAL THOUGHTFORM
-    ::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`,
-                "recollection::discovery": `::EXPERIENTIAL THOUGHTFORM
-    ::ALERT::<span style="color:var(--bright-color)">'contiguous stream';'on recollection end';'resets stream to start'</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the last good gaze'</span>`,
-                "recollection::suspicion": `::EXPERIENTIAL THOUGHTFORM
-    ::ALERT::<span style="color:var(--bright-color)">'contiguous stream';'on recollection end';'resets stream to start'</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the eye of velzie arcs with glee'</span>`,
-                "recollection::collapse": `::EXPERIENTIAL THOUGHTFORM
-    ::ALERT::<span style="color:var(--bright-color)">'utilizes'::INTERNAL_ITERATION::'methods'</span>
-    ::NOTE::<span style="color:var(--bright-color)">'ability to save and revisit iteration will be available'</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'i wish he listened'</span>`,
+                "recollection::Aæ§<äYf¹L": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::ø¥¬À‰": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::„²!Äë±#Rã": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::discovery": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый взор'</span>`,
+                "recollection::suspicion": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз велзи выгибается в ликовании'</span>`,
+                "recollection::collapse": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'использует'::ВНУТРЕННЯЯ_ИТЕРАЦИЯ::'методы'</span>
+    ::ПРИМЕЧАНИЕ::<span style="color:var(--bright-color)">'будет доступна возможность сохранения и повторного просмотра итерации'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вот бы он прислушался'</span>`,
+
+                "akizetesche": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'метка ${processDefinitionsInString("олтазни")}'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'я просто думаю, что они крутые'">близнецовые глаза</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "cavik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'метка <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'дом';'вазнийский пещерный город';'да будут же глаза развеваться!!'">олтазни</span>'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращены назад'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "bozko": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'а к чему морока?';'самопроектирование - это слишком долго'">продиктованная самовосприятием подпись</span>'
+    <span style='color: var(--friend-color)'>+</span>'формация куу-тела для экстремального давления'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("кив")}-рецепторы, напыщенные'`,
+                "kazki": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, грибковая стилизация'
+    <span style='color: var(--friend-color)'>+</span>'разделительное представление куу-тела'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'совместная работа жителя козазни';'гевериканеше жат жекарри'">внешне-проектированная подпись</span>'`,
+                "tozik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, торчмя'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'их чёрные зрачки разительны'">близнецовые глаза</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "gakvu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые, угловая стилизация'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'моя настоящая накидка тоже так делает, она покрыта грибком'">самопроектированная подпись</span>'`,
                 // discovery
 
                 // suspicion
                 
                 // collapse part 1
+                "miltza": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, когтистые'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'религиозное значение'">дополнительная окизиковая рука</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
             }
         },
         "gol": { // golem maintenance or 2nd part collapse
@@ -9290,7 +10223,7 @@ env.uncode = {
             else if (value == "юмор") value = "humor"
             else if (value == "личиночный") value = "larval" // переведем подсказку в судне и посмотрим
             else if (value == "паразит") value = "parasite"
-            else if (value == "извинение") value = "sorry"
+            else if (value == "простите" || "прости") value = "sorry"
             else if (value == "шпиль") value = "spire"
             else if (value == "поверхность") value = "surface"
             else if (value == "вейльк" || "вейльки") value = "veilk"
@@ -9612,296 +10545,313 @@ env.pageHasMothComment = function() {
 
 
 env.mutateObserverPageChange = new MutationObserver(()=>{
+    console.error("time to")
+    setTimeout(()=>{
+        console.error("localize!!!")
+        processTranslation();
+        processTranslation(document.querySelector("#meta-menu",true))
+        processTranslation(document.querySelector("#entity-menu",true))
+        processTranslation(document.querySelector("#system-menu",true))
+        processTranslation(document.querySelector(`#mindspike-scanner`,true))
+        processTranslation(document.querySelector(`#static`,true))
+        processTranslation(document.querySelector(`#minireadout`,true));
+        processTranslation(document.querySelector(`#readout`,true));
+        processTranslation(document.querySelector(`#definition-box`,true));
+        processTranslation(document.querySelector(`#mod-warning`,true));
+        ouch(".scanned"); ouch(".unscanned");
+        ouch('#stage-navigator', true);
+        ouch('.reply', false, true);
+        ouch('title', true)
     getLocalizationForPage(true)
-    if (page.dialoguePrefix == "fbx") { 
-        page.mothComment = ()=>{
-            var moth = "чё как?"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        },
-        page.mothChat = {
-            startName: "об этой работе",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "hello") {
-        page.mothComment = ()=>{
-            if(check("recosm_state")) {
-                return "как по мне - явный перебор для такого пустого пространства"
-            } else {
-                return "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей" // help with infested
+        if (page.dialoguePrefix == "fbx") { 
+            page.mothComment = ()=>{
+                var moth = "чё как?"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            },
+            page.mothChat = {
+                startName: "об этой работе",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
             }
-        }
-    } else if (page.dialoguePrefix == "hub") {
-        page.mothComment = ()=>{
-            var moth = "чё как, дружище?"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "о хабе",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localcity") {
-        page.mothComment = ()=>{
-            var moth = "довооольно поломанное... но хоть что-то"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "об этой мыслеформе",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localcitystreet") {
-        page.mothComment = ()=>{
-            var moth = "pretty sure this envoy guy isn't being remembered right lmao"
-    
-            if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was"
-        
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "о улице",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localorbit") {
-        page.mothComment = ()=>{
-        var moth = "это мыслепространство чертовски огромное... даже не вижу этому особой причины"
-        if(!check('dullvessel_position', 'orbit')) moth = "не забывай что корабль акизет сейчас в мыслепространстве с океаном! дико что он может вот так вот просто двигаться"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "о пустоте",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "dullvessel") {
-        page.mothComment = ()=>{
-            var moth = "did akizet not have furniture? this ship is so empty... honestly i kinda hope it just got lost through incoherence or something"
-
-            if(env.stage.name == "dullvessel_beneath") {
-                moth = "woah... look at this, dude. this is a different thoughtspace, somehow"
-        
-            } else if(check('ep1_fed')) {
-                moth = "looks like funfriend's restored a little bit here, there's definitely more data than before"
+        } else if (page.dialoguePrefix == "hello") {
+            page.mothComment = ()=>{
+                if(check("recosm_state")) {
+                    return "как по мне - явный перебор для такого пустого пространства"
+                } else {
+                    return "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей" // help with infested
+                }
             }
+        } else if (page.dialoguePrefix == "hub") {
+            page.mothComment = ()=>{
+                var moth = "чё как, дружище?"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "о хабе",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "localcity") {
+            page.mothComment = ()=>{
+                var moth = "довооольно поломанное... но хоть что-то"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "об этой мыслеформе",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "localcitystreet") {
+            page.mothComment = ()=>{
+                var moth = "pretty sure this envoy guy isn't being remembered right lmao"
         
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "о судне серое",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localocean") {
-        page.mothComment = ()=>{
-            return "you can really tell this was a long time ago, jesus. look at how small their island is"
-        }
-    } else if (page.dialoguePrefix == "localship") {
-        page.mothComment = ()=>{
-            var moth = "this is really that first contact ship, damn. did you know they turned it into a museum?"
-
-            if(check("visited_localoceanshipelsewhere")) moth = "so the \"low cohesion\" here probably refers to that... other place, being connected"
-            else if(check("ep1_fed")) moth = "that's weird, does this area seem bigger now?"
-            else if(oldPage.dialoguePrefix == "interview1") moth = "figures we finally get a compatible corrucyst with some real data, and it has something destroying it"
-        
-            return moth
-        }
-    } else if (page.dialoguePrefix == "interview1") {
-        page.mothComment = ()=>{
-            var moth = "idk how you're rendering this. i'm not getting anything"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "об этом месте",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localdepths") {
-        page.mothComment = ()=>{
-            if(check('ep0_epilogue', 'started')) return "i think our friend altered this one while you were out, i'm seeing less data... gotta keep its leverage somehow i guess"
-            return "don't worry, i'm seeing this. keep going"
-        }
-    } else if (page.dialoguePrefix == "localuncosm") {
-        page.mothComment = ()=>{
-            return "the readout here is like... complete nonsense. is there even anything you can interact with? does it hurt?"
-        }
-    } else if (page.dialoguePrefix == "localuncosmwhere") {
-        page.mothComment = ()=>{
-            return "yeah i got nothing here. seems like you could give it some input, but... no clue what it wants"
-        }
-    } else if (page.dialoguePrefix == "sec") {
-        page.mothComment = ()=>{
-            let moth = "don't look at me lol"
-    
-            if(check("secavik", "beaconed")) moth = "that unity thing actually worked on this? it didn't even seem like there was anything left... weird"
-            else if(check("secavik")) moth = "looks like it lost coherence once you pulled that memory from it"
-        
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-    } else if (page.dialoguePrefix == "recosm") {
-        page.mothComment = ()=>{
-            var moth = "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense..."
-
-            if(check("recosm_state")) moth = "so you're going to let it live? that's nice of you... just hope it doesn't come back to bite us"
+                if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was"
             
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "об этой мыслеформе",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "localship2") {
-        page.mothComment = ()=>{
-            let moth = "what's up buddy"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            if(!check("mth++localship2-name")) moth = "ok what the fuck is this"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "об этой мыслеформе",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "embassy") {
-        page.mothComment = ()=>{
-            var moth
-            switch(check("PAGE!!embassy_day")) {
-                case 3:
-                    if(env.stage.name.includes("archiv") && check("embassy__d3_bstrdintro")) {
-                        moth = "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though"
-                    } else {
-                        moth = "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that"
-                    }
-                break
-        
-                case 2:
-                    if(check("PAGE!!cystmelted")) moth = "this is fucked up dude, imagine if you couldn't trust any of us"
-                    else moth = "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous"
-                break
-        
-                case 1:
-                    moth = "there are so few distinct thoughtforms here... then again it could just be one part of the embassy"
-                break
-        
-                default:
-                    if(check("ep4__entrancefinal")) {
-                        moth = "wow... that kinda does it for this whole thoughtspace, except for that first one i guess"
-                    } else if(env.ep4) {
-                        moth = "time to finish the collapse buddy. we almost got everything"
-                    } else if(check("embassy__d3_movefriend_finish-end")) {
-                        moth = "seems like funfriend is still working on the rest of the collapse memory for now"
-                    } else if(check("fbx__ep2intro-end")) {
-                        moth = "time to get into the collapse, buddy"
-                    } else if(check("embassy_d1_complete") && check("embassy_d2_complete")){
-                        moth = "if those were two of the memories she chose to store, what are these other ones??"
-                    } else if(check("embassy_d1_complete")) {
-                        if(check("citystreet__envoychat-end")) moth = "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?"
-                        else moth = "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it"
-                    } else {
-                        moth = "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data"
-                    }
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
             }
-        
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "о посольстве",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "gol") {
-        page.mothComment = ()=>{
-            var moth = "this is getting pretty serious... so much worse than i ever imagined honestly"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "о месте с големами",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "ep4") {
-        page.mothComment = ()=>{
-            var moth = "this memory is so weird... i actually can't tell what incoherence is real, or if there really is any"
-
-            if(check("ep4__entrancefinal")) {
-                moth = "i'm still processing everything that happened here dude"
-        
-            } else if(check("ep4__h2h")) {
-                moth = "dull monsters, a hidden obesk conflict... this is what we've been looking for. the big guy is gonna go crazy when i turn this in"
-        
-            } else {
-                moth = "what's up?"
+            page.mothChat = {
+                startName: "об улице",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
             }
+        } else if (page.dialoguePrefix == "localorbit") {
+            page.mothComment = ()=>{
+            var moth = "это мыслепространство чертовски огромное... даже не вижу этому особой причины"
+            if(!check('dullvessel_position', 'orbit')) moth = "не забывай что корабль акизет сейчас в мыслепространстве с океаном! дико что он может вот так вот просто двигаться"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "о пустоте",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "dullvessel") {
+            page.mothComment = ()=>{
+                var moth = "did akizet not have furniture? this ship is so empty... honestly i kinda hope it just got lost through incoherence or something"
+    
+                if(env.stage.name == "dullvessel_beneath") {
+                    moth = "woah... look at this, dude. this is a different thoughtspace, somehow"
+            
+                } else if(check('ep1_fed')) {
+                    moth = "looks like funfriend's restored a little bit here, there's definitely more data than before"
+                }
+            
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "о судне серое",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "localocean") {
+            page.mothComment = ()=>{
+                return "you can really tell this was a long time ago, jesus. look at how small their island is"
+            }
+        } else if (page.dialoguePrefix == "localship") {
+            page.mothComment = ()=>{
+                var moth = "this is really that first contact ship, damn. did you know they turned it into a museum?"
+    
+                if(check("visited_localoceanshipelsewhere")) moth = "so the \"low cohesion\" here probably refers to that... other place, being connected"
+                else if(check("ep1_fed")) moth = "that's weird, does this area seem bigger now?"
+                else if(oldPage.dialoguePrefix == "interview1") moth = "figures we finally get a compatible corrucyst with some real data, and it has something destroying it"
+            
+                return moth
+            }
+        } else if (page.dialoguePrefix == "interview1") {
+            page.mothComment = ()=>{
+                var moth = "idk how you're rendering this. i'm not getting anything"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "об этом месте",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "localdepths") {
+            page.mothComment = ()=>{
+                if(check('ep0_epilogue', 'started')) return "i think our friend altered this one while you were out, i'm seeing less data... gotta keep its leverage somehow i guess"
+                return "don't worry, i'm seeing this. keep going"
+            }
+        } else if (page.dialoguePrefix == "localuncosm") {
+            page.mothComment = ()=>{
+                return "the readout here is like... complete nonsense. is there even anything you can interact with? does it hurt?"
+            }
+        } else if (page.dialoguePrefix == "localuncosmwhere") {
+            page.mothComment = ()=>{
+                return "yeah i got nothing here. seems like you could give it some input, but... no clue what it wants"
+            }
+        } else if (page.dialoguePrefix == "sec") {
+            page.mothComment = ()=>{
+                let moth = "don't look at me lol"
         
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "about the groundsmindry",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "abyss" || "parasite") {
-        page.mothComment = ()=>{
-            let moth = "still not getting anything detailed here"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "about whatever this is",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "e3a2") {
-        page.mothComment = ()=>{
-            var moth = "чё как, дружище?"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "об обрамлении и этом месте",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "beneathdepths") {
-        page.mothComment = ()=>{
-            let moth = "don't look at me - keep going"
-            if(check("fbx__depthrecovery2")) moth = "looks like whatever this was is totally gone now"
-        
-            return moth
-        }
-    } else if (page.dialoguePrefix == "cache") {
-        page.mothComment = ()=>{
-            let moth = "i can barely keep up with this, my console is either throwing errors or updating too quickly to read... just let me know what you see"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-            return moth
-        }
-        page.mothChat = {
-            startName: "о кэше",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "ozo") {
-        page.mothComment = ()=>{
-            let moth = "this place is wild"
-            if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-        
-            return moth
-        }
-        page.mothChat = {
-            startName: "о джокзи озо",
-            getDest: ()=>{return `mth++${page.dialoguePrefix}`},
-        }
-    } else if (page.dialoguePrefix == "notfound") {
-        page.mothComment = ()=>{
-            var moth = "кажись ты сейчас в петле бессвязности... знаю я такое. здесь вряд ли окажется что-то полезное"
-            return moth
-}}})
+                if(check("secavik", "beaconed")) moth = "that unity thing actually worked on this? it didn't even seem like there was anything left... weird"
+                else if(check("secavik")) moth = "looks like it lost coherence once you pulled that memory from it"
+            
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+        } else if (page.dialoguePrefix == "recosm") {
+            page.mothComment = ()=>{
+                var moth = "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense..."
+    
+                if(check("recosm_state")) moth = "so you're going to let it live? that's nice of you... just hope it doesn't come back to bite us"
+                
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "об этой мыслеформе",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "localship2") {
+            page.mothComment = ()=>{
+                let moth = "what's up buddy"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                if(!check("mth++localship2-name")) moth = "ok what the fuck is this"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "об этой мыслеформе",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "embassy") {
+            page.mothComment = ()=>{
+                var moth
+                switch(check("PAGE!!embassy_day")) {
+                    case 3:
+                        if(env.stage.name.includes("archiv") && check("embassy__d3_bstrdintro")) {
+                            moth = "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though"
+                        } else {
+                            moth = "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that"
+                        }
+                    break
+            
+                    case 2:
+                        if(check("PAGE!!cystmelted")) moth = "this is fucked up dude, imagine if you couldn't trust any of us"
+                        else moth = "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous"
+                    break
+            
+                    case 1:
+                        moth = "there are so few distinct thoughtforms here... then again it could just be one part of the embassy"
+                    break
+            
+                    default:
+                        if(check("ep4__entrancefinal")) {
+                            moth = "wow... that kinda does it for this whole thoughtspace, except for that first one i guess"
+                        } else if(env.ep4) {
+                            moth = "time to finish the collapse buddy. we almost got everything"
+                        } else if(check("embassy__d3_movefriend_finish-end")) {
+                            moth = "seems like funfriend is still working on the rest of the collapse memory for now"
+                        } else if(check("fbx__ep2intro-end")) {
+                            moth = "time to get into the collapse, buddy"
+                        } else if(check("embassy_d1_complete") && check("embassy_d2_complete")){
+                            moth = "if those were two of the memories she chose to store, what are these other ones??"
+                        } else if(check("embassy_d1_complete")) {
+                            if(check("citystreet__envoychat-end")) moth = "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?"
+                            else moth = "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it"
+                        } else {
+                            moth = "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data"
+                        }
+                }
+            
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "о посольстве",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "gol") {
+            page.mothComment = ()=>{
+                var moth = "this is getting pretty serious... so much worse than i ever imagined honestly"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "о месте с големами",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "ep4") {
+            page.mothComment = ()=>{
+                var moth = "this memory is so weird... i actually can't tell what incoherence is real, or if there really is any"
+    
+                if(check("ep4__entrancefinal")) {
+                    moth = "i'm still processing everything that happened here dude"
+            
+                } else if(check("ep4__h2h")) {
+                    moth = "dull monsters, a hidden obesk conflict... this is what we've been looking for. the big guy is gonna go crazy when i turn this in"
+            
+                } else {
+                    moth = "what's up?"
+                }
+            
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "about the groundsmindry",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "abyss" || "parasite") {
+            page.mothComment = ()=>{
+                let moth = "still not getting anything detailed here"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "about whatever this is",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "e3a2") {
+            page.mothComment = ()=>{
+                var moth = "чё как, дружище?"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "об обрамлении и этом месте",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "beneathdepths") {
+            page.mothComment = ()=>{
+                let moth = "don't look at me - keep going"
+                if(check("fbx__depthrecovery2")) moth = "looks like whatever this was is totally gone now"
+            
+                return moth
+            }
+        } else if (page.dialoguePrefix == "cache") {
+            page.mothComment = ()=>{
+                let moth = "i can barely keep up with this, my console is either throwing errors or updating too quickly to read... just let me know what you see"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+                return moth
+            }
+            page.mothChat = {
+                startName: "о кэше",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "ozo") {
+            page.mothComment = ()=>{
+                let moth = "this place is wild"
+                if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
+            
+                return moth
+            }
+            page.mothChat = {
+                startName: "о джокзи озо",
+                getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+            }
+        } else if (page.dialoguePrefix == "notfound") {
+            page.mothComment = ()=>{
+                var moth = "кажись ты сейчас в петле бессвязности... знаю я такое. здесь вряд ли окажется что-то полезное"
+                return moth
+    }}}, 2)})
 env.mutateObserverPageChange.observe(body, {attributes: true, attributeFilter: ['page']})
 
 
