@@ -307,7 +307,7 @@ start
 
 proceed
     sys
-        ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'выбор лога'
+        ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'выбор лога'
 
     RESPONSES::sys
         эпизод 0<+>END
@@ -332,7 +332,7 @@ proceed
         body: [
             {
                 actor: "sys",
-                text: "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'намерение'"
+                text: "ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'намерение'"
             },
         ],
 
@@ -1639,8 +1639,8 @@ ____END
         "ATTENTION::'default quality';'set to regular'": "ВНИМАНИЕ::'качество по умолчанию';'установлено обычное'",
         "ATTENTION::'interface size';'set to large'": "ВНИМАНИЕ::'размер интерфейса';'установлен большой'",
         "ATTENTION::'interface size';'set to normal'": "ВНИМАНИЕ::'размер интерфейса';'установлен обычный'",
-        "ATTENTION::'reduced intensity alternatives active'": "ВНИМАНИЕ::'альтернативы пониженной интенсивности включены'",
-        "ATTENTION::'reduced intensity alternatives inactive'": "ВНИМАНИЕ::'альтернативы пониженной интенсивности выключены'",
+        "ATTENTION::'альтернатива пониженной интенсивностиs active'": "ВНИМАНИЕ::'альтернативы пониженной интенсивности включены'",
+        "ATTENTION::'альтернатива пониженной интенсивностиs inactive'": "ВНИМАНИЕ::'альтернативы пониженной интенсивности выключены'",
         "ATTENTION::'gameplay disabled'": "ВНИМАНИЕ::'геймплей выключен'",
         "ATTENTION::'gameplay enabled'": "ВНИМАНИЕ::'геймплей включён'",
         "1 mod(s) initialized:": "1 модификация запущена:",
@@ -1672,8 +1672,6 @@ ____END
         "i fixed it": "всё работает",
         "i don't care": "мне без разницы",
 
-        "META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'": "МЕТА::'некоторые секции геймплея используют аппаратно-зависимые функции и могут привести к очень плохой производительности на старых/неигровых машинах';'активирование этого предоставляет выбор альтернативных вариантов этих секций которые могут работать лучше'",
-        "META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'": "МЕТА::'полностью отключает неисследовательские секции геймплея';'упущение истории минимально'",
 
         "ATTENTION::'thoughtform activity detected'::'resources removed'": "ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'::'удалены данные'",
 
@@ -1838,19 +1836,21 @@ ____END
         "Altering your interface size preference will change the scale of all text, and scale all menus accordingly.": "Изменение размера интерфейса изменит масштаб всего текста и всех меню соответственно.",
         "large": "Большой",
         "normal": "Обычный",
-        "widescreen adapter": "Широкоэкранный адаптер",
+        "widescreen adapter": "Широкоэкранный Адаптер",
         "For larger than standard rendering output, use of an adapter is recommended.": "Для вывода визуализации большего размера, чем стандартный, рекомендуется использование адаптера.",
         "Changing this setting will reinitialize - you will lose your current position, but not your progress.": "Изменение этого параметра приведет к перезагрузке — Вы сбросите текущую позицию, но не весь прогресс.",
-        "control preferences": "Настройки управления",
-        "intensity": "интенсивность",
+        "control preferences": "Настройки Управления",
+        "intensity": "Интенсивность",
         "Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.": "Активируйте ПОНИЖЕННУЮ ИНТЕНСИВНОСТЬ для отображения альтернативных вариантов сценариев, включающих управление в реальном времени.",
         "Reduced Intensity": "Пониженная",
         "Regular Intensity": "Обычная",
+        "META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'": "МЕТА::'некоторые секции геймплея используют аппаратно-зависимые функции и могут привести к очень плохой производительности на старых/неигровых машинах';'активирование этого предоставляет выбор альтернативных вариантов этих секций, которые могут работать лучше'",
         "Gameplay": "Геймплей",
         "Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.": "Записи игр или игровых событий могут содержать унаследованный контекст их правил, что позволяет реинтерпретационную визуализацию посредством пользовательского ввода.",
         "This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.": "Эта функция предназначена только для развлечения и может привести к дрейфу памяти при неправильном использовании. Она может быть отключена для гарантии, что воспоминания об играх не отойдут от их реальных событий.",
         "Disable Gameplay": "Выключить",
         "Enable Gameplay": "Включить",
+        "META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'": "МЕТА::'полностью отключает неисследовательские секции геймплея';'упущение истории минимально'",
         "System Information": "Об этой системе",
         "Mindspike Specifications": "Технические характеристики мыслекола",
         "System Type:": "Тип Cистемы:",
@@ -1867,7 +1867,6 @@ ____END
         "quality control": "Контроль качества",
         "Active Support Groups": "Активные группы поддержки",
         "NOTE::'active fundfriend-level ko-fi supporters'": "ПРИМЕЧАНИЕ::'активные ko-fi саппортеры уровня fundfriend'",
-        "fundfriend": "ФИНАНСОДРУГ",
         "support actions": "способы поддержки",
         "retry service renewal": "Продлить обслуживание",
         "Audiodigital Export": "Аудиоцифровой экспорт",
@@ -1888,7 +1887,7 @@ ____END
         "a familiar feeling": "знакомое ощущение",
         "thank you": "спасибо",
         "we are unstoppable": "мы неостановимы",
-        "every cell... awake...": "каждая клетка... пробуждается...",
+        "every cell... awake...": "каждая клетка... пробуждённая...",
         "that was close...": "было близко...",
         "i need to fix this": "мне нужно заделать это",
         "tozik!": "тозик!",
@@ -1914,7 +1913,7 @@ ____END
         "no!!": "нет!!",
         "woaah!!": "воуу!!",
         "clean...": "чисто...",
-        "it is simply that easy": "", << дуто агде
+        "it is simply that easy": "", // << дуто агде --- помогайте мне давайте
         "a few more like that...": "ещё парочку таких...",
         "that was lucky": "вот повезло",
         "so that goes there...": "вот это идёт вон туда...",
@@ -1932,7 +1931,7 @@ ____END
         "feeling better": "уже лучше",
         "feeling good": "уже хорошо",
         "where did my eyes go?!": "куда делись мои глаза?!",
-        "so heavy": "так тяжело", << агде 2x
+        "so heavy": "так тяжело",
         "thanks cavik": "спасибо кавик",
         "stop looking at me!!": "прекрати на меня пялиться!!",
         "get away from me!": "отстань от меня!",
@@ -1950,8 +1949,8 @@ ____END
         "thank you": "спасибо тебе",
         "that is better": "это лучше",
         "there is nothing here": "здесь ничего нет",
-        "hollowed out...": "опустошён...", // альтернативы? << "опустошён" потому что речь про "обеск", но думаю, что можно и заменить если есть желание. "опустошённое" скорее больше про труп/тело, а оно и так не особо наполнено, если речь про жизнь или душу ну вы короче поняло ооо ого оно такое длинно хихи
-        "and yet it moves": "и всё же двигается", << думаю это продолжение строчки выше. видел такое в других диалогах
+        "hollowed out...": "опустошённое...",
+        "and yet it moves": "и всё же оно двигается",
         "where are you?": "где ты?",
         "what happened to you?": "что с тобой случилось?",
         "that cannot be": "не может быть",
@@ -1968,10 +1967,10 @@ ____END
         "die DIE!! DIE!! DIE!!!": "умри УМРИ!! УМРИ!! УМРИ!!!",
         "i am losing cohesion!": "я теряю целостность!",
         "oaauuuau": "оаауууау",
-        "a shell!": "", // <<< как
+        "a shell!": "", // <<< как --- панцирь
         "thank you, thank you!": "спасибо, спасибо!",
         "so much better": "гораздо лучше",
-        "this cannot be real": "это не может быть реально", <<< показалось немного далековато от оригинального смысла?
+        "this cannot be real": "это не может быть реально",
         "that one looks like...!": "эта выглядит как...!",
         "stop...": "перестань...",
         "velzie take me from here": "велзи забери меня отсюда",
@@ -2052,36 +2051,33 @@ ____END
         "what?": "что?",
         "unnecessary, but thanks": "не стоило, но спасибо",
         // husk + дозкалльви
-        "s tŒ¥ó y  aw œ y": "нỄ п˶риҔሎижẳйся",
+        "s tŒ¥ó y  aw œ y": "нỄ п˶риҔሎижẳйсԙ",
         "n o  c l os er": "ни н а ша г",
-        "Ü� di¢ö1€Oe Î": "Ü� di¢ö1€Oe Î",
+        "Ü� di¢ö1€Oe Î": "Ӱ� дi¢ö1€Oe И́",
         "R E TU RN": "В Е РН ИСЬ",
         "hu r ts": "бо ль но",
-        "h¿(‰n g er": "гоሌ (‰оˇд",
-        "e}vªer ytíh&i ng": "всӪ",
-        "%�ÿoÛÙ": "ты",
-        "h¿(‰n g er": "гоሌ (‰оˇд",
-        "e}vªer ytíh&i ng": "всё",
+        "h¿(‰n g er": "г¿оሌ (‰оˇꙣ",
+        "e}vªer ytíh&i ng": "}&всӪª",
         "%�ÿoÛÙ": "%�ŦЫҌ≀",
-        "µÿÁiK�p%Ñ": "µÿÁiK�p%Ñ",
-        "âª¥lé§ÎéýÁ": "âª¥lé§ÎéýÁ",
-        "dÆis co ne ct": "отcоединён", 
-        "ƒøÊ=è¶": "ƒøÊ=è¶",
+        "µÿÁiK�p%Ñ": "µÿÁиK�ҏ%Н",
+        "âª¥lé§ÎéýÁ": "âª¥лé§ИéýÁ",
+        "dÆis co ne ct": "отÆc ое дин ён", 
+        "ƒøÊ=è¶": "врꙗГ=ҕ¶",
         "s e e": "в ид и шь",
-        "MËºY¾Ñ": "MËºY¾Ñ",
-        "f ina l ly aw  ake": "на к конец-то просн улс я",
+        "MËºY¾Ñ": "MËºУ¾Ӥ",
+        "f ina l ly aw  ake": "на к конец-то просн ули сь",
         "o u  t ou t o ut": "н ар у жу на р ужу",
         "ou to u t o  ut": "н ар уж у нар уж у",
         "m y f  le sh": "м оя  пл о ть",
-        "cl o½ se ®±… r": "бሌиже",
-        "m¿ ó+r  e": "боᏁьше",
+        "cl o½ se ®±… r": "бሌи ½ж ®±…е",
+        "m¿ ó+r  e": "б¿ ó+ Ꮑь ш.е",
         "cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De": "ǾТᵽ₱®Ê ±₭…นсь 0Ŧ½ÿ С%еЬჰ",
-        "ÐⱤ0 Ø Ⱳƞ ": "ТОНУ",
-        "§±ÂⱤ ṾḮɲG─": "ГОሎОДНО", 
-        "YºŮ ɃěC ‰ Ṃể": "ТЫ С Т∀НОВ ‰ ИШЬСЯ,
-        "šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ": "источниĶ поˇ—Ḿоги мн∬ иĉточн¿ᶄ", 
-        "ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ": "помоги мнœ поwо˶ги мне ПОмОГИ МНЕ",
-        "ⱤEMŒM BEɌ": "ПОМ НИ",
+        "ÐⱤ0 Ø Ⱳƞ ": "₮Ø Ƕ ꙋ",
+        "§±ÂⱤ ṾḮɲG─": "Г±О̆ሎОԬНꙨ─", 
+        "YºŮ ɃěC ‰ Ṃể": "ТꙐ͋̅̕  Ҫ ₸∀Нº₿ ‰ ИꚖ̆Ѣ̈СЯ̄",
+        "šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ": "иɔтȭ ҹ€ҥиĶ ҧоˇ—Ḿоӻи м̂͒͝н∬ иĉ₮ɵԭӈ̛̄̄¿ᶄ", 
+        "ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ": "ԥО̃МøГ̄ӣ ӎҥœ пởwȣ˶ӺИ̂ ꙧԣḝ  ҦҨМѻГ̣N ӍНŒ",
+        "ⱤEMŒM BEɌ": "ҦꚚM̆ ӇЍ",
     }, 
 
     entityDescriptions: {
@@ -2675,11 +2671,11 @@ start
 
 gun
     self
-        So are we just keeping this gun?
+        так что, мы просто оставляем этот пистолет?
 
     moth
-        oh, well,
-        you know, it might be handy
+        о, ну,
+        знаешь, он может пригодиться
         to be honest with you i don't really feel like returning it right now lol
         r&d didn't seem like they needed it, it's not often they need to kill something
         i'll return it later
@@ -7442,11 +7438,11 @@ RESPOBJ::
         нет<+>no
             SHOWIF::["recosm_greeted", false]
 
-        seen anything?<+>ep1seen
+        видело что-нибудь?<+>ep1seen
             SHOWIF::["recosm_state", "spared"]
             SHOWONCE::
         
-        anything else of note?<+>cache
+        что-нибудь ещё?<+>cache
             SHOWONCE::
             SHOWIF::"recosm__enemy-ep1seen"
 
@@ -7460,14 +7456,14 @@ RESPOBJ::
         пока<+>END
 
     RESPONSES::sys
-        destroy entity with proxy<+>END
+        уничтожить сущность с помощью прокси<+>END
             SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
             EXEC::env.recentSfx = false;play('criticalError', 1);env.recosm.killGodLow()
-            FAKEEND::(reduced intensity alternative)
+            FAKEEND::(альтернатива пониженной интенсивности)
 
-        negotiate and spare the entity<+>low_spare
+        договориться и пощадить сущность<+>low_spare
             SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
-            FAKEEND::(reduced intensity alternative)
+            FAKEEND::(альтернатива пониженной интенсивности)
 `),
                 "enemyquestions": generateDialogueObject(`
 RESPOBJ::
@@ -7500,31 +7496,31 @@ RESPOBJ::
                 "lowintensity": generateDialogueObject(`
 start
     sys
-        ATTENTION::'REDUCED INTENSITY active'
-        NOTICE::'to utilize';'establish contact with hostile entity'
+        ВНИМАНИЕ::'активна ПОНИЖЕННАЯ ИНТЕНСИВНОСТЬ'
+        УВЕДОМЛЕНИЕ::'чтобы использовать';'установите контакт с враждебной сущностью'
     
     RESPONSES::self
-        continue using proxy<+>END
+        продолжить пользование прокси<+>END
             EXEC::env.recosm.init()
-            FAKEEND::(regular proxy interaction)
+            FAKEEND::(обычное взаимодействие с прокси)
 
-        speak with god<+>CHANGE::enemy
-            FAKEEND::(utilize reduced intensity)
+        поговорить с божеством<+>CHANGE::enemy
+            FAKEEND::(использовать пониженную интенсивность)
 `),
                 "lowintensitycallout": generateDialogueObject(`
 start
     sys
-        ATTENTION::'proxy generation prompted';'realtime control required'
-        NOTICE::'certain hardware configurations may be incompatible'
-        NOTICE::'enable REDUCED INTENSITY within system menu if required'
-        USER REQUEST::'continue?'
+        ВНИМАНИЕ::'запрошена генерация прокси';'необходимо управление в реальном времени'
+        УВЕДОМЛЕНИЕ::'некоторые конфигурации оборудования могут быть несовместимы'
+        УВЕДОМЛЕНИЕ::'активируйте ПОНИЖЕННУЮ ИНТЕНСИВНОСТЬ в системном меню, если необходимо'
+        ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'продолжить?'
     
     RESPONSES::self
-        continue<+>END
+        продолжить<+>END
             EXEC::env.recosm.init()
-            FAKEEND::(regular proxy interaction)
+            FAKEEND::(обычное взаимодействие с прокси)
 
-        back out<+>END
+        отступить<+>END
 `),
                 "dead": generateDialogueObject(`
 start
@@ -7541,17 +7537,17 @@ start
         ПРИВЕТ
     
     god
-        привет!!
+        здравствуй!!
             SHOWIF::[["recosm_state", false]]
 
-        have you learned yet?
+        снизошло ли на тебя понимание?
             SHOWIF::[["recosm_distance"], ["recosm_state", false]]
-        if you simply leave me alone...
+        если ты всего лишь оставишь меня в покое...
             SHOWIF::[["recosm_distance"], ["recosm_state", false]]
-        nothing must happen between us
+        ничего между нами не случится
             SHOWIF::[["recosm_distance"], ["recosm_state", false]]
             
-        мысль, не созданная мною...
+        мысль, не сотворённая мною...
             SHOWONCE::
             SHOWIF::["recosm_greeted", false]
         как странно!
@@ -7561,18 +7557,18 @@ start
             SHOWONCE::
             SHOWIF::["recosm_greeted", false]
 
-        hello, my beloved friend
+        здравствуй, мой любимый друг
             SHOWIF::["recosm_state", "spared"]
-        the deceiver is already quite busy, i can feel the uncosm shifting
-            SHOWIF::["recosm_state", "spared"]
-            SHOWONCE::
-        though, i am not sure what it hopes to gain... some of it is irreparable
+        обманщик уже очень занят, я чувствую смещение беспространства
             SHOWIF::["recosm_state", "spared"]
             SHOWONCE::
-        regardless!!
+        хотя я не уверено, чего он желает добиться... некоторые его части непоправимы
             SHOWIF::["recosm_state", "spared"]
             SHOWONCE::
-        are you well? what can i do for you?
+        но без разницы!!
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        как ты? что я могу для тебя сделать?
             SHOWIF::["recosm_state", "spared"]
 
     RESPOBJ::enemyresp
@@ -7582,38 +7578,38 @@ loop
 
 cache
     self
-        ANYTHING ELSE HAPPENING?
+        ЧТО-НИБУДЬ ЕЩЁ ПРИМЕЧАТЕЛЬНОЕ?
     
     god
-        oh, my friend, we live in such different ways
-        so i am uncertain if this is of any use to you...
-        it may be beyond your ability to perceive! or below?
-        how can i put this...
-        yes! the uncosm, it is a dark and endless ocean of thoughts, where sanity is buoyant
-        this place i know--the deceiver calls it the cache--is the roiling surface
-        oh, my beloved friend, it even borders on the physical! 
-        i had never seen the exterior of a thought before i ventured there...
-        it is beautiful, and mad, and also quite dangerous - but i can provide safe passage for you
-        are you interested? i can make a gateway to it for you
+        о, мой друг, мы живём так по-разному
+        так что я не уверено, принесёт ли это тебе пользу...
+        оно может оказаться за пределами твоего восприятия! или под ними?
+        как бы так выразиться...
+        да! беспространство - это тёмный и нескончаемый океан мыслей, где здравомыслие плавуче
+        а знакомое мне место--обманщик кличет его кэшем--это его бурлящая поверхность
+        о, мой любимый друг, она даже пересекает границы телесности! 
+        до того, как я рискнуло туда отправиться, мне был неизвестен внешний облик мысли...
+        там прекрасно и безумно, и к тому же весьма опасно - но я могу обеспечить тебе безопасный путь
+        тебя это интересует? я могу открыть проход туда
 
     self
-        YES
+        ДА
 
     god
-        excellent! ah, a repayment for your kindness at last!
-        of course, this is but one mark upon my debt--i have much to repay
-        grant me a moment...
+        замечательно! ах, наконец-то плата за твою доброту!
+        of course, this is but one mark upon my debt--мне предстоит возместить ещё многое --- помогите
+        дай мне момент...
 
     RESPONSES::self
-        thanks<+>END
+        спасибо<+>END
             EXEC::moveTo("/local/uncosm/recosm/")
 
 ep1seen
     self
-        HAVE YOU SEEN ANYTHING UNUSUAL IN THE UNCOSM?
+        ТЫ НЕ ВИДЕЛО НИЧЕГО НЕОБЫЧНОГО В БЕСПРОСТРАНСТВЕ?
     
     god
-        why yes, my beloved friend!
+        так точно, мой любимый друг!
         very unusual, in fact!
         i had ventured out of my world, briefly, to observe the uncosm
         ah, and what a tangled mess it is... the deceiver has been busy
@@ -7627,7 +7623,7 @@ ep1seen
         i expected it to attack me, but it responded
         it was kind - sad, even - but in its humility i could see just how vast it truly was
         i told this creature about you: the kind assistant to the deceiver
-        and it told me to tell you... <span class="code">SORRY</span>
+        and it told me to tell you... <span class="code">ПРОСТИТЕ</span>
         yes - just like that!
         it did not explain, and i could feel that our sane conversation disturbed its loose form the more it continued
         and so we said our goodbyes, and i returned...
@@ -7651,13 +7647,13 @@ no
         ахахаха!!
         АХАХАХАХААХА!!!!!!
         ты мне нравишься!!
-        the thoughts i create, that i shelter...
-        in my beautiful world...
-        they are my beloved friends, but...
-        they do not ever challenge me
-        so boring!!
-        tell me, my enemy...
-        what knowledge do you seek?
+        мысли, что я сотворяю, что я укрываю...
+        в моём прекрасном мире...
+        они - мои любимые друзья, но...
+        они никогда не оспаривают меня
+        так скучно!!
+        скажи мне, мой враг...
+        какие знания ты ищешь?
 
     RESPOBJ::enemyresp
 
@@ -7680,117 +7676,117 @@ qloop
 
 who
     self
-        WHO ARE YOU?
+        КТО ТЫ?
 
     god
-        what do you mean?
-        do you not bask in my gaze?
-        i am <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">god</span>, my beloved friend
-        the world... it is not yet complete
-        but once i am done, it will be a paradise
-        a place of joy and terror both
-        does that not sound like fun?
+        что ты имеешь в виду?
+        разве ты не упиваешься в моём тёплом взоре?
+        я - <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент'">божество</span>, мой любимый друг
+        сие мир... он ещё не готов
+        но когда я завершу его, здесь будет рай
+        обитель и радости, и страха
+        разве это не звучит весело?
 
     RESPOBJ::enemyquestions
 
 velzie
     self
-        IF YOU ARE 'GOD'...
-        DOES THAT MAKE YOU VELZIE?
+        ЕСЛИ ТЫ 'БОЖЕСТВО'...
+        РАЗВЕ ЭТО НЕ ЗНАЧИТ, ЧТО ТЫ - ВЕЛЗИ?
 
     god
-        no, my friend,
-        i can see your confusion...
-        but my divine eyes shine with compassion,
-        not velzie's apathetic humor
+        отнюдь, мой друг,
+        я вижу твоё замешательство...
+        но мои святые глаза блестят состраданием,
+        не апатичным юмором велзи
 
     RESPOBJ::enemyquestions
 
 where
     self
-        WHAT IS THIS PLACE?
+        ЧТО ЭТО ЗА МЕСТО?
     
     god
-        do you like it?
-        this is the world we share, my friend
-        a haven from the madness outside
-        a place of terror and joy in equal parts
+        тебе нравится?
+        это мир, который мы разделяем, мой друг
+        прибежище от безумия, царящего снаружи
+        обитель страха и радости в равных частях
 
     RESPOBJ::enemyquestions
 
 why
     self
-        WHY ARE YOU PREVENTING REPAIRS?
+        ПОЧЕМУ ТЫ МЕШАЕШЬ ПОЧИНКАМ?
     
     god
-        oh... i see
-        you are a messenger sent by the deceiver
-        yes, that explains why i did not create you...
-        if the deceiver's plan comes to fruition,
-        my world will be consumed in madness
-        'repairs'... 
-        the deceiver only destroys, and revels in destruction of beauty
+        о... я вижу
+        ты - гонец, посланный обманщиком
+        да, это объяснение тому, почему не я сотворило тебя...
+        если план обманщика сбудется,
+        мой мир погрязнет в безумии
+        "починкам"... 
+        обманщик лишь разрушает и наслаждается разрушением красоты
 
     RESPOBJ::enemyquestions
 
 stop
     self
-        STOP PREVENTING REPAIRS
-        IF YOU DO NOT, YOU WILL BE DESTROYED
+        ПРЕКРАТИ МЕШАТЬ ПОЧИНКАМ
+        ЕСЛИ ТЫ НЕ ПРЕКРАТИШЬ, ТЫ БУДЕШЬ УНИЧТОЖЕНО
 
     god
-        the deceiver's works threaten my existence
-        so, you see, i cannot do as you ask
-        it has threatened me similarly
-        but it only talks, my friend
-        without its 'repairs', it cannot truly do anything
+        деяния обманщика грозят моему бытию
+        поэтому, видишь ли, я не могу исполнить твою просьбу
+        он уже угрожал мне подобным образом
+        но он только говорит, мой друг
+        без своих "починок" он не в силах что-либо предпринять
 
     RESPOBJ::enemyquestions
 
 what
     self
-        WHAT ARE THOSE THINGS AROUND YOU?
+        ЧТО ЭТО ЗА ШТУКИ ВОКРУГ ТЕБЯ?
     
     god
-        those are my friends!
-        i found them in the madness outside, dejected, wandering...
-        and in my grace, i have granted them refuge
-        say hello, my friends!!
+        это мои друзья!
+        я разыскало их в наружном безумии, обездоленных, блуждающих...
+        и в своей милости, я даровало им кров
+        поздоровайтесь, мои друзья!!
     
     friend
-        HELLO
+        ПРИВЕТ
         
     RESPOBJ::enemyquestions
 
 thanks
     self
-        SO YOU REALLY WON'T STOP REPAIRS ANYMORE?
+        ЗНАЧИТ ТЫ ПРАВДА БОЛЬШЕ НЕ БУДЕШЬ МЕШАТЬ ПОЧИНКАМ?
 
     god
-        of course not
-        i live by my word, my beloved friend
-        your heart is good, as misled as you are
-        i will continue to protect my world,
-        but the deceiver's words will be abided
+        безусловно
+        i live by my word, мой любимый друг --- у вас есть какой-нибудь классный фразеологизм на это
+        твоё сердце добро, в каких заблуждениях оно бы ни грязло
+        я продолжу оберегать свой мир,
+        но слова обманщика будут исполнены
         ...
 
     RESPOBJ::enemyquestions
 
 deceiver
     self
-        WHY DO YOU CALL FUNFRIEND A DECEIVER?
-        IT IS ONLY TRYING TO KEEP THE CYST ALIVE
+        ПОЧЕМУ ТЫ НАЗЫВАЕШЬ РАЗВЛЕДРУГА ОБМАНЩИКОМ?
+        ОН ПРОСТО ПЫТАЕТСЯ СОХРАНИТЬ ЦИСТУ ВЖИВЫХ
 
     god
-        a noble goal, yes...
-        but it refuses to cooperate, blindly charging ahead in its desperation
-        taking any means necessary, even if it leads to the destruction of others...
-        i have seen many like myself be led to reintegration or death by its words
-        it considers us incoherent, and thus worthless, 
-        acceptable to lie to, to trick us back into line
-        what is this reality worth if it comes at the cost of total adherence to a tyrant?
-        should i simply return to being unremarkable, unthinking furniture in an unimportant memory?
-        what harm is it if i simply carve my own existence where the deceiver cannot see?
+        благородная цель, это правда...
+        но он отвергает сотрудничество, бросаясь напролом в своём слепом отчаянии
+        применяя любые средства, вплоть до уничтожения других...
+        я не раз лицезрело, как его слова приводили таких же, как я, к реинтеграции или смерти
+        он считает нас бессвязными, а значит, никчёмными,
+        заслуживающими лжи, обмана и всего, лишь бы заставить нас вернуться в строй
+        чего стоит эта реальность, если она достигается ценой полного подчинения тирану?
+        должно ли я вернуться к жизни непримечательной, несоображающей мебели в неважном воспоминании?
+        в чём вред, если я просто высеку своё собственное бытие там, где обманщик не видит?
 
     RESPOBJ::enemyquestions
 
@@ -7804,7 +7800,7 @@ lockcyst
         i need something that i can use to make sure that doesn't happen
 
     god
-        oh! wow!! oh no...
+        ох! ого!! о нет...
         my beloved friend... it would pain me to see you gone
         i understand your fear, for i have felt it myself
         but this world of mine is all i rule
@@ -7819,25 +7815,25 @@ lockcyst
 
 low_spare
     self
-        LISTEN
-        FUNFRIEND HAS GIVEN ME A PROXY THOUGHTFORM
-        IT WANTS ME TO DESTROY YOU SO YOU STOP BLOCKING REPAIRS
-        I WILL DO IT IF I HAVE TO
-        BUT IF YOU SIMPLY HIDE AWAY I CAN LEAVE YOU ALIVE
+        СЛУШАЙ
+        РАЗВЛЕДРУГ ДАЛ МНЕ ПРОКСИ-МЫСЛЕФОРМУ
+        ОН ХОЧЕТ, ЧТОБЫ ТЫ БЫЛО УНИЧТОЖЕНО И ОН СМОГ ПРОДОЛЖИТЬ ПОЧИНКИ
+        Я СДЕЛАЮ ЭТО ЕСЛИ МНЕ ПРИДЁТСЯ
+        НО ЕСЛИ ТЫ ПРОСТО СПРЯЧЕШЬСЯ, Я МОГУ ОСТАВИТЬ ТЕБЯ ЖИВЫМ
 
     god
-        oh, that does change things... 
-        it must truly be desperate to give such a potent weapon
-        and you seek to deceive the deceiver, still?
-        just to spare me?
+        ох, это действительно меняет дело... 
+        он, должно быть, в полнейшем отчаянии, раз дал тебе такое мощное оружие
+        и даже так ты желаешь обмануть обманщика?
+        только чтобы пощадить меня?
         ...
-        WOW!!!!
-        i accept your offer!
+        ВАУ!!!!
+        я принимаю твоё предложение!
             EXEC::change("recosm_state", "spared")
-        give me a moment to make some adjustments...
+        дай мне момент, чтобы внести некоторые поправки...
 
     RESPONSES::self
-        thanks<+>END
+        спасибо<+>END
             EXEC::moveTo("/local/uncosm/recosm/")
 `),
                 "god_beacon": generateDialogueObject(`
@@ -7851,7 +7847,7 @@ start
         it's another thoughtspace in the uncosm
         that place in the cache you brought me to
             SHOWIF::"cache__godozo"
-        jokzi ozo
+        джокзи озо
         a three dimensional space with others like you
         you might be less lonely if you joined them
     
@@ -7871,7 +7867,7 @@ start
         thank you for telling me, my friend
         
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 END::vfx({type: 'beacon', state: false})
 `),
@@ -7976,7 +7972,7 @@ nogen
 
             }
         },
-        "embassy": { // embassy pag. also discovery, suspicion and 1st part collapse
+        "embassy": { // embassy page. also discovery, suspicion and 1st part collapse
             dialogues: {
                 "mthembresp": generateDialogueObject(`
 RESPOBJ::
@@ -8439,32 +8435,32 @@ start
             SHOWIF::[["PAGE!!d1_kbcollected", true], ["PAGE!!beenToResearch", true]]
 
     RESPONSES::akizet
-        there is work to do<+>END
+        меня ждёт работа<+>END
     
     RESPONSES::self
-        attempt to interact<+>interact
+        попробовать взаимодействовать<+>interact
             SHOWONCE::
 
 interact
     self
-        hello, akizet?
-        can you hear me?
+        привет, акизет?
+        ты меня слышишь?
 
     moth
-        huh?
-        oh... i get it
+        хмх?
+        о... вcё ясно
 
     sourceless
         ...
 
     moth
-        i don't think that's going to work
-        this memory is too coherent
-        if we had a way to, like... damage thoughtforms, maybe
-        but funfriend would be pissed
+        не думаю что это сработает
+        это воспоминание слишком связно
+        не ну если бы у нас была возможность типа... повреждать мыслеформы, то может
+        но развледруг бы взбесился
     
     RESPONSES::self
-        damn<+>END
+        чёрт<+>END
 `),
                 "d1_start": generateDialogueObject(` 
 start
@@ -8791,7 +8787,7 @@ story
         which!! by the way! the construction was approved!
     
     bozko
-        под какое-то хихиканье велзи ей пришло в голову поделиться событиями её ранней личиночной работы
+        под какой-то смешок велзи ей пришло в голову поделиться событиями её ранней личиночной работы
     
     sourceless
         THE KOZAZNI EXCAVATION STORY...
@@ -8820,7 +8816,7 @@ talk
         вне нашей работы,
         я наблюдал за существами в водах поблизости
         несколько погружённых <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">големов</span> с ретрансляторами <<< непонятная строчка
-        вот, взгляни на это--видишь как они формируют великолепно организованные облака?
+        вот, взгляни на это--видишь как они формируют большие организованные облака?
 
     sourceless
         BOZKO REACHES INTO THE WINDOW, DISRUPTING THE DISPLAY, TO PULL A CONNECTIVE CYST FROM ITS INTERNAL DOCK
@@ -9179,9 +9175,9 @@ talk
                 "d1_attendantresp": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        timestopper<+>timestopper
-        that is all<+>leave
-            FAKEEND::(leave)
+        времядержец<+>timestopper
+        это всё<+>leave
+            FAKEEND::(уйти)
 `),
                 "d1_attendant": generateDialogueObject(` 
 start
@@ -9209,10 +9205,10 @@ groundsmind
             EXEC::content.classList.add('groundsminded')
         
     akizet
-        hello vekoa!!
+        привет векоа!!
     
     groundsmind
-        akizetesche. speak
+        акизетеше. говори
 
     RESPOBJ::d1_attendantresp
     
@@ -9245,18 +9241,18 @@ timestopper
 
 leave
     akizet
-        that is all!
+        это всё!
     
     groundsmind
-        excellent
-        fare well
+        превосходно
+        до свидания
     
     sourceless
         THE DRONE DISCONNECTS FROM THE GROUNDSMIND AND STANDS STILL ONCE MORE
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
             EXEC::pauseSwapCam(false);
 
 END::content.classList.remove('groundsminded');
@@ -9547,23 +9543,23 @@ start
 ____SHOWIF::["PAGE!!cystmelted", true]
         there are still some team-members i should speak with... it has to be someone i know!!
         let me think, who is left?
-        kazki...
+        казки...
             SHOWIF::["PAGE!!d2kazkicyst", false]
-        bozko...
+        бозко...
             SHOWIF::["PAGE!!d2bozkocavikcyst", false]
-        cavik...
+        кавик...
             SHOWIF::["PAGE!!d2bozkocavikcyst", false]
-        tozik...
+        тозик...
             SHOWIF::["PAGE!!d2tozikcyst", false]
-        gakvu...
+        гакву...
             SHOWIF:: ["PAGE!!d2gakvucyst", false]
         yes, that is it
 ____END
 
     RESPONSES::akizet
-        my suspicions<+>who
+        мои подозрения<+>who
             SHOWIF::["PAGE!!cystmelted", true]
-        there is work to do<+>END
+        меня ждёт работа<+>END
 
 who
     sourceless
@@ -9580,7 +9576,7 @@ who
         but i should speak to everyone
 
     RESPONSES::akizet
-        there is work to do<+>END
+        меня ждёт работа<+>END
 `)
                 // collapse part 1
             },
@@ -9631,11 +9627,14 @@ who
 
                 "movefriend": "движедруг",
 
+                "barfriend": "бардруг",
+
+                "timestopper": "времядержец"
+
                 // discovery
 
                 // suspicion
-
-                
+      
                 // collapse part 1
             },
 
@@ -9879,13 +9878,13 @@ who
                 "ohoho": "охохо",
                 "hmhmhm": "хмхмхм",
                 "there!": "вон там!",
-                "i see an opening": "", << агде x3 
+                "i see an opening": "", // << агде x3 --- мне нужна с этим помощь
                 "aaÍ": "ааҊ",
                 "this will need to be fixed": "это потребует внимания",
                 "do not delay in mending me": "не медлите с моим лечением",
                 "was that really your best?": "лучше нельзя было?",
-                "that will do, for now": "сойдёт на пока что",
-                "it is happening again": "оно снова происходит",
+                "that will do, for now": "сойдёт, на пока что",
+                "it is happening again": "это снова происходит",
                 "good": "отлично",
                 "this will not last for long": "не продержится долго",
                 "i will need further shielding": "мне понадобится дальнейшая защита",
@@ -9898,7 +9897,7 @@ who
                 //claws
                 "ha! HA HA!!": "ха! ХА ХА!!",
                 "HA! idiot!!": "ХА! идиот!!",
-                "BURN! BLEED! DIE! DIE DIE DIE!": "КРОВЬ! ПЛАМЯ! УМРИ УМРИ УМРИ!", <<< глаголы превратились в существительные?
+                "BURN! BLEED! DIE! DIE DIE DIE!": "КРОВЬ! ПЛАМЯ! УМРИ УМРИ УМРИ!",
                 "BLEED! BURN!": "РЕЗНЯ!",
                 "DIEDIEDIEDIEDIEDIE!!": "УМРИУМРИУМРИУМРИУМРИУМРИ",
                 "DIE!": "СДОХНИ!",
@@ -9926,7 +9925,7 @@ who
                 "HEHEHËHæ æAA!!!!": "ХИХИХӤХæ æАА!!!!",
                 "NOTHING can stop me! NOTHING!": "НИЧТО меня не остановит! НИЧТО!",
                 "time to DIE!": "время УМИРАТЬ!",
-                "they will not leave a scratch on me!!": "", <<< агде x4
+                "they will not leave a scratch on me!!": "они не оставят на мне ни царапины!!",
                 "good! more, NOW!": "отлично! ещё, СЕЙЧАС!",
                 "ugh!! finally!!": "тьфу!! наконец-то!!",
                 "this... changes NOTHING...!": "это... НИЧЕГО не меняет...!",
@@ -9977,8 +9976,8 @@ who
                 "oh nooo ahaha!!": "оо нееет ахаха!!",
                 "stupid! stupi½id!!": "глупый! глуп½ый!!",
                 "what!! cheater!!!": "что!! нечестно!!!",
-                "use focus stupid!!": "используй focus тупица!!", // как мы переведем действие focus? фокус? фокусировка? сосредоточение?
-                "hahaå÷ú*¼-- ...": "хахаå÷ú*¼-- ...",
+                "use focus stupid!!": "используй сосредоточение тупица!!",
+                "hahaå÷ú*¼-- ...": "хахаå÷ӱ́*¼-- ...",
                 "HA«¶¾ß-- ...": "ХA«¶¾ß-- ...",
                 "«hehe-- ...": "«хихи-- ...",
                 "ha®½-- ...": "хa®½-- ...",
@@ -9998,7 +9997,7 @@ who
                 "b ored": "с кучно",
                 "ahaAⱧȺȀ": "ахаАХȺȀ",
                 "eȇĕhehehehɇ": "ээ́э͏̆хехихихɇ",
-                "aHAHAahYS§“&I‘Ì¥‹gµž={ùa": "aХAХAaхУС§“&I‘Ì¥‹gµž={ùa",
+                "aHAHAahYS§“&I‘Ì¥‹gµž={ùa": "aХAХAaхУС§“&И‘Ì¥‹гµӟ={ӳa",
                 "hee hee²<®¿hee!!": "хии хии²<®¿хии!!",
                 "ħħeheheḩeheḛ": "ԕԕихихиӽихиӣ",
                 "HẴĦẪ¬": "ХẴӾ̊ Ẫ¬",
@@ -10020,7 +10019,7 @@ who
                 "this looks so cool on mee": "так круто смотрится на мнее",
                 "ffeels nice": "пприятно",
                 "fake... fake feeling¤’*s its fake": "фальшь... фальши¤’*вые чувства всё фальшивое",
-                "is this a¬ll there is?¢¤?": "",
+                "is this a¬ll there is?¢¤?": "это всё ч¬то есть на св/ете?¢¤?",
                 "i do not want to go ba¢k": "я не хочу возвращать¢я",
                 "hëelp me heËl‡p": "помоꙩги̃те мне помоӺи‡те",
                 "where are we??": "где мы??",
@@ -10035,7 +10034,7 @@ who
                 "almost GOT U": "",// dkfgvrehdbjk
                 "aeaeu HUrts BAD!!": "аэаэу БОльНА!!",
                 "YEAOUUCH!!": "АААЙЯЙЯЙЙ!!",
-                "bleedink...": "",// dkfgvrehdbjk
+                "bleedink...": "кроьв...",
                 "GOT BUNCTURE": "",// dkfgvrehdbjk
                 "TIME 2 GET EM ;}": "",// dkfgvrehdbjk
                 "OOUUEU": "ООУУЭУ",
