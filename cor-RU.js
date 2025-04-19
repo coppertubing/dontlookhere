@@ -7610,28 +7610,28 @@ ep1seen
     
     god
         так точно, мой обожаемый друг!
-        very unusual, in fact!
-        i had ventured out of my world, briefly, to observe the uncosm
-        ah, and what a tangled mess it is... the deceiver has been busy
-        but i saw something else, further than it could reach...
-        vast and vague, a thick fog lying at the lower-most depths of the uncosm
-        far beyond what the deceiver can see, and well below what even i can tolerate for long
-        when i spoke down to it... 
-        it recoiled, as if the sanity i tried to share hurt it!!
-        before, it was a gentle and still ocean, 
-        but then it exploded like disturbed soil in water
-        i expected it to attack me, but it responded
-        it was kind - sad, even - but in its humility i could see just how vast it truly was
-        i told this creature about you: the kind assistant to the deceiver
-        and it told me to tell you... <span class="code">ПРОСТИТЕ</span>
-        yes - just like that!
-        it did not explain, and i could feel that our sane conversation disturbed its loose form the more it continued
-        and so we said our goodbyes, and i returned...
-        it is not there, anymore - i checked again later
-        yes, it may have gone deeper to hide from me
-        what a terrible fate - cursed to endure the madness, yet sane, itself...
-        i cannot know what it meant, or if it means anything
-        but i thought you should know
+        very unusual, in fact! очень необычное, в самом деле!
+        i had ventured out of my world, briefly, to observe the uncosm я отважилось оставить свой мир, мимолётно, чтобы исследовать беспространство
+        ah, and what a tangled mess it is... the deceiver has been busy ах, и какое спутанное безобразие это... обманщик был занят
+        but i saw something else, further than it could reach... но я увидело что-то ещё, дальше чем оно могло бы достичь...
+        vast and vague, a thick fog lying at the lower-most depths of the uncosm бескрайний и зыбкий, густой туман растилается на самых далёких глубинах беспространства
+        far beyond what the deceiver can see, and well below what even i can tolerate for long далеко за рамками того, что обманщик способен зреть, и весьма ниже даже того что я способно выдерживать долгое время
+        when i spoke down to it...  и когда я заговорило туда вниз...
+        it recoiled, as if the sanity i tried to share hurt it!! оно отпрянуло, как если бы рассудок которым я делилось поранило это!!
+        before, it was a gentle and still ocean,  до, это было нежный и тихий океан
+        but then it exploded like disturbed soil in water но после оно вспыхнуло как потревоженный грунт в воде
+        i expected it to attack me, but it responded я ожидало атаки, но оно ответило
+        it was kind - sad, even - but in its humility i could see just how vast it truly was оно было благодушным - печальным, даже - но в этой смиренности я могло увидеть как обширно оно в действительности
+        i told this creature about you: the kind assistant to the deceiver я поведал этому созданию о тебе: добросердечный ассистент обманщика
+        and it told me to tell you... <span class="code">ПРОСТИТЕ</span> и оно сказало мне передать тебе... <span class="code">ПРОСТИТЕ</span>
+        yes - just like that! да - именно так!
+        it did not explain, and i could feel that our sane conversation disturbed its loose form the more it continued оно не дало объяснений, и я могло ощутить как с течением нашего разговора эта зыбкость нарушалась
+        and so we said our goodbyes, and i returned... и так мы распрощались, я вернулось...
+        it is not there, anymore - i checked again later оно не здесь, отныне - я проверяло после
+        yes, it may have gone deeper to hide from me верно, оно могло уйти глубже чтобы скрыться от меня
+        what a terrible fate - cursed to endure the madness, yet sane, itself... что за страшная участь - быть проклято терпеть безумие, однако разумно, само по себе...
+        i cannot know what it meant, or if it means anything я не могу знать что это значит, или значит ли это хоть что-то
+        but i thought you should know но я считаю тебе нужно знать
 
     RESPOBJ::enemyresp
 
@@ -7801,11 +7801,11 @@ lockcyst
 
     god
         ох! ого!! о нет...
-        my beloved friend... it would pain me to see you gone
-        i understand your fear, for i have felt it myself
-        but this world of mine is all i rule
-        and the vile deceiver would see any activity above the uncosm
-        that is, only above the uncosm...
+        my beloved friend... it would pain me to see you gone мой обожаемый друг... это было бы мукой для меня видеть тебя 
+        i understand your fear, for i have felt it myself я понимаю твою тревогу, я ощутило её на себе
+        but this world of mine is all i rule но этот мир всё чем я управляю
+        and the vile deceiver would see any activity above the uncosm и подлый обманщик увидит какое-либо оживление над беспространством
+        that is, only above the uncosm... хррррррррр
         so, perhaps,
         there may be something to find in the cache!!
         much activity has transpired there, and recently!
