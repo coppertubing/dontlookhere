@@ -1962,7 +1962,7 @@ ____END
         "is that better??": "так лучше??",
         "how does it move like that?!": "как оно так двигается?!",
         "next time": "в следующий раз",
-        "восстановление, быстрее!": "",
+        "restorative, quick!": "восстановители, быстрее!",
         "thank you!": "спасибо!",
         "die DIE!! DIE!! DIE!!!": "умри УМРИ!! УМРИ!! УМРИ!!!",
         "i am losing cohesion!": "я теряю целостность!",
