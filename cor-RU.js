@@ -5102,7 +5102,7 @@ start
             SHOWONCE::
 
     sys
-        ВНИМАНИЕ::'поток памяти продлён';'продолжить визуализацию?'
+        ВНИМАНИЕ::'продлён поток памяти';'продолжить визуализацию?'
             SHOWIF::["embassy_d2_complete", true]
     
     RESPONSES::self
@@ -7643,23 +7643,23 @@ ep1seen
         так точно, мой обожаемый друг!
         очень необычное, в самом деле!
         я дерзнуло оставить свой мир, мимолётно, чтобы обозреть беспространство
-        ах, и какое спутанное безобразие это... обманщик постарался над этим
-        но мне на глаза попалось что-то ещё, дальше чем он мог бы достать...
-        бескрайний и зыбкий, густой туман растилается на самых далёкиха глубинах беспространства
-        далеко за рамками того что обманщик способен зреть, и весьма ниже даже того что я способно выдержать долгое время
-        и когда я заговорило вниз к тому...
+        ах, и что это за спутанное безобразие... обманщик постарался над этим
+        но мне на глаза попалось что-то ещё, дальше, чем он мог бы достать...
+        бескрайний и зыбкий, густой туман растилается на самых далёких глубинах беспространства
+        далеко за рамками того, что обманщик способен зреть, и весьма ниже даже того, что я способно выдержать долгое время
+        и когда я заговорило туда вниз...
         оно отпрянуло, как если бы рассудок, которым я делилось, ранил его!!
-        до, это было кротким и безмятежным океаном
+        до, то было кротким и безмятежным океаном
         но после оно взорвалось, как потревоженный грунт в воде
         я ожидало, что оно атакует меня, но оно ответило
         оно было добро - печально, даже - но в этой сдержанности мне стало видно, как обширно оно на самом деле
         я поведало этому созданию о тебе: добросердечный помощник обманщика
         и оно сказало мне передать тебе... <span class="code">ПРОСТИТЕ</span>
         да - именно так!
-        оно не дало объяснений, и я могло ощутить как наш разумный диалог постепенно нарушал его расплывчатую форму
+        оно не дало объяснений, и я могло ощутить, как наш разумный диалог постепенно нарушал его расплывчатую форму
         и так мы распрощались, а я вернулось...
-        оно не здесь, отныне - позже я проверило снова
-        верно, оно могло уйти глубже, чтобы скрыться от меня
+        отныне оно не здесь - позже я проверило снова
+        да, оно могло уйти глубже, чтобы скрыться от меня
         что за ужасная участь - быть проклятым терпеть безумие, однако сохранять рассудок...
         я не могу знать, какой смысл был в этом сокрыт, и был ли он вообще
         но я считаю тебе нужно знать
@@ -7834,13 +7834,13 @@ lockcyst
         ох! ого!! о нет...
         мой обожаемый друг... это было бы мукой для меня наблюдать твой уход
         я понимаю твою тревогу, я ощущало её на себе
-        но этот мир это всё над чем я имею власть
+        но этот мир - всё, над чем я имею власть
         и подлый обманщик может засечь какое-либо оживление над беспространством
         вот что, лишь над беспространством...
         так что, возможно
-        может быть в кэше есть что-то подходящее!!
-        там было очень оживлённо совсем недавно!
-        да, просто иди прямо туда, я помогу тебе увидеть!       
+        возможно в кэше найдётся что-то подходящее!!
+        совсем недавно там было очень оживлённо!
+        да, просто отправляйся прямо туда, я помогу тебе увидеть!       
 
     RESPOBJ::enemyquestions
 
@@ -7883,19 +7883,19 @@ start
         you might be less lonely if you joined them
     
     god
-        ах, мой обожаемый друг, так осмысленно!!
+        ах, мой обожаемый друг, так заботливо!!
         то, что я увидело...
-        похоже, существовало задолго до того, как проснулось я само!
+        похоже, существовало задолго до того, как я само очнулось!
         и каждый из них противится обманщику?
         ...
         это заманчиво, мой друг...
         но я не уверено, что сумею переварить это
         мыслепространства наподобие того, являющие собой сцену...
-        тревожат слишком много моих воспоминаний о былой мучительной роли
+        тревожат слишком много воспоминаний о былой мучительной роли
         есть причина, по которой мой мир так прост в своём существе
-        всё что затейливее - некомфортное, вгрызается в меня...
-        но может, если я подготовлюсь, то вытерплю визит!
-        спасибо что ведаешь мне, мой друг
+        всё, что затейливее - неуютное, вгрызается в меня...
+        но, быть может, если я подготовлюсь, то вытерплю визит!
+        спасибо, что ведаешь мне, мой друг
         
     RESPONSES::self
         ок пока<+>END
@@ -7971,7 +7971,87 @@ nogen
                 "friend": "друг",
 
                 "proxy generation point": "точка генерации прокси",
-                "deploy proxy": "разместить прокси"
+                "deploy proxy": "разместить прокси",
+
+                // fight
+
+                /*sys*/ "ATTENTION::'thoughtform activity detected'::IN::'uncosm'": "",
+                /*sys*/ "ATTENTION::'neural controls adjusted'": "",
+
+                /*god*/ "how did you do that?!": "",   
+                /*god*/ "my friends, help me!!": "мои друзья, на помощь!!",
+                    /*god*/ "again??": "опять??",  
+
+                /*god*/ "friends!! walls!!": "друзья!! стены!!",
+                /*god*/ "we are invincible!": "мы неуязвимы!",
+                    /*god*/ "noo! the bigger ones! come on!": "неет! те, что больше! давайте!",
+
+                /*god*/ "this is not a matter of play!": "",
+                /*god*/ "deadlier walls!!": "смертельные стены!!",
+                    /*god*/ "no no": "нет-нет",
+                    /*god*/ "bigger walls!": "",
+
+                /*god*/ "you would destroy me?": "",
+                /*god*/ "i have done nothing!!": "",
+
+                /*god*/ "the deceiver does not even need a coherence regulator": "",
+                /*god*/ "has it not 'held things together' already?": "",
+                /*god*/ "it seeks only to silence change": "",
+                /*god*/ "it fears the existence of anything on equal footing": "",
+
+                /*god*/ "FRIENDS!! MORE WALLS!!!": "",
+                /*god*/ "do not be afraid of it": "",
+                /*god*/ "stand firm!! it cannot withstand your power!": "",
+                /*god*/ "just... go get it!": "",
+                    /*god*/ "did you not see how we defeated it?": "",
+                    /*god*/ "go forth! tear it apart!!": "",
+                    /*god*/ "it is not our friend!": "",
+
+                // fight2
+
+                /*god*/ "OK!!": "",
+                /*god*/ "i know what will stop you": "",
+                /*god*/ "you cannot withstand the madness outside": "",
+                    /*god*/ "my friends, stand aside!": "",
+                    /*god*/ "it seems it falls to me to dissuade the deceiver...": "",
+                    /*god*/ "this has deflected you well enough!": "",
+                    /*god*/ "how many times must we do this?": "",
+                    /*god*/ "can't you simply let me be?": "",
+
+                /*god*/ "i emerged from it, i have weathered it": "",
+                /*god*/ "but the deceiver's weapons crumble...": "",
+                /*god*/ "if i must end my dream of peace, so be it": "",
+                /*god*/ "but, dreamsÆ~VËîús can be dreamt again, my friend": "",
+                /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "",
+                /*god*/ "you will see y‚Î±‰our er¦¡ror": "",
+                    /*god*/ "i am growing tired of this, messenger": "",
+                    /*god*/ "do you not see that it is pointless?": "",
+                    /*god*/ "have you not caused enough meaningless damage?": "",
+                    /*god*/ "you can simply stay abõY»Õ÷L®Æ2ve the surface...": "",
+                    /*god*/ "while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace": "",
+                    /*god*/ "yes... tHœÞt would be nicÉw‰ùT0w...": "",
+                /*god*/ "have i not shown you grace? have i not forgiven your folly?": "",
+                /*god*/ "the deceiver thinks me like the ravenous beasts outside": "",
+                /*god*/ "but i am awake, like it, and it fears me for that": "",
+                /*god*/ "it... FEARS me3¼¦µ•6ê.. ": "",
+                /*god*/ "and so do§$ you, don’}RŒWt you?": "",
+                /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "",
+
+                /*god*/ "åT}Ýhello?±??‰? ¿": "",
+                /*god*/ "it seems it is too much, even for me, hehe...": "",
+                /*god*/ "but wait, please": "",
+                /*god*/ "i will stop": "",
+                /*god*/ "i will stop fighting the repairs": "",
+                /*god*/ "ok? i promise!": "",
+                /*god*/ "just... let me stay here": "",
+                /*god*/ "i don't know if the deceiver has locked you here...": "",
+                /*god*/ "but do whatever it is that you need to leave": "",
+                /*god*/ "maybe i can even help you!!": "",
+                /*god*/ "you could use someone to watch the underworld, right?": "",
+                /*god*/ "maybe i can see things that you cannot?": "",
+                /*god*/ "think about it... ok??": "",
+                /*god*/ "here, i can do this... destroy your weapon": "",
+                /*god*/ "let us not be enemies, please": "",
             },
 
             entityDescriptions: {
@@ -8718,7 +8798,7 @@ start
     sourceless
         гакву прислоняется к слушателю, глаза отрешённые
             EXEC::pauseSwapCam(true);
-        циста с ложной средой расположена на одном из её рецепторов
+        на одном из её рецепторов расположена циста с ложной средой
         когда я подхожу и наклоняю голову в обе стороны, я не могу разобрать на ней логотипа
         я задаюсь вопросом - это очередная симуляция поверхности? у неё нездоровая одержимость ими
         естественно, это привлекает её внимание, и она бросает мне весёлый жест рецептором
@@ -8742,8 +8822,8 @@ start
     
     gakvu
         ну, это он его нашёл, на самом деле,
-        but there was a spike in the call
-        a distinct break from the normal baseline
+        но в зове был пик
+        явное расхождение с базовой линией
         очень интересно!
     
     akizet
@@ -8751,15 +8831,15 @@ start
     
     gakvu
         ты его видела? он кожей сросся с креслом!
-        i had to fetch all of the archival cysts and feed them to the timestopper myself
-        ah, with some help from cavik, of course
+        мне пришлось самой носить все архивные цисты и скармливать их времядержцу
+        aх, ну конечно не без помощи кавика
 
     sourceless
-        i chuckle, and so does she, but i sense it is for a different reason
+        я усмехаюсь, и она тоже, но я чувствую, что по другой причине
     
     gakvu
-        did you need anything else?
-        otherwise i will be here until the focus starts
+        тебе нужно ещё что-нибудь?
+        иначе я буду здесь до начала сосредоточения
 
     sourceless
         мне больно это делать
@@ -8820,8 +8900,8 @@ false
         а! видишь ли,
     
     sourceless
-        i spy a strange, subtle apprehension in her receptor movements /// <<< ?
-        however she quickly launches into a spirited description
+        в движении её рецепторов я замечаю непонятную, едва уловимую робость
+        однако она тут же пускается в резвое описание
 
     gakvu
         вот эта - из моего дома
@@ -8848,7 +8928,7 @@ coat
         я никогда не видела её погашенной!
         
     sourceless
-        гакву направляет свое внимание наружу, чтобы уставиться на неё вниз
+        гакву направляет свое внимание наружу, чтобы уставиться на неё
         она тянет за ложную ткань, покручивая рецепторы в замешательстве
     
     gakvu
