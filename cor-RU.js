@@ -5102,7 +5102,7 @@ start
             SHOWONCE::
 
     sys
-        ВНИМАНИЕ::'поток памяти продлён';'продолжить визуализацию?' *** ПОМОГИТЕ
+        ВНИМАНИЕ::'поток памяти продлён';'продолжить визуализацию?'
             SHOWIF::["embassy_d2_complete", true]
     
     RESPONSES::self
@@ -7641,28 +7641,28 @@ ep1seen
     
     god
         так точно, мой обожаемый друг!
-        very unusual, in fact! очень необычное, в самом деле!
-        i had ventured out of my world, briefly, to observe the uncosm я отважилось оставить свой мир, мимолётно, чтобы исследовать беспространство
-        ah, and what a tangled mess it is... the deceiver has been busy ах, и какое спутанное безобразие это... обманщик был занят
-        but i saw something else, further than it could reach... но я увидело что-то ещё, дальше чем оно могло бы достичь...
-        vast and vague, a thick fog lying at the lower-most depths of the uncosm бескрайний и зыбкий, густой туман растилается на самых далёких глубинах беспространства
-        far beyond what the deceiver can see, and well below what even i can tolerate for long далеко за рамками того, что обманщик способен зреть, и весьма ниже даже того что я способно выдерживать долгое время
-        when i spoke down to it...  и когда я заговорило туда вниз...
-        it recoiled, as if the sanity i tried to share hurt it!! оно отпрянуло, как если бы рассудок которым я делилось поранило это!!
-        before, it was a gentle and still ocean,  до, это было нежный и тихий океан
-        but then it exploded like disturbed soil in water но после оно вспыхнуло как потревоженный грунт в воде
-        i expected it to attack me, but it responded я ожидало атаки, но оно ответило
-        it was kind - sad, even - but in its humility i could see just how vast it truly was оно было благодушным - печальным, даже - но в этой смиренности я могло увидеть как обширно оно в действительности
-        i told this creature about you: the kind assistant to the deceiver я поведал этому созданию о тебе: добросердечный ассистент обманщика
-        and it told me to tell you... <span class="code">ПРОСТИТЕ</span> и оно сказало мне передать тебе... <span class="code">ПРОСТИТЕ</span>
-        yes - just like that! да - именно так!
-        it did not explain, and i could feel that our sane conversation disturbed its loose form the more it continued оно не дало объяснений, и я могло ощутить как с течением нашего разговора эта зыбкость нарушалась
-        and so we said our goodbyes, and i returned... и так мы распрощались, я вернулось...
-        it is not there, anymore - i checked again later оно не здесь, отныне - я проверяло после
-        yes, it may have gone deeper to hide from me верно, оно могло уйти глубже чтобы скрыться от меня
-        what a terrible fate - cursed to endure the madness, yet sane, itself... что за страшная участь - быть проклято терпеть безумие, однако разумно, само по себе...
-        i cannot know what it meant, or if it means anything я не могу знать что это значит, или значит ли это хоть что-то
-        but i thought you should know но я считаю тебе нужно знать
+        очень необычное, в самом деле!
+        я дерзнуло оставить свой мир, мимолётно, чтобы обозреть беспространство
+        и какое спутанное безобразие это... обманщик посатарался над этим
+        но мне на глаза попалось что-то ещё, дальше чем он мог бы достать...
+        бескрайний и зыбкий, густой туман растилается на самых далёкиха глубинах беспространства
+        далеко за рамками того что обманщик способен зреть, и весьма ниже даже того что я способно выдержать долгое время
+        и когда я заговорило вниз к тому...
+        оно отпрянуло, как если бы рассудок которым я делилось ранило это!!
+        до, это было кротким и безмятежным океаном
+        но после оно взорвалось как потревоженный грунт в воде
+        я ожидало что оно атакует меня, но оно ответило
+        оно было добро - печально, даже - но в этой сдержанности мне стало видно как обширно оно на самом деле
+        я поведало этому созданию о тебе: добросердечный помощник обманщика
+        и оно сказало мне передать тебе... <span class="code">ПРОСТИТЕ</span>
+        да - именно так!
+        оно не дало объяснений, и я могло ощутить как наш разумный диалог постепенно нарушал его расплывчатую форму
+        и так мы распрощались, я вернулось...
+        оно не здесь, отныне - позже я проверило снова
+        верно, оно могло уйти глубже чтобы скрыться от меня
+        что за ужасная участь - быть проклято терпеть безумие, однако сохранять рассудок...
+        я не могу знать, какой смысл был в этом сокрыт, и был ли он вообще
+        но я считаю тебе нужно знать
 
     RESPOBJ::enemyresp
 
@@ -7832,15 +7832,15 @@ lockcyst
 
     god
         ох! ого!! о нет...
-        my beloved friend... it would pain me to see you gone мой обожаемый друг... это было бы мукой для меня видеть тебя 
-        i understand your fear, for i have felt it myself я понимаю твою тревогу, я ощутило её на себе
-        but this world of mine is all i rule но этот мир всё чем я управляю
-        and the vile deceiver would see any activity above the uncosm и подлый обманщик увидит какое-либо оживление над беспространством
-        that is, only above the uncosm... хррррррррр
-        so, perhaps,
-        there may be something to find in the cache!!
-        much activity has transpired there, and recently!
-        yes, just go right in, i will help you see!       
+        мой обожаемый друг... это было бы мукой для меня наблюдать твой уход
+        я понимаю твою тревогу, я ощущало её на себе
+        но этот мир это всё над чем я имею власть
+        и подлый обманщик может засечь какое-либо оживление над беспространством
+        вот что, лишь над беспространством...
+        так что, возможно
+        может быть в кэше есть что-то подходящее!!
+        там было очень оживлённо совсем недавно!
+        да, просто иди прямо туда, я помогу тебе увидеть!       
 
     RESPOBJ::enemyquestions
 
@@ -7872,7 +7872,7 @@ start
     god
         что...
         это...?
-        a vision of another world?
+        видение другого мира?
 
     self
         it's another thoughtspace in the uncosm
@@ -7883,19 +7883,19 @@ start
         you might be less lonely if you joined them
     
     god
-        ah, my beloved friend, so thoughtful!!
-        what you showed me...
-        it seems like it existed long before i even awoke, myself!
-        and they all align against the deceiver?
+        ах, мой обожаемый друг, так осмысленно!!
+        то что я увидело...
+        похоже существовало задолго до того как проснулось я само!
+        и каждый из них противится обманщику?
         ...
-        it is tempting, my friend...
-        but i am not sure if i will be able to stomach it
-        thoughtspaces like that, where it is a stage...
-        they remind me too much of my former torturous role
-        there is a reason i have made my world simple!
-        anything more, is uncomfortable, it eats at me...
-        but maybe, if i prepare, i can suffer a visit!!
-        thank you for telling me, my friend
+        это заманчиво, мой друг...
+        но я не уверенно что сумею переварить это
+        мыслепространства наподобие того, являющие собой сцену...
+        тревожат слишком много моих воспоминаний о былой мучительной роли
+        есть причина по которой мой мир так прост в своём существе
+        всё что затейливее - некомфортное, вгрызается в меня...
+        но может, если я подготовлюсь, то вытерплю визит!
+        спасибо что ведаешь мне, мой друг
         
     RESPONSES::self
         ок пока<+>END
@@ -8720,7 +8720,7 @@ start
             EXEC::pauseSwapCam(true);
         циста с ложной средой расположена на одном из её рецепторов
         когда я подхожу и наклоняю голову в обе стороны, я не могу разобрать на ней логотипа
-        я задаюсь вопросом - это очередная симуляция поверхности? у неё нездоровая одержимость ею
+        я задаюсь вопросом - это очередная симуляция поверхности? у неё нездоровая одержимость ими
         естественно, это привлекает её внимание, и она бросает мне весёлый жест рецептором
             EXEC::vnp({hideStage: true, gakvu: "show"})
         
@@ -8796,7 +8796,7 @@ complaint
         я знаю, что тебе нравится работать здесь,
         и, прежде всего, я знаю твою способность разить
         но для некоторых других это не так очевидно
-        и если этих жалоб станет слишком много, it will start to turn eyes towards me --- помогите
+        и если этих жалоб станет слишком много, на меня начнут коситься
         так что, ради меня, 
         
     sourceless
@@ -8814,13 +8814,13 @@ complaint
 
 false
     akizet
-        wчто это за ложная среда у тебя?
+        что это за ложная среда у тебя?
 
     gakvu
         а! видишь ли,
     
     sourceless
-        i spy a strange, subtle apprehension in her receptor movements
+        i spy a strange, subtle apprehension in her receptor movements /// <<< ?
         however she quickly launches into a spirited description
 
     gakvu
