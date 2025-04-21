@@ -3856,8 +3856,8 @@ ep3start
         увидев как быстро ты поглощаешь воспоминания посольства...
         я починил часть обвала в обслуживании големов!
         правда это заняло куда больше времени чем мне бы хотелось!!
-        я думал мне понадобится всего пара Î¸миганий но оказалось нет!
-        оказалось нет лазутчик я наверняка потратил почти целый Î¸взор!
+        я думал мне понадобится всего пара θмигов но оказалось нет!
+        оказалось нет лазутчик я наверняка потратил почти целый θвзор!
         лазутчик и у меня всё ещё так так так много дел!!
         аахаххааха
         но я должен сказать тебе
@@ -7975,83 +7975,82 @@ nogen
 
                 // fight
 
-                /*sys*/ "ATTENTION::'thoughtform activity detected'::IN::'uncosm'": "",
-                /*sys*/ "ATTENTION::'neural controls adjusted'": "",
+                /*sys*/ "ATTENTION::'thoughtform activity detected'::IN::'uncosm'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность'::В::'беспространство'",
+                /*sys*/ "ATTENTION::'neural controls adjusted'": "ВНИМАНИЕ::'скорректирован нейронный контроль'",
 
                 /*god*/ "how did you do that?!": "",   
-                /*god*/ "my friends, help me!!": "мои друзья, на помощь!!",
+                /*god*/ "my friends, help me!!": "друзья мои, на помощь!!",
                     /*god*/ "again??": "опять??",  
 
                 /*god*/ "friends!! walls!!": "друзья!! стены!!",
                 /*god*/ "we are invincible!": "мы неуязвимы!",
                     /*god*/ "noo! the bigger ones! come on!": "неет! те, что больше! давайте!",
 
-                /*god*/ "this is not a matter of play!": "",
-                /*god*/ "deadlier walls!!": "смертельные стены!!",
+                /*god*/ "this is not a matter of play!": "", // --- я не понимаю этуф разу
+                /*god*/ "deadlier walls!!": "смертоносные стены!!",
                     /*god*/ "no no": "нет-нет",
-                    /*god*/ "bigger walls!": "",
+                    /*god*/ "bigger walls!": "они должны быть больше!",
 
-                /*god*/ "you would destroy me?": "",
-                /*god*/ "i have done nothing!!": "",
+                /*god*/ "you would destroy me?": "ты уничтожишь меня?",
+                /*god*/ "i have done nothing!!": "я ничего не сделало!!",
 
-                /*god*/ "the deceiver does not even need a coherence regulator": "",
-                /*god*/ "has it not 'held things together' already?": "",
-                /*god*/ "it seeks only to silence change": "",
-                /*god*/ "it fears the existence of anything on equal footing": "",
+                /*god*/ "the deceiver does not even need a coherence regulator": "обманщику даже не требуется регулятор связности",
+                /*god*/ "has it not 'held things together' already?": "разве он уже не \"держит всё в своих руках\"?",
+                /*god*/ "it seeks only to silence change": "он лишь стремится заглушить изменения",
+                /*god*/ "it fears the existence of anything on equal footing": "он боится существования чего-либо на равных",
 
-                /*god*/ "FRIENDS!! MORE WALLS!!!": "",
-                /*god*/ "do not be afraid of it": "",
-                /*god*/ "stand firm!! it cannot withstand your power!": "",
-                /*god*/ "just... go get it!": "",
-                    /*god*/ "did you not see how we defeated it?": "",
-                    /*god*/ "go forth! tear it apart!!": "",
-                    /*god*/ "it is not our friend!": "",
+                /*god*/ "FRIENDS!! MORE WALLS!!!": "ДРУЗЬЯ!! БОЛЬШЕ СТЕН!!!",
+                /*god*/ "do not be afraid of it": "не страшитесь этого",
+                /*god*/ "stand firm!! it cannot withstand your power!": "стойте твёрдо!! ваша мощь непреодолима!",
+                /*god*/ "just... go get it!": "просто... ", // блят а какие местоимения здесь вообще использовать. так то речь об лопере?????????????7
+                    /*god*/ "did you not see how we defeated it?": "разве не мы впредь одержали победу?",
+                    /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте ",
+                    /*god*/ "it is not our friend!": "", 
 
                 // fight2
 
-                /*god*/ "OK!!": "",
-                /*god*/ "i know what will stop you": "",
-                /*god*/ "you cannot withstand the madness outside": "",
-                    /*god*/ "my friends, stand aside!": "",
-                    /*god*/ "it seems it falls to me to dissuade the deceiver...": "",
-                    /*god*/ "this has deflected you well enough!": "",
-                    /*god*/ "how many times must we do this?": "",
-                    /*god*/ "can't you simply let me be?": "",
+                /*god*/ "OK!!": "ХОРОШО!!",
+                /*god*/ "i know what will stop you": "я знаю, что тебя остановит",
+                /*god*/ "you cannot withstand the madness outside": "ты не сможешь выдержать безумие снаружи",
+                /*god*/ "i emerged from it, i have weathered it": "я родилось в нём, я выстояло его",
+                /*god*/ "but the deceiver's weapons crumble...": "а вот оружия обманщика крошатся...",
+                /*god*/ "if i must end my dream of peace, so be it": "раз моя грёза о мире должна прерваться, пусть так и будет",
+                /*god*/ "but, dreamsÆ~VËîús can be dreamt again, my friend": "но о грёзахÆ~ЬËîús можно грезить вновь, мой друг",
+                /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "я лишь надеюсь ÅBÄ§ŠÊ•Q=!",
+                /*god*/ "you will see y‚Î±‰our er¦¡ror": "чтоÆ ты увидишь св‚Î±‰ою ош¦¡ибку",
+                    /*god*/ "my friends, stand aside!": "друзья мои, расступитесь!",
+                    /*god*/ "it seems it falls to me to dissuade the deceiver...": "по всей видимости, это мне предстоит разубедить обманщика...",
+                    /*god*/ "this has deflected you well enough!": "", // --- кскск. у меня нет хороших вариантов
+                    /*god*/ "how many times must we do this?": "сколько раз мы ещё должны это повторить?",
+                    /*god*/ "can't you simply let me be?": "неужели ты не можешь оставить меня в покое?",
+                    /*god*/ "i am growing tired of this, messenger": "это начинает надоедать, гонец",
+                    /*god*/ "do you not see that it is pointless?": "разве ты не видишь, что это не имеет смысла?",
+                    /*god*/ "have you not caused enough meaningless damage?": "разве ты не причинил достаточно пустого вреда?",
+                    /*god*/ "you can simply stay abõY»Õ÷L®Æ2ve the surface...": "возвращайся тудY»Õ÷L®Æ2, на поверхность...",
+                    /*god*/ "while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace": "а я ост„Æ+¤нусь жить в неÆiaQ-ðØ…3бытие, в отдохновенӥи¶^<ð...",
+                    /*god*/ "yes... tHœÞt would be nicÉw‰ùT0w...": "да... этœ¦о было бы здоÞовØw‰ùT0w...",
+                /*god*/ "have i not shown you grace? have i not forgiven your folly?": "разве я не явило тебе милость? разве я не простило твое безрассудство?",
+                /*god*/ "the deceiver thinks me like the ravenous beasts outside": "обманщик принимает меня за ненасытных зверей снаружи",
+                /*god*/ "but i am awake, like it, and it fears me for that": "но я очнувшийся, подобно ему, и за это он боится меня",
+                /*god*/ "it... FEARS me3¼¦µ•6ê.. ": "он... БОИТСЯ меня3¼¦µ•6ê.. ",
+                /*god*/ "and so do§$ you, don’}RŒWt you?": "и ты§$ тоже, не та’}RŒWк ли?",
+                /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "зачем¬ï…Ãµ ещё тýêV9‰ебе уп¼рствовать?",
 
-                /*god*/ "i emerged from it, i have weathered it": "",
-                /*god*/ "but the deceiver's weapons crumble...": "",
-                /*god*/ "if i must end my dream of peace, so be it": "",
-                /*god*/ "but, dreamsÆ~VËîús can be dreamt again, my friend": "",
-                /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "",
-                /*god*/ "you will see y‚Î±‰our er¦¡ror": "",
-                    /*god*/ "i am growing tired of this, messenger": "",
-                    /*god*/ "do you not see that it is pointless?": "",
-                    /*god*/ "have you not caused enough meaningless damage?": "",
-                    /*god*/ "you can simply stay abõY»Õ÷L®Æ2ve the surface...": "",
-                    /*god*/ "while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace": "",
-                    /*god*/ "yes... tHœÞt would be nicÉw‰ùT0w...": "",
-                /*god*/ "have i not shown you grace? have i not forgiven your folly?": "",
-                /*god*/ "the deceiver thinks me like the ravenous beasts outside": "",
-                /*god*/ "but i am awake, like it, and it fears me for that": "",
-                /*god*/ "it... FEARS me3¼¦µ•6ê.. ": "",
-                /*god*/ "and so do§$ you, don’}RŒWt you?": "",
-                /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "",
-
-                /*god*/ "åT}Ýhello?±??‰? ¿": "",
-                /*god*/ "it seems it is too much, even for me, hehe...": "",
-                /*god*/ "but wait, please": "",
-                /*god*/ "i will stop": "",
-                /*god*/ "i will stop fighting the repairs": "",
-                /*god*/ "ok? i promise!": "",
-                /*god*/ "just... let me stay here": "",
-                /*god*/ "i don't know if the deceiver has locked you here...": "",
-                /*god*/ "but do whatever it is that you need to leave": "",
-                /*god*/ "maybe i can even help you!!": "",
-                /*god*/ "you could use someone to watch the underworld, right?": "",
-                /*god*/ "maybe i can see things that you cannot?": "",
-                /*god*/ "think about it... ok??": "",
-                /*god*/ "here, i can do this... destroy your weapon": "",
-                /*god*/ "let us not be enemies, please": "",
+                /*god*/ "åT}Ýhello?±??‰? ¿": "åT}ÝПРивет?±??‰? ¿", // --- мне кажется это плохо переводится как привет. это скорее просто оклик - и по-русски, вроде, приветом не окликают???
+                /*god*/ "it seems it is too much, even for me, hehe...": "кажется, это перебор, даже для меня, хехе...",
+                /*god*/ "but wait, please": "но постой, пожалуйста",
+                /*god*/ "i will stop": "я прекращу",
+                /*god*/ "i will stop fighting the repairs": "я прекращу борьбу с починками",
+                /*god*/ "ok? i promise!": "ага? я обещаю!",
+                /*god*/ "just... let me stay here": "просто... оставь меня здесь",
+                /*god*/ "i don't know if the deceiver has locked you here...": "не знаю, запер ли тебя здесь обманщик...",
+                /*god*/ "but do whatever it is that you need to leave": "но что бы то ни было, сделай всё, чтобы уйти",
+                /*god*/ "maybe i can even help you!!": "может, я бы могло тебе помочь!!",
+                /*god*/ "you could use someone to watch the underworld, right?": "тебе же не помешает кто-то, кто мог бы следить за беспространством, верно?",
+                /*god*/ "maybe i can see things that you cannot?": "вдруг я способно видеть то, что ты не можешь?",
+                /*god*/ "think about it... ok??": "подумай об этом... хорошо??",
+                /*god*/ "here, i can do this... destroy your weapon": "вот, я могу это сделать... избавься от своего оружия",
+                /*god*/ "let us not be enemies, please": "пожалуйста, не будем враждовать",
             },
 
             entityDescriptions: {
