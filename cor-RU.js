@@ -603,7 +603,7 @@ who_velzie
         велзи - это что-то типа "божество" на языке обеск
         суть не только в этом но я полагаю ты спрашиваешь о <em>нашем</em> велзи
         ну о том о котором говорила циста-пилот
-        я заметил что когда она упомянула это имя, оно не имело никакого контекста
+        я заметил/<-блинскиймоль/ что когда она упомянула это имя, оно не имело никакого контекста
         типа, почему-то слово "велзи" было отделено от своего значения
         не знаю что это за приколы...
         уверен она виделась с тем странным лицом
@@ -699,7 +699,7 @@ what_eye
 
     RESPONSES::self
         понятно<+>loop
-            FAKEEND::(назад)  
+            FAKEEND::(назад)
 
 what_veilk
     self
@@ -1183,7 +1183,7 @@ leverage
         окей, ну, эт не очень хорошо, думаю
         хотя... 
         нет, может быть и хорошо, для наших планов
-        я вижу о чём ты думаешь на самом деле...
+        я понимаю о чём ты думаешь на самом деле...
         ты в курсе сколько всего пребывает и убывает отсюда без единого результата?
         сколько всего просто выбрасывается в мусорку, на хранилище корруцистозных отходов?
         если твои маски работают на <em>других</em> корруцистах...
@@ -1201,7 +1201,7 @@ leverage
         чел я шучу
         такое не пронесёшь через металлоискатели
         в любом случае, думаю единственное что теперь остается делать это снова ждать
-        пока развледруг не починит ещё что-нибудь, или всплывут новые фрагменты...
+        пока развледруг не починит ещё что-нибудь, или нам принесут ещё чего...
         так что пока расслабимся, хорошо?
 
     RESPONSES::self
@@ -1223,18 +1223,18 @@ start
         что-то с моей головой
 
     moth
-        ну не знаю может ты что-то съел чел хз well, maybe it was something you ate dude idk
+        ну не знаю может что-то не то на обед было, хз чел
         сомневаюсь что дело в "contact affliction" если это тебя забеспокоило
             SHOWIF::'ep4__contact'
         судя по тому что мы видели, эт бы раньше проявилось
             SHOWIF::'ep4__contact'
-        смотря на статы твоей операционки, ГАН бывало в минусе
+        смотря на статы твоей операционки, ГАН уходило в минус
         я знаю что другие мыслекольщики, работающие с корруцистами, сталкивались с проблемами в таком случае
 
 ____SHOWIF::['mask', 'hunger']
-        вообще, actually, weirdly, it's been in the negative since you activated that hunger mask
-        not seeing that on the global measurement though, it's just affecting your device
-        try deactivating it or something
+        вообще, странно, но оно туда ушло как раз с тех пор, как ты активировал/<-блинскийлопер/ ту маску голода
+        причём в глобальном значении ничего подобного нет, это только на твоём устройстве
+        попробуй деактивировать её 
 ____END
     
     RESPONSES::self
@@ -1546,6 +1546,17 @@ ____END
         "големам": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
         "големами": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
         "големах": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+
+        "глазика": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазики": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазике": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазику": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазикой": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+
+        "глазик": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазикам": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазиками": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
+        "глазиках": "ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет релевантного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ",
     
     
         "сцена велзи": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного контекста'",
@@ -1864,7 +1875,7 @@ ____END
         "NOTE::'system management'": "ПРИМЕЧАНИЕ::'управление системой'",
         "NOTE::'influence thoughtspace';'third-party installation'": "ПРИМЕЧАНИЕ::'влияние на мыслепространства';'стороння установка'",
         "REALITY::'no effect'": "РЕАЛЬНОСТЬ::'не имеет эффекта'",
-        "UNITY::'enables additional ACT on responsive thoughtforms'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
+        "UNITY::'enables additional ACT on ОТЗЫВЧИВАЯ МЫСЛЕФОРМАs'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
         "HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'": "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'",
         
         "GAD": "ГАН",
@@ -2154,13 +2165,19 @@ ____END
     ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обитель <span definition="ПРИМЕЧАНИЕ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'подразумевает изменённое состояние проживания'">мертвецов</span>'</span>`,
 
-        "gate::the embassy": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-    ::ПУНКТ НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`,
+        "gate::the embassy": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
+    ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
 
         "our dull vessel": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся локация';'изменение состояния мыслеформы'
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'некоторые элементы обладают предельно низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+
+        'their vessel': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
+    ::LOW-DIMENSIONAL
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'multiple low cohesion entities'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'близнецы нашли нас быстро'</span>`,
 
         "gate::gate::gate::": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМО
@@ -2174,10 +2191,10 @@ ____END
     ::ПРИМЕЧАНИЕ::'состояние лога продвинется вперёд при следующем визите';'используйте ДЕЙСТ:продвинуться, чтобы немедленно перейти к следующему состоянию'`,
 
         "proxyfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключен к центральному ассистенту'`, // help with maintenance appendage << хаха какая древняя заметка
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
 
-        'cyst cluster': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
+        'cyst cluster': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::EXPLICIT PURPOSE::'повторяющаяся обстановка'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a collection of this and that, managed by a central monitoring cyst'</span>`
     },
 
@@ -2353,9 +2370,9 @@ END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0
         "ep1feed": generateDialogueObject(` 
 start
     moth
-        hey buddy, just in time, look what just came in
+        эй дружище, как раз вовремя, смотри что только что пришло
             SHOWIF::[["TEMP!!sat", false]]
-        hey, look what just came in
+        эй, смотри что только что пришло
             SHOWIF::[["TEMP!!sat"]]
 
     sourceless
@@ -2373,7 +2390,7 @@ start
         anyway - ready to feed a corrucyst?
             SHOWIF::[["ep0_epilogue", "started"]]
 
-        and!
+        иии!
             SHOWIF::[["ep0_epilogue", "done"]]
 
     sourceless
@@ -2732,24 +2749,24 @@ start
 
 gun
     self
-        так что, мы просто оставляем этот пистолет?
+        так что, мы просто оставим этот пистолет?
 
     moth
-        о, ну,
+        о, ну
         знаешь, он может пригодиться
-        to be honest with you i don't really feel like returning it right now lol
-        r&d didn't seem like they needed it, it's not often they need to kill something
-        i'll return it later
+        если честно мне просто не хотелось его ну вот прям щас возвращать лол
+        вроде НИОКР он не сильно нужен, им нечасто приходится что-то убивать
+        я верну попозже
     
     RESPOBJ::mthhubresp
 
 where
     self
-        where were these pulled from?
+        откуда это всё достали?
     
     moth
-        so they found this stuff in a wreck along the ocean floor near new zealand
-        and by 'near', I mean like a thousand miles off the southeast coast
+        с какого-то крушения на дне океана возле новой зеландии
+        и под "возле" я имею в виду, типа, километров так за тыщу от юго-восточного берега
         it's just that it was found so far out from anything else, that, like...
         new zealand is just the closest point of reference i figured you'd recognize
         they think it had drifted a pretty far distance from wherever it actually fell
@@ -2765,7 +2782,7 @@ where
                 "lift": "поднять",
                 "the notes I got say that there were apparently a ton of these on the ship": "в записях говорилось, что на корабле вот таких вот была просто куча",
                 "all sorts of sizes too": "причём самых разных размеров",
-                "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми… так что захватили только одну маленькую",
+                "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми... так что захватили только одну маленькую",
                 "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it": "у дендритной цисты жёсткая внешняя оболочка. не похоже, что к ней можно подключиться",
                 "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста неожиданно тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
 
@@ -4417,31 +4434,33 @@ ffsignature
                 "mthresp": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        what city is this<+>where
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        что это за город<+>where
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `),
                 "mth++localcity": generateDialogueObject(`
 start
     self
-        I have a question about this city thoughtform
+        у меня есть вопрос об этой городо-мыслеформе
 
     moth
-        yeah?
+        ага-п?
     
     RESPOBJ::mthresp
 
 where
     self
-        What city could this possibly be?
+        что это за город?
     
     moth
-        i don't think it's any one city honestly
-        seems like a bunch of stuff smashed together... like icons of a city rather than actual representations
+        честн говоря не думаю, что это какой-то конкретный город
+        выглядит как куча всего, смешанного вместе... like icons of a city rather than actual representations // --- помогите
             SHOWIF::[['hub__funfriend-kickout', false]]
-        so since this thing is starving, maybe akizetesche's memories of our cities grouped up to survive
+        раз эта циста голодает, может быть воспоминания акизетеше о наших городах сбились вместе чтобы выжить
             SHOWIF::[['hub__funfriend-kickout']]
-        we've seen that kind of physical behavior in starving corrucystic tech, so i'd bet that extends to mental behavior too
+        мы наблюдали такое поведение на физическом уровне в голодающих корруцистозных устройствах,
+            SHOWIF::[['hub__funfriend-kickout']]
+        так что могу поспорить что оно распространяется и на психический
             SHOWIF::[['hub__funfriend-kickout']]
 
     RESPOBJ::mthresp
@@ -5506,7 +5525,7 @@ interloper
 madness
     self
         под безумием
-        ты имеешь в виду голодание кисты?
+        ты имеешь в виду голодание цисты?
     
     isabel
         да
@@ -6179,8 +6198,8 @@ dull
             },
 
             entityDescriptions: {
-                'proxyfriend?': `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'maintenance appendage';'connected to central assistant'`,
+                'proxyfriend?': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
                 'gate::the dull contrivance': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ТОЧКА НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`
@@ -6197,27 +6216,27 @@ start
         им%¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Жºž­¥ÙУж0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇХ¸×¯Rõf±ÔЦãXÖ5&Ñ/ 
     
     moth
-        wtf
+        втф
             SHOWIF::[["dullvessel__pilot-end", false]]
-        that looks like some kind of format error
+        выглядит как какая-то ошибка форматирования
             SHOWIF::[["dullvessel__pilot-end", false]]
-        i think this one might be busted
+        кажись этой кранты
             SHOWIF::[["dullvessel__pilot-end", false]]
-        could be encoded... i'll just make a note of this for now, let's come back later
+        или оно зашифровано... я прост отмечу это на пока, давай позже вернёмся
             SHOWIF::[["dullvessel__pilot-end", false]]
 
-        still broken... but it's the same output as before
+        всё ещё сломанная... но вывод никак не изменился
             SHOWIF::[["dullvessel__pilot-end"]]
-        so i don't think it's an incoherence issue
+        так что я сомневаюсь что дело в бессвязности
             SHOWIF::[["dullvessel__pilot-end"]]
-        but i still don't know what to do with this
+        но я все ещё не знаю, как с этим разбираться
             SHOWIF::[["dullvessel__pilot-end"]]
-        just leave it for now
+        просто оставь её пока
             SHOWIF::[["dullvessel__pilot-end"]]
 
 
     RESPONSES::self
-        damn<+>END
+        чёрт<+>END
 `),
                 "fixed": generateDialogueObject(`
 start
@@ -6226,20 +6245,20 @@ start
         лазутчик
 
     moth
-        wtf? did that thing fix this?
+        втф? та штука что, починила её?
             SHOWIF::[["dullvessel__pilot-end"], ["dullvessel__fixed-start", false]]
-        looking at the old log i don't think this was supposed to be self aware
+        судя по старым логам не похоже, что она должна быть самоосознанной
             SHOWIF::[["dullvessel__pilot-end"], ["dullvessel__fixed-start", false]]
 
     RESPONSES::self
         привет...?<+>hello
             SHOWONCE::
 
-        how are you lucid?<+>how
+        как ты очнулась?<+>how
             SHOWONCE::
             SHOWIF::[["dullvessel__fixed-hello", true]]
 
-        change location<+>change
+        изменить местоположение<+>change
             SHOWIF::[["dullvessel__fixed-hello", true]]
             HIDEREAD::
 
@@ -6247,32 +6266,32 @@ start
 
 how
     self
-        how are you lucid?
+        как ты очнулась?
 
     pilot cyst
-        velzie
-        instructed
+        указание
+        велзи
 
     RESPONSES::self
-        who is velzie?<+>who
+        что за велзи?<+>who
 
 who
     self
-        who is velzie?
+        что за велзи?
 
     pilot cyst
-        secrecy
-        instructed
-        soon
-        meet
+        указание
+        секретности
+        скоро
+        встреча
     
     RESPONSES::self
-        change location<+>change
-        all right...<+>END
+        изменить местоположение<+>change
+        ладно...<+>END
 
 hello
     self
-        hello there
+        привет
 
     pilot cyst
         изменить
@@ -6303,9 +6322,9 @@ change
             SHOWIF::[["dullvessel_position", 'orbit']]
     
     RESPONSES::self
-        change location<+>change
+        изменить местоположение<+>change
             HIDEREAD::
-        how are you lucid?<+>how
+        как ты очнулась?<+>how
             SHOWONCE::
             SHOWIF::[["dullvessel__fixed-hello", true]]
 
@@ -6319,9 +6338,9 @@ nochange
         понятно
     
     RESPONSES::self
-        change location<+>change
+        изменить местоположение<+>change
             HIDEREAD::
-        how are you lucid?<+>how
+        как ты очнулась?<+>how
             SHOWONCE::
             SHOWIF::[["dullvessel__fixed-hello", true]]
 
@@ -6330,77 +6349,77 @@ nochange
                 "glazikaResponses": generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        status?<+>status
-        what have you been doing?<+>absence
+        статус?<+>status
+        чем занималась?<+>absence
 
-        fare well<+>END
+        простимся<+>END
 `),
                 "glazika": generateDialogueObject(`
 start
     akizet
-        my <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">glazika</span>!
+        моя глазика!
     
     glazika
-        HEEELLLOOOOOOOO akizetesche
-        it is so exciting to see you again!
-        your surface walking grows longer each time!
+        ЗДРАААААВВВССТВУЙТЕ акизетеше
+        так рада вновь вас видеть!
+        с каждым разом ваши прогулки по поверхности становятся всё длиннее!
     
     akizet
-        oh yes, i have been indulging the cousins' methods of transport
-        work continues well ahead of the initiative's projections
+        о да, я забавлялась близнецовыми способами передвижения
+        работа продолжается со значительным опережением прогнозов инициативы
 
     RESPOBJ::glazikaResponses
 
 status
     akizet
-        what is the status of our vessel?
+        каков статус нашего судна?
     
     glazika
-        consumption is paused for all activities except maintenance! 
-        our pilot has left us in a stable orbit!
-        fuel reserves are acceptable!
+        потребление приостановлено для всех видов деятельности кроме технического обслуживания! 
+        наш пилот вывел нас на стабильную орбиту!
+        запасы топлива приемлемы!
     
     akizet
-        i see. thank you, my <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">glazika</span>.
+        вижу. спасибо, моя глазика.
 
     RESPOBJ::glazikaResponses
 
 absence
     akizet
-        what have you been doing in my absence?
+        чем ты занималась в моё отсутствие?
     
     glazika
-        mostly maintenance! however, the pilot cyst refuses to sleep! so i have been staying awake!
-        to pass the time, we have been playing little games with the containers while you are gone
+        в основном обслуживанием! однако циста-пилот отказывается спать! поэтому и я бодрствую!
+        чтобы скоротать время пока вас не было, мы играли в маленькие игры с контейнерами
     
     akizet
-        really? did you make something yourselves?
+        правда? вы что-то сами придумали?
             SHOWIF::[['ep1_fed', false]]
     
     glazika
-        no no! it is only a game of parasite. as you can see, i am currently winning
+        нет-нет! всего лишь игра в паразит. как вы можете видеть, я побеждаю
             SHOWIF::[['ep1_fed', false]]
     
     akizet
-        well done! we should play soon
+        молодцы! нам стоит как-нибудь сыграть
             SHOWIF::[['ep1_fed', false]]
     
     akizet
-        ah, and now you are on <span class="code">parasite</span>!
+        ах, и сейчас вы играете в <span class="code">паразит</span>!
             SHOWIF::'ep1_fed'
 
     glazika
-        yes!!
+        да!!
             SHOWIF::'ep1_fed'
-        though i hold all corners,
+        пусть все углы в моём владении,
             SHOWIF::'ep1_fed'
-        the pilot cyst is cunning - it still holds other key positions
+        циста-пилот коварна - она по-прежнему занимает другие ключевые позиции
             SHOWIF::'ep1_fed'
-        if i lose this one, i will lose one of my containers!!!
+        если я проиграю, я потеряю один из своих контейнеров!!!
             SHOWIF::'ep1_fed'
 
     akizet
-        good luck, my friend
+        удачи, моя подруга
             SHOWIF::'ep1_fed'
 
     RESPOBJ::glazikaResponses
@@ -6410,21 +6429,21 @@ RESPOBJ::
     RESPONSES::self
         dull vessel?<+>dullvessel
         seen this before?<+>seen
-        glazika?<+>glazika
+        глазика?<+>glazika
             SHOWIF::[["dullvessel__glazika-start"]]
         is this the wreck?<+>wreck
 
-        akizet's body?<+>body
+        тело акизет?<+>body
             SHOWIF::"exm|dullvessel|high-pressure body"
 
-        dark area?<+>dark
+        тёмное место?<+>dark
             SHOWIF::"beneath_dullvessel"
 
-        akizet's room locked again?<+>locked
+        комната акизет опять недоступна?<+>locked
             SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
 
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `),
                 "mth++dullvessel": generateDialogueObject(`
 start
@@ -6539,16 +6558,16 @@ locked
                 'pilot cyst': `циста-пилот`,
                 'glazika': `глазика`,
                 'container': `контейнер`,
-                'climbing wall': ``,
+                'climbing wall': `скалодром`,
                 'dull heart': `сердце серое`,
-                'workspace': ``,
-                'translation slab': ``,
-                'column': ``,
-                'bright ground-parasite': ``,
-                'advanced rejuvenation chamber': ``,
-                'high-pressure body': ``,
-                'personal storage': ``,
-                'equipment storage': ``,
+                'workspace': `рабочее место`,
+                'translation slab': `переводная плита`,
+                'column': `колонна`,
+                'bright ground-parasite': `светлый землепаразит`,
+                'advanced rejuvenation chamber': `продвинутая омолаживающая камера`,
+                'high-pressure body': `тело высокого давления`,
+                'personal storage': `личное хранилище`,
+                'equipment storage': `хранилище оборудования`,
 
                 /*pilot cyst*/ "unfinished": "незаконченное",
                 /*pilot cyst*/ "business": "дело",
@@ -6562,49 +6581,62 @@ locked
             },
 
             entityDescriptions: {
-                'pilot cyst': `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="WARNING::'entity mostly unprocessable';'may be inaccurate'">::INCOHERENCE DETECTED</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'the great mind of my vessel'</span>`,
-                'glazika': `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'`,
-                'container': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'processed metals, easily accessible'</span>`,
+                'pilot cyst': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="ПРЕДУПРЕЖДЕНИЕ::'в большинстве необрабатываемая сущность';'может быть неточной'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'великий разум моего судна'</span>`,
+
+                'glazika': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'`,
+
+                'container': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обработанные металлы, легкодоступные'</span>`,
+
                 'parasite plane': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a simple game of resource management and theft';'an oltazni favorite'</span>`,
-                'climbing wall': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'nostalgic cave-stone imitation';'appeals to <span class="code">larval</span> climbing instinct'</span>`,
-                'dull heart': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'device beyond my understanding';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'advised not to stare'</span>`,
-                'workspace': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'visual display utilizing luminescent corru swarms';'assists in multitasking'</span>`,
-                'translation slab': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a collection of bright writings provided by the envoy';'reports of progress with the storm'</span>`,
-                'column': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'reparative maintenance tool';'a place for my personal cyst'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'disrupted by extreme nearby incoherence';'advise investigation'">::INCOHERENCE DETECTED</span>`,
-                'bright ground-parasite': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'fascinating bright creatures, gifts from a friend';'contained within oxygenated caring cysts'</span>`,
-                'advanced rejuvenation chamber': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'offering the comfort of sleep, even in <span definition="NOTE::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'implies altered living state'">death</span>';'designed as survival pod in event of dull collapse'</span>`,
-                'high-pressure body': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'alternate body for extreme depth surveying';'specialized pressure management system';'uncomfortable for casual use'</span>`,
-                'personal storage': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'`,
-                'equipment storage': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recurring scenery'`,
-            }
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в олтазни'</span>`,
+
+                'climbing wall': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'ностальгическая имитация пещерного камня';'угождает <span class="code">личиночному</span> инстинкту лазания'</span>`,
+
+                'dull heart': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'устройство за пределами моего понимания';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'советуют не пялиться'</span>`, // позже
+    
+                'workspace': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'визуальный дисплей с применением люминесцентных роев корру';'помогает с многозадачностью'</span>`,
+    
+                'translation slab': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'сборник светлых записей, предоставленный послом';'отчёты о прогрессе со штормом'</span>`,
+
+                'column': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'инструмент ремонтного обслуживания';'место для моей личной цисты'</span>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нарушена крайней бессвязностью поблизости';'рекомендуется расследование'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+
+                'bright ground-parasite': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательные светлые существа, подарки от подруги';'содержатся в цистах, насыщенных кислородом'</span>`,
+
+                'advanced rejuvenation chamber': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'предоставляет уют сна, даже в θсмерти';'спроектирована как капсула для выживания в случае обвала серое'</span>`,
+
+                'high-pressure body': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'запасное тело для работ на экстремальных глубинах';'специализированная система управления давлением;'неудобно для повседневного пользования'</span>`,
+
+                'personal storage': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
+    
+                'equipment storage': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
+}
         },
         "localocean": { // their waters
             dialogues: {
@@ -6612,40 +6644,32 @@ locked
             },
 
             definitions: {
-                "θthree-eyed": `'time period';'patrols around the eye of velzie';'religious implication'`
+                "θтрёхглазого": `'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'`
             },
 
             strings: {
                 "stilted shore": "неестественный берег",
+
+                "dive": "нырнуть",
             },
 
             entityDescriptions: {
-                'gate::the depths': `::CONNECTOR THOUGHTFORM
-    ::DESTINATION::'low dimensional thoughtspace';'internal'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'partial cohesion failure'">::INCOHERENCE DETECTED</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'why you are here'</span>`,
-                'their vessel': `::SPATIAL THOUGHTFORM
-    ::LOW-DIMENSIONAL
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'multiple low cohesion entities'">::INCOHERENCE DETECTED</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'our cousins found us quickly'</span>`,
-                'stilted shore': `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';'symbolic'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'the stage for our θthree-eyed performance'</span>`,
-                'the embassy': ()=>{if(check('hub__funfriend-ep1fed')) {
-                    return `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-        ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span> `
-                } else return `::SPATIAL THOUGHTFORM
-    ::ERROR::'unprocessable entity'::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`} // very unsure if thisll work cause like. what the fuck is js. also didnt test HAHA
+                'gate::the depths': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+    ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'почему ты здесь'</span>`,
+                'stilted shore': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'символизм'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'сцена нашего θтрёхглазого представления'</span>`,
+                // it does not
             }
         },
         "localship": { // their vessel
             entityDescriptions: {
                 'the funny little room': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА`,
-                'clemens romanus': `::SPATIAL THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unspecified'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'low cohesion'">::INCOHERENCE DETECTED</span>`,
+                'clemens romanus': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'не указано'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
             }
         },
         "interview1": { // funny little room
@@ -7268,7 +7292,7 @@ behonest
         это не сулит мне ничего хорошего, не правда ли? я...
 
     moth
-        знаю - обещал молчать пока ты работаешь, но тут сейчас происходит что-то очень странное
+        знаю - обещал /<-блинскиймоль/ молчать пока ты работаешь, но тут сейчас происходит что-то очень странное
         ты щас что-то трогаешь?
     
     unknown
@@ -7307,17 +7331,17 @@ behonest
 
     moth
         окей... 
-        so that definitely wasn't you
-        that's what let you in, right?
-        i still don't know what that could be
-        but it can definitely change things, because it actually just destroyed this section.
-        like... it's completely gone. same as the auth layer. so, we...
+        значит точно не ты
+        это оно тебя впустило, да?
+        я так и без понятия, что это за фигня
+        но она действительно может вносить изменения, потому что она только что просто разнесла эту секцию.
+        типа... её теперь вообще нет. как со слоем авторизации. так что мы...
         
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'::В::'судносерое'
     
     moth
-        ...may be on a clock here.
+        ...may be on a clock here. // --- помогите
         я не понимаю.
         зачем впускать нас чтобы потом просто удалять что-то?
 
@@ -7940,8 +7964,8 @@ RESPOBJ::
             SHOWIF::["recosm_state", false]
         where'd the proxy generator go<+>nogen
             SHOWIF::["recosm_state", "spared"]
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `),
                 "mth++recosm": generateDialogueObject(`
 start
@@ -8126,8 +8150,8 @@ RESPOBJ::
             SHOWIF::"embassy__d3_start-end"
         about bstrd<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `),
                 "mth++embassy": generateDialogueObject(`
 start
@@ -8731,7 +8755,7 @@ start
 
 interact
     self
-        привет, акизет?
+        акизет, привет?
         ты меня слышишь?
 
     moth
@@ -8753,7 +8777,7 @@ interact
                 "d1_start": generateDialogueObject(` 
 start
     sourceless
-        мое сознание возобновляется
+        моё сознание возобновляется
         омолаживающая камера раскрывается, и извне струится свечение цистозного стекла посольства
         сквозь далекое открытие серое я чувствую, что начался новый θвзор
 
@@ -8772,44 +8796,44 @@ emerge
         я должна собрать нашу команду, тогда мы сможем начать
     
     RESPONSES::akizet
-        пора работать<+>END
+        за работу<+>END
 
 SKIP::content.classList.add('swapcam')
 `),
                 "d1_tozik": generateDialogueObject(` 
 start
     sourceless
-        tozik sits in a terminal chair, connected by a receptor to the timestopper
+        тозик сидит в терминальном кресле, соединённый с времядержцем через рецептор
             EXEC::pauseSwapCam(true);
-        the time constriction that gives the grand cyst its name has not been activated
-        he must be using it simply for its archival connections
-        i clamber over the curve of the timestopper to greet him
+        временное сжатие, за которое великая циста получила своё название, не активировано
+        должно быть, он пользуется ей только ради архивных связей
+        я перебираюсь через изгиб времядержца, чтобы поздороваться с ним
 
     akizet
-        hello, tozik!
+        здравствуй, тозик!
 
     sourceless
-        i see his acknowledgment of me with a small glance
+        в том мимолётном взгляде на меня я вижу его распознание
             EXEC::vnp({hideStage: true, tozik: "show"})
-        however his focus is inward, through the corrucystic vein
-        tozik detests idle chatter, so i opt to keep this quick
+        однако его внимание обращено вовнутрь, сквозь корруцистозную вену
+        тозика раздражает пустая болтовня, поэтому я решаю не медлить
     
     akizet
-        are you prepared for the focus?
-        actually, is that what you have been doing?
+        ты подготовился к сосредоточению?
+        вообще, ты именно этим и занимаешься?
     
     tozik
-        yes
-        i am organizing the connected archival cysts
-        something very interesting happened barely a θwink ago
-        you will hear about it in the focus
+        да
+        я упорядочиваю подключенные архивные цисты
+        едва ли θподмиг назад произошло кое-что очень интересное
+        ты услышишь об этом на сосредоточении
     
     akizet
-        excellent
-        we will speak soon, then
+        чудно
+        тогда скоро поговорим
     
     RESPONSES::akizet
-        fare well<+>END
+        простимся<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `),
                 "d1_gakvuresp": generateDialogueObject(`
@@ -8935,9 +8959,9 @@ false
     gakvu
         вот эта - из моего дома
         воспоминания бывалого вейлькового прыгуна в форме игры
-        so the veilk march towards the weather wall,
-        and you must leap from veilk to veilk while they grow faster
-        or else you are subsumed beyond the air's border! --- гакву мне не нравится о чем ты говоришь. позже это переведу. или вы хотите?
+        значит так: вейльки несутся к погодной стене,
+        а ты должна перепрыгиваешь со одного на другого, пока они всё набирают скорость,
+        иначе ты исчезнешь за воздушной границей!!
 
     sourceless
         по жестикуляции её рецепторов и рук кажется,
@@ -9026,20 +9050,20 @@ start
         HER TALE BECOMES MORE DISTINCT AS I APPROACH
     
     kazki
-        ... so i said, it is because my larval form was tir! and i told him of the function that entails...
-        i even talked a little about that story from the kozazni excavation--you know the one, ah, when i was first starting work there
+        ... а я сказала, это всё потому, что мой личиночный облик был тиром! и рассказала ему о функции, которую это влечёт за собой...
+        даже немного коснулась той истории с раскопок козазни--ну ты её знаешь, э, когда я там только начала работать
     
     bozko
         о, нет
 
     kazki
-        and while i was saying these things, my funfriend was attempting to warn me about something, but i kept talking...
-        and then when i was done, i checked to see what it was, and it was telling me to stop! 
-        he was apparently expressing terror on his face! as though i might drench him in acid at random! 
-        ahahaha!!
+        и пока я всё это произносила, мой развледруг пытался меня о чём-то предупредить, но я продолжала говорить...
+        закончив, я проверила, о чём - а всё это время он просил меня остановиться!
+        оказывается, на лице того близнеца был написан ужас! словно я вдруг захотела бы плеснуть на него кислотой! 
+        ахахаха!!
 
     sourceless
-        BOZKO CHUCKLES AND ROLLS HIS RECEPTORS SLIGHTLY
+        БОЗКО УСМЕХАЕТСЯ И НЕМНОГО ЗАКАТЫВАЕТ РЕЦЕПТОРЫ
         HE LOOKS FROM THE WINDOW TO KAZKI, WITNESSING MY APPROACH INCIDENTALLY
         WITH ANOTHER LITTLE RECEPTOR GESTURE, KAZKI TURNS TO FACE ME AS WELL, DELIGHTED
             EXEC::specialCam('kazkibozko');vnp({bg: true, kazki: "show", bozko: "show"})
@@ -9050,7 +9074,7 @@ start
     kazki
         привет акизет!!
     
-    akizet
+    akizetа
         здравствуйте мои друзья
     
     RESPOBJ::d1_kazkibozkoresp
@@ -9078,8 +9102,8 @@ story
         под какой-то смешок велзи ей пришло в голову поделиться событиями её ранней личиночной работы
     
     sourceless
-        THE KOZAZNI EXCAVATION STORY...
-        OF COURSE A CLUELESS BRIGHT COUSIN WOULD FEAR FOR THEIR LIFE AFTER HEARING THAT
+        ИСТОРИЯ С РАСКОПОК козазни...
+        НУ КОНЕЧНО НЕСВЕДУЩИЙ СВЕТЛЫЙ БЛИЗНЕЦ ИСПУГАЛСЯ БЫ ЗА СВОЮ ЖИЗНЬ, УСЛЫШАВ ТАКОЕ
 
     kazki
         it was in good nature! he found it funny after i explained away his fears!
@@ -15705,7 +15729,7 @@ env.uncode = {
             else if (value == "ну и как их звать") value = "effigy"
             else if (value == "цветок") value = "flower"
             else if (value == "юмор") value = "humor"
-            else if (value == "личиночный") value = "larval" // переведем подсказку в судне и посмотрим
+            else if (value == "личиночный" || "личиночному") value = "larval"
             else if (value == "паразит") value = "parasite"
             else if (value == "простите" || "прости") value = "sorry"
             else if (value == "шпиль") value = "spire"
@@ -16046,7 +16070,10 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
         ouch('#stage-navigator', true);
         ouch('.reply', false, true);
         ouch('title', true)
-    getLocalizationForPage(true)
+        if(check('hub__funfriend-ep1fed')) env.localization.entityDescriptions['the embassy'] = `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+    ::ПУНКТ НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`
+        getLocalizationForPage(true)
         if (page.dialoguePrefix == "fbx") { 
             page.mothComment = ()=>{
                 var moth = "чё как?"
