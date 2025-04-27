@@ -652,15 +652,15 @@ what_masks
         что такое маски
     
     moth
-        that's new ground you're discovering buddy
-        best i can tell from context is that they're like tools and weapons
-        something these thoughtforms carved from akizet's memories somehow
-        they don't have an actual physical presence, because otherwise you couldn't have received them
-        also, they passed right through the connection and only to you
-        and it's like my machines ignored them or couldn't see them at all
-        this is probably some entire new field of science we just stumbled into lol
-        thoughtform technology or something
-        whatever it is, it's way beyond my scope
+        это непаханое поле на которые ты ступаешь дружище
+        лучшее что я могу сказать из контекста они как инструменты и оружие
+        нечто что эти мыслеформы каким-то образом высекли из воспоминаний акизет
+        у них на самом деле нет физического присутствия, иначе тебе не удалось бы их получить 
+        ещё, они прошли конкретно к тебе прямиком сквозь соединение
+        как будто бы мои машины игнорировали их или вообще не могли увидеть
+        наверное мы наткнулись на целую новую сферу науки лол
+        мыслеформенная технология или что-то вроде
+        что бы это ни было, оно явно за рамками моей квалификации
 
     RESPONSES::self
         ок<+>loop
@@ -1265,33 +1265,33 @@ gad
         оно никогда не вызывало проблем
 
     moth
-        well i guess it doesn't really affect that much usually
-        i just work in a weird field where it does lol
-        fortunately for you, i know the story!
-        so, back when mindspikes were in development and first being tested,
-        they started noticing these occasional rendering and recording bugs
-        like they'd run things that should always output one thing, got tiny deviations instead
-        mindsci could NOT figure out wtf was going on
-        so someone set up this tiny component, something fjortoft, forgot their first name
-        the little fjortoft box runs a constant and predictable signal through an input into the OS, then compares the output
-        basic troubleshooting, right?
-        turns out - the signal would come back changed
-        not just that, but it was the same change on every mindspike if you tested multiple at the same time
-        despite not being connected at all
-        like... we're talking the same on different sides of the world
-        when the value came back way weaker or way stronger, 
-        the memory deviations were more severe
-        pretty crazy, right? they never did figure out what was causing it
-        so there's now just this little box in every mindspike to measure the GAD value
-        some people online think this is evidence of the noosphere...
-        but the popular theories are that it's something with earth's magnetic field
-        also read once that it could be electromagnetic interference from the dull contrivance but idk about that one
+        что ж полагаю оно обычно ни на что особо не влияет
+        я просто работаю в странной области где это не так лол
+        к счастью для тебя, я знаю историю!
+        короче, раньше когда мыслеколы были в разработке а прототипы тестировались
+        они начали замечать эти рандомные баги в рендере и записи
+        типа они запускали штуки которые всегда должны выводить одно, но вместо этого получали небольше отклонения
+        майндсай НЕ мог выяснить чзх творилась
+        так что кто-то установил этот крошечный компонент, вроде фьортофт, не помню имя
+        маленькая фьортофская коробочка пропускает постоянный и предсказуемый сигнал через ввод в ОС, а затем сравнивает вывод
+        обыкновенное исправление неполадок, да?
+        оказалось - сигнал возвращается изменённым
+        и ещё, если тестировались несколько мыслеколов то такие же изменения были на каждом из них
+        не смотря на то что они вообще никак не соединены
+        типа... мы говорим одно и то же в разных концах света
+        когда значения возвращалось более слабыми или более сильными,
+        отклонения в памяти становились более серьёзными 
+        довольно безумно, правда? они так и не выяснили из-за чего это происходило
+        так что теперь в каждом мыслеколе есть эта маленькая коробочка измеряющая значение ГАН
+        некоторые люди в интернете считают это свидетельством ноосферы...
+        но больше популярны теории о том что это как-то связано с магнитным полем земли
+        и ещё я как-то раз читал что это может быть электромагнитными помехами от открытия серое но чёрт его знает
 
     self
         и как это связано с корруцистами
 
     moth
-        понятия не имею чг
+        понятия не имею ес честно
         просто знаю что когда значение уходит в минус,
         люди сообщают о головной боли или ошибках в визуализациях
         но ты не волнуйся, скорее всего оно безвредно
@@ -1322,7 +1322,7 @@ ____SHOWIF::"EXEC::env.pagePath != \`/local/beneath/parasite/\` && env.pagePath 
 ____SHOWIF::"EXEC::env.pagePath == \`/local/ocean/ship/interview/\`"
     self
         всё нормально
-        просто попытка заново визуализировать интервью // *** всё ещё проблемное но мне лень думать
+        просто неудачная попытка заново визуализировать интервью // *** всё ещё проблемное но мне лень думать
 ____END
 
     moth
@@ -2229,7 +2229,7 @@ ____END
 
         "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'malformed entity';'potential tampering'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span> // --- помогите с анализом
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможно вмешательство'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
     ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`,
 
         'cyst cluster': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
@@ -5423,7 +5423,7 @@ start
     
     sourceless
         он фыркает, готовый возразить, но я останавливаю его движением рецептора
-        он уже объяснял свою претензию к получению бесплатных вещей...
+        он уже объяснял свою претензию к получению вещей бесплатно...
         когда нам дают что-то бесплатно, это задаёт определённый культурный стандарт, что чревато недопониманиями
         правда, что для некоторых это проблема, но...
         я чувствую, что этот подарок не из иноземного очарования
@@ -5431,7 +5431,7 @@ start
         это - иная доброта
     
     akizet
-        ах... я не знаю... он может не пережить на моём судне
+        ах... я не знаю... он может не выжить на моём судне
     
     isabel_c
         Ничего страшного. Так или иначе, он будет жить всего неделю или две.
@@ -5470,7 +5470,7 @@ start
     sourceless
         я мельком обвожу комнату взглядом, моя висящая голова в медленном кружении над плечами
         так много цветов, самых разных раскрасок и форм...
-        вот бы посольство могло поддерживать жизнь
+        вот бы посольство могло поддерживать их жизнь
     
     akizet
         возможно, я скоро вернусь
@@ -6484,7 +6484,7 @@ RESPOBJ::
                 "mth++dullvessel": generateDialogueObject(`
 start
     self
-        у меня есть вопрос о судно серое
+        у меня есть вопрос о судне серое
 
     moth
         чё как?
@@ -6500,13 +6500,13 @@ dullvessel
         они так называют место через которое проходят во время межзвёздных путешествий
         хотя можно подумать что они назвали его оч скучным кораблём или подобным
         и если честно, глядя на его состояние, 
-        я и так об этом думал/<-блинскиймоль/
+        мне так и по
 
     RESPOBJ::mthdullresp
 
 seen
     self
-        ты когда-нибудь видел/<-блинскиймоль/ внутренности обесковых кораблей?
+        ты не приходилось видеть внутренности обесковых кораблей?
     
     moth
         не вживую, только по старым фотографиям и видеозаписям исследований затонувших кораблей
@@ -6514,7 +6514,7 @@ seen
         странно что в данных памяти оно числится как "наше" судно серое
         в любом случае, очень круто взглянуть на настоящий
         даже если он пустоват...
-        типа где акизет должна сидеть? неужели та панцирная штука - единственное кресло? is that shell thing the only chair? // --- о чем речь
+        типа где акизет должна сидеть? неужели та ракушечная штука - единственное кресло?
 
     RESPOBJ::mthdullresp
 
@@ -8706,7 +8706,7 @@ orange
         экзотичный вкус--с эффектом цитрусовой кислоты!
 
     akizet
-        симулякр апельсиного сока, пожалуйста!
+        симулякр апельсинового сока, пожалуйста!
     
     barfriend
         хорошо!
@@ -9174,7 +9174,7 @@ story
     kazki
         а! я недавно посещала нацию австралии! 
         для встречи по поводу полигонизационного шпиля, видишь ли
-        всё прошло хорошо, но моему собеседнику было любопытно, потому что он никогда не встречал некогда-тиров,
+        всё прошло хорошо, но моему собеседнику было любопытно, потому что он до этого не встречал некогда-тиров,
         и поэтому у него был ряд вопросов, не связанных с одобрением строительства
         больше всего о моих рецепторах...
         которое!! кстати говоря! строительство было одобрено!
