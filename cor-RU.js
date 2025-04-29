@@ -7006,9 +7006,9 @@ thecall
         ЕЁ ЛИЦО ВНОВЬ КОРЧИТСЯ. ТОЧНО ТАК ЖЕ...
     
     interviewer
-        Что ты имеешь в виду под 'речьречьречь'?
+        Что ты имеешь в виду под 'ничуть не ближе'?
             SHOWIF::[["interview1__firstchat-introduction"]]
-        Что Вы имеете в виду под 'речьречьречь'?
+        Что Вы имеете в виду под 'ничуть не ближе'?
             SHOWIF::[["interview1__firstchat-introduction", false]]
         Ты сказала, что он здесь, не так ли? Что вы нашли источник?
             SHOWIF::[["interview1__firstchat-introduction"]]
