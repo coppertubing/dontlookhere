@@ -186,120 +186,467 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else                                                                                                                                return "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo"
     }
 }
-env.dialogues.mthresp = generateDialogueObject(`
+env.dialogues.mthcityresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        что это за город<+>where
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.dialogues.mthstreetresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        где это было?<+>where
+        не могу дальше?<+>elevatorblock
+            SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.dialogues.mthvoidresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        открытие серое?<+>dull
+            SHOWIF::[['EXEC::env.dialogues.mthresp.scannedDull()']]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(обратно)
+`)
+env.dialogues.mthinterviewresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        остатки интервью?<+>interview
+        сущности<+>entities
+            SHOWIF::"interviewbeast_seen"
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.dialogues.mthrecosmresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        что на фоне?<+>background
+        эта штука кажется хорошей<+>nice
+            SHOWIF::["recosm_state", false]
+        куда делся генератор прокси<+>nogen
+            SHOWIF::["recosm_state", "spared"]
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.dialogues.mthhubresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        где нашли эти цисты?<+>where
+        что делать с этим пистолетом<+>gun
+            SHOWIF::[["ep1_showmaterials", "both"], ["ep1_fed", true]]
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.dialogues.mthlocalr = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        о развледруге<+>funfriend
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        о вратах<+>gates
+            SHOWIF::[['visited_localorbit']]
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)  
 env.dialogues.mthlocalfunr = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        поведение<+>ffdemeanor
+            SHOWIF::['ep1_fed', false]
+        ситуация с топливом<+>fffuel
+            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
+        подпись<+>ffsignature
+            SHOWIF::[['hub__funfriend-signatureq']]
+        хватит о развледруге<+>loop
+            FAKEEND::(назад)
 `)
 env.dialogues.generalsentryResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        назначение?<+>purpose
+            SHOWONCE::
+        кто верифицирован?<+>whoisverified
+            SHOWONCE::
+        назначение этой цисты?<+>corrupurpose
+            SHOWONCE::
+            SHOWIF::[["hello__sentry-purpose"]]
+        может если ты пропустишь меня<+>letthrough
+            SHOWIF::[["hello_sentry_idiot"]]
 `)
 env.dialogues.hubBuddyResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
-`)
+    RESPONSES::self
+
+        контейнер с металлом<+>ep0_container
+            SHOWONCE::
+            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container"],["ep0_epilogue", "started"],["ep1_fed", false]]
+
+        лазутчик?<+>interloperq
+            SHOWONCE::
+            SHOWIF::[['ep1_fed', false]]
+
+        топливо?<+>fuelq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-kickoutq"], ['ep1_fed', false]]
+        
+        почему медь?<+>copperq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-fuelq"], ['ep1_fed', false]]
+
+        необходимые металлы?<+>essentialmetalq
+            SHOWONCE::  
+            SHOWIF::[["hub__funfriend-copperq"], ['ep1_fed', false]]
+
+        назначение?<+>purposeq
+            SHOWONCE::
+
+        подпись?<+>signatureq
+            SHOWONCE::
+
+        странная активность?<+>strangeactivity
+            SHOWONCE::
+            SHOWIF::[['interview1__firstchat-behonest']]
+
+        появились врата?<+>moregates
+            SHOWONCE::
+            SHOWIF::[['visited_localorbit'], ["ENV!!ep2", false]]
+
+        голодание решено?<+>ep1fed
+            SHOWONCE::
+            SHOWIF::[['ep1_fed'], ["ENV!!ep2", false]]
+
+        состояние починок?<+>repairs
+            SHOWIF::'hub__funfriend-ep1fed'
+            HIDEREAD::
+        
+        другие воспоминания в посольстве?<+>embmemories
+            SHOWONCE::
+            SHOWIF::[["embassy_d2_complete"], ["ENV!!ep2", false]]
+
+        посольство?<+>embassy
+            SHOWIF::[["visited_localoceanembassy", true], ["ENV!!ep3", false]]
+            SHOWONCE::
+
+        почини связь<+>ep1comms
+            SHOWIF::"ep1_end"
+            SHOWONCE::
+
+        я могу помочь?<+>ah1
+            SHOWIF::[['hub__funfriend-ep1fed', true], ["recosm_state", false]]
+
+        твоя проблема решена<+>ah1end
+            SHOWIF::["recosm_state"]
+            SHOWONCE::
+
+        что нового?<+>ep2start
+            SHOWIF::[["fbx__ep2intro-end", true], ["ENV!!ep3", false]]
+            SHOWONCE::
+
+        что нового?<+>ep3start
+            SHOWIF::[["ENV!!ep3"], ["ENV!!ep4", false]]
+            SHOWONCE::
+
+        что нового?<+>ep4start
+            SHOWIF::[["ENV!!ep4"]]
+            SHOWONCE::
+
+        мне нужно чтобы ты внёс изменения<+>mothframe
+            SHOWIF::[["embassy__mothframe-end"], ["hub__funfriend-mothframe", false]]
+            SHOWONCE::
+
+        рассказать об озо и совете<+>ozo
+            SHOWIF::[["ozo__council_intro"], ["ff_ozo", false]]
+
+        можешь добавить врата в джокзи озо<+>ozogate
+            SHOWIF::"ff_ozo"
+            SHOWONCE::
+
+        преимущество<+>lockcyst
+            SHOWIF::[["ozo__council-task", false], ["leverageq", true]]
+            SHOWONCE::
+
+        обвал<+>collapse
+            SHOWIF::"ep4__entrancefinal"
+            SHOWONCE::
+
+        вопрос<+>question
+            SHOWIF::"seenFFProxy"
+            HIDEREAD::
+
+        мне пора<+>END
+`),
 env.dialogues.persistentQuestions = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        проксидруг?<+>proxyfriend
+            SHOWIF::"seenFFProxy"
+        
+        уничтожить озо?<+>ozodestroy
+            SHOWIF::"ff_ozo"
+
+        прошлое озо?<+>ozohistory
+            SHOWIF::[["ozo__council-tyrant"], ["ozo__council-task"], ["ff_ozo"]]
+
+        маски<+>masks
+            SHOWIF::[["ff_ozo"], ["ozo__council-task"]]
+
+        эффективность починок?<+>isabel
+            SHOWIF::[["ff_ozo"], ["ozo__isabel-funfriend"]]
+
+        неважно<+>loop
+            FAKEEND::(назад)
 `)
 env.dialogues.envoyStreetResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        поговорить с людьми?<+>talkpeople
+            
+        кафе?<+>cafe
+
+        цветочный ларёк?<+>flowers
+            SHOWIF::"ENV!!ep2"
+
+        давайте пойдём дальше<+>END
 `)
 env.dialogues.tvresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        смотреть<+>EXEC::env.citystreet.tvrand()
+            HIDEREAD::
+        прекратить смотреть<+>END
+            EXEC::revertBgm()
 `)
 env.dialogues.flowerAwakeResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        лазутчик?<+>interloper
+        кто ты<+>who
+        помощь?<+>help
+        твоя внешность<+>human
+        пока<+>END
+            EXEC::specialCam(false)
 `)
 env.dialogues.interviewResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
-`)
+    RESPONSES::interviewer
+        о вас<+>introduction
+            SHOWONCE::
+
+        почему земля?<+>whyyoucame
+            SHOWONCE:: 
+            
+        светлый близнец?<+>brightcousin
+            SHOWONCE::
+            
+        корру?<+>corru
+            SHOWONCE::
+            
+        почему сейчас?<+>whynow
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+            
+        что будете делать?<+>whatwillyoudo
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whynow"]]
+            
+        Зов?<+>thecall
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+
+        закончить интервью<+>endinterview
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"],["interview1__firstchat-thecall"],["interview1__firstchat-whatwillyoudo"],["interview1__firstchat-corru"],["interview1__firstchat-brightcousin"],["interview1__firstchat-whyyoucame"],["interview1__firstchat-introduction"]]
+        
+        продолжить визуализацию<+>integritycontinue
+            SHOWIF::[["interview1__firstchat-endinterview"]]
+
+    RESPONSES::self
+        завершить вспоминание<+>END
+            SHOWIF::[["interview1__firstchat-integritycontinue", false]]
+            EXEC::moveTo('/local/ocean/ship/')
+`),
 env.dialogues.fairyresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        что ты такое?<+>what
+            SHOWIF::['localorbit__fairy-what', false]
+
+____SHOWIF::['localorbit__fairy-what', true]
+        что ты такое?<+>what2
+        как я могу помочь?<+>help
+        как ты поможешь мне?<+>helpme
+____END
+
+        пока<+>END
+            EXEC::content.classList.remove('showfairy')
 `)
 env.dialogues.glazikaResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
-`)
+    RESPONSES::akizet
+        статус?<+>status
+        чем занималась?<+>absence
+
+        простимся<+>END
+`),
 env.dialogues.mthdullresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        судно серое?<+>dullvessel
+        внутренности кораблей?<+>seen
+        глазика?<+>glazika
+            SHOWIF::[["dullvessel__glazika-start"]]
+        это то крушение?<+>wreck
+
+        тело акизет?<+>body
+            SHOWIF::"exm|dullvessel|high-pressure body"
+
+        тёмное место?<+>dark
+            SHOWIF::"beneath_dullvessel"
+
+        комната акизет опять недоступна?<+>locked
+            SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.dialogues.enemyresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
-`)
+    RESPONSES::self
+        безусловно<+>yes
+            SHOWIF::["recosm_greeted", false]
+        нет<+>no
+            SHOWIF::["recosm_greeted", false]
+
+        видело что-нибудь?<+>ep1seen
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        
+        что-нибудь ещё?<+>cache
+            SHOWONCE::
+            SHOWIF::"recosm__enemy-ep1seen"
+
+        преимущество<+>lockcyst
+            SHOWIF::[["ozo__council-task", false], ["leverageq", true], ["recosm__enemy-ep1seen", true]]
+            SHOWONCE::
+            
+        вопрос<+>qloop
+            SHOWIF::"recosm_greeted"
+
+        пока<+>END
+
+    RESPONSES::sys
+        уничтожить сущность с помощью прокси<+>END
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            EXEC::env.recentSfx = false;play('criticalError', 1);env.recosm.killGodLow()
+            FAKEEND::(альтернатива пониженной интенсивности)
+
+        договориться и пощадить сущность<+>low_spare
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            FAKEEND::(альтернатива пониженной интенсивности)
+`),
 env.dialogues.enemyquestions = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
-`)
+    RESPONSES::self
+        кто ты?<+>who
+            SHOWIF::"recosm_greeted"
+
+        ты - велзи?<+>velzie
+            SHOWIF::"recosm__enemy-who"
+
+        что это за место?<+>where
+            SHOWIF::"recosm_greeted"
+
+        почему ты мешаешь починкам?<+>why
+            SHOWIF::[["recosm_greeted", true], ["recosm_state", false]]
+            SHOWONCE::
+            
+        прекрати мешать починкам<+>stop
+            SHOWIF::[["recosm__enemy-why", true], ["recosm_state", false]]
+
+        что это за штуки вокруг тебя?<+>what
+            SHOWIF::"recosm_greeted"
+
+        'обманщик'?<+>deceiver
+            SHOWIF::["recosm_state", "spared"]
+
+        неважно<+>loop
+            FAKEEND::(назад)
+`),
 env.dialogues.mthembresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        about the groundsmindry<+>groundsmindry
+            SHOWIF::"ep4__entrance"
+        about thoughtform structure<+>structureloop
+            SHOWIF::"embassy__d1_start"
+        about obesk<+>obeskloop
+        about collapse<+>collapseloop
+            SHOWIF::"embassy__d3_start-end"
+        about bstrd<+>bstrd
+            SHOWIF::"embassy__d3_bstrdintro-start"
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.dialogues.barfriendresp = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        апельсиновый сок<+>orange
+        неважно<+>END
+            EXEC::pauseSwapCam(false)
 `)
 env.dialogues.embassyRelocatorResponses = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        персонал<+>personnel
+            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`personnel\`']]
+            HIDEREAD::
+        зона отдыха<+>recreation
+            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`recreation\`']]
+            HIDEREAD::
+        исследование зова<+>research
+            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`']]
+            HIDEREAD::
+        неважно<+>END
+            EXEC::pauseSwapCam(false);
 `)
 env.dialogues["d1_gakvuresp"] = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        ложная среда?<+>false
+        жалоба...<+>complaint
+        твоя накидка<+>coat
+            SHOWIF::'gakpause'
+        простимся на сейчас<+>END
+            EXEC::pauseSwapCam(false);vn.done()
 `)
 env.dialogues["d1_kazkibozkoresp"] = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        наше сосредоточение близится<+>focus
+            EXEC::change('PAGE!!d1_kbcollected', true)
+        о чём вы говорили?<+>story
+        как у вас дела?<+>talk
+        простимся на сейчас<+>END
+            EXEC::specialCam(false);pauseSwapCam(false);vn.done()
 `)
 env.dialogues["d1_cavikresp"] = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        наше сосредоточение близится<+>focus
+        теория замкнутого цикла?<+>theory
+        как у тебя дела?<+>talk
+        простимся на сейчас<+>END
+            EXEC::pauseSwapCam(false);vn.done()
 `)
 env.dialogues["d1_attendantresp"] = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::akizet
+        времядержец<+>timestopper
+        это всё<+>leave
+            FAKEEND::(уйти)
 `)
 env.dialogues["d2_attendantresp"] = generateDialogueObject(`
 RESPOBJ::
@@ -353,8 +700,13 @@ RESPOBJ::
 `)
 env.dialogues.drinkquestions = generateDialogueObject(`
 RESPOBJ::
-    RESPONSES::corruru
-        если вы это видите то всё сломалось, перезагрузите страницу - создатели cor-RU<+>END
+    RESPONSES::self
+        кто ты?<+>who
+        как ты здесь оказалась?<+>here
+        можно мне выпить<+>drink
+        джокзи озо<+>ozo
+            SHOWIF::"ozo__council-task"
+        пока<+>END
 `)
 
 
@@ -653,11 +1005,11 @@ what_masks
     
     moth
         тут ты вступаешь на непаханое поле дружище
-        лучшее что я могу сказать из контекста они как инструменты и оружие
+        лучшее что я могу разобрать из контекста это что они как инструменты и оружие
         нечто эти мыслеформы каким-то образом высекли из воспоминаний акизет
         у них на самом деле нет физического присутствия, иначе тебе не удалось бы их получить 
-        ещё, они прошли конкретно к тебе прямиком сквозь соединение
-        как будто бы мои машины игнорировали их или вообще не могли увидеть
+        ещё, они прошли прямиком сквозь соединение и конкретно к тебе
+        мои машины как будто бы проигнорировали их или вообще не увидели
         наверное мы наткнулись на целую новую сферу науки лол
         мыслеформенная технология или что-то вроде
         что бы это ни было, оно явно за рамками моей квалификации
@@ -1269,23 +1621,23 @@ gad
         я просто работаю в странной области где это не так лол
         к счастью для тебя, я знаю историю!
         короче, раньше когда мыслеколы были в разработке а прототипы тестировались
-        они начали замечать эти рандомные баги в рендере и записи
-        типа они запускали штуки которые всегда должны выводить одно, но вместо этого получали небольшие отклонения
-        майндсай НЕ мог выяснить чзх творилась
-        так что кто-то установил этот крошечный компонент, вроде фьортофт, не помню имя
+        они начали замечать эти рандомные баги в визуализации и записи
+        типа они запускали штуки которые всегда должны выводить одно и то же, но вместо этого получали небольшие отклонения
+        майндсай НЕ МОГ выяснить чзх творилась
+        так что кто-то установил такой крошечный компонент, чётотам фьортофт - помню ток фамилию
         маленькая фьортофская коробочка пропускает постоянный и предсказуемый сигнал через ввод в ОС, а затем сравнивает вывод
         обыкновенное исправление неполадок, да?
         оказалось - сигнал возвращается изменённым
-        и ещё, если тестировались несколько мыслеколов одновременно то такие же изменения были на каждом из них
-        не смотря на то что они вообще никак не соединены
-        типа... имею в виду такие же в разных концах света //<<< имеется? не совсем нравится мне
-        когда значения возвращалось более слабыми или более сильными,
-        отклонения в памяти становились более серьёзными 
+        и ещё, если тестировались несколько мыслеколов одновременно то на каждом из них были одни и те же изменения
+        несмотря на то что они вообще никак не связаны
+        типа... речь об "одни и те же на разных концах света"
+        когда значение возвращалось более слабым или более сильным,
+        отклонения в памяти становились серьёзнее 
         довольно безумно, правда? они так и не выяснили из-за чего это происходило
-        так что теперь в каждом мыслеколе есть эта маленькая коробочка измеряющая значение ГАН
+        так что теперь в каждом мыслеколе есть эта маленькая коробочка замеряющая значение ГАН
         некоторые люди в интернете считают это свидетельством ноосферы...
         но больше популярны теории о том что это как-то связано с магнитным полем земли
-        и ещё я как-то раз читал что это может быть электромагнитными помехами от открытия серое но чёрт его знает
+        и ещё кто-то предполагал что это может быть электромагнитными помехами от открытия серое но чёрт его знает
 
     self
         и как это связано с корруцистами
@@ -2229,7 +2581,7 @@ ____END
 
         "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможно вмешательство'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
     ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`,
 
         'cyst cluster': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
@@ -2318,7 +2670,7 @@ start
         господи боже
         чел, твой мыслекол тебе жизнь только что спас
         ну не похоже, что эта штука пыталась тебя прям убить, но чёрт только взгляни на это
-        i'm gonna have to limit the signal splitter in case that happens again
+        я ограничу разветвитель сигнала на случай если такое опять произойдёт
     
     RESPONSES::self
         что теперь?<+>whatnow_lk
@@ -2335,14 +2687,14 @@ whatnow_lk
         а что теперь?
 
     moth
-        ну...
+        что ж...
         нам нужно починить эту штуку. просто представь что мы могли бы в ней найти, серьёзно
         вот только одна проблемка...
         всё, что сюда поступает, рано или поздно умирает тк мы не знаем как поддерживать жизнь корру
         и не то чтобы мы могли бы спросить совета у обесков          
         похоже, что на сейчас лучший вариант - переподключиться и найти способ сохранить цисту в живых... 
         не забывай насколько долго эта штука продержалась на дне океана, там должно быть хоть что-то полезное
-        так что забирайся обратно и осмотрись повнимательнее... в худшем случае мы просто получим больше данных
+        так что забирайся обратно и осмотрись повнимательнее... в худшем случае мы просто добудем больше данных
         звучит хорошо?
 
     RESPONSES::self
@@ -2354,14 +2706,14 @@ whatnow_mk
         а что теперь?
 
     moth
-        ну...
-        that system manager thing, funfriend, that'll be the key to both maintaining and repairing this cyst
-        and we gotta repair this thing. we could learn SO much, seriously
-        we've never been able to maintain corrucystic tech, let alone fix it
-        imagine if you and i discovered the secret to keeping it alive, maybe they'd finally move me out of the basement
-        anyway--my order for like copper tubing is in
-        not the strangest order from our department, believe it or not
-        so we just need to wait a bit for that to come in
+        что ж...
+        та управляющая системой штука, развледруг - это наш ключ к обслуживанию и восстановлению этой кисты
+        а нам нужно починить вот это всё. мы могли бы СТОЛЬКО всего узнать, серьёзно
+        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
+        ток представь если мы с тобой раскроем секрет сохранения жизни корру, может они наконец выселят меня из подвала
+        но короче--мой заказ на, типа, какие-нибудь там медные трубки уже получили
+        не самый странный заказ из нашего отдела, веришь или нет
+        так что нам нужно немного подождать пока его не доставят
         звучит хорошо?
 
     RESPONSES::self
@@ -2373,14 +2725,14 @@ whatnow_hk
         а что теперь?
 
     moth
-        ну...
-        obviously we gotta repair this thing. we could learn SO much, seriously
-        we've never been able to maintain corrucystic tech, let alone fix it
-        imagine what we could do with that sort of find, maybe they'd finally move me out of the basement
-        but according to the funfriend thing, we need some metal to give to the column, which apparently will feed the corrucyst
-        ...and i'm pretty sure that container we have is one of the same ones on akizet's ship, so it probably has something we can use
-        i'm just not really sure how to open it short of destroying it
-        do me a favor - reconnect and ask funfriend about that, maybe it'll have a suggestion
+        что ж...
+        очевидно нам нужно починить эту штуку. мы могли бы СТОЛЬКО всего узнать, серьёзно
+        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
+        ток представь что мы могли бы сделать с такого рода находкой, может они бы наконец выселили меня из подвала
+        но согласно этому развледругу, нам нужно дать колонне немного металла, и это по всей видимости будет питать корруцисту
+        ...и я подозреваю что наш контейнер - один из тех что на корабле акизет, так что в нём наверняка припасено что-нибудь что мы можем использовать
+        я просто не совсем понимаю как его открыть если не ломать его
+        сделай одолжение - переподключись и спроси об этом у развледруга, может у него будет предложение
 
     RESPONSES::self
         что насчёт той сущности?<+>entity
@@ -2392,14 +2744,14 @@ entity
 
     moth
         о, э
-        i didn't mean to be so flippant about that, sorry
-        this time i was actually able to track what it was saying with some direct stream access
-        you heard the thing, it doesn't want to kill you
-        in fact it's relying on us to survive, and it <em>does</em> seem to want to survive
-        i think it just didn't have any other way to get you out of that thoughtspace
-        which i guess it's just gonna be holding as leverage for now
-        but look, don't worry about it, you got me watching over this operation
-        if something like that happens again, i'll make sure you're fine
+        как-то бестактно вышло с моей стороны, извини
+        на этот раз мне удалось отследить её речь с помощью прямого доступа к потоку
+        ну мы всё слышали - убивать тебя не хочет
+        на самом деле выживание этой штуки зависит от нас, и судя по всему оно <em>хочет</em> выжить
+        может быть другого способа выкинуть тебя из того мыслепространства не было
+        которое, как я полагаю, оно пока будет держать в качестве преимущества
+        но слушай, не беспокойся об этом, я слежу за всей операцией
+        если что-либо подобное повторится, я позабочусь о том чтобы с тобой всё было в порядке
     
     RESPONSES::self
         хорошо<+>END
@@ -2767,15 +3119,6 @@ start
     RESPONSES::self
         ok<+>END
 `),
-        "mthhubresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        где нашли эти цисты?<+>where
-        что делать с этим пистолетом<+>gun
-            SHOWIF::[["ep1_showmaterials", "both"], ["ep1_fed", true]]
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`),
         "mth++fbx": generateDialogueObject(`
 start
     self
@@ -2806,10 +3149,10 @@ where
     moth
         с какого-то крушения на дне океана возле новой зеландии
         и под "возле" я имею в виду, типа, километров так за тыщу от юго-восточного берега
-        it's just that it was found so far out from anything else, that, like...
-        new zealand is just the closest point of reference i figured you'd recognize
-        they think it had drifted a pretty far distance from wherever it actually fell
-        the estimates they put down say it's probably been down there 20, 30ish years
+        просто это всё нашли в такой жопе мира что, ну…
+        мне показалось, ничего ближе новой зеландии ты не узнаешь
+        они считают что оно отплыло достаточно далеко от того места, где изначально упало
+        по их оценкам, провалялось там внизу лет 20-30 если не больше
 
     RESPOBJ::mthhubresp
 `)
@@ -2891,19 +3234,6 @@ where
         },
         "hello": { // sentry page
             dialogues: {
-                "generalsentryResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        назначение?<+>purpose
-            SHOWONCE::
-        кто верифицирован?<+>whoisverified
-            SHOWONCE::
-        назначение этой цисты?<+>corrupurpose
-            SHOWONCE::
-            SHOWIF::[["hello__sentry-purpose"]]
-        может если ты пропустишь меня<+>letthrough
-            SHOWIF::[["hello_sentry_idiot"]]
-`),
                 "enter": generateDialogueObject(`
 start
     moth
@@ -3093,130 +3423,7 @@ END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'a
             },
         },
         "hub": {
-            dialogues: {   
-                "hubBuddyResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-
-        контейнер с металлом<+>ep0_container
-            SHOWONCE::
-            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container"],["ep0_epilogue", "started"],["ep1_fed", false]]
-
-        лазутчик?<+>interloperq
-            SHOWONCE::
-            SHOWIF::[['ep1_fed', false]]
-
-        топливо?<+>fuelq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-kickoutq"], ['ep1_fed', false]]
-        
-        почему медь?<+>copperq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-fuelq"], ['ep1_fed', false]]
-
-        необходимые металлы?<+>essentialmetalq
-            SHOWONCE::  
-            SHOWIF::[["hub__funfriend-copperq"], ['ep1_fed', false]]
-
-        назначение?<+>purposeq
-            SHOWONCE::
-
-        подпись?<+>signatureq
-            SHOWONCE::
-
-        странная активность?<+>strangeactivity
-            SHOWONCE::
-            SHOWIF::[['interview1__firstchat-behonest']]
-
-        появились врата?<+>moregates
-            SHOWONCE::
-            SHOWIF::[['visited_localorbit'], ["ENV!!ep2", false]]
-
-        голодание решено?<+>ep1fed
-            SHOWONCE::
-            SHOWIF::[['ep1_fed'], ["ENV!!ep2", false]]
-
-        состояние починок?<+>repairs
-            SHOWIF::'hub__funfriend-ep1fed'
-            HIDEREAD::
-        
-        другие воспоминания в посольстве?<+>embmemories
-            SHOWONCE::
-            SHOWIF::[["embassy_d2_complete"], ["ENV!!ep2", false]]
-
-        посольство?<+>embassy
-            SHOWIF::[["visited_localoceanembassy", true], ["ENV!!ep3", false]]
-            SHOWONCE::
-
-        почини связь<+>ep1comms
-            SHOWIF::"ep1_end"
-            SHOWONCE::
-
-        я могу помочь?<+>ah1
-            SHOWIF::[['hub__funfriend-ep1fed', true], ["recosm_state", false]]
-
-        твоя проблема решена<+>ah1end
-            SHOWIF::["recosm_state"]
-            SHOWONCE::
-
-        что нового?<+>ep2start
-            SHOWIF::[["fbx__ep2intro-end", true], ["ENV!!ep3", false]]
-            SHOWONCE::
-
-        что нового?<+>ep3start
-            SHOWIF::[["ENV!!ep3"], ["ENV!!ep4", false]]
-            SHOWONCE::
-
-        что нового?<+>ep4start
-            SHOWIF::[["ENV!!ep4"]]
-            SHOWONCE::
-
-        мне нужно чтобы ты внёс изменения<+>mothframe
-            SHOWIF::[["embassy__mothframe-end"], ["hub__funfriend-mothframe", false]]
-            SHOWONCE::
-
-        рассказать об озо и совете<+>ozo
-            SHOWIF::[["ozo__council_intro"], ["ff_ozo", false]]
-
-        можешь добавить врата в джокзи озо<+>ozogate
-            SHOWIF::"ff_ozo"
-            SHOWONCE::
-
-        преимущество<+>lockcyst
-            SHOWIF::[["ozo__council-task", false], ["leverageq", true]]
-            SHOWONCE::
-
-        обвал<+>collapse
-            SHOWIF::"ep4__entrancefinal"
-            SHOWONCE::
-
-        вопрос<+>question
-            SHOWIF::"seenFFProxy"
-            HIDEREAD::
-
-        мне пора<+>END
-                `),
-                "persistentQuestions": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        проксидруг?<+>proxyfriend
-            SHOWIF::"seenFFProxy"
-        
-        уничтожить озо?<+>ozodestroy
-            SHOWIF::"ff_ozo"
-
-        прошлое озо?<+>ozohistory
-            SHOWIF::[["ozo__council-tyrant"], ["ozo__council-task"], ["ff_ozo"]]
-
-        маски<+>masks
-            SHOWIF::[["ff_ozo"], ["ozo__council-task"]]
-
-        эффективность починок?<+>isabel
-            SHOWIF::[["ff_ozo"], ["ozo__isabel-funfriend"]]
-
-        неважно<+>loop
-            FAKEEND::(назад)
-                `),
+            dialogues: { 
                 "firstvisit": generateDialogueObject(`
 start
     moth
@@ -4285,28 +4492,6 @@ start
     RESPONSES::self
         окей<+>loop
                 `),
-                "mthlocalr": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        о развледруге<+>funfriend
-            SHOWIF::[['hub__funfriend-fuelthanks']]
-        о вратах<+>gates
-            SHOWIF::[['visited_localorbit']]
-        это всё<+>CHANGE::++moth
-            FAKEEND::(назад)
-                `),
-                "mthlocalfunr": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        поведение<+>ffdemeanor
-            SHOWIF::['ep1_fed', false]
-        ситуация с топливом<+>fffuel
-            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
-        подпись<+>ffsignature
-            SHOWIF::[['hub__funfriend-signatureq']]
-        хватит о развледруге<+>loop
-            FAKEEND::(назад)
-                `),
                 "mth++hub": generateDialogueObject(`
 start
     self
@@ -4470,13 +4655,6 @@ ffsignature
         },
         "localcity": {
             dialogues: {
-                "mthresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        что это за город<+>where
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`),
                 "mth++localcity": generateDialogueObject(`
 start
     self
@@ -4485,7 +4663,7 @@ start
     moth
         ага-п?
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthcityresp
 
 where
     self
@@ -4502,7 +4680,7 @@ where
         так что могу поспорить что оно распространяется и на психический
             SHOWIF::[['hub__funfriend-kickout']]
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthcityresp
 `)
 					
 					
@@ -4537,18 +4715,6 @@ where
         },
         "citystreet": { // city surface
             dialogues: {
-                "envoyStreetResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        поговорить с людьми?<+>talkpeople
-            
-        кафе?<+>cafe
-
-        цветочный ларёк?<+>flowers
-            SHOWIF::"ENV!!ep2"
-
-        давайте пойдём дальше<+>END
-                `),
                 "envoy": generateDialogueObject(`
 start
     sourceless
@@ -4813,14 +4979,6 @@ wait
     self
         ПОДОЖДИ
             EXEC::env.citystreet.ep1velzie();
-                `),
-                "tvresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        смотреть<+>EXEC::env.citystreet.tvrand()
-            HIDEREAD::
-        прекратить смотреть<+>END
-            EXEC::revertBgm()
                 `),
                 "television": generateDialogueObject(`
 start
@@ -5494,16 +5652,6 @@ ____END
         прощай<+>END
             EXEC::specialCam(false)
                 `),
-                "flowerAwakeResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        лазутчик?<+>interloper
-        кто ты<+>who
-        помощь?<+>help
-        твоя внешность<+>human
-        пока<+>END
-            EXEC::specialCam(false)
-                `),
                 "flower_awake": generateDialogueObject(`
 loop
     RESPOBJ::flowerAwakeResponses
@@ -5698,9 +5846,9 @@ END::vfx({type: 'beacon', state: false})
                 "water": generateDialogueObject(`
 start
     sourceless
-        i stop to appreciate the bizarre view
+        я останавливаюсь, чтобы полюбоваться диковинным видом
         with their blinding star out of sight, the bright cousins bathe their city in their own light
-        the dead spires glimmer like tuvazu veilk
+        мёртвые шпили блестят точно как тувазу вейльки
         my receptors' spirals loosen, and i nearly chuckle--funny to think that such a sight makes me miss those days of hunting
         it was always such an exciting trip
         the envoy notices me, likely taking my reaction as pure awe
@@ -5717,7 +5865,7 @@ start
         yes--that would have looked nicer...
 
     akizet
-        the old ones, were they fire?
+        те старые - они были пламенем?
 
     envoy
         Хаха, нет, они просто слегка напоминали его.
@@ -5771,16 +5919,6 @@ start
     RESPONSES::akizet
         я поговорю<+>END
                 `),
-                "mthresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        где это было?<+>where
-        не могу дальше?<+>elevatorblock
-            SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
-
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-                `),
                 "mth++localcitystreet": generateDialogueObject(`
 start
     self
@@ -5789,7 +5927,7 @@ start
     moth
         смотрю на вывод, чё как?
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthstreetresp
 
 where
     self
@@ -5807,7 +5945,7 @@ where
         возможно где-то на западном побережье? там старая штаб-квартира находилась
             SHOWIF::["citystreet__envoy-talkpeople", true]
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthstreetresp
 
 elevatorblock
     self
@@ -5819,7 +5957,7 @@ elevatorblock
         кажись что-то ещё вносит изменения--твой мыслекол даже доложил что данные были удалены
         ну похоже с этим не повезло. но вообще и в других местах есть на что посмотреть
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthstreetresp
 `)
             },
 
@@ -6007,21 +6145,6 @@ elevatorblock
         },
         "localorbit": { // the void
             dialogues: {
-                "fairyresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        что ты такое?<+>what
-            SHOWIF::['localorbit__fairy-what', false]
-
-____SHOWIF::['localorbit__fairy-what', true]
-        что ты такое?<+>what2
-        как я могу помочь?<+>help
-        как ты поможешь мне?<+>helpme
-____END
-
-        пока<+>END
-            EXEC::content.classList.remove('showfairy')
-`),
                 "fairy": generateDialogueObject(`
 loop
     RESPOBJ::fairyresp
@@ -6195,15 +6318,6 @@ start
 
 END::vfx({type: "beacon", state: false})
 `),
-                "mthresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        открытие серое?<+>dull
-            SHOWIF::[['EXEC::env.dialogues.mthresp.scannedDull()']]
-
-        неважно<+>CHANGE::++moth
-            FAKEEND::(обратно)
-`),
                 "mth++localorbit": generateDialogueObject(`
 start
     self
@@ -6212,7 +6326,7 @@ start
     moth
         давай, нападай
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthvoidresp
 
 dull
     self
@@ -6229,7 +6343,7 @@ dull
         может с помощью этой штуки мы сможем как следует рассмотреть обески
         если починить её вообще получится
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthvoidresp
 `)	
             },
 
@@ -6382,14 +6496,6 @@ nochange
 
         пока<+>END
 `),
-                "glazikaResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        статус?<+>status
-        чем занималась?<+>absence
-
-        простимся<+>END
-`),
                 "glazika": generateDialogueObject(`
 start
     akizet
@@ -6459,27 +6565,6 @@ absence
             SHOWIF::'ep1_fed'
 
     RESPOBJ::glazikaResponses
-`),
-                "mthdullresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        судно серое?<+>dullvessel
-        видал такое/<-блинскиймоль/?<+>seen
-        глазика?<+>glazika
-            SHOWIF::[["dullvessel__glazika-start"]]
-        это то крушение?<+>wreck
-
-        тело акизет?<+>body
-            SHOWIF::"exm|dullvessel|high-pressure body"
-
-        тёмное место?<+>dark
-            SHOWIF::"beneath_dullvessel"
-
-        комната акизет опять недоступна?<+>locked
-            SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
-
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
 `),
                 "mth++dullvessel": generateDialogueObject(`
 start
@@ -6710,45 +6795,6 @@ locked
         },
         "interview1": { // funny little room
             dialogues: {
-                "interviewResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::interviewer
-        о вас<+>introduction
-            SHOWONCE::
-
-        почему земля?<+>whyyoucame
-            SHOWONCE:: 
-            
-        светлый близнец?<+>brightcousin
-            SHOWONCE::
-            
-        корру?<+>corru
-            SHOWONCE::
-            
-        почему сейчас?<+>whynow
-            SHOWONCE::  
-            SHOWIF::[["interview1__firstchat-whyyoucame"]]
-            
-        что будете делать?<+>whatwillyoudo
-            SHOWONCE::  
-            SHOWIF::[["interview1__firstchat-whynow"]]
-            
-        Зов?<+>thecall
-            SHOWONCE::  
-            SHOWIF::[["interview1__firstchat-whyyoucame"]]
-
-        закончить интервью<+>endinterview
-            SHOWONCE::  
-            SHOWIF::[["interview1__firstchat-whyyoucame"],["interview1__firstchat-thecall"],["interview1__firstchat-whatwillyoudo"],["interview1__firstchat-corru"],["interview1__firstchat-brightcousin"],["interview1__firstchat-whyyoucame"],["interview1__firstchat-introduction"]]
-        
-        продолжить визуализацию<+>integritycontinue
-            SHOWIF::[["interview1__firstchat-endinterview"]]
-
-    RESPONSES::self
-        завершить вспоминание<+>END
-            SHOWIF::[["interview1__firstchat-integritycontinue", false]]
-            EXEC::moveTo('/local/ocean/ship/')
-                `),
                 "dead": generateDialogueObject(`
 start
     sys
@@ -7328,7 +7374,7 @@ behonest
         это не сулит мне ничего хорошего, не правда ли? я...
 
     moth
-        знаю - обещал /<-блинскиймоль/ молчать пока ты работаешь, но тут сейчас происходит что-то очень странное
+        знаю - договорились что буду молчать пока ты работаешь, но тут сейчас происходит что-то очень странное
         ты щас что-то трогаешь?
     
     unknown
@@ -7418,15 +7464,6 @@ ____END
     RESPONSES::self
         ок<+>END
                 `),
-                "mthresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        остатки интервью?<+>interview
-        сущности<+>entities
-            SHOWIF::"interviewbeast_seen"
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`),
                 "mth++interview1": generateDialogueObject(`
 start
     self
@@ -7435,7 +7472,7 @@ start
     moth
         ага?
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthinterviewresp
 
 interview
     self
@@ -7448,7 +7485,7 @@ interview
         as for why you're able to render it,
         that's beyond me
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthinterviewresp
 
 entities
     self
@@ -7461,7 +7498,7 @@ entities
         maybe they're rogue thoughtforms
         they have to eat, right? could be scavengers or something
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthinterviewresp
 `)
             },
 
@@ -7551,12 +7588,6 @@ abrupt
     <span>я знаю Я ЗНАЮ Я ЗНАЮ Я ЗНАЮ</span>
     <span>ОСТАНОВИСЬ ОСТАНОВИСЬ Я ЗНАЮ ОСТАНОВИСЬ</span>
     <span>ПРЕКРАТИ ПРЕКРАТИ</span>'`,
-    /* `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
-    <span>STOP STOP STOP</span>
-    <span>i know I KNOW I KNOW I KNOW</span>
-    <span>STOP STOP STOP I KNOW STOP</span>
-    <span>NO MORE NO MORE</span>'`,*/
                 'memory hole': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ТОЧКА НАЗНАЧЕНИЯ::'недействительно';..ОШИБКА::IÓú=ОШИБКА::;;::-¼¯-üN£«â
     ОШИБКА::ªµõ„'(‚ôÇd7÷ Çe`,
@@ -7596,69 +7627,6 @@ start
         },
         "recosm": { // god page
             dialogues: {
-                "enemyresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        безусловно<+>yes
-            SHOWIF::["recosm_greeted", false]
-        нет<+>no
-            SHOWIF::["recosm_greeted", false]
-
-        видело что-нибудь?<+>ep1seen
-            SHOWIF::["recosm_state", "spared"]
-            SHOWONCE::
-        
-        что-нибудь ещё?<+>cache
-            SHOWONCE::
-            SHOWIF::"recosm__enemy-ep1seen"
-
-        преимущество<+>lockcyst
-            SHOWIF::[["ozo__council-task", false], ["leverageq", true], ["recosm__enemy-ep1seen", true]]
-            SHOWONCE::
-            
-        вопрос<+>qloop
-            SHOWIF::"recosm_greeted"
-
-        пока<+>END
-
-    RESPONSES::sys
-        уничтожить сущность с помощью прокси<+>END
-            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
-            EXEC::env.recentSfx = false;play('criticalError', 1);env.recosm.killGodLow()
-            FAKEEND::(альтернатива пониженной интенсивности)
-
-        договориться и пощадить сущность<+>low_spare
-            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
-            FAKEEND::(альтернатива пониженной интенсивности)
-`),
-                "enemyquestions": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        кто ты?<+>who
-            SHOWIF::"recosm_greeted"
-
-        ты - велзи?<+>velzie
-            SHOWIF::"recosm__enemy-who"
-
-        что это за место?<+>where
-            SHOWIF::"recosm_greeted"
-
-        почему ты мешаешь починкам?<+>why
-            SHOWIF::[["recosm_greeted", true], ["recosm_state", false]]
-            SHOWONCE::
-            
-        прекрати мешать починкам<+>stop
-            SHOWIF::[["recosm__enemy-why", true], ["recosm_state", false]]
-
-        что это за штуки вокруг тебя?<+>what
-            SHOWIF::"recosm_greeted"
-
-        'обманщик'?<+>deceiver
-            SHOWIF::["recosm_state", "spared"]
-
-        неважно<+>loop
-            FAKEEND::(назад)
-`),
                 "lowintensity": generateDialogueObject(`
 start
     sys
@@ -8037,17 +8005,6 @@ start
 
 END::vfx({type: 'beacon', state: false})
 `),
-                "mthresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        what is the background?<+>background
-        this thing seems kinda nice<+>nice
-            SHOWIF::["recosm_state", false]
-        where'd the proxy generator go<+>nogen
-            SHOWIF::["recosm_state", "spared"]
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`),
                 "mth++recosm": generateDialogueObject(`
 start
     self
@@ -8056,7 +8013,7 @@ start
     moth
         i don't think i'm really gonna be able to help you out there lol but i'll do my best
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthrecosmresp
 
 background
     self
@@ -8069,7 +8026,7 @@ background
         and i don't think it's cohesive enough for your mindspike to scan it
         everything but these incoherent thoughtforms are just... separated out
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthrecosmresp
 
 nice
     self
@@ -8083,7 +8040,7 @@ nice
         and demand they have the same freedom?
         it'd be total chaos - we'd never get any decent info out of them again
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthrecosmresp
 
 nogen
     self
@@ -8097,7 +8054,7 @@ nogen
         which, by the way, you really shouldn't do,
         it's going to stay here
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthrecosmresp
 `)
             },
 
@@ -8219,21 +8176,6 @@ nogen
         },
         "embassy": { // embassy page. also discovery, suspicion and 1st part collapse
             dialogues: {
-                "mthembresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        about the groundsmindry<+>groundsmindry
-            SHOWIF::"ep4__entrance"
-        about thoughtform structure<+>structureloop
-            SHOWIF::"embassy__d1_start"
-        about obesk<+>obeskloop
-        about collapse<+>collapseloop
-            SHOWIF::"embassy__d3_start-end"
-        about bstrd<+>bstrd
-            SHOWIF::"embassy__d3_bstrdintro-start"
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`),
                 "mth++embassy": generateDialogueObject(`
 start
     self
@@ -8668,13 +8610,6 @@ start
         НИЗКОЕ<+>END
             EXEC::setTimeout(()=>{setQualityPreference('low');setIntensityPreference(true)}, 500)
 `),
-                "barfriendresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        апельсиновый сок<+>orange
-        неважно<+>END
-            EXEC::pauseSwapCam(false)
-`),
                 "barfriend": generateDialogueObject(`
 start
     sourceless
@@ -8734,21 +8669,6 @@ ____END
     RESPONSES::akizet
         отбыть<+>END
             EXEC::pauseSwapCam(false)
-`),
-                "embassyRelocatorResponses": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        персонал<+>personnel --- ?
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`personnel\`']]
-            HIDEREAD::
-        зона отдыха<+>recreation
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`recreation\`']]
-            HIDEREAD::
-        исследование зова<+>research
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`']]
-            HIDEREAD::
-        неважно<+>END
-            EXEC::pauseSwapCam(false);
 `),
                 "embassyRelocator": generateDialogueObject(`
 start
@@ -8915,16 +8835,6 @@ start
     
     RESPONSES::akizet
         простимся<+>END
-            EXEC::pauseSwapCam(false);vn.done()
-`),
-                "d1_gakvuresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        ложная среда?<+>false
-        жалоба...<+>complaint
-        твоя накидка<+>coat
-            SHOWIF::'gakpause'
-        простимся на сейчас<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `),
                 "d1_gakvu": generateDialogueObject(` 
@@ -9110,16 +9020,6 @@ coat
             SHOWONCE::
 
     RESPOBJ::d1_gakvuresp
-`),
-                "d1_kazkibozkoresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        наше сосредоточение близится<+>focus
-            EXEC::change('PAGE!!d1_kbcollected', true)
-        о чём вы говорили?<+>story
-        как у вас дела?<+>talk
-        простимся на сейчас<+>END
-            EXEC::specialCam(false);pauseSwapCam(false);vn.done()
 `),
                 "d1_kazkibozko": generateDialogueObject(` 
 start
@@ -9374,15 +9274,6 @@ start
     RESPONSES::akizet
         мы скоро начнём<+>END
 `),
-                "d1_cavikresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        наше сосредоточение близится<+>focus
-        теория замкнутого цикла?<+>theory
-        как у тебя дела?<+>talk
-        простимся на сейчас<+>END
-            EXEC::pauseSwapCam(false);vn.done()
-`),
                 "d1_cavik": generateDialogueObject(` 
 start
     sourceless
@@ -9563,13 +9454,6 @@ talk
         i should! i will check in again with them!
     
     RESPOBJ::d1_cavikresp
-`),
-                "d1_attendantresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        времядержец<+>timestopper
-        это всё<+>leave
-            FAKEEND::(уйти)
 `),
                 "d1_attendant": generateDialogueObject(` 
 start
@@ -11164,7 +11048,7 @@ ____END
             EXEC::change("embassy_d2_complete", true);env.bgm.pause();corruRefresh()
 `),
                 // collapse part 1
-
+/*
                 "mothframe": generateDialogueObject(` 
 start
     sys
@@ -11789,7 +11673,7 @@ start
         IT WILL DO NO GOOD HERE, THOUGH
         IF MOVEFRIEND WERE PHYSICALLY DAMAGED, PERHAPS, BUT...
         WHAT DIVISION WAS HE IN BEFORE OURS, AGAIN...?
-    
+
     tozik
         it is dying, but not dead
             EXEC::env.embassy.vn({bg: true, tozik: 'fullview'});
@@ -15125,7 +15009,7 @@ ____END
     RESPONSES::akizet
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
-`)
+`)*/
             },
 
             definitions: {
@@ -16102,16 +15986,6 @@ start
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
 `),
                 // эффигия
-                "drinkquestions": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        кто ты?<+>who
-        как ты здесь оказалась?<+>here
-        можно мне выпить<+>drink
-        джокзи озо<+>ozo
-            SHOWIF::"ozo__council-task"
-        пока<+>END
-`),
                 "bar": generateDialogueObject(`
 loop
     RESPOBJ::drinkquestions
@@ -17846,7 +17720,7 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
                 if(check("recosm_state")) {
                     return "как по мне - явный перебор для такого пустого пространства"
                 } else {
-                    return "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей" // help with infested
+                    return "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей" // --- help with infested
                 }
             }
         } else if (page.dialoguePrefix == "hub") {
@@ -17871,9 +17745,9 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "localcitystreet") {
             page.mothComment = ()=>{
-                var moth = "pretty sure this envoy guy isn't being remembered right lmao"
+                var moth = "лмао кажется этого челика-посла не так хорошо запомнили"
         
-                if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was"
+                if(check('citystreet__envoy-end')) moth = "значит контактным лицом акизет был какой-то \"гордон\"... посмотрим, смогу ли я на него выйти"
             
                 if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
             
@@ -17896,13 +17770,13 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "dullvessel") {
             page.mothComment = ()=>{
-                var moth = "did akizet not have furniture? this ship is so empty... honestly i kinda hope it just got lost through incoherence or something"
+                var moth = "у акизет что, мебели не было? такой пустой корабль... ес честно надеюсь что она просто пропала из-за бессвязности или подобного"
     
                 if(env.stage.name == "dullvessel_beneath") {
-                    moth = "woah... look at this, dude. this is a different thoughtspace, somehow"
+                    moth = "воу... ток погляди на это. каким-то образом это другое мыслепространство"
             
                 } else if(check('ep1_fed')) {
-                    moth = "looks like funfriend's restored a little bit here, there's definitely more data than before"
+                    moth = "похоже развледруг тут потрудился, здесь точно прибавилось данных"
                 }
             
                 if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
@@ -17915,21 +17789,21 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "localocean") {
             page.mothComment = ()=>{
-                return "you can really tell this was a long time ago, jesus. look at how small their island is"
+                return "бож, и впрямь видно что это было очень давно. гляди какой мелкий у них остров"
             }
         } else if (page.dialoguePrefix == "localship") {
             page.mothComment = ()=>{
-                var moth = "this is really that first contact ship, damn. did you know they turned it into a museum?"
+                var moth = "ну ничего себе, эт реально тот самый корабль который установил первый контакт. ты знаешь что они из него музей сделали?"
     
-                if(check("visited_localoceanshipelsewhere")) moth = "so the \"low cohesion\" here probably refers to that... other place, being connected"
-                else if(check("ep1_fed")) moth = "that's weird, does this area seem bigger now?"
-                else if(oldPage.dialoguePrefix == "interview1") moth = "figures we finally get a compatible corrucyst with some real data, and it has something destroying it"
+                if(check("visited_localoceanshipelsewhere")) moth = "так видимо \"низкая связность\" здесь подразумевает то... другое место"
+                else if(check("ep1_fed")) moth = "странно, тебе это место не кажется больше?"
+                else if(oldPage.dialoguePrefix == "interview1") moth = "ну разумеется, мы получаем совместимую корруцисту с реальными данными - и её непонятно что ломает изнутри"
             
                 return moth
             }
         } else if (page.dialoguePrefix == "interview1") {
             page.mothComment = ()=>{
-                var moth = "idk how you're rendering this. i'm not getting anything"
+                var moth = "хз как ты это визуализируешь. на моём конце ничего"
                 if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
                 return moth
             }
@@ -17939,20 +17813,20 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "localdepths") {
             page.mothComment = ()=>{
-                if(check('ep0_epilogue', 'started')) return "i think our friend altered this one while you were out, i'm seeing less data... gotta keep its leverage somehow i guess"
-                return "don't worry, i'm seeing this. keep going"
+                if(check('ep0_epilogue', 'started')) return "думаю наш приятель поменял вот эту пока нас не было, я вижу меньше данных... ну, надо как-то сохранять рычаг давления"
+                return "не волнуйся, я тоже это вижу. продолжай"
             }
         } else if (page.dialoguePrefix == "localuncosm") {
             page.mothComment = ()=>{
-                return "the readout here is like... complete nonsense. is there even anything you can interact with? does it hurt?"
+                return "отсюда считывается просто... полный бред. ты хоть с чем-то можешь взаимодействовать? не больно?"
             }
         } else if (page.dialoguePrefix == "localuncosmwhere") {
             page.mothComment = ()=>{
-                return "yeah i got nothing here. seems like you could give it some input, but... no clue what it wants"
+                return "дааа не знаю тут. похоже ты можешь что-то ввести, но... без понятия чего оно хочет"
             }
         } else if (page.dialoguePrefix == "sec") {
             page.mothComment = ()=>{
-                let moth = "don't look at me lol"
+                let moth = "на меня не смотри лол"
         
                 if(check("secavik", "beaconed")) moth = "that unity thing actually worked on this? it didn't even seem like there was anything left... weird"
                 else if(check("secavik")) moth = "looks like it lost coherence once you pulled that memory from it"
@@ -17963,9 +17837,9 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "recosm") {
             page.mothComment = ()=>{
-                var moth = "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense..."
+                var moth = "так это и правда \"уголок здравомыслия\", а? несмотря на бессвязность всех отдельных частей, показания - не полная бессмыслица..."
     
-                if(check("recosm_state")) moth = "so you're going to let it live? that's nice of you... just hope it doesn't come back to bite us"
+                if(check("recosm_state")) moth = "так ты оставишь его в живых? мило с твоей стороны... просто понадеемся что это нам не аукнется"
                 
                 if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
                 return moth
@@ -17976,9 +17850,9 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             }
         } else if (page.dialoguePrefix == "localship2") {
             page.mothComment = ()=>{
-                let moth = "what's up buddy"
+                let moth = "чё как дружище"
                 if(env.currentDialogue.justChanged) moth = "что-нибудь ещё на уме?"
-                if(!check("mth++localship2-name")) moth = "ok what the fuck is this"
+                if(!check("mth++localship2-name")) moth = "ок что это за хуйня"
             
                 return moth
             }
