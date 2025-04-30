@@ -143,7 +143,7 @@ env.dialogueActors["corruru"] = {
 
 env.dialogues.mthglobalresp.whatnext = ()=>{
     if(!check('interview1__firstchat-behonest')) { /* before velziebreak */
-             if(check('visited_localcitystreet') && check('visited_localoceanshipinterview') && check('visited_localdullvessel'))           return "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути"
+        if(check('visited_localcitystreet') && check('visited_localoceanshipinterview') && check('visited_localdullvessel'))           return "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути"
         else if(check('visited_localcitystreet') && check('visited_localoceanship') && check('visited_localdullvessel'))                    return "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё раз"
         else if(check('visited_localcitystreet') && check('visited_localocean') && check('visited_localdullvessel'))                        return "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?"
         else if(check('visited_localcitystreet') && check('visited_localorbit') && !check('visited_localdullvessel'))                       return "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать"
@@ -186,6 +186,24 @@ env.dialogues.mthglobalresp.whatnext = ()=>{
         else                                                                                                                                return "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo"
     }
 }
+env.dialogues.mthglobalresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        кто...<+>who
+        что...<+>what
+        почему...<+>why
+        что ты думаешь об этом всём?<+>mothep1end
+            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
+        мысли об обвале?<+>ep3thoughts
+            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
+        мысли об обвале?<+>ep4thoughts
+            SHOWIF::"ep4__entrancefinal"
+        преимущество получено<+>leverage
+            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
+            SHOWONCE::
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
+`),
 env.dialogues.mthcityresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -250,7 +268,7 @@ RESPOBJ::
             SHOWIF::[['visited_localorbit']]
         это всё<+>CHANGE::++moth
             FAKEEND::(назад)
-`)  
+`) 
 env.dialogues.mthlocalfunr = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -263,6 +281,17 @@ RESPOBJ::
         хватит о развледруге<+>loop
             FAKEEND::(назад)
 `)
+env.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
+    try {
+        if(flags.detectedEntities['..__НАШЕ_СУДНО_СЕРОЕ__..'].entities.container.scanned) {
+            return check == true
+        } else {
+            return check == false
+        }
+    } catch(e) {
+        return check == false
+    }
+}
 env.dialogues.generalsentryResponses = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -798,24 +827,6 @@ proceed
         ]
     },
         },
-        "mthglobalresp": generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        кто...<+>who
-        что...<+>what
-        почему...<+>why
-        что ты думаешь об этом всём?<+>mothep1end
-            SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
-        мысли об обвале?<+>ep3thoughts
-            SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
-        мысли об обвале?<+>ep4thoughts
-            SHOWIF::"ep4__entrancefinal"
-        преимущество получено<+>leverage
-            SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
-            SHOWONCE::
-        это всё<+>CHANGE::++moth
-            FAKEEND::(назад)
-        `),
         "++moth": {
             end: mothHasUnreadCheck,
             start: {
@@ -2109,7 +2120,7 @@ ____END
         "13 mod(s) initialized:": "13 модификаций запущено:",
         "14 mod(s) initialized:": "14 модификаций запущено:",
         "'mods removed';'refresh for clean reinitialization'": "'убраны модификации';'обновите страницу для чистой реинициализации'",
-        "!!__actual_site_error__!!": "!!__реальная_ошибка_сайта__!!",
+        "actual_site_error": "реальная_ошибка_сайта",
         "something actually fucked up (not a part of the story) details are in the log and console": "что-то на самом деле наебнулось (не часть истории), подробности в логе и консоли (алсо сорян но дальше вы по-английски)",
 
         "WARNING": "ПРЕДУПРЕЖДЕНИЕ",
@@ -2185,6 +2196,8 @@ ____END
         "our-dull-vessel": "наше-судно-серое",
         "our dull vessel": "НАШЕ СУДНО СЕРОЕ",
 
+        
+        "the_dull_contrivance": "открытие_серое",
         "the dull contrivance": "открытие серое",
 
         "the_embassy": "ПОСОЛЬСТВО",
@@ -2551,19 +2564,19 @@ ____END
     ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обитель <span definition="ПРИМЕЧАНИЕ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'подразумевает изменённое состояние проживания'">мертвецов</span>'</span>`,
 
-        "gate::the embassy": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-    ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+        "gate::the embassy": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+    ::ПУНКТ НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`,
 
         "our dull vessel": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся локация';'изменение состояния мыслеформы'
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'некоторые элементы обладают предельно низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
 
         'their vessel': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-    ::LOW-DIMENSIONAL
+    ::НИЗКОРАЗМЕРНАЯ
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'multiple low cohesion entities'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'близнецы нашли нас быстро'</span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'множество сущностей с низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'мёртвые судна окружали наш <span class="code">шпиль</span>';'близнецы нашли нас быстро'</span>`,
 
         "gate::gate::gate::": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМО
@@ -4706,7 +4719,7 @@ where
     <span>эти величественные иконы их контроля</span>
     <span>пусть они не наши</span>
     <span>я испытываю чувство гордости</span>
-    <span>как же наши светлые близнецы покорили свою <span class="code">поверхность</span>!</span>`,
+    <span>как же наши светлые близнецы покорили свою <span class="code">поверхность</span>!</span>'`,
                 "they watch": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкое разделение'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
@@ -4745,7 +4758,7 @@ start
     envoy
         И, признаться честно, это помогает с общественным имиджем. Видеть Вас здесь, среди всех этих людей...
             SHOWONCE::
-        Помогает вытравить грёбанную панику вокруг вирусов. // << ужас мы так ничего с этим и не сделали
+        Помогает вытравить грёбанную панику вокруг вирусов.
             SHOWONCE::
     
     akizet
@@ -5919,7 +5932,7 @@ start
     RESPONSES::akizet
         я поговорю<+>END
                 `),
-                "mth++localcitystreet": generateDialogueObject(`
+                "mth++citystreet": generateDialogueObject(`
 start
     self
         у меня есть вопрос об этой мыслеформе
@@ -6040,9 +6053,10 @@ elevatorblock
                 /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине.",
 
 
-                /*envoy*/ "wwEL LL isn' t t that peculiar ? ?'": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
+                /*envoy*/ "wwEL LL isn' t t that peculiar ? ?": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
                 /*envoy*/ "elerv ator isn torking": "литф н еработает",
                 /*envoy*/ "gu ess w e can    t t al k never talk": "пола гга ю мы може м пого гово ор и т ть никогда не поговорить",
+                /*envoy*/ "no talking so rry sorry sorry leave ovfice": "", // --- кскскск слизнячок
                 
                 /*moth*/ "uhh... ok": "эээ... ладно",
                 /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить с развледругом об этом",
@@ -6070,7 +6084,7 @@ elevatorblock
 
                 /*stre wal k*/ "hurts": "больно",
 
-                /*television*/ "...heavier storms are inbound...advisory remains in effect...": "", // звезды ЗВЕЗДЫ
+                /*television*/ "...heavier storms are inbound...advisory remains in effect...": "", // звезды ЗВЕЗДЫ ЗВЕЕЕЕЕЕЕЕЕЕЕЕЕЗДЫ
                 
                 /*effigy*/ "oh...!": "о...!",
                 /*effigy*/ "that's the way back!": "вот она, дорога обратно!",
@@ -6105,11 +6119,11 @@ elevatorblock
             entityDescriptions: {
                 "cashier": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
     
                 "envoy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
 
                 "menu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','повторяющаяся обстановка'`,
@@ -6120,7 +6134,7 @@ elevatorblock
 
                 "cloaked streetwalker": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
 
                 "stre wal k": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
     ::НЕРАЗБЕРИМАЯ ПОДПИСЬ
@@ -6129,14 +6143,14 @@ elevatorblock
     
                 "electric face box": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся обстановка'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
 
                 "beautiful parasite": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательный <span class='code'>цветок</span>'</span>`,
 
                 "the room high up": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ/span>`,
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
                 'the roothe room hithe room gh u the roomp': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
@@ -6462,7 +6476,7 @@ change
             EXEC::env.dullVessel.swapLocation()
     
     sys
-        ATTENTION::'thoughtform activity detected'::'dullvessel'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'::'судносерое'
 
     pilot cyst
         теперь
@@ -6502,7 +6516,7 @@ start
         моя глазика!
     
     glazika
-        ЗДРАААААВВВССТВУЙТЕ акизетеше
+        ЗДРААААAВВСCТВУЙТЕ акизетеше
         так рада вновь вас видеть!
         с каждым разом ваши прогулки по поверхности становятся всё длиннее!
     
@@ -6699,6 +6713,8 @@ locked
                 /*glazika*/ "we had to fix one of the walls because it was acting up!": "пришлось починить одну из стен потому что она сбоила!",
                 /*akizet*/ "ah, thank you, my glazika": "ах, благодарю, моя глазика",
                 /*sourceless*/ "i did not say anything about a dream...": "я ничего не говорила о каком-то сне...",
+
+                /*moth*/ "that \"container\" looks familiar": "этот \"контейнер\" выглядит знакомо",
             },
 
             entityDescriptions: {
@@ -6772,9 +6788,13 @@ locked
                 "stilted shore": "неестественный берег",
 
                 "dive": "нырнуть",
+                "rise": "вынырнуть",
             },
 
             entityDescriptions: {
+                "the embassy": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
+    ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
                 'gate::the depths': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
@@ -6782,7 +6802,6 @@ locked
                 'stilted shore': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'символизм'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'сцена нашего θтрёхглазого представления'</span>`,
-                // it does not
             }
         },
         "localship": { // their vessel
@@ -7560,6 +7579,8 @@ abrupt
             },
 
             strings: {
+                "UNKNOWN": "НЕИЗВЕСТНО",
+
                 'NOT NOW': 'НЕ СЕЙЧАС',
                 'FORGIVE ME FOR THIS': 'ПРОСТИТЕ МЕНЯ ЗА ЭТО',
                 'GOODBYE': 'ДО СВИДАНИЯ',
@@ -17426,6 +17447,7 @@ env.mutateObserver = new MutationObserver(()=>{
     ouch('#stage-navigator', true);
     ouch('.reply', false, true);
     ouch('title', true);})
+    updateryy()
 env.mutateObserver.observe(body, env.mutateConfig)
 
 console.log('observer all good!')
@@ -17681,30 +17703,9 @@ env.pageHasMothComment = function() {
     }
 }
 
-
-
-env.mutateObserverPageChange = new MutationObserver(()=>{
-    console.error("time to")
-    setTimeout(()=>{
-        console.error("localize!!!")
-        processTranslation();
-        processTranslation(document.querySelector("#meta-menu",true))
-        processTranslation(document.querySelector("#entity-menu",true))
-        processTranslation(document.querySelector("#system-menu",true))
-        processTranslation(document.querySelector(`#mindspike-scanner`,true))
-        processTranslation(document.querySelector(`#static`,true))
-        processTranslation(document.querySelector(`#minireadout`,true));
-        processTranslation(document.querySelector(`#readout`,true));
-        processTranslation(document.querySelector(`#definition-box`,true));
-        processTranslation(document.querySelector(`#mod-warning`,true));
-        ouch(".scanned"); ouch(".unscanned");
-        ouch('#stage-navigator', true);
-        ouch('.reply', false, true);
-        ouch('title', true)
-        if(check('hub__funfriend-ep1fed')) env.localization.entityDescriptions['the embassy'] = `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-    ::ПУНКТ НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'
+function updateryy() {
+    if(check('hub__funfriend-ep1fed')) env.localization.page.localocean.entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`
-        getLocalizationForPage(true)
         if (page.dialoguePrefix == "fbx") { 
             page.mothComment = ()=>{
                 var moth = "чё как?"
@@ -17743,7 +17744,7 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
                 startName: "об этой мыслеформе",
                 getDest: ()=>{return `mth++${page.dialoguePrefix}`},
             }
-        } else if (page.dialoguePrefix == "localcitystreet") {
+        } else if (page.dialoguePrefix == "citystreet") {
             page.mothComment = ()=>{
                 var moth = "лмао кажется этого челика-посла не так хорошо запомнили"
         
@@ -17993,7 +17994,28 @@ env.mutateObserverPageChange = new MutationObserver(()=>{
             page.mothComment = ()=>{
                 var moth = "кажись ты сейчас в петле бессвязности... знаю я такое. здесь вряд ли окажется что-то полезное"
                 return moth
-    }}}, 2)})
+    }}
+}
+
+env.mutateObserverPageChange = new MutationObserver(()=>{
+    console.error("time to")
+    setTimeout(()=>{
+        console.error("localize!!!")
+        processTranslation();
+        processTranslation(document.querySelector("#meta-menu",true))
+        processTranslation(document.querySelector("#entity-menu",true))
+        processTranslation(document.querySelector("#system-menu",true))
+        processTranslation(document.querySelector(`#mindspike-scanner`,true))
+        processTranslation(document.querySelector(`#static`,true))
+        processTranslation(document.querySelector(`#minireadout`,true));
+        processTranslation(document.querySelector(`#readout`,true));
+        processTranslation(document.querySelector(`#definition-box`,true));
+        processTranslation(document.querySelector(`#mod-warning`,true));
+        ouch(".scanned"); ouch(".unscanned");
+        ouch('#stage-navigator', true);
+        ouch('.reply', false, true);
+        ouch('title', true)}, 2)
+        updateryy()})
 env.mutateObserverPageChange.observe(body, {attributes: true, attributeFilter: ['page']})
 
 
