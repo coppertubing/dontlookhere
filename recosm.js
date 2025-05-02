@@ -1,4 +1,4 @@
-env.localization.page['recosm']: {dialogues: {},
+env.localization.page['recosm'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},

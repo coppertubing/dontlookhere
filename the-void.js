@@ -1,4 +1,4 @@
-env.localization.page['localorbit']: {dialogues: {},
+env.localization.page['localorbit'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},

@@ -1,4 +1,4 @@
-env.localization.page['localuncosmwhere']: {dialogues: {},
+env.localization.page['localuncosmwhere'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},
@@ -54,7 +54,7 @@ env.uncode = {
     }
 }
 
-env.localization.page['sec']: {dialogues: {},
+env.localization.page['sec'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},

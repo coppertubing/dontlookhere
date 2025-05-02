@@ -1,4 +1,4 @@
-env.localization.page['localcity']: {dialogues: {},
+env.localization.page['localcity'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},

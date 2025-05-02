@@ -1,4 +1,4 @@
-env.localization.page['dullvessel']: {dialogues: {},
+env.localization.page['dullvessel'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},

@@ -1,4 +1,4 @@
-env.localization.page['beneathdepths']: {dialogues: {},
+env.localization.page['beneathdepths'] = {dialogues: {},
     definitions: {}, 
     strings: {}, 
     entityDescriptions: {},
