@@ -1,21 +1,5 @@
 /* 
-    cor-RU - a full russian adaptation mod
-    by @dutokrisa, @shatteredstars and @bra1nslug_
-    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
-
-    adaptation up until the end of EP0 currently availible
-
-    thank you for using our mod
-
-         ----------
-
-    cor-RU - мод на полную русскую адаптацию
-    от @dutokrisa, @shatteredstars и @bra1nslug_
-    на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
-
-    в данный момент доступна полноценная адаптация до EP0
-
-    спасибо за использование
+    
 */
 console.log('hiii')
 
@@ -1266,11 +1250,11 @@ why
             SHOWIF::"ep1_fed"
         ...именно я<+>why_callme
         ...у меня получилось подключиться<+>why_connect
-            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         ...я понимаю эти мысли<+>why_thoughts
-            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         ...я слышу музыку<+>why_music
-            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
+            SHOWIF::[["EXEC::page.dialoguePrefix != \`fbx\`"]]
         неважно<+>loop
             FAKEEND::(назад)
 
@@ -2272,9 +2256,9 @@ ____END
         "NOTE::'return to hub';'eject'": "ПРИМЕЧАНИЕ::'вернуться в хаб';'отключение'",
         "NOTE::'review scanned and detected entities'": "ПРИМЕЧАНИЕ::'просмотр просканированных и обнаруженных сущностей'",
         "NOTE::'system management'": "ПРИМЕЧАНИЕ::'управление системой'",
-        "NOTE::'influence thoughtspace';'third-party installation'": "ПРИМЕЧАНИЕ::'влияние на мыслепространства';'стороння установка'",
+        "NOTE::'influence thoughtspace';'third-party installation'": "ПРИМЕЧАНИЕ::'влияние на мыслепространства';'сторонняя установка'",
         "REALITY::'no effect'": "РЕАЛЬНОСТЬ::'не имеет эффекта'",
-        "UNITY::'enables additional ACT on ОТЗЫВЧИВАЯ МЫСЛЕФОРМАs'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
+        "UNITY::'enables additional ACT on responsive thoughtforms'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
         "HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'": "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'",
         
         "GAD": "ГАН",
@@ -17301,7 +17285,7 @@ start
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
     <span style='color: var(--friend-color)'>+</span>'метка <span onmouseenter="javascript:env.secavik.cavikDmg(1);document.querySelectorAll('.message.cavik').forEach(el=>el.querySelector('img').src = '/img/sprites/obesk/cavik/paintrait.gif')" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'пещерный город';'я хочу очнуться';'я хочу домой'">олтазни</span>'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращ“—» ¯x¶›¢Ã°!
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращ“—» ¯x¶›¢Ã°!
     ::ОШИБКА::'окончен поток'недейстОШИБКА::ИÓú=ER::Й"¨úр::äÀ*^Уó¬ól£«â'`,
 
 
