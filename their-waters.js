@@ -4,5 +4,3 @@ env.localization.page['localocean'] = {dialogues: {},
     entityDescriptions: {},
 }
 
-
-console.log("   %ctheir-waters.js successful - @cor-RU", 'color:rgb(229, 198, 22)')

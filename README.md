@@ -20,6 +20,7 @@ EP0 протестировано @akizetism
 спасибо за использование
 
 # navigation
+### loader: https://coppertubing.github.io/cor-RU/everystuff.js
 
 https://coppertubing.github.io/cor-RU/everystuff.js
 

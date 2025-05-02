@@ -3,6 +3,3 @@ env.localization.page['localcity'] = {dialogues: {},
     strings: {}, 
     entityDescriptions: {},
 }
-
-
-console.log("   %ctheir-city.js successful - @cor-RU", 'color:rgb(229, 198, 22)')

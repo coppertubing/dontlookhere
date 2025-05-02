@@ -60,6 +60,3 @@ env.localization.page['sec'] = {dialogues: {},
     entityDescriptions: {},
 }
 
-
-
-console.log("   %cmemory-hole.js successful - @cor-RU", 'color:rgb(229, 198, 22)')
