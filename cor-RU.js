@@ -43,8 +43,8 @@ cor_ru = {
     css: `
 @font-face {
     font-family: 'spacemono';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/modfont.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -52,8 +52,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcode';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barc.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barc.woff') format('woff') !;
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff') !;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -61,8 +61,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcodetext';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barcode.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barcode.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -70,7 +70,7 @@ cor_ru = {
 
 @font-face {
     font-family: 'beech';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/beechy.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -282,43 +282,43 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     // da list
 
     dalist: [
-        "https://coppertubing.github.io/cor-RU/everystuff.js",
+        "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
 
-        "https://coppertubing.github.io/cor-RU/basement.js",
+        "https://coppertubing.github.io/cor-RU/localization/basement.js",
 
-        "https://coppertubing.github.io/cor-RU/auth-layer.js",
-        "https://coppertubing.github.io/cor-RU/hub.js",
+        "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
+        "https://coppertubing.github.io/cor-RU/localization/hub.js",
 
-        "https://coppertubing.github.io/cor-RU/their-city.js",
-        "https://coppertubing.github.io/cor-RU/city-surface.js",
+        "https://coppertubing.github.io/cor-RU/localization/their-city.js",
+        "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
 
-        "https://coppertubing.github.io/cor-RU/the-void.js",
-        "https://coppertubing.github.io/cor-RU/our-dull-vessel.js",
+        "https://coppertubing.github.io/cor-RU/localization/the-void.js",
+        "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
 
-        "https://coppertubing.github.io/cor-RU/their-waters.js",
-        "https://coppertubing.github.io/cor-RU/their-vessel.js",
-        "https://coppertubing.github.io/cor-RU/the-funny-little-room.js",
+        "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
+        "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
+        "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
 
-        "https://coppertubing.github.io/cor-RU/the-depths.js",
+        "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
 
-        "https://coppertubing.github.io/cor-RU/uncosm.js",
-        "https://coppertubing.github.io/cor-RU/recosm.js",
-        "https://coppertubing.github.io/cor-RU/memory-hole.js",
+        "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
+        "https://coppertubing.github.io/cor-RU/localization/recosm.js",
+        "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
 
-        "https://coppertubing.github.io/cor-RU/clemens-romanus.js",
+        "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
 
-        "https://coppertubing.github.io/cor-RU/embassy.js",
-        "https://coppertubing.github.io/cor-RU/golem-maintenance.js",
-        "https://coppertubing.github.io/cor-RU/pale-halls.js",
+        "https://coppertubing.github.io/cor-RU/localization/embassy.js",
+        "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
+        "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
 
-        "https://coppertubing.github.io/cor-RU/beneath-abyss.js",
-        "https://coppertubing.github.io/cor-RU/beneath-parasite.js",
-        "https://coppertubing.github.io/cor-RU/beneath-maze.js",
+        "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
+        "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
+        "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
 
-        "https://coppertubing.github.io/cor-RU/frame.js",
+        "https://coppertubing.github.io/cor-RU/localization/frame.js",
 
-        "https://coppertubing.github.io/cor-RU/cache.js",
-        "https://coppertubing.github.io/cor-RU/jokzi-ozo.js",
+        "https://coppertubing.github.io/cor-RU/localization/cache.js",
+        "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js",
     ]
 }
 
