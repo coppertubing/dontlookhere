@@ -586,6 +586,7 @@ env.localization['strings'] = {
     "advanced operations": "продвинутые операции",
     "load neural string": "загрузить нейронную строку",
     "import string": "импорт строки",
+    "'paste data';'exercise caution'": "'вставка данных';'проявляйте осторожность'",
     "modification url list": "url-лист модификаций",
     "Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.": "URL-адреса должны быть разделены новыми строками. Нажатие «Сохранить» вручную загрузит и инициализирует все перечисленные модификации. С этого момента они будут инициализироваться автоматически по порядку, пока не будут убраны.",
     "save list": "сохранить",

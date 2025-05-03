@@ -215,22 +215,35 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
             return
     },
-    processStatic: function () {
+    processStatic: function (force) {
         cor_ru.processWeirdTranslation('title', true);
         cor_ru.processWeirdTranslation(".enter", 'page');
-        processTranslation(document.querySelector(`#static`));
+        if (force) processTranslation(document.querySelector(`#static`), true);
+        else processTranslation(document.querySelector(`#static`));
     },
-    processWarning: function () {
-        processTranslation(document.querySelector(`.cryptowarn`));
-        processTranslation(document.querySelector(`#mod-warning`));
-        processTranslation(document.querySelector(`#gpu-warning`));
-        processTranslation(document.querySelector(`#wide-warning`));
+    processWarning: function (force) {
+        if (force) {
+            processTranslation(document.querySelector(`.cryptowarn`), true);
+            processTranslation(document.querySelector(`#mod-warning`), true);
+            processTranslation(document.querySelector(`#gpu-warning`), true);
+            processTranslation(document.querySelector(`#wide-warning`), true);
+        } else {
+            processTranslation(document.querySelector(`.cryptowarn`));
+            processTranslation(document.querySelector(`#mod-warning`));
+            processTranslation(document.querySelector(`#gpu-warning`));
+            processTranslation(document.querySelector(`#wide-warning`));
+        }
     },
-    processMenu: function () {
-        processTranslation(document.querySelector("#meta-menu"));
+    processMenu: function (force) {
         cor_ru.processWeirdTranslation('.ci-masks', 'definition');
-        processTranslation(document.querySelector("#system-menu"));
         cor_ru.processWeirdTranslation('#savetext', 'placeholder');
+        if (force) {
+            processTranslation(document.querySelector("#meta-menu")), true;
+            processTranslation(document.querySelector("#system-menu"), true);
+        } else {
+            processTranslation(document.querySelector("#meta-menu"));
+            processTranslation(document.querySelector("#system-menu"));
+        }
     },
     processReply: function () {
         cor_ru.processWeirdTranslation('.reply', 'name');
@@ -341,9 +354,9 @@ addResources(cor_ru.dalist)
 
 if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
 getLocalizationForPage(true);
-cor_ru.processStatic();
-cor_ru.processMenu();
-processTranslation();
+cor_ru.processStatic(true);
+cor_ru.processMenu(true);
+processTranslation(true);
 cor_ru.observerPageObserve();
 
 
