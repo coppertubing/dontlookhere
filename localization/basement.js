@@ -605,7 +605,7 @@ start
         ok<+>END
 `)
 
-env.localization.page["hub"].dialogues.mthhubresp = generateDialogueObject(`
+env.localization.page["fbx"].dialogues.mthhubresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         где нашли эти цисты?<+>where
