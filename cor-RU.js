@@ -43,8 +43,8 @@ cor_ru = {
     css: `
 @font-face {
     font-family: 'spacemono';
-    src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/modfont.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/modfont.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/modfont.woff') format('woff');
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -52,8 +52,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcode';
-    src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barc.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barc.woff') format('woff') !;
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barc.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barc.woff') format('woff') !;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -61,8 +61,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcodetext';
-    src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barcode.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/barcode.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barcode.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/barcode.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -70,7 +70,7 @@ cor_ru = {
 
 @font-face {
     font-family: 'beech';
-    src: url('https://raw.githubusercontent.com/sshatteredstars/modfonts/main/beechy.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/beechy.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
