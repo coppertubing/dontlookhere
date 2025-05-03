@@ -1,6 +1,8 @@
 env.localization.page['fbx'] = {dialogues: {},
     definitions: {}, 
     strings: {
+        "about this job": "об этой работе",
+
         "DENDRITIC CYST": "ДЕНДРИТНАЯ ЦИСТА",
         "touch": "потрогать",
         "lift": "поднять",
