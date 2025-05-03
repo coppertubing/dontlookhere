@@ -1,5 +1,7 @@
 env.localization.page['fbx'] = {dialogues: {},
     definitions: {}, 
-    strings: {}, 
+    strings: {
+        "about this job": "об этой работе"
+    }, 
     entityDescriptions: {},
 }
