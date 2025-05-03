@@ -343,6 +343,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         "https://coppertubing.github.io/cor-RU/localization/cache.js",
         "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js",
+
+        "https://coppertubing.github.io/cor-RU/load.js",
     ]
 }
 
