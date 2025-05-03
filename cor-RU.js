@@ -279,6 +279,17 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     }),
     observerWarnObserve: function () {cor_ru.observerWarn.observe("???", { childList: true })}, UNFINISHED*/
 
+    // tehehe we are devs now
+
+    devElement: `<div class="devs ulbox tdone cor-ru">
+    <ul class="tdone">
+        <h4 class="tdone">НЕОФИЦИАЛЬНАЯ КОМАНДА ПЕРЕВОДА</h4>
+        <li class="tdone"><span definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
+        <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
+        <li class="tdone"><span definition="@bra1nslug_ в discord!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
+    </ul>
+</div>`,
+
     // da list
 
     dalist: [
@@ -324,11 +335,11 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     console.log("%cdefined! making them work now... - @cor-RU", 'color:rgb(229, 142, 22)')
 
-
-document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
+document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
 
 addResources(cor_ru.dalist)
 
+if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
 getLocalizationForPage(true);
 cor_ru.processStatic();
 cor_ru.processMenu();
@@ -340,6 +351,6 @@ cor_ru.observerPageObserve();
     console.log("%ccontact @dutokrisa, @shatteredstars or @bra1nslug_ if you have any questions, suggestions or bugs to report... - @cor-RU", 'color:rgb(229, 142, 22)')
 
     
-setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa, @shatteredstars и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
-setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
+// setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa, @shatteredstars и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
+// setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
     

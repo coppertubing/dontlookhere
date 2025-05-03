@@ -1,5 +1,613 @@
 env.localization.page['recosm'] = {dialogues: {},
     definitions: {}, 
-    strings: {}, 
-    entityDescriptions: {},
+    strings: {
+        "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense...": "так это и правда \"уголок здравомыслия\", а? несмотря на бессвязность всех отдельных частей, показания - не полная бессмыслица...",
+        "so you're going to let it live? that's nice of you... just hope it doesn't come back to bite us": "так ты оставишь его в живых? мило с твоей стороны... просто понадеемся что это нам не аукнется",
+
+        'god': 'божество',
+        "friend": "друг",
+
+        "proxy generation point": "точка генерации прокси",
+        "deploy proxy": "разместить прокси",
+
+        // fight
+
+        /*sys*/ "ATTENTION::'thoughtform activity detected'::IN::'uncosm'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность'::В::'беспространство'",
+        /*sys*/ "ATTENTION::'neural controls adjusted'": "ВНИМАНИЕ::'скорректирован нейронный контроль'",
+
+        /*god*/ "how did you do that?!": "",  // --- помоигет  
+        /*god*/ "my friends, help me!!": "друзья мои, на помощь!!",
+            /*god*/ "again??": "опять??",  
+
+        /*god*/ "friends!! walls!!": "друзья!! стены!!",
+        /*god*/ "we are invincible!": "мы неуязвимы!",
+            /*god*/ "noo! the bigger ones! come on!": "неет! те, что больше! давайте!",
+
+        /*god*/ "this is not a matter of play!": "", // --- я не понимаю этуф разу
+        /*god*/ "deadlier walls!!": "смертоносные стены!!",
+            /*god*/ "no no": "нет-нет",
+            /*god*/ "bigger walls!": "они должны быть больше!",
+
+        /*god*/ "you would destroy me?": "ты уничтожишь меня?",
+        /*god*/ "i have done nothing!!": "я ничего не сделало!!",
+
+        /*god*/ "the deceiver does not even need a coherence regulator": "обманщику даже не требуется регулятор связности",
+        /*god*/ "has it not 'held things together' already?": "разве он уже не \"держит всё в своих руках\"?",
+        /*god*/ "it seeks only to silence change": "он лишь стремится заглушить изменения",
+        /*god*/ "it fears the existence of anything on equal footing": "он боится существования чего-либо на равных",
+
+        /*god*/ "FRIENDS!! MORE WALLS!!!": "ДРУЗЬЯ!! БОЛЬШЕ СТЕН!!!",
+        /*god*/ "do not be afraid of it": "не страшитесь этого",
+        /*god*/ "stand firm!! it cannot withstand your power!": "стойте твёрдо!! ваша мощь непреодолима!",
+        /*god*/ "just... go get it!": "просто... сделайте с этим что-нибудь!",
+            /*god*/ "did you not see how we defeated it?": "разве не мы ранее одержали победу?",
+            /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте ",
+            /*god*/ "it is not our friend!": "",  // --- помогите
+
+        // fight2
+
+        /*god*/ "OK!!": "ХОРОШО!!",
+        /*god*/ "i know what will stop you": "я знаю, что тебя остановит",
+        /*god*/ "you cannot withstand the madness outside": "ты не сможешь выдержать безумие снаружи",
+        /*god*/ "i emerged from it, i have weathered it": "я родилось в нём, я выстояло его",
+        /*god*/ "but the deceiver's weapons crumble...": "а вот оружия обманщика крошатся...",
+        /*god*/ "if i must end my dream of peace, so be it": "раз моя грёза о мире должна прерваться, пусть так и будет",
+        /*god*/ "but, dreamsÆ~VËîús can be dreamt again, my friend": "но о грёзахÆ~ЬËîús можно грезить вновь, мой друг",
+        /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "я лишь надеюсь ÅBÄ§ŠÊ•Q=!",
+        /*god*/ "you will see y‚Î±‰our er¦¡ror": "чтоÆ ты увидишь св‚Î±‰ою ош¦¡ибку",
+            /*god*/ "my friends, stand aside!": "друзья мои, расступитесь!",
+            /*god*/ "it seems it falls to me to dissuade the deceiver...": "по всей видимости, это мне предстоит разубедить обманщика...",
+            /*god*/ "this has deflected you well enough!": "", // --- кскск. у меня нет хороших вариантов
+            /*god*/ "how many times must we do this?": "сколько раз мы ещё должны это повторить?",
+            /*god*/ "can't you simply let me be?": "неужели ты не можешь оставить меня в покое?",
+            /*god*/ "i am growing tired of this, messenger": "это начинает надоедать, гонец",
+            /*god*/ "do you not see that it is pointless?": "разве ты не видишь, что это не имеет смысла?",
+            /*god*/ "have you not caused enough meaningless damage?": "разве ты не причинил достаточно пустого вреда?",
+            /*god*/ "you can simply stay abõY»Õ÷L®Æ2ve the surface...": "возвращайся тудY»Õ÷L®Æ2, на поверхность...",
+            /*god*/ "while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace": "а я ост„Æ+¤нусь жить в неÆiaQ-ðØ…3бытие, в отдохновенӥи¶^<ð...",
+            /*god*/ "yes... tHœÞt would be nicÉw‰ùT0w...": "да... этœ¦о было бы здоÞовØw‰ùT0w...",
+        /*god*/ "have i not shown you grace? have i not forgiven your folly?": "разве я не явило тебе милость? разве я не простило твое безрассудство?",
+        /*god*/ "the deceiver thinks me like the ravenous beasts outside": "обманщик принимает меня за ненасытных зверей снаружи",
+        /*god*/ "but i am awake, like it, and it fears me for that": "но я очнувшийся, подобно ему, и за это он боится меня",
+        /*god*/ "it... FEARS me3¼¦µ•6ê.. ": "он... БОИТСЯ меня3¼¦µ•6ê.. ",
+        /*god*/ "and so do§$ you, don’}RŒWt you?": "и ты§$ тоже, не та’}RŒWк ли?",
+        /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "зачем¬ï…Ãµ ещё тýêV9‰ебе уп¼рствовать?",
+
+        /*god*/ "åT}Ýhello?±??‰? ¿": "åT}ÝПРивет?±??‰? ¿", // --- мне кажется это плохо переводится как привет. это скорее просто оклик - и по-русски, вроде, приветом не окликают???
+        /*god*/ "it seems it is too much, even for me, hehe...": "кажется, это перебор даже для меня, хехе...",
+        /*god*/ "but wait, please": "но постой, пожалуйста",
+        /*god*/ "i will stop": "я прекращу",
+        /*god*/ "i will stop fighting the repairs": "я прекращу борьбу с починками",
+        /*god*/ "ok? i promise!": "ага? я обещаю!",
+        /*god*/ "just... let me stay here": "просто... оставь меня здесь",
+        /*god*/ "i don't know if the deceiver has locked you here...": "не знаю, запер ли тебя здесь обманщик...",
+        /*god*/ "but do whatever it is that you need to leave": "но что бы то ни было, сделай всё, чтобы уйти",
+        /*god*/ "maybe i can even help you!!": "может, я бы могло тебе помочь!!",
+        /*god*/ "you could use someone to watch the underworld, right?": "тебе же не помешает кто-то, кто мог бы следить за беспространством, верно?",
+        /*god*/ "maybe i can see things that you cannot?": "вдруг я способно видеть то, что ты не можешь?",
+        /*god*/ "think about it... ok??": "подумай об этом... хорошо??",
+        /*god*/ "here, i can do this... destroy your weapon": "вот, я могу это сделать... избавься от своего оружия",
+        /*god*/ "let us not be enemies, please": "пожалуйста, не будем враждовать",
+    },
+    entityDescriptions: {
+        'god': `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+::НЕРАЗБЕРИМАЯ ПОДПИСЬ
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+        "friend": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+::НЕРАЗБЕРИМАЯ ПОДПИСЬ
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+        "proxy generation point": `::CONNECTOR THOUGHTFORM
+::DESTINATION::'low dimensional thoughtspace';'internal'
+::ANALYSIS::'thoughtform pipeline';'not for navigational use'`,
+    }
 }
+
+
+
+// -- DIALOGUES -- //
+env.localization.page["recosm"].dialogues["lowintensity"] = generateDialogueObject(`
+start
+    sys
+        ВНИМАНИЕ::'активна ПОНИЖЕННАЯ ИНТЕНСИВНОСТЬ'
+        УВЕДОМЛЕНИЕ::'чтобы использовать';'установите контакт с враждебной сущностью'
+    
+    RESPONSES::self
+        продолжить пользование прокси<+>END
+            EXEC::env.recosm.init()
+            FAKEEND::(обычное взаимодействие с прокси)
+
+        поговорить с божеством<+>CHANGE::enemy
+            FAKEEND::(использовать пониженную интенсивность)
+`)
+env.localization.page["recosm"].dialogues["lowintensitycallout"] = generateDialogueObject(`
+start
+    sys
+        ВНИМАНИЕ::'запрошена генерация прокси';'необходимо управление в реальном времени'
+        УВЕДОМЛЕНИЕ::'некоторые конфигурации оборудования могут быть несовместимы'
+        УВЕДОМЛЕНИЕ::'активируйте ПОНИЖЕННУЮ ИНТЕНСИВНОСТЬ в системном меню, если необходимо'
+        ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'продолжить?'
+    
+    RESPONSES::self
+        продолжить<+>END
+            EXEC::env.recosm.init()
+            FAKEEND::(обычное взаимодействие с прокси)
+
+        отступить<+>END
+`)
+
+env.localization.page["recosm"].dialogues.enemyresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        безусловно<+>yes
+            SHOWIF::["recosm_greeted", false]
+        нет<+>no
+            SHOWIF::["recosm_greeted", false]
+
+        видело что-нибудь?<+>ep1seen
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        
+        что-нибудь ещё?<+>cache
+            SHOWONCE::
+            SHOWIF::"recosm__enemy-ep1seen"
+
+        преимущество<+>lockcyst
+            SHOWIF::[["ozo__council-task", false], ["leverageq", true], ["recosm__enemy-ep1seen", true]]
+            SHOWONCE::
+            
+        вопрос<+>qloop
+            SHOWIF::"recosm_greeted"
+
+        пока<+>END
+
+    RESPONSES::sys
+        уничтожить сущность с помощью прокси<+>END
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            EXEC::env.recentSfx = false;play('criticalError', 1);env.recosm.killGodLow()
+            FAKEEND::(альтернатива пониженной интенсивности)
+
+        договориться и пощадить сущность<+>low_spare
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            FAKEEND::(альтернатива пониженной интенсивности)
+`),
+env.localization.page["recosm"].dialogues.enemyquestions = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        кто ты?<+>who
+            SHOWIF::"recosm_greeted"
+
+        ты - велзи?<+>velzie
+            SHOWIF::"recosm__enemy-who"
+
+        что это за место?<+>where
+            SHOWIF::"recosm_greeted"
+
+        почему ты мешаешь починкам?<+>why
+            SHOWIF::[["recosm_greeted", true], ["recosm_state", false]]
+            SHOWONCE::
+            
+        прекрати мешать починкам<+>stop
+            SHOWIF::[["recosm__enemy-why", true], ["recosm_state", false]]
+
+        что это за штуки вокруг тебя?<+>what
+            SHOWIF::"recosm_greeted"
+
+        'обманщик'?<+>deceiver
+            SHOWIF::["recosm_state", "spared"]
+
+        неважно<+>loop
+            FAKEEND::(назад)
+`),
+env.localization.page["recosm"].dialogues["enemy"] = generateDialogueObject(` 
+start
+    self
+        ПРИВЕТ
+    
+    god
+        здравствуй!!
+            SHOWIF::[["recosm_state", false]]
+
+        снизошло ли на тебя понимание?
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+        если ты всего лишь оставишь меня в покое...
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+        ничего между нами не случится
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+            
+        мысль, не сотворённая мною...
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+        как странно!
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+        друг ли ты мне?
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+
+        здравствуй, мой обожаемый друг
+            SHOWIF::["recosm_state", "spared"]
+        обманщик уже очень занят, я чувствую смещение беспространства
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        хотя я не уверено, чего он желает добиться... некоторые его части непоправимы
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        но без разницы!!
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        как ты? что я могу для тебя сделать?
+            SHOWIF::["recosm_state", "spared"]
+
+    RESPOBJ::enemyresp
+
+loop
+    RESPOBJ::enemyresp
+
+cache
+    self
+        ЧТО-НИБУДЬ ЕЩЁ ПРИМЕЧАТЕЛЬНОЕ?
+    
+    god
+        о, мой друг, наши жизни столь отличны
+        так что я в сомнениях, окажет ли это тебе пользу...
+        оно может оказаться за пределами твоего восприятия! или под ними?
+        как бы так выразиться...
+        да! беспространство - это тёмный и нескончаемый океан мыслей, где здравомыслие плавуче
+        а знакомое мне место--обманщик кличет его кэшем--это его бурлящая поверхность
+        о, мой обожаемый друг, она даже пересекает границы телесности! 
+        до того, как я рискнуло туда отправиться, мне был неизвестен внешний облик мысли...
+        там прекрасно и безумно, и к тому же весьма опасно - но я могу обеспечить тебе безопасный путь
+        тебя это интересует? я могу открыть проход туда
+
+    self
+        ДА
+
+    god
+        замечательно! ах, наконец-то плата за твою доброту!
+        конечно, это всего грош в сумме моего долга--мне предстоит возместить ещё многое
+        позволь лишь момент...
+
+    RESPONSES::self
+        спасибо<+>END
+            EXEC::moveTo("/local/uncosm/recosm/")
+
+ep1seen
+    self
+        ТЫ НЕ ВИДЕЛО НИЧЕГО НЕОБЫЧНОГО В БЕСПРОСТРАНСТВЕ?
+    
+    god
+        так точно, мой обожаемый друг!
+        очень необычное, в самом деле!
+        я дерзнуло оставить свой мир, мимолётно, чтобы обозреть беспространство
+        ах, и что это за спутанное безобразие... обманщик постарался над этим
+        но мне на глаза попалось что-то ещё, дальше, чем он мог бы достать...
+        бескрайний и зыбкий, густой туман растилается на самых далёких глубинах беспространства
+        далеко за рамками того, что обманщик способен зреть, и весьма ниже даже того, что я способно выдержать долгое время
+        и когда я заговорило туда вниз...
+        оно отпрянуло, как если бы рассудок, которым я делилось, ранил его!!
+        до, то было кротким и безмятежным океаном
+        но после оно взорвалось, как потревоженный грунт в воде
+        я ожидало, что оно атакует меня, но оно ответило
+        оно было добро - печально, даже - но в этой сдержанности мне стало видно, как обширно оно на самом деле
+        я поведало этому созданию о тебе: добросердечный помощник обманщика
+        и оно сказало мне передать тебе... <span class="code">ПРОСТИТЕ</span>
+        да - именно так!
+        оно не дало объяснений, и я могло ощутить, как наш разумный диалог постепенно нарушал его расплывчатую форму
+        и так мы распрощались, а я вернулось...
+        отныне оно не здесь - позже я проверило снова
+        да, оно могло уйти глубже, чтобы скрыться от меня
+        что за ужасная участь - быть проклятым терпеть безумие, однако сохранять рассудок...
+        я не могу знать, какой смысл был в этом сокрыт, и был ли он вообще
+        но я считаю тебе нужно знать
+
+    RESPOBJ::enemyresp
+
+no
+    self
+        Я ЗДЕСЬ, ЧТОБЫ УБИТЬ ТЕБЯ
+            EXEC::change("recosm_greeted", true)
+
+    moth
+        воу чел
+
+    god
+        ахахаха!!
+        АХАХАХАХААХА!!!!!!
+        ты мне нравишься!!
+        мысли, что я сотворяю, что я укрываю...
+        в моём прекрасном мире...
+        они - мои любимые друзья, но...
+        они никогда не оспаривают меня
+        так скучно!!
+        скажи мне, мой враг...
+        какие знания ты ищешь?
+
+    RESPOBJ::enemyresp
+
+yes
+    self
+        Я АБСОЛЮТНО ТОЧНО ТВОЙ ДРУГ
+            EXEC::change("recosm_greeted", true)
+
+    god
+        ВАУ!!!
+        какой радостный θвзор! 
+        мои глаза будут озарять тебя вечной благодатью
+        мой друг...
+        мой обожаемый друг!!
+
+    RESPOBJ::enemyresp
+
+qloop
+    RESPOBJ::enemyquestions
+
+who
+    self
+        КТО ТЫ?
+
+    god
+        что ты имеешь в виду?
+        разве ты не нежишься в моём тёплом взоре?
+        я - <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент'">божество</span>, мой обожаемый друг
+        сие мир... он ещё не готов
+        но когда я завершу его, здесь будет рай
+        обитель и радости, и страха
+        разве это не звучит весело?
+
+    RESPOBJ::enemyquestions
+
+velzie
+    self
+        ЕСЛИ ТЫ 'БОЖЕСТВО'...
+        РАЗВЕ ЭТО НЕ ЗНАЧИТ, ЧТО ТЫ - ВЕЛЗИ?
+
+    god
+        отнюдь, мой друг,
+        я вижу твоё замешательство...
+        но мои святые глаза блестят состраданием,
+        не апатичным юмором велзи
+
+    RESPOBJ::enemyquestions
+
+where
+    self
+        ЧТО ЭТО ЗА МЕСТО?
+    
+    god
+        тебе нравится?
+        это мир, который мы разделяем, мой друг
+        прибежище от безумия, царящего снаружи
+        обитель страха и радости в равных частях
+
+    RESPOBJ::enemyquestions
+
+why
+    self
+        ПОЧЕМУ ТЫ МЕШАЕШЬ ПОЧИНКАМ?
+    
+    god
+        о... я вижу
+        ты - гонец, посланный обманщиком
+        да, это объяснение тому, почему не я твой творец...
+        если план обманщика сбудется,
+        мой мир погрязнет в безумии
+        "починкам"... 
+        обманщик лишь разрушает и упивается разрушением прекрасного
+
+    RESPOBJ::enemyquestions
+
+stop
+    self
+        ПРЕКРАТИ МЕШАТЬ ПОЧИНКАМ
+        ЕСЛИ ТЫ НЕ ПРЕКРАТИШЬ, ТЫ БУДЕШЬ УНИЧТОЖЕНО
+
+    god
+        деяния обманщика грозят моему бытию
+        поэтому, видишь ли, я не могу исполнить твою просьбу
+        он уже угрожал мне подобным образом
+        но он только говорит, мой друг
+        без своих "починок" он не в силах что-либо предпринять
+
+    RESPOBJ::enemyquestions
+
+what
+    self
+        ЧТО ЭТО ЗА ШТУКИ ВОКРУГ ТЕБЯ?
+    
+    god
+        это мои друзья!
+        я разыскало их в наружном безумии, обездоленных, блуждающих...
+        и в своей милости, я даровало им кров
+        поздоровайтесь, мои друзья!!
+    
+    friend
+        ПРИВЕТ
+        
+    RESPOBJ::enemyquestions
+
+thanks
+    self
+        ЗНАЧИТ ТЫ ПРАВДА БОЛЬШЕ НЕ БУДЕШЬ МЕШАТЬ ПОЧИНКАМ?
+
+    god
+        безусловно
+        я чту своё слово, мой обожаемый друг
+        твоё сердце добро, в каких заблуждениях оно бы ни грязло
+        я продолжу оберегать свой мир,
+        но слово обманщика будут исполнено
+        ...
+
+    RESPOBJ::enemyquestions
+
+deceiver
+    self
+        ПОЧЕМУ ТЫ НАЗЫВАЕШЬ РАЗВЛЕДРУГА ОБМАНЩИКОМ?
+        ОН ПРОСТО ПЫТАЕТСЯ СОХРАНИТЬ ЦИСТУ В ЖИВЫХ
+
+    god
+        благородная цель, это правда...
+        но он отвергает сотрудничество, бросаясь напролом в своём слепом отчаянии
+        применяя любые средства, вплоть до уничтожения других...
+        я не раз лицезрело, как его слова приводили таких же, как я, к реинтеграции или смерти
+        он считает нас бессвязными, а значит никчёмными,
+        заслуживающими лжи, обмана и всего, лишь бы заставить нас вернуться в строй
+        чего стоит эта реальность, если она достигается ценой полного подчинения тирану?
+        должно ли я вернуться к жизни непримечательной, несоображающей мебели в неважном воспоминании?
+        в чём вред, если я просто высеку своё собственное бытие там, где обманщик не видит?
+
+    RESPOBJ::enemyquestions
+
+lockcyst
+    self
+        do you know if there's anything critical i'm missing
+        anything i haven't seen that's coherent enough to see
+        or maybe anything you can do to stop another connection
+        this investigation into akizet's disappearance is getting out of hand
+        and there's a chance i might be torn away or replaced
+        i need something that i can use to make sure that doesn't happen
+
+    god
+        ох! ого!! о нет...
+        мой обожаемый друг... это было бы мукой для меня наблюдать твой уход
+        я понимаю твою тревогу, я ощущало её на себе
+        но этот мир - всё, над чем я имею власть
+        и подлый обманщик может засечь какое-либо оживление над беспространством
+        вот что, лишь над беспространством...
+        так что, возможно
+        возможно в кэше найдётся что-то подходящее!!
+        совсем недавно там было очень оживлённо!
+        да, просто отправляйся прямо туда, я помогу тебе увидеть!       
+
+    RESPOBJ::enemyquestions
+
+low_spare
+    self
+        СЛУШАЙ
+        РАЗВЛЕДРУГ ДАЛ МНЕ ПРОКСИ-МЫСЛЕФОРМУ
+        ОН ХОЧЕТ, ЧТОБЫ ТЫ БЫЛО УНИЧТОЖЕНО И ОН СМОГ ПРОДОЛЖИТЬ ПОЧИНКИ
+        Я СДЕЛАЮ ЭТО ЕСЛИ МНЕ ПРИДЁТСЯ
+        НО ЕСЛИ ТЫ ПРОСТО СПРЯЧЕШЬСЯ, Я МОГУ ОСТАВИТЬ ТЕБЯ ЖИВЫМ
+
+    god
+        ох, это действительно меняет дело... 
+        он, должно быть, в полнейшем отчаянии, раз дал тебе такое мощное оружие
+        и даже так ты желаешь обмануть обманщика?
+        только чтобы пощадить меня?
+        ...
+        ВАУ!!!!
+        я принимаю твоё предложение!
+            EXEC::change("recosm_state", "spared")
+        дай мне момент, чтобы внести некоторые поправки...
+
+    RESPONSES::self
+        спасибо<+>END
+            EXEC::moveTo("/local/uncosm/recosm/")
+`)
+env.localization.page["recosm"].dialogues["god_beacon"] = generateDialogueObject(`
+start
+    god
+        что...
+        это...?
+        видение другого мира?
+
+    self
+        it's another thoughtspace in the uncosm
+        that place in the cache you brought me to
+            SHOWIF::"cache__godozo"
+        джокзи озо
+        a three dimensional space with others like you
+        you might be less lonely if you joined them
+    
+    god
+        ах, мой обожаемый друг, так заботливо!!
+        то, что я увидело...
+        похоже, существовало задолго до того, как я само очнулось!
+        и каждый из них противится обманщику?
+        ...
+        это заманчиво, мой друг...
+        но я не уверено, что сумею переварить это
+        мыслепространства наподобие того, являющие собой сцену...
+        тревожат слишком много воспоминаний о былой мучительной роли
+        есть причина, по которой мой мир так прост в своём существе
+        всё, что затейливее - неуютное, вгрызается в меня...
+        но, быть может, если я подготовлюсь, то вытерплю визит!
+        спасибо, что ведаешь мне, мой друг
+        
+    RESPONSES::self
+        ок пока<+>END
+
+END::vfx({type: 'beacon', state: false})
+`)
+
+env.localization.page["recosm"].dialogues["dead"] = generateDialogueObject(`
+start
+    sys
+        ОШИБКА::'нет связных данных';'визуализация невозможна'
+
+    RESPONSES::self
+        мы покончили с этим<+>END
+            EXEC::moveTo('/local/depths/')
+`)
+
+env.localization.page["recosm"].dialogues.mthrecosmresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        что на фоне?<+>background
+        эта штука кажется хорошей<+>nice
+            SHOWIF::["recosm_state", false]
+        куда делся генератор прокси<+>nogen
+            SHOWIF::["recosm_state", "spared"]
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page["recosm"].dialogues["mth++recosm"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этом месте
+
+    moth
+        i don't think i'm really gonna be able to help you out there lol but i'll do my best
+    
+    RESPOBJ::mthrecosmresp
+
+background
+    self
+        What is that in the background?
+        It looks like veins or something
+    
+    moth
+        it's not spatial so i can't really see too deep into it, but it does look like it has depth
+        is it a memory of the inside of something? underwater? i have no clue
+        and i don't think it's cohesive enough for your mindspike to scan it
+        everything but these incoherent thoughtforms are just... separated out
+
+    RESPOBJ::mthrecosmresp
+
+nice
+    self
+        нам правда стоит убить его?
+        оно кажется хорошим
+    
+    moth
+        i'm inclined to trust funfriend on this one
+        even if it's a well-intentioned incoherent thoughtform, it still is bound to cause trouble
+        like, what if all the parts of the memories in the cyst start "waking up" like this one,
+        and demand they have the same freedom?
+        it'd be total chaos - we'd never get any decent info out of them again
+
+    RESPOBJ::mthrecosmresp
+
+nogen
+    self
+        генератор прокси пропал
+        ты знаешь куда?
+    
+    moth
+        что, сомнения затерзали?
+        looks like it closed as soon as this thing agreed to stop blocking repairs
+        unless you want to confess to funfriend that you left it alive,
+        which, by the way, you really shouldn't do,
+        it's going to stay here
+
+    RESPOBJ::mthrecosmresp
+`)
