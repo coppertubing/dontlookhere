@@ -1,6 +1,9 @@
 env.localization.page['parasite'] = {dialogues: {},
     definitions: {}, 
-    strings: {}, 
+    strings: {
+        "still not getting anything detailed here": ""
+        "about whatever this is",: ""
+    }, 
     entityDescriptions: {},
 }
 
