@@ -2,7 +2,7 @@ if (document.getElementsByClassName("cor-rudev").length == 0) document.querySele
 getLocalizationForPage(true);
 cor_ru.processStatic(true);
 cor_ru.processMenu(true);
-processTranslation(true);
+processTranslation();
 cor_ru.observerPageObserve();
     
     
