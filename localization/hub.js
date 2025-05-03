@@ -1,5 +1,7 @@
 env.localization.page['hub'] = {dialogues: {},
     definitions: {}, 
-    strings: {}, 
+    strings: {
+        "about the hub": "о хабе",
+    }, 
     entityDescriptions: {},
 }
