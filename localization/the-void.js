@@ -205,16 +205,16 @@ start
 END::vfx({type: "beacon", state: false})
 `)
 
-env.localization.page['localorbit'].dialogues.mthresp = generateDialogueObject(`
+env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         открытие серое?<+>dull
-            SHOWIF::[['EXEC::env.localization.page['localorbit'].dialogues.mthresp.scannedDull()']]
+            SHOWIF::[['EXEC::env.localization.page['localorbit'].dialogues.mthvoidresp.scannedDull()']]
 
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
-env.localization.page['localorbit'].dialogues.mthresp.scannedDull = ()=>{
+env.localization.page['localorbit'].dialogues.mtvoidhresp.scannedDull = ()=>{
     try {
         if(flags.detectedEntities["..__ПУСТОТА__.."].entities["gate::the dull contrivance"].scanned) {
             return true
@@ -233,7 +233,7 @@ start
     moth
         давай, нападай
     
-    RESPOBJ::mthresp
+    RESPOBJ::mthvoidresp
 
 dull
     self
@@ -250,5 +250,5 @@ dull
         может с помощью этой штуки мы сможем как следует рассмотреть обески
         если починить её вообще получится
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthvoidresp
 `)

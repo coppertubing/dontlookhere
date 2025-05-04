@@ -23,6 +23,226 @@
 
 console.log("%chello world! defining some basic things now... - @cor-RU", 'color:rgb(229, 142, 22)')
 
+function generateDialogueObject(genString) {
+	let split = genString.split('\n')
+	let obj = {}
+    let lastParent = { // used to track depth
+        blockShowControl: false, // controls SHOWIF blocks that affect multiple dialogues
+        blockShowOnceControl: false // ditto for SHOWONCE
+    }
+
+    function parseShowif(showif) {
+        let finalShowIf = showif
+            .replace('SHOWIF::', '')
+            .replace(/'/g, '"')// removes the showif indicator and swaps single quotes for double (required for json parse for whatever reason)
+            .replace(/</g, '\\u003c') //apparently < and > throw errors if they're used unescaped in JSON... weird
+            .replace(/>/g, '\\u003e')
+
+        try {
+            return upgradeShowIf(JSON.parse(`{ "reasons":${finalShowIf}}`).reasons) 
+        } catch(e) {console.log(showif, e)}
+    }
+	
+	split.forEach(initialLine => {
+        let line = initialLine.replace(/\s+$/, '') // remove trailing space on RIGHT SIDE only
+        let tabs = (line.match(/    /g) || []).length // since left side matters for this
+        var text
+
+        //console.log(line)
+        //console.log(tabs)
+        switch(tabs) {
+            // lv0 - branch name. if it starts with end, it's an end function
+            // if it's a dialogue branch, just define the object for later and redef lastParent
+            case 0: 
+                if(line == "") return;
+
+                //block handling
+                else if(line.startsWith('____')) {
+                    let block = line.replace('____', '')
+
+                    if(block.startsWith('SHOWIF')) {
+                        lastParent.blockShowControl = parseShowif(block)
+
+                    } else if(block.startsWith('SHOWONCE')) {
+                        lastParent.blockShowOnceControl = true
+
+                    } else if(block == 'END') {
+                        lastParent.blockShowControl = false
+                        lastParent.blockShowOnceControl = false
+                    }
+                }
+
+
+                //special handling
+                else if(line.startsWith('END::')) { //this is a function to exec at the end of the dialogue
+                    obj['end'] = Function(line.replace('END::', ''))
+                    lastParent = {}
+                } else if(line.startsWith('SKIPTIME::')) { //defaults to 1000
+                    obj['skipTime'] = Number(line.replace('SKIPTIME::', ''))
+                    lastParent = {}
+                } else if(line.startsWith('SKIP::')) { //like END, but fired instantly when dialogue is skipped
+                    obj['skip'] = Function(line.replace('SKIP::', ''))
+                    lastParent = {}
+                } else if(line.startsWith('SKIPNOTICE::')) { //adds a message to the skip warning
+                    obj['skipNotice'] = line.replace('SKIPNOTICE::', '')
+                    lastParent = {}
+                } else if(line.startsWith('RESPOBJ::')) { //this is means it's just a reusable response list object definition, not a full dialogue tree
+                    obj = {responses: []}
+                    lastParent = {"0": obj}
+                }
+
+                //regular dialogue handling
+                else {
+                    obj[line] = { name: line, body: [], responses: [] }
+                    lastParent = {"0": obj[line]}
+                }
+            break
+
+            // lv1 - dialogue from an actor, or responses from an actor
+            // if RESPONSES, simply mark that we're in the responses section via lastParent[1]
+            // otherwise, it's an actor, so create a dialogue line object and add to lastParent[2]
+            case 1:
+                lastParent[1] = false 
+                lastParent[2] = false // clears depth
+
+                text = line.replace('    ', '')
+                if(text == "") return
+                if(text.includes("RESPONSES::")) { //actor for responses
+                    let newResponses = { name: text.replace('RESPONSES::', ''), replies: [] }
+                    lastParent[1] = newResponses
+                    lastParent[0].responses.push(newResponses)
+
+                } else if(text.includes("RESPOBJ::")) { //it's the name of a reusable response object, i.e. env.hello.generalReceptionistResponses
+                    let respobj = text.replace('RESPOBJ::', '')
+
+                    if (env.localization) {
+
+                        let localization = {};
+
+                        if(env.localization.dialogues) localization = env.localization.dialogues
+                        if(env.localization.page) {
+                            let values = Object.values(env.localization.page)
+                            for (let i = 0; i < values.length; i++) {
+                                if(values[i]['dialogues']) Object.assign(localization, values[i]['dialogues'])
+                            }
+                        }
+                        lastParent[0].responses = localization[respobj] || env.dialogues[respobj]
+                    }
+                    else lastParent[0].responses = env.dialogues[respobj]
+
+                    if(typeof lastParent[0].responses == "undefined") throw "the respobj you're trying to use doesn't exist (or hasn't been defined yet - remember these have to exist before your dialogue definition): " + respobj
+
+                } else { //actor for dialogue
+                    let newDialogue = { actor: text }
+                    lastParent[1] = newDialogue
+                    lastParent[0].body.push(newDialogue)
+                }
+            break
+
+            // lv2 - dialogue text, OR name/destination for a response
+            // if contains <+>, then response - split by that and assign relevant info to the lastParent[1]
+            // otherwise, add as text to lastParent[1] - it's just dialogue text
+            case 2:
+                text = line.replace('        ', '')
+                if(text == "") return
+                if(!text.includes("<+>")) { //regular actor dialogue
+                    lastParent[2] = false // clears depth
+
+                    if(lastParent[1].text) { // if it already has text, make a new object with the same actor
+                        let newDialogue = { 
+                            actor: lastParent[1].actor,
+                            "text": text
+                        }
+                        lastParent[1] = newDialogue
+                        lastParent[0].body.push(newDialogue)
+                    } else {
+                        lastParent[1].text = text
+                    }
+
+                    try{
+                        if(lastParent[1].text.includes('TEXEC::')) { //if it contains TEXEC, then that means it has a text exec - a function that returns a string to use when it appears
+                            /* since this returns the first thing you give it, it should be either a oneliner or a function that executes and returns something */
+                            lastParent[1].texec = Function(`return ${text.replace('TEXEC::', '')}`)
+                        }
+                    } catch(e) {console.log(e); console.log(lastParent, line)}
+                    
+                    //if there's a surrounding block control, we add the showIf condition to the dialogue object
+                    //same for showonce
+                    if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl; /*console.log(lastParent[1])*/ }
+                    if(lastParent.blockShowOnceControl) { lastParent[1].showOnce = lastParent.blockShowOnceControl }
+                    
+                } else { //reply text and location
+                    let replyInfo = text.split('<+>')
+                    
+                    var replyName = replyInfo[0]
+                    var replyDest = replyInfo[1]
+                    
+                    let replyObj = {
+                        name: replyName,
+                        destination: replyDest
+                    }
+
+                    try{
+                        if(replyName.includes('TEXEC::')) { //ditto to regular dialogue functionality
+                            replyObj.texec = Function(`return ${replyName.replace('TEXEC::', '')}`)
+                        }
+                    } catch(e) {console.log(e); console.log(lastParent, line)}
+
+                    lastParent[1].replies.push(replyObj)
+                    lastParent[2] = replyObj
+                    
+                    //can be affected by block controls
+                    if(lastParent.blockShowControl) { lastParent[2].showIf = lastParent.blockShowControl; /*console.log(lastParent[2])*/ }
+                    if(lastParent.blockShowOnceControl) { lastParent[2].showOnce = lastParent.blockShowOnceControl }
+                }
+            break
+
+            // lv3 - optional details like WAIT and EXEC - exec applies to both replies and dialogue lines
+            // wait is only used by dialogue lines, but no harm in checking for it on reply anyway
+            // uses lastParent[1] or lastParent[2] based on whether lastParent[2] is false or not (true means parent is reply)
+            case 3: 
+                var recipient = lastParent[1]
+                if(lastParent[2]) recipient = lastParent[2]
+
+                try {
+                    text = line.replace('            ', '')
+                    newReasons = false
+
+                    if(text == "") return
+                    if(text.startsWith("EXEC::")) recipient.exec = Function(line.replace('EXEC::', ''))
+                    if(text.startsWith("WAIT::")) recipient.wait = line.replace('WAIT::', '') //applies only to dialogue
+                    if(text.startsWith("THEN::")) recipient.then = Function(line.replace('THEN::', '')) //applies only to dialogue (js executed after a wait)
+                    if(text.startsWith("AUTOADVANCE::")) recipient.autoAdvance = true //applies only to dialogue
+                    if(text.startsWith("SHOWIF::")) newReasons = parseShowif(line)
+                    if(text.startsWith("SHOWONCE::")) recipient.showOnce = true
+                    if(text.startsWith("CLASS::")) recipient.class = text.replace('CLASS::', '') //adds specified text as classes (split by space) to the element rendered
+                    if(text.startsWith("HIDEREAD::")) recipient.hideRead = true //applies only to replies
+                    if(text.startsWith("UNREADCHECK::")) recipient.unreadCheck = Function(line.replace('UNREADCHECK::', '')) //applies only to replies. should return false (no unread), "within" or "unread"
+                    if(text.startsWith("FAKEEND::")) recipient.fakeEnd = text.replace('FAKEEND::', '') || true //applies only to replies. takes either text to use or nothing
+
+                    if(recipient.showIf && newReasons) {
+                        recipient.showIf = recipient.showIf.concat(newReasons)
+                    } else if(newReasons) {
+                        recipient.showIf = newReasons
+                    }
+                } catch(e) {
+                    console.log("dialogue parsing error, present line is: ", line)
+                    throw (e)
+                }
+            break
+        }
+    })
+
+    //return just the responses if the object has this - means it's a respobj definition
+    //also marks it as such with a special ID for use with tracking 
+    if(obj.responses) {
+        obj.responses.respobj = Math.random() * 1000
+        return obj.responses
+    }
+
+    //otherwise, return the full obj
+    else return obj
+}
 
 env.localization = {
    dialogues: {},
@@ -143,7 +363,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 	}
 	
 	html:not(.mobile):after {
-		content: "ОШИБКА::\A'текущее устройство визуализации непригодно';\a'требуется нейронный вывод не менее 800x600'";
+		content: "ОШИБКА::\\A'текущее устройство визуализации непригодно';\\a'требуется нейронный вывод не менее 800x600'";
 		box-sizing: border-box;
 		white-space: pre-wrap;
 		width: 100vw;
@@ -260,21 +480,21 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         console.log("common observed! @cor-RU");
     }),
     observerCommonObserve: function () {
-        cor_ru.observerCommon.observe("#mindspike-scanner", { childList: true, subtree: true });
-        cor_ru.observerCommon.observe("#content", { childList: true, subtree: true });
+        cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
+        cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
     },
 
     observerDialogue: new MutationObserver(()=>{
         cor_ru.processReplies();
         console.log("dialogue observed! @cor-RU");
     }),
-    observerDialogueObserve: function () {cor_ru.observerDialogue.observe("#dialogue-box", { childList: true })},
+    observerDialogueObserve: function () {cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true })},
 
     observerMasks: new MutationObserver(()=>{
         processTranslation(document.querySelector(`#ozo-mask-grid`))
         console.log("masks observed! @cor-RU");
     }),
-    observerMasksObserve: function () {cor_ru.observerMasks.observe("#masks", { childList: true })},
+    observerMasksObserve: function () {cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true })},
 
     observerPage: new MutationObserver(()=>{
         cor_ru.processStatic();

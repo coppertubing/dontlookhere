@@ -32,7 +32,7 @@ env.localization.page['localcity'] = {dialogues: {},
 
 // - DIALOGUES - //
 
-env.localization.page['localcity'].dialogues.mthresp = generateDialogueObject(`
+env.localization.page['localcity'].dialogues.mthcityresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         что это за город<+>where
@@ -46,7 +46,7 @@ start
     moth
         ага-п?
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthcityresp
 
 where
     self
@@ -63,5 +63,5 @@ where
         так что могу поспорить что оно распространяется и на психический
             SHOWIF::[['hub__funfriend-kickout']]
 
-    RESPOBJ::mthresp
+    RESPOBJ::mthcityresp
 `)
