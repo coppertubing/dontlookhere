@@ -264,7 +264,7 @@ cor_ru = {
 @font-face {
     font-family: 'spacemono';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff') !important;
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -273,7 +273,7 @@ cor_ru = {
 @font-face {
     font-family: 'barcode';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff') !important;
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -282,7 +282,7 @@ cor_ru = {
 @font-face {
     font-family: 'barcodetext';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff') !important;
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -290,7 +290,7 @@ cor_ru = {
 
 @font-face {
     font-family: 'beech';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff') !important;
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
