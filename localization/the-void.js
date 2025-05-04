@@ -216,7 +216,7 @@ RESPOBJ::
 `)
 env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{
     try {
-        if(flags.detectedEntities["..__ПУСТОТА__.."].entities["gate::the dull contrivance"].scanned) {
+        if(flags.detectedEntities["..__THE_VOID__.."].entities["gate::the dull contrivance"].scanned) {
             return true
         } else {
             return false

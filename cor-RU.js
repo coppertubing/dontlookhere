@@ -472,6 +472,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         } else {
             processTranslation(document.querySelector("#meta-menu"));
             processTranslation(document.querySelector("#system-menu"));
+            processTranslation(document.querySelector("#entity-menu"));
         }
     },
     processReply: function () {

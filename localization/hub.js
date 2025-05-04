@@ -1294,7 +1294,7 @@ RESPOBJ::
 `)
 env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
     try {
-        if(flags.detectedEntities['..__НАШЕ_СУДНО_СЕРОЕ__..'].entities.container.scanned) {
+        if(flags.detectedEntities['..__OUR_DULL_VESSEL__..'].entities.container.scanned) {
             return check == true
         } else {
             return check == false
