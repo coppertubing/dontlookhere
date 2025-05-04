@@ -183,7 +183,7 @@ cor_ru.entity_menu = {
         "ENTITY::'ceremony'": "СУЩНОСТЬ::''",
         "ENTITY::'ceremony vein'": "СУЩНОСТЬ::''",
         "ENTITY::'ceremony tendril'": "СУЩНОСТЬ::''",
-        "ENTITY::'vekoa'": "СУЩНОСТЬ::''"
+        "ENTITY::'vekoa'": "СУЩНОСТЬ::''",
 
         //uncosm
         "ENTITY::'memoryhole'": "СУЩНОСТЬ::''",
