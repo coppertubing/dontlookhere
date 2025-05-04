@@ -469,6 +469,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         if (force) {
             processTranslation(document.querySelector("#meta-menu")), true;
             processTranslation(document.querySelector("#system-menu"), true);
+            processTranslation(document.querySelector("#entity-menu"), true);
         } else {
             processTranslation(document.querySelector("#meta-menu"));
             processTranslation(document.querySelector("#system-menu"));
@@ -573,6 +574,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         "https://coppertubing.github.io/cor-RU/localization/cache.js",
         "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js",
+
+        "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
 
         "https://coppertubing.github.io/cor-RU/load.js",
     ]

@@ -448,9 +448,8 @@ env.localization['strings'] = {
     /*moth*/ "this is so weird... i think that's meant to be akizet": "очень странно... я думаю она должна была быть акизет",
     /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
 
-    // ENTITY MENU + READOUT NOTIFS AND GATES AND basically locations lol JUST STUFF
+    // READOUT NOTIFS AND GATES AND basically locations lol JUST STUFF
 
-    "ENTITY": "СУЩНОСТЬ",
 
     "__incomplete_thoughtform__": "__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__",
 
