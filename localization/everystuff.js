@@ -343,6 +343,13 @@ env.localization['strings'] = {
 
     "about this thoughtform": "об этой мыслеформе",
 
+    "'has no unutilized responses'": `'не имеет неиспользованных ответов'`,
+    "'has unutilized responses'": `'имеет неиспользованные ответы'`,
+    "'previously utilized response'": `'ранее использованный ответ'`,
+    "'response not yet utilized'": `'неиспользованный ответ'`,
+    "'response leads to unused responses'": `'ответ ведёт к неиспользованным ответам'`,
+    "'dynamic response'": `'динамичный ответ'`,
+
 
     "greet": "поздороваться",
 
@@ -516,6 +523,8 @@ env.localization['strings'] = {
 
     "MEMBRANE_LESION": "РАЗРЫВ_В_МЕМБРАНЕ",
     "MEMBRANE LESION": "РАЗРЫВ В МЕМБРАНЕ",
+    "MEMBRANE_INCISION": "НАДРЕЗ_МЕМБРАНЫ",
+    "MEMBRANE INCISION": "НАДРЕЗ МЕМБРАНЫ",
     "..__CACHE__..": "..__КЭШ__..",
     "cache": "кэш",
 

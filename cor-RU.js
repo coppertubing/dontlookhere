@@ -264,7 +264,7 @@ cor_ru = {
 @font-face {
     font-family: 'spacemono';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff') !important;
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -273,7 +273,7 @@ cor_ru = {
 @font-face {
     font-family: 'barcode';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff') !;
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff') !important;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -282,7 +282,7 @@ cor_ru = {
 @font-face {
     font-family: 'barcodetext';
     src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff');
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff') !important;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -290,7 +290,7 @@ cor_ru = {
 
 @font-face {
     font-family: 'beech';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff') !important;
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -388,6 +388,15 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 		background-color: var(--dark-color);
 		width: 100%;
 	}
+}
+
+#mindspike-scanner span.loose-thought::after {
+    content: "..__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__..";
+    display: block;
+    font-family: spacemono;
+    letter-spacing: 0;
+    font-size: 0.63rem;
+    margin-top: -0.5em;
 }
 
 
