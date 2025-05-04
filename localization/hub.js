@@ -1292,7 +1292,7 @@ RESPOBJ::
         хватит о развледруге<+>loop
             FAKEEND::(назад)
 `)
-env.localization.page["hub"].dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
+env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
     try {
         if(flags.detectedEntities['..__НАШЕ_СУДНО_СЕРОЕ__..'].entities.container.scanned) {
             return check == true
@@ -1363,9 +1363,9 @@ fffuel
         я думаю это могло бы сыграть нам в пользу если мы опять столкнёмся с чем-нибудь вроде авторизационного слоя
         впрочем... когда дело дойдёт до самого процесса,
         люди сверху скоро достанут нам кучу дешёвых медных трубок, так что можно использовать их... если "развледруг" поделится, как
-            SHOWIF::[['EXEC::env.localization.page["hub"].dialogues.mthlocalfunr.scannedContainer(false)']]
+            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(false)']]
         мы наверняка сможем воспользоваться тем что внутри нашего контейнера, звучит как металл и выглядит прям как те большие на корабле акизет
-            SHOWIF::[['EXEC::env.localization.page["hub"].dialogues.mthlocalfunr.scannedContainer(true)']]
+            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(true)']]
         
     RESPOBJ::mthlocalfunr
 

@@ -209,12 +209,12 @@ env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObje
 RESPOBJ::
     RESPONSES::self
         открытие серое?<+>dull
-            SHOWIF::[['EXEC::env.localization.page['localorbit'].dialogues.mthvoidresp.scannedDull()']]
+            SHOWIF::[['EXEC::env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull()']]
 
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
-env.localization.page['localorbit'].dialogues.mtvoidhresp.scannedDull = ()=>{
+env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{
     try {
         if(flags.detectedEntities["..__ПУСТОТА__.."].entities["gate::the dull contrivance"].scanned) {
             return true

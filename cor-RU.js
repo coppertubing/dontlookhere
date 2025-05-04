@@ -485,7 +485,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 
     observerDialogue: new MutationObserver(()=>{
-        cor_ru.processReplies();
+        cor_ru.processReply();
         console.log("dialogue observed! @cor-RU");
     }),
     observerDialogueObserve: function () {cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true })},
