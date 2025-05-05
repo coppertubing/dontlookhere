@@ -1133,7 +1133,7 @@ start
     kazki
         привет акизет!!
     
-    akizetа
+    akizet
         здравствуйте мои друзья
     
     RESPOBJ::d1_kazkibozkoresp
