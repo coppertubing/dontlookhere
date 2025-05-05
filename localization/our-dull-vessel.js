@@ -286,7 +286,7 @@ absence
             SHOWIF::[['ep1_fed', false]]
     
     glazika
-        нет-нет! всего лишь игра в паразит. как вы можете видеть, я побеждаю
+        нет-нет! всего лишь игра в паразита. как вы можете видеть, я выигрываю
             SHOWIF::[['ep1_fed', false]]
     
     akizet
@@ -294,7 +294,7 @@ absence
             SHOWIF::[['ep1_fed', false]]
     
     akizet
-        ах, и сейчас вы играете в <span class="code">паразит</span>!
+        ах, и сейчас вы играете в <span class="code">паразита</span>!
             SHOWIF::'ep1_fed'
 
     glazika

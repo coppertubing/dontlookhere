@@ -1565,7 +1565,7 @@ why_music
         тебе нравится?
 
     RESPONSES::self
-        она нормальная<+>loop
+        нормально<+>loop
             FAKEEND::(назад)
 
 mothep1end
