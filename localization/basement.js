@@ -254,222 +254,222 @@ start
             SHOWIF::[["TEMP!!sat"]]
 
     sourceless
-        MOTH HOLDS UP A JINGLING PLASTIC CONTAINER FILLED WITH SMALL COPPER TUBES, CUT TO A VERY SHORT LENGTH
-        IT IS SET ON THE TABLE, THE FRACTALLINE CYST REMOVED TO MAKE SPACE
+        МОЛЬ ДОСТАЕТ ЗВЕНЯЩИЙ ПЛАСТИКОВЫЙ КОНТЕЙНЕР, НАПОЛНЕННЫЙ МАЛЕНЬКИМИ МЕДНЫМИ ТРУБКАМИ ОЧЕНЬ КОРОТКОЙ ДЛИНЫ
+        ОН СТАВИТСЯ НА МЕСТО ФРАКТАЛЬНОЙ ЦИСТЫ, УБРАННОЙ ДЛЯ ОСВОБОЖДЕНИЯ СТОЛА
             EXEC::content.classList.add('showcopper')
 
     moth
-        since i'm pretty sure this one is dead, i'm just gonna...
+        раз мы и так уверены что она мёртвая, я просто...
     
     sourceless
-        THE FRACTALLINE CYST IS DELIVERED INTO A BIOHAZARD BIN NEARBY
+        ФРАКТАЛЬНАЯ ЦИСТА ДОСТАВЛЯЕТСЯ В БАК БИОЛОГИЧЕСКОЙ УГРОЗЫ
     
     moth
-        anyway - ready to feed a corrucyst?
+        ну что - как насчёт покормить корруцисту?
             SHOWIF::[["ep0_epilogue", "started"]]
 
         иии!
             SHOWIF::[["ep0_epilogue", "done"]]
 
     sourceless
-        MOTH RAISES, THEN LEAVES A CYLINDRICAL GUN NEAR THE DENDRITIC CYST
+        МОЛЬ ПОДНИМАЕТ, А ЗАТЕМ КЛАДЁТ ВОЗЛЕ ДЕНДРИТНОЙ ЦИСТЫ ЦИЛИНДРИЧЕСКИЙ ПИСТОЛЕТ
             SHOWIF::[["ep0_epilogue", "done"]]
             EXEC::content.classList.add('showgun')
     
     moth
-        my request for a gun kinda stirred up r&d, because obviously
+        запрос на пушку чуток взбудоражил НИОКР, ибо разумеется
             SHOWIF::[["ep0_epilogue", "done"]]
-        but after i explained it was to kill a corrucystic container, they said they had just the thing
+        но после объяснения что это нам нужно убить корруцистозный контейнер, они сказали у них есть именно то что надо
             SHOWIF::[["ep0_epilogue", "done"]]
-        this is apparently some kind of cattle killing gun that they repurposed to decommission cystic tech
+        эт оказывается какой-то пистолет для забоя скота, который они переоборудовали для вывода корруцистозных приборов из эксплуатации
             SHOWIF::[["ep0_epilogue", "done"]]
-        no projectile, it just propels out a short spike at high speeds, i think it uses some kind of electromagnetic propulsion or something
+        никаких снарядов, он просто выдвигает короткий шип на большой скорости, вроде бы тут используется что-то вроде электромагнитной тяги
             SHOWIF::[["ep0_epilogue", "done"]]
-        anyway, i know what you're thinking - why both?
+        короче я знаю о чём ты думаешь - почему оба?
             SHOWIF::[["ep0_epilogue", "done"]]
-        simple - i completely forgot to cancel the copper order, so, we got both of them.
+        всё просто - у меня напрочь из головы вылетело отменить заказ на медь, так что мы получили и то и другое
             SHOWIF::[["ep0_epilogue", "done"]]
-        so we could go either route here, either use the copper, or kill the container and use akizet's 'processed metals'
+        поэтому можно идти любым путём: либо использовать медь, либо убить контейнер и использовать "обработанные металлы" акизет
             SHOWIF::[["ep0_epilogue", "done"]]
-        personally i'd go with the copper, cause i don't know what the container will do
+        лично мне медь больше по душе, а то чёрт знает что этот контейнер может сделать
             SHOWIF::[["ep0_epilogue", "done"]]
-        but... you're in the hot seat, so it's your call
+        но... ты тут судьбу испытываешь, так что решать тебе
             SHOWIF::[["ep0_epilogue", "done"]]
 
     RESPONSES::self
-        got it<+>END
+        всё понятно<+>END
         
 END::change('ep1_showmaterials', check('ep0_epilogue') == 'done' ? 'both' : 'copper')
 `)
 env.localization.page['fbx'].dialogues["ep1feed_copper"] = generateDialogueObject(` 
 start
     self
-        let's do this
+        возьмёмся за дело
             SHOWIF::[["ep0_epilogue", "started"]]
-        let's go with the copper        
+        давай возьмём медь       
             SHOWIF::[["ep0_epilogue", "done"]]
 
     sourceless
-        YOU PULL THE PLASTIC CONTAINER CLOSER AND UNCLASP THE LID
-        THE COPPER RODS GLIMMER IN THE FOCUSED LIGHT
+        ТЫ ПОДОДВИГАЕШЬ ПЛАСТИКОВЫЙ КОНТЕЙНЕР БЛИЖЕ И СНИМАЕШЬ КРЫШКУ
+        МЕТАЛЛИЧЕСКИЕ ПРУТЬЯ МЕРЦАЮТ В СФОКУСИРОВАННОМ СВЕТЕ
 
     moth
-        all right!
-        funfriend said we have to feed it to the pillar, and it takes care of the rest
-        soo i guess we just dump it in? it looks like the pit is big enough to hold pretty much all of it
+        агась!
+        развледруг сказал скормить её колонне, а дальше она сама всем займётся
+        так чтооо наверно надо просто засыпать её внутрь? углубление выглядит достаточно большим чтобы вместить всё
 
     RESPONSES::self
-        move the cyst out of the way<+>move
+        приподнять цисту и освободить колонну<+>move
             EXEC::env.spikeMoveLoopPaused = true;body.classList.add('prepgrab');document.querySelector('.cursor').id = "cursor-upper-left"
     
 move
     sourceless
-        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+        ТЫ ИЗВОРАЧИВАЕШЬ СВОЙ МЫСЛЕКОЛ И ВЫДВИГАЕШЬ РАБОЧИЕ КЛЕШНИ, ОБХВАТЫВАЯ ИМИ ЦИСТУ
             EXEC::body.classList.add('cystgrab')
-        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
-        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+        ЦИСТОЗНОЕ СТЕКЛО ЕЁ КОЖИ СЛЕГКА ПОДДАЁТСЯ И ОБЕСПЕЧИВАЕТ ХОРОШИЙ ЗАХВАТ
+        ТЫ ТЯНЕШЬ, И ХОТЯ ОНА ИМЕЕТ МАГНИТНОЕ ПРИТЯЖЕНИЕ К СВОЕМУ МЕСТУ НАД КОЛОННОЙ, ЕЁ ЛЕГКО СНЯТЬ
             EXEC::body.classList.add('cystlift')
         
     moth
-        nice, don't grip it too hard 
+        отлично, не сжимай слишком сильно
 
     RESPONSES::self
-        dump in the copper<+>dump
+        засыпать медь<+>dump
             EXEC::body.classList.add('pourcopper')
 
 dump
     sourceless
-        YOU ANGLE THE CONTAINER DIAGONALLY AND CAREFULLY SHAKE THE METAL ROD IN SMALL BATCHES
-        THEY FILL THE COLUMN'S CAVITY WITH METALLIC CLINKS, AND AN OPAQUE, MERCURY-LIKE LIQUID SLOWLY RISES OVER THE METAL
-        IT ROILS AND WRITHES AROUND THE COPPER RODS LIKE IT'S ALIVE
-        THE FANS OF THE CHAMBER GROW LOUDER FOLLOWING A FEW KEYTAPS FROM MOTH
+        ТЫ НАКЛОНЯЕШЬ КОНТЕЙНЕР ПО ДИАГОНАЛИ И ОСТОРОЖНО ВЫТРЯХИВАЕШЬ МЕДНЫЕ ПРУТЬЯ В НЕБОЛЬШИХ ПОРЦИЯХ
+        ОНИ ЗАПОЛНЯЮТ ПОЛОСТЬ КОЛОННЫ С МЕТАЛЛИЧЕСКИМ ЛЯЗГОМ, И НЕПРОЗРАЧНАЯ, БУДТО РТУТНАЯ ЖИДКОСТЬ МЕДЛЕННО ЗАЛИВАЕТ МЕТАЛЛ
+        ОНА БУРЛИТ И ПЛЕЩЕТСЯ НА МЕДНЫХ СТЕРЖНЯХ, СЛОВНО ЖИВАЯ
+        ВЕНТИЛЯТОРЫ В ПОМЕЩЕНИИ СТАНОВЯТСЯ ГРОМЧЕ ПОСЛЕ ПАРЫ ЩЕЛЧКОВ КЛАВИШ МОЛИ
             EXEC::body.classList.add('pourcopper')
         
     moth
-        just in case
+        на всякий
 
     sourceless
-        YOU SET THE EMPTY CONTAINER OUT OF THE WAY
+        ТЫ УБИРАЕШЬ ПУСТОЙ КОНТЕЙНЕР В СТОРОНУ
             EXEC::body.classList.add('emptycopper');body.classList.remove('pourcopper', 'cystlift')
 
     RESPONSES::self
-        is it done?<+>done
+        всё готово?<+>done
 
 done
     self
-        Is it done?
+        всё готово?
             EXEC::body.classList.remove('cystgrab');document.querySelector('.cursor').style.transform = "translate(0, 50vh)"
     
     moth
-        as if i know anything about this, lol
-        looks like it's working though
-        how about you reconnect and check in with our friend
+        лол, как будто я хоть что-то в этом смыслю
+        ну хотя выглядит будто оно сработало
+        давай-ка ты переподключишься и спросишь у развледруга, что да как
 
     RESPONSES::self
-        all right<+>END
+        хорошо<+>END
 
 END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab');;change('ep1_fed', 'copper')
 `)
 env.localization.page['fbx'].dialogues["ep1feed_container"] = generateDialogueObject(` 
 start
     sourceless
-        YOU GRASP THE CATTLE GUN AND AIM IT AWAY, EXPERIMENTALLY PULLING THE TRIGGER
-        A SPIKE EJECTS FROM THE TIP IN THE BLINK OF AN EYE WITH A LOUD HISS, THEN RECEDES
-        YOU FEEL SOMETHING RUMBLE INSIDE THE GUN AS IT RESETS
+        ТЫ БЕРЁШЬ ПИСТОЛЕТ ДЛЯ ЗАБОЯ И ОТВОДИШЬ ЕГО В СТОРОНУ, ЭКСПЕРИМЕНТАЛЬНО СПУСКАЯ КУРОК
+        В МГНОВЕНИЕ ОКА ИЗ ЕГО СТВОЛА ВЫЛЕТАЕТ ШИП С ГРОМКИМ ШИПЕНИЕМ, ЗАТЕМ УБЫВАЕТ ВНУТРЬ
+        ТЫ ЧУВСТВУЕШЬ, КАК ПРИ ПЕРЕЗАРЯДКЕ ВНУТРИ ПИСТОЛЕТА ЧТО-ТО ГРОХОЧЕТ
 
     self
-        All right
-        Let's kill this thing
+        хорошо
+        давай убьём эту штуку
 
     moth
-        no need to say it like a psycho dude lmao
+        не нужно говорить это как псих чел лмао
 
     RESPONSES::self
-        move the cyst out of the way<+>move
+        приподнять цисту и освободить колонну<+>move
             EXEC::env.spikeMoveLoopPaused = true;body.classList.add('prepgrab');document.querySelector('.cursor').id = "cursor-upper-left"
     
 move
     sourceless
-        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+        ТЫ ИЗВОРАЧИВАЕШЬ СВОЙ МЫСЛЕКОЛ И ВЫДВИГАЕШЬ РАБОЧИЕ КЛЕШНИ, ОБХВАТЫВАЯ ИМИ ЦИСТУ
             EXEC::body.classList.add('cystgrab')
-        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
-        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+        ЦИСТОЗНОЕ СТЕКЛО ЕЁ КОЖИ СЛЕГКА ПОДДАЁТСЯ И ОБЕСПЕЧИВАЕТ ХОРОШИЙ ЗАХВАТ
+        ТЫ ТЯНЕШЬ, И ХОТЯ ОНА ИМЕЕТ МАГНИТНОЕ ПРИТЯЖЕНИЕ К СВОЕМУ МЕСТУ НАД КОЛОННОЙ, ЕЁ ЛЕГКО СНЯТЬ
             EXEC::body.classList.add('cystlift', 'containerseq')
         
     moth
-        nice, don't grip it too hard 
+        отлично, не сжимай слишком сильно
 
     RESPONSES::self
-        get the container<+>grab
+        взять контейнер<+>grab
 
 grab
     sourceless
-        YOU FETCH THE CORRUCYSTIC CONTAINER AND LIFT IT FROM THE TABLE, HOLDING IT UPSIDE-DOWN
+        ТЫ БЕРЁШЬ КОРРУЦИСТОЗНЫЙ КОНТЕЙНЕР И ПОДНИМАЕШЬ ЕГО СО СТОЛА, ДЕРЖА КВЕРХУ ДНОМ
             WAIT::1000
             EXEC::body.classList.add('containerfade');setTimeout(()=>body.classList.add('containercenter'), 400)
-        ITS DENDRITIC TENDRILS WAVE IN THE AIR LAZILY
+        ЕГО ДЕНДРИТНЫЕ ОТРОСТКИ ЛЕНИВО КОЛЫШУТСЯ В ВОЗДУХЕ
     
     moth
-        so funfriend said that if you hit the base of it, that it'll instantly die
-        and if you don't,
-        it will... what did it say again?
-        'respond violently to trauma'
-        well it couldn't be that bad, it's not that big and your suit is pretty thick
-        but... 
-        well, if you have to throw it, don't throw it towards my machines
+        так вот, если ударить его по основанию то он мгновенно умрёт
+        и если у тебя не получится,
+        то тогда он... что там развледруг говорил?
+        "жестоко среагирует на нанесённые травмы"
+        ну сильно плохо вряд ли будет, он не такой уж большой и твой костюм достаточно толстый
+        но... 
+        короче если тебе придётся его куда-нибудь бросать, то не в сторону моих машин
 
     RESPONSES::self
-        kill it<+>kill
+        убить его<+>kill
 
 kill
     sourceless
-        YOU ANGLE THE CATTLE GUN BETWEEN THE CYST'S SUPPORTIVE TENDRILS
+        ТЫ НАВОДИШЬ ПИСТОЛЕТ МЕЖДУ ОПОРНЫМИ ОТРОСТКАМИ ЦИСТЫ
             EXEC::body.classList.add('containeraim')
-        A FEW ATTACH TO THE SIDES OF THE WEAPON, TESTING ITS VIABILITY AS A CONNECTION, BUT LET IT PASS
-        THE BARREL SOON TAPS AGAINST THE GLASSY UNDERSIDE, AND SO YOU SQUEEZE THE TRIGGER
-        YOU FEEL A SURPRISING JOLT IN BOTH HANDS. A CRACK RINGS IN THE ROOM, THE CYST'S TENDRILS THRASHING
+        ПАРА ИЗ НИХ ЦЕПЛЯЕТСЯ ЗА БОКА ОРУЖИЯ, ПРОВЕРЯЯ ЕГО ПРИГОДНОСТЬ В КАЧЕСТВЕ СОЕДИНЕНИЯ, НО ПРОПУСКАЮТ ЕГО
+        ВСКОРЕ ДУЛО СТУКАЕТСЯ О СТЕКЛЯННОЕ ДНО, И ТОГДА ТЫ НАЖИМАЕШЬ НА КУРОК
+        ТЫ ЧУВСТВУЕШЬ ВНЕЗАПНЫЙ РЫВОК В ОБЕИХ РУКАХ. ПО КОМНАТЕ РАЗДАЁТСЯ ТРЕСК, ОТРОСТКИ ЦИСТЫ БЕШЕНО МЕЧУТСЯ
             WAIT::2000
             EXEC::env.intro.glass.rate(1.25);env.intro.glass.play();flash(true);setTimeout(()=>body.classList.add('containershot'), 200);setTimeout(()=>flash(false), 400)
-        THEY QUICKLY FALL LIMP AND START TO MELT
+        ОНИ БЫСТРО ОПАДАЮТ И НАЧИНАЮТ ПЛАВИТЬСЯ
             EXEC::body.classList.remove('containershot')
-        YOU DROP THE ENTIRE THING IN THE COLUMN'S CAVITY BEFORE IT COLLAPSES
+        ТЫ ЗАКИДЫВАЕШЬ ВСЁ В ПОЛОСТЬ КОЛОННЫ, ПРЕЖДЕ ЧЕМ ОНА РАЗВАЛИТСЯ
             EXEC::body.classList.add('containerdrop');body.classList.remove('containerfade')
-        THERE IS A GLIMMER OF GOLD-COLORED METAL, BUT IT DISAPPEARS BENEATH THE SLUDGIFIED CONTAINER
+        ВНУТРИ МЕРЦАЕТ ПРОБЛЕСК ЗОЛОТИСТОГО МЕТАЛЛА, НО ОН ИСЧЕЗАЕТ ПОД ШЛАМОМ КОНТЕЙНЕРА
             EXEC::body.classList.remove('containeraim')
-        YOU LOWER THE CYST AND SET THE GUN DOWN
+        ТЫ ОПУСКАЕШЬ КИСТУ И КЛАДЁШЬ ПИСТОЛЕТ ОБРАТНО
             EXEC::body.classList.remove('cystlift', 'containercenter')
     
     moth
-        wow
-        quick thinking there, that could have been really messy if it just melted everywhere
-        probably hazardous too
+        ого
+        отлично среагировано, могло бы выйти оч неприятно если бы он просто расплавился повсюду
+        возможно и небезопасно
             EXEC::body.classList.remove('cystgrab');document.querySelector('.cursor').style.transform = "translate(0, 50vh)"
-        and i think that's it... not as bad as i thought it'd be
-        how about you reconnect and check in with funfriend?
+        я думаю это всё... не так плохо как можно было представить
+        давай-ка ты переподключишься и спросишь у развледруга, что да как
         
     RESPONSES::self
-        all right<+>END
+        хорошо<+>END
 
 END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab', 'containerseq');change('ep1_fed', 'container')
 `)
 env.localization.page['fbx'].dialogues["ep2intro"] = generateDialogueObject(` 
 start
     moth
-        hey buddy!
-        hope you're doin ok
-        let's get right into it
-        i was just looking at the logs for last night, after you left...
-        lots of surface thoughtform activity - the kind you can access
-        i think funfriend fixed up something big
-        go talk to it, see what's up!
+        эй дружище!
+        надеюсь у тя всё хорошо
+        давай сразу за дело
+        я тут как раз просматриваю логи за прошлую ночь, после того как мы закончили...
+        куча поверхностной мыслеформенной активности - той к которой можно получить доступ
+        думаю развледруг починил что-то крупное
+        иди поговори с ним, узнай что там такое!
 
     RESPONSES::self
-        ok<+>END
+        ок<+>END
 `)
 env.localization.page['fbx'].dialogues["ep3intro"] = generateDialogueObject(` 
 start
     moth
-        hey buddy, good to see you
+        эй дружище, приятно тебя видеть
         i was just checking the activity over the last night...
         this is pretty similar to what i saw when funfriend fixed the first part of the collapse
         i'll bet the next part of it is ready to view
@@ -495,7 +495,7 @@ start
 env.localization.page['fbx'].dialogues["depthrecovery2"] = generateDialogueObject(` 
 start
     sourceless quiet
-        your eyes refocus as your mindspike recoils
+        твои глаза перефокусируются, пока мыслекол отдёргивается
             WAIT::3000
         боль разливается по твоему позвоночнику
 
@@ -505,20 +505,20 @@ start
             EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
 
     moth
-        thank god
-        looks like the limits i set up kept that in check
-        what happened, dude?
-        you were moving around in completely unreadable nonsense on my log
-        you tried to initiate movement to a new thoughtspace, then...
-        then it just... exploded?
+        слава богу
+        похоже установленные мной лимиты сдержали это
+        чё случилось-то, чел?
+        ты бродил<блинскийлопер> по какой-то совершенно нечитаемой чуши в моём логе
+        инициировал<блинскийлопер> передвижение в новое мыслепространство, а потом...
+        а потом оно типа... взорвалось?
     
     self
-        i found something 
-        tried to enter it, but velzie stopped me
-        just like the last time this happened
-        but this was different
-        velzie was surprised i was there
-        it seemed desperate to stop something from happening
+        я что-то нашёл<блинскийлопер>
+        попробовал войти<блинскийлопер>, но велзи мне помешала<блинскийвелзи???>
+        прямо как в прошлый раз
+        но сейчас было немного по-другому
+        велзи не ожидала<блинскийвелзи???> моего появления
+        она<блинскийвелзи???> как будто отчаянно пыталась что-то остановить
 
     moth
         didn't it lead you to whatever this was last time?
@@ -549,7 +549,7 @@ END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');env.enableS
 env.localization.page['fbx'].dialogues["ep4intro"] = generateDialogueObject(` 
 start
     moth
-        ...uh-huh, right
+        ...мгм, ясно
     
     sourceless
         moth paces in the dark, a dark shape held to an ear.

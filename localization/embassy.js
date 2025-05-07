@@ -16,10 +16,10 @@ env.localization.page['embassy'] = {dialogues: {},
         "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "",
         "about the embassy": "о посольстве",
 
-        "better times": "хорошие времена",
-        "discovery": "открытие",
-        "suspicion": "подозрение",
-        "collapse": "обвал",
+        "better times": "ХОРОШИЕ ВРЕМЕНА",
+        "discovery": "ОТКРЫТИЕ",
+        "suspicion": "ПОДОЗРЕНИЕ",
+        "collapse": "ОБВАЛ",
         "recollection": "вспоминание",
 
         "experience": "испытать",
@@ -32,13 +32,13 @@ env.localization.page['embassy'] = {dialogues: {},
         "chat": "поговорить",
         "convene": "созвать",
 
-        "akizet": "акизет",
+        "akizetesche": "акизетеше",
         "Surface Veteran": "Ветеран Поверхности",
         "think to self": "подумать про себя",
         "ruminate over cyst": "размышлять о цисте",
 
         "gakvu": "гакву",
-        "Conspicuous Insider": "", // --- ???
+        "Conspicuous Insider": "", // --- ??? ,,,,,,,,,,,,,,,,,,,,,,,,,...
         "toggle cloak": "переключить накидку",
             "ok": "хорошо",
             "sure": "конечно",
@@ -193,12 +193,12 @@ RESPOBJ::
     RESPONSES::self
         about the groundsmindry<+>groundsmindry
             SHOWIF::"ep4__entrance"
-        about thoughtform structure<+>structureloop
+        о строении мыслеформы<+>structureloop
             SHOWIF::"embassy__d1_start"
-        about obesk<+>obeskloop
-        about collapse<+>collapseloop
+        об обесках<+>obeskloop
+        об обвале<+>collapseloop
             SHOWIF::"embassy__d3_start-end"
-        about bstrd<+>bstrd
+        о свлчь<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
@@ -263,20 +263,20 @@ bstrd
 
 structureloop
     RESPONSES::self
-        game sucks<+>gamebad
+        игра хуйня<+>gamebad
             SHOWONCE::
             SHOWIF::"embassy__d3_rec_clear-end"
-        actually the game is ok<+>gamegood
+        вообще игра норм<+>gamegood
             SHOWONCE::
             SHOWIF::"mth++embassy-gamebad"
-        but it needs some work<+>gameok
+        но ей нужны доработки<+>gameok
             SHOWONCE::
             SHOWIF::"mth++embassy-gamegood"
-        perspective swap?<+>perspective
+        смена перспективы?<+>perspective
             SHOWIF::"embassy__d1_start"
-        other memories locked?<+>locked
+        другие вспоминания недоступны?<+>locked
             SHOWIF::[["embassy_d2_complete", true],["embassy_d1_complete", true],["fbx__ep2intro-end", false]]
-        back<+>loop
+        обратно<+>loop
             FAKEEND::(back)
 
 obeskloop
@@ -6129,7 +6129,7 @@ what
         я сказл теб эт злой режим
         он... СУПЕР СЛОЖНЙ!!!
         уходи есл те не понрвится....
-        но мож попробуеш .. . ?? 
+        но мож попробуеш)) .. . ?? 
     
     self
         DID YOU ALTER THE EVENTS?
@@ -6604,7 +6604,7 @@ start
             EXEC::step()
 
     bstrd
-        йо чеб вам не зайти у мя для вас сюрпиз
+        йо чеб вам не зайти у мя для вас сюрпиз)
         :-)
     
     sourceless
@@ -6704,7 +6704,7 @@ start
             EXEC::step()
 
     bstrd
-        заходите у мя для вас сюрпиз
+        заходите у мя для вас сюрпиз))
         :-)
     
     sourceless
@@ -6840,9 +6840,9 @@ start
         AND THE DOOR SHUTS BEHIND US--LOCKED AGAIN WITH THE SAME UNNATURAL TENDRILS
 
     bstrd
-        u guys just taught a golem how to use gun's
-        BAD ASS ...
-        SHOOT EM!!! GET EMM DUDE!!
+        рбята вы ток шо научили голема как пользоваца пушкми
+        АХУЕНА ...
+        РАССТРЕЛЯТ!!! ВО ТАК ИХ ЧУВАК!!
         >:}
     
     sourceless
@@ -6928,7 +6928,7 @@ ____SHOWIF::['gameplay_off']
         ВСЕ ЭТО ВРЕМЯ???
         >:[
         НЕЧЕСНО!
-        НЕ НУ ЧЕ ЗА ХУЙНЯ
+        НЕ НУ ЧЕ ЗА ХУЙНЯ(
     
     tozik
         о чём ты говоришь?
@@ -6966,7 +6966,7 @@ ____SHOWIF::['gameplay_off', false]
     
     bstrd
         ЗАВАЛИ РОТ я не закончил
-        крч я щас умру так шо слушайте вниательно
+        крч я щас умру так шо слушайте вниательно)
         aрр... боьл..
         ООА как БОЛЬНА!!!
         ;-(
