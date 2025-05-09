@@ -103,7 +103,7 @@ env.localization.page['sec'] = {dialogues: {},
     strings: {
         "don't look at me lol": "на меня не смотри лол",
         "that unity thing actually worked on this? it didn't even seem like there was anything left... weird": "единство и правда на нём сработало? даже не было похоже, будто там что-то осталось... странно",
-        "looks like it lost coherence once you pulled that memory from it": "похоже он потерял связность когда ты вытянул<блинскийлопер> ту память",
+        "looks like it lost coherence once you pulled that memory from it": "похоже он потерял связность после вытягивания той памяти",
 
         "hello?": "привет?",
         "ERROR::'infinite stream loop';'retracing';'last coherent position'": "ОШИБКА::'бесконечная петля потока';'возвращение';'последняя связная позиция'",

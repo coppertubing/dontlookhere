@@ -354,6 +354,7 @@ cor_ru = {
 
 
 
+
 body[state="corru-loaded"][menu="none"]:not(.in-dialogue)::before, body.loading::after, body.corru-refreshing::after {
     content: "ПРЕДУПРЕЖДЕНИЕ:'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАЗРЕШЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
     font-family: spacemono;
@@ -405,6 +406,24 @@ body.loading::after {
     animation: click-to-proceed 1s linear infinite;
 } 
 
+#dialogue-box.can-skip::before {
+    content: "ЛИНЕЙНЫЙ СЕГМЕНТ ПОТОКА - ПРОПУСК С ESC";
+    display: block;
+    text-align: center;
+    padding: 0.5em;
+    color: var(--neutral-color);
+    font-size: 0.75rem;
+    opacity: 0.5;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--dark-color);
+}
+
+#dialogue-skip::before {
+    content: "ПОДТВЕРЖДЕНИЕ::'пропуск сегмента потока'";
+}
+
 body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::before {
     content:"ПРАВАЯ КНОПКА МЫШИ" !important;
 }
@@ -454,6 +473,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     font-size: 0.63rem;
     margin-top: -0.5em;
 }
+
+
 
 
 .dialogue-message.corruru.dialogue-text, 
@@ -553,7 +574,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 
     stepKeyImplement: function () {
-        if (body.querySelector('.stage-arrows')) addEventListener("keydown", (e) => { cor_ru.stepKey(e.key)})
+        if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", (e) => { cor_ru.stepKey(e.key)})
     },
 
     stepKeyClean: function () {
@@ -570,36 +591,56 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     observerCommon: new MutationObserver(()=>{
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
-        cor_ru.processWeirdTranslation(".mindsci-status");
         console.log("common observed! @cor-RU");
     }),
     observerCommonObserve: function () {
         cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
+        console.log("common is observing #mindspike-scanner! @cor-RU")
         cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
+        console.log("common is observing #content! @cor-RU")
+    },
+
+    observerGad: new MutationObserver(()=>{
+        cor_ru.processWeirdTranslation(".mindsci-status");
+        console.log("GAD observed! @cor-RU");
+    }),
+    observerGadObserve: function () {
+        cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true });
+        console.log("gad is observing .mindsci-status! @cor-RU")
     },
 
     observerDialogue: new MutationObserver(()=>{
         cor_ru.processReply();
         console.log("dialogue observed! @cor-RU");
     }),
-    observerDialogueObserve: function () {cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true })},
+    observerDialogueObserve: function () {
+        cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true });
+        console.log("dialogue is observing #dialogue-box! @cor-RU")
+    },
 
     observerMasks: new MutationObserver(()=>{
         processTranslation(document.querySelector(`#ozo-mask-grid`))
         console.log("masks observed! @cor-RU");
     }),
-    observerMasksObserve: function () {cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true })},
+    observerMasksObserve: function () {
+        cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true });
+        console.log("masks is observing #masks! @cor-RU")
+    },
 
     observerPage: new MutationObserver(()=>{
+        processTranslation();
         cor_ru.processStatic();
         cor_ru.processMenu();
         cor_ru.observerCommonObserve();
+        cor_ru.observerGadObserve();
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
         cor_ru.stepKeyImplement();
         console.log("page observed! @cor-RU");
     }),
-    observerPageObserve: function () {cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']})},
+    observerPageObserve: function () {
+        cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']});
+        console.log("page is observing body! @cor-RU")},
 
     /*observerWarn: new MutationObserver(()=>{
         cor_ru.processWarning();
