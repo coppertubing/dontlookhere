@@ -23,6 +23,8 @@
 
 console.log("%chello world! defining some basic things now... - @cor-RU", 'color:rgb(229, 142, 22)')
 
+
+// temporary until corru.works fixes it
 function generateDialogueObject(genString) {
 	let split = genString.split('\n')
 	let obj = {}
@@ -244,6 +246,60 @@ function generateDialogueObject(genString) {
     else return obj
 }
 
+function processDefinitionsInString(input, {force = false} = {}) {
+    if(!input) return input;
+    if(!input.includes) return input;
+    if ((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
+
+    //we alter this string as it's processed to avoid definition overlaps
+    let scanningInput = input
+    let finalInput = input
+
+    //initialize the page definitions with any translation overrides if it isn't already set up
+    if(!page.formedDefinitionStrings) {
+        const localization = getLocalizationForPage()
+        page.formedDefinitionStrings = {...env.definitions, ...localization.definitions }
+    }
+    
+    //we want to prioritize phrases over words
+    const sortedDefinitions = Object.entries(page.formedDefinitionStrings).sort((a, b) => b[0].length - a[0].length)
+    sortedDefinitions.forEach(([phrase, definition]) => {
+        if(phrase.length > scanningInput.length) return;
+
+        const type = (typeof definition === "object") ? definition.type || "INHERITED CONTEXT" : "INHERITED CONTEXT";
+        const text = (typeof definition === "object") ? definition.text || definition : definition;
+
+        if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
+            //used mostly for special/context sensitive ones
+            finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${phrase.replace("θ", "")}</span>`)
+
+        } else {
+            //this regex looks literally insane but it's a faster way of looking up phrases in the string
+            //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
+            const phraseRegex = new RegExp(`(?<=\\s|^)(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})(?=\\s|$)`, 'gi');
+
+            // we check the scanningInput for matches
+            while ((match = phraseRegex.exec(scanningInput)) !== null) {
+                const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
+                
+                // replace the inputs - scanning to remove the match, finalInput to add the definition to the output
+                scanningInput = scanningInput.replaceAll(match[0], "")
+
+                //we do this to target replacements only outside of HTML
+                finalInput = finalInput.replace(/\b(<[^>]*>|[^<]+)\b/g, (innerMatch)=>{
+                    if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
+                        return innerMatch
+                    } 
+                    else { return innerMatch.replace(new RegExp(match[0], 'g'), replacement) }
+                })
+            }
+        }
+    })
+    
+    return finalInput
+}
+
+
 env.localization = {
    dialogues: {},
    definitions: {}, 
@@ -442,7 +498,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     processWeirdTranslation: function (selector, attribute = false) {
         if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent.trim())}}})}
         else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
-            return
+        return
     },
     processStatic: function (force) {
         cor_ru.processWeirdTranslation('title', true);
@@ -482,6 +538,33 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.processWeirdTranslation('.reply', 'endtext');
     },
 
+    // funky functions that do not forbid you from moving cyrillic-style
+
+    stepKey: function (key) {
+        key = key.toLowerCase();
+
+        if (key == 'ц') stepKey('w')
+        else if (key == 'ф') stepKey('a')
+        else if (key == 'ы') stepKey('s')
+        else if (key == 'в') stepKey('d')
+        else if (key == 'й') stepKey('q')
+        else if (key == 'у') stepKey('e')
+        else if (key == 'я') stepKey('z')
+    },
+
+    stepKeyImplement: function () {
+        if (body.querySelector('.stage-arrows')) addEventListener("keydown", (e) => { cor_ru.stepKey(e.key)})
+    },
+
+    stepKeyClean: function () {
+        function stageCleanup() {
+            if(env.stage.ref) env.stage.ref.remove()
+            env.stage.ref = null
+            try{ document.removeEventListener('keydown', stageKeypress) } catch(e) { /* never defined */ }
+            try{ document.removeEventListener('keydown', (e) => { cor_ru.stepKey(e.key)}) } catch(e) { /* never defined */ }
+        }
+    },
+
     // obserbor
 
     observerCommon: new MutationObserver(()=>{
@@ -513,6 +596,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.observerCommonObserve();
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
+        cor_ru.stepKeyImplement();
         console.log("page observed! @cor-RU");
     }),
     observerPageObserve: function () {cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']})},

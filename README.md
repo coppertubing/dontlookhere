@@ -83,3 +83,9 @@ https://coppertubing.github.io/cor-RU/localization/frame.js
 https://coppertubing.github.io/cor-RU/localization/cache.js
 
 https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js
+
+
+https://coppertubing.github.io/cor-RU/localization/entity-menu.js
+
+
+https://coppertubing.github.io/cor-RU/localization/load.js

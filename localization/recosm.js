@@ -73,7 +73,7 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "and so do§$ you, don’}RŒWt you?": "и ты§$ тоже, не та’}RŒWк ли?",
         /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "зачем¬ï…Ãµ ещё тýêV9‰ебе уп¼рствовать?",
 
-        /*god*/ "åT}Ýhello?±??‰? ¿": "åT}ÝПРивет?±??‰? ¿", // --- мне кажется это плохо переводится как привет. это скорее просто оклик - и по-русски, вроде, приветом не окликают??? << мне кажется в английском так откликают не сильно чаще чем в русском. ну и тут из вариантов... алё????? ещё хуже
+        /*god*/ "åT}Ýhello?±??‰? ¿": "åT}ÝАууУу?±??‰? ¿", // --- мне кажется это плохо переводится как привет. это скорее просто оклик - и по-русски, вроде, приветом не окликают??? << мне кажется в английском так откликают не сильно чаще чем в русском. ну и тут из вариантов... алё????? ещё хуже
         /*god*/ "it seems it is too much, even for me, hehe...": "кажется, это перебор даже для меня, хехе...",
         /*god*/ "but wait, please": "но постой, пожалуйста",
         /*god*/ "i will stop": "я прекращу",
@@ -96,9 +96,9 @@ env.localization.page['recosm'] = {dialogues: {},
         "friend": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::НЕРАЗБЕРИМАЯ ПОДПИСЬ
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-        "proxy generation point": `::CONNECTOR THOUGHTFORM
-::DESTINATION::'low dimensional thoughtspace';'internal'
-::ANALYSIS::'thoughtform pipeline';'not for navigational use'`,
+        "proxy generation point": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+::ТОЧКА НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+::АНАЛИЗ::'мыслеформенный канал';'не для навигационного пользования'`,
     }
 }
 
@@ -566,20 +566,20 @@ start
         у меня есть вопрос об этом месте
 
     moth
-        i don't think i'm really gonna be able to help you out there lol but i'll do my best
+        не думаю что смогу тебе тут помочь лол но я постараюсь
     
     RESPOBJ::mthrecosmresp
 
 background
     self
-        What is that in the background?
-        It looks like veins or something
+        что это такое на фоне?
+        выглядит похожим на вены
     
     moth
-        it's not spatial so i can't really see too deep into it, but it does look like it has depth
-        is it a memory of the inside of something? underwater? i have no clue
-        and i don't think it's cohesive enough for your mindspike to scan it
-        everything but these incoherent thoughtforms are just... separated out
+        оно не пространственное так что я не могу особо подробно рассмотреть его, но похоже в нём есть глубина
+        может это память каких-то внутренностей? чё-т под водой? понятия не имею
+        и я не думаю что оно достаточное связное чтобы твой мыслекол его просканировал
+        всё кроме этих бессвязных мыслеформ просто... отделено
 
     RESPOBJ::mthrecosmresp
 
@@ -589,11 +589,11 @@ nice
         оно кажется хорошим
     
     moth
-        i'm inclined to trust funfriend on this one
-        even if it's a well-intentioned incoherent thoughtform, it still is bound to cause trouble
-        like, what if all the parts of the memories in the cyst start "waking up" like this one,
-        and demand they have the same freedom?
-        it'd be total chaos - we'd never get any decent info out of them again
+        здесь я предпочту положиться на слова развледруга
+        даже если у этой мыслеформы благие намерения, она всё ещё бессвязна и вызывает проблемы
+        типа, что если все составные воспоминаний в цисте начнут "пробуждаться" как эта,
+        и потребуют себе такой же свободы?
+        вышла бы полная чушь - мы б никогда не получили от них никакой приемлемой информации
 
     RESPOBJ::mthrecosmresp
 
@@ -604,10 +604,10 @@ nogen
     
     moth
         что, сомнения затерзали?
-        looks like it closed as soon as this thing agreed to stop blocking repairs
-        unless you want to confess to funfriend that you left it alive,
-        which, by the way, you really shouldn't do,
-        it's going to stay here
+        кажись он закрылся как только та штука согласилась перестать мешать починкам
+        если ты ток не хочешь признаться развледругу что мы оставили её в живых,
+        что, кстати говоря, я тебе делать реально не советую,
+        она тут так и будет
 
     RESPOBJ::mthrecosmresp
 `)

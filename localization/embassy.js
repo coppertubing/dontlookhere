@@ -1053,7 +1053,7 @@ coat
     gakvu
         что я только что сказала?
             EXEC::ratween(env.bgm, 0.75, 3000);content.classList.add('incoherence')
-        'выключаю'?
+        "выключаю"?
         это грибок...
         так, нет--это изображение грибка...
         которое я имитирую в своей одежде!
@@ -1357,7 +1357,7 @@ env.localization.page['embassy'].dialogues["d1_cavikresp"] = generateDialogueObj
 RESPOBJ::
     RESPONSES::akizet
         наше сосредоточение близится<+>focus
-        теория замкнутого цикла?<+>theory
+        теория замкнутой петли?<+>theory
         как у тебя дела?<+>talk
         простимся на сейчас<+>END
             EXEC::pauseSwapCam(false);vn.done()
@@ -1365,54 +1365,54 @@ RESPOBJ::
 env.localization.page['embassy'].dialogues["d1_cavik"] = generateDialogueObject(` 
 start
     sourceless
-        CAVIK ATTENDS TO THE ARCHIVAL CYSTS, OCCASIONALLY AFFIXING ONE TO A STOUT RECEPTOR
+        КАВИК ПЕРЕБИРАЕТ АРХИВНЫЕ ЦИСТЫ, ВРЕМЯ ОТ ВРЕМЕНИ КРЕПЯ ПО ОДНОЙ К СВОЕМУ РЕЦЕПТОРУ
             EXEC::pauseSwapCam(true);
-        THE CYSTS ARE ARRANGED IN NEAT PILES, SORTED BY THE SHADE OF THEIR VISCERA
-        THOUGH HIS REGULAR UPKEEP ENSURES THAT NONE GROW TOO DARK OR STARVE
-        HE SENSES MY APPROACH AND TURNS, CORDIALLY BOWING HIS HEAD AND RECEPTORS
+        ОНИ ЛЕЖАТ АККУРАТНЫМИ КУЧКАМИ, ОТСОРТИРОВАННЫЕ ПО ОТТЕНКУ ИХ ВНУТРЕННОСТЕЙ
+        ПУСТЬ ЕГО РЕГУЛЯРНЫЙ УХОД ГАРАНТИРУЕТ, ЧТО НИ ОДНА ИЗ НИХ НЕ СТЕМНЕЕТ ИЛИ НАЧНЕТ ГОЛОДАТЬ
+        ОН ЧУВСТВУЕТ МОЁ ПРИБЛИЖЕНИЕ И ПОВОРАЧИВАЕТСЯ, РАДУШНО КЛАНЯЯСЬ ГОЛОВОЙ И РЕЦЕПТОРАМИ
             EXEC::vnp({cavik: "show", hideStage: true})
     
     cavik
-        akizet! great gaze!
+        акизет! благой взор!
             
     akizet
-        likewise, my friend
-        what are you doing?
+        и тебе того же, мой друг
+        что ты делаешь?
 
     cavik
-        i was just conducting maintenance on some of our older archives
-        and reminiscing! oh, the wild and obeski-centric theories they used to toss about!
-        there is this old one i have been running through--a joint theory by none other than dullzkovik and azkavinesche!
-        they called it the 'closed loop' - have you heard of it?
+        я просто проводил обслуживание некоторых из наших старых архивов
+        и вспоминал прошлое! ооо, сколь дикие и сосредоточенные на обескии теории они когда-то выдвигали!
+        есть одна старая, о которой я всё думаю--совместная теория самих сероезковика и азкавинеше!
+        они называли её "замкнутой петлёй" - ты когда-нибудь слышала о ней?
     
     akizet
-        ah...
+        ах...
 
     sourceless
-        OH NO
-        OF COURSE I HAVE
+        О НЕТ
+        РАЗУМЕЕТСЯ Я СЛЫШАЛА
         I SHOULD ENSURE HE DOES NOT FEEL IT APPROPRIATE TO SHARE THIS WITH THE BRIGHT COUSINS
 
     cavik
         i feel that it was almost formed as a satire of the more outlandish ones from the early era, but...
         there is something oddly compelling about it!
-        oh--sorry, do you have need of me?
+        о--извини, я тебе нужен?
     
     RESPOBJ::d1_cavikresp
 
 focus
     akizet
-        our focus approaches, my friend
-        are you prepared? do you have any topics to bring?
+        наше сосредоточение близится, мой друг
+        ты готов? есть ли у тебя темы для обсуждения?
     
     sourceless
         I SENSE UNEASE FROM HIS STANCE
 
     cavik
-        ahh!! it is really time already?
-        oh, these old cysts do not have any time constriction... no wonder!
-        ah, yes, yes, i will be ready!
-        yes!
+        ааа!! неужели время уже пришло?
+        ох, у этих старых цист нет временного сжатия... ничего удивительного!
+        а, да, да, я буду готов!
+        да!
     
     akizet
         you do not need to press yourself, my friend
@@ -1423,7 +1423,7 @@ focus
         i do not have anything to bring this time... but i will be ready!
     
     akizet
-        excellent
+        прекрасно
     
     RESPOBJ::d1_cavikresp
     

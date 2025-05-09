@@ -102,8 +102,8 @@ env.localization.page['sec'] = {dialogues: {},
     },
     strings: {
         "don't look at me lol": "на меня не смотри лол",
-        "that unity thing actually worked on this? it didn't even seem like there was anything left... weird": "",
-        "looks like it lost coherence once you pulled that memory from it": "",
+        "that unity thing actually worked on this? it didn't even seem like there was anything left... weird": "единство и правда на нём сработало? даже не было похоже, будто там что-то осталось... странно",
+        "looks like it lost coherence once you pulled that memory from it": "похоже он потерял связность когда ты вытянул<блинскийлопер> ту память",
 
         "hello?": "привет?",
         "ERROR::'infinite stream loop';'retracing';'last coherent position'": "ОШИБКА::'бесконечная петля потока';'возвращение';'последняя связная позиция'",
@@ -149,7 +149,7 @@ start
 env.localization.page["localuncosmwhere"].dialogues["cavik"] = generateDialogueObject(`
 start
     self
-        hello?
+        привет?
 
     sourceless
         ...
@@ -157,86 +157,86 @@ start
     
 ____SHOWIF::"embassy_d1_complete"
     moth
-        hold on, what exactly are you looking at?
-        is this just cavik from the embassy?
-        is he doing anything?
+        погоди-ка, на что именно ты смотришь?
+        это что, просто кавик из посольства?
+        он что-нибудь делает?
     
     self
         he's just standing there
 ____SHOWIF::["embassy_d1_complete", false]
     moth
-        hold on, what exactly are you looking at?
-        is that another obesk signature? how did you even figure this out?
-        ...is it doing anything?
+        погоди-ка, на что именно ты смотришь?
+        это что, какая-то обесковая подпись? как ты вообще это нашёл<блинскийлопер>?
+        ...она что-нибудь делает?
     
     self
-        it's just standing there
+        просто стоит тут
 ____END
 
     sourceless
         ...
     
     self
-        hello?
+        привет?
         
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        AFTER THE BRIGHT COUSINS STEP AWAY, I CLENCH MY CLAWS
+        КАК ТОЛЬКО СВЕТЛЫЕ БЛИЗНЕЦЫ ОТХОДЯТ, Я СЖИМАЮ КОГТИ
             EXEC::ratween(page.bgm, 0.2)
-        BEFORE HE CAN SAY ANYTHING, I GRIP CAVIK BY HIS FOREARM AND LEAD HIM DOWN THE HALL
-        PERHAPS HE ALREADY KNOWS SOMETHING IS WRONG FROM THE WAY THEY REACTED TO ME
+        ПРЕЖДЕ ЧЕМ ОН УСПЕВАЕТ ВЫМОЛВИТЬ ХОТЬ СЛОВО, Я ЛОВЛЮ КАВИКА ЗА ЗАПЯСТЬЕ И УВОЖУ ЕГО ВНИЗ ПО КОРИДОРУ
+        ВОЗМОЖНО, ОН УЖЕ ДОГАДЫВАЕТСЯ, ЧТО ЧТО-ТО НЕ ТАК, ПО ИХ РЕАКЦИИ НА МЕНЯ
 
     cavik
-        you are scaring me!! stop!
-        what is going on?
-        why did you not tell us anything?
-        this is good, is it not??
-        it is everything we have ever worked for!
-        or--
+        ты меня пугаешь!! постой!
+        что такое?
+        почему ты нам ничего не сказала?
+        это хорошо, разве нет??
+        это всё, ради чего мы работали!
+        или--
 
     sourceless
-        I GRIP HIM BY THE SHOULDERS
-        HIS RECEPTORS RECOIL, AND HE FREEZES, AS IF SPOTTED BY A PREDATOR
-        IT MUST BE SOMETHING IN MY RECEPTORS, OR MAYBE MY EYES
-        THERE CAN BE NO MISUNDERSTANDING
+        Я ХВАТАЮ ЕГО ЗА ПЛЕЧИ
+        ЕГО РЕЦЕПТОРЫ ОТВОРАЧИВАЮТСЯ, И ОН ЗАМИРАЕТ, СЛОВНО ЗАМЕЧЕННЫЙ ХИЩНИКОМ
+        ДОЛЖНО БЫТЬ, ДЕЛО В МОИХ РЕЦЕПТОРАХ, ИЛИ, МОЖЕТ БЫТЬ, В МОИХ ГЛАЗАХ
+        МЕЖДУ НАМИ НЕ ДОЛЖНО БЫТЬ НЕДОПОНИМАНИЯ
 
     origin
-        cavik
-        you cannot tell anyone
-        not even our team
-        no matter what
+        кавик
+        не смей никому говорить
+        даже нашей команде
+        не смотря ни на что
 
     sourceless
-        MY VOICE WAVERS WITH MORTAL FEAR
+        МОЙ ГОЛОС ДРОЖИТ СМЕРТНЫМ СТРАХОМ
 
     origin
-        understand?
-        especially not now...
+        понимаешь?
+        особенно не сейчас...
 
     cavik
         ██████...
-        i have never seen you like this
-        will you please tell me what is going on?
-        please
-        pleas e
-        it hurts
+        я никогда тебя такой не видел
+        прошу, скажи мне, что происходит?
+        прошу
+        прош у
+        мне больно
             EXEC::env.secavik.cavikDmg(1)
-        hurts
+        больно
             EXEC::ratween(page.bgm, 0.1)
     
     c a
-        someone is there
-        i feel you
-        i cannot wake up
-        you have to end this
-        its going to start again
-        you have to end this
-        please
+        там кто-то есть
+        я чувствую тебя
+        я не могу очнуться
+        тебе нужно закончить это
+        оно снова начнётся
+        тебе нужно закончить это
+        прошу
     
     cv i k
-        p  l  e a  s  e
+        п  р  о ш  у 
             EXEC::env.secavik.closeout()
 
     sys
@@ -280,7 +280,7 @@ start
         
     other
         no way
-        i do not like the look of it
+        не нравится мне его вид
         besides, whatever is being done to it, it is not for habitation
         we need to keep looking - it must be near here
         
@@ -473,7 +473,7 @@ start
         AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
 
     other
-        attention, ██████! 
+        внимание, ██████! 
         this is this is ██████!
         speaking on behalf of anterior dull station '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>',
         you are all clear to proceed!
@@ -521,7 +521,7 @@ start
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
 `)
-env.localization.page["localuncosmwhere"].dialogues["flower"] /*--- кс кс слизнячок (изабель)*/ = generateDialogueObject(`
+env.localization.page["localuncosmwhere"].dialogues["flower"] /*--- кс кс слизнячок (изабель) СЛИЗНЯЧОООООООООООООООООООООООООООООКРПГСНАВЧРЫЯВ*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
