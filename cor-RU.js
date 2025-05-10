@@ -566,12 +566,12 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         key = key.toLowerCase();
 
         if (key == 'ц') stepKey('w')
-        else if (key == 'ф') stepKey('a')
-        else if (key == 'ы') stepKey('s')
-        else if (key == 'в') stepKey('d')
-        else if (key == 'й') stepKey('q')
-        else if (key == 'у') stepKey('e')
-        else if (key == 'я') stepKey('z')
+        if (key == 'ф') stepKey('a')
+        if (key == 'ы') stepKey('s')
+        if (key == 'в') stepKey('d')
+        if (key == 'й') stepKey('q')
+        if (key == 'у') stepKey('e')
+        if (key == 'я') stepKey('z')
     },
 
     stageKeypressed: (e) => { cor_ru.stepKey(e.key) },
