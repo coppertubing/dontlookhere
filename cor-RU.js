@@ -281,21 +281,21 @@ function processDefinitionsInString(input, {force = false} = {}) {
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
                 const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
-                
                 // replace the inputs - scanning to remove the match, finalInput to add the definition to the output
                 scanningInput = scanningInput.replaceAll(match[0], "")
 
                 //we do this to target replacements only outside of HTML
-                finalInput = finalInput.replace(/\b(<[^>]*>|[^<]+)\b/g, (innerMatch)=>{
+                finalInput = finalInput.replace(/(?<=\s|^)(<[^>]*>|[^<]+)(?=\s|$)/g, (innerMatch)=>{
                     if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
                         return innerMatch
                     } 
-                    else { return innerMatch.replace(new RegExp(match[0], 'g'), replacement) }
+                    else {
+                        return innerMatch.replace(new RegExp(match[0], 'g'), replacement)
+                    }
                 })
             }
         }
     })
-    
     return finalInput
 }
 
@@ -709,5 +709,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     console.log("%cdefined! making them work now... - @cor-RU", 'color:rgb(229, 142, 22)')
 
 document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
+
+page.formedDefinitionStrings = undefined
 
 addResources(cor_ru.dalist)

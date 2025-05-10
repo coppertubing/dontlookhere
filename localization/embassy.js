@@ -186,6 +186,9 @@ env.localization.page['embassy'] = {dialogues: {},
     },
 }
 
+if(check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
+if(check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+
 
 // --- DIALOGUES --- //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
