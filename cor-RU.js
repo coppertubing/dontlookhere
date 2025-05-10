@@ -562,6 +562,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     // funky functions that do not forbid you from moving cyrillic-style
 
     stepKey: function (key) {
+        console.log(key)
         key = key.toLowerCase();
 
         if (key == 'ц') stepKey('w')
@@ -573,8 +574,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         else if (key == 'я') stepKey('z')
     },
 
+    stageKeypressed: (e) => { cor_ru.stepKey(e.key) },
+
     stepKeyImplement: function () {
-        if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", (e) => { cor_ru.stepKey(e.key)})
+        if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", cor_ru.stageKeypressed)
     },
 
     stepKeyClean: function () {
@@ -582,7 +585,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             if(env.stage.ref) env.stage.ref.remove()
             env.stage.ref = null
             try{ document.removeEventListener('keydown', stageKeypress) } catch(e) { /* never defined */ }
-            try{ document.removeEventListener('keydown', (e) => { cor_ru.stepKey(e.key)}) } catch(e) { /* never defined */ }
+            try{ document.removeEventListener('keydown', cor_ru.stageKeypressed) } catch(e) { /* never defined */ }
         }
     },
 

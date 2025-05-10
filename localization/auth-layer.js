@@ -84,7 +84,7 @@ iam
         Я ЗДЕСЬ ЧТОБЫ ПОМОЧЬ
 
     sentry
-        ТЫ ЧТО?
+        ВЫ ЧТО?
             EXEC::document.querySelector('.maineye .eye').classList.add('wide')
         ПОДОЖДИ-КА
         ГДЕ МЫ

@@ -1,5 +1,71 @@
 env.localization.page['embassy'] = {dialogues: {},
-    definitions: {}, 
+    definitions: {
+        "θsegment": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
+
+        "θsegments": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
+
+        "θtendril": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'` },
+
+        "θtendrils": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'` },
+
+        "θbranch": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with tendril';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'less formal term'` },
+
+        "veilks-blood": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common beverage';'not blood'` },
+
+        "secri": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'predator';'infection';'primal terror'` },
+
+        "spirestorm": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'weather phenomena';'ceaseless violent storm surrounding natural spire'` },
+
+        "vaznian": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'vazni'` },
+
+        "ekivik": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'ekiva'` },
+
+        "ekiviks": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'ekiva'` },
+
+        "celki": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk parasite';'food'` },
+
+        "corroyi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'` },
+
+        "okizika": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ekivik surface monument';'holy site'` },
+
+        "kozazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'vaznian cave-city';'home of kazki';'known for fungal farms'` },
+
+        "parii": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk bone'` },
+
+        "sfer": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'refined corrucystic fuel/food';'currency'` },
+
+        "veilk": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'surface fauna';'foundation of entire ecosystem';'enormous and endless'` },
+
+        "zzoust": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'party drink';'name not properly spoken unless shouted'` },
+
+        "corruskivi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'traditional maintenance tool';'passes through corru effortlessly'` },
+
+        "zevazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'cave-city central to vazni';'corrucystic revolution origin'` },
+
+        "no tendril left to rot": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'all is harvested'` },
+
+        "velzie's smile upon": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'subject entertains god with antics';'religious implication'` },
+
+        "great gaze": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'velzie's great gaze upon us';'wishes of good luck'` },
+
+        "groundsmind": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'` },
+
+        "groundsmindry": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'` },
+
+        "timestopper": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
+
+        "θeye": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'time period';'patrols around the eye of velzie';'religious implication'` },
+
+        "θeyes": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'time period';'patrols around the eye of velzie';'religious implication'` },
+
+        "how beholds you": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'religious implication';'how does velzie's gaze behold you'` },
+
+        "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
+
+        "kalstik": { type: `TRANSLATION FAILED`, text: `CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL`},
+
+        "life-pod": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
+    }, 
     strings: {
         "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "",
         "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "",
@@ -873,7 +939,7 @@ start
         здравствуй, тозик!
 
     sourceless
-        в том мимолётном взгляде на меня я вижу его распознание
+        в мимолётном взгляде на меня я вижу его распознание
             EXEC::vnp({hideStage: true, tozik: "show"})
         однако его внимание обращено вовнутрь, сквозь корруцистозную вену
         тозика раздражает пустая болтовня, поэтому я решаю не медлить
@@ -1098,7 +1164,7 @@ RESPOBJ::
         наше сосредоточение близится<+>focus
             EXEC::change('PAGE!!d1_kbcollected', true)
         о чём вы говорили?<+>story
-        как у вас дела?<+>talk
+        как вы?<+>talk
         простимся на сейчас<+>END
             EXEC::specialCam(false);pauseSwapCam(false);vn.done()
 `)
@@ -1179,7 +1245,7 @@ story
     
 talk
     akizet
-        друзья мои, какие новости вы несёте?
+        друзья мои, что за вести вы несёте?
         о себе самих, разумеется
         для наших работ нас ждёт сосредоточение
     
@@ -1361,7 +1427,7 @@ RESPOBJ::
     RESPONSES::akizet
         наше сосредоточение близится<+>focus
         теория замкнутой петли?<+>theory
-        как у тебя дела?<+>talk
+        как ты?<+>talk
         простимся на сейчас<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `)
@@ -1394,11 +1460,11 @@ start
     sourceless
         О НЕТ
         РАЗУМЕЕТСЯ Я СЛЫШАЛА
-        I SHOULD ENSURE HE DOES NOT FEEL IT APPROPRIATE TO SHARE THIS WITH THE BRIGHT COUSINS
+        Я ДОЛЖНА УБЕДИТЬСЯ, ЧТО ОН НЕ СОЧТЁТ УМЕСТНЫМ ПОДЕЛИТЬСЯ ЕЙ СО СВЕТЛЫМИ БЛИЗНЕЦАМИ
 
     cavik
-        i feel that it was almost formed as a satire of the more outlandish ones from the early era, but...
-        there is something oddly compelling about it!
+        такое чувство, что она была задумана как сатира на более абсурдные теории ранней эпохи, но...
+        как ни странно, в ней есть что-то захватывающее!
         о--извини, я тебе нужен?
     
     RESPOBJ::d1_cavikresp
@@ -1409,7 +1475,7 @@ focus
         ты готов? есть ли у тебя темы для обсуждения?
     
     sourceless
-        I SENSE UNEASE FROM HIS STANCE
+        Я ЧУВСТВУЮ НЕЛОВКОСТЬ В ЕГО ПОЗЕ
 
     cavik
         ааа!! неужели время уже пришло?
@@ -1418,12 +1484,12 @@ focus
         да!
     
     akizet
-        you do not need to press yourself, my friend
-        it is a simple one
+        тебе не нужно на себя давить, друг мой
+        оно будет простым
     
     cavik
-        i know, i just hate when this happens
-        i do not have anything to bring this time... but i will be ready!
+        знаю, я просто ненавижу, когда так происходит
+        мне нечего принести в этот раз... но я буду готов!
     
     akizet
         прекрасно
@@ -1432,83 +1498,84 @@ focus
     
 theory
     sourceless
-        I WOULD PREFER NOT TO CRUSH HIS INVESTIGATIVE SPIRIT
-        BUT THESE EARLY THEORIES CARRY LESS WORTH THAN <span definition="NOTE::'partial translation';'inherited description-generated noun'">WALL-ROT</span>
-        ESPECIALLY DULLZKOVIK'S, VELZIE'S SMILE UPON HIM
+        НЕ ХОТЕЛОСЬ БЫ МНЕ ГУБИТЬ ЕГО ИЗЫСКАТЕЛЬНЫЙ ДУХ
+        НО ЭТИ РАННИЕ ТЕОРИИ НЕСУТ В СЕБЕ МЕНЬШЕ ПОЛЬЗЫ, ЧЕМ <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано из унаследованного контекста'">НАСТЕННАЯ ГНИЛЬ</span>
+        ОСОБЕННО ОТ СЕРОЕЗКОВИКА, ДА УЛЫБНЁТСЯ ЕМУ ВЕЛЗИ
     
     akizet
-        closed loop...
-        is that the time--
+        замкнутая петля...
+        это та про уп--
     
     cavik
-        time manipulation!! yes! let me remind you! 
-        dullzkovik posited that one era... we learn to use the dull plane to traverse space four-dimensionally
-        and our future selves eventually discover the home of the bright cousins, but far too late to meet them
-        so--we create a contrivance just big enough to release a message to ourselves and signal its location!
+        управление временем!! да! позволь мне напомнить!
+        сероезковик утверждал, что в одну эпоху... мы научимся использовать среду серое для четырёхмерного перемещения в пространстве
+        и, в конце концов, мы из будущего обнаружим дом светлых близнецов, вот только слишком поздно, чтобы их встретить
+        так что--мы создадим открытие, как раз достаточное для того,
+        чтобы послать сообщение самим себе и обозначить его местоположение!
 
     sourceless
-        OH, CAVIK
-        I TWIST MY RECEPTORS THOUGHTLESSLY, ACCIDENTALLY BARING MY SKEPTICISM
+        ОХ, КАВИК
+        Я БЕЗДУМНО КРУЧУ РЕЦЕПТОРАМИ, НЕЧАЯННО ВЫДАВАЯ СВОЙ СКЕПТИЦИЗМ
         
     cavik
-        now--i know you must think it is ridiculous, 
-        and it is! especially as it goes on, hehe
-        but is it not inevitable at the same time?
-        in our θdeaths, there is enough time to unravel any mystery--time manipulation included!
+        ну вот--я знаю, ты наверняка считаешь её несуразной, 
+        и она такая и есть! особенно в продолжении, хихи
+        но разве она не неизбежна в то же время?
+        в наших θсмертях хватит времени, чтобы разгадать любую тайну--в том числе и управление временем!
     
     akizet
-        first...
-        i do not think dullzkovik understood the full implication of creating a contrivance inside a planet at that point
-        that was before the incident with the shared moon, you know
-        and, time manipulation... 
-        if we ever were to manage it,
-        the mistakes that created us and our world would be gradually undone to right old wrongs
+        во-первых...
+        по-моему, сероезковик не понимал в тот момент всех последствий создания открытия внутри планеты
+        ты знаешь, это было до инцидента с общей луной
+        и, управление временем... 
+        если оно нам когда-нибудь вообще удастся,
+        ошибки, породившие нас и наш мир, были бы постепенно исправлены // --- "the mistakes that created us and our world would be gradually undone to right old wrongs" если у вас есть предложения получше о том как перевести вторую половину то я слушаю
     
     cavik
-        but we would never know if it was happening, would we? it would just 'be'!
-        anyway, i will not seriously debate it with you--it is just a bit of fun
+        но мы бы никогда не узнали, что оно бы происходило, правда? оно просто бы "было"!
+        так или иначе, я не буду всерьёз спорить с тобой--это всего лишь небольшая забава
     
     sourceless
-        TO BE SURE...
+        НА ВСЯКИЙ СЛУЧАЙ...
     
     akizet
-        yes, of course!
-        and--you are not going to share this with any cousins, correct?
+        да, конечно!
+        и--ты не станешь делиться ей с близнецами, правильно?
 
     sourceless
-        I SEE THE DEJECTION EVEN AS HE TRIES TO HIDE IT BENEATH AN ARCHIVAL CYST
-        HOW JOYLESS I MUST SEEM, SUCH A TERRIBLE INVERSION OF OUR YOUTH
-        BUT I REALLY WOULD PREFER NOT NEEDING TO FIX ANOTHER OVERSHARING INCIDENT
+        Я ВИЖУ ЕГО УНЫНИЕ, ДАЖЕ КОГДА ОН ПЫТАЕТСЯ СКРЫТЬ ЕГО ПОД АРХИВНОЙ ЦИСТОЙ
+        КАКОЙ БЕЗРАДОСТНОЙ Я, ДОЛЖНО БЫТЬ, КАЖУСЬ, ТАКАЯ УЖАСНАЯ ИНВЕРСИЯ НАШЕЙ МОЛОДОСТИ
+        НО Я БЫ ПРАВДА ПРЕДПОЧЛА НЕ ЗАНИМАТЬСЯ УСТРАНЕНИЕМ ОЧЕРЕДНОГО ИНЦИДЕНТА С ИЗЛИШНИМИ ОТКРОВЕНИЯМИ
     
     cavik
-        aki...
-        i would not seriously entertain sharing <em>this</em> one.
-        did you really think that?
-        i know i made an incorrect step, but
+        аки...
+        у меня и в мыслях не было, чтобы делиться <em>такой</em>.
+        ты правда так подумала?
+        я знаю, что оступился, но
     
     akizet
-        cavik, cavik! i trust you, be at ease
-        you know how i must be during these times
-        do not feel at fault
+        кавик, кавик! я верю тебе, будь спокоен
+        ты знаешь, какой я должна быть в эти времена
+        не чувствуй себя виноватым
     
     cavik
-        of course, no, no, i understand
+        конечно, нет, нет, я понимаю
 
     sourceless
         ¥IÁÈiæb4
-        ANOTHER LITTLE DEATH TO HAUNT ME
+        ОЧЕРЕДНАЯ МАЛЕНЬКАЯ СМЕРТЬ, КОТОРАЯ БУДЕТ ПРЕСЛЕДОВАТЬ МЕНЯ
     
     RESPOBJ::d1_cavikresp
 
 talk
     akizet
-        cavik, my friend, tell me
-        what news do you carry?
-        have you been enjoying your role?
-        it is not often that we have time to speak plainly anymore
+        кавик, друг мой, расскажи
+        что за вести ты несёшь?
+        нравится ли тебе твоя роль?
+        у нас уже не так часто есть время для простых разговоров
 
     cavik
-        i have! the oceans are truly mesmerizing, nothing at all like home
+        очень нравится! the oceans are truly mesmerizing, nothing at all like home
         you should see all the artifacts that the cousins have simply left to the water!
         and on our expeditions, so many little creatures come up to examine our vessels
         has bozko told you about the one he has taken?
