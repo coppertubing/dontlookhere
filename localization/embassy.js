@@ -131,7 +131,7 @@ env.localization.page['embassy'] = {dialogues: {},
         // discovery
 
         // suspicion
-        /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, мне радостно видеть что это ты, кто подключился",
+        /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, меня радует, что это ты подключилась",
         /*echo*/ "as it is with worry for your well-being that this message finds you": "поскольку это послание адресовано тебе из беспокойства о твоем благополучии",
         /*echo*/ "it must be said immediately:": "это должно быть сказано немедленно:",
         /*echo*/ "information regarding our team's latest findings must not be shared with anyone at any point": "информация о последних находках нашей команды не должна разглашаться никому и ни при каких обстоятельствах",
@@ -140,7 +140,7 @@ env.localization.page['embassy'] = {dialogues: {},
         /*akizet*/ "what is the purpose of this message?": "в чём цель этого сообщения?",
 
         /*echo*/ "we are in great danger, akizet": "мы в большой опасности, акизет",
-        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "пусть в работе мы и согласились, нельзя допускать и единого случайного намёка на наши знания",
+        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "пусть в работе мы и согласились, нельзя допускать ни единого случайного намёка на наши знания",
         /*echo*/ "no sharing with larval relations": "ни в разговорах с личиночными отношениями",
         /*echo*/ "not anyone you think you can trust": "ни с кем-либо, кому ты думаешь, что можешь доверяешь",
         /*echo*/ "no one": "никому",
@@ -1722,7 +1722,7 @@ start
     sourceless
         я киваю головой в сторону тозика, поскольку он уже подключён
         импульсом он приказывает великой цисте опустить проводные цисты перед каждым из нас
-        какая редкостная возмжность! я уверена, в восторге даже гакву
+        какая редкостная возможность! я уверена, в восторге даже гакву
         я подношу цисту к правому рецептору, и её оболочка смягчается, становясь чуть ли не вязкой жидкостью
         она оседает на моём рецепторе, и времядержец соединяется со мной
         моё сознание втягивается в него, к остальным - все подключены
@@ -1766,7 +1766,7 @@ start
     timestopper
         да! да! да стой
         да оо я понял да
-        извините за эхо да
+        извините за эхо да // перевести иначе. oh i think i am | echoing it sorry
     
     cavik
         извините это был я
@@ -1984,7 +1984,7 @@ start
         я обязана проверить эту цисту, иначе она поглотит мои мысли
             SHOWIF::["PAGE!!cystmelted", false]
 ____SHOWIF::["PAGE!!cystmelted", true]
-        есть ещё несколько членов команды, с которыми мне нужно поговорить... это должен кто-то, кого я знаю!!
+        есть ещё несколько членов команды, с которыми мне нужно поговорить... это должен быть кто-то, кого я знаю!!
         дай подумать, кто ещё остался?
         казки...
             SHOWIF::["PAGE!!d2kazkicyst", false]
@@ -2012,7 +2012,7 @@ who
         бозко упорен и я могу себе представить, что он бы предпринял подобное
         потом есть кавик, который... вообще, может и не он
         или, ну, это в его характере - делиться подобными вещами,
-        быть может, он тоже получил это сообщение?
+        быть может, он получил похожее сообщение?
         тозик... возможно, порою он бывает странным
         хотя мне сказали, что я "дорога" отправителю, так что вряд ли он
         гакву... пожалуй, её я подозреваю больше всего
@@ -2324,7 +2324,7 @@ personnel
         видел, как что-нибудь входило в мою комнату?
     
     attendant
-        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO --- e
+        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO --- e    тонконогая
         ПРЕДПОЛАГАЛОСЬ, ЧТО ЭТО - УСТРОЙСТВО САМОДОСТАВКИ
     
     sourceless
@@ -3245,7 +3245,7 @@ start
         они афигеть какие незаконные, во всяком случае для обычных подрядчиков
         короче, мы можем перехитрить твой мыслекол заставив его думать что это воспоминание чего-то другого
         типа... вместо воспоминания о том как акизет дала какому-то челику по морде,
-        мы "обрамляем" его так, чтобы это было воспоминание об игре где Акизет дала тому же челику по морде
+        мы "обрамляем" его так, чтобы это было воспоминание об игре где акизет дала тому же челику по морде
         это может вызвать некоторую нестабильность, но даст тебе войти
         полностью сбивает с толку встроенный ИИ
     
@@ -3547,7 +3547,7 @@ start
         ПРИВЕТ АКИЗЕТЕШЕ!!!
     
     sourceless
-        ПО МНЕ ПРОХОДИТСЯ ВОЛНА ОБЛЕГЧЕНИЯ 
+        МЕНЯ НАКРЫВАЕТ ВОЛНА ОБЛЕГЧЕНИЯ 
         РАЗВЛЕДРУГ: У НАС ЕСТЬ ВОЗМОЖНОСТЬ К ПЕРЕДАЧАМ СЕРОЕ?
     
     funfriend
@@ -3638,7 +3638,7 @@ start
     
     aggressor
         п   р о    ь п р   о  чь ь
-        я н  е д м не  д а  м
+        я н  е д н ме  д а  м
     
     gakvu
         что-что?
@@ -3734,7 +3734,7 @@ start
         а--у меня ничего нет, то есть--
     
     akizet
-        импровизируй, схвати что-нибудь, врежь ему
+        импровизируй, схвати что-нибудь, врежь ему // всё ещё вопрос
         это не имеет значения
         я могу помочь направить тебя
         мы добьёмся победы
@@ -3819,7 +3819,7 @@ ____END
     sourceless
         ОСТАЛЬНЫЕ ПРОСТО СКЛОНЯЮТ РЕЦЕПТОРЫ В УТВЕРЖДЕНИЕ И ДЕРЖАТСЯ РЯДОМ
         В СОЕДИНЕНИИ С ВРЕМЯДЕРЖЦЕМ МЕЖДУ НАМИ ЦАРИТ НАПРЯЖЕНИЕ
-        ТО НЕМНОГО СТРАННО... Я БЫ ПОНЯЛА СТРАХ, НО,
+        ЧТО НЕМНОГО СТРАННО... Я БЫ ПОНЯЛА СТРАХ, НО,
         КТО-ТО МЕНЯ БОИТСЯ?
 
     sys
@@ -4070,7 +4070,7 @@ disable
         Я ОСТОРОЖНО НАЦЕЛИВАЮ ОТКЛЮЧИТЕЛЬ
             EXEC::removeItem(env.ITEM_LIST.disabler);
         И С ИМПУЛЬСОМ МОЕЙ РУКИ НЕСКОЛЬКО СПЕЦИАЛИЗИРОВАННЫХ ШИПОВ ЯРОСТНО ВЫСТРЕЛИВАЮТ НАРУЖУ
-        ОНИ ВСАЖИВАЮТСЯ В НАШИХ ВРАГОВ, И В МГНОВЕНИЕ ОКА ОНИ НАЧИНАЮТ ПЛАВИТЬСЯ
+        ОНИ ВСАЖИВАЮТСЯ В НАШИХ ВРАГОВ, И В МГНОВЕНИЕ ОКА ТЕ НАЧИНАЮТ ПЛАВИТЬСЯ
             EXEC::setTimeout(()=>play('shot2', 0.6), 300)
     RESPONSES::akizet
         продолжить<+>END
@@ -4346,7 +4346,7 @@ theory
 
 holdingup
     akizet
-        как вы оба?
+        как вы? // бан на он/его гакву 💔
         у меня всё нормально
             SHOWIF::'EXEC::page.party[0].hp >= 12'
         мне бы не помешали починки, но я в порядке
@@ -5201,9 +5201,9 @@ help
         perhaps we could help!
     
     miltza
-        ah, no no!
-        it is ok! you go ahead
-        i will be along shortly!
+        ах, нет нет!
+        всё в порядке! идите дальше
+        я скоро присоединюсь!
 
     RESPONSES::akizet
         ok<+>loop
@@ -5216,20 +5216,20 @@ division
         i do not think i have seen you around
 
     miltza
-        ohh, i am in the wisdom initiative!
-        particularly the exchange subdivision!
+        охх, i am in the wisdom initiative!! // забыл термины
+        а именно в подразделении по обмену! // забыл термины но прикинул что-то
         
     akizet
         really?
         your quarters are quite low in the spire
     
     miltza
-        yes, they are,
-        but the thought of being so high up...
-        it is silly and larval, but i cannot rest so far from the ground
-        i do not mind the climb!
-        well... <em>did</em> not... 
-        i do not think things are ever going to be the same when this is over
+        да, это так, // да, они низко? пересмотреть после перевода верхнего
+        но мысль о том, чтобы находиться так высоко...
+        это глупо и по-личиночески, но я не могу отдыхать так далеко от земли
+        я не против подъёма! // ???
+        ну... <em>была</em> не против...
+        я не думаю, что после такого жизнь сможет вернуться на круги своя // ???
     
     RESPONSES::akizet
         we will see<+>loop
@@ -5244,14 +5244,14 @@ veilk
         do you make them often?
 
     miltza
-        ahehe, yes, actually!
-        i make sculptures and little golems of all obeski life,
-        but it is hard to do that without making many veilk
-        the cousins adore them, especially the ones that move
-        i had just completed and sent through a collection of ekiva veilk,
-        some even with their tendril adornments!
-        so, i was working on that vaznian species next...
-        ahh, what a shame!!
+        ахехе, на самом деле да!
+        я создаю скульптуры и маленьких големов всей жизни с обескии, // странноватое
+        но сложно заниматься этим, не создавая много вейльков
+        близнецы их обожают, особенно тех, что движутся
+        недавно я завершила и отослала коллекцию экивиковых вейльков,
+        некоторых даже с их украшениями на отростках! // ??? with their tendril adornments
+        так что дальше я работала над тем вазнийским видом...
+        ахх, как же жаль!!
 
     RESPONSES::akizet
         you will get the chance again!<+>art
@@ -5265,24 +5265,25 @@ eye
         what does it mean?
 
     miltza
-        hehe, you are not the first to say this
-        it is old pre-structurist symbology from my home in ekiva
-        akaniva - have you ever been?
+        хехе, ты не первая такое говоришь
+        это старая до-структуристская симболика из моего дома в экиве
+        аканива - ты там бывала?
 
     akizet
         hmmm... no
         i only know that is near the coast facing vazni
 
     miltza
-        yes!! well,
+        да!! ну,
         my ancestors portrayed the eye in grotesque ways, to insult it
-        a sort of payback for velzie's games
-        of course, that was nearly all lost in the okizika unison...
-        but i feel that portraying the many views of the eye to the cousins is important
-        even dead views!
-        it was also going to change into the structurist view, and then a central vaznian view, and some others...
-        but, in this giggle of velzie we find ourselves in, 
-        only the akanivik view was completed
+        мои предки изображали глаз ???, чтобы оскорбить его //я знаю что есть слово гротескно но не обесковое оно. (my ancestors portrayed the eye in grotesque ways)
+        что-то вроде отплаты за игры? потехи? велзи
+        конечно, почти всё это было потеряно в унисоне окизики
+        но я считаю, что важно изображать для близнецов всё множество взглядов на глаз
+        даже мёртвых взглядов!
+        также она должна была смениться на структуристский взгляд, затем на центральный вазнийский, на некоторые другие...
+        но, в смешке велзи, в котором мы оказались,
+        готов только аканивиковый взгляд
 
     RESPONSES::akizet
         ironic<+>art
@@ -5294,9 +5295,9 @@ taking
         will you be bringing any of your current work with?
     
     miltza
-        no, no--i am not even sure if we will be unable to return
-        but i have taken the archival cores i store my designs on
-        so - it is only a minor loss if they are lost!
+        нет, нет--я даже не уверена, что мы не сможем вернуться
+        но я взяла архивирующие ядра, на которых храню свои ????дизайны?
+        так что - если они будут утеряны, то потеря небольшая! // кворкс обожает тавтологию...... пересмотреть после верхнего -- на данный момент "они" как что-то типа "будешь ли ты брать с собой свои _работы_"
 
     RESPONSES::akizet
         that is good<+>art
