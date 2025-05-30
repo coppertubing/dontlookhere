@@ -14,10 +14,10 @@ cor_ru.stepKeyClean();
 cor_ru.observerPageObserve();
     
     console.log("%cyay! should work... - @cor-RU", 'color:rgb(229, 142, 22)')
-    console.log("%ccontact @dutokrisa, @shatteredstars or @bra1nslug_ if you have any questions, suggestions or bugs to report... - @cor-RU", 'color:rgb(229, 142, 22)')
+    console.log("%ccontact @dutokrisa or @bra1nslug_ if you have any questions, suggestions or bugs to report... - @cor-RU", 'color:rgb(229, 142, 22)')
     console.log("%cdebug id: 2... - @cor-RU", 'color:rgb(229, 91, 22)')
     
         
-setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa, @shatteredstars и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
+setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
 setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
         

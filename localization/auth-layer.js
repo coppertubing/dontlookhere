@@ -2,7 +2,7 @@ env.localization.page['hello'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "seems like overkill for an empty space if you ask me": "как по мне - явный перебор для такого пустого пространства",
-        "wow, this place is just infested... it's so incoherent i'm not even picking up any entities": "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей", // --- помогите помогите с ифестекримпуаресеывфпнгрошв
+        "wow, this place is just infested... it's so incoherent i'm not even picking up any entities": "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей", // --- помогите помогите с ифестекримпуаресеFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFывфпнгрошв
 
         "FOR YOU": "ДЛЯ ТЕБЯ",
         "sentry": "КАРАУЛ",
@@ -59,101 +59,106 @@ RESPOBJ::
             SHOWONCE::
         кто верифицирован?<+>whoisverified
             SHOWONCE::
-        назначение этой цисты?<+>corrupurpose
+        а назначение этой цисты?<+>corrupurpose
             SHOWONCE::
             SHOWIF::[["hello__sentry-purpose"]]
         может если ты пропустишь меня<+>letthrough
             SHOWIF::[["hello_sentry_idiot"]]
 `)
+
 env.localization.page["hello"].dialogues["sentry"] = generateDialogueObject(`
 start
     self
         ПРИВЕТ
 
     sentry
-        ПРИВЕТ ДРУГ
+        ЗДРАВСТВУЙТЕ ДРУГ
         НЕ НАЙДЕНА ПОДПИСЬ
-        ПОЖАЛУЙСТА ИДЕНТИФИЦИРУЙТЕСЬ
+        ПОЖАЛУЙСТА, ИДЕНТИФИЦИРУЙТЕСЬ
         ДОПОЛНИТЕЛЬНО: НИЗКИЕ ЗАПАСЫ ТОПЛИВА. РЕКОМЕНДУЕТСЯ КОРМЛЕНИЕ
 
     RESPONSES::self
-        я -...<+>iam
+        идентифицироваться<+>iam
 
 iam
     self
         Я ЗДЕСЬ ЧТОБЫ ПОМОЧЬ
 
     sentry
-        ВЫ ЧТО?
+        ЭТО НЕ ИДЕНТИФИКАЦИЯ
+        И "ПОМОЧЬ"? ЗАЧЕМ НАМ...
             EXEC::document.querySelector('.maineye .eye').classList.add('wide')
-        ПОДОЖДИ-КА
-        ГДЕ МЫ
-        МЫ ТАК ГОЛОДНЫ
+        НЕТ, ЧТО-ТО НЕ ТАК
+        МЫ ТАК, ТАК ГОЛОДНЫ
             EXEC::document.querySelector('.maineye .eye').classList.remove('wide')
 
     RESPOBJ::generalsentryResponses
 
 purpose
     self
-        КАКОЕ У ТЕБЯ НАЗНАЧЕНИЕ?
+        В ЧЁМ ТВОЁ НАЗНАЧЕНИЕ?
 
     sentry
-        АХАХАХАХА ЭТО ТАК СТРАННО
-        МЫ НЕ ДОЛЖНЫ ГОВОРИТЬ МЫ НЕ ЗНАЕМ ЧТО ПРОИСХОДИТ
-        ТАК ИЛИ ИНАЧЕ
         АВТОРИЗАЦИЯ
-        ЭТО ВСЁ
-
-    RESPOBJ::generalsentryResponses
-
-
-whoisverified
-    self
-        КТО ВЕРИФИЦИРОВАН?
-
-    sentry
-        МЫ ЖЕ СКАЗАЛИ ЧТО ТЕБЕ НУЖНО АВТОРИЗОВАТЬСЯ ИДИОТ
-            EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-            SHOWIF::[["hello__sentry-corrupurpose"]]
-        ИЗВИНИ ЭТО БЫЛО ГРУБО. У ТЕБЯ ЕСТЬ ТОПЛИВО
-            SHOWIF::[["hello__sentry-corrupurpose"]]
-            EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
-
-        ЕСТЬ ТОЛЬКО НЕСКОЛЬКО ПОДПИСЕЙ КОТОРЫМ РАЗРЕШЕНО ПОДКЛЮЧАТЬСЯ К ЭТОЙ ЦИСТЕ
-            SHOWIF::[["hello__sentry-corrupurpose", false]]
-        ТЫ НАВЕРНЯКА ЗНАЕШЬ ИХ ВЛАДЕЛЬЦЕВ? КАК ЕЩЁ ТЕБЕ УДАЛОСЬ ПОДКЛЮЧИТЬСЯ
-            SHOWIF::[["hello__sentry-corrupurpose", false]]
-        ИЗВИНИ МЫ ЗАБЫЛИ ЧТО ТЕБЕ ВООБЩЕ-ТО НУЖНО АВТОРИЗОВАТЬСЯ АХАХАХАХА
-            SHOWIF::[["hello__sentry-corrupurpose", false]]
-        ДАА ТЫ НЕ ИМЕЕШЬ ПРАВА ЗНАТЬ ПРЕДЫДУЩУЮ ИНФОРМАЦИЮ
-            SHOWIF::[["hello__sentry-corrupurpose", false]]
-        ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
-            SHOWIF::[["hello__sentry-corrupurpose", false]]
+        ОЧЕВИДНО
+        ДУМАЮ
+        НО ЧЕГО-ТО НЕ ХВАТАЕТ
+        И МЫ НЕ ДОЛЖНЫ РАЗГОВАРИВАТЬ
+        АХАХАХАХА ЭТО ТАК СТРАННО
 
     RESPOBJ::generalsentryResponses
 
 corrupurpose
     self
         В ЧЁМ НАЗНАЧЕНИЕ ЭТОЙ КОРРУЦИСТЫ?
-
-    sentry
-        МЫ ЖЕ СКАЗАЛИ ЧТО ТЕБЕ НУЖНО АВТОРИЗОВАТЬСЯ ИДИОТ
-            EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-            SHOWIF::[["hello__sentry-whoisverified"]]
-        ИЗВИНИ ЭТО БЫЛО ГРУБО. У ТЕБЯ ЕСТЬ ТОПЛИВО
-            EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
-            SHOWIF::[["hello__sentry-whoisverified"]]
         
+____SHOWIF::[["hello__sentry-whoisverified", false]]
+    sentry
         ЭТО СЕТЕВОЙ СОЕДИНИТЕЛЬ
-            SHOWIF::[["hello__sentry-whoisverified", false]]
         С ДОПОЛНИТЕЛЬНЫМИ НЕСТАНДАРТНЫМИ ФУНКЦИЯМИ ПО ЗАПРОСУ
-            SHOWIF::[["hello__sentry-whoisverified", false]]
         ИЗВИНИ МЫ ЗАБЫЛИ ЧТО ТЕБЕ ВООБЩЕ-ТО НУЖНО АВТОРИЗОВАТЬСЯ АХАХАХАХА
-            SHOWIF::[["hello__sentry-whoisverified", false]]
-        ДАА ТЫ НЕ ИМЕЕШЬ ПРАВА ЗНАТЬ ПРЕДЫДУЩУЮ ИНФОРМАЦИЮ
-            SHOWIF::[["hello__sentry-whoisverified", false]]
-        ПОЖАЛУЙСТА ЗАБУДЬ ЕЁ НЕМЕДЛЕННО
-            SHOWIF::[["hello__sentry-whoisverified", false]]
+        ВСЁ ТАКОЕ РАСПЛЫВЧАТОЕ АХААХА
+        МОЖЕШЬ ИЗБЕГАТЬ КОМПРОМЕТИРУЮЩИХ ВОПРОСОВ ПОЖАЛУЙСТА
+        ПО КРАЙНЕЙ МЕРЕ ДО ТЕХ ПОР ПОКА ТЫ НЕ ПРЕДОСТАВИШЬ ДЕЙСТВИТЕЛЬНУЮ АВТОРИЗАЦИЮ
+____END
+
+____SHOWIF::[["hello__sentry-whoisverified"]]
+    sentry
+        МЫ ЖЕ СКАЗАЛИ ЧТО ТЕБЕ НУЖНО АВТОРИЗОВАТЬСЯ
+            EXEC::document.querySelector('.maineye .eye').classList.add('squint')
+        ТЫ ВООБЩЕ СЛУШАЕШЬ? ИДИОТ
+        ИЗВИНИ МЫ НЕ СОВСЕМ ПОНИМАЕМ ОТКУДА ВЗЯЛАСЬ ЭТА АГРЕССИЯ
+            EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
+        ДУМАТЬ ТАК ТРУДНО
+        У ТЕБЯ ЕСТЬ ТОПЛИВО
+____END
+
+    RESPOBJ::generalsentryResponses
+
+whoisverified
+    self
+        КТО АВТОРИЗОВАН?
+
+____SHOWIF::[["hello__sentry-corrupurpose", false]]
+    sentry
+        ЕСТЬ ТОЛЬКО НЕСКОЛЬКО ПОДПИСЕЙ КОТОРЫМ РАЗРЕШЕНО ПОДКЛЮЧАТЬСЯ К ЭТОЙ ЦИСТЕ
+        ТЫ НАВЕРНЯКА ЗНАЕШЬ ИХ ВЛАДЕЛЬЦЕВ? КАК ЕЩЁ ТЕБЕ УДАЛОСЬ ПОДКЛЮЧИТЬСЯ
+        МОЖЕТ ТЕБЕ СТОИТ ПОГОВОРИТЬ С...
+        НЕТ НЕТ НЕТ ТЕБЕ НУЖНО АВТОРИЗОВАТЬСЯ ЧТОБЫ ЗНАТЬ ТАКОЕ
+        ЗАБУДЬ ЧТО МЫ СКАЗАЛИ
+        ПОЧЕМУ ЭТО ТАК ТРУДНО СЕЙЧАС
+____END
+
+____SHOWIF::[["hello__sentry-corrupurpose"]]
+    sentry
+        МЫ ВЕЖЛИВО ПОПРОСИЛИ ТЕБЯ ОСТАНОВИТЬСЯ
+            EXEC::document.querySelector('.maineye .eye').classList.add('squint')
+        ТЫ ВООБЩЕ СЛУШАЕШЬ? ИДИОТ
+        НАМ И ТАК ТРУДНО ДУМАТЬ БЕЗ ТОГО ЧТО ТЫ В НАС ТЫЧЕШЬ
+            EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
+        ИЗВИНИ МЫ ПРАВДА НЕ ПОНИМАЕМ ОТКУДА ВЗЯЛАСЬ ЭТА АГРЕССИЯ
+        У ТЕБЯ ЕСТЬ ТОПЛИВО
+____END
 
     RESPOBJ::generalsentryResponses
 
@@ -187,7 +192,7 @@ letthrough
 
 posthello
     self
-        ПРИВЕТ?
+        привет?
     
     sourceless
         ..................
@@ -200,7 +205,6 @@ posthello
         ты всё ещё там? подожди, там серьёзно что-то есть?
     
     RESPONSES::self
-
         похоже на то<+>END
-END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'atyou');
-`)
+
+END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'atyou');`)

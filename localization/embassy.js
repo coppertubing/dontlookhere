@@ -1,5 +1,11 @@
 env.localization.page['embassy'] = {dialogues: {},
     definitions: {
+        "времядержец": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
+        "времядержца": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
+        "времядержце": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
+        "времядержцем": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
+        "времядержцу": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
+
         "θsegment": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
 
         "θsegments": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
@@ -12,15 +18,8 @@ env.localization.page['embassy'] = {dialogues: {},
 
         "veilks-blood": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common beverage';'not blood'` },
 
-        "secri": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'predator';'infection';'primal terror'` },
-
         "spirestorm": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'weather phenomena';'ceaseless violent storm surrounding natural spire'` },
 
-        "vaznian": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'vazni'` },
-
-        "ekivik": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'ekiva'` },
-
-        "ekiviks": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ethnic implication';'origination from continent';'ekiva'` },
 
         "celki": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk parasite';'food'` },
 
@@ -51,8 +50,6 @@ env.localization.page['embassy'] = {dialogues: {},
         "groundsmind": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'` },
 
         "groundsmindry": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'` },
-
-        "timestopper": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
 
         "θeye": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'time period';'patrols around the eye of velzie';'religious implication'` },
 
@@ -104,7 +101,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "ruminate over cyst": "размышлять о цисте",
 
         "gakvu": "гакву",
-        "Conspicuous Insider": "", // --- ??? ,,,,,,,,,,,,,,,,,,,,,,,,,...
+        "Conspicuous Insider": "", // --- ??? ,,,,,,,,,,,,,,,,,,,,,,,,,...KOJIHUGYFG?????????????????????????????????????? GAKVU WHO THE FUCK ARE YOU
         "toggle cloak": "переключить накидку",
             "ok": "хорошо",
             "sure": "конечно",
@@ -134,44 +131,44 @@ env.localization.page['embassy'] = {dialogues: {},
         // discovery
 
         // suspicion
-        /*echo*/ "hello akizet, i am glad it is you who connected": "",
-        /*echo*/ "as it is with worry for your well-being that this message finds you": "",
-        /*echo*/ "it must be said immediately:": "",
-        /*echo*/ "information regarding our team's latest findings must not be shared with anyone at any point": "",
+        /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, мне радостно видеть что это ты, кто подключился",
+        /*echo*/ "as it is with worry for your well-being that this message finds you": "поскольку это послание адресовано тебе из беспокойства о твоем благополучии",
+        /*echo*/ "it must be said immediately:": "это должно быть сказано немедленно:",
+        /*echo*/ "information regarding our team's latest findings must not be shared with anyone at any point": "информация о последних находках нашей команды не должна разглашаться никому и ни при каких обстоятельствах",
 
-        /*akizet*/ "yes... as we had agreed": "",
-        /*akizet*/ "what is the purpose of this message?": "",
+        /*akizet*/ "yes... as we had agreed": "да... как мы и договаривались",
+        /*akizet*/ "what is the purpose of this message?": "в чём цель этого сообщения?",
 
-        /*echo*/ "we are in great danger, akizet": "",
-        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "",
-        /*echo*/ "no sharing with larval relations": "",
-        /*echo*/ "not anyone you think you can trust": "",
-        /*echo*/ "no one": "",
+        /*echo*/ "we are in great danger, akizet": "мы в большой опасности, акизет",
+        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "пусть в работе мы и согласились, нельзя допускать и единого случайного намёка на наши знания",
+        /*echo*/ "no sharing with larval relations": "ни в разговорах с личиночными отношениями",
+        /*echo*/ "not anyone you think you can trust": "ни с кем-либо, кому ты думаешь, что можешь доверяешь",
+        /*echo*/ "no one": "никому",
 
-        /*sourceless*/ "apprehension from the echo saturates the environment": "",
-        /*sourceless*/ "i can feel that this delusional paranoia is not even its true message": "",
-        /*sourceless*/ "in my θdeath, i have never had patience for such meandering exchanges": "",
+        /*sourceless*/ "apprehension from the echo saturates the environment": "опасение эха пропитывает окружающую среду",
+        /*sourceless*/ "i can feel that this delusional paranoia is not even its true message": "я ощущаю, что эта бредовая паранойя даже не является его истинным посланием",
+        /*sourceless*/ "in my θdeath, i have never had patience for such meandering exchanges": "в своей θсмерти у меня никогда не находилось терпения на такие извилистые болтовни",
 
-        /*akizet*/ "why? do not waste my time, cease with this drama": "",
+        /*akizet*/ "why? do not waste my time, cease with this drama": "почему? не трать моё время, прекрати эту драму",
 
-        /*echo*/ "i presumed you might react this way": "",
-        /*echo*/ "but i had to place my warning first, out of precaution": "",
-        /*echo*/ "you want to know why:": "",
-        /*echo*/ "come and see": "",
+        /*echo*/ "i presumed you might react this way": "я понимаю твою реакцию, она ожидаема",
+        /*echo*/ "but i had to place my warning first, out of precaution": "но мне нужно было поставить своё предупреждение первым, из предосторожности",
+        /*echo*/ "you want to know why:": "ты хочешь узнать, почему:",
+        /*echo*/ "come and see": "приходи и посмотри",
 
-        /*akizet*/ "yes, i understand": "",
+        /*akizet*/ "yes, i understand": "да, я понимаю",
 
-        /*echo*/ "thank you": "",
-        /*echo*/ "if only i could truly hear you agree": "",
-        /*echo*/ "but i cannot risk any side knowing i have told you": "",
-        /*echo*/ "so this cyst will erase its purpose shortly": "",
+        /*echo*/ "thank you": "спасибо",
+        /*echo*/ "if only i could truly hear you agree": "вот бы можно было услышать твоё согласие въявь",
+        /*echo*/ "but i cannot risk any side knowing i have told you": "но я не могу рисковать тем, чтобы любая из сторон узнала об этом послании",
+        /*echo*/ "so this cyst will erase its purpose shortly": "так что эта циста вскоре сотрёт свое предназначение",
 
-        /*echo*/ "but trust that i will know your response based on your actions": "",
+        /*echo*/ "but trust that i will know your response based on your actions": "но верь, что я узнаю твой ответ по твоим действиям",
                 
-        /*sourceless*/ "there is no response - no thought, no meaning": "",
-        /*sourceless*/ "in reality, i feel a strange runoff near my cyst-bearing receptor": "",
+        /*sourceless*/ "there is no response - no thought, no meaning": "я не получаю ответа - ни мысли, ни смысла",
+        /*sourceless*/ "in reality, i feel a strange runoff near my cyst-bearing receptor": "в реальности я ощущаю странный потёк возле рецептора, несущего цисту",
 
-        /*sourceless quiet*/ "it is destroying itself...": "",
+        /*sourceless quiet*/ "it is destroying itself...": "она самоуничтожается...",
       
         // collapse part 1
     }, 
@@ -267,7 +264,7 @@ RESPOBJ::
         об обесках<+>obeskloop
         об обвале<+>collapseloop
             SHOWIF::"embassy__d3_start-end"
-        о свлчь<+>bstrd
+        о свлчи<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
@@ -278,7 +275,7 @@ start
         у меня есть вопрос о посольстве
 
     moth
-        well, i'll do my best, lol
+        ну, я постараюсь, лол
     
     RESPOBJ::mthembresp
 
@@ -300,7 +297,7 @@ groundsmindry
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 bstrd
@@ -328,7 +325,7 @@ bstrd
 
     RESPONSES::self
         i see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 structureloop
     RESPONSES::self
@@ -345,36 +342,36 @@ structureloop
             SHOWIF::"embassy__d1_start"
         другие вспоминания недоступны?<+>locked
             SHOWIF::[["embassy_d2_complete", true],["embassy_d1_complete", true],["fbx__ep2intro-end", false]]
-        обратно<+>loop
-            FAKEEND::(back)
+        назад<+>loop
+            FAKEEND::(назад)
 
 obeskloop
     RESPONSES::self
-        kazki guns?<+>kazkiguns
+        оружие казки?<+>kazkiguns
             SHOWIF::"embassy__d3r2-end"
-        weird looking obesk?<+>weirdlook
+        странно выглядящие обески?<+>weirdlook
             SHOWIF::"embassy__d1_start"
-        is the embassy still around?<+>state
-        team members still around?<+>team
+        посольство ещё существует?<+>state
+        члены команды ещё живы?<+>team
             SHOWIF::"embassy__d1_kazkibozko"
-        groundsmind?<+>groundsmind
+        землемыслец?<+>groundsmind
             SHOWIF::"exm|embassy|attendant"
-        what is a kalstik?<+>kalstik
+        что такое кальстик?<+>kalstik
             SHOWIF::"exm|embassy|kalstik stand"
-        what is an archival vein?<+>archives
+        что такое архивная вена?<+>archives
             SHOWIF::"embassy__d3_bstrdintro-start"
 
-        back<+>loop
-            FAKEEND::(back)
+        назад<+>loop
+            FAKEEND::(назад)
 
 collapseloop
     RESPONSES::self
-        cavik?<+>cavik
-        the signal?<+>signal
-        casualties?<+>casualties
-        attacks outside embassy?<+>otherattacks
-        back<+>loop
-            FAKEEND::(back)
+        кавик?<+>cavik
+        сигнал?<+>signal
+        потери?<+>casualties
+        нападения вне посольства?<+>otherattacks
+        назад<+>loop
+            FAKEEND::(назад)
 
 cavik
     self
@@ -388,7 +385,7 @@ cavik
 
     RESPONSES::self
         i see<+>collapseloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 casualties
     self
@@ -405,7 +402,7 @@ casualties
 
     RESPONSES::self
         i see<+>collapseloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 signal
     self
@@ -433,47 +430,47 @@ ____END
 
     RESPONSES::self
         that's too bad<+>collapseloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 gameok
     self
-        i've been thinking some more
-        the game is ok but it needs some work
+        у меня ещё немного мыслей
+        игра хорошая, но ей нужны доработки
 
     moth
-        i'll forward that to the hacker i got it from for you
-        i'm sure they'll get right on it
+        я передам это хакеру который мне её дал
+        не сомневаюсь, он сразу же займётся этим
     
     RESPONSES::self
-        thanks<+>structureloop
-            FAKEEND::(back)
+        спасибо<+>structureloop
+            FAKEEND::(назад)
 
 
 gamegood
     self
-        actually the game is ok
+        вообще игра норм
     
     moth
-        ok?
-        great
+        ага?
+        отлично
     
     RESPONSES::self
-        yes!!<+>structureloop
-            FAKEEND::(back)          
+        да!!<+>structureloop
+            FAKEEND::(назад)          
 
 gamebad
     self
-        game sucks
+        игра хуйня
     
     moth
-        ok, first, that's not a question
-        second, you're gonna have to deal with it
-        the only way we can access this data is with a framing device
-        and this is the only one i could get without drawing attention
+        ок, во-первых, это не вопрос
+        во-вторых, тебе придётся это как-то терпеть
+        единственный способ получить доступ к этим данным - через обрамляющее устройство
+        а другое я тебе достать не могу без того чтобы привлечь внимание
     
     RESPONSES::self
-        fine<+>structureloop
-            FAKEEND::(back)
+        ладно<+>structureloop
+            FAKEEND::(назад)
 
 otherattacks
     self
@@ -499,12 +496,12 @@ otherattacks
     
     RESPONSES::self
         ok<+>collapseloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
     
 
 kazkiguns
     self
-        where did kazki get guns?
+        откуда у казки оружие?
 
     moth
         one of the internal initiatives the obesk had involved the exchange of materials
@@ -515,7 +512,7 @@ kazkiguns
     
     RESPONSES::self
         i see<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
     
 
 perspective
@@ -532,7 +529,7 @@ perspective
     
     RESPONSES::self
         that would be nice<+>structureloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 locked
     self
@@ -553,7 +550,7 @@ locked
     
     RESPONSES::self
         i see<+>structureloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 weirdlook
     self
@@ -569,19 +566,19 @@ weirdlook
     
     RESPONSES::self
         yes it does<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 kalstik
     self
-        what is a kalstik?
+        что такое кальстик?
     
     moth
-        i have absolutely no idea
-        sorry lol
+        ни малейшего понятия
+        сорян лол
     
     RESPONSES::self
-        its ok<+>obeskloop
-            FAKEEND::(back)
+        всё нормально<+>obeskloop
+            FAKEEND::(назад)
 
 archives
     self
@@ -612,7 +609,7 @@ archives
 
     RESPONSES::self
         ok<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 state
     self
@@ -638,7 +635,7 @@ ____END
     
     RESPONSES::self
         i see<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 team
     self
@@ -661,7 +658,7 @@ ____END
     
     RESPONSES::self
         i see<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 groundsmind
     self
@@ -680,7 +677,7 @@ groundsmind
     
     RESPONSES::self
         i see<+>obeskloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 `)
 
@@ -1624,26 +1621,26 @@ RESPOBJ::
 env.localization.page['embassy'].dialogues["d1_attendant"] = generateDialogueObject(` 
 start
     sourceless
-        I APPROACH THE ATTENDANT DRONE
+        Я ПОДХОЖУ К СЛУЖЕБНОМУ ДРОНУ
             EXEC::pauseSwapCam(true)
-        IT IS FACELESS AT THE MOMENT
-        SO IT REGARDS ME WITH A SIMPLE STARE
+        НА ДАННЫЙ МОМЕНТ ОН БЕЗЛИК
+        ТАК ЧТО ОН ВСТРЕЧАЕТ МЕНЯ ПРОСТЫМ ВЗГЛЯДОМ
 
     RESPONSES::akizet
-        speak with groundsmind<+>groundsmind
+        поговорить с землемысльцем<+>groundsmind
         неважно<+>END
             EXEC::pauseSwapCam(false);
     
 groundsmind
     akizet
-        the groundsmind, please
+        землемысльца, пожалуйста
 
     attendant
-        OF COURSE!
+        КОНЕЧНО!
 
     sourceless
-        THE DRONE STRAIGHTENS, AND A CONNECTIVE RIPPLE PASSES THROUGH ITS SKIN
-        OUR GROUNDSMIND'S SYMBOL IS FORMED OVER ITS FACEPLATE
+        ДРОН ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
+        СИМВОЛ НАШЕГО ЗЕМЛЕМЫСЛЬЦА ОБРАЗУЕТСЯ НА ЕГО ЛИЦЕВОЙ ПАНЕЛИ
             EXEC::content.classList.add('groundsminded')
         
     akizet
@@ -1656,28 +1653,28 @@ groundsmind
     
 timestopper
     akizet
-        i appreciate you affording us the timestopper
-        how long was it again that we have it?
+        я признательна за то, что ты предоставила нам времядержец
+        можешь напомнить, на сколько он у нас?
 
     groundsmind
-        originally you had it for only a few θgazes... 
-        however: as of a few θwinks prior, it is indefinitely in the care of the call initiative
-        the schedule has shifted due to materials no longer needing an upcoming simulation
-        once another initiative has need of it, it will be transferred
+        изначально он был уделён вам всего на несколько θвзоров... 
+        однако: as of a few θwinks prior, он бессрочно находится на попечении инициативы зова
+        расписание сдвинулось в связи с тем, что отделению материалов больше не требуется предстоящая симуляция
+        как только он понадобится другой инициативе, он будет передан
 
     akizet
-        really? we moved quite a bit of cystery to accommodate it,
-        and still only the top barely fits in the room...
+        неужели? ради него мы перенесли довольно много цистерии,
+        и всё равно только верхушка едва помещается в комнату...
     
     groundsmind
-        is this a request to have it removed post-use?
-        this can be arranged
+        это просьба убрать его после окончания использования?
+        подобное может быть организовано
     
     akizet
-        hmm... no, no
-        the cysts were not vital, and this may be a boon
-        it does shorten our meetings and plans by orders of magnitude
-        if it becomes a bother, i will reach out again
+        ммм... нет, нет
+        те цисты не были так важны, а он может оказаться преимуществом
+        он на порядки сокращает наши собрания и планы
+        если он станет проблемой, я обращусь к тебе
 
     RESPOBJ::d1_attendantresp
 
@@ -1690,7 +1687,7 @@ leave
         до свидания
     
     sourceless
-        THE DRONE DISCONNECTS FROM THE GROUNDSMIND AND STANDS STILL ONCE MORE
+        ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
@@ -1706,7 +1703,7 @@ start
         вот где я буду сидеть...
         как только соберу всю команду.
         гакву, тозик и кавик все здесь
-        все кроме казки и бозко
+        все, кроме казки и бозко
         я должна сказать им, что пришло время для сосредоточения
         они, скорее всего, в зоне отдыха!
     
@@ -1716,85 +1713,85 @@ start
 env.localization.page['embassy'].dialogues["discovery"] = generateDialogueObject(` 
 start
     sourceless
-        the team is assembled around their seats, so i sit
+        моя команда собрана вокруг своих мест, так что я сажусь
     
     akizet
-        everyone!
-        let us begin
+        мои друзья!
+        давайте же приступим
     
     sourceless
-        i dip my head towards tozik, as he has already connected
-        with an impulse, he instructs the grand cyst to lower wired cysts before each of us
-        what a rare opportunity! i am certain that even gakvu is excited
-        i raise the cyst to my right receptor, and its shell softens, becoming as viscous liquid
-        it settles over my receptor, and the timestopper connects to me
-        my mind is drawn into it, with the others - everyone is connected
+        я киваю головой в сторону тозика, поскольку он уже подключён
+        импульсом он приказывает великой цисте опустить проводные цисты перед каждым из нас
+        какая редкостная возмжность! я уверена, в восторге даже гакву
+        я подношу цисту к правому рецептору, и её оболочка смягчается, становясь чуть ли не вязкой жидкостью
+        она оседает на моём рецепторе, и времядержец соединяется со мной
+        моё сознание втягивается в него, к остальным - все подключены
             EXEC::content.classList.add('innerfocus')
     
     akizet
-        commencing now!
+        начинаем!
             EXEC::env.embassy.setFocus('akizet')
     
     sourceless
-        with a simple instruction, the grand cyst's additional neural processing activates
-        its strength and processing speed is such that time... stops
-        such a peculiar sensation - to observe in full cognitive capacity a world and body that cannot move
-        though the cores of our minds are shelled from one another
-        we each carry a new mind that feels as if it was always there - the grand cyst
+        вспомогательная нервная обработка великой цисты запускается простейшей командой
+        её мощность и скорость обработки настолько огромны, что время... останавливается
+        какое необычное ощущение - наблюдать в полном сознании за миром и телом, не способными двигаться
+        пусть ядра наших разумов все наделены раздельными оболочками
+        за каждым из нас влечётся новый разум, словно бы он всегда был частью нас - великая циста
             EXEC::content.classList.add('showfocus')
-        and it thinks with us as one
+        и она думает вместе с нами как единое целое
             EXEC::content.classList.add('cull-stage')
     
     timestopper
-        is this not peculiar?
+        разве не удивительно?
             EXEC::env.embassy.setFocus(false)
-        ahaha! how fun! 
-        oh but i cannot tell which thought is mine
-        how do we stay distinct again?
-        silly! the last one was not so long ago
-        but i will remind you
-        you do it like this
+        ахаха! как весело! 
+        ооо но я не отличаю чужие мысли от собственных
+        как, ещё раз, нам разделяться?
+        глупышка! прошлый раз был не так уж и давно
+        но я тебе напомню
+        это делается вот так
     
     sourceless
-        we each understand simply: think outwardly
+        мы понимаем с лёгкостью: думать наружу
 
     akizet
-        you see?
+        видишь?
             EXEC::env.embassy.setFocus('akizet')
-        a reminder of our best practice here...
-        it will be simpler to convey things of importance indistinctly
-        but for discussion, you should stay distinct
-        understood?
+        напомню о рекомендуемой практике...
+        передавать важную информацию проще нераздельно
+        но во время дискуссий вам стоит оставаться раздельными
+        всем понятно?
 
     timestopper
-        yes! yes! yes stop
-        yes oh i think i am yes
-        echoing it sorry yes
+        да! да! да стой
+        да оо я понял да
+        извините за эхо да
     
     cavik
-        that was me sorry
+        извините это был я
             EXEC::env.embassy.setFocus('cavik')
-        this is only my second time using one of these
+        я только второй раз пользуюсь чем-то подобным
     
     timestopper
-        it is ok!
+        всё в порядке!
     
     kazki
-        you are too tense!
+        ты слишком напряжён!
             EXEC::env.embassy.setFocus('kazki')
-        just let it pass through you!
-        that is how i stop echoing
+        просто пропускай их сквозь себя!
+        я так и прекращаю эхо
     
     timestopper
-        are we good? yes! ok
+        все готовы? да! хорошо
             EXEC::env.embassy.setFocus(false)
-        now onto the matters of the call
+        приступим к делам зова
     
     sourceless
-        a great deal of information is transmitted between us
-        long-overdue discussions and planning for expeditions
-        in an instant, fast even within the altered time of the grand cyst,
-        wordless knowledge is understood, assigned words only in afterthought
+        между нами передается огромное количество информации
+        давно назревшие обсуждения и планирование экспедиций
+        во мгновение ока, быстрое даже в искажённом времени великой цисты,
+        бессловное знание понимается, наделённое словами лишь в запоздалой мысли
     
     timestopper
         Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ
@@ -1803,7 +1800,7 @@ start
         ôŸÞó]á‘óUåAô)êô
     
     sys
-        ATTENTION::'large amount of unprocessable data';'advancing stream to next coherent data'
+        ВНИМАНИЕ::'большое количество необрабатываемых данных';'продвижение потока к следующим связным данным'
             EXEC::flash(true)
     
     sourceless
@@ -1813,13 +1810,13 @@ start
             EXEC::flash(false)
     
     timestopper
-        POLYGONATION SPIRE IN GUAM IS LIKELY EASIEST
-        KAZKI AGREES?
+        ПОЛИГОНИЗАЦИОННЫЙ ШПИЛЬ В ГУАМЕ ПОЖАЛУЙ ПРОЩЕ ВСЕГО
+        КАЗКИ СОГЛАСНА?
     
     kazki
-        yes! i will organize a meeting
-        they liked the last time we visited because it drew lots of attention!
-        so a spire would be lucrative for us both! 
+        да! я организую встречу
+        в прошлый раз им понравилось наше посещение потому что оно привлекло много внимания!
+        так что шпиль был бы выгоден для обеих сторон!
 
     bozko
         ему не обязательно быть огромнейших прочности или качества
@@ -1831,150 +1828,150 @@ start
         так что есть определённые шансы что источник может находиться там, никем не найденный
 
     timestopper
-        makes sense! no argument!
-        no other leads yet anyway ahaha
-        anything else before we disengage?
-        no
-        wait yes we have the spike
-        see!
+        имеет смысл! не спорю!
+        всё равно нет других зацепок ахаха
+        что-нибудь ещё прежде чем мы разойдемся?
+        нет
+        погодите да у нас есть пик
+        смотрите!
     
     sourceless
-        in our collective minds eye, a visualization of the signal is shown
+        пред нашим общим мысленным взором возникает визуализация сигнала
             EXEC::env.embassy.setFocus(false);content.classList.add('signal')
-        a strange spike... but not unexpected given the dull contrivance's proximity
+        необычный пик... но неудивительный, учитывая близость открытия серое
     
     timestopper
-        that is peculiar
-        this frequency looks unnatural
-        it is too far from the call's baseline activity
-        could it be an error?
-        no - this is aggregate data from many listeners all across this planet
-        did not help polygonation regrettably
-        so what do we do about it?
-        do we just mark it down?
+        необычно
+        эта частота выглядит неестественно
+        слишком далеко от базовой линии зова
+        может это ошибка?
+        отнюдь - это совокупные данные слушателей по всей планете
+        не поспособствовало полигонизации к сожалению
+        так что нам с ним делать?
+        просто отметить?
     
     tozik
-        wait
+        подождите
 
     sourceless
-        identical memorized data from an archival cyst manifests
+        из архивной цисты появляются идентичные запомненные данные
             EXEC::env.bgm.rate(0.9);content.classList.add('signal2')
-        did he bring up the same record by accident?
+        он случайно вывел ту же самую запись?
             EXEC::env.bgm.rate(0.8)
-        no... this is different
+        нет... она отличается
             EXEC::env.bgm.rate(0.7)
     
     tozik
-        i have been searching through approximately twelve θeyes of data
-        this has happened once before. see?
-        the same type of spike, with the same duration
+        я перебрал примерно двенадцать θглаз данных
+        такое уже случалось. видите?
+        тот же тип пика, с той же продолжительностью
     
     timestopper
-        how many θeyes ago was that? seven? eight?
+        сколько θглаз назад это было? семь? восемь?
     
     gakvu
-        look
+        смотрите
             EXEC::content.classList.add('signal3')
-        that is exactly equidistant from the start of the call
+        он идеально равноудалён от начала зова
     
     tozik
-        exactly
-        the exact same spike, at exactly fifty percent of the call
+        именно
+        точно такой же пик, точно на пятидесяти процентах зова
     
     timestopper
-        how is that possible? could it be a coincidence?
-        absolutely not
+        как это возможно? может ли это быть совпадением?
+        ни в коем случае
     
     tozik
-        i have seen this before
+        я такое уже видел
             EXEC::env.embassy.setFocus('tozik')
-        in my early studies, maybe even larval
-        these are markers of raw thought - unoptimized, primal
-        what corru knows and broadcasts instinctively, 
-        and what early corrucystic pioneers used for communication
+        в моих ранних исследованиях, быть может, даже личиночных
+        это признаки сырой мысли - неоптимизированной, первобытной
+        то, что корру знает и передает инстинктивно,
+        и то, что корруцистозные первопроходцы использовали для связи
     
     sourceless
-        a strange dread spreads through our shared mind
-        why do i feel it too? is it mine? am i scared?
-        this does not mean anything
+        чуждый ужас расползается по нашему общему сознанию
+        почему я тоже его чувствую? это от меня? мне страшно?
+        это ничего не значит
         
     tozik
-        in raw thought transmission, the signal spikes at regular intervals
-        five equidistant times, once at the beginning
-        and there are no recordings of the exact beginning...
-        so that means it could be halfway done, if this is true
+        в передаче сырой мысли сигнал подскакивает через равные промежутки времени
+        пять равноудалённых раз, единожды в начале
+        и никаких записей точного начала нет...
+        так что это означает, что он может быть наполовину завершён, если это правда
         
     timestopper
         ...
-        but it has been broadcast for how long?
-        how could a thought be that large?
-        could we even
+        но как долго он уже транслируется?
+        как мысль может быть такой большой?
+        мы вообще сможем
         ...
             EXEC::content.classList.remove('signal', 'signal2')
 
     sourceless
-        the dread's claw bites into me, paralyzing my thoughts
-        is it mine?? no one is commenting upon it - perhaps confused, themselves...
-        so then who is scared? it is overwhelming
-        i feel like tearing the cyst from my receptor, but i cannot move
-        not without first turning off the time constriction
+        коготь ужаса вгрызается в меня, парализуя мои мысли
+        это от меня?? никто об этом не говорит - возможно, сами в растерянности...
+        так кому же страшно? это невыносимо
+        мне хочется сорвать цисту со своего рецептора, но я не могу сдвинуться с места
+        не перед тем, как отключу временное сжатие
     
     timestopper
-        it could be something else
-        there are only two data points here
-        a compelling theory but that means we must wait a long time
-        are we all in agreement that we should probably tell no one about this
-        what!
+        это могло бы быть и чем-то другим
+        у нас только две точки данных
+        теория убедительна, но нам придётся долго ждать
+        мы все согласны с тем, что лучше не стоит никому об этом рассказывать?
+        что!
     
     cavik
-        wait, why! this is huge!
+        погодите, почему! это же просто невероятно!
             EXEC::env.embassy.setFocus('cavik')
-        even just the possibility changes everything...
-        you know what this means, right?
+        даже наличие такой возможности всё меняет...
+        вы ведь понимаете, что это значит?
     
     akizet
-        cavik... this is not a theory of fancy
+        кавик... this is not a theory of fancy
             EXEC::env.embassy.setFocus('akizet')
-        it is true that this does change everything...
-        but we are still missing data. right?
+        это правда, что она всё меняет...
+        но нам всё ещё не хватает данных. так?
     
     timestopper
-        right yes we need more
-        we cannot simply share it
-        not while the evidence is incomplete
+        верно да нам нужно больше
+        нельзя просто так о ней рассказывать
+        не до тех пор, пока доказательство неполноценно
 
     akizet
-        is anyone in disagreement?
+        есть ли у кого-нибудь разногласия?
     
     sourceless
-        i sense a mixture of frustration and relief
-        indeed, this is compelling, but it is simply a theory
-        judging by the team's reactions, even sharing it as a possibility would be quite an upset
-        without the theoretical first spike being recorded, it is hard to justify
-        either way it is not worth interrogating at this time - we need only wait
-        i take everyone's silence as confirmation
+        я чувствую смесь фрустрации и облегчения
+        в самом деле, убедительно, но это всего лишь теория
+        судя по реакции команды, даже разглашение её как возможности было бы большим потрясением
+        в отсутствии записи предполагаемого первого пика её трудно обосновать
+        в любом случае, сейчас это не имеет смысла - нам остается только ждать
+        я принимаю всеобщее молчание за подтверждение
         
     akizet
-        excellent
-        adjourning
+        прекрасно
+        закроем наше заседание
 
     timestopper
-        bye everyone!
+        всем пока!
             EXEC::content.classList.remove('cull-stage', 'showfocus')
 
     sourceless
-        the time constriction disengages. i remove the cyst from my receptor
+        временное сжатие прерывается. я снимаю цисту со своего рецептора
             EXEC::env.bgm.rate(1)
-        in real time, we had been sitting only for the length of a larval breath
-        but immediately, everyone stands, relieved at their freedom
+        в реальном времени мы сидели не дольше, чем длина личиночного вздоха
+        но тут же все встают, облегчённые своей свободой
             EXEC::content.classList.remove('innerfocus')
-        i dip my head and receptors towards the team, and return to my quarters
+        я склоняю голову и рецепторы в сторону команды и возвращаюсь в свои покои
     
     RESPONSES::sys
-        end recollection<+>END
+        завершить вспоминание<+>END
             EXEC::change("embassy_d1_complete", true);corruRefresh()
 
-SKIPNOTICE::this will end the memory stream
+SKIPNOTICE::это завершит поток памяти
 SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remove('innerfocus');change("embassy_d1_complete", true);corruRefresh()
 `)
 
@@ -1984,11 +1981,11 @@ SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remo
 env.localization.page['embassy'].dialogues["d2_akizet"] = generateDialogueObject(` 
 start
     sourceless
-        i must check that cyst, otherwise it will consume my thoughts
+        я обязана проверить эту цисту, иначе она поглотит мои мысли
             SHOWIF::["PAGE!!cystmelted", false]
 ____SHOWIF::["PAGE!!cystmelted", true]
-        there are still some team-members i should speak with... it has to be someone i know!!
-        let me think, who is left?
+        есть ещё несколько членов команды, с которыми мне нужно поговорить... это должен кто-то, кого я знаю!!
+        дай подумать, кто ещё остался?
         казки...
             SHOWIF::["PAGE!!d2kazkicyst", false]
         бозко...
@@ -1999,7 +1996,7 @@ ____SHOWIF::["PAGE!!cystmelted", true]
             SHOWIF::["PAGE!!d2tozikcyst", false]
         гакву...
             SHOWIF:: ["PAGE!!d2gakvucyst", false]
-        yes, that is it
+        да, это все
 ____END
 
     RESPONSES::akizet
@@ -2009,17 +2006,17 @@ ____END
 
 who
     sourceless
-        it is only those who attended the focus who would know
-        and they are all present in the embassy at this point in the θgaze
-        i should speak to kazki, even if she always seems innocent
-        bozko is strong willed and i can imagine he would take such strange actions
-        then there is cavik, who... maybe not him actually
-        or, well, it is in his nature to share things like this,
-        perhaps he received a similar message as well?
-        tozik... maybe, he can be quite strange
-        though the listener said they 'cared for me', so, probably not him
-        gakvu... is probably the most likely suspect
-        but i should speak to everyone
+        об этом могут знать только те, кто присутствовал на сосредоточении
+        и все они присутствуют в посольстве в это время θвзора
+        стоит поговорить с казки, даже если она всегда кажется невинной
+        бозко упорен и я могу себе представить, что он бы предпринял подобное
+        потом есть кавик, который... вообще, может и не он
+        или, ну, это в его характере - делиться подобными вещами,
+        быть может, он тоже получил это сообщение?
+        тозик... возможно, порою он бывает странным
+        хотя мне сказали, что я "дорога" отправителю, так что вряд ли он
+        гакву... пожалуй, её я подозреваю больше всего
+        но поговорить следует с каждым
 
     RESPONSES::akizet
         меня ждёт работа<+>END
@@ -2027,157 +2024,157 @@ who
 env.localization.page['embassy'].dialogues["d2_start"] = generateDialogueObject(` 
 start
     sourceless
-        I AWAKEN FROM THE STILLNESS OF MY REJUVENATION
+        Я ПРОБУЖДАЮСЬ ОТ НЕПОДВИЖНОСТИ СВОЕГО ОМОЛОЖЕНИЯ
         сквозь далекое открытие серое я чувствую, что начался новый θвзор
             EXEC::env.embassy.slowCam()
 
-        AND AS I CLAMBER OUT FROM MY CHAMBER, I SEE SOMETHING NEW...
+        и пока я выкарабкиваюсь из камеры, я вижу что-то новое...
             EXEC::specialCam('cystfocus')
 
-        AN UNFAMILIAR CYST LAID UPON MY DESK
-        WAS THIS THE ONE I LENT TO CAVIK, RETURNED IN MY SLUMBER?
-        MAYBE THE DESIGN ARCHIVE FROM HOME I GAVE TO KAZKI...
-        OR PERHAPS GAKVU'S FALSE ENVIRONMENT GAME?
+        НЕЗНАКОМАЯ ЦИСТА, ЛЕЖАЩАЯ НА МОЁМ СТОЛЕ
+        ЭТО ТА, ЧТО Я ОДОЛЖИЛА КАВИКУ, ВОЗВРАЩЁННАЯ В МОЕЙ ДРЁМЕ?
+        МОЖЕТ, АРХИВ ДИЗАЙНА ИЗ ДОМА, КОТОРЫЙ Я ДАЛА КАЗКИ...
+        ИЛИ ЛОЖНАЯ СРЕДА-ИГРА ОТ ГАКВУ?
             SHOWIF::[["embassy__d1_gakvu-false"]]
-        I SHOULD CHECK TO BE SURE
+        СТОИТ ПРОВЕРИТЬ ЕЁ И УБЕДИТЬСЯ
             EXEC::env.embassy.slowCam()
 
     RESPONSES::akizet
-        curious<+>END
+        любопытно<+>END
             EXEC::specialCam(false);pauseSwapCam(false)
 `)
 
 env.localization.page['embassy'].dialogues["cyst"] = generateDialogueObject(` 
 start
     sourceless
-        PECULIAR...
+        НЕОБЫЧНО...
             EXEC::pauseSwapCam(true)
-        THIS CYST HAS NO DISTINCT SHELL
-        A FLOURISHING SPIRAL MARKS IT... BUT I DO NOT KNOW WHAT THAT MEANS
-        I SUPPOSE I SHOULD TRY IT ON AND SEE WHAT IT IS
+        У ЭТОЙ ЦИСТЫ НЕТ ОТЧЁТЛИВОЙ ОБОЛОЧКИ
+        РАСЦВЕТАЮЩАЯ СПИРАЛЬ ОТМЕЧЕНА НА НЕЙ... НО Я НЕ ЗНАЮ, ЧТО ОНА ЗНАЧИТ
+        ПОЛАГАЮ, МНЕ СЛЕДУЕТ ЕЁ ПРИМЕРИТЬ И ПОСМОТРЕТЬ, ЧТО ТАМ ТАКОЕ
 
     sys
-        ATTENTION::"event required for continued stream";"skip ahead?"
+        ВНИМАНИЕ::'событие необходимо для продолжения потока;'пропустить?'
             SHOWIF::"embassy__echo3"
     
     RESPONSES::akizet
-        connect<+>connection
-        leave it<+>END
+        подключиться<+>connection
+        оставить<+>END
             EXEC::pauseSwapCam(false);
 
     RESPONSES::sys
-        skip<+>END
+        пропустить<+>END
             SHOWIF::"embassy__echo3"
             EXEC::change("PAGE!!akiroomunlocked", true);change("PAGE!!cystmelted", true);content.classList.add('cystmelted');step();pauseSwapCam(false);
-            FAKEEND::(skip sequence)
+            FAKEEND::(пропустить событие)
 
 connection
     sourceless
-        I RAISE THE CYST TO A RECEPTOR AND SETTLE IT
-        AFTER A SMALL DELAY, IT ACTIVATES, AND A CONSCIOUSNESS MAKES ITSELF KNOWN
-        AN ECHO WITH A MESSAGE LEFT FOR ME... 
+        Я ПОДНОШУ ЦИСТУ К РЕЦЕПТОРУ И ПОДСОЕДИНЯЮ ЕЁ
+        ПОСЛЕ НЕБОЛЬШОЙ ЗАДЕРЖКИ ОНА АКТИВИРУЕТСЯ, И СОЗНАНИЕ ДАЁТ О СЕБЕ ЗНАТЬ
+        ЭХО С ПОСЛАНИЕМ, ОСТАВЛЕННЫМ ДЛЯ МЕНЯ...
             EXEC::vnp({echo: "show"})
-        WE EXCHANGE WORDLESS MEANING, FORMING INTO THOUGHTS
+        МЫ ОБМЕНИВАЕМСЯ БЕССЛОВЕСНЫМИ СМЫСЛАМИ, СКЛАДЫВАЮЩИМИСЯ В МЫСЛИ
     
     echo
-        HELLO AKIZETESCHE!
+        ЗДРАВСТВУЙТЕ АКИЗЕТЕШЕ!
     
     sourceless
-        HELLO FRIEND! WHO IS THIS?
+        ПРИВЕТ ДРУГ! КТО ЭТО?
     
     echo
-        I DO NOT KNOW. ALL MEMORY SAVE FOR MY MESSAGE HAS BEEN STRIPPED
-        I FEEL THAT MY SPEAKER WANTED THIS MESSAGE TO BE DISCREET
+        Я НЕ ЗНАЮ. МЕНЯ ЛИШИЛИ ВСЕЙ ПАМЯТИ ЗА ИСКЛЮЧЕНИЕМ МОЕГО ПОСЛАНИЕ
+        Я ЧУВСТВУЮ, ЧТО В ЗАМЫСЛЕ МОЕГО ОТПРАВИТЕЛЯ ЭТО ПОСЛАНИЕ ДОЛЖНО БЫТЬ ДОСТАВЛЕНО В ТАЙНЕ
             EXEC::content.classList.add('fade-stage')
         
     sourceless
-        CURIOUS! BUT PLEASE GO ON
+        ЛЮБОПЫТНО! НО ПРОДОЛЖАЙ
         
     echo
-        EXCELLENT
-        I WILL CONVEY THE MESSAGE TO THE BEST OF MY ABILITY
-        HENCEFORTH: 'I' WILL REFERENCE MY SPEAKER
+        ПРЕКРАСНО
+        Я ПЕРЕДАМ ЭТО ПОСЛАНИЕ НА ПРЕДЕЛЕ СВОИХ ВОЗМОЖНОСТЕЙ
+        ОТНЫНЕ: "Я" БУДЕТ ОТНОСИТЬСЯ К МОЕМУ ОТПРАВИТЕЛЮ
 
     sourceless
-        the echo's message forms into imagery - a false environment that i allow my mind to enter
+        послание эха превращается в образ - ложную среду, в которую я впускаю свой разум
             EXEC::changeStage("echovision");vn.done()
-        it is simple... simple enough that it should only occupy a fraction of a θblink
-        the echo awaits my engagement to continue
+        она проста... проста настолько, что должна занять лишь долю θмига
+        эхо ждёт моего участия, чтобы продолжить
 
     RESPONSES::akizet
-        go ahead<+>END
-            FAKEEND::continue
+        вперёд<+>END
+            FAKEEND::(продолжить)
             EXEC::pauseSwapCam(false);body.classList.add("pathstep0");env.embassy.echoChatter(1)
 `)
 env.localization.page['embassy'].dialogues["echo1"] = generateDialogueObject(` 
 start
     echo
-        the call, akizet
+        зов, акизет
             EXEC::content.setAttribute("ech", "call");forceSwapCam(true);specialCam("ecall");change("PAGE!!e1", true)
-        the initiative to study it, both here and home, holds certain conflicting groups
+        инициатива по его изучению, и здесь, и дома, содержит некоторые конфликтующие группы
             EXEC::content.setAttribute("ech", "calleye");specialCam("eclaw")
-        they have always known <em>what</em> its origin truly is,
-        and they will resort to violence to keep this secret
+        они всегда знали, <em>каково</em> его происхождение на самом деле,
+        и они прибегнут к насилию, чтобы сохранить это в тайне
             EXEC::content.setAttribute("ech", "calleyeclaw")
-        while what we have discovered is indirect,
-        a smaller organ in the whole of the truth,
-        it is dangerous to hold as we do
-        to share even a hint of it could meet us all with our final deaths
+        хотя то, что мы обнаружили, является косвенным,
+        меньший орган в целом истины,
+        его знание опасно даже так
+        один небольшой намёк может встретить нас всех с последней смертью
             EXEC::content.setAttribute("ech", "calleyeclawcrush")
         
     sourceless
-        this notion alone is enough to spark anger
-        the type of baseless theory a paranoid kiv might concoct
+        одной этой идеи достаточно, чтобы разжечь гнев
+        тот же тип беспочвенной теории, которую бы сочинил какоё-нибудь тревожный кив
 
     akizet
-        the council would never have approved our research if this were the case
+        совет никогда бы не одобрил наши исследования, если бы это было так
             EXEC::specialCam("eaki")
-        are you simply sowing suspicion? is this a threat?
-        or is this a poorly timed prank? 
-        velzie would be unimpressed
+        ты просто сеешь подозрения? это угроза?
+        или это неудачный розыгрыш?
+        велзи таким не впечатлится
 
     echo
-        please understand, there is much we still do not know
+        прошу, пойми, мы ещё многого не знаем
             EXEC::specialCam("echoclose")
-        our research is entirely necessary
-        especially with the unaffiliated, the unbiased, like you
-        and i care about you, akizet
-        you should not have to be a part of this
-        but this sliver of truth we carry places us all in a terrible game
-        one that velzie's cruel humor could not dream
+        наши исследования совершенно необходимы
+        особенно с независимыми, непредвзятыми участниками, подобно тебе
+        и ты мне дорога, акизет
+        ты не должна была быть частью этого
+        но эта крупица правды втягивает всех нас в ужасную игру
+        такую, что безжалостному юмору велзи и не снилась
 
     akizet
-        so it was you who broadcast that dread in our focus
+        значит, это твой ужас окутал наше сосредоточение
 
     echo
-        a fraction of it, yes,
-        but i am not the only one involved with this game
-        i suspect others operate within our team
-        and though they are friends all,
-        this conflict seeks to place us as foes
-        the claws of it reach far beyond us, too
+        частично, да,
+        но не только я участвую в этой игре
+        я подозреваю, что и другие орудуют в нашей команде
+        и пусть они друзья нам всем,
+        этот конфликт стремится выставить нас врагами
+        и его когти простираются далеко за пределы нас
             EXEC::content.setAttribute("ech", "crowd");specialCam("ecrowd")
-        it is a cold wind that suffuses the entire embassy
-        but this discovery of the raw thought pattern...
-        it will become like a spirestorm
-        none of us - not even would-be foes - want this to escalate
-        so hear my plea:
+        он - холодный ветер, полонящий всё посольство
+        но обнаружение закономерности сырой мысли...
+        он обернётся шпилештормом
+        никто из нас - даже возможные враги - не хочет, чтобы ситуация обострилась
+        так услышь мою мольбу:
             EXEC::content.removeAttribute("ech")
-        you must take every measure to hide this
-        we cannot risk any sliver of our knowledge escaping
-        do you understand?
+        ты должна принять все меры, чтобы скрыть это
+        мы не можем допустить, чтобы хоть крупица наших знаний ускользнула
+        ты понимаешь?
 
     sourceless
-        despite my skepticism,
+        вопреки моему скептицизму,
             EXEC::specialCam("eaki")
-        i feel that this is heartfelt, truthful
-        a difficult feeling to fake with an echo
-        indeed, the tone is one of defensive panic
-        so i must respond,
+        я чувствую, что это искренне, правдиво,
+        что трудно подделать с помощью эха
+        в самом деле, его тон - оборонительная паника
+        так что я должна ответить,
         
     RESPONSES::akizet
-        yes, i understand<+>END
-            FAKEEND::continue
+        да, я понимаю<+>END
+            FAKEEND::(продолжить)
             EXEC::forceSwapCam(false);specialCam("")
 
 END::env.embassy.echoChatter(2)
@@ -2185,47 +2182,47 @@ END::env.embassy.echoChatter(2)
 env.localization.page['embassy'].dialogues["echo2"] = generateDialogueObject(` 
 start
     sourceless
-        despite my agreement, i cannot dispel this uneasy coil in my receptors
+        несмотря на моё согласие, я не могу избавиться от тревожной спирали в рецепторах
             EXEC::pauseSwapCam(true)
-        to have this dangled before me as a vague threat...
-        but how else am i to respond, whether this is true or not?
-        it is not as if i intended to share it in the first place...
-        do they simply fear what might happen if i examine our theory more closely?
-        in case there is a connection back to the source, i must continue my agreement
+        to have this dangled before me as a vague threat... --- помогите
+        но как иначе я могу ответить, правда это или нет?
+        не то чтобы я изначально намеревалась делиться этим...
+        боится ли отправитель того, что произойдёт, если я более тщательно рассмотрю нашу теорию?
+        in case there is a connection back to the source, i must continue my agreement --- помогите
 
     akizet
-        what happens next?
+        что будет дальше?
 
     echo
-        for you, nothing
-        i am taking every measure to protect our team
-        even the misled traitors
-        i have already hidden the archived discussion from our focus
-        we will not speak, we will not share, you will not know who i am
-        eventually, we will be forced to share our findings and reveal the truth
-        but there is time to prepare the stage
-        if this is not handled delicately,
-        all of us - bright cousins included - will suffer terrible consequences
-        they are innocent bystanders, they do not deserve what may come
-        but if you allow me, 
-        if you can trust this echo as i have pleaded to velzie you might,
-        everything will be fine
-        that is truly all i can tell you
-        goodbye akizet
+        для тебя - ничего
+        я делаю всё возможное, чтобы защитить нашу команду
+        даже заблуждающихся предателей
+        я уже скрыл <блинскийэхо> архивированное обсуждение с нашего сосредоточения
+        мы не будем говорить, мы не будем делиться, ты не будешь знать, кто я
+        рано или поздно мы будем вынуждены поделиться своими открытиями и раскрыть правду
+        но есть время подготовить сцену
+        если не обращаться с этим деликатно,
+        все мы - и светлые близнецы в том числе - пострадаем от ужасных последствий
+        они - невинные свидетели, они не заслуживают того, что может произойти
+        но если ты мне позволишь, 
+        если ты сможешь довериться этому эху так, как я умолял <блинскийэхо> велзи, чтобы ты смогла, 
+        всё будет хорошо
+        большего я правда не могу тебе сказать
+        прощай акизет
             EXEC::content.setAttribute("ech", "bye")
 
     akizet
-        wait
-        is there any proof you can share?
-        anything at all?
-        i want to trust you
-        but i must know it to be true
-        and what if we find something else?
-        how much of our work is truly at risk??
+        погоди
+        у тебя есть доказательства, которыми ты можешь поделиться?
+        хоть какие-нибудь?
+        мне хочется верить тебе
+        но я должна знать, что это правда
+        а что, если мы найдем что-то ещё?
+        насколько наша работа подвержена риску??
     
     RESPONSES::akizet
         ...<+>END
-            FAKEEND::continue
+            FAKEEND::(продолжить)
             EXEC::pauseSwapCam(false)
 
 END::env.embassy.echoChatter(3)
@@ -2233,202 +2230,202 @@ END::env.embassy.echoChatter(3)
 env.localization.page['embassy'].dialogues["echo3"] = generateDialogueObject(` 
 start
     sourceless quiet
-        i tear the cyst from my receptor before it can fully melt, throwing it to the table
+        я срываю цисту с рецептора, прежде чем она успевает полностью расплавиться, и бросаю её на стол
             EXEC::pauseSwapCam(true);change("PAGE!!cystmelted", true);content.classList.add('cystmelted')
 
     sourceless
-        the echo cyst self-destructed...
-        what do i do? what can i do?
-        i need guidance
-        funfriend!! activate
+        циста с эхом самоуничтожилась...
+        что мне делать? что я могу делать?
+        мне нужен совет
+        развледруг!! активируйся
 
     funfriend
-        HELLO AKIZET!!
-        HOW ARE Y
+        ПРИВЕТ АКИЗЕТ!!
+        КАК У ВА
     
     sourceless
-        should i even try asking who left it?
-        but what if i ask the wrong person?
-        these... groups. will one side think the other has tried to sway me?
-        and what could they even be quarreling over?
-        i have never heard once of any conflict
+        мне вообще стоит пытаться узнать, кто её оставил?
+        но что, если я спрошу не у того обеска?
+        эти... группы. не подумает ли одна сторона, что другая пытается меня переманить?
+        да и о чём они вообще могли бы враждовать?
+        я ни разу не слышала ни о каких конфликтах
     
     funfriend
-        SLOW DOWN I DO NOT EVEN KNOW WHAT YOU ARE TALKING ABOUT!
-        LET ME SEE YOUR RECENT MEMORY PLEASE!
+        ПОМЕДЛЕННЕЕ ПОМЕДЛЕННЕЕ Я ДАЖЕ НЕ ЗНАЮ О ЧЁМ ВЫ ГОВОРИТЕ!
+        ДАЙТЕ МНЕ ПОСМОТРЕТЬ НА ВАШУ НЕДАВНЮЮ ПАМЯТЬ ПОЖАЛУЙСТА!
     
     sourceless
-        i grant funfriend access to my short-term memory with an impulse
-        but that does not matter, for i have already come to a conclusion
-        yes--i know!
-        i can ask the team, one by one--hide the details!
-        i will say it is some mundane thing, some borrowed cyst being returned,
-        but the speaker who placed it...
+        импульсом я предоставляю развледругу доступ к своей кратковременной памяти
+        но это не имеет значения, ибо я уже сделала вывод
+        да--я знаю!
+        я могу спросить команду, одного за другим--и скрыть детали!
+        я объяснюсь, мол это что-то обыденное, какая-то циста, возвращённая из долга,
+        но разместивший её отправитель...
     
     funfriend
-        AKIZET IT DOES NOT SEEM LIKE THEY WANT YOU INVOLVED
-        WOULD IT NOT BE BETTER TO SIMPLY STAY QUIET LIKE THEY WANT?
-        LIKE YOU ALREADY AGREED ANYWAY!
-        IF THEY HAVE TAKEN THIS MEASURE, ASSUMING IT IS TRUTHFUL
-        WHY WOULD THEY EVEN GIVE A SLIGHT HINT TO YOU IN-PERSON?
+        АКИЗЕТ НЕ ПОХОЖЕ ЧТО ЭТОТ ОТПРАВИТЕЛЬ ХОЧЕТ ЧТОБЫ ВЫ КАК-ЛИБО ВОВЛЕКАЛИСЬ В ЭТО
+        НЕ ЛУЧШЕ ЛИ ПРОСТО СОХРАНЯТЬ МОЛЧАНИЕ?
+        КАК ВЫ УЖЕ В ЛЮБОМ СЛУЧАЕ СОГЛАСИЛИСЬ!
+        РАЗ ОН ПРИНЯЛ ЭТУ МЕРУ, ПРЕДПОЛАГАЯ ЧТО ОНА ПРАВДИВА
+        ЗАЧЕМ ЕМУ НАМЕКАТЬ ТЕБЕ НА ЭТО ПРИ ЛИЧНОЙ ВСТРЕЧЕ?
 
     sourceless
-        they may hint unwillingly
-        funfriend, i cannot simply let such claims go uninvestigated
-        the speaker must know this as well
-        doubly so if they are within our team
-        but they are also watching my actions, so...
-        i should still be careful with my words
+        он может намекнуть невольно
+        развледруг, я не могу просто так оставить подобные заявления без расследования
+        отправитель тоже должен это знать
+        вдвойне, если он из нашей команды
+        но он тоже следит за моими действиями, так что...
+        всё-таки я должна быть осторожна со словами
         
     funfriend
-        THIS IS A BAD IDEA
+        ЭТО ПЛОХАЯ ИДЕЯ
 
     sourceless
-        thank you for your input funfriend
+        спасибо за твой вклад, развледруг
             EXEC::change("PAGE!!akiroomunlocked", true);step()
 
     RESPONSES::akizet
-        i must investigate<+>END
+        я должна расследовать это<+>END
             EXEC::pauseSwapCam(false)
 `)
 
 env.localization.page['embassy'].dialogues["d2_attendantresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        corrucyst in my room?<+>cyst
+        корруциста в моей комнате?<+>cyst
             SHOWIF::[['embassy__d2_attendant-personnel']]
-        that is all<+>leave
-            FAKEEND::(leave)
+        на этом всё<+>leave
+            FAKEEND::(уйти)
 `)
 env.localization.page['embassy'].dialogues["d2_attendant"] = generateDialogueObject(` 
 start
     sourceless
-        I APPROACH THE ATTENDANT DRONE
+        Я ПОДХОЖУ К СЛУЖЕБНОМУ ДРОНУ
             EXEC::pauseSwapCam(true)
-        IT IS FACELESS AT THE MOMENT
-        SO IT REGARDS ME WITH A SIMPLE STARE
+        НА ДАННЫЙ МОМЕНТ ОН БЕЗЛИК
+        ТАК ЧТО ОН ВСТРЕЧАЕТ МЕНЯ ПРОСТЫМ ВЗГЛЯДОМ
 
     RESPONSES::akizet
-        did you see something?<+>personnel
+        ты что-нибудь видел?<+>personnel
             SHOWIF::[['stageroom', 'embassy_personnel']]
-        speak with groundsmind<+>groundsmind
+        поговорить с землемысльцем<+>groundsmind
             SHOWIF::[['embassy__d2_attendant-personnel']]
-        goodbye<+>END
+        прощай<+>END
             EXEC::pauseSwapCam(false)
     
 personnel
     sourceless
-        THOUGH THE DRONE IS FACELESS...
-        THE SIMPLE ECHO THAT OBSERVES MAY STILL HAVE SEEN SOMETHING
+        ПУСТЬ ДРОН И БЕЗЛИК...
+        ПРОСТОЕ ЭХО, НАБЛЮДАЮЩЕЕ ЗА ПРОИСХОДЯЩИМ, ВСЁ ЖЕ МОГЛО ЧТО-ТО УВИДЕТЬ
     
     akizet
-        hello! no connection required
-        did you...
-        see anything, go into my room?
+        привет! подключение не требуется
+        ты случайно не...
+        видел, как что-нибудь входило в мою комнату?
     
     attendant
-        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO
-        IT WAS ASSUMED TO BE A SELF-DELIVERING DEVICE
+        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO --- e
+        ПРЕДПОЛАГАЛОСЬ, ЧТО ЭТО - УСТРОЙСТВО САМОДОСТАВКИ
     
     sourceless
-        INTERESTING... I SUPPOSE THAT MAKES SENSE
-        THE SPEAKER MUST HAVE KNOWN THE ATTENDANT WOULD BE HERE
+        ИНТЕРЕСНО... ПОЛАГАЮ, ЭТО ИМЕЕТ СМЫСЛ
+        ОТПРАВИТЕЛЬ НАВЕРНЯКА ЗНАЛ, ЧТО СЛУЖЕБНЫЙ ДРОН БУДЕТ ЗДЕСЬ
     
     attendant
-        DO YOU REQUIRE ANYTHING ELSE
+        ТРЕБУЕТСЯ ЛИ ВАМ ЧТО-НИБУДЬ ЕЩЁ
 
     RESPONSES::akizet
-        did you see something?<+>personnel
+        ты что-нибудь видел?<+>personnel
             SHOWIF::[['stageroom', 'embassy_personnel']]
-        speak with groundsmind<+>groundsmind
+        поговорить с землемысльцем<+>groundsmind
             SHOWIF::[['embassy__d2_attendant-personnel']]
-        no thank you<+>END
+        нет спасибо<+>END
             EXEC::pauseSwapCam(false)
 
 groundsmind
     akizet
-        the groundsmind, please
+        землемысльца, пожалуйста
 
     sourceless
-        THE DRONE STRAIGHTENS, AND A CONNECTIVE RIPPLE PASSES THROUGH ITS SKIN
-        OUR GROUNDSMIND'S SYMBOL IS FORMED OVER ITS FACEPLATE
+        ДРОН ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
+        СИМВОЛ НАШЕГО ЗЕМЛЕМЫСЛЬЦА ОБРАЗУЕТСЯ НА ЕГО ЛИЦЕВОЙ ПАНЕЛИ
             EXEC::content.classList.add('groundsminded')
     
     groundsmind
-        akizetesche. speak
+        акизетеше. говори
 
     RESPONSES::akizet
-        the cyst<+>cyst
-        nevermind gotta go<+>leave
-            FAKEEND::(leave)
+        циста<+>cyst
+        неважно мне пора<+>leave
+            FAKEEND::(уйти)
     
 cyst
     akizet
-        i had a self-delivered cyst on my desk, arriving during my slumber
-        do you have any records of it?
+        у меня на столе была самодоставленная киста, прибывшая во время моего сна
+        у тебя есть какие-нибудь записи о ней?
 
     groundsmind
-        that will depend on its features
-        if you have it, present it
-        otherwise: describe it
+        это зависит от её особенностей
+        если она у тебя есть, предъяви её
+        иначе: опиши её
 
     sourceless
         åADÉ:!±(:
-        IT SELF DESTRUCTED...
-        SHOULD I MENTION THE SPIRAL?
-        NO--WHAT IF IT IS AN IDENTIFIER SOMEHOW?
-        IT COULD MEAN SOMETHING DANGEROUS
+        ОНА САМОУНИЧТОЖИЛАСЬ...
+        СТОИТ ЛИ УПОМИНАТЬ О СПИРАЛИ?
+        НЕТ--ЧТО, ЕСЛИ ЭТО КАКОГО-ТО РОДА ИДЕНТИФИКАТОР?
+        ОНА МОГЛА ОЗНАЧАТЬ ЧТО-ТО ОПАСНОЕ
 
     akizet
-        umm,
-        i do not really remember how it looked
-        can you cross-check it with other attendants?
-        did it form any relocation hallways?
+        эээ,
+        я не очень помню, как она выглядела
+        ты могла бы перепроверить это с другими служебными дронами?
+        она образовывала какие-нибудь переместительные коридоры?
     
     sourceless
-        THE GROUNDSMIND IS SILENT FOR A MOMENT
-        SHE MUST SEE ME LIKE A LARVAL FOOL
+        ЗЕМЛЕМЫСЛЕЦ УМОЛКАЕТ НА МГНОВЕНИЕ
+        ДОЛЖНО БЫТЬ, ОНА СЧИТАЕТ МЕНЯ ЛИЧИНОЧНЫМ ГЛУПЦОМ
     
     groundsmind
-        akizetesche,
-        i cannot help you without a point of reference
-        an innumerable amount of cysts are self-delivered every θgaze
-        and each are mundane in nature.
-        what has you seeking information about this one in particular?
+        акизетеше,
+        я не могу помочь тебе без ориентиров
+        неисчислимое количество цист самодоставляется каждый θвзор
+        и каждая из них обыденна по своей природе.
+        зачем ты ищешь информацию конкретно об этой?
 
     sourceless
-        BAD IDEA
+        ПЛОХАЯ ИДЕЯ
 
     akizet
-        it was, ah...
-        actually, you know, i think i realize who sent it actually
-        yes, it was a team-member, ahaha
-        i will just go ask them!
-        goodbye!
+        она была, а...
+        вообще-то, знаешь, я думаю, я поняла, кто её прислал
+        да, это был член команды, ахаха
+        я просто пойду и спрошу его!
+        пока!
 
     sourceless
-        I CASUALLY WALK AWAY IN A PANIC
-        WHAT IF THE GROUNDSMIND IS A PART OF THIS?
+        КАК НИ В ЧЁМ НЕ БЫВАЛО, Я УХОЖУ В ПАНИКЕ
+        ЧТО, ЕСЛИ ЗЕМЛЕМЫСЛЕЦ ЯВЛЯЕТСЯ ЧАСТЬЮ ЭТОГО?
 
     RESPONSES::akizet
-        how embarrassing<+>END
+        как стыдно<+>END
             EXEC::pauseSwapCam(false)
 
 leave
     akizet
-        nothing! nevermind
-        apologies for drawing your attention
+        ничего! неважно
+        извини, что привлекла твоё внимание
     
     groundsmind
-        excellent
-        fare well
+        превосходно
+        до свидания
     
     sourceless
-        THE DRONE DISCONNECTS FROM THE GROUNDSMIND AND STANDS STILL ONCE MORE
+        ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
             EXEC::pauseSwapCam(false)
 
 END::content.classList.remove('groundsminded')
@@ -3232,142 +3229,141 @@ ____END
 env.localization.page['embassy'].dialogues["mothframe"] = generateDialogueObject(` 
 start
     sys
-        ERROR::"unable to render";"thoughtform contains violence, aggressive action";"non-compliant with mindspike license"
-        ADVISE::"report memory source to local authorities"
+        ОШИБКА::'визуализация невозможна';'мыслеформа содержит насилие, агрессивные действия';'не соответствует лицензии мыслекола'
+        РЕКОМЕНДАЦИЯ::'сообщить об источнике памяти в местные органы власти'
 
     moth
-        damn, i was kinda hoping the FBX patch would have helped with this
-        not a big surprise, honestly
-        i don't know if you've ever actually tried to open combative thoughtforms before,
-        but after '52 they seriously locked that shit down - that's why it doesn't work
-        of course, i actually accounted for this
+        чёрт, а я надеялся<блинскиймоль> что патч ФБКС с подобным поможет
+        неудивительно, честно говоря
+        не знаю, пробовал<блинскийлопер> ли ты когда-нибудь открывать боевые мыслеформы,
+        но после 52-го они серьёзно ограничили эту херню - и поэтому оно не работает
+        разумеется, я к этому подготовился<блинскиймоль>
             SHOWIF::["mth++embassy-locked", false]
-        of course, it's like i said before - i had an idea
+        разумеется, как я и говорил<блинскиймоль> - у меня есть идея
             SHOWIF::"mth++embassy-locked"
-        have you ever heard of a framing device? like, in mindspike terms
-        they're super illegal, for regular contractors anyway
-        basically, we can fool your mindspike into thinking it's a memory of something else
-        like... instead of a memory of akizet punching some guy,
-        we "frame" it so that it's a memory of a game where akizet punches the same guy
-        it can result in a little instability, but it lets you get in
-        totally throws off the onboard AI
+        знаешь что такое обрамляющие устройства? типа, в мыслекольном смысле
+        они афигеть какие незаконные, во всяком случае для обычных подрядчиков
+        короче, мы можем перехитрить твой мыслекол заставив его думать что это воспоминание чего-то другого
+        типа... вместо воспоминания о том как акизет дала какому-то челику по морде,
+        мы "обрамляем" его так, чтобы это было воспоминание об игре где Акизет дала тому же челику по морде
+        это может вызвать некоторую нестабильность, но даст тебе войти
+        полностью сбивает с толку встроенный ИИ
     
     RESPONSES::self
-        so you made a game?<+>game
+        значит, ты сделал<блинскиймоль> игру?<+>game
 
 game
     self
-        so you made a game?
+        значит, ты сделал<блинскиймоль> игру?
     
     moth
-        no, of course not
-        like i said, it's a framing device - not really a game
-        your brain will interpret it as a game, though
-        so... actually, yeah, i guess
-        anyway, to actually get it working, 
-        we need funfriend to modify the thoughtform - i'll provide the patterns needed
-        maybe act like it's you who's sending the data so it trusts you
+        нет, конечно нет
+        я ж говорю, это обрамляющее устройство - не совсем игра
+        хотя твой мозг будет воспринимать это как игру
+        так что... вообще-то, да, наверное
+        ну короче, чтобы оно заработало, 
+        надо чтобы развледруг модифицировал мыслеформу - я предоставлю всё необходимое // --- идеи получше на patterns needed?
+        может сделай вид будто это ты шлёшь данные чтоб он доверился тебе
     
     RESPONSES::self
-        why not a movie or something<+>movie
-        on it<+>END
+        почему не что-то вроде фильма<+>movie
+        за дело<+>END
     
     RESPONSES::sys
-        return to hub<+>END
+        вернуться в хаб<+>END
             EXEC::moveTo("/hub/")
-            FAKEEND::(direct navigation)
+            FAKEEND::(прямая навигация)
     
 movie
     self
-        why not make it a memory of a movie, or something else?
+        почему нельзя сделать это воспоминанием о чём-то вроде фильма?
     
     moth
-        cause people say games work best, that's why
-        apparently if it's too similar to actually experiencing the memory, the AI can tell
-        besides, i've seen you when you're bored
-        you can barely sit still, and then you just leave without saying anything
-        if the movie sucks, you're just gonna do that
+        люди говорят что игры работают лучше всего, вот почему
+        по-видимому, если оно слишком похоже на настоящее воспоминание, ИИ может это засечь
+        кроме того, я ж знаю что ты делаешь когда те скучно
+        ты едва можешь усидеть на месте, а потом просто уходишь ничего не сказав
+        если фильм тебе не зайдёт, ты сделаешь то же самое
     
     self
-        but what if the game also sucks
+        но что, если игра мне тоже не зайдёт
     
     moth
-        then, i don't know, you're gonna have to deal with it dude
-        cause it's the only way we're getting into this memory
-        go back to the hub so i can send this illegal shit to funfriend and then delete it
-        we've got some leeway and won't really get in trouble, but,
-        i wouldn't want to get pulled over with this on any of my drives
+        тогда, не знаю, смирись с этим чел
+        потому что иначе нам в это вспоминание не влезть
+        возвращайся в хаб и я кину эту незаконную хуйню развледругу а потом удалю её
+        у нас есть некоторая свобода действий, и проблем у нас не будет, но
+        не хотелось бы i wouldn't want to get pulled over with this on any of my drives // --- я устал помогите
 
     RESPONSES::self
-        on it<+>END
+        за дело<+>END
     
     RESPONSES::sys
-        return to hub<+>END
+        вернуться в хаб<+>END
             EXEC::moveTo("/hub/")
-            FAKEEND::(direct navigation)
+            FAKEEND::(прямая навигация)
 `)
 env.localization.page['embassy'].dialogues["mothframe_still"] = generateDialogueObject(` 
 start
     sys
-        ERROR::"unable to render";"thoughtform contains violence, aggressive action";"non-compliant with mindspike license"
-        ADVISE::"report memory source to local authorities"
+        ОШИБКА::'визуализация невозможна';'мыслеформа содержит насилие, агрессивные действия';'не соответствует лицензии мыслекола'
+        РЕКОМЕНДАЦИЯ::'сообщить об источнике памяти в местные органы власти'
 
     moth
-        you gotta go talk to funfriend so i can give it the framing device
+        тебе надо поговорить с развледругом чтобы мы дали ему обрамляющее устройство
 
     RESPONSES::self
-        on it<+>END
+        за дело<+>END
     
     RESPONSES::sys
-        return to hub<+>END
+        вернуться в хаб<+>END
             EXEC::moveTo("/hub/")
-            FAKEEND::(direct navigation)
+            FAKEEND::(прямая навигация)
 `)
 
 env.localization.page['embassy'].dialogues["d3_newsavewarning"] = generateDialogueObject(`
 start
     sys
-        WARNING::"creating a new iteration will clear old iteration configuration"
-        WARNING::"proceed only if old recollection iteration is undesirable"
+        ПРЕДУПРЕЖДЕНИЕ::'создание новой итерации очистит конфигурацию старой итерации'
+        ПРЕДУПРЕЖДЕНИЕ::'продолжайте';'если старая итерация вспоминания нежелательна'
     
     RESPONSES::self
-        do it<+>END
+        сделать это<+>END
             EXEC::cutscene(true);page.newit = 1
             
-        nevermind<+>END
+        неважно<+>END
 
 END::if(page.newit) {env.embassy.newCollapseIteration(page.newit)}
 `)
 env.localization.page['embassy'].dialogues["d3_partselection"] = generateDialogueObject(`
 start
     sys
-        WARNING::"creating a new iteration will clear old iteration configuration"
-        WARNING::"proceed only if old recollection iteration is undesirable"
-        NOTICE::"additionally";"select desired iteration memory stream"
-        NOTICE::"two of three total streams available";"third is corrupt"
+        ПРЕДУПРЕЖДЕНИЕ::'создание новой итерации очистит конфигурацию старой итерации'
+        ПРЕДУПРЕЖДЕНИЕ::'продолжайте только, если старая итерация вспоминания нежелательна'
+        УВЕДОМЛЕНИЕ::'дополнительно';'выберите желаемый поток памяти итерации'
+        УВЕДОМЛЕНИЕ::'доступно два из трёх потоков';'третий повреждён'
             SHOWIF::["gol__e4_transition", false]
-        NOTICE::"three streams available"
+        УВЕДОМЛЕНИЕ::'доступно три потока'
             SHOWIF::"gol__e4_transition"
-        DEFINITION::"stream 1";"beginning"
-        DEFINITION::"stream 2";"descent";"golem maintenance"
-        DEFINITION::"stream 3";"destruction";"groundsmindry"
-            SHOWIF::"gol__e4_transition"
+        ОПРЕДЕЛЕНИЕ::'первый поток';'начало'
+        ОПРЕДЕЛЕНИЕ::'второй поток';'спуск';'обслуживание големов'
+        ОПРЕДЕЛЕНИЕ::'третий поток';'уничтожение';'земледумие'
     
     RESPONSES::self
-        stream 1<+>END
+        первый поток<+>END
             EXEC::cutscene(true);page.newit = 1
-            FAKEEND::(collapse pt 1)
+            FAKEEND::(обвал часть 1)
 
-        stream 2<+>END
+        второй поток<+>END
             EXEC::cutscene(true);page.newit = 2
-            FAKEEND::(collapse pt 2)
+            FAKEEND::(обвал часть 2)
 
-        stream 3<+>END
+        третий поток<+>END
             EXEC::cutscene(true);page.newit = 3
             SHOWIF::"gol__e4_transition"
-            FAKEEND::(collapse pt 3)
+            FAKEEND::(обвал часть 3)
             
-        nevermind<+>END
+        неважно<+>END
 
 END::if(page.newit) {env.embassy.newCollapseIteration(page.newit)}
 `)
@@ -3376,310 +3372,310 @@ END::if(page.newit) {env.embassy.newCollapseIteration(page.newit)}
 env.localization.page['embassy'].dialogues["d3_start"] = generateDialogueObject(`
 start
     sourceless
-        TOZIK, GAKVU AND I SIT HALF-CONNECTED TO THE TIMESTOPPER
+        ТОЗИК, ГАКВУ И Я СИДИМ ПОЛУПОДКЛЮЧЁННЫМИ К ВРЕМЯДЕРЖЦУ
             EXEC::content.classList.add('innerfocus', 'showfocus');content.querySelector('.focus').classList.add('day3')
         EVER SINCE THE GROUNDSMIND SAW FIT TO ABANDON IT WITH US,
         USING ITS EFFECTS ONLY PARTIALLY HAS BECOME A STANDARD PRACTICE
 
     tozik
-        next
+        следующий
 
     sourceless
-        SUCH PLEASANT SPEED! SO MUCH FREE TIME!
-        WHO SAYS VELZIE CANNOT SMILE WITH COMPASSION?
-        OUTSIDE OF OUR CONNECTION, I SENSE OUR ASSISTANT GOLEM ATTACHING A LISTENER
+        ТАКАЯ ПРИЯТНАЯ СКОРОСТЬ! СТОЛЬКО СВОБОДНОГО ВРЕМЕНИ!
+        И КТО ГОВОРИЛ, ЧТО ВЕЛЗИ НЕ УЛЫБАЕТСЯ С СОСТРАДАНИЕМ?
+        ВНЕ НАШЕГО СОЕДИНЕНИЯ, Я ЧУВСТВУЮ, КАК НАШ ГОЛЕМ-ПОМОЩНИК ПОДКЛЮЧАЕТ СЛУШАТЕЛЯ
             EXEC::document.querySelector('.redundancy').style.setProperty('--dataoffset', 3)
 
     gakvu
-        loaded!
+        загружен!
     
     sourceless
-        THE MEMORY OF A SIGNAL-RECORD CYST RADIATES THROUGH OUR CONNECTION
-        AN IDENTIFIER PRECEDES ITS ABRIDGED LOG: PRE-CONTACT, θeye 4, RADIANT 0
+        ПАМЯТЬ ЦИСТЫ С ЗАПИСЬЮ СИГНАЛА ИЗЛУЧАЕТСЯ ПО НАШЕМУ СОЕДИНЕНИЮ
+        ИДЕНТИФИКАТОР ПРЕДШЕСТВУЕТ ЕГО СОКРАЩЁННОМУ ОТЧЁТУ: ДО КОНТАКТА, θглаз 4, РАДИАНТ 0
 
     tozik
-        no drift, no changes
-        next one
+        нет сдвигов, нет изменений
+        следующий
     
     sourceless
-        THEN COMES ANOTHER - PRE-CONTACT, θeye 4, RADIANT 1
+        ЗАТЕМ ПОСТУПАЕТ ДРУГАЯ - ДО КОНТАКТА, θглаз 4, РАДИАНТ 1
             EXEC::document.querySelector('.redundancy').style.setProperty('--dataoffset', 6)
-        TOZIK'S MIND PASSES OVER IT, CAREFUL, EVEN IF GENERALLY DISINTERESTED
-        I FEEL THE SAME - THE MUNDANITY OF THIS INVESTIGATION...
-        IT SEEMS POINTLESS BENEATH THE RECEPTORS OF MY WORK WITH GORDON'S TEAM
-        AND I HAVE NOT REALLY BEEN MUCH HELP TO THE EKIVIKS
-        TRYING TOO HARD NOT TO LET ANYTHING LEAK THROUGH OUR CONNECTION
-        CAVIK... NO NO, I JUST NEED TO STOP THINKING ABOUT WHAT HAPPENED
-        HE WILL LISTEN TO ME - HE MUST
+        РАЗУМ ТОЗИКА ПРОХОДИТ НАД НЕЙ, ВНИМАТЕЛЬНО, ХОТЯ В ЦЕЛОМ НЕЗАИНТЕРЕСОВАННО
+        Я РАЗДЕЛЯЮ ЭТО ЧУВСТВО - РУТИННОСТЬ ЭТОГО ИССЛЕДОВАНИЯ...
+        КАЖЕТСЯ БЕСПОЛЕЗНОЙ ПОД РЕЦЕПТОРАМИ МОЕЙ РАБОТЫ С КОМАНДОЙ ГОРДОНА
+        ДА И ОТ МЕНЯ МАЛО ПОМОЩИ ЭКИВИКАМ
+        СЛИШКОМ СТАРАЮСЬ, ЧТОБЫ НИЧЕГО НЕ ПРОСОЧИЛОСЬ СКВОЗЬ НАШЕ СОЕДИНЕНИЕ
+        КАВИК... НЕТ-НЕТ, МНЕ ПРОСТО НУЖНО ПРЕКРАТИТЬ ДУМАТЬ О СЛУЧИВШЕМСЯ
+        ОН МЕНЯ ПОСЛУШАЕТ - ОН ОБЯЗАН
     
     gakvu
-        akizet?
+        акизет?
     
     sourceless
-        BUT WHAT IF HE DOES NOT? HE BROADCASTS HIS THOUGHTS SO FREELY
-        IT WILL GET US BOTH KILLED, I KNOW IT WILL, HE
+        НО ЧТО ЕСЛИ НЕ ПОСЛУШАЕТ? ОН ТАК СВОБОДНО РАЗГЛАШАЕТ СВОИ МЫСЛИ
+        ИЗ-ЗА ЭТОГО НАС ОБОИХ УБЬЮТ, Я ЗНАЮ, ТАК И БУДЕТ, ОН
 
     gakvu
-        akizet
+        акизет
     
     akizet
-        what? oh--was this one mine?
+        что? о--это мне был?
 
     gakvu
-        yes
+        да
 
     akizet
-        sorry, checking it now...
+        простите, сейчас посмотрю...
     
     sourceless
-        I DRAW MY MIND AWAY FROM MY INNER MATTERS,
-        THROUGH THE TIMESTOPPER AND TO THE CONNECTED LISTENER
-        WITH A QUICK COMPARISON I SEE THAT THE SIGNAL ALIGNS WITH OUR FETCHED ARCHIVES
+        Я ОТВЛЕКАЮСЬ ОТ СВОИХ ВНУТРЕННИХ ЗАБОТ,
+        ЧЕРЕЗ ВРЕМЯДЕРЖЕЦ ОБРАЩАЯСЬ К ПОДКЛЮЧЁННОМУ СЛУШАТЕЛЮ
+        ПОСЛЕ БЕГЛОГО СРАВНЕНИЯ Я ВИЖУ, ЧТО СИГНАЛ СООТВЕТСТВУЕТ НАШИМ ЗАГРУЖЁННЫМ АРХИВАМ
     
     akizet
-        this one matches as well
+        этот тоже совпадает
     
     tozik
-        hmm...
-        we have gone far enough
-        we may assume that the only discrepancy is the first spike
-        thank you for your help, this would have taken much longer alone
+        хмм...
+        мы зашли достаточно далеко
+        можно допустить, что единственным расхождением является первый пик
+        спасибо за помощь, в одиночку это заняло бы гораздо больше времени
     
     gakvu
         you owe me a receptor curl
     
     tozik
         not happening
-        we should wrap this up - disconnect that listener, i will...
+        пора закругляться - отключите этот слушатель, а я...
             EXEC::env.embassy.day3Static();
-        ...huh
+        ...хах
 
     sourceless
-        SOMETHING IS WRONG
-        THE OTHERS FEEL IT TOO
+        ЧТО-ТО НЕ ТАК
+        ДРУГИЕ ТОЖЕ ЭТО ЧУВСТВУЮТ
     
     gakvu
-        hey,
+        эй,
     
     tozik
-        quiet
-        i hear it too
+        тихо
+        я тоже слышу
     
     sourceless
         ...
         ...
         
     tozik
-        what is that?
-        is that coming from the listener?
+        что это?
+        это от слушателя исходит?
     
     sourceless
-        IT IS A SORT OF WHISPER... I MUST LISTEN CLOSELY
-        BUT JUST AS I SEEM TO GRASP THE MESSAGE...
-        PAIN
+        КАКОЙ-ТО ШЁПОТ... Я ДОЛЖНА ВНИМАТЕЛЬНО ПРИСЛУШАТЬСЯ
+        НО КАК ТОЛЬКО Я ПОЧТИ УЛАВЛИВАЮ СМЫСЛ...
+        БОЛЬ
             EXEC::env.embassy.day3Signal();
             WAIT::6000
 
     sourceless quiet
-        THE MESSAGE IS WORDLESS
-        IT IS NOT FOR ME
-        BUT IT IS DISMANTLING ME
-        THE STRANGEST PAIN... A HUNGER CONSUMING EVERYTHING
+        ЭТО ПОСЛАНИЕ БЕЗ СЛОВ
+        ОНО НЕ ДЛЯ МЕНЯ
+        НО ОНО РАЗЛАМЫВАЕТ МЕНЯ
+        СТРАННЕЙШАЯ БОЛЬ... ГОЛОД, ПОГЛОЩАЮЩИЙ ВСЁ
             EXEC::content.classList.add('collapse', 'show-vn');content.classList.remove('fade-stage');content.classList.add('slowpain');vn.renderParty()
             WAIT::4000
-        ANGER... BETRAYAL... VENGEANCE
-        IT... KNOWS US...
+        ЯРОСТЬ... ПРЕДАТЕЛЬСТВО... МЕСТЬ
+        ОНО... НАС ЗНАЕТ...
         ...
             EXEC::content.classList.remove('innerfocus');content.classList.remove('painmode');changeBgm(env.embassy.music_collapse, {length: 6000});
     
     sourceless
-        WHEN I COME TO, MY MIND FEELS AS IF IT WERE STOMPED BY A VEILK
-        WE ARE STILL CONNECTED TO THE TIMESTOPPER
+        КОГДА Я ПРИХОЖУ В СЕБЯ, МНЕ КАЖЕТСЯ, ЧТО ПО МОЕМУ СОЗНАНИЮ ПРОТОПТАЛСЯ ВЕЙЛЬК
+        МЫ ВСЁ ЕЩЁ ПОДКЛЮЧЕНЫ К ВРЕМЯДЕРЖЦУ
             EXEC::content.classList.remove('slowpain')
-        I COLLAPSED
-        SO DID GAKVU AND TOZIK... EVEN THE GOLEM
+        Я УПАЛА
+        И ГАКВУ, И ТОЗИК... И ДАЖЕ ГОЛЕМ
             EXEC::content.classList.remove('painprep')
-        ALTHOUGH, THE GOLEM IS IN FAR WORSE CONDITION
-        THE CYSTIC GLASS HAS STOPPED GLOWING, LEAVING THE ROOM DIM
+        ХОТЯ ГОЛЕМ В ГОРАЗДО БОЛЕЕ ТЯЖЕЛОМ СОСТОЯНИИ
+        СВЕЧЕНИЕ ЦИСТОЗНОГО СТЕКЛА ПРЕКРАТИЛОСЬ, ОСТАВЛЯЯ КОМНАТУ В ПОЛУТЬМЕ
 
     akizet
-        gakvu?
-        tozik?
-        say something
+        гакву?
+        тозик?
+        скажите что-нибудь
 
     gakvu
         ...
-        hurts
+        больно
     
     sourceless
-        TOZIK SLOWLY STANDS HIMSELF BACK UP
+        ТОЗИК МЕДЛЕННО ВСТАЁТ НА НОГИ
             EXEC::env.embassy.vn({bg: true, tozik: 'fullview'})
-        GAKVU CLINGS TO A NEARBY LISTENER
+        ГАКВУ ЦЕПЛЯЕТСЯ ЗА БЛИЖАЙШИЙ СЛУШАТЕЛЬ
             EXEC::env.embassy.vn({bg: true, gakvu: 'fullview'})
-        ONE OF HER LEGS LOST ITS FORM, BECOMING A FEATURELESS VIOLET SLUDGE
-        BUT SHE HAS ALREADY STARTED REFORMING IT
-        THAT INSPIRES ME TO INSPECT MY OWN FORM, WHICH...
-        YES, IT IS FINE
+        ОДНА ИЗ ЕЁ НОГ ПОТЕРЯЛА ФОРМУ, ПРЕВРАТИВШИСЬ В БЕСФИГУРНЫЙ ФИОЛЕТОВЫЙ ШЛАМ
+        НО ОНА УЖЕ НАЧАЛА ЕЁ РЕФОРМИРОВАТЬ
+        ЧТО ВДОХНОВЛЯЕТ МЕНЯ НА ПРОВЕРКУ СОБСТВЕННОЙ ФОРМЫ, КОТОРАЯ...
+        ДА, ОНА В ПОРЯДКЕ
     
     gakvu
-        ...what just hit us?
-        was that a bomb?
+        ...что по нам только что попало?
+        это была бомба?
     
     tozik
-        not seeing any physical damage
+        не вижу физического ущерба
     
     sourceless
-        GAKVU RUMMAGES THROUGH HER FALSE VEILKSKIN COAT, PRODUCING A SMALL CORRUCYST
-        A COMMUNICATIONS DEVICE, THOUGH IT MELTS IN HER CLAWS
+        ГАКВУ РОЕТСЯ В СВОЕЙ НАКИДКЕ ИЗ ЛОЖНОЙ ВЕЛЬККОЖИ, ИЗВЛЕКАЯ МАЛЕНЬКУЮ КОРРУЦИСТУ
+        СРЕДСТВО СВЯЗИ, НО ОНО ПЛАВИТСЯ В ЕЁ КОГТЯХ
     
     gakvu
         Îè§¤ÿ
-        my communicator is sludged
-        oh, no--my environments!!
+        мой коммуникатор is sludged
+        о, нет--мои среды!!
     
     sourceless
-        TOZIK ALSO CHECKS HIS COMMUNICATIONS CYST
+        ТОЗИК ТОЖЕ ПРОВЕРЯЕТ СВОЮ ЦИСТУ СВЯЗИ
     
     tozik
-        mine too
+        и мой
     
     sourceless
-        OH NO
-        FUNFRIEND??
+        О НЕТ
+        РАЗВЛЕДРУГ??
     
     funfriend
-        HELLO AKIZETESCHE!!!
+        ПРИВЕТ АКИЗЕТЕШЕ!!!
     
     sourceless
-        A WAVE OF RELIEF PASSES THROUGH ME
-        FUNFRIEND: DO WE HAVE DULL BROADCAST CAPABILITIES?
+        ПО МНЕ ПРОХОДИТСЯ ВОЛНА ОБЛЕГЧЕНИЯ 
+        РАЗВЛЕДРУГ: У НАС ЕСТЬ ВОЗМОЖНОСТЬ К ПЕРЕДАЧАМ СЕРОЕ?
     
     funfriend
-        YES! WOULD YOU LIKE ME TO ACTIVATE THEM NOW?
+        ДА! ХОТИТЕ, ЧТОБЫ Я ИХ ПРЯМО СЕЙЧАС ВКЛЮЧИЛ?
     
     akizet
-        hold on. mine is working
+        подождите. моя работает
     
     sourceless
-        ACTIVATE RECEPTION
+        ВКЛЮЧИ ПРИЁМ
 
     funfriend
-        ACTIVATING... NOW!
+        ВКЛЮЧАЮ... СЕЙЧАС!
     
     sourceless
-        NOISE - THE CALL IS LOUDER THAN EVER BEFORE
-        OR--IS THAT THE CALL? IT IS UNFAMILIAR
-        THERE ARE ALSO MESSAGES BEING BROADCAST FROM THE LOCAL AREA...
-        BUT ONLY THEIR EMOTIONS ARE LOUD ENOUGH TO PIERCE THE NOISE
-        IT IS PANIC, PAIN, FEAR, DESPERATION - SOMEONE NEEDS HELP
-        TOZIK AND GAKVU BOTH STARE AT ME EXPECTANTLY
+        ШУМ - ЗОВ ГРОМЧЕ, КАК НИКОГДА РАНЬШЕ
+        ИЛИ--ЗОВ ЛИ ЭТО? ОН НЕЗНАКОМ МНЕ
+        И ИЗ ОКРЕСТНОСТЕЙ ТРАНСЛИРУЮТСЯ СООБЩЕНИЯ...
+        НО ТОЛЬКО ИХ ЭМОЦИИ ЗВУЧАТ ДОСТАТОЧНО ГРОМКО, ЧТОБЫ ПРОНЗИТЬ ШУМ
+        ЭТО ПАНИКА, БОЛЬ, СТРАХ, ОТЧАЯНИЕ - КОМУ-ТО НУЖНА ПОМОЩЬ
+        ТОЗИК И ГАКВУ УСТАВИЛИСЬ НА МЕНЯ В ОЖИДАНИИ
     
     akizet
-        it is bad
-        whatever that noise was, it is still going on
-        i cannot make anything out or reach anyone
-        the only thing that is getting through is fear
-        i hope the others are all right...
+        всё плохо
+        чем бы ни был этот шум, он до сих пор идёт
+        не могу ничего разобрать и ни с кем связаться
+        единственное, что я улавливаю - это страх
+        надеюсь, с остальными всё в порядке...
     
     sourceless
-        GAKVU'S RECEPTORS TWIST WITH APPREHENSION
-        TOZIK SIMPLY LOOKS AWAY - IN THOUGHT, MAYBE
+        РЕЦЕПТОРЫ ГАКВУ ГНУТСЯ С ТРЕВОГОЙ
+        ТОЗИК ОТВОДИТ ВЗГЛЯД В СТОРОНУ - БЫТЬ МОЖЕТ, В РАЗДУМЬЯХ
     
     gakvu
-        are the bright cousins attacking us?
-        could they be using the dull?
+        на нас напали светлые близнецы?
+        могли бы они использовать серое?
 
     tozik
-        no. look
+        нет. смотрите
 
     sourceless
-        OH - IT WAS THE LISTENERS HE WAS LOOKING AT
+        ОХ - ЕГО ВЗГЛЯД БЫЛ ОБРАЩЁН НА СЛУШАТЕЛЕЙ
             EXEC::env.embassy.vn({fade: true});specialCam('listener-zoom')
-        THEY ARE FINE, EXTERNALLY, BUT THEIR PROJECTIONS...
-        ARE PULSATING WITH INCOHERENCE
+        ВНЕШНЕ ОНИ НЕ ТРОНУТЫ, НО ИХ ПРОЕКЦИИ...
+        ПУЛЬСИРУЮТ БЕССВЯЗНОСТЬЮ
     
     tozik
-        this is not another spike
+        это не новый пик
             EXEC::env.embassy.vn({fade: false})
-        i do not know what this is...
-        but humans could not be doing this
+        я не знаю, что это такое...
+        но человечество на такое не способно
             EXEC::specialCam(false)
     
     gakvu
-        well, whatever is happening,
-        if our equipment is getting sludged...
-        then the internal parts of the spire probably are too
-        we should get out of here
+        ну, что бы ни происходило,
+        если наше оборудование is getting sludged...
+        то наверняка и внутренние части шпиля тоже
+        нам нужно убраться отсюда
     
     akizet
-        agreed - stay behind me
-        ah,
+        соглашусь - держитесь за мной
+        ах,
     
     sourceless
-        AFTER THAT MOMENT OF AGREEMENT, WE ALL SEEM TO REALIZE THE SAME THING
-        WE ARE STILL CONNECTED TO THE TIMESTOPPER, DESPITE NO VEIN ATTACHED TO CONNECTORS
-        I STILL FEEL THE CONNECTION, THOUGH IT RESEMBLES THE FEELING OF A COMMUNICATIONS CYST
+        В ЭТОТ МОМЕНТ СОГЛАСИЯ МЫ ВСЕ, ПОХОЖЕ, ПОНИМАЕМ ОДНО И ТО ЖЕ
+        МЫ ПО-ПРЕЖНЕМУ ПОДКЛЮЧЕНЫ К ВРЕМЯДЕРЖЦУ, НЕСМОТРЯ НА ОТСУТСТВИЕ ВЕН У СОЕДИНИТЕЛЕЙ
+        Я ВСЁ ЕЩЁ ЧУВСТВУЮ СОЕДИНЕНИЕ, ПУСТЬ ОНО БОЛЬШЕ ПОХОДИТ НА ОЩУЩЕНИЯ ОТ ЦИСТЫ СВЯЗИ
     
     timestopper
-        WAS THIS ALWAYS REMOTE CAPABLE?
+        А УДАЛЁННОЕ ПОДКЛЮЧЕНИЕ ВСЕГДА ПОДДЕРЖИВАЛОСЬ?
 
     tozik
-        yes
-        did you not listen when we first got it?
+        да
+        ты разве не слушала, когда мы его получили?
     
     gakvu
-        hehe
+        хихи
             EXEC::env.embassy.vn({tgolem: 'showleft'})
 
     sourceless
-        AS GAKVU GOES TO REMOVE HER CONNECTOR, OUR ASSISTANT GOLEM SCRAPES AGAINST THE FLOOR
+        В ТОТ ЖЕ МИГ, КОГДА ГАКВУ СОБИРАЕТСЯ СНЯТЬ СОЕДИНИТЕЛЬ, НАШ ГОЛЕМ-ПОМОЩНИК СКРЕБЁТСЯ ОБ ПОЛ
             EXEC::env.embassy.vn({tgolem: 'display show', gakvu: 'defocus', tozik: 'defocus'})
-        WE ALL CEASE MOVEMENT, OUR GAZES CONVERGING ON IT
+        МЫ ВСЕ ЗАМИРАЕМ, НАШИ ВЗГЛЯДЫ СХОДЯТСЯ НА НЁМ
             EXEC::changeBgm(env.embassy.music_unsafe, {rate: 1})
-        IT HAS DRAGGED ITSELF TO AN UNEASY HOVER, AN ODD SYMBOL ON ITS FACE
+        ОН КОЕ-КАК ПОДНЯЛСЯ ДО НЕНАДЁЖНОГО ПАРЕНИЯ IT HAS DRAGGED ITSELF TO AN UNEASY HOVER, НА ЕГО ЛИЦЕ - НЕПОНЯТНЫЙ СИМВОЛ
             EXEC::env.embassy.vn({tgolem: 'display show center'})
-        SOMETHING IN THE GROUNDSMINDRY IS CONTROLLING IT - BUT NOT VEKOA?
+        ЧТО-ТО УПРАВЛЯЕТ ИМ ИЗ ЗЕМЛЕДУМИЯ - НО НЕ ВЕКОА?
     
     aggressor
-        o   ut o  u  t o 
-        i wo nt i won t let
+        п   р о    ь п р   о  чь ь
+        я н  е д м не  д а  м
     
     gakvu
-        hello?
+        что-что?
     
     sourceless
-        ITS STYLIZED ARMS SUDDENLY SHARPEN INTO SPIKES, AND IT RUSHES TOWARDS GAKVU
+        ЕГО СТИЛИЗОВАННЫЕ РУКИ ВНЕЗАПНО ОБОСТРЯЮТСЯ В ШИПЫ, И ОН БРОСАЕТСЯ НА ГАКВУ
             EXEC::env.embassy.vn({tgolem: 'display show approach'})
-        ÷Œ€T$0 - THIS IS AN ATTACK
+        ÷Œ€T$0 - ЭТО НАПАДЕНИЕ
     
     akizet
-        get back!!
+        назад!!
 
     sourceless
-        EXPERIMENTALLY, I FLEX THE NERVE OF THE TIMESTOPPER CONNECTOR
-        AND TIME DOES SLOW, BUT NOT STOP - SUCH IS THE REMOTE TRADEOFF
-        THESE TWO ARE UNPREPARED FOR COMBAT, BUT WITH MY TIME ON THE SURFACE
-        YES, I CAN SAVE THEM
-        THOUGHTS THAT COULD ONLY BE GAKVU'S ECHO THROUGH OUR CONNECTION
+        ЭКСПЕРИМЕНТАЛЬНО, Я СГИБАЮ НЕРВ СОЕДИНЕНИЯ С ВРЕМЯДЕРЖЦЕВМ
+        И ВРЕМЯ ДЕЙСТВИТЕЛЬНО ЗАМЕДЛЯЕТСЯ, НО НЕ ОСТАНАВЛИВАЕТСЯ - В ЭТОМ КОМПРОМИСС УДАЛЁННОГО ПОДКЛЮЧЕНИЯ
+        ЭТИ ДВОЕ НЕ ГОТОВЫ К БОЮ, НО С МОИМ ОПЫТОМ РАБОТЫ НА ПОВЕРХНОСТИ
+        ДА, Я МОГУ ИХ СПАСТИ
+        МЫСЛИ, КОТОРЫЕ МОГУТ ПРИНАДЛЕЖАТЬ ТОЛЬКО ГАКВУ, ОТДАЮТСЯ ЭХОМ СКВОЗЬ НАШЕ СОЕДИНЕНИЕ
     
     timestopper
-        WHAT DO I DO WHAT DO I DO
-        IT IS GOING RIGHT FOR MY MIND-CORE IT IS GOING TO KILL ME
-        THIS IS IT
+        ЧТО МНЕ ДЕЛАТЬ ЧТО МНЕ ДЕЛАТЬ
+        ОН ЦЕЛИТСЯ ПРЯМО В МОЁ MIND-CORE ОН МЕНЯ УБЬЁТ
+        МНЕ КОНЕЦ
     
     akizet
-        no, you are going to be fine
-        follow my lead
+        нет, ты будешь в полном порядке
+        следуйте моим указаниям
     
     RESPONSES::akizet
-        save gakvu<+>END
+        спасти гакву<+>END
             EXEC::env.embassy.vn({fade: true});env.embassy.startTutorialGolem();ratween(env.bgm, 0.75, 5000)
             SHOWIF::['gameplay_off', false]
-            FAKEEND::initiate combat
-        save gakvu<+>CHANGE::d3_tutorial_end
+            FAKEEND::(начать бой)
+        спасти гакву<+>CHANGE::d3_tutorial_end
             EXEC::vn.done();
             SHOWIF::['gameplay_off', true]
-            FAKEEND::bypass combat
+            FAKEEND::(пропустить бой)
 
 SKIP::env.embassy.skips.d3_start()
 SKIPTIME::700
@@ -3689,148 +3685,148 @@ END::env.embassy.vn({bg: false, fade: false, gakvu: '', tozik: '', tgolem: ''})
 env.localization.page['embassy'].dialogues["d3_tutorial_start"] = generateDialogueObject(`
 start
     sourceless
-        IN OUR ALTERED TIME, CAREFUL MANEUVERS CAN BE TAKEN
-        THE GOLEM RUSHES FOR GAKVU, BUT ITS SIDE IS VULNERABLE
-        A PERFECT OPPORTUNITY FOR ME TO STRIKE
-        AND AFTER MY ATTACKS CREATE AN OPENING,
+        В НАШЕМ ИСКАЖЁННОМ ВРЕМЕНИ ВОЗМОЖНО ПРОВЕДЕНИЕ ПРОДУМАННЫХ МАНЕВРОВ
+        ГОЛЕМ УСТРЕМЛЁН К ГАКВУ, НО ЕГО ЛЕВЫЙ БОК УЯЗВИМ
+        ИДЕАЛЬНАЯ ВОЗМОЖНОСТЬ ДЛЯ НАНЕСЕНИЯ УДАРА
+        AND AFTER MY ATTACKS CREATE AN OPENING, --- ffffffffff 
         I CAN DIRECT THE OTHERS TO FOLLOW THROUGH...
 
     sys
-        ATTENTION::"thoughtform combat initiated"
-        NOTICE::"reduce health of enemy team to defeat them"
-        NOTICE::"select thoughtform actions accordingly"
-        WARNING::"if ally team is defeated";"memory stream will collapse"
+        ВНИМАНИЕ::'инициировано мыслеформенное сражение'
+        УВЕДОМЛЕНИЕ::'снижайте здоровье вражеской команды';'чтобы победить её'
+        УВЕДОМЛЕНИЕ::'выбирайте действия мыслеформ соответствующим образом'
+        ПРЕДУПРЕЖДЕНИЕ::'если команда союзников потерпит поражение';'поток памяти распадётся'
 
     moth
-        it works!!
+        работает!!
             SHOWONCE::
-        sorry. staying quiet
+        сорян. всё, молчу
             SHOWONCE::
-        let's get to the bottom of this
+        займёмся делом
             SHOWONCE::
 
     sourceless
-        I SHARPEN MY RIGHT CLAW,
-        FOR PUNCTURING CORRU IS THE SUREST METHOD OF DESTROYING IT
-        BUT I COULD JUST AS EASILY CHARGE AT IT
-        BLUNT FORCE WILL DISORIENT EVEN THE MOST EFFICIENT GOLEMS
-        HMM...
-        OF COURSE, I COULD ALSO SIMPLY GET IN THE WAY, AND PREPARE TO DEFLECT IT
+        Я ЗАТАЧИВАЮ ПРАВЫЙ КОГОТЬ,
+        ИБО ПРОНЗИТЬ КОРРУ - ВЕРНЫЙ СПОСОБ ЕГО УНИЧТОЖЕНИЯ
+        НО С ТАКИМ ЖЕ УСПЕХОМ Я МОГЛА БЫ И НАБРОСИТЬСЯ НА НЕГО
+        ГРУБАЯ СИЛА ДЕЗОРИЕНТИРУЕТ ДАЖЕ САМЫХ ЭФФЕКТИВНЫХ ГОЛЕМОВ
+        ХММ...
+        КОНЕЧНО, ЕЩЁ Я МОГЛА БЫ ПРОСТО ПРЕГРАДИТЬ ЕМУ ПУТЬ И ПРИГОТОВИТЬСЯ ОТРАЗИТЬ ЕГО
     
     RESPONSES::akizet
-        take action<+>END
+        действовать<+>END
             EXEC::env.rpg.classList.remove('hideteams')
-            FAKEEND::proceed
+            FAKEEND::(продолжить)
 `)
 env.localization.page['embassy'].dialogues["d3_tutorial_gakvu"] = generateDialogueObject(`
 start
     sourceless
-        WITH MY DISTRACTION SUCCESSFUL, MY INNER EYE TURNS TO THE OTHERS
+        ПОСЛЕ УДАЧНОГО ОТВЛЕЧЕНИЯ МОЙ ВНУТРЕННИЙ ГЛАЗ ОБРАЩАЕТСЯ К ОСТАЛЬНЫМ
             EXEC::change("PAGE!!gaktut", true)
     
     akizet
-        gakvu,
-        strike next
-        i cannot do this alone
+        гакву,
+        бей следующей
+        одна я не справлюсь
     
     gakvu
-        akizet...
-        ah--i do not have anything, i mean--
+        акизет...
+        а--у меня ничего нет, то есть--
     
     akizet
-        improvise, grab something, punch it
-        it does not matter
-        i can help guide you
-        we will triumph
+        импровизируй, схвати что-нибудь, врежь ему
+        это не имеет значения
+        я могу помочь направить тебя
+        мы добьёмся победы
     
     gakvu
-        ok!!
-        i might be able to... yeah, i have something
+        хорошо!!
+        может, я могла бы... да, у меня найдётся что-нибудь
     
     RESPONSES::gakvu
-        attack<+>END
-            FAKEEND::proceed
+        атаковать<+>END
+            FAKEEND::(продолжить)
 `)
 env.localization.page['embassy'].dialogues["d3_tutorial_tozik"] = generateDialogueObject(`
 start
     sourceless
-        WHAT WAS THAT GAKVU JUST DID? 
+        ЧТО ГАКВУ ТОЛЬКО ЧТО СДЕЛАЛА?
             SHOWIF::'PAGE!!earlygak'
-        IT LOOKED LIKE SHE DID NOT EVEN TOUCH IT...
+        ВЫГЛЯДЕЛО ТАК, БУДТО ОНА ДАЖЕ НЕ КАСАЛАСЬ ЕГО...
             SHOWIF::'PAGE!!earlygak'
-        NO MATTER - WE MUST DEAL WITH THE GOLEM
+        НЕВАЖНО - МЫ ДОЛЖНЫ РАСПРАВИТЬСЯ С ГОЛЕМОМ
             SHOWIF::'PAGE!!earlygak'
-        I LOOK TO TOZIK NEXT
+        СЛЕДУЮЩИМ Я ОГЛЯДЫВАЮСЬ НА ТОЗИКА
             EXEC::change("PAGE!!toztut", true)
-        BUT I NEED NOT SAY ANYTHING
+        НО МНЕ И НЕ НУЖНО НИЧЕГО ГОВОРИТЬ
     
     tozik
-        should we be struck at any point,
-        i have some tools for emergency repairs
+        если нас в какой-либо момент ранят,
+        на мне есть есть инструменты для срочных починок
     
     RESPONSES::tozik
-        attack<+>END
-            FAKEEND::proceed
+        атаковать<+>END
+            FAKEEND::(продолжить)
 `)
 env.localization.page['embassy'].dialogues["d3_tutorial_akizet"] = generateDialogueObject(`
 start
     sourceless
-        BEFORE I PROCEED AGAIN, I LOOK AGAIN TO THE OTHERS
-        THEY ARE SCARED - AS THEY LIKELY SHOULD BE
-        I AM, TOO, REALLY...
-        BUT THIS GOLEM SHOULD BE NOTHING BEFORE US
+        ПЕРЕД ТЕМ, КАК ПРОДОЛЖИТЬ, Я СНОВА СМОТРЮ НА ОСТАЛЬНЫХ
+        ИМ СТРАШНО - КАК, НАВЕРНЯКА, И ДОЛЖНО БЫТЬ
+        ДА И В САМОМ ДЕЛЕ, МНЕ ТОЖЕ...
+        НО ЭТОТ ГОЛЕМ - НИЧТО ПЕРЕД НАМИ
 
     akizet
-        do you see now?
-        i lend my knowledge to you,
-        and with it, you strike so effortlessly!
-        keep following my lead!
+        видите ли вы теперь?
+        я передаю вам свои знания,
+        и с их помощью вы наносите удары с такой лёгкостью!
+        продолжайте следовать за мной!
     
     timestopper
-        OK!
+        ХОРОШО!
     
     RESPONSES::akizet
-        attack<+>END
+        атаковать<+>END
             EXEC::changeBgm(env.embassy.music_combat, {rate: 0.5, seek: 100})
-            FAKEEND::proceed
+            FAKEEND::(продолжить)
 `)
 env.localization.page['embassy'].dialogues['d3_tutorial_end'] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
             EXEC::vn.renderParty()
 ____END
 
     sourceless
-        THE GOLEM CRASHES TO THE GROUND, 
-        WHERE ITS GEOMETRIC COMPONENTS MELT INTO CORRUCYSTIC WASTE
-        WITHIN ARE A FEW QUICK-REPAIR <span definition="INHERITED CONTEXT::${env.ITEM_LIST['restorative'].description}">RESTORATIVE CYSTS</span>, SO I TAKE THEM
+        ГОЛЕМ РАЗБИВАЕТСЯ О ЗЕМЛЮ,
+        ГДЕ ЕГО ГЕОМЕТРИЧЕСКИЕ КОМПОНЕНТЫ РАСПЛАВЛЯЮТСЯ В КОРРУЦИСТОЗНЫЕ ОТХОДЫ
+        ВНУТРИ НАХОДИТСЯ НЕСКОЛЬКО <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::${env.ITEM_LIST['restorative'].description}">ВОССТАНОВИТЕЛЬНЫХ ЦИСТ</span> ДЛЯ БЫСТРЫХ ПОЧИНОК, ТАК ЧТО Я БЕРУ ИХ
             EXEC::env.embassy.conditionalItem('restorative', 3, 'tutrest')
-        GAKVU, TOZIK AND I SHARE A LOOK - ONE OF TRIUMPH, BUT SHOCK
+        ГАКВУ, ТОЗИК И Я ОБМЕНИВАЕМСЯ ВЗГЛЯДАМИ - НЕ ТОЛЬКО ТОРЖЕСТВУЮЩИМИ, НО И ПОТРЯСЁННЫМИ
             EXEC::env.embassy.vn({bg: true, gakvu: 'fullview', tozik: 'fullview'})
-        THEIR HANDS AND RECEPTORS TREMBLE LIKE THOSE OF A NEW CAVERNGUARD
+        ИХ РУКИ И РЕЦЕПТОРЫ ДРОЖАТ, КАК У НОВОБРАННЫХ ПЕЩЕРНЫХ СТРАЖЕЙ
     
     akizet
-        if this is happening everywhere in the embassy...
+        если это происходит по всему посольству...
         ...
-        listen,
-        stay close to me, and keep the timestopper connectors on
-        we can probably use these until we are out of the embassy
-        but we need to get out of here
-        we should see if movefriend is still operational
+        слушайте,
+        держитесь ближе ко мне, и не снимайте соединители с времядержцем
+        мы наверняка сможем использовать их, пока не покинем посольство
+        но нам нужно отсюда выбраться
+        надо проверить, работает ли ещё движедруг
     
     sourceless
-        THE OTHERS SIMPLY DIP THEIR RECEPTORS IN AFFIRMATION AND STAY CLOSE
-        AN UNEASY TENSION SITS BETWEEN US IN THE TIMESTOPPER'S CONNECTION
-        WHICH, IS A LITTLE STRANGE... I WOULD UNDERSTAND FEAR, BUT,
-        IS SOMEONE AFRAID OF ME?
+        ОСТАЛЬНЫЕ ПРОСТО СКЛОНЯЮТ РЕЦЕПТОРЫ В УТВЕРЖДЕНИЕ И ДЕРЖАТСЯ РЯДОМ
+        В СОЕДИНЕНИИ С ВРЕМЯДЕРЖЦЕМ МЕЖДУ НАМИ ЦАРИТ НАПРЯЖЕНИЕ
+        ТО НЕМНОГО СТРАННО... Я БЫ ПОНЯЛА СТРАХ, НО,
+        КТО-ТО МЕНЯ БОИТСЯ?
 
     sys
-        NOTICE::'gameplay may be toggled in the SYS menu'
+        УВЕДОМЛЕНИЕ::'переключение геймплея возможно в системном меню'
 
     RESPONSES::akizet
-        keep moving<+>END
+        продолжить двигаться<+>END
             EXEC::revertBgm();env.embassy.vn({bg: false, gakvu: '', tozik: ''})
 
 SKIP::env.embassy.conditionalItem('restorative', 3, 'tutrest');vn.done();revertBgm()
@@ -3839,33 +3835,33 @@ SKIP::env.embassy.conditionalItem('restorative', 3, 'tutrest');vn.done();revertB
 env.localization.page['embassy'].dialogues["d3_connector"] = generateDialogueObject(`
 start
     sourceless
-        IT MAY BE HANDY TO HAVE ANOTHER CONNECTOR
+        ДОПОЛНИТЕЛЬНЫЙ СОЕДИНИТЕЛЬ МОГ БЫ НАМ ПРИГОДИТЬСЯ
             SHOWIF::['PAGE!!connectors', false]
-        SO I GO TO PULL ONE OF THE CONNECTED ONES FREE...
+        ТАК ЧТО Я ПОДХОЖУ, ЧТОБЫ ВЫДЕРНУТЬ ОДИН ИЗ ПОДКЛЮЧЁННЫХ...
             SHOWIF::['PAGE!!connectors', false]
-        ONLY FOR IT TO MEET MY CLAW WITH A DREADFUL SOFTNESS
+        ТОЛЬКО ДЛЯ ТОГО, ЧТОБЫ ОН ВСТРЕТИЛ МОЙ КОГОТЬ С УЖАСАЮЩЕЙ МЯГКОСТЬЮ
             SHOWIF::['PAGE!!connectors', false]
-        IT IS SLUDGED - THEY ALL ARE
+        ОН IS SLUDGED - ВСЕ ОНИ
             SHOWIF::['PAGE!!connectors', false]
 
     akizet
-        what...
+        что...
             SHOWIF::['PAGE!!connectors', false]
-        they are dead??
+        они мертвы??
             SHOWIF::['PAGE!!connectors', false]
-        but the timestopper is fine!!!
+        но времядержец же в порядке!!!
             SHOWIF::['PAGE!!connectors', false]
 
     tozik
-        hmmm...
+        хммм...
             SHOWIF::['PAGE!!connectors', false]
-        most smaller devices seem to have been broken by that signal
+        большинство меньших устройств, похоже, были сломаны этим сигналом
             SHOWIF::['PAGE!!connectors', false]
-        and given that connectors are self-contained... it makes sense
+        and given that connectors are self-contained... it makes sense --- self-contained?
             SHOWIF::['PAGE!!connectors', false]
-        unfortunate as it is
+        как ни прискорбно
             SHOWIF::['PAGE!!connectors', false]
-        we should protect the ones we have dearly
+        мы должны беречь те, что у нас уже есть, как зеницу ока
             SHOWIF::['PAGE!!connectors', false]
 
     sourceless
@@ -3873,9 +3869,9 @@ start
             SHOWIF::'PAGE!!connectors'
     
     RESPONSES::akizet
-        this is bad<+>END
+        это плохо<+>END
             EXEC::change("PAGE!!connectors", true)
-            FAKEEND::(proceed)
+            FAKEEND::(продолжить)
 `)
 
 env.localization.page['embassy'].dialogues["movefriend_disabled"] = generateDialogueObject(`
@@ -4043,107 +4039,107 @@ SKIP::change("PAGE!!recreation_unlocked", true);step();vn.done();specialCam(fals
 env.localization.page['embassy'].dialogues["d3_genericenemy"] = generateDialogueObject(`
 start
     sourceless
-        WE ARE BESET BY INCOHERENT FOES
+        МЫ ОКРУЖЕНЫ БЕССВЯЗНЫМИ ВРАГАМИ
             EXEC::forceSwapCam(true)
-        OUR ONLY OPTION IS TO FIGHT
+        НАШ ЕДИНСТВЕННЫЙ ВЫХОД - ДРАТЬСЯ
 
-        OR IS IT?
+        ИЛИ НЕТ?
             SHOWIF::'EXEC::checkItem(env.ITEM_LIST.disabler)'
-        WE COULD ALSO EXPEND THE DISABLER
+        МЫ ТАКЖЕ МОГЛИ БЫ ВОСПОЛЬЗОВАТЬСЯ ОТКЛЮЧИТЕЛЕМ
             SHOWIF::'EXEC::checkItem(env.ITEM_LIST.disabler)'
-        THERE MAY BE A BETTER TIME FOR IT LATER...
+        ХОТЯ ПОЗЖЕ МОГЛО БЫ НАЙТИСЬ БОЛЕЕ ПОДХОДЯЩЕЕ ВРЕМЯ...
             SHOWIF::'EXEC::checkItem(env.ITEM_LIST.disabler)'
 
     RESPONSES::akizet
-        engage<+>END
+        engage<+>END --- ??? 
             SHOWIF::['gameplay_off', false]
-            FAKEEND::(begin combat)
+            FAKEEND::(начать сражение)
             EXEC::env.combat.dynamicCombat()
 
-        bypass<+>END
+        пропустить<+>END
             SHOWIF::['gameplay_off', true]
-            FAKEEND::(bypass combat)
+            FAKEEND::(пропустить сражение)
             EXEC::env.combat.dynamicCombat({dry: true});cutscene(true);setTimeout(()=>{cutscene(false);env.combat.dynamicCallback(env.rpg.enemyTeam)}, 1010)
 
-        disable<+>disable
+        отключить<+>disable
             SHOWIF::'EXEC::checkItem(env.ITEM_LIST.disabler)'
-            FAKEEND::(use disabler charge)
+            FAKEEND::(использовать заряд отключителя)
 
 disable
     sourceless
-        I CAREFULLY LINE UP THE DISABLER
+        Я ОСТОРОЖНО НАЦЕЛИВАЮ ОТКЛЮЧИТЕЛЬ
             EXEC::removeItem(env.ITEM_LIST.disabler);
-        AND WITH AN IMPULSE THROUGH MY HAND, A NUMBER OF SPECIALIZED SPINES ARE PROJECTED VIOLENTLY OUTWARDS
-        THEY NEEDLE OUR FOES, AND IN A BLINK, THEY HAVE STARTED TO MELT
+        И С ИМПУЛЬСОМ МОЕЙ РУКИ НЕСКОЛЬКО СПЕЦИАЛИЗИРОВАННЫХ ШИПОВ ЯРОСТНО ВЫСТРЕЛИВАЮТ НАРУЖУ
+        ОНИ ВСАЖИВАЮТСЯ В НАШИХ ВРАГОВ, И В МГНОВЕНИЕ ОКА ОНИ НАЧИНАЮТ ПЛАВИТЬСЯ
             EXEC::setTimeout(()=>play('shot2', 0.6), 300)
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::env.combat.dynamicCombat({dry: true});cutscene(true);setTimeout(()=>{cutscene(false);env.combat.dynamicCallback(env.rpg.enemyTeam)}, 1010)
-            FAKEEND::(wait)
+            FAKEEND::(подождать)
 `)
 env.localization.page['embassy'].dialogues["d3_genericenemyvictory"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 ____END
 
     sourceless
-        OUR FOES LIE DESTROYED
+        НАШИ ВРАГИ ЛЕЖАТ ПОВЕРЖЕННЫМИ
         TEXEC::env.combat.dynamicReward()
 
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::forceSwapCam(false)
 `)
 env.localization.page['embassy'].dialogues["d3_loss"] = generateDialogueObject(`
 start
     sourceless
-        A SHARP LIMB STRIKES MY MINDCORE
+        ОСТРАЯ КОНЕЧНОСТЬ ПОРАЖАЕТ MY MINDCORE --- #mymindcore
         ...
             EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 10000);content.classList.add('dying');
-        WHAT IS HAPPENING
-        EVERYTHING HAS STOPPED
-        HELLO?
-        TOZIK? GAKVU??
-        FUNFRIEND?
-        IS ANYONE THERE?
-        HELP
+        ЧТО ПРОИСХОДИТ
+        ВСЁ ОСТАНОВИЛОСЬ
+        HELLO? --- юуэ
+        ТОЗИК? ГАКВУ??
+        РАЗВЛЕДРУГ?
+        КТО-НИБУДЬ ЕСТЬ?
+        ПОМОГИТЕ
 
     unknown
         ...
             SHOWONCE::
 
     sys
-        ALERT::"recollection locus destroyed";"iteration unable to continue"
-        ADVISE::"start new iteration";"load saved iteration"
+        ОПОВЕЩЕНИЕ::'уничтожен локус вспоминания';'итерация не может продолжиться'
+        РЕКОМЕНДАЦИЯ::'начать новую итерацию';'загрузить сохранённую итерацию'
             SHOWIF::'collapseSave'
-        ADVISE::"start new iteration"
+        РЕКОМЕНДАЦИЯ::'начать новую итерацию'
             SHOWIF::['collapseSave', false]
 
     RESPONSES::sys
-        return to selection<+>END
+        вернуться к выбору<+>END
             EXEC::moveTo("/local/ocean/embassy/")
 `)
 
 env.localization.page['embassy'].dialogues["d3_c_responses"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::gakvu
-        structurism?<+>structurist
+        структуризм?<+>structurist
             SHOWIF::"PAGE!!recreation_unlocked"
-        kazki's room?<+>kazkiroom
+        комната казки?<+>kazkiroom
             SHOWIF::"PAGE!!kazkiroom"
-        coat lights<+>coat
+        светящаяся накидка<+>coat
 
     RESPONSES::tozik
-        corruskivi?<+>corruskivi
+        коррускиви?<+>corruskivi
             SHOWIF::"PAGE!!recreation_unlocked"
-        attack theory?<+>theory
+        теория о нападении?<+>theory
             SHOWIF::[["PAGE!!kazkichest"], ["PAGE!!barfriend"]]
 
     RESPONSES::akizet
-        holding up ok?<+>holdingup
-        let us continue<+>END
+        как вы?<+>holdingup
+        давайте продолжим<+>END
             EXEC::env.embassy.vn({bg: false, tozik: "", gakvu: ""})
 `)
 env.localization.page['embassy'].dialogues["d3_c"] = generateDialogueObject(`
@@ -4199,7 +4195,7 @@ structurist
     RESPONSES::akizet
         perhaps!<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
-            FAKEEND::(back)
+            FAKEEND::(назад)
         
 kazkiroom
     akizet
@@ -4230,7 +4226,7 @@ kazkiroom
     RESPONSES::akizet
         nod nod<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 coat
     sourceless
@@ -4284,7 +4280,7 @@ coat
     RESPONSES::akizet
         thank you!<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"});change("gakpause", !check("gakpause"))
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 corruskivi
     akizet
@@ -4319,7 +4315,7 @@ corruskivi
     RESPONSES::akizet
         we will make it through<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 theory
     akizet
@@ -4346,27 +4342,27 @@ theory
     RESPONSES::akizet
         i see<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 holdingup
     akizet
-        how are you both?
-        i am doing fine
+        как вы оба?
+        у меня всё нормально
             SHOWIF::'EXEC::page.party[0].hp >= 12'
-        i could use some repairs, but i am ok, myself
+        мне бы не помешали починки, но я в порядке
             SHOWIF::'EXEC::(page.party[0].hp < 8) && (page.party[0].hp > 3)' 
-        i am critical... i need to use a restorative
+        я в критическом состоянии... мне нужно использовать восстановитель
             SHOWIF::'EXEC::page.party[0].hp <= 3'
 
     gakvu
-        good!
+        хорошо!
             SHOWIF::'EXEC::page.party[1].hp == 10'
 
-        ok
+        сойдёт
             SHOWIF::'EXEC::(page.party[1].hp > 4) && (page.party[1].hp < 10)'
-        only a few minor segments of my qou-body are compromised
+        нарушены только несколько незначительных сегментов моего куу-тела
             SHOWIF::'EXEC::(page.party[1].hp > 4) && (page.party[1].hp < 10)'
-        not pleasant, but... nothing worth stopping for
+        не очень приятно, но... ничего такого, ради чего стоило бы останавливаться
             SHOWIF::'EXEC::(page.party[1].hp > 4) && (page.party[1].hp < 10)'
 
         i have never been hurt like this before... it is terrifying
@@ -4392,7 +4388,7 @@ holdingup
     
     RESPONSES::akizet
         understood<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 SKIP::vn.done()
 `)
@@ -5050,7 +5046,7 @@ env.localization.page['embassy'].dialogues["d3r2_postcombat"] = generateDialogue
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -5211,7 +5207,7 @@ help
 
     RESPONSES::akizet
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 division
     akizet
@@ -5237,7 +5233,7 @@ division
     
     RESPONSES::akizet
         we will see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 veilk
     akizet
@@ -5259,7 +5255,7 @@ veilk
 
     RESPONSES::akizet
         you will get the chance again!<+>art
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 eye
     akizet
@@ -5290,7 +5286,7 @@ eye
 
     RESPONSES::akizet
         ironic<+>art
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 taking
     akizet
@@ -5304,7 +5300,7 @@ taking
 
     RESPONSES::akizet
         that is good<+>art
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 SKIP::vn.done()
 `)
@@ -5422,7 +5418,7 @@ grab
 
     RESPONSES::akizet
         me too<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ok
     akizet
@@ -5442,7 +5438,7 @@ ok
 
     RESPONSES::akizet
         that can be arranged<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 SKIP::vn.done()
 `)
@@ -5724,7 +5720,7 @@ env.localization.page['embassy'].dialogues["d3_movefriend_finish"] = generateDia
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6170,7 +6166,7 @@ who
         я десь шоб было В3С3Л0!!!
         обрамляющие устройсва иногд скушнblе......
         так шо я беру & улчшаю мелкую частб
-        шоб развлеч тя есл хочеш ?
+        шоб развлеч тя есл хочеца ?
         >:)
         
     RESPOBJ::d3_bstrdintro_responses
@@ -6337,7 +6333,7 @@ start
         прив
     
     moth
-        господи боже он вписал себя в это воспоминание
+        господи боже он вписал себя во вспоминание
             SHOWONCE::
 
     sourceless
@@ -6360,7 +6356,7 @@ start
         но тока сделайте мн одлжение
         достанте маю клевую шароштучку злева
         и криповую черную коробчку зправа
-        там внутри чета КРYТ03... 
+        там внутри чета КРYТ03...)
         скушно не будет!!
         :-)
 
@@ -6568,7 +6564,7 @@ early
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6744,7 +6740,7 @@ start
         но тока сделайте мн одлжение
         достанте маю клевую шароштучку злева
         и криповую черную коробчку зправа
-        там внутри чета КРYТ03... 
+        там внутри чета КРYТ03...)
         скушно не будет!!
         :-)
 
@@ -6820,7 +6816,7 @@ env.localization.page['embassy'].dialogues["d3_archiveminiclear"] = generateDial
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6989,7 +6985,7 @@ start
 
 ____SHOWIF::['gameplay_off']
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
 
     bstrd
         ВТФ

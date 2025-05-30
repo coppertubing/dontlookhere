@@ -1,6 +1,6 @@
 /* 
     cor-RU - a full russian adaptation mod for corru.observer
-    by @dutokrisa, @shatteredstars and @bra1nslug_
+    by @dutokrisa and @bra1nslug_
     based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
     EP0 playtested by @akizetism
 
@@ -11,7 +11,7 @@
         ======
 
     cor-RU - мод на полную русскую адаптацию для corru.observer
-    от @dutokrisa, @shatteredstars и @bra1nslug_
+    от @dutokrisa  и @bra1nslug_
     на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
     EP0 протестировано @akizetism
 
@@ -561,7 +561,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     // funky functions that do not forbid you from moving cyrillic-style
 
-    stepKey: function (key) {
+    /*stepKey: function (key) {
         console.log(key)
         key = key.toLowerCase();
 
@@ -584,10 +584,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         function stageCleanup() {
             if(env.stage.ref) env.stage.ref.remove()
             env.stage.ref = null
-            try{ document.removeEventListener('keydown', stageKeypress) } catch(e) { /* never defined */ }
-            try{ document.removeEventListener('keydown', cor_ru.stageKeypressed) } catch(e) { /* never defined */ }
+            try{ document.removeEventListener('keydown', stageKeypress) } catch(e) {  }
+            try{ document.removeEventListener('keydown', cor_ru.stageKeypressed) } catch(e) {  }
         }
-    },
+    }, */
 
     // obserbor
 

@@ -84,7 +84,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "wwEL LL isn' t t that peculiar ? ?": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
         /*envoy*/ "elerv ator isn torking": "литф н еработает",
         /*envoy*/ "gu ess w e can    t t al k never talk": "пола гга ю мы може м пого гово ор и т ть никогда не поговорить",
-        /*envoy*/ "no talking so rry sorry sorry leave ovfice": "", // --- кскскск слизнячок
+        /*envoy*/ "no talking so rry sorry sorry leave ovfice": "", //  кскскск слизнячок
         
         /*moth*/ "uhh... ok": "эээ... ладно",
         /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить с развледругом об этом",
