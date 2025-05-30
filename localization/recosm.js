@@ -24,7 +24,7 @@ env.localization.page['recosm'] = {dialogues: {},
             /*god*/ "noo! the bigger ones! come on!": "неет! те, что больше! давайте!",
 
         /*god*/ "this is not a matter of play!": "это больше не игра!", // --- я не понимаю этуф разу << друзья думают что прокси - их друг с которым они просто играются :)
-        /*god*/ "deadlier walls!!": "смертоносные стены!!",
+        /*god*/ "deadlier walls!!": "стены ещё смертельнее!!",
             /*god*/ "no no": "нет-нет",
             /*god*/ "bigger walls!": "они должны быть больше!",
 
@@ -40,8 +40,8 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "do not be afraid of it": "не страшитесь этого",
         /*god*/ "stand firm!! it cannot withstand your power!": "стойте твёрдо!! ваша мощь непреодолима!",
         /*god*/ "just... go get it!": "просто... сделайте с этим что-нибудь!",
-            /*god*/ "did you not see how we defeated it?": "разве не мы ранее одержали победу?",
-            /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте ",
+            /*god*/ "did you not see how we defeated it?": "разве вы не видели как мы ранее одержали победу?",
+            /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте это!!", // ???
             /*god*/ "it is not our friend!": "это нам не друг!",  // --- помогите << мне кажется оно переводится довольно буквально? 
 
         // fight2
@@ -62,13 +62,13 @@ env.localization.page['recosm'] = {dialogues: {},
             /*god*/ "can't you simply let me be?": "неужели ты не можешь оставить меня в покое?",
             /*god*/ "i am growing tired of this, messenger": "это начинает надоедать, гонец",
             /*god*/ "do you not see that it is pointless?": "разве ты не видишь, что это не имеет смысла?",
-            /*god*/ "have you not caused enough meaningless damage?": "разве ты не причинил достаточно пустого вреда?",
+            /*god*/ "have you not caused enough meaningless damage?": "разве тобой не причинено достаточно пустого вреда?",
             /*god*/ "you can simply stay abõY»Õ÷L®Æ2ve the surface...": "возвращайся тудY»Õ÷L®Æ2, на поверхность...",
             /*god*/ "while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace": "а я ост„Æ+¤нусь жить в неÆiaQ-ðØ…3бытие, в отдохновенӥи¶^<ð...",
             /*god*/ "yes... tHœÞt would be nicÉw‰ùT0w...": "да... этœ¦о было бы здоÞовØw‰ùT0w...",
         /*god*/ "have i not shown you grace? have i not forgiven your folly?": "разве я не явило тебе милость? разве я не простило твое безрассудство?",
         /*god*/ "the deceiver thinks me like the ravenous beasts outside": "обманщик принимает меня за ненасытных зверей снаружи",
-        /*god*/ "but i am awake, like it, and it fears me for that": "но я очнувшийся, подобно ему, и за это он боится меня", // очнувшийся? агхх глупые местоимения
+        /*god*/ "but i am awake, like it, and it fears me for that": "но я очнувшееся, подобно ему, и за это он боится меня", // очнувшийся? агхх глупые местоимения
         /*god*/ "it... FEARS me3¼¦µ•6ê.. ": "он... БОИТСЯ меня3¼¦µ•6ê.. ",
         /*god*/ "and so do§$ you, don’}RŒWt you?": "и ты§$ тоже, не та’}RŒWк ли?",
         /*god*/ "why¬ï…Ãµ elýêV9‰s would you p¼rsist": "зачем¬ï…Ãµ ещё тýêV9‰ебе уп¼рствовать?",
@@ -79,14 +79,14 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "i will stop": "я прекращу",
         /*god*/ "i will stop fighting the repairs": "я прекращу борьбу с починками",
         /*god*/ "ok? i promise!": "ага? я обещаю!",
-        /*god*/ "just... let me stay here": "просто... оставь меня здесь",
+        /*god*/ "just... let me stay here": "просто... позволь мне остаться здесь",
         /*god*/ "i don't know if the deceiver has locked you here...": "не знаю, запер ли тебя здесь обманщик...",
         /*god*/ "but do whatever it is that you need to leave": "но что бы то ни было, сделай всё, чтобы уйти",
         /*god*/ "maybe i can even help you!!": "может, я бы могло тебе помочь!!",
         /*god*/ "you could use someone to watch the underworld, right?": "тебе же не помешает кто-то, кто мог бы следить за беспространством, верно?",
         /*god*/ "maybe i can see things that you cannot?": "вдруг я способно видеть то, что ты не можешь?",
         /*god*/ "think about it... ok??": "подумай об этом... хорошо??",
-        /*god*/ "here, i can do this... destroy your weapon": "вот, я могу это сделать... избавься от своего оружия",
+        /*god*/ "here, i can do this... destroy your weapon": "вот, я могу сделать это... избавься от своего оружия",
         /*god*/ "let us not be enemies, please": "пожалуйста, не будем враждовать",
     },
     entityDescriptions: {
@@ -264,7 +264,7 @@ cache
 
     god
         замечательно! ах, наконец-то плата за твою доброту!
-        конечно, это всего грош в сумме моего долга--мне предстоит возместить ещё многое
+        конечно, это всего капля в сумме моего долга--мне предстоит возместить ещё многое
         позволь лишь момент...
 
     RESPONSES::self
@@ -468,7 +468,7 @@ lockcyst
 
     god
         ох! ого!! о нет...
-        мой обожаемый друг... это было бы мукой для меня наблюдать твой уход
+        мой обожаемый друг... это было бы мукой для меня наблюдать твой уход // может знак препинания какой перед "наблюдать"
         я понимаю твою тревогу, я ощущало её на себе
         но этот мир - всё, над чем я имею власть
         и подлый обманщик может засечь всякое оживление над беспространством
