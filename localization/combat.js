@@ -3427,3 +3427,2568 @@ cor_ru['redefineEffects'] = function () {
     env.STATUS_EFFECTS.aiming_indicator.name = "" // aiming
     env.STATUS_EFFECTS.aiming_indicator.help = "" // you should never see this
 }
+/* --- ITEMS --- */
+cor_ru['redefineItems'] = function () {
+    /* - Restorative Cyst - */
+
+    env.ITEM_LIST.restorative.name = "" // Restorative Cyst
+    env.ITEM_LIST.restorative.description = "" // 'quick-acting repair cyst';'best used away from danger'
+    env.ITEM_LIST.restorative.oocnote = "" // 'restores target to full health'
+
+    /* - Satik Cyst - */
+
+    env.ITEM_LIST.satik_cyst.name = "" // Satik Cyst
+    env.ITEM_LIST.satik_cyst.description = "" // 'contains rapid temporary ablative barrier applicators';'named after hardy veilk parasite';'break in case of emergency'
+
+    /* - Aima Cyst - */
+
+    env.ITEM_LIST.aima_cyst.name = "" // Aima Cyst
+    env.ITEM_LIST.aima_cyst.description = "" // 'receptor-tied targeting cyst';'traditional hunting implement';'useful for multitasking'
+
+    /* - Kavruka - */
+
+    env.ITEM_LIST.kavruka.name = "" // Kavruka
+    env.ITEM_LIST.kavruka.description = "" // 'deconstruction tool';'named after non-corrucystic surface fauna';'notoriously explosive'
+
+    /* - Disabler - */
+
+    env.ITEM_LIST.disabler.name = "" // Disabler
+    env.ITEM_LIST.disabler.description = "" // 'emergency security device';'injects self-destructive thoughtform';'for industrial use only';'quite rare'
+
+    /* - CMD::DRILL - */
+
+    env.ITEM_LIST.drill.name = "" // CMD::DRILL
+    env.ITEM_LIST.drill.description = "" // 'single-use thoughtspace modification';'enforces harsher ruleset'
+
+    /* - CMD::ROT - */
+
+    env.ITEM_LIST.rot.name = "" // CMD::ROT
+    env.ITEM_LIST.rot.description = "" // 'single-use thoughtspace modification';'enforces harsher ruleset'
+
+    /* - CMD::REWRITE - */
+
+    env.ITEM_LIST.rewrite.name = "" // CMD::REWRITE
+    env.ITEM_LIST.rewrite.description = "" // 'single-use thoughtspace processor';'alter combat for more favorable outcome'
+
+    /* - CMD::EMPOWER - */
+
+    env.ITEM_LIST.empower.name = "" // CMD::EMPOWER
+    env.ITEM_LIST.empower.description = "" // 'single-use thoughtspace processor';'alter combat for more favorable outcome'
+
+    /* - Sfer Cube - */
+
+    env.ITEM_LIST.sfer_cube.name = "" // Sfer Cube
+    env.ITEM_LIST.sfer_cube.description = "" // 'condensed corrucystic fuel';'valid currency';'the foundation of all things'
+
+    /* - Cool Orb Thingy - */
+
+    env.ITEM_LIST.cool_orb_thingy.name = "" // Cool Orb Thingy
+    env.ITEM_LIST.cool_orb_thingy.description = "" // 'labelled "ON THE USE OF BRIGHT WEAPONRY"';'receptor-locked'
+
+    /* - Scary Black Box - */
+
+    env.ITEM_LIST.scary_black_box.name = "" // Scary Black Box
+    env.ITEM_LIST.scary_black_box.description = "" // 'cousinly container made from tough dead material'
+
+    /* - Sorry Cyst - */
+
+    env.ITEM_LIST.sorry_cyst.name = "" // Sorry Cyst
+    env.ITEM_LIST.sorry_cyst.description = "" // 'a damaged golem weapon schematic';'the inscription reads, "<span class='code' definition="INHERITED CONTEXT::'meet me in the uncosm'">sorry</span>"'
+
+    /* - Golem Sfer - */
+
+    env.ITEM_LIST.golem_sfer.name = "" // Golem Sfer
+    env.ITEM_LIST.golem_sfer.description = "" // 'dense segmented sfer used in golem body creation';'knowledge of location';'feasibly used to create a new body for itzil and karik'
+
+    /* - Golem Parts - */
+
+    env.ITEM_LIST.golem_parts.name = "" // Golem Parts
+    env.ITEM_LIST.golem_parts.description = "" // 'large number of golem components';'knowledge of location';'feasibly used to create a new body for itzil and karik'
+
+    /* - Signal Export - */
+
+    env.ITEM_LIST.core_translation.name = "" // Signal Export
+    env.ITEM_LIST.core_translation.description = "" // 'a dangerously incoherent knowledge corrucyst';'contains some sort of interpretation of the signal';'gakvu can weaponize this'
+    env.ITEM_LIST.core_translation.oocnote = "" // ()=> check("PAGE!!embassy_day", 3.99) ? `'empowers DESTABILIZE action for party member';'gakvu'` : `'enables creation of SIGNAL INVERTER augment for party member';'gakvu'`
+
+    /* - Weird Black Box - */
+
+    env.ITEM_LIST.error.name = "" // Weird Black Box
+    env.ITEM_LIST.error.description = "" // 'cannot open';'why are we still carrying it';'quite heavy...'
+
+    /* - Stray IDEA - */
+
+    env.ITEM_LIST.fish_order.name = "" // Stray IDEA
+    env.ITEM_LIST.fish_order.description = "" // 'stray daemon instructor';'may be activated and thrown to alter structure'
+    env.ITEM_LIST.fish_order.oocnote = "" // 'unifies all map nodes into using a single random modifier'
+
+    /* - Lone Daemon - */
+
+    env.ITEM_LIST.fish_lone.name = "" // Lone Daemon
+    env.ITEM_LIST.fish_lone.description = "" // 'minor daemon rendered incoherent by unusual structure'
+    env.ITEM_LIST.fish_lone.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'all other shells are removed';'chosen shell receives stun and fear immunity';'permanent wild surge';'+30HP'
+
+    /* - ??? - */
+
+    env.ITEM_LIST.fish_wheel.name = "" // ???
+    env.ITEM_LIST.fish_wheel.description = "" // 'intrusive species'
+    env.ITEM_LIST.fish_wheel.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'imbue with gambling addiction'
+
+    /* - Decorated Burstlet - */
+
+    env.ITEM_LIST.fish_ruka.name = "" // Decorated Burstlet
+    env.ITEM_LIST.fish_ruka.description = "" // 'volatile parasitic fish';'intrusive species'
+    env.ITEM_LIST.fish_ruka.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'grants detonate action'
+
+    /* - FiiF - */
+
+    env.ITEM_LIST.fish_mimic.name = "" // FiiF
+    env.ITEM_LIST.fish_mimic.description = "" // 'fish native to these waters';'sretaw eseht ot evitan hsif'
+    env.ITEM_LIST.fish_mimic.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'removes ability to be modified';'replaces actions with mimic'
+
+    /* - Sniper Fish - */
+
+    env.ITEM_LIST.fish_sniper.name = "" // Sniper Fish
+    env.ITEM_LIST.fish_sniper.description = "" // 'fish native to these waters';'doubles as powerful sniper rifle'
+    env.ITEM_LIST.fish_sniper.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'removes ability to be modified';'replaces actions with powerful firearm'
+
+    /* - Normal Fish - */
+
+    env.ITEM_LIST.fish_normal.name = "" // Normal Fish
+    env.ITEM_LIST.fish_normal.description = "" // 'fishey'
+    env.ITEM_LIST.fish_normal.oocnote = "" // 'select shell';'removes any special classes';'re-enables modification'
+
+    /* - Deceiving Bulb - */
+
+    env.ITEM_LIST.fish_angler.name = "" // Deceiving Bulb
+    env.ITEM_LIST.fish_angler.description = "" // 'violent surface river fauna';'imitates mature celki glow'
+    env.ITEM_LIST.fish_angler.oocnote = "" // 'select shell';'enemies will prioritize over other targets'
+
+    /* - Fairy Eye - */
+
+    env.ITEM_LIST.fish_glee.name = "" // Fairy Eye
+    env.ITEM_LIST.fish_glee.description = "" // 'veilktop parasite';'shells rarely found in riverbeds';'purported sign of imminent chaos'
+    env.ITEM_LIST.fish_glee.oocnote = "" // 'permanently improves modifier'::VELZIE'S GLEE
+
+    /* - BSTRDBOOT - */
+
+    env.ITEM_LIST.fish_boot.name = "" // BSTRDBOOT
+    env.ITEM_LIST.fish_boot.description = "" // 'SORRY NOTHING'
+
+    /* - Symbiotic Rifle - */
+
+    env.ITEM_LIST.symbiotic_rifle.name = "" // Symbiotic Rifle
+    env.ITEM_LIST.symbiotic_rifle.description = "" // 'adapted bright weaponry created via lesser vats and strange cyst';'connects to internal ammunition generator';'use at cost of HP'
+
+}
+/* --- HUMORS --- */
+cor_ru['redefineHumors'] = function () {
+    /* - Ichor - */
+
+    env.COMBAT_COMPONENTS.ichor.name = "" // Ichor
+    env.COMBAT_COMPONENTS.ichor.description = "" // 'care and sacrifice'
+    env.COMBAT_COMPONENTS.ichor.help = "" // 'healing';'regen';'revival'
+
+    /* - Eyes - */
+
+    env.COMBAT_COMPONENTS.eyes.name = "" // Eyes
+    env.COMBAT_COMPONENTS.eyes.description = "" // 'curiosity and critique'
+    env.COMBAT_COMPONENTS.eyes.help = "" // 'vulnerability';'evasion';'focus'
+
+    /* - Claws - */
+
+    env.COMBAT_COMPONENTS.claws.name = "" // Claws
+    env.COMBAT_COMPONENTS.claws.description = "" // 'ambition, often blind'
+    env.COMBAT_COMPONENTS.claws.help = "" // 'team damage';'puncture';'double-action'
+
+    /* - Bone - */
+
+    env.COMBAT_COMPONENTS.bone.name = "" // Bone
+    env.COMBAT_COMPONENTS.bone.description = "" // 'resilience and paranoia'
+    env.COMBAT_COMPONENTS.bone.help = "" // 'weakness';'stun';'guard';'spiked'
+
+    /* - Light - */
+
+    env.COMBAT_COMPONENTS.light.name = "" // Light
+    env.COMBAT_COMPONENTS.light.description = "" // 'fate and consequence'
+    env.COMBAT_COMPONENTS.light.help = "" // 'destabilized';'fear';'stun'
+
+    /* - Empty - */
+
+    env.COMBAT_COMPONENTS.empty.name = "" // Empty
+    env.COMBAT_COMPONENTS.empty.description = "" // 'improvisation';'lacking direction'
+    env.COMBAT_COMPONENTS.empty.help = "" // 'basic actions'
+}
+/* --- MODIFIERS --- */
+cor_ru['redefineModifiers'] = function () {
+    /* - Heavy Chitin - */
+
+    env.MODIFIERS.bone_spikes.name = "" // Heavy Chitin
+    env.MODIFIERS.bone_spikes.getHelp = ()=> { return env.STATUS_EFFECTS.bone_spikes.help }
+
+    /* - Ablative Mending - */
+
+    env.MODIFIERS.bone_ablative.name = "" // Ablative Mending
+    env.MODIFIERS.bone_ablative.getHelp = ()=> { return env.STATUS_EFFECTS.bone_ablative.help }
+
+    /* - Collectivism - */
+
+    env.MODIFIERS.bone_collective.name = "" // Collectivism
+    env.MODIFIERS.bone_collective.getHelp = ()=> { return env.STATUS_EFFECTS.bone_collective.help }
+
+    /* - Adull's Sacrifice - */
+
+    env.MODIFIERS.ichor_sacrifice.name = "" // Adull's Sacrifice
+    env.MODIFIERS.ichor_sacrifice.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_sacrifice.help }
+
+    /* - Full Strength - */
+
+    env.MODIFIERS.ichor_strength.name = "" // Full Strength
+    env.MODIFIERS.ichor_strength.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_strength.help }
+
+    /* - Rotten Supplies - */
+
+    env.MODIFIERS.ichor_rotten.name = "" // Rotten Supplies
+    env.MODIFIERS.ichor_rotten.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_rotten.help }
+
+    /* - Infection - */
+
+    env.MODIFIERS.claws_infection.name = "" // Infection
+    env.MODIFIERS.claws_infection.getHelp = ()=> { return env.STATUS_EFFECTS.claws_infection.help }
+
+    /* - Desperation - */
+
+    env.MODIFIERS.claws_desperation.name = "" // Desperation
+    env.MODIFIERS.claws_desperation.getHelp = ()=> { return env.STATUS_EFFECTS.claws_desperation.help }
+
+    /* - Rabid - */
+
+    env.MODIFIERS.claws_rabid.name = "" // Rabid
+    env.MODIFIERS.claws_rabid.getHelp = ()=> { return env.STATUS_EFFECTS.claws_rabid.help }
+
+    /* - Hypercritical - */
+
+    env.MODIFIERS.eyes_hypercritical.name = "" // Hypercritical
+    env.MODIFIERS.eyes_hypercritical.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_hypercritical.help }
+
+    /* - Wounded Ego - */
+
+    env.MODIFIERS.eyes_woundedego.name = "" // Wounded Ego
+    env.MODIFIERS.eyes_woundedego.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_woundedego.help }
+
+    /* - Betrayal - */
+
+    env.MODIFIERS.eyes_betrayal.name = "" // Betrayal
+    env.MODIFIERS.eyes_betrayal.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_betrayal.help }
+
+    /* - Laughterhouse - */
+
+    env.MODIFIERS.light_laughterhouse.name = "" // Laughterhouse
+    env.MODIFIERS.light_laughterhouse.getHelp = ()=> { return env.STATUS_EFFECTS.light_laughterhouse.help }
+
+    /* - Velzie's Glee - */
+
+    env.MODIFIERS.light_glee.name = "" // Velzie's Glee
+    env.MODIFIERS.light_glee.getHelp = ()=> { return env.STATUS_EFFECTS.light_glee.help }
+
+    /* - Dark Eye - */
+
+    env.MODIFIERS.light_dark.name = "" // Dark Eye
+    env.MODIFIERS.light_dark.getHelp = ()=> { return env.STATUS_EFFECTS.light_dark.help }
+
+    /* - Abundance - */
+
+    env.MODIFIERS.global_anti.name = "" // Abundance
+    env.MODIFIERS.global_anti.getHelp = (withCurrent)=> {
+                let help = `<span class='obesk-color'>FOES::+20% chance for daemon-inhabited shells to appear in place of lesser foes</span>\n<span class='bastard-color'>TEAM::+5 max HP</span>`
+
+                if(withCurrent) {
+                    let currentEffects = ""
+                    let qty = env.crittaMap.getModQty("global_anti")
+                    let effects = [
+                        `${qty * 20}% ANTISHELL CHANCE`,
+                        qty > 5 ? `+${qty - 5} ANTISHELL IMPULSE` : false,
+                        `+${qty * 5} ALLY HP`,
+                        `+${qty} TENSION`
+                    ]
+
+                    for (const effectString of effects) {
+                        if(!effectString) continue;
+                        if(currentEffects) currentEffects += ", ";
+                        else currentEffects = "CURRENT EFFECT::";
+
+                        currentEffects += effectString
+                    }
+                    
+                    help = help + `\n${currentEffects}`
+                }
+
+                return help
+            }
+
+    /* - Welcome Storm - */
+
+    env.MODIFIERS.global_megaglee.name = "" // Welcome Storm
+    env.MODIFIERS.global_megaglee.getHelp = (withCurrent)=> {
+                let help = `<span class='bastard-color'>VELZIE'S GLEE::+50% chance to trigger</span>`
+
+                if(withCurrent) {
+                    let currentEffects = ""
+                    let qty = env.crittaMap.getModQty("global_megaglee")
+                    let effects = [
+                        `+50% VELZIE'S GLEE EFFECT CHANCE`,
+                        qty > 1 ? `+${qty - 1} STATUS DURATION` : false,
+                    ]
+
+                    for (const effectString of effects) {
+                        if(!effectString) continue;
+                        if(currentEffects) currentEffects += ", ";
+                        else currentEffects = "CURRENT EFFECT::";
+
+                        currentEffects += effectString
+                    }
+                    
+                    help = help + `\n${currentEffects}`
+                }
+
+                return help
+            }
+
+    /* - Escalation - */
+
+    env.MODIFIERS.global_escalation.name = "" // Escalation
+    env.MODIFIERS.global_escalation.getHelp = (withCurrent)=> {
+                let help = `<span class='obesk-color'>FOES::+50% max HP</span>, but <span class='bastard-color'>most negative statuses inflicted on them have their effects drastically increased</span>`
+
+                if(withCurrent) {
+                    let currentEffects = ""
+                    let qty = env.crittaMap.getModQty("global_escalation")
+                    let effects = [
+                        `+${qty * 50}% FOE HP`,
+                        `${'+'.repeat(qty)}NEGATIVE STATUS ENHANCEMENT`
+                    ]
+
+                    for (const effectString of effects) {
+                        if(!effectString) continue;
+                        if(currentEffects) currentEffects += ", ";
+                        else currentEffects = "CURRENT EFFECT::";
+
+                        currentEffects += effectString
+                    }
+                    
+                    help = help + `\n${currentEffects}`
+                }
+
+                return help
+            }
+
+    /* - Into Madness - */
+
+    env.MODIFIERS.global_impulse_bonus.name = "" // Into Madness
+    env.MODIFIERS.global_impulse_bonus.getHelp = (withCurrent)=> {
+                let help = `<span class="bastard-color">impulse caches are +50% more likely,</span> but <span class="obesk-color">foes receive +1 random impulse</span>`
+
+                if(withCurrent) {
+                    let currentEffects = ""
+                    let qty = env.crittaMap.getModQty("global_impulse_bonus")
+                    let effects = [
+                        `+${qty * 50}% IMPULSE CACHE CHANCE`,
+                        `+${qty} ENEMY IMPULSE`,
+                    ]
+
+                    for (const effectString of effects) {
+                        if(!effectString) continue;
+                        if(currentEffects) currentEffects += ", ";
+                        else currentEffects = "CURRENT EFFECT::";
+
+                        currentEffects += effectString
+                    }
+                    
+                    help = help + `\n${currentEffects}`
+                }
+
+                return help
+            }
+
+    /* - MANIFEST - */
+
+    env.MODIFIERS.global_intrusive.name = "" // MANIFEST
+    env.MODIFIERS.global_intrusive.getHelp = ()=> `<span class="neutral-color">øÿ°ÞÜÿ›ËÅÿ¥ÔËÿ«×Ïÿ®ØÏÿ«ÛÑÿ¦ÔÉÿ—Á¶ÿ–À´ÿ«ÖÊÿ Ì¿ÿ’½´ÿ¤ÔÏÿ¤ÙÑÿ”ËÃÿu0090ÉÄÿ¨°u008dÿu009dl</span>`
+}
+/* --- STATS --- */
+cor_ru['redefineStats'] = function () {
+    /* - HP - */
+
+    env.STATDATA.maxhp.display = "" // HP
+    env.STATDATA.maxhp.description = "" // 'damage taken before defeat'
+
+    /* - OUT::x(HP) - */
+
+    env.STATDATA.outgoingMult.display = "" // OUT::x(HP)
+    env.STATDATA.outgoingMult.description = "" // 'multiplies all HP changes inflicted upon others'
+
+    /* - OUT::HP - */
+
+    env.STATDATA.outgoingFlat.display = "" // OUT::HP
+    env.STATDATA.outgoingFlat.description = "" // 'flat modifier to HP changes on others';'before modifiers'
+
+    /* - OUT::x(HIT) - */
+
+    env.STATDATA.outgoingToHit.display = "" // OUT::x(HIT)
+    env.STATDATA.outgoingToHit.description = "" // 'multiplies chance to hit others'
+
+    /* - OUT::x(CRIT) - */
+
+    env.STATDATA.outgoingCrit.display = "" // OUT::x(CRIT)
+    env.STATDATA.outgoingCrit.description = "" // 'multiplies chance to crit others'
+
+    /* - OUT::CRIT - */
+
+    env.STATDATA.outgoingFlatCrit.display = "" // OUT::CRIT
+    env.STATDATA.outgoingFlatCrit.description = "" // 'added to base crit chance on others';'before modifiers'
+
+    /* - IN::x(HP) - */
+
+    env.STATDATA.incomingMult.display = "" // IN::x(HP)
+    env.STATDATA.incomingMult.description = "" // 'multiplies all HP changes inflicted upon this entity'
+
+    /* - IN::HP - */
+
+    env.STATDATA.incomingFlat.display = "" // IN::HP
+    env.STATDATA.incomingFlat.description = "" // 'flat modifier to HP changes on this entity';'before modifiers'
+
+    /* - IN::x(HIT) - */
+
+    env.STATDATA.incomingToHit.display = "" // IN::x(HIT)
+    env.STATDATA.incomingToHit.description = "" // 'multiplies chance to hit this entity'
+
+    /* - IN::x(CRIT) - */
+
+    env.STATDATA.incomingCrit.display = "" // IN::x(CRIT)
+    env.STATDATA.incomingCrit.description = "" // 'multiplies chance to crit this entity'
+
+    /* - IN::CRIT - */
+
+    env.STATDATA.incomingFlatCrit.display = "" // IN::CRIT
+    env.STATDATA.incomingFlatCrit.description = "" // 'added to base crit chance against this entity';'before modifiers'
+}
+/* --- ACTORS --- */
+cor_ru['redefineActors'] = function () {
+    /* - GENERATED - */
+
+    env.COMBAT_ACTORS.generic.name = "" // GENERATED
+    env.COMBAT_ACTORS.generic.reactions = {
+        evade: ['missed', 'close', 'aa'],
+        crit: ['ha', 'perfect', 'take that'],
+        crit_buff: ['easy', 'good'],
+        miss: ['oh no', 'i missed', 'sorry'],
+        dead: ['...'],
+        puncture: ['bleeding'],
+        regen: ['ahh', 'feels good'],
+        destabilized: ['…'],
+        stun: ['oouaa', 'eeou'],
+        laugh: ['ehehe', 'hehe', 'haha', 'ahaha'],
+        receive_hit: ['ow', 'ouch'],
+        receive_crit: ['ow!', 'ouch!'],
+        receive_puncture: ['it cut me'],
+        receive_buff: ['thank you', 'very cool'],
+        receive_destabilized: ['feels blurry'],
+        receive_rez: ['i almost died?'],
+        receive_carapace: ['oh, armor', 'this will help'],
+        receive_repairs: ['i feel better', 'thanks'],
+        receive_fear: ['what is that?', 'what did it say?', 'it is so unnatural', 'this feels wrong'],
+        receive_redirection: ['oh, thank you', 'i will not let you down']
+    }
+    env.COMBAT_ACTORS.generic.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Container - */
+
+    env.COMBAT_ACTORS.container.name = "" // Container
+    env.COMBAT_ACTORS.container.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.container.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Spire Attendant - */
+
+    env.COMBAT_ACTORS.attendant.name = "" // Spire Attendant
+    env.COMBAT_ACTORS.attendant.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.attendant.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Tendril - */
+
+    env.COMBAT_ACTORS.tendrils.name = "" // Tendril
+    env.COMBAT_ACTORS.tendrils.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Veilklight - */
+
+    env.COMBAT_ACTORS.veilklight.name = "" // Veilklight
+    env.COMBAT_ACTORS.veilklight.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.veilklight.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Golem - */
+
+    env.COMBAT_ACTORS.tutorial_golem.name = "" // Golem
+    env.COMBAT_ACTORS.tutorial_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Movefoe - */
+
+    env.COMBAT_ACTORS.enemy_movefriend.name = "" // Movefoe
+    env.COMBAT_ACTORS.enemy_movefriend.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Movefoe - */
+
+    env.COMBAT_ACTORS.enemy_movefriend_lowintensity.name = "" // Movefoe
+    env.COMBAT_ACTORS.enemy_movefriend_lowintensity.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Archival Golem - */
+
+    env.COMBAT_ACTORS.archival_golem.name = "" // Archival Golem
+    env.COMBAT_ACTORS.archival_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - BSTRDlight - */
+
+    env.COMBAT_ACTORS.bstrdlight.name = "" // BSTRDlight
+    env.COMBAT_ACTORS.bstrdlight.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.bstrdlight.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Jutskin - */
+
+    env.COMBAT_ACTORS.maintcloak.name = "" // Jutskin
+    env.COMBAT_ACTORS.maintcloak.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.maintcloak.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - BSTRD Golem - */
+
+    env.COMBAT_ACTORS.bstrdboss.name = "" // BSTRD Golem
+    env.COMBAT_ACTORS.bstrdboss.reactions = {
+        receive_destabilized: ['WOaoOAw'],
+        receive_rez: ['AHAHA :^) GOT U'],
+        puncture: ['OOUUEU'],
+        destabilized: ['DOUBLE BULLETS !!']
+    }
+    env.COMBAT_ACTORS.bstrdboss.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - BSTRD Golem - */
+
+    env.COMBAT_ACTORS.bstrdboss_lowintensity.name = "" // BSTRD Golem
+    env.COMBAT_ACTORS.bstrdboss_lowintensity.reactions = {
+        receive_destabilized: ['WOaoOAw'],
+        receive_rez: ['AHAHA :^) GOT U'],
+        puncture: ['OOUUEU'],
+        destabilized: ['DoUBLE BULLets !!']
+    }
+    env.COMBAT_ACTORS.bstrdboss_lowintensity.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Pain Shelf - */
+
+    env.COMBAT_ACTORS.bstrdshelf.name = "" // Pain Shelf
+    env.COMBAT_ACTORS.bstrdshelf.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.bstrdshelf.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Akizet - */
+
+    env.COMBAT_ACTORS.akizet.name = "" // Akizet
+    env.COMBAT_ACTORS.akizet.reactions = {
+        evade: ['far too close', 'oaa!', 'nearly...'],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "get away!" : "excellent!"],
+        crit_buff: [()=>env.combat.has('husk') || env.rpg.is2D ? "good" : "easy!"],
+        miss: ['œ¦êA'],
+        dead: ['...'],
+        receive_hit: ['@#Æ$J'],
+        receive_crit: ['ßÃÆM!!'],
+        receive_puncture: ['i have felt worse', 'a familiar feeling'],
+        receive_buff: ['thank you', 'we are unstoppable'],
+        receive_destabilized: ['every cell... awake...'],
+        receive_rez: ['that was close...'],
+        puncture: ['i need to fix this', ()=>env.combat.has('tozik') ? "tozik!" : "i need help!", ()=>env.combat.has('cavik') ? "cavik!" : "restoratives?!"],
+        regen: ['this will do', 'better...'],
+        destabilized: ['...'],
+        stun: ['my arms...'],
+        receive_carapace: ['this armor...!', 'very good'],
+        receive_repairs: ['thank you, cavik', 'better!'],
+        receive_fear: ['no, no...', 'the eyes...', 'velzie forgive me'],
+        receive_redirection: ['together!', 'thank you, my friend', 'we will destroy them']
+    }
+    env.COMBAT_ACTORS.akizet.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Gakvu - */
+
+    env.COMBAT_ACTORS.gakvu.name = "" // Gakvu
+    env.COMBAT_ACTORS.gakvu.reactions = {
+        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "ah!" : "haha!", ()=>env.combat.has('husk') || env.rpg.is2D ? "no!!" : "woaah!!"],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "clean..." : "it is simply that easy", ()=>env.combat.has('husk') || env.rpg.is2D ? "a few more like that..." : "that was lucky"],
+        crit_buff: ['so that goes there...'],
+        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "€Öä!" : "oh...", ()=>env.combat.has('husk') || env.rpg.is2D ? "it is too fast!!" : "too bad"],
+        dead: ['...'],
+        receive_crit: ['Æ!!'],
+        receive_puncture: ['i am... bleeding...?', 'ow!! what...'],
+        receive_buff: ['thanks'],
+        receive_destabilized: ['may velzie look away'],
+        receive_rez: [()=>env.combat.has('husk') || env.rpg.is2D ? "thank you" : "my savior"],
+        puncture: ['such a strange feeling', 'make this stop'],
+        regen: [()=>env.combat.has('husk') || env.rpg.is2D ? "feeling better" : "feeling good"],
+        destabilized: ['...'],
+        stun: ['where did my eyes go?!'],
+        receive_carapace: ['so heavy'],
+        receive_repairs: ['thanks cavik'],
+        receive_fear: ['stop looking at me!!', 'get away from me!', 'no, no no no', 'what did it say??'],
+        receive_redirection: ['bozko??']
+    }
+    env.COMBAT_ACTORS.gakvu.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Tozik - */
+
+    env.COMBAT_ACTORS.tozik.name = "" // Tozik
+    env.COMBAT_ACTORS.tozik.reactions = {
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "good enough" : "hehe"],
+        crit_buff: ['keep going'],
+        dead: ['...'],
+        receive_destabilized: ['i hear it calling'],
+        receive_rez: ['let us finish this'],
+        puncture: ['i need to fix this'],
+        destabilized: ['...'],
+        stun: ['where...'],
+        receive_carapace: ['thank you'],
+        receive_repairs: ['that is better'],
+        receive_fear: [()=> env.rpg.is2D ? "there is nothing here" : "hollowed out...", 'and yet it moves', ()=> env.rpg.is2D ? "where are you?" :"what happened to you?", 'that cannot be', '...'],
+        receive_redirection: ['i will return the favor']
+    }
+    env.COMBAT_ACTORS.tozik.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Tozik - */
+
+    env.COMBAT_ACTORS.tozik_npc.name = "" // Tozik
+    env.COMBAT_ACTORS.tozik_npc.reactions = {
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "good enough" : "hehe"],
+        crit_buff: ['keep going'],
+        dead: ['...'],
+        receive_destabilized: ['i hear it calling'],
+        receive_rez: ['let us finish this'],
+        puncture: ['i need to fix this'],
+        destabilized: ['...'],
+        stun: ['where...'],
+        receive_carapace: ['thank you'],
+        receive_repairs: ['that is better'],
+        receive_fear: [()=> env.rpg.is2D ? "there is nothing here" : "hollowed out...", 'and yet it moves', ()=> env.rpg.is2D ? "where are you?" :"what happened to you?", 'that cannot be', '...'],
+        receive_redirection: ['i will return the favor']
+    }
+    env.COMBAT_ACTORS.tozik_npc.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Miltza - */
+
+    env.COMBAT_ACTORS.miltza.name = "" // Miltza
+    env.COMBAT_ACTORS.miltza.reactions = {
+        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "wah!!" : "i did it!"],
+        crit: ['die!! die!!'],
+        crit_buff: ['is that better??'],
+        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "how does it move like that?!" : "next time"],
+        dead: ['...'],
+        receive_crit: ['Æöö!!'],
+        receive_puncture: ['restorative, quick!'],
+        receive_buff: ['thank you!'],
+        receive_destabilized: ['die DIE!! DIE!! DIE!!!'],
+        puncture: ['i am losing cohesion!'],
+        stun: ['oaauuuau'],
+        receive_carapace: ['a shell!'],
+        receive_repairs: ['thank you, thank you!', 'so much better'],
+        receive_fear: [()=> env.rpg.is2D ? "this cannot be real" : "that one looks like...!", 'stop...', 'velzie take me from here', 'stay away! away!!'],
+        receive_redirection: ['what??', 'oh, thank you!']
+    }
+    env.COMBAT_ACTORS.miltza.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Bozko - */
+
+    env.COMBAT_ACTORS.bozko.name = "" // Bozko
+    env.COMBAT_ACTORS.bozko.reactions = {
+        regen: ['...'],
+        evade: ['no', 'not so easy'],
+        crit: ['get away from them', 'smashed to pieces'],
+        crit_buff: ['take this'],
+        miss: ['ßÐƒ'],
+        destabilized: ['...'],
+        dead: ['...'],
+        receive_rez: ['get back up...'],
+        receive_crit: ['you!'],
+        receive_puncture: [()=>env.combat.has('cavik') ? "cavik!" : "it punched through..."],
+        receive_buff: ['keep it up'],
+        receive_destabilized: ['i hear them again...'],
+        puncture: ['blood everywhere'],
+        stun: ['what--'],
+        receive_carapace: ['good'],
+        receive_repairs: ['...'],
+        receive_fear: ['no...', 'stay back!', '...', ()=> env.rpg.is2D ? "so many lost" : "is it really you...?"],
+        receive_spikes: ['come on', 'strike me now...'],
+        give_redirection: ['stay behind', 'look at me!']
+    }
+    env.COMBAT_ACTORS.bozko.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Cavik - */
+
+    env.COMBAT_ACTORS.cavik.name = "" // Cavik
+    env.COMBAT_ACTORS.cavik.reactions = {
+        receive_hit: ['ow!!'],
+        regen: ['coming together again!'],
+        evade: ['oh!!', 'what?!'],
+        crit: ['i got you!', 'catch!'],
+        crit_buff: ['this should help!'],
+        miss: ['ah!'],
+        destabilized: ['...'],
+        dead: ['...'],
+        receive_rez: ['what happened?!', 'i am back..?'],
+        receive_crit: ['ow, ow!!!'],
+        receive_puncture: ['oh no...'],
+        receive_buff: ['thank you!'],
+        receive_destabilized: ['it hurts', 'hurts', 'someone is there', 'i feel you', 'i cannot wake up'],
+        puncture: ['i need to seal this!'],
+        stun: ['whhaahh'],
+        receive_fear: ['akizet!!', ()=> env.rpg.is2D ? "speak no more! please!" : "i... i remember you...", 'keep it away from me!', 'h--help me!', 'no, no no no'],
+        receive_redirection: ['thank you, bozko!', 'i will cover you!']
+    }
+    env.COMBAT_ACTORS.cavik.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - IK Golem - */
+
+    env.COMBAT_ACTORS.ikgolem.name = "" // IK Golem
+    env.COMBAT_ACTORS.ikgolem.reactions = {
+        receive_rez: ['ah, it works again!'],
+        regen: ['much better'],
+        evade: ['stop that!', 'deflected!'],
+        crit: ['ahaha...', 'incredible!'],
+        crit_buff: ['i hope that helps!'],
+        miss: ['÷°ò!!'],
+        destabilized: ['...'],
+        dead: ['no! get up, get up!', 'the body is not responding!!'],
+        receive_crit: ['how--?!'],
+        receive_puncture: ['the chassis!!'],
+        receive_buff: ['excellent'],
+        receive_destabilized: ['something is so wrong...'],
+        puncture: ['losing cohesion fast!'],
+        stun: ['it will not respond!!'],
+        receive_carapace: ['more armor! yes!'],
+        receive_repairs: ['thank you, thank you'],
+        receive_fear: ['what did this to you?!', 'i feel sick...'],
+        receive_redirection: ['what?', 'unnecessary, but thanks']
+    }
+    env.COMBAT_ACTORS.ikgolem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Telyu - */
+
+    env.COMBAT_ACTORS.telyu.name = "" // Telyu
+    env.COMBAT_ACTORS.telyu.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Husk - */
+
+    env.COMBAT_ACTORS.husk.name = "" // Husk
+    env.COMBAT_ACTORS.husk.reactions = {
+        evade: ['s tŒ¥ó y  aw œ y', 'n o  c l os er', '', '', '', '', '', ''],
+        crit: ['Ü di¢ö1€Oe Î', 'R E TU RN', '', '', '', '', '', ''],
+        receive_crit: ['hu r ts', '', '', '', '', '', ''],
+        receive_puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
+        puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
+        receive_buff: ['µÿÁiKp%Ñ', '', '', '', '', '', ''],
+        receive_destabilized: ['âª¥lé§ÎéýÁ', 'dÆis co ne ct', '', '', '', '', '', ''],
+        receive_vulnerable: ['ƒøÊ=è¶', 's e e', '', '', '', '', '', ''],
+        receive_carapace: ['MËºY¾Ñ', '', '', '', '', '', ''],
+        receive_redirection: ['f ina l ly aw  ake', '', '', '', '', '', ''],
+        stun: ['o u  t ou t o ut', 'ou to u t o  ut', '', '', '', '', '', ''],
+        regen: ['m y f  le sh', 'cl o½ se ®±… r', 'm¿ ó+r  e', '', '', '', '', '', ''],
+        give_fear: ['cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De', 'ÐⱤ0 Ø Ⱳƞ ', '§±ÂⱤ ṾḮɲG─', 'YºŮ ɃěC ‰ Ṃể', 'šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ', 'ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ', 'ⱤEMŒM BEɌ', '', '', '', '', '', '']
+    }
+    env.COMBAT_ACTORS.husk.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Constructor - */
+
+    env.COMBAT_ACTORS.constructor_golem.name = "" // Constructor
+    env.COMBAT_ACTORS.constructor_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.constructor_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Kivskin - */
+
+    env.COMBAT_ACTORS.pressure_golem.name = "" // Kivskin
+    env.COMBAT_ACTORS.pressure_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.pressure_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Dullfriend - */
+
+    env.COMBAT_ACTORS.dull_golem.name = "" // Dullfriend
+    env.COMBAT_ACTORS.dull_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.dull_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Repairfriend - */
+
+    env.COMBAT_ACTORS.surgeon_golem.name = "" // Repairfriend
+    env.COMBAT_ACTORS.surgeon_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.surgeon_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Golem - */
+
+    env.COMBAT_ACTORS.basic_golem.name = "" // Golem
+    env.COMBAT_ACTORS.basic_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.basic_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Dozkallvi - */
+
+    env.COMBAT_ACTORS.kivii.name = "" // Dozkallvi
+    env.COMBAT_ACTORS.kivii.reactions = {
+        evade: ['s tŒ¥ó y  aw œ y', 'n o  c l os er', '', '', '', '', '', ''],
+        crit: ['Ü di¢ö1€Oe Î', 'R E TU RN', '', '', '', '', '', ''],
+        receive_crit: ['hu r ts', '', '', '', '', '', ''],
+        receive_puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
+        puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
+        receive_buff: ['µÿÁiKp%Ñ', '', '', '', '', '', ''],
+        receive_destabilized: ['âª¥lé§ÎéýÁ', 'dÆis co ne ct', '', '', '', '', '', ''],
+        receive_vulnerable: ['ƒøÊ=è¶', 's e e', '', '', '', '', '', ''],
+        receive_carapace: ['MËºY¾Ñ', '', '', '', '', '', ''],
+        receive_redirection: ['f ina l ly aw  ake', '', '', '', '', '', ''],
+        stun: ['o u  t ou t o ut', 'ou to u t o  ut', '', '', '', '', '', ''],
+        regen: ['m y f  le sh', 'cl o½ se ®±… r', 'm¿ ó+r  e', '', '', '', '', '', ''],
+        give_fear: ['cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De', 'ÐⱤ0 Ø Ⱳƞ ', '§±ÂⱤ ṾḮɲG─', 'YºŮ ɃěC ‰ Ṃể', 'šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ', 'ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ', 'ⱤEMŒM BEɌ', '', '', '', '', '', '']
+    }
+    env.COMBAT_ACTORS.kivii.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Gauntlet - */
+
+    env.COMBAT_ACTORS.kivii_gauntlet.name = "" // Gauntlet
+    env.COMBAT_ACTORS.kivii_gauntlet.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Dullzika - */
+
+    env.COMBAT_ACTORS.dull_keeper.name = "" // Dullzika
+    env.COMBAT_ACTORS.dull_keeper.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.dull_keeper.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Warped Container - */
+
+    env.COMBAT_ACTORS.dull_container.name = "" // Warped Container
+    env.COMBAT_ACTORS.dull_container.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.dull_container.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Translation Core - */
+
+    env.COMBAT_ACTORS.translation_golem.name = "" // Translation Core
+    env.COMBAT_ACTORS.translation_golem.reactions = {
+        catchall: ['████ ███', '██ ██████', '█████ ████', '███', '███ ███ ███', '███ █ ████', '██████ ██', '█ ████', '████ █ █ █'],
+        dead: ['███ █ █ █ ███']
+    }
+    env.COMBAT_ACTORS.translation_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - »õGQàº3¾õ”cR% - */
+
+    env.COMBAT_ACTORS.hallucination.name = "" // »õGQàº3¾õ”cR%
+    env.COMBAT_ACTORS.hallucination.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - foundation golem - */
+
+    env.COMBAT_ACTORS.boss_golem.name = "" // foundation golem
+    env.COMBAT_ACTORS.boss_golem.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.boss_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Geli - */
+
+    env.COMBAT_ACTORS.geli.name = "" // Geli
+    env.COMBAT_ACTORS.geli.reactions = {
+        evade: ['wow!', 'aahAHaha!!'],
+        crit: ['ahaha! i GOT THEM!!'],
+        miss: ['oh NO!!', 'WASTED BULLET', 'WILL GET NEXT 1!'],
+        dead: ['i CANT MOVE'],
+        receive_hit: ['OW'],
+        receive_crit: ['WHY DOES IT HURT SO BAD', '>:('],
+        receive_puncture: ['WHY DOES IT HURT SO BAD'],
+        receive_buff: ['}:^)'],
+        receive_destabilized: ['WAKING UP AGAIN', 'MEGA BULLET!!'],
+        receive_rez: ['NICE 1'],
+        puncture: [':('],
+        regen: ['doing GOOD', 'ahahaAhaha!!'],
+        destabilized: ['WATCH THIS'],
+        stun: ['uu382*((U*#*( U('],
+        receive_fear: [':O', 'O_O']
+    }
+    env.COMBAT_ACTORS.geli.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - BSTRD - */
+
+    env.COMBAT_ACTORS.bstrd.name = "" // BSTRD
+    env.COMBAT_ACTORS.bstrd.reactions = {
+        evade: ['8)', 'IT S0 EASY'],
+        crit: ['BL4MN!!', 'PoW!!', '>%^)'],
+        miss: ['SHT', 'almost GOT U'],
+        dead: ['aeaeu HUrts BAD!!'],
+        receive_crit: ['YEAOUUCH!!'],
+        receive_puncture: ['bleedink...', 'GOT BUNCTURE'],
+        receive_buff: ['TIME 2 GET EM ;}'],
+        puncture: ['OOUUEU'],
+        regen: [':)', 'SO BACK'],
+        stun: ['CANT AIM WTF help'],
+        receive_fear: ['WTF O_O'],
+        receive_destabilized: ['WOaoOAw'],
+        receive_rez: ['AHAHA :^) WE BACK'],
+        destabilized: ['DOUBLE BULLETS !!']
+    }
+    env.COMBAT_ACTORS.bstrd.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - EFGY - */
+
+    env.COMBAT_ACTORS.efgy.name = "" // EFGY
+    env.COMBAT_ACTORS.efgy.reactions = {
+        evade: ['O)', 'COOL BREEZE!! YAY!!'],
+        crit: ['ISABEL LOOK!!', 'BLAMM~!', 'YAYAYAYA'],
+        miss: ['wat!! geli how do i hit them', 'ok i try again?', 'can i redo my turn'],
+        dead: ['waaa!! nooo!'],
+        receive_crit: ['mny PETALS!!'],
+        receive_puncture: ['i dont like this part', 'buncgture'],
+        receive_buff: ['OK I SHOOT BIG NEXT??'],
+        puncture: ['OOUUEU'],
+        regen: ['eheheeeaaahahaha', 'okk!!! yes'],
+        stun: ['the dream is broken!! help!'],
+        receive_fear: ['O'],
+        receive_destabilized: ['WOaoOAw'],
+        receive_rez: ['ÿæÿ'],
+        destabilized: ['DOUBLE BULLETS !!']
+    }
+    env.COMBAT_ACTORS.efgy.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - interloper - */
+
+    env.COMBAT_ACTORS.you.name = "" // interloper
+    env.COMBAT_ACTORS.you.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - WRK - */
+
+    env.COMBAT_ACTORS.critta_pawn.name = "" // WRK
+    env.COMBAT_ACTORS.critta_pawn.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - CLW - */
+
+    env.COMBAT_ACTORS.critta_knight.name = "" // CLW
+    env.COMBAT_ACTORS.critta_knight.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - NET - */
+
+    env.COMBAT_ACTORS.critta_bishop.name = "" // NET
+    env.COMBAT_ACTORS.critta_bishop.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ENFC - */
+
+    env.COMBAT_ACTORS.critta_rook.name = "" // ENFC
+    env.COMBAT_ACTORS.critta_rook.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - SEER - */
+
+    env.COMBAT_ACTORS.critta_queen.name = "" // SEER
+    env.COMBAT_ACTORS.critta_queen.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ARCHN - */
+
+    env.COMBAT_ACTORS.critta_king.name = "" // ARCHN
+    env.COMBAT_ACTORS.critta_king.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - DCT - */
+
+    env.COMBAT_ACTORS.critta_jester.name = "" // DCT
+    env.COMBAT_ACTORS.critta_jester.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - SPWN - */
+
+    env.COMBAT_ACTORS.critta_spawner.name = "" // SPWN
+    env.COMBAT_ACTORS.critta_spawner.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - IDEA - */
+
+    env.COMBAT_ACTORS.critta_spawner_bee.name = "" // IDEA
+    env.COMBAT_ACTORS.critta_spawner_bee.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - IMP - */
+
+    env.COMBAT_ACTORS.critta_impetus.name = "" // IMP
+    env.COMBAT_ACTORS.critta_impetus.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Firmament - */
+
+    env.COMBAT_ACTORS.critta_boss.name = "" // Firmament
+    env.COMBAT_ACTORS.critta_boss.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Firmament - */
+
+    env.COMBAT_ACTORS.critta_boss_boat.name = "" // Firmament
+    env.COMBAT_ACTORS.critta_boss_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - WRK - */
+
+    env.COMBAT_ACTORS.critta_pawn_boat.name = "" // WRK
+    env.COMBAT_ACTORS.critta_pawn_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - CLW - */
+
+    env.COMBAT_ACTORS.critta_knight_boat.name = "" // CLW
+    env.COMBAT_ACTORS.critta_knight_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - NET - */
+
+    env.COMBAT_ACTORS.critta_bishop_boat.name = "" // NET
+    env.COMBAT_ACTORS.critta_bishop_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ARCHN - */
+
+    env.COMBAT_ACTORS.critta_king_boat.name = "" // ARCHN
+    env.COMBAT_ACTORS.critta_king_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - SEER - */
+
+    env.COMBAT_ACTORS.critta_queen_boat.name = "" // SEER
+    env.COMBAT_ACTORS.critta_queen_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - DCT - */
+
+    env.COMBAT_ACTORS.critta_jester_boat.name = "" // DCT
+    env.COMBAT_ACTORS.critta_jester_boat.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Antishell - */
+
+    env.COMBAT_ACTORS.falsecritta.name = "" // Antishell
+    env.COMBAT_ACTORS.falsecritta.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive.name = "" // ???
+    env.COMBAT_ACTORS.intrusive.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive_blocker.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_blocker.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive_blocker.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive_archival.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_archival.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive_archival.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive_bishopfreak.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_bishopfreak.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive_bishopfreak.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive_statusoid.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_statusoid.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive_statusoid.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.intrusive_bomblet.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_bomblet.reactions = {
+        evade: ['LD C'],
+        crit: ['D ML'],
+        crit_buff: ['BL'],
+        miss: ['CL'],
+        dead: ['P N'],
+        receive_hit: ['IL D'],
+        receive_crit: ['I LB P'],
+        receive_puncture: ['I A D'],
+        receive_buff: ['P BD'],
+        receive_destabilized: ['S', 'T', 'Q'],
+        receive_rez: ['U P'],
+        puncture: ['DL'],
+        regen: ['DC'],
+        destabilized: ['S', 'T', 'Q'],
+        stun: ['NDN'],
+        receive_carapace: ['E'],
+        receive_fear: ['I P'],
+        receive_redirection: ['PDP']
+    }
+    env.COMBAT_ACTORS.intrusive_bomblet.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - sandbox - */
+
+    env.COMBAT_ACTORS.sandboxer.name = "" // sandbox
+    env.COMBAT_ACTORS.sandboxer.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - idiot - */
+
+    env.COMBAT_ACTORS.cutscenedriver.name = "" // idiot
+    env.COMBAT_ACTORS.cutscenedriver.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - idiot - */
+
+    env.COMBAT_ACTORS.arch_dummy.name = "" // idiot
+    env.COMBAT_ACTORS.arch_dummy.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Mass - */
+
+    env.COMBAT_ACTORS.arch_formless.name = "" // Mass
+    env.COMBAT_ACTORS.arch_formless.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Enraged - */
+
+    env.COMBAT_ACTORS.arch_formless_enraged.name = "" // Enraged
+    env.COMBAT_ACTORS.arch_formless_enraged.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Figure - */
+
+    env.COMBAT_ACTORS.arch_puncher.name = "" // Figure
+    env.COMBAT_ACTORS.arch_puncher.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Attendant - */
+
+    env.COMBAT_ACTORS.arch_harasser.name = "" // Attendant
+    env.COMBAT_ACTORS.arch_harasser.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Shape - */
+
+    env.COMBAT_ACTORS.arch_bomber.name = "" // Shape
+    env.COMBAT_ACTORS.arch_bomber.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Glazika - */
+
+    env.COMBAT_ACTORS.arch_channeler.name = "" // Glazika
+    env.COMBAT_ACTORS.arch_channeler.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Horror - */
+
+    env.COMBAT_ACTORS.arch_charger.name = "" // Horror
+    env.COMBAT_ACTORS.arch_charger.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Golem - */
+
+    env.COMBAT_ACTORS.arch_puller.name = "" // Golem
+    env.COMBAT_ACTORS.arch_puller.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Jutskin - */
+
+    env.COMBAT_ACTORS.arch_support.name = "" // Jutskin
+    env.COMBAT_ACTORS.arch_support.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Display - */
+
+    env.COMBAT_ACTORS.destructible_table.name = "" // Display
+    env.COMBAT_ACTORS.destructible_table.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Altar - */
+
+    env.COMBAT_ACTORS.destructible_adull.name = "" // Altar
+    env.COMBAT_ACTORS.destructible_adull.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Pillar - */
+
+    env.COMBAT_ACTORS.destructible_minishelf.name = "" // Pillar
+    env.COMBAT_ACTORS.destructible_minishelf.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Container - */
+
+    env.COMBAT_ACTORS.destructible_box.name = "" // Container
+    env.COMBAT_ACTORS.destructible_box.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Material Rift - */
+
+    env.COMBAT_ACTORS.rift_item.name = "" // Material Rift
+    env.COMBAT_ACTORS.rift_item.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.vekoa_boss.name = "" // ???
+    env.COMBAT_ACTORS.vekoa_boss.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.vekoa_boss.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Archivist - */
+
+    env.COMBAT_ACTORS.spine_archivist.name = "" // Archivist
+    env.COMBAT_ACTORS.spine_archivist.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Keeper - */
+
+    env.COMBAT_ACTORS.spine_keeper.name = "" // Keeper
+    env.COMBAT_ACTORS.spine_keeper.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Tendril - */
+
+    env.COMBAT_ACTORS.destructible_heart_wall.name = "" // Tendril
+    env.COMBAT_ACTORS.destructible_heart_wall.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Interfering Tendril - */
+
+    env.COMBAT_ACTORS.destructible_split_tendril_1.name = "" // Interfering Tendril
+    env.COMBAT_ACTORS.destructible_split_tendril_1.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Interfering Tendril - */
+
+    env.COMBAT_ACTORS.destructible_split_tendril_2.name = "" // Interfering Tendril
+    env.COMBAT_ACTORS.destructible_split_tendril_2.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Eye - */
+
+    env.COMBAT_ACTORS.split_eye.name = "" // Eye
+    env.COMBAT_ACTORS.split_eye.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Miltza? - */
+
+    env.COMBAT_ACTORS.split_miltza.name = "" // Miltza?
+    env.COMBAT_ACTORS.split_miltza.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Spinal Root - */
+
+    env.COMBAT_ACTORS.destructible_spineroot.name = "" // Spinal Root
+    env.COMBAT_ACTORS.destructible_spineroot.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Golem - */
+
+    env.COMBAT_ACTORS.lesser_itzil.name = "" // Golem
+    env.COMBAT_ACTORS.lesser_itzil.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Kiv - */
+
+    env.COMBAT_ACTORS.lesser_kivii.name = "" // Kiv
+    env.COMBAT_ACTORS.lesser_kivii.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ??? - */
+
+    env.COMBAT_ACTORS.lesser_itzka.name = "" // ???
+    env.COMBAT_ACTORS.lesser_itzka.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Pod - */
+
+    env.COMBAT_ACTORS.destructible_lesserpod.name = "" // Pod
+    env.COMBAT_ACTORS.destructible_lesserpod.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Vekoa - */
+
+    env.COMBAT_ACTORS.vekoa_1v1.name = "" // Vekoa
+    env.COMBAT_ACTORS.vekoa_1v1.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - ceremony - */
+
+    env.COMBAT_ACTORS.vekoa_eye.name = "" // ceremony
+    env.COMBAT_ACTORS.vekoa_eye.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Interfering Tendril - */
+
+    env.COMBAT_ACTORS.destructible_split_tendril_3.name = "" // Interfering Tendril
+    env.COMBAT_ACTORS.destructible_split_tendril_3.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Interfering Tendril - */
+
+    env.COMBAT_ACTORS.destructible_split_tendril_4.name = "" // Interfering Tendril
+    env.COMBAT_ACTORS.destructible_split_tendril_4.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - epicenter - */
+
+    env.COMBAT_ACTORS.vekoa_epicenter_projectile.name = "" // epicenter
+    env.COMBAT_ACTORS.vekoa_epicenter_projectile.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Veins - */
+
+    env.COMBAT_ACTORS.destructible_epicenter_vein.name = "" // Veins
+    env.COMBAT_ACTORS.destructible_epicenter_vein.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Golem - */
+
+    env.COMBAT_ACTORS.vekoa_golem.name = "" // Golem
+    env.COMBAT_ACTORS.vekoa_golem.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Wall - */
+
+    env.COMBAT_ACTORS.vekoa_wall.name = "" // Wall
+    env.COMBAT_ACTORS.vekoa_wall.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - Tendril - */
+
+    env.COMBAT_ACTORS.vekoa_wall_tendril.name = "" // Tendril
+    env.COMBAT_ACTORS.vekoa_wall_tendril.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+
+    /* - vekoa? - */
+
+    env.COMBAT_ACTORS.vekoa_final.name = "" // vekoa?
+    env.COMBAT_ACTORS.vekoa_final.reactions = {
+        catchall: ['1Uië2W‡', '‡eÎKßJää', '/…¿?÷ ôLãØ', 'C©Ë', '0E™Nó¨ýQÒ', '€LWé{ðÍ', 'ÇæýÙ‡ß†C', '£~Uþfâ', '…Tú**'],
+        dead: ['¿', '???']
+    }
+    env.COMBAT_ACTORS.vekoa_final.cor_ru = {
+        name: {
+            gen: "",
+            dat: "", 
+            acc: "", 
+            ins: "", 
+            pre: ""
+        },
+        gender: 0
+    }
+}
+/* --- FORMATIONS --- */
+cor_ru['redefineFormations'] = function() {
+    /* - ?????? - */
+
+    env.COMBAT_FORMATIONS.intrusive.name = "" // ??????
+    env.COMBAT_FORMATIONS.intrusive.help = "" // 'unprocessable entity';'no context'
+
+    /* - Cluster - */
+
+    env.COMBAT_FORMATIONS.c_cluster.name = "" // Cluster
+    env.COMBAT_FORMATIONS.c_cluster.help = "" // 'no single primary target';'high density of hostile thoughtforms'
+
+    /* - Pain Shelf - */
+
+    env.COMBAT_FORMATIONS.c_collapse_shelf.name = "" // Pain Shelf
+    env.COMBAT_FORMATIONS.c_collapse_shelf.help = "" // 'primary attacks offer responsive choice';'deadly single target strikes'
+
+    /* - Gun Golem - */
+
+    env.COMBAT_FORMATIONS.c_collapse_gungol.name = "" // Gun Golem
+    env.COMBAT_FORMATIONS.c_collapse_gungol.help = "" // 'golem utilizing assault rifle';'strikes quickly, randomly and inaccurately'
+
+    /* - Dullzika - */
+
+    env.COMBAT_FORMATIONS.c_golem_dullzika.name = "" // Dullzika
+    env.COMBAT_FORMATIONS.c_golem_dullzika.help = "" // 'conjures puncture-inflicting foes';'destabilizes'
+
+    /* - Greater Husk - */
+
+    env.COMBAT_FORMATIONS.c_golem_kivii.name = "" // Greater Husk
+    env.COMBAT_FORMATIONS.c_golem_kivii.help = "" // 'high density of conjoined thoughtforms';'utilizes windup attacks and fear'
+
+    /* - DCT - */
+
+    env.COMBAT_FORMATIONS.c_daemon_dct.name = "" // DCT
+    env.COMBAT_FORMATIONS.c_daemon_dct.help = "" // 'conjures foes from nearby memories';'damaged through rapid defeat of summons';
+    'prepare for many targets'
+
+    /* - SPWN - */
+
+    env.COMBAT_FORMATIONS.c_daemon_spwn.name = "" // SPWN
+    env.COMBAT_FORMATIONS.c_daemon_spwn.help = "" // 'conjures fear and rot-inflicting foes';'wide area attacks'
+
+    /* - IMP - */
+
+    env.COMBAT_FORMATIONS.c_daemon_imp.name = "" // IMP
+    env.COMBAT_FORMATIONS.c_daemon_imp.help = "" // 'trio';'mimics shell actions used';'unable to mimic items'
+}
+/* --- AUGMENTS --- */
+cor_ru['redefineAugments'] = function() {
+    /* -- ALL -- */
+    /* - Symbiotic Rifle - */
+
+    env.ACTOR_AUGMENTS.all.bstrd.name = "" // Symbiotic Rifle
+    env.ACTOR_AUGMENTS.all.bstrd.description = "" // 'adapted bright weaponry';'connects to internal ammunition generator';'use at cost of HP'
+
+    
+    /* -- FRAME -- */
+    /* - Parasitic Siphon - */
+
+    env.ACTOR_AUGMENTS.generic.parasite.name = "" // Parasitic Siphon
+    env.ACTOR_AUGMENTS.generic.parasite.description = "" // 'connect corruskivi with additional sfer retrieval drone';'attach to foes for ally restoration on contact'
+
+    /* - Ukuzu Restorative - */
+
+    env.ACTOR_AUGMENTS.generic.optimize.name = "" // Ukuzu Restorative
+    env.ACTOR_AUGMENTS.generic.optimize.description = "" // 'encourage ally to act twice at cost of lesser mending ability';'named after seasonal spore fog known to increase energy'
+
+    /* - Final Offering - */
+
+    env.ACTOR_AUGMENTS.generic.final_sacrifice.name = "" // Final Offering
+    env.ACTOR_AUGMENTS.generic.final_sacrifice.description = "" // 'extend self beyond limits';'consume HP for extreme damage'
+
+    /* - Distraction - */
+
+    env.ACTOR_AUGMENTS.generic.distraction.name = "" // Distraction
+    env.ACTOR_AUGMENTS.generic.distraction.description = "" // 'take a more defensive role';'attack with a clever feint and grant allies safety'
+
+    /* - Find Flaw - */
+
+    env.ACTOR_AUGMENTS.generic.ultra_spy.name = "" // Find Flaw
+    env.ACTOR_AUGMENTS.generic.ultra_spy.description = "" // 'enhance sight';'mark enemy vulnerable to extreme critical damage'
+
+    /* - Planned Attack - */
+
+    env.ACTOR_AUGMENTS.generic.enact.name = "" // Planned Attack
+    env.ACTOR_AUGMENTS.generic.enact.description = "" // 'recede to plot a chain of attacks';'consume evasion for extra primary usage'
+
+    /* - Bazruka - */
+
+    env.ACTOR_AUGMENTS.generic.bazruka.name = "" // Bazruka
+    env.ACTOR_AUGMENTS.generic.bazruka.description = "" // 'upgrade explosive';'likely to cause shrapnel puncture wounds'
+
+    /* - Frenzy - */
+
+    env.ACTOR_AUGMENTS.generic.frenzy.name = "" // Frenzy
+    env.ACTOR_AUGMENTS.generic.frenzy.description = "" // 'equip additional stabbing weaponry';'may inspire cascade of attacks'
+
+    /* - Wild Surge - */
+
+    env.ACTOR_AUGMENTS.generic.wild_surge.name = "" // Wild Surge
+    env.ACTOR_AUGMENTS.generic.wild_surge.description = "" // 'overexert self for extreme effectiveness';'next targeted action is used across entire team'
+
+    /* - Wound - */
+
+    env.ACTOR_AUGMENTS.generic.wound.name = "" // Wound
+    env.ACTOR_AUGMENTS.generic.wound.description = "" // 'aggressive alteration';'inflict damage increasing wound instead of weakness'
+
+    /* - Mending Applicators - */
+
+    env.ACTOR_AUGMENTS.generic.restorative_barrier.name = "" // Mending Applicators
+    env.ACTOR_AUGMENTS.generic.restorative_barrier.description = "" // 'utilize advanced satik applicators on team';'barrier mends wounds while active'
+
+    /* - Martyr - */
+
+    env.ACTOR_AUGMENTS.generic.martyr.name = "" // Martyr
+    env.ACTOR_AUGMENTS.generic.martyr.description = "" // 'stand before team';'redirect all incoming attacks';'retaliate'
+
+    /* - Revise - */
+
+    env.ACTOR_AUGMENTS.generic.revise.name = "" // Revise
+    env.ACTOR_AUGMENTS.generic.revise.description = "" // 'grasp at false structures';'turn beneficial statuses against foes'
+
+    /* - Groundsmindry Relays - */
+
+    env.ACTOR_AUGMENTS.generic.mass_destabilize.name = "" // Groundsmindry Relays
+    env.ACTOR_AUGMENTS.generic.mass_destabilize.description = "" // 'broadcast destabilizing signal';'includes allies';'fatal if misused'
+
+    /* - Invoke Madness - */
+
+    env.ACTOR_AUGMENTS.generic.invoke_madness.name = "" // Invoke Madness
+    env.ACTOR_AUGMENTS.generic.invoke_madness.description = "" // 'utilize horrific discoveries';'terrify and confuse foes'
+
+
+    /* -- BOZKO -- */
+    /* - Interceptor Cores - */
+
+    env.ACTOR_AUGMENTS.bozko.frontline.name = "" // Interceptor Cores
+    env.ACTOR_AUGMENTS.bozko.frontline.description = "" // 'insert highly coordinated guiding minds into floating gauntlets';'wrest all enemy attention'
+
+    /* - Dull Projectors - */
+
+    env.ACTOR_AUGMENTS.bozko.cripple.name = "" // Dull Projectors
+    env.ACTOR_AUGMENTS.bozko.cripple.description = "" // 'upgrade standard dull nodes to larger ones';'hit with greater concussive force'
+
+
+    /* -- CAVIK -- */
+    /* - Explosive Vat - */
+
+    env.ACTOR_AUGMENTS.cavik.bazruka.name = "" // Explosive Vat
+    env.ACTOR_AUGMENTS.cavik.bazruka.description = "" // 'form explosive devices rapidly from random materials with external cyst';'likely to cause shrapnel wounds'
+
+    /* - Mending Applicators - */
+
+    env.ACTOR_AUGMENTS.cavik.restorative_barrier.name = "" // Mending Applicators
+    env.ACTOR_AUGMENTS.cavik.restorative_barrier.description = "" // 'utilize more advanced satik applicators';'upgraded barrier mends wounds while active'
+
+
+    /* -- MILTZA -- */
+    /* - Attack Drone - */
+
+    env.ACTOR_AUGMENTS.miltza.drone.name = "" // Attack Drone
+    env.ACTOR_AUGMENTS.miltza.drone.description = "" // 'connect to remote coordinator drone';'automatically attack vulnerable targets'
+
+
+    /* -- AKIZET -- */
+    /* - Surface Runner Claws - */
+
+    env.ACTOR_AUGMENTS.akizet.runner_claws.name = "" // Surface Runner Claws
+    env.ACTOR_AUGMENTS.akizet.runner_claws.description = "" // 'pair of many-pronged claw augments intended for climbing';'overhauls abilities with more visceral options'
+
+
+    /* -- GAKVU -- */
+    /* - Signal Inverter - */
+
+    env.ACTOR_AUGMENTS.gakvu.countercall.name = "" // Signal Inverter
+    env.ACTOR_AUGMENTS.gakvu.countercall.description = "" // 'project dangerously incoherent data from translation core';'cause violent collapse in destabilized targets'
+
+    /* - Groundsmindry Relays - */
+
+    env.ACTOR_AUGMENTS.gakvu.mass_destabilize.name = "" // Groundsmindry Relays
+    env.ACTOR_AUGMENTS.gakvu.mass_destabilize.description = "" // 'cysts connected remotely';'broadcast destabilizing groundsmindry signal';'includes allies';'fatal if misused'
+
+
+    /* -- TOZIK -- */
+    /* - Parasitic Siphon - */
+
+    env.ACTOR_AUGMENTS.tozik.parasite.name = "" // Parasitic Siphon
+    env.ACTOR_AUGMENTS.tozik.parasite.description = "" // 'connect corruskivi with additional sfer retrieval drone';'attach to foes for ally restoration on contact'
+
+    /* - Ukuzu Restorative - */
+
+    env.ACTOR_AUGMENTS.tozik.optimize.name = "" // Ukuzu Restorative
+    env.ACTOR_AUGMENTS.tozik.optimize.description = "" // 'encourage ally to act twice at cost of lesser mending ability';'named after seasonal spore fog known to increase waking energy'
+}
+/* --- MISC--- */
+env.localization.strings['THE TENDRILS CURL AWAY'] = "";
+env.localization.strings['THE HALLUCINATIONS FADE'] = "";
+env.localization.strings['ETHEREAL FOES FADE'] = "";
+env.localization.strings['the shell refuses, having lost their taste for this fish.'] = "";
+env.localization.strings['the shell refuses, having no taste for this fish.'] = "";
