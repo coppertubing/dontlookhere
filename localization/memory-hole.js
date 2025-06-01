@@ -1983,7 +1983,7 @@ body.in-menu #content {
 					//dyn
 					
 					body.classList.add('codezone')
-startDialogue("bonus_cor-ru")
+startDialogue("bonus_corruru")
 
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
