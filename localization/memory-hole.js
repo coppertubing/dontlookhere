@@ -1865,19 +1865,19 @@ body.in-menu #content {
                         voice: ()=>{play('talkcroak', 1.75)}
                     }
 
-                    env.dialogueActors["росразум"] = {
+                    env.dialogueActors["ros"] = {
                         name: "ООО \"РОСРАЗУМ\"",
                         type: "rosrazum portrait-contain",
                         voice: ()=>{play('talkcroak', 1.75)}
                     }
                     
-                    env.dialogueActors["млечный путь"] = {
+                    env.dialogueActors["mle"] = {
                         name: "НАО \"Млечный Путь\"",
                         type: "mleko portrait-contain",
                         voice: ()=>{play('talkcroak', 1.75)}
                     }
 
-                    env.dialogueActors["пятёрочнёк"] = {
+                    env.dialogueActors["fiv"] = {
                         name: "Фонд \"ПЯТЁРОЧНЁК\"",
                         type: "lilfive portrait-contain",
                         voice: ()=>{play('talkcroak', 1.75)}
