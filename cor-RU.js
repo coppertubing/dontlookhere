@@ -2,6 +2,8 @@
     cor-RU - a full russian adaptation mod for corru.observer
     by @dutokrisa and @bra1nslug_
     based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
+    certain parts are based on vielk memory hole example by @adr_furret
+
     EP0 playtested by @akizetism
 
      - adaptation up until the end of EP0 currently availible
@@ -11,8 +13,10 @@
         ======
 
     cor-RU - мод на полную русскую адаптацию для corru.observer
-    от @dutokrisa  и @bra1nslug_
+    от @dutokrisa и @bra1nslug_
     на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
+    некоторые части основаны на vielk memory hole example от @adr_furret
+
     EP0 протестировано @akizetism
 
      - в данный момент доступна полноценная адаптация до EP0
@@ -493,12 +497,17 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 }
 
 .dialogue-message.corruru .dialogue-text {
-    font-size: 3em;
-    margin: 0.5rem;
     padding: 0.3em;
-    background-image: linear-gradient(0deg, rgba(0,0,0,0.79) 0%, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 75%, rgba(0,0,0,0.9) 100%), url(/img/textures/stun.gif);
 }
 
+.dialogue-message.corruru {
+    --background: url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
+    --color: var(--bastard-color);
+    text-shadow: 1px 1px var(--neutral-color);
+    font-size: 1.25em;
+    letter-spacing: 0.25em;
+}
+    
 .dialogue-message.corruru .dialogue-portrait::before {
     width: 100%;
     right: 0;
@@ -561,8 +570,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     // funky functions that do not forbid you from moving cyrillic-style
 
-    /*stepKey: function (key) {
-        console.log(key)
+    stepKey: function (key) {
+    /*    console.log(key)
         key = key.toLowerCase();
 
         if (key == 'ц') stepKey('w')
@@ -572,22 +581,23 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         if (key == 'й') stepKey('q')
         if (key == 'у') stepKey('e')
         if (key == 'я') stepKey('z')
+    */
     },
 
     stageKeypressed: (e) => { cor_ru.stepKey(e.key) },
 
     stepKeyImplement: function () {
-        if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", cor_ru.stageKeypressed)
+    //    if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", cor_ru.stageKeypressed)
     },
 
     stepKeyClean: function () {
-        function stageCleanup() {
+    /*    function stageCleanup() {
             if(env.stage.ref) env.stage.ref.remove()
             env.stage.ref = null
             try{ document.removeEventListener('keydown', stageKeypress) } catch(e) {  }
             try{ document.removeEventListener('keydown', cor_ru.stageKeypressed) } catch(e) {  }
-        }
-    }, */
+        }*/
+    },
 
     // obserbor
 

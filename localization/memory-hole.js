@@ -50,18 +50,26 @@ env.uncode = { // taking the function and adding stuff so it redirects you to th
             else if (value == "юзку") value = "yuzku"
             else if (value == "зузукри") value = "zuzucri"
             else if (value == "зузукри-маски") value = "zuzucri-masks"
+            else if (value == "ресурсы") value = "cor-ru"
 
-            fetch(`/local/uncosm/${value}/`).then(resp=>{
-                if(resp.status == 404){
+            if (swup.cache.exists(`/local/uncosm/${value}/`)) { // compatibility with memory hole mods
+                setTimeout(() => {
                     cutscene(false)
-                    startDialogue('wrong')
-                } else {
-                    setTimeout(()=>{
+                    moveTo(`/local/uncosm/${value}/`)
+                }, 4000)
+            } else {
+                fetch(`/local/uncosm/${value}/`).then(resp => {
+                    if (resp.status == 404) {
                         cutscene(false)
-                        moveTo(`/local/uncosm/${value}/`)
-                    }, 4000)
-                }
-            })
+                        startDialogue('wrong')
+                    } else {
+                        setTimeout(() => {
+                            cutscene(false)
+                            moveTo(`/local/uncosm/${value}/`)
+                        }, 4000)
+                    }
+                })
+            }
         }
     }
 }
@@ -1772,3 +1780,287 @@ start
         вернуться<+>END
             EXEC::moveTo('/local/uncosm/where/')
 `)
+
+
+
+
+
+
+
+// --- hey buddy
+bonusContent = `
+<div id="content" data-swup="0">
+		<style>
+#content::after, #content::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.actor-corrurubonus .dialogue-text {
+    text-transform: uppercase;
+}
+
+#content::after {
+    background: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+}
+
+#content::before {
+    background: url(/img/textures/bcontours.gif);
+}
+
+body.in-menu #content {
+    transform: unset !important;
+}
+</style>
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__UNKNOWN__..",
+				name: "cor-ru",
+				dialoguePrefix:  "sec" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1737759501187488375,
+		
+				image: "/img/socials/where.gif",
+
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/solaundying_bonus.ogg'],
+					preload: true,
+					loop: true,
+					
+					 rate: 0.5, 
+					sprite: {
+						__default: [50, 153000, true]
+					}
+				}),
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+                    
+                    env.dialogueActors["corrurubonus"] = {
+                        name: "cor-ru",
+                        type: "corruru portrait-contain",
+                        voice: ()=>{play('talkcroak', 1.75)}
+                    }
+
+                    env.dialogueActors["росразум"] = {
+                        name: "ООО \"РОСРАЗУМ\"",
+                        type: "rosrazum portrait-contain",
+                        voice: ()=>{play('talkcroak', 1.75)}
+                    }
+                    
+                    env.dialogueActors["млечный путь"] = {
+                        name: "НАО \"Млечный Путь\"",
+                        type: "mleko portrait-contain",
+                        voice: ()=>{play('talkcroak', 1.75)}
+                    }
+
+                    env.dialogueActors["пятёрочнёк"] = {
+                        name: "Фонд \"ПЯТЁРОЧНЁК\"",
+                        type: "lilfive portrait-contain",
+                        voice: ()=>{play('talkcroak', 1.75)}
+                    }
+
+					env.dialogues["bonus_corruru"] = generateDialogueObject(\`
+start
+    sys
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
+        ВНИМАНИЕ::'поток памяти был записан сторонними ресурсами'
+        ВНИМАНИЕ::'оригинальный источник потока памяти';'cor-ru'
+
+    corrurubonus
+        блаблабла да этот кусок игры !!!неканон!!!
+        пощдравляю
+        вы
+        только что
+        наткнулись
+        на пасхалку от самих разработчиков cor-ru!!!!!!
+        (cor-ru это руссификатор который вы сейчас используете если вы почему то не знаете)
+
+    moth
+        что
+            SHOWONCE::
+        что это вообще... чел ты где таких вирусов нахвататься успел
+            SHOWONCE::
+    
+    corrurubonus
+        молчать
+            SHOWONCE::
+
+    sourceless
+        моль замолкает
+            SHOWONCE::
+    
+    corrurubonus
+        :3
+        занимательно правда что вы даже не добрались до места с подсказкой!!!
+            SHOWIF::[["gol__ops_boss",false]]
+        подсказал ли вам кто-то извне? или вы однажды её нашли, а теперь переигрываете мод?
+            SHOWIF::[["gol__ops_boss",false]]
+        ихихихи
+            SHOWIF::[["gol__ops_boss",false]]
+        так ну короче
+        для начала нам (разработчикам) стоит перестать говорить в куче!!
+        или мне (дуто) перестать писать этот диалог одному в 2 ночи
+        эхехе
+
+    sourceless
+        "дуто" бросает писать этот диалог
+        наступает утро
+
+    sys
+        УВЕДОМЛЕНИЕ::'окончен поток памяти'
+
+    RESPONSES::sys
+        вернуться<+>END
+            EXEC::moveTo("/local/depths/")
+\`)
+							
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(\`visited_\${location.pathname.replace(/\\//g, '')}\`, true) // !!!!!!!!!!!NOTE:: needs to be specifically formatted to make sure the backslash stays correct; same for other similar cases
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: \`..__NAVIGATING::"\${page.name}"__..\`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, 1, 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					body.classList.add('codezone')
+startDialogue("bonus_cor-ru")
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					body.classList.remove('codezone')
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			env.pageName = "unknown";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+`
+if(typeof pages == "undefined") {
+    pages = {}
+}
+pages['/local/uncosm/cor-ru/'] = {
+  "title": "..__UNKNOWN__..",
+  "name": "unknown",
+  "dialoguePrefix": "sec",
+  "path": location.pathname,
+  "flags" :{},
+  "pageClass": "",
+  "originalContent": "",
+  "blocks": [
+    `${bonusContent}`
+  ],
+  "responseURL": "https://corru.observer/local/uncosm/cor-ru/",
+  "url": "/local/uncosm/cor-ru/"
+}
+Object.defineProperty(swup.cache, 'pages', { get: () => pages, set: () => { } })
+
+document.addEventListener('corru_resources_added', ()=>{
+if((location.pathname == "/local/uncosm/cor-ru/") && (page.dialoguePrefix.includes("notfound"))) {
+    body.classList.add('hard-cut') // needed 4 the static sound to not break
+    moveTo("/local/uncosm/cor-ru/")
+    body.classList.remove('hard-cut')
+}
+}, true)

@@ -431,7 +431,7 @@ kill
             EXEC::body.classList.remove('containershot')
         ТЫ ЗАКИДЫВАЕШЬ ВСЁ В ПОЛОСТЬ КОЛОННЫ, ПРЕЖДЕ ЧЕМ ОНА РАЗВАЛИТСЯ
             EXEC::body.classList.add('containerdrop');body.classList.remove('containerfade')
-        ВНУТРИ МЕРЦАЕТ ПРОБЛЕСК ЗОЛОТИСТОГО МЕТАЛЛА, НО ОН ИСЧЕЗАЕТ ПОД ШЛАМОМ КОНТЕЙНЕРА
+        ВНУТРИ МЕРЦАЕТ ПРОБЛЕСК ЗОЛОТИСТОГО МЕТАЛЛА, НО ОН ИСЧЕЗАЕТ ПОД СЛЯКОТЬЮ КОНТЕЙНЕРА
             EXEC::body.classList.remove('containeraim')
         ТЫ ОПУСКАЕШЬ КИСТУ И КЛАДЁШЬ ПИСТОЛЕТ ОБРАТНО
             EXEC::body.classList.remove('cystlift', 'containercenter')
