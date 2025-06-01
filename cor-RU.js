@@ -481,6 +481,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
 
 
+.actor-corrurubonus .dialogue-text {
+    text-transform: uppercase;
+}
+
 .dialogue-message.corruru.dialogue-text, 
 .readout-log .message.corruru {
     background: url(/img/textures/fadein.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);

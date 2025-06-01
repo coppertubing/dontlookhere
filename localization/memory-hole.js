@@ -1788,102 +1788,31 @@ start
 
 
 // --- hey buddy
-bonusContent = `
-<div id="content" data-swup="0">
-		<style>
-#content::after, #content::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
+env.dialogueActors["corrurubonus"] = {
+    name: "cor-ru",
+    type: "corruru portrait-contain",
+    voice: ()=>{play('talkcroak', 1.75)}
 }
 
-.actor-corrurubonus .dialogue-text {
-    text-transform: uppercase;
+env.dialogueActors["ros"] = {
+    name: "ООО \"РОСРАЗУМ\"",
+    type: "rosrazum",
+    voice: ()=>{play('talkcroak', 1.75)}
 }
-
-#content::after {
-    background: url(/img/textures/fadeinlonghalf.gif);
-    background-size: auto 100%;
-}
-
-#content::before {
-    background: url(/img/textures/bcontours.gif);
-}
-
-body.in-menu #content {
-    transform: unset !important;
-}
-</style>
-
-		<script id="PageData">
-			content = document.querySelector('#content')
-			body = document.body
-
-			if(typeof page == "object") {
-				oldPage = page
-			}
-
-			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
-			page = {
-				title: "..__UNKNOWN__..",
-				name: "cor-ru",
-				dialoguePrefix:  "sec" ,
-				path: location.pathname,
-				flags: {},
-				howls: [],
-				cacheval: 1737759501187488375,
-		
-				image: "/img/socials/where.gif",
-
-				bgm: new Howl({
-					onload: function () {page.howls.push(this)},
-					src: ['/audio/solaundying_bonus.ogg'],
-					preload: true,
-					loop: true,
-					
-					 rate: 0.5, 
-					sprite: {
-						__default: [50, 153000, true]
-					}
-				}),
-				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
-					body.setAttribute('page', page.name)
-					content.setAttribute('page', page.name)
-					document.querySelector('#static .enter').setAttribute('page', page.title)
-					document.scrollingElement.scrollTop = 0
-					
-
-					updatePreferenceAttributes()
-
-					//dynamically inserted
                     
-                    env.dialogueActors["corrurubonus"] = {
-                        name: "cor-ru",
-                        type: "corruru portrait-contain",
-                        voice: ()=>{play('talkcroak', 1.75)}
-                    }
+env.dialogueActors["mle"] = {
+    name: "НАО \"Млечный Путь\"",
+    type: "mleko",
+    voice: ()=>{play('talkcroak', 1.75)}
+}
 
-                    env.dialogueActors["ros"] = {
-                        name: "ООО \"РОСРАЗУМ\"",
-                        type: "rosrazum portrait-contain",
-                        voice: ()=>{play('talkcroak', 1.75)}
-                    }
-                    
-                    env.dialogueActors["mle"] = {
-                        name: "НАО \"Млечный Путь\"",
-                        type: "mleko portrait-contain",
-                        voice: ()=>{play('talkcroak', 1.75)}
-                    }
+env.dialogueActors["fiv"] = {
+    name: "Фонд \"ПЯТЁРОЧНЁК\"",
+    type: "lilfive",
+    voice: ()=>{play('talkcroak', 1.75)}
+}
 
-                    env.dialogueActors["fiv"] = {
-                        name: "Фонд \"ПЯТЁРОЧНЁК\"",
-                        type: "lilfive portrait-contain",
-                        voice: ()=>{play('talkcroak', 1.75)}
-                    }
-
-					env.dialogues["bonus_corruru"] = generateDialogueObject(\`
+env.dialogues["bonus_corruru"] = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1936,7 +1865,73 @@ start
     RESPONSES::sys
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
-\`)
+`)
+bonusContent = `
+<div id="content" data-swup="0">
+<style>
+#content::after, #content::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#content::after {
+    background: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+}
+
+#content::before {
+    background: url(/img/textures/bcontours.gif);
+}
+
+body.in-menu #content {
+    transform: unset !important;
+}
+</style>
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__UNKNOWN__..",
+				name: "cor-RU",
+				dialoguePrefix:  "sec",
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1737759501187488375,
+		
+				image: "/img/socials/where.gif",
+
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/testing_combat.ogg'],
+					preload: true,
+					loop: true,
+					
+					rate: 0.5, 
+					sprite: {
+						__default: [50, 153000, true]
+					}
+				}),
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
 							
 						document.querySelector('body').classList.remove('nomoth')
 					
@@ -2033,7 +2028,7 @@ startDialogue("bonus_cor-ru")
 				}
 			}
 
-			env.pageName = "unknown";
+			env.pageName = "cor-RU";
 			env.pagePath = location.pathname;
 		</script>
 	</div>
@@ -2043,7 +2038,7 @@ if(typeof pages == "undefined") {
 }
 pages['/local/uncosm/cor-ru/'] = {
   "title": "..__UNKNOWN__..",
-  "name": "unknown",
+  "name": "cor-RU",
   "dialoguePrefix": "sec",
   "path": location.pathname,
   "flags" :{},
