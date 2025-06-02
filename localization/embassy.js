@@ -5084,9 +5084,9 @@ start
             EXEC::env.embassy.vn({bg: true, tozik: "defocus", gakvu: "defocus", miltza: "far show"})
         
     miltza
-        stay back!! --- hey stars
-        wait
-        are you...?
+        не подходите!! --- hey stars
+        подождите
+        вы...?
 
     akizet
         relax
@@ -5095,8 +5095,8 @@ start
         do you have anything?
 
     miltza
-        oh...
-        yes! here!
+        ох...
+        да! вот!
     
     sourceless
         SHE DIGS OUT SOME SFER CUBES FROM THE REMAINS OF NEARBY CONTAINERS
@@ -5104,8 +5104,8 @@ start
         IT LOOKS LIKE SHE KILLED THEM
     
     miltza
-        do you have a plan?
-        i am miltza!
+        у вас есть план?
+        я - милтза! //во всяком случае в интервью акизет представлялась так
     
     akizet
         well met, my friend! i am akizet
@@ -5114,26 +5114,26 @@ start
         probably to the hangar...
     
     miltza
-        have you been able to hear anyone?
-        i have been listening for a while now...
-        it is mostly that terrible noise, but the people in the hangar are afraid
-        i heard murmurs - they are locked, too!
+        вам удавалось кого-нибудь услышать?
+        я уже некоторое время прислушиваюсь... // странное + тавтология но тут чёрт избежишь
+        в основном там тот ужасный шум, но обескам в ангаре страшно
+        я слышала перешёптывание - они тоже взаперти! //тавтология отвратительная
     
     gakvu
         what? how? 
         has anyone tried to fly through the wall?
     
     miltza
-        i do not know...
-        hey, you seem like good defenders - funny that you are not even kiv!
-        here, take my <span definition="INHERITED CONTEXT::${env.ITEM_LIST['disabler'].description}">disabler</span>. you can probably use it better than me, anyway!
+        я не знаю...
+        hey, кажется из вас хорошие защитники - забавно, что вы даже не кивы!
+        вот, возьмите мой <span definition="INHERITED CONTEXT::${env.ITEM_LIST['disabler'].description}">disabler</span>. всё равно наверное вы лучше знаете, как его использовать! //как там переводить дефы. алсо мне "наверное" для обеск нравится больше чем "наверняка" (хаха странные устаревшие слова) ноо могу поменять
             EXEC::env.embassy.conditionalItem('disabler', 2, 'miltzadis')
 
     akizet
         oh--thank you!
     
     miltza
-        i am going to gather some things, then go shelter in the lift
+        я соберу некоторые вещи, затем укроюсь в лифте
 
     sourceless
         SHE QUICKLY TURNS TO SEARCH THROUGH HER OVERTURNED FURNITURE
@@ -5227,7 +5227,7 @@ division
         да, это так, // да, они низко? пересмотреть после перевода верхнего
         но мысль о том, чтобы находиться так высоко...
         это глупо и по-личиночески, но я не могу отдыхать так далеко от земли
-        я не против подъёма! // ???
+        я не против карабкания!
         ну... <em>была</em> не против...
         я не думаю, что после такого жизнь сможет вернуться на круги своя // ???
     
@@ -5296,7 +5296,7 @@ taking
     
     miltza
         нет, нет--я даже не уверена, что мы не сможем вернуться
-        но я взяла архивирующие ядра, на которых храню свои ????дизайны?
+        но я взяла архивирующие ядра, на которых храню свои дизайны
         так что - если они будут утеряны, то потеря небольшая! // кворкс обожает тавтологию...... пересмотреть после верхнего -- на данный момент "они" как что-то типа "будешь ли ты брать с собой свои _работы_"
 
     RESPONSES::akizet
@@ -5667,9 +5667,9 @@ start
         AS GAKVU SHOVES THE CONNECTOR ONTO MILTZA'S RECEPTOR
     
     miltza
-        aaaahhh!!
-        what is this!!!
-        oh... the timestopper? it works remotely?
+        ааааххх!!
+        что это!!!
+        ох... времядержец? он работает удалённо?
         
     akizet
         it does indeed
@@ -5677,9 +5677,9 @@ start
         do you have any weapons?
     
     miltza
-        no... sorry... that disabler was all i had
-        but when i was larval, i was a remote coordinator
-        i can lend my reflexes to you!
+        нет... извини... у меня был лишь тот отключитель
+        но когда я была larval, я была удалённой координаторшей
+        я могу предоставить свои рефлексы!
 
     akizet
         that will do
@@ -5762,8 +5762,8 @@ ____END
         A SHARP SUSPICION SPIKES THROUGH OUR SHARED CONNECTION
 
     miltza
-        what? how?
-        where did you learn to do that?
+        что? как?
+        где ты такому научилась?
     
     sourceless
         GAKVU ONLY SNICKERS IN RESPONSE
@@ -5784,10 +5784,10 @@ ____END
         miltza - you said the hangar was trapping people, yes?
     
     miltza
-        yes!
+        да!
             EXEC::env.embassy.vn({miltza: "display show focus hascon far", gakvu: 'defocus nocon', tozik: 'defocus'});
         and it did not sound good...
-        the messages were intermingled with pain and fear
+        их сообщения перемешивались с болью и страхом
 
     akizet
         i see
@@ -5814,8 +5814,8 @@ ____END
         but there is no other way away from here
 
     miltza
-        could we survive with the help of the timestopper?
-        you are incredible fighters when it is active!!
+        могли бы мы выжить с помощью времядержца?
+        вы - чудесные бойцы, когда он активен!!
     
     tozik
         not if the groundsmind have seized our ships, too
@@ -5882,7 +5882,7 @@ ____END
         maybe we could get into the golems down there and help, too!
 
     miltza
-        i... i do not see any other option
+        я... я не вижу других вариантов
             EXEC::env.embassy.vn({karik: '', itzil: '', miltza: 'show hascon'});
     
     gakvu
