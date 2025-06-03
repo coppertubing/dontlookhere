@@ -80,12 +80,12 @@ cor_ru['inflection'] = function (string, user, target) { // --- function for doi
         if (count != null) {
             for (let i = 0; i < count.length; i++) {
 
-                let stringTarget = string.substring(string.indexOf('%TAR(') + 4, string.indexOf(')GET'));
+                let stringTarget = string.substring(string.indexOf('%TAR(') + 5, string.indexOf(')GET'));
                 let stringProcessed = "";
 
                 let stringTargetSplit = stringTarget.split('/');
 
-                if (stringTargetSplit.length == 4) {
+                if (stringTargetSplit.length == 3) {
 
                     try {stringProcessed = stringTargetSplit[target.cor_ru.gender]} catch {console.error("some shit going on with" + target.name + "'s gender tbh - @cor-RU")};
 
@@ -6108,5 +6108,7 @@ env.localization.strings['THE HALLUCINATIONS FADE'] = "";
 env.localization.strings['ETHEREAL FOES FADE'] = "";
 env.localization.strings['the shell refuses, having lost their taste for this fish.'] = "";
 env.localization.strings['the shell refuses, having no taste for this fish.'] = "";
-env.localization.strings['? WHOM?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
-env.localization.strings['WHOM?'] = "КОГО?";
+env.localization.strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
+env.localization.strings['whom?'] = "КОГО?";
+
+cor_ru.redefineAll()

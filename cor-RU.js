@@ -321,8 +321,6 @@ function processTranslation(container, force = false) {
         for (const childNode of el.childNodes) {
             if (childNode.nodeType === Node.TEXT_NODE) {
                 if(childNode.textContent.trim().length == 0) continue; // skip if functionally whitespace
-               console.log(childNode.textContent)
-              console.log(processStringTranslation(childNode.textContent))
               childNode.textContent = processStringTranslation(childNode.textContent)
             }
         }
