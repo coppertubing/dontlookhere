@@ -49,9 +49,9 @@ horriblefuckingthing = [
     'local/ocean/ship',
         'local/ocean/ship/interview',
         'local/ocean/ship/elsewhere',
-    'local/embassy',
-        'local/embassy/golem',
-        'local/embassy/groundsmindry',
+        'local/ocean/embassy',
+            'local/ocean/embassy/golem',
+            'local/ocean/embassy/groundsmindry',
     'local/orbit',
     'local/ozo',
     'local/uncosm',
@@ -78,7 +78,7 @@ horriblefuckingthing = [
 ]
 
 function fuckingGetThem() {
-    for (let i = 0; i < horriblefuckingthing.length; i++) {
+    for (let i = 0; i < 3; i++) {
         corrucode = ``;
         ourcode = ``;
 
@@ -91,7 +91,7 @@ function fuckingGetThem() {
                     .then((text) => {
                         ourcode = text;
 
-                        if (corrucode != ourcode) console.warn("OOPS FOUND A DIFFERENCE!!!!! PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i])
+                        if (corrucode != ourcode) {console.warn("OOPS FOUND A DIFFERENCE!!!!! PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]); console.log(corrucode, ourcode)}
                     })
             })
     }
