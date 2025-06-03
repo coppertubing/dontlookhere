@@ -3900,7 +3900,7 @@ cor_ru['redefineActors'] = function () {
         receive_fear: ['что это такое?', 'что оно сказало?', 'так неестественно', 'всё кажется неправильным'],
         receive_redirection: ['ох, спасибо', 'я не подведу тебя']
     }
-    env.COMBAT_ACTORS.reactionPersonalities.ichor = {
+    env.COMBAT_ACTORS.generic.reactionPersonalities.ichor = {
         evade: ["осторожно!!"],
         crit: [ "да!!", "ребята, за мной!"],
         crit_buff: [ "тебе лучше?", "тебе нужно ещё?", "я прикрою тебя!"],
@@ -3923,7 +3923,7 @@ cor_ru['redefineActors'] = function () {
         receive_fear: ["это правда...?"],
         receive_redirection: ["что ты делаешь?", "но они тебя ранят!"],
     }
-    env.COMBAT_ACTORS.reactionPersonalities.eyes = {
+    env.COMBAT_ACTORS.generic.reactionPersonalities.eyes = {
         evade: ["хорошая попытка","слишком медленно"],
         crit: ["это было неизбежно","ты долго не продержишься"],
         crit_buff: ["вот, держи","не трать впустую"],
@@ -3946,7 +3946,7 @@ cor_ru['redefineActors'] = function () {
         receive_fear: ["я...","что...","но...",],
         receive_redirection: ["прекрати тратить время и бей их","по тебе всё ещё будут попадать"],
     }
-    env.COMBAT_ACTORS.reactionPersonalities.claws = {
+    env.COMBAT_ACTORS.generic.reactionPersonalities.claws = {
         evade: ["ха! ХА ХА!!","ХА! идиот!!"],
         crit: ["ГОРИ! КРОВОТОЧЬ! УМРИ УМРИ УМРИ!","РЕЗНЯ!","УМРИУМРИУМРИУМРИУМРИУМРИ","СДОХНИ!"],
         crit_buff: ["всегда ПОЖАЛУЙСТА!","теперь УБЕЙ ИХ!"],
@@ -3968,7 +3968,7 @@ cor_ru['redefineActors'] = function () {
         receive_fear: ["это... НИЧЕГО не меняет...!","фу...","эууехх"],
         receive_redirection: ["лучше ТЕБЯ чем МЕНЯ!"],
     }
-    env.COMBAT_ACTORS.reactionPersonalities.bone = { 
+    env.COMBAT_ACTORS.generic.reactionPersonalities.bone = { 
         evade: ["ты правда думал, что это меня заденет?", "не так просто"],
         crit: [ "ты не пройдёшь", "я разобью тебя вдребезги" ],
         crit_buff: [ "не дай мне пожалеть об этом"],
@@ -3989,7 +3989,7 @@ cor_ru['redefineActors'] = function () {
         give_redirection: ["держись за мной", "смотрите на меня!"],
         receive_redirection: ["мне не нужна твоя помощь"],
     }
-    env.COMBAT_ACTORS.reactionPersonalities.light = {
+    env.COMBAT_ACTORS.generic.reactionPersonalities.light = {
         evade: ["я всё видела!!","а я здеЁ́есь ихихи","мимо мимо мимо ахахаха!!!","безмозглая штука!"],
         crit: ["AХAХA", "Д«¶¾ңК!!!", "это ⱵĀ̱Ш¬¶ мир!"],
         crit_buff: ["жизнь буквальн¬о так проста", "я вижу ÷ú*¼клетки...!", "не волнуйся, подруга!!", "доверьсся мнеÉe"],
@@ -6089,6 +6089,18 @@ cor_ru['redefineAugments'] = function() {
 
     env.ACTOR_AUGMENTS.tozik.optimize.name = "" // Ukuzu Restorative
     env.ACTOR_AUGMENTS.tozik.optimize.description = "" // 'encourage ally to act twice at cost of lesser mending ability';'named after seasonal spore fog known to increase waking energy'
+}
+
+cor_ru['redefineAll'] = function() {
+    cor_ru.redefineActions()
+    cor_ru.redefineEffects()
+    cor_ru.redefineItems()
+    cor_ru.redefineHumors()
+    cor_ru.redefineModifiers()
+    cor_ru.redefineStats()
+    cor_ru.redefineActors()
+    cor_ru.redefineFormations()
+    cor_ru.redefineAugments()
 }
 /* --- MISC--- */
 env.localization.strings['THE TENDRILS CURL AWAY'] = "";
