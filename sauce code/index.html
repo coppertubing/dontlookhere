@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>corru.observer</title>	
+<meta name="title" content="corru.observer">
+<meta name="description" content="ATTENTION::'mindspike logging active'">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/">
+<meta property="og:title" content="corru.observer">
+<meta property="og:description" content="ATTENTION::'mindspike logging active'">
+<meta property="og:image" content="https://corru.observer/img/socials/intro.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/">
+<meta property="twitter:title" content="corru.observer">
+<meta property="twitter:description" content="ATTENTION::'mindspike logging active'">
+<meta property="twitter:image" content="https://corru.observer/img/socials/intro.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="corru.observer">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div id="room-space">
+    <div id="room-animator">
+        <div id="room">
+            <div class="door"></div>
+            <div class="lamp roomgfx"></div>
+            <div class="table roomgfx"></div>
+            <div class="realmoth roomgfx"></div>
+            <div class="wall floor roomgfx"></div> 
+            <div class="wall leftwall roomgfx"></div>
+            <div class="wall rightwall roomgfx"></div>
+            <div class="wall backwall roomgfx"></div>
+            <div class="tablestuff">
+                <div class="ocontainer"><figure></figure><figure class="corrugun"></figure></div>
+                <div class="cyst-container">
+                    <div id="cyst"></div>
+                    <div id="cyst-column"></div>
+                </div>
+                <div class="geye"><figure></figure></div>
+                <div class="copperbox"><figure></figure></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="closeup">
+    <div class="backwall"></div>
+    <div class="table"></div>
+    <div id="connection-overlay"></div>
+    <div class="tablestuff">
+        <div class="ocontainer">
+            <figure><div class="target" entity="dendritic cyst"></div></figure>
+            <figure class="corrugun"><div class="target" entity="pistol"></div></figure>
+        </div>
+        <div class="cyst-container">
+            <div class="target" entity="cyst"></div>
+            <figure class="crosshair"><div class="target" entity="connection point"></div></figure>
+            <div id="cyst">
+                <div id="cyst-gradient"></div>
+                <img src="/img/home/mindspike.gif" />
+            </div>
+            <div id="cyst-column"><div class="target" entity="cystic column"></div></div>
+        </div>
+        <div class="geye">
+            <figure><div class="target" entity="fractalline cyst"></div></figure>
+        </div>
+        <div class="copperbox">
+            <div class="target" entity="plastic box"></div>
+            <div class="target" entity="empty plastic box"></div>
+            <figure></figure>
+        </div>
+    </div>
+</div>
+
+<style> @import url(/css/local/homepage.css); </style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "corru.observer",
+				name: "corru-observer",
+				dialoguePrefix:  "fbx" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/intro.gif",
+				
+
+				
+				order: "-1",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/outerhubv1.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 236000, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "what's up?"
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about this job",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					 
+						if(location.search.includes('thiswillwipeyoursavee3a2test')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+    if(doit) mountSave(GlobalSaves.e3a2debug, false)
+}
+
+if(check('introcompleted')) { //they've been here before
+    document.documentElement.classList.add('totalfade')
+    setTimeout(()=>{
+        document.documentElement.classList.add('totaltran')
+        document.documentElement.classList.remove('totalfade')
+
+        if(check("ep0_epilogue", "awaiting") || check('TEMP!!sat')) {
+            body.classList.add('normalload', 'alreadyconnected')
+            document.querySelector('#closeup .backwall').classList.add('active')
+            document.querySelector('.crosshair').classList.add('show')      
+            env.spikeMoveLoopPaused = false           
+
+            if(check("ep0_epilogue", "awaiting")) {
+                document.querySelector('#connection-overlay').classList.add('show')
+                content.classList.add('ep0-epi')
+            } else if(check("TEMP!!ejected", "beneath")) {
+                document.querySelector('#connection-overlay').classList.add('show')
+                change("TEMP!!ejected", false)
+            }
+        }
+    }, 100)
+    setTimeout(()=>{
+        document.documentElement.classList.remove('totaltran')
+    }, 2100)
+} else {
+    MUI("prohibit")
+}
+
+env.intro = {
+    glass: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/connect_strike.ogg'],
+        preload: true,
+        loop: false,
+        volume: 1
+    }),
+    
+    theme: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/connect_theme.ogg'],
+        preload: true,
+        loop: false,
+        volume: 1
+    }),
+
+    sitting: false,
+
+    stateClasses: () => {
+        if(check('ep1_showmaterials', 'both')) body.classList.add('showgun')
+        if(check('ep1_showmaterials')) body.classList.add('showcopper')
+        if(check("ep1_fed", 'copper')) body.classList.add('emptycopper')
+        if(check("ep1_fed", 'container')) body.classList.add('containerdrop')
+    },
+
+    regularSit: () => {
+        env.introSit()
+        env.enableSpikeCursor()
+        document.querySelectorAll('.crosshair, #cyst img').forEach(e=>e.classList.add('show'))
+        body.classList.add('normalload')
+    },
+
+    randomChatter: ()=> {
+        let chatterArray = [
+            ["hey buddy", "welcome back"],
+        ]
+
+        if(!check('ep1_fed')) {
+            if(check('ep1_showmaterials')) chatterArray = [["hey buddy", "you ready to feed this thing?"]]
+            else if(check('ep0_epilogue')) chatterArray = [["hey buddy", "haven't heard back on the request yet", "so, still killing time here"]]
+        }
+        
+        let chatterSelect = chatterArray[Math.floor(Math.random()*chatterArray.length)]
+        chatterSelect.forEach((line, i)=>{
+            setTimeout(()=> chatter({actor: 'moth', text: line, readout: true}), (3000 * i) + 2000)
+        })
+    }
+}
+
+//cursor is made outside of content so it doesn't get shifted around by #content moving
+env.enableSpikeCursor = function() {
+    env.spikeCursorEnabled = true
+    body.insertAdjacentHTML('beforeend', `
+        <div class="cursor">
+            <div class="cursor-container">
+                <div class="cursor-anim">
+                    <img src="/img/home/mindspiker-black.gif" style="position: absolute;">
+                    <img src="/img/home/mindspiker-black.gif" style="position: absolute;">
+                </div>
+            </div>
+        </div>
+    `)
+
+    //sets up the delta references for the mouse-following spike
+    env.spike_xp = 10000
+    env.spike_yp = 10000
+
+    //sets up the spike movement
+    env.spikeMoveLoop = setInterval(function(){
+        if(!env.spikeMoveLoopPaused) {
+            let cursor = document.querySelector('.cursor')
+            
+            if (env.cursor.x < (body.offsetWidth * 0.67) && env.cursor.y < (body.offsetHeight * 0.33)){
+                cursor.id = 'cursor-upper-left'
+            } else if(env.cursor.x > (body.offsetWidth * 0.67) && env.cursor.y < (body.offsetHeight * 0.33)){
+                cursor.id = 'cursor-upper-right'
+            } else if(env.cursor.x < (body.offsetWidth * 0.67) && env.cursor.y > (body.offsetHeight * 0.33)){
+                cursor.id = 'cursor-lower-left'
+            } else {
+                cursor.id = 'cursor-lower-right'
+            } 
+
+            let xD = ((env.cursor.x - 15 - env.spike_xp)/6);
+            let yD = ((env.cursor.y - 15 - env.spike_yp)/6);
+
+            env.spike_xp += xD;
+            env.spike_yp += yD;
+
+            cursor.style.transform = `translate(${env.spike_xp}px, ${env.spike_yp}px)`
+        }
+    }, 10)
+}
+
+//transitions to the 'sitting' closeup
+env.introSit = ()=>{
+    body.classList.add('room-zoom', 'pre-sit')
+    setTimeout(()=>{
+        body.classList.add('sit-transition')
+    }, 3000)
+
+    setTimeout(()=>{
+        body.classList.add('sitting')
+        body.classList.remove('sit-transition')            
+    }, 3600)
+
+    setTimeout(()=>{
+        body.classList.remove('room-zoom', 'pre-sit')
+    }, 4500)
+}
+
+env.introConnect = ()=>{
+    let cursor = document.querySelector('.cursor')
+    function adjustCursor(cursor, moved = false) {    
+        let tBox = document.querySelector('.cyst-container .crosshair').getBoundingClientRect()
+
+        var cystPoint = {
+            x: tBox.x + (tBox.width * 0.5),
+            y: tBox.y + (tBox.width * 0.5)
+        }
+
+        console.log(document.querySelector('.cyst-container .target'))
+        console.log(tBox)
+        console.log(`translate(${cystPoint.x}px, ${cystPoint.y}px)`)
+
+        cursor.style.transform = `translate(${cystPoint.x}px, ${cystPoint.y}px)`
+    }
+    
+    cutscene(true)
+    MUI('off'); MUI('prohibit')
+
+    env.intro.glass.volume(Number(localStorage["volume-sfx"] || 1))
+
+    if(check('introcompleted')) {
+        readoutAdd({message:`..__RECONNECTING__..`, type:"sys"})
+        setTimeout(()=>{
+            env.spikeMoveLoopPaused = true
+            cursor.style.transition = `transform 2s ease-in-out, opacity 2s ease-in-out`
+            adjustCursor(cursor, false)
+            cursor.id = "cursor-upper-right"
+        }, 1000)
+
+        setTimeout(()=>{body.classList.add('spike0')}, 2000)
+        setTimeout(()=>{body.classList.add('spike1')}, 3000)
+        setTimeout(()=>{body.classList.add('spike2')}, 4000)
+        setTimeout(()=>{body.classList.add('spike3', 'spikefade')}, 4500)
+        setTimeout(()=>{flash(true); env.intro.glass.play()}, 4700)
+
+        if(check('hello__sentry-posthello')) {
+            setTimeout(()=>{moveTo("/hub/")}, 5000)
+        } else {
+            setTimeout(()=>{moveTo("/hello/")}, 5000)
+        }
+        setTimeout(()=>{flash(false)}, 6000)
+
+        return
+    }
+
+    setTimeout(()=>{readoutAdd({message:`..__CONNECTION_POINT_LOCATED__..`, type:"sys"})}, 1000)
+    setTimeout(()=>{
+        env.spikeMoveLoopPaused = true
+        cursor.style.transition = `transform 2s ease-in-out, opacity 2s ease-in-out`
+        adjustCursor(cursor, false)
+        cursor.id = "cursor-upper-right"
+    }, 2000)
+    setTimeout(()=>{readoutAdd({message:`..__COMMENCING__..`, type:"sys"})}, 5500)
+    setTimeout(()=>{body.classList.add('spike0')}, 6000)
+    setTimeout(()=>{body.classList.add('spike1')}, 6500)
+    setTimeout(()=>{body.classList.add('spike2')}, 8500)
+    setTimeout(()=>{body.classList.add('spike3', 'spike4preflash')}, 9000)
+    setTimeout(()=>{body.classList.add('spike4', 'spike4flash', 'flash');env.intro.glass.play()}, 9300)
+    setTimeout(()=>{body.classList.add('spike4postflash'); body.classList.remove('spike4flash', 'flash'); page.bgm.fade(page.bgm.volume(), 0, 1000); env.bgm = null}, 9500)
+    setTimeout(()=>{body.classList.remove('spike4postflash')}, 10000)
+    setTimeout(()=>{body.classList.add('spike5', 'flash');env.intro.theme.play();play('criticalError')}, 13350)
+    setTimeout(()=>{body.classList.add('spike6'); body.classList.remove('flash')}, 15900)
+    setTimeout(()=>{body.classList.add('spike7')}, 16000)
+    setTimeout(()=>{body.classList.add('spike8')}, 20000)
+    setTimeout(()=>{body.classList.add('spike9')}, 21000)
+    setTimeout(()=>{body.classList.add('spike10')}, 28000)
+    setTimeout(()=>{body.classList.add('spike11');change('introcompleted', true)}, 31000)
+    setTimeout(()=>{env.intro.theme.fade(1, 0, 1000);moveTo("/hello/");}, 34000)
+}
+
+/****DIALOGUES****/
+env.dialogues["index"] = generateDialogueObject(` 
+start
+    moth
+        hey buddy, welcome
+        honestly wasn't sure if you'd show up for this one since it's such a small haul
+        lots of ocean wrecks being found these days
+        anyway i'll get everything started, feel free to look everything over
+    sourceless
+        the decoding machines flip on, casting their light over a spidery mess of wires.
+            EXEC::document.querySelectorAll('.backwall').forEach(e=>e.classList.add('active'))
+    RESPONSES::self
+        what is this<+>whatis
+        sit down<+>sit
+            SHOWIF::["PAGE!!intrositting", false]
+            EXEC::change('PAGE!!intrositting', true)
+
+whatis
+    self
+        what is this?
+    moth
+        this is a find from an obesk wreck not far from new zealand
+        the notes i got said that it was mostly melted, which is kinda weird...
+        anyway... the main piece here is that big one
+        a pedestal usually means 'important', but it's unmarked
+        alex did a basic scan, said it kinda looks like a network node
+        we don't even really know if it'll accept a mindspike
+        but you're getting paid either way, so... have at it
+    RESPONSES::self
+        sit down<+>sit
+            SHOWIF::["PAGE!!intrositting", false]
+            EXEC::change('PAGE!!intrositting', true)
+        activate mindspike<+>END
+            SHOWIF::"PAGE!!intrositting"
+
+sit
+    sourceless
+        the metal stool scrapes against the concrete. you sit.
+            EXEC::env.introSit()
+            WAIT::3500
+    sourceless
+        the seat is cold and uncomfortable. light from your protective gear scatters into the pearlescent cysts.
+    moth
+        you know the drill, mindspike on
+    RESPONSES::self
+        what is this<+>whatis
+            SHOWONCE::
+        activate mindspike<+>END
+        
+END::env.enableSpikeCursor();MUI('deprohibit')
+`)
+
+env.dialogues["depthrecovery"] = generateDialogueObject(` 
+start
+    sourceless quiet
+        a sharp pain pierces your skull. your mindspike recoils from the corrucyst.
+            WAIT::3000
+
+    sys
+        ATTENTION::'emergency ejection complete'
+        ANALYSIS::'minimal connector damage';'minor neural impact'
+            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
+    
+    moth
+        are you all right?
+        oh, shit
+    
+    sourceless
+        moth frantically pulls the wires out of a smoking processor. the room smells like fried electronics.
+
+    moth
+        jesus christ
+        that spike just saved your life dude
+        i mean, it didn't sound like that thing was trying to kill you, but damn, just look at this
+        i'm gonna have to limit the signal splitter in case that happens again
+    
+    RESPONSES::self
+        what now?<+>whatnow_lk
+            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", false]]
+        what now?<+>whatnow_lk
+            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", true]]
+        what now?<+>whatnow_mk
+            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container", false]]
+        what now?<+>whatnow_hk
+            SHOWIF::[["hub__funfriend-fuelthanks"],["exm|dullvessel|container"]]
+
+whatnow_lk
+    self
+        So what now?
+
+    moth
+        well...
+        we gotta repair this thing. imagine what we could learn, seriously
+        only problem is...
+        everything that passes through here dies eventually because we just don't know how to keep it alive
+        and it's not like we can just go ask the obesk how            
+        it seems like the best option right now is to reconnect and find a way to sustain it... 
+        don't forget how long this thing has been alive, there has to be something we can learn in there
+        so get back in, look a little closer at what we have... worst case, at least we got more data.
+        sound good?
+
+    RESPONSES::self
+        what about the entity?<+>entity
+        sounds good<+>END
+
+whatnow_mk
+    self
+        So what now?
+
+    moth
+        well...
+        that system manager thing, funfriend, that'll be the key to both maintaining and repairing this cyst
+        and we gotta repair this thing. we could learn SO much, seriously
+        we've never been able to maintain corrucystic tech, let alone fix it
+        imagine if you and i discovered the secret to keeping it alive, maybe they'd finally move me out of the basement
+        anyway--my order for like copper tubing is in
+        not the strangest order from our department, believe it or not
+        so we just need to wait a bit for that to come in
+        sound good?
+
+    RESPONSES::self
+        what about the entity?<+>entity
+        sounds good<+>END
+
+whatnow_hk
+    self
+        So what now?
+
+    moth
+        well...
+        obviously we gotta repair this thing. we could learn SO much, seriously
+        we've never been able to maintain corrucystic tech, let alone fix it
+        imagine what we could do with that sort of find, maybe they'd finally move me out of the basement
+        but according to the funfriend thing, we need some metal to give to the column, which apparently will feed the corrucyst
+        ...and i'm pretty sure that container we have is one of the same ones on akizet's ship, so it probably has something we can use
+        i'm just not really sure how to open it short of destroying it
+        do me a favor - reconnect and ask funfriend about that, maybe it'll have a suggestion
+
+    RESPONSES::self
+        what about the entity?<+>entity
+        sounds good<+>END
+
+entity
+    self
+        what about the entity that kicked me out?
+
+    moth
+        oh, uh
+        i didn't mean to be so flippant about that, sorry
+        this time i was actually able to track what it was saying with some direct stream access
+        you heard the thing, it doesn't want to kill you
+        in fact it's relying on us to survive, and it <em>does</em> seem to want to survive
+        i think it just didn't have any other way to get you out of that thoughtspace
+        which i guess it's just gonna be holding as leverage for now
+        but look, don't worry about it, you got me watching over this operation
+        if something like that happens again, i'll make sure you're fine
+    
+    RESPONSES::self
+        all right<+>END
+
+END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0_epilogue', 'started');flash(false)}, 1000)
+`)
+
+env.entities['cyst'] = {
+    type: "real",
+    image: "/img/textures/blocker.gif",
+    text: `::CORRUCYSTIC ENTITY
+    ::NO FUNCTION SIGNATURE
+    ::CONNECTIVE MEMBRANE EXPOSED`,
+
+    exmExec: ()=>{
+        if(!check('realcyst_examined')) {
+            change('realcyst_examined', true)
+            cutscene(true)
+            setTimeout(()=>{readoutAdd({message: `so this is the mystery piece`, name:"moth"})}, 2000)
+            setTimeout(()=>{readoutAdd({message: `it's in bizarrely good condition considering it was at the bottom of the ocean for however long it's been since, y'know`, name:"moth"})}, 4000)
+            setTimeout(()=>{readoutAdd({message: `no clue what it is aside from some similar internal structure to network cysts we've found before`, name:"moth"});cutscene(false)}, 7000)
+            setTimeout(()=>chatter({actor: 'sys', text: "ATTENTION::'additional ACT enabled';'rescan'"}), 9000)
+        }
+    },
+    
+    actions: [
+        {
+            name: "touch",
+            showIf: ()=> !check("hello__sentry") && check("realcyst_examined"),
+            exec: ()=>{change('realcyst_touched', true); setTimeout(()=>chatter({actor: 'sys', text: "ATTENTION::'additional ACT enabled';'rescan'"}), 2000)},
+            message: {
+                text: `the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.`,
+                actor: "sourceless",
+            }
+        }, 
+        {
+            name: "depth scan",
+            showIf: ()=> !check("hello__sentry") && check("realcyst_touched"),
+            exec: ()=>{
+                change('realcyst_scanned', true)
+                document.querySelector('.crosshair').classList.add('show')
+            },
+            message: {
+                text: "ANALYSIS::'valid nerve point';'connection enabled'",
+                actor: "sys"
+            }
+        },
+    ]
+}
+
+env.entities['connection point'] = {
+    type: "real",
+    image: "/img/textures/blocker.gif",
+    text: `::CORRUCYSTIC ENTITY COMPONENT
+    ::VALID CONNECTION POINT`,
+    
+    actions: [
+        {
+            name: "attempt connection",
+            showIf: "realcyst_scanned",
+            exec: env.introConnect,
+        },
+    ]
+}
+
+env.entities['cystic column'] = {
+    type: "real",
+    image: "/img/home/column.gif",
+    text: `::CORRUCYSTIC ENTITY
+    ::FUNCTION SIGNATURE: MAINTAINS CORRUCYST
+    ::NO CONNECTIVE TISSUE EXPOSED`
+}
+
+env.entities['dendritic cyst'] = {
+    type: "real",
+    image: "/img/local/orbit/dullvessel/container.gif",
+    text: `::CORRUCYSTIC ENTITY
+    ::FUNCTION SIGNATURE: CONTAINER
+    ::NO CONNECTIVE TISSUE EXPOSED`,
+
+    exmExec: ()=>{
+        if(!check('ocon_examined')) {
+            change('ocon_examined', true)
+            cutscene(true)
+            setTimeout(()=>{readoutAdd({message: `the notes I got say that there were apparently a ton of these on the ship`, name:"moth"})}, 2000)
+            setTimeout(()=>{readoutAdd({message: `all sorts of sizes too`, name:"moth"})}, 4000)
+            setTimeout(()=>{readoutAdd({message: `but most were too heavy to retrieve... so we just got this small one`, name:"moth"});cutscene(false)}, 7000)
+            setTimeout(()=>chatter({actor: 'sys', text: "ATTENTION::'additional ACT enabled';'rescan'"}), 9000)
+        }
+    },
+    
+    actions: [
+    {
+        name: "touch",
+        showIf: "ocon_examined",
+        message: {
+            text: "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it",
+            actor: "sourceless"
+        }
+    }, 
+    {
+        name: "lift",
+        showIf: "ocon_examined",
+        message: {
+            text: "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table",
+            actor: "sourceless"
+        }
+    }]
+}
+
+env.entities['fractalline cyst'] = {
+    type: "real",
+    image: "/img/local/orbit/dullvessel/glazikaeyedamaged.gif",
+    text: `::CORRUCYSTIC ENTITY
+    ::FUNCTION SIGNATURE DAMAGED
+    ::NO CONNECTIVE TISSUE EXPOSED`,
+
+    exmExec: ()=>{
+        if(!check('geye_examined')) {
+            change('geye_examined', true)
+            cutscene(true)
+            setTimeout(()=>{readoutAdd({message: `nobody knows what this one is.. pretty sure it's dead though`, name:"moth"});cutscene(false)}, 2000)
+            setTimeout(()=>chatter({actor: 'sys', text: "ATTENTION::'additional ACT enabled';'rescan'"}), 4000)
+        }
+    },
+    
+    actions: [{
+        name: "touch",
+        showIf: "geye_examined",
+        message: {
+            text: "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone",
+            actor: "sourceless"
+        }
+    }]
+}
+
+/* EP1 STUFF */
+env.dialogues["ep1feed"] = generateDialogueObject(` 
+start
+    moth
+        hey buddy, just in time, look what just came in
+            SHOWIF::[["TEMP!!sat", false]]
+        hey, look what just came in
+            SHOWIF::[["TEMP!!sat"]]
+
+    sourceless
+        MOTH HOLDS UP A JINGLING PLASTIC CONTAINER FILLED WITH SMALL COPPER TUBES, CUT TO A VERY SHORT LENGTH
+        IT IS SET ON THE TABLE, THE FRACTALLINE CYST REMOVED TO MAKE SPACE
+            EXEC::content.classList.add('showcopper')
+
+    moth
+        since i'm pretty sure this one is dead, i'm just gonna...
+    
+    sourceless
+        THE FRACTALLINE CYST IS DELIVERED INTO A BIOHAZARD BIN NEARBY
+    
+    moth
+        anyway - ready to feed a corrucyst?
+            SHOWIF::[["ep0_epilogue", "started"]]
+
+        and!
+            SHOWIF::[["ep0_epilogue", "done"]]
+
+    sourceless
+        MOTH RAISES, THEN LEAVES A CYLINDRICAL GUN NEAR THE DENDRITIC CYST
+            SHOWIF::[["ep0_epilogue", "done"]]
+            EXEC::content.classList.add('showgun')
+    
+    moth
+        my request for a gun kinda stirred up r&d, because obviously
+            SHOWIF::[["ep0_epilogue", "done"]]
+        but after i explained it was to kill a corrucystic container, they said they had just the thing
+            SHOWIF::[["ep0_epilogue", "done"]]
+        this is apparently some kind of cattle killing gun that they repurposed to decommission cystic tech
+            SHOWIF::[["ep0_epilogue", "done"]]
+        no projectile, it just propels out a short spike at high speeds, i think it uses some kind of electromagnetic propulsion or something
+            SHOWIF::[["ep0_epilogue", "done"]]
+        anyway, i know what you're thinking - why both?
+            SHOWIF::[["ep0_epilogue", "done"]]
+        simple - i completely forgot to cancel the copper order, so, we got both of them.
+            SHOWIF::[["ep0_epilogue", "done"]]
+        so we could go either route here, either use the copper, or kill the container and use akizet's 'processed metals'
+            SHOWIF::[["ep0_epilogue", "done"]]
+        personally i'd go with the copper, cause i don't know what the container will do
+            SHOWIF::[["ep0_epilogue", "done"]]
+        but... you're in the hot seat, so it's your call
+            SHOWIF::[["ep0_epilogue", "done"]]
+
+    RESPONSES::self
+        got it<+>END
+        
+END::change('ep1_showmaterials', check('ep0_epilogue') == 'done' ? 'both' : 'copper')
+`)
+
+env.dialogues["ep1feed_copper"] = generateDialogueObject(` 
+start
+    self
+        let's do this
+            SHOWIF::[["ep0_epilogue", "started"]]
+        let's go with the copper        
+            SHOWIF::[["ep0_epilogue", "done"]]
+
+    sourceless
+        YOU PULL THE PLASTIC CONTAINER CLOSER AND UNCLASP THE LID
+        THE COPPER RODS GLIMMER IN THE FOCUSED LIGHT
+
+    moth
+        all right!
+        funfriend said we have to feed it to the pillar, and it takes care of the rest
+        soo i guess we just dump it in? it looks like the pit is big enough to hold pretty much all of it
+
+    RESPONSES::self
+        move the cyst out of the way<+>move
+            EXEC::env.spikeMoveLoopPaused = true;body.classList.add('prepgrab');document.querySelector('.cursor').id = "cursor-upper-left"
+    
+move
+    sourceless
+        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+            EXEC::body.classList.add('cystgrab')
+        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
+        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+            EXEC::body.classList.add('cystlift')
+        
+    moth
+        nice, don't grip it too hard 
+
+    RESPONSES::self
+        dump in the copper<+>dump
+            EXEC::body.classList.add('pourcopper')
+
+dump
+    sourceless
+        YOU ANGLE THE CONTAINER DIAGONALLY AND CAREFULLY SHAKE THE METAL ROD IN SMALL BATCHES
+        THEY FILL THE COLUMN'S CAVITY WITH METALLIC CLINKS, AND AN OPAQUE, MERCURY-LIKE LIQUID SLOWLY RISES OVER THE METAL
+        IT ROILS AND WRITHES AROUND THE COPPER RODS LIKE IT'S ALIVE
+        THE FANS OF THE CHAMBER GROW LOUDER FOLLOWING A FEW KEYTAPS FROM MOTH
+            EXEC::body.classList.add('pourcopper')
+        
+    moth
+        just in case
+
+    sourceless
+        YOU SET THE EMPTY CONTAINER OUT OF THE WAY
+            EXEC::body.classList.add('emptycopper');body.classList.remove('pourcopper', 'cystlift')
+
+    RESPONSES::self
+        is it done?<+>done
+
+done
+    self
+        Is it done?
+            EXEC::body.classList.remove('cystgrab');document.querySelector('.cursor').style.transform = "translate(0, 50vh)"
+    
+    moth
+        as if i know anything about this, lol
+        looks like it's working though
+        how about you reconnect and check in with our friend
+
+    RESPONSES::self
+        all right<+>END
+
+END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab');;change('ep1_fed', 'copper')
+`)
+
+env.dialogues["ep1feed_container"] = generateDialogueObject(` 
+start
+    sourceless
+        YOU GRASP THE CATTLE GUN AND AIM IT AWAY, EXPERIMENTALLY PULLING THE TRIGGER
+        A SPIKE EJECTS FROM THE TIP IN THE BLINK OF AN EYE WITH A LOUD HISS, THEN RECEDES
+        YOU FEEL SOMETHING RUMBLE INSIDE THE GUN AS IT RESETS
+
+    self
+        All right
+        Let's kill this thing
+
+    moth
+        no need to say it like a psycho dude lmao
+
+    RESPONSES::self
+        move the cyst out of the way<+>move
+            EXEC::env.spikeMoveLoopPaused = true;body.classList.add('prepgrab');document.querySelector('.cursor').id = "cursor-upper-left"
+    
+move
+    sourceless
+        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+            EXEC::body.classList.add('cystgrab')
+        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
+        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+            EXEC::body.classList.add('cystlift', 'containerseq')
+        
+    moth
+        nice, don't grip it too hard 
+
+    RESPONSES::self
+        get the container<+>grab
+
+grab
+    sourceless
+        YOU FETCH THE CORRUCYSTIC CONTAINER AND LIFT IT FROM THE TABLE, HOLDING IT UPSIDE-DOWN
+            WAIT::1000
+            EXEC::body.classList.add('containerfade');setTimeout(()=>body.classList.add('containercenter'), 400)
+        ITS DENDRITIC TENDRILS WAVE IN THE AIR LAZILY
+    
+    moth
+        so funfriend said that if you hit the base of it, that it'll instantly die
+        and if you don't,
+        it will... what did it say again?
+        'respond violently to trauma'
+        well it couldn't be that bad, it's not that big and your suit is pretty thick
+        but... 
+        well, if you have to throw it, don't throw it towards my machines
+
+    RESPONSES::self
+        kill it<+>kill
+
+kill
+    sourceless
+        YOU ANGLE THE CATTLE GUN BETWEEN THE CYST'S SUPPORTIVE TENDRILS
+            EXEC::body.classList.add('containeraim')
+        A FEW ATTACH TO THE SIDES OF THE WEAPON, TESTING ITS VIABILITY AS A CONNECTION, BUT LET IT PASS
+        THE BARREL SOON TAPS AGAINST THE GLASSY UNDERSIDE, AND SO YOU SQUEEZE THE TRIGGER
+        YOU FEEL A SURPRISING JOLT IN BOTH HANDS. A CRACK RINGS IN THE ROOM, THE CYST'S TENDRILS THRASHING
+            WAIT::2000
+            EXEC::env.intro.glass.rate(1.25);env.intro.glass.play();flash(true);setTimeout(()=>body.classList.add('containershot'), 200);setTimeout(()=>flash(false), 400)
+        THEY QUICKLY FALL LIMP AND START TO MELT
+            EXEC::body.classList.remove('containershot')
+        YOU DROP THE ENTIRE THING IN THE COLUMN'S CAVITY BEFORE IT COLLAPSES
+            EXEC::body.classList.add('containerdrop');body.classList.remove('containerfade')
+        THERE IS A GLIMMER OF GOLD-COLORED METAL, BUT IT DISAPPEARS BENEATH THE SLUDGIFIED CONTAINER
+            EXEC::body.classList.remove('containeraim')
+        YOU LOWER THE CYST AND SET THE GUN DOWN
+            EXEC::body.classList.remove('cystlift', 'containercenter')
+    
+    moth
+        wow
+        quick thinking there, that could have been really messy if it just melted everywhere
+        probably hazardous too
+            EXEC::body.classList.remove('cystgrab');document.querySelector('.cursor').style.transform = "translate(0, 50vh)"
+        and i think that's it... not as bad as i thought it'd be
+        how about you reconnect and check in with funfriend?
+        
+    RESPONSES::self
+        all right<+>END
+
+END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab', 'containerseq');change('ep1_fed', 'container')
+`)
+
+env.entities['plastic box'] = {
+    type: "real",
+    image: "/img/home/copperbox.gif",
+    text: `::SYNTHETIC CONTAINER
+    ::CONTAINS INERT METAL`,
+    
+    actions: [
+        {
+            name: "use to feed column",
+            exec: ()=>startDialogue('ep1feed_copper'),
+            showIf: ["ep1_fed", false],
+        },
+    ]
+}
+
+env.entities['empty plastic box'] = {
+    type: "real portrait-bw",
+    image: "/img/home/copperbox.gif",
+    text: `::SYNTHETIC CONTAINER
+    ::EMPTY`,
+}
+
+env.entities['pistol'] = {
+    type: "real portrait-contain portrait-bright",
+    image: "/img/home/corrugun.gif",
+    text: `::CAPTIVE BOLT PISTOL
+    ::2052 G.E.T. MODEL
+    ::ILLEGAL MODIFICATIONS DETECTED`,
+    
+    actions: [
+        {
+            name: "kill dendritic cyst and feed column",
+            exec: ()=>startDialogue('ep1feed_container'),
+            showIf: ["ep1_fed", false],
+        },
+    ]
+}
+
+/* EP2 STUFF */
+env.dialogues["ep2intro"] = generateDialogueObject(` 
+start
+    moth
+        hey buddy!
+        hope you're doin ok
+        let's get right into it
+        i was just looking at the logs for last night, after you left...
+        lots of surface thoughtform activity - the kind you can access
+        i think funfriend fixed up something big
+        go talk to it, see what's up!
+
+    RESPONSES::self
+        ok<+>END
+`)
+
+/* EP3 STUFF */
+env.dialogues["ep3intro"] = generateDialogueObject(` 
+start
+    moth
+        hey buddy, good to see you
+        i was just checking the activity over the last night...
+        this is pretty similar to what i saw when funfriend fixed the first part of the collapse
+        i'll bet the next part of it is ready to view
+        judging by the amount of activity, this is probably a larger one
+        so... sorry if you still think the framing device sucks lol
+            SHOWIF::'mth++embassy-gamebad'
+        go on in!
+        also. i was curious after work the other day
+        started looking at old news and video archives from when the collapse happened...
+        remember when videos were all on one site? that must have been nice
+        anyway--didn't find anything too groundbreaking
+        just had some observations if you want to hear em when you got a minute
+        but right now, we gotta get you back into it
+        i know it's only been a few days, but people are starting to ask questions about how this one is going
+        i've been stalling, but... you know
+        not sure how long that's going to work, whether it's a matter of weeks or even days
+        what we have is probably already a bombshell,
+        but i don't want to turn this thing in until it's nuclear
+
+    RESPONSES::self
+        ok...<+>END
+`)
+
+env.dialogues["depthrecovery2"] = generateDialogueObject(` 
+start
+    sourceless quiet
+        your eyes refocus as your mindspike recoils
+            WAIT::3000
+        pain radiates through your spine
+
+    sys
+        ATTENTION::'emergency ejection complete'
+        ANALYSIS::'no connector damage';'minimal neural impact'
+            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
+
+    moth
+        thank god
+        looks like the limits i set up kept that in check
+        what happened, dude?
+        you were moving around in completely unreadable nonsense on my log
+        you tried to initiate movement to a new thoughtspace, then...
+        then it just... exploded?
+    
+    self
+        i found something 
+        tried to enter it, but velzie stopped me
+        just like the last time this happened
+        but this was different
+        velzie was surprised i was there
+        it seemed desperate to stop something from happening
+
+    moth
+        didn't it lead you to whatever this was last time?
+        was it the same thing?
+
+    self
+        looked similar but different
+
+    moth
+        well, comparing the logs, 
+        it looks like it's at least part of the same thing
+        but the data that hit you is way different...
+        last time it was just noise, probably to disrupt your connection
+        but this time it was structured somehow
+        not enough to make sense of, but...
+        i think you nearly connected to whatever it was
+        still, maybe next time you find some giant incoherent thing,
+        don't just blindly enter it, ok?
+        the throttling we set up protected you this time
+        but it's not perfect, and some of it still hit your brain
+        so like... take it easy for a bit
+    
+    RESPONSES::self
+        ok<+>END
+    
+END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');env.enableSpikeCursor();flash(false)}, 1000)
+`)
+
+/* EP4 STUFF */
+env.dialogues["ep4intro"] = generateDialogueObject(` 
+start
+    moth
+        ...uh-huh, right
+    
+    sourceless
+        moth paces in the dark, a dark shape held to an ear.
+        you receive a welcoming wave that turns into a vague gesture to the central cyst.
+    
+    moth
+        look, we're just trying something new
+        there's lots of waiting time, and observation...
+        uh-huh...
+        strange? like what?
+        oh, well... we're still poking around
+        there's some promising stuff here and there, but...
+        right...
+        can it wait for the full report?    
+        ...ok, then just send them down once they're ready, we'll process them too
+        it's async, you know? we can do more than one
+        ...yeah, look, the contractor just got here, so, i need to go
+        we can talk about it later
+        thanks dude
+        yeah, bye
+
+    sourceless
+        the call is over. moth sighs.
+    
+    moth
+        hey buddy
+        good news first
+        i'm pretty sure another part of the cyst is repaired
+        probably the next part of the collapse, judging by the activity measurements
+        hopefully the last
+        because the bad news is, it feels like the upstairs are prying at the door
+        i mean, it's not especially rare to take so long on a few corrucystic pieces, but...
+        when it happens, that's when they start calling
+        so i bought us some time, but, i'm not sure how much
+        they just think we're trying some long operation, which...
+        you know, isn't a lie
+        but we might end up getting more pieces to look over soon
+    
+    self
+        what if they want it back before we're really done?
+        before we have communications back?
+
+    moth
+        to be honest, that's probably going to happen
+        we still have no idea if it's even possible to repair
+        but, if things get... 
+        i don't know, really down to the wire,
+        i've noticed the monitoring on biohazard disposals is really lax
+        not saying we do anything, but...
+        ...wouldn't be the first time
+        look, let's just get started
+        if it comes to that, we'll cross that bridge when we get there
+
+    RESPONSES::self
+        ok<+>END
+`)
+					
+					
+
+					 
+					//mothchat definition
+					env.dialogues.mthhubresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        where were these cysts found?<+>where
+        what do we do with this gun<+>gun
+            SHOWIF::[["ep1_showmaterials", "both"], ["ep1_fed", true]]
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthhubresp
+
+gun
+    self
+        So are we just keeping this gun?
+
+    moth
+        oh, well,
+        you know, it might be handy
+        to be honest with you i don't really feel like returning it right now lol
+        r&d didn't seem like they needed it, it's not often they need to kill something
+        i'll return it later
+    
+    RESPOBJ::mthhubresp
+
+where
+    self
+        where were these pulled from?
+    
+    moth
+        so they found this stuff in a wreck along the ocean floor near new zealand
+        and by 'near', I mean like a thousand miles off the southeast coast
+        it's just that it was found so far out from anything else, that, like...
+        new zealand is just the closest point of reference i figured you'd recognize
+        they think it had drifted a pretty far distance from wherever it actually fell
+        the estimates they put down say it's probably been down there 20, 30ish years
+
+    RESPOBJ::mthhubresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					 
+						//special intros
+if(check("TEMP!!ejected", "beneath")) {
+    body.classList.add('sitting')
+    env.intro.stateClasses()
+    
+    startDialogue("depthrecovery2")
+
+//regular intros
+} else if(!check('introcompleted')) { // if they're new
+    body.classList.add('slowdialogue', 'nomoth', 'noent', 'nosys') //to ease the player into the dialogue system
+    setTimeout(()=>{
+        startDialogue("index")
+
+        setTimeout(()=>{
+            body.classList.remove('slowdialogue', 'nosys')
+        }, 4000)
+    }, 7000)
+
+} else if(check('TEMP!!sat') || check("ep0_epilogue", "awaiting")) { //if they're coming back from the depths in ep0
+    body.classList.add('sitting')
+    env.enableSpikeCursor()
+    env.intro.stateClasses()
+
+    if(check("ep0_epilogue", "awaiting")) {
+        startDialogue("depthrecovery")
+    }
+
+} else if(!check('TEMP!!sat') && check('ep0_epilogue') && !check('ep1_showmaterials')) { // they're reconnecting after triggering ep1 start condition
+    content.classList.add('quickload')
+    env.intro.stateClasses()
+
+    setTimeout(()=>{
+        env.intro.regularSit()            
+        startDialogue('ep1feed')
+    }, 4000)
+
+} else if(!check('TEMP!!sat') && check('ep1_end') && !check('fbx__ep2intro-end')) { //they're reconnecting after triggering ep2 start condition
+    content.classList.add('quickload')
+    env.intro.stateClasses()
+
+    setTimeout(()=>{
+        env.intro.regularSit()
+        startDialogue('ep2intro')
+    }, 4000)
+
+} else if(!check('TEMP!!sat') && check('embassy__d3_movefriend_finish') && !check('fbx__ep3intro')) { //they're reconnecting after triggering ep3 start condition
+    content.classList.add('quickload')
+    env.intro.stateClasses()
+
+    setTimeout(()=>{
+        env.intro.regularSit()
+        startDialogue('ep3intro')
+    }, 4000)
+
+
+} else if(!check('TEMP!!sat') && check('gol__bossclear') && !check('fbx__ep4intro')) { //they're reconnecting after triggering ep3 start condition
+    content.classList.add('quickload')
+    env.intro.stateClasses()
+
+    setTimeout(()=>{
+        env.intro.regularSit()
+        startDialogue('ep4intro')
+    }, 4000)
+
+} else { // if it's a regular visit
+    content.classList.add('quickload')
+    env.intro.stateClasses()
+    
+    setTimeout(()=>{
+        env.intro.regularSit()
+        env.intro.randomChatter() //random greeting after a short delay
+    }, 4000)
+}
+					
+					
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					//clean up cursor stuff
+if(env.spikeCursorEnabled) {
+    document.querySelector('.cursor').remove()
+    clearInterval(env.spikeMoveLoop)
+    env.spikeCursorEnabled = false
+}
+
+setTimeout(()=>{
+    if(page.dialoguePrefix != "fbx") body.classList.remove('spike0', 'spike1', 'spike2', 'spike3', 'spike4flash', 'spike4preflash', 'spike4', 'spike5', 'spike6', 'spike7', 'spike8', 'spike9', 'spike10', 'spike11', 'normalload', 'spikefade', 'sitting')
+}, 4000)
+
+setTimeout(()=>{
+    env.intro.glass.unload()
+    env.intro.theme.unload()
+    delete env.intro
+    delete env.enableSpikeCursor
+    delete env.introSit
+    delete env.introConnect
+}, 15000)
+
+body.classList.remove("nomoth", "noent")
+cutscene(false)
+MUI("deprohibit")
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "corru-observer";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

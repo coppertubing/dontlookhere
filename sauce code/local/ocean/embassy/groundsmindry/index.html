@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__PALE_HALLS__..</title>	
+<meta name="title" content="..__PALE_HALLS__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/embassy/groundsmindry/">
+<meta property="og:title" content="..__PALE_HALLS__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/groundsmindry.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/embassy/groundsmindry/">
+<meta property="twitter:title" content="..__PALE_HALLS__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/groundsmindry.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__PALE_HALLS__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<style>
+    
+    @import url(/css/combat.css?1743609964848047793);
+    @import url(/css/local/embassy.css?1743609964848047793);
+    @import url(/css/local/embassy_global.css?1743609964848047793);
+    @import url(/css/combatGrid.css?1743609964848047793);
+    @import url(/css/local/embassy_groundsmindry.css?1743609964848047793);
+</style>
+
+<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="quality" key="quality" onclick="javascript:stepKey('q')">
+            <i class="ci-quality"></i>    
+        </div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="swap" key="e" onclick="javascript:stepKey('e')">
+            <i class="ci-zoomin"></i>
+            <i class="ci-zoomout"></i>    
+        </div>
+        <div class="party" key="z" onclick="javascript:stepKey('z')"><i class="ci-group"></i></div>
+    </div>
+</div>
+
+<details id="progjump" class="debugonly">
+    <summary>progjump menu toggle</summary>
+    <button onclick="change('PAGE!!e4prog', 0);changeStage('embassy_relocator');" definition="pre-entrance">(0)</button>
+    <button onclick="change('PAGE!!e4prog', 1);changeStage('grm_entry');" definition="post-entrance">(1)</button>
+    <button onclick="change('PAGE!!e4prog', 2);changeStage('grm_entry');" definition="pre-lesser">(2a)</button>
+    <button onclick="change('PAGE!!e4prog', 2);changeStage('grm_lesser');" definition="first lesser mind visit">(2b)</button>
+    <button onclick="change('PAGE!!e4prog', 2);changeStage('hall_lesser-dull');" definition="post-lesser (pre-heart-to-heart)">(2c)</button>
+    <button onclick="change('PAGE!!e4prog', 3);changeStage('hall_lesser-dull');" definition="post-lesser (post-heart-to-heart)">(3)</button>
+    <button onclick="change('PAGE!!e4prog', 4);changeStage('grm_dull_back');" definition="post-contact">(4)</button>
+    <button onclick="change('PAGE!!e4prog', 5);changeStage('hall_dull-spine');" definition="pre-spine">(5)</button>
+    <button onclick="change('PAGE!!e4prog', 7);changeStage('grm_spine');" definition="cleared spine">(7)</button>
+    <button onclick="change('PAGE!!e4prog', 8);changeStage('hall_spine-heart');" definition="pre-heart">(8)</button>
+    <button onclick="change('PAGE!!e4prog', 10);changeStage('grm_heart');" definition="cleared heart">(10)</button>
+    <button onclick="change('PAGE!!e4prog', 12);changeStage('hall_heart-entry');" definition="pre-split-fights">(12)</button>
+    <button onclick="change('PAGE!!e4prog', 13);changeStage('grm_entry');" definition="pre-lesser-boss">(13)</button>
+    <button onclick="change('PAGE!!e4prog', 15);changeStage('grm_lesser');" definition="pre-vekoa">(15)</button>
+    <button onclick="startDialogue('vekoaboss_clear')" definition="vek win cutscene">(15B)</button>
+    <button onclick="startDialogue('entrancefinal')" definition="escape cutscene">(16)</button>
+    <hr />
+    <details id="stagejump">
+        <summary definition="disables dialogue">stagejump</summary>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_entry')">grm_entry</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 1); changeStage('hall_entry-lesser')">hall_entry-lesser</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_lesser')">grm_lesser</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('hall_lesser-dull')">hall_lesser-dull</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_dull_front')">grm_dull_front</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_dull_back')">grm_dull_back</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('hall_dull-spine')">hall_dull-spine</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_spine')">grm_spine</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('hall_spine-heart')">hall_spine-heart</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_heart')">grm_heart</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 11); changeStage('grm_heart')">grm_heart (collapsing)</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('hall_heart-entry')">hall_heart-entry</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 13); changeStage('grm_entry')">grm_entry (revisit)</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 13); changeStage('hall_entry-lesser')">hall_entry-lesser (revisit)</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 15);changeStage('grm_lesser')">grm_lesser (collapsed)</button>
+        <button onclick="change('TEMP!!nodialogue', true); changeStage('grm_core')">grm_core</button>
+        <button onclick="change('TEMP!!nodialogue', true); change('PAGE!!e4prog', 16); changeStage('grm_entry')">grm_entry (final cutscene)</button>
+        <button onclick="change('TEMP!!nodialogue', 'DELETE');">ENABLE DIALOGUE (if disabled by jumping)</button>
+    </details>
+</details>
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__PALE_HALLS__..",
+				name: "pale-halls",
+				dialoguePrefix:  "ep4" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/groundsmindry.gif",
+				
+
+				
+				order: "4",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/embambience1.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 31500, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "this memory is so weird... i actually can't tell what incoherence is real, or if there really is any"
+
+    if(check("ep4__entrancefinal")) {
+        moth = "i'm still processing everything that happened here dude"
+
+    } else if(check("ep4__h2h")) {
+        moth = "dull monsters, a hidden obesk conflict... this is what we've been looking for. the big guy is gonna go crazy when i turn this in"
+
+    } else {
+        moth = "what's up?"
+    }
+
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the groundsmindry",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+						env.waitOnLoad = env.waitOnLoadIgnore ? false : true
+
+						if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+							corruStatic.fade(corruStatic.volume(), 0, 1000)
+							setTimeout(()=> corruStatic.stop(), 1001)
+						}
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					
+					addResources([
+    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
+    "/js/combat/combatActionsJson.js", 
+    "/js/combat/combatActorsJson.js",
+    "/js/combat/combat.js",
+    ["/js/combat/combatGrid.js", ()=> typeof CombatScene == "undefined"],
+    "/js/combat/combatGridScenarios.js",
+    "/js/embassy.js", 
+    "/js/embassy_groundsmindry.js",
+    "/js/embassy_stages_groundsmindry.js",
+    "/js/embassy_groundsmindry_dialogue.js",
+    "/js/combat/combatTileEffects.js",
+])
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthgrmresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        hostiles?<+>hostiles
+            SHOWIF::"ep4__lesser_attack"
+        incoherence?<+>incoherence
+            SHOWIF::"ep4__lesser_attack"
+        meteorite?<+>meteorite
+            SHOWIF::"ep4__h2h"
+        ceremony?<+>ceremony
+            SHOWIF::'ep4__lesser_attack'
+        infection?<+>infection
+            SHOWIF::"ep4__contact"
+        tactical combat?<+>combat
+            SHOWIF::"ep4__lesser_attack"
+        what do you think happened here?<+>thoughts
+            SHOWIF::"ep4__entrancefinal"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question about this
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthgrmresp
+
+loop
+    RESPOBJ::mthgrmresp
+
+ceremony
+    self
+        do you know anything about this ceremony thing
+    
+    moth
+        not really, sorry buddy
+        i think this is the first good look at one we've gotten
+        at least, on the public record...
+        but still, it's fascinating to me how brute-force the process sounds
+        i mean, even the approximate meaning of "ceremony" being used as the structure's name...
+        that's not really something we'd call a scientific process lol
+        anyway, i don't think this is even close to how they'd normally make one
+        on account of the freakish monsters
+    
+    RESPONSES::self
+        right<+>loop
+            FAKEEND::(back)
+
+hostiles
+    self
+        what do you think is going on with these things
+        the hostiles
+        not sure what to call them
+    
+    moth
+        akizet said specters, or illusions...
+        i'd call them monsters
+
+____SHOWIF::"EXEC::check(\`ep4__dull_cavidril-foes\`) || check(\`ep4__spine_miltzaclear\`)"
+    moth
+        but based on what idril said, they're just a part of the ceremony
+        which, i'm still trying to wrap my head around, honestly
+        so the ceremony is a thing in the dull plane,
+        the overlap allows the two planes to interact directly,
+        and that makes the ceremony able to just push its limbs through...
+        ...and vekoa makes them take the shape of golems and people she killed
+        but like, "how" aside, why even take a shape at all?
+        there's too many variables here dude
+        assuming there's a rational explanation in the first place
+        we don't even know if that really was vekoa in charge
+    
+____SHOWIF::[["ep4__dull_cavidril-foes", false], ["ep4__spine_miltzaclear", false]]
+    
+    moth
+        well, they aren't incoherent, despite everything
+        in fact this is one of the clearest memories so far
+        so it's safe to assume they were real, i think...
+        it's pretty clear they have something to do with the ceremony
+        just keep going, maybe we'll see
+        if not... 
+        well, that's yet another unexplained obesk phenomenon to put on the list lol
+
+____END
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+incoherence
+    self
+        have you noticed any incoherence at all?
+    
+    moth
+        as crazy as it is... not really
+        my machines are barely picking up anything that matters
+        aside from some occasional visual loss, this is probably the most intact memory we've seen yet
+        even some of the more twisted stuff... 
+        which, i think, means this is a core memory
+        like something akizet was trying really really hard to make sure the cyst would never mess up
+        and i get why
+    
+    RESPONSES::self
+        yeah<+>loop
+            FAKEEND::(back)
+            
+meteorite
+    self
+        what do you make of the meteorite?
+    
+    moth
+        technically, it isn't really new knowledge...
+        like, we already saw akizet confirm it was corrucystic
+        everyone expected that anyway
+        which, you know, on its own, is whatever
+        a weird spooky mystery that's been unsolved forever
+        but the fact that it's apparently <em>so</em> massive,
+        and has been around so long that "drift in the stone" ripped some veins apart,
+        like... how have we never noticed it?
+        you'd think what is essentially a gargantuan metal deposit in the ocean would be easy to find, right?
+        the ocean is only so big... 
+        although, that is still really big
+        aside from that, i really don't know what to think of the broader implications yet
+        i'm not gonna sit here and ramble about potential connections
+        we just have to find more info on it
+        there's no way akizet didn't learn more after this, you know?
+        especially with the connections her friends apparently had
+    
+    RESPONSES::self
+        agreed<+>loop
+            FAKEEND::(back)
+
+infection
+    self
+        have you heard of anything like this infection?
+        the "contact affliction"
+    
+    moth
+        nope
+        and they've clearly done ceremonies to open contrivances before, 
+        they wouldn't be so surprised if this was a known phenomenon related to that
+        based on how their tech works, including qou bodies,
+        it has to be a thought, right? something that tozik picked up from the pod
+        like, think about disablers
+        they work by forcing in the impulse to "disassemble"
+        and we're pretty sure they propagate across the target's entire system, because the whole thing usually melts
+        if thoughts can work like that in corrucysts, like little viruses,
+        maybe we're just seeing the end-result of that vulnerability
+
+    RESPONSES::self
+        maybe<+>loop
+            FAKEEND::(back)
+
+combat
+    self
+        this tactical combat thing is cool
+        why wasn't it the default
+    
+____SHOWIF::["ep4__entrancefinal", false]
+    moth
+        that's seriously what's on your mind right now?
+        dude. focus
+
+____SHOWIF::"ep4__entrancefinal"
+    moth
+        the framing device has a bunch of bundled structures
+        there's probably a ton we haven't and won't ever see
+        it just uses whatever fits
+        if you're really that into these, i can connect you with my contact
+        just don't rat me out
+     
+____END
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+thoughts
+    self
+        everything seen
+        what do you think actually happened here?
+    
+    moth
+        well
+        from what we've seen, my guess is that it all had to do with that infection
+        the contact affliction, or whatever
+        i think vekoa must be like, patient zero
+        she got something that totally took over while she was in the core
+        the attack signals were probably like, vekoa trying to spread it
+        that would explain everything else, right?
+        the golems, the non-golems, probably the husks somehow
+        although, that kinda breaks down when we get to the "illusions"
+        and the polygonation spires across the world breaking down...
+        shit, i wasn't considering the other failures that happened at the same time
+        not really sure about that stuff
+        my gut just says this infection plays a huge part
+        and i really, really don't think any obesk would just doom a huge portion of the qou population to keep a secret
+        even one as big as the meteorite
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`θsegment`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θsegments`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θtendril`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							env.definitions[`θtendrils`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θwindow`] = { type: `NOTE`, text: `'partial translation';'implied closest functional equivalent';'technological implication'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θwindows`] = { type: `NOTE`, text: `'partial translation';'implied closest functional equivalent';'technological implication'`};
+						
+					
+						
+						
+							env.definitions[`akozak`] = `'burrowing slime';'sinkhole';'many arms'`;
+						
+					
+						
+						
+							env.definitions[`jekzi`] = `'vaznian traditional garment';'robe-like'`;
+						
+					
+						
+						
+							env.definitions[`kelnit`] = `'derogatory';'incompetent fighter'`;
+						
+					
+						
+						
+							env.definitions[`kequvi`] = `'derogatory';'slow of foot and claw'`;
+						
+					
+						
+						
+							env.definitions[`corboku`] = `'large corrucystic devices';'stored in adjacent corroyi or another corru medium until needed';'connected modularly to tendrils'`;
+						
+					
+						
+						
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+						
+					
+						
+						
+							env.definitions[`yuzku`] = `'sluggish bioluminescent scavengers';'intentionally cultivated in veilk parasite husks for lighting';'fatal if consumed'`;
+						
+					
+						
+						
+							env.definitions[`okizika`] = `'ekivik surface monument';'holy site'`;
+						
+					
+						
+						
+							env.definitions[`parii`] = `'veilk bone'`;
+						
+					
+						
+						
+							env.definitions[`sfer`] = `'refined corrucystic fuel/food';'currency'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`dull node`] = `'partial translation';'inherited description-generated noun';'metaconnective corrucyst';'attaches to another node via dull bone paradigm'`;
+						
+					
+						
+						
+							env.definitions[`dull nodes`] = `'partial translation';'inherited description-generated noun';'metaconnective corrucyst';'attaches to another node via dull bone paradigm'`;
+						
+					
+						
+						
+							env.definitions[`dull microconnectors`] = `'partial translation';'inherited description-generated noun';'reckless technology';'ignorant of history'`;
+						
+					
+						
+						
+							env.definitions[`terrible life`] = `'parasite';'reanimation'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`dull eyes`] = `'partial translation';'inherited description-generated noun';'utility scanning device'`;
+						
+					
+						
+						
+							env.definitions[`have in sight`] = `'common idiom';'remember'`;
+						
+					
+						
+						
+							env.definitions[`groundsmind`] = `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`groundsmindry`] = `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`how beholds you`] = `'common idiom';'religious implication';'how does velzie's gaze behold you'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`pale corru`] = `'particular structure of black corru and dead corru sediment';'immobile but extremely strong';'an ekivik favorite'`;
+						
+					
+						
+						
+							env.definitions[`dull ceremony`] = `'self-assembling corrucystic structure within dull plane';'completion allows for creation and direction of new dull contrivance';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+						
+						
+							env.definitions[`ceremony`] = `'self-assembling corrucystic structure within dull plane';'completion allows for creation and direction of new dull contrivance';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+						
+						
+							env.definitions[`ceremonies`] = `'self-assembling corrucystic structure within dull plane';'completion allows for creation and direction of new dull contrivance';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+						
+						
+							env.definitions[`ceremony's`] = `'self-assembling corrucystic structure within dull plane';'completion allows for creation and direction of new dull contrivance';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri-mask`] = `'corrucystic treatment for zuzucri infestation';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri-masks`] = `'corrucystic treatment for zuzucri infestation';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`okidoia`] = `'contextually used to refer to strange sensory phenomena';'vocalized song of many participants';'structurist practice'`;
+						
+					
+						
+						
+							env.definitions[`truth-runner`] = `'archaic revolutionary title';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`dullima pod`] = `'specialized control device used in dull engineering';'hazardous to the mind if used without preparation';'partial translation'`;
+						
+					
+						
+						
+							env.definitions[`dullima pods`] = `'specialized control device used in dull engineering';'hazardous to the mind if used without preparation';'partial translation'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`zenruka`] = { type: `TRANSLATION FAILED`, text: `CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL`};
+						
+					
+						
+						
+							env.definitions[`tail-bearer`] = `'uncommon result of mates with tuvazu heritage';'usually manifests in vel and jut';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`let this cloud drift by`] = `'common idiom';'pause and rest before velzie's light reaches subject again'`;
+						
+					
+						
+						
+							env.definitions[`may you slip velzie's eye`] = `'common idiom';'wishing swiftness'`;
+						
+					
+						
+						
+							env.definitions[`a leap away`] = `'common idiom';'subject of phrase is arriving imminently';'originating from veilk hoppers'`;
+						
+					
+						
+						
+							env.definitions[`reddened veins`] = `'biological sign of parasitic interference';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`split their face into teeth`] = `'common idiom';'reveal a hidden true nature';'negative/parasitic implication'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`life-pod`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`timestopper`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+						
+						
+							env.definitions[`ekivik`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`ekiviks`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`vaznian`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`vaznians`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`tuvazu-tail`] = `'uncommon result of mates with tuvazu heritage';'usually manifests in vel and jut';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`tuvazu's`] = `'abandoned continent';'known for exotic veilk exoparasites'`;
+						
+					
+						
+						
+							env.definitions[`tuvazu`] = `'abandoned continent';'known for exotic veilk exoparasites'`;
+						
+					
+						
+						
+							env.definitions[`velzie smiles`] = `'common idiom';'god is entertained with antics';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`may velzie smile`] = `'common idiom';'wishing subject entertains god with antics';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`keep velzie entertained`] = `'common phrase';'religious implication';'implies wish for safe journey'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`cloaking skin`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					// the embassy pass will add these probably
+page.maskHungerNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
+page.maskUnityNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
+
+env.embassy.progWatcher = (ev) => {
+    //mainly for debug
+    if(ev.detail.key == "PAGE!!e4prog") {
+        body.setAttribute("e4prog", check("PAGE!!e4prog"))
+
+        if(check("PAGE!!e4prog") > 2) { change("PAGE!!ikgolem-gone", true) } else {change("PAGE!!ikgolem-gone", "DELETE") }
+        if(check("PAGE!!e4prog") > 12) { change("PAGE!!miltza-gone", true);change("PAGE!!tozik-gone", "???"); } else {change("PAGE!!miltza-gone", "DELETE");change("PAGE!!tozik-gone", "DELETE") }
+        if(check("PAGE!!e4prog") > 14) { change("PAGE!!tozpain", true) } else {change("PAGE!!tozpain", "DELETE") }
+    }
+}
+document.addEventListener('corru_changed', env.embassy.progWatcher)
+
+if(location.search.includes('debug')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your COLLAPSE SAVE (not anything else) and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+    if(doit) {
+        change('collapseSave', GlobalSaves.collapseSave_ep4start)
+        env.embassy.loadCollapseSave()
+        change("TEMP!!ep3->ep4transfer", true)
+    }
+}
+
+if(location.search.includes('testnav')) {
+   body.classList.add('e4test')
+}
+    
+//load that shit
+try { 
+    env.embassy.loadCollapseSave()
+} catch(e) {
+    console.log("no save")
+}
+
+//only allow procedure if you're meant to be here
+if(check("TEMP!!ep3->ep4transfer")) {
+    // loading in from a prev episode or starting anew 
+    change("PAGE!!embassy_day", 3.99)
+    changeStage('embassy_relocator')
+    startDialogue("move")
+
+    //these are knowledge items, no longer necessary
+    removeItem("golem_sfer")
+    removeItem("golem_parts")
+    change("TEMP!!ep3->ep4transfer", "DELETE")
+    page.party.forEach(m=>delete m.augments)
+
+} else if(!check("PAGE!!embassy_day", 3.99)) {
+    moveTo("/local/ocean/embassy/")
+    return
+} else {
+    changeStage(page.saveZone)
+}
+
+change("PAGE!!akirearrange", true)
+change("PAGE!!nopartyvn", true)
+change("PAGE!!2dcombat", true)
+vn.renderParty() // to get rid of them ironically
+body.setAttribute("e4prog", check("PAGE!!e4prog"))
+
+if(check('gakpause')) {
+    content.classList.add('gakpause')
+}
+
+env.embassy.initializeEmbassyCombatSettings({ep: 3.99})
+document.addEventListener('keydown', stageKeypress)
+change("TEMP!!lshift", "DELETE")
+env.embassy.progWatcher({detail: {key: "PAGE!!e4prog"}})
+change("PAGE!!ikawake", true)
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					document.removeEventListener('corru_changed', env.embassy.progWatcher)
+body.removeAttribute("e4prog")
+body.classList.remove('e4test') 
+stageCleanup()
+combatCleanup()
+env.clearIntervals()
+
+page.bgm.unload()
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "pale-halls";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

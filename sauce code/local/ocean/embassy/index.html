@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__THE_EMBASSY__..</title>	
+<meta name="title" content="..__THE_EMBASSY__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/embassy/">
+<meta property="og:title" content="..__THE_EMBASSY__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/embassy.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/embassy/">
+<meta property="twitter:title" content="..__THE_EMBASSY__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/embassy.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__THE_EMBASSY__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<style>
+
+@import url(/css/combat.css?1743609964848047793);
+@import url(/css/bullethell.css?1743609964848047793);
+@import url(/css/local/embassy.css?1743609964848047793);
+</style>
+
+<div class="dayselect">
+    <span class="day disabled" day="better">
+        <div class="target" entity="recollection::Aæ§&lt;äYf¹L"></div>
+        <span class="dayname">BETTER TIMES</span>
+    </span>
+    <span class="day" day="discovery">
+        <div class="target" entity="recollection::discovery"></div>
+        <span class="dayname">DISCOVERY</span>
+    </span>
+    <span class="day disabled" day="suspicion">
+        <div class="target" entity="recollection::„²!Äë±#Rã"></div>
+        <span class="dayname">SUSPICION</span>
+    </span>
+    <span class="day disabled" day="collapse">
+        <div class="target" entity="recollection::ø¥¬À‰"></div>
+        <span class="dayname">COLLAPSE</span>
+    </span>
+</div>
+
+<script>
+</script>
+
+<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="quality" key="quality" onclick="javascript:stepKey('q')">
+            <i class="ci-quality"></i>    
+        </div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="swap" key="e" onclick="javascript:stepKey('e')">
+            <i class="ci-zoomin"></i>
+            <i class="ci-zoomout"></i>    
+        </div>
+        <div class="party" key="z" onclick="javascript:stepKey('z')"><i class="ci-group"></i></div>
+    </div>
+</div>
+
+<div class="drinklayer" drink="none">
+    <div class="target" entity="orange simulacrum"></div>
+</div>
+
+<div class="errorzone"></div>
+<div class="focus" focus="">
+    <div class="redundancy">
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+        <div class="calldata"></div>
+    </div>
+    <div class="signalcomp">
+        <div class="timeline"></div>
+        <div class="spike spike1"></div>
+        <div class="spike spike2"></div>
+    </div>
+    <div class="focusplane">
+        <div class="head akizet-focus"></div>
+        <div class="head tozik-focus"></div>
+        <div class="head gakvu-focus"></div>
+        <div class="head kazki-focus"></div>
+        <div class="head bozko-focus"></div>
+        <div class="head cavik-focus"></div>
+    </div>
+</div>
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__THE_EMBASSY__..",
+				name: "the-embassy",
+				dialoguePrefix:  "embassy" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/embassy.gif",
+				
+
+				
+				order: "3",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/embambience1.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 31500, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth
+    switch(check("PAGE!!embassy_day")) {
+        case 3:
+            if(env.stage.name.includes("archiv") && check("embassy__d3_bstrdintro")) {
+                moth = "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though"
+            } else {
+                moth = "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that"
+            }
+        break
+
+        case 2:
+            if(check("PAGE!!cystmelted")) moth = "this is fucked up dude, imagine if you couldn't trust any of us"
+            else moth = "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous"
+        break
+
+        case 1:
+            moth = "there are so few distinct thoughtforms here... then again it could just be one part of the embassy"
+        break
+
+        default:
+            if(check("ep4__entrancefinal")) {
+                moth = "wow... that kinda does it for this whole thoughtspace, except for that first one i guess"
+            } else if(env.ep4) {
+                moth = "time to finish the collapse buddy. we almost got everything"
+            } else if(check("embassy__d3_movefriend_finish-end")) {
+                moth = "seems like funfriend is still working on the rest of the collapse memory for now"
+            } else if(check("fbx__ep2intro-end")) {
+                moth = "time to get into the collapse, buddy"
+            } else if(check("embassy_d1_complete") && check("embassy_d2_complete")){
+                moth = "if those were two of the memories she chose to store, what are these other ones??"
+            } else if(check("embassy_d1_complete")) {
+                if(check("citystreet__envoychat-end")) moth = "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?"
+                else moth = "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it"
+            } else {
+                moth = "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data"
+            }
+    }
+
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the embassy",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					
+					page.bgm.rate(0.25)
+
+addResources([
+    "/js/combat/combatActionsJson.js", 
+    "/js/combat/combatActorsJson.js", 
+    "/js/combat/combat.js", 
+    "/js/bullethell.js", 
+    "/js/embassy.js",
+    "/js/embassy_precollapse.js", 
+    "/js/embassy_stages.js", 
+    "/js/embassy_collapse.js"
+])
+
+if(location.search.includes('e3a2test')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+    if(doit) mountSave(GlobalSaves.e3a2debug, false)
+}
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthembresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        about the groundsmindry<+>groundsmindry
+            SHOWIF::"ep4__entrance"
+        about thoughtform structure<+>structureloop
+            SHOWIF::"embassy__d1_start"
+        about obesk<+>obeskloop
+        about collapse<+>collapseloop
+            SHOWIF::"embassy__d3_start-end"
+        about bstrd<+>bstrd
+            SHOWIF::"embassy__d3_bstrdintro-start"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question about the embassy
+
+    moth
+        well, i'll do my best, lol
+    
+    RESPOBJ::mthembresp
+
+loop
+    RESPOBJ::mthembresp
+
+groundsmindry
+    self
+        i want to talk to you about the groundsmindry
+        and all the stuff that happened there
+    
+    moth
+        given the complexity, i'd really prefer to have the data in front of me
+        sure i have the machines recording stuff, but it's raw
+        it's a lot easier to quickly review when it's all loaded up through your spike
+        so just load your iteration
+        or start a new one in that last part
+        then talk to me again, ok?
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+
+bstrd
+    self
+        WHAT IS THIS BSTRD THING
+    
+    moth
+        i gave the data a closer look, at least as close as i can see without a spike myself
+        as far as i can tell, it's an autonomous, iteration-limited memory modifier
+        it picks one spot in a memory based on its importance, and operates only there
+        the fact it can alter the memory at all is honestly incredible
+        it's intended for human memories, specifically combat recordings, but...
+        maybe the loose structure of obesk memory is actually helping it work?
+        anyway don't worry about it spreading, it's limited to the framing device
+        which, by the way, i got from a college pal, not off the spike trade
+        we'd be boiling in internal affairs already if i got it off the spike trade lol
+        but i gotta tell you, this pal of mine...
+        they got the spike a few years ago and they've been really strange ever since
+        and not in a fun way like with you
+        i mean, bless them, they're great, they're just...
+        they would say we aren't getting the full experience of their work without a "hard mode"
+        despite this being an <em>important operation</em>
+        that kind of person, you know?
+        at least this one didn't have a title screen
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+structureloop
+    RESPONSES::self
+        game sucks<+>gamebad
+            SHOWONCE::
+            SHOWIF::"embassy__d3_rec_clear-end"
+        actually the game is ok<+>gamegood
+            SHOWONCE::
+            SHOWIF::"mth++embassy-gamebad"
+        but it needs some work<+>gameok
+            SHOWONCE::
+            SHOWIF::"mth++embassy-gamegood"
+        perspective swap?<+>perspective
+            SHOWIF::"embassy__d1_start"
+        other memories locked?<+>locked
+            SHOWIF::[["embassy_d2_complete", true],["embassy_d1_complete", true],["fbx__ep2intro-end", false]]
+        back<+>loop
+            FAKEEND::(back)
+
+obeskloop
+    RESPONSES::self
+        kazki guns?<+>kazkiguns
+            SHOWIF::"embassy__d3r2-end"
+        weird looking obesk?<+>weirdlook
+            SHOWIF::"embassy__d1_start"
+        is the embassy still around?<+>state
+        team members still around?<+>team
+            SHOWIF::"embassy__d1_kazkibozko"
+        groundsmind?<+>groundsmind
+            SHOWIF::"exm|embassy|attendant"
+        what is a kalstik?<+>kalstik
+            SHOWIF::"exm|embassy|kalstik stand"
+        what is an archival vein?<+>archives
+            SHOWIF::"embassy__d3_bstrdintro-start"
+
+        back<+>loop
+            FAKEEND::(back)
+
+collapseloop
+    RESPONSES::self
+        cavik?<+>cavik
+        the signal?<+>signal
+        casualties?<+>casualties
+        attacks outside embassy?<+>otherattacks
+        back<+>loop
+            FAKEEND::(back)
+
+cavik
+    self
+        AKIZET SAID SOMETHING ABOUT CAVIK...
+        POTENTIALLY GETTING THEM KILLED?
+    
+    moth
+        yeah, i saw that too...
+        i think this memory is further ahead than the other ones
+        we're definitely missing something
+
+    RESPONSES::self
+        i see<+>collapseloop
+            FAKEEND::(back)
+
+casualties
+    self
+        how many casualties were there in the collapse?
+
+    moth
+        we never really got any solid numbers...
+        all we know is enough permanently died that very few physically visit earth anymore
+        i've been told it's mostly out of fear now, but...
+        i have to wonder if most of the existing qou were actually killed in the collapse
+        see, the population of the embassy was only something like a few hundred
+        but the obesk have a really low population, like, as a whole
+        so when one of them dies, especially a qou, it's a big deal
+
+    RESPONSES::self
+        i see<+>collapseloop
+            FAKEEND::(back)
+
+signal
+    self
+        do we know anything about the signal?
+        the one that triggered the start of this?
+
+    moth
+____SHOWIF::'ep4__h2h'
+        officially, no
+        nothing i have access to suggests that the FBX does
+        but, based on what we saw, it's pretty safe to assume it was a dull signal
+        probably from the meteorite, maybe amplified through the embassy's spine
+        though that last part is just my own speculation
+        cause it ran up through the whole embassy and carried groundsmindry signals, right?
+        the embassy easily could have been like, a big antenna
+        that's all i got though
+
+____SHOWIF::['ep4__h2h', false]
+        no, actually
+        i mean, that's me making an assumption
+        because if we knew anything, we'd probably have already connected it to the collapse somehow
+        we didn't and still don't have any tools that can detect dull signals
+        but the fact we didn't know about it does at least confirm that it was a dull signal            
+____END
+
+    RESPONSES::self
+        that's too bad<+>collapseloop
+            FAKEEND::(back)
+
+gameok
+    self
+        i've been thinking some more
+        the game is ok but it needs some work
+
+    moth
+        i'll forward that to the hacker i got it from for you
+        i'm sure they'll get right on it
+    
+    RESPONSES::self
+        thanks<+>structureloop
+            FAKEEND::(back)
+
+
+gamegood
+    self
+        actually the game is ok
+    
+    moth
+        ok?
+        great
+    
+    RESPONSES::self
+        yes!!<+>structureloop
+            FAKEEND::(back)          
+
+gamebad
+    self
+        game sucks
+    
+    moth
+        ok, first, that's not a question
+        second, you're gonna have to deal with it
+        the only way we can access this data is with a framing device
+        and this is the only one i could get without drawing attention
+    
+    RESPONSES::self
+        fine<+>structureloop
+            FAKEEND::(back)
+
+otherattacks
+    self
+        when the collapse started,
+        were there any attacks anywhere else?
+    
+    moth
+        not attacks, really
+        but there was some really weird stuff that happened at the same time
+        see, the obesk had these things they called polygonation spires
+        put them all around the world, used them to track the call's origin point
+        looked like big purple spikes that stuck out of the ground, like radio tower height
+        they were big tourist attractions for a while, actually
+        anyway, when this started, they all melted
+        every single one just collapsed on itself
+        popular theory was that they relied on something in the embassy that broke...
+        but i'm not really sure that's the case anymore
+        there are also these old archived videos from way back when of obesk ships acting strangely
+        like, darting around in the air and not really going anywhere, nearly crashing into buildings
+        nothing bad ever really happened, and some news sites debunked them as CGI hoaxes
+        remember, that was also about when the AI shit hit the fan, so...
+        man, i'm just rambling - there was all kinds of weird stuff that happened, ok?
+    
+    RESPONSES::self
+        ok<+>collapseloop
+            FAKEEND::(back)
+    
+
+kazkiguns
+    self
+        where did kazki get guns?
+
+    moth
+        one of the internal initiatives the obesk had involved the exchange of materials
+        like, everything - from plastic bottles, to assault rifles
+        they gave us stuff too, although obviously it was a little one sided...
+        this was like 20+ years ago so idk exactly what the circumstances were,
+        but when aliens were new, people probably didn't hesitate to give them whatever
+    
+    RESPONSES::self
+        i see<+>obeskloop
+            FAKEEND::(back)
+    
+
+perspective
+    self
+        why can i swap perspectives?
+        isn't this a memory from akizet's POV?
+    
+    moth
+        wait, you couldn't swap before?
+        that's a stock feature, it's part of the FBX patch
+        huh... 
+        i guess the other spatial thoughtforms must have been too unstable
+        maybe they'll get that too once funfriend gets to them
+    
+    RESPONSES::self
+        that would be nice<+>structureloop
+            FAKEEND::(back)
+
+locked
+    self
+        why are these other two memories not opening up?
+
+    moth
+        looking at the data i can access here,
+        these two are still totally busted. 
+        something to talk to funfriend about for sure
+        and the last one... holy smokes
+        i don't think your mindspike will even let you render it?
+        it's still busted, but i'm also reading that it has 'aggressive action'
+        even if we get it repaired,
+        your mindspike will block out combat simulations
+        it's, like... a legal thing. remember that big mindsci lawsuit?
+        although, i do have an idea...
+        but, we'll get to that if this ever gets fixed
+    
+    RESPONSES::self
+        i see<+>structureloop
+            FAKEEND::(back)
+
+weirdlook
+    self
+        why do the obesk look like that?
+
+    moth
+        well, funfriend said visual data was totally gone, 
+        so he had to use cached "network signatures" from "the collective"
+        which... i guess is like something like their internet
+        they've talked about it a few times in old interviews
+        particularly when they first got access to <em>our</em> internet
+        looks like they had a lot of fun coming up with stuff
+    
+    RESPONSES::self
+        yes it does<+>obeskloop
+            FAKEEND::(back)
+
+kalstik
+    self
+        what is a kalstik?
+    
+    moth
+        i have absolutely no idea
+        sorry lol
+    
+    RESPONSES::self
+        its ok<+>obeskloop
+            FAKEEND::(back)
+
+archives
+    self
+        what is an archival vein?
+    
+    moth
+        well, i can see from surface-level context that it's part of the groundsmindry system
+            SHOWIF::[["exm|embassy|archive", false]]
+        there are apparently a lot of them, and since it uses the word 'vein'...
+            SHOWIF::[["exm|embassy|archive", false]]
+        there's probably a whole system they're connected to
+            SHOWIF::[["exm|embassy|archive", false]]
+        that's the best i can do buddy, do some more scanning and i might be able to help more
+            SHOWIF::[["exm|embassy|archive", false]]
+
+        from the context of what you've scanned, i can get a pretty good idea...
+            SHOWIF::[["exm|embassy|archive", true]]
+        everything is implying that there was an entire vascular-like system of them throughout the embassy
+            SHOWIF::[["exm|embassy|archive", true]]
+        and all of them had the obesk's data cysts loaded up in bulk amounts...
+            SHOWIF::[["exm|embassy|archive", true]]
+        ...which all funnelled knowledge down to the groundsmind for 'operational omniscience'
+            SHOWIF::[["exm|embassy|archive", true]]
+        that's a pretty cool idea, but i can only imagine it made the collapse happen faster
+            SHOWIF::[["exm|embassy|archive", true]]
+        seems like there'd be a lot of structural failure points if it was an entire tunnel system
+            SHOWIF::[["exm|embassy|archive", true]]
+
+    RESPONSES::self
+        ok<+>obeskloop
+            FAKEEND::(back)
+
+state
+    self
+        is the embassy still around?
+
+    moth
+        there is <em>an</em> embassy, but it ain't this one
+        this one collapsed, like it completely melted
+____SHOWIF::"ep4__entrancefinal"
+        and now we know why
+        but knowing that, i really wonder why they bothered building another one
+        was it to save face?
+        maybe they have a new research team investigating the aftermath?
+        or maybe they just didn't wanna totally abandon us, despite what happened
+        the obesk totally closed up after the collapse, so we don't have any answers yet
+
+____SHOWIF::["ep4__entrancefinal", false]
+        nobody really knows why, that's when the obesk started closing up
+        stopped sending out visitors to cities, fbx contacts made themselves sparse...
+        it was a whole thing
+        and the ocean around the embassy hasn't really been the same since
+____END
+    
+    RESPONSES::self
+        i see<+>obeskloop
+            FAKEEND::(back)
+
+team
+    self
+        are akizet's team members still around?
+
+    moth
+        no idea
+____SHOWIF::"ep4__entrancefinal"
+        really, truly, there's so much unanswered now that i can't even guess
+        maybe they fled home? 
+        maybe they're still here, working within their conflict
+        we're just gonna have to find out i guess
+
+____SHOWIF::["ep4__entrancefinal", false]
+        i mean, people say they all disappeared, but...
+        honestly, like, all the obesk pulled back
+        i wouldn't be surprised if they just went back home
+        whatever happened with the embassy collapse completely spooked all of them
+____END
+    
+    RESPONSES::self
+        i see<+>obeskloop
+            FAKEEND::(back)
+
+groundsmind
+    self
+        what is a groundsmind?
+
+    moth
+        oh, you don't know?
+        it's pretty cool
+        basically, they assign someone to be the "groundsmind" of major structures
+        they connect to this gigantic corrucyst that's hooked up to the walls
+        and they kind of just control everything
+        it's like they become the building
+        sounds familiar, right?
+        that idea ended up inspiring the whole mindspike industry
+        it's one of those little bits of history that gets forgotten all the time
+    
+    RESPONSES::self
+        i see<+>obeskloop
+            FAKEEND::(back)
+
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`θsegment`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θsegments`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θtendril`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							env.definitions[`θtendrils`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							env.definitions[`θbranch`] = `'used interchangably with tendril';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'less formal term'`;
+						
+					
+						
+						
+							env.definitions[`veilks-blood`] = `'common beverage';'not blood'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`spirestorm`] = `'weather phenomena';'ceaseless violent storm surrounding natural spire'`;
+						
+					
+						
+						
+							env.definitions[`vaznian`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`ekivik`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`ekiviks`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`celki`] = `'veilk parasite';'food'`;
+						
+					
+						
+						
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+						
+					
+						
+						
+							env.definitions[`okizika`] = `'ekivik surface monument';'holy site'`;
+						
+					
+						
+						
+							env.definitions[`kozazni`] = `'vaznian cave-city';'home of kazki';'known for fungal farms'`;
+						
+					
+						
+						
+							env.definitions[`parii`] = `'veilk bone'`;
+						
+					
+						
+						
+							env.definitions[`sfer`] = `'refined corrucystic fuel/food';'currency'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`zzoust`] = `'party drink';'name not properly spoken unless shouted'`;
+						
+					
+						
+						
+							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`zevazni`] = `'cave-city central to vazni';'corrucystic revolution origin'`;
+						
+					
+						
+						
+							env.definitions[`no tendril left to rot`] = `'common idiom';'all is harvested'`;
+						
+					
+						
+						
+							env.definitions[`velzie's smile upon`] = `'common idiom';'subject entertains god with antics';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`great gaze`] = `'common idiom';'velzie's great gaze upon us';'wishes of good luck'`;
+						
+					
+						
+						
+							env.definitions[`groundsmind`] = `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`groundsmindry`] = `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`timestopper`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`how beholds you`] = `'common idiom';'religious implication';'how does velzie's gaze behold you'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`cavernguard`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`kalstik`] = { type: `TRANSLATION FAILED`, text: `CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`life-pod`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					page.maskHungerNote = "\nRESONANCE::'limited'";
+page.maskUnityNote = "\nRESONANCE::'limited'";
+
+if(location.search.includes('debugintro')) {flags.dialogues["fbx__ep2intro-end"] = true; change('hub_introduced', true); }
+
+else if(location.search.includes('debug')) {flags.dialogues["fbx__ep2intro-end"] = true; flags.dialogues["hub__funfriend-mothframe2"] = true; change('hub_introduced', true); }
+
+if(check("embassy_d1_complete")) {
+    let suspicion = document.querySelector('.day[day="suspicion"]')
+    suspicion.classList.remove('disabled')
+    suspicion.querySelector('.target').setAttribute("entity","recollection::suspicion")
+}
+
+if(check("fbx__ep2intro-end")) {
+    let suspicion = document.querySelector('.day[day="collapse"]')
+    suspicion.classList.remove('disabled')
+    suspicion.querySelector('.target').setAttribute("entity","recollection::collapse")
+}
+
+if(!check('embassy__quality-end')) {
+    cutscene(true)
+    let qualCheck 
+    qualCheck = setInterval(()=>{
+        if(typeof env.dialogues.quality != "undefined") {
+            clearInterval(qualCheck)
+            startDialogue('quality')
+            cutscene(false)
+        }
+    }, 500)
+}
+
+if(check('gakpause')) {
+    content.classList.add('gakpause')
+}
+
+content.classList.add('show-vn')
+
+new Lettering('#content .dayname').letters()
+document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					stageCleanup()
+combatCleanup()
+env.clearIntervals()
+body.classList.remove('nomenus');
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "the-embassy";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

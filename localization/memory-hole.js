@@ -1790,7 +1790,7 @@ start
 // --- hey buddy
 env.dialogueActors["corrurubonus"] = {
     name: "cor-ru",
-    type: "corruru portrait-contain",
+    type: "corruru",
     voice: ()=>{play('talkcroak', 1.75)}
 }
 
@@ -1811,8 +1811,31 @@ env.dialogueActors["fiv"] = {
     type: "lilfive",
     voice: ()=>{play('talkcroak', 1.75)}
 }
-
 env.dialogues["bonus_corruru"] = generateDialogueObject(`
+start
+    sys
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
+        ВНИМАНИЕ::'поток памяти был записан сторонними ресурсами'
+        ВНИМАНИЕ::'оригинальный источник потока памяти';'cor-ru'
+
+    ros
+        уаааааааааааа!!!
+
+    mle
+        боже диалог
+
+    fiv
+        
+
+    sys
+        УВЕДОМЛЕНИЕ::'окончен поток памяти'
+
+    RESPONSES::sys
+        вернуться<+>END
+            EXEC::moveTo("/local/depths/")
+            FAKEEND::(вотето да)
+`)
+/*env.dialogues["bonus_corruru"] = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1857,7 +1880,7 @@ start
 
     sourceless
         "дуто" бросает писать этот диалог
-        наступает утро
+        проходит два дня
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -1865,7 +1888,9 @@ start
     RESPONSES::sys
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
-`)
+            FAKEEND::(вотето да)
+`)*/
+
 bonusContent = `
 <div id="content" data-swup="0">
 <style>

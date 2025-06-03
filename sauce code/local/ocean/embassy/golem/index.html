@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__GOLEM_MAINTENANCE__..</title>	
+<meta name="title" content="..__GOLEM_MAINTENANCE__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/embassy/golem/">
+<meta property="og:title" content="..__GOLEM_MAINTENANCE__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/golms.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/embassy/golem/">
+<meta property="twitter:title" content="..__GOLEM_MAINTENANCE__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/golms.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__GOLEM_MAINTENANCE__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div class="errorzone"></div>
+
+<style>
+
+@import url(/css/combat.css?1743609964848047793);
+@import url(/css/bullethell.css?1743609964848047793);
+@import url(/css/fpfight.css?1743609964848047793);
+@import url(/css/local/embassy.css?1743609964848047793);
+@import url(/css/stage/beneath.css?1743609964848047793);
+
+/* combat overrides */
+#combat::after, #combat::before {
+    transform: rotate(0deg)
+}
+
+#combat::before {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/warpsmall.gif);
+    background-color: var(--bright-color);
+    background-repeat: no-repeat, repeat, repeat;
+    background-size: cover;
+
+}
+
+#realgrid .gridpiece:not(.blocks):empty {
+    border: unset;
+    border: 1px dashed var(--bright-color);
+}
+
+#content.collapse::after {
+    background-image: unset;
+    background: black;
+}
+
+body[quality="low"] #content.golemfloor {
+    background: black;    
+}
+
+body[quality="low"] #content.golemfloor::after {
+    background: url(/img/textures/fadeinlonghalfflip.gif), url(/img/local/embassy/golemwall.gif), var(--dark-color);
+    background-size: auto 100%, cover;
+    background-position: 50% -10%, bottom center, center;
+    transform: translateY(-25%);
+}
+
+/* weird door signs */
+#realgrid .sign {
+    width: 50%;
+    height: 50%;
+    cursor: alias;
+    background: url(/img/mui/marblynryetarget_microcyan.svg), var(--signImage);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%, contain;
+    animation: TINYHOVER 5s ease-in-out infinite alternate;
+    --baseTransform: translateZ(10px);
+}
+
+#realgrid .door .doorsign {
+    --dyp-image: transparent;
+    --dyp-width: 1;
+    --dyp-height: 1;
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+    --signOffset: translateY(-170%) 
+}
+
+#realgrid .door.sludged .doorsign {
+    display: none;
+}
+
+#realgrid .door.big { --signOffset: translateY(-200%) }
+
+#realgrid .door.down .doorsign {--dyp-transform: var(--signOffset) translateZ(calc(var(--gridTileSize) * 0.54))}
+#realgrid .door.up .doorsign {--dyp-transform: var(--signOffset) translateZ(calc(var(--gridTileSize) * -0.54)) rotateY(180deg)}
+#realgrid .door.left .doorsign {--dyp-transform: var(--signOffset) rotateY(90deg) translateZ(calc(var(--gridTileSize) * 0.54))}
+#realgrid .door.right .doorsign {--dyp-transform: var(--signOffset) rotateY(-90deg) translateZ(calc(var(--gridTileSize) * 0.54));}
+
+.mui-active #realgrid .sign::after, #realgrid .sign:hover::after {
+    content: "";
+    background-color: #00ffff38;
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    border-radius: 100%;
+    animation: SPIN 10s linear infinite;
+    border: 2px dotted var(--obesk-color);
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+
+#realgrid .door.down.melthole::after {
+    transform: rotateX(-110deg) rotateY(0deg) translateY(-40%) translateZ(calc(-0.46 * var(--gridTileSize)));
+    border-radius: 100%;
+    background: black;
+    background-image: url(/img/local/embassy/fakehall.gif);
+    background-position: center;
+}
+
+/* GENERAL PROPS */
+body[quality="low"] #realgrid .sconce {
+    display: none;
+}
+
+.sconce {
+    width: 100%;
+    height: 100%;
+    transform: translateX(102%) translateZ(1px);
+}
+
+.sconce .target {
+    transform-origin: left;
+    transform: rotateY(-90deg) rotate(90deg) translate(-50%, -150%);
+}
+
+.sconce::after, .sconce::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    background: url(/img/textures/sconcegradientfloor.gif?!!);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left;
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+    pointer-events: none;
+}
+
+.sconce::after {
+    left: 0;
+    height: 300%;
+    width: 150%;
+}
+
+.sconce::before {
+    transform-origin: center;
+    background-image: url(/img/textures/sconcegradientwall.gif?esfs);
+    transform: rotateY(90deg) translateX(-100%) rotateZ(90deg) translateZ(calc(var(--gridTileSize) * -0.5));
+    height: 200%;
+    background-position: center;
+}
+
+.sconce figure {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    transform-origin: bottom left;
+    transform: rotateX(-90deg) translateZ(calc(var(--gridTileSize) * -0.5)) rotateZ(90deg) translateX(-250%);
+    background: url(/img/local/embassy/sconcetemp.gif?);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+}
+
+body[quality="regular"] .sconce figure::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    pointer-events: none;
+    transform: rotateX(90deg) translateY(-25%) translateZ(calc(var(--gridTileSize) * -0.1));
+    transform-origin: center;
+    background-image: url(/img/local/embassy/sconcetemp_side.gif);
+}
+
+
+.sconce.busted figure {
+    background-image: url(/img/local/embassy/sconcetemp_busted.gif?);
+    transform: rotate(25deg) translateX(-55%) rotateX(-1deg);
+}
+
+.sconce.busted::after, .sconce.busted::before {
+    background-image: url(/img/textures/sconcegradientfloorbroke.gif);
+}
+
+.sconce.busted::before {
+  display: none;
+}
+
+body[quality="regular"] .sconce.busted figure {
+    transform: rotate(38deg) translateX(-61%) rotateX(-25deg);
+}
+
+body[quality="regular"] .sconce.busted figure::after {
+    background-image: url(/img/local/embassy/sconcetemp_side_busted.gif);
+}
+
+/* VATS */
+#realgrid .prop .dullbeam {
+    width: 100%;
+    height: 100%;
+    transform: unset;
+}
+
+.dullbeam figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dullbeam span {
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 100%);
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+}
+
+.dullbeam span:nth-child(1) {
+    top: 0;
+    transform-origin: top;
+    transform: rotateX(90deg)
+}
+
+.dullbeam span:nth-child(2) {
+    bottom: 0;
+    transform-origin: bottom;
+    transform: rotateX(90deg) translateY(100%);
+}
+
+.dullbeam span:nth-child(3) {
+    left: 0;
+    bottom: 0;
+    transform-origin: right;
+    transform: rotateY(90deg) rotateZ(90deg) translateY(50%) translateX(100%)
+}
+
+.dullbeam span:nth-child(4) {
+    bottom: 0;
+    transform-origin: left;
+    transform: rotateY(-90deg) rotateZ(90deg) translateY(-50%) rotateX(180deg);
+}
+
+#realgrid .dullbeam .target {
+    transform: rotateY(atan2(var(--distX), var(--distY))) rotateY(90deg) translateZ(calc(var(--gridTileSize) * 0.5));
+    --distX: calc(5 - var(--stage-steps-x));
+    --distY: calc(5 - var(--stage-steps-y));
+}
+
+/********** ROOMS *********/
+/* for g_personnel */
+.gridpiece.cwall.cornerwall.north.meltnorth canvas.wall:last-child {
+    transform: rotateX(-110deg) translateX(100%);
+}
+
+/* the lobby uses the tunnel locale so that it feels open and kinda happy. not quite as ornate as tunnels still */
+
+#content[locale="golem_tunnel"]::after {
+  background: url(/img/textures/cneural.gif), black;
+}
+
+body#g_lobby #content::after {
+    background: url(/img/local/uncosm/alkaki.gif), url(/img/textures/fadeinlong.gif), url(/img/textures/cmgradient.gif);
+    background-size: auto 100%, auto 100%;
+    background-position: 50% -10%, bottom center, center;
+    transform: rotate(0);
+}
+
+body#g_lobby[quality="low"] #content::after {
+    background: url(/img/textures/fadeinlonghalfflip.gif), url(/img/local/uncosm/alkaki.gif), var(--dark-color);
+    background-size: auto 100%, cover;
+    background-position: 50% -10%, bottom center, center;
+    transform: translateY(-25%);
+}
+
+body#g_lobby[quality="low"] #content {
+    background: black;
+}
+
+#g_lobby #realgrid .savepoint {
+    --baseTransform: rotate(180deg) rotateX(-90deg) translateY(-150%) rotateY(180deg);
+}
+
+body#g_lobby #content.safe .vn-party, 
+body#g_lobby #content.safe .creaturesprite:not(.akizet),
+body#g_lobby #content:not(.safe) .character:not(.geli) {
+    display: none;
+}
+
+#g_lobby .cavik {
+    --charTransform: rotateY(180deg);
+}
+
+#realgrid .geli.character {
+    transform: translateY(-25%) rotateX(-90deg) var(--charTransform) rotateY(180deg) rotateY(var(--faceAngle));
+}
+
+/* geli's desk gets a second layer on high to give it some slight depth */
+#realgrid .gridpiece.gelitable::after, #realgrid .gridpiece.gelitable::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background-image: url(/img/local/embassy/gelidesk.gif);
+    transform: translateZ(calc(var(--gridTileSize) * 0.75));
+}
+
+#realgrid .gridpiece.gelitable::before {
+    display: none;
+}
+
+body[quality="regular"] #realgrid .gridpiece.gelitable::before {
+    display: block;
+    transform: translateZ(calc(var(--gridTileSize) * 0.5));
+    background: black;
+    border-radius: 100%;
+}
+
+/* big scary boss door */
+#realgrid .door.big::after {
+    background-image: url(/img/local/embassy/golemdoorbig.gif);
+}
+
+#realgrid .door.locked.big:not(.fakeunlock)::after {
+    background-image: url(/img/local/embassy/golemdoorbiglock.gif);
+}
+
+#realgrid .door.locked.sludged.big:not(.fakeunlock)::after {
+    background-image: url(/img/local/embassy/golemdoorbigmelt.gif);
+}
+
+#realgrid .door.big::after, #realgrid .door.big .target {
+    width: 350%;
+    height: 350%;
+}
+
+#realgrid .door.big > .target {
+    transform: rotateX(-90deg) rotateY(0deg) translateZ(calc(0.53 * var(--gridTileSize)));
+}
+
+/* ceilings */
+.golemceiling {
+    position: absolute;
+    transform: rotateX(-180deg) translateZ(calc(var(--gridTileSize) * -3)) translateZ(1px);
+    backface-visibility: hidden;
+}
+
+body[quality="low"] .golemceiling {
+    display: none;
+}
+
+/* trick to avoid having to do stupid tile stuff with ikgolem */
+#realgrid[stage="g_lobby"] .character.ikgolem {
+    transform: translateY(-25%) translateY(50%) rotateX(-90deg) var(--charTransform);
+}
+
+/* e3a2 signifier */
+body[mask="hunger"] #realgrid[stage="g_lobby"] .slim.up.sludged.locked {
+    background: url(/img/textures/warp.png), url(/img/textures/corrurippleSTILL.gif);
+    background-position: center;
+    border: 10px solid var(--neutral-color);
+    border-style: outset;
+}
+
+/* MANUFACTURING */
+body#g_m_hall #content:not(.safe) .character {
+    display: none;
+}
+
+#realgrid .door.slim .target {
+    width: 100%;
+    height: 300%;
+    transform: translateZ(7px);
+}
+
+#realgrid .dyp .cornerdesk {
+    top: 0;
+    left: 0;
+    bottom: unset;
+}
+
+body[quality="low"] #realgrid .cornerdesk {
+    display: none;
+}
+
+#realgrid .cornerdesk::after, #realgrid .cornerdesk::before {
+    content: "";
+    width: calc(var(--gridTileSize) * 1);
+    height: calc(var(--gridTileSize) * 3);
+    background: url(/img/textures/blackstaticSTILL.gif);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 25px;
+    border: 1px solid var(--friend-color);
+}
+
+#realgrid .cornerdesk.archival::after, #realgrid .cornerdesk.archival::before {
+    background-image: url(/img/local/embassy/archivalwall.gif)
+}
+
+#realgrid .cornerdesk::after {
+    transform: rotate(-90deg) translateY(-33%) translateZ(calc(var(--gridTileSize) * 0.25));
+    transform-origin: top right;
+    border-top-color: transparent;
+    border-top-style: dashed;
+}
+
+#realgrid .cornerdesk.alt::after {
+  transform: rotate(-90deg) translateY(-33%) translateZ(calc(var(--gridTileSize) * -0.25));
+}
+
+    /* major vats */
+#realgrid .dyp .majorvatwall {
+    background: url(/img/local/embassy/wallcover.gif), url(/img/textures/panelpatterntran.gif), url(/img/textures/fadein.gif);
+    background-size: 100% 100%, auto 150%, auto;
+    background-repeat: repeat, repeat, repeat-x;
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+
+body#g_m_dist #content::after {
+    background: url(/img/textures/corrurippletran.gif), url(/img/local/embassy/archivalwarp.gif);
+    background-color: var(--bright-color);
+    background-size: auto, 100% 100%;
+}
+
+body#g_m_dist[quality="low"] #content::after {
+    background: url(/img/textures/fadeinlonghalf.gif), url(/img/local/embassy/archivalwarp.gif);
+    background-size: contain, 100% 100%;
+    transform: translateY(0);
+}
+
+body#g_m_major #content::after {
+    background: var(--obesk-color);
+}
+
+body#g_m_major[quality="low"] #content::after {
+    background: url(/img/textures/fadeinlong.gif), var(--obesk-color);
+    transform: translateY(0);
+    background-size: contain;
+    background-repeat: repeat-x;
+    background-size: auto;
+    background-position: top;
+}
+
+.golemceiling.majordome, .golemceiling.majorcolumn {
+    top: var(--gridTileSize);
+}
+
+.golemceiling.majordome {
+    border-top-right-radius: 1000px;
+    border-top-left-radius: 1000px;
+}
+
+
+/* for ik golem construction */
+.golemparts {
+    opacity: 0;
+}
+
+.golemparts figure {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    --baseTransform: translate(-50%, -50%) translateZ(calc(var(--gridTileSize) * -1)) rotateY(180deg);
+    transform: var(--baseTransform);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.golemparts figure::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/local/embassy/vatarms.gif);
+    animation: SPIN 10s ease-in-out INFINITE alternate;
+    --baseTransform: translateY(0);
+}
+
+.golemparts figure img {
+    position: absolute;
+    --baseTransform: translateY(0);
+    animation: HOVER 3s ease-in-out infinite alternate;
+}
+
+.golemparts figure .ika {
+    height: 40%;
+    top: 40%;
+    left: 10%;
+}
+
+.golemparts figure .ika:last-of-type {
+    right: 25%;
+    left: unset;
+    --baseTransform: rotate(20deg)
+}
+
+.golemparts figure .ikb {
+    height: 60%;
+    top: 30%;
+    --baseTransform: translate(20%) rotate(-20deg);
+    animation-duration: 10s;
+}
+
+.golemparts figure .ikh {
+    height: 20%;
+    top: 10%;
+    --baseTransform: rotate(40deg);
+}
+
+.makingik .golemparts, .makingik .golemparts figure {
+    opacity: 1;
+    display: flex;
+}
+
+.makingik .ikterminal {
+    --dyp-image: url(/img/local/embassy/projectorbig_noscreen.gif) !important;
+}
+
+
+/* SFER */
+/* first room in metals has a bunch of scrap, and two states of preprocessor */
+#realgrid .prop .scrapmetal {
+    background-image: url(/img/local/embassy/brightscrap.gif);
+    background-size: contain;
+    background-position: bottom center;
+    transform: translateY(-25%) rotateX(-90deg) rotateY(-90deg) translateZ(calc(var(--gridTileSize) * -0.5)) rotateX(-20deg);
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+    width: calc(var(--gridTileSize) * 5);
+}
+
+#realgrid .prop .processor {
+    background-image: url(/img/local/embassy/preprocessor.gif);
+    background-size: contain;
+    transform: translateY(-16.5%) rotateX(-90deg) rotateY(90deg);
+    height: calc(var(--gridTileSize) * 3);
+    width: calc(var(--gridTileSize) * 2);
+}
+
+#realgrid .prop .processor.sludged {
+    background-image: url(/img/local/embassy/preprocessor_sludged.gif);
+}
+
+    /* sfer generation */
+#realgrid .sfervat {
+    width: 100%;
+    height: 200%;
+    position: absolute;
+    transform: translateX(100%) translateZ(var(--gridTileSize));
+}
+
+#realgrid .sfervat figure {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#realgrid .sfervat::before,
+#realgrid .sfervat::after,
+#realgrid .sfervat figure::before,
+#realgrid .sfervat figure::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/textures/fadeinlong.gif), url(/img/textures/fadeinlongm.gif);
+    background-size: auto, auto 100%;
+    background: linear-gradient(#00ffff40, var(--obesk-color));
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+
+#realgrid .sfervat::before {
+    transform-origin: bottom;
+    transform: translateY(25%) rotateX(-90deg);
+    bottom: 0;
+}
+
+#realgrid .sfervat::after {
+    transform-origin: bottom;
+    transform: translateY(-125%) rotateX(-90deg) rotateY(180deg);
+}
+
+#realgrid .sfervat figure::before,
+#realgrid .sfervat figure::after {
+    width: 300%;
+    transform-origin: center;
+    transform: rotateX(90deg) translateX(-17%) rotateY(90deg) translateY(50%) rotate(180deg);
+}
+
+#realgrid .sfervat figure::before {
+    transform: rotateX(-90deg) translateX(-33%) rotateY(90deg) translateY(-50%);
+    background: url(/img/local/embassy/sfervat.gif);
+    background-size: auto;
+}
+
+#realgrid .sfervat.busted::before, 
+#realgrid .sfervat.busted::after, 
+#realgrid .sfervat.busted figure::before, 
+#realgrid .sfervat.busted figure::after {
+    background: url(/img/textures/fadeinlong.gif), url(/img/textures/fadeinlongm.gif);
+    background-size: auto, auto 100%;
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+}
+
+#realgrid .sfervat.busted figure::before {
+    transform: rotateX(90deg) translateX(-50%) rotateY(90deg) translateY(50%);
+    background: url(/img/textures/fadeinlong.gif), linear-gradient(#00ffff40, var(--obesk-color));
+}
+
+body[quality="low"] #realgrid .deadtainer.vatbase.otherside > span:nth-child(2) {
+    transform: rotate(0deg);
+}
+
+    /* storage room - messed up by dull transport golem */
+#realgrid[stage="g_s_storage"] .gridpiece.wall::before, 
+#realgrid[stage="g_s_storage"] .gridpiece.wall::after {
+    background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/embassy/mossdesign.gif), url(/img/local/embassy/golemwallmelt.gif);
+    background-size: 100% 100%, auto 100%, auto;
+    background-position: center bottom;
+}
+
+.dullified #realgrid .gridpiece.wall::before, 
+.dullified #realgrid .gridpiece.wall::after {
+    background: url(/img/local/embassy/golemwallmeltfadedoubledull.gif);
+    background-size: 100% 100%;
+    height: calc(var(--gridTileSize) * 5);
+}
+
+body #content.dullified::after {
+    background: url(/img/local/orbit/core.gif);
+    background-color: white;
+}
+
+.dullified #realgrid .gridpiece:not(.blocks):empty {
+  background: transparent;
+}
+
+.dullified #realgrid .dyp {
+    opacity: 0;
+}
+
+.dullified #stagefloor, .dullified .golemceiling {
+    display: none;
+}
+
+.busted .gridpiece.cwall.cornerwall.south canvas.wall:last-child {
+    transform: rotateX(-70deg) rotateY(180deg) translateY(-100%);
+}
+
+.busted .gridpiece.cwall.cornerwall.north canvas.wall:first-child {
+    transform: rotate(-90deg) rotateX(-110deg);
+}
+
+.busted .gridpiece.cwall.cornerwall.south canvas.wall:first-child {
+    transform: rotate(90deg) rotateX(-110deg) translateX(-100%) translateY(-100%);
+}
+
+/* ops hall - split by sludge from collapsing veins */
+#realgrid .archivalsludge {
+    background-size: 100% 100%;
+}
+
+#realgrid .archivalsludge::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    backface-visibility: inherit;
+    --webkit-backface-visibility: inherit;
+    transform: rotate(180deg) translateZ(calc(var(--gridTileSize) * -0.5));
+}
+
+/* ops rooms */
+#realgrid[stage^="g_o_r"] .gridpiece:not(.blocks):empty, #realgrid[stage^="g_o_r"] .gridpiece.darktile {
+    border: 2px dashed var(--bright-color);
+    border-radius: 100%;
+}
+
+#realgrid[stage^="g_o_r"] .gridpiece:not(.blocks):empty {
+  background: transparent;
+}
+
+#realgrid[stage^="g_o_r"] .ally-sprite {
+  border-radius: 100%;
+}
+
+body[id^="g_o_r"] #content::after {
+  background-image: url(/img/local/embassy/ceilingcover.gif), url(/img/textures/fadeinlong.gif);
+  background-color: var(--obesk-color);
+  background-position: top;
+  background-repeat: repeat-x, repeat;
+  background-size: 100% 100%, 100% 100%, auto;
+}
+
+body[id="g_o_r_dull"] #content::after {
+  background-image: url(/img/local/embassy/ceilingcover.gif), url(/img/textures/fadeinlong.gif), url(/img/local/orbit/core.gif);
+  background-color: var(--bright-color);
+  background-position: top;
+  background-repeat: repeat-x, repeat;
+  background-size: 100% 100%, 100% 100%, auto;
+}
+
+.golemceiling.dullrug {
+    border-radius: 100%;
+}
+
+.golemceiling.dullrug + .dullrug {
+    transform: translateZ(-2px);
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span {
+    height: 300%;
+    background: URL(/img/local/embassy/dullstructure.gif?), linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(0,0,0,0) 50%, rgb(255, 255, 255) 100%);
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(1) {
+    transform: rotateX(90deg) rotateY(180deg);
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(3) {
+    transform: rotateY(90deg) rotateZ(90deg) translateY(50%) translateX(50%) rotateY(180deg);
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(4) {
+    transform: rotateY(90deg) rotateZ(90deg) translateX(50%) translateY(50%);
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(5) {
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%);
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+    background: URL(/img/local/embassy/dullstructure_inner.gif?);
+}
+
+#realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(5)::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: rotateY(90deg);
+}
+
+#realgrid[stage="g_o_r_dull"] .gridpiece.gelitable::after, 
+#realgrid[stage="g_o_r_dull"] .gridpiece.gelitable::before {
+    width: 350%;
+    height: 350%;
+    background-image: url(/img/local/embassy/gelidesk2_dull.gif?);
+    background-size: cover;
+}
+
+body[quality="low"] #realgrid[stage="g_o_r_dull"],
+body[quality="low"] #realgrid[stage="g_o_r_friends"] {
+    background: black;
+    border-radius: 100%;
+}
+
+body[quality="regular"] #realgrid[stage="g_o_r_dull"] .gridpiece.gelitable::before {
+    background: radial-gradient(transparent 30%, black 40%, black 60%, transparent 70%);
+    display: block;
+}
+
+#realgrid[stage="g_o_r_friends"] .golemceiling {
+  border-radius: 100%;
+  transform: rotateY(180deg) translateZ(calc(-2.5 * var(--gridTileSize))) rotateY(-10deg);
+}
+
+#realgrid[stage="g_o_r_friends"] .golemceiling + .golemceiling {
+  transform: translateZ(-2px);
+}
+
+body[id="g_o_r_translation"] #content::after {
+    background: black;
+}
+
+#realgrid .tvstatic::before {
+    content: "";
+    background-image: url(/img/local/city/tv.gif);
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+    width: 100%;
+    height: 65%;
+    position: absolute;
+    transform: translateZ(-1px);
+}
+
+#realgrid .gridpiece .wordfriend {
+    transform: rotateX(-90deg) translateY(-90%);
+    bottom: unset;
+    transform-origin: center;
+}
+
+/* BOSS ROOM WOW */
+body#g_boss #content.collapse::after {
+    background: url(/img/textures/dithertile.gif), url(/img/textures/cmgradient.gif);
+    background-size: auto, auto 100%;
+}
+
+#realgrid .golemsprite {
+    max-width: unset;
+    position: absolute;
+    width: 175%;
+}
+
+#realgrid .golemsprite > .sprite {
+    width: 100%;
+    height: 100%;
+}
+
+body#g_boss #realgrid .gridpiece.gelitable::after, body#g_boss #realgrid .gridpiece.gelitable::before {
+    transform: translateZ(10px);
+}
+
+body#g_boss #realgrid .gridpiece.gelitable::before {
+    display: none;
+}
+
+.hasbp.openhatch > div {
+    --dyp-image: url(/img/local/embassy/wallhatch_small_blueprinter.gif?) !important;    
+}
+
+/* special cams for dialogues */
+.grid-plane[specialcam="g_m_door"] .grid-container {
+    --camera-x: 3.5;
+    --camera-y: 6.5;
+    --camera-rotation: 160;
+}
+
+.grid-plane[specialcam="g_m_door2"] .grid-animator {
+    --camera-x: 4;
+    --camera-y: 6;
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_m_shortcut"] .grid-animator {
+    --camera-x: 2;
+    --camera-y: 4;
+    --camera-rotation: 90 !important;
+}
+
+.grid-plane[specialcam="g_m_makegolem"] .grid-animator {
+    --camera-x: 5;
+    --camera-y: 4.5;
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_m_boss"] .grid-animator {
+    --camera-x: 4;
+    --camera-y: 4;
+    --personal-offset: rotateX(-10deg) translateZ(calc(var(--gridTileSize) * 0.755));
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_m_panel"] .grid-animator {
+    --camera-x: 2;
+    --camera-y: 7;
+    --personal-offset: translateX(-15%)rotate(-20deg);
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_s_bossdoor"] .grid-animator {
+    --camera-x: 4;
+    --camera-y: 8;
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_s_boss"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 3;
+    --personal-offset: rotateX(-10deg);
+    --camera-height: 1;
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_s_shortcut"] .grid-animator {
+    --camera-x: 6;
+    --camera-y: 5;
+    --camera-rotation: -90 !important;
+}
+
+.grid-plane[specialcam="g_o_boss"] .grid-animator {
+    --camera-x: 5;
+    --camera-y: 3;
+    --camera-rotation: 180 !important;
+}
+
+.grid-plane[specialcam="g_boss"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 5;
+    --camera-offset: rotateX(20deg);
+    --camera-height: 1;
+    --camera-rotation: 0 !important;
+}
+
+.grid-plane[specialcam="g_postboss"] .grid-animator {
+    --camera-x: 7;
+    --camera-y: 2;
+    --camera-rotation: -90 !important;
+}
+
+/* golem stage cameras! this one has more varied 3rd person angles */.swapcam .grid-animator[activestage="g_personnel"] {transform: rotateZ(180deg)}
+.swapcam .grid-container[activestage="g_personnel"] {
+    --camera-height: 1.5;
+    --camera-distance: -0.5;
+}
+
+.swapcam .grid-animator[activestage="g_personnel_tunnel"] {transform: rotateZ(0)}
+.swapcam .grid-container[activestage="g_personnel_tunnel"] {
+    --camera-x: 3;
+    --camera-y: calc((0.25 * (var(--stage-height) - var(--stage-steps-y))) + var(--stage-height) * 0.25);
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-height: 0.75;
+    --camera-offset: rotateX(-20deg) rotate(calc(var(--faceAngle)));
+}
+
+.swapcam .grid-animator[activestage="g_lobby"] {transform: rotateZ(180deg)}
+.swapcam .grid-container[activestage="g_lobby"] {
+    --camera-distance: 2;
+    --camera-y: 5;
+    --camera-x: 5;
+    --distX: calc(var(--camera-y) - var(--stage-steps-x));
+    --distY: calc(var(--camera-x) - var(--stage-steps-y));
+    --camera-height: 1;
+    --camera-offset: 
+        rotateX(-30deg) 
+        rotate(-180deg) 
+        rotateX(calc(atan2(var(--distX), 15)* 0.25)) 
+        rotate(var(--faceAngle));
+}
+
+.swapcam .grid-animator[activestage="g_s_metals"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_s_metals"] {
+    --camera-distance: -1;
+    --camera-x: 8.5;
+    --camera-y: 0.5;
+    --camera-height: 2;
+    
+    --distX: calc(8.5 - var(--stage-steps-x));
+    --distY: calc(0.5 - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotateX(-25deg)
+        rotate(var(--faceAngle))
+        translateY(calc(var(--gridTileSize) * var(--stage-steps-y) * -0.1));
+}
+
+.swapcam .grid-animator[activestage="g_s_sfer"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_s_sfer"] {
+    --camera-distance: -1;
+    --camera-x: 8;
+    --camera-y: calc(-1 + var(--stage-steps-y) * 0.5);
+    --camera-height: 2;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset:
+        rotateX(calc( -10deg + atan2( var(--distX), var(--distY) ) * -0.1))
+        rotate(atan2( var(--distX), var(--distY) ));
+}
+
+.swapcam .grid-animator[activestage="g_s_storage"] { transform: rotateZ(-180deg) }
+.swapcam .grid-container[activestage="g_s_storage"] {
+    --camera-distance: -1;
+}
+
+.swapcam .grid-animator[activestage="g_m_hall"] {transform: rotateZ(0deg)}
+.swapcam .grid-container[activestage="g_m_hall"] {
+    --camera-height: 0.5;
+    
+    --camera-x: 3;
+    --camera-y: 3.85;
+    --camrea-distance: 1;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotate(5deg)
+        rotateX(-5deg)
+        rotate(var(--faceAngle));
+}
+
+.swapcam .grid-animator[activestage="g_m_major"],
+.swapcam .grid-animator[activestage="g_m_minor"] { transform: rotateZ(-180deg) }
+.swapcam .grid-container[activestage="g_m_major"],
+.swapcam .grid-container[activestage="g_m_minor"] {
+    --camera-distance: 0;
+    --camera-x: 4;
+    --camera-y: calc(var(--stage-steps-y) - 3);
+    --camera-height: 1.5;
+    
+    --camera-offset: rotateX(-20deg);
+}
+
+.swapcam .grid-container[activestage="g_m_major"] {
+    --camera-x: 5;
+    --camera-y: calc((var(--stage-steps-y) * 0.25) - 1.5);
+    --camera-offset: 
+        rotateX(-30deg)
+    ;
+}
+
+.swapcam .grid-animator[activestage="g_m_dist"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_m_dist"] {
+    --camera-distance: -1;
+    --camera-x: 7.5;
+    --camera-y: 7.5;
+    --camera-height: 2;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotateX(-25deg)
+        rotate(var(--faceAngle));
+    
+    --personal-offset: rotate(20deg);
+}
+
+.swapcam .grid-animator[activestage="g_o_hall1"],
+.swapcam .grid-animator[activestage="g_o_hall2"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_o_hall1"],
+.swapcam .grid-container[activestage="g_o_hall2"] {
+    --camera-distance: 1;
+    --camera-x: 5;
+    --camera-y: 2;
+    --camera-height: 1.5;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotateX(-30deg)
+        rotate(var(--faceAngle));
+}
+.swapcam #realgrid[stage="g_o_hall2"] .savepoint {
+    --baseTransform: rotateX(-90deg) rotateY(180deg) translateX(190%) rotateY(-60deg) translate(350%, -150%);
+}
+
+body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_dull"] { --perspective: 300px; }
+.swapcam .grid-animator[activestage="g_o_r_dull"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_o_r_dull"] {
+    --camera-distance: 0.25;
+    --camera-x: 5;
+    --camera-y: 5;
+    --camera-height: 1;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset:
+        rotateX(-25deg)
+        rotate(var(--faceAngle));
+}
+.swapcam #realgrid[stage="g_o_r_dull"] .dullbeam span:nth-child(5) {
+    display: none;
+}
+
+.swapcam .grid-animator[activestage="g_o_r_friends"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_o_r_friends"] {
+    --camera-distance: 0;
+    --camera-x: 3;
+    --camera-y: 8;
+    --camera-height: 1;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset:
+        rotateX(-20deg)
+        rotate(var(--faceAngle));
+}
+
+
+.swapcam .grid-animator[activestage="g_o_r_translation"] { transform: rotateZ(-180deg) }
+.swapcam .grid-container[activestage="g_o_r_translation"] {
+    --camera-distance: 1;
+    --camera-x: 5;
+    --camera-y: -1;
+    --camera-height: 0.5;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    --camera-offset: 
+        rotateX(0deg)
+        translateY(calc((-1 + var(--stage-steps-y) * 0.75) * var(--gridTileSize)));
+}
+
+.swapcam .grid-animator[activestage="g_boss"] { transform: rotateZ(0deg) }
+.swapcam .grid-container[activestage="g_boss"] {
+    --camera-distance: -0.5;
+    --camera-x: 2;
+    --camera-y: 9;
+    --camera-height: 1.5;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotateX(-15deg)
+        rotate(atan2( var(--distX), var(--distY) ));
+}
+.swapcam .grid-container[activestage="g_boss"][swapos="imp"] {
+    --camera-y: 1;
+    --camera-offset: rotateX(-20deg) rotate(var(--faceAngle));
+}
+
+.ihatethisthing .target {
+    backface-visibility: hidden !important;
+    -webkit-backface-visibility: hidden !important;
+    transform: rotateY(180deg);
+}
+
+.savepoint.proceed {
+    --progProceedTransform: translateY(-100%) translateX(-100%) rotateY(-50deg) translateX(140%);
+}
+</style>
+
+<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="quality" key="quality" onclick="javascript:stepKey('q')">
+            <i class="ci-quality"></i>    
+        </div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="swap" key="e" onclick="javascript:stepKey('e')">
+            <i class="ci-zoomin"></i>
+            <i class="ci-zoomout"></i>    
+        </div>
+        <div class="party" key="z" onclick="javascript:stepKey('z')"><i class="ci-group"></i></div>
+    </div>
+</div>
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__GOLEM_MAINTENANCE__..",
+				name: "golem-maintenance",
+				dialoguePrefix:  "gol" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/golms.gif",
+				
+
+				
+				order: "3",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/embambience1.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 31500, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "this is getting pretty serious... so much worse than i ever imagined honestly"
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the golem area",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+						env.waitOnLoad = env.waitOnLoadIgnore ? false : true
+
+						if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+							corruStatic.fade(corruStatic.volume(), 0, 1000)
+							setTimeout(()=> corruStatic.stop(), 1001)
+						}
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					
+					page.bgm.rate(0.25)
+if(location.search.includes('e3a2test')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+    if(doit) mountSave(GlobalSaves.e3a2debug, false)
+}
+
+addResources([
+    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
+    "/js/combat/combatActionsJson.js", 
+    "/js/combat/combatActorsJson.js",
+    "/js/bullethell.js", 
+    "/js/embassy.js", 
+    "/js/embassy_stages_golem.js",
+    "/js/embassy_golem.js",
+    "/js/combat/combat.js", 
+    ["/js/combat/fpfight.js", ()=> typeof FPFight == "undefined"],
+    "/js/shared/e3a2geli.js"
+])
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthgolresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        geli replaced?<+>fakegeli
+            SHOWIF::"e3a2__escapewin"
+        theories?<+>theory
+            SHOWIF::[["gol__s_calls-gordon", false], ["ep4__h2h", false]]
+            NOTE::cuz theres a whole new theory thing in moth general asks after EP4
+        husks?<+>husks
+            SHOWIF::"gol__personnel"
+        geli?<+>geli
+            SHOWIF::[["gol__lobby_clear", true], ["e3a2__escapewin", false]]
+        sfer generation?<+>sfer
+            SHOWIF::"gol__s_vats"
+        foundry vats?<+>vats
+            SHOWIF::"gol__m_min"
+        akizet caused the collapse?<+>akicause
+            SHOWIF::"gol__s_calls-gordon"
+        never heard about any of this?<+>heard
+            SHOWIF::"gol__s_calls"
+        they used the dull so close?<+>dull
+            SHOWIF::[["gol__s_calls", true], ["ep4__entrancefinal", false]]
+            NOTE::duh
+        dog?<+>dog
+            SHOWIF::"dog"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question about this part of the collapse
+
+    moth
+        i might not be the best help here, but what's up?
+    
+    RESPOBJ::mthgolresp
+
+loop
+    RESPOBJ::mthgolresp
+
+theory
+    self
+        what do you think is really happening here?
+        what really happened with the collapse?
+
+    moth
+        even with a few decades of hindsight,
+        the public info is pretty sparse and unhelpful
+        gravity miscalculation? gimme a break
+        i can't believe i ever fell for that now. fuck dude
+        anyway, my best bet is that it's tied to the storm
+        you know, the electric-corru thing akizet gave us apparently
+        like, ok, i'm not saying i think a human caused this,
+        but it seems like the obesk had a good thing going for a really long time
+        then, around the time akizet hands over something,
+        something she herself said was shelved and experimental,
+        that's when it all blows up?
+        still, that doesn't explain why the golems never hurt any humans...
+        at least, not on the public record...
+        but there's no way even a single obesk attack would be able to be covered up
+        not in the climate the 30s had
+        i know that's not helpful, but i haven't really had to think about this
+        we don't need to theorize, i know we're going to get some real answers eventually here
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+husks
+    self
+        these husks are qou without any mindcores
+        how could that work?
+    
+    moth
+        yeah, i see that...
+        i mean, obviously i have no idea what's going on here
+        but i do know that obesk tech always needs a source for its thoughts
+        the golems have echoes, a lot of their stationary stuff is hooked up to similar things
+        whether that be through their groundsmindry, or through actual veins
+        ...and, of course, the qou have mindcores
+        i know that corru can actually just start thinking on its own, that's what their version of incoherence is
+        but there's just no precedent for it ever organizing on this scale
+        when obesk things starve and become incoherent, they eventually stop working
+        seen it a hundred times
+____SHOWIF::['ep4__contact', false]
+        if anything, this has to be some wacked out version of groundsmindry we've never seen before
+        ...and one that akizet has never seen before, either...
+        idk, that's the only way it could make any sense to me
+____SHOWIF::'ep4__contact'
+        and according to what we see later, 
+        what happened to these guys was more like some kind of mutation or infection
+        idk dude
+____END
+        also, do you see how some look kind of skeletal??
+        they actually did have some obesk who looked like that, 
+        but never in situations where they appeared to us publicly
+        i've seen some photos of qou that looked like that working on construction and stuff
+        the prevailing theory is that those obesk probably had spare "friendly" bodies
+        for when they had to talk to humans or show up on tv or something
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+geli
+    self
+        geli makes me feel weird
+    
+    moth
+        dude?
+    
+    self
+        no i mean
+        i mean i think it looked at me
+    
+    moth
+        oh yeah? like how?
+    
+    self
+        past akizet, at me
+        like funfriend can
+    
+    moth
+        ok, well that's really strange
+        it definitely didn't say anything
+        just keep an eye on it, i guess
+        it's not acting incoherent
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+dog
+    self
+        why is that a dog
+    
+    moth
+        it's not a dog
+        i don't know what's going on with your mindspike dude
+        it does stuff i don't see with anyone else
+        probably cause you never update it, but hey, that's why you're here
+        anyway, that's not a dog
+        what you scanned was probably a corrucystic imitation of something they domesticated back on obeski
+        and it's so similar to our concept of 'dog', that your mindspike is like... 
+        'dog'
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+sfer
+    self
+        did you see the sfer generation
+        they're doing something to metal
+    
+    moth
+        yeah, damn... that explains the huge metal trade they had going
+        they do always say that they "grow" corru, and it has "symbiosis" with them,
+        but it's always been a big debate about what exactly they meant
+        they've never showed us the process, or explained it anywhere...
+        plus, in the old interviews, they were still working on their translators
+        so they all spoke in these weird, vague poetic terms for a while
+        kinda funny to see akizet speaking in plain english
+        anyway, i have to wonder, were they trying to keep the process a secret from us for some reason?
+        maybe the things they grow sfer in are super hazardous to organic life or something?
+        i can't imagine they had any malicious intentions
+
+    RESPONSES::self
+        me either<+>loop
+            FAKEEND::(back)
+
+vats
+    self
+        did you see these vat things?
+        they form their tech in them
+    
+    moth
+        yeah! this part i actually did know a little bit about
+        they had something like these in the polygonation spires
+        qou would work in there on golems for local operations and stuff
+        they were pretty decentralized with how they built things back then
+        it seemed like there was a workspace in every obesk structure that any of them could use
+        interesting that the framing device already had some upgrades available...
+        it's probably something to do with the archive system they mentioned
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+akicause
+    self
+        so akizet caused the collapse?
+
+    moth
+____SHOWIF::'ep4__contact'
+        well, if you want to get technical, her whole team did
+        but if you mean like, the root of it all...
+____SHOWIF::['ep4__contact', false]
+        i don't think it's that simple dude
+____END
+        i wouldn't say she caused it herself,
+        but if what gordon said is right...
+        it definitely all started with the storm
+        then it must have spiralled out of control like that
+        but was it the storm that did it?
+        or did it just lead them to something?
+        man, did they probe the source of the call or something??
+        this is fucked up
+        but, the silver lining here is that this means the fbx was involved
+        like, front to back
+        so... i'm sure even if we don't find out everything in akizet's cyst,
+        we'll get briefed on whatever they know once i turn in my report
+
+    RESPONSES::self
+        can't wait<+>loop
+            FAKEEND::(back)
+
+heard
+    self
+        you really never heard about any of this happening?
+        nothing online? no reports?
+    
+    moth
+        yeah
+        sorry dude don't know what to tell you
+        the collapse completely happened on that little island they set up on
+        and only military vessels were really allowed around there
+        even if a civilian vessel was spying on it, all they would have seen was it falling apart
+        whatever the fbx knows, it's been kept pretty close
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+dull
+    self
+        did you see that glazika thing?
+        they used the dull this close to earth??
+
+    moth
+        yeah, that's scary to think about
+        even if they were "microconnectors" or whatever they said
+        we still don't really know how their dull stuff works
+        but hey, looks like it turned out okay
+        must been pretty handy to teleport stuff around up until the collapse
+    
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+fakegeli
+    self
+        bstrd replaced geli with some kind of copy
+        doesn't this just repeat the whole cycle?
+    
+    moth
+        that new geli isn't showing any of the incoherence that the old one did
+        so... it's at least not in pain or lucid
+        this is probably for the best buddy
+        we need these memories intact and this does the trick well enough
+
+    self
+        how did bstrd replace it so easily?
+    
+    moth
+        bstrd might seem stupid, but it's just coded to act that way
+        it's as smart as any other daemon
+        and daemons have to keep memories running in the frame no matter what
+        makes sense that it'd have a plan for this, you know?
+        bstrd modified the old geli to get the daemons to leave it alone,
+        so maybe it also copied geli's knowledge of its old role to drop in this new shell
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`θsegment`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θsegments`] = `'implies distinct section of spire';'typically delineated vertically'`;
+						
+					
+						
+						
+							env.definitions[`θtendril`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							env.definitions[`θtendrils`] = `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'`;
+						
+					
+						
+						
+							env.definitions[`jekzi`] = `'vaznian traditional garment';'robe-like'`;
+						
+					
+						
+						
+							env.definitions[`kelnit`] = `'derogatory';'incompetent fighter'`;
+						
+					
+						
+						
+							env.definitions[`corboku`] = `'large corrucystic devices';'stored in adjacent corroyi or another corru medium until needed';'connected modularly to tendrils'`;
+						
+					
+						
+						
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+						
+					
+						
+						
+							env.definitions[`yuzku`] = `'sluggish bioluminescent scavengers';'intentionally cultivated in veilk parasite husks for lighting';'fatal if consumed'`;
+						
+					
+						
+						
+							env.definitions[`okizika`] = `'ekivik surface monument';'holy site'`;
+						
+					
+						
+						
+							env.definitions[`parii`] = `'veilk bone'`;
+						
+					
+						
+						
+							env.definitions[`sfer`] = `'refined corrucystic fuel/food';'currency'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`dull node`] = `'partial translation';'inherited description-generated noun';'metaconnective corrucyst';'attaches to another node via dull bone paradigm'`;
+						
+					
+						
+						
+							env.definitions[`dull nodes`] = `'partial translation';'inherited description-generated noun';'metaconnective corrucyst';'attaches to another node via dull bone paradigm'`;
+						
+					
+						
+						
+							env.definitions[`dull microconnectors`] = `'partial translation';'inherited description-generated noun';'reckless technology';'ignorant of history'`;
+						
+					
+						
+						
+							env.definitions[`terrible life`] = `'parasite';'reanimation'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`dull eyes`] = `'partial translation';'inherited description-generated noun';'utility scanning device'`;
+						
+					
+						
+						
+							env.definitions[`have in sight`] = `'common idiom';'remember'`;
+						
+					
+						
+						
+							env.definitions[`groundsmind`] = `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`groundsmindry`] = `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`how beholds you`] = `'common idiom';'religious implication';'how does velzie's gaze behold you'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`timestopper`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
+						
+						
+							env.definitions[`ekivik`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`ekiviks`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+						
+						
+							env.definitions[`vaznian`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`vaznians`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`velzie smiles`] = `'common idiom';'god is entertained with antics';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`the eye still blinks`] = `'common idiom';'time is limited'`;
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					page.maskHungerNote = "\nRESONANCE::'limited'";
+page.maskUnityNote = "\nRESONANCE::'limited'";
+
+env.embassy.music_golems = new Howl({
+    src: ['/audio/embassy_golems.ogg'],
+    preload: true,
+    loop: true,
+    volume: 1,
+    sprite: {
+        __default: [0, 170666, true]
+    }
+})
+
+env.embassy.music_golems_cleared = new Howl({
+    onload: function () {
+        page.howls.push(this)
+        this.intendedVol = 0.85
+    },
+    src: ['/audio/embassy_golems_cleared.ogg'],
+    preload: true,
+    loop: true,
+    volume: 0.85,
+    sprite: {
+        __default: [0, 159950, true]
+    }
+})
+
+env.embassy.music_unsafe_golems = new Howl({
+    onload: function () {
+        page.howls.push(this)
+        this.intendedVol = 0.75
+    },
+    src: ['/audio/embassy_golems_unsafe.ogg'],
+    preload: true,
+    loop: true,
+    volume: 0.75,
+    sprite: {
+        __default: [0, 72000, true]
+    }
+})
+
+env.embassy.music_golems_boss = new Howl({
+    onload: function () {
+        page.howls.push(this)
+        this.intendedVol = 0.75
+    },
+    src: ['/audio/embassy_golems_melee.ogg'],
+    preload: true,
+    loop: true,
+    volume: 0.75,
+    sprite: {
+        __default: [0, 159000, true]
+    }
+})
+
+env.embassy.music_television = new Howl({
+    onload: function () {
+        page.howls.push(this)
+        this.intendedVol = 0.9
+    },
+    src: ['/audio/television.ogg'],
+    preload: true,
+    loop: true,
+    volume: 0.9,
+    sprite: {
+        __default: [0, 81450, true]
+    }
+})
+
+/* 
+    unlike the other collapse things, since this is its own page, we load on connect
+
+    TEMP!!ep2skip is a special thing I had to set up to get old ep2 saves working right
+    TEMP!!ep2->ep3transfer is when someone is moving from collapse pt1 to pt2 via any means
+
+    ep2skip'll technically be a weird incongruity since their HP will be whatever 
+    it was before they fought him... but that's ok we can all use a little extra health in our lives
+*/
+try {
+    env.embassy.loadCollapseSave()
+} catch(e) {
+    if(location.search.includes('debug')) {
+        let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your COLLAPSE SAVE (not anything else) and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+        if(doit) {
+            change('collapseSave', GlobalSaves.collapseSave_ep3start)
+            env.embassy.loadCollapseSave()
+            change("TEMP!!ep2->ep3transfer", true)
+        }
+    }
+}
+
+//unless you're a ep2skip or transferring in, if you ain't in 3.5 then get the hell outta here
+if((check("PAGE!!embassy_day") != 3.5) && !check("TEMP!!ep2skip") && !check("TEMP!!ep2->ep3transfer")) {
+    moveTo("/local/ocean/embassy/")
+    return
+}
+
+change("PAGE!!embassy_day", 3.5)
+
+if(check("TEMP!!ep2->ep3transfer")) {
+    changeStage('embassy_relocator')
+    startDialogue('intro')
+    sessionStorage.removeItem('TEMP!!ep2->ep3transfer')
+    sessionStorage.removeItem('TEMP!!ep2skip')
+    removeItem(env.ITEM_LIST.sfer_cube, 100) //ate em up l0l
+} else {
+    if(check("TEMP!!from", "e3a2") && page.saveZone == "g_lobby") {
+        changeStage("g_lobby")
+    } else {
+        changeStage(page.saveZone)
+    }
+}
+
+document.addEventListener('keydown', stageKeypress)
+
+//initialize page settings, classes
+env.embassy.initializeEmbassyCombatSettings({ep: 3})
+content.classList.add('golemfloor')
+
+page.objectives = new ObjectiveList({objectives: [
+        new Objective({
+            name: "Delay Collapse",
+            completion: "PAGE!!goverride",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'there is an override in manufacturing'"
+        }),
+
+        new Objective({
+            name: "Secure a Safe Area",
+            completion: "PAGE!!geli",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'find a place for the unconnected to rest'"
+        }),
+
+        new Objective({
+            name: "Look for Survivors",
+            progress: ()=> {return `(${[check("PAGE!!bozcav"), check("PAGE!!sboss"), check("PAGE!!mboss")].filter(Boolean).length}/3 tendrils explored)`},
+            completion: [["PAGE!!bozcav", true], ["PAGE!!sboss", true], ["PAGE!!mboss", true]],
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'we should fully explore the connected parts of this segment'"
+        }),
+
+        new Objective({
+            name: "Find a Foundry Vat",
+            completion: "PAGE!!minvats",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'we can arm ourselves if we find one';'likely in manufacturing'"
+        }),
+
+        new Objective({
+            name: "Arm Selves",
+            completion: "PAGE!!augmented", //any party member has been augmented
+            showIf: "PAGE!!minvats",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'the minor vats in manufacturing will serve us well'"
+        }),
+
+        new Objective({
+            name: "Find Itzil's Kivii",
+            completion: "PAGE!!mboss",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'itzil's kivii should be present, somewhere'"
+        }),
+
+        new Objective({
+            name: "Find a Use For Golem Sfer",
+            showIf: "PAGE!!sboss",
+            completion: "PAGE!!mboss",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'the sfer supply tendril held golem-ready sfer';'we should use it somehow'"
+        }),
+
+        new Objective({
+            name: "Find Golem-Grade Sfer",
+            showIf: "PAGE!!mboss",
+            completion: "PAGE!!sboss",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'to use the parts we found, a suitable material must join them'"
+        }),
+
+        new Objective({
+            name: "Build a Golem Body",
+            showIf: [["PAGE!!mboss", true], ["PAGE!!sboss", true]],
+            completion: "PAGE!!ikgolem",
+            hideOnCompletion: true,
+            definition: "INHERITED CONTEXT::'we have all we need to create a fearsome body, using the greater vats in manufacturing'"
+        }),
+
+        new Objective({
+            name: "Siege Advanced Operations",
+            showIf: [["PAGE!!bozcav", true], ["PAGE!!ikgolem", true]],
+            completion: "PAGE!!golboss",
+            hideOnCompletion: false,
+            definition: "INHERITED CONTEXT::'we are prepared to enter that door in the lobby and face the terror within'"
+        }),
+
+        new Objective({
+            name: "SYS::await stream repair",
+            showIf: [["PAGE!!golboss", true], ["ENV!!ep4", false]],
+            completion: "nonehehehebyeee",
+            hideOnCompletion: false,
+            definition: "NOTICE::'unable to progress until memory stream repairs are completed'"
+        }),
+
+        new Objective({
+            name: "Convene in Lobby",
+            showIf: [["PAGE!!golboss", true], ["ENV!!ep4", true]],
+            completion: "nonehehehebyeee",
+            hideOnCompletion: false,
+            definition: "NOTICE::'memory stream missing data';'utilize proceed trigger placed near entity tozik'"
+        })
+    ],
+})
+
+if(!check('PAGE!!geliawake')) env.embassy.geliState('off')
+if(check('gakpause')) content.classList.add('gakpause')
+
+env.embassy.net = ()=>{
+    if(document.querySelector('#realgrid')) step()
+}
+
+document.addEventListener('corru_net', env.embassy.net)
+env.embassy.net()
+
+if(check("e3a2__escapewin")) {
+    content.classList.add("fakegeli")
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					stageCleanup()
+combatCleanup()
+env.clearIntervals()
+document.removeEventListener('corru_net', env.embassy.net)
+body.classList.remove('augments-enabled')
+
+page.bgm.unload()
+env.embassy.music_golems_cleared.unload()
+env.embassy.music_unsafe_golems.unload()
+env.embassy.music_golems_boss.unload()
+env.embassy.music_television.unload()
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "golem-maintenance";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

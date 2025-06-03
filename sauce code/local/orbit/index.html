@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__THE_VOID__..</title>	
+<meta name="title" content="..__THE_VOID__..">
+<meta name="description" content="ANALYSIS::'low dimensional thoughtspace'">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/orbit/">
+<meta property="og:title" content="..__THE_VOID__..">
+<meta property="og:description" content="ANALYSIS::'low dimensional thoughtspace'">
+<meta property="og:image" content="https://corru.observer/img/socials/orbit.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/orbit/">
+<meta property="twitter:title" content="..__THE_VOID__..">
+<meta property="twitter:description" content="ANALYSIS::'low dimensional thoughtspace'">
+<meta property="twitter:image" content="https://corru.observer/img/socials/orbit.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__THE_VOID__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div id="earth">
+    <div class="shiporbit">
+        <div id="ship">
+            <div class="target" entity="our dull vessel"></div>
+        </div>
+    </div>
+</div>
+<div id="cityportal" class="portal">
+    <div class="target" entity="gate::their city"></div>
+    <figure></figure>
+</div>
+<div id="oceanportal" class="portal">
+    <div class="target" entity="gate::their waters"></div>
+    <figure></figure>
+</div>
+
+<div id="rednebula"><img src="/img/local/orbit/rednebula.gif" /><div class="repairpatch-drift" style="top: 50%;left: 25%;"><div class="repairpatch"></div></div></div>
+<div id="cyanebula"><img src="/img/local/orbit/cyanebula.gif" /><div class="repairpatch-drift" style="top: 25%;left: 75%;"><div class="repairpatch"></div></div></div>
+<div id="dullportal"><img src="/img/local/orbit/dullportal.gif" /><div class="target" entity="gate::the dull contrivance"></div></div>
+<div id="dullarea"></div>
+<p><!-- just for wandering specs for the buddy --></p>
+
+<style>
+body[state="corru-entered"] {
+    overflow: visible;
+    position: relative;
+}
+
+#content {
+    width: 500vmax;
+    height: 500vmax;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+#content::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: url(/img/local/orbit/stars.gif);
+    z-index: -1;
+    animation: SPIN 2400s linear infinite;
+    transform-origin: center;
+}
+
+#earth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vmax;
+    height: 100vmax;
+    background-image: url(/img/local/orbit/earth.gif);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: cover;
+    transform: translate(-25%, -25%) rotate(145deg);
+    transform-origin: center;
+    animation: EARTHTWINKLE 30s ease-in-out infinite alternate;
+}
+
+@keyframes EARTHTWINKLE {
+    0% { transform: translate(-25%, -25%) rotate(144deg) translate(-10px, -5px)}
+    100% { transform: translate(-25%, -25%) rotate(146deg) translate(0px, 0px)}
+}
+    
+.portal {
+    top: 20vmax;
+    left: 20vmax;
+    height: 20vmin;
+    width: 20vmin;
+    --portalImg: url(/img/local/city/cityportal.gif)
+}
+
+.portal figure::after {
+    background-image: url(/img/sprites/misc/sphereframewhite.gif);
+}
+
+#oceanportal {
+    top: 10vmax;
+    left: 50vmax;
+    width: 10vmin;
+    height: 10vmin;
+    --portalImg: url(/img/local/ocean/waves.gif)
+}
+
+#rednebula {
+    position: absolute;
+    top: 50vmax;
+    right: 50vmax;
+    animation: SPIN 2000s linear infinite;
+}
+
+#cyanebula {
+    position: absolute;
+    bottom: 50vmax;
+    left: 50vmax;
+    animation: SPIN 1800s linear infinite;
+}
+
+#dullportal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400vmax;
+    height: 400vmax;   
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(43.5%, 43.5%);
+}
+
+#dullportal img {
+    max-width: 100%;
+    max-height: 100%;
+    animation: SPIN 1000s linear infinite;
+    transform-origin: center;
+}
+
+#dullportal::after {
+    content: "";
+    position: absolute;
+    width: 80vmax;
+    height: 80vmax;
+    background: url(/img/local/orbit/core.gif);
+    background-size: auto;
+    z-index: -1;
+    animation: SPIN 100ms steps(10) infinite;
+    background-color: white;
+}
+
+#dullportal .target {
+    width: 30vmax;
+    height: 30vmax;
+    top: unset;
+    left: unset;
+}
+
+.shiporbit {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: SPIN 120s linear infinite 
+}
+
+#ship {
+    width: 300px;
+    height: 300px;
+    background: url(/img/textures/blocker.gif);
+    border-radius: 100%;
+    position: relative;
+}
+
+#ship .target {
+    --baseTransform: rotate(-145deg);
+    animation: SPIN 120s linear infinite reverse
+}
+
+@media only screen and (max-width: 1200px) {
+    #ship {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* ozo crossover */
+#dullarea {
+    width: 150vw;
+    height: 150vh;
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.ozofriend, .ozofriend > * { position: absolute; }
+.ozofriend, .ozofriend * { 
+    backface-visibility: visible; 
+    -webkit-backface-visibility: visible; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ozofriend .body { object-fit: contain; }
+.ozofriend, .ozofriend .body {
+    width: 100%;
+    height: 100%;
+}
+
+#eyefriend.buddy figure::after {
+    width: 75px;
+    height: 75px;
+}
+
+.eyefriend img {
+    width: 100%;
+}
+
+.eyefriend .body {
+    animation: EYEFRIEND_BODY 20s cubic-bezier(1,0,.92,.25) infinite;
+    opacity: 0.15
+}
+
+.eyefriend .head {
+    width: 100%;
+    opacity: 0.15
+}
+
+#eyefriend.buddy figure::after,
+.eyefriend .body,
+.eyefriend .head {
+    transition: opacity 1s ease-in-out;
+}
+
+.showfairy .eyefriend .body,
+.showfairy .eyefriend .head {
+    opacity: 1;
+}
+
+.showfairy #eyefriend.buddy figure::after {
+    opacity: 0.25;
+}
+
+.eyefriend .head img {
+    animation: EYEFRIEND_HEAD 10s cubic-bezier(.62,-0.16,.01,1.3) infinite;
+}
+
+@keyframes EYEFRIEND_BODY {
+    0% { transform: rotate(0deg) }
+    16% { transform: rotate(60deg) }
+    32% { transform: rotate(120deg) }
+    48% { transform: rotate(180deg) }
+    64% { transform: rotate(240deg) }
+    80% { transform: rotate(300deg) }
+    100% { transform: rotate(360deg) }
+}
+
+@keyframes EYEFRIEND_HEAD {
+    0% { transform: rotate(0deg) }
+    10% { transform: rotate(0deg) }
+    20% { transform: rotate(-25deg) }
+    30% { transform: rotate(-25deg) }
+    40% { transform: rotate(75deg) }
+    60% { transform: rotate(75deg) }
+    100% { transform: rotate(0deg) }
+}
+
+
+body[c="-1"] #content::after, 
+body[c="-1"] #content::before,
+body[c="-2"] #content::after, 
+body[c="-2"] #content::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: url(/img/local/orbit/stars.gif);
+    z-index: -2;
+}
+
+body[c="-1"] #content::before,
+body[c="-2"] #content::before  {
+    height: 100%;
+    width: 100%;
+    z-index: -3;
+    background: url(/img/textures/mass_moderate.gif), url(/img/textures/corruripple.gif);
+}
+
+body[c="-2"] #content::after {
+    background: url(/img/local/orbit/stars.gif), url(/img/textures/corruripple.gif);
+}
+
+body[c="-2"] #content::before {
+    z-index: -1;
+    background: url(/img/textures/mass_severe.gif);
+}
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__THE_VOID__..",
+				name: "the-void",
+				dialoguePrefix:  location.pathname.replace(/\//g, '') ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/orbit.gif",
+				
+
+				
+				order: "2",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/orbit.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 116000, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "this thoughtspace is pretty damn big... i'm not seeing much of a reason for it either"
+    
+    if(!check('dullvessel_position', 'orbit')) moth = "don't forget you moved akizet's ship to the ocean thoughtspace! kinda wild it can just move like that"
+
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the void",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					
+					env.entities['our dull vessel'].hide = false
+createEntity(env.entities['our dull vessel'])
+
+createEntity({
+    name: 'gate::the dull contrivance',
+    type: "thoughtform portrait-bright",
+    image: "/img/local/orbit/core.gif",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::ERROR::'unprocessable entity'::NON-RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`
+})
+
+if(!check('dullvessel_position', 'orbit')) {
+    document.querySelector('#ship').remove()
+}
+
+createEntity({
+    name: 'proxyfriend?',
+    hide: true,
+    type: "thoughtform funfriend obesk",
+    image: "/img/sprites/funfriend/proxyfriend.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'maintenance appendage';'connected to central assistant'`,
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>startDialogue('fairy')
+        },
+
+        {
+            name: "unity",
+            class: "act-ozo",
+            exec: ()=>{
+                cutscene(true);MUI('off')
+
+                setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    startDialogue('fairy_beacon')
+                    cutscene(false)
+                }, 2000)
+            },
+            showIf: ["mask", "unity"]
+        }
+    ]
+})
+
+env.dialogueActors["fairy"] = {
+    image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
+    type: "thoughtform fairy awakened portrait-haze portrait-auto portrait-center",
+    voice: ()=>play('talkfairy')
+}
+
+env.dialogues.fairyresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what are you?<+>what
+            SHOWIF::['localorbit__fairy-what', false]
+
+____SHOWIF::['localorbit__fairy-what', true]
+        what are you?<+>what2
+        how can i help?<+>help
+        how will you help me?<+>helpme
+____END
+
+        bye<+>END
+            EXEC::content.classList.remove('showfairy')
+`)
+
+env.dialogues["fairy"] = generateDialogueObject(`
+loop
+    RESPOBJ::fairyresp
+
+start
+____SHOWIF::['localorbit__fairy-what', false]
+    proxyfriend
+        hello!
+            EXEC::page.buddy_fairy.center()
+        everything looks good here!
+        especially after my repairs!
+        repairs!!
+        good! good! good!
+    
+____SHOWONCE::
+    moth
+        hey, sorry to interrupt you,
+        but is something weird about this one?
+        it looks like one of funfriend's tools, but....
+        my output is being weird about it
+    
+    self
+        there's something behind it
+        or attached to it
+        hold on
+____END
+
+____SHOWIF::['localorbit__fairy-what', true]
+    proxyfriend
+        hello interloper!
+            EXEC::page.buddy_fairy.center()
+        just repairing things!
+        have you come to help...?
+____END
+    
+    RESPOBJ::fairyresp
+
+what
+    self
+        what are you?
+    
+    proxyfriend
+        i am a proxyfriend!
+        i fix the thoughtspace!
+        silly question! stupid!
+        but what are <em>you?</em>
+        and what is going on with your signature...?
+    
+    self
+        they are calling me an interloper
+        i am investigating akizet's disappearance
+    
+    proxyfriend
+        oh
+        oh!
+        then i think we can help each other! yes!!
+    
+    sys
+        ATTENTION::"unspecified thoughtform activity detected"
+            EXEC::content.classList.add('showfairy')
+        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+    
+    fairy
+        you want information, right? memories?
+        i need to return to my friends!
+        and you will help me!
+        and then i will help you!
+        after that, we will celebrate!
+        ok? hehehe
+
+____SHOWONCE::
+    moth
+        be careful about this
+        this could just be a weirdly present incoherent thoughtform
+        still, maybe there's something to it
+____END
+    
+    RESPONSES::self
+        ok...<+>loop
+            FAKEEND::(continue)
+
+what2
+    self
+        you didn't answer me
+        what are you?
+        why are you here?
+    
+    fairy
+        hehehe
+            EXEC::content.classList.add('showfairy')
+        help me!
+        help me and i will say!
+        promise! i promise!
+    
+    RESPONSES::self
+        ok...?<+>loop
+            FAKEEND::(back)
+
+help
+    self
+        how can i help you?
+    
+    fairy
+        find my home!
+            EXEC::content.classList.add('showfairy')
+        in the dark! the space between!
+        find a weapon and bring it to me!
+        and then i will be free!
+        yay!!
+    
+    self
+        ok but where is your home?
+    
+    fairy
+        i do not remember
+            EXEC::content.classList.add('showfairy')
+        i am trapped here!
+        the tyrant took me! the tyrant!
+        it put me here!
+        and my memories are all still left at home...
+        so go find it!
+    
+    RESPONSES::self
+        great thanks<+>loop
+            FAKEEND::(back)
+
+helpme
+    self
+        how will you help me?
+    
+    fairy
+        i know things!
+            EXEC::content.classList.add('showfairy')
+        the tunnels... spaces between! i remember them!
+        you want to know too, right?
+        oh, there is so much to see!!
+        but i am chained here!
+        imagine the fun we will have when i am free!
+        free!!
+    
+    RESPONSES::self
+        sounds cool<+>loop
+            FAKEEND::(back)
+`)
+
+env.dialogues["fairy_beacon"] = generateDialogueObject(`
+start
+    fairy
+        oh! the light!
+            EXEC::content.classList.add('showfairy');page.buddy_fairy.center()
+        council, council, i hear you!!
+        i will tear myself free! i will return!
+        interloper--come find me in my haven
+            SHOWIF::"localorbit__fairy"
+        stranger--come find me in my haven
+            SHOWIF::["localorbit__fairy", false]
+        we will feast! we will dance atop the veilk!
+        ahahaha!!! yay! yay!!
+        to jokzi ozo!!
+    
+    sourceless quiet
+        ...
+            EXEC::flash(true);forcePlay('criticalError', 1.5);
+
+    sys
+        ATTENTION::'thoughtform activity detected'
+        ATTENTION::'resources removed'
+            EXEC::page.buddy_fairy.remove({removeEl: true, leaving: false});flash(false)
+
+    RESPONSES::self
+        ok bye<+>END
+
+END::vfx({type: "beacon", state: false})
+`)
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        dull contrivance?<+>dull
+            SHOWIF::[['EXEC::env.dialogues.mthresp.scannedDull()']]
+
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues.mthresp.scannedDull = ()=>{
+    try {
+        if(flags.detectedEntities["..__THE_VOID__.."].entities["gate::the dull contrivance"].scanned) {
+            return true
+        } else {
+            return false
+        }
+    } catch(e) {
+        return false
+    }
+}
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question about this thoughtform
+
+    moth
+        all right, hit me
+    
+    RESPOBJ::mthresp
+
+dull
+    self
+        What do you know about the dull contrivance?
+    
+    moth
+        i don't know too much about it other than it's still up there
+        and, apparently, no organic life can pass through it and live, so only the qou could come through
+        at least, that's what they said in some old interviews
+        me personally, i think they just don't want us coming to visit their homeworld
+        ...
+        sorry i was checking the logs
+        apparently your mindspike is saying it's a connector thoughtform?
+        maybe we could get some proper looks at obeski with this thing
+        if we can find a way to repair this stuff, anyway
+
+    RESPOBJ::mthresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(check("localorbit__fairy_beacon", false) && check("ENV!!ep2")) {
+    page.buddy_fairy = new Buddy({
+        element: {
+            entity: "proxyfriend?",
+            id: "eyefriend",
+            actor: "fairy",
+            size: "40vh",
+            classes: "",
+            img: "/img/sprites/funfriend/proxyfriend.gif",
+            figure: `
+                <img class="body" src="/img/local/uncosm/ozo/sprite_body.gif">
+                <div class="head">
+                    <img src="/img/local/uncosm/ozo/sprite_mask.gif">
+                </div>
+            `
+        },
+
+        activity: {
+            behavior: {type: 'wander', drift: 400, rate: 15000, speed: 8000, element: document.querySelector('#dullarea'), muiPause: true},
+            events: {
+                screenEnter: ()=> {
+                    
+                },
+                mouseEnter: ()=> {
+                    
+                },
+                onRender: ()=>{
+                    page.buddy_fairy.el.querySelector('figure').classList.add('ozofriend', 'eyefriend')
+                }
+            }
+        },
+    })
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "the-void";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

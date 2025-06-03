@@ -439,7 +439,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.malfunction.desc = "'страдать от внутреннего разложения'" // 'suffer from internal deterioration'
     env.ACTIONS.malfunction.help = "-1, +1Х:УЯЗВИМОСТЬ" // -1HP, +1T:VULNERABLE
     env.ACTIONS.malfunction.usage = {
-        "act": "%USER'S SKIN WRITHES"
+        "act": "КОЖА %GEN-USER СЪЁЖИВАЕТСЯ"
     }
 
     /* - attack - */
@@ -466,83 +466,84 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.akizet_attack.details = {
-        "onHit": "'boldly assault for [STAT::amt]'",
-        "onCrit": "'inflict immense physical trauma';'[STATUS::stun]'"
+        "onHit": "'дерзко атаковать на [STAT::amt]'",
+        "onCrit": "'нанести тяжелые физические травмы';'[STATUS::stun]'"
     }
 
     /* - eviscerate - */
 
-    env.ACTIONS.eviscerate.name = "" // Eviscerate
+    env.ACTIONS.eviscerate.name = "Потрошить" // Eviscerate
     env.ACTIONS.eviscerate.usage = {
-        "act": "%USER CLAWS AT %TARGET",
-        "crit": "%TARGET IS TORN APART",
-        "hit": "%TARGET IS TORN APART",
-        "miss": "%TARGET RECOILS"
+        "act": "%USER ВЦЕПЛЯЕТСЯ В %ACC-TARGET",
+        "crit": "%TARGET РАСТЕРЗАН%TAR(-/А/О)GET",
+        "hit": "%TARGET РАСТЕРЗАН%TAR(-/А/О)GET",
+        "miss": "%TARGET ОТШАТЫВАЕТСЯ"
     }
     env.ACTIONS.eviscerate.details = {
-        "flavor": "'boldly assault target';'target previously inflicted wounds for additional damage'",
-        "onHit": "'strike for [STAT::amt]'",
-        "conditional": "<em>ADD::</em>'[STAT::amt] PER [STATUS::puncture] ON TARGET'"
+        "flavor": "'смело атаковать цель';'целиться в ранее нанесенные раны для нанесения дополнительного урона'",
+        "onHit": "'ударить на [STAT::amt]'",
+        "conditional": "<em>ДОП::</em>'[STAT::amt] за [STATUS::puncture] у цели'"
     }
 
     /* - stab - */
 
     env.ACTIONS.stab.name = "Пронзить" // Stab
     env.ACTIONS.stab.usage = {
-        "act": "%USER STABS %TARGET",
-        "crit": "%TARGET IS EVISCERATED",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
+        "crit": "%TARGET РАСПОТРОШ%TAR(ЁН/ЕНА/ЕНО)GET",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.stab.details = {
-        "flavor": "'reshape arm into sharpened tendril';'stab target'",
+        "flavor": "'преобразовать руку в заострённый отросток';'пронзить цель'",
         "onHit": "'[STAT::amt] [STATUS::puncture]'",
-    onCrit: ()=> `'puncture vital cystic component for [STATUS::puncture]'${env?.rpg?.is2D ? ";'KB::2'" : ''}`,
+    onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТД::2'" : ''}`,
     }
 
     /* - frenzy - */
 
-    env.ACTIONS.frenzy.name = "" // Frenzy
+    env.ACTIONS.frenzy.name = "Лихорадка" // Frenzy
+    env.ACTIONS.frenzy.name = "растерзать" // --- растерзать кого?
     env.ACTIONS.frenzy.usage = {
-        "act": "%USER STABS %TARGET",
-        "crit": "%USER JUST KEEPS GOING",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
+        "crit": "%USER ПРОСТО НЕ ОСТАНАВЛИВАЕТСЯ",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.frenzy.details = {
-        "flavor": "'puncture vital cystic component';'may inspire additional stabbing'",
+        "flavor": "'пробить жизненно важный цистозный компонент';'может вдохновить на новые удары'",
         "onHit": "'[STAT::amt] [STATUS::puncture]'",
-        "onCrit": "'use this action again'"
+        "onCrit": "'использовать это действие снова'"
     }
 
     /* - gakvu_attack - */
 
-    env.ACTIONS.gakvu_attack.name = "" // Scramble
+    env.ACTIONS.gakvu_attack.name = "бля. хз. яичница" // Scramble
     env.ACTIONS.gakvu_attack.usage = {
-        "act": "%USER REACHES TOWARDS %TARGET",
-        "crit": "%TARGET'S COMPONENTS ARE EXPOSED",
-        "hit": "%TARGET'S FLESH MELTS AWAY",
-        "miss": "%TARGET RESISTS CONTROL"
+        "act": "%USER ДОТЯГИВАЕТСЯ ДО %ACC-TARGET",
+        "crit": "КОМПОНЕНТЫ %GEN-TARGET ОБНАЖЕНЫ",
+        "hit": "ПЛОТЬ %GEN-TARGET РАСПЛАВЛЯЕТСЯ",
+        "miss": "%TARGET СОПРОТИВЛЯЕТСЯ КОНТРОЛЮ"
     }
     env.ACTIONS.gakvu_attack.details = {
-        "flavor": "'melt corrucystic flesh';'may reveal weakness'",
+        "flavor": "'плавить корруцистозную плоть';'может выявить слабость'",
         "onHit": "'[STAT::amt]'",
-        "onCrit": "'inflict [STATUS::vulnerable]'"
+        "onCrit": "'нанести [STATUS::vulnerable]'"
     }
 
     /* - countercall - */
 
-    env.ACTIONS.countercall.name = "" // Countercall
+    env.ACTIONS.countercall.name = "Контрвызов" // Countercall
     env.ACTIONS.countercall.usage = {
-        "act": "%USER REACHES TOWARDS %TARGET",
-        "crit": "%TARGET FALLS APART",
-        "hit": "%TARGET'S FLESH MELTS AWAY",
-        "miss": "%TARGET RESISTS CONTROL"
+        "act": "%USER ДОТЯГИВАЕТСЯ ДО %ACC-TARGET",
+        "crit": "%TARGET РАЗВАЛИВАЕТСЯ НА ЧАСТИ",
+        "hit": "ПЛОТЬ %GEN-TARGET РАСПЛАВЛЯЕТСЯ",
+        "miss": "%TARGET СОПРОТИВЛЯЕТСЯ КОНТРОЛЮ"
     }
     env.ACTIONS.countercall.details = {
-        "flavor": "'direct destructive signal'",
+        "flavor": "'направить разрушительный сигнал'",
         "onHit": "'[STAT::amt] [STATUS::vulnerable]'",
-        "conditional": "<em>VS DESTABILIZED::</em>'additional [STAT::amt]';'+[STAT::critBonus]CRIT';'[STATUS::stun] on CRIT'"
+        "conditional": "<em>VS ДЕСТАБИЛИЗИРОВАННЫХ::</em>'дополнительные [STAT::amt]';'+[STAT::critBonus]КРИТ';'[STATUS::stun] при КРИТ'"
     }
 
     /* - destabilize - */
@@ -557,26 +558,27 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET СОХРАНЯЕТ СТАБИЛЬНОСТЬ"
     }
     env.ACTIONS.destabilize.details = {
-        "flavor": "'utilize illegal groundsmindry';'alter structure of target'",
+        "flavor": "'применить незаконное землемыслие';'изменить строение цели'",
         "onHit": "'[STATUS::destabilized]'",
-        "onCrit": "'additional [STATUS::destabilized]'",
+        "onCrit": "'дополнительная [STATUS::destabilized]'",
     conditional: ()=> checkItem("core_translation") && check("PAGE!!embassy_day", 3.99) ? 
-                `<em>SIGNAL INVERTER::</em>'granted extra functionality'\n<em>VS FOES</em>::'[STATUS::vulnerable]'\n<em>VS ALLIES</em>::'[STATUS::evasion]'` : ``
+                `<em>ПРЕОБРАЗОВАТЕЛЬ СИГНАЛА::</em>'расширена функциональность'\n<em>VS ВРАГОВ</em>::'[STATUS::vulnerable]'\n<em>VS СОЮЗНИКОВ</em>::'[STATUS::evasion]'` : ``
     }
 
     /* - tozik_attack - */
 
     env.ACTIONS.tozik_attack.name = "коррускиви" // Corruskivi
+    env.ACTIONS.tozik_attack.verb = "закоррускивить" // Corruskivi
     env.ACTIONS.tozik_attack.usage = {
-        "act": "%USER CLAWS AT %TARGET",
-        "crit": "%TARGET'S LIFE IS DRAINED AWAY",
-        "hit": "%TARGET IS SLASHED",
-        "miss": "%TARGET DODGES"
+        "act": "%USER ВЦЕПЛЯЕТСЯ В %ACC-TARGET",
+        "crit": "%TARGET'S LIFE IS DRAINED AWAY", // --- мьмьм
+        "hit": "%TARGET ИЗРЕЗАН%TAR(-/А/О)GET",
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.tozik_attack.details = {
-        "flavor": "'attack with repair tool';'siphon vital corru'",
+        "flavor": "'атаковать ремонтным инструментом';'выкачка жизненно важного корру'",
         "onHit": "'[STAT::amt]'",
-        "onCrit": "'heal nearby allies for [STAT::healHP] [STATUS::regen]'"
+        "onCrit": "'исцелить союзников поблизости на [STAT::healHP] [STATUS::regen]'"
     }
 
     /* - parasite - */
@@ -591,19 +593,19 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.parasite.details = {
-        "flavor": "'utilize modified repair tool';'tap vital corru of foes to sustain allies'",
+        "flavor": "'применить модифицированный ремонтный инструмент';'черпать жизненно важное корру врагов для исцеления союзников'",
         onHit: () => "'[STAT::amt] [STATUS::siphon]'",
-        onCrit: () => "'infest oppposing team with [STATUS::siphon]'",
+        onCrit: () => "'заразить команду противника с [STATUS::siphon]'",
     }
 
     /* - mend - */
 
     env.ACTIONS.mend.name = "Подлатать" // Quick Mend
     env.ACTIONS.mend.usage = {
-        "act": "%USER FIXES UP %TARGET",
-        "crit": "%TARGET FEELS WAY BETTER",
-        "hit": "%TARGET FEELS BETTER",
-        "miss": "%TARGET IS TOO SLIPPERY"
+        "act": "%USER ПОДЛЕЧИВАЕТ %ACC-TARGET",
+        "crit": "%TARGET ЧУВСТВУЕТ СЕБЯ КУДА ЛУЧШЕ",
+        "hit": "%TARGET ЧУВСТВУЕТ СЕБЯ ЛУЧШЕ",
+        "miss": "%TARGET СЛИШКОМ СКОЛЬЗК%TAR(ИЙ/АЯ/ОЕ)GET"
     }
     env.ACTIONS.mend.details = {
         "onHit": "'[STAT::amt] [STATUS::regen]'"
@@ -613,14 +615,14 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.optimize.name = "Оптимизировать" // Optimize
     env.ACTIONS.optimize.usage = {
-        "act": "%USER FIXES UP %TARGET",
-        "crit": "%TARGET HAS A BURST OF ENERGY",
-        "hit": "%TARGET IS READY TO FIGHT",
-        "miss": "%TARGET IS TOO SLIPPERY"
+        "act": "%USER ПОДЛЕЧИВАЕТ %ACC-TARGET",
+        "crit": "%TARGET ЧУВСТВУЕТ ПРИЛИВ ЭНЕРГИИ",
+        "hit": "%TARGET ГОТОВ%TAR(-/А/О)GET ДРАТЬСЯ",
+        "miss": "%TARGET СЛИШКОМ СКОЛЬЗК%TAR(ИЙ/АЯ/ОЕ)GET"
     }
     env.ACTIONS.optimize.details = {
         onHit: () => "'[STAT::amt] [STATUS::regen] [STATUS::surge]'",
-        "flavor": "'utilize ukuzu restorative';'reduced mending effect';'enhance energy'"
+        "flavor": "'задействовать укузу восстановитель';'уменьшенный целебный эффект';'повысить энергию'"
     }
 
     /* - miltza_attack - */
@@ -631,7 +633,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER FEINTS AND STRIKES %TARGET",
         "crit": "%USER'S ALLIES ARE INSPIRED",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.miltza_attack.details = {
         "flavor": "'strike with clever feint';'may create distraction'",
@@ -642,13 +644,13 @@ cor_ru['redefineActions'] = function () {
 
     /* - spy - */
 
-    env.ACTIONS.spy.name = "следить" // spy
+    env.ACTIONS.spy.name = "слежка" // spy
     env.ACTIONS.spy.verb = "следить за кем?" // spy on
     env.ACTIONS.spy.usage = {
-        "act": "%USER SPIES UPON %TARGET",
-        "crit": "%TARGET IS MARKED FOR DEATH",
-        "hit": "%TARGET FEELS TARGETED",
-        "miss": "%TARGET HIDES BEHIND SOMETHING"
+        "act": "%USER СЛЕДИТ ЗА %INS-TARGET",
+        "crit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
+        "hit": "%TARGET ЧУВСТВУЕТ НА СЕБЕ ЧУЖОЙ ВЗГЛЯД",
+        "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
     env.ACTIONS.spy.details = {
         "onUse": "'[STATUS::vulnerable]'"
@@ -659,10 +661,10 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.ultra_spy.name = "" // Find Flaw
     env.ACTIONS.ultra_spy.verb = "" // find flaw in
     env.ACTIONS.ultra_spy.usage = {
-        "act": "%USER SPIES UPON %TARGET",
-        "crit": "%TARGET IS MARKED FOR DEATH",
-        "hit": "%TARGET IS MARKED FOR DEATH",
-        "miss": "%TARGET HIDES BEHIND SOMETHING"
+        "act": "%USER СЛЕДИТ ЗА %INS-TARGET",
+        "crit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
+        "hit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
+        "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
     env.ACTIONS.ultra_spy.details = {
         "flavor": "'locate core components in target'",
@@ -674,10 +676,10 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.subvert.name = "" // Subvert
     env.ACTIONS.subvert.desc = "" // 'expose extreme weakness';'increase hit and crit chances';'additional chance for severe damage'
     env.ACTIONS.subvert.usage = {
-        "act": "%USER SPIES UPON %TARGET",
-        "crit": "%TARGET IS MARKED FOR DEATH",
-        "hit": "%TARGET IS MARKED FOR DEATH",
-        "miss": "%TARGET HIDES BEHIND SOMETHING"
+        "act": "%USER СЛЕДИТ ЗА %INS-TARGET",
+        "crit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
+        "hit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
+        "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
     env.ACTIONS.subvert.details = {
         "flavor": "'deceive target';'manipulated by outside interference'",
@@ -691,8 +693,8 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.spy_analyze.help = "" // 80% +3T:VULNERABLE -EVASION
     env.ACTIONS.spy_analyze.usage = {
         "act": "%USER SCANS %TARGET",
-        "hit": "%TARGET FEELS TARGETED",
-        "miss": "%TARGET HIDES BEHIND SOMETHING"
+        "hit": "%TARGET ЧУВСТВУЕТ НА СЕБЕ ЧУЖОЙ ВЗГЛЯД",
+        "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
 
     /* - spy_target - */
@@ -702,8 +704,8 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.spy_target.help = "" // 80% +3T:VULNERABLE -EVASION
     env.ACTIONS.spy_target.usage = {
         "act": "%USER POINTS AT %TARGET",
-        "hit": "%TARGET FEELS TARGETED",
-        "miss": "%TARGET HIDES BEHIND SOMETHING"
+        "hit": "%TARGET ЧУВСТВУЕТ НА СЕБЕ ЧУЖОЙ ВЗГЛЯД",
+        "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
 
     /* - drone_strike - */
@@ -718,12 +720,12 @@ cor_ru['redefineActions'] = function () {
     /* - cavik_attack - */
 
     env.ACTIONS.cavik_attack.name = "" // IED
-    env.ACTIONS.cavik_attack.verb = "" // throw at
+    env.ACTIONS.cavik_attack.verb = "бросить в" // throw at
     env.ACTIONS.cavik_attack.usage = {
-        "act": "%USER THROWS A WEIRD CYST AT %TARGET",
-        "crit": "%TARGET EXPLODES",
+        "act": "%USER БРОСАЕТ СТРАННУЮ ЦИСТУ В %ACC-TARGET",
+        "crit": "%TARGET ВЗРЫВАЕТСЯ",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.cavik_attack.details = {
         "flavor": "'throw hastily made minor explosive';'chance for greater explosion'",
@@ -739,7 +741,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER TOSSES AN EXPLOSIVE AT %TARGET",
         "crit": "SHRAPNEL SPRINGS AROUND THE ROOM",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.bazruka.details = {
         "flavor": "'utilize rapid-formed micro-explosive';'chance for greater shrapnel explosion'",
@@ -909,9 +911,9 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.foe_stab.desc = "" // 'puncture vital cystic component';'damage over time';'stop regen'
     env.ACTIONS.foe_stab.help = "" // 75% -1HP +2T:PUNCTURE -REGEN, 10%C -1HP
     env.ACTIONS.foe_stab.usage = {
-        "act": "%USER STABS %TARGET",
+        "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
         "crit": "%TARGET IS EVISCERATED",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.foe_stab.details = {
@@ -1252,10 +1254,10 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.speak.name = "" // Speak
     env.ACTIONS.speak.usage = {
-        "act": "%USER APPROACHES %TARGET",
-        "crit": "%TARGET IS PARALYZED BY FEAR",
-        "hit": "%USER WHISPERS SOMETHING TO %TARGET",
-        "miss": "%TARGET RECOILS"
+        "act": "%USER ПОДХОДИТ К %DAT-TARGET",
+        "crit": "%TARGET ЗАМИРАЕТ ОТ СТРАХА",
+        "hit": "%USER ШЕПЧЕТ ЧТО-ТО %DAT-TARGET",
+        "miss": "%TARGET ОТШАТЫВАЕТСЯ"
     }
     env.ACTIONS.speak.details = {
         "flavor": "'utilize remains to speak';'express aggressor signal directly'",
@@ -1281,7 +1283,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.special_self_destruct.desc = "" // 'form shrapnel in body';'propel through unsustainable means'
     env.ACTIONS.special_self_destruct.help = "" // FOES::50% -1HP, 100% SELF -1HP
     env.ACTIONS.special_self_destruct.usage = {
-        "act": "%USER JUST EXPLODES"
+        "act": "%USER ПРОСТО ВЗРЫВАЕТСЯ"
     }
     env.ACTIONS.special_self_destruct.details = {
         "flavor": "'form shrapnel in body';'propel through unsustainable means'",
@@ -1706,9 +1708,9 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.enforce.name = "" // Enforcement
     env.ACTIONS.enforce.usage = {
-        "act": "%USER STABS %TARGET",
+        "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
         "crit": "%USER JUST KEEPS GOING",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.enforce.details = {
@@ -1748,7 +1750,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER GRASPS AT %TARGET",
         "crit": "%TARGET'S TEAM IS INFESTED",
         "hit": "%TARGET IS INFESTED",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.siphon.details = {
         "flavor": "'tap vital corru of target to sustain allies'",
@@ -1789,7 +1791,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER FEINTS AND STRIKES %TARGET",
         "crit": "%USER'S ALLIES ARE INSPIRED",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.distraction_weak.details = {
         "flavor": "'strike with clever feint';'may create distraction'",
@@ -1870,7 +1872,7 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.special_judgement.name = "" // Continuous Rewrite
     env.ACTIONS.special_judgement.usage = {
-        "act": "%USER TURNS THE MEMORY AGAINST YOU"
+        "act": "%USER НАСТРАИВАЕТ ВОСПОМИНАНИЕ ПРОТИВ ВАС"
     }
     env.ACTIONS.special_judgement.details = {
         "flavor": "'utilize thoughtspace influence to empower massive strike'",
@@ -2142,7 +2144,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER EXPLODES",
         "crit": "%TARGET EXPLODES",
         "hit": "%TARGET IS CAUGHT IN THE EXPLOSION",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.special_bomb_detonate_victim.details = {
         "onUse": "'explode'"
@@ -2181,9 +2183,9 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.scene_frenzy.name = "" // Frenzy
     env.ACTIONS.scene_frenzy.usage = {
-        "act": "%USER STABS %TARGET",
+        "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
         "crit": "%USER JUST KEEPS GOING",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.scene_frenzy.details = {
@@ -2213,7 +2215,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER GRASPS AT %TARGET",
         "crit": "%TARGET IS INFESTED",
         "hit": "%TARGET IS INFESTED",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.scene_parasite.details = {
         onHit: () => "'[STAT::amt] [STATUS::siphon]'",
@@ -2297,7 +2299,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER THROWS A WEIRD CYST AT %TARGET",
         "crit": "%TARGET EXPLODES",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.scene_cavik_attack.details = {
         "flavor": "'utilize micro-explosive rapidly formed from scavenged dull organs'",
@@ -2342,7 +2344,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER THROWS A WEIRD CYST AT %TARGET",
         "crit": "%TARGET EXPLODES",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.scene_kavruka.details = {
         "flavor": "'utilize deconstruction tool offensively';'may disorient those nearby'",
@@ -2358,7 +2360,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER THROWS A WEIRD CYST AT %TARGET",
         "crit": "%TARGET EXPLODES",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.scene_satik.details = {
         "flavor": "'break satik shell due to emergency';'release many small ablative barrier applicators'",
@@ -2417,7 +2419,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.arch_harasser_stab.usage = {
         "act": "%USER flickers towards %TARGET",
         "crit": "%TARGET IS EVISCERATED",
-        "hit": "%TARGET BLEEDS SLUDGY CORRU",
+        "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.localization.strings["%USER flickers towards %TARGET"] = ""
@@ -2464,7 +2466,7 @@ cor_ru['redefineActions'] = function () {
         "act": "AN EXPLOSIVE DETONATES!",
         "crit": "%TARGET EXPLODES",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
-        "miss": "%TARGET DODGES"
+        "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.arch_bomb_hit.details = {
         "onHit": "'[STAT::amt] [STAT::kb] from selected tile'",
@@ -2824,172 +2826,172 @@ cor_ru['redefineActions'] = function () {
 cor_ru['redefineEffects'] = function () {
     /* - Puncture - */
 
-    env.STATUS_EFFECTS.puncture.name = "" // Puncture
+    env.STATUS_EFFECTS.puncture.name = "Прокол" // Puncture
     env.STATUS_EFFECTS.puncture.help = "" // -10% hp/turn (min:1)
 
     /* - Rot - */
 
-    env.STATUS_EFFECTS.rot.name = "" // Rot
+    env.STATUS_EFFECTS.rot.name = "Гниль" // Rot
     env.STATUS_EFFECTS.rot.help = "" // -(T:ROT)% HP/turn (min:1), max: 90%HP\nI.E. 4T:ROT = -4% HP
 
     /* - Regen - */
 
-    env.STATUS_EFFECTS.regen.name = "" // Regen
+    env.STATUS_EFFECTS.regen.name = "Регенерация" // Regen
     env.STATUS_EFFECTS.regen.help = "" // +1 HP/turn
 
     /* - Repairs - */
 
-    env.STATUS_EFFECTS.repairs.name = "" // Repairs
+    env.STATUS_EFFECTS.repairs.name = "Починка" // Repairs
     env.STATUS_EFFECTS.repairs.help = "" // +1 HP/turn while BP > 0, prevents puncture, removed upon barrier loss
 
     /* - Million Teeth - */
 
-    env.STATUS_EFFECTS.million_teeth.name = "" // Million Teeth
+    env.STATUS_EFFECTS.million_teeth.name = "Миллион Зубов" // Million Teeth
     env.STATUS_EFFECTS.million_teeth.help = "" // +2T:PUNCTURE/turn while BP > 0, removed upon barrier loss
 
     /* - Destabilized - */
 
-    env.STATUS_EFFECTS.destabilized.name = "" // Destabilized
+    env.STATUS_EFFECTS.destabilized.name = "Дестабилизация" // Destabilized
     env.STATUS_EFFECTS.destabilized.help = "" // +100% incoming/outgoing damage/heal
 
     /* - Vulnerable - */
 
-    env.STATUS_EFFECTS.vulnerable.name = "" // Vulnerable
+    env.STATUS_EFFECTS.vulnerable.name = "Уязвимость" // Vulnerable
     env.STATUS_EFFECTS.vulnerable.help = "" // +100% IN:HIT%, +200% IN:CRIT%
 
     /* - Critical Flaw - */
 
-    env.STATUS_EFFECTS.critical_flaw.name = "" // Critical Flaw
+    env.STATUS_EFFECTS.critical_flaw.name = "Критический Недостаток" // Critical Flaw
     env.STATUS_EFFECTS.critical_flaw.help = "" // when struck with a crit, also lose 10% of current HP (min:1), removed upon vulnerable loss
 
     /* - Focused - */
 
-    env.STATUS_EFFECTS.focused.name = "" // Focused
+    env.STATUS_EFFECTS.focused.name = "Сосредоточение" // Focused
     env.STATUS_EFFECTS.focused.help = "" // +100% HIT%, +400% CRIT%
 
     /* - Weakened - */
 
-    env.STATUS_EFFECTS.weakened.name = "" // Weakened
+    env.STATUS_EFFECTS.weakened.name = "Слабость" // Weakened
     env.STATUS_EFFECTS.weakened.help = "" // -50% outgoing damage, -100% CRIT%
 
     /* - Empowered - */
 
-    env.STATUS_EFFECTS.empowered.name = "" // Empowered
+    env.STATUS_EFFECTS.empowered.name = "Усиление" // Empowered
     env.STATUS_EFFECTS.empowered.help = "" // +1 base outgoing damage/heal
 
     /* - Carapace - */
 
-    env.STATUS_EFFECTS.carapace.name = "" // Carapace
+    env.STATUS_EFFECTS.carapace.name = "Панцирь" // Carapace
     env.STATUS_EFFECTS.carapace.help = "" // -1 base incoming damage
 
     /* - Open Wound - */
 
-    env.STATUS_EFFECTS.open_wound.name = "" // Open Wound
+    env.STATUS_EFFECTS.open_wound.name = "Открытая Рана" // Open Wound
     env.STATUS_EFFECTS.open_wound.help = "" // +1 base incoming damage
 
     /* - Evasion - */
 
-    env.STATUS_EFFECTS.evasion.name = "" // Evasion
+    env.STATUS_EFFECTS.evasion.name = "Уклонение" // Evasion
     env.STATUS_EFFECTS.evasion.help = "" // -75% IN:HIT% & IN:CRIT%
 
     /* - Stun - */
 
-    env.STATUS_EFFECTS.stun.name = "" // Stun
+    env.STATUS_EFFECTS.stun.name = "Оглушение" // Stun
     env.STATUS_EFFECTS.stun.help = "" // skip turn
 
     /* - Immobile - */
 
-    env.STATUS_EFFECTS.immobile.name = "" // Immobile
+    env.STATUS_EFFECTS.immobile.name = "Неподвижность" // Immobile
     env.STATUS_EFFECTS.immobile.help = "" // skip turn
 
     /* - Immobile - */
 
-    env.STATUS_EFFECTS.immobile_hardskip.name = "" // Immobile
+    env.STATUS_EFFECTS.immobile_hardskip.name = "Неподвижность" // Immobile
     env.STATUS_EFFECTS.immobile_hardskip.help = "" // skip turn
 
     /* - Invisible - */
 
-    env.STATUS_EFFECTS.invisible.name = "" // Invisible
+    env.STATUS_EFFECTS.invisible.name = "Невидимость" // Invisible
     env.STATUS_EFFECTS.invisible.help = "" // no actor panel, used for background entities mainly
 
     /* - Incoherent - */
 
-    env.STATUS_EFFECTS.incoherent.name = "" // Incoherent
+    env.STATUS_EFFECTS.incoherent.name = "Бессвязность" // Incoherent
     env.STATUS_EFFECTS.incoherent.help = "" // ignoring thoughtspace specifications
 
     /* - Windup - */
 
-    env.STATUS_EFFECTS.windup.name = "" // Windup
+    env.STATUS_EFFECTS.windup.name = "Подготовка" // Windup
     env.STATUS_EFFECTS.windup.help = "" // +100% incoming crit, preparing powerful action, interrupted by stun
 
     /* - Fear - */
 
-    env.STATUS_EFFECTS.fear.name = "" // Fear
+    env.STATUS_EFFECTS.fear.name = "Страх" // Fear
     env.STATUS_EFFECTS.fear.help = "" // ()=> `paralyzed by terror,${env?.rpg?.is2D ? " -1 MOVE," : ''} some actions prohibited\nremoved by ally CRIT${env?.rpg?.is2D ? " or ENDURE action" : ''}`
 
     /* - Madness - */
 
-    env.STATUS_EFFECTS.madness.name = "" // Madness
+    env.STATUS_EFFECTS.madness.name = "Безумие" // Madness
     env.STATUS_EFFECTS.madness.help = "" // outgoing targeted actions have a 50% chance to be redirected to a random actor\nremoved upon fear loss
 
     /* - Spikes - */
 
-    env.STATUS_EFFECTS.spikes.name = "" // Spikes
+    env.STATUS_EFFECTS.spikes.name = "Шипы" // Spikes
     env.STATUS_EFFECTS.spikes.help = "" // return 50% incoming damage to attacker (min:1)
 
     /* - siphon - */
 
-    env.STATUS_EFFECTS.siphon.name = "" // siphon
+    env.STATUS_EFFECTS.siphon.name = "" // siphon --- надо обсудить. предложения: выкачка, поглощение, вампиризм (знают ли куу о вампирах (мозг лазутчика всё странно переводит))
     env.STATUS_EFFECTS.siphon.help = "" // attacker receives +1HP +1T:REGEN
 
     /* - Redirection - */
 
-    env.STATUS_EFFECTS.redirection.name = "" // Redirection
+    env.STATUS_EFFECTS.redirection.name = "Перенаправление" // Redirection
     env.STATUS_EFFECTS.redirection.help = "" // ()=> `[[ORIGIN]] intercepting incoming attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
 
     /* - Redirector - */
 
-    env.STATUS_EFFECTS.redirector.name = "" // Redirector
+    env.STATUS_EFFECTS.redirector.name = "Перенаправитель" // Redirector
     env.STATUS_EFFECTS.redirector.help = "" // ()=> `intercepting nearby attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
 
     /* - Conjoined - */
 
-    env.STATUS_EFFECTS.conjoined.name = "" // Conjoined
+    env.STATUS_EFFECTS.conjoined.name = "Сросшиеся" // Conjoined
     env.STATUS_EFFECTS.conjoined.help = "" // share HP with all other conjoined entities
 
     /* - Conjoined - */
 
-    env.STATUS_EFFECTS.conjoined_baseslug.name = "" // Conjoined
+    env.STATUS_EFFECTS.conjoined_baseslug.name = "Сросшиеся" // Conjoined
     env.STATUS_EFFECTS.conjoined_baseslug.help = "" // share HP with all similar entities
 
     /* - Ethereal - */
 
-    env.STATUS_EFFECTS.ethereal.name = "" // Ethereal
+    env.STATUS_EFFECTS.ethereal.name = "Бесплотность" // Ethereal
     env.STATUS_EFFECTS.ethereal.help = "" // disappear on death
 
     /* - Ethereal - */
 
-    env.STATUS_EFFECTS.ethereal_passive.name = "" // Ethereal
+    env.STATUS_EFFECTS.ethereal_passive.name = "Бесплотность" // Ethereal
     env.STATUS_EFFECTS.ethereal_passive.help = "" // disappear on death
 
     /* - Untargetable - */
 
-    env.STATUS_EFFECTS.untargetable.name = "" // Untargetable
+    env.STATUS_EFFECTS.untargetable.name = "Ненацеливаемость" // Untargetable
     env.STATUS_EFFECTS.untargetable.help = "" // cannot directly attack, seek other means
 
     /* - Sacrifice - */
 
-    env.STATUS_EFFECTS.sacrifice.name = "" // Sacrifice
+    env.STATUS_EFFECTS.sacrifice.name = "Жертвоприношение" // Sacrifice
     env.STATUS_EFFECTS.sacrifice.help = "" // +2 base outgoing damage/heal, +200% HIT% & CRIT%, consumed by next action
 
     /* - Surge - */
 
-    env.STATUS_EFFECTS.surge.name = "" // Surge
+    env.STATUS_EFFECTS.surge.name = "Рывок" // Surge
     env.STATUS_EFFECTS.surge.help = "" // use next active action twice
 
     /* - Wild Surge - */
 
-    env.STATUS_EFFECTS.wild_surge.name = "" // Wild Surge
+    env.STATUS_EFFECTS.wild_surge.name = "Перенапряжение" // Wild Surge --- ну дикий рывок звучит. меее
     env.STATUS_EFFECTS.wild_surge.help = "" // on next active targeted action, gain 1T:STUN, and use across the entire target team\nif beneficial, action used on all allies\nif offensive, action used on all foes
 
     /* - Attack Drone - */
@@ -3430,33 +3432,33 @@ cor_ru['redefineEffects'] = function () {
 cor_ru['redefineItems'] = function () {
     /* - Restorative Cyst - */
 
-    env.ITEM_LIST.restorative.name = "" // Restorative Cyst
+    env.ITEM_LIST.restorative.name = "Восстановительная Циста" // Restorative Cyst
     env.ITEM_LIST.restorative.description = "" // 'quick-acting repair cyst';'best used away from danger'
     env.ITEM_LIST.restorative.oocnote = "" // 'restores target to full health'
 
     /* - Satik Cyst - */
 
-    env.ITEM_LIST.satik_cyst.name = "" // Satik Cyst
+    env.ITEM_LIST.satik_cyst.name = "Сатик-Циста" // Satik Cyst
     env.ITEM_LIST.satik_cyst.description = "" // 'contains rapid temporary ablative barrier applicators';'named after hardy veilk parasite';'break in case of emergency'
 
     /* - Aima Cyst - */
 
-    env.ITEM_LIST.aima_cyst.name = "" // Aima Cyst
+    env.ITEM_LIST.aima_cyst.name = "Айма-Циста" // Aima Cyst
     env.ITEM_LIST.aima_cyst.description = "" // 'receptor-tied targeting cyst';'traditional hunting implement';'useful for multitasking'
 
     /* - Kavruka - */
 
-    env.ITEM_LIST.kavruka.name = "" // Kavruka
+    env.ITEM_LIST.kavruka.name = "Каврука" // Kavruka
     env.ITEM_LIST.kavruka.description = "" // 'deconstruction tool';'named after non-corrucystic surface fauna';'notoriously explosive'
 
     /* - Disabler - */
 
-    env.ITEM_LIST.disabler.name = "" // Disabler
+    env.ITEM_LIST.disabler.name = "Отключитель" // Disabler
     env.ITEM_LIST.disabler.description = "" // 'emergency security device';'injects self-destructive thoughtform';'for industrial use only';'quite rare'
 
     /* - CMD::DRILL - */
 
-    env.ITEM_LIST.drill.name = "" // CMD::DRILL
+    env.ITEM_LIST.drill.name = "" // CMD::DRILL --- как переводить cmd?
     env.ITEM_LIST.drill.description = "" // 'single-use thoughtspace modification';'enforces harsher ruleset'
 
     /* - CMD::ROT - */
@@ -3476,17 +3478,17 @@ cor_ru['redefineItems'] = function () {
 
     /* - Sfer Cube - */
 
-    env.ITEM_LIST.sfer_cube.name = "" // Sfer Cube
+    env.ITEM_LIST.sfer_cube.name = "Куб Сфера" // Sfer Cube --- господи
     env.ITEM_LIST.sfer_cube.description = "" // 'condensed corrucystic fuel';'valid currency';'the foundation of all things'
 
     /* - Cool Orb Thingy - */
 
-    env.ITEM_LIST.cool_orb_thingy.name = "" // Cool Orb Thingy
+    env.ITEM_LIST.cool_orb_thingy.name = "Клёвая Шароштучка" // Cool Orb Thingy
     env.ITEM_LIST.cool_orb_thingy.description = "" // 'labelled "ON THE USE OF BRIGHT WEAPONRY"';'receptor-locked'
 
     /* - Scary Black Box - */
 
-    env.ITEM_LIST.scary_black_box.name = "" // Scary Black Box
+    env.ITEM_LIST.scary_black_box.name = "Криповая Чёрная Коробочка" // Scary Black Box
     env.ITEM_LIST.scary_black_box.description = "" // 'cousinly container made from tough dead material'
 
     /* - Sorry Cyst - */
@@ -3512,7 +3514,7 @@ cor_ru['redefineItems'] = function () {
 
     /* - Weird Black Box - */
 
-    env.ITEM_LIST.error.name = "" // Weird Black Box
+    env.ITEM_LIST.error.name = "Странная Чёрная Коробочка" // Weird Black Box
     env.ITEM_LIST.error.description = "" // 'cannot open';'why are we still carrying it';'quite heavy...'
 
     /* - Stray IDEA - */
@@ -3529,7 +3531,7 @@ cor_ru['redefineItems'] = function () {
 
     /* - ??? - */
 
-    env.ITEM_LIST.fish_wheel.name = "" // ???
+    env.ITEM_LIST.fish_wheel.name = "???" // ???
     env.ITEM_LIST.fish_wheel.description = "" // 'intrusive species'
     env.ITEM_LIST.fish_wheel.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'imbue with gambling addiction'
 
@@ -3541,20 +3543,20 @@ cor_ru['redefineItems'] = function () {
 
     /* - FiiF - */
 
-    env.ITEM_LIST.fish_mimic.name = "" // FiiF
+    env.ITEM_LIST.fish_mimic.name = "РыыР" // FiiF
     env.ITEM_LIST.fish_mimic.description = "" // 'fish native to these waters';'sretaw eseht ot evitan hsif'
     env.ITEM_LIST.fish_mimic.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'removes ability to be modified';'replaces actions with mimic'
 
     /* - Sniper Fish - */
 
-    env.ITEM_LIST.fish_sniper.name = "" // Sniper Fish
+    env.ITEM_LIST.fish_sniper.name = "Рыба-Стрелок" // Sniper Fish
     env.ITEM_LIST.fish_sniper.description = "" // 'fish native to these waters';'doubles as powerful sniper rifle'
     env.ITEM_LIST.fish_sniper.oocnote = "" // '<strong>PERMANENT</strong>';'select shell';'removes ability to be modified';'replaces actions with powerful firearm'
 
     /* - Normal Fish - */
 
-    env.ITEM_LIST.fish_normal.name = "" // Normal Fish
-    env.ITEM_LIST.fish_normal.description = "" // 'fishey'
+    env.ITEM_LIST.fish_normal.name = "Нормальная Рыба" // Normal Fish
+    env.ITEM_LIST.fish_normal.description = "'ыбка'" // 'fishey'
     env.ITEM_LIST.fish_normal.oocnote = "" // 'select shell';'removes any special classes';'re-enables modification'
 
     /* - Deceiving Bulb - */
@@ -3571,12 +3573,12 @@ cor_ru['redefineItems'] = function () {
 
     /* - BSTRDBOOT - */
 
-    env.ITEM_LIST.fish_boot.name = "" // BSTRDBOOT
-    env.ITEM_LIST.fish_boot.description = "" // 'SORRY NOTHING'
+    env.ITEM_LIST.fish_boot.name = "СВЛЧСАПОГ" // BSTRDBOOT
+    env.ITEM_LIST.fish_boot.description = "'СОРЯН НИЧЕВО'" // 'SORRY NOTHING'
 
     /* - Symbiotic Rifle - */
 
-    env.ITEM_LIST.symbiotic_rifle.name = "" // Symbiotic Rifle
+    env.ITEM_LIST.symbiotic_rifle.name = "Симбиотическая Винтовка" // Symbiotic Rifle
     env.ITEM_LIST.symbiotic_rifle.description = "" // 'adapted bright weaponry created via lesser vats and strange cyst';'connects to internal ammunition generator';'use at cost of HP'
 
 }
@@ -3584,120 +3586,120 @@ cor_ru['redefineItems'] = function () {
 cor_ru['redefineHumors'] = function () {
     /* - Ichor - */
 
-    env.COMBAT_COMPONENTS.ichor.name = "" // Ichor
-    env.COMBAT_COMPONENTS.ichor.description = "" // 'care and sacrifice'
-    env.COMBAT_COMPONENTS.ichor.help = "" // 'healing';'regen';'revival'
+    env.COMBAT_COMPONENTS.ichor.name = "Ихор" // Ichor
+    env.COMBAT_COMPONENTS.ichor.description = "'забота и жертвенность'" // 'care and sacrifice'
+    env.COMBAT_COMPONENTS.ichor.help = "'лечение';'регенерация';'оживление'" // 'healing';'regen';'revival'
 
     /* - Eyes - */
 
-    env.COMBAT_COMPONENTS.eyes.name = "" // Eyes
-    env.COMBAT_COMPONENTS.eyes.description = "" // 'curiosity and critique'
-    env.COMBAT_COMPONENTS.eyes.help = "" // 'vulnerability';'evasion';'focus'
+    env.COMBAT_COMPONENTS.eyes.name = "Глаза" // Eyes
+    env.COMBAT_COMPONENTS.eyes.description = "'любопытство и критика'" // 'curiosity and critique'
+    env.COMBAT_COMPONENTS.eyes.help = "'уязвимость';'уклонение';'сосредоточение'" // 'vulnerability';'evasion';'focus'
 
     /* - Claws - */
 
-    env.COMBAT_COMPONENTS.claws.name = "" // Claws
-    env.COMBAT_COMPONENTS.claws.description = "" // 'ambition, often blind'
-    env.COMBAT_COMPONENTS.claws.help = "" // 'team damage';'puncture';'double-action'
+    env.COMBAT_COMPONENTS.claws.name = "Когти" // Claws
+    env.COMBAT_COMPONENTS.claws.description = "'амбиции, зачастую слепые'" // 'ambition, often blind'
+    env.COMBAT_COMPONENTS.claws.help = "'совместный урон';'прокол';'двойные действия'" // 'team damage';'puncture';'double-action'
 
     /* - Bone - */
 
-    env.COMBAT_COMPONENTS.bone.name = "" // Bone
-    env.COMBAT_COMPONENTS.bone.description = "" // 'resilience and paranoia'
-    env.COMBAT_COMPONENTS.bone.help = "" // 'weakness';'stun';'guard';'spiked'
+    env.COMBAT_COMPONENTS.bone.name = "Кость" // Bone
+    env.COMBAT_COMPONENTS.bone.description = "'стойкость и паранойя'" // 'resilience and paranoia'
+    env.COMBAT_COMPONENTS.bone.help = "'слабость';'оглушение';'защита';'шипы'" // 'weakness';'stun';'guard';'spiked'
 
     /* - Light - */
 
-    env.COMBAT_COMPONENTS.light.name = "" // Light
-    env.COMBAT_COMPONENTS.light.description = "" // 'fate and consequence'
-    env.COMBAT_COMPONENTS.light.help = "" // 'destabilized';'fear';'stun'
+    env.COMBAT_COMPONENTS.light.name = "Свет" // Light
+    env.COMBAT_COMPONENTS.light.description = "'судьба и последствия'" // 'fate and consequence'
+    env.COMBAT_COMPONENTS.light.help = "'дестабилизация';'страх';'оглушение'" // 'destabilized';'fear';'stun'
 
     /* - Empty - */
 
-    env.COMBAT_COMPONENTS.empty.name = "" // Empty
-    env.COMBAT_COMPONENTS.empty.description = "" // 'improvisation';'lacking direction'
-    env.COMBAT_COMPONENTS.empty.help = "" // 'basic actions'
+    env.COMBAT_COMPONENTS.empty.name = "Пустой" // Empty
+    env.COMBAT_COMPONENTS.empty.description = "'импровизация';'отсутствие направления'" // 'improvisation';'lacking direction'
+    env.COMBAT_COMPONENTS.empty.help = "'базовые действия'" // 'basic actions'
 }
 /* --- MODIFIERS --- */
 cor_ru['redefineModifiers'] = function () {
     /* - Heavy Chitin - */
 
-    env.MODIFIERS.bone_spikes.name = "" // Heavy Chitin
+    env.MODIFIERS.bone_spikes.name = "Тяжелый Хитин" // Heavy Chitin
     env.MODIFIERS.bone_spikes.getHelp = ()=> { return env.STATUS_EFFECTS.bone_spikes.help }
 
     /* - Ablative Mending - */
 
-    env.MODIFIERS.bone_ablative.name = "" // Ablative Mending
+    env.MODIFIERS.bone_ablative.name = "Аблятивная Починка" // Ablative Mending
     env.MODIFIERS.bone_ablative.getHelp = ()=> { return env.STATUS_EFFECTS.bone_ablative.help }
 
     /* - Collectivism - */
 
-    env.MODIFIERS.bone_collective.name = "" // Collectivism
+    env.MODIFIERS.bone_collective.name = "Коллективизм" // Collectivism
     env.MODIFIERS.bone_collective.getHelp = ()=> { return env.STATUS_EFFECTS.bone_collective.help }
 
     /* - Adull's Sacrifice - */
 
-    env.MODIFIERS.ichor_sacrifice.name = "" // Adull's Sacrifice
+    env.MODIFIERS.ichor_sacrifice.name = "" // Adull's Sacrifice --- мы вроде корруворкс спрашивали об adull но. слушайте. я задумлся может они не поняли нас верно
     env.MODIFIERS.ichor_sacrifice.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_sacrifice.help }
 
     /* - Full Strength - */
 
-    env.MODIFIERS.ichor_strength.name = "" // Full Strength
+    env.MODIFIERS.ichor_strength.name = "Полная Сила" // Full Strength
     env.MODIFIERS.ichor_strength.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_strength.help }
 
     /* - Rotten Supplies - */
 
-    env.MODIFIERS.ichor_rotten.name = "" // Rotten Supplies
+    env.MODIFIERS.ichor_rotten.name = "Гнилые Припасы" // Rotten Supplies
     env.MODIFIERS.ichor_rotten.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_rotten.help }
 
     /* - Infection - */
 
-    env.MODIFIERS.claws_infection.name = "" // Infection
+    env.MODIFIERS.claws_infection.name = "Инфекция" // Infection
     env.MODIFIERS.claws_infection.getHelp = ()=> { return env.STATUS_EFFECTS.claws_infection.help }
 
     /* - Desperation - */
 
-    env.MODIFIERS.claws_desperation.name = "" // Desperation
+    env.MODIFIERS.claws_desperation.name = "Отчаяние" // Desperation
     env.MODIFIERS.claws_desperation.getHelp = ()=> { return env.STATUS_EFFECTS.claws_desperation.help }
 
     /* - Rabid - */
 
-    env.MODIFIERS.claws_rabid.name = "" // Rabid
+    env.MODIFIERS.claws_rabid.name = "Бешенство" // Rabid
     env.MODIFIERS.claws_rabid.getHelp = ()=> { return env.STATUS_EFFECTS.claws_rabid.help }
 
     /* - Hypercritical - */
 
-    env.MODIFIERS.eyes_hypercritical.name = "" // Hypercritical
+    env.MODIFIERS.eyes_hypercritical.name = "Гиперкритичность" // Hypercritical
     env.MODIFIERS.eyes_hypercritical.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_hypercritical.help }
 
     /* - Wounded Ego - */
 
-    env.MODIFIERS.eyes_woundedego.name = "" // Wounded Ego
+    env.MODIFIERS.eyes_woundedego.name = "Уязвлённое Эго" // Wounded Ego
     env.MODIFIERS.eyes_woundedego.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_woundedego.help }
 
     /* - Betrayal - */
 
-    env.MODIFIERS.eyes_betrayal.name = "" // Betrayal
+    env.MODIFIERS.eyes_betrayal.name = "Предательство" // Betrayal
     env.MODIFIERS.eyes_betrayal.getHelp = ()=> { return env.STATUS_EFFECTS.eyes_betrayal.help }
 
     /* - Laughterhouse - */
 
-    env.MODIFIERS.light_laughterhouse.name = "" // Laughterhouse
+    env.MODIFIERS.light_laughterhouse.name = "" // Laughterhouse --- полагаю тут игра слов мол slaughterhouse. как переведем? смехобойня? хиханьки-хахоньки?
     env.MODIFIERS.light_laughterhouse.getHelp = ()=> { return env.STATUS_EFFECTS.light_laughterhouse.help }
 
     /* - Velzie's Glee - */
 
-    env.MODIFIERS.light_glee.name = "" // Velzie's Glee
+    env.MODIFIERS.light_glee.name = "Упоение Велзи" // Velzie's Glee
     env.MODIFIERS.light_glee.getHelp = ()=> { return env.STATUS_EFFECTS.light_glee.help }
 
     /* - Dark Eye - */
 
-    env.MODIFIERS.light_dark.name = "" // Dark Eye
+    env.MODIFIERS.light_dark.name = "Мрачный Глаз" // Dark Eye
     env.MODIFIERS.light_dark.getHelp = ()=> { return env.STATUS_EFFECTS.light_dark.help }
 
     /* - Abundance - */
 
-    env.MODIFIERS.global_anti.name = "" // Abundance
+    env.MODIFIERS.global_anti.name = "Избыток" // Abundance
     env.MODIFIERS.global_anti.getHelp = (withCurrent)=> {
                 let help = `<span class='obesk-color'>FOES::+20% chance for daemon-inhabited shells to appear in place of lesser foes</span>\n<span class='bastard-color'>TEAM::+5 max HP</span>`
 
@@ -4234,25 +4236,25 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.akizet.name = "Акизет" // Akizet
     env.COMBAT_ACTORS.akizet.reactions = {
-        evade: ['far too close', 'oaa!', 'nearly...'],
-        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "get away!" : "excellent!"],
-        crit_buff: [()=>env.combat.has('husk') || env.rpg.is2D ? "good" : "easy!"],
+        evade: ['чуть не попало', 'oaa!', 'почти...'],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "прочь!" : "превосходно!"],
+        crit_buff: [()=>env.combat.has('husk') || env.rpg.is2D ? "отлично" : "легко!"],
         miss: ['œ¦êA'],
         dead: ['...'],
-        receive_hit: ['@#Æ$J'],
-        receive_crit: ['ßÃÆM!!'],
-        receive_puncture: ['i have felt worse', 'a familiar feeling'],
-        receive_buff: ['thank you', 'we are unstoppable'],
-        receive_destabilized: ['every cell... awake...'],
-        receive_rez: ['that was close...'],
-        puncture: ['i need to fix this', ()=>env.combat.has('tozik') ? "tozik!" : "i need help!", ()=>env.combat.has('cavik') ? "cavik!" : "restoratives?!"],
-        regen: ['this will do', 'better...'],
+        receive_hit: ['@#Æ$Ж'],
+        receive_crit: ['ЬÃÆМ!!'],
+        receive_puncture: ['бывало и хуже', 'знакомое ощущение'],
+        receive_buff: ['спасибо', 'мы неостановимы'],
+        receive_destabilized: ['каждая клетка... пробуждённая...'],
+        receive_rez: ['было близко...'],
+        puncture: ['мне нужно заделать это', ()=>env.combat.has('tozik') ? "тозик!" : "мне нужна помощь!", ()=>env.combat.has('cavik') ? "кавик!" : "восстановители?!"],
+        regen: ['пойдёт', 'лучше...'],
         destabilized: ['...'],
-        stun: ['my arms...'],
-        receive_carapace: ['this armor...!', 'very good'],
-        receive_repairs: ['thank you, cavik', 'better!'],
-        receive_fear: ['no, no...', 'the eyes...', 'velzie forgive me'],
-        receive_redirection: ['together!', 'thank you, my friend', 'we will destroy them']
+        stun: ['мои руки...'],
+        receive_carapace: ['эта броня...!', 'очень хорошо'],
+        receive_repairs: ['спасибо, кавик', 'лучше!'],
+        receive_fear: ['нет, нет...', 'глаза...', 'да простит меня велзи'],
+        receive_redirection: ['вместе!', 'спасибо, друг мой', 'мы уничтожим их']
     }
     env.COMBAT_ACTORS.akizet.cor_ru = {
         name: {
@@ -4267,26 +4269,26 @@ cor_ru['redefineActors'] = function () {
 
     /* - Gakvu - */
 
-    env.COMBAT_ACTORS.gakvu.name = "ГаквуГакву" // Gakvu
+    env.COMBAT_ACTORS.gakvu.name = "Гакву" // Gakvu --- ????why was she ГаквуГакву
     env.COMBAT_ACTORS.gakvu.reactions = {
-        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "ah!" : "haha!", ()=>env.combat.has('husk') || env.rpg.is2D ? "no!!" : "woaah!!"],
-        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "clean..." : "it is simply that easy", ()=>env.combat.has('husk') || env.rpg.is2D ? "a few more like that..." : "that was lucky"],
-        crit_buff: ['so that goes there...'],
-        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "€Öä!" : "oh...", ()=>env.combat.has('husk') || env.rpg.is2D ? "it is too fast!!" : "too bad"],
+        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "ах!" : "хаха!", ()=>env.combat.has('husk') || env.rpg.is2D ? "нет!!" : "воуу!!"],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "чисто..." : "вот так вот просто", ()=>env.combat.has('husk') || env.rpg.is2D ? "ещё парочку таких..." : "вот повезло"],
+        crit_buff: ['вот это идёт вон туда...'],
+        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "€Öä!" : "ой...", ()=>env.combat.has('husk') || env.rpg.is2D ? "оно слишком быстрое!!" : "как жаль"],
         dead: ['...'],
         receive_crit: ['Æ!!'],
-        receive_puncture: ['i am... bleeding...?', 'ow!! what...'],
-        receive_buff: ['thanks'],
-        receive_destabilized: ['may velzie look away'],
-        receive_rez: [()=>env.combat.has('husk') || env.rpg.is2D ? "thank you" : "my savior"],
-        puncture: ['such a strange feeling', 'make this stop'],
-        regen: [()=>env.combat.has('husk') || env.rpg.is2D ? "feeling better" : "feeling good"],
+        receive_puncture: ['у меня... кровь идёт...?', 'ай!! что...'],
+        receive_buff: ['спасибо'],
+        receive_destabilized: ['да отвернётся же велзи'],
+        receive_rez: [()=>env.combat.has('husk') || env.rpg.is2D ? "благодарю" : "мой спаситель"],
+        puncture: ['такое странное чувство', 'остановите это'],
+        regen: [()=>env.combat.has('husk') || env.rpg.is2D ? "уже лучше" : "как хорошо"],
         destabilized: ['...'],
-        stun: ['where did my eyes go?!'],
-        receive_carapace: ['so heavy'],
-        receive_repairs: ['thanks cavik'],
-        receive_fear: ['stop looking at me!!', 'get away from me!', 'no, no no no', 'what did it say??'],
-        receive_redirection: ['bozko??']
+        stun: ['куда делись мои глаза?!'],
+        receive_carapace: ['такой тяжёлый'],
+        receive_repairs: ['спасибо кавик'],
+        receive_fear: ['прекрати на меня пялиться!!', 'отстань от меня!', 'нет, нет нет нет', 'что оно сказало??'],
+        receive_redirection: ['бозко??']
     }
     env.COMBAT_ACTORS.gakvu.cor_ru = {
         name: {
@@ -4303,18 +4305,18 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.tozik.name = "Тозик" // Tozik
     env.COMBAT_ACTORS.tozik.reactions = {
-        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "good enough" : "hehe"],
-        crit_buff: ['keep going'],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "сойдёт" : "хихи"],
+        crit_buff: ['держись'],
         dead: ['...'],
-        receive_destabilized: ['i hear it calling'],
-        receive_rez: ['let us finish this'],
-        puncture: ['i need to fix this'],
+        receive_destabilized: ['я слышу его зов'],
+        receive_rez: ['покончим с этим'],
+        puncture: ['это нужно заделать'],
         destabilized: ['...'],
-        stun: ['where...'],
-        receive_carapace: ['thank you'],
-        receive_repairs: ['that is better'],
-        receive_fear: [()=> env.rpg.is2D ? "there is nothing here" : "hollowed out...", 'and yet it moves', ()=> env.rpg.is2D ? "where are you?" :"what happened to you?", 'that cannot be', '...'],
-        receive_redirection: ['i will return the favor']
+        stun: ['где...'],
+        receive_carapace: ['спасибо'],
+        receive_repairs: ['это лучше'],
+        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобой случилось?", 'не может быть', '...'],
+        receive_redirection: ['я возвращу эту услугу']
     }
     env.COMBAT_ACTORS.tozik.cor_ru = {
         name: {
@@ -4331,18 +4333,18 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.tozik_npc.name = "Тозик" // Tozik
     env.COMBAT_ACTORS.tozik_npc.reactions = {
-        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "good enough" : "hehe"],
-        crit_buff: ['keep going'],
+        crit: [()=>env.combat.has('husk') || env.rpg.is2D ? "сойдёт" : "хихи"],
+        crit_buff: ['держись'],
         dead: ['...'],
-        receive_destabilized: ['i hear it calling'],
-        receive_rez: ['let us finish this'],
-        puncture: ['i need to fix this'],
+        receive_destabilized: ['я слышу его зов'],
+        receive_rez: ['покончим с этим'],
+        puncture: ['это нужно заделать'],
         destabilized: ['...'],
-        stun: ['where...'],
-        receive_carapace: ['thank you'],
-        receive_repairs: ['that is better'],
-        receive_fear: [()=> env.rpg.is2D ? "there is nothing here" : "hollowed out...", 'and yet it moves', ()=> env.rpg.is2D ? "where are you?" :"what happened to you?", 'that cannot be', '...'],
-        receive_redirection: ['i will return the favor']
+        stun: ['где...'],
+        receive_carapace: ['спасибо'],
+        receive_repairs: ['это лучше'],
+        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобой случилось?", 'не может быть', '...'],
+        receive_redirection: ['я возвращу эту услугу']
     }
     env.COMBAT_ACTORS.tozik_npc.cor_ru = {
         name: {
@@ -4359,29 +4361,29 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.miltza.name = "Милтза" // Miltza
     env.COMBAT_ACTORS.miltza.reactions = {
-        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "wah!!" : "i did it!"],
-        crit: ['die!! die!!'],
-        crit_buff: ['is that better??'],
-        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "how does it move like that?!" : "next time"],
+        evade: [()=>env.combat.has('husk') || env.rpg.is2D ? "уаа!!" : "получилось!"],
+        crit: ['умри!! умри!!'],
+        crit_buff: ['так лучше??'],
+        miss: [()=>env.combat.has('husk') || env.rpg.is2D ? "как оно так двигается?!" : "в следующий раз"],
         dead: ['...'],
         receive_crit: ['Æöö!!'],
-        receive_puncture: ['restorative, quick!'],
-        receive_buff: ['thank you!'],
-        receive_destabilized: ['die DIE!! DIE!! DIE!!!'],
-        puncture: ['i am losing cohesion!'],
-        stun: ['oaauuuau'],
-        receive_carapace: ['a shell!'],
-        receive_repairs: ['thank you, thank you!', 'so much better'],
-        receive_fear: [()=> env.rpg.is2D ? "this cannot be real" : "that one looks like...!", 'stop...', 'velzie take me from here', 'stay away! away!!'],
-        receive_redirection: ['what??', 'oh, thank you!']
+        receive_puncture: ['восстановители, быстрее!'],
+        receive_buff: ['спасибо!'],
+        receive_destabilized: ['умри УМРИ!! УМРИ!! УМРИ!!!'],
+        puncture: ['я теряю целостность!'],
+        stun: ['оаауууау'],
+        receive_carapace: ['панцирь!'],
+        receive_repairs: ['спасибо, спасибо!', 'гораздо лучше'],
+        receive_fear: [()=> env.rpg.is2D ? "это не может быть реально" : "эта выглядит как...!", 'перестань...', 'велзи забери меня отсюда', 'не подходи! нет!!'],
+        receive_redirection: ['что??', 'ох, спасибо!']
     }
     env.COMBAT_ACTORS.miltza.cor_ru = {
         name: {
-            gen: "Митлзы",
-            dat: "Митлзе", 
-            acc: "Митлзу", 
-            ins: "Митлзой", 
-            pre: "Митлзе"
+            gen: "Милтзы",
+            dat: "Милтзе", 
+            acc: "Милтзу", 
+            ins: "Милтзой", 
+            pre: "Милтзе"
         },
         gender: 1
     }
@@ -4391,24 +4393,24 @@ cor_ru['redefineActors'] = function () {
     env.COMBAT_ACTORS.bozko.name = "бозко" // Bozko
     env.COMBAT_ACTORS.bozko.reactions = {
         regen: ['...'],
-        evade: ['no', 'not so easy'],
-        crit: ['get away from them', 'smashed to pieces'],
-        crit_buff: ['take this'],
-        miss: ['ßÐƒ'],
+        evade: ['не-а', 'не так просто'],
+        crit: ['прочь от них', 'вдребезги'],
+        crit_buff: ['возьми это'],
+        miss: ['ßӼф'],
         destabilized: ['...'],
         dead: ['...'],
-        receive_rez: ['get back up...'],
-        receive_crit: ['you!'],
-        receive_puncture: [()=>env.combat.has('cavik') ? "cavik!" : "it punched through..."],
-        receive_buff: ['keep it up'],
-        receive_destabilized: ['i hear them again...'],
-        puncture: ['blood everywhere'],
-        stun: ['what--'],
-        receive_carapace: ['good'],
+        receive_rez: ['поднимайся...'],
+        receive_crit: ['ты!'],
+        receive_puncture: [()=>env.combat.has('cavik') ? "кавик!" : "прошло насквозь..."],
+        receive_buff: ['продолжай в том же духе'],
+        receive_destabilized: ['снова слышу их...'],
+        puncture: ['кровь повсюду'],
+        stun: ['что--'],
+        receive_carapace: ['славно'],
         receive_repairs: ['...'],
-        receive_fear: ['no...', 'stay back!', '...', ()=> env.rpg.is2D ? "so many lost" : "is it really you...?"],
-        receive_spikes: ['come on', 'strike me now...'],
-        give_redirection: ['stay behind', 'look at me!']
+        receive_fear: ['нет...', 'не приближайся!', '...', ()=> env.rpg.is2D ? "так много погибших" : "это действительно ты...?"],
+        receive_spikes: ['вперёд', 'попробуй ударить теперь...'],
+        give_redirection: ['держись за мной', 'смотрите на меня!']
     }
     env.COMBAT_ACTORS.bozko.cor_ru = {
         name: {
@@ -4425,23 +4427,23 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.cavik.name = "кавик" // Cavik
     env.COMBAT_ACTORS.cavik.reactions = {
-        receive_hit: ['ow!!'],
-        regen: ['coming together again!'],
-        evade: ['oh!!', 'what?!'],
-        crit: ['i got you!', 'catch!'],
-        crit_buff: ['this should help!'],
-        miss: ['ah!'],
+        receive_hit: ['ой!!'],
+        regen: ['собираюсь с силами!'],
+        evade: ['о!!', 'чего?!'],
+        crit: ['получай!', 'лови!'],
+        crit_buff: ['должно помочь!'],
+        miss: ['а!'],
         destabilized: ['...'],
         dead: ['...'],
-        receive_rez: ['what happened?!', 'i am back..?'],
-        receive_crit: ['ow, ow!!!'],
-        receive_puncture: ['oh no...'],
-        receive_buff: ['thank you!'],
-        receive_destabilized: ['it hurts', 'hurts', 'someone is there', 'i feel you', 'i cannot wake up'],
-        puncture: ['i need to seal this!'],
-        stun: ['whhaahh'],
-        receive_fear: ['akizet!!', ()=> env.rpg.is2D ? "speak no more! please!" : "i... i remember you...", 'keep it away from me!', 'h--help me!', 'no, no no no'],
-        receive_redirection: ['thank you, bozko!', 'i will cover you!']
+        receive_rez: ['что случилось?!', 'я снова здесь..?'],
+        receive_crit: ['ой, ай!!!'],
+        receive_puncture: ['о нет...'],
+        receive_buff: ['спасибо!'],
+        receive_destabilized: ['мне больно', 'больно', 'кто-то здесь', 'я чувствую тебя', 'я не могу очнуться'],
+        puncture: ['это нужно подлатать!'],
+        stun: ['уааахх'],
+        receive_fear: ['акизет!!', ()=> env.rpg.is2D ? "не говори больше! прошу!" : "я... я помню тебя...", 'держите это от меня подальше!!', 'п--помогите!', 'нет, нет нет нет'],
+        receive_redirection: ['спасибо, бозко!', 'я прикрою тебя!']
     }
     env.COMBAT_ACTORS.cavik.cor_ru = {
         name: {
@@ -4458,24 +4460,24 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.ikgolem.name = "ИК Голем" // IK Golem
     env.COMBAT_ACTORS.ikgolem.reactions = {
-        receive_rez: ['ah, it works again!'],
-        regen: ['much better'],
-        evade: ['stop that!', 'deflected!'],
-        crit: ['ahaha...', 'incredible!'],
-        crit_buff: ['i hope that helps!'],
+        receive_rez: ['ах, снова работает!'],
+        regen: ['куда лучше'],
+        evade: ['прекрати!', 'отражено!'],
+        crit: ['ахаха...', 'невероятно!'],
+        crit_buff: ['надеюсь поможет!'],
         miss: ['÷°ò!!'],
         destabilized: ['...'],
-        dead: ['no! get up, get up!', 'the body is not responding!!'],
-        receive_crit: ['how--?!'],
-        receive_puncture: ['the chassis!!'],
-        receive_buff: ['excellent'],
-        receive_destabilized: ['something is so wrong...'],
-        puncture: ['losing cohesion fast!'],
-        stun: ['it will not respond!!'],
-        receive_carapace: ['more armor! yes!'],
-        receive_repairs: ['thank you, thank you'],
-        receive_fear: ['what did this to you?!', 'i feel sick...'],
-        receive_redirection: ['what?', 'unnecessary, but thanks']
+        dead: ['нет! вставай, вставай!', 'тело не отвечает!!'],
+        receive_crit: ['как--?!'],
+        receive_puncture: ['наш корпус!!'],
+        receive_buff: ['великолепно'],
+        receive_destabilized: ['что-то серьёзно не так...'],
+        puncture: ['мы теряем связность!'],
+        stun: ['оно не отвечает!!'],
+        receive_carapace: ['больше брони! ура!'],
+        receive_repairs: ['спасибо, спасибо'],
+        receive_fear: ['что с тобой такое?!', 'меня тошнит...'],
+        receive_redirection: ['что?', 'не стоило, но спасибо']
     }
     env.COMBAT_ACTORS.ikgolem.cor_ru = {
         name: {
@@ -4506,19 +4508,19 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.husk.name = "" // Husk
     env.COMBAT_ACTORS.husk.reactions = {
-        evade: ['s tŒ¥ó y  aw œ y', 'n o  c l os er', '', '', '', '', '', ''],
-        crit: ['Ü di¢ö1€Oe Î', 'R E TU RN', '', '', '', '', '', ''],
-        receive_crit: ['hu r ts', '', '', '', '', '', ''],
-        receive_puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
-        puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
-        receive_buff: ['µÿÁiKp%Ñ', '', '', '', '', '', ''],
-        receive_destabilized: ['âª¥lé§ÎéýÁ', 'dÆis co ne ct', '', '', '', '', '', ''],
-        receive_vulnerable: ['ƒøÊ=è¶', 's e e', '', '', '', '', '', ''],
-        receive_carapace: ['MËºY¾Ñ', '', '', '', '', '', ''],
-        receive_redirection: ['f ina l ly aw  ake', '', '', '', '', '', ''],
-        stun: ['o u  t ou t o ut', 'ou to u t o  ut', '', '', '', '', '', ''],
-        regen: ['m y f  le sh', 'cl o½ se ®±… r', 'm¿ ó+r  e', '', '', '', '', '', ''],
-        give_fear: ['cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De', 'ÐⱤ0 Ø Ⱳƞ ', '§±ÂⱤ ṾḮɲG─', 'YºŮ ɃěC ‰ Ṃể', 'šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ', 'ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ', 'ⱤEMŒM BEɌ', '', '', '', '', '', '']
+        evade: ['нỄ  п˶ри Ҕሎижẳй сԙ', 'ни н а ша г', '', '', '', '', '', ''],
+        crit: ['Ӱ� дi¢ö1€Oe И́', 'В Е РН ИСЬ', '', '', '', '', '', ''],
+        receive_crit: ['бо ль но', '', '', '', '', '', ''],
+        receive_puncture: ['г¿оሌ (‰оˇꙣ', '}&всӪª', '%�ŦЫҌ≀', '', '', '', '', '', ''],
+        puncture: ['г¿оሌ (‰оˇꙣ', '}&всӪª', '%�ŦЫҌ≀', '', '', '', '', '', ''],
+        receive_buff: ['µÿÁиK�ҏ%Н', '', '', '', '', '', ''],
+        receive_destabilized: ['âª¥лé§ИéýÁ', 'отÆc ое дин ԙй', '', '', '', '', '', ''],
+        receive_vulnerable: ['врꙗГ=ҕ¶', 'в ид и шь', '', '', '', '', '', ''],
+        receive_carapace: ['MËºУ¾Ӥ', '', '', '', '', '', ''],
+        receive_redirection: ['на к кон ец-то   п росн ули сь', '', '', '', '', '', ''],
+        stun: ['н ар у жу на р ужу', 'н ар уж у нар уж у', '', '', '', '', '', ''],
+        regen: ['м оя  пл о ть', 'бሌи ½ж ®±…е', 'б¿ ó+ Ꮑь ш.е', '', '', '', '', '', ''],
+        give_fear: ['ǾТᵽ₱®Ê ±₭…นсь 0Ŧ½ÿ С%еЬჰ', '₮Ø Ƕ ꙋ ', 'Г±О̆ሎОԬНꙨ─', 'Т1Ꙑ͋̅̕  Ҫ ₸∀Нº₿ ‰ ИꚖ̆Ѣ̈СЯ̄', 'иɔтȭ ҹ€ҥиĶ ҧоˇ—Ḿоӻи м̂͒͝н∬ иĉ₮ɵԭӈ̛̄̄¿ᶄ', 'ԥО̃МøГ̄ӣ ӎҥœ пởwȣ˶ӺИ̂ ꙧԣḝ  ҦҨМѻГ̣N ӍНŒ', 'ҦꚚM̆ ӇЍ', '', '', '', '', '', '']
     }
     env.COMBAT_ACTORS.husk.cor_ru = {
         name: {
@@ -4625,19 +4627,19 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.kivii.name = "дозкалльви" // Dozkallvi
     env.COMBAT_ACTORS.kivii.reactions = {
-        evade: ['s tŒ¥ó y  aw œ y', 'n o  c l os er', '', '', '', '', '', ''],
-        crit: ['Ü di¢ö1€Oe Î', 'R E TU RN', '', '', '', '', '', ''],
-        receive_crit: ['hu r ts', '', '', '', '', '', ''],
-        receive_puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
-        puncture: ['h¿(‰n g er', 'e}vªer ytíh&i ng', '%ÿoÛÙ', '', '', '', '', '', ''],
-        receive_buff: ['µÿÁiKp%Ñ', '', '', '', '', '', ''],
-        receive_destabilized: ['âª¥lé§ÎéýÁ', 'dÆis co ne ct', '', '', '', '', '', ''],
-        receive_vulnerable: ['ƒøÊ=è¶', 's e e', '', '', '', '', '', ''],
-        receive_carapace: ['MËºY¾Ñ', '', '', '', '', '', ''],
-        receive_redirection: ['f ina l ly aw  ake', '', '', '', '', '', ''],
-        stun: ['o u  t ou t o ut', 'ou to u t o  ut', '', '', '', '', '', ''],
-        regen: ['m y f  le sh', 'cl o½ se ®±… r', 'm¿ ó+r  e', '', '', '', '', '', ''],
-        give_fear: ['cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De', 'ÐⱤ0 Ø Ⱳƞ ', '§±ÂⱤ ṾḮɲG─', 'YºŮ ɃěC ‰ Ṃể', 'šøừ Ɍ€cɇ hȩḸ─lƥ mĒ ṨØ°ṹȑĉœ', 'ḧỂḺᵽ ḿḝ ḫeȽƤ ṃệ ĦɆȽⱣ ṂỆ', 'ⱤEMŒM BEɌ', '', '', '', '', '', '']
+        evade: ['нỄ  п˶ри Ҕሎижẳй сԙ', 'ни н а ша г', '', '', '', '', '', ''],
+        crit: ['Ӱ� дi¢ö1€Oe И́', 'В Е РН ИСЬ', '', '', '', '', '', ''],
+        receive_crit: ['бо ль но', '', '', '', '', '', ''],
+        receive_puncture: ['г¿оሌ (‰оˇꙣ', '}&всӪª', '%�ŦЫҌ≀', '', '', '', '', '', ''],
+        puncture: ['г¿оሌ (‰оˇꙣ', '}&всӪª', '%�ŦЫҌ≀', '', '', '', '', '', ''],
+        receive_buff: ['µÿÁиK�ҏ%Н', '', '', '', '', '', ''],
+        receive_destabilized: ['âª¥лé§ИéýÁ', 'отÆc ое дин ԙй', '', '', '', '', '', ''],
+        receive_vulnerable: ['врꙗГ=ҕ¶', 'в ид и шь', '', '', '', '', '', ''],
+        receive_carapace: ['MËºУ¾Ӥ', '', '', '', '', '', ''],
+        receive_redirection: ['на к кон ец-то   п росн ули сь', '', '', '', '', '', ''],
+        stun: ['н ар у жу на р ужу', 'н ар уж у нар уж у', '', '', '', '', '', ''],
+        regen: ['м оя  пл о ть', 'бሌи ½ж ®±…е', 'б¿ ó+ Ꮑь ш.е', '', '', '', '', '', ''],
+        give_fear: ['ǾТᵽ₱®Ê ±₭…นсь 0Ŧ½ÿ С%еЬჰ', '₮Ø Ƕ ꙋ ', 'Г±О̆ሎОԬНꙨ─', 'Т1Ꙑ͋̅̕  Ҫ ₸∀Нº₿ ‰ ИꚖ̆Ѣ̈СЯ̄', 'иɔтȭ ҹ€ҥиĶ ҧоˇ—Ḿоӻи м̂͒͝н∬ иĉ₮ɵԭӈ̛̄̄¿ᶄ', 'ԥО̃МøГ̄ӣ ӎҥœ пởwȣ˶ӺИ̂ ꙧԣḝ  ҦҨМѻГ̣N ӍНŒ', 'ҦꚚM̆ ӇЍ', '', '', '', '', '', '']
     }
     env.COMBAT_ACTORS.kivii.cor_ru = {
         name: {
@@ -4754,20 +4756,20 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.geli.name = "Джели" // Geli
     env.COMBAT_ACTORS.geli.reactions = {
-        evade: ['wow!', 'aahAHaha!!'],
-        crit: ['ahaha! i GOT THEM!!'],
-        miss: ['oh NO!!', 'WASTED BULLET', 'WILL GET NEXT 1!'],
-        dead: ['i CANT MOVE'],
-        receive_hit: ['OW'],
-        receive_crit: ['WHY DOES IT HURT SO BAD', '>:('],
-        receive_puncture: ['WHY DOES IT HURT SO BAD'],
+        evade: ['ого!', 'аахАХаха!!'],
+        crit: ['ахаха! i GOT THEM!!'], // --- помогите
+        miss: ['о НЕТ!!', 'ПУЛЯ ВПУСТУЮ', 'WILL GET NEXT 1!'], // --- помогите
+        dead: ['я НЕ МОГУ ДВИГАТЬСЯ'],
+        receive_hit: ['АЙ'],
+        receive_crit: ['ПОЧЕМУ ТАК БОЛЬНО', '>:('],
+        receive_puncture: ['ПОЧЕМУ ТАК БОЛЬНО'],
         receive_buff: ['}:^)'],
-        receive_destabilized: ['WAKING UP AGAIN', 'MEGA BULLET!!'],
-        receive_rez: ['NICE 1'],
+        receive_destabilized: ['СНОВА ПРОСЫПАЮСЬ', 'СУПЕРПУЛЯ!!'],
+        receive_rez: ['ПАСИБКИ'],
         puncture: [':('],
-        regen: ['doing GOOD', 'ahahaAhaha!!'],
-        destabilized: ['WATCH THIS'],
-        stun: ['uu382*((U*#*( U('],
+        regen: ['шикарДОСИК', 'ахахаАхаха!!'],
+        destabilized: ['СМАРИ'],
+        stun: ['уу382*((У*#*( У('],
         receive_fear: [':O', 'O_O']
     }
     env.COMBAT_ACTORS.geli.cor_ru = {
@@ -4785,20 +4787,20 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.bstrd.name = "СВЛЧЬ" // BSTRD
     env.COMBAT_ACTORS.bstrd.reactions = {
-        evade: ['8)', 'IT S0 EASY'],
-        crit: ['BL4MN!!', 'PoW!!', '>%^)'],
-        miss: ['SHT', 'almost GOT U'],
-        dead: ['aeaeu HUrts BAD!!'],
-        receive_crit: ['YEAOUUCH!!'],
-        receive_puncture: ['bleedink...', 'GOT BUNCTURE'],
-        receive_buff: ['TIME 2 GET EM ;}'],
-        puncture: ['OOUUEU'],
-        regen: [':)', 'SO BACK'],
-        stun: ['CANT AIM WTF help'],
-        receive_fear: ['WTF O_O'],
-        receive_destabilized: ['WOaoOAw'],
-        receive_rez: ['AHAHA :^) WE BACK'],
-        destabilized: ['DOUBLE BULLETS !!']
+        evade: ['8)', '0Ч ПРОСТО'],
+        crit: ['Б4Х!!', 'ПаУ!!', '>%^)'],
+        miss: ['БЛ', 'almost GOT U'], // --- помогите
+        dead: ['аэаэу БОльНА!!'],
+        receive_crit: ['АААЙЯЙЯЙЙ!!'],
+        receive_puncture: ['кроьв...', 'М3НЯ БРОТКНУЛИ'],
+        receive_buff: ['TIME 2 GET EM ;}'], // --- помогите
+        puncture: ['ООУУЭУ'],
+        regen: [':)', 'SO BACK'], // --- помогите
+        stun: ['НЕ МОГУ ЦЕЛИЦА ЧЗНХ помогте'],
+        receive_fear: ['ВТФ O_O'],
+        receive_destabilized: ['УОаоОАУ'],
+        receive_rez: ['AHAHA :^) WE BACK'], // --- помогите
+        destabilized: ['ДВОЙНЫЕ ПУЛИ !!']
     }
     env.COMBAT_ACTORS.bstrd.cor_ru = {
         name: {
@@ -4815,20 +4817,20 @@ cor_ru['redefineActors'] = function () {
 
     env.COMBAT_ACTORS.efgy.name = "ЭФГЯ" // EFGY
     env.COMBAT_ACTORS.efgy.reactions = {
-        evade: ['O)', 'COOL BREEZE!! YAY!!'],
-        crit: ['ISABEL LOOK!!', 'BLAMM~!', 'YAYAYAYA'],
-        miss: ['wat!! geli how do i hit them', 'ok i try again?', 'can i redo my turn'],
-        dead: ['waaa!! nooo!'],
-        receive_crit: ['mny PETALS!!'],
-        receive_puncture: ['i dont like this part', 'buncgture'],
-        receive_buff: ['OK I SHOOT BIG NEXT??'],
-        puncture: ['OOUUEU'],
-        regen: ['eheheeeaaahahaha', 'okk!!! yes'],
-        stun: ['the dream is broken!! help!'],
+        evade: ['O)', 'COOL BREEZE!! YAY!!'], // --- помогите?? прохладный ветерок?
+        crit: ['ИЗАБЕЛЬ СМОТРИ!!', 'БАХХ~!', 'ДАДАДАДА'],
+        miss: ['чаво!! джели как их бить', 'ок можно ещё раз?', 'можно я повторю свой ход'],
+        dead: ['вааа!! нееет!'],
+        receive_crit: ['мио ЛЕПЕСТОЧКИ!!'],
+        receive_puncture: ['мне не нравится эта часть', 'мроукол'],
+        receive_buff: ['OK I SHOOT BIG NEXT??'], // --- помогите
+        puncture: ['ООУУЭУ'],
+        regen: ['эхехиииааахахаха', 'окк!!! ура'],
+        stun: ['грёза сломалась!! помогите!'],
         receive_fear: ['O'],
-        receive_destabilized: ['WOaoOAw'],
-        receive_rez: ['ÿæÿ'],
-        destabilized: ['DOUBLE BULLETS !!']
+        receive_destabilized: ['УОаоОАУ'],
+        receive_rez: ['ъæъ'],
+        destabilized: ['ДВОЙНЫЕ ПУЛЬКИ !!']
     }
     env.COMBAT_ACTORS.efgy.cor_ru = {
         name: {
@@ -5011,7 +5013,7 @@ cor_ru['redefineActors'] = function () {
 
     /* - Firmament - */
 
-    env.COMBAT_ACTORS.critta_boss_boat.name = "" // Firmament
+    env.COMBAT_ACTORS.critta_boss_boat.name = "" // Firmament --- небосвод/купол?
     env.COMBAT_ACTORS.critta_boss_boat.cor_ru = {
         name: {
             gen: "",
@@ -5023,7 +5025,7 @@ cor_ru['redefineActors'] = function () {
         gender: 0
     }
 
-    /* - WRK - */
+    /* - WRK - --- мы переводим вообще этих челов?*/ 
 
     env.COMBAT_ACTORS.critta_pawn_boat.name = "" // WRK
     env.COMBAT_ACTORS.critta_pawn_boat.cor_ru = {
@@ -5109,23 +5111,23 @@ cor_ru['redefineActors'] = function () {
 
     /* - Antishell - */
 
-    env.COMBAT_ACTORS.falsecritta.name = "" // Antishell
+    env.COMBAT_ACTORS.falsecritta.name = "Противоболочка" // Antishell
     env.COMBAT_ACTORS.falsecritta.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Противоболочки",
+            dat: "Противоболочке", 
+            acc: "Противоболочку", 
+            ins: "Противоболочкой", 
+            pre: "Противоболочке"
         },
-        gender: 0
+        gender: 1
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive.name = "" // ???
+    env.COMBAT_ACTORS.intrusive.name = "???" // ???
     env.COMBAT_ACTORS.intrusive.reactions = {
-        evade: ['LD C'],
+        evade: ['LD C'], // это как
         crit: ['D ML'],
         crit_buff: ['BL'],
         miss: ['CL'],
@@ -5146,18 +5148,18 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive_blocker.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_blocker.name = "???" // ???
     env.COMBAT_ACTORS.intrusive_blocker.reactions = {
         evade: ['LD C'],
         crit: ['D ML'],
@@ -5180,18 +5182,18 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive_blocker.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive_archival.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_archival.name = "???" // ???
     env.COMBAT_ACTORS.intrusive_archival.reactions = {
         evade: ['LD C'],
         crit: ['D ML'],
@@ -5214,18 +5216,18 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive_archival.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive_bishopfreak.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_bishopfreak.name = "???" // ???
     env.COMBAT_ACTORS.intrusive_bishopfreak.reactions = {
         evade: ['LD C'],
         crit: ['D ML'],
@@ -5248,18 +5250,18 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive_bishopfreak.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive_statusoid.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_statusoid.name = "???" // ???
     env.COMBAT_ACTORS.intrusive_statusoid.reactions = {
         evade: ['LD C'],
         crit: ['D ML'],
@@ -5282,18 +5284,18 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive_statusoid.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.intrusive_bomblet.name = "" // ???
+    env.COMBAT_ACTORS.intrusive_bomblet.name = "???" // ???
     env.COMBAT_ACTORS.intrusive_bomblet.reactions = {
         evade: ['LD C'],
         crit: ['D ML'],
@@ -5316,53 +5318,53 @@ cor_ru['redefineActors'] = function () {
     }
     env.COMBAT_ACTORS.intrusive_bomblet.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 2
     }
 
     /* - sandbox - */
 
-    env.COMBAT_ACTORS.sandboxer.name = "" // sandbox
+    env.COMBAT_ACTORS.sandboxer.name = "песочница" // sandbox
     env.COMBAT_ACTORS.sandboxer.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "песочницы",
+            dat: "песочнице", 
+            acc: "песочницу", 
+            ins: "песочницей", 
+            pre: "песочнице"
         },
-        gender: 0
+        gender: 1
     }
 
     /* - idiot - */
 
-    env.COMBAT_ACTORS.cutscenedriver.name = "" // idiot
+    env.COMBAT_ACTORS.cutscenedriver.name = "идиот" // idiot
     env.COMBAT_ACTORS.cutscenedriver.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "идиота",
+            dat: "идиоту", 
+            acc: "идиота", 
+            ins: "идиотом", 
+            pre: "идиоте"
         },
         gender: 0
     }
 
     /* - idiot - */
 
-    env.COMBAT_ACTORS.arch_dummy.name = "" // idiot
+    env.COMBAT_ACTORS.arch_dummy.name = "идиот" // idiot
     env.COMBAT_ACTORS.arch_dummy.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "идиота",
+            dat: "идиоту", 
+            acc: "идиота", 
+            ins: "идиотом", 
+            pre: "идиоте"
         },
         gender: 0
     }
@@ -5565,20 +5567,20 @@ cor_ru['redefineActors'] = function () {
 
     /* - ??? - */
 
-    env.COMBAT_ACTORS.vekoa_boss.name = "" // ???
+    env.COMBAT_ACTORS.vekoa_boss.name = "???" // ???
     env.COMBAT_ACTORS.vekoa_boss.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.vekoa_boss.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "???",
+            dat: "???", 
+            acc: "???", 
+            ins: "???", 
+            pre: "???"
         },
-        gender: 0
+        gender: 1
     }
 
     /* - Archivist - */
@@ -5667,16 +5669,16 @@ cor_ru['redefineActors'] = function () {
 
     /* - Miltza? - */
 
-    env.COMBAT_ACTORS.split_miltza.name = "" // Miltza?
+    env.COMBAT_ACTORS.split_miltza.name = "Милтза?" // Miltza?
     env.COMBAT_ACTORS.split_miltza.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Милтзы?",
+            dat: "Милтзе?", 
+            acc: "Милтзу?", 
+            ins: "Милтзой?", 
+            pre: "Милтзе?"
         },
-        gender: 0
+        gender: 1
     }
 
     /* - Spinal Root - */
@@ -5877,20 +5879,20 @@ cor_ru['redefineActors'] = function () {
 
     /* - vekoa? - */
 
-    env.COMBAT_ACTORS.vekoa_final.name = "" // vekoa?
+    env.COMBAT_ACTORS.vekoa_final.name = "Векоа?" // vekoa?
     env.COMBAT_ACTORS.vekoa_final.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.vekoa_final.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Векоа?",
+            dat: "Векоа?", 
+            acc: "Векоа?", 
+            ins: "Векоа?", 
+            pre: "Векоа?"
         },
-        gender: 0
+        gender: 1
     }
 }
 /* --- FORMATIONS --- */

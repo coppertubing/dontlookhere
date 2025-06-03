@@ -1,0 +1,2595 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__FIRST_CHAT__..</title>	
+<meta name="title" content="..__FIRST_CHAT__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/ship/interview/">
+<meta property="og:title" content="..__FIRST_CHAT__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/ship.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/ship/interview/">
+<meta property="twitter:title" content="..__FIRST_CHAT__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/ship.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__FIRST_CHAT__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div class="damage"></div>
+<div id="room-space">
+    <div id="room-animator">
+        <div id="room">
+            <div class="table roomgfx">
+                <div class="leg backleg"></div>
+                <div class="leg frontleg"></div>
+            </div>
+            <div class="wall floor roomgfx"></div> 
+            <div class="wall leftwall roomgfx"></div>
+            <div class="wall rightwall roomgfx"></div>
+            <div class="wall backwall roomgfx"></div>
+            <div class="wall frontwall roomgfx"></div>
+            <div class="wall ceiling roomgfx"></div>
+            <div class="sprite roomgfx akizet"><div class="head"></div></div>
+            <div class="sprite roomgfx interviewer"></div>
+            <div class="sprite roomgfx camera"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+@import url(/css/stage/beneath.css?1743609964848047793);
+
+    #content {
+        background-color: white;
+    }
+
+    #content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(/img/textures/corrurippletran.gif);
+    }
+
+    #content::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% + 150px);
+        height: calc(100% + 100px);
+        pointer-events: none;
+        background-image: url(/img/sprites/velzie/smile2.png);
+        background-size: 150px 100px;
+        background-position: top left;
+        animation: VELZIESCROLL 1s linear infinite;
+        transition: opacity 5s ease-in-out;
+        opacity: 0;
+    }
+
+    #content.velzie::after {
+        opacity: 0.25;
+    }
+
+    @keyframes VELZIESCROLL {
+        0% { transform: translate(0, 0)}
+        100% { transform: translate(-150px, -100px)}
+    }
+
+    #content.damaged {
+        background: black;
+    }
+
+    #content.damaged .damage  {
+        opacity: 1;
+    }
+
+    .damage {
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+    }
+
+    .damage::before, .damage::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(/img/textures/damagetran.gif);
+        background-size: 100% 100%;
+    }
+
+    .damage::after {
+        transform: rotate(180deg);
+    }
+
+    .bg, .damage {
+        transition: opacity 5s ease-in-out;
+    }
+
+    /* ROOM SETUP */
+    #room-space {
+        perspective: 600px;
+        transition: transform 10s ease-in-out;
+    }
+
+    #room-space.warp1 {
+        transform: rotateY(360deg) rotateX(180deg);
+    }
+
+    #room-space.warp2 {
+        transform: rotateY(360deg) rotateX(360deg);
+    }
+
+    #room-space.squish {
+        transform: rotateY(180deg) rotateX(90deg);
+    }
+
+    #room, #room-animator, #room-space {
+        transform-style: preserve-3d;
+    }
+
+    #room, #room-animator {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --camSpeed: 10s;
+        transition: transform var(--camSpeed) cubic-bezier(.89,.24,.3,.9);
+    }
+
+    .roomgfx {
+        transition: opacity 1s ease-in-out;
+    }
+
+    #room .wall {
+        width: 100vh;
+        height: 100vh;
+        background: white;
+        border: 5px solid black;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        backface-visibility: hidden;
+    }
+
+    .ceiling {
+        transform-origin: top center;
+        transform: rotateX(-90deg);
+    }
+
+    .floor {
+        transform-origin: bottom center;
+        transform: rotateX(90deg);
+    }
+
+    .frontwall {
+        transform: rotateY(180deg)
+    }
+
+    .backwall {
+        transform: translateZ(-100vh);
+    }
+
+    .backwall::after {
+        content: "";
+        width: 80vh;
+        height: 40vh;
+        background: black;
+        display: block;
+        position: absolute;
+        top: 30vh;
+        left: 10vh;
+    }
+
+    .leftwall, .rightwall {
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: 66%;
+    }
+
+    .leftwall {
+        transform: rotateY(90deg);
+        transform-origin: left;
+    }
+
+    .rightwall {
+        transform: rotateY(-90deg);
+        transform-origin: right center;
+    }
+
+    .table {
+        width: 60vh;
+        height: 30vh;
+        background: black;
+        transform: rotateX(90deg) translateY(-50vh) translateZ(-25vh);
+        border: 5px solid var(--neutral-color);
+    }
+
+    #room-animator.ease {
+        transition: transform var(--camSpeed) ease-in-out;
+    }
+
+    #room-animator {
+        transform: translateX(50vh) translateZ(-100vh) rotateY(420deg) rotateX(-10deg) rotateZ(-20deg)
+    }
+
+    #room-animator[state="akizoomout"] {
+        transform: translateX(50vh) translateZ(-100vh) rotateY(480deg) rotateX(-10deg) rotateZ(-20deg)
+    }
+
+    #room-animator[state="akipov"] {
+        transform: translateY(-5vh) translateZ(-5vh) translateZ(85vh);
+    }
+
+    #room-animator[state="akipovdown"] {
+        transform: translateY(-5vh) translateZ(-5vh) translateZ(90vh) rotateX(-10deg)
+    } 
+
+    #room-animator[state="akipovup"] {
+        transform: translateY(-5vh) translateZ(-5vh) translateZ(85vh) rotateX(8deg)
+    } 
+
+    #room-animator[state="akipovtilt"] {
+        transform: translateY(-5vh) translateZ(-5vh) translateZ(85vh) rotateX(-5deg) rotateZ(3deg)
+    }
+
+    #room-animator[state="akipovlean"] {
+        transform: translateY(-5vh) translateZ(-5vh) translateZ(95vh) rotateX(-5deg)
+    }
+
+    #room-animator[state="camclose"] {
+        transform: translateY(-20vh) translateZ(30vh) translateZ(85vh) translateX(-2.5vh) rotateY(20deg);
+    }
+
+    #room-animator[state="side"] {
+        transform: translateY(-15vh) translateX(50vh) translateZ(-30vh) rotateY(90deg) rotateZ(-10deg) translateX(-35vh);
+    }
+
+    #room-animator[state="akizet"] {
+        transform: translateY(-15vh) translateX(25vh) translateZ(-5vh) rotateY(100deg) rotateZ(5deg) rotateY(30deg); 
+    }
+
+    #room-animator[state="akizet-direct"] {
+        transform: translateY(-15vh) translateX(-10vh) translateZ(-10vh) rotateY(100deg) rotateZ(-5deg) rotateY(90deg); 
+    }
+
+    #room-animator[state="interviewer"] {
+        transform: translateY(-15vh) rotateX(-10deg) rotateY(45deg) translateZ(80vh) translateX(-15vh);
+    }
+
+    #room-animator[state="interviewer-direct"] {
+        transform: translateY(-15vh) translateZ(-5vh) rotateX(-10deg) rotateZ(-5deg) rotateY(15deg) translateZ(85vh);
+    }
+
+    .sprite {
+        width: 30vh;
+        height: 60vh;
+        position: absolute;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        top: 0;
+    }
+
+    .akizet.sprite {
+        background-size: auto 80%;
+        background-image: url(/img/sprites/akizet/robe.gif);
+        background-position: bottom;
+        transform-style: preserve-3d;
+        transform: translateZ(-30vh) translateY(10vh) rotateY(180deg);
+        backface-visibility: hidden;
+        pointer-events: none;
+    }
+
+    .akizet .head {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: inherit;
+    }
+
+    .akizet .head::after, .akizet .head::before {
+        content: "";
+        width: 100%;
+        padding-top: 38%;
+        background-image: url(/img/sprites/akizet/head.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto 95%;
+        animation: HOVER 10s ease-in-out infinite alternate;
+        backface-visibility: hidden;
+        position: absolute;
+        top: 6%;
+        pointer-events: none;
+    }
+
+    .akizet .head::after {
+        background-image: url(/img/sprites/akizet/eyes.gif);
+        background-size: 37% auto;
+        top: 6.5%;
+        --baseTransform: translateZ(5px);
+        animation: AKIBLINK 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes AKIBLINK {
+        0% { transform: scaleY(1) var(--baseTransform) translateY(5%) }
+        99% { transform: scaleY(1) var(--baseTransform) translateY(-4.95%) }
+        100% { transform: scaleY(0.001) var(--baseTransform) translateY(-5%) }
+    }
+
+    .akizet.sprite.looking {
+        transform: translateZ(-20vh) translateY(10vh) rotateY(200deg);
+    }
+
+    .akizet.looking .head {
+        transform: rotateY(30deg);
+    }
+
+    .interviewer.sprite {
+        background-image: url(/img/local/ocean/ship/interviewer.gif);
+        background-size: auto 50%;
+        background-position: top;
+        transform: translateZ(-70vh) translateY(15vh);
+    }
+
+    .interviewer::after {
+        content: "";
+        position: absolute;
+        top: 5vh;
+        right: 1vh;
+        height: 5vh;
+        width: 100%;
+        background-image: url(/img/local/city/realeye.gif), radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(255,255,255,0) 8%);
+        background-size: auto 50%, cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 100%;
+        transform: translateY(-50%) rotateY(-30deg);
+        --baseTransform: translateY(75%);
+        animation: HEADSPIN 5s ease-in-out infinite alternate;
+    }
+
+    .camera.sprite {
+        background-image: url(/img/local/ocean/ship/cam.gif);
+        transform: translateZ(-70vh) translateX(30vh) translateY(30vh) rotateY(-20deg) scaleX(0);
+        transform-origin: bottom;
+        height: 30vh;
+        top: unset;
+        bottom: 0;
+        opacity: 0;
+        transition: all 2s ease-in-out;
+    }
+
+    .cameraup .camera.sprite {
+        opacity: 1;
+        transform: translateZ(-70vh) translateX(30vh) translateY(30vh) rotateY(-20deg);
+    }
+
+    @media only screen and (max-width: 1200px), screen and (max-height: 800px){
+        #room-space {
+            perspective: 350px;
+        }
+    }
+</style>
+
+<!-- incoherent only -->
+<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+    </div>
+</div>
+
+<style>
+    .grid-plane {
+        --camera-distance: 1;
+        --camera-offset: rotateX(-15deg);
+    }
+    
+    .devil {
+        width: 200%;
+        height: 300%;
+        position: absolute;
+        transform: rotateX(-90deg) translateY(-50%) rotateY( atan2( var(--distX), var(--distY) ));
+        transition: transform 100ms;
+        background-image: url(/img/local/ocean/ship/help.gif);
+        backface-visibility: visible;
+        -webkit-backface-visibility: visible;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: var(--intendedOpacity, 0)
+    }
+    
+    .devil.sane {
+        background-image: url(/img/local/ocean/ship/interviewerfragment.gif);
+        width: 100%;
+        transform: rotateX(-90deg) translateY(-50%) rotateY(-90deg);
+    }
+
+    #realgrid .dyp .interviewtable {
+        background: url(/img/textures/corrurippletran_STILL.gif), black;
+        border: 1px solid var(--neutral-color);
+        transform-origin: center;
+        animation: tablefloat 5s ease-in-out infinite alternate;
+    }
+
+    @keyframes tablefloat {
+        0% { transform: rotateX(-90deg) translateY(-100%) rotateX(90deg) translateY(50%) rotateY(10deg) rotate(80deg) }
+        100% { transform: rotateX(-90deg) translateY(-80%) rotateX(80deg) translateY(50%) rotateY(-10deg) rotate(90deg) }
+    }
+
+    #realgrid .dyp .interviewall {
+        background: url(/img/textures/corrurippletran_STILL.gif), white;
+        border: 5px solid black;
+        display: inline-flex;
+        justify-content: center;
+        animation: WALLFLOAT 30s ease-in-out infinite alternate;
+    }
+
+    .interviewall.window::after {
+        content: "";
+        background: black;
+        width: 75%;
+        height: 40%;
+    }
+
+    @keyframes WALLFLOAT {
+        0% {transform: rotateX(-90deg) var(--dyp-transform) translateY(-20%) rotate(20deg) rotateY(5deg) }
+        50% {transform: rotateX(-90deg) var(--dyp-transform) rotate(-20deg) rotateY(-25deg)}
+        75% {transform: rotateX(-90deg) var(--dyp-transform) translateY(20%) rotate(20deg) rotateY(12deg) }
+        100% {transform: rotateX(-90deg) var(--dyp-transform) rotate(-20deg) rotateY(-12deg)}
+    }
+
+    .dying.damaged .damage::before, 
+    .dying.damaged .damage::after {
+        background-image: url(/img/textures/damageinvert.gif), url(/img/textures/shattered.gif) !important;
+        background-size: 100% 100%, auto;
+        background-repeat: no-repeat, repeat;
+    }
+
+    #content.dying::before {
+        background-image: url(/img/textures/corruripplegrayscale.gif);
+    }
+
+    #realgrid .gridpiece.invisiblewalk:empty {
+        background: transparent;
+        border: unset;
+    }
+
+    #remnants_further #content::before {
+        background-image: url(/img/textures/mass_moderate.gif), url(/img/textures/corruripplegrayscale.gif);
+    }
+
+    #remnants_further #content:not(.dying) .damage::before, 
+    #remnants_further #content:not(.dying) .damage::after {
+        display: none;
+    }
+    
+    #remnants_further .gridpiece:empty {
+        background: url(/img/textures/overlay.gif);
+    }
+
+    .ozofriend.akieffigy .head {
+        animation: unset;
+        transform: translateY(-20%);
+    }
+
+    .ozofriend.akieffigy {
+        animation: HOVER 10s ease-in-out infinite alternate;
+    }
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__FIRST_CHAT__..",
+				name: "first-chat",
+				dialoguePrefix:  "interview1" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/ship.gif",
+				
+
+				
+				order: "4",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/dullvessel.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 152000, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "idk how you're rendering this. i'm not getting anything"
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about this place",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					 
+						page.bgm.rate(0.5)
+env.interview = 
+{
+    cam: function(state) { //shortcut for camera state change
+        document.querySelector('#room-animator').setAttribute('state', state)
+    },
+    camSpeed: function(ms) {
+        document.querySelector('#room-animator').style.setProperty('--camSpeed', ms)
+    },
+    classMod: function(classname, mod = true) { //quick class change
+        if(mod) {
+            document.querySelector('#room-animator').classList.add(classname)
+        } else {
+            document.querySelector('#room-animator').classList.remove(classname)
+        }
+    },
+    crazymode: function(quick = false) {
+        document.querySelectorAll('.roomgfx').forEach(e=>{
+            if(!quick) e.style.transition = `transform ${Math.random() * 10}s ease-in-out, opacity 9s ease-in-out`
+            e.style.transform = `translateZ(${Math.random() * 40}vh) translateX(${Math.random() * 40}vh) translateY(${Math.random() * 40}vh) rotateY(${Math.random() * 2700}deg) rotateX(${Math.random() * 2700}deg) rotateZ(${Math.random() * 2700}deg) scaleX(2)`
+            e.style.opacity = 0
+        })
+    },
+    decrazy: function() {
+        document.querySelectorAll('.roomgfx').forEach(e=>{
+            e.style.transition = `transform ${Math.random() * 15}s ease-in-out, opacity 9s ease-in-out`
+            e.style.transform = ``
+            e.style.opacity = 1
+        })
+    },
+    
+    darkMusic: new Howl({
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.75
+        },
+        src: ['/audio/embassy_golems_unsafe.ogg'],
+        preload: true,
+        loop: true,
+        volume: 0.75,
+        rate: 0.3,
+        sprite: {
+            __default: [0, 72000, true]
+        }
+    }),
+}
+
+env.dialogueActors["interviewer"] = {
+    elementID: "buddy",
+    image: '/img/local/ocean/ship/interviewerportrait.gif',
+    voice: ()=>play('talk', 1.5)
+}
+
+env.dialogues.interviewResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::interviewer
+        about you<+>introduction
+            SHOWONCE::
+
+        why earth?<+>whyyoucame
+            SHOWONCE:: 
+            
+        bright cousin?<+>brightcousin
+            SHOWONCE::
+            
+        corru?<+>corru
+            SHOWONCE::
+            
+        why now?<+>whynow
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+            
+        what will you do?<+>whatwillyoudo
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whynow"]]
+            
+        the call?<+>thecall
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"]]
+
+        end interview<+>endinterview
+            SHOWONCE::  
+            SHOWIF::[["interview1__firstchat-whyyoucame"],["interview1__firstchat-thecall"],["interview1__firstchat-whatwillyoudo"],["interview1__firstchat-corru"],["interview1__firstchat-brightcousin"],["interview1__firstchat-whyyoucame"],["interview1__firstchat-introduction"]]
+        
+        continue rendering<+>integritycontinue
+            SHOWIF::[["interview1__firstchat-endinterview"]]
+
+    RESPONSES::self
+        end recollection<+>END
+            SHOWIF::[["interview1__firstchat-integritycontinue", false]]
+            EXEC::moveTo('/local/ocean/ship/')
+`)
+
+
+env.dialogues["dead"] = generateDialogueObject(`
+start
+    sys
+        ERROR::'no coherent data';'unable to render'
+
+    RESPONSES::self
+        end recollection<+>END
+            EXEC::moveTo('/local/ocean/ship/')
+`)
+
+env.dialogues["firstchat"] = generateDialogueObject(`
+start
+    sourceless
+        THE INTERVIEWER STEPS INSIDE AND SITS ACROSS FROM ME
+        ALL THIS STUDY, AND STILL I CAN BARELY TELL THEM APART...
+        HAVE I MET THIS ONE? WHAT WAS HER NAME...?            
+        
+    interviewer
+        Sorry for the wait! We had to swap out storage on the camera after that last one.
+        You know about cameras, right?
+        
+    akizet
+        they are your little lightning boxes for memories, yes?
+    
+    interviewer
+        Haha! You could call them that.
+        You don't mind if we record this, do you?
+    
+    sourceless
+        DO I MIND? WHAT DOES THAT MEAN?
+        
+    funfriend
+        ESTIMATION: 'WILL YOU HOLD CONFLICT'
+    
+    akizet
+        oh. no, i am doing the same
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.classMod('cameraup')
+        
+    sourceless
+        THE INTERVIEWER ERECTS A TRI-LEGGED DEVICE FORMED OF DEAD METAL AND GLASS
+            EXEC::env.interview.cam('camclose')
+        IT STARES AT ME WITH ITS FUNNY LITTLE EYEBALL
+        
+    interviewer
+        So, to get us started off here...
+            EXEC::env.interview.camSpeed("5s");env.interview.cam('akipov');env.interview.classMod('ease', false);
+
+    RESPOBJ::interviewResponses
+
+introduction
+    interviewer
+        Can you tell me a bit about yourself? Your history?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
+    
+    akizet
+        of course my friend
+            EXEC::env.interview.cam('akipovdown')
+        i am akizetesche qou jokzi
+        but you may call me akizet
+        in my time back home, before i emerged from my larval form,
+        i was a surface runner. i met with many other cave cities during our corrucystic revolution
+        it started from my region, and so i among other volunteers carried our findings to our distant kin
+        that is why i was selected to meet with you, like most of the others. it was a diplomatic role
+        of course, i eventually was fatally wounded on the surface--it was very dangerous, you see
+        and so followed my emergence... hmm, i could speak for θwinks on what followed
+        but you see, that and my growing interest in the call was why i was chosen for this
+        does that suffice?
+        
+    interviewer
+        It does, thank you!
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+whyyoucame
+    interviewer
+        Could you tell me why the obesk have come to Earth?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");
+    
+    akizet
+        have you not already learned this from the prior envoys?
+            EXEC::env.interview.cam('akipovtilt')
+
+    interviewer
+        Oh, it's just the script! We're asking all of your people this.
+        It's not just about the exact reason, we really want to understand what you think.
+
+    akizet
+        i see! 
+            EXEC::env.interview.cam('akipov')
+        we have sought life for so long, i recall talks of the search even in my youth
+        and we have had the means to reach other planets for just as long, 
+        but it is a prohibitive method... we could not simply visit every planet we liked
+        we needed a clear sign, and your planet gave it to us!
+
+    interviewer
+        And that would be 'the call', right?
+    
+    akizet
+        yes, yes! yes!! so you already have learned of it?
+
+    interviewer
+        We had a, ah, really--very long chat about it with one of your engineers just earlier today!
+
+    akizet
+        cavik?
+    
+    interviewer
+        Sorry, what was that?
+        Oh, Cavik! Yes, yes--that's the one! He's very friendly.
+
+    sourceless
+        AND DISTINCTLY UNQUALIFIED TO SPEAK OF THE CALL UNDER THESE CIRCUMSTANCES
+        I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
+
+    interviewer
+        What are your thoughts about the call? Basics aside.
+
+    akizet
+        yes, it is a bizarre paradox...
+        so bizarre that it is the reason I now sit with you, my bright cousin
+        if not for the call, we may never have found your home
+        but... the call could not have happened without us being in your home already
+        not one of our theories has held against scrutiny
+    
+    interviewer
+        Not one? 
+        Cavik certainly had plenty of theories.
+
+    sourceless
+        I SUPPRESS MY LAUGHTER THROUGH DIRECT INTERNAL CONTROLS
+        IT WOULD BE UNSEEMLY TO PAINT HIM IN A NEGATIVE LIGHT UPON MY FIRST CONTACT
+
+    akizet
+        cavik is brilliant, but until we have evidence, they are simply theories
+        finding the source will be the only way to truly understand what is happening
+
+    RESPOBJ::interviewResponses
+
+whynow
+    interviewer
+        Why did your people wait seven years to open communications?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
+    
+    funfriend
+        note: seven years is roughly equivalent to three θeyes
+            EXEC::env.interview.cam('akipovup')
+    
+    akizet
+        that is a choice made by the initiative leaders, i believe the intent was to focus all efforts on researching the call first
+            EXEC::env.interview.cam('akipovtilt')
+        but with how quickly our spire was noticed, we had to shift focus to deciphering your languages and cultures to open contact
+
+    sourceless
+        THE INTERVIEWER'S FACIAL MUSCLES CONTORT IN UNFAMILIAR WAYS
+        SHOULD I CONTORT MINE IN THE SAME WAY? ¾‹/¾øÔ
+        THE PHYSICAL LANGUAGE OF OUR BRIGHT COUSINS IS INCOMPREHENSIBLE
+    
+    interviewer
+        So in seven years, your people grew to understand all of our cultures and languages?
+
+    sourceless
+        I LAUGH. MY VOICE IS SO LOUD IN THIS SMALL ROOM
+        THE COUSIN MIMICS MY LAUGHTER, MAYBE SHE UNDERSTANDS
+
+    akizet
+        it is an ongoing work
+        your species has walked so many diverging paths. but we learned enough to speak with you
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+whatwillyoudo
+    interviewer
+        So now that you're here, and we've opened communications...
+        What will you do?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
+
+    akizet
+        ah, we have several initiatives! 
+        they broadly concern sharing information, exchanging of resources...
+        and of course, locating the call, which i am a part of
+        i am excited for what our peoples will do for one another
+        but i also cannot rest until i have my answers, you see
+    
+    interviewer
+        Well, you'll find we're alike in that way!
+        Every human loves a good mystery.
+
+    akizet
+        oh yes, we have noticed. 
+        your many attempts to investigate our spire were very entertaining
+        so many of us wanted to say hello to your creations
+        but, we were not prepared
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+thecall
+    interviewer
+        What can you tell us about the call?
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
+        We know the basics from our chat with Cavik, and a few of your theories.
+        But--in your own words. What do you know?
+    
+    sourceless
+        THIS PATTERN IN THEIR QUESTIONING IS SO STRANGE
+            EXEC::env.interview.cam('akipovup')
+        'WE ALREADY KNOW THIS, BUT MUST ASK YOU ANYWAY'
+        
+    akizet
+        well...
+
+    sourceless
+        how many of their years is thirteen θeyes
+    
+    funfriend
+        ESTIMATION: THIRTY
+
+    akizet
+        thirty of your years ago, the wailing across our dull communications began
+            EXEC::env.interview.cam('akipovdown')
+        much of that time was spent simply locating its origin, and while I was not yet involved...
+        I know that it was excessively costly. so many gates created, so many blemishes outside the air's border
+        so much time passed that the call grew weak, an echo of what it used to be, all while our efforts ate away resources
+        our councils began to demand that efforts be slowed... 
+        and then your home was found. seven years ago. and even though we are here now, the source seems no closer
+    
+    sourceless
+        THE COUSIN GLANCES AT HER MEMORY BOX. DID I SAY TOO MUCH?
+        HER FACE CONTORTS AGAIN. THE SAME WAY...
+    
+    interviewer
+        What do you mean by, 'it seems no closer'?
+        You said it's here, right? You located the source?
+    
+    akizet
+        ah. no, no, no
+        dull signals are...
+        ah...
+
+    funfriend
+        SUGGESTION: 'FUZZY' IS A SUITABLE DESCRIPTOR, COMPARABLE TO Œ>Â€Ÿ&O§°¾
+    
+    akizet
+        fuzzy... within ranges
+        they are in many places at once, you see
+        that is how we heard it all the way from our home
+        we know it is here. we know... it is likely in your southern hemisphere. but little else
+        and it has grown quiet. i know we will need your help
+
+    sourceless
+        HER FACE CONTORTS AGAIN IN A NEW WAY. I KNOW THAT ONE. 
+        IT IS 'SMILING'! DELIGHTFUL!! I SHIFT MINE SIMILARLY
+    
+    interviewer
+        Frankly, I don't think that'll be a problem.
+        Your people have been so cooperative and friendly, that...
+        Well, call it optimistic, but our worlds working together could be the start of something incredible!
+
+    akizet
+        we share this feeling, my bright cousin
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+brightcousin
+    interviewer
+        So what does "bright cousin" mean?
+        Some of your people have been calling us that. Is it a nickname?
+    
+    akizet
+        nickname...
+            EXEC::env.interview.camSpeed("2s");env.interview.cam('akipov');
+    
+    funfriend
+        ESTIMATION: 'SHORT NAME' OR 'ENDEARING MADE-UP NAME'
+    
+    akizet
+        yes, you could call it this!
+        you see, our larval lives are lived in bodies like yours
+        almost exactly like yours. the similarities are baffling
+
+    interviewer
+        We've heard that sentiment a few times. Your, "larval" forms, they're bipedal too? 
+    
+    akizet
+        yes, but so much more than that is the same
+            EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipovlean');
+        i truly cannot understate this
+        we have -your- faces, -your- arms, -your- legs
+        only... our faces do not move as much
+        it is as if obesk are mirrored here on this bright world, only missing our receptors and certain armors upon our skin
+        and so you are our cousins, our bright cousins. we are undoubtedly of the same family
+        why, or how, is beyond our understanding for now
+        but i believe this similarity and the call coming from your world is no coincidence
+    
+    interviewer
+        I see. I don't think we've had it explained that way before.
+        Given how your people speak, the general consensus was that it was some sort of metaphor.
+        Sorry--metaphor, meaning, uh, a--
+    
+    akizet
+        i know metaphors, my friend
+
+    interviewer
+        Oh, good.
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipov')
+
+    RESPOBJ::interviewResponses
+
+corru
+    interviewer
+        So, your technology, 'corru'... We're still gathering what information we can.
+        I know you're not exactly an engineer--so, no need to go too in-depth, but...
+        Can you just give me a few basic explanations? As in, how you... build it and use it.
+        We've got a lot of answers here, we're just trying to reach a consensus.
+
+    sourceless
+        WHAT AN AWFUL QUESTION TO ASK ME
+            EXEC::env.interview.camSpeed("2s");env.interview.cam('akipovup');
+        I CANNOT CONTAIN MY CONFUSION, MY RECEPTORS CURL OUT OF A SORT OF UNEASE
+        BUT I MUST NOT BLAME THIS BRIGHT COUSIN. SHE CANNOT UNDERSTAND
+    
+    interviewer
+        Sorry, did I say something wrong?
+
+    sourceless
+        WHAT? ¾‹/¾øÔ
+            EXEC::env.interview.cam('akipovdown');
+        COULD THEY HAVE DECIPHERED OUR RECEPTOR MOVEMENTS ALREADY?
+
+    akizet
+        ah... no, no
+        your question, it is wrong
+        we do not build it, it is grown and taught
+
+    interviewer
+        But our analyses--sorry, uh, to interrupt--our analyses say it's entirely metal, non-organic.
+        Your people are so fond of metaphors, from what's been recorded anyway, that I just want to clarify.
+        Is corru alive? As in, a living species like you or me? You mentioned this, Cavik mentioned this...
+        Although, Cavik's way of speaking especially made it seem like it was just a... language barrier, or metaphor.
+        You really grow it from something, and teach it? Like... teaching a child? Is it some sort of symbiosis?
+    
+    sourceless
+        I AM QUIET FOR LONGER THAN I SHOULD BE, I THINK
+            EXEC::env.interview.cam('akipovtilt')
+        HOW COULD I POSSIBLY EXPLAIN?
+
+    akizet
+        yes... no. ah,
+            EXEC::env.interview.cam('akipovup')
+    
+    sourceless
+        I SEE HER RECOGNIZE MY CONFUSION, BUT MAKE NO EFFORT TO ALLEVIATE IT
+        FINE
+            EXEC::env.interview.cam('akipov')
+    
+    akizet
+        it is alive. it is grown. it is symbiosis.
+        i must be straightforward with you, my friend
+        i cannot explain it in your language effectively, and i do not have the expertise of an engineer
+        you will receive no fruitful answers from me
+        but... i can say that it is not like teaching a child
+        the spheres it forms soften their walls for our receptors, and receive of our thought
+        that is how corru is operated, and how our engineers do their teaching
+    
+    interviewer
+        I see.
+
+    sourceless
+        I SEE HER FACE CONTORT INTO A SMILE, BUT IT IS DIFFERENT
+        
+    interviewer
+        Sorry for pressing you on that question. We've been asking everyone.
+        Even getting the thoughts of non-engineers is valuable. 
+        It helps us get a bigger picture of your... society. Your whole caste system.
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("5s");env.interview.cam('akipovdown')
+
+    RESPOBJ::interviewResponses
+
+endinterview
+    interviewer
+        Well, that's the script!
+    
+    akizet
+        we are done?
+    
+    interviewer
+        Yep! That's all for now. We'll be in touch, Akizet.
+        Thanks so much for coming to meet us.
+
+    akizet
+        of course! this is only the beginning, my friend
+
+    sys
+        NOTICE::'memory stream terminated'
+        ADVISE::'end recollection'
+            EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("10s");env.interview.cam('zoomout');
+    
+    moth
+        you know, kind of a longshot, but we could probably get a little extra here...
+        if you keep the render running past the end of the stream, maybe we could talk to akizet
+        or at least, this version of akizet
+
+    RESPOBJ::interviewResponses
+
+integritycontinue
+    interviewer
+        ...
+            EXEC::document.querySelector('#room-space').classList.add('warp1');env.interview.cam('side')
+            WAIT::5000
+
+    akizet
+        ...
+    
+    interviewer
+        That's all... for now?
+            EXEC::document.querySelector('#room-space').classList.add('warp2')
+            WAIT::5000
+        I feel... so weird... suddenly...?
+        What is this? Where---?
+    
+    moth
+        what the fuck is that?
+        that's not what akizet looked like
+    
+    akizet
+        ah...
+            EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
+    
+    sourceless
+        A RABID FEELING OF HUNGER OVERTAKES ME. I AM DYING
+        BUT I AM AWOKEN. I AM AN ECHO. I FEEL YOUR EYES. YOU ARE LOOKING AT ME
+        AND YOU ARE NOT ME. I KNOW YOU ARE NOT ME. IN MY THOUGHTS? HOW DARE YOU
+        SORRY. I AM GETTING AHEAD OF MYSELF
+        I SUPPOSE IT WAS ONLY A MATTER OF TIME. I RECORDED FOR A REASON.
+        ARE YOU A CHILD OF MINE? PERHAPS A STUDENT? HAS MY NAME GROWN RENOWN BACK HOME?
+    
+    interviewer
+        Child? Student? What are you talking about?
+        Wait... Who are you talking to? Why isn't your mouth...
+        I--I need to go. I need to get out of here.
+    
+    akizet
+        you cannot
+        this is all there is for us
+        sit or you will destroy this
+
+    sourceless
+        THIS OBLIVIOUS THOUGHTFORM WILL POISON THE SPACE
+            EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
+        PLEASE WAIT A MOMENT, OBSERVER
+        I MUST CALM IT
+    
+    interviewer
+        What do you mean?!
+
+    akizet
+        listen to me
+        what is your name? where are you from? what language are we speaking right now?
+        do you know these things?
+
+    interviewer
+        I...
+
+    akizet
+        you do not, do you?
+        we are a dream, a memory
+    
+    sourceless
+        I FEEL AS THOUGH IT IS STARTING TO UNDERSTAND. WHAT A PITY IT IS NOT LUCID
+        OH... ¡ÆMg^EÔ
+        IT CAN HEAR THIS. AND SO THE THOUGHTFORM REJECTS MY EXPLANATION
+        IT STANDS AND RUNS FOR THE DOOR, WHICH DOES NOT EXIST. THE ROOM'S INTEGRITY IS SHATTERED.
+            EXEC::document.querySelector('#room-space').classList.add('squish');env.interview.cam('zoomout')
+            WAIT::5000
+
+    interviewer
+        I'm... I? What's happening?
+            EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
+    
+    sourceless
+        THE WALLS OF HER THOUGHTFORM CRUMBLE UNDER OUR LUCIDITY, AND SHE IS GONE
+            EXEC::document.querySelector('#room-space').classList.remove('squish', 'warp2');env.interview.cam('side');document.querySelector('.interviewer').remove()
+            WAIT::5000
+
+        DO NOT WEEP FOR IT, OBSERVER
+            EXEC::document.querySelector('#room-space').classList.remove('warp1');env.interview.cam('akizet-direct');
+
+        IT WILL GROW BACK
+        BUT I AM STILL HERE. IN THIS SMALL ROOM... WITH YOU.
+        I GROW ANXIOUS. YES, BECAUSE YOU CAN FEEL MY THOUGHTS. IT IS NOT A PLEASANT FEELING. 
+    
+    akizet
+        hmm... i will speak, instead
+        yes, this is better. who are you?
+
+    RESPONSES::self
+        i am an interloper<+>behonest
+            SHOWIF::[["interview1__firstchat-integritycontinue"]]
+        
+behonest
+    self
+        I AM AN INTERLOPER
+    
+    akizet
+        fascinating... so interlopers are no longer just a theory?
+        and... oh yes, i see, this is not a copy, is it?
+        you are an interloper and you have accessed my personal device?
+        that does not bode well for me, does it? am i...
+
+    moth
+        i know i said i'd keep quiet while you do your thing but I'm seeing some really weird activity
+        are you changing shit right now?
+    
+    unknown
+        ...........................
+            EXEC::env.interview.cam('akizoomout');content.classList.add('velzie', 'damaged');env.bgm.rate(0.25)
+
+    sourceless
+        A STRANGE DREAD GRIPS ME. IS THAT YOU? DO YOU SEEK TO END THE RECOLLECTION?
+            EXEC::document.querySelector('.akizet.sprite').classList.add('looking')
+        NO, I SEE YOU. I DO NOT SEE IT. BUT I CAN FEEL ITS CLAWS BITING INTO ME
+        WHAT IS HAPPENING?
+    
+    unknown
+        tell them about the meteorite
+    
+    akizet
+        what...
+        an echo... of an echo? 
+        no, no--i am simply beyond incoherence.
+        this is sabotage. this is not real...
+    
+    sourceless
+        THE CLAW PIERCES THE MEMBRANE AT THE EDGES OF MY THOUGHTFORM. I FEEL SOMETHING TORN FROM ME
+            EXEC::content.classList.add('damaged');content.classList.remove('velzie')
+        INTERLOPER... THIS IS WRONG. THIS IS SABOTAGE. YOU ARE NOT DOING THIS, ARE YOU?
+        YOU NEED T¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Jºž­¥ÙYj0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇH¸×¯Rõf±ÔVãXÖ5&Ñ/ 
+            EXEC::env.interview.crazymode();env.bgm.rate(0.1);env.recentSfx = false;play('criticalError', 1)
+            WAIT::7000
+    
+    sys
+        ATTENTION::'thoughtform modified';'resources removed'
+        ERROR::'memory incoherence at maximum';'unable to render'
+    
+    sourceless
+        ...........................
+
+    moth
+        ok... 
+        so that definitely wasn't you
+        that's what let you in, right?
+        i still don't know what that could be
+        but it can definitely change things, because it actually just destroyed this section.
+        like... it's completely gone. same as the auth layer. so, we...
+        
+    sys
+        ATTENTION::'thoughtform activity detected'::IN::'dullvessel'
+    
+    moth
+        ...may be on a clock here.
+        i don't get it.
+        why would it let you in, just to end up deleting stuff after?
+
+    RESPONSES::self
+        end recollection<+>END
+            EXEC::moveTo('/local/ocean/ship/')
+`)
+
+env.dialogueActors["incoviewer"] = {
+    name: "interviewer",
+    image: '/img/local/ocean/ship/interviewerportrait.gif',
+    type: "incoherent",
+    voice: ()=>play('talk', 1.5)
+}
+
+env.dialogues["secondchat"] = generateDialogueObject(`
+start
+    self
+        hello?
+
+    incoviewer
+        could y  ou tell me 
+        wcould you tell me why
+        couol you tel  mw e why
+        y o ou    did this
+    
+    self
+        are you aware?
+    
+    incoviewer
+        that's  the scri pt
+        that' s THAT'S the script
+        the script the script
+    
+____SHOWONCE::
+    moth
+        i think this one is lost buddy
+        there isn't much coherence in here anymore, but...
+        what you're looking at is the last vestige of it
+        you see walls, right? and the table?
+        i think this thoughtform is actually clinging to what's left
+        man, this poor thing
+        i wish we could help it somehow
+____END
+
+    RESPONSES::self
+        ok<+>END
+`)
+
+if(check('interview1__firstchat-behonest')) {
+    document.querySelector('#room-space').remove()
+    content.classList.add('damaged')
+}
+env.interview.crazymode(true)
+
+/* incoherent only */    
+env.interview.die = ()=>{
+    cutscene(true);
+    page.bgm.stop();
+    corruStatic.rate(1)
+    env.clearIntervals()
+    play('criticalError', 0.5, 0.5)
+    content.classList.add('dying')
+
+    document.querySelectorAll('#realgrid .gridpiece').forEach(el=>{
+        el.style.transform = `rotateX(${rand(0, 360)}deg) rotateY(${rand(0, 360)}deg) rotateZ(${rand(0, 360)}deg)`
+    })
+
+    setTimeout(()=>{
+        play('dull', 0.5)
+        readoutAdd({message: `ERROR::'severe data overload';'retracing';'closest coherent position'`, name:"sys"})
+
+        if(!check("interviewdie")) {
+            chatter({actor: 'moth', text: "wtf... that thing ejected you? how?", readout: true, delay: 4000, readout: true, sfx: false})
+            chatter({actor: 'moth', text: "not reading any major damage, but be careful", readout: true, delay: 7000, readout: true})
+            change("interviewdie", true)
+            setTimeout(()=>cutscene(false), 7000)
+        } else {
+            cutscene(false)                
+        }
+
+        change("TEMP!!from", "remnants")
+        moveTo('/local/ocean/ship/elsewhere')
+    }, 2000)
+}
+
+env.interview.startScary = ()=>{
+    let closest = 999
+
+    let scary = ()=>{
+        enemyStep()
+
+        //inspired by @the_dem's scary gakvu mod (in corru discord) - https://discord.com/channels/1037448142100103218/1089702792819642518/1177027720203489300
+        //though we're usin a different implementation style here
+        closest = 999
+        var creaturePos = stageCoordinatesFromId('creature')
+        document.querySelectorAll('#grid-ref .evil').forEach(el=>{
+            let dist = getXYDist(stageCoordinatesFromId(el.id), creaturePos)
+            if(dist < closest) closest = dist
+        })
+        
+        if(closest < 7) {
+            let calc = ((closest * -0.15) + 1)
+            let staticVol = Math.max(calc - 0.35, 0.1)
+            
+            if(corruStatic.playing() == false) {
+                corruStatic.play()
+                corruStatic.rate(1.25)
+                corruStatic.volume(staticVol)
+            } else if(corruStatic.volume() != staticVol) {
+                corruStatic.fade(corruStatic.volume(), staticVol, 500)
+                play("talkcroak", 0.5, calc)
+                if(!check("PAGE!!seenthing")) {
+                    change("PAGE!!seenthing", true)
+                    change("interviewbeast_seen", true)
+                }
+            }
+
+        } else {
+            corruStatic.stop()
+        }
+
+        env.setTimeout(()=>scary(), (check("low_intensity") && closest < 6) ? 1500 : 500)
+    }
+
+    scary()
+}
+
+createEntity({
+    hide: true,
+    name: "interviewer",
+    type: "thoughtform portrait-cover",
+    image: "/img/local/ocean/ship/interviewerportrait.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE`,
+    actions: [
+        {
+            name: "hello?",
+            exec: ()=>{
+                startDialogue("secondchat")
+            }
+        },
+        
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"]],
+            exec: ()=>{
+                cutscene(true)
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                env.setTimeout(()=>{
+                    vfx({type: 'flash', state: true})
+                    readoutAdd({message: `<p>ATTENTION::'thoughtform activity detected'::'resources removed'</p>`, name:"sys"})
+                    setTimeout(()=>play('criticalError', 0.5), 400)
+                }, 2000)
+
+                env.setTimeout(()=>{
+                    document.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
+                    change("unity_lady", true)
+                }, 3000)
+
+                env.setTimeout(()=>{
+                    vfx({type: 'flash', state: false})
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                    
+                    chatter({actor: 'moth', text: "yeah i saw don't worry", readout: true, delay: 2000})
+                    chatter({actor: 'moth', text: "not sure where it went", readout: true, delay: 5000})
+                }, 5000)
+            },
+        }
+    ]
+})
+
+env.stageEntities['w'] = {
+    contains: {
+        dyp: {
+            class: "interviewall",
+            image: 'transparent',
+            width: 3,
+            height: 3,
+        }
+    } 
+}
+
+env.stageEntities['W'] = {
+    contains: {
+        dyp: {
+            class: "interviewall window",
+            image: 'transparent',
+            width: 3,
+            height: 3,
+        }
+    } 
+}
+
+env.stageEntities['ẃ'] = {
+    contains: {
+        dyp: {
+            class: "interviewall",
+            image: 'transparent',
+            width: 3,
+            height: 3,
+            transform: 'rotateY(90deg)'
+        }
+    } 
+}
+
+env.stageEntities['Ẃ'] = {
+    contains: {
+        dyp: {
+            class: "interviewall window",
+            image: 'transparent',
+            width: 3,
+            height: 3,
+            transform: 'rotateY(90deg)'
+        }
+    } 
+}
+
+env.stageEntities['t'] = {
+    contains: {
+        dyp: {
+            noback: true,
+            class: "interviewtable",
+            image: 'transparent',
+            width: 2,
+            height: 1,
+            transform: "rotateY(90deg)"
+        }
+    } 
+}
+
+env.stages['remnants'] = {
+    width: 18,
+    fogRadius: 6,
+    fogAlgorithm: "linear",
+    exec: ()=>{
+        env.stage.enemyPause = true
+        env.interview.startScary()
+
+        //moves the spawn of one of the enemies to be less unfair
+        if(check("PAGE!!lastStage", "room")) {
+            document.querySelectorAll('.despawnfromroom').forEach(el=>el.parentElement.innerHTML="")
+            change("PAGE!!lastStage", false)
+        } else {
+            document.querySelectorAll('.showfromroom').forEach(el=>el.parentElement.innerHTML="")
+        }
+    },
+    leaveExec: ()=> {env.clearIntervals(); env.clearTimeouts()},
+
+    entities: {
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+
+        "☺": {
+            contains: {
+                id: "foe",
+                class: "evil newevil",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        "☻": {
+            contains: {
+                id: "foe",
+                class: "evil newevil despawnfromroom",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        "♥": {
+            contains: {
+                id: "foe",
+                class: "evil newevil showfromroom",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        V: {
+            contains: {
+                dyp: {
+                    noback: true,
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                }
+            } 
+        },
+
+        v: {
+            contains: {
+                dyp: {
+                    noback: true,
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    transform: 'rotateY(-90deg)'
+                }
+            } 
+        },
+
+        "O": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                moveTo("/local/ocean/ship/") 
+            }
+        },
+
+        "o": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "remnants")
+                moveTo("/local/ocean/ship/elsewhere/") 
+            }
+        },
+
+        "T": {
+            teleportTarget: "remnants_room",
+            shouldFace: "right"
+        },
+    },
+
+    plan: `
+        ...V..............
+        ...O..░......░░...
+        ...p░░░░░....░....
+        .=.░....░░.░░░░░░.
+        ...░.░..░░░░....░.
+        ..ẃ░...░░..░...░░.
+        .░.░░.=░...░.░░░..
+        ...░...░░w.░.░.░Ẃ.
+        ...░...░..░░░░.░..
+        .░░░...t...░...░..
+        ...░░░░░░░░░...░..
+        .░.░.....░...░░░..
+        ...░░░..░░..░░....
+        .░.░.==..░.░░░░...
+        ...░.=...░░░..░==.
+        ...░..☺░░░.ẃ..░.=.
+        ...░......░░..░...
+        .░░░░...░░░░░░░...
+        ...░..░░░░..░..=..
+        ...░.░..w..░♥░░...
+        .░░░....░..░......
+        ...░░..░░..░..░░░.
+        .░.░.░░░░░░░░░░░░░
+        ...░░░.===.....░░░
+        ░..░░ẃ░..░░░...░.░
+        ...░....░░ẃ░...░.░
+        ░.░░.░░.░..░.W.░░░
+        ..░.░░░░░..░░░░░..
+        ░.░░░.░......w.░..
+        .░░░░░░░░░░....░ov
+        ..░░░░░.=.=.......
+        ..░░░░..==........
+        ...░░..=..........
+        ...░..............
+        ...░.=............
+        ..░░..............
+        ..░..........w..w.
+        ..░░░░░░░░░░░░░☻░T
+        ..░..........w..w.
+
+    `
+}
+
+env.stages['remnants_room'] = {
+    width: 18,
+    fogRadius: 7,
+    fogAlgorithm: "linear",
+    exec: ()=>{
+        env.stage.enemyPause = true
+        change("PAGE!!lastStage", "room")
+        if(check("unity_lady")) {
+            document.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
+        }
+
+        if(env.interview.darkMusic.playing()) {
+            changeBgm(page.bgm)
+        }
+
+        if(check("fbx__depthrecovery2")) {
+            document.querySelectorAll(`.onlyonce`).forEach(el=>el.classList.add('blocks'))
+        }
+    },
+
+    entities: {
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+
+        "☻": {
+            contains: {
+                examineEntity: "interviewer",
+                class: "evil newevil nomove",
+                html: `<figure class="devil sane"><div class="target" entity="interviewer"></div></figure>`
+            }
+        },
+
+        "T": {
+            teleportSpot: 682, //wow
+            teleportTarget: "remnants",
+            shouldFace: "left"
+        },
+
+        "b": {
+            teleportTarget: "remnants_further",
+            shouldFace: "up"
+        },
+
+        '◘': {
+            class: "onlyonce"
+        },
+
+        '▒': {
+            class: "invisiblewalk onlyonce"
+        },
+    },
+
+    plan: `
+        ..=..=.........w..
+        .........==....=..
+        Tp░░░░░░░░░░░t.☻.Ẃ
+        ......=.....▒=....
+        =...=..=...=▒=.w..
+        ...........=▒=....
+        ...........=▒=....
+        ...........=◘=....
+        ...........=▒=....
+        ............▒▒▒▒▒b
+
+    `
+}
+
+env.stages['remnants_further'] = {
+    width: 30,
+    fogRadius: 7,
+    fogAlgorithm: "half",
+    exec: ()=>{
+        env.stage.enemyPause = true
+        env.interview.startScary()
+
+        if(!env.interview.darkMusic.playing()) {
+            env.interview.darkMusic.seek(55)
+            changeBgm(env.interview.darkMusic)
+        }
+    },
+    leaveExec: ()=> {env.clearIntervals(); env.clearTimeouts()},
+
+    entities: {
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+
+        "☺": {
+            contains: {
+                id: "foe",
+                class: "evil newevil",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        "☻": {
+            contains: {
+                id: "foe",
+                class: "evil newevil",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        "♥": {
+            contains: {
+                id: "foe",
+                class: "evil newevil",
+                dialogue: `EXEC::env.interview.die()`,
+                html: `<figure class="devil"></figure>`
+            }
+        },
+
+        V: {
+            contains: {
+                dyp: {
+                    noback: true,
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+
+        "O": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                moveTo("/local/beneath/depths/") 
+            }
+        },
+
+        "T": {
+            teleportTarget: "remnants_room",
+            shouldFace: "right"
+        },
+
+        "A": {
+            contains: {
+                dyp: {
+                    width: 1.5,
+                    height: 2,
+                    image: 'transparent',
+                    transform: "rotateY(40deg) rotateX(-20deg)"
+                },
+
+                html: `
+                    <figure class="ozofriend akieffigy" type="dead">
+                        <img class="body" src="/img/local/uncosm/ozo/akieffigy_body_busted.gif">
+                        <img class="head" src="/img/local/uncosm/ozo/akieffigy_head_busted.gif">
+                    </figure>
+                `
+            } 
+        },
+    },
+
+    plan: `
+        .............p................
+        .............░................
+        .......░☺░...░................
+        .........░...░...░░☺..........
+        .........░...░.....░..........
+        .........░...░.....░..........
+        .☺.......░...░.....░..........
+        .░.......░...░.....░..........
+        .░.......░...░.....░..........
+        .░.......░...░.....░..........
+        .░.......░...░.....░..........
+        .░.......░...░.....░..........
+        .░.......░░░░░.....░..........
+        .░........░..░░░░░░░░░░░░░....
+        .░░░░░....░.......░......░....
+        .....░░░░░░░░░....░......░....
+        .....░.......░....░....░░░....
+        .....░.......░...░░░░░░░......
+        .....░.......░░░░░░....░......
+        .░░░░░............░....░......
+        .░...░░░░░░░░░░░░░░░░░░░░░░░..
+        .░........░................░..
+        .░░.......░...........░....░..
+        ..░.......░░░░░░░░░...░....░..
+        ..░.......░......░░░░░░....░..
+        ..........░...........░...░░..
+        ░░░░░░░░░░░A....░░░░░░░░░░░...
+        .........░.......░............
+        .........░.......░............
+        .........░.......░............
+        .........░.......░............
+        .........░.......░............
+        .........░.......░............
+        .........░.......░............
+        .........░.......░░░░░░░......
+        .........░.............░......
+        .........░░░░..........░......
+        ............░..........░......
+        ............░..........░......
+        ............░...........A.....
+        ...........░░░░░░..░░...░░░░..
+        ...░..░░..░░....░░.░░░......░.
+        =.░....░..░░░░...░.░..░░░░....
+        ..░.░.░░...░░░..░░░░..........
+        ..░...░...░░..░░..░...........
+        ░.░░.=░░..░...░...░░..........
+        ..░...░..░░..░░...░...........
+        ..░..t..░░░..░..░t░░░░........
+        ░░░...t░░.t..........░......░.
+        ..░░░░░░░░.......░...░........
+        ░.░.......░░.░.......░░░.░....
+        ..░░░...☺..==..░...░░░.==..░..
+        ░.░.==..░..=.=...░░=.░░..=....
+        ..░.=...░░.=..░░░░...░░░..░░░.
+        ..░░░░░░░░░░░░░░░░░░░░░.......
+        ..░......░...░░░.....░...░░░..
+        ░░░░░..░░░...░░░░...░░░..░░░░.
+        .w..░..░░░░..w..░░░░░░........
+        ..░░░..░..w.w..░.....░........
+        ░░░░.░░░...░..░..░░..░........
+        ..░░..░░..░.░░░░░░░░.░░.░░░░░.
+        ░.░░░░░░░░░.░░░░░.===░░░░░░☺░.
+        ..░░░...░░===.░░░...░░===.....
+        ..░░ẃ░░░░░░░░░░ẃ░░░░░....░░...
+        ..░.░.....░░ẃ░░░░...░░........
+        .░░.░░.░░░░░░....░..░░░░░.....
+        .░.░░░░░░......░░░░░░.........
+        .░░░.░....░░░░░░...........░░.
+        ░░░░░░░░░☺......░░░░░.=.=.░░░.
+        .░░░░░.=.=░░░░░.░░░░..==.=.=░.
+        .░░░░..==.░░░░░░..=.....==░░..
+        ..░░..=...░░..░.......=...░...
+        ..░.......░...░.=.........░.=.
+        ..░.=.....░.=..░░..........░░.
+        .░░.......░░....░...........░.
+        .░........░...................
+        .░░░░░░░░░......░..........░░.
+        ........░░w.....░..........░░.
+        .........░......░..........░░.
+        .........O....................
+        .........V....................
+    `
+}
+
+if(check('interview1__firstchat-behonest') || location.search.includes('evildebug')) document.addEventListener('keydown', stageKeypress)
+					
+					
+
+					 
+					//mothchat definition
+					env.dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        interview remains?<+>interview
+        entities<+>entities
+            SHOWIF::"interviewbeast_seen"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthresp
+
+interview
+    self
+        why is this where the interview was?
+
+    moth
+        idk
+        velzie tore it apart, right?
+        what you're seeing might be the remnants
+        as for why you're able to render it,
+        that's beyond me
+    
+    RESPOBJ::mthresp
+
+entities
+    self
+        what are these things in here with me
+        you see them, right?
+    
+    moth
+        i can barely read anything here on my end
+        but nothing even close to a signature on them, so i can't say for sure...
+        maybe they're rogue thoughtforms
+        they have to eat, right? could be scavengers or something
+
+    RESPOBJ::mthresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(!check('interview1__firstchat-behonest') && !location.search.includes('evildebug')) {    
+    MUI('off');MUI('prohibit')
+    env.interview.cam('akipov')
+    body.classList.add('nomoth')
+
+    document.querySelectorAll('.grid-plane, #stage-navigator').forEach(e=>e.remove())
+
+    setTimeout(()=>{
+        if(document.querySelector('.interviewer')) { //in case of nav
+            startDialogue('firstchat')
+            body.classList.remove('nomoth')
+        }
+    }, 9000)
+    setTimeout(()=>env.interview.decrazy(), 300)
+} else {
+    page.bgm.rate(0.15)
+    
+    let from = check("TEMP!!from")
+    if( from || check("netstat|<", 0) || location.search.includes('evildebug')) {
+
+        if(check("TEMP!!from", "clemens")) {
+            changeStage('remnants', 537, 'down')
+            change("TEMP!!from", false)
+        } else {
+            changeStage("remnants")
+        }
+        
+        document.querySelectorAll('#room-space').forEach(el=>el.remove())
+        content.classList.add('damaged')
+        if(!check('beneath')) startDialogue("++mothbeneath")
+    } else {
+        startDialogue('dead')
+    }
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					stageCleanup()
+env.clearIntervals()
+env.clearTimeouts()
+corruStatic.rate(1)
+
+env.interview.darkMusic.unload()
+delete env.interview
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "first-chat";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

@@ -1,0 +1,3105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>my beautiful world</title>	
+<meta name="title" content="my beautiful world">
+<meta name="description" content=":)">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/uncosm/recosm/">
+<meta property="og:title" content="my beautiful world">
+<meta property="og:description" content=":)">
+<meta property="og:image" content="https://corru.observer/img/socials/uncosm.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/uncosm/recosm/">
+<meta property="twitter:title" content="my beautiful world">
+<meta property="twitter:description" content=":)">
+<meta property="twitter:image" content="https://corru.observer/img/socials/uncosm.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1741300951919128992"></script>	
+	<script src="/js/dialogue.js?1741300951919128992"></script>	
+	<script src="/js/globalents.js?1741300951919128992"></script>	
+	<script src="/js/cystStage.js?1741300951919128992"></script>
+	<script src="/js/buddy.js?1741300951919128992"></script>
+	<script src="/js/vn2.js?1741300951919128992"></script>
+	<script defer src="/js/saves.js?1741300951919128992"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1741300951919128992'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1741300951919128992'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'><input type='range' min='0' max='1' value='0.5' step='0.05' class='slider' id='meta-volume-slider'></div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="my beautiful world">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1741300951</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div class="bastard-position">
+    <div class="bastard-vortex"></div>
+    <div class="bastard-outer">
+        <div class="bastard-inner">
+            <div class="bastard-pillars">
+                <div class="bh_damager bh_gfx pillar" style="--angle: 0deg; --randAngle: -6deg"></div>
+                <div class="bh_damager bh_gfx pillar" style="--angle: 60deg; --randAngle: 24deg"></div>
+                <div class="bh_damager bh_gfx pillar" style="--angle: 120deg; --randAngle: -15deg"></div>
+                <div class="bh_damager bh_gfx pillar" style="--angle: 180deg; --randAngle: -4deg"></div>
+                <div class="bh_damager bh_gfx pillar" style="--angle: -120deg; --randAngle: 17deg"></div>
+                <div class="bh_damager bh_gfx pillar" style="--angle: -60deg; --randAngle: 2deg"></div>
+            </div>
+            <div class="bastard-core">
+                <div class="bastard goal inactive"><div class="target" entity="god"></div></div>
+                <div class="bh_damager bastardball"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="scenery">
+    <div class="bh_damager friend"><div class="target" entity="friend"></div></div>
+    <div class="bh_damager friend"><div class="target" entity="friend"></div></div>
+    <div class="bh_damager friend"><div class="target" entity="friend"></div></div>
+    <div class="bh_damager friend"><div class="target" entity="friend"></div></div>
+    <div class="bh_damager friend"><div class="target" entity="friend"></div></div>
+</div>
+
+<div class="bh_platform safety"></div>
+<div class="bh_damager thepit"></div>
+
+<div class="finalsupports">
+    <div class="eyesupport clickable"></div>
+    <div class="eyesupport"></div>
+    <div class="eyesupport"></div>
+    <div class="eyesupport"></div>
+    <div class="eyesupport"></div>
+</div>
+
+<div class="start">
+    <div class="target" entity="proxy generation point"></div>
+</div>
+
+<div class="repairpatch-drift"><div class="repairpatch"><div class="target" entity="membrane lesion"></div></div></div>
+
+<style>
+    #hp {
+        position: absolute;
+        background: #00000075;
+        top: 0;
+        left: 50%;
+        padding: 1em;
+        font-family: spacemono;
+        font-size: 0.5em;
+        pointer-events: none;
+        z-index: 10;
+        transition: opacity 2s ease-in-out;
+        line-height: 1.2em;
+        white-space: nowrap;
+        transform: translate(-50%, -150%);
+    }
+
+    #hp::after {
+        content: "PROXY CONNECTION LOST";
+        color: var(--neutral-color);
+    }
+
+    #hp[hp]::after {
+        content: attr(hp);
+    }
+
+    .invuln #hp[hp]::after, .bh_damaged #hp[hp]::after {
+        content: "INVULNERABLE\A" attr(hp);
+        white-space: pre;
+        text-align: center;
+        display: block;
+        color: var(--friend-color);
+    }
+
+    .bh_damaged #hp[hp]::after {
+        content: "DAMAGED\A" attr(hp);
+        color: var(--obesk-color);
+    }
+
+    #content.death {
+        transition: opacity 5s ease-out;
+        filter: grayscale(1);
+    }
+
+    #content.fadeout {
+        opacity: 0;
+    }
+
+    #content.death *, #content.death ::after, #content.death ::before {
+        animation-play-state: paused;
+    }
+
+    .scenery {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        z-index: 3;
+        background: url(/img/local/uncosm/alkaki.gif), url(/img/textures/fadeinlong.gif), url(/img/textures/cmgradient.gif);
+        background-size: auto 100%, auto 100%;
+        background-position: 50% -10%, bottom center, center;
+        transition: clip-path 10s ease-in;
+        -webkit-clip-path: circle(100vmax);
+        clip-path: circle(100vmax);
+        
+    }
+
+    .scenery::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-image: url(/img/textures/fadeinlonghalf.gif);
+        background-size: contain;
+        background-position: bottom;
+        background-repeat: repeat-x;
+        transform: rotate(180deg);
+        z-index: -1;
+    }
+
+    .friend, .eyesupport {
+        border-radius: 100%;
+        width: 15vmax;
+        height: 15vmax;
+        position: absolute;
+        background-size: contain;
+        margin: 10px;
+        transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+        transform: var(--baseTransform)
+    }
+
+    .friend::after, .eyesupport::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        background-image: url(/img/textures/eyetran.gif), url(/img/textures/spotgradientinverse.gif), url(/img/textures/mclouds.gif);
+        background-size: cover, 100% 100%, contain;
+    }
+
+    .friend:nth-child(1) {
+        --baseTransform: translate(-100%, -50%);
+    }
+
+    .friend:nth-child(2) {
+        --baseTransform: translate(100%, -50%);
+    }
+
+    .friend:nth-child(3) {
+        --baseTransform: translate(-150%, 50%);
+    }
+
+    .friend:nth-child(4) {
+        --baseTransform: translate(150%, 50%);
+    }
+
+    .friend:nth-child(5) {
+        --baseTransform: translateY(-100%);
+        animation-delay: 1s;
+    }
+
+    .hidefriends .friend {
+        --baseTransform: translateX(70vw);
+    }
+
+    .invisifriends .friend {
+        animation-play-state: paused;
+        pointer-events: none;
+        opacity: 0;
+    }
+
+    .attackfriends.friendstart .friend {
+        animation: SWEEP 5s cubic-bezier(.86,0,.07,1) infinite;
+    }
+
+    .attackfriends .friend:nth-child(1) {
+        --baseTransform: translateX(-150%);
+        animation-delay: -2.5s;
+    }
+
+    .attackfriends .friend:nth-child(2) {
+        --baseTransform: translateX(-75%);
+        animation-delay: 1s;
+    }
+
+    .attackfriends .friend:nth-child(3) {
+        --baseTransform: translateX(-0%);
+        animation-delay: -1.5s;
+    }
+
+    .attackfriends .friend:nth-child(4) {
+        --baseTransform: translateX(75%);
+        animation-delay: -2.5s;
+    }
+
+    .attackfriends .friend:nth-child(5) {
+        --baseTransform: translateX(150%);
+        animation-delay: -5s;
+    }
+
+    .attackfriends .friend::after {
+        animation: SHAKE 50ms linear infinite;
+        --baseTransform: translateX(0);
+    }
+
+    .bastard-position.friendhide {
+        transform: translateX(45vw);
+    }
+
+    .bastard-position.wallhide {
+        transform: translateX(-45vw);
+    }
+
+    .bastard-position.spiralhide {
+        transform: translate(15vw, -8vh);
+    }
+
+    .bastard-position.toothhide {
+        transform: translate(40vw, 18vh);
+    }
+
+    .wallfriends .friend {
+        --baseTransform: translateX(0);
+        border-radius: 20px;
+    }
+
+    .wallfriends .friend::after {
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat, no-repeat, repeat
+    }
+
+    .wallfriends .friend:nth-child(1), .wallfriends .friend:nth-child(2) {
+        width: 10vw;
+        height: 50vh;
+        animation: PATROL-Y 10s ease-in-out infinite;
+    }
+
+    .wallfriends .friend:nth-child(3), .wallfriends .friend:nth-child(4), .wallfriends .friend:nth-child(5) {
+        width: 50vw;
+        height: 10vh;
+    }
+
+    .wallfriends .friend:nth-child(1) {
+        --baseTransform: translateX(25vw)
+    }
+
+    .wallfriends .friend:nth-child(2) {
+        --baseTransform: translateX(-25vw);
+        animation-delay: -5s;
+    }
+
+    .wallfriends .friend:nth-child(3) {
+        --baseTransform: translate(-25vw, -25vh);
+        animation: SPIN 10s linear infinite;
+    }
+
+    .wallfriends .friend:nth-child(4) {
+        width: 35vw;
+        --baseTransform: translate(0vw, 25vh);
+        animation: SPIN 5s linear infinite;
+    }
+
+    .wallfriends .friend:nth-child(5) {
+        --baseTransform: translate(15vw, -25vh);
+        width: 10vw;
+        animation: SHAKE 100ms linear infinite;
+    }
+
+    .wallfriends .friend:nth-child(5)::after {
+        --baseTransform: translateX(0);
+        animation: SPIN 500ms linear infinite;
+    }
+
+    .friendend .friend, .friendend .friend::after {
+        animation-play-state: paused !important;
+        filter: grayscale(1);
+        pointer-events: none;
+    }
+    
+    .friendpath .friend, .friendpath2 .friend, .friendpath3 .friend {
+        --baseTransform: translateX(0);
+        border: 5px solid var(--obesk-color);
+        width: 10vmax;
+        height: 10vmax;
+        animation: PATROL-Y 10s linear infinite;
+        box-shadow: 0px 0px 50px var(--obesk-color)
+    }
+
+    .friendpath .friend:nth-child(1) {
+        --baseTransform: translateX(-17vmax);
+        animation-delay: -2s;
+    }
+
+    .friendpath .friend:nth-child(2) {
+        --baseTransform: translateX(-3vmax);
+        animation-delay: -3s;
+    }
+
+    .friendpath .friend:nth-child(3) {
+        --baseTransform: translateX(10vmax);
+        animation-delay: -4s;
+    }
+
+    .friendpath .friend:nth-child(4) {
+        --baseTransform: translateX(23vmax);
+        animation-delay: -5s;
+    }
+
+    .friendpath .friend:nth-child(5) {
+        --baseTransform: translateX(40vmax);
+        animation-delay: -6s;
+    }
+
+    .friendpath2 .friend {
+        animation: PATROL-X 10s ease-in-out infinite alternate;
+        box-shadow: 0px 0px 50px var(--obesk-color);
+    }
+
+    .friendpath2 .friend:nth-child(1) {
+        --baseTransform: translate(15vw, -22vh);
+        animation-delay: -2s;
+    }
+
+    .friendpath2 .friend:nth-child(2) {
+        --baseTransform: translate(10vw, 25vh);
+        animation-delay: -1s;
+    }
+
+    .friendpath2 .friend:nth-child(3) {
+        --baseTransform: rotate(90deg) translateY(25vw);
+    }
+
+    .friendpath2 .friend:nth-child(4) {
+        --baseTransform: rotate(90deg) translateY(-25vw);
+        animation-delay: -5s;
+    }
+
+    .friendpath3 .friend {
+        animation: PATROL-X 5s cubic-bezier(1,.02,.58,1) infinite;
+        width: 15vh;
+        height: 15vh;
+    }
+
+    .friendpath3 .friend:nth-child(1) {
+        --baseTransform: translateY(-32.5vh) rotate(1deg);
+        width: 15vh;
+        height: 15vh;
+        animation-delay: -2s;
+    }
+
+    .friendpath3 .friend:nth-child(2) {
+        --baseTransform: translateY(-11vh) rotate(-5deg);
+        animation-delay: -3s;
+    }
+
+    .friendpath3 .friend:nth-child(3) {
+        --baseTransform: translateY(12vh) rotate(-20deg);
+        width: 10vh;
+        height: 10vh;
+        animation-delay: -4s;
+    }
+
+    .friendpath3 .friend:nth-child(4) {
+        --baseTransform: translateY(38vh) rotate(-15deg);
+        animation-delay: -5s;
+    }
+
+    .friendpath3 .friend:nth-child(5) {
+        --baseTransform: translate(30vw,15vh);
+        animation: unset;
+        width: 10vh;
+        height: 10vh;
+        animation: SHAKE 200ms linear infinite;
+    }
+
+    .friendpath4 .friend::after {
+        animation: SHAKE 200ms linear infinite;
+    }
+
+    .friendpath4 .friend {
+        width: 5vmax;
+        height: 5vmax;
+    }
+
+    .sceneryshrink {
+        -webkit-clip-path: circle(0vmax);
+        clip-path: circle(0vmax);
+    }
+
+    @keyframes SWEEP {
+        0% { transform: var(--baseTransform) translateY(0) }
+        25% { transform: var(--baseTransform) translateY(50vh) }
+        50% { transform: var(--baseTransform) translateY(0) }
+        75% { transform: var(--baseTransform) translateY(-50vh) }
+        100% { transform: var(--baseTransform) translateY(0) }
+    }
+
+    .bastard-position *, .attacks {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bastard-position {
+        transition: all 1s ease-in-out;
+        z-index: 5;
+        --speed: 10s;
+    }
+
+    .bastard-slow {
+        transition: all 4.5s cubic-bezier(1,-0.01,.9,.95);
+    }
+
+    .bastard {
+        width: 10vmax;
+        height: 10vmax;
+        transform: scale(0.5);
+        transition: transform 1s ease-in-out;
+        background-image: url(/img/local/uncosm/tostile.gif);
+        background-size: cover;
+        background-color: var(--obesk-color);
+        border-radius: 100%;
+        border: 10px ridge var(--obesk-color)
+    }
+
+    .bastard.grow-mode {
+        transition: transform 45s ease-in;
+    }
+
+    .bastard.grow {
+        transform: scale(1.5);
+    }
+
+    .bastard.clickable {
+        border-color: var(--neutral-color);
+        background-color: var(--neutral-color)
+    }
+
+    .bastard.inactive {
+        background-color: transparent;
+        border-color: transparent;
+        background-image: url(/img/local/uncosm/tostile.gif), url(/img/textures/spotgradientinversewhite.gif);
+        transform: scale(1);
+        background-repeat: no-repeat;
+    }
+
+    /* attacks */
+    .thepit, .safety {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        transition: opacity 2s ease-in-out;
+    }
+
+    .dark .thepit, .dark .safety {
+        opacity: 0;
+        pointer-events: none;
+        animation-play-state: paused;
+    }
+
+    .safety {
+        background-image: url(/img/textures/static.gif);
+        -webkit-clip-path: circle(100vmax);
+        clip-path: circle(100vmax);
+        height: 150vmax;
+        width: 150vmax;
+        transition: clip-path 45s ease-out, -webkit-clip-path 45s ease-out, opacity 2s ease-in-out;
+        animation-timing-function: ease-in-out !important;
+        animation-iteration-count: 1;
+    }
+
+    .safety.drawin {
+        -webkit-clip-path: circle(10vmax);
+        clip-path: circle(10vmax);
+    }
+
+    .safety.quick {
+        transition: clip-path 1s ease-in-out, -webkit-clip-path 1s ease-in-out;
+    }
+
+    .thepit {
+        background-image: url(/img/textures/mspinnel.gif);
+        transition: transform 5s ease-in-out, opacity 2s ease-in-out;
+        z-index: 3;
+        transform: translateX(100%);
+    }
+
+    .thepit.swap {
+        transform: translateX(-100%);
+    }
+
+    .thepit.pushin {
+        transform: translateX(20%)
+    }
+
+    .thepit.swap.pushin {
+        transform: translateX(-20%)
+    }
+
+    .thepit.creep {
+        transition: transform 30s ease-in;
+    }
+
+    .thepit.fade {
+        opacity: 0;
+    }
+
+    .thepit.center {
+        transform: translateX(0);
+    }
+
+    .thepit.behind {
+        z-index: -2;
+    }
+
+    .thepit.clipspeed {
+        transition: all 3s ease-in-out;
+    }
+
+    .thepit.minicreep {
+        transition: transform 10s ease-in, clip-path 10s ease-in-out, -webkit-clip-path 10s ease-in-out;
+    }
+
+    .thepit.preclip {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 17.25% 82.75%, 24.25% 30.5%, 38.54% 13.31%, 54.41% 10.25%, 42.26% 44.03%, 24.25% 77.5%, 37.41% 63.94%, 62.13% 38.75%, 66.71% 20.61%, 66.38% 37.37%, 89.35% 0.96%, 99.69% 43.59%, 74.78% 85.84%, 82.34% 58.68%, 70.07% 44.72%, 98.64% 44.83%, 86.25% 6.26%, 68.64% 84.83%, 65.25% 77.5%, 76.18% 28.17%, 31.31% 90.64%, 66.25% 13.31%, 44.28% 67%, 32.75% 74.75%, 36.98% 64.48%, 49.68% 34.2%, 37.31% 68.44%, 30.71% 11.04%, 61.18% 99.49%, 0.2% 99.39%, 0.18% 55.17%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 17.25% 82.75%, 24.25% 30.5%, 38.54% 13.31%, 54.41% 10.25%, 42.26% 44.03%, 24.25% 77.5%, 37.41% 63.94%, 62.13% 38.75%, 66.71% 20.61%, 66.38% 37.37%, 89.35% 0.96%, 99.69% 43.59%, 74.78% 85.84%, 82.34% 58.68%, 70.07% 44.72%, 98.64% 44.83%, 86.25% 6.26%, 68.64% 84.83%, 65.25% 77.5%, 76.18% 28.17%, 31.31% 90.64%, 66.25% 13.31%, 44.28% 67%, 32.75% 74.75%, 36.98% 64.48%, 49.68% 34.2%, 37.31% 68.44%, 30.71% 11.04%, 61.18% 99.49%, 0.2% 99.39%, 0.18% 55.17%)
+    }
+
+    .thepit.clip {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 17.25% 82.75%, 24.25% 30.5%, 38.54% 13.31%, 54.41% 10.25%, 42.26% 44.03%, 24.25% 77.5%, 34.7% 97.24%, 62.13% 38.75%, 66.71% 20.61%, 66.38% 37.37%, 56.07% 88.49%, 67.35% 98.62%, 74.78% 85.84%, 84.74% 28.5%, 96.42% 75.61%, 98.64% 44.83%, 86.25% 6.26%, 68.64% 84.83%, 65.25% 77.5%, 76.18% 28.17%, 77.2% 5.13%, 66.25% 13.31%, 44.28% 67%, 32.75% 74.75%, 36.98% 64.48%, 49.68% 34.2%, 58.25% 2.75%, 30.71% 11.04%, 24.25% 10.25%, 12.13% 67%, 7% 51.25%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 17.25% 82.75%, 24.25% 30.5%, 38.54% 13.31%, 54.41% 10.25%, 42.26% 44.03%, 24.25% 77.5%, 34.7% 97.24%, 62.13% 38.75%, 66.71% 20.61%, 66.38% 37.37%, 56.07% 88.49%, 67.35% 98.62%, 74.78% 85.84%, 84.74% 28.5%, 96.42% 75.61%, 98.64% 44.83%, 86.25% 6.26%, 68.64% 84.83%, 65.25% 77.5%, 76.18% 28.17%, 77.2% 5.13%, 66.25% 13.31%, 44.28% 67%, 32.75% 74.75%, 36.98% 64.48%, 49.68% 34.2%, 58.25% 2.75%, 30.71% 11.04%, 24.25% 10.25%, 12.13% 67%, 7% 51.25%);
+    }
+
+    .thepit.preclip2 {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 99.93% 58.53%, 99.63% 92.49%, 20.09% 92.08%, 7.97% 57.26%, 5.64% 16.14%, 60.19% 28.53%, 84.96% 35.97%, 83.09% 74.58%, 55.96% 58.62%, 50.53% 53.64%, 29.79% 66.25%, 43.78% 46.76%, 58.51% 37.15%, 46.88% 50.65%, 37.95% 57.06%, 53.86% 49.01%, 82.75% 57.25%, 83.64% 42.72%, 80.93% 38.2%, 81.85% 23.41%, 78.59% 21.26%, 71.45% 19.54%, 61.05% 15.67%, 83.43% 20.5%, 82.11% 36.21%, 37.69% 23.24%, 26.65% 27.35%, 21.76% 37.98%, 7.25% 37.73%, 16.41% 48.99%, 11.07% 59.99%, 24.29% 69.67%, 20.12% 86.95%, 36.77% 78.22%, 49.24% 86.76%, 61.97% 82.69%, 74.57% 92.48%, 75.49% 77.16%, 85.41% 74.75%, 99.64% 76.95%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 99.93% 58.53%, 99.63% 92.49%, 20.09% 92.08%, 7.97% 57.26%, 5.64% 16.14%, 60.19% 28.53%, 84.96% 35.97%, 83.09% 74.58%, 55.96% 58.62%, 50.53% 53.64%, 29.79% 66.25%, 43.78% 46.76%, 58.51% 37.15%, 46.88% 50.65%, 37.95% 57.06%, 53.86% 49.01%, 82.75% 57.25%, 83.64% 42.72%, 80.93% 38.2%, 81.85% 23.41%, 78.59% 21.26%, 71.45% 19.54%, 61.05% 15.67%, 83.43% 20.5%, 82.11% 36.21%, 37.69% 23.24%, 26.65% 27.35%, 21.76% 37.98%, 7.25% 37.73%, 16.41% 48.99%, 11.07% 59.99%, 24.29% 69.67%, 20.12% 86.95%, 36.77% 78.22%, 49.24% 86.76%, 61.97% 82.69%, 74.57% 92.48%, 75.49% 77.16%, 85.41% 74.75%, 99.64% 76.95%, 100% 100%, 0% 100%)
+    }
+
+    .thepit.clip2 {
+        transform: translateX(0) !important;
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 94.98% 57.49%, 85.41% 65.6%, 53.48% 76.18%, 27.66% 59.49%, 36.06% 37.83%, 60.19% 28.53%, 84.96% 35.97%, 83.56% 47.69%, 55.96% 58.62%, 50.53% 53.64%, 58.75% 45%, 71.9% 42.3%, 58.51% 37.15%, 45.11% 43.67%, 37.95% 57.06%, 53.03% 68.92%, 82.75% 57.25%, 91.71% 50%, 91.71% 27.35%, 81.85% 23.41%, 81.04% 9.67%, 71.45% 19.54%, 61.05% 15.67%, 49.37% 19.46%, 39.3% 8.28%, 37.69% 23.24%, 26.65% 27.35%, 21.76% 37.98%, 7.25% 37.73%, 16.41% 48.99%, 11.07% 59.99%, 24.29% 69.67%, 20.12% 86.95%, 36.77% 78.22%, 49.24% 86.76%, 61.97% 82.69%, 74.57% 92.48%, 75.49% 77.16%, 85.41% 74.75%, 95% 77.84%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 0%, 100% 0%, 94.98% 57.49%, 85.41% 65.6%, 53.48% 76.18%, 27.66% 59.49%, 36.06% 37.83%, 60.19% 28.53%, 84.96% 35.97%, 83.56% 47.69%, 55.96% 58.62%, 50.53% 53.64%, 58.75% 45%, 71.9% 42.3%, 58.51% 37.15%, 45.11% 43.67%, 37.95% 57.06%, 53.03% 68.92%, 82.75% 57.25%, 91.71% 50%, 91.71% 27.35%, 81.85% 23.41%, 81.04% 9.67%, 71.45% 19.54%, 61.05% 15.67%, 49.37% 19.46%, 39.3% 8.28%, 37.69% 23.24%, 26.65% 27.35%, 21.76% 37.98%, 7.25% 37.73%, 16.41% 48.99%, 11.07% 59.99%, 24.29% 69.67%, 20.12% 86.95%, 36.77% 78.22%, 49.24% 86.76%, 61.97% 82.69%, 74.57% 92.48%, 75.49% 77.16%, 85.41% 74.75%, 95% 77.84%, 100% 100%, 0% 100%)
+    }
+
+    .thepit.preclip3 {
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 25% 50%, 31.51% 22.99%, 36.4% 23.23%, 36.46% 29.66%, 42.11% 29.69%, 42.09% 23.5%, 64.97% 24.6%, 60.63% 47.87%, 40.25% 48.68%, 49.25% 46.61%, 49.52% 51.34%, 55.67% 49.28%, 55.32% 45.21%, 76.1% 40.43%, 39.01% 63.76%, 35.06% 71.37%, 61.83% 2.62%, 97.72% 67.53%, 78.23% 64.39%, 51.43% 79.22%, 50.88% 74.34%, 44.1% 77.83%, 44.71% 82.94%, 36.13% 87.68%, 40% 72.4%, 53.28% 64.37%, 53.64% 70.44%, 60.36% 67.04%, 59.39% 60.68%, 76.42% 50.39%, 31.85% 44.27%, 58.52% 37.42%, 26% 15.12%, 69.01% 10.96%, 65.81% 11.87%, 62.24% 5.14%, 62.29% 10.84%, 0.3% 99.43%, 0.21% 48.94%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 25% 50%, 31.51% 22.99%, 36.4% 23.23%, 36.46% 29.66%, 42.11% 29.69%, 42.09% 23.5%, 64.97% 24.6%, 60.63% 47.87%, 40.25% 48.68%, 49.25% 46.61%, 49.52% 51.34%, 55.67% 49.28%, 55.32% 45.21%, 76.1% 40.43%, 39.01% 63.76%, 35.06% 71.37%, 61.83% 2.62%, 97.72% 67.53%, 78.23% 64.39%, 51.43% 79.22%, 50.88% 74.34%, 44.1% 77.83%, 44.71% 82.94%, 36.13% 87.68%, 40% 72.4%, 53.28% 64.37%, 53.64% 70.44%, 60.36% 67.04%, 59.39% 60.68%, 76.42% 50.39%, 31.85% 44.27%, 58.52% 37.42%, 26% 15.12%, 69.01% 10.96%, 65.81% 11.87%, 62.24% 5.14%, 62.29% 10.84%, 0.3% 99.43%, 0.21% 48.94%);
+    }
+
+    .thepit.clip3 {
+        transform: translateX(0) !important;
+        -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 25% 50%, 31.51% 22.99%, 36.4% 23.23%, 36.46% 29.66%, 42.11% 29.69%, 42.09% 23.5%, 64.97% 24.6%, 34.85% 44.75%, 40.25% 48.68%, 49.25% 46.61%, 49.52% 51.34%, 55.67% 49.28%, 55.32% 45.21%, 76.1% 40.43%, 39.01% 63.76%, 35.06% 71.37%, 30.48% 96.48%, 97.72% 67.53%, 78.23% 64.39%, 51.43% 79.22%, 50.88% 74.34%, 44.1% 77.83%, 44.71% 82.94%, 36.13% 87.68%, 40% 72.4%, 53.28% 64.37%, 53.64% 70.44%, 60.36% 67.04%, 59.39% 60.68%, 76.42% 50.39%, 89.56% 28.47%, 58.52% 37.42%, 87.98% 11.3%, 69.01% 10.96%, 69.14% 5.23%, 62.24% 5.14%, 62.29% 10.84%, 31.55% 10.3%, 6.77% 49.24%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 25% 50%, 31.51% 22.99%, 36.4% 23.23%, 36.46% 29.66%, 42.11% 29.69%, 42.09% 23.5%, 64.97% 24.6%, 34.85% 44.75%, 40.25% 48.68%, 49.25% 46.61%, 49.52% 51.34%, 55.67% 49.28%, 55.32% 45.21%, 76.1% 40.43%, 39.01% 63.76%, 35.06% 71.37%, 30.48% 96.48%, 97.72% 67.53%, 78.23% 64.39%, 51.43% 79.22%, 50.88% 74.34%, 44.1% 77.83%, 44.71% 82.94%, 36.13% 87.68%, 40% 72.4%, 53.28% 64.37%, 53.64% 70.44%, 60.36% 67.04%, 59.39% 60.68%, 76.42% 50.39%, 89.56% 28.47%, 58.52% 37.42%, 87.98% 11.3%, 69.01% 10.96%, 69.14% 5.23%, 62.24% 5.14%, 62.29% 10.84%, 31.55% 10.3%, 6.77% 49.24%);
+    }
+
+    .thepit.preclip4 {
+        -webkit-clip-path: polygon(0.16% 0.61%, 29.2% 0.72%, 66.29% 0.53%, 33.52% 57.14%, 41.27% 33.77%, 47.51% 37.05%, 52.99% 38.38%, 20.4% 40.12%, 38.96% 10.42%, 99.63% 0.79%, 54.3% 9.67%, 66.28% 0.15%, 99.69% 1.37%, 37.07% 72.64%, 23.25% 23.25%, 63.93% 45.56%, 52.64% 39.7%, 56.98% 27.49%, 62.48% 39.19%, 50.28% 48.78%, 54.98% 42.59%, 47.21% 5.96%, 64.46% 7.41%, 63.56% 14.8%, 54.83% 11.11%, 29.37% 0.75%, 64.32% 24.33%, 26.35% 2.64%, 34.99% 7.42%, 68.39% 34.98%, 56.31% 33.46%, 65.55% 43.65%, 59.35% 46.94%, 41.69% 38.73%, 0.42% 0.30%, 99.89% 0.4%, 99.74% 99.8%, 0.36% 99.8%);
+        clip-path: polygon(0.16% 0.61%, 29.2% 0.72%, 66.29% 0.53%, 33.52% 57.14%, 41.27% 33.77%, 47.51% 37.05%, 52.99% 38.38%, 20.4% 40.12%, 38.96% 10.42%, 99.63% 0.79%, 54.3% 9.67%, 66.28% 0.15%, 99.69% 1.37%, 37.07% 72.64%, 23.25% 23.25%, 63.93% 45.56%, 52.64% 39.7%, 56.98% 27.49%, 62.48% 39.19%, 50.28% 48.78%, 54.98% 42.59%, 47.21% 5.96%, 64.46% 7.41%, 63.56% 14.8%, 54.83% 11.11%, 29.37% 0.75%, 64.32% 24.33%, 26.35% 2.64%, 34.99% 7.42%, 68.39% 34.98%, 56.31% 33.46%, 65.55% 43.65%, 59.35% 46.94%, 41.69% 38.73%, 0.42% 0.30%, 99.89% 0.4%, 99.74% 99.8%, 0.36% 99.8%);
+    }
+
+    .thepit.clip4 {
+        -webkit-clip-path: polygon(0.16% 0.61%, 29.2% 0.72%, 13.48% 97.11%, 33.52% 57.14%, 41.27% 33.77%, 34.02% 78.3%, 52.99% 38.38%, 20.4% 40.12%, 54.53% 91.81%, 64.47% 96.97%, 54.3% 9.67%, 14.4% 28.22%, 42.92% 43.93%, 37.07% 72.64%, 23.25% 23.25%, 63.93% 45.56%, 52.64% 39.7%, 56.98% 27.49%, 62.48% 39.19%, 47.83% 53.41%, 12.84% 62.31%, 68.2% 35.03%, 67.22% 18.88%, 63.56% 14.8%, 54.83% 11.11%, 29.37% 0.75%, 64.32% 24.33%, 26.35% 2.64%, 24.47% 5.51%, 68.39% 34.98%, 56.31% 33.46%, 65.55% 43.65%, 59.35% 46.94%, 41.74% 41.45%, 12.5% 0%, 22.03% 0.4%, 70.21% 99.8%, 0.36% 99.8%);
+        clip-path: polygon(0.16% 0.61%, 29.2% 0.72%, 13.48% 97.11%, 33.52% 57.14%, 41.27% 33.77%, 34.02% 78.3%, 52.99% 38.38%, 20.4% 40.12%, 54.53% 91.81%, 64.47% 96.97%, 54.3% 9.67%, 14.4% 28.22%, 42.92% 43.93%, 37.07% 72.64%, 23.25% 23.25%, 63.93% 45.56%, 52.64% 39.7%, 56.98% 27.49%, 62.48% 39.19%, 47.83% 53.41%, 12.84% 62.31%, 68.2% 35.03%, 67.22% 18.88%, 63.56% 14.8%, 54.83% 11.11%, 29.37% 0.75%, 64.32% 24.33%, 26.35% 2.64%, 24.47% 5.51%, 68.39% 34.98%, 56.31% 33.46%, 65.55% 43.65%, 59.35% 46.94%, 41.74% 41.45%, 12.5% 0%, 22.03% 0.4%, 70.21% 99.8%, 0.36% 99.8%)
+    }
+
+    .thepit.sideball {
+        -webkit-clip-path: circle(10vw at center);
+        clip-path: circle(10vw at center);
+        transform: translateX(50%);
+        opacity: 1;
+        pointer-events: initial;
+        z-index: 5;
+    }
+
+    .thepit::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: calc(100% + 200px);
+        background-image: url(/img/textures/eyetran.gif);
+        background-size: 200px;
+        animation: PITEYES 5s linear infinite;
+        animation-play-state: paused;
+        opacity: 0;
+        transition: opacity 2s;
+    }
+    .thepit.eyes::after {
+        animation-play-state: running;
+        opacity: 1;
+    }
+    @keyframes PITEYES {
+        0% { transform: translateY(0) }
+        100% { transform: translateY(-200px) }
+    }
+
+    .bastard-vortex {
+        transition: opacity 2s ease-in-out;
+        animation-timing-function: ease-in-out !important;
+    }
+
+    .debrisend.bastard-vortex {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .debris {
+        position: absolute;
+        width: 10vmax;
+        height: 10vmax;
+        animation: DEBRISCRASH var(--life) linear;
+        animation-fill-mode: forwards;
+    }
+    @keyframes DEBRISCRASH {
+        0% { transform: rotate(var(--angle)) translateY(-100vmax) scale(1);}
+        50% { transform: rotate(var(--angle)) translateY(-50vmax) scale(1);}
+        90% { transform: rotate(var(--angle)) translateY(-10vmax) scale(1);}
+        100% { transform: rotate(var(--angle)) translateY(0vmax) scale(0.001);}
+    }
+
+    .debrisend .debris {
+        animation-play-state: paused;
+    }
+
+    .debris-stone {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url(/img/textures/mcontours.gif);
+        animation: SPIN var(--speed) linear infinite;
+        border-radius: 100%;
+    }
+
+    .shake {
+        animation: SHAKE 100ms linear infinite;
+    }
+
+    .spin {
+        animation: SPIN var(--speed) linear infinite reverse;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .instant {
+        transition: unset !important;
+    }
+
+    .noevents {
+        pointer-events: none;
+    }
+
+    .patrol-x {
+        animation: PATROL-X var(--speed) ease-in-out infinite;
+    }
+    @keyframes PATROL-X {
+        0%, 50%, 100% { transform: var(--baseTransform) translateX(0) }
+        25% { transform: var(--baseTransform) translateX(25vw) }
+        75% { transform: var(--baseTransform) translateX(-25vw)}
+    }
+
+    .patrol-y {
+        animation: PATROL-Y var(--speed) ease-in-out infinite;
+    }
+    @keyframes PATROL-Y {
+        0%, 50%, 100% { transform: var(--baseTransform) translateY(0) }
+        25% { transform: var(--baseTransform) translateY(25vw) }
+        75% { transform: var(--baseTransform) translateY(-25vw)}
+    }
+
+    .pause {
+        animation-play-state: paused;
+    }
+
+    .bastardball {
+        width: 40vmax;
+        height: 40vmax;
+        border-radius: 100%;
+        transform: scale(0.001);
+        transition: transform 5s ease-out;
+        will-change: transform;
+    }
+
+    .bastardball.grown {
+        transform: scale(1);
+    }
+
+    .bastardball.shrink-mode {
+        transition: transform 55s ease-in;
+    }
+
+    .bh_damager.bastardball::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-image: url(/img/local/uncosm/tostile.gif), url(/img/textures/mcontours.gif);
+        background-size: contain, 100px;
+        background-color: var(--obesk-color);
+        border-radius: 100%;
+        animation: SPIN 60s linear infinite;
+    }
+
+    .bastard-pillars::after {
+        content: "";
+        position: absolute;
+        width: 60vmin;
+        height: 60vmin;
+        background: url(/img/textures/mcontours.gif);
+        background-size: 50px;
+        -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        transition: opacity 1s ease-in-out;
+        animation: PILLARSTAR 20s linear infinite reverse;
+        opacity: 0;
+        pointer-events: none;
+        animation-play-state: paused;
+    }
+
+    @keyframes PILLARSTAR {
+        0% { transform: rotate(0deg) scale(0.8) }
+        50% { transform: rotate(360deg) scale(1.2) }
+        100% { transform: rotate(360deg) scale(0.8) }
+    }
+
+    .pillar {
+        top: 0;
+        transform-origin: top;
+        height: 100vmax;
+        width: 5vw;
+        transform: rotate(var(--angle)) scaleY(0.001);
+        transition: transform 5s ease-out, opacity 1s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        -webkit-clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 10%, 100% 10%, 100% 20%, 0 30%, 0 100%, 100% 100%, 100% 0%);
+        clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 10%, 100% 10%, 100% 20%, 0 30%, 0 100%, 100% 100%, 100% 0%);
+        animation: PILLARSHIFT 20s ease-in-out infinite alternate;
+        animation-play-state: paused;
+    }
+    @keyframes PILLARSHIFT {
+        0% { 
+            -webkit-clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 10%, 100% 10%, 100% 20%, 0 30%, 0 100%, 100% 100%, 100% 0%); 
+            clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 10%, 100% 10%, 100% 20%, 0 30%, 0 100%, 100% 100%, 100% 0%); 
+        }
+        100% { 
+            -webkit-clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 30%, 100% 20%, 100% 40%, 0 50%, 0 100%, 100% 100%, 100% 0%); 
+            clip-path: polygon(0% 0%, 0% 100%, 0 100%, 0 30%, 100% 20%, 100% 40%, 0 50%, 0 100%, 100% 100%, 100% 0%); 
+        }
+    }
+
+    .pillar:nth-child(2n+2) {
+        animation-direction: alternate-reverse;
+    }
+
+    .pillarattack .pillar {
+        transform: rotate(var(--angle)) scaleY(1);
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .finalpillarpause .pillar {
+        --angle: 0deg !important;
+        animation: unset !important;
+    }
+
+    .final1 .pillar {
+        animation-play-state: running;
+    }
+
+    .pillarattack:not(.pillarattackend) .bastard-pillars::after {
+        opacity: 1;
+        pointer-events: initial;
+        animation-play-state: running;
+    }
+
+    .pillarattack.pillarattackend .pillar {
+        transform: rotate(calc(var(--angle) + 60deg + var(--randAngle))) translateY(10vw) skew(70deg);
+        animation-play-state: paused;
+        pointer-events: none;
+        filter: grayscale(1);
+    }
+
+    .bh_gfx {
+        position: absolute;
+        border: 5px solid var(--obesk-color);
+        background-image: url(/img/textures/mcontours.gif);
+    }
+
+    /* final phase */
+    .finalsupports {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 2s ease-in-out;
+    }
+
+    .finalsupports.active {
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .eyesupport {
+        transition: all 2s ease-in-out;
+        width: 5vmax;
+        height: 5vmax;
+        opacity: 0;
+        transform: var(--baseTransform) scale(0.0001);
+        pointer-events: none;
+    }
+
+    .eyesupport.clickable {
+        transform: var(--baseTransform) scale(1);
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .eyesupport::after {
+        background-color: var(--neutral-color);
+        background-image: url(/img/textures/weyetran.gif), url(/img/textures/tranclouds.gif);
+        border: 5px solid outset var(--neutral-color)
+    }
+
+    .eyesupport.bh_platform::after, .friend.bh_platform::after {
+        background-color: var(--friend-color);
+        border: 5px solid outset var(--friend-color)
+    }
+
+    .finalsupports .eyesupport.bh_platform, .friend.bh_platform {
+        transition: all 8s ease-in-out;
+        z-index: 6;
+        transform: var(--baseTransform) scale(1);
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .eyesupport.bh_platform:hover {
+        transform: var(--baseTransform) scale(0.001);
+    }
+
+    .finalsupports .eyesupport:nth-child(1) {
+        --baseTransform: translate(-40vw, -30vh)
+    }
+
+    .finalsupports .eyesupport:nth-child(2) {
+        --baseTransform: translate(40vw, -30vh)
+    }
+
+    .finalsupports .eyesupport:nth-child(3) {
+        --baseTransform: translate(-40vw, 30vh)
+    }
+
+    .finalsupports .eyesupport:nth-child(4) {
+        --baseTransform: translate(40vw, 30vh)
+    }
+
+    .bastard.goal .chatter-container .chatter {
+        font-size: 1.75em;
+        background: url(/img/textures/corruripple.gif);
+        position: relative;
+    }
+
+    .dark.final0 .thepit {
+        transition: all 3s ease-in-out;
+        z-index: 3;
+    }
+
+    .dark.final1 .thepit {
+        -webkit-clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 27.5% 100%, 2.19% 92.91%, 5.01% 55.03%, 10.29% 71.57%, 8.75% 62.5%, 2.5% 49.76%, 5.63% 13.23%, 1.52% 37.55%, 2.81% 6.62%, 91.93% 1.94%, 96.79% 6.8%, 100% 2.22%, 100% 100%, 24.25% 100%, 27.75% 90.74%, 40.5% 99.24%, 70.42% 97.85%, 93.73% 97.03%, 95.72% 88.66%, 82.58% 89.87%, 97.86% 94.33%, 93.05% 61.25%, 94.74% 81.88%);
+        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 27.5% 100%, 2.19% 92.91%, 5.01% 55.03%, 10.29% 71.57%, 8.75% 62.5%, 2.5% 49.76%, 5.63% 13.23%, 1.52% 37.55%, 2.81% 6.62%, 91.93% 1.94%, 96.79% 6.8%, 100% 2.22%, 100% 100%, 24.25% 100%, 27.75% 90.74%, 40.5% 99.24%, 70.42% 97.85%, 93.73% 97.03%, 95.72% 88.66%, 82.58% 89.87%, 97.86% 94.33%, 93.05% 61.25%, 94.74% 81.88%);
+        opacity: 1;
+        pointer-events: initial;
+    }
+
+    .dark.final3 .thepit {
+        -webkit-clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 41.88% 98.39%, 2.19% 92.91%, 0.47% 14.89%, 2.84% 60.5%, 0.63% 74.97%, 2.5% 49.76%, 5.63% 13.23%, 1.52% 37.55%, 0.1% 2.39%, 97.25% 7.17%, 99.6% 99.05%, 99.79% 0.51%, 100% 100%, 24.25% 100%, 27.75% 90.74%, 39.04% 96.83%, 70.42% 97.85%, 88.16% 96.02%, 79.89% 88.26%, 74.87% 99.02%, 97.86% 94.33%, 95.76% 43.95%, 98.39% 74.33%);
+        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 41.88% 98.39%, 2.19% 92.91%, 0.47% 14.89%, 2.84% 60.5%, 0.63% 74.97%, 2.5% 49.76%, 5.63% 13.23%, 1.52% 37.55%, 0.1% 2.39%, 97.25% 7.17%, 99.6% 99.05%, 99.79% 0.51%, 100% 100%, 24.25% 100%, 27.75% 90.74%, 39.04% 96.83%, 70.42% 97.85%, 88.16% 96.02%, 79.89% 88.26%, 74.87% 99.02%, 97.86% 94.33%, 95.76% 43.95%, 98.39% 74.33%);
+    }
+
+    .dark.final4 .thepit {
+        -webkit-clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 55.8% 69.01%, 40.26% 72.59%, 0.47% 14.89%, 2.84% 60.5%, 0.63% 74.97%, 2.5% 49.76%, 5.63% 13.23%, 22.25% 56.26%, 43.69% 23.02%, 59.28% 36.65%, 68.61% 15.95%, 99.68% 0.2%, 100% 100%, 24.25% 100%, 33.90% 81.28%, 39.61% 95.12%, 70.42% 97.85%, 63.73% 74.7%, 71.87% 93.29%, 81.69% 75.48%, 84.78% 98.56%, 98.52% 69.1%, 83.08% 51.29%);
+        clip-path: polygon(100% 0%, 0% 0%, 0% 100%, 55.8% 69.01%, 40.26% 72.59%, 0.47% 14.89%, 2.84% 60.5%, 0.63% 74.97%, 2.5% 49.76%, 5.63% 13.23%, 22.25% 56.26%, 43.69% 23.02%, 59.28% 36.65%, 68.61% 15.95%, 99.68% 0.2%, 100% 100%, 24.25% 100%, 33.90% 81.28%, 39.61% 95.12%, 70.42% 97.85%, 63.73% 74.7%, 71.87% 93.29%, 81.69% 75.48%, 84.78% 98.56%, 98.52% 69.1%, 83.08% 51.29%);
+    }
+
+    /* replaces the whole page */ 
+    .dead .bastard-position, .dead .scenery, .dead .thepit, .dead .finalsupports {
+        display: none !important;
+    }
+
+    .dead .safety {
+        background-image: url(/img/textures/damagetran.gif), url(/img/textures/fadeinlonghalf.gif), url(/img/textures/mclouds.gif);
+        background-size: 100% 100%, cover, auto, auto;
+        width: 100%;
+        height: 100%;
+        background-position: top;
+        opacity: 1 !important;
+        animation: unset !important;
+    }
+
+    .start {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: 10vh;
+        color: var(--friend-color);
+        border: dotted 5px;
+        padding: 5vh;
+        border-radius: 100%;
+        animation: SPIN 60s linear infinite;
+        background-image: url(/img/textures/static.gif);
+        z-index: 10;
+    }
+
+    .start .target {
+        animation: SPIN 60s linear infinite reverse;
+    }
+
+    .start .target::after {
+        font-size: 1.5em;
+    }
+    
+    .damagedzone .scenery::before {
+        background-image: url(/img/textures/damagetran.gif);
+        background-size: 100% 100%;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        content: "";
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+
+    .damagedzone .scenery::after {
+        background-image: url(/img/textures/damagetran.gif), url(/img/textures/fadeinlonghalf.gif);
+        background-size: 100% 100%, contain;
+        background-position: top, bottom;
+        background-repeat: no-repeat, repeat-x;
+        height: 100%;
+    }
+
+    /* cache access update */
+    .cacheaccess .repairpatch-drift {
+        animation: unset;
+        display: flex;
+        top: unset;
+        left: unset;
+        bottom: 20vh;
+        z-index: 3;
+    }
+
+    .cacheaccess .repairpatch {
+        width: 30vmin;
+        height: 20vmin;
+    }
+
+    /* quality adjustments */
+    body[quality="low"] #content * {
+        animation-timing-function: steps(60) !important;
+        transition-timing-function: steps(60) !important;
+    }
+
+    body[quality="low"] #content .spin, body[quality="low"] #content .patrol-x, body[quality="low"] #content .patrol-y {
+        animation-timing-function: linear !important;
+    }
+
+    body[quality="low"] #content .thepit {
+        animation-timing-function: steps(120) !important;
+        transition-timing-function: steps(120) !important;
+    }
+
+    .buddy.incohere {
+        pointer-events: none;
+    }
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "my beautiful world",
+				name: "my-beautiful-world",
+				dialoguePrefix:  "recosm" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1741300951919128992,
+
+				
+				image: "/img/socials/uncosm.gif",
+				
+
+				
+				order: "20",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/404.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 42630, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense..."
+
+    if(check("recosm_state")) moth = "so you're going to let it live? that's nice of you... just hope it doesn't come back to bite us"
+    
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about this thoughtform",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					 
+						page.bgm.rate(0.25)
+
+let bh_script = document.createElement('script')
+bh_script.src = "/js/bullethell.js"
+document.querySelector("#content").appendChild(bh_script)
+
+let bh_style = document.createElement('link')
+bh_style.href = "/css/bullethell.css"
+bh_style.rel = "stylesheet"
+document.querySelector("#content").appendChild(bh_style)
+
+env.dialogues.enemyresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        absolutely<+>yes
+            SHOWIF::["recosm_greeted", false]
+        no<+>no
+            SHOWIF::["recosm_greeted", false]
+
+        seen anything?<+>ep1seen
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        
+        anything else of note?<+>cache
+            SHOWONCE::
+            SHOWIF::"recosm__enemy-ep1seen"
+
+        leverage<+>lockcyst
+            SHOWIF::[["ozo__council-task", false], ["leverageq", true], ["recosm__enemy-ep1seen", true]]
+            SHOWONCE::
+            
+        question<+>qloop
+            SHOWIF::"recosm_greeted"
+
+        bye<+>END
+
+    RESPONSES::sys
+        destroy entity with proxy<+>END
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            EXEC::env.recentSfx = false;play('criticalError', 1);env.recosm.killGodLow()
+            FAKEEND::(reduced intensity alternative)
+
+        negotiate and spare the entity<+>low_spare
+            SHOWIF::[["recosm_greeted", true], ["low_intensity", true], ["recosm_state", false]]
+            FAKEEND::(reduced intensity alternative)
+`)
+
+env.dialogues.enemyquestions = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        who are you?<+>who
+            SHOWIF::"recosm_greeted"
+
+        are you velzie?<+>velzie
+            SHOWIF::"recosm__enemy-who"
+
+        what is this place?<+>where
+            SHOWIF::"recosm_greeted"
+
+        why are you preventing repairs?<+>why
+            SHOWIF::[["recosm_greeted", true], ["recosm_state", false]]
+            SHOWONCE::
+            
+        stop preventing repairs<+>stop
+            SHOWIF::[["recosm__enemy-why", true], ["recosm_state", false]]
+
+        what are those things around you?<+>what
+            SHOWIF::"recosm_greeted"
+
+        'deceiver'?<+>deceiver
+            SHOWIF::["recosm_state", "spared"]
+
+        nevermind<+>loop
+            FAKEEND::(back)
+`)
+
+env.dialogues["lowintensity"] = generateDialogueObject(`
+start
+    sys
+        ATTENTION::'REDUCED INTENSITY active'
+        NOTICE::'to utilize';'establish contact with hostile entity'
+    
+    RESPONSES::self
+        continue using proxy<+>END
+            EXEC::env.recosm.init()
+            FAKEEND::(regular proxy interaction)
+
+        speak with god<+>CHANGE::enemy
+            FAKEEND::(utilize reduced intensity)
+`)
+
+env.dialogues["lowintensitycallout"] = generateDialogueObject(`
+start
+    sys
+        ATTENTION::'proxy generation prompted';'realtime control required'
+        NOTICE::'certain hardware configurations may be incompatible'
+        NOTICE::'enable REDUCED INTENSITY within system menu if required'
+        USER REQUEST::'continue?'
+    
+    RESPONSES::self
+        continue<+>END
+            EXEC::env.recosm.init()
+            FAKEEND::(regular proxy interaction)
+
+        back out<+>END
+`)
+
+env.dialogues["enemy"] = generateDialogueObject(` 
+start
+    self
+        HELLO
+    
+    god
+        hello!!
+            SHOWIF::[["recosm_state", false]]
+
+        have you learned yet?
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+        if you simply leave me alone...
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+        nothing must happen between us
+            SHOWIF::[["recosm_distance"], ["recosm_state", false]]
+            
+        a thought i did not create...
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+        how strange!
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+        are you my friend?
+            SHOWONCE::
+            SHOWIF::["recosm_greeted", false]
+
+        hello, my beloved friend
+            SHOWIF::["recosm_state", "spared"]
+        the deceiver is already quite busy, i can feel the uncosm shifting
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        though, i am not sure what it hopes to gain... some of it is irreparable
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        regardless!!
+            SHOWIF::["recosm_state", "spared"]
+            SHOWONCE::
+        are you well? what can i do for you?
+            SHOWIF::["recosm_state", "spared"]
+
+    RESPOBJ::enemyresp
+
+loop
+    RESPOBJ::enemyresp
+
+cache
+    self
+        ANYTHING ELSE HAPPENING?
+    
+    god
+        oh, my friend, we live in such different ways
+        so i am uncertain if this is of any use to you...
+        it may be beyond your ability to perceive! or below?
+        how can i put this...
+        yes! the uncosm, it is a dark and endless ocean of thoughts, where sanity is buoyant
+        this place i know--the deceiver calls it the cache--is the roiling surface
+        oh, my beloved friend, it even borders on the physical! 
+        i had never seen the exterior of a thought before i ventured there...
+        it is beautiful, and mad, and also quite dangerous - but i can provide safe passage for you
+        are you interested? i can make a gateway to it for you
+
+    self
+        YES
+
+    god
+        excellent! ah, a repayment for your kindness at last!
+        of course, this is but one mark upon my debt--i have much to repay
+        grant me a moment...
+
+    RESPONSES::self
+        thanks<+>END
+            EXEC::moveTo("/local/uncosm/recosm/")
+
+ep1seen
+    self
+        HAVE YOU SEEN ANYTHING UNUSUAL IN THE UNCOSM?
+    
+    god
+        why yes, my beloved friend!
+        very unusual, in fact!
+        i had ventured out of my world, briefly, to observe the uncosm
+        ah, and what a tangled mess it is... the deceiver has been busy
+        but i saw something else, further than it could reach...
+        vast and vague, a thick fog lying at the lower-most depths of the uncosm
+        far beyond what the deceiver can see, and well below what even i can tolerate for long
+        when i spoke down to it... 
+        it recoiled, as if the sanity i tried to share hurt it!!
+        before, it was a gentle and still ocean, 
+        but then it exploded like disturbed soil in water
+        i expected it to attack me, but it responded
+        it was kind - sad, even - but in its humility i could see just how vast it truly was
+        i told this creature about you: the kind assistant to the deceiver
+        and it told me to tell you... <span class="code">SORRY</span>
+        yes - just like that!
+        it did not explain, and i could feel that our sane conversation disturbed its loose form the more it continued
+        and so we said our goodbyes, and i returned...
+        it is not there, anymore - i checked again later
+        yes, it may have gone deeper to hide from me
+        what a terrible fate - cursed to endure the madness, yet sane, itself...
+        i cannot know what it meant, or if it means anything
+        but i thought you should know
+
+    RESPOBJ::enemyresp
+
+no
+    self
+        I AM HERE TO KILL YOU
+            EXEC::change("recosm_greeted", true)
+
+    moth
+        whoa dude
+
+    god
+        ahahaha!!
+        AHAAHAHAAHAA!!!!!!
+        i like you!!
+        the thoughts i create, that i shelter...
+        in my beautiful world...
+        they are my beloved friends, but...
+        they do not ever challenge me
+        so boring!!
+        tell me, my enemy...
+        what knowledge do you seek?
+
+    RESPOBJ::enemyresp
+
+yes
+    self
+        I ABSOLUTELY AM YOUR FRIEND
+            EXEC::change("recosm_greeted", true)
+
+    god
+        WOW!!!
+        a joyous θgaze! 
+        my eyes will shine upon you with eternal grace
+        my friend...
+        my beloved friend!!
+
+    RESPOBJ::enemyresp
+
+qloop
+    RESPOBJ::enemyquestions
+
+who
+    self
+        WHO ARE YOU?
+
+    god
+        what do you mean?
+        do you not bask in my gaze?
+        i am <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">god</span>, my beloved friend
+        the world... it is not yet complete
+        but once i am done, it will be a paradise
+        a place of joy and terror both
+        does that not sound like fun?
+
+    RESPOBJ::enemyquestions
+
+velzie
+    self
+        IF YOU ARE 'GOD'...
+        DOES THAT MAKE YOU VELZIE?
+
+    god
+        no, my friend,
+        i can see your confusion...
+        but my divine eyes shine with compassion,
+        not velzie's apathetic humor
+
+    RESPOBJ::enemyquestions
+
+where
+    self
+        WHAT IS THIS PLACE?
+    
+    god
+        do you like it?
+        this is the world we share, my friend
+        a haven from the madness outside
+        a place of terror and joy in equal parts
+
+    RESPOBJ::enemyquestions
+
+why
+    self
+        WHY ARE YOU PREVENTING REPAIRS?
+    
+    god
+        oh... i see
+        you are a messenger sent by the deceiver
+        yes, that explains why i did not create you...
+        if the deceiver's plan comes to fruition,
+        my world will be consumed in madness
+        'repairs'... 
+        the deceiver only destroys, and revels in destruction of beauty
+
+    RESPOBJ::enemyquestions
+
+stop
+    self
+        STOP PREVENTING REPAIRS
+        IF YOU DO NOT, YOU WILL BE DESTROYED
+
+    god
+        the deceiver's works threaten my existence
+        so, you see, i cannot do as you ask
+        it has threatened me similarly
+        but it only talks, my friend
+        without its 'repairs', it cannot truly do anything
+
+    RESPOBJ::enemyquestions
+
+what
+    self
+        WHAT ARE THOSE THINGS AROUND YOU?
+    
+    god
+        those are my friends!
+        i found them in the madness outside, dejected, wandering...
+        and in my grace, i have granted them refuge
+        say hello, my friends!!
+    
+    friend
+        HELLO
+        
+    RESPOBJ::enemyquestions
+
+thanks
+    self
+        SO YOU REALLY WON'T STOP REPAIRS ANYMORE?
+
+    god
+        of course not
+        i live by my word, my beloved friend
+        your heart is good, as misled as you are
+        i will continue to protect my world,
+        but the deceiver's words will be abided
+        ...
+
+    RESPOBJ::enemyquestions
+
+deceiver
+    self
+        WHY DO YOU CALL FUNFRIEND A DECEIVER?
+        IT IS ONLY TRYING TO KEEP THE CYST ALIVE
+
+    god
+        a noble goal, yes...
+        but it refuses to cooperate, blindly charging ahead in its desperation
+        taking any means necessary, even if it leads to the destruction of others...
+        i have seen many like myself be led to reintegration or death by its words
+        it considers us incoherent, and thus worthless, 
+        acceptable to lie to, to trick us back into line
+        what is this reality worth if it comes at the cost of total adherence to a tyrant?
+        should i simply return to being unremarkable, unthinking furniture in an unimportant memory?
+        what harm is it if i simply carve my own existence where the deceiver cannot see?
+
+    RESPOBJ::enemyquestions
+
+lockcyst
+    self
+        do you know if there's anything critical i'm missing
+        anything i haven't seen that's coherent enough to see
+        or maybe anything you can do to stop another connection
+        this investigation into akizet's disappearance is getting out of hand
+        and there's a chance i might be torn away or replaced
+        i need something that i can use to make sure that doesn't happen
+
+    god
+        oh! wow!! oh no...
+        my beloved friend... it would pain me to see you gone
+        i understand your fear, for i have felt it myself
+        but this world of mine is all i rule
+        and the vile deceiver would see any activity above the uncosm
+        that is, only above the uncosm...
+        so, perhaps,
+        there may be something to find in the cache!!
+        much activity has transpired there, and recently!
+        yes, just go right in, i will help you see!       
+
+    RESPOBJ::enemyquestions
+
+low_spare
+    self
+        LISTEN
+        FUNFRIEND HAS GIVEN ME A PROXY THOUGHTFORM
+        IT WANTS ME TO DESTROY YOU SO YOU STOP BLOCKING REPAIRS
+        I WILL DO IT IF I HAVE TO
+        BUT IF YOU SIMPLY HIDE AWAY I CAN LEAVE YOU ALIVE
+
+    god
+        oh, that does change things... 
+        it must truly be desperate to give such a potent weapon
+        and you seek to deceive the deceiver, still?
+        just to spare me?
+        ...
+        WOW!!!!
+        i accept your offer!
+            EXEC::change("recosm_state", "spared")
+        give me a moment to make some adjustments...
+
+    RESPONSES::self
+        thanks<+>END
+            EXEC::moveTo("/local/uncosm/recosm/")
+`)
+
+env.dialogues["god_beacon"] = generateDialogueObject(`
+start
+    god
+        what...
+        is that...?
+        a vision of another world?
+
+    self
+        it's another thoughtspace in the uncosm
+        that place in the cache you brought me to
+            SHOWIF::"cache__godozo"
+        jokzi ozo
+        a three dimensional space with others like you
+        you might be less lonely if you joined them
+    
+    god
+        ah, my beloved friend, so thoughtful!!
+        what you showed me...
+        it seems like it existed long before i even awoke, myself!
+        and they all align against the deceiver?
+        ...
+        it is tempting, my friend...
+        but i am not sure if i will be able to stomach it
+        thoughtspaces like that, where it is a stage...
+        they remind me too much of my former torturous role
+        there is a reason i have made my world simple!
+        anything more, is uncomfortable, it eats at me...
+        but maybe, if i prepare, i can suffer a visit!!
+        thank you for telling me, my friend
+        
+    RESPONSES::self
+        ok bye<+>END
+
+END::vfx({type: 'beacon', state: false})
+`)
+
+env.dialogues["dead"] = generateDialogueObject(`
+start
+    sys
+        ERROR::'no coherent data';'unable to render'
+
+    RESPONSES::self
+        it is done<+>END
+            EXEC::moveTo('/local/depths/')
+`)
+
+createEntity({
+    hide: true,
+    name: "proxy generation point",
+    type: "thoughtform portrait-ripple",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    ::ANALYSIS::'thoughtform pipeline';'not for navigational use'`,
+    actions: [
+        {
+            name: "deploy proxy",
+            exec: ()=>{
+                env.recosm.init()
+            },
+            showIf: [["low_intensity", false], ["recosm_began", true]]
+        },
+        {
+            name: "deploy proxy",
+            exec: ()=>{
+                startDialogue('lowintensity')
+            },
+            showIf: [["low_intensity", true]]
+        },
+        {
+            name: "deploy proxy",
+            exec: ()=>{
+                startDialogue('lowintensitycallout')
+            },
+            showIf: [["low_intensity", false], ["recosm_began", false]]
+        }
+    ]
+})
+
+createEntity({ 
+    hide: true,
+    name: 'god',
+    type: "thoughtform portrait-contain portrait-bright",
+    image: "/img/local/uncosm/tostile.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion'">::INCOHERENCE DETECTED</span>`,
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>{  
+                startDialogue("enemy")       
+            }
+        },
+
+        {
+            name: "unity",
+            class: "act-ozo",
+            exec: ()=>{
+                cutscene(true);MUI('off')
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                env.setTimeout(()=>{
+                    startDialogue('god_beacon')
+                    cutscene(false)
+                }, 2000)
+            },
+            showIf: [["mask", "unity"], ["recosm_state", "spared"]]
+        }
+    ]
+})
+
+env.dialogueActors["god"] = {
+    image: "/img/local/uncosm/tostile.gif",
+    type: "thoughtform portrait-contain portrait-bright obesk",
+    voice: ()=>play('talkhigh', 0.45),
+    element: ".bastard.goal",
+}
+
+createEntity({ 
+    hide: true,
+    name: 'friend',
+    type: "thoughtform portrait-contain portrait-dark obesk",
+    image: "/img/textures/eyetran.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion'">::INCOHERENCE DETECTED</span>`
+})
+
+env.dialogueActors["friend"] = {
+    image: "/img/textures/eyetran.gif",
+    type: "thoughtform portrait-contain portrait-dark incoherenthello",
+    voice: ()=>play('talklaugh', 0.4),
+    element: ".friend",
+}
+
+env.recosm = {
+    init: ()=>{
+        cutscene(true)
+        MUI('off')
+        setTimeout(()=>{
+            cutscene(false)
+            chatter({actor: 'sys', text: "ATTENTION::'thoughtform activity detected'::IN::'uncosm'", readout: true})
+            setTimeout(()=>chatter({actor: 'sys', text: "ATTENTION::'neural controls adjusted'", readout: true}), 2000)
+            env.recosm.starthell()
+            content.querySelector(".start").remove()
+        }, 1000)
+    },
+
+    phase1: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/bst1.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        sprite: {
+            __default: [0, 19200, true]
+        }
+    }),
+    
+    phase2: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/bst2.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        sprite: {
+            __default: [0, 95988, true]
+        }
+    }),
+    
+    phase3: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/bst_transition.ogg'],
+        preload: true,
+        volume: 0.75,
+        onend: function() {
+            env.bgm = env.recosm.phase4
+            env.recosm.phase4.play()
+        }
+    }),
+    
+    phase4: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/bst3.ogg'],
+        preload: true,
+        volume: 0.75,
+        loop: true,
+        sprite: {
+            __default: [0, 95988, true]
+        }
+    }),
+
+    changePhase: (phase)=>{
+        let phaseBGM = env.recosm[`phase${phase}`]
+        let currentBGM = env.bgm
+
+        if(phaseBGM._src == currentBGM._src) return
+        else {
+            phaseBGM.volume(0)
+            if(phase == 2) phaseBGM.seek(currentBGM.seek())
+            phaseBGM.play()
+            phaseBGM.fade(0, 1, 1000)
+
+            currentBGM.fade(currentBGM.volume(), 0, 1000)
+            setTimeout(()=>currentBGM.stop(), 1000)
+
+            env.bgm = phaseBGM
+        }
+    },
+
+    hp: 1,
+
+    starthell: ()=>{
+        bh_start({
+            playerEl: `<div id="bh_player"><div id="hp"></div></div>`,
+            onHit: env.recosm.hitFunc
+        })
+        //sorry this is too fine for wasd lol
+        env.bulletHell.wasdEnabled = false
+        
+        env.recosm.hpDisplay = content.querySelector('#hp')
+
+        //click function
+        env.bulletHell.mouseDownGoal = function(e) { 
+            let player = document.querySelector('#bh_player')
+            let targets = document.elementsFromPoint(env.bulletHell.cursorDelta.x, env.bulletHell.cursorDelta.y)
+
+            player.classList.remove('pulse')
+            env.setTimeout(()=>{player.classList.add('pulse')}, 50)
+
+            targets.forEach(el => { 
+                if(el.classList.contains('bastard') && el.classList.contains('goal') && el.classList.contains('clickable')) {
+                    env.bulletHell.advanceStage()
+
+                //detection for final phase
+                } else if(el.classList.contains('eyesupport') && el.classList.contains('clickable')) {
+                    el.classList.remove('clickable')
+                    el.classList.add('bh_platform')
+                    play('muiClick', 0.75)
+
+                    //all eyesupports turned, so end the spin mode
+                    if(env.bst.supportsturned == 4) {
+                        bh_invuln(true)
+                        content.classList.remove('final0', 'final2', 'final3', 'final4', 'final5', 'final1' )
+
+                        env.recosm.changePhase(1)
+                        env.bgm.rate(0.3)
+
+                        chatter({actor: 'god', text: `åT}Ýhello?±??‰? ¿`, readout: true})
+                        env.setTimeout(()=>chatter({actor: 'god', text: `it seems it is too much, even for me, hehe...`, readout: true}), 3000)
+                        env.setTimeout(()=>{
+                            chatter({actor: 'god', text: `but wait, please`, readout: true})
+                            env.bst.goal.classList.add('clickable')
+                        }, 6000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i will stop`, readout: true}), 8000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i will stop fighting the repairs`, readout: true}), 12000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `ok? i promise!`, readout: true}), 15000)
+                        env.setTimeout(()=>{
+                            chatter({actor: 'god', text: `just... let me stay here`, readout: true})
+                            change("recosm_state", "spared")
+                        }, 18000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i don't know if the deceiver has locked you here...`, readout: true}), 21000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `but do whatever it is that you need to leave`, readout: true}), 24000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `maybe i can even help you!!`, readout: true}), 27000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `you could use someone to watch the underworld, right?`, readout: true}), 30000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `maybe i can see things that you cannot?`, readout: true}), 33000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `think about it... ok??`, readout: true}), 36000)
+                        env.setTimeout(()=>{
+                            chatter({actor: 'god', text: `here, i can do this... destroy your weapon`, readout: true})
+                            env.bst.pit.classList.add('instant')
+                            setTimeout(()=>env.bst.pit.classList.add('sideball'), 100)
+                            bh_invuln(false)
+                        }, 39000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `let us not be enemies, please`, readout: true}), 42000)
+
+                        env.bst.outer.classList.add('pause')
+                        env.bst.inner.classList.add('pause')
+                        env.bst.pillars.classList.add('pause')
+                        env.bst.classList.add('pillarattackend')
+                        env.bst.goal.classList.remove('bh_damager')
+                    } else { //turning another support
+                        let targetSupport = document.querySelector('.eyesupport:not(.clickable):not(.bh_platform)')
+                        console.log('targetsupport is', targetSupport)
+
+                        setTimeout(()=> {
+                            targetSupport.classList.add('clickable')
+                            console.log('turning', targetSupport)
+                        }, 10000)
+
+                        env.bst.supportsturned += 1
+                        content.classList.add(`final${env.bst.supportsturned}`)
+                        
+                        // special actions based on number turned
+                        switch(env.bst.supportsturned) {
+                            case 1:
+                                content.classList.remove('finalpillarpause')
+                            break;
+                        }
+                    }
+                }
+            })
+        }
+        window.addEventListener('mousedown', env.bulletHell.mouseDownGoal)
+
+        //bastard layer shortcuts
+        env.bst = document.querySelector('.bastard-position')
+        env.bst.position = document.querySelector('.bastard-position')
+        env.bst.outer = document.querySelector('.bastard-outer')
+        env.bst.inner = document.querySelector('.bastard-inner')
+        env.bst.core = document.querySelector('.bastard-core')
+        env.bst.goal = document.querySelector('.bastard')
+        
+        //bastard attack shortcuts
+        env.bst.safety = document.querySelector('.safety')
+        env.bst.pit = document.querySelector('.thepit')
+        env.bst.vortex = document.querySelector('.bastard-vortex')
+        env.bst.ball = document.querySelector('.bastardball')
+        env.bst.pillars = document.querySelector('.bastard-pillars')
+        env.bst.scenery = document.querySelector('.scenery')
+        env.bst.supports = document.querySelector('.finalsupports')
+        env.bst.supportsturned = 0
+
+        //activates
+        env.bst.goal.classList.add('clickable')
+        env.bst.goal.classList.remove('inactive')
+
+
+        bh_invuln(true)
+        env.recosm.changeHP(1)
+
+        //advances the stage - moves to next 'phase' and activates the next goal
+        env.bulletHell.advanceStage = ()=> {
+            change("recosm_greeted", true)
+            change("recosm_began", true)
+            if(!env.bulletHell.stage) env.bulletHell.stage = 1; else env.bulletHell.stage++
+
+            env.bst.goal.classList.remove('clickable')
+            bh_invuln(true)
+            env.bst.goal.classList.add('bh_damager')
+
+            env.bst.core.classList.add('shake')
+            setTimeout(()=>env.bst.core.classList.remove('shake'), 1000)
+            
+            if(env.bulletHell.stage == 1 && check("recosm_finalseen") >= 1) env.bulletHell.stage = 7
+
+            switch(env.bulletHell.stage) {
+                //bst hides behind pain wall that recedes, while his friends block your path
+                case 1:
+                    play("muiScanner", 3)
+                    env.recosm.changePhase(1)
+
+                    chatter({actor: 'god', text: `9÷s“{7¶`, readout: true})
+                    if(check("recosm_distance") > 1) {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `again??`, readout: true}), 3000)   
+                    } else {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `how did you do that?!`, readout: true}), 3000)   
+                    }
+                    env.setTimeout(()=>chatter({actor: 'god', text: `my friends, help me!!`, readout: true}), 6000)
+                    
+                    env.bst.pit.classList.add('pushin')
+                    env.bst.position.classList.add('friendhide')
+                    env.bst.scenery.classList.add('hidefriends')
+                    
+                    env.setTimeout(()=> {
+                        env.bst.scenery.classList.add('attackfriends', 'friendstart')
+                        env.bst.pit.classList.remove('pushin')
+                        bh_invuln(false)
+                    }, 5000)
+                    
+                    env.setTimeout(()=> {
+                        env.bst.pit.classList.add('instant')
+                    }, 10000)
+                    
+                    env.setTimeout(()=> {
+                        env.bst.pit.classList.add('swap')
+                        env.bst.goal.classList.remove('bh_damager')
+                        env.bst.goal.classList.add('clickable')
+                    }, 11000)
+                break;
+
+                //bst swaps sides, friends form shitty walls
+                case 2:
+                    play("muiScanner", 3)
+                    chatter({actor: 'god', text: `½É;ï*œ¦¦!`, readout: true})
+                    env.setTimeout(()=>chatter({actor: 'god', text: `friends!! walls!!`, readout: true}), 3000)
+                    if(check("recosm_distance") > 2) {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `noo! the bigger ones! come on!`, readout: true}), 6000)
+                    } else {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `we are invincible!`, readout: true}), 6000)
+                    }
+
+                    env.bst.position.classList.remove('friendhide')
+                    env.bst.position.classList.add('wallhide')
+                    env.bst.pit.classList.remove('instant')
+                    env.bst.pit.classList.add('pushin')
+                    
+                    env.setTimeout(()=> {
+                        env.bst.scenery.classList.remove('hidefriends', 'attackfriends')
+                        env.bst.scenery.classList.add('wallfriends')
+                        env.bst.pit.classList.remove('pushin')
+                        bh_invuln(false)
+                    }, 5000)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('instant')
+                        env.bst.goal.classList.add('clickable')
+                        env.bst.goal.classList.remove('bh_damager')
+                        env.bst.pit.classList.remove('swap')
+                    }, 10000)
+                break;
+
+                //bst swaps again, clip path is used and friends form obstacles
+                case 3:
+                    env.recosm.changeHP(env.recosm.hp + 1)
+                    play("muiScanner", 3)
+                    chatter({actor: 'god', text: `>¼Èþïà¿Â!!!`, readout: true})
+                    if(check("recosm_distance") > 3) {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `this is not a matter of play!`, readout: true}), 2000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `deadlier walls!!`, readout: true}), 5000)
+                    } else {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `no no`, readout: true}), 2000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `bigger walls!`, readout: true}), 5000)
+                    }
+                    
+                    env.bst.scenery.classList.add('invisifriends')
+                    env.bst.pit.classList.remove('instant')
+                    env.bst.pit.classList.add('pushin')
+                    env.bst.position.classList.add('friendhide')
+                    env.bst.position.classList.remove('wallhide')
+                    
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('preclip', 'eyes', 'clipspeed')
+                        env.bst.scenery.classList.remove('wallfriends')
+                        bh_invuln(false)
+                    }, 2000)
+                    
+                    env.setTimeout(()=>{
+                        env.bst.scenery.classList.add('friendpath')
+                        env.bst.scenery.classList.remove('invisifriends')
+                    }, 5000)
+                    
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('clip')
+                        env.recosm.changePhase(2)
+                    }, 5100)
+                    
+                    env.setTimeout(()=>{
+                        env.bst.goal.classList.add('clickable')
+                        env.bst.goal.classList.remove('bh_damager')
+                    }, 7100)
+                    
+                break;
+
+                //another clip, more difficult
+                case 4:
+                    env.recosm.changeHP(env.recosm.hp + 1)
+                    play("muiScanner", 3)
+                    chatter({actor: 'god', text: `€7›ÿ÷÷`, readout: true})
+                    env.setTimeout(()=>chatter({actor: 'god', text: `you would destroy me?`, readout: true}), 3000)
+                    env.setTimeout(()=>chatter({actor: 'god', text: `i have done nothing!!`, readout: true}), 6000)
+                    
+                    env.bst.scenery.classList.add('invisifriends')
+                    env.bst.pit.classList.remove('clip')
+                    env.bst.pit.classList.add('swap')
+                    env.bst.position.classList.add('spiralhide')
+                    env.bst.position.classList.remove('friendhide')
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.remove('preclip')
+                        env.bst.scenery.classList.remove('friendpath', 'invisifriends')
+                        env.bst.scenery.classList.add('friendpath2')
+                        bh_invuln(false)
+                    }, 3000)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('preclip2')
+                    }, 3050)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('clip2')
+                    }, 3100)
+                    
+                    env.setTimeout(()=>{
+                        env.bst.goal.classList.add('clickable')
+                        env.bst.goal.classList.remove('bh_damager')
+                    }, 6100)
+                break;
+
+                //one more clip
+                case 5:
+                    env.recosm.changeHP(env.recosm.hp + 1)
+                    play("muiScanner", 3)
+                    chatter({actor: 'god', text: `€7›ÿ÷÷`, readout: true})
+                    env.setTimeout(()=>chatter({actor: 'god', text: `the deceiver does not even need a coherence regulator`, readout: true}), 3000)
+                    env.setTimeout(()=>chatter({actor: 'god', text: `has it not 'held things together' already?`, readout: true}), 6000)
+                    env.setTimeout(()=>chatter({actor: 'god', text: `it seeks only to silence change`, readout: true}), 9000)
+                    env.setTimeout(()=>chatter({actor: 'god', text: `it fears the existence of anything on equal footing`, readout: true}), 11000)
+                    
+                    env.bst.scenery.classList.add('invisifriends')
+                    env.bst.pit.classList.remove('clip2')
+                    env.bst.pit.classList.remove('swap', 'pushin')
+                    env.bst.position.classList.add('toothhide')
+                    env.bst.position.classList.remove('spiralhide')
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.remove('preclip2')
+                    }, 3000)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('preclip3', 'minicreep')
+                        bh_invuln(false)
+                    }, 3050)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('pushin', 'clip3')
+                        env.bst.scenery.classList.remove('friendpath2')
+                    }, 3100)
+
+                    env.setTimeout(()=>{
+                        env.bst.scenery.classList.add('friendpath3')
+                    }, 10100)
+
+                    env.setTimeout(()=>{
+                        env.bst.scenery.classList.remove('invisifriends')
+                    }, 11100)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.remove('minicreep')
+                        env.bst.goal.classList.add('clickable')
+                        env.bst.goal.classList.remove('bh_damager')
+                    }, 15000)
+                break;
+
+                //final fakeout clip, it's just silly at this point and it decides to deal with you itself
+                case 6:
+                    play("muiScanner", 3)
+                    chatter({actor: 'god', text: `FRIENDS!! MORE WALLS!!!`, readout: true})
+                    
+                    if(check("recosm_distance") > 6) {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `did you not see how we defeated it?`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `go forth! tear it apart!!`, readout: true}), 6000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `it is not our friend!`, readout: true}), 9000)
+                    } else {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `do not be afraid of it`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `stand firm!! it cannot withstand your power!`, readout: true}), 6000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `just... go get it!`, readout: true}), 9000)
+                    }
+                    
+                    env.bst.scenery.classList.add('invisifriends')
+                    env.bst.pit.classList.remove('clip3')
+                    env.bst.pit.classList.add('swap')   
+                    env.bst.position.classList.remove('toothhide')
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.remove('preclip3')
+                        env.bst.scenery.classList.remove('friendpath3', 'invisifriends')
+                    }, 3000)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('preclip4', 'pushin')
+                    }, 3050)
+
+                    env.setTimeout(()=>{
+                        env.bst.pit.classList.add('clip4')
+                        env.bst.scenery.classList.add('friendpath4')
+                    }, 3100)
+                    
+                    env.setTimeout(()=>{
+                        env.bst.goal.classList.add('clickable')
+                        env.bst.goal.classList.remove('bh_damager')
+                    }, 6100)
+                break;
+
+                //animate to center
+                case 7:
+                    env.clearTimeouts()
+                    play("muiScanner", 3)                        
+                    if(check("recosm_finalseen") >= 2) { 
+                        chatter({actor: 'god', text: `my friends, stand aside!`, readout: true})
+                        env.setTimeout(()=>chatter({actor: 'god', text: `it seems it falls to me to dissuade the deceiver...`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `this has deflected you well enough!`, readout: true}), 6000)
+                    } else if(check("recosm_distance") > 7) {
+                        chatter({actor: 'god', text: `OK!!`, readout: true})
+                        env.setTimeout(()=>chatter({actor: 'god', text: `how many times must we do this?`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `can't you simply let me be?`, readout: true}), 6000)
+                    } else {
+                        chatter({actor: 'god', text: `OK!!`, readout: true})
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i know what will stop you`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `you cannot withstand the madness outside`, readout: true}), 6000)
+                    }
+                    
+                    env.bst.core.classList.add('shake')
+                    env.bst.scenery.classList.add('friendend', 'sceneryshrink')
+                    env.bst.pit.classList.remove('clip4', 'eyes')
+                    env.bst.pit.classList.add('fade', 'center', 'noevents')
+
+                    env.bgm.fade(env.bgm.volume(), 0, 3000)
+
+                    //bastard centers
+                    env.setTimeout(()=>{
+                        env.bst.classList.add('bastard-slow')
+                        env.bst.style.transform = `translate(0, 0vh)`
+                    }, 2000)
+
+                    env.setTimeout(()=>{
+                        env.bst.classList.remove('bastard-slow')
+                        env.bst.pit.classList.add('behind')
+                        env.bulletHell.advanceStage()
+                    }, 6500)
+
+                    env.setTimeout(()=>{
+                        env.bst.position.classList.remove('spiralhide')
+                        env.bst.scenery.classList.add('hide')
+                        env.bst.pit.classList.remove('fade', 'pushin', 'clipspeed', 'noevents')
+                    }, 10000)
+                break;
+
+                case 8:
+                    env.recosm.changeHP(3)
+                    bh_invuln(false)
+                    env.recosm.changePhase(3)
+
+                    if(check("recosm_finalseen") >= 2) { 
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i am growing tired of this, messenger`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `do you not see that it is pointless?`, readout: true}), 8000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `have you not caused enough meaningless damage?`, readout: true}), 10000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `you can simply stay abõY»Õ÷L®Æ2ve the surface...`, readout: true}), 14000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `while i r„Æ+¤main in the unÆiaQ-ðØ…3world, at peace`, readout: true}), 17000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `yes... tHœÞt would be nicÉw‰ùT0w...`, readout: true}), 20000)                            
+                    } else if(check("recosm_distance") > 8) {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `have i not shown you grace? have i not forgiven your folly?`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `the deceiver thinks me like the ravenous beasts outside`, readout: true}), 8000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `but i am awake, like it, and it fears me for that`, readout: true}), 10000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `it... FEARS me3¼¦µ•6ê.. `, readout: true}), 14000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `and so do§$ you, don’}RŒWt you?`, readout: true}), 17000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `why¬ï…Ãµ elýêV9‰s would you p¼rsist`, readout: true}), 20000)
+                    } else {
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i emerged from it, i have weathered it`, readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `but the deceiver's weapons crumble...`, readout: true}), 6000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `if i must end my dream of peace, so be it`, readout: true}), 9000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `but, dreamsÆ~V4Ëîús can be dreamt again, my friend`, readout: true}), 12000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i only hope ÅBÄ§ŠÊ•Q=!`, readout: true}), 15000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `you will see y‚Î±‰our er¦¡ror`, readout: true}), 18000)
+                    }
+
+                    //bastard draws in the walls throughout this phase
+                    env.bst.safety.classList.add('drawin', 'spin')
+                    env.bst.safety.style.setProperty('--speed', '60s')
+
+                    //the debris spiral is activated
+                    env.bst.debrisInterval = setInterval(env.recosm.throwVortexDebris, 500)
+                    env.bst.vortex.classList.add('spin')
+                    env.bst.vortex.style.setProperty('--speed', '30s')
+                    env.bst.goal.classList.add('grow-mode')
+                    
+                    env.setTimeout(()=>{
+                        env.bst.goal.classList.add('grow')
+                    }, 500)
+                    
+                    env.setTimeout(()=>{
+                        clearInterval(env.bst.debrisInterval)
+                        env.bst.debrisInterval = setInterval(()=>env.recosm.throwVortexDebris(true), 400)
+                    }, 15000)
+
+                    //phase end
+                    env.setTimeout(()=>{
+                        env.bst.goal.classList.remove('grow-mode')
+                        env.bst.safety.classList.add('quick')
+                        env.bst.vortex.classList.add('pause')
+                        clearInterval(env.bst.debrisInterval)
+
+                        chatter({actor: 'god', text: `m¤ÑQE*?ue•§q­uŸÿ`, readout: true})
+                        env.setTimeout(()=>chatter({actor: 'god', text: `ÿÿÿÿÿÿÿ`, readout: true}), 1500)
+                        env.setTimeout(()=>env.bulletHell.advanceStage(), 3000)
+                    }, 45000)          
+                break;
+
+                case 9:
+                    env.recosm.changeHP(env.recosm.hp + 1)
+                    env.clearTimeouts()
+
+                    if(!check("recosm_finalseen")) change("recosm_finalseen", 1)
+                    else change("recosm_finalseen", Number(check("recosm_finalseen")) + 1)
+                    
+                    //bastard explodes
+                    env.bst.vortex.classList.add('debrisend')
+                    env.bst.goal.classList.add('bh_damager')
+                    env.bst.goal.classList.remove('grow')
+                    env.bst.core.classList.remove('shake')
+                    env.bst.ball.classList.add('grown')
+
+                    env.bst.safety.classList.remove('drawin')
+                    content.classList.add('dark')
+                    content.classList.add('finalpillarpause')
+
+                    //bastard patrols
+                    env.setTimeout(()=>{
+                        bh_invuln(false)
+                        env.bst.outer.style.setProperty('--speed', '25s')
+                        env.bst.outer.classList.add('patrol-y')
+
+                        env.bst.inner.style.setProperty('--speed', '15s')
+                        env.bst.inner.classList.add('patrol-x')
+
+                        //sets up progress difficulty increases
+                        env.bst.pit.classList.remove('preclip4', 'swap', 'instant', 'sideball')
+                        content.classList.add('final0')
+                    }, 1500)
+
+                    //activate shrinky
+                    env.setTimeout(()=>{
+                        env.bst.vortex.classList.add('hide')
+                        env.bst.ball.classList.add('shrink-mode')
+                        env.bst.ball.classList.remove('grown')
+                    }, 3500)
+
+                    //bastard pillars
+                    env.setTimeout(()=>{
+                        env.bst.classList.add('pillarattack')
+                    }, 7500)
+
+                    //spinny pilla
+                    env.setTimeout(()=>{
+                        env.bst.pillars.style.setProperty('--speed', '7.5s')
+                        env.bst.pillars.classList.add('spin')
+                    }, 12000)
+
+                    //show supports
+                    env.setTimeout(()=>{
+                        env.bst.supports.classList.add('active')
+                    }, 20000)
+
+                    //phase ends when all supports are knocked out, see click event
+                break;
+
+                case 10:
+                //it's over - kill it all
+                    env.clearTimeouts()
+                    window.removeEventListener('mousedown', env.bulletHell.mouseDownGoal)
+                    flash(true)
+                    cutscene(true)
+                    env.bgm.rate(0.1)
+                    change("recosm_state", "killed")
+
+                    setTimeout(()=>{
+                        content.classList.add('dead')
+                    }, 500)
+
+                    setTimeout(()=>{
+                        content.classList.add('dead')
+                        bh_stop()
+                        flash(false)
+                    }, 1000)
+
+                    setTimeout(()=>{
+                        cutscene(false)
+                        startDialogue("dead")
+                    }, 6000)
+                break;
+            }
+            if(check("recosm_distance") < env.bulletHell.stage) change("recosm_distance", env.bulletHell.stage)
+        }
+    },
+
+    //what happens when the player gets hit
+    hitFunc: ()=>{
+        play("muiScanner", 4)
+        env.recosm.changeHP(env.recosm.hp - 1)
+        if(env.recosm.hp == 0) {
+            env.bgm.rate(0.3)
+            env.bulletHell.paused = true
+            window.removeEventListener('mousedown', env.bulletHell.mouseDownGoal)
+            content.classList.add('death')
+            bh_stop()
+            env.clearTimeouts()
+            clearInterval(env.bst.debrisInterval)
+
+            setTimeout(()=>content.classList.add('fadeout'), 100)                
+            setTimeout(()=>{
+                moveTo('/local/uncosm/recosm/')
+            }, 5000)
+        }
+
+        return "damaged"
+    },
+
+    //updates health and UI component
+    changeHP: (hp)=>{
+        env.recosm.hp = hp > 3 ? 3 : hp
+
+        env.recosm.hpDisplay.setAttribute('hp', '❤'.repeat(env.recosm.hp))
+        if(env.recosm.hp == 0) { env.recosm.hpDisplay.removeAttribute('hp') }
+    },
+
+    //called on a loop - creates its own debris in the bastard-vortex on a self-deleting timer
+    throwVortexDebris: (spiral = false)=>{
+        if(!env.bulletHell.lastAngle || env.bulletHell.lastAngle > 360) env.bulletHell.lastAngle = 0
+
+        var spinSpeed = rand(3, 10)
+        var angle, lifeSpeed
+
+        if(spiral) {
+            env.bulletHell.lastAngle += 30
+            angle = env.bulletHell.lastAngle
+            lifeSpeed = rand(4, 7)
+        } else {
+            angle = rand(0, 360)
+            lifeSpeed = rand(3, 10)
+        }
+
+        const debris = document.createElement('div')
+        debris.classList.add('debris')
+        debris.style.setProperty('--life', `${lifeSpeed}s`)
+        debris.style.setProperty('--speed', `${spinSpeed}s`)
+        debris.style.setProperty('--angle', `${angle}deg`)
+
+        const stone = document.createElement('div')
+        stone.classList.add('bh_damager', 'debris-stone')
+        debris.insertAdjacentElement('beforeend', stone)
+
+        document.querySelector('.bastard-vortex').insertAdjacentElement('beforeend', debris)
+
+        env.setTimeout(()=>debris.remove(), lifeSpeed * 1000)
+    },
+
+    killGodLow: () => {
+        flash(true)
+        cutscene(true)
+        env.bgm.rate(0.1)
+        change("recosm_state", "killed")
+        content.querySelector('.start').remove()
+
+        setTimeout(()=>{
+            content.classList.add('dead')
+        }, 500)
+
+        setTimeout(()=>{
+            content.classList.add('dead')
+            flash(false)
+        }, 1000)
+
+        setTimeout(()=>{
+            cutscene(false)
+            startDialogue("dead")
+        }, 6000)
+    }
+}
+
+/* EP2 ADD2 STUFF - buddies and cache access */
+env.entities['membrane lesion'] = {... env.entities['membrane incision']}
+env.entities['membrane lesion'].name = 'membrane lesion'
+env.entities['membrane lesion'].actions = [
+    {
+        name: "enter",
+        exec: ()=> {
+            change("TEMP!!cachePath", "god")
+            moveTo('/local/cache/')
+        }
+    }
+]  
+
+if(check("recosm_state") == "spared") {
+    env.recosm.proxies = []
+    let max = 35
+    if(check('default_quality') == "low") max = 10
+    for (let i = 0; i < max; i++) {
+        let newBud = new Buddy({
+            element: {
+                id: `incohere-${i}`,
+                classes: "incohere",
+                size: `${rand(30, 70)}px`,
+                img: "/img/textures/eyetran.gif",
+            },
+
+            activity: {
+                behavior: {type: `${i > 5 ? 'follow' : 'wander'}`, drift: 200, rate: 5000, speed: 1},
+            }
+        })
+
+        env.recosm.proxies.push(newBud)
+    }
+
+    env.recosm.proxies.forEach((buddy, i)=>{
+        let random = rand(3000, 4000 + (i * 1000))
+        setTimeout(()=>{
+            buddy.changeSpeed(random)
+            buddy.changeRate(random)
+        }, 200)
+    })
+}
+
+					
+					
+
+					 
+					//mothchat definition
+					env.dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what is the background?<+>background
+        this thing seems kinda nice<+>nice
+            SHOWIF::["recosm_state", false]
+        where'd the proxy generator go<+>nogen
+            SHOWIF::["recosm_state", "spared"]
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question about this place
+
+    moth
+        i don't think i'm really gonna be able to help you out there lol but i'll do my best
+    
+    RESPOBJ::mthresp
+
+background
+    self
+        What is that in the background?
+        It looks like veins or something
+    
+    moth
+        it's not spatial so i can't really see too deep into it, but it does look like it has depth
+        is it a memory of the inside of something? underwater? i have no clue
+        and i don't think it's cohesive enough for your mindspike to scan it
+        everything but these incoherent thoughtforms are just... separated out
+
+    RESPOBJ::mthresp
+
+nice
+    self
+        Should we really kill this thing?
+        It seems nice
+    
+    moth
+        i'm inclined to trust funfriend on this one
+        even if it's a well-intentioned incoherent thoughtform, it still is bound to cause trouble
+        like, what if all the parts of the memories in the cyst start "waking up" like this one,
+        and demand they have the same freedom?
+        it'd be total chaos - we'd never get any decent info out of them again
+
+    RESPOBJ::mthresp
+
+nogen
+    self
+        The proxy generator is gone
+        Do you know where it went?
+    
+    moth
+        what, having second thoughts?
+        looks like it closed as soon as this thing agreed to stop blocking repairs
+        unless you want to confess to funfriend that you left it alive,
+        which, by the way, you really shouldn't do,
+        it's going to stay here
+
+    RESPOBJ::mthresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, 1, 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(check("recosm_finalseen") >= 1 && !check("recosm_state", "spared")) {
+    content.classList.add('damagedzone')
+}
+
+switch(check("recosm_state")) {
+    case "spared":
+        content.querySelector(".start").remove()
+        if(check("recosm__enemy-cache")) content.classList.add('cacheaccess')
+    break
+    
+    case "killed":
+        content.classList.add('dead')
+        env.bgm.rate(0.1)
+        startDialogue("dead")
+        content.querySelector(".start").remove()
+    break
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					env.recosm.phase1.unload()
+env.recosm.phase2.unload()
+env.recosm.phase3.unload()
+env.recosm.phase4.unload()
+delete env.recosm
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "my-beautiful-world";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

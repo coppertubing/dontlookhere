@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__LOCALHOST__..</title>	
+<meta name="title" content="..__LOCALHOST__..">
+<meta name="description" content="ANALYSIS::'internal thoughtspace';'organizational'">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/hub/">
+<meta property="og:title" content="..__LOCALHOST__..">
+<meta property="og:description" content="ANALYSIS::'internal thoughtspace';'organizational'">
+<meta property="og:image" content="https://corru.observer/img/socials/hub.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/hub/">
+<meta property="twitter:title" content="..__LOCALHOST__..">
+<meta property="twitter:description" content="ANALYSIS::'internal thoughtspace';'organizational'">
+<meta property="twitter:image" content="https://corru.observer/img/socials/hub.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__LOCALHOST__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div class="bg intro"></div>
+<div class="damage intro"></div>
+
+<div class="portalwrapper intro">
+    <div id="cityportal" class="portal">
+        <div class="target" entity="gate::their city"></div>
+        <figure></figure>
+    </div>
+    <div id="orbitportal" class="portal">
+        <div class="target" entity="gate::the void"></div>
+        <figure></figure>
+    </div>
+    <div id="oceanportal" class="portal">
+        <div class="target" entity="gate::their waters"></div>
+        <figure></figure>
+    </div>
+    <div id="embassyportal" class="portal">
+        <div class="target" entity="gate::the embassy"></div>
+        <figure></figure>
+    </div>
+    <div id="authportal" class="portal">
+        <div class="target" entity="gate::hello"></div>
+        <figure></figure>
+    </div>
+    <div class="repairpatch-drift active" id="cacheportal">
+        <div class="repairpatch">
+            <div class="target" entity="membrane incision"></div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        position: relative;
+    }
+
+    body.scrollan {
+        overflow-y: visible;
+    }
+
+    #content {
+        z-index: 1;
+        height: 200vh;
+        background: url(/img/textures/badstatic.gif);
+    }
+
+    #content::before {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgb(0, 0, 0) 10%, rgba(255,255,255,0) 50%);
+        content: "";
+    }
+
+    .bg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 1;
+        z-index: -3;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .bg::after, .bg::before {
+        position: absolute;
+        display: block;
+        content: "";
+    }
+
+    .bg::after {
+        background-image: url('/img/textures/static.gif');
+        animation: WATCH 120s linear infinite;
+        background-size: auto 50vh;
+        height: 150%;
+        width: 100%;
+    }
+
+    .bg::before {
+        background-image: url(/img/textures/corrurippletran.gif);
+        opacity: 0.25;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+    }
+
+    .damage {
+        z-index: 5;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .damage::before, .damage::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url(/img/textures/damagetran.gif);
+        background-size: 100% 100%;
+    }
+
+    .damage::after {
+        transform: rotate(180deg);
+    }
+
+    .bg, .damage {
+        transition: opacity 5s ease-in-out;
+    }
+
+    .bg.intro, .damage.intro {
+        opacity: 0;
+    }
+
+    @keyframes WATCH {
+        0% { transform: translateY(-25%) }
+        100% { transform: translateY(0%) }
+    }
+
+    #funfriend {
+        text-transform: uppercase;
+    }
+
+    .buddy.intro {
+        transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+        transition: transform 5s ease-in-out;
+    }
+
+    .buddy.hidden.intro {
+        transform: translate(calc(50vw - 50%), calc(50vh - 50%)) rotate(360deg) scale(0.001);
+    }
+
+    .buddy.hidden.intro figure, .buddy.hidden.intro figure::after {
+        animation-play-state: paused;
+    }
+
+    /* PORTALS */
+    .portalwrapper.intro {
+        opacity: 0;
+        transform: scale(0.7);
+        pointer-events: none;
+    }
+
+    .portalwrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 1s ease-in-out, transform 5s ease-in-out;
+        transform-origin: center;
+        overflow: hidden;
+    }
+    
+    .portal {
+        height: 30vmin;
+        width: 30vmin;
+    }
+
+    #cityportal {
+        bottom: 30vh;
+        left: 50vmin;
+        --portalImg: url(/img/local/city/cityportal.gif)
+    }
+
+    #orbitportal {
+        display: none;
+        top: 70vh;
+        left: calc(50vw - 30vmin);
+        --portalImg: url(/img/local/orbit/rednebula.gif), black;
+    }
+
+    #oceanportal {
+        display: none;
+        bottom: 10vh;
+        right: 30vmin;
+        --portalImg: url(/img/local/ocean/waves.gif)
+    }
+
+    #embassyportal {
+        display: none;
+        bottom: 30vh;
+        right: 50vmin;
+        width: 15vmin;
+        height: 15vmin;
+        --portalImg: url(/img/local/embassy/embassyportal.gif);
+        z-index: -1;
+    }
+    
+    #embassyportal .target::after {
+        font-size: 1.5rem;
+        line-height: 1.2em;
+    }
+
+    #embassyportal.portal figure::after {
+        background-image: url(/img/sprites/misc/sphereframewhite.gif);
+    }
+
+    .visited-orbit #orbitportal, 
+    .visited-ocean #oceanportal, 
+    .visited-embassy #embassyportal, 
+    .hello-visible #authportal,
+    .cache-visible #cacheportal { 
+        display: flex;
+    }
+
+    .portal:nth-child(3n+1) figure::after {
+        animation-delay: -80s;
+    }
+
+    .portal:nth-child(3n+2) figure::after {
+        animation-delay: -120s;
+    }
+
+    #authportal {
+        display: none;
+        --portalImg: url(/img/textures/corrurippletrangrayscale.gif);
+        bottom: 5vmin;
+        width: 15vmin;
+        height: 15vmin;
+        left: 20vmin;
+    }
+
+    #authportal > figure {
+        opacity: 0.25;
+    }
+
+    #cacheportal {
+        display: none;
+        animation: SPIN 120s linear infinite;
+        left: 10%;
+        bottom: -27%;
+        justify-content: center;
+        align-items: center;
+        --baseTransform: rotate(50deg);
+    }
+    
+    #cacheportal .repairpatch {
+        width: 25vmin;
+        height: 15vmin;
+    }
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__LOCALHOST__..",
+				name: "localhost",
+				dialoguePrefix:  "hub" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/hub.gif",
+				
+
+				
+				order: "0",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/hub.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 153000, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "what's up buddy?"
+    if(env.currentDialogue.justChanged) moth = "anything else?"
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the hub",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					
+					addResources([
+    "/js/hub.js"
+])
+
+//this one has to be defined here since it can happen immediately
+env.dialogues["firstvisit"] = generateDialogueObject(`
+start
+    moth
+        ok, i'm looking at the logs here...
+        and i have no idea how you got past that authenticator.
+        or... why it was talking to you like a person
+        i don't think i need to tell you how unusual that is lol
+    RESPONSES::self
+        something helped me<+>something
+        let's debrief later<+>END
+            EXEC::setTimeout(()=> readoutAdd({message: "all right, i'll just see what i can find in the logs", name:"moth"}), 1000)
+
+something
+    self
+        I SAW SOMETHING
+
+    moth
+        yeah, i'm seeing both you and the auth reacting to it
+        but not what "it" is. seriously, look at the log yourself
+        i don't know what to make of it. can corrucysts get malware?
+        honestly it's probably just incoherence. i wouldn't worry about it, it's not like it can spread to you
+        the important thing is that you're in
+        and if this really is a network connector, and not just some sort of obesk toaster...
+        it's the first time we've <em>ever</em> been able to get into one.
+        so i'm going to shut up and let you do your thing. if you want to talk to me, just <span definition="ATTENTION::'MUI shortcut enabled';'access from menu'">speak up</span>
+        
+    RESPONSES::self
+        back to it<+>END
+
+END::env.hub.firstVisitEnd()
+`)
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthlocalr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        about funfriend<+>funfriend
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        about the gates<+>gates
+            SHOWIF::[['visited_localorbit']]
+        that's all<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues.mthlocalfunr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        demeanor<+>ffdemeanor
+            SHOWIF::['ep1_fed', false]
+        fuel situation<+>fffuel
+            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
+        signature<+>ffsignature
+            SHOWIF::[['hub__funfriend-signatureq']]
+        enough about funfriend for now<+>loop
+            FAKEEND::(back)
+`)
+
+env.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
+    try {
+        if(flags.detectedEntities['..__OUR_DULL_VESSEL__..'].entities.container.scanned) {
+            return check == true
+        } else {
+            return check == false
+        }
+    } catch(e) {
+        return check == false
+    }
+}
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question about this thoughtspace
+
+    moth
+        yeah i can think of a few myself too
+        but what's on your mind?
+    
+    RESPOBJ::mthlocalr
+    
+gates
+    self
+        What's up with these gates?
+    
+    moth
+        well they're connector thoughtforms, roughly speaking, nothing special
+        but it seems like the "gate" specification is sort of ornate
+        maybe it has some sort of cultural meaning, since they call their interstellar wormholes or whatever "gates" too
+        so you could also take it as meaning they were deliberately created by someone as a shortcut
+        if this thing was intended to store memories, that'd make the most sense, otherwise it'd be a jumbled mess
+    
+    RESPOBJ::mthlocalr
+
+loop
+    self
+        Nothing else
+        
+    RESPOBJ::mthlocalr
+
+funfriend
+    self
+        About this "funfriend" thing...
+    RESPOBJ::mthlocalfunr
+
+ffdemeanor
+    self
+        It's awfully friendly despite knowing what we are
+    
+    moth
+        yeah it seemed weirdly friendly to me too
+        that could just be how it was designed, like a little assistant dude
+        or maybe it can't even kick us out since the auth layer got 'disassociated'
+        either way if i was starving at the bottom of the ocean, i wouldn't care who came to save me lol 
+        so maybe it won't care until we give it fuel
+        you know what, just to be safe, i suggest finding everything we can in here before we help it out properly... 
+        this could be our only chance--maybe it really is only letting us through since it's starving
+
+    RESPOBJ::mthlocalfunr
+
+fffuel
+    self
+        What should we do about the fuel?
+
+    moth
+        well... we should probably hold off on refueling until we've found everything we can in here
+        seems pretty stable for now and obesk tech gets a little wacky when it starves
+        so i think that could play in our favor if we run into any other stuff like the auth layer
+        that said... when it comes to the actual fueling process,
+        i passed word up to get us a bunch of cheap copper tubing asap, so we could use that... if "funfriend" tells us how
+            SHOWIF::[['EXEC::env.dialogues.mthlocalfunr.scannedContainer(false)']]
+        we could probably use the stuff in that container we found, it sounds like metal and looks just like the big ones from akizet's ship
+            SHOWIF::[['EXEC::env.dialogues.mthlocalfunr.scannedContainer(true)']]
+        
+    RESPOBJ::mthlocalfunr
+
+ffsignature
+    self
+        Why don't I have a signature?
+
+    moth
+        i actually have no idea why it couldn't see your signature
+        because i'm pretty sure most mindspikes have one for auth purposes
+        most likely it was looking for a specific kind, it's probably pretty easy to tell that your connector is inorganic
+
+    RESPOBJ::mthlocalfunr
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(!check('hub_introduced')) {
+    startDialogue('firstvisit')
+} else {
+    let waiting
+    waiting = setInterval(()=>{
+        if(env.hub) {
+            console.log(env.hub.buddy)
+            env.hub.buddy.setPosition({x: window.innerWidth / 2, y: window.innerHeight / 2})
+            document.querySelectorAll('.buddy, #content .bg, #content .damage, #content .portalwrapper').forEach(e=> e.classList.remove('hidden', 'intro'))
+            body.classList.add('scrollan')
+            env.hub.randomChatter()
+            clearInterval(waiting)
+        }
+    }, 200)
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					clearInterval(env.hub.buddy.followInterval)
+delete env.hub
+body.classList.remove('scrollan')
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "localhost";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

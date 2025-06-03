@@ -303,6 +303,33 @@ function processDefinitionsInString(input, {force = false} = {}) {
     return finalInput
 }
 
+function processTranslation(container, force = false) {
+    if(!env.localization.strings) return;
+    let outerEl = container || content
+
+    outerEl.querySelectorAll(force ?" *" : "*:not(.tskip, .tdone, script, style)").forEach(el=>{
+        //translates definition hover regardless of children since that's safe
+        let def = el.getAttribute("definition")
+        if(def) { el.setAttribute("definition", processStringTranslation(def)) }
+
+        //same with entity
+        let ent = el.getAttribute("entity")
+        if(ent) { el.setAttribute("entaltname", processStringTranslation(ent))}
+
+        // if something has child elements, we want to process its text nodes separately from its children
+        // this is because the querySelectorAll already grabs everything - no need to traverse
+        for (const childNode of el.childNodes) {
+            if (childNode.nodeType === Node.TEXT_NODE) {
+                if(childNode.textContent.trim().length == 0) continue; // skip if functionally whitespace
+               console.log(childNode.textContent)
+              console.log(processStringTranslation(childNode.textContent))
+              childNode.textContent = processStringTranslation(childNode.textContent)
+            }
+        }
+        if(el.childNodes.length == 0) {console.log("skipped for", el); return el.classList.add('tskip')}
+        el.classList.add("tdone")
+    })
+}
 
 env.localization = {
    dialogues: {},
@@ -489,6 +516,9 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 .readout-log .message.corruru {
     background: url(/img/textures/fadein.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
     background-size: 150%, auto;
+    text-shadow: 1px 1px var(--neutral-color);
+    font-size: 1.25em;
+    letter-spacing: 0.25em;
 }
 
 .dialogue-message.corruru .dialogue-portrait::after {
@@ -530,7 +560,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     // funky functions that help with translation
 
     processWeirdTranslation: function (selector, attribute = false) {
-        if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent.trim())}}})}
+        if (attribute == "mindpike") {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {if (childNode.textContent == "EXM") {childNode.textContent = "ИЗУЧ"} else if (childNode.textContent == "ACT") {childNode.textContent = "ДЕЙСТ"}}}})} // i hate ACT and EXm strings bleeding into shit
+        else if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent.trim())}}})}
         else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
         return
     },
@@ -608,6 +639,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     observerCommon: new MutationObserver(()=>{
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
+        cor_ru.processWeirdTranslation("#mindspike-scanner", "mindpike");
         console.log("common observed! @cor-RU");
     }),
     observerCommonObserve: function () {

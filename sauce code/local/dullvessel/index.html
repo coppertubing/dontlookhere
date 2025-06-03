@@ -1,0 +1,2672 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__OUR_DULL_VESSEL__..</title>	
+<meta name="title" content="..__OUR_DULL_VESSEL__..">
+<meta name="description" content="ANALYSIS::'recollection';'recurrent location'::INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/dullvessel/">
+<meta property="og:title" content="..__OUR_DULL_VESSEL__..">
+<meta property="og:description" content="ANALYSIS::'recollection';'recurrent location'::INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/dullvessel.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/dullvessel/">
+<meta property="twitter:title" content="..__OUR_DULL_VESSEL__..">
+<meta property="twitter:description" content="ANALYSIS::'recollection';'recurrent location'::INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/dullvessel.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1743609964848047793"></script>	
+	<script src="/js/dialogue.js?1743609964848047793"></script>	
+	<script src="/js/globalents.js?1743609964848047793"></script>	
+	<script src="/js/cystStage.js?1743609964848047793"></script>
+	<script src="/js/buddy.js?1743609964848047793"></script>
+	<script src="/js/vn2.js?1743609964848047793"></script>
+	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<form id="act">
+				<input type="text" id="act-input" placeholder="CONCEPT">
+				<input type="submit" id="act-submit" value="ENACT">
+			</form>
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__OUR_DULL_VESSEL__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+<script>
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        let supporterBox = document.querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
+
+    //we make glyphs out of up to 3 letters from the name
+    function getEquidistantLetters(input) {
+        let result = []
+
+        if (input.length <= 3) {
+            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+        } else {
+            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+            indices.forEach(index => {
+                result.push(input.charAt(index))
+            })
+        }
+
+        return result
+    }
+</script>
+	
+	<div id="content">
+		<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+    </div>
+</div>
+
+<style>
+
+@import url(/css/stage/beneath.css?1743609964848047793);
+@import url(/css/stage/goodwalls.css?1743609964848047793);
+
+#content {
+    background-color: var(--obesk-color);
+    background-image: url(/img/textures/fadeinlong.gif);
+    background-size: cover;
+}
+
+#content.heart {
+    background-image: url(/img/textures/panelpatterntran.gif);
+    background-size: auto 100%;
+    background-position: center;
+}
+
+#realgrid .gridpiece:empty, #realgrid .gridpiece {
+    background: black;
+    border: 1px solid var(--obesk-color)
+}
+
+#realgrid .gridpiece {
+    border: 2px dashed;
+}
+
+#realgrid .gridpiece.blocks {
+    background: transparent;
+    border: unset;
+}
+
+[id^="porthole"] {
+    position: absolute;
+    width: calc(var(--gridScale) * 3px);
+    height: calc(var(--gridScale) * 3px);
+    transform: rotateX(90deg) 
+        translateY(calc( var(--gridScale) * 1.5px )) 
+        translateZ(calc( var(--gridScale) * 0.4px )) 
+        rotate(180deg);
+    backface-visibility: hidden;
+}
+
+[id^="porthole"]::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    border: 2px solid var(--obesk-color);
+    border-radius: 100%;
+}
+
+[id^="porthole"].orbit::after {
+    background-image: url(/img/local/orbit/stars.gif);
+}
+
+[id^="porthole"].ocean::after {
+    background-image: url(/img/local/ocean/waves.gif);
+    background-size: cover;
+}
+
+#realgrid .portal figure {
+    position: absolute;
+}
+
+.reference [id^="porthole"] {
+    display: none;
+}
+
+.sprite {
+    transform: rotateX(-90deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-origin: bottom;
+    bottom: 0;
+}
+
+.sprite figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.sprite figure > * {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.sprite[id^="pilotcyst"] {
+    width: 300%;
+    height: 300%;
+}
+
+.sprite[id^="pilotcyst"] figure {
+    width: 150%;
+    height: 150%;
+}
+
+.sprite[id^="pilotcyst"] .target {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: unset;
+    left: unset;
+}
+
+.sprite[id^="pilotcyst"] .chair {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_chair.gif);
+    transform: translateY(10%) translateZ(calc( var(--gridTileSize) * 0.75 ));
+    width: 75%;
+    height: 75%;
+}
+
+.sprite[id^="pilotcyst"] .tendrils {
+    animation: HOVER 10s ease-in-out infinite alternate;
+    --baseTransform: translateZ(-50px);
+    transform: translateZ(-50px);
+    width: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sprite[id^="pilotcyst"] .tendrils::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_tendrils.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    animation: TENDRILS 60s ease-in-out infinite alternate;
+}
+
+.sprite[id^="pilotcyst"] .base {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: PILOTSPIN 40s ease-in-out infinite alternate;
+    width: 100%;
+    height: 100%;
+}
+
+.sprite[id^="pilotcyst"] figure::after {
+    content: "";
+    position: absolute;
+    border-radius: 25%;
+    background: url(/img/sprites/funfriend/funfriend.gif);
+    width: 25%;
+    height: 10%;
+    background-size: 100%;
+    --baseTransform: rotate(180deg) translateY(-25%);
+    background-position: 0 calc( var(--gridTileSize) * -0.2);
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    opacity: 1;
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+
+.sprite[id^="glazika"] {
+    transform: rotateZ(90deg) rotateX(-90deg) translateX(-50%);
+    width: 200%;
+    height: 200%;
+    left: unset;
+    bottom: unset;
+}
+
+.sprite[id^="glazika"] figure {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.sprite[id^="glazika"] .body {
+    background-image: url(/img/local/orbit/dullvessel/glazikabody.gif);
+    background-position: center bottom;
+    background-size: 75%;
+    animation: HOVER 10s ease-in-out infinite alternate;
+}
+
+.sprite[id^="glazika"] .head {
+    background-image: url(/img/local/orbit/dullvessel/glazikahorns.gif);
+    background-position: center;
+    background-size: 50%;
+    top: -50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+.sprite[id^="glazika"] .head::before, .sprite[id^="glazika"] .head::after {
+    content: "";
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    background-image: url(/img/local/orbit/dullvessel/glazikaeye.gif);
+    bottom: 20%;
+    background-position: center;
+    background-repeat: no-repeat;
+    --baseTransform: translateX(-125%);
+    animation: HOVER 1s ease-in-out infinite alternate;
+}
+
+.sprite[id^="glazika"] .head::after {
+    --baseTransform: translateX(125%) rotateY(180deg);
+    animation-delay: -1s;
+}
+
+
+.sprite[id^="container"] {
+  width: 200%;
+  height: 150%;
+  --angle: rotateY(-90deg);
+  transform: rotateX(-90deg) var(--angle) translateX(-25%) translateZ(-10px);
+}
+
+.sprite[id^="container"] figure {
+  background-image: url(/img/local/orbit/dullvessel/container.gif?);
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.sprite[id^="container"] figure {
+  backface-visibility: visible;
+}
+
+#realgrid .sprite[id^="containerleft"] {
+  --angle: rotateY(-50deg) translateZ(calc(var(--gridTileSize) * -0.6));
+}
+
+#realgrid .sprite[id^="containerright"] {
+  --angle: rotateY(-140deg) translateZ(calc(var(--gridTileSize) * 0.25));
+}
+
+
+@keyframes PILOTSPIN {
+    0% { transform: rotate(0deg) }
+    30% { transform: rotate(120deg) }
+    50% { transform: rotate(-80deg) }
+    70% { transform: rotate(40deg) }
+    100% { transform: rotate(140deg) }
+}
+
+@keyframes TENDRILS {
+    0% { transform: var(--baseTransform) rotate(-5deg) }
+    100% { transform: var(--baseTransform) rotate(5deg) }
+}
+
+@keyframes HOVER {
+    0% { transform: var(--baseTransform) translateY(3%) }
+    100% { transform: var(--baseTransform) translateY(-3%) }
+}
+
+#realgrid > canvas { position: absolute; }
+#realgrid .ceiling { transform: translateZ(calc( 3.5 * var(--gridTileSize) + 1px )) rotateY(180deg); }
+#realgrid .floor { transform: translateZ(-2px) }
+.repaired #realgrid > canvas.early, #realgrid > canvas.repair { display: none; }
+.repaired #realgrid > canvas.repair { display: block; }
+
+#dullvessel_observatory[currentdialogue="pilot"] .grid-container, 
+#dullvessel_observatory[currentdialogue="fixed"] .grid-container {
+    --camera-rotation: 0;
+    --camera-x: 5;
+    --camera-y: 1;
+}
+
+#dullvessel_observatory[currentdialogue="fixed"] .grid-container {
+    --camera-offset: rotateY(20deg) translateX(-50%)
+}
+
+#dullvessel_observatory[currentdialogue="glazika"] .grid-container {
+    --camera-x: 9;
+    --camera-y: 5;
+    --camera-distance: 1;
+    --camera-height: 1;
+    --camera-offset: rotateX(20deg);
+    --camera-rotation: -90;
+}
+
+/* repaired version */
+#realgrid .cavewall {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300%;
+    height: 400%;
+    transform: rotateY(90deg) rotateZ(-90deg) translateX(66%) translateY(10%);
+    background: url(/img/local/orbit/dullvessel/climbwall.gif);
+    background-size: cover;
+    background-position: center;
+    transform-origin: bottom left;
+}
+
+#realgrid .repair.teleport[slug="U"]::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: inherit;
+    background: black;
+    transform: translateZ(calc(var(--gridTileSize) * 3.5))
+}
+
+#realgrid .repair.teleport[slug="D"] {
+    background: transparent
+}
+
+.sprite.dullscreens {
+    height: 200%;
+    width: 200%;
+    background-image: url(/img/local/orbit/dullvessel/clawscreen.gif);
+    --baseTransform: rotateX(-90deg) translateY(-25%) translateZ(10px) var(--rotation) translateX(-50%);
+    --rotation: rotateY(45deg);
+    transform: var(--baseTransform);
+}
+
+.sprite.dullscreens.side {
+    --rotation: rotateY(145deg);
+    backface-visibility: visible;
+}
+
+body:not([quality="low"]) .sprite.dullscreens {
+    animation: SCREENHOVER 10s ease-in-out infinite alternate;
+}
+
+@keyframes SCREENHOVER {
+    0% { transform: var(--baseTransform) rotate(-5deg) }
+    100% { transform: var(--baseTransform) rotate(0deg) }
+}
+
+.parasiteboard {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/local/orbit/dullvessel/parasite.gif);
+    background-size: contain;
+    transform: translateZ(calc(var(--gridTileSize) * 0.75));
+}
+
+.parasiteboard .column {
+    display: none;
+}
+
+.parasiteboard .boardproper {
+    position: absolute;  
+    width: 66%;
+    height: 66%;
+}
+
+.parasiteboard  .boardproper, .parasiteboard  .boardproper::after {
+    --baseTransform: rotateX(-90deg) translateY(66%) rotateY(145deg);
+    transform: var(--baseTransform);
+    background: url(/img/local/orbit/dullvessel/glazikahorns.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    backface-visibility: visible;
+}
+
+.parasiteboard  .boardproper::after {
+    content: "";
+    transform: rotateY(90deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+}
+
+.parasiteboard > .target {
+    transform: rotate(90deg);
+}
+
+.parasiteboard > .target::after {
+    font-size: 1.25em;
+}
+
+body:not([quality="low"]) .parasiteboard  .boardproper {
+    animation: PARASITEHOVER 25s linear infinite;
+}
+
+#content.lookdown .grid-plane[lastmoved="right"] {
+    --camera-offset: rotateX(-45deg);
+    --camera-distance: 1;
+}
+
+@keyframes PARASITEHOVER {
+    0% { transform: var(--baseTransform) translateY(0%) rotateY(0deg) }
+    50% { transform: var(--baseTransform) translateY(-5%) rotateY(180deg) }
+    100% { transform: var(--baseTransform) translateY(0%) rotateY(360deg) }
+}
+
+/* dull heart area */
+.heart.sprite {
+    transform-origin: center;
+    transform: rotateX(-90deg) translateY(-50%);
+    background: url(/img/local/orbit/dullvessel/dullheartbig.gif);
+    background-size: 100% 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    width: 400%;
+    height: 250%;
+    bottom: unset;
+}
+
+.heart.sprite.smaller {
+    background-size: contain;
+}
+
+.heart.sprite.small {
+    background: url(/img/local/orbit/dullvessel/dullheart.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotateX(-90deg) translateY(-50%) translateZ(1px);
+    pointer-events: none;
+}
+
+
+
+/* heart and quarters stage alterations */
+#realgrid[stage="dullvessel_heart"] .ceiling { transform: translateZ(calc( 2.5 * var(--gridTileSize) + 1px )) rotateY(180deg); }
+#realgrid[stage="dullvessel_heart"] .cavewall, #realgrid[stage="dullvessel_quarters"] .cavewall {
+    top: unset;
+    left: unset;
+    right: 0;
+    bottom: 0;
+    transform: rotateX(-90deg) rotateY(-90deg) translateX(-33%) translateZ(calc(var(--gridTileSize) * -3));
+}
+
+#content .portal .target, #content .portal .target::before {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* e3a1 updates - quarters */
+#content.quarters {
+    background-image: url(/img/textures/panelpatterntranflip.gif);
+    background-color: var(--friend-color);
+    background-size: auto 100%;
+    background-position: center;    
+}
+
+#content.quarters::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: url(/img/textures/corruripplegrayscale.gif);
+  z-index: -1;
+  transition: opacity 2s;
+  opacity: 0;
+}
+
+#content.incohering::after {
+  opacity: 0.5;
+}
+
+#realgrid[stage="dullvessel_quarters"] .teleport.gridpiece {
+    background: transparent;
+}
+
+#realgrid .gridpiece.invisiblewalk:empty {
+    background: transparent;
+    border: unset;
+}
+
+#realgrid .gridpiece.darktile, #realgrid .gridpiece.darktile:empty {
+    background: black;
+}
+
+#realgrid[stage="dullvessel_quarters"] .gridpiece:not(.teleport):empty, 
+#realgrid[stage="dullvessel_quarters"] .gridpiece:not(.teleport) {
+    border-color: var(--friend-color);
+}
+
+#realgrid[stage="dullvessel_quarters"] .cavewall {
+    transform: rotateX(-90deg) rotateY(-90deg) translateX(-33%) translateZ(calc(var(--gridTileSize) * -3)) translateY(35%);
+    background-image: url(/img/local/orbit/dullvessel/climbwallc.gif);
+}
+
+#dullvessel_quarters #realgrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#realgrid[stage="dullvessel_quarters"] .gridpiece.wall { /* we're lying to the walls */
+    --stage-width: 7;
+    --stage-height: 7;
+    opacity: 1 !important;
+}
+
+#realgrid .gridpiece.wall::after, 
+#realgrid .gridpiece.wall::before {
+    background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/embassy/cavewallflip.gif);
+    background-size: 100% 100%, auto 75%;
+    background-repeat: repeat-x;
+    height: calc(var(--gridTileSize) * 2.5);
+}
+
+#realgrid .gridpiece.blocks.wall.south::after {
+    background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/embassy/cavewallflipgap.gif);
+    background-size: 100% 100%, 100% 75%;
+    background-repeat: repeat-x;
+}
+
+#realgrid .gridpiece.blocks.wall.south::before {
+    background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/orbit/dullvessel/wallmoss.gif), url(/img/local/embassy/cavewallflip.gif);
+    background-size: 100% 100%, 100% 100%, auto 75%;
+}
+
+#realgrid .gridpiece.blocks.wall.north::after {
+    background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/orbit/dullvessel/wallmoss.gif), url(/img/local/orbit/dullvessel/cavewallerror.gif);
+    background-size: 100% 100%;
+}
+
+.desk .doodad {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+    position: absolute;
+    transform: rotateX(-90deg) translateY(-50%) rotateY(180deg) var(--baseTransform);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+.doodad.container {
+    background-image: url(/img/local/orbit/dullvessel/container.gif);
+    background-size: contain;
+}
+
+.desk .doodad.d1 {
+    background-image: url(/img/local/orbit/dullvessel/terminal.gif);
+    --baseTransform: translateX(-100%) rotateY(45deg);
+}
+
+.desk .doodad.d2 {
+    background-image: url(/img/local/orbit/dullvessel/quicktranslator.gif);
+    --baseTransform: translateY(25%) rotateX(70deg);
+    background-size: contain;
+    border-radius: 25px;
+}
+
+.desk .doodad.d3 {
+    background-image: url(/img/sprites/obesk/cystrack.gif);
+    width: calc(var(--gridTileSize) * 2.5);
+    height: calc(var(--gridTileSize) * 1);
+    --baseTransform: translateZ(calc(var(--gridTileSize) * -0.4));
+}
+
+.desk .doodad.plant1, .desk .doodad.plant2 {
+    background-image: url(/img/local/embassy/plant.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(var(--gridTileSize) * 1);
+    --baseTransform: rotateY(20deg);
+}
+
+.desk .doodad.plant2 {
+    background-image: url(/img/local/embassy/plant2.gif);
+    --baseTransform: translateX(100%) rotateY(-20deg);
+    height: calc(var(--gridTileSize) * 0.75);    
+}
+
+.desk .doodad.strange {
+    background-image: url(/img/local/orbit/dullvessel/column.gif);
+    background-size: auto;
+    --baseTransform: rotateY(-20deg);
+}
+
+.desk .target::before {
+    display: none;    
+}
+
+.target[entity="high-pressure body"] {
+  height: 100%;
+  width: 20%;
+}
+
+.target[entity="personal storage"] {
+  height: 25%;
+  width: 60%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: unset;
+  margin: auto;
+}
+
+.target[entity="advanced rejuvenation chamber"] {
+  height: 45%;
+  width: 60%;
+  right: 0;
+  left: 0;
+  margin: auto;
+  bottom: 30%;
+  top: unset;
+}
+
+.target[entity="equipment storage"] {
+  height: 100%;
+  width: 20%;
+  right: 0;
+  left: unset;
+}
+
+/* helo */
+body#dullvessel_beneath #content {
+    background-color: var(--bright-color);
+    background-image: url(/img/textures/barelyfaded.gif);
+    background-size: contain;
+}
+
+#dullvessel_beneath .grid-animator {
+    transition: transform 500ms ease-in-out;
+}
+
+#dullvessel_beneath .grid-plane {
+    transform: rotate(10deg);
+    transform-style: preserve-3d;
+    perspective: 400px;
+    --camera-height: 1
+}
+
+#dullvessel_beneath #realgrid {
+    transition: transform 500ms linear;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dullvessel_beneath .sprite.dullscreens,
+#dullvessel_beneath .sprite[id^="pilotcyst"] .base,
+#dullvessel_beneath .sprite[id^="pilotcyst"] .tendrils,
+#dullvessel_beneath .sprite[id^="pilotcyst"] .tendrils::after {
+    animation: unset !important;
+}
+
+#dullvessel_beneath .sprite.dullscreens {
+    background-image: url(/img/local/orbit/dullvessel/clawscreen_busted.gif);
+    --baseTransform: rotateX(-90deg) translateY(-5%) translateZ(10px) var(--rotation) translateX(-30%) rotate(-10deg);
+}
+
+#dullvessel_beneath .sprite[id^="pilotcyst"] .chair {
+    transform: translateY(44%) translateZ(calc( var(--gridTileSize) * 0.75 )) rotateX(90deg) rotate(120deg);
+}
+
+#dullvessel_beneath .sprite[id^="pilotcyst"] .base {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_busted.gif);
+}
+
+#dullvessel_beneath .sprite[id^="pilotcyst"] .tendrils::after {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_tendrils_busted.gif);
+}
+
+#dullvessel_beneath .sprite[id^="pilotcyst"] figure::after {
+    display: none;
+}
+
+#dullvessel_beneath .sprite[id^="container"] figure {
+    background-image: url(/img/local/embassy/containerbusteddark.gif?);
+}
+
+#dullvessel_beneath #realgrid .gridpiece[slug="░"] {
+    border: 1px solid var(--bright-color);
+}
+
+#dullvessel_beneath .sprite[id^="container"] {
+    transform: unset;
+}
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__OUR_DULL_VESSEL__..",
+				name: "our-dull-vessel",
+				dialoguePrefix:  "dullvessel" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1743609964848047793,
+
+				
+				image: "/img/socials/dullvessel.gif",
+				
+
+				
+				order: "3",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/dullvessel.ogg'],
+					preload: true,
+					loop: true,
+					
+					
+					sprite: {
+						__default: [50, 152000, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    var moth = "did akizet not have furniture? this ship is so empty... honestly i kinda hope it just got lost through incoherence or something"
+
+    if(env.stage.name == "dullvessel_beneath") {
+        moth = "woah... look at this, dude. this is a different thoughtspace, somehow"
+
+    } else if(check('ep1_fed')) {
+        moth = "looks like funfriend's restored a little bit here, there's definitely more data than before"
+    }
+
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about the dull vessel",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+
+					//dynamically inserted
+					 
+						
+env.dullVessel = {
+    swapLocation: ()=>{
+        let location = check('dullvessel_position')
+        let portal = document.querySelector('.portal')
+
+        switch(location) {
+            case "ocean": //swapping from ocean
+                change('dullvessel_position', 'orbit')
+                portal.classList.remove('ocean')
+                portal.classList.add('orbit')
+                portal.querySelector('.target').setAttribute('entity', 'gate::the void')
+            break
+
+            default: //swapping from orbit
+                change('dullvessel_position', 'ocean')
+                portal.classList.remove('orbit')
+                portal.classList.add('ocean')
+                portal.querySelector('.target').setAttribute('entity', 'gate::their waters')
+            break
+        }
+    },
+
+    waterMusic: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/hub.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        rate: 0.25,
+        sprite: {
+            __default: [0, 153000, true]
+        }
+    }),
+
+    net: () => { if(document.querySelector('#realgrid')) step() },
+    
+    stageChange: ()=>{
+        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+
+        switch(env.stage.name) {
+            case "dullvessel_beneath": 
+                if(env.bgm._src.includes("dullvessel.ogg")) {
+                    env.bgm.pause()
+                    env.bgm = env.dullVessel.waterMusic
+                    env.bgm.play()
+                    env.bgm.seek(20)
+                }
+            break
+
+            default:
+                if(!env.bgm._src.includes("dullvessel.ogg")) {
+                    env.bgm.pause()
+                    env.bgm = page.bgm
+                    env.bgm.play()
+                }
+
+                if(env.stage.name == "dullvessel_quarters") {
+                    env.bgm.rate(0.75)
+                } else {
+                    env.bgm.rate(1)
+                }
+            break
+        }
+    }
+}
+
+createEntity({
+    name: 'pilot cyst',
+    type: "thoughtform",
+    image: "/img/local/orbit/dullvessel/pilotsphere_tendrils.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="WARNING::'entity mostly unprocessable';'may be inaccurate'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the great mind of my vessel'</span>`,
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>{  
+                startDialogue("pilot")       
+            },
+            showIf: ()=>{return !check('interview1__firstchat-behonest')},
+        },
+        
+        {
+            name: "greet",
+            exec: ()=>{  
+                startDialogue("fixed")       
+            },
+            showIf: ()=>{return check('interview1__firstchat-behonest')},
+        },
+        
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"]],
+            exec: ()=>{
+                cutscene(true)
+
+                chatter({actor: 'pilot cyst', text: 'unfinished', readout: true, delay: 2000})
+                chatter({actor: 'pilot cyst', text: "business", readout: true, delay: 4000})
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                }, 4000)
+            },
+        }
+    ]
+})
+
+createEntity({
+    name: 'glazika',
+    type: "thoughtform",
+    image: "/img/local/orbit/dullvessel/glazikaeye.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'`,
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>{  
+                startDialogue("glazika")       
+            }
+        },
+        
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"]],
+            exec: ()=>{
+                cutscene(true)
+
+                chatter({actor: 'glazika', text: 'what a strange dream akizetesche!!', readout: true, delay: 2000})
+                chatter({actor: 'glazika', text: "by the way, i organized your room!", readout: true, delay: 4000})
+                chatter({actor: 'glazika', text: "we had to fix one of the walls because it was acting up!", readout: true, delay: 7000})
+                chatter({actor: 'akizet', text: "ah, thank you, my glazika", readout: true, delay: 14000})
+                chatter({actor: 'sourceless', text: "i did not say anything about a dream...", readout: true, delay: 20000})
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                }, 7000)
+            },
+        }
+    ]
+})
+
+createEntity({
+    name: 'container',
+    type: "thoughtform",
+    image: "/img/local/orbit/dullvessel/container.gif?",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'processed metals, easily accessible'</span>`,
+    
+    exmExec: ()=>{
+        if(!check('exm|dullvessel|container')) {
+            setTimeout(()=>{readoutAdd({message: `that "container" looks familiar`, name:"moth"})}, 3500)
+        }
+    },
+})
+
+createEntity({
+    name: 'parasite plane',
+    type: "thoughtform ep1on",
+    image: "/img/local/orbit/dullvessel/parasite.gif",
+    text: `::EXPERIENTIAL THOUGHTFORM
+    ::NON-RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a simple game of resource management and theft';'an oltazni favorite'</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{  
+                change("TEMP!!from", "dullvessel")
+                moveTo("/local/beneath/parasite/")
+            },
+            showIf: ()=>{return check("netstat|<", 0)},
+        }
+    ]
+})
+
+createEntity({
+    name: 'climbing wall',
+    type: "thoughtform ep1on",
+    image: "/img/local/orbit/dullvessel/climbwall.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'nostalgic cave-stone imitation';'appeals to <span class="code">larval</span> climbing instinct'</span>`,
+})
+
+createEntity({
+    name: 'dull heart',
+    type: "thoughtform ep1on",
+    image: "/img/local/orbit/dullvessel/dullheartbig.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'device beyond my understanding';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'advised not to stare'</span>`,
+})
+
+createEntity({
+    name: 'workspace',
+    type: "thoughtform portrait-centertop portrait-dark no-show",
+    image: "/img/local/orbit/dullvessel/terminal.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'visual display utilizing luminescent corru swarms';'assists in multitasking'</span>`
+})
+
+createEntity({
+    name: 'translation slab',
+    type: "thoughtform portrait-centertop portrait-dark no-show",
+    image: "/img/local/orbit/dullvessel/quicktranslator.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a collection of bright writings provided by the envoy';'reports of progress with the storm'</span>`
+})
+
+createEntity({
+    name: 'cyst cluster',
+    pathLimit: "/local/ocean/embassy/",
+    type: "thoughtform",
+    image: "/img/sprites/obesk/cystrack.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a collection of this and that, managed by a central monitoring cyst'</span>`
+})
+
+createEntity({
+    name: 'column',
+    type: "thoughtform no-show",
+    image: "/img/home/column.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'reparative maintenance tool';'a place for my personal cyst'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'disrupted by extreme nearby incoherence';'advise investigation'">::INCOHERENCE DETECTED</span>`
+})
+
+createEntity({
+    name: 'bright ground-parasite',
+    type: "thoughtform no-show portrait-cover",
+    image: "/img/local/embassy/plant.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'fascinating bright creatures, gifts from a friend';'contained within oxygenated caring cysts'</span>`
+})
+
+createEntity({
+    name: 'advanced rejuvenation chamber',
+    type: "thoughtform no-show portrait-cover",
+    image: "/img/local/orbit/dullvessel/storagewall_bed.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'offering the comfort of sleep, even in <span definition="NOTE::INHERITED CONTEXT::'implies altered living state'">death</span>';'designed as survival pod in event of dull collapse'</span>`
+})
+
+createEntity({
+    name: 'high-pressure body',
+    type: "thoughtform no-show portrait-cover",
+    image: "/img/local/orbit/dullvessel/storagewall_head.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'alternate body for extreme depth surveying';'specialized pressure management system';'uncomfortable for casual use'</span>`
+})
+
+createEntity({
+    name: 'personal storage',
+    type: "thoughtform no-show portrait-cover",
+    image: "/img/local/orbit/dullvessel/storagewall_personal.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'`
+})
+
+createEntity({
+    name: 'equipment storage',
+    type: "thoughtform no-show portrait-cover",
+    image: "/img/local/orbit/dullvessel/storagewall_equip.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'`
+})
+
+createEntity({
+    name: 'column',
+    type: "thoughtform no-show",
+    image: "/img/home/column.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'reparative maintenance tool';'a place for my personal cyst'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'disrupted by extreme nearby incoherence';'advise investigation'">::INCOHERENCE DETECTED</span>`
+})
+
+env.dialogueActors["pilot cyst"] = {
+    elementID: "pilotcyst0",
+    image: "/img/local/orbit/dullvessel/pilotsphere_tendrils.gif",
+    type: "obesk pilotcyst",
+    noProcess: true,
+    voice: ()=>play('talk', 0.4)
+}
+
+env.dialogues["pilot"] = generateDialogueObject(`
+start
+    akizet
+        hello th¥ÙYg^Ž×¯Rõf±
+    
+    pilot cyst
+        im%¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Jºž­¥ÙYj0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇH¸×¯Rõf±ÔVãXÖ5&Ñ/ 
+    
+    moth
+        wtf
+            SHOWIF::[["dullvessel__pilot-end", false]]
+        that looks like some kind of format error
+            SHOWIF::[["dullvessel__pilot-end", false]]
+        i think this one might be busted
+            SHOWIF::[["dullvessel__pilot-end", false]]
+        could be encoded... i'll just make a note of this for now, let's come back later
+            SHOWIF::[["dullvessel__pilot-end", false]]
+
+        still broken... but it's the same output as before
+            SHOWIF::[["dullvessel__pilot-end"]]
+        so i don't think it's an incoherence issue
+            SHOWIF::[["dullvessel__pilot-end"]]
+        but i still don't know what to do with this
+            SHOWIF::[["dullvessel__pilot-end"]]
+        just leave it for now
+            SHOWIF::[["dullvessel__pilot-end"]]
+
+
+    RESPONSES::self
+        damn<+>END
+`)
+
+env.dialogues["fixed"] = generateDialogueObject(`
+start
+    pilot cyst
+        hello
+        interloper
+
+    moth
+        wtf? did that thing fix this?
+            SHOWIF::[["dullvessel__pilot-end"], ["dullvessel__fixed-start", false]]
+        looking at the old log i don't think this was supposed to be self aware
+            SHOWIF::[["dullvessel__pilot-end"], ["dullvessel__fixed-start", false]]
+
+    RESPONSES::self
+        hello...?<+>hello
+            SHOWONCE::
+
+        how are you lucid?<+>how
+            SHOWONCE::
+            SHOWIF::[["dullvessel__fixed-hello", true]]
+
+        change location<+>change
+            SHOWIF::[["dullvessel__fixed-hello", true]]
+            HIDEREAD::
+
+        goodbye<+>END
+
+how
+    self
+        how are you lucid?
+
+    pilot cyst
+        velzie
+        instructed
+
+    RESPONSES::self
+        who is velzie?<+>who
+
+who
+    self
+        who is velzie?
+
+    pilot cyst
+        secrecy
+        instructed
+        soon
+        meet
+    
+    RESPONSES::self
+        change location<+>change
+        all right...<+>END
+
+hello
+    self
+        hello there
+
+    pilot cyst
+        change
+        location?
+    
+    RESPONSES::self
+        ok<+>change
+            HIDEREAD::
+        no<+>nochange
+            HIDEREAD::
+
+change
+    self
+        change the location
+
+    pilot cyst
+        altering
+            EXEC::env.dullVessel.swapLocation()
+    
+    sys
+        ATTENTION::'thoughtform activity detected'::'dullvessel'
+
+    pilot cyst
+        now
+        ocean
+            SHOWIF::[["dullvessel_position", 'ocean']]
+        orbit
+            SHOWIF::[["dullvessel_position", 'orbit']]
+    
+    RESPONSES::self
+        change location<+>change
+            HIDEREAD::
+        how are you lucid?<+>how
+            SHOWONCE::
+            SHOWIF::[["dullvessel__fixed-hello", true]]
+
+        thank you<+>END
+
+nochange
+    self
+        not right now
+
+    pilot cyst
+        understood
+    
+    RESPONSES::self
+        change location<+>change
+            HIDEREAD::
+        how are you lucid?<+>how
+            SHOWONCE::
+            SHOWIF::[["dullvessel__fixed-hello", true]]
+
+        goodbye<+>END
+`)
+
+env.dialogueActors["glazika"] = {
+    elementID: "glazika3",
+    image: "/img/local/orbit/dullvessel/glazikaeye.gif",
+    type: "obesk glazika",
+    voice: ()=>play('talk')
+}
+
+env.dialogues.glazikaResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        status?<+>status
+        what have you been doing?<+>absence
+
+        fare well<+>END
+`)
+
+env.dialogues["glazika"] = generateDialogueObject(`
+start
+    akizet
+        my <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">glazika</span>!
+    
+    glazika
+        HEEELLLOOOOOOOO akizetesche
+        it is so exciting to see you again!
+        your surface walking grows longer each time!
+    
+    akizet
+        oh yes, i have been indulging the cousins' methods of transport
+        work continues well ahead of the initiative's projections
+
+    RESPOBJ::glazikaResponses
+
+status
+    akizet
+        what is the status of our vessel?
+    
+    glazika
+        consumption is paused for all activities except maintenance! 
+        our pilot has left us in a stable orbit!
+        fuel reserves are acceptable!
+    
+    akizet
+        i see. thank you, my <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">glazika</span>.
+
+    RESPOBJ::glazikaResponses
+
+absence
+    akizet
+        what have you been doing in my absence?
+    
+    glazika
+        mostly maintenance! however, the pilot cyst refuses to sleep! so i have been staying awake!
+        to pass the time, we have been playing little games with the containers while you are gone
+    
+    akizet
+        really? did you make something yourselves?
+            SHOWIF::[['ep1_fed', false]]
+    
+    glazika
+        no no! it is only a game of parasite. as you can see, i am currently winning
+            SHOWIF::[['ep1_fed', false]]
+    
+    akizet
+        well done! we should play soon
+            SHOWIF::[['ep1_fed', false]]
+    
+    akizet
+        ah, and now you are on <span class="code">parasite</span>!
+            SHOWIF::'ep1_fed'
+
+    glazika
+        yes!!
+            SHOWIF::'ep1_fed'
+        though i hold all corners,
+            SHOWIF::'ep1_fed'
+        the pilot cyst is cunning - it still holds other key positions
+            SHOWIF::'ep1_fed'
+        if i lose this one, i will lose one of my containers!!!
+            SHOWIF::'ep1_fed'
+
+    akizet
+        good luck, my friend
+            SHOWIF::'ep1_fed'
+
+    RESPOBJ::glazikaResponses
+`)
+
+env.stageEntities['♣'] = {
+    class: "repair blocks r-hide",
+    contains: {
+        id: "cavewall",
+        class: "cavewall",
+        examineEntity: "climbing wall",
+    }
+}
+
+//utilized in canvas floors to combat vram usage
+env.stage.locales["ops"] = [
+    [".empty.plain", "/img/local/orbit/dullvessel/tiles/empty.gif",],
+    [".blocks.occupied", "/img/local/orbit/dullvessel/tiles/occupied.gif",],
+]
+
+env.stages['dullvessel_observatory'] = {
+    locale: "ops",
+    enterDirection: "down",
+    prerenderExec: ()=>{
+        let portal = env.stages['dullvessel_observatory'].entities.O
+        
+        switch(check('dullvessel_position')) {
+            case 'ocean': 
+                portal.contains.examineEntity = "gate::their waters"
+                portal.contains.class = "ocean portal"
+                break
+            default: 
+                portal.contains.examineEntity = "gate::the void"
+                portal.contains.class = "orbit portal"
+        }
+    },
+
+    exec: ()=>{
+        if(!check('ep1_fed')) {
+            document.querySelectorAll('.gridpiece.repair').forEach(e=>{
+                e.classList.remove('prop', 'blocks', 'teleport')
+                if(e.classList.contains('r-hide')) e.classList.add('blocks')
+                e.innerHTML = ""
+            })
+        }
+
+        env.dullVessel.stageChange()
+    },
+
+    entities: {
+        O: {
+            class:"blocks",
+            contains: {
+                id: "porthole",
+                examineEntity: "gate::the void",
+                html: `<figure></figure>`
+            }
+        },
+        c: {
+            class:"blocks",
+            contains: {
+                id: "pilotcyst",
+                examineEntity: "pilot cyst",
+                class: "sprite",
+                html: `<figure> <div class="chair"></div> <div class="tendrils"></div> <div class="base"></div> </figure>`
+            }
+        },
+        r: {
+            class: "blocks",
+            contains: {
+                id: "container",
+                examineEntity: "container",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+        l: {
+            class: "blocks occupied",
+            contains: {
+                id: "containerleft",
+                examineEntity: "container",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+        i: {
+            class: "blocks occupied",
+            contains: {
+                id: "containerright",
+                examineEntity: "container",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+        g: {
+            class:"blocks",
+            contains: {
+                id: "glazika",
+                examineEntity: "glazika",
+                class: "sprite",
+                html: `<figure id="glazika3"><div class="body"></div> <div class="head"></div></figure>`
+            }
+        },
+
+        /* repaired mode */
+
+        U: {
+            class: "repair r-hide",
+            teleportTarget: "dullvessel_quarters",
+            lockFlag: "EXEC::check('netstat|<', 0)",
+            lockExec: ()=>chatter({actor: 'sys', text: "NOTICE::'prohibitive incoherence'", readout: true})
+        },
+
+        D: {
+            class: "repair r-hide",
+            teleportTarget: "dullvessel_heart"
+        },
+
+        C: {
+            class:"blocks repair r-hide",
+            contains: {
+                class: "dullscreens sprite",
+                html: `<figure></figure>`
+            }
+        },
+        ç: {
+            class:"blocks repair r-hide",
+            contains: {
+                class: "dullscreens sprite side",
+                html: `<figure></figure>`
+            }
+        },
+        
+        P: {
+            class:"blocks repair",
+            contains: {
+                class: "parasiteboard",
+                html: `<div class="target" entity="parasite plane"></div><figure class="boardproper"></figure>`
+            }
+        },
+
+        "☺": {
+            exec: ()=> { if(check('ep1_fed')) content.classList.add('lookdown') }
+        },
+
+        "☻": {
+            exec: ()=>{ if(check('ep1_fed')) content.classList.remove('lookdown') } 
+        },
+
+        "_": {
+            class: "gap raised-floaty blocks incoherentonly",
+        },
+    },
+
+    width: 11,
+    plan: [
+        '_','.','.','.','C','c','ç','.','.','.','.',
+        '.','_','.','.','░','░','░','.','.','.','.',
+        '.','.','.','░','░','░','░','░','.','.','.',
+        '_','_','░','░','░','░','░','░','░','.','.',
+        'U','░','░','░','░','░','░','░','☻','l','r',
+        '♣','░','░','░','░','░','░','☻','☺','P','g',
+        'D','░','░','░','░','░','░','░','☻','i','r',
+        '.','_','░','░','░','░','░','░','░','.','.',
+        '_','.','.','░','░','░','░','░','.','.','.',
+        '.','.','_','.','░','p','░','.','.','.','.',
+        '.','.','.','.','.','O','.','.','.','.','.',
+    ],
+
+    html: `
+        <canvas class="ceiling early" fit="stretch" sprite="/img/local/orbit/dullvessel/pilotspherecrop.gif" baseWidth="13" baseHeight="13"></canvas>
+        <canvas class="ceiling repair" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="12" baseHeight="12"></canvas>
+        <canvas class="floor repair" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="12" baseHeight="12"></canvas>
+    `
+}
+
+env.stages['dullvessel_heart'] = {
+    locale: "ops",
+    exec: ()=> {
+        content.classList.add('heart', 'altdeck')
+        env.dullVessel.stageChange()
+    },
+    leaveExec:()=> content.classList.remove('heart', 'altdeck'),
+    width: 9,
+    entities: {
+        U: {
+            teleportTarget: "dullvessel_observatory",
+            shouldFace: "right",
+            teleportSpot: 67
+        },
+        H: {
+            class:"blocks",
+            contains: {
+                class: "heart sprite"
+            }
+        },
+        Ĥ: {
+            class:"blocks",
+            contains: {
+                class: "heart sprite smaller",
+                examineEntity: "dull heart"
+            }
+        },
+        h: {
+            class:"blocks",
+            contains: {
+                class: "heart sprite small",
+                html: `<figure></figure>`
+            }
+        },
+    },
+    plan: [
+        '.','.','.','.','H','.','.','.','.',
+        '.','.','.','h','.','h','.','.','.',
+        '.','.','h','.','Ĥ','.','h','.','♣',
+        '.','░','░','░','░','░','░','p','U',
+        '.','.','░','░','░','░','░','.','.',
+        '.','.','.','░','░','░','.','.','.',
+        '.','.','.','.','░','.','.','.','.',
+    ],
+
+    html: `
+        <canvas class="ceiling" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="7" baseHeight="7"></canvas>
+        <canvas class="floor" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="7" baseHeight="7"></canvas>
+    `
+}
+
+env.stages['dullvessel_quarters'] = {
+    exec: ()=> {
+        content.classList.add('quarters', 'altdeck')
+        change("beneath_akiroom", true)
+        env.dullVessel.stageChange()
+    },
+    leaveExec:()=> content.classList.remove('quarters', 'altdeck'),
+    width: 26,
+    entities: {
+        o: {
+            teleportTarget: "dullvessel_observatory",
+            shouldFace: "right",
+            teleportSpot: 45
+        },
+
+        'I': {
+            teleportTarget: "dullvessel_beneath",
+            teleportSpot: 45,
+            shouldFace: "right"
+        },
+
+        "_": { class:"blocks darktile" },
+        'Ṇ': { class:"blocks wall north" },
+        'Ṡ': { class:"blocks wall south" },
+
+        d: {
+            contains: {
+                html: `
+                    <div class="doodad d1">
+                        <div class="target" entity="workspace"></div>
+                    </div>
+                    <div class="doodad d2">
+                        <div class="target" entity="translation slab"></div>
+                    </div>
+                    <div class="doodad d3">
+                        <div class="target" entity="cyst cluster"></div>
+                    </div>
+                    <div class="doodad plant2">
+                        <div class="target" entity="bright ground-parasite"></div>
+                    </div>
+                `,
+                dyp: {
+                    class: "desk",
+                    image: 'transparent',
+                    width: 3,
+                    height: 1,
+                    transform: 'translateY(-80%) rotateX(90deg) translateY(-50%)',
+                    style: "background: black;border-radius: 25px;border: 1px solid var(--friend-color)"
+                }
+            } 
+        },
+
+        D: {
+            contains: {
+                html: `
+                    <div class="doodad plant1">
+                        <div class="target" entity="bright ground-parasite"></div>
+                    </div>
+                `,
+                dyp: {
+                    class: "desk",
+                    image: 'transparent',
+                    width: 1,
+                    height: 1,
+                    transform: 'translateY(-140%) rotateX(90deg) translateY(-50%)',
+                    style: "background: black;border-radius: 25px;border: 1px solid var(--friend-color)"
+                }
+            } 
+        },
+
+        "Ḋ": {
+            contains: {
+                html: `
+                    <div class="doodad strange">
+                        <div class="target" entity="column"></div>
+                    </div>
+                `,
+                dyp: {
+                    class: "desk",
+                    image: 'transparent',
+                    width: 1,
+                    height: 1,
+                    transform: 'translateY(-140%) rotateX(90deg) translateY(-50%)',
+                    style: "background: black;border-radius: 25px;border: 1px solid var(--friend-color)"
+                }
+            } 
+        },
+
+        "ḑ": {
+            class: "blocks darktile",
+            contains: {
+                html: `
+                    <div class="doodad container" style="--baseTransform: rotateY(20deg);">
+                        <div class="target" entity="container"></div>
+                    </div>
+                `,
+                dyp: {
+                    class: "desk",
+                    image: 'transparent',
+                    width: 1,
+                    height: 1,
+                    transform: 'translateY(-40%) rotateX(90deg) translateY(50%)',
+                    style: "background: black;border-radius: 25px;border: 1px solid var(--friend-color)"
+                }
+            } 
+        },
+
+        "đ": {
+            class: "blocks darktile",
+            contains: {
+                html: `
+                    <div class="doodad container" style="--baseTransform: rotateY(-20deg);">
+                        <div class="target" entity="container"></div>
+                    </div>
+                `,
+                dyp: {
+                    class: "desk",
+                    image: 'transparent',
+                    width: 1,
+                    height: 1,
+                    transform: 'translateY(-40%) rotateX(90deg) translateY(50%)',
+                    style: "background: black;border-radius: 25px;border: 1px solid var(--friend-color)"
+                }
+            } 
+        },
+
+        B: {
+            class: "blocks notile",
+            contains: {
+                html: `
+                    <div class="target" entity="high-pressure body"></div>
+                    <div class="target" entity="advanced rejuvenation chamber"></div>
+                    <div class="target" entity="personal storage"></div>
+                    <div class="target" entity="equipment storage"></div>
+                `,
+                dyp: {
+                    class: "storagewall",
+                    image: 'url(/img/local/orbit/dullvessel/storagewall.gif)',
+                    width: 5,
+                    height: 2.5,
+                    noback: true,
+                    transform: "translateZ(calc(var(--gridTileSize) * 0.51));"
+                }
+            } 
+        },
+
+        '▒': {
+            class: "invisiblewalk",
+        },
+
+        '☺': {
+            class: "invisiblewalk",
+            exec: ()=>content.classList.add('incohering')
+        },
+
+        '☻': {
+            class: "invisiblewalk",
+            exec: ()=>content.classList.remove('incohering')
+        },
+
+        "♥": {
+            class: "blocks darktile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/orbit/dullvessel/planter1.gif)',
+                    width: 1,
+                    height: 2.5,
+                    cross: true,
+                    transform: 'rotateY(45deg)'
+                }
+            } 
+        },
+    },
+
+    fogRadius: 16,
+    fogAlgorithm: "half",
+    plan: `
+        ...................Ṇ..B...
+        .......░░..........▒░♥░♥░.
+        .......░░..░.....▒▒▒░░░░░♣
+        .......░░░▒▒▒☺☻▒▒▒▒▒░░░░po
+        I░░░░░░░░.░.......▒▒░░░░░.
+        .......░..░........▒đ___ḑ.
+        ......░░░░░.........Ḋ.d.DṠ
+    `
+}
+
+env.stages['dullvessel_beneath'] = {
+    exec: ()=> {
+        content.classList.add('beneath')
+        env.dullVessel.stageChange()
+        change("beneath_dullvessel", true)
+    },
+    leaveExec:()=> content.classList.remove('beneath'),
+    enterDirection: "down",
+    width: 11,
+    fogRadius: 7,
+    fogAlgorithm: "half",
+
+    entities: {
+        '▓': {
+            class: "neglected",
+        },
+
+        c: {
+            class:"blocks",
+            contains: {
+                id: "pilotcyst",
+                class: "sprite",
+                html: `<figure> <div class="tendrils"></div> <div class="base"></div> </figure>`
+            }
+        },
+
+        r: {
+            class: "blocks",
+            contains: {
+                id: "container",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+
+        l: {
+            contains: {
+                id: "containerleft",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+
+        i: {
+            contains: {
+                id: "containerright",
+                class: "sprite",
+                html: `<figure></figure>`
+            }
+        },
+
+        U: {
+            class: "repair r-hide",
+            teleportSpot: 105,
+            shouldFace: "right",
+            teleportTarget: "dullvessel_quarters"
+        },
+
+        D: {
+            class: "repair r-hide",
+            teleportTarget: "nothing",
+            lockFlag: "permalocked",
+            lockExec: ()=>chatter({actor: 'sys', text: "NOTICE::'prohibitive incoherence'", readout: true})
+        },
+
+        C: {
+            class:"blocks repair r-hide",
+            contains: {
+                class: "dullscreens sprite",
+                html: `<figure></figure>`
+            }
+        },
+
+        ç: {
+            class:"blocks repair r-hide",
+            contains: {
+                class: "dullscreens sprite side",
+                html: `<figure></figure>`
+            }
+        },
+
+        "☺": {
+            exec: ()=> { if(check('ep1_fed')) content.classList.add('lookdown') }
+        },
+
+        "☻": {
+            exec: ()=>{ if(check('ep1_fed')) content.classList.remove('lookdown') } 
+        },
+
+        "O": {
+            class: "faketeleport",
+            exec: ()=>{ moveTo("/local/beneath/") }
+        },
+
+        v: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+    },
+
+    plan: `
+        ....Ccç....
+        ....░░░....
+        ...i░░r░...
+        ..i░░░░░░..
+        U░░░░░r░░lr
+        ♣░░░░░░░░░.
+        D░░░░r░░░ir
+        ..l░░░░░░..
+        ...░░░░░...
+        ....░p░....
+        .....O.....
+        .....v.....
+    `
+}
+					
+					
+
+					 
+					//mothchat definition
+					env.dialogues.mthdullresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        dull vessel?<+>dullvessel
+        seen this before?<+>seen
+        glazika?<+>glazika
+            SHOWIF::[["dullvessel__glazika-start"]]
+        is this the wreck?<+>wreck
+
+        akizet's body?<+>body
+            SHOWIF::"exm|dullvessel|high-pressure body"
+
+        dark area?<+>dark
+            SHOWIF::"beneath_dullvessel"
+
+        akizet's room locked again?<+>locked
+            SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
+
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question about the dull vessel
+
+    moth
+        what's up?
+    
+    RESPOBJ::mthdullresp
+
+dullvessel
+    self
+        Why is it called a "dull vessel"?
+    
+    moth
+        well it's a vessel that passes through the dull
+        that's what they call the place they pass through for interstellar travel
+        although you'd think they were saying it's a really boring ship or something
+        and honestly, looking at the state of it, 
+        i was thinking that anyway
+
+    RESPOBJ::mthdullresp
+
+seen
+    self
+        Have you seen inside an obesk ship before?
+    
+    moth
+        not personally, just old pictures and wreck exploration videos
+        this one is suuper small, it's probably just for personal use
+        weird that it's called "our" dull vessel in the memory data though
+        anyway, it's pretty cool to see inside one for real
+        even if it is kinda empty...
+        like where the hell would akizet sit? is that shell thing the only chair?
+
+    RESPOBJ::mthdullresp
+
+glazika
+    self
+        What is a glazika?
+
+    moth
+        i have no idea lol
+        it's hanging out with those containers though
+        maybe it's like a support AI or something
+
+    RESPOBJ::mthdullresp
+
+wreck
+    self
+        Is this the wreck they found this cyst in?
+    
+    moth
+        it's gotta be
+        but it doesn't have nearly as much inside it as the wreck did
+        the pictures i have make it look more "lived in" if that makes sense
+        who knows
+        maybe akizet didn't think about the furniture very much
+
+    RESPOBJ::mthdullresp
+
+body
+    self
+        is that body in akizet's room what she looked like?
+    
+    moth
+        you haven't just looked up what she looked like yet? lol
+        yeah, i mean it sorta does, but i'm not getting any real detail
+        it might be a little more minimal than what she casually, uh...
+        'wore'
+        but based on the inherited context, she probably only ever used that one underwater
+
+    RESPOBJ::mthdullresp
+
+dark
+    self
+        what is the dark area i found?
+        the rendering gets weird in there
+    
+    moth
+        not sure, there's not enough data in there for me to go off of
+        it's definitely part of some <em>different</em> thoughtspace, though
+        the dull vessel is a weird thoughtform because it moves around
+        it doesn't actually enter thoughtspaces, it just attaches to them
+        i don't know why it's set up like this, maybe it was more efficient or something
+        anyway, i think what you saw is part of some memory it attached to a really long time ago, that maybe fell apart
+        like it's some vestigial scrap left of something that rotted off
+        that'd explain that weird incoherence gap where the entrance would be
+        
+    RESPOBJ::mthdullresp
+
+locked
+    self
+        i can't get back into akizet's room
+        i was there earlier just fine
+    
+    moth
+        wtf? yeah i still have the logs
+        it looks like your incoherence tolerance might have been different though
+        could have been something with the <span definition="INTERNAL CONTEXT::'global ambient dissonance value';'known to fluctuate'">GAD value</span>
+            SHOWIF::"++mothfj"
+        did you do anything last time?
+        were you using any of those masks?
+            SHOWIF::"ozo__fairy_intro"
+
+    RESPOBJ::mthdullresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`oltazni`] = `'home';'vaznian cave-city'`;
+						
+					
+					
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(check("TEMP!!from", "abyss")) {
+    change("TEMP!!from", false)
+    content.classList.add('incohering')
+    changeStage('dullvessel_beneath')
+} else if(check("TEMP!!from", "parasite")) {
+    changeStage('dullvessel_observatory', 63, "left")
+    change("TEMP!!from", false)
+} else {
+    changeStage('dullvessel_observatory')
+}
+
+document.addEventListener('keydown', stageKeypress)
+if(check('ep1_fed')) content.classList.add('repaired')
+
+document.addEventListener('corru_net', env.dullVessel.net)
+env.dullVessel.net()
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				},
+
+				onLeaving: (dest = false)=>{
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					document.removeEventListener('corru_net', env.dullVessel.net)
+stageCleanup()
+
+env.dullVessel.waterMusic.unload()
+delete env.dullVessel
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+				}
+			}
+
+			
+
+			env.pageName = "our-dull-vessel";
+			env.pagePath = location.pathname;
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>
