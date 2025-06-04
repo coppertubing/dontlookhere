@@ -340,7 +340,7 @@ env.localization = {
 env.dialogueActors["corruru"] = {
     name: "cor-ru",
     image: "/img/textures/yeyetran.gif",
-    type: "corruru portrait-contain",
+    type: "tdone corruru portrait-contain",
     voice: ()=>{play('talkcroak', 1.75)}
 }
 
@@ -750,7 +750,50 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
 
         "https://coppertubing.github.io/cor-RU/load.js",
-    ]
+    ],
+
+    list: {
+        everything: "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
+        page: {
+            fbx: "https://coppertubing.github.io/cor-RU/localization/basement.js",
+
+            hello: "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
+            hub: "https://coppertubing.github.io/cor-RU/localization/hub.js",
+
+            localcity: "https://coppertubing.github.io/cor-RU/localization/their-city.js",
+            citystreet: "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
+
+            localorbit: "https://coppertubing.github.io/cor-RU/localization/the-void.js",
+            dullvessel: "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
+
+            localocean: "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
+            localship: "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
+            interview1: "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
+
+            localdepths: "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
+
+            localuncosm: "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
+            recosm: "https://coppertubing.github.io/cor-RU/localization/recosm.js",
+            localuncosmwhere: "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
+            sec: "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
+
+            localship2: "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
+
+            embassy: "https://coppertubing.github.io/cor-RU/localization/embassy.js",
+            gol: "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
+            ep4: "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
+
+            abyss: "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
+            parasite: "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
+            beneathdepths: "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
+
+            ep3a2: "https://coppertubing.github.io/cor-RU/localization/frame.js",
+
+            cache: "https://coppertubing.github.io/cor-RU/localization/cache.js",
+            ozo: "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
+        },
+        load: "https://coppertubing.github.io/cor-RU/load.js",
+    }
 }
 
     console.log("%cdefined! making them work now... - @cor-RU", 'color:rgb(229, 142, 22)')

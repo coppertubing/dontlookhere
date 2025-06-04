@@ -96,6 +96,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "convene": "созвать",
 
         "akizetesche": "акизетеше",
+        "akizet": "акизет",
         "Surface Veteran": "Ветеран Поверхности",
         "think to self": "подумать про себя",
         "ruminate over cyst": "размышлять о цисте",
@@ -116,11 +117,10 @@ env.localization.page['embassy'] = {dialogues: {},
         "kazki": "казки",
         "bozko": "бозко",
 
-        "qou": "куу",
-        "tir": "тир",
-        "kiv": "кив",
-        "jut": "жат",
-        "vel": "вел",
+        "tir qou": "тир куу",
+        "kiv qou": "кив куу",
+        "jut qou": "жат куу",
+        "vel qou": "вел куу",
 
         "movefriend": "движедруг",
 

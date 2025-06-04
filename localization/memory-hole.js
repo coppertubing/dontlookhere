@@ -154,7 +154,7 @@ start
 `)
 
 
-env.localization.page["localuncosmwhere"].dialogues["cavik"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["cavik"] = generateDialogueObject(`
 start
     self
         привет?
@@ -254,7 +254,7 @@ ____END
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["clement"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["clement"] = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -299,7 +299,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["corru"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["corru"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -403,7 +403,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["dog"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["dog"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -454,7 +454,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["dull"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["dull"] = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -529,7 +529,7 @@ start
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
 `)
-env.localization.page["localuncosmwhere"].dialogues["flower"] /*--- кс кс слизнячок (изабель) СЛИЗНЯЧОООООООООООООООООООООООООООООКРПГСНАВЧРЫЯВ*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["flower"] /*--- кс кс слизнячок (изабель) СЛИЗНЯЧОООООООООООООООООООООООООООООКРПГСНАВЧРЫЯВ*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -620,7 +620,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["humor"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["humor"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -722,7 +722,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["larval"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["larval"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -892,7 +892,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["parasite"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["parasite"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -961,7 +961,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["velzie"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["velzie"] = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найдена связная сущность'
@@ -1046,7 +1046,7 @@ hello
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["spire"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["spire"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1121,7 +1121,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["surface"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["surface"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1185,7 +1185,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/uncosm/no/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["veilk"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["veilk"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1219,7 +1219,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["yuzku"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["yuzku"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1306,7 +1306,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["zuzucri"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["zuzucri"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1460,7 +1460,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["localuncosmwhere"].dialogues["zmask"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
+env.localization.page["sec"].dialogues["zmask"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
@@ -1648,7 +1648,7 @@ start
             EXEC::moveTo("/local/depths/")
 `)
 // эффигия
-env.localization.page["localuncosmwhere"].dialogues.drinkquestions = generateDialogueObject(`
+env.localization.page["sec"].dialogues.drinkquestions = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         кто ты?<+>who
@@ -1658,7 +1658,7 @@ RESPOBJ::
             SHOWIF::"ozo__council-task"
         пока<+>END
 `)
-env.localization.page["localuncosmwhere"].dialogues["bar"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["bar"] = generateDialogueObject(`
 loop
     RESPOBJ::drinkquestions
 
@@ -1760,7 +1760,7 @@ ozo
         мне нужно использовать маску<+>loop
             FAKEEND::(назад)
 `)
-env.localization.page["localuncosmwhere"].dialogues["dead"] = generateDialogueObject(`
+env.localization.page["sec"].dialogues["dead"] = generateDialogueObject(`
 start
     sys
         ОШИБКА::'нет данных';'визуализация невозможна'
@@ -1825,7 +1825,7 @@ start
         боже диалог
 
     fiv
-        
+        Что
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'

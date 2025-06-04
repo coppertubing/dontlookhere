@@ -88,4 +88,4 @@ https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js
 https://coppertubing.github.io/cor-RU/localization/entity-menu.js
 
 
-https://coppertubing.github.io/cor-RU/localization/load.js
+https://coppertubing.github.io/cor-RU/load.js
