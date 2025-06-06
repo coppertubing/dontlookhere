@@ -2282,7 +2282,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
             crit: 0.3,
             amt: 1,
             status: {
-                stun: { name: "stun", length: 3 },
+                stun: { name: "stun", length: 1 },
             }
         },
 
@@ -4545,9 +4545,6 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
             onUse:`'[STATUS::evasion] to self';'[STATUS::focused] to all allies'`,
         },
         stats: {
-            accuracy: .8,
-            crit: 0.4,
-            amt: 2,
             status: {
                 evasion: {
                     name: 'evasion',
@@ -11604,7 +11601,7 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
     spikes: {
         slug: "spikes",
         name: "Spikes",
-        help: "return 50% incoming damage to attacker",
+        help: "return 50% incoming damage to attacker (min:1)",
         beneficial: true,
         opposite: "siphon",
         removes: ["siphon"],
@@ -12768,7 +12765,7 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
         
         events: {
             onCreated: function({statusObj}) {
-                if(statusObj.slug != this.status.slug) return;
+                if(statusObj.slug != this.status.slug) return; 
                 
                 this.status.power = 0
                 if(this.status.affecting?.member?.components) for (const [slotName, slotContents] of Object.entries(this.status.affecting.member.components)) {
@@ -12815,10 +12812,11 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
             },
 
             onAddStatus: function({target, statusObj}) {
-                if(statusObj.slug != "spikes" || !this.status.power) return;
+                if(statusObj.slug != "spikes" || !this.status.power || statusObj.powerAdjusted) return; 
                 statusObj.oldName = statusObj.name
                 statusObj.name = statusObj.name + '+'.repeat(this.status.power)
                 statusObj.help = processHelp(statusObj).replace("min:1", `min:${this.status.power + 1}`)
+                statusObj.powerAdjusted = true
 
                 updateStats({actor: this.status.affecting})
             },

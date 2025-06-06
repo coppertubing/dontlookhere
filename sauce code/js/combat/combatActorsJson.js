@@ -13,7 +13,7 @@ if(typeof env.COMBAT_ACTORS == "undefined") env.COMBAT_ACTORS = {
         portraitUrl: '/img/placeholdportrait.gif',
 
         //"generic" critta reactions are kind of blank slates
-        reactions: {
+         reactions: {
             evade: ["missed", "close", "aa"],
             crit: ["ha", "perfect", "take that"],
             crit_buff: ["easy", "good"],
