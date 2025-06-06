@@ -559,7 +559,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     fancy: {
         general: 'color:rgb(229, 142, 22)',
         observed: 'color:rgb(229, 194, 22)',
-        setobserver: 'color:rgb(227, 189, 0)'
+        setobserver: 'color:rgb(227, 227, 0)'
     },
 
     // funky functions that help with translation
@@ -664,7 +664,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     observerDialogue: new MutationObserver(()=>{
         cor_ru.processReply();
-        console.log("%cdialogue observed! @cor-RU", cor_ru.fancy.general);
+        console.log("%cdialogue observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerDialogueObserve: function () {
         cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true });
@@ -819,8 +819,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         }
         else {
             if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-            for (let i = 0; i < Object.keys(cor_ru.list.page); i++) if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove());
-            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) listArray.push(cor_ru.list.combat)
+            for (let i = 0; i < Object.keys(cor_ru.list.page); i++) {if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove())};
+            if ((document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) && (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0)) listArray.push(cor_ru.list.combat)
             else if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0) document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).forEach((el)=> el.remove())
         }
         if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
