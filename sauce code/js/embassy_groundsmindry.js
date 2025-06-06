@@ -573,7 +573,6 @@ createEntity({
 
 createEntity({
     name: 'ik golem',
-    hide: true,
     type: "thoughtform qou obesk portrait-contain collapse",
     image: "/img/sprites/obesk/ikgol/portrait_awake.gif",
     pathLimit: "/local/ocean/embassy/golem",

@@ -588,10 +588,11 @@ env.e3a2 = {
             env.e3a2.tracks[bgm.category][bgm.name] = newBgm
         })
 
+        //built-in mod protection
         env.e3a2.preferredBgm = {
-            boss: env.e3a2.tracks.boss[check("e3a2m_boss")] || check("e3a2m_boss") || env.e3a2.miniboss,
-            combat: env.e3a2.tracks.combat[check("e3a2m_combat")] || check("e3a2m_combat") || env.e3a2.combat,
-            peace: env.e3a2.tracks.peace[check("e3a2m_peace")] || check("e3a2m_peace") || page.bgm
+            boss: env.e3a2.tracks.boss[check("e3a2m_boss")] || env.e3a2.miniboss,
+            combat: env.e3a2.tracks.combat[check("e3a2m_combat")] || env.e3a2.combat,
+            peace: env.e3a2.tracks.peace[check("e3a2m_peace")] || page.bgm
         }
 
         // it can be "random" or "mute"

@@ -2952,10 +2952,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
     //initialize the page definitions with any translation overrides if it isn't already set up
     if(!page.formedDefinitionStrings) {
         const localization = getLocalizationForPage()
-        for (let key in localization.definitions)
-            if (env.definitions.hasOwnProperty(key)) env.definitions[key] = localization.definitions[key];
-
-        page.formedDefinitionStrings = env.definitions
+        page.formedDefinitionStrings = {...env.definitions, ...localization.definitions }
     }
     
     //we want to prioritize phrases over words
@@ -2966,21 +2963,22 @@ function processDefinitionsInString(input, {force = false} = {}) {
         const type = (typeof definition === "object") ? definition.type || "INHERITED CONTEXT" : "INHERITED CONTEXT";
         const text = (typeof definition === "object") ? definition.text || definition : definition;
 
-        if(phrase[0] == "θ" || phrase.startsWith("█")) { //theta definitions are prefixed so that they can be immediately replaced without scanning
+        if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
             //used mostly for special/context sensitive ones
-            if(finalInput.includes(">θ") || finalInput.includes(">█")) return
             finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${phrase.replace("θ", "")}</span>`)
 
         } else {
             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const phraseRegex = new RegExp(`\\b(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})\\b`, 'gi');
+            const edgeStart = `(?<=\\s|^|[,.;:!?])`
+            const edgeEnd = `(?=\\s|$|[,.;:!?])`
+            const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
 
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
                 const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
                 
-                // replace the inputs - scanning to remove the match, finalInput to add the definition to the output
+                //replace the inputs - scanning to remove the match, finalInput to add the definition to the output
                 scanningInput = scanningInput.replaceAll(match[0], "")
 
                 //we do this to target replacements only outside of HTML
@@ -3099,7 +3097,8 @@ if (
     !(
       window.location.hostname.endsWith("corru.observer") ||
       window.location.hostname === "localhost" ||
-      window.location.hostname.endsWith("pages.dev") //cloubflare....
+      window.location.hostname.endsWith("pages.dev") || //cloubflare....
+      location.href.startsWith("app://") // don't ask
     )
 ) {
     window.location.href = "https://corru.observer";

@@ -813,9 +813,11 @@ ____SHOWIF::'recosm__enemy-ep1seen'
         hahaha!!! there lies the reason!
         we do not look down into the darkness, interloper!
         it was part of our promise
-        if there is something down there, we will never see it...
+        if there is something down there, <em>we</em> will never see it...
         but perhaps our friends can help, once you fetch them!
-            SHOWIF::'ozo__council-task'
+            SHOWIF::[['ozo__council-task', true], ["ozo__fairy_intro", false], ["ozo__isabel_intro", false]]
+        but perhaps our friends might be more willing to look!
+            SHOWIF::[['ozo__council-task', true], ["ozo__fairy_intro", true], ["ozo__isabel_intro", true]]
 ____END
     
     RESPONSES::self
@@ -1419,7 +1421,7 @@ akizet
     
     isabel
         akizet was a wonderful woman
-        a vel skilled enough to brave the surface for most of her living eyes,
+        a vel skilled enough to brave the surface for most of her living θeyes,
         one whose smile faded in θdeath, as velzie lured her into chaos
         giving way to paranoia, distrust, loneliness, violence...
         she didn't deserve it, interloper

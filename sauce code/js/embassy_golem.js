@@ -535,6 +535,7 @@ env.embassy.conditionalAugPoint = (amt = 1, reason) => {
 env.embassy.skips = {
     personnel: ()=>{
         vn.done()
+        content.classList.remove('painmode', 'painhalf', 'painfade', 'painprep')
         change("PAGE!!gp", true)
 
         if(check("gameplay_off")) {
@@ -1434,7 +1435,7 @@ start
             SHOWIF::'TEMP!!debug'
             EXEC::vn.done()
 
-SKIP::env.embassy.skips.personnel()
+SKIP::env.embassy.skips.personnel();
 `)
 
 /* personnel postfight */
@@ -5414,7 +5415,7 @@ ____END
         it has to be<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 //SHOWIF::"gol__intro-end"
@@ -5524,7 +5525,7 @@ theory
         agreed!<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 
@@ -5739,7 +5740,7 @@ theory
         i see<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 env.dialogues["mindcores_resp"] = generateDialogueObject(`
@@ -6134,7 +6135,7 @@ sorrycyst
             FAKEEND::(back)
             EXEC::vnp({itzil: "defocus"})
 
-SKIP::
+SKIP::vn.done()
 `)
 
 env.dialogues["cavik_resp"] = generateDialogueObject(`
@@ -6283,7 +6284,7 @@ theory
         just stay together<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 env.dialogues["bozko_resp"] = generateDialogueObject(`
@@ -6449,7 +6450,7 @@ theory
         we will, bozko<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 

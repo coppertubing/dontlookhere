@@ -719,7 +719,7 @@ function generateDialogueObject(genString) {
 
                 } else if(text.includes("RESPOBJ::")) { //it's the name of a reusable response object, i.e. env.hello.generalReceptionistResponses
                     let respobj = text.replace('RESPOBJ::', '')
-                    const localization = getLocalizationForPage()
+                    const localization = getLocalizationForPage(true) // force a rebuild per use of RESPOBJ - not ideal but it's the only way if you're defining things as you go
                     if(localization.dialogues) lastParent[0].responses = localization.dialogues[respobj] || env.dialogues[respobj]
                     else lastParent[0].responses = env.dialogues[respobj]
 
