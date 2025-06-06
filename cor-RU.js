@@ -25,10 +25,7 @@
 */
 
 
-console.log("%chello world! - @cor-RU", 'color:rgb(229, 142, 22)')
-console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", 'color:rgb(229, 142, 22)')
-console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", 'color:rgb(229, 142, 22)')
-
+console.log("hello world! - @cor-RU")
 
 // temporary until corru.works fixes it
 function generateDialogueObject(genString) {
@@ -557,6 +554,14 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     border-radius: 100%;
 }`,
 
+    // i like colors
+
+    fancy: {
+        general: 'color:rgb(229, 142, 22)',
+        observed: 'color:rgb(229, 194, 22)',
+        setobserver: 'color:rgb(227, 189, 0)'
+    },
+
     // funky functions that help with translation
 
     processWeirdTranslation: function (selector, attribute = false) {
@@ -640,39 +645,39 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
         cor_ru.processWeirdTranslation("#mindspike-scanner", "mindpike");
-        console.log("%ccommon observed! - @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("%ccommon observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerCommonObserve: function () {
         cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
         cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
-        console.log("%ccommon observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
+        console.log("%ccommon observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerGad: new MutationObserver(()=>{
         cor_ru.processWeirdTranslation(".mindsci-status");
-        console.log("%cGAD observed! - @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("%cGAD observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerGadObserve: function () {
         cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true });
-        console.log("%cgad observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
+        console.log("%cgad observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerDialogue: new MutationObserver(()=>{
         cor_ru.processReply();
-        console.log("%cdialogue observed! @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("%cdialogue observed! @cor-RU", cor_ru.fancy.general);
     }),
     observerDialogueObserve: function () {
         cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true });
-        console.log("%cdialogue observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
+        console.log("%cdialogue observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerMasks: new MutationObserver(()=>{
         processTranslation(document.querySelector(`#ozo-mask-grid`))
-        console.log("%cmasks observed! - @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("%cmasks observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerMasksObserve: function () {
         cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true });
-        console.log("%cmasks  observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
+        console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerPage: new MutationObserver(()=>{
@@ -685,19 +690,19 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
 
-
+        cor_ru.updateResources();
 
         cor_ru.stepKeyImplement();
 
-        console.log("%cpage observed! - @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerPageObserve: function () {
         cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']});
-        console.log("%cpage  observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')},
+        console.log("%cpage observer is set up! - @cor-RU", cor_ru.fancy.setobserver)},
 
     /*observerWarn: new MutationObserver(()=>{
         cor_ru.processWarning();
-        console.log("warnings observed! - @cor-RU", 'color:rgb(229, 142, 22)');
+        console.log("warnings observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerWarnObserve: function () {cor_ru.observerWarn.observe("???", { childList: true })}, UNFINISHED*/
 
@@ -810,18 +815,21 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             listArray.push(cor_ru.list.everything);
             listArray.push(cor_ru.list.page[page.dialoguePrefix]);
             listArray.push(cor_ru.list.load);
-            if (page.dialoguePrefix == "embassy" || "gol" || "ep4" || "ep3a2") listArray.push(cor_ru.list.combat);
+            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
             if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.page[page.dialoguePrefix])
             for (let i = 0; i < Object.keys(cor_ru.list.page); i++) if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove());
-            if ((page.dialoguePrefix == "embassy" || "gol" || "ep4" || "ep3a2") && document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.combat)
+            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) listArray.push(cor_ru.list.combat)
             else if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0) document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).forEach((el)=> el.remove())
         }
-        if (listArray.length != 0) return addResources(listArray);
-        else console.log("%cno updates for resources needed! - @cor-RU", 'color:rgb(229, 142, 22)')
+        if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
+        else console.log("%cno updates for resources needed! - @cor-RU", cor_ru.fancy.general)
     },
 }
+
+console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
+console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
 
 document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
 
