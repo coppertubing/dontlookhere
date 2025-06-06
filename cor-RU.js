@@ -827,4 +827,4 @@ document.head.appendChild(document.createElement('style').appendChild(document.c
 
 page.formedDefinitionStrings = undefined
 
-cor_ru.addResources(true)
+cor_ru.updateResources(true)
