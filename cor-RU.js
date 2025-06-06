@@ -25,7 +25,9 @@
 */
 
 
-console.log("%chello world! defining some basic things now... - @cor-RU", 'color:rgb(229, 142, 22)')
+console.log("%chello world! - @cor-RU", 'color:rgb(229, 142, 22)')
+console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", 'color:rgb(229, 142, 22)')
+console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", 'color:rgb(229, 142, 22)')
 
 
 // temporary until corru.works fixes it
@@ -638,60 +640,64 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
         cor_ru.processWeirdTranslation("#mindspike-scanner", "mindpike");
-        console.log("common observed! @cor-RU");
+        console.log("%ccommon observed! - @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerCommonObserve: function () {
         cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
-        console.log("common is observing #mindspike-scanner! @cor-RU")
         cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
-        console.log("common is observing #content! @cor-RU")
+        console.log("%ccommon observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
     },
 
     observerGad: new MutationObserver(()=>{
         cor_ru.processWeirdTranslation(".mindsci-status");
-        console.log("GAD observed! @cor-RU");
+        console.log("%cGAD observed! - @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerGadObserve: function () {
         cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true });
-        console.log("gad is observing .mindsci-status! @cor-RU")
+        console.log("%cgad observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
     },
 
     observerDialogue: new MutationObserver(()=>{
         cor_ru.processReply();
-        console.log("dialogue observed! @cor-RU");
+        console.log("%cdialogue observed! @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerDialogueObserve: function () {
         cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true });
-        console.log("dialogue is observing #dialogue-box! @cor-RU")
+        console.log("%cdialogue observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
     },
 
     observerMasks: new MutationObserver(()=>{
         processTranslation(document.querySelector(`#ozo-mask-grid`))
-        console.log("masks observed! @cor-RU");
+        console.log("%cmasks observed! - @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerMasksObserve: function () {
         cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true });
-        console.log("masks is observing #masks! @cor-RU")
+        console.log("%cmasks  observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')
     },
 
     observerPage: new MutationObserver(()=>{
         processTranslation();
         cor_ru.processStatic();
         cor_ru.processMenu();
+
         cor_ru.observerCommonObserve();
         cor_ru.observerGadObserve();
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
+
+
+
         cor_ru.stepKeyImplement();
-        console.log("page observed! @cor-RU");
+
+        console.log("%cpage observed! - @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerPageObserve: function () {
         cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']});
-        console.log("page is observing body! @cor-RU")},
+        console.log("%cpage  observer is set up! - @cor-RU", 'color:rgb(229, 142, 22)')},
 
     /*observerWarn: new MutationObserver(()=>{
         cor_ru.processWarning();
-        console.log("warnings observed! @cor-RU");
+        console.log("warnings observed! - @cor-RU", 'color:rgb(229, 142, 22)');
     }),
     observerWarnObserve: function () {cor_ru.observerWarn.observe("???", { childList: true })}, UNFINISHED*/
 
@@ -792,14 +798,33 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             cache: "https://coppertubing.github.io/cor-RU/localization/cache.js",
             ozo: "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
         },
+        combat: "https://coppertubing.github.io/cor-RU/localization/combat.js",
+        entityMenu: "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
         load: "https://coppertubing.github.io/cor-RU/load.js",
-    }
+    },
+
+    updateResources: function (fresh = false) {
+        let listArray = [];
+
+        if (fresh == true) {
+            listArray.push(cor_ru.list.everything);
+            listArray.push(cor_ru.list.page[page.dialoguePrefix]);
+            listArray.push(cor_ru.list.load);
+            if (page.dialoguePrefix == "embassy" || "gol" || "ep4" || "ep3a2") listArray.push(cor_ru.list.combat);
+        }
+        else {
+            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.page[page.dialoguePrefix])
+            for (let i = 0; i < Object.keys(cor_ru.list.page); i++) if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove());
+            if ((page.dialoguePrefix == "embassy" || "gol" || "ep4" || "ep3a2") && document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.combat)
+            else if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0) document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).forEach((el)=> el.remove())
+        }
+        if (listArray.length != 0) return addResources(listArray);
+        else console.log("%cno updates for resources needed! - @cor-RU", 'color:rgb(229, 142, 22)')
+    },
 }
 
-    console.log("%cdefined! making them work now... - @cor-RU", 'color:rgb(229, 142, 22)')
-
-document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
+document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
 
 page.formedDefinitionStrings = undefined
 
-addResources(cor_ru.dalist)
+cor_ru.addResources(true)
