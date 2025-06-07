@@ -563,7 +563,7 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'применить незаконное землемыслие';'изменить строение цели'",
         "onHit": "'[STATUS::destabilized]'",
         "onCrit": "'дополнительная [STATUS::destabilized]'",
-    conditional: ()=> checkItem("core_translation") && check("PAGE!!embassy_day", 3.99) ? 
+    conditional: ()=> checkItem("core_translation") && check("env!!embassy_day", 3.99) ? 
                 `<em>ПРЕОБРАЗОВАТЕЛЬ СИГНАЛА::</em>'расширена функциональность'\n<em>VS ВРАГОВ</em>::'[STATUS::vulnerable]'\n<em>VS СОЮЗНИКОВ</em>::'[STATUS::evasion]'` : ``
     }
 
@@ -732,7 +732,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.cavik_attack.details = {
         "flavor": "'throw hastily made minor explosive';'chance for greater explosion'",
         "onHit": "'[STAT::amt]'",
-        onCrit: ()=> `'HIT all foes for [STAT::amt]'${page.name == "frame" ? `;'additional hits do not trigger on-hit effects'` : ``}`,
+        onCrit: ()=> `'HIT all foes for [STAT::amt]'${env.name == "frame" ? `;'additional hits do not trigger on-hit effects'` : ``}`,
     }
 
     /* - bazruka - */
@@ -748,7 +748,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.bazruka.details = {
         "flavor": "'utilize rapid-formed micro-explosive';'chance for greater shrapnel explosion'",
         "onHit": "'[STAT::amt]'",
-        onCrit: () => `'HIT all foes for [STAT::amt] [STATUS::puncture]'${page.name == "frame" ? `;'additional hits trigger on-hit effects'` : ``}`,
+        onCrit: () => `'HIT all foes for [STAT::amt] [STATUS::puncture]'${env.name == "frame" ? `;'additional hits trigger on-hit effects'` : ``}`,
     }
 
     /* - bozko_attack - */
@@ -1039,7 +1039,7 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.incoherent_gundown.name = "" // BSTRD BULLETS
     env.ACTIONS.incoherent_gundown.desc = "" // BATTLEFIELD 100% -1HP per hit
-    page.localization.strings["%USER AIMS AT %TARGET"] = ""
+    env.localization.strings["%USER AIMS AT %TARGET"] = ""
 
     /* - special_fullauto - */
 
@@ -1101,14 +1101,14 @@ cor_ru['redefineActions'] = function () {
         "hit": "%TARGET DID THEIR BEST",
         "miss": "%TARGET ESCAPED BY A HAIR"
     }
-    page.localization.strings["THE WALLS SHIFT AROUND %TARGET"] = ""
-    page.localization.strings[`The walls close in around милтза`] = ""
-    page.localization.strings[`The walls close in around тозик`] = ""
-    page.localization.strings[`The walls close in around`] = ""
-    page.localization.strings["Withstand the attack"] = ""
-    page.localization.strings["NOTE::'100% -2HP'"] = ""
-    page.localization.strings["Try a risky dodge"] = ""
-    page.localization.strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN'"] = ""
+    env.localization.strings["THE WALLS SHIFT AROUND %TARGET"] = ""
+    env.localization.strings[`The walls close in around милтза`] = ""
+    env.localization.strings[`The walls close in around тозик`] = ""
+    env.localization.strings[`The walls close in around`] = ""
+    env.localization.strings["Withstand the attack"] = ""
+    env.localization.strings["NOTE::'100% -2HP'"] = ""
+    env.localization.strings["Try a risky dodge"] = ""
+    env.localization.strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN'"] = ""
 
     /* - special_archiveshelf_annihilate - */
 
@@ -1125,17 +1125,17 @@ cor_ru['redefineActions'] = function () {
         "onUse": "'present target foe a choice of outcome'",
         "conditional": "<em>HIT 1</em>::'HIT::[STAT::hit1ACC]% CRIT::0% [STAT::hit1HP]'\\n<em>HIT 2</em>::'HIT::[STAT::hit2ACC]% CRIT::[STAT::hit2CRIT]% [STAT::hit2HP]';'[STATUS::stun] [STATUS::puncture] on CRIT'"
     }
-    page.localization.strings[`The shelf lunges at тозик`] = ""
-    page.localization.strings[`The shelf lunges at`] = ""
-    page.localization.strings["NOTE::'100% -3HP'"] = ""
-    page.localization.strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE'"] = ""
+    env.localization.strings[`The shelf lunges at тозик`] = ""
+    env.localization.strings[`The shelf lunges at`] = ""
+    env.localization.strings["NOTE::'100% -3HP'"] = ""
+    env.localization.strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE'"] = ""
 
     /* - incoherent_movefriend - */
 
     env.ACTIONS.incoherent_movefriend.name = "" // Wallspikes
     env.ACTIONS.incoherent_movefriend.desc = "" // 'k̶̡̇̄i̵͈͑̐̑̌̈́̇̾̕͝l̷̡͓̬̩̖̽̂̿̏͒̎̽̏̀̿̏̅̈l̵̯̦̪͠'
     env.ACTIONS.incoherent_movefriend.help = "" // BATTLEFIELD 300% -1HP
-    page.localization.strings["THE WALLS TWIST AROUND THE WHOLE TEAM"] = ""
+    env.localization.strings["THE WALLS TWIST AROUND THE WHOLE TEAM"] = ""
 
     /* - windup - */
 
@@ -1303,7 +1303,7 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'collect additional allies from elsewhere'",
         "conditional": "<em>SUMMON::</em>'summon 2 dull containers (max:7)'"
     }
-    page.localization.strings["%USER CONJURES CONTAINERS VIA THE DULL"] = ""
+    env.localization.strings["%USER CONJURES CONTAINERS VIA THE DULL"] = ""
 
     /* - special_dullbuff - */
 
@@ -1331,13 +1331,13 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.incoherent_golemboss.name = "" // GOLEM BRAWL
     env.ACTIONS.incoherent_golemboss.desc = "" // MELEE FOE_KO::'-20HP' ALLY_KO::'-3HP'
-    page.localization.strings["%USER RAISES ITS GAUNTLETS"] = ""
-    page.localization.strings["IS STRUCK DOWN"] = ""
-    page.localization.strings["%TARGET IS HURT IN THE CHAOS"] = ""
-    page.localization.strings["%TARGET AND %USER ARE BOTH HURT IN THE CHAOS"] = ""
-    page.localization.strings[`keep fighting!!`] = ""
-    page.localization.strings[`you can do this`] = ""
-    page.localization.strings[`it is falling apart! just one more time!`] = ""
+    env.localization.strings["%USER RAISES ITS GAUNTLETS"] = ""
+    env.localization.strings["IS STRUCK DOWN"] = ""
+    env.localization.strings["%TARGET IS HURT IN THE CHAOS"] = ""
+    env.localization.strings["%TARGET AND %USER ARE BOTH HURT IN THE CHAOS"] = ""
+    env.localization.strings[`keep fighting!!`] = ""
+    env.localization.strings[`you can do this`] = ""
+    env.localization.strings[`it is falling apart! just one more time!`] = ""
 
     /* - special_steerleft - */
 
@@ -1609,7 +1609,7 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'enact plan';'unleash flurry of strikes upon foes'",
         "onUse": "'use primary action on random foes per T:[STATUS::evasion]';'lose all [STATUS::evasion]'"
     }
-    page.localization.strings["%USER LAUNCHES THEIR ATTACK"] = ""
+    env.localization.strings["%USER LAUNCHES THEIR ATTACK"] = ""
     env.ACTIONS.special_enact.disableIf = (actor)=>{ if(!hasStatus(actor,"evasion")) return "REQUIRES EVASION" }
 
     /* - mad_claw - */
@@ -1669,7 +1669,7 @@ cor_ru['redefineActions'] = function () {
         "onHit": "'inflict one of following';'[STATUS::destabilized]';'[STATUS::fear]';'[STATUS::stun]'",
         "conditional": "<em>SPECIAL::</em>'5% chance to reduce foe HP by 75%'"
     }
-    page.localization.strings["PERISH"] = ""
+    env.localization.strings["PERISH"] = ""
 
     /* - special_invoke_madness - */
 
@@ -1885,7 +1885,7 @@ cor_ru['redefineActions'] = function () {
         "onHit": "'[STAT::amt]'",
         "onCrit": "'[STATUS::destabilized] [STATUS::fear]"
     }
-    page.localization.strings[`stays wound up!`] = ""
+    env.localization.strings[`stays wound up!`] = ""
 
     /* - special_rule - */
 
@@ -1933,7 +1933,7 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'fetch actors from elsewhere to fight';'strength affected by tension'",
         "conditional": "<em>SUMMON::</em>'+1 random foe (max:6), +1 if user HP <50% max'"
     }
-    page.localization.strings["%USER CALLS ACTORS TO THE STAGE"] = ""
+    env.localization.strings["%USER CALLS ACTORS TO THE STAGE"] = ""
 
     /* - special_sillybuff - */
 
@@ -1955,7 +1955,7 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'fetch actors from elsewhere to fight';'strength affected by tension'",
         "conditional": "<em>SUMMON::</em>'+2 random foes (max:6)'"
     }
-        page.localization.strings["%USER WEAKLY CALLS FOR HELP"] = ""
+        env.localization.strings["%USER WEAKLY CALLS FOR HELP"] = ""
 
     /* - special_wallspawn_boat - */
 
@@ -1973,25 +1973,25 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.boat_clw_windup.usage = {
         "act": "%USER CLAWS AT THE CONTROLS!!"
     }
-    page.localization.strings["DONT LET THAT FC*K GET THE WHEEL"] = "НЕ ПУСКАЙТЕ ЭТГО У*БКА ЗА ШТУРВАЛ"
-    page.localization.strings["interloper! USE PISTOL!"] = "лазучик! СТРЕЛЯЙ!"
+    env.localization.strings["DONT LET THAT FC*K GET THE WHEEL"] = "НЕ ПУСКАЙТЕ ЭТГО У*БКА ЗА ШТУРВАЛ"
+    env.localization.strings["interloper! USE PISTOL!"] = "лазучик! СТРЕЛЯЙ!"
 
     /* - special_boat_clw_grab - */
 
     env.ACTIONS.special_boat_clw_grab.name = "" // Grab Wheel
     env.ACTIONS.special_boat_clw_grab.desc = "" // 'direct vessel in random direction'
     env.ACTIONS.special_boat_clw_grab.help = "" // VESSEL::RANDOM MOVEMENT
-    page.localization.strings["%USER GRABS THE WHEEL AND STEERS LEFT"] = "%USER ХВАТАЕТ ШТУРВАЛ И ПОВОРАЧИВАЕТ НАЛЕВО"
-    page.localization.strings["%USER GRABS THE WHEEL AND STEERS RIGHT"] = "%USER ХВАТАЕТ ШТУРВАЛ И ПОВОРАЧИВАЕТ НАПРАВО"
-    page.localization.strings[`%USER FORCES THE BOAT FORWARDS`] = "%USER НАПРАВЛЯЕТ ЛОДКУ ВПЕРЁД"
+    env.localization.strings["%USER GRABS THE WHEEL AND STEERS LEFT"] = "%USER ХВАТАЕТ ШТУРВАЛ И ПОВОРАЧИВАЕТ НАЛЕВО"
+    env.localization.strings["%USER GRABS THE WHEEL AND STEERS RIGHT"] = "%USER ХВАТАЕТ ШТУРВАЛ И ПОВОРАЧИВАЕТ НАПРАВО"
+    env.localization.strings[`%USER FORCES THE BOAT FORWARDS`] = "%USER НАПРАВЛЯЕТ ЛОДКУ ВПЕРЁД"
 
     /* - special_boat_waveattack - */
 
     env.ACTIONS.special_boat_waveattack.name = "" // Grab Wheel
     env.ACTIONS.special_boat_waveattack.desc = "" // 'direct vessel in random direction'
     env.ACTIONS.special_boat_waveattack.help = "" // VESSEL::RANDOM MOVEMENT
-    page.localization.strings[`%USER CREATES TURBULENCE!!`] = ""
-    page.localization.strings[`%USER REWRITES THE OCEAN...`] = ""
+    env.localization.strings[`%USER CREATES TURBULENCE!!`] = ""
+    env.localization.strings[`%USER REWRITES THE OCEAN...`] = ""
 
     /* - special_malware_drill - */
 
@@ -2066,10 +2066,10 @@ cor_ru['redefineActions'] = function () {
         "flavor": "'â«§âª¶ã¥¥ã³'",
         "onUse": "'SSP IN  THE WHEE L LL LL'"
     }
-    page.localization.strings["LUCKY! CHA CHA"] = ""
-    page.localization.strings["BAD TIM!::E NO,W!"] = ""
-    page.localization.strings["BOOM :=)"] = ""
-    page.localization.strings["THINK AGAIN"] = ""
+    env.localization.strings["LUCKY! CHA CHA"] = ""
+    env.localization.strings["BAD TIM!::E NO,W!"] = ""
+    env.localization.strings["BOOM :=)"] = ""
+    env.localization.strings["THINK AGAIN"] = ""
 
     /* - special_intrusive_ally - */
 
@@ -2106,8 +2106,8 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.incoherent_mimic.details = {
         "onUse": "'copy actions of target';'persists after combat';'some actions cannot be mimicked'"
     }
-    page.localization.strings["MIMIC FAILED!"] = ""
-    page.localization.strings["MIMIC SUCCESS!"] = ""
+    env.localization.strings["MIMIC FAILED!"] = ""
+    env.localization.strings["MIMIC SUCCESS!"] = ""
 
     /* - bomb_plant - */
 
@@ -2154,7 +2154,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.special_bomb_detonate_victim.details = {
         "onUse": "'explode'"
     }
-    page.localization.strings["`%TARGET seems weaker..."] = ""
+    env.localization.strings["`%TARGET seems weaker..."] = ""
 
     /* - scene_evade - */
 
@@ -2410,13 +2410,13 @@ cor_ru['redefineActions'] = function () {
     /* - special_arch_support - */
 
     env.ACTIONS.special_arch_support.name = "" // Coil
-    page.localization.strings["%USER coils around %TARGET!"] = ""
-    page.localization.strings["%USER lashes out at %TARGET!"] = ""
+    env.localization.strings["%USER coils around %TARGET!"] = ""
+    env.localization.strings["%USER lashes out at %TARGET!"] = ""
 
     /* - special_arch_harasser_stab - */
 
     env.ACTIONS.special_arch_harasser_stab.name = "" // Flicker Stab
-    page.localization.strings["%USER prepares to strike %TARGET"] = ""
+    env.localization.strings["%USER prepares to strike %TARGET"] = ""
 
     /* - arch_harasser_stab - */
 
@@ -2427,8 +2427,8 @@ cor_ru['redefineActions'] = function () {
         "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
-    page.localization.strings["%USER flickers towards %TARGET"] = ""
-    page.localization.strings["%USER is thrown off balance by their miss!"] = ""
+    env.localization.strings["%USER flickers towards %TARGET"] = ""
+    env.localization.strings["%USER is thrown off balance by their miss!"] = ""
 
     /* - arch_punch - */
 
@@ -2439,7 +2439,7 @@ cor_ru['redefineActions'] = function () {
         "hit": "%TARGET STAGGERS BACK",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
-    page.localization.strings["%TARGET is stunned by the impact!"] = ""
+    env.localization.strings["%TARGET is stunned by the impact!"] = ""
 
     /* - arch_bomb - */
 
@@ -2485,8 +2485,8 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.special_arch_tele_channel.usage = {
         "act": "%USER BENDS THE OVERLAP"
     }
-    page.localization.strings["%TARGET feels watched..."] = ""
-    page.localization.strings["%TARGET's skin writhes"] = ""
+    env.localization.strings["%TARGET feels watched..."] = ""
+    env.localization.strings["%TARGET's skin writhes"] = ""
 
     /* - arch_tele_sweep - */
 
@@ -2495,18 +2495,18 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER RUSHES TOWARDS %TARGET"
     }
 
-    /* - tele_arch_hulk_rampage - */
+    /* - tele_arch_hulk_ramenv - */
 
-    env.ACTIONS.tele_arch_hulk_rampage.name = "" // Formless Swipe
-    env.ACTIONS.tele_arch_hulk_rampage.usage = {
+    env.ACTIONS.tele_arch_hulk_ramenv.name = "" // Formless Swipe
+    env.ACTIONS.tele_arch_hulk_ramenv.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
-    page.localization.strings["%USER charges towards %TARGET!"] = ""
+    env.localization.strings["%USER charges towards %TARGET!"] = ""
 
-    /* - arch_hulk_rampage - */
+    /* - arch_hulk_ramenv - */
 
-    env.ACTIONS.arch_hulk_rampage.name = "" // Wild Strike
-    env.ACTIONS.arch_hulk_rampage.usage = {
+    env.ACTIONS.arch_hulk_ramenv.name = "" // Wild Strike
+    env.ACTIONS.arch_hulk_ramenv.usage = {
         "act": "%USER CHARGES!",
         "crit": "%TARGET IS KNOCKED BACK",
         "hit": "%TARGET STAGGERS BACK",
@@ -2526,14 +2526,14 @@ cor_ru['redefineActions'] = function () {
 
     env.ACTIONS.special_archivist.name = "" // Manipulate
     // ---- ujcgjlb господи. вернуться к жттому тут ссаные эффекты
-    page.localization.strings["the air shimmers ominously"] = ""
-    page.localization.strings["%TARGET is briefly empowered by %USER!"] = ""
-    page.localization.strings["more golem-like shapes appear..."] = ""
+    env.localization.strings["the air shimmers ominously"] = ""
+    env.localization.strings["%TARGET is briefly empowered by %USER!"] = ""
+    env.localization.strings["more golem-like shapes appear..."] = ""
 
-    /* - tele_archivist_rampage - */
+    /* - tele_archivist_ramenv - */
 
-    env.ACTIONS.tele_archivist_rampage.name = "" // Last Invitation
-    env.ACTIONS.tele_archivist_rampage.usage = {
+    env.ACTIONS.tele_archivist_ramenv.name = "" // Last Invitation
+    env.ACTIONS.tele_archivist_ramenv.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 
@@ -2599,7 +2599,7 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     // --- u[[ 'эффекты]]
-    page.localization.strings["%USER fires a destabilizing sphere!"] = ""
+    env.localization.strings["%USER fires a destabilizing sphere!"] = ""
 
     /* - scene_dullflare_evil - */
 
@@ -2614,7 +2614,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.scene_dullflare_evil.details = {
         onHit: ()=> `'wide directional release of rapidly decaying dull light';'inflicts [STAT::amt]';'KB::2'`
     }
-    page.localization.strings["The golem's blast is diminished across multiple targets..."] = ""
+    env.localization.strings["The golem's blast is diminished across multiple targets..."] = ""
 
     /* - scene_kivii_grasp - */
 
@@ -2633,7 +2633,7 @@ cor_ru['redefineActions'] = function () {
         "act": "%TARGET FEELS A LOOMING THREAT"
     }
     // --- эффекьы
-    page.localization.strings["%USER focuses, but is left open..."] = ""
+    env.localization.strings["%USER focuses, but is left open..."] = ""
 
     /* - special_tele_itzil - */
 
@@ -2667,7 +2667,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.special_itzka.usage = {
         "act": "The overlap bends inwards!!"
     }
-    page.localization.strings["velzie's stage grows smaller..."] = ""
+    env.localization.strings["velzie's stage grows smaller..."] = ""
 
     /* - scene_bozko_attack_desperation - */
 
@@ -2742,10 +2742,10 @@ cor_ru['redefineActions'] = function () {
     }
     // --- эффекьы юоже
 
-    /* - tele_enraged_rampage - */
+    /* - tele_enraged_ramenv - */
 
-    env.ACTIONS.tele_enraged_rampage.name = "" // Enraged Charge
-    env.ACTIONS.tele_enraged_rampage.usage = {
+    env.ACTIONS.tele_enraged_ramenv.name = "" // Enraged Charge
+    env.ACTIONS.tele_enraged_ramenv.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 
@@ -2820,10 +2820,10 @@ cor_ru['redefineActions'] = function () {
     }
     env.ACTIONS.special_vekoa_rush.disableIf = (actor)=>{ if(hasStatus(actor,"fear")) return "PROHIBITED BY FEAR" },
 
-    /* - tele_vekoa_rampage - */
+    /* - tele_vekoa_ramenv - */
 
-    env.ACTIONS.tele_vekoa_rampage.name = "" // Last Invitation
-    env.ACTIONS.tele_vekoa_rampage.usage = {
+    env.ACTIONS.tele_vekoa_ramenv.name = "" // Last Invitation
+    env.ACTIONS.tele_vekoa_ramenv.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 }
@@ -3515,7 +3515,7 @@ cor_ru['redefineItems'] = function () {
 
     env.ITEM_LIST.core_translation.name = "" // Signal Export
     env.ITEM_LIST.core_translation.description = "" // 'a dangerously incoherent knowledge corrucyst';'contains some sort of interpretation of the signal';'gakvu can weaponize this'
-    env.ITEM_LIST.core_translation.oocnote = "" // ()=> check("PAGE!!embassy_day", 3.99) ? `'empowers DESTABILIZE action for party member';'gakvu'` : `'enables creation of SIGNAL INVERTER augment for party member';'gakvu'`
+    env.ITEM_LIST.core_translation.oocnote = "" // ()=> check("env!!embassy_day", 3.99) ? `'empowers DESTABILIZE action for party member';'gakvu'` : `'enables creation of SIGNAL INVERTER augment for party member';'gakvu'`
 
     /* - Weird Black Box - */
 
@@ -6108,12 +6108,12 @@ cor_ru['redefineAll'] = function() {
     cor_ru.redefineAugments()
 }
 /* --- MISC--- */
-page.localization.strings['THE TENDRILS CURL AWAY'] = "";
-page.localization.strings['THE HALLUCINATIONS FADE'] = "";
-page.localization.strings['ETHEREAL FOES FADE'] = "";
-page.localization.strings['the shell refuses, having lost their taste for this fish.'] = "";
-page.localization.strings['the shell refuses, having no taste for this fish.'] = "";
-page.localization.strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
-page.localization.strings['whom?'] = "КОГО?";
+env.localization.strings['THE TENDRILS CURL AWAY'] = "";
+env.localization.strings['THE HALLUCINATIONS FADE'] = "";
+env.localization.strings['ETHEREAL FOES FADE'] = "";
+env.localization.strings['the shell refuses, having lost their taste for this fish.'] = "";
+env.localization.strings['the shell refuses, having no taste for this fish.'] = "";
+env.localization.strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
+env.localization.strings['whom?'] = "КОГО?";
 
 cor_ru.redefineAll()
