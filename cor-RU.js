@@ -666,10 +666,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
 
                     let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
-                    
+
                     try {replay = getReadoutMsg({message: cor_ru.entity_menu.readouts[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu.readouts[entity.name]['name'], image: entity.image})}
                     catch (error) {
-                        console.error("could not localize " + entity.name + " - @cor-RU")
+                        console.warn("could not localize " + entity.name + " - @cor-RU")
                         console.error(error)
                     }
 
