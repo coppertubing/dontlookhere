@@ -1,5 +1,5 @@
 cor_ru.entity_menu = {
-    names: {
+    names: { // do it like you would in env.localization
         "ENTITY::'unprocessed'::RECOMMEND::'relocation';'[EXM]'": "СУЩНОСТЬ::'необработана':РЕКОМЕНДАЦИЯ::'перемещение';'[ИЗУЧ]'",
 
         //localhost
@@ -186,7 +186,7 @@ cor_ru.entity_menu = {
         "ENTITY::'vekoa'": "СУЩНОСТЬ::'векоа'", // --- кто нибудь убейте ее <3 <3
 
         //uncosm
-        "ENTITY::'memoryhole'": "СУЩНОСТЬ::''", // --- нам правда надо решить
+        "ENTITY::'memoryhole'": "СУЩНОСТЬ::'брешь памяти'", 
 
         //jokzi ozo
         "ENTITY::'council'": "СУЩНОСТЬ::'совет'",
@@ -226,8 +226,11 @@ cor_ru.entity_menu = {
         "ENTITY::'piece'": "СУЩНОСТЬ::'ПАРА ПУСТЯКОВ MENTION'",
 
     },
-    descs: {
-        
+    readouts: {
+        "funfriend": {
+            name: "развледруг",
+            desc: "глупый пиздец"
+        }
     }
 }
 

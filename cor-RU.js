@@ -565,8 +565,11 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     // funky functions that help with translation
 
     processWeirdTranslation: function (selector, attribute = false) {
-        if (attribute == "mindpike") {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {if (childNode.textContent == "EXM") {childNode.textContent = "ИЗУЧ"} else if (childNode.textContent == "ACT") {childNode.textContent = "ДЕЙСТ"}}}})} // i hate ACT and EXm strings bleeding into shit
-        else if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent.trim())}}})}
+        if (selector == "mindpike") {
+            document.querySelectorAll("#mindspike-examine".forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ИЗУЧ"}}))
+            document.querySelectorAll("#mindspike-act".forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ДЕЙСТ"}}))
+        } // i hate ACT and EXM strings bleeding into shit
+        else if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent)}}})}
         else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
         return
     },
@@ -644,13 +647,39 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     observerCommon: new MutationObserver(()=>{
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
-        cor_ru.processWeirdTranslation("#mindspike-scanner", "mindpike");
+        cor_ru.processWeirdTranslation("mindpike");
         console.log("%ccommon observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerCommonObserve: function () {
         cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
         cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
         console.log("%ccommon observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+    },
+
+    observerEntMenu: new MutationObserver(()=>{
+        document.querySelectorAll('#entity-menu .ent').forEach(e=>{
+            if(e.getAttribute('entname')) {
+                e.addEventListener('click', ()=>{
+                    let entity = flags.detectedEntities[e.getAttribute('pagename')]['entities'][e.getAttribute('entname')]
+                    let container = document.querySelector('#entcontent')
+                    container.innerHTML = ""
+
+                    try {let replay = getReadoutMsg({message: cor_ru.entity_menu.readouts[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu.readouts[entity.name]['name'], image: entity.image})}
+                    catch (error) {
+                        console.error("could not localize " + entity.name + " - @cor-RU")
+                        console.error(error)
+                        let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
+                    }
+                    container.insertAdjacentHTML('beforeend', replay)
+                    setTimeout(()=>container.querySelector('.message').classList.add('active'), 5)
+                })
+            }
+        })
+        console.log("%centmenu observed! - @cor-RU", cor_ru.fancy.observed);
+    }),
+    observerEntMenuObserve: function () {
+        cor_ru.observerCommon.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true });
+        console.log("%centmenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerGad: new MutationObserver(()=>{
@@ -686,6 +715,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.processMenu();
 
         cor_ru.observerCommonObserve();
+        cor_ru.observerEntMenuObserve();
         cor_ru.observerGadObserve();
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
@@ -717,51 +747,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     </ul>
 </div>`,
 
-    // da list
-
-    dalist: [
-        "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/basement.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
-        "https://coppertubing.github.io/cor-RU/localization/hub.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/their-city.js",
-        "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/the-void.js",
-        "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
-        "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
-        "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
-        "https://coppertubing.github.io/cor-RU/localization/recosm.js",
-        "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/embassy.js",
-        "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
-        "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
-        "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
-        "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/frame.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/cache.js",
-        "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js",
-
-        "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
-
-        "https://coppertubing.github.io/cor-RU/load.js",
-    ],
+    // loading and updating stuff as we go
 
     list: {
         everything: "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
@@ -814,6 +800,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
             listArray.push(cor_ru.list.page[page.dialoguePrefix]);
+            listArray.push(cor_ru.list.entityMenu);
             listArray.push(cor_ru.list.load);
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
@@ -825,7 +812,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
                     combat = document.createElement('script')
                     combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
                     content.appendChild(combat)
-                    console.log("%cadded combat! - @cor-RU", cor_ru.fancy.general)
+                    console.log("%cadded combat as a resource update! - @cor-RU", cor_ru.fancy.general)
                     // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty
                 }
             };

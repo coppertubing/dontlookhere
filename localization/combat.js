@@ -559,7 +559,7 @@ cor_ru['redefineActions'] = function () {
     // --- DO NOT GENDER THIS
 
     env.ACTIONS.destabilize.name = "дестабилизация" // destabilize
-    env.ACTIONS.destabilize.verb = "дестабилизровать"
+    env.ACTIONS.destabilize.verb = "дестабилизировать"
     env.ACTIONS.destabilize.usage = {
         "act": "%USER ДЕСТАБИЛИЗИРУЕТ %ACC-TARGET",
         "crit": "%TARGET НЕЕСТЕСТВЕННО РЯБИТСЯ",
@@ -6122,6 +6122,8 @@ env.localization.strings['the shell refuses, having lost their taste for this fi
 env.localization.strings['the shell refuses, having no taste for this fish.'] = "";
 env.localization.strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
 env.localization.strings['whom?'] = "КОГО?";
+env.localization.strings["'remaining REGEN consumed for "] = "оставшаяся РЕГЕНЕРАЦИЯ поглощена на "
+env.localization.strings["HP'"] = " ХП'"
 
 cor_ru.redefineAll()
 getLocalizationForPage(true)
