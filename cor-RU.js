@@ -566,8 +566,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     processWeirdTranslation: function (selector, attribute = false) {
         if (selector == "mindpike") {
-            document.querySelectorAll("#mindspike-examine".forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ИЗУЧ"}}))
-            document.querySelectorAll("#mindspike-act".forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ДЕЙСТ"}}))
+            document.querySelectorAll("#mindspike-examine").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ИЗУЧ"}})
+            document.querySelectorAll("#mindspike-act").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ДЕЙСТ"}})
         } // i hate ACT and EXM strings bleeding into shit
         else if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent)}}})}
         else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
@@ -678,7 +678,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         console.log("%centmenu observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerEntMenuObserve: function () {
-        cor_ru.observerCommon.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true });
+        cor_ru.observerEntMenu.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true });
         console.log("%centmenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
