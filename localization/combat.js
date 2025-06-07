@@ -6124,3 +6124,4 @@ env.localization.strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intent
 env.localization.strings['whom?'] = "КОГО?";
 
 cor_ru.redefineAll()
+getLocalizationForPage(true)
