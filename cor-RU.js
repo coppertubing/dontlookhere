@@ -818,10 +818,14 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
-            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-            for (let i = 0; i < Object.keys(cor_ru.list.page); i++) {if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove())};
-            if ((document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) && (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0)) listArray.push(cor_ru.list.combat)
-            else if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0) document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).forEach((el)=> el.remove())
+            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])};
+            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
+                //listArray.push(cor_ru.list.combat)
+                combat = document.createElement('script')
+                combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
+                content.appendChild(combat)
+                // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty and avoiding infinite recursion
+            };
         }
         if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
         else console.log("%cno updates for resources needed! - @cor-RU", cor_ru.fancy.general)
