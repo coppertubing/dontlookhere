@@ -824,6 +824,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
                 combat = document.createElement('script')
                 combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
                 content.appendChild(combat)
+                console.log("%cadded combat! - @cor-RU", cor_ru.fancy.general)
                 // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty and avoiding infinite recursion
             };
         }

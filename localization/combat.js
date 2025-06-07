@@ -2495,18 +2495,18 @@ cor_ru['redefineActions'] = function () {
         "act": "%USER RUSHES TOWARDS %TARGET"
     }
 
-    /* - tele_arch_hulk_ramenv - */
+    /* - tele_arch_hulk_rampage - */
 
-    env.ACTIONS.tele_arch_hulk_ramenv.name = "" // Formless Swipe
-    env.ACTIONS.tele_arch_hulk_ramenv.usage = {
+    env.ACTIONS.tele_arch_hulk_rampage.name = "" // Formless Swipe
+    env.ACTIONS.tele_arch_hulk_rampage.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
     env.localization.strings["%USER charges towards %TARGET!"] = ""
 
-    /* - arch_hulk_ramenv - */
+    /* - arch_hulk_rampage - */
 
-    env.ACTIONS.arch_hulk_ramenv.name = "" // Wild Strike
-    env.ACTIONS.arch_hulk_ramenv.usage = {
+    env.ACTIONS.arch_hulk_rampage.name = "" // Wild Strike
+    env.ACTIONS.arch_hulk_rampage.usage = {
         "act": "%USER CHARGES!",
         "crit": "%TARGET IS KNOCKED BACK",
         "hit": "%TARGET STAGGERS BACK",
@@ -2530,10 +2530,10 @@ cor_ru['redefineActions'] = function () {
     env.localization.strings["%TARGET is briefly empowered by %USER!"] = ""
     env.localization.strings["more golem-like shapes appear..."] = ""
 
-    /* - tele_archivist_ramenv - */
+    /* - tele_archivist_rampage - */
 
-    env.ACTIONS.tele_archivist_ramenv.name = "" // Last Invitation
-    env.ACTIONS.tele_archivist_ramenv.usage = {
+    env.ACTIONS.tele_archivist_rampage.name = "" // Last Invitation
+    env.ACTIONS.tele_archivist_rampage.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 
@@ -2742,10 +2742,10 @@ cor_ru['redefineActions'] = function () {
     }
     // --- эффекьы юоже
 
-    /* - tele_enraged_ramenv - */
+    /* - tele_enraged_rampage - */
 
-    env.ACTIONS.tele_enraged_ramenv.name = "" // Enraged Charge
-    env.ACTIONS.tele_enraged_ramenv.usage = {
+    env.ACTIONS.tele_enraged_rampage.name = "" // Enraged Charge
+    env.ACTIONS.tele_enraged_rampage.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 
@@ -2820,10 +2820,10 @@ cor_ru['redefineActions'] = function () {
     }
     env.ACTIONS.special_vekoa_rush.disableIf = (actor)=>{ if(hasStatus(actor,"fear")) return "PROHIBITED BY FEAR" },
 
-    /* - tele_vekoa_ramenv - */
+    /* - tele_vekoa_rampage - */
 
-    env.ACTIONS.tele_vekoa_ramenv.name = "" // Last Invitation
-    env.ACTIONS.tele_vekoa_ramenv.usage = {
+    env.ACTIONS.tele_vekoa_rampage.name = "" // Last Invitation
+    env.ACTIONS.tele_vekoa_rampage.usage = {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 }
