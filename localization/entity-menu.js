@@ -229,14 +229,13 @@ cor_ru.entity_menu = {
     readouts: { // do it not like you would in env.localization
         /*
         "original entity name": {
-            name: "localized name",
-            desc: "localized description"
+            name: `localized name`,
+            desc: `localized exm description`
         },
-        do not forget about <br>'s?*/
+        do not forget about <br>'s!!!!!!!!!!!!!!!!!!!!!! place <br>'s !!!!!!!!!!!!!!!!!!!!*/
         "funfriend": {
-            name: "развледруг",
-            desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
+            name: `развледруг`,
+            desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
         },
     }
 }
