@@ -711,9 +711,9 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     devElement: `<div class="devs ulbox tdone cor-ru">
     <ul class="tdone">
         <h4 class="tdone">НЕОФИЦИАЛЬНАЯ КОМАНДА ПЕРЕВОДА</h4>
-        <li class="tdone"><span definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
+        <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
         <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
-        <li class="tdone"><span definition="@bra1nslug_ в discord!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
+        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
     </ul>
 </div>`,
 
@@ -820,12 +820,14 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         else {
             if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])};
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
-                //listArray.push(cor_ru.list.combat)
-                combat = document.createElement('script')
-                combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
-                content.appendChild(combat)
-                console.log("%cadded combat! - @cor-RU", cor_ru.fancy.general)
-                // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty and avoiding infinite recursion
+                if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
+                    //listArray.push(cor_ru.list.combat)
+                    combat = document.createElement('script')
+                    combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
+                    content.appendChild(combat)
+                    console.log("%cadded combat! - @cor-RU", cor_ru.fancy.general)
+                    // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty
+                }
             };
         }
         if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
