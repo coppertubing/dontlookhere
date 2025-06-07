@@ -820,7 +820,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         else {
             if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.page[page.dialoguePrefix])
             for (let i = 0; i < Object.keys(cor_ru.list.page); i++) {if (Object.keys(cor_ru.list.page)[i] != page.dialoguePrefix) document.querySelectorAll(`script[src="${cor_ru.list.page[Object.keys(cor_ru.list.page)[i]]}?v=${page.cacheval}"]`).forEach((el)=> el.remove())};
-            if ((document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) && (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0)) listArray.push(cor_ru.list.combat)
+            if ((document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) && (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0)) listArray.push(cor_ru.list.combat)
             else if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length != 0) document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).forEach((el)=> el.remove())
         }
         if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
