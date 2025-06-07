@@ -106,272 +106,279 @@ cor_ru['inflection'] = function (string, user, target) { // --- function for doi
     return string;
 }
 cor_ru['translate'] = function (input) {return processStringTranslation(input)}
-cor_ru.createRPGeffectMessage = createRPGeffectMessage; // --- may this entertain velzie lol
-createRPGeffectMessage = function() {
-    cor_ru.createRPGeffectMessage();
-    // grabbing the action thing
-    env.rpg.effectMessage.action = function({user, action, target, hit, specialHitText, actionMessageIndex, reason, isMinor = false, force = false, initialize = true}) { 
-        if(env.rpg.stopMessages || !this.current && !initialize || env.currentDialogue.active) return -1 // we require this to be .initialize()d first, done in useAction
-        else if(initialize && !env.rpg.effectMessage.current) this.initialize();
 
-        let current = this.current
 
-        //control conditional text/formatting
-        let hitType = "none"
-        let hitText = false
 
-        switch(hit){
-            case "none": break
+if {check("PAGE!!cor_ru_combat") != true} {
+    change("PAGE!!cor_ru_combat", true)
+    cor_ru.createRPGeffectMessage = createRPGeffectMessage; // --- may this entertain velzie lol
+    createRPGeffectMessage = function() {
+        cor_ru.createRPGeffectMessage();
+        // grabbing the action thing
+        env.rpg.effectMessage.action = function({user, action, target, hit, specialHitText, actionMessageIndex, reason, isMinor = false, force = false, initialize = true}) { 
+            if(env.rpg.stopMessages || !this.current && !initialize || env.currentDialogue.active) return -1 // we require this to be .initialize()d first, done in useAction
+            else if(initialize && !env.rpg.effectMessage.current) this.initialize();
 
-            case "critbuff":
-            case "crit":
-                hitType = "crit"
-            break
+            let current = this.current
 
-            case true:
-                hitType = "hit"
-            break
+            //control conditional text/formatting
+            let hitType = "none"
+            let hitText = false
 
-            case false: 
-                hitType="miss"
-        }
+            switch(hit){
+                case "none": break
 
-        let genUsageText = typeof action == "string" ? cor_ru.translate(action) : action?.usage?.act // --- place where i actually insert stuff 
-        if(!genUsageText) return false;
-        if(action.usage) {
-            hitText = action.usage[hitType] || false //refer to action usage text for result 
-        } 
-        
-        if(force && !hitText && typeof action == "string") hitText = action
+                case "critbuff":
+                case "crit":
+                    hitType = "crit"
+                break
 
-        let actionText = (genUsageText)
-            .replaceAll("%USER", `<span class="${user?.team?.name}">${user?.name}</span>`)
-            .replaceAll("%TARGET", `<span class="${target?.team?.name}">${target?.name}</span>`)
-        
-        actionText = cor_ru.inflection(actionText, user, target) // --- place where i actually insert stuff
-        
-        if(hitText || specialHitText) {
-            hitText = (hitText || specialHitText)
+                case true:
+                    hitType = "hit"
+                break
+
+                case false: 
+                    hitType="miss"
+            }
+
+            let genUsageText = typeof action == "string" ? cor_ru.translate(action) : action?.usage?.act // --- place where i actually insert stuff 
+            if(!genUsageText) return false;
+            if(action.usage) {
+                hitText = action.usage[hitType] || false //refer to action usage text for result 
+            } 
+            
+            if(force && !hitText && typeof action == "string") hitText = action
+
+            let actionText = (genUsageText)
                 .replaceAll("%USER", `<span class="${user?.team?.name}">${user?.name}</span>`)
                 .replaceAll("%TARGET", `<span class="${target?.team?.name}">${target?.name}</span>`)
-            hitText = cor_ru.inflection(hitText, user, target) // --- place where i actually insert stuff 2
-        }
-
-        //console.log("!!!!!!!!!!!! in add for action", hit, hitType, action, hitText, actionMessageIndex)
-        //the hit object - actionText is used as the "primary" text, so not used for subtext
-        let hitObj = {
-            target,
-            text: hitText,
-            result: hitType,
-            action,
-            count: 1
-        }
-
-        //determine if it's for an existing thing then push it
-        let finalIndex = 0
-        let effectiveIndex = actionMessageIndex
-        if(typeof actionMessageIndex == "object") effectiveIndex = actionMessageIndex?.i // cause we might just pass the action hit return which has the i
-
-        if(typeof effectiveIndex == "undefined") { 
-            // figure out if there's an identical action in the list
-            // it's way more efficient to just pass the index though so this is a fallback
-            effectiveIndex = env.rpg.effectMessage.current.actions.findIndex(action => (action.user == user) && ((!reason && !action.reason) || (action.reason == reason)))
-            if(effectiveIndex == -1) effectiveIndex = false
-        } 
-        
-        if(current.actions[effectiveIndex]) { //exists, so adding to this
-            let currentAction = current.actions[effectiveIndex]
-            if(!hitText && !force) {console.log("no hit text so returning"); return -1}; // no text = no action for subtext
-            finalIndex = effectiveIndex
-
-            //find if there's an identical message for this hit, and if so, increase the 'count'
-            let similarHit = current.actions[finalIndex].hits.find(h=>
-                h.action == action &&
-                h.target == target &&
-                h.result == hitObj.result &&
-                h.text == hitObj.text
-            )
-            if(similarHit) {
-                similarHit.count++
-            } else {
-                current.actions[finalIndex].hits.push(hitObj)
-
-                //crit, hit, miss, in order of 'best hit' priority
-                if(currentAction.bestHit != hitType) {
-                    if(
-                        (hitType == "hit" && currentAction.bestHit == "miss") ||
-                        (hitType == "crit" && currentAction.bestHit != "crit")
-                    ) currentAction.bestHit = hitType
-                }               
-            }
-
-        } else { //doesn't, so creating
-            current.incitingActor = user
-
-            let actionUse = {user, action, actionText, isMinor, reason, bestHit: hitType, hits: hitObj.text ? [hitObj] : []}
-
-            if(current.actions.length == 0) {
-                current.display.setAttribute("type", hitType)
-                current.display.setAttribute("team", user?.team?.name)
-            }
             
-            if(current.actions.length && current?.actions[0]?.isMinor) { //avoid highlighting "minor actions", i.e. async that happen before others
-                //shouldn't happen super often, so probably won't end up scrambling expected indexes
-                current.actions.unshift(actionUse)
-                finalIndex = 0
-            } else {
-                current.actions.push(actionUse) 
-                finalIndex = current.actions.length - 1
+            actionText = cor_ru.inflection(actionText, user, target) // --- place where i actually insert stuff
+            
+            if(hitText || specialHitText) {
+                hitText = (hitText || specialHitText)
+                    .replaceAll("%USER", `<span class="${user?.team?.name}">${user?.name}</span>`)
+                    .replaceAll("%TARGET", `<span class="${target?.team?.name}">${target?.name}</span>`)
+                hitText = cor_ru.inflection(hitText, user, target) // --- place where i actually insert stuff 2
             }
 
-        }
+            //console.log("!!!!!!!!!!!! in add for action", hit, hitType, action, hitText, actionMessageIndex)
+            //the hit object - actionText is used as the "primary" text, so not used for subtext
+            let hitObj = {
+                target,
+                text: hitText,
+                result: hitType,
+                action,
+                count: 1
+            }
 
-        //rerender
-        this.updateDisplay({actionIndex: finalIndex})
+            //determine if it's for an existing thing then push it
+            let finalIndex = 0
+            let effectiveIndex = actionMessageIndex
+            if(typeof actionMessageIndex == "object") effectiveIndex = actionMessageIndex?.i // cause we might just pass the action hit return which has the i
 
-        //return the action index
-        return finalIndex
-    }
-    
-    // also redefine other shit cause why not
-    actionMessage = function (origin, action, desiredTarget, hit = "none", duration = false, id = false) {
-        console.warn("you should probably not be using actionMessage anymore, use the new effectMessage system instead\nthis will be removed in a future update")
-        //control for optional or flexible parameters
-        var actionIsString = (typeof action == "string")
-        var target = desiredTarget;
-        if(typeof desiredTarget == "undefined") target = origin;
+            if(typeof effectiveIndex == "undefined") { 
+                // figure out if there's an identical action in the list
+                // it's way more efficient to just pass the index though so this is a fallback
+                effectiveIndex = env.rpg.effectMessage.current.actions.findIndex(action => (action.user == user) && ((!reason && !action.reason) || (action.reason == reason)))
+                if(effectiveIndex == -1) effectiveIndex = false
+            } 
+            
+            if(current.actions[effectiveIndex]) { //exists, so adding to this
+                let currentAction = current.actions[effectiveIndex]
+                if(!hitText && !force) {console.log("no hit text so returning"); return -1}; // no text = no action for subtext
+                finalIndex = effectiveIndex
 
-        //figure out who's on what team
-        var originTeam, targetTeam;
-        env.rpg.teams.forEach((team, i) => {
-            team.members.forEach((actor, i) => {
-                if(actor.slug == origin.slug) {
-                    originTeam = team.name
-                } //not 'else if' because it could be self-targeted
+                //find if there's an identical message for this hit, and if so, increase the 'count'
+                let similarHit = current.actions[finalIndex].hits.find(h=>
+                    h.action == action &&
+                    h.target == target &&
+                    h.result == hitObj.result &&
+                    h.text == hitObj.text
+                )
+                if(similarHit) {
+                    similarHit.count++
+                } else {
+                    current.actions[finalIndex].hits.push(hitObj)
 
-                if(actor.slug == (target.slug || 0)) {
-                    targetTeam = team.name
+                    //crit, hit, miss, in order of 'best hit' priority
+                    if(currentAction.bestHit != hitType) {
+                        if(
+                            (hitType == "hit" && currentAction.bestHit == "miss") ||
+                            (hitType == "crit" && currentAction.bestHit != "crit")
+                        ) currentAction.bestHit = hitType
+                    }               
                 }
-            });
-        });
 
-        //control conditional text/formatting
-        var hitType = "none"
-        var hitText = false
-        var modClass = ""; //used to border if there's a crit
-        switch(hit){
-            case "none": break
+            } else { //doesn't, so creating
+                current.incitingActor = user
 
-            case true:
-                hitType = "hit"
-            break
+                let actionUse = {user, action, actionText, isMinor, reason, bestHit: hitType, hits: hitObj.text ? [hitObj] : []}
 
-            case "critbuff":
-            case "crit":
-                hitType = "crit"
-                modClass = "use-crit"
-            break
+                if(current.actions.length == 0) {
+                    current.display.setAttribute("type", hitType)
+                    current.display.setAttribute("team", user?.team?.name)
+                }
+                
+                if(current.actions.length && current?.actions[0]?.isMinor) { //avoid highlighting "minor actions", i.e. async that happen before others
+                    //shouldn't happen super often, so probably won't end up scrambling expected indexes
+                    current.actions.unshift(actionUse)
+                    finalIndex = 0
+                } else {
+                    current.actions.push(actionUse) 
+                    finalIndex = current.actions.length - 1
+                }
 
-            case false: 
-                hitType="miss"
-        }
-        if(action.usage) hitText = action.usage[hitType] || false //refer to action usage text for result
-
-        var actionText;
-        if(actionIsString) {
-            actionText = cor_ru.translate(action) // --- place where i actually insert stuff 
-                .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
-                .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
-            actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
-            
-        } else if(action.usage) {
-            actionText = action.usage.act
-                .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
-                .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
-            actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
-        }
-            
-        if(hitText) {
-            hitText = cor_ru.inflection(hitText, origin, target) // --- place where i actually insert stuff
-            hitText = 
-                `<br><div class="hit-text">` +
-                (hitText
-                .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
-                .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`)) +
-                `</div>`
-            ;
-        } else {
-            hitText = "";
-        }
-
-        let currentNum = messageNum++;
-        env.rpg.querySelector(`#${originTeam}-team .actor`).insertAdjacentHTML('beforebegin', `<div class="use-message ${modClass}" style="z-index: ${10 + (currentNum % 9)}" id="m-${currentNum}">${actionText}${hitText}</div>`);
-        let useMessage = env.rpg.querySelector(`#m-${currentNum}`)
-        setTimeout(()=>{
-            useMessage.classList.add('active')
-            var readoutMessage
-            if(actionIsString) {
-                readoutMessage = `<div class="action-text" definition="ANALYSIS::'UTILIZED INCOHERENT ACTION'::RESULT::'UNKNOWN'">${actionText}</div> ${hitText.replaceAll('<br>', '')}`
-            } else {
-                readoutMessage = `
-                    <div class="action-text" 
-                        definition="ANALYSIS::'UTILIZED THOUGHTFORM ACTION'::'${action.name.toUpperCase()}'::RESULT::'${hit ? "SUCCESS" : "FAILED"}'"
-                    >
-                        ${actionText}
-                    </div>
-                    
-                    ${hitText.replaceAll('<br>', '')} 
-                    
-                    <br>
-                    <div class="action-description" definition="ANALYSIS::${action.help}">COMMAND::${action.desc}</div>
-                `
             }
 
-            readoutAdd({
-                message: readoutMessage, 
-                name: "sourceless", 
-                type: "sourceless combat", 
-                show: false,
-                sfx: false
+            //rerender
+            this.updateDisplay({actionIndex: finalIndex})
+
+            //return the action index
+            return finalIndex
+        }
+        
+        // also redefine other shit cause why not
+        actionMessage = function (origin, action, desiredTarget, hit = "none", duration = false, id = false) {
+            console.warn("you should probably not be using actionMessage anymore, use the new effectMessage system instead\nthis will be removed in a future update")
+            //control for optional or flexible parameters
+            var actionIsString = (typeof action == "string")
+            var target = desiredTarget;
+            if(typeof desiredTarget == "undefined") target = origin;
+
+            //figure out who's on what team
+            var originTeam, targetTeam;
+            env.rpg.teams.forEach((team, i) => {
+                team.members.forEach((actor, i) => {
+                    if(actor.slug == origin.slug) {
+                        originTeam = team.name
+                    } //not 'else if' because it could be self-targeted
+
+                    if(actor.slug == (target.slug || 0)) {
+                        targetTeam = team.name
+                    }
+                });
+            });
+
+            //control conditional text/formatting
+            var hitType = "none"
+            var hitText = false
+            var modClass = ""; //used to border if there's a crit
+            switch(hit){
+                case "none": break
+
+                case true:
+                    hitType = "hit"
+                break
+
+                case "critbuff":
+                case "crit":
+                    hitType = "crit"
+                    modClass = "use-crit"
+                break
+
+                case false: 
+                    hitType="miss"
+            }
+            if(action.usage) hitText = action.usage[hitType] || false //refer to action usage text for result
+
+            var actionText;
+            if(actionIsString) {
+                actionText = cor_ru.translate(action) // --- place where i actually insert stuff 
+                    .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
+                    .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
+                actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
+                
+            } else if(action.usage) {
+                actionText = action.usage.act
+                    .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
+                    .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
+                actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
+            }
+                
+            if(hitText) {
+                hitText = cor_ru.inflection(hitText, origin, target) // --- place where i actually insert stuff
+                hitText = 
+                    `<br><div class="hit-text">` +
+                    (hitText
+                    .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
+                    .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`)) +
+                    `</div>`
+                ;
+            } else {
+                hitText = "";
+            }
+
+            let currentNum = messageNum++;
+            env.rpg.querySelector(`#${originTeam}-team .actor`).insertAdjacentHTML('beforebegin', `<div class="use-message ${modClass}" style="z-index: ${10 + (currentNum % 9)}" id="m-${currentNum}">${actionText}${hitText}</div>`);
+            let useMessage = env.rpg.querySelector(`#m-${currentNum}`)
+            setTimeout(()=>{
+                useMessage.classList.add('active')
+                var readoutMessage
+                if(actionIsString) {
+                    readoutMessage = `<div class="action-text" definition="ANALYSIS::'UTILIZED INCOHERENT ACTION'::RESULT::'UNKNOWN'">${actionText}</div> ${hitText.replaceAll('<br>', '')}`
+                } else {
+                    readoutMessage = `
+                        <div class="action-text" 
+                            definition="ANALYSIS::'UTILIZED THOUGHTFORM ACTION'::'${action.name.toUpperCase()}'::RESULT::'${hit ? "SUCCESS" : "FAILED"}'"
+                        >
+                            ${actionText}
+                        </div>
+                        
+                        ${hitText.replaceAll('<br>', '')} 
+                        
+                        <br>
+                        <div class="action-description" definition="ANALYSIS::${action.help}">COMMAND::${action.desc}</div>
+                    `
+                }
+
+                readoutAdd({
+                    message: readoutMessage, 
+                    name: "sourceless", 
+                    type: "sourceless combat", 
+                    show: false,
+                    sfx: false
+                })
+            }, 100);	
+                        
+            setTimeout(function(){
+                useMessage.classList.add('shrink');
+                setTimeout(function(){useMessage.remove()}, 400);
+            }, duration ? duration : env.ADVANCE_RATE * 1.5);
+        }
+        actionChoice = function ({choiceText = "choice", options = [], choiceCallback, user, action}) {
+            if(action.choiceAnim) {user.sprite.classList.add(action.choiceAnim)}
+            let id = `${user.slug}-${action.slug}`
+
+            let choices = ""
+            options.forEach((option, i) => {
+                console.log(option)
+                if(option.text) choices += `<span choice="c${i}" class="button" definition="${cor_ru.translate(option.definition)}">${cor_ru.translate(option.text)}</span>` // --- place where i actually insert stuff 
             })
-        }, 100);	
-                    
-        setTimeout(function(){
-            useMessage.classList.add('shrink');
-            setTimeout(function(){useMessage.remove()}, 400);
-        }, duration ? duration : env.ADVANCE_RATE * 1.5);
-    }
-    actionChoice = function ({choiceText = "choice", options = [], choiceCallback, user, action}) {
-        if(action.choiceAnim) {user.sprite.classList.add(action.choiceAnim)}
-        let id = `${user.slug}-${action.slug}`
 
-        let choices = ""
-        options.forEach((option, i) => {
-            console.log(option)
-            if(option.text) choices += `<span choice="c${i}" class="button" definition="${cor_ru.translate(option.definition)}">${cor_ru.translate(option.text)}</span>` // --- place where i actually insert stuff 
-        })
+            console.log(choices)
+            env.rpg.insertAdjacentHTML('beforeend', `
+                <div id="${id}" class="choice-attack">
+                    <div class="choice-title">${cor_ru.translate(choiceText)}</div>
+                    ${choices}
+                </div>
+            `)// --- place where i actually insert stuff 
 
-        console.log(choices)
-        env.rpg.insertAdjacentHTML('beforeend', `
-            <div id="${id}" class="choice-attack">
-                <div class="choice-title">${cor_ru.translate(choiceText)}</div>
-                ${choices}
-            </div>
-        `)// --- place where i actually insert stuff 
+            env.rpg.querySelectorAll(`#${id}.choice-attack .button`).forEach(el=>{
+                el.addEventListener('click', ()=>{
+                    let choice = el.getAttribute('choice')
+                    document.querySelector(`#${id}`).remove()
+                    if(action.choiceAnim) {user.sprite.classList.remove(action.choiceAnim)}
 
-        env.rpg.querySelectorAll(`#${id}.choice-attack .button`).forEach(el=>{
-            el.addEventListener('click', ()=>{
-                let choice = el.getAttribute('choice')
-                document.querySelector(`#${id}`).remove()
-                if(action.choiceAnim) {user.sprite.classList.remove(action.choiceAnim)}
-
-                //so this happens after the fade back from the offer animation    
-                //the choice should be acted upon somehow, likely through a switch        
-                setTimeout(()=>choiceCallback(choice), action.choiceAnimDuration || 1)
+                    //so this happens after the fade back from the offer animation    
+                    //the choice should be acted upon somehow, likely through a switch        
+                    setTimeout(()=>choiceCallback(choice), action.choiceAnimDuration || 1)
+                })
             })
-        })
+        }
     }
 }
+
 
 /* --- ACTIONS --- */
 cor_ru['redefineActions'] = function () {
