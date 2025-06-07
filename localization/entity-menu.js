@@ -226,11 +226,18 @@ cor_ru.entity_menu = {
         "ENTITY::'piece'": "СУЩНОСТЬ::'ПАРА ПУСТЯКОВ MENTION'",
 
     },
-    readouts: {
+    readouts: { // do it not like you would in env.localization
+        /*
+        "original entity name": {
+            name: "localized name",
+            desc: "localized description"
+        },
+        do not forget about <br>'s?*/
         "funfriend": {
             name: "развледруг",
-            desc: "глупый пиздец"
-        }
+            desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
+        },
     }
 }
 

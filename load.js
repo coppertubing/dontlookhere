@@ -6,6 +6,7 @@ processTranslation();
 processTranslation(document.querySelector(`#mindspike-scanner`));
 cor_ru.processWeirdTranslation(".mindsci-status");
 cor_ru.observerCommonObserve();
+cor_ru.observerEntMenuObserve();
 cor_ru.observerGadObserve();
 cor_ru.observerDialogueObserve();
 cor_ru.observerMasksObserve();
