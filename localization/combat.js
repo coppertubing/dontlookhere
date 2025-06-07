@@ -109,7 +109,7 @@ cor_ru['translate'] = function (input) {return processStringTranslation(input)}
 
 
 
-if {check("PAGE!!cor_ru_combat") != true} {
+if (check("PAGE!!cor_ru_combat") != true) {
     change("PAGE!!cor_ru_combat", true)
     cor_ru.createRPGeffectMessage = createRPGeffectMessage; // --- may this entertain velzie lol
     createRPGeffectMessage = function() {
