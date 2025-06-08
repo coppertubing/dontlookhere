@@ -757,7 +757,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         page: {
             fbx: "https://coppertubing.github.io/cor-RU/localization/basement.js",
 
-            hello: ["https://coppertubing.github.io/cor-RU/localization/auth-layer.js", "https://coppertubing.github.io/cor-RU/localization/hub.js"],
+            hello: "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
             hub: "https://coppertubing.github.io/cor-RU/localization/hub.js",
 
             localcity: "https://coppertubing.github.io/cor-RU/localization/their-city.js",
