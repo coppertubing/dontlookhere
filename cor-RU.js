@@ -808,10 +808,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
-            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {
-                listArray.push(cor_ru.list.page[page.dialoguePrefix]);
-                if (page.dialoguePrefix == "hello") listArray.push(cor_ru.list.page['hub']);
-            };
+            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])};
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
                     //listArray.push(cor_ru.list.combat)
