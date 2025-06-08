@@ -8,7 +8,7 @@ env.localization.page['fbx'] = {dialogues: {},
         "lift": "поднять",
         "the notes I got say that there were apparently a ton of these on the ship": "в записях говорилось, что на корабле вот таких вот была просто куча",
         "all sorts of sizes too": "причём самых разных размеров",
-        "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми... так что захватили только одну маленькую",
+        "but most were too heavy to retrieve... so we just got this small one": "но большинство было слишком тяжёлыми... так что захватили только одну маленькую",
         "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it": "у дендритной цисты жёсткая внешняя оболочка. не похоже, что к ней можно подключиться",
         "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста неожиданно тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
 
@@ -58,7 +58,7 @@ env.localization.page['fbx'] = {dialogues: {},
         "cystic column": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
 ::ПОДПИСЬ ФУКНЦИИ: ОБСЛУЖИВАНИЕ КОРРУЦИСТЫ
 ::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "сyst": `????? бро::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+        "cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
 ::НЕТ ПОДПИСИ ФУКНЦИИ
 ::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
         "connection point": `::КОМПОНЕНТ КОРРУЦИСТИЧЕСКОЙ СУЩНОСТИ

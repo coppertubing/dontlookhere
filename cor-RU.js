@@ -691,7 +691,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     }),
     observerGadObserve: function () {
         cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true });
-        console.log("%cgad observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+        console.log("%cGAD observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
     observerDialogue: new MutationObserver(()=>{
@@ -757,7 +757,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         page: {
             fbx: "https://coppertubing.github.io/cor-RU/localization/basement.js",
 
-            hello: "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
+            hello: ["https://coppertubing.github.io/cor-RU/localization/auth-layer.js", "https://coppertubing.github.io/cor-RU/localization/hub.js"],
             hub: "https://coppertubing.github.io/cor-RU/localization/hub.js",
 
             localcity: "https://coppertubing.github.io/cor-RU/localization/their-city.js",
@@ -808,7 +808,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
-            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])};
+            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {
+                listArray.push(cor_ru.list.page[page.dialoguePrefix]);
+                if (page.dialoguePrefix == "hello") listArray.push(cor_ru.list.page['hub']);
+            };
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
                     //listArray.push(cor_ru.list.combat)
