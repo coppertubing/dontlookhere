@@ -55,7 +55,7 @@ cor_ru['inflection'] = function (string, user, target) { // --- function for doi
 
                 if (stringTargetSplit.length == 3) {
 
-                    try {stringProcessed = stringTargetSplit[user.cor_ru.gender]} catch {console.error("some shit going on with" + user.name + "'s gender tbh - @cor-RU")};
+                    try {stringProcessed = stringTargetSplit[user.cor_ru.gender]} catch {console.error("some shit going on with " + user.name + "'s gender tbh - @cor-RU")};
 
                 }  else console.error("some shit going on with the stringTargetSplit tbh - @cor-RU " + stringTargetSplit);
 
@@ -109,9 +109,9 @@ cor_ru['translate'] = function (input) {return processStringTranslation(input)}
 
 
 
-if (check("PAGE!!cor_ru_combat") != true) {
+if (check("PAGE!!cor_ru_combat") != true) { // --- may this entertain velzie lol
     change("PAGE!!cor_ru_combat", true)
-    cor_ru.createRPGeffectMessage = createRPGeffectMessage; // --- may this entertain velzie lol
+    cor_ru.createRPGeffectMessage = createRPGeffectMessage;
     createRPGeffectMessage = function() {
         cor_ru.createRPGeffectMessage();
         // grabbing the action thing
@@ -552,7 +552,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.countercall.details = {
         "flavor": "'направить разрушительный сигнал'",
         "onHit": "'[STAT::amt] [STATUS::vulnerable]'",
-        "conditional": "<em>VS ДЕСТАБИЛИЗИРОВАННЫХ::</em>'дополнительные [STAT::amt]';'+[STAT::critBonus]КРИТ';'[STATUS::stun] при КРИТ'"
+        "conditional": "<em>VS ДЕСТАБИЛИЗАЦИЯ::</em>'дополнительные [STAT::amt]';'+[STAT::critBonus]КРИТ';'[STATUS::stun] при КРИТ'"
     }
 
     /* - destabilize - */
@@ -580,7 +580,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.tozik_attack.verb = "закоррускивить" // Corruskivi
     env.ACTIONS.tozik_attack.usage = {
         "act": "%USER ВЦЕПЛЯЕТСЯ В %ACC-TARGET",
-        "crit": "%TARGET'S LIFE IS DRAINED AWAY", // --- мьмьм
+        "crit": "ИЗ %ACC-TARGET ВЫСАСЫВАЕТСЯ ЖИЗНЬ",
         "hit": "%TARGET ИЗРЕЗАН%TAR(-/А/О)GET",
         "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
@@ -639,16 +639,16 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.miltza_attack.name = "Отвлечение" // Distraction
     env.ACTIONS.miltza_attack.verb = "отвлечь" // distract
     env.ACTIONS.miltza_attack.usage = {
-        "act": "%USER FEINTS AND STRIKES %TARGET",
+        "act": "%USER ДЕЛАЕТ ЛОЖНЫЙ ВЫПАД И БЬЁТ %ACC-TARGET",
         "crit": "СОЮЗНИКИ %GEN-USER ВДОХНОВЛЕНЫ",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
         "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.miltza_attack.details = {
-        "flavor": "'strike with clever feint';'may create distraction'",
+        "flavor": "'ударить с хитрой уловкой';'может создать отвлечение'",
         "onHit": "'[STAT::amt]'",
-        "onCrit": "'[STATUS::evasion] to nearby allies'",
-        "conditional": "<em>VS VULNERABLE::</em>'additional [STAT::amt]'"
+        "onCrit": "'[STATUS::evasion] ближайшим союзникам'",
+        "conditional": "<em>VS УЯЗВИМОСТЬ::</em>'дополнительный [STAT::amt]'"
     }
 
     /* - spy - */
@@ -682,8 +682,8 @@ cor_ru['redefineActions'] = function () {
 
     /* - subvert - */
 
-    env.ACTIONS.subvert.name = "" // Subvert
-    env.ACTIONS.subvert.desc = "" // 'expose extreme weakness';'increase hit and crit chances';'additional chance for severe damage'
+    env.ACTIONS.subvert.name = "поставить под угрозу" // Subvert
+    env.ACTIONS.subvert.desc = "'выявить крайнюю слабость';'увеличить шансы на удар и крит';'дополнительный шанс нанести серьёзный урон'"
     env.ACTIONS.subvert.usage = {
         "act": "%USER СЛЕДИТ ЗА %INS-TARGET",
         "crit": "%TARGET ОБРЕЧ%TAR(ЁН/ЕНА/ЕНО)GET НА ГИБЕЛЬ",
@@ -691,26 +691,28 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
     env.ACTIONS.subvert.details = {
-        "flavor": "'deceive target';'manipulated by outside interference'",
+        "flavor": "'обмануть цель';'манипулируется внешним вмешательством'",
         "onHit": "'[STATUS::vulnerable] [STATUS::critical_flaw]'"
     }
 
     /* - spy_analyze - */
 
-    env.ACTIONS.spy_analyze.name = "" // Analyze
-    env.ACTIONS.spy_analyze.desc = "" // 'expose enemy weakness';'increase hit and crit chances'
-    env.ACTIONS.spy_analyze.help = "" // 80% +3T:VULNERABLE -EVASION
+    env.ACTIONS.spy_analyze.name = "Анализ" // Analyze
+    env.ACTIONS.spy_analyze.verb = "Анализировать" // Analyze
+    env.ACTIONS.spy_analyze.desc = "'выявить слабость врага';'увеличить шансы на удар и крит'" // 'expose enemy weakness';'increase hit and crit chances'
+    env.ACTIONS.spy_analyze.help = "80% +3Х:УЯЗВИМОСТЬ -УКЛОНЕНИЕ" // 80% +3T:VULNERABLE -EVASION
     env.ACTIONS.spy_analyze.usage = {
-        "act": "%USER SCANS %TARGET",
+        "act": "%USER СКАНИРУЕТ %ACC-TARGET",
         "hit": "%TARGET ЧУВСТВУЕТ НА СЕБЕ ЧУЖОЙ ВЗГЛЯД",
         "miss": "%TARGET ПРЯЧЕТСЯ ЗА ЧЕМ-ТО"
     }
 
     /* - spy_target - */
 
-    env.ACTIONS.spy_target.name = "" // Target
-    env.ACTIONS.spy_target.desc = "" // 'expose enemy weakness';'increase hit and crit chances'
-    env.ACTIONS.spy_target.help = "" // 80% +3T:VULNERABLE -EVASION
+    env.ACTIONS.spy_target.name = "нацелиться" // Target
+    env.ACTIONS.spy_target.verb = "нацелиться на" // Target
+    env.ACTIONS.spy_target.desc = "'выявить слабость врага';'увеличить шансы на удар и крит'" // 'expose enemy weakness';'increase hit and crit chances'
+    env.ACTIONS.spy_target.help = "80% +3Х:УЯЗВИМОСТЬ -УКЛОНЕНИЕ" // 80% +3T:VULNERABLE -EVASION
     env.ACTIONS.spy_target.usage = {
         "act": "%USER УКАЗЫВАЕТ НА %ACC-TARGET",
         "hit": "%TARGET ЧУВСТВУЕТ НА СЕБЕ ЧУЖОЙ ВЗГЛЯД",
@@ -719,16 +721,17 @@ cor_ru['redefineActions'] = function () {
 
     /* - drone_strike - */
 
-    env.ACTIONS.drone_strike.name = "" // Drone Strike
-    env.ACTIONS.drone_strike.desc = "" // 'strike against analyzed weakness'
-    env.ACTIONS.drone_strike.help = "" // AUTOHIT -1HP, 10%C x2
+    env.ACTIONS.drone_strike.name = "атака дроном" // Drone Strike
+    env.ACTIONS.drone_strike.name = "атаковать дроном" // Drone Strike
+    env.ACTIONS.drone_strike.desc = "'удар по проанализированной слабости'" // 'strike against analyzed weakness'
+    env.ACTIONS.drone_strike.help = "АВТОУДАР -1ХП, 10%К x2" // AUTOHIT -1HP, 10%C x2
     env.ACTIONS.drone_strike.usage = {
         "act": "ДРОН %GEN-USER АТАКУЕТ %ACC-TARGET"
     }
 
     /* - cavik_attack - */
 
-    env.ACTIONS.cavik_attack.name = "" // IED
+    env.ACTIONS.cavik_attack.name = "Взрывчатка" // IED
     env.ACTIONS.cavik_attack.verb = "бросить в" // throw at
     env.ACTIONS.cavik_attack.usage = {
         "act": "%USER ШВЫРЯЕТ СТРАННУЮ ЦИСТУ В %ACC-TARGET",
@@ -737,7 +740,7 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.cavik_attack.details = {
-        "flavor": "'throw hastily made minor explosive';'chance for greater explosion'",
+        "flavor": "'бросить наспех сделанную небольшую взрывчатку';'шанс на больший взрыв'",
         "onHit": "'[STAT::amt]'",
         onCrit: ()=> `'HIT all foes for [STAT::amt]'${env.name == "frame" ? `;'additional hits do not trigger on-hit effects'` : ``}`,
     }
@@ -783,7 +786,7 @@ cor_ru['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.cripple.details = {
-        "flavor": "'strike neural center of target';'guaranteed disorientation'",
+        "flavor": "'ударить по нервному центру цели';'гарантированная дезориентация'",
         "onHit": "'[STAT::amt] [STATUS::stun]'",
         "onCrit": "'[STATUS::weakened]'"
     }
@@ -797,7 +800,7 @@ cor_ru['redefineActions'] = function () {
         "hit": "%TARGET ЗАЩИЩ%TAR(ЁН/ЕНА/ЕНО)GET %INS-USER"
     }
     env.ACTIONS.guard.details = {
-        "flavor": "'utilize unique limbs to protect target';'intercept incoming attacks'",
+        "flavor": "'использовать уникальные конечности для защиты цели';'перехватывать входящие атаки'",
         "onUse": "'[STATUS::redirection]'"
     }
 
@@ -838,28 +841,28 @@ cor_ru['redefineActions'] = function () {
 
     /* - brawl_weak - */
 
-    env.ACTIONS.brawl_weak.name = "" // Clumsy Brawl
-    env.ACTIONS.brawl_weak.desc = "" // 'unwieldy strike with weak limbs'
-    env.ACTIONS.brawl_weak.verb = "" // brawl with
-    env.ACTIONS.brawl_weak.help = "" // 40% -1HP, 10%C X2
+    env.ACTIONS.brawl_weak.name = "Неуклюжая драка" // Clumsy Brawl
+    env.ACTIONS.brawl_weak.desc = "'неуклюжий удар слабыми конечностями'" // 'unwieldy strike with weak limbs'
+    env.ACTIONS.brawl_weak.verb = "драться с кем?" // brawl with
+    env.ACTIONS.brawl_weak.help = "40% -1ХП, 10%К X2" // 40% -1HP, 10%C X2
     env.ACTIONS.brawl_weak.usage = {
-        "act": "%USER CLUMSILY ATTACKS %TARGET",
-        "crit": "%TARGET IS KNOCKED BACK",
+        "act": "%USER НЕУКЛЮЖЕ АТАКУЕТ %ACC-TARGET",
+        "crit": "%TARGET СБИТ%TAR(-/А/О)GET С НОГ",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
 
     /* - brawl - */
 
-    env.ACTIONS.brawl.name = "" // Brawl
-    env.ACTIONS.brawl.verb = "" // brawl with
+    env.ACTIONS.brawl.name = "Драка" // Brawl
+    env.ACTIONS.brawl.verb = "драться с кем?" // brawl with
     env.ACTIONS.brawl.usage = {
-        "act": "%USER ATTACKS %TARGET",
+        "act": "%USER АТАКУЕТ %ACC-TARGET",
         "hit": "%TARGET РАНЕН%TAR(-/А/О)GET",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.brawl.details = {
-        "flavor": "'unwieldy punch';'last resort'",
+        "flavor": "'грузный удар';'крайняя мера'",
         "onHit": "'[STAT::amt]'"
     }
 
@@ -868,9 +871,9 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.ik_attack.name = "" // Veilksplitter
     env.ACTIONS.ik_attack.verb = "" // veilksplit
     env.ACTIONS.ik_attack.usage = {
-        "act": "%USER BLASTS %TARGET",
-        "crit": "%TARGET IS ANNIHILATED",
-        "hit": "%TARGET IS SEARED",
+        "act": "%USER BLASTS %ACC-TARGET", 
+        "crit": "%TARGET АННИГИЛИРОВАН%TAR(-/А/О)GET",
+        "hit": "%TARGET ОБОЖЖ%TAR(ЁН/ЕНА/ЕНО)GET",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.ik_attack.details = {
@@ -904,32 +907,32 @@ cor_ru['redefineActions'] = function () {
 
     /* - disabler_pulse - */
 
-    env.ACTIONS.disabler_pulse.name = "" // Disabler Pulse
-    env.ACTIONS.disabler_pulse.verb = "" // disable
+    env.ACTIONS.disabler_pulse.name = "Импульс Отключателя" // Disabler Pulse
+    env.ACTIONS.disabler_pulse.verb = "отключить" // disable
     env.ACTIONS.disabler_pulse.usage = {
-        "act": "%USER LETS LOOSE THE DISABLER",
-        "hit": "%TARGET IS ANNIHILATED"
+        "act": "%USER ВЫПУСКАЕТ ОТКЛЮЧАТЕЛЬ",
+        "hit": "%TARGET АННИГИЛИРОВАН%TAR(-/А/О)GET"
     }
     env.ACTIONS.disabler_pulse.details = {
-        "flavor": "'emergency security device';'injects self-destructive thoughtform';'for industrial use only'",
+        "flavor": "'устройство аварийной безопасности';'внедряет саморазрушительную мыслеформу';'только для промышленного использования'",
         "onHit": "'[STAT::amt] [STATUS::stun]'"
     }
 
     /* - foe_stab - */
 
-    env.ACTIONS.foe_stab.name = "" // stab
+    env.ACTIONS.foe_stab.name = "пронзить" // stab
     env.ACTIONS.foe_stab.desc = "" // 'puncture vital cystic component';'damage over time';'stop regen'
-    env.ACTIONS.foe_stab.help = "" // 75% -1HP +2T:PUNCTURE -REGEN, 10%C -1HP
+    env.ACTIONS.foe_stab.help = "75% -1ХП +2Х:ПРОКОЛ -РЕГЕНЕРАЦИЯ, 10%К -1ХП" // 75% -1HP +2T:PUNCTURE -REGEN, 10%C -1HP --- wait what does the C even mean
     env.ACTIONS.foe_stab.usage = {
         "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
-        "crit": "%TARGET IS EVISCERATED",
+        "crit": "%TARGET РАСПОТРОШ%TAR(ЁН/ЕНА/ЕНО)GET",
         "hit": "%TARGET ИСТЕКАЕТ СЛЯКОТНЫМ КОРРУ",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.foe_stab.details = {
-        "flavor": "'reshape arm into sharpened tendril';'stab target'",
+        "flavor": "'преобразовать руку в заострённый отросток';'пронзить цель'",
         "onHit": "'[STAT::amt] [STATUS::puncture]'",
-        onCrit: ()=> `'puncture vital cystic component for [STATUS::puncture]'${env?.rpg?.is2D ? ";'KB::2'" : ''}`,
+        onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТД::2'" : ''}`,
     }
 
     /* - barrier - */
@@ -2839,172 +2842,172 @@ cor_ru['redefineEffects'] = function () {
     /* - Puncture - */
 
     env.STATUS_EFFECTS.puncture.name = "Прокол" // Puncture
-    env.STATUS_EFFECTS.puncture.help = "" // -10% hp/turn (min:1)
+    env.STATUS_EFFECTS.puncture.help = "-10% ХП/ход (мин:1)" // -10% hp/turn (min:1)
 
     /* - Rot - */
 
     env.STATUS_EFFECTS.rot.name = "Гниль" // Rot
-    env.STATUS_EFFECTS.rot.help = "" // -(T:ROT)% HP/turn (min:1), max: 90%HP\nI.E. 4T:ROT = -4% HP
+    env.STATUS_EFFECTS.rot.help = "-(Х:ГНИЛЬ)% ХП/ход (мин:1), макс: 90%HP\nТ.Е. 4Х:ГНИЛЬ = -4% ХП" // -(T:ROT)% HP/turn (min:1), max: 90%HP\nI.E. 4T:ROT = -4% HP
 
     /* - Regen - */
 
     env.STATUS_EFFECTS.regen.name = "Регенерация" // Regen
-    env.STATUS_EFFECTS.regen.help = "" // +1 HP/turn
+    env.STATUS_EFFECTS.regen.help = "+1 ХП/ход" // +1 HP/turn
 
     /* - Repairs - */
 
     env.STATUS_EFFECTS.repairs.name = "Починка" // Repairs
-    env.STATUS_EFFECTS.repairs.help = "" // +1 HP/turn while BP > 0, prevents puncture, removed upon barrier loss
+    env.STATUS_EFFECTS.repairs.help = "+1 ХП/ход пока БП > 0, предотвращает прокол, снимается при потере барьера" // +1 HP/turn while BP > 0, prevents puncture, removed upon barrier loss
 
     /* - Million Teeth - */
 
     env.STATUS_EFFECTS.million_teeth.name = "Миллион Зубов" // Million Teeth
-    env.STATUS_EFFECTS.million_teeth.help = "" // +2T:PUNCTURE/turn while BP > 0, removed upon barrier loss
+    env.STATUS_EFFECTS.million_teeth.help = "+2Х:ПРОКОЛ/ход пока БП > 0, снимается при потере барьера" // +2T:PUNCTURE/turn while BP > 0, removed upon barrier loss
 
     /* - Destabilized - */
 
     env.STATUS_EFFECTS.destabilized.name = "Дестабилизация" // Destabilized
-    env.STATUS_EFFECTS.destabilized.help = "" // +100% incoming/outgoing damage/heal
+    env.STATUS_EFFECTS.destabilized.help = "+100% входящего/исходящего урона/лечения" // +100% incoming/outgoing damage/heal
 
     /* - Vulnerable - */
 
     env.STATUS_EFFECTS.vulnerable.name = "Уязвимость" // Vulnerable
-    env.STATUS_EFFECTS.vulnerable.help = "" // +100% IN:HIT%, +200% IN:CRIT%
+    env.STATUS_EFFECTS.vulnerable.help = "+100% ВХОД:УДАР%, +200% ВХОД:КРИТ%" // +100% IN:HIT%, +200% IN:CRIT%
 
     /* - Critical Flaw - */
 
     env.STATUS_EFFECTS.critical_flaw.name = "Критический Изъян" // Critical Flaw
-    env.STATUS_EFFECTS.critical_flaw.help = "" // when struck with a crit, also lose 10% of current HP (min:1), removed upon vulnerable loss
+    env.STATUS_EFFECTS.critical_flaw.help = "при получении крита также теряет 10% текущего ХП (мин:1), снимается при потере уязвимости" // when struck with a crit, also lose 10% of current HP (min:1), removed upon vulnerable loss
 
     /* - Focused - */
 
     env.STATUS_EFFECTS.focused.name = "Сосредоточение" // Focused
-    env.STATUS_EFFECTS.focused.help = "" // +100% HIT%, +400% CRIT%
+    env.STATUS_EFFECTS.focused.help = "+100% УДАР%, +400% КРИТ%" // +100% HIT%, +400% CRIT%
 
     /* - Weakened - */
 
     env.STATUS_EFFECTS.weakened.name = "Слабость" // Weakened
-    env.STATUS_EFFECTS.weakened.help = "" // -50% outgoing damage, -100% CRIT%
+    env.STATUS_EFFECTS.weakened.help = "-50% исходящего урона, -100% КРИТ%" // -50% outgoing damage, -100% CRIT%
 
     /* - Empowered - */
 
     env.STATUS_EFFECTS.empowered.name = "Усиление" // Empowered
-    env.STATUS_EFFECTS.empowered.help = "" // +1 base outgoing damage/heal
+    env.STATUS_EFFECTS.empowered.help = "+1 к базовому исходящему урону/лечению" // +1 base outgoing damage/heal
 
     /* - Carapace - */
 
     env.STATUS_EFFECTS.carapace.name = "Панцирь" // Carapace
-    env.STATUS_EFFECTS.carapace.help = "" // -1 base incoming damage
+    env.STATUS_EFFECTS.carapace.help = "-1 к базовому входящему урону" // -1 base incoming damage
 
     /* - Open Wound - */
 
     env.STATUS_EFFECTS.open_wound.name = "Открытая Рана" // Open Wound
-    env.STATUS_EFFECTS.open_wound.help = "" // +1 base incoming damage
+    env.STATUS_EFFECTS.open_wound.help = "+1 к базовому входящему урону" // +1 base incoming damage
 
     /* - Evasion - */
 
     env.STATUS_EFFECTS.evasion.name = "Уклонение" // Evasion
-    env.STATUS_EFFECTS.evasion.help = "" // -75% IN:HIT% & IN:CRIT%
+    env.STATUS_EFFECTS.evasion.help = "-75% ВХОД:УДАР% И ВХОД:КРИТ%" // -75% IN:HIT% & IN:CRIT%
 
     /* - Stun - */
 
     env.STATUS_EFFECTS.stun.name = "Оглушение" // Stun
-    env.STATUS_EFFECTS.stun.help = "" // skip turn
+    env.STATUS_EFFECTS.stun.help = "пропустить ход" // skip turn
 
     /* - Immobile - */
 
     env.STATUS_EFFECTS.immobile.name = "Неподвижность" // Immobile
-    env.STATUS_EFFECTS.immobile.help = "" // skip turn
+    env.STATUS_EFFECTS.immobile.help = "пропустить ход" // skip turn
 
     /* - Immobile - */
 
     env.STATUS_EFFECTS.immobile_hardskip.name = "Неподвижность" // Immobile
-    env.STATUS_EFFECTS.immobile_hardskip.help = "" // skip turn
+    env.STATUS_EFFECTS.immobile_hardskip.help = "пропустить ход" // skip turn
 
     /* - Invisible - */
 
     env.STATUS_EFFECTS.invisible.name = "Невидимость" // Invisible
-    env.STATUS_EFFECTS.invisible.help = "" // no actor panel, used for background entities mainly
+    env.STATUS_EFFECTS.invisible.help = "нет актёрской панели, в основном для фоновых объектов" // no actor panel, used for background entities mainly
 
     /* - Incoherent - */
 
     env.STATUS_EFFECTS.incoherent.name = "Бессвязность" // Incoherent
-    env.STATUS_EFFECTS.incoherent.help = "" // ignoring thoughtspace specifications
+    env.STATUS_EFFECTS.incoherent.help = "игнорирует требования мыслепространства" // ignoring thoughtspace specifications
 
     /* - Windup - */
 
     env.STATUS_EFFECTS.windup.name = "Подготовка" // Windup
-    env.STATUS_EFFECTS.windup.help = "" // +100% incoming crit, preparing powerful action, interrupted by stun
+    env.STATUS_EFFECTS.windup.help = "+100% входящего крита, подготовка мощного действия, прерывается оглушением" // +100% incoming crit, preparing powerful action, interrupted by stun
 
     /* - Fear - */
 
     env.STATUS_EFFECTS.fear.name = "Страх" // Fear
-    env.STATUS_EFFECTS.fear.help = "" // ()=> `paralyzed by terror,${env?.rpg?.is2D ? " -1 MOVE," : ''} some actions prohibited\nremoved by ally CRIT${env?.rpg?.is2D ? " or ENDURE action" : ''}`
+    env.STATUS_EFFECTS.fear.help = ()=> `еле двигается от ужаса,${env?.rpg?.is2D ? " -1 ДВИЖ," : ''} некоторые действия недоступны\nубирается КРИТОМ союзника${env?.rpg?.is2D ? " или действием ВЫДЕРЖАТЬ" : ''}` // ()=> `paralyzed by terror,${env?.rpg?.is2D ? " -1 MOVE," : ''} some actions prohibited\nremoved by ally CRIT${env?.rpg?.is2D ? " or ENDURE action" : ''}`
 
     /* - Madness - */
 
     env.STATUS_EFFECTS.madness.name = "Безумие" // Madness
-    env.STATUS_EFFECTS.madness.help = "" // outgoing targeted actions have a 50% chance to be redirected to a random actor\nremoved upon fear loss
+    env.STATUS_EFFECTS.madness.help = "50% шанс перенаправить исходящее нацеленное действие на случайного актера\nубирается при потере страха" // outgoing targeted actions have a 50% chance to be redirected to a random actor\nremoved upon fear loss
 
     /* - Spikes - */
 
     env.STATUS_EFFECTS.spikes.name = "Шипы" // Spikes
-    env.STATUS_EFFECTS.spikes.help = "" // return 50% incoming damage to attacker (min:1)
+    env.STATUS_EFFECTS.spikes.help = "возвращает 50% входящего урона атакующему (мин:1)" // return 50% incoming damage to attacker (min:1)
 
     /* - siphon - */
 
-    env.STATUS_EFFECTS.siphon.name = "" // siphon --- надо обсудить. предложения: выкачка, поглощение, вампиризм (знают ли куу о вампирах (мозг лазутчика всё странно переводит))
-    env.STATUS_EFFECTS.siphon.help = "" // attacker receives +1HP +1T:REGEN
+    env.STATUS_EFFECTS.siphon.name = "" // siphon --- надо обсудить. предложения: выкачка, поглощение, вампиризм (знают ли куу о вампирах (мозг лазутчика всё странно переводит)) --- да
+    env.STATUS_EFFECTS.siphon.help = "атакующий получает +1ХП +1Х:РЕГЕНЕРАЦИЯ" // attacker receives +1HP +1T:REGEN
 
     /* - Redirection - */
 
     env.STATUS_EFFECTS.redirection.name = "Перенаправление" // Redirection
-    env.STATUS_EFFECTS.redirection.help = "" // ()=> `[[ORIGIN]] intercepting incoming attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
+    env.STATUS_EFFECTS.redirection.help = ()=> `[[ORIGIN]] перехватывает входящие атаки${env?.rpg?.is2D ? ", +ОТДЧ устойчивость" : ''}` // ()=> `[[ORIGIN]] intercepting incoming attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
 
     /* - Redirector - */
 
     env.STATUS_EFFECTS.redirector.name = "Перенаправитель" // Redirector
-    env.STATUS_EFFECTS.redirector.help = "" // ()=> `intercepting nearby attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
+    env.STATUS_EFFECTS.redirector.help = ()=> `перехватывает атаки поблизости${env?.rpg?.is2D ? ", +ОТДЧ устойчивость" : ''}` // ()=> `intercepting nearby attacks${env?.rpg?.is2D ? ", +KB resistance" : ''}`
 
     /* - Conjoined - */
 
     env.STATUS_EFFECTS.conjoined.name = "Сросшиеся" // Conjoined
-    env.STATUS_EFFECTS.conjoined.help = "" // share HP with all other conjoined entities
+    env.STATUS_EFFECTS.conjoined.help = "разделяет ХП со всеми остальными сросшимися сущностями" // share HP with all other conjoined entities
 
     /* - Conjoined - */
 
     env.STATUS_EFFECTS.conjoined_baseslug.name = "Сросшиеся" // Conjoined
-    env.STATUS_EFFECTS.conjoined_baseslug.help = "" // share HP with all similar entities
+    env.STATUS_EFFECTS.conjoined_baseslug.help = "разделяет ХП со всеми похожими сущностями" // share HP with all similar entities
 
     /* - Ethereal - */
 
     env.STATUS_EFFECTS.ethereal.name = "Бесплотность" // Ethereal
-    env.STATUS_EFFECTS.ethereal.help = "" // disappear on death
+    env.STATUS_EFFECTS.ethereal.help = "пропадает при смерти" // disappear on death
 
     /* - Ethereal - */
 
     env.STATUS_EFFECTS.ethereal_passive.name = "Бесплотность" // Ethereal
-    env.STATUS_EFFECTS.ethereal_passive.help = "" // disappear on death
+    env.STATUS_EFFECTS.ethereal_passive.help = "пропадает при смерти" // disappear on death
 
     /* - Untargetable - */
 
     env.STATUS_EFFECTS.untargetable.name = "Ненацеливаемость" // Untargetable
-    env.STATUS_EFFECTS.untargetable.help = "" // cannot directly attack, seek other means
+    env.STATUS_EFFECTS.untargetable.help = "не может быть атакован напрямую, обратитесь к другим методам" // cannot directly attack, seek other means
 
     /* - Sacrifice - */
 
     env.STATUS_EFFECTS.sacrifice.name = "Жертвоприношение" // Sacrifice
-    env.STATUS_EFFECTS.sacrifice.help = "" // +2 base outgoing damage/heal, +200% HIT% & CRIT%, consumed by next action
+    env.STATUS_EFFECTS.sacrifice.help = "+2 базового исходящего урона/лечения, +200% УДАР% и КРИТ%, поглощается следующим действием" // +2 base outgoing damage/heal, +200% HIT% & CRIT%, consumed by next action
 
     /* - Surge - */
 
     env.STATUS_EFFECTS.surge.name = "Рывок" // Surge
-    env.STATUS_EFFECTS.surge.help = "" // use next active action twice
+    env.STATUS_EFFECTS.surge.help = "использовать следующее действие дважды" // use next active action twice
 
     /* - Wild Surge - */
 
     env.STATUS_EFFECTS.wild_surge.name = "Перенапряжение" // Wild Surge --- ну дикий рывок звучит. меее
-    env.STATUS_EFFECTS.wild_surge.help = "" // on next active targeted action, gain 1T:STUN, and use across the entire target team\nif beneficial, action used on all allies\nif offensive, action used on all foes
+    env.STATUS_EFFECTS.wild_surge.help = "при следующем активном нацеленном действии получить 1Х:ОГЛУШЕНИЕ и использовать действие на всей команде цели\nесли положительное, действие используется на всех союзниках\nесли атакующее, действие используется на всех врагах" // on next active targeted action, gain 1T:STUN, and use across the entire target team\nif beneficial, action used on all allies\nif offensive, action used on all foes
 
     /* - Attack Drone - */
 
@@ -3108,17 +3111,17 @@ cor_ru['redefineEffects'] = function () {
 
     /* - Heavy Chitin - */
 
-    env.STATUS_EFFECTS.bone_spikes.name = "" // Heavy Chitin
-    env.STATUS_EFFECTS.bone_spikes.help = "" // evasion becomes spikes
+    env.STATUS_EFFECTS.bone_spikes.name = "Тяжёлый Хитин" // Heavy Chitin
+    env.STATUS_EFFECTS.bone_spikes.help = "уклонение превращается в шипы" // evasion becomes spikes
 
     /* - Ablative Mending - */
 
-    env.STATUS_EFFECTS.bone_ablative.name = "" // Ablative Mending
-    env.STATUS_EFFECTS.bone_ablative.help = "" // direct heals are doubled and become barriers
+    env.STATUS_EFFECTS.bone_ablative.name = "Аблятивная Починка" // Ablative Mending
+    env.STATUS_EFFECTS.bone_ablative.help = "прямое лечение удваивается и становится барьерами" // direct heals are doubled and become barriers
 
     /* - Collectivism - */
 
-    env.STATUS_EFFECTS.bone_collective.name = "" // Collectivism
+    env.STATUS_EFFECTS.bone_collective.name = "Коллективизм" // Collectivism
     env.STATUS_EFFECTS.bone_collective.help = "" // gain +100% outgoing damage/heal while covered by REDIRECTION\nall actors gain GUARD (AUTOHIT +2T:REDIRECTION (TO USER))
 
     /* - Adull's Sacrifice - */
@@ -3128,57 +3131,57 @@ cor_ru['redefineEffects'] = function () {
 
     /* - Full Strength - */
 
-    env.STATUS_EFFECTS.ichor_strength.name = "" // Full Strength
-    env.STATUS_EFFECTS.ichor_strength.help = "" // +100% outgoing damage/heal at >75% HP
+    env.STATUS_EFFECTS.ichor_strength.name = "В Полную Силу" // Full Strength
+    env.STATUS_EFFECTS.ichor_strength.help = "+100% исходящего урона/лечения при >75% ХП" // +100% outgoing damage/heal at >75% HP
 
     /* - Rotten Supplies - */
 
-    env.STATUS_EFFECTS.ichor_rotten.name = "" // Rotten Supplies
-    env.STATUS_EFFECTS.ichor_rotten.help = "" // gain 3T:ROT when REGEN is removed
+    env.STATUS_EFFECTS.ichor_rotten.name = "Гнилые Припасы" // Rotten Supplies
+    env.STATUS_EFFECTS.ichor_rotten.help = "получить 3Х:ГНИЛЬ при потере РЕГЕНЕРАЦИИ" // gain 3T:ROT when REGEN is removed
 
     /* - Infection - */
 
-    env.STATUS_EFFECTS.claws_infection.name = "" // Infection
+    env.STATUS_EFFECTS.claws_infection.name = "Инфекция" // Infection
     env.STATUS_EFFECTS.claws_infection.help = "" // +20% damage per T:PUNCTURE of attacked target
 
     /* - Desperation - */
 
-    env.STATUS_EFFECTS.claws_desperation.name = "" // Desperation
+    env.STATUS_EFFECTS.claws_desperation.name = "Отчаяние" // Desperation
     env.STATUS_EFFECTS.claws_desperation.help = "" // +50% outgoing crit and hit chance if HP < 50%
 
     /* - Rabid - */
 
-    env.STATUS_EFFECTS.claws_rabid.name = "" // Rabid
+    env.STATUS_EFFECTS.claws_rabid.name = "Бешенство" // Rabid
     env.STATUS_EFFECTS.claws_rabid.help = "" // all targeted actions have a 25% + (1%*T:ROT) chance to become BITE\nBITE::(-2HP, +3T:ROT, transfer ROT to target)
 
     /* - Hypercritical - */
 
-    env.STATUS_EFFECTS.eyes_hypercritical.name = "" // Hypercritical
+    env.STATUS_EFFECTS.eyes_hypercritical.name = "Гиперкритичность" // Hypercritical
     env.STATUS_EFFECTS.eyes_hypercritical.help = "" // vulnerability has infinite duration
 
     /* - Wounded Ego - */
 
-    env.STATUS_EFFECTS.eyes_woundedego.name = "" // Wounded Ego
+    env.STATUS_EFFECTS.eyes_woundedego.name = "Уязвлённое Эго" // Wounded Ego
     env.STATUS_EFFECTS.eyes_woundedego.help = "" // grant 1T:FOCUSED and 1T:EMPOWERED when vulnerability is removed
 
     /* - Betrayal - */
 
-    env.STATUS_EFFECTS.eyes_betrayal.name = "" // Betrayal
+    env.STATUS_EFFECTS.eyes_betrayal.name = "Предательство" // Betrayal
     env.STATUS_EFFECTS.eyes_betrayal.help = "" // Beneficial actions have a 20% chance to become SUBVERT\nSUBVERT::(+2T:VULNERABLE, +CRITICAL FLAW, -EVASION)
 
     /* - Laughterhouse - */
 
-    env.STATUS_EFFECTS.light_laughterhouse.name = "" // Laughterhouse
-    env.STATUS_EFFECTS.light_laughterhouse.help = "" // most actions have a 20% chance to repeat effects
+    env.STATUS_EFFECTS.light_laughterhouse.name = "Смехобойня" // Laughterhouse
+    env.STATUS_EFFECTS.light_laughterhouse.help = "большинство действий имеют 20% шанс повторить свои эффекты" // most actions have a 20% chance to repeat effects
 
     /* - Velzie's Glee - */
 
-    env.STATUS_EFFECTS.light_glee.name = "" // Velzie's Glee
+    env.STATUS_EFFECTS.light_glee.name = "Упоение Велзи" // Velzie's Glee
     env.STATUS_EFFECTS.light_glee.help = "" // incoming status effect application has a 50% chance to become opposite status\nmay be altered by other effects
 
     /* - Dark Eye - */
 
-    env.STATUS_EFFECTS.light_dark.name = "" // Dark Eye
+    env.STATUS_EFFECTS.light_dark.name = "Мрачный Глаз" // Dark Eye
     env.STATUS_EFFECTS.light_dark.help = "" // gain +100% outgoing damage/heal when afflicted by FEAR\nwhen critting a foe, inflict 1T:FEAR 
 
     /* - Lone Daemon - */
@@ -3358,7 +3361,7 @@ cor_ru['redefineEffects'] = function () {
 
     /* - Wall - */
 
-    env.STATUS_EFFECTS.destructible_wall.name = "" // Wall
+    env.STATUS_EFFECTS.destructible_wall.name = "Стена" // Wall
 
     /* - Planted - */
 
@@ -3371,7 +3374,7 @@ cor_ru['redefineEffects'] = function () {
 
     /* - miltzone - */
 
-    env.STATUS_EFFECTS.boss_miltza.name = "" // miltzone
+    env.STATUS_EFFECTS.boss_miltza.name = "милтзона" // miltzone
 
     /* - Unnatural Carapace - */
 
@@ -3395,7 +3398,7 @@ cor_ru['redefineEffects'] = function () {
     /* - Last Stand - */
 
     env.STATUS_EFFECTS.desperation.name = "" // Last Stand
-    env.STATUS_EFFECTS.desperation.help = "" // this is it.\nfocused status is infinite\nbroadly increases strength\nautomatically revive self, once
+    env.STATUS_EFFECTS.desperation.help = "вот и всё.\nстатус сосредоточения бесконечен\nзначительно увеличивает силу\nавтоматическое самовозрождение, единожды" // this is it.\nfocused status is infinite\nbroadly increases strength\nautomatically revive self, once
 
     /* - Ceremony Vein - */
 
@@ -3408,7 +3411,7 @@ cor_ru['redefineEffects'] = function () {
 
     /* - vekoaaaa - */
 
-    env.STATUS_EFFECTS.boss_vekoa.name = "" // vekoaaaa
+    env.STATUS_EFFECTS.boss_vekoa.name = "векоаааа" // vekoaaaa
 
     /* - Hyperfocus - */
 
@@ -3417,28 +3420,28 @@ cor_ru['redefineEffects'] = function () {
 
     /* - Disconnected - */
 
-    env.STATUS_EFFECTS.autoplay_telyu.name = "" // Disconnected
-    env.STATUS_EFFECTS.autoplay_telyu.help = "" // acting of her own volition
+    env.STATUS_EFFECTS.autoplay_telyu.name = "Отключённая" // Disconnected
+    env.STATUS_EFFECTS.autoplay_telyu.help = "действует по собственной воле" // acting of her own volition
 
     /* - Disconnected - */
 
-    env.STATUS_EFFECTS.autoplay_tozik.name = "" // Disconnected
-    env.STATUS_EFFECTS.autoplay_tozik.help = "" // acting of his own volition
+    env.STATUS_EFFECTS.autoplay_tozik.name = "Отключённый" // Disconnected
+    env.STATUS_EFFECTS.autoplay_tozik.help = "действует по собственной воле" // acting of his own volition
 
     /* - Knockback - */
 
-    env.STATUS_EFFECTS.kb.name = "" // Knockback
-    env.STATUS_EFFECTS.kb.help = "" // immediate forced movement, transfers on impact
+    env.STATUS_EFFECTS.kb.name = "Отдача" // Knockback
+    env.STATUS_EFFECTS.kb.help = "немедленное принудительное движение, переносится при ударе" // immediate forced movement, transfers on impact
 
     /* - Barrier - */
 
-    env.STATUS_EFFECTS.bp.name = "" // Barrier
-    env.STATUS_EFFECTS.bp.help = "" // temporary HP, limited to 1/2 max HP
+    env.STATUS_EFFECTS.bp.name = "Барьер" // Barrier
+    env.STATUS_EFFECTS.bp.help = "временное здоровье, ограничено 1/2 макс ХП" // temporary HP, limited to 1/2 max HP
 
     /* - aiming - */
 
-    env.STATUS_EFFECTS.aiming_indicator.name = "" // aiming
-    env.STATUS_EFFECTS.aiming_indicator.help = "" // you should never see this
+    env.STATUS_EFFECTS.aiming_indicator.name = "целица" // aiming
+    env.STATUS_EFFECTS.aiming_indicator.help = "вы этого видеть не должны" // you should never see this
 }
 /* --- ITEMS --- */
 cor_ru['redefineItems'] = function () {
@@ -3446,7 +3449,7 @@ cor_ru['redefineItems'] = function () {
 
     env.ITEM_LIST.restorative.name = "Восстановительная Циста" // Restorative Cyst
     env.ITEM_LIST.restorative.description = "" // 'quick-acting repair cyst';'best used away from danger'
-    env.ITEM_LIST.restorative.oocnote = "" // 'restores target to full health'
+    env.ITEM_LIST.restorative.oocnote = "'восстанавливает цель до полного здоровья'" // 'restores target to full health'
 
     /* - Satik Cyst - */
 
@@ -3656,7 +3659,7 @@ cor_ru['redefineModifiers'] = function () {
 
     /* - Full Strength - */
 
-    env.MODIFIERS.ichor_strength.name = "Полная Сила" // Full Strength
+    env.MODIFIERS.ichor_strength.name = "В Полную Силу" // Full Strength
     env.MODIFIERS.ichor_strength.getHelp = ()=> { return env.STATUS_EFFECTS.ichor_strength.help }
 
     /* - Rotten Supplies - */
@@ -3696,7 +3699,7 @@ cor_ru['redefineModifiers'] = function () {
 
     /* - Laughterhouse - */
 
-    env.MODIFIERS.light_laughterhouse.name = "" // Laughterhouse --- полагаю тут игра слов мол slaughterhouse. как переведем? смехобойня? хиханьки-хахоньки?
+    env.MODIFIERS.light_laughterhouse.name = "Смехобойня" // Laughterhouse --- полагаю тут игра слов мол slaughterhouse. как переведем? смехобойня? хиханьки-хахоньки?
     env.MODIFIERS.light_laughterhouse.getHelp = ()=> { return env.STATUS_EFFECTS.light_laughterhouse.help }
 
     /* - Velzie's Glee - */
@@ -3837,53 +3840,53 @@ cor_ru['redefineStats'] = function () {
 
     /* - OUT::x(HP) - */
 
-    env.STATDATA.outgoingMult.display = "" // OUT::x(HP)
-    env.STATDATA.outgoingMult.description = "" // 'multiplies all HP changes inflicted upon others'
+    env.STATDATA.outgoingMult.display = "OUT::x(HP)" // OUT::x(HP)
+    env.STATDATA.outgoingMult.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies all HP changes inflicted upon others'
 
     /* - OUT::HP - */
 
-    env.STATDATA.outgoingFlat.display = "" // OUT::HP
-    env.STATDATA.outgoingFlat.description = "" // 'flat modifier to HP changes on others';'before modifiers'
+    env.STATDATA.outgoingFlat.display = "OUT::HP" // OUT::HP
+    env.STATDATA.outgoingFlat.description = "еще не переведено ибо я понятия не имею где оно используется" // 'flat modifier to HP changes on others';'before modifiers'
 
     /* - OUT::x(HIT) - */
 
-    env.STATDATA.outgoingToHit.display = "" // OUT::x(HIT)
-    env.STATDATA.outgoingToHit.description = "" // 'multiplies chance to hit others'
+    env.STATDATA.outgoingToHit.display = "OUT::x(HIT)" // OUT::x(HIT)
+    env.STATDATA.outgoingToHit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies chance to hit others'
 
     /* - OUT::x(CRIT) - */
 
-    env.STATDATA.outgoingCrit.display = "" // OUT::x(CRIT)
-    env.STATDATA.outgoingCrit.description = "" // 'multiplies chance to crit others'
+    env.STATDATA.outgoingCrit.display = "OUT::x(CRIT)" // OUT::x(CRIT)
+    env.STATDATA.outgoingCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies chance to crit others'
 
     /* - OUT::CRIT - */
 
-    env.STATDATA.outgoingFlatCrit.display = "" // OUT::CRIT
-    env.STATDATA.outgoingFlatCrit.description = "" // 'added to base crit chance on others';'before modifiers'
+    env.STATDATA.outgoingFlatCrit.display = "OUT::CRIT" // OUT::CRIT
+    env.STATDATA.outgoingFlatCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'added to base crit chance on others';'before modifiers'
 
     /* - IN::x(HP) - */
 
-    env.STATDATA.incomingMult.display = "" // IN::x(HP)
-    env.STATDATA.incomingMult.description = "" // 'multiplies all HP changes inflicted upon this entity'
+    env.STATDATA.incomingMult.display = "IN::x(HP)" // IN::x(HP)
+    env.STATDATA.incomingMult.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies all HP changes inflicted upon this entity'
 
     /* - IN::HP - */
 
-    env.STATDATA.incomingFlat.display = "" // IN::HP
-    env.STATDATA.incomingFlat.description = "" // 'flat modifier to HP changes on this entity';'before modifiers'
+    env.STATDATA.incomingFlat.display = "IN::HP" // IN::HP
+    env.STATDATA.incomingFlat.description = "еще не переведено ибо я понятия не имею где оно используется" // 'flat modifier to HP changes on this entity';'before modifiers'
 
     /* - IN::x(HIT) - */
 
-    env.STATDATA.incomingToHit.display = "" // IN::x(HIT)
-    env.STATDATA.incomingToHit.description = "" // 'multiplies chance to hit this entity'
+    env.STATDATA.incomingToHit.display = "IN::x(HIT)" // IN::x(HIT)
+    env.STATDATA.incomingToHit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies chance to hit this entity'
 
     /* - IN::x(CRIT) - */
 
-    env.STATDATA.incomingCrit.display = "" // IN::x(CRIT)
-    env.STATDATA.incomingCrit.description = "" // 'multiplies chance to crit this entity'
+    env.STATDATA.incomingCrit.display = "IN::x(CRIT)" // IN::x(CRIT)
+    env.STATDATA.incomingCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'multiplies chance to crit this entity'
 
     /* - IN::CRIT - */
 
-    env.STATDATA.incomingFlatCrit.display = "" // IN::CRIT
-    env.STATDATA.incomingFlatCrit.description = "" // 'added to base crit chance against this entity';'before modifiers'
+    env.STATDATA.incomingFlatCrit.display = "IN::CRIT" // IN::CRIT
+    env.STATDATA.incomingFlatCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'added to base crit chance against this entity';'before modifiers'
 }
 /* --- ACTORS --- */
 cor_ru['redefineActors'] = function () {
@@ -5911,7 +5914,7 @@ cor_ru['redefineActors'] = function () {
 cor_ru['redefineFormations'] = function() {
     /* - ?????? - */
 
-    env.COMBAT_FORMATIONS.intrusive.name = "" // ??????
+    env.COMBAT_FORMATIONS.intrusive.name = "??????" // ??????
     env.COMBAT_FORMATIONS.intrusive.help = "" // 'unprocessable entity';'no context'
 
     /* - Cluster - */

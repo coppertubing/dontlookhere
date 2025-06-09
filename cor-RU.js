@@ -504,6 +504,40 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
 
 
+.actiondef-stats span[info="hit"]::before {
+    content: "УДАР::" !important;
+    color: var(--neutral-color);
+    text-transform: uppercase;
+}
+
+.actiondef-stats span[info="target"]::before {
+    content: "ЦЕЛЬ::" !important;
+    color: var(--neutral-color);
+    text-transform: uppercase;
+}
+
+.actiondef-stats span[info="crt"]::before {
+    content: "КРИТ::" !important;
+    color: var(--neutral-color);
+    text-transform: uppercase;
+}
+
+.actiondef-onhit::before, 
+.actiondef-oncrit::before,
+.actiondef-onuse::before {
+    content: "УДАР::" !important;
+    color: var(--neutral-color);
+}
+.actiondef-oncrit::before { content: "КРИТ::" !important }
+.actiondef-onuse::before { content: "ПРИМЕНЕНИЕ::" !important }
+
+.actiondef-status.passive::after {
+    content: "ПАССИВНОЕ" !important;
+}
+.actiondef-status.impulse::after {
+    content: "ИМПУЛЬС" !important;
+}
+
 
 .actor-corrurubonus .dialogue-text {
     text-transform: uppercase;
@@ -686,11 +720,11 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 
     observerGad: new MutationObserver(()=>{
-        cor_ru.processWeirdTranslation(".mindsci-status");
+        cor_ru.processWeirdTranslation(".mindsci-status", "definition");
         console.log("%cGAD observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerGadObserve: function () {
-        cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true });
+        cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true, attributes: true });
         console.log("%cGAD observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
     },
 
@@ -713,6 +747,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 
     observerPage: new MutationObserver(()=>{
+        getLocalizationForPage();
         processTranslation();
         cor_ru.processStatic();
         cor_ru.processMenu();
@@ -727,7 +762,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         cor_ru.stepKeyImplement();
 
-        processTranslation(document.querySelectorAll("#content"), true); // i dont like when it randomly skips stuff so we are double checking it ig
+        cor_ru.processWeirdTranslation(".loose-thought", "text")
+        if (page.dialoguePrefix != "localuncosm") processTranslation(document.querySelector("#content"), true); // i dont like when it randomly skips stuff so we are double checking it ig. also for whatever reason this just kills uncosm dead. try running the command in your console youd get a black hole
 
         console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
     }),
@@ -804,13 +840,15 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
-            listArray.push(cor_ru.list.page[page.dialoguePrefix]);
+            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
+                else console.warn("the page with dialoguePrefix " + dialoguePrefix + " does not have a localization! - @cor-RU")
             listArray.push(cor_ru.list.entityMenu);
             listArray.push(cor_ru.list.load);
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
-            if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])};
+            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])}}
+                else console.warn("the page with dialoguePrefix " + dialoguePrefix + " does not have a localization! - @cor-RU")
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
                     //listArray.push(cor_ru.list.combat)
@@ -818,7 +856,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
                     combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
                     content.appendChild(combat)
                     console.log("%cadded combat as a resource update! - @cor-RU", cor_ru.fancy.general)
-                    // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice - thus making it more pretty
+                    // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice
                 }
             };
         }

@@ -8,7 +8,7 @@ env.localization.page['localdepths'] = {dialogues: {},
 
         'NOT NOW': 'НЕ СЕЙЧАС',
         'FORGIVE ME FOR THIS': 'ПРОСТИТЕ МЕНЯ ЗА ЭТО',
-        'GOODBYE': 'ДО СВИДАНИЯ',
+        'GOODBYE': 'ПРОЩАЙТЕ',
         'INTERLOPER': 'ЛАЗУТЧИК',
 
         "WARNING::'data overload';'safeguards active'": "ПРЕДУПРЕЖДЕНИЕ::'перегрузка данных';'меры предосторожности активны'",

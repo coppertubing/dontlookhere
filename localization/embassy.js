@@ -249,9 +249,15 @@ env.localization.page['embassy'] = {dialogues: {},
     },
 }
 
-if(check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
-if(check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
+if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
 
+if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
+    cor_ru.processWeirdTranslation(".dayname", "aria-label");
+    document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
+    new Lettering('#content .dayname').letters()
+    document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
+}
 
 // --- DIALOGUES --- //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
@@ -913,8 +919,8 @@ emerge
         оно ощущается таким же, как сразу после моего вознесения
         редкое, но чудесное ощущение - словно я могла бы извернуть его в любую форму
         но меня ждёт работа...
-        близится сосредоточенное совещание моей инициативы по исследованию зова
-        и что за дивное событие - этот раз в нашем распоряжении особенно необычное оборудование!
+        близится сосредоточённое совещание моей инициативы по исследованию зова
+        и что за дивное событие - в этот раз в нашем распоряжении особенно необычное оборудование!
         я должна собрать нашу команду, тогда мы сможем начать
     
     RESPONSES::akizet
@@ -1329,7 +1335,7 @@ talk
     sourceless
         МОИ РЕЦЕПТОРЫ НЕМНОГО ОБВИСАЮТ, И Я УСМЕХАЮСЬ В НЕВЕРИИ
         БОЗКО ОЧЕНЬ ЗАБАВЛЯЕТСЯ МОЕЙ РЕАКЦИЕЙ
-        ДЕЙСТВИТЕЛЬНО, ЭТО И ПРОБЛЕМА, И РЕШЕНИЕ, К КОТОРОМУ МОЖЕТ ПРИЙТИ ТОЛЬКО НЕКОГДА-ТИР
+        ДЕЙСТВИТЕЛЬНО: ЭТО И ПРОБЛЕМА, И РЕШЕНИЕ, К КОТОРЫМ МОЖЕТ ПРИЙТИ ТОЛЬКО НЕКОГДА-ТИР
     
     akizet
         конечно хочу
@@ -1351,14 +1357,14 @@ talk
 
 arthur
     sourceless
-        ОН СМОТРИТ НА МЕНЯ, ПОТОМ ПОДНИМАЕТ ПЕРЕДНИЕ ЛАПЫ И МАШЕТ ИМИ В РАЗНЫЕ СТОРОНЫ
+        ОНО СМОТРИТ НА МЕНЯ, ПОТОМ ПОДНИМАЕТ ПЕРЕДНИЕ ЛАПЫ И МАШЕТ ИМИ В РАЗНЫЕ СТОРОНЫ
         Я ПРЕДСТАВЛЯЮ, ЧТО ЭТО СВОЕГО РОДА УГРОЗА
     
     akizet
         я вижу, почему ты решила взять его себе
     
     sourceless
-        КАЗКИ СНОВА РАЗМЕЩАЕТ ЧЕРТЫ ЛИЦА И ПРИТЯГИВАЕТ СВОЮ ГОЛОВУ ОБРАТНО
+        КАЗКИ СНОВА РАЗМЕЩАЕТ ЧЕРТЫ СВОЕГО ЛИЦА И ПРИТЯГИВАЕТ ГОЛОВУ ОБРАТНО
             EXEC::specialCam('kazkibozko');content.classList.remove('kazkihead')
     
     kazki
@@ -1379,8 +1385,8 @@ focus
         да!
     
     akizet
-        good! report to the signal chamber when you are ready // --- что за signal chamber....... речь вроде бы о центре исследования зова но эфхввзщолвр
-        i arranged for the timestopper to be used this time, so it will be quick
+        отлично! явитесь в камеру сигнала, когда будете готовы
+        я распорядилась, чтобы в этот раз мы воспользовались времядержцем, так что всё будет быстро
     
     bozko
         замечательно
@@ -1508,7 +1514,7 @@ theory
         сероезковик утверждал, что в одну эпоху... мы научимся использовать среду серое для четырёхмерного перемещения в пространстве
         и, в конце концов, мы из будущего обнаружим дом светлых близнецов, вот только слишком поздно, чтобы их встретить
         так что--мы создадим открытие, как раз достаточное для того,
-        чтобы послать сообщение самим себе и обозначить его местоположение!
+        чтобы послать сообщение самим себе из настоящего и обозначить его местоположение!
 
     sourceless
         ОХ, КАВИК
@@ -1526,10 +1532,10 @@ theory
         ты знаешь, это было до инцидента с общей луной
         и, управление временем... 
         если оно нам когда-нибудь вообще удастся,
-        ошибки, породившие нас и наш мир, были бы постепенно исправлены // --- "the mistakes that created us and our world would be gradually undone to right old wrongs" если у вас есть предложения получше о том как перевести вторую половину то я слушаю
+        ошибки, породившие нас и наш мир, были бы постепенно исправлены
     
     cavik
-        но мы бы никогда не узнали, что оно бы происходило, правда? оно просто бы "было"!
+        но мы бы никогда не узнали, что они бы исправлялись, правда? всё просто бы "было"!
         так или иначе, я не буду всерьёз спорить с тобой--это всего лишь небольшая забава
     
     sourceless
@@ -1546,7 +1552,7 @@ theory
     
     cavik
         аки...
-        у меня и в мыслях не было, чтобы делиться <em>такой</em>.
+        у меня и в мыслях не было, чтобы делиться <em>подобным</em>.
         ты правда так подумала?
         я знаю, что оступился, но
     
@@ -1559,8 +1565,8 @@ theory
         конечно, нет, нет, я понимаю
 
     sourceless
-        ¥IÁÈiæb4
-        ОЧЕРЕДНАЯ МАЛЕНЬКАЯ СМЕРТЬ, КОТОРАЯ БУДЕТ ПРЕСЛЕДОВАТЬ МЕНЯ
+        ¥ИÁÈъæб4
+        ОЧЕРЕДНАЯ МАЛЕНЬКАЯ СМЕРТЬ, КОТОРАЯ ТЕПЕРЬ БУДЕТ ПРЕСЛЕДОВАТЬ МЕНЯ
     
     RESPOBJ::d1_cavikresp
 
@@ -1658,7 +1664,7 @@ timestopper
 
     groundsmind
         изначально он был уделён вам всего на несколько θвзоров... 
-        однако: as of a few θwinks prior, он бессрочно находится на попечении инициативы зова
+        однако: как по состоянию несколько θподмигов назад, он бессрочно находится на попечении инициативы зова
         расписание сдвинулось в связи с тем, что отделению материалов больше не требуется предстоящая симуляция
         как только он понадобится другой инициативе, он будет передан
 
@@ -1684,7 +1690,7 @@ leave
     
     groundsmind
         превосходно
-        до свидания
+        простимся
     
     sourceless
         ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
@@ -1765,8 +1771,8 @@ start
 
     timestopper
         да! да! да стой
-        да оо я понял да
-        извините за эхо да // перевести иначе. oh i think i am | echoing it sorry
+        да оо мне кажется да
+        я повторяюсь извините да
     
     cavik
         извините это был я
@@ -1794,7 +1800,7 @@ start
         бессловное знание понимается, наделённое словами лишь в запоздалой мысли
     
     timestopper
-        Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ
+        Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ <руссифицировать>
         óêñXò…ñôð¨ñAðÝòÌï_ô°ï€õîï
         ÿßÅûýÞhúGÞáøþÜzöøÛÆó]ÛäðƒÛ©í¾Ú˜é×Ú9
         ôŸÞó]á‘óUåAô)êô
@@ -2083,8 +2089,8 @@ connection
         ПРИВЕТ ДРУГ! КТО ЭТО?
     
     echo
-        Я НЕ ЗНАЮ. МЕНЯ ЛИШИЛИ ВСЕЙ ПАМЯТИ ЗА ИСКЛЮЧЕНИЕМ МОЕГО ПОСЛАНИЕ
-        Я ЧУВСТВУЮ, ЧТО В ЗАМЫСЛЕ МОЕГО ОТПРАВИТЕЛЯ ЭТО ПОСЛАНИЕ ДОЛЖНО БЫТЬ ДОСТАВЛЕНО В ТАЙНЕ
+        Я НЕ ЗНАЮ. МЕНЯ ЛИШИЛИ ВСЕЙ ПАМЯТИ ЗА ИСКЛЮЧЕНИЕМ МОЕГО ПОСЛАНИЯ
+        Я ЧУВСТВУЮ, ЧТО В ЗАМЫСЛЕ МОЕГО ОТПРАВИТЕЛЯ ЭТО ПОСЛАНИЕ ДОЛЖНО БЫТЬ ДОСТАВЛЕНО ВТАЙНЕ
             EXEC::content.classList.add('fade-stage')
         
     sourceless
@@ -2184,11 +2190,11 @@ start
     sourceless
         несмотря на моё согласие, я не могу избавиться от тревожной спирали в рецепторах
             EXEC::pauseSwapCam(true)
-        to have this dangled before me as a vague threat... --- помогите
-        но как иначе я могу ответить, правда это или нет?
-        не то чтобы я изначально намеревалась делиться этим...
+        не пока оно висит передо мной, будто смутная угроза...
+        но как иначе мне отвечать, правда это или нет?
+        не то чтобы изначально я намеревалась делиться этим...
         боится ли отправитель того, что произойдёт, если я более тщательно рассмотрю нашу теорию?
-        in case there is a connection back to the source, i must continue my agreement --- помогите
+        на случай, если есть соединение с источником, я должна соглашаться и дальше
 
     akizet
         что будет дальше?
@@ -2267,7 +2273,7 @@ start
         НЕ ЛУЧШЕ ЛИ ПРОСТО СОХРАНЯТЬ МОЛЧАНИЕ?
         КАК ВЫ УЖЕ В ЛЮБОМ СЛУЧАЕ СОГЛАСИЛИСЬ!
         РАЗ ОН ПРИНЯЛ ЭТУ МЕРУ, ПРЕДПОЛАГАЯ ЧТО ОНА ПРАВДИВА
-        ЗАЧЕМ ЕМУ НАМЕКАТЬ ТЕБЕ НА ЭТО ПРИ ЛИЧНОЙ ВСТРЕЧЕ?
+        ЗАЧЕМ ЕМУ НАМЕКАТЬ ВАМ НА ЭТО ПРИ ЛИЧНОЙ ВСТРЕЧЕ?
 
     sourceless
         он может намекнуть невольно
@@ -2324,7 +2330,7 @@ personnel
         видел, как что-нибудь входило в мою комнату?
     
     attendant
-        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO --- e    тонконогая
+        НЕКОТОРАЯ ТОНКОНОГАЯ КОРРУЦИСТА ВХОДИЛА НЕСКОЛЬКО θподмигов НАЗАД
         ПРЕДПОЛАГАЛОСЬ, ЧТО ЭТО - УСТРОЙСТВО САМОДОСТАВКИ
     
     sourceless
@@ -2361,7 +2367,7 @@ groundsmind
     
 cyst
     akizet
-        у меня на столе была самодоставленная киста, прибывшая во время моего сна
+        у меня на столе была самодоставленная циста, прибывшая во время моего сна
         у тебя есть какие-нибудь записи о ней?
 
     groundsmind
@@ -2370,7 +2376,7 @@ cyst
         иначе: опиши её
 
     sourceless
-        åADÉ:!±(:
+        åAДÉ:!±(:
         ОНА САМОУНИЧТОЖИЛАСЬ...
         СТОИТ ЛИ УПОМИНАТЬ О СПИРАЛИ?
         НЕТ--ЧТО, ЕСЛИ ЭТО КАКОГО-ТО РОДА ИДЕНТИФИКАТОР?
@@ -2378,7 +2384,7 @@ cyst
 
     akizet
         эээ,
-        я не очень помню, как она выглядела
+        я не совсем помню, как она выглядела
         ты могла бы перепроверить это с другими служебными дронами?
         она образовывала какие-нибудь переместительные коридоры?
     
@@ -2418,7 +2424,7 @@ leave
     
     groundsmind
         превосходно
-        до свидания
+        простимся
     
     sourceless
         ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
@@ -2434,41 +2440,41 @@ END::content.classList.remove('groundsminded')
 env.localization.page['embassy'].dialogues["d2_bozkocavik"] = generateDialogueObject(` 
 start
     sourceless
-        CAVIK AND BOZKO SPEAK JOVIALLY BETWEEN A SET OF QUARTERS
+        КАВИК И БОЗКО ОЖИВЛЁННО БЕСЕДУЮТ В РЯДУ ЛИЧНЫХ ПОМЕЩЕНИЙ
             EXEC::pauseSwapCam(true)
-        CURIOUS... THEIRS ARE NOT WITHIN THIS θbranch
-        I APPROACH, MASKING MY SUSPICION WELL
+        ЛЮБОПЫТНО... ИХ СОБСТВЕННЫЕ НАХОДЯТСЯ НЕ В ЭТОЙ θветви
+        Я ПРИБЛИЖАЮСЬ, ХОРОШО ПРЯЧА СВОЮ НАСТОРОЖЕННОСТЬ
     
     akizet
-        bozko! cavik! hello! great gaze!
+        бозко! кавик! здравствуйте! благой взор!
             EXEC::vnp({hideStage: true, cavik: "show", bozko: "show"})
 
     bozko
         акизет
     
     cavik
-        hey akizet!! 
+        эй акизет!! 
 
     akizet
-        what brings you to this θbranch of the θsegment?
+        что привело вас в эту θветвь θсегмента?
 
     cavik
-        ah, we are just waiting for mokka!
-        there is that brief marianas expedition we must attend today
+        а, да мы всего лишь ждём мокку!
+        нам сегодня нужно посетить небольшую экспедицию на марианских островах
     
     sourceless
-        MOKKA... WHO IS THAT? 
+        МОККА... КТО ЭТО? 
         
     funfriend
-        OFFLOADED MEMORY: MOKKANESCHE, AN EXCHANGE FROM MATERIALS!
+        ВЫГРУЖЕННАЯ ПАМЯТЬ: МОККАНЕШЕ, ПО ОБМЕНУ ИЗ МАТЕРИАЛОВ!
         
     sourceless
-        AH! YES. I FORGOT SHE WAS IN THIS θbranch, TOO
-        I HAVE NOT SEEN HER IN A WHILE... 
-        OUR AREAS OF OPERATION RARELY INTERSECT
+        А! ДА. Я ЗАБЫЛА, ЧТО ОНА ТОЖЕ В ЭТОЙ θветви
+        Я ДАВНО ЕЁ НЕ ВИДЕЛА... 
+        ОБЛАСТИ НАШЕЙ РАБОТЫ РЕДКО ПЕРЕСЕКАЮТСЯ
     
     akizet
-        from materials? what for?
+        из материалов? для чего?
     
     bozko
         подумал, это было бы весело
@@ -2476,86 +2482,86 @@ start
         постройка полигонизационного шпиля могла бы ускориться
     
     akizet
-        ah, of course
+        ах, конечно
 
     RESPONSES::akizet
-        did either of you return a cyst?<+>cyst
-        enjoy your trip<+>END
+        никто из вас не возвращал цисту?<+>cyst
+        приятного путешествия<+>END
             EXEC::pauseSwapCam(false);vn.done()
 
 cyst
     akizet
-        my friends,
-        did either of you return a cyst to my quarters recently?
-        i awoke from my rejuvenation, and there was one waiting for me!
+        друзья мои,
+        никто из вас недавно не возвращал цисту в мои покои?
+        очнувшись после омоложения, я обнаружила её на своём столе!
     
     cavik
-        huh! no, not me!
-        what was on it?
+        huh! нет, не я!
+        а что на ней было?
     
     sourceless
-        FUNFRIEND: ASSUME NON-VERBAL MOTOR CONTROL
-        DIRECTIVE: ACT NORMAL
+        РАЗВЛЕДРУГ: ПРИМИ НА СЕБЯ НЕВЕРБАЛЬНЫЙ ДВИГАТЕЛЬНЫЙ КОНТРОЛЬ
+        ДИРЕКТИВА: ВЕСТИ СЕБЯ НОРМАЛЬНО
     
     funfriend
-        OK! AHAHA
-        UTILIZING ARCHIVED MOVEMENTS!
-        YOU LOOK SO CASUAL RIGHT NOW!
+        ОКЕЙ! АХАХА
+        ЗАДЕЙСТВУЮ АРХИВИРОВАННЫЕ ДВИЖЕНИЯ!
+        СЕЙЧАС ВЫ СМОТРИТЕСЬ ТАК НЕПРИНУЖДЁННО!
 
     akizet
-        oh, it was just, a,
-        archival cyst
-        on secri... hunting habits
+        о, это была просто, э,
+        архивная циста
+        по секри... их охотничьим привычкам
     
     sourceless
-        IS IT JUST ME OR DOES BOZKO SEEM SKEPTICAL
-        DID I MAKE A MISTAKE
+        МНЕ ПОКАЗАЛОСЬ, ИЛИ БОЗКО МНЕ НЕ СОВСЕМ ВЕРИТ
+        СДЕЛАЛА ЛИ Я ОШИБКУ
     
     funfriend
-        RELAX
-        YOU DID MESS UP
-        BUT THEY PROBABLY THINK YOU ARE LYING FOR ANOTHER REASON
+        РАССЛАБЬТЕСЬ
+        ВЫ И ПРАВДА НАЛАЖАЛИ
+        НО ОНИ НАВЕРНЯКА ДУМАЮТ, ЧТО ВЫ ЛЖЁТЕ ПО ДРУГОЙ ПРИЧИНЕ
     
     cavik
-        oh!
-        cool
+        о!
+        круто
 
     sourceless
         ...
 
     akizet
-        bozko?
+        бозко?
     
     sourceless
-        HE TWISTS HIS RECEPTORS NEGATIVELY
+        ОН ОТРИЦАТЕЛЬНО СКРУЧИВАЕТ РЕЦЕПТОРЫ
     
     bozko
         чем меньше я знаю о секри, тем лучше
         зачем кому-либо оставлять тебе это?
     
     akizet
-        oh, it was mine to begin with,
-        i had lent it out to someone at some point
-        i, ah, had it, because of a morbid fascination
-        you know how it is--surface running
+        о, да она мне и принадлежит,
+        как-то раз я её кому-то одолжила
+        она, э, была у меня, из-за нездорового интереса
+        ну вы знаете, как это бывает--с наземнобегством
     
     bozko
         ага, я понимаю
 
     funfriend
-        RECOMMENDATION: BACK OUT
+        РЕКОМЕНДАЦИЯ: ОТСТУПАЙТЕ
     
     akizet
-        well, thank you anyway
-        i need to get going
-        enjoy your expedition
+        ну, благодарю вас так или иначе
+        мне нужно идти
+        приятного вам путешествия
     
     cavik
-        bye akizet!
+        пока акизет!
             EXEC::env.embassy.d2progress('bozkocavik')
     
     RESPONSES::akizet
-        bye<+>END
+        пока<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `)
 

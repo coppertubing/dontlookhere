@@ -65,3 +65,15 @@ where
 
     RESPOBJ::mthcityresp
 `)
+
+// - TRANSLATING DA BEECH - //
+
+cor_ru.processWeirdTranslation(".loose-thought", "text")
+
+document.querySelectorAll('#content .loose-thought .title').forEach(e=>{e.remove()})
+
+document.querySelectorAll('#content .loose-thought').forEach(e=>{e.insertAdjacentHTML('beforeend', `<div class="title">${e.getAttribute('text')}</div>`)})
+
+new Lettering('#content .loose-thought .title').letters()
+
+document.querySelectorAll("#content .loose-thought .title > span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
