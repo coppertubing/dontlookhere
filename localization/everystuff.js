@@ -456,9 +456,9 @@ env.localization['strings'] = {
     "remove them": "убрать",
     "keep them": "оставить",
 
-    "master": "общее",
-    "music": "музыка",
-    "sfx": "звуки",
+    "master": "ОБЩЕЕ",
+    "music": "МУЗЫКА",
+    "sfx": "ЗВУКИ",
 
     "Realtime log and memory rendering requires GPU hardware acceleration. Your mindspike either lacks a GPU, or hardware acceleration is inactive. Proceeding without resolving this issue will most likely result in pain.": "Для визуализации логов и воспоминаний в реальном времени требуется аппаратное ускорение GPU. В Вашем мыслеколе либо отсутствует GPU, либо аппаратное ускорение неактивно. Продолжение работы без решения этой проблемы, скорее всего, приведет к болезненным последствиям.",
     "To enable hardware acceleration, enter your viewer settings, search for \"hardware\" or find it in the performance/system section, and toggle it on. A restart of the viewer may be necessary.": "Чтобы включить аппаратное ускорение, войдите в параметры Вашего устройства, в \"Система\", в \"Настройки графики\" и включите его (либо воспользуйтесь интернетом для поиска подходящего способа включения аппаратного ускорения). Может потребоваться перезапуск.",
@@ -872,7 +872,6 @@ env.localization['strings'] = {
     "vekoa_swipe": "vekoa_swipe",
     "special_vekoa_rush": "special_vekoa_rush",
     "tele_vekoa_rampage": "tele_vekoa_rampage",
- 
 }
 env.localization['entityDescriptions'] = {
     "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
@@ -1928,7 +1927,11 @@ ____END
         ладно<+>END
 `)
 
-env.localization.page["hub"].dialogues["firstvisit"] = generateDialogueObject(`
+
+// this is actually from the hub
+// but while we were testing it just REFUSED to load properly or something so you'd get english firstvisit when you got to the hub
+// so we put it here
+env.localization.dialogues["firstvisit"] = generateDialogueObject(`
 start
     moth
         окей, я сейчас просматриваю логи...

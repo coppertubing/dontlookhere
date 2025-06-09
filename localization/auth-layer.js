@@ -2,9 +2,10 @@ env.localization.page['hello'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "seems like overkill for an empty space if you ask me": "как по мне - явный перебор для такого пустого пространства",
-        "wow, this place is just infested... it's so incoherent i'm not even picking up any entities": "ого, да это место просто infested... настолько бессвязно что я даже не улавливаю никаких сущностей", // --- помогите помогите с ифестекримпуаресеFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFывфпнгрошв
+        "wow, this place is just infested... it's so incoherent i'm not even picking up any entities": "ого, да это место просто переполнено... настолько бессвязно что я даже не улавливаю никаких сущностей",
 
-        "FOR YOU": "ДЛЯ ТЕБЯ",
+        "GATE::FOR YOU": "ВРАТА::ДЛЯ ТЕБЯ",
+        "GATE::FOR_YOU": "ВРАТА::ДЛЯ_ТЕБЯ",
         "sentry": "КАРАУЛ",
         "'thoughtform activity detected'::'advise re-examination'": "'обнаружена мыслеформенная деятельность'::'рекомендуется повторное сканирование'",
     },
