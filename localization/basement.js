@@ -23,7 +23,7 @@ env.localization.page['fbx'] = {dialogues: {},
         "the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.": "у цисты твёрдая внешняя оболочка, однако несколько круглых точек наверху менее плотные чем всё остальное. в твоём опыте это обычно точки соединения. ты определённо можешь просканировать их более тщательно.",
         "depth scan": "подробное сканирование",
         "ANALYSIS::'valid nerve point';'connection enabled'": "АНАЛИЗ::'действительная нервная точка';'доступно подключение'",
-        "::CORRUCYSTIC ENTITY": "`::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ",
+        "::CORRUCYSTIC ENTITY": "`::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ",
         "::NO FUNCTION SIGNATURE": "::НЕТ ПОДПИСИ ФУКНЦИИ",
         "::CONNECTIVE MEMBRANE EXPOSED": "::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА",
 
@@ -49,19 +49,19 @@ env.localization.page['fbx'] = {dialogues: {},
         "so, still killing time here": "так что пока убиваем время"
     },
     entityDescriptions: {
-        "dendritic cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+        "dendritic cyst": `::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ
 ::ПОДПИСЬ ФУКНЦИИ: КОНТЕЙНЕР
 ::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "fractalline cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+        "fractalline cyst": `::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ
 ::ПОВРЕЖДЁННАЯ ПОДПИСЬ ФУКНЦИИ
 ::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "cystic column": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+        "cystic column": `::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ
 ::ПОДПИСЬ ФУКНЦИИ: ОБСЛУЖИВАНИЕ КОРРУЦИСТЫ
 ::НЕТ СОЕДИНИТЕЛЬНОЙ ТКАНИ`,
-        "cyst": `::КОРРУЦИСТИЧЕСКАЯ СУЩНОСТЬ
+        "cyst": `::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ
 ::НЕТ ПОДПИСИ ФУКНЦИИ
 ::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА`,
-        "connection point": `::КОМПОНЕНТ КОРРУЦИСТИЧЕСКОЙ СУЩНОСТИ
+        "connection point": `::КОМПОНЕНТ КОРРУЦИСТОЗНОЙ СУЩНОСТИ
 ::ДЕЙСТВИТЕЛЬНАЯ ТОЧКА СОЕДИНЕНИЯ`,
         "plastic box": `::СИНТЕТИЧЕСКИЙ КОНТЕЙНЕР
 ::СОДЕРЖИТ ИНЕРТНЫЙ МЕТАЛЛ`,

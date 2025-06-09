@@ -474,7 +474,8 @@ env.localization['strings'] = {
     /*moth*/ "this is so weird... i think that's meant to be akizet": "очень странно... я думаю она должна была быть акизет",
     /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
 
-    // READOUT NOTIFS AND GATES AND basically locations lol JUST STUFF
+
+    // READOUT NOTIFS AND GATES AND basically locations lol JUST STUFF ITS SUPER POORLY ORGANIZED AGAIN BUT IM NOT CHANGING IT OK
 
 
     "__incomplete_thoughtform__": "__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__",
@@ -576,6 +577,7 @@ env.localization['strings'] = {
 
     "advance log": "продвинуть лог",
 
+
     // MENU
 
     
@@ -673,8 +675,64 @@ env.localization['strings'] = {
     "Abridged License": "Сокращенная лицензия",
     "this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.": "этот имплант предоставляется по постоянной лицензии 'pre-mortis' b2.5, 'как есть', без каких-либо явных или подразумеваемых гарантий. за исключением случаев, прямо предусмотренных в расширенной лицензии, mindsci не несет ответственности за любые прямые, косвенные, случайные, особые, показательные или косвенные убытки (включая, помимо прочего, потерю жизни),  как бы они ни были вызваны и по любой теории ответственности, будь то по контракту, строгой ответственности или деликту (включая халатность или иное), возникающие каким-либо образом из-за использования или применения импланта в незастрахованных, непромышленных целях. в отношении внешней манипуляции логов мыслеколов: весь риск относительно качества и производительности воспоминания лежит на вас. если какая-либо мыслеформа окажется дефектной в каком-либо отношении, вы (а не первоначальный оператор, ответственный за экспорт) берете на себя расходы на любое необходимое обслуживание, ремонт или исправление. этот отказ от гарантии является неотъемлемой частью этой лицензии. Ни при каких обстоятельствах и ни при какой правовой теории, будь то деликт (включая халатность), договор или иное, вы, первоначальный оператор, любой редактор данных или любой дистрибьютор данных мыслеколов, или любой поставщик любой из таких сторон, не несете ответственности перед любым лицом за любые косвенные, особые, случайные или косвенные убытки любого характера, включая, без ограничений, убытки от потери деловой репутации, остановки работы, отказа или неисправности имплантата или любые и все другие коммерческие убытки или потери, даже если такая сторона была проинформирована о возможности таких убытков. Это ограничение ответственности не распространяется на ответственность за смерть или телесные повреждения, возникшие в результате халатности такой стороны. Наконец, для получения дополнительной информации об использовании, ответственности, ограничениях и изменениях, пожалуйста, обратитесь к полной лицензии.",
 
+    // what next, moth????????????? the fuck we doing??????????????
+    // pre velziebreak
+    "it seems like the interview area is preserving memory stream progress, it isn't resetting completely. maybe run it through to its end and see if any neural paths open up in there": "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути",
+    "that ship area seemed pretty empty for the amount of data your spike pulled, check it again": "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё раз",
+    "i'm seeing a lot of data in the ocean area for what we saw, did you check everything there?": "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?",
+    "i'm seeing what could be another place in the orbit thoughtspace, try and track that down": "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать",
+    "think there's a pathway to another thoughtspace you missed, i see something in the non-spatial city area but i couldn't tell you exactly where. seems like it's moving, probably floating around somewhere": "думаю тут есть путь к другому мыслепространству, я вижу что-то в непространственной части города но не могу сказать точно где. похоже оно двигается, наверное просто плавает где-то",
+    "pretty sure there's more to the corrucyst in the city area, i'm seeing enough data volume to where it doesn't seem like we saw all of it": "наверняка что-нибудь ещё прячется в городской местности, я вижу достаточный объём данных чтобы подозревать что мы что-то пропустили",
+    "what are you asking me for? you just connected, do your thing dude. don't forget, thoughtforms might extend past your field of perception - think of it like 'scrolling'": "о чём ты меня спрашиваешь? мы едва подключились, делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то 'прокручиваешь'",
+    /* post velziebreak
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",
+    "": "",*/
 
-    // --- safeguards for combat
+    // --- safeguards for combat, this is needed so they wont get accidentally translated and output no definition
     "win": "win",
     "nothing": "nothing",
     "cower": "cower",
@@ -1078,7 +1136,7 @@ env.localization.dialogues["++moth"] = {
         body: [
             {
                 actor: "moth",
-                texec: ()=> {return env.dialogues.mthglobalresp.whatnext()}
+                texec: ()=> {return processStringTranslation(env.dialogues.mthglobalresp.whatnext())}
             },
         ],
         

@@ -727,6 +727,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         cor_ru.stepKeyImplement();
 
+        processTranslation(document.querySelectorAll("#content"), true); // i dont like when it randomly skips stuff so we are double checking it ig
+
         console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerPageObserve: function () {
