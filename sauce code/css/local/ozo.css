@@ -1,0 +1,1666 @@
+/* background controls */
+#ozobg {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ozolayer,
+.ozolayer::after,
+.ozolayer::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ozobg .illusion {
+    top: unset;
+    left: unset;
+    width: 100%;
+    height: 100%;
+}
+
+body.in-dialogue .ozolayer.illusion {
+    transform: translateX(var(--contentDialogueOffset))
+}
+
+#ozobg.neutral .illusion::after, 
+#ozobg.neutral .illusion::before {
+    background: url(/img/local/uncosm/ozo/ozospiral.gif);
+    background-size: auto;
+    background-position: center;
+    z-index: -3;
+    width: 125vmax;
+    height: 125vmax;
+    top: unset;
+    left: unset;
+}
+
+#ozobg.neutral .illusion::after {
+    animation: COMPOSE 10s ease-in-out infinite alternate;
+    z-index: -5;
+}
+
+@keyframes COMPOSE {
+    0% { transform: scale(0.8) rotate(-5deg) }
+    100% { transform: scale(0.95) rotate(5deg) }
+}
+
+#ozobg .clouds {
+    display: none;
+    z-index: -1;
+}
+
+#ozobg.neutral .clouds {
+    display: block;
+}
+
+#ozobg .clouds, 
+#ozobg .clouds > *,
+.ozoedges figure,
+.ozoedges figure::after,
+.ozoedges figure::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    transition: transform 3s ease-in-out;
+}
+
+.depressed #ozobg .clouds > * { 
+    transition: unset;
+}
+
+#ozobg .clouds > *::after,
+.ozoedges figure::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 200%;
+    height: 70%;
+    left: 0;
+    /* technically breaks palette but the baseline blurred image (clouds.gif) follows it */
+    /* had to blur bc it caused horrible flickering no matter what */
+    background-image: url(/img/local/uncosm/ozo/cloudsblurred.gif);
+    background-repeat: repeat-x;
+    background-size: 50% 100%;
+    --baseTransform: translateY(-55%) rotateY(1deg);
+    transform: var(--baseTransform);
+    animation: DRIFT 20s linear infinite;
+}
+
+#ozobg .clouds .upper {
+    z-index: 0;
+}
+
+#ozobg .clouds .lower::after {
+    top: unset;
+    bottom: 0;
+    --baseTransform: rotate(180deg) translateY(-55%);
+    animation-duration: 40s;
+}
+
+@keyframes DRIFT {
+    0% { transform: translateX(0) var(--baseTransform) }
+    100% { transform:  translateX(-50%) var(--baseTransform) }
+}
+
+.ozolayer.flowerfield {
+    display: none;
+    z-index: -2;
+}
+
+.ozolayer.flowerfield::after {
+    background-image: url(/img/local/uncosm/ozo/flowerfield.gif);
+    background-position: top;
+    height: 100%;
+    transform: translateY(25%);
+}
+
+.flowerfield .sun {
+    position: absolute;
+    top: 5vmin;
+    right: 5vmin;
+    width: 20vmin;
+    height: 20vmin;
+    background: url(/img/local/uncosm/ozo/the_unmatched_power_of_the_sun.gif?);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    animation: SPIN 240s linear infinite;
+}
+
+.flowerfield .sun .target {
+    animation: SPIN 240s linear infinite reverse;
+}
+
+/* OZO FLAT AREA */
+body#ozo_flat  {
+    overflow: auto;
+}
+
+body#ozo_flat #content {
+    overflow: unset;
+    min-width: 100vw;
+}
+
+body#ozo_flat #ozobg .clouds,
+#ozosquare {
+    display: none;
+}
+
+body#ozo_flat #ozosquare {
+    display: block;
+    height: auto;
+    width: 100%;
+    position: relative;
+}
+
+.ozoedges {
+    --cloudPush: 0vmin;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    display: none;
+    top: 0;
+    left: 0;
+}
+
+body.cloudpush .ozoedges {
+    --cloudPush: -55vmin;
+}
+    
+body#ozo_flat .ozoedges {
+    display: block;
+}
+
+.ozoedges figure::after {
+    height: 100%;
+    animation-duration: 20s;
+}
+
+.ozoedges > figure:nth-child(2)::after,
+.ozoedges > figure:nth-child(4)::after {
+    animation-duration: 3s;  
+}
+
+.ozoedges figure::before {
+    display: none;
+}
+
+.ozoedges > figure {
+    transform: translateY(var(--cloudPush));
+    transition: transform 3s cubic-bezier(.42,.51,0,1.01);
+}
+
+.ozoedges > figure:nth-child(2) {
+    transform: rotate(90deg) translateY(100%) translateY(var(--cloudPush));
+    transform-origin: bottom right;
+    z-index: -3;
+}
+
+.ozoedges > figure:nth-child(3) {
+    transform: rotate(180deg) translateY(-100%) translateY(var(--cloudPush));
+    transform-origin: top;
+}
+
+.ozoedges > figure:nth-child(4) {
+    transform: rotate(-90deg) translateY(100%) translateY(var(--cloudPush));
+    transform-origin: bottom left;
+    z-index: -3;
+}
+
+.ozocontent {
+    position: relative;
+    width: auto;
+    height: auto;
+    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+    
+.ozocontent .portal {
+    width: 30vh;
+    height: 30vh;
+    position: relative;
+}
+
+/* STAGES - OZO DEFAULT */
+#realgrid .gridpiece, 
+#realgrid .gridpiece.raised.blocks,
+#realgrid .gridpiece.shiny {
+    background: url(/img/textures/memoryhaze.gif);
+    background-size: cover;
+    border: 20px double;
+}
+
+#realgrid .gridpiece.raised.blocks {
+    border: 50px double black;
+}
+
+.gridpiece.raised-3 {
+    --baseTransform: translateZ(calc(0.4 * var(--gridTileSize)));
+    animation: TILEHOVER 3s ease-in-out infinite alternate;
+    animation-delay: -2s;
+}
+
+.gridpiece.raised-2 {
+    --baseTransform: translateZ(calc(0.3 * var(--gridTileSize)));
+    animation: TILEHOVERSPIN 3s linear infinite alternate;
+    animation-delay: -1s;
+}
+
+.gridpiece.raised-1 {
+    --baseTransform: translateZ(calc(0.15 * var(--gridTileSize)));
+    animation: TILEHOVERSPIN 3s linear infinite alternate;
+}
+
+#realgrid .raised-floaty {
+    animation: MYSTERYTILE 10s ease-in-out infinite alternate;
+}
+
+@keyframes MYSTERYTILE {
+    0% { transform: translateZ(calc(var(--gridTileSize) * 0.5)) rotateX(20deg) rotate(80deg); }
+    100% { transform: translateZ(calc(var(--gridTileSize) * 0.1)) rotateX(-20deg) rotate(-80deg); }
+}
+
+@keyframes TILEHOVER {
+    0% { transform: var(--baseTransform) translateZ(calc(-0.3 * var(--gridTileSize))) }
+    100% { transform: var(--baseTransform) translateZ(calc(0.3 * var(--gridTileSize))) }
+}
+
+@keyframes TILEHOVERSPIN {
+    0% { transform: var(--baseTransform) translateZ(calc(-0.3 * var(--gridTileSize))) rotate(0deg) }
+    25% { transform: var(--baseTransform) translateZ(calc(0.3 * var(--gridTileSize))) rotate(180deg) }
+    50% { transform: var(--baseTransform) translateZ(calc(0.3 * var(--gridTileSize))) rotate(275deg) }
+    100% { transform: var(--baseTransform) translateZ(calc(-0.3 * var(--gridTileSize))) rotate(360deg) }
+}
+
+.thoughts {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: SPIN 20s linear infinite;
+    --baseTransform: translateX(0);
+    width: calc(var(--gridTileSize) * 6);
+    height: calc(var(--gridTileSize) * 6);
+
+    display: none; /* hiding these for now */
+}
+
+.thought {
+    width: calc(var(--gridTileSize) * 5);
+    height: calc(var(--gridTileSize) * 4);
+    position: absolute;
+    --baseTransform: rotate(0deg);
+    background-image: url(/img/textures/eyetran.gif), url(/img/local/cache/connections5.gif), url(/img/textures/spotgradientinverse.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform-origin: bottom;
+    transform: var(--baseTransform) translateY(-250%) rotateX(-90deg);
+    background-position: center;
+}
+
+.thought:nth-child(2) {
+    background-image: url(/img/textures/eyetran.gif), url(/img/local/cache/connections4.gif), url(/img/textures/spotgradientinverse.gif);
+    --baseTransform: rotate(90deg) translateX(-33%);
+}
+
+.thought:nth-child(3) {
+    background-image: url(/img/textures/eyetran.gif), url(/img/local/cache/connections6.gif), url(/img/textures/spotgradientinverse.gif);
+    --baseTransform: rotate(180deg) translateX(-20%);
+}
+
+.thought:nth-child(4) {
+    background-image: url(/img/textures/eyetran.gif), url(/img/local/cache/connections2.gif), url(/img/textures/spotgradientinverse.gif);
+    --baseTransform: rotate(-90deg) translateX(20%);
+}
+
+/* STAGES - entrance */
+body#ozo_entrance #ozobg .clouds {
+    opacity: calc(var(--cloudpart) + 0.3);
+    transition: opacity 400ms;
+}
+
+[id^="porthole"] {
+    position: absolute;
+    width: calc(var(--gridScale) * 3px);
+    height: calc(var(--gridScale) * 3px);
+    transform: rotateX(-90deg) translateY(-100%);
+    backface-visibility: hidden;
+    transform-origin: top;
+    top: 0;
+}
+
+[id^="porthole"]::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    border: 2px solid var(--obesk-color);
+    border-radius: 100%;
+}
+
+#realgrid .portal figure {
+    position: absolute;
+    background: url(/img/socials/cache.gif);
+    background-position: center;
+}
+
+#realgrid .portal figure::after {
+    background-image: url(/img/sprites/misc/sphereframewhite.gif);
+}
+
+.reference [id^="porthole"] {
+    display: none;
+}
+
+/* STAGES - clouded */
+body[locale="clouded"] .ozolayer.illusion {
+    display: none;
+}
+
+body[locale="clouded"] #ozobg {
+    --cloudpart: 0;
+    background: url(/img/local/cache/swirl.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 110% auto;
+}
+
+body[locale="clouded"] #ozobg .clouds > *::after {
+    height: 100%;
+    --baseTransform: translateY(-40%);
+    animation-duration: 20s;
+    background-image: url(/img/local/uncosm/ozo/cloudsblurreddark_2.gif);
+    image-rendering: auto;
+}
+
+body[locale="clouded"] #ozobg .clouds .lower::after {
+    bottom: 0;
+    --baseTransform: rotate(180deg) translateY(-40%);
+    animation-duration: 40s;
+}
+
+#content[locale="clouded"] #realgrid .gridpiece:not(.blocks):not(.shiny),
+#realgrid .gridpiece.neglected {
+    background: url(/img/textures/fearstill.gif);
+    border: 20px double var(--dark-color);
+}
+
+/* depressed council mode */
+body.depressed[locale="council"] #ozobg .clouds .upper::after {
+    --baseTransform: translateY(-25%) rotateY(1deg);
+}
+
+body.depressed[locale="council"] #ozobg .clouds .lower::after {
+    --baseTransform: rotate(180deg) translateY(0%);
+}
+
+body.depressed[locale="council"] #ozobg.neutral .illusion::after, 
+body.depressed[locale="council"] #ozobg.neutral .illusion::before {
+    background-color: black;
+    opacity: 0.5;
+}
+
+body.depressed[locale="council"] .gridpiece.raised-1,
+body.depressed[locale="council"] .gridpiece.raised-2 {
+    visibility: hidden;
+}  
+
+/* STAGES - FLOWERFRIEND FIELDS */
+body[locale="flowers"] .ozolayer.flowerfield {
+    display: flex;
+}
+
+body[locale="flowers"] .ozolayer.illusion, 
+body[locale="flowers"] .ozolayer.clouds .lower  {
+    display: none;
+}
+
+body[locale="flowers"] #ozobg {
+    background: black;
+}
+
+#content[locale="flowers"] #realgrid .gridpiece:empty:not(.blocks, .neglected),
+#realgrid .gridpiece.flowery:empty:not(.blocks, .neglected) {
+    background: url(/img/local/uncosm/ozo/vines.gif);
+    border: 5px double var(--neutral-color);
+}
+
+#realgrid .ozowall .dypcontent {
+    background-size: 100% 100%;
+}
+
+#realgrid .door::after, #realgrid .door::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 250%;
+    border: 5px dotted var(--neutral-color);
+    border-top-right-radius: 20%;
+    border-top-left-radius: 20%;
+    box-shadow: 0px 0px 20px var(--neutral-color);
+    background-image: url(/img/textures/memoryhaze2.gif);
+    --doorOffset: translateZ(0px);
+}
+
+#realgrid .door.left::after, #realgrid .door.left::before {
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(0.52 * var(--gridTileSize))) var(--doorOffset);
+}
+
+#realgrid .door.right::after, #realgrid .door.right::before {
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(-0.52 * var(--gridTileSize))) rotateY(180deg) var(--doorOffset);
+}
+
+#realgrid .door.up::after, #realgrid .door.up::before {
+    transform-origin: bottom;
+    bottom: 0;
+    transform: translateY(calc(var(--gridTileSize) * -1)) rotateX(-90deg) rotateY(180deg) var(--doorOffset);
+}
+
+#realgrid .door.down::after, #realgrid .door.down::before {
+    transform: rotateX(-90deg) rotateY(0deg) translateY(-50%) translateZ(calc(0.52 * var(--gridTileSize))) var(--doorOffset);
+}
+
+#realgrid .door::before {
+    width: 300%;
+    height: 300%;
+    border-radius: 100%;
+    --doorOffset: translateZ(-1px);
+    background-image: url(/img/textures/hazeflow.gif), url(/img/local/uncosm/ozo/cloudsblurreddark.gif);
+    background-position: bottom;
+}
+
+#realgrid .door.locked::after, #realgrid .door.locked::before {
+    border: 5px dotted var(--obesk-color);
+    box-shadow: 0px 0px 20px var(--obesk-color);
+    background-image: url(/img/textures/fearstill.gif);
+}
+
+.chromium #realgrid .door.locked::after {
+    background-image: url(/img/textures/fear.gif);
+}
+
+#realgrid .door.locked::before {
+    background-image: url(/img/textures/fearstill.gif);
+    background-color: transparent;
+}  
+
+#realgrid .door.fairydoor:not(.locked)::before {
+    background-image: url(/img/local/orbit/dullportal_backed_small.gif);
+    background-position: center;
+    background-color: black;
+}
+
+#realgrid .door.flowerdoor:not(.locked)::before {
+    background-image: url(/img/local/uncosm/ozo/flowerfield_vision.gif?);
+}
+
+#realgrid .door.lostdoor:not(.locked)::before {
+    background-image: url(/img/textures/chromebstill.gif);
+    box-shadow: 0px 0px 20px var(--bastard-color);
+}
+
+#realgrid .door.raised-floaty::before, #realgrid .door.raised-floaty::after {
+    box-shadow: unset;
+}
+
+.parasiteboard {
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/local/orbit/dullvessel/parasite.gif);
+    background-size: contain;
+    transform: translateZ(calc(var(--gridTileSize) * 0.75));
+}
+
+.parasiteboard .column {
+    display: none;
+}
+
+.parasiteboard .boardproper {
+    position: absolute;  
+    width: 66%;
+    height: 66%;
+}
+
+.parasiteboard  .boardproper, .parasiteboard  .boardproper::after {
+    --baseTransform: rotateX(-90deg) translateY(66%) rotateY(145deg);
+    transform: var(--baseTransform);
+    background: url(/img/local/orbit/dullvessel/glazikahorns.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    backface-visibility: visible;
+}
+
+.parasiteboard  .boardproper::after {
+    content: "";
+    transform: rotateY(90deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: block;
+}
+
+.parasiteboard > .target {
+    transform: rotate(90deg);
+}
+
+.parasiteboard > .target::after {
+    font-size: 1.25em;
+}
+
+body:not([quality="low"]) .parasiteboard  .boardproper {
+    animation: PARASITEHOVER 25s linear infinite;
+}
+
+@keyframes PARASITEHOVER {
+    0% { transform: var(--baseTransform) translateY(0%) rotateY(0deg) }
+    50% { transform: var(--baseTransform) translateY(-5%) rotateY(180deg) }
+    100% { transform: var(--baseTransform) translateY(0%) rotateY(360deg) }
+}
+
+/* STAGES - SPACE REALM */
+body[locale="space"] .ozolayer.illusion {
+    display: none;
+}
+
+body[locale="space"] #ozobg {
+    background: url(/img/local/orbit/stars.gif);
+}
+
+#realgrid[locale="space"] .gridpiece:not(.blocks, .neglected) {
+    background: transparent;
+}
+
+body[locale="space"] #ozobg .ozolayer.clouds .upper::after {
+    top: unset;
+    bottom: -20%;
+    background-image: url(/img/local/uncosm/ozo/tops.gif);
+    height: 50%;
+    animation-duration: 30s;
+}
+
+body[locale="space"][quality="low"] #ozobg::before {
+    background-image: url(/img/local/orbit/dullportal_backed_small.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    left: unset;
+    width: 70vh;
+    height: 70vh;
+    --baseTransform: translateY(-50%);
+    animation: SPIN 120s linear infinite;
+}
+
+#realgrid .fairyportal {
+    --baseTransform: rotateX(-90deg) var(--dyp-transform);
+    transform-origin: center;
+    transform: var(--baseTransform) rotate(0deg);
+    background-position: center;
+    animation: SHAKE 50s linear infinite;
+    animation-delay: unset !important;
+}
+
+#realgrid .fairygate .portal {
+    --baseTransform: rotateX(-90deg) translate(100%, -250%) rotateZ(20deg) rotateX(40deg) rotateY(180deg);
+    width: calc(var(--gridTileSize) * 2);
+    height: calc(var(--gridTileSize) * 2);
+    animation: EYEFRIEND_BODY 20s cubic-bezier(1,0,.92,.25) infinite;
+    animation-delay: unset !important;
+    transform-origin: center;
+}
+
+#realgrid .fairygate .portal figure {
+    background: url(/img/local/uncosm/ozo/fairyviscera.gif);
+}
+
+.fairygate .portal figure::after {
+    animation: unset;
+}
+
+#realgrid .fairygate2 .portal {
+    --baseTransform: rotateX(-90deg) translate(-100%, -200%) rotateZ(-20deg) rotateX(40deg) rotateY(180deg);
+}
+
+#realgrid .fairygate2 .portal figure {
+    background: url(/img/textures/corruripple.gif);
+}
+
+#realgrid .distant-dull {
+    animation: SPIN 420s linear infinite;
+    --baseTransform: rotateX(-90deg) var(--dyp-transform);
+    transform-origin: center;
+}
+
+body[quality="low"] #realgrid .distant-dull {
+    display: none;
+}
+
+body.nofairy .raised, 
+body.nofairy .fairybased {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+body.nofairy #realgrid .fairygate .portal {
+    animation-play-state: paused;
+}
+
+body.nofairy #ozobg {
+    display: none;
+}
+  
+
+/* ozo characters */
+.flowerfriend {
+    width: var(--gridTileSize);
+}
+
+.flowerfriend {
+    backface-visibility: hidden;
+}
+
+.flowerfriend .head {
+    position: absolute;
+    top: 0;
+    animation: FLOWERLOOK 20s ease-in-out infinite;
+}
+
+.flowerfriend .head::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-image: url(/img/local/uncosm/ozo/flowerfriend_eye.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: FLOWERBLINK 6s ease-in-out infinite alternate;
+}
+
+@keyframes FLOWERBLINK {
+    0% { transform: translateZ(1px) scaleY(1) }
+    95% { transform: translateZ(1px) scaleY(1) }
+    100% { transform: translateZ(1px) scaleY(0.001) }
+}
+
+@keyframes FLOWERLOOK {
+    0% { transform: translateZ(calc(var(--gridTileSize) * 0.025)) rotateY(0deg)}
+    25% { transform: translateZ(calc(var(--gridTileSize) * 0.05)) rotateY(-30deg)}
+    50% { transform: translateZ(calc(var(--gridTileSize) * 0.05)) rotateY(30deg)}
+    75% { transform: translateZ(calc(var(--gridTileSize) * 0.1)) rotateY(0deg)}
+    100% { transform: translateZ(calc(var(--gridTileSize) * 0.025)) rotateY(0deg)}
+}
+
+.ozofriend.akieffigy.solo {
+    animation: AKIDANCE 10s ease-in-out infinite alternate;
+    --baseTransform: rotateY(-70deg);
+}
+
+.ozofriend.akieffigy.solo .head {
+    animation: unset;
+    transform: rotateX(-30deg) translateZ(calc(var(--gridTileSize) * -0.3)) translateY(5%);
+}
+
+.dancerzets .ozofriend.akieffigy.solo {
+    animation: AKIDANCESAD 10s ease-in-out infinite alternate;
+    --baseTransform: translateX(0) !important;
+}
+
+@keyframes AKIDANCESAD {
+    000% { transform: var(--baseTransform) translateX(10%) rotate(-5deg) rotateY(2deg); }
+    025% { transform: var(--baseTransform) translateX(-10%) rotate(5deg) rotateX(-5deg) rotateY(-5deg); }
+    050% { transform: var(--baseTransform) translateX(10%) rotate(-5deg)  rotateX(5deg)rotateY(5deg); }
+    075% { transform: var(--baseTransform) translateX(-10%) rotate(5deg) translateZ(calc(var(--gridTileSize) * var(--danceMult)))}
+    100% { transform: var(--baseTransform) translateX(10%) rotate(-5deg) translateY(-5%) rotateY(180deg); }
+}
+
+.eyefriend {
+    transform: translateY(20%);
+}
+
+.eyefriend img {
+    width: 100%;
+}
+
+.eyefriend .body {
+    animation: EYEFRIEND_BODY 20s cubic-bezier(1,0,.92,.25) infinite;
+}
+
+.eyefriend .head {
+    width: 100%;
+}
+
+.eyefriend .head img {
+    animation: EYEFRIEND_HEAD 10s cubic-bezier(.62,-0.16,.01,1.3) infinite;
+}
+
+.eyefriend .head::after {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    background-image: url(/img/local/uncosm/ozo/sprite_heart.gif);
+    background-size: cover;
+    background-position: center;
+    transform: translateZ(-1px);
+    border-radius: 100%;
+    backface-visibility: hidden;
+}
+
+.eyefriend .target {
+    transform: translateZ(10px);
+}
+
+@keyframes EYEFRIEND_BODY { /* slight graphical offset so the head fits the frame a bit better*/
+    0% { transform: var(--baseTransform) rotate(0deg) }
+    16% { transform: translateY(-1%) var(--baseTransform) rotate(60deg) }
+    32% { transform: translateY(-2%) var(--baseTransform) rotate(120deg) }
+    48% { transform: translateY(-3%) var(--baseTransform) rotate(180deg) }
+    64% { transform: translateY(-2%) var(--baseTransform) rotate(240deg) }
+    80% { transform: translateY(-1%) var(--baseTransform) rotate(300deg) }
+    100% { transform: var(--baseTransform) rotate(360deg) }
+}
+
+@keyframes EYEFRIEND_HEAD {
+    0% { transform: translateZ(3px) rotate(0deg) }
+    10% { transform: translateZ(3px) rotate(0deg) }
+    20% { transform: translateZ(3px) rotate(-25deg) }
+    30% { transform: translateZ(3px) rotate(-25deg) }
+    40% { transform: translateZ(3px) rotate(75deg) }
+    60% { transform: translateZ(3px) rotate(75deg) }
+    100% { transform: translateZ(3px) rotate(0deg) }
+}
+
+.geli > *, .geli img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+body[quality="regular"] .geli .head {
+    animation: TINYHOVER 10s ease infinite alternate;
+    z-index: 2;
+}
+
+.fakerloper img {
+    object-fit: cover;
+    object-position: top;
+    max-height: 100%;
+    width: 100%;
+}
+
+/* COUNCIL ANIMATIONS */
+.councilwrap, .councilform .target {
+    --baseTransform: rotateX(-90deg) translateY(-33%);
+    transform: var(--baseTransform) rotateY(calc( (1deg * var(--camera-rotation)) - 180deg ));
+    transition: transform 2s cubic-bezier(.75,-0.3,0,1.28);
+}
+
+.councilform .target {
+    --baseTransform: rotateX(-90deg) translateY(-33%) rotateY(180deg);
+}
+
+.councilform .target::before {
+    display: none;
+}
+
+.council, .council * {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    --baseTransform: translateX(0);
+}
+
+.council {
+    position: relative;
+    transform-origin: center;
+    pointer-events: none;;
+}
+
+.council img:not(.base) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.council .base {
+    opacity: 0;
+}  
+
+.council .head, .council .torso {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.council .head::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    background-image: url(/img/sprites/council/hairhat.gif);
+    transform: translateZ(20px);
+}
+
+.council .face {
+    transform: translateZ(-10px);
+    animation: COUNCILFACE 1s ease-in-out infinite alternate;
+}
+
+.council .arm {
+    width: 25%;
+    padding-bottom: 25%;
+    position: absolute;
+}
+
+.council .arm.left {
+    left: 0;
+    top: 40%;
+}
+
+.council .arm.right {
+    right: 0;
+    top: 40%;
+}
+
+.council .hand {
+    width: 120%;
+    padding-top: 120%;
+    position: absolute;
+    top: 175%;
+}
+
+.council .arm::after, .council .hand::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 270%;
+    background-image: url(/img/sprites/council/armtop.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.council .hand::after {
+    height: 200%;
+    background-image: url(/img/sprites/council/armhand1.gif);
+    transform: translate(-20%, -10%);
+}
+
+.council .arm.right::after {
+    background-image: url(/img/sprites/council/armtop_flip.gif);
+    transform: rotateY(180deg);
+}
+
+.council .arm.right .hand::after {
+    background-image: url(/img/sprites/council/armhand1_flip.gif);
+    transform: rotateY(180deg) translateY(-10%) translateX(20%);
+}
+
+@keyframes COUNCILFACE {
+    000% { transform: translateZ(-10px) rotate(-5deg) }
+    100% { transform: translateZ(-10px) rotate(5deg) }
+}
+
+.council[dance="0"] {
+    animation: SADDRIFT 5s ease-in-out infinite alternate;
+}
+
+.council[dance="0"] .face {
+    transform: translateZ(-10px);
+    animation: COUNCILFACE 10s ease-in-out infinite alternate;
+}
+
+.council[dance="0"] .head {
+    animation: TINYHOVER 2s ease-in-out infinite alternate;
+}
+
+.council[dance="0"] .torso {
+    animation: TINYHOVER 3s ease-in-out infinite alternate;
+}
+
+.council[dance="0"] .arm {
+    animation: DANCE0-ARM 2s ease-in-out infinite alternate;
+}
+
+.council[dance="0"] .arm.left {
+    --baseTransform: rotate(0deg);
+    animation-delay: -2s;
+}
+
+.council[dance="0"] .arm.right {
+    --baseTransform: rotateY(180deg)
+}
+
+.council[dance="0"] .hand {
+    animation: DANCE0-ARM 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes SADDRIFT {
+    0% { transform: translateX(-15%) rotateY(-10deg) }
+    100% { transform: translateX(15%) translateY(10deg) }
+}
+
+@keyframes DANCE0-ARM {
+    000% { transform: var(--baseTransform) rotate(-5deg)}
+    100% { transform: var(--baseTransform) rotate(5deg)}
+}
+
+.council[dance="1"] {
+    animation: HOVER 2s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+
+.council[dance="1"] .head {
+    animation: TINYHOVER 1s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+
+.council[dance="1"] .torso, .council[dance="1"]  .torso img {
+    animation: DANCE1-TORSO 10s cubic-bezier(.68,-0.55,.27,1.55) infinite;
+}
+
+.council[dance="1"] .torso img:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+.council[dance="1"] .torso img:nth-child(3) {
+    animation-delay: -0.75s;
+}
+
+.council[dance="1"] .arm {
+    animation: DANCE1-ARM 2s cubic-bezier(.3,1.07,0,.6) infinite alternate;
+}
+
+.council[dance="1"] .arm.left {
+    --baseTransform: rotate(90deg)
+}
+
+.council[dance="1"] .arm.right {
+    --baseTransform: rotate(90deg) rotateY(180deg)
+}
+
+.council[dance="1"] .hand {
+    animation: DANCE1-HAND 2s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+
+.council[dance="1"] .hand::after { background-image: url(/img/sprites/council/armhand2.gif) }
+.council[dance="1"] .arm.right .hand::after { background-image: url(/img/sprites/council/armhand2_flip.gif) }
+
+@keyframes DANCE1-ARM {
+    000% { transform: var(--baseTransform) translateX(50%) }
+    033% { transform: var(--baseTransform) translateX(0%) }
+    066% { transform: var(--baseTransform) rotateZ(180deg) translateX(50%) }
+    100% { transform: var(--baseTransform) rotateZ(180deg) translateX(0%) }
+}
+
+@keyframes DANCE1-HAND {
+    000% {transform: rotate(-30deg);}
+    100% {transform: rotate(30deg);}
+}
+
+@keyframes DANCE1-TORSO {
+    000% { transform: var(--baseTransform) translateY(1%) }
+    010% { transform: var(--baseTransform) translateY(-1%) }
+    020% { transform: var(--baseTransform) translateY(1%) }
+    030% { transform: var(--baseTransform) translateY(-1%) }
+    040% { transform: var(--baseTransform) translateY(1%) }
+    050% { transform: var(--baseTransform) translateY(-1%) rotateY(180deg) }
+    060% { transform: var(--baseTransform) translateY(1%) rotateY(180deg) }    
+    070% { transform: var(--baseTransform) translateY(-1%) rotateY(180deg) }
+    080% { transform: var(--baseTransform) translateY(1%) rotateY(180deg) }
+    090% { transform: var(--baseTransform) translateY(-1%) rotateY(180deg) }
+    100% { transform: var(--baseTransform) translateY(1%) rotateY(0deg) }    
+}
+
+.council[dance="2"] {
+    animation: DANCE2-HOVER 2s ease-in-out infinite alternate;
+}
+
+.council[dance="2"] .head {
+    animation: DANCE2-HEAD 4s ease-in-out infinite alternate;
+}
+
+.council[dance="2"] .torso {
+    animation: TINYHOVER 1s cubic-bezier(.68,-0.55,.27,1.55) infinite alternate;
+}
+
+.council[dance="2"] .torso img {
+    animation: DANCE2-HOVER 1s ease-in-out infinite alternate;
+}
+
+.council[dance="2"] .torso img:nth-child(2) { animation-delay: -0.25s;}
+.council[dance="2"] .torso img:nth-child(3) { animation-delay: -0.5s;}
+
+.council[dance="2"] .arm.left {
+    --baseTransform: rotate(90deg)
+}
+
+.council[dance="2"] .arm.right {
+    --baseTransform: rotate(-90deg) rotateY(180deg);
+    animation-delay: -0.5s;
+}
+
+.council[dance="2"] .arm.right .hand {
+    animation-delay: -1s;
+}
+
+.council[dance="2"] .arm {
+    animation: DANCE2-ARM 0.5s ease-in-out infinite alternate
+}
+
+.council[dance="2"] .hand {
+    animation: DANCE2-HAND 1s ease-in-out infinite alternate
+}
+
+.council[dance="2"] .hand::after { background-image: url(/img/sprites/council/armhand3.gif) }
+.council[dance="2"] .arm.right .hand::after { background-image: url(/img/sprites/council/armhand3_flip.gif) }
+
+@keyframes DANCE2-ARM {
+    000% {transform: var(--baseTransform) translateX(-25%) translateY(-10%) rotate(-5deg);}
+    100% {transform: var(--baseTransform) translateX(25%) translateY(-10%) rotate(5deg);}
+}
+
+@keyframes DANCE2-HAND {
+    000% {transform: var(--baseTransform) translateX(-100%) rotate(40deg);}
+    100% {transform: var(--baseTransform) translateX(-25%) rotate(40deg);}
+}
+
+@keyframes DANCE2-HOVER {
+    000% { transform: var(--baseTransform) translateX(-15%) }
+    100% { transform: var(--baseTransform) translateX(15%)}
+}
+
+@keyframes DANCE2-HEAD {
+    000% {transform: var(--baseTransform) translateX(-10%) translateY(-7%) rotate(-10deg);}
+    033% {transform: var(--baseTransform) translateX(10%) translateY(-7%) rotate(-20deg);}
+    066% {transform: var(--baseTransform) translateX(-10%) translateY(5%)  rotate(10deg);}
+    100% {transform: var(--baseTransform) translateX(10%) translateY(10%) rotate(20deg);}
+}
+
+.council[dance="3"] {
+    animation: DANCE3-BODY 8s ease-in-out infinite alternate;
+}
+
+.council[dance="3"] .head {
+    animation: DANCE3-HOVERSPIN 4s ease-in-out infinite alternate;
+}
+
+.council[dance="3"] .torso {
+    transform: translateZ(-25px)
+}
+
+.council[dance="3"] .torso img {
+    animation: DANCE3-HOVERSPIN 4s ease-in-out infinite alternate;
+    --baseTransform: translateZ(30px)
+}
+
+.council[dance="3"] .torso img:nth-child(2) {
+    animation: DANCE3-HOVERSPIN 4s ease-in-out infinite alternate;   
+    animation-delay: -0.25s;
+}
+
+.council[dance="3"] .torso img:nth-child(3) {
+    animation: DANCE3-HOVERSPIN 4s ease-in-out infinite alternate;
+    animation-delay: -0.5s;
+}
+
+.council[dance="3"] .arm.left {
+    --baseTransform: translateY(-100%) rotate(135deg)
+}
+
+.council[dance="3"] .arm.right {
+    --baseTransform: translateY(-100%) rotate(-135deg) rotateY(180deg);
+    animation-delay: -0.5s;
+}
+
+.council[dance="3"] .hand {
+    --baseTransform: translateY(100%) 
+}
+
+.council[dance="3"] .arm {
+    animation: DANCE3-ARM 4s ease-in-out infinite alternate;
+}
+
+.council[dance="3"] .hand {
+    animation: DANCE3-ARM 4s ease-in-out infinite alternate;
+}
+
+.council[dance="3"] .hand::after { background-image: url(/img/sprites/council/armhand3.gif) }
+.council[dance="3"] .arm.right .hand::after { background-image: url(/img/sprites/council/armhand3_flip.gif) }
+
+@keyframes DANCE3-BODY {
+    000% { transform: var(--baseTransform) rotateY(0deg) translateY(0) }
+    050% { transform: var(--baseTransform) rotateY(180deg) translateY(-2%) }
+    100% { transform: var(--baseTransform) rotateY(360deg) translateY(0%) }
+}
+
+@keyframes DANCE3-ARM {
+    000% { transform: var(--baseTransform) rotateY(0deg) translateY(-50%) }
+    100% { transform: var(--baseTransform) rotateY(360deg) translateY(-50%) }
+}
+
+@keyframes DANCE3-HOVERSPIN {
+    000% { transform: var(--baseTransform) var(--baseTransform) translateY(0) rotateY(0) rotate(5deg) }
+    050% { transform: var(--baseTransform) var(--baseTransform) translateY(-5%) rotateY(180deg) rotate(30deg) }
+    100% { transform: var(--baseTransform) var(--baseTransform) translateY(0%) rotateY(360deg) rotate(30deg) }
+}
+
+.council[dance="4"] {
+    animation: SADDRIFT 5s ease-in-out infinite alternate;
+}
+
+.council[dance="4"] .face {
+    transform: translateZ(-10px);
+    animation: COUNCILFACE 10s ease-in-out infinite alternate;
+}
+
+.council[dance="4"] .head {
+    animation: TINYHOVER 1s ease-in-out infinite alternate;
+}
+
+.council[dance="4"] .torso {
+    animation: TINYHOVER 2s ease-in-out infinite alternate;
+}
+
+.council[dance="4"] .arm {
+    animation: DANCE2-ARM 2s ease-in-out infinite alternate;
+}
+
+.council[dance="4"] .arm.left {
+    --baseTransform: translateX(-25%) rotate(90deg);
+    animation-delay: -2s;
+}
+
+.council[dance="4"] .arm.right {
+    --baseTransform: translateX(25%) rotateY(180deg) rotate(60deg);
+}
+
+.council[dance="4"] .hand {
+    animation: DANCE1-HAND 3s ease-in-out infinite alternate;
+}  
+
+/* cams */
+body[currentdialogue^="isabel"] .grid-animator {
+    --camera-x:4;
+    --camera-y:7;
+    --personal-offset: rotateX(-10deg);
+    --camera-rotation: 180 !important;
+}
+
+body[currentdialogue^="fairy"] .grid-animator {
+    --camera-x:5;
+    --camera-y:6;
+    --personal-offset: rotateX(-10deg);
+    --camera-rotation: 180 !important;
+}
+
+.councilfocus .grid-animator, 
+.councilfocus .grid-container {
+    transform: unset !important;
+}
+
+.councilfocus .grid-plane, 
+.councilfocus .grid-container, 
+.councilfocus .grid-animator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.councilfocus #realgrid {
+    --baseTransform: rotateX(90deg) translateZ(calc(var(--gridTileSize) * -2));
+    transform: var(--baseTransform);
+    animation: SPIN 20s linear infinite;
+}
+
+.councilfocus .councilwrap {
+    animation: SPIN-Y 20s linear infinite;
+    animation-delay: -10s;
+}
+
+.councilfocus .ozofriend {
+    --baseTransform: rotateY(0deg);
+}
+
+/* DARK CLOUDS */
+body[locale="darkclouds"] #realgrid .gridpiece:not(.blocks):not(.shiny):not(.nothing) {
+    background: black;
+    border: 0;
+}
+
+body[locale="darkclouds"] #ozobg .ozolayer.illusion,
+body[locale="darkclouds"] #ozobg .ozolayer.clouds .upper {
+    display: none;
+}
+
+body[locale="darkclouds"] #ozobg .ozolayer.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200vh;
+    width: 150vw;
+    background-repeat: repeat-x;
+    background-image: url(/img/local/uncosm/ozo/darkclouds.gif???);
+    background-size: auto 100%;
+    background-color: black;
+    animation: DARKCLOUDS 60s ease-in-out infinite alternate;
+}
+
+body[locale="darkclouds"] #ozobg .ozolayer.clouds .lower::after {
+    height: 33%;
+}
+
+.dypcontent.hosting figure,
+.dypcontent.hosting figure.darksides::before,
+.dypcontent.hosting figure.darksides::after {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.dypcontent.hosting figure.darksides::before,
+.dypcontent.hosting figure.darksides::after {
+    content: "";
+    backface-visibility: hidden;
+    transform: rotateX(-90deg) translateY(-100%);
+    height: calc(var(--gridTileSize) * 5);
+    background: black;
+    transform-origin: top;
+    top: 0;    
+}
+
+.dypcontent.hosting figure.darksides::after {
+    transform: unset;
+    top: unset;
+    bottom: 0;
+    transform-origin: bottom;
+    transform: rotateY(180deg) rotateX(90deg);
+}
+
+.dypcontent.hosting figure.otherside {
+    background-image: url(/img/local/uncosm/ozo/pockmarksdriftdark.gif);
+    background-size: 100% 100%;
+    pointer-events: none;
+    transform: translateZ(calc(var(--gridTileSize) * 5));
+    backface-visibility: visible;
+}
+
+.ozowall .hosting .wall {
+    background: inherit;
+    background-image: url(/img/local/uncosm/ozo/pockmarksdark.gif);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+#realgrid .darkdoor.door::after, 
+#realgrid .darkdoor.door::before {
+    border: 5px dotted var(--dark-color);
+    box-shadow: 0px 0px 20px var(--dark-color);
+    background-position: bottom right;
+}
+
+#realgrid .darkdoor.door::after {
+    background-image: url(/img/textures/memoryhaze3.gif);
+}
+
+#realgrid .darkdoor.door::before {
+    background-position: top right;
+}
+
+#realgrid .darkdoor.darker.door::after {
+    background-image: url(/img/textures/ultradarkclouds.gif);
+}
+
+#realgrid .darkdoor.darker.door::before {
+    background-image: url(/img/textures/hazeflow.gif), url(/img/local/uncosm/ozo/pockmarksdark.gif);
+}
+
+.dypcontent.unknown1::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-image: url(/img/local/uncosm/ozo/unkn1e.gif);
+    transform: translateZ(1px);
+}
+
+.dypcontent.quiet {
+    --baseTransform: rotateX(-90deg) var( --dyp-transform);
+    animation: QUIETHOVER 60s ease-in-out infinite alternate;
+}
+
+@keyframes QUIETHOVER {
+    0% { transform: var(--baseTransform) translateY(-40%) rotateY(-30deg) }
+    100% { transform: var(--baseTransform) translateY(40%) rotateY(30deg) }
+}
+
+@keyframes DARKCLOUDS {
+    0% { transform: translateY(-50%) }
+    100% { transform: translateY(0%) }
+}
+
+/* lost one */
+#realgrid .gridpiece.vesselmetal.dyp {
+    background: black;
+    border: unset;
+}
+
+#content[locale="clouded"] #realgrid .gridpiece.vesselmetal:empty, #realgrid .gridpiece.vesselmetal:empty {
+    background-image: url(/img/textures/bustedtile.gif);
+    background-color: var(--bright-color);
+    border: unset;
+}
+
+#realgrid .dyp .side, #realgrid .side {
+    background-image: url(/img/local/critta/bstliner.gif);
+    background-size: 100% 100%;
+}
+
+#realgrid .side.front, #realgrid .side.back {
+    width: calc(var(--gridTileSize) * 4);
+    height: calc(var(--gridTileSize) * 0.86);
+    position: absolute;
+    bottom: 0;
+    transform: translateZ(calc(var(--gridTileSize) * -0.25));
+    border-bottom-left-radius: 14% 100%;
+    border-bottom-right-radius: 14% 100%;
+}
+
+#realgrid .side.back {
+    transform: translateZ(calc(var(--gridTileSize) * -0.5));
+    backface-visibility: visible;
+}
+
+#realgrid .gridpiece.locked.e3a2loop.ready {
+    background-image: url(/img/textures/chromebmicroSTILL.gif)
+}
+
+/* visualizer stuff */
+body[locale="council"][songstate="intro"] .clouds .upper { transform: translateY(25%) }
+body[locale="council"][songstate="intro"] .clouds .lower { transform: translateY(-25%) }
+body[locale="council"][songstate="intro"] .gridpiece.raised-1, body[locale="council"][songstate="intro"] .gridpiece.raised-2 { animation: TILEHOVER 20s ease-in-out infinite alternate; }
+body[locale="council"][songstate="intro"] .gridpiece.raised-2 { animation-delay: -1s; }
+
+
+
+body[locale="council"][songstate="vocal"] .clouds .upper { transform: translateY(10%) }
+body[locale="council"][songstate="vocal"] .clouds .lower { transform: translateY(-10%) }
+body[locale="council"][songstate="vocal"] .gridpiece.raised-1, body[locale="council"][songstate="vocal"] .gridpiece.raised-2 { animation-duration: 10s; }
+
+
+body[locale="council"][songstate="arp1"] .clouds .upper,
+body[locale="council"][songstate="arp2"] .clouds .upper { transform: translateY(-10%) }
+
+body[locale="council"][songstate="arp1"] .clouds .lower,
+body[locale="council"][songstate="arp2"] .clouds .lower { transform: translateY(10%) }
+
+body[locale="council"][songstate="arp1"] #ozobg .illusion::after { animation: COMPOSELARGE 30s ease-in-out infinite }
+body[locale="council"][songstate="arp1"] #ozobg .illusion::before { animation: COMPOSELARGE 50s linear infinite }
+
+body[locale="council"][songstate="arp2"] #ozobg .illusion::after,
+body[locale="council"][songstate="arp3"] #ozobg .illusion::after,
+body[locale="council"][songstate="outro"] #ozobg .illusion::after { animation: COMPOSELARGE 10s ease-in-out infinite }
+
+body[locale="council"][songstate="arp2"] #ozobg .illusion::before,
+body[locale="council"][songstate="arp3"] #ozobg .illusion::before,
+body[locale="council"][songstate="outro"] #ozobg .illusion::before { animation: COMPOSELARGE 20s linear infinite }
+
+body[locale="council"][songstate="arp3"] #ozobg .clouds > .upper::after { animation-duration: 10s }
+body[locale="council"][songstate="arp3"] #ozobg .clouds > .lower::after { animation-duration: 20s }
+
+body[locale="council"][songstate="arp3"] .clouds .upper { transform: translateY(5%) }
+body[locale="council"][songstate="arp3"] .clouds .lower { transform: translateY(-5%) }
+
+body[locale="council"][songstate="arp3"]:not([quality="low"]) #ozobg .ozolayer.illusion::after, 
+body[locale="council"][songstate="arp3"]:not([quality="low"]) #ozobg .ozolayer.illusion::before,
+body[locale="council"][songstate="outro"]:not([quality="low"]) #ozobg .ozolayer.illusion::after, 
+body[locale="council"][songstate="outro"]:not([quality="low"]) #ozobg .ozolayer.illusion::before {
+    background-image: url(/img/textures/corrurippletran.gif), url(/img/local/uncosm/ozo/ozospiral.gif);
+}
+
+body[locale="council"][songstate="outro"] .clouds .upper { transform: translateY(20%) }
+body[locale="council"][songstate="outro"] .clouds .lower { transform: translateY(-20%) }
+
+@keyframes COMPOSELARGE {
+    0% { transform: scale(0.8) rotate(0deg) }
+    50% { transform: scale(1.25) rotate(90deg) }
+    100% { transform: scale(0.8) rotate(360deg) }
+}
+
+/* reduce action during dialogue to focus attention */
+body[locale="council"].in-dialogue:not(.depressed) .clouds .upper { transform: translateY(20%) }
+body[locale="council"].in-dialogue:not(.depressed) .clouds .lower { transform: translateY(-20%) }
+
+body[locale="council"].in-dialogue:not(.depressed) #ozobg .clouds > .upper::after { animation-duration: 30s }
+body[locale="council"].in-dialogue:not(.depressed) #ozobg .clouds > .lower::after { animation-duration: 40s }
+
+
+/* quality */
+body[quality="low"] .gridpiece.raised.blocks, 
+body[quality="low"] .gridpiece.raised-floaty:empty:not(.teleport) {
+  animation: unset;
+  opacity: 0;
+  animation: unset;
+  visibility: hidden;
+}
+
+body[quality="low"] .ozolayer.illusion::after {
+  display: none;
+}
+
+body[quality="low"] .ozowall:not(.critical) .dypcontent {
+    display: none;
+}
+
+/* event additions */
+
+    /* c_geli */
+#content[event="c_geli"][locale="council"] .ozofriend.geli {
+    transform: rotateY(180deg);
+}
+
+body[currentdialogue="e_c_geli"] .grid-container {
+    --camera-x: 3;
+    --camera-y: 6;
+    --camera-rotation: 235;
+}
+
+body[currentdialogue="e_c_geli"] .councilwrap.face-creature { --camera-rotation: -60; }
+.grid-plane[specialCam="e_c_geli_attention"] .councilwrap.face-creature { --camera-rotation: -90 }
+.grid-plane[specialCam="e_c_geli_attention"] .ozofriend.geli { transform: rotateY(235deg) !important }
+
+    /* c_isabel */
+#content[event="c_isabel"][locale="council"] .ozofriend.flowerfriend {
+    transform: rotateY(140deg);
+    transition: transform 1s ease-in-out;
+    backface-visibility: visible;
+}
+
+body[currentdialogue="e_c_isabel"] .grid-container {
+    --camera-x: 3;
+    --camera-y: 5;
+    --camera-rotation: 210;
+}
+
+body[currentdialogue="e_c_isabel"] .councilwrap.face-creature { --camera-rotation: -60; }
+.grid-plane[specialCam="e_c_isabel_attention"] .councilwrap.face-creature { --camera-rotation: -120 }
+.grid-plane[specialCam="e_c_isabel_attention"] .ozofriend.flowerfriend { transform: rotateY(200deg) !important }
+
+    /* c_fairy */
+#content[event="c_fairy"][locale="council"] .ozofriend.eyefriend {
+    transform: rotateY(220deg) translateY(25%);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_c_fairy"] .councilform {
+    transform: translateX(60%) translateY(20%);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_c_fairy"] .grid-container {
+    --camera-x: 8;
+    --camera-y: 5;
+    --camera-rotation: 165;
+}
+
+body[currentdialogue="e_c_fairy"] .councilwrap.face-creature { --camera-rotation: 80; }
+.grid-plane[specialCam="e_c_fairy_attention"] .councilwrap.face-creature { --camera-rotation: 135 }
+.grid-plane[specialCam="e_c_fairy_attention"] .ozofriend.eyefriend { transform: rotateY(210deg) translateY(10%) translateX(-10%) !important }
+
+    /* c_stowaway */
+#content.stowaway-jig.dancing .fakerloper {
+    animation: STOWDANCE 6s ease-in-out infinite alternate;
+}
+
+@keyframes STOWDANCE {
+    0% {
+        transform: translateX(-0%) rotateY(0deg)
+    }
+    
+    50% {
+        transform: translateX(-50%) rotateY(360deg)
+    }
+    
+    100% {
+        transform: translateX(50%) rotateY(0)        
+    }
+}
+
+    /* c_effigies */
+#content[event="c_effigies"][locale="council"] .akieffigy {
+    animation: AKIDANCEBIG 10s ease-in-out infinite alternate;
+}
+
+    /* f_geli */
+#content[event="f_geli"][locale="space"] .ozofriend.geli {
+    transform: rotateY(-70deg);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_f_geli"] .ozofriend.eyefriend {
+    transform: translateY(25%) translateX(-10%);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_f_geli"] .grid-container {
+    --camera-x: 5;
+    --camera-y: 5.5;
+    --camera-rotation: 210;
+}
+
+.grid-plane[specialCam="e_f_geli_attention"] .ozofriend.geli { transform: rotateY(-120deg) !important; }
+.grid-plane[specialCam="e_f_geli_attention"] .ozofriend.eyefriend { transform: rotateY(20deg) translateY(25%) translateX(-10%)!important }
+
+
+    /* f_stow */
+#content[event="f_stow"][locale="space"] .ozofriend.fakerloper {
+    transform: rotateY(60deg);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_f_stow"] .ozofriend.eyefriend {
+    transform: translateY(25%) translateX(-10%);
+    transition: transform 1s ease-in-out;
+}
+
+body[currentdialogue="e_f_stow"] .grid-container {
+    --camera-x: 6.5;
+    --camera-y: 5.5;
+    --camera-rotation: 135;
+}
+
+.grid-plane[specialCam="e_f_stowclose"] .ozofriend.fakerloper { transform: translateX(150%) rotateY(120deg) !important; }
+.grid-plane[specialCam="e_f_stowclose"] .ozofriend.eyefriend { transform: rotateY(-40deg) translateY(20%) translateX(10%)!important }
+
+    /* f_effigies */
+#content[event="f_effigies"][locale="space"] .gridpiece[i="83"] .ozofriend.akieffigy { --baseTransform: rotateY(-30deg); }
+#content[event="f_effigies"][locale="space"] .gridpiece[i="81"] .ozofriend.akieffigy { --baseTransform: rotateY(30deg); }
+
+#content[event="f_effigies"] .eyefriend .head img {
+    animation: unset;
+    transform-origin: top;
+    transition: transform 1s ease-in-out;
+}
+
+.grid-plane[specialCam="e_f_open"] .eyefriend .head img {
+  transform: translateY(50%) translateZ(calc(-1.8 * var(--gridTileSize))) rotateX(110deg)
+}
+
+body[currentdialogue="e_f_effigies"] .grid-container {
+    --camera-x: 5;
+    --camera-y: 6;
+    --camera-rotation: 180;
+}
+
+    /* i_gelistow and i_geli */
+#content[event^="i_geli"][locale="flowers"] .ozofriend.geli { transition: transform 1s ease-in-out; transform: rotateY(-80deg) }
+#content[event^="i_geli"][locale="flowers"] .ozofriend.flowerfriend { transition: transform 1s ease-in-out; transform: rotateY(-30deg) }
+#content[event="i_gelistow"][locale="flowers"] .ozofriend.fakerloper, #content[event="i_stow"][locale="flowers"] .ozofriend.fakerloper { transform: rotateY(-80deg) }
+
+body[currentdialogue^="e_i_geli"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 6;
+    --camera-rotation: 200;
+}
+
+body[currentdialogue="e_i_gelistow"] .grid-plane[specialCam="e_i_stowclose"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 4;
+    --camera-rotation: 90;  
+}
+
+.grid-plane[specialCam="e_i_worry"] .ozofriend.geli { transform: rotateY(-135deg) !important; }
+.grid-plane[specialCam="e_i_worry"] .ozofriend.flowerfriend { transform: rotateY(0deg) !important }
+
+.stowaway .dancerzets {
+    width: 100%;
+    height: 100%;
+}
+
+.stowaway .dancerzets .ozofriend.akieffigy:first-child {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * -0.75)) !important;
+}
+.stowaway .dancerzets .ozofriend.akieffigy:last-child {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.75)) !important;
+}  
+
+    /* i_fairy */
+#content[event="i_fairy"][locale="flowers"] .ozofriend.eyefriend { transition: transform 1s ease-in-out; transform: translateY(25%) rotateY(-200deg) }
+#content[event="i_fairy"][locale="flowers"] .ozofriend.flowerfriend { transition: transform 1s ease-in-out; transform: rotateY(180deg); backface-visibility: visible; }
+
+body[currentdialogue="e_i_fairy"] .grid-container {
+    --camera-x: 5;
+    --camera-y: 7;
+    --camera-distance: 1;
+    --camera-rotation: 145;
+}
+
+.grid-plane[specialCam="e_i_fairy"] .ozofriend.flowerfriend { transform: rotateY(-70deg) !important }
+
+    /* misc */
+.still .ozofriend.akieffigy img {
+    animation: unset !important;
+}

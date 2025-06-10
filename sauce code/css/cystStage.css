@@ -1,0 +1,774 @@
+.grid-plane,
+.grid-container, 
+.grid-animator, 
+.darkstage .realgrid {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+}
+
+.grid-plane {
+    --perspective: 550px;
+    --stage-steps-x: 0;
+    --stage-steps-y: 0;
+    --stage-width: 0;
+    --stage-height: 0;
+    --stage-steps-x-fromcenter: ((var(--stage-steps-x) * 2) - var(--stage-width));
+    --stage-steps-y-fromcenter: ((var(--stage-steps-y) * 2) - var(--stage-height));
+
+    /* MEASURED IN TILE SIZE */
+    --camera-height: 1.5; /* distance from ground */
+    --camera-distance: 0.45; /* distance from 'true center' of the tile you're in */
+    --camera-rotation: 0; /* direction/angle the camera is facing */
+    --camera-offset: translateZ(0); /* done prior to plane/realgrid transforms - i.e. rotateX(10deg) will make u look down no matter which way you turn */
+    --personal-offset: translateZ(0); /* end-camera .realgrid transform - can be treated as 'transforming from true center' */
+    --camera-x: var(--stage-steps-x);
+    --camera-y: var(--stage-steps-y);
+
+    /* tile stuff */
+    --gridScale: 200;
+    --gridTileSize: calc(var(--gridScale) * 1px);
+    transition: perspective 1s ease-in-out, opacity 1s ease-in-out;
+    perspective: var(--perspective);
+    will-change: contents;
+}
+
+@media only screen and (max-height: 800px) {
+    .grid-plane {
+        --perspective: 350px;
+        --camera-distance: 0.45;
+    }
+}
+  
+.grid-container {
+    position: absolute;
+    transition: all 400ms ease-in-out;
+}
+
+.grid-animator {
+    transform-origin: center;
+    transition: transform 300ms ease-in-out;
+}
+
+.grid-container, .grid-container * {
+    transform-style: preserve-3d;
+}
+
+.realgrid {
+    --intendedOpacity: 1;
+    background: transparent;
+    z-index: 1;
+    transition: transform 400ms linear;
+    width: calc(var(--stageWidth) * var(--gridTileSize));
+}
+
+.swapcam .realgrid.dynocam {
+    transition: transform 1s ease-in-out;
+}
+
+/* transitions */
+.stage-transition .grid-container,
+.stage-transition .grid-animator,
+.stage-transition .grid {
+    transition: unset !important;
+}
+
+/* CALCULATIONS in order of what contains what */
+
+    /* 
+        The container positions the camera in 3D space relative to the floor. 
+        By default, the tiles will be (perspective)px away from the camera, so we move that much closer, adjusting for desired distance from center.
+        Height is also a simple adjustment for Z based on desired height (1.5 by default).
+    */
+.grid-container {
+    --baseContainerTransform: 
+        rotateX(90deg) 
+        translateY(calc(var(--perspective) - (var(--gridTileSize) * var(--camera-distance))))
+        translateZ(calc(var(--camera-height) * -1 * var(--gridTileSize)))
+        var(--camera-offset);
+        
+    transform: var(--baseContainerTransform);
+}
+.grid-container.snap { /* useful for getting pics to use for tiles */
+    transform: translateY(-200px)
+}
+
+    /* The animator simply rotates the camera in the direction the player is facing. */
+.grid-animator {
+    --baseAnimatorTransform: rotateZ(calc(var(--camera-rotation) * 1deg));
+    transform: var(--baseAnimatorTransform);
+}
+
+    /* 
+        The realgrid handles the X/Y position of the camera, and any bonus camera adjustments.
+        We do personal-offset handling here because it's essentially the 'final center' of where the camera ends up,
+        making it easy to account for stuff like "turn an extra 30deg during this dialogue" or stuff like that.
+    */
+.realgrid {
+    --baseRealGridTransform:
+        translateY(calc(var(--camera-y) * var(--gridTileSize) * -1)) 
+        translateX(calc(var(--camera-x) * var(--gridTileSize) * -1))    
+        var(--personal-offset) 
+    ;
+    transform: var(--baseRealGridTransform)
+}
+
+/* 
+    DARK MODE
+    This is an adjustment that makes it so that tiles are absolutely positioned instead.
+    This lets us move around an empty space with the tiles "appearing" in their proper place only when they ought to be visible.
+*/
+.darkstage .realgrid {
+    --intendedOpacity: 0;
+    width: calc(var(--gridTileSize));
+}
+
+.piecewrapper { 
+    position: absolute;
+    transform: 
+        translateX(calc(var(--gridTileSize) * var(--realX))) 
+        translateY(calc(var(--gridTileSize) * var(--realY)));
+}
+
+.darkstage .gridpiece:empty, 
+.darkstage .gridpiece:not(.alwaysvis) > * {
+    opacity: var(--intendedOpacity);
+    transition: opacity 200ms linear;
+}
+
+.darkstage .evil { /* evil guys aren't affected by the opacity setting as long as they're in range to appear at all */
+    opacity: 1 !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+
+/* DISPLAY CONTROLS */
+.cull-stage .grid-plane:not(combat-grid), 
+.cull-stage #grid-ref, 
+.cull-stage .grid,
+.cull-stage .stage-navigator, 
+.cull-stage #stage-navigator {
+    display: none !important;
+    will-change: unset !important;
+}
+
+.fade-stage .grid-plane:not(combat-grid) {
+    opacity: 0 !important;
+}
+
+.no-transition {
+    transition: unset !important;
+}
+
+/* GRID AND TILES */
+.grid {
+    height: auto;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    will-change: transform;
+}
+
+.gridpiece {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+    display: inline-flex;
+    background: transparent;
+    justify-content: center;
+    align-items: center;
+    transition: transform 100ms cubic-bezier(.6,.86,.62,1.35);
+    transform-origin: center;
+}
+
+.gridpiece > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gridpiece * {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.gridpiece:empty {
+    background: var(--bright-color);
+    border: 20px double var(--dark-color);
+}
+
+.gridpiece.hide {
+    pointer-events: none;
+    opacity: 0;
+}
+
+.gridpiece.hide > *, .gridpiece.hide:before, .gridpiece.hide:after {
+    display: none;
+}
+
+.realgrid .gridpiece.blocks.nothing:not(.dyp), .realgrid .gridpiece.nothing:empty { visibility: hidden }
+.realgrid .gridpiece.blocks:empty, .realgrid .gridpiece.nothing {
+    background: transparent;
+    border: 0px;
+}
+
+.realgrid .gridpiece.notile {
+    background: transparent !important;
+    border: unset !important;
+}
+
+#realgrid .gridpiece.teleport.blocks,
+#realgrid .gridpiece.teleport.blocks.fakeunlock.locked,
+.realgrid .gridpiece.teleport.blocks,
+.realgrid .gridpiece.teleport.blocks.fakeunlock.locked {
+    background: var(--neutral-color);
+    border: 10px solid var(--neutral-color);
+    border-style: outset;
+}
+
+#realgrid .gridpiece.teleport.blocks.locked,
+.realgrid .gridpiece.teleport.blocks.locked {
+    background: var(--obesk-color);
+    background-image: url('/img/textures/fadein.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+.reference .gridpiece.teleport.blocks {
+    background: var(--neutral-color);
+}
+
+.realgrid .chatter-container, .realgrid .chatter-container .chatter {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;    
+}
+
+.realgrid canvas {
+    transform-style: unset !important;
+}
+
+.realgrid canvas#stagefloor {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.gridpiece.tile-in-canvas {
+    background: transparent !important;
+    border: unset !important;
+}
+
+.gridpiece.tile-in-canvas:empty {
+    visibility: hidden !important;
+}
+
+/* HTML navigation */
+#stage-navigator, .key-navigator {
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    font-size: 3em;
+    color: var(--neutral-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    transition: opacity 400ms ease-in-out;
+    opacity: 0.5;
+}
+
+.in-menu #stage-navigator, .mui-active #stage-navigator, .hide-ui #stage-navigator,
+.in-menu .key-navigator, .mui-active .key-navigator, .hide-ui .key-navigator {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#stage-navigator:hover, .key-navigator:hover {
+    opacity: 1;
+}
+
+#stage-navigator > span, .key-navigator > span{
+    position: absolute;
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: 400ms ease-in-out;
+    opacity: 0;
+    transform: translateY(-100%);
+    font-family: barcodetext;
+    background: black;
+}
+
+#stage-navigator:hover > span, .key-navigator:hover > span {
+    opacity: 1;
+}
+
+.stage-arrows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: calc(1.2em + 5px);
+    position: relative;
+}
+
+.stage-arrows > div {
+    position: relative;
+    display: inline-flex;
+    background: var(--dark-color);
+    color: var(--neutral-color);
+    width: 1.2em;
+    height: 1.2em;
+    margin: 5px;
+    justify-content: center;
+    align-items: center;
+    border: 4px double;
+    cursor: pointer;
+}
+
+.stage-arrows > div[key]::after {
+    content: attr(key);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    width: 1.5em;
+    height: 1.5em;
+    font-family: spacemono;
+    font-size: 0.5em;
+    text-transform: uppercase;
+    background: black;
+    border: 2px solid var(--friend-color);
+    border-radius: 100%;
+    transition: opacity 1s ease-in-out;
+    transform: translateY(-130%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.stage-arrows > div:hover::after {
+    opacity: 1;
+}
+        
+.stage-arrows > div:hover {
+    border-style: groove;
+    color: var(--friend-color);
+}
+
+.stage-arrows .up {
+    position: absolute;
+    top: 0;
+}
+/* special stage controls - Perspective Swap and Quality */
+.stage-arrows .swap, .stage-arrows .quality {
+    color: var(--obesk-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.stage-arrows i { font-size: 0.8em }
+.stage-arrows > .quality::after {white-space: nowrap; }
+
+.swap .ci-zoomin, .swapcam .swap .ci-zoomout { display: none }
+.swapcam .swap .ci-zoomin, .swap .ci-zoomout { display: inline }
+.swapcam .swap { color: var(--friend-color); }
+
+/* special stage controls - party menu */
+.stage-arrows > .party {
+    display: none;
+    position: absolute;
+    left: -10px;
+    top: 0;
+    transform: translate(-100%, 50%);
+}
+
+.stage-arrows > .party::after {
+    padding: 0.25em;
+}
+
+.party-enabled .stage-arrows .party, 
+.collapse .stage-arrows .party {
+    display: inline-flex;
+}
+
+/* quality specific controls */
+.stage-arrows div.quality {
+    right: unset;
+    left: 0;
+}
+
+.stage-arrows > div.quality::after {
+    content: "QUALTIY: " attr(quality);
+    width: auto;
+    border-radius: 10px;
+    padding: 0.25em;
+    text-transform: uppercase;
+}
+
+body[quality="regular"] .quality { color: var(--friend-color) }
+body[quality="regular"] .quality::after { content: "Quality: REGULAR" }
+body[quality="low"] .quality { color: var(--bright-color) }
+body[quality="low"] .quality::after { content: "Quality: LOW" }
+
+/* ref controls */
+.reference {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 16777271;
+    width: calc(1px * var(--stageWidth));
+    opacity: 0;
+    display: none;
+}
+
+.reference .gridpiece {
+    width: 1px !important;
+    height: 1px !important;
+    border: 0px !important;
+}
+
+.reference .gridpiece .target {
+    display: none !important;
+}
+
+.reference .gridpiece > * {
+    width: 1px !important;
+    height: 1px !important;
+    transform: unset !important;
+    position: relative !important;
+    top: unset !important;
+    bottom: unset !important;
+}
+
+.reference .gridpiece > * > * {
+    display: none !important;
+    pointer-events: none;
+}
+
+/* special modifiers */
+.realgrid .turn90 { transform: rotate(90deg) }
+.realgrid .turn180 { transform: rotate(180deg) }
+.realgrid .turn270 { transform: rotate(270deg) }
+
+.realgrid .face-creature, .realgrid .evil {
+    --faceAngle: 0deg;
+    --distX: calc( var(--realX) - var(--stage-steps-x) );
+    --distY: calc( var(--realY) - var(--stage-steps-y) );
+}
+  
+/* particular dudes */
+.realgrid .pianoguy:after {
+    position: absolute;
+    background-image: url(pianofrog.gif);
+    width: calc(var(--gridTileSize) * 2.5);
+    height: calc(var(--gridTileSize) * 2.5);
+    animation: 0;
+    transform: rotateX(-90deg) translateY(-25%);	
+}
+
+.realgrid .ally-sprite {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+    background-color: var(--friend-color);
+    border: 10px solid var(--dark-color);
+    transform: translateZ(1px)
+}
+
+.realgrid .neutral-sprite {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+    background-color: var(--bright-color);
+    border: 10px solid var(--neutral-color);
+}
+
+.realgrid .fiend, .realgrid .evil {
+    width: var(--gridTileSize);
+    height: var(--gridTileSize);
+    background: var(--obesk-color);
+    background-image: url('/img/textures/fadein.gif');
+    background-size: cover;
+    background-position: center;
+    border: 10px solid var(--obesk-color);
+}
+
+.realgrid .evil.dead {
+    background: var(--dark-color);
+    border-color: var(--bright-color);
+}
+
+/* DYNAMIC PROPS (ep3)
+    these are less hardcoded props made up of classes, like regular HTML would be...
+    as opposed to the insane mess that all the old .props are
+
+    gotta keep the old ones in old files short of a rewrite tho
+    some of this is doubled to the ID realgrid for specificity reasons
+    the change to a class would otherwise break a lot of (dyp) stuff 
+*/
+.realgrid .dyp,
+#realgrid .dyp {
+    --dyp-image: url(/img/konstrukt.gif);
+    --dyp-transform: translateX(0);
+    --dyp-height: 2;
+    --dyp-width: 1;
+}
+
+.realgrid .dyp > *,
+#realgrid .dyp > * {
+    bottom: 50%;
+    position: absolute;
+    transform-origin: bottom;
+    width: calc(var(--gridTileSize) * var(--dyp-width));
+    height: calc(var(--gridTileSize) * var(--dyp-height));
+    transform: rotateX(-90deg) var(--dyp-transform);
+    background-image: var(--dyp-image);
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    backface-visibility: visible;
+}
+
+.realgrid .dyp > .dyp-canvas,
+#realgrid .dyp > .dyp-canvas {
+    background: transparent;
+    transform-style: unset;
+}
+
+.realgrid .dyp canvas {
+    transform-style: unset;
+    position: absolute;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+.realgrid .dyp > .dyp-noback {
+    backface-visibility: hidden !important;
+}
+
+.realgrid .dyp-noback .target {
+    backface-visibility: hidden !important;
+}
+
+.realgrid .dyp-noback .target::before {
+    display: none !important;
+}
+
+.realgrid .dyp .dyp-cross {
+    background-image: unset;
+}
+
+.realgrid .dyp .dyp-cross::before, .realgrid .dyp .dyp-cross::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: var(--dyp-image);
+    position: absolute;
+    bottom: 0;
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+}
+
+.realgrid .dyp .dyp-cross::after {
+    transform: rotateY(90deg);
+}
+
+body[quality="low"] .realgrid .dyp:not(.critical) *, 
+body[quality="low"] .realgrid .dyp:not(.critical) *::after, 
+body[quality="low"] .realgrid .dyp:not(.critical) *::before
+{
+    animation-play-state: paused;
+}
+
+body[quality="low"] .realgrid .dyp .dyp-cross::after {
+    display: none;
+}
+
+body[quality="low"] .realgrid .hidelow {
+    display: none;
+}
+
+/* engoodening global wall helpers */
+.gridpiece.cwall canvas {
+    position: absolute;
+}
+
+.gridpiece.cwall > div {
+    display: contents;
+}
+
+.gridpiece.cwall.north canvas.wall:first-child {
+    transform: rotateX(-90deg) translateX(100%) translateY(-100%);
+    top: 0;
+    right: 0;
+    transform-origin: top right;
+}
+
+.gridpiece.cwall.north canvas.wall:last-child {
+    top: 0;
+    right: 0;
+    transform-origin: top right;
+    transform: rotate(-90deg) rotateX(-90deg) translateY(-100%)
+}
+
+.gridpiece.cwall.south canvas.wall:first-child {
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom left;
+    transform: rotate(90deg) rotateX(-90deg) translateX(-100%)
+}
+
+.gridpiece.cwall.south canvas.wall:last-child {
+    bottom: 0;
+    left: 0;
+    transform-origin: bottom left;
+    transform: rotate(180deg) rotateX(-90deg);
+}
+
+/* CORNERWALLS (an easier system than the old walls) */
+/* this makes it so that you just need a N is the top left, and a S in the bottom right, in the "." padding around the stages */
+#realgrid {
+    --baseWallTransform: translateY(1px) translateZ(2px)
+}
+
+.gridpiece.cwall.cornerwall.north canvas.wall:first-child {
+    top: unset;
+    bottom: 0;
+    transform-origin: bottom right;
+    transform: rotate(-90deg) rotateX(-90deg) var(--baseWallTransform, translateY(0));
+}
+
+.gridpiece.cwall.cornerwall.north canvas.wall:last-child {
+    top: unset;
+    bottom: 0;
+    transform-origin: bottom right;
+    transform: rotateX(-90deg) translateX(100%) var(--baseWallTransform, translateY(0));
+}
+
+.gridpiece.cwall.cornerwall.south canvas.wall:first-child {
+    bottom: unset;
+    top: 0;
+    transform-origin: top left;
+    transform: rotate(90deg) rotateX(-90deg) translateX(-100%) translateY(-100%) var(--baseWallTransform, translateY(0)) ;
+}
+
+.gridpiece.cwall.cornerwall.south canvas.wall:last-child {
+    bottom: unset;
+    top: 0;
+    transform-origin: top left;
+    transform: rotateX(-90deg) rotateY(180deg) translateY(-100%) var(--baseWallTransform, translateY(0));
+}
+
+body[quality="low"] .cwall:not(.critical) canvas,
+body[quality="low"] .lonewall:not(.critical) {
+    display: none;
+}
+
+/* lone wall prop shortcuts */
+.lonewall {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.teleport .lonewall {
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+}
+
+.lonewall canvas.wall {
+    position: absolute;
+}
+
+.lonewall canvas.n-wall {
+    bottom: 0;
+    transform-origin: bottom;
+    transform: rotateX(-90deg) var(--baseWallTransform);
+}
+
+.lonewall canvas.s-wall {
+    top: 0;
+    transform: rotateX(90deg) translateY(100%) rotate(180deg) var(--baseWallTransform);
+    transform-origin: top;
+}
+
+.lonewall canvas.w-wall {
+    right: 0;
+    transform-origin: bottom right;
+    transform: rotateX(-90deg) rotateY(90deg) translate(50%) var(--baseWallTransform);
+    bottom: 50%;
+}
+
+.lonewall canvas.e-wall {
+    left: 0;
+    transform-origin: center left;
+    transform: rotateX(-90deg) rotateY(-90deg) translate(-50%, -50%) var(--baseWallTransform)
+}
+
+/* turnaround mode for trailers and stuff */
+@keyframes FLOATFORWARD {
+    0% { transform: translateY(0) rotateZ(calc(var(--camera-rotation) * 1deg))}
+    100% { transform: translateY(200%) rotateZ(calc(var(--camera-rotation) * 1deg))}
+}
+
+@keyframes TURNAROUND {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+#content.trailermode .grid-plane,
+#content.trailermode .grid-container,
+#content.trailermode .grid-animator,
+#content.trailermode .grid
+{
+    transform: unset;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#content.trailermode .grid-animator {
+    transform: rotateX(70deg) translateZ(-200px)
+}
+
+#content.trailermode .grid {
+    animation: TURNAROUND 30s linear infinite;
+    justify-content: initial;
+    align-items: initial;
+}
+
+#content.trailermode .realgrid .ally-sprite {
+    background: inherit;
+    background-color: black;
+    width: 100%;
+    border: inherit;
+    height: 100%;
+}
+
+/* additional alerts */
+.realgrid .hassomethingtosay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    background: url(/img/mui/alert.gif);
+    --baseTransform: translateY(-110%);
+    animation: SPIN-Y 5s linear infinite alternate;
+}
+
+body.in-dialogue .realgrid .hassomethingtosay::before {
+    display: none;
+}
+
+.realgrid .creaturesprite.hassomethingtosay::before {
+    left: 50%;
+    --baseTransform: translate(-50%, -110%);
+}

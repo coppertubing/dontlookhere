@@ -1,0 +1,4577 @@
+/* COMBAT INTERFACE */
+#combat {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform-origin: center;
+    animation-fill-mode: forwards;
+    z-index: 100;
+    overflow: hidden;
+    font-family: spacemono, monospace;
+    text-transform: uppercase;
+    --img: url(/img/placeholdportrait.gif);
+}
+
+.team {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    transition: 400ms cubic-bezier(.55,0,.39,1.26);
+    z-index: 101;
+}
+
+#ally-team {
+    bottom: 5vh;
+}
+
+#enemy-team {
+    top: 5vh;
+}
+
+.actor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000000d4;
+    min-width: 15vw;
+    padding: 0.5vw 1vw;
+    margin: 0 5px;
+    position: relative;
+    transition: all 1s ease-in-out, transform 400ms cubic-bezier(.55,0,.39,1.26), filter 0s linear;
+    max-width: 1000px;
+    transform-origin: center;
+    z-index: 2;
+}
+
+#ally-team .actor, .actor.dead {
+    background-color: var(--dark-color);
+}
+
+:root.bigmode div#combat #ally-team .actor {
+    min-width: 20vw;
+}
+
+.actor.phasing {
+    max-width: 0px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.actor[barrier] {
+    border: calc(1px * var(--bp)) solid var(--obesk-color)
+}
+
+.actor.aiming {
+    box-shadow: 0px 0px 20px inset var(--bastard-color);
+    background-image: url(/img/sprites/bstrd/the_bstrd_shuffle.gif);
+    background-size: auto 30px;
+    background-repeat: no-repeat;
+    background-position: 95% 95%;
+}
+
+.actor .clickbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.statdisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    text-shadow: 2px 2px var(--dark-color);
+}
+
+.statdisplay > * { cursor: default }
+.statdisplay [definition] { 
+    cursor: alias;
+    padding: 2px;
+    border-bottom: 1px dashed;
+}
+
+.statdisplay .statuses {
+    margin-bottom: 0.5em;
+    color: var(--bright-color)
+}
+
+.statdisplay .points .hp {
+    font-size: 1.5em;
+    border-bottom: 1px dashed #ffffff70;
+}
+
+.statdisplay .points .bp {
+    font-size: 1.5em;
+}
+
+.actor:not(.dead):not(.last-stand) .bp::after {
+    content: "";
+    padding-right: 1.2em;
+    background-image: url(/img/sprites/combat/shield.gif);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    color: var(--obesk-color);
+}
+
+.statdisplay .bp:empty {
+    display: none;
+}
+
+.actor .portrait {
+    margin-right: 1vw;
+    animation: portrait-wiggle 5s cubic-bezier(.55,0,.39,1.26) infinite alternate;
+    pointer-events: none;
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    object-position: center;
+}
+
+.actor .name {
+    font-size: 2em;
+    min-width: 4em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 0.25em;
+    font-family: barcodetext;
+    background: #000000ad;
+    padding: 0.1em;
+}
+
+#enemy-team .actor .name {
+    color: var(--obesk-color);
+}
+
+#ally-team .actor .name {
+    color: var(--friend-color);
+}
+
+.actor:not(.dead):not(.last-stand) .hp:after, .actor:not(.dead):not(.last-stand) .hp::after {
+    content: "HP";
+    color: var(--neutral-color);
+    font-weight: 600;
+    font-size: 0.75em;
+}
+
+.actor .state {
+    display: none;
+}
+
+.actor .statuses .status-effect {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.75em;
+    line-height: 0.75em;
+    margin: 0.1em;
+    background: linear-gradient(90deg, transparent, black, transparent);
+}
+
+.actor .statuses .status-effect:hover {
+    z-index: 5;
+}
+
+.statuses:hover {
+    background: black;
+}
+
+.statuses .status-name, .statuses .status-count {
+    pointer-events: none;
+}
+
+.statuses .status-count {
+    margin-left: 0.5em;      
+}
+
+.compactor .statuses .status-effect, .statuses .status-effect::before {
+    content: "";
+    position: relative;
+    background-image: var(--img);
+    background-size: cover;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    margin: -5px;
+    border: 1px solid var(--border-color);
+}
+
+.compactor .statuses .status-effect::before {
+    display: none;
+}
+
+.statuses .status-effect::before {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    left: 0;
+    transition: opacity 300ms, transform 300ms;
+    pointer-events: none;
+    opacity: 1;
+    transform: translateX(-75%) scale(0.5);
+}
+
+.statuses .status-effect {
+    z-index: 2;
+}
+
+.statuses .status-effect:hover::before {
+    position: absolute;
+    opacity: 1;
+    transform: translateX(-100%);
+}
+
+.statuses .status-count::before { content: "(" }
+.statuses .status-count::after { content: "T)" }
+
+.ticktype-special .status-count::after { content: "]" }
+.ticktype-special .status-count::before { content: "[" }
+.ticktype-special .status-count { color: var(--neutral-color); border-radius: 0 !important }
+
+.actor .actions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    width: 100%;
+    z-index: 2;
+    background: var(--dark-color);
+    border: 1px solid var(--neutral-color);
+    display: flex;
+    flex-wrap: wrap;
+    transform: translateY(-100%);
+    transform-origin: bottom;
+    transition: opacity 200ms linear, transform 400ms cubic-bezier(.55,0,.39,1.26);
+}
+
+.actor.disable .actions {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.targeting .actions {
+    pointer-events: none;
+}
+
+.targeting .target[entity] {
+    display: none;
+}
+
+.actor .actions:empty, .actor .actions.turnover, .shutdown .actor .actions {
+    transform: translateY(-100%) scaleY(0.001);
+    pointer-events: none;
+    opacity: 0;
+}
+
+.actions .action, .actions .item-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 33%;
+    flex-grow: 1;
+    text-align: center;
+    background: var(--dark-color);
+    color: var(--neutral-color);
+    border: 1px solid;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(.55,0,.39,1.26);
+}
+
+.actions .action.disabled {
+    background: url(/img/textures/corruripple.gif);
+    color: var(--bright-color);
+    opacity: 0.75;
+    cursor: not-allowed;
+  }
+
+.actor.dead, #ally-team .actor.dead, .actor.last-stand, #ally-team .actor.last-stand {
+    color: var(--dark-color);
+    background: var(--bright-color);
+}
+
+.actor.dead .name, .actor.last-stand .name {
+    color: var(--dark-color) !important;
+    background: transparent;
+}
+
+.actor.dead .portrait {
+    animation-play-state: paused;
+}
+
+.actor.last-stand .hp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    text-shadow: initial;
+    font-size: 1em;
+    width: 100%;
+}
+
+.actor.last-stand .hp::after {
+    content: "!!last stand!!";
+    color: var(--obesk-color);
+    text-shadow: 1px 1px black;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.actor.last-stand {
+    pointer-events: none;
+    box-shadow: 0px 0px 10px var(--obesk-color);
+    border: 2px solid var(--obesk-color);
+    box-sizing: border-box;
+}
+
+/* ITEM USAGE */
+.actions .item-container:empty {
+    display: none;
+}
+
+.item-container summary {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    padding: 0.25em;
+}
+
+.actions .item-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: unset;
+    transform: translateY(-100%);
+    font-size: 0.75em;
+    cursor: unset;
+    display: block;
+    width: 100%;
+    flex-basis: 100%;
+    background: var(--neutral-color);
+    color: var(--dark-color);
+    overflow: hidden;
+}
+
+.item-container .action {
+    color: var(--friend-color);
+    margin: 2px 0;
+}
+
+.item-container:hover {
+    max-height: 600px;
+    overflow: visible;
+}
+
+.item-container:hover .action {
+    opacity: 1;
+}
+
+.item-note {
+    font-size: 0.75em;
+    display: block;
+    margin-top: 5px;
+}
+  
+  
+
+/* TARGET SELECTION */
+.target-notice {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    width: 100%;
+    transform: translateY(-100%) scaleY(0.001);
+    transition: transform 200ms cubic-bezier(.55,0,.39,1.26);
+    transform-origin: bottom;
+    background: var(--dark-color);
+    border: 1px solid var(--neutral-color);
+    text-align: center;
+    pointer-events: none;
+}
+
+.targeting .target-notice {
+    pointer-events: initial;
+}
+
+.target-notice.active {
+    transform: translateY(-100%);
+}
+
+.target-nevermind {
+    display: block;
+    padding: 5px;
+    margin: 10px 0;
+    background: var(--neutral-color);
+    color: var(--dark-color);
+    cursor: pointer;
+    position: relative;
+}
+
+.target-nevermind::after {
+    content: "(RMB)";
+    position: absolute;
+    right: 0;
+    color: var(--bright-color);
+    transform: translate(110%);
+    font-size: 0.75em;
+    opacity: 0.75;
+}
+
+.targeting #enemy-team {
+    transform: translateY(50vh);
+}
+
+.targeting .status-untargetable {
+    opacity: 0.75;
+    cursor: not-allowed;
+}
+
+.actor.targetable .clickbox {
+    cursor: pointer;
+    pointer-events: initial;
+    z-index: 5;
+}
+
+.actor.targetable .statusbg:before, 
+.use-message.use-crit:after, 
+.actor.status-destabilized .statusfx-destabilized, 
+.actor.status-windup .statusfx-windup,
+.actor.status-windup_telegraph .statusfx-windup_telegraph,
+.actor.status-telegraph .statusfx-telegraph, 
+.actor.last-stand .statusbg:before,
+.action[besthit="crit"]:first-child::after {
+    content: "";
+    z-index: 10;
+    background-image: url(/img/textures/target.png);
+    background-size: 50% auto;
+    background-position: bottom;	
+    background-repeat: repeat-x;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+}
+
+.actor.status-telegraph .statusfx-telegraph {
+    background-image: url(/img/textures/targetpale.png);
+}
+
+.actor.targetable:not(.target-source):hover {
+    transform: scale(1.1);
+}
+
+/* STATUS EFFECTS */
+.actor .statusbg, .actor .statusbg:after, .actor .statusbg:before, .actor .statusfx, .use-message.use-crit:after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+    overflow: hidden;
+    pointer-events: none;
+    will-change: transform;
+}
+
+.actor.dead:not(.targetable) .statusbg {
+    display: none;
+}
+
+.actor.status-puncture .statusfx-puncture, .actor.status-rot .statusfx-rot {
+    height: 150%;
+    width: 125%;
+    left: -12.5%;
+    background-image: url(/img/textures/rot.png);
+    background-size: 100%;
+    animation: portrait-wiggle 1s cubic-bezier(.55,0,.39,1.26) infinite alternate;
+}
+
+.actor.status-rot .statusfx-rot {
+    background: url(/img/textures/truerot.gif)
+}
+
+.actor.status-evasion .statusfx-evasion {
+    background-image: url(/img/textures/ceyetran.gif);
+    background-size: auto 100%;
+    background-position: -100% right;
+    background-repeat: no-repeat;
+}
+
+.actor.status-regen .statusfx-regen, .actor.status-vulnerable .statusfx-vulnerable, .actor.status-focused .statusfx-focused {
+    z-index: 10;
+    background-image: url(/img/textures/regen.png);
+    background-size: auto 50%;
+    height: 200%;
+    width: 150%;
+    left: unset;
+    animation: status-drift-y 4s linear infinite;
+}
+
+.actor.status-vulnerable .statusfx-vulnerable {
+    background-image: url(/img/textures/eyetran.gif);
+    background-position: center;
+    animation: status-drift-y-notate 4s linear infinite reverse;
+}
+
+.actor.status-focused .statusfx-focused {
+    background-image: url(/img/textures/ceyetran.gif);
+    background-position: center;
+    background-size: auto 25%;
+    animation: status-drift-y-notate 3s linear infinite;
+}
+
+.actor.status-destabilized .statusfx-destabilized {
+    background-image: url(/img/textures/warp.png);
+}
+
+.actor.status-windup .statusfx-windup,
+.actor.status-windup_telegraph .statusfx-windup_telegraph,
+.actor.statusfx-telegraph .statusfx-telegraph {
+    background-size: 25% auto;
+    background-position: top;
+}
+
+.actor.status-stun .statusfx-stun,
+.actor.status-hyperstun .statusfx-hyperstun {
+    height: 300%;
+    width: 300%;
+    background-image: url(/img/textures/stun.gif);
+    background-size: auto;
+    animation: status-spin 5s cubic-bezier(.6,-0.28,.74,.05) infinite;
+    left: unset;
+    top: unset;
+    bottom: unset;
+    right: unset;
+}
+
+.actor.status-incoherent .statusfx-incoherent  {
+    background-image: url(/img/textures/corrurippletrangrayscale.gif), url(/img/textures/tranclouds.gif);
+    background-size: auto, 100%;
+    z-index: 20;
+}
+
+.statusfx-spikes {
+    background-image: url(/img/textures/spikedorb.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.statusfx-spikes::after {
+    content: "";
+    width: 100%;
+    height: 125%;
+    background-image: url(/img/textures/spiked.gif?);
+    background-size: auto;
+    background-position: center;
+    animation: hover-minor 5s ease-in-out infinite alternate;
+}
+
+.actor.status-fear .statusfx-fear {
+    background-image: radial-gradient(circle, rgb(0, 0, 0) 50%, rgba(0,0,0,0) 100%), url(/img/textures/fear.gif);
+    background-position: center;
+    background-size: auto 100%;
+    mix-blend-mode: hue;
+}
+
+.actor.status-madness.status-fear .statusfx-fear {
+    background-image: radial-gradient(circle, rgb(0, 0, 0) 50%, rgba(0,0,0,0) 60%), url(/img/textures/fear.gif), url(/img/textures/blflametran.gif);
+    background-size: auto;
+    mix-blend-mode: unset;
+}
+
+.actor .statusfx-weakened {
+    background-image: url(/img/textures/shattered.gif);
+    height: 200%;
+    animation: SPIN 120s linear infinite;
+    width: 150%;
+    background-size: auto 50%;
+    top: unset;
+    left: unset;
+}
+
+.statusfx.statusfx-carapace {
+    background-image: radial-gradient(circle, rgb(0, 0, 0) 0%, rgba(0,0,0,0) 100%), url(/img/textures/carapace.gif??);
+    background-size: auto;
+    background-position: center;
+}
+
+body[quality="low"] .actor.status-fear .statusfx-fear {
+    mix-blend-mode: unset;
+    opacity: 0.75;
+}
+
+.statusfx-redirection {
+    background-image: url(/img/textures/redirection.gif);
+    background-size: auto;
+    background-position: center;
+}  
+
+.actor.status-redirection {
+    filter: drop-shadow(0px 0px 5px var(--friend-color));
+    border-left-color: var(--friend-color);
+    border-right-color: var(--friend-color);
+    border-left-width: 2px;
+    border-right-width: 2px;
+}  
+
+.statusfx-surge, .statusfx-wild_surge {
+    background-image: url(/img/textures/yneural.gif);
+}
+
+.statusfx-sacrifice {
+    background-image: url(/img/textures/slowater.gif);
+}
+
+.statusfx-open_wound {
+    background-image: url(/img/textures/wound.gif);
+}
+
+.statusfx-empowered {
+    background-image: url(/img/textures/cneural.gif);
+}
+
+.statusfx-critical_flaw {
+    background-image: url(/img/sprites/combat/neutralcrosshair.gif);
+    background-size: auto 90%;
+    background-position: 3% 50%;
+    background-repeat: no-repeat;
+}
+
+.actor.status-million_teeth {
+    border-color: var(--neutral-color) !important;
+    border-style: dashed !important;
+}
+
+.bh_started .statusbg .statusfx, .in-melee .statusbg .statusfx {
+    animation-play-state: paused !important;
+}
+
+.actor.status-autoplay_telyu,
+.actor.status-autoplay_tozik {
+    --team-color: var(--bright-color);
+    border: 3px solid var(--bright-color);
+}
+
+.statusfx.statusfx-autoplay_telyu,
+.actor.status-autoplay_tozik {
+    box-shadow: 5px 5px 10px var(--bright-color) inset, -5px -5px 10px var(--bright-color) inset;
+}
+
+.actor.status-invisible {
+    display: none;
+}
+
+.actor.status-shroud_vekoa .hp, 
+.actor.status-shroud_vekoa .bp { display: none }
+.actor.status-shroud_vekoa .name { margin-bottom: 0 }
+
+/* PASSIVES - like statuses but more compact and out of the way */
+.actor .passives {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 0.33em;
+    height: 100%;
+    width: 100%;
+    padding: 0.2em;
+    bottom: 0;
+    height: auto;
+    transform: translateY(99%);
+    margin: auto;
+    z-index: -11;
+}
+
+.passives .status-effect {
+    width: 2em;
+    height: 2em;
+    display: block;
+    --fallback-status-image: url(/img/textures/hazeflowtiny.gif) black;
+    background: var(--img, var(--fallback-status-image));
+    color: transparent;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid var(--friend-color);
+    border-radius: 100%;
+    cursor: help;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: content-box;
+}
+#party-menu .passives .status-effect { display: flex; }
+
+.passives .status-effect.bad { border-color: var(--obesk-color); }
+.passives .status-effect.unique { border-color: var(--neutral-color); }
+
+.passives .status-effect::after, .passives .status-effect::before {
+    content: "";
+    position: absolute;
+    top: -0.5em;
+    width: 0.33em;
+    height: 0.5em;
+    z-index: -1;
+    background: black;
+    pointer-events: none;
+}
+
+.passives .status-effect::before {
+    top: unset;
+    width: 140%;
+    border-radius: 100%;
+    height: 140%;
+}
+
+.actor.dead .passives {
+    filter: grayscale(1) contrast(2) invert(1);
+}
+
+.passive-visionary { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/lightbg.gif) !important; }
+.passive-active_support { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/eyebg.gif) !important; }
+.passive-spotter { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/eyebg.gif) !important; }
+.passive-impatient { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/clawsbg.gif) !important; }
+.passive-ichor_last_stand { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/ichorbg.gif) !important; }
+.passive-retaliation { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/bonebg.gif) !important; }
+
+/* ACTION TEXT (vestigial) */
+.use-message {
+    position: absolute;
+    background: var(--dark-color);
+    text-align: center;
+    padding: 10px;
+    font-size: 2em;
+    transition: 200ms cubic-bezier(.55,0,.39,1.26), opacity 400ms cubic-bezier(.55,0,.39,1.26);
+    transform: scaleY(0.0001) scaleX(0.8) translateY(0);
+    --subsequentOffset: -7vh;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.use-message.use-crit {
+    overflow: hidden;
+    box-shadow: 0px 0px 10px var(--neutral-color);
+    border: 1px solid var(--neutral-color);
+    color: var(--neutral-color);
+    text-shadow: 1px 1px var(--dark-color);
+}
+
+.use-message.use-crit::after {
+    width: 200%;
+    background-position: top;
+    background-size: 20%;
+}
+
+.use-message.active {
+    opacity: 1;
+}
+
+#ally-team .use-message {
+    top: 0;
+    transform-origin: bottom;
+}
+
+#ally-team .use-message.active {
+    transform: translateY(-20vh) scaleY(1) scaleX(1);
+}
+
+#ally-team .use-message.active:nth-of-type(4n+2) {
+    transform: translateY(calc(var(--subsequentOffset) * -1)) translateY(-21vh) scaleY(1) scaleX(1);
+    opacity: 0.6;
+    font-size: 1.5em;
+}
+
+#ally-team .use-message.active:nth-of-type(4n+3) {
+    transform: translateY(calc(var(--subsequentOffset) * -2)) translateY(-23vh) scaleY(1) scaleX(1);
+    opacity: 0.4;
+    font-size: 1em;
+}
+
+#ally-team .use-message.active:nth-of-type(4n+4) {
+    transform: translateY(calc(var(--subsequentOffset) * -3)) translateY(-25vh) scaleY(1) scaleX(1);
+    opacity: 0.2;
+    font-size: 0.5em;
+}
+
+#ally-team .use-message.shrink {
+    transform: translateY(-40vh) scaleY(0) scaleX(0.8);
+}
+
+#enemy-team .use-message {
+    bottom: 0;
+    transform-origin: top;
+}
+
+#enemy-team .use-message.active {
+    transform: translateY(20vh) scaleY(1) scaleX(1);
+}
+
+#enemy-team .use-message.active:nth-of-type(4n+2) {
+    transform: translateY(var(--subsequentOffset)) translateY(21vh) scaleY(1) scaleX(1);
+    opacity: 0.6;
+    font-size: 1.5em;
+}
+
+#enemy-team .use-message.active:nth-of-type(4n+3) {
+    transform: translateY(calc(var(--subsequentOffset) * 2)) translateY(23vh) scaleY(1) scaleX(1);
+    opacity: 0.4;
+    font-size: 1em;
+}
+
+#enemy-team .use-message.active:nth-of-type(4n+4) {
+    transform: translateY(calc(var(--subsequentOffset) * 3)) translateY(25vh) scaleY(1) scaleX(1);
+    opacity: 0.2;
+    font-size: 0.5em;
+}
+
+#enemy-team .use-message.shrink {
+    transform: translateY(40vh) scaleY(0) scaleX(0.8);
+}
+
+#combat .hit-text {
+    font-size: 0.75em;
+    text-transform: lowercase;
+}
+
+/* 
+    parts of effect-message that are only relevant within combat (animations)
+    main styling is in corru.css since they can be carried in the readout-log to other pages
+*/
+.effect-message {
+    animation: SLIDE-IN ease-out 400ms;
+    animation-fill-mode: forwards !important;
+    transition: opacity 800ms;
+}
+
+.effect-message[type="crit"] {
+    animation: CRIT-SLIDE-IN cubic-bezier(.08,1.19,.49,1.84) 400ms;
+}
+
+.effect-message.animate-out {
+    animation: SLIDE-OUT ease-in 600ms;
+}
+
+combat-scene .effect-message, combat-scene .message-actions .subaction {
+    font-size: 0.75rem;
+}
+
+combat-scene[state="targeting"] .effect-message.fading {
+    opacity: 0.5;
+    z-index: 11;
+}
+
+@keyframes CRIT-SLIDE-IN {
+    0% { transform: scaleX(0.25) rotate(20deg) translateY(-50vh); opacity: 0; }
+}
+
+@keyframes SLIDE-IN {
+    0% { transform: translateX(40vw) scaleY(0.75); opacity: 0; }
+}
+
+@keyframes SLIDE-OUT {
+    100% { transform: translateX(-40vw) scaleY(0.75); opacity: 0;}
+}
+
+
+/* GRAPHICS */
+#combat::after, #combat::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+    transform-origin: center;
+    transition: opacity 1s ease-in-out;
+    z-index: -9;
+}
+
+#combat::before {
+    background-image: url(/img/textures/mspinnel.gif);
+    background-size: auto;
+    z-index: -10;
+}
+
+#enemy-graphic {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    transition: opacity 2s ease-in-out;
+}
+
+#combat.temp-perspective #enemy-graphic {
+    perspective: 600px;
+}
+
+.sprite-wrapper {
+    transition: all 1s ease-in-out, transform 200ms cubic-bezier(.86,0,.07,1), filter 0s linear;
+}
+
+.sprite-wrapper, .sprite {
+    will-change: transform;
+}
+
+.sprite-wrapper .target {
+    transform: translateZ(2px);
+}
+
+.sprite-wrapper img {
+    pointer-events: none;
+}  
+
+.sprite-wrapper {
+    position: relative;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 15%;
+    margin: auto -1%;
+    max-width: 2000px;
+}
+
+.sprite-overflow {
+    position: relative;
+    transform-origin: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemy-graphic .sprite {
+    height: 55vh;
+    width: 100%;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+#enemy-graphic .sprite-wrapper.predead {
+    transform: scale(1);
+    transition: transform 400ms cubic-bezier(.55,0,.39,1.26);
+}
+
+#enemy-graphic .sprite-wrapper.dead {
+    transform: scale(0.5);
+    z-index: -10;
+}
+
+.sprite-wrapper.phasing {
+    overflow: hidden;
+    flex-basis: 0% !important;
+    max-width: 0px !important;
+    margin: 0 0 !important;
+    opacity: 0 !important;
+    transform: scale(0.5) !important;
+    animation: unset !important;
+    transition: all 1s ease-in-out, transform 200ms cubic-bezier(.86,0,.07,1), filter 0s linear !important;
+}
+
+.sprite-wrapper.dead *, .sprite-wrapper.dead *:before, .sprite-wrapper.dead *:after {
+    animation-play-state: paused !important;
+}
+
+.spritestack .sprite ~ .sprite {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.struck, .scramble {
+    animation: shake-crazy 250ms;
+}
+
+.scramble {
+    animation-duration: 100ms;
+}
+
+.evade {
+    animation: evade 250ms;
+}
+
+/* attack animations */
+    
+    /* generic attack - swipes at viewer */
+.basic-attack {
+    animation-delay: unset !important;
+    animation: basic-attack 600ms cubic-bezier(.55,0,.39,1.26);
+    animation-iteration-count: 1;
+}
+
+    /* heal - wiggles around */
+.heal {
+    animation-delay: unset !important;
+    animation: devil-heal 600ms linear;			
+}
+
+    /* focus/spying - lean in real close, like an animated version of 'special choice' */
+.spying {
+    animation-delay: unset !important;
+    animation: spying 2s ease-in-out;
+}
+
+    /* skitter - shake like crazy */
+.skitter {
+    animation-delay: unset !important;
+    animation: BIGSHAKE 200ms linear infinite;
+}
+    
+    /* shift around */
+.wobble {
+    animation-delay: unset !important;
+    animation: wobble 600ms cubic-bezier(.55,0,.39,1.26);
+}
+
+    /* golem special move */
+.golem-approach {
+    animation: golem-approach 3000ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.cloak-distract {
+    animation: golem-approach 2000ms ease-in-out alternate;
+    animation-iteration-count: 2;
+}
+
+.cloak-barrier {
+    animation: cloak-dance 2000ms ease-in-out alternate;
+    animation-iteration-count: 2;
+}
+
+    /* special choice screen attack */
+.special_choice-attack {
+    transform: matrix(1, 0, 0.3, 6, 0, 1200);
+}
+
+    /* special choice screen attack, but for movefriend */
+.sprite-wrapper.special_choice-movefriend {
+    transform: scale(2);
+    z-index: 2;
+}
+
+.choice-attack {
+    transform: translateY(10vh);
+    z-index: 102;
+    position: fixed;
+    background: black;
+    padding: 5em;
+    border: 2px dashed;
+    color: var(--neutral-color);
+}
+
+.choice-title {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.choice-attack .button {
+    display: block;
+    transition: 200ms ease-in-out;
+}
+
+.choice-attack .button ~ .button {
+    margin-top: 0.5em;
+}
+
+.choice-attack .button:hover {
+    transform: scale(1.1);
+}
+
+/* hit floaters */
+.floatbox {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floatbox .floater {
+    position: absolute;
+    z-index: 2;
+    --offset: 0%;
+    --position: 0;
+}
+
+.floatbox .floater.hitfloat {
+    z-index: 3;
+}
+
+.floatbox .floater::after {
+    content: attr(amt);
+    display: inline-block;
+    font-size: 4em;
+    --baseTransform: rotate(calc(var(--angle) * 1deg)) translateX(calc(var(--position) * 1%));
+    transform: var(--baseTransform);
+    padding: 0.25em;
+    background: #000000d4;
+}
+
+.floatbox .floater.result-true.amt-positive::after, 
+.floatbox .floater.result-crit.amt-positive::after {
+    color: var(--bright-color);
+    text-shadow: 1px 1px var(--dark-color), 2px 2px var(--dark-color);
+    background-image: url(/img/textures/rottile_small.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.floatbox .floater.result-crit.amt-positive::after {
+    content: attr(amt) "!";
+    color: var(--bright-color);
+    text-shadow: 2px 2px var(--obesk-color), -2px -2px var(--neutral-color), 5px 5px var(--neutral-color);
+}
+
+.floatbox .floater.result-true.amt-negative::after, 
+.floatbox .floater.result-crit.amt-negative::after {
+    color: var(--bright-color);
+    text-shadow: 1px 1px 5px var(--dark-color), 2px 2px var(--dark-color);
+    background-image: url(/img/textures/regen_small.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.floatbox .floater.result-crit.amt-negative::after {
+    content: attr(amt) "!";
+    color: var(--bright-color);
+    text-shadow: 2px 2px var(--friend-color), -2px -2px var(--neutral-color), 5px 5px var(--neutral-color);
+}
+
+.floatbox .floater.result-true.amt-positive:not(.type-barrier):not(.amt-blocked)::after {
+    content: "-" attr(amt);
+}
+
+.floatbox .floater.result-crit.amt-positive:not(.type-barrier):not(.amt-blocked)::after {
+    content: "-" attr(amt) "!";
+}
+
+.floatbox .floater.statusfloat::after {
+    content: attr(amt) " " attr(status);
+    white-space: nowrap;
+    font-size: 3em;
+    z-index: 1;
+}
+
+.floatbox .floater.statusfloat.status-good::after {
+    color: var(--friend-color)
+}
+
+.floatbox .floater.statusfloat.status-bad::after {
+    color: var(--obesk-color)
+}
+
+.floatbox .floater.arbfloat::after {
+    font-size: 2.5em;
+    content: attr(string)
+}
+
+.floatbox .floater.arbfloat.good-true::after {
+    color: var(--friend-color)
+}
+
+.floatbox .floater.arbfloat.good-false::after {
+    color: var(--obesk-color)
+}
+
+.floatbox .floater.arbfloat.action::after {
+    color: var(--neutral-color)
+}
+
+.floatbox .floater.arbfloat.fate::after {
+    color: var(--dark-color);
+    background: url(/img/textures/warp.png);
+    background-position: center;
+    background-color: white;
+}
+
+.floatbox .floater.type-barrier.amt-positive::after {
+    background-image: url(/img/textures/spotgradientinversemicro.gif), url(/img/sprites/combat/shield.gif), url(/img/textures/rottile_small.png);
+    background-size: 100%, cover, cover;
+    background-repeat: no-repeat, repeat;
+}
+
+.floatbox .floater.type-barrier.amt-positive::after {
+    color: var(--friend-color);
+}
+
+#ally-team .floatbox {
+    top: 0;
+    bottom: unset;
+}
+
+
+
+
+.floatbox .floater.floating {
+    position: absolute;
+    z-index: 2;
+    animation: FLOATER-FADE calc((var(--size, 1) + 1) * 1.5s) linear;
+    animation-fill-mode: forwards;
+    --offset: 0%;
+    --position: 0;
+}
+
+.floatbox .floater.floating::after {
+    animation: FLOATER-ENEMY calc(var(--size, 1) * 1s) cubic-bezier(0,1.11,1,1.01);
+    animation-fill-mode: forwards;
+}
+
+#ally-team .floatbox .floater.floating::after {
+    animation: FLOATER-ALLY calc(var(--size, 1) * 1s) cubic-bezier(0,1.11,1,1.01);
+    animation-fill-mode: forwards;
+}
+
+@keyframes FLOATER-ENEMY {
+    000% {transform: var(--baseTransform) scale(0.0001) translateY(0%); }
+    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(200% + var(--offset))); }
+}
+
+@keyframes FLOATER-ALLY {
+    000% {transform: var(--baseTransform) scale(0.0001) translateY(0%); }
+    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(-200% - var(--offset))); }
+}
+
+@keyframes FLOATER-FADE {
+    0% { opacity: 0; }
+    25% { opacity: 1; }
+    50% { opacity: 1; }
+    75% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* dialogue bubbles */
+.combat-dialogue {
+    position: absolute;
+    background: var(--bright-color);
+    color: var(--dark-color);
+    border: 2px dotted var(--dark-color);
+    padding: 5px;
+    text-align: center;
+    pointer-events: none;
+    transition: 400ms cubic-bezier(.62,0,0,1.28);
+    min-width: 100%;
+    line-height: 1.3em;
+    white-space: nowrap;
+    text-transform: initial;
+    z-index: 2;
+}
+
+.actor.acting .combat-dialogue:not(.combat-dialogue:empty) {
+    opacity: 0.75;
+}
+
+.actor.acting:hover .combat-dialogue:not(.combat-dialogue:empty) {
+    opacity: 0.25;
+}
+
+.combat-dialogue:empty {
+    opacity: 0;
+}
+
+.combat-dialogue span {
+    overflow: hidden;
+    transition: max-height 200ms cubic-bezier(.62,0,0,1.28);
+    max-height: 0px;
+    display: block;
+}
+
+.combat-dialogue span.active {
+    max-height: 100px;
+}
+
+.combat-dialogue::after {
+    content: "▲";
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    width: 100%;
+    transform: translateY(-100%);
+    padding: 5px 0;
+    color: var(--neutral-color);
+    font-size: 2em;
+}
+
+#enemy-team .actor .combat-dialogue {
+    bottom: 0;
+    transform: translateY(calc(100% + 2em));
+    text-shadow: 1px 1px var(--obesk-color);
+    transform-origin: top;
+}
+
+#enemy-team .actor .combat-dialogue:empty {
+    transform: translateY(calc(100% + 2em)) scaleY(0.0001);
+    opacity: 0;
+}
+
+#ally-team .actor .combat-dialogue {
+    top: 0;
+    transform: translateY(calc(-100% - 2em));
+    text-shadow: 1px 1px var(--friend-color);
+    transform-origin: bottom;
+}
+
+#ally-team .actor .combat-dialogue:empty {
+    transform: translateY(calc(-100% - 2em)) scaleY(0.0001);
+    opacity: 0;
+}
+
+#ally-team .actor .combat-dialogue::after {
+    transform: rotate(180deg) translateY(-100%);
+    top: unset;
+    bottom: 0;
+}
+
+#enemy-team .actor .combat-dialogue {
+    transform: translateY(150%);
+}
+
+.actor.speaking {
+    z-index: 20;
+    opacity: 1;
+}
+
+/* general animations */
+@keyframes spin {
+    0% { transform: rotate(0) scale(1)}
+    50% { transform: rotate(180deg) scale(1.5)}
+    100% { transform: rotate(360deg) scale(1)}
+}
+
+@keyframes hover {
+    0% { transform: translateY(-5vh)}
+    100% { transform: translateY(2vh)}
+}
+
+@keyframes stage-hover {
+    0% { transform: translateY(calc(var(--gridTileSize) * -0.05))}
+    100% { transform: translateY(calc(var(--gridTileSize) * 0.05))}
+}
+
+@keyframes hover-half {
+    0%  { transform: translateY(-2.5vh)}
+    100% { transform: translateY(1vh)}
+}
+
+@keyframes stage-hover-half {
+    0%  { transform: translateY(calc(var(--gridTileSize) * -0.025))}
+    100% { transform: translateY(calc(var(--gridTileSize) * 0.025))}
+}
+
+@keyframes hover-minor {
+    0%  { transform: translateY(-1vh)}
+    100% { transform: translateY(0.5vh)}
+}
+
+@keyframes hover-major {
+    0%  { transform: translateY(-5vh)}
+    100% { transform: translateY(5vh)}
+}
+
+@keyframes hover-crazy {
+    0%  { transform: translateY(-50vh)}
+    100% { transform: translateY(70vh)}
+}
+
+@keyframes evade {
+    0% { transform: var(--baseTransform) scaleX(1)}
+    50% { transform: var(--baseTransform) scale(0.5)}
+    100% { transform: var(--baseTransform) scale(1)}
+}
+
+@keyframes bomber {
+    0% { transform: var(--baseTransform) scaleX(1) scaleY(1); }
+    100% { transform: var(--baseTransform) scaleX(0.9) scaleY(1.1); }
+}
+
+@keyframes gakvu {
+    0% { transform: matrix(1, 0, 0, 1, 0, 0) }
+    50% { transform: matrix(1.1, 0, 0, 1.3, 0, 0) rotateY(2deg)}
+    100% { transform: matrix(1.3, 0, 0, 1.1, 0, 0) rotateY(-2deg)}
+}
+
+@keyframes basic-attack {
+    0% { transform: var(--baseTransform, translateY(0)) matrix(1, 0, 0, 1, 0, 0)}
+    50% { transform: var(--baseTransform, translateY(0)) matrix(1, 0, 0.3, 6, 0, 1200)}
+    100% { transform: var(--baseTransform, translateY(0)) matrix(1, 0, 0, 1, 0, 0)}
+}
+
+@keyframes devil {
+    0% { transform: scaleX(1) scaleY(1) rotate(-2deg) rotateY(-2deg); }
+    100% { transform: scaleX(0.75) scaleY(1.25) rotate(2deg) rotateY(0deg);}
+}
+
+@keyframes devil-heal {
+    0%, 50%, 100% { transform: scaleX(1) scaleY(1)}
+    25% { transform: scaleX(0.5) scaleY(1.5) skew(-2deg)}
+    75% { transform: scaleX(0.5) scaleY(1.5) skew(2deg)}
+}
+
+@keyframes spying {
+    0%, 100% { transform: var(--baseTransform) translateX(0) }
+    30%, 50%, 70% { transform: rotateX(-20deg) translateZ(200px) rotate(-20deg);}
+}
+
+@keyframes golem-approach {
+    0% {transform: scale(1) translateY(0)}
+    100% {transform: scale(3) translateY(30%)}
+}
+
+@keyframes wobble {
+    0% { transform: var(--baseTransform) scaleX(1) scaleY(1) }
+    25% { transform: var(--baseTransform) scaleX(1.5) scaleY(1) }
+    50% { transform: var(--baseTransform) scaleX(1) scaleY(1.5)}
+    100% { transform: var(--baseTransform) scaleX(1) scaleY(1)}
+}
+
+@keyframes cloak-dance {
+    0% {
+        transform: rotate(0)
+    }
+
+    20% {
+        transform: translate(-5vw, -5vh) rotate(-40deg) 
+    }
+
+    40% {
+        transform: translate(-2.5vw, 0vh) rotate(0deg) 
+    }
+  
+    60% {
+        transform: rotate(0deg) rotateY(180deg)
+    }
+
+    80% {
+        transform: translate(5vw, -5vh) rotate(40deg) rotateY(180deg)
+    }
+
+    100% {
+        transform: translate(2.5vw, 0vh) rotate(0deg) rotateY(180deg)
+    }
+}
+
+@keyframes walker-wiggle {
+    0% { transform: translateY(-5%)}
+    100% { transform: translateY(5%)}
+}
+
+@keyframes walker-chasestart {
+    0% { transform: translateX(0vw)}
+    100% { transform: translateX(-100vw)}
+}
+
+@keyframes walker-chaseend {
+    0% { transform: translateX(100vw)}
+    100% { transform: translateX(0vw)}
+}
+
+@keyframes walker-teethtop {
+    0% { transform: translateY(-4vh)}
+    100% { transform: translateX(0vh)}
+}
+
+@keyframes walker-teethbottom {
+    0% { transform: translateY(4vh)}
+    100% { transform: translateX(0vh)}
+}
+
+@keyframes portrait-wiggle {
+    0% { transform: rotate(-10deg) }
+    100% { transform: rotate(10deg) }
+}
+
+@keyframes status-drift {
+    0% { transform: translateX(0%) }
+    100% { transform: translateX(-50%) }
+}
+
+@keyframes status-drift-y {
+    0% { transform: translateY(0%) rotate(-5deg)}
+    50% { transform: translateY(-25%) rotate(5deg)}
+    100% { transform: translateY(-50%) rotate(-5deg)}
+}
+
+@keyframes status-drift-y-notate {
+    0% { transform: translateY(0%)}
+    50% { transform: translateY(-25%)}
+    100% { transform: translateY(-50%)}
+}
+
+@keyframes status-spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+/* from https://elrumordelaluz.github.io/csshake/ */
+@keyframes shake-crazy {
+    10% {
+        transform:translate(15px, 4px) rotate(2deg);
+    }
+    20% {
+        transform:translate(-18px, -15px) rotate(9deg);
+    }
+    30% {
+        transform:translate(0px, -1px) rotate(5deg);
+    }
+    40% {
+        transform:translate(-8px, 11px) rotate(-2deg);
+    }
+    50% {
+        transform:translate(1px, 5px) rotate(-3deg);
+    }
+    60% {
+        transform:translate(-7px, -9px) rotate(3deg);
+    }
+    70% {
+        transform:translate(-2px, 1px) rotate(5deg);
+    }
+    80% {
+        transform:translate(13px, -13px) rotate(-5deg);
+    }
+    90% {
+        transform:translate(-2px, -10px) rotate(9deg);
+    }
+    0%,
+    100% {
+        transform:translate(0, 0) rotate(0)
+    }
+}
+
+.shake-crazy-anim {
+    animation: shake-crazy 200ms linear infinite;
+}
+
+.shake-crazy-anim-once {
+    animation: shake-crazy 200ms linear;
+    animation-iteration-count: 4;
+}
+
+@keyframes targetable {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes komplete {
+    0% { transform: scaleX(1) scaleY(1) }
+    33% { transform: scaleX(0.5) scaleY(1.5)}
+    99% { transform: scaleX(1.5) scaleY(0.001); opacity: 1;}
+    100% { transform: scaleX(1.5) scaleY(0.001); opacity: 0;}
+}
+
+@keyframes intro {
+    0% { transform: rotateY(360deg) scale(0.01) }
+    100% { transform: rotateY(0deg) scale(1) }
+}
+
+@keyframes bg_wobble {
+    0% { transform: rotate(-5deg) }
+    100% { transform: rotate(5deg) }
+}
+
+/* special animations */
+.in-combat #bh_player {
+    z-index: 100000;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+}
+
+.in-combat #bh_player.active {
+    opacity: 1;
+}
+
+.in-golem-vortex .team .actor {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.in-golem-vortex .team .actor.speaking {
+    opacity: 1;
+}
+
+.bh-action {
+    z-index: 28;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    opacity: 0;
+    transition: transform 2s ease-in-out, opacity 1s ease-in-out;
+}
+
+.golem-vortex {
+    width: 150vmax;
+    height: 150vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-radius: 100%;
+    transform-origin: center;
+    transition: transform 2s ease-in-out, opacity 500ms ease-in-out;
+    transform: scale(0);
+    opacity: 0;
+    z-index: 8;
+    overflow: hidden;
+}
+
+.golem-vortex:after {
+    content: "";
+    position: absolute;
+    width: 150vmax;
+    height: 150vmax;
+    background-image: url(/img/textures/staticContrast.gif);
+    animation: spin 120s linear infinite;
+    transform-origin: center;
+    z-index: -10;
+}
+
+.bh-action.active {
+    opacity: 1;
+    transform: scale(1);
+}    
+
+/* shoot - reticle over enemy that spins in then disappears, draws from bullethell.css' animation */
+.special-anim-shoot {
+    width: 15vmax;
+    height: 15vmax;
+    min-width: 150px;
+    min-height: 150px;
+    z-index: 40;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateZ(2px);
+}
+
+.special-anim-shoot:after {
+    content: "";
+    border-radius: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: bh_reticle_ally 450ms ease-in-out;
+    animation-fill-mode: forwards;
+    background-size: cover;
+}
+
+/* bg based on whether it's an ally or an enemy */
+.sprite-wrapper .special-anim-shoot:after { 
+    background-image: url(/img/sprites/combat/allycrosshair.gif);
+    border: 2px solid var(--friend-color);
+}
+
+.actor .special-anim-shoot:after { 
+    background-image: url(/img/sprites/combat/crosshair.gif);
+    border: 2px solid var(--obesk-color);
+}
+
+.special-anim-flare {
+    width: 25vmax;
+    height: 25vmax;
+    min-width: 150px;
+    min-height: 150px;
+    z-index: 40;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateZ(2px);
+    z-index: 2;
+}
+
+.special-anim-flare:after {
+    content: "";
+    border-radius: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: special_anim_flare 400ms ease-in-out infinite;
+    background-image: url(/img/sprites/combat/dullsplosion.png);
+    animation-fill-mode: forwards;
+    background-size: contain;
+}
+
+/* combat start/intro animation */
+#combat.intro {
+    animation: intro 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#combat.intro #ally-team, #combat.hideteams #ally-team {
+    transform: translateX(-100vw);
+}
+
+#combat.intro #enemy-team, #combat.hideteams #enemy-team {
+    transform: translateX(100vw);
+}
+
+#combat.team-intro .team {
+    transition-delay: 2s;
+}
+
+/* komplete */
+#combat.over *, #combat.over::after {
+    animation-play-state: paused !important;
+}
+
+#combat.over {
+    animation: komplete 1s cubic-bezier(.55,0,.39,1.26);
+    animation-fill-mode: forwards;
+}
+
+/* opteee mize */
+    /* .cull should be used when busy attacks are on-screen and everything is covered by it for an extended period, i.e. bullethell */
+#combat.cull #enemy-graphic, #combat.cull::after, #combat.cull::before {
+    display: none;
+}
+
+#combat.cull .portrait {
+    filter: unset !important;
+}
+
+/* PARTY MENU */
+body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
+    transform: translate(0);
+    pointer-events: initial;
+    z-index: 40;
+}
+
+#party-members {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 0.5vw;
+}
+
+.partymember {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: calc(0.5vw + 2em) 0.5vw calc(0.5vw + 1.5em);
+    margin: 0.5vw 0;
+    border: 1px solid;
+    position: relative;
+    flex-basis: 32%;
+    flex-grow: unset;
+    color: var(--neutral-color);
+}
+
+.partymember.just-saved, critta-menu.saved #critta-info {
+    animation: BIGSHAKE 50ms ease-in-out;
+    animation-iteration-count: 4;
+}
+
+.partymember.omega-saved, critta-menu.omega-saved #critta-info {
+    animation: OMEGASHAKE 50ms ease-in-out;
+    animation-iteration-count: 2;
+    pointer-events: none;
+}
+
+.partymember > *:not(.partymember-actions):not(.partymember-editzone).partymember > :not(.partymember-actions):not(.partymember-editzone):not(.item-clicktarget) {
+    pointer-events: none;
+}
+
+.partymember.draggable-mirror {
+    z-index: 1000;
+}
+
+.reorganizable .partymember.partymember-akizet:not(.draggable) {
+    color: var(--obesk-color);
+    cursor: not-allowed;
+}
+
+.partymember.draggable {
+    cursor: move;
+    color: var(--friend-color);
+}
+
+.partymember.is-dragging {
+    cursor: grabbing;
+}
+
+#party-menu:not(.e4menu) .partymember.draggable:nth-of-type(3) ~ .partymember {
+    color: var(--neutral-color);
+}
+
+.partymember-liner {
+    position: absolute;
+    top: 0.5vw;
+    display: flex;
+    width: calc(100% - 1vw);
+    font-family: barcodetext;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.partymember-liner > * {
+    display: inline-block;
+    transform: translateY(-0.33em);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.partymember-subtitle {
+    top: unset;
+    bottom: -0.5vw;
+    font-size: 2em;
+}
+
+.partymember-hp, .partymember-name {
+    color: var(--friend-color);
+}
+
+.partymember-hp::after {
+    content: "HP";
+}
+
+.partymember-filler {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.partymember-filler::after {
+    content: "                                                              ";
+    position: absolute;
+    white-space: pre;
+}
+
+.partymember-portrait {
+    display: block;
+    width: 85px;
+    height: 85px;
+    max-width: 5vw;
+    max-height: 5vw;
+    border-radius: 100%;
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 0;
+}
+
+.partymember-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0.5em 0;
+    color: var(--bright-color);
+}
+
+.partymember-actions h2 {
+    font-family: barcodetext;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+.partymember-action {
+    font-size: 0.75rem;
+    padding: 0.5em 0;   
+    text-transform: uppercase;
+    display: flex;
+}
+
+.partymember-action::before {
+    content: "::";
+}  
+
+.partymember-action.windup-action::before {
+    content: ":W";
+    color: var(--neutral-color);
+}
+
+#party-members .party-title {
+    width: 100%;
+    padding: 0.5vw 0;
+    font-size: 2.25em;
+    margin-bottom: 0;
+    border-bottom: 1px dashed;
+    border-top: 1px dashed;
+}
+
+.party-title::after {
+    content: "OBESK EQUIPPED WITH TIMESTOPPERS";
+    display: block;
+    font-family: spacemono;
+    font-size: 0.75rem;
+    margin: 0.5em 0 0;
+}
+
+.party-title.party-inactive::after {
+    content: "OBESK ON THE SIDELINES\A CLICK & DRAG OVER ACTIVE MEMBER TO SWAP";
+    white-space: pre;
+}
+
+.e4menu .party-title::after {
+    content: "OBESK EQUIPPED WITH TIMESTOPPERS\A CLICK & DRAG OVER ACTIVE MEMBER TO SWAP PREFERRED ORDER"
+}
+
+.partymember-passives {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0.5em;
+    gap: 0.5em;
+    top: 45%;
+    transform: translateY(-50%);
+    opacity: 0.25;
+    font-size: 0.75em;
+    max-height: 65%;
+}
+
+.crittamember .partymember-name {
+    font-family: spacemono;
+    font-size: 1rem;
+    transform: translateY(0);        
+}
+
+.partymember:hover .partymember-passives {
+    opacity: 1;
+}
+
+:root.bigmode #party-menu {
+    width: 66vw;
+    transform: translateX(66vw)
+}
+
+.partymember-composition, #party-menu .partymember-composition {
+	width: 2rem;
+	height: 2rem;
+	position: absolute;
+	border-radius: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	overflow: hidden;
+	border: 1px solid var(--neutral-color);
+	background: black;
+	background-size: 100% 100%;
+	bottom: 0.6rem;
+	left: 1rem;
+	cursor: alias;
+}
+
+.partymember-composition .partymember-slot {
+    height: 15px;
+	flex-basis: 50%;
+	background: var(--background, url(/img/textures/badstatic.gif));
+	background-color: var(--background-color);
+	background-size: cover;
+	pointer-events: none;
+}
+
+.partymember-composition .partymember-slot[component="undefined"] {
+	--background: transparent;
+	--background-color: transparent;
+}
+
+.partymember-composition .partymember-slot[slot="utility"] {
+    width: 100%;
+    flex-basis: 100%;
+    height: 15px;
+}
+
+.actor .partymember-composition { /* for in-combat */
+	bottom: 0.25rem;
+	left: 0.25rem;
+}
+
+.partymember-gone {
+    order: 100;
+    border: 2px dashed;
+    pointer-events: none;
+}
+
+.partymember-gone, .partymember-gone * {
+    color: var(--bright-color);
+}
+
+.partymember-gone .partymember-hp::after {
+    display: none;
+}
+
+.partymember-gone .partymember-actions {
+    display: none;
+}
+
+.partymember-gone .partymember-portrait {
+    filter: grayscale(1) contrast(2);
+}
+
+@media only screen and (max-width: 1200px) {
+    #party-menu {
+        width: 66vw;
+        transform: translateX(66vw)
+    }
+
+    :root.bigmode #party-inventory .item {
+        flex-basis: calc(50% - 10px);
+    }
+}
+
+/* inventory menu */
+#party-inventory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.75rem;
+}
+
+#party-inventory h3 {
+    width: 100%;
+    text-transform: uppercase;
+    margin: 0.5vw 0;
+    padding: 0.5vw 0;
+    border: 1px solid;
+    border-left: 0;
+    border-right: 0;
+}
+
+.item {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    align-items: center;
+    padding: 0.5vw;
+    border: 1px solid var(--neutral-color);
+    flex-basis: calc(33% - 10px);
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 1em;
+}  
+
+.item-portrait {
+    width: 100%;
+    margin-bottom: auto;
+    position: relative;
+}
+
+.item-image {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: drop-shadow(1px 1px var(--obesk-color));
+    width: 100px;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+}
+
+.item-name {
+    font-size: 2.5em;
+    font-family: barcodetext;
+    margin-bottom: 0.25em;
+    text-transform: uppercase;
+    color: var(--neutral-color);
+}
+
+.item-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-stats {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5em;
+    padding: 0.5em 0;
+    border-bottom: 1px solid var(--neutral-color);
+}
+
+.item-qty {
+    margin: auto 1em;
+    font-size: 0.75em;
+    text-transform: uppercase;
+}
+
+.item-usability {
+    width: 100%;
+    color: var(--friend-color);
+    text-align: center;
+    margin-top: 1em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+}
+
+.item[data-usability="both"] .item-usability, .item[data-usability="ooc"] .item-usability {
+    color: var(--friend-color);
+}
+
+.item[data-usability="ic"] .item-usability {
+    color: var(--obesk-color);
+}
+
+.item-description {
+    padding: 0.5em 0;
+}
+
+.item-usage > * {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border: 1px solid var(--obesk-color);
+    padding: 5px;
+}
+
+.item-ooc {
+    border: 1px solid var(--friend-color);
+}
+
+.item-ooc strong {
+    font-weight: 600;
+    color: var(--obesk-color);
+}
+
+.item-usage > :last-child {
+    margin-bottom: 0;
+}
+  
+.item-ic::before {
+    content: '::IN COMBAT::';
+    color: var(--obesk-color);
+}
+
+.item-ooc::before {
+    content: "::IN PEACE::";
+    word-break: break-all;
+    color: var(--friend-color);
+}
+
+.item.target-origin {
+    z-index: 2;
+}
+
+.item[data-usability="both"].target-origin, .item[data-usability="ooc"].target-origin,
+.item[data-usability="both"]:not(.target-origin):hover, .item[data-usability="ooc"]:not(.target-origin):hover {
+    background: url(/img/textures/badstatic.gif);
+}
+
+.item[data-usability="both"]:not(.target-origin):hover, .item[data-usability="ooc"]:not(.target-origin):hover {
+    cursor: pointer;
+    --neutral-color: var(--friend-color);
+}
+
+.item-usage-popup {
+    display: none;
+    position: absolute;
+    background: var(--dark-color);
+    color: var(--neutral-color);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 5px outset;
+    width: 100%;
+}
+
+.item.target-origin .item-usage-popup {
+    display: flex;
+}
+  
+.item-usage-popup .item-ooc {
+    margin: 0.5em 0;
+    padding: 0.5em;
+    color: var(--bright-color);
+}
+
+.item-usage-popup .item-cancel, .item-usage-popup .item-use {
+    margin-top: 0.5em;
+    padding: 0.5em;
+    background: var(--neutral-color);
+    color: var(--dark-color);
+    cursor: pointer;
+}
+
+.party-targeting .partymember.eligible {
+    border-color: var(--neutral-color);
+    overflow: hidden;
+    cursor: pointer;
+    border-width: 5px;
+}
+
+.party-targeting .partymember.eligible::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-image: url(/img/textures/target.png);
+    background-size: 100% auto;
+    background-position: bottom;
+    background-repeat: repeat-x;
+    opacity: 0.5;
+    width: 200%;
+    animation: status-drift 1s linear infinite;
+    height: 100%;
+}
+
+.party-targeting .partymember.eligible:hover {
+    border-color: var(--ally-color);
+}
+
+.party-targeting .partymember.eligible:hover::after {
+    opacity: 1;
+}
+
+.party-targeting .partymember-details, .party-targeting + #party-inventory .item-portrait, .party-targeting + #party-inventory .item-details {
+  opacity: 0.5;
+}
+
+.eligible .item-clicktarget {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: initial;
+    z-index: 20;
+}
+
+.item-targeting-target .item-use {
+    display: none;
+}
+
+@media only screen and (max-width: 1400px) {
+    .partymember-liner {
+        font-size: 2em;
+    }
+
+    .partymember-subtitle {
+        font-size: 1.5em;
+    }
+
+    .partymember {
+        padding: calc(0.5vw + 1.5em) 0.5vw calc(0.5vw + 1em);
+    }
+    
+    .item-stats {
+        flex-direction: column;
+    }
+}
+
+/* augment menu */
+.in-menu[menu="augment"] #content {
+    transform: translate(0);
+}
+
+.obesk-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 20;
+    height: 95vh;
+    width: 95vh;
+    border-radius: 20px;
+    color: var(--friend-color);
+    transition: opacity 0.5s ease-in-out, transform 1.5s cubic-bezier(.51,.04,0,1.61);
+    transform: rotateY(270deg) scale(0.001);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.in-menu[menu="augment"] #augment-menu {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: initial;
+}
+
+.obesk-menu .menureturn.button {
+    background-color: var(--neutral-color);
+    color: var(--dark-color);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top-left-radius: inherit;
+    z-index: 2;
+}
+
+.obesk-menu .menureturn.button:hover {
+    color: var(--obesk-color);
+    background: var(--dark-color);
+}
+
+#augment-members {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 6vh;
+    filter: drop-shadow(0px 0px 10px);
+}
+
+.augment-member {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    min-width: 20vh;
+    margin: 1vh;
+    border-radius: 20px;
+    border: 2px solid;
+    background: url(/img/textures/dithertile.gif), url(/img/textures/spotgradient.gif), url(/img/textures/fadein.gif), var(--obesk-color);
+    background-size: 5px 5px, auto;
+    background-repeat: repeat, no-repeat;
+    position: relative;
+    border: 0;
+    border: 2px solid;
+    box-shadow: 0px 0px 10px inset var(--obesk-color);
+}
+
+.augment-member-portrait {
+    font-family: beech;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2vh;
+}
+
+.augment-member-portrait::before {
+    content: "";
+    width: 8vh;
+    height: 8vh;
+    display: block;
+    background: var(--img);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+}
+
+.augment-options {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.augment-option {
+    width: 5vh;
+    height: 5vh;
+    border: 2px solid;
+    border-radius: 100%;
+    margin: 1vh;
+    background: var(--img);
+    background-size: cover;
+    cursor: pointer;
+    position: relative;
+    color: var(--neutral-color);
+    background-color: var(--friend-color);
+}
+
+.augment-option[affordable="false"]:not([inuse="true"]) {
+    border: 5px inset;
+    cursor: not-allowed;
+    color: var(--obesk-color);
+    opacity: 0.75;
+}
+
+.augment-option[unlocked="false"] {
+    filter: grayscale(1) contrast(5);
+    border-color: black;
+    order: 2;
+    opacity: 0.5;
+}
+
+.augment-option[inuse="true"] {
+    border: 2px solid;
+    box-shadow: 0px 0px 10px, 0px 0px 30px;
+    color: var(--friend-color);
+    cursor: pointer;
+}
+
+#augment-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    margin-bottom: 4vh;
+    position: relative;
+    border-bottom: 2px solid;
+    background: var(--dark-color);
+    color: var(--obesk-color);
+    padding: 5vh 2vh;
+    border-radius: inherit;
+    box-shadow: 0px 0px 10px;
+}
+
+.augment-dot {
+    width: 5vh;
+    height: 5vh;
+    background: var(--friend-color);
+    border: 2px dashed var(--friend-color);
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.augment-dot.augment-dot-used {
+    border: 2px dotted var(--obesk-color);
+    background: url(/img/textures/fadein.gif), var(--friend-color);
+}
+
+.augment-header {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 25%);
+    width: 20vh;
+    height: 20vh;
+    border-radius: 100%;
+    border: 2px solid var(--obesk-color);
+    background: url(/img/textures/fadein.gif), var(--friend-color);
+    color: var(--obesk-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: beech;
+    font-size: 18vh;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.augment-header::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    border: inherit;
+    z-index: -1;
+    animation: SPIN 10s linear infinite;
+}
+
+.augment-header::before, .augment-option[inuse="true"]::before {
+    content: "";
+    background-image: url(/img/textures/obeskmenuborder.gif);
+    width: 103%;
+    height: 103%;
+    display: block;
+    position: absolute;
+    background-size: contain;
+    left: -1.5%;
+    animation: SPIN 1s linear infinite;
+    box-shadow: 0px 0px 5vh;
+    border-radius: 100%;
+    color: var(--friend-color);
+}
+
+.augment-copy {
+    max-width: 38vh;
+    font-family: beech;
+    text-transform: uppercase;
+    font-size: 1vh;
+    line-height: 1.5em;
+    text-align: right;
+    margin: -1em 0;
+    letter-spacing: 1em;
+}
+
+.augment-usage {
+    display: flex;
+    gap: 0.5em;
+    margin-bottom: -3rem;
+}
+
+#augment-members, .augment-copy {
+    text-shadow: 0px 0px 10px, 0px 0px 10px;
+}
+
+.augment-member, #augment-stats, .augment-dot {
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+/* the party menu button controls - available after augments are discovered */
+.augmentmenu.button {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    color: var(--friend-color);
+}
+
+.augmentmenu.button:hover {
+    color: var(--dark-color);
+    background: var(--obesk-color);
+}
+
+.augments-enabled .augmentmenu.button {
+    display: inline-block
+}
+
+/* SPECIAL BACKGROUNDS */
+#combat.incoherentbg::before {
+    background-image: url(/img/textures/warp.gif),url(/img/textures/corrurippletrangrayscale.gif), url(/img/textures/mspinnel.gif);
+    background-size: cover, auto;
+}
+
+#combat.bastard::before, #content.collapse.archives.bastard::before {
+    content: "";
+    position: absolute;
+    background-image: url(/img/sprites/bstrd/bstrd.gif), url(/img/textures/static.gif);
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+    animation: SPIN 60s linear infinite;
+    z-index: -10;
+    width: 150vmax;
+    height: 150vmax;
+}
+
+#combat.bastard::after, body[id^="embassy"] #content.collapse.archives.bastard::after {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/corruripplebastard.gif);
+    background-size: auto 100%, 50%;
+    background-color: transparent;
+}
+
+#combat.bastard {
+    --obesk-color: var(--bastard-color);
+}
+
+#combat.bastard #enemy-team .actor .name, .bstrdactor .name {
+    color: var(--bastard-color);
+    font-family: bastard;
+    font-size: 3em;
+}
+
+#combat.bastard #enemy-graphic .sprite-wrapper {
+    flex-basis: 25%;
+}
+
+#combat.bastard #enemy-team > [id^="container"] {
+    min-width: unset;
+    font-size: 0.75em;
+}
+
+#combat.bastard.bstrdshelf::before {
+    background-image: url(/img/sprites/bstrd/bstrd.gif), url(/img/local/embassy/archivalwarp.gif);
+    width: 100%;
+    height: 200%;
+    animation: status-drift-y-notate 20s linear infinite;
+    top: 0;
+    background-size: 100px, 100% 50%;
+}
+
+#combat.bastard.bstrdshelf::after {
+    background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/corruripplebastard.gif);
+}
+
+#combat.bastard .golem-vortex::after {
+    animation: unset;
+}   
+
+#bstrdancers, #bstrdancers::after, #bstrdancers::before {
+    content: "";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: -10;
+}
+
+#bstrdancers::after, #bstrdancers::before {
+    width: 120vw;
+    height: 20vh;
+    background-image: url(/img/sprites/bstrd/the_bstrd_shuffle.gif);
+    background-size: 3vw auto;
+    background-position: center;
+    background-repeat: repeat-x;
+    animation: THE_BSTRD_SHUFFLE_1 1s linear infinite;
+    animation-play-state: paused;
+}
+
+#bstrdancers::before {
+    animation-direction: reverse !important;
+}
+
+#bstrdancers.double::after, #bstrdancers.double::before { animation: THE_BSTRD_SHUFFLE_2 500ms ease-in-out infinite; }
+#bstrdancers.double::before { --baseTransform: rotate(-20deg); } 
+#bstrdancers.double::after { --baseTransform: rotate(20deg) }
+
+#bstrdancers.dance, #bstrdancers.dance::after, #bstrdancers.dance::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+@keyframes THE_BSTRD_SHUFFLE_1 {
+    0% { transform: var(--baseTransform) translate(-3vw) }
+    100% { transform: var(--baseTransform) translate(0) }
+}
+
+@keyframes THE_BSTRD_SHUFFLE_2 {
+    0% { transform: var(--baseTransform) translate(-3vw) rotate(0deg) }
+    50% { transform: var(--baseTransform) translate(-1.5vw) rotate(-1deg) }
+    100% { transform: var(--baseTransform) translate(0) rotate(0deg) }
+}
+
+body[quality="low"] #bstrdancers::before, body[quality="low"] #bstrdancers::after { animation: unset; transform: var(--baseTransform)}
+#combat.bastard.cull::after, #combat.bastard.cull::before, #combat.bastard.cull #bstrdancers { display: none; }
+body.cull-stage #content.bastard::before, body.cull-stage #content.bastard::after { display: none; }
+  
+/* SPECIAL INSTRUCTIONS */
+.low-health .item-restorative, .low-health .party {
+    animation: LOWHP 1s ease-in-out infinite alternate;
+}
+
+.low-health .party i, .low-health .item-restorative .item-ooc::after {
+    animation: SHAKE 200ms linear infinite;
+}
+
+@keyframes LOWHP {
+    0% { border-color: var(--neutral-color) }
+    50% { border-color: var(--obesk-color) }
+    100% { border-color: var(--friend-color) }
+}
+
+/* SPECIAL ATTACK ANIMATIONS */
+@keyframes bh_reticle_ally {
+	0% {
+		transform: translate(-50%, -50%) scale(2) rotate(180deg);
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	70%, 95% {
+		transform: translate(-50%, -50%) scale(1) rotate(0deg);
+		opacity: 1;
+		pointer-events: none;
+		background-color: transparent;
+	}
+
+	96%, 99% { 
+		background-color: var(--ally-color);
+		transform: translate(-50%, -50%) scale(1) rotate(0deg);
+		opacity: 1;
+		pointer-events: initial;
+	}
+
+	100% {
+		background-color: var(--ally-color);
+		transform: translate(-50%, -50%) scale(1) rotate(0deg);
+		opacity: 0;
+		pointer-events: initial;
+	}
+}
+
+@keyframes special_anim_flare {
+	0% {
+		transform: scale(0);
+	}
+    
+    90% {
+        transform: scale(1.75) rotate(1000deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* quality settings */
+body:not([quality="low"]) #content #enemy-graphic .golemsprite.dead .spritestack, 
+body:not([quality="low"]) #content #enemy-graphic .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) *:not(.filter) { filter: grayscale(1) contrast(3) invert(1) }
+body:not([quality="low"]) #content .struck:not(.destructible):not(.nofilter) { filter: grayscale(1) contrast(3) invert(1) }
+body:not([quality="low"]) #content .spritestatus-destabilized:not(.destructible) > *:not(.target) { filter: blur(5px) contrast(2) }
+body:not([quality="low"]) #content .actor.dead .portrait { filter: grayscale(1) contrast(2) invert(1) }
+    body:not([quality="low"]) #content .actor.dead#miltza .portrait { filter: grayscale(1) contrast(2) invert(1) }
+
+@media only screen and (max-width: 1366px)  {
+    :root.bigmode div#combat #ally-team .actor {
+        min-width: 30vw;
+    }
+    
+    :root.bigmode #enemy-team .use-message.active {
+        transform: translateY(35vh) scaleY(1) scaleX(1);
+    }
+    
+    :root.bigmode #ally-team .use-message.active {
+        transform: translateY(-35vh) scaleY(1) scaleX(1);
+    }
+}
+
+/* co enemies */
+/* container */
+.sprite-wrapper .sprite[id^="container"], 
+.sprite-wrapper .sprite[id^="dull_container"], 
+.sprite-wrapper .sprite[id^="hallucination"] {
+    animation: CONTAINERWOBBLE 10s cubic-bezier(.75,.02,.43,.96) infinite alternate;
+    transform-origin: bottom;
+}
+
+@keyframes CONTAINERWOBBLE {
+    0% { transform: var(--baseTransform) scaleX(1.15) scaleY(0.85) rotateY(-0.5deg)}
+    33% { transform: var(--baseTransform) scaleX(0.85) scaleY(1.15) rotateY(0.5deg)}
+    66% { transform: var(--baseTransform) scaleX(1.15) scaleY(0.85) rotateY(0.5deg)}
+    100% { transform: var(--baseTransform) scaleX(0.85) scaleY(1.15) rotateY(-0.5deg)}
+}
+
+@keyframes CONTAINERWOBBLEMINI {
+    0% { transform: var(--baseTransform) scaleX(1.075) scaleY(0.95)}
+    33% { transform: var(--baseTransform) scaleX(0.95) scaleY(1.075)}
+    66% { transform: var(--baseTransform) scaleX(1.075) scaleY(0.95)}
+    100% { transform: var(--baseTransform) scaleX(0.95) scaleY(1.075)}
+}
+
+/* attendant */
+#enemy-graphic .attendant-sprite {
+    animation: bomber 20s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+#enemy-graphic .sprite-wrapper.dead[id^="attendant"] img {
+    filter: unset;
+}
+
+#enemy-graphic .sprite-wrapper.dead .attendant-sprite, #enemy-graphic .sprite-wrapper.dead .attendant-sprite::after {
+    animation-play-state: paused;
+}
+
+#enemy-graphic .attendant-sprite::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/local/embassy/spiredronehead.gif);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    animation: hover-minor 4s ease-in-out infinite alternate;
+}
+
+/* veilklight */
+.sprite-wrapper .veilksprite {
+    animation: bomber 5s cubic-bezier(.29,.01,.07,1.07) infinite alternate;
+    transform-origin: bottom;
+}
+
+#enemy-graphic .veilksprite.bstrdlight .sprite {
+    width: 250px;
+    height: auto;
+}
+
+.sprite-wrapper .veilksprite .sprite {
+    width: auto;
+}
+
+.sprite-wrapper .veilksprite::before, 
+.sprite-wrapper .veilksprite::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/sprites/combat/foes/foelampcore.gif);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    backface-visibility: visible;
+    --baseTransform: rotateY(0deg);
+    animation: SPIN-Y 10s linear infinite;
+    z-index: 2;
+}
+
+.sprite-wrapper .veilksprite::after {
+    --baseTransform: rotateY(90deg);
+}
+
+.sprite-wrapper .sprite-wrapper.dead .velksprite::before, 
+.sprite-wrapper .sprite-wrapper.dead .velksprite::after {
+    animation-play-state: paused;
+}
+  
+.golemsprite .sprite {
+    animation: unset;
+}
+
+.sprite-wrapper .dead .veilksprite::before, 
+.sprite-wrapper .dead .veilksprite::after {
+    display: none;
+}
+
+body:not([quality="low"]) #content .spritestatus-destabilized .veilksprite img {
+    filter: blur(5px) contrast(2);
+}
+
+/* BSTRDlight variant */
+#enemy-graphic .veilksprite.bstrdlight::before, 
+#enemy-graphic .veilksprite.bstrdlight::after {
+    background-image: url(/img/sprites/bstrd/bstrd.gif);
+    background-size: 55%;
+    background-position: center 20%;
+}
+  
+
+/* golem */
+.golemsprite, #enemy-graphic .sprite-wrapper.golemsprite {
+    flex-basis: auto;
+    margin: auto -10%;
+}
+
+.golemsprite .sprite {
+    position: absolute;
+    animation: hover 1s ease-in-out infinite alternate;
+}
+
+.golemsprite .golemsprite-base {
+    position: relative;
+    opacity: 0;
+    z-index: -1;
+}
+
+.golemsprite .golemsprite-head > img { 
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom;
+}
+
+.golemsprite .golemsprite-head {
+    z-index: 2;
+    animation: hover-half 1s ease-in-out infinite alternate;
+}
+
+.golemsprite-head::after {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 53%;
+    height: 30%;
+    width: 30%;
+    --baseTransform: translateX(-50%);
+    background-image: url(/img/sprites/aggressor/sigilfull.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: SPIN 10s linear infinite;
+    opacity: 1;
+  }
+
+.golemsprite .golemsprite-neck {
+    z-index: 1;
+    animation: hover-half 1.5s ease-in-out infinite alternate;
+}
+
+.golemsprite .golemsprite-body {
+    animation: hover-half 2s ease-in-out infinite alternate;
+}
+
+/* archival golem variation of golemsprite */
+#enemy-graphic .archival-golem.golemsprite {
+    margin: initial;
+}
+
+.archival-golem.golemsprite .sprite {
+    animation-duration: 10s;
+}
+
+.archival-golem .golemsprite-head > img {
+    object-fit: contain;
+    object-position: bottom;
+    height: 100%;
+    position: absolute;
+    top: 0;
+}
+
+#enemy-graphic .archival-golem .sprite {
+    height: 90vh;
+}
+
+#enemy-graphic .archival-golem .golemsprite-head::after {
+    display: none;
+}
+
+#combat.bastard #enemy-graphic .sprite-wrapper.archival-golem {
+    flex-basis: auto;
+    min-width: 25%;
+}
+
+.sprite-wrapper.bstrdshelf {
+    z-index: 2;
+}
+
+/* and the bstrd variation of the archival golem */
+.bstrd-golem .gunraise, .bstrd-golem.aiming .gunlower, .bstrd-golem .gunblam {
+    display: none;
+}
+
+.bstrd-golem.aiming .gunraise, .bstrd-golem .gunlower, .bstrd-golem.scramble .gunblam {
+    display: block;
+}
+
+.bstrd-golem .gunraise, .bstrd-golem .gunblam, .bstrd-golem .gunlower {
+    animation-delay: unset !important;
+}
+
+/* golem maintenance golemsprites */
+#enemy-graphic .golemsprite.basic-golem {
+    margin: auto -10%;
+}
+
+#enemy-graphic .sprite-wrapper.golemsprite.surgeon-golem,
+#enemy-graphic .sprite-wrapper.golemsprite.pressure-golem,
+#enemy-graphic .sprite-wrapper.golemsprite.constructor-golem {
+    margin: auto 0;
+}
+    
+.constructor-golem .golemsprite-head::after,
+.pressure-golem .golemsprite-head::after,
+.surgeon-golem .golemsprite-head::after {
+    left: 50%;
+}
+
+#enemy-graphic .pressure-golem .sprite {
+    height: 65vh;
+}
+
+#enemy-graphic .pressure-golem .golemsprite-head::after {
+    top: -10%;
+}
+
+
+.constructor-golem .golemsprite-neck {
+    z-index: -1;
+}
+
+.constructor-golem.golemsprite .sprite {
+    animation: hover 10s ease-in-out infinite alternate;
+}
+
+.constructor-golem.golemsprite .golemsprite-head {
+    animation: hover-half 10s ease-in-out infinite alternate;
+}
+
+.constructor-golem.golemsprite .golemsprite-neck {
+    animation: hover-half 5s ease-in-out infinite alternate;
+}
+
+.constructor-golem.golemsprite .golemsprite-body {
+    animation: hover-half 5s ease-in-out infinite alternate;
+}
+
+/* movefoe boss */
+#enemy-graphic .lifter {
+    width: 75vh;
+    height: 75vh;
+    position: relative;
+    backface-visibility: unset;
+    -webkit-backface-visibility: unset;
+    transform: unset;
+    background: url(/img/local/embassy/liftfrienddark.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemy-graphic .lifter figure::after, #enemy-graphic .lifter figure::before, #enemy-graphic .lifter::after  {
+    content: unset;
+}
+
+#enemy-graphic .lifter.sprite figure::after, .lifter.aggressormode figure::after {
+    content: "";
+    width: 25vh;
+    height: 25vh;
+    display: block;
+    background: url(/img/sprites/aggressor/aggressoroverlay.png), url(/img/local/orbit/core.gif), radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 45%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    animation: SPIN 20s linear infinite reverse;
+    border-radius: 100%;
+}
+  
+
+#enemy-graphic [id^="movefriend"] .target {
+    width: 25%;
+    height: 25%;
+    top: unset;
+    left: unset;
+}
+
+#enemy-graphic .struck[id^="movefriend"], 
+#enemy-graphic .spritestatus-destabilized[id^="movefriend"] {
+    filter: unset;
+}
+
+#enemy-graphic .sprite[id^="tendrils"] {
+    width: 50vh;
+    margin: auto -20vh;
+}
+
+/* maintenance cloak */
+body:not([quality="low"]) .maintcloak {
+    transform-style: preserve-3d;
+}
+
+#enemy-graphic .maintcloak .sprite {
+    height: 65vh;
+}
+
+.maintcloak .sprite:first-child {
+    animation: DANCE 5s ease-in-out infinite alternate;
+}
+
+body:not([quality="low"]) .maintcloak img:nth-child(2) {
+    animation: SPIN-Y 2s linear infinite;
+    animation-delay: unset !important;
+}
+
+body:not([quality="low"]) .maintcloak img:nth-child(3) {
+    animation: SPIN-Y 2s linear infinite;
+    animation-delay: unset !important;
+    --baseTransform: rotateY(90deg);
+}
+
+@keyframes DANCE {
+    0% { transform: rotate(4deg) translateY(5%)}
+    25% { transform: rotate(-2deg) translateY(0%)}
+    50% { transform: rotate(-4deg) translateY(5%)}
+    75% { transform: rotate(2deg) translateY(0%)}
+    100% { transform: rotate(-2deg) translateY(5%)}
+}
+
+@media only screen and (max-width: 1600px) {
+    .maintcloak.sprite-wrapper {
+        flex-basis: auto;
+    }
+}
+
+/* shelf miniboss */
+#combat.bastard #enemy-graphic .sprite-wrapper.bstrdshelf {
+    flex-basis: 20%;
+    transform-style: initial;
+    z-index: -1;
+}
+
+#enemy-graphic .sprite-wrapper.bstrdshelf .sprite {
+    height: 90vh;
+    width: 90vw;
+    position: absolute;
+    animation: painshelf 10s ease-in-out infinite alternate;
+    transform-origin: bottom center;
+}
+
+.sprite-wrapper.bstrdshelf .target {
+    top: unset;
+    left: unset;
+    height: 40vh;
+    width: 25vh;
+}
+
+@keyframes painshelf {
+    0% { transform: scaleX(1.3) scaleY(0.9)}
+    100% { transform: scaleX(1) scaleY(1)}
+}
+
+/* glazika boss */
+#enemy-graphic .dullzika.sprite-wrapper {
+    z-index: -1;
+}
+
+#enemy-graphic .dullzika .sprite {
+    height: 80vh;
+    animation-duration: 5s;
+    z-index: unset;
+}
+
+.dullzika .golemsprite-body {
+    animation: CONTAINERWOBBLEMINI 10s ease-in-out infinite alternate;
+    transform-origin: bottom;
+}
+
+.golemsprite.dullzika .golemsprite-neck {
+    z-index: -1;
+}
+
+.golemsprite.dullzika .golemsprite-body {
+    z-index: 2;
+}
+
+.dullzika .golemsprite-head::after {
+    top: 0;
+    left: 50%;
+    height: 60%;
+    width: 60%;
+    --baseTransform: translateX(-50%) translateZ(-10px);
+    background-image: url(/img/local/embassy/dullrug.gif);
+}
+  
+.golemsprite.dullzika .golemsprite-head > img {
+    height: 100%;
+    object-position: bottom;
+    object-fit: contain;
+}
+  
+#enemy-graphic .sprite-wrapper.dulltainer {
+    flex-basis: 10%;
+    margin: auto -3%;
+}
+  
+#enemy-graphic .dulltainer .sprite {
+    height: auto;
+    width: 30vh;
+}
+
+#combat.containerspam::before {
+    background-image: url(/img/local/orbit/core.gif);
+    background-color: var(--bright-color);
+}
+
+.containerspam #enemy-team .actor[id^="dull_container"], 
+.translatorzone #enemy-team .actor[id^="hallucination"],
+.summonerboss #enemy-team .actor:not(.mainfoe) {
+    font-size: 0.8em;
+    min-width: 100px;
+    padding: 0.5vw;
+}
+
+/* translator */
+#combat.translatorzone::before {
+    background-image: url(/img/local/embassy/tvs_tile.gif), url(/img/textures/fear.gif);
+    background-color: var(--bright-color);
+    background-repeat: repeat;
+    background-size: auto;
+}
+
+#combat.translatorzone #enemy-graphic {
+    perspective: 600px;
+}
+
+.wordfriend.sprite-wrapper {
+    transform-style: preserve-3d
+}
+
+.wordfriend .spinny {
+    animation: SPIN-Y 10s linear infinite;
+    transform-style: preserve-3d;
+}
+
+#enemy-graphic .wordfriend .spinny img, .wordfriend .spinny img {
+    animation: HOVER 5s ease infinite alternate;
+    height: 70vh;
+    width: auto;
+    animation-delay: 0s !important;
+    backface-visibility: visible;
+}
+
+#enemy-graphic .wordfriend .spinny img:last-child, .wordfriend .spinny img:last-child {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    --baseTransform: rotateY(90deg);
+}
+
+.wordfriend .orbs {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 2;
+    animation: SPIN-Y 10s linear infinite;
+    --baseTransform: rotateY(45deg);
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+.wordfriend .orbs:nth-of-type(2) {
+    --baseTransform: rotateY(135deg);
+}
+
+.wordfriend .orb {
+    width: 10vh;
+    height: 10vh;
+    background-image: url(/img/sprites/combat/foes/translator_sigil.gif), url(/img/sprites/combat/foes/translator_orb.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    backface-visibility: visible;
+}
+
+.wordfriend.sprite-wrapper.orbshake {
+    animation: SPIN-Y 1s cubic-bezier(0,0,0,1.02);
+}
+
+.wordfriend.sprite-wrapper.orbshake .orb {
+    animation: SHAKE 50ms linear infinite;
+}  
+
+.wordfriend .orb:nth-child(2) {
+    right: 0;
+    top: 20%;
+}
+
+.wordfriend .orb:nth-child(3) {
+    top: 50%;
+    left: 10%;
+}
+
+/* HUSKS */
+/* these guys have a special sprite selection system */
+#enemy-graphic .husk .sprite {
+    height: 65vh;
+}
+
+.husk .basis { opacity: 0; }
+.husk .spritestack {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.husk .bottomlayer, .husk .toplayer {
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.husk .toplayer {
+    z-index: 2;
+}
+
+.husk .toplayer::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.husk .spritestack div {
+    bottom: 0 !important;
+    left: unset !important;
+    top: unset !important;
+}
+
+
+
+#enemy-graphic .husk[type="1"] .bottomlayer, #enemy-graphic .husk[type="1"] .toplayer { width: 200%; height: 120%;}
+.husk[type="1"][b="1"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type1_bottom1.gif) }
+.husk[type="1"][b="2"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type1_bottom2.gif) }
+.husk[type="1"][t="1"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type1_top1.gif) }
+    .husk[type="1"][t="1"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type1_top1_eyes.gif) }
+        .spritestatus-destabilized.husk[type="1"][t="1"] .toplayer::after,
+        .spritestatus-puncture.husk[type="1"][t="1"] .toplayer::after,
+        .spritestatus-focused.husk[type="1"][t="1"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type1_top1_activeeyes.gif) }
+
+.husk[type="1"][t="2"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type1_top2.gif) }
+    .husk[type="1"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type1_top2_eyes.gif) }
+        .spritestatus-destabilized.husk[type="1"][t="2"] .toplayer::after,
+        .spritestatus-puncture.husk[type="1"][t="2"] .toplayer::after,
+        .spritestatus-focused.husk[type="1"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type1_top2_activeeyes.gif) }
+
+#enemy-graphic .husk[type="1"][t="3"] .toplayer, .husk[type="1"][t="3"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type1_top3.gif); height: 250% }
+    #realgrid .husk[type="1"][t="3"] .toplayer { transform: translateY(-25%); }
+
+#enemy-graphic .husk[type="2"] .bottomlayer, #enemy-graphic .husk[type="2"] .toplayer { width: 200%; height: 120%;}
+.husk[type="2"][b="1"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type2_bottom1.gif) }
+.husk[type="2"][b="2"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type2_bottom2.gif) }
+.husk[type="2"][t="1"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type2_top1.gif) }
+    .husk[type="2"][t="1"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type2_top1_eyes.gif) }
+        .spritestatus-destabilized.husk[type="2"][t="1"] .toplayer::after,
+        .spritestatus-puncture.husk[type="2"][t="1"] .toplayer::after,
+        .spritestatus-focused.husk[type="2"][t="1"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type2_top1_activeeyes.gif) }
+
+.husk[type="2"][t="2"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type2_top2.gif) }
+    .husk[type="2"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type2_top2_eyes.gif) }
+        .spritestatus-destabilized.husk[type="2"][t="2"] .toplayer::after,
+        .spritestatus-puncture.husk[type="2"][t="2"] .toplayer::after,
+        .spritestatus-focused.husk[type="2"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type2_top2_activeeyes.gif) }
+
+#enemy-graphic .husk[type="3"] .bottomlayer, #enemy-graphic .husk[type="3"] .toplayer { width: 200%; height: 120%;}
+.husk[type="3"][b="1"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type3_bottom1.gif) }
+.husk[type="3"][b="2"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type3_bottom2.gif) }
+.husk[type="3"][t="1"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type3_top1.gif) }
+    .husk[type="3"][t="1"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/sickeye_spherewobble.gif); width: 25%; bottom: 65%; left: 42.5%; }
+.husk[type="3"][t="2"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type3_top2.gif) }
+    .husk[type="3"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type3_top2_eyes.gif) }
+        .spritestatus-destabilized.husk[type="3"][t="2"] .toplayer::after,
+        .spritestatus-puncture.husk[type="3"][t="2"] .toplayer::after,
+        .spritestatus-focused.husk[type="3"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type3_top2_activeeyes.gif) }
+
+#enemy-graphic .husk[type="4"] .bottomlayer, #enemy-graphic .husk[type="4"] .toplayer { width: 230%; height: 120%;}
+.husk[type="4"][b="1"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom1.gif) }
+.husk[type="4"][b="2"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom2.gif) }
+#combat .daemon-mimic.husk .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom1_mimic.gif) }
+.husk[type="4"][t="1"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top1.gif) }
+.husk[type="4"][t="2"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top2.gif) }
+    .husk[type="4"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type4_top2_eyes.gif); }
+        .spritestatus-destabilized.husk[type="4"][t="2"] .toplayer::after,
+        .spritestatus-puncture.husk[type="4"][t="2"] .toplayer::after,
+        .spritestatus-focused.husk[type="4"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type4_top2_activeeyes.gif) }
+
+#enemy-graphic .husk[type="4"][t="3"] .toplayer, 
+.husk[type="4"][t="3"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top3.gif); height: 250% }
+    #realgrid .husk[type="4"][t="3"] .toplayer { transform: translateY(-25%); }
+    #enemy-graphic .daemon-mimic.husk[type="4"][t="3"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type4_top3_mimic.gif); --baseTransform: translateY(3%);}
+
+body:not([quality="low"]) .husk .sprite {
+    animation: HUSKWOBBLE 5s cubic-bezier(.75,.02,.43,.96) infinite alternate;
+    transform-origin: bottom;
+}
+
+@keyframes HUSKWOBBLE {
+    0% { transform: var(--baseTransform) scaleX(0.95) scaleY(0.95)}
+    100% { transform: var(--baseTransform) scaleX(0.95) scaleY(1)}
+}
+
+/* visions */
+#enemy-graphic .hallucination .basis {
+    width: 20vw;
+}
+
+.sprite-wrapper.hallucination {
+    margin: auto -5%;
+}
+
+body:not([quality="low"]) .hallucination .sprite-overflow  {
+    animation: SHAKE 10ms linear infinite;
+    transform-origin: bottom;
+}
+
+#enemy-graphic .hallucination .sprite.eyes {
+    animation-delay: 0.35s;
+}
+
+/* final golem boss */
+#combat.bossgolem #enemy-graphic {
+    top: 15%;
+}
+
+#enemy-graphic .golemsprite.bossgolem {
+    margin: auto 0;
+}
+
+#enemy-graphic .bossgolem.golemsprite .sprite {
+    height: 90vh;
+}
+
+.bossgolem.golemsprite .golemsprite-head::after {
+    left: 50%;
+}
+
+.bossgolem.golemsprite .sprite {
+    animation-duration: 20s;
+}
+
+/* kivii */
+#combat.kiviifight::before {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/fear.gif), url(/img/textures/mcontours.gif);
+}
+
+#enemy-graphic .kivii .sprite {
+    height: 80vh;
+    transform: translateY(1px);
+    animation: bomber 3000ms ease-in-out infinite alternate;
+}
+
+#enemy-graphic .sprite-wrapper.kivii {
+    flex-basis: 25%;
+}
+
+#enemy-graphic .sprite-wrapper.kiviigauntlet img {
+    --baseTransform: rotateY(180deg);
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+#enemy-graphic .sprite-wrapper.kiviigauntlet:last-of-type img,
+#enemy-graphic .sprite-wrapper.kivii ~ .kiviigauntlet.sprite-wrapper img {
+    --baseTransform: rotateY(0deg);
+}
+
+#enemy-graphic .sprite-wrapper.kiviigauntlet {
+    margin: auto -5%;
+}
+    
+/* system interconnective classes */
+.in-dialogue #combat .actor .actions {
+    display: none;
+}
+
+.in-combat #minireadout {
+	bottom: 10vh;
+	left: 10vh;
+	font-size: 12px;
+}
+
+/* stage support */
+#realgrid .newevil .sprite-wrapper, #realgrid .newevil .sprite-wrapper * {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+#realgrid .newevil .sprite-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    transform-origin: center;
+    
+    transform: rotateX(-90deg) translateY(-50%) rotateY(180deg) rotateY(var(--faceAngle));
+}
+
+#realgrid .newevil .sprite {
+    max-height: calc(var(--gridTileSize) * 2);
+}
+
+#realgrid .golemsprite .sprite,
+#realgrid .constructor-golem.golemsprite .sprite {
+    animation-name: stage-hover;
+}
+
+#realgrid .golemsprite .golemsprite-head,
+#realgrid .constructor-golem.golemsprite .golemsprite-head,
+#realgrid .constructor-golem.golemsprite .golemsprite-neck,
+#realgrid .constructor-golem.golemsprite .golemsprite-body {
+    animation-name: stage-hover-half;    
+}
+
+#realgrid .newevil .husk .sprite {
+    max-height: calc(var(--gridTileSize) * 2.25);
+}
+
+#realgrid .newevil .husk[type="4"] .sprite {
+    max-height: calc(var(--gridTileSize) * 2.5);
+}
+
+body[quality="low"] #realgrid .newevil .sprite {
+    animation-play-state: paused !important;
+}
+
+/************ EP3ADD2 ********/
+.bstrdactor .combat-dialogue {
+    font-family: bastard;
+    font-size: 2em;
+    text-transform: initial;
+}
+
+.bstrdactor  .combat-dialogue::after {
+    font-size: 1em;
+}
+
+/* preserve crispiness on the newspaper enemies*/
+.sprite-wrapper.daemonsprite { transform-style: unset }
+
+.actor.daemonactor {
+    background: url(/img/textures/paperplate.gif);
+    background-size: 125% 125%;
+    background-position: center;
+}
+
+.actor.daemonactor.dead, .actor.daemonactor.last-stand {
+    background-image: url(/img/textures/paperplateinverse.gif);
+}
+
+.sprite-wrapper .daemon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	transform-origin: center;
+}
+
+.sprite-wrapper.struck.daemonsprite *, 
+.sprite-wrapper.struck.daemonsprite *::after, 
+.sprite-wrapper.basic-attack.daemonsprite *,
+.sprite-wrapper.basic-attack.daemonsprite *::after,
+.sprite-wrapper.wobble.daemonsprite *,
+.sprite-wrapper.wobble.daemonsprite *::after,
+.sprite-wrapper.daemonsprite.spritestatus-windup *,
+.sprite-wrapper.daemonsprite.spritestatus-windup *::after {
+	animation-duration: 400ms !important;
+}
+
+/* daemons have their individual parts invert instead of the whole sprite for animation reasons (it gets weird) */
+.sprite-wrapper.struck.daemonsprite { filter: unset !important; animation: BIGSHAKE 250ms !important; }
+body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
+    filter: grayscale(1) contrast(3) invert(1);
+    animation: shake-crazy 250ms;
+}
+
+.sprite-wrapper .daemon > img {
+    width: 100%;
+}
+
+.sprite-wrapper.jester {
+    z-index: -1;
+}
+
+.sprite-wrapper .daemon div, .sprite-wrapper .daemon div::after {
+	position: absolute;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	transform-origin: center;
+	transform: var(--baseTransform);
+	--baseTransform: rotate(0deg);
+}
+
+.daemon.accurate-position :not(.noimg)::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	animation: BIGSHAKE 3s steps(2) infinite alternate;
+	background-image: var(--img);
+	animation-delay: var(--delay);
+}
+
+.daemon .eye::after, .daemon.accurate-position .eye::after {
+	animation: SHAKE 5s steps(2) infinite alternate;
+}
+
+/* PAWN */
+.daemon.pawn {
+    width: 20vw;
+}
+
+#realstage .daemon.pawn {
+    width: 100%;
+}
+
+.daemon.pawn > img {
+	opacity: 0;
+}
+
+.daemon.pawn .eye {
+	--img: url(/img/sprites/daemons/generaleye.gif);
+	width: 20%;
+	height: 20%;
+	animation: BLINKY 10s ease-in-out infinite;
+}
+
+.daemon.pawn .scraps {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.daemon.pawn .scrap {
+	width: 25%;
+	height: 25%;
+	--img: url(/img/sprites/daemons/pawn/scrap1.gif);
+}
+
+.daemon.pawn .scrap:nth-of-type(1) { width: 35%; --baseTransform: translate(-100%, 30%); --delay: -1s;}
+.daemon.pawn .scrap:nth-of-type(2) {--img: url(/img/sprites/daemons/pawn/scrap2.gif); --baseTransform: translate(-110%, -90%); --delay: -2s;}
+.daemon.pawn .scrap:nth-of-type(3) {--img: url(/img/sprites/daemons/pawn/scrap3.gif); --baseTransform: translate(0%, -150%); --delay: -3s;}
+.daemon.pawn .scrap:nth-of-type(4) {--img: url(/img/sprites/daemons/pawn/scrap4.gif); --baseTransform: translate(110%, -90%); --delay: -4s;}
+.daemon.pawn .scrap:nth-of-type(5) {--img: url(/img/sprites/daemons/pawn/scrap5.gif); --baseTransform: translate(150%, 30%); --delay: -5s;}
+
+.daemon.pawn.clean .scrap:nth-of-type(1) {--img: url(/img/sprites/daemons/pawn/scrap1_clean.gif)}
+.daemon.pawn.clean .scrap:nth-of-type(2) {--img: url(/img/sprites/daemons/pawn/scrap2_clean.gif)}
+.daemon.pawn.clean .scrap:nth-of-type(3) {--img: url(/img/sprites/daemons/pawn/scrap3_clean.gif)}
+.daemon.pawn.clean .scrap:nth-of-type(4) {--img: url(/img/sprites/daemons/pawn/scrap4_clean.gif)}
+.daemon.pawn.clean .scrap:nth-of-type(5) {--img: url(/img/sprites/daemons/pawn/scrap5_clean.gif)}
+
+@keyframes BLINKY {
+	0%, 95%, 100% { transform: var(--baseTransform) scaleY(1)}
+	97% { transform: var(--baseTransform) scaleY(00.1)}
+}
+
+/* BISHOP */
+.daemon.bishop {
+    animation: SWAY 5s steps(30) infinite alternate;
+    transform-origin: top;
+    width: 10vw;
+}
+
+.daemon.bishop .eye {
+    --baseTransform: translate(0, -160%);
+    --img: url(/img/sprites/daemons/bishop/eye.gif);
+    width: 20%;
+    height: 20%;
+}
+
+#content .daemon.bishop .tendril::after {
+    transform-origin: top;
+    animation: SHAKE 5s steps(2) infinite alternate;
+    animation-delay: var(--delay);
+}
+
+.daemon.bishop .tendril {
+    width: 20%;
+    height: 65%;
+    --img: url(/img/sprites/daemons/bishop/tend1.gif);
+    --baseTransform: translate(-200%, 5%);
+    --delay: 0s;
+    transform-origin: top;
+    animation: SWAY-NOTRAN 5s steps(30) infinite alternate-reverse;
+}
+
+.daemon.bishop .tendril:nth-of-type(2) {
+  height: 80%;
+ --img: url(/img/sprites/daemons/bishop/tend2.gif);
+  --baseTransform: translate(-75%, 20%);
+  z-index: 2;
+  --delay: 1s;
+}
+
+.daemon.bishop .tendril:nth-of-type(3) {
+  height: 70%;
+ --img: url(/img/sprites/daemons/bishop/tend3.gif);
+  --baseTransform: translate(35%, 25%);
+  --delay: 4s;
+}
+
+.daemon.bishop .tendril:nth-of-type(4) {
+  height: 80%;
+ --img: url(/img/sprites/daemons/bishop/tend4.gif);
+  --baseTransform: translate(133%, 11%);
+  z-index: 2;
+  --delay: 2s;
+}
+
+.daemon.bishop .tendril:nth-of-type(5) {
+  height: 70%;
+ --img: url(/img/sprites/daemons/bishop/tend5.gif);
+  --baseTransform: translate(200%, -6%);
+  --delay: 3s;
+}
+
+@keyframes SWAY {
+  0% { transform: var(--baseTransform) translateX(-20%) rotate(-5deg)}
+  10% { transform: var(--baseTransform) translateX(-20%) rotate(-5deg)}
+  90% { transform: var(--baseTransform) translateX(20%) rotate(5deg)}
+  100% { transform: var(--baseTransform) translateX(20%) rotate(5deg)}
+}
+
+@keyframes SWAY-NOTRAN {
+  0% { transform: var(--baseTransform) rotate(5deg)}
+  100% { transform: var(--baseTransform) rotate(-5deg)}
+}
+
+/* KNIGHT */
+.daemon.knight {
+	animation: SHAKE 10s steps(5) infinite alternate;
+	--baseTransform: rotate(2deg);
+    width: 20vw;
+}
+
+.daemon.knight .uparm {
+	width: 50%;
+	height: 25%;
+	--img: url(/img/sprites/daemons/knight/uparm.gif);
+	--baseTransform: translate(-60%, -45%);
+	transform-origin: top right;
+}
+
+.daemon.knight .uparm::after {
+	animation-duration: 10s;
+}
+
+.daemon.knight .downarm {
+	width: 150%;
+	height: 150%;
+	--img: url(/img/sprites/daemons/knight/downarm.gif);
+	--baseTransform: translate(-20%, 32%);
+	transform-origin: center top;
+}
+
+.daemon.knight .upclaw {
+	width: 50%;
+	height: 100%;
+	--img: url(/img/sprites/daemons/knight/upclaw.gif);
+	--baseTransform: translate(110%, 50%);
+	transform-origin: top left;
+}
+
+.daemon.knight .downclaw {
+	width: 50%;
+	height: 100%;
+	--img: url(/img/sprites/daemons/knight/downclaw.gif);
+	--baseTransform: translate(90%, 80%);
+	transform-origin: top left;
+}
+
+.daemon.knight .eye {
+	background-image: url(/img/sprites/daemons/knight/eye.gif);
+	width: 7.5%;
+	height: 7.5%;
+	--baseTransform: translate(60%, -400%);
+	animation: SHAKE 3s steps(2) infinite alternate;
+}
+
+.daemon.knight .eye::after {
+	display: none;
+}
+
+.daemon.knight .eye:nth-of-type(2) {
+  	--baseTransform: translate(-60%, -360%) rotate(-10deg);
+}
+
+.daemon.knight .eye:nth-of-type(3) {
+  	--baseTransform: translate(-150%, -300%) rotate(40deg);
+}
+
+.daemon.knight .eye:nth-of-type(4) {
+  	--baseTransform: translate(200%, -280%) rotate(-70deg);
+}
+
+.daemon.knight .eye:nth-of-type(5) {
+  	--baseTransform: translate(180%, -370%) rotate(90deg);
+}
+
+/* ROOK */
+.daemon.rook {
+	animation: SHAKE 10s steps(5) infinite alternate;
+    width: 25vw;
+}
+
+#content .daemon.rook div::after {
+  animation: SHAKE steps(2) 5s infinite;
+  animation-delay: var(--delay);
+}
+
+.daemon.rook .downclaw::after, .daemon.rook .upclaw::after {
+	animation: BIGSHAKE 5s steps(2) infinite alternate;
+	animation-delay: var(--delay)
+}
+
+.daemon.rook .eye {
+  width: 12.5%;
+  height: 12.5%;
+  --img: url(/img/sprites/daemons/generaleye.gif);
+  --baseTransform: translate(-130%, -185%) rotate(70deg);
+}
+
+.daemon.rook .eye:nth-of-type(2) {
+  --baseTransform: translate(60%, -205%) rotate(-80deg);
+}
+
+.daemon.rook .eye:nth-of-type(3), .rook .eye:nth-of-type(4), .rook .eye:nth-of-type(5) {
+  width: 7%;
+  height: 7%;
+  --baseTransform: translate(-60%, -300%) rotate(85deg);
+}
+
+.daemon.rook .eye:nth-of-type(4) {
+  --baseTransform: translate(-120%, -420%) rotate(70deg);
+}
+
+.daemon.rook .eye:nth-of-type(5) {
+  --baseTransform: translate(-10%, -430%) rotate(-70deg);
+}
+
+.daemon.rook .leftarm {
+  --img: url(/img/sprites/daemons/rook/left_up.gif);
+  width: 23%;
+  height: 50%;
+  --baseTransform: translate(-185%, -10%)
+} 
+
+.daemon.rook .leftarm .downarm {
+  --img: url(/img/sprites/daemons/rook/left_down.gif);
+  width: 140%;
+  height: 100%;
+  --baseTransform: translate(0, 60%);
+  z-index: 2;
+  --delay: -3s;
+} 
+
+.daemon.rook .leftarm .downclaw {
+  --img: url(/img/sprites/daemons/rook/left_bot.gif);
+  width: 70%;
+  height: 55%;
+  z-index: 2;
+  --delay: -3s;
+  --baseTransform: translate(70%, 120%);
+} 
+
+.daemon.rook .leftarm .upclaw {
+  --img: url(/img/sprites/daemons/rook/left_top.gif);
+  width: 90%;
+  height: 55%;
+  z-index: 2;
+  --delay: -2s;
+  --baseTransform: translate(70%, 60%);
+} 
+
+.daemon.rook .rightarm {
+  --img: url(/img/sprites/daemons/rook/right_up.gif);
+  width: 27%;
+  height: 50%;
+  --baseTransform: translate(130%, -40%)
+} 
+
+.daemon.rook .rightarm .downarm {
+  --img: url(/img/sprites/daemons/rook/right_down.gif);
+  width: 110%;
+  height: 80%;
+  --baseTransform: translate(0, 90%);
+  z-index: 2;
+  --delay: -3s;
+} 
+
+.daemon.rook .rightarm .downclaw {
+  --img: url(/img/sprites/daemons/rook/right_bot.gif);
+  width: 80%;
+  height: 65%;
+  --delay: -3s;
+  --baseTransform: translate(-20%, 125%);
+} 
+
+.daemon.rook .rightarm .upclaw {
+  --img: url(/img/sprites/daemons/rook/right_top.gif);
+  width: 90%;
+  height: 55%;
+  --delay: -2s;
+  --baseTransform: translate(-70%, 90%);
+} 
+
+/* queen */
+.daemon.queen {
+    width: 20vw;
+  	animation: HOVER 5s steps(20) infinite alternate;
+}
+
+.daemon.queen .eye {
+	width: 15%;
+	height: 15%;
+	z-index: 2;
+	--img: url(/img/sprites/daemons/queen/eye.gif);
+	animation: BLINKY 5s linear infinite;
+}
+
+.daemon.queen .ring {
+	width: 100%;
+	height: 100%;
+	--img: url(/img/sprites/daemons/queen/ring0.gif);
+	background-position: center;
+	background-size: 100% 100%;
+	animation: SPIN 5s steps(20) infinite;
+}
+
+#content .daemon.queen .ring::after {
+	animation: SHAKE steps(2) 5s infinite;
+	animation-delay: var(--delay);
+}
+
+.daemon.queen .ring:nth-of-type(2) {
+	--img: url(/img/sprites/daemons/queen/ring1.gif);
+	animation-duration: 10s;
+}
+
+.daemon.queen .ring:nth-of-type(3) {
+	--img: url(/img/sprites/daemons/queen/ring2.gif);
+	animation-duration: 15s;
+}
+
+/* king */
+.daemon.king {
+    width: 20vw;
+}
+
+.daemon.king > * {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#content .daemon.king div::after {
+	animation: SHAKE steps(2) 5s infinite;
+  	animation-delay: var(--delay);
+}
+
+.daemon.king .box {
+  	animation: SPIN 20s steps(20) infinite;
+}
+
+.daemon.king img {
+  	animation: SPINGROW 10s steps(20) infinite;
+}
+
+.daemon.king img ~ img {
+	position: absolute;
+	animation: SPINGROW 10s steps(30) infinite;
+	animation-delay: -1s;
+}
+
+.daemon.king .box.center {
+	--img: url(/img/sprites/daemons/king/center.gif);
+	--delay: -2s;
+}
+
+.daemon.king .box.outer {
+  	--img: url(/img/sprites/daemons/king/box.gif);
+}
+
+.daemon.king .ring { --img: url(/img/sprites/daemons/queen/ring0.gif) }
+.daemon.king .ring::after { background-size: 70% }
+
+.daemon.king .eye {
+	width: 10%;
+	height: 10%;
+	z-index: 2;
+	--img: url(/img/sprites/daemons/queen/eye.gif);
+	animation: BLINKY 5s linear infinite;
+}
+
+@keyframes SPINGROW {
+	0% { transform: rotate(0deg) scale(1.1) }
+	50% { transform: rotate(180deg) scale(0.8) }
+	100% { transform: rotate(360deg) scale(1.1) }
+}
+
+.sprite-wrapper.daemon.king.basic-attack, 
+.sprite-wrapper.daemon.queen.basic-attack {
+    animation: unset;
+}
+
+.wallfight .daemon.king,
+.wallfight .daemon.queen,
+.wallfight .daemon.knight,
+.wallfight .daemon.pawn {
+    width: 15vw;
+    max-width: 100%;
+}
+
+/* director boss */
+.daemon.director {
+	width: 150vmin;
+	height: 70vmin;
+	max-width: 100%;
+}
+
+.sprite-wrapper .daemon.director .eye {
+	background-image: url(/img/sprites/daemons/queenring.gif);
+	--img: url(/img/sprites/daemons/queen/eye.gif);
+	width: 15vmin;
+	height: 15vmin;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: SHAKE 5s steps(2) infinite alternate;
+}
+
+.daemon.director .eye::after {
+	content: "";
+	width: 50%;
+	height: 50%;
+}
+
+.daemon.director .eye:nth-child(1) {
+  	--baseTransform: translate(-150%, -150%) rotate(20deg)
+}
+
+.daemon.director .eye:nth-child(2) {
+  	--baseTransform: translate(150%, -150%) rotate(-20deg)
+}
+
+.daemon.director .hand {
+	height: 50vmin;
+	width: 50vmin;
+	--img: url(/img/sprites/daemons/director/lefthand.gif);
+	--baseTransform: translate(-120%, -25%) rotate(-20deg);
+	animation: HOVER 10s steps(20) infinite alternate;
+}
+
+.daemon.director .hand::after {
+  	animation-duration: 20s;
+}
+
+.daemon.director .hand:last-of-type {
+	--img: url(/img/sprites/daemons/director/righthand.gif);
+	--baseTransform: translate(120%, -25%) rotate(20deg);
+	animation-delay: -5s;
+	--delay: -3.5s;
+}
+
+/* imps */
+#content .daemon.impetus,
+#content .daemon.falsecritta {
+	margin: unset;
+	animation: CONTAINERWOBBLE 5s ease infinite alternate;
+	transform-origin: bottom;
+}
+
+.daemon.impetus img {
+    width: 20vw;
+}
+
+.daemon.impetus .eye,
+.daemon.falsecritta .eye {
+	z-index: 2;
+	width: 20%;
+	height: 20%;
+	background-image: url(/img/sprites/daemons/queenring.gif);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	--baseTransform: translateY(-100%);
+	animation: SPIN 5s steps(20) infinite;
+}
+
+.daemon.impetus .eye::after,
+.daemon.falsecritta .eye::after {
+	width: 50%;
+	height: 50%;
+	animation: BLINKY 5s linear infinite;
+	content: "";
+	background: url(/img/sprites/daemons/queen/eye.gif);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.daemon.impetus .ceptors {
+	width: 100%;
+	height: 100%;
+	background-image: url(/img/sprites/daemons/imp/falseceptors.gif);
+}
+
+#content .daemon.falsecritta {
+    animation-duration: 10s;
+}
+
+.daemon.falsecritta .eye {
+    top: 20%;
+    width: 30%;
+    height: 20%;
+    max-width: 80px;
+}
+
+.sprite-wrapper .daemon.falsecritta > img {
+    width: auto;
+    max-height: 50vh;
+}
+
+/* spawner */
+.daemon.spawner {
+	animation: SPIN-Y 5s steps(50) infinite;
+	transform-style: preserve-3d;
+}
+
+.daemonsprite.spinny .daemon.spawner {
+    animation-duration: 400ms !important;
+}
+
+.daemon.spawner img ~ img {
+	position: absolute;
+	transform: rotateY(90deg);
+}
+
+#content .daemon.bee {
+	animation: hover-major 5s steps(30) alternate infinite;
+	animation-delay: var(--delay);
+	margin: 2em;
+}
+
+.daemon.bee, .daemon.bee .sides {
+	--size: 10vmin;
+    width: var(--size);
+    height: var(--size);
+	transform-style: preserve-3d;
+}
+
+.daemon.bee .sides {
+	--baseTransform: translateZ(calc(var(--size) * -0.5));
+	transform: var(--baseTransform);
+	animation: CUBESPIN 3s steps(40) infinite;
+	animation-delay: var(--delay);
+	transform-origin: center;
+}
+
+.daemon.bee .sides > * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/textures/spotgradienttiny.gif), url(/img/sprites/daemons/spawner/bee.gif);
+    background-size: cover;
+    --baseTransform: translateX(0);
+    transition: transform 300ms;
+}
+
+.basic-attack .daemon.bee .sides > *,
+.struck .daemon.bee .sides > * {
+    --baseTransform: rotate(450deg);
+}
+
+.daemon.bee .sides > span:nth-child(1) {
+    transform-origin: top;
+    transform: var(--baseTransform) rotateX(90deg);
+}
+
+.daemon.bee .sides > span:nth-child(2) {
+    transform-origin: left;
+    transform: var(--baseTransform) rotateY(-90deg);
+}
+
+.daemon.bee .sides > span:nth-child(3) {
+    transform-origin: right;
+    transform: var(--baseTransform) rotateY(90deg);
+}
+
+.daemon.bee .sides > span:nth-child(4) {
+    transform: var(--baseTransform) translateZ(var(--size));
+}
+
+.daemon.bee .sides > span:nth-child(5) {
+    transform-origin: bottom;
+    transform: var(--baseTransform) rotateX(-90deg);
+}
+
+@keyframes CUBESPIN {
+  	0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) var(--baseTransform); }
+  	100% { transform: rotateX(720deg) rotateY(360deg) rotateZ(360deg) var(--baseTransform); }
+}
+
+/* general anims */
+@keyframes BIGSHAKE {
+    0% { transform: var(--baseTransform) translate(0px, 5px) rotate(2deg); }
+    10% { transform: var(--baseTransform) translate(-5px, -5px) rotate(3deg); }
+    20% { transform: var(--baseTransform) translate(-10px, 5px) rotate(-4deg); }
+    30% { transform: var(--baseTransform) translate(10px, 10px) rotate(0deg); }
+    40% { transform: var(--baseTransform) translate(10px, -5px) rotate(-4deg); }
+    50% { transform: var(--baseTransform) translate(-5px, 5px) rotate(2deg); }
+    60% { transform: var(--baseTransform) translate(-10px, -5px) rotate(4deg); }
+    70% { transform: var(--baseTransform) translate(5px, 5px) rotate(1deg); }
+    80% { transform: var(--baseTransform) translate(-5px, -5px) rotate(-3deg); }
+    90% { transform: var(--baseTransform) translate(5px, 10px) rotate(3deg); }
+    100% { transform: var(--baseTransform) translate(5px, -10px) rotate(7deg); }
+}
+
+/* the wall */
+.thewall {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	overflow: hidden;
+    z-index: -2;
+}
+
+.wallfight #enemy-graphic {
+    z-index: unset;
+}
+
+#combat.wallfight::after, #combat.wallfight::before {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -3;
+	display: block;
+}
+
+#combat.wallfight::before {
+	width: 150vmax;
+	height: 150vmax;
+	background: url(/img/sprites/daemons/wall/wallwarp.gif);
+	background-position: center;
+	animation: SPIN 1200s linear infinite;
+}
+
+#combat.wallfight::after {
+	bottom: 0;
+	height: 200vh;
+	background: url(/img/textures/mass_moderate.gif);
+	background-size: auto 100vh;
+	background-position: 50% center;
+	animation: RISE 30s linear infinite;
+	z-index: -1;
+}
+
+@keyframes RISE {
+	0% { transform: translateY(50%)}
+	100% { transform: translateY(0) }
+}
+
+/* Intrusive */
+.intrusiveactor .combat-dialogue span {
+    font-family: intrusive;
+    font-size: 3em;
+    max-height: unset;
+    line-height: 0.8em;
+}
+  
+.intrusiveactor .combat-dialogue {
+    background: var(--dark-color);
+    color: var(--friend-color);
+    border: 2px dotted var(--obesk-color);
+}
+
+.intrusive .timer {
+    position: absolute;
+    font-family: beech;
+    font-size: 3em;
+    animation: SHAKE 300ms linear infinite;
+    color: var(--obesk-color);
+}
+
+.sprite-wrapper.detonate-ready {
+    animation: shake-crazy 150ms linear infinite;
+}
+
+.detonate-ready .timer {
+    color: var(--bastard-color)
+}
+
+.intrusive.sprite-wrapper {
+    width: 15vw;
+}
+
+.intrusive.maintrusive {
+    z-index: 2;
+    transition: all 1s ease-in-out, transform 20s cubic-bezier(.86,0,.07,1), filter 0s linear;
+}
+
+.intrusive img {
+    height: auto;
+    max-height: 60vh;
+}
+
+#chancepanel {
+    position: absolute;
+    top: 0;
+    left: 20vw;
+    z-index: 1000;
+    font-size: 2vmin;
+    opacity: 0.5;
+    transform: translateY(-75%);
+    transition: 400ms;
+    pointer-events: none;
+}
+
+#chancepanel.hidden {
+    opacity: 0;
+}
+
+#chancepanel.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#chancepanel > img {
+    width: 40vmin;
+}
+
+#chancepanel > img ~ * {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: SHAKE 50ms linear infinite;
+    animation-play-state: paused;
+}
+
+#chancepanel .wheel {
+    background-image: url(/img/sprites/flantrusive/panelwheel.gif?);
+    z-index: 2;
+    animation-duration: 10ms;
+}
+
+#chancepanel .wheel::after {
+    content: "";
+    background-image: url(/img/sprites/flantrusive/panelwheelspinner.gif);
+    background-size: contain;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    transform-origin: bottom center;
+    display: block;
+    position: absolute;
+    width: 7vmin;
+    height: 7vmin;
+    top: 19vmin;
+    left: 7vmin;
+}
+
+#chancepanel .wheel ul {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 26vmin;
+    left: 10.5vmin;
+    z-index: 2;
+    transform: rotate(15deg);
+    --baseTransform: translateX(0);
+    font-size: 3em;
+}
+
+#chancepanel .wheel ul li {
+    position: absolute;
+    transform: var(--baseTransform) translateY(-7vmin);
+    font-family: beech;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+}
+
+#chancepanel .wheel ul li:nth-child(2) {--baseTransform: rotate(51deg)}
+#chancepanel .wheel ul li:nth-child(3) {--baseTransform: rotate(102deg)}
+#chancepanel .wheel ul li:nth-child(4) {--baseTransform: rotate(160deg)}
+#chancepanel .wheel ul li:nth-child(5) {--baseTransform: rotate(230deg)}
+#chancepanel .wheel ul li:nth-child(6) {--baseTransform: rotate(300deg)}
+
+#chancepanel .display {
+    background-image: url(/img/sprites/flantrusive/panelmenu.gif);
+    animation-delay: -5ms;
+}
+
+#chancepanel .display ol {
+    position: absolute;
+    top: 21vmin;
+    z-index: 2;
+    left: 24vmin;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+    transform: rotate(10deg);
+    letter-spacing: -2px;
+}
+
+#chancepanel .result {
+    background-image: url(/img/sprites/flantrusive/panelresult.gif);
+    animation-delay: -3ms;
+}
+
+#chancepanel .result div {
+    position: absolute;
+    top: 46vmin;
+    left: 18vmin;
+    transform: rotate(20deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#chancepanel .result span {
+    position: absolute;
+    width: 30vmin;
+    text-align: center;
+    display: block;
+}
+
+#chancepanel.spinning * {
+    animation-play-state: running;
+}
+
+#chancepanel.spinning .wheel::after {
+    animation: SPIN 100ms linear infinite;
+}
+
+/* spin results */
+#chancepanel[chosen="1"] .d1,
+#chancepanel[chosen="2"] .d2,
+#chancepanel[chosen="3"] .d3,
+#chancepanel[chosen="4"] .d4,
+#chancepanel[chosen="5"] .d5,
+#chancepanel[chosen="6"] .d6 {
+    color: var(--obesk-color);
+    font-weight: 600;
+    text-shadow: 0px 0px 5px;
+}
+
+#chancepanel[chosen="1"] .wheel::after {transform: rotate(15deg)}
+#chancepanel[chosen="2"] .wheel::after {transform: rotate(70deg)}
+#chancepanel[chosen="3"] .wheel::after {transform: rotate(120deg)}
+#chancepanel[chosen="4"] .wheel::after {transform: rotate(180deg)}
+#chancepanel[chosen="5"] .wheel::after {transform: rotate(245deg)}
+#chancepanel[chosen="6"] .wheel::after {transform: rotate(315deg)}
+
+.intrusivetro .intrusive.sprite-wrapper {
+    transform: scale(0.1);
+}
+
+.intrusivetro #chancepanel {
+    opacity: 0;
+}
+
+/* daemon mimics */
+.daemon-mimic .golemsprite-head::after {
+    display: none !important;
+}
+
+#enemy-graphic .daemon-mimic .attendant-sprite::before { display: none !important; }
+#enemy-graphic .daemon-mimic .attendant-sprite::after { background-image: url(/img/local/embassy/spiredronehead_mimic.gif) }
+
+#enemy-graphic .daemon-mimic .veilksprite::before, #enemy-graphic .daemon-mimic .veilksprite::after { background-image: url(/img/sprites/combat/foes/foelampcore_mimic.gif) }
+
+/* misc special action styling */
+.action[action="scene_evade"] {
+    width: 100%;
+    flex-basis: 100%;
+}
+
+.action[action="bomb_plant"], .action[action="special_bomb_detonate"]:not(.disabled) {
+    background: var(--neutral-color);
+    color: black;
+}
+
+/* use focus you fuckers */
+.action[action="evade"]:not(.disabled), .action[action="scene_evade"]:not(.disabled) {
+    border-color: var(--friend-color);
+    box-shadow: 0px 0px 5px var(--friend-color);
+    text-shadow: 0px 0px 5px var(--friend-color);
+}  
+
+/* some compactor overlap with combatGrid that we're pulling back so we can use it in regular play */
+/* finally ending the status megastack issue */
+.status-effect.status-bad {
+    --border-color: var(--obesk-color);
+    border-color: var(--border-color)
+}
+
+.status-effect.status-good {
+    --border-color: var(--friend-color);
+}
+
+.compactor .statuses, .status-overflow .statuses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 110px;
+    margin-bottom: unset;
+}
+
+.compactor .statuses {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    pointer-events: none; /* may want to change this, not sure */
+}
+
+.compactor .statuses .status-effect, .status-overflow .statuses .status-effect {
+    position: relative;
+    background-image: var(--img);
+    background-size: cover;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    margin: -5px;
+    border: 1px solid;
+    border-color: var(--border-color);
+}
+
+.compactor .status-name, .status-overflow .status-name {
+    display: none;
+}
+
+.compactor .status-count, .status-overflow .status-count {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1.5em;
+    height: 1.4em;
+    background: black;
+    border: 1px solid;
+    border-radius: 100%;
+    transform: translate(-25%, -25%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compactor .status-count::before,
+.compactor .status-count::after,
+.status-overflow .status-count::before,
+.status-overflow .status-count::after,
+.status-overflow .status-effect::before {
+    display: none;
+}
+
+.compactor .statusfx {
+    animation-timing-function: steps(5) !important;
+}
+
+.compactor .statusbg, .status-overflow .statusbg {
+    opacity: 0.5
+}
+
+.status-overflow .statuses {
+    margin: 0.5em 0;
+    background: unset;
+}
+
+.status-overflow .statuses .status-effect {
+    margin: -3px;
+}
+
+.status-overflow .statuses .status-effect:hover {
+    z-index: 2;
+}
+
+.status-overflow .statuses .status-count {
+    height: 1.2em;
+    width: 1.2em;
+    border: unset;
+}
+
+.panicbutton {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    z-index: 1200;
+    background: var(--dark-color);
+    color: var(--bright-color);
+    text-transform: uppercase;
+    font-family: bastard;
+    border: 3px ridge var(--bastard-color);
+    padding-bottom: 0.1em;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.mui-active .panicbutton {
+    right: 15em;
+    animation: SHAKE 400ms linear infinite;
+}

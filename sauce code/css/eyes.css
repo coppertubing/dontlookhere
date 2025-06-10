@@ -1,0 +1,88 @@
+.eye {
+    --tilt-angle: 46deg;
+    --eyewidth: 33%;
+    --pupilsize: 20%;
+    --eyelidcolor: var(--dark-color);
+    --eyecolor: var(--bright-color);
+    --iriscolor: var(--friend-color);
+    --pupilcolor: var(--bright-color);
+    width: var(--eyewidth);
+    height: 0;
+    padding-top: var(--eyewidth);
+    border-radius: 5000px;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    overflow: hidden;
+    transform-origin: center;
+    transform: rotate(var(--tilt-angle));
+    z-index: 1;
+    margin: auto;
+}
+
+.eyelids {
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 140%;  
+    height: 100%;
+    background: var(--eyecolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center;
+    transform: rotate(calc(-1 * var(--tilt-angle)));
+    z-index: 3;
+}
+
+.eyelids::after, .eyelids::before {
+    content: "";
+    position: absolute;
+    width: 133%;
+    height: 100%;
+    background: black;
+    z-index: 4;
+    transition: transform 300ms ease-in-out;
+}
+
+.eyelids::before {
+    transform: translateY(-150%);
+}
+
+.eyelids::after {
+    transform: translateY(150%);
+}
+
+.eyeball {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 75ms ease-in-out
+}
+
+.pupil {
+    width: var(--pupilsize);
+    height: 0;
+    padding-top: var(--pupilsize);
+    border-radius: 100%;
+    background: var(--pupilcolor);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 1s ease-in-out;
+}
+
+.iris {
+    position: absolute;
+    z-index: -1;
+    width: 40%;
+    height: 0;
+    padding-top: 40%;
+    background: var(--iriscolor);
+    background-size: cover;
+    border-radius: 100%;
+}

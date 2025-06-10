@@ -1,0 +1,233 @@
+#realgrid .gridpiece.gap,
+#realgrid .gridpiece.gap:empty,
+#realgrid .gridpiece.blocks.gap {
+    background: url(/img/textures/corrurippleSTILL.gif);
+    border: unset;
+}
+
+#realgrid .gridpiece.faketeleport,
+#realgrid .gridpiece.faketeleport:empty {
+    background: url(/img/textures/warp.png), url(/img/textures/corrurippleSTILL.gif);
+    background-position: center;
+    border: 10px solid var(--neutral-color);
+    border-style: outset;
+}
+
+.chromium #realgrid .gridpiece.gap,
+.chromium #realgrid .gridpiece.gap:empty,
+.chromium #realgrid .gridpiece.blocks.gap {
+    background: url(/img/textures/corruripple.gif);
+}
+
+#realgrid .raised-floaty {
+    animation: MYSTERYTILE 10s ease-in-out infinite alternate;
+}
+
+#realgrid .vesselgap::after,
+#realgrid .vesselgap::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/textures/incoherentgate.gif);
+    background-size: cover;
+    animation: SPIN 120s linear infinite;
+}
+
+#realgrid .vesselgap::before {
+    backface-visibility: inherit;
+}
+
+#realgrid .vesselgap::after {
+    background-image: url(/img/textures/incoherentgate_eyes.gif);
+    --baseTransform: translateZ(1px);
+    animation-duration: 60s;
+}
+
+@keyframes MYSTERYTILE {
+    0% { transform: translateZ(calc(var(--gridTileSize) * 0.5)) rotateX(20deg) rotate(80deg); }
+    100% { transform: translateZ(calc(var(--gridTileSize) * 0.1)) rotateX(-20deg) rotate(-80deg); }
+}
+
+#realgrid .dyp .dypcontent.hand {
+    transform: var(--baseTransform);
+    --baseTransform: translateY(100%) rotateX(-90deg) translateY(-150%) var(--dyp-transform);
+    transform-origin: top;
+    animation: REACH 30s ease-in-out infinite alternate;
+    animation-delay: var(--pieceDelay);
+}
+
+#realgrid .dyp .dypcontent.hand:not(.invert) {
+    background-image: var(--dyp-image), url(/img/local/city/realeye.gif);
+    background-position: bottom, center top;
+}
+
+#realgrid .dyp .dypcontent.hand.invert {
+    --baseTransform: translateY(100%) rotateX(90deg) translateY(-50%) var(--dyp-transform);
+}
+
+@keyframes REACH {
+    0% { transform: var(--baseTransform) scaleY(1.5) rotateY(40deg) translateX(20%) }
+    100% { transform: var(--baseTransform) scaleY(0.75) rotateY(-40deg) translateX(-20%)}
+}
+
+.incoherentonly, .hungeronly {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+body[n="i"] .incoherentonly, body[mask="hunger"] .hungeronly {
+    pointer-events: initial;
+    visibility: visible;
+}
+
+/* ozo-adjacent */
+.ozofriend, .ozofriend > * { position: absolute; }
+.ozofriend, .ozofriend * { 
+    backface-visibility: visible; 
+    -webkit-backface-visibility: visible; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ozofriend .body { object-fit: contain; }
+.ozofriend, .ozofriend .body {
+    width: 100%;
+    height: 100%;
+}
+
+
+.ozofriend.akieffigy {
+    animation: AKIDANCE 3s ease-in-out infinite alternate;
+    animation-delay: var(--piece-delay);
+    transform-origin: bottom;
+}
+
+.ozofriend.akieffigy .head {
+    animation: AKIHEAD 2s ease-in-out infinite alternate;
+    transform-style: unset;
+}
+
+.sipper .akieffigy::after, .sipper .akieffigy::before {
+    content: "";
+    position: absolute;
+    width: 20%; 
+    height: 20%;
+    background-image: url(/img/local/embassy/drinkysmallorange.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 20%;
+    --baseTransform: translateZ(20px) translate(30%, -40%);
+    animation: AKIDANCE 1s ease-in-out infinite alternate;
+}
+
+.sipper .akieffigy::before {
+    --baseTransform: translateZ(5px) translate(-150%, 100%) rotate(-150deg);
+    animation: AKIDANCE 1s ease-in-out infinite alternate;
+    animation-duration: 3s;
+}
+
+@keyframes AKIDANCE {
+    000% { transform: var(--baseTransform) translateX(20%) rotate(-5deg) rotateY(5deg) }
+    100% { transform: var(--baseTransform) translateX(-20%) rotate(5deg) rotateY(-5deg) }
+}
+
+@keyframes AKIHEAD {
+    000% { transform: translateY(0) rotate(-5deg) }
+    033% { transform: translateY(-5%) rotate(-5deg)  }
+    066% { transform: translateY(0) rotate(5deg) }
+    100% { transform: translateY(-5%) rotate(5deg)  }
+}
+
+#realgrid .dancerzets .dypcontent {
+    --baseTransform: rotateX(-90deg) var(--dyp-transform);
+    animation: SPIN-Y 10s linear infinite;
+}
+
+.dancerzets .ozofriend.akieffigy {
+    animation: AKIDANCEBIG 10s ease-in-out infinite alternate;
+    animation-delay: var(--piece-delay);
+    transform-origin: bottom;
+}
+
+.dancerzets .ozofriend.akieffigy .head {
+    animation: AKIHEADBIG 5s ease-in-out infinite alternate;
+}
+
+@keyframes AKIDANCEBIG {
+    000% { transform: var(--baseTransform) translateX(50%) rotate(-20deg) rotateY(5deg); }
+    025% { transform: var(--baseTransform) translateX(-50%) rotate(20deg) rotateX(-20deg) rotateY(-5deg); }
+    050% { transform: var(--baseTransform) translateX(50%) rotate(-20deg)  rotateX(20deg)rotateY(5deg); }
+    075% { transform: var(--baseTransform) translateX(-50%) rotate(20deg) translateZ(calc(var(--gridTileSize) * var(--danceMult)))}
+    100% { transform: var(--baseTransform) translateX(50%) rotate(-20deg) translateY(-20%) rotateY(180deg); }
+}
+
+@keyframes AKIHEADBIG {
+    000% { transform: translateY(0) rotate(5deg) }
+    033% { transform: translateY(-5%) rotate(5deg)  }
+    066% { transform: translateY(0) rotate(-10deg) translateY(-10%) rotateY(20deg) }
+    100% { transform: translateY(-5%) rotate(-10deg) translateY(-10deg) rotateY(-20deg)}
+}
+
+/* QUALITY */
+body[quality="low"] .gridpiece.raised-floaty:empty:not(.teleport) {
+    animation: unset;
+    opacity: 0;
+    animation: unset;
+    visibility: hidden;
+}
+
+body[quality="low"] #realgrid .gridpiece.gap, 
+body[quality="low"] #realgrid .gridpiece.gap:empty, 
+body[quality="low"] #realgrid .gridpiece.blocks.gap {
+    background-image: url(/img/textures/corrurippleSTILL.gif);
+}
+
+/* KUULLA */
+#realgrid .isopod_host, #realgrid .isopod, #realgrid .isopod_joint {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#realgrid .isopod_host {
+    transform: translateX(calc(var(--gridTileSize) * -1 * (var(--stage-width) - 1)));
+}
+
+#realgrid .isopod {
+    transition: transform 5s cubic-bezier(.21,-0.35,.35,.97);
+    transform: translate( calc(var(--gridTileSize) * var(--x)), calc(var(--gridTileSize) * var(--y)) );
+}
+
+#realgrid .isopod.instant {
+    transition: unset;
+}
+
+#realgrid .isopod_joint {
+    transition: transform 0.5s cubic-bezier(.43,-0.33,.5,1.32);
+    transform: rotate(calc((var(--angle) + 90) * 1deg)) translateZ(1px);
+    border-radius: 100%;
+    border: 1px solid var(--friend-color)
+}
+
+#realgrid .isopod_joint::after, #realgrid .isopod_joint::before {
+    content: "";
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    left: 0;
+    transform-origin: left;
+    transform: translateX(20%) rotateY(-35deg);
+    background: url(/img/local/embassy/isohalf.gif);
+}
+
+#realgrid .isopod_joint::after {
+    right: 0;
+    left: unset;
+    transform: translateX(84%) rotateY(215deg);
+}
+
+#realgrid .isopod .target {
+    transform: translateZ(calc(var(--gridTileSize) * 0.3));
+}

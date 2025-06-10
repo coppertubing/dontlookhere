@@ -1,0 +1,51 @@
+/* genericized version of the golem wall system for use elsewhere 
+
+env.stageEntities['Ṇ'] = { class:"blocks wall north" }
+env.stageEntities['Ṡ'] = { class:"blocks wall south" }
+
+*/
+#realgrid .gridpiece.wall::after, #realgrid .gridpiece.wall::before {
+  content: "";
+  position: absolute;
+  width: calc(var(--gridTileSize) * (var(--stage-height) - 2));
+  height: calc(var(--gridTileSize) * 3);
+  transform-origin: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  bottom: 0;
+  right: 0;
+  left: unset;
+  top: unset;
+  transform-origin: bottom right;
+  background-image: url(/img/local/embassy/wallcover.gif), url(/img/local/embassy/mossdesign.gif), url(/img/local/embassy/golemwall.gif);
+  background-size: 100% 100%, auto 100%, auto;
+  background-position: center bottom;
+  pointer-events: none;
+}
+
+#realgrid .gridpiece.wall::before {
+  width: calc(var(--gridTileSize) * (var(--stage-width) - 2));
+}
+
+#realgrid .gridpiece.wall.south::after,
+#realgrid .gridpiece.wall.south::before {
+    transform-origin: top left;
+    top: 0;
+    left: 0;
+}
+
+#realgrid .gridpiece.wall.south::after {
+  transform: rotateX(-90deg) rotateY(-90deg) translate(-100%, -100%);
+}
+
+#realgrid .gridpiece.wall.south::before {
+  transform: rotate(180deg) rotateX(-90deg) translateY(-100%);
+}
+
+#realgrid .gridpiece.wall.north::before {
+  transform: rotateX(-90deg) translateX(100%);
+}
+
+#realgrid .gridpiece.wall.north::after {
+  transform: rotateX(-90deg) rotateY(90deg); 
+}

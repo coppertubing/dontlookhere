@@ -1,0 +1,3342 @@
+critta-menu {
+	position: fixed;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: url(/img/textures/panelpatterntranflip.gif), url(/img/textures/papermeltstill.gif);
+	background-size: auto 100%, auto;
+	background-repeat: repeat-x, repeat;
+	background-color: var(--dark-color);
+	z-index: 40; /* to appear over the party menu in event of overlap*/
+	display: flex;
+	overflow: hidden;
+	opacity: 0.01;
+	transition: opacity 400ms ease-in-out;
+}
+
+critta-menu > * {
+	width: 100%;
+	height: 100%;
+	padding: 1em;
+	position: relative;
+}
+
+critta-menu #cauldron {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+critta-menu #canvas {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 75%;
+	height: 30vw;
+	margin: 10vh 0;
+}
+
+critta-menu #canvas::after {
+	content: "";
+	position: absolute;
+	border-radius: 100%;
+	z-index: -2;
+	width: 35vw;
+	height: 35vw;
+	background: url(/img/textures/spotgradient.gif);
+	background-size: 105%, auto;
+	background-color: var(--bright-color);
+	background-position: center;
+	transform: translateX(-32%);
+}
+
+#canvas .slot:empty::after, #cauldron .component {
+	content: "";
+	width: 5em;
+	height: 5em;
+	border-radius: 100%;
+	border: 2px dashed;
+	cursor: pointer;
+	background-image: var(--background-small, var(--background));
+	background-size: auto;
+	transition: transform 50ms ease-in-out;
+}
+
+critta-menu #cauldron .component[component="empty"] {
+	background: black;
+}
+
+critta-menu .component:hover,
+#canvas .slot:empty:hover::after {
+	transform: scale(1.1);
+}
+
+#canvas .details {
+	width: 150px;
+}
+
+#canvas .slot {
+	position: absolute;
+	left: 57%;
+	height: 10vh;
+	justify-content: flex-start;
+	align-items: center;
+	width: 10vw;
+	display: flex;
+}
+
+#canvas .slot::after {
+	content: attr(slot);
+	text-transform: uppercase;
+	position: absolute;
+	width: 5rem;
+	text-align: center;
+	display: block;
+	background: black;
+	padding: 0.25em;
+	font-size: 0.75em;
+	border: 1px solid var(--accent-color, var(--neutral-color));
+	left: 0;
+	transform: translateX(-110%);
+}
+
+.slot:not([component]) .stat, .slot:not([component]) .augs {
+	display: none;
+}
+
+.slot:not([component]) .componenteffect, #canvas .slot:not([component]) .componenteffect .details {
+	width: auto;
+}
+
+.slot[slot="primary"] {
+	transform: translate(-30%, -200%);
+}
+
+.slot[slot="utility"] {
+	transform: translate(-30%, 200%);
+}
+
+.slotart {
+	position: absolute;
+	width: 150%;
+	height: 150%;
+	z-index: -1;
+	pointer-events: none;
+	transform: translateX(-20%);
+}
+
+.slotart::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: var(--background-small);
+	background-size: 10%;
+	background-position: var(--background-position);
+	background-color: var(--background-color);
+	mask-position: center;
+	mask-size: contain !important;
+	mask-repeat: no-repeat !important;
+}
+
+.slotart[component="empty"]::after {
+	background-color: var(--dark-color);
+}
+
+.slotart[component="light"] {
+	filter: drop-shadow(1px 1px var(--dark-color));
+}
+
+.slotart[slot="primary"]::after {
+	mask-image: url(/img/sprites/crittamenu/core_top.gif);
+}
+
+.slotart[slot="secondary"]::after {
+	mask-image: url(/img/sprites/crittamenu/core_eye.gif);
+}
+
+.slotart[slot="utility"]::after {
+	mask-image: url(/img/sprites/crittamenu/core_bot.gif);
+}
+
+.slotart[slot="bonus"]::after {
+	mask-image: url(/img/sprites/crittamenu/core_receptor.gif);
+}
+
+#palette {
+	display: flex;
+	gap: 1em;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	cursor: alias;
+	padding: 1em;
+	background: var(--dark-color);
+	border-top: 1px solid var(--neutral-color);
+	border-bottom: 1px solid var(--neutral-color);
+}
+
+#palette .component {
+	position: relative;
+	flex-grow: 1;
+	width: 2em;
+	height: unset;
+	max-width: 5em;
+}
+
+#palette .component::before { /* sizing element - enforces circle shape even if shrunk */
+	content: "";
+	padding-top: 100%;
+	width: 100%;
+	display: block;
+}  
+
+#palette .component::after,
+critta-reward .component::after {
+	content: attr(usage);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-size: 10px;
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 100%;
+	color: var(--font-color);
+	background: var(--dark-color);
+	border: 1px solid var(--accent-color);
+	transform: translate(-25%, 25%)
+}
+
+critta-menu #critta-info {
+	background: black;
+	display: flex;
+	width: auto;
+	max-width: 100%;
+	width: 500px;
+	padding: 1em;
+	margin: 1em 0;
+}
+
+critta-menu #critta-info > * {
+	flex-basis: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+critta-menu #critta-info .core.statpool {
+	max-height: 5rem;
+	overflow-y: auto;
+	justify-content: flex-start;
+	margin-top: 1rem;
+}
+
+critta-menu .imgurl {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	opacity: 0.33;
+}
+
+critta-menu .imgurl:hover, critta-menu .imgurl:focus {
+	opacity: 1;
+}
+
+critta-menu .portrait:hover .imgurl, critta-menu .portrait:focus-within .imgurl,
+critta-menu .portrait:hover .button[intent="randomize"], critta-menu .portrait:focus-within .button[intent="randomize"] {
+	display: block;
+}
+
+critta-menu .partymember-portrait {
+	animation: portrait-wiggle 5s cubic-bezier(.55,0,.39,1.26) infinite alternate;
+}
+
+critta-menu .portrait {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: relative;
+}
+
+critta-menu .stats {
+	padding-left: 0.5em;
+}
+
+critta-menu .statpool {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+critta-menu .statpool::before, 
+critta-menu .statpool::after {
+	width: 100%;
+	font-size: 0.75em;
+}
+
+critta-menu .outgoing.statpool::before {
+	content: "OUT::";
+}
+
+critta-menu .incoming.statpool::before {
+	content: "IN::";
+}
+
+critta-menu .statpool:empty::after {
+	content: "STANDARD";
+}
+
+critta-menu .statpool:empty {
+	flex-direction: row;
+	text-align: center;
+	justify-content: center;
+}
+
+critta-menu .statpool:empty::before, critta-menu .statpool:empty::after {
+	display: inline-block;
+	width: auto;
+}
+
+critta-menu .core.statpool {
+	flex-basis: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+critta-menu #critta-info .name, critta-menu .identity .imgurl {
+	font-family: spacemono;
+	font-size: 1.25em;
+	text-transform: uppercase;
+	text-align: center;
+	background: transparent;
+	color: var(--neutral-color);
+	border: 2px dashed;
+	padding: 0.25em 0;
+	width: auto;
+}
+
+critta-menu .identity .imgurl {
+	font-size: 0.5em;
+	background: var(--dark-color);
+	color: var(--friend-color);
+	font-family: spacemono;
+	text-transform: unset;
+	width: 80%;
+	transform: translateY(90%);
+}
+
+critta-menu .partymember-actions {
+	flex-direction: row;
+	width: 100%;
+	flex-wrap: wrap;
+	margin-bottom: 0;
+}
+
+critta-menu .partymember-actions h2 {
+	width: 100%;
+	text-align: center;
+	display: none;
+}
+
+critta-menu .partymember-action {
+	flex-basis: 48%;
+	border: 1px dashed;
+	flex-grow: 1;
+	margin: 2px;
+	cursor: alias;
+	text-align: center;
+	justify-content: center;
+}
+
+critta-menu .partymember-action.windup-action {
+	color: var(--neutral-color);
+}
+
+critta-menu .partymember-action::before {
+	display: none;
+}
+
+critta-menu .buttons {
+	flex-wrap: nowrap;
+	width: auto;
+}
+
+critta-menu .button {
+	background: var(--dark-color);
+	text-transform: uppercase;
+	width: 5em;
+	max-width: 40vw;
+}
+
+critta-menu .button {
+	margin: 0 0.25em;
+}
+
+critta-menu .button[intent="close"] {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	margin: 0;
+	height: 1.55em;
+}
+
+critta-menu .eyedrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 0.75em;
+	background: var(--dark-color);
+	transform: translate(-1rem, -50%);
+	opacity: 0.5;
+	display: none;
+	border: 2px dashed var(--friend-color);
+	z-index: 2;
+}
+
+critta-menu .eyedrop[open] {
+	width: 150%;
+	transform: translate(-1rem, -100%);
+	border: 1px solid var(--neutral-color);
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+critta-menu .eyedrop summary {
+	cursor: pointer;
+	padding: 1em;
+}
+
+critta-menu .eyedrop[open] summary {
+	position: absolute;
+	bottom: 0;
+	background: black;
+	margin-left: 0;
+	border: 1px solid;
+	left: 0;
+}
+
+critta-menu .portrait:hover .eyedrop, critta-menu .portrait:focus-within .eyedrop {
+  	display: flex;
+}
+
+critta-menu .eyelist {
+	max-height: 250px;
+	overflow-y: scroll;
+	padding: 1em 1em 4em;
+}
+
+critta-menu .eyeselect {
+	width: 16.5%;
+	cursor: pointer;
+	display: inline-block;
+}
+
+critta-menu .eyeselect:hover {
+	border: 1px solid var(--friend-color);
+}
+
+critta-menu .button[intent="randomize"] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-family: spacemono;
+	font-size: 0.75rem;
+	padding: 3px;
+	margin: 0;
+	transform: translateY(-50%);
+	opacity: 0.5;
+	display: block;
+}
+
+critta-menu .eyedrop:hover, critta-menu .eyedrop[open], critta-menu .button[intent="randomize"]:hover {
+	opacity: 1;
+}
+
+critta-menu input::selection {
+	background-color: var(--friend-color);
+	color: var(--dark-color);
+}
+
+critta-menu .statdisplay, critta-reward .statdisplay {
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	flex-grow: 1;
+	gap: 0.25em;
+	padding-top: 0.5em;
+}
+
+critta-menu #canvas .statdisplay.micro {
+	align-items: flex-start;
+}
+
+.statdisplay [definition] {
+	border-bottom: 1px dotted;
+}
+
+.statdisplay .stat[good="good"], .passives .status-effect[good="bad"] {
+	color: var(--friend-color);
+}
+
+.statdisplay .stat[good="bad"], .passives .status-effect[good="bad"] {
+	color: var(--obesk-color);
+}
+
+.statdisplay .stat[good="unique"], .passives .status-effect[good="unique"] {
+	color: var(--neutral-color);
+}
+
+.statdisplay .stat.action {
+	color: var(--neutral-color);
+	text-transform: uppercase;
+	--displayDirectionPriority: -2;
+}
+
+.statdisplay .stat[override]::before {
+	content: attr(override) " → ";
+	text-transform: uppercase;
+	color: var(--bright-color);
+	font-size: 0.75em;
+}
+
+.statdisplay .stat[pretty]::after {
+	content: attr(pretty);
+	text-transform: uppercase;
+	color: var(--bright-color);
+}
+
+.statdisplay .stat.status::after {
+	display: none;
+}
+
+.statdisplay .stat.status {
+	text-transform: uppercase;
+}
+
+.statdisplay .stat {
+	font-size: 0.75em;
+}
+
+.statdisplay .stat::after {
+	margin-left: 0.5em;
+}
+
+.statdisplay.micro {
+	flex-direction: column;
+	align-items: inherit;
+}
+
+.statdisplay.micro .stat[type="maxhp"][good="good"]::before {
+	content: "+";
+}
+
+.statdisplay .stat {
+	--badness: 0;
+	--displayDirectionPriority: 0;
+	--displayFlatnessPriority: 0;
+	order: calc(var(--badness) + var(--displayDirectionPriority) + var(--displayFlatnessPriority))
+}
+
+.statdisplay .stat[good="bad"] {
+	--badness: 5;
+}
+
+.statdisplay .stat[type^="incoming"] {
+	--displayDirectionPriority: 2;
+}
+
+.statdisplay .stat[type^="outgoing"] {
+	--displayDirectionPriority: 3;
+}
+
+.statdisplay .stat[type*="Flat"] {
+	--displayFlatnessPriority: -1;
+}
+
+.statdisplay .stat[type="maxhp"] {
+	--displayFlatnessPriority: -2;
+}
+
+.componenteffect {
+	position: absolute;
+	left: 0;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0.5em;
+	padding: 0.5vw;
+	background: var(--dark-color);
+	max-width: 15vw;
+	transform: translate(5vw, -50%);
+	width: 250px;
+	top: 50%;
+	border-left: 2px solid var(--accent-color);
+}
+
+.componenteffect::after {
+	content: "";
+	position: absolute;
+	width: 50%;
+	border-top: 1px dashed var(--bright-color);
+	transform: translateX(100%);
+	right: 0;
+	display: none;
+}
+
+#canvas .slot:nth-child(2n+2) .componenteffect {
+	transform: translateX(105%);
+	align-items: flex-start;
+	border-left: 1px dashed var(--bright-color);
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-right: unset;
+}
+
+#canvas .slot:nth-child(2n+2) .componenteffect::after {
+	transform: translateX(-100%);
+	left: 0;
+	right: unset;
+}
+
+.componenteffect .augments {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.componenteffect .name {
+	text-transform: uppercase;
+	font-family: spacemono;
+	cursor: help;
+	border-bottom: 1px dashed;
+}
+
+.componenteffect .augment-options {
+    justify-content: flex-end;
+	padding-top: 1.25em;
+	border-left: 1px dashed var(--neutral-color);
+	padding-left: 0.5em;
+}
+
+#canvas .slot:nth-child(2n+2) .augment-options {
+	justify-content: flex-start;
+}
+
+.componenteffect .augment-options::before {
+	position: absolute;
+	top: 0;
+	content: "AUG";
+	text-transform: uppercase;
+	letter-spacing: 0.25em;
+	font-size: 0.75em;
+	left: 0.75em;
+	color: var(--neutral-color);
+}
+
+.componenteffect .augment-option {
+	width: 2vw;
+	height: 2vw;
+	margin: 0;
+}
+
+critta-menu .component-clear {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	padding: 0.25em;
+	font-family: spacemono;
+	background-color: var(--dark-color);
+	color: var(--neutral-color);
+	border: 1px solid;
+	font-size: 0.75rem;
+	display: none;
+	cursor: pointer;
+}
+
+critta-menu:not(.has-selection) .slot:hover button {
+	display: block;
+}
+
+/* specific component theming */
+critta-menu .component, critta-map .component {
+	background: var(--background, url(/img/viendbot.png));
+	background-position: var(--background-position, center);
+	background-color: var(--background-color, cover);
+	background-size: cover;
+}
+
+critta-map .component {
+	background-size: var(--background-size, auto);
+}
+
+.accent-color {
+	color: var(--accent-color)
+}
+
+[component="bone"] {
+	--background: url(/img/textures/carapace.gif);
+	--organelle-background: url(/img/textures/carapace.gif);
+	--background-small: url(/img/textures/carapace_small.gif);
+	--background-size: auto;
+	--background-position: center;
+	--background-color: var(--dark-color);
+	--accent-color: var(--bright-color);
+	--font-color: var(--bright-color);
+	--dithertile: url(/img/textures/dithertilestrongest.gif);
+}
+
+[component="ichor"] {
+	--background: url(/img/textures/slowater.gif), url(/img/textures/regen.png);
+	--organelle-background: url(/img/textures/regen.png);
+	--background-small: url(/img/textures/slowatertiny.gif), url(/img/textures/regen_small.png);
+	--background-size: auto;
+	--background-position: center;
+	--background-color: var(--dark-color);
+	--accent-color: var(--friend-color);
+	--font-color: var(--friend-color);
+	--dithertile: url(/img/textures/dithertilestrongest.gif);
+}
+
+[component="claws"] {
+	--background: url(/img/textures/claws.gif);
+	--organelle-background: url(/img/textures/rottile.png);
+	--background-small: url(/img/textures/claws_tiny.gif);
+	--background-position: center -33%;
+	--background-size: auto;
+	--background-color: var(--obesk-color);
+	--accent-color: var(--obesk-color);
+	--font-color: var(--obesk-color);
+	--dithertile: url(/img/textures/dithertilestrongest.gif);
+}
+
+[component="eyes"] {
+	--background: url(/img/textures/hazeflow.gif), url(/img/textures/targettile.png);
+	--organelle-background: url(/img/textures/targettile.png);	
+	--background-small: url(/img/textures/hazeflowtiny.gif), url(/img/textures/targettile_small.png);
+	--background-size: auto;
+	--background-position: center;
+	--background-color: var(--bright-color);
+	--accent-color: var(--neutral-color);
+	--dithertile: url(/img/textures/dithertilestrongestinverse.gif);
+	--font-color: var(--neutral-color);
+}
+
+[component="light"] {
+	--background: url(/img/textures/hazeflow.gif), url(/img/textures/warp.png);
+	--organelle-background: url(/img/textures/warp.png);	
+	--background-small: url(/img/textures/hazeflowtiny.gif), url(/img/textures/warp_small.png);
+	--background-size: auto;
+	--background-position: center;
+	--background-color: var(--bright-color);
+	--accent-color: var(--bright-color);
+	--dithertile: url(/img/textures/dithertilestrongestinverse.gif);
+	--font-color: var(--bright-color);
+}
+
+[component="intrusive"] {
+	--background: black;
+	--organelle-background: black;	
+	--background-small: black;
+	--background-color: black;
+	--accent-color: black;
+	--font-color: black;
+	--dithertile: url(/img/textures/dithertilestrongest.gif);
+}
+
+[component="bstrd"] {
+	--background: url(/img/textures/bflametran.gif);
+	--organelle-background: url(/img/textures/truerot.gif);	
+	--background-small:  url(/img/textures/truerot.gif);
+	--background-size: auto;
+	--background-position: center;
+	--background-color: var(--dark-color);
+	--accent-color: var(--bastard-color);
+	--font-color: var(--bastard-color);
+}
+
+/* selection controls */
+critta-menu.has-selection #cauldron .component:not(.out-of-stock), 
+critta-menu.has-selection .slot::after {
+	box-shadow: 0px 0px 10px 5px var(--neutral-color);
+}
+
+critta-menu.has-selection #cauldron .selected.component {
+	box-shadow: 0px 0px 10px 5px var(--friend-color);
+	border: 5px solid var(--friend-color);
+}
+
+critta-menu #palette .component.out-of-stock {
+	border: 2px dashed var(--dark-color);
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+critta-menu #cauldron .component.undiscovered {
+	border: 2px dashed;
+	opacity: 0.25;
+	order: 2;
+	width: 1em;
+	background: url(/img/textures/hazeflowtiny.gif);
+	cursor: not-allowed;
+}
+
+critta-menu #palette .component.undiscovered::after {
+	display: none;
+}
+
+/* party menu updates */
+.partymember-liner.partymember-editzone {
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	top: unset;
+	overflow: visible;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	padding: 0.25em 0;
+	pointer-events: initial;
+}
+
+.partymember-edit {
+	font-family: spacemono;
+	text-transform: uppercase;
+	font-size: 1rem;
+	background: var(--neutral-color);
+	color: var(--dark-color);
+	border: 1px solid transparent;
+	transform: unset;
+	cursor: pointer;
+}
+
+.partymember-edit:hover {
+	background: var(--dark-color);
+	color: var(--neutral-color);
+	border: 1px solid;
+}
+
+.partymember-editzone.partymember-liner::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	z-index: -1;
+	border-bottom: 2px dashed var(--neutral-color);
+}
+
+.partymember.partymember-editable {
+	flex-wrap: wrap;
+	padding-bottom: 0;
+}
+
+
+critta-map {
+	position: fixed;
+	z-index: 20;
+	--nodeSize: 8vmin;
+	background-color: var(--dark-color);
+}
+
+critta-map::before { /* preload */
+	white-space: pre-wrap;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width: 1px;
+	height: 1px;
+	pointer-events: none;
+	background-image: url(/img/textures/papermeltstill.gif), url(/img/textures/spotgradient.gif), url(/img/textures/panelpatterntran.gif);
+	background-size: 1px;
+	background-repeat: no-repeat;
+}
+
+critta-map::after {
+	content: "";
+	position: absolute;
+	width: 143%;
+	height: 110%;
+	z-index: -2;
+	top: -5%;
+	background: url(/img/local/critta/tv.gif);
+	background-size: 100% 100%;
+	left: -32.75%;
+	pointer-events: none;
+	border-radius: 60px;
+}
+
+.cull-stage critta-map {
+	display: none;
+}
+
+critta-map.generating {
+	display: flex !important;
+}
+
+critta-map #map {
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
+	padding-bottom: 15vmin;
+	height: 100vmin;
+	width: 100vmin;
+	z-index: 1;
+}
+
+critta-map .path {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	pointer-events: none;
+	background-size: cover;
+	opacity: 0.75;
+}
+
+critta-map[rowsetting="base"] .path {
+	background-image: url(/img/local/critta/basemap.gif);
+}
+
+critta-map[rowsetting="adv"] .path {
+	background-image: url(/img/local/critta/advancedmap.gif);
+}
+
+critta-map[rowsetting="hard"] .path {
+	background-image: url(/img/local/critta/hostilemap.gif);
+}
+
+#globals {
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: flex;
+	flex-direction: column;
+	max-height: 80vmin;
+	padding: 0.75rem;
+	gap: 0.75rem;
+	background: var(--dark-color);
+	border: 1px solid var(--obesk-color);
+	border-left: unset;
+}
+
+#globals:empty {
+	display: none;
+}
+
+#globals li {
+	width: 34px;
+	height: 34px;
+	color: var(--bastard-color);
+	border-radius: 100%;
+	background: var(--icon);
+	background-size: cover;
+	cursor: alias;
+	position: relative;
+	box-shadow: 0px 0px 5px 2px;
+	border: 1px dashed;
+}
+
+#globals li::after {
+	content: attr(qty);
+	background: var(--dark-color);
+	width: 1.25em;
+	height: 1.25em;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.75rem;
+	border-radius: 100%;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	transform: translate(25%, 25%);
+	border: 1px solid;
+}
+
+#globals li[qty="1"]::after {
+	display: none;
+}
+
+#globals li[mod="tension"] { background: url(/img/textures/papermelttiny.gif) }
+#globals li[mod="tension"][qty="1"]::after { display: inline-flex }
+#globals li[mod="tension"][qty="1"] { color: var(--friend-color) }
+#globals li[mod="tension"][qty="2"] { color: var(--obesk-color) }
+#globals li[mod="tension"][qty="3"] { color: var(--obesk-color) }
+#globals li[mod="tension"][qty="4"] { color: var(--bastard-color) }
+#globals li[mod="tension"][qty="5"] { color: var(--bastard-color) }
+#globals li[mod="tension"][qty="6"] { color: var(--bright-color) }
+
+#map::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -50;
+	background: url(/img/textures/mass_moderate.gif), url(/img/textures/panelpatternmirror.gif), url(/img/textures/corruripplebastard.gif);
+	background-size: auto, auto 100%, 50% auto;
+	background-position: -70% -95%, bottom, bottom;
+	background-repeat: repeat, repeat-x, repeat-x;
+}
+
+#map::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	background: url(/img/sprites/daemons/wall/wallwarp.gif);
+	background-position: center;
+	width: 80vmin;
+	height: 80vmin;
+	--baseTransform: translateY(-50%);
+	transform: var(--baseTransform);
+	background-size: auto;
+	z-index: -100;
+	border-radius: 100%;
+	pointer-events: none;
+}
+
+body:not([quality="low"]) #map::after {
+	animation: SPIN 120s linear infinite;
+}
+
+.critta-row {
+	flex-grow: 1;
+	width: 100%;
+	display: grid;
+	--count: 3;
+	grid-template-columns: repeat(var(--count), 1fr);
+	justify-content: space-evenly;
+	width: 65vmin;
+} 
+
+.critta-row[depth="0"] {
+	display: flex;
+}
+
+critta-node {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative; 
+	width: var(--nodeSize);
+	height: var(--nodeSize);
+	background: var(--background-small);
+	background-size: auto;
+	background-position: center;
+	background-color: var(--background-color);
+	border: 1px solid var(--difficulty-color);
+	z-index: 2;
+	border-radius: 100%;
+	cursor: pointer;
+	opacity: 0.75;
+	margin: auto;
+}
+
+critta-node::after {
+	content: "";
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	border-radius: 100%;
+	background: var(--difficulty-background);
+	background-position: center;
+	background-color: var(--difficulty-color);
+	border: 2px solid var(--difficulty-color);
+	box-shadow: 0 0 calc(var(--nodeSize) * 0.1) var(--difficulty-color);
+}
+
+critta-node[difficulty="0"] { --difficulty-color: var(--bright-color); --difficulty-background: url(/img/textures/hazeflowtiny.gif); --nodeSize: 4vmin; }
+critta-node[difficulty="1"] { --difficulty-color: var(--friend-color); --difficulty-background: url(/img/textures/memoryhaze.gif);--nodeSize: 6vmin; }
+critta-node[difficulty="2"] { --difficulty-color: var(--obesk-color); --difficulty-background: url(/img/textures/disruptionM.gif); --nodeSize: 8vmin; }
+critta-node[difficulty="3"] { --difficulty-color: var(--bastard-color); --difficulty-background: url(/img/textures/chromebmicro.gif); --nodeSize: 10vmin; }
+critta-node[difficulty="4"] { --difficulty-color: var(--bastard-color); --difficulty-background: url(/img/textures/papermelttiny.gif); --nodeSize: 20vmin; }
+
+.critta-row.current-depth critta-node {
+	box-shadow: 0 0 5px calc(var(--nodeSize) * 0.25) var(--accent-color);
+	opacity: 1;
+	border: 2px solid var(--neutral-color);
+}
+
+.critta-row:not(.current-depth, .cleared-depth):not([depth="0"]):not(.cleared-depth) critta-node:not(.selected) {
+	background: url(/img/textures/spotgradientinversemicro.gif);
+	border: unset;
+	opacity: 0.5;
+	background-size: contain;
+}
+
+critta-map[sidelock="left"] .critta-row:not(.current-depth) critta-node[side="left"]:not(.selected),
+critta-map[sidelock="left"] .critta-row:not(.current-depth) critta-node[side="center"]:not(.selected),
+critta-map[sidelock="right"] .critta-row:not(.current-depth) critta-node[side="right"]:not(.selected),
+critta-map[sidelock="right"] .critta-row:not(.current-depth) critta-node[side="center"]:not(.selected) {
+	opacity: 0.75;
+	border: 2px dashed var(--neutral-color);
+}
+
+critta-map[sidelock="left"] critta-node[side="right"]:not(.selected),
+critta-map[sidelock="right"] critta-node[side="left"]:not(.selected) {
+	opacity: 0.25 !important;
+	box-shadow: unset;
+	border-color: var(--dark-color);
+}
+
+critta-node[difficulty="4"] {
+	border-radius: 100%;
+	border: 5px solid var(--dark-color);
+	background: url(/img/sprites/daemons/wall/crack.gif), url(/img/textures/corruripplegrayscale.gif);
+	background-size: cover;
+	background-color: black;
+	opacity: 1;
+}
+
+critta-node[difficulty="3"] {
+	box-shadow: 0px 0px 5px 5px var(--bastard-color);
+}
+
+critta-node[completed] {
+	background: url(/img/textures/hazeflowtiny.gif) !important;
+	--accent-color: var(--bright-color);
+	border: 2px dashed var(--neutral-color);
+}
+
+critta-node[completed]::after {
+	display: none;
+}
+
+.critta-row.cleared-depth critta-node:not([completed]) {
+	opacity: 0;
+	pointer-events: none;
+	visibility: hidden;
+}
+
+critta-node.in-range {
+	border: 2px solid var(--neutral-color);
+	box-shadow: 0 0 5px 5px var(--neutral-color);
+	z-index: 4;
+}
+
+critta-node.selected, critta-node:hover {
+	z-index: 5;
+	opacity: 1 !important;
+	border: 2px solid var(--obesk-color);
+	box-shadow: 0 0 5px 5px var(--obesk-color);
+}
+
+critta-node.in-range.selected {
+	border: 5px solid var(--neutral-color);
+	box-shadow: 0 0 10px 10px var(--friend-color);    
+}
+
+critta-node[temporary], critta-node.travel-node {
+	background: url(/img/textures/dithertile.gif);
+	border: 5px dashed var(--bright-color);
+}
+
+critta-node:hover {
+	z-index: 6;
+}
+
+critta-ship {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2.5vmin;
+	height: 2.5vmin;
+	transition: transform 2s ease-in-out;
+	transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+	--x: 50vmin;
+	--y: 92vmin;
+	z-index: 2;
+	pointer-events: none;
+	border-radius: 100%;
+	background: url(/img/mui/cur/core.png), url(/img/textures/papertile.gif);
+	border: 1px solid var(--neutral-color);
+	background-position: center;
+}
+
+critta-node .rewardpreview {
+	position: absolute;
+	bottom: 0;
+	transform: translateY(100%);
+	display: flex;
+	gap: 0.5em;
+	opacity: 0.5;
+}
+
+critta-node .rewardpreview:hover {
+	opacity: 1;
+}
+
+critta-node .rewardpreview .reward {
+	width: 1em;
+	height: 1em;
+	cursor: alias;
+	border-radius: 100%;
+	border: 2px solid var(--dark-color);
+	list-style: none;
+	padding-left: 0;
+	background: var(--accent)
+}
+
+critta-node .rewardpreview .reward[type="component"] { --accent: var(--friend-color) }
+critta-node .rewardpreview .reward[type="item"] { --accent: var(--neutral-color) }
+critta-node .rewardpreview .reward[type="impulse"] { --accent: var(--obesk-color) }
+critta-node .rewardpreview .reward[type="global"] { --accent: var(--bastard-color) }
+
+.infopanel {
+	position: absolute;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	min-width: 20vmin;
+	border: 1px solid var(--friend-color);
+	font-size: 0.75rem;
+	background: black;
+	gap: 1em;
+	cursor: initial;
+}
+
+.infopanel[position="lower-left"] { transform: translate(60%, -60%) }
+.infopanel[position="lower-right"] { transform: translate(-60%, -60%) }
+.infopanel[position="upper-left"] { transform: translate(60%, 60%) }
+.infopanel[position="upper-right"] { transform: translate(-60%, 60%) }
+
+.infopanel > :last-child {
+	padding-bottom: 0.75rem;
+}	
+
+.infopanel > :first-child {
+	padding-top: 0.75rem;
+}
+
+.infopanel > * {
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+}
+
+.infopanel .title {
+	font-family: barcodetext;
+	font-size: 2.5em;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--difficulty-color);
+}
+
+.infopanel .title [definition] {
+	cursor: alias;
+	border-bottom: 1px dashed;
+	background: var(--dark-color);
+	display: inline-block;
+}
+
+.infopanel .title::before {
+	content: "                              ";
+	position: absolute;
+	white-space: pre;
+	z-index: -1;
+}
+
+.infopanel.miniboss .title,
+.infopanel.boss .title {
+	text-shadow: 0px 0px 10px var(--obesk-color);
+	animation: DIFFICULTYWARNING 1s steps(10) infinite alternate;
+}
+
+@keyframes DIFFICULTYWARNING {
+	0% {
+		text-shadow: 0px 0px 10px var(--obesk-color);
+	}
+	100% {
+		text-shadow: 0px 0px 5px var(--friend-color);
+	}
+}
+
+.infopanel .survival {
+	text-align: center;
+	border: 1px solid;
+	padding: 0.25em;
+	text-transform: uppercase;
+	border-bottom-style: dashed;
+	cursor: alias;
+}
+
+.infopanel .survival[chance="likely"], 
+.infopanel .survival[chance="possible"], 
+.infopanel .survival[chance="certain"] { color: var(--friend-color) }
+.infopanel .survival[chance="unlikely"] { color: var(--obesk-color) }
+.infopanel .survival[chance="impossible"] { color: var(--bastard-color); }
+
+.infopanel .modifier, #combat > .modifier {
+	display: block;
+	font-family: bastard;
+	color: var(--font-color);
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 2em;
+	padding: 0.25em;
+	background: linear-gradient(0deg, transparent, black, transparent), var(--background);
+	background-position: center;
+	border-top: 1px dashed var(--font-color);
+	border-bottom: 1px dashed var(--font-color);
+	cursor: alias;
+}
+
+/* this also gets passed to combat */
+#combat > .modifier {
+	position: absolute;
+	z-index: 100;
+	right: 1rem;
+	bottom: 1rem;
+	border: 2px solid var(--accent-color);
+	opacity: 1;
+}
+.infopanel .rewards {
+	display: flex;
+	flex-direction: column;
+	gap: 0.13em;
+	align-items: center;
+	max-height: 12vmin;
+	overflow-y: auto;
+}
+
+.infopanel .rewards::before {
+	content: "::RESOURCES::";
+	width: 100%;
+	text-align: center;
+	margin-bottom: 0.5em;
+	display: block;
+}
+
+.infopanel .rewards > li {
+	border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+	padding-bottom: 0.15em;
+	cursor: alias;
+	text-transform: uppercase;
+}
+
+.infopanel .bosshp {
+	text-align: center;
+	font-size: 2em;
+	border-bottom: 2px dashed;
+	margin: auto;
+	cursor: alias;
+	color: var(--bastard-color);
+	text-shadow: 0px 0px 5px var(--obesk-color);
+}
+
+.infopanel .button {
+	background: var(--neutral-color);
+	color: var(--dark-color);
+	font-size: 2.5em;
+	padding: 0;
+	flex-basis: auto;
+	border: 1px solid var(--neutral-color);
+	text-transform: uppercase;
+}
+
+critta-menu[unsaved] .button[intent="save"] {
+	box-shadow: 0px 0px 10px 5px var(--friend-color);
+	color: var(--friend-color);
+	animation: SHAKE 200ms linear infinite alternate;
+}
+
+.infopanel .button[intent="cancel"] {
+	background: var(--dark-color);
+	color: var(--neutral-color);
+}
+
+.infopanel .button[intent="cancel"]:hover {
+	background: var(--neutral-color);
+	color: var(--dark-color);
+}
+
+.infopanel .button[intent="cancel"][disabled] {
+	opacity: 0.5;
+	color: var(--bright-color);
+	border: 1px dashed;
+	pointer-events: none;
+}
+
+.infopanel[cleared] .rewards, 
+.infopanel[cleared] .zones,
+.infopanel.intrusiveinfo .rewards, 
+.infopanel.intrusiveinfo .zones {
+	display: none;
+}
+
+.infopanel .bosswarn {
+	text-transform: uppercase;
+	border-bottom: 1px dashed var(--obesk-color);
+	text-align: center;
+	padding: 0.25em 2em;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: alias;
+}  
+
+.infopanel .bosswarn::before, .infopanel .bosswarn::after {
+	content: "⚠";
+	display: inline-block;
+	animation: SPIN-Y 5s linear infinite;
+	color: var(--obesk-color);
+	position: absolute;
+	left: 0;
+	font-size: 2em;
+}
+
+.infopanel .bosswarn::after {
+	left: unset;
+	right: 0;
+}
+
+.infopanel .bossname {
+	text-align: center;
+	font-family: bastard;
+	text-transform: uppercase;
+	font-size: 2.5em;
+	color: var(--bastard-color);
+	border-bottom: 1px dashed;
+	padding-bottom: 0.15em;
+	margin: auto;
+	cursor: alias;
+}
+
+critta-map .button {
+	text-transform: uppercase;
+}
+  
+.infopanel .button[intent="go"]:hover{
+	background: var(--dark-color);
+	color: var(--neutral-color);
+}
+
+/* tutorial stuff */
+.in-dialogue critta-menu,
+.tutorialmode .menu:not(#dialogue-box) * {
+	pointer-events: none !important;
+}
+
+@keyframes TUTHIGH {
+	0% { transform: scale(1) }
+	100% { transform: scale(1.25) }
+}
+
+.tutorialmode[highlight="cache"] critta-node[type="normal"] {
+	box-shadow: 0px 0px 10px 30px var(--friend-color);
+	animation: TUTHIGH 1s ease-in-out infinite alternate;
+}
+
+.tutorialmode[highlight="shellnode"] critta-node[type="shellnode"] {
+	box-shadow: 0px 0px 10px 30px var(--friend-color);
+	animation: TUTHIGH 1s ease-in-out infinite alternate;
+}
+
+.tutorialmode[highlight="miniboss"] critta-node[type="miniboss"] {
+	box-shadow: 0px 0px 10px 30px var(--bastard-color);
+	animation: TUTHIGH 1s ease-in-out infinite alternate;
+}
+
+.tutorialmode[highlight="ship"] critta-ship::before {
+	box-shadow: 0px 0px 10px 30px var(--obesk-color);
+	animation: TUTHIGH 1s ease-in-out infinite alternate;
+}
+
+.tutorialmode[highlight="shells"] #dialogue-box {
+	transform: translateX(-60vw)
+}
+
+critta-map > button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	padding: 0.25em;
+	font-size: 1.5em;
+	color: white;
+	background: black;
+}
+
+critta-map button[intent="closemenu"] {
+	margin: 1vw;
+}
+
+/* tension modifiers */
+critta-map[tension="0"] #map::after { display: none }
+
+critta-map[tension="0"] #map::after,
+critta-map[tension="1"] #map::after,
+critta-map[tension="2"] #map::after {
+	background: url(/img/textures/mass_moderate.gif), url(/img/sprites/daemons/wall/wallwarp.gif);
+	background-position: top left, center;
+}
+
+critta-map[tension="0"] #map::before,
+critta-map[tension="1"] #map::before,
+critta-map[tension="2"] #map::before {
+	background: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/corruripple.gif);
+	background-size: contain, auto;
+	background-position: top;
+	background-repeat: no-repeat, repeat;
+	z-index: -101;
+}
+
+
+critta-map[tension="0"] #map::before {
+	background: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/corrurippletran.gif), url(/img/textures/cmgradient.gif);
+	background-size: contain, auto, auto 100%;
+	background-repeat: no-repeat, repeat, repeat;
+	transform: unset;
+}
+
+critta-map[tension="1"] #map::before,
+critta-map[tension="2"] #map::before {
+	background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/golembg.gif);
+	background-position: 20% -100%, center;
+	transform: rotate(180deg);
+}
+
+critta-map[tension="2"] #map::before {
+	background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/mspinnel.gif);
+}
+
+critta-map[tension="3"] #map::before,
+critta-map[tension="4"] #map::before,
+critta-map[tension="5"] #map::before {
+	background: url(/img/textures/mass_moderate.gif), url(/img/textures/panelpatternmirror.gif), url(/img/textures/chromebtran.gif);
+	background-size: auto, auto 100%, 50% auto;
+	background-position: -70% -95%, bottom, bottom;
+	background-repeat: repeat, repeat-x, repeat-x;
+}
+
+critta-map[tension="4"] #map::before {
+	background: url(/img/textures/mass_moderate.gif), url(/img/textures/papermelttranblack.gif), url(/img/textures/chromebtran.gif);
+	background-position: -70%, -95%;
+}
+
+body[quality="low"] critta-map[tension="4"]  #map::before,
+body[quality="low"] critta-map[tension="3"]  #map::before {
+	background-image: url(/img/textures/mass_moderate.gif), url(/img/textures/papermelttranblackstill.gif), url(/img/textures/chromebstill.gif);
+}
+
+body[quality="low"] critta-map[tension="5"]  #map::before {
+	background-image: url(/img/textures/mass_moderate.gif), url(/img/textures/panelpatternmirror.gif), url(/img/textures/chromebtranstill.gif);
+}
+
+
+critta-map[tension="5"] {
+	background-color: var(--bright-color);
+}
+
+critta-map[tension="5"] #map::before {
+	background: url(/img/textures/mass_moderate.gif), url(/img/textures/papermelttranblack.gif);
+	background-position: -70%, -95%;
+}
+
+/* temp stuff */
+.spritetext {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30vh;
+	color: var(--accent-color, var(--bastard-color));
+	text-shadow: 1px 1px var(--bastard-color), -1px 1px var(--bastard-color), -1px -1px var(--bastard-color), 1px -1px var(--bastard-color);
+}
+
+.crittaplaceholder.struck, .crittaplaceholder.struck .spritetext {
+	filter: unset !important;
+	color: white;
+}
+
+.in-dialogue critta-map button {
+	pointer-events: none;
+}
+
+.sprite-wrapper.jester {
+	position: absolute;
+}
+
+/* custom backgrounds */
+#combat.wallfight.temp-perspective #enemy-graphic {
+    perspective: unset;
+}
+
+#combat.crittamode::after {
+	background: url(/img/textures/mass_moderate.gif), url(/img/textures/fadeinlonghalfflip.gif),url(/img/textures/papermeltstill.gif);
+	background-position: bottom;
+	width: 100%;
+	height: 100%;
+	background-size: auto, 100vh auto, 20vw;
+	background-repeat: repeat, repeat-x, repeat;
+}
+
+#combat.crittamode::before {
+	display: block;
+	background: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/fadeinflip.gif), url(/img/textures/chromebstill.gif);
+	z-index: 1;
+	max-height: 50vh;
+	bottom: 0;
+	background-repeat: repeat-x, repeat-x, repeat;
+	background-position: top, bottom, center;
+	background-size: auto 60%, 50% auto, auto;
+}
+
+body[quality="regular"] #combat.crittamode::after { background-image: url(/img/textures/mass_moderate.gif), url(/img/textures/fadeinlonghalfflip.gif),url(/img/textures/papermelt.gif); }
+body[quality="regular"] #combat.crittamode::before { background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/fadeinflip.gif), url(/img/textures/chromeb.gif); }
+
+#combat.crittamode.miniboss::after {
+	background-image: url(/img/textures/mass_moderate.gif), url(/img/textures/fadeinlonghalfflip.gif),url(/img/textures/ink.gif);
+}
+
+#combat.crittamode.wallfight::after {
+	width: 150vmax;
+	height: 150vmax;
+}
+
+#combat.crittamode #enemy-team .actor {
+  	margin: 0px 1rem;
+}
+
+.crittamode.targeting #enemy-team {
+    transform: translateY(calc(50vh - 100%));
+    z-index: 31;
+}
+
+#combat.intrusivefight {
+	background: url(/img/textures/ink.gif) !important;
+}
+
+#combat.intrusivefight::after, #combat.intrusivefight::before {
+	display: none !important;
+	animation: unset !important;
+}
+
+.wallfight #enemy-graphic .sprite {
+	max-height: 45vh !important;
+}
+
+.party-title::after, .party-title.party-inactive::after {
+    display: none;
+}
+
+.enemy-actions {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-size: 12px;
+	padding: 0.25em;
+	transition: transform 0.25s ease-in-out;
+}
+
+.enemy-actions[open] {
+  	background: var(--dark-color);
+	color: var(--bright-color);
+	transform: translateY(100%);
+}
+
+.enemy-actions summary {
+  	cursor: pointer;
+	color: var(--bright-color);
+	transform: rotate(-90deg);
+	transform-origin: bottom left;
+	transition: transform 0.25s ease-in-out;
+	padding: 0.25em;
+	text-shadow: 1px 1px var(--dark-color), -1px 1px var(--dark-color), 1px -1px var(--dark-color), -1px -1px var(--dark-color);
+}
+
+.enemy-actions ::marker {
+	color: var(--neutral-color);
+}
+
+.enemy-actions[open] summary {
+  	transform: rotate(0deg);
+}
+
+.enemy-actions[open] > summary::before {
+  	display: none;
+}
+
+.enemy-actions .partymember-action {
+	padding: 0.25em;
+	font-size: 10px;
+	cursor: alias;
+}
+
+.enemy-actions .partymember-action.windup-action::before {
+  	content: ":W::";
+}
+
+.enemy-composition {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	padding: 0.5rem;
+	gap: 0.25rem;
+}
+
+.actor .enemy-composition span {
+	width: 0.75rem;
+	height: 0.75rem;
+	border: 1px solid var(--accent-color);
+	border-radius: 100%;
+	cursor: alias;
+	background: var(--background-small);
+	background-size: var(--background-size);
+	background-position: var(--background-position);
+}
+
+/* merchant */
+.reply.commerce-special {
+	width: 100%;
+	border-color: var(--friend-color);
+	border-radius: 5px;
+	background: var(--dark-color);
+	color: var(--bright-color);
+}
+
+.reply.commerce-item, .reply.commerce-humor {
+	flex-basis: 43%;
+	border-radius: 5px;
+	flex-grow: 1;
+	border-color: var(--obesk-color);
+}
+
+.reply.commerce-humor {
+	border-color: var(--bastard-color);
+	flex-basis: 30%;
+}
+
+/* exchange screen */
+.exchangescreen {
+    position: absolute;
+    width: 75%;
+    bottom: 70%;
+    background: black;
+    border: 1px solid var(--neutral-color);
+    padding: 1em;
+    font-size: 0.5em;
+    text-transform: uppercase;
+    color: var(--bright-color);
+    display: flex;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.exchangescreen.unavailable ul {
+    display: none;
+}
+
+.exchangescreen::after {
+    content: attr(amt);
+    position: absolute;
+    right: 0.5em;
+    text-align: right;
+    color: var(--bright-color);
+    background: url(/img/sprites/combat/items/sferstill.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    font-size: 2.5em;
+}
+
+.exchangescreen h1 {
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+}
+
+.exchangescreen ul {
+    flex-basis: 40%;
+    flex-grow: 1;
+    font-size: 1.525em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15em;
+}
+
+.exchangescreen li {
+    padding-left: 1em;
+    position: relative;
+}
+
+.exchangescreen ul::before {
+    font-size: 0.75em;
+}
+
+.cansale::before {
+    content: "CAN TRADE IN::";
+}
+
+.forsale::before {
+    content: "CAN OBTAIN::";
+}
+
+.exchangescreen ul::before {
+    color: var(--neutral-color);
+}
+
+.exchangescreen li::before {
+    content: attr(value);
+    position: absolute;
+    right: 90%;
+    width: 1.5em;
+    text-align: right;
+    color: var(--bright-color);
+    background: url(/img/sprites/combat/items/sferstill.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.exchangescreen li[type="item"][value="2"]::after {
+    content: " (SPECIAL)";
+}
+
+.exchangescreen li[available="true"] {
+    color: var(--friend-color)
+}
+
+.exchangescreen li[available="false"] {
+    opacity: 0.5;
+    text-decoration: line-through;
+    font-size: 0.75em;
+    padding-left: 1.25em;
+}
+
+critta-map .exchangescreen {
+	z-index: 20;
+	bottom: 0;
+	right: 0;
+	width: 50%;
+	font-size: 1rem;
+	border-style: dashed;
+	cursor: pointer;
+}
+
+critta-map .exchangescreen * {
+	pointer-events: none;
+}
+
+critta-map .exchangescreen.exchangescreen.unavailable {
+	display: none;
+}
+
+critta-map .exchangescreen h1 {
+	display: none;
+}
+
+critta-map .exchangescreen::before {
+	content: "exchange";
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+critta-map .exchangescreen::after {
+	font-size: 1.5rem;
+	transform: translateY(-0.2em)
+}
+
+critta-map .exchangescreen ul {
+	font-size: 1em;
+	display: none;
+}
+
+critta-map .exchangescreen ul li, critta-map .exchangescreen li[available="false"] {
+	font-size: 1em;
+	padding-left: 2.5em;
+}
+
+critta-map .exchangescreen:hover {
+	border-style: solid;
+}
+
+
+critta-map .exchangescreen:hover ul {
+	display: flex;  
+}
+
+  
+/* special win screen */
+#crittaresult {
+	position: absolute;
+	z-index: 10;
+	font-size: 0.75rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 5vh 0;
+}
+
+#crittaresult h1 {
+	font-family: bastard;
+	font-size: 8em;
+	margin: 1vw;
+	color: var(--bastard-color);
+	width: 100%;
+	text-align: center;
+	background: var(--dark-color);
+	padding: 1.5vw 0;
+	position: relative;
+}
+
+#crittaresult h1 span {
+	display: inline-block;
+	transition: 1s ease-out;
+}
+
+#crittaresult h1::before, #crittaresult h1::after {
+	content: "";
+	width: 100%;
+	position: absolute;
+	background: url(/img/sprites/bstrd/chain.gif);
+	background-repeat: repeat-x;
+	height: 0.5em;
+	background-position: center;
+	top: 0;
+	left: 0;
+	transform: translateY(-50%);
+	transition: 1s ease-in;
+}
+
+#crittaresult h1::after {
+	top: unset;
+	bottom: 0;
+	transform: translateY(50%) rotate(180deg);
+}
+
+#crittaresult, #crittaresult * {
+	transition: transform 2s ease-in-out, opacity 2s ease-in-out;
+	text-align: center;
+}
+
+#crittaresult .button {
+	margin-top: 1vw;
+	font-size: 3em;
+	text-transform: uppercase;
+	transition-delay: 1s;
+}
+
+#crittaresult.hideresult h1 { background: transparent }
+#crittaresult.hideresult h1::before { transform: translateX(-100%) }
+#crittaresult.hideresult h1::after { transform: translateY(50%) rotate(180deg) translateX(-100%) }
+#crittaresult.hideresult h1 span { transform: rotate(360deg) scale(0.01) }
+#crittaresult.hideresult .rewardscreen, #crittaresult.hideresult .button, #crittaresult.hideresult .readout-log { opacity: 0; transform: translateY(100%); pointer-events: none; }
+
+#combat.reaping-rewards .team, #combat.reaping-rewards #enemy-graphic {
+	opacity: 0;
+}
+
+#combat.reaping-rewards {
+	background: black;
+}
+
+#combat.reaping-rewards::before, #combat.reaping-rewards::after {
+	opacity: 0;
+}
+  
+
+/* rework rewards */
+critta-reward {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 2em;
+}
+
+critta-reward::after {
+	content: "";
+	background: var(--dark-color);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+	opacity: 0.75;
+	transition: opacity 1.5s ease-in-out;
+}
+
+critta-reward > * {
+	transition: all 1s ease-in-out, opacity 0.5s;
+}
+
+critta-reward h1 {
+	font-family: barcodetext;
+	text-transform: uppercase;
+	font-size: 4em;
+	cursor: alias;
+	border-bottom: 1px dashed;
+	color: var(--neutral-color);
+	z-index: 2;
+}
+
+critta-reward fieldset {
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	gap: 1em;
+}
+
+critta-reward fieldset[help]::before {
+	content: attr(help);
+	white-space: pre-wrap;
+	text-align: right;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	border-top: 1px dashed;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: translateX(-100%);
+	color: var(--neutral-color);
+	padding: 0.5em 1em 0 0;
+	line-height: 1.5em;
+}
+
+critta-reward input[type="radio"] {
+	visibility: hidden;
+	position: absolute;
+}
+
+critta-reward input:checked + label {
+	box-shadow: 0px 0px 5px 5px var(--neutral-color);
+}
+
+critta-reward label {
+	display: flex;
+	border: 1px solid var(--accent-color);
+	cursor: pointer;
+	width: 35rem;
+	max-width: 100%;
+	background: var(--dark-color);
+}
+
+critta-reward label > * {
+	padding: 1em;
+}
+
+critta-reward label .display {
+	width: calc(50px + 2em);
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-right: 1px dashed var(--accent-color);
+	flex-shrink: 0;
+}
+
+critta-reward label .component {
+	color: transparent;
+	font-size: 0.01em;
+	background: var(--background-small);
+	width: 100%;
+	height: calc(50px + 2em);
+	border-radius: 100%;
+	border: 1px solid var(--accent-color);
+	background-color: var(--background-color);
+	position: relative;
+}
+
+critta-reward label .component::after {
+	content: attr(usage) " HELD";
+	width: auto;
+	border-radius: unset;
+	height: auto;
+	padding: 0.5em;
+	white-space: nowrap;
+	left: 50%;
+	transform: translate(-50%, 125%);
+}
+
+critta-reward label .component[usage="0"]::after {
+	content: "NEW";
+	color: var(--neutral-color);
+	border-color: var(--neutral-color);
+}  
+
+critta-reward label .info {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	gap: 0.5em;
+}
+
+critta-reward label .name {
+	font-family: barcodetext;
+	text-transform: uppercase;
+	font-size: 2em;
+}
+
+critta-reward label .description {
+	font-size: 0.75rem;
+	line-height: 1.25em;
+}
+
+critta-reward[type="impulse"] .description,
+critta-reward[type="global"] .description {
+	white-space: pre-line;
+}
+
+critta-reward .impulse-img {
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
+	border-radius: 100%;
+}
+
+critta-reward .reward-option:not([component]) {
+	--accent-color: var(--bright-color);
+}
+
+critta-reward[type="component"] .reward-option[component] .display {
+	background-image: var(--background);
+}
+
+critta-reward:not([type="component"]) .reward-option[component] .display {
+	background-image: var(--background-small);
+}
+
+critta-reward .reward-option[component] .display {
+	background-size: var(--background-size);
+	background-color: var(--background-color);
+	background-position: var(--background-position);
+}
+
+critta-reward .reward-option:not([component]) .display {
+	background: url(/img/textures/hazeflow.gif);
+}
+
+critta-reward .buttons {
+	width: 35rem;
+	gap: 1rem;
+}
+
+critta-reward .button[intent="decline"] {
+	color: var(--obesk-color);
+}
+
+critta-reward .button[intent="decline"]:hover {
+	background: var(--obesk-color);
+	color: var(--dark-color);
+}
+
+/* component rewards show what actions they give! */
+critta-reward[type="component"] .description {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+critta-reward .component-actions {
+	display: flex;
+	width: 100%;
+	gap: 1em;
+	justify-content: center;
+	align-items: flex-start;
+	max-height: 0px;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 1s ease-in-out;
+}
+
+critta-reward[type="component"] input:checked + label .component-actions {
+	max-height: 20vh;
+	opacity: 1;
+	margin-top: 2em;
+	pointer-events: initial;
+}
+
+critta-reward .component-actions li {
+	padding: 0.5em;
+	font-size: 1rem;
+	position: relative;
+	flex-basis: 33%;
+	flex-grow: 1;
+	border: 1px dashed var(--accent-color);
+}
+
+critta-reward .component-actions h2 {
+	color: var(--accent-color);
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	position: absolute;
+	top: 0;
+	transform: translateY(-150%);
+	left: 0;
+}
+
+critta-reward .statdisplay.micro {
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+critta-reward .componenteffect {
+	display: contents;
+}
+
+critta-reward .component-ability, critta-reward .componenteffect::after, critta-reward .stat.action:not([override="ADD"])::before {
+	display: none;
+}  
+
+critta-reward [definition] {
+	padding-bottom: 0.1em;
+	border-bottom: 1px dashed;
+	cursor: alias;
+}
+
+/* impulse rewards have you choose a party member to give them to and we hide a bunch of unnecessary stuff */
+critta-reward fieldset.actor-choice {
+	flex-direction: row;
+	width: 35rem;
+}
+
+critta-reward .actor-option {
+	flex-grow: 1;
+	flex-basis: 33%;
+	display: flex;
+}
+
+critta-reward .actor-option label {
+	width: 100%;
+	max-width: unset;
+	border: 0;
+}
+
+critta-reward .partymember.partymember-editable {
+	width: 100%;
+	flex-basis: unset;
+	margin: 0;
+	padding: 1rem;
+	gap: 0.5em;
+	flex-direction: column;
+	justify-content: flex-start;
+	cursor: pointer;
+}
+
+critta-reward .partymember-actions, 
+critta-reward .partymember-hp, 
+critta-reward .partymember-filler,
+critta-reward .partymember-edit,
+critta-reward .partymember-editzone.partymember-liner,
+critta-reward .partymember-subtitle {
+	display: none;
+}
+
+critta-reward .partymember-title {
+	position: relative;
+	top: unset;
+}
+
+critta-reward .partymember-name {
+	width: 100%;
+	text-align: center;
+}
+
+critta-reward .partymember-passives.passives {
+	opacity: 1;
+	transform: unset;
+	position: relative;
+	top: unset;
+	flex-direction: row;
+	justify-content: center;
+	max-height: unset;
+}
+
+critta-reward .partymember-composition {
+	display: flex;
+	top: 25%;
+	bottom: unset;
+	transform: translateY(-50%);
+}
+
+critta-reward input[disabled] + label {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+critta-reward input[disabled] + label .partymember {
+	border: 1px transparent solid;
+	cursor: not-allowed;
+}
+
+/* item rewards */
+critta-reward[type="item"] label .display {
+	width: calc(100px + 2em);
+	padding: 0;
+	position: relative;
+	z-index: 1;
+}
+
+critta-reward[type="item"] label .display::after {
+	content: "";
+	position: absolute;
+	padding-bottom: 100%;
+	width: 100%;
+	background: url(/img/textures/dithertilestrongest.gif);
+	z-index: -1;
+	border-radius: 100%;
+}
+
+critta-reward[type="item"] label .display img {
+	width: 100%;
+	height: 100%;
+	object-fit: none;
+	filter: drop-shadow(2px 2px var(--accent-color));
+}
+
+critta-reward[type="item"] label .name {
+	color: var(--neutral-color);
+}
+
+critta-reward[type="item"] label .name .qty {
+	color: var(--friend-color);
+}
+
+critta-reward[type="item"] label .item-ic {
+	border-color: var(--neutral-color);
+	margin-top: unset;
+}
+
+critta-reward[type="item"] label .item-description {
+	padding: unset;
+}
+
+critta-reward[type="item"] label .item-details {
+	gap: 1em;
+} 
+
+critta-reward .fish .fish-img, .item-image.fish {
+	animation: SPIN-Y 5s linear infinite;
+}
+
+.item-image.fish {
+	width: 150px;
+}
+
+critta-reward .reward-option.fish {
+	--accent-color: var(--bastard-color);
+}
+
+critta-reward .reward-option.fish .display {
+	background: url(/img/textures/chromebstill.gif);
+}
+
+/* globals */
+critta-reward[type="global"] .display img {
+	border-radius: 100%;
+	max-width: 100%;
+	width: 60px;
+}
+
+critta-reward[type=global] .global_impulse_bonus .display {
+	background-image: url(/img/textures/bflametiny.gif);
+}
+
+critta-reward[type=global] .global_escalation .display {
+	background-image: url(/img/textures/chromebmini.gif);
+	background-size: contain;
+}
+
+critta-reward[type="global"] .global_anti .display {
+	background-image: url(/img/textures/papermelt.gif)
+}
+
+critta-reward[type="global"] .global_intrusive img {
+	width: 100%;
+	height: 100%;
+	border-radius: unset;
+	position: absolute;
+	max-width: unset;
+	object-fit: none;
+}
+
+critta-reward[type="global"] .global_intrusive .display {
+	padding: 1em;
+	position: relative;
+}
+
+/* animate-in on crittarewards */
+critta-reward.fading {
+	pointer-events: none;
+}
+
+critta-reward.pre-show h1, critta-reward.pre-show::after {
+	opacity: 0;
+}
+
+critta-reward * > * {
+	--thisDelay: calc( (var(--index, 1) / var(--total, 3)) * 0.5s );
+	transition: transform 0.75s var(--thisDelay) ease-in-out, opacity 0.5s var(--thisDelay);
+}
+
+critta-reward.pre-show fieldset > *, 
+critta-reward.pre-show fieldset::before,
+critta-reward.pre-show .buttons > * {
+	opacity: 0;
+	transform: translateY(50%);
+	pointer-events: none;
+}
+
+/* reward scaling */
+
+critta-reward.excessive {
+	font-size: 0.85rem;
+}
+
+.actor-option .passives .status-effect {
+	border-width: 1px;
+}
+
+critta-reward .actor-option .passives {
+	padding: 0;
+	max-height: 11vh;
+	width: 100%;
+	gap: 0em;
+}
+
+critta-reward.excessive .actor-option .passives {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+@media only screen and (max-height: 800px) {
+	critta-reward, critta-reward.excessive {
+		font-size: 0.75rem;
+	}
+}
+
+/* boat escape */
+#e3a2stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transform: rotateX(-40deg) rotateZ(20deg) rotateX(20deg);
+    animation: BOATVIEW 20s ease-in-out infinite alternate;
+    transition: perspective 600ms linear;
+}
+
+@keyframes BOATVIEW {
+    0% { transform: rotateX(-40deg) rotateZ(20deg) rotateX(20deg) }
+    100% { transform: rotateX(-20deg) rotateZ(-20deg) rotateY(-20deg) }
+}
+
+#ocean {
+    width: 1000px;
+    height: 1000px;
+    transform-style: preserve-3d;
+    transform: rotateX(90deg);
+    transition: transform 1000ms ease-in-out;
+    background: url(/img/textures/spotgradient.gif), url(/img/textures/chromebmicrotranfast.gif);
+    background-size: cover, 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ocean #enemy-graphic {
+    transform-origin: bottom;
+    transform: translateY(-150%) rotateX(-90deg);
+    top: 0;
+    width: 200px;
+    height: 100px;
+    perspective: unset;
+    transform-style: preserve-3d;
+}
+
+#ocean .position-wrapper {
+    max-width: 100px;
+    max-height: 200px;
+    position: absolute;
+    transition: transform 1s ease-in-out;
+    transform-style: preserve-3d;
+}
+
+#ocean .position-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(/img/textures/spotgradientinversetiny.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translateZ(-5px)
+}
+
+#ocean #enemy-graphic .sprite {
+    height: 100px;
+    width: 200px;
+}
+
+#ocean .position-wrapper:nth-child(2) {
+    transform: translate(-100%, -100%) rotateY(20deg) rotateX(-20deg);
+}
+
+#ocean .position-wrapper:nth-child(3) {
+    transform: translate(0%, -150%) translateZ(-50px) rotateX(-40deg);
+}
+
+#ocean .position-wrapper:nth-child(4) {
+    transform: translate(100%, -80%) translateZ(-50px) rotateY(-50deg) rotateX(-30deg);
+}
+
+#ocean .position-wrapper:nth-child(5) {
+    transform: rotateY(45deg) translate(-180%) rotateY(20deg);
+}
+
+#ocean .position-wrapper:nth-child(6) {
+    transform: rotateY(-45deg) translate(180%, 20%) rotateY(-20deg);
+}
+
+#ocean .position-wrapper:nth-child(7) {
+    transform: rotateY(90deg) translate(80%, -20%) rotateY(-90deg);
+}
+
+#ocean .position-wrapper.king, #ocean .position-wrapper.queen {
+    max-width: 200px;
+    transform: translateY(-50%) translateX(-70%) rotateY(45deg) translateZ(-100px) rotateX(-20deg);
+}
+
+#ocean .position-wrapper.queen {
+    transform: translateY(-50%) translateX(70%) rotateY(-45deg) translateZ(-100px) rotateX(-20deg);
+}
+
+#combat.standoff #enemy-team .actor.mainfoe.last-stand {
+	position: absolute;
+}
+
+#combat.standoff #enemy-team .actor.mainfoe.last-stand:not(:only-child) {
+	opacity: 0.5;
+	transform: translateY(-50%);
+}
+
+#ocean .jester {
+	--baseTransform: translateY(-100%) rotateX(-60deg) translateY(-0%);
+	transform: var(--baseTransform);
+}
+
+#ocean .daemon.director .hand {
+	--baseTransform: translate(-120%, -50%) rotate(-10deg)
+}
+
+#ocean .daemon.director .hand:last-of-type {
+	--baseTransform: translate(120%, -40%) rotate(-30deg)
+}
+
+boat-obstacle.jestersplash {
+  	border: 10px solid var(--obesk-color);
+}
+
+boat-obstacle.jestersplash figure {
+	border: 10px solid var(--obesk-color);
+	background: url(/img/textures/papertile.gif);
+	background-position: center;
+	animation: GROW 1s steps(16) infinite;
+}
+
+boat-obstacle.jestersplash::after {
+	content: "";
+	position: absolute;
+	transform: rotateX(90deg);
+	background: url(/img/textures/paperspray.gif);
+	background-size: contain;
+	background-position: bottom center;
+}
+
+boat-obstacle.jestersplash.attacking figure {
+	border: 10px solid var(--obesk-color);
+	background: url(/img/textures/chromebwave.gif);
+	background-size: contain;
+	background-position: center bottom;
+	animation: unset;
+	transform: translateZ(50px) rotateX(-30deg)
+}
+
+
+boat-obstacle.jesterwave {
+	border: 5px solid var(--obesk-color);
+}
+
+boat-obstacle.jesterwave::before {
+	content: ""
+}
+
+boat-obstacle.jesterwave figure {
+	transform: rotateX(-50deg) translateY(-50%);
+	width: 100%;
+	height: 200px;
+	background: url(/img/textures/chromebwave.gif);
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+boat-obstacle.jesterwave::before {
+	content: "↓↓↓";
+	position: absolute;
+	bottom: 0;
+	font-size: 200px;
+	color: var(--obesk-color);
+	animation: TELEMOVE 1s linear infinite;
+}
+
+@keyframes TELEMOVE {
+	0% { transform: translateY(0); opacity: 0; }
+	20% { transform: translateY(20%); opacity: 1; }
+	90% { transform: translateY(90%); opacity: 1; }
+	100% { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes GROW {
+	0% { transform: scale(0.001) }
+	100% { transform: scale(1) }
+}  
+
+#boat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 300px;
+    transform-style: preserve-3d;
+    background: url(/img/textures/bustedtile.gif), white;
+    background-size: 33% 25%;
+    transition: transform 400ms ease-in-out;
+    transform: translateX(calc(250px * (var(--col) - 1))) translateZ(10px) rotate(var(--directionAngle));
+    --col: 1;
+    --directionAngle: 0deg;
+}
+
+.boatgfx {
+    width: 33%;
+    position: absolute;
+    height: 25%;
+    background-size: contain;
+    background-position: bottom;
+    backface-visibility: hidden;
+    transform: translateY(-100%) rotateX(-90deg);
+    transform-origin: bottom;
+    background-repeat: no-repeat;
+}
+
+.boatgfx.controls {
+    top: 0;
+    width: 100%;
+    background-image: url(/img/local/critta/tinystuff.gif?);
+}
+
+.boatgfx.side.left {
+    width: 300px;
+    left: 0;
+    transform-origin: bottom left;
+    bottom: 0;
+    transform: rotate(-90deg) rotateX(-90deg);
+    background: url(/img/local/critta/bstliner_tiny_side.gif);
+}
+
+.boatgfx.side.right {
+    right: 0;
+    width: 300px;
+    bottom: 0;
+    transform: rotate(90deg) rotateX(-90deg);
+    transform-origin: bottom right;
+    background: url(/img/local/critta/bstliner_tiny_side.gif);
+}
+
+.boatgfx.side {
+    height: 10%;
+    backface-visibility: visible;
+}
+
+.boatgfx.side.up {
+    top: -1px;
+    width: 100%;
+    background: url(/img/local/critta/bstliner_tiny_ends.gif);
+}
+
+.boatgfx.side.down {
+    bottom: 0;
+    background: url(/img/local/critta/bstliner_tiny_ends.gif);
+    width: 100%;
+    transform: rotateX(-90deg);
+}
+
+.boatgfx .sprite-wrapper {
+    height: 100%;
+    width: 100%;
+    flex-basis: unset;
+    background: inherit;
+}
+
+.boatgfx figure {
+    width: 100%;
+    height: 150%;
+    background: inherit;
+    position: absolute;
+    bottom: 0;
+}
+
+.boatgfx.interloper {
+    top: 20%;
+}
+
+.boatgfx.interloper figure {
+    background-image: url(/img/sprites/lopertiny.gif);
+}
+
+.boatgfx.bstrd {
+    top: 20%;
+    left: 0;
+}
+
+.boatgfx.bstrd figure {
+    background-image: url(/img/sprites/bstrd/bstrd_tiny.gif);
+    width: 150%;
+    height: 175%;
+}
+
+.dreammode .boatgfx.bstrd figure {
+	background-image: url(/img/local/uncosm/ozo/akieffigy_bstrd_gun_AWAY.gif);
+	height: 125%;
+}  
+
+.dreamdog .boatgfx.kuulla {
+	background: url(/img/local/embassy/isotiny.gif);
+	background-size: contain;
+	background-repeat: no-repeat;
+	transform: translateX(-100%) rotate(20deg) rotateX(-17deg);
+}
+
+.boatgfx.geli {
+    top: 10%;
+    right: 0;
+}
+
+.boatgfx.geli figure {
+    background-image: url(/img/sprites/obesk/geli/geli_tiny.gif);
+    height: 170%;
+}
+
+.boatgfx .sprite-wrapper.dead {
+    filter: grayscale(1) contrast(2) invert(1);
+    transform: rotate(30deg)
+}
+
+#combat.standoff::before {
+    background: black;
+}
+
+#combat.standoff::after {
+    background: url(/img/textures/spotgradientbigbastard.gif);
+    z-index: 2;
+    width: 110%;
+    height: 110%;
+    background-size: 150% 150%;
+    background-position: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 200ms;
+    animation: SHAKE 100ms linear infinite;
+    animation-play-state: paused;
+}
+
+#combat.midair.standoff::after {
+    opacity: calc(1 / var(--air));
+}
+
+#combat.midair.standoff[air="1"]::after {
+    animation-play-state: running;
+}
+
+body:not([quality="low"]) #combat.standoff .spritestatus-destabilized > :not(.target) {
+	filter: blur(1px) contrast(2);
+}
+
+/* special 3D attack anim */
+#boat .basic-attack {
+	animation-name: boat-basic-attack !important;
+}
+
+@keyframes boat-basic-attack {
+    0% { transform: rotateX(50deg) translateZ(5px)}
+    50% { transform: rotateX(-20deg) translateZ(200px)}
+    100% { transform: rotateX(0deg) translateZ(5px)}
+}
+
+#content.shifting .actions {
+	pointer-events: none;
+}
+
+#content.shifting .actions .action {
+	opacity: 0.5;
+}
+
+#content.shifting .actions::after {
+	content: "WAIT 4 BOATE TO MOVE";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(10deg);
+	z-index: 10;
+	width: 100%;
+	text-align: center;
+	font-family: bastard;
+	font-size: 2em;
+	color: var(--bastard-color);
+}
+/* boate */
+boat-escape {
+    display: flex;
+    align-items: flex-end;
+    position: absolute;
+    width: 700px;
+    height: 100%;
+    transform: translateY(-50%);
+    border: 5px dashed var(--neutral-color);
+    transform-style: preserve-3d;
+}
+
+boat-escape::after {
+    content: "";
+    position: absolute;
+    width: 1500px;
+    height: 1500px;
+    transform: translateX(-50%) translateY(calc(50% * (var(--progress) - var(--length)))) rotateX(-90deg) translateY(-15%);
+    top: 0;
+    left: 50%;
+    background: url(/img/textures/spotgradient.gif), URL(/img/sprites/daemons/wall/crack.gif), url(/img/sprites/daemons/wall/wallwarp.gif);
+    backface-visibility: hidden;
+    transition: transform 1s ease-in-out;
+    background-size: 100% 100%, cover, auto;
+    background-position: center;
+}
+
+boat-obstacle {
+    --distance: 1;
+    --col: 1;
+    --opacity: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    width: 33%;
+    height: 300px;
+    position: absolute;
+    transform-origin: bottom;
+    transition: transform 400ms ease-in-out;
+    transform: translateY(calc(var(--distance) * -100%)) translateY(50%) translateX(calc((var(--col) * 100%)));
+    transform-style: preserve-3d;
+}
+
+boat-obstacle figure, boat-obstacle:after {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: var(--opacity);
+    transition: opacity 400ms ease-in-out;
+}
+
+boat-obstacle.harmful {
+    background: url(/img/textures/papertile.gif);
+    background-position: center;
+    border-radius: 100%;
+    border: 2px solid var(--bastard-color);
+}
+
+boat-obstacle.harmful figure {
+    background: url(/img/sprites/daemons/wall/tendrils.gif?);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    transform: rotateX(-90deg) translateY(-50%);
+}
+
+boat-obstacle.movement figure {
+    background: url(/img/textures/warpsmallc.gif);
+    background-size: 100% 100%;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    transition: opacity 400ms ease-in-out;
+    transform: unset;
+}
+
+boat-obstacle.movement::after {
+    content: attr(type);
+    color: var(--friend-color);
+    font-size: 300px;
+    transform: rotateX(-90deg) translateY(-25%) rotateX(60deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+}
+
+boat-obstacle.spring figure {
+    transform: unset;
+    background-color: var(--bastard-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+boat-obstacle.spring figure::after {
+    content: "◉";
+    color: var(--friend-color);
+    font-size: 200px;
+    animation: SPIN 500ms steps(10) infinite;
+    --baseTransform: translateZ(40px) rotateX(-20deg);
+    border-radius: 100%;
+}
+
+boat-obstacle.pickup {
+	background: url(/img/textures/spotgradientinversetiny.gif);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 5px solid var(--friend-color);
+	border-radius: 100%;
+}
+
+boat-obstacle.pickup figure {
+    background: var(--itemImage);
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotateX(-90deg) translateY(-50%);
+}
+
+boat-obstacle.pickup.spent figure {
+    opacity: 0.2;
+}
+
+boat-obstacle.pickup.aima {
+    --itemImage: url(/img/sprites/combat/items/aimacyst_dither.gif);
+}
+
+boat-obstacle.pickup.restorative {
+    --itemImage: url(/img/sprites/combat/items/restorative_dither.gif);
+}
+
+boat-obstacle.pickup.satik {
+    --itemImage: url(/img/sprites/combat/items/satik_dither.gif);
+}
+
+boat-obstacle.pickup.kavruka {
+    --itemImage: url(/img/sprites/combat/items/kavruka_dither.gif);
+}
+
+boat-obstacle.invisible {
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+}
+
+
+/* midair cam */
+.midair #e3a2stage {
+    perspective: calc(150px * var(--air));
+}
+
+.midair #ocean {
+    transform: translateZ(calc(var(--air) * -200px)) translateY(200px) rotateX(20deg);
+}
+
+.midair.finalair #ocean {
+    transform: translateZ(calc(var(--air) * -100px)) translateY(200px) rotateX(90deg) rotateZ(100deg)
+}
+
+.midair #boat {
+    transform: 
+        translateX(calc(250px * (var(--col) - 1))) 
+        translateZ(calc(200px * var(--air))) 
+        rotate(var(--directionAngle))
+        rotateX(30deg);
+}
+
+.midair.finalair #boat {
+    transform: 
+        translateX(calc(250px * (var(--col) - 1))) 
+        translateZ(350px) 
+        rotate(var(--directionAngle)) 
+        rotateX(30deg);
+}
+
+/* special combat stuff */
+.action[action="incoherent_mimic"] {
+	background: var(--bright-color);
+	color: var(--dark-color);
+	border-color: var(--bastard-color);
+}
+
+#combat[stopsteer="left"] .action[action="special_steerleft"], #combat[stopsteer="right"] .action[action="special_steerright"], #combat.midair [action="special_floorit"] {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.action[action="special_floorit"] {
+    width: 100%;
+    flex-basis: 100%;
+    order: 2;
+}
+
+.action[action="special_steerleft"], .action[action="special_steerright"] {
+    order: 3;
+}
+
+.action[action="special_floorit"], .action[action="special_steerleft"], .action[action="special_steerright"] {
+    color: var(--bastard-color);
+    font-weight: 600;
+}
+
+/* fishing! */
+fishing-minigame {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    background: #000000d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/img/textures/dithertilestrongest.gif), url(/img/textures/chromeb.gif);
+	animation: FADE-IN 1s ease-in;
+	transition: opacity 1s ease-in;
+}
+
+@keyframes FADE-IN {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+fishing-minigame.notstarted::after {
+    content: "NOTICE::'instruction';\a'use quadrants to pull target into reel circle';\a'distance from center influences pull strength';\a'activate reel to catch target'";
+    white-space: pre-wrap;
+    position: absolute;
+    top: 10vh;
+    pointer-events: none;
+    background: black;
+    padding: 1em;
+    font-size: 1em;
+    display: inline-block;
+    z-index: 20;    
+}
+
+#fish {
+    width: 5vmin;
+    height: 5vmin;
+    background: url(/img/textures/disruptionC.gif), black;
+    border: 2px solid var(--obesk-color);
+    border-radius: 100%;
+    z-index: 2;
+    position: absolute;
+}
+
+#quadrants {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quadrant {
+    width: 50%;
+    border: 5px dashed var(--neutral-color);
+    z-index: 1;
+}
+
+.quadrant.pulled {
+	animation: shake-crazy 100ms;
+}
+
+#reel {
+    position: absolute;
+    z-index: 3;
+    border-radius: 100%;
+    width: calc(var(--size) * 1vmin);
+    height: calc(var(--size) * 1vmin);
+	background: transparent;
+	border: 5px solid var(--friend-color);
+	--size: 10;
+	transition: all 400ms linear
+}
+
+.notstarted #reel {
+	animation: unset;
+}
+
+#reel.yank {
+	animation: SPIN-Y 100ms;
+}
+
+#reel.reelrange {
+    border: 5px solid var(--friend-color);
+    background: transparent;
+}
+
+.fishcontrol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#fishbox {
+    --fishset-x: 30vw;
+    --fishset-y: 20vh;
+    --fishset-rotate: 50deg;
+    --fishspeed-x: 5s;
+    --fishspeed-y: 10s;
+    --fishspeed-rot: 10s;
+    transform: translate(var(--fishset-x), var(--fishset-y)) rotate(var(--fishset-rotate));
+    transition: transform 200ms ease-in-out;
+}
+
+#fishbox::after {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: green;
+}
+
+#fishtate {
+    animation: FISHROTATE var(--fishspeed-rot) ease-in-out infinite alternate;
+}
+
+#fishmove-y {
+    animation: FISH-Y var(--fishspeed-y) linear infinite alternate;
+}
+
+#fishmove-x {
+    animation: FISH-X var(--fishspeed-x) linear infinite alternate;
+}
+
+#fishwrap {
+    animation: shake-crazy 2s ease-in-out infinite;
+}
+
+
+#fishbox.caught {
+	--fishset-x:  0 !important;
+	--fishset-y: 0 !important;
+	--fishset-rotate:  0deg !important;
+}
+
+#fishbox.caught #fishtate, #fishbox.caught #fishmove-y, #fishbox.caught #fishmove-x {
+	animation: unset;
+}
+
+@keyframes FISHROTATE {
+    0% { transform: rotate(0deg) }
+    50% { transform: rotate(220deg) }
+    100% { transform: rotate(360deg) }
+}
+
+@keyframes FISH-Y {
+    0% { transform: translateY(-15vh) }
+    25% { transform: translateY(-10vh) }
+    50% { transform: translateY(-10vh) }
+    100% { transform: translateY(15vh) }
+}
+
+@keyframes FISH-X {
+    0% { transform: translateY(-15vw) }
+    33% { transform: translateY(-15vw) }
+    66% { transform: translateY(0vw) }
+    100% { transform: translateY(15vw) }
+}
+
+.quadrant, #reel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer
+}
+
+#reel::after {
+    content: "REEL\a(ENTER/SPACE)";
+    white-space: pre-wrap;
+    text-align: center;
+    font-size: 0.75em;
+	opacity: 0.75;
+	padding: 0.25em;
+	white-space: nowrap;
+	background: rgba(0, 0, 0, 0.75);
+}
+
+.quadrant:hover, #reel:hover {
+  border-color: var(--friend-color);
+  background: #00ffff14;
+}
+
+.quadrant::after {
+  display: inline-block;
+  background: black;
+  font-size: 1.5em;
+  padding: 0.5em;
+  color: var(--neutral-color)
+}
+
+#topleft.quadrant::after {
+  content: "PULL ↖";
+}
+
+#topright.quadrant::after {
+  content: "PULL ↗";
+}
+
+#bottomright.quadrant::after {
+  content: "PULL ↘";
+}
+
+#bottomleft.quadrant::after {
+  content: "PULL ↙";
+}
+
+#timer {
+    position: fixed;
+    top: 20vh;
+    z-index: 20;
+    background: black;
+    font-size: 2em;
+    padding: 0.5em;
+}
+
+#timer.runninglow {
+    animation: SHAKE 500ms linear infinite;
+}
+
+#timersec {
+    text-shadow: 1px 1px var(--bright-color);
+}
+
+#timer.runninglow #timersec {
+    display: block;
+    position: relative;
+    transform-origin: center;
+    animation: TIMERGROW;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes TIMERGROW {
+    0% { transform: scale(1) }
+    100% { transform: scale(3) }
+}
+
+/* */
+.notstarted #timer {
+    display: none;
+}
+
+.notstarted #reel::after {
+    content: "BEGIN FISHING";
+    opacity: 1;
+}
+
+.notstarted .quadrant, .finished .quadrant {
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.notstarted #reel {
+    background: black;
+    border: 5px solid var(--neutral-color);
+}
+
+.finished .fishcontrol, .finished .fishcontrol * {
+	animation-play-state: paused !important;
+}
+
+body.fishingtime::after {
+    content: "";
+    position: absolute;
+    z-index: 15;
+    pointer-events: none;
+    width: 100vmin;
+    height: 100vmin;
+    background: url(/img/local/critta/fishyrod.gif?);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    bottom: 0;
+    background-size: auto 90%;
+    transform: translate(10vw, 20vh);
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+body.in-dialogue.fishingtime::after {
+	transform: translate(-10vw, 20vh);	
+}
+
+body.fishingtime.fadefishrod::after {
+    opacity: 1;
+}
+
+body.fishingtime.lowerfishingrod.fadefishrod::after {
+    transform: translate(10vw, 70vh);
+	opacity: 0.1;
+}
+
+.bootstack {
+	position: absolute;
+	background: url(/img/sprites/combat/items/fishboot.gif);
+	width: 143px;
+	height: 114px;
+	backface-visibility: visible;
+	bottom: 0;
+	transform: translateY(calc(-10px * var(--count))) var(--offset) translateZ(calc(3px * var(--count))) rotateY(-20deg);
+}
+
+.bootstack.stack {
+	background: url(/img/sprites/combat/items/fishboot_stack.gif);
+	width: 330px;
+	height: 217px;
+	transform: translateY(calc(-10px * var(--count))) var(--offset) translateZ(calc(13px * var(--count)));
+}
+
+.bootstack.megastack {
+	background: url(/img/sprites/combat/items/fishboot_stack_big.gif);
+	width: 494px;
+	height: 310px;
+	transform: translateY(calc(-5px * var(--count))) var(--offset) translateZ(calc(5px * var(--count))) translateX(-20%);
+}

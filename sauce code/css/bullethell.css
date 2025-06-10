@@ -1,0 +1,519 @@
+.bh_started #content {
+	--bh_xp: 0;
+	--bh_yp: 0;
+	--bh_x: 0;
+	--bh_y: 0;
+	cursor: url(/img/mui/cur/core.png) 16 16, auto;
+}
+
+.bh_started #readout, 
+.bh_started #entity-menu, 
+.bh_started #entity-details,
+.bh_started #meta-links,
+.bh_started #meta-menu .ci-bars {
+	display: none;
+}
+
+#bh_player {
+	width: 30px;
+	height: 30px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	border-radius: 100%;
+	pointer-events: none;
+	z-index: 9;
+	will-change: top, left;
+	--baseTransform: translate(-15px, -15px);
+	transform: var(--baseTransform);
+	background-color: var(--bright-color);
+	border: 2px solid var(--neutral-color);
+	transition: opacity 200ms linear;
+	opacity: 0;
+}
+
+#bh_player.active {
+	opacity: 1;
+}
+
+.bh_damaged #bh_player {
+	animation: BIGSHAKE 200ms linear infinite;
+}
+
+.bh_dodged #bh_player {
+	animation: SPIN-Y 200ms linear;
+}
+
+.bh_damaged #bh_player {
+	border-color: var(--obesk-color)
+}
+
+.bh_dodged #bh_player, #bh_player.invuln {
+	border-color: var(--friend-color)
+}
+
+#bh_player::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(/img/mui/mindspikelogoactive.gif);
+	background-size: cover;
+	background-position: center;
+	--baseTransform: translateX(0);
+	animation: SPIN 10s linear infinite;
+}
+
+#bh_player.invuln::before {
+	background-image: url(/img/mui/mindspikelogo.gif);
+}
+
+#bh_player.pulse::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	animation: BH_PULSE 100ms ease-in-out;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	border: 2px solid var(--neutral-color);
+	animation-fill-mode: forwards;
+}
+
+@keyframes BH_PULSE {
+	0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+	90% { transform: translate(-50%, -50%) scale(2); opacity: 1;}
+	100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+.bh_started .bh_damager {
+	cursor: not-allowed;
+	will-change: transform;
+}
+
+/* movefriend attacks */
+/* spike */
+
+.bh_movespike {
+	position: absolute;
+	top: var(--y);
+	left: var(--x);
+	background: url(/img/textures/badstatic.gif);
+	background-position: center;
+	background-size: cover;
+	border: 2px solid var(--obesk-color);
+	width: 20vmin;
+	height: 20vmin;
+	animation: MOVESPIKE calc(var(--duration) * 1ms) linear;
+	animation-fill-mode: forwards;
+}
+
+.bh_movespike[side="top"] {
+	--startPos: translateX(-50%) translateY(-150%) scaleX(0);
+	--telePos: translateX(-50%)  translateY(-20%) scaleX(0.5);
+	--endPos: translateX(-50%)  translateY(110vh) scaleX(0.5);
+}
+
+.bh_movespike[side="bottom"] {
+	--startPos: translateX(-50%) translateY(150%) scaleX(0);
+	--telePos: translateX(-50%) translateY(0%) scaleX(0.5);
+	--endPos:  translateX(-50%) translateY(-130vh) scaleX(0.5);
+}
+
+.bh_movespike[side="left"] {
+	--startPos: translateY(-50%) translateX(-150%) scaleY(0);
+	--telePos: translateY(-50%) translateX(-20%) scaleY(0.5);
+	--endPos: translateY(-50%) translateX(110vw) scaleY(0.5);
+}
+
+.bh_movespike[side="right"] {
+	--startPos: translateY(-50%) translateX(150%) scaleY(0);
+	--telePos: translateY(-50%) translateX(0%) scaleY(0.5);
+	--endPos: translateY(-50%) translateX(-130vw) scaleY(0.5);
+}
+
+@keyframes MOVESPIKE {
+	0% { transform: var(--startPos) rotate(45deg) }
+	30% { transform: var(--telePos) rotate(45deg) }
+	100% { transform: var(--endPos) rotate(45deg) }
+}
+
+/* spiral variant */
+.bh_spiralspike {
+	position: absolute;
+	top: var(--y);
+	left: var(--x);
+	animation: SPIRALATTACK var(--duration) linear;
+	animation-fill-mode: forwards;
+}
+
+.bh_spiralspike::after { /* telegraph */
+	content: "";
+	position: absolute;
+	height: 50vmax;
+	border: 1px dashed var(--dark-color);
+	z-index: -1;
+}
+
+.bh_spiralspike .bh_movespike {
+	--x: 0px;
+	--y: 0px;
+	transform: translate(-50%, -50%) scaleX(0.5) rotate(45deg);
+	animation: unset;
+}
+
+@keyframes SPIRALATTACK {
+	0% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(-120vmax)}
+	100% { transform: translate(-50%, -50%) rotate(var(--angle)) translateY(120vmax)}
+}
+
+/* pit */
+.bh_movepit {
+	position: absolute;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 100%;
+	background: url(/img/textures/ultradarkclouds.gif);
+	border: 2px solid var(--obesk-color);
+	transform: var(--baseTransform) scale(0.001);
+	transition: transform var(--growSpeed) ease-in-out;
+}
+
+.bh_movepit.top				{top: 0; 		left: 50%; 	--baseTransform: translate(-50%, -50%)}
+.bh_movepit.top.left		{top: 0; 		left: 0%; 	--baseTransform: translate(-50%, -50%)}
+.bh_movepit.top.right		{top: 0; 		right: 0%;	--baseTransform: translate(50%, -50%); left: unset;}
+.bh_movepit.center			{top: 50%; 		left: 50%;	--baseTransform: translate(-50%, -50%); width: 40vmax; height: 40vmax;}
+.bh_movepit.center.left		{top: 50%; 		left: 0%;	--baseTransform: translate(-50%, -50%)}
+.bh_movepit.center.right	{top: 50%; 		right: 0%;	--baseTransform: translate(50%, -50%); left: unset;}
+.bh_movepit.bottom			{bottom: 0%; 	left: 50%;	--baseTransform: translate(-50%, 50%)}
+.bh_movepit.bottom.left		{bottom: 0%; 	left: 0%;	--baseTransform: translate(-50%, 50%)}
+.bh_movepit.bottom.right	{bottom: 0%; 	right: 0%;	--baseTransform: translate(50%, 50%); left: unset;}
+
+.bh_movepit.growing {
+	transform: var(--baseTransform) scale(1)
+}
+
+/* wall */
+.bh_movewall {
+	position: absolute;
+	background: url(/img/textures/mspinnel.gif);
+	border: 2px solid var(--obesk-color);
+	transition: transform var(--speed) ease-in-out;
+}
+.bh_movewall.top, .bh_movewall.bottom { width: 100vw; height: calc(var(--size) * 1vh); transform: translateY(0) }
+.bh_movewall.left, .bh_movewall.right { height: 100vh; width: calc(var(--size) * 1vw); transform: translateX(0) }
+
+.bh_movewall.top { top: 0; }
+.bh_movewall.bottom { bottom: 0; } 
+.bh_movewall.left { left: 0; } 
+.bh_movewall.right { right: 0; }
+
+.bh_movewall.top.inactive { transform: translateY(-100%) }
+.bh_movewall.bottom.inactive { transform: translateY(100%) }
+.bh_movewall.left.inactive { transform: translateX(-100%) }
+.bh_movewall.right.inactive { transform: translateX(100%) }
+
+/* movefriend gakvu break-in */
+.bh_gakvuplatform {
+	width: 100%;
+	height: 100%;
+	-webkit-clip-path: circle(0%);
+	clip-path: circle(0%);
+	background: url(/img/textures/blockerc.gif);
+	background-size: auto;
+	background-repeat: repeat;
+	background-position: center;
+	animation: SHAKE 200ms linear infinite;
+	transition: clip-path 2s cubic-bezier(.64,-0.29,.22,1.56), -webkit-clip-path 2s cubic-bezier(.64,-0.29,.22,1.56);
+	pointer-events: none;
+	z-index: 2;
+}
+
+.bh_gakvuplatform.active {
+	-webkit-clip-path: circle(10%);
+	clip-path: circle(10%);
+	pointer-events: unset;
+}
+
+.bh_gakvuplatform.activefail {
+	-webkit-clip-path: circle(0%);
+	clip-path: circle(0%);
+	pointer-events: unset;
+}
+
+.bh_gakvuplatform.explosion {
+	-webkit-clip-path: circle(100%);
+	clip-path: circle(100%);
+}
+
+/* movefriend graphical adjustments for low quality */
+body[quality="low"] .bh_spiralspike, body[quality="low"] .bh_movespike {
+	animation-timing-function: steps(60) !important;
+	transition-timing-function: steps(60) !important;
+}
+
+body[quality="low"] .bh_movepit, body[quality="low"] .bh_movewall {
+	animation-timing-function: steps(120) !important;
+	transition-timing-function: steps(120) !important;
+}
+
+/* 
+
+BSTRD attacks
+
+*/
+
+/* bh_shot - a dot that appears, then after half of its 'delay', flashes AOE with danger */
+/* after full delay, animate into damage */
+.bh_shot {
+	position: fixed;
+	top: var(--y);
+	left: var(--x);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 25vmin;
+	height: 25vmin;
+	border-radius: 100%;
+	border: 2px dotted transparent;
+
+	background: url(/img/sprites/combat/bstrdcrosshair.gif), url(/img/sprites/combat/bstrdwarning.png);
+	background-size: cover, auto;
+}
+
+.bh_shot.bh_shot_windup {
+	animation: unset;
+	pointer-events: none;
+	background: transparent;
+}
+
+.bh_shot.bh_shot_windup::before {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	background-image: url(/img/sprites/combat/bstrdcrosshair.gif);
+	background-size: cover;
+	opacity: 0;
+	animation: BH_SHOT_WINDUP 500ms steps(20);
+	animation-delay: var(--delay);
+	animation-fill-mode: forwards;
+	transform-origin: center;
+}
+
+.bh_shot::after {
+	content: "";
+	position: absolute;
+	width: 15%;
+	height: 15%;
+	border-radius: 100%;
+	background: url(/img/sprites/combat/bstrdcrosshair.gif);
+	background-size: cover;
+	opacity: 1;
+}
+
+@keyframes BH_SHOT_WINDUP {
+	0%, 50% {
+		opacity: 0;
+		transform: rotate(0deg)
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotate(360deg)
+	}
+}
+
+/* bh_kavruka - a kavruka toss that explodes!! also includes perma stage damage */
+.bh_kavruka {
+	position: fixed;
+	top: var(--y);
+	left: var(--x);
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	width: 15vmin;
+	height: 15vmin;
+	border-radius: 100%;
+	border: 2px dotted var(--bastard-color);
+}
+
+.bh_kavruka.exploding {
+	background-color: var(--bastard-color);
+	animation: SHAKE 100ms steps(10) infinite;
+}
+
+.bh_kavruka.bh_deflectable {
+	background: var(--neutral-color);
+	border: 10px outset var(--neutral-color);
+}
+
+.bh_kavruka.bh_deflected {
+	background: unset;
+	border: unset;
+}
+
+.bh_kavruka::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-origin: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+	pointer-events: none;
+}
+
+.bh_kavruka::after {
+	width: 200px;
+	height: 200px;
+	animation: bh_grenade-graphic var(--spritedelay) ease-in;
+	animation-fill-mode: forwards;
+	background-image: url(/img/sprites/combat/items/kavruka.gif);
+}
+
+.bh_kavruka.exploding::after {
+	width: 40vmax;
+	height: 40vmax;
+	background-image: url(/img/sprites/combat/explosion.png);
+	animation: bh_grenade-explosion 1s ease-out;
+	animation-fill-mode: forwards;
+}
+
+.bh_kavruka.bh_deflected::after {
+	animation: bh_grenade-graphic-fling 800ms ease-out;
+	animation-fill-mode: forwards;
+}
+
+.bh_kavruka::before {
+	content: "!!";
+	color: var(--neutral-color);
+	text-shadow: 1px 1px var(--dark-color);
+	font-family: bastard;
+	font-size: 3em;
+	animation: bh_grenade-warning 500ms steps(10) infinite alternate;
+}
+
+.bh_kavruka.bh_deflected::before {
+	display: none;
+}
+
+body[quality="low"] .bh_kavruka::after {
+	animation-timing-function: steps(60);
+}
+
+body[quality="low"] .bh_kavruka.exploding::after {
+	animation-timing-function: steps(30);
+}
+
+body[quality="low"] .bh_kavruka.bh_deflected::after {
+	animation-duration: 400ms;
+	animation-timing-function: steps(20);
+}
+
+@keyframes bh_grenade-warning {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes bh_grenade-graphic {
+	0% { 
+		transform: scale(0.01) translate(-10vw, -60vh) rotate(470deg);
+		opacity: 0;
+	}
+
+	90% {
+		transform:  scale(0.85) translate(-1vw, -5vh) rotate(20deg);
+		opacity: 0.7;
+	}
+
+	98% {
+		transform:  scale(0.75) translate(-1vw, -3vh) rotate(10deg);
+		opacity: 0.9;
+	}
+
+	100% {
+		transform: scale(0.01) translate(0, 0) rotate(0deg);
+		opacity: 0;
+	}
+}
+
+@keyframes bh_grenade-graphic-fling {
+	0% { 
+		transform: scale(0.75) translate(-1vw, -3vh) rotate(10deg);
+		opacity: 0.9;
+	}
+
+	100% {
+		transform: translate(-20vw, -100vh) scale(0.01) rotate(470deg);
+		opacity: 0;
+	}
+}
+
+@keyframes bh_grenade-explosion {
+	0%, 100% { 
+		transform: scale(0.00)
+	}
+
+	50% {
+		transform: scale(1)
+	}
+}
+
+.bh_kavrukafire, .bh_kavrukafirering {
+	background-image: url(/img/textures/bflame.gif);
+	position: absolute;
+}
+
+.bh_kavrukafire {
+	width: 30vmin;
+	height: 30vmin;
+	top: var(--y);
+	left: var(--x);
+	border-radius: 100%;
+	transform: translate(-50%, -50%) rotate(var(--deg));
+	-webkit-clip-path: polygon(70.71% 100%, 51.68% 70.71%, 80% 92.5%, 74.37% 76.76%, 100% 70.71%, 69.61% 63.46%, 93.27% 53.9%, 78.96% 44.63%, 100% 29.29%, 64.64% 35.36%, 92.74% 20.98%, 74.83% 22.31%, 90.77% 7.5%, 73.79% 6.38%, 56.28% 24.25%, 70.71% 0%, 50.18% 14.3%, 29.29% 0%, 35.36% 26.57%, 7.63% 7.63%, 21.25% 32.75%, 0% 29.29%, 14.75% 52.3%, 0% 70.71%, 12.73% 70.71%, 7.63% 92.5%, 21.25% 80.59%, 18.46% 96.25%, 30.28% 87.97%, 29.29% 100%, 38.52% 90.42%, 62.5% 100%, 46.89% 87.97%);
+	clip-path: polygon(70.71% 100%, 51.68% 70.71%, 80% 92.5%, 74.37% 76.76%, 100% 70.71%, 69.61% 63.46%, 93.27% 53.9%, 78.96% 44.63%, 100% 29.29%, 64.64% 35.36%, 92.74% 20.98%, 74.83% 22.31%, 90.77% 7.5%, 73.79% 6.38%, 56.28% 24.25%, 70.71% 0%, 50.18% 14.3%, 29.29% 0%, 35.36% 26.57%, 7.63% 7.63%, 21.25% 32.75%, 0% 29.29%, 14.75% 52.3%, 0% 70.71%, 12.73% 70.71%, 7.63% 92.5%, 21.25% 80.59%, 18.46% 96.25%, 30.28% 87.97%, 29.29% 100%, 38.52% 90.42%, 62.5% 100%, 46.89% 87.97%);
+}
+
+body[quality="low"] .bh_kavrukafire {
+	width: 25vmin;
+	height: 25vmin;
+	clip-path: unset;
+	-webkit-clip-path: unset;
+}
+
+.bh_kavrukafire.grow {
+	animation: bh_fire-grow 1s ease-out
+}
+
+@keyframes bh_fire-grow {
+	0% { transform: translate(-50%, -50%) rotate(var(--deg)) scale(0.001) }
+	100% { transform: translate(-50%, -50%) rotate(var(--deg)) scale(1) }
+}
+
+.bh_kavrukafirering {
+	width: 110vw;
+	height: 110vh;
+	--kavrukaDamageCount: 0;
+	--kU: calc(100% - (var(--kavrukaDamageCount) * 0.5%));
+	--kL: calc(0% + (var(--kavrukaDamageCount) * 0.5%));
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-clip-path: polygon(evenodd, 0% 0%, 100% 0%, 100% 100%, 0% 100%, var(--kL) var(--kU), var(--kL) var(--kL), var(--kU) var(--kL), var(--kU) var(--kU), var(--kL) var(--kU), 0% 100%);
+	clip-path: polygon(evenodd, 0% 0%, 100% 0%, 100% 100%, 0% 100%, var(--kL) var(--kU), var(--kL) var(--kL), var(--kU) var(--kL), var(--kU) var(--kU), var(--kL) var(--kU), 0% 100%);
+	transition: clip-path 500ms, -webkit-clip-path 500ms;
+}

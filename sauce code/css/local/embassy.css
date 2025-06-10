@@ -1,0 +1,2407 @@
+@import url(/css/local/embassy_global.css);
+
+/* RELOCATOR - DAY 3 MODIFICATIONS */
+body[id^="embassy_relocator"] .collapse #realgrid::after, body[id^="embassy_relocator"] .collapse #realgrid::before {
+    animation-play-state: paused;
+    background-image: url(/img/local/embassy/elevatordark.gif);
+}
+
+.collapse #realgrid .lifter:not(.fixed) {
+    background-image: url(/img/local/embassy/liftfrienddarker.gif);
+} 
+
+.collapse #realgrid .lifter:not(.fixed) figure::after, 
+.collapse #realgrid .lifter:not(.fixed) figure::before, 
+.collapse .lifter:not(.fixed)::before {
+    display: none;
+}
+
+.lifter.aggressormode { background-image: url(/img/local/embassy/liftfrienddark.gif) !important; }
+.lifter.aggressormode figure::after { display: block !important; }
+
+/* ROOM - RECREATION */
+/* based off research, twists around to highlight bozko/kazki at first, then barfriend and tozik/gakvu as you approach them */
+body[id="embassy_recreation"] .swapcam .grid-animator {transform: rotateZ(0deg)}
+body[id="embassy_recreation"] .swapcam .grid-container {
+    --camera-height: 1;
+    --camera-x: 3;
+    --camera-y: 8;
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    --camera-offset: rotateX(-20deg) rotate(var(--faceAngle));
+}
+
+body[id="embassy_recreation"] .swapcam .grid-container[swapos="bar"] {
+    --camera-x: 7.25;
+    --camera-y: 5.25;
+}
+
+body[id="embassy_recreation"] .swapcam .grid-container[swapos="kazkicorner"] {
+    /* kazkibozko */
+    --camera-x: 8.5;
+    --camera-y: 7.5;
+}
+
+body[id="embassy_recreation"] #content:not(.collapse) {
+    background-color: var(--dark-color);
+}
+
+body[id="embassy_recreation"] #realgrid {
+    --embassyWallLength_Y: 5.5;
+    --embassyWallLength_X: 11;
+}
+
+body[id="embassy_recreation"] #content:not(.collapse)::after {
+    background: url(/img/textures/fadeinlonghalf.gif), var(--friend-color);
+    transform: translateY(-25%) rotate(180deg);
+}
+
+body[id="embassy_recreation"][quality="low"] #content:not(.collapse)::after {
+    background: url(/img/local/embassy/cavewall.gif), url(/img/textures/fadeinlonghalf.gif), var(--friend-color);
+    background-position: left -300%, center;
+    background-repeat: repeat-x;
+    transform: translateY(-25%) rotate(180deg);
+}
+
+body[id="embassy_recreation"] #realgrid .gridpiece.wall::after, body[id="embassy_recreation"] #realgrid .gridpiece.wall::before {
+    height: calc(var(--gridTileSize) * 6);
+    background-image: url(/img/local/embassy/cavewall.gif);
+}
+
+body[id="embassy_recreation"] #realgrid .listener {
+    transform: translateY(-25%) rotateX(-90deg) rotateY(135deg) translateZ(calc(0.5 *var(--gridTileSize)));
+}
+
+#realgrid .prop .bar {
+    width: calc(var(--gridTileSize) * 6.9);
+    height: calc(var(--gridTileSize) * 2);
+    background: transparent;
+    bottom: unset;
+    border-radius: 0 0 100% 100%;
+    top: 0;
+    transform: translateZ(calc(var(--gridTileSize) * 0.4));
+    border: calc(var(--gridTileSize) * 0.5) double var(--friend-color);
+    border-top: 0;
+}
+
+#realgrid .prop .bar::after, #realgrid .prop .bar::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: inherit;
+    border-radius: inherit;
+    transform: inherit;
+    top: 0;
+}
+
+#realgrid .prop .bar::after {
+    transform: translateZ(calc(var(--gridTileSize) * 0.2));
+}
+
+#realgrid .bar figure {
+    width: calc(var(--gridTileSize) * 8);
+    height: calc(var(--gridTileSize) * 3);
+    position: absolute;
+    transform: rotateX(-90deg) translateZ(calc(var(--gridTileSize) * -0.73)) translateY(-30%);
+    background-image: url(/img/local/embassy/barbase.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#realgrid .bar figure::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background-image: url(/img/local/embassy/bardrinks.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    --baseTransform: translateZ(50px);
+}
+
+body[quality="regular"] #realgrid .bar figure::after {
+    animation: TINYHOVER 7s ease-in-out infinite alternate;
+}
+
+#realgrid .prop .table {
+    transform: translateZ(calc(0.75 * var(--gridTileSize)));
+    bottom: unset;
+    background: var(--dark-color);
+    width: calc(var(--gridTileSize) * 1.5);
+    height: calc(var(--gridTileSize) * 4);
+    border: 5px double var(--obesk-color);
+    border-radius: 5%;
+}
+
+#embassy_recreation #realgrid .barfriend {
+    transform: translateY(-25%) rotateX(-90deg) translateZ(calc(-1 * var(--gridTileSize)));
+}
+
+.barfriend figure {
+    background-image: url(/img/sprites/obesk/golem.gif);
+    animation: TINYHOVER 5s ease-in-out infinite alternate;
+}
+
+#realgrid .canopy figure {
+    width: calc(var(--gridTileSize) * 2);
+    height: calc(var(--gridTileSize) * 2);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/img/sprites/obesk/circletable.gif);
+    transform: rotateX(90deg) translateZ(calc(var(--gridTileSize) * -0.2));
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+
+.canopy figure::after, .canopy figure::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 63%;
+    transform: rotateX(-90deg) translateY(-70%) rotateY(10deg);
+    background: url(/img/sprites/obesk/circletablecysts.gif);
+    background-position: bottom;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.canopy figure::before {
+    transform: rotateX(-90deg) rotateY(100deg) translateY(-70%);
+}
+
+#realgrid .canopy .deskleg {
+    width: 50%;
+    height: 50%;
+    transform: rotateX(-90deg) translateY(50%);
+}
+
+.canopy .lid {
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translateZ(calc(var(--gridTileSize) * 1.5));
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+.cornerbooth figure, .cornerbooth figure::after, .cornerbooth figure::before {
+    content: "";
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    bottom: 0;
+    right: 0;
+    width: calc(var(--gridTileSize) * 4);
+    height: calc(var(--gridTileSize) * 4);
+    background: url(/img/local/embassy/cornermasscolor.gif?);
+    background-size: cover;
+    transform: var(--baseTransform) translateZ(2px);
+    --baseTransform: translate(calc(-0.5 * var(--gridTileSize)), calc(-0.5 * var(--gridTileSize)));
+}
+
+.cornerbooth figure::after {
+    transform-origin: bottom right;
+    --baseTransform: rotateY(-90deg) rotate(90deg);
+}
+
+.cornerbooth figure::before {
+    --baseTransform: rotateX(90deg) rotate(-90deg);
+    transform-origin: bottom right;
+}
+
+#realgrid .window {
+    transform: rotateX(-90deg) rotateY(225deg) translateY(-100%) translateZ(calc(var(--gridTileSize) * 0.75)) translateX(-20%);
+    bottom: unset;
+    width: calc(var(--gridTileSize) * 2);
+    height: calc(var(--gridTileSize) * 1);
+    background-image: url(/img/local/embassy/window.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#realgrid .window::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: url(/img/textures/corruripplegrayscale.gif);
+    transform: translateZ(-1px);
+}
+
+#realgrid[embassyday="1"] .window::before {
+    background: url(/img/local/embassy/shipscreen.gif), url(/img/textures/corrurippletran.gif), url(/img/textures/staticcontrast.gif);
+    background-size: cover, auto, auto;
+}
+
+.fishies #realgrid[embassyday="1"] .window::before {
+    background: url(/img/local/embassy/fishies.gif);
+    background-size: cover;
+}
+
+/* char angles */
+body[id="embassy_recreation"] .gridpiece .bozko {
+    --charTransform: rotateY(145deg);
+}
+
+body[id="embassy_recreation"] .gridpiece .kazki {
+    --charTransform: rotateY(-60deg) translateZ(calc(-0.25 * var(--gridTileSize)));
+}
+
+body[id="embassy_recreation"] .gridpiece .gakvu {
+    --charTransform: rotateY(90deg) translateZ(calc(var(--gridTileSize) * 2.01)) translateY(20%);
+}
+
+/* bar drinks */
+.drinklayer {
+    transition: all 1s ease-in-out
+}
+
+.drinklayer[drink="none"] {
+    display: none;
+}
+
+#content.swapcam > .drinklayer {
+    display: none !important;
+}
+
+.drinklayer .target {
+    display: none;
+}
+
+.drinklayer[drink="orange"] {
+    position: absolute;
+    background-image: url(/img/local/embassy/drinkybigorange.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.drinklayer[drink="orange"] .target[entity="orange simulacrum"] {
+    display: flex;
+}
+
+#content > .drinklayer[drink="orange"] {
+    bottom: 0;
+    right: 10vw;
+    width: 30vw;
+    height: 30vw;
+    transform: translateY(15%) rotate(-10deg);
+    transition: transform 1s ease-in-out;
+}
+
+.in-dialogue #content > .drinklayer {
+    transform: translateY(60%) rotate(-20deg);
+}
+
+.akizet .drinklayer {
+    width: 25% !important;
+    height: 25% !important;
+    top: 25%;
+    left: 15%;
+    transform: translateZ(30px);
+    transition: transform 2s ease-in-out;
+}
+
+.sipping .akizet .drinklayer {
+    transform: translateZ(40px) translateY(-40%) translateX(80%) rotateX(40deg);
+}
+
+#content.sipping > .drinklayer {
+    transform: translate(-50%, 100%) scale(3) rotate(-10deg) rotateX(50deg);
+}
+
+.sipping .drinklayer .target {
+    pointer-events: none;
+}
+
+.innerfocus .drinklayer {opacity: 0;}
+
+/* RECREATION - COLLAPSE ADJUSTMENTS */
+.collapse .canopy .lid {
+    transform: translateZ(calc(var(--gridTileSize) * 1)) rotateX(20deg);
+}
+
+.collapse .canopy figure::after, .collapse .canopy figure::before {
+    transform: rotateX(-100deg) translateY(-25%) rotateY(10deg);
+    backface-visibility: visible;
+}
+
+.collapse .canopy figure::before {
+    transform: rotateX(-100deg) rotateY(-30deg) translateY(-25%);
+}
+
+.collapse #realgrid .canopy figure {
+    backface-visibility: visible;
+    --webkit-backface-visibility: visible;
+}
+
+.collapse .gridpiece .canopy {
+    transform: rotateX(-175deg) translateZ(calc(var(--gridTileSize) * -1)) translateY(90%);
+}
+
+.collapse #realgrid .prop .bar {
+    transform: translateZ(calc(var(--gridTileSize) * 0.4)) rotateY(2deg);
+}
+
+.collapse #realgrid .prop .bar::after {
+    transform: translateZ(calc(var(--gridTileSize) * 0.2)) rotateY(3deg);
+}
+
+.collapse #realgrid .prop .bar::before {
+    transform: rotateY(4.5deg);
+}
+
+.collapse #realgrid .bar figure {
+    transform: rotateX(-90deg) translateZ(calc(var(--gridTileSize) * -0.5)) translateY(-30%) rotateX(-10deg);
+    background-image: url(/img/local/embassy/barbasedark.gif);
+}
+
+#content.collapse #realgrid .bar figure::after {
+    animation: unset;
+    transform: var(--baseTransform);
+    background-image: url(/img/local/embassy/bardrinksdark.gif)
+}
+
+.collapse .prop .bar::after, .collapse .prop .bar::before, .collapse .prop .bar {
+    animation: BARFLICKER 5s linear infinite;
+    animation-delay: unset !important;
+}
+
+@keyframes BARFLICKER {
+    0% { border-color: var(--friend-color) }
+    90% { border-color: var(--dark-color) }
+    96% { border-color: var(--obesk-color) }
+    100% { border-color: var(--dark-color) }
+}
+
+body[quality="medium"].collapse #realgrid[stage="embassy_recreation"] .gridpiece.wall::after, body[quality="medium"].collapse #realgrid[stage="embassy_recreation"] .gridpiece.wall::before {
+    display: block;
+}
+
+body[quality="regular"].collapse #realgrid[stage="embassy_recreation"] .gridpiece.wall::after, body[quality="regular"].collapse #realgrid[stage="embassy_recreation"] .gridpiece.wall::before {
+    display: block;
+    background-image: url(/img/textures/tranclouds.gif), url(/img/local/embassy/cavewall.gif);
+}
+
+.collapse .barfriend.character {
+    --charTransform: translateZ(calc( -1.3 * var(--gridTileSize) )) rotateZ(15deg) rotateX(-10deg);
+}
+
+.dyingqou > * {
+    backface-visibility: visible;
+}
+
+.dyingqou figure {
+    width: 150%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    background-image: url(/img/sprites/obesk/deadqou.gif);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+/* ROOM - PERSONNEL HALLWAY */
+body[id="embassy_personnel"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(-90deg);
+}
+
+body[id="embassy_personnel"] .swapcam .grid-container {
+    --camera-offset:
+        translateZ(calc( var(--gridTileSize) * 1))
+        translateY(calc(var(--gridTileSize) * -3.5)) 
+        rotateX(-20deg) 
+         /* this rotate moves the camera with you as you move down the hall to the relocator */
+         /* but also, if you're closer to akizet's room entrance side of the wall, it pushes the camera to highlight the attendant a bit*/
+        rotate(calc(
+                (var(--stage-height) * 0.5) * 
+                ((var(--camera-y) - 4) - var(--camera-x)) *
+                -1deg
+        ));
+}
+
+body[id="embassy_personnel"] #realgrid {
+    --embassyWallLength_Y: 8.5;
+    --embassyWallLength_X: 5;
+}
+
+/* ROOM - CPERSONNEL (collapse personnel hall) cause they have nowhere else to go lol this room has no styling */
+body[id="embassy_cpersonnel"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(0deg);
+}
+
+body[id="embassy_cpersonnel"] .swapcam .grid-container {
+    --camera-offset:
+        translateZ(calc( var(--gridTileSize) * 1))
+        translateY(calc(var(--gridTileSize) * -2)) 
+        translateX(calc(var(--gridTileSize) * 0)) 
+        rotateX(-30deg) 
+         /* faces the door wall as you go further, twisting around to show the way you came after you left any of the doors */
+        rotate(calc(
+            (
+              (var(--stage-height) * 0.5) - (var(--camera-y) - 3)
+            ) * 10deg
+            +
+            (
+              (var(--stage-width) + 3) - (var(--camera-x) * 2)
+            ) * 15deg
+        ));
+}
+
+/* ROOM - AKIZET'S QUARTERS */
+.swapcam .grid-animator[activestage="embassy_quarters"] {transform: rotateZ(0deg)}
+.swapcam .grid-container[activestage="embassy_quarters"] {
+    --camera-x: calc((var(--stage-steps-x) * 1) - 3);
+    --camera-y: calc(4 + (var(--stage-steps-y) * -1));
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-height: 1;
+    --camera-distance: 0;
+    --camera-offset:
+        rotateX(-20deg)
+        rotate( atan2( var(--distX), var(--distY) ));
+}
+
+body[id="embassy_quarters"] #realgrid {
+    --embassyWallLength_Y: 5;
+    --embassyWallLength_X: 5;
+}
+
+body[id="embassy_quarters"] #realgrid .desk .doodad.d1 {
+    background-image: url(/img/sprites/obesk/dd1.gif);
+    --baseTransform: translateX(150%) rotateY(-45deg);
+}
+
+body[id="embassy_quarters"] #realgrid .desk .doodad.d2 {
+    background-image: url(/img/sprites/obesk/dd2.gif);
+    --baseTransform: translateX(-150%) rotateY(45deg);
+}
+
+body[id="embassy_quarters"] #realgrid .desk .doodad.d3 {
+    background-image: url(/img/sprites/obesk/cystrack.gif);
+    width: calc(var(--gridTileSize) * 2.5);
+    height: calc(var(--gridTileSize) * 1);
+    --baseTransform: translateZ(calc(var(--gridTileSize) * -0.25));
+}
+
+body[id="embassy_quarters"] #realgrid .desk .doodad.catalyst {
+    background-image: url(/img/local/embassy/messagecyst.gif);
+    --baseTransform: rotate(90deg) rotateX(-90deg) translateY(-50%) translateZ(calc(var(--gridTileSize) * 0.25));
+    width: calc(var(--gridTileSize) * 0.5);
+    background-position: bottom;
+    animation: HOVER 3s ease-in-out infinite alternate;
+    opacity: 0;
+    pointer-events: none;
+    animation-play-state: paused;
+}
+
+.doodad.catalyst .target {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+body[id="embassy_quarters"] #realgrid[embassyday="2"] .doodad.catalyst {
+    opacity: 1;
+    pointer-events: initial;
+    animation-play-state: running;
+}
+
+body[id="embassy_quarters"] .cystmelted #realgrid[embassyday="2"] .doodad.catalyst {
+    animation: unset;
+    transform: var(--baseTransform);
+    background-image: url(/img/local/embassy/messagecyst_melted.gif);
+}
+
+/* ROOM - RESEARCH */
+body[id="embassy_research"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(-90deg);
+}
+
+body[id="embassy_research"] .swapcam .grid-container {
+    --camera-offset:
+        translateZ(calc( var(--gridTileSize) * 1))
+        translateY(calc(var(--gridTileSize) * -3.5)) 
+        rotateX(-20deg) 
+        /* twists the camera around to face various characters as you move around the stage */
+        rotate(calc(
+                (
+                  (var(--stage-height) * 0.5) -
+                  (var(--camera-y) - var(--camera-x) * 2)
+                ) * 10deg
+                
+        ));
+}
+
+body[id="embassy_research"] #realgrid {
+    --embassyWallLength_Y: 5.5;
+    --embassyWallLength_X: 11;
+}
+
+body[id="embassy_research"] #realgrid .desk figure {
+    height: 200%;
+    transform: translateY(calc(0.15 * var(--gridTileSize))) rotateX(90deg);
+}
+
+#realgrid .prop .timestopper {
+    transform: unset;
+    bottom: unset;
+    width: 500%;
+    height: 500%;
+}
+
+.timestopper .target {
+    transform: translateZ(calc(var(--gridTileSize) * 0.6));
+}
+
+#realgrid .timestopper, #realgrid .timestopper > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timestopper canvas {
+    position: absolute;
+}
+
+.timestople {
+    transform: var(--baseTransform);
+    backface-visibility: hidden;
+    --baseTransform: translateZ(1px);
+}
+
+.timestople.t2 {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.1));
+    animation-duration: 120s;
+}
+
+.timestople.t3 {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.2));
+    animation-duration: 100s;
+}
+
+.timestople.t4 {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.3));
+    animation-duration: 80s;
+}
+
+.timestople.t5 {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.4));
+    animation-duration: 60s;
+}
+
+.timestople.t6 {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 0.5));
+    animation-duration: 40s;
+}
+
+body[quality="low"] .timestople.t2 ~ .timestople {
+    display: none;
+}
+
+.timestopper .tendrils {
+    position: absolute;
+    pointer-events: none;
+    transform-origin: center;
+    transform: rotateX(-90deg) translateY(calc(-2 * var(--gridTileSize)));
+}
+
+.timetendril {
+    backface-visibility: visible;
+    transform: rotateY(90deg)
+}
+
+.timetendril.t2 {
+    transform: rotateY(45deg);
+}
+
+.timetendril.t3 {
+    transform: rotateY(-45deg);
+}
+
+body[id="embassy_research"] #realgrid .desk .doodad.d1, body[id="embassy_research"] #realgrid .desk .doodad.d3 {
+    background-image: url(/img/sprites/obesk/cystline.gif);
+    width: calc(var(--gridTileSize) * 2);
+    --baseTransform: translateX(-50%) translateZ(-50px) rotateY(20deg);
+    background-position: bottom;
+}
+
+body[id="embassy_research"] #realgrid .desk .doodad.d3 {
+    --baseTransform: translateX(50%) translateZ(-50px) rotateY(-20deg);
+}
+
+body[id="embassy_research"] #realgrid .desk .doodad.d2 {
+    width: calc(var(--gridTileSize) * 2);
+    background-image: url(/img/sprites/obesk/cystrack.gif);
+    --baseTransform: translateZ(-50px);
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+body[id="embassy_research"] #realgrid .desk .doodad.d4 {
+    background-image: url(/img/sprites/obesk/scanner.gif);
+    width: calc(var(--gridTileSize) * 1.5);
+    height: calc(var(--gridTileSize) * 1);
+    background-position: bottom;
+    --baseTransform: translateX(-45%) rotateY(10deg);
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+#realgrid .listener figure {
+    position: absolute;
+    bottom: 0;
+    width: calc(var(--gridTileSize) * 2.5);
+    height: calc(var(--gridTileSize) * 2.5);
+    background: url(/img/local/embassy/listener.gif);
+}
+
+.listener figure .cyst {
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    top: 21%;
+    right: 8%;
+    background: url(/img/sprites/obesk/c5.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+.listener figure .cyst:nth-child(2) {
+    top: 40%;
+    background-image: url(/img/sprites/obesk/c2.gif);  
+    animation-delay: -1s;
+}
+
+.listener figure .cyst:nth-child(3) {
+    top: 60%;
+    background-image: url(/img/sprites/obesk/c4.gif);
+    animation-delay: -2s;
+}
+
+.callscreen {
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border-radius: 100%;
+    background-color: var(--friend-color);
+    border: 2px solid var(--dark-color);
+    top: 20%;
+    left: 35%;
+    overflow: hidden;
+}
+
+.callscreen::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    background-image: url(/img/sprites/obesk/callwave.gif);
+    background-size: 50% 100%;
+}
+
+body[quality="regular"] .callscreen::after {
+    animation: SCROLL 30s linear infinite;    
+}
+
+@keyframes SCROLL {
+    0% { transform: translateX(-50%) }
+    100% { transform: translateX(0%) }
+}
+
+/* RESEARCH - collapse */
+.collapse .listener figure .cyst {
+    bottom: 0;
+    top: unset;
+    animation: unset;
+}
+
+.collapse .listener figure .cyst:nth-child(2) {
+    right: 0%;
+    transform: rotate(20deg);
+}
+
+.collapse .listener figure .cyst:nth-child(3) {
+    right: 20%;
+    transform: rotate(50deg);
+}
+
+.collapse .callscreen {
+    background: var(--obesk-color);
+}
+
+.collapse .callscreen::after {
+    background-image: url(/img/textures/corruripple.gif);
+    animation: unset;
+}
+
+.collapse #realgrid[stage="embassy_research"] .chair figure {
+    transform: rotate(0deg) !important;
+}
+
+.collapse #realgrid[stage="embassy_research"] .chair {
+    transform: rotate(15deg) translateZ(30px);
+}
+
+
+/* COLLAPSE QUARTERS1 - MILTZA'S ROOM */
+body[id="embassy_cquarters1"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(-90deg);
+}
+
+body[id="embassy_cquarters1"] .swapcam .grid-container {
+    --camera-offset:
+        translateZ(calc( var(--gridTileSize) * 1))
+        translateY(calc(var(--gridTileSize) * -2))
+        rotateX(-20deg)
+         /* twists around to show the mural and miltza more clearly as you navigate closer to them */
+        rotate(calc(
+            -45deg +
+            (
+              (var(--stage-height) * -0.5) - (var(--camera-y))
+            ) * 45deg
+            +
+            (
+              (var(--stage-width)) - (var(--camera-x))
+            ) * -5deg
+        ));
+}
+
+#realgrid[stage*="cquarters1"] .prop .bed {
+    height: 200%;
+}
+
+#realgrid[stage*="cquarters1"] .prop .bed figure, #realgrid[stage*="cquarters1"] .prop .bed figure::after, #realgrid[stage*="cquarters1"] .prop .bed figure::before {
+    background-size: 100% 100%;
+}
+
+#realgrid[stage*="cquarters1"] .prop .closet {
+    transform: rotateX(-45deg) rotateY(90deg) rotateX(-10deg) translate(70%, 10%);
+}
+
+#realgrid[stage*="cquarters1"] .closet figure::after, #realgrid[stage*="cquarters1"] .closet figure::before {
+    height: 85%;
+    background-size: 100% 129%;
+    background-position: top;
+}
+
+#realgrid .prop .container.destroyed figure {
+    background-image: url(/img/local/embassy/containerbusted.gif?);
+}
+
+#realgrid[stage*="cquarters1"] .gridpiece[slug="i"] .lamp {
+    transform: translateY(-150%) rotateZ(200deg) translateZ(calc(var(--gridTileSize) * 0.2)) rotateX(-20deg);
+}
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d1 {
+    background-image: url(/img/sprites/obesk/cystrack.gif);
+    width: calc(var(--gridTileSize) * 1.5);
+    height: calc(var(--gridTileSize) * 0.75);
+    --baseTransform: translateX(-50%) rotateY(20deg) translateZ(calc(var(--gridTileSize) * -0.25));
+}  
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d2 {
+    background-image: url(/img/local/embassy/veilkmodel.gif);
+    width: calc(var(--gridTileSize) * 1);
+    height: calc(var(--gridTileSize) * 1);
+    --baseTransform: translateX(90%) rotateY(-20deg) translateZ(calc(var(--gridTileSize) * 0.2));
+}
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d2::before, 
+#realgrid[stage*="cquarters1"] .desk .doodad.d2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80%;
+    background: inherit;
+    background-image: url(/img/local/embassy/veilkmodel2.gif);
+    transform: translateX(-20%) translateZ(calc(var(--gridTileSize) * -0.2));
+}
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d2::after {
+    height: 80%;
+    top: unset;
+    bottom: 0;
+    background-image: url(/img/local/embassy/veilkmodel3.gif);
+    transform: translateX(30%) translateZ(calc(var(--gridTileSize) * -0.3));
+}
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d3 {
+    width: calc(var(--gridTileSize) * 1.25);
+    height: calc(var(--gridTileSize) * 1.25);
+    background-image: url(/img/local/embassy/display.gif);
+    --baseTransform: translateX(75%) rotateY(-20deg) translateZ(calc(var(--gridTileSize) * -0.25));
+}
+
+#realgrid[stage*="cquarters1"] .desk .doodad.d3::after {
+    content: "";
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    bottom: 0;
+    background-image: url(/img/sprites/obesk/c6.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateZ(10px) rotate(20deg);
+}  
+
+/* a mural either of a stylized version of the eye, or of obeski serving as the eye's pupil */
+#realgrid .eyeart figure {
+    width: calc(var(--gridTileSize) * 2);
+    height: calc(var(--gridTileSize) * 2);
+    position: absolute;
+    transform: translateZ(calc(var(--gridTileSize) * 0.5)) translateY(-50%);
+}
+
+#realgrid .eyeart figure::before, #realgrid .eyeart figure::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: url(/img/local/embassy/wallm1.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#realgrid .eyeart figure::after {
+    background-image: url(/img/local/embassy/wallm2.gif);
+}
+
+#realgrid .eyeart figure::before {
+    animation: SPIN 120s linear infinite;
+}  
+
+/* COLLAPSE QUARTERS2 - KAZKI'S ROOM */
+body[id="embassy_cquarters2"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(0deg);
+}
+
+body[id="embassy_cquarters2"] .swapcam .grid-container {
+    --camera-x: 3;
+    --camera-y: 3;
+    --camera-height: 0.5;
+    --camera-distance: 5;
+    --camera-offset:
+         /* fancy twisting around and zooming based on position */
+        translateY(calc(var(--gridTileSize) * (var(--stage-steps-y))))
+        translateY(calc(var(--gridTileSize) * (-1 * (var(--stage-steps-x) - 2))))
+        rotateX(-20deg)
+        rotate(calc(
+            90deg +
+            (
+              ((var(--stage-height) * 0.5) - 2) - (var(--stage-steps-y))
+            ) * -45deg
+            +
+            (
+              (var(--stage-steps-x))
+            ) * -30deg
+        ));
+}
+
+#realgrid[stage*="cquarters2"] .desk figure {
+    transform: translateY(calc(0.15 * var(--gridTileSize))) rotateX(90deg) rotateZ(-180deg);
+}
+
+#realgrid[stage*="cquarters2"] .prop .bed {
+    transform: rotate(90deg) rotateX(-90deg) rotateY(90deg) translateY(-50%);
+    background-image: url(/img/local/embassy/sleepchamberalt.gif);
+}
+
+.gridpiece.prop > .kazkiguns {
+    transform: translateY(-25%) rotateX(-90deg) rotateY(90deg) translateY(-40%) translateZ(calc(var(--gridTileSize) * 0.5));
+    width: calc(var(--gridTileSize) * 2);
+    background-image: url(/img/local/embassy/gunrack.gif);
+}
+
+.gridpiece.prop > .shelf {
+    transform: translateY(-25%) rotateX(-90deg) rotateY(180deg) translateX(25%);
+    width: calc(var(--gridTileSize) * 2);
+    background-image: url(/img/local/embassy/shelf.gif);
+    backface-visibility: visible;
+}
+
+.shelf figure {
+    position: absolute;
+    top: 10%;
+    width: 60%;
+    height: 50%;
+    background-image: url(/img/sprites/obesk//cystrack.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateZ(-10px);
+    backface-visibility: visible;
+}  
+
+#realgrid[stage*="cquarters2"] .desk .doodad.d1 {
+    --baseTransform: translateX(-100%) rotateY(14deg);
+    height: calc(var(--gridTileSize) * 0.5);
+    width: calc(var(--gridTileSize) * 1);
+    background-image: url(/img/local/embassy/drinkypile.gif??);
+}
+
+#realgrid[stage*="cquarters2"] .desk .doodad.d2 {
+    transform: rotate(90deg) translateY(-10%) rotateX(-20deg) translateZ(calc(var(--gridTileSize) * 0.2));
+    background-image: url(/img/local/embassy/gunops.gif);
+    width: calc(var(--gridTileSize) * 1);
+    height: calc(var(--gridTileSize) * 1);
+}
+
+#realgrid[stage*="cquarters2"] .desk .doodad.d3 {
+    --baseTransform: translateX(150%) rotateY(-50deg);
+} 
+
+/* COLLAPSE QUARTERS3 - CHOMPER ROOM */
+.swapcam .grid-animator[activestage="embassy_cquarters3"] {
+    transform: rotateZ(100deg) rotateX(10deg) translateY(calc(-0.5 * var(--gridTileSize))) translateZ(calc(-2 * var(--gridTileSize))) translateX(calc(-1 * var(--gridTileSize)));
+}
+
+#realgrid .gridpiece.prop > .corwall {
+    transform: rotateX(-90deg) rotateY(90deg) translateZ(calc(var(--gridTileSize) * 0.5)) translateX(10%);
+    width: calc(var(--gridTileSize) * 5);
+    height: calc(var(--gridTileSize) * 5);
+    background-image: url(/img/local/embassy/corruptwall1b.gif);
+    animation: WALLPULSE 10s ease-in-out infinite alternate;
+}
+
+@keyframes WALLPULSE {
+    0% { transform: rotateX(-90deg) rotateY(90deg) translateZ(calc(var(--gridTileSize) * 0.5)) translateX(10%) scaleX(1) scaleY(1) }
+    100% { transform: rotateX(-90deg) rotateY(90deg) translateZ(calc(var(--gridTileSize) * 0.5)) translateX(10%) scaleX(1.1) scaleY(0.9) }
+}
+
+#realgrid .corwall::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    transform: rotateX(-90deg) translateZ(-1px);
+    transform-origin: bottom;
+}
+
+#realgrid .corwall figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#realgrid .corwall figure::after, #realgrid .corwall figure::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/local/embassy/corruptwall2b.gif);
+    transform-origin: bottom right;
+    transform: rotateY(-90deg) translateX(100%);
+    backface-visibility: hidden;
+}
+
+#realgrid .corwall figure::before {
+    transform: rotateY(90deg) translateX(-100%);
+    transform-origin: bottom left;
+    background-image: url(/img/local/embassy/corruptwall2fb.gif);
+}
+
+/* ARCHIVE STAGES */
+body[id="embassy_archivalintro"] #content.collapse, #content.collapse.archives::after {
+    background: var(--dark-color)
+}
+
+body[id^="embassy"] #content.collapse.archives::after {
+    background-color: var(--bastard-color);
+    background-image: url(/img/textures/corruripplebastard.gif), url(/img/textures/damagebstrdtran.gif), url(/img/textures/barelyfaded.gif);
+    background-size: auto, auto 100%, auto 100%;
+    background-position: right;
+    background-repeat: repeat, no-repeat, repeat;
+    transform: unset;    
+}
+
+#content.collapse.archives.bastard::after {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/damagebstrdtran.gif);
+    background-size: auto 100%, auto, auto 100%;
+    background-repeat: repeat, repeat, no-repeat;
+}
+
+.archives #realgrid .gridpiece.wall::before, .archives #realgrid .gridpiece.wall::after {
+    background-image: url(/img/textures/bustedwallflip.gif), url(/img/local/embassy/archivalwall.gif);
+    background-size: 100% 100%, auto 100%;
+}
+  
+.archives #realgrid .door.locked::after {
+    background-image: url(/img/sprites/bstrd/bstrdlock_noface.gif), url(/img/local/embassy/doorlocked.gif);
+}
+
+.archives .grid-plane[specialcam="bstrdface"] #realgrid .door.locked::after {
+    background-image: url(/img/sprites/bstrd/bstrdlock.gif), url(/img/local/embassy/doorlocked.gif);
+}
+
+.archives #realgrid .door::after, #realgrid .door.bstrdoor::after {
+    background-image: url(/img/local/embassy/doorarchive.gif);
+}
+
+#realgrid .holedoor::after {
+    content: "";
+    width: 200%;
+    height: 300%;
+    position: absolute;
+    bottom: 0;
+    background: url(/img/local/embassy/corruptwall1b.gif);
+    background-size: 100% 100%;
+    transform: rotate(-90deg) translateX(-50%) translateY(-70%) translateZ(1px);
+}
+
+#content.collapse.archivehall::before {
+    content: "";
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background-image: url(/img/sprites/bstrd/bstrd.gif), url(/img/textures/corruripplebastard.gif);
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+    background-size: contain, auto;
+    opacity: var(--bstrdcontrol);
+    transition: opacity 200ms ease-in-out;
+} 
+
+body[id^="embassy"] #content.collapse.archivehall::after {
+    transform: translateY(calc(-50% * var(--bstrdcontrol)));
+    background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+    background-position: top, 70%;
+}
+
+body[id="embassy_archivalintro"] .swapcam .grid-container {
+    --camera-distance: 2;
+    --camera-height: 0;
+    --camera-offset:
+        rotate(calc(
+            (
+              var(--stage-height) - (var(--stage-steps-y) )
+            ) * 5deg
+        ));
+}
+
+#realgrid[stage="embassy_archivalvein"] {
+    --embassyWallLength_Y: 2;
+    --embassyWallLength_X: 13;
+}
+
+body[id="embassy_archivalvein"] .swapcam .grid-container {
+    --camera-distance: 2;
+    --camera-height: 0.5;
+    --camera-offset: 
+        rotateX(-10deg)
+        rotate(calc(
+            (
+              (var(--stage-height) + 2) - (var(--camera-x))
+            ) * -10deg
+        ))
+        ;
+    --camera-y: 3;
+}
+
+body[id="embassy_archivalvein"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(0deg);
+}
+
+#realgrid[stage^="embassy_archivalcore"] {
+    --embassyWallLength_Y: 2.5;
+    --embassyWallLength_X: 5;
+}
+
+
+
+body[id="embassy_archivalcore"] .swapcam .grid-animator {
+    transform: 
+        rotateZ(0deg);
+}
+
+body[id="embassy_archivalcore"] .swapcam .grid-container {
+    --camera-x: 3;
+    --camera-y: 6;
+    --camera-height: 1.75;
+    --camera-distance: 0;
+    --camera-offset:
+        rotateX(-30deg)
+        rotate(calc(
+            (
+              (var(--stage-width) * 0.5) - (var(--stage-steps-x))
+            ) * 10deg
+           
+        ))
+}
+
+canvas.veinceiling, canvas.veinsphere {
+    position: absolute;
+    transform: translateZ(calc(var(--gridTileSize) * 3));
+} 
+
+canvas.veinsphere {
+    --baseTransform: translateZ(calc(var(--gridTileSize) * 3));
+    animation: SPIN 30s linear infinite;
+}
+
+#realgrid .prop .archive {
+    transform: translateY(-25%) rotateX(-90deg) rotateY(180deg) translateZ(calc(var(--gridTileSize) * .25));
+    width: calc(var(--gridTileSize) * 5);
+    height: calc(var(--gridTileSize) * 3);
+    background-image: url(/img/local/embassy/archivalshelf.gif);
+    background-size: 100% 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}  
+
+#realgrid .prop .archive.side {
+    transform: translateY(-16.5%) rotateX(-90deg) rotateY(90deg) translateZ(calc(var(--gridTileSize) * .65));
+}
+
+#realgrid .prop .archive.opposite {
+    transform: translateY(-16.5%) rotateX(-90deg) translateZ(calc(var(--gridTileSize) * .5));
+}
+
+#realgrid .prop .bstrdpillar {
+    transform: translateY(-25%) rotateX(-90deg) rotateY(90deg);
+    background-image: url(/img/local/embassy/bstrdpillar.gif);
+    background-size: auto 65%;
+    background-position: bottom;
+}
+
+#realgrid .prop .bstrdpillar figure {
+    position: absolute;
+    top: 0;
+    height: 35%;
+    background-image: url(/img/local/embassy/bstrdcyst.gif);
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 50%;
+    animation: HOVER 2s ease-in-out infinite alternate;
+}
+
+#realgrid[stage="embassy_archivalboss"] .prop .bstrdpillar {
+    transform: translateY(-25%) rotateX(-90deg);
+}
+
+#realgrid[stage="embassy_archivalboss"] .prop .bstrdpillar figure {
+    background-image: url(/img/local/embassy/pass.gif);
+}
+
+#realgrid[stage="embassy_archivalboss"] .evil {
+    background: transparent;
+    border: unset;
+}
+
+#realgrid .prop .bstrdpillar.nocyst figure {
+    display: none;
+}
+
+body#embassy_archivaldelivery #content::after {
+    background: black;
+}
+
+/* FOE STAGE SPRITES */
+#realgrid .lamp.bstrd::after, #realgrid .lamp.bstrd::before {
+    background-image: url(/img/sprites/combat/foes/bstrdlampbase.gif);
+    background-size: 100% 100%;
+}
+
+#realgrid .lamp.bstrd figure {
+    transform: translate(-10%, 60%) rotate(20deg);
+}
+
+#realgrid .lamp.bstrd figure::before, #realgrid .lamp.bstrd figure::after {
+    background-image: url(/img/sprites/bstrd/bstrd.gif);
+}
+
+#realgrid .lamp.collapsed.bstrd {
+    --baseTransform: rotateX(-90deg) translateZ(calc(-0.85 * var(--gridTileSize)));
+}
+
+#realgrid .lamp.collapsed.bstrd figure {
+    --baseTransform: translateY(60%) translateX(0%);
+    transform: var(--baseTransform);
+    animation: SPIN-Y 10s linear infinite;
+}
+
+#realgrid .prop .bstrdshelf {
+    background-image: url(/img/sprites/combat/foes/archivalfoea.gif);
+    transform: translateY(-17%) rotateX(-90deg) rotateY(90deg);
+    background-size: contain;
+    background-position: bottom;
+    width: 600%;
+    height: 300%;
+}
+
+/* archival golem */
+#realgrid .archivalgolem {
+    background-image: url(/img/sprites/combat/foes/archivalgolem-body.gif);
+    width: calc(var(--gridTileSize) * 1.5);
+    height: calc(var(--gridTileSize) * 2.5);
+    --offset: translateY(7.5%);
+}
+
+.archivalgolem:before, .archivalgolem:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/sprites/combat/foes/archivalgolem-head.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat
+}
+.archivalgolem:after { background-image: url(/img/sprites/combat/foes/archivalgolem-arms.gif) }
+
+body[quality="regular"] .archivalgolem::before, body[quality="regular"] .archivalgolem::after {
+    animation: TINYHOVER 1s ease-in-out infinite alternate;
+}
+
+/* bstrd variation of archival */
+#realgrid .archivalgolem.bstrdboss {
+    background-image: url(/img/sprites/combat/foes/bstbody.gif);
+    transform: rotateX(-90deg) translateY(calc(-1.25 * var(--gridTileSize)));
+    background-size: contain;
+    background-position: center;
+    width: calc(var(--gridTileSize) * 2);
+    height: calc(var(--gridTileSize) * 3);
+}
+
+.archivalgolem.bstrdboss::before {
+    background-image: url(/img/sprites/combat/foes/bstface.gif), url(/img/sprites/combat/foes/bsthead.gif);
+}
+
+.archivalgolem.bstrdboss.gun::after {
+    background-image: url(/img/sprites/combat/foes/bstgun.gif);
+}
+
+.archivalgolem.bstrdboss.gunraise::after {
+    background-image: url(/img/sprites/combat/foes/bstgunraise.gif);
+}
+
+.bstrdbosspanel::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: rotateX(-90deg) translateX(15%);
+    background: url(/img/sprites/combat/items/redbox_dither.gif);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    transform-origin: bottom;
+    background-size: 33%;
+    pointer-events: none;
+}
+
+#realgrid[stage="embassy_archivaldelivery"] .bstrdbosspanel::after {
+    transform: rotateX(-90deg) translateX(15%) rotateY(90deg);
+    width: 100%;
+    background-size: 100%;
+}  
+
+#realgrid .archivalgolem.bstrdboss.broke {
+    transform: rotateX(-90deg) translateY(calc(-1.25 * var(--gridTileSize))) rotate(-90deg) translateX(-50%)
+}
+
+#realgrid .archivalgolem.bstrdboss.broke::after {
+    animation: unset;
+    transform: translateY(30%) rotate(90deg)
+}
+
+#realgrid .archivalgolem.bstrdboss.broke::before {
+    animation: unset;
+    transform: rotate(-10deg) translate(0%, 10%);
+}
+  
+
+/* maintcloak */
+#realgrid .maintcloak figure {
+    transform: translateY(-25%) rotateX(-90deg) translateY(-15%)  rotateY( atan2( var(--distX), var(--distY) ));
+}
+
+/* super special bstrd stuff */
+.actor[id^="bstrdboss"] .combat-dialogue {
+    font-family: bastard;
+    font-size: 2em;
+    text-transform: initial;
+}
+.actor[id^="bstrdboss"] .combat-dialogue::after {
+    font-size: 1em;
+}
+
+/* RANDOM OBESK */
+.randobesk { z-index: 1; }
+.randobesk .accessory.back { z-index: -1; }
+.randobesk .accessory.front { z-index: 2; }
+.randobesk .eyes { z-index: 3;}
+.randobesktile.turned {
+    --charTransform: rotateY(90deg);
+}
+#realgrid .character.randobesktile {
+  height: calc(var(--gridTileSize) * 2.25);
+  transform: translateY(-22.5%) rotateX(-90deg) var(--charTransform);
+}
+
+/* DAY SELECT */
+.dayselect {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 5;
+    transition: opacity 1s ease-in-out;
+    background: url(/img/textures/blackstaticSTILL.gif);
+}
+
+.daychanging .dayselect {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.dayselect.derender {
+    display: none;
+}
+
+.dayselect .day {
+    position: relative;
+    padding: 1em;
+    margin: 1em;
+    font-family: beech;
+    font-size: 1.25em;
+    letter-spacing: 1em;
+}
+
+.dayselect .day .target {
+    letter-spacing: 0;
+}
+
+.dayselect .day .target::after {
+    font-size: calc(1rem + 0.75vw);
+}
+
+.dayname span {
+    animation: HOVER 1s ease-in-out infinite alternate;
+    min-width: 1em;
+    text-align: center;
+    display: inline-block;
+}
+
+.day.disabled .dayname span {
+    animation: SHAKE 0.5s ease-in-out infinite alternate;
+    color: var(--obesk-color);
+}
+
+/* DIALOGUE ANGLES */
+.grid-plane[specialcam="cystfocus"] .grid-container {
+    --camera-x: 3.5;
+    --camera-y: 1;
+    --camera-rotation: 10;
+}
+
+body[currentdialogue="embassyRelocator"] .grid-animator,
+body[currentdialogue="d3_relocator_repair"] .grid-animator {
+    --camera-x: 3;
+    --camera-y: 5;
+    --camera-rotation: 180 !important;
+}
+
+/* off-screen stage culling for chrome */
+/* NOTE FROM EP3ADD2 CORRU - pretty sure this isn't necessary but I'm not removing it */
+body[currentdialogue="barfriend"] .gridpiece[slug="A"],
+body[currentdialogue="barfriend"] .gridpiece[slug="↔"],
+body[currentdialogue="barfriend"] .gridpiece[slug="↕"],
+body[currentdialogue="barfriend"] .gridpiece[slug="G"],
+body[currentdialogue="barfriend"] .gridpiece[slug="W"],
+body[currentdialogue="barfriend"] .gridpiece[slug="O"],
+body[currentdialogue="barfriend"] .gridpiece[slug="-"],
+body[currentdialogue="barfriend"] .gridpiece[slug="+"],
+body[currentdialogue="barfriend"] .gridpiece[slug="c"],
+body[currentdialogue="barfriend"] .gridpiece[slug="L"]
+{
+    opacity: 0;
+}
+body[currentdialogue="barfriend"] .grid-container, body[currentdialogue="d3_barfriend"] .grid-container {
+    --camera-rotation: 0;
+    --camera-x: 6;
+    --camera-y: 1.5;
+}
+
+body[currentdialogue="d1_attendant"] .grid-container, body[currentdialogue="d2_attendant"] .grid-container {
+    --camera-x: 3;
+    --camera-y: 1;
+    --camera-rotation: 0deg;
+}
+
+body[currentdialogue="d1_tozik"] .grid-animator {
+    --camera-x: 6;
+    --camera-y: 3;
+    transform: rotateZ(-40deg) translateZ(calc(var(--gridTileSize) * 0.2));
+}
+
+body[currentdialogue="d1_gakvu"] .grid-animator {
+    --camera-x: 2;
+    --camera-y: 1;
+    --camera-rotation: 0 !important;
+}
+
+body[currentdialogue="d1_cavik"] .grid-animator {
+    --camera-x: 9;
+    --camera-y: 5;
+    --camera-rotation: -90 !important;
+}
+body[currentdialogue="d1_cavik"] #realgrid .cavik { --charTransform: rotateY(-90deg); }
+
+
+/* off-screen stage culling for chrome */
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="B"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="A"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="↕"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="↔"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="-"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="+"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="c"],
+body[currentdialogue="d1_kazkibozko"] .gridpiece[slug="L"]
+{
+    opacity: 0;
+}
+
+body[currentdialogue="d1_kazkibozko"] .grid-container {
+    --camera-rotation: -140;
+    --camera-x: 10;
+    --camera-y: 9;
+}
+
+body[currentdialogue="d1_kazkibozko"] .grid-plane[specialcam="kazkibozko"] .kazki, body[currentdialogue="d1_kazkibozko"] .grid-plane[specialcam="kazkihead"] .kazki { --charTransform: rotateY(-130deg) translateZ(calc(-0.25 * var(--gridTileSize))); }
+body[currentdialogue="d1_kazkibozko"] .grid-plane[specialcam="kazkibozko"] .bozko, body[currentdialogue="d1_kazkibozko"] .grid-plane[specialcam="kazkihead"] .bozko  { --charTransform: rotateY(40deg); }
+body[currentdialogue="d1_kazkibozko"] #content::before {
+    content: "";
+    position: absolute;
+    width: 75vmin;
+    height: 75vmin;
+    z-index: 100;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    border-radius: 100%;
+    border: 5px solid var(--obesk-color);
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0.001);
+    transition: all 2s ease-in-out;
+}
+body[currentdialogue="d1_kazkibozko"] .grid-plane[specialcam="kazkihead"] .grid-container {
+    --camera-x: 11;
+    --camera-y: 9;
+}
+body[currentdialogue="d1_kazkibozko"] #content.kazkihead::before { transform: scale(1); opacity: 1; }
+body[currentdialogue="d1_kazkibozko"] #content.kazkihead.spider::before { background-image: url(/img/local/embassy/arthur.gif); }
+body[currentdialogue="d1_kazkibozko"] #content.bozkoceptor .bozko .head::before { display: block; }
+
+body[currentdialogue="discovery"] #static {
+    z-index: 10;
+}
+
+body[currentdialogue="cyst"]#embassy_quarters .grid-animator { 
+    --camera-rotation: 0 !important;
+    --camera-x: 3;
+    --camera-y: 1;
+}
+
+body[currentdialogue="d2_bozkocavik"] .grid-animator {
+    --camera-rotation: -90 !important;
+    --camera-x: 4;
+    --camera-y: 11;
+}
+body[currentdialogue="d2_bozkocavik"] #realgrid .cavik { --charTransform: rotateY(-45deg); }
+body[currentdialogue="d2_bozkocavik"] #realgrid .bozko { --charTransform: rotateY(-120deg); }
+
+
+body[currentdialogue="d2_kazki"] .grid-animator {
+    --camera-rotation: 90 !important;
+    --camera-x: 1;
+    --camera-y: 3;
+}
+
+/* off-screen stage culling for chrome */
+body[currentdialogue="d2_gakvu"] .gridpiece[slug="B"],
+body[currentdialogue="d2_gakvu"] .gridpiece[slug="-"],
+body[currentdialogue="d2_gakvu"] .gridpiece[slug="+"],
+body[currentdialogue="d2_gakvu"] .gridpiece[slug="c"],
+body[currentdialogue="d2_gakvu"] .gridpiece[slug="L"]
+{
+    opacity: 0;
+}
+body[currentdialogue="d2_gakvu"] .grid-animator {
+    --camera-rotation: 100 !important;
+    --camera-x: 4;
+    --camera-y: 3;
+}
+body[currentdialogue="d2_gakvu"] .grid-plane[specialcam="gakvusit"] .grid-animator { 
+    --camera-rotation: 90 !important;
+    --camera-x: 3;
+    --camera-y: 4;
+    --personal-offset: translateZ(calc( 0.2 * var(--gridTileSize) ));
+}
+
+body[currentdialogue="d2_tozik"] .grid-animator {
+    --camera-rotation: 20 !important;
+    --camera-x: 8.5;
+    --camera-y: 2.5;
+}
+
+
+/* d3 / collapse angles */
+.grid-plane[specialcam="listener-zoom"] .grid-animator {
+    --camera-rotation: 360 !important;
+    --camera-x: 3;
+    --camera-y: 1;
+}
+
+.grid-plane[specialcam="movefriend_examine"] .grid-container {
+    --camera-x: 3;
+    --camera-y: 5;
+    --camera-rotation: 180;
+}
+
+.grid-plane[specialcam="recreation_open"] .grid-container {
+    --camera-x: 2;
+    --camera-y: 3;
+    --camera-offset: rotateX(-30deg);
+    --camera-rotation: 90 !important;
+}
+
+
+.grid-plane[specialcam="personnel_open"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 3;
+    --camera-offset: rotateX(-20deg);
+    --camera-rotation: -90 !important;
+}
+
+.grid-plane[specialcam="deadqou1"] .grid-animator {
+    --camera-x: 4;
+    --camera-y: 5.5;
+    --personal-offset: translateZ(calc(var(--gridTileSize) * 0.5));
+    --camera-rotation: 0 !important;
+}
+
+.grid-plane[specialcam="deadqou2"] .grid-animator {
+    --camera-x: 7;
+    --camera-y: 2.5;
+    --personal-offset: translateZ(calc(var(--gridTileSize) * 0.5));
+    --camera-rotation: 0 !important;
+}
+
+.grid-plane[specialcam="deadqou2-scamper"] .grid-animator {
+    --camera-x: 7;
+    --camera-y: 3;
+    --personal-offset: translateY(calc(var(--gridTileSize) * -3)) rotateX(-20deg);
+    --camera-rotation:  180 !important;
+}
+
+body[currentdialogue="d3_mind"] .grid-animator {
+    --camera-rotation: -45 !important;
+    --camera-x: 3.5;
+    --camera-y: 2.5;
+    --personal-offset: translateZ(calc(var(--gridTileSize) * 0.75));
+}
+
+.grid-plane[specialcam="kazkiguns"] .grid-animator {
+    --camera-x: 1.5;
+    --camera-y: 3;
+    --personal-offset: translateZ(calc(var(--gridTileSize) * -0.25));
+    --camera-rotation: 90 !important;
+}
+
+.grid-plane[specialcam="kazkicontainers"] .grid-container {
+    --camera-x: 4;
+    --camera-y: 4;
+    --personal-offset: translateZ(calc(var(--gridTileSize) * 0.5));
+    --camera-rotation: -135;
+}
+
+.grid-plane[specialcam="archivesopen"] .grid-animator {
+    --camera-x: 8.5;
+    --camera-y: 8;
+    --camera-offset: rotateX(-10deg);
+    --camera-rotation: -90 !important;
+}
+
+.grid-plane[specialcam="bstrdoor"] .grid-animator, .grid-plane[specialcam="bstrdface"] .grid-animator {
+    --camera-rotation: 0 !important;
+    --camera-x: 7;
+    --camera-y: 1;
+}
+
+.grid-plane[specialcam="bstrdcyst1"] .grid-animator {
+    --camera-rotation: 90 !important;
+    --camera-x: 1.5;
+    --camera-y: 3;
+}
+
+.grid-plane[specialcam="bstrdboss"] .grid-animator, 
+.grid-plane[specialcam="bstrdbox"] .grid-animator,
+.grid-plane[specialcam="bstrdbosspillar"] .grid-animator {
+    --camera-rotation: 0 !important;
+    --camera-x: 3;
+    --camera-y: 2;
+}
+
+.grid-plane[specialcam="bstrdbox"] .grid-animator {
+    --personal-offset: translateZ(calc(var(--gridTileSize) * 0.5)) translateY(calc(var(--gridTileSize) * -1));
+}
+
+.grid-plane[specialcam="bstrdbosspillar"] .grid-animator {
+    --camera-y: 0;
+}
+
+.grid-plane[specialcam="ambushbox"] .grid-animator {
+    --camera-rotation: 90 !important;
+    --personal-offset: translateZ(var(--gridTileSize));
+    --camera-x: 1.5;
+}
+
+/* discovery/focus */
+body[id^="embassy"] .grid-plane {
+    transition: clip-path 400ms ease-in-out, -webkit-clip-path 400ms ease-in-out, transform 5s ease-in-out, opacity 1s ease-in-out;
+}
+
+#content.innerfocus .grid-plane {
+    transform: translateY(100vh);
+}
+
+body[id^="embassy"] #content.innerfocus::after {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/static.gif);
+    background-size: 100% auto, auto;
+}
+
+.focus {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+}
+
+.innerfocus .focus {
+    display: flex;
+    perspective: 600px;
+    transform-style: preserve-3d;
+}
+
+.showfocus .focus {
+    opacity: 1;
+}
+  
+.focus .head, .focus .head::after {
+    content: "";
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50vmin;
+    width: 50vmin;
+    position: absolute;
+    transform-origin: top;
+}
+
+.focus .head.akizet-focus {
+    background-image: url(/img/sprites/akizet/head.gif);
+    --rotation: rotateX(-90deg);
+    transform: translate(-50%,-75%) var(--rotation);
+}
+
+.focus .head.akizet-focus::after {
+    background-image: url(/img/sprites/akizet/eyes.gif);
+    width: 75%;
+    height: 100%;
+    animation: AKIBLINKMINI 10s ease-in-out infinite alternate;
+    transform-origin: center;
+}
+
+.focus .head.tozik-focus {
+    --rotation: rotateX(-90deg) rotateY(90deg);
+    transform: translate(-100%, 0) var(--rotation);
+    background-image: url(/img/sprites/obesk/tozik/full/tozik_eyes.gif), url(/img/sprites/obesk/tozik/full/tozik_head.gif), url(/img/sprites/obesk/tozik/full/tozik_headcore.gif);
+    background-size: auto 365%;
+    background-position: center 0;
+}
+
+.focus .head.gakvu-focus {
+    background-image: url(/img/sprites/obesk/gakvu/full/gakvu_face.gif), url(/img/sprites/obesk/gakvu/full/gakvu_head.gif);
+    background-size: auto 350%;
+    background-position: -400% -8%;
+    --rotation: rotateX(-90deg);
+    transform: translate(-50%, 75%) var(--rotation);
+}
+
+.focus .head.kazki-focus {
+    --rotation: rotateX(-90deg);
+    transform: translate(50%, 75%) var(--rotation);
+}
+
+.focus .head.kazki-focus::after {
+    background-image: url(/img/sprites/obesk/kazki/full/kazkihead.gif), url(/img/sprites/obesk/kazki/full/kazkihair.gif);
+    background-size: auto 185%;
+    background-position: center top;
+    height: 110vmin;
+    width: 70vmin;
+    transform: translateY(-15%);
+}
+
+.focus .head.bozko-focus::after {
+    background-image: url(/img/sprites/obesk/bozko/full/bozkohead.gif);
+    background-size: auto 285%;
+    background-position: center top;
+    transform: 60vmin;
+    width: 60vmin;
+}
+
+.focus .head.bozko-focus {
+    --rotation: rotateX(-90deg) rotateY(90deg);
+    transform: translate(100%, 0) var(--rotation);
+}
+
+.focus .head.cavik-focus {
+    background-image: url(/img/sprites/obesk/cavik/full/cavikmask.gif), url(/img/sprites/obesk/cavik/full/cavikhair.gif);
+    background-size: auto 400%;
+    background-position: center 0;
+    --rotation: rotateX(-90deg);
+    transform: translate(50%,-75%) var(--rotation);
+}
+
+.focusplane {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.focusplane:not([focus]) {
+    transform: translateY(0);
+}
+
+.focusplane:not([focus]) .head, .focusplane:not([focus]) .head::after {
+    --rotation: rotateX(0deg);
+}
+
+.focusplane[focus="akizet"] {
+    transform: translateY(-25%) translateZ(90vmin) rotateX(90deg) rotateZ(-0deg) translateX(25vmin);
+}
+
+.focusplane[focus="cavik"] {
+    transform: translateY(-25%) translateZ(90vmin) rotateX(90deg) rotateZ(-0deg) translateX(-25vmin);
+}
+
+.focusplane[focus="bozko"] {
+    transform: translateY(-25%) translateZ(80vmin) rotateX(90deg) rotateZ(-90deg) translateY(25vmin);
+}
+
+.focusplane[focus="kazki"] {
+    transform: translateY(-25%) translateZ(30vmin) rotateX(90deg) rotateZ(-180deg) translateX(-25vmin);
+}
+
+.focusplane[focus="gakvu"] {
+    transform: translateY(-25%) translateZ(40vmin) rotateX(90deg) rotateZ(-180deg) translateX(25vmin);    
+}
+
+.focusplane[focus="tozik"] {
+    transform: translateY(-25%) translateZ(70vmin) rotateX(90deg) rotateZ(-270deg) translateY(25vmin);    
+}
+
+.focusplane, .focus .head {
+    transition: all 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* focus addition - cyst discussion */
+.cystfocus .head:not(.akizet-focus) {
+    display: none;
+}
+
+.cystfocus .head.akizet-focus {
+    opacity: 0;
+    transform: translate(0%,50%) var(--rotation);
+}
+
+.cystavatar.cystfocus .focusplane::after, .cystavatar.cystfocus .focusplane::before, .cystavatar.cystfocus .head.akizet-focus {
+    opacity: 1;
+}
+
+.showaki.cystfocus .head.akizet-focus, .showaki.cystfocus .focus {
+    opacity: 1;
+    transform: translate(0)
+}
+
+/* signal comparison for focus */
+.signalcomp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #00000073;
+    z-index: 2;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+.signalcomp .timeline {
+    width: 50vw;
+    border-top: 5px dotted var(--friend-color);
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    transform: scaleX(0.0001);
+}
+
+.signalcomp .spike {
+    display: block;
+    width: 20vw;
+    height: 20vw;
+    background-image: url(/img/sprites/obesk/callwave.gif), url(/img/textures/badstatic.gif);
+    position: absolute;
+    border-radius: 100%;
+    background-size: 100%;
+    transition: transform 2s ease-in-out;
+}
+
+.signalcomp .spike2 {
+    background-image: url(/img/sprites/obesk/callwave.gif), url(/img/textures/static.gif);
+}
+
+.signal .signalcomp {
+    opacity: 1;
+}
+
+.signal2 .spike1 {
+    transform: translateX(-50%) scale(0.5);
+}
+
+.signal2 .spike2 {
+    transform: translateX(50%) scale(0.5);
+}
+
+.signal3 .timeline {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.signal3 .spike1 {
+    transform: translateX(0) scale(0.25);
+}
+
+.signal3 .spike2 {
+    transform: translateX(130%) scale(0.25);
+}
+
+/* collapse (day3) version of focus */
+.focus.day3 .kazki-focus, .focus.day3 .bozko-focus, .focus.day3 .cavik-focus{
+    display: none;
+}
+
+.focus.day3 .head {
+    position: relative;
+    height: 40vmin;
+    width: 40vmin;
+    margin: auto -5vmin;
+    transform: translateY(20vmin);
+}
+
+.redundancy {
+    width: 100%;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    display: none;
+    white-space: nowrap;
+}
+
+.focus.day3 .redundancy {
+    display: block;
+}
+
+.calldata {
+    width: 33%;
+    height: 0px;
+    display: inline-flex;
+    position: relative;
+    padding-top: 33%;
+    justify-content: center;
+    align-items: center;
+    background-size: 1px 1px;
+    background-repeat: no-repeat;
+    transition: transform 1s ease-in-out;
+    transform: translateX(calc(var(--dataoffset) * -100%));
+}
+
+.calldata:nth-child(4n+1) {
+    background-image: url(/img/sprites/obesk/callwave2.gif), url(/img/textures/static.gif);
+}
+
+.calldata:nth-child(4n+2) {
+    background-image: url(/img/sprites/obesk/callwave3.gif), url(/img/textures/static.gif);
+}
+
+.calldata:nth-child(4n+3) {
+    background-image: url(/img/sprites/obesk/callwave4.gif), url(/img/textures/static.gif);
+}
+
+.calldata:nth-child(4n+4) {
+    background-image: url(/img/sprites/obesk/callwave5.gif), url(/img/textures/static.gif);
+}
+
+.calldata::before, .calldata::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: 100%;
+    border: 2px solid var(--obesk-color);
+    background: inherit;
+    background-size: auto;
+    background-position: center;
+    background-repeat: repeat;
+    background-color: var(--bright-color)
+}
+
+.calldata::after {
+    bottom: -10%;
+    top: unset;
+    border-color: var(--friend-color);
+}
+  
+#combat.tutorialgolem::after {
+    animation: unset;
+    background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/static.gif);
+    background-size: 100% 150%, auto;
+    width: 100%;
+    height: 100%;
+}
+
+/* suspicion echo stage */
+#content[locale="echo"] {
+    background: transparent;
+}
+
+body[locale="echo"]::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -6;
+    background-image: url(/img/textures/spotgradientbig.gif), url(/img/textures/fadeinlong.gif);
+    background-repeat: no-repeat, repeat-x;
+    background-size: 100vmax auto, auto;
+    background-position: center, top;
+    background-color: var(--friend-color);
+    transition: all 5s ease-in-out, transform 200ms;
+}
+
+body[locale="echo"].mui-active::before {
+    transform: translateX(calc(-1 * var(--contentDialogueOffset)));
+}
+
+body[locale="echo"].in-dialogue::before {
+    transform: translateX(var(--contentDialogueOffset));
+}
+
+body[locale="echo"].pathstep1::before {
+    background-color: var(--dark-color);
+}
+
+body[locale="echo"].pathstep2::before {
+    background-color: var(--obesk-color);
+}
+
+body[locale="echo"].pathstep3::before {
+    background-color: var(--bright-color);
+}
+
+#content[locale="echo"]::after {
+    background: url(/img/textures/mass_moderate.gif);
+    width: 150vmax;
+    height: 150vmax;
+    position: absolute;
+    top: unset;
+    left: unset;
+    z-index: -5;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+}
+
+body[locale="echo"].pathstep0 #content::after {
+    transition: 5s ease-in-out;
+}
+
+body[locale="echo"].pathstep3 #content::after {
+    opacity: 1;
+}
+
+.gridpiece.path-limited.initialized {
+	transition: transform 1s ease-in-out;
+	transition-delay: calc(200ms * var(--i));
+}
+
+.gridpiece.path-limited {
+	transform: var(--floatyform);
+	pointer-events: none;
+}
+
+.gridpiece.path-limited.step0 {
+    pointer-events: initial;
+}
+
+#realgrid[stage="echovision"] .gridpiece.empty {
+	background: transparent;
+	border: unset;
+}
+
+#realgrid[stage="echovision"] .gridpiece.empty::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background: url(/img/textures/dithertile.gif);
+	border: 2px solid var(--friend-color);
+	transition: opacity 1s ease-in-out;
+	transition-delay: inherit;
+	pointer-events: none;
+}
+
+body[quality="regular"] #realgrid[stage="echovision"] .gridpiece.empty::after {
+	animation: TILEHOVER 5s ease-in-out infinite alternate;
+	animation-delay: calc(-1s * var(--i));
+}
+
+.gridpiece.empty.path-limited::after {
+  	opacity: 0.1;
+}
+
+.pathstep0 .gridpiece.path-limited.step0,
+.pathstep1 .gridpiece.path-limited.step1,
+.pathstep2 .gridpiece.path-limited.step2,
+.pathstep3 .gridpiece.path-limited.step3 {
+	transform: translateX(0);
+	pointer-events: initial;
+}
+
+.pathstep0 .gridpiece.path-limited.step0::after,
+.pathstep1 .gridpiece.path-limited.step1::after,
+.pathstep2 .gridpiece.path-limited.step2::after,
+.pathstep3 .gridpiece.path-limited.step3::after {
+  	opacity: 1;
+}
+
+#realgrid .gridpiece.path-limited.floaty {
+    transition: transform 1s ease-in-out;
+}
+
+#realgrid .gridpiece.path-limited.floaty::after {
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-image: url(/img/textures/slowatertiny.gif);
+	background-size: cover;
+	animation: TILEHOVERWACKY 10s ease-in-out infinite alternate;
+	animation-delay: calc(-1s * var(--i));
+}
+
+@keyframes TILEHOVER {
+	0% { transform: translateZ(-30px) }
+	100% { transform: translateZ(-1px) }
+}
+
+@keyframes TILEHOVERWACKY {
+	0% { transform: translateZ(-30px) rotate(-4deg) rotateX(-15deg) rotateZ(80deg) rotateY(-50deg)}
+	100% { transform: translateZ(10px) rotate(2deg) rotateX(20deg) rotateZ(-70deg) rotateY(40deg)}
+}
+
+#realgrid .echosprite {
+    --directionalTransform: translateX(0);  
+    --directionalRotate: rotate(0deg);
+    --akiDistance: translateY(calc(var(--gridTileSize) * -0.5));
+    transform: 
+        translate(
+            calc(var(--stage-steps-x) * var(--gridTileSize)),
+            calc(var(--stage-steps-y) * var(--gridTileSize))
+        )
+        var(--directionalRotate)
+        var(--akiDistance)
+        rotateX(-90deg)
+        translateY(calc(var(--gridTileSize) * -1.25))
+        var(--directionalTransform);
+    border-radius: 100%;
+    transition: transform 600ms ease-in-out;
+}
+
+body.notchrome #realgrid .echosprite {
+    --akiDistance: translateY(calc(var(--gridTileSize) * -1));
+}
+
+body#echovision:not(.pathstep0) #realgrid .echosprite {
+    --directionalTransform: scale(0.0001)
+}
+
+#realgrid .echosprite::after {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: url(/img/textures/spotgradientinversetiny.gif);
+    background-size: cover;
+    transform: translateZ(-1px);
+}
+
+.grid-plane[lastmoved="left"] #realgrid .echosprite {
+    --directionalTransform: translateX(100%);
+    --directionalRotate: rotate(-90deg)
+}
+
+.grid-plane[lastmoved="right"] #realgrid .echosprite {
+    --directionalTransform: translateX(-100%);
+    --directionalRotate: rotate(90deg)
+}
+
+.grid-plane[lastmoved="up"] #realgrid .echosprite {
+    --directionalTransform: translateX(240%) rotateY(-70deg) translateX(50%);
+    --directionalRotate: rotate(90deg)
+}
+
+.echosprite .chatter-container {
+    transform: translateY(-10px);
+    left: unset;
+    width: 300px;
+}
+
+.echosprite .chatter {
+    background-color: var(--bright-color);
+    color: var(--dark-color);
+    text-shadow: 1px 1px var(--friend-color);
+    border: 1px solid var(--friend-color);
+    width: auto;
+    max-width: 100%;
+    white-space: unset;
+    text-transform: uppercase;
+}
+
+
+body.pathstep1:not(.pathstep2) #realgrid .echosprite {
+    transform: 
+        translate( calc(2 * var(--gridTileSize)), calc(12 * var(--gridTileSize)) ) 
+        translateY(calc(var(--gridTileSize) * -0.5)) 
+        rotateX(-90deg) 
+        translateY(calc(var(--gridTileSize) * -1.25)) 
+}
+
+body.pathstep3 #realgrid .echosprite {
+    transform: 
+        translate( calc(2 * var(--gridTileSize)), calc(0.75 * var(--gridTileSize)) )
+        translateY(calc(var(--gridTileSize) * -0.5)) 
+        rotateX(-90deg) 
+        translateY(calc(var(--gridTileSize) * -1.25)) 
+    ;
+}
+
+body.detonating .grid-plane {
+    --perspective: 150px;
+    --camera-distance: -3;
+    --camera-height: 2;
+}
+
+body.detonating #realgrid .gridpiece::after {
+    animation: shake-crazy 250ms linear infinite !important;
+}
+
+.grid-plane[specialcam="eclaw"] .grid-container {
+    --camera-offset: rotate(-10deg);
+    --camera-height: 1;
+    --camera-x: 2;
+    --camera-y: 12;
+}
+
+.grid-plane[specialcam="ecall"] .grid-container {
+    --camera-offset: rotate(-10deg) rotateX(20deg);
+    --camera-height: 0.75;
+    --camera-x: 2;
+    --camera-y: 11.5;
+}
+
+.grid-plane[specialcam="ecrowd"] .grid-container {
+    --camera-offset: rotate(-10deg) rotateX(-20deg);
+    --camera-height: 1.5;
+    --camera-x: 2;
+    --camera-y: 14;
+}
+
+.grid-plane[specialcam="eaki"] .grid-container {
+    --camera-offset: rotateX(0deg) rotate(145deg);
+    --camera-height: 0.5;
+    --camera-distance: 2;
+}
+
+.grid-plane[specialcam="echoclose"] .grid-container {
+    --camera-offset: rotateX(0deg) rotate(45deg);
+    --camera-height: 0.35;
+    --camera-distance: 1;
+    --camera-x: 2;
+    --camera-y: 11.5;
+}
+
+body[currentdialogue="echo2"] .grid-container {
+    --camera-x: 2;
+    --camera-y: 1;
+    --camera-rotation: 0;
+}
+
+body#echovision .swapcam .grid-animator {
+    transform: rotateZ(10deg);
+}
+
+.detonating .grid-animator {
+    --camera-rotation: 180 !important;
+    transform: var(--baseAnimatorTransform) !important;
+}
+
+
+.groupgfx > div {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    transition: all 2s ease-in-out;
+}
+
+.groupgfx > div::after, .groupgfx > div::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: var(--symbol);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    backface-visibility: visible;
+    transition: inherit;
+}
+
+.groupgfx > div::before {
+    background-image: var(--claw);
+    transition: opacity 400ms, transform 5s ease-in-out;
+    width: 200%;
+    opacity: 0;
+}
+
+.groupgfx .silent, .groupgfx .wake {
+    --symbol: url(/img/sprites/crittamenu/eyeiso.gif);
+    --claw: url(/img/sprites/crittamenu/clawlowiso.gif);
+}
+
+.groupgfx .wake::after {
+    transform: translateX(-100%)
+}
+
+.groupgfx .wake::before {
+    transform: var(--hideTransform);
+    --showTransform: rotate(30deg) translateX(-60%);
+    --hideTransform: rotate(0deg) translateX(-200%);
+}
+
+.groupgfx .silent::after {
+    filter: invert(1);
+    transform: translateX(100%) rotateY(180deg)
+}
+
+.groupgfx .silent::before {
+    filter: invert(1);
+    height: 125%;
+    --claw: url(/img/sprites/crittamenu/clawiso.gif);
+    transform: var(--hideTransform);
+    --showTransform: rotate(-25deg) translateX(-20%) translateY(30%);
+    --hideTransform: rotate(-25deg) translateX(50%) translateY(100%);
+}
+
+.echoprop > * {
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+#content[ech^="call"] .echoprop.callhost > * {
+    opacity: 1;
+}
+
+#content[ech^="calleye"] .echoprop.grouphost > * {
+    opacity: 1;
+}
+
+#content[ech^="calleyeclaw"] .groupgfx > div::before {
+    opacity: 1;
+    transform: var(--showTransform);
+}
+
+.crowdgfx .crowd {
+    width: 300%;
+    height: 300%;
+    position: absolute;
+    background: url(/img/textures/ceyetran.gif), url(/img/local/embassy/vision/crowd.gif?4);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    transform: translate(-75%) rotateY(30deg);
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.crowdgfx .crowd:last-child {
+    background-image: url(/img/textures/eyetran.gif), url(/img/local/embassy/vision/crowd2.gif?4);
+    transform:  translate(75%) rotateY(-30deg)
+}
+
+#content[ech^="crowd"] .crowdgfx .crowd {
+    opacity: 1;
+}

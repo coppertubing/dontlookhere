@@ -1,0 +1,197 @@
+@import url(/css/local/sky.css);
+
+body[state="corru-entered"] {
+    overflow-y: visible;
+}
+
+/* TYPOGRAPHY */
+.context {
+    width: 100%;
+    padding: 5vh 10px;
+    letter-spacing: 0.1em;
+    background: black;
+}
+
+/* BG STUFF */
+
+#content {
+    position: relative;
+    flex-direction: column;
+    background-image: url(/img/textures/static.gif);
+    z-index: 1;
+}
+
+#content::after {
+    content: "";
+    position: absolute;
+    top: 810vh;
+    background: black;
+    width: 100%;
+    height: 188vh;
+    z-index: -1;
+}
+
+.city {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-top: -10px;
+    backface-visibility: hidden;
+    color: black;
+}
+
+#chome {
+    height: 250vh;
+    padding-bottom: 150vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/img/local/city/cityup.gif);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: 2;
+}
+
+#chome::after {
+    content: "";
+    position: absolute;
+    width: 150vmax;
+    height: 150vmax;
+    background-image: url(/img/local/city/cityhome.gif);
+    background-size: cover;
+    animation: SPIN 120S LINEAR INFINITE;
+    background-position: center;
+    top: -50vmax;
+}
+
+#cdown {
+    background: url(/img/local/city/citydown.gif);
+    min-height: 200vh;
+    background-size: 100%;
+}
+
+#cdown .loose-thought {
+    position: absolute;
+    top: 1.25em;
+    color: white;
+}
+
+#cup {
+    background: url(/img/local/city/city3tran.gif);
+    background-position: bottom;
+    height: 200vh;
+    background-size: cover;
+    margin-top: -50vh;
+    z-index: 2;
+}
+
+#cup::after { /* covers empty space on smaller screens */
+    content: "";
+    position: absolute;
+    bottom: -50vh;
+    width: 100%;
+    height: 50vh;
+    background: black;
+}
+
+#ccover {
+    background-image: url(/img/local/city/city1.gif);
+    background-size: 100%;
+    margin-top: -150vh;
+    background-position: bottom;
+    height: 250vh;
+    z-index: 3;
+}
+
+#people {
+    margin-top: -50vh;
+    min-height: unset;
+    height: 150vh;
+    z-index: 4;
+    background-image: url(/img/local/city/peep.gif);
+    background-position: bottom;
+    background-size: cover;
+    animation: UNSET;
+}
+
+#people2 {
+    min-height: unset;
+    height: 100vh;
+    margin-top: 0;
+    background-image: url(/img/textures/fadein.gif), url(/img/textures/corrurippletran.gif);
+    background-position: top;
+    background-size: auto, auto;
+    background-repeat: repeat-x, repeat;
+    display: block;
+    overflow: hidden;
+}
+
+#people2::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 400vw;
+    background: url(/img/local/city/people.gif);
+    background-size: 200vw auto;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    animation: PEOPLESHIMMY 10s linear infinite;
+}
+
+.realeye {
+    width: 50vmin;
+    height: 50vmin;
+    position: absolute;
+    z-index: 5;
+    animation: 10s EYE-Y ease-in-out infinite alternate;
+}
+
+.realeye .target {
+    animation: 10s EYE-X ease-in-out infinite alternate;
+    display: flex !important; /* to override system menu hiding. only done for this one target */
+}
+
+.realeye::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(/img/local/city/realeye.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: 10s EYE-X ease-in-out infinite alternate;
+}
+
+.realeye:nth-child(1) { top: 50vh; animation-delay: -2s; animation-duration: 11s}
+.realeye:nth-child(2) { right: 20vw; animation-delay: -6s; }
+.realeye:nth-child(3) { left: 20vw; top: 40vh; animation-delay: -5s; animation-duration: 15s }
+.realeye:nth-child(4) { right: 10vw; bottom: 20vh; animation-delay: -10s; animation-duration: 5s }
+.realeye:nth-child(5) { left: 40vw; top: 20vh; animation-delay: -1s; animation-duration: 12s }
+.realeye:nth-child(6) { top: 10vh; animation-delay: -4s; animation-duration: 6s }
+
+@keyframes EYE-X {
+    0% { transform: translateX(-20vw) }
+    100% { transform: translateX(20vw) }
+}
+
+@keyframes EYE-Y {
+    0% { transform: translateY(-20vh) }
+    100% { transform: translateY(20vh) }
+}
+
+@media only screen and (max-width: 1200px) {
+    #cdown, #ccover {
+        background-size: 100% 100%;
+    }
+}
