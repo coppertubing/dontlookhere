@@ -47,6 +47,7 @@
 .grid-animator {
     transform-origin: center;
     transition: transform 300ms ease-in-out;
+    will-change: transform;
 }
 
 .grid-container, .grid-container * {
