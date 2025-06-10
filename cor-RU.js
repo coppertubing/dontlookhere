@@ -695,7 +695,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     observerCommon: new MutationObserver(()=>{
         processTranslation();
         processTranslation(document.querySelector(`#mindspike-scanner`));
-        cor_ru.processWeirdTranslation("mindpike");
+        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
         console.log("%ccommon observed! - @cor-RU", cor_ru.fancy.observed);
     }),
     observerCommonObserve: function () {
@@ -766,7 +766,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         processTranslation();
         cor_ru.processStatic();
         cor_ru.processMenu();
-        cor_ru.processWeirdTranslation("#content .target", "entaltname")
+        cor_ru.processWeirdTranslation("mindpike");
+        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
         cor_ru.observerCommonObserve();
         cor_ru.observerEntMenuObserve();
@@ -777,8 +778,6 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.updateResources();
 
         // cor_ru.stepKeyImplement();
-
-        // nvm i think iy breaks everything
 
         console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
     }),
@@ -866,12 +865,10 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
                 else console.warn("the page with dialoguePrefix " + dialoguePrefix + " does not have a localization! - @cor-RU")
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
-                    //listArray.push(cor_ru.list.combat)
                     combat = document.createElement('script')
                     combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
                     content.appendChild(combat)
                     console.log("%cadded combat as a resource update! - @cor-RU", cor_ru.fancy.general)
-                    // mimicking the addResource function instead of calling it to avoid the loading screen appearing twice
                 }
             };
         }

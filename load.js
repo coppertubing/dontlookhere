@@ -6,6 +6,7 @@ processTranslation(document.querySelector(`#defintion-box`));
 processTranslation();
 processTranslation(document.querySelector(`#mindspike-scanner`));
 processTranslation(document.querySelector(`#ozo-mask-grid`))
+cor_ru.processWeirdTranslation("mindpike");
 cor_ru.processWeirdTranslation(".mindsci-status", "definition");
 cor_ru.observerCommonObserve();
 cor_ru.observerEntMenuObserve();
