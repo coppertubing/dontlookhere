@@ -748,9 +748,11 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
     observerPage: new MutationObserver(()=>{
         getLocalizationForPage();
+
         processTranslation();
         cor_ru.processStatic();
         cor_ru.processMenu();
+        cor_ru.processWeirdTranslation("#content .target", "entaltname")
 
         cor_ru.observerCommonObserve();
         cor_ru.observerEntMenuObserve();
@@ -761,7 +763,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.updateResources();
 
         // cor_ru.stepKeyImplement();
-        
+
         // nvm i think iy breaks everything
 
         console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
