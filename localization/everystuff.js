@@ -1357,17 +1357,17 @@ what_veilk
 
 what_mindcores
     self
-        are all obesk actually these weird little spider things?
+        а все обески на самом деле эти странные паукоштуки?
 
     moth
         не, только куу
-        the "larval" obesk go through some procedure that makes them into those
-        we got a few descriptions of it before they pulled back
-        but they're all really abstract, like...
-        "climbing through their receptors into a mindcore", leaving an "empty vessel" to its "peaceful death"
-        nothing scientific, but they always emphasized it not just being a copy
-        then they build themselves bodies out of corru to drive around
-        that's what those qou-bodies are
+        "личиночные" обески проходят через некую процедуру по превращению в них
+        нам успели дать несколько описаний прежде чем они отступили
+        но все они очень абстрактные, типа...
+        "выкарабкиваться сквозь свои рецепторы в mindcore", оставляя "пустой сосуд" на "мирную гибель"
+        ничего научного, но они всегда подчёркивали, что это не просто копия
+        потом они собирают себе тела из корру чтобы гонять на них вокруг
+        этим и являются куу-тела
 
     RESPONSES::self
         а, хорошо<+>loop
@@ -1599,11 +1599,11 @@ why_callme
 
 why_connect
     self
-        почему у меня получилось подключиться так легко?
+        почему у меня вышло подключиться так легко?
 
     moth
         ну если у тебя из головы вылетело, у тебя определённо точно установлен тот патч от фбкс
-        обычно мыслеколы не могут такое
+        обычно мыслеколы просто так не могут такое
         вроде как корруцисты посылают и принимают сигналы практически полностью идентичные нервным
         довольно невероятное совпадение, просто чудо что это вообще работает
         но я не разбираюсь в этом, тебе лучше спросить кого-нибудь в отделе разработчиков
@@ -1647,19 +1647,19 @@ why_music
 
 mothep1end
     self
-        What do you think of all this?
-        The embassy, Gordon's involvement...
+        что ты думаешь обо всём этом?
+        о посольстве, об участии гордона...
     
     moth
-        i think we landed ourselves a security level increase
-        never heard anything about internal strife with the obesk before this
-        they've always had this image of total harmony, despite their homeworld
-        and you know, with the call...
-        i think it's only a few years until the call is "complete" if all this is true
-        or... maybe even less?
-        idk just some quick headmath
-        if we can get to the bottom of this soon and bring it all to the higher ups...
-        could you even imagine the kind of renown we'd both get?
+        думаю, повышение уровня охраны мы себе точно заработали
+        никогда до этого не слышал<блинскиймоль> о внутренних разногласиях у обесков
+        у них всегда создавалась такая картинка полной гармонии, несмотря на то что у них на родной планете
+        и знаешь, вот про зов...
+        я думаю по сути осталось всего пару лет до его "завершения", если всё это - правда
+        или... может даже меньше?
+        хз у меня голова а не калькулятор
+        если сможем в ближайшее время докопаться до всего возможного и донести это начальству...
+        ты представить себе можешь, какую славу мы вместе получим?
     
     RESPONSES::self
         тебе не страшно?<+>mothep1afraid
@@ -1668,17 +1668,17 @@ mothep1end
 
 mothep1afraid
     self
-        Aren't you afraid of what will happen when the call is complete?
-        What if it's something really bad?
+        а ты не боишься того, что произойдёт, когда зов завершится?
+        что, если это что-то очень плохое?
 
     moth
-        yeah, it's spooky, but...
-        we've both lived through too many "world-ending" crises for this to be the "real" one
-        besides, what if they can't even decode the call?
-        either cause it's too big, or because they didn't get the very start of it...
-        like, what if they need the whole thing?
-        and hey, what if whatever's down there in the ocean is just as friendly as the rest of them?
-        basically... whatever happens, we'll deal with it
+        дааа, немного стрёмно, но...
+        мы с тобой пережили слишком много кризисов-"концов света" чтобы этот оказался "настоящим"
+        кроме того, что если они даже не смогут его расшифровать?
+        типа потому что он слишком большой, или потому что они не записали самое начало...
+        типа, если зов понадобится им целиком?
+        эй, да и вдруг то что лежит там в океане такое же дружелюбное, как и они все?
+        короче... чё-б ни случилось, мы как-нибудь разберёмся
     
     RESPONSES::self
         раз ты так говоришь<+>loop
@@ -1691,8 +1691,8 @@ ep3thoughts
     
     moth
         о, да!
-        so, i always thought it was a tragedy
-        especially since it was the cap on the golden age of human and obesk relations
+        короче, он всегда представлялся мне трагедией
+        especially since it was the cap золотого века взаимоотношений между людьми и обесками
         like, truly golden age... but man, looking back at the news from those days makes me so sad
         videos, news, everything, everyone felt like everything was going to change
         and, i mean, things did change, but, i'm talking space age change
@@ -1813,7 +1813,7 @@ leverage
         ты в курсе сколько всего пребывает и убывает отсюда без единого результата?
         сколько всего просто выбрасывается в мусорку, на хранилище корруцистозных отходов?
         если твои маски работают на <em>других</em> корруцистах...
-        типа, ты если бы пробирался туда, куда никто другой не может,
+        типа, ты если бы пробирался<блинскийлопер> туда, куда никто другой не может,
         то вот и наш выигрышный билет
         и нам не то чтобы надо упоминать что эти маски произошли из этой цисты
         слушай - никому ни слова о масках. а я вычеркну это из отчёта

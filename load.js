@@ -1,5 +1,7 @@
 getLocalizationForPage(true);
+
 if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+
 cor_ru.processStatic(true);
 cor_ru.processMenu(true);
 processTranslation(document.querySelector(`#defintion-box`));
@@ -8,11 +10,14 @@ processTranslation(document.querySelector(`#mindspike-scanner`));
 processTranslation(document.querySelector(`#ozo-mask-grid`))
 cor_ru.processWeirdTranslation("mindpike");
 cor_ru.processWeirdTranslation(".mindsci-status", "definition");
+
 cor_ru.observerCommonObserve();
 cor_ru.observerEntMenuObserve();
 cor_ru.observerGadObserve();
 cor_ru.observerDialogueObserve();
 cor_ru.observerMasksObserve();
+if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observerPartyObserve(); }
+
 cor_ru.stepKeyImplement();
 cor_ru.stepKeyClean();
 cor_ru.observerPageObserve();

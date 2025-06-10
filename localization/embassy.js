@@ -97,12 +97,10 @@ env.localization.page['embassy'] = {dialogues: {},
 
         "akizetesche": "акизетеше",
         "akizet": "акизет",
-        "Surface Veteran": "Ветеран Поверхности",
         "think to self": "подумать про себя",
         "ruminate over cyst": "размышлять о цисте",
 
         "gakvu": "гакву",
-        "Conspicuous Insider": "", // --- ??? ,,,,,,,,,,,,,,,,,,,,,,,,,...KOJIHUGYFG?????????????????????????????????????? GAKVU WHO THE FUCK ARE YOU
         "toggle cloak": "переключить накидку",
             "ok": "хорошо",
             "sure": "конечно",
@@ -111,8 +109,6 @@ env.localization.page['embassy'] = {dialogues: {},
             "ok akizet": "ага акизет",
 
         "tozik": "тозик",
-        "Inquisitive Technician": "Пытливый Техник",
-
         "cavik": "кавик",
         "kazki": "казки",
         "bozko": "бозко",
@@ -259,7 +255,7 @@ if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIM
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
 }
 
-// --- DIALOGUES --- //
+// === DIALOGUES === //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -863,7 +859,7 @@ research
 
 
 
-// --- DISCOVERY --- //
+// == DISCOVERY == //
 env.localization.page['embassy'].dialogues["d1_akizet"] = generateDialogueObject(` 
 start
     sourceless
@@ -1983,7 +1979,7 @@ SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remo
 
 
 
-// --- SUSPISION --- //
+// == SUSPISION == //
 env.localization.page['embassy'].dialogues["d2_akizet"] = generateDialogueObject(` 
 start
     sourceless
@@ -3230,7 +3226,7 @@ ____END
 
 
 
-// --- COLLAPSE --- //
+// == COLLAPSE == //
 /*
 env.localization.page['embassy'].dialogues["mothframe"] = generateDialogueObject(` 
 start
@@ -3698,7 +3694,7 @@ start
         I CAN DIRECT THE OTHERS TO FOLLOW THROUGH...
 
     sys
-        ВНИМАНИЕ::'инициировано мыслеформенное сражение'
+        ВНИМАНИЕ::'инициировано мыслеформенный бой'
         УВЕДОМЛЕНИЕ::'снижайте здоровье вражеской команды';'чтобы победить её'
         УВЕДОМЛЕНИЕ::'выбирайте действия мыслеформ соответствующим образом'
         ПРЕДУПРЕЖДЕНИЕ::'если команда союзников потерпит поражение';'поток памяти распадётся'
@@ -3800,7 +3796,7 @@ env.localization.page['embassy'].dialogues['d3_tutorial_end'] = generateDialogue
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
             EXEC::vn.renderParty()
 ____END
 
@@ -4057,14 +4053,14 @@ start
             SHOWIF::'EXEC::checkItem(env.ITEM_LIST.disabler)'
 
     RESPONSES::akizet
-        engage<+>END --- ??? 
+        engage<+>END 
             SHOWIF::['gameplay_off', false]
-            FAKEEND::(начать сражение)
+            FAKEEND::(начать бой)
             EXEC::env.combat.dynamicCombat()
 
         пропустить<+>END
             SHOWIF::['gameplay_off', true]
-            FAKEEND::(пропустить сражение)
+            FAKEEND::(пропустить бой)
             EXEC::env.combat.dynamicCombat({dry: true});cutscene(true);setTimeout(()=>{cutscene(false);env.combat.dynamicCallback(env.rpg.enemyTeam)}, 1010)
 
         отключить<+>disable
@@ -4087,7 +4083,7 @@ env.localization.page['embassy'].dialogues["d3_genericenemyvictory"] = generateD
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -5052,7 +5048,7 @@ env.localization.page['embassy'].dialogues["d3r2_postcombat"] = generateDialogue
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -5727,7 +5723,7 @@ env.localization.page['embassy'].dialogues["d3_movefriend_finish"] = generateDia
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6571,7 +6567,7 @@ early
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6823,7 +6819,7 @@ env.localization.page['embassy'].dialogues["d3_archiveminiclear"] = generateDial
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 ____END
 
     sourceless
@@ -6992,7 +6988,7 @@ start
 
 ____SHOWIF::['gameplay_off']
     sys
-        ВНИМАНИЕ::'пропущен геймплей мыслеформенного сражения';'переключите в системном меню по желанию'
+        ВНИМАНИЕ::'пропущен геймплей мыслеформенного боя';'переключите в системном меню по желанию'
 
     bstrd
         ВТФ

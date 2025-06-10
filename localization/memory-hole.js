@@ -16,7 +16,7 @@ env.localization.page['localuncosmwhere'] = {dialogues: {},
     },
 }
 
-env.uncode = { // taking the function and adding stuff so it redirects you to the needed page when you type stuff in russian
+env.uncode = { // --- taking the function and adding stuff so it redirects you to the needed page when you type stuff in russian
     input: content.querySelector('#code'),
     enter: ()=>{
         let value = env.uncode.input.value.toLowerCase().replaceAll(".", "").replaceAll("/", "")

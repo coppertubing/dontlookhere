@@ -502,41 +502,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     margin-top: -0.5em;
 }
 
-
-
-.actiondef-stats span[info="hit"]::before {
-    content: "УДАР::" !important;
-    color: var(--neutral-color);
-    text-transform: uppercase;
-}
-
-.actiondef-stats span[info="target"]::before {
-    content: "ЦЕЛЬ::" !important;
-    color: var(--neutral-color);
-    text-transform: uppercase;
-}
-
-.actiondef-stats span[info="crt"]::before {
-    content: "КРИТ::" !important;
-    color: var(--neutral-color);
-    text-transform: uppercase;
-}
-
-.actiondef-onhit::before, 
-.actiondef-oncrit::before,
-.actiondef-onuse::before {
-    content: "УДАР::" !important;
-    color: var(--neutral-color);
-}
-.actiondef-oncrit::before { content: "КРИТ::" !important }
-.actiondef-onuse::before { content: "ПРИМЕНЕНИЕ::" !important }
-
-.actiondef-status.passive::after {
-    content: "ПАССИВНОЕ" !important;
-}
-.actiondef-status.impulse::after {
-    content: "ИМПУЛЬС" !important;
-}
+body[quality="regular"] .quality::after { content: "Качество: ОБЫЧНОЕ" }
+body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" }
 
 
 .actor-corrurubonus .dialogue-text {
@@ -690,100 +657,173 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         }*/
     },
 
-    // obserbor
+    // obserbor. the itself of them gets defined later
 
-    observerCommon: new MutationObserver(()=>{
-        processTranslation();
-        processTranslation(document.querySelector(`#mindspike-scanner`));
-        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
-        console.log("%ccommon observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerCommonObserve: function () {
-        cor_ru.observerCommon.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
-        cor_ru.observerCommon.observe(document.querySelector("#content"), { childList: true, subtree: true });
-        console.log("%ccommon observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-    },
+    observer: {
+        /*template: {
+            func: (consolething)=>{
 
-    observerEntMenu: new MutationObserver(()=>{
-        document.querySelectorAll('#entity-menu .ent').forEach(e=>{
-            if(e.getAttribute('entname')) {
-                e.addEventListener('click', ()=>{
-                    let entity = flags.detectedEntities[e.getAttribute('pagename')]['entities'][e.getAttribute('entname')]
-                    let container = document.querySelector('#entcontent')
-                    container.innerHTML = ""
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.template.itself.observe();
 
-
-                    let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
-
-                    try {replay = getReadoutMsg({message: cor_ru.entity_menu.readouts[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu.readouts[entity.name]['name'], image: entity.image})}
-                    catch (error) {
-                        console.warn("could not localize " + entity.name + " - @cor-RU")
-                        console.error(error)
-                    }
-
-                    container.insertAdjacentHTML('beforeend', replay)
-                    setTimeout(()=>container.querySelector('.message').classList.add('active'), 5)
-                })
+                console.log("%ctemplate observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
-        })
-        console.log("%centmenu observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerEntMenuObserve: function () {
-        cor_ru.observerEntMenu.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true });
-        console.log("%centmenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+        },*/
+        common: {
+            func: (consolething)=>{
+                processTranslation();
+                processTranslation(document.querySelector(`#mindspike-scanner`));
+                cor_ru.processWeirdTranslation("#content .target", "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.common.itself.observe(document.querySelector("#mindspike-scanner"), { childList: true, subtree: true });
+                cor_ru.observer.common.itself.observe(document.querySelector("#content"), { childList: true, subtree: true });
+
+                console.log("%ccommon observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        entMenu: {
+            func: (consolething)=>{
+                document.querySelectorAll('#entity-menu .ent').forEach(e=>{
+                    if(e.getAttribute('entname')) {
+                        e.addEventListener('click', ()=>{
+                            let entity = flags.detectedEntities[e.getAttribute('pagename')]['entities'][e.getAttribute('entname')]
+                            let container = document.querySelector('#entcontent')
+                            container.innerHTML = ""
+
+
+                            let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
+
+                            try {replay = getReadoutMsg({message: cor_ru.entity_menu.readouts[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu.readouts[entity.name]['name'], image: entity.image})}
+                            catch (error) {
+                                console.warn("could not localize " + entity.name + " - @cor-RU")
+                                console.error(error)
+                            }
+
+                            container.insertAdjacentHTML('beforeend', replay)
+                            setTimeout(()=>container.querySelector('.message').classList.add('active'), 5)
+                        })
+                    }
+                })
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.entMenu.itself.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true, attributes: true });
+
+                console.log("%centMenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        gad: {
+            func: (consolething)=>{
+                cor_ru.processWeirdTranslation(".mindsci-status", "definition");
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.gad.itself.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true, attributes: true });
+
+                console.log("%cgad observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        dialogue: {
+            func: (consolething)=>{
+                cor_ru.processReply();
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.dialogue.itself.observe(document.querySelector("#dialogue-box"), { childList: true });
+
+                console.log("%cdialogue observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        masks: {
+            func: (consolething)=>{
+                processTranslation(document.querySelector(`#ozo-mask-grid`))
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.masks.itself.observe(document.querySelector("#masks"), { childList: true });
+
+                console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        party: {
+            func: (consolething)=>{
+                if (typeof page.party != "undefined") {
+                    for (let i = 0; i < page.party.length; i++) {
+                        if (page.party[i].combatActor != "generic") page.party[i].name = processStringTranslation(page.party[i].name)
+                        page.party[i].class = processStringTranslation(page.party[i].class)
+                    }
+                }
+                processTranslation(document.querySelector(`#party-menu`))
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.party.itself.observe(document.querySelector("#party-menu"), { childList: true, subtree: true });
+
+                console.log("%cparty observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
+        page: {
+            func: (consolething)=>{  
+                new Promise((resolve) => {
+                    if (consolething == undefined) cor_ru.updateResources(true)
+                        else cor_ru.updateResources()
+
+                    console.log("bap1")
+                    
+                    resolve();
+                    })
+                    .then(()=>{
+                        getLocalizationForPage(true);
+
+                        console.log("bap2")
+                    })
+                    .then(()=>{
+                        if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+                        
+                        processTranslation();
+
+                        cor_ru.processStatic(true);
+                        cor_ru.processMenu(true);
+
+                        processTranslation(document.querySelector(`#definition-box`));
+                        processTranslation(document.querySelector(`#mindspike-scanner`));
+                        processTranslation(document.querySelector(`#ozo-mask-grid`))
+
+                        cor_ru.processWeirdTranslation("mindpike");
+                        cor_ru.processWeirdTranslation(".mindsci-status", "definition");
+                        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+
+                        cor_ru.observer.common.observe();
+                        cor_ru.observer.entMenu.observe();
+                        cor_ru.observer.gad.observe();
+                        cor_ru.observer.dialogue.observe();
+                        cor_ru.observer.masks.observe();
+
+                        if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observer.party.observe();}
+
+                        if (consolething == undefined) cor_ru.observer.page.observe()
+                            else console.log(consolething[0], consolething[1]);
+                        
+                        console.log("bap3")
+                    })
+            },
+            observe: ()=>{
+                cor_ru.observer.page.itself.observe(body, {attributes: true, attributeFilter: ['page']});
+
+                console.log("%cpage observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
     },
-
-    observerGad: new MutationObserver(()=>{
-        cor_ru.processWeirdTranslation(".mindsci-status", "definition");
-        console.log("%cGAD observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerGadObserve: function () {
-        cor_ru.observerGad.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true, attributes: true });
-        console.log("%cGAD observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-    },
-
-    observerDialogue: new MutationObserver(()=>{
-        cor_ru.processReply();
-        console.log("%cdialogue observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerDialogueObserve: function () {
-        cor_ru.observerDialogue.observe(document.querySelector("#dialogue-box"), { childList: true });
-        console.log("%cdialogue observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-    },
-
-    observerMasks: new MutationObserver(()=>{
-        processTranslation(document.querySelector(`#ozo-mask-grid`))
-        console.log("%cmasks observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerMasksObserve: function () {
-        cor_ru.observerMasks.observe(document.querySelector("#masks"), { childList: true });
-        console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-    },
-
-    observerPage: new MutationObserver(()=>{
-        cor_ru.updateResources();
-        
-        getLocalizationForPage();
-
-        processTranslation();
-        cor_ru.processStatic();
-        cor_ru.processMenu();
-        cor_ru.processWeirdTranslation("mindpike");
-        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
-
-        cor_ru.observerCommonObserve();
-        cor_ru.observerEntMenuObserve();
-        cor_ru.observerGadObserve();
-        cor_ru.observerDialogueObserve();
-        cor_ru.observerMasksObserve();
-
-        // cor_ru.stepKeyImplement();
-
-        console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerPageObserve: function () {
-        cor_ru.observerPage.observe(body, {attributes: true, attributeFilter: ['page']});
-        console.log("%cpage observer is set up! - @cor-RU", cor_ru.fancy.setobserver)},
 
     /*observerWarn: new MutationObserver(()=>{
         cor_ru.processWarning();
@@ -839,7 +879,7 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             parasite: "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
             beneathdepths: "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
 
-            ep3a2: "https://coppertubing.github.io/cor-RU/localization/frame.js",
+            e3a2: "https://coppertubing.github.io/cor-RU/localization/frame.js",
 
             cache: "https://coppertubing.github.io/cor-RU/localization/cache.js",
             ozo: "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
@@ -855,14 +895,14 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-                else console.warn("the page with dialoguePrefix " + dialoguePrefix + " does not have a localization! - @cor-RU")
+                else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! - @cor-RU")
             listArray.push(cor_ru.list.entityMenu);
-            listArray.push(cor_ru.list.load);
+            // listArray.push(cor_ru.list.load);
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])}}
-                else console.warn("the page with dialoguePrefix " + dialoguePrefix + " does not have a localization! - @cor-RU")
+                else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! - @cor-RU")
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
                     combat = document.createElement('script')
@@ -877,6 +917,17 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 }
 
+// yay! opbsbernr time
+
+cor_ru.observer.common.itself = new MutationObserver(()=>{cor_ru.observer.common.func(["%ccommon observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.entMenu.itself = new MutationObserver(()=>{cor_ru.observer.entMenu.func(["%centMenu observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.gad.itself = new MutationObserver(()=>{cor_ru.observer.gad.func(["%cgad observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.dialogue.itself = new MutationObserver(()=>{cor_ru.observer.dialogue.func(["%cdialogue observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.func(["%cmasks observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.party.itself = new MutationObserver(()=>{cor_ru.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.page.itself = new MutationObserver(()=>{cor_ru.observer.page.func(["%cpage observed! - @cor-RU", cor_ru.fancy.observed])})
+
+
 console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
 console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
 
@@ -884,4 +935,4 @@ document.head.appendChild(document.createElement('style').appendChild(document.c
 
 page.formedDefinitionStrings = undefined
 
-cor_ru.updateResources(true)
+cor_ru.observer.page.func()

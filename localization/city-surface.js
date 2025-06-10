@@ -78,7 +78,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*akizet*/ "it will do": "сойдёт",
         /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
         /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу Зова?",
-        /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине.",
+        /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине",
 
 
         /*envoy*/ "wwEL LL isn' t t that peculiar ? ?": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
@@ -202,7 +202,7 @@ RESPOBJ::
 env.localization.page['citystreet'].dialogues["envoy"] = generateDialogueObject(`
 start
     sourceless
-        Я ОСТАНАВЛИВАЮСЬ, И ПОСОЛ ТОЖЕ. МЫ ОБМЕНИВАЕМСЯ ВЗГЛЯДАМИ.
+        Я ОСТАНАВЛИВАЮСЬ, И ПОСОЛ ТОЖЕ. МЫ ОБМЕНИВАЕМСЯ ВЗГЛЯДАМИ
         
     akizet
         я ценю ваше дозволение, гордон
@@ -408,7 +408,7 @@ start
     
     sourceless
         ПРОХОЖИЙ В ПЛАЩЕ ЗАХЛОПЫВАЕТ СВОЙ КОММУНИКАТОР И ОГЛЯДЫВАЕТСЯ, СРАЗУ ЗАМЕЧАЯ НАС
-        ОН ШИРОКО УЛЫБАЕТСЯ И ЖЕСТОМ ПРИГЛАШАЕТ НАС ПОДОЙТИ БЛИЖЕ. 
+        ОН ШИРОКО УЛЫБАЕТСЯ И ЖЕСТОМ ПРИГЛАШАЕТ НАС ПОДОЙТИ БЛИЖЕ
 
     cloaked streetwalker
         Эй! Гордон! Кто это?
