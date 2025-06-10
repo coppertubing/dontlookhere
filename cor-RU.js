@@ -603,8 +603,22 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
             document.querySelectorAll("#mindspike-examine").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ИЗУЧ"}})
             document.querySelectorAll("#mindspike-act").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ДЕЙСТ"}})
         } // i hate ACT and EXM strings bleeding into shit
-        else if (attribute == false) {document.querySelectorAll(selector).forEach(el=>{for (const childNode of el.childNodes) {if (childNode.nodeType === Node.TEXT_NODE) {childNode.textContent = processStringTranslation(childNode.textContent)}}})}
-        else document.querySelectorAll(selector).forEach(el=>{if (el.getAttribute(attribute) != null) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))})
+        else if (attribute == false) {
+            document.querySelectorAll(selector).forEach(el=>{
+                for (const childNode of el.childNodes) {
+                    if (childNode.nodeType === Node.TEXT_NODE) {
+                        if (childNode.textContent != processStringTranslation(childNode.textContent)) childNode.textContent = processStringTranslation(childNode.textContent)
+                    }
+                }
+            })
+        }
+        else {
+            document.querySelectorAll(selector).forEach(el=>{
+                if (el.getAttribute(attribute) != null) {
+                    if (el.getAttribute(attribute) != processStringTranslation(el.getAttribute(attribute))) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))
+                }
+            })
+        }
         return
     },
     processStatic: function (force) {
