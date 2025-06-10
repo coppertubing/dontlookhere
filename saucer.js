@@ -96,27 +96,33 @@ horriblefuckingthing = [
         'css/stage/goodwalls.css',
 ]
 
-function fuckingGetThem() {
-    for (let i = 0; i < 3; i++) {
-        corrucode = ``;
-        ourcode = ``;
+let differences = 0;
 
-        fetch("https://corru.observer/" + horriblefuckingthing[i])
-            .then((response) => response.text())
-            .then((text) => corrucode = text)
-            .then(() => {
-                fetch("https://coppertubing.github.io/cor-RU/sauce code/" + horriblefuckingthing[i])
-                    .then((response) => response.text())
-                    .then((text) => {
-                        ourcode = text;
+function fuckingGetThem(i = 0) {
+    if (i == horriblefuckingthing.length) return console.log("checked " + horriblefuckingthing.length + ", found " + differences);
 
-                        if (corrucode != ourcode) {
-                            console.error("OOPS FOUND A DIFFERENCE!!!!! PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
-                            console.log(corrucode, ourcode)
-                        }
-                    })
-            })
-    }
+    corrucode = ``;
+    ourcode = ``;
+      
+    fetch("https://corru.observer/" + horriblefuckingthing[i])
+        .then((response) => response.text())
+        .then((text) => corrucode = text)
+        .then(() => {
+            fetch("https://coppertubing.github.io/cor-RU/sauce code/" + horriblefuckingthing[i])
+                .then((response) => response.text())
+                .then((text) => {
+                    ourcode = text;
+
+                    if (corrucode != ourcode) {
+                        differences++;
+                        console.error("OOPS FOUND A DIFFERENCE!!!!! PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
+                        console.info(corrucode, ourcode)
+                    }
+                })
+                .then(() => {
+                    setTimeout(()=>fuckingGetThem(i+1), 10)
+                })
+        })
     return;
 }
 
