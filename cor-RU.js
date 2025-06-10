@@ -761,6 +761,8 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     },
 
     observerPage: new MutationObserver(()=>{
+        cor_ru.updateResources();
+        
         getLocalizationForPage();
 
         processTranslation();
@@ -774,8 +776,6 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
         cor_ru.observerGadObserve();
         cor_ru.observerDialogueObserve();
         cor_ru.observerMasksObserve();
-
-        cor_ru.updateResources();
 
         // cor_ru.stepKeyImplement();
 
