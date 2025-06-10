@@ -1,28 +1,7 @@
-getLocalizationForPage(true);
+cor_ru.observer.page.func()
+cor_ru.observer.page.observe()
 
-if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})
 
-cor_ru.processStatic(true);
-cor_ru.processMenu(true);
-processTranslation(document.querySelector(`#defintion-box`));
-processTranslation();
-processTranslation(document.querySelector(`#mindspike-scanner`));
-processTranslation(document.querySelector(`#ozo-mask-grid`))
-cor_ru.processWeirdTranslation("mindpike");
-cor_ru.processWeirdTranslation(".mindsci-status", "definition");
-
-cor_ru.observerCommonObserve();
-cor_ru.observerEntMenuObserve();
-cor_ru.observerGadObserve();
-cor_ru.observerDialogueObserve();
-cor_ru.observerMasksObserve();
-if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observerPartyObserve(); }
-
-cor_ru.stepKeyImplement();
-cor_ru.stepKeyClean();
-cor_ru.observerPageObserve();
-        
 // setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
 // setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)
-        
-document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})

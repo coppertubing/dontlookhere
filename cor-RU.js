@@ -773,44 +773,36 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             }
         },
         page: {
-            func: (consolething)=>{  
+            func: (consolething)=>{
                 new Promise((resolve) => {
-                    if (consolething == undefined) cor_ru.updateResources(true)
-                        else cor_ru.updateResources()
+                    if (consolething) cor_ru.updateResources()
+                    resolve(getLocalizationForPage(true))
+                })
+                .then(()=>{
+                    if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+                            
+                    processTranslation();
 
-                    console.log("bap1")
+                    cor_ru.processStatic(true);
+                    cor_ru.processMenu(true);
 
-                    resolve(getLocalizationForPage(true););
-                    })
-                    .then(()=>{
-                        if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
-                        
-                        processTranslation();
+                    processTranslation(document.querySelector(`#definition-box`));
+                    processTranslation(document.querySelector(`#mindspike-scanner`));
+                    processTranslation(document.querySelector(`#ozo-mask-grid`))
 
-                        cor_ru.processStatic(true);
-                        cor_ru.processMenu(true);
+                    cor_ru.processWeirdTranslation("mindpike");
+                    cor_ru.processWeirdTranslation(".mindsci-status", "definition");
+                    cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
-                        processTranslation(document.querySelector(`#definition-box`));
-                        processTranslation(document.querySelector(`#mindspike-scanner`));
-                        processTranslation(document.querySelector(`#ozo-mask-grid`))
+                    cor_ru.observer.common.observe();
+                    cor_ru.observer.entMenu.observe();
+                    cor_ru.observer.gad.observe();
+                    cor_ru.observer.dialogue.observe();
+                    cor_ru.observer.masks.observe();
+                    if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observer.party.observe();}
 
-                        cor_ru.processWeirdTranslation("mindpike");
-                        cor_ru.processWeirdTranslation(".mindsci-status", "definition");
-                        cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
-
-                        cor_ru.observer.common.observe();
-                        cor_ru.observer.entMenu.observe();
-                        cor_ru.observer.gad.observe();
-                        cor_ru.observer.dialogue.observe();
-                        cor_ru.observer.masks.observe();
-
-                        if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observer.party.observe();}
-
-                        if (consolething == undefined) cor_ru.observer.page.observe()
-                            else console.log(consolething[0], consolething[1]);
-                        
-                        console.log("bap2")
-                    })
+                    if (consolething) console.log(consolething[0], consolething[1])
+                })
             },
             observe: ()=>{
                 cor_ru.observer.page.itself.observe(body, {attributes: true, attributeFilter: ['page']});
@@ -892,7 +884,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
                 else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! - @cor-RU")
             listArray.push(cor_ru.list.entityMenu);
-            // listArray.push(cor_ru.list.load);
+            listArray.push(cor_ru.list.load);
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
@@ -930,4 +922,4 @@ document.head.appendChild(document.createElement('style').appendChild(document.c
 
 page.formedDefinitionStrings = undefined
 
-cor_ru.observer.page.func()
+cor_ru.updateResources(true)
