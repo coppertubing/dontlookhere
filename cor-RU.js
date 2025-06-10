@@ -779,13 +779,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                         else cor_ru.updateResources()
 
                     console.log("bap1")
-                    
-                    resolve();
-                    })
-                    .then(()=>{
-                        getLocalizationForPage(true);
 
-                        console.log("bap2")
+                    resolve(getLocalizationForPage(true););
                     })
                     .then(()=>{
                         if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
@@ -814,7 +809,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                         if (consolething == undefined) cor_ru.observer.page.observe()
                             else console.log(consolething[0], consolething[1]);
                         
-                        console.log("bap3")
+                        console.log("bap2")
                     })
             },
             observe: ()=>{
