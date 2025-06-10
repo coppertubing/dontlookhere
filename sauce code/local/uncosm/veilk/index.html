@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,59 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogues["veilk"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        ...though the spirestorm is distant, its rage echoes here in the form of little water droplets
-        the veilk are drenched already, allowing my claws to find easy purchase in their thick, waterlogged flesh
-        this one i have chosen to be my carrier has myriad pockmarks from similar travelers
-        but at this height, they have grown sparse, and the ground has disappeared in the surface vapors and darkness...
-        how far would i fall, if i failed to hold on now? what a thrill!!
-        i am certain to have no visitors here, so i reach over my shoulder to activate my zzepel
-    
-    sourceless quiet
-        it extends outwards from me to form a semispherical corrucystic shell, biting into the flesh of my carrier to secure itself
-            EXEC::ratween(env.bgm, 0.5);play('stab', 0.75)
-    
-    sourceless
-        i am sealed into darkness for only a θblink, as once the respite is fully formed, the inner lights activate, and it detaches from my back-carrier
-        these lights are pale, unreliable chemicals, and it is not quite as spacious as i would like...
-        but i can finally let my limbs relax
-        and so i place my back against the clammy flesh of the veilk, my legs in restful support against the hard shell the zzepel has formed
-        ugh... but the humidity is near unbearable - the cooling winds of this height are unable to reach me any longer
-        there is a great tremble as the veilk's next step lands distantly below
-        how long will it be before it carries me past the <span class="code">spire</span>? 
-        i should check with that coordinator...
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -657,6 +605,58 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogues["veilk"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...though the spirestorm is distant, its rage echoes here in the form of little water droplets
+        the veilk are drenched already, allowing my claws to find easy purchase in their thick, waterlogged flesh
+        this one i have chosen to be my carrier has myriad pockmarks from similar travelers
+        but at this height, they have grown sparse, and the ground has disappeared in the surface vapors and darkness...
+        how far would i fall, if i failed to hold on now? what a thrill!!
+        i am certain to have no visitors here, so i reach over my shoulder to activate my zzepel
+    
+    sourceless quiet
+        it extends outwards from me to form a semispherical corrucystic shell, biting into the flesh of my carrier to secure itself
+            EXEC::ratween(env.bgm, 0.5);play('stab', 0.75)
+    
+    sourceless
+        i am sealed into darkness for only a θblink, as once the respite is fully formed, the inner lights activate, and it detaches from my back-carrier
+        these lights are pale, unreliable chemicals, and it is not quite as spacious as i would like...
+        but i can finally let my limbs relax
+        and so i place my back against the clammy flesh of the veilk, my legs in restful support against the hard shell the zzepel has formed
+        ugh... but the humidity is near unbearable - the cooling winds of this height are unable to reach me any longer
+        there is a great tremble as the veilk's next step lands distantly below
+        how long will it be before it carries me past the <span class="code">spire</span>? 
+        i should check with that coordinator...
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

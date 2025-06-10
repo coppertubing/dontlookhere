@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,215 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					page.bgm.rate(0.5)
-
-env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["hesitant"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval3.gif',
-    voice: ()=>play('talkcore', 0.75)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["hesitant"].image = '/img/sprites/obesk/larval/larval3h.gif'
-}
-    
-env.dialogues["larval"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        WHILE I REPAIR MY VALIKA, █████ APPROACHES THE CORNER OF THE ARMORY I HAVE COMMANDEERED
-        I LOOK UP TO FACE HIM, RECEPTORS WIDE IN JOYOUS GREETING, ONLY TO SEE THAT HIS ARE MEEKLY PULLED BACK WITH WORRY
-
-    stupid
-        hey █████!!!
-
-    hesitant
-        hi ██████!
-
-    stupid
-        what brings you here? do they have another device for me to try out?
-        the aima cysts were truly incredible to use, it was like...
-        my mind's eye, multiplied, hovering outside of my body
-        disorienting, but... eye-opening. hehehe
-    
-    hesitant
-        oh, yeah... yeah, it is
-    
-    sourceless
-        MY RECEPTORS SETTLE INTO A SIMILARLY WORRIED TWIST
-        HE SEEMS SO SULLEN...?
-
-    stupid
-        sooo...?
-        what is it?
-    
-    sourceless
-        HE REACHES INTO HIS LONGCLOAK'S INNER POCKET, FETCHING A FAIRLY LARGE HANDHELD CORRUCYST
-        THERE IS A MOMENT WHERE HE STARES AT IT, FROZEN, BEFORE WORDLESSLY OFFERING IT TO ME
-
-    hesitant
-        it is...
-        a new emergency device from the vazni foundries
-        they, um...
-    
-    sourceless
-        I CANNOT HELP BUT CHUCKLE AT HOW STRANGE HE IS ACTING
-        THIS SEEMS TO FLUSTER HIM FURTHER
-        I UNCURL ONE OF MY RECEPTORS TO CONNECT TO IT, BUT HE NEARLY LUNGES IN RESPONSE
-    
-    hesitant
-        wai--wait!
-        do not connect to it!!
-        it... extracts your mind
-    
-    stupid
-        what?
-
-    sourceless
-        IMMEDIATELY, MY RECEPTOR RECOILS
-
-    stupid
-        how? what? 
-
-    sourceless
-        █████ WRINGS HIS CLAWS NERVOUSLY, RECEPTORS SIMILARLY CURLING AWAY
-        
-    hesitant
-        like i said... emergency
-        see, the zevazni foundry θjut have created this new process...
-        they are saying it is a new state of life - a sort of undeath
-        where you live within corru... your mind, your body, everything
-
-    stupid
-        that is so cool!!!!
-
-    hesitant
-        wha--what?
-        no, it is extremely dangerous!
-        not just for yourself, but... for the future
-        i mean, if this catches on, eventually, umm...
-        it might be the end of us, you know?
-        either way, i wanted you to have one of the few we got
-
-    stupid
-        ...and, you <em>do not</em> want me to use it?
-    
-    hesitant
-        of course not, but, if you are really going to be doing this...
-        the world is changing very fast, ██████
-        i want you to be around to see it
-        if you ever got attacked on one of your runs, or caught by...
-
-    sourceless
-        HE WAVES AWAY THE NOTION, NOT EVEN WANTING TO THINK IT
-
-    hesitant
-        this is your best chance at continuing to live
-        or, some... facsimile of it
-
-    sourceless
-        I CHUCKLE, EXASPERATED - SUCH CONFUSING MESSAGES!
-    
-    stupid
-        well, is it like those--what did you call them?
-        echoes?
-        if i use this... is it me?
-
-    hesitant
-        yes, without a doubt
-    
-    sourceless
-        █████ SITS DOWN AT MY ARMORY STATION, ACROSS FROM ME
-
-    hesitant
-        just like how the aima cysts become an extension of your mind,
-        so too does the mindcore--that is what they are calling it
-        i cannot imagine what sort of maniac it took to discover this, but...
-        it shifts the weight of your mind into it, and then disconnects
-        leaving an empty vessel to die
-    
-    sourceless
-        I LOOK OVER THE GLASSY SURFACE OF THE MINDCORE THOUGHTFULLY
-        BENEATH THE CYSTIC GLASS, I CAN SEE THE FLOW OF CORRU WITHIN
-        A SLOW, WHORLING CURRENT OF VIOLET PEARLESCENCE
-        IT IS ENTRANCING - MORE THAN ANY OTHER DEVICE I HAVE BEEN GIVEN YET
-        A PRODUCT OF ITS DENSITY, MAYBE? IT IS RATHER HEAVY
-        OH--YES, HE IS STILL HERE
-
-    stupid
-        well, do not worry!!
-        you have never seen my veilk-scaling skills!
-        and did i ever tell you about the time, i <em>broke</em> a guktik's arm?
-
-    sourceless
-        I RAISE MY RIGHT HAND INTO A FIST, DISPLAYING THE CHITIN OF MY FOREARM 
-        IT IS DREADFULLY CRACKED, THE KIND OF DEEP CHITIN WOUND THAT COULD TAKE AN θeye TO HEAL
-        BUT IT IS A POINT OF PRIDE, STILL. A RAISE OF MY ARM TO DEFLECT THE LUNGING GUKTIK AT THE RIGHT TIME...
-        CRACK!! OH, THE PAIN, BUT SEEING IT SCURRY AWAY AFTERWARDS, SUCH POWER!!
-        IMAGINE WHAT I COULD DO IN A BODY MADE OF CORRU...
-        █████ LAUGHS, WAVING AWAY THE BRAG WITH HIS RECEPTORS
-
-    hesitant
-        yes, i still remember the last time you told me
-        and the time before that...
-        look, just do not take this as an excuse to be reckless, okay?
-        we still do not really know what the consequences of the process are, long-term
-    
-    stupid
-        but if i <em>do</em>, you will help me make a cool new body, right?
-
-    sourceless
-        OH, THAT WAS A BAD THING TO SAY
-        THE LOOK HE IS GIVING ME...
-    
-    stupid
-        sorry, hehehe... just joking around
-        velzie's wrath! it is the very same eye that watches over me on my journeys, after all
-
-    sourceless
-        A KIND ATTENTION FORMS IN HIS RECEPTORS
-        AND HE GIVES A QUIET, ALMOST SOUNDLESS CHUCKLE AS HE STANDS UP TO LEAVE
-        STILL SO SULLEN... I WILL HAVE TO FETCH A VEILK-FRUIT TO CHEER HIM UP LATER
-    
-    hesitant
-        velzie's wrath!
-        
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -821,17 +613,230 @@ start
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							env.definitions[`vazni`] = `'continent';'home';'central to inhabitable zone'`;
 						
 					
 					
+					//dynamically inserted
+					
+					page.bgm.rate(0.5)
+
+env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["hesitant"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval3.gif',
+    voice: ()=>play('talkcore', 0.75)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["hesitant"].image = '/img/sprites/obesk/larval/larval3h.gif'
+}
+    
+env.dialogues["larval"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        WHILE I REPAIR MY VALIKA, θ█████ APPROACHES THE CORNER OF THE ARMORY I HAVE COMMANDEERED
+        I LOOK UP TO FACE HIM, RECEPTORS WIDE IN JOYOUS GREETING, ONLY TO SEE THAT HIS ARE MEEKLY PULLED BACK WITH WORRY
+
+    stupid
+        hey θ█████!!!
+
+    hesitant
+        hi θ██████!
+
+    stupid
+        what brings you here? do they have another device for me to try out?
+        the aima cysts were truly incredible to use, it was like...
+        my mind's eye, multiplied, hovering outside of my body
+        disorienting, but... eye-opening. hehehe
+    
+    hesitant
+        oh, yeah... yeah, it is
+    
+    sourceless
+        MY RECEPTORS SETTLE INTO A SIMILARLY WORRIED TWIST
+        HE SEEMS SO SULLEN...?
+
+    stupid
+        sooo...?
+        what is it?
+    
+    sourceless
+        HE REACHES INTO HIS LONGCLOAK'S INNER POCKET, FETCHING A FAIRLY LARGE HANDHELD CORRUCYST
+        THERE IS A MOMENT WHERE HE STARES AT IT, FROZEN, BEFORE WORDLESSLY OFFERING IT TO ME
+
+    hesitant
+        it is...
+        a new emergency device from the vazni foundries
+        they, um...
+    
+    sourceless
+        I CANNOT HELP BUT CHUCKLE AT HOW STRANGE HE IS ACTING
+        THIS SEEMS TO FLUSTER HIM FURTHER
+        I UNCURL ONE OF MY RECEPTORS TO CONNECT TO IT, BUT HE NEARLY LUNGES IN RESPONSE
+    
+    hesitant
+        wai--wait!
+        do not connect to it!!
+        it... extracts your mind
+    
+    stupid
+        what?
+
+    sourceless
+        IMMEDIATELY, MY RECEPTOR RECOILS
+
+    stupid
+        how? what? 
+
+    sourceless
+        θ█████ WRINGS HIS CLAWS NERVOUSLY, RECEPTORS SIMILARLY CURLING AWAY
+        
+    hesitant
+        like i said... emergency
+        see, the zevazni foundry θjut have created this new process...
+        they are saying it is a new state of life - a sort of undeath
+        where you live within corru... your mind, your body, everything
+
+    stupid
+        that is so cool!!!!
+
+    hesitant
+        wha--what?
+        no, it is extremely dangerous!
+        not just for yourself, but... for the future
+        i mean, if this catches on, eventually, umm...
+        it might be the end of us, you know?
+        either way, i wanted you to have one of the few we got
+
+    stupid
+        ...and, you <em>do not</em> want me to use it?
+    
+    hesitant
+        of course not, but, if you are really going to be doing this...
+        the world is changing very fast, θ██████
+        i want you to be around to see it
+        if you ever got attacked on one of your runs, or caught by...
+
+    sourceless
+        HE WAVES AWAY THE NOTION, NOT EVEN WANTING TO THINK IT
+
+    hesitant
+        this is your best chance at continuing to live
+        or, some... facsimile of it
+
+    sourceless
+        I CHUCKLE, EXASPERATED - SUCH CONFUSING MESSAGES!
+    
+    stupid
+        well, is it like those--what did you call them?
+        echoes?
+        if i use this... is it me?
+
+    hesitant
+        yes, without a doubt
+    
+    sourceless
+        θ█████ SITS DOWN AT MY ARMORY STATION, ACROSS FROM ME
+
+    hesitant
+        just like how the aima cysts become an extension of your mind,
+        so too does the mindcore--that is what they are calling it
+        i cannot imagine what sort of maniac it took to discover this, but...
+        it shifts the weight of your mind into it, and then disconnects
+        leaving an empty vessel to die
+    
+    sourceless
+        I LOOK OVER THE GLASSY SURFACE OF THE MINDCORE THOUGHTFULLY
+        BENEATH THE CYSTIC GLASS, I CAN SEE THE FLOW OF CORRU WITHIN
+        A SLOW, WHORLING CURRENT OF VIOLET PEARLESCENCE
+        IT IS ENTRANCING - MORE THAN ANY OTHER DEVICE I HAVE BEEN GIVEN YET
+        A PRODUCT OF ITS DENSITY, MAYBE? IT IS RATHER HEAVY
+        OH--YES, HE IS STILL HERE
+
+    stupid
+        well, do not worry!!
+        you have never seen my veilk-scaling skills!
+        and did i ever tell you about the time, i <em>broke</em> a guktik's arm?
+
+    sourceless
+        I RAISE MY RIGHT HAND INTO A FIST, DISPLAYING THE CHITIN OF MY FOREARM 
+        IT IS DREADFULLY CRACKED, THE KIND OF DEEP CHITIN WOUND THAT COULD TAKE AN θeye TO HEAL
+        BUT IT IS A POINT OF PRIDE, STILL. A RAISE OF MY ARM TO DEFLECT THE LUNGING GUKTIK AT THE RIGHT TIME...
+        CRACK!! OH, THE PAIN, BUT SEEING IT SCURRY AWAY AFTERWARDS, SUCH POWER!!
+        IMAGINE WHAT I COULD DO IN A BODY MADE OF CORRU...
+        θ█████ LAUGHS, WAVING AWAY THE BRAG WITH HIS RECEPTORS
+
+    hesitant
+        yes, i still remember the last time you told me
+        and the time before that...
+        look, just do not take this as an excuse to be reckless, okay?
+        we still do not really know what the consequences of the process are, long-term
+    
+    stupid
+        but if i <em>do</em>, you will help me make a cool new body, right?
+
+    sourceless
+        OH, THAT WAS A BAD THING TO SAY
+        THE LOOK HE IS GIVING ME...
+    
+    stupid
+        sorry, hehehe... just joking around
+        velzie's wrath! it is the very same eye that watches over me on my journeys, after all
+
+    sourceless
+        A KIND ATTENTION FORMS IN HIS RECEPTORS
+        AND HE GIVES A QUIET, ALMOST SOUNDLESS CHUCKLE AS HE STANDS UP TO LEAVE
+        STILL SO SULLEN... I WILL HAVE TO FETCH A VEILK-FRUIT TO CHEER HIM UP LATER
+    
+    hesitant
+        velzie's wrath!
+        
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

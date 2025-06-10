@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,117 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["other"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark",
-    image: '/img/textures/ceyetran.gif',
-    voice: ()=>play('talksignal', 1.25)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-}
-    
-env.dialogues["spire"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        ...i rummage through my drenched cloak, head resting against the cold flesh of the <span class="code">veilk</span>
-        everything trembles as my carrier veilk takes another step distantly below
-        eventually, i find it: my dullvoice receiver!
-        with a quick affix to my favored receptor, i reach out for the regional coordinator...
-        █████, i think... a nice tir, though we have sparsely spoken
-        after a few well-placed thoughts, he is within reach, and i establish contact
-        still, there is some interference here... the spirestorm grows closer, suffusing my senses with an ever-present rumble 
-
-    stupid
-        hello █████!! this is ██████!!
-        i have secured a position on a yellow-eyed carrier veilk
-        how far out am i? from both the spire and ukazni, if you can tell
-    
-    other
-        oh, hello again!
-        i hope velzie has been kind to your journey so far!
-        let me see... i have a drone in the area
-        ...
-        ah, yes, there you are!
-        all right, the herd is at rest now, but their top-tendrils are showing some anxiety... i think they will be moving again soon
-        if that is the case, they will be following the ukazni ozo path, and you should be at a good dropping point near there within the θgaze!  
-        my estimations: likely less than a θwink for the herd to continue, two θwinks until you pass the spire fully, and then two more θwinks before you are near the ukazni range
-        this assumes ideal conditions, and that the veilk do not stop for rest again--which, i think is unlikely
-        either way, i hope you brought some entertainment, ██████!
-        and i have to say, i am really surprised...
-        they did not give you a walker for this one?
-        that would have shortened your trip by several θwinks, and allowed you to avoid the spire completely...
-    
-    stupid
-        hehe, no, this is a non-vital trip - you could call it personal
-        the oltazni council only lets us use walkers if it is an emergency
-        anyway, thanks for the help, █████!
-        <span definition="NOTE::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained for me!</span>
-    
-    other
-        will do!
-        and remember, once you reach it, do not exit your respite while within the spirestorm!!
-        the lightning rarely strays from the spire, but when it does, it is fatal!
-        may the θgaze end kindly for you, ██████
-    
-    sourceless
-        with the closing of the connection, velzie's decision for my fate is made clear:
-        to be bored in this cramped zzepel respite for the rest of the θgaze
-        still, i have some time...
-        i tap at some of the corrucystic controls near the top of the respite, and its plating recedes near the bottom, 
-
-    sourceless quiet
-        allowing me to crawl out onto the veilk's flesh again
-            EXEC::ratween(env.bgm, 0.75);
-
-    sourceless
-        the winds and rain have risen, and the fog-like vapor that cloaks the surface has risen even further... the spire draws near, so this may be my last chance to see it before i must shelter
-        i skitter up the side of my carrier, carefully angled so that i know i may directly descend to find my respite again
-        before long, i have risen past the other veilk-stalks, letting me see an expanse of darkness,
-        the black clouds lit from below by the countless glowing growths attached to the veilk herds...
-        and there, in the distance, is the spirestorm - lit by its continuous lightning, roaring endlessly...
-        a violent vortex that dips below the cloudline, twirling around a barely perceptible empty shape made clear only by the lightning that attacks it
-        a matte black monolith, featureless and dangerous, disappearing into the sky: the vazni spire...
-        taller than the tallest mountains, wider than anything ever built
-        and yet, if not for my aima cysts, i would not be able to see it at all!!
-        it draws nearer with every trembling step of my carrier veilk, and so my time to admire it is very limited - i ought to return...
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -718,14 +608,14 @@ start
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -755,7 +645,122 @@ start
 							env.definitions[`oltazni`] = `'home';'vaznian cave-city'`;
 						
 					
+						
+						
+							env.definitions[`vazni`] = `'continent';'home';'central to inhabitable zone'`;
+						
 					
+					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["other"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark",
+    image: '/img/textures/ceyetran.gif',
+    voice: ()=>play('talksignal', 1.25)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+}
+    
+env.dialogues["spire"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...i rummage through my drenched cloak, head resting against the cold flesh of the <span class="code">veilk</span>
+        everything trembles as my carrier veilk takes another step distantly below
+        eventually, i find it: my dullvoice receiver!
+        with a quick affix to my favored receptor, i reach out for the regional coordinator...
+        θ█████, i think... a nice tir, though we have sparsely spoken
+        after a few well-placed thoughts, he is within reach, and i establish contact
+        still, there is some interference here... the spirestorm grows closer, suffusing my senses with an ever-present rumble 
+
+    stupid
+        hello θ█████!! this is θ██████!!
+        i have secured a position on a yellow-eyed carrier veilk
+        how far out am i? from both the spire and ukazni, if you can tell
+    
+    other
+        oh, hello again!
+        i hope velzie has been kind to your journey so far!
+        let me see... i have a drone in the area
+        ...
+        ah, yes, there you are!
+        all right, the herd is at rest now, but their top-tendrils are showing some anxiety... i think they will be moving again soon
+        if that is the case, they will be following the ukazni ozo path, and you should be at a good dropping point near there within the θgaze!  
+        my estimations: likely less than a θwink for the herd to continue, two θwinks until you pass the spire fully, and then two more θwinks before you are near the ukazni range
+        this assumes ideal conditions, and that the veilk do not stop for rest again--which, i think is unlikely
+        either way, i hope you brought some entertainment, θ██████!
+        and i have to say, i am really surprised...
+        they did not give you a walker for this one?
+        that would have shortened your trip by several θwinks, and allowed you to avoid the spire completely...
+    
+    stupid
+        hehe, no, this is a non-vital trip - you could call it personal
+        the oltazni council only lets us use walkers if it is an emergency
+        anyway, thanks for the help, θ█████!
+        <span definition="NOTE::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained for me!</span>
+    
+    other
+        will do!
+        and remember, once you reach it, do not exit your respite while within the spirestorm!!
+        the lightning rarely strays from the spire, but when it does, it is fatal!
+        may the θgaze end kindly for you, θ██████
+    
+    sourceless
+        with the closing of the connection, velzie's decision for my fate is made clear:
+        to be bored in this cramped zzepel respite for the rest of the θgaze
+        still, i have some time...
+        i tap at some of the corrucystic controls near the top of the respite, and its plating recedes near the bottom, 
+
+    sourceless quiet
+        allowing me to crawl out onto the veilk's flesh again
+            EXEC::ratween(env.bgm, 0.75);
+
+    sourceless
+        the winds and rain have risen, and the fog-like vapor that cloaks the surface has risen even further... the spire draws near, so this may be my last chance to see it before i must shelter
+        i skitter up the side of my carrier, carefully angled so that i know i may directly descend to find my respite again
+        before long, i have risen past the other veilk-stalks, letting me see an expanse of darkness,
+        the black clouds lit from below by the countless glowing growths attached to the veilk herds...
+        and there, in the distance, is the spirestorm - lit by its continuous lightning, roaring endlessly...
+        a violent vortex that dips below the cloudline, twirling around a barely perceptible empty shape made clear only by the lightning that attacks it
+        a matte black monolith, featureless and dangerous, disappearing into the sky: the vazni spire...
+        taller than the tallest mountains, wider than anything ever built
+        and yet, if not for my aima cysts, i would not be able to see it at all!!
+        it draws nearer with every trembling step of my carrier veilk, and so my time to admire it is very limited - i ought to return...
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

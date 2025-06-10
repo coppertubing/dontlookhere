@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,109 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					page.bgm.rate(0.5)
-
-env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["tired"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval qou loose-thought",
-    image: '/img/sprites/obesk/larval/larval2.gif',
-    voice: ()=>play('talkcore', 1.5)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["tired"].image = '/img/sprites/obesk/larval/larval2h.gif'
-}
-    
-env.dialogues["surface"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        I AM AWOKEN IN MY SLEEPING SHELL BY A RAPPING AT ITS COVER
-        WHAT TIME IS IT? HAS THE θgaze ENDED ALREADY?
-        SO TIRED... WHATEVER IT IS, IT CAN WAIT
-
-    stupid
-        uuugh go away
-        my duties are not until <span definition="NOTE::'partial translation';'inherited description-generated noun'">clear-sky</span>
-        
-    tired
-        ██████, it is me
-    
-    sourceless
-        AND SHE IS NOT GOING AWAY...
-        I LET MY HEAD FALL BACK AGAINST THE POD'S INTERNAL FUZZ
-        SHE HISSES A SIGH OF FRUSTRATION
-    
-    tired
-        there is a problem
-
-    stupid
-        not my problem for another, uuummm,
-
-    sourceless
-        I ROLL OVER TO CHECK THE <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">ZENRUKA</span>
-        WITH AN UNLATCHING OF ITS CONTAINER, I SEE THAT IT IS STILL INTACT
-        YES, IT WOULD HAVE DETONATED BY NOW IF IT WERE TIME
-        THOUGH, ITS DECAY IS SUCH THAT I PROBABLY ONLY HAVE ABOUT TWO OR THREE θwinks...
-        AH--
-        SUDDENLY, THE COVER OF MY POD IS LIFTED
-        MY RECEPTORS COIL IN SHOCK, AND I COVER MY EYES FROM THE LIGHT
-        █████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME
-
-    tired
-        this is not a joke, kelnit
-        ███████ has not returned
-        he is not responding on the dullvoice either
-        with how long he has been out, it will not be long before his trail is dispersed
-
-    sourceless
-        SHE LEAVES HER EXPLANATION THERE, STARING AT ME EXPECTANTLY
-        MUCH AS I WANT TO TELL HER TO SKITTER AWAY,
-        THIS IS NOT A RESPONSIBILITY THAT CAN BE ASSIGNED TO ANYONE ELSE
-        
-    stupid
-        fine...
-        i will meet you at the entrance
-        and have the θjut prepare the walker for us
-
-    tired
-        do not waste any time
-        
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/uncosm/no/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -705,12 +603,21 @@ start
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
-							env.definitions[`███████`] = ``;
+							
+							
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ███████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -726,6 +633,108 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					page.bgm.rate(0.5)
+
+env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["tired"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval qou loose-thought",
+    image: '/img/sprites/obesk/larval/larval2.gif',
+    voice: ()=>play('talkcore', 1.5)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["tired"].image = '/img/sprites/obesk/larval/larval2h.gif'
+}
+    
+env.dialogues["surface"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        I AM AWOKEN IN MY SLEEPING SHELL BY A RAPPING AT ITS COVER
+        WHAT TIME IS IT? HAS THE θgaze ENDED ALREADY?
+        SO TIRED... WHATEVER IT IS, IT CAN WAIT
+
+    stupid
+        uuugh go away
+        my duties are not until <span definition="NOTE::'partial translation';'inherited description-generated noun'">clear-sky</span>
+        
+    tired
+        θ██████, it is me
+    
+    sourceless
+        AND SHE IS NOT GOING AWAY...
+        I LET MY HEAD FALL BACK AGAINST THE POD'S INTERNAL FUZZ
+        SHE HISSES A SIGH OF FRUSTRATION
+    
+    tired
+        there is a problem
+
+    stupid
+        not my problem for another, uuummm,
+
+    sourceless
+        I ROLL OVER TO CHECK THE <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">ZENRUKA</span>
+        WITH AN UNLATCHING OF ITS CONTAINER, I SEE THAT IT IS STILL INTACT
+        YES, IT WOULD HAVE DETONATED BY NOW IF IT WERE TIME
+        THOUGH, ITS DECAY IS SUCH THAT I PROBABLY ONLY HAVE ABOUT TWO OR THREE θwinks...
+        AH--
+        SUDDENLY, THE COVER OF MY POD IS LIFTED
+        MY RECEPTORS COIL IN SHOCK, AND I COVER MY EYES FROM THE LIGHT
+        θ█████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME
+
+    tired
+        this is not a joke, kelnit
+        θ███████ has not returned
+        he is not responding on the dullvoice either
+        with how long he has been out, it will not be long before his trail is dispersed
+
+    sourceless
+        SHE LEAVES HER EXPLANATION THERE, STARING AT ME EXPECTANTLY
+        MUCH AS I WANT TO TELL HER TO SKITTER AWAY,
+        THIS IS NOT A RESPONSIBILITY THAT CAN BE ASSIGNED TO ANYONE ELSE
+        
+    stupid
+        fine...
+        i will meet you at the entrance
+        and have the θjut prepare the walker for us
+
+    tired
+        do not waste any time
+        
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/uncosm/no/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

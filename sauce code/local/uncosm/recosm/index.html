@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1741300951919128992"></script>	
-	<script src="/js/dialogue.js?1741300951919128992"></script>	
-	<script src="/js/globalents.js?1741300951919128992"></script>	
-	<script src="/js/cystStage.js?1741300951919128992"></script>
-	<script src="/js/buddy.js?1741300951919128992"></script>
-	<script src="/js/vn2.js?1741300951919128992"></script>
-	<script defer src="/js/saves.js?1741300951919128992"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1741300951919128992'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1741300951919128992'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -69,7 +69,20 @@
 
 		<!--volume controls icon-->
 		<i id='meta-volume-toggle' class='ci-vol'></i>
-		<div id='meta-volume'><input type='range' min='0' max='1' value='0.5' step='0.05' class='slider' id='meta-volume-slider'></div>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
 
 		<!--dropdown menu-->
 		<i class='ci-bars'></i>
@@ -129,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1741300951</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -137,7 +150,7 @@
 
 		<div class="buttons">
             <span class="button import primary">
-                <input type="file" id="fileInput" onchange="uploadSave(event)">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
                 Import File
             </span>
 			<span id="export" class="button export primary">Export File</span>
@@ -211,7 +224,7 @@
             <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
 
             <div class="buttons">
-                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
                 <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
             </div>
         </div>
@@ -222,7 +235,7 @@
             <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
             
             <div class="buttons">
-                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
                 <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
             </div>
         </div>
@@ -1359,7 +1372,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1741300951919128992,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/uncosm.gif",
@@ -1411,7 +1424,164 @@
 					
 
 					updatePreferenceAttributes()
-
+					
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+					
+					// definitions required for page
+					
+					
 					//dynamically inserted
 					 
 						page.bgm.rate(0.25)
@@ -2002,7 +2172,10 @@ env.recosm = {
     }),
     
     phase3: new Howl({
-        onload: function () {page.howls.push(this)},
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.75
+        },
         src: ['/audio/bst_transition.ogg'],
         preload: true,
         volume: 0.75,
@@ -2013,7 +2186,10 @@ env.recosm = {
     }),
     
     phase4: new Howl({
-        onload: function () {page.howls.push(this)},
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.75
+        },
         src: ['/audio/bst3.ogg'],
         preload: true,
         volume: 0.75,
@@ -2032,7 +2208,7 @@ env.recosm = {
             phaseBGM.volume(0)
             if(phase == 2) phaseBGM.seek(currentBGM.seek())
             phaseBGM.play()
-            phaseBGM.fade(0, 1, 1000)
+            phaseBGM.fade(0, getModifiedVolume('music', 1), 1000)
 
             currentBGM.fade(currentBGM.volume(), 0, 1000)
             setTimeout(()=>currentBGM.stop(), 1000)
@@ -2079,7 +2255,7 @@ env.recosm = {
                         env.recosm.changePhase(1)
                         env.bgm.rate(0.3)
 
-                        chatter({actor: 'god', text: `åT}Ýhello?±??‰? ¿`, readout: true})
+                        chatter({actor: 'god', text: `åT}Ýhello?±??‰? ¿`, readout: true})
                         env.setTimeout(()=>chatter({actor: 'god', text: `it seems it is too much, even for me, hehe...`, readout: true}), 3000)
                         env.setTimeout(()=>{
                             chatter({actor: 'god', text: `but wait, please`, readout: true})
@@ -2805,163 +2981,6 @@ nogen
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					// global defs
-					
-					
-					
-						
-						
-							env.definitions[`θjut`] = `'engineer';'caste'`;
-						
-					
-						
-						
-							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
-						
-					
-						
-						
-							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
-						
-					
-						
-						
-							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
-						
-					
-						
-						
-							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
-						
-					
-						
-						
-							env.definitions[`velzie`] = `'god'`;
-						
-					
-						
-						
-							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
-						
-					
-						
-						
-							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
-						
-					
-						
-						
-							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
-						
-					
-						
-						
-							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
-						
-					
-						
-						
-							
-							
-							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
-						
-					
-						
-						
-							
-							
-							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
-						
-					
-						
-						
-							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
-						
-					
-						
-						
-							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
-						
-					
-						
-						
-							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
-						
-					
-						
-						
-							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
-						
-					
-						
-						
-							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
-						
-					
-						
-						
-							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
-						
-					
-						
-						
-							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
-						
-					
-						
-						
-							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
-						
-					
-						
-						
-							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
-						
-					
-						
-						
-							
-							
-							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
-						
-					
-						
-						
-							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
-						
-					
-						
-						
-							
-							
-							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
-						
-					
-						
-						
-							
-							
-							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
-						
-					
-						
-						
-							
-							
-							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
-						
-					
-						
-						
-							
-							
-							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
-						
-					
-					
-					// definitions required for page
-					
-					
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
@@ -2991,7 +3010,7 @@ nogen
 					if(page.bgm) {
 						page.bgm.volume(0)
 						page.bgm.play()
-						page.bgm.fade(0, 1, 1000)
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
 					} else {
 						env.bgm = null

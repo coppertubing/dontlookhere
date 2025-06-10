@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,100 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["kind"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval8.gif',
-    voice: ()=>play('talkcore', 1.75)
-}
-
-env.dialogueActors["dog"] = {
-    type: "thoughtform portrait-cover portrait-dark obesk",
-    image: "/img/local/embassy/isoportrait.gif",
-    voice: ()=>play('talkgel', 3)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["kind"].image = '/img/sprites/obesk/larval/larval8h.gif'
-}
-
-env.dialogues["dog"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        ███'s dog skitters away from me, but in this closed chamber, it can only go so far
-        it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
-        it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around ███'s furniture
-        i see the lights of ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
-    
-    kind
-        oh, ███, stop your torment, he is scared
-    
-    sourceless
-        her flat voice betrays her amusement
-    
-    stupid
-        i cannot help myself, dear sister!
-        i see food, i must hunt!
-    
-    sourceless
-        still, i set down the dog and leap backwards
-        it skitters and turns about to face me, waiting for my next move
-    
-    stupid
-        see what i said?
-        clearly, it is merely play-deprived!
-
-    dog
-        è
-    
-    sourceless
-        i half-lunge at it, stopping just an instant after i start, to tell it we are not done
-        it ducks lower to the ground in response, and after another moment of stillness, it scurries towards me abruptly
-        i laugh and squeal in surprise, backing off and nearly climbing backwards up the wall
-        even ███ laughs as it chases me about
-        i narrowly avoid crashing into ███'s ornate kalstik stand
-    
-    kind
-        all right, all right...
-        just do not break anything, please!!
-        i am almost done in here
-    
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -696,7 +603,7 @@ start
 						
 							
 							
-							env.definitions[`███`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ███`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -714,6 +621,99 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["kind"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval8.gif',
+    voice: ()=>play('talkcore', 1.75)
+}
+
+env.dialogueActors["dog"] = {
+    type: "thoughtform portrait-cover portrait-dark obesk",
+    image: "/img/local/embassy/isoportrait.gif",
+    voice: ()=>play('talkgel', 3)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["kind"].image = '/img/sprites/obesk/larval/larval8h.gif'
+}
+
+env.dialogues["dog"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        θ███'s dog skitters away from me, but in this closed chamber, it can only go so far
+        it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
+        it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture
+        i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
+    
+    kind
+        oh, θ███, stop your torment, he is scared
+    
+    sourceless
+        her flat voice betrays her amusement
+    
+    stupid
+        i cannot help myself, dear sister!
+        i see food, i must hunt!
+    
+    sourceless
+        still, i set down the dog and leap backwards
+        it skitters and turns about to face me, waiting for my next move
+    
+    stupid
+        see what i said?
+        clearly, it is merely play-deprived!
+
+    dog
+        è
+    
+    sourceless
+        i half-lunge at it, stopping just an instant after i start, to tell it we are not done
+        it ducks lower to the ground in response, and after another moment of stillness, it scurries towards me abruptly
+        i laugh and squeal in surprise, backing off and nearly climbing backwards up the wall
+        even θ███ laughs as it chases me about
+        i narrowly avoid crashing into θ███'s ornate kalstik stand
+    
+    kind
+        all right, all right...
+        just do not break anything, please!!
+        i am almost done in here
+    
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

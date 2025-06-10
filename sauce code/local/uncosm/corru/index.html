@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,153 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["elder"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval6.gif',
-    voice: ()=>play('talkcore', 0.85)
-}
-
-env.dialogueActors["guard"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval4.gif',
-    voice: ()=>play('talkcore', 1.25)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["elder"].image = '/img/sprites/obesk/larval/larval6h.gif'
-}
-
-env.dialogues["corru"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-    
-    sourceless
-        in the relative safety of the entry tunnel, ██████ drops his surface voice
-    
-    guard
-        incredible... that would have taken so much longer, before
-        ██████, what is the count?
-    
-    sourceless
-        while the real answer is just within my receptor's curl,
-        i make a show of counting my claws, and then play one of my favorite sayings
-    
-    stupid
-        ah... we will have to gather the tir!
-    
-    sourceless
-        he chuckles, to my surprise
-        only θblinks earlier he seemed irritated with my banter
-        still, as planned, i give him a proper answer immediately after
-    
-    stupid
-        i counted just over thirty
-    
-    elder
-        haha!
-        thirty, from just that trip...
-        
-    sourceless
-        ██████ stops and grasps his dull-pulse valika-cyst by its tether,
-        pulling it down to eye-level with a shaky hand so he can look into it properly
-        i feel an instant of shock, as does his son by the sight of his receptors,
-        but we both realize he is looking at the side, rather than directly at the deadly part
-        
-    elder
-        from simple food containers, to the deadliest weapons ever conceived...
-
-    sourceless
-        there is a sort of idle drift in his receptors as he stares into it
-        it is so easy to tell when a tir's mind wanders
-    
-    elder
-        corru...
-        you know, they came up with using the spheres they form for food just when my receptors started to split
-        my excavation mentor once told me the strangest stories about it, and our ancestors...
-        it was not long after we struck that great natural vein of it down in the deep chambers
-        it is so much smaller now...
-        as we prepared a harvesting bore, you know what he said?
-    
-    sourceless
-        ██████ turns to me, his branched receptors outstretching their tendrils
-    
-    elder
-        his father, and his fathers before him, saw it as a pest!
-        haha!!
-        how the tir of old would encounter it in great walls while digging, 
-        and it had to be scraped away by claw, or dug around, as our acids had no effect...
-    
-    sourceless
-        he turns back to the path ahead, carefully stepping down the incline as he continues reminiscing
-        his son gives me a forward-pointing gesture of his receptors, as we both start to follow
-    
-    elder
-        that feeling, when wild corru gets on your receptors
-        have you ever felt it?
-    
-    sourceless
-        his son does not respond, indifferent
-        he must have heard all this before
-    
-    stupid
-        no!
-        they usually keep it sealed in those big skulls
-    
-    elder
-        well, if even a drop of it gets on,
-        you feel eyes on you - like something is in the chamber with you,
-        staring, listening...
-        but i guess all this time, it really was listening, right? haha!
-        what do you think they will do next with it? velzie's eye cast down, ████ got a new arm out of the stuff!
-
-    stupid
-        well, it will have to take another <span definition="INHERITED CONTEXT::'common myth';'intoxicated tir knocked over corru container and fell into it'">tir stumbling into their research chamber</span> to figure out what is next!
-    
-    sourceless
-        his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
-    
-    elder
-        ██████, start planning a transport to oltazni for me, would you?
-        i have a foundry to barge into
-    
-    guard
-        right away, father
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -754,14 +608,14 @@ start
 						
 							
 							
-							env.definitions[`████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -770,6 +624,152 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["elder"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval6.gif',
+    voice: ()=>play('talkcore', 0.85)
+}
+
+env.dialogueActors["guard"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval4.gif',
+    voice: ()=>play('talkcore', 1.25)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["elder"].image = '/img/sprites/obesk/larval/larval6h.gif'
+}
+
+env.dialogues["corru"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+    
+    sourceless
+        in the relative safety of the entry tunnel, θ██████ drops his surface voice
+    
+    guard
+        incredible... that would have taken so much longer, before
+        θ██████, what is the count?
+    
+    sourceless
+        while the real answer is just within my receptor's curl,
+        i make a show of counting my claws, and then play one of my favorite sayings
+    
+    stupid
+        ah... we will have to gather the tir!
+    
+    sourceless
+        he chuckles, to my surprise
+        only θblinks earlier he seemed irritated with my banter
+        still, as planned, i give him a proper answer immediately after
+    
+    stupid
+        i counted just over thirty
+    
+    elder
+        haha!
+        thirty, from just that trip...
+        
+    sourceless
+        θ██████ stops and grasps his dull-pulse valika-cyst by its tether,
+        pulling it down to eye-level with a shaky hand so he can look into it properly
+        i feel an instant of shock, as does his son by the sight of his receptors,
+        but we both realize he is looking at the side, rather than directly at the deadly part
+        
+    elder
+        from simple food containers, to the deadliest weapons ever conceived...
+
+    sourceless
+        there is a sort of idle drift in his receptors as he stares into it
+        it is so easy to tell when a tir's mind wanders
+    
+    elder
+        corru...
+        you know, they came up with using the spheres they form for food just when my receptors started to split
+        my excavation mentor once told me the strangest stories about it, and our ancestors...
+        it was not long after we struck that great natural vein of it down in the deep chambers
+        it is so much smaller now...
+        as we prepared a harvesting bore, you know what he said?
+    
+    sourceless
+        θ██████ turns to me, his branched receptors outstretching their tendrils
+    
+    elder
+        his father, and his fathers before him, saw it as a pest!
+        haha!!
+        how the tir of old would encounter it in great walls while digging, 
+        and it had to be scraped away by claw, or dug around, as our acids had no effect...
+    
+    sourceless
+        he turns back to the path ahead, carefully stepping down the incline as he continues reminiscing
+        his son gives me a forward-pointing gesture of his receptors, as we both start to follow
+    
+    elder
+        that feeling, when wild corru gets on your receptors
+        have you ever felt it?
+    
+    sourceless
+        his son does not respond, indifferent
+        he must have heard all this before
+    
+    stupid
+        no!
+        they usually keep it sealed in those big skulls
+    
+    elder
+        well, if even a drop of it gets on,
+        you feel eyes on you - like something is in the chamber with you,
+        staring, listening...
+        but i guess all this time, it really was listening, right? haha!
+        what do you think they will do next with it? velzie's eye cast down, θ████ got a new arm out of the stuff!
+
+    stupid
+        well, it will have to take another <span definition="INHERITED CONTEXT::'common myth';'intoxicated tir knocked over corru container and fell into it'">tir stumbling into their research chamber</span> to figure out what is next!
+    
+    sourceless
+        his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
+    
+    elder
+        θ██████, start planning a transport to oltazni for me, would you?
+        i have a foundry to barge into
+    
+    guard
+        right away, father
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

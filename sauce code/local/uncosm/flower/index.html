@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,130 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["flower"] = {
-    name: "flower",
-    image: '/img/textures/yeyetran.gif',
-    type: "thoughtform portrait-contain portrait-dark",
-    voice: ()=>play('talkfloweralt', 1.5)
-}
-
-env.dialogueActors["wiser"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark",
-    image: '/img/textures/eyetran.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogues["flower"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        after peering through the thick glass of ██████'s trading chamber to ensure no other bright cousins linger within, i push through the front entry
-        a chime with the distinct buzz of their lightning announces my entry, and ██████ peeks out from the door in the back,
-        barely visible through the stands and displays of bright ground-parasites
-        no no... 'flowers'... i must call them 'flowers'
-    
-    flower
-        Hey, just a minute!
-        I'm just about to close, so let me know if you need anything and we'll get you sorted quick.
-    
-    sourceless
-        as predicted - she does not recognize my form
-        i idly browse the yellow ones, quietly creeping towards the back, where she lingers out of sight
-        how will i surprise her, i wonder?
-        oh--what if i smoothed over this face!! featureless... she will be terrified!!
-        hehehe... an effortless morph for this disguise
-        when she finally emerges, i face away from her, acting as if i am merely browsing
-    
-    flower
-        Hey, did you hear me? Do you need help finding--
-
-    sourceless
-        i turn to face her
-        despite having no visible eyes, i can still see her
-        her face turns pale, smile fading, half-stepping back, but half frozen in terror
-    
-    flower
-        Oh my god.
-        Oh my god.
-
-    sourceless
-        i lift my arms, this hideously malleable disguise-form allowing me to extend them out to twice their length
-        my neck, too--yes, how horrifying this must be!!
-        in my plain voice, though with mock-intimidation, i announce to her...
-
-    wiser
-        no...
-        it is you i seek!
-
-    sourceless
-        i curve my unwieldy arms forwards, waggling my claws at her
-        in an instant, her terror starts to fade, replaced with an exasperated, single laugh
-        then another, and then more, as she places a hand over her face
-        at the same time, i pull my form back to a standard appearance, reforming my face--which reads my receptor impulses as a terrible grin
-        i laugh, more than i have in so many θeyes,
-        it is like i am larval again
-    
-    flower
-        ██████, what...
-        WHAT, the hell?
-        I don't think I've been so scared in my entire life.
-        When you said disguise, I pictured, I don't know, a wide-brimmed hat and a trenchcoat?
-    
-    sourceless
-        funfriend - make a note of that
-    
-    wiser
-        ahh, yes, yes, this is it!!
-        this was an old research form, used in the early θgazes of our research into your languages...
-        it is kind of fun to use
-    
-    sourceless
-        ██████ steps forward, poking at the fabric of one of my sleeves
-        she continues laughing, mostly from relief that i am not a horrible monster
-    
-    flower
-        And what is this? You are a disaster.
-        We need to work on your 'Bright Cousin Style'.
-        Anyway, give me a few minutes, I just need to close a few things down before we can go.
-    
-    wiser
-        all right!
-
-    flower
-        and DO NOT do that again, got it?
-    
-    sourceless
-        i take great care not to give her a verbal answer
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -721,17 +598,140 @@ start
 						
 							
 							
-							env.definitions[`████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["flower"] = {
+    name: "flower",
+    image: '/img/textures/yeyetran.gif',
+    type: "thoughtform portrait-contain portrait-dark",
+    voice: ()=>play('talkfloweralt', 1.5)
+}
+
+env.dialogueActors["wiser"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark",
+    image: '/img/textures/eyetran.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogues["flower"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        after peering through the thick glass of θ██████'s trading chamber to ensure no other bright cousins linger within, i push through the front entry
+        a chime with the distinct buzz of their lightning announces my entry, and θ██████ peeks out from the door in the back,
+        barely visible through the stands and displays of bright ground-parasites
+        no no... 'flowers'... i must call them 'flowers'
+    
+    flower
+        Hey, just a minute!
+        I'm just about to close, so let me know if you need anything and we'll get you sorted quick.
+    
+    sourceless
+        as predicted - she does not recognize my form
+        i idly browse the yellow ones, quietly creeping towards the back, where she lingers out of sight
+        how will i surprise her, i wonder?
+        oh--what if i smoothed over this face!! featureless... she will be terrified!!
+        hehehe... an effortless morph for this disguise
+        when she finally emerges, i face away from her, acting as if i am merely browsing
+    
+    flower
+        Hey, did you hear me? Do you need help finding--
+
+    sourceless
+        i turn to face her
+        despite having no visible eyes, i can still see her
+        her face turns pale, smile fading, half-stepping back, but half frozen in terror
+    
+    flower
+        Oh my god.
+        Oh my god.
+
+    sourceless
+        i lift my arms, this hideously malleable disguise-form allowing me to extend them out to twice their length
+        my neck, too--yes, how horrifying this must be!!
+        in my plain voice, though with mock-intimidation, i announce to her...
+
+    wiser
+        no...
+        it is you i seek!
+
+    sourceless
+        i curve my unwieldy arms forwards, waggling my claws at her
+        in an instant, her terror starts to fade, replaced with an exasperated, single laugh
+        then another, and then more, as she places a hand over her face
+        at the same time, i pull my form back to a standard appearance, reforming my face--which reads my receptor impulses as a terrible grin
+        i laugh, more than i have in so many θeyes,
+        it is like i am larval again
+    
+    flower
+        θ██████, what...
+        WHAT, the hell?
+        I don't think I've been so scared in my entire life.
+        When you said disguise, I pictured, I don't know, a wide-brimmed hat and a trenchcoat?
+    
+    sourceless
+        funfriend - make a note of that
+    
+    wiser
+        ahh, yes, yes, this is it!!
+        this was an old research form, used in the early θgazes of our research into your languages...
+        it is kind of fun to use
+    
+    sourceless
+        θ██████ steps forward, poking at the fabric of one of my sleeves
+        she continues laughing, mostly from relief that i am not a horrible monster
+    
+    flower
+        And what is this? You are a disaster.
+        We need to work on your 'Bright Cousin Style'.
+        Anyway, give me a few minutes, I just need to close a few things down before we can go.
+    
+    wiser
+        all right!
+
+    flower
+        and DO NOT do that again, got it?
+    
+    sourceless
+        i take great care not to give her a verbal answer
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

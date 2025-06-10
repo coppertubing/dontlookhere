@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,203 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["guard"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval4.gif',
-    voice: ()=>play('talkcore', 1.25)
-}
-
-env.dialogueActors["host"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark",
-    image: '/img/sprites/obesk/larval/something1.gif',
-    voice: ()=>play('talksignal', 1.5)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["host"].image = '/img/sprites/obesk/larval/something1h.gif'
-}
-
-env.dialogues["zuzucri"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-    
-    sourceless
-        the silence of this dormant herd is almost too much
-        only the wind and thunder masks our slight movements as we draw closer to ███
-        it is by velzie's favor alone that she has survived out here so long... poor vel!!
-        she sits against her dull beacon in the little clearing, bleeding, surrounded by the two bodies of her running companions
-        it is fortunate that we found them while the eye still lights our path!	
-        when I nearly enter the clearing, ██████ grabs my arm and pulls me back,
-        hiding us both from ███'s view around a juvenile veilk tendril
-        we speak silently, through the dullvoice:
-    
-    stupid
-        what?
-        there is no threat of secri here
-        besides, how would one have deployed a beacon?
-    
-    guard
-        just wait - take a closer look
-        the scent in the air...
-        it is not right
-        if she is here, why has she not received any of our calls?
-    
-    sourceless
-        the scent of vel and kiv, two dead - exactly what we see... what is he worried about?
-        with a quick impulse, i instruct my valika-borne aima cyst to peer around the side
-        ███ is sitting a little strangely, perhaps with too large of a pack,
-        but from this side angle it is hard to tell
-        the wind shifts towards us, the trio's trails made more apparent
-        the vel's scent is strange, sickly, metallic...
-    
-    stupid
-        you are right
-        stay here
-        prepare your dull-pulse, and keep it aimed on her
-    
-    sourceless
-        i feel his affirmation through the dullvoice, and so i twist about,
-        calling out in my surface voice before i step into full view of ███,
-    
-    stupid
-        ███! is that you?
-        are you all right?
-    
-    sourceless
-        a cloud passes between the eye and this veilk herd just as i see ███ turn towards me,
-        and while we are plunged into darkness, i feel a terrible dread
-        for i thought i saw her face split apart for an instant
-        but as it passes, she pushes herself to her feet,
-        face intact and spiraling receptors curled tight with worry
-        
-    host
-        ██████...?
-        please--do not look away
-        i will go away again
-        i just blinked... i blinked and they were all gone!!
-        i did not do anything! please!
-    
-    sourceless
-        her arms and face are stained cyan with blood, 
-        claws longer than they ought to be--more numerous than they should be...
-        a dark, angular shape is obscured behind her, barely visible over her shoulders
-        parts of it twist occasionally--alive!!
-        ██████ communicates to me via dullvoice,
-        
-    guard
-        ██████ - she is lost
-        if there is one zuzucri here, there are others
-        preparing to release the pulse
-    
-    sourceless
-        silently, as to not alert ███ that i have a companion,
-        i gesture for him to wait with a claw behind my back, and he obliges
-        though every nerve in my body commands me to flee,
-        i know - i must soothe ███, lest the beast stop wielding her mind
-    
-    stupid
-        ███, it is all right...
-        what happened?
-    
-    sourceless
-        ███ approaches, but her legs do not move, dragging against the soil
-        only as soon as the zuzucri notices my eyes upon her legs does she begin to walk with them
-        i raise one of my climbing gauntlets defensively, and she halts, bringing her claws to her eyes
-        she weeps, and my aima cyst detects movement in the dark shape behind her
-        a number of eyes blinking in unison, the true shape of the beast too hard to make out
-    
-    host
-        sorry... sorry...
-        i know--i need to stay away
-        i do not know when it got me, or how long it has been...
-        i think it used my knowledge to activate their beacon, to bring you here
-        you must not let me return!!
-        and... and you cannot let me stay here
-    
-    sourceless
-        though ██████ would undoubtedly prefer that we free her from her role,
-        i have an idea...
-        with some rummaging through my cloak, i produce that little mindcore that █████ granted me
-        it <em>was</em> for me, but if there is any chance we can save ███...
-        i offer it to her, arm outstretched, tilted away in case i must evade
-        the zuzucri will surely be appeased by my apparent acceptance of her
-    
-    stupid
-        no, ███, it is OK!
-        just put this on your receptor, and we can help you
-    
-    sourceless
-        she pulls her claws from her face, an extra one i had not noticed disappearing behind her back
-        her receptors uncurl with hope and delight, and in her face i more clearly see the zuzucri's facade
-        yes--split into four quadrants, occasionally parting to breathe... i nearly strike her then
-        but i wait, and she takes the mindcore, allowing me to step back further...
-        as she places it on a receptor, she...
-        no, wait, it does not part for her?
-        she brings it to her face, and it is clearly operational, but...
-    
-    host
-        ██████... it will not let me
-    
-    stupid
-        ah...
-    
-    sourceless
-        the corru, it does not recognize her...
-        velzie snatches away my hope once more, inspiration replaced with despair
-        just as i prepare to signal to ██████, her claws dig into the shell of the cyst,
-        and she begins to lunge it towards the sharp end of her receptor, sobbing
-    
-    stupid
-        no, wait--!
-
-    sourceless
-        out of stupid impulse, i snatch that arm by the wrist
-        and as i do, her face splits apart, the zuzucri's hidden limbs rearing in the dark
-        its teeth linger only a receptor's length away
-        a terror i have never known grips me, my limbs silent and unable to recoil
-    
-    guard
-        we're done - releasing pulse now
-
-    sourceless
-        a blinding flash beams between me and the beast, severing her mindcore-bearing claw
-        i have only a θblink to scramble away, before--
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -809,21 +613,21 @@ start
 						
 							
 							
-							env.definitions[`███`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ███`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -839,6 +643,202 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["guard"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval4.gif',
+    voice: ()=>play('talkcore', 1.25)
+}
+
+env.dialogueActors["host"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark",
+    image: '/img/sprites/obesk/larval/something1.gif',
+    voice: ()=>play('talksignal', 1.5)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["host"].image = '/img/sprites/obesk/larval/something1h.gif'
+}
+
+env.dialogues["zuzucri"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+    
+    sourceless
+        the silence of this dormant herd is almost too much
+        only the wind and thunder masks our slight movements as we draw closer to θ███
+        it is by velzie's favor alone that she has survived out here so long... poor vel!!
+        she sits against her dull beacon in the little clearing, bleeding, surrounded by the two bodies of her running companions
+        it is fortunate that we found them while the eye still lights our path!	
+        when I nearly enter the clearing, θ██████ grabs my arm and pulls me back,
+        hiding us both from θ███'s view around a juvenile veilk tendril
+        we speak silently, through the dullvoice:
+    
+    stupid
+        what?
+        there is no threat of secri here
+        besides, how would one have deployed a beacon?
+    
+    guard
+        just wait - take a closer look
+        the scent in the air...
+        it is not right
+        if she is here, why has she not received any of our calls?
+    
+    sourceless
+        the scent of vel and kiv, two dead - exactly what we see... what is he worried about?
+        with a quick impulse, i instruct my valika-borne aima cyst to peer around the side
+        θ███ is sitting a little strangely, perhaps with too large of a pack,
+        but from this side angle it is hard to tell
+        the wind shifts towards us, the trio's trails made more apparent
+        the vel's scent is strange, sickly, metallic...
+    
+    stupid
+        you are right
+        stay here
+        prepare your dull-pulse, and keep it aimed on her
+    
+    sourceless
+        i feel his affirmation through the dullvoice, and so i twist about,
+        calling out in my surface voice before i step into full view of θ███,
+    
+    stupid
+        θ███! is that you?
+        are you all right?
+    
+    sourceless
+        a cloud passes between the eye and this veilk herd just as i see θ███ turn towards me,
+        and while we are plunged into darkness, i feel a terrible dread
+        for i thought i saw her face split apart for an instant
+        but as it passes, she pushes herself to her feet,
+        face intact and spiraling receptors curled tight with worry
+        
+    host
+        θ██████...?
+        please--do not look away
+        i will go away again
+        i just blinked... i blinked and they were all gone!!
+        i did not do anything! please!
+    
+    sourceless
+        her arms and face are stained cyan with blood, 
+        claws longer than they ought to be--more numerous than they should be...
+        a dark, angular shape is obscured behind her, barely visible over her shoulders
+        parts of it twist occasionally--alive!!
+        θ██████ communicates to me via dullvoice,
+        
+    guard
+        θ██████ - she is lost
+        if there is one zuzucri here, there are others
+        preparing to release the pulse
+    
+    sourceless
+        silently, as to not alert θ███ that i have a companion,
+        i gesture for him to wait with a claw behind my back, and he obliges
+        though every nerve in my body commands me to flee,
+        i know - i must soothe θ███, lest the beast stop wielding her mind
+    
+    stupid
+        θ███, it is all right...
+        what happened?
+    
+    sourceless
+        θ███ approaches, but her legs do not move, dragging against the soil
+        only as soon as the zuzucri notices my eyes upon her legs does she begin to walk with them
+        i raise one of my climbing gauntlets defensively, and she halts, bringing her claws to her eyes
+        she weeps, and my aima cyst detects movement in the dark shape behind her
+        a number of eyes blinking in unison, the true shape of the beast too hard to make out
+    
+    host
+        sorry... sorry...
+        i know--i need to stay away
+        i do not know when it got me, or how long it has been...
+        i think it used my knowledge to activate their beacon, to bring you here
+        you must not let me return!!
+        and... and you cannot let me stay here
+    
+    sourceless
+        though θ██████ would undoubtedly prefer that we free her from her role,
+        i have an idea...
+        with some rummaging through my cloak, i produce that little mindcore that θ█████ granted me
+        it <em>was</em> for me, but if there is any chance we can save θ███...
+        i offer it to her, arm outstretched, tilted away in case i must evade
+        the zuzucri will surely be appeased by my apparent acceptance of her
+    
+    stupid
+        no, θ███, it is OK!
+        just put this on your receptor, and we can help you
+    
+    sourceless
+        she pulls her claws from her face, an extra one i had not noticed disappearing behind her back
+        her receptors uncurl with hope and delight, and in her face i more clearly see the zuzucri's facade
+        yes--split into four quadrants, occasionally parting to breathe... i nearly strike her then
+        but i wait, and she takes the mindcore, allowing me to step back further...
+        as she places it on a receptor, she...
+        no, wait, it does not part for her?
+        she brings it to her face, and it is clearly operational, but...
+    
+    host
+        θ██████... it will not let me
+    
+    stupid
+        ah...
+    
+    sourceless
+        the corru, it does not recognize her...
+        velzie snatches away my hope once more, inspiration replaced with despair
+        just as i prepare to signal to θ██████, her claws dig into the shell of the cyst,
+        and she begins to lunge it towards the sharp end of her receptor, sobbing
+    
+    stupid
+        no, wait--!
+
+    sourceless
+        out of stupid impulse, i snatch that arm by the wrist
+        and as i do, her face splits apart, the zuzucri's hidden limbs rearing in the dark
+        its teeth linger only a receptor's length away
+        a terror i have never known grips me, my limbs silent and unable to recoil
+    
+    guard
+        we are done - releasing pulse now
+
+    sourceless
+        a blinding flash beams between me and the beast, severing her mindcore-bearing claw
+        i have only a θblink to scramble away, before--
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

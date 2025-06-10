@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -366,11 +366,11 @@
 
 <style>
 
-@import url(/css/combat.css?1743609964848047793);
-@import url(/css/bullethell.css?1743609964848047793);
-@import url(/css/fpfight.css?1743609964848047793);
-@import url(/css/local/embassy.css?1743609964848047793);
-@import url(/css/stage/beneath.css?1743609964848047793);
+@import url(/css/combat.css?1748549633917196033);
+@import url(/css/bullethell.css?1748549633917196033);
+@import url(/css/fpfight.css?1748549633917196033);
+@import url(/css/local/embassy.css?1748549633917196033);
+@import url(/css/stage/beneath.css?1748549633917196033);
 
 /* combat overrides */
 #combat::after, #combat::before {
@@ -381,8 +381,7 @@
     background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/warpsmall.gif);
     background-color: var(--bright-color);
     background-repeat: no-repeat, repeat, repeat;
-    background-size: cover;
-
+    background-size: cover; auto;
 }
 
 #realgrid .gridpiece:not(.blocks):empty {
@@ -1535,7 +1534,7 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/golms.gif",
@@ -1592,325 +1591,7 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					page.bgm.rate(0.25)
-if(location.search.includes('e3a2test')) {
-    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
-
-    if(doit) mountSave(GlobalSaves.e3a2debug, false)
-}
-
-addResources([
-    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
-    "/js/combat/combatActionsJson.js", 
-    "/js/combat/combatActorsJson.js",
-    "/js/bullethell.js", 
-    "/js/embassy.js", 
-    "/js/embassy_stages_golem.js",
-    "/js/embassy_golem.js",
-    "/js/combat/combat.js", 
-    ["/js/combat/fpfight.js", ()=> typeof FPFight == "undefined"],
-    "/js/shared/e3a2geli.js"
-])
-
-
-					 
-					//mothchat definition
-					env.dialogues.mthgolresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        geli replaced?<+>fakegeli
-            SHOWIF::"e3a2__escapewin"
-        theories?<+>theory
-            SHOWIF::[["gol__s_calls-gordon", false], ["ep4__h2h", false]]
-            NOTE::cuz theres a whole new theory thing in moth general asks after EP4
-        husks?<+>husks
-            SHOWIF::"gol__personnel"
-        geli?<+>geli
-            SHOWIF::[["gol__lobby_clear", true], ["e3a2__escapewin", false]]
-        sfer generation?<+>sfer
-            SHOWIF::"gol__s_vats"
-        foundry vats?<+>vats
-            SHOWIF::"gol__m_min"
-        akizet caused the collapse?<+>akicause
-            SHOWIF::"gol__s_calls-gordon"
-        never heard about any of this?<+>heard
-            SHOWIF::"gol__s_calls"
-        they used the dull so close?<+>dull
-            SHOWIF::[["gol__s_calls", true], ["ep4__entrancefinal", false]]
-            NOTE::duh
-        dog?<+>dog
-            SHOWIF::"dog"
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
-`)
-
-env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
-start
-    self
-        i have a question about this part of the collapse
-
-    moth
-        i might not be the best help here, but what's up?
-    
-    RESPOBJ::mthgolresp
-
-loop
-    RESPOBJ::mthgolresp
-
-theory
-    self
-        what do you think is really happening here?
-        what really happened with the collapse?
-
-    moth
-        even with a few decades of hindsight,
-        the public info is pretty sparse and unhelpful
-        gravity miscalculation? gimme a break
-        i can't believe i ever fell for that now. fuck dude
-        anyway, my best bet is that it's tied to the storm
-        you know, the electric-corru thing akizet gave us apparently
-        like, ok, i'm not saying i think a human caused this,
-        but it seems like the obesk had a good thing going for a really long time
-        then, around the time akizet hands over something,
-        something she herself said was shelved and experimental,
-        that's when it all blows up?
-        still, that doesn't explain why the golems never hurt any humans...
-        at least, not on the public record...
-        but there's no way even a single obesk attack would be able to be covered up
-        not in the climate the 30s had
-        i know that's not helpful, but i haven't really had to think about this
-        we don't need to theorize, i know we're going to get some real answers eventually here
-
-    RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
-
-husks
-    self
-        these husks are qou without any mindcores
-        how could that work?
-    
-    moth
-        yeah, i see that...
-        i mean, obviously i have no idea what's going on here
-        but i do know that obesk tech always needs a source for its thoughts
-        the golems have echoes, a lot of their stationary stuff is hooked up to similar things
-        whether that be through their groundsmindry, or through actual veins
-        ...and, of course, the qou have mindcores
-        i know that corru can actually just start thinking on its own, that's what their version of incoherence is
-        but there's just no precedent for it ever organizing on this scale
-        when obesk things starve and become incoherent, they eventually stop working
-        seen it a hundred times
-____SHOWIF::['ep4__contact', false]
-        if anything, this has to be some wacked out version of groundsmindry we've never seen before
-        ...and one that akizet has never seen before, either...
-        idk, that's the only way it could make any sense to me
-____SHOWIF::'ep4__contact'
-        and according to what we see later, 
-        what happened to these guys was more like some kind of mutation or infection
-        idk dude
-____END
-        also, do you see how some look kind of skeletal??
-        they actually did have some obesk who looked like that, 
-        but never in situations where they appeared to us publicly
-        i've seen some photos of qou that looked like that working on construction and stuff
-        the prevailing theory is that those obesk probably had spare "friendly" bodies
-        for when they had to talk to humans or show up on tv or something
-
-    RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
-
-geli
-    self
-        geli makes me feel weird
-    
-    moth
-        dude?
-    
-    self
-        no i mean
-        i mean i think it looked at me
-    
-    moth
-        oh yeah? like how?
-    
-    self
-        past akizet, at me
-        like funfriend can
-    
-    moth
-        ok, well that's really strange
-        it definitely didn't say anything
-        just keep an eye on it, i guess
-        it's not acting incoherent
-
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-
-dog
-    self
-        why is that a dog
-    
-    moth
-        it's not a dog
-        i don't know what's going on with your mindspike dude
-        it does stuff i don't see with anyone else
-        probably cause you never update it, but hey, that's why you're here
-        anyway, that's not a dog
-        what you scanned was probably a corrucystic imitation of something they domesticated back on obeski
-        and it's so similar to our concept of 'dog', that your mindspike is like... 
-        'dog'
-    
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-
-sfer
-    self
-        did you see the sfer generation
-        they're doing something to metal
-    
-    moth
-        yeah, damn... that explains the huge metal trade they had going
-        they do always say that they "grow" corru, and it has "symbiosis" with them,
-        but it's always been a big debate about what exactly they meant
-        they've never showed us the process, or explained it anywhere...
-        plus, in the old interviews, they were still working on their translators
-        so they all spoke in these weird, vague poetic terms for a while
-        kinda funny to see akizet speaking in plain english
-        anyway, i have to wonder, were they trying to keep the process a secret from us for some reason?
-        maybe the things they grow sfer in are super hazardous to organic life or something?
-        i can't imagine they had any malicious intentions
-
-    RESPONSES::self
-        me either<+>loop
-            FAKEEND::(back)
-
-vats
-    self
-        did you see these vat things?
-        they form their tech in them
-    
-    moth
-        yeah! this part i actually did know a little bit about
-        they had something like these in the polygonation spires
-        qou would work in there on golems for local operations and stuff
-        they were pretty decentralized with how they built things back then
-        it seemed like there was a workspace in every obesk structure that any of them could use
-        interesting that the framing device already had some upgrades available...
-        it's probably something to do with the archive system they mentioned
-
-    RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
-
-akicause
-    self
-        so akizet caused the collapse?
-
-    moth
-____SHOWIF::'ep4__contact'
-        well, if you want to get technical, her whole team did
-        but if you mean like, the root of it all...
-____SHOWIF::['ep4__contact', false]
-        i don't think it's that simple dude
-____END
-        i wouldn't say she caused it herself,
-        but if what gordon said is right...
-        it definitely all started with the storm
-        then it must have spiralled out of control like that
-        but was it the storm that did it?
-        or did it just lead them to something?
-        man, did they probe the source of the call or something??
-        this is fucked up
-        but, the silver lining here is that this means the fbx was involved
-        like, front to back
-        so... i'm sure even if we don't find out everything in akizet's cyst,
-        we'll get briefed on whatever they know once i turn in my report
-
-    RESPONSES::self
-        can't wait<+>loop
-            FAKEEND::(back)
-
-heard
-    self
-        you really never heard about any of this happening?
-        nothing online? no reports?
-    
-    moth
-        yeah
-        sorry dude don't know what to tell you
-        the collapse completely happened on that little island they set up on
-        and only military vessels were really allowed around there
-        even if a civilian vessel was spying on it, all they would have seen was it falling apart
-        whatever the fbx knows, it's been kept pretty close
-
-    RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
-
-dull
-    self
-        did you see that glazika thing?
-        they used the dull this close to earth??
-
-    moth
-        yeah, that's scary to think about
-        even if they were "microconnectors" or whatever they said
-        we still don't really know how their dull stuff works
-        but hey, looks like it turned out okay
-        must been pretty handy to teleport stuff around up until the collapse
-    
-    RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
-
-fakegeli
-    self
-        bstrd replaced geli with some kind of copy
-        doesn't this just repeat the whole cycle?
-    
-    moth
-        that new geli isn't showing any of the incoherence that the old one did
-        so... it's at least not in pain or lucid
-        this is probably for the best buddy
-        we need these memories intact and this does the trick well enough
-
-    self
-        how did bstrd replace it so easily?
-    
-    moth
-        bstrd might seem stupid, but it's just coded to act that way
-        it's as smart as any other daemon
-        and daemons have to keep memories running in the frame no matter what
-        makes sense that it'd have a plan for this, you know?
-        bstrd modified the old geli to get the daemons to leave it alone,
-        so maybe it also copied geli's knowledge of its old role to drop in this new shell
-    
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-`)
-					
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -2240,6 +1921,324 @@ fakegeli
 						
 					
 					
+					//dynamically inserted
+					
+					page.bgm.rate(0.25)
+if(location.search.includes('e3a2test')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+
+    if(doit) mountSave(GlobalSaves.e3a2debug, false)
+}
+
+addResources([
+    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
+    "/js/combat/combatActionsJson.js", 
+    "/js/combat/combatActorsJson.js",
+    "/js/bullethell.js", 
+    "/js/embassy.js", 
+    "/js/embassy_stages_golem.js",
+    "/js/embassy_golem.js",
+    "/js/combat/combat.js", 
+    ["/js/combat/fpfight.js", ()=> typeof FPFight == "undefined"],
+    "/js/shared/e3a2geli.js"
+])
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthgolresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        geli replaced?<+>fakegeli
+            SHOWIF::"e3a2__escapewin"
+        theories?<+>theory
+            SHOWIF::[["gol__s_calls-gordon", false], ["ep4__h2h", false]]
+            NOTE::cuz theres a whole new theory thing in moth general asks after EP4
+        husks?<+>husks
+            SHOWIF::"gol__personnel"
+        geli?<+>geli
+            SHOWIF::[["gol__lobby_clear", true], ["e3a2__escapewin", false]]
+        sfer generation?<+>sfer
+            SHOWIF::"gol__s_vats"
+        foundry vats?<+>vats
+            SHOWIF::"gol__m_min"
+        akizet caused the collapse?<+>akicause
+            SHOWIF::"gol__s_calls-gordon"
+        never heard about any of this?<+>heard
+            SHOWIF::"gol__s_calls"
+        they used the dull so close?<+>dull
+            SHOWIF::[["gol__s_calls", true], ["ep4__entrancefinal", false]]
+            NOTE::duh
+        dog?<+>dog
+            SHOWIF::"dog"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question about this part of the collapse
+
+    moth
+        i might not be the best help here, but what's up?
+    
+    RESPOBJ::mthgolresp
+
+loop
+    RESPOBJ::mthgolresp
+
+theory
+    self
+        what do you think is really happening here?
+        what really happened with the collapse?
+
+    moth
+        even with a few decades of hindsight,
+        the public info is pretty sparse and unhelpful
+        gravity miscalculation? gimme a break
+        i can't believe i ever fell for that now. fuck dude
+        anyway, my best bet is that it's tied to the storm
+        you know, the electric-corru thing akizet gave us apparently
+        like, ok, i'm not saying i think a human caused this,
+        but it seems like the obesk had a good thing going for a really long time
+        then, around the time akizet hands over something,
+        something she herself said was shelved and experimental,
+        that's when it all blows up?
+        still, that doesn't explain why the golems never hurt any humans...
+        at least, not on the public record...
+        but there's no way even a single obesk attack would be able to be covered up
+        not in the climate the 30s had
+        i know that's not helpful, but i haven't really had to think about this
+        we don't need to theorize, i know we're going to get some real answers eventually here
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+husks
+    self
+        these husks are qou without any mindcores
+        how could that work?
+    
+    moth
+        yeah, i see that...
+        i mean, obviously i have no idea what's going on here
+        but i do know that obesk tech always needs a source for its thoughts
+        the golems have echoes, a lot of their stationary stuff is hooked up to similar things
+        whether that be through their groundsmindry, or through actual veins
+        ...and, of course, the qou have mindcores
+        i know that corru can actually just start thinking on its own, that's what their version of incoherence is
+        but there's just no precedent for it ever organizing on this scale
+        when obesk things starve and become incoherent, they eventually stop working
+        seen it a hundred times
+____SHOWIF::['ep4__contact', false]
+        if anything, this has to be some wacked out version of groundsmindry we've never seen before
+        ...and one that akizet has never seen before, either...
+        idk, that's the only way it could make any sense to me
+____SHOWIF::'ep4__contact'
+        and according to what we see later, 
+        what happened to these guys was more like some kind of mutation or infection
+        idk dude
+____END
+        also, do you see how some look kind of skeletal??
+        they actually did have some obesk who looked like that, 
+        but never in situations where they appeared to us publicly
+        i've seen some photos of qou that looked like that working on construction and stuff
+        the prevailing theory is that those obesk probably had spare "friendly" bodies
+        for when they had to talk to humans or show up on tv or something
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+geli
+    self
+        geli makes me feel weird
+    
+    moth
+        dude?
+    
+    self
+        no i mean
+        i mean i think it looked at me
+    
+    moth
+        oh yeah? like how?
+    
+    self
+        past akizet, at me
+        like funfriend can
+    
+    moth
+        ok, well that's really strange
+        it definitely didn't say anything
+        just keep an eye on it, i guess
+        it's not acting incoherent
+
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+dog
+    self
+        why is that a dog
+    
+    moth
+        it's not a dog
+        i don't know what's going on with your mindspike dude
+        it does stuff i don't see with anyone else
+        probably cause you never update it, but hey, that's why you're here
+        anyway, that's not a dog
+        what you scanned was probably a corrucystic imitation of something they domesticated back on obeski
+        and it's so similar to our concept of 'dog', that your mindspike is like... 
+        'dog'
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+sfer
+    self
+        did you see the sfer generation
+        they're doing something to metal
+    
+    moth
+        yeah, damn... that explains the huge metal trade they had going
+        they do always say that they "grow" corru, and it has "symbiosis" with them,
+        but it's always been a big debate about what exactly they meant
+        they've never showed us the process, or explained it anywhere...
+        plus, in the old interviews, they were still working on their translators
+        so they all spoke in these weird, vague poetic terms for a while
+        kinda funny to see akizet speaking in plain english
+        anyway, i have to wonder, were they trying to keep the process a secret from us for some reason?
+        maybe the things they grow sfer in are super hazardous to organic life or something?
+        i can't imagine they had any malicious intentions
+
+    RESPONSES::self
+        me either<+>loop
+            FAKEEND::(back)
+
+vats
+    self
+        did you see these vat things?
+        they form their tech in them
+    
+    moth
+        yeah! this part i actually did know a little bit about
+        they had something like these in the polygonation spires
+        qou would work in there on golems for local operations and stuff
+        they were pretty decentralized with how they built things back then
+        it seemed like there was a workspace in every obesk structure that any of them could use
+        interesting that the framing device already had some upgrades available...
+        it's probably something to do with the archive system they mentioned
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+akicause
+    self
+        so akizet caused the collapse?
+
+    moth
+____SHOWIF::'ep4__contact'
+        well, if you want to get technical, her whole team did
+        but if you mean like, the root of it all...
+____SHOWIF::['ep4__contact', false]
+        i don't think it's that simple dude
+____END
+        i wouldn't say she caused it herself,
+        but if what gordon said is right...
+        it definitely all started with the storm
+        then it must have spiralled out of control like that
+        but was it the storm that did it?
+        or did it just lead them to something?
+        man, did they probe the source of the call or something??
+        this is fucked up
+        but, the silver lining here is that this means the fbx was involved
+        like, front to back
+        so... i'm sure even if we don't find out everything in akizet's cyst,
+        we'll get briefed on whatever they know once i turn in my report
+
+    RESPONSES::self
+        can't wait<+>loop
+            FAKEEND::(back)
+
+heard
+    self
+        you really never heard about any of this happening?
+        nothing online? no reports?
+    
+    moth
+        yeah
+        sorry dude don't know what to tell you
+        the collapse completely happened on that little island they set up on
+        and only military vessels were really allowed around there
+        even if a civilian vessel was spying on it, all they would have seen was it falling apart
+        whatever the fbx knows, it's been kept pretty close
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+dull
+    self
+        did you see that glazika thing?
+        they used the dull this close to earth??
+
+    moth
+        yeah, that's scary to think about
+        even if they were "microconnectors" or whatever they said
+        we still don't really know how their dull stuff works
+        but hey, looks like it turned out okay
+        must have been pretty handy to teleport stuff around up until the collapse
+    
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+
+fakegeli
+    self
+        bstrd replaced geli with some kind of copy
+        doesn't this just repeat the whole cycle?
+    
+    moth
+        that new geli isn't showing any of the incoherence that the old one did
+        so... it's at least not in pain or lucid
+        this is probably for the best buddy
+        we need these memories intact and this does the trick well enough
+
+    self
+        how did bstrd replace it so easily?
+    
+    moth
+        bstrd might seem stupid, but it's just coded to act that way
+        it's as smart as any other daemon
+        and daemons have to keep memories running in the frame no matter what
+        makes sense that it'd have a plan for this, you know?
+        bstrd modified the old geli to get the daemons to leave it alone,
+        so maybe it also copied geli's knowledge of its old role to drop in this new shell
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

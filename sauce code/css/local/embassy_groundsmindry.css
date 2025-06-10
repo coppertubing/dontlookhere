@@ -891,7 +891,7 @@ body[e4prog="15"] .swapcam .grid-animator[activestage="grm_lesser"],
 }
 
 .e4test #progjump {
-    display: flex;
+    display: flex !important;
 }
 
 #progjump summary, #progjump button {

@@ -339,6 +339,7 @@ body[state="corru-entered"] #room-animator {
     position: absolute;
     transform: rotate(135deg) translateY(-100vh);
     transition: transform 5s cubic-bezier(.13,.29,0,1.01);
+    transform-style: preserve-3d;
 }   
 
 body:not(.spike0) #cursor-upper-right.cursor .cursor-container  {

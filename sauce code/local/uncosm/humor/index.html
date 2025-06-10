@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,144 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["other"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark",
-    image: '/img/textures/ceyetran.gif',
-    voice: ()=>play('talksignal', 1.25)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-}
-
-env.dialogues["humor"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-    
-    sourceless
-        i sit against the <span class="code">veilk</span>'s cold flesh as even colder wind whips violently outside my zzepel,
-        the carrier veilk pushing through the vazni spirestorm slowly, every movement fought against by the swirling air
-        water droplets and hail impact the zzepel's outer shell,
-        some moisture slipping through the cracks and dripping within my shelter, sparkling in the inner lights
-        this is always so unpleasant...
-        fortunately the regional coordinator is free enough to chat, barring this interruption
-        █████ finally gets back to me through my dullvoice receiver,
-    
-    other
-        sorry, just had one other runner to direct
-        where was i? the thought slipped amongst my drone connections!
-    
-    stupid
-        humor readings! remember? something about your father?
-    
-    other
-        oh, yes! right--i never took after my father's interest in humorism,
-        but he and his old humorist friends started to experiment in using corru with it
-        the conceit of it has always been in reading the sensation of receptor curls, so,
-        obviously it is not quite so acceptable or common within these θgazes anymore
-    
-    stupid
-        ahahaha! yes, even in oltazni, it is seen almost as a perversion!
-    
-    other
-        right? it is the same here!
-        of course, i think there is some merit to it,
-        the feelings from a curl are complex after all, and supposedly unique
-        so, they wanted to find a way to continue the practice, 
-        without the weight of the city's skeptical gaze crushing them
-        and here is the interesting part: they succeeded!
-        they established a method of doing <em>remote</em> readings!!
-    
-    stupid
-        well, what is even the point of it without the curl?
-    
-    other
-        come, this is my father we speak of - an honest, bonded tir!
-        the vague energy found in others was his interest, not simply curling receptors with strangers
-        anyway, all it takes is a dullvoice connection, and silence
-        they actually put together and distributed a guide, in hopes of bringing legitimacy back to the practice
-        i helped by reviewing the guiding thoughts of his group, it really is very simple
-        in fact, i could do one for you right now!
-    
-    sourceless
-        oh, where is the fun in it without the curl?
-        a crash of lightning and thunder shakes the zzepel
-    
-    stupid
-        all right, why not? let us see how velzie has drawn my path!
-    
-    other
-        haha! good!
-        all right, you just need to keep the connection open, as if you are thinking something to me...
-        but try not to think anything
-    
-    stupid
-        think without thinking?
-        shall i grow a tail next?
-    
-    other
-        i know it sounds silly, but it is possible! try focusing on the rain!
-    
-    sourceless
-        oh, simple enough
-        i close my eyes as another of the carrier veilk's steps lands far below
-        there will not be another for a handful of θblinks, so it is a good time
-        the rain...
-        ...
-        our connection is silent, but open - i can feel it still
-        there is something akin to a receptor curl in it, without the physical sensation
-        countless vague feelings overlapping, impossible to grasp the origin of any single one,
-        regret, happiness, the welling of laughter in my chest - though all distant, transient
-        they pass around me like the wind of the spirestorm
-    
-    other
-        ...
-        i think i did it right, but...
-        no--maybe i did it wrong
-    
-    stupid
-        huh? come, tell me!
-        you cannot simply say that without sharing the result!!
-    
-    other
-        heheh, well,
-        either velzie's gaze is fixed upon you, or i need to try again
-        it is like you have nothing but light and claws!
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -755,7 +618,7 @@ start
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -776,6 +639,143 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["other"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark",
+    image: '/img/textures/ceyetran.gif',
+    voice: ()=>play('talksignal', 1.25)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+}
+
+env.dialogues["humor"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+    
+    sourceless
+        i sit against the <span class="code">veilk</span>'s cold flesh as even colder wind whips violently outside my zzepel,
+        the carrier veilk pushing through the vazni spirestorm slowly, every movement fought against by the swirling air
+        water droplets and hail impact the zzepel's outer shell,
+        some moisture slipping through the cracks and dripping within my shelter, sparkling in the inner lights
+        this is always so unpleasant...
+        fortunately the regional coordinator is free enough to chat, barring this interruption
+        θ█████ finally gets back to me through my dullvoice receiver,
+    
+    other
+        sorry, just had one other runner to direct
+        where was i? the thought slipped amongst my drone connections!
+    
+    stupid
+        humor readings! remember? something about your father?
+    
+    other
+        oh, yes! right--i never took after my father's interest in humorism,
+        but he and his old humorist friends started to experiment in using corru with it
+        the conceit of it has always been in reading the sensation of receptor curls, so,
+        obviously it is not quite so acceptable or common within these θgazes anymore
+    
+    stupid
+        ahahaha! yes, even in oltazni, it is seen almost as a perversion!
+    
+    other
+        right? it is the same here!
+        of course, i think there is some merit to it,
+        the feelings from a curl are complex after all, and supposedly unique
+        so, they wanted to find a way to continue the practice, 
+        without the weight of the city's skeptical gaze crushing them
+        and here is the interesting part: they succeeded!
+        they established a method of doing <em>remote</em> readings!!
+    
+    stupid
+        well, what is even the point of it without the curl?
+    
+    other
+        come, this is my father we speak of - an honest, bonded tir!
+        the vague energy found in others was his interest, not simply curling receptors with strangers
+        anyway, all it takes is a dullvoice connection, and silence
+        they actually put together and distributed a guide, in hopes of bringing legitimacy back to the practice
+        i helped by reviewing the guiding thoughts of his group, it really is very simple
+        in fact, i could do one for you right now!
+    
+    sourceless
+        oh, where is the fun in it without the curl?
+        a crash of lightning and thunder shakes the zzepel
+    
+    stupid
+        all right, why not? let us see how velzie has drawn my path!
+    
+    other
+        haha! good!
+        all right, you just need to keep the connection open, as if you are thinking something to me...
+        but try not to think anything
+    
+    stupid
+        think without thinking?
+        shall i grow a tail next?
+    
+    other
+        i know it sounds silly, but it is possible! try focusing on the rain!
+    
+    sourceless
+        oh, simple enough
+        i close my eyes as another of the carrier veilk's steps lands far below
+        there will not be another for a handful of θblinks, so it is a good time
+        the rain...
+        ...
+        our connection is silent, but open - i can feel it still
+        there is something akin to a receptor curl in it, without the physical sensation
+        countless vague feelings overlapping, impossible to grasp the origin of any single one,
+        regret, happiness, the welling of laughter in my chest - though all distant, transient
+        they pass around me like the wind of the spirestorm
+    
+    other
+        ...
+        i think i did it right, but...
+        no--maybe i did it wrong
+    
+    stupid
+        huh? come, tell me!
+        you cannot simply say that without sharing the result!!
+    
+    other
+        heheh, well,
+        either velzie's gaze is fixed upon you, or i need to try again
+        it is like you have nothing but light and claws!
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

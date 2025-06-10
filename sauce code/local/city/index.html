@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -383,7 +383,7 @@
     <div class="repairpatch-drift" style="left: 40vw;"><div class="repairpatch"></div></div>
     <div class="realeye"><div class="target" entity="they watch"></div></div>
 </div>
-<link rel="stylesheet" type="text/css" href="/css/local/city.css?1743609964848047793" />
+<link rel="stylesheet" type="text/css" href="/css/local/city.css?1748549633917196033" />
 
 
 
@@ -403,7 +403,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/city.gif",
@@ -452,112 +452,7 @@
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					document.querySelectorAll('#content .loose-thought').forEach(e=>{
-    e.insertAdjacentHTML('beforeend', `<div class="target" entity="${e.getAttribute('text')}"></div>`)
-    e.insertAdjacentHTML('beforeend', `<div class="title">${e.getAttribute('text')}</div>`)
-})
-
-new Lettering('#content .loose-thought .title').letters()
-document.querySelectorAll("#content .loose-thought .title > span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
-
-createEntity({
-    name: 'glimmering spires mark their cities',
-    type: "thoughtform loose-thought",
-    image: "/img/local/city/cityportal.gif",
-    text: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
-    <span>glimmering spires mark their cities</span>
-    <span>all formed of dead metal and glass</span>
-    <span>so tall!!! taller than the tallest <span class="code">veilk</span>!</span>
-    <span>but they stand quietly...</span>
-    <span>one day they will breathe</span>
-    <span>and our lost cousins will share in our knowledge</span>'`
-})
-
-createEntity({
-    name: 'these grand icons of their control',
-    type: "thoughtform loose-thought",
-    image: "/img/local/city/cityportal.gif",
-    text: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
-    <span>these grand icons of their control</span>
-    <span>though they are not ours</span>
-    <span>i feel a sense of pride</span>
-    <span>how our bright cousins have conquered their <span class="code">surface</span>!</span>'`
-})
-
-createEntity({
-    name: 'they watch',
-    type: "thoughtform portrait-bright portrait-cover",
-    image: "/img/local/city/realeye.gif",
-    text: `::SPATIAL THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'low separation'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'ever-skeptical'</span>`,
-    actions: [
-        {
-            name: "greet?",
-            exec: ()=>{
-                moveTo("/local/city/street/")
-            }
-        }
-    ]
-})
-
-
-					 
-					//mothchat definition
-					env.dialogues.mthresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        what city is this<+>where
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
-`)
-
-env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
-start
-    self
-        I have a question about this city thoughtform
-
-    moth
-        yeah?
-    
-    RESPOBJ::mthresp
-
-where
-    self
-        What city could this possibly be?
-    
-    moth
-        i don't think it's any one city honestly
-        seems like a bunch of stuff smashed together... like icons of a city rather than actual representations
-            SHOWIF::[['hub__funfriend-kickout', false]]
-        so since this thing is starving, maybe akizetesche's memories of our cities grouped up to survive
-            SHOWIF::[['hub__funfriend-kickout']]
-        we've seen that kind of physical behavior in starving corrucystic tech, so i'd bet that extends to mental behavior too
-            SHOWIF::[['hub__funfriend-kickout']]
-
-    RESPOBJ::mthresp
-`)
-					
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -720,6 +615,111 @@ where
 						
 					
 					
+					//dynamically inserted
+					
+					document.querySelectorAll('#content .loose-thought').forEach(e=>{
+    e.insertAdjacentHTML('beforeend', `<div class="target" entity="${e.getAttribute('text')}"></div>`)
+    e.insertAdjacentHTML('beforeend', `<div class="title">${e.getAttribute('text')}</div>`)
+})
+
+new Lettering('#content .loose-thought .title').letters()
+document.querySelectorAll("#content .loose-thought .title > span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
+
+createEntity({
+    name: 'glimmering spires mark their cities',
+    type: "thoughtform loose-thought",
+    image: "/img/local/city/cityportal.gif",
+    text: `::OPINATIVE THOUGHTFORM
+    ::CONTENT::'
+    <span>glimmering spires mark their cities</span>
+    <span>all formed of dead metal and glass</span>
+    <span>so tall!!! taller than the tallest <span class="code">veilk</span>!</span>
+    <span>but they stand quietly...</span>
+    <span>one day they will breathe</span>
+    <span>and our lost cousins will share in our knowledge</span>'`
+})
+
+createEntity({
+    name: 'these grand icons of their control',
+    type: "thoughtform loose-thought",
+    image: "/img/local/city/cityportal.gif",
+    text: `::OPINATIVE THOUGHTFORM
+    ::CONTENT::'
+    <span>these grand icons of their control</span>
+    <span>though they are not ours</span>
+    <span>i feel a sense of pride</span>
+    <span>how our bright cousins have conquered their <span class="code">surface</span>!</span>'`
+})
+
+createEntity({
+    name: 'they watch',
+    type: "thoughtform portrait-bright portrait-cover",
+    image: "/img/local/city/realeye.gif",
+    text: `::SPATIAL THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'low separation'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'ever-skeptical'</span>`,
+    actions: [
+        {
+            name: "greet?",
+            exec: ()=>{
+                moveTo("/local/city/street/")
+            }
+        }
+    ]
+})
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what city is this<+>where
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        I have a question about this city thoughtform
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthresp
+
+where
+    self
+        What city could this possibly be?
+    
+    moth
+        i don't think it's any one city honestly
+        seems like a bunch of stuff smashed together... like icons of a city rather than actual representations
+            SHOWIF::[['hub__funfriend-kickout', false]]
+        so since this thing is starving, maybe akizetesche's memories of our cities grouped up to survive
+            SHOWIF::[['hub__funfriend-kickout']]
+        we've seen that kind of physical behavior in starving corrucystic tech, so i'd bet that extends to mental behavior too
+            SHOWIF::[['hub__funfriend-kickout']]
+
+    RESPOBJ::mthresp
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

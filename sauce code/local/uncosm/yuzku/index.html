@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -406,7 +406,7 @@ body #definition-box {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -441,136 +441,7 @@ body #definition-box {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["hesitant"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval3.gif',
-    voice: ()=>play('talkcore', 0.75)
-}
-
-env.dialogueActors["other"] = {
-    type: "thoughtform portrait-contain obesk portrait-dark",
-    image: '/img/textures/eyetran.gif',
-    voice: ()=>play('talkcore', 1.5)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["hesitant"].image = '/img/sprites/obesk/larval/larval3h.gif'
-}
-
-env.dialogues["yuzku"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        i have to contain myself from skittering well ahead of █████
-        the gathering chamber's festivities will not go anywhere... just keep walking slowly...
-        he is talking--what was he talking about again?
-
-    hesitant
-        ...and, right in the center of the cysts, they have this tiny pale gray one--and it connects to that very place!
-
-    stupid
-        no way!
-
-    sourceless
-        i have no idea
-
-    hesitant
-        right?! to think, it was right beneath our receptors all this time
-        i wager we could even see runners flying over the veilk, eventually!
-    
-    stupid
-        with wings?
-    
-    hesitant
-        n-no, with the nodes! imagine--great hovering spheres attached to a back-piece, with veins up to receptors to control elevation, and direction...
-    
-    sourceless
-        oh, yes... the dull bone stuff
-        this all is interesting, but i do not care enough to learn deeply of it
-        still, it is good to see him so excited, he has been so anxious lately
-        as we continue up the tunnel, i notice a tir up ahead replacing one of the yuzku globes with one of the new corrucysts
-        i stop nearby to observe her work, █████ trailing off and stopping near me soon after
-    
-    stupid
-        hey!
-        that is one of the new cavelights, right?
-    
-    other
-        ah? oh, yes!
-    
-    stupid
-        can i see?
-    
-    sourceless
-        i scurry closer to the tir, and she pulls a different glowing corrucyst from her basket for me
-        holding it in my claws, it has the same cyan light--no, brighter--than the old yuzku globes, but...
-        it does not have the distinctive rattle and tap of the little creatures climbing and falling within
-    
-    stupid
-        oh, it is so quiet!
-        i am going to miss all the old yuzku...
-    
-    sourceless
-        the tir laughs as she finishes latching the replacement globe into its wall socket
-
-    other
-        i will not!
-        maintenance and feeding was such a chore...
-        with these new ones, all i do is put in a strange little blue square the θjut pass along,
-        then it lasts for θgazes and θgazes!
-
-    stupid
-        a square...
-        █████, could that be the 'sfer' stuff?
-    
-    hesitant
-        haha, no, i think this is a new one
-        it is probably a byproduct, or maybe it could be a specific sfer variant...
-    
-    sourceless
-        i dip my receptors to the tir, and she responds in kind
-        with a simple gesture to █████, we continue on our journey
-    
-    hesitant
-        ...see, in the sfer "vats" that the zevazni foundries came up with,
-        there is this layer of sludge that accumulates near the bottom, and i think they say it is blue--what was it called again...
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -736,14 +607,14 @@ start
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -757,6 +628,135 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["hesitant"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval3.gif',
+    voice: ()=>play('talkcore', 0.75)
+}
+
+env.dialogueActors["other"] = {
+    type: "thoughtform portrait-contain obesk portrait-dark",
+    image: '/img/textures/eyetran.gif',
+    voice: ()=>play('talkcore', 1.5)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["hesitant"].image = '/img/sprites/obesk/larval/larval3h.gif'
+}
+
+env.dialogues["yuzku"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        i have to contain myself from skittering well ahead of θ█████
+        the gathering chamber's festivities will not go anywhere... just keep walking slowly...
+        he is talking--what was he talking about again?
+
+    hesitant
+        ...and, right in the center of the cysts, they have this tiny pale gray one--and it connects to that very place!
+
+    stupid
+        no way!
+
+    sourceless
+        i have no idea
+
+    hesitant
+        right?! to think, it was right beneath our receptors all this time
+        i wager we could even see runners flying over the veilk, eventually!
+    
+    stupid
+        with wings?
+    
+    hesitant
+        n-no, with the nodes! imagine--great hovering spheres attached to a back-piece, with veins up to receptors to control elevation, and direction...
+    
+    sourceless
+        oh, yes... the dull bone stuff
+        this all is interesting, but i do not care enough to learn deeply of it
+        still, it is good to see him so excited, he has been so anxious lately
+        as we continue up the tunnel, i notice a tir up ahead replacing one of the yuzku globes with one of the new corrucysts
+        i stop nearby to observe her work, θ█████ trailing off and stopping near me soon after
+    
+    stupid
+        hey!
+        that is one of the new cavelights, right?
+    
+    other
+        ah? oh, yes!
+    
+    stupid
+        can i see?
+    
+    sourceless
+        i scurry closer to the tir, and she pulls a different glowing corrucyst from her basket for me
+        holding it in my claws, it has the same cyan light--no, brighter--than the old yuzku globes, but...
+        it does not have the distinctive rattle and tap of the little creatures climbing and falling within
+    
+    stupid
+        oh, it is so quiet!
+        i am going to miss all the old yuzku...
+    
+    sourceless
+        the tir laughs as she finishes latching the replacement globe into its wall socket
+
+    other
+        i will not!
+        maintenance and feeding was such a chore...
+        with these new ones, all i do is put in a strange little blue square the θjut pass along,
+        then it lasts for θgazes and θgazes!
+
+    stupid
+        a square...
+        θ█████, could that be the 'sfer' stuff?
+    
+    hesitant
+        haha, no, i think this is a new one
+        it is probably a byproduct, or maybe it could be a specific sfer variant...
+    
+    sourceless
+        i dip my receptors to the tir, and she responds in kind
+        with a simple gesture to θ█████, we continue on our journey
+    
+    hesitant
+        ...see, in the sfer "vats" that the zevazni foundries came up with,
+        there is this layer of sludge that accumulates near the bottom, and i think they say it is blue--what was it called again...
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

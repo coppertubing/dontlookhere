@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -405,7 +405,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -440,230 +440,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["host"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-spectral",
-    image: '/img/sprites/obesk/larval/something1.gif',
-    voice: ()=>play('talksignal', 1.5)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["host"].image = '/img/sprites/obesk/larval/something1h.gif'
-}
-
-env.dialogues["zmask"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        ...opens, revealing a small chamber with a second reinforced hatch
-        an interlocking system of corru and carved stone
-        i step within, adjusting the corrucystic capsule in my arms
-        and after a small delay, the second hatch opens, the first closing behind me
-        the dark is overwhelming as always...
-        only the slightest illumination from organized growths along the walls
-        but the cavelight upon my waist carries enough light for me to safely enter,
-        and brings the shine of ███'s eyes upon me, from across the chamber
-        two at first, then more--then two, again
-
-    stupid
-        ███?
-
-    sourceless
-        if what they say is right, it should be ███, right now...
-        she approaches slowly, carried by the zuzucri's limbs behind her
-        an indistinct mass that hides itself from me as best it can
-        her silence is unsettling, enough that i nearly back into the reinforced entrance out of precaution
-        a number of dark shapes rotate in the air above her, so--it must be working, right?
-        my fear is silenced by seeing the glimmer of her receptor ornaments
-        the joyous upturn and uncurl is enough to reassure me
-        
-    host
-        ██████!!
-        come, sit!
-        i am so glad you came, i know it is a special θgaze...
-
-    stupid
-        ahh, that may be the case!
-        but i did not want you to miss out
-        in fact, nobody did--we all helped with this!
-
-    sourceless
-        i weave around furniture and corrucystic fixtures
-        they have turned this place into a combination of living chamber and workshop
-        though, i wonder how much she is actually able to use...
-        soon we are seated at a central table
-        at least, i am... she is simply lowered
-        the capsule thuds against its stone surface, despite my efforts to place it quietly
-
-    stupid
-        a <span definition="INHERITED CONTEXT::'celebration of veilk-fall';'inherited description-generated noun'">new-fall</span> feast!
-
-    sourceless
-        i unlatch the cavelight from my suit, placing it nearby the capsule
-        in its pale light, the shapes above her become clear
-        the zuzucri-masks - hovering in a wide, neat circle above and around her head
-        hollow corrucystic impressions of faces
-        moving their mouths, whispering near-inaudible nonsense
-        all with different receptors, changing orientation occasionally
-        each carries a spherical connector behind the mask's curve, but with nothing visibly attached...
-        like valika-borne cysts, without the tether? 
-        i must ask about that later
-        for now, i try not to focus on them directly too much--the θjut said it is best that way
-        with a few taps along the sides of the spherical capsule, its corrucystic cover splits and retracts,
-        releasing the aroma of seared veilk-vein, closed and stuffed with <span definition="INHERITED CONTEXT::'city heart';'fastest-rotting veilk organ';'named for practice of consuming rapidly in celebration of new veilk-fall'">ozoilaki</span> meat and savory fruit flesh
-        lesser capsules are arranged neatly within, containing a few different beverages
-        veilk's-blood being the most significant
-        the angled cavelight gives ███'s eyes a clear glow,
-        revealing the splitting marks of her face, curling at the edges even now in anticipation of this delicacy
-
-    host
-        so it was a good one?!
-        this is so much...
-
-    stupid
-        yes! we are not sure how it happened, but...
-        middle-sized, conveniently close, good health... still alive, actually!
-        ██████ and the examiners have been saying it had some malformed leg-tendrils,
-        and its growth must have gradually made it unable to support its own weight effectively anymore
-
-    host
-        lucky! but, sad
-        i always felt better when it was the older veilk...
-        and they have more varied parasites, too!
-        but, maybe velzie saw it fit to throw some fresh food our way
-        it has been a bad θeye...
-    
-    sourceless
-        i chuckle, maybe inappropriately
-        but it comes from the same place
-    
-    stupid
-        yes...
-        but, all things become balanced, right?
-    
-    sourceless
-        there is a hesitant affirmative twist in her receptors
-        one of her claws raises to grip a blade within the capsule
-        and... a tendril of the zuzucri rises from behind her, in place of her other claw,
-        a grim reminder of the scars from our fight, seizing a food-spike without thought
-        to her, it may even appear as her claw, for she uses it all the same
-        it is better if i do not ask
-
-    host
-        oh, did you bring any for yourself?
-    
-    stupid
-        i already ate at the celebration a θwink ago...
-        this is all for you!
-
-    host
-        ah...
-    
-    sourceless
-        her flat reaction brings a hollow to my heart
-        she must have been aware of the θjut's push to allow her to safely join us
-        it was foolish to raise her hopes
-        ...but she does not seem particularly upset
-
-    host
-        well, here
-    
-    sourceless
-        from the meal, she picks up one of the smaller beverage capsules with a mismatched third claw from behind her back
-        offering it to me with a kind curl, oblivious
-        it is an import from another cave-city, one of the blackish-grey drinks
-        not my favorite, but... i accept
-        she returns to her utensils, cutting into the vein
-        a thick cut is brought up to her face, which splits apart at the nose
-        spiralling teeth and muscle set into it as her face reforms, mimicking the motion of chewing
-        her eyes return, allowing her to see the small shock in my receptors
-        i am usually better about playing along, but, i have never seen her eat like this...
-        as to not unsettle her, i launch into catching up
-    
-    stupid
-        so how is it going here?
-        the ma--
-        
-    sourceless
-        i catch myself
-        i am sure the θjut would prefer i not discuss this with her
-        not without some defensive measure
-        but i have already started
-    
-    stupid
-        the, um, the new... the new things, they are trying
-    
-    host
-        oh! good!
-        the masks, you mean?
-        yes, very very good!!
-        they have the zuzucri in a state of almost constant deactivation
-        except for, uh, resting, and apparently some time after waking from sleep
-        i do not think they can do anything about that
-        but... as long as it--i--am fed, and i am not too stressed, it should not be an issue
-        
-    sourceless
-        another cut of the vein from the center is brought to her face
-        splitting into a monstrous maw again, tearing the vein's flesh with ease
-        i suppress my wincing
-        does she not realize the implicit threat in what she just said?
-        was that the beast speaking through her?
-
-    host
-        it really is all coming along so fast...
-        the only spike in the heel is that it feels endless
-        i do not remember sleeping, or dreaming, or waking...
-        it feels as if i have been wide awake since the moment it took me
-        jolted to different places, with a new set of faces every time
-        it is better now with the masks, but i am fatigued
-        i am not truly tired, not exactly... they told me that the zuzucri does sleep...
-        i just miss being able to feel it, myself
-        maybe if only because i am sealed in this little room
-        once they have the masks perfected, and they can let me out...
-        i am sure this will all feel better!!
-    
-    sourceless
-        with an excited curl in her receptors, she drinks of the veilk's-blood
-        held in the coil of a tendril, brought to her lips without the terrible split
-        "let me out"...
-        what are they telling her?
-        does she really think...
-
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -834,31 +611,254 @@ start
 						
 							
 							
-							env.definitions[`███`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ███`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`█████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["host"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-spectral",
+    image: '/img/sprites/obesk/larval/something1.gif',
+    voice: ()=>play('talksignal', 1.5)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["host"].image = '/img/sprites/obesk/larval/something1h.gif'
+}
+
+env.dialogues["zmask"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...opens, revealing a small chamber with a second reinforced hatch
+        an interlocking system of corru and carved stone
+        i step within, adjusting the corrucystic capsule in my arms
+        and after a small delay, the second hatch opens, the first closing behind me
+        the dark is overwhelming as always...
+        only the slightest illumination from organized growths along the walls
+        but the cavelight upon my waist carries enough light for me to safely enter,
+        and brings the shine of θ███'s eyes upon me, from across the chamber
+        two at first, then more--then two, again
+
+    stupid
+        θ███?
+
+    sourceless
+        if what they say is right, it should be θ███, right now...
+        she approaches slowly, carried by the zuzucri's limbs behind her
+        an indistinct mass that hides itself from me as best it can
+        her silence is unsettling, enough that i nearly back into the reinforced entrance out of precaution
+        a number of dark shapes rotate in the air above her, so--it must be working, right?
+        my fear is silenced by seeing the glimmer of her receptor ornaments
+        the joyous upturn and uncurl is enough to reassure me
+        
+    host
+        θ██████!!
+        come, sit!
+        i am so glad you came, i know it is a special θgaze...
+
+    stupid
+        ahh, that may be the case!
+        but i did not want you to miss out
+        in fact, nobody did--we all helped with this!
+
+    sourceless
+        i weave around furniture and corrucystic fixtures
+        they have turned this place into a combination of living chamber and workshop
+        though, i wonder how much she is actually able to use...
+        soon we are seated at a central table
+        at least, i am... she is simply lowered
+        the capsule thuds against its stone surface, despite my efforts to place it quietly
+
+    stupid
+        a <span definition="INHERITED CONTEXT::'celebration of veilk-fall';'inherited description-generated noun'">new-fall</span> feast!
+
+    sourceless
+        i unlatch the cavelight from my suit, placing it nearby the capsule
+        in its pale light, the shapes above her become clear
+        the zuzucri-masks - hovering in a wide, neat circle above and around her head
+        hollow corrucystic impressions of faces
+        moving their mouths, whispering near-inaudible nonsense
+        all with different receptors, changing orientation occasionally
+        each carries a spherical connector behind the mask's curve, but with nothing visibly attached...
+        like valika-borne cysts, without the tether? 
+        i must ask about that later
+        for now, i try not to focus on them directly too much--the θjut said it is best that way
+        with a few taps along the sides of the spherical capsule, its corrucystic cover splits and retracts,
+        releasing the aroma of seared veilk-vein, closed and stuffed with <span definition="INHERITED CONTEXT::'city heart';'fastest-rotting veilk organ';'named for practice of consuming rapidly in celebration of new veilk-fall'">ozoilaki</span> meat and savory fruit flesh
+        lesser capsules are arranged neatly within, containing a few different beverages
+        veilk's-blood being the most significant
+        the angled cavelight gives θ███'s eyes a clear glow,
+        revealing the splitting marks of her face, curling at the edges even now in anticipation of this delicacy
+
+    host
+        so it was a good one?!
+        this is so much...
+
+    stupid
+        yes! we are not sure how it happened, but...
+        middle-sized, conveniently close, good health... still alive, actually!
+        θ██████ and the examiners have been saying it had some malformed leg-tendrils,
+        and its growth must have gradually made it unable to support its own weight effectively anymore
+
+    host
+        lucky! but, sad
+        i always felt better when it was the older veilk...
+        and they have more varied parasites, too!
+        but, maybe velzie saw it fit to throw some fresh food our way
+        it has been a bad θeye...
+    
+    sourceless
+        i chuckle, maybe inappropriately
+        but it comes from the same place
+    
+    stupid
+        yes...
+        but, all things become balanced, right?
+    
+    sourceless
+        there is a hesitant affirmative twist in her receptors
+        one of her claws raises to grip a blade within the capsule
+        and... a tendril of the zuzucri rises from behind her, in place of her other claw,
+        a grim reminder of the scars from our fight, seizing a food-spike without thought
+        to her, it may even appear as her claw, for she uses it all the same
+        it is better if i do not ask
+
+    host
+        oh, did you bring any for yourself?
+    
+    stupid
+        i already ate at the celebration a θwink ago...
+        this is all for you!
+
+    host
+        ah...
+    
+    sourceless
+        her flat reaction brings a hollow to my heart
+        she must have been aware of the θjut's push to allow her to safely join us
+        it was foolish to raise her hopes
+        ...but she does not seem particularly upset
+
+    host
+        well, here
+    
+    sourceless
+        from the meal, she picks up one of the smaller beverage capsules with a mismatched third claw from behind her back
+        offering it to me with a kind curl, oblivious
+        it is an import from another cave-city, one of the blackish-grey drinks
+        not my favorite, but... i accept
+        she returns to her utensils, cutting into the vein
+        a thick cut is brought up to her face, which splits apart at the nose
+        spiralling teeth and muscle set into it as her face reforms, mimicking the motion of chewing
+        her eyes return, allowing her to see the small shock in my receptors
+        i am usually better about playing along, but, i have never seen her eat like this...
+        as to not unsettle her, i launch into catching up
+    
+    stupid
+        so how is it going here?
+        the ma--
+        
+    sourceless
+        i catch myself
+        i am sure the θjut would prefer i not discuss this with her
+        not without some defensive measure
+        but i have already started
+    
+    stupid
+        the, um, the new... the new things, they are trying
+    
+    host
+        oh! good!
+        the masks, you mean?
+        yes, very very good!!
+        they have the zuzucri in a state of almost constant deactivation
+        except for, uh, resting, and apparently some time after waking from sleep
+        i do not think they can do anything about that
+        but... as long as it--i--am fed, and i am not too stressed, it should not be an issue
+        
+    sourceless
+        another cut of the vein from the center is brought to her face
+        splitting into a monstrous maw again, tearing the vein's flesh with ease
+        i suppress my wincing
+        does she not realize the implicit threat in what she just said?
+        was that the beast speaking through her?
+
+    host
+        it really is all coming along so fast...
+        the only spike in the heel is that it feels endless
+        i do not remember sleeping, or dreaming, or waking...
+        it feels as if i have been wide awake since the moment it took me
+        jolted to different places, with a new set of faces every time
+        it is better now with the masks, but i am fatigued
+        i am not truly tired, not exactly... they told me that the zuzucri does sleep...
+        i just miss being able to feel it, myself
+        maybe if only because i am sealed in this little room
+        once they have the masks perfected, and they can let me out...
+        i am sure this will all feel better!!
+    
+    sourceless
+        with an excited curl in her receptors, she drinks of the veilk's-blood
+        held in the coil of a tendril, brought to her lips without the terrible split
+        "let me out"...
+        what are they telling her?
+        does she really think...
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

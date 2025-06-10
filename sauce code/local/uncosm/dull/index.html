@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -468,7 +468,7 @@ body #dialogue-box.fade {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -503,158 +503,7 @@ body #dialogue-box.fade {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					page.bgm.rate(0.5)
-    
-env.dull = {
-    bgm404: new Howl({
-        onload: function () {page.howls.push(this)},
-        src: ['/audio/404.ogg'],
-        preload: true,
-        loop: true,
-        volume: 1,
-        rate: 0.1,
-        sprite: {
-            __default: [0, 42630, true]
-        }
-    }),
-
-    portal: document.querySelector("#dullportal"),
-
-    closeout: ()=>{
-        cutscene(true)
-        ratween(env.bgm, 2, 20000)
-        content.classList.add('center')
-        document.querySelector('#dialogue-box').classList.add('distort')
-        document.querySelector('#dialogue-box').classList.add('fade')
-
-        setTimeout(()=>{
-            document.querySelector('#dialogue-box').classList.remove('distort')
-            endDialogue()
-        }, 10000)
-
-        setTimeout(()=>{
-            play('criticalError', 1, 0.5)
-            readoutAdd({message: `ERROR::'unprocessable data';'retracing';'last coherent position'`, name:"sys"})
-            cutscene(false)
-            document.querySelector('#dialogue-box').classList.remove('fade')
-            moveTo("/local/depths/");
-        }, 20000)
-    }
-}
-
-env.dialogueActors["origin"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark loose-thought",
-    image: '/img/textures/weyetran.gif',
-    voice: ()=>play('talksignal', 2),
-    player: true
-}
-
-env.dialogueActors["other"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark loose-thought",
-    image: '/img/sprites/obesk/larval/larval5.gif',
-    voice: ()=>play('talksignal', 1)
-}
-
-env.dialogueActors["mind"] = {
-    type: "thoughtform obesk portrait-contain loose-thought",
-    image: '/img/textures/eyetran.gif',
-    voice: ()=>play('talk', 0.4)
-}
-    
-env.dialogues["dull"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        THROUGH MY CONNECTION TO THE PILOT CYST, I SEE IT BEFORE US
-        THIS IS THE THIRD TIME I HAVE EVER USED THE DULL
-        SOME LARVAL FEAR GRIPS ME, THREATENING THAT IT WILL DISINTEGRATE ME...
-        TOTAL ANNIHILATION, REMOVAL FROM VELZIE'S STAGE FOR ALL TIME
-        OR WORSE - SOMETHING WITHIN WILL FIND ME ON MY PATH THROUGH
-        BUT OF COURSE, IT IS SUPERSTITION
-
-    mind
-        approaching
-            EXEC::env.dull.portal.classList.add("zoom1")
-
-    sourceless
-        INDEED, NO LIFE AS WE UNDERSTAND IT COULD EXIST IN THE DULL
-        THAT IS WHAT THEY SAY
-        DULLZKOVIK'S EXTENDED STUDIES HAVE PROVEN IT, AFTER ALL
-        ENOUGH STUDY TO HAVE DRIVEN HIM MAD
-        WHAT IS HE ON, HIS FOURTH RENEWAL NOW?
-        AHAHA VELZIE SO FAVORS TORMENTING HIM
-        AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
-
-    other
-        attention, ██████! 
-        this is this is ██████!
-        speaking on behalf of anterior dull station '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>',
-        you are all clear to proceed!
-        be sure you release all active dull tethers or hearts,
-        also expect to lose communications for a little bit
-        oh yes, and if you brought any <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithes</span>,
-        say your goodbyes! hehe
-
-    origin
-        of course, thank you
-        <span definition="INHERITED CONTEXT::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained</span>, will you?
-
-    other
-        hehehe, we will hold a performance just for you
-        your correspondent will establish contact as soon as you are on the other side
-        good luck!
-
-    mind
-        dull hearts released
-        permitting gravitic control
-    
-    sourceless
-        THE VESSEL SHIFTS AS SOON AS THE HEARTS RELEASE
-        MY <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">TITHE</span>... I CLUTCH ONE OF MY PRESERVED LARVAL RECEPTOR SHELLS
-        A HARD, HOLLOW SPIRAL OF SEGMENTED CHITIN,
-        A PART OF MYSELF TO REMAIN IN THE DULL, OUTSIDE OF VELZIE'S CREATION
-        I DISCONNECT FROM THE PILOT CYST ABRUPTLY - PERHAPS I SHOULD NOT LOOK
-            EXEC::content.classList.add('nostars')
-        I CLOSE MY EYES... NO, I TURN THEM OFF
-            EXEC::changeBgm(env.dull.bgm404, {length: 6000})
-        AND I DISABLE MY SENSATION - BEST TO BE SAFE
-        INDEED, PERHAPS EVEN SOUND SHOULD BE LIMITED
-        I PULL THE MEMBRANES AROUND MY MINDCORE CLOSER TO IT
-        I AM NOTHING, IN A VOID, AND NOTHING IS ABOUT TO HAPPEN
-        YET STILL I SEE IT IN MY MINDS EYE, I HEAR ITS SILENCE ROARING
-        NO MATTER WHAT I DISABLE, IT IS STILL PERCEIVED, RESONATING WITHIN MY θdeathly FORM
-            EXEC::env.dull.portal.classList.add("quick")
-        I TRY TO THINK OF ANYTHING ELSE, BUT IT IS HERE BEFORE ME,
-        AND IT IS COMING
-            EXEC::env.dull.portal.classList.add("zoom5");env.dull.closeout()
-        AND IT IS HERE
-        AND IT IS HERE
-        AND IT IS HERE
-        
-    sys
-        NOTICE::'memory stream terminated'
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -820,7 +669,7 @@ start
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -829,6 +678,157 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					page.bgm.rate(0.5)
+    
+env.dull = {
+    bgm404: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/404.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        rate: 0.1,
+        sprite: {
+            __default: [0, 42630, true]
+        }
+    }),
+
+    portal: document.querySelector("#dullportal"),
+
+    closeout: ()=>{
+        cutscene(true)
+        ratween(env.bgm, 2, 20000)
+        content.classList.add('center')
+        document.querySelector('#dialogue-box').classList.add('distort')
+        document.querySelector('#dialogue-box').classList.add('fade')
+
+        setTimeout(()=>{
+            document.querySelector('#dialogue-box').classList.remove('distort')
+            endDialogue()
+        }, 10000)
+
+        setTimeout(()=>{
+            play('criticalError', 1, 0.5)
+            readoutAdd({message: `ERROR::'unprocessable data';'retracing';'last coherent position'`, name:"sys"})
+            cutscene(false)
+            document.querySelector('#dialogue-box').classList.remove('fade')
+            moveTo("/local/depths/");
+        }, 20000)
+    }
+}
+
+env.dialogueActors["origin"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark loose-thought",
+    image: '/img/textures/weyetran.gif',
+    voice: ()=>play('talksignal', 2),
+    player: true
+}
+
+env.dialogueActors["other"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-dark loose-thought",
+    image: '/img/sprites/obesk/larval/larval5.gif',
+    voice: ()=>play('talksignal', 1)
+}
+
+env.dialogueActors["mind"] = {
+    type: "thoughtform obesk portrait-contain loose-thought",
+    image: '/img/textures/eyetran.gif',
+    voice: ()=>play('talk', 0.4)
+}
+    
+env.dialogues["dull"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        THROUGH MY CONNECTION TO THE PILOT CYST, I SEE IT BEFORE US
+        THIS IS THE THIRD TIME I HAVE EVER USED THE DULL
+        SOME LARVAL FEAR GRIPS ME, THREATENING THAT IT WILL DISINTEGRATE ME...
+        TOTAL ANNIHILATION, REMOVAL FROM VELZIE'S STAGE FOR ALL TIME
+        OR WORSE - SOMETHING WITHIN WILL FIND ME ON MY PATH THROUGH
+        BUT OF COURSE, IT IS SUPERSTITION
+
+    mind
+        approaching
+            EXEC::env.dull.portal.classList.add("zoom1")
+
+    sourceless
+        INDEED, NO LIFE AS WE UNDERSTAND IT COULD EXIST IN THE DULL
+        THAT IS WHAT THEY SAY
+        DULLZKOVIK'S EXTENDED STUDIES HAVE PROVEN IT, AFTER ALL
+        ENOUGH STUDY TO HAVE DRIVEN HIM MAD
+        WHAT IS HE ON, HIS FOURTH RENEWAL NOW?
+        AHAHA VELZIE SO FAVORS TORMENTING HIM
+        AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
+
+    other
+        attention, θ██████! 
+        this is this is θ██████!
+        speaking on behalf of anterior dull station '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>',
+        you are all clear to proceed!
+        be sure you release all active dull tethers or hearts,
+        also expect to lose communications for a little bit
+        oh yes, and if you brought any <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithes</span>,
+        say your goodbyes! hehe
+
+    origin
+        of course, thank you
+        <span definition="INHERITED CONTEXT::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained</span>, will you?
+
+    other
+        hehehe, we will hold a performance just for you
+        your correspondent will establish contact as soon as you are on the other side
+        good luck!
+
+    mind
+        dull hearts released
+        permitting gravitic control
+    
+    sourceless
+        THE VESSEL SHIFTS AS SOON AS THE HEARTS RELEASE
+        MY <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">TITHE</span>... I CLUTCH ONE OF MY PRESERVED LARVAL RECEPTOR SHELLS
+        A HARD, HOLLOW SPIRAL OF SEGMENTED CHITIN,
+        A PART OF MYSELF TO REMAIN IN THE DULL, OUTSIDE OF VELZIE'S CREATION
+        I DISCONNECT FROM THE PILOT CYST ABRUPTLY - PERHAPS I SHOULD NOT LOOK
+            EXEC::content.classList.add('nostars')
+        I CLOSE MY EYES... NO, I TURN THEM OFF
+            EXEC::changeBgm(env.dull.bgm404, {length: 6000})
+        AND I DISABLE MY SENSATION - BEST TO BE SAFE
+        INDEED, PERHAPS EVEN SOUND SHOULD BE LIMITED
+        I PULL THE MEMBRANES AROUND MY MINDCORE CLOSER TO IT
+        I AM NOTHING, IN A VOID, AND NOTHING IS ABOUT TO HAPPEN
+        YET STILL I SEE IT IN MY MINDS EYE, I HEAR ITS SILENCE ROARING
+        NO MATTER WHAT I DISABLE, IT IS STILL PERCEIVED, RESONATING WITHIN MY θdeathly FORM
+            EXEC::env.dull.portal.classList.add("quick")
+        I TRY TO THINK OF ANYTHING ELSE, BUT IT IS HERE BEFORE ME,
+        AND IT IS COMING
+            EXEC::env.dull.portal.classList.add("zoom5");env.dull.closeout()
+        AND IT IS HERE
+        AND IT IS HERE
+        AND IT IS HERE
+        
+    sys
+        NOTICE::'memory stream terminated'
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

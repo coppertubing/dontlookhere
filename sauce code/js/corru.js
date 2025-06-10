@@ -929,7 +929,7 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
                                 let statClass = "neutral-shadow"
 
                                 switch(type) {
-                                    case "STATUS":\
+                                    case "STATUS":
                                         let info = action.stats.status[statKey]
                                         let status = env.STATUS_EFFECTS[info.name]
                                         if(status.beneficial) statClass = "status friend-shadow"; else statClass = "status obesk-shadow"

@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -636,7 +636,7 @@ body[n="i"] #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/ocean.gif",
@@ -676,116 +676,7 @@ body[n="i"] #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					env.entities['our dull vessel'].hide = true
-createEntity(env.entities['our dull vessel'])
-
-createEntity({
-    name: 'gate::the depths',
-    type: "thoughtform",
-    image: "/img/local/ocean/thecall.gif",
-    text: `::CONNECTOR THOUGHTFORM
-    ::DESTINATION::'low dimensional thoughtspace';'internal'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'partial cohesion failure'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'why you are here'</span>`,
-    actions: [
-        {
-            name: "enter",
-            exec: ()=>{
-                moveTo("/local/depths/")
-            }
-        }
-    ]
-})
-
-createEntity({
-    name: 'their vessel',
-    type: "thoughtform ship",
-    image: "/img/local/ocean/ships.gif",
-    text: `::SPATIAL THOUGHTFORM
-    ::LOW-DIMENSIONAL
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'multiple low cohesion entities'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'our cousins found us quickly'</span>`,
-    actions: [
-        {
-            name: "enter",
-            exec: ()=>{
-                moveTo("/local/ocean/ship/")
-            }
-        }
-    ]
-})
-
-createEntity({
-    name: 'stilted shore',
-    type: "thoughtform",
-    image: "/img/local/ocean/island.gif",
-    text: `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';'symbolic'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the stage for our θthree-eyed performance'</span>`,
-})
-
-createEntity({
-    name: 'the embassy',
-    type: "thoughtform",
-    image: "/img/textures/corruripple.gif",
-    text: `::SPATIAL THOUGHTFORM
-    ::ERROR::'unprocessable entity'::NON-RENDERABLE
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`
-})
-
-if(check('hub__funfriend-ep1fed')) {
-    createEntity({
-        update: true,
-        name: 'the embassy',
-        type: "thoughtform",
-        image: "/img/local/embassy/embassyportal.gif",
-        text: `::SPATIAL THOUGHTFORM
-        ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the performance';'velzie cackles with delight'</span>`,
-        actions: [
-            {
-                name: "enter",
-                exec: ()=> {
-                    moveTo("/local/ocean/embassy/")
-                },
-                showIf: "hub__funfriend-ep1fed"
-            }
-        ]
-    })
-}
-
-env.ocean = {
-    net: () => {
-        switch(env.effectiveNet) {
-            case 2: case 1: 
-                env.bgm.rate(0.5)
-            break
-
-            default: 
-                env.bgm.rate(1)
-            break
-        }
-    }
-}
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -953,6 +844,115 @@ env.ocean = {
 						
 					
 					
+					//dynamically inserted
+					
+					env.entities['our dull vessel'].hide = true
+createEntity(env.entities['our dull vessel'])
+
+createEntity({
+    name: 'gate::the depths',
+    type: "thoughtform",
+    image: "/img/local/ocean/thecall.gif",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'partial cohesion failure'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'why you are here'</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                moveTo("/local/depths/")
+            }
+        }
+    ]
+})
+
+createEntity({
+    name: 'their vessel',
+    type: "thoughtform ship",
+    image: "/img/local/ocean/ships.gif",
+    text: `::SPATIAL THOUGHTFORM
+    ::LOW-DIMENSIONAL
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'multiple low cohesion entities'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'dead vessels sat aside our <span class="code">spire</span>';'our cousins found us quickly'</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                moveTo("/local/ocean/ship/")
+            }
+        }
+    ]
+})
+
+createEntity({
+    name: 'stilted shore',
+    type: "thoughtform",
+    image: "/img/local/ocean/island.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection';'symbolic'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the stage for our θthree-eyed performance'</span>`,
+})
+
+createEntity({
+    name: 'the embassy',
+    type: "thoughtform",
+    image: "/img/textures/corruripple.gif",
+    text: `::SPATIAL THOUGHTFORM
+    ::ERROR::'unprocessable entity'::NON-RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`
+})
+
+if(check('hub__funfriend-ep1fed')) {
+    createEntity({
+        update: true,
+        name: 'the embassy',
+        type: "thoughtform",
+        image: "/img/local/embassy/embassyportal.gif",
+        text: `::SPATIAL THOUGHTFORM
+        ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the performance';'velzie cackles with delight'</span>`,
+        actions: [
+            {
+                name: "enter",
+                exec: ()=> {
+                    moveTo("/local/ocean/embassy/")
+                },
+                showIf: "hub__funfriend-ep1fed"
+            }
+        ]
+    })
+}
+
+env.ocean = {
+    net: () => {
+        switch(env.effectiveNet) {
+            case 2: case 1: 
+                env.bgm.rate(0.5)
+            break
+
+            default: 
+                env.bgm.rate(1)
+            break
+        }
+    }
+}
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

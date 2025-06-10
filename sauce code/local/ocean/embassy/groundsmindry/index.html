@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -364,11 +364,11 @@
 	<div id="content">
 		<style>
     
-    @import url(/css/combat.css?1743609964848047793);
-    @import url(/css/local/embassy.css?1743609964848047793);
-    @import url(/css/local/embassy_global.css?1743609964848047793);
-    @import url(/css/combatGrid.css?1743609964848047793);
-    @import url(/css/local/embassy_groundsmindry.css?1743609964848047793);
+    @import url(/css/combat.css?1748549633917196033);
+    @import url(/css/local/embassy.css?1748549633917196033);
+    @import url(/css/local/embassy_global.css?1748549633917196033);
+    @import url(/css/combatGrid.css?1748549633917196033);
+    @import url(/css/local/embassy_groundsmindry.css?1748549633917196033);
 </style>
 
 <div class="grid-plane">
@@ -396,7 +396,7 @@
     </div>
 </div>
 
-<details id="progjump" class="debugonly">
+<details id="progjump" class="debugonly" style="display: none">
     <summary>progjump menu toggle</summary>
     <button onclick="change('PAGE!!e4prog', 0);changeStage('embassy_relocator');" definition="pre-entrance">(0)</button>
     <button onclick="change('PAGE!!e4prog', 1);changeStage('grm_entry');" definition="post-entrance">(1)</button>
@@ -455,7 +455,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/groundsmindry.gif",
@@ -523,247 +523,7 @@
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					addResources([
-    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
-    "/js/combat/combatActionsJson.js", 
-    "/js/combat/combatActorsJson.js",
-    "/js/combat/combat.js",
-    ["/js/combat/combatGrid.js", ()=> typeof CombatScene == "undefined"],
-    "/js/combat/combatGridScenarios.js",
-    "/js/embassy.js", 
-    "/js/embassy_groundsmindry.js",
-    "/js/embassy_stages_groundsmindry.js",
-    "/js/embassy_groundsmindry_dialogue.js",
-    "/js/combat/combatTileEffects.js",
-])
-
-
-					 
-					//mothchat definition
-					env.dialogues.mthgrmresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        hostiles?<+>hostiles
-            SHOWIF::"ep4__lesser_attack"
-        incoherence?<+>incoherence
-            SHOWIF::"ep4__lesser_attack"
-        meteorite?<+>meteorite
-            SHOWIF::"ep4__h2h"
-        ceremony?<+>ceremony
-            SHOWIF::'ep4__lesser_attack'
-        infection?<+>infection
-            SHOWIF::"ep4__contact"
-        tactical combat?<+>combat
-            SHOWIF::"ep4__lesser_attack"
-        what do you think happened here?<+>thoughts
-            SHOWIF::"ep4__entrancefinal"
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
-`)
-
-env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
-start
-    self
-        i have a question about this
-
-    moth
-        yeah?
-    
-    RESPOBJ::mthgrmresp
-
-loop
-    RESPOBJ::mthgrmresp
-
-ceremony
-    self
-        do you know anything about this ceremony thing
-    
-    moth
-        not really, sorry buddy
-        i think this is the first good look at one we've gotten
-        at least, on the public record...
-        but still, it's fascinating to me how brute-force the process sounds
-        i mean, even the approximate meaning of "ceremony" being used as the structure's name...
-        that's not really something we'd call a scientific process lol
-        anyway, i don't think this is even close to how they'd normally make one
-        on account of the freakish monsters
-    
-    RESPONSES::self
-        right<+>loop
-            FAKEEND::(back)
-
-hostiles
-    self
-        what do you think is going on with these things
-        the hostiles
-        not sure what to call them
-    
-    moth
-        akizet said specters, or illusions...
-        i'd call them monsters
-
-____SHOWIF::"EXEC::check(\`ep4__dull_cavidril-foes\`) || check(\`ep4__spine_miltzaclear\`)"
-    moth
-        but based on what idril said, they're just a part of the ceremony
-        which, i'm still trying to wrap my head around, honestly
-        so the ceremony is a thing in the dull plane,
-        the overlap allows the two planes to interact directly,
-        and that makes the ceremony able to just push its limbs through...
-        ...and vekoa makes them take the shape of golems and people she killed
-        but like, "how" aside, why even take a shape at all?
-        there's too many variables here dude
-        assuming there's a rational explanation in the first place
-        we don't even know if that really was vekoa in charge
-    
-____SHOWIF::[["ep4__dull_cavidril-foes", false], ["ep4__spine_miltzaclear", false]]
-    
-    moth
-        well, they aren't incoherent, despite everything
-        in fact this is one of the clearest memories so far
-        so it's safe to assume they were real, i think...
-        it's pretty clear they have something to do with the ceremony
-        just keep going, maybe we'll see
-        if not... 
-        well, that's yet another unexplained obesk phenomenon to put on the list lol
-
-____END
-    
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-
-incoherence
-    self
-        have you noticed any incoherence at all?
-    
-    moth
-        as crazy as it is... not really
-        my machines are barely picking up anything that matters
-        aside from some occasional visual loss, this is probably the most intact memory we've seen yet
-        even some of the more twisted stuff... 
-        which, i think, means this is a core memory
-        like something akizet was trying really really hard to make sure the cyst would never mess up
-        and i get why
-    
-    RESPONSES::self
-        yeah<+>loop
-            FAKEEND::(back)
-            
-meteorite
-    self
-        what do you make of the meteorite?
-    
-    moth
-        technically, it isn't really new knowledge...
-        like, we already saw akizet confirm it was corrucystic
-        everyone expected that anyway
-        which, you know, on its own, is whatever
-        a weird spooky mystery that's been unsolved forever
-        but the fact that it's apparently <em>so</em> massive,
-        and has been around so long that "drift in the stone" ripped some veins apart,
-        like... how have we never noticed it?
-        you'd think what is essentially a gargantuan metal deposit in the ocean would be easy to find, right?
-        the ocean is only so big... 
-        although, that is still really big
-        aside from that, i really don't know what to think of the broader implications yet
-        i'm not gonna sit here and ramble about potential connections
-        we just have to find more info on it
-        there's no way akizet didn't learn more after this, you know?
-        especially with the connections her friends apparently had
-    
-    RESPONSES::self
-        agreed<+>loop
-            FAKEEND::(back)
-
-infection
-    self
-        have you heard of anything like this infection?
-        the "contact affliction"
-    
-    moth
-        nope
-        and they've clearly done ceremonies to open contrivances before, 
-        they wouldn't be so surprised if this was a known phenomenon related to that
-        based on how their tech works, including qou bodies,
-        it has to be a thought, right? something that tozik picked up from the pod
-        like, think about disablers
-        they work by forcing in the impulse to "disassemble"
-        and we're pretty sure they propagate across the target's entire system, because the whole thing usually melts
-        if thoughts can work like that in corrucysts, like little viruses,
-        maybe we're just seeing the end-result of that vulnerability
-
-    RESPONSES::self
-        maybe<+>loop
-            FAKEEND::(back)
-
-combat
-    self
-        this tactical combat thing is cool
-        why wasn't it the default
-    
-____SHOWIF::["ep4__entrancefinal", false]
-    moth
-        that's seriously what's on your mind right now?
-        dude. focus
-
-____SHOWIF::"ep4__entrancefinal"
-    moth
-        the framing device has a bunch of bundled structures
-        there's probably a ton we haven't and won't ever see
-        it just uses whatever fits
-        if you're really that into these, i can connect you with my contact
-        just don't rat me out
-     
-____END
-    
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-
-thoughts
-    self
-        everything seen
-        what do you think actually happened here?
-    
-    moth
-        well
-        from what we've seen, my guess is that it all had to do with that infection
-        the contact affliction, or whatever
-        i think vekoa must be like, patient zero
-        she got something that totally took over while she was in the core
-        the attack signals were probably like, vekoa trying to spread it
-        that would explain everything else, right?
-        the golems, the non-golems, probably the husks somehow
-        although, that kinda breaks down when we get to the "illusions"
-        and the polygonation spires across the world breaking down...
-        shit, i wasn't considering the other failures that happened at the same time
-        not really sure about that stuff
-        my gut just says this infection plays a huge part
-        and i really, really don't think any obesk would just doom a huge portion of the qou population to keep a secret
-        even one as big as the meteorite
-    
-    RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
-`)
-					
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -1243,6 +1003,246 @@ thoughts
 						
 					
 					
+					//dynamically inserted
+					
+					addResources([
+    ["/js/objectives.js", ()=> typeof Objective == "undefined"], 
+    "/js/combat/combatActionsJson.js", 
+    "/js/combat/combatActorsJson.js",
+    "/js/combat/combat.js",
+    ["/js/combat/combatGrid.js", ()=> typeof CombatScene == "undefined"],
+    "/js/combat/combatGridScenarios.js",
+    "/js/embassy.js", 
+    "/js/embassy_groundsmindry.js",
+    "/js/embassy_stages_groundsmindry.js",
+    "/js/embassy_groundsmindry_dialogue.js",
+    "/js/combat/combatTileEffects.js",
+])
+
+
+					 
+					//mothchat definition
+					env.dialogues.mthgrmresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        hostiles?<+>hostiles
+            SHOWIF::"ep4__lesser_attack"
+        incoherence?<+>incoherence
+            SHOWIF::"ep4__lesser_attack"
+        meteorite?<+>meteorite
+            SHOWIF::"ep4__h2h"
+        ceremony?<+>ceremony
+            SHOWIF::'ep4__lesser_attack'
+        infection?<+>infection
+            SHOWIF::"ep4__contact"
+        tactical combat?<+>combat
+            SHOWIF::"ep4__lesser_attack"
+        what do you think happened here?<+>thoughts
+            SHOWIF::"ep4__entrancefinal"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        i have a question about this
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthgrmresp
+
+loop
+    RESPOBJ::mthgrmresp
+
+ceremony
+    self
+        do you know anything about this ceremony thing
+    
+    moth
+        not really, sorry buddy
+        i think this is the first good look at one we've gotten
+        at least, on the public record...
+        but still, it's fascinating to me how brute-force the process sounds
+        i mean, even the approximate meaning of "ceremony" being used as the structure's name...
+        that's not really something we'd call a scientific process lol
+        anyway, i don't think this is even close to how they'd normally make one
+        on account of the freakish monsters
+    
+    RESPONSES::self
+        right<+>loop
+            FAKEEND::(back)
+
+hostiles
+    self
+        what do you think is going on with these things
+        the hostiles
+        not sure what to call them
+    
+    moth
+        akizet said specters, or illusions...
+        i'd call them monsters
+
+____SHOWIF::"EXEC::check(\`ep4__dull_cavidril-foes\`) || check(\`ep4__spine_miltzaclear\`)"
+    moth
+        but based on what idril said, they're just a part of the ceremony
+        which, i'm still trying to wrap my head around, honestly
+        so the ceremony is a thing in the dull plane,
+        the overlap allows the two planes to interact directly,
+        and that makes the ceremony able to just push its limbs through...
+        ...and vekoa makes them take the shape of golems and people she killed
+        but like, "how" aside, why even take a shape at all?
+        there's too many variables here dude
+        assuming there's a rational explanation in the first place
+        we don't even know if that really was vekoa in charge
+    
+____SHOWIF::[["ep4__dull_cavidril-foes", false], ["ep4__spine_miltzaclear", false]]
+    
+    moth
+        well, they aren't incoherent, despite everything
+        in fact this is one of the clearest memories so far
+        so it's safe to assume they were real, i think...
+        it's pretty clear they have something to do with the ceremony
+        just keep going, maybe we'll see
+        if not... 
+        well, that's yet another unexplained obesk phenomenon to put on the list lol
+
+____END
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+incoherence
+    self
+        have you noticed any incoherence at all?
+    
+    moth
+        as crazy as it is... not really
+        my machines are barely picking up anything that matters
+        aside from some occasional visual loss, this is probably the most intact memory we've seen yet
+        even some of the more twisted stuff... 
+        which, i think, means this is a core memory
+        like something akizet was trying really really hard to make sure the cyst would never mess up
+        and i get why
+    
+    RESPONSES::self
+        yeah<+>loop
+            FAKEEND::(back)
+            
+meteorite
+    self
+        what do you make of the meteorite?
+    
+    moth
+        technically, it isn't really new knowledge...
+        like, we already saw akizet confirm it was corrucystic
+        everyone expected that anyway
+        which, you know, on its own, is whatever
+        a weird spooky mystery that's been unsolved forever
+        but the fact that it's apparently <em>so</em> massive,
+        and has been around so long that "drift in the stone" ripped some veins apart,
+        like... how have we never noticed it?
+        you'd think what is essentially a gargantuan metal deposit in the ocean would be easy to find, right?
+        the ocean is only so big... 
+        although, that is still really big
+        aside from that, i really don't know what to think of the broader implications yet
+        i'm not gonna sit here and ramble about potential connections
+        we just have to find more info on it
+        there's no way akizet didn't learn more after this, you know?
+        especially with the connections her friends apparently had
+    
+    RESPONSES::self
+        agreed<+>loop
+            FAKEEND::(back)
+
+infection
+    self
+        have you heard of anything like this infection?
+        the "contact affliction"
+    
+    moth
+        nope
+        and they've clearly done ceremonies to open contrivances before, 
+        they wouldn't be so surprised if this was a known phenomenon related to that
+        based on how their tech works, including qou bodies,
+        it has to be a thought, right? something that tozik picked up from the pod
+        like, think about disablers
+        they work by forcing in the impulse to "disassemble"
+        and we're pretty sure they propagate across the target's entire system, because the whole thing usually melts
+        if thoughts can work like that in corrucysts, like little viruses,
+        maybe we're just seeing the end-result of that vulnerability
+
+    RESPONSES::self
+        maybe<+>loop
+            FAKEEND::(back)
+
+combat
+    self
+        this tactical combat thing is cool
+        why wasn't it the default
+    
+____SHOWIF::["ep4__entrancefinal", false]
+    moth
+        that's seriously what's on your mind right now?
+        dude. focus
+
+____SHOWIF::"ep4__entrancefinal"
+    moth
+        the framing device has a bunch of bundled structures
+        there's probably a ton we haven't and won't ever see
+        it just uses whatever fits
+        if you're really that into these, i can connect you with my contact
+        just don't rat me out
+     
+____END
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
+thoughts
+    self
+        everything seen
+        what do you think actually happened here?
+    
+    moth
+        well
+        from what we've seen, my guess is that it all had to do with that infection
+        the contact affliction, or whatever
+        i think vekoa must be like, patient zero
+        she got something that totally took over while she was in the core
+        the attack signals were probably like, vekoa trying to spread it
+        that would explain everything else, right?
+        the golems, the non-golems, probably the husks somehow
+        although, that kinda breaks down when we get to the "illusions"
+        and the polygonation spires across the world breaking down...
+        shit, i wasn't considering the other failures that happened at the same time
+        not really sure about that stuff
+        my gut just says this infection plays a huge part
+        and i really, really don't think any obesk would just doom a huge portion of the qou population to keep a secret
+        even one as big as the meteorite
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)

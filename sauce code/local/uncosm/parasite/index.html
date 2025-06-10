@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1743609964848047793"></script>	
-	<script src="/js/dialogue.js?1743609964848047793"></script>	
-	<script src="/js/globalents.js?1743609964848047793"></script>	
-	<script src="/js/cystStage.js?1743609964848047793"></script>
-	<script src="/js/buddy.js?1743609964848047793"></script>
-	<script src="/js/vn2.js?1743609964848047793"></script>
-	<script defer src="/js/saves.js?1743609964848047793"></script>
+	<script src="/js/corru.js?1748549633917196033"></script>	
+	<script src="/js/dialogue.js?1748549633917196033"></script>	
+	<script src="/js/globalents.js?1748549633917196033"></script>	
+	<script src="/js/cystStage.js?1748549633917196033"></script>
+	<script src="/js/buddy.js?1748549633917196033"></script>
+	<script src="/js/vn2.js?1748549633917196033"></script>
+	<script defer src="/js/saves.js?1748549633917196033"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1743609964848047793'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1743609964848047793'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1748549633917196033'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1748549633917196033'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1743609964</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1748549633</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -402,7 +402,7 @@ body.in-menu #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1743609964848047793,
+				cacheval: 1748549633917196033,
 
 				
 				image: "/img/socials/where.gif",
@@ -437,120 +437,7 @@ body.in-menu #content {
 					
 
 					updatePreferenceAttributes()
-
-					//dynamically inserted
 					
-					page.bgm.rate(0.5)
-
-env.dialogueActors["stupid"] = {
-    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval1.gif',
-    voice: ()=>play('talkcore', 2),
-    player: true
-}
-
-env.dialogueActors["elder"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval6.gif',
-    voice: ()=>play('talkcore', 0.85)
-}
-
-env.dialogueActors["guard"] = {
-    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
-    image: '/img/sprites/obesk/larval/larval4.gif',
-    voice: ()=>play('talkcore', 1.25)
-}
-
-if(check("ep1_fed") == "container") {
-    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
-    env.dialogueActors["elder"].image = '/img/sprites/obesk/larval/larval6h.gif'
-}
-    
-env.dialogues["parasite"] = generateDialogueObject(`
-start
-    sys
-        NOTICE::'memory stream located'
-
-    sourceless
-        ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA
-        THE SMELL OF A ONCE-RADIANT VEILK CORPSE... I STILL MUST GET USED TO IT
-        WITH THE TIME THAT HAS PASSED, ITS BONES ARE STARTING TO POKE OUT THROUGH ITS FLESH, AND SOON CAN BE HARVESTED
-        BUT NOW IS THE SEASON OF FRUIT, AND SO THE AIR IS THICK AND RANCID
-        OUR STEPS MEET THE FLESHENED GROUND WITH VILE NOISES, AND THE CAVERNGUARD'S RECEPTORS TWITCH WITH EACH ONE
-        HAHAHA!! HE IS FAR TOO ACCUSTOMED TO HIS HIGH-THREAT DUTIES
-        I HEFT THE HARVEST-BASKET AND TURN AROUND TO SPEAK ALOUD TO HIM, CONTINUING TO FOLLOW ██████ BACKWARDS
-    
-    stupid
-        relax!
-        the hard part is over
-    
-    sourceless
-        HIS RECEPTORS POINT BACK IN DISAPPROVAL OF MY VOLUME
-        IN HIS SURFACE VOICE, HE MURMURS BACK
-
-    guard
-        keep your eyes ahead
-
-    sourceless
-        DESPITE IT ALL, THERE IS A SENSE OF JOY IN ██████'s BRANCHED RECEPTORS, AND HE LAUGHS QUIETLY
-        I DO NOT MIND ESCORTING THESE ZEVAZNI-ENABLED ELDERS THROUGH SURFACE DUTIES
-        THEIR FOUNDRIES HAVE BEEN PUTTING OUT TRULY REMARKABLE DEVICES - LIMB REPLACEMENTS, VALIKA-CONNECTED CYSTS... 
-        I AM SURE ██████ COULD HOLD HIS OWN NOW, EVEN IF A PREDATOR HAPPENED TO FIND US
-        I HEAR HIM MURMUR THROUGH THE DULLVOICE AS HE TAKES A DEEP BREATH,
-
-    elder
-        ah... this brings back memories
-        i never thought i would get to see it for myself again
-        or smell it, though i do not miss that part quite as much... haha!!
-        those gaze-guided θjut...
-        ah! there!
-                                
-    sourceless
-        HIS AIMA CYSTS CONVERGE THEIR EYES UPON A GLOWING CREVICE WITHIN THE VEILK CARCASS
-        WE STOP IN UNISON, AND THE CAVERNGUARD NEARLY STEPS FORWARD, BUT I STOP HIM, HALF-TURNING
-        HE GLARES AT ME, BUT UNDERSTANDS - THIS IS ██████'s FUN, NOT OURS
-        ██████'s VALIKA-BORNE CYSTS TARGET THE CREATURE AS HE TAKES SLOW, CAREFUL STEPS FORWARD
-        HIS STEPS ARE SO SILENT, EVEN IN THE VEILK-ROTTED SOIL... I WISH I COULD DO THAT!!
-        ONCE THE AIMA CYSTS OF HIS VALIKA GLOW WITH CONFIRMATION, THE CENTRAL ONE RELEASES A PULSE OF GRAY LIGHT
-        WHEN OUR EYES RECOVER, THE VEILK LIMB IS CLEAVED OPEN, REVEALING THE GLOWING FRUITS OF A CELKI
-
-    elder
-        hahahaha! with not even a lift of my claw!
-        this one is fully ripe, it will not be fighting us
-        another one for the basket
-
-    guard
-        i will get it
-
-    sourceless
-        ██████'s SON REACHES IN AND GRASPS THE CELKI AT ITS BASE
-        AND WITH HIS OTHER HAND, GRIPS A SMALL CUTTER TO QUICKLY AND CLEANLY CUT IT FREE FROM ITS FEEDING POINT
-        THE BULBOUS FRUIT SQUIRMS SLIGHTLY, BUT IS TOO FATTENED TO DO ANYTHING
-        SO IT IS TOSSED INTO THE BASKET EASILY, AND WE CONTINUE ON...
-        
-    sys
-        NOTICE::'memory stream terminated'
-
-    RESPONSES::sys
-        return<+>END
-            EXEC::moveTo("/local/depths/")
-`)
-
-
-					
-
-					
-						document.querySelector('body').classList.remove('nomoth')
-					
-
-					if(firstLoad || env.waitOnLoad) {
-						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
-						body.setAttribute('state', 'corru-loaded')
-					} else {
-						page.onEnter()
-						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
-					}
-
 					// global defs
 					
 					
@@ -726,7 +613,7 @@ start
 						
 							
 							
-							env.definitions[`██████`] = { type: `ERROR`, text: `'missing entity'`};
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -744,6 +631,119 @@ start
 						
 					
 					
+					//dynamically inserted
+					
+					page.bgm.rate(0.5)
+
+env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["elder"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval6.gif',
+    voice: ()=>play('talkcore', 0.85)
+}
+
+env.dialogueActors["guard"] = {
+    type: "thoughtform portrait-contain portrait-darkripple obesk larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval4.gif',
+    voice: ()=>play('talkcore', 1.25)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["elder"].image = '/img/sprites/obesk/larval/larval6h.gif'
+}
+    
+env.dialogues["parasite"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        θ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA
+        THE SMELL OF A ONCE-RADIANT VEILK CORPSE... I STILL MUST GET USED TO IT
+        WITH THE TIME THAT HAS PASSED, ITS BONES ARE STARTING TO POKE OUT THROUGH ITS FLESH, AND SOON CAN BE HARVESTED
+        BUT NOW IS THE SEASON OF FRUIT, AND SO THE AIR IS THICK AND RANCID
+        OUR STEPS MEET THE FLESHENED GROUND WITH VILE NOISES, AND THE CAVERNGUARD'S RECEPTORS TWITCH WITH EACH ONE
+        HAHAHA!! HE IS FAR TOO ACCUSTOMED TO HIS HIGH-THREAT DUTIES
+        I HEFT THE HARVEST-BASKET AND TURN AROUND TO SPEAK ALOUD TO HIM, CONTINUING TO FOLLOW θ██████ BACKWARDS
+    
+    stupid
+        relax!
+        the hard part is over
+    
+    sourceless
+        HIS RECEPTORS POINT BACK IN DISAPPROVAL OF MY VOLUME
+        IN HIS SURFACE VOICE, HE MURMURS BACK
+
+    guard
+        keep your eyes ahead
+
+    sourceless
+        DESPITE IT ALL, THERE IS A SENSE OF JOY IN θ██████'s BRANCHED RECEPTORS, AND HE LAUGHS QUIETLY
+        I DO NOT HOLD CONFLICT WITH ESCORTING THESE ZEVAZNI-ENABLED ELDERS THROUGH SURFACE DUTIES
+        THEIR FOUNDRIES HAVE BEEN PUTTING OUT TRULY REMARKABLE DEVICES - LIMB REPLACEMENTS, VALIKA-CONNECTED CYSTS... 
+        I AM SURE θ██████ COULD HOLD HIS OWN NOW, EVEN IF A PREDATOR HAPPENED TO FIND US
+        I HEAR HIM MURMUR THROUGH THE DULLVOICE AS HE TAKES A DEEP BREATH,
+
+    elder
+        ah... this brings back memories
+        i never thought i would get to see it for myself again
+        or smell it, though i do not miss that part quite as much... haha!!
+        those gaze-guided θjut...
+        ah! there!
+                                
+    sourceless
+        HIS AIMA CYSTS CONVERGE THEIR EYES UPON A GLOWING CREVICE WITHIN THE VEILK CARCASS
+        WE STOP IN UNISON, AND THE CAVERNGUARD NEARLY STEPS FORWARD, BUT I STOP HIM, HALF-TURNING
+        HE GLARES AT ME, BUT UNDERSTANDS - THIS IS θ██████'s FUN, NOT OURS
+        θ██████'s VALIKA-BORNE CYSTS TARGET THE CREATURE AS HE TAKES SLOW, CAREFUL STEPS FORWARD
+        HIS STEPS ARE SO SILENT, EVEN IN THE VEILK-ROTTED SOIL... I WISH I COULD DO THAT!!
+        ONCE THE AIMA CYSTS OF HIS VALIKA GLOW WITH CONFIRMATION, THE CENTRAL ONE RELEASES A PULSE OF GRAY LIGHT
+        WHEN OUR EYES RECOVER, THE VEILK LIMB IS CLEAVED OPEN, REVEALING THE GLOWING FRUITS OF A CELKI
+
+    elder
+        hahahaha! with not even a lift of my claw!
+        this one is fully ripe, it will not be fighting us
+        another one for the basket
+
+    guard
+        i will get it
+
+    sourceless
+        θ██████'s SON REACHES IN AND GRASPS THE CELKI AT ITS BASE
+        AND WITH HIS OTHER HAND, GRIPS A SMALL CUTTER TO QUICKLY AND CLEANLY CUT IT FREE FROM ITS FEEDING POINT
+        THE BULBOUS FRUIT SQUIRMS SLIGHTLY, BUT IS TOO FATTENED TO DO ANYTHING
+        SO IT IS TOSSED INTO THE BASKET EASILY, AND WE CONTINUE ON...
+        
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
 					console.log('rendering buddies!')
 					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
