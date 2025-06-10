@@ -760,10 +760,9 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 
         cor_ru.updateResources();
 
-        cor_ru.stepKeyImplement();
-
-        cor_ru.processWeirdTranslation(".loose-thought", "text")
-        if (page.dialoguePrefix != "localuncosm") processTranslation(document.querySelector("#content"), true); // i dont like when it randomly skips stuff so we are double checking it ig. also for whatever reason this just kills uncosm dead. try running the command in your console youd get a black hole
+        // cor_ru.stepKeyImplement();
+        
+        // nvm i think iy breaks everything
 
         console.log("%cpage observed! - @cor-RU", cor_ru.fancy.observed);
     }),
