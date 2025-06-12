@@ -1,10 +1,5 @@
 env.localization.page['embassy'] = {dialogues: {},
     definitions: {
-        "времядержец": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
-        "времядержца": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
-        "времядержце": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
-        "времядержцем": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
-        "времядержцу": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного контекста`},
 
         "θsegment": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
 
@@ -20,8 +15,6 @@ env.localization.page['embassy'] = {dialogues: {},
 
         "spirestorm": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'weather phenomena';'ceaseless violent storm surrounding natural spire'` },
 
-
-        "celki": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk parasite';'food'` },
 
         "corroyi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'` },
 
@@ -58,8 +51,6 @@ env.localization.page['embassy'] = {dialogues: {},
         "how beholds you": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'religious implication';'how does velzie's gaze behold you'` },
 
         "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
-
-        "kalstik": { type: `TRANSLATION FAILED`, text: `CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL`},
 
         "life-pod": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
     }, 
@@ -169,6 +160,7 @@ env.localization.page['embassy'] = {dialogues: {},
         // collapse part 1
     }, 
     entityDescriptions: {
+        // recollections
                 "recollection::Aæ§<äYf¹L": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
@@ -189,6 +181,7 @@ env.localization.page['embassy'] = {dialogues: {},
     ::ПРИМЕЧАНИЕ::<span style="color:var(--bright-color)">'будет доступна возможность сохранения и повторного просмотра итерации'</span>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вот бы он прислушался'</span>`,
 
+    // main obesk
                 "akizetesche": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
@@ -248,12 +241,12 @@ env.localization.page['embassy'] = {dialogues: {},
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
 
-if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
+setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
-}
+}}, 10)
 
 // === DIALOGUES === //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
@@ -1641,7 +1634,7 @@ groundsmind
         КОНЕЧНО!
 
     sourceless
-        ДРОН ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
+        СЛУГА ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
         СИМВОЛ НАШЕГО ЗЕМЛЕМЫСЛЬЦА ОБРАЗУЕТСЯ НА ЕГО ЛИЦЕВОЙ ПАНЕЛИ
             EXEC::content.classList.add('groundsminded')
         
@@ -1689,7 +1682,7 @@ leave
         простимся
     
     sourceless
-        ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
+        СЛУГА ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
@@ -2317,7 +2310,7 @@ start
     
 personnel
     sourceless
-        ПУСТЬ ДРОН И БЕЗЛИК...
+        ПУСТЬ СЛУГА И БЕЗЛИК...
         ПРОСТОЕ ЭХО, НАБЛЮДАЮЩЕЕ ЗА ПРОИСХОДЯЩИМ, ВСЁ ЖЕ МОГЛО ЧТО-ТО УВИДЕТЬ
     
     akizet
@@ -2349,7 +2342,7 @@ groundsmind
         землемысльца, пожалуйста
 
     sourceless
-        ДРОН ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
+        СЛУГА ВЫПРЯМЛЯЕТСЯ, И ПО ЕГО КОЖЕ ПРОБЕГАЕТ СОЕДИНИТЕЛЬНАЯ РЯБЬ
         СИМВОЛ НАШЕГО ЗЕМЛЕМЫСЛЬЦА ОБРАЗУЕТСЯ НА ЕГО ЛИЦЕВОЙ ПАНЕЛИ
             EXEC::content.classList.add('groundsminded')
     
@@ -2423,7 +2416,7 @@ leave
         простимся
     
     sourceless
-        ДРОН ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
+        СЛУГА ОТКЛЮЧАЕТСЯ ОТ ЗЕМЛЕМЫСЛЬЦА И СНОВА ЗАМИРАЕТ
             EXEC::content.classList.remove('groundsminded')
     
     RESPONSES::akizet
@@ -2492,7 +2485,7 @@ cyst
         очнувшись после омоложения, я обнаружила её на своём столе!
     
     cavik
-        huh! нет, не я!
+        о! нет, не я!
         а что на ней было?
     
     sourceless
@@ -2564,44 +2557,44 @@ cyst
 env.localization.page['embassy'].dialogues["d2_gakvuresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        cyst in my room<+>cyst
+        циста в моей комнате<+>cyst
             EXEC::env.embassy.d2progress('gakvu')
-        how is it going<+>how
-        goodbye for now<+>bye
-            FAKEEND::(leave)
+        как твои дела<+>how
+        простимся на сейчас<+>bye
+            FAKEEND::(уйти)
 `)
 env.localization.page['embassy'].dialogues["d2_gakvu"] = generateDialogueObject(` 
 start
     sourceless
-        GAKVU SLOUCHES BEFORE A COMMUNAL CYST, CONNECTED BY A RECEPTOR
+        ГАКВУ РАЗВАЛИЛАСЬ ПЕРЕД ОБЩЕСТВЕННОЙ ЦИСТОЙ, ПОДКЛЮЧЕННАЯ РЕЦЕПТОРОМ
             EXEC::pauseSwapCam(true)
-        AS I APPROACH, THE CHAIR ACROSS FROM HER SCUTTLES OUTWARDS FOR ME TO SIT
-        THE CLICK OF ITS LITTLE LEGS AGAINST THE GLASSY FLOOR DRAWS GAKVU'S ATTENTION OUT OF HER CONNECTION
+        ПРИ МОЁМ ПРИБЛИЖЕНИИ КРЕСЛО НАПРОТИВ НЕЁ ВЫДВИГАЕТСЯ, ЧТОБЫ Я МОГЛА СЕСТЬ
+        ЩЁЛКАНЬЕ ЕГО МАЛЕНЬКИХ НОЖЕК ПО СТЕКЛЯННОМУ ПОЛУ ВЫМАНИВАЕТ ГАКВУ ИЗ ЕЁ СОЕДИНЕНИЯ
     
     gakvu
-        oh, akizet! come, sit!
+        о, акизет! садись, садись!
 
     akizet
-        i am not interrupting anything, am i?
+        я ведь ничего не прерываю, так ведь?
             EXEC::specialCam("gakvusit")
     
     gakvu
-        not right now, just browsing environments
-        i tire of mine
-        the surface is exhilarating and terrifying, yes, but...
-        you can only die so many times before it is boring!
+        не прямо сейчас, просто просматриваю среды
+        мне надоедают собственные
+        поверхность захватывающа и пугающа, да, но...
+        умереть можно только столько раз, пока это не наскучит!
     
     RESPOBJ::d2_gakvuresp
 
 how
     akizet
-        gakvu,
+        гакву,
         how beholds you?
     
     sourceless
-        A HARMLESS, COMMON QUESTION
-        BUT I HAVE POSED IT SUCH THAT SHE KNOWS WHAT I MEAN
-        SHE KIND OF LAUGHS, A CYNICAL DISAPPOINTMENT IN HER TONE
+        БЕЗОБИДНЫЙ, БАНАЛЬНЫЙ ВОПРОС
+        НО Я ПОСТАВИЛА ЕГО ТАК, ЧТОБЫ ОНА УЛОВИЛА, О ЧЁМ Я
+        ОНА ВРОДЕ КАК ПОСМЕИВАЕТСЯ, В ЕЁ ТОНЕ - ЦИНИЧНОЕ РАЗОЧАРОВАНИЕ
     
     gakvu
         well, my work is for nothing
@@ -2649,8 +2642,8 @@ how
         BUT SHE EVENTUALLY RESPONDS, TEASING ME
     
     gakvu
-        do you think every wall is a lie before you touch it?
-        sometimes things are as simple as they seem
+        для тебя каждая стена - ложь, пока ты до её не коснёшься?
+        порой всё так просто, как кажется
         velzie is not out to get you
         anyway, i do not really care
         i am fine with me and tozik continuing pattern identification
@@ -2660,82 +2653,82 @@ how
     
 cyst
     akizet
-        gakvu, did you happen to have a cyst self-deliver to my room recently?
+        гакву, ты недавно не отправляла никакие цисты на самодоставку ко мне в комнату?
     
     gakvu
-        huh?
+        а?
     
     sourceless
-        GAKVU'S ATTENTION IS DRAWN FULLY OUTWARDS, TOWARDS ME, WITH A WORRIED STARE
-        AN UNCOMMON SIGHT, ONE THAT CATCHES ME OFF-GUARD
-        SHE SEES MY SURPRISE CLEARLY FOR AN INSTANT
-        FUNFRIEND - ASSUME MOTOR CONTROL. LOOK NORMAL
+        ВНИМАНИЕ ГАКВУ ВСЕЦЕЛО БРОСАЕТСЯ НАРУЖУ, НА МЕНЯ, С ВСТРЕВОЖЕННЫМ ВЗГЛЯДОМ
+        РЕДКОЕ ЗРЕЛИЩЕ, ТО, ЧТО ЗАСТАЁТ МЕНЯ ВРАСПЛОХ
+        НА МГНОВЕНИЕ ОНА ЧЁТКО ВИДИТ МОЁ УДИВЛЕНИЕ
+        РАЗВЛЕДРУГ - ПРИМИ НА СЕБЯ ДВИГАТЕЛЬНЫЙ КОНТРОЛЬ. ВЕДЁМ СЕБЯ НОРМАЛЬНО
     
     funfriend
-        OK!
-        SHE WILL NOT SUSPECT A THING!
+        ОКЕЙ!
+        ОНА НИ О ЧЁМ НЕ ДОГАДАЕТСЯ!
 
     gakvu
-        no. what was it?
-        when did it arrive?
+        нет. что за циста?
+        когда её доставили?
 
     akizet
-        ah, it was an... archival cyst, it appeared sometime during my rejuvenation
-        it was on secri hunting habits
-        i had given it to someone a while back... but i could not remember who
-        and there it was! sitting on my table
-        i thought, perhaps it was you--given your preoccupation with the surface
+        а, это была... архивная циста, доставили где-то во время моего омоложения
+        по охотничьим привычкам секри
+        некоторое время назад я её кому-то отдала... но не помню, кому
+        и вдруг вот и она! лежит на моём столе
+        я подумала, может, это была ты--учитывая твою увлечённость поверхностью
     
     sourceless
-        DOES IT LOOK LIKE SHE SUSPECTS SOMETHING?
+        ВЫГЛЯДИТ, БУДТО ОНА ЧТО-ТО ПОДОЗРЕВАЕТ?
     
     funfriend
-        NO - SHE ALWAYS LOOKS LIKE THAT
+        НЕТ - ОНА ВСЕГДА ТАК ВЫГЛЯДИТ
 
     gakvu
-        oh, no no.
-        huh... self-delivered
-        someone on the team would have just given it to you in-person
-        that is very, very strange
+        о, нет-нет.
+        ха... самодоставка
+        кто-нибудь из команды просто отдал бы её тебе лично
+        очень, очень странно
     
     sourceless
-        THAT IS MOST CERTAINLY CONCERN IN HER VOICE
+        В ЕЁ ГОЛОСЕ НАИБОЛЕЕ ТОЧНО ЗВУЧИТ ТРЕВОГА
     
     akizet
-        haha yes maybe it is a little strange hehe
-        but it was just my secri cyst
+        хаха да может быть и немного странно хехе
+        но это была всего лишь моя циста по секри
     
     gakvu
-        if i remember correctly, you are deathly afraid of them, right?
-        why would you have that?
+        если память меня не подводит, ты ведь их до смерти боишься, нет?
+        зачем тебе она?
         recreational terror?
     
     funfriend
-        OK SHE ACTUALLY PROBABLY THINKS YOU ARE LYING NOW
+        ОКЕЙ ОНА НАВЕРНЯКА ТЕПЕРЬ ДУМАЕТ ЧТО ВЫ ВРЁТЕ
     
     sourceless
-        BEHOLD, MY REDIRECTION:
+        УЗРИ, МОЁ ПЕРЕНАПРАВЛЕНИЕ:
     
     akizet
-        shut up!!
-        it is no different from your false environments!
+        заткнись!!
+        это ничем не отличается от твоих ложных сред!
 
     sourceless
-        SHE LAUGHS QUIETLY, HAVING NO DEFENSE
-        AND NOTHING MORE TO ADD ON THE MATTER, IT SEEMS
+        ОНА ТИХО СМЕЁТСЯ, НЕ НАХОДЯ ЗАЩИТЫ
+        И, ПОХОЖЕ, ИДЕЙ ДЛЯ ПРОДОЛЖЕНИЯ ТЕМЫ
 
     RESPOBJ::d2_gakvuresp
 
 bye
     akizet
-        i should be going
-        goodbye for now, my friend
+        мне пора идти
+        простимся на сейчас, моя подруга
     
     sourceless
-        GAKVU WAVES HER FREE RECEPTOR ABSENTLY
+        ГАКВУ ОТСТРАНЁННО МАШЕТ СВОБОДНЫМ РЕЦЕПТОРОМ
     
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
             EXEC::pauseSwapCam(false)
 
 END::specialCam(false)
@@ -2744,189 +2737,189 @@ END::specialCam(false)
 env.localization.page['embassy'].dialogues["d2_tozikresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        the cyst<+>cyst
+        та циста<+>cyst
             EXEC::env.embassy.d2progress('tozik')
-        your thoughts<+>thoughts
-        fare well for now<+>bye
+        твои мысли<+>thoughts
+        простимся на сейчас<+>bye
             EXEC::vn.done()
-            FAKEEND::(leave)
+            FAKEEND::(уйти)
 `)
 env.localization.page['embassy'].dialogues["d2_tozik"] = generateDialogueObject(` 
 start
     sourceless
-        TOZIK STANDS NEAR THE ORANGE BAR, GRASPING A TASTE SIMULACRUM
+        ТОЗИК СТОИТ ВОЗЛЕ АПЕЛЬСИНОВОГО БАРА, ДЕРЖА В РУКЕ ВКУСОВОЙ СИМУЛЯКР
             EXEC::pauseSwapCam(true)
-        AN ODD HABIT... I COULD NEVER QUITE CONNECT WITH IT
-        HIS ATTENTION IS INWARD, YET I SEE NO EXTERNAL CYST CONNECTED
-        LOST IN THOUGHT, PERHAPS
+        СТРАННАЯ ПРИВЫЧКА... У МЕНЯ НИКОГДА НЕ ПОЛУЧАЛОСЬ ДО КОНЦА ЕЁ ПОНЯТЬ
+        ЕГО ВНИМАНИЕ ОБРАЩЕНО ВНУТРЬ, ВОТ ТОЛЬКО Я НЕ ВИЖУ НИКАКИХ ПОДКЛЮЧЁННЫХ ЦИСТ
+        ПОГРУЖЁН В МЫСЛИ, БЫТЬ МОЖЕТ
 
     akizet
-        hello tozik
+        привет тозик
 
     sourceless
-        HE LOOKS AT ME AND TWISTS A STOUT RECEPTOR IN A SHORT GREETING
+        ОН СМОТРИТ НА МЕНЯ И СКРУЧИВАЕТ РЕЦЕПТОР В КРАТКОМ ПРИВЕТСТВИИ
             EXEC::vnp({hideStage: true, tozik: "show"})
     
     tozik
-        do you need something?
+        тебе что-то нужно?
     
     RESPOBJ::d2_tozikresp
 
 thoughts
     akizet
-        you seem troubled
-        as do we all, i suppose...
-        but is something specific on your mind?
+        тебя, кажется, что-то беспокоит
+        как и всех нас, полагаю...
+        но есть ли у тебя на уме что-то конкретное?
     
     sourceless
-        A SOMEWHAT POINTED QUESTION...
-        BUT IF HE HAD INVOLVEMENT WITH THE CYST, SURELY HE WOULD FLINCH
+        НЕСКОЛЬКО КАВЕРЗНЫЙ ВОПРОС...
+        НО ЕСЛИ ОН ПРИЧАСТЕН К ЦИСТЕ, ТО НАВЕРНЯКА ДОЛЖЕН ВЗДРОГНУТЬ
         ...
-        AND... HE MERELY SIPS FROM THE BRIGHT SIMULACRUM
-        IN THE SUBTLE MOVEMENTS OF HIS RECEPTORS, I SEE DISINTEREST
-        BUT HE CONTINUES ANYWAY, TROUBLED ENOUGH TO SUSTAIN A RARE CONVERSATION
+        И... ОН ВСЕГО ЛИШЬ ОТПИВАЕТ ИЗ СВЕТЛОГО СИМУЛЯКРА
+        В ЕДВА УЛОВИМЫХ ДВИЖЕНИЯХ ЕГО РЕЦЕПТОРОВ Я ВИЖУ НЕЗАИНТЕРЕСОВАННОСТЬ
+        НО ОН ВСЁ РАВНО ПРОДОЛЖАЕТ, ДОСТАТОЧНО НЕСПОКОЙНЫЙ, ЧТОБЫ ПОДДЕРЖАТЬ РЕДКУЮ БЕСЕДУ
     
     tozik
-        i had been curious... about whether the spike was observed from obeski
-        surely others would have come to the same conclusion as us, there is a following of the call back home
-        so i peered into a number of discussions through the collective...
-        and discussion is rare. they seem to dismiss it as an error, or something to do with the contrivance
+        мне стало любопытно... заметили ли пик в обескии
+        наверняка и другие пришли бы к нашему выводу, на родине имеются последователи зова
+        так что я заглянул в ряд обсуждений через коллектив...
+        и обсуждения редки. его, по всей видимости, отвергают либо как ошибку, либо как что-то связанное с открытием
 
     sourceless
-        HE PAUSES, INCONSPICUOUSLY LOOKING AROUND
-        THE SAME EXPRESSION AS A SURFACE RUNNER AT REST
-        DID HE RECEIVE A MESSAGE TOO?
-        WHEN HE CONTINUES, HE LOWERS HIS VOICE
+        ОН ДЕЛАЕТ ПАУЗУ, НЕПРИМЕТНО ОГЛЯДЫВАЯСЬ ПО СТОРОНАМ
+        ТО ЖЕ ВЫРАЖЕНИЕ, ЧТО И У НАЗЕМНОБЕЖЦА НА ПЕРЕДЫШКЕ
+        ОН ТОЖЕ ПОЛУЧИЛ ТО СООБЩЕНИЕ?
+        ПРОДОЛЖАЯ, ОН ПОНИЖАЕТ ГОЛОС
     
     tozik
-        but the collective has all of our information available, including older records of the call
-        the same ones we used to come to our... theory. in theory.
-        so i checked, and... there is no record of the first spike
-        no... that is incorrect
-        the record exists, but, it is... wrong
-        it is wrong
-        there is no spike in the public version
-        why is there one in ours?
+        но коллектив хранит всю нашу доступную информацию, включая старые записи зова
+        те же самые, по которым мы пришли к нашей... теории... в теории.
+        так что я посмотрел, и... записи первого пика не существует
+        нет... это неверно
+        запись существует, но, она... неправильная
+        она неправильная
+        в публичной версии пика нет
+        откуда же он в нашей?
     
     sourceless
-        HE PAUSES AGAIN, LOOKING DOWN AT HIS TASTE SIMULACRUM
-        I FIND MYSELF UNABLE TO ANSWER - THIS IS A BIZARRE DEVELOPMENT
-        OUR ARCHIVES ARE PRIMARY SOURCES FROM THE VAZNIAN LISTENERS, THE OLDEST OF ALL
-        AND PERHAPS THE MOST RELIABLE
-        WHAT ARE THE ODDS OF A RECORDING ERROR HAPPENING AT THAT EXACT TIME?
-        I NOTICE HIS gaze HAS DRAWN BACK UP TO ME, AND HE IS ENTERTAINED BY MY CONFUSION
+        ОН ВНОВЬ УМОЛКАЕТ, ГЛЯДЯ ВНИЗ НА СВОЙ ВКУСОВОЙ СИМУЛЯКР
+        Я НЕ СПОСОБНА НАЙТИ ОТВЕТ - ЭТО НЕОБЪЯСНИМО СТРАННОЕ РАЗВИТИЕ СОБЫТИЙ
+        НАШИ АРХИВЫ - ПЕРВОИСТОЧНИКИ ВАЗНИЙСКИХ СЛУШАТЕЛЕЙ, СТАРЕЙШИХ ИЗ ВСЕХ
+        И, ПОЖАЛУЙ, САМЫХ НАДЁЖНЫХ
+        КАКОВА ВЕРОЯТНОСТЬ ТОГО, ЧТО ОШИБКА ЗАПИСИ МОГЛА ПРОИЗОЙТИ ИМЕННО В ЭТО ВРЕМЯ?
+        Я ЗАМЕЧАЮ, ЧТО ЕГО ВЗГЛЯД ВЕРНУЛСЯ КО МНЕ, И ЕГО ЗАБАВЛЯЕТ МОЕ НЕДОУМЕНИЕ
     
     tozik
-        you see now
+        теперь ты видишь
 
     akizet
-        i do... that is...
+        да... это...
     
     tozik
-        error or no, there is nothing to do but wait
+        ошибка это или нет, ничего не остается делать, как ждать
 
     sourceless
-        HE PUNCTUATES HIMSELF BY SIPPING AGAIN FROM HIS SIMULACRUM
-        A LOOK AWAY AND WAGGLE OF A RECEPTOR TELLS ME ALL - LET US SPEAK NO MORE OF THIS
+        ОН СТАВИТ ТОЧКУ ОЧЕРЕДНЫМ ГЛОТКОМ СИМУЛЯКРА
+        ОТВЕРНУВШИЙСЯ ВЗГЛЯД И МАНОВЕНИЕ РЕЦЕПТОРА ГОВОРЯТ МНЕ ОБО ВСЁМ - НЕ БУДЕМ БОЛЬШЕ ОБ ЭТОМ
 
     RESPOBJ::d2_tozikresp
     
 cyst
     akizet
-        tozik, did you direct a cyst to my room recently?
-        i found one on my desk after i awoke from rejuvenation
+        тозик, ты не отправлял никаких цист в мою комнату?
+        я нашла одну на своём столе после того, как очнулась от омоложения
     
     tozik
-        no
+        нет
     
     sourceless
-        HIS ANSWER IS STONY, FOCUS REMAINING INWARD, NOT EVEN LOOKING AT ME
-        I RESPECT THAT HE DOES NOT PRY INTO THE MATTER
-        SHOULD I PUSH HIM ON IT?
+        ЕГО ОТВЕТ ВЫХОДИТ КАМЕННЫМ, СОСРЕДОТОЧЕНИЕ - ВСЁ ТАК ЖЕ ВНУТРИ, БЕЗ ЕДИНОГО ВЗГЛЯДА НА МЕНЯ
+        Я УВАЖАЮ, ЧТО ОН НЕ ЛЕЗЕТ В ДЕЛО ДАЛЬШЕ
+        СТОИТ ЛИ МНЕ НАДАВИТЬ?
         
     funfriend
-        THAT COULD BE FATAL AKIZET
-        IF YOU MUST, AT LEAST BE GENTLE ABOUT IT
+        ЭТО МОЖЕТ ОКАЗАТЬСЯ ФАТАЛЬНЫМ АКИЗЕТ
+        ЕСЛИ ВЫ ДОЛЖНЫ, БУДЬТЕ ХОТЯ БЫ ПОМЯГЧЕ
 
     akizet
-        are you sure?
+        ты уверен?
     
     sourceless
-        MY REPEATED QUESTION EARNS HIS OUTWARD ATTENTION
-        HE REGARDS ME WITH SILENCE, BUT SUCH PALPABLE DISINTEREST
-        AFTER AN INSTANT OF GAZING, PERHAPS TO INTUIT WHAT I REALLY MEAN, HE RESPONDS
+        ПОВТОРЕНИЕ ВОПРОСА ДОБЫВАЕТ ЕГО НАРУЖНОЕ ВНИМАНИЕ
+        ОН ВЗИРАЕТ НА МЕНЯ МОЛЧА, НО С ТАКИМ ОЩУТИМЫМ БЕЗРАЗЛИЧИЕМ
+        ПОСЛЕ θмига ВГЛЯДЫВАНИЯ, ВОЗМОЖНО, ДАБЫ ПОНЯТЬ, ЧТО ИМЕННО Я ПОДРАЗУМЕВАЮ, ОН ОТВЕЧАЕТ
     
     tozik
-        yes
+        да
 
     akizet
-        all right
+        хорошо
     
     sourceless
-        WHEN I RELENT, HE RETURNS TO HIS THOUGHTS
-        I DOUBT IT IS HIM... OR IF IT IS, HE TRULY WANTS TO GIVE NO HINTS
+        КОГДА Я ОТСТУПАЮ, ОН ВОЗВРАЩАЕТСЯ К СВОИМ МЫСЛЯМ
+        СОМНЕВАЮСЬ, ЧТО ЭТО ОН... А ЕСЛИ И ДА, ОН ВЗАПРАВДУ НЕ ХОЧЕТ ДАВАТЬ ПОДСКАЗОК
 
     RESPOBJ::d2_tozikresp
 
 bye
     akizet
-        bye tozik!
+        пока тозик!
 
     sourceless
-        HE NODS A RECEPTOR AT ME
+        ОН КИВАЕТ МНЕ РЕЦЕПТОРОМ
     
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
             EXEC::pauseSwapCam(false)
 `)
 
 env.localization.page['embassy'].dialogues["d2_kazkiresp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        the cyst<+>cyst
+        та циста<+>cyst
             EXEC::env.embassy.d2progress('kazki')
-        your creature<+>creature
-        fare well for now<+>bye
+        твоё существо<+>creature
+        простимся на сейчас<+>bye
             EXEC::vn.done()
-            FAKEEND::(leave)
+            FAKEEND::(уйти)
 `)
 env.localization.page['embassy'].dialogues["d2_kazki"] = generateDialogueObject(` 
 start
     sourceless
-        SURPRISINGLY, KAZKI STANDS WITHIN THE VERY SAME RELOCATOR AS ME
+        КАК НИ УДИВИТЕЛЬНО, КАЗКИ ОКАЗЫВАЕТСЯ В ТОМ ЖЕ ПЕРЕМЕСТИТЕЛЕ, ЧТО И Я
             EXEC::pauseSwapCam(true)
-        THE CHANCES OF THIS ARE SLIM, BUT SHE APPEARS TO BE LOITERING, WAITING FOR SOMETHING
-        IS SHE WAITING FOR ME?
-        HELD WITHIN ONE OF HER BRANCHED RECEPTORS IS A COMMUNICATIONS CYST
-        WITH THE OTHER, SHE GIVES ME A KIND GREETING
+        ВЕРОЯТНОСТЬ ПОДОБНОГО МАЛА, И ВСЁ ЖЕ ОНА, ПОХОЖЕ, СТОИТ БЕЗ ДЕЛА И ЧЕГО-ТО ЖДЁТ
+        ЖДЁТ ЛИ ОНА МЕНЯ?
+        ОДИН ИЗ ЕЁ РАЗВЕТВЛЁННЫХ РЕЦЕПТОРОВ ОХВАТЫВАЕТ ЦИСТУ СВЯЗИ
+        А ДРУГОЙ ПОДАЁТ МНЕ ЛЮБЕЗНОЕ ПРИВЕТСТВИЕ
             EXEC::vnp({hideStage: true, kazki: "show"})
     
     kazki
-        hii akizet!
+        привееет акизет!
     
     akizet
-        kazki!
-        this is a surprise--i do not often see you linger in this θsegment
-        what brings you here?
+        казки!
+        как неожиданно--я не часто вижу, чтобы ты задерживалась в этом θсегменте
+        что тебя сюда привело?
     
     kazki
-        ohh, i am waiting for the crew!
-        they are having their little expedition, 
-        and i am headed to the shores to discuss the next polygonation spire... again
-        but!! we are all setting out together
+        ооо, я жду всех остальных!
+        у них своя собственная маленькая экспедиция,
+        а я направляюсь к берегам, чтобы обсудить следующий полигонизационный шпиль... опять
+        но!! отправляемся мы все вместе
     
     akizet
-        ah, of course
+        ах, разумеется
 
     RESPOBJ::d2_kazkiresp
 
 creature
     akizet
-        how is the little creature faring?
+        как поживает твоё маленькое существо?
 
     kazki
-        it is alive!!
-        it does not move very much... but it reacts very quickly to my prodding!
+        он жив!!
+        он много не двигается... но очень быстро реагирует на мои тычки!
         i have been speaking with a contact of mine, a bright cousin
 
     sourceless
@@ -2938,7 +2931,7 @@ creature
         after the bureau construction contact!
 
     sourceless
-        AH--ARTHUR
+        АХ--АРТУР
         A JITTERY ONE...
         IF ONLY I COULD BE THERE WHEN SHE OPENS HER HEAD TO SHOW THE CREATURE WITHIN TO HIM
         WAIT--WHAT WAS THAT SHE SAID?
@@ -2985,107 +2978,107 @@ creature
 
 cyst
     sourceless
-        THIS SHOULD BE EASY
-        KAZKI SIMPLY CANNOT HIDE ANY EMOTION
+        ЭТО БУДЕТ ЛЕГКО
+        КАЗКИ ПОПРОСТУ НЕ СПОСОБНА СКРЫВАТЬ ЭМОЦИИ
 
     akizet
-        kazki, did you have a cyst delivered to my room recently?
+        казки, ты недавно не доставляла в мою комнату никаких цист?
     
     kazki
-        huh? no!
+        а? нет!
 
     sourceless
-        NOTHING... IT IS NOT HER
+        НИЧЕГО... ЭТО НЕ ОНА
 
     kazki
-        i have been so busy coordinating all of this!
-        but i do have a few cysts i need to return to you...
-        what was it?
+        я так занята согласовыванием всего этого!
+        но у меня правда есть пара цист, которые я тебе задолжала...
+        что на ней было?
     
     akizet
-        ah, it was nothing of note, a mundane collection of memories
+        а, ничего особенного, обычная подборка воспоминаний
         
     kazki
-        i can ask around for you!
+        могу поспрашивать за тебя!
     
     sourceless
-        …¤,¿…¶¡Øn
+        …¤,¿…¶¡Øн
 
     funfriend
-        RECOMMENDATION: DEFINITELY STOP THAT NOW
+        РЕКОМЕНДАЦИЯ: ОБЯЗАТЕЛЬНО ПРЕКРАТИТЕ ЭТО СЕЙЧАС ЖЕ
 
     sourceless
-        I HAD NOT CONSIDERED THIS POSSIBILITY...
-        BUT SHE ALWAYS GETS INVOLVED
-        IF WORD SPREADS, THE SPEAKER WILL SUSPECT SOMETHING STRANGE IS HAPPENING
+        Я НЕ УЧЛА ЭТУ ВОЗМОЖНОСТЬ...
+        НО ОНА ЛЮБИТ ПОСТОЯННО ВМЕШИВАТЬСЯ
+        ЕСЛИ ВОЗНИКНУТ СЛУХИ, ОТПРАВИТЕЛЬ ЗАПОДОЗРИТ ЧТО-ТО НЕЛАДНОЕ
 
     akizet
-        ah--no, no no
-        no no, it is all right
+        а--нет, нет нет
+        нет нет, всё в порядке
     
     kazki
-        are you sure??
-        i have my communicator on right now, i could help!
+        ты уверена??
+        на мне мой коммуникатор, я могла бы помочь!
     
     sourceless
-        I WAVE MY RECEPTORS NEGATIVELY WITH PERHAPS TOO MUCH EMPHASIS, AND SHE RELENTS
-        SHE SMILES LIKE A BRIGHT COUSIN WOULD, HER RECEPTORS TAKING ON A TEASING POSTURE
+        Я ОТРИЦАТЕЛЬНО РАЗМАХИВАЮ СВОИМИ РЕЦЕПТОРАМИ, ВОЗМОЖНО, С ИЗЛИШНИМ УПОРОМ, И ОНА СДАЁТСЯ
+        ОНА УЛЫБАЕТСЯ ТОЧНО КАК СВЕТЛЫЙ БЛИЗНЕЦ, ЗАГИБАЯ РЕЦЕПТОРЫ В ДРАЗНЯЩИЙ ВИД
 
     kazki
-        oh, i think i get it
-        it was one of <em>those</em> cysts
+        о, кажись я понимаю
+        это была одна из <em>тех</em> цист
 
     akizet
-        no!! no no no
+        нет!! нет нет нет
 
     kazki
-        uh-huh!!
+        ага!!
 
     funfriend
-        ACTUALLY MAYBE LET HER THINK THAT SO SHE WILL STAY QUIET
+        ВООБЩЕ МОЖЕТ ПУСТЬ ОНА ТАК И ДУМАЕТ ЧТОБЫ НЕ РАЗБОЛТАЛА
     
     sourceless
-        UUGH
-        YOU ARE RIGHT... FINE
-        I WILL ABIDE THIS EMBARRASSMENT
+        УГХХ
+        ТЫ ПРАВ... ЛАДНО
+        Я ВЫТЕРПЛЮ ЭТО УНИЖЕНИЕ
     
     akizet
         ...
-        ok, it was,
-        but please do not tell anyone
+        хорошо, это правда,
+        но пожалуйста ни слова никому
         
     kazki
-        do not worry!!
-        it is between us and the arthropod!
+        не переживай!!
+        это останется только между нами и артроподом!
 
     RESPOBJ::d2_kazkiresp
 
 bye
     akizet
-        bye kazki!
+        прощай казки!
 
     kazki
-        bye!!
+        пока!!
     
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
             EXEC::pauseSwapCam(false)
 `)
 
 env.localization.page['embassy'].dialogues["realization"] = generateDialogueObject(` 
 start
     sourceless
-        FUNFRIEND
+        РАЗВЛЕДРУГ
             EXEC::content.classList.add('showaki');
 
     funfriend
-        hello akizet!!
+        здравствуйте акизет!!
 
     sourceless
-        that is everyone...
+        это были все...
     
     funfriend
-        yes it was!
+        так точно!
 
     sourceless
         and nothing. i surely spoke to the speaker at some point
@@ -3093,7 +3086,7 @@ start
         and did you notice - no one else seemed concerned
 
     funfriend
-        what about gakvu? she seemed surprised
+        что насчёт гакву? она выглядела удивлённой
         
     sourceless
         true, but it is a strange matter to begin with
@@ -3106,64 +3099,64 @@ start
         so what if he is a part of this conflict, too??
     
     funfriend
-        akizet everything is fine
-        i understand your worry but there is no urgency here
+        акизет всё в полном порядке
+        я понимаю ваше беспокойство но здесь нет срочности
 
     sourceless
-        ...yes, you are right
-        thank you funfriend
-        i must calm myself, approach this rationally
-        but you understand: i cannot trust my own team
-        nor any qou--here or home
-        it is like i am in a city usurped by <span class="code" definition="INHERITED CONTEXT::'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity';'not intended to be profane here'">zuzucri</span>
-        anyone could be compromised, a part of this 'game'
-        and even if we continue our research work,
-        what if we find something else too close to the truth? 
-        will we be under even greater threat?
-        do i do anything? do i simply wait for the truth?
-        it will be so long... so many θeyes
-        funfriend you know i cannot simply stop my work
-        especially if we are just beyond the threshold of understanding the call
+        ...да, ты прав
+        спасибо тебе развледруг
+        мне необходимо успокоиться, подойти к этому рационально
+        но ты ведь понимаешь: я не могу доверять собственной команде
+        и никакому другому куу--будь то здесь или на родине
+        я словно в городе, порабощённым <span class="code" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'агрессивная паразитическая наземная фауна';'захватывает разум жертвы для использования в качестве социального камуфляжа';'экивиковое ругательство';'сейчас не подразумевается как ругательство'">зузукри</span>
+        кто угодно может быть замешанным, частью этой "игры"
+        и даже если мы продолжим наши исследования,
+        что, если мы найдем что-то ещё, слишком близкое к истине?
+        окажемся ли мы под куда большей опасностью?
+        мне что-нибудь сделать? мне просто ждать правды?
+        это займёт так долго... столько, столько θглаз
+        развледруг, ты же знаешь, я не могу просто так прекратить свою работу
+        в особенности если мы только переступили черту постижения зова
         this is everything
     
     funfriend
-        akizet, i cannot know what is right
-        but you know what i will say already
-        i feel that you should simply wait
-        they said the team's research is still important
-        and it sounds like they have this under control
-        getting involved will probably not lead to anything good
-        perhaps you could simply continue with your team,
+        акизет, я не могу знать что правильно
+        но вы уже знаете что я скажу
+        я чувствую что вам следует просто подождать
+        по их словам исследования команды по-прежнему важны
+        и звучало так будто у них всё под контролем
+        вмешательство вряд ли приведёт к чему-либо хорошему
+        может вы бы могли просто продолжить вместе со своей командой,
 
     sourceless
-        ah!
-        i know!
-        yes!
+        ах!
+        я знаю!
+        да!
     
     funfriend
-        akizet you really should probably not
+        акизет вам правда наверное не стоит
 
     sourceless
-        the bright cousins...
-        the echo implied they know nothing!
-        the envoy!
-        yes, i must speak to him
-        perhaps... if i place my words correctly,
-        my research efforts could become two-fold
-        one here, with my team, careful not to cross this invisible line...
-        and another, more discreetly, with his bureau!
-        where we may discover what these groups seek to hide
-        yes, if i can simply know <em>what</em> it is, then...
+        светлые близнецы...
+        эхо подразумевало, что они ни о чём не осведомлены!
+        посол!
+        да, я должна поговорить с ним
+        быть может... если я правильно расставлю слова,
+        моя исследовательская деятельность могла бы удвоиться
+        одна здесь, с моей командой, соблюдая осторожность, дабы не пересечь эту невидимую линию...
+        и другая, куда более незаметная, с его бюро!
+        где мы смогли бы узнать, что эти группы пытаются скрыть
+        да, если бы я просто узнала, <em>что</em> это, то...
     
     funfriend
-        wait!!
-        gordon has limited control, he is a part of a larger system!
-        what of his leaders?
+        подождите!!
+        контроль гордона ограничен, он - часть большей системы!
+        что насчёт его лидеров?
     
     sourceless
-        he is...
-        but our bright cousins are good with secrets
-        they know so much that could raise concern already
+        это правда...
+        но наши светлые близнецы прекрасно хранят секреты
+        они знают столькое, что уже давно могло бы поднять беспокойство
         and not once has any of it ever hit their public mind
         indeed, they have very little correspondence outside of direct contacts
         and i am the only direct contact for the call research initiative
@@ -3171,32 +3164,32 @@ start
         our cross-initiative ties will make for some sensitive matters to avoid
 
     funfriend
-        they cannot detect the call with their own technology
-        and they do not possess the biology to interact with ours
-        how do you expect them to help you?
+        они не могут засечь зов при помощи собственных технологий
+        и они не обладают биологией необходимой для взаимодействия с нашими
+        какой помощи вы от них ожидаете?
     
     sourceless
         perhaps we can share a few things...
         do you recall the murmurs of 'integrated bright technology'?
         since it was shelved...
         the technology division has stored much of the schematics plainly within embassy archives
-        oh yes, this is coming together, is it not? how exciting
+        о да, всё начинает сходиться вместе, не так ли? как захватывающе oh yes, this is coming together, is it not? how exciting
 
     funfriend
-        akizet i do not like this idea! ahahaha
-        but i will support you regardless
+        акизет мне не нравится эта идея! ахахаха
+        но я поддержу вас так или иначе
 
     sourceless
-        excellent...
-        to the vessel, then
-        please contact him and tell him i am coming in person
-        say that i have news of the call and that we must speak privately
+        чудесно...
+        к судну, тогда
+        пожалуйста, свяжись с ним и скажи, что я прибуду лично
+        объясни, что у меня есть новости о зове и что нам следует поговорить с глазу на глаз
 
     funfriend
-        understood
+        принял
 
     sys
-        ATTENTION::'memory stream continues externally';'follow stream?'
+        ВНИМАНИЕ::'поток памяти продолжается извне';'следовать за потоком?'
 
 ____SHOWONCE::
     moth

@@ -192,7 +192,7 @@ RESPOBJ::
         что это за штуки вокруг тебя?<+>what
             SHOWIF::"recosm_greeted"
 
-        'обманщик'?<+>deceiver
+        "обманщик"?<+>deceiver
             SHOWIF::["recosm_state", "spared"]
 
         неважно<+>loop
@@ -459,12 +459,12 @@ deceiver
 
 lockcyst
     self
-        do you know if there's anything critical i'm missing
-        anything i haven't seen that's coherent enough to see
-        or maybe anything you can do to stop another connection
-        this investigation into akizet's disappearance is getting out of hand
-        and there's a chance i might be torn away or replaced
-        i need something that i can use to make sure that doesn't happen
+        ты случайно не знаешь, не упускаю ли я что-то очень важное
+        что угодно достаточно связное для моего просмотра
+        или могло бы ты как-то противостоять другим подключениям
+        это расследование по исчезновению акизет начинает выходить из-под контроля
+        и есть шанс, что меня уберут или заменят
+        мне нужно что-то, с помощью чего такое можно было бы предотвратить
 
     god
         ох! ого!! о нет...
@@ -511,12 +511,12 @@ start
         видение другого мира?
 
     self
-        it's another thoughtspace in the uncosm
-        that place in the cache you brought me to
+        это ещё одно мыслепространство в беспространстве
+        то место в кэше, куда ты меня привело
             SHOWIF::"cache__godozo"
         джокзи озо
-        a three dimensional space with others like you
-        you might be less lonely if you joined them
+        трёхмерное пространство с такими же, как ты
+        может быть с ними тебе было бы менее одиноко
     
     god
         ах, мой обожаемый друг, так заботливо!!

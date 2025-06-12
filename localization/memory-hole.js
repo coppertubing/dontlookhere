@@ -76,11 +76,11 @@ env.uncode = { // --- taking the function and adding stuff so it redirects you t
 
 env.localization.page['sec'] = {dialogues: {},
     definitions:  { // --- part of these definitions should be dragged into everystuff.js but i will dp that later
-        "███████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
-        "██████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
-        "█████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
-        "████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
-        "███": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
+        "θ███████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
+        "θ██████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
+        "θ█████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
+        "θ████": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
+        "θ███": { type: `ОШИБКА`, text: `'отсутствующая сущность'`},
 
         
         "surface voice":`'specialized volume management';'fast and enunciated'`,
@@ -224,7 +224,7 @@ ____END
         особенно не сейчас...
 
     cavik
-        ██████...
+        θ██████...
         я никогда тебя такой не видел
         прошу, скажи мне, что происходит?
         прошу
@@ -305,11 +305,11 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
     
     sourceless
-        in the relative safety of the entry tunnel, ██████ drops his surface voice
+        in the relative safety of the entry tunnel, θ██████ drops his surface voice
     
     guard
         incredible... that would have taken so much longer, before
-        ██████, what is the count?
+        θ██████, what is the count?
     
     sourceless
         while the real answer is just within my receptor's curl,
@@ -331,7 +331,7 @@ start
         thirty, from just that trip...
         
     sourceless
-        ██████ stops and grasps his dull-pulse valika-cyst by its tether,
+        θ██████ stops and grasps his dull-pulse valika-cyst by its tether,
         pulling it down to eye-level with a shaky hand so he can look into it properly
         i feel an instant of shock, as does his son by the sight of his receptors,
         but we both realize he is looking at the side, rather than directly at the deadly part
@@ -352,7 +352,7 @@ start
         as we prepared a harvesting bore, you know what he said?
     
     sourceless
-        ██████ turns to me, his branched receptors outstretching their tendrils
+        θ██████ turns to me, his branched receptors outstretching their tendrils
     
     elder
         his father, and his fathers before him, saw it as a pest!
@@ -381,7 +381,7 @@ start
         you feel eyes on you - like something is in the chamber with you,
         staring, listening...
         but i guess all this time, it really was listening, right? haha!
-        what do you think they will do next with it? velzie's eye cast down, ████ got a new arm out of the stuff!
+        what do you think they will do next with it? velzie's eye cast down, θ████ got a new arm out of the stuff!
 
     stupid
         well, it will have to take another <span definition="INHERITED CONTEXT::'common myth';'intoxicated tir knocked over corru container and fell into it'">tir stumbling into their research chamber</span> to figure out what is next!
@@ -390,7 +390,7 @@ start
         his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
     
     elder
-        ██████, start planning a transport to oltazni for me, would you?
+        θ██████, start planning a transport to oltazni for me, would you?
         i have a foundry to barge into
     
     guard
@@ -409,13 +409,13 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        ███'s dog skitters away from me, but in this closed chamber, it can only go so far
+        θ███'s dog skitters away from me, but in this closed chamber, it can only go so far
         it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
-        it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around ███'s furniture
-        i see the lights of ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
+        it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture
+        i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
     
     kind
-        о, ███, прекрати свои издевательства, ему страшно
+        о, θ███, прекрати свои издевательства, ему страшно
     
     sourceless
         her flat voice betrays her amusement
@@ -439,8 +439,8 @@ start
         i half-lunge at it, stopping just an instant after i start, to tell it we are not done
         it ducks lower to the ground in response, and after another moment of stillness, it scurries towards me abruptly
         i laugh and squeal in surprise, backing off and nearly climbing backwards up the wall
-        even ███ laughs as it chases me about
-        i narrowly avoid crashing into ███'s ornate kalstik stand
+        even θ███ laughs as it chases me about
+        i narrowly avoid crashing into θ███'s ornate kalstik stand
     
     kind
         хорошо, хорошо...
@@ -481,8 +481,8 @@ start
         AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
 
     other
-        внимание, ██████! 
-        this is this is ██████!
+        внимание, θ██████! 
+        this is this is θ██████!
         speaking on behalf of anterior dull station '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>',
         you are all clear to proceed!
         be sure you release all active dull tethers or hearts,
@@ -535,8 +535,8 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        after peering through the thick glass of ██████'s trading chamber to ensure no other bright cousins linger within, i push through the front entry
-        a chime with the distinct buzz of their lightning announces my entry, and ██████ peeks out from the door in the back,
+        after peering through the thick glass of θ██████'s trading chamber to ensure no other bright cousins linger within, i push through the front entry
+        a chime with the distinct buzz of their lightning announces my entry, and θ██████ peeks out from the door in the back,
         barely visible through the stands and displays of bright ground-parasites
         no no... 'flowers'... i must call them 'flowers'
     
@@ -582,7 +582,7 @@ start
         it is like i am larval again
     
     flower
-        ██████, what...
+        θ██████, what...
         WHAT, the hell?
         I don't think I've been so scared in my entire life.
         When you said disguise, I pictured, I don't know, a wide-brimmed hat and a trenchcoat?
@@ -596,7 +596,7 @@ start
         it is kind of fun to use
     
     sourceless
-        ██████ steps forward, poking at the fabric of one of my sleeves
+        θ██████ steps forward, poking at the fabric of one of my sleeves
         she continues laughing, mostly from relief that i am not a horrible monster
     
     flower
@@ -632,7 +632,7 @@ start
         some moisture slipping through the cracks and dripping within my shelter, sparkling in the inner lights
         this is always so unpleasant...
         fortunately the regional coordinator is free enough to chat, barring this interruption
-        █████ finally gets back to me through my dullvoice receiver,
+        θ█████ finally gets back to me through my dullvoice receiver,
     
     other
         sorry, just had one other runner to direct
@@ -728,14 +728,14 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        WHILE I REPAIR MY VALIKA, █████ APPROACHES THE CORNER OF THE ARMORY I HAVE COMMANDEERED
+        WHILE I REPAIR MY VALIKA, θ█████ APPROACHES THE CORNER OF THE ARMORY I HAVE COMMANDEERED
         I LOOK UP TO FACE HIM, RECEPTORS WIDE IN JOYOUS GREETING, ONLY TO SEE THAT HIS ARE MEEKLY PULLED BACK WITH WORRY
 
     stupid
-        hey █████!!!
+        hey θ█████!!!
 
     hesitant
-        hi ██████!
+        hi θ██████!
 
     stupid
         what brings you here? do they have another device for me to try out?
@@ -783,7 +783,7 @@ start
         how? what? 
 
     sourceless
-        █████ WRINGS HIS CLAWS NERVOUSLY, RECEPTORS SIMILARLY CURLING AWAY
+        θ█████ WRINGS HIS CLAWS NERVOUSLY, RECEPTORS SIMILARLY CURLING AWAY
         
     hesitant
         like i said... emergency
@@ -807,7 +807,7 @@ start
     
     hesitant
         of course not, but, if you are really going to be doing this...
-        the world is changing very fast, ██████
+        the world is changing very fast, θ██████
         i want you to be around to see it
         if you ever got attacked on one of your runs, or caught by...
 
@@ -830,7 +830,7 @@ start
         yes, without a doubt
     
     sourceless
-        █████ SITS DOWN AT MY ARMORY STATION, ACROSS FROM ME
+        θ█████ SITS DOWN AT MY ARMORY STATION, ACROSS FROM ME
 
     hesitant
         just like how the aima cysts become an extension of your mind,
@@ -858,7 +858,7 @@ start
         BUT IT IS A POINT OF PRIDE, STILL. A RAISE OF MY ARM TO DEFLECT THE LUNGING GUKTIK AT THE RIGHT TIME...
         CRACK!! OH, THE PAIN, BUT SEEING IT SCURRY AWAY AFTERWARDS, SUCH POWER!!
         IMAGINE WHAT I COULD DO IN A BODY MADE OF CORRU...
-        █████ LAUGHS, WAVING AWAY THE BRAG WITH HIS RECEPTORS
+        θ█████ LAUGHS, WAVING AWAY THE BRAG WITH HIS RECEPTORS
 
     hesitant
         yes, i still remember the last time you told me
@@ -898,13 +898,13 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA
+        θ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA
         THE SMELL OF A ONCE-RADIANT VEILK CORPSE... I STILL MUST GET USED TO IT
         WITH THE TIME THAT HAS PASSED, ITS BONES ARE STARTING TO POKE OUT THROUGH ITS FLESH, AND SOON CAN BE HARVESTED
         BUT NOW IS THE SEASON OF FRUIT, AND SO THE AIR IS THICK AND RANCID
         OUR STEPS MEET THE FLESHENED GROUND WITH VILE NOISES, AND THE CAVERNGUARD'S RECEPTORS TWITCH WITH EACH ONE
         HAHAHA!! HE IS FAR TOO ACCUSTOMED TO HIS HIGH-THREAT DUTIES
-        I HEFT THE HARVEST-BASKET AND TURN AROUND TO SPEAK ALOUD TO HIM, CONTINUING TO FOLLOW ██████ BACKWARDS
+        I HEFT THE HARVEST-BASKET AND TURN AROUND TO SPEAK ALOUD TO HIM, CONTINUING TO FOLLOW θ██████ BACKWARDS
     
     stupid
         relax!
@@ -918,10 +918,10 @@ start
         keep your eyes ahead
 
     sourceless
-        DESPITE IT ALL, THERE IS A SENSE OF JOY IN ██████'s BRANCHED RECEPTORS, AND HE LAUGHS QUIETLY
+        DESPITE IT ALL, THERE IS A SENSE OF JOY IN θ██████'s BRANCHED RECEPTORS, AND HE LAUGHS QUIETLY
         I DO NOT MIND ESCORTING THESE ZEVAZNI-ENABLED ELDERS THROUGH SURFACE DUTIES
         THEIR FOUNDRIES HAVE BEEN PUTTING OUT TRULY REMARKABLE DEVICES - LIMB REPLACEMENTS, VALIKA-CONNECTED CYSTS... 
-        I AM SURE ██████ COULD HOLD HIS OWN NOW, EVEN IF A PREDATOR HAPPENED TO FIND US
+        I AM SURE θ██████ COULD HOLD HIS OWN NOW, EVEN IF A PREDATOR HAPPENED TO FIND US
         I HEAR HIM MURMUR THROUGH THE DULLVOICE AS HE TAKES A DEEP BREATH,
 
     elder
@@ -934,8 +934,8 @@ start
     sourceless
         HIS AIMA CYSTS CONVERGE THEIR EYES UPON A GLOWING CREVICE WITHIN THE VEILK CARCASS
         WE STOP IN UNISON, AND THE CAVERNGUARD NEARLY STEPS FORWARD, BUT I STOP HIM, HALF-TURNING
-        HE GLARES AT ME, BUT UNDERSTANDS - THIS IS ██████'s FUN, NOT OURS
-        ██████'s VALIKA-BORNE CYSTS TARGET THE CREATURE AS HE TAKES SLOW, CAREFUL STEPS FORWARD
+        HE GLARES AT ME, BUT UNDERSTANDS - THIS IS θ██████'s FUN, NOT OURS
+        θ██████'s VALIKA-BORNE CYSTS TARGET THE CREATURE AS HE TAKES SLOW, CAREFUL STEPS FORWARD
         HIS STEPS ARE SO SILENT, EVEN IN THE VEILK-ROTTED SOIL... I WISH I COULD DO THAT!!
         ONCE THE AIMA CYSTS OF HIS VALIKA GLOW WITH CONFIRMATION, THE CENTRAL ONE RELEASES A PULSE OF GRAY LIGHT
         WHEN OUR EYES RECOVER, THE VEILK LIMB IS CLEAVED OPEN, REVEALING THE GLOWING FRUITS OF A CELKI
@@ -949,7 +949,7 @@ start
         i will get it
 
     sourceless
-        ██████'s SON REACHES IN AND GRASPS THE CELKI AT ITS BASE
+        θ██████'s SON REACHES IN AND GRASPS THE CELKI AT ITS BASE
         AND WITH HIS OTHER HAND, GRIPS A SMALL CUTTER TO QUICKLY AND CLEANLY CUT IT FREE FROM ITS FEEDING POINT
         THE BULBOUS FRUIT SQUIRMS SLIGHTLY, BUT IS TOO FATTENED TO DO ANYTHING
         SO IT IS TOSSED INTO THE BASKET EASILY, AND WE CONTINUE ON...
@@ -1056,12 +1056,12 @@ start
         everything trembles as my carrier veilk takes another step distantly below
         eventually, i find it: my dullvoice receiver!
         with a quick affix to my favored receptor, i reach out for the regional coordinator...
-        █████, i think... a nice tir, though we have sparsely spoken
+        θ█████, i think... a nice tir, though we have sparsely spoken
         after a few well-placed thoughts, he is within reach, and i establish contact
         still, there is some interference here... the spirestorm grows closer, suffusing my senses with an ever-present rumble 
 
     stupid
-        hello █████!! this is ██████!!
+        hello θ█████!! this is θ██████!!
         i have secured a position on a yellow-eyed carrier veilk
         how far out am i? from both the spire and ukazni, if you can tell
     
@@ -1075,7 +1075,7 @@ start
         if that is the case, they will be following the ukazni ozo path, and you should be at a good dropping point near there within the θgaze!  
         my estimations: likely less than a θwink for the herd to continue, two θwinks until you pass the spire fully, and then two more θwinks before you are near the ukazni range
         this assumes ideal conditions, and that the veilk do not stop for rest again--which, i think is unlikely
-        either way, i hope you brought some entertainment, ██████!
+        either way, i hope you brought some entertainment, θ██████!
         and i have to say, i am really surprised...
         they did not give you a walker for this one?
         that would have shortened your trip by several θwinks, and allowed you to avoid the spire completely...
@@ -1083,14 +1083,14 @@ start
     stupid
         hehe, no, this is a non-vital trip - you could call it personal
         the oltazni council only lets us use walkers if it is an emergency
-        anyway, thanks for the help, █████!
+        anyway, thanks for the help, θ█████!
         <span definition="NOTE::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained for me!</span>
     
     other
         will do!
         and remember, once you reach it, do not exit your respite while within the spirestorm!!
         the lightning rarely strays from the spire, but when it does, it is fatal!
-        may the θgaze end kindly for you, ██████
+        may the θgaze end kindly for you, θ██████
     
     sourceless
         with the closing of the connection, velzie's decision for my fate is made clear:
@@ -1136,7 +1136,7 @@ start
         my duties are not until <span definition="NOTE::'partial translation';'inherited description-generated noun'">clear-sky</span>
         
     tired
-        ██████, it is me
+        θ██████, it is me
     
     sourceless
         AND SHE IS NOT GOING AWAY...
@@ -1157,11 +1157,11 @@ start
         AH--
         SUDDENLY, THE COVER OF MY POD IS LIFTED
         MY RECEPTORS COIL IN SHOCK, AND I COVER MY EYES FROM THE LIGHT
-        █████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME
+        θ█████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME
 
     tired
         this is not a joke, kelnit
-        ███████ has not returned
+        θ███████ has not returned
         he is not responding on the dullvoice either
         with how long he has been out, it will not be long before his trail is dispersed
 
@@ -1225,7 +1225,7 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        i have to contain myself from skittering well ahead of █████
+        i have to contain myself from skittering well ahead of θ█████
         the gathering chamber's festivities will not go anywhere... just keep walking slowly...
         he is talking--what was he talking about again?
 
@@ -1253,7 +1253,7 @@ start
         this all is interesting, but i do not care enough to learn deeply of it
         still, it is good to see him so excited, he has been so anxious lately
         as we continue up the tunnel, i notice a tir up ahead replacing one of the yuzku globes with one of the new corrucysts
-        i stop nearby to observe her work, █████ trailing off and stopping near me soon after
+        i stop nearby to observe her work, θ█████ trailing off and stopping near me soon after
     
     stupid
         hey!
@@ -1285,7 +1285,7 @@ start
 
     stupid
         a square...
-        █████, could that be the 'sfer' stuff?
+        θ█████, could that be the 'sfer' stuff?
     
     hesitant
         haha, no, i think this is a new one
@@ -1293,7 +1293,7 @@ start
     
     sourceless
         i dip my receptors to the tir, and she responds in kind
-        with a simple gesture to █████, we continue on our journey
+        with a simple gesture to θ█████, we continue on our journey
     
     hesitant
         ...see, in the sfer "vats" that the zevazni foundries came up with,
@@ -1313,12 +1313,12 @@ start
     
     sourceless
         the silence of this dormant herd is almost too much
-        only the wind and thunder masks our slight movements as we draw closer to ███
+        only the wind and thunder masks our slight movements as we draw closer to θ███
         it is by velzie's favor alone that she has survived out here so long... poor vel!!
         she sits against her dull beacon in the little clearing, bleeding, surrounded by the two bodies of her running companions
         it is fortunate that we found them while the eye still lights our path!	
-        when I nearly enter the clearing, ██████ grabs my arm and pulls me back,
-        hiding us both from ███'s view around a juvenile veilk tendril
+        when I nearly enter the clearing, θ██████ grabs my arm and pulls me back,
+        hiding us both from θ███'s view around a juvenile veilk tendril
         we speak silently, through the dullvoice:
     
     stupid
@@ -1335,7 +1335,7 @@ start
     sourceless
         the scent of vel and kiv, two dead - exactly what we see... what is he worried about?
         with a quick impulse, i instruct my valika-borne aima cyst to peer around the side
-        ███ is sitting a little strangely, perhaps with too large of a pack,
+        θ███ is sitting a little strangely, perhaps with too large of a pack,
         but from this side angle it is hard to tell
         the wind shifts towards us, the trio's trails made more apparent
         the vel's scent is strange, sickly, metallic...
@@ -1347,21 +1347,21 @@ start
     
     sourceless
         i feel his affirmation through the dullvoice, and so i twist about,
-        calling out in my surface voice before i step into full view of ███,
+        calling out in my surface voice before i step into full view of θ███,
     
     stupid
-        ███! is that you?
+        θ███! is that you?
         are you all right?
     
     sourceless
-        a cloud passes between the eye and this veilk herd just as i see ███ turn towards me,
+        a cloud passes between the eye and this veilk herd just as i see θ███ turn towards me,
         and while we are plunged into darkness, i feel a terrible dread
         for i thought i saw her face split apart for an instant
         but as it passes, she pushes herself to her feet,
         face intact and spiraling receptors curled tight with worry
         
     host
-        ██████...?
+        θ██████...?
         please--do not look away
         i will go away again
         i just blinked... i blinked and they were all gone!!
@@ -1372,25 +1372,25 @@ start
         claws longer than they ought to be--more numerous than they should be...
         a dark, angular shape is obscured behind her, barely visible over her shoulders
         parts of it twist occasionally--alive!!
-        ██████ communicates to me via dullvoice,
+        θ██████ communicates to me via dullvoice,
         
     guard
-        ██████ - she is lost
+        θ██████ - she is lost
         if there is one zuzucri here, there are others
         preparing to release the pulse
     
     sourceless
-        silently, as to not alert ███ that i have a companion,
+        silently, as to not alert θ███ that i have a companion,
         i gesture for him to wait with a claw behind my back, and he obliges
         though every nerve in my body commands me to flee,
-        i know - i must soothe ███, lest the beast stop wielding her mind
+        i know - i must soothe θ███, lest the beast stop wielding her mind
     
     stupid
-        ███, it is all right...
+        θ███, it is all right...
         what happened?
     
     sourceless
-        ███ approaches, but her legs do not move, dragging against the soil
+        θ███ approaches, but her legs do not move, dragging against the soil
         only as soon as the zuzucri notices my eyes upon her legs does she begin to walk with them
         i raise one of my climbing gauntlets defensively, and she halts, bringing her claws to her eyes
         she weeps, and my aima cyst detects movement in the dark shape behind her
@@ -1405,15 +1405,15 @@ start
         and... and you cannot let me stay here
     
     sourceless
-        though ██████ would undoubtedly prefer that we free her from her role,
+        though θ██████ would undoubtedly prefer that we free her from her role,
         i have an idea...
-        with some rummaging through my cloak, i produce that little mindcore that █████ granted me
-        it <em>was</em> for me, but if there is any chance we can save ███...
+        with some rummaging through my cloak, i produce that little mindcore that θ█████ granted me
+        it <em>was</em> for me, but if there is any chance we can save θ███...
         i offer it to her, arm outstretched, tilted away in case i must evade
         the zuzucri will surely be appeased by my apparent acceptance of her
     
     stupid
-        no, ███, it is OK!
+        no, θ███, it is OK!
         just put this on your receptor, and we can help you
     
     sourceless
@@ -1426,7 +1426,7 @@ start
         she brings it to her face, and it is clearly operational, but...
     
     host
-        ██████... it will not let me
+        θ██████... it will not let me
     
     stupid
         ah...
@@ -1434,7 +1434,7 @@ start
     sourceless
         the corru, it does not recognize her...
         velzie snatches away my hope once more, inspiration replaced with despair
-        just as i prepare to signal to ██████, her claws dig into the shell of the cyst,
+        just as i prepare to signal to θ██████, her claws dig into the shell of the cyst,
         and she begins to lunge it towards the sharp end of her receptor, sobbing
     
     stupid
@@ -1473,14 +1473,14 @@ start
         the dark is overwhelming as always...
         only the slightest illumination from organized growths along the walls
         but the cavelight upon my waist carries enough light for me to safely enter,
-        and brings the shine of ███'s eyes upon me, from across the chamber
+        and brings the shine of θ███'s eyes upon me, from across the chamber
         two at first, then more--then two, again
 
     stupid
-        ███?
+        θ███?
 
     sourceless
-        if what they say is right, it should be ███, right now...
+        if what they say is right, it should be θ███, right now...
         she approaches slowly, carried by the zuzucri's limbs behind her
         an indistinct mass that hides itself from me as best it can
         her silence is unsettling, enough that i nearly back into the reinforced entrance out of precaution
@@ -1489,7 +1489,7 @@ start
         the joyous upturn and uncurl is enough to reassure me
         
     host
-        ██████!!
+        θ██████!!
         come, sit!
         i am so glad you came, i know it is a special θgaze...
 
@@ -1524,7 +1524,7 @@ start
         releasing the aroma of seared veilk-vein, closed and stuffed with <span definition="INHERITED CONTEXT::'city heart';'fastest-rotting veilk organ';'named for practice of consuming rapidly in celebration of new veilk-fall'">ozoilaki</span> meat and savory fruit flesh
         lesser capsules are arranged neatly within, containing a few different beverages
         veilk's-blood being the most significant
-        the angled cavelight gives ███'s eyes a clear glow,
+        the angled cavelight gives θ███'s eyes a clear glow,
         revealing the splitting marks of her face, curling at the edges even now in anticipation of this delicacy
 
     host
@@ -1534,7 +1534,7 @@ start
     stupid
         yes! we are not sure how it happened, but...
         middle-sized, conveniently close, good health... still alive, actually!
-        ██████ and the examiners have been saying it had some malformed leg-tendrils,
+        θ██████ and the examiners have been saying it had some malformed leg-tendrils,
         and its growth must have gradually made it unable to support its own weight effectively anymore
 
     host

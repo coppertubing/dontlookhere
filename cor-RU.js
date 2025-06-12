@@ -505,6 +505,9 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 body[quality="regular"] .quality::after { content: "Качество: ОБЫЧНОЕ" }
 body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" }
 
+.dialogue-message.incoherenthello .dialogue-text, .readout-log .message.incoherenthello {
+    background-image: url(/img/local/uncosm/hello.gif) !important;
+}
 
 .actor-corrurubonus .dialogue-text {
     text-transform: uppercase;

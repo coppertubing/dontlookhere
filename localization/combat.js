@@ -4065,32 +4065,32 @@ cor_ru['redefineActors'] = function () {
 
     /* - Spire Attendant - */
 
-    env.COMBAT_ACTORS.attendant.name = "" // Spire Attendant
+    env.COMBAT_ACTORS.attendant.name = "Слуга Шпиля" // Spire Attendant
     env.COMBAT_ACTORS.attendant.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.attendant.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Слуги Шпиля",
+            dat: "Слуге Шпиля", 
+            acc: "Слугу Шпиля", 
+            ins: "Слугой Шпиля", 
+            pre: "Слуге Шпиля"
         },
         gender: 0
     }
 
     /* - Tendril - */
 
-    env.COMBAT_ACTORS.tendrils.name = "" // Tendril
+    env.COMBAT_ACTORS.tendrils.name = "Отросток" // Tendril
     env.COMBAT_ACTORS.tendrils.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Отростка",
+            dat: "Отростку", 
+            acc: "Отростка", 
+            ins: "Отростком", 
+            pre: "Отростке"
         },
         gender: 0
     }
