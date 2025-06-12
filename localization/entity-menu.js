@@ -8,7 +8,7 @@ cor_ru.entity_menu = {
         //cache
         "ENTITY::'the storm'": "СУЩНОСТЬ::'шторм'",
         "ENTITY::'polygonation spire'": "СУЩНОСТЬ::'шпиль полигонизации'",
-        "ENTITY::'ÉœÙ]ïå¥¹'": "СУЩНОСТЬ::'ÉœÙ]ïå¥¹''",
+        "ENTITY::'ÉœÙ]ïå¥¹'": "СУЩНОСТЬ::'ÉœӬ́]ӹå¥¹''",
         "ENTITY::'? ???? ?? ?? ??'": "СУЩНОСТЬ::'? ???? ?? ?? ??'",
         "ENTITY::'Ò½º'": "СУЩНОСТЬ::'Ò½º'",
 
@@ -66,18 +66,18 @@ cor_ru.entity_menu = {
         "ENTITY::'recollection::discovery'": "СУЩНОСТЬ::'вспоминание::открытие'",
         "ENTITY::'recollection::suspicion'": "СУЩНОСТЬ::'вспоминание::подозрение'",
         "ENTITY::'recollection::collapse'": "СУЩНОСТЬ::'вспоминание::обвал'",
-        "ENTITY::'attendant'": "СУЩНОСТЬ::''", // --- unf
+        "ENTITY::'attendant'": "СУЩНОСТЬ::'слуга'",
         "ENTITY::'mystery cyst'": "СУЩНОСТЬ::'таинственная циста'",
         "ENTITY::'my seat'": "СУЩНОСТЬ::'моё кресло'",
         "ENTITY::'barfriend'": "СУЩНОСТЬ::'бардруг'",
         "ENTITY::'orange simulacrum'": "СУЩНОСТЬ::'апельсиновый симулякр'",
         "ENTITY::'veilklight'": "СУЩНОСТЬ::'вейлькосвет'",
         "ENTITY::'rejuvenation chamber'": "СУЩНОСТЬ::'омолаживающая камера'",
-        "ENTITY::'kalstik stand'": "СУЩНОСТЬ::''",
-        "ENTITY::'face stand'": "СУЩНОСТЬ::''",
-        "ENTITY::'cyst cluster'": "СУЩНОСТЬ::''",
-        "ENTITY::'cyst pile'": "СУЩНОСТЬ::''",
-        "ENTITY::'clothing storage'": "СУЩНОСТЬ::''",
+        "ENTITY::'kalstik stand'": "СУЩНОСТЬ::'подставка кальстика'",
+        "ENTITY::'face stand'": "СУЩНОСТЬ::'подставка лица'",
+        "ENTITY::'cyst cluster'": "СУЩНОСТЬ::'скопление цист'",
+        "ENTITY::'cyst pile'": "СУЩНОСТЬ::'кучка цист'",
+        "ENTITY::'clothing storage'": "СУЩНОСТЬ::'хранилище одежды'",
         "ENTITY::'listener'": "СУЩНОСТЬ::'слушатель'",
         "ENTITY::'timestopper'": "СУЩНОСТЬ::'времядержец'",
         "ENTITY::'window'": "СУЩНОСТЬ::'окно'",
@@ -88,7 +88,7 @@ cor_ru.entity_menu = {
         "ENTITY::'vel qou'": "СУЩНОСТЬ::'вел куу'",
         "ENTITY::'simulacra'": "СУЩНОСТЬ::'симулякры'",
         "ENTITY::'storage display'": "СУЩНОСТЬ::''",
-        "ENTITY::'bright weapons'": "СУЩНОСТЬ::''",
+        "ENTITY::'bright weapons'": "СУЩНОСТЬ::'светлое оружие'",
         "ENTITY::'manipulation slab'": "СУЩНОСТЬ::''",
         "ENTITY::'unkind eye'": "СУЩНОСТЬ::'недобрый глаз'",
         "ENTITY::'sculptor'": "СУЩНОСТЬ::''",
@@ -102,15 +102,15 @@ cor_ru.entity_menu = {
         "ENTITY::'archive'": "СУЩНОСТЬ::'архив'",
         "ENTITY::'archival golem'": "СУЩНОСТЬ::'архивный голем'",
         "ENTITY::'jutskin'": "СУЩНОСТЬ::'жаткожец'",
-        "ENTITY::'bstrdlight'": "СУЩНОСТЬ::'свлчесвет'",
+        "ENTITY::'bstrdlight'": "СУЩНОСТЬ::'свлчсвет'",
         "ENTITY::'pain shelf'": "СУЩНОСТЬ::'шкаф боли'",
-        "ENTITY::'bstrd golem'": "СУЩНОСТЬ::'свлчь-голем'",
+        "ENTITY::'bstrd golem'": "СУЩНОСТЬ::'свлчь голем'",
 
         //golem maintenance
         "ENTITY::'cavelight'": "СУЩНОСТЬ::''",
         "ENTITY::'grand door'": "СУЩНОСТЬ::''",
         "ENTITY::'veilk spear'": "СУЩНОСТЬ::''",
-        "ENTITY::'geli'": "СУЩНОСТЬ::''",
+        "ENTITY::'geli'": "СУЩНОСТЬ::'джели'",
         "ENTITY::'lesser terminal'": "СУЩНОСТЬ::''",
         "ENTITY::'greater terminal'": "СУЩНОСТЬ::''",
         "ENTITY::'distribution door'": "СУЩНОСТЬ::''",
@@ -135,7 +135,7 @@ cor_ru.entity_menu = {
         "ENTITY::'dullzika'": "СУЩНОСТЬ::''",
         "ENTITY::'warped container'": "СУЩНОСТЬ::''",
         "ENTITY::'translation core'": "СУЩНОСТЬ::''",
-        "ENTITY::'»õGQàº3¾õ”cR%'": "СУЩНОСТЬ::''",
+        "ENTITY::'»õGQàº3¾õ”cR%'": "СУЩНОСТЬ::'»õГЪàº3¾õ”cР%'",
         "ENTITY::'foundation golem'": "СУЩНОСТЬ::''",
         "ENTITY::'dog'": "СУЩНОСТЬ::'собака'",
 
@@ -220,10 +220,10 @@ cor_ru.entity_menu = {
         //abyss
         "ENTITY::'s w   al kk'": "СУЩНОСТЬ::'п р     ох йй'",
         "ENTITY::'Ƙø¿ƶḳ¿±'": "СУЩНОСТЬ::'Қø¿ӡḳӣ¿±'",
-        "ENTITY::'×è.÷ùÏÏøø'": "СУЩНОСТЬ::'×è.÷ùÏÏøø'",
+        "ENTITY::'×è.÷ùÏÏøø'": "СУЩНОСТЬ::'×è.÷я̄ҊҊøø'",
 
         //parasite
-        "ENTITY::'piece'": "СУЩНОСТЬ::'ПАРА ПУСТЯКОВ MENTION'",
+        "ENTITY::'piece'": "СУЩНОСТЬ::'фишка'",
 
     },
     readouts: { // do it not like you would in env.localization
