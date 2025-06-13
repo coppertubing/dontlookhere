@@ -246,14 +246,14 @@ if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬
 
 console.info("%cif-checks! - @cor-RU:embassy", cor_ru.fancy.general)
 
-setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
+/*setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
 }}, 10)
 
-console.info("%cbeech! - @cor-RU:embassy", cor_ru.fancy.general)
+console.info("%cbeech! - @cor-RU:embassy", cor_ru.fancy.general)*/
 
 // === DIALOGUES === //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
