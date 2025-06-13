@@ -5,8 +5,8 @@ env.localization.page['embassy'] = {dialogues: {},
 }
 console.info("%cestablished chopped localization! - @cor-RU:embassy", cor_ru.fancy.general)
 
-if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
-if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+// if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
+// if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
 
 console.info("%cif-checks! - @cor-RU:embassy", cor_ru.fancy.general)
 
