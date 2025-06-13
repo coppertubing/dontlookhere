@@ -1,23 +1,252 @@
-console.info("the embassy.js is here! - @cor-RU:embassy", cor_ru.fancy.general)
-
 env.localization.page['embassy'] = {dialogues: {},
-strings: {},
+    definitions: {
+
+        "θsegment": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
+
+        "θsegments": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'implies distinct section of spire';'typically delineated vertically'` },
+
+        "θtendril": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'` },
+
+        "θtendrils": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with branch';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'more formal term'` },
+
+        "θbranch": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'used interchangably with tendril';'implies area assigned to specific purpose';'numerous within spire segments';'often extend outwards from spine-connected central chamber';'less formal term'` },
+
+        "veilks-blood": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common beverage';'not blood'` },
+
+        "spirestorm": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'weather phenomena';'ceaseless violent storm surrounding natural spire'` },
+
+
+        "corroyi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'` },
+
+        "okizika": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ekivik surface monument';'holy site'` },
+
+        "kozazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'vaznian cave-city';'home of kazki';'known for fungal farms'` },
+
+        "parii": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk bone'` },
+
+        "sfer": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'refined corrucystic fuel/food';'currency'` },
+
+        "veilk": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'surface fauna';'foundation of entire ecosystem';'enormous and endless'` },
+
+        "zzoust": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'party drink';'name not properly spoken unless shouted'` },
+
+        "corruskivi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'traditional maintenance tool';'passes through corru effortlessly'` },
+
+        "zevazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'cave-city central to vazni';'corrucystic revolution origin'` },
+
+        "no tendril left to rot": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'all is harvested'` },
+
+        "velzie's smile upon": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'subject entertains god with antics';'religious implication'` },
+
+        "great gaze": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'velzie's great gaze upon us';'wishes of good luck'` },
+
+        "groundsmind": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'esteemed title';'administrative position';'partial translation';'inherited description-generated noun'` },
+
+        "groundsmindry": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'` },
+
+        "θeye": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'time period';'patrols around the eye of velzie';'religious implication'` },
+
+        "θeyes": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'time period';'patrols around the eye of velzie';'religious implication'` },
+
+        "how beholds you": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common idiom';'religious implication';'how does velzie's gaze behold you'` },
+
+        "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
+
+        "life-pod": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
+    }, 
+    strings: {
+        "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "",
+        "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "",
+        "this is fucked up dude, imagine if you couldn't trust any of us": "",
+        "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "",
+        "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "",
+        "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "",
+        "time to finish the collapse buddy. we almost got everything": "",
+        "seems like funfriend is still working on the rest of the collapse memory for now": "",
+        "time to get into the collapse, buddy": "",
+        "if those were two of the memories she chose to store, what are these other ones??": "",
+        "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "",
+        "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "",
+        "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "",
+        "about the embassy": "о посольстве",
+
+        "better times": "ХОРОШИЕ ВРЕМЕНА",
+        "discovery": "ОТКРЫТИЕ",
+        "suspicion": "ПОДОЗРЕНИЕ",
+        "collapse": "ОБВАЛ",
+        "recollection": "вспоминание",
+
+        "experience": "испытать",
+        "new iteration": "новая итерация",
+        "load iteration": "загрузить итерацию",
+        "save iteration": "сохранить итерацию",
+        "save": "сохраниться",
+
+        "join the chat": "присоединиться к разговору",
+        "chat": "поговорить",
+        "convene": "созвать",
+
+        "akizetesche": "акизетеше",
+        "akizet": "акизет",
+        "think to self": "подумать про себя",
+        "ruminate over cyst": "размышлять о цисте",
+
+        "gakvu": "гакву",
+        "toggle cloak": "переключить накидку",
+            "ok": "хорошо",
+            "sure": "конечно",
+            "no problem": "без проблем",
+            "really? now? all right": "серьёзно? сейчас? ладно",
+            "ok akizet": "ага акизет",
+
+        "tozik": "тозик",
+        "cavik": "кавик",
+        "kazki": "казки",
+        "bozko": "бозко",
+
+        "tir qou": "тир куу",
+        "kiv qou": "кив куу",
+        "jut qou": "жат куу",
+        "vel qou": "вел куу",
+
+        "movefriend": "движедруг",
+
+        "barfriend": "бардруг",
+
+        "timestopper": "времядержец",
+
+        // discovery
+
+        // suspicion
+        /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, меня радует, что это ты подключилась",
+        /*echo*/ "as it is with worry for your well-being that this message finds you": "поскольку это послание адресовано тебе из беспокойства о твоем благополучии",
+        /*echo*/ "it must be said immediately:": "это должно быть сказано немедленно:",
+        /*echo*/ "information regarding our team's latest findings must not be shared with anyone at any point": "информация о последних находках нашей команды не должна разглашаться никому и ни при каких обстоятельствах",
+
+        /*akizet*/ "yes... as we had agreed": "да... как мы и договаривались",
+        /*akizet*/ "what is the purpose of this message?": "в чём цель этого сообщения?",
+
+        /*echo*/ "we are in great danger, akizet": "мы в большой опасности, акизет",
+        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "пусть в работе мы и согласились, нельзя допускать ни единого случайного намёка на наши знания",
+        /*echo*/ "no sharing with larval relations": "ни в разговорах с личиночными отношениями",
+        /*echo*/ "not anyone you think you can trust": "ни с кем-либо, кому ты думаешь, что можешь доверяешь",
+        /*echo*/ "no one": "никому",
+
+        /*sourceless*/ "apprehension from the echo saturates the environment": "опасение эха пропитывает окружающую среду",
+        /*sourceless*/ "i can feel that this delusional paranoia is not even its true message": "я ощущаю, что эта бредовая паранойя даже не является его истинным посланием",
+        /*sourceless*/ "in my θdeath, i have never had patience for such meandering exchanges": "в своей θсмерти у меня никогда не находилось терпения на такие извилистые болтовни",
+
+        /*akizet*/ "why? do not waste my time, cease with this drama": "почему? не трать моё время, прекрати эту драму",
+
+        /*echo*/ "i presumed you might react this way": "я понимаю твою реакцию, она ожидаема",
+        /*echo*/ "but i had to place my warning first, out of precaution": "но мне нужно было поставить своё предупреждение первым, из предосторожности",
+        /*echo*/ "you want to know why:": "ты хочешь узнать, почему:",
+        /*echo*/ "come and see": "приходи и посмотри",
+
+        /*akizet*/ "yes, i understand": "да, я понимаю",
+
+        /*echo*/ "thank you": "спасибо",
+        /*echo*/ "if only i could truly hear you agree": "вот бы можно было услышать твоё согласие въявь",
+        /*echo*/ "but i cannot risk any side knowing i have told you": "но я не могу рисковать тем, чтобы любая из сторон узнала об этом послании",
+        /*echo*/ "so this cyst will erase its purpose shortly": "так что эта циста вскоре сотрёт свое предназначение",
+
+        /*echo*/ "but trust that i will know your response based on your actions": "но верь, что я узнаю твой ответ по твоим действиям",
+                
+        /*sourceless*/ "there is no response - no thought, no meaning": "я не получаю ответа - ни мысли, ни смысла",
+        /*sourceless*/ "in reality, i feel a strange runoff near my cyst-bearing receptor": "в реальности я ощущаю странный потёк возле рецептора, несущего цисту",
+
+        /*sourceless quiet*/ "it is destroying itself...": "она самоуничтожается...",
+      
+        // collapse part 1
+    }, 
+    entityDescriptions: {
+        // recollections
+                "recollection::Aæ§<äYf¹L": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::ø¥¬À‰": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::„²!Äë±#Rã": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::НЕВИЗУАЛИЗИРУЕМА
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+                "recollection::discovery": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый взор'</span>`,
+                "recollection::suspicion": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз велзи выгибается в ликовании'</span>`,
+                "recollection::collapse": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
+    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'использует'::ВНУТРЕННЯЯ_ИТЕРАЦИЯ::'методы'</span>
+    ::ПРИМЕЧАНИЕ::<span style="color:var(--bright-color)">'будет доступна возможность сохранения и повторного просмотра итерации'</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вот бы он прислушался'</span>`,
+
+    // main obesk
+                "akizetesche": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'метка ${processDefinitionsInString("олтазни")}'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'я просто думаю, что они крутые'">близнецовые глаза</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "cavik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'метка <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'дом';'вазнийский пещерный город';'да будут же глаза развеваться!!'">олтазни</span>'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращены назад'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "bozko": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'а к чему морока?';'самопроектирование - это слишком долго'">продиктованная самовосприятием подпись</span>'
+    <span style='color: var(--friend-color)'>+</span>'формация куу-тела для экстремального давления'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("кив")}-рецепторы, напыщенные'`,
+                "kazki": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, грибковая стилизация'
+    <span style='color: var(--friend-color)'>+</span>'разделительное представление куу-тела'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'совместная работа жителя козазни';'гевериканеше жат жекарри'">внешне-проектированная подпись</span>'`,
+                "tozik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, торчмя'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'их чёрные зрачки разительны'">близнецовые глаза</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+                "gakvu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые, угловая стилизация'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'моя настоящая накидка тоже так делает, она покрыта грибком'">самопроектированная подпись</span>'`,
+                // discovery
+
+                // suspicion
+                
+                // collapse part 1
+                "miltza": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, когтистые'
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'религиозное значение'">дополнительная окизиковая рука</span>'
+    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+    },
 }
-console.info("%cestablished chopped localization! - @cor-RU:embassy", cor_ru.fancy.general)
 
-// if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
-// if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
+if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
 
-console.info("%cif-checks! - @cor-RU:embassy", cor_ru.fancy.general)
-
-/*setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
+setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
 }}, 10)
-
-console.info("%cbeech! - @cor-RU:embassy", cor_ru.fancy.general)*/
 
 // === DIALOGUES === //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
@@ -2987,7 +3216,7 @@ ____END
         end recollection<+>END
             EXEC::change("embassy_d2_complete", true);env.bgm.pause();corruRefresh()
 `)
-console.info("%cdialogue! - @cor-RU:embassy", cor_ru.fancy.general)
+
 
 
 // == COLLAPSE == //

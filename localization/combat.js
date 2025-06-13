@@ -6151,8 +6151,6 @@ env.localization.page[page.dialoguePrefix].strings["HP'"] = " ХП'"
 
 
 /* === PARTY MENU === */
-env.localization.page[page.dialoguePrefix].strings[''] = ''
-
 env.localization.page[page.dialoguePrefix].strings['ACTIVE MEMBERS'] = 'АКТИВНЫЕ УЧАСТНИКИ'
 env.localization.page[page.dialoguePrefix].strings['INACTIVE MEMBERS'] = 'НЕАКТИВНЫЕ УЧАСТНИКИ'
 
