@@ -328,39 +328,6 @@ function processTranslation(container, force = false) {
     })
 }
 
-function processStringTranslation(input) {
-    console.info("wawawa! stringtranslating " + input)
-    const localization = getLocalizationForPage()
-    if(!localization.strings || !input) return input;
-    
-    //we alter this string as it's processed to avoid definition overlaps
-    let scanningInput = input
-    let finalInput = input
-    
-    //we want to prioritize phrases over words
-    const sortedTranslations = Object.entries(localization.strings).sort((a, b) => b[0].length - a[0].length)
-    sortedTranslations.forEach(([phrase, replacement]) => {
-        if(phrase.length > scanningInput.length) return;
-        console.info("wawawa! heres a possibly suitable phrase: " + phrase) 
-
-        //this regex looks literally insane but it's a faster way of looking up phrases in the string
-        //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-        const phraseRegex = new RegExp(`(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
-
-        // we check the scanningInput for matches
-        while ((match = phraseRegex.exec(scanningInput)) !== null || scanningInput == phrase) {
-            const translated = replacement;
-            console.info("wawawa! success. translating " + phrase + " to " + translated) 
-            
-            // replace the inputs - scanning to remove the match, finalInput to add the definition to the output
-            scanningInput = scanningInput.replaceAll(match[0], "")
-            finalInput = finalInput.replaceAll(match[0], translated)
-        }
-    })
-    
-    return finalInput
-}
-
 env.localization = {
    dialogues: {},
    definitions: {}, 

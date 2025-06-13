@@ -1,8 +1,8 @@
 env.localization.page['citystreet'] = {dialogues: {},
     definitions: {
-        'оло': `'близнецовое название для судов серое'`,
-        'начистоту': `'предельно честно'`,
-        'θсеть': `'используется вместо сероегласа';'упрощённый термин для светлых близнецов'`
+        'оло': {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'близнецовое название для судов серое'` },
+        'начистоту': {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'предельно честно'` },
+        'θсеть': {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'используется вместо сероегласа';'упрощённый термин для светлых близнецов'`},
     },
     strings: {
         "pretty sure this envoy guy isn't being remembered right lmao": "лмао кажется этого челика-посла не так хорошо запомнили",
@@ -63,7 +63,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*akizet*/ "i will have the orange": "апельсин, пожалуйста",
         /*cashier*/ "The...": "Апель...",
         /*cashier*/ "Oh, yeah! OK!": "Ах, ага! Да!",
-        /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновый кофе... Это будет стоить bõXÖf±ÔVã5Öf±Ô",
+        /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновый кофе... Это будет стоить бõXÖф±ÔЪã5Öф±Ô",
         /*envoy*/ "I got you covered, Akizet.": "Счёт на мне, Акизет.", 
         /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ.",
         /*cashier*/ "Just wait a minute and we'll have those ready.": "Одну минутку, пожалуйста, сейчас будет готово.",
@@ -101,7 +101,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "What did you just say, Akizet?": "Вы что-то сказали, Акизет?",
         /*akizet*/ "what? nothing": "что? ничего",
         /*envoy*/ "Oh, all right. Must be my allergies or something.": "Ох, что ж. Должно быть моя аллергия или вроде того.",
-        /*envoy*/ "They always act up during the season of fruit.": "Она постоянно возвращается в сезон сбора плодов.", 
+        /*envoy*/ "They always act up during the season of fruit.": "Она постоянно возвращается в сезон плодов.", 
 
         /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
@@ -526,7 +526,7 @@ tv2
         ОНА ЛЕТИТ?
 
     television
-        Живая трансляция из Нью Йорка для наших международных зрителей,
+        Живая трансляция из Нью-Йорка для наших международных зрителей,
         Доброе утро, доброе утро всем вам, мы снова с...
 
     sourceless
@@ -659,7 +659,7 @@ start
         ВНИМАНИЕ::'ранее просмотренный поток';'соединяется с дополнительным потоком';'пропустить вперёд?'
             SHOWIF::[["PAGE!!skipcheck", false], ["embassy_d2_complete", true], ["citystreet__envoychat-start", true]]
             WAIT::500
-            EXEC::cutscene(true);setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
+            EXEC::cutscene(true);page.formedDefinitionStrings = undefined;setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
 
     sourceless
         МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНИЕ НАШИХ ПРЕДПОЧТЕНИЙ
@@ -871,7 +871,7 @@ ep1extension
     sourceless
         Я ПОДАВЛЯЮ ВОСТОРЖЕННЫЕ ЗАВИТКИ В СВОИХ РЕЦЕПТОРАХ
         ДА--ЭТО ИДЕАЛЬНАЯ ПОДВОДКА! МОЛОДЕЦ, ПОСОЛ
-        Я ВЕДУ СЕБЯ НЕСКОЛЬКО ОЗАДАЧЕННО... ДА, ЭТО ПРОСТО ПРИДЁТ МНЕ В ГОЛОВУ!
+        Я ВЕДУ СЕБЯ НЕСКОЛЬКО ОЗАДАЧЕННО... ДА, ОНО ПРОСТО ПРИДЁТ МНЕ В ГОЛОВУ!
 
     akizet
         хмм...

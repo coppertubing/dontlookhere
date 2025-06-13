@@ -81,7 +81,7 @@ cor_ru.entity_menu = {
         "ENTITY::'listener'": "СУЩНОСТЬ::'слушатель'",
         "ENTITY::'timestopper'": "СУЩНОСТЬ::'времядержец'",
         "ENTITY::'window'": "СУЩНОСТЬ::'окно'",
-        "ENTITY::'simulacra dispensary'": "СУЩНОСТЬ::''", // --- unf
+        "ENTITY::'simulacra dispensary'": "СУЩНОСТЬ::'раздатчик симулякров'",
         "ENTITY::'tir qou'": "СУЩНОСТЬ::'тир куу'",
         "ENTITY::'jut qou'": "СУЩНОСТЬ::'жат куу'",
         "ENTITY::'kiv qou'": "СУЩНОСТЬ::'кив куу'",
