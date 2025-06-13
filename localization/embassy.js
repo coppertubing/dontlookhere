@@ -1,7 +1,7 @@
 console.info("the embassy.js is here! - @cor-RU:embassy", cor_ru.fancy.general)
 
 env.localization.page['embassy'] = {dialogues: {},
-
+strings: {},
 }
 console.info("%cestablished chopped localization! - @cor-RU:embassy", cor_ru.fancy.general)
 
