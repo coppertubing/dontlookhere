@@ -1,3 +1,5 @@
+console.info("the embassy.js is here! - @cor-RU:embassy", cor_ru.fancy.general)
+
 env.localization.page['embassy'] = {dialogues: {},
     definitions: {
 
@@ -237,9 +239,12 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
     },
 }
+console.info("%cestablished localization! - @cor-RU:embassy", cor_ru.fancy.general)
 
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+
+console.info("%cif-checks! - @cor-RU:embassy", cor_ru.fancy.general)
 
 setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
@@ -247,6 +252,8 @@ setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label"
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
 }}, 10)
+
+console.info("%cbeech! - @cor-RU:embassy", cor_ru.fancy.general)
 
 // === DIALOGUES === //
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
@@ -3216,7 +3223,7 @@ ____END
         end recollection<+>END
             EXEC::change("embassy_d2_complete", true);env.bgm.pause();corruRefresh()
 `)
-
+console.info("%cdialogue! - @cor-RU:embassy", cor_ru.fancy.general)
 
 
 // == COLLAPSE == //

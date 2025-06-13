@@ -777,25 +777,32 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         page: {
             func: (consolething)=>{
+                console.info("%cbeginning function - @cor-RU:page", cor_ru.fancy.general)
                 new Promise((resolve) => {
+                    console.log("%cpromise - @cor-RU:page", cor_ru.fancy.general)
                     if (consolething) cor_ru.updateResources()
                     resolve(getLocalizationForPage(true))
                 })
                 .then(()=>{
+                    console.info("%cthen - @cor-RU:page", cor_ru.fancy.general)
                     if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
                             
                     processTranslation();
+                    console.info("%cprocess1 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processStatic(true);
                     cor_ru.processMenu(true);
+                    console.info("%cprocess2 - @cor-RU:page", cor_ru.fancy.general)
 
                     processTranslation(document.querySelector(`#definition-box`));
                     processTranslation(document.querySelector(`#mindspike-scanner`));
                     processTranslation(document.querySelector(`#ozo-mask-grid`))
+                    console.info("%cprocess3 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processWeirdTranslation("mindpike");
                     cor_ru.processWeirdTranslation(".mindsci-status", "definition");
                     cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+                    console.info("%cprocess4 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.observer.common.observe();
                     cor_ru.observer.entMenu.observe();
@@ -803,6 +810,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                     cor_ru.observer.dialogue.observe();
                     cor_ru.observer.masks.observe();
                     if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observer.party.observe();}
+                    console.info("%cobservers - @cor-RU:page", cor_ru.fancy.general)
 
                     if (consolething) console.log(consolething[0], consolething[1])
                 })
