@@ -655,11 +655,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 el.querySelectorAll(" *").forEach(el=>{el.classList.add('tskip')})
             } // dont want it touching old readouts
             if (length == 1) {
-                for (const childNode of el.childNodes) {
-                    if (childNode.nodeType === Node.TEXT_NODE) {
-                        if (childNode.textContent == "NOTE::'restored partial recent log'") childNode.textContent = processStringTranslation(childNode.textContent)
-                    }
-                }
+              if (el.lastElementChild.textContent == "NOTE::'restored partial recent log'") processTranslation(el, true)
             } // touching the restored partial log note is fine tho
             length--})
         
