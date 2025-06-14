@@ -861,7 +861,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
     // corru.works why
 
-    embassyCoherent = function () {
+    embassyCoherent: function () {
     if (env.localization.page['localocean']) env.localization.page['localocean'].entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`
     cor_ru.entity_menu.readouts['the embassy']['desc'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
