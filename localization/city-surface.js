@@ -1355,11 +1355,11 @@ env.localization.page['citystreet'].dialogues["water"] = generateDialogueObject(
 start
     sourceless
         я останавливаюсь, чтобы полюбоваться диковинным видом
-        with their blinding star out of sight, the bright cousins bathe their city in their own light
+        когда их слепящая звезда скрывается из виду, светлые близнецы омывают города своим собственным светом
         мёртвые шпили блестят точно как тувазу вейльки
-        my receptors' spirals loosen, and i nearly chuckle--funny to think that such a sight makes me miss those days of hunting
-        it was always such an exciting trip
-        the envoy notices me, likely taking my reaction as pure awe
+        спирали моих рецепторов расслабляются, и я едва не усмехаюсь-- забавно, что подобное зрелище заставляет меня скучать по тем дням охоты
+        то всегда было таким увлекательным путешествием
+        посол замечает меня, видимо, принимая мою реакцию за чистое восхищение
         
     envoy
         Сейчас лучшее время для прогулок.
@@ -1368,27 +1368,27 @@ start
         но из-за новых огней это место ощущается более холодным.
 
     sourceless
-        there is something about them that exaggerates the metal and glass
-        for an instant, i adjust my eyes to receive the light as orange
-        yes--that would have looked nicer...
+        что-то в них есть, что подчёркивает металл и стекло
+        на мгновение я настраиваю глаза так, чтобы воспринимать свет оранжевым
+        да--выглядело бы лучше...
 
     akizet
         те старые - они были пламенем?
 
     envoy
         Хаха, нет, они просто слегка напоминали его.
-        Их называли натриевыми лампочками или вроде того.
+        Их называли натриевыми лампочками или чем-то подобным.
         Что-то в их токе - ну, Вы понимаете, молниях - создавало оранжевый свет, а не голубой, как сейчас. 
 
     akizet
-        it must have been a great effort to uproot each light stalk
+        должно быть, стоило больших усилий выкорчевать каждый световой стебель
 
     sourceless
-        the envoy laughs outwardly
-        my choice of words so often entertains him
-        it is almost frustrating... 
-        but i do the same when he describes our devices
-        so it is only fair
+        посол хохочет без капли стыда
+        мой выбор слов так часто смешит его
+        такое почти раздражает... 
+        но я делаю то же самое, когда он описывает наши устройства
+        так что вполне справедливо
 
     envoy
         Нет, нет, им достаточно было поменять светящую.
@@ -1405,12 +1405,12 @@ start
 
     akizet
         ох, извините
-        the cave-lights of my home were tended to individually by caretakers!
-        i had just not even considered that
-        how much might lay beneath the soil of your city...
-        these street lights,
-        do they feed from a great distributive heart somewhere beneath the city?
-        our structures use this approach
+        за пещерными светилами моего дома по отдельности ухаживали смотрители!
+        я просто об этом даже и не подумала
+        сколько всего может таиться под почвой вашего города...
+        эти уличные фонари,
+        питаются ли они из великого распределительного сердца где-то под городом?
+        наши структуры используют этот подход
 
     envoy
         Ничего столь впечатляющего, Акизет.
@@ -1420,9 +1420,9 @@ start
         Раньше она работала в депортаменте транспортировки, до всего этого.
 
     sourceless
-        his deflecton hides his discomfort in explaining these things to me...
-        it is like a reversal of that silly interview
-        only i have no script of questions i must ask--so i cease
+        его парирование скрывает его дискомфорт при объяснении подобных вещей...
+        словно то забавное интервью, просто роли поменялись
+        вот только у меня нет сценария с вопросами, которые я должна задать--так что я прекращаю
     
     RESPONSES::akizet
         я поговорю<+>END

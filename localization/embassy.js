@@ -125,12 +125,16 @@ env.localization.page['embassy'] = {dialogues: {},
         "jut qou": "жат куу",
         "vel qou": "вел куу",
 
-        "mystery cyst": "таинственная циста",
         "attendant": "слуга",
         "movefriend": "движедруг",
         "my seat": "моё кресло",
+            "start the meeting": "начать совещание",
         "barfriend": "бардруг",
         "orange simulacrum": "апельсиновый симулякр",
+            "sip-u-lacrum": "сюрп-лякр",
+                "THE SIMULACRUM STAYS THE SAME, BUT THE TASTE REGISTERS CLEARLY": "СИМУЛЯКР ОСТАЕТСЯ ПРЕЖНИМ, ОДНАКО ВКУС ВОСПРИНИМАЕТСЯ ЧЁТКО",
+                "THE BRIGHTNESS OF IT DISTORTS MY FEATURES AND SENDS MY RECEPTORS INTO A REFLEXIVE CURL": "ЕГО ЯРКОСТЬ (??) ИСКАЖАЕТ МОИ ЧЕРТЫ И ПОСЫЛАЕТ РЕЦЕПТОРЫ В НЕПРОИЗВОЛЬНЫЙ ЗАВИТОК",
+                "STRONG!! BUT THE CITRUS INSPIRES A PLEASANT SATIATION": "КРЕПКИЙ!! НО ЦИТРУС ВЫЗЫВАЕТ ПРИЯТНОЕ ЧУВСТВО НАСЫЩЕНИЯ",
         "veilklight": "вейлькосвет",
         "rejuvenation chamber": "омолаживающая камера",
         "kalstik stand": "подставка кальстика",
@@ -146,6 +150,9 @@ env.localization.page['embassy'] = {dialogues: {},
         // discovery
 
         // suspicion
+        "mystery cyst": "таинственная циста",
+            "examine": "осмотреть",
+
         /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, меня радует, что это ты подключилась",
         /*echo*/ "as it is with worry for your well-being that this message finds you": "поскольку это послание адресовано тебе из беспокойства о твоем благополучии",
         /*echo*/ "it must be said immediately:": "это должно быть сказано немедленно:",
@@ -3065,7 +3072,7 @@ creature
     kazki
         ох!!
         ты не слышала?
-        это новая разработка θжатов
+        это новая разработка жатов
         совсем недавняя! эти новые коммуникаторы...
         они позволяют установить своего рода соединение с человеческим коллективом!
         "интернет", как они его называют!
@@ -3195,22 +3202,22 @@ start
         так точно!
 
     sourceless
-        and nothing. i surely spoke to the speaker at some point -- и ничего. я же точно поговорила с отправителем
-        but they must be well-practiced in subterfuge -- но он, должно быть, опытен в обмане
-        and did you notice - no one else seemed concerned -- и заметил ли ты - больше никто не выглядел взволнованно
+        и ничего. я же точно говорила с отправителем
+        но он, должно быть, опытен в обмане
+        и заметил ли ты - больше никто не выглядел взволнованно
 
     funfriend
         что насчёт гакву? она выглядела удивлённой
         
     sourceless
-        true, but it is a strange matter to begin with -- верно, но эта тема сама по себе странная
-        what if none of this is real to begin with, and the message was simply made to confuse me? -- что, если ничего из этого изначально не реально, а цель сообщения - запутать меня?
-        no, no joke would ever be taken this far -- нет, никакая шутка не зашла бы настолько далеко
-        they would simply have cracked at my confrontration... -- отправитель бы признался, когда я допрашивала его // бы да бы
-        and to that end - could i be the only one who received this message? -- к слову - может я единственная получательница этого сообщения?
-        why not cavik?! i would have seen it in his receptors if he was also contacted! -- почему не кавик?! если бы с ним тоже связались, я бы увидела по его рецепторам!  // БЫ ДА БЫ
-        and he is the greatest threat of all to any secrecy!! -- и он худшая из всех угроз любой секретности!!
-        so what if he is a part of this conflict, too?? -- а что, если он тоже часть этого конфликта??
+        верно, но эта тема сама по себе странная
+        что, если ничего из этого никогда не было реально, а цель послания - запутать меня?
+        нет, никакая шутка не зашла бы так далеко
+        отправитель бы признался, допроси я его
+        и к слову - могу я быть единственной получательницей этого сообщения?
+        почему не кавик?! если бы с ним тоже связались, я бы увидела по его рецепторам!
+        и он худшая из всех угроз любой секретности!!
+        а что, если он тоже часть этого конфликта??
     
     funfriend
         акизет всё в полном порядке
@@ -3231,7 +3238,7 @@ start
         это займёт так долго... столько, столько θглаз
         развледруг, ты же знаешь, я не могу просто так прекратить свою работу
         в особенности если мы только переступили черту постижения зова
-        this is everything
+        this is everything --- эаэаэаэа
     
     funfriend
         акизет, я не могу знать что правильно
@@ -3271,11 +3278,11 @@ start
         это правда...
         но наши светлые близнецы прекрасно хранят секреты
         они знают столькое, что уже давно могло бы поднять беспокойство
-        and not once has any of it ever hit their public mind -- и ничто из этого ещё не попадало в ???
-        indeed, they have very little correspondence outside of direct contacts -- точно, у них крайне мало корреспонденции помимо прямых контактов
-        and i am the only direct contact for the call research initiative -- и я - единственный прямой контакт с инициативой 
-        though, there is kazki's construction contact... -- хотя, у казки есть контакт с ???конструкциистроительства ...
-        our cross-initiative ties will make for some sensitive matters to avoid -- из-за наших межинициативных связей придётся избегать некоторых деликатных тем
+        and not once has any of it ever hit their public mind *** и ничто из этого ещё не попадало в ???
+        indeed, they have very little correspondence outside of direct contacts *** точно, у них крайне мало корреспонденции помимо прямых контактов
+        and i am the only direct contact for the call research initiative *** и я - единственный прямой контакт с инициативой 
+        though, there is kazki's construction contact... *** хотя, у казки есть контакт с ???конструкциистроительства ... --- почему ты берешь мои тире!! кстати привет артур
+        our cross-initiative ties will make for some sensitive matters to avoid *** из-за наших межинициативных связей придётся избегать некоторых деликатных тем
 
     funfriend
         они не могут засечь зов при помощи собственных технологий
@@ -3283,10 +3290,10 @@ start
         какой помощи вы от них ожидаете?
     
     sourceless
-        perhaps we can share a few things... -- возможно мы можем поделиться парой вещей...
-        do you recall the murmurs of 'integrated bright technology'? -- помнишь ли ты перешёптывания об 'интегрированной светлой технологии'? //???
-        since it was shelved... -- так как это отложили...
-        the technology division has stored much of the schematics plainly within embassy archives -- технологическая дивизия оставила многие схемы в архивах посольства // как включить plainly
+        возможно мы можем поделиться парой вещей...
+        помнишь ли ты перешёптывания об "интегрированной светлой технологии"?
+        since it was shelved... *** так как это отложили... --- с тех пор, как это отложили... 
+        the technology division has stored much of the schematics plainly within embassy archives *** технологическое отделение оставило многие схемы в архивах посольства // как включить plainly --- у всех на глазах? на виду? открытых архивах
         о да, всё начинает сходиться, не так ли? как захватывающе oh yes, this is coming together, is it not? how exciting
 
     funfriend
@@ -3306,7 +3313,7 @@ start
         ВНИМАНИЕ::'поток памяти продолжается извне';'следовать за потоком?'
 
 ____SHOWONCE::
-    moth
+    moth --- это тоже
         looks like this will take you to the street spatial thoughtform...
         i'm reading that it leads directly to something that's accessible there already
         weird... looks like it has more than before? specifically that chat with gordon
@@ -3325,9 +3332,9 @@ ____SHOWONCE::
 ____END
 
     RESPONSES::sys
-        follow stream<+>END
+        следовать за потоком<+>END
             EXEC::change("embassy_d2_complete", true);change("TEMP!!ep1_goingtogordon", true);moveTo("/local/city/street/")
-        end recollection<+>END
+        завершить вспоминание<+>END
             EXEC::change("embassy_d2_complete", true);env.bgm.pause();corruRefresh()
 `)
 
@@ -5406,7 +5413,7 @@ taking
     miltza
         нет, нет--я даже не уверена, что мы не сможем вернуться
         но я взяла архивирующие ядра, на которых храню свои дизайны
-        так что - если они будут утеряны, то потеря небольшая! // кворкс обожает тавтологию...... пересмотреть после верхнего -- на данный момент "они" как что-то типа "будешь ли ты брать с собой свои _работы_"
+        так что - если они будут утеряны, то потеря небольшая! // кворкс обожает тавтологию...... пересмотреть после верхнего *** на данный момент "они" как что-то типа "будешь ли ты брать с собой свои _работы_"
 
     RESPONSES::akizet
         that is good<+>art
