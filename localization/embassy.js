@@ -125,6 +125,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "jut qou": "жат куу",
         "vel qou": "вел куу",
 
+        'container': `контейнер`,
         "attendant": "слуга",
         "movefriend": "движедруг",
         "my seat": "моё кресло",
@@ -267,6 +268,10 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
 
         // discovery
+        'container': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обработанные металлы, легкодоступные'</span>`,
+
         'movefriend': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'соединитель'
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'один из многих во плоти посольства'</span>`,
