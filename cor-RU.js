@@ -643,7 +643,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         cor_ru.processWeirdTranslation('.reply', 'endtext');
     },
     processReadout: function (force) {
-        processTranslate(document.querySelector("#minireadout"))
+        processTranslation(document.querySelector("#minireadout"))
 
         readout = document.querySelector("#readout")
         messages = readout.querySelectorAll(".message")
@@ -655,7 +655,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 el.querySelectorAll(" *").forEach(el=>{el.classList.add('tskip')})
                 length--}}) // dont want it touching old readouts
         
-        processTranslate(document.querySelector("#readout"))
+        processTranslation(document.querySelector("#readout"))
     },
 
     // funky functions that do not forbid you from moving cyrillic-style
