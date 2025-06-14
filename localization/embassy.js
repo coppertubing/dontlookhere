@@ -152,6 +152,9 @@ env.localization.page['embassy'] = {dialogues: {},
         // suspicion
         "mystery cyst": "таинственная циста",
             "examine": "осмотреть",
+                "echo": "эхо",
+
+        "i should check the cyst first": "сперва стоит взглянуть на цисту",
       
         // collapse part 1
     }, 

@@ -464,7 +464,7 @@ start
 wait
     self
         ПОДОЖДИ
-            EXEC::env.citystreet.ep1velzie();
+            EXEC::env.citystreet.ep1velzie();setTimeout(()=>{cor_ru.advancewarndialogue()}, 15000)
 `)
 
 env.localization.page['citystreet'].dialogues.tvresp = generateDialogueObject(`

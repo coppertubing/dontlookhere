@@ -1008,7 +1008,7 @@ cor_ru['advancewarnclick'] = function () {
     document.body.insertAdjacentHTML('beforeend', `
         <div id="ru-warning" class="popup-warning">
             <div class="sysblock">
-                <div class="sysbox">
+                <div class="sysbox ru">
                     <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
                     <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
                     <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста.</p>

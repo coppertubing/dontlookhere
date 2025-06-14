@@ -455,6 +455,8 @@ env.localization['strings'] = {
     "confirm": "подтвердить",
     "retract": "отменить",
 
+    "skipping ahead...": "перемотка вперёд...",
+
     "internal log buffer cleared after reaching limit (80) due to attached external record device": "внутренний буфер лога очищен после достижения предела (80) из-за подключенного внешнего устройства записи",
 
     "refresh": "обновить",
