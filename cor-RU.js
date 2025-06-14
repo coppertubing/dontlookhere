@@ -1024,7 +1024,7 @@ cor_ru['advancewarnclick'] = function () {
     `)
 }
 cor_ru['advancewarndialogue'] = function () {
-    document.body.insertAdjacentHTML('beforeend', `
+    setTimeout(()=>{document.body.insertAdjacentHTML('beforeend', `
         <div id="ru-warning" class="popup-warning">
             <div class="sysblock">
                 <div class="sysbox ru">
@@ -1040,7 +1040,7 @@ cor_ru['advancewarndialogue'] = function () {
                 </div>
             </div>
         </div>
-    `)
+    `)}, 16000)
 }
 env.entities['advance log'] = {
     hide: true,
