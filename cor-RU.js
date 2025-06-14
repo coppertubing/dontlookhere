@@ -382,6 +382,9 @@ cor_ru = {
 
 
 
+.ru {
+    color: var(--bastard-color) !important;
+}
 
 body[state="corru-loaded"][menu="none"]:not(.in-dialogue)::before, body.loading::after, body.corru-refreshing::after {
     content: "ПРЕДУПРЕЖДЕНИЕ:'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАЗРЕШЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
@@ -989,6 +992,83 @@ cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.f
 cor_ru.observer.party.itself = new MutationObserver(()=>{cor_ru.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.page.itself = new MutationObserver(()=>{cor_ru.observer.page.func(["%cpage observed! - @cor-RU", cor_ru.fancy.observed])})
 
+// advance log thingy
+cor_ru['advance'] = function () {
+    MUI('off'); flash(true); cutscene(true); exitMenu();
+    if(env.bgm) env.bgm.fade(env.bgm.volume(), 0, 1000)
+    corruStatic.play()
+    corruStatic.fade(0, getModifiedVolume('music', 1), 1000)
+                
+    setTimeout(()=>{
+        sessionStorage.clear()
+        location.replace('/')
+    }, 1000)
+}
+cor_ru['advancewarnclick'] = function () {
+    document.body.insertAdjacentHTML('beforeend', `
+        <div id="ru-warning" class="popup-warning">
+            <div class="sysblock">
+                <div class="sysbox">
+                    <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
+                    <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
+                    <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста.</p>
+                    <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
+                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз пройдите диалог с Гордоном в комнате высоко наверху до конца.</p>
+                    <div class="buttons">
+                        <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
+                        <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+}
+cor_ru['advancewarndialogue'] = function () {
+    document.body.insertAdjacentHTML('beforeend', `
+        <div id="ru-warning" class="popup-warning">
+            <div class="sysblock">
+                <div class="sysbox ru">
+                    <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
+                    <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
+                    <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста. Имейте в виду, что лог продвигается автоматически при перезагрузке страницы.</p>
+                    <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
+                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз пройдите диалог с Гордоном в комнате высоко наверху до конца.</p>
+                    <div class="buttons">
+                        <span id="gpu-done" class="button" onclick="document.querySelector('#ru-warning').remove()">оставить всё как есть</span>
+                        <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `)
+}
+env.entities['advance log'] = {
+    hide: true,
+    name: 'advance log',
+    type: "system-component",
+    image: "/img/textures/target.png",
+    text: `::SYSTEM COMPONENT
+    ::ALERT::<span style="color:var(--bright-color)">'current mindspike log procession concluded';'static environment sustained'</span>
+    ::NOTE::'log state will advance on next visit';'utilize ACT:advance to immediately proceed to next state'`,
+    actions: [
+        {
+            name: "advance",
+            exec: ()=>{cor_ru.advance()},
+            showIf: ()=>{
+                if (check('ep1_end') && !check('fbx__ep2intro-end')) return false
+                else return true
+            },
+        },
+        {
+            name: "advance",
+            exec: ()=>{cor_ru.advancewarnclick()},
+            showIf: ()=>{
+                if (check('ep1_end') && !check('fbx__ep2intro-end')) return true
+                else return false
+            },
+        }
+    ]  
+}
 
 console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
 console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)

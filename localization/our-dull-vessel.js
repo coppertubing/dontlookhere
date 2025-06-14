@@ -49,7 +49,7 @@ env.localization.page['dullvessel'] = {dialogues: {},
         'parasite plane': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
 ::НЕВИЗУАЛИЗИРУЕМА
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в олтазни'</span>`,
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в ${processDefinitionsInString("олтазни")}'</span>`,
 
         'climbing wall': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
@@ -78,7 +78,7 @@ env.localization.page['dullvessel'] = {dialogues: {},
 
         'advanced rejuvenation chamber': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'предоставляет уют сна, даже в θсмерти';'спроектирована как капсула для выживания в случае обвала серое'</span>`,
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'предоставляет уют сна, даже в ${processDefinitionsInString("θсмерти")}';'спроектирована как капсула для выживания в случае обвала серое'</span>`,
 
         'high-pressure body': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
@@ -98,10 +98,10 @@ env.localization.page['dullvessel'] = {dialogues: {},
 env.localization.page["dullvessel"].dialogues["pilot"] = generateDialogueObject(`
 start
     akizet
-        здравствуй тх¥ÙYg^Ž×¯Rõф±
+        здравствуй тх¥Ӱ́Йг^Ӟ×¯Юõф±
     
     pilot cyst
-        им%¶º½Òmõ‹SK’æÃE:Ž‹©é·0³Жºž­¥ÙУж0i7]ëz¦‹5DÒ§´·Ó¡EÔ5BÆMg^ŽíõýnÇХ¸×¯Rõf±ÔЦãXÖ5&Ñ/ 
+        им%¶º½Òмõ‹СК’æÃE:Ӷ‹©é·0³Жºҹ­ЎщУж0i7]зz¦‹5ДÒ§´·Ó¡EÔ5BÆMъ^Ю̂и́õӯӈÇХ¸×¯Пõф±ÔЦãXÖ5&б/ 
     
     moth
         втф
