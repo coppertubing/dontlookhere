@@ -712,7 +712,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                         })
                     }
                 })
-
+                processTranslation(document.querySelector("#entity-menu"))
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
