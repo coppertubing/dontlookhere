@@ -639,15 +639,15 @@ weirdlook
         почему обески так выглядят?
 
     moth
-        well, funfriend said visual data was totally gone, 
-        so he had to use cached "network signatures" from "the collective"
-        which... i guess is like something like their internet
-        they've talked about it a few times in old interviews
-        particularly when they first got access to <em>our</em> internet
-        looks like they had a lot of fun coming up with stuff
+        ну, развледруг сказал что данные пропали с концами, 
+        так что ему пришлось использовать "сетевые подписи" из "коллектива"
+        который... можно сказать что это обесковый интернет
+        они упоминали его несколько раз в интервью
+        особенно когда впервые получили доступ к <em>нашему</em>
+        кажись они как следует повеселились пока придумывали их
     
     RESPONSES::self
-        yes it does<+>obeskloop
+        и правда<+>obeskloop
             FAKEEND::(назад)
 
 kalstik
@@ -695,51 +695,51 @@ archives
 
 state
     self
-        is the embassy still around?
+        а посольство ещё существует?
 
     moth
-        there is <em>an</em> embassy, but it ain't this one
-        this one collapsed, like it completely melted
+        есть <em>кое-какое</em> посольство, но оно не то же самое что и это
+        это рухнуло, расплавилось целиком
 ____SHOWIF::"ep4__entrancefinal"
-        and now we know why
-        but knowing that, i really wonder why they bothered building another one
-        was it to save face?
-        maybe they have a new research team investigating the aftermath?
-        or maybe they just didn't wanna totally abandon us, despite what happened
-        the obesk totally closed up after the collapse, so we don't have any answers yet
+        и теперь мы знаем почему
+        но узнав я теперь реально не понимаю - на кой чёрт им было строить ещё одно?
+        чтобы сохранить лицо?
+        может у них есть новая исследовательская команда, разбирающая последствия?
+        или может они просто не хотели окончательно бросать нас, несмотря на случившееся
+        обески насовсем закрылись после обвала, так что ответов пока нет
 
 ____SHOWIF::["ep4__entrancefinal", false]
-        nobody really knows why, that's when the obesk started closing up
-        stopped sending out visitors to cities, fbx contacts made themselves sparse...
-        it was a whole thing
-        and the ocean around the embassy hasn't really been the same since
+        никто особо не знает почему, а после этого обески стали отдаляться
+        больше не высылали гостей в города, контакты с ФБКС поредели...
+        это было целым событием
+        а океан вокруг посольства не восстановился до сих пор
 ____END
     
     RESPONSES::self
-        i see<+>obeskloop
+        понятно<+>obeskloop
             FAKEEND::(назад)
 
 team
     self
-        are akizet's team members still around?
+        а члены команды акизет до сих пор живы?
 
     moth
-        no idea
+        без понятия
 ____SHOWIF::"ep4__entrancefinal"
-        really, truly, there's so much unanswered now that i can't even guess
-        maybe they fled home? 
-        maybe they're still here, working within their conflict
-        we're just gonna have to find out i guess
+        на самом деле, сейчас реально так много вопросов без ответа что у меня даже догадок нет
+        может они бежали домой?
+        может они всё ещё здесь, работают в своём конфликте
+        думаю нам просто придётся выяснить
 
 ____SHOWIF::["ep4__entrancefinal", false]
-        i mean, people say they all disappeared, but...
-        honestly, like, all the obesk pulled back
-        i wouldn't be surprised if they just went back home
-        whatever happened with the embassy collapse completely spooked all of them
+        ну, люди говорят что они все пропали, но...
+        ес честно, типа, обески вообще перестали появляться
+        не удивлюсь, если они просто вернулись домой
+        что бы не случилось в посольстве, оно совсем перепугало их всех
 ____END
     
     RESPONSES::self
-        i see<+>obeskloop
+        понятно<+>obeskloop
             FAKEEND::(назад)
 
 groundsmind
@@ -3375,22 +3375,22 @@ start
         ВНИМАНИЕ::'поток памяти продолжается извне';'следовать за потоком?'
 
 ____SHOWONCE::
-    moth --- это тоже
-        looks like this will take you to the street spatial thoughtform...
-        i'm reading that it leads directly to something that's accessible there already
-        weird... looks like it has more than before? specifically that chat with gordon
+    moth
+        кажись это приведёт тебя к пространственной мыслеформе с улицей
+        показывает, что оно ведёт к чему-то уже доступному
+        странно... выглядит так, будто там теперь больше данных? именно в том разговоре с гордоном
             SHOWIF::"citystreet__envoychat-start"
-        i think funfriend fixed it? i didn't even know that part of it was busted
+        думаю развледруг починил его? мне и в голову не приходило что та часть была сломана
             SHOWIF::"citystreet__envoychat-start"
-        or... maybe this thoughtform and the street are interwoven somehow.
+        или... может эта мыслеформа как-то взаимосвязана с улицей.
             SHOWIF::"citystreet__envoychat-start"
-        you said you hear music, right? does any of it sound familiar?
+        ты говоришь, что слышишь музыку, да? там есть что-то знакомое?
             SHOWIF::[["++mothglobal-why_music"],["citystreet__envoychat-start"]]
-        because, it could be that when funfriend repaired this thoughtform, 
+        потому что, мб когда развледруг починил эту мыслеформу,
             SHOWIF::"citystreet__envoychat-start"
-        he also repaired this memory stream into the city that had more data
+        он также починил этот поток памяти в город в котором было больше данных
             SHOWIF::"citystreet__envoychat-start"
-        so if you don't follow the stream right now, you should still just be able to go there later and see it anyway
+        так что если ты не последуешь за потоком прям сейчас, наверняка всё ещё сможешь просто добраться до туда позже и посмотреть
 ____END
 
     RESPONSES::sys
