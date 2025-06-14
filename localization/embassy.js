@@ -3195,22 +3195,22 @@ start
         так точно!
 
     sourceless
-        and nothing. i surely spoke to the speaker at some point
-        but they must be well-practiced in subterfuge
-        and did you notice - no one else seemed concerned
+        and nothing. i surely spoke to the speaker at some point -- и ничего. я же точно поговорила с отправителем
+        but they must be well-practiced in subterfuge -- но он, должно быть, опытен в обмане
+        and did you notice - no one else seemed concerned -- и заметил ли ты - больше никто не выглядел взволнованно
 
     funfriend
         что насчёт гакву? она выглядела удивлённой
         
     sourceless
-        true, but it is a strange matter to begin with
-        what if none of this is real to begin with, and the message was simply made to confuse me?
-        no, no joke would ever be taken this far
-        they would simply have cracked at my confrontration...
-        and to that end - could i be the only one who received this message?
-        why not cavik?! i would have seen it in his receptors if he was also contacted!
-        and he is the greatest threat of all to any secrecy!!
-        so what if he is a part of this conflict, too??
+        true, but it is a strange matter to begin with -- верно, но эта тема сама по себе странная
+        what if none of this is real to begin with, and the message was simply made to confuse me? -- что, если ничего из этого изначально не реально, а цель сообщения - запутать меня?
+        no, no joke would ever be taken this far -- нет, никакая шутка не зашла бы настолько далеко
+        they would simply have cracked at my confrontration... -- отправитель бы признался, когда я допрашивала его // бы да бы
+        and to that end - could i be the only one who received this message? -- к слову - может я единственная получательница этого сообщения?
+        why not cavik?! i would have seen it in his receptors if he was also contacted! -- почему не кавик?! если бы с ним тоже связались, я бы увидела по его рецепторам!  // БЫ ДА БЫ
+        and he is the greatest threat of all to any secrecy!! -- и он худшая из всех угроз любой секретности!!
+        so what if he is a part of this conflict, too?? -- а что, если он тоже часть этого конфликта??
     
     funfriend
         акизет всё в полном порядке
@@ -3271,11 +3271,11 @@ start
         это правда...
         но наши светлые близнецы прекрасно хранят секреты
         они знают столькое, что уже давно могло бы поднять беспокойство
-        and not once has any of it ever hit their public mind
-        indeed, they have very little correspondence outside of direct contacts
-        and i am the only direct contact for the call research initiative
-        though, there is kazki's construction contact...
-        our cross-initiative ties will make for some sensitive matters to avoid
+        and not once has any of it ever hit their public mind -- и ничто из этого ещё не попадало в ???
+        indeed, they have very little correspondence outside of direct contacts -- точно, у них крайне мало корреспонденции помимо прямых контактов
+        and i am the only direct contact for the call research initiative -- и я - единственный прямой контакт с инициативой 
+        though, there is kazki's construction contact... -- хотя, у казки есть контакт с ???конструкциистроительства ...
+        our cross-initiative ties will make for some sensitive matters to avoid -- из-за наших межинициативных связей придётся избегать некоторых деликатных тем
 
     funfriend
         они не могут засечь зов при помощи собственных технологий
@@ -3283,11 +3283,11 @@ start
         какой помощи вы от них ожидаете?
     
     sourceless
-        perhaps we can share a few things...
-        do you recall the murmurs of 'integrated bright technology'?
-        since it was shelved...
-        the technology division has stored much of the schematics plainly within embassy archives
-        о да, всё начинает сходиться вместе, не так ли? как захватывающе oh yes, this is coming together, is it not? how exciting
+        perhaps we can share a few things... -- возможно мы можем поделиться парой вещей...
+        do you recall the murmurs of 'integrated bright technology'? -- помнишь ли ты перешёптывания об 'интегрированной светлой технологии'? //???
+        since it was shelved... -- так как это отложили...
+        the technology division has stored much of the schematics plainly within embassy archives -- технологическая дивизия оставила многие схемы в архивах посольства // как включить plainly
+        о да, всё начинает сходиться, не так ли? как захватывающе oh yes, this is coming together, is it not? how exciting
 
     funfriend
         акизет мне не нравится эта идея! ахахаха
