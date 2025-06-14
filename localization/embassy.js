@@ -68,9 +68,7 @@ env.localization.page['embassy'] = {dialogues: {},
 
         "no tendril left to rot": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'all is harvested'` },
 
-        "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},
-
-        "life-pod": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},*/
+        "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},*/
     }, 
     strings: {
         "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "",
@@ -1683,41 +1681,41 @@ talk
         у нас уже не так часто есть время для простых разговоров
 
     cavik
-        очень нравится! the oceans are truly mesmerizing, nothing at all like home
-        you should see all the artifacts that the cousins have simply left to the water!
-        and on our expeditions, so many little creatures come up to examine our vessels
-        has bozko told you about the one he has taken?
+        очень нравится! океан и правда завораживает, совсем не как дома
+        видела бы ты все артефакты, которые близнецы просто отдают воде!
+        и на наших экспедициях столько маленьких созданий приплывают поглазеть на наши суда
+        бозко тебе не рассказывал о том, которого взял?
     
     sourceless
-        FOR THAT MOMENT I HEARD AN ECHO OF LARVAL JOY IN HIS VOICE
-        BUT IN THE SUBTLE TURN OF A RECEPTOR, I SEE HE FEELS HE SHOULD NOT HAVE SAID THAT
+        В ЭТОТ МОМЕНТ Я УСЛЫШАЛА В ЕГО ГОЛОСЕ ОТГОЛОСОК ЛИЧИНОЧНОЙ РАДОСТИ
+        НО ПО ЕДВА ЗАМЕТНОМУ ПОВОРОТУ РЕЦЕПТОРА Я ВИЖУ, ЧТО ОН ЧУВСТВУЕТ, НЕ НАДО БЫЛО ЭТОГО ГОВОРИТЬ
     
     cavik
-        that is fine, right?
-        you heard that from a veilk's whisper, not me
+        ему ведь можно, так?
+        если что, тебе вейльк шепнул, не я
     
     akizet
-        haha! it is! it is perfectly fine
-        well, the groundsmind says we should not, since the cousins could get mad, but...
-        i do not really care
-        tell me - have you contributed any more to the <span definition="NOTE::'partial translation';'inherited description-generated noun'">life-pod</span> project?
+        хаха! конечно! всё в полном порядке
+        ну, землемыслец говорит, что не стоит, поскольку близнецы могут рассердиться, но...
+        мне всё равно
+        расскажи мне - вносил ли ты ещё какой-нибудь вклад в проект по <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано из унаследованного описания'">капсулам жизни</span>?
     
     cavik
-        ahh! no! not in some time
-        but i hear they recently succeeded in sending a 'grain' back to obeski
-        it is, of course, being held in deep quarantine, but...
-        that it worked is promising alone
-        even if the cyst itself was bigger than both of us combined!
+        ааа! нет! уже давненько
+        но я слышал, им недавно удалось отослать "зерно" на обескию
+        разумеется, его пока что поместили в глубокий карантин, однако...
+        то, что это сработало, уже само по себе многообещающе
+        даже если циста была больше, чем мы вместе взятые!
 
     akizet
-        remarkable, i must check in with them to see how they did it
-        as trade continues, i imagine that organic materials will be the next leap in relations
-        if you find the time again, you should join the effort!
-        last i spoke with the team, they asked when they would see you again
+        удивительно, мне стоит связаться с ними и узнать, как они это сделали
+        по мере продолжения торговли, представляю, органические материалы станут следующим скачком в отношениях
+        если у тебя вновь появится время, тебе стоит присоединиться к работе!
+        последний раз, как я говорила с командой, они спрашивали, когда увидят тебя снова
     
     cavik
-        really??
-        i should! i will check in again with them!
+        серьёзно??
+        и правда стоит! я их как-нибудь проведаю!
     
     RESPOBJ::d1_cavikresp
 `)
@@ -3224,7 +3222,7 @@ start
         мне необходимо успокоиться, подойти к этому рационально
         но ты ведь понимаешь: я не могу доверять собственной команде
         и никакому другому куу--будь то здесь или на родине
-        я словно в городе, порабощённым <span class="code" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'агрессивная паразитическая наземная фауна';'захватывает разум жертвы для использования в качестве социального камуфляжа';'экивиковое ругательство';'сейчас не подразумевается как ругательство'">зузукри</span>
+        я словно в городе, порабощённом <span class="code" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'агрессивная паразитическая наземная фауна';'захватывает разум жертвы для использования в качестве социального камуфляжа';'экивиковое ругательство';'сейчас не подразумевается как ругательство'">зузукри</span>
         кто угодно может быть замешанным, частью этой "игры"
         и даже если мы продолжим наши исследования,
         что, если мы найдем что-то ещё, слишком близкое к истине?
