@@ -22,7 +22,4 @@ env.localization.page['localocean'] = {dialogues: {},
     }
 }
 
-cor_ru.embassyCoherent = function () {env.localization.page['localocean'].entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`}
-
 if(check('hub__funfriend-ep1fed')) cor_ru.embassyCoherent();

@@ -1,3 +1,4 @@
+if(check('hub__funfriend-ep1fed')) cor_ru.embassyCoherent();
 cor_ru.observer.page.func()
 cor_ru.processReadout()
 cor_ru.observer.page.observe()

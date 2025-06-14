@@ -1183,7 +1183,5 @@ cor_ru.entity_menu = {
     }
 }
 
-cor_ru.embassyCoherent = function () {cor_ru.entity_menu.readouts['the embassy']['desc'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`}
 
 Object.assign(env.localization['strings'], cor_ru.entity_menu['names'])
