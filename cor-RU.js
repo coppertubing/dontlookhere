@@ -452,6 +452,10 @@ body.loading::after {
     content: "ПОДТВЕРЖДЕНИЕ::'пропуск сегмента потока'";
 }
 
+#skip-vfx::before {
+    content: "ВЫПОЛНЯЕТСЯ::'продвижение сегмента'";
+}
+
 body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::before {
     content: "ПРАВАЯ КНОПКА МЫШИ";
 }
@@ -615,11 +619,13 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             processTranslation(document.querySelector(`#mod-warning`), true);
             processTranslation(document.querySelector(`#gpu-warning`), true);
             processTranslation(document.querySelector(`#wide-warning`), true);
+            processTranslation(document.querySelector(`#dialogue-skip`), true);
         } else {
             processTranslation(document.querySelector(`.cryptowarn`));
             processTranslation(document.querySelector(`#mod-warning`));
             processTranslation(document.querySelector(`#gpu-warning`));
             processTranslation(document.querySelector(`#wide-warning`));
+            processTranslation(document.querySelector(`#dialogue-skip`));
         }
     },
     processMenu: function (force) {
@@ -755,6 +761,18 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 console.log("%centMenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
         },
+        warning: {
+            func: (consolething)=>{
+                cor_ru.processWarning();
+
+                if (consolething != undefined) console.log(consolething[0], consolething[1]);
+            },
+            observe: ()=>{
+                cor_ru.observer.warning.itself.observe(body, {subtree: false, childList: true});
+
+                console.log("%cwarning observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+            }
+        },
         gad: {
             func: (consolething)=>{
                 cor_ru.processWeirdTranslation(".mindsci-status", "definition");
@@ -826,6 +844,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
                     cor_ru.processStatic(true);
                     cor_ru.processMenu(true);
+                    cor_ru.processWarning(true);
                     console.info("%cprocess2 - @cor-RU:page", cor_ru.fancy.general)
 
                     processTranslation(document.querySelector(`#definition-box`));
@@ -840,6 +859,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
                     cor_ru.observer.common.observe();
                     cor_ru.observer.entMenu.observe();
+                    cor_ru.observer.warning.observe();
                     cor_ru.observer.gad.observe();
                     cor_ru.observer.dialogue.observe();
                     cor_ru.observer.masks.observe();
@@ -961,6 +981,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
 cor_ru.observer.common.itself = new MutationObserver(()=>{cor_ru.observer.common.func(["%ccommon observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.entMenu.itself = new MutationObserver(()=>{cor_ru.observer.entMenu.func(["%centMenu observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.warning.itself = new MutationObserver(()=>{cor_ru.observer.warning.func(["%cwarning observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.gad.itself = new MutationObserver(()=>{cor_ru.observer.gad.func(["%cgad observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.dialogue.itself = new MutationObserver(()=>{cor_ru.observer.dialogue.func(["%cdialogue observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.func(["%cmasks observed! - @cor-RU", cor_ru.fancy.observed])})
