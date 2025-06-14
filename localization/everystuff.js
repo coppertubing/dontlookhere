@@ -453,7 +453,7 @@ env.localization['strings'] = {
     // other spikeadjacent-shit sorry this is poorly organized lmao
 
     "refresh": "обновить",
-    "'no coherent data'::SUGGEST::'back to hub'": "'нет связных данных'::ПРЕДЛОЖЕНИЕ::'обратно в хаб'",
+    "'no coherent data'::SUGGEST::'return to hub'": "'нет связных данных'::ПРЕДЛОЖЕНИЕ::'обратно в хаб'",
     "'aborted'": "'прервано'",
     "'eject'": "'отключение'",
     "'restored partial recent log'": "'частично восстановлен недавний лог'",
