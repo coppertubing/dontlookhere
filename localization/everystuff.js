@@ -509,21 +509,26 @@ env.localization['strings'] = {
     "actual_site_error": "реальная_ошибка_сайта",
     "something actually fucked up (not a part of the story) details are in the log and console": "что-то на самом деле наебнулось (не часть истории), подробности в логе и консоли (алсо сорян но дальше вы по-английски)",
 
-    "WARNING": "ПРЕДУПРЕЖДЕНИЕ",
+    "master": "ОБЩЕЕ",
+    "music": "МУЗЫКА",
+    "sfx": "ЗВУКИ",
+
+
     "Imported save contains the following auto-loading modifications:": "Импортированное сохранение содержит следующие автоматически загружающиеся модификации:",
     "Remove prior to import?": "Удалить перед импортом?",
     "Please note that some modded data may persist if the log has been heavily altered.": "Обратите внимание, что некоторые изменённые данные могут сохраниться, если лог был существенно изменён.",
     "remove them": "убрать",
     "keep them": "оставить",
 
-    "master": "ОБЩЕЕ",
-    "music": "МУЗЫКА",
-    "sfx": "ЗВУКИ",
-
     "Realtime log and memory rendering requires GPU hardware acceleration. Your mindspike either lacks a GPU, or hardware acceleration is inactive. Proceeding without resolving this issue will most likely result in pain.": "Для визуализации логов и воспоминаний в реальном времени требуется аппаратное ускорение GPU. В Вашем мыслеколе либо отсутствует GPU, либо аппаратное ускорение неактивно. Продолжение работы без решения этой проблемы, скорее всего, приведет к болезненным последствиям.",
     "To enable hardware acceleration, enter your viewer settings, search for \"hardware\" or find it in the performance/system section, and toggle it on. A restart of the viewer may be necessary.": "Чтобы включить аппаратное ускорение, войдите в параметры Вашего устройства, в \"Система\", в \"Настройки графики\" и включите его (либо воспользуйтесь интернетом для поиска подходящего способа включения аппаратного ускорения). Может потребоваться перезапуск.",
     "i fixed it": "всё работает",
     "i don't care": "мне без разницы",
+
+    "Your neural output (": "Ваш нейронный вывод (",
+    ") is currently larger than 1920x1080. Use of a size-limiting adapter is recommended and may be toggled in the SYS menu.": ") превышает размер 1920x1080 в данный момент. Рекомендуется использовать адаптер с ограничением размера, который может быть включен в меню SYS.",
+    "You may proceed with this output size, but this is larger than the available input, and you may experience unusual visual or mechanical artifacts.": "Вы можете продолжить работу с этим размером вывода, но он превышает доступный ввод, и вы можете столкнуться с нестандартными визуальными или механическими искажениями",
+    "activate adapter": "активировать адаптер",
 
 
     "'thoughtform activity detected'::'resources removed'": "'обнаружена мыслеформенная деятельность'::'удалены данные'",
