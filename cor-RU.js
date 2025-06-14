@@ -629,6 +629,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         }
     },
     processMenu: function (force) {
+        document.querySelector("#iconsupporters").forEach(el=>{el.classList.add('tskip')}) // we dont want to translate fundfriends (even tho it would be funny)
         cor_ru.processWeirdTranslation('.ci-masks', 'definition');
         cor_ru.processWeirdTranslation('#savetext', 'placeholder');
         if (force) {
@@ -843,8 +844,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                     console.info("%cprocess1 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processStatic(true);
-                    cor_ru.processMenu(true);
-                    cor_ru.processWarning(true);
+                    cor_ru.processMenu();
+                    cor_ru.processWarning();
                     console.info("%cprocess2 - @cor-RU:page", cor_ru.fancy.general)
 
                     processTranslation(document.querySelector(`#definition-box`));

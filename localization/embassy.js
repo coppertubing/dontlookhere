@@ -71,19 +71,20 @@ env.localization.page['embassy'] = {dialogues: {},
         "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},*/
     }, 
     strings: {
-        "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "",
-        "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "",
-        "this is fucked up dude, imagine if you couldn't trust any of us": "",
-        "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "",
-        "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "",
-        "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "",
-        "time to finish the collapse buddy. we almost got everything": "",
-        "seems like funfriend is still working on the rest of the collapse memory for now": "",
-        "time to get into the collapse, buddy": "",
-        "if those were two of the memories she chose to store, what are these other ones??": "",
-        "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "",
-        "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "",
-        "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "",
+        "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "стоит отдать должное той свлчьной штуке, общая связность всё ещё неплоха. но до сих пор сложно понять что реально а что нет",
+        "how did we never hear about this?? they always said it was some sort of structural failure due to the gravity differences or some bullshit like that": "каким образом мы об этом ничего не слышали?? нам всегда говорили что это было неким структурным провалом из-за разницы в гравитации, подобная херня",
+        "this is fucked up dude, imagine if you couldn't trust any of us": "это бляздец чел, только представь если бы нельзя было доверять никому из нас",
+        "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "она серьёзно назвала это вспоминание \"подозрение\"? или это был развледруг? как-то зловеще",
+        "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "тут так мало отдельных мыслеформ... хотя вообще это может быть лишь одной частью посольства",
+        "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "ого... на этом мыслепространство можно сказать \"всё\", ну помимо того первого",
+        "time to finish the collapse buddy. we almost got everything": "время заканчивать с обвалом дружище. мы почти всё просмотрели",
+        "seems like funfriend is still working on the rest of the collapse memory for now": "похоже развледруг пока всё ещё работает над остатком вспоминания обвала",
+        "time to get into the collapse, buddy": "время забраться в обвал, дружище",
+        "if those were two of the memories she chose to store, what are these other ones??": "если это два из вспоминаний которые она решила сохранить, то что на тех других??",
+        "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "боже... ну первое вспоминание сходится с тем что акизет сказала гордону. но зачем идти к нам если они согласились держать всё в тайне?",
+        "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "етить колотить, дааа не думаю что мы хоть раз слышали об этой части зова... эй--там ещё одно вспоминание починено, открой его",
+        "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data": "это вообще самая плотная мыслеформа из всех что мне когда-либо встречались... их способ хранения данных такой странный",
+
         "about the embassy": "о посольстве",
 
         "better times": "ХОРОШИЕ ВРЕМЕНА",
@@ -148,50 +149,9 @@ env.localization.page['embassy'] = {dialogues: {},
         "window": "окно",
         "simulacra dispensary": "раздатчик симулякров",
 
-        // discovery
-
         // suspicion
         "mystery cyst": "таинственная циста",
             "examine": "осмотреть",
-
-        /*echo*/ "hello akizet, i am glad it is you who connected": "здравствуй акизет, меня радует, что это ты подключилась",
-        /*echo*/ "as it is with worry for your well-being that this message finds you": "поскольку это послание адресовано тебе из беспокойства о твоем благополучии",
-        /*echo*/ "it must be said immediately:": "это должно быть сказано немедленно:",
-        /*echo*/ "information regarding our team's latest findings must not be shared with anyone at any point": "информация о последних находках нашей команды не должна разглашаться никому и ни при каких обстоятельствах",
-
-        /*akizet*/ "yes... as we had agreed": "да... как мы и договаривались",
-        /*akizet*/ "what is the purpose of this message?": "в чём цель этого сообщения?",
-
-        /*echo*/ "we are in great danger, akizet": "мы в большой опасности, акизет",
-        /*echo*/ "though we agreed in work, there can be no casual hints of our knowledge": "пусть в работе мы и согласились, нельзя допустить ни единого случайного намёка на наши знания",
-        /*echo*/ "no sharing with larval relations": "ни в разговорах с личиночными отношениями",
-        /*echo*/ "not anyone you think you can trust": "ни с кем-либо, кому ты думаешь, что можешь доверяешь",
-        /*echo*/ "no one": "никому",
-
-        /*sourceless*/ "apprehension from the echo saturates the environment": "опасение эха пропитывает окружающую среду",
-        /*sourceless*/ "i can feel that this delusional paranoia is not even its true message": "я ощущаю, что эта бредовая паранойя даже не является его истинным посланием",
-        /*sourceless*/ "in my death, i have never had patience for such meandering exchanges": "в своей θсмерти у меня никогда не находилось терпения на такие извилистые болтовни",
-
-        /*akizet*/ "why? do not waste my time, cease with this drama": "почему? не трать моё время, прекрати эту драму",
-
-        /*echo*/ "i presumed you might react this way": "я понимаю твою реакцию, она ожидаема",
-        /*echo*/ "but i had to place my warning first, out of precaution": "но мне нужно было поставить своё предупреждение первым, из предосторожности",
-        /*echo*/ "you want to know why:": "ты хочешь узнать, почему:",
-        /*echo*/ "come and see": "приходи и посмотри",
-
-        /*akizet*/ "yes, i understand": "да, я понимаю",
-
-        /*echo*/ "thank you": "спасибо",
-        /*echo*/ "if only i could truly hear you agree": "вот бы можно было услышать твоё согласие въявь",
-        /*echo*/ "but i cannot risk any side knowing i have told you": "но я не могу рисковать тем, чтобы любая из сторон узнала об этом послании",
-        /*echo*/ "so this cyst will erase its purpose shortly": "так что эта циста вскоре сотрёт свое предназначение",
-
-        /*echo*/ "but trust that i will know your response based on your actions": "но верь, что я узнаю твой ответ по твоим действиям",
-                
-        /*sourceless*/ "there is no response - no thought, no meaning": "я не получаю ответа - ни мысли, ни смысла",
-        /*sourceless*/ "in reality, i feel a strange runoff near my cyst-bearing receptor": "в реальности я ощущаю странный потёк возле рецептора, держащего цисту",
-
-        /*sourceless quiet*/ "it is destroying itself...": "она самоуничтожается...",
       
         // collapse part 1
     }, 
@@ -281,7 +241,7 @@ env.localization.page['embassy'] = {dialogues: {},
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'распространённый и полезный придаток землемысльца'</span>`,
 
         "my seat": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'experiential bridge'`,
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'`,
 
         "barfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
@@ -642,14 +602,14 @@ perspective
         разве это вспоминание не с точки зрения акизет?
     
     moth
-        wait, you couldn't swap before?
-        that's a stock feature, it's part of the FBX patch
-        huh... 
-        i guess the other spatial thoughtforms must have been too unstable
-        maybe they'll get that too once funfriend gets to them
+        погодь, то есть до этого у тебя не получалось?
+        это встроенная функция, часть патча от ФБКС
+        хах... 
+        наверн остальные пространственные мыслеформы были слишком нестабильными
+        может позже получится, когда развледруг доберётся до них
     
     RESPONSES::self
-        that would be nice<+>structureloop
+        было бы хорошо<+>structureloop
             FAKEEND::(назад)
 
 locked
@@ -657,21 +617,22 @@ locked
         почему эти два вспоминания не открываются?
 
     moth
-        looking at the data i can access here,
-        these two are still totally busted. 
-        something to talk to funfriend about for sure
-        and the last one... holy smokes
-        i don't think your mindspike will even let you render it?
-        it's still busted, but i'm also reading that it has 'aggressive action'
-        even if we get it repaired,
-        your mindspike will block out combat simulations
-        it's, like... a legal thing. remember that big mindsci lawsuit?
-        although, i do have an idea...
-        but, we'll get to that if this ever gets fixed
+        судя по информации к которой у меня здесь есть доступ,
+        эти два разнесло по полной
+        определённо есть о чём поговорить с развледругом
+        и последнее... етить колотить
+        не думаю что твой мыслекол вообще даст визуализировать его?
+        оно такое же поломанное, но я могу прочитать что в нём содержатся "агрессивные действия"
+        даже если нам его починят,
+        твой мыслекол заблокирует симуляции боя
+        это что-то типа... законной фигни. помнишь тот громкий суд с майндсай?
+        впрочем, есть у меня мысль...
+        но вернёмся к ней ток если их вообще починят
     
     RESPONSES::self
-        i see<+>structureloop
+        понятно<+>structureloop
             FAKEEND::(назад)
+
 
 weirdlook
     self
@@ -783,22 +744,23 @@ ____END
 
 groundsmind
     self
-        what is a groundsmind?
+        кто такой землемыслец?
 
     moth
-        oh, you don't know?
-        it's pretty cool
-        basically, they assign someone to be the "groundsmind" of major structures
-        they connect to this gigantic corrucyst that's hooked up to the walls
-        and they kind of just control everything
-        it's like they become the building
-        sounds familiar, right?
-        that idea ended up inspiring the whole mindspike industry
-        it's one of those little bits of history that gets forgotten all the time
+        о, ты не знаешь?
+        довольно клёвая штука
+        если вкратце, для важных строений они назначают кого-то "землемысльцем"
+        землемыслец подключается к такой огромной корруцисте которая воткнута в стены
+        и типа как начинает всё просто контролировать
+        будто бы становится зданием
+        звучит знакомо, не так ли?
+        в итоге эта идея вдохновила всю мыслеколовую индустрию
+        это один из тех кусочков истории которые постоянно забывают
     
     RESPONSES::self
-        i see<+>obeskloop
+        понятно<+>obeskloop
             FAKEEND::(назад)
+
 
 `)
 
@@ -2225,8 +2187,103 @@ connection
     RESPONSES::akizet
         вперёд<+>END
             FAKEEND::(продолжить)
-            EXEC::pauseSwapCam(false);body.classList.add("pathstep0");env.embassy.echoChatter(1)
+            EXEC::pauseSwapCam(false);body.classList.add("pathstep0");env.localization.page.embassy.echoChatter(1)
 `)
+
+env.localization.page.embassy.echoChatter = (part) => {
+    let delay = 0
+
+    switch(part) {
+        case 1:
+            body.classList.add('nomenus')
+
+            chatter({actor: "echo", text: "здравствуй акизет, меня радует, что это ты подключилась", delay: delay += 3000})
+            chatter({actor: "echo", text: "поскольку это послание адресовано тебе из беспокойства о твоем благополучии", delay: delay += 4000})
+            chatter({actor: "echo", text: "это должно быть сказано немедленно:", delay: delay += 3000})
+            chatter({actor: "echo", text: "информация о последних находках нашей команды не должна разглашаться никому и ни при каких обстоятельствах", delay: delay += 4000})
+
+            env.setTimeout(()=>{
+                changeBgm(env.embassy.music_suspense, {length: 9000})
+            }, delay - 10)
+
+            chatter({actor: "akizet", text: "да... как мы и договаривались", delay: delay += 3000, readout: true})
+            chatter({actor: "akizet", text: "в чём цель этого сообщения?", delay: delay += 3000, readout: true})
+
+            chatter({actor: "echo", text: "мы в большой опасности, акизет", delay: delay += 3000})
+            chatter({actor: "echo", text: "пусть в работе мы и согласились, нельзя допустить ни единого случайного намёка на наши знания", delay: delay += 4000})
+            chatter({actor: "echo", text: "ни в разговорах с личиночными отношениями", delay: delay += 3000})
+            chatter({actor: "echo", text: "ни с кем-либо, кому ты думаешь, что можешь доверяешь", delay: delay += 3000})
+            chatter({actor: "echo", text: "никому", delay: delay += 2000})
+
+            chatter({actor: "sourceless", text: "опасение эха пропитывает окружающую среду", delay: delay += 3000, readout: true})
+            chatter({actor: "sourceless", text: "я ощущаю, что эта бредовая паранойя даже не является его истинным посланием", delay: delay += 3000, readout: true})
+            chatter({actor: "sourceless", text: `в своей ${processDefinitionsInString("θсмерти")} у меня никогда не находилось терпения на такие извилистые болтовни`, delay: delay += 3000, readout: true})
+
+            chatter({actor: "akizet", text: "почему? не трать моё время, прекрати эту драму", delay: delay += 4000, readout: true})
+
+            chatter({actor: "echo", text: "я понимаю твою реакцию, она ожидаема", delay: delay += 3000})
+            chatter({actor: "echo", text: "но мне нужно было поставить своё предупреждение первым, из предосторожности", delay: delay += 3000})
+            chatter({actor: "echo", text: "ты хочешь узнать, почему:", delay: delay += 3000})
+            chatter({actor: "echo", text: "приходи и посмотри", delay: delay += 3000})
+
+            env.setTimeout(()=>{
+                body.classList.add("pathstep1")
+            }, delay + 2000)
+        break
+
+        case 2:
+            MUI("on")
+            body.classList.add("pathstep2")
+            chatter({actor: "akizet", text: "да, я понимаю"})
+
+            chatter({actor: "echo", text: "спасибо", delay: delay += 3000})
+            chatter({actor: "echo", text: "вот бы можно было услышать твоё согласие въявь", delay: delay += 2000})
+            chatter({actor: "echo", text: "но я не могу рисковать тем, чтобы любая из сторон узнала об этом послании", delay: delay += 3000})
+            chatter({actor: "echo", text: "так что эта циста вскоре сотрёт свое предназначение", delay: delay += 4000})
+
+            env.setTimeout(()=>{
+                body.classList.add("pathstep3")
+            }, delay + 2000)
+
+            chatter({actor: "echo", text: "но верь, что я узнаю твой ответ по твоим действиям", delay: delay += 4000})
+                
+            env.setTimeout(()=>{
+                startDialogue("echo2")
+            }, delay + 3000)
+        break
+
+        case 3:
+            MUI("on")
+            chatter({actor: "sourceless", text: "я не получаю ответа - ни мысли, ни смысла", delay: delay += 3000, readout: true})
+            chatter({actor: "sourceless", text: "в реальности я ощущаю странный потёк возле рецептора, держащего цисту", delay: delay += 3000, readout: true})
+            let warningBgm = env.bgm
+
+            env.setTimeout(()=>{
+                play("criticalError", 0.65)
+                env.stage.current.detonate()
+                forceSwapCam(true)
+                ratween(env.bgm, 2, 5000)
+            }, delay += 4000)
+
+            chatter({actor: "sourceless quiet", text: "она саморазрушается...", delay, readout: true})
+                
+            env.setTimeout(()=>{
+                forceSwapCam(false)
+            }, delay + 5000)
+
+            env.setTimeout(()=>{
+                changeStage("embassy_quarters", 10, "down")
+                startDialogue("echo3")
+                body.classList.remove('nomenus')
+            }, delay + 5100)
+
+            env.setTimeout(()=>{ // reset for closeout of this day
+                warningBgm.rate(1)
+            }, delay + 6500)
+        break
+    }
+}
+
 env.localization.page['embassy'].dialogues["echo1"] = generateDialogueObject(` 
 start
     echo
@@ -2298,7 +2355,7 @@ start
             FAKEEND::(продолжить)
             EXEC::forceSwapCam(false);specialCam("")
 
-END::env.embassy.echoChatter(2)
+END::env.localization.page.embassy.echoChatter(2)
 `)
 env.localization.page['embassy'].dialogues["echo2"] = generateDialogueObject(` 
 start
@@ -2346,7 +2403,7 @@ start
             FAKEEND::(продолжить)
             EXEC::pauseSwapCam(false)
 
-END::env.embassy.echoChatter(3)
+END::env.localization.page.embassy.echoChatter(3)
 `)
 env.localization.page['embassy'].dialogues["echo3"] = generateDialogueObject(` 
 start
@@ -3243,7 +3300,7 @@ start
         это займёт так долго... столько, столько θглаз
         развледруг, ты же знаешь, я не могу просто так прекратить свою работу
         в особенности если мы только переступили черту постижения зова
-        this is everything --- эаэаэаэа
+        это - наше всё
     
     funfriend
         акизет, я не могу знать что правильно
@@ -3283,11 +3340,11 @@ start
         это правда...
         но наши светлые близнецы прекрасно хранят секреты
         они знают столькое, что уже давно могло бы поднять беспокойство
-        and not once has any of it ever hit their public mind *** и ничто из этого ещё не попадало в ???
-        indeed, they have very little correspondence outside of direct contacts *** точно, у них крайне мало корреспонденции помимо прямых контактов
-        and i am the only direct contact for the call research initiative *** и я - единственный прямой контакт с инициативой 
-        though, there is kazki's construction contact... *** хотя, у казки есть контакт с ???конструкциистроительства ... --- почему ты берешь мои тире!! кстати привет артур
-        our cross-initiative ties will make for some sensitive matters to avoid *** из-за наших межинициативных связей придётся избегать некоторых деликатных тем
+        и ничто из этого ещё ни разу не проникало в их общественное сознание
+        действительно, у них крайне мало корреспонденции за пределами прямых контактов
+        и я - единственный прямой контакт с инициативой 
+        хотя, у казки есть контакт по строительству...
+        наши межинициативные связи заставят избегать некоторых щекотливых вопросов
 
     funfriend
         они не могут засечь зов при помощи собственных технологий
@@ -3297,9 +3354,9 @@ start
     sourceless
         возможно мы можем поделиться парой вещей...
         помнишь ли ты перешёптывания об "интегрированной светлой технологии"?
-        since it was shelved... *** так как это отложили... --- с тех пор, как это отложили... 
-        the technology division has stored much of the schematics plainly within embassy archives *** технологическое отделение оставило многие схемы в архивах посольства // как включить plainly --- у всех на глазах? на виду? открытых архивах
-        о да, всё начинает сходиться, не так ли? как захватывающе oh yes, this is coming together, is it not? how exciting
+        с тех пор, как её отложили... 
+        технологическое отделение оставило многие схемы в архивах посольства, у всех на виду
+        о да, всё начинает сходиться, не так ли? как захватывающе
 
     funfriend
         акизет мне не нравится эта идея! ахахаха

@@ -59,7 +59,7 @@ cor_ru.entity_menu = {
         "ENTITY::'movefriend'": "СУЩНОСТЬ::'движедруг'",
         "ENTITY::'mindcores'": "СУЩНОСТЬ::''", // --- unf
         "ENTITY::'container'": "СУЩНОСТЬ::'контейнер'",
-        "ENTITY::'qou body'": "СУЩНОСТЬ::'куу тело'",
+        "ENTITY::'qou body'": "СУЩНОСТЬ::'куу-тело'",
         "ENTITY::'summarizer'": "СУЩНОСТЬ::'сумматор'",
         "ENTITY::'hostile container'": "СУЩНОСТЬ::'враждебный контейнер'",
         "ENTITY::'hostile veilklight'": "СУЩНОСТЬ::'враждебный вейлькосвет'",
@@ -349,7 +349,9 @@ cor_ru.entity_menu = {
         //the void
         "our dull vessel": {
             name: `наше судно серое`,
-            desc: ` `
+            desc: `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
+::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся локация';'изменение состояния мыслеформ'<br>
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'некоторые элементы обладают предельно низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
         },
         "gate::the dull contrivance": {
             name: `врата::открытие серое`,
@@ -364,7 +366,8 @@ cor_ru.entity_menu = {
             name: `циста-пилот`,
             desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
-    <span style="color: var(--obesk-color)" definition="ПРЕДУПРЕЖДЕНИЕ::'в большинстве необрабатываемая сущность';'может быть неточной'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'великий разум моего судна'</span>`
+    <span style="color: var(--obesk-color)" definition="ПРЕДУПРЕЖДЕНИЕ::'в большинстве необрабатываемая сущность';'может быть неточной'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'великий разум моего судна'</span>`
         },
         "glazika": {
             name: `глазика`,
@@ -382,7 +385,7 @@ cor_ru.entity_menu = {
             desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>
     ::НЕВИЗУАЛИЗИРУЕМА<br>
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span><br>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в олтазни'</span>`
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в ${processDefinitionsInString("олтазни")}'</span>`
         },
         "climbing wall": {
             name: `скалодром`,
@@ -469,7 +472,7 @@ cor_ru.entity_menu = {
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span><br>
     <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'а к чему морока?';'самопроектирование - это слишком долго'">продиктованная самовосприятием подпись</span>'<br>
-    <span style='color: var(--friend-color)'>+</span>'формация куу-тела для экстремального давления'<br>
+    <span style='color: var(--friend-color)'>+</span>'формация ${processDefinitionsInString("куу")}-тела для экстремального давления'<br>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("кив")}-рецепторы, напыщенные'`
         },
         "kazki": {
@@ -479,7 +482,7 @@ cor_ru.entity_menu = {
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span><br>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'<br>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, грибковая стилизация'<br>
-    <span style='color: var(--friend-color)'>+</span>'разделительное представление куу-тела'<br>
+    <span style='color: var(--friend-color)'>+</span>'разделительное представление ${processDefinitionsInString("куу")}-тела'<br>
     <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'совместная работа жителя козазни';'гевериканеше жат жекарри'">внешне-проектированная подпись</span>'`
         },
         "tozik": {
@@ -521,12 +524,8 @@ cor_ru.entity_menu = {
             name: `unf`,
             desc: `unf`
         },
-        "container": {
-            name: `контейнер`,
-            desc: ``
-        },
         "qou body": {
-            name: `куу тело`,
+            name: `куу-тело`,
             desc: ``
         },
         "summarizer": {
@@ -545,7 +544,7 @@ cor_ru.entity_menu = {
             name: `вспоминание::открытие`,
             desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span><br>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый взор'</span>`
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый ${processDefinitionsInString("взор")}'</span>`
         },
         "recollection::suspicion": {
             name: `вспоминание::подозрение`,
@@ -575,7 +574,7 @@ cor_ru.entity_menu = {
         "my seat": {
             name: `моё кресло`,
             desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'experiential bridge'`
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'`
         },
         "barfriend": {
             name: `бардруг`,
@@ -887,7 +886,11 @@ cor_ru.entity_menu = {
         },
         "their vessel": {
             name: `их судно`,
-            desc: ``
+            desc: `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
+::НИЗКОРАЗМЕРНАЯ<br>
+::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'множество сущностей с низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'мёртвые судна окружали наш <span class="code">шпиль</span>';'близнецы нашли нас быстро'</span>`
         },
         "stilted shore": {
             name: `неестественный берег`,

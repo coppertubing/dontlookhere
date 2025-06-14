@@ -455,6 +455,8 @@ env.localization['strings'] = {
     "confirm": "подтвердить",
     "retract": "отменить",
 
+    "internal log buffer cleared after reaching limit (80) due to attached external record device": "внутренний буфер лога очищен после достижения предела (80) из-за подключенного внешнего устройства записи",
+
     "refresh": "обновить",
     "'no coherent data'::SUGGEST::'return to hub'": "'нет связных данных'::ПРЕДЛОЖЕНИЕ::'вернуться в хаб'",
     "'aborted'": "'прервано'",
@@ -526,7 +528,7 @@ env.localization['strings'] = {
     "i don't care": "мне без разницы",
 
     "Your neural output (": "Ваш нейронный вывод (",
-    ") is currently larger than 1920x1080. Use of a size-limiting adapter is recommended and may be toggled in the SYS menu.": ") превышает размер 1920x1080 в данный момент. Рекомендуется использовать адаптер с ограничением размера, который может быть включен в меню SYS.",
+    ") is currently larger than 1920x1080. Use of a size-limiting adapter is recommended and may be toggled in the SYS menu.": ") превышает размер 1920x1080 в данный момент. Рекомендуется использовать адаптер с ограничением размера, который может быть включён в меню SYS.",
     "You may proceed with this output size, but this is larger than the available input, and you may experience unusual visual or mechanical artifacts.": "Вы можете продолжить работу с этим размером вывода, но он превышает доступный ввод, и вы можете столкнуться с нестандартными визуальными или механическими искажениями",
     "activate adapter": "активировать адаптер",
 
