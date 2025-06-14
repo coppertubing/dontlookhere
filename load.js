@@ -1,4 +1,5 @@
 cor_ru.observer.page.func()
+cor_ru.processReadout()
 cor_ru.observer.page.observe()
 
 document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})

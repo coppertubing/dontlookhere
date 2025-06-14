@@ -453,6 +453,7 @@ env.localization['strings'] = {
     // other spikeadjacent-shit sorry this is poorly organized lmao
 
     "refresh": "обновить",
+    "'no coherent data'::SUGGEST::'back to hub'": "'нет связных данных'::ПРЕДЛОЖЕНИЕ::'обратно в хаб'",
     "'aborted'": "'прервано'",
     "'eject'": "'отключение'",
     "'restored partial recent log'": "'частично восстановлен недавний лог'",
@@ -478,6 +479,7 @@ env.localization['strings'] = {
     "'reduced intensity alternatives inactive'": "'альтернативы пониженной интенсивности выключены'",
     "'gameplay disabled'": "'геймплей выключен'",
     "'gameplay enabled'": "'геймплей включён'",
+
     "1 mod(s) initialized:": "1 модификация запущена:",
     "2 mod(s) initialized:": "2 модификации запущено:",
     "3 mod(s) initialized:": "3 модификации запущено:",
@@ -488,7 +490,17 @@ env.localization['strings'] = {
     "13 mod(s) initialized:": "13 модификаций запущено:",
     "14 mod(s) initialized:": "14 модификаций запущено:",
     "'mods removed';'refresh for clean reinitialization'": "'убраны модификации';'обновите страницу для чистой реинициализации'",
-    "'no mods active';'no change rendered": "'нет активных модов';'нет изменений'",
+    "'no mods active';'no change rendered": "'нет активных модификаций';'нет изменений'",
+    "1 mod(s) automatically initialized:": "1 модификация автоматически запущена:",
+    "2 mod(s) automatically initialized:": "2 модификации автоматически запущено:",
+    "3 mod(s) automatically initialized:": "3 модификации автоматически запущено:",
+    "4 mod(s) automatically initialized:": "4 модификации автоматически запущено:",
+    "mod(s) automatically initialized:": "модификаций автоматически запущено:",
+    "11 mod(s) automatically initialized:": "11 модификаций автоматически запущено:",
+    "12 mod(s) automatically initialized:": "12 модификаций автоматически запущено:",
+    "13 mod(s) automatically initialized:": "13 модификаций автоматически запущено:",
+    "14 mod(s) automatically initialized:": "14 модификаций автоматически запущено:",
+
     "'unsaved changes';'attempt again to forfeit current changes'": "'несохранённые изменения';'повторите попытку для отмены текущих изменений'",
     "::'prohibitive incoherence'": "::'запредельная бессвязность'",
     "actual_site_error": "реальная_ошибка_сайта",
@@ -616,11 +628,13 @@ env.localization['strings'] = {
     "p-a-r-s-t-e": "п-а-р-з-и-т",
     "p?a-??r?-???s?-t?e?": "п?а-??р?-???з?-и?т?",
 
-    "!!__UNPROCESSABLE__!!": "!!__ОБРАБОТКА_НЕВОЗМОЖНА __!!",
+    "UNPROCESSABLE__!!": "ОБРАБОТКА_НЕВОЗМОЖНА __!!",
+    "error-unprocessable": "ошибка-обработка-невозможна",
 
     "__UNKNOWN": "__НЕИЗВЕСТНО",
 
     "advance log": "продвинуть лог",
+        "advance": "продвинуться",
 
 
     // MENU

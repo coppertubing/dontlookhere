@@ -453,8 +453,20 @@ body.loading::after {
 }
 
 body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::before {
-    content:"ПРАВАЯ КНОПКА МЫШИ" !important;
+    content: "ПРАВАЯ КНОПКА МЫШИ";
 }
+
+.target.always-targeted,
+.target.always-targeted::after,
+#realgrid .target.always-targeted::before,
+.always-targeted .target,
+.always-targeted .target::after,
+.always-targeted #realgrid .target::before {
+    opacity: 1;
+    content: attr(entaltname) !important;
+    white-space: nowrap;
+}
+
 
 @media screen and (max-width: 799px), (max-height: 599px) {
 	html:not(.mobile):after, html:not(.mobile):before {
@@ -617,16 +629,33 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             processTranslation(document.querySelector("#meta-menu")), true;
             processTranslation(document.querySelector("#system-menu"), true);
             processTranslation(document.querySelector("#entity-menu"), true);
+            processTranslation(document.querySelector(`#advance-notice`), true);
         } else {
             processTranslation(document.querySelector("#meta-menu"));
             processTranslation(document.querySelector("#system-menu"));
             processTranslation(document.querySelector("#entity-menu"));
+            processTranslation(document.querySelector(`#advance-notice`));
         }
     },
     processReply: function () {
         cor_ru.processWeirdTranslation('.reply', 'name');
         cor_ru.processWeirdTranslation('.reply', 'definition');
         cor_ru.processWeirdTranslation('.reply', 'endtext');
+    },
+    processReadout: function (force) {
+        processTranslate(document.querySelector("#minireadout"))
+
+        readout = document.querySelector("#readout")
+        messages = readout.querySelectorAll(".message")
+        length = messages.length - 1
+
+        messages.forEach(el=>{
+            if (length > 0) {
+                el.classList.add('tskip')
+                el.querySelectorAll(" *").forEach(el=>{el.classList.add('tskip')})
+                length--}}) // dont want it touching old readouts
+        
+        processTranslate(document.querySelector("#readout"))
     },
 
     // funky functions that do not forbid you from moving cyrillic-style
@@ -678,6 +707,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             func: (consolething)=>{
                 processTranslation();
                 processTranslation(document.querySelector(`#mindspike-scanner`));
+                processTranslation(document.querySelector(`#advance-notice`));
                 cor_ru.processWeirdTranslation("#content .target", "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
