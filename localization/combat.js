@@ -33,7 +33,10 @@ you will get "ударил%US(-/а/о)ER"
 
 */
 
-cor_ru['inflection'] = function (string, user, target) { // --- function for doing inflection in actionmessagestuffs. if this is ugly idc i made this at 1 am lol. also it works so i aint changing it
+cor_ru['combat'] = {}
+
+
+cor_ru.combat['inflection'] = function (string, user, target) { // --- function for doing inflection in actionmessagestuffs. if this is ugly idc i made this at 1 am lol. also it works so i aint changing it
     if (user.cor_ru) {
 
         string = string.replaceAll("%GEN-USER", `<span class="${user.team.name}">${user.cor_ru.name.gen}</span>`)
@@ -105,9 +108,9 @@ cor_ru['inflection'] = function (string, user, target) { // --- function for doi
 
     return string;
 }
-cor_ru['translate'] = function (input) {return processStringTranslation(input)}
+cor_ru.combat['translate'] = function (input) {return processStringTranslation(input)}
 
-cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain velzie lol
+cor_ru.combat['eatingEffectMessage'] = function (time = 0) { // --- may this entertain velzie lol
     if (check("PAGE!!cor_ru_combat") != true) {
         try {
             cor_ru.createRPGeffectMessage = createRPGeffectMessage;
@@ -140,7 +143,7 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
                             hitType="miss"
                     }
 
-                    let genUsageText = typeof action == "string" ? cor_ru.translate(action) : action?.usage?.act // --- place where i actually insert stuff 
+                    let genUsageText = typeof action == "string" ? cor_ru.combat.translate(action) : action?.usage?.act // --- place where i actually insert stuff 
                     if(!genUsageText) return false;
                     if(action.usage) {
                         hitText = action.usage[hitType] || false //refer to action usage text for result 
@@ -152,13 +155,13 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
                         .replaceAll("%USER", `<span class="${user?.team?.name}">${user?.name}</span>`)
                         .replaceAll("%TARGET", `<span class="${target?.team?.name}">${target?.name}</span>`)
                     
-                    actionText = cor_ru.inflection(actionText, user, target) // --- place where i actually insert stuff
+                    actionText = cor_ru.combat.inflection(actionText, user, target) // --- place where i actually insert stuff
                     
                     if(hitText || specialHitText) {
                         hitText = (hitText || specialHitText)
                             .replaceAll("%USER", `<span class="${user?.team?.name}">${user?.name}</span>`)
                             .replaceAll("%TARGET", `<span class="${target?.team?.name}">${target?.name}</span>`)
-                        hitText = cor_ru.inflection(hitText, user, target) // --- place where i actually insert stuff 2
+                        hitText = cor_ru.combat.inflection(hitText, user, target) // --- place where i actually insert stuff 2
                     }
 
                     //console.log("!!!!!!!!!!!! in add for action", hit, hitType, action, hitText, actionMessageIndex)
@@ -283,20 +286,20 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
 
                     var actionText;
                     if(actionIsString) {
-                        actionText = cor_ru.translate(action) // --- place where i actually insert stuff 
+                        actionText = cor_ru.combat.translate(action) // --- place where i actually insert stuff 
                             .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
                             .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
-                        actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
+                        actionText = cor_ru.combat.inflection(actionText, origin, target) // --- place where i actually insert stuff
                         
                     } else if(action.usage) {
                         actionText = action.usage.act
                             .replaceAll("%USER", `<span class="${originTeam}">${origin.name}</span>`)
                             .replaceAll("%TARGET", `<span class="${targetTeam}">${target.name}</span>`);
-                        actionText = cor_ru.inflection(actionText, origin, target) // --- place where i actually insert stuff
+                        actionText = cor_ru.combat.inflection(actionText, origin, target) // --- place where i actually insert stuff
                     }
                         
                     if(hitText) {
-                        hitText = cor_ru.inflection(hitText, origin, target) // --- place where i actually insert stuff
+                        hitText = cor_ru.combat.inflection(hitText, origin, target) // --- place where i actually insert stuff
                         hitText = 
                             `<br><div class="hit-text">` +
                             (hitText
@@ -352,13 +355,13 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
                     let choices = ""
                     options.forEach((option, i) => {
                         console.log(option)
-                        if(option.text) choices += `<span choice="c${i}" class="button" definition="${cor_ru.translate(option.definition)}">${cor_ru.translate(option.text)}</span>` // --- place where i actually insert stuff 
+                        if(option.text) choices += `<span choice="c${i}" class="button" definition="${cor_ru.combat.translate(option.definition)}">${cor_ru.combat.translate(option.text)}</span>` // --- place where i actually insert stuff 
                     })
 
                     console.log(choices)
                     env.rpg.insertAdjacentHTML('beforeend', `
                         <div id="${id}" class="choice-attack">
-                            <div class="choice-title">${cor_ru.translate(choiceText)}</div>
+                            <div class="choice-title">${cor_ru.combat.translate(choiceText)}</div>
                             ${choices}
                         </div>
                     `)// --- place where i actually insert stuff 
@@ -375,17 +378,20 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
                         })
                     })
                 }
+
+                // also make sure our party has adapted names cause yea
+                cor_ru.observer.party.func()
             }
             change("PAGE!!cor_ru_combat", true)
         } catch (error) {
             if (error instanceof ReferenceError) {
                 if (time == 0) {
                     console.warn("redefining createRPGeffectMessage fucked up a little but worry not, i'll get it - @cor-RU");
-                    setTimeout(()=>cor_ru.eatingEffectMessage(time+1), 50)
+                    setTimeout(()=>cor_ru.combat.eatingEffectMessage(time+1), 50)
                 }
                 else if (time < 10) {
                     console.warn(time + " try at redefining createRPGeffectMessage - @cor-RU");
-                    setTimeout(()=>cor_ru.eatingEffectMessage(time+1), 50)
+                    setTimeout(()=>cor_ru.combat.eatingEffectMessage(time+1), 50)
                 } else console.error("woah. couldn't redefine createRPGeffectMessage, sorry! reload the page and/or message @dutokrisa (discord) - @cor-RU")
                 console.error(error)
             } else {
@@ -397,7 +403,7 @@ cor_ru['eatingEffectMessage'] = function (time = 0) { // --- may this entertain 
 }
 
 /* === ACTIONS === */
-cor_ru['redefineActions'] = function () {
+cor_ru.combat['redefineActions'] = function () {
     /* - win - */
 
     env.ACTIONS.win.name = "Победить" // Win
@@ -520,7 +526,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.stab.details = {
         "flavor": "'преобразовать руку в заострённый отросток';'пронзить цель'",
         "onHit": "'[STAT::amt] [STATUS::puncture]'",
-    onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТД::2'" : ''}`,
+    onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТДЧ::2'" : ''}`,
     }
 
     /* - frenzy - */
@@ -948,7 +954,7 @@ cor_ru['redefineActions'] = function () {
     env.ACTIONS.foe_stab.details = {
         "flavor": "'преобразовать руку в заострённый отросток';'пронзить цель'",
         "onHit": "'[STAT::amt] [STATUS::puncture]'",
-        onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТД::2'" : ''}`,
+        onCrit: ()=> `'пробить жизненно важный цистозный компонент на [STATUS::puncture]'${env?.rpg?.is2D ? ";'ОТДЧ::2'" : ''}`,
     }
 
     /* - barrier - */
@@ -2854,7 +2860,7 @@ cor_ru['redefineActions'] = function () {
     }
 }
 /* === STATUS_EFFECTS === */
-cor_ru['redefineEffects'] = function () {
+cor_ru.combat['redefineEffects'] = function () {
     /* - Puncture - */
 
     env.STATUS_EFFECTS.puncture.name = "Прокол" // Puncture
@@ -3452,7 +3458,7 @@ cor_ru['redefineEffects'] = function () {
     /* - Barrier - */
 
     env.STATUS_EFFECTS.bp.name = "Барьер" // Barrier
-    env.STATUS_EFFECTS.bp.help = "временное здоровье, ограничено 1/2 макс ХП" // temporary HP, limited to 1/2 max HP
+    env.STATUS_EFFECTS.bp.help = "временное здоровье, ограничено до 1/2 макс ХП" // temporary HP, limited to 1/2 max HP
 
     /* - aiming - */
 
@@ -3460,7 +3466,7 @@ cor_ru['redefineEffects'] = function () {
     env.STATUS_EFFECTS.aiming_indicator.help = "вы этого видеть не должны" // you should never see this
 }
 /* === ITEMS === */
-cor_ru['redefineItems'] = function () {
+cor_ru.combat['redefineItems'] = function () {
     /* - Restorative Cyst - */
 
     env.ITEM_LIST.restorative.name = "Восстановительная Циста" // Restorative Cyst
@@ -3614,7 +3620,7 @@ cor_ru['redefineItems'] = function () {
 
 }
 /* === HUMORS === */
-cor_ru['redefineHumors'] = function () {
+cor_ru.combat['redefineHumors'] = function () {
     /* - Ichor - */
 
     env.COMBAT_COMPONENTS.ichor.name = "Ихор" // Ichor
@@ -3652,7 +3658,7 @@ cor_ru['redefineHumors'] = function () {
     env.COMBAT_COMPONENTS.empty.help = "'базовые действия'" // 'basic actions'
 }
 /* === MODIFIERS === */
-cor_ru['redefineModifiers'] = function () {
+cor_ru.combat['redefineModifiers'] = function () {
     /* - Heavy Chitin - */
 
     env.MODIFIERS.bone_spikes.name = "Тяжелый Хитин" // Heavy Chitin
@@ -3848,7 +3854,7 @@ cor_ru['redefineModifiers'] = function () {
     env.MODIFIERS.global_intrusive.getHelp = ()=> `<span class="neutral-color">øÿ°ÞÜÿ›ËÅÿ¥ÔËÿ«×Ïÿ®ØÏÿ«ÛÑÿ¦ÔÉÿ—Á¶ÿ–À´ÿ«ÖÊÿ Ì¿ÿ’½´ÿ¤ÔÏÿ¤ÙÑÿ”ËÃÿu0090ÉÄÿ¨°u008dÿu009dl</span>`
 }
 /* === STATS === */
-cor_ru['redefineStats'] = function () {
+cor_ru.combat['redefineStats'] = function () {
     /* - HP - */
 
     env.STATDATA.maxhp.display = "ХП" // HP
@@ -3905,7 +3911,7 @@ cor_ru['redefineStats'] = function () {
     env.STATDATA.incomingFlatCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'added to base crit chance against this entity';'before modifiers'
 }
 /* === ACTORS === */
-cor_ru['redefineActors'] = function () {
+cor_ru.combat['redefineActors'] = function () {
     /* - GENERATED - */
 
     env.COMBAT_ACTORS.generic.name = "GENERATED" // GENERATED
@@ -5927,7 +5933,7 @@ cor_ru['redefineActors'] = function () {
     }
 }
 /* === FORMATIONS === */
-cor_ru['redefineFormations'] = function() {
+cor_ru.combat['redefineFormations'] = function() {
     /* - ?????? - */
 
     env.COMBAT_FORMATIONS.intrusive.name = "??????" // ??????
@@ -5975,7 +5981,7 @@ cor_ru['redefineFormations'] = function() {
     env.COMBAT_FORMATIONS.c_daemon_imp.help = "" // 'trio';'mimics shell actions used';'unable to mimic items'
 }
 /* === AUGMENTS === */
-cor_ru['redefineAugments'] = function() {
+cor_ru.combat['redefineAugments'] = function() {
     /* -- ALL -- */
     /* - Symbiotic Rifle - */
 
@@ -6122,17 +6128,18 @@ cor_ru['redefineAugments'] = function() {
     env.ACTOR_AUGMENTS.tozik.optimize.description = "" // 'encourage ally to act twice at cost of lesser mending ability';'named after seasonal spore fog known to increase waking energy'
 }
 
-cor_ru['redefineAll'] = function() {
-    cor_ru.redefineActions()
-    cor_ru.redefineEffects()
-    cor_ru.redefineItems()
-    cor_ru.redefineHumors()
-    cor_ru.redefineModifiers()
-    cor_ru.redefineStats()
-    cor_ru.redefineActors()
-    cor_ru.redefineFormations()
-    cor_ru.redefineAugments()
+cor_ru.combat['redefineAll'] = function() {
+    cor_ru.combat.redefineActions()
+    cor_ru.combat.redefineEffects()
+    cor_ru.combat.redefineItems()
+    cor_ru.combat.redefineHumors()
+    cor_ru.combat.redefineModifiers()
+    cor_ru.combat.redefineStats()
+    cor_ru.combat.redefineActors()
+    cor_ru.combat.redefineFormations()
+    cor_ru.combat.redefineAugments()
 }
+
 /* === MISC === */
 env.localization.page[page.dialoguePrefix].strings['THE TENDRILS CURL AWAY'] = "";
 env.localization.page[page.dialoguePrefix].strings['THE HALLUCINATIONS FADE'] = "";
@@ -6141,36 +6148,67 @@ env.localization.page[page.dialoguePrefix].strings['ETHEREAL FOES FADE'] = "";
 env.localization.page[page.dialoguePrefix].strings['the shell refuses, having lost their taste for this fish.'] = "";
 env.localization.page[page.dialoguePrefix].strings['the shell refuses, having no taste for this fish.'] = "";
 
+env.localization.page[page.dialoguePrefix].strings['USE ITEM'] = "ИСПОЛЬЗОВАТЬ ПРЕДМЕТ";
+
+
 env.localization.page[page.dialoguePrefix].strings['? whom?'] = ""; // --- leave blank!!!!!!!!!!!!! intentional!!
 env.localization.page[page.dialoguePrefix].strings['whom?'] = "КОГО?";
 
 env.localization.page[page.dialoguePrefix].strings['DOWN'] = "ОБМОРОК";
 
 env.localization.page[page.dialoguePrefix].strings["'remaining REGEN consumed for "] = "оставшаяся РЕГЕНЕРАЦИЯ поглощена на "
-env.localization.page[page.dialoguePrefix].strings["HP'"] = " ХП'"
+env.localization.page[page.dialoguePrefix].strings["HP"] = "ХП"
+env.localization.page[page.dialoguePrefix].strings["BP"] = "БП"
+
+env.localization.page[page.dialoguePrefix].strings["MAX::"] = "МАКС::"
+env.localization.page[page.dialoguePrefix].strings["STAT::barrier:LIMITED TO 1/2 MAX HP"] = "ПАРАМЕТР::барьер:ОГРАНИЧЕН ДО 1/2 МАКС ХП"
 
 
 /* === PARTY MENU === */
 env.localization.page[page.dialoguePrefix].strings['ACTIVE MEMBERS'] = 'АКТИВНЫЕ УЧАСТНИКИ'
 env.localization.page[page.dialoguePrefix].strings['INACTIVE MEMBERS'] = 'НЕАКТИВНЫЕ УЧАСТНИКИ'
 
-env.localization.page[page.dialoguePrefix].strings['Surface Veteran'] = 'Ветеран Поверхности' // akizet
-env.localization.page[page.dialoguePrefix].strings['Conspicuous Insider'] = 'нечисть блядская' // gakvu
-env.localization.page[page.dialoguePrefix].strings['Inquisitive Technician'] = 'Пытливый Техник' // tozik
-env.localization.page[page.dialoguePrefix].strings['Cynical Artist'] = 'Циничная Художница' // miltza
-env.localization.page[page.dialoguePrefix].strings['Hopeful Engineer'] = 'Надеющийся Инженер' // cavik
-env.localization.page[page.dialoguePrefix].strings['Burdened Guardian'] = 'Обременённый Страж' // bozko
-env.localization.page[page.dialoguePrefix].strings['Destructive Golem'] = 'Разрушительный Голем' // ik
+
+env.localization.page[page.dialoguePrefix].strings['Surface Veteran'] = 'Ветеран Поверхности'
+env.localization.page[page.dialoguePrefix].strings['Conspicuous Insider'] = 'нечисть блядская'
+env.localization.page[page.dialoguePrefix].strings['Inquisitive Technician'] = 'Пытливый Техник'
+env.localization.page[page.dialoguePrefix].strings['Cynical Artist'] = 'Циничная Художница'
+env.localization.page[page.dialoguePrefix].strings['Hopeful Engineer'] = 'Надеющийся Инженер'
+env.localization.page[page.dialoguePrefix].strings['Burdened Guardian'] = 'Обременённый Страж'
+env.localization.page[page.dialoguePrefix].strings['Destructive Golem'] = 'Разрушительный Голем'
+
+
+env.localization.page[page.dialoguePrefix].strings['ACTIONS'] = 'ДЕЙСТВИЯ'
 
 env.localization.page[page.dialoguePrefix].strings['inventory'] = 'инвентарь'
 env.localization.page[page.dialoguePrefix].strings['::FUNCTION::'] = '::ФУНКЦИЯ::'
 env.localization.page[page.dialoguePrefix].strings['usable now or in combat::click to use'] = 'используемо сейчас или в бою::кликните для использования'
 env.localization.page[page.dialoguePrefix].strings['usable in combat'] = 'используемо в бою'
 
+/* === ACTIONDEF === */
+env.localization.page[page.dialoguePrefix].strings['EFFECT'] = 'ЭФФЕКТ'
+
+env.localization.page[page.dialoguePrefix].strings['SELF'] = 'СЕБЯ'
+env.localization.page[page.dialoguePrefix].strings['OTHER'] = 'ДРУГИЕ'
+env.localization.page[page.dialoguePrefix].strings['SPECIAL'] = 'ОСОБАЯ'
+env.localization.page[page.dialoguePrefix].strings['LOCATION'] = 'ЛОКАЦИЯ'
+env.localization.page[page.dialoguePrefix].strings['ANY'] = 'ЛЮБАЯ'
+
+env.localization.page[page.dialoguePrefix].strings['AUTO'] = 'АВТО'
+
+env.localization.page[page.dialoguePrefix].strings['USER'] = 'ПОЛЬЗОВАТЕЛЬ'
+
+env.localization.page[page.dialoguePrefix].strings['T:'] = 'Х:'
+
+env.localization.page[page.dialoguePrefix].strings["ERROR::'unknown effect'"] = "ОШИБКА::'неизвестный эффект'"
+env.localization.page[page.dialoguePrefix].strings["ERROR::'missing context'"] = "ОШИБКА::'отсутствует контекст'"
+
+env.localization.page[page.dialoguePrefix].strings["ORIGIN::"] = "ИСТОЧНИК::"
+env.localization.page[page.dialoguePrefix].strings["unknown"] = "неизвестно"
 
 
 /* === CSS === */
-cor_ru['combatcss'] = `
+cor_ru.combat['css'] = `
 .party-title::after {
     content: "ОБЕСКИ, ОСНАЩЁННЫЕ ВРЕМЯДЕРЖЦАМИ";
     display: block;
@@ -6188,6 +6226,9 @@ cor_ru['combatcss'] = `
     content: "ОБЕСКИ, ОСНАЩЁННЫЕ ВРЕМЯДЕРЖЦАМИ\A CLICK & DRAG OVER ACTIVE MEMBER TO SWAP PREFERRED ORDER"
 }
 
+.partymember-hp::after {
+    content: "ХП";
+}
 
 .item-ic::before {
     content: '::В БОЮ::' !important;
@@ -6235,8 +6276,52 @@ cor_ru['combatcss'] = `
 .actor:not(.dead):not(.last-stand) .hp:after, .actor:not(.dead):not(.last-stand) .hp::after {
     content: "ХП" !important;
 }
+.statuses .status-count::after { content: "Х)" }
+
 `
 
-cor_ru.redefineAll()
-cor_ru.eatingEffectMessage()
+/* === OBSERVER STUFF === */
+cor_ru.combat['observer'] = {
+    party: {
+        func: (consolething)=>{
+            if (typeof page.party != "undefined") {
+                for (let i = 0; i < page.party.length; i++) {
+                    if (page.party[i].combatActor != "generic") page.party[i].name = processStringTranslation(page.party[i].name)
+                    page.party[i].class = processStringTranslation(page.party[i].class)
+                }
+            }
+            processTranslation(document.querySelector(`#party-menu`))
+
+            if (consolething != undefined) console.log(consolething[0], consolething[1]);
+        },
+        observe: ()=>{
+            cor_ru.combat.observer.party.itself.observe(document.querySelector("#party-menu"), { childList: true, subtree: true });
+
+            console.log("%cparty observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+        }
+    },
+    actiondef: {
+        func: (consolething)=>{
+            processTranslation(document.querySelector(`.actiondef`))
+
+            if (consolething != undefined) console.log(consolething[0], consolething[1]);
+        },
+        observe: ()=>{
+            cor_ru.combat.observer.actiondef.itself.observe(document.querySelector("#definition-box"), { childList: true });
+
+            console.log("%cactiondef observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+        }
+    },
+}
+
+cor_ru.combat.observer.party.itself = new MutationObserver(()=>{cor_ru.combat.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.combat.observer.actiondef.itself = new MutationObserver(()=>{cor_ru.combat.observer.actiondef.func(["%cactiondef observed! - @cor-RU", cor_ru.fancy.observed])})
+
+
+/* === LOAD === */
+document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement);
+cor_ru.combat.redefineAll()
+cor_ru.combat.eatingEffectMessage()
 getLocalizationForPage(true)
+cor_ru.combat.observer.party.func()
+cor_ru.combat.observer.party.observe()

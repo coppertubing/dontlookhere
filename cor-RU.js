@@ -889,24 +889,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
         },
-        party: {
-            func: (consolething)=>{
-                if (typeof page.party != "undefined") {
-                    for (let i = 0; i < page.party.length; i++) {
-                        if (page.party[i].combatActor != "generic") page.party[i].name = processStringTranslation(page.party[i].name)
-                        page.party[i].class = processStringTranslation(page.party[i].class)
-                    }
-                }
-                processTranslation(document.querySelector(`#party-menu`))
-
-                if (consolething != undefined) console.log(consolething[0], consolething[1]);
-            },
-            observe: ()=>{
-                cor_ru.observer.party.itself.observe(document.querySelector("#party-menu"), { childList: true, subtree: true });
-
-                console.log("%cparty observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-            }
-        },
         page: {
             func: (consolething)=>{
                 console.info("%cbeginning function - @cor-RU:page", cor_ru.fancy.general)
@@ -1065,7 +1047,6 @@ cor_ru.observer.warning.itself = new MutationObserver(()=>{cor_ru.observer.warni
 cor_ru.observer.gad.itself = new MutationObserver(()=>{cor_ru.observer.gad.func(["%cgad observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.dialogue.itself = new MutationObserver(()=>{cor_ru.observer.dialogue.func(["%cdialogue observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.func(["%cmasks observed! - @cor-RU", cor_ru.fancy.observed])})
-cor_ru.observer.party.itself = new MutationObserver(()=>{cor_ru.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.page.itself = new MutationObserver(()=>{cor_ru.observer.page.func(["%cpage observed! - @cor-RU", cor_ru.fancy.observed])})
 
 // advance log thingy
