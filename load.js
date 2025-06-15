@@ -1,6 +1,7 @@
 if(check('hub__funfriend-ep1fed')) cor_ru.embassyCoherent();
 cor_ru.observer.page.func()
 cor_ru.processReadout()
+cor_ru.stepKey()
 cor_ru.observer.page.observe()
 
 document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})

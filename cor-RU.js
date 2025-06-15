@@ -750,33 +750,122 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
     // funky functions that do not forbid you from moving cyrillic-style
 
-    stepKey: function (key) {
-    /*    console.log(key)
-        key = key.toLowerCase();
+    stepKey: function () {
+        function stepKey(key) {
+            //we don't let any steps happen under certain circumstances
+            if(env.stage.justStepped || 
+                body.classList.contains('stage-transition') || 
+                body.classList.contains('cull-stage') || 
+                body.classList.contains('in-dialogue') || 
+                body.classList.contains('in-combat') ||
+                body.classList.contains('in-melee') ||
+                document.documentElement.classList.contains('cutscene') || 
+                document.activeElement.tagName == 'INPUT' ||
+                document.activeElement.tagName == 'TEXTAREA'
+            ) {
+                return
+            } else {
+                env.stage.justStepped = true
+                setTimeout(() => {env.stage.justStepped = false}, 100)
+            }
 
-        if (key == 'ц') stepKey('w')
-        if (key == 'ф') stepKey('a')
-        if (key == 'ы') stepKey('s')
-        if (key == 'в') stepKey('d')
-        if (key == 'й') stepKey('q')
-        if (key == 'у') stepKey('e')
-        if (key == 'я') stepKey('z')
-    */
-    },
+            if (key.toLowerCase() == 'ц') key = 'w'
+            else if (key.toLowerCase() == 'ф') key = 'a'
+            else if (key.toLowerCase() == 'ы') key = 's'
+            else if (key.toLowerCase() == 'в') key = 'd'
+            else if (key.toLowerCase() == 'й') key = 'q'
+            else if (key.toLowerCase() == 'у') key = 'e'
+            else if (key.toLowerCase() == 'я') key = 'z'
 
-    stageKeypressed: (e) => { cor_ru.stepKey(e.key) },
+            let homeBox = stageCoordinatesFromId('creature')
+            let homePlate = elementAtStageCoordinates(homeBox.x, homeBox.y)
+            var targetSquare
+            var moving = false
+            let closeMenu = true // suggestion per @ripplesplash from corrucord - previously closed menu immediately unless it was Z
 
-    stepKeyImplement: function () {
-    //    if (body.querySelector('.stage-arrows') != null) addEventListener("keydown", cor_ru.stageKeypressed)
-    },
+            switch(key) {
+                //movement
+                case "arrowup":
+                case "w": //move in direction you're looking
+                    moving = "forward"
+                break;
 
-    stepKeyClean: function () {
-    /*    function stageCleanup() {
-            if(env.stage.ref) env.stage.ref.remove()
-            env.stage.ref = null
-            try{ document.removeEventListener('keydown', stageKeypress) } catch(e) {  }
-            try{ document.removeEventListener('keydown', cor_ru.stageKeypressed) } catch(e) {  }
-        }*/
+                case "arrowleft":
+                case "a": // turn left
+                    playerTurn({clockwise: false})
+                break;
+
+                case "arrowdown":
+                case "s": //away from where you're looking
+                    moving = "back"
+                break;
+
+                case "arrowright":
+                case "d": //turn right
+                    playerTurn()
+                break;	
+
+                case "e":
+                    //we only want this happening on stages where it's expected
+                    if(document.querySelector('#stage-navigator .swap') || check("TEMP!!allowswap")) {
+                        setTimeout(()=>{
+                            content.classList.toggle('swapcam')
+                            updateCameraTracking()
+                        }, stageAngleReset())
+                    }
+                break;
+
+                case "q":
+                    switch(body.getAttribute('quality')) {
+                        case "regular":
+                            setQualityPreference('low')
+                        break
+
+                        case "low":
+                            setQualityPreference('regular')
+                        break
+                    }
+                break;
+
+                case "z":
+                    if(page.partyMenuEnabled) togglePartyMenu()
+                    closeMenu = false;
+                break;
+
+                default:
+                    closeMenu = false;
+                break;
+            }
+
+            //close any open menus
+            if(body.classList.contains('in-menu') && closeMenu) exitMenu(false)
+
+            if(moving) {
+                var modifier = 1
+                if(moving == "back") modifier = -1
+
+                switch(env.stage.lastMoved) {
+                    case "up":
+                        targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y + modifier)
+                    break
+                    case "right":
+                        targetSquare = elementAtStageCoordinates(homeBox.x + modifier, homeBox.y)
+                    break
+                    case "down":
+                        targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y - modifier)
+                    break
+                    case "left":
+                        targetSquare = elementAtStageCoordinates(homeBox.x - modifier, homeBox.y)             
+                    break
+                }
+            }
+            
+            if(targetSquare != undefined) {
+                gridMoveTo(homePlate, targetSquare);
+                step()
+                if(!env.stage.enemyPause) enemyStep()
+            }
+        }
     },
 
     // obserbor. the itself of them gets defined later
@@ -925,7 +1014,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                     cor_ru.observer.gad.observe();
                     cor_ru.observer.dialogue.observe();
                     cor_ru.observer.masks.observe();
-                    if (document.querySelectorAll(`#party-menu`).length != 0) {cor_ru.observer.party.observe();}
                     console.info("%cobservers - @cor-RU:page", cor_ru.fancy.general)
 
                     if (consolething) console.log(consolething[0], consolething[1])
