@@ -1,3 +1,4 @@
+getLocalizationForPage(true);
 cor_ru.entity_menu = {
     names: { // do it like you would in env.localization
         "ENTITY::'unprocessed'::RECOMMEND::'relocation';'[EXM]'": "СУЩНОСТЬ::'необработана':РЕКОМЕНДАЦИЯ::'перемещение';'[ИЗУЧ]'",

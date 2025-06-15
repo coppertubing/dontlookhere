@@ -402,6 +402,7 @@ env.localization['definitions'] = {
 
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'" },
 }
+getLocalizationForPage(true);
 env.localization['strings'] = {  
     "what's up buddy?": "чё как, дружище?",
     "anything else?": "что-нибудь ещё?",
