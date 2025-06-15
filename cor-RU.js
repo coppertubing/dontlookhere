@@ -338,7 +338,7 @@ function readoutAdd({message, type = "", name, displayName, image = false, show 
     let effectiveMessage = message
     // console.log("readoutAdd got displayName", displayName)
 
-    name = processStringTranslation(name)
+    if (!displayName && name) displayName = processStringTranslation(name)
 
     var addition
     if(actor) {
