@@ -710,6 +710,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     processMenu: function (force) {
         document.querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')}) // we dont want to translate fundfriends (even tho it would be funny)
         cor_ru.processWeirdTranslation('.ci-masks', 'definition');
+        cor_ru.processWeirdTranslation('.ozo-mask', 'definition');
         cor_ru.processWeirdTranslation('#savetext', 'placeholder');
         if (force) {
             processTranslation(document.querySelector("#meta-menu")), true;

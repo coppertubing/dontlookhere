@@ -678,6 +678,9 @@ env.localization['strings'] = {
     "REALITY::'no effect'": "РЕАЛЬНОСТЬ::'не имеет эффекта'",
     "UNITY::'enables additional ACT on responsive thoughtforms'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
     "HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'": "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'",
+    "RESONANCE::'none within this particular memory segment';'await further repairs'": "РЕЗОНАНС::'не имеется в этом конкретном сегменте вспоминания';'ожидайте дальнейших починок'",
+    "RESONANCE::'detected in upcoming memory stream'": "РЕЗОНАНС::'обнаружен в предстоящем потоке памяти'",
+    "RESONANCE::'limited'": "РЕЗОНАНС::'ограниченный'",
     
     "GAD": "ГАН",
     "'overcoherency block, exercise caution'": "'блок сверхсвязности, соблюдайте осторожность'",
