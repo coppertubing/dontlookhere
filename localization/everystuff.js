@@ -837,6 +837,9 @@ env.localization['strings'] = {
 
 
     // --- safeguards for combat, this is needed so they wont get accidentally translated and output no definition
+    "effect-message": "effect-message",
+    "message-actions": "message-actions",
+
     "win": "win",
     "nothing": "nothing",
     "cower": "cower",
