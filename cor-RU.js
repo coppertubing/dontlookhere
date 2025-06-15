@@ -2,11 +2,13 @@
     cor-RU - a full russian adaptation mod for corru.observer
     by @dutokrisa and @bra1nslug_
     based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
-    certain parts are based on vielk memory hole example by @adr_furret
+    certain parts use code of vielk memory hole example by @adr_furret
 
     EP0 playtested by @akizetism
 
-     - adaptation up until the end of EP0 currently availible
+    all mentions are discord usernames
+
+     - adaptation up until the end of EP1 currently availible
 
     thank you for using our mod
 
@@ -15,11 +17,13 @@
     cor-RU - мод на полную русскую адаптацию для corru.observer
     от @dutokrisa и @bra1nslug_
     на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
-    некоторые части основаны на vielk memory hole example от @adr_furret
+    некоторые части используют код vielk memory hole example от @adr_furret
 
     EP0 протестировано @akizetism
 
-     - в данный момент доступна полноценная адаптация до EP0
+    все упоминания - никнеймы в дискорде
+
+     - в данный момент доступна полноценная адаптация до EP1
 
     спасибо за использование нашего мода
 */
@@ -326,6 +330,78 @@ function processTranslation(container, force = false) {
         if(el.childNodes.length == 0) {console.log("skipped for", el); return el.classList.add('tskip')}
         el.classList.add("tdone")
     })
+}
+
+function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
+    let readout = document.querySelector('#readout')
+    let miniReadout = document.querySelector('#minireadout')
+    let effectiveMessage = message
+    // console.log("readoutAdd got displayName", displayName)
+
+    name = processStringTranslation(name)
+
+    var addition
+    if(actor) {
+        // console.log("actor path")
+        if(actor.name == "unknown") return
+        let actorObj = getDialogueActor(actor)
+        effectiveMessage = processStringTranslation(actorObj.noProcess ? effectiveMessage : processDefinitionsInString(effectiveMessage))
+        addition = getReadoutMsg({message: effectiveMessage, image: actorObj.image, displayName: processStringTranslation(displayName), name: actor || displayName, type: actorObj.type, msgClass: actorObj.class})
+    } else {
+        //console.log("actorless path")
+        addition = getReadoutMsg({message: processStringTranslation(name == "moth" || name == "sys" ? effectiveMessage : processDefinitionsInString(effectiveMessage)), type: type, name, displayName: processStringTranslation(displayName), image: image})
+    }
+
+    //add the message to the main readout
+    readout.insertAdjacentHTML('beforeend', addition)
+	readout.scrollTop = readout.scrollHeight //scroll to it on the readout too
+
+    //if the readout isn't open and you aren't in dialogue... (unless forced to show)
+    //add the message to the mini readout, with a timer to remove it after a few seconds
+    if(show) {
+        if((!body.classList.contains('mui-active') && !body.classList.contains('in-dialogue')) || forceMini) {
+            miniReadout.insertAdjacentHTML('beforeend', addition)
+            let newMessage = document.querySelector(`#minireadout .message-${env.totalMessages}`)
+            setTimeout(() => {
+                newMessage.classList.remove('active')
+                setTimeout(()=>newMessage.remove(), 1000)
+            }, 5000);
+        }
+    }
+
+    //reveal all added stuff after a tiny delay
+    let currentMessageNum = env.totalMessages
+    setTimeout(()=>document.querySelectorAll(`.message-${currentMessageNum}`).forEach(e=>e.classList.add('active')), 50)
+    env.totalMessages++
+	
+    //play readout add sound if not in dialogue, and also it should be shown
+    if(!env.currentDialogue.active) {
+        if(sfx == true) play('muiReadout') //no custom sound
+        else if(typeof sfx == "function") sfx()
+        else if(typeof sfx == "string") play(sfx)
+        else if(typeof sfx == "object") {
+            play(sfx.sound, sfx.pitch)
+        }
+    }
+
+    //store message in session log in case of refreshes
+    //not too many though cause it used to be 1000 and that's a ton LOL
+    if(!noStore) {
+        if(env.logStore.length > 80) env.logStore.shift();
+        env.logStore.push(addition)
+        sessionStorage['log'] = JSON.stringify(env.logStore)
+    }
+
+    //also limit number of log entries that can show - used to be limitless, but we need a limit
+    if (readout.children.length > 80) {
+        var elementsToRemove = readout.children.length - 80
+    
+        for (var i = 0; i < elementsToRemove; i++) {
+            readout.removeChild(readout.children[0])
+        }
+
+        readout.insertAdjacentHTML('afterbegin', `<div class="message sourceless active">${processStringTranslation("internal log buffer cleared after reaching limit (80) due to attached external record device")}</div>`)
+    }
 }
 
 env.localization = {

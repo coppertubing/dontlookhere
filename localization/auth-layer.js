@@ -208,4 +208,4 @@ posthello
     RESPONSES::self
         похоже на то<+>END
 
-END:: cutscene(false); MUI("deprohibit"); content.classList.remove('looking', 'atyou');`)
+END::cutscene(false); MUI("deprohibit");content.classList.remove('looking', 'atyou');cor_ru.processWeirdTranslation("#content .target", "entaltname");`)
