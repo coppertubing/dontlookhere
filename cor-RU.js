@@ -279,7 +279,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
         } else {
             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const phraseRegex = new RegExp(`(?<=\\s|^)(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})(?=\\s|$)`, 'gi');
+            const phraseRegex = new RegExp(`(?<![0-9A-Z_a-zа-яА-Я])(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})(?![0-9A-Z_a-zа-яА-Я])`, 'gi');
 
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
@@ -288,7 +288,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
                 scanningInput = scanningInput.replaceAll(match[0], "")
 
                 //we do this to target replacements only outside of HTML
-                finalInput = finalInput.replace(/(?<=\s|^)(<[^>]*>|[^<]+)(?=\s|$)/g, (innerMatch)=>{
+                finalInput = finalInput.replace(/(?<![0-9A-Z_a-zа-яА-Я])(<[^>]*>|[^<]+)(?![0-9A-Z_a-zа-яА-Я])/g, (innerMatch)=>{
                     if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
                         return innerMatch
                     } 
