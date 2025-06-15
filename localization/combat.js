@@ -380,7 +380,7 @@ cor_ru.combat['eatingEffectMessage'] = function (time = 0) { // --- may this ent
                 }
 
                 // also make sure our party has adapted names cause yea
-                cor_ru.observer.party.func()
+                cor_ru.combat.observer.party.func()
             }
             change("PAGE!!cor_ru_combat", true)
         } catch (error) {
