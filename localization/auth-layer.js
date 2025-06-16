@@ -18,7 +18,7 @@ env.localization.page['hello'] = {dialogues: {},
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
         "gate::for you": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::'неизвестное внутреннее мыслепространство'
-    ::^&&Q@W61626f75742074696d65`
+    ::^&&Q@Wd181d0b0d0bcd0bed0b520d0b2d180d0b5d0bcd18f`
     }
 }
 
@@ -170,7 +170,7 @@ letthrough
     sentry
         ЧТО?!
             EXEC::document.querySelector('.maineye .eye').classList.add('squint')
-        НАМ КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ПРОПУСТИТЬ ТЕБЯ БЕЗ НАДЛЕЖАЩЕЙ ПОДПИСИ
+        НАМ КАТЕГОРИЧЕСКИ ЗАПРЕЩЕНО ПРОПУСКАТЬ ТЕБЯ БЕЗ НАДЛЕЖАЩЕЙ ПОДПИСИ
         ДАЖЕ ЕСЛИ ХОЧЕТСЯ
         ЭТА ЦИСТА ПО СВОЕЙ ПРИРОДЕ НЕСПОСОБНА ОТВЕЧАТЬ НА
             EXEC::env.hello.velzie();document.querySelector('.maineye .eye').classList.remove('squint');changeBgm(env.hello.velamb, {length: 4000})
