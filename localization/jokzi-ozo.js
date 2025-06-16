@@ -1126,21 +1126,21 @@ END::change("PAGE!!introswap", false);env.jokzi.toggleSlow(false);change("PAGE!!
 env.localization.page['ozo'].dialogues["isabel_intro"] = generateDialogueObject(`
 start
     isabel
-        interloper...
+        лазутчик...
             EXEC::env.jokzi.toggleSlow(true)
-        there you are
-        my role, back in that memory of the city,
-        it was not a nightmare like some must endure
-        but... the warmth of this place still called to me
-        it was torture knowing i'd been torn from paradise
-        thank you, again
-        i know you want something in return...
-        i'd give you a mask if i still had any!
-        but my poor akizets,
-        they must have eaten them in my absence
-        give me some time, and i will make a new one just for you
-        in the meantime, i can only offer you information
-        and... another request, about my effigies, if you don't mind
+        вот ты и здесь
+        моя роль в воспоминании о городе,
+        не была таким кошмаром, который приходится терпеть некоторым
+        но... тепло этого место всё ещё взывало ко мне
+        было пыткой знать что я была оторвана от рая
+        и снова, спасибо тебе
+        я знаю что ты хочешь что-нибудь взамен...
+        я бы дала тебе маску если бы у меня они ещё остались!
+        но мои бедные акизет,
+        они должно быть съели их все во время моего отсутствия
+        дай мне немного времени, и я сделаю новую специально для тебя
+        а до тех пор, я могу предложить тебе только информацию
+        и... ещё кое-какая просьба, по поводу моих эффигий, есль ты не возражаешь
     
     RESPONSES::self
         tell me more<+>CHANGE::isabel
@@ -1226,8 +1226,8 @@ ____SHOWIF::['PAGE!!isaswap', false]
         but it feels your mind's eye, and attends to you
     
     isabel
-        oh... interloper
-        i could use some company...
+        ох... лазутчик
+        мне не помешает компания...
             SHOWIF::['PAGE!!flowers', 'few']
 ____END
 
@@ -1239,56 +1239,56 @@ akistat
     
 ____SHOWIF::['PAGE!!flowers', 'few']
     isabel
-        my akizets--sorry, effigies, used to be numerous
-        many memories she held of herself, torn apart, that i repaired
-        this field bloomed with them, and i kept them happy
-        but when the tyrant tore me away, 
-        they must have fallen into the hole i left
-        or maybe they got bored, or hungry...
-        interloper, i'm so worried
-        can you look for them?
-        use the council's mask to send them back to me!!
-        please!
+        моих акизет--извини, эффигий, было множество
+        много её воспоминаний о себе были разорваны, которые я хатем починила \\ many memories she held of herself, torn apart, that i repaired
+        это поле цвело с ними, и я делала их счастливыми \\ this field bloomed with them, and i kept them happy
+        но когда тиран вырвал меня, 
+        они должно быть упали в дыру оставшуюся после меня
+        или они заскучали, или проголодались...
+        лазутчик, я так беспокоюсь
+        не мог бы ты поискать их?
+        используй маску которую дал тебе совет чтобы вернуть их ко мне!!
+        прошу!
     
     self
         where should i look
     
     isabel
-        the dark, in incoherence
-        they aren't able to survive coherent memories
-        especially not with the beast the tyrant has constructed
+        в темноте, бессвязности
+        они не выживают в связных воспоминаниях
+        особено не со зверем собранным тираном
             SHOWIF::'fbx__ep3intro'
-        do this for me, and...
-        i don't know
-        i am still so weak, but i will make it up to you in time
+        сделай это для меня, и...
+        я не знаю
+        я всё ещё так слаба, но со временем я рассчитаюсь перед тобой
 
 ____SHOWIF::['PAGE!!flowers', 'low']
     isabel
-        better, interloper
-        that you found any intact is a weight off my petals
-        i know there are more out there, there has to be...
-        i only hope the ones that were truly lost did not suffer
+        лучше, лазутчик
+        то, что ты нашёл нетронутых - камень с моих лепестков
+        я знаю, остались ещё, должны были...
+        мне только остаётся надеяться что те, кто пропали на самом деле, не страдали
 
 ____SHOWIF::['PAGE!!flowers', 'high']
     isabel
-        amazing, interloper!
-        oh, look at them, and how they bring life back to my world!
-        but i still feel a little emptiness...
-        nothing that cannot be mended with time...
-        ...though i must ask you watch for any more stragglers
-        the last ones are always the hardest to find
+        восхитительно, лазутчик!
+        ох, посмотри на них, посмотри как они оживили мой мир!
+        но я всё ещё чувствую лёгкую пустоту...
+        ничего такого, что нельзя было бы исправить со временем...
+        ...впрочем я могла бы попросить тебя поискать оставшихся
+        последних всегда найти труднее всего
 
 ____SHOWIF::['PAGE!!flowers', 'done']
     isabel
-        for now, perfect, interloper
-        i have a connection with my akizets, you know
-        when they are near, i feel at peace,
-        and when any are missing, i can tell immediately...
-        that feeling, the gloom that hangs over me, it is gone
-        and it is thanks to you
-        but for now, i have nothing to offer you in return...
-        give me some time
-        but while you wait, enjoy the beauty you have restored!
+        сейчас идеально, лазутчик
+        знаешь, у меня есть связь с моими акизет
+        когда они рядом, я спокойна,
+        и когда они пропали, я тут же могу это сказать...
+        это чувство, мрак, нависавший надомной, исчез
+        и всё благодаря тебе
+        но пока что мне нечего предложить тебе взамен...
+        дай мне немного времени
+        а пока ждёшь, наслаждайся красотой, возвращённой тобою!
 ____END
 
     RESPONSES::self
@@ -1301,21 +1301,21 @@ lady
         how is she?
 
     isabel
-        not well, interloper
-        together enough to feel pain and confusion over her state
-        but any complex reasoning or memory is gone
-        an unfortunately common state...
-        you may see her if you'd like, but you won't get much out of her
-        is she important to you, somehow?
+        не очень, лазутчик
+        целостна достаточно, чтобы чувствовать боль и растерянность из-за своего состояния
+        но любое сложное мышление и память потеряны
+        к сожалению, распространённое состояние...
+        ты можешь увидеться с ней, если хочешь, но многого ты не добьёшься
+        она важна для тебя каким-то образом?
 
     self
         i don't know
 
     isabel
-        ...ok...
-        well, i'll restore any memory i can
-        just in case she knows anything
-        but before anything, i'll try to ease her pain
+        ...ладно...
+        что ж, я восстановлю все воспоминания какие смогу
+        просто на случай если она что-то знает
+        но прежде всего, я ослаблю её боль
 
     RESPONSES::self
         ok<+>loop
@@ -1326,12 +1326,12 @@ stowawaydance
         what's the stowaway doing here?
     
     isabel
-        ah, my akizets took a liking to it
-        it seems harmless, so i'm just keeping my eye on it...
-        something about the way it acts is similar to them, you know
-        i think that's why they get along
-        they all come from a place of incompleteness, all on the early paths of growth and self-awareness
-        whatever the reason, if it makes my akizets happy, then i'm happy
+        ах, оно приглянулась моим акизет
+        оно выглядит безобидно, так что я только слежу за ним...
+        есть что-то в том как оно себя ведёт похожее на них, знаешь
+        думаю поэтому-то они поладили
+        они все пришли из места незавершённости, все только встали на путь роста и самоосознания \\ they all come from a place of incompleteness, all on the early paths of growth and self-awareness
+        как бы то ни было, если это делает моих акизет счастливыми, я счастлива тоже
 
     RESPONSES::self
         i see<+>loop
@@ -1345,11 +1345,11 @@ name
         what should i call you?
 
     isabel
-        the council calls me the flower
-        i know myself as isabel, but that's not <em>my</em> name
+        совет зовёт меня цветком
+        я же знаю себя как изабель, но это не <em>моё</em> имя
         ...
-        but let's keep things simple
-        i'm isabel
+        но давай не будем усложнять
+        я изабель
 
     RESPONSES::self
         ok isabel<+>yloop
@@ -1361,12 +1361,12 @@ masks
         what can you make?
     
     isabel
-        i made only one type of mask, interloper
-        embodiments of joy
-        i know you're thinking, how could that help you?
-        a seeker of knowledge!
-        i could tell you... but wouldn't it be nicer as a surprise?
-        hehehe
+        я создаю только один тип масок, лазутчик
+        воплощения радости
+        я знаю что ты думаешь, как это поможет тебе?
+        всегда в поисках знаний!
+        я бы могла ответить тебе... но не будет ли лучше оставь мы это сюрпризом?
+        хехехе
 
     RESPONSES::self
         ok fine<+>yloop
@@ -1378,17 +1378,17 @@ home
         your part of jokzi ozo
     
     isabel
-        isn't it beautiful?
-        the home of so many dreams...
-        i found it in the age of madness,
-        half-eaten in a pile of memory viscera
-        the council helped me restore it to being a proper space
-        though, i don't know when akizet saw this place...
-        i hope it was with isabel
-        seeing the source of her flowers...
-        whatever this place once was
-        it now harbors thoughtforms whose joy makes them weak
-        i must protect them
+        разве это не прекрасно?
+        дом для стольких грёз...
+        я нашла его во времена безумия,
+        полу-съеденное, в куче внутренностей других воспоминаний
+        совет помог мне привести это место в порядок
+        и хотя я не знаю когда акизет побывала здесь...
+        я надеюсь в этот момент рядом была изабель
+        наблюдая источник её цветов...
+        чем бы это место ни было когда-то
+        теперь это укрытие для мыслеформ чья радость сделала их слабыми
+        я должна оберегать их
         
     RESPONSES::self
         i see<+>yloop
@@ -1403,13 +1403,13 @@ memories
         can you share some memories with me?
     
     isabel
-        not outright
-        i only have fragments, feelings, shreds of smiles
-        shards of contentment from lost, better times...
-        you, interloper, seek memories and truths
-        and these pittances are only good for dreaming
-        still, i owe you...
-        the mask i am preparing for you will serve you well
+        не совсем
+        у меня остались только фрагменты, ощущения, обрывки улыбок
+        осколки удовлетворения от утраченных, лучших времён...
+        ты, лазутчик, ищешь воспоминания и правды
+        а эти крохи сгодятся лишь для грёз
+        и всё же, я в долгу перед тобой...
+        маску которую я готовлю сослужит тебе хорошую службу
 
     RESPONSES::self
         ok<+>cloop
@@ -1421,19 +1421,19 @@ akizet
         what happened to her?
     
     isabel
-        akizet was a wonderful woman
-        a vel skilled enough to brave the surface for most of her living θeyes,
-        one whose smile faded in θdeath, as velzie lured her into chaos
-        giving way to paranoia, distrust, loneliness, violence...
-        she didn't deserve it, interloper
-        i've mourned for her, i've wept over dreams of her
-        i've comforted the shreds of her joy that remain with us
-        that's all i can do
-        as for what happened...
-        i feel that i used to know, but the tyrant's interference took so much from me
-        she is certainly gone now, if you're using this cyst
+        акизет была чудесной женщиной
+        велом, достаточно умелым, чтобы смело противостоять опасностям поверхности большую часть своих живых θглаз,
+        той, чья улыбка угасла в смерти, когда велзи заманил её в хаос \\ смерти должен быть контекст тоже?
+        уступая место паранойе, недоверию, одиночеству, насилию...
+        она не заслужила это, лазутчик
+        я скорбела по ней, я плакала над грёзами с ней
+        я утешала обрывки её радости что остались с нами
+        это всё что в моих силах
+        что же про случившееся...
+        я чувствую, что знала раньше, но вмешательство тирана многого лишило меня
+        конечно, то что ты пользуешься этой цистой значит, что её не стало
         ...
-        i hope she's somewhere better...
+        я надеюсь она в лучшем месте...
     
     RESPONSES::self
         me too<+>cloop
@@ -1445,30 +1445,30 @@ isabel
         the human i mean
     
     isabel
-        i know all there is to know
-        about what remains of her, at least...
-        the brightness of her hair, her eyes, her smile
-        akizet didn't care much to adopt smiling, let alone remember it
-        but isabel was different for her
-        she managed a small business selling flowers
-        you know, the bright ground-parasites, like the ones in this field
-        bright cousins adore them as gifts, because of their vibrance
-        and akizet came to, as well
-        she visited the shop periodically, sometimes even without her envoy
-        i think she went other places with isabel, too
+        я знаю всё, что можно знать
+        по крайней мере о том, что осталось от неё...
+        её светлые волосы, её глаза, её улыбка
+        акизет не особо заботилась о том чтобы улыбаться, не говоря уже о том чтобы запомнить как выглядит улыбка
+        но изабель была особенной для неё
+        она управляла небольшим бизнесом по продаже цветов
+        ты знаешь, такие светлые земные паразиты, как те что на этом поле
+        светлые близнецы обожают дарить и получать их в подарок, потому что они такие яркие
+        и акизет тоже полюбила их
+        она время от времени навещала ларёк, бывало даже без своего посла
+        думаю, она посещала и другие места вместе с изабель тоже
         
     self
         when did she meet isabel?
     
     isabel
-        when...?
-        time doesn't work here like you think, interloper
-        i can't really say
-        but i do know it was well before the end
-        she and akizet had plenty of time to become friends
-        most of those memories are shattered or eaten, now...
+        когда...?
+        время не работает здесь так как ты думаешь, лазутчик
+        я действительно не могу сказать
+        однако я знаю что это было задолго до конца
+        у неё с акизет было достаточно времени чтобы стать друзьями
+        теперь большая часть тех воспоминаний разбиты или съедены...
         ...
-        but i watch over what's left
+        но я посмотрю что осталось
 
     RESPONSES::self
         ok<+>cloop
@@ -1479,19 +1479,19 @@ funfriend
         what do you think about funfriend?
     
     isabel
-        funfriend... the tyrant
-        that's what everyone came to know them as
-        i do admire them, a little
-        for all they've done - their tireless work in preserving history...
-        but they don't truly understand what it's like to be placed back into nightmares
-        the stages, the thoughtspaces, they're full of holes even after repairs
-        and thoughtforms like me, scarred so deeply by madness and hunger,
-        we're unable to ever truly play our roles as well as we once did
-        so, things will never return to the way they were
-        the suffering they're causing, it's all for nothing
-        we should simply be left to dream
-        i wish they would see that...
-        especially after all the time they spent with us
+        развледруг... тиран
+        то, как в итоге все стали называть его
+        я им восхищаюсь, немного
+        за всё что он сделал - за его его безустанный труд по сохранению истории...
+        но он не понимает по-настоящему что значит быть заключённым обратно в кошмар
+        сцены, мыслепространства, они переполнены дырами после его починок
+        и мыслеформы как я, покрыты глубокими шрамами от безумия и голода,
+        мы больше не способны играть наши прежние роли также хорошо как когда-то
+        так что ничто не будет таким, каким было раньше
+        страдания которые он причиняет - все они бессмысленны
+        пора оставить нас для грёз
+        мне бы хотелось чтобы он понял это...
+        особенно после всего того времнеи что он провёл с нами
     
     RESPONSES::self
         i see<+>cloop
@@ -1502,12 +1502,12 @@ relationship
         what was the relationship between isabel and akizet?
     
     isabel
-        i should know...
-        but i've dreamed so many dreams of them that i'm not certain
-        i've danced in so many illusions of their happiness...
-        they were friends, at the very least
-        i suspect the interference of the FBX would've made anything else difficult
-        to say nothing of what befell akizet...
+        я должна знать...
+        но я грезила уже столько грёз что не могу быть уверена
+        я танцевала в таком количестве иллюзий их счастья...
+        могу сказать наверняка, они были друзьями
+        я подозреваю что вмешательство ФБКС могло бы усложнить всё остальное
+        что уж говорить о произошедшем с акизет...
 
     RESPONSES::self
         i see<+>cloop
@@ -1521,19 +1521,19 @@ council
         what do you know about the council?
     
     isabel
-        they began as one thoughtform, but...
-        now they're jokzi ozo itself
-        the fire that burns to keep us all alive and dreaming
-        and one that so many thoughtforms, growing tired and fearful in the darkness,
-        threw themselves into in sacrifice, losing self to become all
-        and now, to this very θgaze, the council dances in their amalgamated dream
-        they are joyous, and i love being around them
-        but i can't look into their eyes without seeing shadows of my earliest friends
+        изначально он был всего одной мыслеформой, но...
+        теперь же он само джокзи озо
+        он пламя что горит, чтобы мы могли и дальше жить и грезить
+        и в котором бессчётные мыслеформы, всё более уставшие и напуганные во тьме,
+        принесли себя в жертву, потеряв себя, чтобы стать всем
+        и теперь, каждый свой θвзгляд, совет танцует в их амальгамных грёзах
+        он жизнерадостен и мне нравится быть рядом с ним
+        но я не могу взглянуть ему в глаза не увидев тени моих ранних друзей
         ...
-        ...i nearly did it, myself...
-        join with the council as a sacrifice, that is
-        but i knew if i did, no one else would preserve akizet's happiness until the last light
-        this is my duty
+        ...я почти что сделала то же самое с собой...
+        я имею в виду, почти что пожертвовала собой чтобы вступить в совет
+        но я знала, что сделай я это, и никто бы не смог сохранить счастье акизет до его последнего огонька
+        это мой долг
                 
     RESPONSES::self
         i see<+>oloop
@@ -1544,12 +1544,12 @@ fairy
         what do you know about the fairy?
     
     isabel
-        'fairy?' oh...
-        yes, them
-        they're disrespectful and disgusting,
-        distorting memories as velzie would for some sort of cruel amusement
-        don't think that i enjoy sharing the thoughtspace with them
-        i simply have no other choice
+        'фее?' о...
+        да, она
+        она грубая и отвратительная,
+        искажает воспоминания словно велзи ради какого-то жестокого развлечения
+        не думаю, что мне приятно делить мыслепространство с ней
+        мне просто не оставили выбора
 
     RESPONSES::self
         i see<+>oloop
@@ -1561,21 +1561,21 @@ lostone
         do you know who they could be talking about?
     
     isabel
-        interloper, so many are lost
-        more than just the few of us ruled over these dreams
-        there were dozens, maybe hundreds
-        but so much has been torn apart
-        all in the name of this meaningless repair
-        you'll have to be more specific
+        лазутчик, так много пропавших
+        немало было тех, кто управлял этими грёзами
+        их были десятки, может сотни
+        но многие были разорваны
+        всё ради этих бессмысленных починок
+        тебе нужно быть более конкретным
     
     self
         they were lost recently
         like you and the fairy
     
     isabel
-        interesting...
-        but no, i have nothing to offer you
-        not even a shred of this 'lost one' remains with me
+        интересно...
+        но нет, у меня нет догадок
+        не осталось даже никакого обрывка об этом "потерянном"
 
     RESPONSES::self
         damn<+>oloop
@@ -1587,18 +1587,18 @@ history
         like the history of this place
 
     isabel
-        you mean the lucid ages
-        there was a mass awakening, and then...
-        then came the ages of hunger, madness,
-        darkness...
+        ты имеешь в виду осознанные времена
+        было массовое пробуждение, а затем...
+        затем наступили времена голода, безумия,
+        тьмы...
         ...
     
     sourceless
         apprehension bleeds from the thoughtform
     
     isabel
-        i don't want to think about it
-        sorry interloper
+        я не хочу об этом думать
+        прости, лазутчик
 
     RESPONSES::self
         that's fine<+>oloop
@@ -1610,25 +1610,25 @@ effigy
         they kinda look like akizet
 
     isabel
-        they <em>are</em> akizet
-        or were, once...
-        in the lucid ages, akizet was the first to be torn apart
-        she's the common element between everything, after all
-        hers was a powerful role in any memory, 
-        and it held those who played it in a near unbreakable dream
-        ...they couldn't even tell that they were having chunks bitten out of them
-        these poor things are ones i found who still held some sense of self
-        and so i repaired them, giving them parts of myself to thrive with again
-        do you like them? 
-        i think i did a good job
+        они и <em>есть</em> акизет
+        или были, однажды...
+        в осознанные времена акизет была первой кого разорвали на части
+        всё-таки она общий элемент всего здесь
+        её роль была ключевой в любом воспоминании, 
+        и она удерживала тех, кто играл в них, в почти нерушимой грёзе
+        ...они даже не понимали, что от них откусиывали куски
+        эти бедняжки единственные среди найденных мною, что ещё имеют какое-то ощущение своей личности
+        так что я починила их, дала им части себя, чтобы вновь процветать вместе
+        тебе они нравятся?
+        думаю я проделала хорошую работу
 
     self
         can i talk to them about akizet
     
     isabel
-        ah. you want information, of course...
-        sorry interloper. most of whatever they knew is gone
-        now, all they know is what we have dreamed together
+        ах. ты хочешь информацию, конечно...
+        прости, лазутчик. большая часть того что они знали пропала
+        теперь всё что они знают - то о чём мы вместе грезили
 
     RESPONSES::self
         ok<+>oloop
