@@ -43,7 +43,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "Why don't you take a look at the menu, Akizet?": "Почему бы Вам не взглянуть на меню, Акизет?",
 
         /*akizet*/ "where is the menu?": "где ваше меню?",
-        /*cashier*/ "It's behind me...": "Оно за мною...",
+        /*cashier*/ "It's behind me...": "Оно за мной...",
         /*cashier*/ "Can you read?": "Вы умеете читать?",
         /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "Простите... Я не хотела, чтобы это прозвучало грубо...",
         /*akizet*/ "i can, do not worry": "я умею, не волнуйтесь",                    
@@ -703,7 +703,7 @@ start
     envoy
         Что она говорит?
         ...И как Ваша команда пришла к этому?
-        Разве вы не слушаете её уже на протяжении... сколько, тридцати двух лет? 
+        Разве вы не слушаете её уже на протяжении... скольки, тридцати двух лет? 
     
     akizet
         ваш ответ прост, гордон:
