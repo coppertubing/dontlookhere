@@ -1543,7 +1543,7 @@ start
     sourceless
         О НЕТ
         РАЗУМЕЕТСЯ Я СЛЫШАЛА
-        Я ДОЛЖНА УБЕДИТЬСЯ, ЧТО ОН НЕ СОЧТЁТ УМЕСТНЫМ ПОДЕЛИТЬСЯ ЕЙ СО СВЕТЛЫМИ БЛИЗНЕЦАМИ
+        Я ДОЛЖНА УБЕДИТЬСЯ, ЧТО ОН НЕ СОЧТЁТ УМЕСТНЫМ ПОДЕЛИТЬСЯ ЕЮ СО СВЕТЛЫМИ БЛИЗНЕЦАМИ
 
     cavik
         такое чувство, что она была задумана как сатира на более абсурдные теории ранней эпохи, но...
@@ -1991,7 +1991,7 @@ start
         ...
         но как долго он уже транслируется?
         как мысль может быть такой большой?
-        мы вообще сможем
+        сможем ли мы вообще
         ...
             EXEC::content.classList.remove('signal', 'signal2')
 
@@ -2220,14 +2220,14 @@ env.localization.page.embassy.echoChatter = (part) => {
 
             chatter({actor: "sourceless", text: "опасение эха пропитывает окружающую среду", delay: delay += 3000, readout: true})
             chatter({actor: "sourceless", text: "я ощущаю, что эта бредовая паранойя даже не является его истинным посланием", delay: delay += 3000, readout: true})
-            chatter({actor: "sourceless", text: `в своей ${processDefinitionsInString("θсмерти")} у меня никогда не находилось терпения на такие извилистые болтовни`, delay: delay += 3000, readout: true})
+            chatter({actor: "sourceless", text: `в своей ${processDefinitionsInString("θсмерти")} у меня никогда не находилось терпения на такую извилистую болтовню`, delay: delay += 3000, readout: true})
 
             chatter({actor: "akizet", text: "почему? не трать моё время, прекрати эту драму", delay: delay += 4000, readout: true})
 
             chatter({actor: "echo", text: "я понимаю твою реакцию, она ожидаема", delay: delay += 3000})
             chatter({actor: "echo", text: "но мне нужно было поставить своё предупреждение первым, из предосторожности", delay: delay += 3000})
             chatter({actor: "echo", text: "ты хочешь узнать, почему:", delay: delay += 3000})
-            chatter({actor: "echo", text: "приходи и посмотри", delay: delay += 3000})
+            chatter({actor: "echo", text: "подойди и посмотри", delay: delay += 3000})
 
             env.setTimeout(()=>{
                 body.classList.add("pathstep1")
