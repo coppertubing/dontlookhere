@@ -1,4 +1,4 @@
-Эenv.localization.page['recosm'] = {dialogues: {},
+env.localization.page['recosm'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "this really is a 'pocket of sanity', huh? despite all the individual parts being incoherent, the readout isn't total nonsense...": "так это и правда \"уголок здравомыслия\", а? несмотря на бессвязность всех отдельных частей, показания - не полная бессмыслица...",
