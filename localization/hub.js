@@ -37,7 +37,7 @@ env.localization.page['hub'] = {dialogues: {},
         "THERE USED TO BE A LOT MORE THERE":"РАНЬШЕ ТАМ БЫЛО СТОЛЬКО ВСЕГО",
         "I WONDER WHERE IT ALL WENT":" ИНТЕРЕСНО КУДА ОНО ДЕЛОСЬ",
 
-        "I SAW YOU VISITED THE DULL VESSEL":"КАК ТЕБЕ СЕРОЕ СУДНО?",
+        "I SAW YOU VISITED THE DULL VESSEL":"КАК ТЕБЕ СУДНО СЕРОЕ?",
         "IF IT SEEMED EMPTY THAT IS BECAUSE THE FURNITURE THOUGHTFORMS WERE CONSUMED":"ЕСЛИ ОНО ПОКАЗАЛОСЬ ТЕБЕ ПУСТЫМ ЭТО ПОТОМУ ЧТО МЫСЛЕФОРМЫ МЕБЕЛИ БЫЛИ СЪЕДЕНЫ",
         "SORRY":"ИЗВИНИ",
         "WE CAN FIX IT LATER":"МЫ МОЖЕМ ПОЧИНИТЬ ЭТУ ЧАСТЬ ПОЗЖЕ",
@@ -57,7 +57,7 @@ env.localization.page['hub'] = {dialogues: {},
         "REPAIRS ARE CONTINUING APACE":"ПОЧИНКИ ПРОДОЛЖАЮТСЯ В ХОРОШЕМ ТЕМПЕ",
         "NOTHING TO SHARE YET":"ЕЩЁ НЕЧЕМ ПОДЕЛИТЬСЯ",
         
-        "HAVE YOU SEEN YOUR 'VELZIE' LATELY?":"ДАВНО ЛИ ТЕБЕ ВСТРЕЧАЛСЯ ТВОЙ 'ВЕЛЗИ'?",
+        "HAVE YOU SEEN YOUR 'VELZIE' LATELY?":'ДАВНО ЛИ ТЕБЕ ВСТРЕЧАЛСЯ ТВОЙ "ВЕЛЗИ"?',
         "IT STILL HAS NOT APPEARED TO ME":"Я ДО СИХ ПОР НЕ ВИДЕЛ НИЧЕГО ПОДОБНОГО",
 
         "I HAVE GOOD NEWS FOR YOU!":"У МЕНЯ ДЛЯ ТЕБЯ ХОРОШИЕ НОВОСТИ!",

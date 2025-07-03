@@ -171,7 +171,7 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
         "recollection::discovery": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый взор'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый {processDefinitionsInString("взор")'</span>`, //добавить деф (я вставил как в entity-menu хз работает ли)
         "recollection::suspicion": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз велзи выгибается в ликовании'</span>`,
@@ -188,14 +188,14 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style='color: var(--friend-color)'>+</span>'метка ${processDefinitionsInString("олтазни")}'
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые'
     <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'я просто думаю, что они крутые'">близнецовые глаза</span>'
-    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
         "cavik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
     <span style='color: var(--friend-color)'>+</span>'метка <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'дом';'вазнийский пещерный город';'да будут же глаза развеваться!!'">олтазни</span>'
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращены назад'
-    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
         "bozko": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
@@ -215,20 +215,20 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, торчмя'
     <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'их чёрные зрачки разительны'">близнецовые глаза</span>'
-    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
         "gakvu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые, угловая стилизация'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'моя настоящая накидка тоже так делает, она покрыта грибком'">самопроектированная подпись</span>'`,
+    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'моя настоящая накидка тоже так делает, она покрыта грибком'">самоспроектированная подпись</span>'`,
         "miltza": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
     <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
     <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, когтистые'
     <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'религиозное значение'">дополнительная окизиковая рука</span>'
-    <span style='color: var(--friend-color)'>+</span>'самопроектированная подпись'`,
+    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
 
         // discovery
         'container': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
@@ -837,7 +837,7 @@ orange
     sourceless
         бардруг протягивает конечность к витрине с апельсиновыми симулякрами
         она проходит через цистозную стенку, как рука сквозь воду,
-        в конце концов он извлекая шарообразный стакан, светящийся апельсиновым соком
+        в конце концов извлекая шарообразный стакан, светящийся апельсиновым соком
         хотя... настоящий апельсиновый сок не светится
 ____SHOWIF::[["netstat|<", 0]]
         но он выглядит классно
@@ -1170,7 +1170,7 @@ falsee
         вот эта - с моей родины
         воспоминания бывалого вейлькового прыгуна в форме игры
         значит так: вейльки несутся к погодной стене,
-        а ты должна перепрыгиваешь со одного на другого, пока они всё набирают скорость,
+        а ты должна перепрыгивать со одного на другого, пока они всё набирают скорость,
         иначе ты исчезнешь за воздушной границей!!
 
     sourceless
@@ -1665,7 +1665,7 @@ talk
     
     sourceless
         В ЭТОТ МОМЕНТ Я УСЛЫШАЛА В ЕГО ГОЛОСЕ ОТГОЛОСОК ЛИЧИНОЧНОЙ РАДОСТИ
-        НО ПО ЕДВА ЗАМЕТНОМУ ПОВОРОТУ РЕЦЕПТОРА Я ВИЖУ, ЧТО ОН ЧУВСТВУЕТ, НЕ НАДО БЫЛО ЭТОГО ГОВОРИТЬ
+        НО ПО ЕДВА ЗАМЕТНОМУ ПОВОРОТУ РЕЦЕПТОРА Я ВИЖУ, ЧТО ОН ЧУВСТВУЕТ, НЕ НАДО БЫЛО ЭТО ГОВОРИТЬ <-- вообще странное. сожалеет об этих словах?
     
     cavik
         ему ведь можно, так?
@@ -2016,7 +2016,7 @@ start
         вы ведь понимаете, что это значит?
     
     akizet
-        кавик... this is not a theory of fancy
+        кавик... this is not a theory of fancy <-- что
             EXEC::env.embassy.setFocus('akizet')
         это правда, что она всё меняет...
         но нам всё ещё не хватает данных. так?
@@ -2308,7 +2308,7 @@ start
         тот же тип беспочвенной теории, которую бы сочинил какой-нибудь тревожный кив
 
     akizet
-        совет никогда бы не одобрил наши исследования, будь это было так
+        совет никогда бы не одобрил наши исследования, будь это так
             EXEC::specialCam("eaki")
         ты просто сеешь подозрения? это угроза?
         или неудачный розыгрыш?
@@ -2394,8 +2394,8 @@ start
 
     akizet
         погоди
-        у тебя есть доказательства, которыми ты можешь поделиться?
-        хоть какие-нибудь?
+        ты можешь поделиться доказательствами?
+        хоть какими-нибудь?
         мне хочется верить тебе
         но я должна знать, что это правда
         а что, если мы найдем что-то ещё?
@@ -3191,7 +3191,7 @@ cyst
         …¤,¿…¶¡Øн
 
     funfriend
-        РЕКОМЕНДАЦИЯ: ОБЯЗАТЕЛЬНО ПРЕКРАТИТЕ ЭТО СЕЙЧАС ЖЕ
+        РЕКОМЕНДАЦИЯ: ПРЕКРАТИТЕ ЭТО НЕМЕДЛЕННО
 
     sourceless
         Я НЕ УЧЛА ЭТУ ВОЗМОЖНОСТЬ...

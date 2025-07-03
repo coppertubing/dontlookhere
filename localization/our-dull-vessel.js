@@ -6,7 +6,7 @@ env.localization.page['dullvessel'] = {dialogues: {},
         "looks like funfriend's restored a little bit here, there's definitely more data than before": "похоже развледруг тут потрудился, здесь точно прибавилось данных",
         "about the dull vessel": "о судне серое",
 
-        'pilot cyst': `циста-пилот`,
+        'pilot cyst': `пилотная циста`,
         'glazika': `глазика`,
         'container': `контейнер`,
         'climbing wall': `скалодром`,
