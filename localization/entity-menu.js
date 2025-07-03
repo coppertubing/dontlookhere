@@ -34,7 +34,7 @@ cor_ru.entity_menu = {
         "ENTITY::'gate::the dull contrivance'": "СУЩНОСТЬ::'врата::открытие серое'",
 
         //our dull vessel
-        "ENTITY::'pilot cyst'": "СУЩНОСТЬ::'циста-пилот'",
+        "ENTITY::'pilot cyst'": "СУЩНОСТЬ::'пилотная циста'",
         "ENTITY::'glazika'": "СУЩНОСТЬ::'глазика'",
         "ENTITY::'container'": "СУЩНОСТЬ::'контейнер'",
         "ENTITY::'parasite plane'": "СУЩНОСТЬ::'паразитная проекция'",
@@ -366,7 +366,7 @@ cor_ru.entity_menu = {
 
         //our dull vessel
         "pilot cyst": {
-            name: `циста-пилот`,
+            name: `пилотная циста`,
             desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
     <span style="color: var(--obesk-color)" definition="ПРЕДУПРЕЖДЕНИЕ::'в большинстве необрабатываемая сущность';'может быть неточной'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
@@ -648,7 +648,7 @@ cor_ru.entity_menu = {
             name: `окно`,
             desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a minds eye, to share'</span>`
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'чтобы видеть и делиться увиденным'</span>`
         },
         "simulacra dispensary": {
             name: `раздатчик симулякров`,

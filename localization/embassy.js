@@ -126,6 +126,8 @@ env.localization.page['embassy'] = {dialogues: {},
         "jut qou": "жат куу",
         "vel qou": "вел куу",
 
+        "it is locked": "заперто",
+
         'container': `контейнер`,
         "attendant": "слуга",
         "movefriend": "движедруг",
@@ -171,7 +173,7 @@ env.localization.page['embassy'] = {dialogues: {},
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
         "recollection::discovery": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый {processDefinitionsInString("взор")'</span>`, //добавить деф (я вставил как в entity-menu хз работает ли)
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый ${processDefinitionsInString("взор")}'</span>`, //добавить деф (я вставил как в entity-menu хз работает ли)
         "recollection::suspicion": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз велзи выгибается в ликовании'</span>`,
@@ -289,7 +291,7 @@ env.localization.page['embassy'] = {dialogues: {},
 
         "window": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a minds eye, to share'</span>`,
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'чтобы видеть и делиться увиденным'</span>`,
 
         "simulacra dispensary": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'

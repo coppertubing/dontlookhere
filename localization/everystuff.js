@@ -553,11 +553,31 @@ env.localization['strings'] = {
     "funfriend": "развледруг",
 
     "proxyfriend": "проксидруг",
+        "HELLO INTERLOPER": "ПРИВЕТ ЛАЗУТЧИК",
+        "i recognize that signal interloper": "мне знаком этот сигнал лазутчик",
+        "why are you doing that": "зачем ты это делаешь",
+        "ahaha you are so strange": "ахаха твоё поведение такое странное",
+
+        "what is that...?": "что это...?",
+        "was that you?": "это от тебя?",
+        "i do not think it came through right!!": "я не думаю что дошло правильно!!",
+        "come do that back in the hub!": "приходи и сделай это в хабе!",
+
+        "NOT RIGHT NOW PLEASE": "НЕ СЕЙЧАС ПОЖАЛУЙСТА",
+        "DIFFICULT TO SPEAK THROUGH PROXY": "ТРУДНО ГОВОРИТЬ ПО ПРОКСИ",
+        "CONDUCTING MEMBRANE REVIEWS": "ПРОВОЖУ ОСМОТР МЕМБРАНЫ",
+        "BE ON YOUR WAY": "ИДИ СВОЕЙ ДОРОГОЙ",
+
+        "WAIT WHAT ARE YOU DOING": "ПОСТОЙ ЧТО ТЫ ДЕЛАЕШЬ",
+        "INTERLOPER!!": "ЛАЗУТЧИК!!",
+
+
 
     "GATE": "ВРАТА",
 
     "..__HELLO__..": "..__ПРИВЕТ__..",
     "::HELLO": "::ПРИВЕТ",
+    "\"hello\"": "\"привет\"",
 
     "their_city": "ИХ_ГОРОД",
     "their-city": "их-город",
@@ -788,9 +808,9 @@ env.localization['strings'] = {
 
     "well there has to be a reason the dull vessel can move between space and the ocean. there's no way the rogue entity in here would just make a random change like that": "ну, должна ведь быть причина почему судно серое может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так",
 
-    "seems like our friend fixed up the pilot cyst... and it offered to move the ship somewhere. why not give that a shot?": "кажись твоя улыбка починила цисту-пилота... и теперь она предлагает переместить судно серое куда-то. почему бы не попробовать?",
+    "seems like our friend fixed up the pilot cyst... and it offered to move the ship somewhere. why not give that a shot?": "кажись твоя улыбка починила пилотную цисту... и теперь она предлагает переместить судно серое куда-то. почему бы не попробовать?",
 
-    "check the pilot cyst on the ship, i remember there was some garbled data there before": "проверь что там с цистой-пилотом на корабле, я помню там были какие-то искажённые данные",
+    "check the pilot cyst on the ship, i remember there was some garbled data there before": "проверь что там с пилотной цистой на корабле, я помню там были какие-то искажённые данные",
 
     "well your spike reported activity in the dull vessel thoughtform, why not check that out? our friend seems to have changed something there": "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила",
 
@@ -1340,9 +1360,9 @@ who_velzie
         кто - велзи?
 
     moth
-        велзи - это что-то типа "божество" на языке обеск
+        велзи - это что-то типа "божество" на языке обесков
         суть не только в этом но я полагаю ты спрашиваешь о <em>нашем</em> велзи
-        ну о том о котором говорила циста-пилот
+        ну о том о котором говорила пилотная циста
         вот только когда она упомянула это имя оно не имело никакого контекста
         типа, почему-то слово "велзи" было отделено от своего значения
         не знаю что это за приколы...
@@ -1552,7 +1572,7 @@ what_smile
         о, так у тебя оно выглядит как улыбка?
         может быть моя теория о вирусах не так уж плоха
         ну короче, я всё ещё без понятия чем является наш таинственный приятель
-        но похоже это 'велзи', смотря по тому что сказала циста-пилот
+        но похоже это "велзи", смотря по тому что сказала пилотная циста
             SHOWIF::[['dullvessel__fixed-start']]
 
     RESPONSES::self

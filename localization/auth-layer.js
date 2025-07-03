@@ -209,3 +209,47 @@ posthello
         похоже на то<+>END
 
 END::cutscene(false); MUI("deprohibit");content.classList.remove('looking', 'atyou');cor_ru.processWeirdTranslation("#content .target", "entaltname");`)
+
+env.dialogues["authfix"] = generateDialogueObject(` 
+start
+    self
+        привет развледруг
+    
+    proxyfriend
+        лазутчик!
+            SHOWIF::[["hello__authfix-end", false]]
+        что ты тут делаешь?
+            SHOWIF::[["hello__authfix-end", false]]
+        о... ахаха!!!
+            SHOWIF::[["hello__authfix-end", false]]
+        вижу!
+            SHOWIF::[["hello__authfix-end", false]]
+        сюда не так сложно добраться, не так ли...
+            SHOWIF::[["hello__authfix-end", false]]
+        
+        и вновь привет лазутчик!
+            SHOWIF::[["hello__authfix-end"]]
+    
+    RESPONSES::self
+        что ты делаешь?<+>what
+        пока<+>END
+
+what
+    self
+        что тут происходит?
+    
+    proxyfriend
+        у меня здесь несколько прокси на дозоре!
+        это мыслепространство незанятое, видишь ли, с момента твоего прихода...
+        опустошённость чревата злокачественными образованиями и беглецами из беспространства
+        очень плохие новости если за ними не уследить!!
+        центральный регулятор связности теперь установлен, благодаря твоей помощи...
+        но! разве паранойя плоха после всего через что прошла эта циста?
+        мне нужно удостовериться что всё идёт по плану - даже с этими новыми средствами защиты!
+        всё время что-то да пытается выкарабкаться на поверхность...
+        ага, я их и сейчас чувствую - нельзя их подпускать
+        не беспокойся лазутчик!! я слежу за порядком! ахахаха
+    
+    RESPONSES::self
+        окей<+>END
+`)

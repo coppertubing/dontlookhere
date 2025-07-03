@@ -10,6 +10,10 @@ env.localization.page['recosm'] = {dialogues: {},
         "proxy generation point": "точка генерации прокси",
         "deploy proxy": "разместить прокси",
 
+        "invulnerable": "неуязвимость",
+
+        "proxy connection lost": "потеряно соединение с прокси",
+
         // fight
 
         /*sys*/ "ATTENTION::'thoughtform activity detected'::IN::'uncosm'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность'::В::'беспространство'",
@@ -52,8 +56,8 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "i emerged from it, i have weathered it": "я родилось в нём, я выстояло его",
         /*god*/ "but the deceiver's weapons crumble...": "а вот оружия обманщика крошатся...",
         /*god*/ "if i must end my dream of peace, so be it": "раз моя грёза о мире должна прерваться, так тому и быть",
-        /*god*/ "but, dreamsÆ~VËîús can be dreamt again, my friend": "но о грёзахÆ~ЬËîús можно грезить вновь, мой друг",
-        /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "я лишь надеюсь ÅBÄ§ŠÊ•Q=!",
+        /*god*/ "but, dreamsÆ~V4Ëîús can be dreamt again, my friend": "но о грёзахÆ~Ь4Ëйэ можно грезить вновь, мой друг",
+        /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "я лишь надеюсь ÅБÄ§ŠÊ•Q=!",
         /*god*/ "you will see y‚Î±‰our er¦¡ror": "чтоÆ ты увидишь св‚Î±‰ою ош¦¡ибку",
             /*god*/ "my friends, stand aside!": "друзья мои, расступитесь!",
             /*god*/ "it seems it falls to me to dissuade the deceiver...": "по всей видимости, это мне предстоит разубедить обманщика...",

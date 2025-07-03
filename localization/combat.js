@@ -762,9 +762,9 @@ cor_ru.combat['redefineActions'] = function () {
         "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.cavik_attack.details = {
-        "flavor": "'бросить наспех сделанную небольшую взрывчатку';'шанс на больший взрыв'",
+        "flavor": "'бросить наспех сделанную взрывчатку небольшого размера';'шанс на больший взрыв'",
         "onHit": "'[STAT::amt]'",
-        onCrit: ()=> `'HIT all foes for [STAT::amt]'${env.name == "frame" ? `;'additional hits do not trigger on-hit effects'` : ``}`,
+        onCrit: ()=> `'нанести УДАР по каждому врагу на [STAT::amt]'${env.name == "frame" ? `;'дополнительные удары не вызывают эффектов при ударе'` : ``}`,
     }
 
     /* - bazruka - */
@@ -778,9 +778,9 @@ cor_ru.combat['redefineActions'] = function () {
         "miss": "%TARGET УВОРАЧИВАЕТСЯ"
     }
     env.ACTIONS.bazruka.details = {
-        "flavor": "'utilize rapid-formed micro-explosive';'chance for greater shrapnel explosion'",
+        "flavor": "'использовать быстроформируемую микровзрывчатку';'шанс большего взрыва с шрапнелью'",
         "onHit": "'[STAT::amt]'",
-        onCrit: () => `'HIT all foes for [STAT::amt] [STATUS::puncture]'${env.name == "frame" ? `;'additional hits trigger on-hit effects'` : ``}`,
+        onCrit: () => `'нанести УДАР по каждому врагу на [STAT::amt] [STATUS::puncture]'${env.name == "frame" ? `;'дополнительные удары вызывают эффекты при ударе'` : ``}`,
     }
 
     /* - bozko_attack - */
@@ -793,7 +793,7 @@ cor_ru.combat['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.bozko_attack.details = {
-        "flavor": "'strike at offensive appendages of target';'attempt to weaken'",
+        "flavor": "'нанести удар по боевым придаткам цели';'попытаться ослабить'",
         "onHit": "'[STAT::amt]'",
         "onCrit": "'[STATUS::weakened]'"
     }
@@ -808,7 +808,7 @@ cor_ru.combat['redefineActions'] = function () {
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.cripple.details = {
-        "flavor": "'ударить по нервному центру цели';'гарантированная дезориентация'",
+        "flavor": "'нанести удар по нервному центру цели';'гарантированная дезориентация'",
         "onHit": "'[STAT::amt] [STATUS::stun]'",
         "onCrit": "'[STATUS::weakened]'"
     }
@@ -833,21 +833,21 @@ cor_ru.combat['redefineActions'] = function () {
         "act": "%USER ВСТАЁТ ПЕРЕД СВОИМИ ВРАГАМИ"
     }
     env.ACTIONS.special_guard_all.details = {
-        "flavor": "'attain hyper-awareness of proceedings';'intercept all attacks on allies'",
-        "onUse": "'[STATUS::redirection] to all allies'"
+        "flavor": "'достичь полное осознание хода событий';'перехватывать все атаки по союзникам'",
+        "onUse": "'[STATUS::redirection] всем союзникам'"
     }
 
-    /* - special_guard_all_bonus - */
+    /* - special_guard_all_bonus - */ // --- проверить, работает ли
 
-    env.ACTIONS.special_guard_all_bonus.name = "" // Martyr
+    env.ACTIONS.special_guard_all_bonus.name = "Мученик" // Martyr
     env.ACTIONS.special_guard_all_bonus.desc = "" // 'intercept all attacks on allies';'prepare to take great damage'
     env.ACTIONS.special_guard_all_bonus.help = "" // ALLIES::+2T:REDIRECTION (TO USER), +2T:CARAPACE +2T:SPIKES -VULNERABLE
     env.ACTIONS.special_guard_all_bonus.usage = {
         "act": "%USER ВСТАЁТ ПЕРЕД СВОИМИ ВРАГАМИ"
     }
     env.ACTIONS.special_guard_all_bonus.details = {
-        "flavor": "'intercept all attacks on allies';'prepare to take great damage'",
-        "onUse": "'[STATUS::carapace] [STATUS::spikes]';'[STATUS::redirection] to all allies'"
+        "flavor": "'перехватывать все атаки по союзникам';'приготовиться к тяжелым травмам'",
+        "onUse": "'[STATUS::carapace] [STATUS::spikes]';'[STATUS::redirection] всем союзникам'"
     }
 
     /* - shell - */
@@ -890,28 +890,28 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - ik_attack - */
 
-    env.ACTIONS.ik_attack.name = "" // Veilksplitter
-    env.ACTIONS.ik_attack.verb = "" // veilksplit
+    env.ACTIONS.ik_attack.name = "Вейлькодробитель" // Veilksplitter
+    env.ACTIONS.ik_attack.verb = "Вейлькодробить" // veilksplit
     env.ACTIONS.ik_attack.usage = {
-        "act": "%USER BLASTS %ACC-TARGET", 
+        "act": "%USER РАЗДРОБЛЯЕТ %ACC-TARGET", 
         "crit": "%TARGET АННИГИЛИРОВАН%TAR(-/А/О)GET",
         "hit": "%TARGET ОБОЖЖ%TAR(ЁН/ЕНА/ЕНО)GET",
         "miss": "%TARGET УКЛОНЯЕТСЯ"
     }
     env.ACTIONS.ik_attack.details = {
-        "flavor": "'utilize dull-enabled cutting beam'",
-        onHit: ()=> `'[STAT::amt] [STATUS::stun]'${env?.rpg?.is2D ? ";'KB::4'" : ''}`,
+        "flavor": "'использовать режущий с поддержкой серое луч'",
+        onHit: ()=> `'[STAT::amt] [STATUS::stun]'${env?.rpg?.is2D ? ";'ОТДЧ::4'" : ''}`,
     }
 
     /* - dullflare - */
 
-    env.ACTIONS.dullflare.name = "" // Dull Flare
+    env.ACTIONS.dullflare.name = "Вспышка Серое" // Dull Flare
     env.ACTIONS.dullflare.usage = {
-        "act": "%USER TEARS OPEN THE DULL"
+        "act": "%USER ВСКРЫВАЕТ СРЕДУ СЕРОЕ TEARS OPEN THE DULL"
     }
     env.ACTIONS.dullflare.details = {
-        "flavor": "'wide directional release of rapidly decaying dull light';'deconstructs foes'",
-        "onUse": "'HIT all foes'",
+        "flavor": "'широко направленный выпуск быстро распадающегося света серое';'разлагает врагов'",
+        "onUse": "'нанести УДАР по всем врагам'",
         "onHit": "'[STAT::amt]'"
     }
 
@@ -943,7 +943,7 @@ cor_ru.combat['redefineActions'] = function () {
     /* - foe_stab - */
 
     env.ACTIONS.foe_stab.name = "пронзить" // stab
-    env.ACTIONS.foe_stab.desc = "" // 'puncture vital cystic component';'damage over time';'stop regen'
+    env.ACTIONS.foe_stab.desc = "'пронзить жизненно важный цистозный компонент';'урон со временем';'остановка регена'" // 'puncture vital cystic component';'damage over time';'stop regen'
     env.ACTIONS.foe_stab.help = "75% -1ХП +2Х:ПРОКОЛ -РЕГЕНЕРАЦИЯ, 10%К -1ХП" // 75% -1HP +2T:PUNCTURE -REGEN, 10%C -1HP --- wait what does the C even mean
     env.ACTIONS.foe_stab.usage = {
         "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
@@ -959,18 +959,18 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - barrier - */
 
-    env.ACTIONS.barrier.name = "" // Barrier
-    env.ACTIONS.barrier.verb = "" // shield
+    env.ACTIONS.barrier.name = "Барьер" // Barrier
+    env.ACTIONS.barrier.verb = "Оградить" // shield
     env.ACTIONS.barrier.usage = {
-        "act": "%USER SHIELDS %TARGET",
-        "crit": "%TARGET FEELS INVINCIBLE",
-        "hit": "%TARGET GAINS A THIN BARRIER",
-        "miss": "IT DOES NOT STICK"
+        "act": "%USER ОГРАЖДАЕТ %ACC-TARGET",
+        "crit": "%TARGET ЧУВСТВУЕТ СЕБЯ НЕУЯЗВИМ%TAR(ЫМ/ОЙ/ЫМ)GET",
+        "hit": "%TARGET ПРИОБРЕТАЕТ ТОНКИЙ БАРЬЕР",
+        "miss": "ОНО НЕ КЛЕИТСЯ"
     }
     env.ACTIONS.barrier.details = {
-        "flavor": "apply ablative corru layer to target';'occasionally provide better shielding'",
+        "flavor": "'нанести абляционный слой корру на цель';'иногда предоставляет улучшенное покрытие'",
         "onHit": "'[STAT::amtBP]'",
-        "onCrit": "'additional [STAT::amtBP]'"
+        "onCrit": "'дополнительный [STAT::amtBP]'"
     }
 
     /* - special_limited_carapace - */
@@ -982,7 +982,7 @@ cor_ru.combat['redefineActions'] = function () {
         "act": "%USER ATTACHES THEIR SHIELDS TO %TARGET",
         "crit": "%TARGET FEELS INVINCIBLE",
         "hit": "%TARGET LOOKS MORE HARDY",
-        "miss": "SOMETHING BROKE LOL"
+        "miss": "ЧЁ-Т СЛОМАЛОСЬ ЛОЛ"
     }
 
     /* - enemy_shell - */
@@ -996,40 +996,40 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - restore - */
 
-    env.ACTIONS.restore.name = "" // Restore
+    env.ACTIONS.restore.name = "Восстановить" // Restore
     env.ACTIONS.restore.usage = {
-        "act": "%USER FIXES UP %TARGET",
-        "crit": "%TARGET FEELS WAY BETTER",
-        "hit": "%TARGET FEELS BETTER",
-        "miss": "%TARGET IS TOO SLIPPERY"
+       "act": "%USER ПОДЛЕЧИВАЕТ %ACC-TARGET",
+        "crit": "%TARGET ЧУВСТВУЕТ СЕБЯ КУДА ЛУЧШЕ",
+        "hit": "%TARGET ЧУВСТВУЕТ СЕБЯ ЛУЧШЕ",
+        "miss": "%TARGET СЛИШКОМ СКОЛЬЗК%TAR(ИЙ/АЯ/ОЕ)GET"
     }
     env.ACTIONS.restore.details = {
-        "flavor": "'utilize quick-acting repair cyst'",
+        "flavor": "'использовать быстродействующую цисту для починок'",
         "onHit": "'[STAT::amt] [STATUS::regen]'",
-        "onCrit": "'additional [STAT::amt] [STATUS::regen]'",
-        "conditional": "<em>VS DOWN::</em>'revive target';'[STATUS::evasion] [STATUS::regen]'"
+        "onCrit": "'дополнительные [STAT::amt] [STATUS::regen]'",
+        "conditional": "<em>VS ОБМОРОК::</em>'оживить цель';'[STATUS::evasion] [STATUS::regen]'"
     }
 
     /* - special_spy_all - */
 
-    env.ACTIONS.special_spy_all.name = "" // Analyze Foes
+    env.ACTIONS.special_spy_all.name = "Анализ Врагов" // Analyze Foes
     env.ACTIONS.special_spy_all.usage = {
-        "act": "%USER SPIES UPON THEIR FOES"
+        "act": "%USER СЛЕДИТ ЗА ВСЕМИ ВРАГАМИ"
     }
     env.ACTIONS.special_spy_all.details = {
-        "flavor": "'utilize receptor-tied targeting cyst';'expose all weakness'",
+        "flavor": "'использовать привязываемую к рецептору цисту для прицела';'выявить все слабости'",
         "onUse": "'[STATUS::vulnerable] to all foes'"
     }
 
     /* - special_attack_all - */
 
-    env.ACTIONS.special_attack_all.name = "" // Explosive
+    env.ACTIONS.special_attack_all.name = "Взрывчатка" // Explosive
     env.ACTIONS.special_attack_all.usage = {
-        "act": "%USER DEPLOYS A KAVRUKA"
+        "act": "%USER ЗАДЕЙСТВУЕТ КАВРУКУ"
     }
     env.ACTIONS.special_attack_all.details = {
-        "flavor": "'utilize volatile deconstruction tool'",
-        "onUse": "'HIT all foes'",
+        "flavor": "'использовать нестабильный инструмент деконструкции'",
+        "onUse": "'нанести УДАР по всем врагам'",
         "onHit": "'[STAT::amt]'",
         "onCrit": "'[STATUS::stun]'"
     }
@@ -3470,28 +3470,28 @@ cor_ru.combat['redefineItems'] = function () {
     /* - Restorative Cyst - */
 
     env.ITEM_LIST.restorative.name = "Восстановительная Циста" // Restorative Cyst
-    env.ITEM_LIST.restorative.description = "" // 'quick-acting repair cyst';'best used away from danger'
+    env.ITEM_LIST.restorative.description = "'быстродействующая циста для починок';'лучше использовать в безопасности'" // 'quick-acting repair cyst';'best used away from danger'
     env.ITEM_LIST.restorative.oocnote = "'восстанавливает цель до полного здоровья'" // 'restores target to full health'
 
     /* - Satik Cyst - */
 
     env.ITEM_LIST.satik_cyst.name = "Сатик-Циста" // Satik Cyst
-    env.ITEM_LIST.satik_cyst.description = "" // 'contains rapid temporary ablative barrier applicators';'named after hardy veilk parasite';'break in case of emergency'
+    env.ITEM_LIST.satik_cyst.description = "'содержит быстродействующие наносители временных абляционных барьеров';'названа в честь стойкого вейльк-паразита';'разбить в случае чрезвычайной ситуации'" // 'contains rapid temporary ablative barrier applicators';'named after hardy veilk parasite';'break in case of emergency'
 
     /* - Aima Cyst - */
 
     env.ITEM_LIST.aima_cyst.name = "Айма-Циста" // Aima Cyst
-    env.ITEM_LIST.aima_cyst.description = "" // 'receptor-tied targeting cyst';'traditional hunting implement';'useful for multitasking'
+    env.ITEM_LIST.aima_cyst.description = "'привязываемая к рецептору циста для прицела';'традиционное охотничье приспособление';'полезна для многозадачности'" // 'receptor-tied targeting cyst';'traditional hunting implement';'useful for multitasking'
 
     /* - Kavruka - */
 
     env.ITEM_LIST.kavruka.name = "Каврука" // Kavruka
-    env.ITEM_LIST.kavruka.description = "" // 'deconstruction tool';'named after non-corrucystic surface fauna';'notoriously explosive'
+    env.ITEM_LIST.kavruka.description = "'инструмент деконструкции';'названа в честь некорруцистозной наземной фауны';'пресловуто взрывоопасна'" // 'deconstruction tool';'named after non-corrucystic surface fauna';'notoriously explosive'
 
     /* - Disabler - */
 
     env.ITEM_LIST.disabler.name = "Отключитель" // Disabler
-    env.ITEM_LIST.disabler.description = "" // 'emergency security device';'injects self-destructive thoughtform';'for industrial use only';'quite rare'
+    env.ITEM_LIST.disabler.description = "'устройство аварийной безопасности';'внедряет саморазрушительную мыслеформу';'только для промышленного использования';'довольно редкий'" // 'emergency security device';'injects self-destructive thoughtform';'for industrial use only';'quite rare'
 
     /* - CMD::DRILL - */
 
@@ -3516,17 +3516,17 @@ cor_ru.combat['redefineItems'] = function () {
     /* - Sfer Cube - */
 
     env.ITEM_LIST.sfer_cube.name = "Куб Сфера" // Sfer Cube --- господи
-    env.ITEM_LIST.sfer_cube.description = "" // 'condensed corrucystic fuel';'valid currency';'the foundation of all things'
+    env.ITEM_LIST.sfer_cube.description = "'сжатое корруцистозное топливо';'действительная валюта';'фундамент всего сущего'" // 'condensed corrucystic fuel';'valid currency';'the foundation of all things'
 
     /* - Cool Orb Thingy - */
 
     env.ITEM_LIST.cool_orb_thingy.name = "Клёвая Шароштучка" // Cool Orb Thingy
-    env.ITEM_LIST.cool_orb_thingy.description = "" // 'labelled "ON THE USE OF BRIGHT WEAPONRY"';'receptor-locked'
+    env.ITEM_LIST.cool_orb_thingy.description = "'помечена \"О ПРИМЕНЕНИИ СВЕТЛОГО ОРУЖИЯ\"';''" // 'labelled "ON THE USE OF BRIGHT WEAPONRY"';'receptor-locked'
 
     /* - Scary Black Box - */
 
     env.ITEM_LIST.scary_black_box.name = "Криповая Чёрная Коробочка" // Scary Black Box
-    env.ITEM_LIST.scary_black_box.description = "" // 'cousinly container made from tough dead material'
+    env.ITEM_LIST.scary_black_box.description = "'близнецовый контейнер из прочного мёртвого материала'" // 'cousinly container made from tough dead material'
 
     /* - Sorry Cyst - */
 
@@ -3552,7 +3552,7 @@ cor_ru.combat['redefineItems'] = function () {
     /* - Weird Black Box - */
 
     env.ITEM_LIST.error.name = "Странная Чёрная Коробочка" // Weird Black Box
-    env.ITEM_LIST.error.description = "" // 'cannot open';'why are we still carrying it';'quite heavy...'
+    env.ITEM_LIST.error.description = "'не выходит открыть';'зачем мы все ещё её носим';'довольно тяжёлая...'" // 'cannot open';'why are we still carrying it';'quite heavy...'
 
     /* - Stray IDEA - */
 
