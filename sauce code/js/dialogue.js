@@ -14,7 +14,7 @@ function startDialogue(dialogueChain, settings = {originEntityID: null, specific
         return 
     }
     if(body.classList.contains('mui-active') || body.getAttribute("menu") != "none") exitMenu()
-
+    
     //if origin entity is set, we keep track of that entity and also highlight it somehow (usually for dynamic purposes related)
     if(settings.originEntityID) {
         env.currentDialogue.originEntityID = `#${settings.originEntityID}`
@@ -38,7 +38,7 @@ function startDialogue(dialogueChain, settings = {originEntityID: null, specific
         
         env.currentDialogue.chainName = dialogueChain
         try {
-            sendDialogue(env.currentDialogue.chain[settings.specificChain] || env.currentDialogue.chain.start)
+            sendDialogue(typeof settings?.specificChain == "undefined" || settings?.specificChain === false ? env.currentDialogue.chain.start : env.currentDialogue.chain[settings?.specificChain])
         } catch(e) { printError(`dialogue error for ${dialogueChain}: ` + e, true); setTimeout(()=>endDialogue(), 2000)}
         env.currentDialogue.active = true
 
@@ -631,9 +631,12 @@ function checkUnread(inputReply, inputChainName, {examinedReplies = [], original
 function generateDialogueObject(genString) {
 	let split = genString.split('\n')
 	let obj = {}
-    let lastParent = { // used to track depth
+    let lastParent = { 
+        // used to track depth
+        // note - this gets redefined at the bottom of case 0 so it's really just for top level stuff
         blockShowControl: false, // controls SHOWIF blocks that affect multiple dialogues
-        blockShowOnceControl: false // ditto for SHOWONCE
+        blockShowOnceControl: false, // ditto for SHOWONCE
+        blockNestControl: [] // this is like SHOWIF 2. there'd be a bunch of weird rewriting if it was an update to the base function
     }
 
     function parseShowif(showif) {
@@ -659,6 +662,10 @@ function generateDialogueObject(genString) {
             // lv0 - branch name. if it starts with end, it's an end function
             // if it's a dialogue branch, just define the object for later and redef lastParent
             case 0: 
+                //using + as crude block indentation for nicely(?) readable(?) nesting
+                //just remove all +'s at the start
+                if(line.startsWith('+')) while(line.charAt(0) === '+') line = line.substring(1)
+
                 if(line == "") return;
 
                 //block handling
@@ -668,11 +675,18 @@ function generateDialogueObject(genString) {
                     if(block.startsWith('SHOWIF')) {
                         lastParent.blockShowControl = parseShowif(block)
 
+                    } else if(block.startsWith('NESTIF')) {
+                        lastParent.blockNestControl.push(parseShowif(block.replace("NESTIF", "SHOWIF")))
+
                     } else if(block.startsWith('SHOWONCE')) {
                         lastParent.blockShowOnceControl = true
 
                     } else if(block == 'END') {
-                        lastParent.blockShowControl = false
+                        //NESTIF should be nestable inside SHOWIF
+                        if(lastParent?.blockNestControl?.length > 0) {
+                            lastParent.blockNestControl.pop()
+                        } else  lastParent.blockShowControl = false
+
                         lastParent.blockShowOnceControl = false
                     }
                 }
@@ -699,7 +713,10 @@ function generateDialogueObject(genString) {
                 //regular dialogue handling
                 else {
                     obj[line] = { name: line, body: [], responses: [] }
-                    lastParent = {"0": obj[line]}
+                    lastParent = {
+                        "0": obj[line],
+                        blockNestControl: []
+                    }
                 }
             break
 
@@ -763,6 +780,9 @@ function generateDialogueObject(genString) {
                     //same for showonce
                     if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl; /*console.log(lastParent[1])*/ }
                     if(lastParent.blockShowOnceControl) { lastParent[1].showOnce = lastParent.blockShowOnceControl }
+                    if(lastParent?.blockNestControl?.length) {
+                        lastParent[1].showIf = (lastParent[1].showIf || []).concat(...lastParent.blockNestControl)
+                    }
                     
                 } else { //reply text and location
                     let replyInfo = text.split('<+>')
@@ -787,6 +807,9 @@ function generateDialogueObject(genString) {
                     //can be affected by block controls
                     if(lastParent.blockShowControl) { lastParent[2].showIf = lastParent.blockShowControl; /*console.log(lastParent[2])*/ }
                     if(lastParent.blockShowOnceControl) { lastParent[2].showOnce = lastParent.blockShowOnceControl }
+                    if(lastParent?.blockNestControl?.length) {
+                        lastParent[2].showIf = (lastParent[2].showIf || []).concat(...lastParent.blockNestControl)
+                    }
                 }
             break
 

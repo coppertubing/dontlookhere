@@ -108,7 +108,7 @@ RESPOBJ::
             SHOWIF::["e3a2__escapewin", false]
 
         geli?<+>geli
-            SHOWIF::[["geli_beacon", "true"], ["e3a2__escapewin", false]]
+            SHOWIF::[["geli_beacon", true], ["e3a2__escapewin", false]]
         geli?<+>gelifree
             SHOWIF::"e3a2__escapewin"
 

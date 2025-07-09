@@ -192,8 +192,9 @@ var env = {
                 //this is presently distinct from loaded, in that only certain pages use it (ozo and embassy pages) in order to load extra stuff
                 //you'll want to use this if you want to wait for dialogues to be initialized on those pages
                 //sorry that it's separate from corru_loaded LOL i know that sucks - need to overhaul some stuff to make it be one singular thing though
-                document.addEventListener('corru_resources_added', ()=>{
-                    console.log(`${page.title}'s instance of addResources completed`)
+                document.addEventListener('corru_resources_added', (ev)=>{
+                    const arrayOfStringURLsLoaded = ev.detail.resList
+                    console.log(`${page.title}'s instance of addResources completed`, arrayOfStringURLsLoaded)
                 })
 
                 document.addEventListener('corru_entered', ()=>{
@@ -1964,7 +1965,7 @@ function addResources(resList, i = 0) {
     env.loading = true; body.classList.add('loading')
     if(i == resList.length) {
         body.classList.remove('loading')
-        setTimeout(()=>document.dispatchEvent(env.hooks.corru_resources_added), 500) //slight delay for execution
+        setTimeout(()=>document.dispatchEvent(new CustomEvent('corru_resources_added', { detail: { resList } })), 500)
         return env.loading = false 
     }
 
@@ -3053,7 +3054,7 @@ function processTranslation(container, force = false) {
         for (const childNode of el.childNodes) {
             if (childNode.nodeType === Node.TEXT_NODE) {
                 if(childNode.textContent.trim().length == 0) continue; // skip if functionally whitespace
-                childNode.textContent = processStringTranslation(childNode.textContent.trim())
+                childNode.textContent = processStringTranslation(childNode.textContent/*.trim()*/) // experimental trim remove - let's see what happens
             }
         }
         if(el.childNodes.length == 0) {console.log("skipped for", el); return el.classList.add('tskip')}
