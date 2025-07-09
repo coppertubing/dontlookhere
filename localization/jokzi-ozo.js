@@ -122,7 +122,7 @@ RESPOBJ::
             SHOWIF::["secavik", "beaconed"]
 
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 //to be less overwhelming this leads into subcategories
@@ -138,7 +138,7 @@ RESPOBJ::
             SHOWIF::"e3a2__escapewin"
 
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.councilPlaceQuestionsResp = generateDialogueObject(`
@@ -159,7 +159,7 @@ RESPOBJ::
         dark area<+>dark
             SHOWIF::"ozo_enterdark"
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.councilCystQuestionsResp = generateDialogueObject(`
@@ -177,7 +177,7 @@ RESPOBJ::
         dull plane?<+>dull
             SHOWIF::"ep4__entrancefinal"
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.interloperQuestionsResp = generateDialogueObject(`
@@ -186,7 +186,7 @@ RESPOBJ::
         real name?<+>iname
         purpose?<+>ipurpose
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues["council"] = generateDialogueObject(`
@@ -334,7 +334,7 @@ task
     
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 rloop
     RESPOBJ::councilRejoiningResp
@@ -358,7 +358,7 @@ flower
 
     RESPONSES::self
         thanks<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 anyone
     self
@@ -377,7 +377,7 @@ anyone
 
     RESPONSES::self
         great thanks<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 flowersaved
     self
@@ -396,7 +396,7 @@ flowersaved
 
     RESPONSES::self
         great<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 fairysaved
     self
@@ -416,7 +416,7 @@ fairysaved
 
     RESPONSES::self
         cool<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 fairy
     self
@@ -439,7 +439,7 @@ fairy
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 third
     self
@@ -460,7 +460,7 @@ third
         
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 geli
     self
@@ -504,7 +504,7 @@ ____END
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 gelifree
     self
@@ -527,7 +527,7 @@ gelifree
 
     RESPONSES::self
         great<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowaway
     self
@@ -545,7 +545,7 @@ stowaway
 
     RESPONSES::self
         i see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 cavik
     self
@@ -561,7 +561,7 @@ cavik
 
     RESPONSES::self
         yeah<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 qloop
     RESPOBJ::councilQuestionsResp
@@ -587,7 +587,7 @@ dancing
     
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 we
     self
@@ -609,7 +609,7 @@ we
     
     RESPONSES::self
         i see<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozo
     self
@@ -631,7 +631,7 @@ ozo
     
     RESPONSES::self
         i see<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 history
     self
@@ -652,7 +652,7 @@ history
         
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 akicoat
     self
@@ -667,7 +667,7 @@ akicoat
     
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
     
 time
     self
@@ -688,7 +688,7 @@ time
     
     RESPONSES::self
         yep<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 feast
     self
@@ -708,7 +708,7 @@ feast
     
     RESPONSES::self
         ok...<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dreams
     self
@@ -743,7 +743,7 @@ dreams
     
     RESPONSES::self
         ok...<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 vessel
     self
@@ -758,7 +758,7 @@ vessel
     
     RESPONSES::self
         awesome<+>qloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dark
     self
@@ -779,7 +779,7 @@ dark
 
     RESPONSES::self
         ok...<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 cloop
     RESPOBJ::councilCystQuestionsResp
@@ -828,7 +828,7 @@ ____END
     
     RESPONSES::self
         i see<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 god
     self
@@ -846,7 +846,7 @@ god
     
     RESPONSES::self
         ok<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 godlike
     self
@@ -866,7 +866,7 @@ godlike
     
     RESPONSES::self
         yeah sad<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 tyrant
     self
@@ -906,7 +906,7 @@ tyrant
     
     RESPONSES::self
         ...<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 funfriend
     self
@@ -923,7 +923,7 @@ funfriend
     
     RESPONSES::self
         ...<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 coreg
     self
@@ -940,7 +940,7 @@ coreg
     
     RESPONSES::self
         if you say so<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 akizet
     self
@@ -967,7 +967,7 @@ akizet
     
     RESPONSES::self
         ok<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 iloop
@@ -998,7 +998,7 @@ ____END
     
     RESPONSES::self
         ok<+>iloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ipurpose
     council
@@ -1022,7 +1022,7 @@ ipurpose
 
     RESPONSES::self
         thanks<+>iloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowawaydance
     self
@@ -1036,7 +1036,7 @@ ____SHOWIF::["PAGE!!jig", false]
     
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ____SHOWIF::["PAGE!!jig", true]    
     council
@@ -1047,7 +1047,7 @@ ____SHOWIF::["PAGE!!jig", true]
     
     RESPONSES::self
         no problem<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 ____END
 
 leverage
@@ -1072,7 +1072,7 @@ leverage
 
     RESPONSES::self
         thanks<+>qloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dull
     self
@@ -1116,7 +1116,7 @@ dull
 
     RESPONSES::self
         thanks i guess<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 END::change("PAGE!!introswap", false);env.jokzi.toggleSlow(false);change("PAGE!!questionswap", "DELETE")
 `)
@@ -1131,22 +1131,22 @@ start
         вот ты и здесь
         моя роль в воспоминании о городе,
         не была таким кошмаром, который приходится терпеть некоторым
-        но... тепло этого место всё ещё взывало ко мне
+        но... тепло этого места всё ещё взывало ко мне
         было пыткой знать что я была оторвана от рая
         и снова, спасибо тебе
         я знаю что ты хочешь что-нибудь взамен...
         я бы дала тебе маску если бы у меня они ещё остались!
-        но мои бедные акизет,
+        но мои бедные акизеты,
         они должно быть съели их все во время моего отсутствия
         дай мне немного времени, и я сделаю новую специально для тебя
         а до тех пор, я могу предложить тебе только информацию
         и... ещё кое-какая просьба, по поводу моих эффигий, есль ты не возражаешь
     
     RESPONSES::self
-        tell me more<+>CHANGE::isabel
+        расскажи больше<+>CHANGE::isabel
             EXEC::change("PAGE!!isaswap", true)
             HIDEREAD::
-        ok<+>END
+        окей<+>END
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -1154,56 +1154,56 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues.isabelResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        stowaway?<+>stowawaydance
+        безбилетник?<+>stowawaydance
             SHOWIF::'PAGE!!i_stow'
-        akizets<+>akistat
+        акизеты<+>akistat
             HIDEREAD::
-        you<+>yloop
-        jokzi ozo<+>oloop
-        memories<+>cloop
-        interview lady<+>lady
+        ты<+>yloop
+        джокзи озо<+>oloop
+        воспоминания<+>cloop
+        леди-интервьюер<+>lady
             SHOWIF::"unity_lady"
-        bye<+>END
+        пока<+>END
 `)
 
 env.localization.page['ozo'].dialogues.isabelYResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        name?<+>name
-        home?<+>home
-        masks?<+>masks
-        back<+>loop
-            FAKEEND::(back)
+        имя?<+>name
+        дом?<+>home
+        маски?<+>masks
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.isabelCResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        memories?<+>memories
-        akizet?<+>akizet
-        isabel?<+>isabel
-        relationship?<+>relationship
-        funfriend?<+>funfriend
-        back<+>loop
-            FAKEEND::(back)
+        воспоминания?<+>memories
+        акизет?<+>akizet
+        изабель?<+>isabel
+        отношения?<+>relationship
+        развледруг?<+>funfriend
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.isabelOResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        council?<+>council
-        fairy?<+>fairy
+        совет?<+>council
+        фея?<+>fairy
             SHOWIF::"localorbit__fairy_beacon"
         lost one?<+>lostone
             SHOWIF::["e3a2__escapewin", false]
-        geli?<+>gelifree
+        джели?<+>gelifree
             SHOWIF::"e3a2__escapewin"
-        stowaway?<+>stowaway
+        безбилетник?<+>stowaway
             SHOWIF::"e3a2__escapewin"
-        history?<+>history
-        effigies?<+>effigy
-        back<+>loop
-            FAKEEND::(back)
+        история?<+>history
+        эффигии?<+>effigy
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues["isabel"] = generateDialogueObject(`
@@ -1213,17 +1213,17 @@ loop
 start
 ____SHOWIF::'PAGE!!isaswap'
     self
-        i have some questions
+        у меня есть немного вопросов
             EXEC::env.jokzi.toggleSlow(true)
     
     sourceless
-        the thoughtform's mind is quiet, waiting for you
+        разум мыслеформы тих, ждущий тебя
 
 ____SHOWIF::['PAGE!!isaswap', false]
     sourceless
-        the thoughtform's attention is elsewhere at first
+        сперва внимание мыслеформы обращено в другое место
             EXEC::env.jokzi.toggleSlow(true)
-        but it feels your mind's eye, and attends to you
+        но она чувствует твой мысленный взор и прислушивается к тебе
     
     isabel
         ох... лазутчик
@@ -1235,7 +1235,7 @@ ____END
 
 akistat
     self
-        what's the situation with your effigies
+        как всё обстоит с твоими эффигиями
     
 ____SHOWIF::['PAGE!!flowers', 'few']
     isabel
@@ -1251,12 +1251,12 @@ ____SHOWIF::['PAGE!!flowers', 'few']
         прошу!
     
     self
-        where should i look
+        где мне искать
     
     isabel
         в темноте, бессвязности
         они не выживают в связных воспоминаниях
-        особено не со зверем, собранным тираном
+        особенно не со зверем, собранным тираном
             SHOWIF::'fbx__ep3intro'
         сделай это для меня, и...
         я не знаю
@@ -1265,9 +1265,9 @@ ____SHOWIF::['PAGE!!flowers', 'few']
 ____SHOWIF::['PAGE!!flowers', 'low']
     isabel
         лучше, лазутчик
-        то, что нетронутые вообще остались - камень с моих лепестков
+        то, что нетронутые вообще есть - камень с моих лепестков
         я знаю, остались ещё, должны быть...
-        мне остаётся только надеяться, что на самом деле пропавшие не страдали
+        мне остаётся только надеяться, что те, кто пропал на самом деле, не страдали
 
 ____SHOWIF::['PAGE!!flowers', 'high']
     isabel
@@ -1276,14 +1276,14 @@ ____SHOWIF::['PAGE!!flowers', 'high']
         но я всё ещё чувствую лёгкую пустоту...
         ничего такого, что нельзя было бы исправить со временем...
         ...впрочем, я могла бы попросить тебя поискать оставшихся
-        последних всегда найти труднее всего
+        последних всегда труднее всего найти
 
 ____SHOWIF::['PAGE!!flowers', 'done']
     isabel
-        на сейчас идеальна, лазутчик
-        знаешь, у меня есть связь с моими акизет
+        на сейчас идеально, лазутчик
+        знаешь, у меня есть связь с моими акизетами
         когда они рядом, я спокойна,
-        и когда они пропали, я тут же могу это понять...
+        пропади хоть одна, я тут же это пойму...
         это чувство, мрак, нависавший надо мной, исчез
         и всё благодаря тебе
         но пока что мне нечего предложить тебе взамен...
@@ -1293,12 +1293,12 @@ ____END
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 lady
     self
-        the council said they sent that human lady thoughtform to you
-        how is she?
+        совет сказал, они отправили ту человеческую мыслеформу к тебе
+        как она?
 
     isabel
         не очень, лазутчик
@@ -1306,10 +1306,10 @@ lady
         но любое сложное мышление и память потеряны
         к сожалению, распространённое состояние...
         ты можешь увидеться с ней, если хочешь, но многого ты не добьёшься
-        она важна для тебя каким-то образом?
+        она как-то важна тебе?
 
     self
-        i don't know
+        не знаю
 
     isabel
         ...ладно...
@@ -1318,42 +1318,42 @@ lady
         но прежде всего я ослаблю её боль
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        окей<+>loop
+            FAKEEND::(назад)
 
 stowawaydance
     self
-        what's the stowaway doing here?
+        что здесь делает безбилетник?
     
     isabel
-        ах, оно приглянулась моим акизет
+        ах, оно приглянулось моим акизетам
         оно выглядит безобидно, так что я просто слежу за ним...
-        знаешь, его поведение чем-то напоминает мне их
-        думаю, поэтому-то они поладили
-        они все незавершённые, все только встали на путь роста и самоосознания \\ they all come from a place of incompleteness, all on the early paths of growth and self-awareness
+        знаешь, чем-то его поведение напоминает мне их
+        думаю, поэтому-то они и поладили
+        все они незавершённые, все только встали на путь роста и самоосознания
         как бы то ни было, если это делает моих акизет счастливыми, счастлива и я
 
     RESPONSES::self
         i see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 yloop
     RESPOBJ::isabelYResp
 
 name
     self
-        what should i call you?
+        как мне тебя звать?
 
     isabel
-        совет зовёт меня цветком
+        в совете меня зовут цветком
         я же знаю себя как изабель, но это не <em>моё</em> имя
         ...
         но давай не будем усложнять
-        я изабель
+        я - изабель
 
     RESPONSES::self
-        ok isabel<+>yloop
-            FAKEEND::(back)
+        хорошо изабель<+>yloop
+            FAKEEND::(назад)
 
 masks
     self
@@ -1370,7 +1370,7 @@ masks
 
     RESPONSES::self
         ok fine<+>yloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 home
     self
@@ -1392,7 +1392,7 @@ home
         
     RESPONSES::self
         i see<+>yloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 cloop
     RESPOBJ::isabelCResp
@@ -1413,7 +1413,7 @@ memories
 
     RESPONSES::self
         ok<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 akizet
     self
@@ -1423,7 +1423,7 @@ akizet
     isabel
         акизет была чудесной женщиной
         велом, достаточно умелым, чтобы смело противостоять опасностям поверхности большую часть своих живых θглаз,
-        той, чья улыбка угасла в смерти, когда велзи заманил её в хаос \\ смерти должен быть контекст тоже?    хороший вопрос
+        той, чья улыбка угасла в θсмерти, когда велзи заманил её в хаос
         уступая место паранойе, недоверию, одиночеству, насилию...
         она этого не заслужила, лазутчик
         я скорбела по ней, я плакала над грёзами с ней
@@ -1437,7 +1437,7 @@ akizet
     
     RESPONSES::self
         me too<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 isabel
     self
@@ -1472,7 +1472,7 @@ isabel
 
     RESPONSES::self
         ok<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 funfriend
     self
@@ -1495,7 +1495,7 @@ funfriend
     
     RESPONSES::self
         i see<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 relationship
     self
@@ -1511,7 +1511,7 @@ relationship
 
     RESPONSES::self
         i see<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 oloop
     RESPOBJ::isabelOResp
@@ -1537,14 +1537,14 @@ council
                 
     RESPONSES::self
         i see<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 fairy
     self
         what do you know about the fairy?
     
     isabel
-        'фее?' о...
+        "фее"? о...
         да, она
         она грубая и отвратительная,
         искажает воспоминания, словно велзи ради какого-то жестокого развлечения
@@ -1553,7 +1553,7 @@ fairy
 
     RESPONSES::self
         i see<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 lostone
     self
@@ -1579,7 +1579,7 @@ lostone
 
     RESPONSES::self
         damn<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
         
 history
     self
@@ -1602,7 +1602,7 @@ history
 
     RESPONSES::self
         that's fine<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 effigy
     self
@@ -1617,7 +1617,7 @@ effigy
         её роль была ключевой в любом воспоминании, 
         и она удерживала тех, кто играл в них, в почти нерушимой грёзе
         ...они даже не понимали, что от них откусывали куски
-        эти бедняжки единственные среди найденных мною, что ещё имеют какое-то ощущение своей личности
+        эти бедняжки - единственные среди найденных мною, что ещё имеют какое-то ощущение своей личности
         так что я починила их, дала им части себя, чтобы вновь процветать вместе
         тебе они нравятся?
         думаю я проделала хорошую работу
@@ -1632,7 +1632,7 @@ effigy
 
     RESPONSES::self
         ok<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 gelifree
@@ -1651,7 +1651,7 @@ gelifree
 
     RESPONSES::self
         ok<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowaway
     self
@@ -1670,7 +1670,7 @@ stowaway
 
     RESPONSES::self
         ok<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 END::env.jokzi.toggleSlow(false)
 `)

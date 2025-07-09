@@ -669,7 +669,7 @@ cor_ru.combat['redefineActions'] = function () {
     env.ACTIONS.miltza_attack.details = {
         "flavor": "'ударить с хитрой уловкой';'может создать отвлечение'",
         "onHit": "'[STAT::amt]'",
-        "onCrit": "'[STATUS::evasion] ближайшим союзникам'",
+        "onCrit": "'[STATUS::evasion] союзникам поблизости'",
         "conditional": "<em>VS УЯЗВИМОСТЬ::</em>'дополнительный [STAT::amt]'"
     }
 
@@ -943,7 +943,7 @@ cor_ru.combat['redefineActions'] = function () {
     /* - foe_stab - */
 
     env.ACTIONS.foe_stab.name = "пронзить" // stab
-    env.ACTIONS.foe_stab.desc = "'пронзить жизненно важный цистозный компонент';'урон со временем';'остановка регена'" // 'puncture vital cystic component';'damage over time';'stop regen'
+    env.ACTIONS.foe_stab.desc = "'пронзить жизненно важный цистозный компонент';'урон со временем';'остановка регенерации'" // 'puncture vital cystic component';'damage over time';'stop regen'
     env.ACTIONS.foe_stab.help = "75% -1ХП +2Х:ПРОКОЛ -РЕГЕНЕРАЦИЯ, 10%К -1ХП" // 75% -1HP +2T:PUNCTURE -REGEN, 10%C -1HP --- wait what does the C even mean
     env.ACTIONS.foe_stab.usage = {
         "act": "%USER ПРОНЗАЕТ %ACC-TARGET",
@@ -975,23 +975,23 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - special_limited_carapace - */
 
-    env.ACTIONS.special_limited_carapace.name = "" // Expend carapace
-    env.ACTIONS.special_limited_carapace.desc = "" // 'deploy shielding around target ally';'single-use'
-    env.ACTIONS.special_limited_carapace.help = "" // AUTOHIT +3T:CARAPACE, ONE USE PER COMBAT
+    env.ACTIONS.special_limited_carapace.name = "Развернуть панцирь" // Expend carapace
+    env.ACTIONS.special_limited_carapace.desc = "'развернуть щит вокруг выбранного союзника';'одноразовое'" // 'deploy shielding around target ally';'single-use'
+    env.ACTIONS.special_limited_carapace.help = "АВТОУДАР +3Х:ПАНЦИРЬ, ОДНО ИСПОЛЬЗОВАНИЕ ЗА БИТВУ" // AUTOHIT +3T:CARAPACE, ONE USE PER COMBAT
     env.ACTIONS.special_limited_carapace.usage = {
-        "act": "%USER ATTACHES THEIR SHIELDS TO %TARGET",
-        "crit": "%TARGET FEELS INVINCIBLE",
-        "hit": "%TARGET LOOKS MORE HARDY",
+        "act": "%USER НАКЛАДЫВАЕТ СВОИ ЩИТЫ НА %ACC-TARGET",
+        "crit": "%TARGET ЧУВСТВУЕТ СЕБЯ НЕУЯЗВИМ%TAR(ЫМ/ОЙ/ЫМ)GET",
+        "hit": "%TARGET ВЫГЛЯДИТ КРЕПЧЕ",
         "miss": "ЧЁ-Т СЛОМАЛОСЬ ЛОЛ"
     }
 
     /* - enemy_shell - */
 
-    env.ACTIONS.enemy_shell.name = "" // Shell
-    env.ACTIONS.enemy_shell.desc = "" // 'form arms into defensive shell';'reduce incoming attacks'
+    env.ACTIONS.enemy_shell.name = "Оболочка" // Shell
+    env.ACTIONS.enemy_shell.desc = "'сформировать руки в защитную оболочку';'уменьшить входящие атаки'" // 'form arms into defensive shell';'reduce incoming attacks'
     env.ACTIONS.enemy_shell.help = "" // +2T:CARAPACE -VULNERABLE
     env.ACTIONS.enemy_shell.usage = {
-        "act": "%USER PREPARES TO TAKE A HIT"
+        "act": "%USER ГОТОВИТСЯ ПРИНЯТЬ УДАР"
     }
 
     /* - restore - */
@@ -1036,52 +1036,52 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - special_barrier_allies - */
 
-    env.ACTIONS.special_barrier_allies.name = "" // Cover
+    env.ACTIONS.special_barrier_allies.name = "Покрытие" // Cover
     env.ACTIONS.special_barrier_allies.usage = {
-        "act": "%USER SHIELDS THEIR ALLIES"
+        "act": "%USER ОГРАЖДАЕТ СВОИХ СОЮЗНИКОВ"
     }
     env.ACTIONS.special_barrier_allies.details = {
-        "flavor": "'utilize mobile applicators and inbuilt reserve';'apply ablative corru shielding'",
-        onUse: () => `'[STAT::amtBP] ${env?.rpg?.is2D ? "[STATUS::repairs]" : ''} to nearby allies'`,
+        "flavor": "'использовать переносные наносители и встроенный резерв';'применить абляционные корру щитки'",
+        onUse: () => `'[STAT::amtBP] ${env?.rpg?.is2D ? "[STATUS::repairs]" : ''} союзникам поблизости'`,
     }
 
     /* - special_strong_barrier_allies - */
 
-    env.ACTIONS.special_strong_barrier_allies.name = "" // Responsive Armor
+    env.ACTIONS.special_strong_barrier_allies.name = "Восприимчивая Броня" // Responsive Armor
     env.ACTIONS.special_strong_barrier_allies.usage = {
-        "act": "%USER SHIELDS THEIR ALLIES"
+        "act": "%USER ОГРАЖДАЕТ СВОИХ СОЮЗНИКОВ"
     }
     env.ACTIONS.special_strong_barrier_allies.details = {
-        "flavor": "'break open satik cyst';'utilize rapid temporary ablative barrier applicators'",
-        onUse: () => `'[STAT::amtBP] to nearby allies'`,
+        "flavor": "'вскрыть сатик-цисту';'использовать быстродействующие наносители временных абляционных барьеров'",
+        onUse: () => `'[STAT::amtBP] союзникам поблизости'`,
     }
 
     /* - special_restorative_barrier - */
 
-    env.ACTIONS.special_restorative_barrier.name = "" // Mending Cover
+    env.ACTIONS.special_restorative_barrier.name = "Укрепляющее Покрытие" // Mending Cover
     env.ACTIONS.special_restorative_barrier.usage = {
-        "act": "%USER SHIELDS THEIR ALLIES"
+        "act": "%USER ОГРАЖДАЕТ СВОИХ СОЮЗНИКОВ"
     }
     env.ACTIONS.special_restorative_barrier.details = {
-        "flavor": "'broadly apply ablative protection';'upgraded barrier mends wounds while active'",
-        "onUse": "'[STAT::amtBP] [STATUS::repairs] to nearby allies'"
+        "flavor": "'широкое применить абляционную защиту';'улучшенный барьер заживляет раны во время активности'",
+        "onUse": "'[STAT::amtBP] [STATUS::repairs] союзникам поблизости'"
     }
 
     /* - incoherent_gundown - */
 
-    env.ACTIONS.incoherent_gundown.name = "" // BSTRD BULLETS
-    env.ACTIONS.incoherent_gundown.desc = "" // BATTLEFIELD 100% -1HP per hit
-    env.localization.page[page.dialoguePrefix].strings["%USER AIMS AT %TARGET"] = ""
+    env.ACTIONS.incoherent_gundown.name = "ПУЛИ СВЛЧ" // BSTRD BULLETS
+    env.ACTIONS.incoherent_gundown.desc = "ПОЛЕ БИТВЫ 100% -1ХП при ударе" // BATTLEFIELD 100% -1HP per hit
+    env.localization.page[page.dialoguePrefix].strings["%USER AIMS AT %TARGET"] = "%USER ЦЕЛИТСЯ В %ACC-TARGET"
 
     /* - special_fullauto - */
 
     env.ACTIONS.special_fullauto.name = "" // Full Auto
     env.ACTIONS.special_fullauto.usage = {
-        "act": "%USER OPENS FIRE"
+        "act": "%USER ОТКРЫВАЕТ ОГОНЬ"
     }
     env.ACTIONS.special_fullauto.details = {
-        "flavor": "'utilize automatic rifle';'rapid inaccurate attacks'",
-        "onUse": "'HIT random foes 6 times'",
+        "flavor": "'использовать автоматическую винтовку';'быстрые неточные атаки'",
+        "onUse": "'нанести УДАР по случайным врагам 6 раз'",
         "onHit": "'[STAT::amt]'",
         "onCrit": "'[STATUS::vulnerable]'"
     }
@@ -1090,127 +1090,127 @@ cor_ru.combat['redefineActions'] = function () {
 
     env.ACTIONS.special_fullauto_player.name = "" // Full Auto
     env.ACTIONS.special_fullauto_player.usage = {
-        "act": "%USER OPENS FIRE"
+        "act": "%USER ОТКРЫВАЕТ ОГОНЬ"
     }
     env.ACTIONS.special_fullauto_player.details = {
-        "flavor": "'utilize symbotic rifle';'rapid inaccurate attacks';'consumes HP for munitions'",
-        "onUse": "'HIT random foes 6 times';'[STAT::amt] to self'",
+        "flavor": "'использовать автоматическую винтовку';'быстрые неточные атаки';'потребляет ХП для боеприпасов'",
+        "onUse": "'нанести УДАР по случайным врагам 6 раз';'[STAT::amt] себе'",
         "onHit": "'[STAT::amt]'",
         "onCrit": "'[STATUS::vulnerable]'"
     }
 
     /* - movefriend_attack - */
 
-    env.ACTIONS.movefriend_attack.name = "" // Broadcast
+    env.ACTIONS.movefriend_attack.name = "Транслировать" // Broadcast
     env.ACTIONS.movefriend_attack.desc = "" // 'directly seize control of corrucystic organs';'chance to utilize target as signal amplifier'
     env.ACTIONS.movefriend_attack.help = "" // 75% -2HP +1T:PUNCTURE, 30%C (FOES::-1HP +2T:VULNERABLE)
     env.ACTIONS.movefriend_attack.usage = {
-        "act": "%USER'S SIGIL WARPS STRANGELY",
-        "crit": "THE WHOLE TEAM FEELS ILL",
-        "hit": "%TARGET'S FLESH REVOLTS",
-        "miss": "%TARGET RECOILS SAFELY"
+        "act": "СИМВОЛ %GEN-USER СТРАННО ИСКАЖАЕТСЯ",
+        "crit": "ВСЯ КОМАНДА ЧУВСТВУЕТ СЕБЯ НЕВАЖНО",
+        "hit": "ПЛОТЬ %GEN-TARGET ПРОТИВИТСЯ",
+        "miss": "%TARGET ОТСТУПАЕТ В БЕЗОПАСНОСТЬ"
     }
 
     /* - special_mass_destabilize - */
 
-    env.ACTIONS.special_mass_destabilize.name = "" // destabilize thoughtspace
+    env.ACTIONS.special_mass_destabilize.name = "Дестабилизировать Мыслепространство" // destabilize thoughtspace
     env.ACTIONS.special_mass_destabilize.usage = {
-        "act": "THE THOUGHTSPACE GROWS VIOLENT"
+        "act": "МЫСЛЕПРОСТРАНСТВО НАЧИНАЕТ БУЙСТВОВАТЬ"
     }
     env.ACTIONS.special_mass_destabilize.details = {
-        "flavor": "'afflict all nearby entities with incoherence'",
-        "onUse": "'[STATUS::destabilized] to all actors'"
+        "flavor": "'поразить все сущности поблизости бессвязностью'",
+        "onUse": "'[STATUS::destabilized] всем актёрам'"
     }
 
     /* - special_movefriend_annihilate - */
 
-    env.ACTIONS.special_movefriend_annihilate.name = "" // Annihilation
-    env.ACTIONS.special_movefriend_annihilate.desc = "" // 'utilize the walls to crush a target'
-    env.ACTIONS.special_movefriend_annihilate.help = "" // CHOOSE::100% -2HP ::OR:: 50% -2HP 50%C -2HP +1T:STUN
+    env.ACTIONS.special_movefriend_annihilate.name = "Аннигиляция" // Annihilation
+    env.ACTIONS.special_movefriend_annihilate.desc = "'использовать стены для сокрушения цели'" // 'utilize the walls to crush a target'
+    env.ACTIONS.special_movefriend_annihilate.help = "ВЫБРАТЬ::100% -2ХП ::ИЛИ:: 50% -2ХП 50%К -2ХП +1Х:ОГЛУШЕНИЕ" // CHOOSE::100% -2HP ::OR:: 50% -2HP 50%C -2HP +1T:STUN
     env.ACTIONS.special_movefriend_annihilate.usage = {
-        "act": "THE WALLS GREW HOSTILE AROUND %TARGET",
-        "crit": "%TARGET BARELY STANDS",
-        "hit": "%TARGET DID THEIR BEST",
-        "miss": "%TARGET ESCAPED BY A HAIR"
+        "act": "СТЕНЫ ВОКРУГ %ACC-TARGET ОБРАСТАЮТ ВРАЖДЕБНОСТЬЮ",
+        "crit": "%TARGET ЕДВА ДЕРЖИТСЯ НА НОГАХ",
+        "hit": "%TARGET СТАРАЛ%TAR(СЯ/АСЬ/ОСЬ)GET, КАК МОГ%TAR(-/ЛА/ЛО)GET",
+        "miss": "%TARGET ЧУДОМ МИНОВАЛ%TAR(-/А/О)GET ГИБЕЛЬ"
     }
-    env.localization.page[page.dialoguePrefix].strings["THE WALLS SHIFT AROUND %TARGET"] = ""
-    env.localization.page[page.dialoguePrefix].strings[`The walls close in around милтза`] = ""
-    env.localization.page[page.dialoguePrefix].strings[`The walls close in around тозик`] = ""
-    env.localization.page[page.dialoguePrefix].strings[`The walls close in around`] = ""
-    env.localization.page[page.dialoguePrefix].strings["Withstand the attack"] = ""
-    env.localization.page[page.dialoguePrefix].strings["NOTE::'100% -2HP'"] = ""
-    env.localization.page[page.dialoguePrefix].strings["Try a risky dodge"] = ""
-    env.localization.page[page.dialoguePrefix].strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN'"] = ""
+    env.localization.page[page.dialoguePrefix].strings["THE WALLS SHIFT AROUND %TARGET"] = "СТЕНЫ ДВИЖУТСЯ ВОКРУГ %ACC-TARGET"
+    env.localization.page[page.dialoguePrefix].strings[`The walls close in around милтза`] = "Стены смыкаются вокруг Милтзы"
+    env.localization.page[page.dialoguePrefix].strings[`The walls close in around тозик`] = "Стены смыкаются вокруг Тозика"
+    env.localization.page[page.dialoguePrefix].strings[`The walls close in around`] = "Стены смыкаются вокруг"
+    env.localization.page[page.dialoguePrefix].strings["Withstand the attack"] = "Выстоять атаку"
+    env.localization.page[page.dialoguePrefix].strings["NOTE::'100% -2HP'"] = "ПРИМЕЧАНИЕ::'100% -2ХП'"
+    env.localization.page[page.dialoguePrefix].strings["Try a risky dodge"] = "Попробовать рисковый уворот"
+    env.localization.page[page.dialoguePrefix].strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN'"] = "ПРИМЕЧАНИЕ::'50% -2ХП 50%К -2ХП +1Х:ОГЛУШЕНИЕ'"
 
     /* - special_archiveshelf_annihilate - */
 
-    env.ACTIONS.special_archiveshelf_annihilate.name = "" // Annihilation
-    env.ACTIONS.special_archiveshelf_annihilate.desc = "" // 'utilize long limbs to eviscerate a target'
-    env.ACTIONS.special_archiveshelf_annihilate.help = "" // CHOOSE::100% -3HP ::OR:: 50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE
+    env.ACTIONS.special_archiveshelf_annihilate.name = "Аннигиляция" // Annihilation
+    env.ACTIONS.special_archiveshelf_annihilate.desc = "'использовать длинные конечности для разрубания цели'" // 'utilize long limbs to eviscerate a target'
+    env.ACTIONS.special_archiveshelf_annihilate.help = "ВЫБРАТЬ::100% -3ХП ::ИЛИ:: 50% -2ХП 50%К -2ХП +1Х:ОГЛУШЕНИЕ +2Х:ПРОКОЛ" // CHOOSE::100% -3HP ::OR:: 50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE
     env.ACTIONS.special_archiveshelf_annihilate.usage = {
-        "act": "%USER LUNGES AT %TARGET",
-        "crit": "%TARGET IS BRUTALLY STABBED",
-        "hit": "%TARGET TAKES A SOLID HIT",
-        "miss": "%TARGET ESCAPED BY A HAIR"
+        "act": "%USER НАБРАСЫВАЕТСЯ НА %ACC-TARGET",
+        "crit": "%ACC-TARGET ЗВЕРСКИ КРОМСАЮТ",
+        "hit": "%TARGET ПРИНИМАЕТ СИЛЬНЫЙ УДАР",
+        "miss": "%TARGET ЧУДОМ МИНОВАЛ%TAR(-/А/О)GET ГИБЕЛЬ"
     }
     env.ACTIONS.special_archiveshelf_annihilate.details = {
-        "onUse": "'present target foe a choice of outcome'",
-        "conditional": "<em>HIT 1</em>::'HIT::[STAT::hit1ACC]% CRIT::0% [STAT::hit1HP]'\\n<em>HIT 2</em>::'HIT::[STAT::hit2ACC]% CRIT::[STAT::hit2CRIT]% [STAT::hit2HP]';'[STATUS::stun] [STATUS::puncture] on CRIT'"
+        "onUse": "'предоставить выбранному противнику выбор исхода'",
+        "conditional": "<em>УДАР 1</em>::'УДАР::[STAT::hit1ACC]% КРИТ::0% [STAT::hit1HP]'\\n<em>УДАР 2</em>::'УДАР::[STAT::hit2ACC]% КРИТ::[STAT::hit2CRIT]% [STAT::hit2HP]';'[STATUS::stun] [STATUS::puncture] при КРИТ попадании'"
     }
-    env.localization.page[page.dialoguePrefix].strings[`The shelf lunges at тозик`] = ""
-    env.localization.page[page.dialoguePrefix].strings[`The shelf lunges at`] = ""
-    env.localization.page[page.dialoguePrefix].strings["NOTE::'100% -3HP'"] = ""
-    env.localization.page[page.dialoguePrefix].strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE'"] = ""
+    env.localization.page[page.dialoguePrefix].strings[`The shelf lunges at тозик`] = "Шкаф набрасывается на Тозика"
+    env.localization.page[page.dialoguePrefix].strings[`The shelf lunges at`] = "Шкаф набрасывается на"
+    env.localization.page[page.dialoguePrefix].strings["NOTE::'100% -3HP'"] = "ПРИМЕЧАНИЕ::'100% -3ХП'"
+    env.localization.page[page.dialoguePrefix].strings["NOTE::'50% -2HP 50%C -2HP +1T:STUN +2T:PUNCTURE'"] = "ПРИМЕЧАНИЕ::'50% -2ХП 50%К -2ХП +1Х:ОГЛУШЕНИЕ +2Х:ПРОКОЛ'"
 
     /* - incoherent_movefriend - */
 
-    env.ACTIONS.incoherent_movefriend.name = "" // Wallspikes
-    env.ACTIONS.incoherent_movefriend.desc = "" // 'k̶̡̇̄i̵͈͑̐̑̌̈́̇̾̕͝l̷̡͓̬̩̖̽̂̿̏͒̎̽̏̀̿̏̅̈l̵̯̦̪͠'
-    env.ACTIONS.incoherent_movefriend.help = "" // BATTLEFIELD 300% -1HP
-    env.localization.page[page.dialoguePrefix].strings["THE WALLS TWIST AROUND THE WHOLE TEAM"] = ""
+    env.ACTIONS.incoherent_movefriend.name = "Шипостены" // Wallspikes
+    env.ACTIONS.incoherent_movefriend.desc = "у̸͔͆ ̵̧̳͎̉͘б̶̹͑ ̸̲͇̯̐̀̂и̸̝̍̽̈́ ̷͈͒͝в̷̥̖͖̺̄̔͂ ̸͕̫͒̽̂͝а̴̘̝͉̞͐̃ ̶̫̫̱͔̌̀̎̚т̷͕̽͝ ̴͓̻̩̇̈́ь̶̢̱͚̃̈́͑" // 'k̶̡̇̄i̵͈͑̐̑̌̈́̇̾̕͝l̷̡͓̬̩̖̽̂̿̏͒̎̽̏̀̿̏̅̈l̵̯̦̪͠'
+    env.ACTIONS.incoherent_movefriend.help = "ПОЛЕ БИТВЫ 300% -1ХП" // BATTLEFIELD 300% -1HP
+    env.localization.page[page.dialoguePrefix].strings["THE WALLS TWIST AROUND THE WHOLE TEAM"] = "СТЕНЫ ИСКРИВЛЯЮТСЯ ВОКРУГ ВСЕЙ КОМАНДЫ"
 
     /* - windup - */
 
-    env.ACTIONS.windup.name = "" // Preparation
+    env.ACTIONS.windup.name = "Подготовка" // Preparation
     env.ACTIONS.windup.usage = {
         "act": "%USER ГОТОВИТСЯ К АТАКЕ..."
     }
     env.ACTIONS.windup.details = {
-        "flavor": "'prepare a devastating attack'",
+        "flavor": "'подготовить разрушительную атаку'",
         "onUse": "'[STATUS::windup]'"
     }
 
     /* - windup_cover - */
 
-    env.ACTIONS.windup_cover.name = "" // Take Aim
+    env.ACTIONS.windup_cover.name = "Прицелиться" // Take Aim
     env.ACTIONS.windup_cover.usage = {
         "act": "%USER ГОТОВИТСЯ К АТАКЕ..."
     }
     env.ACTIONS.windup_cover.details = {
-        "flavor": "'prepare devastating attack';'stay low';'lose windup if attention diverted'",
+        "flavor": "'подготовить разрушительную атаку';'не высовываться';'потерять подготовку при отвлечении внимания'",
         "onUse": "'[STATUS::windup] [STATUS::evasion]'"
     }
 
     /* - focused_windup - */
 
-    env.ACTIONS.focused_windup.name = "" // Extra Preparation
+    env.ACTIONS.focused_windup.name = "Доп. Подготовка" // Extra Preparation
     env.ACTIONS.focused_windup.usage = {
         "act": "%USER ЖДЁТ ПОДХОДЯЩИЙ МОМЕНТ..."
     }
     env.ACTIONS.focused_windup.details = {
         "onUse": "'[STATUS::windup] [STATUS::evasion] [STATUS::focused]'",
-        "flavor": "'hold prepared attack';'look for opportunity'"
+        "flavor": "'удерживать подготовленную атаку';'искать возможность'"
     }
 
     /* - hold_aim - */
 
-    env.ACTIONS.hold_aim.name = "" // Hold Aim
+    env.ACTIONS.hold_aim.name = "Держать Прицел" // Hold Aim
     env.ACTIONS.hold_aim.usage = {
         "act": "%USER ЖДЁТ ПОДХОДЯЩИЙ МОМЕНТ..."
     }
     env.ACTIONS.hold_aim.details = {
         "onUse": "'[STATUS::windup] [STATUS::evasion] [STATUS::focused]'",
-        "flavor": "'hold prepared attack';'look for opportunity'"
+        "flavor": "'удерживать подготовленную атаку';'искать возможность'"
     }
 
     /* - archival_smash - */
@@ -1886,11 +1886,11 @@ cor_ru.combat['redefineActions'] = function () {
 
     env.ACTIONS.special_barrier_allies_weak.name = "" // Quick Cover
     env.ACTIONS.special_barrier_allies_weak.usage = {
-        "act": "%USER SHIELDS THEIR ALLIES"
+        "act": "%USER ОГРАЖДАЕТ СВОИХ СОЮЗНИКОВ"
     }
     env.ACTIONS.special_barrier_allies_weak.details = {
         "flavor": "'apply ablative protection'",
-        onUse: () => `'[STAT::amtBP] to nearby allies'`,
+        onUse: () => `'[STAT::amtBP] союзникам поблизости'`,
     }
     env.ACTIONS.special_barrier_allies_weak.disableIf = (actor)=>{ if(hasStatus(actor,"fear")) return "PROHIBITED BY FEAR" }
 
