@@ -666,7 +666,7 @@ cause
 
     RESPONSES::self
         i see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 deeper
     self
@@ -686,7 +686,7 @@ deeper
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 leave
     self
@@ -713,7 +713,7 @@ leave
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 help
     self
@@ -728,7 +728,7 @@ help
 
     RESPONSES::self
         you too<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 

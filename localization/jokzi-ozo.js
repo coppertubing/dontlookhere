@@ -35,7 +35,7 @@ start
         думай же больше! думай!! как тебя зовут?
     
     self
-        меня называют “лазутчиком”
+        меня называют "лазутчиком"
     
     council
         ах!!
@@ -49,13 +49,13 @@ start
     
     council
         о, да, о, да!!
-        единственная переменная в нашем упадке!  \\ мы такое переводили? будто да?? хах может я придумал ПРИВЕТ У МЕНЯ ПРЕДЛОЖЕНИЕ  у меня другое предложение. короче. стиль речи совета с излишним использованием “же”. везде ставят ураЯ НАШЁЛ ГДЕ МЫ ЖЭТО ПЕРЕВОДИЛИ но предлагайте о хмм? думаю можно попробовать
-        ещё издавна мы предсказывали, что циста сможет выжить лишь от руки лазутчика…\\ долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели     \\ первый вариант но “лишь с помощью”?
+        единственная переменная в нашем упадке!  // мы такое переводили? будто да?? хах может я придумал ПРИВЕТ У МЕНЯ ПРЕДЛОЖЕНИЕ  у меня другое предложение. короче. стиль речи совета с излишним использованием "же". везде ставят ураЯ НАШЁЛ ГДЕ МЫ ЖЭТО ПЕРЕВОДИЛИ но предлагайте о хмм? думаю можно попробовать
+        ещё издавна мы предсказывали, что циста сможет выжить лишь от руки лазутчика...// долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели     // первый вариант но "лишь с помощью"?
         и вот ты здесь!
         находишь наше пристанище в отступающем безумстве!
         и какая же жалость... ох какая же досада!! что только сейчас ты здесь
         светлые поля сгнили, звёзды - угасли
-        наши же друзья - все пропали…
+        наши же друзья - все пропали...
 
     sourceless
         ...
@@ -114,7 +114,7 @@ RESPOBJ::
             SHOWIF::["e3a2__escapewin", false]
 
         geli?<+>geli
-            SHOWIF::[["geli_beacon", "true"], ["e3a2__escapewin", false]]
+            SHOWIF::[["geli_beacon", true], ["e3a2__escapewin", false]]
         geli?<+>gelifree
             SHOWIF::"e3a2__escapewin"
 
@@ -122,7 +122,7 @@ RESPOBJ::
             SHOWIF::["secavik", "beaconed"]
 
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.councilQuestionsResp = generateDialogueObject(`
@@ -137,7 +137,7 @@ RESPOBJ::
             SHOWIF::"e3a2__escapewin"
 
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.councilPlaceQuestionsResp = generateDialogueObject(`
@@ -158,7 +158,7 @@ RESPOBJ::
         dark area<+>dark
             SHOWIF::"ozo_enterdark"
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.councilCystQuestionsResp = generateDialogueObject(`
@@ -176,7 +176,7 @@ RESPOBJ::
         dull plane?<+>dull
             SHOWIF::"ep4__entrancefinal"
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.interloperQuestionsResp = generateDialogueObject(`
@@ -185,7 +185,7 @@ RESPOBJ::
         real name?<+>iname
         purpose?<+>ipurpose
         back<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues["council"] = generateDialogueObject(`
@@ -238,7 +238,7 @@ dance
     
     council
         oh, dear interloper! ох, дорогой лазутчик! хммм мне не нравится дорогой но не критично добрый лазутчик :)
-        мы боялись, что в тебе слишком много холода, чтобы спросить вновь \\ we worried you were too cold to ask again! \\ просто слишком холоден думаю подходит
+        мы боялись, что в тебе слишком много холода, чтобы спросить вновь // we worried you were too cold to ask again! // просто слишком холоден думаю подходит
         пусть же музыка... начнётся!!
     
     RESPONSES::self
@@ -333,7 +333,7 @@ task
     
     RESPONSES::self
         ok<+>loop      ладно
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 rloop
     RESPOBJ::councilRejoiningResp
@@ -357,7 +357,7 @@ flower
 
     RESPONSES::self
         thanks<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 anyone
     self
@@ -376,7 +376,7 @@ anyone
 
     RESPONSES::self
         great thanks<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 flowersaved
     self
@@ -395,7 +395,7 @@ flowersaved
 
     RESPONSES::self
         great<+>loop      отлично
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 fairysaved
     self
@@ -415,7 +415,7 @@ fairysaved
 
     RESPONSES::self
         cool<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 fairy
     self
@@ -424,7 +424,7 @@ fairy
     
     council
         фея! да!
-        не досадуй—до тех, пор пока она не вернулась, с нами одни лишь блекнущие воспоминания…
+        не досадуй—до тех, пор пока она не вернулась, с нами одни лишь блекнущие воспоминания...
         и всё же, она являла собой ужасающего друга--силу, больше чем мысль!
         её когти могли разорвать любое мыслепространство, дабы она могла пировать их плотью 
         во времена голода она была той, кого мысли страшились больше всего...
@@ -438,7 +438,7 @@ fairy
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 third
     self
@@ -459,7 +459,7 @@ third
         
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 geli
     self
@@ -503,7 +503,7 @@ ____END
 
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 gelifree
     self
@@ -526,7 +526,7 @@ gelifree
 
     RESPONSES::self
         great<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowaway
     self
@@ -544,7 +544,7 @@ stowaway
 
     RESPONSES::self
         i see<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 cavik
     self
@@ -560,7 +560,7 @@ cavik
 
     RESPONSES::self
         yeah<+>loop      ага
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 qloop
     RESPOBJ::councilQuestionsResp
@@ -586,7 +586,7 @@ dancing
     
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 we
     self
@@ -596,9 +596,9 @@ we
     council отойду снова. зови если что. поцеловал
         интересно!!    interesting!!
         твоё необыкновенное соединение хрупко, лазутчик!    your unnatural connection is tenuous, interloper!
-        ты видишь нас как нечто одно…     you see us as one single thing...
+        ты видишь нас как нечто одно...     you see us as one single thing...
         но мы же такое множество друзей!    but we are so many friends!
-        мы, кто разорвали наши мембраны чтобы присоединиться всем вместе…    we, who shed our membranes to join together...
+        мы, кто разорвали наши мембраны чтобы присоединиться всем вместе...    we, who shed our membranes to join together...
             for closeness, for intimacy, to dream greater dreams!
         and of course, some of us simply tired of the wait...
         and so we joined to be burned away as fuel!
@@ -608,7 +608,7 @@ we
     
     RESPONSES::self
         i see<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ozo
     self
@@ -630,7 +630,7 @@ ozo
     
     RESPONSES::self
         i see<+>ploop      понятно
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 history
     self
@@ -651,7 +651,7 @@ history
         
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 akicoat
     self
@@ -666,7 +666,7 @@ akicoat
     
     RESPONSES::self
         ok<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
     
 time
     self
@@ -687,7 +687,7 @@ time
     
     RESPONSES::self
         yep<+>ploop      ага
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 feast
     self
@@ -707,7 +707,7 @@ feast
     
     RESPONSES::self
         ok...<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dreams
     self
@@ -742,7 +742,7 @@ dreams
     
     RESPONSES::self
         ok...<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 vessel
     self
@@ -757,7 +757,7 @@ vessel
     
     RESPONSES::self
         awesome<+>qloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dark
     self
@@ -778,7 +778,7 @@ dark
 
     RESPONSES::self
         ok...<+>ploop      хорошо...
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 cloop
     RESPOBJ::councilCystQuestionsResp
@@ -827,7 +827,7 @@ ____END
     
     RESPONSES::self
         i see<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 god
     self
@@ -845,7 +845,7 @@ god
     
     RESPONSES::self
         ok<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 godlike
     self
@@ -865,7 +865,7 @@ godlike
     
     RESPONSES::self
         yeah sad<+>ploop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 tyrant
     self
@@ -905,7 +905,7 @@ tyrant
     
     RESPONSES::self
         ...<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 funfriend
     self
@@ -922,7 +922,7 @@ funfriend
     
     RESPONSES::self
         ...<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 coreg
     self
@@ -939,7 +939,7 @@ coreg
     
     RESPONSES::self
         if you say so<+>cloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 akizet
     self
@@ -966,7 +966,7 @@ akizet
     
     RESPONSES::self
         ok<+>cloop      хорошо
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 
 iloop
@@ -997,7 +997,7 @@ ____END
     
     RESPONSES::self
         ok<+>iloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ipurpose
     council
@@ -1021,7 +1021,7 @@ ipurpose
 
     RESPONSES::self
         thanks<+>iloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowawaydance
     self
@@ -1035,7 +1035,7 @@ ____SHOWIF::["PAGE!!jig", false]
     
     RESPONSES::self
         ok<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 ____SHOWIF::["PAGE!!jig", true]    
     council
@@ -1046,7 +1046,7 @@ ____SHOWIF::["PAGE!!jig", true]
     
     RESPONSES::self
         no problem<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 ____END
 
 leverage
@@ -1071,7 +1071,7 @@ leverage
 
     RESPONSES::self
         thanks<+>qloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 dull
     self
@@ -1115,7 +1115,7 @@ dull
 
     RESPONSES::self
         thanks i guess<+>cloop      спасибо наверное
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 END::change("PAGE!!introswap", false);env.jokzi.toggleSlow(false);change("PAGE!!questionswap", "DELETE")
 `)

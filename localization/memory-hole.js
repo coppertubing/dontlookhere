@@ -260,19 +260,19 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        Я ОЩУЩАЮ КАК НАШЕ СУДНО НАПРЯГАЕТСЯ ПОД ВЕСОМ ГЛУБИНЫ \\I FEEL OUR VESSEL STRAIN UNDER THE WEIGHT OF THIS DEPTH   надрывается?  вщщщщ кряхтит..................... 
-        МОЯ БЕДНАЯ ГЛАЗИКА ДОЛЖНО БЫТЬ НАДРЫВАЕТСЯ ЧТОБЫ СПРАВИТЬСЯ С ОПТИМИЗАЦИЕЙ \\MY POOR GLAZIKA MUST BE STRUGGLING TO KEEP UP WITH OPTIMIZATIONS
+        Я ОЩУЩАЮ КАК НАШЕ СУДНО НАПРЯГАЕТСЯ ПОД ВЕСОМ ГЛУБИНЫ //I FEEL OUR VESSEL STRAIN UNDER THE WEIGHT OF THIS DEPTH   надрывается?  вщщщщ кряхтит..................... 
+        МОЯ БЕДНАЯ ГЛАЗИКА ДОЛЖНО БЫТЬ НАДРЫВАЕТСЯ ЧТОБЫ СПРАВИТЬСЯ С ОПТИМИЗАЦИЕЙ //MY POOR GLAZIKA MUST BE STRUGGLING TO KEEP UP WITH OPTIMIZATIONS
 
     mind
         halting
         pulsing now
     
     sourceless
-        ГЛУБИННЫЙ ПУЛЬС СОЗДАЁТ РАСТУЩИЙ РАДИУС ЗРЕНИЯ \\A GROWING RADIUS OF VISION IS CREATED FROM THE DEPTH PULSE
-        ЕГО ПОРОГ РАСШИРЯЕТСЯ НАРУЖУ И ГАСНЕТ, И Я ЕЁ ВИЖУ \\AS ITS THRESHOLD EXPANDS OUTWARDS AND FADES, I SEE IT
-        ГРУДУ МЁРТВОГО МЕТАЛЛА, В ТАКОЙ(-то) ПУСТОШИ \\IN THIS DESOLATE PLACE, A MASS OF DEAD METAL
-        ЧТО-ТО ВРОДЕ СУДНА, ИЗГОТОВЛЕННОГО КУЗИНАМИ, НО… \\SOME SORT OF VESSEL MANUFACTURED BY THE COUSINS, BUT...
-        Я ПЕРЕВОЖУ СВОЁ ВНИМАНИЕ НАРУЖУ И ОБМЕНИВАЮСЬ ВЗГЛЯДОМ С θ█████ \\I DRAW MY ATTENTION OUTWARDS AND EXCHANGE A LOOK WITH █████
+        ГЛУБИННЫЙ ПУЛЬС СОЗДАЁТ РАСТУЩИЙ РАДИУС ЗРЕНИЯ //A GROWING RADIUS OF VISION IS CREATED FROM THE DEPTH PULSE
+        ЕГО ПОРОГ РАСШИРЯЕТСЯ НАРУЖУ И ГАСНЕТ, И Я ЕЁ ВИЖУ //AS ITS THRESHOLD EXPANDS OUTWARDS AND FADES, I SEE IT
+        ГРУДУ МЁРТВОГО МЕТАЛЛА, В ТАКОЙ(-то) ПУСТОШИ //IN THIS DESOLATE PLACE, A MASS OF DEAD METAL
+        ЧТО-ТО ВРОДЕ СУДНА, ИЗГОТОВЛЕННОГО КУЗИНАМИ, НО... //SOME SORT OF VESSEL MANUFACTURED BY THE COUSINS, BUT...
+        Я ПЕРЕВОЖУ СВОЁ ВНИМАНИЕ НАРУЖУ И ОБМЕНИВАЮСЬ ВЗГЛЯДОМ С θ█████ //I DRAW MY ATTENTION OUTWARDS AND EXCHANGE A LOOK WITH █████
 
     origin
         you see it too?
@@ -305,54 +305,54 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
     
     sourceless
-        в относительной безопасности входного тоннеля, θ██████ подаёт поверхностный голос \\ in the relative safety of the entry tunnel, θ██████ drops his surface voice    подаёт? подать голос!!
+        в относительной безопасности входного тоннеля, θ██████ подаёт поверхностный голос // in the relative safety of the entry tunnel, θ██████ drops his surface voice    подаёт? подать голос!!
     
     guard
         incredible... that would have taken so much longer, before    невероятно... раньше такое заняло бы гораздо дольше
         θ██████, what is the count?    θ██████, сколько их?
     
     sourceless
-        несмотря на то что настоящий ответ прямо около завитка моего рецептора \\while the real answer is just within my receptor's curl, 
-        я разыгрываю шоу с подсчитыванием своих когтей, а затем выдаю одну из своих любимых фразочек \\i make a show of counting my claws, and then play one of my favorite sayings
+        несмотря на то что настоящий ответ прямо около завитка моего рецептора //while the real answer is just within my receptor's curl, 
+        я разыгрываю шоу с подсчитыванием своих когтей, а затем выдаю одну из своих любимых фразочек //i make a show of counting my claws, and then play one of my favorite sayings
     
     stupid
-        ах… нам придётся позвать тира! \\ah... we will have to gather the tir!     я бы перевёл как позвать тиров.... боже пришёл роснулся критиковать тебя
+        ах... нам придётся позвать тира! //ah... we will have to gather the tir!     я бы перевёл как позвать тиров.... боже пришёл роснулся критиковать тебя
     
     sourceless
         он посмеивается, к моему удивлению he chuckles, to my surprise << боже мой моя тупица становится велом?? 🥹🥹.
-        ещё несколько мигов назад он, казалось, был раздражён моими подшучиваниями\\only θblinks earlier he seemed irritated with my banter
-        однако, как и задумано, я даю ему подобающий ответ сразу же после \\still, as planned, i give him a proper answer immediately after
+        ещё несколько мигов назад он, казалось, был раздражён моими подшучиваниями//only θblinks earlier he seemed irritated with my banter
+        однако, как и задумано, я даю ему подобающий ответ сразу же после //still, as planned, i give him a proper answer immediately after
     
     stupid
-        я насчитала чуть больше тридцати \\i counted just over thirty
+        я насчитала чуть больше тридцати //i counted just over thirty
     
     elder
         хаха!
-        thirty, from just that trip...     целых тридцать, за один этот поход…
+        thirty, from just that trip...     целых тридцать, за один этот поход...
         
     sourceless
-        θ██████ останавливается и берёт свою серое-пульсирующую валика-цисту за её шнур, \\stops and grasps his dull-pulse valika-cyst by its tether,    переводим tether как шнур? мне нравится шнур ладно пойду в своём изменю у меня привязь брбрбр (циста на поводке когда)   блин шнуры серое звучит глупо глупо!! как скажешь впрочем звучит круто!! у нас не обязательно же tether означает одно слово только гмм посмотрим. я не помню в каком контексте оно используется я думаю если бы да воркс хотели намекнуть на разные слова они использовали бы разные слова
-        трясущейся рукой оттягивая её на уровень глаз так, чтобы он мог посмотреть в неё должным образом \\pulling it down to eye-level with a shaky hand so he can look into it properly
-        я ощущаю моментальный шок, как и его сын, судя по его рецепторам \\i feel an instant of shock, as does his son by the sight of his receptors, 
-        но мы оба осознаём что он смотрит скорее в сторону, нежели прямо на смертельную часть\\but we both realize he is looking at the side, rather than directly at the deadly part
+        θ██████ останавливается и берёт свою серое-пульсирующую валика-цисту за её шнур, //stops and grasps his dull-pulse valika-cyst by its tether,    переводим tether как шнур? мне нравится шнур ладно пойду в своём изменю у меня привязь брбрбр (циста на поводке когда)   блин шнуры серое звучит глупо глупо!! как скажешь впрочем звучит круто!! у нас не обязательно же tether означает одно слово только гмм посмотрим. я не помню в каком контексте оно используется я думаю если бы да воркс хотели намекнуть на разные слова они использовали бы разные слова
+        трясущейся рукой оттягивая её на уровень глаз так, чтобы он мог посмотреть в неё должным образом //pulling it down to eye-level with a shaky hand so he can look into it properly
+        я ощущаю моментальный шок, как и его сын, судя по его рецепторам //i feel an instant of shock, as does his son by the sight of his receptors, 
+        но мы оба осознаём что он смотрит скорее в сторону, нежели прямо на смертельную часть//but we both realize he is looking at the side, rather than directly at the deadly part
         
     elder
         from simple food containers, to the deadliest weapons ever conceived...     от простых контейнеров для еды, до самого смертельного из всех оружий...
 
     sourceless
-        какое-то пустое движение проходит в его рецепторах пока он уставился внутрь неё\\there is a sort of idle drift in his receptors as he stares into it
+        какое-то пустое движение проходит в его рецепторах пока он уставился внутрь неё//there is a sort of idle drift in his receptors as he stares into it
         легко сказать когда тир витает в облаках
     
     elder
-        корру…
+        корру...
         you know, they came up with using the spheres they form for food just when my receptors started to split     знаешь, они додумались использовать формируемые им сферы для еды когда мои рецепторы только начали расщепляться
         my excavation mentor once told me the strangest stories about it, and our ancestors...     когда-то наставник по раскопке рассказывал мне наистраннейшие истории о нём и наших предках...
         it was not long after we struck that great natural vein of it down in the deep chambers     это было незадолго после того, как мы наткнулись на ту великую естественную жилу в глубоких залах
         it is so much smaller now...      теперь она гораздо меньше...
-        as we prepared a harvesting bore, you know what he said?    знаешь, что он рассказал мне, пока мы готовили скважину для сборки? \\ может быть догадайся вместо знаешь? мне не нравится этот повтор
+        as we prepared a harvesting bore, you know what he said?    знаешь, что он рассказал мне, пока мы готовили скважину для сборки? // может быть догадайся вместо знаешь? мне не нравится этот повтор
     
     sourceless
-        θ██████ поворачивается ко мне, его ветвистые рецепторы раскидывают свои кончики  \\turns to me, his branched receptors outstretching their tendrils блин вот и минус переводить как ответвление ? думаешь опять корруворкс показывает нам какую-то связь? глупые обески не выучили словирк английского языка. давайте заменим ответвление наа что там было. отростки? 
+        θ██████ поворачивается ко мне, его ветвистые рецепторы раскидывают свои кончики  //turns to me, his branched receptors outstretching their tendrils блин вот и минус переводить как ответвление ? думаешь опять корруворкс показывает нам какую-то связь? глупые обески не выучили словирк английского языка. давайте заменим ответвление наа что там было. отростки? 
     
     elder
         his father, and his fathers before him, saw it as a pest!    его отец, и отцы перед ним, считали корру вредителем!
@@ -361,7 +361,7 @@ start
         and it had to be scraped away by claw, or dug around, as our acids had no effect...     и им приходилось сдирать его когтями, или копать вокруг, потому что наша кислота не имела эффекта...
     
     sourceless
-        он снова оборачивается на дорогу впереди, осторожно ступая вниз по cклону и продолжая предаваться воспоминаниям \\he turns back to the path ahead, carefully stepping down the incline as he continues reminiscing
+        он снова оборачивается на дорогу впереди, осторожно ступая вниз по cклону и продолжая предаваться воспоминаниям //he turns back to the path ahead, carefully stepping down the incline as he continues reminiscing
         его сын указывает рецепторами вперёд, и мы начинаем следовать
     
     elder
@@ -369,12 +369,12 @@ start
         have you ever felt it?    ты знаешь, каково это?
     
     sourceless
-        его сын хранит молчание, безразличный \\his son does not respond, indifferent
-        должно быть он уже слышал всё это раньше \\he must have heard all this before
+        его сын хранит молчание, безразличный //his son does not respond, indifferent
+        должно быть он уже слышал всё это раньше //he must have heard all this before
     
     stupid
         нет!
-        обычно его держат запечатанным в таких больших черепах\\they usually keep it sealed in those big skulls
+        обычно его держат запечатанным в таких больших черепах//they usually keep it sealed in those big skulls
     
     elder
         well, if even a drop of it gets on,    ну, если на них попадает хоть капля,
@@ -387,7 +387,7 @@ start
         что ж, понадобится ещё один <span definition="INHERITED CONTEXT::'common myth';'intoxicated tir knocked over corru container and fell into it'">tir stumbling into their research chamber</span> чтобы выяснить что будет после!
     
     sourceless
-       его смех переполняет тоннель, достаточно, чтобы мои рецепторы скрутило в тугую спираль\\his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
+       его смех переполняет тоннель, достаточно, чтобы мои рецепторы скрутило в тугую спираль//his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
     
     elder
         θ██████, start planning a transport to oltazni for me, would you?     θ██████, распланируй-ка для меня транспортировку в олтазни   // Я УБИЛ ВОПРОСИТЕЛЬНЫЙ ЗНАК............ ГОРЖУСЬ !!
@@ -409,23 +409,23 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        собака θ███ улепётывает\удирает\даёт дёру от меня, но в этой закрытой комнате далеко ей не уйти \\ dog skitters&&&&?????? away from me, but in this closed chamber, it can only go so far
-        у неё не остаётся и шанса, когда я бросаюсь вперёд и сцепляю руки под её панцирем, утягивая в объятия \\it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
-        она пищит, точно неспелый селки, когда я отрываю её от земли и кручусь в танце вокруг мебели θ███ \\it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture
-       я замечаю сияние от оптики θ███ \\ i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
+        собака θ███ улепётывает\удирает\даёт дёру от меня, но в этой закрытой комнате далеко ей не уйти // dog skitters&&&&?????? away from me, but in this closed chamber, it can only go so far
+        у неё не остаётся и шанса, когда я бросаюсь вперёд и сцепляю руки под её панцирем, утягивая в объятия //it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
+        она пищит, точно неспелый селки, когда я отрываю её от земли и кручусь в танце вокруг мебели θ███ //it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture
+       я замечаю сияние от оптики θ███ // i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
     
     kind
         о, θ███, прекрати свои издевательства, ему страшно
     
     sourceless
-        её ровный голос выдаёт её веселье \\her flat voice betrays her amusement
+        её ровный голос выдаёт её веселье //her flat voice betrays her amusement
     
     stupid
-        ничем не могу помочь, дорогая сестра! \\ i cannot help myself, dear sister!
-        я вижу еду, я должна охотиться! \\i see food, i must hunt!
+        ничем не могу помочь, дорогая сестра! // i cannot help myself, dear sister!
+        я вижу еду, я должна охотиться! //i see food, i must hunt!
     
     sourceless
-        и всё же, я опускаю собаку и \\still, i set down the dog and leap backwards
+        и всё же, я опускаю собаку и //still, i set down the dog and leap backwards
         it skitters and turns about to face me, waiting for my next move
     
     stupid
@@ -630,7 +630,7 @@ start
         вейльк-носитель медленно пробивается через вазнийский шпилешторм, каждое мгновение борясь с вихрями воздуха
         капли воды и град бьются о внешнюю оболочку ззепеля,
         влага просачивается сквозь трещины и накрапывает внутрь моего убежища, поблёскивая в его свете
-        это всегда малоприятно…
+        это всегда малоприятно...
         к счастью региональный координатор достаточно свободен для общения, за исключением этих прерываний
         θ█████ наконец-то возвращается ко мне через приёмник сероегласа,
     
@@ -693,10 +693,10 @@ start
         о, довольно просто
         я закрываю глаза, когда ещё один шаг вейлька-носителя приземляется далеко внизу
         следующий не наступит достаточно мигов, так что это удачное время
-        дождь…
+        дождь...
         ...
         наше соединение затихло, но открыто - я всё ещё могу ощутить его
-        есть что-то в нём похожее на завиток рецептора, без физического ощущения \\there is something akin to a receptor curl in it, without the physical sensation —-- ???????
+        есть что-то в нём похожее на завиток рецептора, без физического ощущения //there is something akin to a receptor curl in it, without the physical sensation —-- ???????
         бесчисленные туманные ощущения захлёстывают, невозможно ухватиться за начало ни одного из них,
         раскаяние, счастье, смех, захватывающий мою грудь - но все они далёкие, скоротечные
         они проходят мимо меня, как ветра шпилешторма
@@ -739,19 +739,19 @@ start
 
     stupid
         что привело тебя сюда? у них есть ещё одно устройство мне на пробу?
-        айма цисты были невероятными, использовать их было словно…
-        глаз моего разума, приумноженный, парил вне моего тела \\my mind's eye, multiplied, hovering outside of my body
-        это дезориентирует, но… открывает глаза. хехехе \\disorienting, but... eye-opening. hehehe
+        айма цисты были невероятными, использовать их было словно...
+        глаз моего разума, приумноженный, парил вне моего тела //my mind's eye, multiplied, hovering outside of my body
+        это дезориентирует, но... открывает глаза. хехехе //disorienting, but... eye-opening. hehehe
     
     hesitant
         о, да... да, открывает
     
     sourceless
         МОИ РЕЦЕПТОРЫ ПРИВОДЯТСЯ В ПОХОЖИЙ ОБЕСПОКОЕННЫЙ ИЗГИБ
-        ОН ВЫГЛЯДИТ ТАКИМ МРАЧНЫМ…?
+        ОН ВЫГЛЯДИТ ТАКИМ МРАЧНЫМ...?
 
     stupid
-        итааак…?
+        итааак...?
         что там?
     
     sourceless
@@ -824,7 +824,7 @@ start
     stupid
         что же, это что-то вроде тех--как ты их называл?
         эхо?
-        если я использую её… буду ли это я?
+        если я использую её... буду ли это я?
 
     hesitant
         да, несомненно
@@ -855,9 +855,9 @@ start
     sourceless
         Я ПОДНИМАЮ СВОЮ ПРАВУЮ РУКУ, СЖАТУЮ В КУЛАК, ДЕМОНСТРИРУЯ ХИТИН НА ПРАВОМ ПРЕДПЛЕЧЬЕ
         УЖАСНО РАСКОЛОТЫЙ, ТАКАЯ РАНА, НА ЛЕЧЕНИЕ КОТОРОЙ УШЁЛ БЫ ЦЕЛЫЙ θглаз
-        НО В ЭТОМ ЕСТЬ И ПРИЧИНА ДЛЯ ГОРДОСТИ. ВЗМАХ МОЕЙ РУКИ, ЧТОБЫ ОТВЕСТИ ВЫПАД ГУКТИКА В ВЕРНЫЙ МОМЕНТ…
+        НО В ЭТОМ ЕСТЬ И ПРИЧИНА ДЛЯ ГОРДОСТИ. ВЗМАХ МОЕЙ РУКИ, ЧТОБЫ ОТВЕСТИ ВЫПАД ГУКТИКА В ВЕРНЫЙ МОМЕНТ...
         ХРЯСЬ!! О, КАКАЯ БОЛЬ, НО ВИДЕТЬ КАК ОН МЕЧЕТСЯ ПОСЛЕ ЭТОГО, ТАКАЯ МОЩЬ!!
-        ТОЛЬКО ПРЕДСТАВИТЬ, НА ЧТО Я БУДУ СПОСОБНА В ТЕЛЕ ИЗ КОРРУ…
+        ТОЛЬКО ПРЕДСТАВИТЬ, НА ЧТО Я БУДУ СПОСОБНА В ТЕЛЕ ИЗ КОРРУ...
         θ█████ СМЕЁТСЯ, ОТМАХИВАЯСЬ СВОИМИ РЕЦЕПТОРАМИ ОТ МОЕГО БАХВАЛЬСТВА
 
 
@@ -872,16 +872,16 @@ start
 
     sourceless
         ОХ, НЕ СТОИЛО ЭТО ПРОИЗНОСИТЬ
-        ВЗГЛЯД, КОТОРЫМ ОН МЕНЯ ОДАРЯЕТ…
+        ВЗГЛЯД, КОТОРЫМ ОН МЕНЯ ОДАРЯЕТ...
     
     stupid
-        прости, хихихи… просто дурачусь
+        прости, хихихи... просто дурачусь
         гнев велзи! это почти тот же глаз что наблюдает за мной во время моих путешествий, в конце-то концов
 
     sourceless
         В ЕГО РЕЦЕПТОРАХ ФОРМИРУЕТСЯ МЯГКОЕ ВНИМАНИЕ
         И ОН ДАРИТ МНЕ ТИХИЙ, ПОЧТИ БЕЗЗВУЧНЫЙ СМЕШОК, КОГДА ВСТАЁТ ЧТОБЫ УЙТИ
-        ВСЁ ТАКОЙ ЖЕ МРАЧНЫЙ… НУЖНО ЗАХВАТИТЬ ВЕЙЛЬКОВЫЙ ФРУКТ ЧТОБЫ ПОДБОДРИТЬ ЕГО НЕМНОГО ПОГОДЯ
+        ВСЁ ТАКОЙ ЖЕ МРАЧНЫЙ... НУЖНО ЗАХВАТИТЬ ВЕЙЛЬКОВЫЙ ФРУКТ ЧТОБЫ ПОДБОДРИТЬ ЕГО НЕМНОГО ПОГОДЯ
     
     hesitant
         гнев велзи!
@@ -899,8 +899,8 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-         θ██████ ВАЛИКА-РОЖДЁННАЯ ????? КОРРУЦИСТА ДЁРГАЕТСЯ В ВОЗДУХЕ ВО ВРЕМЯ СКАНИРОВАНИЯ ПРОСТРАНСТВА \\θ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA  хмм  что если valika-borne это как airborne
-        ВОНЬ ТРУПА НЕКОГДА ОСЛЕПИТЕЛЬНОГО ВЕЙЛЬКА… МНЕ ВСЁ ЕЩЁ НУЖНО ПРИВЫКНУТЬ К НЕМУ
+         θ██████ ВАЛИКА-РОЖДЁННАЯ ????? КОРРУЦИСТА ДЁРГАЕТСЯ В ВОЗДУХЕ ВО ВРЕМЯ СКАНИРОВАНИЯ ПРОСТРАНСТВА //θ██████'s VALIKA-BORNE CORRUCYSTS TWITCH IN THE AIR AS THEY SCAN THE AREA  хмм  что если valika-borne это как airborne
+        ВОНЬ ТРУПА НЕКОГДА ОСЛЕПИТЕЛЬНОГО ВЕЙЛЬКА... МНЕ ВСЁ ЕЩЁ НУЖНО ПРИВЫКНУТЬ К НЕМУ
         ЗА ПРОШЕДШЕЕ ВРЕМЯ ЕГО КОСТИ СТАЛИ ВЫПИРАТЬ СКВОЗЬ ПЛОТЬ, И ИХ СКОРО МОЖНО БУДЕТ СОБИРАТЬ
         НО СЕЙЧАС ИДЁТ СЕЗОН ПЛОДОВ, ТАК ЧТО ВОЗДУХ ПЛОТНЫЙ И ПРОГОРКЛЫЙ
         МЫ СТУПАЕМ ПО ЗАСТИЛАННОЙ ПЛОТЬЮ ЗЕМЛЕ С ОМЕРЗИТЕЛЬНЫМИ ЗВУКАМИ, И НА КАЖДЫЙ ТАКОЙ ЗВУК CAVERNGUARD НЕВОЛЬНО ДЁРГАЕТ РЕЦЕПТОРАМИ
@@ -921,7 +921,7 @@ start
     sourceless
         И ВСЁ-ТАКИ В ПОЛОЖЕНИИ ВЕТВИСТЫХ РЕЦЕПТОРОВ θ██████ УГАДЫВАЕТСЯ ВЕСЕЛЬЕ И ОН ТИХО ПОСМЕИВАЕТСЯ
         Я НЕ ПРОЧЬ СОПРОВОЖДАТЬ ЭТИХ ДОПУЩЕННЫХ ЗЕВАЗНИ СТАРЦЕВ ПОКА ВЫПОЛНЯЮ ОБЯЗАННОСТИ НА ПОВЕРХНОСТИ
-        ИХ ЦЕХА ВЫПУСКАЛИ ПО-НАСТОЯЩЕМУ ВЫДАЮЩИЕСЯ УСТРОЙСТВА - ЗАМЕНЫ КОНЕЧНОСТЕЙ, ВАЛИКА-СОЕДИНЁННЫЕ ЦИСТЫ…
+        ИХ ЦЕХА ВЫПУСКАЛИ ПО-НАСТОЯЩЕМУ ВЫДАЮЩИЕСЯ УСТРОЙСТВА - ЗАМЕНЫ КОНЕЧНОСТЕЙ, ВАЛИКА-СОЕДИНЁННЫЕ ЦИСТЫ...
         УВЕРЕНА, θ██████ СМОЖЕТ ЗАЩИТИТЬ СЕБЯ, ДАЖЕ ЕСЛИ НАС ОБНАРУЖИТ ОХОТНИК
         Я СЛЫШУ КАК ОН БОРМОЧЕТ ЧЕРЕЗ СЕРОЕГЛАС, ДЕЛАЯ ГЛУБОКИЙ ВДОХ,
 
@@ -933,11 +933,11 @@ start
         ах! вот!
                                 
     sourceless
-        ЕГО АЙМА ЦИСТА ААААААААААААА\\HIS AIMA CYSTS CONVERGE THEIR EYES UPON A GLOWING CREVICE WITHIN THE VEILK CARCASS ХАХАХАХАХАХАХАХА айма цисты сводят взгляды на светящейся щели в теле вейлька
+        ЕГО АЙМА ЦИСТА ААААААААААААА//HIS AIMA CYSTS CONVERGE THEIR EYES UPON A GLOWING CREVICE WITHIN THE VEILK CARCASS ХАХАХАХАХАХАХАХА айма цисты сводят взгляды на светящейся щели в теле вейлька
         МЫ ОСТАНАВЛИВАЕМСЯ В УНИСОН И CAVERNGUARD ПОЧТИ ЧТО ДЕЛАЕТ ШАГ ВПЕРЁД, НО Я ОСТАНАВЛИВАЮ ЕГО, ПОВОРАЧИВАЯСЬ ВПОЛОБОРОТА
         ОН КИДАЕТ НА МЕНЯ НЕГОДУЮЩИЙ ВЗГЛЯД, НО ПОНИМАЕТ - ЭТО ВЕСЕЛЬЕ θ██████, НЕ НАШЕ
         ВАЛИКА-РОЖДЁННЫЕ ЦИСТЫ θ██████ ЦЕЛЯТСЯ В СУЩЕСТВО ПОКА ОН МЕДЛЕННО И ОСТОРОЖНО ШАГАЕТ ДАЛЬШЕ
-        ЕГО ШАГИ НАСТОЛЬКО ТИХИЕ, ДАЖЕ НЕСМОТРЯ НА ПОЧВУ ИЗ СГНИВШЕГО ВЕЙЛЬКА… ВОТ БЫ Я ТАК МОГЛА!!
+        ЕГО ШАГИ НАСТОЛЬКО ТИХИЕ, ДАЖЕ НЕСМОТРЯ НА ПОЧВУ ИЗ СГНИВШЕГО ВЕЙЛЬКА... ВОТ БЫ Я ТАК МОГЛА!!
         КАК ТОЛЬКО АЙМА ЦИСТА ЕГО ВАЛИКИ НАЧИНАЕТ СВЕТИТЬСЯ В ПОДТВЕРЖДЕНИЕ, ЦЕНТРАЛЬНАЯ ИСПУСКАЕТ ИМПУЛЬС СЕРОГО СВЕТА
         КОГДА НАШЕ ЗРЕНИЕ ВОЗВРАЩАЕТСЯ, КОНЕЧНОСТЬ ВЕЙЛКА РАССЕЧЕНА, ВЫСВОБОЖДАЯ СВЕЧЕНИЕ ПЛОДОВ СЕЛЬКИ
     elder
@@ -952,7 +952,7 @@ start
         СЫН θ██████ ПРОТЯГИВАЕТ РУКУ И ХВАТАЕТСЯ ЕЙ ЗА ОСНОВАНИЕ СЕЛЬКИ
         ДРУГОЮ РУКОЙ СЖИМАЯ НЕБОЛЬШОЙ РЕЗЕЦ, ЧТОБЫ БЫСТРО И ЧИСТО ОТРЕЗАТЬ ЕГО ОТ ТОЧКИ ПИТАНИЯ
         КЛУБНЕОБРАЗНЫЙ ФРУКТ СЛЕГКА ШЕВЕЛИТСЯ, НО СЛИШКОМ ТОЛСТ, ЧТОБЫ ЧТО-НИБУДЬ СДЕЛАТЬ
-        ТАК ЧТО ЕГО С ЛЁГКОСТЬЮ ШВЫРЯЮТ В ВЕДРО, И МЫ ПРОДОЛЖАЕМ…
+        ТАК ЧТО ЕГО С ЛЁГКОСТЬЮ ШВЫРЯЮТ В ВЕДРО, И МЫ ПРОДОЛЖАЕМ...
         
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -1055,10 +1055,10 @@ start
         ...я роюсь в моей промокшей насквозь накидке, голова покоится на холодной плоти <span class="code">вейлька</span>
         всё начинает трястись, как только мой несущий вейльк совершает ещё один шаг далеко внизу
         в конце концов я нахожу его: мой приёмник сероегласа!
-        с быстрым прикреплением к моему излюбленному рецептору, я достаю региональный координатор… \\with a quick affix to my favored receptor, i reach out for the regional coordinator...   тут скорее не достаю а ээ. звоню
-        θ█████, я полагаю… славный тир, хоть мы и не разговаривали много
+        с быстрым прикреплением к моему излюбленному рецептору, я достаю региональный координатор... //with a quick affix to my favored receptor, i reach out for the regional coordinator...   тут скорее не достаю а ээ. звоню
+        θ█████, я полагаю... славный тир, хоть мы и не разговаривали много
         спустя несколько хорошо поставленных мыслей он уже в доступе, и я устанавливаю контакт 
-        и всё же есть здесь какое-то препятствие… надвигается шпилешторм, наполняющий мои чувства вездесущим грохотанием
+        и всё же есть здесь какое-то препятствие... надвигается шпилешторм, наполняющий мои чувства вездесущим грохотанием
 
     stupid
         привет θ█████!! это θ██████!!
@@ -1095,7 +1095,7 @@ start
     sourceless
         с закрытием соединения, судьба, уготованная мне велзи, ясна
         тухнуть со скуки в пристанищеубежище этого тесного ззепеля до конца θвзора
-        но раз уж у меня нашлось время…
+        но раз уж у меня нашлось время...
         я нажимаю на какие-то корруцистические настройки рядом с верхушкой перевала и обшивка в его нижней части отступает, 
 
     sourceless quiet
@@ -1104,9 +1104,9 @@ start
             EXEC::ratween(env.bgm, 0.75);
 
     sourceless
-        дождь и ветер завывают с пущей силой, а напоминающий туман пар, покрывший поверхность, стал ещё выше… шпиль всё приближается, так что возможно это мой последний шанс взглянуть на него прежде чем мне придётся укрыться \\the winds and rain have risen, and the fog-like vapor that cloaks the surface has risen even further... the spire draws near, so this may be my last chance to see it before i must shelter
+        дождь и ветер завывают с пущей силой, а напоминающий туман пар, покрывший поверхность, стал ещё выше... шпиль всё приближается, так что возможно это мой последний шанс взглянуть на него прежде чем мне придётся укрыться //the winds and rain have risen, and the fog-like vapor that cloaks the surface has risen even further... the spire draws near, so this may be my last chance to see it before i must shelter
         я взбираюсь по боку моего носильщика, осторожно наклоняюсь так, чтобы я могла спуститься обратно прямиком в мой перевал
-         \\before long, i have risen past the other veilk-stalks, letting me see an expanse of darkness,
+         //before long, i have risen past the other veilk-stalks, letting me see an expanse of darkness,
         the black clouds lit from below by the countless glowing growths attached to the veilk herds...
         and there, in the distance, is the spirestorm - lit by its continuous lightning, roaring endlessly...
         a violent vortex that dips below the cloudline, twirling around a barely perceptible empty shape made clear only by the lightning that attacks it
@@ -1297,7 +1297,7 @@ start
         with a simple gesture to θ█████, we continue on our journey
     
     hesitant
-        ...see, in the sfer "vats" that the zevazni foundries came up with,      видишь ли, в сферовых “чашах”, которые придумали зевазнийские цехи,
+        ...see, in the sfer "vats" that the zevazni foundries came up with,      видишь ли, в сферовых "чашах", которые придумали зевазнийские цехи,
         there is this layer of sludge that accumulates near the bottom, and i think they say it is blue--what was it called again...      у дна оседает слой слякоти, вроде говорят - голубой--как там они его называли...
 
     sys
