@@ -15,7 +15,7 @@ env.localization.page['ozo'] = {dialogues: {},
 env.localization.page['ozo'].dialogues["council_intro"] = generateDialogueObject(`
 start
     self
-        hello?
+        привет?
             EXEC::env.jokzi.toggleSlow(true)
     
     sourceless
@@ -49,8 +49,8 @@ start
     
     council
         о, да, о, да!!
-        единственная переменная в нашем упадке!  // мы такое переводили? будто да?? хах может я придумал ПРИВЕТ У МЕНЯ ПРЕДЛОЖЕНИЕ  у меня другое предложение. короче. стиль речи совета с излишним использованием "же". везде ставят ураЯ НАШЁЛ ГДЕ МЫ ЖЭТО ПЕРЕВОДИЛИ но предлагайте о хмм? думаю можно попробовать
-        ещё издавна мы предсказывали, что циста сможет выжить лишь от руки лазутчика...// долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели     // первый вариант но "лишь с помощью"?
+        единственная переменная в нашем упадке!
+        долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели...
         и вот ты здесь!
         находишь наше пристанище в отступающем безумстве!
         и какая же жалость... ох какая же досада!! что только сейчас ты здесь
@@ -62,8 +62,8 @@ start
 
     council
         но быть может ты протянешь руку помощи...?
-        и впрямь--мы ведь можем предложить наши силы в обмен на простое задание...
-        such incredible capabilities, excavated from the darkness! мне нравится слововыцарапаны :)
+        и впрямь--мы ведь можем предложить силы в обмен на простое задание...
+        столь невероятные возможности, выцарапанные изо тьмы!
     
     RESPONSES::self
         расскажи побольше<+>CHANGE::council
@@ -237,8 +237,8 @@ dance
         let's dance
     
     council
-        oh, dear interloper! ох, дорогой лазутчик! хммм мне не нравится дорогой но не критично добрый лазутчик :)
-        мы боялись, что в тебе слишком много холода, чтобы спросить вновь // we worried you were too cold to ask again! // просто слишком холоден думаю подходит
+        ох, дорогой лазутчик!
+        мы боялись, в тебе слишком много холода, чтобы спросить вновь
         пусть же музыка... начнётся!!
     
     RESPONSES::self
@@ -257,82 +257,82 @@ stopdance
     RESPONSES::self
         thanks<+>END
             EXEC::setTimeout(()=>env.jokzi.dance(false), 400);env.jokzi.councilToggle()
-//ПОРЯДОК я  дуто  слизнячок
+
 task 
     self
         what did you want me to do?  что мне нужно сделать?
     
     council
         мы скучаем по нашим друзьям, лазутчик! мы хотим, чтобы они вернулись!
-        it is as simple as that!      всё настолько просто!
-        there were three that the tyrant tore from us just recently     совсем недавно тиран оторвал от нас трёх из них
-        мы можем предоставить тебе инструменты – те пробудят их от кошмаров, в которых тиран их заточил...
-        and then, they will know how to return     и после этого они будут знать, как вернуться
-        all we need, is for you to go and free them!     просто сходи и освободи их!
-        here... here!! see beneath it all!      вот... вот!! ←- помогите
+        всё настолько просто!
+        совсем недавно тиран оторвал от нас троих из них
+        мы поделимся с тобой инструментами - те пробудят их от кошмаров, в которых тиран их заточил...
+        и затем они поймут, как вернуться
+        вот и вся наша просьба: просто сходи и освободи их!
+        here... here!! see beneath it all!      вот... вот!! увидь же это подо всем!
         Èз¬У́Ã¬MÀ(²ДóĈ³€ӣÉӣ´øãӣç‚¿Ӳӣ
 
     sys
-        ATTENTION::'thought stream inbound';'accept?'       ВНИМАНИЕ::'входящий мысленный поток';'принять?'
+        ВНИМАНИЕ::'входящий мысленный поток';'принять?'
     
     moth
-        wtf?      чзх?
-        my machines aren't picking this up      мои устройства ничего не видят
+        чзх?
+        мои устройства ниче не видят
     
     self
-        accepted      принято
+        принято
 
     moth
-        dude maybe don't just      чел думаю не стоит такое
+        чел может не надо прос
     
     sys
-        EXECUTING::'stream consumption'      
+        ВЫПОЛНЯЕТСЯ::'поглощение потока'      
             EXEC::vfx({type:'beacon', state: true});ratween(env.bgm, 0.2, 400);setTimeout(()=>play("unitymask", 0.9, 1, true), 100)
             WAIT::2000
-        ATTENTION::'attempting thought reformation'              ВНИМАНИЕ::'попытка реформации мысли'   
+        ВНИМАНИЕ::'попытка реформации мысли'   
             EXEC::ratween(env.bgm, 1, 400)
-        ANALYSIS::'interface instruction';'constructing...'              АНАЛИЗ::'инструкция интерфейса';'constructing...'    
-        ANALYSIS::'new menu available';'masks'              АНАЛИЗ::'доступно новое меню';'маски'      
-        ANALYSIS::'utilize to alter thoughtspaces'             АНАЛИЗ::'используйте для изменения мыслепространств'      
-        NOTICE::'mask added';'unity'      УВЕДОМЛЕНИЕ::'добавлена маска';'единство'
+        АНАЛИЗ::'инструкция интерфейса';'построение...'    
+        АНАЛИЗ::'доступно новое меню';'маски'      
+        АНАЛИЗ::'используйте для изменения мыслепространств'      
+        УВЕДОМЛЕНИЕ::'добавлена маска';'единство'
     
     council
-        there--you have it now!      вот--теперь она у тебя!
-        power seized from madness! born in our infinite dreams!   сила, выхваченная из безумства! рождённая в наших нескончаемых грёзах!
+        вот--теперь она у тебя!
+        сила, выхваченная из безумства! рождённая в наших нескончаемых грёзах!
             EXEC::vfx({type:'beacon', state: false})
-        we call them masks...      мы называем это масками...
-        crystallized concoctions of thoughts and feelings,      кристаллизованные смеси мыслей и чувств,
-        whose very presence can exploit and warp a thoughtspace!!      чьё присутствие способно эксплуатировать и искажать мыслепространства!!
-        it was once a shared art of the ozo, but when all others were torn away...      ранее это было общим искусством озо, но когда всех остальных оторвали от нас...
-        so many were lost...      многие были потеряны...
-        and so, this one we have given you: it is a beacon!    и вот же, та, что мы тебе дали: это маяк!
-        knowledge of the ozo itself, encoded in our favorite concept!      знание о самом озо, зашифрованное в нашей любимой идее!
-        wear it, and use its light to guide others to our world...     носи её, и освещай ей для других путь к нашему миру...
-        most will not truly be able to perceive it, but those who can...    большинство неспособно по-настоящему его воспринять, но те, кто может...
-        yes!! they will see everything!     да!! они всё увидят!
-        all of our dances!     все наши танцы!
-        so go--find them! free them!    так иди же--найди их! освободи их!
-        the flower! the fairy! the lost one!     цветок! фею! потерянного! блин у меня вчера  была идея как это переводить но я забыл
-        we are sure they will share their favorite masks with you, too!     мы уверены, что и они поделятся с тобой своими любимыми масками!
+        мы называем их масками...
+        кристаллизованные смеси мыслей и чувств,
+        whose very presence can exploit and warp a thoughtspace!!      чьё присутствие способно эксплуатировать и искажать любое мыслепространство!! // --- мне не нравится "эксплуатировать"
+        некогда это было общим искусством озо, но когда всех остальных оторвали от нас...
+        так много потерялось...
+        и вот же, та, что мы тебе дали - это маяк!
+        знание о самом озо, зашифрованное в нашей любимой идее!
+        носи её, и освещай другим путь к нашему миру...
+        большинство неспособно по-настоящему её воспринять, но те, кто сможет...
+        да!! они всё увидят!
+        все наши танцы!
+        так иди же--найди их! освободи их!
+        цветка! фею! потерянного! // блин у меня вчера  была идея как это переводить но я забыл
+        мы уверены, что и они поделятся с тобой своими любимыми масками!
     
     moth
-        are you ok? do you feel anything?     с тобой всё в порядке? чувствуешь что-то?
-        your stats are reading fine     твои данные(?) в норме
+        с тобой всё в порядке? чувствуешь что-то?
+        твои данные в норме
     
     self
-        yeah fine     ага в порядке
+        ага в порядке
 
     moth
-        come on dude     чел ну ты
-        that could have been literally anything     это могло быть чем угодно
-        it could still be a threat     всё ещё может оказаться угрозой
-        don't just accept stuff from thoughtforms like this     не принимай от таких мыслеформ что попало
-        if you get hurt on this job, especially with how deep we're in it     если ты пострадаешь на этой работе, особенно с тем, как далеко мы зашли
-        it's only going to be really bad news for both of us     это не принесёт нам ничего хорошего
-        but whatever, take a look at what you got i guess     но уж ладно, посмотри, что там у тебя
+        чел ну ты
+        это могло быть чем угодно
+        всё ещё может оказаться угрозой
+        не принимай от таких мыслеформ что попало
+        если ты пострадаешь на этой работе, особенно с тем, как далеко мы зашли
+        ничего хорошего это нам не принесёт
+        но крч ладно, посмотри что там у тебя наверно
     
     RESPONSES::self
-        ok<+>loop      ладно
+        ок<+>loop
             FAKEEND::(назад)
 
 rloop
@@ -340,14 +340,15 @@ rloop
 
 flower
     self
-        tell me about the flower
-        where can i find them
+        расскажи мне о цветке
+        где мне его найти
     
     council
-        oh, the flower, our most precious friend      ох, цветок, наша самая дорогая подруга
+        ох, цветок, наша самая дорогая подруга
         with her gone, our memories of her have faded, too... but we remember some things!
         a grounding force, she was--all relied upon her for support and resolution
-        still, she was utterly obsessed with aki, hopelessly so!     тем не менее она была помешана на аки, вплоть до отчаяния!
+        still, she was utterly obsessed with aki, hopelessly so!     тем не менее она была помешана на аки, вплоть до отчаяния! // --- не согласен с переводом. она безнадёжно была на ней помешена. hopelessly so
+        // --- дальше не читал. это на удивление утомляет
         dreaming a thousand dreams of simply sitting with her in a great field...
         and she had such an incredible ability to find hidden things! a sharp eye!
         the age of hunger took such a sharp toll upon her--she never much enjoyed the feasts we held...     век(? мне нравится называть их веками) голода нанёс ей тяжёлый урон (не нравится)--ей мало нравились наши пиры...
@@ -434,7 +435,7 @@ fairy
         и глас её смеха, её нескончаемого хихиканья, он был музыкой озо!
         как же мы хотим, чтобы она вернулась...
         о том же, где она сейчас... с тем, как много мыслей она поглотила, мы не можем знать наверняка
-        она принимала пугающие облики и была сосредоточена на пустоте–на том, где проходило большинство её пиров
+        она принимала пугающие облики и была сосредоточена на пустоте-на том, где проходило большинство её пиров
 
     RESPONSES::self
         ok<+>loop
