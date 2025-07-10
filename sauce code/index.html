@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="swup-enabled" style="--unitlessHeight: 831;"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<html>
+<head>
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="https://corru.observer/img/fav.gif">
+<link rel="icon" type="image/png" href="/img/fav.gif">
 
 
 
@@ -29,62 +29,68 @@
 <meta name="theme-color" content="#ff00ff">
 <meta name="darkreader-lock">
 	
-	<script src="corru.observer_files/swup.min.js"></script>
-	<script src="corru.observer_files/howler.min.js"></script>
-	<script src="corru.observer_files/lettering.js"></script>	
-	<script src="corru.observer_files/lzstring.js"></script>	
-	<script src="corru.observer_files/detect-gpu.umd.js"></script>	
-	<script src="corru.observer_files/draggable.bundle.js"></script>	
-	<script src="corru.observer_files/corru.js"></script>	
-	<script src="corru.observer_files/dialogue.js"></script>	
-	<script src="corru.observer_files/globalents.js"></script>	
-	<script src="corru.observer_files/cystStage.js"></script>
-	<script src="corru.observer_files/buddy.js"></script>
-	<script src="corru.observer_files/vn2.js"></script>
-	<script defer="defer" src="corru.observer_files/saves.js"></script>
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1750982119115834580"></script>	
+	<script src="/js/dialogue.js?1750982119115834580"></script>	
+	<script src="/js/globalents.js?1750982119115834580"></script>	
+	<script src="/js/cystStage.js?1750982119115834580"></script>
+	<script src="/js/buddy.js?1750982119115834580"></script>
+	<script src="/js/vn2.js?1750982119115834580"></script>
+	<script defer src="/js/saves.js?1750982119115834580"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href="corru.observer_files/corru.css">
-	<link rel="stylesheet" type="text/css" href="corru.observer_files/cystStage.css">
-<style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
-<body state="corru-loaded" menu="none" class="ep1 ep2 ep3 masksunlocked ep4 notchrome normalload alreadyconnected" page="corru-observer" quality="regular" low_intensity="false" gameplay_off="false" wide="false" mask="hunger" c="-2" n="i">
-	<div id="meta-menu">
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1750982119115834580'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1750982119115834580'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu'>
 		<!--core icon-->
-		<div id="meta-icon"></div>
+		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class="ci-moth moth-trigger" onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')" definition="NOTE::'establishes external contact'"><span class="mothnotice"><i class="ci-moth"></i></span></i>
+		<i class='ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" onclick="toggleMasksMenu()" definition="NOTE::'influence thoughtspace';'third-party installation'"></i>
+			<i class="ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
 
 			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
 		</div>
 
 		<!--volume controls icon-->
-		<i id="meta-volume-toggle" class="ci-vol"></i>
-		<div id="meta-volume">
+		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
-				<input type="range" min="0" max="1" value="0.5" step="0.1" class="slider vol-slider" for="volume" id="meta-volume-slider">
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
 			</span>
 			<span class="meta-volume-wrapper">
 				<span>MUSIC</span>
-				<input type="range" min="0" max="1" value="1" step="0.1" class="slider vol-slider" for="volume-music" id="meta-volume-music-slider">
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
 			</span>
 			<span class="meta-volume-wrapper">
 				<span>SFX</span>
-				<input type="range" min="0" max="1" value="1" step="0.1" class="slider vol-slider" for="volume-sfx" id="meta-volume-sfx-slider">
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
 			</span>
 		</div>
 
 		<!--dropdown menu-->
-		<i class="ci-bars"></i>
-		<div id="meta-links">
+		<i class='ci-bars'></i>
+		<div id='meta-links'>
 			<div id="mui-links">
-				<a id="meta-hub" definition="NOTE::'return to hub';'eject'"><i class="ci-nav"></i></a>
-				<a id="meta-obs" definition="NOTE::'review scanned and detected entities'"><i class="ci-ent"></i></a>
-				<a id="meta-sys" definition="NOTE::'system management'"><i class="ci-sys"></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -108,7 +114,7 @@
 		<div id="mindspike-options">
 			<span id="mindspike-examine">EXM</span>
 			<span id="mindspike-act">ACT</span>
-			<span id="mindspike-back">&lt;--</span>
+			<span id="mindspike-back"><--</span>
 		</div>
 	</div>
 
@@ -118,56 +124,9 @@
 		</div>
 	</div>
 
-	<div id="readout" class="readout-log menu"><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"unknown"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>NOTICE::'memory stream located'</p>
-        </div><div class="message sourceless active message-restored" actor="sourceless">
-            
-            <p>...opens, revealing a small chamber with a second reinforced hatch</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"unknown"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>NOTICE::'memory stream located'</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"é-uâ-s"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"unknown"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>NOTICE::'memory stream located'</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"é-uâ-s"__..</p>
-        </div><div class="message sys active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>WARNING::'data overload';'retracing';'last coherent position'</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"depths"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"unknown"__..</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>NOTICE::'memory stream located'</p>
-        </div><div class="message sys mindspike active message-restored" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>..__NAVIGATING::"error-unprocessable"__..</p>
-        </div>
-        <div class="message sys message-0 active" actor="sys">
-            <img src="corru.observer_files/mindspikelogoactive.gif">
-            <p>NOTE::'restored partial recent log'</p>
-        </div>
-    </div>
+	<div id="readout" class="readout-log menu"></div>
 	<div id="minireadout" class="readout-log menu"></div> 
-	<div id="definition-box" style="--x: 553; --y: 3;"></div>
+	<div id="definition-box"></div>
 	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
 
 	<div id="entity-menu" class="menu-box menu" menu="entities">
@@ -184,7 +143,7 @@
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
     <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1750982119</div>
-	<div class="mindsci-status" state="0.6497026" status="coherent" code="0" definition="GAD::'coherent'"></div>
+	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
 		<summary>Mindspike Data Management</summary>
@@ -212,10 +171,7 @@
             <details class="minor modstring">
                 <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
                 <div class="stringinput">
-                    <p class="sysinfo">Data URLs should be separated by 
-new lines. Hitting save will manually load and initialize all third 
-party modifications listed. They will be initialized automatically from 
-then on, in order, until removed.</p>
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
                     <textarea id="modtext" placeholder="https://..."></textarea>
                     <span id="savemods" class="button">Save List</span>
                 </div>
@@ -224,12 +180,7 @@ then on, in order, until removed.</p>
 
 		<div class="warning sysbox">
 			<h3>!!__Attention__!!</h3>
-			<span>Only import mindspike data and modifications from trusted 
-sources. Illicit data is known to carry dangerous and often lethal 
-thoughtforms. Failure to exercise caution could lead to stroke, chronos 
-misalignment, or worse. By importing any data into your mindspike, you 
-waive all right to medical claims against MINDSCI. For more information,
- please refer to your license agreement.</span>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
 		</div>
 	</details>
 
@@ -280,13 +231,8 @@ waive all right to medical claims against MINDSCI. For more information,
 
         <div class="sysbox">
             <h3>Gameplay</h3>
-            <p class="sysinfo">Logs of games or game-like experiences 
-may contain inherited context of their rules, allowing for 
-re-interpretive rendering through user input.</p>
-            <p class="sysinfo">This feature is intended for 
-entertainment only, and may result in memory drift if misused. It may be
- disabled to ensure memories of games do not depart from their true 
-events.</p>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
             
             <div class="buttons">
                 <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
@@ -295,7 +241,7 @@ events.</p>
         </div>
 	</details>
 
-	<details class="sysblock meta" open="">
+	<details class="sysblock meta" open>
 		<summary>System Information</summary>
 
         <div class="sysbox specs ulbox">
@@ -313,7 +259,7 @@ events.</p>
             <div class="devs ulbox">
                 <ul>
                     <h4>Core Services</h4>
-                    <li><a href="https://corru.works/" target="_blank">Mindsci</a></li>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
                     <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
                 </ul>
 
@@ -335,591 +281,7 @@ events.</p>
         <div class="sysbox credits kofi">
             <div class="supporters">
                 <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
-                <ul id="iconsupporters" class="tskip">
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Bubblehead" style="animation-delay: -7.300118658129446s;">
-                        <span class="tskip">B</span><span class="tskip">e</span><span class="tskip">d</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Niaandovah" style="animation-delay: -6.441322096306736s;">
-                        <span class="tskip">N</span><span class="tskip">d</span><span class="tskip">h</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::TD" style="animation-delay: -12.967514957672536s;">
-                        <span class="tskip">T</span><span class="tskip">D</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Tron" style="animation-delay: -1.8480640609985555s;">
-                        <span class="tskip">T</span><span class="tskip">o</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::the wet criner" style="animation-delay: -17.756698093490616s;">
-                        <span class="tskip">t</span><span class="tskip">c</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::december2mrw" style="animation-delay: -0.7724790139492876s;">
-                        <span class="tskip">d</span><span class="tskip">e</span><span class="tskip">w</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lorxus" style="animation-delay: -2.7469679110791523s;">
-                        <span class="tskip">L</span><span class="tskip">x</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::worldrevoked" style="animation-delay: -5.527404053771743s;">
-                        <span class="tskip">w</span><span class="tskip">e</span><span class="tskip">d</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Miros" style="animation-delay: -14.431238180377964s;">
-                        <span class="tskip">M</span><span class="tskip">r</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::RandolfTheMeh" style="animation-delay: -12.100655411604613s;">
-                        <span class="tskip">R</span><span class="tskip">f</span><span class="tskip">h</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Marenzers" style="animation-delay: -17.569145213653567s;">
-                        <span class="tskip">M</span><span class="tskip">n</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::SpiderQueenPC" style="animation-delay: -10.408960818498334s;">
-                        <span class="tskip">S</span><span class="tskip">Q</span><span class="tskip">C</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Cynthia Ribbons" style="animation-delay: -0.17125948152346915s;">
-                        <span class="tskip">C</span><span class="tskip">R</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Peridigital" style="animation-delay: -17.790158714639944s;">
-                        <span class="tskip">P</span><span class="tskip">i</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::LeShaps" style="animation-delay: -8.929697317721994s;">
-                        <span class="tskip">L</span><span class="tskip">h</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::spaceDOTexe" style="animation-delay: -19.188310493958163s;">
-                        <span class="tskip">s</span><span class="tskip">D</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Bubbafare" style="animation-delay: -0.41941030886630815s;">
-                        <span class="tskip">B</span><span class="tskip">a</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Toa" style="animation-delay: -6.381943903879068s;">
-                        <span class="tskip">T</span><span class="tskip">o</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::tgpholly" style="animation-delay: -14.710564744421609s;">
-                        <span class="tskip">t</span><span class="tskip">o</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::HexaLair" style="animation-delay: -12.653194117290354s;">
-                        <span class="tskip">H</span><span class="tskip">L</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::boondeb" style="animation-delay: -18.975583469920167s;">
-                        <span class="tskip">b</span><span class="tskip">n</span><span class="tskip">b</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Sola" style="animation-delay: -19.160725198205938s;">
-                        <span class="tskip">S</span><span class="tskip">l</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Ripik" style="animation-delay: -8.8327553211078s;">
-                        <span class="tskip">R</span><span class="tskip">p</span><span class="tskip">k</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Adversarius" style="animation-delay: -2.089331993243204s;">
-                        <span class="tskip">A</span><span class="tskip">s</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::PircaChupi" style="animation-delay: -10.426576102014174s;">
-                        <span class="tskip">P</span><span class="tskip">C</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::PraviSamaratunga" style="animation-delay: -1.7815898158868593s;">
-                        <span class="tskip">P</span><span class="tskip">a</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Krookedreality " style="animation-delay: -12.382614040187809s;">
-                        <span class="tskip">K</span><span class="tskip">r</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::catface210" style="animation-delay: -9.283369919234513s;">
-                        <span class="tskip">c</span><span class="tskip">c</span><span class="tskip">0</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Tiefseeorca" style="animation-delay: -1.958662489137204s;">
-                        <span class="tskip">T</span><span class="tskip">e</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::uriah" style="animation-delay: -1.96245821800749s;">
-                        <span class="tskip">u</span><span class="tskip">i</span><span class="tskip">h</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::EmberTheTrenchie" style="animation-delay: -11.95643588982987s;">
-                        <span class="tskip">E</span><span class="tskip">T</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Moonimii" style="animation-delay: -2.155343340058855s;">
-                        <span class="tskip">M</span><span class="tskip">i</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::iris lemony" style="animation-delay: -1.5509745900082939s;">
-                        <span class="tskip">i</span><span class="tskip">e</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Nisteth" style="animation-delay: -9.761053174904896s;">
-                        <span class="tskip">N</span><span class="tskip">t</span><span class="tskip">h</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::tiredlyrebird" style="animation-delay: -9.704993024618636s;">
-                        <span class="tskip">t</span><span class="tskip">y</span><span class="tskip">d</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Ogrumm" style="animation-delay: -11.06357797395713s;">
-                        <span class="tskip">O</span><span class="tskip">u</span><span class="tskip">m</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::D3Pot" style="animation-delay: -1.6966380544449255s;">
-                        <span class="tskip">D</span><span class="tskip">P</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::himpoo42" style="animation-delay: -16.9760518270975s;">
-                        <span class="tskip">h</span><span class="tskip">o</span><span class="tskip">2</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Obsidian" style="animation-delay: -7.350685572272164s;">
-                        <span class="tskip">O</span><span class="tskip">d</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::AnAwesomeDudette" style="animation-delay: -14.754747328114936s;">
-                        <span class="tskip">A</span><span class="tskip">e</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::chicken" style="animation-delay: -7.570970648822017s;">
-                        <span class="tskip">c</span><span class="tskip">c</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Alice" style="animation-delay: -6.18995681129377s;">
-                        <span class="tskip">A</span><span class="tskip">i</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Mλw" style="animation-delay: -3.6367910303934248s;">
-                        <span class="tskip">M</span><span class="tskip">λ</span><span class="tskip">w</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::TheDiamondMan3" style="animation-delay: -18.766886158085498s;">
-                        <span class="tskip">T</span><span class="tskip">o</span><span class="tskip">3</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Moonbug" style="animation-delay: -8.272569849478709s;">
-                        <span class="tskip">M</span><span class="tskip">n</span><span class="tskip">g</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::SolidusSnake" style="animation-delay: -0.35467817378630695s;">
-                        <span class="tskip">S</span><span class="tskip">s</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Guckie" style="animation-delay: -7.852494250922839s;">
-                        <span class="tskip">G</span><span class="tskip">k</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Pixate" style="animation-delay: -13.572734086307339s;">
-                        <span class="tskip">P</span><span class="tskip">a</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Bam" style="animation-delay: -1.6747600737900825s;">
-                        <span class="tskip">B</span><span class="tskip">a</span><span class="tskip">m</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Apia" style="animation-delay: -3.877410388142424s;">
-                        <span class="tskip">A</span><span class="tskip">i</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::blackle" style="animation-delay: -19.026056485869724s;">
-                        <span class="tskip">b</span><span class="tskip">c</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::LeahMetro" style="animation-delay: -12.067557087697265s;">
-                        <span class="tskip">L</span><span class="tskip">M</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Blueshell414" style="animation-delay: -2.905894595488072s;">
-                        <span class="tskip">B</span><span class="tskip">e</span><span class="tskip">4</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Boolcsii" style="animation-delay: -0.477608487239396s;">
-                        <span class="tskip">B</span><span class="tskip">c</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::brightcousinkuvi" style="animation-delay: -7.001974894072802s;">
-                        <span class="tskip">b</span><span class="tskip">u</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::☆★" style="animation-delay: -12.155014229670645s;">
-                        <span class="tskip">☆</span><span class="tskip">★</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::chiken nugies" style="animation-delay: -8.04683853902775s;">
-                        <span class="tskip">c</span><span class="tskip">n</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Cirrial" style="animation-delay: -10.10618126871359s;">
-                        <span class="tskip">C</span><span class="tskip">r</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Aura Irving" style="animation-delay: -7.840173728149673s;">
-                        <span class="tskip">A</span><span class="tskip">r</span><span class="tskip">g</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Snaps" style="animation-delay: -10.684214114009645s;">
-                        <span class="tskip">S</span><span class="tskip">a</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::DECOMPRESSED" style="animation-delay: -18.89899762732916s;">
-                        <span class="tskip">D</span><span class="tskip">R</span><span class="tskip">D</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Captain Zenscuel" style="animation-delay: -11.768193466332203s;">
-                        <span class="tskip">C</span><span class="tskip">Z</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Moctor" style="animation-delay: -15.588019677799753s;">
-                        <span class="tskip">M</span><span class="tskip">t</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::dinoboye" style="animation-delay: -5.7282415952156125s;">
-                        <span class="tskip">d</span><span class="tskip">b</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Korbofaux" style="animation-delay: -17.25971203088881s;">
-                        <span class="tskip">K</span><span class="tskip">o</span><span class="tskip">x</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::EndyStar" style="animation-delay: -2.4997682771270857s;">
-                        <span class="tskip">E</span><span class="tskip">S</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Abe" style="animation-delay: -11.795677948676335s;">
-                        <span class="tskip">A</span><span class="tskip">b</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Engee343" style="animation-delay: -15.669561681936159s;">
-                        <span class="tskip">E</span><span class="tskip">e</span><span class="tskip">3</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Cloud Hop" style="animation-delay: -6.628149846403488s;">
-                        <span class="tskip">C</span><span class="tskip">d</span><span class="tskip">p</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::espimyte" style="animation-delay: -1.217459100723759s;">
-                        <span class="tskip">e</span><span class="tskip">m</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::crab.7" style="animation-delay: -6.642225980440488s;">
-                        <span class="tskip">c</span><span class="tskip">b</span><span class="tskip">7</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::shatteredstars" style="animation-delay: -17.760979634709667s;">
-                        <span class="tskip">s</span><span class="tskip">e</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Reality" style="animation-delay: -0.9986866130288963s;">
-                        <span class="tskip">R</span><span class="tskip">l</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::FiveFiftyFive" style="animation-delay: -10.370680435574176s;">
-                        <span class="tskip">F</span><span class="tskip">f</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::liz" style="animation-delay: -17.27025001550612s;">
-                        <span class="tskip">l</span><span class="tskip">i</span><span class="tskip">z</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::asheswasnothere" style="animation-delay: -18.432229765553465s;">
-                        <span class="tskip">a</span><span class="tskip">s</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lone_Dancer" style="animation-delay: -3.640966501868952s;">
-                        <span class="tskip">L</span><span class="tskip">D</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::SporeVoid" style="animation-delay: -15.146518001149651s;">
-                        <span class="tskip">S</span><span class="tskip">e</span><span class="tskip">d</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::meats" style="animation-delay: -11.043627540870364s;">
-                        <span class="tskip">m</span><span class="tskip">a</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::grynmoor" style="animation-delay: -12.91820448619892s;">
-                        <span class="tskip">g</span><span class="tskip">m</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::junekept" style="animation-delay: -4.238183243894658s;">
-                        <span class="tskip">j</span><span class="tskip">k</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::vanutp" style="animation-delay: -18.030955399689535s;">
-                        <span class="tskip">v</span><span class="tskip">u</span><span class="tskip">p</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Delphox" style="animation-delay: -17.33818385753612s;">
-                        <span class="tskip">D</span><span class="tskip">p</span><span class="tskip">x</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Icemoon" style="animation-delay: -6.232856842107801s;">
-                        <span class="tskip">I</span><span class="tskip">m</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Sophia Avida Impetus" style="animation-delay: -11.849667616527288s;">
-                        <span class="tskip">S</span><span class="tskip">d</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::January November" style="animation-delay: -13.724780793437388s;">
-                        <span class="tskip">J</span><span class="tskip">N</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::ipie4fun" style="animation-delay: -1.2415955487884878s;">
-                        <span class="tskip">i</span><span class="tskip">4</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Skull" style="animation-delay: -3.489905704938412s;">
-                        <span class="tskip">S</span><span class="tskip">u</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::megaminerzero" style="animation-delay: -0.9696935981656885s;">
-                        <span class="tskip">m</span><span class="tskip">n</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::thermodynamicallyBored " style="animation-delay: -8.547179965402353s;">
-                        <span class="tskip">t</span><span class="tskip">i</span><span class="tskip">d</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::jay hyperobject" style="animation-delay: -14.69692440650981s;">
-                        <span class="tskip">j</span><span class="tskip">r</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Raccooner" style="animation-delay: -3.731311423056254s;">
-                        <span class="tskip">R</span><span class="tskip">o</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lambchop" style="animation-delay: -8.85053830987327s;">
-                        <span class="tskip">L</span><span class="tskip">c</span><span class="tskip">p</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Jeyban" style="animation-delay: -13.753989772302422s;">
-                        <span class="tskip">J</span><span class="tskip">b</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Hex the Owl" style="animation-delay: -15.980124758564651s;">
-                        <span class="tskip">H</span><span class="tskip">h</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Jan" style="animation-delay: -11.381010223496546s;">
-                        <span class="tskip">J</span><span class="tskip">a</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::ThomasPeet" style="animation-delay: -17.53183444710193s;">
-                        <span class="tskip">T</span><span class="tskip">s</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::kaisumisu" style="animation-delay: -7.706015012559098s;">
-                        <span class="tskip">k</span><span class="tskip">u</span><span class="tskip">u</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Tokytot" style="animation-delay: -3.0939304349136343s;">
-                        <span class="tskip">T</span><span class="tskip">y</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Krazer" style="animation-delay: -9.838255617913749s;">
-                        <span class="tskip">K</span><span class="tskip">z</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Novaenia" style="animation-delay: -17.043263108159053s;">
-                        <span class="tskip">N</span><span class="tskip">e</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::LoopsForSoup" style="animation-delay: -16.675431634364504s;">
-                        <span class="tskip">L</span><span class="tskip">o</span><span class="tskip">p</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lily M." style="animation-delay: -7.8314348054113525s;">
-                        <span class="tskip">L</span><span class="tskip">y</span><span class="tskip">.</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::twisit51" style="animation-delay: -12.562543723890482s;">
-                        <span class="tskip">t</span><span class="tskip">i</span><span class="tskip">1</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::zinderant" style="animation-delay: -3.2499453739406303s;">
-                        <span class="tskip">z</span><span class="tskip">e</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Luke Beeman" style="animation-delay: -4.698009995664472s;">
-                        <span class="tskip">L</span><span class="tskip">e</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lurien" style="animation-delay: -14.155323416067025s;">
-                        <span class="tskip">L</span><span class="tskip">i</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::VesselForTwo" style="animation-delay: -13.946869429035551s;">
-                        <span class="tskip">V</span><span class="tskip">F</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Proto" style="animation-delay: -0.12111345810927876s;">
-                        <span class="tskip">P</span><span class="tskip">o</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::NotMox" style="animation-delay: -5.3802969132549965s;">
-                        <span class="tskip">N</span><span class="tskip">M</span><span class="tskip">x</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Vertex" style="animation-delay: -1.8338975126931767s;">
-                        <span class="tskip">V</span><span class="tskip">t</span><span class="tskip">x</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Mikaru/Azuri" style="animation-delay: -18.2930110458944s;">
-                        <span class="tskip">M</span><span class="tskip">/</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::rakaka" style="animation-delay: -3.9804193764625873s;">
-                        <span class="tskip">r</span><span class="tskip">a</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Miriam Brown" style="animation-delay: -4.5902293708322155s;">
-                        <span class="tskip">M</span><span class="tskip">m</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::azterism" style="animation-delay: -2.8299141968791575s;">
-                        <span class="tskip">a</span><span class="tskip">r</span><span class="tskip">m</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::mei  ܮો෴" style="animation-delay: -13.30441779000003s;">
-                        <span class="tskip">m</span><span class="tskip">ܮ</span><span class="tskip">෴</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::GK" style="animation-delay: -6.55227623469756s;">
-                        <span class="tskip">G</span><span class="tskip">K</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::SleepyEmissary" style="animation-delay: -8.67248913330866s;">
-                        <span class="tskip">S</span><span class="tskip">m</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::languidDreamer" style="animation-delay: -5.225801717504119s;">
-                        <span class="tskip">l</span><span class="tskip">D</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::normalizedcrow" style="animation-delay: -4.4712705901412s;">
-                        <span class="tskip">n</span><span class="tskip">z</span><span class="tskip">w</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Kyso" style="animation-delay: -0.8953043478452183s;">
-                        <span class="tskip">K</span><span class="tskip">s</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::tGirl_Gaming (Jade)" style="animation-delay: -2.850915382159711s;">
-                        <span class="tskip">t</span><span class="tskip">i</span><span class="tskip">)</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Peztilence" style="animation-delay: -19.519294606407623s;">
-                        <span class="tskip">P</span><span class="tskip">l</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Snosibsnob" style="animation-delay: -3.5570183113194775s;">
-                        <span class="tskip">S</span><span class="tskip">b</span><span class="tskip">b</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Poligonal" style="animation-delay: -15.267355858491271s;">
-                        <span class="tskip">P</span><span class="tskip">g</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Precious Rainbow" style="animation-delay: -19.595348736690106s;">
-                        <span class="tskip">P</span><span class="tskip">s</span><span class="tskip">w</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Rea" style="animation-delay: -18.447499562175192s;">
-                        <span class="tskip">R</span><span class="tskip">e</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Ben" style="animation-delay: -0.40479301247538624s;">
-                        <span class="tskip">B</span><span class="tskip">e</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::ryanlazuli" style="animation-delay: -19.6821250347911s;">
-                        <span class="tskip">r</span><span class="tskip">a</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Pelkri" style="animation-delay: -9.122170023052238s;">
-                        <span class="tskip">P</span><span class="tskip">k</span><span class="tskip">i</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::seanieb" style="animation-delay: -18.37206656703107s;">
-                        <span class="tskip">s</span><span class="tskip">n</span><span class="tskip">b</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::rainyatrium!" style="animation-delay: -17.80022843390721s;">
-                        <span class="tskip">r</span><span class="tskip">t</span><span class="tskip">!</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::kazki victoria" style="animation-delay: -3.6327138386725366s;">
-                        <span class="tskip">k</span><span class="tskip">i</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::loddite" style="animation-delay: -9.995544462030079s;">
-                        <span class="tskip">l</span><span class="tskip">d</span><span class="tskip">e</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Micasa" style="animation-delay: -14.262149962316721s;">
-                        <span class="tskip">M</span><span class="tskip">a</span><span class="tskip">a</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Melvis" style="animation-delay: -18.26969681046076s;">
-                        <span class="tskip">M</span><span class="tskip">v</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Taanifeer" style="animation-delay: -8.694519964867812s;">
-                        <span class="tskip">T</span><span class="tskip">i</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::grievousCrimes" style="animation-delay: -5.5961723929252605s;">
-                        <span class="tskip">g</span><span class="tskip">s</span><span class="tskip">s</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Lil'Leto" style="animation-delay: -17.204345692026855s;">
-                        <span class="tskip">L</span><span class="tskip">L</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Typo" style="animation-delay: -15.367857730680079s;">
-                        <span class="tskip">T</span><span class="tskip">p</span><span class="tskip">o</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::ubuntor" style="animation-delay: -6.183181493903367s;">
-                        <span class="tskip">u</span><span class="tskip">n</span><span class="tskip">r</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Alty" style="animation-delay: -3.876890350037474s;">
-                        <span class="tskip">A</span><span class="tskip">t</span><span class="tskip">y</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::XeroOl" style="animation-delay: -3.368003658126486s;">
-                        <span class="tskip">X</span><span class="tskip">o</span><span class="tskip">l</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::scarpelt" style="animation-delay: -12.623585037287574s;">
-                        <span class="tskip">s</span><span class="tskip">p</span><span class="tskip">t</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Zaneclodon" style="animation-delay: -11.60583883273214s;">
-                        <span class="tskip">Z</span><span class="tskip">l</span><span class="tskip">n</span>
-                    </li>
-                
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::Zarniwoop" style="animation-delay: -5.169307072064169s;">
-                        <span class="tskip">Z</span><span class="tskip">i</span><span class="tskip">p</span>
-                    </li>
-                </ul>
+                <ul id="iconsupporters" class="tskip"></ul>
             </div>
         </div>
 
@@ -946,37 +308,11 @@ events.</p>
 
         <div class="sysbox">
             <h3>Abridged License</h3>
-            <span class="nonsense">this implant is provided on a 
-permanent 'pre-mortis' b2.5 license, 'as-is', without any express or 
-implied warranty. except as expressly set forth in the extended license,
- mindsci shall not have any liability for any direct, indirect, 
-incidental, special, exemplary, or consequential damages (including 
-without limitation loss of life), however caused and on any theory of 
-liability, whether in contract, strict liability, or tort (including 
-negligence or otherwise) arising in any way out of the use or the 
-exercise of the implant for non-insured, non-industrial purposes. with 
-regards to external mindspike log manipulation: the entire risk as to 
-the quality and performance of the recollection is with you. should any 
-thoughtform prove defective in any respect, you (not the initial 
-operator responsible for export) assume the cost of any necessary 
-servicing, repair or correction. this disclaimer of warranty constitutes
- an essential part of this license. under no circumstances and under no 
-legal theory, whether tort (including negligence), contract, or 
-otherwise, shall you, the initial operator, any data editor, or any 
-distributor of mindspike data, or any supplier of any of such parties, 
-be liable to any person for any indirect, special, incidental, or 
-consequential damages of any character including, without limitation, 
-damages for loss of goodwill, work stoppage, implant failure or 
-malfunction, or any and all other commercial damages or losses, even if 
-such party shall have been informed of the possibility of such damages. 
-this limitation of liability does apply to liability for death or 
-personal injury resulting from such party's negligence. finally, for 
-further information regarding usage, liability, limitations, and 
-modification, please refer to the full license.</span>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
 
             <div class="center">
-                <a class="b8831" href="https://corru.observer/8831.gif" target="_blank" data-no-swup="">
-                    <img src="corru.observer_files/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
                 </a>
             </div>
         </div>
@@ -1025,7 +361,7 @@ modification, please refer to the full license.</span>
     }
 </script>
 	
-	<div id="content" data-swup="0" page="corru-observer">
+	<div id="content">
 		<div id="room-space">
     <div id="room-animator">
         <div id="room">
@@ -1051,7 +387,7 @@ modification, please refer to the full license.</span>
 </div>
 
 <div id="closeup">
-    <div class="backwall active"></div>
+    <div class="backwall"></div>
     <div class="table"></div>
     <div id="connection-overlay"></div>
     <div class="tablestuff">
@@ -1061,10 +397,10 @@ modification, please refer to the full license.</span>
         </div>
         <div class="cyst-container">
             <div class="target" entity="cyst"></div>
-            <figure class="crosshair show"><div class="target" entity="connection point"></div></figure>
+            <figure class="crosshair"><div class="target" entity="connection point"></div></figure>
             <div id="cyst">
                 <div id="cyst-gradient"></div>
-                <img src="corru.observer_files/mindspike.gif">
+                <img src="/img/home/mindspike.gif" />
             </div>
             <div id="cyst-column"><div class="target" entity="cystic column"></div></div>
         </div>
@@ -2477,9 +1813,33 @@ MUI("deprohibit")
 	</div>
 
 	<!-- i got my eye on you -->
-	<script data-goatcounter="https://corru.goatcounter.com/count" async="" src="corru.observer_files/count.js"></script>
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
-	
-<script defer="defer" src="corru.observer_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;95c788e13b525903&quot;,&quot;version&quot;:&quot;2025.6.2&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;d27fafd650894988a053584cfbc6883c&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
 
-<div id="draggable-live-region" aria-relevant="additions" aria-atomic="true" aria-live="assertive" role="log" style="position: fixed; width: 1px; height: 1px; top: -1px; overflow: hidden;"></div></body></html>
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>
