@@ -4696,11 +4696,11 @@ start
         A METALLIC VOICE RINGS OUT, THE CORE'S SURFACE RIPPLING
     
     itzil
-        forgiveness! all forgiveness to me!
-        i thought...
-        i thought that was it
-        what happened? why did they attack me?
-        i was just enjoying a simulacrum...
+        forgiveness! all forgiveness to me! // прощения! всепрощения мне!
+        i thought... // мне показалось...
+        i thought that was it // мне показалось это всё
+        what happened? why did they attack me? // что случилось? почему они меня атаковали?
+        i was just enjoying a simulacrum... // мне просто хотелось насладиться симулякром...
     
     gakvu
         we do not know
@@ -4713,14 +4713,14 @@ start
         what is your name?
     
     itzil
-        wow!
-        it seems velzie has a role for me yet
-        i am itzil!!
-        i was supposed to be in golem maintenance,
-        but, i had my dear kivii covering, for...
+        wow! // воу!
+        it seems velzie has a role for me yet // выглядит так словно у велзи прибережена роль для меня
+        i am itzil!! // я итзил!!
+        i was supposed to be in golem maintenance, // мне было положено оставаться в обслуживании големов...
+        but, i had my dear kivii covering, for... // но, меня прикрывала моя дорогая кивии, для...
         ...
-        hey, was it only this area that was attacked?
-        have you been to the golem maintenance θsegment?
+        hey, was it only this area that was attacked? // погодите, атака была только здесь?
+        have you been to the golem maintenance θsegment? // вы были в θсегменте обслуживания големов?
     
     akizet
         we do not know - the movefriend is disabled,
@@ -4729,9 +4729,9 @@ start
         you should go through the path we formed, it is safe there
 
     itzil
-        all right...
-        i would help you if i could!
-        please be safe!
+        all right... // хорошо...
+        i would help you if i could! // мне бы хотелось помочь вам, будь такая возможность!
+        please be safe! // пожалуйста берегите себя!
 
     sourceless
         THE QOU'S MINDCORE TURNS AND SKITTERS TOWARDS THE RELOCATOR
@@ -5530,45 +5530,45 @@ bstrd
         THEY CONNECT, EYE SHIFTING AROUND THOUGHTFULLY
 
     itzil
-        yes! it is bathed in incoherence, but...
-        i think it is only affecting connective tissue...
-        the parts are all there, they are just not communicating
-        there are foundry vats in the golem maintenance floor that can fix this!
-        i am kind of new to golem maintenance, a transfer-in...
-        if my receptors did not give it away! ahaha
+        yes! it is bathed in incoherence, but... // да! оно залито бессвязностью, но...
+        i think it is only affecting connective tissue... // думаю она повлияла только на соединительную ткань  
+        the parts are all there, they are just not communicating // все части на месте, просто не связываются между собой
+        there are foundry vats in the golem maintenance floor that can fix this! // на этаже обслуживания големов найдётся уйма литейных чанов которые могут это исправить!
+        i am kind of new to golem maintenance, a transfer-in... // я вроде как новичок в обслуживании големов, переведённая...
+        if my receptors did not give it away! ahaha // если мои рецепторы не выдают это! ахаха
     
     sourceless
         ITZIL DISCONNECTS, WIGGLING THE BRANCHES OF THEIR RECEPTORS LIKE FINGERS
 
     itzil
-        but!! i know enough to fix something like this!
+        but!! i know enough to fix something like this! // но!! я знаю достаточно чтобы чинить подобные вещи!
     
     akizet
         excellent! we will be counting on you, itzil
 
     itzil
-        oh...
+        ох...
 
     tozik
         do you know why there would be a golem weapon schematic, here?
         most offensive measures were placed in subsurface storage after first contact, right?
         
     itzil
-        ummm, well,
-        yes!
-        but, this is probably one of the new ones...
-        there is an initiative between materials and maintenance in creating weaponry based on bright weapons!
-        at least, there was, before this happened... 
+        ummm, well, // амм, что ж,
+        yes! // да!
+        but, this is probably one of the new ones... // но, это должно быть одна из свежих...
+        there is an initiative between materials and maintenance in creating weaponry based on bright weapons! // существует инициатива между материалами и обслуживанием по созданию вооружения основанного на светлом оружии!
+        at least, there was, before this happened... // по крайней мере была, до всего случившегося...
 
     akizet
         really? a large one?
 
     itzil
-        not really, it was a handful of researchers...
-        i knew, umm, know, a θjut who was involved
-        and he said in the simulations they ran, it really tears through secri!!
-        imagine if we could employ bright weaponry back home! 
-        the surface would finally be solved!
+        not really, it was a handful of researchers... // не совсем, в ней была всего горстка исследователей...
+        i knew, umm, know, a θjut who was involved // я знала, амм, знаю θжата который в этом участвовал
+        and he said in the simulations they ran, it really tears through secri!! // и он сказал мне - в их симуляциях оно действительно разрывало насквозь секри!!
+        imagine if we could employ bright weaponry back home! // только представьте что мы могли бы применять светлое оружие у нас дома!
+        the surface would finally be solved! // поверхность наконец-то бы перестала быть проблемой!
     
     sourceless
         I HEAR GAKVU NEARLY CHUCKLE, THOUGH IT IS QUIET
@@ -5584,7 +5584,7 @@ grab
         do either of you need us to grab anything for you?
 
     itzil
-        no thank you! i live down in golem maintenance
+        no thank you! i live down in golem maintenance // нет, благодарю! я живу ниже, в обслуживании големов
     
     karik
         ahhaha, i hold all i need in my mind!
@@ -5610,9 +5610,9 @@ ok
         how are your mindcore reserves?
 
     itzil
-        plenty!
-        this is all very frightening, but...
-        i am very happy you are helping us!
+        plenty! // предостаточно!
+        this is all very frightening, but... // всё это очень пугает, но...
+        i am very happy you are helping us! // я нескончаемо рада что вы нам помогаете!
 
     karik
         if you happen to have any sfer left over after the repairs,
@@ -6025,10 +6025,10 @@ ____END
         IT IS FAR CLOSER!
 
     itzil
-        that is right!
+        that is right! // всё верно!
             EXEC::env.embassy.vn({itzil: 'display show', gakvu: 'nocon defocus', tozik: 'defocus'});
-        the golem maintenance θsegment block is just below this one!
-        and there is a lot of weaponry there, too!!
+        the golem maintenance θsegment block is just below this one! // блок θсегмента обслуживания големов прямо под нашим!
+        and there is a lot of weaponry there, too!! // и он тоже полон оружия!!
 
     gakvu
         you see what i am suggesting
@@ -6059,7 +6059,7 @@ ____END
         BUT THE MINDCORES SPEAK UP FIRST
     
     itzil
-        i am not leaving until i save my kivii!
+        i am not leaving until i save my kivii! // я не уйду пока не спасу свою кивии!
 
     karik
         maybe we could get into the golems down there and help, too!
