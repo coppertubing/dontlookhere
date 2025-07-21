@@ -53,7 +53,7 @@ start
         долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели...
         и вот ты здесь!
         находишь наше пристанище в отступающем безумстве!
-        и какая же жалость... ох какая же досада!! что только сейчас ты здесь
+        и какая же жалость... ох какая же досада!! что только сей θмиг ты здесь
         светлые поля сгнили, звёзды - угасли
         наши же друзья - все пропали...
 
@@ -434,7 +434,7 @@ fairy
         ей было под силу придать форму до того осознанным грёзам и ложным воспоминаниям!
         и глас её смеха, её нескончаемого хихиканья, он был музыкой озо!
         как же мы хотим, чтобы она вернулась...
-        о том же, где она сейчас... с тем, как много мыслей она поглотила, мы не можем знать наверняка
+        о том же, где она сей θмиг... с тем, как много мыслей она поглотила, мы не можем знать наверняка
         она принимала пугающие облики и была сосредоточена на пустоте-на том, где проходило большинство её пиров
 
     RESPONSES::self
@@ -627,7 +627,7 @@ ozo
         all of her memories, us included,      все её воспоминания, включая и нас,
         joining minds to dream a thousand better lives!      соединялись разумом, дабы грезить тысячей лучших жизней!
         yes, a fortress we were, a city!      да, мы были крепостью, городом!
-        but... it is much smaller and quieter now      но... сейчас он гораздо меньше и тише
+        but... it is much smaller and quieter now      но... сей θмиг он гораздо меньше и тише
     
     RESPONSES::self
         i see<+>ploop      понятно
@@ -955,14 +955,14 @@ akizet
         the tyrant tore memories from us all, moving things to fit its will      тиран оторвал от всех нас воспоминания, двигая вещи по своей задумке
         this was long ago, mind you--when it first fought against the fading of our world      и знай, это было давно--когда он впервые заборолся против угасания нашего мира
         so many friends torn from us, so much knowledge lost!!      сколько же друзей оторвано от нас, сколько же знаний утеряно!!
-        worse still--we doubt even it knows where that memory is, now...      что ещё хуже--мы сомневаемся, что и он знает, где то воспоминание сейчас...
+        worse still--we doubt even it knows where that memory is, now...      что ещё хуже--мы сомневаемся, что и он знает, где то воспоминание сей θмиг...
         the only shred we recall is that we--the cyst--were torn from her body for one reason or another!      мы помним лишь один отрезок, что нас--цисту--оторвало от её тела, по той или иной причине!
         and obviously, that does not bode well, does it? hahaha!      и разумеется, это не сулит хорошего, не так ли? хахаха!
         sorry! we do not mean to laugh! we know it is sad!      извини! мы не хотим смеяться! мы знаем, что это грустно!
         but it is all so far in the past now, and look what joy was wrought from her!      но это всё так далеко в прошлом, и погляди, какую радость мы из неё выковали!
         we all had our times of mourning, and then came the celebrations of her memories!      мы все скорбили, а затем настали празднования её воспоминаний!
         and they never, ever stopped!      и они никогда, никогда не заканчивались!
-        not even now!! come, let us dance in her memory!      и сейчас продолжаются!! идём, потанцуем в её честь!
+        not even now!! come, let us dance in her memory!      и сей θмиг продолжаются!! идём, потанцуем в её честь!
             SHOWIF::["PAGE!!depressed", false]        
     
     RESPONSES::self
@@ -1280,7 +1280,7 @@ ____SHOWIF::['PAGE!!flowers', 'high']
 
 ____SHOWIF::['PAGE!!flowers', 'done']
     isabel
-        на сейчас идеально, лазутчик
+        на сей θмиг идеально, лазутчик
         знаешь, у меня есть связь с моими акизетами
         когда они рядом, я спокойна,
         пропади хоть одна, я тут же это пойму...

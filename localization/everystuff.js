@@ -563,7 +563,7 @@ env.localization['strings'] = {
         "i do not think it came through right!!": "я не думаю что дошло правильно!!",
         "come do that back in the hub!": "приходи и сделай это в хабе!",
 
-        "NOT RIGHT NOW PLEASE": "НЕ СЕЙЧАС ПОЖАЛУЙСТА",
+        "NOT RIGHT NOW PLEASE": "НЕ СЕЙ МИГ ПОЖАЛУЙСТА",
         "DIFFICULT TO SPEAK THROUGH PROXY": "ТРУДНО ГОВОРИТЬ ПО ПРОКСИ",
         "CONDUCTING MEMBRANE REVIEWS": "ПРОВОЖУ ОСМОТР МЕМБРАНЫ",
         "BE ON YOUR WAY": "ИДИ СВОЕЙ ДОРОГОЙ",

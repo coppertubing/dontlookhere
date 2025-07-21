@@ -695,7 +695,7 @@ leave
     drowning::safe
         ...
         why would i want to leave? --   перевести после прошлой
-        we are having a good time, right? hehe -- нам и сейчас хорошо, не так ли? хехе   что за слово-паразит на , right?  боже
+        we are having a good time, right? hehe -- нам и сей θмиг хорошо, не так ли? хехе   что за слово-паразит на , right?  боже
         and, more than that... -- и, помимо этого...
         i know i am safe here -- я знаю, что здесь я в безопасности
         and it is familiar, too --   потом

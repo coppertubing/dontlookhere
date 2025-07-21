@@ -294,7 +294,7 @@ absence
             SHOWIF::[['ep1_fed', false]]
     
     akizet
-        ах, и сейчас вы играете в <span class="code">паразита</span>!
+        ах, и сей θмиг вы играете в <span class="code">паразита</span>!
             SHOWIF::'ep1_fed'
 
     glazika

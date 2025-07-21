@@ -6,7 +6,7 @@ env.localization.page['localdepths'] = {dialogues: {},
 
         "UNKNOWN": "НЕИЗВЕСТНО",
 
-        'NOT NOW': 'НЕ СЕЙЧАС',
+        'NOT NOW': 'НЕ СЕЙ МИГ',
         'FORGIVE ME FOR THIS': 'ПРОСТИТЕ МЕНЯ ЗА ЭТО',
         'GOODBYE': 'ПРОЩАЙТЕ',
         'INTERLOPER': 'ЛАЗУТЧИК',
