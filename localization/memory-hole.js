@@ -320,8 +320,8 @@ start
     
     sourceless
         он посмеивается, к моему удивлению he chuckles, to my surprise << боже мой моя тупица становится велом?? 🥹🥹.
-        ещё несколько мигов назад он, казалось, был раздражён моими подшучиваниями//only θblinks earlier he seemed irritated with my banter
-        однако, как и задумано, после я сразу же даю ему подобающий ответ//still, as planned, i give him a proper answer immediately after
+        ещё несколько θмигов назад он, казалось, был раздражён моими подшучиваниями//only θblinks earlier he seemed irritated with my banter
+        однако после, как и задумано, я сразу же даю ему подобающий ответ//still, as planned, i give him a proper answer immediately after
     
     stupid
         я насчитала чуть больше тридцати //i counted just over thirty
@@ -341,7 +341,7 @@ start
 
     sourceless
         пока он стоит, уставившись внутрь неё, какое-то пустое движение проходит в его рецепторах//there is a sort of idle drift in his receptors as he stares into it
-        не трудно понять когда тир витает в облаках
+        нетрудно понять когда тир витает в облаках
     
     elder
         корру...
@@ -349,7 +349,7 @@ start
         my excavation mentor once told me the strangest stories about it, and our ancestors...     когда-то наставник по раскопке рассказывал мне наистраннейшие истории о нём и наших предках...
         it was not long after we struck that great natural vein of it down in the deep chambers     это было незадолго после того, как мы наткнулись на ту великую естественную жилу в глубоких залах
         it is so much smaller now...      теперь она гораздо меньше...
-        as we prepared a harvesting bore, you know what he said?    угадай, что он рассказал мне, пока мы готовили скважину для сборки? 
+        as we prepared a harvesting bore, you know what he said?    знаешь, что он рассказал мне, пока мы готовили скважину для сборки? 
     
     sourceless
         θ██████ поворачивается ко мне, его ветвистые рецепторы раскидывают свои кончики  //turns to me, his branched receptors outstretching their tendrils блин вот и минус переводить как ответвление ? думаешь опять корруворкс показывает нам какую-то связь? глупые обески не выучили словирк английского языка. давайте заменим ответвление наа что там было. отростки? 
@@ -387,14 +387,14 @@ start
         что ж, понадобится ещё один <span definition="INHERITED CONTEXT::'common myth';'intoxicated tir knocked over corru container and fell into it'">tir stumbling into their research chamber</span> чтобы выяснить что будет следующим!
     
     sourceless
-       его смех переполняет тоннель, этого достаточно, чтобы мои рецепторы скрутило в тугую спираль//his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
+       его смех переполняет тоннель. этого достаточно, чтобы мои рецепторы скрутило в тугую спираль//his laugh overpowers the tunnel, enough to send my receptors into a clenched curl
     
     elder
         θ██████, start planning a transport to oltazni for me, would you?     θ██████, распланируй-ка для меня транспортировку в олтазни   // Я УБИЛ ВОПРОСИТЕЛЬНЫЙ ЗНАК............ ГОРЖУСЬ !!
         i have a foundry to barge into     мне нужно ворваться в их цех
     
     guard
-        right away, father     сей же миг, отец
+        right away, father     сей же θмиг, отец
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -645,7 +645,7 @@ start
         о, да! так--я не перенял интерес моего отца к юморизму,
         но он с его юмористскими друзьями начали пробовать использовать с ним корру
         замысел всегда заключался в чтении ощущения от receptor curls, так что
-        разумеется в наши взоры это уже не так принято и встречается реже
+        разумеется в наши θвзоры это уже не так принято и встречается реже
     
     stupid
         ахахаха! да, даже в олтазни это считается чуть ли не извращением!
@@ -692,7 +692,7 @@ start
     sourceless
         о, довольно просто
         я закрываю глаза, когда ещё один шаг вейлька-носителя приземляется далеко внизу
-        следующий не наступит достаточно мигов, так что это удачное время
+        следующий не наступит достаточно θмигов, так что это удачное время
         дождь...
         ...
         наше соединение затихло, но по-прежнему открыто - я всё ещё могу почувствовать его
@@ -708,7 +708,7 @@ start
     
     stupid
         ха? ну же, расскажи мне!
-        ты не можешь  сказать такое и не поделиться результатом!!
+        ты не можешь сказать такое и не поделиться результатом!!
     
     other
         хехех, ну,
@@ -868,7 +868,7 @@ start
         мы пока не до конца знаем, какие у этого долгосрочные последствия
     
     stupid
-        но если я <em>сделаю</em> это, ты же поможешь мне создать новое крутое тело, так?
+        но если я <em>буду</em> творить, ты же поможешь мне создать новое крутое тело, так?
 
     sourceless
         ОХ, НЕ СТОИЛО МНЕ ЭТО ПРОИЗНОСИТЬ
