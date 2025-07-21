@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1750982119115834580"></script>	
-	<script src="/js/dialogue.js?1750982119115834580"></script>	
-	<script src="/js/globalents.js?1750982119115834580"></script>	
-	<script src="/js/cystStage.js?1750982119115834580"></script>
-	<script src="/js/buddy.js?1750982119115834580"></script>
-	<script src="/js/vn2.js?1750982119115834580"></script>
-	<script defer src="/js/saves.js?1750982119115834580"></script>
+	<script src="/js/corru.js?1753060449484143807"></script>	
+	<script src="/js/dialogue.js?1753060449484143807"></script>	
+	<script src="/js/globalents.js?1753060449484143807"></script>	
+	<script src="/js/cystStage.js?1753060449484143807"></script>
+	<script src="/js/buddy.js?1753060449484143807"></script>
+	<script src="/js/vn2.js?1753060449484143807"></script>
+	<script defer src="/js/saves.js?1753060449484143807"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1750982119115834580'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1750982119115834580'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1753060449484143807'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1753060449484143807'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu'>
@@ -142,7 +142,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1750982119</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1753060449</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -1372,7 +1372,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1750982119115834580,
+				cacheval: 1753060449484143807,
 
 				
 				image: "/img/socials/uncosm.gif",
@@ -2268,7 +2268,7 @@ env.recosm = {
                             chatter({actor: 'god', text: `just... let me stay here`, readout: true})
                             change("recosm_state", "spared")
                         }, 18000)
-                        env.setTimeout(()=>chatter({actor: 'god', text: `i don't know if the deceiver has locked you here...`, readout: true}), 21000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `i do not know if the deceiver has locked you here...`, readout: true}), 21000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `but do whatever it is that you need to leave`, readout: true}), 24000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `maybe i can even help you!!`, readout: true}), 27000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `you could use someone to watch the underworld, right?`, readout: true}), 30000)
@@ -2591,7 +2591,7 @@ env.recosm = {
                     } else if(check("recosm_distance") > 7) {
                         chatter({actor: 'god', text: `OK!!`, readout: true})
                         env.setTimeout(()=>chatter({actor: 'god', text: `how many times must we do this?`, readout: true}), 3000)
-                        env.setTimeout(()=>chatter({actor: 'god', text: `can't you simply let me be?`, readout: true}), 6000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `can you not simply let me be?`, readout: true}), 6000)
                     } else {
                         chatter({actor: 'god', text: `OK!!`, readout: true})
                         env.setTimeout(()=>chatter({actor: 'god', text: `i know what will stop you`, readout: true}), 3000)
@@ -2641,7 +2641,7 @@ env.recosm = {
                         env.setTimeout(()=>chatter({actor: 'god', text: `the deceiver thinks me like the ravenous beasts outside`, readout: true}), 8000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `but i am awake, like it, and it fears me for that`, readout: true}), 10000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `it... FEARS me3¼¦µ•6ê.. `, readout: true}), 14000)
-                        env.setTimeout(()=>chatter({actor: 'god', text: `and so do§$ you, don’}RŒWt you?`, readout: true}), 17000)
+                        env.setTimeout(()=>chatter({actor: 'god', text: `and so do§$ you, do}RŒyoW not?`, readout: true}), 17000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `why¬ï…Ãµ elýêV9‰s would you p¼rsist`, readout: true}), 20000)
                     } else {
                         env.setTimeout(()=>chatter({actor: 'god', text: `i emerged from it, i have weathered it`, readout: true}), 3000)

@@ -110,7 +110,7 @@ var env = {
         },
 
         bugviend: {
-            name: '»õGQàº3¾õ”cR%',
+            name: 'Â»ÃµGQÃ Âº3Â¾Ãµâ€cR%',
             type: "incoherent thoughtform portrait-blocker hallucination",
             image: "/img/sprites/combat/foes/hallucinations/portrait.gif",
             voice: ()=>play('fear', 2)
@@ -137,7 +137,7 @@ var env = {
     stages: {}, //individual stage references
     stageEntities: {
         '.': {slug: '.', class: "blocks nothing"},
-        "░": {slug: '░', class: "empty plain"}, //generic movable space
+        "â–‘": {slug: 'â–‘', class: "empty plain"}, //generic movable space
         
         p: { //player spawn point
             class: "empty plain",
@@ -2301,8 +2301,8 @@ function slugify(str) {
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
   
-    // remove accents, swap ñ for n, etc
-    var from = "àáäâèéëêìíïîòóöôùúüûñç·/_,:;";
+    // remove accents, swap Ã± for n, etc
+    var from = "Ã Ã¡Ã¤Ã¢Ã¨Ã©Ã«ÃªÃ¬Ã­Ã¯Ã®Ã²Ã³Ã¶Ã´Ã¹ÃºÃ¼Ã»Ã±Ã§Â·/_,:;";
     var to   = "aaaaeeeeiiiioooouuuunc------";
     for (var i=0, l=from.length ; i<l ; i++) {
         str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
@@ -2944,7 +2944,7 @@ function mask({name, retrigger = false, playSound = true}) {
 function processDefinitionsInString(input, {force = false} = {}) {
     if(!input) return input;
     if(!input.includes) return input;
-    if ((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
+    if((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
 
     //we alter this string as it's processed to avoid definition overlaps
     let scanningInput = input
@@ -2964,20 +2964,20 @@ function processDefinitionsInString(input, {force = false} = {}) {
         const type = (typeof definition === "object") ? definition.type || "INHERITED CONTEXT" : "INHERITED CONTEXT";
         const text = (typeof definition === "object") ? definition.text || definition : definition;
 
-        if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
+        if(phrase[0] == "Î¸") { //theta definitions are prefixed so that they can be immediately replaced without scanning
             //used mostly for special/context sensitive ones
-            finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${phrase.replace("θ", "")}</span>`)
+            finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("Î¸", "").replace('"', "'")}">${phrase.replace("Î¸", "")}</span>`)
 
         } else {
             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const edgeStart = `(?<=\\s|^|[,.;:!?])`
-            const edgeEnd = `(?=\\s|$|[,.;:!?])`
+            const edgeStart = `(?<=\\s|^|[,.;:!?'])`
+            const edgeEnd = `(?=\\s|$|[,.;:!?'])`
             const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
 
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
-                const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
+                const replacement = `<span class="definition" definition="${type}::${text.replace("Î¸", "").replace('"', "'")}">${match[0]}</span>`;
                 
                 //replace the inputs - scanning to remove the match, finalInput to add the definition to the output
                 scanningInput = scanningInput.replaceAll(match[0], "")

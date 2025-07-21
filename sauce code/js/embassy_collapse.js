@@ -453,7 +453,7 @@ createEntity({
     image: "/img/sprites/combat/foes/golem-portrait.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a utility golem borrowed from the maintenance ${processDefinitionsInString("θsegment")} below';'controlled by groundsmind?';'made incoherent by the noise?'</span>`,
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a utility golem borrowed from the maintenance ${processDefinitionsInString("Î¸segment")} below';'controlled by groundsmind?';'made incoherent by the noise?'</span>`,
 })
 
 createEntity({
@@ -801,14 +801,14 @@ start
     
     sourceless
         THE MEMORY OF A SIGNAL-RECORD CYST RADIATES THROUGH OUR CONNECTION
-        AN IDENTIFIER PRECEDES ITS ABRIDGED LOG: PRE-CONTACT, θeye 4, RADIANT 0
+        AN IDENTIFIER PRECEDES ITS ABRIDGED LOG: PRE-CONTACT, Î¸eye 4, RADIANT 0
 
     tozik
         no drift, no changes
         next one
     
     sourceless
-        THEN COMES ANOTHER - PRE-CONTACT, θeye 4, RADIANT 1
+        THEN COMES ANOTHER - PRE-CONTACT, Î¸eye 4, RADIANT 1
             EXEC::document.querySelector('.redundancy').style.setProperty('--dataoffset', 6)
         TOZIK'S MIND PASSES OVER IT, CAREFUL, EVEN IF GENERALLY DISINTERESTED
         I FEEL THE SAME - THE MUNDANITY OF THIS INVESTIGATION...
@@ -939,7 +939,7 @@ start
         A COMMUNICATIONS DEVICE, THOUGH IT MELTS IN HER CLAWS
     
     gakvu
-        Îè§¤ÿ
+        ÃŽÃ¨Â§Â¤Ã¿
         my communicator is sludged
         oh, no--my environments!!
     
@@ -1048,7 +1048,7 @@ start
     
     aggressor
         o   ut o  u  t o 
-        i wo nt i won t let
+        i w  wi ll n no t let
     
     gakvu
         hello?
@@ -1056,7 +1056,7 @@ start
     sourceless
         ITS STYLIZED ARMS SUDDENLY SHARPEN INTO SPIKES, AND IT RUSHES TOWARDS GAKVU
             EXEC::env.embassy.vn({tgolem: 'display show approach'})
-        ÷Œ€T$0 - THIS IS AN ATTACK
+        Ã·ÂÅ’â‚¬T$0 - THIS IS AN ATTACK
     
     akizet
         get back!!
@@ -1344,13 +1344,13 @@ start
     
     akizet
         well...
-        what about recreation? is that not just a few θsegments lower-away? 
+        what about recreation? is that not just a few Î¸segments lower-away? 
     
     tozik
         do you intend to dig through the walls?
         the black corru is not a simple pigmentation instruction
         density here is almost at natural spire levels
-        no amount of surface training will let you break through a single θsegment,
+        no amount of surface training will let you break through a single Î¸segment,
         let alone a 'few'
         ...
         sorry
@@ -1377,7 +1377,7 @@ start
             EXEC::env.embassy.vn({gakvu: 'fullview'});
         and that one corner was under regeneration,
         so those containers that were in the corner probably have sfer
-        and... there is a personnel θtendril nearby, too
+        and... there is a personnel Î¸tendril nearby, too
         we could probably hit both of them for materials
         how about we start with recreation?
         but. promise. velzie's wrath?
@@ -1464,10 +1464,10 @@ start
             EXEC::change("PAGE!!cpersonnel_unlocked", true);
         THE MINDCORES NEARBY ARE STARING... THEY DID NOT PROMISE LIKE WE DID
         BUT GAKVU CAN TALK TO THEM LATER!
-        A PATH BEGINS TO FORM TO THAT PERSONNEL θtendril
+        A PATH BEGINS TO FORM TO THAT PERSONNEL Î¸tendril
 
     akizet
-        which θtendril was this again?
+        which Î¸tendril was this again?
 
     gakvu
         eyes closed
@@ -1636,7 +1636,7 @@ start
         but, i had my dear kivii covering, for...
         ...
         hey, was it only this area that was attacked?
-        have you been to the golem maintenance θsegment?
+        have you been to the golem maintenance Î¸segment?
     
     akizet
         we do not know - the movefriend is disabled,
@@ -1788,7 +1788,7 @@ SKIP::vn.done();specialCam(false);pauseSwapCam(false)
 env.dialogues["d3_person_intro"] = generateDialogueObject(` 
 start
     sourceless
-        THE PERSONNEL θtendril IS DARK, LIT BY THE LIGHTS OF THE INCOHERENT
+        THE PERSONNEL Î¸tendril IS DARK, LIT BY THE LIGHTS OF THE INCOHERENT
         ATTENDANTS BEAR THE SAME STRANGE SIGIL AS OUR GOLEM...
         AND THE VEILKLIGHTS SEEM TO HAVE LEARNED TO MOVE
         WE PEER IN CAREFULLY, UNDER THEIR NOTICE FOR NOW
@@ -1799,7 +1799,7 @@ start
         THERE ARE MORE QOU-BODIES
         WE NEED TO CLEAR THIS PLACE OUT FIRST
         AGREED!
-        THEY WILL NOTICE AS SOON AS WE ENTER THE θtendril
+        THEY WILL NOTICE AS SOON AS WE ENTER THE Î¸tendril
         TREAD CAREFULLY
     
     RESPONSES::akizet
@@ -1965,7 +1965,7 @@ start
     gakvu
         hey, it is kazki's room!
             EXEC::env.embassy.vn({gakvu: "fullview"})
-        i thought this θtendril looked familiar
+        i thought this Î¸tendril looked familiar
 
     tozik
         what are those?
@@ -2243,7 +2243,7 @@ start
         HE SETS THE COLLECTED SFER NEARBY, PREPARING AN AREA FOR HIMSELF TO WORK
         MILTZA WATCHES QUIETLY FROM THE EDGE OF THE ROOM
         SHE WANTS TO HELP, IT IS CLEAR IN HER DOWNWARD RECEPTORS
-        BUT SHE IS NO θjut, NOR CYSTIC ENGINEER
+        BUT SHE IS NO Î¸jut, NOR CYSTIC ENGINEER
     
     tozik
         this is going to take me some time
@@ -2371,14 +2371,14 @@ awaken
         MOVEFRIENDS ARE RARELY SO HAPHAZARD...
 
     movefriend
-        I SHOULD NOT BE AW»AKE
+        I SHOULD NOT BE AWÂ»AKE
     
     sourceless
         ITS FACE FLICKERS AWAY AND THE ROOM FALLS QUIET
             EXEC::changeBgm(env.embassy.music_p1boss_suspense, {rate: 0.5});document.querySelector('#realgrid .lifter').classList.remove('fixed')
     
     akizet
-        §kºù
+        Â§kÂºÃ¹
         are we trapped in here again?
     
     tozik
@@ -2403,10 +2403,10 @@ awaken
         I HEAR THE SOUND OF CORRU SHIFTING BEHIND THE WALLS
 
     aggressor
-        cÅ4Ä–sT
+        cÃ…4Ã„â€“sT
             EXEC::content.classList.add('painprep', 'painhalf')
-        ýæôr,§½ÿlfÃ
-        ÄS¿De
+        Ã½ÂÃ¦Ã´r,Â§Â½Ã¿lfÃƒ
+        Ã„SÂ¿De
     
     sourceless
         A PRESSURE WEIGHS AGAINST OUR MINDS, OUR CORRUCYSTIC ORGANS
@@ -2478,7 +2478,7 @@ start
         that will do
     
     RESPONSES::akizet
-        lets get started<+>END
+        let us get started<+>END
             FAKEEND::proceed
             EXEC::env.rpg.classList.remove('hideteams')
 
@@ -2546,7 +2546,7 @@ explore
             EXEC::env.embassy.collapseSave({effects: true})
             WAIT::1000
         NOTE::'save process complete'
-        NOTE::'return to entity movefriend once stream repairs is complete'
+        NOTE::'return to entity movefriend once stream repairs are complete'
             SHOWIF::['ENV!!ep3', false]
         NOTE::'return to entity movefriend when prepared to proceed'
             SHOWIF::['ENV!!ep3', true]
@@ -2577,7 +2577,7 @@ savexit
             EXEC::env.embassy.collapseSave({effects: true})
             WAIT::1000
         NOTE::'save process complete'
-        NOTE::'load iteration';'return to entity movefriend once stream repairs is complete'
+        NOTE::'load iteration';'return to entity movefriend once stream repairs are complete'
             SHOWIF::['ENV!!ep3', false]
         NOTE::'load iteration';'return to entity movefriend when prepared to proceed'
             SHOWIF::['ENV!!ep3', true]
@@ -2704,7 +2704,7 @@ ____END
     tozik
         not if the groundsmind have seized our ships, too
         also, that is near the top of the spire...
-        which means the timestopper's influence will be far lesser
+        which may lie beyond the timestopper's influence
 
     gakvu
         how far are we from the groundsmindry floor?
@@ -2720,7 +2720,7 @@ ____END
         GAKVUKANI! 
             EXEC::env.embassy.vn({bg: false});
         GIVEN THAT WE ARE NEAR THE BASE OF THE SPIRE,
-        THERE ARE ONLY THREE θsegment BLOCKS BETWEEN THE GROUNDSMINDRY AND HERE
+        THERE ARE ONLY THREE Î¸segment BLOCKS BETWEEN THE GROUNDSMINDRY AND HERE
         I CAN TAKE YOU DIRECTLY TO IT!
         AND, RELATIVE TO THE DISTANCE TO THE HANGAR,
         IT IS FAR CLOSER!
@@ -2728,7 +2728,7 @@ ____END
     itzil
         that is right!
             EXEC::env.embassy.vn({itzil: 'display show', gakvu: 'nocon defocus', tozik: 'defocus'});
-        the golem maintenance θsegment block is just below this one!
+        the golem maintenance Î¸segment block is just below this one!
         and there is a lot of weaponry there, too!!
 
     gakvu
@@ -2748,7 +2748,7 @@ ____END
         I SHOULD NOT WANT THIS
         BUT IN THIS SHORT TIME, I FELT SUCH EXCITEMENT
         HOW LONG IT HAS BEEN, SINCE I HAVE FELT IT...
-        ADRENALINE - OR THE θdeathly COUNTERPART OF IT
+        ADRENALINE - OR THE Î¸deathly COUNTERPART OF IT
     
     akizet
         does anyone object?
@@ -2789,7 +2789,7 @@ ____SHOWIF::['ENV!!ep3', false]
         ATTENTION::'next memory stream segment incomplete';'internal note attached'::
     
     funfriend
-        hello interloper! please come back in a θwink! i am nearly done with this next part!
+        hello interloper! please come back in a Î¸wink! i am nearly done with this next part!
 
 ____SHOWONCE
     moth
@@ -2846,7 +2846,7 @@ savexit
             EXEC::env.embassy.collapseSave({effects: true})
             WAIT::1000
         NOTE::'save process complete'
-        NOTE::'load iteration';'return to entity movefriend once stream repairs is complete'
+        NOTE::'load iteration';'return to entity movefriend once stream repairs are complete'
             SHOWIF::['ENV!!ep3', false]
         NOTE::'load iteration';'return to entity movefriend when prepared to proceed'
             SHOWIF::['ENV!!ep3', true]
@@ -2889,7 +2889,7 @@ ____SHOWIF::["ENV!!ep3", false]
         NOTICE::'reiterating attached internal note'::
 
     funfriend
-        hello interloper! please come back in a θwink! i am nearly done with this next part!
+        hello interloper! please come back in a Î¸wink! i am nearly done with this next part!
 ____END
 
     RESPONSES::self
@@ -3564,7 +3564,7 @@ bstrd
 
     itzil
         not really, it was a handful of researchers...
-        i knew, umm, know, a θjut who was involved
+        i knew, umm, know, a Î¸jut who was involved
         and he said in the simulations they ran, it really tears through secri!!
         imagine if we could employ bright weaponry back home! 
         the surface would finally be solved!
@@ -3579,7 +3579,7 @@ bstrd
 
 grab
     akizet
-        we have access to the adjacent personnel θtendril
+        we have access to the adjacent personnel Î¸tendril
         do either of you need us to grab anything for you?
 
     itzil
@@ -3597,7 +3597,7 @@ grab
         no no, she is a vel qou!
         if she did not play her jokes on me, she would die!
         ...
-        i hope today was one of her days with the bright cousins
+        i hope this was one of her gazes with the bright cousins
 
     RESPONSES::akizet
         me too<+>loop
@@ -3648,7 +3648,7 @@ start
         IT IS ENOUGH TO QUELL THE LINGERING FEAR OF BEING CRUSHED
     
     gakvu
-        ahh, a light in this hateful θgaze...!
+        ahh, a light in this hateful Î¸gaze...!
         i take it all back, velzie!!
     
     sourceless
@@ -3666,7 +3666,7 @@ start
     gakvu
         an archival vein just collapsed!
             EXEC::env.embassy.vn({gakvu: "fullview"})
-        right before us, directly into our θsegment of the spire!
+        right before us, directly into our Î¸segment of the spire!
         can you even imagine the chances??
 
     sourceless
@@ -3885,7 +3885,7 @@ start
         REALLY, A SATIK CYST? HERE? HOW PECULIAR...
         I TURN IT OVER IN MY CLAWS, ITS MYRIAD APPLICATORS STARING BACK AT ME
         PERHAPS THE ARCHIVAL VEIN'S DELIVERY CENTER HAD A BATCH
-        BUT IT MUST NOT HAVE BEEN INTENDED FOR OUR SPIRE θsegment...
+        BUT IT MUST NOT HAVE BEEN INTENDED FOR OUR SPIRE Î¸segment...
 
     gakvu
         ah! how clumsy that thing was!
@@ -3935,7 +3935,7 @@ start
         THE SENSITIVE MATERIALS CHAMBER OF THE ARCHIVAL VEIN, ITS DOOR...
             EXEC::specialCam('bstrdoor');pauseSwapCam(true)
         WHAT IS THIS?
-        I HAVE NEVER SEEN THIS MATERIAL IN MY LIFE, NOR MY θdeath
+        I HAVE NEVER SEEN THIS MATERIAL IN MY LIFE, NOR MY Î¸death
 
     akizet
         gakvu, tozik, do you know what this is...?
@@ -4170,7 +4170,7 @@ early
         ah. curious
 
     sourceless
-        ½T~g«¾%
+        Â½T~gÂ«Â¾%
         THEY MUST THINK I AM SIMPLY PRETENDING TO KNOW
         OH WELL - IT IS BETTER THAN THE ALTERNATIVE
         WE TAKE THE BOX WITH US - HEAVY, BUT EASY ENOUGH TO SET ASIDE WHEN NEEDED
@@ -4202,7 +4202,7 @@ ____END
 
         WE ALL COLLAPSE WITH RELIEF AFTER THE FIGHT
             SHOWIF::'EXEC::env.embassy.checkUsedKavrukas(false)'
-        THIS IS THE WORST θgaze OF MY θdeath
+        THIS IS THE WORST Î¸gaze OF MY Î¸death
             SHOWIF::'EXEC::env.embassy.checkUsedKavrukas(false)'
         
     akizet
@@ -4253,7 +4253,7 @@ ____END
         ah. curious
 
     sourceless
-        ½T~g«¾%
+        Â½T~gÂ«Â¾%
         THEY MUST THINK I AM SIMPLY PRETENDING TO KNOW
         OH WELL - IT IS BETTER THAN THE ALTERNATIVE
         WE TAKE THE BOX WITH US - HEAVY, BUT EASY ENOUGH TO SET ASIDE WHEN NEEDED
@@ -4330,7 +4330,7 @@ start
         THE SENSITIVE MATERIALS CHAMBER OF THE ARCHIVAL VEIN, IT...
             EXEC::specialCam('bstrdoor');pauseSwapCam(true)
         WHAT IS THIS?
-        I HAVE NEVER SEEN THIS MATERIAL IN MY LIFE, NOR MY θdeath
+        I HAVE NEVER SEEN THIS MATERIAL IN MY LIFE, NOR MY Î¸death
 
     akizet
         gakvu, tozik, do you know what this is...?
@@ -4586,7 +4586,7 @@ start
         TOZIK WARNS US URGENTLY,
 
     tozik
-        G¼ÚÀ
+        GÂ¼ÃšÃ€
         if this thing throws enough of those,
         this entire room will collapse
         it may sound insane, but we need to defuse them when they are thrown
@@ -4756,3 +4756,4 @@ ____END
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
 `)
+js/embassy_groundsmindry_dialogue.js

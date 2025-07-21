@@ -986,7 +986,7 @@ combat
             exec: ()=>{
                 if(check("PAGE!!dream")) {
                     env.rpg.classList.add("dreammode")
-                    if(check("unity_dog)")) env.rpg.classList.add("dreamdog")
+                    if(check("unity_dog")) env.rpg.classList.add("dreamdog")
                 }
             }
         })
@@ -1280,10 +1280,10 @@ createEntity({
 
 /************ STAGES **************/
 env.stageEntities["c"] = {class:"prop blocks genericblocker"}
-env.stageEntities["♠"] = {class: "vesselmetal"}
+env.stageEntities["â™ "] = {class: "vesselmetal"}
 env.stageEntities["_"] = {class: "gap blocks"}
 env.stageEntities["="] = {class: "gap blocks raised-floaty"}
-env.stageEntities["▒"] = {class: "invisiblewalk nothing"}
+env.stageEntities["â–’"] = {class: "invisiblewalk nothing"}
 env.stageEntities["B"] = {
     class: "prop blocks",
     contains: {
@@ -1325,7 +1325,7 @@ env.stageEntities["w"] = {
     } 
 }
 
-env.stageEntities["☻"] = {
+env.stageEntities["â˜»"] = {
     class: "prop blocks",
     contains: {
         class: "geli character bstrdized",
@@ -1443,32 +1443,32 @@ env.stages['wanderpart'] = {
         .....w.....
         .....V.....
         ._.=_o_=...
-        ▒▒▒░░p░░▒▒▒
-        ▒▒░░░░░░░▒▒
-        ==▒░▒░░▒▒▒▒
-        .=▒░▒▒░▒▒▒=
-        ?.=▒▒▒░▒▒▒▒
-        ..=▒░░░▒░▒▒
-        .=▒░▒░▒▒▒▒▒
-        ▒▒▒▒▒▒▒▒░▒=
-        ░▒▒▒▒▒=▒▒▒▒
-        ▒▒░░▒▒▒░▒▒▒
-        ▒▒▒▒▒▒░▒▒▒░
-        =▒▒▒░▒░▒▒==
-        ▒▒▒▒▒▒▒▒=..
-        ▒▒▒░▒▒▒=..?
-        ▒░░▒▒▒▒=...
-        ▒▒▒▒▒▒▒▒=..
-        ▒▒▒▒▒▒░▒▒=.
-        =▒▒▒▒▒▒▒▒▒=
-        ▒==▒▒▒▒▒===
-        ▒▒▒=▒▒▒=▒▒▒
-        ▒▒==▒==▒▒░▒
-        ▒▒==░=░░▒▒▒
-        ░▒░.░.░?░▒░
-        ▒░░.B!░░▒▒▒
-        ▒▒?▒░░░░?▒▒
-        ▒░░░▒=▒▒▒▒▒
+        â–’â–’â–’â–‘â–‘pâ–‘â–‘â–’â–’â–’
+        â–’â–’â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–’â–’
+        ==â–’â–‘â–’â–‘â–‘â–’â–’â–’â–’
+        .=â–’â–‘â–’â–’â–‘â–’â–’â–’=
+        ?.=â–’â–’â–’â–‘â–’â–’â–’â–’
+        ..=â–’â–‘â–‘â–‘â–’â–‘â–’â–’
+        .=â–’â–‘â–’â–‘â–’â–’â–’â–’â–’
+        â–’â–’â–’â–’â–’â–’â–’â–’â–‘â–’=
+        â–‘â–’â–’â–’â–’â–’=â–’â–’â–’â–’
+        â–’â–’â–‘â–‘â–’â–’â–’â–‘â–’â–’â–’
+        â–’â–’â–’â–’â–’â–’â–‘â–’â–’â–’â–‘
+        =â–’â–’â–’â–‘â–’â–‘â–’â–’==
+        â–’â–’â–’â–’â–’â–’â–’â–’=..
+        â–’â–’â–’â–‘â–’â–’â–’=..?
+        â–’â–‘â–‘â–’â–’â–’â–’=...
+        â–’â–’â–’â–’â–’â–’â–’â–’=..
+        â–’â–’â–’â–’â–’â–’â–‘â–’â–’=.
+        =â–’â–’â–’â–’â–’â–’â–’â–’â–’=
+        â–’==â–’â–’â–’â–’â–’===
+        â–’â–’â–’=â–’â–’â–’=â–’â–’â–’
+        â–’â–’==â–’==â–’â–’â–‘â–’
+        â–’â–’==â–‘=â–‘â–‘â–’â–’â–’
+        â–‘â–’â–‘.â–‘.â–‘?â–‘â–’â–‘
+        â–’â–‘â–‘.B!â–‘â–‘â–’â–’â–’
+        â–’â–’?â–’â–‘â–‘â–‘â–‘?â–’â–’
+        â–’â–‘â–‘â–‘â–’=â–’â–’â–’â–’â–’
     `
 }
 
@@ -1531,10 +1531,10 @@ env.stages['completed'] = {
         ....w....
         ....V....
         _.=_o_=..
-        ...░p░..=
-        .=░.░░...
-        ==░░░._=░
-        ?.=░=.=..
+        ...â–‘pâ–‘..=
+        .=â–‘.â–‘â–‘...
+        ==â–‘â–‘â–‘._=â–‘
+        ?.=â–‘=.=..
         ....=.?..
     `
 }
@@ -1550,10 +1550,10 @@ env.stages['underlobby'] = {
                 el.classList.remove("prop", "blocks")
                 el.classList.add('vesselmetal')
                 el.innerHTML = ""
-                el.setAttribute("slug", "♠")
+                el.setAttribute("slug", "â™ ")
             })
         } else {
-            document.querySelectorAll(".gridpiece[slug='☻']").forEach(el=>{
+            document.querySelectorAll(".gridpiece[slug='â˜»']").forEach(el=>{
                 el.classList.remove("blocks")
                 el.classList.add("nothing")
                 el.innerHTML = ""
@@ -1626,7 +1626,7 @@ env.stages['underlobby'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -1757,14 +1757,14 @@ env.stages['underlobby'] = {
         ....w....
         ....V....
         _.=_o_=..
-        ...░p░..=
-        .=░.░░☻..
-        =.░░░._=░
-        ░..░░.=..
-        ....░....
-        ..T♠♠♠1..
-        .W%♠♠♠2Ü.
-        ..tB♠{3..
+        ...â–‘pâ–‘..=
+        .=â–‘.â–‘â–‘â˜»..
+        =.â–‘â–‘â–‘._=â–‘
+        â–‘..â–‘â–‘.=..
+        ....â–‘....
+        ..Tâ™ â™ â™ 1..
+        .W%â™ â™ â™ 2Ãœ.
+        ..tBâ™ {3..
         ..R.s....
     `
 }
@@ -1877,7 +1877,7 @@ env.stages['vessel'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -2051,14 +2051,14 @@ env.stages['vessel'] = {
     },
 
     plan: `
-        ....┼
+        ....â”¼
         ..W..
-        Rt░T.
-        f░░░F
-        s░p░S
-        f░░░F
+        Rtâ–‘T.
+        fâ–‘â–‘â–‘F
+        sâ–‘pâ–‘S
+        fâ–‘â–‘â–‘F
         .321b
-        ..Ü..
+        ..Ãœ..
     `
 }
 
@@ -2114,7 +2114,7 @@ env.stages['vessel_short'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 html: `<div class="side back"></div>`,
@@ -2248,11 +2248,11 @@ env.stages['vessel_short'] = {
     plan: `
         .....
         ..W..
-        Rt░T.
-        .░░░.
-        s░p░S
-        .░░░.
-        ..Ü..
+        Rtâ–‘T.
+        .â–‘â–‘â–‘.
+        sâ–‘pâ–‘S
+        .â–‘â–‘â–‘.
+        ..Ãœ..
     `
 }
 
@@ -2893,7 +2893,7 @@ start
         so even if u die itll keep DA DAMAGE U DID 4EVER
         >%^}
         just break it apart then come back 4 geli
-        THEN WE SAIL 🏴‍☠️
+        THEN WE SAIL ðŸ´â€â˜ ï¸
     
     sourceless
         the radio clicks off.
@@ -3992,7 +3992,7 @@ env.e3a2.merchant.commerce.push({
         let qty = selection.batches || 1
 
         if(!addItem(selection, qty)) {
-            env.commerceNotice = `refunded - got ${selection.name}, but can't hold any more`
+            env.commerceNotice = `refunded - got ${selection.name}, but cannot hold any more`
             addItem("sfer_cube", 3)
         } else {
             env.commerceNotice = `exchanged 3 ${env.ITEM_LIST['sfer_cube'].name} for ${qty} ${selection.name}`
@@ -4014,7 +4014,7 @@ env.e3a2.merchant.commerce.push({
         let qty = selection.batches || 1
 
         if(!addItem(selection, qty)) {
-            env.commerceNotice = `refunded - got ${selection.name}, but can't hold any more`
+            env.commerceNotice = `refunded - got ${selection.name}, but cannot hold any more`
             addItem("sfer_cube", 3)
         } else {
             env.commerceNotice = `exchanged 3 ${env.ITEM_LIST['sfer_cube'].name} for ${selection.name}`

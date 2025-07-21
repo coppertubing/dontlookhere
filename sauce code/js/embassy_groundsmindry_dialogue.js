@@ -81,7 +81,7 @@ start
         and tozik, tending to gakvu's timestopper connector, seems concerned over her new complaints
             EXEC::vnp({cavik: "hide", bozko: "hide", tozik: "showleft", gakvu: "showleft"})
         she clutches her head as if afflicted by a larval migraine
-        it started only a θblink ago, not long after we started to descend, strangely
+        it started only a Î¸blink ago, not long after we started to descend, strangely
     
     gakvu
         another thing you cannot hear, huh?
@@ -312,8 +312,8 @@ env.dialogues["entrance"] = generateDialogueObject(`
 start
     sourceless
         the entry vein - our first step
-        one of the only paths into the groundsmindry θsegment's shell
-        the entire θsegment is a fixed shape, like golem maintenance, but out of structural necessity
+        one of the only paths into the groundsmindry Î¸segment's shell
+        the entire Î¸segment is a fixed shape, like golem maintenance, but out of structural necessity
         formed from a mixture of black corru and dead sediment, creating a unique marbling and shimmer
         the rare 'pale corru'... a misleading name, for it is closer to dead metal
         but it is ornate, as it ought to be, given its importance here
@@ -323,13 +323,13 @@ start
         some relief passes through our connection, until we get a better look
         luminescent swarm displays nearby flare with warnings
         our groundsmindry sigil is in disrepair, almost rotting
-        behind it, a wall-length θwindow pulses with bright nonsense, illuminating the area further
+        behind it, a wall-length Î¸window pulses with bright nonsense, illuminating the area further
         still working, trying to show something, but failing
     
     timestopper
         strange...
         operate according to the plan
-        cavik, tozik - check the terminals, the state of the θsegment
+        cavik, tozik - check the terminals, the state of the Î¸segment
         akizet will watch over you
         itzil, karik, bozko, miltza - check the doors to adjacent chambers
         if you find any foes, immediately retreat
@@ -341,7 +341,7 @@ start
     sourceless
         the team sets out to their duties
             EXEC::change("PAGE!!e4prog", 1);refreshStage({noFlash: true})
-        there is a θblink to examine the area
+        there is a Î¸blink to examine the area
 
     sys
         NOTICE::'marked entities contain dialogue unique to this stream segment'
@@ -445,10 +445,10 @@ start
         it looks like this terminal was disconnected from all input at some point
         i am trying to check its core, so that i may directly access what it knows
         specifically when it lost input
-        but if you mean around the θsegment, the display has drifted too much to tell
+        but if you mean around the Î¸segment, the display has drifted too much to tell
         one of the chambers looks damaged, but the rest seem fine
         if you ignore the flickering circle in the center
-        give me a θblink and we will have our answer
+        give me a Î¸blink and we will have our answer
         
     RESPONSES::akizet
         will do<+>END
@@ -465,13 +465,13 @@ start
         i linger near gakvu, watching over the team as they find what they can
             EXEC::setCam({x: 7, y: 2, rotation: 0});
         but something about the twist of her receptors in particular worries me
-        she stares into the θwindow... or perhaps beyond it
+        she stares into the Î¸window... or perhaps beyond it
     
     akizet
         what is it?
     
     sourceless
-        even with a closer look at the θwindow,
+        even with a closer look at the Î¸window,
         trying to make sense of what it shows is fruitless
             EXEC::setCam({x: 7.5, y: 1.5, rotation: 0})
         it is nothing, just squirming black and white pigmentation
@@ -490,7 +490,7 @@ start
     
     gakvu
         in my larval youth, throughout my work upon the okizika,
-        if the clouds parted at the start of a θgaze's work, and velzie's eye could see us plainly,
+        if the clouds parted at the start of a Î¸gaze's work, and velzie's eye could see us plainly,
         there was a song they made us sing, where our voices had to be in unison
             EXEC::env.noBgmDuck = true;
         the okidoia
@@ -511,12 +511,12 @@ start
         actually, i think i can feel it too
     
     sourceless
-        it grows stronger as i draw closer to the θwindow, and the effect is plain
+        it grows stronger as i draw closer to the Î¸window, and the effect is plain
             EXEC::setCam({x: 8, y: 1, rotation: 0});vfx({type: "okidoia", state: "mild"})
         like she says... it is not exactly a sound, yet i hear it
         as i listen--as i feel, i think of the signal, and i feel shreds of it in this song
         like half-remembered lyrics, forgotten again as they pass by
-        i almost feel as if i can <em>see</em> the song, in the swirl of the θwindow
+        i almost feel as if i can <em>see</em> the song, in the swirl of the Î¸window
         when i look back to gakvu, she meets my gaze with great concern
             EXEC::setCam({x: 7, y: 1.5, rotation: 0});
     
@@ -554,7 +554,7 @@ start
         was this the true purpose of the attack?
         or an emergency measure taken by vekoa?
         feeling the shared shock of tozik and gakvu, a part of me screams to flee
-        i seize cavik, glancing towards the θwindow again,
+        i seize cavik, glancing towards the Î¸window again,
     
     akizet
         cavik--how much time do we have?
@@ -569,7 +569,7 @@ start
         so we should not even have time to consider how to stop it
         but if the groundsmindry core is being used as the catalyst for it, i...
         i... i really cannot say
-        it could be θwinks, or the whole θgaze, or it could--it could explode into a contrivance right now!!
+        it could be Î¸winks, or the whole Î¸gaze, or it could--it could explode into a contrivance right now!!
         this is unprecedented, akizet! i really do not know...
         ...
         but i do know the core must still be intact
@@ -609,7 +609,7 @@ start
         even after all i have seen, since the advent of dull technology,
         this is still beyond me to fully grasp
         but his fear is all i need to know
-        gakvu stares into the light of the θwindow, searching
+        gakvu stares into the light of the Î¸window, searching
     
     gakvu
         but this does not make any sense
@@ -662,7 +662,7 @@ start
         it still is unreadable
     
     tozik
-        there is a part of the groundsmindry θsegment called the "dull mind"
+        there is a part of the groundsmindry Î¸segment called the "dull mind"
             EXEC::vnp({tozik: "focus"})
         it is the marked one, near the top
     
@@ -677,7 +677,7 @@ start
         its region is giving no output at all
         not reporting collapse, or damage
         just... not responding, no sensory signals, nothing
-        the structure of the entire θsegment otherwise seems fine
+        the structure of the entire Î¸segment otherwise seems fine
         the core chamber's status is far too incoherent to make any sense of
         but it is definitely still there
         and one other thing...
@@ -788,7 +788,7 @@ start
         mate loss is always terminal--often imminently
         surface hunters charging into the dark for vengeance, cavernfolk growing unresponsive...
         madness in many shapes, lovingly drawn by velzie's cruel claws
-        even with our larval flesh left behind, this curse follows us into θdeath eventually
+        even with our larval flesh left behind, this curse follows us into Î¸death eventually
         so while it is true that there is an intense driving force behind itzil now,
         a stray storm that may bend the veilk in our direction,
         i still fear it may be uncontrollable
@@ -952,7 +952,7 @@ start
     
     karik
         huh, no! 
-        the groundsmindry θsegment here is designed to have resources running through the walls and floor already
+        the groundsmindry Î¸segment here is designed to have resources running through the walls and floor already
         invisibly, through particular connections...
         so these should be unnecessary?
         the pod connections from the ceiling look right, 
@@ -1110,7 +1110,7 @@ start
         there is something...
     
     cavik
-        zÏö±÷4!!
+        zÃÃ¶Â±Ã·4!!
         tozik, that is membrane failure, we need to act quickly!
             EXEC::vnp({cavik: "show focus"})
         how did that happen from just one connection...?
@@ -1227,7 +1227,7 @@ start
     sourceless
         we must be rid of these foes quickly, so that i can help the others
         but corners of the room have become distorted, dangerous,
-        i am reminded of how we destroyed the foundation golem just a θwink ago
+        i am reminded of how we destroyed the foundation golem just a Î¸wink ago
         we should avoid them, but...
         so too can we use them, with carefully angled strikes
 
@@ -1449,8 +1449,8 @@ start
         the okidoia focuses upon me, maybe all of us
 
     okidoia
-        öu•:\ì ÷îcome|ï4;âŠ
-        x3Ã0ÆbeforeEÆ®s²7] –´dÌ|—Û
+        Ã¶uâ€¢:\Ã¬ Ã·Ã®come|Ã¯4;Ã¢Å 
+        x3Ãƒ0Ã†beforeEÃ†Â®sÂ²7] Ââ€“Â´dÃŒ|â€”Ã›
     
     sourceless quiet
         no, not focused on us--but around us, carrying thoughts
@@ -1462,7 +1462,7 @@ start
         this is a true attempt to communicate something...
     
     okidoia
-        pe@c¨e <YCNlev½âF
+        pe@cÂ¨e <YCNlevÂ½Ã¢F
     
     sourceless quiet
         the sensation of voices grasp at words in my mind,
@@ -1494,16 +1494,16 @@ start
         but they cannot be any more than parasites - no qou would ever abide this tragedy
         in his anger, the okidoia grew silent
         vekoa's receptors convey a sort of... frustration, maybe
-        it is always difficult to tell with θjut from afar
+        it is always difficult to tell with Î¸jut from afar
         the pause is heavy, all of us frozen in uncertainty
         she--it speaks again...not in words, but visions, a memory
             EXEC::vfx({type: "okidoia", state: "mild"});body.classList.add('vis-flash', 'vis1')
         
     okidoia
-        Ã#cq4žUbóZçÖ stands too far--a sharp limb pierces through my chest
+        Ãƒ#cq4Å¾UbÃ³ZÃ§Ã– stands too far--a sharp limb pierces through my chest
             EXEC::vfx({type: "okidoia", state: false});flash(true);body.classList.add("vis-flash-blur")
-        i collapse into the rising Š*pireblood
-        Ð!‡©XQ:hereßnLÙ²?˜õ(É›againÿ·ØÜƒ"§
+        i collapse into the rising Å *pireblood
+        Ã!â€¡Â©XQ:hereÃŸnLÃ™Â²?ËœÃµ(Ã‰â€ºagainÃ¿Â·Ã˜ÃœÆ’"Â§
     
     sourceless quiet
         my mind recoils as it passes, already slipping from memory
@@ -1524,15 +1524,15 @@ start
             EXEC::body.classList.add('vis2');body.classList.remove('vis1')
     
     okidoia
-        ÍûôŸw¡Kâ¤Ñlay upon the ascension <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">catafalques</span>, gazing up into velzie's eye
+        ÃÃ»Ã´Å¸wÂ¡KÃ¢Â¤Ã‘lay upon the ascension <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">catafalques</span>, gazing up into velzie's eye
             EXEC::flash(true);body.classList.add("vis-flash-blur")
-        the θjut hands me a mindcore connector, and then one to my tirii
+        the Î¸jut hands me a mindcore connector, and then one to my tirii
         i sense fear in our entangled receptors, and i laugh
-        embracing deÆÎÕqêath is a strange idea, but we know there is nothing to be afraid of
-        m¹ZŸŸK\¾Õ\AQëi6ìÏ
+        embracing deÃ†ÃŽÃ•qÃªath is a strange idea, but we know there is nothing to be afraid of
+        mÂ¹ZÅ¸Å¸K\Â¾Ã•\AQÃ«i6Ã¬Ã
         so i say: "tirii, do not be so nervous!"
         "i am here with you, and we will begin anew together"
-        se•~+•¥ŸèagainÚ±½9¶ÄwÁK‰
+        seâ€¢~+â€¢Â¥Å¸Ã¨againÃšÂ±Â½9Â¶Ã„wÃKâ€°
     
     sourceless quiet
         i must physically shake the vision away, reflexively gripping my head
@@ -1638,7 +1638,7 @@ start
         at once commanding a collapse of my qou-body
     
     okidoia
-        ‡ogether ÃqIüÑ±ú€×ðÿ}}œÈ?±
+        â€¡ogether ÃƒqIÃ¼Ã‘Â±Ãºâ‚¬Ã—Ã°Ã¿}}Å“Ãˆ?ÂÂ±
     
     sourceless quiet
         ...
@@ -1767,7 +1767,7 @@ start
         we convene near the inoperable dull mind entrance
         from it pools black spireblood, implying a collapse within
         it obscures the luminescent floor pigmentation, leaving us with sparse ambient light
-        we are lit only by the θwindow and the horrific dull light of the overlap
+        we are lit only by the Î¸window and the horrific dull light of the overlap
             EXEC::setCam({x: 11, y: 4, rotation: 45})
         bozko watches over the path behind us
         while tozik has started to stand, still looking ill
@@ -1849,14 +1849,14 @@ start
         i must tell you something
             EXEC::changeBgm(env.grm.music_admission, {length: 10000, seek: 0})
         before... when we discovered the spike in the call,
-        a few θgazes later, a self-delivered message found my quarters
+        a few Î¸gazes later, a self-delivered message found my quarters
         it was a threat - something to truly ensure i did not speak
         why me, i do not know... but you must recall how strangely i acted!
         i wanted to find who it was, or if anyone else had received something like it... 
         if any of it was real
         but i was the only recipient, as far as i could see...
             EXEC::env.noBgmDuck = false;
-        so i crept into the materials θsegment and fetched an archived design
+        so i crept into the materials Î¸segment and fetched an archived design
         a converter between our thoughts and dead metal, for the cousins' technology
         i had it constructed, i shared it with my bright contact
         and it worked--so i continued a branch of our work in secret
@@ -1966,7 +1966,7 @@ ____END
         but it all makes sense now
     
     sourceless
-        she pauses, choosing to find support against the groundsmindry chamber θwindow
+        she pauses, choosing to find support against the groundsmindry chamber Î¸window
         gaze cast down to the sludge of the broken door
         whatever she is about to do is difficult for her, too...
     
@@ -2225,7 +2225,7 @@ ____END
         there is no disruption, even with the overlap right next to us...
     
     sourceless
-        gakvu turns to face the blinding absence beyond the θwindow
+        gakvu turns to face the blinding absence beyond the Î¸window
     
     gakvu
         yes, it...
@@ -2323,7 +2323,7 @@ start
         ...hello?
     
     sourceless
-        just as i spoke, a qou--a once-θjut, clearly intact and alive, leaps out of the gap!
+        just as i spoke, a qou--a once-Î¸jut, clearly intact and alive, leaps out of the gap!
             EXEC::vnp({idril: "show far"})
         pointing a crumbling, flickering disabler at us
         it is so worn, i cannot tell if it even has a single use left
@@ -2370,7 +2370,7 @@ start
             EXEC::vnp({tozik: "show", idril: "focus"})
         quickly moving to address our wounds and feed our limbs
         she seems interested in his wounded state, immediately taking notice that something ails him
-        the eye of a θjut, i suppose
+        the eye of a Î¸jut, i suppose
     
     tozik
         thanks...
@@ -2388,7 +2388,7 @@ start
         how did you all get here...?
     
     sourceless
-        this θjut, she speaks so strangely, like she has just awoken from a great sleep
+        this Î¸jut, she speaks so strangely, like she has just awoken from a great sleep
         with such sluggish movements, how has she survived so long...?
     
     akizet
@@ -2640,7 +2640,7 @@ start
         oh, yes! perfect!!
             EXEC::vnp({cavik: "showright far"})
         let us do that!
-        and then we can also put each in one of these containers, so that they are more disguised!
+        and then we can also put one in each of these containers, so that they are more disguised!
     
     idril
         ah, smart, yeees!
@@ -2659,7 +2659,7 @@ start
     
     karik
         cavik, do not worry!
-        the groundsmindry θsegment is built out of a rigid pale corru shell,
+        the groundsmindry Î¸segment is built out of a rigid pale corru shell,
         and within it, each chamber is totally isolated--a safety precaution
         it is standard for vertical spires
         the chambers will collapse, but all it will do is block our paths
@@ -2728,7 +2728,7 @@ start
         returning her gaze to me only through a sidelong glance from the corner of her eye
     
     idril
-        that is what happened to your θjut friend, right?
+        that is what happened to your Î¸jut friend, right?
         sorry... i was waiting for a good time to bring it up
         we called it the contact affliction
         i am still not really sure what actually causes it, but...
@@ -2760,7 +2760,7 @@ start
         there was at least some peace in knowing final death would be quick, before...
         tozik is least deserving of this--how could we have been so careless?
         and after all that talk of infection, too...
-        this θdeathly state of ours has made us too sure of our own resilience
+        this Î¸deathly state of ours has made us too sure of our own resilience
         he only slowly dips his receptors in response
         perhaps if we act quickly enough, we may find some help for him after our success?
         gakvu approaches him, speaking quietly--some reassurances, i am certain
@@ -2970,7 +2970,7 @@ foes
         really, it is more of a 'pulling' than a 'displacement', if the theory is right
         but i will spare you all the specifics, hehe
         it would have to be that the ceremony was specifically, consciously grasping the chamber you were in
-        like grabbing a <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION FAILED">A6qw­ý¢è</span> through its protective membrane, but without breaking it
+        like grabbing a <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION FAILED">A6qwÂ­Ã½Â¢Ã¨</span> through its protective membrane, but without breaking it
     
     sourceless
         cavik has paused his work, fascinated
@@ -2981,7 +2981,7 @@ foes
             EXEC::vnp({cavik: "hide"})
         tendrils from the ceremony that would normally be structuring themselves outwards,
         acting like anchors for its growth,
-        they acted abberantly, curving around the overlap--into the groundsmindry θsegment as a whole
+        they acted abberantly, curving around the overlap--into the groundsmindry Î¸segment as a whole
         deviating from the ceremony, folding back into it, making...
         hmm, making...
         sorry, it is hard to describe the dull plane in so few words, ehehe
@@ -3119,8 +3119,8 @@ ceremony
         similar to incoherence, actually, which is why i did not realize it right away...
         but as i looked over the displays, it formed in my mind as a possible cause
         only reinforced by the distortion being in the same place
-        especially with the addition of that θsegment map tozik was clawing at...
-        ah, and the θwindow's display, too!
+        especially with the addition of that Î¸segment map tozik was clawing at...
+        ah, and the Î¸window's display, too!
         the realization that it was a ceremony was like a veilk stomping on my head!
 
     akizet
@@ -3187,7 +3187,7 @@ start
         the only choice... the only real choice,
         is me, akizet
         and now i have, somehow, contracted the only qou illness in history
-        which apparently tears down its victims to pure madness within θwinks
+        which apparently tears down its victims to pure madness within Î¸winks
     
     sourceless
         i look to gakvu for anything else, some other light to look to
@@ -3234,7 +3234,7 @@ start
         it normally would be so unlike him,
         he has always been the one who brings forth conversation for its own sake
         enough to befriend tozik, long viewed as a great achievement
-        but this θgaze has made him unrecognizable
+        but this Î¸gaze has made him unrecognizable
         it is not that he changed...
         it was some part of him long detached, buried, uncovered by this tragedy
         forming the whole of his person, unseen before, perhaps not by anyone since he left obeski
@@ -3266,10 +3266,10 @@ start
         and why would she not? you have seen the carnage above us
         i have been searching for a reason...
         but there has been no reason before, why would there be one now?
-        why did we ever think that θdeath would free us from our larval problems?
+        why did we ever think that Î¸death would free us from our larval problems?
         perhaps all of this bloodshed was stupid chance, as much as it was back home
         a single spore landing in the right place on a wall to kill everyone
-        to have us tear each other apart after so many θeyes of progress, so many θeyes of happiness
+        to have us tear each other apart after so many Î¸eyes of progress, so many Î¸eyes of happiness
         to... to have my gauntlets around the necks of monsters formed from the flesh of my friends
         until the bitter end, where the final memory of us will be lifeless sludge polluting the cousin's waters
         
@@ -3299,7 +3299,7 @@ start
         i pull him into an embrace
         he is silent, unreciprocal, but...
         the tension in his receptors' stance is lessened
-        i only relent and speak after a θblink of peace
+        i only relent and speak after a Î¸blink of peace
     
     akizet
         bozko,
@@ -3336,7 +3336,7 @@ start
         me, my sisters and brothers, it was like we became invisible to him
         he told me once that it was like the world was fading around him
         an eye torn from his head
-        and he passed within θeyes, quiet, not ill, just unable to continue
+        and he passed within Î¸eyes, quiet, not ill, just unable to continue
         so... yes, i am fine, and i know it was not my fault
         it just feels unfair
         ...
@@ -3354,7 +3354,7 @@ start
     miltza
         that is what i want to believe, karik
         whether it is in there, or somewhere else beyond velzie's stage
-        in the end, our lives and θdeaths are only dreams
+        in the end, our lives and Î¸deaths are only dreams
         and whatever it is that makes us up, it returns to the same place when we wake
         surely to dream again in time
     
@@ -3470,7 +3470,7 @@ go
     
     tozik
         i will continue
-        if i am lost, then i would have my final θwinks be in service of our plan
+        if i am lost, then i would have my final Î¸winks be in service of our plan
         
     RESPONSES::akizet
         then let us go<+>END
@@ -3551,10 +3551,10 @@ start
         cavik falls silent, and before we have time to investigate...
     
     archivist
-        «½8ësearch teamÍ»?
-        }íspeaks clearlyÿB  ut²åÿ±á
-        ¬¨»no time for distractions
-        co m e w€ºù|±|h m e
+        Â«Â½8Ã«search teamÃÂ»?
+        }Ã­speaks clearlyÃ¿B  utÂ²Ã¥Ã¿Â±Ã¡
+        Â¬Â¨Â»no time for distractions
+        co m e wâ‚¬ÂºÃ¹|Â±|h m e
 
     sourceless
         faint arcs lead from their silhouette into the light
@@ -3611,10 +3611,10 @@ start
         as if we have been striking them this whole time
     
     archivist
-        ¤±Òÿ=WA ST ING %‰¶š TI ME
-        [¶ÿ=>drastic measure)%‰
-        ÷no!²²ave rs i on¬_.g?ç
-        )§=X«všrpers®¿æshÞ»
+        Â¤Â±Ã’Ã¿=WA ST ING %â€°Â¶Å¡ TI ME
+        [Â¶Ã¿=>drastic measure)%â€°
+        ÂÃ·no!Â²Â²ave rs i onÂ¬_.g?Ã§
+        )Â§=XÂ«vÅ¡rpersÂ®Â¿Ã¦ÂshÃžÂ»
 
     sourceless
         they step forward, tumbling off the tether
@@ -3924,7 +3924,7 @@ start
     
     sourceless
         her receptors twist into a sour coil
-        for a θblink, she stares up into the madness of the overlap, past me
+        for a Î¸blink, she stares up into the madness of the overlap, past me
 
     telyu
         yeah...
@@ -3987,7 +3987,7 @@ start
         where gakvu might be annoyed at what surely has been incessant questioning,
         miltza is clearly entertained, answering kindly
         despite the circumstance, she is without fear for the first time since we met
-        at least, for this θblink
+        at least, for this Î¸blink
 
     miltza
         ahehe, well, there are internal theories, yes...
@@ -4104,7 +4104,7 @@ start
         but find my claw colliding with the wall that ought to be here
         in the distance, i see the display of the terminal warping slightly
         the same distortion that could be caused by simply waving a hand in it
-        i step back, taking a θblink to recalibrate my eyes...
+        i step back, taking a Î¸blink to recalibrate my eyes...
         to no effect
         tozik's head hovers closer to the wall, twisting upside-down, eyes similarly adjusting
     
@@ -4246,7 +4246,7 @@ start
         well, it is more like, ah...
     
     sourceless
-        idril withdraws from the box to think for a θblink
+        idril withdraws from the box to think for a Î¸blink
     
     idril
         like prying open a very resilient gate!
@@ -4367,7 +4367,7 @@ start
         as long as you do not expect me to fight
             EXEC::vnp({telyu: "show"})
         i will simply help cover movements
-        perhaps breaking θwindows will be a good start
+        perhaps breaking Î¸windows will be a good start
         warped as they may be, they are still a part of the structure...
         and may bear eyes to see
         yes, i will creep ahead to tear them away
@@ -4392,12 +4392,12 @@ start
     
     karik
         ah! really? thank you, telyu!! yes! let us do that!!
-        to think i would share bodies for the first time this θgaze,
+        to think i would share bodies for the first time this Î¸gaze,
         only to do it twice!
     
     telyu
         skin, not body
-        i would not let you drive this qou-body for a θblink, kequvi
+        i would not let you drive this qou-body for a Î¸blink, kequvi
     
     karik
         sure, sure!
@@ -4629,9 +4629,9 @@ start
         especially given the heart's precarious state!
         it is maybe the chamber under the most pressure, from my understanding
         and as i turn back to investigate it further,
-        the core θwindow, barely visible through the distortion, flickers from damage
+        the core Î¸window, barely visible through the distortion, flickers from damage
             EXEC::setCam({x: 4, y: 3, rotation: -60});
-        telyu appears with a shimmer in the distant corner, a claw half-dug in the θwindow's malleable flesh
+        telyu appears with a shimmer in the distant corner, a claw half-dug in the Î¸window's malleable flesh
             EXEC::setCam({x: 10, y: 2, rotation: -80});vnp({telyu: "show far"})
         or, stuck? she tugs at it with some effort, 
         so, as the others investigate the state of the heart, i go to her
@@ -4644,7 +4644,7 @@ start
         oh--yes, please! 
             EXEC::vnp({telyu: "show", hideStage: true})
         just as another precaution, i have been breaking these projectors...
-        the θwindows, they have the capability to give two-way sensory data
+        the Î¸windows, they have the capability to give two-way sensory data
         we may stand within the overlap, but the fewer methods vekoa has to watch us, the better!
         already got the one in the spine!
         but i am trying to sever a vein i know is in here, and my claws are not sharp enough!
@@ -4653,14 +4653,14 @@ start
     
     sourceless
         strangely thorough, given the circumstances, but it is not unwelcome
-        i reach through the softened surface of the θwindow near her claws, pushing through its corroyi-like flesh
+        i reach through the softened surface of the Î¸window near her claws, pushing through its corroyi-like flesh
             EXEC::vn.done();setCam({x: 12, y: 1.5, rotation: 0});
         and sure enough, it is there, so i begin to press with both of my claws, 
         slowly puncturing what must be a critical vein...
         once i get a grip, she recedes, allowing me to perform my sabotage
         but i still must wonder - how did she learn to do this?
-        it is really quite far back there, beyond the point any internal connector would be in a regular θwindow
-        perhaps a quirk of the circulation within this θsegment's shell
+        it is really quite far back there, beyond the point any internal connector would be in a regular Î¸window
+        perhaps a quirk of the circulation within this Î¸segment's shell
     
     telyu
         thank you, akizet
@@ -4692,9 +4692,9 @@ start
         
     sourceless
         with a flash of realization and panic, the thought manifests: did she really need my help, just now?
-        the room is so warped, these θwindows must hardly be a concern at all
+        the room is so warped, these Î¸windows must hardly be a concern at all
         did she simply want to get me alone?
-        then--what is it exactly within this θwindow that i am puncturing?
+        then--what is it exactly within this Î¸window that i am puncturing?
         is this a trap? does she blame me? is this vengeance for her lost team?
         what happens when i let go?
     
@@ -4735,7 +4735,7 @@ start
         so what is telyu really saying, here? what does she know, anyway?
         how could anyone have predicted i would reach for that converter to give to gordon?
         it is impossible to have so much foresight
-        she glances towards my claws, still submerged in the θwindow
+        she glances towards my claws, still submerged in the Î¸window
             EXEC::vnp({telyu: "show shiftleft", hideStage: false, bg: false})
     
     telyu
@@ -4757,7 +4757,7 @@ start
         are you all right over there?
     
     sourceless
-        kÆíáÐ
+        kÃ†Ã­Ã¡Ã
         i must have drawn attention, so i turn and call to her,
     
     akizet
@@ -4837,7 +4837,7 @@ start
         
     sourceless
         tozik is silent
-        after a θblink, he merely starts to shake his head, struggling to place words
+        after a Î¸blink, he merely starts to shake his head, struggling to place words
     
     tozik
         and...
@@ -4906,7 +4906,7 @@ start
         if we can save anyone
     
     sourceless
-        this θgaze has changed him so deeply
+        this Î¸gaze has changed him so deeply
         to think he is capable of such concern for us...
         or perhaps our mundane work in research was simply never enough to let this shine through
         his will is inspiring, enough to allow me to accept his choice
@@ -4921,7 +4921,7 @@ start
     tozik
         i know
         it will be done
-        time is short, but... every θblink i can help, i will
+        time is short, but... every Î¸blink i can help, i will
     
     RESPONSES::akizet
         stay strong<+>END
@@ -4985,7 +4985,7 @@ start
         bozko sets the bomb beside the central terminal, stepping away
             EXEC::vn.done();setCam({x: 5, y: 5, rotation: 225});
         tozik limps closer, examining the sides of the terminal...
-        and so the θjut set to their work, while miltza lingers near the door to the spine, keeping watch
+        and so the Î¸jut set to their work, while miltza lingers near the door to the spine, keeping watch
         a wise decision, actually - i move to stand near the opposite side, just in case
             EXEC::setCam({x: 13, y: 3, rotation: 130})
         gakvu comes to join me
@@ -5008,7 +5008,7 @@ start
     sourceless
         i begin to laugh, and so does she
         for i know this so well
-        but our laughter is cut short when the θjut begin to shout
+        but our laughter is cut short when the Î¸jut begin to shout
         
     idril
         oh--<em>CAREFUL!!</em>
@@ -5027,7 +5027,7 @@ start
         something... explodes...
             EXEC::play("dull", 0.5);flash(true);ratween(env.bgm, 0.5);vn.done()
         ...
-        my senses take a θblink to respond...
+        my senses take a Î¸blink to respond...
             EXEC::refreshStage({noFlash: true, specificPlan: "collapsing"});setCam({x: 13, y: 3, rotation: 130});env.grm.music_runningoutoftime.rate(0.5);toggleBgm(env.grm.music_runningoutoftime);env.bgm.seek(40)
         but when i recover, my movements are slowed, burdened with the weight of sludge
             EXEC::content.classList.add('heartbreak');flash(false)
@@ -5130,7 +5130,7 @@ start
         the room distorts further, space stretching and warping, never tearing
             EXEC::change("PAGE!!e4prog", 12);refreshStage({specificPlan: "helping"});setCam({x: 5, y: 3})
         and down the hall, twisted shapes appear to us--more foes to be dealt with, slowly forming
-        ¥¡åu
+        Â¥Â¡Ã¥u
         vekoa must know we are attempting something drastic
         our advantage is lost
         and worse still, the least experienced of our team are alone
@@ -5589,11 +5589,11 @@ start
     
     okidoia
         i am   h e r e
-        ÙO²7zÜÜ¹R0:Rstill time
+        Ã™OÂ²7zÃœÃœÂ¹R0:Rstill time
             EXEC::flash(true);body.classList.add("vis-flash-blur")
-        fear what must be done‰-<˜°×gì
-        ØE±¡only ¼  chance³†@
-        xü›û co m e w€ºù|±|h m e
+        fear what must be doneâ€°-<ËœÂ°Ã—gÃ¬
+        Ã˜EÂ±Â¡only Â¼  chanceÂ³â€ @
+        xÃ¼â€ºÃ» co m e wâ‚¬ÂºÃ¹|Â±|h m e
             EXEC::flash(false)
 
     cavik
@@ -5713,7 +5713,7 @@ ____SHOWIF::['PAGE!!cavikblunder', false]
 ____END
 
     cavik
-        £‡¦•ê&!!
+        Â£â€¡Â¦â€¢Ãª&!!
     
     akizet
         stay calm
@@ -5806,9 +5806,9 @@ start
             EXEC::env.noBgmDuck = false;
 
     okidoia
-        xü›ûØõ
-        ¤‡*ç˜@V_ik
-        1ìŠŸ=÷)¥n
+        xÃ¼â€ºÃ»Ã˜Ãµ
+        Â¤â€¡*Ã§Ëœ@V_ik
+        1Ã¬Å Å¸=Ã·)Â¥n
     
     sourceless
         her receptors, barely visible, hang with regret
@@ -5823,7 +5823,7 @@ start
         you must finish it
 
     sourceless
-        he is frozen for a θblink
+        he is frozen for a Î¸blink
         but with my encouragement, he produces one last explosive, 
         tossing it gently towards miltza and backing away--something he may detonate at will
             EXEC::env.rpg.actors.cavik.piece.stepToCoords(7,4);
@@ -5837,9 +5837,9 @@ start
         ...
 
     okidoia
-        ¤¾k_¬
-        dø›æ_:nó•t¦
-        @w½’'^½ry
+        Â¤Â¾k_Â¬
+        dÃ¸â€ºÃ¦_:nÃ³â€¢tÂ¦
+        @wÂ½â€™'^Â½ry
 
     sourceless
         its senseless signal gives him some pause, but when she moves again...
@@ -5998,7 +5998,7 @@ start
     
     gakvu
         it does feel like it is growing more distant
-        θblink by θblink
+        Î¸blink by Î¸blink
     
     idril
         i suspect that the ceremony is drawing from the lesser mind!
@@ -6028,10 +6028,10 @@ start
         gakvu, can you...
     
     gakvu
-        yeah, just... give me a θblink, would you?
+        yeah, just... give me a Î¸blink, would you?
     
     akizet
-        we do not have a θblink, gakvu
+        we do not have a Î¸blink, gakvu
         if you cannot move with us, then--
     
     sourceless
@@ -6079,7 +6079,7 @@ continue
         all that remains is for us to move to the lesser mind
         the path to the movefriend still stands, and i am sure it is still there...
         and looking down it inspires a great melancholy within me
-        this place... everything we have done here, for these great θeyes
+        this place... everything we have done here, for these great Î¸eyes
         it will all be gone soon, even if we succeed
         this moment is the end of everything as it was
         ...but i must not let myself be distracted
@@ -6206,7 +6206,7 @@ start
         something was pulling at them, they said! even within the silence!
         one even evacuated their body, thinking it would help, but, noo
         actually, their decline became even more rapid
-        there was one case, a θjut who was able to stand again, who went out to help the others
+        there was one case, a Î¸jut who was able to stand again, who went out to help the others
         but according to them, she was not like this for long
         you want to make tozik the interim groundsmind, right?
 
@@ -6378,7 +6378,7 @@ start
         hello yes! yes! i am right next to the door on my side!
         telyu is helping tozik... he will not be joining us for this
         all right, we are entering now
-        prepare yourself, and enter in a θblink
+        prepare yourself, and enter in a Î¸blink
         
     sourceless
         and so we proceed....
@@ -6397,7 +6397,7 @@ start
             EXEC::env.rpg.actors.akizet.piece.moveToCoords(3, 4, {follow: false});flash(true);forcePlay("dull");midCombatActorAdd(env.rpg.enemyTeam, "lesser_itzil", "left")
             WAIT::2000
             THEN::env.rpg.actors.akizet.piece.moveToCoords(3, 4, {follow: false});flash(false);midCombatActorRemove(env.rpg.actors.cutscenedriver)
-        a powerful dull pulse blasted through the corridor
+        a powerful dull pulse blasts through the corridor
         one that could only have come from...
         our golem
             EXEC::env.rpg.actors.lesser_itzil.piece.focusOnTile()
@@ -6483,11 +6483,11 @@ start
             EXEC::body.classList.add('vis-flash', 'vis4')
     
     okidoia::dark
-        m¹ZŸŸK\¾Õ\AQëi6ìÏback upon the <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">catafalques</span> lie our bodies
+        mÂ¹ZÅ¸Å¸K\Â¾Ã•\AQÃ«i6Ã¬Ãback upon the <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">catafalques</span> lie our bodies
             EXEC::flash(true);body.classList.add("vis-flash-blur")
         their hearts still beat, though there is nothing within
         for we are here now, together gazing down at them
-        and we find there is nothing to do but laughÍûôŸw¡Kâ¤Ñ
+        and we find there is nothing to do but laughÃÃ»Ã´Å¸wÂ¡KÃ¢Â¤Ã‘
 
     sourceless
         this is no mere performance for us
@@ -6537,8 +6537,8 @@ start
             EXEC::env.rpg.actors.lesser_itzka.sprite.classList.remove("visible")
     
     okidoia::dark
-        Æ®ki%z7
-        pl@¨e <se½
+        Ã†Â®ki%z7
+        pl@Â¨e <seÂ½
 
     sourceless
         i have had enough of this terrible life
@@ -6701,10 +6701,10 @@ start
         like i said, even if this is only an imitation of her... that would be stupid
         so, the last structures it uses to hold open the overlap are probably snapping right now
         freeing up the core!
-        anyway, it could be a few θblinks, or--
+        anyway, it could be a few Î¸blinks, or--
 
     tozik
-        we do not have a few θblinks
+        we do not have a few Î¸blinks
             EXEC::vnp({tozik: "show far", telyu: "show far"})
 
     sourceless
@@ -6768,7 +6768,7 @@ start
         any time i think of what her plan could be,
         there is this quiet doubt within, one that has grown as we have seen more
         a suspicion that slaughter is not the right word
-        but no - the horror in the θsegments above are plain reminders
+        but no - the horror in the Î¸segments above are plain reminders
         what we are doing is right, and we must press on
         for the sake of any who still live
         there is a moment of heavy silence as i look amongst the team
@@ -6853,11 +6853,11 @@ start
             EXEC::vnp({tozik: "show focus"})
 
     tozik
-        get the dis¤bler
+        get the disÂ¤bler
         but i... have an idea
-        cavik„¯ you say you have not fought any real golems lately, but...
+        cavikâ€žÂ¯ you say you have not fought any real golems lately, but...
         you did
-        grant me a θblink
+        grant me a Î¸blink
 
     sourceless
         they pause, watching him point to...
@@ -6962,10 +6962,10 @@ start
         though his feverish work is fascinating, his muttering inspires more worry
     
     tozik::mutter
-        ...surf‰àºce mist condensing on the sentries...
+        ...surfâ€°Ã Âºce mist condensing on the sentries...
             EXEC::vnp({tozik: "show"})
-        ...veilk crawl by,‰_+ they avoid the gate...
-        ...the pulse... the smoke... matter ¡”)nverted...
+        ...veilk crawl by,â€°_+ they avoid the gate...
+        ...the pulse... the smoke... matter Â¡â€)nverted...
 
     sourceless
         each phrase starts and ends with a strange distortion
@@ -6977,7 +6977,7 @@ start
         are you...
 
     tozik::mutter
-        ...­%¼mploded by the pulse...
+        ...Â­%Â¼Âmploded by the pulse...
 
     sourceless
         without pause, his voice rises to greet me
@@ -6989,7 +6989,7 @@ start
         it seems to be helping me stay present
 
     tozik::mutter
-        ...and the pulse]›×§ drew more of them...
+        ...and the pulse]â€ºÃ—Â§ drew more of them...
     
     tozik
         akizet, there is no time to speak
@@ -6997,14 +6997,14 @@ start
         and i know you will hold my death as your fault
 
     tozik::mutter
-        ...dispersed, sliced apart|!— to their cheers...
+        ...dispersed, sliced apart|!â€” to their cheers...
 
     tozik
         but know that i am so happy to have learned the truth
         if you carry it to everyone else...
         
     tozik::mutter
-        ...¦…¯+covering the entry of a surface runner...
+        ...Â¦â€¦Â¯+covering the entry of a surface runner...
 
     tozik
         there will be nothing to forgive
@@ -7021,7 +7021,7 @@ start
     
     tozik::mutter
         ...accomplished our mission...
-        ...a n•¯€w age of safety...
+        ...a nâ€¢Â¯â‚¬w age of safety...
 
     RESPONSES::akizet
         ...<+>END
@@ -7103,7 +7103,7 @@ start
     gakvu
         all of this running around, sabotaging...
         it is truly funny, akizet
-        this is the very thing i chose to escape so many θeyes ago
+        this is the very thing i chose to escape so many Î¸eyes ago
         velzie's fondness for repetition is truly nauseating
         if this works out, and we really can stop the collapse...
         maybe it will be a sign i never should have stopped, huh?
@@ -7214,7 +7214,7 @@ start
         that aside... groundsmindry and a ceremony alone would not cause the strange affliction we have seen
         which is something entirely new!
         really akizet, it is all so fascinating and unprecedented!
-        i am sure i will be studying this, for θeyes and θeyes!
+        i am sure i will be studying this, for Î¸eyes and Î¸eyes!
         assuming we survive, of course, hehe
 
     sourceless
@@ -7310,7 +7310,7 @@ gordon
     
 ____SHOWIF::["gol__s_calls-gordon", false]
     sourceless
-        œ›¤€ù
+        Å“â€ºÂ¤â‚¬Ã¹
         at least he is probably still within his city...
         safe, surely
         the cousins do not deserve this horror
@@ -7393,9 +7393,9 @@ isabel
     akizet
         it might be, yes
         isabel, i do not have much time, 
-        already have i endangered myself by spending this θblink to call you
+        already have i endangered myself by spending this Î¸blink to call you
         but i could not leave you without this closure
-        you have been such a kind light in my θdeath
+        you have been such a kind light in my Î¸death
         thank you, for everything
         one way or another, we will meet again in time
 
@@ -7505,7 +7505,7 @@ ____SHOWIF::["PAGE!!grmkcall", false]
     
     kazki
         you are still at the embassy?!
-        no, no, akizet, you <em>need to go now,</em> you cannot s«ÓŽ©
+        no, no, akizet, you <em>need to go now,</em> you cannot sÂ«Ã“Å½Â©
             WAIT::1500
             AUTOADVANCE::
     
@@ -7527,7 +7527,7 @@ ____SHOWIF::["PAGE!!grmkcall", false]
         and i cannot find her again
     
     sourceless
-        for a θblink, i am paralyzed
+        for a Î¸blink, i am paralyzed
         she is in danger, that much is clear, 
         but what does it mean, that only she was struck by that signal?
         still on earth, presumably, given what she said, so...
@@ -7577,7 +7577,7 @@ time
     tozik
         wait...
             EXEC::vnp({tozik: "show far focus"})
-        ca…¸¾vik
+        caâ€¦Â¸Â¾vik
         come, take this
 
     sourceless
@@ -7586,10 +7586,10 @@ time
             EXEC::vnp({tozik: "defocus far", cavik: "show far", bozko: "hide", gakvu: "hide"})
         
     tozik
-        it is sa¤úºœfe to handle, do not worry...
+        it is saÂ¤ÃºÂºÅ“fe to handle, do not worry...
     
     tozik::mutter
-        ...¯*twice-shot, shell parted¦…,...
+        ...Â¯*twice-shot, shell partedÂ¦â€¦,...
 
     sourceless
         cavik comes to take it, though it does not seem to be as light as tozik made it appear
@@ -7605,14 +7605,14 @@ time
         i trust tozik - it should still be a boon in the coming conflict
 
     tozik
-        i... in•œrted it
-        it should on…‡•ly affect the ceremony
-        including vekoa'×§ monsters... 
-        use it–.›_ to sever the veins*•–¦
+        i... inâ€¢Å“rted it
+        it should onâ€¦Ââ€¡ÂÂâ€¢ly affect the ceremony
+        including vekoa'Ã—Â§ monsters... 
+        use itâ€“.â€º_ to sever the veins*â€¢â€“Â¦
         strike them all down
     
     tozik::mutter
-        ...t]h.e swarm eliminated¾|...
+        ...t]h.e swarm eliminatedÂ¾|...
     
     sourceless
         cavik looks on appreciatively, but hesitates to say anything
@@ -7675,13 +7675,13 @@ time
             EXEC::body.classList.add('vis-flash', 'vis5')
 
     okidoia
-        s/:£tÕp
+        s/:Â£tÃ•p
             EXEC::env.rpg.setCam({x: 8, y:9, playerRotation: 0, playerTilt: -20});vfx({type: "okidoia", state: "mild"})
-        •¶Leµ)¬sÊ
-        i÷¾(Ïù a m¯¯]..†r+ý÷^ænG
+        â€¢Â¶LeÂµ)Â¬sÃŠ
+        iÃ·Â¾(ÃÃ¹ a mÂ¯Â¯]..â€ r+Ã½Ã·^Ã¦nG
             EXEC::flash(true);body.classList.add("vis-flash-blur")
-        å¡ùÖÊÜiÄÈ minds entwined, accepting the connection, i realize,
-        it is not an accusation - it is a ña3ÙæmêÓ§°Ü÷ßR
+        Ã¥Â¡Ã¹Ã–ÃŠÃœiÃ„Ãˆ minds entwined, accepting the connection, i realize,
+        it is not an accusation - it is a Ã±a3Ã™Ã¦mÃªÃ“ÂÂ§Â°ÃœÃ·ÃŸR
 
     sourceless
         desperate, fragmented words...
@@ -7777,8 +7777,8 @@ start
         exposing our next target
 
     okidoia
-        IÜ4‡þøïaøknow what must be done
-        the only way t¥¨äÍ£R˜Òw"
+        IÃœ4â€¡Ã¾Ã¸Ã¯aÃ¸know what must be done
+        the only way tÂ¥Â¨Ã¤ÃÂ£RËœÃ’w"
 
     sourceless
         vekoa's illusions around us have broken apart, splitting into countless minute strands,
@@ -7874,10 +7874,10 @@ start
             EXEC::body.classList.add('vis-flash', 'vis6')
 
     okidoia
-        ¤Âæ©ceded control to ®÷·¤¤…
+        Â¤Ã‚Ã¦Â©ceded control to Â®Ã·Â·Â¤Â¤â€¦
             EXEC::flash(true);body.classList.add('vis-flash-blur')
-        to save them±y™£V†
-        N©÷·./ ò¤,_)Ë Í‡)šš« DËÅ?}
+        to save themÂ±yâ„¢ÂÂ£Vâ€ 
+        NÂ©Ã·Â·./ Ã²Â¤,_)Ã‹ Ãâ€¡)Å¡Å¡Â« DÃ‹Ã…?}
     
     sourceless
         what is she really trying to tell me?
@@ -8104,10 +8104,10 @@ start
     okidoia::dark
         S  T O P
         R E TU RN
-        PLæE§½
-        IÜ4‡þøïaøknow what must be done
-        the only way to recover¥¨äÍ£R˜Òw"
-        É…VE  rýÒ;-nË
+        PLÃ¦EÂ§Â½
+        IÃœ4â€¡Ã¾Ã¸Ã¯aÃ¸know what must be done
+        the only way to recoverÂ¥Â¨Ã¤ÃÂ£RËœÃ’w"
+        Ã‰â€¦VE  rÃ½Ã’;-nÃ‹
 
     sourceless quiet
         clearer meaning now... but it does not matter
@@ -8131,8 +8131,8 @@ start
         is a bone-chilling hatred, blame, burning into me
         
     okidoia::dark
-        cÅ4Ä–sT ý æôr,§½ÿlf
-        ÄS¿De
+        cÃ…4Ã„â€“sT Ã½ Ã¦Ã´r,Â§Â½Ã¿lf
+        Ã„SÂ¿De
 
     sourceless quiet
         if she pulled her body out, to manipulate it directly...
@@ -8176,9 +8176,9 @@ start
         replacing joints and patches of flesh i have broken with blinding dull light
     
     okidoia::dark
-        ¦(Ûc\½‰still time still  ti m e  t her re
-        pl»˜¿Šé¦  …#ñ st#Þø  TH‹î
-        L I  S T E N   L I S T E   NbŠÞÐaü1
+        Â¦(Ã›Âc\Â½â€°still time still  ti m e  t her re
+        plÂ»ËœÂ¿Å Ã©Â¦  â€¦#Ã± st#ÃžÃ¸  THâ€¹Ã®
+        L I  S T E N   L I S T E   NbÅ ÃžÃaÃ¼1
 
     sourceless
         its patchwork shape exposes the familiar truth
@@ -8286,15 +8286,15 @@ start
         yes--you are right
         as much as i am falling apart,
         so too is vekoa's body
-        i only need to occupy it for a θblink longer...
+        i only need to occupy it for a Î¸blink longer...
         the team is ready to destroy what must be the last of the veins
         but as i seize control, preparing to move again,
         the body speaks
 
     okidoia::dark
-        ãŒhls t o p s  s top st tp  ss to p 
-        Œ’^ÂÊ®§s from despair, to shock, to joyous tears
-        they àÛƒž¼™‘½ûQr¬Æwithin5|Œ’^
+        Ã£Å’hls t o p s  s top st tp  ss to p 
+        Å’â€™^Ã‚ÃŠÂ®Â§s from despair, to shock, to joyous tears
+        they Ã Ã›Æ’Å¾Â¼â„¢â€˜Â½Ã»QrÂ¬Ã†within5|Å’â€™^
     
     sourceless
         it is weeping, and begging, and attempting to force fragmented memories into my mind
@@ -8350,8 +8350,8 @@ ____SHOWIF::["PAGE!!akizetblunder", false]
         why did it stop?
     
     okidoia::dark
-        th e ir   b lo o d•œ°!
-        „‡¬on l y  yÔ_u–.r  c l aw s^{zŒÙ¬
+        th e ir   b lo o dâ€¢Å“Â°!
+        â€žâ€¡Â¬on l y  yÃ”_uâ€“.r  c l aw s^{zÅ’Ã™Â¬
 
     sourceless
         the voice is weak, shuddering--as if sobbing
@@ -8391,8 +8391,8 @@ ____SHOWIF::["PAGE!!akizetblunder", true]
         does she know it is done? is she fighting against what holds her?
         
     okidoia::dark
-        th e ir   b lo o d•œ°!
-        „‡¬on l y  yÔ_u–.r  c l aw s^{zŒÙ¬
+        th e ir   b lo o dâ€¢Å“Â°!
+        â€žâ€¡Â¬on l y  yÃ”_uâ€“.r  c l aw s^{zÅ’Ã™Â¬
 
     sourceless
         despite everything, the voice is weak, shuddering--as if sobbing
@@ -8408,7 +8408,7 @@ ____END
             EXEC::play("scarydoia", 0.5);flash(true);ratween(env.bgm, 0.1, 8000)
             WAIT::3000
             THEN::play("scarydoia", 0.5);forcePlay("dull", 0.5)
-        for a θblink, i lose my vision in a disorienting warping of space--or, unwarping...
+        for a Î¸blink, i lose my vision in a disorienting warping of space--or, unwarping...
             EXEC::env.rpg.halt = false;closeCombat(env.rpg.enemyTeam)
             WAIT::3000
 
@@ -8477,7 +8477,7 @@ ____END
         let alone enough corroyi flow strength at this point to bring anyone that high
         
     telyu
-        do not tell me i risked my θdeath here for nothing
+        do not tell me i risked my Î¸death here for nothing
             EXEC::vnp({telyu: "showleft"})
 
     karik
@@ -8516,7 +8516,7 @@ ____END
         anyone--whoever uses the groundsmindry to do this, umm...
         would not survive, no chance!
         to say nothing of the consequences for the cousins' ecosystem...
-        but... yes, anyone within the upper θsegments would have a good chance of survival...
+        but... yes, anyone within the upper Î¸segments would have a good chance of survival...
     
     idril
         heeey, but since the core was connected to all of this...
@@ -8605,7 +8605,7 @@ ____END
         once i have re-established the connection, i will announce the plan throughout the spire
         the hangar will be forced open, all vessels commanded to take flight and locate their hosts
         then, i will initiate structural ejection
-        starting with this θsegment, so that movefriend can carry you to the waters
+        starting with this Î¸segment, so that movefriend can carry you to the waters
         the cascading flood of subsequent spire openings should be safer for qou in upper areas
         once the pattern is enacted, i will deliver my mindcore unto bozko, and we will await retrieval
         understood?
@@ -8743,7 +8743,7 @@ start
 
     akizet
         we must leave <em>now</em> or the movefriend will flood!
-        bozko, please - i do not want to lose another friend this θgaze
+        bozko, please - i do not want to lose another friend this Î¸gaze
 
     sourceless
         he will not meet my eyes, but after a silent moment,
@@ -8772,7 +8772,7 @@ start
         but as we brace... i hear tozik over communications
     
     tozik
-        the pattern has been established, and ejection will begin in a θblink
+        the pattern has been established, and ejection will begin in a Î¸blink
         come what may, all should know what caused this disaster
         it was the source of the call, known to me as the 'meteorite'
         an ancient mass of wild corru, larger than any we have ever known
