@@ -1,6 +1,6 @@
 //ents
 createEntity({
-    name: 'recollection::AÃ¦Â§<Ã¤YfÂ¹L',
+    name: 'recollection::Aæ§<äYf¹L',
     type: "thoughtform",
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
@@ -10,7 +10,7 @@ createEntity({
 })
 
 createEntity({
-    name: 'recollection::Ã¸Â¥Â¬Ã€â€°',
+    name: 'recollection::ø¥¬À‰',
     type: "thoughtform",
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
@@ -20,7 +20,7 @@ createEntity({
 })
 
 createEntity({
-    name: 'recollection::â€žÂ²!Ã„Ã«Â±#RÃ£',
+    name: 'recollection::„²!Äë±#Rã',
     type: "thoughtform",
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
@@ -638,7 +638,7 @@ ____END
 who
     sourceless
         it is only those who attended the focus who would know
-        and they are all present in the embassy at this point in the Î¸gaze
+        and they are all present in the embassy at this point in the θgaze
         i should speak to kazki, even if she always seems innocent
         bozko is strong willed and i can imagine he would take such strange actions
         then there is cavik, who... maybe not him actually
@@ -681,7 +681,7 @@ ____SHOWIF::[["netstat|<", 0], ["citystreet_gotdrinks"]]
         terrible as it was,
         it has awoken something
 ____SHOWIF::[["netstat|>=", 0]]
-        another Î¸gaze upon this bright planet...
+        another θgaze upon this bright planet...
         it calls for an equally bright beverage
 ____END
     
@@ -820,7 +820,7 @@ start
     sourceless
         my consciousness resumes
         the rejuvenation chamber opens, and from outside flows the glow of the embassy's cystic glass
-        through the distant dull contrivance, i feel another Î¸gaze has begun
+        through the distant dull contrivance, i feel another θgaze has begun
 
     RESPONSES::akizet
         emerge from the chamber<+>emerge
@@ -868,7 +868,7 @@ start
     tozik
         yes
         i am organizing the connected archival cysts
-        something very interesting happened barely a Î¸wink ago
+        something very interesting happened barely a θwink ago
         you will hear about it in the focus
     
     akizet
@@ -1059,7 +1059,7 @@ coat
             EXEC::ratween(env.bgm, 1, 3000);content.classList.remove('incoherence')
         sorry... sometimes when i am using these false environments,
         i get context overlap!
-        for a Î¸blink, it is like i am my signature rather than myself!
+        for a θblink, it is like i am my signature rather than myself!
         i should really start pausing these things when talking, hehe
 
     sourceless
@@ -1335,7 +1335,7 @@ start
     
     bozko
         of course
-        i only wish i had more to share given our amenities this Î¸gaze
+        i only wish i had more to share given our amenities this θgaze
     
     akizet
         true!
@@ -1446,7 +1446,7 @@ theory
         now--i know you must think it is ridiculous, 
         and it is! especially as it goes on, hehe
         but is it not inevitable at the same time?
-        in our Î¸deaths, there is enough time to unravel any mystery--time manipulation included!
+        in our θdeaths, there is enough time to unravel any mystery--time manipulation included!
     
     akizet
         first...
@@ -1487,7 +1487,7 @@ theory
         of course, no, no, i understand
 
     sourceless
-        Â¥IÃÃˆiÃ¦b4
+        ¥IÁÈiæb4
         ANOTHER LITTLE DEATH TO HAUNT ME
     
     RESPOBJ::d1_cavikresp
@@ -1594,8 +1594,8 @@ timestopper
         how long was it again that we have it?
 
     groundsmind
-        originally you had it for only a few Î¸gazes... 
-        however: as of a few Î¸winks prior, it is indefinitely in the care of the call initiative
+        originally you had it for only a few θgazes... 
+        however: as of a few θwinks prior, it is indefinitely in the care of the call initiative
         the schedule has shifted due to materials no longer needing an upcoming simulation
         once another initiative has need of it, it will be transferred
 
@@ -1733,10 +1733,10 @@ start
         wordless knowledge is understood, assigned words only in afterthought
     
     timestopper
-        ÃŠÃ¼â‚¬ÃŸÃ‘ÃºÅ½ÃžRÃ¹Ã£Ãâ„¢Ã·Ã»Ãœâ€ºÃ¶Â±ÃœÂ¨Ãµ*ÃœRÃ´mÃœÃœÃ³Å’ÃœÃ©Ã³SÃÃš
-        Ã³ÃªÃ±XÃ²â€¦Ã±Ã´Ã°Â¨Ã±AÃ°ÃÃ²ÃŒÃ¯_Ã´Â°Ã¯â‚¬ÃµÃ®Ã¯
-        Ã¿ÃŸÃ…Ã»Ã½ÃžhÃºGÃžÃ¡Ã¸Ã¾ÃœzÃ¶Ã¸Ã›Ã†Ã³]Ã›Ã¤Ã°Æ’Ã›Â©Ã­Â¾ÃšËœÃ©Ã—Ãš9
-        Ã´Å¸ÃžÂÃ³]Ã¡â€˜Ã³UÃ¥AÃ´)ÃªÂÃ´
+        Êü€ßÑúŽÞRùãÝ™÷ûÜ›ö±Ü¨õ*ÜRômÜÜóŒÜéóSÝÚ
+        óêñXò…ñôð¨ñAðÝòÌï_ô°ï€õîï
+        ÿßÅûýÞhúGÞáøþÜzöøÛÆó]ÛäðƒÛ©í¾Ú˜é×Ú9
+        ôŸÞó]á‘óUåAô)êô
     
     sys
         ATTENTION::'large amount of unprocessable data';'advancing stream to next coherent data'
@@ -1801,12 +1801,12 @@ start
             EXEC::env.bgm.rate(0.7)
     
     tozik
-        i have been searching through approximately twelve Î¸eyes of data
+        i have been searching through approximately twelve θeyes of data
         this has happened once before. see?
         the same type of spike, with the same duration
     
     timestopper
-        how many Î¸eyes ago was that? seven? eight?
+        how many θeyes ago was that? seven? eight?
     
     gakvu
         look
@@ -1920,7 +1920,7 @@ env.dialogues["d2_start"] = generateDialogueObject(`
 start
     sourceless
         I AWAKEN FROM THE STILLNESS OF MY REJUVENATION
-        THROUGH THE DISTANT DULL CONTRIVANCE, I FEEL ANOTHER Î¸gaze HAS BEGUN
+        THROUGH THE DISTANT DULL CONTRIVANCE, I FEEL ANOTHER θgaze HAS BEGUN
             EXEC::env.embassy.slowCam()
 
         AND AS I CLAMBER OUT FROM MY CHAMBER, I SEE SOMETHING NEW...
@@ -1993,7 +1993,7 @@ connection
     sourceless
         the echo's message forms into imagery - a false environment that i allow my mind to enter
             EXEC::changeStage("echovision");vn.done()
-        it is simple... simple enough that it should only occupy a fraction of a Î¸blink
+        it is simple... simple enough that it should only occupy a fraction of a θblink
         the echo awaits my engagement to continue
 
     RESPONSES::akizet
@@ -2224,7 +2224,7 @@ personnel
         see anything, go into my room?
     
     attendant
-        A SPINDLE-LEGGED CORRUCYST ENTERED SOME Î¸winks AGO
+        A SPINDLE-LEGGED CORRUCYST ENTERED SOME θwinks AGO
         IT WAS ASSUMED TO BE A SELF-DELIVERING DEVICE
     
     sourceless
@@ -2270,7 +2270,7 @@ cyst
         otherwise: describe it
 
     sourceless
-        Ã¥ADÃ‰:!Â±(:
+        åADÉ:!±(:
         IT SELF DESTRUCTED...
         SHOULD I MENTION THE SPIRAL?
         NO--WHAT IF IT IS AN IDENTIFIER SOMEHOW?
@@ -2289,7 +2289,7 @@ cyst
     groundsmind
         akizetesche,
         i cannot help you without a point of reference
-        an innumerable amount of cysts are self-delivered every Î¸gaze
+        an innumerable amount of cysts are self-delivered every θgaze
         and each are mundane in nature.
         what has you seeking information about this one in particular?
 
@@ -2337,7 +2337,7 @@ start
     sourceless
         CAVIK AND BOZKO SPEAK JOVIALLY BETWEEN A SET OF QUARTERS
             EXEC::pauseSwapCam(true)
-        CURIOUS... THEIRS ARE NOT WITHIN THIS Î¸branch
+        CURIOUS... THEIRS ARE NOT WITHIN THIS θbranch
         I APPROACH, MASKING MY SUSPICION WELL
     
     akizet
@@ -2351,7 +2351,7 @@ start
         hey akizet!! 
 
     akizet
-        what brings you to this Î¸branch of the Î¸segment?
+        what brings you to this θbranch of the θsegment?
 
     cavik
         ah, we are just waiting for mokka!
@@ -2364,7 +2364,7 @@ start
         OFFLOADED MEMORY: MOKKANESCHE, AN EXCHANGE FROM MATERIALS!
         
     sourceless
-        AH! YES. I FORGOT SHE WAS IN THIS Î¸branch, TOO
+        AH! YES. I FORGOT SHE WAS IN THIS θbranch, TOO
         I HAVE NOT SEEN HER IN A WHILE... 
         OUR AREAS OF OPERATION RARELY INTERSECT
     
@@ -2809,7 +2809,7 @@ start
     
     akizet
         kazki!
-        this is a surprise--i do not often see you linger in this Î¸segment
+        this is a surprise--i do not often see you linger in this θsegment
         what brings you here?
     
     kazki
@@ -2861,7 +2861,7 @@ creature
     kazki
         oh!!
         you have not heard?
-        it is a new development by the Î¸jut
+        it is a new development by the θjut
         very recent! these new communicators...
         they allow a sort of connection to the human collective!
         the 'internet' they call it!
@@ -2912,7 +2912,7 @@ cyst
         i can ask around for you!
     
     sourceless
-        â€¦Â¤,Â¿â€¦Â¶Â¡Ã˜n
+        …¤,¿…¶¡Øn
 
     funfriend
         RECOMMENDATION: DEFINITELY STOP THAT NOW
@@ -3025,7 +3025,7 @@ start
         what if we find something else too close to the truth? 
         will we be under even greater threat?
         do i do anything? do i simply wait for the truth?
-        it will be so long... so many Î¸eyes
+        it will be so long... so many θeyes
         funfriend you know i cannot simply stop my work
         especially if we are just beyond the threshold of understanding the call
         this is everything

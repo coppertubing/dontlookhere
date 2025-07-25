@@ -2695,7 +2695,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
             act: "%USER OPENS FIRE",
         },
         details: {
-            flavor: "'utilize symbotic rifle';'rapid inaccurate attacks';'consumes HP for munitions'",
+            flavor: "'utilize symbiotic rifle';'rapid inaccurate attacks';'consumes HP for munitions'",
             onUse: `'HIT random foes 6 times';'[STAT::amt] to self'`,
             onHit: `'[STAT::amt]'`,
             onCrit:`'[STATUS::vulnerable]'`
@@ -7252,7 +7252,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
             onUse: `'move to location';'assault targets ahead'`,
             onHit: `'[STAT::rangeHP] [STAT::kb]';'increased by 1 per tile traversed'`,
             onCrit: `'[STATUS::stun]'`,
-            conditional: `<em>NOTICE::</em>'hits allies';'exercise caution`,
+            conditional: `<em>NOTICE::</em>'hits allies';'exercise caution'`,
         },
 
         stats: {
@@ -7702,7 +7702,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
         details: {
             flavor: `'strike with full momentum';'shatter offensive appendages'`,
             onUse: `'move to location';'HIT up to 2 foes ahead'`,
-            onHit: `'[STAT::amt] [STATUS::weakened] [STAT::kb]`,
+            onHit: `'[STAT::amt] [STATUS::weakened] [STAT::kb]'`,
             onCrit: `'[STATUS::stun]'`,
         },
 
@@ -7912,7 +7912,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
             flavor: "'utilize micro-explosive rapidly formed from scavenged dull organs'",
             onHit: `'[STAT::amt] [STAT::kb] from selected tile'`,
             onCrit: `'[STATUS::puncture]'`,
-            conditional: `<em>NOTICE::</em>'hits allies';'exercise caution\n<em>SPECIAL</em>::'if no targets in range, remains on ground';'detonates before next turn'`,
+            conditional: `<em>NOTICE::</em>'hits allies';'exercise caution'\n<em>SPECIAL</em>::'if no targets in range, remains on ground';'detonates before next turn'`,
         },
 
         stats: {
@@ -8064,7 +8064,7 @@ if(typeof env.ACTIONS == "undefined") env.ACTIONS = {
 
         details: {
             flavor: "'wide directional release of rapidly decaying dull light';'deconstructs foes'",
-            onHit: `[STAT::amt] KB::2'`
+            onHit: `'[STAT::amt] KB::2'`
         },
 
         stats: { 
