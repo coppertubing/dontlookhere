@@ -3611,8 +3611,8 @@ start
         as if we have been striking them this whole time
     
     archivist
-        ¤±Òÿ=WA ST ING %0¶š TI ME
-        [¶ÿ=>drastic measure)%0
+        ¤±Òÿ=WA ST ING %‰¶š TI ME
+        [¶ÿ=>drastic measure)%‰
         ÷no!²²ave rs i on¬_.g?ç
         )§=X«všrpers®¿æshÞ»
 
@@ -6977,7 +6977,7 @@ start
         are you...
 
     tozik::mutter
-        ...­%ﾼmploded by the pulse...
+        ...­%¼�mploded by the pulse...
 
     sourceless
         without pause, his voice rises to greet me

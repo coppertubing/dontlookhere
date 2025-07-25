@@ -96,7 +96,7 @@ horriblefuckingthing = [
         'css/stage/goodwalls.css',
 ]
 
-let differences = 0;
+differences = 0;
 
 function fuckingGetThem(i = 0) {
     if (i == horriblefuckingthing.length) return console.log("checked " + horriblefuckingthing.length + ", found " + differences);
@@ -113,9 +113,28 @@ function fuckingGetThem(i = 0) {
                 .then((text) => {
                     ourcode = text;
 
-                    if (corrucode != ourcode) {
+                    if (corrucode.length == ourcode.length) {
+                        for (let char = 0; char < corrucode.length; char++) {
+                            if (corrucode.charAt(char) == ourcode.charAt(char)) {}
+                            else {
+                                differences++;
+                                console.error("OOPS FOUND A DIFFERENCE!!!!! (characters dont add up) PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
+                                console.log(`${corrucode.charAt(char-5)}${corrucode.charAt(char-4)}${corrucode.charAt(char-3)}${corrucode.charAt(char-2)}${corrucode.charAt(char-1)}${corrucode.charAt(char)}${corrucode.charAt(char+1)}${corrucode.charAt(char+2)}${corrucode.charAt(char+3)}${corrucode.charAt(char+4)}${corrucode.charAt(char+5)} vs ${ourcode.charAt(char-5)}${ourcode.charAt(char-4)}${ourcode.charAt(char-3)}${ourcode.charAt(char-2)}${ourcode.charAt(char-1)}${ourcode.charAt(char)}${ourcode.charAt(char+1)}${ourcode.charAt(char+2)}${ourcode.charAt(char+3)}${ourcode.charAt(char+4)}${ourcode.charAt(char+5)}`)
+                                for (let charLog = char+5; charLog<corrucode.length;charLog++) {
+                                    if (corrucode.charAt(charLog) == ourcode.charAt(charLog)) {}
+                                    else {
+                                        console.log(`${corrucode.charAt(charLog-5)}${corrucode.charAt(charLog-4)}${corrucode.charAt(charLog-3)}${corrucode.charAt(charLog-2)}${corrucode.charAt(charLog-1)}${corrucode.charAt(charLog)}${corrucode.charAt(charLog+1)}${corrucode.charAt(charLog+2)}${corrucode.charAt(charLog+3)}${corrucode.charAt(charLog+4)}${corrucode.charAt(charLog+5)} vs ${ourcode.charAt(charLog-5)}${ourcode.charAt(charLog-4)}${ourcode.charAt(charLog-3)}${ourcode.charAt(charLog-2)}${ourcode.charAt(charLog-1)}${ourcode.charAt(charLog)}${ourcode.charAt(charLog+1)}${ourcode.charAt(charLog+2)}${ourcode.charAt(charLog+3)}${ourcode.charAt(charLog+4)}${ourcode.charAt(charLog+5)}`)
+                                        charLog += 5
+                                    }
+                                }
+                                console.info(corrucode, ourcode)
+                                break
+                            }
+                        }
+                    }
+              		else {
                         differences++;
-                        console.error("OOPS FOUND A DIFFERENCE!!!!! PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
+                        console.error("OOPS FOUND A DIFFERENCE!!!!! (lengths dont add up!) PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
                         console.info(corrucode, ourcode)
                     }
                 })
