@@ -111,7 +111,7 @@ function fuckingGetThem(i = 0) {
             fetch("https://coppertubing.github.io/cor-RU/sauce code/" + horriblefuckingthing[i])
                 .then((response) => response.text())
                 .then((text) => {
-                    ourcode = text;
+                    ourcode = text.replaceAll('\r', '');
 
                     if (corrucode.length == ourcode.length) {
                         for (let char = 0; char < corrucode.length; char++) {
@@ -135,6 +135,7 @@ function fuckingGetThem(i = 0) {
               		else {
                         differences++;
                         console.error("OOPS FOUND A DIFFERENCE!!!!! (lengths dont add up!) PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
+                     console.log(corrucode.length, ourcode.length);
                         console.info(corrucode, ourcode)
                     }
                 })
