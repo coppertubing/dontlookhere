@@ -106,12 +106,12 @@ function fuckingGetThem(i = 0) {
       
     fetch("https://corru.observer/" + horriblefuckingthing[i])
         .then((response) => response.text())
-        .then((text) => corrucode = text)
+        .then((text) => corrucode = new String(text))
         .then(() => {
             fetch("https://coppertubing.github.io/cor-RU/sauce code/" + horriblefuckingthing[i])
                 .then((response) => response.text())
                 .then((text) => {
-                    ourcode = text.replaceAll('\r', '');
+                    ourcode = new String(text).replaceAll('\r', '');
 
                     if (corrucode.length == ourcode.length) {
                         for (let char = 0; char < corrucode.length; char++) {
