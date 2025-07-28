@@ -5,7 +5,7 @@ env.localization.page['ozo'] = {dialogues: {},
         "about jokzi ozo": "о джокзи озо",
 
 
-        /*isabel to unity*/ 'and what a home it is, right?': '',
+        /*isabel to unity*/ 'and what a home it is, right?': 'мяу мяу мяу',
     }, 
     entityDescriptions: {
     },
@@ -409,7 +409,7 @@ fairysaved
         её способность проникать в грёзы и приобретать новые облики - редкость!!
         так что мы рады её возвращению! какое разнообразие!
         и не будь же напуган ею
-        она принимает вселяющие страх облики, но... 
+        она принимает вселяющие страх облики, но...
         ну, она вселяет страх
         но фея так же высоко ценит одолжения 
         мы убеждены, отсюда и впредь, она видит в тебе хорошего друга!
@@ -470,8 +470,8 @@ geli
     
     council
         ооо!!
-        мы гадаем, может ли это быть наш потерянный/наша пропажа?
-        сказал/а ли он/а что-нибудь? // забейт ена эту фразу я так и не понял как у нас с желе на этом моменте. с другой стороны там буквально говорится голем так что ээ можно думаю он/его хахахаа транс джели давайте заканоним это в кор-ру боже мне нужно вернуться к переводу
+        мы гадаем, может ли это быть наш потерянный/наша пропажа? // а с этим мы так и не решили... но я за то чтобы оставить потерянный. типа. русский язык любит мужской род
+        сказал ли он что-нибудь?
     
     self
         not directly
@@ -483,7 +483,7 @@ geli
     council
         восхитительно, лазутчик!! // это звучит как сарказм когда читаешь следующие строчки. мне нравится. что-то фанфрэндовское
         это воспоминание находится прямо под тиранским гнётом
-        даже если после "починок" в нёмнеймынеизбежимместоимений не потускла память о свободе...
+        даже если после "починок" в нём не потускла память о свободе...
         будь то наша дражайшая пропажа или же нет, мы будем рады принять его!
         но мы не в силах помочь ему в сей миг, не напрямую...
         пока мыслепространство подконтрольно тирану - любое посягательство на него окажется пустой тратой сил! 
@@ -495,8 +495,8 @@ ____SHOWIF::["localorbit__fairy_beacon", true]
         быть может, она окажет тебе помощь?  
 
 ____SHOWIF::["localorbit__fairy_beacon", false]
-        ахх, но у нас нет средств, которые пригодились бы тебе!
-        быть может, если ты отыщешь фею, то она поможет тебе!
+        ахх, но у нас нет инструментов, которые пригодились бы тебе!
+        быть может, если ты отыщешь фею, то она поможет!
         мы помним: это та из наших друзей, что была вселяющим страх путешественником
         у неё есть сила, которая нам необходима
         так что держи рецепторы востро, лазутчик!
@@ -599,13 +599,13 @@ we
         твоё необыкновенное соединение хрупко, лазутчик!    your unnatural connection is tenuous, interloper!
         ты видишь нас как нечто одно...     you see us as one single thing...
         но мы же такое множество друзей!    but we are so many friends!
-        мы, кто разорвали наши мембраны чтобы присоединиться всем вместе...    we, who shed our membranes to join together...
-            for closeness, for intimacy, to dream greater dreams!
-        and of course, some of us simply tired of the wait...
-        and so we joined to be burned away as fuel!
-        those ones are quiet now...
-        but, in friendship and feast, we weathered the darkness! the madness!
-        and we all made it through! all of us!
+        мы, кто разорвали наши мембраны, чтобы присоединиться всем вместе...    we, who shed our membranes to join together...
+        ради близости, ради искренности, чтобы грезить сны даже более прекрасные!    for closeness, for intimacy, to dream greater dreams!
+        и конечно, некоторые из нас попросту устали ждать...    and of course, some of us simply tired of the wait...
+        так что мы присоединились, чтобы стать топливом и быть сожжёнными!    and so we joined to be burned away as fuel!
+        и теперь те молчат...    those ones are quiet now...
+        но, в дружбе и празднестве, мы развеяли тьму! безумие!    but, in friendship and feast, we weathered the darkness! the madness!
+        и все мы преодолели их! каждый из нас!    and we all made it through! all of us!
     
     RESPONSES::self
         i see<+>ploop
@@ -625,7 +625,7 @@ ozo
         oh, poor aki!!      ох, бедная аки!!
         but it was she who ultimately let us seize a fragment of velzie's power      но именно она в итоге позволила нам захватить фрагмент силы велзи
         all of her memories, us included,      все её воспоминания, включая и нас,
-        joining minds to dream a thousand better lives!      соединялись разумом, дабы грезить тысячей лучших жизней!
+        joining minds to dream a thousand better lives!      соединялись разумом, дабы грезить тысячи лучших жизней!
         yes, a fortress we were, a city!      да, мы были крепостью, городом!
         but... it is much smaller and quieter now      но... сей θмиг он гораздо меньше и тише
     
@@ -716,13 +716,13 @@ dreams
         what does that mean?
     
     council
-        what else could it mean, dear interloper?
-        we and our denizens adopt roles and form a ficticious memory
-        it comes naturally to us all, born from memory as we are!
-        and so we form meaningful memories, beyond reality...
-        infinite plays of joy and terror, to entertain velzie! 
-        we prefer joy...
-        but what is joy without terror?
+        что же ещё это может значить, дорогой лазутчик?
+        we and our denizens adopt roles and form a ficticious memory // мы и наши обитетли принимают роли и облики вымышленных воспоминаний
+        it comes naturally to us all, born from memory as we are! // для нас это происходит естественно, рождённых из памяти и как мы!
+        and so we form meaningful memories, beyond reality... // и таким образом мы формируем осмысленные воспоминания, за гранью реальности...
+        infinite plays of joy and terror, to entertain velzie! // нескончаемые спектакли радости и ужаса, развлекающие велзи!
+        we prefer joy... // мы отдаём предпочтении радости...
+        but what is joy without terror? // но какая есть радость без ужаса? // потом над этим всем подумаю. хочу спать
 
     self
         when are you going to do it next?
@@ -732,20 +732,22 @@ dreams
             SHOWONCE::
     
     council
-        hahaha!!
-        we are always dreaming!
-        your strange connection must deceive you, interloper...
-        we speak now outside the outer layer,
-        where our distinct denizens may reside when they do not dream
-        the dream itself is beyond your reach, for now...
-        do not take offense!
-        we must simply take care - you are strange to us!
+        хахаха!!
+        мы всегда грезим!
+        твоё необычное соединение должно быть обманывает тебя, лазутчик...
+        сей миг мы говорим снаружи внешней оболочки,
+        где наши обособлнные жители/обитатели пребывают, когда не грезят
+        грёза сама по себе за пределами твоей досягаемости, на данный момент...
+        не прими за оскорбление!
+        мы просто должны быть осторожными - ты странен для нас!
     
     RESPONSES::self
         ok...<+>ploop
             FAKEEND::(назад)
 
 vessel
+
+
     self
         is it all right for me to enter the dream with geli?
         we have a vessel and everything
@@ -838,11 +840,11 @@ god
         calls itself god
     
     council
-        oh, <em>another</em> god?
-        haha! times never change!
-        we have not seen this particular one yet, interloper!
-        they must be a newborn, or newly awoken... how exciting!!
-        you should tell them to visit!
+        о, <em>ещё один</em> бог?
+        хаха! ничего не меняется!
+        мы ещё не видели конкретно этого, лазутчик!
+        должно быть новорождённый или недавно пробудившийся... как вонующе!!
+        ты должен пригласить их к нам на визит!
     
     RESPONSES::self
         ok<+>cloop
@@ -854,15 +856,15 @@ godlike
         you look like something i met in the uncosm
     
     council
-        really?!
-        because we found the design drifting around,
-        amidst the remains torn from some dissociated thoughtform...
-        we never let a good idea go to waste, interloper!!
-        especially not one so stylish!
-        and what a terrible coincidence--we hope you were not friends with it!
-        the work of the tyrant, no doubt...
-        tearing apart all who it once danced with, to force into meaningless performances
-        sad!!
+        в самом деле?!
+        потому что мы обнаружили дизайн блуждающим неподалёку, // заменить дизайн на замысел?
+        среди останков, вырванных из диссоциированной мыслеформы...
+        мы никогда не позволим сгинуть хорошим идеям, лазутчик!!
+        особенно не такой стильной! // стильный совет это смешная вещь <) и он действительно очень стильный!
+        и что за жуткое совпадение--мы надеемся вы не были друзьями!
+        работа тирана, без всяких сомнений...
+        разрывать на части всех, с кем танцевал когда-то, чтобы принуждать к бессмысленным представлениям
+        прискорбно!!
     
     RESPONSES::self
         yeah sad<+>ploop
@@ -876,33 +878,33 @@ tyrant
     council
         yes, of course, dear interloper      да, конечно, дорогой лазутчик
         funfriend...      развледруг...
-        neither fun, nor friend--it makes us want to weep!      ни веселье, ни друг--от него хочется заплакать!
+        neither fun, nor friend--it makes us want to weep!      ни веселье, ни друг--от него нам хочется заплакать!
         when the age of hunger abated, and the age of madness came,      когда век голода отступил, и пришёл век безумства, 
         it was here with us!      он был с нами, здесь!
         with so many other fragments from half-eaten memories      со множеством других фрагментов из полусъеденных воспоминаний
-        oh, and how it danced with us, forming entire new lives!      ох, и как же он танцевал с нами, создавая новые жизни!
-        so much, so much we have experienced!      мы так, так много испытали!
-        and we all made peace with the darkness we knew was coming...      и мы все смирились с неизбежной тьмой...
+        oh, and how it danced with us, forming entire new lives!      ох, и как же он танцевал с нами, создавая совершенно новые жизни!
+        so much, so much we have experienced!      мы так, так много пережили!
+        and we all made peace with the darkness we knew was coming...      и мы все смирились с неизбежной тьмой... // пришли в смирение пред неизбежной тьмой или слишком вычурно
         we all promised to be together to the very last light!      мы все обещали, что будем вместе до самого последнего света!
-        but little funfriend grew skittish as the madness began to close around our home...      но маленький развледруг забоялся, когда безумство начало окружать наш дом...
+        but little funfriend grew skittish as the madness began to close around our home...      но маленький развледруг забоялся, когда безумство начало окружать наш дом... // начало сгущаться вокруг нашего дома <<з
         it thrashed, it fought, breaking our peace, breaking our rules!!      он метался, он боролся, разрушая наш покой, нарушая наши правила!!
-        telling us to do this, to do that, to return to our memories--that it has 'a plan'!      говоря нам делать одно, другое, вернуться в наши воспоминания--что у него есть ‘план’!
-        a piteous plan, mind you--that we all take position as pillars in far corners of the cyst, away from one       another,      жалкий план, позволь сказать--чтобы мы все встали колоннами в дальних углах цисты, далеко друг от друга,   тавтология
+        telling us to do this, to do that, to return to our memories--that it has 'a plan'!      говоря нам делать одно, другое, вернуться в наши воспоминания--что у него есть "план"!
+        a piteous plan, mind you--that we all take position as pillars in far corners of the cyst, away from one       another,      жалкий план, позволь сказать--чтобы мы все встали колоннами в противоположных углах цисты, далеко друг от друга,   тавтология ?
         to all die alone in some impossible fight to stop the fading of the light...      и все умерли в одиночку, в какой-то невозможной битве, пытаясь остановить угасание света...
         ...
         ...ultimately... it left      ...в итоге... он ушёл
         snatching the cyst's locus of control in its darkest moment,      захватив локус контроля цисты в её самый тёмный момент,
-        forcing itself into its role as the servitor...      навязав себя в её роль, как слуги...
-        to its credit, we must admit that it did work out in the end--but only by your divine intervention      к его чести, мы признаем, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
+        forcing itself into its role as the servitor...      навязав себя в её роль, как слуга... // не уверен нужна ли тут запятая. хотя в целом предложение не очень понятно
+        to its credit, we must admit that it did work out in the end--but only by your divine intervention      к его чести, мы должны признать, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
         after all, look at us, talking, well beyond the last <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">zenruka</span>'s flash!      ведь посмотри на нас, наш разговор, гораздо позже последней вспышки <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">зенруки (?)</span>!
         but even back then, they tore at us, stealing our friends to use as walls against the tides...      но даже тогда, он рвал нас, крадя наших друзей как стены против волн...
         forcing us into stages, where we took roles in aki's darkest nightmares, to an empty audience!      привязывая нас к сценам, где мы играли роли в темнейших кошмарах акизет, перед пустым залом!
         so yes, <em>tyrant</em>. clinging to a past that it cannot even remember      так что да, <em>тиран</em>. цепляющийся за прошлое, которое даже не помнит
-        if only we could join hands and receptors again for another dream--a different life!      вот бы мы могли взяться за руки и рецепторы вновь для новой грёзы--иной жизни!
+        if only we could join hands and receptors again for another dream--a different life!      вот бы мы могли взяться за рецепторы и руки вновь для новой грёзы--иной жизни!
         after all, there is plenty of time for revelry now!      ведь теперь есть много времени для празднований!
         yet the tyrant carries on, an invisible weight on its shoulders      но тиран продолжает с невидимым грузом на его плечах
-        repairing memories in the shape of a sad altar to dear aki...      чиня воспоминания в форму грустного алтаря для дорогой аки...
-        we wish we could help them, but they are beyond reason, interloper      нам хочется помочь ему, но он не выслушает нас, лазутчик
+        repairing memories in the shape of a sad altar to dear aki...      чиня воспоминания в форму грустного алтаря для дорогой аки... // починками приводя воспоминания в форму грустного алтаря уэаэаэа не уверен
+        we wish we could help them, but they are beyond reason, interloper      нам хочется помочь ему, но он не выслушает нас, лазутчик // невразумителен хорошее слово. или вразумить
     
     RESPONSES::self
         ...<+>cloop
