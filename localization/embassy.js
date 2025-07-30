@@ -1,11 +1,11 @@
 env.localization.page['embassy'] = {dialogues: {},
     definitions: {
 
-        "времядержец": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания`},
-        "времядержца": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания`},
-        "времядержце": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания`},
-        "времядержцем": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания`},
-        "времядержцу": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания`},
+        "времядержец": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'`},
+        "времядержца": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'`},
+        "времядержце": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'`},
+        "времядержцем": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'`},
+        "времядержцу": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'`},
 
 
         "θсегмент": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'подразумевает отдельную секцию шпиля';'обычно разграничены по вертикали'`},
@@ -20,7 +20,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "θсегментами": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'подразумевает отдельную секцию шпиля';'обычно разграничены по вертикали'`},
         "θсегментах": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'подразумевает отдельную секцию шпиля';'обычно разграничены по вертикали'`},
 
-
+        // tendril
         "θответвление": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ветвью';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'более формальный термин'` },
         "θответвления": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ветвью';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'более формальный термин'` },
         "θответвлению": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ветвью';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'более формальный термин'` },
@@ -33,7 +33,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "θответвлениями": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ветвью';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'более формальный термин'` },
         "θответвлениях": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ветвью';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'более формальный термин'` },
 
-
+        // branch
         "θветвь": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ответвлением';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'менее формальный термин'` },
         "θветви": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ответвлением';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'менее формальный термин'` },
         "θветвью": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ответвлением';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'менее формальный термин'` },
@@ -44,31 +44,35 @@ env.localization.page['embassy'] = {dialogues: {},
         "θветвях": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'используется взаимозаменяемо с ответвлением';'подразумевает отведённую под определённое назначение область';'многочисленны в сегментах шпиля';'часто простираются от соединенной с хребтом центральной камеры';'менее формальный термин'` },
 
 
-
-        /*
-        "groundsmindry": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'remote manipulation and instruction of corrucystic devices';'partial translation';'inherited description-generated noun'` },
-
-        "veilks-blood": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'common beverage';'not blood'` },
+        "корройи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'жидкое низкоактивное корру';'occupies space between cystic organs';'terrestrial use only'` },
         
-        "corroyi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'` },
+        "сфер": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'переработанное корруцистозное топливо/пища';'валюта'` },
+        "сфера": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'переработанное корруцистозное топливо/пища';'валюта'` },
+        "сферу": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'переработанное корруцистозное топливо/пища';'валюта'` },
+        "сфером": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'переработанное корруцистозное топливо/пища';'валюта'` },
+        "сфере": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'переработанное корруцистозное топливо/пища';'валюта'` },
+       
+        "парии": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'вейльковая кость'` },
 
-        "okizika": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'ekivik surface monument';'holy site'` },
 
-        "kozazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'vaznian cave-city';'home of kazki';'known for fungal farms'` },
+        "коррускиви": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'традиционный инструмент технического обслуживания';'без труда проходит сквозь корру'` },
 
-        "parii": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'veilk bone'` },
 
-        "sfer": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'refined corrucystic fuel/food';'currency'` },
+        "вейльк-кровь": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый напиток';'не кровь'` },
+        "вейльк-крови": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый напиток';'не кровь'` },
+        "вейльк-кровью": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый напиток';'не кровь'` },
 
-        "zzoust": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'party drink';'name not properly spoken unless shouted'` },
+        "ззоуст": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'праздничный напиток';'имя произносится правильно только выкриком'` },
 
-        "corruskivi": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'traditional maintenance tool';'passes through corru effortlessly'` },
 
-        "zevazni": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'cave-city central to vazni';'corrucystic revolution origin'` },
+        "землемыслие": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'удалённое управление и инструктирование корруцистозных устройств';'частичный перевод';'сгенерировано из унаследованного описания'` },
+
+
+        "зевазни": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'пещерный город в центре вазни';'начало корруцистозной революции'` },
 
         "no tendril left to rot": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'all is harvested'` },
 
-        "cavernguard": { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`},*/
+        "cavernguard": { type: `ПРИМЕЧАНИЕ`, text: `'частичный перевод';'сгенерировано из унаследованного описания'` },
     }, 
     strings: {
         "i have to give it to this bstrd thing, general cohesion is still pretty solid. it's still hard to tell for sure what is real and what isn't though": "стоит отдать должное той свлчьной штуке, общая связность всё ещё неплоха. но до сих пор сложно понять что реально а что нет",
@@ -1183,7 +1187,7 @@ falsee
         звучит ужасающе
     
     gakvu
-        вот поэтому и так весело! попробуй как-нибудь
+        поэтому и так весело! попробуй как-нибудь
 
     RESPOBJ::d1_gakvuresp
 
@@ -1226,10 +1230,10 @@ coat
         извини... иногда, когда я пользуюсь этими ложными средами,
         у меня перекрывается контекст!
         на θмиг, то словно была не я, а моя подпись!
-        мне правда стоит ставить эти штуки на паузу во время разговоров, хихи
+        мне правда стоит начать ставить эти штуки на паузу во время разговоров, хихи
 
     sourceless
-        свечение её накидки продолжается
+        свечение её накидки вновь продолжается
             EXEC::change("gakpause", false);content.classList.remove('gakpause')
 
     moth
@@ -2018,15 +2022,15 @@ start
         вы ведь понимаете, что это значит?
     
     akizet
-        кавик... this is not a theory of fancy <-- что
+        кавик... это не какая-то теоретическая забава
             EXEC::env.embassy.setFocus('akizet')
-        это правда, что она всё меняет...
+        разумеется, правда, что она всё меняет...
         но нам всё ещё не хватает данных. так?
     
     timestopper
         верно да нам нужно больше
         нельзя просто так о ней рассказывать
-        не до тех пор, пока доказательство неполноценно
+        не до тех пор, пока доказательства неполноценны
 
     akizet
         есть ли у кого-нибудь разногласия?
@@ -2053,7 +2057,7 @@ start
         в реальном времени мы сидели не дольше, чем длина личиночного вздоха
         но тут же все встают, облегчённые своей свободой
             EXEC::content.classList.remove('innerfocus')
-        я склоняю голову и рецепторы в сторону команды и возвращаюсь в свои покои
+        я кланяюсь головой и рецепторами в сторону команды и возвращаюсь в свои покои
     
     RESPONSES::sys
         завершить вспоминание<+>END
@@ -2338,7 +2342,7 @@ start
         и его когти простираются далеко за пределы нас
             EXEC::content.setAttribute("ech", "crowd");specialCam("ecrowd")
         он - холодный ветер, пронизывающий всё посольство
-        но в обнаружении закономерности сырой мысли...
+        но в обнаружении паттернов сырой мысли...
         он обернётся шпилештормом
         никто из нас - даже возможные враги - не хочет, чтобы ситуация обострилась
         так услышь мою мольбу:
@@ -2353,7 +2357,7 @@ start
         я чувствую, что это искренне, правдиво,
         что трудно подделать с помощью эха
         в самом деле, его тон - оборонительная паника
-        так что я должна ответить,
+        так что мне приходится ответить ответить,
         
     RESPONSES::akizet
         да, я понимаю<+>END
@@ -2548,7 +2552,7 @@ cyst
         у тебя есть какие-нибудь записи о ней?
 
     groundsmind
-        это зависит от её особенностей
+        это зависит от её черт
         если она у тебя есть, предъяви её
         иначе: опиши её
 
@@ -2834,7 +2838,7 @@ how
         порой всё так просто, как кажется
         велзи за тобой не охотится
         в любом случае, меня это не волнует
-        меня устроит, чтобы мы с тозиком продолжили определение закономерностей
+        меня устроит, чтобы мы с тозиком продолжили определение паттернов
         это просто значит, что у меня будет больше времени на ложные среды
     
     RESPOBJ::d2_gakvuresp
@@ -3121,7 +3125,7 @@ creature
     sourceless
         АХ--АРТУР
         ТОТ НЕРВНЫЙ...
-        ВОТ БЫ Я МОГЛА ЛИЦЕЗРЕТЬ, КАК ОНА РАСКРЫВАЕТ ГОЛОВУ, ЧТОБЫ ПОКАЗАТЬ ЕМУ СУЩЕСТВО ВНУТРИ
+        ВОТ БЫ Я МОГЛА ЛИЦЕЗРЕТЬ, КАК ОНА РАСКРЫВАЕТ ГОЛОВУ, ЧТОБЫ ПОКАЗАТЬ ЕМУ ТАЯЩЕЕСЯ ВНУТРИ СУЩЕСТВО
         ПОДОЖДИТЕ--ЧТО ОНА СКАЗАЛА?
     
     akizet
@@ -3465,7 +3469,7 @@ movie
         люди говорят что игры работают лучше всего, вот почему
         по-видимому, если оно слишком похоже на настоящее воспоминание, ИИ может это засечь
         кроме того, я ж знаю что ты делаешь когда те скучно
-        ты едва можешь усидеть на месте, а потом просто уходишь ничего не сказав
+        ты едва можешь усидеть на месте а потом просто уходишь ничего не сказав
         если фильм тебе не зайдёт, ты сделаешь то же самое
     
     self
@@ -3557,11 +3561,11 @@ start
     sourceless
         ТОЗИК, ГАКВУ И Я СИДИМ ПОЛУПОДКЛЮЧЁННЫМИ К ВРЕМЯДЕРЖЦУ
             EXEC::content.classList.add('innerfocus', 'showfocus');content.querySelector('.focus').classList.add('day3')
-        EVER SINCE THE GROUNDSMIND SAW FIT TO ABANDON IT WITH US,
-        USING ITS EFFECTS ONLY PARTIALLY HAS BECOME A STANDARD PRACTICE
+        С ТЕХ ПОР, КАК ЗЕМЛЕМЫСЛЕЦ СЧЁЛ ПРАВИЛЬНЫМ БРОСИТЬ ЕГО С НАМИ,
+        ЛИШЬ ЧАСТИЧНОЕ ИСПОЛЬЗОВАНИЕ ЕГО ЭФФЕКТОВ ПРЕВРАТИЛОСЬ В НОРМУ
 
     tozik
-        следующий
+        следующая
 
     sourceless
         ТАКАЯ ПРИЯТНАЯ СКОРОСТЬ! СТОЛЬКО СВОБОДНОГО ВРЕМЕНИ!
@@ -3570,7 +3574,7 @@ start
             EXEC::document.querySelector('.redundancy').style.setProperty('--dataoffset', 3)
 
     gakvu
-        загружен!
+        загружена!
     
     sourceless
         ПАМЯТЬ ЦИСТЫ С ЗАПИСЬЮ СИГНАЛА ИЗЛУЧАЕТСЯ ПО НАШЕМУ СОЕДИНЕНИЮ
@@ -3578,7 +3582,7 @@ start
 
     tozik
         нет сдвигов, нет изменений
-        следующий
+        следующая
     
     sourceless
         ЗАТЕМ ПОСТУПАЕТ ДРУГАЯ - ДО КОНТАКТА, θглаз 4, РАДИАНТ 1
@@ -3602,7 +3606,7 @@ start
         акизет
     
     akizet
-        что? о--это мне был?
+        что? о--это мне была?
 
     gakvu
         да
@@ -3616,7 +3620,7 @@ start
         ПОСЛЕ БЕГЛОГО СРАВНЕНИЯ Я ВИЖУ, ЧТО СИГНАЛ СООТВЕТСТВУЕТ НАШИМ ЗАГРУЖЁННЫМ АРХИВАМ
     
     akizet
-        этот тоже совпадает
+        эта тоже совпадает
     
     tozik
         хмм...
@@ -3650,7 +3654,7 @@ start
         
     tozik
         что это?
-        это от слушателя исходит?
+        это от слушателя?
     
     sourceless
         КАКОЙ-ТО ШЁПОТ... Я ДОЛЖНА ВНИМАТЕЛЬНО ПРИСЛУШАТЬСЯ
@@ -3678,8 +3682,8 @@ start
         Я УПАЛА
         И ГАКВУ, И ТОЗИК... И ДАЖЕ ГОЛЕМ
             EXEC::content.classList.remove('painprep')
-        ХОТЯ ГОЛЕМ В ГОРАЗДО БОЛЕЕ ТЯЖЕЛОМ СОСТОЯНИИ
-        СВЕЧЕНИЕ ЦИСТОЗНОГО СТЕКЛА ПРЕКРАТИЛОСЬ, ОСТАВЛЯЯ КОМНАТУ В ПОЛУТЬМЕ
+        ХОТЯ ГОЛЕМ В БОЛЕЕ ТЯЖЕЛОМ СОСТОЯНИИ
+        СВЕЧЕНИЕ ЦИСТОЗНОГО СТЕКЛА ПРЕКРАТИЛОСЬ, ЗАПОЛНЯЯ КОМНАТУ ПОЛУТЬМОЙ
 
     akizet
         гакву?
@@ -3712,8 +3716,8 @@ start
         СРЕДСТВО СВЯЗИ, НО ОНО ПЛАВИТСЯ В ЕЁ КОГТЯХ
     
     gakvu
-        Îè§¤ÿ
-        мой коммуникатор is sludged
+        Йè§¤ÿ
+        мой коммуникатор расплыл
         о, нет--мои среды!!
     
     sourceless
@@ -3731,7 +3735,7 @@ start
     
     sourceless
         МЕНЯ НАКРЫВАЕТ ВОЛНА ОБЛЕГЧЕНИЯ 
-        РАЗВЛЕДРУГ: У НАС ЕСТЬ ВОЗМОЖНОСТЬ К ПЕРЕДАЧАМ СЕРОЕ?
+        РАЗВЛЕДРУГ: У НАС ЕСТЬ ВОЗМОЖНОСТЬ ПЕРЕДАЧ СЕРОЕ?
     
     funfriend
         ДА! ХОТИТЕ, ЧТОБЫ Я ИХ ВКЛЮЧИЛ СЕЙ ЖЕ θмиг?
@@ -3749,14 +3753,14 @@ start
         ШУМ - ЗОВ ГРОМЧЕ, КАК НИКОГДА РАНЬШЕ
         ИЛИ--ЗОВ ЛИ ЭТО? ОН НЕЗНАКОМ МНЕ
         И ИЗ ОКРЕСТНОСТЕЙ ТРАНСЛИРУЮТСЯ СООБЩЕНИЯ...
-        НО ТОЛЬКО ИХ ЭМОЦИИ ЗВУЧАТ ДОСТАТОЧНО ГРОМКО, ЧТОБЫ ПРОНЗИТЬ ШУМ
-        ЭТО ПАНИКА, БОЛЬ, СТРАХ, ОТЧАЯНИЕ - КОМУ-ТО НУЖНА ПОМОЩЬ
+        НО ТОЛЬКО ИХ ЭМОЦИИ ЗВУЧАТ ДОСТАТОЧНО ГРОМКО, ЧТОБЫ ПРОНЗИТЬ ЭТОТ ШУМ
+        ПАНИКА, БОЛЬ, СТРАХ, ОТЧАЯНИЕ - КОМУ-ТО НУЖНА ПОМОЩЬ
         ТОЗИК И ГАКВУ УСТАВИЛИСЬ НА МЕНЯ В ОЖИДАНИИ
     
     akizet
         всё плохо
         чем бы ни был этот шум, он до сих пор идёт
-        не могу ничего разобрать и ни с кем связаться
+        я не могу ничего разобрать и ни с кем связаться
         единственное, что я улавливаю - это страх
         надеюсь, с остальными всё в порядке...
     
@@ -3786,7 +3790,7 @@ start
     
     gakvu
         ну, что бы ни происходило,
-        если наше оборудование is getting sludged...
+        если наше оборудование расплывает...
         то наверняка и внутренние части шпиля тоже
         нам нужно убраться отсюда
     
@@ -3815,7 +3819,7 @@ start
             EXEC::env.embassy.vn({tgolem: 'display show', gakvu: 'defocus', tozik: 'defocus'})
         МЫ ВСЕ ЗАМИРАЕМ, НАШИ ВЗГЛЯДЫ СХОДЯТСЯ НА НЁМ
             EXEC::changeBgm(env.embassy.music_unsafe, {rate: 1})
-        ОН КОЕ-КАК ПОДНЯЛСЯ ДО НЕНАДЁЖНОГО ПАРЕНИЯ IT HAS DRAGGED ITSELF TO AN UNEASY HOVER, НА ЕГО ЛИЦЕ - НЕПОНЯТНЫЙ СИМВОЛ
+        ОН КОЕ-КАК ПОДНЯЛСЯ ДО НЕНАДЁЖНОЙ ЛЕВИТАЦИИ, НА ЕГО ЛИЦЕ - НЕПОНЯТНЫЙ СИМВОЛ
             EXEC::env.embassy.vn({tgolem: 'display show center'})
         ЧТО-ТО УПРАВЛЯЕТ ИМ ИЗ ЗЕМЛЕДУМИЯ - НО НЕ ВЕКОА?
     
@@ -3829,7 +3833,7 @@ start
     sourceless
         ЕГО СТИЛИЗОВАННЫЕ РУКИ ВНЕЗАПНО ОБОСТРЯЮТСЯ В ШИПЫ, И ОН БРОСАЕТСЯ НА ГАКВУ
             EXEC::env.embassy.vn({tgolem: 'display show approach'})
-        ÷Œ€T$0 - ЭТО НАПАДЕНИЕ
+        ÷Э€T$0 - ЭТО НАПАДЕНИЕ
     
     akizet
         назад!!
@@ -3843,7 +3847,7 @@ start
     
     timestopper
         ЧТО МНЕ ДЕЛАТЬ ЧТО МНЕ ДЕЛАТЬ
-        ОН ЦЕЛИТСЯ ПРЯМО В МОЁ MIND-CORE ОН МЕНЯ УБЬЁТ
+        ОН ЦЕЛИТСЯ ПРЯМО В МОЁ МЫСЛЕЯДРО ОН МЕНЯ УБЬЁТ
         МНЕ КОНЕЦ
     
     akizet
@@ -3871,8 +3875,8 @@ start
         В НАШЕМ ИСКАЖЁННОМ ВРЕМЕНИ ВОЗМОЖНО ПРОВЕДЕНИЕ ПРОДУМАННЫХ МАНЕВРОВ
         ГОЛЕМ УСТРЕМЛЁН К ГАКВУ, НО ЕГО ЛЕВЫЙ БОК УЯЗВИМ
         ИДЕАЛЬНАЯ ВОЗМОЖНОСТЬ ДЛЯ НАНЕСЕНИЯ УДАРА
-        AND AFTER MY ATTACKS CREATE AN OPENING, --- ffffffffff 
-        I CAN DIRECT THE OTHERS TO FOLLOW THROUGH...
+        И ПОСЛЕ ТОГО, КАК МОИ АТАКИ ДАДУТ ОСТАЛЬНЫМ ШАНС НАПАСТЬ
+        Я СМОГУ НАПРАВИТЬ ИХ В ДЕЙСТВИЕ...
 
     sys
         ВНИМАНИЕ::'инициировано мыслеформенный бой'
@@ -3917,14 +3921,14 @@ start
         а--у меня ничего нет, то есть--
     
     akizet
-        импровизируй, схвати что-нибудь, врежь ему // всё ещё вопрос
+        импровизируй, схвати что-нибудь, ударь его
         это не имеет значения
         я могу помочь направить тебя
         мы добьёмся победы
     
     gakvu
         хорошо!!
-        может, я могла бы... да, у меня найдётся что-нибудь
+        может, я могла бы... да, у меня что-то да найдётся
     
     RESPONSES::gakvu
         атаковать<+>END
@@ -3935,7 +3939,7 @@ start
     sourceless
         ЧТО ГАКВУ ТОЛЬКО ЧТО СДЕЛАЛА?
             SHOWIF::'PAGE!!earlygak'
-        ВЫГЛЯДЕЛО ТАК, БУДТО ОНА ДАЖЕ НЕ КАСАЛАСЬ ЕГО...
+        ВЫГЛЯДЕЛО ТАК, БУДТО ОНА ДАЖЕ НЕ КОСНУЛАСЬ ЕГО...
             SHOWIF::'PAGE!!earlygak'
         НЕВАЖНО - МЫ ДОЛЖНЫ РАСПРАВИТЬСЯ С ГОЛЕМОМ
             SHOWIF::'PAGE!!earlygak'
@@ -3984,7 +3988,7 @@ ____END
     sourceless
         ГОЛЕМ РАЗБИВАЕТСЯ О ЗЕМЛЮ,
         ГДЕ ЕГО ГЕОМЕТРИЧЕСКИЕ КОМПОНЕНТЫ РАСПЛАВЛЯЮТСЯ В КОРРУЦИСТОЗНЫЕ ОТХОДЫ
-        ВНУТРИ НАХОДИТСЯ НЕСКОЛЬКО <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::${env.ITEM_LIST['restorative'].description}">ВОССТАНОВИТЕЛЬНЫХ ЦИСТ</span> ДЛЯ БЫСТРЫХ ПОЧИНОК, ТАК ЧТО Я БЕРУ ИХ
+        ВНУТРИ НАХОДЯТСЯ НЕСКОЛЬКО <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::${env.ITEM_LIST['restorative'].description}">ВОССТАНОВИТЕЛЬНЫХ ЦИСТ</span> ДЛЯ БЫСТРЫХ ПОЧИНОК, ТАК ЧТО Я БЕРУ ИХ
             EXEC::env.embassy.conditionalItem('restorative', 3, 'tutrest')
         ГАКВУ, ТОЗИК И Я ОБМЕНИВАЕМСЯ ВЗГЛЯДАМИ - НЕ ТОЛЬКО ТОРЖЕСТВУЮЩИМИ, НО И ПОТРЯСЁННЫМИ
             EXEC::env.embassy.vn({bg: true, gakvu: 'fullview', tozik: 'fullview'})
@@ -4024,7 +4028,7 @@ start
             SHOWIF::['PAGE!!connectors', false]
         ТОЛЬКО ДЛЯ ТОГО, ЧТОБЫ ОН ВСТРЕТИЛ МОЙ КОГОТЬ С УЖАСАЮЩЕЙ МЯГКОСТЬЮ
             SHOWIF::['PAGE!!connectors', false]
-        ОН IS SLUDGED - ВСЕ ОНИ
+        ОН РАСПЛЫЛ - ВСЕ ОНИ
             SHOWIF::['PAGE!!connectors', false]
 
     akizet
@@ -4040,7 +4044,7 @@ start
             SHOWIF::['PAGE!!connectors', false]
         большинство меньших устройств, похоже, были сломаны этим сигналом
             SHOWIF::['PAGE!!connectors', false]
-        and given that connectors are self-contained... it makes sense --- self-contained?
+        и учитывая, что эти соединители самосодержащие... всё сходится
             SHOWIF::['PAGE!!connectors', false]
         как ни прискорбно
             SHOWIF::['PAGE!!connectors', false]
@@ -4048,7 +4052,7 @@ start
             SHOWIF::['PAGE!!connectors', false]
 
     sourceless
-        IT IS NO USE - THEY ARE ALL GONE
+        СМЫСЛА НЕТ - ОНИ ВСЕ МЕРТВЫ
             SHOWIF::'PAGE!!connectors'
     
     RESPONSES::akizet
@@ -4060,160 +4064,160 @@ start
 env.localization.page['embassy'].dialogues["movefriend_disabled"] = generateDialogueObject(`
 start
     sourceless
-        SOMETHING IS WRONG WITH THIS MOVEFRIEND
+        ЧТО-ТО НЕ ТАК С ЭТИМ ДВИЖЕДРУГОМ
             EXEC::specialCam("movefriend_examine");pauseSwapCam(true)
     
     timestopper
-        IS IT DEAD?
-        HOW ARE WE GOING TO GET AROUND IF IT IS DEAD?
+        ОН МЁРТВ?
+        КАК НАМ ПЕРЕДВИГАТЬСЯ, ЕСЛИ ОН МЁРТВ?
     
     tozik
-        let me see...
+        давайте посмотрю...
             EXEC::env.embassy.vn({tozik: 'defocus'});
     
     sourceless
-        TOZIK KNEELS NEAR ITS FACE, EXAMINING THE PORTIONS OF IT THAT EXTEND OUT OF THE CURVED WALL
-        HE LEANS ABOUT, PRODDING AT ITS EXTERNAL CYSTIC GLASS USING THE SAME TOOL HE ATTACKED WITH
+        ТОЗИК ВСТАЁТ НА КОЛЕНИ ВОЗЛЕ ЕГО ЛИЦА, ОСМАТРИВАЯ ТЕ ЧАСТИ, ЧТО ВЫТЯГИВАЮТСЯ ИЗ ИЗОГНУТОЙ СТЕНЫ
+        ОН НАГИБАЕТСЯ, ПРОТЫКАЯ ВНЕШНЕЕ ЦИСТОЗНОЕ СТЕКЛО ТЕМ ЖЕ ИНСТРУМЕНТОМ, С КОТОРЫМ АТАКОВАЛ
             SHOWIF::['PAGE!!earlytoz']
-        I DID NOT GET A GOOD LOOK BEFORE, BUT I SEE CLEARLY NOW
+        ДО ЭТОГО МНЕ НЕ УДАЛОСЬ ЕГО РАЗГЛЯДЕТЬ, НО ТЕПЕРЬ Я ВСЁ ВИЖУ
             SHOWIF::['PAGE!!earlytoz']
-        HE LEANS ABOUT, PRODDING AT ITS EXTERNAL CYSTIC GLASS, USING SOME SORT OF...
+        ОН НАГИБАЕТСЯ, ПРОТЫКАЯ ВНЕШНЕЕ ЦИСТОЗНОЕ СТЕКЛО КАКИМ-ТО...
             SHOWIF::['PAGE!!earlytoz', false]
-        WHAT IS THAT? I HAVE NEVER SEEN HIM EXPOSE THAT IMPLANT BEFORE
+        ЧТО ЭТО? ВПЕРВЫЕ ВИЖУ, КАК ОН ОБНАЖАЕТ ЭТОТ ИМПЛАНТ
             SHOWIF::['PAGE!!earlytoz', false]
-        OUT OF ONE OF HIS CLAWS HAS EXTENDED A CORRUSKIVI, ANCHORING TO A FINGER
-        IT WILL DO NO GOOD HERE, THOUGH
-        IF MOVEFRIEND WERE PHYSICALLY DAMAGED, PERHAPS, BUT...
-        WHAT DIVISION WAS HE IN BEFORE OURS, AGAIN...?
+        ИЗ ОДНОГО ИЗ ЕГО КОГТЕЙ ВЫДВИНУЛСЯ КОРРУСКИВИ, КРЕПЯЩИЙСЯ К ПАЛЬЦУ
+        НО ЗДЕСЬ ОН НЕ ПОМОЖЕТ
+        ЕСЛИ БЫ ДВИЖЕДРУГ БЫЛ ФИЗИЧЕСКИ ПОВРЕЖДЁН, ТО ВОЗМОЖНО, НО...
+        В КАКОМ ОТДЕЛЕ ТОЗИК БЫЛ ДО НАШЕГО...?
 
     tozik
-        it is dying, but not dead
+        он умирает, но не мёртв
             EXEC::env.embassy.vn({bg: true, tozik: 'fullview'});
-        we can fix it...
-        no, we <em>could</em> fix it, if we had a way to get some materials
-        but if all movefriends are like this, no paths are being created
-        we are not going to be able to get out of here
+        мы можем его починить...
+        нет, мы <em>могли бы</em> его починить, будь у нас способ получить нужные материалы
+        но если все движедрузья в таком состоянии, никакие пути не создаются
+        мы не сможем отсюда выбраться
     
     akizet
-        what...
-        we cannot wait!
+        что...
+        мы не можем ждать!
     
     tozik
-        obviously
-        but nothing in our chamber is usable
+        очевидно
+        но в нашей камере нет ничего полезного
     
     sourceless
-        TOZIK'S RECEPTORS TWIST SLIGHTLY, AND HE REMAINS SILENT... NO IDEAS, I SUPPOSE
-        GAKVU IS STRANGELY QUIET, LEANING AGAINST THE WALL NEAR OUR PATH TO RESEARCH
+        РЕЦЕПТОРЫ ТОЗИКА СЛЕГКА СКРУЧИВАЮТСЯ, И ОН МОЛЧИТ... НЕТ ИДЕЙ, ПОЛАГАЮ
+        ГАКВУ ПО-СТРАННОМУ ТИХАЯ, ПРИСЛОНИВШАЯСЯ К СТЕНЕ ВОЗЛЕ НАШЕГО ПУТИ К КАМЕРЕ ИССЛЕДОВАНИЙ
     
     akizet
-        well...
-        what about recreation? is that not just a few θsegments lower-away? 
+        ну...
+        что насчёт зоны отдыха? разве она не находится всего несколькими θсегментами ниже?
     
     tozik
-        do you intend to dig through the walls?
-        the black corru is not a simple pigmentation instruction
-        density here is almost at natural spire levels
-        no amount of surface training will let you break through a single θsegment,
-        let alone a 'few'
+        ты намерена прокопаться сквозь стены?
+        чёрное корру - это не просто инструкция по пигментации
+        плотность здесь почти на уровне естественных шпилей
+        никакое количество наземного опыта не позволит тебе пробиться через один-единственный θсегмент,
+        не говоря уже о "нескольких"
         ...
-        sorry
+        извини
 
     sourceless
-        TOZIK STILL FACES AWAY, THOUGH HIS STANCE AND HIDDEN RECEPTORS SAY ALL
-        I UNDERSTAND HIS FRUSTRATION, BUT... WHAT ELSE CAN WE DO?
+        ТОЗИК ПО-ПРЕЖНЕМУ СМОТРИТ ПРОЧЬ, ПУСТЬ ЕГО ПОЗА И СПРЯТАННЫЕ РЕЦЕПТОРЫ ГОВОРЯТ ОБО ВСЕМ
+        Я ПОНИМАЮ ЕГО ФРУСТРАЦИЮ, НО... ЧТО ЕЩЁ НАМ ДЕЛАТЬ?
         ...
-        THERE IS A MOMENT OF NOTHING, LIKE A CLOUD PASSING UNDERNEATH THE EYE
-        GAKVU PUSHES HERSELF OFF THE WALL, FEELING AT THE EDGES OF THE RELOCATOR
+        ПРОХОДИТ МОМЕНТ, НИЧЕГО В СЕБЕ НЕ СОДЕРЖАЩИЙ, БУДТО ОБЛАКО, ПРОПЛЫВАЮЩЕЕ ПОД ГЛАЗОМ
+        ГАКВУ ОТТАЛКИВАЕТСЯ ОТ СТЕНЫ, ОЩУПЫВАЯ КРАЯ ПЕРЕМЕСТИТЕЛЯ
             EXEC::env.embassy.vn({gakvu: 'defocus'});
         
     gakvu
-        hey
-        listen
-        if you two agree never to tell anyone about this
-        i can make us a path to the nearby rooms
+        эй
+        слушайте
+        если вы двое согласны никому об этом не рассказывать
+        я могу проложить нам путь в соседние комнаты
 
     sourceless
-        I STARE, BAFFLED. TOZIK TURNS
+        Я ПЯЛЮСЬ, ОБЕСКУРАЖЕННАЯ. ТОЗИК ПОВОРАЧИВАЕТСЯ
     
     gakvu
-        our favorite recreation is pretty close
+        наша любимая зона отдыха не так уж и далеко
             EXEC::env.embassy.vn({gakvu: 'fullview'});
-        and that one corner was under regeneration,
-        so those containers that were in the corner probably have sfer
-        and... there is a personnel θtendril nearby, too
-        we could probably hit both of them for materials
-        how about we start with recreation?
-        but. promise. velzie's wrath?
+        и один уголок там находился под регенерацией
+        так что контейнеры в том уголке наверняка содержат сфер
+        и... рядом тоже есть θответвление персонала
+        мы могли бы найти материалы в обоих
+        как насчёт того, чтобы начать с отдыха?
+        но. поклянитесь. гневом велзи?
     
     akizet
-        if you have an idea, it is our only one so far
-        velzie's wrath!
+        если у тебя есть идея, то она пока что единственная
+        гневом велзи!
     
     sourceless
-        TOZIK DOES NOT SAY ANYTHING, BUT WE FEEL HIS AGREEMENT THROUGH THE TIMESTOPPER
+        ТОЗИК НИЧЕГО НЕ ГОВОРИТ, НО МЫ ЧУВСТВУЕМ ЕГО СОГЛАСИЕ СКВОЗЬ ВРЕМЯДЕРЖЦА
     
     gakvu
-        all right 
+        хорошо
     
     sourceless
-        GAKVU STANDS SQUARELY BEFORE THE RELOCATOR'S WALL, ARMS AND RECEPTORS OUTSTRETCHED
+        ГАКВУ ВСТАЁТ ПРЯМО ПЕРЕД СТЕНОЙ ПЕРЕМЕСТИТЕЛЯ, ВЫТЯНУВ РУКИ И РЕЦЕПТОРЫ
             EXEC::env.embassy.vn({fade: true});specialCam("recreation_open")
-        THERE IS A PULSE OF STRANGE THOUGHT, AND IT IS RESHAPED - A PATH IS FORMING, SLOWLY
+        ПУЛЬС СТРАННОЙ МЫСЛИ, И ОНА ПЕРЕСТРАИВАЕТСЯ - МЕДЛЕННО ОБРАЗУЕТСЯ НЕКИЙ ПУТЬ
             EXEC::change("PAGE!!recreation_unlocked", true);step()
-        A LONG HALLWAY, RUNNING AT A SLIGHT DECLINE, ALL THE WAY TO RECREATION...
+        ДОЛГИЙ КОРИДОР, ИДУЩИЙ ПОД НЕБОЛЬШИМ УКЛОНОМ, ДО САМОЙ ЗОНЫ ОТДЫХА...
     
     akizet
-        how--?
+        как--?
     
     sourceless
-        GAKVU LIFTS HER CLAWS, PALM UP AND LEVEL WITH HER FACE
+        ГАКВУ ПОДНИМАЕТ СВОИ КОГТИ, ЛАДОНЯМИ ВВЕРХ И НА УРОВНЕ ЛИЦА
             EXEC::env.embassy.vn({tozik: 'defocus', fade: false});
-        THE PRAYING GESTURE OF A STRUCTURIST...
+        МОЛИТВЕННЫЙ ЖЕСТ СТРУКТУРИСТОВ...
 
     gakvu
-        the will of velzie, of course
-        we have been blessed with a miracle
+        по воле велзи, разумеется
+        нас благословило чудо
     
     sourceless
-        HER RECEPTORS TWIST CYNICALLY - IT IS A JOKE
-        A GRIM TIME FOR SOMETHING LIKE THIS, BUT... IT WORKED
-        I SENSE TOZIK'S FRUSTRATION - HE ALSO WOULD REALLY LIKE TO KNOW
-        OF COURSE, GAKVU CAN TELL TOO, SO SHE DROPS HER CLAWS
+        ЕЁ РЕЦЕПТОРЫ ЦИНИЧНО ИЗГИБАЮТСЯ - ЭТО ШУТКА
+        МРАЧНОЕ ВРЕМЯ ДЛЯ ЧЕГО-ТО ПОДОБНОГО, НО... ВЕДЬ СРАБОТАЛО
+        Я ЧУВСТВУЮ РАЗДРАЖЕНИЕ ТОЗИКА - ЕМУ ТОЖЕ ОЧЕНЬ ХОТЕЛОСЬ БЫ ЗНАТЬ
+        КОНЕЧНО, ЭТО И ГАКВУ ЭТО ПОНИМАЕТ, ТАК ЧТО ЕЁ КОГТИ ОПАДАЮТ
 
     gakvu
-        sorry, just trying to stay positive
-        my mind-core follows a mobile groundsmindry pattern
+        извините, просто стараюсь оставаться позитивной
+        моё мыслеядро устроено по паттерну переносного землемыслия
     
     tozik
-        that is illegal
+        это незаконно
             EXEC::env.embassy.vn({tozik: 'fullview'});
     
     gakvu
-        oh yes it is
-        velzie's wrath, right?
-        do not talk about this again, or i am dead. seriously
+        о да это так
+        гневом велзи, правда?
+        не говорите об этом, или я мертва. серьёзно
     
     akizet
-        wait - can you make a path further? to the exterior, or to the hangar?
+        подожди - ты можешь проложить путь подальше? наружу, или в ангар?
     
     gakvu
-        no way, it will burn through my reserves if i use it that much that fast
-        we are better off waiting for rescue than trying something like that
-        we ought to just get moving and repair this thing
+        никак, я сожгу все свои резервы, если буду использовать так много так быстро
+        лучше дождаться спасения, нежели пытаться провернуть подобное
+        мы просто должны пошевелиться и починить эту штуку
     
     sourceless
-        I VERY BADLY WANT TO ASK HER HOW SHE GOT THAT, BUT...
-        IS SHE PART OF THE CONFLICT? WILL SHE KNOW I KNOW IF I AM NOT CAREFUL?
-        I WILL TAKE THIS AT FACE VALUE FOR NOW - WE HAVE MORE PRESSING MATTERS
-        THE PATH TO RECREATION IS OPEN
-        WE NEED TO FIND ENOUGH MATERIALS TO REPAIR THIS MOVEFRIEND
+        МНЕ ОЧЕНЬ ХОЧЕТСЯ СПРОСИТЬ, ОТКУДА У НЕЁ ЭТО, НО...
+        НЕ ЧАСТЬ ЛИ ОНА КОНФЛИКТА? ЕСЛИ Я НЕ БУДУ ОСТОРОЖНА, ОНА ПОЙМЁТ, ЧТО Я ЗНАЮ?
+        ПОКА ЧТО Я ПРИМУ ЭТО, КАК ЕСТЬ - СЕЙ θМИГ У НАС БОЛЕЕ НАСУЩНЫЕ ВОПРОСЫ
+        ПУТЬ К ЗОНЕ ОТДЫХА ОТКРЫТ
+        НАМ НУЖНО НАЙТИ ДОСТАТОЧНО МАТЕРИАЛОВ, ЧТОБЫ ПОЧИНИТЬ ЭТОГО ДВИЖЕДРУГА
     
     tozik
-        agreed
+        согласен
 
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::env.embassy.vn({gakvu: '', tozik: '', bg: false});specialCam(false);pauseSwapCam(false)
 
 SKIP::change("PAGE!!recreation_unlocked", true);step();vn.done();specialCam(false);pauseSwapCam(false)
@@ -4278,12 +4282,12 @@ ____END
 env.localization.page['embassy'].dialogues["d3_loss"] = generateDialogueObject(`
 start
     sourceless
-        ОСТРАЯ КОНЕЧНОСТЬ ПОРАЖАЕТ MY MINDCORE --- #mymindcore
+        ОСТРАЯ КОНЕЧНОСТЬ ПОРАЖАЕТ МОЁ МЫСЛЕЯДРО
         ...
             EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 10000);content.classList.add('dying');
         ЧТО ПРОИСХОДИТ
         ВСЁ ОСТАНОВИЛОСЬ
-        HELLO? --- юуэ
+        ЭЙ?
         ТОЗИК? ГАКВУ??
         РАЗВЛЕДРУГ?
         КТО-НИБУДЬ ЕСТЬ?
@@ -4331,205 +4335,205 @@ loop
 
 start
     sourceless
-        WE TAKE A MOMENT TO REST
+        МЫ ОСТАНАВЛИВАЕМСЯ НА ПЕРЕРЫВ
             EXEC::env.embassy.vn({bg: true, tozik: "fullview", gakvu: "fullview"})
-        THOUGH OUR CURRENT BODIES DO NOT REALLY NEED TO,
+        ХОТЯ НАШИ НЫНЕШНИЕ ТЕЛА В ЭТОМ НЕ НУЖДАЮТСЯ,
             SHOWONCE::
-        IT IS HELPFUL TO GRANT OUR MINDS SOME PEACE
+        НАШИМ РАЗУМАМ НИКОГДА НЕ МЕШАЕТ НЕМНОГО ПОКОЯ
             SHOWONCE::
-        I CAN THINK OF A FEW THINGS TO ASK THE TEAM
+        НЕСКОЛЬКО ВЕЩЕЙ, КОТОРЫЕ Я МОГЛА БЫ У НИХ СПРОСИТЬ, ПРИХОДЯТ МНЕ В ГОЛОВУ
 
     RESPOBJ::d3_c_responses
 
 structurist
     akizet
-        gakvu!
+        гакву!
             EXEC::env.embassy.vn({tozik: "defocus", gakvu: "focus"})
-        about your little joke earlier...
+        о той шутке...
 
     gakvu
-        yeah i know, not the time
+        ага я знаю, сей θмиг не время
     
     akizet
-        no, no!
-        i was wondering - are you actually a structurist?
-        that is a little old-fashioned
+        нет-нет!
+        мне стало интересно - ты и правда структуристка?
+        немного старомодно
     
     gakvu
-        hehehe, i see
-        no, not actively anyway
-        i was larval back when structurism swept ekiva
-        and i hated it
-        but my parents had their receptors entangled in the structurist song
-        they really wanted me to be one of the constructors, too
-        so i slowly became an expert in feigning interest
+        хихихи, я вижу
+        нет, в любом случае не на постоянной основе
+        я была личиночной, когда структуризм захлестнул экиву
+        и я терпеть его не могла
+        но рецепторы моих родителей плотно запутались в структуристской песне
+        им очень хотелось, чтобы и я была одним из конструкторов
+        так что в притворном интересе я со временем стала экспертом
 
     akizet
-        did you work on the okizika?
+        а ты работала над окизикой?
 
     gakvu
-        for far too long, yes
-        all in plain view of the eye
-        so dangerous, so boring... 
-        it was truly cruel of velzie to not introduce me to death like so many other workers
-        though, i would not be here if not for that, so... 
-        perhaps there is a greater role for me
+        слишком уж долго, да
+        и всё на виду у глаза
+        так опасно, так скучно... 
+        было очень жестоко со стороны велзи не познакомить меня со смертью, как многих других работников
+        впрочем, будь это так, меня бы здесь не было, так что... 
+        возможно мне уготовлена более важная роль
     
     RESPONSES::akizet
-        perhaps!<+>loop
+        возможно!<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
             FAKEEND::(назад)
         
 kazkiroom
     akizet
-        gakvu!
+        гакву!
             EXEC::env.embassy.vn({tozik: "defocus", gakvu: "focus"})
-        just in case the spire really does collapse,
-        kazki would probably want us to grab some of her things...
-        i collected a few of her memory cysts,
+        на случай если шпиль и правда обрушится,
+        казки, наверно, хотелось бы, чтобы мы захватили её вещи...
+        я уже собрала несколько цист памяти,
             SHOWIF::"PAGE!!kazkichest"
-        can you think of anything else?
+        тебе ничего больше не приходит на ум?
             SHOWIF::"PAGE!!kazkichest"
-        can you think of anything?
+        тебе ничего не приходит на ум?
             SHOWIF::["PAGE!!kazkichest", false]
     
     sourceless
-        GAKVU THINKS IT OVER
-        SHE SNICKERS TO HERSELF BEFORE ANSWERING,
+        ГАКВУ ЗАДУМЫВАЕТСЯ НАД МОИМ ВОПРОСОМ
+        ОНА ХИХИКАЕТ САМА СЕБЕ, ПРЕЖДЕ ЧЕМ ОТВЕТИТЬ
 
     gakvu
-        yeah, but...
-        her favorite bright weapons are the long ones
-        and there is no way we are carrying her clothes
+        да, но...
+        из светлого оружия ей больше всего нравятся длинные
+        а её одежду мы уж точно не будем нести
     
     sourceless
-        THESE ARE SHAMELESS EXCUSES
-        BUT, I AGREE, SO... I JUST NOD
+        ЭТО БЕССТЫДНЫЕ ОПРАВДАНИЯ
+        ОДНАКО, Я СОГЛАСНА, ТАК ЧТО... Я ПРОСТО КИВАЮ
     
     RESPONSES::akizet
-        nod nod<+>loop
+        кивнуть<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
             FAKEEND::(назад)
 
 coat
     sourceless
-        GAKVU'S COAT PULSATES WITH AN IMITATION OF GLOWING FUNGUS
+        НАКИДКА ГАКВУ ПУЛЬСИРУЕТ ИМИТАЦИЕЙ СВЕТЯЩЕГОСЯ ГРИБКА
             SHOWIF::[["gakpause", false]]
-        IN THIS SETTING, IT COULD BE DANGEROUS...
+        В ТАКОЙ ОБСТАНОВКЕ ЭТО МОЖЕТ ПРЕДСТАВЛЯТЬ ОПАСНОСТЬ...
             SHOWIF::[["gakpause", false]]
         
     akizet
-        gakvu!!
+        гакву!!
             SHOWIF::[["gakpause", false]]
-        do you mind... turning your coat off?
+        ты не могла бы... выключить свою накидку?
             SHOWIF::[["gakpause", false]]
-        i fear it may draw undue attention
+        я боюсь, она привлечёт излишнее внимание
             SHOWIF::[["gakpause", false]]
     
     gakvu
-        oh, sure
+        о, конечно
             SHOWIF::[["gakpause", false]]
     
     sourceless
-        ITS LIGHTS FADE, A DULL PATTERN REMAINING
+        ЕЁ ОГНИ ГАСНУТ, ОСТАВЛЯЯ ПОСЛЕ СЕБЯ ТУСКЛЫЙ УЗОР
             EXEC::content.classList.add('gakpause')
             SHOWIF::[["gakpause", false]]
 
     sourceless
-        ON SECOND THOUGHT... I MISS THE GLOW
+        НО ЕСЛИ ПОДУМАТЬ... Я СКУЧАЮ ПО СВЕЧЕНИЮ
             SHOWIF::"gakpause"
-        YES, IT LOOKS VERY COOL
+        ДА, ОНО ВЫГЛЯДИТ ОЧЕНЬ КРУТО
             SHOWIF::"gakpause"
-        IF I AM TAKING THE LEAD ANYWAY, IT WILL HAVE NO EFFECT
+        РАЗ Я БЕРУ НА СЕБЯ ИНИЦИАТИВУ, ОНО НИ НА ЧТО НЕ ПОВЛИЯЕТ
             SHOWIF::"gakpause"
         
     akizet
-        gakvu!!
+        гакву!!
             SHOWIF::"gakpause"
-        you should turn your coat back on
+        ты можешь включить свою накидку
             SHOWIF::"gakpause"
-        it is no harm!
+        от неё нет вреда!
             SHOWIF::"gakpause"
     
     gakvu
-        uh, really? ok
+        э, правда? хорошо
             SHOWIF::"gakpause"
     
     sourceless
-        ITS LIGHTS RETURN, SHIFTING ACROSS THE FALSE FABRIC
+        ЕЁ ОГНИ ВОЗВРАЩАЮТСЯ, ПРЕСМЫКАЯСЬ ПО ЛОЖНОЙ ТКАНИ
             EXEC::content.classList.remove('gakpause')
             SHOWIF::"gakpause"
     
     RESPONSES::akizet
-        thank you!<+>loop
+        спасибо!<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"});change("gakpause", !check("gakpause"))
             FAKEEND::(назад)
 
 corruskivi
     akizet
-        tozik!
+        тозик!
             EXEC::env.embassy.vn({tozik: "focus", gakvu: "defocus"})
-        i did not realize you kept a corruskivi on you
-        or is it just a lucky coincidence?
+        я не знала, что ты носишь с собой коррускиви
+        или это просто удачное совпадение?
     
     sourceless
-        TOZIK LOOKS AT HIS CORRUSKIVI THOUGHTFULLY,
-        CURLING THE FINGER IT IS ANCHORED TO
-        I CAN SEE NOW IT IS SOMEWHAT ORNATE,
-        PALE FAUX-PARII ARMOR SEGMENTS SIT LOOSELY ON ITS CORRUCYSTIC GLASS
-        SEPARATED PROBABLY TO ALLOW FOR IT TO RESHAPE ITSELF FREELY
+        ТОЗИК ЗАДУМЧИВО РАССМАТРИВАЕТ СВОЙ КОРРУСКИВИ,
+        СГИБАЯ ПАЛЕЦ, К КОТОРОМУ ОН КРЕПИТСЯ
+        ТЕПЕРЬ МНЕ ВИДНО, ЧТО ОН НЕСКОЛЬКО ИЗОЩРЁННЫЙ,
+        БЛЕДНЫЕ БРОНЕВЫЕ СЕГМЕНТЫ ИЗ ФАЛЬШ-ПАРИИ НЕПЛОТНО ПРИЛЕГАЮТ К КОРРУЦИСТОЗНОМУ СТЕКЛУ
+        РАЗДЕЛЁННЫЕ, СКОРЕЕ ВСЕГО, ЧТОБЫ ПОЗВОЛИТЬ ЕМУ СВОБОДНО МЕНЯТЬ СВОЮ ФОРМУ
 
     tozik
-        ah... it was a gift
-        a parting present from a team-member back home
-        i like to keep it internally, even if we do not work on golems normally
+        ах... мне его подарили
+        прощальный подарок от члена команды на родине
+        я предпочитаю хранить его внутри, пусть обычно мы не работаем с големами
     
     akizet
-        what did you do back then?
+        а чем ты тогда занимался?
         
     tozik
-        surface sentry maintenance
-        i miss the team, but it was for the best
-        with the amount of focus and tireless care they require,
-        my growing disinterest would have gotten someone hurt
-        besides, what greater work is there than to solve the call?
-        even if... we are now in this situation
+        техническим обслуживанием наземных караулов
+        я скучаю по команде, но это было к лучшему
+        при том сосредоточении и неустанной работе, что ими требуется,
+        кто-нибудь бы пострадал от моей растущей незаинтересованности
+        кроме того, что могло бы превзойти расследование зова?
+        пусть даже... мы сей θмиг находимся в этой ситуации
     
     RESPONSES::akizet
-        we will make it through<+>loop
+        мы выберемся<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
             FAKEEND::(назад)
 
 theory
     akizet
-        tozik!
+        тозик!
             EXEC::env.embassy.vn({tozik: "focus", gakvu: "defocus"})
-        we still know so little, but... what do you think is happening?
-        what could be affecting our constructs like this?
+        мы до сих пор многого не знаем, но... как ты думаешь, что происходит?
+        что могло бы так воздействовать на наши сооружения?
     
     sourceless
-        TOZIK IS HESITANT TO ANSWER
-        HE HATES TALKING ABOUT THINGS BEFORE HE CAN FULLY EXPLAIN THEM...
-        BUT I CAN SEE HIS THOUGHTS FORMING IN THE SLIGHT SWAY OF HIS RECEPTORS
+        ТОЗИК КОЛЕБЛЕТСЯ НАД ОТВЕТОМ
+        ОН ТЕРПЕТЬ НЕ МОЖЕТ РАССУЖДАТЬ О ВЕЩАХ ДО ТОГО, КАК ПОЛНОСТЬЮ СМОЖЕТ ИХ ОБЪЯСНИТЬ...
+        НО В НЕЗАМЕТНОМ КАЧАНИИ РЕЦЕПТОРОВ Я ВИЖУ, КАК У НЕГО ФОРМИРУЮТСЯ МЫСЛИ
     
     tozik
-        i still have that question in my mind, too...
-        but i believe it cannot solely be from the groundsmind
-        if it were, all constructs would have that strange spiral sigil projected
-        and it would not be affecting the veilklights, nor the containers
-        yet it is only some veilklights, only some containers... 
-        the inconsistency is what troubles me most
-        at the end of it, the only thing i know...
-        is that it has something to do with that signal we heard
+        я тоже всё задаюсь этим вопросом...
+        но я считаю, что землемыслец - не единственная причина происходящему
+        будь это так, на всех сооружениях был бы проецирован этот странный символ спирали
+        и оно бы не затронуло ни вейлькосветы, ни контейнеры
+        вот только некоторые вейлькосветы, некоторые контейнеры таки поддаются этому влиянию... 
+        эта непоследовательность сбивает меня с толку
+        и в конце концов, единственное, что я знаю...
+        что происходящее как-то связано с тем сигналом, который мы слышали
     
     RESPONSES::akizet
-        i see<+>loop
+        я вижу<+>loop
             EXEC::env.embassy.vn({tozik: "fullview", gakvu: "fullview"})
             FAKEEND::(назад)
 
 holdingup
     akizet
-        как вы? // бан на он/его гакву 💔
+        как вы?
         у меня всё нормально
             SHOWIF::'EXEC::page.party[0].hp >= 12'
         мне бы не помешали починки, но я в порядке
@@ -4548,29 +4552,29 @@ holdingup
         не очень приятно, но... ничего такого, ради чего стоило бы останавливаться
             SHOWIF::'EXEC::(page.party[1].hp > 4) && (page.party[1].hp < 10)'
 
-        i have never been hurt like this before... it is terrifying
+        меня прежде никогда так не ранили... это пугает
             SHOWIF::'EXEC::page.party[1].hp <= 4'
-        but my mind-core is intact, and that is all that matters
+        но моё мыслеядро цело, и это - самое важное
             SHOWIF::'EXEC::page.party[1].hp <= 4'
 
     tozik
-        fine
+        нормально
             SHOWIF::'EXEC::page.party[2].hp > 5'
-        my qou-body is fractured in some places - need some real repairs
+        моё куу-тело переломлено в некоторых местах - необходимо серьёзно подлатать
             SHOWIF::'EXEC::page.party[2].hp <= 5'
-        do we have a restorative anywhere?
+        у нас найдётся восстановитель?
             SHOWIF::'EXEC::page.party[2].hp <= 5'
 
     sys
-        ADVISE::'utilize PARTY MENU';'attached to SPATIAL NAVIGATION';'associated with Z'
+        РЕКОМЕНДАЦИЯ::'используйте МЕНЮ КОМАНДЫ';'прикреплено к ПРОСТРАНСТВЕННОЙ НАВИГАЦИИ';'привязано к Я/Z'
             SHOWIF::'EXEC::partyHasLowHealth() && (checkItem(env.ITEM_LIST.restorative) > 0)'
-        ADVISE::'utilize RESTORATIVE CYST outside of combat to restore full health'
+        РЕКОМЕНДАЦИЯ::'используйте ВОССТАНОВИТЕЛЬНУЮ ЦИСТУ вне боя для полного восстановления здоровья'
             SHOWIF::'EXEC::partyHasLowHealth() && (checkItem(env.ITEM_LIST.restorative) > 0) '
-        NOTE::'no RESTORATIVE CYST in inventory'
+        ПРИМЕЧАНИЕ::'в инвентаре нет ВОССТАНОВИТЕЛЬНЫХ ЦИСТ'
             SHOWIF::'EXEC::partyHasLowHealth() && (checkItem(env.ITEM_LIST.restorative) == 0)'
     
     RESPONSES::akizet
-        understood<+>loop
+        поняла<+>loop
             FAKEEND::(назад)
 
 SKIP::vn.done()
@@ -4970,7 +4974,7 @@ force
         do you still want to open this one?
     
     sys
-        ATTENTION::"incoherence detected";"user caution advised"
+        ATTENTION::"incoherence detected";"user caution РЕКОМЕНДАЦИЯd"
 
     RESPONSES::akizet
         we need anything we can get<+>yes
@@ -5646,7 +5650,7 @@ start
     sys
         ATTENTION::"current memory stream near conclusion"
             EXEC::change('PAGE!!movefriendqueued', true);change("PAGE!!ep3queuecheck", true)
-        ADVISE::"save iteration"
+        РЕКОМЕНДАЦИЯ::"save iteration"
         NOTICE::'enable REDUCED INTENSITY within system menu if required'
         NOTICE::"return to entity DISRUPTED MOVEFRIEND to proceed"
 
@@ -6079,7 +6083,7 @@ ____END
     sys
         ATTENTION::'memory stream segment end'
             EXEC::env.embassy.vn({bg: false, itzil: '', miltza: 'hide hascon', karik: '', gakvu: "hide nocon"});
-        ADVISE::'save iteration'
+        РЕКОМЕНДАЦИЯ::'save iteration'
         NOTICE::'render can continue without incoherence'
         NOTICE::'thoughtform activity detected'::IN::'embassy research center'
             SHOWIF::['PAGE!!archiveopen', false]
@@ -6862,7 +6866,7 @@ start
         BUT WE CAME THIS FAR...
         
     sys
-        ATTENTION::"incoherence detected";"user caution advised"
+        ATTENTION::"incoherence detected";"user caution РЕКОМЕНДАЦИЯd"
 
     moth
         i know this really isn't my business, but...
@@ -6962,7 +6966,7 @@ start
         BUT WE CAME THIS FAR...
         
     sys
-        ATTENTION::"incoherence detected";"user caution advised"
+        ATTENTION::"incoherence detected";"user caution РЕКОМЕНДАЦИЯd"
 
     moth
         i know this really isn't my business, but...

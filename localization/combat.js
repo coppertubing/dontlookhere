@@ -977,7 +977,7 @@ cor_ru.combat['redefineActions'] = function () {
 
     env.ACTIONS.special_limited_carapace.name = "Развернуть панцирь" // Expend carapace
     env.ACTIONS.special_limited_carapace.desc = "'развернуть щит вокруг выбранного союзника';'одноразовое'" // 'deploy shielding around target ally';'single-use'
-    env.ACTIONS.special_limited_carapace.help = "АВТОУДАР +3Х:ПАНЦИРЬ, ОДНО ИСПОЛЬЗОВАНИЕ ЗА БИТВУ" // AUTOHIT +3T:CARAPACE, ONE USE PER COMBAT
+    env.ACTIONS.special_limited_carapace.help = "АВТОУДАР +3Х:ПАНЦИРЬ, ОДНО ИСПОЛЬЗОВАНИЕ ЗА БОЙ" // AUTOHIT +3T:CARAPACE, ONE USE PER COMBAT
     env.ACTIONS.special_limited_carapace.usage = {
         "act": "%USER НАКЛАДЫВАЕТ СВОИ ЩИТЫ НА %ACC-TARGET",
         "crit": "%TARGET ЧУВСТВУЕТ СЕБЯ НЕУЯЗВИМ%TAR(ЫМ/ОЙ/ЫМ)GET",
@@ -1069,8 +1069,8 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - incoherent_gundown - */
 
-    env.ACTIONS.incoherent_gundown.name = "ПУЛИ СВЛЧ" // BSTRD BULLETS
-    env.ACTIONS.incoherent_gundown.desc = "ПОЛЕ БИТВЫ 100% -1ХП при ударе" // BATTLEFIELD 100% -1HP per hit
+    env.ACTIONS.incoherent_gundown.name = "ПУЛИ СВЛЧЬ" // BSTRD BULLETS
+    env.ACTIONS.incoherent_gundown.desc = "ПОЛЕ БОЯ 100% -1ХП при ударе" // BATTLEFIELD 100% -1HP per hit
     env.localization.page[page.dialoguePrefix].strings["%USER AIMS AT %TARGET"] = "%USER ЦЕЛИТСЯ В %ACC-TARGET"
 
     /* - special_fullauto - */
@@ -1166,7 +1166,7 @@ cor_ru.combat['redefineActions'] = function () {
 
     env.ACTIONS.incoherent_movefriend.name = "Шипостены" // Wallspikes
     env.ACTIONS.incoherent_movefriend.desc = "у̸͔͆ ̵̧̳͎̉͘б̶̹͑ ̸̲͇̯̐̀̂и̸̝̍̽̈́ ̷͈͒͝в̷̥̖͖̺̄̔͂ ̸͕̫͒̽̂͝а̴̘̝͉̞͐̃ ̶̫̫̱͔̌̀̎̚т̷͕̽͝ ̴͓̻̩̇̈́ь̶̢̱͚̃̈́͑" // 'k̶̡̇̄i̵͈͑̐̑̌̈́̇̾̕͝l̷̡͓̬̩̖̽̂̿̏͒̎̽̏̀̿̏̅̈l̵̯̦̪͠'
-    env.ACTIONS.incoherent_movefriend.help = "ПОЛЕ БИТВЫ 300% -1ХП" // BATTLEFIELD 300% -1HP
+    env.ACTIONS.incoherent_movefriend.help = "ПОЛЕ БОЯ 300% -1ХП" // BATTLEFIELD 300% -1HP
     env.localization.page[page.dialoguePrefix].strings["THE WALLS TWIST AROUND THE WHOLE TEAM"] = "СТЕНЫ ИСКРИВЛЯЮТСЯ ВОКРУГ ВСЕЙ КОМАНДЫ"
 
     /* - windup - */
@@ -3610,7 +3610,7 @@ cor_ru.combat['redefineItems'] = function () {
 
     /* - BSTRDBOOT - */
 
-    env.ITEM_LIST.fish_boot.name = "СВЛЧСАПОГ" // BSTRDBOOT
+    env.ITEM_LIST.fish_boot.name = "СВЛЧЬСАПОГ" // BSTRDBOOT
     env.ITEM_LIST.fish_boot.description = "'СОРЯН НИЧЕВО'" // 'SORRY NOTHING'
 
     /* - Symbiotic Rifle - */
@@ -3966,7 +3966,7 @@ cor_ru.combat['redefineActors'] = function () {
         crit_buff: ["вот, держи","не трать впустую"],
         miss: ["мне нужно сосредоточиться","мне не хватило скорости"],
         dead: ["..."],
-        puncture: ["мне нужно избавиться от этого","вы слишком долго тянете","помогите мне сей же миг!"],
+        puncture: ["мне нужно избавиться от этого","вы слишком долго тянете","помогите мне сейчас же!"],
         regen: ["медленное восстановление"],
         destabilized: ["..."],
         stun: ["а..."],
@@ -4001,7 +4001,7 @@ cor_ru.combat['redefineActors'] = function () {
         receive_destabilized: ["СДОХНИ!! СДОХНИ СДОХНИ сдохни СДОХНИ сдохни сдохни СДОХНИ!","ХИХИХӤХæ æАА!!!!"],
         receive_rez: ["НИЧТО меня не остановит! НИЧТО!","время УМИРАТЬ!"],
         receive_carapace: ["на мне не оставят ни царапины!!"],
-        receive_repairs: ["отлично! ещё, СЕЙ ЖЕ МИГ!","тьфу!! наконец-то!!"],
+        receive_repairs: ["отлично! ещё, СЕЙЧАС!","тьфу!! наконец-то!!"],
         receive_fear: ["это... НИЧЕГО не меняет...!","фу...","эууехх"],
         receive_redirection: ["лучше ТЕБЯ чем МЕНЯ!"],
     }
@@ -4177,18 +4177,18 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - BSTRDlight - */
 
-    env.COMBAT_ACTORS.bstrdlight.name = "СВЛЧсвет" // BSTRDlight
+    env.COMBAT_ACTORS.bstrdlight.name = "СВЛЧЬсвет" // BSTRDlight
     env.COMBAT_ACTORS.bstrdlight.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.bstrdlight.cor_ru = {
         name: {
-            gen: "СВЛЧсвета",
-            dat: "СВЛЧсвету", 
-            acc: "СВЛЧсвет", 
-            ins: "СВЛЧсветом", 
-            pre: "СВЛЧсвете"
+            gen: "СВЛЧЬсвета",
+            dat: "СВЛЧЬсвету", 
+            acc: "СВЛЧЬсвет", 
+            ins: "СВЛЧЬсветом", 
+            pre: "СВЛЧЬсвете"
         },
         gender: 0
     }
@@ -4407,7 +4407,7 @@ cor_ru.combat['redefineActors'] = function () {
         receive_puncture: ['восстановители, быстрее!'],
         receive_buff: ['спасибо!'],
         receive_destabilized: ['умри УМРИ!! УМРИ!! УМРИ!!!'],
-        puncture: ['я теряю целостность!'],
+        puncture: ['я теряю связность!'],
         stun: ['оаауууау'],
         receive_carapace: ['панцирь!'],
         receive_repairs: ['спасибо, спасибо!', 'гораздо лучше'],
@@ -4572,18 +4572,18 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - Constructor - */
 
-    env.COMBAT_ACTORS.constructor_golem.name = "" // Constructor
+    env.COMBAT_ACTORS.constructor_golem.name = "Конструктор" // Constructor
     env.COMBAT_ACTORS.constructor_golem.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.constructor_golem.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Конструктора",
+            dat: "Конструктору", 
+            acc: "Конструктора", 
+            ins: "Конструктором", 
+            pre: "Конструкторе"
         },
         gender: 0
     }
@@ -4626,18 +4626,18 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - Repairfriend - */
 
-    env.COMBAT_ACTORS.surgeon_golem.name = "" // Repairfriend
+    env.COMBAT_ACTORS.surgeon_golem.name = "Починкодруг" // Repairfriend
     env.COMBAT_ACTORS.surgeon_golem.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.surgeon_golem.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Починкодруга",
+            dat: "Починкодругу", 
+            acc: "Починкодруга", 
+            ins: "Починкодругом", 
+            pre: "Починкодруге"
         },
         gender: 0
     }
@@ -4723,36 +4723,36 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - Warped Container - */
 
-    env.COMBAT_ACTORS.dull_container.name = "" // Warped Container
+    env.COMBAT_ACTORS.dull_container.name = "искажённый контейнер" // Warped Container
     env.COMBAT_ACTORS.dull_container.reactions = {
         catchall: ['1Ӱ́иë2Ъ‡', '‡eԔKßгää', '/…¿?÷ ôЛãØ', 'C©Ë', '0E™Њó¨юҌÒ', '€ЛӚé{ðҎ', 'ÇæýЭ‡ß†C', '£~Уþфâ', '…Tӱ́**'],
         dead: ['¿', '???']
     }
     env.COMBAT_ACTORS.dull_container.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "искажённого Контейнера",
+            dat: "искажённому Контейнеру",
+            acc: "искажённый Контейнер", 
+            ins: "искажённым Контейнером", 
+            pre: "искажённом Контейнере"
         },
         gender: 0
     }
 
     /* - Translation Core - */
 
-    env.COMBAT_ACTORS.translation_golem.name = "" // Translation Core
+    env.COMBAT_ACTORS.translation_golem.name = "Ядро Перевода" // Translation Core
     env.COMBAT_ACTORS.translation_golem.reactions = {
         catchall: ['████ ███', '██ ██████', '█████ ████', '███', '███ ███ ███', '███ █ ████', '██████ ██', '█ ████', '████ █ █ █'],
         dead: ['███ █ █ █ ███']
     }
     env.COMBAT_ACTORS.translation_golem.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Ядра Перевода",
+            dat: "Ядру Перевода", 
+            acc: "Ядро Перевода", 
+            ins: "Ядром Перевода", 
+            pre: "Ядре Перевода"
         },
         gender: 0
     }
@@ -4794,8 +4794,8 @@ cor_ru.combat['redefineActors'] = function () {
     env.COMBAT_ACTORS.geli.name = "Джели" // Geli
     env.COMBAT_ACTORS.geli.reactions = {
         evade: ['ого!', 'аахАХаха!!'],
-        crit: ['ахаха! i GOT THEM!!'], // --- помогите
-        miss: ['о НЕТ!!', 'ПУЛЯ ВПУСТУЮ', 'WILL GET NEXT 1!'], // --- помогите
+        crit: ['ахаха! вот ТАК ТЕБЕ!!'],
+        miss: ['о НЕТ!!', 'ПУЛЯ ВПУСТУЮ', 'Я ТЯ ЕЩЁ ДОСТАНУ!'],
         dead: ['я НЕ МОГУ ДВИГАТЬСЯ'],
         receive_hit: ['АЙ'],
         receive_crit: ['ПОЧЕМУ ТАК БОЛЬНО', '>:('],
@@ -4830,22 +4830,22 @@ cor_ru.combat['redefineActors'] = function () {
         dead: ['аэаэу БОльНА!!'],
         receive_crit: ['АААЙЯЙЯЙЙ!!'],
         receive_puncture: ['кроьв...', 'М3НЯ БРОТКНУЛИ'],
-        receive_buff: ['TIME 2 GET EM ;}'], // --- помогите
+        receive_buff: ['ВРЕМЯ НАВАЛЯТЬ ИМ ;}'],
         puncture: ['ООУУЭУ'],
-        regen: [':)', 'SO BACK'], // --- помогите
-        stun: ['НЕ МОГУ ЦЕЛИЦА ЧЗНХ помогте'],
+        regen: [':)', 'СЮДААААААА'],
+        stun: ['НЕ МОГУ ЦЕЛИЦА ЧЗНХ помогте('],
         receive_fear: ['ВТФ O_O'],
         receive_destabilized: ['УОаоОАУ'],
-        receive_rez: ['AHAHA :^) WE BACK'], // --- помогите
+        receive_rez: ['АХАХА :^) СНОВА В ДЕЛЕ))'],
         destabilized: ['ДВОЙНЫЕ ПУЛИ !!']
     }
     env.COMBAT_ACTORS.bstrd.cor_ru = {
         name: {
-            gen: "СВЛЧ",
-            dat: "СВЛЧ", 
+            gen: "СВЛЧЬ",
+            dat: "СВЛЧЬ", 
             acc: "СВЛЧЬ", 
             ins: "СВЛЧЬ", 
-            pre: "СВЛЧ"
+            pre: "СВЛЧЬ"
         },
         gender: 0
     }
@@ -4859,7 +4859,7 @@ cor_ru.combat['redefineActors'] = function () {
         miss: ['чаво!! джели как их бить', 'ок можно ещё раз?', 'можно я повторю свой ход'],
         dead: ['вааа!! нееет!'],
         receive_crit: ['мио ЛЕПЕСТОЧКИ!!'],
-        receive_puncture: ['мне не нравится эта часть', 'мроукол'],
+        receive_puncture: ['мне не нравится эта часть', 'мроткнули'],
         receive_buff: ['OK I SHOOT BIG NEXT??'], // --- помогите
         puncture: ['ООУУЭУ'],
         regen: ['эхехиииааахахаха', 'окк!!! ура'],
@@ -4896,70 +4896,70 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - WRK - */
 
-    env.COMBAT_ACTORS.critta_pawn.name = "" // WRK
+    env.COMBAT_ACTORS.critta_pawn.name = "РБТ" // WRK
     env.COMBAT_ACTORS.critta_pawn.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "РБТ",
+            dat: "РБТ", 
+            acc: "РБТ", 
+            ins: "РБТ", 
+            pre: "РБТ"
         },
         gender: 0
     }
 
     /* - CLW - */
 
-    env.COMBAT_ACTORS.critta_knight.name = "" // CLW
+    env.COMBAT_ACTORS.critta_knight.name = "КГТЬ" // CLW
     env.COMBAT_ACTORS.critta_knight.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "КГТЬ",
+            dat: "КГТЬ", 
+            acc: "КГТЬ", 
+            ins: "КГТЬ", 
+            pre: "КГТЬ"
         },
         gender: 0
     }
 
     /* - NET - */
 
-    env.COMBAT_ACTORS.critta_bishop.name = "" // NET
+    env.COMBAT_ACTORS.critta_bishop.name = "СЕТЬ" // NET
     env.COMBAT_ACTORS.critta_bishop.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "СЕТЬ",
+            dat: "СЕТЬ", 
+            acc: "СЕТЬ", 
+            ins: "СЕТЬ", 
+            pre: "СЕТЬ"
         },
         gender: 0
     }
 
     /* - ENFC - */
 
-    env.COMBAT_ACTORS.critta_rook.name = "" // ENFC
+    env.COMBAT_ACTORS.critta_rook.name = "ИСПЛН" // ENFC
     env.COMBAT_ACTORS.critta_rook.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ИСПЛН",
+            dat: "ИСПЛН", 
+            acc: "ИСПЛН", 
+            ins: "ИСПЛН", 
+            pre: "ИСПЛН"
         },
         gender: 0
     }
 
     /* - SEER - */
 
-    env.COMBAT_ACTORS.critta_queen.name = "" // SEER
+    env.COMBAT_ACTORS.critta_queen.name = "ОКО" // SEER
     env.COMBAT_ACTORS.critta_queen.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ОКО",
+            dat: "ОКО", 
+            acc: "ОКО", 
+            ins: "ОКО", 
+            pre: "ОКО"
         },
         gender: 0
     }
@@ -4994,112 +4994,112 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - SPWN - */
 
-    env.COMBAT_ACTORS.critta_spawner.name = "" // SPWN
+    env.COMBAT_ACTORS.critta_spawner.name = "ПРИЗВ" // SPWN
     env.COMBAT_ACTORS.critta_spawner.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ПРИЗВ",
+            dat: "ПРИЗВ", 
+            acc: "ПРИЗВ", 
+            ins: "ПРИЗВ", 
+            pre: "ПРИЗВ"
         },
         gender: 0
     }
 
     /* - IDEA - */
 
-    env.COMBAT_ACTORS.critta_spawner_bee.name = "" // IDEA
+    env.COMBAT_ACTORS.critta_spawner_bee.name = "ИДЕЯ" // IDEA
     env.COMBAT_ACTORS.critta_spawner_bee.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ИДЕЯ",
+            dat: "ИДЕЯ", 
+            acc: "ИДЕЯ", 
+            ins: "ИДЕЯ", 
+            pre: "ИДЕЯ"
         },
         gender: 0
     }
 
     /* - IMP - */
 
-    env.COMBAT_ACTORS.critta_impetus.name = "" // IMP
+    env.COMBAT_ACTORS.critta_impetus.name = "ИМП" // IMP
     env.COMBAT_ACTORS.critta_impetus.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ИМП",
+            dat: "ИМП", 
+            acc: "ИМП", 
+            ins: "ИМП", 
+            pre: "ИМП"
         },
         gender: 0
     }
 
     /* - Firmament - */
 
-    env.COMBAT_ACTORS.critta_boss.name = "" // Firmament
+    env.COMBAT_ACTORS.critta_boss.name = "Небосвод" // Firmament
     env.COMBAT_ACTORS.critta_boss.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Небосвода",
+            dat: "Небосводу", 
+            acc: "Небосвод", 
+            ins: "Небосводом", 
+            pre: "Небосводе"
         },
         gender: 0
     }
 
     /* - Firmament - */
 
-    env.COMBAT_ACTORS.critta_boss_boat.name = "" // Firmament --- небосвод/купол?
+    env.COMBAT_ACTORS.critta_boss_boat.name = "Небосвод" // Firmament --- небосвод/купол?
     env.COMBAT_ACTORS.critta_boss_boat.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "Небосвода",
+            dat: "Небосводу", 
+            acc: "Небосвод", 
+            ins: "Небосводом", 
+            pre: "Небосводе"
         },
         gender: 0
     }
 
-    /* - WRK - --- мы переводим вообще этих челов?*/ 
+    /* - WRK - */ 
 
-    env.COMBAT_ACTORS.critta_pawn_boat.name = "" // WRK
+    env.COMBAT_ACTORS.critta_pawn_boat.name = "РБТ" // WRK
     env.COMBAT_ACTORS.critta_pawn_boat.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "РБТ",
+            dat: "РБТ", 
+            acc: "РБТ", 
+            ins: "РБТ", 
+            pre: "РБТ"
         },
         gender: 0
     }
 
     /* - CLW - */
 
-    env.COMBAT_ACTORS.critta_knight_boat.name = "" // CLW
+    env.COMBAT_ACTORS.critta_knight_boat.name = "КГТЬ" // CLW
     env.COMBAT_ACTORS.critta_knight_boat.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "КГТЬ",
+            dat: "КГТЬ", 
+            acc: "КГТЬ", 
+            ins: "КГТЬ", 
+            pre: "КГТЬ"
         },
         gender: 0
     }
 
     /* - NET - */
 
-    env.COMBAT_ACTORS.critta_bishop_boat.name = "" // NET
+    env.COMBAT_ACTORS.critta_bishop_boat.name = "СЕТЬ" // NET
     env.COMBAT_ACTORS.critta_bishop_boat.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "СЕТЬ",
+            dat: "СЕТЬ", 
+            acc: "СЕТЬ", 
+            ins: "СЕТЬ", 
+            pre: "СЕТЬ"
         },
         gender: 0
     }
@@ -5120,14 +5120,14 @@ cor_ru.combat['redefineActors'] = function () {
 
     /* - SEER - */
 
-    env.COMBAT_ACTORS.critta_queen_boat.name = "" // SEER
+    env.COMBAT_ACTORS.critta_queen_boat.name = "ОКО" // SEER
     env.COMBAT_ACTORS.critta_queen_boat.cor_ru = {
         name: {
-            gen: "",
-            dat: "", 
-            acc: "", 
-            ins: "", 
-            pre: ""
+            gen: "ОКО",
+            dat: "ОКО", 
+            acc: "ОКО", 
+            ins: "ОКО", 
+            pre: "ОКО"
         },
         gender: 0
     }
