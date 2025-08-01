@@ -4352,7 +4352,7 @@ cor_ru.combat['redefineActors'] = function () {
         stun: ['где...'],
         receive_carapace: ['спасибо'],
         receive_repairs: ['это лучше'],
-        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобой случилось?", 'не может быть', '...'],
+        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобою случилось?", 'не может быть', '...'],
         receive_redirection: ['я возвращу эту услугу']
     }
     env.COMBAT_ACTORS.tozik.cor_ru = {
@@ -4380,7 +4380,7 @@ cor_ru.combat['redefineActors'] = function () {
         stun: ['где...'],
         receive_carapace: ['спасибо'],
         receive_repairs: ['это лучше'],
-        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобой случилось?", 'не может быть', '...'],
+        receive_fear: [()=> env.rpg.is2D ? "здесь ничего нет" : "опустошённое...", 'и всё же оно двигается', ()=> env.rpg.is2D ? "где ты?" : "что с тобою случилось?", 'не может быть', '...'],
         receive_redirection: ['я возвращу эту услугу']
     }
     env.COMBAT_ACTORS.tozik_npc.cor_ru = {
@@ -4447,7 +4447,7 @@ cor_ru.combat['redefineActors'] = function () {
         receive_repairs: ['...'],
         receive_fear: ['нет...', 'не приближайся!', '...', ()=> env.rpg.is2D ? "так много погибших" : "это действительно ты...?"],
         receive_spikes: ['вперёд', 'попробуй ударить теперь...'],
-        give_redirection: ['держись за мной', 'смотрите на меня!']
+        give_redirection: ['держись за мною', 'смотрите на меня!']
     }
     env.COMBAT_ACTORS.bozko.cor_ru = {
         name: {
@@ -4513,7 +4513,7 @@ cor_ru.combat['redefineActors'] = function () {
         stun: ['оно не отвечает!!'],
         receive_carapace: ['больше брони! ура!'],
         receive_repairs: ['спасибо, спасибо'],
-        receive_fear: ['что с тобой такое?!', 'меня тошнит...'],
+        receive_fear: ['что с тобою такое?!', 'меня тошнит...'],
         receive_redirection: ['что?', 'не стоило, но спасибо']
     }
     env.COMBAT_ACTORS.ikgolem.cor_ru = {

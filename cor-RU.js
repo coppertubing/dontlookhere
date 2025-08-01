@@ -601,7 +601,7 @@ body[quality="regular"] .quality::after { content: "Качество: ОБЫЧН
 body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" }
 
 .dialogue-message.incoherenthello .dialogue-text, .readout-log .message.incoherenthello {
-    background-image: url(/img/local/uncosm/hello.gif) !important;
+    background-image: url(https://coppertubing.github.io/cor-RU/images/hello.gif) !important;
 }
 
 .actor-corrurubonus .dialogue-text {

@@ -531,7 +531,7 @@ resp4right
         their waters always amaze me - if only ours had such vibrance! -- их воды всегда меня удивляют - были бы наши были такими живыми!   ???
         ...
         ah, here! -- ах, вот!
-        sit with me! -- садись со мной!
+        sit with me! -- садись со мною!
         zzoust!!
 
     drowning sourceless
@@ -563,7 +563,7 @@ resp4right
 
     drowning::safe
         bozko loves the water, but... -- бозко нравятся воды, но...
-        aki, how long has it been since you took time to enjoy yourself? -- аки, когда ты в последний раз отдыхала и наслаждалась собой?   хаха шутка про сколько воды утекло. не особо нравится строка но потом
+        aki, how long has it been since you took time to enjoy yourself? -- аки, когда ты в последний раз отдыхала и наслаждалась собою?   хаха шутка про сколько воды утекло. не особо нравится строка но потом
         i think bozko will be fine! -- думаю бозко будет в порядке!
 
     drowning akizet
@@ -682,7 +682,7 @@ deeper
         into the depths, where even stranger fish live... -- в пучину, где живут рыбы ещё страннее...
         and it is not safe for us to go so deep without a high-pressure body! -- и нам не безопасно заходить так глубоко без тела для высокого давления!
         there is no need to do something so risky -- незачем делать что-то настолько рискованное
-        just stay here with me, where things are nice, ehehe -- просто останься со мной здесь, где всё хорошо, эхехе
+        just stay here with me, where things are nice, ehehe -- просто останься со мною здесь, где всё хорошо, эхехе
 
     RESPONSES::self
         ok<+>loop
@@ -704,8 +704,8 @@ leave
         ...
         but... -- но...
         i hope that you... -- я надеюсь, что ты...
-        come here with me, again, aki -- вновь прийдёшь сюда со мной, аки
-        it is so nice to talk to you -- с тобой так приятно разговаривать
+        come here with me, again, aki -- вновь прийдёшь сюда со мною, аки
+        it is so nice to talk to you -- с тобою так приятно разговаривать
         i do not want you to become lonely, you know? -- знаешь ведь, я не хочу, чтобы ты стала одинока
 
     drowning::safe
