@@ -770,6 +770,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 processTranslation(document.querySelector(`#advance-notice`));
                 cor_ru.processWeirdTranslation("#content .target", "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
+                if (document.querySelector("#combat")) processTranslation(document.querySelector(`#combat`), "force")
+                    
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{

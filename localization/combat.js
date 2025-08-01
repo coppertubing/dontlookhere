@@ -6141,6 +6141,8 @@ cor_ru.combat['redefineAll'] = function() {
 }
 
 /* === MISC === */
+env.localization.page[page.dialoguePrefix].strings["NEVERMIND"] = "НЕВАЖНО"
+
 env.localization.page[page.dialoguePrefix].strings['THE TENDRILS CURL AWAY'] = "";
 env.localization.page[page.dialoguePrefix].strings['THE HALLUCINATIONS FADE'] = "";
 env.localization.page[page.dialoguePrefix].strings['ETHEREAL FOES FADE'] = "";
@@ -6276,8 +6278,10 @@ cor_ru.combat['css'] = `
 .actor:not(.dead):not(.last-stand) .hp:after, .actor:not(.dead):not(.last-stand) .hp::after {
     content: "ХП" !important;
 }
-.statuses .status-count::after { content: "Х)" }
+.statuses .status-count::after { content: "Х)" !important }
 
+.target-nevermind::after {
+    content: "(ПКМ)"; !important
 `
 
 /* === OBSERVER STUFF === */
@@ -6311,17 +6315,21 @@ cor_ru.combat['observer'] = {
 
             console.log("%cactiondef observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
         }
-    },
+    }
 }
 
 cor_ru.combat.observer.party.itself = new MutationObserver(()=>{cor_ru.combat.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.combat.observer.actiondef.itself = new MutationObserver(()=>{cor_ru.combat.observer.actiondef.func(["%cactiondef observed! - @cor-RU", cor_ru.fancy.observed])})
 
-
 /* === LOAD === */
 if (!document.querySelector("#cor-rucsscombat")) document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement).setAttribute("id", "cor-rucsscombat")
+
 cor_ru.combat.redefineAll()
 cor_ru.combat.eatingEffectMessage()
+
 getLocalizationForPage(true)
+
 cor_ru.combat.observer.party.func()
+
 cor_ru.combat.observer.party.observe()
+cor_ru.combat.observer.actiondef.observe() // find a way to enable this shit only in combats and disable outside of em cause console spam gets annoying AND it could ! potentially break stuff
