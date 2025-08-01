@@ -6319,7 +6319,7 @@ cor_ru.combat.observer.actiondef.itself = new MutationObserver(()=>{cor_ru.comba
 
 
 /* === LOAD === */
-document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement);
+if (!document.querySelector("#cor-rucsscombat")) document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement).setAttribute("id", "cor-rucsscombat")
 cor_ru.combat.redefineAll()
 cor_ru.combat.eatingEffectMessage()
 getLocalizationForPage(true)

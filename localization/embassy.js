@@ -3412,7 +3412,7 @@ ____END
 
 
 // == COLLAPSE == //
-/*
+
 env.localization.page['embassy'].dialogues["mothframe"] = generateDialogueObject(` 
 start
     sys
@@ -7306,4 +7306,3 @@ ____END
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
 `)
-*/

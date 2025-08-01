@@ -1096,10 +1096,22 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%ccontact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
 console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
 
-document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.css)).parentElement);
+if (!document.querySelector("#cor-rucss")) {
+    document.head.appendChild(
+        document.createElement(
+            'style'
+        ).appendChild(
+            document.createTextNode(
+                cor_ru.css
+            )
+        ).parentElement
+    ).setAttribute(
+            "id", "cor-rucss"
+        )
+}
 
 page.formedDefinitionStrings = undefined
 
