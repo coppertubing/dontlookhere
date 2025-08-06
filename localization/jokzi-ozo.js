@@ -2224,13 +2224,13 @@ start
             EXEC::env.jokzi.toggleSlow(true)
         
     isabel
-        ...just unlike anything i've seen the tyrant do before
-        after all, i'm certain the tyrant still cares for the thoughts they operate upon, on some level
-        there is a level of restraint, delicateness
+        ...совсем не похоже на то, что тиран совершал раньше...
+        и всё-таки я уверена, тиран все ещё заботится о мыслях над которыми оперирует, на каком-то уровне
+        в его действиях есть какое-то количество сдержанности, делекатности
 ____SHOWIF::"e3a2escape"
-        and what worries me more is that it's distinct,
-        even from what geli's daemons did to that thoughtform of the interloper
-        yet another new form of destruction...
+        что меня беспокоит больше всего - это заметно 
+        даже в том, что демоны джели сделали с той мыслеформой лазутчика
+        ещё одна новая форма разрушения... // не уверен насчёт этого куссочка нуу
 ____END
 
     council
@@ -2239,16 +2239,16 @@ ____END
         it was surrounded with hostile thoughts, from what we could intuit
     
     isabel
-        there were some marks, but they weren't what caused the true damage
-        no, it was different--how can i even explain...
-        the wounds didn't line up with anything i've ever seen
-        membrane tears and lesions, but without violent intent
-        as if something broke through and reached within, yet didn't alter what it touched
-        please understand - i'm just guessing here
-        but that's the only explanation...
-        something so desperate to find some specific knowledge,
-        that it nearly tore her apart searching for it, careless of the damage
-        do you think the interloper...?
+        было несколько следов, но не они стали причиной настоящего ущерба
+        нет, она была другой--как мне вообще это объяснить...
+        раны не имеют сходств с вообще чем-либо, что я когда-либо видела
+        мембрана была разорвана и поражена, но без жестокого умысла
+        а как если бы что-то прорвалось насквозь и вовнутрь, и всё же не изменяя того, чего касалось
+        прошу, поймите, я просто строю догадки
+        но это единственное объяснение...
+        что-то настолько отчаялось в поисках каких-то специфичных знаний,
+        что почти разорвало её на части, не заботясь об ущербе
+        думаете, что лазутчик бы...?
     
     sourceless
         the weight of the thoughtspace shifts, and you feel attention upon your presence.
@@ -2278,12 +2278,12 @@ ____END
         fascinating...
     
     isabel
-        that aligns with my findings
-        the damage seemed incidental
-        but it was made by something that clearly has no understanding of our world
-        or, at least, an incomplete one...
-        interloper, you must take care
-        whatever velzie you deal with cannot simply be another awakened thoughtform
+        это сходится с моими находками
+        ущерб выглядит непредумышленным,
+        но он был нанесён чем-то, что явно не имеет представление о нашем мире
+        или, по крайней мере, имеет неполное...
+        лазутчик, ты должен быть осторожен
+        не знаю, чем именно является велзи, но ты имеешь дело явно не с обыкновенной пробудившейся мыслеформой
     
     council
         perhaps it is one of the lost components?
@@ -2798,9 +2798,9 @@ start
         yet you shake the foundations of our stupid little boundaries!
     
     isabel
-        i don't know what else to say to you
-        that is exactly what i want - nothing to do with you
-        it could have been anyone
+        я не знаю, что ещё тебе сказать
+        это именно то, чего я хочу - не иметь к тебе никакого отношения
+        это мог быть кто угодно
     
     fairy
         NO!!
@@ -2817,16 +2817,16 @@ start
         stop stop!!
     
     isabel
-        that's enough
-        i did not place the banner of oltazni in your meaningless dreams
-        what would i have to gain? do you think i want to bother you?
-        the very last thing i want to do is think about you
-        i would sooner dream a romance with the tyrant
-        besides - whether you are sick of her or not,
-        you cannot escape our past, akizet is our foundation
-        if anything, you could have placed it within your dream by accident
-        now,
-        you need to leave.
+        достаточно
+        я не вешала вывеску олтазни в твоём бестолковом сне
+        что мне с этого? думаешь, мне хочется донимать тебя?
+        думать о тебе - последнее, чего я хочу
+        я уж скорее решу грезить о романе с тираном
+        и к тому же - нравится тебе это или нет, // АА КАКОЙ ЗДЕСЬ ЗНАК ПОСТАВИТЬ я спать
+        но ты не можешь избежать нашего прошлого, акизет - наш остов
+        во всяком случае, ты могла повесить её в своей грёзе случайно
+        теперь,
+        тебе пора уйти.
     
     fairy
         leave? where? back to my defiled dream?
@@ -2844,7 +2844,7 @@ start
             EXEC::specialCam("e_i_fairy")
     
     isabel
-        hello, interloper...
+        здравствуй, лазутчик...
     
     fairy
         were you going to talk to this freak?
@@ -2862,11 +2862,11 @@ start
         what was that about?
     
     isabel
-        don't burden yourself with it
-        just another instance of the fairy's pointless fights
-        all know that almost any mention of akizet in its dreams is enough to cause an attack...
-        but this time, i feel it is merely trying to get a rise out of me
-        now, is something on your mind?
+        не обращай внимания
+        просто ещё один пример бессмысленных феиных перепалок
+        всем известно, что почти любое упоминание акизет в её снах провоцирует нападки...
+        но в этот раз, как мне кажется, это была просто попытка вывести меня из себя
+        а теперь, тебе что-то требуется?
         
     RESPONSES::self
         yes<+>CHANGE::isabel
