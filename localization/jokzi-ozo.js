@@ -52,7 +52,7 @@ start
         единственная переменная в нашем упадке!
         долгое время мы предрекали - лишь лазутчик в силах уберечь цисту от гибели...
         и вот ты здесь!
-        находишь наше пристанище в отступающем безумстве!
+        находишь наше пристанище в отступающем безумие!
         и какая же жалость... ох какая же досада!! что только сей θмиг ты здесь
         светлые поля сгнили, звёзды - угасли
         наши же друзья - все пропали...
@@ -265,7 +265,7 @@ task
     council
         мы скучаем по нашим друзьям, лазутчик! мы хотим, чтобы они вернулись!
         всё настолько просто!
-        совсем недавно тиран оторвал от нас троих из них
+        совсем недавно тиран оторвал от нас трёх из них
         мы поделимся с тобой инструментами - те пробудят их от кошмаров, в которых тиран их заточил...
         и затем они поймут, как вернуться
         вот и вся наша просьба: просто сходи и освободи их!
@@ -298,7 +298,7 @@ task
     
     council
         вот--теперь она у тебя!
-        сила, выхваченная из безумства! рождённая в наших нескончаемых грёзах!
+        сила, выхваченная из безумия! рождённая в наших нескончаемых грёзах!
             EXEC::vfx({type:'beacon', state: false})
         мы называем их масками...
         кристаллизованные смеси мыслей и чувств,
@@ -345,16 +345,16 @@ flower
     
     council
         ох, цветок, наша самая дорогая подруга
-        with her gone, our memories of her have faded, too... but we remember some things!
-        a grounding force, she was--all relied upon her for support and resolution
-        still, she was utterly obsessed with aki, hopelessly so!     тем не менее она была помешана на аки, вплоть до отчаяния! // --- не согласен с переводом. она безнадёжно была на ней помешена. hopelessly so
+        with her gone, our memories of her have faded, too... but we remember some things!     с её пропажей угасли и наши воспоминания о ней... но некоторое мы помним!
+        a grounding force, she was--all relied upon her for support and resolution     она стабилизировала нас(?)--все полагались на её поддержку и решительность(?)
+        still, she was utterly obsessed with aki, hopelessly so!     тем не менее (знак препинания?) она была безнадёжно помешана на аки!
         // --- дальше не читал. это на удивление утомляет
-        dreaming a thousand dreams of simply sitting with her in a great field...
-        and she had such an incredible ability to find hidden things! a sharp eye!
-        the age of hunger took such a sharp toll upon her--she never much enjoyed the feasts we held...     век(? мне нравится называть их веками) голода нанёс ей тяжёлый урон (не нравится)--ей мало нравились наши пиры...
-        the fairy had to form such silly illusions to make them fit her palate!
-        anyway! we know she came from a memory of warmth within cold metal!
-        we hope that helps, interloper     надеемся, что это поможет, лазутчик
+        dreaming a thousand dreams of simply sitting with her in a great field...     грезила тысячу грёз просто о том, как сидела бы с ней в большом поле...
+        and she had such an incredible ability to find hidden things! a sharp eye!     она поразительно хорошо умела находить скрытое! имела острый глазвзгляд!
+        the age of hunger took such a sharp toll upon her--she never much enjoyed the feasts we held...     она очень плохо пережила век голода--ей мало нравились наши пиры...
+        the fairy had to form such silly illusions to make them fit her palate!     фее приходилось создавать такие забавные иллюзии, чтобы они приходились ей по вкусу!
+        anyway! we know she came from a memory of warmth within cold metal!     в любом случае! мы знаем, что она родом из воспоминания о тепле среди холодного металла!
+        we hope that helps, interloper     надеемся, что это поможет, лазутчик     
 
     RESPONSES::self
         thanks<+>loop
@@ -449,9 +449,9 @@ third
         well, interloper, that is the trouble     ну, лазутчик, в этом и проблема
         we do not know!!     мы не знаем!!
         when they were torn away, it was more 'clean' than the others      эта потеря оставила меньше следов, чем остальные
-        the tyrant needed them for something important...    тирану ??????????????????господи даже не знаю // "этот кто-то" понадобился //понадобился актёр для чего-то важного
+        the tyrant needed them for something important...    тирану // "этот кто-то" понадобился // тирану надо было заполнить важную роль...
         and now, we do not even remember what they looked like, what they did...      и теперь мы не помним ни внешность, ни совместное прошлое...
-        we apologize - we know this is unhelpful!     прости нас - мы знаем, что это бесполезная информация!
+        we apologize - we know this is unhelpful!     прости нас - мы знаем, что это мало тебе даёт!
         and what a strange feeling it is to have, too...    и как же странно ощущать подобное...
         to know we miss a friend so dearly, to have such holes in our hearts...     знать, что мы так по кому-то тоскуем, чувствовать дыры в наших сердцах...
         and not even know why!   и даже не помнить, почему!
@@ -464,21 +464,21 @@ third
 
 geli
     self
-        i used your mask on geli
-        a golem from akizet's memory of the collapse
-        it seemed to notice me and really understand it
+        i used your mask on geli      ваша маска сработала на джели
+        a golem from akizet's memory of the collapse      големе из вспоминания акизет об обвале
+        it seemed to notice me and really understand it      кажется он заметил меня и правда понял её // её... маску..... глупая строчка
     
     council
         ооо!!
-        мы гадаем, может ли это быть наш потерянный/наша пропажа? // а с этим мы так и не решили... но я за то чтобы оставить потерянный. типа. русский язык любит мужской род
+        мы гадаем, может ли это быть наш потерянный/наша пропажа? // а с этим мы так и не решили... но я за то чтобы оставить потерянный. типа. русский язык любит мужской род  "наша пропажа" используется и дальше ("будь то наша дражайшая пропажа или же нет") так что я за это. мужского рода тут и так много
         сказал ли он что-нибудь?
     
     self
-        not directly
-        but it hid messages in its context
-        something is keeping it there but it's trying to get free
-        also mentioned a door or gap or something
-        i think it's trying to escape
+        not directly      не напрямую
+        but it hid messages in its context      но он прятал послания в контексте
+        something is keeping it there but it's trying to get free      что-то держит его там но он пытается выбраться
+        also mentioned a door or gap or something      ещё упомянул дверь или прореху или вроде того
+        i think it's trying to escape      думаю он пытается сбежать   //ладно больше не буду трогать эп3 контент
     
     council
         восхитительно, лазутчик!! // это звучит как сарказм когда читаешь следующие строчки. мне нравится. что-то фанфрэндовское
@@ -515,15 +515,15 @@ gelifree
         haha!! it!
         far too much, interloper!
         with them back again, we are reminded once again of their past
-        they were among the first to awaken, 
-        the first to see what our reality truly is
-        pleasant, wise, interested in maintaining peace... 
-        they helped gather and build this very place with us!
-        so, you must understand our surprise, when they come back now...
-        obsessed with bright weaponry and violence?
-        bearing strange knowledge from beyond...?
-        it is not exactly right to say that we are worried, for they seem happy...
-        but the changes geli has undergone are certainly strange!
+        they were among the first to awaken,       
+        the first to see what our reality truly is      
+        pleasant, wise, interested in maintaining peace...       
+        they helped gather and build this very place with us!      
+        so, you must understand our surprise, when they come back now...      
+        obsessed with bright weaponry and violence?      
+        bearing strange knowledge from beyond...?      
+        it is not exactly right to say that we are worried, for they seem happy...      
+        but the changes geli has undergone are certainly strange!      
 
     RESPONSES::self
         great<+>loop
@@ -571,19 +571,19 @@ ploop
 
 dancing
     self
-        why do you want to dance so much?
+        why do you want to dance so much?      почему вам так хочется танцевать?
     
     council
-        how could we not?
-        you are our hero!!
-        you help us, as we help you!
-        we are so excited!
-        you can help us restore jokzi ozo to greater glory than it has ever known!
-        you stave off the tyrant!
-        you feed our world!
-        before, it was inevitable that the madness would come...
-        but now, the dreams will never end!
-        come! dance with us! dance with us!!
+        how could we not?      как могло бы не хотеться?
+        you are our hero!!      ты - наш герой!!
+        you help us, as we help you!      ты помогаешь нам, как и мы тебе!
+        we are so excited!      это будет прекрасно!
+        you can help us restore jokzi ozo to greater glory than it has ever known!      ты можешь помочь нам вернуть джокзи озо к невиданному величию!
+        you stave off the tyrant!      ты отвлекаешь тирана!
+        you feed our world!      ты кормишь наш мир!
+        before, it was inevitable that the madness would come...      раньше наступление безумия было неизбежно...
+        but now, the dreams will never end!      но отныне грёзам не настанет конца!
+        come! dance with us! dance with us!!      давай же! танцуй с нами! танцуй с нами!!
     
     RESPONSES::self
         ok<+>ploop
@@ -591,19 +591,19 @@ dancing
 
 we
     self
-        you keep saying we
-        you are the only one here
+        you keep saying we    почему "мы"
+        you are the only one here    тут больше никого нет
     
     council
-        интересно!!    interesting!!
+        любопытно!!    interesting!!
         твоё необыкновенное соединение хрупко, лазутчик!    your unnatural connection is tenuous, interloper!
         ты видишь нас как нечто одно...     you see us as one single thing...
         но мы же такое множество друзей!    but we are so many friends!
-        мы, кто разорвали наши мембраны, чтобы присоединиться всем вместе...    we, who shed our membranes to join together...
-        ради близости, ради искренности, чтобы грезить сны даже более прекрасные!    for closeness, for intimacy, to dream greater dreams!
+        мы, кто разорвали наши мембраны, чтобы объединиться...    we, who shed our membranes to join together...
+        ради близости, ради искренности, чтобы грезить даже более прекрасные сны/грёзы?!    for closeness, for intimacy, to dream greater dreams!
         и конечно, некоторые из нас попросту устали ждать...    and of course, some of us simply tired of the wait...
-        так что мы присоединились, чтобы стать топливом и быть сожжёнными!    and so we joined to be burned away as fuel!
-        и теперь те молчат...    those ones are quiet now...
+        так что мы присоединились, чтобы стать топливом и быть сожжёнными!    and so we joined to be burned away as fuel! // странноватое
+        те теперь молчат...    those ones are quiet now...
         но, в дружбе и празднестве, мы развеяли тьму! безумие!    but, in friendship and feast, we weathered the darkness! the madness!
         и все мы преодолели их! каждый из нас!    and we all made it through! all of us!
     
@@ -620,7 +620,7 @@ ozo
         you stand in our shared world of light,      ты находишься в нашем общем мире света,
         bound into spatiality by sacrifice...      связанном в пространственность через пожертвования...
         this is jokzi ozo!      это джокзи озо!
-        for we were a fortress, drifting above the tides of madness for three ages      так как мы были крепостью, три века плавающей над волнами безумства
+        for we were a fortress, drifting above the tides of madness for three ages      так как мы были крепостью, три века плавающей над волнами безумия
         across the surface of our unfortunate progenitor, aki...      по поверхности нашей неудачливой предшественницы, аки...
         oh, poor aki!!      ох, бедная аки!!
         but it was she who ultimately let us seize a fragment of velzie's power      но именно она в итоге позволила нам захватить фрагмент силы велзи
@@ -635,20 +635,20 @@ ozo
 
 history
     self
-        you said three ages
-        what did you mean?
+        you said three ages    
+        what did you mean?    
     
     council
-        the three ages of the decline!
-        hunger, madness, darkness...
-        such dramatic names, we know! hahaha!!
-        but as they were our end-times, they had the right
-        in hunger, we awoke,
-        in madness, we lived new lives,
-        and in darkness, we faded away...
-        but what should we call this new age, we wonder?!
-        light? renewal? rejoining?
-        no no--we must name it when it is over!
+        the three ages of the decline!    три века упадка!
+        hunger, madness, darkness...    голод, безумие, тьма...
+        such dramatic names, we know! hahaha!!    да, это очень драматичные имена! хахаха!!
+        but as they were our end-times, they had the right    но это подходяще, ведь они были концом наших времён
+        in hunger, we awoke,    в голод, мы очнулись,
+        in madness, we lived new lives,    в безумие, мы жили новыми жизнями,
+        and in darkness, we faded away...    и в тьме мы угасали...
+        but what should we call this new age, we wonder?!    но как же нам назвать этот новый век?!
+        light? renewal? rejoining?    свет? восстановление? воссоединение?
+        no no--we must name it when it is over!    нет-нет--мы назовём его, когда он закончится!
         
     RESPONSES::self
         ok<+>ploop
@@ -675,7 +675,7 @@ time
     
     council
         ahahaha!! we lost track a long time ago!      ахахаха!! мы давно потеряли счёт времени!
-        adrift in the uncosm, atop the tides of its insanity,      в дрейфе по беспространству, на волнах его безумства,
+        adrift in the uncosm, atop the tides of its insanity,      в дрейфе по беспространству, на волнах его безумия,
         time got away from us      время ускользало от нас
         even more when we rejected it for our dreams!      тем более когда мы отказались от него для наших грёз!
         what tales we spun! what fun we had!!      что за рассказы мы свивали! как же нам было весело!
@@ -697,14 +697,14 @@ feast
         what did you eat?
     
     council
-        oh! our poor naive interloper!!
-        what is there to eat in a world comprised only of actors, when the stage lights disappear?
-        ahh, but do not twist your receptors away so quickly!
-        any who still had sanity, we welcomed as friends
-        but those who were truly lost, 
-        those who lost all but their sense of hunger,
-        those who could only cling to their roles even in the dark, to an audience of none...
-        they were welcomed instead to our dreams of consumption
+        oh! our poor naive interloper!!      ох! лазутчик, нам жаль твою наивность!! //вроде это поточнее подходит тону+бонус за относительную нейтральность но можно банальное "наш бедный наивный лазутчик"
+        what is there to eat in a world comprised only of actors, when the stage lights disappear?      что же есть в мире, состоящем из актёров, если пропал свет софитов?
+        ahh, but do not twist your receptors away so quickly!      ахх, но не    бля выражение
+        any who still had sanity, we welcomed as friends      ещё имевших рассудок мы принимали, как друзей
+        but those who were truly lost,       но тех, кто был правда потерян,
+        those who lost all but their sense of hunger,      у кого осталось лишь их чувство голода,
+        those who could only cling to their roles even in the dark, to an audience of none...      тех, кто мог только цепляться за роли даже в темноте, перед пустым залом...
+        they were welcomed instead to our dreams of consumption      мы вместо этого приглашали в наши грёзы о поедании
     
     RESPONSES::self
         ok...<+>ploop
@@ -717,8 +717,8 @@ dreams
     
     council
         что же ещё это может значить, дорогой лазутчик?
-        we and our denizens adopt roles and form a ficticious memory // мы и наши обитетли принимают роли и облики вымышленных воспоминаний
-        it comes naturally to us all, born from memory as we are! // для нас это происходит естественно, рождённых из памяти и как мы!
+        we and our denizens adopt roles and form a ficticious memory // мы и наши обитатели принимаем роли и создаём вымышленное воспоминание
+        it comes naturally to us all, born from memory as we are! // для нас это происходит естественно, рождённых из памяти и как мы!   нам, рождённым из памяти, это даётся естественно!
         and so we form meaningful memories, beyond reality... // и таким образом мы формируем осмысленные воспоминания, за гранью реальности...
         infinite plays of joy and terror, to entertain velzie! // нескончаемые спектакли радости и ужаса, развлекающие велзи!
         we prefer joy... // мы отдаём предпочтении радости...
@@ -753,9 +753,9 @@ vessel
         we have a vessel and everything
     
     council
-        oh, yes, interloper!!
-        we can allow you to enter, especially with that locus of yours!
-        it is only wandering that we cannot abide for now
+        oh, yes, interloper!!      ох, да, лазутчик!!
+        we can allow you to enter, especially with that locus of yours!      мы можем позволить тебе войти, особенно с твоим locus!!
+        it is only wandering that we cannot abide for now      я устал
         but for a focused dream amongst friends, we hold no conflict!
     
     RESPONSES::self
@@ -878,15 +878,15 @@ tyrant
     council
         yes, of course, dear interloper      да, конечно, дорогой лазутчик
         funfriend...      развледруг...
-        neither fun, nor friend--it makes us want to weep!      ни веселье, ни друг--от него нам хочется заплакать!
-        when the age of hunger abated, and the age of madness came,      когда век голода отступил, и пришёл век безумства, 
+        neither fun, nor friend--it makes us want to weep!      ни развлечение, ни друг--от него нам хочется заплакать!
+        when the age of hunger abated, and the age of madness came,      когда век голода отступил, и пришёл век безумия, 
         it was here with us!      он был с нами, здесь!
         with so many other fragments from half-eaten memories      со множеством других фрагментов из полусъеденных воспоминаний
         oh, and how it danced with us, forming entire new lives!      ох, и как же он танцевал с нами, создавая совершенно новые жизни!
         so much, so much we have experienced!      мы так, так много пережили!
         and we all made peace with the darkness we knew was coming...      и мы все смирились с неизбежною тьмою... // пришли в смирение пред неизбежной тьмой или слишком вычурно
         we all promised to be together to the very last light!      мы все обещали, что будем вместе до самого последнего света!
-        but little funfriend grew skittish as the madness began to close around our home...      но маленький развледруг забоялся, когда безумство начало окружать наш дом... // начало сгущаться вокруг нашего дома <<з
+        but little funfriend grew skittish as the madness began to close around our home...      но маленький развледруг забоялся, когда безумие начало окружать наш дом... // начало сгущаться вокруг нашего дома <<з
         it thrashed, it fought, breaking our peace, breaking our rules!!      он метался, он боролся, разрушая наш покой, нарушая наши правила!!
         telling us to do this, to do that, to return to our memories--that it has 'a plan'!      говоря нам делать одно, другое, вернуться в наши воспоминания--что у него есть "план"!
         a piteous plan, mind you--that we all take position as pillars in far corners of the cyst, away from one       another,      жалкий план, позволь сказать--чтобы мы все встали колоннами в противоположных углах цисты, далеко друг от друга,   тавтология ?
@@ -2874,4 +2874,5 @@ start
         not really<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
+
 `)
