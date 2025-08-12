@@ -1059,7 +1059,7 @@ RESPOBJ::
         жалоба...<+>complaint
         твоя накидка<+>coat
             SHOWIF::'gakpause'
-        простимся на сей θмиг<+>END
+        простимся на сей миг<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `)
 env.localization.page['embassy'].dialogues["d1_gakvu"] = generateDialogueObject(` 
@@ -1254,7 +1254,7 @@ RESPOBJ::
             EXEC::change('PAGE!!d1_kbcollected', true)
         о чём вы говорили?<+>story
         как вы?<+>talk
-        простимся на сей θмиг<+>END
+        простимся на сей миг<+>END
             EXEC::specialCam(false);pauseSwapCam(false);vn.done()
 `)
 env.localization.page['embassy'].dialogues["d1_kazkibozko"] = generateDialogueObject(` 
@@ -1517,7 +1517,7 @@ RESPOBJ::
         наше сосредоточение близится<+>focus
         теория замкнутой петли?<+>theory
         как ты?<+>talk
-        простимся на сей θмиг<+>END
+        простимся на сей миг<+>END
             EXEC::pauseSwapCam(false);vn.done()
 `)
 env.localization.page['embassy'].dialogues["d1_cavik"] = generateDialogueObject(` 
@@ -2752,7 +2752,7 @@ RESPOBJ::
         циста в моей комнате<+>cyst
             EXEC::env.embassy.d2progress('gakvu')
         как твои дела<+>how
-        простимся на сей θмиг<+>bye
+        простимся на сей миг<+>bye
             FAKEEND::(уйти)
 `)
 env.localization.page['embassy'].dialogues["d2_gakvu"] = generateDialogueObject(` 
@@ -2932,7 +2932,7 @@ RESPOBJ::
         та циста<+>cyst
             EXEC::env.embassy.d2progress('tozik')
         твои мысли<+>thoughts
-        простимся на сей θмиг<+>bye
+        простимся на сей миг<+>bye
             EXEC::vn.done()
             FAKEEND::(уйти)
 `)
@@ -3071,7 +3071,7 @@ RESPOBJ::
         та циста<+>cyst
             EXEC::env.embassy.d2progress('kazki')
         твоё существо<+>creature
-        простимся на сей θмиг<+>bye
+        простимся на сей миг<+>bye
             EXEC::vn.done()
             FAKEEND::(уйти)
 `)

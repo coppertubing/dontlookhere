@@ -769,7 +769,7 @@ dark
 
     council
         ах...
-        well, interloper, much has simply been left to rot      ну, лазутчик, многое просто оставили гнить
+        well, interloper, much has simply been left to rot      что же, лазутчик, многое просто оставили гнить
         when the age of darkness came,       когда настал век тьмы,
         we pulled every resource, every maintenance, into the core of jokzi ozo      мы собрали все ресурсы, все усилия, в центр джокзи озо
         to keep the dream alive as long as possible...      чтобы поддерживать грёзу как можно дольше...
@@ -793,16 +793,16 @@ velzie
         it has been harming memories and let me bypass authorization
     
     council
-        how strange that you say it like that!
-        no, nothing by that name recently...
-        but in the age of madness, so many thoughts outside our fortress lost themselves
-        they lost control of reality, and became godlike in doing so
-        gnawing at memories in their blind hunger and seeing them change as if by divine power
-        so many claimed they were god! or velzie, as you say
-        some would point to others, failing to grasp their true forms, and become their followers...
-        it all got very confusing!
-        the poor things simply inherited aki's superstition
-        and once it consumed them, they were beyond saving...
+        до чего же странно, что ты говоришь об этом таким образом!
+        нет, никого под этим именем в последнее время...
+        но в век безумия многие мысли за пределами нашей крепости потеряли себя
+        потеряли контроль над реальностью и оттого же убогоподобились,
+        и наблюдая, как в слепом голоде они вгрызаются в воспоминания, как они меняют их словно по воле божественных сил,
+        многие признавали в них богов! или велзи, как ты выражаешься 
+        некоторые указывали на других, не сумев постичь их истинную форму, и становились их последователями...// some would point to others, failing to grasp their true forms, and become their followers... // нет это всё это всё я не понимаю что они несут
+        всё стало до того спутанным!
+        бедняжки попросту переняли суеверность аки
+        и стоило этому поглотить их, путь к спасению был отрезан...
 
 ____SHOWIF::'recosm__enemy-ep1seen'
     self
@@ -810,21 +810,21 @@ ____SHOWIF::'recosm__enemy-ep1seen'
         it really is confusing
     
     council
-        soo confusing!!
+        оочень запутанно!!
     
     self
         another thoughtform told me it was like a fog
         something deep beneath the uncosm, hiding
     
     council
-        <em>below</em> the uncosm?
-        hahaha!!! there lies the reason!
-        we do not look down into the darkness, interloper!
-        it was part of our promise
-        if there is something down there, <em>we</em> will never see it...
-        but perhaps our friends can help, once you fetch them!
+        <em>ниже</em> беспространства?
+        хахаха!!! в этом кроется вся причина!
+        мы не заглядываем во тьму внизу, лазутчик!
+        это было частью нашео обещания
+        если там внизу что-то есть, <em>мы</em> никогда этого не увидим... 
+        но, быть может, наши друзья помогут тебе, когда ты проведёшь их!
             SHOWIF::[['ozo__council-task', true], ["ozo__fairy_intro", false], ["ozo__isabel_intro", false]]
-        but perhaps our friends might be more willing to look!
+        но, быть может, наши друзья пожелают взглянуть!
             SHOWIF::[['ozo__council-task', true], ["ozo__fairy_intro", true], ["ozo__isabel_intro", true]]
 ____END
     
@@ -843,7 +843,7 @@ god
         о, <em>ещё один</em> бог?
         хаха! ничего не меняется!
         мы ещё не видели конкретно этого, лазутчик!
-        должно быть новорождённый или недавно пробудившийся... как вонующе!!
+        должно быть новорождённый или недавно пробудившийся... как волнующе!!
         ты должен пригласить их к нам на визит!
     
     RESPONSES::self
@@ -857,10 +857,10 @@ godlike
     
     council
         в самом деле?!
-        потому что мы обнаружили дизайн блуждающим неподалёку, // заменить дизайн на замысел? --- да
+        потому что мы обнаружили замысел блуждающим неподалёку,
         среди останков, вырванных из диссоциированной мыслеформы...
         мы никогда не позволим сгинуть хорошим идеям, лазутчик!!
-        особенно не такой стильной! // стильный совет это смешная вещь <) и он действительно очень стильный!
+        особенно не такой стильной!
         и что за жуткое совпадение--мы надеемся вы не были друзьями!
         работа тирана, без всяких сомнений...
         разрывать на части всех, с кем танцевал когда-то, чтобы принуждать к бессмысленным представлениям
@@ -917,11 +917,11 @@ funfriend
         akizet spoke to it in some memories
     
     council
-        oh, yes, the tyrant once was one of aki's inner hands, this is true
-        but not so much that it governed every single thoughtform dreaming in her memories!
-        it worked with others! myriad waking components to serve aki...
-        where they are now, only the lost history of the age of hunger could say
-        we only know, we watched as it seized complete power and forced its will over us
+        о, да, однажды тиран был одной из внутренних рук аки, это правда
+        но не настолько, чтобы управлять всеми до единою мыслеформою, грезящими в её воспоминаниях!
+        он работал со всеми остальными! с мириадою пробуждающихся компонентов, прислуживающих аки...
+        где они сей θмиг, способна поведать лишь потерянная история века голода
+        всё, что мы знаем - то как мы наблюдали за ним, захватившим полную власть, и направившим её волю против нас
     
     RESPONSES::self
         ...<+>cloop
@@ -949,7 +949,7 @@ akizet
         do you know what happened to akizet?      вы знаете, что случилось с акизет?
     
     council
-        what a question!      какой вопрос!
+        what a question!      какой вопрос! // "что за вопрос!"? типа "это и не вопрос вовсе, и так очевидно" хз может такой смысл
         who does not, interloper?      кто же не знает, лазутчик?
         oh, yes...      ох, да...
         that is right...      верно...
@@ -994,9 +994,9 @@ ____SHOWONCE::
 ____END
 
     council
-        a title is no name, interloper! // титул - не имя, лазутчик!
-        oh, but who are we to judge--we are the council!! // о, но кто мы такие чтобы судить--мы совет!!
-        we will cede this question, dear friend // мы оставим этот вопрос, дорогой друг
+        титул - не имя, лазутчик!
+        о, но кто мы такие чтобы судить--мы совет!!
+        мы оставим этот вопрос, дорогой друг
     
     RESPONSES::self
         ok<+>iloop
@@ -1004,10 +1004,10 @@ ____END
 
 ipurpose
     council
-        what exactly are you doing here?
-        rifling around in a long-lost world...
-        we appreciate that you are here and saving us, no doubt!!
-        but... what is driving you?
+        в чём именно твоя задача?
+        выискиваешь что-то в давно позабытом мире...
+        мы ценим, что ты здесь и спасаешь нас, не сомневайся!!
+        но... что тебя ведёт?
 
     self
         i'm just doing my job
@@ -1015,12 +1015,12 @@ ipurpose
         then, connect to the network
     
     council
-        oh...
-        these are lofty goals, dear interloper
-        so much was lost--irreversibly--in the age of hunger
-        and the network?! what ever became of that component, we wonder!
-        we will help where we can, rest assured
-        we and our friends will offer every power we have stolen from the madness!
+        ох...
+        это благородные цели, дорогой лазутчик
+        столько потеряно--необратимо--в век голода
+        и сеть?! мы и представить не можем, что приключилось с этим компонентом! // не совсем уверен как мы переводили нетворк, поправьте если помните
+        мы поможем, чем сможем, не сомневайся
+        мы и наши друзья предложат все силы, что мы украли у безумия!
 
     RESPONSES::self
         thanks<+>iloop
@@ -1136,7 +1136,7 @@ start
         но... тепло этого места всё ещё взывало ко мне
         было пыткой знать что я была оторвана от рая
         и снова, спасибо тебе
-        я знаю что ты хочешь что-нибудь взамен...
+        я знаю, что ты хочешь что-нибудь взамен...
         я бы дала тебе маску если бы у меня они ещё остались!
         но мои бедные акизеты,
         они должно быть съели их все во время моего отсутствия
@@ -2226,11 +2226,11 @@ start
     isabel
         ...совсем не похоже на то, что тиран совершал раньше...
         и всё-таки я уверена, тиран все ещё заботится о мыслях над которыми оперирует, на каком-то уровне
-        в его действиях есть какое-то количество сдержанности, делекатности
+        в его действиях есть какое-то количество сдержанности, деликатности
 ____SHOWIF::"e3a2escape"
-        что меня беспокоит больше всего - это заметно 
-        даже в том, что демоны джели сделали с той мыслеформой лазутчика
-        ещё одна новая форма разрушения... // не уверен насчёт этого куссочка нуу
+        что меня беспокоит больше всего - оно иное 
+        не похоже даже на то, что демоны джели сделали с той мыслеформой лазутчика
+        и снова новая форма разрушения...
 ____END
 
     council
@@ -2248,7 +2248,7 @@ ____END
         но это единственное объяснение...
         что-то настолько отчаялось в поисках каких-то специфичных знаний,
         что почти разорвало её на части, не заботясь об ущербе
-        думаете, что лазутчик бы...?
+        думаете, что лазутчик...?
     
     sourceless
         the weight of the thoughtspace shifts, and you feel attention upon your presence.
@@ -2311,7 +2311,7 @@ start
         ...a beast to rival my own ferocity, surely!
     
     council
-        yours? never!
+        с твоей? ни за что!
     
     fairy
         ahaha!! oh, council, but you should have seen it!
