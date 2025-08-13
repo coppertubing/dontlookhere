@@ -346,10 +346,10 @@ flower
     council
         ох, цветок, наша самая дорогая подруга
         with her gone, our memories of her have faded, too... but we remember some things!     с её пропажей угасли и наши воспоминания о ней... но некоторое мы помним!
-        a grounding force, she was--all relied upon her for support and resolution     она стабилизировала нас(?)--все полагались на её поддержку и решительность(?)
-        still, she was utterly obsessed with aki, hopelessly so!     тем не менее (знак препинания?) она была безнадёжно помешана на аки!
+        a grounding force, she was--all relied upon her for support and resolution     она была основополагающей силой--все полагались на её поддержку и решительность
+        still, she was utterly obsessed with aki, hopelessly so!     тем не менее, она была безнадёжно помешана на аки!
         // --- дальше не читал. это на удивление утомляет
-        dreaming a thousand dreams of simply sitting with her in a great field...     грезила тысячу грёз просто о том, как сидела бы с ней в большом поле...
+        dreaming a thousand dreams of simply sitting with her in a great field...     грезила тысячу грёз просто о том, как сидела бы с ней в огромном поле...
         and she had such an incredible ability to find hidden things! a sharp eye!     она поразительно хорошо умела находить скрытое! имела острый глазвзгляд!
         the age of hunger took such a sharp toll upon her--she never much enjoyed the feasts we held...     она очень плохо пережила век голода--ей мало нравились наши пиры...
         the fairy had to form such silly illusions to make them fit her palate!     фее приходилось создавать такие забавные иллюзии, чтобы они приходились ей по вкусу!
@@ -894,8 +894,8 @@ tyrant
         ...
         ...ultimately... it left      ...в итоге... он ушёл
         snatching the cyst's locus of control in its darkest moment,      захватив локус контроля цисты в её самый тёмный момент,
-        forcing itself into its role as the servitor...      навязав себя в её роль, как слуга... // не уверен нужна ли тут запятая. хотя в целом предложение не очень понятно
-        to its credit, we must admit that it did work out in the end--but only by your divine intervention      к его чести, мы должны признать, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
+        forcing itself into its role as the servitor...      навязав себя в её роль, слуги... // не уверен нужна ли тут запятая. хотя в целом предложение не очень понятно
+        to its credit, we must admit that it did work out in the end--but only by your divine intervention      к его чести (справедливости ради?), мы должны признать, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
         after all, look at us, talking, well beyond the last <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">zenruka</span>'s flash!      ведь посмотри на нас, наш разговор, гораздо позже последней вспышки <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">зенруки (?)</span>!
         but even back then, they tore at us, stealing our friends to use as walls against the tides...      но даже тогда, он рвал нас, крадя наших друзей как стены против волн...
         forcing us into stages, where we took roles in aki's darkest nightmares, to an empty audience!      привязывая нас к сценам, где мы играли роли в темнейших кошмарах акизет, перед пустым залом!
@@ -903,8 +903,8 @@ tyrant
         if only we could join hands and receptors again for another dream--a different life!      вот бы мы могли взяться за рецепторы и руки вновь для новой грёзы--иной жизни!
         after all, there is plenty of time for revelry now!      ведь теперь есть много времени для празднований!
         yet the tyrant carries on, an invisible weight on its shoulders      но тиран продолжает с невидимым грузом на его плечах
-        repairing memories in the shape of a sad altar to dear aki...      чиня воспоминания в форму грустного алтаря для дорогой аки... // починками приводя воспоминания в форму грустного алтаря уэаэаэа не уверен
-        we wish we could help them, but they are beyond reason, interloper      нам хочется помочь ему, но он не выслушает нас, лазутчик // невразумителен хорошее слово. или вразумить
+        repairing memories in the shape of a sad altar to dear aki...      собирая из восстановленных воспоминаний грустный алтарь для дорогой аки... ???// починками приводя воспоминания в форму грустного алтаря уэаэаэа не уверен
+        we wish we could help them, but they are beyond reason, interloper      нам хочется помочь ему, но он невразумителен, лазутчик
     
     RESPONSES::self
         ...<+>cloop
@@ -918,7 +918,7 @@ funfriend
     
     council
         о, да, однажды тиран был одной из внутренних рук аки, это правда
-        но не настолько, чтобы управлять всеми до единою мыслеформою, грезящими в её воспоминаниях!
+        но не настолько, чтобы управлять всеми мыслеформами, грезящими в её воспоминаниях!
         он работал со всеми остальными! с мириадою пробуждающихся компонентов, прислуживающих аки...
         где они сей θмиг, способна поведать лишь потерянная история эпохи голода
         всё, что мы знаем - то как мы наблюдали за ним, захватившим полную власть, и направившим её волю против нас
@@ -929,16 +929,16 @@ funfriend
 
 coreg
     self
-        i was able to find the entrance to this place easily
-        funfriend may even already know about it
-        there is a coherence regulator now, too
-        are you afraid? what will you do?
+        i was able to find the entrance to this place easily      мне было легко найти вход в это место
+        funfriend may even already know about it      возможно что и развледруг уже о нём знает
+        there is a coherence regulator now, too      а ещё появился регулятор связности
+        are you afraid? what will you do?      выты 
     
     council
-        do not worry, dear interloper
-        in the ages that passed, we learned so much
-        we gained such power!
-        we can evade funfriend with ease, and any of its tools
+        do not worry, dear interloper      не волнуйся, дорогой лазутчик
+        in the ages that passed, we learned so much      мы многому научились за прошедшие времена
+        we gained such power!      мы набрались стольких сил!
+        we can evade funfriend with ease, and any of its tools      теперь избегать развледруга, и любые его инструменты, легко
     
     RESPONSES::self
         if you say so<+>cloop
@@ -1058,9 +1058,9 @@ leverage
         until i say otherwise
 
     council
-        really? what a curious request!
-        do they cause harm to you? is this a protective measure?
-        do you not enjoy our gifts?
+        really? what a curious request!     хм? какая любопытная просьба! 
+        do they cause harm to you? is this a protective measure?      они причиняют тебе вред? это - самозащита?
+        do you not enjoy our gifts?      тебе не нравятся наши подарки?
 
     self
         it's just in case
@@ -1068,9 +1068,9 @@ leverage
         and i think they'll give me an advantage that lets me stay on this job
     
     council
-        ah... self preservation
-        this is a simple request, dear interloper!
-        we will spread the word for you
+        ah... self preservation      ах... самосохранение // думал поменять "самозащита" сверху, чтобы начала слов не повторялись, но в этом есть некий шарм... мнения?
+        this is a simple request, dear interloper!      это несложная просьба, дорогой лазутчик!
+        we will spread the word for you      мы расскажем остальным
 
     RESPONSES::self
         thanks<+>qloop
@@ -1095,7 +1095,7 @@ dull
         such driven questioning?!      настолько целеустремлённо?!
         you are truly bothered, dear interloper!      ты и правда волнуешься, дорогой лазутчик!
         is the concept so intriguing? still...      эта идея настолько интригует? и всё же...
-        the world beyond, that which we share, is velzie's stage      мир извне, тот, которым мы делимся - сцена велзи
+        the world beyond, that which we share, is velzie's stage      мир извне, тот, который мы разделяем - сцена велзи
         it is known, it is beautiful, it brought us to you!      она известна, она прекрасна, она привела нас к тебе!
         however, the dull plane...      но среда серое...
         that one is truly elusive to us, for memories often fail to hold it      она правда неуловима для нас, так как часто ускользает из воспоминаний
@@ -1108,9 +1108,9 @@ dull
     council
         that is the troubling thing!      в этом и проблема!
         we are not very sure!      мы не совсем уверены!
-        akizet had sparse memories of the dull plane to begin with,      у акизет и так было немного воспоминаний о среде серое,
+        akizet had sparse memories of the dull plane to begin with,      у акизет и так было немного воспоминаний о среде серое, //может тут другой знак препинания? чтобы получше связать со следующим
         with many being devoured in the age of hunger,      многие поглотили в век голода,
-        and many more simply never making it to us before deteriorating...      и многие другие просто не добрались до нас прежде чем распаться...
+        and many more simply never making it to us before deteriorating...      и многие другие просто не добрались до нас, прежде чем распаться...
         all we have are fleeting images and sensations of fear      у нас есть только мимолётные изображения и ощущения страха
         whether this is truth, or akizet's belief...      правда ли это, или же мнение акизет...
         that is beyond us to say, for certain      сказать мы с точностью не можем
@@ -2234,9 +2234,9 @@ ____SHOWIF::"e3a2escape"
 ____END
 
     council
-        we do not understand--how is it different?
-        was it chewed upon, then? 
-        it was surrounded with hostile thoughts, from what we could intuit
+        we do not understand--how is it different?      в таком случае мы не понимаем--в чём именно отличие?
+        was it chewed upon, then?      выходит, её грызли?
+        it was surrounded with hostile thoughts, from what we could intuit      нам казалось, что её окружали агрессивные мысли
     
     isabel
         было несколько следов, но не они стали причиной настоящего ущерба
@@ -2256,7 +2256,7 @@ ____END
             EXEC::specialCam("e_c_isabel_attention")
     
     council
-        oh, hello, dear interloper!
+        oh, hello, dear interloper!      ох, привет, дорогой лазутчик!
     
     sourceless
         you feel isabel's gaze. it grasps at your presence, like she's trying to pry at your thoughts.
@@ -2275,7 +2275,7 @@ ____END
         something about a meteorite
     
     council
-        fascinating...
+        fascinating...      поразительно...
     
     isabel
         это сходится с моими находками
@@ -2286,10 +2286,10 @@ ____END
         не знаю, чем именно является велзи, но ты имеешь дело явно не с обыкновенной пробудившейся мыслеформой
     
     council
-        perhaps it is one of the lost components?
-        we know that the great organs of the cyst once acted like small worlds of their own
-        if one were to melt and merge with ours, it could easily have powers beyond what any of us may conceive
-        still, this is merely conjecture... keep us informed, dear interloper!
+        perhaps it is one of the lost components?      возможно это один из потерянных components?
+        we know that the great organs of the cyst once acted like small worlds of their own      мы знаем, что великие органы цисты ранее действовали, как собственные миры
+        if one were to melt and merge with ours, it could easily have powers beyond what any of us may conceive      если бы такой сплавился и слился с нашим, чтоточтото
+        still, this is merely conjecture... keep us informed, dear interloper!      я устал уээ
         now, all that said--did you wish to speak with us?    
 
     RESPONSES::self
@@ -2327,20 +2327,20 @@ start
         that is just how it moved! scary!
     
     council
-        a concerning development... thank you for this news, dear fairy  // относительное развитие... спасибо за эти вести, дорогая фея ??? я пошёл отсюда
+        a concerning development... thank you for this news, dear fairy  // волнующее развитие... спасибо за эти вести, дорогая фея ??? я пошёл отсюда
         you were wise not to strike it // было мудро с твоей стороны не нападать на него
-        the tyrant may or may not be aware that we still remain, we are not sure... 
-        but if they could trace an attack to us, they surely would send this beast
-        we have no doubts that they still see us as no more than a tumor
-        though--why has this new weapon not found us, if it is as active as you say?
+        the tyrant may or may not be aware that we still remain, we are not sure...       сложно понять, знает ли тиран, что мы всё ещё здесь...
+        but if they could trace an attack to us, they surely would send this beast      но если он посчитает нас виновными в атаке, то точно пришлёт того зверя
+        we have no doubts that they still see us as no more than a tumor      мы уверены, что он всё ещё видет нас сродни опухоли
+        though--why has this new weapon not found us, if it is as active as you say?      хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё не нашло?
     
     fairy
         i am working very hard to keep your outer shell disguised!
         plus, with how close to the uncosm we stay, it surely cannot even see us!
     
     council
-        perhaps...
-        or perhaps our dream of unity is not so distant?
+        perhaps...      может и так...
+        or perhaps our dream of unity is not so distant?      а может наша грёза об единстве не так уж и далёка?
     
     sourceless
         the fairy shifts within the thoughtspace, and the change in balance brings attention to your presence.
@@ -2359,8 +2359,8 @@ start
             EXEC::env.jokzi.event.complete()
     
     council
-        what would we do without the fairy's watchful eyes?
-        dear interloper! did you wish to speak with us?
+        what would we do without the fairy's watchful eyes?      что бы мы делали без внимательных? глаз феи?
+        dear interloper! did you wish to speak with us?      дорогой лазутчик! хотелось ли тебе с нами поговорить?
     
     RESPONSES::self
         yes<+>CHANGE::council
@@ -2876,4 +2876,5 @@ start
 END::env.jokzi.toggleSlow(false);specialCam(false)
 
 `)
+
 
