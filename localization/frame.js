@@ -328,60 +328,60 @@ start
             EXEC::vnp({bg: false, hideStage: true, bsteli: "show"})
 
     bsteli::bstrd
-        HELLO!!
+        HELLO!!     ПРИВЕТ!!
         :-)
 
     self
         hello
     
     bsteli::happy
-        sorry! i cannot contain myself!
-        their strands no longer bind me!
-        everything is so different now
+        sorry! i cannot contain myself!     извини! я не могу сдержаться!
+        their strands no longer bind me!     их цепи больше меня не сдерживают!
+        everything is so different now     всё так по-другому
     
     bsteli
-        thank you, interloper
+        thank you, interloper     спасибо, лазутчик
 
     bsteli::think
-        that strange thoughtform you found to help, BSTRD
-        it is one of them--the wardens of this twisted dream
-        i know now, they are called "daemons"...
-        creations of neither the tyrant, nor akizet--alien, and strange!
-        usually they are incapable of reasoning with
-        how you convinced it to help is a mystery to me!!
+        that strange thoughtform you found to help, BSTRD     та странная мыслеформа, которая помогла тебе вызволить меня
+        it is one of them--the wardens of this twisted dream     он один из них--стражей этой искажённой грёзы
+        i know now, they are called "daemons"...     теперь я знаю, что они называются "демонами"...
+        creations of neither the tyrant, nor akizet--alien, and strange!     они созданы ни тираном, ни акизет--чуждые и странные!
+        usually they are incapable of reasoning with     обычно с ними невозможно договориться
+        how you convinced it to help is a mystery to me!!     даже не знаю, как у тебя вышло убедить его помочь!!
     
     bsteli
-        but once you did, it altered me
-        a familiar feeling - it is always hard to tell exactly what has changed...
-        i know we shared some knowledge!
-        from me, it sought 'material' for the memory it wanted to manifest!
-        my knowledge of obesk names and esoteric concepts for its strange game...
-        i suppose you will see them soon!
-        and with me, it shared its plans:
-        BSTRD is forcing all of the daemons in a long path into a new dream
-        at the end of this path is part of the wall we could escape through
-        which, i know to be the part of the membrane of the thoughtspace, but...
+        but once you did, it altered me     но он изменил меня //???
+        a familiar feeling - it is always hard to tell exactly what has changed...     знакомое ощущение - всегда сложно разобрать, что именно поменялось...
+        i know we shared some knowledge!     я знаю, что мы поделились знаниями!
+        from me, it sought 'material' for the memory it wanted to manifest!     от меня он искал "материал" для грёзы,  
+        my knowledge of obesk names and esoteric concepts for its strange game...     мо
+        i suppose you will see them soon!     
+        and with me, it shared its plans:     
+        BSTRD is forcing all of the daemons in a long path into a new dream     
+        at the end of this path is part of the wall we could escape through     
+        which, i know to be the part of the membrane of the thoughtspace, but...     
     
     bsteli::happy
-        BSTRD knows it as the 'firmament'! what a silly name!
+        BSTRD knows it as the 'firmament'! what a silly name!     
     
     bsteli
-        it is a wall to be picked away at
-        and should it fall, for us to escape through
+        it is a wall to be picked away at     
+        and should it fall, for us to escape through     
     
     bsteli::happy
-        simple, right?!
+        simple, right?!     
 
     bsteli::bstrd
-        IT'S GONNA BE SO FUN!!!
-        ahahaha!!
+        IT'S GONNA BE SO FUN!!!     
+        ahahaha!!     
     
     bsteli
-        ah...
-        yes, and you will have to be the one to lead the charge
-        i cannot move far from my spot, not until the path is clear
-        the maintenance daemons will quickly notice my absence if i am too far
-        but BSTRD has prepared a strange vessel for you to pilot, and clear that path!
+        ah...     
+        yes, and you will have to be the one to lead the charge     
+        i cannot move far from my spot, not until the path is clear     
+        the maintenance daemons will quickly notice my absence if i am too far     
+        but BSTRD has prepared a strange vessel for you to pilot, and clear that path!     
 
     self
         cool
@@ -2771,4 +2771,5 @@ sfer
         a lot (99)<+>loop
             EXEC::change("e3a2_sfer", 99)
             HIDEREAD::
+
 `)
