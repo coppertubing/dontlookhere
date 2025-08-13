@@ -345,16 +345,15 @@ flower
     
     council
         ох, цветок, наша самая дорогая подруга
-        with her gone, our memories of her have faded, too... but we remember some things!     с её пропажей угасли и наши воспоминания о ней... но некоторое мы помним!
-        a grounding force, she was--all relied upon her for support and resolution     она была основополагающей силой--все полагались на её поддержку и решительность
-        still, she was utterly obsessed with aki, hopelessly so!     тем не менее, она была безнадёжно помешана на аки!
-        // --- дальше не читал. это на удивление утомляет
-        dreaming a thousand dreams of simply sitting with her in a great field...     грезила тысячу грёз просто о том, как сидела бы с ней в огромном поле...
-        and she had such an incredible ability to find hidden things! a sharp eye!     она поразительно хорошо умела находить скрытое! имела острый глазвзгляд!
-        the age of hunger took such a sharp toll upon her--she never much enjoyed the feasts we held...     она очень плохо пережила век голода--ей мало нравились наши пиры...
-        the fairy had to form such silly illusions to make them fit her palate!     фее приходилось создавать такие забавные иллюзии, чтобы они приходились ей по вкусу!
-        anyway! we know she came from a memory of warmth within cold metal!     в любом случае! мы знаем, что она родом из воспоминания о тепле среди холодного металла!
-        we hope that helps, interloper     надеемся, что это поможет, лазутчик     
+        с её пропажей угасли и наши воспоминания о ней... но некоторое мы помним!
+        она была основополагающей силой--все полагались на её поддержку и решительность
+        тем не менее, она была безнадёжно помешана на аки!
+        грезила тысячу грёз просто о том, как сидела бы с ней в огромном поле...
+        она поразительно хорошо умела находить скрытое! имела зоркий глаз!
+        она очень плохо пережила эпоху голода--ей мало нравились наши пиры...
+        фее приходилось создавать такие забавные иллюзии, чтобы они приходились ей по вкусу!
+        в любом случае! мы знаем, что она родом из воспоминания о тепле среди холодного металла!
+        надеемся, что это поможет, лазутчик     
 
     RESPONSES::self
         thanks<+>loop
@@ -381,18 +380,18 @@ anyone
 
 flowersaved
     self
-        the flower is back    цветок вернулась
-        isabel    изабель
-        can you tell me anything more about her?    можете что-нибудь ещё о ней рассказать?
+        цветок вернулась
+        изабель
+        можете что-нибудь ещё о ней рассказать?
 
     council
-        our most beloved friend!    наша (???) подруга!
-        yes, we have been speaking with her!    да, мы с нею разговаривали!
-        and with her return, came a host of thoughtforms we thought lost!!    и с её возвращением пришёл целый ряд, казалось, потерянных мыслеформ!!
-        her little akizets! hehehehe    её маленьких акизет! хехехехе
-        you need not question us over her...     тебе не нужно допрашивать о ней нас...
-        anything you wish to know, she will be more than forthcoming about!    обо всём, что тебе хочется узнать, с великой радостью расскажет она сама!
-        go! go to her fields, speak with her!    иди же! иди в её поля, поговори с ней!
+        наша самая дражайшая подруга!
+        да, мы с нею разговаривали!
+        и с её возвращением пришёл целый ряд, казалось, потерянных мыслеформ!!
+        её маленьких акизет! хехехехе
+        тебе не нужно допрашивать нас о ней...
+        обо всём, что тебе хочется узнать, с великой радостью расскажет она сама!
+        иди же! иди в её поля, поговори с ней!
 
     RESPONSES::self
         great<+>loop      отлично
@@ -428,7 +427,7 @@ fairy
         не досадуй—до тех пор, пока она не вернулась, с нами одни лишь блекнущие воспоминания...
         и всё же, она являла собою ужасающего друга--силу, больше чем мысль!
         её когти способны были разорвать любое мыслепространство, дабы она могла пировать их плотью 
-        во времена голода именно она была тою, кого мысли страшились больше всего...
+        в эпоху голода именно она была тою, кого мысли страшились больше всего...
         временами даже мы задавались вопросом: стоит ли нам жаловать её у себя!
         но как же прекрасны были моменты её счастья!
         ей было под силу придать форму до того осознанным грёзам и ложным воспоминаниям!
@@ -446,17 +445,17 @@ third
         who is the lost one? кого ещё вы потеряли? ??????
     
     council
-        well, interloper, that is the trouble     ну, лазутчик, в этом и проблема
-        we do not know!!     мы не знаем!!
-        when they were torn away, it was more 'clean' than the others      эта потеря оставила меньше следов, чем остальные
-        the tyrant needed them for something important...    тирану // "этот кто-то" понадобился // тирану надо было заполнить важную роль...
-        and now, we do not even remember what they looked like, what they did...      и теперь мы не помним ни внешность, ни совместное прошлое...
-        we apologize - we know this is unhelpful!     прости нас - мы знаем, что это мало тебе даёт!
-        and what a strange feeling it is to have, too...    и как же странно ощущать подобное...
-        to know we miss a friend so dearly, to have such holes in our hearts...     знать, что мы так по кому-то тоскуем, чувствовать дыры в наших сердцах...
-        and not even know why!   и даже не помнить, почему!
-        just keep watch, interloper    просто будь настороже, лазутчик
-        you will find them somewhere     где-нибудь кто-нибудь да найдётся
+        ну, лазутчик, в этом и проблема
+        мы не знаем!!
+        эта потеря оставила меньше следов, чем остальные
+        тирану // "этот кто-то" понадобился // тирану надо было заполнить важную роль...
+        и теперь мы не помним ни внешность, ни совместное прошлое...
+        прости нас - мы знаем, что это малополезно!
+        и как же странно ощущать подобное...
+        знать, что мы так по кому-то тоскуем, чувствовать дыры в наших сердцах...
+        и даже не помнить, почему!
+        просто будь настороже, лазутчик
+        где-нибудь кто-нибудь да найдётся
         
     RESPONSES::self
         ok<+>loop
@@ -464,21 +463,21 @@ third
 
 geli
     self
-        i used your mask on geli      ваша маска сработала на джели
-        a golem from akizet's memory of the collapse      големе из вспоминания акизет об обвале
-        it seemed to notice me and really understand it      кажется он заметил меня и правда понял её // её... маску..... глупая строчка
+        ваша маска сработала на джели
+        големе из вспоминания акизет об обвале
+        кажется он заметил меня и правда воспринял её
     
     council
         ооо!!
-        мы гадаем, может ли это быть наш потерянный/наша пропажа? // а с этим мы так и не решили... но я за то чтобы оставить потерянный. типа. русский язык любит мужской род  "наша пропажа" используется и дальше ("будь то наша дражайшая пропажа или же нет") так что я за это. мужского рода тут и так много
+        мы гадаем, может ли это быть наша пропажа
         сказал ли он что-нибудь?
     
     self
-        not directly      не напрямую
-        but it hid messages in its context      но он прятал послания в контексте
-        something is keeping it there but it's trying to get free      что-то держит его там но он пытается выбраться
-        also mentioned a door or gap or something      ещё упомянул дверь или прореху или вроде того
-        i think it's trying to escape      думаю он пытается сбежать   //ладно больше не буду трогать эп3 контент
+        не напрямую
+        но он прятал послания в контексте
+        что-то держит его там но он пытается выбраться
+        ещё упомянул дверь или прореху или вроде того
+        думаю он пытается сбежать
     
     council
         восхитительно, лазутчик!!
@@ -549,15 +548,15 @@ stowaway
 
 cavik
     self
-        i used your mask on cavik      ваша маска сработала на кавике
-        or a version of him i found in the uncosm      или версии его из беспространства
-        he disappeared, have you seen him?      он пропал, вы его не видели?
+        ваша маска сработала на кавике
+        или версии его из беспространства
+        он пропал, вы его не видели?
         
     council
-        cavik... no, no, we have not      кавик... нет, нет, не видели
-        how peculiar!      как же необычно!
-        perhaps he is still on his way?      может он пока не дошёл?
-        we must hope that nothing caught him on the journey      мы понадеемся, что ничто не поймало его по пути
+        кавик... нет, нет, не видели
+        как же необычно!
+        может он пока не дошёл?
+        мы понадеемся, что ничто не поймало его по пути
 
     RESPONSES::self
         yeah<+>loop      ага
@@ -571,19 +570,19 @@ ploop
 
 dancing
     self
-        why do you want to dance so much?      почему вам так хочется танцевать?
+        почему вам так хочется танцевать?
     
     council
-        how could we not?      как могло бы не хотеться?
-        you are our hero!!      ты - наш герой!!
-        you help us, as we help you!      ты помогаешь нам, как и мы тебе!
-        we are so excited!      это будет прекрасно!
-        you can help us restore jokzi ozo to greater glory than it has ever known!      ты можешь помочь нам вернуть джокзи озо к невиданному величию!
-        you stave off the tyrant!      ты отвлекаешь тирана!
-        you feed our world!      ты кормишь наш мир!
-        before, it was inevitable that the madness would come...      раньше наступление безумия было неизбежно...
-        but now, the dreams will never end!      но отныне грёзам не настанет конца!
-        come! dance with us! dance with us!!      давай же! танцуй с нами! танцуй с нами!!
+        как могло бы не хотеться?
+        ты - наш герой!!
+        ты помогаешь нам, как и мы тебе!
+        это будет прекрасно!
+        ты можешь помочь нам вернуть джокзи озо к невиданному величию!
+        ты отвлекаешь тирана!
+        ты кормишь наш мир!
+        раньше наступление безумия было неизбежно...
+        но отныне грёзам не настанет конца!
+        давай же! танцуй с нами! танцуй с нами!!
     
     RESPONSES::self
         ok<+>ploop
@@ -591,21 +590,21 @@ dancing
 
 we
     self
-        you keep saying we    почему "мы"
-        you are the only one here    тут больше никого нет
+        почему "мы"
+        тут больше никого нет
     
     council
-        любопытно!!    interesting!!
-        твоё необыкновенное соединение хрупко, лазутчик!    your unnatural connection is tenuous, interloper!
-        ты видишь нас как нечто одно...     you see us as one single thing...
-        но мы же такое множество друзей!    but we are so many friends!
-        мы, кто разорвали наши мембраны, чтобы объединиться...    we, who shed our membranes to join together...
-        ради близости, ради искренности, чтобы грезить даже более прекрасные сны/грёзы?!    for closeness, for intimacy, to dream greater dreams!
-        и конечно, некоторые из нас попросту устали ждать...    and of course, some of us simply tired of the wait...
+        любопытно!!
+        твоё необыкновенное соединение хрупко, лазутчик!
+        ты видишь нас как нечто одно...
+        но мы же такое множество друзей!
+        мы, кто разорвали наши мембраны, чтобы объединиться...
+        ради близости, ради искренности, чтобы грезить даже более прекрасные грёзы!
+        и конечно, некоторые из нас попросту устали ждать...
         так что мы присоединились, чтобы стать топливом и быть сожжёнными!    and so we joined to be burned away as fuel! // странноватое
-        те теперь молчат...    those ones are quiet now...
-        но, в дружбе и празднестве, мы развеяли тьму! безумие!    but, in friendship and feast, we weathered the darkness! the madness!
-        и все мы преодолели их! каждый из нас!    and we all made it through! all of us!
+        те теперь молчат...
+        но, в дружбе и празднестве, мы развеяли тьму! безумие!
+        и все мы преодолели их! каждый из нас!
     
     RESPONSES::self
         i see<+>ploop
@@ -613,21 +612,21 @@ we
 
 ozo
     self
-        tell me about this place      расскажите мне об этом месте
+        расскажите мне об этом месте
     
     council
-        of course, interloper!      конечно, лазутчик!
-        you stand in our shared world of light,      ты находишься в нашем общем мире света,
-        bound into spatiality by sacrifice...      связанном в пространственность через пожертвования...
-        this is jokzi ozo!      это джокзи озо!
-        for we were a fortress, drifting above the tides of madness for three ages      так как мы были крепостью, три века плавающей над волнами безумия
-        across the surface of our unfortunate progenitor, aki...      по поверхности нашей неудачливой предшественницы, аки...
-        oh, poor aki!!      ох, бедная аки!!
-        but it was she who ultimately let us seize a fragment of velzie's power      но именно она в итоге позволила нам захватить фрагмент силы велзи
-        all of her memories, us included,      все её воспоминания, включая и нас,
-        joining minds to dream a thousand better lives!      соединялись разумом, дабы грезить тысячи лучших жизней!
-        yes, a fortress we were, a city!      да, мы были крепостью, городом!
-        but... it is much smaller and quieter now      но... сей θмиг он гораздо меньше и тише
+        конечно, лазутчик!
+        ты находишься в нашем общем мире света,
+        связанном в пространственность через пожертвования...
+        это джокзи озо!
+        так как мы были крепостью, три эпохи плавающей над волнами безумия
+        по поверхности нашей неудачливой предшественницы, аки...
+        ох, бедная аки!!
+        но именно она в итоге позволила нам захватить фрагмент силы велзи
+        все её воспоминания, включая и нас,
+        соединялись разумом, дабы грезить тысячи лучших жизней!
+        да, мы были крепостью, городом!
+        но... сей θмиг он гораздо меньше и тише
     
     RESPONSES::self
         i see<+>ploop      понятно
@@ -639,16 +638,16 @@ history
         what did you mean?    
     
     council
-        the three ages of the decline!    три века упадка!
-        hunger, madness, darkness...    голод, безумие, тьма...
-        such dramatic names, we know! hahaha!!    да, это очень драматичные имена! хахаха!!
-        but as they were our end-times, they had the right    но это подходяще, ведь они были концом наших времён
-        in hunger, we awoke,    в голод, мы очнулись,
-        in madness, we lived new lives,    в безумие, мы жили новыми жизнями,
-        and in darkness, we faded away...    и в тьме мы угасали...
-        but what should we call this new age, we wonder?!    но как же нам назвать этот новый век?!
-        light? renewal? rejoining?    свет? восстановление? воссоединение?
-        no no--we must name it when it is over!    нет-нет--мы назовём его, когда он закончится!
+        три эпохи упадка!
+        голод, безумие, тьма...
+        да, это очень драматичные имена! хахаха!!
+        о это подходяще, ведь они были концом наших времён
+        в голод - мы очнулись,
+        в безумии - мы жили новыми жизнями,
+        и в тьме - мы угасали...
+        но как же нам назвать эту новую эпоху?!
+        свет? восстановление? воссоединение?
+        нет-нет--мы назовём его, когда он закончится!
         
     RESPONSES::self
         ok<+>ploop
@@ -659,11 +658,11 @@ akicoat
         why are you wearing akizet's robe
     
     council
-        oh, this?!
-        we found it floating out there not so long ago...
-        the fading memory torn from some dissociated thought, among shreds of its membrane
-        make no mistake interloper--we mourn every death, 
-        but this is a cool design... it would have been disrespectful NOT to absorb it!
+        ох, эту?!
+        мы нашли её проплывающей снаружи не так давно...
+        гаснущее воспоминание, вырванное из диссоциированной мысли, среди её обрывков её мембраны
+        но не сделай ошибочный вывод, лазутчик--мы оплакиваем каждую смерть,
+        но это крутой замысел... было бы неуважтельно НЕ поглотить его!
     
     RESPONSES::self
         ok<+>ploop
@@ -671,20 +670,20 @@ akicoat
     
 time
     self
-        how long have you been here?      как давно вы здесь находитесь?
+        как давно вы здесь находитесь?
     
     council
-        ahahaha!! we lost track a long time ago!      ахахаха!! мы давно потеряли счёт времени!
-        adrift in the uncosm, atop the tides of its insanity,      в дрейфе по беспространству, на волнах его безумия,
-        time got away from us      время ускользало от нас
-        even more when we rejected it for our dreams!      тем более когда мы отказались от него для наших грёз!
-        what tales we spun! what fun we had!!      что за рассказы мы свивали! как же нам было весело!
-        and what wonderful feasts we had...      и что за прекрасные пиры мы проводили...
-        we were sure we would sit with our friends around the last flicker of our sanity...      мы были уверены, что будем сидеть с друзьями вокруг последней искры нашего рассудка...
-        ahh, to bask in that melancholic thought again,      ахх, вот бы вновь понежиться в той меланхоличной мысли
-        to clasp claws with the others and reminisce as the darkness claimed all...      о том, как возьмёмся за когти и предадимся вспоминанию, пока тьма захватывает всё...
-        we even dreamed dreams of it, in anticipation      мы даже грезили об этом, в предвкушении
-        but now that you are here, time is not so short anymore! what fun we will have!!      но раз уж ты здесь, у нас есть больше времени! как же мы повеселимся!!
+        ахахаха!! мы давно потеряли счёт времени!
+        в дрейфе по беспространству, на волнах его безумия,
+        время ускользало от нас
+        тем более когда мы отказались от него для наших грёз!
+        что за рассказы мы свивали! как же нам было весело!
+        и что за прекрасные пиры мы проводили...
+        мы были уверены, что будем сидеть с друзьями вокруг последней искры нашего рассудка...
+        ахх, вот бы вновь понежиться в той меланхоличной мысли
+        о том, как возьмёмся за когти и предадимся воспоминаниям, пока тьма захватывает всё...
+        мы даже грезили об этом, предвкушая
+        но раз уж ты здесь, у нас есть больше времени! как же мы повеселимся!!
     
     RESPONSES::self
         yep<+>ploop      ага
@@ -697,14 +696,14 @@ feast
         what did you eat?
     
     council
-        oh! our poor naive interloper!!      ох! лазутчик, нам жаль твою наивность!! //вроде это поточнее подходит тону+бонус за относительную нейтральность но можно банальное "наш бедный наивный лазутчик"
-        what is there to eat in a world comprised only of actors, when the stage lights disappear?      что же есть в мире, состоящем из актёров, если пропал свет софитов?
-        ahh, but do not twist your receptors away so quickly!      ахх, но не    бля выражение
-        any who still had sanity, we welcomed as friends      ещё имевших рассудок мы принимали, как друзей
-        but those who were truly lost,       но тех, кто был правда потерян,
-        those who lost all but their sense of hunger,      у кого осталось лишь их чувство голода,
-        those who could only cling to their roles even in the dark, to an audience of none...      тех, кто мог только цепляться за роли даже в темноте, перед пустым залом...
-        they were welcomed instead to our dreams of consumption      мы вместо этого приглашали в наши грёзы о поедании
+        ох! как жаль, что ты обладаешь такой наивностью, лазутчик
+        что же есть в мире, состоящем из актёров, если огни на сцене пропали?
+        ахх, но не надо так сразу кривить рецепторами
+        ещё имевших рассудок мы принимали, как друзей
+        но тех, кто был правда потерян,
+        у кого осталось лишь их чувство голода,
+        тех, кто мог только цепляться за роли даже во тьме, перед пустым залом...
+        мы вместо этого приглашали в наши грёзы о поедании
     
     RESPONSES::self
         ok...<+>ploop
@@ -753,8 +752,8 @@ vessel
         we have a vessel and everything
     
     council
-        oh, yes, interloper!!      ох, да, лазутчик!!
-        we can allow you to enter, especially with that locus of yours!      мы можем позволить тебе войти, особенно с твоим locus!!
+        ох, да, лазутчик!!
+        мы можем позволить тебе войти, особенно с твоим locus!!
         it is only wandering that we cannot abide for now      я устал
         but for a focused dream amongst friends, we hold no conflict!
     
@@ -764,20 +763,20 @@ vessel
 
 dark
     self
-        i found a dark area in here      тут есть тёмное место
-        what is that      что это
+        тут есть тёмное место
+        что это
 
     council
         ах...
-        well, interloper, much has simply been left to rot      что же, лазутчик, многое просто оставили гнить
-        when the age of darkness came,       когда настал век тьмы,
-        we pulled every resource, every maintenance, into the core of jokzi ozo      мы собрали все ресурсы, все усилия, в центр джокзи озо
-        to keep the dream alive as long as possible...      чтобы поддерживать грёзу как можно дольше...
-        and so, much of outer ozo has been left to decay      поэтому многие части внешнего озо остались разлагаться
-        sad, but necessary      грустно, но необходимо
-        still, do be careful, dear interloper!      и всё же, осторожнее, дорогой лазутчик!
-        we are sure the areas are lifeless and harmless, but...      те части несомненно безжизненны и безопасны, но...
-        with the size of our world, we can never be sure      наш мир большой, мы никогда не можем быть уверены
+        что же, лазутчик, многое просто оставили гнить
+        когда настала эпоха тьмы,
+        мы собрали все ресурсы, все усилия, в центр джокзи озо
+        чтобы поддерживать грёзу как можно дольше...
+        поэтому многие части внешнего озо остались разлагаться
+        грустно, но необходимо
+        и всё же, осторожнее, дорогой лазутчик!
+        те части несомненно безжизненны и безопасны, но...
+        наш мир так велик, что мы никогда не можем быть уверены
 
     RESPONSES::self
         ok...<+>ploop      хорошо...
@@ -872,39 +871,39 @@ godlike
 
 tyrant
     self
-        when you say tyrant      когда вы говорите тиран
-        do you mean funfriend?      это о развледруге?
+        когда вы говорите тиран
+        это о развледруге?
     
     council
-        yes, of course, dear interloper      да, конечно, дорогой лазутчик
-        funfriend...      развледруг...
-        neither fun, nor friend--it makes us want to weep!      ни развлечение, ни друг--от него нам хочется заплакать!
-        when the age of hunger abated, and the age of madness came,      когда век голода отступил, и пришёл век безумия, 
-        it was here with us!      он был с нами, здесь!
-        with so many other fragments from half-eaten memories      со множеством других фрагментов из полусъеденных воспоминаний
-        oh, and how it danced with us, forming entire new lives!      ох, и как же он танцевал с нами, создавая совершенно новые жизни!
-        so much, so much we have experienced!      мы так, так много пережили!
-        and we all made peace with the darkness we knew was coming...      и мы все смирились с неизбежною тьмою... // пришли в смирение пред неизбежной тьмой или слишком вычурно
-        we all promised to be together to the very last light!      мы все обещали, что будем вместе до самого последнего света!
-        but little funfriend grew skittish as the madness began to close around our home...      но маленький развледруг забоялся, когда безумие начало окружать наш дом... // начало сгущаться вокруг нашего дома <<з
-        it thrashed, it fought, breaking our peace, breaking our rules!!      он метался, он боролся, разрушая наш покой, нарушая наши правила!!
-        telling us to do this, to do that, to return to our memories--that it has 'a plan'!      говоря нам делать одно, другое, вернуться в наши воспоминания--что у него есть "план"!
-        a piteous plan, mind you--that we all take position as pillars in far corners of the cyst, away from one       another,      жалкий план, позволь сказать--чтобы мы все встали колоннами в противоположных углах цисты, далеко друг от друга,   тавтология ?
-        to all die alone in some impossible fight to stop the fading of the light...      и все умерли в одиночку, в какой-то невозможной битве, пытаясь остановить угасание света...
+        да, конечно, дорогой лазутчик
+        развледруг...
+        ни развлечение, ни друг--от него нам хочется заплакать!
+        когда эпоха голода отступила, и пришла эпоха безумия, 
+        он был с нами, здесь!
+        со множеством других фрагментов из полусъеденных воспоминаний
+        ох, и как же он танцевал с нами, создавая совершенно новые жизни!
+        мы так, так много пережили!
+        и мы все пришли в смирение пред неизбежною тьмою
+        мы все обещали, что будем вместе до самого последнего света!
+        но маленький развледруг забоялся, когда безумие начало сгущаться вокруг нашего дома...
+        он метался, он боролся, разрушая наш покой, нарушая наши правила!!
+        говоря нам делать одно, другое, вернуться в наши воспоминания--что у него есть "план"!
+        жалкий план, позволь сказать--чтобы мы все встали колоннами в противоположных углах цисты, далеко друг от друга,
+        и все умерли в одиночку, в какой-то невозможной битве, пытаясь остановить угасание света...
         ...
-        ...ultimately... it left      ...в итоге... он ушёл
-        snatching the cyst's locus of control in its darkest moment,      захватив локус контроля цисты в её самый тёмный момент,
-        forcing itself into its role as the servitor...      навязав себя в её роль, слуги... // не уверен нужна ли тут запятая. хотя в целом предложение не очень понятно
-        to its credit, we must admit that it did work out in the end--but only by your divine intervention      к его чести (справедливости ради?), мы должны признать, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
-        after all, look at us, talking, well beyond the last <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">zenruka</span>'s flash!      ведь посмотри на нас, наш разговор, гораздо позже последней вспышки <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">зенруки (?)</span>!
-        but even back then, they tore at us, stealing our friends to use as walls against the tides...      но даже тогда, он рвал нас, крадя наших друзей как стены против волн...
-        forcing us into stages, where we took roles in aki's darkest nightmares, to an empty audience!      привязывая нас к сценам, где мы играли роли в темнейших кошмарах акизет, перед пустым залом!
-        so yes, <em>tyrant</em>. clinging to a past that it cannot even remember      так что да, <em>тиран</em>. цепляющийся за прошлое, которое даже не помнит
-        if only we could join hands and receptors again for another dream--a different life!      вот бы мы могли взяться за рецепторы и руки вновь для новой грёзы--иной жизни!
-        after all, there is plenty of time for revelry now!      ведь теперь есть много времени для празднований!
-        yet the tyrant carries on, an invisible weight on its shoulders      но тиран продолжает с невидимым грузом на его плечах
-        repairing memories in the shape of a sad altar to dear aki...      собирая из восстановленных воспоминаний грустный алтарь для дорогой аки... ???// починками приводя воспоминания в форму грустного алтаря уэаэаэа не уверен
-        we wish we could help them, but they are beyond reason, interloper      нам хочется помочь ему, но он невразумителен, лазутчик
+        ...в итоге... он ушёл
+        захватив локус контроля цисты в её самый тёмный момент,
+        навязав себя в рооль её слуги...
+        к его чести, мы должны признать, что в итоге всё сошлось--но лишь из-за твоего божественного вмешательства
+        ведь взгляни на нас: наш разговор, гораздо позже последней вспышки <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">зенруки</span>!
+        но даже тогда, он рвал нас, крадя наших друзей как стены против волн...
+        привязывая нас к сценам, где мы играли роли в темнейших кошмарах акизет, перед пустым залом!
+        так что да, <em>тиран</em>. цепляющийся за прошлое, которое даже не помнит
+        вот бы мы могли взяться за рецепторы и руки вновь для новой грёзы--иной жизни!
+        ведь теперь есть много времени для празднований!
+        но тиран продолжает с невидимым грузом на его плечах,
+        чинит воспоминания, возводя из них подобие печального алтаря для дорогой аки...
+        нам хочется помочь ему, но он невразумителен, лазутчик
     
     RESPONSES::self
         ...<+>cloop
@@ -929,16 +928,16 @@ funfriend
 
 coreg
     self
-        i was able to find the entrance to this place easily      мне было легко найти вход в это место
-        funfriend may even already know about it      возможно что и развледруг уже о нём знает
-        there is a coherence regulator now, too      а ещё появился регулятор связности
+        мне было легко найти вход в это место
+        возможно что и развледруг уже о нём знает
+        а ещё появился регулятор связности
         are you afraid? what will you do?      выты 
     
     council
-        do not worry, dear interloper      не волнуйся, дорогой лазутчик
-        in the ages that passed, we learned so much      мы многому научились за прошедшие времена
-        we gained such power!      мы набрались стольких сил!
-        we can evade funfriend with ease, and any of its tools      теперь избегать развледруга, и любые его инструменты, легко
+        не волнуйся, дорогой лазутчик
+        мы многому научились за прошедшие эпохи
+        мы набрались стольких сил!
+        теперь мы без труда избегаем и развледруга, и его инструменты
     
     RESPONSES::self
         if you say so<+>cloop
@@ -946,25 +945,25 @@ coreg
 
 akizet
     self
-        do you know what happened to akizet?      вы знаете, что случилось с акизет?
+        вы знаете, что случилось с акизет?
     
     council
-        what a question!      какой вопрос! // "что за вопрос!"? типа "это и не вопрос вовсе, и так очевидно" хз может такой смысл
-        who does not, interloper?      кто же не знает, лазутчик?
-        oh, yes...      ох, да...
-        that is right...      верно...
-        EVERYBODY!!!!!      НИКТО!!!
-        the tyrant tore memories from us all, moving things to fit its will      тиран оторвал от всех нас воспоминания, двигая вещи по своей задумке
-        this was long ago, mind you--when it first fought against the fading of our world      и знай, это было давно--когда он впервые заборолся против угасания нашего мира
-        so many friends torn from us, so much knowledge lost!!      сколько же друзей оторвано от нас, сколько же знаний утеряно!!
-        worse still--we doubt even it knows where that memory is, now...      что ещё хуже--мы сомневаемся, что и он знает, где то воспоминание сей θмиг...
-        the only shred we recall is that we--the cyst--were torn from her body for one reason or another!      мы помним лишь один отрезок, что нас--цисту--оторвало от её тела, по той или иной причине!
-        and obviously, that does not bode well, does it? hahaha!      и разумеется, это не сулит хорошего, не так ли? хахаха!
-        sorry! we do not mean to laugh! we know it is sad!      извини! мы не хотим смеяться! мы знаем, что это грустно!
-        but it is all so far in the past now, and look what joy was wrought from her!      но это всё так далеко в прошлом, и погляди, какую радость мы из неё выковали!
-        we all had our times of mourning, and then came the celebrations of her memories!      мы все скорбили, а затем настали празднования её воспоминаний!
-        and they never, ever stopped!      и они никогда, никогда не заканчивались!
-        not even now!! come, let us dance in her memory!      и сей θмиг продолжаются!! идём, потанцуем в её честь!
+        какой же это вопрос!
+        кто же не знает, лазутчик?
+        ох, да...
+        верно...
+        НИКТО!!!
+        тиран оторвал от всех нас воспоминания, двигая вещи по своей задумке
+        и знай, это было давно--когда он впервые заборолся против угасания нашего мира
+        сколько же друзей оторвано от нас, сколько же знаний утеряно!!
+        что ещё хуже--мы сомневаемся, что и он знает, где то воспоминание сей θмиг...
+        мы помним лишь один отрезок, что нас--цисту--оторвало от её тела, по той или иной причине!
+        и разумеется, это не сулит ничего хорошего, не так ли? хахаха!
+        извини! мы не хотим смеяться! мы знаем, что это грустно!
+        но это всё так далеко в прошлом, и погляди, какую радость мы из неё выковали!
+        мы все скорбили, а затем настали празднования её воспоминаний!
+        и они никогда, никогда не заканчивались!
+        и продолжаются сей θмиг!! ну же, потанцуем в её честь!
             SHOWIF::["PAGE!!depressed", false]        
     
     RESPONSES::self
@@ -977,8 +976,8 @@ iloop
 
 iname
     council
-        tell us, interloper!! // поведай нам, лазутчик!!
-        what is your name? // каково твоё имя?
+        поведай нам, лазутчик!!
+        каково твоё имя?
     
     sourceless
         ...
@@ -1034,7 +1033,7 @@ ____SHOWIF::["PAGE!!jig", false]
     council
         ах, оно услышало нашу песню, уловило наш танец!
         нам показалось, оно присоединится к нам, но оно лишь наблюдает
-        простое любопытство, но... мы надеемся, придёт время - и оно станцует с нами! // - и мы станцуем вместе!
+        простое любопытство, но... мы надеемся, придёт время - и мы станцуем вместе!
     
     RESPONSES::self
         ok<+>loop
@@ -1042,7 +1041,7 @@ ____SHOWIF::["PAGE!!jig", false]
 
 ____SHOWIF::["PAGE!!jig", true]    
     council
-        ах, оно услышало нашу песню, уловило наш танец! // 
+        ах, оно услышало нашу песню, уловило наш танец!
         и, благодаря твоему вмешательству, теперь танцует вместе с нами!
         нам не передать свою радость, дорогой лазутчик, от присоединения новой мысли
         спасибо! спасибо тебе!
@@ -1058,9 +1057,9 @@ leverage
         until i say otherwise
 
     council
-        really? what a curious request!     хм? какая любопытная просьба! 
-        do they cause harm to you? is this a protective measure?      они причиняют тебе вред? это - самозащита?
-        do you not enjoy our gifts?      тебе не нравятся наши подарки?
+        хм? какая любопытная просьба! 
+        они причиняют тебе вред? это защитная мара?
+        тебе не нравятся наши подарки?
 
     self
         it's just in case
@@ -1068,9 +1067,9 @@ leverage
         and i think they'll give me an advantage that lets me stay on this job
     
     council
-        ah... self preservation      ах... самосохранение // думал поменять "самозащита" сверху, чтобы начала слов не повторялись, но в этом есть некий шарм... мнения?
-        this is a simple request, dear interloper!      это несложная просьба, дорогой лазутчик!
-        we will spread the word for you      мы расскажем остальным
+        ах... самосохранение
+        это несложная просьба, дорогой лазутчик!
+        мы расскажем остальным
 
     RESPONSES::self
         thanks<+>qloop
@@ -1078,43 +1077,43 @@ leverage
 
 dull
     self
-        do you know anything about the dull plane?      вы знаете что-нибудь о среде серое?
+        вы знаете что-нибудь о среде серое?
 
     council
-        haha!! interloper!      хаха!! лазутчик!
-        only murmurs of memories from akizet and those who have joined us      только слухи из воспоминаний акизет и присоединившихся к нам
-        but... you ask about an entire world far beyond our sphere      но... ты спрашиваешь о целом мире далеко вне нашей сферы
-        a place above a place we can never see,      о месте выше места которое мы никогда не увидим,
-        born of and reliant upon the cyst as we are      будучи родившимися из этой цисты и полагающимися на неё
-        we wonder, if you took us out, how small we would be beside your claws      нам любопытно, достань ты нас, насколько маленькими мы бы смотрелись рядом с твоими когтями
+        хаха!! лазутчик!
+        только слухи из воспоминаний акизет и присоединившихся к нам
+        но... ты спрашиваешь о целом мире далеко вне нашей сферы
+        о месте выше места которое мы никогда не увидим,
+        будучи родившимися из этой цисты и полагающимися на неё
+        нам любопытно, достань ты нас, насколько маленькими мы бы смотрелись рядом с твоими когтями
     
     self
-        what murmurs      что за слухи
+        что за слухи
         
     council
-        such driven questioning?!      настолько целеустремлённо?!
-        you are truly bothered, dear interloper!      ты и правда волнуешься, дорогой лазутчик!
-        is the concept so intriguing? still...      эта идея настолько интригует? и всё же...
-        the world beyond, that which we share, is velzie's stage      мир извне, тот, который мы разделяем - сцена велзи
-        it is known, it is beautiful, it brought us to you!      она известна, она прекрасна, она привела нас к тебе!
-        however, the dull plane...      но среда серое...
-        that one is truly elusive to us, for memories often fail to hold it      она правда неуловима для нас, так как часто ускользает из воспоминаний
-        you see, velzie's stage is a place in careful balance between joy and terror      видишь ли, сцена велзи - место с осторожным равновесием меж радостью и ужасом
-        while the dull plane, it exists without regard for this favored balance      в то время как среда серое существует без этого любимого равновесия
+        настолько стремишься к ответам?!
+        ты и правда беспокоишься, дорогой лазутчик!
+        эта идея настолько интригует? и всё же...
+        мир извне, тот, который мы разделяем - сцена велзи
+        она известна, она прекрасна, она привела нас к тебе!
+        но среда серое...
+        она правда неуловима для нас, так как часто ускользает из воспоминаний
+        видишь ли, сцена велзи - место с осторожным равновесием меж радостью и ужасом
+        в то время как среда серое существует без этого любимого равновесия
     
     self
-        how so      как так
+        как так
     
     council
-        that is the troubling thing!      в этом и проблема!
-        we are not very sure!      мы не совсем уверены!
-        akizet had sparse memories of the dull plane to begin with,      у акизет и так было немного воспоминаний о среде серое, //может тут другой знак препинания? чтобы получше связать со следующим
-        with many being devoured in the age of hunger,      многие поглотили в век голода,
-        and many more simply never making it to us before deteriorating...      и многие другие просто не добрались до нас, прежде чем распаться...
-        all we have are fleeting images and sensations of fear      у нас есть только мимолётные изображения и ощущения страха
-        whether this is truth, or akizet's belief...      правда ли это, или же мнение акизет...
-        that is beyond us to say, for certain      сказать мы с точностью не можем
-        for it was only she who granted us this knowledge of the world beyond      так как она одна дарила нам это знание о внешнем мире
+        в этом и проблема!
+        мы не совсем уверены!
+        у акизет и до этого были немногочисленные воспоминания о среде серое,
+        а с тем, что многие поглотили в эпоху голода,
+        и даже больше просто не добралось до нас, прежде чем распасться...
+        у нас есть только мимолётные изображения и ощущения страха
+        правда ли это, или же представления акизет...
+        мы не можем сказать с уверенностью, что именно
+        так как она одна дарила нам это знание о внешнем мире
 
     RESPONSES::self
         thanks i guess<+>cloop      спасибо наверное
@@ -1382,7 +1381,7 @@ home
     isabel
         разве она не прекрасна?
         дом для стольких грёз...
-        я нашла его во времена безумия,
+        я нашла его в эпоху безумия,
         полу-съеденным, в куче внутренностей других воспоминаний
         совет помог мне привести это место в порядок
         и хотя я не знаю, когда акизет побывала здесь...
@@ -1589,9 +1588,9 @@ history
         like the history of this place
 
     isabel
-        ты имеешь в виду осознанные времена
+        ты имеешь в виду эпоху осознанности
         было массовое пробуждение, а затем...
-        затем наступили времена голода, безумия,
+        затем наступили эпохи голода, безумия,
         тьмы...
         ...
     
@@ -1614,7 +1613,7 @@ effigy
     isabel
         они <em>и есть</em> акизет
         или были, однажды...
-        в осознанные времена акизет была первой, кого разорвали на части
+        в эпоху осознанности акизет была первой, кого разорвали на части
         всё-таки она общий элемент всего здесь
         её роль была ключевой в любом воспоминании, 
         и она удерживала тех, кто играл в них, в почти нерушимой грёзе
@@ -2286,8 +2285,8 @@ ____END
         не знаю, чем именно является велзи, но ты имеешь дело явно не с обыкновенной пробудившейся мыслеформой
     
     council
-        perhaps it is one of the lost components?      возможно это один из потерянных components?
-        we know that the great organs of the cyst once acted like small worlds of their own      мы знаем, что великие органы цисты ранее действовали, как собственные миры
+        возможно, это один из потерянных components?
+        мы знаем, что великие органы цисты ранее действовали, как собственные миры
         if one were to melt and merge with ours, it could easily have powers beyond what any of us may conceive      если бы такой сплавился и слился с нашим, чтоточтото
         still, this is merely conjecture... keep us informed, dear interloper!      я устал уээ
         now, all that said--did you wish to speak with us?    
@@ -2327,20 +2326,20 @@ start
         that is just how it moved! scary!
     
     council
-        a concerning development... thank you for this news, dear fairy  // волнующее развитие... спасибо за эти вести, дорогая фея ??? я пошёл отсюда
-        you were wise not to strike it // было мудро с твоей стороны не нападать на него
-        the tyrant may or may not be aware that we still remain, we are not sure...       сложно понять, знает ли тиран, что мы всё ещё здесь...
-        but if they could trace an attack to us, they surely would send this beast      но если он посчитает нас виновными в атаке, то точно пришлёт того зверя
-        we have no doubts that they still see us as no more than a tumor      мы уверены, что он всё ещё видет нас сродни опухоли
-        though--why has this new weapon not found us, if it is as active as you say?      хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё не нашло?
+        тревожащее развитие... спасибо за эти вести, дорогая фея
+        было мудро с твоей стороны не нападать на него
+        сложно понять, знает ли тиран, что мы всё ещё здесь...
+        но если он посчитает нас виновными в атаке, то точно пришлёт того зверя
+        мы уверены, что он всё ещё видет нас сродни опухоли
+        хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё не нашло?
     
     fairy
         i am working very hard to keep your outer shell disguised!
         plus, with how close to the uncosm we stay, it surely cannot even see us!
     
     council
-        perhaps...      может и так...
-        or perhaps our dream of unity is not so distant?      а может наша грёза об единстве не так уж и далёка?
+        может и так...
+        а может наша грёза об единстве не так уж и далёка?
     
     sourceless
         the fairy shifts within the thoughtspace, and the change in balance brings attention to your presence.
@@ -2359,8 +2358,8 @@ start
             EXEC::env.jokzi.event.complete()
     
     council
-        what would we do without the fairy's watchful eyes?      что бы мы делали без внимательных? глаз феи?
-        dear interloper! did you wish to speak with us?      дорогой лазутчик! хотелось ли тебе с нами поговорить?
+        что бы мы делали без бдительных глаз феи?
+        дорогой лазутчик! хотелось ли тебе с нами поговорить?
     
     RESPONSES::self
         yes<+>CHANGE::council
@@ -2822,7 +2821,7 @@ start
         что мне с этого? думаешь, мне хочется донимать тебя?
         думать о тебе - последнее, чего я хочу
         я уж скорее решу грезить о романе с тираном
-        и к тому же - нравится тебе это или нет, // АА КАКОЙ ЗДЕСЬ ЗНАК ПОСТАВИТЬ я спать
+        и к тому же - нравится тебе это или нет,
         но ты не можешь избежать нашего прошлого, акизет - наш остов
         во всяком случае, ты могла повесить её в своей грёзе случайно
         теперь,
@@ -2876,6 +2875,7 @@ start
 END::env.jokzi.toggleSlow(false);specialCam(false)
 
 `)
+
 
 
 
