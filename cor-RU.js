@@ -942,7 +942,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     embassyCoherent: function () {
         if (env.localization.page['localocean']) env.localization.page['localocean'].entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`
-        cor_ru.entity_menu.readouts['the embassy']['desc'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
+        cor_ru.entity_menu['the embassy']['desc'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>"'выступление';'${processDefinitionsInString("велзи")} гогочет от восторга"')}</span>`},
 
     // tehehe we are devs now
