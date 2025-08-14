@@ -75,8 +75,7 @@ env.localization.page['hub'] = {dialogues: {},
         "WE WILL DEAL WITH IT IN TIME":"МЫ РАЗБЕРЁМСЯ С ЭТИМ КОГДА ПРИДЁТ ВРЕМЯ"
     }, 
     entityDescriptions: {
-        "funfriend":`::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`,
+        "funfriend": cor_ru.entity_menu['funfriend'].desc,
         "gate::hello": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ТОЧКА НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внешний слой'`
     }

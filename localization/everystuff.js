@@ -672,7 +672,7 @@ env.localization['strings'] = {
 
 
     // MENU
-
+    "ENTITY::'unprocessed'::RECOMMEND::'relocation';'[EXM]'": "СУЩНОСТЬ::'необработана':РЕКОМЕНДАЦИЯ::'перемещение';'[ИЗУЧ]'",
     
     "'irreversible action';'select log EP'": "'необратимое действие';'выбрать эпизод'",
     "'irreversible action';'not advised';'may cause mental distress'": "'необратимое действие';'не рекомендуется';'может вызвать душевные страдания'",
