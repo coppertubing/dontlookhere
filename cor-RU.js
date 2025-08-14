@@ -1,37 +1,56 @@
 /* 
     cor-RU - a full russian adaptation mod for corru.observer
-    by @dutokrisa and @bra1nslug_
-    based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
-    certain parts use code of vielk memory hole example by @adr_furret
 
-    EP0 playtested by @akizetism
+        by @dutokrisa and @bra1nslug_
+        based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
+        certain parts use code of vielk memory hole example by @adr_furret
 
-    all mentions are discord usernames
+        EP0 playtested by: @akizetism
+        EP0-1 playtested by: @spaniel_00
 
-     - adaptation up until the end of EP1 currently availible
+        (all mentions are discord usernames)
 
-    thank you for using our mod
+    adaptation up until the end of EP1 currently availible
 
-        ======
+
+    feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
+
+    you can reach out to @dutokrisa or @bra1nslug_ for any questions, requests, suggestions or bug reports
+
+
+    thank you for using our mod <3
+
+            ======
 
     cor-RU - мод на полную русскую адаптацию для corru.observer
-    от @dutokrisa и @bra1nslug_
-    на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
-    некоторые части используют код vielk memory hole example от @adr_furret
 
-    EP0 протестировано @akizetism
+        от @dutokrisa и @bra1nslug_
+        на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
+        некоторые части используют код vielk memory hole example от @adr_furret
 
-    все упоминания - никнеймы в дискорде
+        EP0 протестировано: @akizetism
+        EP0-1 протестировано: @spaniel_00
 
-     - в данный момент доступна полноценная адаптация до EP1
+        (все упоминания - никнеймы в дискорде)
 
-    спасибо за использование нашего мода
+    в данный момент доступна адаптация до конца EP1
+
+
+    не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
+
+    вы можете обращаться к @dutokrisa или @bra1nslug_ за любыми вопросами, просьбами, предложениями или баг репортами
+
+
+    спасибо за использование нашего мода <3
 */
 
 
 console.log("hello world! - @cor-RU")
 
 // temporary until corru.works fixes it
+
+
+/* dont think we need that one anymore. will test
 function generateDialogueObject(genString) {
 	let split = genString.split('\n')
 	let obj = {}
@@ -170,14 +189,14 @@ function generateDialogueObject(genString) {
 
                     try{
                         if(lastParent[1].text.includes('TEXEC::')) { //if it contains TEXEC, then that means it has a text exec - a function that returns a string to use when it appears
-                            /* since this returns the first thing you give it, it should be either a oneliner or a function that executes and returns something */
+                            
                             lastParent[1].texec = Function(`return ${text.replace('TEXEC::', '')}`)
                         }
                     } catch(e) {console.log(e); console.log(lastParent, line)}
                     
                     //if there's a surrounding block control, we add the showIf condition to the dialogue object
                     //same for showonce
-                    if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl; /*console.log(lastParent[1])*/ }
+                    if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl;  }
                     if(lastParent.blockShowOnceControl) { lastParent[1].showOnce = lastParent.blockShowOnceControl }
                     
                 } else { //reply text and location
@@ -201,7 +220,7 @@ function generateDialogueObject(genString) {
                     lastParent[2] = replyObj
                     
                     //can be affected by block controls
-                    if(lastParent.blockShowControl) { lastParent[2].showIf = lastParent.blockShowControl; /*console.log(lastParent[2])*/ }
+                    if(lastParent.blockShowControl) { lastParent[2].showIf = lastParent.blockShowControl;  }
                     if(lastParent.blockShowOnceControl) { lastParent[2].showOnce = lastParent.blockShowOnceControl }
                 }
             break
@@ -251,7 +270,7 @@ function generateDialogueObject(genString) {
 
     //otherwise, return the full obj
     else return obj
-}
+} */
 
 function processDefinitionsInString(input, {force = false} = {}) {
     if(!input) return input;
@@ -306,6 +325,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
     return finalInput
 }
 
+/* nor this one
 function processTranslation(container, force = false) {
     if(!env.localization.strings) return;
     let outerEl = container || content
@@ -330,7 +350,7 @@ function processTranslation(container, force = false) {
         if(el.childNodes.length == 0) {console.log("skipped for", el); return el.classList.add('tskip')}
         el.classList.add("tdone")
     })
-}
+}*/
 
 function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
     let readout = document.querySelector('#readout')
@@ -770,8 +790,9 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 processTranslation(document.querySelector(`#advance-notice`));
                 cor_ru.processWeirdTranslation("#content .target", "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
-                if (document.querySelector("#combat")) processTranslation(document.querySelector(`#combat`), "force")
-                    
+                if (document.querySelector("#combat")) processTranslation(document.querySelector(`#combat`), "force") // force because things change in combat quite a lot so it does need to ignore the tdone
+                if (document.querySelector("#combat")) cor_ru.processWeirdTranslation(".floater", "amt")
+
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{

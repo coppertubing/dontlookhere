@@ -395,7 +395,7 @@ cor_ru.combat['eatingEffectMessage'] = function (time = 0) { // --- may this ent
                 } else console.error("woah. couldn't redefine createRPGeffectMessage, sorry! reload the page and/or message @dutokrisa (discord) - @cor-RU")
                 console.error(error)
             } else {
-                console.warn("wtf this is not supposed to happen. help. you should probably message @dutokrisa (discord) about this - @cor-RU")
+                console.warn("wtf this is not supposed to happen. lol. you should probably message @dutokrisa (discord) about this - @cor-RU")
                 console.error(error)
             }
         }
@@ -6281,7 +6281,7 @@ cor_ru.combat['css'] = `
 .statuses .status-count::after { content: "Х)" !important }
 
 .target-nevermind::after {
-    content: "(ПКМ)"; !important
+    content: "(ПКМ)" !important;
 `
 
 /* === OBSERVER STUFF === */
