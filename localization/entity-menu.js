@@ -961,11 +961,14 @@ cor_ru.entity_menu = {
 }
 
 cor_ru.getEntityMenuNames = function() {
-    let names = {}
+    let names = []
     for (let i = 0; i < Object.keys(cor_ru.entity_menu).length; i++) { 
-        Object.defineProperty(names, "ENTITY::'"+Object.keys(cor_ru.entity_menu)[i]+"'", {value:"СУЩНОСТЬ::'"+cor_ru.entity_menu[Object.keys(cor_ru.entity_menu)[i]].name+"'"})
+        names.push(["ENTITY::'"+Object.keys(cor_ru.entity_menu)[i]+"'", "СУЩНОСТЬ::'"+cor_ru.entity_menu[Object.keys(cor_ru.entity_menu)[i]].name+"'"])
     }
-    Object.assign(env.localization['strings'], names)
+    Object.fromEntries(names)
+    return Object.assign(env.localization['strings'], names)
 }
 
-cor_ru.getEntityMenuNames()
+cor_ru.getEntityMenuNames();
+
+getLocalizationForPage(true);
