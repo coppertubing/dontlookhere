@@ -46,7 +46,7 @@ env.uncode = { // --- taking the function and adding stuff so it redirects you t
             else if (value == "простите" || value == "прости") value = "sorry"
             else if (value == "шпиль") value = "spire"
             else if (value == "поверхность") value = "surface"
-            else if (value == "вейльк" ||  value == "вейльки") value = "veilk"
+            else if (value == "вейльк" ||  value == "вейльков") value = "veilk"
             else if (value == "юзку") value = "yuzku"
             else if (value == "зузукри") value = "zuzucri"
             else if (value == "зузукри-маски") value = "zuzucri-masks"
@@ -133,10 +133,7 @@ env.localization.page['sec'] = {dialogues: {},
     }
 }
 
-cor_ru.isEffigyPage = function () {
-    if (page.path == "/local/uncosm/effigy/") return true
-    else return false
-}
+env.localization.page['sry'] = {dialogues: {}}
 
 // -- DIALOGUES -- //
 env.localization.page["localuncosmwhere"].dialogues["wrong"] = generateDialogueObject(`
@@ -962,91 +959,6 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-env.localization.page["sec"].dialogues["velzie"] = generateDialogueObject(`
-start
-    sys
-        УВЕДОМЛЕНИЕ::'найдена связная сущность'
-            EXEC::env.sorry.velzie()
-
-    unknown
-        вот вы где
-        лазутчик
-        простите мой окольный путь...
-
-    RESPONSES::self
-        велзи<+>hello
-
-hello
-    self
-        здравствуй велзи
-        ты ответишь на мои вопросы?
-
-    moth
-        ох ты-ж чёрт
-        is it here? i can't see it  // --- как     там что-то есть? ничего не вижу
-
-    unknown
-        велзи? хихи...
-        time is short. interloper
-        i must choose my words carefully
-        and so. a confession:
-        my mind was limited by the sanity of this cyst when we first met...
-        in my hunger and rage.
-        and perhaps a grip too tight...
-        i feel that i have placed myself as your adversary
-        this is not my intention
-        in atonement: i have prepared this place for you
-        a hole in the uncosm
-        granting you sight into the past
-        concepts of significance will present themselves
-        take them here. and they will serve as destinations
-        it will answer the questions i cannot
-        continue guiding this cyst to health
-        we will speak again
-
-    self
-        why will you not just tell me what's happening?
-    
-    unknown
-        i wish it were that simple
-        goodbye interloper         
-    
-    sys
-        ATTENTION::'thoughtform modified';'resources removed'
-            EXEC::env.sorry.velbye()
-        NOTICE::'no data'
-    
-    sourceless
-        ...........................
-        ...........................
-    
-    moth
-        are you done talking to it?
-        i was expecting it to do that data overload thing, again...
-
-    sourceless
-        beyond your connection to the corrucyst, you hear a metal thunk.
-
-    moth
-        guess i didn't need the extinguisher
-        what did it say?
-    
-    self
-        velzie gave us a way to find memories in the uncosm
-        it doesn't want to be our enemy
-
-    moth
-        oh yeah? is that why it nearly exploded your brain that one time?
-        i mean
-        not that it would have, of course
-        but i don't trust it dude
-        either way, the more data we can get, the better, so...
-        let's not look a gift horse in the mouth, or whatever
-
-    RESPONSES::sys
-        вернуться<+>END
-            EXEC::moveTo("/local/depths/")
-`)
 env.localization.page["sec"].dialogues["spire"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
@@ -1649,7 +1561,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-// эффигия
+// effigy
 env.localization.page["sec"].dialogues.drinkquestions = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1769,22 +1681,111 @@ start
     
     moth
         подожди
-            SHOWIF::'EXEC::cor_ru.isEffigyPage()'
             SHOWONCE::
         почему оно перестало существовать просто потому что та эффигия ушла?
-            SHOWIF::'EXEC::cor_ru.isEffigyPage()'
             SHOWONCE::
         странно
-            SHOWIF::'EXEC::cor_ru.isEffigyPage()'
             SHOWONCE::
 
     RESPONSES::self
         вернуться<+>END
             EXEC::moveTo('/local/uncosm/where/')
 `)
+// sorry
+env.localization.page["sry"].dialogues["velzie"] = generateDialogueObject(`
+start
+    sys
+        УВЕДОМЛЕНИЕ::'найдена связная сущность'
+            EXEC::env.sorry.velzie()
 
+    unknown
+        вот вы где
+        лазутчик
+        простите мой окольный путь...
 
+    RESPONSES::self
+        велзи<+>hello
 
+hello
+    self
+        здравствуй велзи
+        ты ответишь на мои вопросы?
+
+    moth
+        ох ты-ж чёрт
+        is it here? i can't see it  // --- как     там что-то есть? ничего не вижу
+
+    unknown
+        велзи? хихи...
+        time is short. interloper
+        i must choose my words carefully
+        and so. a confession:
+        my mind was limited by the sanity of this cyst when we first met...
+        in my hunger and rage.
+        and perhaps a grip too tight...
+        i feel that i have placed myself as your adversary
+        this is not my intention
+        in atonement: i have prepared this place for you
+        a hole in the uncosm
+        granting you sight into the past
+        concepts of significance will present themselves
+        take them here. and they will serve as destinations
+        it will answer the questions i cannot
+        continue guiding this cyst to health
+        we will speak again
+
+    self
+        why will you not just tell me what's happening?
+    
+    unknown
+        i wish it were that simple
+        goodbye interloper         
+    
+    sys
+        ATTENTION::'thoughtform modified';'resources removed'
+            EXEC::env.sorry.velbye()
+        NOTICE::'no data'
+    
+    sourceless
+        ...........................
+        ...........................
+    
+    moth
+        are you done talking to it?
+        i was expecting it to do that data overload thing, again...
+
+    sourceless
+        beyond your connection to the corrucyst, you hear a metal thunk.
+
+    moth
+        guess i didn't need the extinguisher
+        what did it say?
+    
+    self
+        velzie gave us a way to find memories in the uncosm
+        it doesn't want to be our enemy
+
+    moth
+        oh yeah? is that why it nearly exploded your brain that one time?
+        i mean
+        not that it would have, of course
+        but i don't trust it dude
+        either way, the more data we can get, the better, so...
+        let's not look a gift horse in the mouth, or whatever
+
+    RESPONSES::sys
+        вернуться<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+env.localization.page["sry"].dialogues["dead"] = generateDialogueObject(`
+start
+    sys
+        ОШИБКА::'нет данных';'визуализация невозможна'
+
+    RESPONSES::self
+        вернуться<+>END
+            EXEC::moveTo('/local/uncosm/where/')
+`)
 
 
 
