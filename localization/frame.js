@@ -337,51 +337,51 @@ start
     bsteli::happy
         sorry! i cannot contain myself!     извини! я не могу сдержаться!
         their strands no longer bind me!     их цепи больше меня не сдерживают!
-        everything is so different now     всё так по-другому
+        everything is so different now     тут всё так по-другому
     
     bsteli
         thank you, interloper     спасибо, лазутчик
 
     bsteli::think
-        that strange thoughtform you found to help, BSTRD     та странная мыслеформа, которая помогла тебе вызволить меня
+        that strange thoughtform you found to help, BSTRD     СВЛЧЬ, та странная мыслеформа, что помогла тебе вызволить меня
         it is one of them--the wardens of this twisted dream     он один из них--стражей этой искажённой грёзы
         i know now, they are called "daemons"...     теперь я знаю, что они называются "демонами"...
-        creations of neither the tyrant, nor akizet--alien, and strange!     они созданы ни тираном, ни акизет--чуждые и странные!
+        creations of neither the tyrant, nor akizet--alien, and strange!     они не созданы ни тираном, ни акизет--чуждые и странные!
         usually they are incapable of reasoning with     обычно с ними невозможно договориться
         how you convinced it to help is a mystery to me!!     даже не знаю, как у тебя вышло убедить его помочь!!
     
     bsteli
-        but once you did, it altered me     но он изменил меня //???
+        but once you did, it altered me     но после этого он изменил меня //???
         a familiar feeling - it is always hard to tell exactly what has changed...     знакомое ощущение - всегда сложно разобрать, что именно поменялось...
         i know we shared some knowledge!     я знаю, что мы поделились знаниями!
-        from me, it sought 'material' for the memory it wanted to manifest!     от меня он искал "материал" для грёзы,  
-        my knowledge of obesk names and esoteric concepts for its strange game...     мо
-        i suppose you will see them soon!     
-        and with me, it shared its plans:     
-        BSTRD is forcing all of the daemons in a long path into a new dream     
-        at the end of this path is part of the wall we could escape through     
-        which, i know to be the part of the membrane of the thoughtspace, but...     
+        from me, it sought 'material' for the memory it wanted to manifest!     от меня он искал "материал" для вспоминания, которое хотел выстроить!
+        my knowledge of obesk names and esoteric concepts for its strange game...     мои знания об обесковых именах и концептах для его странной игры...
+        i suppose you will see them soon!     думаю, скоро ты их увидишь!
+        and with me, it shared its plans:     а со мной он поделился своими планами:
+        BSTRD is forcing all of the daemons in a long path into a new dream     СВЛЧЬ вынуждает всех демонов следовать длинному пути в новую грёзу
+        at the end of this path is part of the wall we could escape through     а в конце этого пути - часть стены, через которую мы смогли бы выбраться
+        which, i know to be the part of the membrane of the thoughtspace, but...    которую я знаю, как часть мембраны мыслепространства, но...
     
     bsteli::happy
-        BSTRD knows it as the 'firmament'! what a silly name!     
+        BSTRD knows it as the 'firmament'! what a silly name!     СВЛЧЬ называет её "небосводом"! какое глупое имя!
     
     bsteli
-        it is a wall to be picked away at     
-        and should it fall, for us to escape through     
+        it is a wall to be picked away at     это стена мяру мр
+        and should it fall, for us to escape through     после прошлого
     
     bsteli::happy
-        simple, right?!     
+        simple, right?!     звучит легко, не так ли?
 
     bsteli::bstrd
-        IT'S GONNA BE SO FUN!!!     
-        ahahaha!!     
+        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ТАК ВЕСЕЛО!!!
+        ahahaha!!     ахахаха!!
     
     bsteli
-        ah...     
-        yes, and you will have to be the one to lead the charge     
-        i cannot move far from my spot, not until the path is clear     
-        the maintenance daemons will quickly notice my absence if i am too far     
-        but BSTRD has prepared a strange vessel for you to pilot, and clear that path!     
+        ah...     ах...
+        yes, and you will have to be the one to lead the charge     да, и действовать придётся именно тебе
+        i cannot move far from my spot, not until the path is clear     пока путь не расчищен, я не могу далеко отходить отсюда /глупое
+        the maintenance daemons will quickly notice my absence if i am too far     если я окажусь слишком далеко, обслуживающие демоны быстро заметят моё отсутствие
+        but BSTRD has prepared a strange vessel for you to pilot, and clear that path!     но СВЛЧЬ приготовил для тебя странное судно, которым ты сможешь управлять, дабы расчистить путь!
 
     self
         cool
@@ -390,42 +390,42 @@ start
         i don't know how to fight
     
     bsteli::happy
-        oh, correct!
+        oh, correct!     о, да!
     
     bsteli
-        there are 'shells' floating all around the thoughtspace
-        remnants of thoughtforms that could not conform, for one reason or another...
+        there are 'shells' floating all around the thoughtspace     по всему мыслепространству плавают "shells"
+        remnants of thoughtforms that could not conform, for one reason or another...     останки мыслеформ, по той или иной причине не сумевших держаться в строю...
     
     bsteli::concern
-        'deallocated,' as BSTRD understands it
-        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome
-        far crueler than i thought the tyrant could conceive...
-        and a fate i have narrowly avoided for too long
+        'deallocated,' as BSTRD understands it     "освобождённых", как понимает это СВЛЧЬ
+        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для повторного использования--это жутко
+        far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я могла ожидать от тирана...
+        and a fate i have narrowly avoided for too long     судьба, которую я слишком уж долго едва избегала
     
     bsteli
-        but much of them still technically live, strange and hollow as they might be
-        BSTRD has collected three for you to utilize as fighters, and...
+        but much of them still technically live, strange and hollow as they might be     но многие из них всё ещё технически живы, какими бы странными и пустыми они не были
+        BSTRD has collected three for you to utilize as fighters, and...     СВЛЧЬ собрал трёх для твоего пользования, как бойцов, и...
 
     bsteli::uncanny
-        one, to be the recollection locus... which i am talking to right now
+        one, to be the recollection locus... which i am talking to right now     одну в качестве recollection locus... с которой я сейчас и разговариваю
 
     bsteli::concern
-        does it hurt, being like that?
+        does it hurt, being like that?     больно ли это?
     
     self
         feels weird but it's fine
         
     bsteli::happy
-        oh! good!!
+        oh! good!!     о! хорошо!!
 
     bsteli
-        i should also warn you, interloper
-        the dream the BSTRD has prepared for you is filled with... numbers...
+        i should also warn you, interloper     ещё я должна предупредить тебя, лазутчик
+        the dream the BSTRD has prepared for you is filled with... numbers...     грёза, приготовленная для тебя СВЛЧЬ(ю? Ю? _?), переполнена... числами...
         
     bsteli::concern
-        numbers, and percentages, and stipulations
-        from what i now know, i believe it is all in service of confusing the daemons
-        but... i also suspect it is also doing it to make it harder for you, too
+        numbers, and percentages, and stipulations     числами, и процентами, и stipulations
+        from what i now know, i believe it is all in service of confusing the daemons     насколько мне известно, это всё для того, чтобы запутать демонов
+        but... i also suspect it is also doing it to make it harder for you, too     но... я подозреваю, что также он пытается усложнить тебе задачу
 
     self
         yeah i know
@@ -433,29 +433,29 @@ start
         i don't think it even really knows or cares about what we're doing
 
     bsteli::concern
-        oh...!
+        oh...!     ох...!
     
     self
         all it wants is to make a fun game
     
     bsteli::concern
-        that's all...?
-        i thought it was benevolent, perhaps a new friend...
+        that's all...?     это всё...?
+        i thought it was benevolent, perhaps a new friend...     мне он казался доброжелательным, может даже новым другом...
     
     bsteli::happy
-        regardless!! when you are ready,
-        please proceed onto your vessel!
-        it is very cool!! BSTRD made it for us, i think!
-        pilot it, empower your shells, and defeat the "firmament"!!
+        regardless!! when you are ready,     в любом случае!! когда почувствуешь себя готово,
+        please proceed onto your vessel!     пожалуйста, пройди на судно!
+        it is very cool!! BSTRD made it for us, i think!     оно очень классное!! думаю, СВЛЧЬ сделал его для нас! //его для нас сделал свлчь?
+        pilot it, empower your shells, and defeat the "firmament"!!     управляй им, усиляй свои shells, и победи "небосвод"!!
     
     bsteli
-        but please know, from what i have seen,
-        this journey will be treacherous and difficult
-        even if you fail, do not lose spirit
-        we are within something called an 'iteration' - a daemon-controlled loop
-        should the vessel be destroyed, everything within will reset to before!
-        only, the firmament will remain damaged, because it is so big, apparently!
-        so you must simply try again!
+        but please know, from what i have seen,     но пожалуйста, знай, что, судя по увиденному мной, //ААА ЗАПЯТЫЕ
+        this journey will be treacherous and difficult     этот путь будет опасным и сложным
+        even if you fail, do not lose spirit     даже если проиграешь, не теряй надежд
+        we are within something called an 'iteration' - a daemon-controlled loop     мы находимся в кое-чём под названием "итерация" - петля под контролем демонов
+        should the vessel be destroyed, everything within will reset to before!     если судно уничтожат, всё в ней вернётся к изначальному состоянию!
+        only, the firmament will remain damaged, because it is so big, apparently!     только вот небосвод останется повреждённым - похоже, потому, что он настолько велик!
+        so you must simply try again!     так что тебе просто придётся попробовать вновь!
 
     RESPONSES::self
         question<+>CHANGE::++bsteli
@@ -2773,3 +2773,4 @@ sfer
             HIDEREAD::
 
 `)
+
