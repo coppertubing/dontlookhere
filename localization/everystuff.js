@@ -156,7 +156,7 @@ env.localization['definitions'] = {
 
 
     // religion
-    "велзи": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'бог'" },
+    "велзи": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'божество'" },
 
     "фея": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
     "феи": { "type": "ПРИМЕЧАНИЕ", "text": "'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
@@ -274,9 +274,9 @@ env.localization['definitions'] = {
 
 
     // terminology
-    "улыбнётся ему велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит бога своими выходками';'религиозный подтекст'` },
-    "улыбнётся ей велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит бога своими выходками';'религиозный подтекст'` },
-    "улыбнётся им велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит бога своими выходками';'религиозный подтекст'` },
+    "улыбнётся ему велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит божество своими выходками';'религиозный подтекст'` },
+    "улыбнётся ей велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит божество своими выходками';'религиозный подтекст'` },
+    "улыбнётся им велзи": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'субъект веселит божество своими выходками';'религиозный подтекст'` },
 
     "благой взор": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'да обернётся на нас благой взор велзи';'пожелания хорошей удачи'` },
 
@@ -776,86 +776,124 @@ env.localization['strings'] = {
     // what next, moth????????????? the fuck we doing??????????????
 
     // pre velziebreak
-    "it seems like the interview area is preserving memory stream progress, it isn't resetting completely. maybe run it through to its end and see if any neural paths open up in there": "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути",
+    "it seems like the interview area is preserving memory stream progress, it isn't resetting completely. maybe run it through to its end and see if any neural paths open up in there":
+    "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути",
 
-    "that ship area seemed pretty empty for the amount of data your spike pulled, check it again": "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё раз",
+    "that ship area seemed pretty empty for the amount of data your spike pulled, check it again":
+    "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё раз",
 
-    "i'm seeing a lot of data in the ocean area for what we saw, did you check everything there?": "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?",
+    "i'm seeing a lot of data in the ocean area for what we saw, did you check everything there?":
+    "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?",
 
-    "i'm seeing what could be another place in the orbit thoughtspace, try and track that down": "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать",
+    "i'm seeing what could be another place in the orbit thoughtspace, try and track that down":
+    "я вижу что-то выглядящее как другое место в космическом мыслепространстве, попробуй разыскать",
 
-    "think there's a pathway to another thoughtspace you missed, i see something in the non-spatial city area but i couldn't tell you exactly where. seems like it's moving, probably floating around somewhere": "думаю тут есть путь к другому мыслепространству, я вижу что-то в непространственной части города но не могу сказать точно где. похоже оно двигается, наверное просто плавает где-то",
+    "think there's a pathway to another thoughtspace you missed, i see something in the non-spatial city area but i couldn't tell you exactly where. seems like it's moving, probably floating around somewhere":
+    "думаю тут есть путь к другому мыслепространству, я вижу что-то в непространственной части города но не могу сказать точно где. похоже оно двигается, наверное просто плавает где-то",
 
-    "pretty sure there's more to the corrucyst in the city area, i'm seeing enough data volume to where it doesn't seem like we saw all of it": "наверняка что-нибудь ещё прячется в городской местности, я вижу достаточный объём данных чтобы подозревать что мы что-то пропустили",
+    "pretty sure there's more to the corrucyst in the city area, i'm seeing enough data volume to where it doesn't seem like we saw all of it":
+    "наверняка что-нибудь ещё прячется в городской местности, я вижу достаточный объём данных чтобы подозревать что мы что-то пропустили",
 
-    "what are you asking me for? you just connected, do your thing dude. don't forget, thoughtforms might extend past your field of perception - think of it like 'scrolling'": "о чём ты меня спрашиваешь? мы едва подключились, делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то \"прокручиваешь\"",
+    "what are you asking me for? you just connected, do your thing dude. don't forget, thoughtforms might extend past your field of perception - think of it like 'scrolling'":
+    "о чём ты меня спрашиваешь? мы едва подключились, делай свое дело чел. не забывай, мыслеформы могут выходить за пределы твоего восприятия - думай об этом, словно ты что-то \"прокручиваешь\"",
 
     // post velziebreak
-    "now we just wait for our container-opening tools to arrive. you could take a break if you want to, i'll let you know when i've got the stuff": "теперь мы ждём когда прибудут наши инструменты-открывашки контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт",
+    "now we just wait for our container-opening tools to arrive. you could take a break if you want to, i'll let you know when i've got the stuff":
+    "теперь мы ждём когда прибудут наши инструменты-открывашки контейнеров. можешь сделать перерыв если хочешь, я дам знать когда всё придёт",
 
-    "it seems like we could use the stuff in the dendritic container to keep the cyst alive, but i have no idea how we could open it without destroying it. check with funfriend and see if it's got any ideas": "похоже мы могли бы воспользоваться тем, что внутри дендритного контейнера, чтобы сохранить цисту живой, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
+    "it seems like we could use the stuff in the dendritic container to keep the cyst alive, but i have no idea how we could open it without destroying it. check with funfriend and see if it's got any ideas":
+    "похоже мы могли бы воспользоваться тем, что внутри дендритного контейнера, чтобы сохранить цисту живой, но у меня нет ни малейшего понятия как его открыть. спроси развледруга, есть ли у него идеи",
 
-    "well, now we just kill time until my copper tubing order gets here. don't worry, I'll let you know as soon as it's in": "ну-п, теперь мы просто убиваем время до тех пока не придёт заказ на медь. не волнуйся, я дам знать как только его доставят",
+    "well, now we just kill time until my copper tubing order gets here. don't worry, I'll let you know as soon as it's in":
+    "ну-п, теперь мы просто убиваем время до тех пока не придёт заказ на медь. не волнуйся, я дам знать как только его доставят",
 
-    "so that container has 'processed metals'... damn, i was really hoping that'd be our lead. try talking to that funfriend thing in the hub to see if it has any ideas": "так значит в том контейнере \"обработанные металлы\"... блин, так хотелось чтобы это было нашей зацепкой. может спросить ту развледружную штуку в хабе об идеях?",
+    "so that container has 'processed metals'... damn, i was really hoping that'd be our lead. try talking to that funfriend thing in the hub to see if it has any ideas":
+    "так значит в том контейнере \"обработанные металлы\"... блин, так хотелось чтобы это было нашей зацепкой. может спросить ту развледружную штуку в хабе об идеях?",
 
-    "we need to figure out a way to keep this thing alive. maybe try talking to that funfriend thing in the hub to see if it has any ideas": "нам надо разобраться, как сохранить эту штуковину живой. думаю тебе стоит поговорить с той развледружной фигнюшкой, у неё может оказаться пара идеек",
+    "we need to figure out a way to keep this thing alive. maybe try talking to that funfriend thing in the hub to see if it has any ideas":
+    "нам надо разобраться, как сохранить эту штуковину в живых. думаю тебе стоит поговорить с той развледружной фигнюшкой, у неё может оказаться пара идеек",
 
-    "there's some really strange activity in that depths thoughtspace, like it's constantly being changed. your mindspike isn't alerting you to it because it's happening like a thousand times a second. look for anything at all in there": "тут чё-то реально странное с глубинами, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. порыскай там хоть что-нибудь",
+    "there's some really strange activity in that depths thoughtspace, like it's constantly being changed. your mindspike isn't alerting you to it because it's happening like a thousand times a second. look for anything at all in there":
+    "тут чё-то реально странное с глубинами, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. порыскай там хоть что-нибудь",
 
-    "i saw some activity when you told the vessel to 'dive', something is definitely changing in the ocean. try and find what it is": "тут подскочила активность когда судно серое нырнуло, что-то точно изменилось в океане. попробуй разузнать, что это",
+    "i saw some activity when you told the vessel to 'dive', something is definitely changing in the ocean. try and find what it is":
+    "тут подскочила активность когда судно серое нырнуло, что-то точно изменилось в океане. попробуй разузнать, что это",
 
-    "well there has to be a reason the dull vessel can move between space and the ocean. there's no way the rogue entity in here would just make a random change like that": "ну, должна ведь быть причина почему судно серое может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так",
+    "well there has to be a reason the dull vessel can move between space and the ocean. there's no way the rogue entity in here would just make a random change like that":
+    "ну, должна ведь быть причина почему судно серое может передвигаться между космосом и океаном. не могла же эта бесконтрольная сущность взять и сделать это просто так",
 
-    "seems like our friend fixed up the pilot cyst... and it offered to move the ship somewhere. why not give that a shot?": "кажись твоя улыбка починила пилотную цисту... и теперь она предлагает переместить судно серое куда-то. почему бы не попробовать?",
+    "seems like our friend fixed up the pilot cyst... and it offered to move the ship somewhere. why not give that a shot?":
+    "кажись та твоя улыбка починила пилотную цисту... и теперь она предлагает переместить судно серое куда-то. почему бы не попробовать?",
 
-    "check the pilot cyst on the ship, i remember there was some garbled data there before": "проверь что там с пилотной цистой на корабле, я помню там были какие-то искажённые данные",
+    "check the pilot cyst on the ship, i remember there was some garbled data there before":
+    "проверь что там с пилотной цистой на корабле, я помню там были какие-то искажённые данные",
 
-    "well your spike reported activity in the dull vessel thoughtform, why not check that out? our friend seems to have changed something there": "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила",
+    "well your spike reported activity in the dull vessel thoughtform, why not check that out? our friend seems to have changed something there":
+    "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила",
 
     // ep1
-    "if you're talking about this thoughtform, try interacting with akizet--you'll need to be zoomed out": "если ты спрашиваешь об этой мыслеформе, попробуй повзаимодействовать с акизет--для этого нужно отдалиться",
+    "if you're talking about this thoughtform, try interacting with akizet--you'll need to be zoomed out":
+    "если ты спрашиваешь об этой мыслеформе, попробуй повзаимодействовать с акизет--для этого нужно отдалиться",
 
-    "seems like we just have to wait for more repairs from funfriend. take a break i guess": "похоже что нам остаётся только ждать починок от развледруга. перерывчик?",
+    "seems like we just have to wait for more repairs from funfriend. take a break i guess":
+    "похоже что нам остаётся только ждать починок от развледруга. перерывчик?",
 
-    "definitely talk to funfriend about repairing communications, even if velzie wasn't threatening us it'd still be my first choice": "давай-ка поговорим с развледругом о починке связи, даже без угрозы велзи это было бы моей первой просьбой",
+    "definitely talk to funfriend about repairing communications, even if velzie wasn't threatening us it'd still be my first choice":
+    "давай-ка поговорим с развледругом о починке связи, даже без угрозы велзи это было бы моей первой просьбой",
 
-    "i'm reading that there's been some increase in data to the city street area... definitely check that out": "я тут вижу что количество данных в районе городской улицы прибавилось... обязательно загляни туда",
+    "i'm reading that there's been some increase in data to the city street area... definitely check that out":
+    "я тут вижу что количество данных в районе городской улицы прибавилось... обязательно загляни туда",
 
-    "there's still more to see at the embassy from what i can see on my end": "насколько я вижу, в посольстве ещё что-то есть",
+    "there's still more to see at the embassy from what i can see on my end":
+    "насколько я вижу, в посольстве ещё что-то есть",
 
-    "head to the embassy, funfriend said it fixed some of it up for us": "отправляйся в посольство, развледруг сказал что починил там что-то",
+    "head to the embassy, funfriend said it fixed some of it up for us":
+    "отправляйся в посольство, развледруг сказал что починил там что-то",
 
-    "let's check in with funfriend, see what it thinks of the job we did": "давай проведаем развледруга, узнаем что он думает",
+    "let's check in with funfriend, see what it thinks of the job we did":
+    "давай проведаем развледруга, узнаем что он думает",
 
-    "still gotta feed the cyst, up to you when you want to go ahead with it but i'd do it now": "надо бы цисту покормить, ты решай когда этим заняться, но как по мне - лучше сейчас",
+    "still gotta feed the cyst, up to you when you want to go ahead with it but i'd do it now":
+    "надо бы цисту покормить, ты решай когда этим заняться, но как по мне - лучше сейчас",
 
     // ep2
-    "nothing for now, just gotta wait for funfriend <span definition=\"NOTE::'advance log'\">to finish more of the memory</span>": "",
+    "nothing for now, just gotta wait for funfriend <span definition=\"NOTE::'advance log'\">to finish more of the memory</span>":
+    "",
 
-    "just keep working your way through the collapse memory, we've got more to see": "",
+    "just keep working your way through the collapse memory, we've got more to see":
+    "",
 
-    "looks like we're all set with the framing device, go check out the collapse memory again": "",
+    "looks like we're all set with the framing device, go check out the collapse memory again":
+    "",
 
-    "gotta talk to funfriend about installing my framing device": "",
+    "gotta talk to funfriend about installing my framing device":
+    "",
 
-    "let's go check out the embassy, funfriend said it fixed some stuff in there up": "",
+    "let's go check out the embassy, funfriend said it fixed some stuff in there up":
+    "",
 
-    "we gotta see what's new! talk to funfriend, it'll probably tell you what's up": "",
+    "we gotta see what's new! talk to funfriend, it'll probably tell you what's up":
+    "",
 
     // ep3
-    "we're on the wait again. can't do anything till funfriend fixes <span definition=\"NOTE::'advance log'\">more of the memory</span>": "",
+    "we're on the wait again. can't do anything till funfriend fixes <span definition=\"NOTE::'advance log'\">more of the memory</span>":
+    "",
 
-    "just keep looking around in that memory! it looks like the framing device added an <span definition=\"NOTE::'top right when not speaking'\">objectives list</span>, take a look at that": "",
+    "just keep looking around in that memory! it looks like the framing device added an <span definition=\"NOTE::'top right when not speaking'\">objectives list</span>, take a look at that":
+    "",
 
-    "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo": "",
+    "there's more to see in the embassy now, let's follow that thread until we can't anymore. it's the single most important event in obesk < - > earth history, imo":
+    "",
 
     // ep4
-    "just chill for now. we either need more memories repaired, or for those new pieces to come in. take a break if you want, <span definition=\"NOTE::'indicates end of current main content';'observe @corruworks for updates'\">i'll let you know</span>": "",
+    "just chill for now. we either need more memories repaired, or for those new pieces to come in. take a break if you want, <span definition=\"NOTE::'indicates end of current main content';'observe @corruworks for updates'\">i'll let you know</span>":
+    "",
 
-    "we need leverage, remember? something to make us invaluable to the work on this cyst, so they can't just replace us. there's gotta be something <em>outside</em> the embassy, somewhere": "",
+    "we need leverage, remember? something to make us invaluable to the work on this cyst, so they can't just replace us. there's gotta be something <em>outside</em> the embassy, somewhere":
+    "",
 
-    "well, we just need to see everything we can in that last embassy memory. anything else is secondary right now": "",
+    "well, we just need to see everything we can in that last embassy memory. anything else is secondary right now":
+    "",
 
 
 
@@ -1366,7 +1404,7 @@ who_velzie
         типа, почему-то слово "велзи" было отделено от своего значения
         не знаю что это за приколы...
         не сомневаюсь она виделась с тем странным лицом
-        может быть какой-то мыслеформе ударила бессвязность в голову и она возомнила себя богом
+        может быть какой-то мыслеформе ударила бессвязность в голову и она возомнила себя божеством
 
     RESPONSES::self
         странно<+>loop
@@ -1447,7 +1485,7 @@ what_eye
     moth
         это образование на газовом гиганте c которым обеския находится в приливном захвате
         по его видимости народ обесков определяет время
-        некоторые регионы обескии поклоняются или презирают его в качестве глаза бога
+        некоторые регионы обескии поклоняются или презирают его в качестве глаза божества
         учитывая насколько темно в их мире,
         и что в небе у них постоянно эта светящаяся штука которая выглядит как глаз,
         неудивительно, что они пришли к такому выводу
