@@ -965,7 +965,7 @@ cor_ru.getEntityMenuNames = function() {
     for (let i = 0; i < Object.keys(cor_ru.entity_menu).length; i++) { 
         names.push(["ENTITY::'"+Object.keys(cor_ru.entity_menu)[i]+"'", "СУЩНОСТЬ::'"+cor_ru.entity_menu[Object.keys(cor_ru.entity_menu)[i]].name+"'"])
     }
-    Object.fromEntries(names)
+    names = Object.fromEntries(names)
     return Object.assign(env.localization['strings'], names)
 }
 
