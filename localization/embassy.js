@@ -2543,7 +2543,7 @@ groundsmind
 
     RESPONSES::akizet
         циста<+>cyst
-        неважно мне пора<+>leave
+        неважно простимся я ухожу<+>leave
             FAKEEND::(уйти)
     
 cyst
@@ -7306,6 +7306,7 @@ ____END
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
 `)
+
 
 
 
