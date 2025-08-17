@@ -4764,7 +4764,7 @@ start
     karik
         woah!     воу!
         hey!     хэйэйпривет!
-        sorry, i thought you were one of the constructs     извини, ты показалась мне одной из constructs
+        sorry, i thought you were one of the constructs     извини, ты показалась мне одною из constructs
         is it safe?     тут безопасно?
 
     akizet
@@ -5591,7 +5591,7 @@ grab
         no thank you! i live down in golem maintenance // нет, благодарю! я живу ниже, в обслуживании големов
     
     karik
-        ahhaha, i hold all i need in my mind!     аххаха, всё необходимое я храню в моём разуме!
+        ahhaha, i hold all i need in my mind!     аххаха, всё необходимое я храню у себя в разуме!
         and... my room is very heavily locked,     и... моя комната очень тщательно заперта,
         because a friend kept breaking in...     потому что в неё постоянно вламывалась подруга...
     
@@ -5600,7 +5600,7 @@ grab
 
     karik
         no no, she is a vel qou!     нет-нет, она - вел куу!
-        if she did not play her jokes on me, she would die!     она умрёт, если перестанет надо мной подшучивать!
+        if she did not play her jokes on me, she would die!     она умрёт, если перестанет надо мною подшучивать!
         ...
         i hope today was one of her days with the bright cousins     я надеюсь, что сей миг она со светлыми близнецами
 
@@ -7306,6 +7306,7 @@ ____END
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
 `)
+
 
 
 
