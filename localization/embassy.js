@@ -3420,9 +3420,9 @@ start
         РЕКОМЕНДАЦИЯ::'сообщить об источнике памяти в местные органы власти'
 
     moth
-        чёрт, а я надеялся<блинскиймоль> что патч ФБКС с подобным поможет
+        чёрт, жаль что патч ФБКС с этим не помог
         неудивительно, честно говоря
-        не знаю, пробовал<блинскийлопер> ли ты когда-нибудь открывать боевые мыслеформы,
+        не знаю, был ли у тебя до этого опыт с боевыми мыслеформами,
         но после 52-го они серьёзно ограничили эту херню - и поэтому оно не работает
         разумеется, у меня есть план на этот случай
             SHOWIF::["mth++embassy-locked", false]
@@ -3437,11 +3437,11 @@ start
         полностью сбивает с толку встроенный ИИ
     
     RESPONSES::self
-        значит, ты сделал<блинскиймоль> игру?<+>game
+        значит, ты теперь делаешь игры?<+>game
 
 game
     self
-        значит, ты сделал<блинскиймоль> игру?
+        значит, ты теперь делаешь игры?
     
     moth
         нет, конечно нет
@@ -3480,7 +3480,7 @@ movie
         потому что иначе нам в это вспоминание не влезть
         возвращайся в хаб и я кину эту незаконную хуйню развледругу а потом удалю её
         у нас есть некоторая свобода действий, и проблем у нас не будет, но
-        не хотелось бы i wouldn't want to get pulled over with this on any of my drives // --- я устал помогите
+        было бы неловко если б это обнаружили на моих жёстких дисках
 
     RESPONSES::self
         за дело<+>END
@@ -4762,10 +4762,10 @@ start
         CLIMBING UP THE WALL BEFORE IT EVEN LOOKS AT US
 
     karik
-        woah!
-        hey!
-        sorry, i thought you were one of the constructs
-        is it safe?
+        woah!     воу!
+        hey!     хэйэйпривет!
+        sorry, i thought you were one of the constructs     извини, ты показалась мне одной из constructs
+        is it safe?     тут безопасно?
 
     akizet
         not yet
@@ -4773,8 +4773,8 @@ start
         what is your name?
 
     karik
-        ah, my shining parasites! 
-        i am karik! it is so unfortunate we meet like this!
+        ah, my shining parasites!      ах, мои блистающиеблестящиебистательные ываываыва ь ы паразиты!
+        i am karik! it is so unfortunate we meet like this!     я - карик! как же нам не повезло познакомиться при таких обстоятельстввх!
 
     tozik
         you should head down the path we came
@@ -4782,8 +4782,8 @@ start
             EXEC::env.embassy.vn({tozik: 'defocus'});
 
     karik
-        i will do just that
-        please let me know if i can help!
+        i will do just that     этим я и займусь
+        please let me know if i can help!     пожалуйста, сообщите, если я могу чем-либо помочь!
     
     sourceless
         AS NIMBLE AS A CELKI-SEED, IT CLIMBS DOWN THE WALL
@@ -5591,18 +5591,18 @@ grab
         no thank you! i live down in golem maintenance // нет, благодарю! я живу ниже, в обслуживании големов
     
     karik
-        ahhaha, i hold all i need in my mind!
-        and... my room is very heavily locked,
-        because a friend kept breaking in...
+        ahhaha, i hold all i need in my mind!     аххаха, всё необходимое я храню в моём разуме!
+        and... my room is very heavily locked,     и... моя комната очень тщательно заперта,
+        because a friend kept breaking in...     потому что в неё постоянно вламывалась подруга...
     
     akizet
         that does not really sound like a friend
 
     karik
-        no no, she is a vel qou!
-        if she did not play her jokes on me, she would die!
+        no no, she is a vel qou!     нет-нет, она - вел куу!
+        if she did not play her jokes on me, she would die!     она умрёт, если перестанет надо мной подшучивать!
         ...
-        i hope today was one of her days with the bright cousins
+        i hope today was one of her days with the bright cousins     я надеюсь, что сей миг она со светлыми близнецами
 
     RESPONSES::akizet
         me too<+>loop
@@ -5619,10 +5619,10 @@ ok
         i am very happy you are helping us! // я нескончаемо рада что вы нам помогаете!
 
     karik
-        if you happen to have any sfer left over after the repairs,
-        i could use some!
-        i swap between a few qou-bodies, so...
-        sometimes i forget to feed
+        if you happen to have any sfer left over after the repairs,     если у вас останется сфер после починок,
+        i could use some!     мне бы он пригодился!
+        i swap between a few qou-bodies, so...     я попеременно использую несколько куу-тел, так что..
+        sometimes i forget to feed     иногда я забываю покормить
 
     RESPONSES::akizet
         that can be arranged<+>loop
@@ -6066,7 +6066,7 @@ ____END
         i am not leaving until i save my kivii! // я не уйду пока не спасу свою кивии!
 
     karik
-        maybe we could get into the golems down there and help, too!
+        maybe we could get into the golems down there and help, too!     может мы сможем забраться в находящихся там големов и тоже помогать!
 
     miltza
         я... я не вижу других вариантов
@@ -7306,4 +7306,5 @@ ____END
         leave<+>END
             EXEC::specialCam("");pauseSwapCam(false)
 `)
+
 
