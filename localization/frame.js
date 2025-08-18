@@ -336,7 +336,7 @@ start
     
     bsteli::happy
         sorry! i cannot contain myself!     извини! я не могу сдержаться!
-        their strands no longer bind me!     их цепи больше меня не сдерживают!
+        their strands no longer bind me!     я больше не связана их нитями!
         everything is so different now     тут всё так по-другому
     
     bsteli
@@ -366,14 +366,14 @@ start
         BSTRD knows it as the 'firmament'! what a silly name!     СВЛЧЬ называет её "небосводом"! какое глупое имя!
     
     bsteli
-        it is a wall to be picked away at     это стена мяру мр
-        and should it fall, for us to escape through     после прошлого
+        it is a wall to be picked away at     это стена, которую нам нужно расковырять ???глупое слово
+        and should it fall, for us to escape through     и, если она падёт - через которую мы сбежим
     
     bsteli::happy
         simple, right?!     звучит легко, не так ли?
 
     bsteli::bstrd
-        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ТАК ВЕСЕЛО!!!
+        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ОЧЕНЬ ВЕСЕЛО!!!
         ahahaha!!     ахахаха!!
     
     bsteli
@@ -400,7 +400,7 @@ start
         'deallocated,' as BSTRD understands it     "освобождённых", как понимает это СВЛЧЬ
         in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для повторного использования--это жутко
         far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я могла ожидать от тирана...
-        and a fate i have narrowly avoided for too long     судьба, которую я слишком уж долго едва избегала
+        and a fate i have narrowly avoided for too long     судьба, которой я слишком уж долго едва избегала
     
     bsteli
         but much of them still technically live, strange and hollow as they might be     но многие из них всё ещё технически живы, какими бы странными и пустыми они не были
@@ -709,13 +709,13 @@ start
             EXEC::vnp({bg: false, hideStage: true, bsteli: "show"})
 
     bsteli
-        you see how it is, now
+        you see how it is, now     теперь ты понимаешь
     
     bsteli::happy
-        but do not worry! we knew this was going to be difficult!
+        but do not worry! we knew this was going to be difficult!     но не волнуйся! мы знали, что это будет сложно!
     
     bsteli
-        just try again!
+        just try again!     просто попробуй снова!
 
     RESPONSES::self
         ok<+>END
@@ -758,7 +758,7 @@ start
         u ready geli?
     
     bsteli
-        yes!
+        yes!     да!
 
     bsteli::bstrd
         LET'S GOO!!!
@@ -1039,13 +1039,13 @@ playagain
         CANNOT EXIST w/o goal
     
     bsteli::happy
-        do not worry interloper!!
-        this has all been very inspiring...
-        i am sure we can come up with an interesting dream back in jokzi ozo!
-        perhaps one just like it...?
+        do not worry interloper!!     не волнуйся, лазутчик!
+        this has all been very inspiring...     всё это крайне вдохновляет..
+        i am sure we can come up with an interesting dream back in jokzi ozo!     я уверена, что, вернувшись в джокзи озо, мы сможем сообразить интересную грёзу!
+        perhaps one just like it...?     может точно такую же...?
     
     bsteli
-        but we must escape first!
+        but we must escape first!     но сначала мы должны сбежать!
         
     RESPONSES::actual_site_error
         ignore and go to loop<+>END
@@ -1095,7 +1095,7 @@ start
         cause guns are cool
     
     bsteli::happy
-        yes!!
+        yes!!     да!!
     
     self
         ok well
@@ -1120,8 +1120,8 @@ start
         geli and BSTRD both stand to attention, clutching their rifles.
     
     bsteli::concern
-        is this ok?
-        you said it would be clear
+        is this ok?     всё в порядке?
+        you said it would be clear     ты говорил, что тут всё чисто
 
     bstrd
         ok ummm
@@ -1142,7 +1142,7 @@ start
         NOTICE::'survive long enough for successful encounter'
     
     bsteli::concern
-        we have to fight??
+        we have to fight??     мы должны сражаться??
         
     bstrd
         O___O
@@ -1168,10 +1168,10 @@ ____SHOWIF::"gameplay_off"
         ok i GUES
 
     bsteli::happy
-        oh! wow!
+        oh! wow!     ох! вау!
 
     bsteli::bstrd
-        MORE TIME 2 FOCUS ON SHOOTY
+        MORE TIME 2 FOCUS ON SHOOTY     хмм переводить или оставить мол "это свлчьподобный текст = не моё дело"
 ____END
 
     RESPONSES::self
@@ -1200,9 +1200,9 @@ ____SHOWONCE::
         what about BSTRD?
 
     bsteli::happy
-        ahahaha!!
-        i would not forget such an important role!
-        behold: BSTRD!
+        ahahaha!!     ахахаха!!
+        i would not forget such an important role!     я не могла забыть о настолько важной роли!
+        behold: BSTRD!     узри: СВЛЧЬ!
 
     bstigy
         hii interloper! :b
@@ -1211,12 +1211,12 @@ ____SHOWONCE::
         did you modify that effigy?
     
     bsteli
-        no no, this is just a role - an adopted appearance
-        always so concerned about change, interloper!
-        change is inevitable, you know...
+        no no, this is just a role - an adopted appearance     нет-нет, это лишь роль - заимствованная внешность
+        always so concerned about change, interloper!     лазутчик, перемены тебя всегда так беспокоят!
+        change is inevitable, you know...     перемены неизбежны, знаешь ли
     
     bsteli::happy
-        i would not be surprised if this little effigy decided to keep the look!
+        i would not be surprised if this little effigy decided to keep the look!     не удивлюсь, если эта маленькая эффигия подберёт сей облик    странное...
     
     bstigy
         I LOVE A GUN'S!
@@ -1231,7 +1231,7 @@ ____END
         ANALYSIS::'intention to destroy recollection locus'
     
     bsteli::bstrd
-        HERE WE GO >8)
+        HERE WE GO >8)     хмм
 
     bstigy
         yay! yAEy!! YAYAYAYA!!!!!
@@ -1246,7 +1246,7 @@ ____END
 
 ____SHOWIF::"gameplay_off"
     bsteli::think
-        oh, yes, and in accordance with your preferences...
+        oh, yes, and in accordance with your preferences...     о, да, и в соответствии с твоими предпочтениями...
 
     sys
         ATTENTION::"gameplay is presently disabled"
@@ -1278,7 +1278,7 @@ start
     
     bsteli::concern
         ...
-        i do not hear anything!!
+        i do not hear anything!!     я ничего не слышу!!
     
     bstrd
         you will
@@ -1305,10 +1305,10 @@ ____SHOWONCE::
         well at least we know what its gona do now :P
     
     bsteli::happy
-        that was fun!
+        that was fun!     было весело!
     
     bsteli::concern
-        is it going to let us try that again?
+        is it going to let us try that again?     оно позволит нам попробовать заново?
     
     bstrd
         yea
@@ -1339,11 +1339,11 @@ ____SHOWONCE::
         ISABEBL HELP I DROP MY GUN
     
     bsteli::happy
-        it is ok!! this is normal!
+        it is ok!! this is normal!     всё хорошо! это нормально!
 ____END
 
     bsteli::bstrd
-        RESETTT
+        RESETTT     хмм
 
     RESPONSES::sys
         restart<+>END
@@ -1368,9 +1368,9 @@ start
         u ready geli?
     
     bsteli::bstrd
-        LET'S GOO!!!
+        LET'S GOO!!!     хмм
             EXEC::vnp({bsteli: "show"})
-        AHAHAHA
+        AHAHAHA     АХАХАХА
 
     moth
         wait, this is the exact same output as before
@@ -1385,7 +1385,7 @@ start
         '_'??
     
     bsteli::concern
-        before? have we done this already?
+        before? have we done this already?     before? разве мы уже это делали?
     
     sourceless
         ...
@@ -1398,7 +1398,7 @@ start
         NAAAHH jus fuckine with u
     
     bsteli::bstrd
-        LOL
+        LOL     ЛОЛ
     
     moth
         wow... cmon
@@ -1431,18 +1431,18 @@ start
         BYE JELY
     
     bsteli::happy
-        bye!! thank you!
+        bye!! thank you!     пока(свлчь человеческая штука ему можно "пока"; джели заимствует ей можно "пока")!! спасибо!
     
     bsteli::think
-        actually...
-        if you simply leave with us for jokzi ozo, you do not need to fight them
-        right?
+        actually...     хотя...
+        if you simply leave with us for jokzi ozo, you do not need to fight them     если ты последуешь за нами, в джокзи озо, то тебе не придётся с ними драться
+        right?     да ведь?
     
     bstrd
         ya but its kinda sick
     
     bsteli::uncanny
-        oh...
+        oh...     ох...
     
     bstrd
         + i cant leave i got biz
@@ -1503,7 +1503,7 @@ leave
         OK geli, let's go
 
     bsteli
-        interloper, come!
+        interloper, come!     лазутчик, идём!
     
     sourceless
         geli glides along the vessel's floor, beginning to pass through the gap.
@@ -1555,8 +1555,8 @@ start
         behind the vessel, you sense a wealth of daemons on approach.
 
     bsteli::bstrd
-        OK YEAAA HELL YEAAA
-        WOOOO!!!
+        OK YEAAA HELL YEAAA     хмм
+        WOOOO!!!     хмм
 
     bstigy
         we did it!! WE DIDD IT!!
@@ -1567,14 +1567,14 @@ start
         they don't appear to have any concept of ammunition.
 
     bsteli::bstrd
-        no its ">%^)"
+        no its ">%^)"     нет надо ">%^)"
 
     bstigy
         >o}
     
     bsteli
-        interloper--well done!!
-        come, let us return!
+        interloper--well done!!     лазутчик--молодчина!!
+        come, let us return!     идём, вернёмся же!
 
     RESPONSES::sys
         restart<+>END
@@ -1752,11 +1752,11 @@ ____SHOWIF::["stageroom", "vessel"]
 ____END
 
     bsteli
-        interloper!
+        interloper!     лазутчик!
             EXEC::env.jokzi ? env.jokzi.toggleSlow(true) : false
     
     bsteli::happy
-        hello!!
+        hello!!     привет!!
 
     self
         hello geli
@@ -1768,8 +1768,8 @@ stop
         i'd like to stop this now
     
     bsteli
-        oh! all right!
-        here, i will return you...
+        oh! all right!     о! хорошо!
+        here, i will return you...     вот, я верну тебя...
 
     RESPONSES::self
         thanks<+>END
@@ -1780,12 +1780,12 @@ preozo
         what do you remember about jokzi ozo?
     
     bsteli
-        little i can share, interloper
-        a place of dreams, a great island of kind light adrift in a dark ocean
-        only glimpses are with me now - my memory is largely trapped there, away from myself
+        little i can share, interloper     немногое из того, чем можно поделиться, лазутчик
+        a place of dreams, a great island of kind light adrift in a dark ocean     место, полное грёз, великий остров доброго света на волнах тёмного океана
+        only glimpses are with me now - my memory is largely trapped there, away from myself     со мной остались лишь проблески - большинство моей памяти ныне вне меня, заперто там
     
     bsteli::happy
-        but it is only a matter of time before i have it again!
+        but it is only a matter of time before i have it again!     но моё воссоединение с ней - лишь вопрос времени!
     
     RESPONSES::self
         right<+>loop
@@ -1798,27 +1798,27 @@ humors
             SHOWIF::["stageroom", "underlobby"]
 
     bsteli::happy
-        ah! well!!
+        ah! well!!     ах! ну!!
     
     bsteli
-        in reality, beyond our little world,
-        they are something akizet and her people once believed
-        that each obesk is at first a blank cavestone, an actor without direction
-        imbued with intention and spirit by velzie, to best perform their role
-        these intentions are the humors!
-        fundamental spiritual elements, which combine to create an obesk and their fate
-        does this not sound familiar?!
+        in reality, beyond our little world,     в реальности, вне нашего крошечного мира,
+        they are something akizet and her people once believed     они - нечто, во что однажды верила акизет и её народ
+        that each obesk is at first a blank cavestone, an actor without direction     в этой вере каждый обеск изначально пустой пещерный камень, актёр без сценария(направления?? пути)
+        imbued with intention and spirit by velzie, to best perform their role     с помощью велзи пропитанный намерением и spirit, чтобы лучше отыгрывать свою роль
+        these intentions are the humors!     эти намерения и есть юморы!
+        fundamental spiritual elements, which combine to create an obesk and their fate     фундаментальные духовные элементы, сливающиеся, чтобы создать обеска и его судьбу
+        does this not sound familiar?!     не звучит ли знакомо?!
     
     bsteli::think
-        it is an old belief, one that akizet may have consciously shed,
-        as i do not think it ever came up within the collapse!
-        but if they exist in my memory regardless, they must have been a formative belief for akizet!
+        it is an old belief, one that akizet may have consciously shed,     это старое убеждение, вполне возможно, что сознательно акизет избавилась от него:
+        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о нём во время обвала!   знаки препинания :3
+        but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!
     
     bsteli
-        anything that is core to her understanding of reality is within all of us, too!!
+        anything that is core to her understanding of reality is within all of us, too!!     ключевые элементы её понимания реальности находятся и во всех из нас!!
     
     bsteli::happy
-        i do hope the context has made it clearer for you!
+        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст разъяснил что-то для тебя!
 
     RESPONSES::self
         i see<+>loop
@@ -1829,24 +1829,24 @@ impulses
         what are impulses?
 
     bsteli::concern
-        ah...
+        ah...     ах...
 
     bsteli
-        i believe BSTRD made that up!
-        another method to subvert and deal with the daemons!
+        i believe BSTRD made that up!     думаю, это выдумка СВЛЧЬ(И и _)!
+        another method to subvert and deal with the daemons!     ещё один способ свергать и разбираться с демонами!
 
     bsteli::think
-        from the information it shared with me,
-        the daemons are not very good at their own game, beyond a simple level...
-        for even the game itself is meant as a thin illusion over a dream
+        from the information it shared with me,     судя по данной мне им информации,
+        the daemons are not very good at their own game, beyond a simple level...     демоны не особо хорошо понимают собственную игру - не дальше основ...
+        for even the game itself is meant as a thin illusion over a dream     так как сама игра должна быть тонкой иллюзией поверх грёзы
 
     bsteli::happy
-        and so, by introducing these winding systems, it works to confuse them!
+        and so, by introducing these winding systems, it works to confuse them!     так что введение этих извилистых систем путает их!
 
     bsteli
-        but of course, these things cannot exist without reason...
-        so, within the dream BSTRD created, impulses are imprinted onto shells
-        but i do not think it is permanent--for it is only a dream!
+        but of course, these things cannot exist without reason...     но, конечно, такие вещи не могут существовать без причины...
+        so, within the dream BSTRD created, impulses are imprinted onto shells     так что в грёзе, созданной СВЛЧЬ(Ю ю _), импульсы запечатляются на shells
+        but i do not think it is permanent--for it is only a dream!     но не думаю, что это навсегда--это лишь грёза!
 
     RESPONSES::self
         i see<+>loop
@@ -1857,18 +1857,18 @@ replay
         want to dream of the escape again?
     
     bsteli::bstrd
-        YES!!
-        just go up 2 the wheel!!
+        YES!!     ДА!!
+        just go up 2 the wheel!!     хмм
             EXEC::content.querySelectorAll(".e3a2loop").forEach(el=>el.classList.add('ready'))
     
     bsteli::happy
-        i will arrange for space within the dream!
-        i still carry the BSTRD's knowledge of the rules, so i will enforce them from outside!!
+        i will arrange for space within the dream!     я подготовлю место внутри грёзы!
+        i still carry the BSTRD's knowledge of the rules, so i will enforce them from outside!!     я всё ещё содержу знание СВЛЧЬ(И и _) о правилах, так что буду осуществлять их снаружи!!
 
     bsteli
-        additionally, if you would like to change some things about it...
-        i have altered the terminal nearby to have some options for you!
-        you can only modify it out here, so take a look before we begin!
+        additionally, if you would like to change some things about it...     а ещё, если тебе хочется что-то в ней изменить...
+        i have altered the terminal nearby to have some options for you!     я сделала так, чтобы в терминале рядом были для тебя варианты!
+        you can only modify it out here, so take a look before we begin!     ты можешь модифицировать её только снаружи, так что взгляни перед началом!
     
     RESPONSES::self
         ok<+>loop
@@ -2773,4 +2773,5 @@ sfer
             HIDEREAD::
 
 `)
+
 
