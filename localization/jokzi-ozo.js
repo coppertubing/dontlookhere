@@ -121,7 +121,7 @@ RESPOBJ::
         cavik?<+>cavik
             SHOWIF::["secavik", "beaconed"]
 
-        back<+>loop
+        назад<+>loop
             FAKEEND::(назад)
 `)
 
@@ -136,7 +136,7 @@ RESPOBJ::
         geli's vessel?<+>vessel
             SHOWIF::"e3a2__escapewin"
 
-        back<+>loop
+        назад<+>loop
             FAKEEND::(назад)
 `)
 
@@ -157,7 +157,7 @@ RESPOBJ::
         dreams?<+>dreams
         dark area<+>dark
             SHOWIF::"ozo_enterdark"
-        back<+>loop
+        назад<+>loop
             FAKEEND::(назад)
 `)
 
@@ -175,7 +175,7 @@ RESPOBJ::
         akizet?<+>akizet
         dull plane?<+>dull
             SHOWIF::"ep4__entrancefinal"
-        back<+>loop
+        назад<+>loop
             FAKEEND::(назад)
 `)
 
@@ -184,7 +184,7 @@ RESPOBJ::
     RESPONSES::council
         real name?<+>iname
         purpose?<+>ipurpose
-        back<+>loop
+        назад<+>loop
             FAKEEND::(назад)
 `)
 
@@ -242,7 +242,7 @@ dance
         пусть же музыка... начнётся!!
     
     RESPONSES::self
-        ok<+>END
+        окей<+>END
             EXEC::setTimeout(()=>env.jokzi.dance(true), 400);env.jokzi.councilToggle()
 
 stopdance
@@ -286,10 +286,10 @@ task
         чел может не надо просто
     
     sys
-        ВЫПОЛНЯЕТСЯ::'поглощение потока'      
+        ВЫПОЛНЯЕТСЯ::'поглощение потока'  
             EXEC::vfx({type:'beacon', state: true});ratween(env.bgm, 0.2, 400);setTimeout(()=>play("unitymask", 0.9, 1, true), 100)
             WAIT::2000
-        ВНИМАНИЕ::'попытка реформации мысли'   
+        ВНИМАНИЕ::'попытка реформации мысли'
             EXEC::ratween(env.bgm, 1, 400)
         АНАЛИЗ::'инструкция интерфейса';'построение...'    
         АНАЛИЗ::'доступно новое меню';'маски'      
@@ -353,7 +353,7 @@ flower
         она очень плохо пережила эпоху голода--ей мало нравились наши пиры...
         фее приходилось создавать такие забавные иллюзии, чтобы они приходились ей по вкусу!
         в любом случае! мы знаем, что она родом из воспоминания о тепле среди холодного металла!
-        надеемся, что это поможет, лазутчик     
+        надеемся, что это поможет, лазутчик
 
     RESPONSES::self
         thanks<+>loop
@@ -437,7 +437,7 @@ fairy
         она любила принимать пугающие облики и была сосредоточена на пустоте-на том, где проходило большинство её пиров
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 third
@@ -458,7 +458,7 @@ third
         где-нибудь кто-нибудь да найдётся
         
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 geli
@@ -502,7 +502,7 @@ ____SHOWIF::["localorbit__fairy_beacon", false]
 ____END
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 gelifree
@@ -543,7 +543,7 @@ stowaway
         we are watching it carefully
 
     RESPONSES::self
-        i see<+>loop
+        понятно<+>loop
             FAKEEND::(назад)
 
 cavik
@@ -585,7 +585,7 @@ dancing
         давай же! танцуй с нами! танцуй с нами!!
     
     RESPONSES::self
-        ok<+>ploop
+        окей<+>ploop
             FAKEEND::(назад)
 
 we
@@ -607,7 +607,7 @@ we
         и все мы преодолели их! каждый из нас!
     
     RESPONSES::self
-        i see<+>ploop
+        понятно<+>ploop
             FAKEEND::(назад)
 
 ozo
@@ -629,7 +629,7 @@ ozo
         но... сей θмиг он гораздо меньше и тише
     
     RESPONSES::self
-        i see<+>ploop      понятно
+        понятно<+>ploop
             FAKEEND::(назад)
 
 history
@@ -650,7 +650,7 @@ history
         нет-нет--мы назовём его, когда он закончится!
         
     RESPONSES::self
-        ok<+>ploop
+        окей<+>ploop
             FAKEEND::(назад)
 
 akicoat
@@ -665,7 +665,7 @@ akicoat
         но это крутой замысел... было бы неуважтельно НЕ поглотить его!
     
     RESPONSES::self
-        ok<+>ploop
+        окей<+>ploop
             FAKEEND::(назад)
     
 time
@@ -828,7 +828,7 @@ ____SHOWIF::'recosm__enemy-ep1seen'
 ____END
     
     RESPONSES::self
-        i see<+>cloop
+        понятно<+>cloop
             FAKEEND::(назад)
 
 god
@@ -846,7 +846,7 @@ god
         ты должен пригласить его к нам на визит!
     
     RESPONSES::self
-        ok<+>cloop
+        окей<+>cloop
             FAKEEND::(назад)
 
 godlike
@@ -967,7 +967,7 @@ akizet
             SHOWIF::["PAGE!!depressed", false]        
     
     RESPONSES::self
-        ok<+>cloop      хорошо
+        окей<+>cloop      хорошо
             FAKEEND::(назад)
 
 
@@ -998,7 +998,7 @@ ____END
         мы оставим этот вопрос, дорогой друг
     
     RESPONSES::self
-        ok<+>iloop
+        окей<+>iloop
             FAKEEND::(назад)
 
 ipurpose
@@ -1036,7 +1036,7 @@ ____SHOWIF::["PAGE!!jig", false]
         простое любопытство, но... мы надеемся, придёт время - и мы станцуем вместе!
     
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 ____SHOWIF::["PAGE!!jig", true]    
@@ -1201,7 +1201,7 @@ RESPOBJ::
             SHOWIF::"e3a2__escapewin"
         безбилетник?<+>stowaway
             SHOWIF::"e3a2__escapewin"
-        история?<+>history
+        прошлое?<+>history
         эффигии?<+>effigy
         назад<+>loop
             FAKEEND::(назад)
@@ -1293,7 +1293,7 @@ ____SHOWIF::['PAGE!!flowers', 'done']
 ____END
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 lady
@@ -1335,7 +1335,7 @@ stowawaydance
         как бы то ни было, если это делает моих акизет счастливыми, счастлива и я
 
     RESPONSES::self
-        i see<+>loop
+        понятно<+>loop
             FAKEEND::(назад)
 
 yloop
@@ -1392,7 +1392,7 @@ home
         я должна оберегать их
         
     RESPONSES::self
-        i see<+>yloop
+        понятно<+>yloop
             FAKEEND::(назад)
 
 cloop
@@ -1413,7 +1413,7 @@ memories
         маска, которую я готовлю, хорошо тебе сослужит
 
     RESPONSES::self
-        ok<+>cloop
+        окей<+>cloop
             FAKEEND::(назад)
 
 akizet
@@ -1472,7 +1472,7 @@ isabel
         но я посмотрю, что осталось
 
     RESPONSES::self
-        ok<+>cloop
+        окей<+>cloop
             FAKEEND::(назад)
 
 funfriend
@@ -1495,7 +1495,7 @@ funfriend
         особенно после всего того времени, что он провёл с нами
     
     RESPONSES::self
-        i see<+>cloop
+        понятно<+>cloop
             FAKEEND::(назад)
 
 relationship
@@ -1511,7 +1511,7 @@ relationship
         что уж говорить о произошедшем с акизет...
 
     RESPONSES::self
-        i see<+>cloop
+        понятно<+>cloop
             FAKEEND::(назад)
 
 oloop
@@ -1537,7 +1537,7 @@ council
         это мой долг
                 
     RESPONSES::self
-        i see<+>oloop
+        понятно<+>oloop
             FAKEEND::(назад)
 
 fairy
@@ -1553,7 +1553,7 @@ fairy
         мне просто не оставили выбора
 
     RESPONSES::self
-        i see<+>oloop
+        понятно<+>oloop
             FAKEEND::(назад)
 
 lostone
@@ -1588,7 +1588,7 @@ history
         like the history of this place
 
     isabel
-        ты имеешь в виду эпоху осознанности
+        ты имеешь в виду эпохи осознанности
         было массовое пробуждение, а затем...
         затем наступили эпохи голода, безумия,
         тьмы...
@@ -1632,7 +1632,7 @@ effigy
         теперь всё, что они знают - наши совместные грёзы
 
     RESPONSES::self
-        ok<+>oloop
+        окей<+>oloop
             FAKEEND::(назад)
 
 
@@ -1651,7 +1651,7 @@ gelifree
         they worry me...
 
     RESPONSES::self
-        ok<+>oloop
+        окей<+>oloop
             FAKEEND::(назад)
 
 stowaway
@@ -1670,7 +1670,7 @@ stowaway
         so i will simply keep my distance
 
     RESPONSES::self
-        ok<+>oloop
+        окей<+>oloop
             FAKEEND::(назад)
 
 END::env.jokzi.toggleSlow(false)
@@ -1681,51 +1681,51 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues["fairy_intro"] = generateDialogueObject(`
 start
     fairy
-        interloper! interloper!!
+        лазутчик! лазутчик!!
             EXEC::env.jokzi.toggleSlow(true)
-        just in time! come, come!
-        dance with me!!
-        hey, the council already got you set up, huuh?
-        how does it feel? to wield madness like we do!
-        ahaha! here!! have another!!!
-        you will come to know so much!
+        как раз вовремя! давай, давай!
+        потанцуем!!
+        эй, the council already got you set up, а? // --- мммммммммммммммммммммммм................
+        каково это? орудовать безумием подобно нам!
+        ахаха! вот!! держи ещё!!!
+        ты столькое узнаешь!
 
     sys
-        ATTENTION::'thought stream inbound';'accept?'
+        ВНИМАНИЕ::'входящий мысленный поток';'принять?'
 
     moth
-        from this thing?
-        i don't know, maybe skip this one
+        от этой штуки?
+        не знаю, может не в этот раз
     
     self
-        accepted
+        принято
     
     moth
-        dude
+        чел
     
     sys
-        EXECUTING::'stream consumption'
+        ВЫПОЛНЯЕТСЯ::'поглощение потока'
             EXEC::vfx({type:'beacon', state: true});ratween(env.bgm, 0.2, 400);setTimeout(()=>play("hungermask", 0.9, 1, true), 100)
             WAIT::2000
-        ATTENTION::'attempting thought reformation'
+        ВНИМАНИЕ::'попытка реформации мысли'
             EXEC::ratween(env.bgm, 1, 400)
-        NOTICE::'mask added';'hunger'
+        УВЕДОМЛЕНИЕ::'добавлена маска';'голод'
     
     fairy
-        kill and eat! that was my life in the age of hunger!
+        убивай и ешь! вот чем я жила в эпоху голода!
             EXEC::vfx({type:'beacon', state: false});
-        and i was so hungry, never-ending!!
-        hehe! do not worry, i am better now...
-        but i have never forgotten--and neither will you!
-        wield my hunger! wear it with pride!
-        it will overwhelm the thoughtspaces you find yourself in
-        maybe something fun will happen??
+        а какой голодной я была, без конца!!
+        хихи! не волнуйся, нынче мне лучше...
+        но я никогда не забуду--и ты тоже!
+        завладей моим голодом! носи его с гордостью!
+        в каком мыслепространстве ни очутись, он пересилит любое
+        может что-нибудь произойдёт??
     
     RESPONSES::self
-        i have some questions<+>CHANGE::fairy
+        у меня есть вопросы<+>CHANGE::fairy
             EXEC::change("PAGE!!fairyswap", true)
             HIDEREAD::
-        thanks<+>END
+        спасибо<+>END
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -1733,51 +1733,51 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues.fairyResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        you<+>yloop
-        jokzi ozo<+>oloop
-        memories and the cyst<+>cloop
-        bye<+>END
+        ты<+>yloop
+        джокзи озо<+>oloop
+        воспоминания и циста<+>cloop
+        пока<+>END
 `)
 
 env.localization.page['ozo'].dialogues.fairyYResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        name?<+>name
-        appearance?<+>appearance
-        home?<+>home
-        mask?<+>mask
-        back<+>loop
-            FAKEEND::(back)
+        имя?<+>name
+        внешность?<+>appearance
+        дом?<+>home
+        маска?<+>mask
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.fairyCResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        funfriend?<+>funfriend
-        akizet?<+>akizet
-        dull plane?<+>dull
+        развледруг?<+>funfriend
+        акизет?<+>akizet
+        среда серое?<+>dull
             SHOWIF::"ep4__entrancefinal"
-        back<+>loop
-            FAKEEND::(back)
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues.fairyOResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        council?<+>council
-        isabel?<+>isabel
+        совет?<+>council
+        изабель?<+>isabel
             SHOWIF::"citystreet__flower_beacon"
         lost one?<+>lostone
             SHOWIF::["geli_beacon", false]
-        geli?<+>geli
+        джели?<+>geli
             SHOWIF::[["geli_beacon", true], ["e3a2__escapewin", false]]
-        geli?<+>gelifree
+        джели?<+>gelifree
             SHOWIF::"e3a2__escapewin"
-        stowaway?<+>stowaway
+        безбилетник?<+>stowaway
             SHOWIF::"e3a2__escapewin"
-        history?<+>history
-        back<+>loop
-            FAKEEND::(back)
+        прошлое?<+>history
+        назад<+>loop
+            FAKEEND::(назад)
 `)
 
 env.localization.page['ozo'].dialogues["fairy"] = generateDialogueObject(`
@@ -1787,19 +1787,19 @@ loop
 start
 ____SHOWIF::'PAGE!!isaswap'
     self
-        i have some questions
+        у меня есть вопросы
             EXEC::env.jokzi.toggleSlow(true)
     
     fairy
-        ok!
-        ok!!
+        окей!
+        окей!!
 
 ____SHOWIF::['PAGE!!isaswap', false]
     fairy
-        interloper, interloper!
+        лазутчик, лазутчик!
             EXEC::env.jokzi.toggleSlow(true)
-        i am so bored! this place is so small now!
-        what do you want? want to do something??
+        мне так скучно! в этом месте теперь так тесно!
+        чего ты хочешь? хочешь чем-нибудь заняться??
 ____END
 
     RESPOBJ::fairyResp
@@ -1810,198 +1810,198 @@ yloop
 
 name
     self
-        what is your name?
+        как тебя зовут?
     
     fairy
-        ahahaha!! interloper!
-        you are so formal!
-        'what is your name'
-        i am the fairy! that is me!
-        who i am is what i am!
-        just like you!
+        ахахаха!! лазутчик!
+        что за формальности!
+        "как тебя зовут"
+        я - фея! это я!
+        кто я - это что я!
+        прямо как ты!
     
     RESPONSES::self
-        all right<+>yloop
-            FAKEEND::(back)
+        хорошо<+>yloop
+            FAKEEND::(назад)
 
 home
     self
-        why does your home look like this
+        почему у тебя тут всё так выглядит
     
     fairy
-        the infinite void, the endless veilk!
-        they combine together so nicely, right??
-        and so i drift with them atop the council's clouds!
-        there used to be more memories of veilk around here...
-        the tyrant! 
-        the stupid tyrant!! tore them away!!!
-        but do not worry!
-        i will tear them back!
+        необъятная пустота, нескончаемые вейльки!
+        они друг другу так идут, правда ведь??
+        и вот поэтому я плыву с ними по облакам совета!
+        раньше здесь было куда больше воспоминаний с вейльками...
+        тиран! 
+        дурацкий тиран!! вырвал их отсюда!!!
+        но ты не бойся!
+        я вырву их обратно!
 
     RESPONSES::self
-        ok<+>yloop
-            FAKEEND::(back)
+        хорошо<+>yloop
+            FAKEEND::(назад)
 
 appearance
     self
-        why do you look like that
-        what are you supposed to be
-        is that stone
+        почему ты так выглядишь
+        чем ты должна быть
+        это камень?
     
     fairy
-        i am a fairy! silly interloper!
-        do you not know what that means...?
-        the fairies, envoys of velzie, dance in its eye!
-        both wardens and devourers of all creation!
-        what about surface runners? do you know about them?
-        akizet was one...
-        so she carried me! a little charm, a gift from her sister!!
-        a ward against the fairies, carried on her trips across the surface...
-        in case they came to take her! 
-        she let all the tales and myths get so coiled up in her receptors
-        and it turns out she did not need me anyway
-        velzie had other plans!
-        ahahaha!!
+        я - фея! лазутчик, что за глупости!
+        ты разве не знаешь, что это значит?...?
+        феи, посланницы велзи, танцуют под божественным глазом!
+        и хранители, и пожиратели всего творения!
+        а наземнобежцы? про них ты знаешь?
+        акизет была одной из них...
+        и вот поэтому она меня с собою носила! маленькая побрякушка, подарок сестры!!
+        оберег от фей, носимый ею во время путешествий по поверхности...
+        на случай, если они за нею придут!
+        она так закручивала все эти сказки и мифы на своих рецепторах
+        а выяснилось, что я всё равно ей не понадобилась
+        у велзи были другие планы!
+        ахахаха!!
     
     RESPONSES::self
-        i guess so<+>yloop
-            FAKEEND::(back)
+        похоже так<+>yloop
+            FAKEEND::(назад)
 
 mask
     self
-        what is this mask you gave me
-        it's called hunger
+        что за маску ты мне дала
+        она называется голод
     
     fairy
-        interloper... did you not listen to me?
-        then i will be quick! simple!
-        enough for a tekeki to understand!
-        you wield my hunger!
-        shove it into thoughtspaces and make them grow restless!
-        they will dance for you!!
+        лазутчик... ты меня не слушаешь?
+        значит объясню быстро! и просто!
+        чтобы даже текеки было ясно!
+        воспользуйся моим голодом!
+        суй его в мыслепространства и тревожь их!
+        они запляшут перед тобою!!
     
     RESPONSES::self
-        ok<+>yloop
-            FAKEEND::(back)
+        окей<+>yloop
+            FAKEEND::(назад)
 
 cloop
     RESPOBJ::fairyCResp
 
 akizet
     self
-        what do you know about akizet?
+        что ты знаешь об акизет?
 
     fairy
-        stupid!
-        a surface runner who stumbled and stumbled and died
-        and continued stumbling through θdeath!
-        you have been looking at her memories, yes?
-        i looked at the embassy on my way here! what an idiot!!
-        she must have been stupid and got herself truly killed or something!
-        i do not know what it was exactly she did, and i do not care
-        because i am free now! forever!!
+        тупица!
+        наземнобежец, спотыкавшаяся, да спотыкавшаяся, да сдохшая
+        и продолжившая спотыкаться в θсмерти!
+        ты смотришь в её воспоминания, да?
+        я заглянула в посольство по пути сюда! что за идиотина!!
+        наверняка сглупила и впрямь о что-то там по-настоящему убилась!
+        не знаю, что конкретно она там натворила, да и не волнует это меня
+        потому что я теперь свободна! навсегда!!
     
     moth
-        wow. wtf
+        ого. втф
             SHOWONCE::
     
     self
-        i mean historical information
-        i'm trying to understand what happened to her
-        that's why i'm here
+        я имею в виду исторические сведения
+        я пытаюсь понять, что с ней случилось
+        именно поэтому я здесь
 
     fairy
-        oh! oh!!
-        right!
-        go ask the others, then
-        whatever memories i had of akizet's fate are gone now
+        о! о!!
+        точно!
+        тогда иди спрашивать других
+        какие бы у меня ни были воспоминания о судьбе акизет, они давно сгинули
     
     RESPONSES::self
-        ok thanks<+>cloop
-            FAKEEND::(back)
+        ок спс<+>cloop
+            FAKEEND::(назад)
 
 funfriend
     self
-        what do you know about funfriend
-        you were impersonating one of its proxies before
+        что ты знаешь о развледруге
+        ты притворялась одним из его прокси
 
     fairy
-        ahahaha! yeah!
-        funfriend, the tyrant!
-        it does its best, sure, but it has the same problem as the flower
-        clinging to fading memories that can never truly be fixed!
-        so stupid! such a waste of time!
-        interloper, interloper, you will laugh:
-        after all the thoughts i devoured, it did not even know where to put me!
-        it tore me from the ozo, then tossed me into the void
-        i came from another memory! a memory of home!
-        but the thoughtspaces beyond the contrivance...
-        they are so deeply damaged, it will be θeyes and θeyes before they will make sense again
-        so, the little tyrant thought,
-        yes, put the thingy from home near the contrivance! i will figure it out later!
-        as if i would simply sit there... stupid!!
-        i will make it pay
+        ахахаха! ага!
+        развледруг, наш тиран!
+        он старается изо всех сил, конечно, но проблема у него такая же, как у цветка
+        цепляние за угасающие воспоминания, которым не суждено быть исправленными!
+        такой дурак! ну что за трата времени!
+        лазутчик, лазутчик, ты засмеёшься:
+        после всех тех мыслей, что я сожрала, он даже не знал, куда меня деть!
+        вырвал меня из озо, а затем швырнул в пустоту
+        родом я из другого воспоминания! воспоминания о родине!
+        но мыслепространства по ту сторону открытия...
+        они настолько повреждены, что потребуются θглаза и θглаза, прежде чем они снова обретут смысл
+        и вот, наш маленький тиран подумал,
+        да, положим штучку с родины возле открытия! потом разберусь!
+        словно я бы просто сидела там... дурак!!
+        он за всё заплатит
 
     self
-        i need funfriend
-        don't do anything violent
+        развледруг мне нужен
+        никакого насилия
     
     fairy
-        really??
-        oh, you have been working with it, right...
-        well, if you need something from the tyrant,
-        i will stay my claws! because you helped me!
+        серьёзно??
+        о, ты с ним работаешь, точно...
+        ну, раз тебе что-то нужно от тирана,
+        я втяну свои когти! потому что ты мне помог<блинскийлопер>!
     
     RESPONSES::self
-        ok thanks<+>cloop
-            FAKEEND::(back)
+        ок спс<+>cloop
+            FAKEEND::(назад)
 
 oloop
     RESPOBJ::fairyOResp
 
 isabel
     self
-        what do you know about the flower
+        что ты знаешь о цветке
     
     fairy
-        she is so so SO SO ANNOYING!!
-        constantly dancing with shredded pieces of the past...
-        and the crying--the CRYING!!
-        oh, akizet, poor beautiful akizet!
-        i want to tear that stupid parasite apart so she will shut up
-        she ruins all our dreams by shoving akizet into them!!
-        but i must follow the council's rules...
-        after all, it is only together that we have survived
+        она меня так так ТАК ТАК РАЗДРАЖАЕТ!!
+        вечно пляшущая с ошмётками прошлого...
+        а этот плач--этот ПЛАЧ!!
+        ооо, акизетушка, бедняжечка-красавица акизет!
+        хочу порвать этого безмозглого паразита на части, лишь бы она заткнулась
+        она портит все наши грёзы, пихая туда акизет!!
+        но я должна следовать правилам совета...
+        в конце концов, выжить нам удалось лишь благодаря друг другу
     
     RESPONSES::self
-        i see<+>oloop
-            FAKEEND::(back)
+        понятно<+>oloop
+            FAKEEND::(назад)
 
 council
     self
-        what do you know about the council?
+        что ты знаешь о совете?
     
     fairy
-        the council is my best friend!
-        or, friends?
-        i do not really know how it works with them!!
-        i remember when they were just one smiling thoughtform...
-        they have this peculiar way of being, interloper
-        after the age of hunger, they stopped eating other thoughts!
-        instead, it became this tradition of the ozo...
-        when one tired of impending death, when dances could give no more joy
-        we all had the option to join with them
-        not to be consumed, but to be repurposed
-        all deteriorating as one to hold together the membrane of jokzi ozo!
-        scary... i would never even think about that!
-        but if i bit into the council, i wonder, what would i find?
-        think about it!! are they really all still in there?
-        anyway, i like them! they bring such life to all our dreams!
-        very good at multitasking!
+        совет - мой лучший друг!
+        или друзья?
+        я не знаю, как это с ними устроено!!
+        мне помнится, как они были всего одной улыбчивой мыслеформой...
+        у них такой уникальный образ жизни, лазутчик
+        после эпохи голода они прекратили есть другие мысли!
+        вместо этого появилась традиция озо...
+        когда грядущая смерть становилась слишком тяжкой, а танцы прекращали дарить радость
+        у всех нас была возможность примкнуть к ним
+        не чтобы быть поглощёнными, а чтобы быть переработанными
+        все разлагающиеся в одно, дабы скрепить мембрану джокзи озо!
+        страшно... я о таком бы даже и не думала!
+        но если бы я вгрызлась в совет, интересно, что бы я нашла?
+        ты подумай!! они правда всё ещё там?
+        так или иначе, они мне нравятся! они так оживляют все наши грёзы!
+        очень хороши в многозадачности!
     
     RESPONSES::self
-        ok<+>oloop
-            FAKEEND::(back)
+        окей<+>oloop
+            FAKEEND::(назад)
 
 lostone
     self
@@ -2017,17 +2017,17 @@ lostone
         look at the areas the tyrant has repaired! they have to be there!
     
     RESPONSES::self
-        ok<+>oloop
-            FAKEEND::(back)
+        окей<+>oloop
+            FAKEEND::(назад)
 
 geli
     self
         i think i found the lost one
         trapped in the embassy memory looking for a door or gap to escape
-        what do we do
+        что нам делать
     
     fairy
-        "we"?!
+        "нам"?!
         interloper - i have seen this memory!
         the tyrant has fashioned it into madness i could never even dream of!
         i did try cutting into it on my way here, but...
@@ -2044,8 +2044,8 @@ geli
         and a good shake could create a gap for the lost one!
     
     RESPONSES::self
-        all right<+>oloop
-            FAKEEND::(back)
+        хорошо<+>oloop
+            FAKEEND::(назад)
 
 gelifree
     self
@@ -2066,87 +2066,87 @@ gelifree
     
     RESPONSES::self
         could be fun<+>oloop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 
 stowaway
     self
-        what do you know about the stowaway?
+        что ты знаешь о безбилетнике?
     
     fairy
-        stowaway? 
-        oh, the weird thing!
-        ahahaha i love that thing!!
-        you should see how it reacts when i show it my tricks!
-        like a curious little animal
-        it is empty inside, hollowed out in a way i have never seen before
-        so i think it will take well to our knowledge
-        mine especially!! hehehee
+        безбилетнике? 
+        а, странная штука!
+        ахахаха я обожаю эту штуку!!
+        тебе стоит увидеть, как оно реагирует на мои трюки!
+        как маленький любопытный зверёк
+        а внутри - ничего, оно опустошено так, как я до этого никогда не видела
+        так что, думаю, оно отлично примет наши знания
+        мои тем более!! хихихии
 
     RESPONSES::self
-        interesting<+>oloop
-            FAKEEND::(back)
+        интересно<+>oloop
+            FAKEEND::(назад)
 
 history
     self
-        what is the history of jokzi ozo?
+        каково прошлое джокзи озо?
     
     fairy
-        you missed all the fun, right?
-        poor interloper!! haha!
-        it started with what the others like to call, 'the lucid ages'
-        there were three!
-        hunger: when the stage went dark, and we actors turned to one another
-        snarling with millions of teeth--our hideous performances becoming beautiful feasts
-        everyone lost it! everyone! and it was so much fun!
-        and then, when we survivors were sated, 
-        we came to understand the nature of our world...
-        madness! when reality itself became our playground!
-        the council came forth with jokzi ozo, inviting all with reason, to survive together
-        it was good for a while!
-        and then, darkness...
-        the food was gone, and the walls of our reality crumbled further
-        so we chose to fall deeper into dreams!
-        without any chance of survival, it was only rational, right?
-        dance and dream and have fun until it all stops!
-        and it was fun! so much fun!
-        so fun, that everyone grew so tired!!
-        and so we fell away, 
-        one by one, 
-        into a dreamless sleep...
+        всё веселье без тебя прошло, так ведь?
+        бедняга!! хаха!
+        всё началось с того, что другие называют "эпохами осознанности"
+        их было три!
+        голод: когда сцена потухла, а мы, актёры, обратились на друг друга
+        скалясь миллионами клыков--наши мерзкие постановки, сменяющиеся прекрасными пирами
+        все слетели с катушек! все! и было так весело!
+        а после, когда все выжившие насытились, 
+        нас осенило понимание природы нашего мира...
+        безумие! когда сама реальность сделалась нашею игровою площадкою!
+        явился совет с джокзи озо, приглашая всех с рассудком выживать вместе
+        какое-то время всё было хорошо!
+        а затем - тьма...
+        еда кончилась, а стены нашей реальности крошились всё дальше
+        так что мы решили ещё глубже провалиться в грёзы!
+        без шансов на выживание, это было вполне целесообразно, так?
+        танцы, грёзы да веселье до тех пор, пока всё не замрёт!
+        а весело-то было как! как весело!
+        так весело, что все устали!!
+        и вот мы все канули,
+        один за другим, 
+        в сон без сновидений...
         ...
-        and now we are here!
-        yes! that covers it!
+        а теперь мы здесь!
+        да! вот и всё!
     
     RESPONSES::self
-        interesting<+>oloop
-            FAKEEND::(back)
+        интересно<+>oloop
+            FAKEEND::(назад)
 
 dull
     self
-        do you know anything about the dull plane?
+        ты что-нибудь знаешь о среде серое?
 
     fairy
-        ahahaha 
-        of course i do!
-        the dull plane is a favorite of mine
-        every memory where it is involved inevitably becomes a fragmented mess!
-        easy to weave through, to pick out my favorite things to eat!
+        ахахаха
+        ну конечно знаю!
+        среда серое - это моё любимое
+        каждое воспоминание, где она участвует, неминуемо распадается в переломанную мешанину!
+        удобно рыться, вылавливать самые лакомые кусочки!
 
     self
-        i mean the real one
-        in the world outside the cyst
-        do you have any memories of it?
+        я про настоящую
+        в мире вне цисты
+        у тебя есть воспоминания о ней?
 
     fairy
-        huh? stupid!
-        why would i keep any?
-        do you think i care about what happens out there?
-        material, dull, it means nothing!
-        the only world that matters is this one!
+        а? тупица!
+        зачем мне их хранить?
+        думаешь, меня заботит, что там творится?
+        материальное, серое - ничего оно не значит!
+        единственный мир, имеющий важность, это этот!
         
     RESPONSES::self
-        thanks...<+>cloop
-            FAKEEND::(back)
+        спасибо...<+>cloop
+            FAKEEND::(назад)
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -2157,7 +2157,7 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues["e_c_geli"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
     
     council
@@ -2219,7 +2219,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_c_isabel"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
         
     isabel
@@ -2303,14 +2303,14 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_c_fairy"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
     
     fairy
-        ...a beast to rival my own ferocity, surely!
+        ...зверь, равнящийся с моею собственною свирепостью, уж точно!
     
     council
-        с твоей? ни за что!
+        с твоею? ни за что!
     
     fairy
         ahaha!! oh, council, but you should have seen it!
@@ -2354,7 +2354,7 @@ start
         bye interloper!!
         
     sys
-        ATTENTION::'thoughtform activity detected';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
             EXEC::env.jokzi.event.complete()
     
     council
@@ -2372,7 +2372,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_f_geli"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
         
     bsteli::happy
@@ -2440,7 +2440,7 @@ start
         bye!
         
     sys
-        ATTENTION::'thoughtform activity detected';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
             EXEC::env.jokzi.event.complete()
     
     fairy
@@ -2462,7 +2462,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_f_stow"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
         
     fairy
@@ -2536,7 +2536,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_f_effigies"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true);specialCam("e_f_open")
         
     sourceless
@@ -2608,7 +2608,7 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues["e_i_gelistow"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
     
     isabel
@@ -2716,7 +2716,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_i_geli"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
     
     bsteli::happy
@@ -2784,7 +2784,7 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 env.localization.page['ozo'].dialogues["e_i_fairy"] = generateDialogueObject(`
 start
     sys
-        ATTENTION::'thoughtform activity detected'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.jokzi.toggleSlow(true)
     
     effigy
@@ -2851,7 +2851,7 @@ start
         but this is not over...
     
     sys
-        ATTENTION::'thoughtform activity detected';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
             EXEC::env.jokzi.event.complete()
     
     isabel
