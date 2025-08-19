@@ -1850,7 +1850,7 @@ appearance
     
     fairy
         я - фея! лазутчик, что за глупости!
-        ты разве не знаешь, что это значит?...?
+        ты разве не знаешь, что это значит...?
         феи, посланницы велзи, танцуют под божественным глазом!
         и хранители, и пожиратели всего творения!
         а наземнобежцы? про них ты знаешь?
@@ -2209,9 +2209,9 @@ start
         did you wish to speak with us?
     
     RESPONSES::self
-        yes<+>CHANGE::council
+        да<+>CHANGE::council
             EXEC::specialCam(false);env.jokzi.councilToggle()
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2292,10 +2292,10 @@ ____END
         now, all that said--did you wish to speak with us?    
 
     RESPONSES::self
-        yes<+>CHANGE::council
+        да<+>CHANGE::council
             EXEC::specialCam(false);env.jokzi.councilToggle()
             HIDEREAD::
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2313,17 +2313,17 @@ start
         с твоею? ни за что!
     
     fairy
-        ahaha!! oh, council, but you should have seen it!
-        or, maybe i should pray to velzie that you never do...
-        from what i observed, even behind my illusions and at a great distance,
-        i could tell it was some sort of enforcer of cohesion!
-        so many arms! such size! such precision!!
-        the efficiency with which it assembled that broken memory was frightening
-        even to me!! how long it has been since i have felt such fear!
-        the thought crossed my mind, "i should fight this thing"...
-        but if i had drawn closer - it surely would have torn me apart without a thought,
-        perhaps without even noticing that i was not just some new resource to place in the repairs!!
-        that is just how it moved! scary!
+        ахаха!! ооо, совет, но видели бы вы его!
+        хотя мне лучше помолиться велзи, чтобы не видели никогда...
+        из моих наблюдений, даже за моими иллюзиями и с большого расстояния,
+        мне стало ясно, что это - некий enforcer связности! // --- исполнитель? правоприменитель? контролёр? принудитель?
+        столько рук! такой размер! такая точность!!
+        эффективность, с которою он сооружал то битое воспоминание, устрашает
+        даже меня!! сколько времени прошло с тех пор, как меня кутал столький ужас!
+        меня посетила мысль, "я должна подраться с этою штукою"...
+        но, подойди я ближе, он бы непременно растерзал меня и без единой мысли,
+        может, аж не заметив, что я не просто очередной материал для размещения в починках!!!
+        это вот так вот он двигался! жуть!
     
     council
         тревожащее развитие... спасибо за эти вести, дорогая фея
@@ -2331,30 +2331,30 @@ start
         сложно понять, знает ли тиран, что мы всё ещё здесь...
         но если он посчитает нас виновными в атаке, то точно пришлёт того зверя
         мы уверены, что он всё ещё видет нас сродни опухоли
-        хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё не нашло?
+        хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё так и не нашло?
     
     fairy
-        i am working very hard to keep your outer shell disguised!
-        plus, with how close to the uncosm we stay, it surely cannot even see us!
+        я прилагаю все усилия, чтобы замаскировать твою внешнюю оболочку!
+        плюс, поскольку мы держимся так близко к беспространству, он вряд ли даже может нас увидеть!
     
     council
         может и так...
-        а может наша грёза об единстве не так уж и далёка?
+        а может наша грёза о единстве не так уж и далёка?
     
     sourceless
-        the fairy shifts within the thoughtspace, and the change in balance brings attention to your presence.
+        фея смещается в мыслепространстве, и перемена в равновесии обращает внимание на твоё присутствие.
             EXEC::specialCam("e_c_fairy_attention")
     
     fairy
-        ah!! interloper!
-        i nearly bit you! ahahaha!
-        this new creature has me on edge
-        council--i have plans! we should at least prepare a defense!
-        we will speak of them later, though!
-        bye interloper!!
+        ааа!! лазутчик!
+        я чуть тебя не укусила! ахахаха!
+        я как на иголках из-за этого существа
+        совет--у меня есть планы! нам необходимо хотя бы подготовить защиту!
+        но поговорим о них попозже!
+        пока лазутчик!!
         
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'
             EXEC::env.jokzi.event.complete()
     
     council
@@ -2362,9 +2362,9 @@ start
         дорогой лазутчик! хотелось ли тебе с нами поговорить?
     
     RESPONSES::self
-        yes<+>CHANGE::council
+        да<+>CHANGE::council
             EXEC::specialCam(false);env.jokzi.councilToggle()
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2382,30 +2382,30 @@ start
         really, all of my knowledge of these exciting bright concepts comes from that strange thoughtform
     
     fairy
-        ahaha!! and what knowledge it is!
-        my attempts at using bright weaponry in my dreams were always rife with improvisation...
-        the way they truly work is even more vicious than my estimations!
+        ахаха!! а знания-то какие!
+        мои попытки применять светлое оружие в грёзах всегда были полны импровизации...
+        то, как они по-настоящему работают, даже чудовищней, чем в моих предположениях!
     
     bsteli
         yes, i imagine they may even be more effective than valika weaponry!
         though, i do wish i had a memory to compare them to... 
     
     fairy
-        still! what fun! what fun!! 
-        even within such a rigid structure!
-        this violent dream of yours reminds me of the greater θgazes...
-        so many others now adhere to such toothless violence,
-        like they are afraid of awakening the same old hunger!
-        idiots!!
-        they all pretend as if we are different now,
-        but the only real difference is that they learned to hide it!
+        и всё же! что за веселье! что за веселье!! 
+        даже в такой жесткой структуре!
+        эта твоя жестокая грёза напоминает мне о прежних θвзорах...
+        нынче столь многие другие привержены такому беззубому насилию,
+        словно боятся пробудить тот же старый голод!
+        идиоты!!
+        все они притворяются, будто мы стали другими,
+        но единственное различие в том, что они научились это скрывать!
         
     bsteli::concern
         ...
     
     fairy
-        ah! do not be so bashful!!
-        was it not you, who...
+        ах! ну не стесняйся ты так!!
+        разве это была не ты, кто...
     
     bsteli::concern
         ah--ah! interloper!
@@ -2415,9 +2415,9 @@ start
             EXEC::specialCam("e_f_geli_attention")
         
     fairy
-        ohh??
-        when you do not speak up, it is almost hard to feel you there!
-        welcome, interloper!
+        ооо??
+        когда ты молчишь, тебя почти невозможно почувствовать!
+        добро пожаловать, лазутчик!
     
     bsteli::concern
         we were just,
@@ -2426,11 +2426,11 @@ start
         i was just inviting the fairy to come join our dream!
     
     fairy
-        i have enough parts to play for now,
-        and other dreams to interfere with, hehehe
-        but what you have built is very enticing, geli!
-        in time, in time!
-        already, i feel such cruel plans forming in my mind... ahahaha!!
+        мне пока хватает ролей в играх,
+        и прочих грёз для вмешивания, хехехе
+        но то, что ты смастерила, очень заманчиво, джели!
+        в своё время, в своё время!
+        в моём сознании уже зреют такие зверские планы... ахахаха!!
         
     bsteli::bstrd
         good! GOOD!
@@ -2440,21 +2440,21 @@ start
         bye!
         
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'
             EXEC::env.jokzi.event.complete()
     
     fairy
-        oh, interloper, interloper!
-        to see such dreams of nonstop combat and excitement from geli, of all thoughts...
-        a twist in velzie's great plot i could never have predicted!
-        delightful! so fresh and new!
-        now!!
-        did you want to speak about anything?
+        о, лазутчик, лазутчик!
+        видеть такие грёзы о безостановочной схватке и азарте от джели, из всех мыслей...
+        поворот в великом сюжете велзи, никак не поддающийся угадке!
+        восхитительно! так свежо и ново!
+        но!!
+        ты здесь, чтобы поговорить?
         
     RESPONSES::self
-        yes<+>CHANGE::fairy
+        да<+>CHANGE::fairy
             EXEC::specialCam(false)
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2466,69 +2466,69 @@ start
             EXEC::env.jokzi.toggleSlow(true)
         
     fairy
-        ...ah, no no, you must do it like this!
+        ...а, нет-нет, это делается вот так!
 
     stowaway
         ...!
     
     sourceless
-        you feel a jolt of anxiety in the thoughtspace.
-        the stowaway's thoughtform recoils from something you cannot perceive.
+        тебе ощутим укол волнения в мыслепространстве.
+        мыслеформа безбилетника отшатывается от чего-то за пределами твоего восприятия.
     
     fairy
-        ahaha, not so nice, is it?? 
-        and that was a light one!
-        now, here, you try! just like that!!
+        ахаха, не очень-то приятно, а?? 
+        и это я ведь мягко!
+        так, давай, твоя очередь! попробуй!!
         
     sourceless
-        a similar sensation of discomfort ripples from the fairy.
+        похожее ощущение дискомфорта выскальзывает из феи.
     
     fairy
-        ow!!
-        yes! good! perfect!!
-        you are a natural, my hollow friend!
+        ай!!
+        да! отлично! замечательно!!
+        да у тебя талант, мой полый друг!
     
     sourceless
-        you feel the stowaway's attention upon your presence
+        ты чувствуешь внимание безбилетника к твоему присутствию
     
     stowaway
-        hollow friend
+        полый друг
     
     fairy
-        yes, that is... that is right!
-        oh! ahahahaha! you mean interloper!!
-        interloper, interloper! come closer!
-        i was just teaching an important part of our history...
-        something you cannot do, but, will prove very useful to our new friend here!!
+        да, я так и... так и сказала!
+        о! ахахахахаха! ты лазутчика имеешь в виду!!
+        лазутчик, лазутчик! подходи ближе!
+        я лишь преподавала одну важную часть нашего прошлого...
+        тебе этого делать не дано, а вот нашему другу очень даже пригодится!!
     
     sourceless
-        the stowaway's thoughtform draws closer to your perception.
+        мыслеформа безбилетника подбирается ближе к твоему восприятию.
             EXEC::specialCam("e_f_stowclose")
-        it lingers nearby.
+        она задерживается поблизости.
     
     stowaway
         ...?
     
     fairy
-        oh! haha!!
-        silly!!
-        no no, you cannot do it to the interloper!
-        they are not <em>really</em> here, not like you and me...
-        there is nothing to bite!
-        and what a shame, right? hehehe
-        no, if you want to mess with the interloper, you have to do something else...
+        о! хаха!!
+        дурачок!!
+        нет-нет, с лазутчиком такое не пройдёт!
+        лазутчик <em>не то чтобы</em> здесь по-настоящему, не как ты и я...
+        кусать нечего!
+        жалость-то какая, а? хихихи
+        нет, коли хочется напакостить лазутчику, нужно что-то другое...
     
     self
-        like what?
+        например?
     
     fairy
-        secret! secret!!
-        now, interloper, did you want to talk???
+        секрет! секрет!!
+        а теперь, лазутчик, ты здесь за разговорами???
         
     RESPONSES::self
-        yes<+>CHANGE::fairy
+        да<+>CHANGE::fairy
             EXEC::specialCam(false)
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2540,67 +2540,67 @@ start
             EXEC::env.jokzi.toggleSlow(true);specialCam("e_f_open")
         
     sourceless
-        effigies gather around the fairy. 
-        something is happening that you cannot perceive.
-        but even through your means, the fairy's appearance is different.
-        the swirl of colors beneath its face is laid bare, but you can't make out any meaning in them.
+        эффигии окружили фею. 
+        происходит что-то, что ты не можешь воспринять.
+        но даже так ты видишь, что внешность феи поменялась.
+        вихрь красок под её лицом оголён, однако ты не различаешь в нём никакого смысла.
 
     effigy
-        wow!!
-        coool!!
-        is that how that works??
+        ого!!
+        крууууто!!
+        так вот как оно работает??
     
     sourceless
-        you draw closer in order to better receive the meaning,
-        but the tangible attention of these thoughtforms is placed upon you.
+        ты приближаешься, чтобы лучше уловить значение,
+        но осязаемое внимание этих мыслеформ устремляется к тебе.
     
     effigy
-        interloper!!
-        interloper interloper!
-        hii!!
+        лазутчик!!
+        лазутчик лазутчик!
+        привеет!!
     
     fairy
-        interloper?
-        oh!! there you are!
+        лазутчик?
+        а!! вот ты где!
             EXEC::specialCam(false)
     
     self
-        what were you doing
+        что вы делали
     
     fairy
-        ahh, they saw my illusions in the corners of one of isabel's stupid dreams,
-        and they said they would be quiet about it if i taught them how to do it!
-        i am sure these simple little creatures will spill the secret to isabel regardless, but...
-        who am i to refuse prodigal tricksters?
-        velzie forbid we perform some mischievery in this age!
-        ahahaha!!
+        ахх, они заметили мои иллюзии в закутке одной из тупых грёз изабель
+        и сказали, что замолчат, если я научу их, как это делать!
+        не сомневаюсь, эти простые создания всё равно ей проболтаются, но...
+        а почему бы и не подучить пару беспутных хитрюшек?
+        не дай велзи в наше время совершить какую-нибудь шалость!
+        ахахаха!!
         
     self
-        i just saw a bunch of colors, no knowledge
-        is it like a mask?
+        мне было видно только кучу цветов, без смысла
+        это что-то вроде маски?
     
     fairy
-        yes, yes, yes,
-        but less tangible!
-        a mask is hardened, static! easy to see from many sides!
-        i must imagine--that is what allows us to give them to you?
-        but direct knowledge is much different
-        and as i learned in my early talks with you,
-        you do not seem to be able to see it...
-        what a shame! there is so much i could show you!
-        if only you were really here, interloper!!
+        да, да, да,
+        но менее осязаемая!
+        маски затвердевшие, статичные! легко разглядеть с многих сторон!
+        как я представляю--это нам и позволяет давать их тебе?
+        но прямое знание совсем другое
+        а как я поняла из наших ранних разговоров,
+        ты, судя по всему, его не видишь...
+        как жаль! я бы могла показать тебе столькое!
+        вот бы ты правда был<блинскийлопер> здесь, лазутчик!!
     
     effigy
-        if only! if only!
-        you could dream with us too!
+        вот бы! вот бы!
+        мы бы пригласили тебя в наши грёзы!
         
     fairy
-        now!!
-        did you want to talk?
+        так!!
+        ты о чём-то поговорить хочешь?
         
     RESPONSES::self
-        yes<+>CHANGE::fairy
-        not really<+>END
+        да<+>CHANGE::fairy
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -2706,9 +2706,9 @@ start
         now, did you need something?
         
     RESPONSES::self
-        yes<+>CHANGE::isabel
+        да<+>CHANGE::isabel
             EXEC::specialCam(false)
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2774,9 +2774,9 @@ start
         did you need something?
         
     RESPONSES::self
-        yes<+>CHANGE::isabel
+        да<+>CHANGE::isabel
             EXEC::specialCam(false)
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
@@ -2788,13 +2788,13 @@ start
             EXEC::env.jokzi.toggleSlow(true)
     
     effigy
-        aawaaaawwa!!
+        ааваааавва!!
     
     fairy
-        then where did it come from, huh??
-        do you think i am stupid, weeping parasite?
-        and you say you never want to see me! ha!
-        yet you shake the foundations of our stupid little boundaries!
+        а откуда он тогда взялся, а??
+        ты меня за безмозглого паразита держишь?
+        и ещё говоришь, что видеть меня не хочешь! ха!
+        сама же шатаешь фундамент наших тупых границ!
     
     isabel
         я не знаю, что ещё тебе сказать
@@ -2802,22 +2802,22 @@ start
         это мог быть кто угодно
     
     fairy
-        NO!!
-        who else cares about akizet! nobody! 
-        nobody!! stupid!
-        only you still weep for that idiotic murderer!
-        velzie above has forgotten her name!
+        НЕТ!!
+        кого ещё заботит акизет! никого! 
+        никого!! тупица!
+        ты одна хнычешь об этой идиотской убийце!
+        да даже велзи позабыло её имя!!
     
     sourceless
-        the thoughtspace render ripples with anger and unease.
-        a fight beyond words is ensuing beyond your ability to perceive.
+        визуализация мыслепространства рябит злобой и неприязнью.
+        ведётся бой за пределом слов, который ты не можешь воспринять.
     
     effigy
-        stop stop!!
+        прекратите прекратите!!
     
     isabel
         достаточно
-        я не вешала вывеску олтазни в твоём бестолковом сне
+        не вешала я вывеску олтазни в твоей бестолковой грёзе
         что мне с этого? думаешь, мне хочется донимать тебя?
         думать о тебе - последнее, чего я хочу
         я уж скорее решу грезить о романе с тираном
@@ -2828,49 +2828,49 @@ start
         тебе пора уйти.
     
     fairy
-        leave? where? back to my defiled dream?
-        excuses! excuses!! provocation!!
-        i demand that <em>you</em> remove the banner! 
-        or the council will hear of this!
+        уйти? куда? в свою осквернённую грёзу?
+        отговорки! отговорки!! провокация!!
+        я требую, чтобы <em>ты</em> избавилась от вывески! 
+        или об этом услышит совет!
     
     sourceless
-        again, tension rises, but your presence seems to dampen its effects.
-        they notice you.
+        вновь нарастает напряжение, но твоё присутствие, похоже, смягчает его действиеЯ.
+        они замечают тебя.
     
     fairy
-        oh! interloper!
-        ahahaha! hi interloper!
+        о! лазутчик!
+        ахахаха! привет лазутчик!
             EXEC::specialCam("e_i_fairy")
     
     isabel
         здравствуй, лазутчик...
     
     fairy
-        were you going to talk to this freak?
-        i will leave you to it! bye!
-        but this is not over...
+        ты хочешь поговорить с этой мразью?
+        ну я вас оставлю! пока!
+        но мы с тобой ещё не закончили...
     
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'resource location altered'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'
             EXEC::env.jokzi.event.complete()
     
     isabel
         ...
     
     self
-        what was that about?
+        о чём это было?
     
     isabel
         не обращай внимания
         просто ещё один пример бессмысленных феиных перепалок
         всем известно, что почти любое упоминание акизет в её снах провоцирует нападки...
         но, как мне кажется, в этот раз это была просто попытка вывести меня из себя
-        а теперь, тебе что-то требуется?
+        а теперь, тебе что-то надо?
         
     RESPONSES::self
-        yes<+>CHANGE::isabel
+        да<+>CHANGE::isabel
             EXEC::specialCam(false)
-        not really<+>END
+        не особо<+>END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 
