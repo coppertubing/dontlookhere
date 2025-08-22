@@ -882,7 +882,11 @@ cor_ru.entity_menu = {
     },
     "GELI": {
         name: `ДЖЕЛИ`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'personable golem with a strong tir echo';'either unable or unwilling to perceive reality as it was'</span>
+    ::ADDITIONAL NOTE::<span style='color: var(--bastard-color)'>'now free'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion'">::INCOHERENCE DETECTED</span>`
     },
 
     //frame
