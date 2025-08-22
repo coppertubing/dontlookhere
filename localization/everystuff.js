@@ -461,6 +461,7 @@ env.localization['strings'] = {
 
     "refresh": "обновить",
     "'no coherent data'::SUGGEST::'return to hub'": "'нет связных данных'::ПРЕДЛОЖЕНИЕ::'вернуться в хаб'",
+    "ERROR::'invalid destination';'no coherency';'locating closest coherent position'": "ОШИБКА::'недействительный пункт назначения';'нет связности';'поиск ближайшей связной позиции'",
     "'aborted'": "'прервано'",
     "'eject'": "'отключение'",
     "'restored partial recent log'": "'частично восстановлен недавний лог'",

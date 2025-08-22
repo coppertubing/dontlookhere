@@ -648,7 +648,10 @@ cor_ru.entity_menu = {
     },
     "dog": {
         name: `собака`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a <span class="code" definition="NOTE::'partial translation';'implied closest cultural equivalent'">dog</span>'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'ignoring thoughtform specifications'">::INCOHERENCE DETECTED</span>`
     },
 
     //their waters
@@ -837,23 +840,37 @@ cor_ru.entity_menu = {
     //jokzi ozo
     "council": {
         name: `совет`,
-        desc: ``
+        desc: `::UNPROCESSABLE THOUGHTFORM<br>
+    ::<span definition="NOTE::'non-standard format';'implies connector thoughtform';'self-connected'">UNUSUAL SIGNATURE</span><br>
+    ::??-?_##)__L2xvY2FsL296by8`
     },
     "fairy": {
         name: `фея`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE:'hunger'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`
     },
     "isabel": {
         name: `изабель`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'joy'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'resembles earth ground-parÙãÆƒ-ÌC__ERROR::'unprocessable'__;'bearer of kind dreams'</span>`
     },
     "effigy": {
         name: `эффигия`,
-        desc: ``
+        desc: `::INCOMPLETE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'isabel! isabel! isabel!'</span>`
     },
     "sun": {
         name: `солнце`,
-        desc: ``
+        desc: `::INCOMPLETE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the screaming eye that reared the bright cousins';'requires ocular manipulation to directly observe'</span>`
     },
     "gate::gate::?/::G:a;;T:E": {
         name: `врата::врата::?/::В:р;;АТ:А`,
@@ -918,24 +935,35 @@ cor_ru.entity_menu = {
         desc: ``
     },
     "wheel": {
-        name: `колесо`,
-        desc: ``
+        name: `штурвал`,
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery'
+    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'BOAT ON OCEAN = NO TILES';'SO NOW U A PIRATE';'>%^)'">'use 2 drive';'watch out'</span>`
     },
     "radio": {
         name: `радио`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
+    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'IM ACTUALY RLY CLOSE OUTSIDE';'CANT JUST DO ANYTHING';'HAVE 2 COMPLY W/ MEMORY JUSTIFICATIN REQS'">'da lifeline'</span>`
     },
     "basterminal": {
         name: `сволочерминал`,
-        desc: ``
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
+    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="ANALYSIS::'HUMORS = ACTIONS';'AWESOEME';'TY GLI'">'cool editor'</span>`
     },
     "exchange terminal": {
-        name: ``,
-        desc: ``
+        name: `обменный терминал`,
+        desc: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
+    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'I HAVE 2 MAKE SURE IT MAKES SENSE W/ MEMORY SHT';'SFER SEEM LIKE SOLID IDEA :P';'TY JELY'">'reimprinting thingy';'trade justification'</span>`
     },
     "interloper": {
         name: `лазутчик`,
-        desc: ``
+        desc: `::INCOMPLETE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection locus'${check("e3a2__escapewin")?`
+    ::INHERITED CONTEXT::<span style='color: var(--bright-color)' definition="NOTE::'malformed context';'potential tampering'">'what do you think, stowaway?'</span>
+    ` : ""}`
     },
 
     //abyss
