@@ -1,4 +1,18 @@
-/* === HOW TO USE INFLECTION IN env.ACTIONS.usage === 
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/combat.js
+    combat!
+    this bad boy not only handles the adaptation of everything used in combat like actors and actions and effects and css and stuff...
+    but also adds support for inflection of words! so neat, right? the combat floaters are gonna be in grammatical agreement!!! yay!!!
+
+    progress: always stuff to finish buuut ep2 should be done as of 23.08.2025
+*/
+
+
+
+/* === HOW TO USE INFLECTION IN env.ACTIONS.usage WITH COR-RU AND RUSSIAN LANGUAGE'S STINKY GENDERS AND CASES === 
 
 
 first make sure all actors have all the needed properties
@@ -402,7 +416,7 @@ cor_ru.combat['eatingEffectMessage'] = function (time = 0) { // --- may this ent
     }
 }
 
-/* === ACTIONS === */
+// === ACTIONS === //
 cor_ru.combat['redefineActions'] = function () {
     /* - win - */
 
@@ -2859,7 +2873,7 @@ cor_ru.combat['redefineActions'] = function () {
         "act": "%USER PREPARES TO CHARGE AT %TARGET"
     }
 }
-/* === STATUS_EFFECTS === */
+// === STATUS_EFFECTS === //
 cor_ru.combat['redefineEffects'] = function () {
     /* - Puncture - */
 
@@ -3465,7 +3479,7 @@ cor_ru.combat['redefineEffects'] = function () {
     env.STATUS_EFFECTS.aiming_indicator.name = "целица" // aiming
     env.STATUS_EFFECTS.aiming_indicator.help = "вы этого видеть не должны" // you should never see this
 }
-/* === ITEMS === */
+// === ITEMS === //
 cor_ru.combat['redefineItems'] = function () {
     /* - Restorative Cyst - */
 
@@ -3619,7 +3633,7 @@ cor_ru.combat['redefineItems'] = function () {
     env.ITEM_LIST.symbiotic_rifle.description = "" // 'adapted bright weaponry created via lesser vats and strange cyst';'connects to internal ammunition generator';'use at cost of HP'
 
 }
-/* === HUMORS === */
+// === HUMORS === //
 cor_ru.combat['redefineHumors'] = function () {
     /* - Ichor - */
 
@@ -3657,7 +3671,7 @@ cor_ru.combat['redefineHumors'] = function () {
     env.COMBAT_COMPONENTS.empty.description = "'импровизация';'отсутствие направления'" // 'improvisation';'lacking direction'
     env.COMBAT_COMPONENTS.empty.help = "'базовые действия'" // 'basic actions'
 }
-/* === MODIFIERS === */
+// === MODIFIERS === //
 cor_ru.combat['redefineModifiers'] = function () {
     /* - Heavy Chitin - */
 
@@ -3853,7 +3867,7 @@ cor_ru.combat['redefineModifiers'] = function () {
     env.MODIFIERS.global_intrusive.name = "" // MANIFEST
     env.MODIFIERS.global_intrusive.getHelp = ()=> `<span class="neutral-color">øÿ°ÞÜÿ›ËÅÿ¥ÔËÿ«×Ïÿ®ØÏÿ«ÛÑÿ¦ÔÉÿ—Á¶ÿ–À´ÿ«ÖÊÿ Ì¿ÿ’½´ÿ¤ÔÏÿ¤ÙÑÿ”ËÃÿu0090ÉÄÿ¨°u008dÿu009dl</span>`
 }
-/* === STATS === */
+// === STATS === //
 cor_ru.combat['redefineStats'] = function () {
     /* - HP - */
 
@@ -3910,7 +3924,7 @@ cor_ru.combat['redefineStats'] = function () {
     env.STATDATA.incomingFlatCrit.display = "IN::CRIT" // IN::CRIT
     env.STATDATA.incomingFlatCrit.description = "еще не переведено ибо я понятия не имею где оно используется" // 'added to base crit chance against this entity';'before modifiers'
 }
-/* === ACTORS === */
+// === ACTORS === //
 cor_ru.combat['redefineActors'] = function () {
     /* - GENERATED - */
 
@@ -5932,7 +5946,7 @@ cor_ru.combat['redefineActors'] = function () {
         gender: 1
     }
 }
-/* === FORMATIONS === */
+// === FORMATIONS === //
 cor_ru.combat['redefineFormations'] = function() {
     /* - ?????? - */
 
@@ -5980,7 +5994,7 @@ cor_ru.combat['redefineFormations'] = function() {
     env.COMBAT_FORMATIONS.c_daemon_imp.name = "" // IMP
     env.COMBAT_FORMATIONS.c_daemon_imp.help = "" // 'trio';'mimics shell actions used';'unable to mimic items'
 }
-/* === AUGMENTS === */
+// === AUGMENTS === //
 cor_ru.combat['redefineAugments'] = function() {
     /* -- ALL -- */
     /* - Symbiotic Rifle - */
@@ -6140,7 +6154,7 @@ cor_ru.combat['redefineAll'] = function() {
     cor_ru.combat.redefineAugments()
 }
 
-/* === MISC === */
+// === MISC === //
 env.localization.page[page.dialoguePrefix].strings["NEVERMIND"] = "НЕВАЖНО"
 
 env.localization.page[page.dialoguePrefix].strings['THE TENDRILS CURL AWAY'] = "";
@@ -6166,7 +6180,7 @@ env.localization.page[page.dialoguePrefix].strings["MAX::"] = "МАКС::"
 env.localization.page[page.dialoguePrefix].strings["STAT::barrier:LIMITED TO 1/2 MAX HP"] = "ПАРАМЕТР::барьер:ОГРАНИЧЕН ДО 1/2 МАКС ХП"
 
 
-/* === PARTY MENU === */
+// === PARTY MENU === //
 env.localization.page[page.dialoguePrefix].strings['ACTIVE MEMBERS'] = 'АКТИВНЫЕ УЧАСТНИКИ'
 env.localization.page[page.dialoguePrefix].strings['INACTIVE MEMBERS'] = 'НЕАКТИВНЫЕ УЧАСТНИКИ'
 
@@ -6187,7 +6201,7 @@ env.localization.page[page.dialoguePrefix].strings['::FUNCTION::'] = '::ФУНК
 env.localization.page[page.dialoguePrefix].strings['usable now or in combat::click to use'] = 'используемо сейчас или в бою::кликните для использования'
 env.localization.page[page.dialoguePrefix].strings['usable in combat'] = 'используемо в бою'
 
-/* === ACTIONDEF === */
+// === ACTIONDEF === //
 env.localization.page[page.dialoguePrefix].strings['EFFECT'] = 'ЭФФЕКТ'
 
 env.localization.page[page.dialoguePrefix].strings['SELF'] = 'СЕБЯ'
@@ -6209,7 +6223,7 @@ env.localization.page[page.dialoguePrefix].strings["ORIGIN::"] = "ИСТОЧНИ
 env.localization.page[page.dialoguePrefix].strings["unknown"] = "неизвестно"
 
 
-/* === CSS === */
+// === CSS === //
 cor_ru.combat['css'] = `
 .party-title::after {
     content: "ОБЕСКИ, ОСНАЩЁННЫЕ ВРЕМЯДЕРЖЦАМИ";
@@ -6284,7 +6298,7 @@ cor_ru.combat['css'] = `
     content: "(ПКМ)" !important;
 `
 
-/* === OBSERVER STUFF === */
+// === OBSERVER STUFF === //
 cor_ru.combat['observer'] = {
     party: {
         func: (consolething)=>{
@@ -6321,7 +6335,7 @@ cor_ru.combat['observer'] = {
 cor_ru.combat.observer.party.itself = new MutationObserver(()=>{cor_ru.combat.observer.party.func(["%cparty observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.combat.observer.actiondef.itself = new MutationObserver(()=>{cor_ru.combat.observer.actiondef.func(["%cactiondef observed! - @cor-RU", cor_ru.fancy.observed])})
 
-/* === LOAD === */
+// === LOAD === //
 if (!document.querySelector("#cor-rucsscombat")) document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement).setAttribute("id", "cor-rucsscombat")
 
 cor_ru.combat.redefineAll()
@@ -6332,4 +6346,4 @@ getLocalizationForPage(true)
 cor_ru.combat.observer.party.func()
 
 cor_ru.combat.observer.party.observe()
-cor_ru.combat.observer.actiondef.observe() // find a way to enable this shit only in combats and disable outside of em cause console spam gets annoying AND it could ! potentially break stuff
+cor_ru.combat.observer.actiondef.observe() // --- find a way to enable this shit only in combats and disable outside of em cause console spam gets annoying AND it could ! potentially break stuff

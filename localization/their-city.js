@@ -1,36 +1,32 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/their-city.js
+    adaptation for /local/city
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['localcity'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "this is prettyyyy busted... but at least it's something": "довооольно поломанное... но хоть что-то",
 
-        "glimmering spires mark their cities": "блистающие шпили обозначают их города",
-        "these grand icons of their control": "эти величественные иконы их контроля",
-        "they watch": "они смотрят",
+        "glimmering spires mark their cities": cor_ru.entity_menu["glimmering spires mark their cities"].name,
+        "these grand icons of their control": cor_ru.entity_menu["these grand icons of their control"].name,
+        "they watch": cor_ru.entity_menu["they watch"].name,
     },
     entityDescriptions: {
-        "glimmering spires mark their cities": `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
-::СОДЕРЖАНИЕ::'
-<span>блистающие шпили обозначают их города</span>
-<span>все из мёртвого металла и стекла</span>
-<span>такие высокие!!! выше, чем самые высокие <span class="code">вейльки</span>!</span>
-<span>но они стоят в тишине...</span>
-<span>однажды они задышат</span>
-<span>и наши потерянные близнецы разделят с нами наши знания</span>'`,
-        "these grand icons of their control": `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
-::СОДЕРЖАНИЕ::'
-<span>эти величественные иконы их контроля</span>
-<span>пусть они не наши</span>
-<span>я испытываю чувство гордости</span>
-<span>как же наши светлые близнецы покорили свою <span class="code">поверхность</span>!</span>'`,
-        "they watch": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкое разделение'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'в вечном скептицизме'</span>`
+        "glimmering spires mark their cities": cor_ru.entity_menu["glimmering spires mark their cities"].desc,
+        "these grand icons of their control": cor_ru.entity_menu["these grand icons of their control"].desc,
+        "they watch": cor_ru.entity_menu["they watch"].desc,
     }
 }
 
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 
 env.localization.page['localcity'].dialogues.mthcityresp = generateDialogueObject(`
 RESPOBJ::
@@ -66,7 +62,7 @@ where
     RESPOBJ::mthcityresp
 `)
 
-// - TRANSLATING DA BEECH - //
+// === TRANSLATING DA BEECH === //
 
 cor_ru.processWeirdTranslation(".loose-thought", "text")
 

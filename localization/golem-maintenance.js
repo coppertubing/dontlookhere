@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/golem-maintenance.js
+    adaptation for /local/ocean/embassy/golem
+
+    progress: none except porting dialogues as of 23.08.2025
+*/
+
+
 env.localization.page['gol'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -6,6 +17,10 @@ env.localization.page['gol'] = {dialogues: {},
     }, 
     entityDescriptions: {},
 }
+
+
+// === DIALOGUES === //
+
 
 /* MECHANICAL DIALOGUES */
 env.localization.page['gol'].dialogues["genericenemy"] = generateDialogueObject(`

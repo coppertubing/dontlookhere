@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/recosm.js
+    adaptation for /local/uncosm/recosm
+    (---did you kill it?)
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['recosm'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -108,7 +120,7 @@ env.localization.page['recosm'] = {dialogues: {},
 
 
 
-// -- DIALOGUES -- //
+// === DIALOGUES === //
 env.localization.page["recosm"].dialogues["lowintensity"] = generateDialogueObject(`
 start
     sys

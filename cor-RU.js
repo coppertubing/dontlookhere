@@ -1,27 +1,12 @@
-/* 
-    cor-RU - a full russian adaptation mod for corru.observer
-
-        by @dutokrisa and @bra1nslug_
-        based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
-        certain parts use code of vielk memory hole example by @adr_furret
-
-        EP0 playtested by: @akizetism
-        EP0-1 playtested by: @spaniel_00
-
-        (all mentions are discord usernames)
-
-    adaptation up until the end of EP1 currently availible
+/*/ если вы очутились здесь и не понимаете, что это такое, скорее всего /*/
+/*/ вы нажали на ссылку вместо того, чтобы правильно её установить.     /*/
+/*/ не смотрите в в код дальше, если боитесь спойлеров!!! хихи          /*/
+/*/ видео по установке:                                                 /*/
+/*/ страница мода: https://github.com/cor-RU/cor-RU                     /*/
 
 
-    feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
 
-    you can reach out to @dutokrisa or @bra1nslug_ for any questions, requests, suggestions or bug reports
-
-
-    thank you for using our mod <3
-
-            ======
-
+/*
     cor-RU - мод на полную русскую адаптацию для corru.observer
 
         от @dutokrisa и @bra1nslug_
@@ -33,7 +18,7 @@
 
         (все упоминания - никнеймы в дискорде)
 
-    в данный момент доступна адаптация до конца EP1
+    в данный момент доступна адаптация до конца EP2
 
 
     не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
@@ -42,6 +27,29 @@
 
 
     спасибо за использование нашего мода <3
+
+            ======
+
+    cor-RU - a full russian adaptation mod for corru.observer
+
+        by @dutokrisa and @bra1nslug_
+        based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
+        certain parts use code of vielk memory hole example by @adr_furret
+
+        EP0 playtested by: @akizetism
+        EP0-1 playtested by: @spaniel_00
+
+        (all mentions are discord usernames)
+
+    adaptation up until the end of EP2 currently availible
+
+
+    feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
+
+    you can reach out to @dutokrisa or @bra1nslug_ for any questions, requests, suggestions or bug reports
+
+
+    thank you for using our mod <3
 */
 
 
@@ -937,7 +945,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     }),
     observerWarnObserve: function () {cor_ru.observerWarn.observe("???", { childList: true })}, UNFINISHED*/
 
-    // corru.works why
+    // this is mildly annoying
 
     embassyCoherent: function () {
         if (env.localization.page['localocean']) env.localization.page['localocean'].entityDescriptions['the embassy'] = `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
@@ -1009,7 +1017,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-                else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! - @cor-RU")
+                else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU")
             listArray.push(cor_ru.list.entityMenu);
             listArray.push(cor_ru.list.load);
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
@@ -1041,7 +1049,7 @@ cor_ru.observer.dialogue.itself = new MutationObserver(()=>{cor_ru.observer.dial
 cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.func(["%cmasks observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.page.itself = new MutationObserver(()=>{cor_ru.observer.page.func(["%cpage observed! - @cor-RU", cor_ru.fancy.observed])})
 
-// advance log thingy
+// advance log thingy to warn guys that shit aint done past ep2
 cor_ru['advance'] = function () {
     MUI('off'); flash(true); cutscene(true); exitMenu();
     if(env.bgm) env.bgm.fade(env.bgm.volume(), 0, 1000)
@@ -1119,8 +1127,8 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa or @bra1nslug_ on discord if you have any questions, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
-console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa or @bra1nslug_ on discord if you have any questions, requests, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
+console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, просьбы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {
     document.head.appendChild(
@@ -1136,6 +1144,6 @@ if (!document.querySelector("#cor-rucss")) {
         )
 }
 
-page.formedDefinitionStrings = undefined
+page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!
 
 cor_ru.updateResources(true)

@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/auth-layer.js
+    adaptation for /hello
+    (---i like sentries)
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['hello'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -22,7 +34,7 @@ env.localization.page['hello'] = {dialogues: {},
     }
 }
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 
 env.localization.page["hello"].dialogues["enter"] = generateDialogueObject(`
 start

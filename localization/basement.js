@@ -1,3 +1,16 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/basement.js
+    adaptation for /
+    (---yes just /
+    ---thats the starting page)
+
+    progress: ep2 finished (except for depthrecovery2) as of 23.08.2025
+*/
+
+
 env.localization.page['fbx'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -73,7 +86,7 @@ env.localization.page['fbx'] = {dialogues: {},
     }
 }
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 
 
 env.localization.page['fbx'].dialogues["index"] = generateDialogueObject(`

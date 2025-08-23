@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/our-dull-vessel.js
+    adaptation for /local/dullvessel
+
+    progress: mothdialogue and some ent descs unfinished, need to see what else could be missing cause i dont remmeber shit as of 23.08.2025
+*/
+
+
 env.localization.page['dullvessel'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -6,19 +17,19 @@ env.localization.page['dullvessel'] = {dialogues: {},
         "looks like funfriend's restored a little bit here, there's definitely more data than before": "похоже развледруг тут потрудился, здесь точно прибавилось данных",
         "about the dull vessel": "о судне серое",
 
-        'pilot cyst': `пилотная циста`,
-        'glazika': `глазика`,
-        'container': `контейнер`,
-        'climbing wall': `скалодром`,
-        'dull heart': `сердце серое`,
-        'workspace': `рабочее место`,
-        'translation slab': `переводная плита`,
-        'column': `колонна`,
-        'bright ground-parasite': `светлый землепаразит`,
-        'advanced rejuvenation chamber': `продвинутая омолаживающая камера`,
-        'high-pressure body': `тело высокого давления`,
-        'personal storage': `личное хранилище`,
-        'equipment storage': `хранилище оборудования`,
+        "pilot cyst": cor_ru.entity_menu["pilot cyst"].name,
+        "glazika": cor_ru.entity_menu["glazika"].name,
+        "container": cor_ru.entity_menu["container"].name,
+        "climbing wall": cor_ru.entity_menu["climbing wall"].name,
+        "dull heart": cor_ru.entity_menu["dull heart"].name,
+        "workspace": cor_ru.entity_menu["workspace"].name,
+        "translation slab": cor_ru.entity_menu["translation slab"].name,
+        "column": cor_ru.entity_menu["column"].name,
+        "bright ground-parasite": cor_ru.entity_menu["bright ground-parasite"].name,
+        "advanced rejuvenation chamber": cor_ru.entity_menu["advanced rejuvenation chamber"].name,
+        "high-pressure body": cor_ru.entity_menu["high-pressure body"].name,
+        "personal storage": cor_ru.entity_menu["personal storage"].name,
+        "equipment storage": cor_ru.entity_menu["equipment storage"].name,
 
         /*pilot cyst*/ "unfinished": "незаконченное",
         /*pilot cyst*/ "business": "дело",
@@ -34,66 +45,24 @@ env.localization.page['dullvessel'] = {dialogues: {},
     },
 
     entityDescriptions: {
-        'pilot cyst': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-<span style="color: var(--obesk-color)" definition="ПРЕДУПРЕЖДЕНИЕ::'в большинстве необрабатываемая сущность';'может быть неточной'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'великий разум моего судна'</span>`,
-
-        'glazika': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'`,
-
-        'container': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обработанные металлы, легкодоступные'</span>`,
-
-        'parasite plane': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-::НЕВИЗУАЛИЗИРУЕМА
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'простая игра управления ресурсами и воровством';'любима в ${processDefinitionsInString("олтазни")}'</span>`,
-
-        'climbing wall': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'ностальгическая имитация пещерного камня';'угождает <span class="code">личиночному</span> инстинкту лазания'</span>`,
-
-        'dull heart': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'устройство за пределами моего понимания';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'советуют не пялиться'</span>`, // позже
-
-        'workspace': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'визуальный дисплей с применением люминесцентных роев корру';'помогает с многозадачностью'</span>`,
-
-        'translation slab': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'сборник светлых записей, предоставленный послом';'отчёты о прогрессе со штормом'</span>`,
-
-        'column': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'инструмент ремонтного обслуживания';'место для моей личной цисты'</span>
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нарушена крайней бессвязностью поблизости';'рекомендуется расследование'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-        'bright ground-parasite': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательные светлые существа, подарки от подруги';'содержатся в цистах, насыщенных кислородом'</span>`,
-
-        'advanced rejuvenation chamber': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'предоставляет уют сна, даже в ${processDefinitionsInString("θсмерти")}';'спроектирована как капсула для выживания в случае обвала серое'</span>`,
-
-        'high-pressure body': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'запасное тело для работ на экстремальных глубинах';'специализированная система управления давлением;'неудобно для повседневного пользования'</span>`,
-
-        'personal storage': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
-
-        'equipment storage': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
+        "pilot cyst": cor_ru.entity_menu["pilot cyst"].desc,
+        "glazika": cor_ru.entity_menu["glazika"].desc,
+        "container": cor_ru.entity_menu["container"].desc,
+        "climbing wall": cor_ru.entity_menu["climbing wall"].desc,
+        "dull heart": cor_ru.entity_menu["dull heart"].desc,
+        "workspace": cor_ru.entity_menu["workspace"].desc,
+        "translation slab": cor_ru.entity_menu["translation slab"].desc,
+        "column": cor_ru.entity_menu["column"].desc,
+        "bright ground-parasite": cor_ru.entity_menu["bright ground-parasite"].desc,
+        "advanced rejuvenation chamber": cor_ru.entity_menu["advanced rejuvenation chamber"].desc,
+        "high-pressure body": cor_ru.entity_menu["high-pressure body"].desc,
+        "personal storage": cor_ru.entity_menu["personal storage"].desc,
+        "equipment storage": cor_ru.entity_menu["equipment storage"].desc,
     }
 }
 
 
-// -- DIALOGUES -- //
+// === DIALOGUES === //
 
 env.localization.page["dullvessel"].dialogues["pilot"] = generateDialogueObject(`
 start

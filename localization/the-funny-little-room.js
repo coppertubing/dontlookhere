@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/the-funny-little-room.js
+    adaptation for /local/ocean/ship/interview
+
+    progress: only moth unfinished as of 23.08.2025
+*/
+
+
 env.localization.page['interview1'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -20,7 +31,7 @@ env.localization.page['interview1'] = {dialogues: {},
 }
 
 
-// -- DIALOGUES -- //
+// === DIALOGUES === //
 env.localization.page["interview1"].dialogues.interviewResponses = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::interviewer

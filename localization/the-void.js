@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/the-void.js
+    adaptation for /local/orbit
+    (---so vast and empty!)
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['localorbit'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -8,14 +20,12 @@ env.localization.page['localorbit'] = {dialogues: {},
     entityDescriptions: {
         'proxyfriend?': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
-        'gate::the dull contrivance': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-::ТОЧКА НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`
+        'gate::the dull contrivance': cor_ru.entity_menu["gate::the dull contrivance"].desc,
     }
 }
 
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 env.localization.page['localorbit'].dialogues.fairyresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -214,7 +224,7 @@ RESPOBJ::
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
-env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{
+env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{ // i forgot why we have it but shit breaks without it iirc
     try {
         if(flags.detectedEntities["..__THE_VOID__.."].entities["gate::the dull contrivance"].scanned) {
             return true

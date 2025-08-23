@@ -1,6 +1,19 @@
-getLocalizationForPage(true);
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/entity-menu.js
+    all the fun stuff like entity names and descriptions is kept here!
+    this is both for the entity menu and for easy storage of everything
+
+    progress: always stuff to finish as of 23.08.2025
+*/
+
+
+getLocalizationForPage(true); // --- we call it so often because we really REALLY need to make sure that all the definitions are READY for this part. if we dont do this it sometimes it just crumbles for no reason. eh
 
 cor_ru.entity_menu = {
+    // --- rrly proud of this shit i feel so smart
     // do it not like you would in env.localization
     /*
     "original entity name": {
@@ -8,35 +21,45 @@ cor_ru.entity_menu = {
         desc: `localized exm description`
     },
     do not forget about <br>'s!!!!!!!!!!!!!!!!!!!!!! place <br>'s !!!!!!!!!!!!!!!!!!!!*/
-    //localhost
+
+
+    // === localhost
     "funfriend": {
         name: `развледруг`,
         desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'управление системой';'ассистент'`
     },
 
-    //cache
+    // === cache
     "the storm": {
         name: `шторм`,
-        desc: ` `
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'искра, скрестившая наши несчастья воедино';'моя самая большая ошибка'</span>`
     },
     "polygonation spire": {
         name: `шпиль полигонизации`,
-        desc: ` `
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'близнецы обожают его посещать';'они продают синтетические копии'</span><br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
     "ÉœÙ]ïå¥¹": {
         name: `ÉœӬ́]ӹå¥¹`,
-        desc: ` `
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
     "? ???? ?? ?? ??": {
         name: `? ???? ?? ?? ??`,
-        desc: ` `
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
     "Ò½º": {
-        name: `Ò½º`,
-        desc: ` `
+        name: `Ò²⁄₇º`,
+        desc: `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
 
-    //their city
+    // === their city
     "glimmering spires mark their cities": {
         name: `блистающие шпили обозначают их города`,
         desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА<br>
@@ -65,7 +88,7 @@ cor_ru.entity_menu = {
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'в вечном скептицизме'</span>`
     },
 
-    //city surface
+    // === city surface
     "cashier": {
         name: `кассир`,
         desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
@@ -118,7 +141,7 @@ cor_ru.entity_menu = {
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательный <span class='code'>цветок</span>'</span>`
     },
 
-    //the void
+    // === the void
     "our dull vessel": {
         name: `наше судно серое`,
         desc: `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
@@ -132,7 +155,7 @@ cor_ru.entity_menu = {
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`
     },
 
-    //our dull vessel
+    // === our dull vessel
     "pilot cyst": {
         name: `пилотная циста`,
         desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
@@ -216,7 +239,7 @@ cor_ru.entity_menu = {
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`
     },
 
-    //the embassy
+    // === the embassy
     "akizetesche": {
         name: `акизетеше`,
         desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
@@ -312,19 +335,19 @@ cor_ru.entity_menu = {
         name: `враждебный вейлькосвет`,
         desc: ``
     },
-    "recollection::discovery": {
+    "вспоминание::discovery": {
         name: `вспоминание::открытие`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span><br>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый ${processDefinitionsInString("взор")}'</span>`
     },
-    "recollection::suspicion": {
+    "вспоминание::suspicion": {
         name: `вспоминание::подозрение`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span><br>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз ${processDefinitionsInString("велзи")} выгибается в ликовании'</span>`
     },
-    "recollection::collapse": {
+    "вспоминание::collapse": {
         name: `вспоминание::обвал`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>
     ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'использует'::ВНУТРЕННЯЯ_ИТЕРАЦИЯ::'методы'</span><br>
@@ -525,7 +548,7 @@ cor_ru.entity_menu = {
         desc: ``
     },
 
-    //golem maintenance
+    // === golem maintenance
     "cavelight": {
         name: ``,
         desc: ``
@@ -648,13 +671,13 @@ cor_ru.entity_menu = {
     },
     "dog": {
         name: `собака`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a <span class="code" definition="NOTE::'partial translation';'implied closest cultural equivalent'">dog</span>'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'ignoring thoughtform specifications'">::INCOHERENCE DETECTED</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'<span class="code" definition="ПРИМЕЧАНИЕ::'частичный перевод';'подразумевается ближайший культурный эквивалент'">собака</span>'</span>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'игнорирует требования мыслепространства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
 
-    //their waters
+    // === their waters
     "gate::the depths": {
         name: `врата::глубины`,
         desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'почему ты здесь'</span>`
@@ -680,7 +703,7 @@ cor_ru.entity_menu = {
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`
     },
 
-    //their vessel
+    // === their vessel
     "the funny little room": {
         name: `забавная маленькая комната`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА`
@@ -691,7 +714,7 @@ cor_ru.entity_menu = {
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
 
-    //pale halls
+    // === pale halls
     "idril": {
         name: `идрил`,
         desc: ``
@@ -829,67 +852,71 @@ cor_ru.entity_menu = {
         desc: ``
     },
 
-    //uncosm
+    // === uncosm
     "memoryhole": {
-        name: `брешь памяти`,
-        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>
-    ::ТОЧКА НАЗНАЧЕНИЯ::'недействительно';..ОШИБКА::Й̵Óэ̇=ОШИБКА::;;::-¼¯-ꙗН£«â<br>
-    ОШИБКА::ªъõ„'(‚ôЦ̌д7÷ Ц̌e`
+        name: `брешьпамяти`,
+        desc: `::НЕОБРАБАТЫВАЕМАЯ МЫСЛЕФОРМА<br>
+::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат'">НЕОБЫЧНАЯ ПОДПИСЬ</span><br>
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'помощи не получишь хихихихихи'</span>`
     },
 
-    //jokzi ozo
+    // === jokzi ozo
     "council": {
         name: `совет`,
-        desc: `::UNPROCESSABLE THOUGHTFORM<br>
-    ::<span definition="NOTE::'non-standard format';'implies connector thoughtform';'self-connected'">UNUSUAL SIGNATURE</span><br>
+        desc: `::НЕОБРАБАТЫВАЕМАЯ МЫСЛЕФОРМА<br>
+    ::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'предполагает соединительную мыслеформу';'самосоединённая'">НЕОБЫЧНАЯ ПОДПИСЬ</span><br>
     ::??-?_##)__L2xvY2FsL296by8`
     },
     "fairy": {
         name: `фея`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE:'hunger'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ:'голод'<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'побрякушка, носима(ԘØ;;-__ОШИБКА::'необрабатываемо'__;'свободна! свободна!!'</span>`
     },
     "isabel": {
         name: `изабель`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'joy'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'resembles earth ground-parÙãÆƒ-ÌC__ERROR::'unprocessable'__;'bearer of kind dreams'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'радость'<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'напоминает светлых землепаразиӰ́ãÆф-ЪЗ__ОШИБКА::'необрабатываемо'__;'носительница добрых грёз'</span>`
     },
     "effigy": {
         name: `эффигия`,
-        desc: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'isabel! isabel! isabel!'</span>`
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`
     },
     "sun": {
         name: `солнце`,
-        desc: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the screaming eye that reared the bright cousins';'requires ocular manipulation to directly observe'</span>`
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'кричащий глаз, вскормивший светлых близнецов';'требует окулярную манипуляцию для непосредственного наблюдения'</span>`
     },
     "gate::gate::?/::G:a;;T:E": {
         name: `врата::врата::?/::В:р;;АТ:А`,
-        desc: ``
+        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>
+    ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМО<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'максимальная бессвязность';'визуализация возможна';'не рекомендуется'">::ОШИБКА ОБРАБОТКИ</span>`
     },
     "gate::gaGATE::te::?/..::G:a;;T:E": {
         name: `врата::враВРАТА::та::?/..::В:р;;АТ:А`,
-        desc: ``
+        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>
+    ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМО<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`
     },
     "GELI": {
         name: `ДЖЕЛИ`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'personable golem with a strong tir echo';'either unable or unwilling to perceive reality as it was'</span>
-    ::ADDITIONAL NOTE::<span style='color: var(--bastard-color)'>'now free'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion'">::INCOHERENCE DETECTED</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'personable golem with a strong tir echo';'either unable or unwilling to perceive reality as it was'</span><br>
+    ::ADDITIONAL NOTE::<span style='color: var(--bastard-color)'>'now free'</span><br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'no cohesion'">::INCOHERENCE DETECTED</span>`
     },
 
-    //frame
+    // === frame
     "daemon mimic": {
         name: `демон-мимик`,
         desc: ``
@@ -940,59 +967,66 @@ cor_ru.entity_menu = {
     },
     "wheel": {
         name: `штурвал`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery'
-    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'BOAT ON OCEAN = NO TILES';'SO NOW U A PIRATE';'>%^)'">'use 2 drive';'watch out'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span class="bastard-color bastard-font" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'ЛОДКА В АКЕАНЕ = НЕТ ПЛИТОК';'ТАК ШО ТЫ ТЕРЬ ПИРАТ';'>%^)'">'для вождения';'берегис'</span>`
     },
     "radio": {
         name: `радио`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
-    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'IM ACTUALY RLY CLOSE OUTSIDE';'CANT JUST DO ANYTHING';'HAVE 2 COMPLY W/ MEMORY JUSTIFICATIN REQS'">'da lifeline'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка';'злой режим';'хихи'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span class="bastard-color bastard-font" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'Я ВАПЩЕТ ТУТ ОЧ РЯДОМ СНРЖИ';'ПРСТ НИЧЕ НЕ МОГУ ДЕЛАТЬ';'НАДА СОБЛЮДАЦ ТРЕБЫ ПО ОПРАВДАНИЮ ВСПМНАНИЯ'">'da lifeline'</span>`
     },
     "basterminal": {
         name: `сволочерминал`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
-    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="ANALYSIS::'HUMORS = ACTIONS';'AWESOEME';'TY GLI'">'cool editor'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка';'злой режим';'хихи'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span class="bastard-color bastard-font" definition="АНАЛИЗ::'ЮМОРЫ = ДЕЙСТВИЯ';'ОЬЛИЧНО';'СПС ДЖЛИ'">'крутой редактор'</span>`
     },
     "exchange terminal": {
         name: `обменный терминал`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unique scenery';'evil mode';'hehe'
-    ::INHERITED CONTEXT::<span class="bastard-color bastard-font" definition="INHERITED CONTEXT::'I HAVE 2 MAKE SURE IT MAKES SENSE W/ MEMORY SHT';'SFER SEEM LIKE SOLID IDEA :P';'TY JELY'">'reimprinting thingy';'trade justification'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка';'злой режим';'хихи'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span class="bastard-color bastard-font" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'I HAVE 2 MAKE SURE IT MAKES SENSE W/ MEMORY SHT';'СФЕР КАЖЕЦА НОРМ ИДЕЕЙ :P';'СПС ЖЕЛИ'">'reimprinting шту4ка';'опрвдание для торговли'</span>`
     },
     "interloper": {
         name: `лазутчик`,
-        desc: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection locus'${check("e3a2__escapewin")?`
-    ::INHERITED CONTEXT::<span style='color: var(--bright-color)' definition="NOTE::'malformed context';'potential tampering'">'what do you think, stowaway?'</span>
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'${check("e3a2__escapewin")?`<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)' definition="NOTE::'malformed context';'potential tampering'">'what do you think, stowaway?'</span>
     ` : ""}`
     },
 
-    //abyss
+    // === abyss
     "s w   al kk": {
         name: `п р     ох йй`,
-        desc: ``
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>`
     },
     "Ƙø¿ƶḳ¿±": {
-        name: `Қø¿ӡḳӣ¿±`,
-        desc: ``
+        name: `Қø¿ӡḳ¿±`,
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
     "×è.÷ùÏÏøø": {
         name: `×è.÷я̄ҊҊøø`,
-        desc: ``
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
 
-    //parasite
+    // === parasite
     "piece": {
         name: `фишка`,
-        desc: ``
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры'<br>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'фишка из игры паразит';'милые стилизации ${processDefinitionsInString("паршелуковец сельки")}'</span><br>
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'игнорирует требования мыслепространства';'отсутствующие данные'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
 
 }
 
-cor_ru.getEntityMenuNames = function() {
+cor_ru.getEntityMenuNames = function() { // to adapt the lil definition-like names in entmenu whilist avoiding strings bleeding in 
     let names = []
     for (let i = 0; i < Object.keys(cor_ru.entity_menu).length; i++) { 
         names.push(["ENTITY::'"+Object.keys(cor_ru.entity_menu)[i]+"'", "СУЩНОСТЬ::'"+cor_ru.entity_menu[Object.keys(cor_ru.entity_menu)[i]].name+"'"])

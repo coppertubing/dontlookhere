@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/hub.js
+    adaptation for /local/hub
+    (---best had with 50 hammers!)
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['hub'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -82,7 +94,7 @@ env.localization.page['hub'] = {dialogues: {},
 }
 
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 
 env.localization.page["hub"].dialogues.hubBuddyResponses = generateDialogueObject(`
 RESPOBJ::

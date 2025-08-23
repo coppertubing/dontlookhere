@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/memory-hole.js
+    adaptation for /local/uncosm/where and all of the memory hole pages
+    (---hmmmmmmmmmmmmmm.........)
+
+    progress: every page finished, definitions unfinished, review needed, b o n u s as of 23.08.2025
+*/
+
+
 env.localization.page['localuncosmwhere'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -133,9 +145,9 @@ env.localization.page['sec'] = {dialogues: {},
     }
 }
 
-env.localization.page['sry'] = {dialogues: {}}
+env.localization.page['sry'] = {dialogues: {}, strings: {"..__F($JKSV&*Z^)": "..__Ф($ЖКСВ&*З^)"}}
 
-// -- DIALOGUES -- //
+// === DIALOGUES === //
 env.localization.page["localuncosmwhere"].dialogues["wrong"] = generateDialogueObject(`
 start
     ¥Óñ«J

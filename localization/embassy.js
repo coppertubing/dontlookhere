@@ -1,3 +1,16 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/embassy.js
+    adaptation for /local/ocean/embassy
+    for combat, see combat.js
+    (---akizet youre so good at decisions)
+
+    progress: discovery and suspision finished, collapse unfinished in dialogue and entity descs, mothdialogues unfinished as of 23.08.2025
+*/
+
+
 env.localization.page['embassy'] = {dialogues: {},
     definitions: {
 
@@ -107,12 +120,12 @@ env.localization.page['embassy'] = {dialogues: {},
         "chat": "поговорить",
         "convene": "созвать",
 
-        "akizetesche": "акизетеше",
+        "akizetesche": cor_ru.entity_menu["akizetesche"].name,
         "akizet": "акизет",
         "think to self": "подумать про себя",
         "ruminate over cyst": "размышлять о цисте",
 
-        "gakvu": "гакву",
+        "gakvu": cor_ru.entity_menu["gakvu"].name,
         "toggle cloak": "переключить накидку",
             "ok": "хорошо",
             "sure": "конечно",
@@ -120,43 +133,43 @@ env.localization.page['embassy'] = {dialogues: {},
             "really? now? all right": "серьёзно? в такой θмиг? ладно",
             "ok akizet": "ага акизет",
 
-        "tozik": "тозик",
-        "cavik": "кавик",
-        "kazki": "казки",
-        "bozko": "бозко",
+        "tozik": cor_ru.entity_menu["tozik"].name,
+        "cavik": cor_ru.entity_menu["cavik"].name,
+        "kazki": cor_ru.entity_menu["kazki"].name,
+        "bozko": cor_ru.entity_menu["bozko"].name,
 
-        "tir qou": "тир куу",
-        "kiv qou": "кив куу",
-        "jut qou": "жат куу",
-        "vel qou": "вел куу",
+        "tir qou": cor_ru.entity_menu["tir qou"].name,
+        "kiv qou": cor_ru.entity_menu["kiv qou"].name,
+        "jut qou": cor_ru.entity_menu["jut qou"].name,
+        "vel qou": cor_ru.entity_menu["vel qou"].name,
 
         "it is locked": "заперто",
 
-        'container': `контейнер`,
-        "attendant": "слуга",
-        "movefriend": "движедруг",
-        "my seat": "моё кресло",
+        "container": cor_ru.entity_menu["container"].name,
+        "attendant": cor_ru.entity_menu["attendant"].name,
+        "movefriend": cor_ru.entity_menu["movefriend"].name,
+        "my seat": cor_ru.entity_menu["my seat"].name,
             "start the meeting": "начать совещание",
-        "barfriend": "бардруг",
-        "orange simulacrum": "апельсиновый симулякр",
+        "barfriend": cor_ru.entity_menu["barfriend"].name,
+        "orange simulacrum": cor_ru.entity_menu["orange simulacrum"].name,
             "sip-u-lacrum": "сюрп-лякр",
                 "THE SIMULACRUM STAYS THE SAME, BUT THE TASTE REGISTERS CLEARLY": "СИМУЛЯКР ОСТАЕТСЯ ПРЕЖНИМ, ОДНАКО ВКУС ВОСПРИНИМАЕТСЯ ЧЁТКО",
                 "THE BRIGHTNESS OF IT DISTORTS MY FEATURES AND SENDS MY RECEPTORS INTO A REFLEXIVE CURL": "ЕГО ЯРКОСТЬ ИСКАЖАЕТ МОИ ЧЕРТЫ И ПОСЫЛАЕТ РЕЦЕПТОРЫ В НЕПРОИЗВОЛЬНЫЙ ЗАВИТОК",
                 "STRONG!! BUT THE CITRUS INSPIRES A PLEASANT SATIATION": "КРЕПКИЙ!! НО ЦИТРУС ВЫЗЫВАЕТ ПРИЯТНОЕ ЧУВСТВО НАСЫЩЕНИЯ",
-        "veilklight": "вейлькосвет",
-        "rejuvenation chamber": "омолаживающая камера",
-        "kalstik stand": "подставка кальстика",
-        "face stand": "подставка лица",
-        "cyst cluster": "скопление цист",
-        "cyst pile": "кучка цист",
-        "clothing storage": "хранилище одежды",
-        "listener": "слушатель",
-        "timestopper": "времядержец",
-        "window": "окно",
-        "simulacra dispensary": "раздатчик симулякров",
+        "veilklight": cor_ru.entity_menu["veilklight"].name,
+        "rejuvenation chamber": cor_ru.entity_menu["rejuvenation chamber"].name,
+        "kalstik stand": cor_ru.entity_menu["kalstik stand"].name,
+        "face stand": cor_ru.entity_menu["face stand"].name,
+        "cyst cluster": cor_ru.entity_menu["cyst cluster"].name,
+        "cyst pile": cor_ru.entity_menu["cyst pile"].name,
+        "clothing storage": cor_ru.entity_menu["clothing storage"].name,
+        "listener": cor_ru.entity_menu["listener"].name,
+        "timestopper": cor_ru.entity_menu["timestopper"].name,
+        "window": cor_ru.entity_menu["window"].name,
+        "simulacra dispensary": cor_ru.entity_menu["simulacra dispensary"].name,
 
         // suspicion
-        "mystery cyst": "таинственная циста",
+        "mystery cyst": cor_ru.entity_menu["mystery cyst"].name,
             "examine": "осмотреть",
                 "echo": "эхо",
 
@@ -175,154 +188,46 @@ env.localization.page['embassy'] = {dialogues: {},
         "recollection::„²!Äë±#Rã": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
-        "recollection::discovery": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый ${processDefinitionsInString("взор")}'</span>`, //добавить деф (я вставил как в entity-menu хз работает ли)
-        "recollection::suspicion": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз велзи выгибается в ликовании'</span>`,
-        "recollection::collapse": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    ::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'использует'::ВНУТРЕННЯЯ_ИТЕРАЦИЯ::'методы'</span>
-    ::ПРИМЕЧАНИЕ::<span style="color:var(--bright-color)">'будет доступна возможность сохранения и повторного просмотра итерации'</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вот бы он прислушался'</span>`,
+    
+        "recollection::discovery": cor_ru.entity_menu["recollection::discovery"].desc,
+        "recollection::suspicion": cor_ru.entity_menu["recollection::collapse"].desc,
+        "recollection::suspicion": cor_ru.entity_menu["recollection::collapse"].desc,
 
         // main obesk
-        "akizetesche": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'метка ${processDefinitionsInString("олтазни")}'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'я просто думаю, что они крутые'">близнецовые глаза</span>'
-    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
-        "cavik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'метка <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'дом';'вазнийский пещерный город';'да будут же глаза развеваться!!'">олтазни</span>'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращены назад'
-    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
-        "bozko": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'а к чему морока?';'самопроектирование - это слишком долго'">продиктованная самовосприятием подпись</span>'
-    <span style='color: var(--friend-color)'>+</span>'формация ${processDefinitionsInString("куу")}-тела для экстремального давления'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("кив")}-рецепторы, напыщенные'`,
-        "kazki": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, грибковая стилизация'
-    <span style='color: var(--friend-color)'>+</span>'разделительное представление ${processDefinitionsInString("куу")}-тела'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'совместная работа жителя козазни';'гевериканеше жат жекарри'">внешне-проектированная подпись</span>'`,
-        "tozik": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, торчмя'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'их чёрные зрачки разительны'">близнецовые глаза</span>'
-    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
-        "gakvu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вел")}-рецепторы, завитые, угловая стилизация'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'моя настоящая накидка тоже так делает, она покрыта грибком'">самоспроектированная подпись</span>'`,
-        "miltza": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("экивиковое")} геометрическое влияние'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("тир")}-рецепторы, когтистые'
-    <span style='color: var(--friend-color)'>+</span>'<span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'религиозное значение'">дополнительная окизиковая рука</span>'
-    <span style='color: var(--friend-color)'>+</span>'самоспроектированная подпись'`,
+        "akizetesche": cor_ru.entity_menu["akizetesche"].desc,
+        "cavik": cor_ru.entity_menu["cavik"].desc,
+        "bozko": cor_ru.entity_menu["bozko"].desc,
+        "kazki": cor_ru.entity_menu["kazki"].desc,
+        "tozik": cor_ru.entity_menu["tozik"].desc,
+        "gakvu": cor_ru.entity_menu["gakvu"].desc,
+        "miltza": cor_ru.entity_menu["miltza"].desc,
 
         // discovery
-        'container': `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обработанные металлы, легкодоступные'</span>`,
-
-        'movefriend': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'соединитель'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'один из многих во плоти посольства'</span>`,
-
-        "attendant": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'распространённый и полезный придаток ${processDefinitionsInString("землемысльца")}'</span>`,
-
-        "my seat": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'`,
-
-        "barfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'любимец и ${processDefinitionsInString("вазнийских")}, и ${processDefinitionsInString("экивиковых")} регионов'</span>`,
-
-        "orange simulacrum": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'восхитительная реконструкция светлого фрукта от инициативы материалов'</span>`,
-
-        "veilklight": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'у этих светильников ностальгический <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'еда';'спелый фрукт'">вейльк-паразитный</span> дизайн'</span>`,
-
-        "rejuvenation chamber": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'предоставляет уют сна, даже в ${processDefinitionsInString("θсмерти")}'</span>`,
-
-        "kalstik stand": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'${processDefinitionsInString("кальстика")} у меня нет, мне просто нравится незанятая подставка'</span>`,
-
-        "face stand": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'для восстановления личиночного лица, если нахлынет плотская ностальгия'</span>`,
-
-        "cyst cluster": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'сборник того да сего, управляемый центральною наблюдательною цистою'</span>`,
-
-        "cyst pile": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
-        "clothing storage": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'`,
-
-        "listener": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'дозорные, внимательно вбирающие в себя зов'</span>`,
-
-        "timestopper": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'величайшая циста во всём посольстве, миллиард умов в одном'</span>`,
-
-        "window": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'чтобы видеть и делиться увиденным'</span>`,
-
-        "simulacra dispensary": `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'дурацкая привычка, которая не покидает некоторых даже после ${processDefinitionsInString("θсмерти")}'</span>`,
-
-        "tir qou": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-    ::ИЗМЕНЁННАЯ ПОДПИСЬ
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'привет лазутчик это развледруг мне пришлось сымпровизировать эти были совершенно бессвязными извини ахаха'</span>`,
-        "jut qou": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-    ::ИЗМЕНЁННАЯ ПОДПИСЬ
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'привет лазутчик это развледруг мне пришлось сымпровизировать эти были совершенно бессвязными извини ахаха'</span>`,
-        "kiv qou": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-    ::ИЗМЕНЁННАЯ ПОДПИСЬ
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'привет лазутчик это развледруг мне пришлось сымпровизировать эти были совершенно бессвязными извини ахаха'</span>`,
-        "vel qou": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-    ::ИЗМЕНЁННАЯ ПОДПИСЬ
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'привет лазутчик это развледруг мне пришлось сымпровизировать эти были совершенно бессвязными извини ахаха'</span>`,
+        "container": cor_ru.entity_menu["container"].desc,
+        "movefriend": cor_ru.entity_menu["movefriend"].desc,
+        "attendant": cor_ru.entity_menu["attendant"].desc,
+        "my seat": cor_ru.entity_menu["my seat"].desc,
+        "barfriend": cor_ru.entity_menu["barfriend"].desc,
+        "orange simulacrum": cor_ru.entity_menu["orange simulacrum"].desc,
+        "veilklight": cor_ru.entity_menu["veilklight"].desc,
+        "rejuvenation chamber": cor_ru.entity_menu["rejuvenation chamber"].desc,
+        "kalstik stand": cor_ru.entity_menu["kalstik stand"].desc,
+        "face stand": cor_ru.entity_menu["face stand"].desc,
+        "cyst cluster": cor_ru.entity_menu["cyst cluster"].desc,
+        "cyst pile": cor_ru.entity_menu["cyst pile"].desc,
+        "clothing storage": cor_ru.entity_menu["clothing storage"].desc,
+        "listener": cor_ru.entity_menu["listener"].desc,
+        "timestopper": cor_ru.entity_menu["timestopper"].desc,
+        "window": cor_ru.entity_menu["window"].desc,
+        "simulacra dispensary": cor_ru.entity_menu["simulacra dispensary"].desc,
+        "tir qou": cor_ru.entity_menu["tir qou"].desc,
+        "jut qou": cor_ru.entity_menu["jut qou"].desc,
+        "kiv qou": cor_ru.entity_menu["kiv qou"].desc,
+        "vel qou": cor_ru.entity_menu["vel qou"].desc,
 
         // suspicion
 
-        "mystery cyst": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'окова моих глаз'</span>`,
+        "mystery cyst": cor_ru.entity_menu["mystery cyst"].desc,
                 
         // collapse part 1
 
@@ -336,7 +241,7 @@ env.localization.page['embassy'] = {dialogues: {},
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
 
-setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // beech translation
+setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") {
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
@@ -354,7 +259,7 @@ RESPOBJ::
         об обесках<+>obeskloop
         об обвале<+>collapseloop
             SHOWIF::"embassy__d3_start-end"
-        о свлчи<+>bstrd
+        о свлчь<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
         неважно<+>CHANGE::++moth
             FAKEEND::(назад)
@@ -465,16 +370,16 @@ collapseloop
 
 cavik
     self
-        AKIZET SAID SOMETHING ABOUT CAVIK...
-        POTENTIALLY GETTING THEM KILLED?
+        АКИЗЕТ ГОВОРИЛА ПРО ТО, ЧТО ИЗ-ЗА КАВИКА... AKIZET SAID SOMETHING ABOUT CAVIK...
+        ИХ МОГУТ УБИТЬ? POTENTIALLY GETTING THEM KILLED?
     
     moth
-        yeah, i saw that too...
-        i think this memory is further ahead than the other ones
-        we're definitely missing something
+        ага-п, и я видел<блинскиймоль>... yeah, i saw that too...
+        я думаю это воспоминание i think this memory is further ahead than the other ones
+        нам точно чего-то не хватает we're definitely missing something
 
     RESPONSES::self
-        i see<+>collapseloop
+        понятно<+>collapseloop
             FAKEEND::(назад)
 
 casualties
@@ -4583,33 +4488,33 @@ SKIP::vn.done()
 env.localization.page['embassy'].dialogues["d3_rec_enter"] = generateDialogueObject(` 
 start
     sourceless
-        AS WE ENTER, I AM STRUCK BY THE CHAOS
-        A SWARM OF WARPED CONTAINERS ARE SKITTERING AROUND THE ROOM
-        THEY HAVE TORN APART THE SCENERY, AND A FEW...
-        A FEW QOU BODIES... ARE SCATTERED AROUND
-        SHARED HORROR RINGS THROUGH OUR CONNECTION
+        КОГДА МЫ ВХОДИМ, Я ПОРАЖАЮСЬ ХАОСУ
+        СТАЯ ИСКРИВЛЁННЫХ КОНТЕЙНЕРОВ МЕЧЕТСЯ ПО ПОМЕЩЕНИЮ
+        ОНИ РАЗНЕСЛИ ДЕКОРАЦИИ НА ЧАСТИ, И НЕСКОЛЬКО...
+        НЕСКОЛЬКО КУУ ТЕЛ... РАЗБРОСАНЫ ПО СТОРОНАМ
+        СОВМЕСТНЫЙ УЖАС ЗВЕНИТ В НАШЕМ СОЕДИНЕНИИ
     
     akizet
-        listen - it is probably just their bodies that have collapsed
-        we need to see if the mindcores in those two are recoverable
+        послушайте - скорее всего, только их тела рухнули
+        нам нужно увидеть, можно ли спасти их мыслеядра
     
     sourceless
-        GAKVU AND TOZIK BOTH SLINK BEHIND ME
-        I CAN FEEL THAT GAKVU'S ATTITUDE HAS SHIFTED IN THE FACE OF FINAL DEATH
-        AND TOZIK COLDLY EXAMINES THE CONTAINERS, WHICH HAVE NOT SENSED US YET
+        ГАКВУ И ТОЗИК ПРОКРАДЫВАЮТСЯ ВСЛЕД ЗА МНОЙ
+        Я ОЩУЩАЮ, КАК ИЗМЕНИЛОСЬ ПОВЕДЕНИЕ ГАКВУ ПЕРЕД ЛИЦОМ ЗАКЛЮЧИТЕЛЬНОЙ СМЕРТИ
+        А ТОЗИК ХЛАДНОКРОВНО РАССМАТРИВАЕТ КОНТЕЙНЕРЫ, ЕЩЁ НЕ ОБНАРУЖИВШИЕ НАС
     
     tozik
         there will be some sfer within these, possibly enough for us to work with
         this should not be difficult, especially with the timestopper
-        we have you covered
+        мы прикроем тебя
 
     sys
-        WARNING::'active thoughtforms within thoughtspace'
-        NOTE::'any contact with active thoughtforms will initiate combat interface'
-        NOTE::'active thoughtforms will only move in response';'per thoughtform context'
+        ПРЕДУПРЕЖДЕНИЕ::'активные мыслеформы в мыслепространстве'
+        ПРИМЕЧАНИЕ::'любой контакт с активными мыслеформами инициирует боевой интерфейс'
+        ПРИМЕЧАНИЕ::'активные мыслеформы двигаются только в ответ';'по контексту мыслеформы'
 
     RESPONSES::akizet
-        proceed<+>END
+        продолжить<+>END
 
 SKIP::
 `)
@@ -6353,7 +6258,7 @@ who
             SHOWIF::"e3a2__bstrdmeet"
         я десь шоб было В3С3Л0!!!
         обрамляющие устройсва иногд скушнblе......
-        так шо я беру & улчшаю мелкую частб
+        так шо я беру & улчшаю мелкую 4асть
         шоб развлеч тя есл хочеца ?
         >:)
         
@@ -6393,7 +6298,7 @@ what
         '_'
         БЛЬШНСТВ из этго ряльн случлсь
         :V
-        я прст сделал вс круче
+        я прст сделал вс кру4е)
 
 ____SHOWONCE::
 ____SHOWIF::["e3a2__bstrdmeet", false]
@@ -7096,7 +7001,7 @@ start
     bstrd
         рбята вы ток шо научили голема как пользоваца пушкми
         АХУЕНА ...
-        РАССТРЕЛЯТ!!! ВО ТАК ИХ ЧУВАК!!
+        РАССТРЕЛЛЛЯТЬ!!! ВО ТАК ИХ 4УВАК!!
         >:}
     
     sourceless

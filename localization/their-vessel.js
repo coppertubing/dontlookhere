@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/their-vessel.js
+    adaptation for /local/ocean/ship
+    (---such an empty page haha)
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['localship'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -7,9 +19,7 @@ env.localization.page['localship'] = {dialogues: {},
         "figures we finally get a compatible corrucyst with some real data, and it has something destroying it": "ну разумеется, мы получаем совместимую корруцисту с реальными данными - и её непонятно что ломает изнутри"
     }, 
     entityDescriptions: {
-        'the funny little room': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА`,
-        'clemens romanus': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'не указано'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+        "the funny little room": cor_ru.entity_menu["the funny little room"].desc,
+        "clemens romanus": cor_ru.entity_menu["clemens romanus"].desc,
     }
 }

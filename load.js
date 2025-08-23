@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > load.js
+    just a thingy to patch up stuff after the rest of da mod is loaded!
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
+
 if(check('hub__funfriend-ep1fed')) cor_ru.embassyCoherent();
 cor_ru.observer.page.func()
 cor_ru.processReadout()
@@ -22,6 +34,8 @@ function stepKey(key) {
         env.stage.justStepped = true
         setTimeout(() => {env.stage.justStepped = false}, 100)
     }
+
+    // --- let us walk cyrillic-style!!!!!!!!!!!!
 
     if (key.toLowerCase() == 'ц') key = 'w'
     else if (key.toLowerCase() == 'ф') key = 'a'
@@ -121,7 +135,7 @@ function stepKey(key) {
     }
 }
 
-page.formedDefinitionStrings = undefined
+page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
 // setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)

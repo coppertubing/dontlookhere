@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/frame.js
+    adaptation for /local/beneath/embassy
+    (---свлчь <3)
+
+    progress: very little as of 23.08.2025
+*/
+
+
 env.localization.page['e3a2'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -6,7 +18,9 @@ env.localization.page['e3a2'] = {dialogues: {},
     entityDescriptions: {},
 }
 
-/**** DIALOGUE *****/
+// === DIALOGUES === //
+
+
 env.localization.page['e3a2'].dialogues["bstrdmeet"] = generateDialogueObject(`
 start
     self

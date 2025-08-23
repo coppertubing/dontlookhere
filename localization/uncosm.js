@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/uncosm.js
+    adaptation for /local/uncosm
+
+    progress: as of 23.08.2025
+*/
+
+
 env.localization.page['localuncosm'] = {dialogues: {},
     definitions: {}, 
     strings: {
@@ -24,7 +35,7 @@ env.localization.page['localuncosm'] = {dialogues: {},
     }
 }
 
-// - TRANSLATING DA BEECH - //
+// === TRANSLATING DA BEECH === //
 
 cor_ru.processWeirdTranslation(".loose-thought", "text")
 

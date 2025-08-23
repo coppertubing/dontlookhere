@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/everystuff.js
+    behold! the most poorly organized file in this entire mod! though that makes sense, its basically a remnant from the times we were writing cor-ru in one big file, not really having structure or direction! scary
+    it houses everything that is not dedicated to a particular page. also almost all definitions! fun! we need those to be availiable At All Times due to entmenu stuff
+
+    progress: anything could happen as of 23.08.2025
+*/
+
+
 env.localization['definitions'] = {
     // castes 
     "жат": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'инженер';'каста'" },
@@ -652,8 +664,6 @@ env.localization['strings'] = {
     "::/FRAME/": "::/ОБРАМЛЕНИЕ/",
     "frame": "обрамление",
     
-    "gate::gate::?/::G:a;;T:E": "врата::врата::?/::В:р;;АТ:А",
-    "gate::gaGATE::te::?/..::G:a;;T:E": "врата::враВРАТА::та::?/..::В:р;;АТ:А",
 
     "a?-?b?-????-y?s?": "б?-?ез?-????-н?а?",
     "a-b-y-s": "б-ез-н-а",
@@ -1121,11 +1131,7 @@ env.localization['entityDescriptions'] = {
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся локация';'изменение состояния мыслеформ'
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'некоторые элементы обладают предельно низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
 
-    'their vessel': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::НИЗКОРАЗМЕРНАЯ
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'множество сущностей с низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'мёртвые судна окружали наш <span class="code">шпиль</span>';'близнецы нашли нас быстро'</span>`,
+    'their vessel': cor_ru.entity_menu['their vessel'].desc,
 
     "gate::gate::gate::": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
 ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМО
@@ -1141,14 +1147,11 @@ env.localization['entityDescriptions'] = {
     "proxyfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
 
-    "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`
+    "effigy": cor_ru.entity_menu['effigy'].desc
 }
 
 
-// - DIALOGUES - //
+// === DIALOGUES === //
 env.localization.dialogues["++epselect"] = generateDialogueObject(`
 start
     sys
@@ -2158,9 +2161,9 @@ ____END
 `)
 
 
-// this is actually from the hub
-// but while we were testing it just REFUSED to load properly or something so you'd get english firstvisit when you got to the hub
-// so we put it here
+// --- this is actually from the hub
+// --- but while we were testing it just REFUSED to load properly or something so you'd get english firstvisit when you got to the hub
+// --- so we put it here
 env.localization.dialogues["firstvisit"] = generateDialogueObject(`
 start
     moth

@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/city-surface.js
+    adaptation for /local/city/street
+
+    progress: fully finished as of 23.08.2025
+*/
+
+
 env.localization.page['citystreet'] = {dialogues: {},
     definitions: {
         'оло': {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'близнецовое название для судов серое'` },
@@ -132,52 +143,27 @@ env.localization.page['citystreet'] = {dialogues: {},
         "safe ": "безопасно",
 
 
-        "cashier": "кассир",
-        "envoy": "посол",
-        "menu": "меню",
-        "slim streetwalker": "худой прохожий",
-        "cloaked streetwalker": "прохожий в плаще",
-        "stre wal k": "прох ож й",
-        "electric face box": "электрическая коробка лиц",
-        "beautiful parasite": "прекрасный паразит",
-        'the room high up': 'комната высоко наверху',
+        "cashier": cor_ru.entity_menu["cashier"].name,
+        "envoy": cor_ru.entity_menu["envoy"].name,
+        "menu": cor_ru.entity_menu["menu"].name,
+        "slim streetwalker": cor_ru.entity_menu["slim streetwalker"].name,
+        "cloaked streetwalker": cor_ru.entity_menu["cloaked streetwalker"].name,
+        "stre wal k": cor_ru.entity_menu["stre wal k"].name,
+        "electric face box": cor_ru.entity_menu["electric face box"].name,
+        "beautiful parasite": cor_ru.entity_menu["beautiful parasite"].name,
+        "the room high up": cor_ru.entity_menu["the room high up"].name,
         'the roothe room hithe room gh u the roomp': 'ко ком ата выкомн ат сокомнаве рх о вер ху',
     },
     entityDescriptions: {
-        "cashier": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-        "envoy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-        "menu": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','повторяющаяся обстановка'`,
-
-        "slim streetwalker": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'предельно деградированный визуальный профиль','низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>`,
-
-        "cloaked streetwalker": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-        "stre wal k": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
-    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'больно'</span>`,
-
-        "electric face box": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся обстановка'
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-        "beautiful parasite": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'очаровательный <span class='code'>цветок</span>'</span>`,
-
-        "the room high up": `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
+        "cashier": cor_ru.entity_menu["cashier"].desc,
+        "envoy": cor_ru.entity_menu["envoy"].desc,
+        "menu": cor_ru.entity_menu["menu"].desc,
+        "slim streetwalker": cor_ru.entity_menu["slim streetwalker"].desc,
+        "cloaked streetwalker": cor_ru.entity_menu["cloaked streetwalker"].desc,
+        "stre wal k": cor_ru.entity_menu["stre wal k"].desc,
+        "electric face box": cor_ru.entity_menu["electric face box"].desc,
+        "beautiful parasite": cor_ru.entity_menu["beautiful parasite"].desc,
+        "the room high up": cor_ru.entity_menu["the room high up"].desc,
         'the roothe room hithe room gh u the roomp': `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
@@ -186,7 +172,8 @@ env.localization.page['citystreet'] = {dialogues: {},
 }
 
 
-// - DIALOGUES - //
+// === DIALOGUES === //
+
 env.localization.page['citystreet'].dialogues.envoyStreetResponses = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet

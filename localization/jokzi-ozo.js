@@ -1,66 +1,178 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/jokzi-ozo.js
+    adaptation for /local/ozo
+    (---окзи джозо)
+
+    progress: ep2 close to being finished, most notably moth + few council + interviewer dialogues missing, review needed as of 23.08.2025
+*/
+
+
 env.localization.page['ozo'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "this place is wild": "дикое место",
         "about jokzi ozo": "о джокзи озо",
 
+        "hello": "привет",
 
-        "council": "совет",
+        "council": cor_ru.entity_menu['council'].name,
         /*unity*/   'yes, yes!!': "да, да!!",
                     'just like that!!': "именно так!!",
 
-        "fairy": "фея",
+        "fairy": cor_ru.entity_menu['fairy'].name,
         /*unity*/   "already here! stupid!": "да здесь я уже! тупица!",
 
-        "isabel": "изабель",
+        "isabel": cor_ru.entity_menu['isabel'].name,
         /*unity*/   'and what a home it is, right?': 'и каков же этот дом, верно?',
 
-        "geli": "джели",
+        "geli": cor_ru.entity_menu['geli'].name,
         /*unity*/   "yes? what about it?": "",
 
-        "interviewer": "интервьюер",
+        "interviewer": cor_ru.entity_menu['interviewer'].name,
         /*unity*/   "peace...": "покой...",
 
-        "interloper": "лазутчик",
+        "interloper": cor_ru.entity_menu['interloper'].name,
         /*exm*/     "wow, look at that... it's like it's not even fully formed": "ого, ты ток глянь... как будто даже не сформировано полностью",
 
-        "sun": "солнце",
+        "sun": cor_ru.entity_menu['sun'].name,
 
         "gate::L‹ïAöIÁå": "врата::Л‹ҋAöИÁå",
 
-        "wheel": "штурвал",
+        "wheel": cor_ru.entity_menu['wheel'].name,
         /*act*/     "dream": "грезить",
                     "dream of escape": "грезить об освобождении",
 
-        "radio": "радио",
+        "radio": cor_ru.entity_menu['radio'].name,
         
-        "basterminal": "сволочерминал",
+        "basterminal": cor_ru.entity_menu['basterminal'].name,
         /*act*/     "modify dream": "изменить грёзу",
 
-        "dog": "собака",
+        "dog": cor_ru.entity_menu['dog'].name,
+
+        "gate::gate::?/::G:a;;T:E": cor_ru.entity_menu['gate::gate::?/::G:a;;T:E'].name,
+        "gate::gaGATE::te::?/..::G:a;;T:E": cor_ru.entity_menu["gate::gaGATE::te::?/..::G:a;;T:E"].name,
+
+
+        // === event shit i dont wanna sort
+        "ATTENTION::'thoughtform activity detected';'resource location altered'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'",
+
+        /*loperact*/ "let's talk": "давай поговорим",
+        /*bsteli*/ "all right!": "",
+        /*bsteli*/ "meet me in my region!": "",
+
+        /*isabel*/ "let us leave the council, then": "",
+        /*isabel*/ "come to me, interloper": "",
+
+        /*loperact*/ "you should join in": "",
+        /*stowaway*/ "join in": "",
+
+        /*effigy*/ "aww!!": "авв!!",
+        /*effigy*/ "we'll come back later!": "мы вернёмся позже!",
+
+        // --- wawa please dont be scary.......... ahh!! this is so hard to adapt!!! no context!!
+        "away": "вдали",
+        "hear you": "слышу тебя",
+        "closer": "ближе",
+        "still here": "ещё тут",
+        "come back": "вернуться",
+
+        // === effigy
+        // dancer
+        "ahahahaha": "ахахаха",
+        "hehehehe": "хихихихи",
+        "waaawaawaaoo": "уааауаауааоо",
+        "weuee!! ÿæÿ": "уэииэ!! ",
+        // dancersad
+        "hahaha...": "хахаха...",
+        "wee...": "уии...",
+        "..heehee...": "..хеехее..",
+        // fawner
+        "isabel! isabel!": "изабель! изабель!",
+        "isabel we should dance!": "изабель давай потанцуем!",
+        "isabel! it is the interloper!": "изабель! лазутчик тут!",
+        "isabel when is the next dream?": "изабель а когда следующая грёза?",
+        // worrier
+        "what's wrong with her...?": "что с ней такое..?",
+        "isabel will fix her!": "изабель её исправит!",
+        "isabel can fix anything!": "изабель исправит что угодно!",
+        "could this happen to me??": "а со мной тоже так может случиться??",
+        // gamer
+        "ok i move E*–IÓ to ú!N": "окей я хожу Э*–ИÓ на ӝ!Ъ",
+        "that is an illegal move": "так нельзя ходить",
+        "ummmmmmm": "ээээээээ",
+        "how did you get that corner": "как ты тот угол захватила",
+        "you can't move that one!! try the other corner": "ты не можешь двигать эту!! попробуй другой угол",
+        "ok ¾B{& to ±¢qQ then i use my G³{¼": "окей ¾Б{& на ±¢эЬ а потом я использую свою Г³{¼",
+        "fool!! that mistake will be your last!": "что несет тот же тон что и fool!! эта ошибка будет твоей последней!",
+        "behold! Ý×ß to )q9Ì¼... you are done!": "узри! У×ß на )ь9Ґ¼... тебе конец!",
+        "not now interloper i'm beating her": "лазутчик не сейчас я её обыгрываю",
+        "not now interloper i'm losing really bad": "лазутчик не сейчас я очень сильно проигрываю",
+        "i have all of the veins, what are you going to do?": "все вены - мои, что ты будешь делать?",
+        // gamersad
+        "bored...": "скучно...",
+        "i used to have a friend i think": "у меня была подружка кажется",
+        "the dancing one does not like my games": "танцующей не нравятся мои игры",
+        "it used to be so lively...": "когда-то это место было таким оживлённым...",
+        "it's not very fun anymore": "теперь не так весело",
+        // drunk
+        "ahh... citrus...": "ахх... цитрус...",
+        "come drink with me!": "выпьем вместе!",
+        "we should drink forever!": "давай пить всю вечность!",
+        "never enough! never enough!": "много не бывает! много не бывает!",
+        "i can feel it in my receptors!": "я чувствую это в своих рецепторах!",
+        "do you know when the next dream is?": "знаешь когда следующая грёза?",
+        // somber
+        "too dangerous...": "слишком опасно...",
+        "i want to go back": "хочу обратно",
+        "council please fix": "совет пожалуйста почини",
+        "i miss this one": "скучаю по этой", // --- questionable gender. i need more context
+        "it's still in there": "всё ещё там",
+        // lonely weirdo
+        "so quiet here interloper": "так тихо здесь лазутчик",
+        "i could rot here forever": "я могла бы гнить здесь вечно",
+        "i used to be scared of this place": "раньше я боялась этого места",
+        "i could sleep here forever": "я могла бы спать здесь вечно",
+        // default
+        "hi interloper": "привет лазутчик",
+        // unity
+        "ok! but i'm already here!": "окей! но я уже тут!",
+        "it's ok! we're just playing outside!": "всё хорошо! мы просто играем снаружи!",
+
     },
     entityDescriptions: {
-        "council": undefined,
+        "council": cor_ru.entity_menu["council"].desc,
 
-        "fairy": undefined,
-        "isabel": undefined,
-        "GELI": undefined,
+        "fairy": cor_ru.entity_menu["fairy"].desc,
+        "isabel": cor_ru.entity_menu["isabel"].desc,
+        "GELI": cor_ru.entity_menu["GELI"].desc,
 
-        "interloper": undefined,
+        "interloper": cor_ru.entity_menu["interloper"].desc,
 
         "interviewer": `::INCOMPLETE THOUGHTFORM
     ::SIGNATURE ILLEGIBLE`,
 
-        "sun": undefined,
+        "sun": cor_ru.entity_menu["sun"].desc,
+
         "gate::L‹ïAöIÁå": `::CONNECTOR THOUGHTFORM
     ::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE`,
-        "wheel": undefined,
-        "radio": undefined,
-        "basterminal": undefined,
-        "dog": undefined,
+        "wheel": cor_ru.entity_menu["wheel"].desc,
+        "radio": cor_ru.entity_menu["radio"].desc,
+        "basterminal": cor_ru.entity_menu["basterminal"].desc,
+        "dog": cor_ru.entity_menu["dog"].desc,
+
+        "gate::gate::?/::G:a;;T:E": cor_ru.entity_menu['gate::gate::?/::G:a;;T:E'].desc,
+        "gate::gaGATE::te::?/..::G:a;;T:E": cor_ru.entity_menu["gate::gaGATE::te::?/..::G:a;;T:E"].desc,
     },
 }
-// COUNCIL
+
+
+// === DIALOGUES === //
+
+
+// === COUNCIL === //
 
 env.localization.page['ozo'].dialogues["council_intro"] = generateDialogueObject(`
 start
@@ -1172,7 +1284,44 @@ dull
 END::change("PAGE!!introswap", false);env.jokzi.toggleSlow(false);change("PAGE!!questionswap", "DELETE")
 `)
 
-// ISABEL
+env.localization.page['ozo'].dialogues["council_dance"] = generateDialogueObject(`
+start
+    council
+        interloper! interloper!!
+            EXEC::env.jokzi.toggleSlow(true);
+        ah... our friends... two of them, at least! hehe
+        you have returned them to us!! and now, we so badly want to dance again!
+        dance with us! listen to the lost music of the ozo!
+
+    RESPONSES::self
+        ok go for it<+>END
+            HIDEREAD::
+            EXEC::setTimeout(()=>env.jokzi.dance(true), 400)
+        not right now<+>END
+
+END::env.jokzi.toggleSlow(false)
+`)
+env.localization.page['ozo'].dialogues["council_geliback"] = generateDialogueObject(`
+start
+    council
+        interloper! there you are!
+            EXEC::env.jokzi.toggleSlow(true);env.jokzi.councilToggle();
+        geli is back, geli is back!
+        yes, that was the name!! we can remember so clearly now...
+        and how quickly they have settled back in!
+        thank you again for your help!
+
+    RESPONSES::self
+        question<+>CHANGE::council
+            HIDEREAD::
+            EXEC::change("PAGE!!questionswap", true)
+        any time<+>END
+            EXEC::env.jokzi.toggleSlow(false);env.jokzi.councilToggle();
+
+END::env.jokzi.toggleSlow(false)
+`)
+
+// === ISABEL === //
 
 env.localization.page['ozo'].dialogues["isabel_intro"] = generateDialogueObject(`
 start
@@ -1726,7 +1875,7 @@ stowaway
 END::env.jokzi.toggleSlow(false)
 `)
 
-// FAIRY
+// === FAIRY === //
 
 env.localization.page['ozo'].dialogues["fairy_intro"] = generateDialogueObject(`
 start
@@ -2201,9 +2350,117 @@ dull
 END::env.jokzi.toggleSlow(false)
 `)
 
-// EVENTS
+// === INTERVIEWER === //
+env.localization.page['ozo'].dialogues["council_lady"] = generateDialogueObject(`
+start
+    council
+        interloper! there you are!
+            EXEC::env.jokzi.toggleSlow(true)
+        you caused quite a stir with that strange thoughtform you sent to us!!
+        it clamored at our boundaries! as if it fled a predator!
+        half-shredded, pieces torn away completely, almost beyond reason...
+        what happened to it, we must know!!
+    
+    self
+        something tore apart the thoughtspace it was in
+        that "velzie" i mentioned
+            SHOWIF::"ozo__council-velzie"
+        i was able to go back to where it was and found it in the debris
+        there were entities i think were hostile too
+        they forced me out when i touched them
+    
+    council
+        ah, brave interloper! you must have been well within the uncosm by then
+        thoughtspaces can be chewed at, broken piecemeal...
+        but, to simply shred one apart like that...? 
+        nothing we know holds that much power!
+        how could we have never seen this before?
 
-/* event additions */
+____SHOWIF::"ozo__council-velzie"
+        perhaps this velzie of yours is a greater issue than we predicted
+        yes, we will have the fairy watch for anything like it!
+____END
+
+____SHOWIF::"citystreet__flower_beacon"
+        as for the thoughtform you sent to us, we gave it to isabel
+        she is skilled in thoughtform repairs, and so that is where it will be best served
+____SHOWIF::["citystreet__flower_beacon", false]
+        as for the thoughtform you sent to us,
+            EXEC::change("early_lady", true)
+        we are containing it within the flower's old space
+        she was always better at repairing thoughtforms...
+        if you find her, she will help, we are sure!
+        for now, we must keep the gate closed, as it is somewhat violent...
+        ...
+____END
+        in another time, it would have simply been another thought to consume...
+        but replete in metals as we are thanks to you, we need not resort to that any longer
+
+    RESPONSES::self
+        ok<+>END
+
+END::env.jokzi.toggleSlow(false)
+`)
+
+env.localization.page['ozo'].dialogues["lady_shattered"] = generateDialogueObject(`
+start
+    self
+        hello?
+            EXEC::env.jokzi.toggleSlow(true)
+    
+    incoviewer
+        ...
+    
+    RESPONSES::self
+        meteorite<+>meteorite
+        leave<+>END
+        
+meteorite
+    self
+        do you know anything about a meteorite?
+        the thing velzie destroyed the interview room over?
+    
+    incoviewer
+        ...
+        no
+        ...
+        is this real?
+    
+    moth
+        this thoughtform's completely mangled dude
+        but she made me think about the situation some more...
+        that version of akizet in the interview, remember how velzie tried to make her talk about the meteorite?
+        she probably had no inherited knowledge of it
+____SHOWIF::['ep4__contact', false]
+        like, whatever it was trying to pull out of her and show us...
+        it must have been from a different memory, something that happened to akizet later
+        but why was it trying so hard to make her talk about it?
+        did it not even know? how could it not have?
+        all of these jokzi ozo thoughtforms seem to know how their world works
+        they made these mask things, they even seem to be able to change each other
+        if velzie wasn't just doing that to scare us or something,
+____SHOWIF::'ep4__contact'
+        especially since, as far as we've seen, the only mention of it was in the embassy
+        a completely different memory, with its own thoughtspace and inherited context
+        but it was still trying to get her to talk about it anyway?
+        how did it not know that would only cause problems?
+        all of these jokzi ozo thoughtforms seem to know how their world works
+        they made these mask things, they even seem to be able to change each other
+        yet velzie accidentally breaks shit, assuming that wasn't just a fear tactic early on
+____END
+        the only way this makes sense is if it doesn't know how thoughtforms work
+        but then how is it able to do so much?
+        like, it can control and change things, but it didn't realize the memory lacked context?
+        idk something to think about
+    
+    RESPONSES::self
+        don't know<+>END
+
+END::env.jokzi.toggleSlow(false)
+`)
+
+// === EVENTS === //
+
 env.localization.page['ozo'].dialogues["e_c_geli"] = generateDialogueObject(`
 start
     sys
@@ -2927,7 +3184,173 @@ END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
 
 
+// === MOTH === //
 
+env.localization.page['ozo'].dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what does this look like to you?<+>what
 
+        trust them?<+>trust
+            SHOWIF::[["ozo__council_intro"], ["ozo__isabel_intro"], ["ozo__fairy_intro"]]
 
+        council?<+>council
+            SHOWIF::"ozo__council_intro"
 
+        fairy?<+>fairy
+            SHOWIF::"ozo__fairy_intro"
+
+        isabel?<+>isabel
+            SHOWIF::"ozo__isabel_intro"
+
+        fake me?<+>me
+            SHOWIF::"e3a2__escapewin"
+
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+
+env.localization.page['ozo'].dialogues[`mth++ozo`] = generateDialogueObject(`
+loop
+    RESPOBJ::mthresp
+
+start
+    self
+        i have a question about this jokzi ozo place
+
+    moth
+        чё как?
+    
+    RESPOBJ::mthresp
+
+what
+    self
+        what does this look like to you?
+    
+    moth
+        like in my readout?
+        this almost looks like a dream recording you'd find online
+        it's completely coherent, at least in terms of rendering
+        the thoughtforms i can see are all non-cohesive and broken up,
+        but they're existing in this space without issues somehow
+        really just bizarre lol
+        it's kind of wild to think, but...
+        maybe this happens when <em>any</em> corrucyst starts to die and break down?
+        like we know most of the time it leads to total nonsense incoherence that we can't read
+        but it's not out of the question that they could all start forming little pocket worlds like this
+    
+    RESPONSES::self
+        стрёмно<+>loop
+            FAKEEND::(назад)
+
+council
+    self
+        what do you think of the council?
+        should we do what they want?
+    
+    moth
+        they seem really nice,
+        especially since they didn't blow up your brain or anything when you let them send that mask stuff
+        we could get a lot of insight from them, i think
+        even if whatever memories they fused with to make this all happen are probably completely lost,
+        i bet they've been around, watching everything that happened through the cyst's starvation
+        as long as they don't mess with repairs we should leave them around
+        ...
+        also, this is the weirdest thing
+        i didn't actually see the council until you talked to it
+        it's like you're talking to the thoughtspace itself
+    
+    RESPONSES::self
+        странно<+>loop
+            FAKEEND::(назад)
+
+fairy
+    self
+        what do you think of the fairy?
+        
+    moth
+        it's so fucked up that your mindspike calls it a 'fairy'
+        i don't know what to think, it's clearly pretty unstable
+        but it likes you, so maybe we can keep it from doing anything crazy while we're working here
+        also, it looks like it can traverse thoughtspaces pretty easily
+        did you see those gates in its area?
+        maybe we can get it to change some stuff for us later
+        like if funfriend doesn't want us doing something
+    
+    RESPONSES::self
+        ага<+>loop
+            FAKEEND::(назад)
+
+isabel
+    self
+        what do you think of isabel?
+        
+    moth
+        well, it's probably harmless
+        whatever's going on there is parasocial as hell though
+    
+    self
+        you don't think she was real?
+    
+    moth
+        well yeah isabel probably was real
+        and we have records of obesk being friends and stuff with humans
+        like, with obesk just visiting them casually
+        pretty sure that's where the conspiracy theory about them wearing human disguises came from too
+        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend
+        and now it's just obsessing over whatever it knew
+        it doesn't seem healthy but w/e
+        not hurting anything here
+    
+    RESPONSES::self
+        окей<+>loop
+            FAKEEND::(назад)
+
+trust
+    self
+        should we trust these thoughtforms?
+        
+    moth
+        they're all pretty harmless and cooperative
+        i don't think they're even blocking anything
+        we would have heard about them sooner
+        seems like they're all just trying to make do with being stuck in the cyst
+        idk i don't think we really need to do anything about them
+        i'd only object if they wanted to majorly mess up memories or stop repairs
+    
+    RESPONSES::self
+        хорошо<+>loop
+            FAKEEND::(назад)
+
+me
+    self
+        so this fake me is still here
+    
+    moth
+        yeah... got pulled through to jokzi ozo by geli i guess
+        it's incredible that you were still, like "attached" to it as a locus when you left
+        that had to have been weird, cause the output i got was totally mangled
+    
+    self
+        what do we do about this
+    
+    moth
+        what do you expect me to say, "kill it?"
+        it's fine, it's such an empty shell of a thoughtform it basically can't do anything
+        the FBX won't go crazy over it either
+        you were going to leave a mark on this cyst somehow anyway
+        comes with the territory of what we're doing
+    
+____SHOWIF::"ozo__stowaway"
+    moth
+        also, did you notice your logs?
+        when you talk to it, its identity output is different from what you scanned
+        i think it's modifying itself already, that's kinda interesting
+____END
+    
+    RESPONSES::self
+        ага<+>loop
+            FAKEEND::(назад)
+`)
+					
+					

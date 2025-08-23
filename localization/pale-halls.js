@@ -1,3 +1,15 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/pale-halls.js
+    adaptation for /local/ocean/embassy/groundsmindry
+    (---hi vekoa)
+
+    progress: cor-ru 2027 as of 23.08.2025
+*/
+
+
 env.localization.page['ep4'] = {dialogues: {},
     definitions: {}, 
     strings: {

@@ -1,13 +1,46 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/beneath-abyss.js
+    adaptation for /local/beneath
+    (---утопшая <3)
+
+    progress: drowning stuff partially finished, mothstuff unfinished as of 23.08.2025
+*/
+
+
 env.localization.page['abyss'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "still not getting anything detailed here": "",
         "about whatever this is": "о том, чем бы это ни было",
 
+        // camerawalker
+        "×è.÷ùÏÏøø": cor_ru.entity_menu['×è.÷ùÏÏøø'].name,
+        "what are you looking at": "на что ты смотришь",
+
+        // effigy
+        "ahahahaha": "ахахахаха",
+        "new friends! new friends!": "новые друзья! новые друзья!",
+        "do you know how to dream?": "ты знаешь как грезить?",
+        "so quiet! i want some music!": "так тихо! хочу музыку!",
+        "breathe again! breathe again!": "вдохнуть вновь! вдохнуть вновь!",
+        "aahaahaa wueee": "аахаахаа уииии",
+
+        // --- car poblemn guy ily
+        "s w   al kk": cor_ru.entity_menu['s w   al kk'].name,
+        "car poblemn": "побема с маши ой",
+        " can oblemnt": " орбема с маширой",
+        "ar droblenmn": "проелбва м машной",
+        " radiator mufler hungry": " глуитель радиаоа голод ный",
+        "alien ? know .,   fix car ?": "п ишелец ? знаешь ., почить машину",
+        "car  s tuck": "ашина  з стряла",
+        'far. dr ive  fix my   car': "дале.ко ех ать  почин мою   машиу",
 
         // = drowning = //
         // ent+actor names
-        "Ƙø¿ƶḳ¿±": "Қø¿ӡḳӣ¿±",
+        "Ƙø¿ƶḳ¿±": cor_ru.entity_menu['Ƙø¿ƶḳ¿±'].name,
         "$Ø‰Ɍ¿ɇ§": "$Ø‰Р¿ɇ§",
         "Â£¿Ž¿": "Â£¿Ҙ¿",
 
@@ -29,127 +62,138 @@ env.localization.page['abyss'] = {dialogues: {},
         //ozoblast
         "aki...": "аки...",
         "i want to stay a little longer, ok?": "я хочу побыть здесь ещё немного, хорошо?",
+
+        "hello": "привет"
     }, 
-    entityDescriptions: {},
+    entityDescriptions: {
+        "×è.÷ùÏÏøø": cor_ru.entity_menu['×è.÷ùÏÏøø'].desc,
+        "s w   al kk": cor_ru.entity_menu['s w   al kk'].desc,
+        "Ƙø¿ƶḳ¿±": cor_ru.entity_menu['Ƙø¿ƶḳ¿±'].desc,
+    },
 }
+
+
+// === DIALOGUES === //
+
+// === DROWNING === //
 
 env.localization.drowningIntroResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        what happened?<+>introwrong1
-        back door?<+>introwrong2
-        i'm not akizet<+>introwrong3
+        что случилось?<+>introwrong1
+        проход позади?<+>introwrong2
+        я не акизет<+>introwrong3
 `)
 
 env.localization[`drowning_intro`] = generateDialogueObject(`
 start
     self
-        hello?
+        привет?
 
     sourceless
-        an uncomfortable attention fixes upon your mind's eye.
+        дискомфортное внимание сосредотачивается на твоём сознании.
         ...
 
     drowning
-        come, akizet! -- идём, акизет!
-        we are just in time! -- мы как раз вовремя!
+        идём, акизет!
+        мы как раз вовремя!
 
     self
-        are you kazki?
+        ты - казки?
 
     moth
-        wtf, is that what that is?
-        it's hard to pick out what you're talking to on my side
-        these in-between places are so scrambled
+        втф, так это она?
+        у меня тут трудно разобрать с чем ты разговариваешь
+        these in-between places are so scrambled --- позже
 
     sourceless
-        the thoughtform's attention turns frantic, like a cornered animal.
+        внимание мыслеформы дичает, словно у загнанного в угол животного.
             EXEC::env.abyss.drowningFear(1)
-        something ripples beneath the render, beyond your connection's ability to properly perceive.
+        что-то колеблется под визуализацией, за пределами того, что ты полностью можешь воспринять.
 
     drowning::scared
-        wh a t  kind of question is  tha t? -- чт о  это за вопро с? 
-        aha ha silly v el -- аха ха   силли:) какое слово хотим   вел
+        чт о  это за вопро с? 
+        аха ха   глупая   в ел
 
     moth
-        ah, got it
-        yeah, that's definitely some intact visual data
-        i wonder where this one came from... definitely not the embassy memories
-        but be careful dude
-        i only spotted it because its incoherence spiked
-        if that goes too high, your mindspike will bail and retrace you out of there
-        you're already on thin ice from the environment
+        а, вот оно где
+        ага, визуальные данные тут частично да сохранились
+        интересно откуда она... точно не из посольских воспоминаний
+        но чел ты будь поосторожнее
+        я её заметил<блинскиймоль> только потому что у неё бессвязность подскочила
+        если она поднимется слишком высоко, твой мыслекол психанёт и вытащит тебя оттуда
+        ты и так на тонком льду от окружающей среды
 
     RESPOBJ::drowningIntroResp
 
 introwrong1
     self
-        how did you get here?
+        как ты здесь оказалась?
 
     drowning::panic
-        ple a se sto p -- пр ош у пере стань
+        пр ош у пере стань
             EXEC::env.abyss.drowningEject();
 
 introwrong2
     self
-        where does the door behind you go?
+        куда ведёт ход за тобой?
 
     drowning::panic
-        no n o  no s hut up -- нет не т  нет з амол чи
+        нет не т  нет з амол чи
             EXEC::env.abyss.drowningEject();
 
 introwrong3
     self
-        i'm not akizet
+        я не акизет
 
     drowning::panic
-        yo u a re  hu rtin g  me -- мн е от это г о  б оль но
+        мн е от это г о  б оль но
             EXEC::env.abyss.drowningEject();
 `)
 
 env.localization[`drowning_ejected`] = generateDialogueObject(`
 start
     moth
-        damn
-        not a distant retrace though
+        чёрт
+        зато не так далеко откинуло
 
     self
-        it's lucid
+        она очнувшаяся
 
     moth
-        what, you think so?
-        you know, it's possible for incoherent thoughtforms to act up, but not really be aware
+        что, считаешь так?
+        знаешь, бессвязные мыслеформы могут и барахлить но при этом не осознавать происходящее
     
     self
-        i could feel it when it looked at me
-        it knows i'm not akizet
+        это чувствуется по её взгляду
+        она знает что я не акизет
 
     moth
-        got it...
-        damn, can't imagine what it's like to be lucid in someplace like this
-        it's probably clinging to whatever's left of the memory it came from
-        but that might mean it has some info we could use!
-        why don't you try playing along? act like akizet would
-        maybe that'll keep it from freaking out
+        понятно...
+        ля, представить себе не могу каково это очнуться в подобном месте
+        она наверняка изо всех сил цепляется за останки своего воспоминания
+        но это значит что у неё может быть полезная нам инфа!
+        почему бы тебе не попытаться подыграть? веди себя как акизет
+        может так она не взбесится
 
     self
-        how
+        как
 
     moth
-        idk, just say things you think she might say
+        хз, просто говори то что она бы сказала
 
     RESPONSES::self
-        ok<+>END
+        ок<+>END
 `)
 
 env.localization.drowningResp1 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        long time no see<+>resp1wrong1
+        давно не виделись<+>resp1wrong1
             HIDEREAD::
-        what's happening?<+>resp1right
+        что происходит?<+>resp1right
             HIDEREAD::
-        where are we?<+>resp1wrong2
+        где мы?<+>resp1wrong2
             HIDEREAD::
 `)
 
@@ -158,45 +202,45 @@ RESPOBJ::
     RESPONSES::self
         ...<+>resp2wrong1
             HIDEREAD::
-        ok<+>resp2wrong2
+        хорошо<+>resp2wrong2
             HIDEREAD::
-        aki?<+>resp2right
+        аки?<+>resp2right
             HIDEREAD::
 `)
 
 env.localization.drowningResp3 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        i have a lot to do<+>resp3wrong1
+        у меня много дел<+>resp3wrong1
             HIDEREAD::
-        you're right<+>resp3right
+        ты права<+>resp3right
             HIDEREAD::
-        cavik is dumb<+>resp3wrong2
+        кавик тупой<+>resp3wrong2
             HIDEREAD::
 `)
 
 env.localization.drowningResp4 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        but they aren't fish<+>resp4right
+        но они не рыбы<+>resp4right
             HIDEREAD::
-        they bite?<+>resp4wrong1
+        они кусаются?<+>resp4wrong1
             HIDEREAD::
-        we should kill them<+>resp4wrong2
+        давай убьём их<+>resp4wrong2
             HIDEREAD::
 `)
 
 env.localization[`drowning_hello`] = generateDialogueObject(`
 start
     self
-        hello
+        привет
 
     sourceless
-        its uneasy attention fixes upon you in short bursts, as if avoiding eye contact.
+        её напряжённое внимание задерживается на тебе короткими рывками, словно избегая зрительного контакта
 
     drowning
-        come, akizet!! -- идём, акизет!
-        we are just in time! -- мы как раз вовремя!
+        идём, акизет!
+        мы как раз вовремя!
 
     sourceless
         ...
@@ -205,41 +249,41 @@ start
 
 resp1wrong1
     self
-        i haven't seen you in a while
+        мы с тобой давно не виделись
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        no i  w as nev er alon e -- нет я  никог да не б ыла од на
+        нет я  никог да не б ыла од на
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        but we hav e been togeth er all d ay? -- но мы был и вмес те весь д ень?
+        но мы был и вмес те весь д ень?
 
     RESPOBJ::drowningResp1
 ____END
 
 resp1wrong2
     self
-        where are we?
+        где мы?
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        i forg o t  i f orgot th e n am e -- я забы л а  я з абыла н а зван ие
+        я забы л а  я з абыла н а зван ие
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        hah a, sil ly ..! -- хах а,   то же самое прилагательное   ..!
+        хах а,   глуп ая   ..!
 
     RESPOBJ::drowningResp1
 ____END
 
 resp1right
     self
-        just in time for what?
+        вовремя для чего?
 
     sourceless
         the thoughtform stirs, its unease dissipating slightly.
@@ -732,7 +776,7 @@ help
 `)
 
 
-// STUFF
+// === STUFF === //
 
 env.abyss.snap = (thing)=>{
     cutscene(true)

@@ -1,3 +1,14 @@
+/*
+    cor-RU - a full russian adaptation mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
+
+    > localization/clemens-romanus.js
+    adaptation for /local/ship/elsewhere
+
+    progress: none as of 23.08.2025
+*/
+
+
 env.localization.page['localship2'] = {dialogues: {},
     definitions: {}, 
     strings: {
