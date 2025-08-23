@@ -682,7 +682,7 @@ cor_ru.entity_menu = {
         name: `врата::глубины`,
         desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'почему ты здесь'</span>`
     },
-    "their vessel": {
+    "their vessel": { // --- watch out! big shit's in everystuff.js too because everystuff loads before!
         name: `их судно`,
         desc: `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА<br>
     ::НИЗКОРАЗМЕРНАЯ<br>
@@ -881,7 +881,7 @@ cor_ru.entity_menu = {
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'напоминает светлых землепаразиӰ́ãÆф-ЪЗ__ОШИБКА::'необрабатываемо'__;'носительница добрых грёз'</span>`
     },
-    "effigy": {
+    "effigy": { // --- watch out! little shit's in everystuff.js too because everystuff loads before!
         name: `эффигия`,
         desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>
     ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>
