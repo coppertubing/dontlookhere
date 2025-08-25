@@ -880,14 +880,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         masks: {
             func: (consolething)=>{
-                processTranslation(document.querySelector(`#ozo-mask-grid`))
+                processTranslation(document.querySelector(`.ozo-mask-grid`))
                 cor_ru.processWeirdTranslation('.ci-masks', 'definition');
                 cor_ru.processWeirdTranslation('.ozo-mask', 'definition');
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
-                cor_ru.observer.masks.itself.observe(document.querySelector("#ozo-mask-grid"), { childList: true });
+                cor_ru.observer.masks.itself.observe(document.querySelector(".ozo-mask-grid"), { childList: true });
 
                 console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
@@ -914,7 +914,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
                     processTranslation(document.querySelector(`#definition-box`));
                     processTranslation(document.querySelector(`#mindspike-scanner`));
-                    processTranslation(document.querySelector(`#ozo-mask-grid`))
+                    processTranslation(document.querySelector(`.ozo-mask-grid`))
                     console.info("%cprocess3 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processWeirdTranslation("mindpike");
