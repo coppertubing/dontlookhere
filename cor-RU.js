@@ -881,11 +881,13 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         masks: {
             func: (consolething)=>{
                 processTranslation(document.querySelector(`#ozo-mask-grid`))
+                cor_ru.processWeirdTranslation('.ci-masks', 'definition');
+                cor_ru.processWeirdTranslation('.ozo-mask', 'definition');
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
-                cor_ru.observer.masks.itself.observe(document.querySelector("#masks"), { childList: true });
+                cor_ru.observer.masks.itself.observe(document.querySelector("#ozo-mask-grid"), { childList: true });
 
                 console.log("%cmasks observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
@@ -1016,11 +1018,11 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
         if (fresh == true) {
             listArray.push(cor_ru.list.everything);
-            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
-                else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU")
             listArray.push(cor_ru.list.entityMenu);
+            if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
+                else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
+            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) listArray.push(cor_ru.list.combat);
             listArray.push(cor_ru.list.load);
-            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0);
         }
         else {
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])}}
@@ -1034,7 +1036,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 }
             };
         }
-        if (listArray.length != 0) {console.log("%cupdating resources! - @cor-RU", cor_ru.fancy.general); return addResources(listArray)}
+        if (listArray.length != 0) {console.log("%cupdating following resources! - @cor-RU", cor_ru.fancy.general); console.log(listArray); return addResources(listArray)}
         else console.log("%cno updates for resources needed! - @cor-RU", cor_ru.fancy.general)
     },
 }
