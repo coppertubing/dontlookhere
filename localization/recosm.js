@@ -48,7 +48,7 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "i have done nothing!!": "я ничего не сделало!!",
 
         /*god*/ "the deceiver does not even need a coherence regulator": "обманщику даже не требуется регулятор связности",
-        /*god*/ "has it not 'held things together' already?": "разве он уже не \"держит всё в своих когтях\"?",
+        /*god*/ "has it not 'held things together' already?": "разве он не уже \"держит всё в своих когтях\"?",
         /*god*/ "it seeks only to silence change": "он лишь стремится заглушить изменения",
         /*god*/ "it fears the existence of anything on equal footing": "он боится существования чего-либо на равных",
 
@@ -57,18 +57,18 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "stand firm!! it cannot withstand your power!": "стойте твёрдо!! ваша мощь непреодолима!",
         /*god*/ "just... go get it!": "просто... сделайте с этим что-нибудь!",
             /*god*/ "did you not see how we defeated it?": "разве вы не видели как мы ранее одержали победу?",
-            /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте это!!", // ???
-            /*god*/ "it is not our friend!": "это нам не друг!",  // --- помогите << мне кажется оно переводится довольно буквально? 
+            /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте это!!", // ??? :: мне кажется так оно звучит ещё глупее с "это"
+            /*god*/ "it is not our friend!": "это нам не друг!",  // --- помогите << мне кажется оно переводится довольно буквально? // :: может будет правильнее заменить на оно типа прокси
 
         // fight2
 
         /*god*/ "OK!!": "ХОРОШО!!",
         /*god*/ "i know what will stop you": "я знаю, что тебя остановит",
         /*god*/ "you cannot withstand the madness outside": "ты не сможешь выдержать безумие снаружи",
-        /*god*/ "i emerged from it, i have weathered it": "я родилось в нём, я выстояло его",
+        /*god*/ "i emerged from it, i have weathered it": "я родилось в нём, я выстояло его", // :: emerged from it  как родилось в нём???
         /*god*/ "but the deceiver's weapons crumble...": "а вот оружия обманщика крошатся...",
         /*god*/ "if i must end my dream of peace, so be it": "раз моя грёза о мире должна прерваться, так тому и быть",
-        /*god*/ "but, dreamsÆ~V4Ëîús can be dreamt again, my friend": "но о грёзахÆ~Ь4Ëйэ можно грезить вновь, мой друг",
+        /*god*/ "but, dreamsÆ~V4Ëîús can be dreamt again, my friend": "но грёзыÆ~Ь4Ëйэ можно грезить вновь, мой друг",
         /*god*/ "i only hope ÅBÄ§ŠÊ•Q=!": "я лишь надеюсь ÅБÄ§ŠÊ•Q=!",
         /*god*/ "you will see y‚Î±‰our er¦¡ror": "чтоÆ ты увидишь св‚Î±‰ою ош¦¡ибку",
             /*god*/ "my friends, stand aside!": "друзья мои, расступитесь!",

@@ -66,93 +66,93 @@ RESPOBJ::
 env.localization.page['cache'].dialogues[`mth++cache`] = generateDialogueObject(`
 start
     self
-        I've seen some things here
+        я видел какие-то штуки здесь
 
     moth
-        oh yeah?
+        о серьёзно?
     
     RESPOBJ::mthresp
 
 poly
     self
-        i see a polygonation spire
-        it's lit up by human lights
-        the scale of it is enormous
-        i mean absurdly large
-        it looks like it should be in the ocean somewhere
+        я вижу полиганизационный шпиль
+        и он освещён человеческими огнями
+        он гигантских размеров
+        то есть абсурдно огромных
+        выглядит будто он где-то посреди океана
 
     moth
-        oh, cool
-        that could be the california spire before it melted
-        i think that was the biggest one they built
-        weird that it's in limbo like this
-        also, it was big, but not like... colossal
-        like i said, i can't see what you see, but i have some ideas
-        maybe akizet thought it was bigger than it really was? or maybe it was a planned spire?
-        who knows dude
+        о, ништяк
+        это должно быть калифорнийский шпиль до того как расплавился
+        вроде как он был самым большим из построенных ими
+        странно что он в таком подвешенном состоянии
+        и ещё, да, он был большим, но типа не прям чтобы... колоссальным
+        если не помнишь, я не могу видеть чё там у тебя, но у меня есть пара идеек
+        возможно акизет думала он был больше чем на самом деле? или он планировался таким?
+        кто знает чел
 
     RESPOBJ::mthresp
 
 spheres
     self
-        this place is full of weird spheres with lines
-        they're showing up in clusters
-        and i can't scan them directly
-        but god shows what is inside them
+        в этом месте полно странных сфер с линиями
+        они собраны в кластеры
+        и я не могу просканировать их напрямую
+        но божество показывает что внутри них
             SHOWIF::[['TEMP!!cachePath', 'god']]
-        but funfriend shows what is inside them
+        но развледруг показывает что внутри них
             SHOWIF::[['TEMP!!cachePath', 'funfriend']]
     
     moth
-        interesting that you call them that, clusters
-        i know that most components of corrucystic devices have, like...
-        actual physical cells that cluster together en masse
-        a small corru cell might be some minor thoughtform, and a big one could manage all of the smaller connected ones
-        but there are different kinds of corru cells, and they don't all take spherical form
-        still, that's my theory - you're seeing that, somehow
-        dude, maybe you're inside a thoughtform that's observing its surroundings
-        that's a weird thought lol
-        you should describe this to one of the lab guys later, maybe they'll have a better idea
-        the bio stuff is interesting to me, but i'm not an expert
+        любопытно что ты зовёшь их так, кластерами
+        я знаю что у большинства компонентов корруцистических устройств есть такие, типа...
+        действительно физические клетки которые собираются в кластеры в массовом порядке """ ???????
+        маленькие клетки корру возможно второстепенные мыслеформы, а больше наверное руководят всеми соединёнными поменьше
+        но есть много видов клеток корру, и не все они сферической формы
+        но это только моя теория - это ты тут их как-то видишь
+        чел, что если ты внутри мыслеформы и она типа наблюдает своё окружение
+        странная мысль лол
+        тебе надо рассказать об этом кому-нибудь из лабароторных ребят, возможно у них есть догадка получше
+        био штуки прикольные, но эт не моё поприще
 
     RESPOBJ::mthresp
 
 storm
     self
-        there's some kind of corrucyst with wires
-        it's attached to something human-made
-        it's really big
+        тут что-то вроде корруцисты с проводами
+        и она присоединена к чему-то человеческому
+        оно огромное
     
     moth
-        yeah, i'm seeing that thoughtform in storage now
-        and it's called 'the storm'... weird
-        well, i know the obesk had their own division for tech experiments...
-        it was part of their materials initiative
+        ага, теперь вижу эту мыслеформу в хранилище
+        она называется "шторм"... странно """ хз как мы перевели название но я не уверен где искать
+        ну, я знаю что у обесков тип был собственный отдел для экспериментов с техникой
+        которая была частью их инициативы материалов
         
-        but, could that be the thing akizet tried to give to gordon?
+        но, может ли это быть тем что акизет предлагала гордону?
             SHOWIF::'citystreet__envoychat-ep1extension'
-        i wouldn't be surprised if he got that project started and had akizet involved
+        я не удивился б если он принялся за этот проект и привлёк к нему акизет
             SHOWIF::'citystreet__envoychat-ep1extension'
-        it'd match up with what some of the old ops i've talked to have said, too
+        к тому же это сошлось бы с тем что мне рассказывали старые оперативники
             SHOWIF::'citystreet__envoychat-ep1extension'
-        there were a lot of shady projects back then
+        в те времена было полно серых проектов
             SHOWIF::'citystreet__envoychat-ep1extension'
-        the FBX barely had any oversight because they had to move so quickly
+        в ФБКС едва ли следили за всем этим из-за того как быстро им приходилось двигаться дальше
             SHOWIF::'citystreet__envoychat-ep1extension'
 
     RESPOBJ::mthresp
 
 thing
     self
-        there's some kind of organic thingy
-        cells or something
-        it's the mangled thoughtform i scanned
+        тут что-то вроде органической штуковины  """ не описать словами как я хочу чтобы лопер сказал штучка
+        типа клеток """ кста а мы переводили как-то cells?
+        это искажённая мыслеформа которую мне уже приходилось сканировать
     
     moth
-        yeah i'm seeing the data on that one in your storage here
-        i can't really give you any advice on it, there's nothing to read here
-        that said, it has some kind of signature, or some attributes of a thoughtform
-        maybe it's one that blew up? or maybe a bunch of dead ones?
+        ага я вижу тут данные от неё в твоём хранилище
+        не могу ничё сказать на её счёт, попросту нечего читать
+        сказано, что у неё есть некая подпись, или какие-то свойства мыслеформы 
+        может это та что взорвалась? или кучка мёртвых?
 
     RESPOBJ::mthresp
 `)
@@ -178,7 +178,7 @@ start
 
     sys
         ВНИМАНИЕ::'попытка реформации мысли'
-        АНАЛИЗ::'указывайте пункт назначения с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический ???? моторики limbic motor beacon'">ЛКМ</span>'
+        АНАЛИЗ::'указывайте пункт назначения с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический моторный маяк'">ЛКМ</span>'
         АНАЛИЗ::'ассистент будет перемещаться на фиксированной скорости в указанный пункт назначения'
 
     moth
@@ -190,9 +190,9 @@ start
 env.localization.page['cache'].dialogues[`ffozo`] = generateDialogueObject(`
 start
     proxyfriend
-        wait! interloper!
-        what are you doing?
-        do you see something?
+        wait! interloper! // стой! лазутчик!
+        what are you doing? // что ты делаешь?
+        do you see something? // что-нибудь видишь?
 
     self
         здесь что-то вроде разноцветного портала
@@ -200,14 +200,14 @@ start
         ты не видишь его?
     
     proxyfriend
-        ahahaha no!!
-        i only see a mangled mass emerging from the uncosm
-        nothing for me to enter
-        but that description sounds familiar
-        yes all too familiar!
-        if it is what i think it is,
-        tread carefully!!
-        but all the same, go in there and tell me what you see!!
+        ахахаха нет!!
+        я вижу только искажённую массу пробравшуюся из беспространства
+        ничего куда я бы мог войти
+        но это описание звучит знакомо
+        да, даже слишком знакомо!
+        если это то о чём я думаю,
+        то ступай осторожно!!
+        впрочем, иди туда и расскажи мне что видишь!!
     
     RESPONSES::self
         что это по твоему такое?<+>what
@@ -220,15 +220,15 @@ what
         что это по твоему такое?
 
     proxyfriend
-        a bastion of madness,
-        terrible dreams dreamt by incoherent thoughtforms
-        defilers!!! of akizet's life!!
-        i cannot imagine what permanent damage they have inflicted on the memories that still remain...
-        if this is not simply a hollow shell, we must deal with them
-        go in there and tell me what you see
-        i do not think they can harm you
-        but be wary of what they say and share with you
-        if you seek the truth, they are your enemy
+        бастион/оплот?? безумия,
+        ужасающие грёзы грезимые бессвязными мыслеформами
+        осквернители!! жития акизет!!
+        даже представить не могу какой непоправимый вред они нанесли остаткам её воспоминаний...
+        если это не просто какая-то пустая оболочка, мы обязаны что-то предпринять
+        иди туда и расскажи что ты видишь
+        я не думаю что они могу тебе навредить
+        но относись с осторожностью ко всему что они говорят и чем делятся с тобою
+        если твоя цель - истина, то они - твои враги
     
     RESPONSES::self
         окей...?<+>END
@@ -239,8 +239,8 @@ what
 env.localization.page['cache'].dialogues[`god`] = generateDialogueObject(`
 start
     god
-        hello? my friend, have you made it?
-        is that you there?
+        ау? друг мой, удалось ли тебе?
+        ты ли это здесь?
 
     self
         ДА
@@ -248,23 +248,23 @@ start
         НО ТОЛЬКО ВОКРУГ ТЕБЯ
 
     god
-        very good!
-        through the benevolent light of my eyes,
-        you will have a pocket of sanity to view the cache through
-        direct me to where you would like me to go, my friend
+        чудесно!
+        благодаря благодушному свету моих глаз,
+        в твоём распоряжении карман рассудка, чтобы сквозь него исследовать кэш
+        веди меня куда тебе должно, друг мой
     
     self
         КАК
 
     god
-        what do you mean, how?
-        just tell me!
-        oh... yes, you have certain limitations
-        let me put it simply - you need т1Ъäфý±ÂяÒÂ£Ë$ю‹кõþж̑X0×6=Ãэº
+        что ты подразумеваешь: "как"?
+        только вели мне!
+        ох... действительно, у тебя верно есть некоторые ограничения
+        позволь мне выразиться простым языком - тебе нужно т1Ъäфý±ÂяÒÂ£Ë$ю‹кõþж̑X0×6=Ãэº
 
     sys
         ВНИМАНИЕ::'попытка реформации мысли'
-        АНАЛИЗ::'указывайте пункт назначения с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический ???? моторики limbic motor beacon'">ЛКМ</span>'
+        АНАЛИЗ::'указывайте пункт назначения с помощью <span definition="ПРИМЕЧАНИЕ::'лимбический моторный маяк'">ЛКМ</span>'
         АНАЛИЗ::'ассистент будет перемещаться на фиксированной скорости в указанный пункт назначения'
     
     RESPONSES::self
@@ -274,12 +274,12 @@ start
 env.localization.page['cache'].dialogues[`godozo`] = generateDialogueObject(`
 start
     god
-        wait!!
-        is that a spatial thoughtform... here?
-        my beloved friend...
-        i will return to my world for now
-        you have fun in there!
-        for i cannot join you!
+        постой!!
+        это что, пространственная мыслеформа... здесь?
+        мой дражайший друг...
+        на этом я вернусь в свой мир
+        повеселись там!
+        раз уж я не в силах составить тебе компанию!
     
     RESPONSES::self
         почему нет<+>not
@@ -292,14 +292,14 @@ not
         почему нет
     
     god
-        it is complicated...
-        these thoughtspaces that act like stages
-        they make me sick
-        all i can think of is before i was free...
-        coiled up in half-remembered, torturous nothingness
-        there is a reason my beautiful world is so simple!!
-        so no--i cannot join you now
-        but if you find something interesting, tell me!
+        это сложно... // :: мне не нравится но у меня нет других вариантов, помогите
+        от мыслеформ, что действуют как сцены,
+        мне делается тошно
+        всё о чём я могу думать - о временах, до своего высвобождения...
+        скрученное в полузабытое, мучительное ничто
+        мой прекрасный мир так прост не без причины!
+        так что нет--я не могу присоединиться к тебе сейчас
+        но будь там что интересное - поведай о том мне!
     
     RESPONSES::self
         окей<+>END
