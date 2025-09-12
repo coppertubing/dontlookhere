@@ -785,7 +785,7 @@ CombatScene.SCENARIOS['ep4_spine'] = {
         },
 
         "C": {
-            class: "notile hidelow untargetable",
+            class: "notile hidelow untargetable blocks",
             contains: {
                 html: "<div class='spinepool-actor warp'></div>",
                 dyp: {

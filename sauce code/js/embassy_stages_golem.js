@@ -722,7 +722,7 @@ env.stages['g_lobby'] = {
             class: "door down big sludged",
             teleportTarget: "g_boss",
             lockFlag: "PAGE!!bosslock",
-            lockExec: ()=>startDialogue('lobby_bossdoor'),
+            lockExec: ()=> isStageClear() ? startDialogue('lobby_bossdoor') : chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true}), 
             examineEntity: "grand door",
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'advanced operations'"></span>`,

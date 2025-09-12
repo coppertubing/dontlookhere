@@ -7293,7 +7293,7 @@ start
         call anyone else<+>anyone
             SHOWIF::[["PAGE!!grmacall", false]]
         call isabel<+>isabel
-            SHOWIF::[["citystreet__flower", true], ["PAGE!!grmicall", false], ["PAGE!!grmacall", true], ["PAGE!!grmgcall", true], ["PAGE!!grmkcall", true]]
+            SHOWIF::[["citystreet__flower_beacon", true], ["PAGE!!grmicall", false], ["PAGE!!grmacall", true], ["PAGE!!grmgcall", true], ["PAGE!!grmkcall", true]]
         i am done<+>END
 
 gordon

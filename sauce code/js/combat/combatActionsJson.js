@@ -11243,7 +11243,7 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
         beneficial: true,
         events: {
             onTurn: function() {
-                combatHit(this.status.affecting, {amt: -1, beneficial: true, type: "hp"});
+                combatHit(this.status.affecting, {amt: -1, beneficial: true, type: "hp", autohit: true});
                 reactDialogue(this.status.affecting, 'regen');
                 play('mend');
             },
@@ -12475,7 +12475,7 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
                     sfx: false
                 })
 
-                combatHit(this.status.affecting, {amt: 4, beneficial: true, type: "barrier", origin: this.status.affecting, runEvents: false});
+                combatHit(this.status.affecting, {amt: 4, beneficial: true, type: "barrier", origin: this.status.affecting, runEvents: false, autohit: true});
             }
         },
 
@@ -14786,6 +14786,13 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
                 flash(true)
                 setTimeout(()=>{
                     env.rpg.neutralTeam.members.forEach(m=>m.originalSlug == "destructible_minishelf" ? midCombatActorRemove(m, {fast: true}) : 0)
+
+                    //edge protection
+                    if(env.rpg.actors.cavik.state != "living") {
+                        env.rpg.actors.cavik.hp = 15
+                        combatRevive(env.rpg.actors.cavik, {location: "spawn"})
+                    }
+
                     setTimeout(() => {
                         env.rpg.actors.split_miltza.piece.moveToCoords(7, 7);
                         env.rpg.actors.cavik.piece.moveToCoords(7,5);

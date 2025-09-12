@@ -1529,7 +1529,7 @@ function combatHitLogic(initialTarget, {amt = 0, acc = 1, crit = 0, origin = fal
 }
 
 //un-dead's a target visually
-function combatRevive(target) {
+function combatRevive(target, {location = "currentActor"} = {}) {
     if(!target) {
         console.warn('tried to revive a nonexistent target - as in the object is undefined or something')
         console.trace()
@@ -1543,7 +1543,7 @@ function combatRevive(target) {
     if(target.hp == 0) target.hp = 1
 
     updateStats({actor: target})
-    if(env.rpg.is2D) env.rpg.grid.replaceActorPiece({target, location: "currentActor"});
+    if(env.rpg.is2D) env.rpg.grid.replaceActorPiece({target, location});
 }
 
 //applies status effect to the given actor, taking into account...

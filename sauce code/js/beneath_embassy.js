@@ -1597,7 +1597,7 @@ env.stages['underlobby'] = {
                 if(check("e3a2escape", "in_progress")) {
                     startDialogue("escapeinitiate")
                 } else {
-                    startDialogue("startrun")
+                    if(check("gameplay_off")) startDialogue("startrun_bypass"); else startDialogue("startrun")
                 }
             },
         },
