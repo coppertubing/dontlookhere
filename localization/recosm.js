@@ -48,7 +48,7 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "i have done nothing!!": "я ничего не сделало!!",
 
         /*god*/ "the deceiver does not even need a coherence regulator": "обманщику даже не требуется регулятор связности",
-        /*god*/ "has it not 'held things together' already?": "разве он не уже \"держит всё в своих когтях\"?",
+        /*god*/ "has it not 'held things together' already?": "разве он не уже \"держит всё в своих когтях\"?",   кскскс "разве у него всё уже не схвачено?"
         /*god*/ "it seeks only to silence change": "он лишь стремится заглушить изменения",
         /*god*/ "it fears the existence of anything on equal footing": "он боится существования чего-либо на равных",
 
@@ -58,7 +58,7 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "just... go get it!": "просто... сделайте с этим что-нибудь!",
             /*god*/ "did you not see how we defeated it?": "разве вы не видели как мы ранее одержали победу?",
             /*god*/ "go forth! tear it apart!!": "вперёд! растерзайте это!!", // ??? :: мне кажется так оно звучит ещё глупее с "это"
-            /*god*/ "it is not our friend!": "это нам не друг!",  // --- помогите << мне кажется оно переводится довольно буквально? // :: может будет правильнее заменить на оно типа прокси
+            /*god*/ "it is not our friend!": "оно нам не друг!",  // --- помогите << мне кажется оно переводится довольно буквально? // :: может будет правильнее заменить на оно типа прокси
 
         // fight2
 

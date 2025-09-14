@@ -238,9 +238,9 @@ info
         мне нужно знать, что случилось с акизет
     
     sourceless
-        an immeasurably powerful sense of dread washes through your connection // неизмеримо сильное чувство ужаса захлестнуло твоё подключение
+        an immeasurably powerful sense of dread washes through your connection // неизмеримо сильное чувство ужаса захлёстывает твоё подключение
         the smiling piece's attention shifts to the board, // внимание улыбающейся фигурки сдвигается на доску,
-        then to something you cannot see // а потом на то что ты не в силах увидеть
+        then to something you cannot see // а потом на что-то, что ты не в силах увидеть
     
     smiling piece
         о чём ты? я пропустила правило?
@@ -309,9 +309,9 @@ what
     
     moth
         лол?
-        ну я как я погляжу то по идее это эмпирический мост
-        и ещё оно вроде как нетронуто хотя мыслепространство не закрыто
-        maybe this is something funfriend is working on fixing, // быть может это та с которой возится развледруг
+        ну я как я погляжу по идее это должно быть эмпирическим мостом
+        и ещё оно вроде как нетронуто, хотя мыслепространство не закрыто
+        maybe this is something funfriend is working on fixing, // быть может это с этим сейчас возится развледруг
         and it just got started by putting all the pieces back // и он ток начал сгребать все фишки назад
     
     RESPOBJ::mthresp
@@ -321,7 +321,7 @@ team
         some of the pieces on this board thing look like the call team // некоторые фишки на этой штуковине типа доски выглядят как члены ???????команды зова 
     
     moth
-        yeah, i picked up you trying to talk to one // ага, я выудил твою попытку поговорить с одной
+        yeah, i picked up you trying to talk to one // ага, я выудил твою попытку поговорить с одной    мне показало? что-то подобное мне бежать скоро
         definitely different from the others somehow... // явно как-то отличается от остальных...
         maybe some kind of memory bleed? // может какая утечка памяти?
         the readout is still messed up, so idk for sure // показания до сих пор херовые, так что я в общем-то хз
@@ -330,15 +330,15 @@ team
 
 board
     self
-        you mentioned that board was framing device code // что насчёт разговора о том что доска была кодом обрамляющего устройства
+        you mentioned that board was framing device code // ты говоришь что доска была кодом обрамляющего устройства
         is that going to be a problem? // это не доставит нам проблем?
         
     moth
         prooobably not? // навееерное нет?
         i don't know how funfriend mapped the device to the embassy // чёрт знает как развледруг наложил устройство на посольство
         because it's literally never been done before with obesk stuff lol // ибо оно до этого вообще никогда не применялось на обесковых штуках лол
-        everything is connected in these cysts, so... // а в цистах всё связано между собой, так что...
-        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать собирать фишки то тут то там
+        everything is connected in these cysts, so... // в цистах всё связано между собой, так что...
+        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать подбирать куски то тут то там      pieces как части именно устройства
         at least they're having fun with it // главное что им по фану
     
     RESPOBJ::mthresp
