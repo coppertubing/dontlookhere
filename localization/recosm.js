@@ -48,7 +48,7 @@ env.localization.page['recosm'] = {dialogues: {},
         /*god*/ "i have done nothing!!": "я ничего не сделало!!",
 
         /*god*/ "the deceiver does not even need a coherence regulator": "обманщику даже не требуется регулятор связности",
-        /*god*/ "has it not 'held things together' already?": "разве он не уже \"держит всё в своих когтях\"?",   кскскс "разве у него всё уже не схвачено?"
+        /*god*/ "has it not 'held things together' already?": "разве у него не уже \"всё схвечено\"?",
         /*god*/ "it seeks only to silence change": "он лишь стремится заглушить изменения",
         /*god*/ "it fears the existence of anything on equal footing": "он боится существования чего-либо на равных",
 
