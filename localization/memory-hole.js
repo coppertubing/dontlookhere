@@ -418,10 +418,10 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        собака θ███ пытается дать дёру от меня, но, в этой закрытой комнате, далеко ей не убежать // dog skitters&&&&?????? away from me, but in this closed chamber, it can only go so far
+        собака θ███ дала дëру от меня, но, в этой закрытой комнате, далеко ей не убежать // dog skitters&&&&?????? away from me, but in this closed chamber, it can only go so far
         у неё не остаётся и шанса, когда я бросаюсь вперёд и сплетаю свои руки под её панцирем, утягивая её в объятия //it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug
         она пищит, точно неспелый селки, когда я отрываю её от земли и кручусь в танце вокруг мебели θ███ //it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture
-        я замечаю, как блеск оптики θ███ поглядывает скептитически из подсоединённой готовочной комнаты, но я не повела и рецептором :: у обесков нет слова кухня..... // i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
+        я замечаю, как блеск оптики θ███ поглядывает скептитически из подсоединённой готовочной комнаты, но я не повожу и рецептором :: у обесков нет слова кухня..... // i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind
     
     kind
         о, θ███, прекрати свои издевательства, ему страшно
@@ -448,7 +448,7 @@ start
         я совершаю полувыпад, тут же останавливаясь,(?) едва начав, чтобы показать, что мы ещё не закончили // i half-lunge at it, stopping just an instant after i start, to tell it we are not done
         она реагирует, пригибаясь ещё ниже к земле, и, замерев на мгновение, резко выскакивает на меня // it ducks lower to the ground in response, and after another moment of stillness, it scurries towards me abruptly
         я смеюсь и издаю вопль удивления, отступая и чуть ли не взбираясь на стену за моею спиною //i laugh and squeal in surprise, backing off and nearly climbing backwards up the wall
-        даже θ███ смеётся когда та начинает преследовать меня повсюду //even θ███ laughs as it chases me about
+        даже θ███ смеётся, когда та начинает преследовать меня повсюду //even θ███ laughs as it chases me about
         я едва ли избегаю столкновение с роскошною кальстиковою стойкою θ███ //i narrowly avoid crashing into θ███'s ornate kalstik stand
     
     kind
@@ -684,7 +684,7 @@ start
         раскат грома и молнии сотрясают ззепель
     
     stupid
-        хорошо, почему бы и нет? давай же узнаем, какой путь замыслил мне велзи! // :: норм или прошлое лучш?
+        хорошо, почему бы и нет? давай же узнаем, какой путь прочерчен мне велзи! 
     
     other
         haha! good! хаха! хорошо!
@@ -863,7 +863,7 @@ start
 
     sourceless
         Я СЖИМАЮ КУЛАК И ПОДНИМАЮ СВОЮ ПРАВУЮ РУКУ, ДЕМОНСТРИРУЯ ХИТИН НА МОЁМ ПРЕДПЛЕЧЬЕ     слизнячок откуда правом............ :: я там был и сам всё видел
-        ОН УЖАСНО РАСКОЛОТ, С ТАКОЮ ГЛУБОКОЮ РАНОЮ, НА ЛЕЧЕНИЕ КОТОРОЙ МОЖЕТ УЙТИ ЦЕЛЫЙ θглаз
+        ОН УЖАСНО РАСКОЛОТ, С ТАКОЮ ГЛУБОКОЮ РАНОЮ В ХИТИНЕ, НА ЛЕЧЕНИЕ КОТОРОЙ МОЖЕТ УЙТИ ЦЕЛЫЙ θглаз
         НО В ЭТОМ И ПРИЧИНА ДЛЯ ГОРДОСТИ. ВЗМАХ МОЕЙ РУКИ, ЧТОБЫ ОТВЕСТИ ВЫПАД ГУКТИКА В ВЕРНЫЙ МОМЕНТ...
         ХРЯСЬ!! О, КАКАЯ БОЛЬ, НО ВИДЕТЬ, КАК ОН МЕЧЕТСЯ ПОСЛЕ ЭТОГО, ТАКАЯ МОЩЬ!!
         ТОЛЬКО ПРЕДСТАВИТЬ, НА ЧТО Я БУДУ СПОСОБНА В ТЕЛЕ ИЗ КОРРУ...

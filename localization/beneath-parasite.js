@@ -321,7 +321,7 @@ team
         some of the pieces on this board thing look like the call team // некоторые фишки на этой штуковине типа доски выглядят как члены ???????команды зова 
     
     moth
-        yeah, i picked up you trying to talk to one // ага, я удалось выудить твою попытку поговорить с одной
+        yeah, i picked up you trying to talk to one // ага, мне удалось выудить твою попытку поговорить с одной
         definitely different from the others somehow... // явно как-то отличается от остальных...
         maybe some kind of memory bleed? // может какая утечка памяти?
         the readout is still messed up, so idk for sure // показания до сих пор херовые, так что я в общем-то хз

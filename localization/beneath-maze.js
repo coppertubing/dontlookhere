@@ -24,7 +24,7 @@ env.localization.page['beneathdepths'] = {dialogues: {},
         /*moth*/ "what the fuck? everything is locking up": "чё за херь? всё запирается",
 
         /*unknown*/ 'interloper you cannot be here': "лазутчик вам не положено находиться здесь",
-        /*unknown*/ 'you must stay away': "вы должны оставаться в стороне",
+        /*unknown*/ 'you must stay away': "вы должны держаться в стороне",
         /*unknown*/ 'for both our sakes': "ради нас обоих",
 
         /*moth*/ "buddy? do i need to pull a plug?": "дружище? мне вытащить вилку?",
