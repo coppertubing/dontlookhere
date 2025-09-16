@@ -12,7 +12,7 @@
 env.localization.page['parasite'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "still not getting anything detailed here": "",
+        "still not getting anything detailed here": "всё ещё не нахожу здесь никаких подробностей", // """ ???? ладно я просто хочу пойти наконец глянуть обнову в прешшуре
         "about whatever this is": "о том, чем бы это ни было",
 
         //effigy
@@ -59,97 +59,97 @@ env.localization.page['parasite'] = {dialogues: {},
         "shut up! there is a war to be won!!": "замолчи! тут войну надо выиграть!!",
 
         // lost
-        "haha he a89 y934 ahiuiu ": "",
-        "êád•7877 7 77 ": "",
-        "hehea v0-9xjkl;'ehehe hehe": "",
-        "IMˆkPL ay  Game? ??": "",
+        "haha he a89 y934 ahiuiu ": "хаха хи а89 у934 ахиииу",
+        "êád•7877 7 77 ": "êáд•7877 7 77 ",
+        "hehea v0-9xjkl;'ehehe hehe": "хихиа в0-9хжкл;'ихихи хихи",
+        "IMˆkPL ay  Game? ??": "ЯМˆкГра ть Игра? ??",
         // unity
-        "hehehehehehehehehe": "",
-        "the ea ters": "",
+        "hehehehehehehehehe": "хехехехехехехехехе",
+        "the ea ters": "те е атры?? п о жиратели", // """ АААААААА
 
         // board
-        "get out of the way!": "",
-        "where are the rules": "",
-        "win wiin! !winN!!!": "",
-        "everything is counting on this!": "",
-        "how many lives will be lost if they succeed??": "",
-        "move once attack once ok left left": "",
-        "we will meet them beneath": "",
-        "do not let them escape alive!": "",
-        "have you heard their plans? sickening!!": "",
-        "celki celki celki": "",
+        "get out of the way!": "прочь с пути!",
+        "where are the rules": "где правила",
+        "win wiin! !winN!!!": "победа побееда! !победДА!!!",
+        "everything is counting on this!": "вся надежда на это!",
+        "how many lives will be lost if they succeed??": "как много погибнет если они достигнут успеха??",
+        "move once attack once ok left left": "двигай раз атакуй раз ок влево влево",
+        "we will meet them beneath": "мы встретим их внизу",
+        "do not let them escape alive!": "не дай им уйти живыми!",
+        "have you heard their plans? sickening!!": "тебе приходилось слышать их планы? отвратительно!!",
+        "celki celki celki": "сельки сельки сельки",
         // unity
-        "stop bothering me!": "",
-        "there is no time for peace!!": "",
+        "stop bothering me!": "хватит досаждать мне!",
+        "there is no time for peace!!": "нет времени для мира!!",
 
         // gamer unity
-        "hold on we must finish this game": "",
-        "and leave this unfinished?! no!": "",
+        "hold on we must finish this game": "погоди мы обязаны закончить эту игру",
+        "and leave this unfinished?! no!": "и оставить её незавершённой?! неа!",
 
         // curled
-        "if i am quick...": "",
-        "what was that? hello?": "",
-        "quiet...": "",
-        "it has to be here": "",
+        "if i am quick...": "если я быстро...",
+        "what was that? hello?": "что это было? ау?",
+        "quiet...": "тихо...",
+        "it has to be here": "это должно быть здесь",
         // unity
-        "that would be nice... but i must finish my investigation": "",
+        "that would be nice... but i must finish my investigation": "было бы неплохо... но я должна завершить своё исследование",
 
         // pleased
-        "just being here is so fun!": "",
-        "much better than maintenance work": "",
-        "board rules? game? why bother?": "",
-        "do you know where my friend went?": "",
+        "just being here is so fun!": "просто нвходиться здесь уже так весело!",
+        "much better than maintenance work": "гораздо лучше чем техническая работа", // """ не помню как мы эту работу переводили евоцап
+        "board rules? game? why bother?": "правила доски? игра? зачем заморачиваться?",
+        "do you know where my friend went?": "ты знаешь куда ушли мои друзья?",
         // unity
-        "what? no thanks! my friend is here": "",
+        "what? no thanks! my friend is here": "что? спасибо не нужно! мои друзья здесь",
 
         // weeping
-        "someone is missing": "",
-        "where is she": "",
-        "can we really make it?": "",
-        "are you counting on me?": "",
-        "kuulla would know what to do": "",
+        "someone is missing": "кого-то не хватает",
+        "where is she": "где же она",
+        "can we really make it?": "действительно ли нам это по силам?",
+        "are you counting on me?": "ты рассчитываешь на меня?",
+        "kuulla would know what to do": "куулла бы знала что делать",
         // unity
-        "just another strange place... i want to go home": "",
+        "just another strange place... i want to go home": "просто ещё одно странное место... я хочу домой",
 
         // four-eyed
-        "ha ha ha!!": "",
-        "ha haa!! ha ha ha!!": "",
-        "hahaha!! haha!!": "",
-        "hello": "",
+        "ha ha ha!!": "ха ха ха!!",
+        "ha haa!! ha ha ha!!": "ха хаа!! ха ха ха!!",
+        "hahaha!! haha!!": "хахаха!! хаха!!",
+        "hello": "привет",
         // unity
-        "i cannot leave when there are still foes to be crushed!": "",
+        "i cannot leave when there are still foes to be crushed!": "я не могу уйти пока здесь ещё остались неразгромленные враги!",
 
         // stacked-eye unity...
-        "‡Hƒøwh A_A^t was it fºr, then...": "",
+        "‡Hƒøwх A_A^t was it fºr, then...": "тогда для чего это было...",
 
         // calm
-        "quiet...": "",
-        "do you hear it too?": "",
-        "nice here.. .": "",
+        "quiet...": "тихо...",
+        "do you hear it too?": "ты тоже слышишь это?",
+        "nice here.. .": "славно тут...",
         // unity
-        "too loud...": "",
+        "too loud...": "слишком шумно...",
 
         // friendly
-        "helo helllooo!": "",
-        "we are friends now ok": "",
-        "you are so soso cool!!!": "",
-        "do not worry we will find the rules ahaha": "",
-        "hehehe we are having a good time!!": "",
-        "celki celki celki!": "",
+        "helo helllooo!": "приве привввееет!",
+        "we are friends now ok": "мы теперь друзья оке",
+        "you are so soso cool!!!": "ты ваще ващеваще круть!!!",
+        "do not worry we will find the rules ahaha": "не суетись мы отыщем правила ахаха",
+        "hehehe we are having a good time!!": "хихихи мы хорошо проводим время!!",
+        "celki celki celki!": "сельки сельки сельки!",
         // unity
-        "aaw cool!! convince my friends and i will come!!": "",
+        "aaw cool!! convince my friends and i will come!!": "ааа классно!! убеди моих друзей и я приду!!",
 
         // gk
-        "wrong side? no i am ok": "",
-        "turns out it is not so simple": "",
-        "i want to play a different game": "",
-        "seen any rules? me either": "",
+        "wrong side? no i am ok": "не та сторона? неа всё в порядке",
+        "turns out it is not so simple": "выяснилось это не так уж просто",
+        "i want to play a different game": "я хочу сыграть в другую игру",
+        "seen any rules? me either": "знаешь какие-нибудь правила? я тоже",
 
         // mi
-        "how do i get out of here??": "",
-        "what are we doing?": "",
-        "i need to make some calls": "",
-        "is there not a way out?": "",
+        "how do i get out of here??": "как мне выбраться отсюда??",
+        "what are we doing?": "что мы делаем?",
+        "i need to make some calls": "мне нужно кое-кому позвонить",
+        "is there not a way out?": "неужели пути наружу нет?",
     }, 
     entityDescriptions: {
         "piece": cor_ru.entity_menu['piece'].desc,
@@ -338,8 +338,9 @@ board
         i don't know how funfriend mapped the device to the embassy // чёрт знает как развледруг наложил устройство на посольство
         because it's literally never been done before with obesk stuff lol // ибо оно до этого вообще никогда не применялось на обесковых штуках лол
         everything is connected in these cysts, so... // в цистах всё связано между собой, так что...
-        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать подбирать куски то тут то там      pieces как части именно устройства
+        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать подбирать куски то тут то там
         at least they're having fun with it // главное что им по фану
     
     RESPOBJ::mthresp
+
 `)
