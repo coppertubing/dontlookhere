@@ -2368,6 +2368,7 @@ start
         i was able to go back to where it was and found it in the debris
         there were entities i think were hostile too
         they forced me out when i touched them
+            SHOWIF::"interviewdie"
     
     council
         ah, brave interloper! you must have been well within the uncosm by then
