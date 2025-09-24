@@ -360,7 +360,7 @@ function processTranslation(container, force = false) {
     })
 }*/
 
-function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
+/*function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
     let readout = document.querySelector('#readout')
     let miniReadout = document.querySelector('#minireadout')
     let effectiveMessage = message
@@ -430,7 +430,7 @@ function readoutAdd({message, type = "", name, displayName, image = false, show 
 
         readout.insertAdjacentHTML('afterbegin', `<div class="message sourceless active">${processStringTranslation("internal log buffer cleared after reaching limit (80) due to attached external record device")}</div>`)
     }
-}
+}*/
 
 env.localization = {
    dialogues: {},
@@ -1147,5 +1147,6 @@ if (!document.querySelector("#cor-rucss")) {
 }
 
 page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!
+
 
 cor_ru.updateResources(true)
