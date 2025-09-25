@@ -387,7 +387,7 @@ start
         simple, right?!     звучит легко, не так ли?
 
     bsteli::bstrd
-        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ОЧЕНЬ ВЕСЕЛО!!!
+        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ОЧЕНЬ ВЕСЕЛО!!!   оч весело?
         ahahaha!!     ахахаха!!
     
     bsteli
@@ -411,17 +411,17 @@ start
         remnants of thoughtforms that could not conform, for one reason or another...     останки мыслеформ, по той или иной причине не сумевших держаться в строю...
     
     bsteli::concern
-        'deallocated,' as BSTRD understands it     "освобождённых", как понимает это СВЛЧЬ
-        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для повторного использования--это жутко
-        far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я могла ожидать от тирана...
+        'deallocated,' as BSTRD understands it     "освобождённых", как понимает это СВЛЧЬ   по знаниям свлчи они 'освобождённые'? что-то такое или иное мне не нравится строчка
+        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для повторного использования--это жутко   для переработки?
+        far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я ожидала от тирана...
         and a fate i have narrowly avoided for too long     судьба, которой я слишком уж долго едва избегала
     
     bsteli
         but much of them still technically live, strange and hollow as they might be     но многие из них всё ещё технически живы, какими бы странными и пустыми они не были
-        BSTRD has collected three for you to utilize as fighters, and...     СВЛЧЬ собрал трёх для твоего пользования, как бойцов, и...
+        BSTRD has collected three for you to utilize as fighters, and...     СВЛЧЬ собрал трёх, чтобы те стали для тебя бойцами, и...
 
     bsteli::uncanny
-        one, to be the recollection locus... which i am talking to right now     одну в качестве recollection locus... с которой я сейчас и разговариваю
+        one, to be the recollection locus... which i am talking to right now     одну в качестве recollection locus... с ней я сейчас и разговариваю
 
     bsteli::concern
         does it hurt, being like that?     больно ли это?
@@ -434,12 +434,12 @@ start
 
     bsteli
         i should also warn you, interloper     ещё я должна предупредить тебя, лазутчик
-        the dream the BSTRD has prepared for you is filled with... numbers...     грёза, приготовленная для тебя СВЛЧЬ(ю? Ю? _?), переполнена... числами...
+        the dream the BSTRD has prepared for you is filled with... numbers...     грёза, приготовленная для тебя СВЛЧЬ(ю? Ю? _?), полна... чисел...
         
     bsteli::concern
-        numbers, and percentages, and stipulations     числами, и процентами, и stipulations
-        from what i now know, i believe it is all in service of confusing the daemons     насколько мне известно, это всё для того, чтобы запутать демонов
-        but... i also suspect it is also doing it to make it harder for you, too     но... я подозреваю, что также он пытается усложнить тебе задачу
+        numbers, and percentages, and stipulations     чисел, и процентов, и stipulations
+        from what i now know, i believe it is all in service of confusing the daemons     судя по тому, что я теперь знаю, это всё для того, чтобы запутать демонов
+        but... i also suspect it is also doing it to make it harder for you, too     но... я подозреваю, что он пытается усложнить задачу и тебе
 
     self
         yeah i know
@@ -459,14 +459,14 @@ start
     bsteli::happy
         regardless!! when you are ready,     в любом случае!! когда почувствуешь себя готово,
         please proceed onto your vessel!     пожалуйста, пройди на судно!
-        it is very cool!! BSTRD made it for us, i think!     оно очень классное!! думаю, СВЛЧЬ сделал его для нас! //его для нас сделал свлчь?
+        it is very cool!! BSTRD made it for us, i think!     оно очень классное!! думаю, его для нас сделал СВЛЧЬ!   свлчь сделал его для нас?
         pilot it, empower your shells, and defeat the "firmament"!!     управляй им, усиляй свои shells, и победи "небосвод"!!
     
     bsteli
         but please know, from what i have seen,     но пожалуйста, знай, что, судя по увиденному мной, //ААА ЗАПЯТЫЕ
         this journey will be treacherous and difficult     этот путь будет опасным и сложным
         even if you fail, do not lose spirit     даже если проиграешь, не теряй надежд
-        we are within something called an 'iteration' - a daemon-controlled loop     мы находимся в кое-чём под названием "итерация" - петля под контролем демонов
+        we are within something called an 'iteration' - a daemon-controlled loop     мы находимся в кое-чём под названием "итерация" - это петля под контролем демонов
         should the vessel be destroyed, everything within will reset to before!     если судно уничтожат, всё в ней вернётся к изначальному состоянию!
         only, the firmament will remain damaged, because it is so big, apparently!     только вот небосвод останется повреждённым - похоже, потому, что он настолько велик!
         so you must simply try again!     так что тебе просто придётся попробовать вновь!
@@ -726,7 +726,7 @@ start
         you see how it is, now     теперь ты понимаешь
     
     bsteli::happy
-        but do not worry! we knew this was going to be difficult!     но не волнуйся! мы знали, что это будет сложно!
+        but do not worry! we knew this was going to be difficult!     но не волнуйся! мы знали, что будет сложно!
     
     bsteli
         just try again!     просто попробуй снова!
@@ -1227,7 +1227,7 @@ ____SHOWONCE::
     bsteli
         no no, this is just a role - an adopted appearance     нет-нет, это лишь роль - заимствованная внешность
         always so concerned about change, interloper!     лазутчик, перемены тебя всегда так беспокоят!
-        change is inevitable, you know...     перемены неизбежны, знаешь ли
+        change is inevitable, you know...     перемены неизбежны, знаешь ли...
     
     bsteli::happy
         i would not be surprised if this little effigy decided to keep the look!     не удивлюсь, если эта маленькая эффигия подберёт сей облик    странное...
@@ -1353,7 +1353,7 @@ ____SHOWONCE::
         ISABEBL HELP I DROP MY GUN
     
     bsteli::happy
-        it is ok!! this is normal!     всё хорошо! это нормально!
+        it is ok!! this is normal!     всё хорошо! это нормально!    так и должно быть?
 ____END
 
     bsteli::bstrd
@@ -1449,7 +1449,7 @@ start
     
     bsteli::think
         actually...     хотя...
-        if you simply leave with us for jokzi ozo, you do not need to fight them     если ты последуешь за нами, в джокзи озо, то тебе не придётся с ними драться
+        if you simply leave with us for jokzi ozo, you do not need to fight them     если ты пойдёшь с нами, в джокзи озо, то тебе не придётся с ними сражаться
         right?     да ведь?
     
     bstrd
@@ -1794,7 +1794,7 @@ preozo
         what do you remember about jokzi ozo?
     
     bsteli
-        little i can share, interloper     немногое из того, чем можно поделиться, лазутчик
+        little i can share, interloper     немногое из того, чем могу поделиться, лазутчик
         a place of dreams, a great island of kind light adrift in a dark ocean     место, полное грёз, великий остров доброго света на волнах тёмного океана
         only glimpses are with me now - my memory is largely trapped there, away from myself     со мной остались лишь проблески - большинство моей памяти ныне вне меня, заперто там
     
@@ -1825,14 +1825,14 @@ humors
     
     bsteli::think
         it is an old belief, one that akizet may have consciously shed,     это старое убеждение, вполне возможно, что сознательно акизет избавилась от него:
-        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о нём во время обвала!   знаки препинания :3
-        but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!
+        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о нём во время обвала!
+        but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!  важным убежд?
     
     bsteli
         anything that is core to her understanding of reality is within all of us, too!!     ключевые элементы её понимания реальности находятся и во всех из нас!!
     
     bsteli::happy
-        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст разъяснил что-то для тебя!
+        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст разъяснил что-то для тебя!   разъяснил тебе ситуацию мм
 
     RESPONSES::self
         i see<+>loop
@@ -1877,12 +1877,12 @@ replay
     
     bsteli::happy
         i will arrange for space within the dream!     я подготовлю место внутри грёзы!
-        i still carry the BSTRD's knowledge of the rules, so i will enforce them from outside!!     я всё ещё содержу знание СВЛЧЬ(И и _) о правилах, так что буду осуществлять их снаружи!!
+        i still carry the BSTRD's knowledge of the rules, so i will enforce them from outside!!     я всё ещё содержу знание СВЛЧЬ(И и _) о её правилах, так что буду осуществлять их снаружи!!
 
     bsteli
         additionally, if you would like to change some things about it...     а ещё, если тебе хочется что-то в ней изменить...
         i have altered the terminal nearby to have some options for you!     я сделала так, чтобы в терминале рядом были для тебя варианты!
-        you can only modify it out here, so take a look before we begin!     ты можешь модифицировать её только снаружи, так что взгляни перед началом!
+        you can only modify it out here, so take a look before we begin!     ты можешь модифицировать грёзу только снаружи, так что взгляни перед началом!
     
     RESPONSES::self
         ok<+>loop
@@ -1903,27 +1903,27 @@ altered
         a SHARING of KNOWLEDGE!!
 
     bsteli::happy
-        we exchanged plans and familiarities
+        we exchanged plans and familiarities    мы обменялись планами и (знанями синоним)
 
 ____SHOWIF::["stageroom", "underlobby"]
     bsteli
-        i suspect it is using some of my knowledge to compose a reasonably believable dream,
-        and with me, it shared an understanding of this system - the daemons, the "frame"...
-        what a disgrace that this whole system is only in service of reliving a nightmare!
+        i suspect it is using some of my knowledge to compose a reasonably believable dream,    кажется он использует часть моих знаний для создания достаточно правдоподобной грёзы,
+        and with me, it shared an understanding of this system - the daemons, the "frame"...     а со мной он поделился пониманием этой системы - демонов, "обрамления"...
+        what a disgrace that this whole system is only in service of reliving a nightmare!    как же жаль, что всё это служит лишь воссозданию кошмара!
 
     bsteli::bstrd 
         FOR I SEE NOW, what FUN can be had within it!!
     
     bsteli
-        when we are free from this place, interloper, i will create a better dream
-        with all of my friends, too! and perhaps of this very escape?!
-        we will see... we will see!!
+        when we are free from this place, interloper, i will create a better dream   лазутчик, когда мы высвободимся, я создам грёзу лучше
+        with all of my friends, too! and perhaps of this very escape?!   со всеми моими друзьями! может даже об этом побеге?
+        we will see... we will see!!   увидим...увидим!!
 
 ____SHOWIF::["stageroom", "ozo_lostone"]
     bsteli
-        i believe it used my knowledge to compose parts of that dream
-        and with me, it shared an understanding of its system - the daemons, the "frame"...
-        what a disgrace that the whole system was only in service of reliving a nightmare!
+        i believe it used my knowledge to compose parts of that dream    думаю, он использовал части моих знаний для создания частей той грёзы,
+        and with me, it shared an understanding of its system - the daemons, the "frame"...    а со мной он поделился пониманием этой системы - демонов, "обрамления"...
+        what a disgrace that the whole system was only in service of reliving a nightmare!    как же жаль, что всё это служило лишь воссозданию кошмара!
 
     bsteli::bstrd 
         FOR I SEE NOW, what FUN can be had within it!!
@@ -1938,12 +1938,12 @@ extended
         how are you both here and in the lobby?
     
     bsteli
-        your vision is truly limited, interloper!!
-        i must assume however you are connected, it is not showing you physical reality...
-        i am simply reaching outside from within the memory itself,
-        intersecting myself with this incomplete space!
-        it is close enough that i may do so without actually moving!!
-        what does it look like to you?
+        your vision is truly limited, interloper!!    ??
+        i must assume however you are connected, it is not showing you physical reality...     полагаю, каким бы не было твоё соединение, оно не показывает физической реальности... реалий
+        i am simply reaching outside from within the memory itself,   я просто тянусь наружу сквозь само вспоминание,
+        intersecting myself with this incomplete space!    перекрещивая себя с этим незаконченным пространством!   мыслеформенныее извращения: перекрещиваться друг с другом    впрочем слово перекрещиваться глупое но с телеыона муторно искать синонимы
+        it is close enough that i may do so without actually moving!!   оно достаточно близко, чтобы я могла сделать так, на деле оставаясь неподвижной!
+        what does it look like to you?   а как это видишь ты?
 
     self
         you're just standing there
@@ -1951,11 +1951,11 @@ extended
         nothing strange
     
     bsteli::think
-        i see...
+        i see...  
         
     bsteli
-        well, many thoughtforms do this
-        and that means the daemons will not take notice!
+        well, many thoughtforms do this   ну, многие мыслеформы такое делают
+        and that means the daemons will not take notice!   и это значит, что демоны ничего не заметят! не забьют тревогу?
 
     self
         you say extending and intersecting
@@ -1963,14 +1963,14 @@ extended
         if i'm not really seeing you, then what is your actual form?
     
     bsteli::concern
-        ah... 
-        you ask very difficult questions, interloper
-        even i am not truly sure!
+        ah...   ах...
+        you ask very difficult questions, interloper   ты задаёшь крайне сложные вопросы, лазутчик
+        even i am not truly sure!   даже я не совсем уверена!
     
     bsteli
-        i know i am within these dreams and spaces, 
-        but anything outside or between them...
-        it is like feeling around in darkness
+        i know i am within these dreams and spaces,   я знаю, что нахожусь в этих грёзах и пространствах,
+        but anything outside or between them...   но всё, что вне или между ними...
+        it is like feeling around in darkness   аээ потом
 
     bsteli::think
         or, a blinding, burning light...
@@ -1989,8 +1989,8 @@ intact
         visually and mentally
 
     bsteli::concern
-        ah...
-        just lucky, i suppose
+        ah...    ах...
+        just lucky, i suppose   думаю, мне просто повезло
 
 ____SHOWIF::"ozo__fairy-gelifree"
     self
@@ -1999,11 +1999,11 @@ ____SHOWIF::"ozo__fairy-gelifree"
         in the age of hunger
     
     bsteli::uncanny
-        is that so...?
+        is that so...?    после прошлого
     
     bsteli
-        let us leave my past where it is, interloper
-        it seems you already know enough
+        let us leave my past where it is, interloper    давай не будем ворошить моё прошлое, лазутчик
+        it seems you already know enough   как я вижу, ты знаешь достаточно
 ____END
 
     RESPONSES::self
@@ -2017,8 +2017,8 @@ framing
     self
         do you understand what a framing device is?
     bsteli
-        through BSTRD's intervention, i do now
-        it is a great illusion to allow the re-enactment of the memory past some kind of censor
+        through BSTRD's intervention, i do now    теперь да, после вмешательства СВЛЧ ьиИ
+        it is a great illusion to allow the re-enactment of the memory past some kind of censor    это – великая иллюзия, позволяющая вновь     как же у меня лагает. задержка в полсекунды. пусть коммит
         attended to by countless modified thoughtforms, to fuss over imagined numbers and buttons
         something alien, that only an interloper could have established within the cyst...
         together, with the tyrant
