@@ -63,8 +63,8 @@ env.localization.page['ozo'] = {dialogues: {},
         /*bsteli*/ "all right!": "",
         /*bsteli*/ "meet me in my region!": "",
 
-        /*isabel*/ "let us leave the council, then": "",
-        /*isabel*/ "come to me, interloper": "",
+        /*isabel*/ "let us leave the council, then": "давай же тогда оставим совет",
+        /*isabel*/ "come to me, interloper": "приходи ко мне, лазутчик",
 
         /*loperact*/ "you should join in": "",
         /*stowaway*/ "join in": "",
@@ -1440,7 +1440,7 @@ akistat
 ____SHOWIF::['PAGE!!flowers', 'few']
     isabel
         моих акизет--извини, эффигий, было множество
-        много её воспоминаний о себе были разорваны, которые я затем починила
+        многие из её воспоминаний о себе были разорваны, а затем я их починила
         это поле цвело ими, и я делала их счастливыми
         но, когда тиран вырвал меня, 
         они, должно быть, упали в оставшуюся после меня дыру
@@ -1467,7 +1467,7 @@ ____SHOWIF::['PAGE!!flowers', 'low']
         лучше, лазутчик
         то, что нетронутые вообще есть - камень с моих лепестков
         я знаю, остались ещё, должны быть...
-        мне остаётся только надеяться, что те, кто пропал на самом деле, не страдали
+        мне остаётся только надеяться, что те, кто пропали на самом деле, не страдали
 
 ____SHOWIF::['PAGE!!flowers', 'high']
     isabel
@@ -1488,7 +1488,7 @@ ____SHOWIF::['PAGE!!flowers', 'done']
         и всё благодаря тебе
         но пока что мне нечего предложить тебе взамен...
         дай мне немного времени
-        а пока ждёшь, наслаждайся красотой, возвращённой тобою!
+        а пока ждёшь, наслаждайся красотой, возвращённой тобой!
 ____END
 
     RESPONSES::self
@@ -1505,7 +1505,7 @@ lady
         целостна достаточно, чтобы чувствовать боль и растерянность из-за своего состояния
         но любое сложное мышление и память потеряны
         к сожалению, распространённое состояние...
-        ты можешь увидеться с ней, если хочешь, но ты немногого добьёшься
+        ты можешь увидеться с ней, если хочешь, но ты едва ли чего-то добьёшься
         она как-то важна тебе?
 
     self
@@ -1581,12 +1581,12 @@ home
         разве она не прекрасна?
         дом для стольких грёз...
         я нашла его в эпоху безумия,
-        полу-съеденным, в куче внутренностей других воспоминаний
+        полусъеденным, в куче внутренностей других воспоминаний
         совет помог мне привести это место в порядок
         и хотя я не знаю, когда акизет побывала здесь...
-        я надеюсь, что в этот момент рядом была изабель,
+        я надеюсь, что в этот момент изабель была рядом,
         и они наблюдали источник её цветов...
-        чем бы это место когда-то ни было
+        чем бы это место ни было бы когда-то
         теперь это укрытие для мыслеформ, чья радость сделала их слабыми
         я должна оберегать их
         
@@ -1663,7 +1663,7 @@ isabel
     isabel
         когда...?
         время не работает здесь так, как ты думаешь, лазутчик
-        я действительно не могу сказать
+        я правда не могу сказать
         однако я знаю, что это было задолго до конца
         у неё с акизет было достаточно времени, чтобы стать друзьями
         теперь большая часть тех воспоминаний разбита или съедена...
@@ -1748,7 +1748,7 @@ fairy
         да, она
         она грубая и отвратительная,
         искажает воспоминания, словно велзи ради какого-то жестокого развлечения
-        не думай, что мне приятно делить с ней мыслепространство
+        не подумай, что мне приятно делить с ней мыслепространство
         мне просто не оставили выбора
 
     RESPONSES::self
@@ -2410,7 +2410,7 @@ start
             EXEC::env.jokzi.toggleSlow(true)
     
     incoviewer
-        ...
+        ... // звёзды переведи. и моль тоже 🥺
     
     RESPONSES::self
         meteorite<+>meteorite
@@ -2531,13 +2531,13 @@ start
             EXEC::env.jokzi.toggleSlow(true)
         
     isabel
-        ...совсем не похоже на то, что тиран совершал раньше...
-        и всё-таки я уверена, тиран все ещё заботится о мыслях над которыми оперирует, на каком-то уровне
-        в его действиях есть какое-то количество сдержанности, деликатности
+        ...совсем не похоже ни на одно из деяний тирана
+        в конце концов, я убеждена, в какой-то мере тиран всё же печётся над оперируемыми им мыслями
+        в его действиях присуствует некоторое количеством сдержанности, деликатности
 ____SHOWIF::"e3a2escape"
         что меня беспокоит больше всего - оно иное 
-        не похоже даже на то, что демоны джели сделали с той мыслеформой лазутчика
-        и снова новая форма разрушения...
+        ничего общего даже с тем, что демоны джели сделали с той мыслеформой лазутчика
+        очередная новая форма разрушения...
 ____END
 
     council
@@ -2546,15 +2546,15 @@ ____END
         it was surrounded with hostile thoughts, from what we could intuit      нам казалось, что её окружали агрессивные мысли
     
     isabel
-        было несколько следов, но не они стали причиной настоящего ущерба
-        нет, она была другой--как мне вообще это объяснить...
-        раны не имеют сходств с вообще чем-либо, что я когда-либо видела
-        мембрана была разорвана и поражена, но без жестокого умысла
-        а как если бы что-то прорвалось насквозь и вовнутрь, и всё же не изменяя того, чего касалось
-        прошу, поймите, я просто строю догадки
-        но это единственное объяснение...
-        что-то настолько отчаялось в поисках каких-то специфичных знаний,
-        что почти разорвало её на части, не заботясь об ущербе
+        было несколько следов, но ни один из них не стал причиной истинного ущерба
+        нет, это было что-то иное--как бы мне вообще это объяснить...
+        раны не сходятся ни с чем, что я когда-либо видела
+        мембрана была разорвана и поражена, но без жестокого умысла,
+        а как если бы что-то прорвалось насквозь и вовнутрь, и всё же не изменяло того, чего касалось
+        прошу, поймите - я просто строю догадки // в оригинале тире но хз может вы знаете как лучше
+        однако это единственное объяснение...
+        нечто, что настолько отчаялось в поисках неких специфичных знаний,
+        что почти разорвало её на части, безразличное до ущерба
         думаете, что лазутчик...?
     
     sourceless
@@ -2589,7 +2589,7 @@ ____END
         ущерб выглядит непредумышленным,
         но он был нанесён чем-то, что явно не имеет представление о нашем мире
         или, по крайней мере, имеет неполное...
-        лазутчик, ты должен быть осторожен
+        лазутчик, тебе лучше держать рецепторы востро
         не знаю, чем именно является велзи, но ты имеешь дело явно не с обыкновенной пробудившейся мыслеформой
     
     council
@@ -2597,7 +2597,7 @@ ____END
         мы знаем, что великие органы цисты ранее действовали, как собственные миры
         if one were to melt and merge with ours, it could easily have powers beyond what any of us may conceive      если бы такой сплавился и слился с нашим, чтоточтото
         still, this is merely conjecture... keep us informed, dear interloper!      я устал уээ
-        now, all that said--did you wish to speak with us?    
+        now, all that said--did you wish to speak with us?    // """ звёзды допереведи ну или я сам (мле лень)
 
     RESPONSES::self
         да<+>CHANGE::council
@@ -3217,7 +3217,7 @@ loop
 
 start
     self
-        i have a question about this jokzi ozo place
+        у меня есть вопросы об этом джокзи озо
 
     moth
         чё как?
@@ -3226,19 +3226,19 @@ start
 
 what
     self
-        what does this look like to you?
+        как это выглядит для тебя?
     
     moth
-        like in my readout?
-        this almost looks like a dream recording you'd find online
-        it's completely coherent, at least in terms of rendering
-        the thoughtforms i can see are all non-cohesive and broken up,
-        but they're existing in this space without issues somehow
-        really just bizarre lol
-        it's kind of wild to think, but...
-        maybe this happens when <em>any</em> corrucyst starts to die and break down?
-        like we know most of the time it leads to total nonsense incoherence that we can't read
-        but it's not out of the question that they could all start forming little pocket worlds like this
+        like in my readout? // в выводе что ль?
+        this almost looks like a dream recording you'd find online // это выглядит почти как те записи снов из инета
+        it's completely coherent, at least in terms of rendering // они целиком связны, по крайней мере если говорить о рендере
+        the thoughtforms i can see are all non-cohesive and broken up, // все мыслеформы что я вижу бессвязны и поломаны,
+        but they're existing in this space without issues somehow // но каким-то боком они существуют здесь без всяких проблем
+        really just bizarre lol // прост очень странно лол
+        it's kind of wild to think, but... //  даже дико думать об этом, но...
+        maybe this happens when <em>any</em> corrucyst starts to die and break down? //  быть может это то что происходит с <em>каждой</em> погибающей и ломающейся цистой?
+        like we know most of the time it leads to total nonsense incoherence that we can't read // как бы мы знаем что по большей части это ведёт к полной бессмысленной и нечитаемой бесссвязности,
+        but it's not out of the question that they could all start forming little pocket worlds like this // но это не значит что они не могут начать формировать карманные миры по типу этого
     
     RESPONSES::self
         стрёмно<+>loop
@@ -3246,20 +3246,20 @@ what
 
 council
     self
-        what do you think of the council?
-        should we do what they want?
+        what do you think of the council? // что ты думаешь о совете?
+        should we do what they want? // должны ли мы слушаться его?
     
     moth
-        they seem really nice,
-        especially since they didn't blow up your brain or anything when you let them send that mask stuff
-        we could get a lot of insight from them, i think
-        even if whatever memories they fused with to make this all happen are probably completely lost,
-        i bet they've been around, watching everything that happened through the cyst's starvation
-        as long as they don't mess with repairs we should leave them around
+        they seem really nice, // по мне так он на самом деле славный,
+        especially since they didn't blow up your brain or anything when you let them send that mask stuff // в особенности потому что он не взорвал твой мозг или что-то такое когда они засунули тебе в бошку ту маску
+        we could get a lot of insight from them, i think // думаю мы сможем вытянуть из него много инфы
+        even if whatever memories they fused with to make this all happen are probably completely lost, // даже если, скорее всего, любые воспоминания с которыми они слились для этого всего, полностью утеряны
+        i bet they've been around, watching everything that happened through the cyst's starvation // сто пудов они застали всё что произошло когда циста голодала
+        as long as they don't mess with repairs we should leave them around // пока они не мешают починкам мы должны оставить их
         ...
-        also, this is the weirdest thing
-        i didn't actually see the council until you talked to it
-        it's like you're talking to the thoughtspace itself
+        also, this is the weirdest thing // ещё кое-что, страннейшая фигня: """ хмхмхм убрать ли знак
+        i didn't actually see the council until you talked to it // совет не отображался для меня до тех пор как вы не начали общаться
+        it's like you're talking to the thoughtspace itself // это как будто бы разговаривать с самим мыслепространством """ не нравится но нет идей
     
     RESPONSES::self
         странно<+>loop
@@ -3267,16 +3267,16 @@ council
 
 fairy
     self
-        what do you think of the fairy?
+        что ты думаешь о фее?
         
     moth
-        it's so fucked up that your mindspike calls it a 'fairy'
-        i don't know what to think, it's clearly pretty unstable
-        but it likes you, so maybe we can keep it from doing anything crazy while we're working here
-        also, it looks like it can traverse thoughtspaces pretty easily
-        did you see those gates in its area?
-        maybe we can get it to change some stuff for us later
-        like if funfriend doesn't want us doing something
+        it's so fucked up that your mindspike calls it a 'fairy' // ёбнуться можно что твой мыслекол зовёт это "феей"
+        i don't know what to think, it's clearly pretty unstable // не знаю что и думать, она очевидно весьма нестабильна
+        but it likes you, so maybe we can keep it from doing anything crazy while we're working here // но ты ей нравишься, так что мы можем удерживать её от безрассудных поступков пока мы работаем здесь
+        also, it looks like it can traverse thoughtspaces pretty easily // и ещё она походу без труда может пересекать мыслепространства
+        did you see those gates in its area? // звёздыпереведи
+        maybe we can get it to change some stuff for us later // возможно позже мы убедим её поменять чего для нас
+        like if funfriend doesn't want us doing something // к примеру если развледруг будет против каких-нибудь наших действий
     
     RESPONSES::self
         ага<+>loop
@@ -3284,24 +3284,24 @@ fairy
 
 isabel
     self
-        what do you think of isabel?
+        что ты думаешь об изабель?
         
     moth
-        well, it's probably harmless
-        whatever's going on there is parasocial as hell though
+        well, it's probably harmless // что ж, она скорее всего безобидна
+        whatever's going on there is parasocial as hell though // впрочем что бы здесь ни происходило оно всё пиздец какое парасоциальное
     
     self
-        you don't think she was real?
+        you don't think she was real? // ты не думаешь что она существовала?
     
     moth
-        well yeah isabel probably was real
-        and we have records of obesk being friends and stuff with humans
-        like, with obesk just visiting them casually
-        pretty sure that's where the conspiracy theory about them wearing human disguises came from too
-        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend
-        and now it's just obsessing over whatever it knew
-        it doesn't seem healthy but w/e
-        not hurting anything here
+        well yeah isabel probably was real // ну, да, изабель наверняка существовала
+        and we have records of obesk being friends and stuff with humans // и у нас есть записи об обесках друживших с людьми и всякое
+        like, with obesk just visiting them casually // типа, с тем как обески обыденно посещали их
+        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // уверен, это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
+        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend // она просто мыслеформа знающая что не была настоящей изабель или подругой акизет
+        and now it's just obsessing over whatever it knew // и теперь одержимая тем что знала
+        it doesn't seem healthy but w/e // нездоровая херня но в целом похуй """ ах моль что же ты такое делаешь перестань материться как же я буду это переводить
+        not hurting anything here // это ничему не вредит
     
     RESPONSES::self
         окей<+>loop
@@ -3309,15 +3309,15 @@ isabel
 
 trust
     self
-        should we trust these thoughtforms?
+        should we trust these thoughtforms? // стоит ли нам доверять этим мыслеформам?
         
     moth
-        they're all pretty harmless and cooperative
-        i don't think they're even blocking anything
-        we would have heard about them sooner
-        seems like they're all just trying to make do with being stuck in the cyst
-        idk i don't think we really need to do anything about them
-        i'd only object if they wanted to majorly mess up memories or stop repairs
+        they're all pretty harmless and cooperative // в целом они все довольно безобидные и сговорчивые
+        i don't think they're even blocking anything // я даже не думаю что они блокируют хоть что-то
+        we would have heard about them sooner // в противном случае мы бы услышали о них раньше
+        seems like they're all just trying to make do with being stuck in the cyst // походу они все просто пытаются справиться с тем что застряли в цисте
+        idk i don't think we really need to do anything about them // хз не думаю что нам реально нужно что-то сделать с ними
+        i'd only object if they wanted to majorly mess up memories or stop repairs // до тех пор пока они не слишком чудят с воспоминаниями или останавливают починки
     
     RESPONSES::self
         хорошо<+>loop
@@ -3325,28 +3325,28 @@ trust
 
 me
     self
-        so this fake me is still here
+        so this fake me is still here // итак это лже-я всё ещё здесь
     
     moth
-        yeah... got pulled through to jokzi ozo by geli i guess
-        it's incredible that you were still, like "attached" to it as a locus when you left
-        that had to have been weird, cause the output i got was totally mangled
+        yeah... got pulled through to jokzi ozo by geli i guess // агаа... походу вытащило в джокзи озо вместе с джели
+        it's incredible that you were still, like "attached" to it as a locus when you left // ЗВЁЗДЫ ПЕРЕВЕДИ ...
+        that had to have been weird, cause the output i got was totally mangled // 
     
     self
-        what do we do about this
+        what do we do about this // что мы будем делать
     
     moth
-        what do you expect me to say, "kill it?"
-        it's fine, it's such an empty shell of a thoughtform it basically can't do anything
-        the FBX won't go crazy over it either
-        you were going to leave a mark on this cyst somehow anyway
-        comes with the territory of what we're doing
+        what do you expect me to say, "kill it?" // что ты ожидаешь услышать от меня, "убить"? """ они что реально в английском ставят знаки внутри кавычек
+        it's fine, it's such an empty shell of a thoughtform it basically can't do anything // всё в порядке, это настолько пустая оболочка от мыслеформы что она ни на что не способна
+        the FBX won't go crazy over it either // ФБКС тоже не взбесится из-за этого
+        you were going to leave a mark on this cyst somehow anyway /// тебе так или иначе пришлось бы наследить в этой цисте
+        comes with the territory of what we're doing // в такой уж сфере работаем
     
 ____SHOWIF::"ozo__stowaway"
     moth
-        also, did you notice your logs?
-        when you talk to it, its identity output is different from what you scanned
-        i think it's modifying itself already, that's kinda interesting
+        also, did you notice your logs? // звёздыпомоги
+        when you talk to it, its identity output is different from what you scanned // агхххх куциршвыгргывфзлаор хррррррррррр
+        i think it's modifying itself already, that's kinda interesting //
 ____END
     
     RESPONSES::self
