@@ -12,7 +12,7 @@
 env.localization.page['beneathdepths'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "don't look at me - keep going": "не смотрий на меня - давай дальше",
+        "don't look at me - keep going": "не смотри на меня - давай дальше",
         "looks like whatever this was is totally gone now": "походу чем бы это ни было - ему каюк",
 
         "unknown": 'НЕИЗВЕСТНО',
@@ -48,4 +48,5 @@ env.localization.page['beneathdepths'] = {dialogues: {},
 ::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'предполагает пространственную мыслеформу'">НЕОБЫЧНАЯ ПОДПИСЬ</span>`,
     },
 }
+
 
