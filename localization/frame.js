@@ -411,9 +411,9 @@ start
         remnants of thoughtforms that could not conform, for one reason or another...     останки мыслеформ, по той или иной причине не сумевших держаться в строю...
     
     bsteli::concern
-        'deallocated,' as BSTRD understands it     "освобождённых", как понимает это СВЛЧЬ   по знаниям свлчи они 'освобождённые'? что-то такое или иное мне не нравится строчка
-        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для повторного использования--это жутко   для переработки?
-        far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я ожидала от тирана...
+        'deallocated,' as BSTRD understands it     "освобождённых", как видит их сам СВЛЧЬ
+        in a sort of stasis, cleanly picked apart for repurposing--it is gruesome     в неком стазисе, аккуратно разобранных для переработки--это жутко
+        far crueler than i thought the tyrant could conceive...     гораздо более жестоко, чем я могла ожидать от тирана...
         and a fate i have narrowly avoided for too long     судьба, которой я слишком уж долго едва избегала
     
     bsteli
@@ -1353,7 +1353,7 @@ ____SHOWONCE::
         ISABEBL HELP I DROP MY GUN
     
     bsteli::happy
-        it is ok!! this is normal!     всё хорошо! это нормально!    так и должно быть?
+        it is ok!! this is normal!     всё в порядке!! так и должно быть!
 ____END
 
     bsteli::bstrd
@@ -1817,22 +1817,22 @@ humors
     bsteli
         in reality, beyond our little world,     в реальности, вне нашего крошечного мира,
         they are something akizet and her people once believed     они - нечто, во что однажды верила акизет и её народ
-        that each obesk is at first a blank cavestone, an actor without direction     в этой вере каждый обеск изначально пустой пещерный камень, актёр без сценария(направления?? пути)
-        imbued with intention and spirit by velzie, to best perform their role     с помощью велзи пропитанный намерением и spirit, чтобы лучше отыгрывать свою роль
-        these intentions are the humors!     эти намерения и есть юморы!
+        that each obesk is at first a blank cavestone, an actor without direction     в этой вере каждый обеск изначально пустой пещерный камень, актёр без сценария
+        imbued with intention and spirit by velzie, to best perform their role     с помощью велзи пропитанный намерением и духом, чтобы лучше отыгрывать свою роль
+        these intentions are the humors!     эти намерения - и есть юморы!
         fundamental spiritual elements, which combine to create an obesk and their fate     фундаментальные духовные элементы, сливающиеся, чтобы создать обеска и его судьбу
         does this not sound familiar?!     не звучит ли знакомо?!
     
     bsteli::think
         it is an old belief, one that akizet may have consciously shed,     это старое убеждение, вполне возможно, что сознательно акизет избавилась от него:
-        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о нём во время обвала!
-        but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!  важным убежд?
+        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о этом во время обрушения!
+        but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!  формативным убежд??????
     
     bsteli
         anything that is core to her understanding of reality is within all of us, too!!     ключевые элементы её понимания реальности находятся и во всех из нас!!
     
     bsteli::happy
-        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст разъяснил что-то для тебя!   разъяснил тебе ситуацию мм
+        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст прояснил тебе ситуацию!
 
     RESPONSES::self
         i see<+>loop
@@ -1903,7 +1903,7 @@ altered
         a SHARING of KNOWLEDGE!!
 
     bsteli::happy
-        we exchanged plans and familiarities    мы обменялись планами и (знанями синоним)
+        we exchanged plans and familiarities    мы обменялись планами и фамильярностями
 
 ____SHOWIF::["stageroom", "underlobby"]
     bsteli

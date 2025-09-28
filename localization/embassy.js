@@ -94,9 +94,9 @@ env.localization.page['embassy'] = {dialogues: {},
         "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous": "она серьёзно назвала это вспоминание \"подозрение\"? или это был развледруг? как-то зловеще",
         "there are so few distinct thoughtforms here... then again it could just be one part of the embassy": "тут так мало отдельных мыслеформ... хотя вообще это может быть лишь одной частью посольства",
         "wow... that kinda does it for this whole thoughtspace, except for that first one i guess": "ого... на этом мыслепространство можно сказать \"всё\", ну помимо того первого",
-        "time to finish the collapse buddy. we almost got everything": "время заканчивать с обвалом дружище. мы почти всё просмотрели",
-        "seems like funfriend is still working on the rest of the collapse memory for now": "похоже развледруг пока всё ещё работает над остатком вспоминания обвала",
-        "time to get into the collapse, buddy": "время забраться в обвал, дружище",
+        "time to finish the collapse buddy. we almost got everything": "время заканчивать с обрушением дружище. мы почти всё просмотрели",
+        "seems like funfriend is still working on the rest of the collapse memory for now": "похоже развледруг пока всё ещё работает над остатком вспоминания обрушения",
+        "time to get into the collapse, buddy": "время забраться в обрушение, дружище",
         "if those were two of the memories she chose to store, what are these other ones??": "если это два из вспоминаний которые она решила сохранить, то что на тех других??",
         "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?": "боже... ну первое вспоминание сходится с тем что акизет сказала гордону. но зачем идти к нам если они согласились держать всё в тайне?",
         "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it": "етить колотить, дааа не думаю что мы хоть раз слышали об этой части зова... эй--там ещё одно вспоминание починено, открой его",
@@ -107,7 +107,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "better times": "ХОРОШИЕ ВРЕМЕНА",
         "discovery": "ОТКРЫТИЕ",
         "suspicion": "ПОДОЗРЕНИЕ",
-        "collapse": "ОБВАЛ",
+        "collapse": "обрушение",
         "recollection": "вспоминание",
 
         "experience": "испытать",
@@ -322,7 +322,7 @@ env.localization.page['embassy'] = {dialogues: {},
 }
 
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
-if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `ОБВАЛ`
+if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `обрушение`
 
 setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") {
     cor_ru.processWeirdTranslation(".dayname", "aria-label");
@@ -340,7 +340,7 @@ RESPOBJ::
         о строении мыслеформы<+>structureloop
             SHOWIF::"embassy__d1_start"
         об обесках<+>obeskloop
-        об обвале<+>collapseloop
+        об обрушении<+>collapseloop
             SHOWIF::"embassy__d3_start-end"
         о свлчь<+>bstrd
             SHOWIF::"embassy__d3_bstrdintro-start"
@@ -703,7 +703,7 @@ ____SHOWIF::"ep4__entrancefinal"
         чтобы сохранить лицо?
         может у них есть новая исследовательская команда, разбирающая последствия?
         или может они просто не хотели окончательно бросать нас, несмотря на случившееся
-        обески насовсем закрылись после обвала, так что ответов пока нет
+        обески насовсем закрылись после обрушения, так что ответов пока нет
 
 ____SHOWIF::["ep4__entrancefinal", false]
         никто особо не знает почему, а после этого обески стали отдаляться
@@ -3527,16 +3527,16 @@ start
     RESPONSES::self
         первый поток<+>END
             EXEC::cutscene(true);page.newit = 1
-            FAKEEND::(обвал часть 1)
+            FAKEEND::(обрушение часть 1)
 
         второй поток<+>END
             EXEC::cutscene(true);page.newit = 2
-            FAKEEND::(обвал часть 2)
+            FAKEEND::(обрушение часть 2)
 
         третий поток<+>END
             EXEC::cutscene(true);page.newit = 3
             SHOWIF::"gol__e4_transition"
-            FAKEEND::(обвал часть 3)
+            FAKEEND::(обрушение часть 3)
             
         неважно<+>END
 

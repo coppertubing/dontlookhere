@@ -1256,9 +1256,9 @@ RESPOBJ::
         почему...<+>why
         что ты думаешь об этом всём?<+>mothep1end
             SHOWIF::[["ep1_end"], ["ENV!!ep3", false]]
-        мысли об обвале?<+>ep3thoughts
+        мысли об обрушении?<+>ep3thoughts
             SHOWIF::[["ENV!!ep3", true], ["ENV!!ep4", false]]
-        мысли об обвале?<+>ep4thoughts
+        мысли об обрушении?<+>ep4thoughts
             SHOWIF::"ep4__entrancefinal"
         преимущество получено<+>leverage
             SHOWIF::[["leverageq", true], ["ozo__council-task", true], ["ozo__fairy_intro", true]]
@@ -1868,12 +1868,12 @@ mothep1afraid
 
 ep3thoughts
     self
-        что ты думаешь об обвале?
+        что ты думаешь об обрушении?
         у тебя вроде были мысли?
     
     moth
         о, да!
-        короче, он всегда представлялся мне трагедией
+        короче, оно всегда представлялось мне трагедией
         especially since it was the cap золотого века взаимоотношений между людьми и обесками
         like, truly golden age... but man, looking back at the news from those days makes me so sad
         videos, news, everything, everyone felt like everything was going to change
@@ -1911,7 +1911,7 @@ ep3thoughts
 
 ep4thoughts
     self
-        что ты думаешь об обвале
+        что ты думаешь об обрушении
         раз мы теперь всё увидели
     
     moth

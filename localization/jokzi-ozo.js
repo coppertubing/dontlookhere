@@ -626,7 +626,7 @@ third
 geli
     self
         ваша маска сработала на джели
-        големе из вспоминания акизет об обвале
+        големе из вспоминания акизет об обрушении
         кажется он заметил меня и правда воспринял её
     
     council
@@ -1586,7 +1586,7 @@ home
         и хотя я не знаю, когда акизет побывала здесь...
         я надеюсь, что в этот момент изабель была рядом,
         и они наблюдали источник её цветов...
-        чем бы это место ни было бы когда-то
+        чем бы это место ни было в прошлом
         теперь это укрытие для мыслеформ, чья радость сделала их слабыми
         я должна оберегать их
         
@@ -2423,36 +2423,36 @@ meteorite
     
     incoviewer
         ...
-        no
+        no    нет
         ...
-        is this real?
+        is this real?     это реально?
     
     moth
-        this thoughtform's completely mangled dude
-        but she made me think about the situation some more...
-        that version of akizet in the interview, remember how velzie tried to make her talk about the meteorite?
-        she probably had no inherited knowledge of it
+        this thoughtform's completely mangled dude    чел эта мыслеформа совсем искалечена
+        but she made me think about the situation some more...    но из-за неё я снова думаю о той ситуации...
+        that version of akizet in the interview, remember how velzie tried to make her talk about the meteorite?    та версия акизет в интервью, помнишь как велзи попыталось заставить её рассказать о метеорите?
+        she probably had no inherited knowledge of it    наверняка у неё не было о нём унаследованных знаний
 ____SHOWIF::['ep4__contact', false]
-        like, whatever it was trying to pull out of her and show us...
-        it must have been from a different memory, something that happened to akizet later
-        but why was it trying so hard to make her talk about it?
-        did it not even know? how could it not have?
-        all of these jokzi ozo thoughtforms seem to know how their world works
-        they made these mask things, they even seem to be able to change each other
-        if velzie wasn't just doing that to scare us or something,
+        like, whatever it was trying to pull out of her and show us...    типа, что бы оно не пыталось вытянуть из неё дабы показать нам
+        it must have been from a different memory, something that happened to akizet later    наверняка относится к другому вспоминанию, чему-то что случилось с акизет дальше
+        but why was it trying so hard to make her talk about it?    но почему оно так старалось заставить её о нём рассказать?
+        did it not even know? how could it not have?    оно не знало об этом? каким образом?
+        all of these jokzi ozo thoughtforms seem to know how their world works    все эти мыслеформы с джокзи озо знают как работает их мир
+        they made these mask things, they even seem to be able to change each other    они создают эти маскоштуки, даже умеют изменять друг друга
+        if velzie wasn't just doing that to scare us or something,    если велзи не пыталось напугать нас или типа того,
 ____SHOWIF::'ep4__contact'
-        especially since, as far as we've seen, the only mention of it was in the embassy
-        a completely different memory, with its own thoughtspace and inherited context
-        but it was still trying to get her to talk about it anyway?
-        how did it not know that would only cause problems?
-        all of these jokzi ozo thoughtforms seem to know how their world works
-        they made these mask things, they even seem to be able to change each other
-        yet velzie accidentally breaks shit, assuming that wasn't just a fear tactic early on
+        especially since, as far as we've seen, the only mention of it was in the embassy    особенно потому что, насколько мы видели, он упоминался только в посольстве
+        a completely different memory, with its own thoughtspace and inherited context    совершенно другом вспоминании, с собственным мыслепространством и унаследованным контекстом
+        but it was still trying to get her to talk about it anyway?    но оно всё ещё пыталось заставить её рассказать о нём?
+        how did it not know that would only cause problems?    каким образом оно не знало что это просто создаст проблем?
+        all of these jokzi ozo thoughtforms seem to know how their world works    все эти мыслеформы с джокзи озо знают как работает их мир
+        they made these mask things, they even seem to be able to change each other    они создают эти маскоштуки, даже умеют изменять друг друга
+        yet velzie accidentally breaks shit, assuming that wasn't just a fear tactic early on    пока велзи случайно ломает всякую хрень, если конечно у него не было ранней тактикой нагонять страх
 ____END
-        the only way this makes sense is if it doesn't know how thoughtforms work
-        but then how is it able to do so much?
-        like, it can control and change things, but it didn't realize the memory lacked context?
-        idk something to think about
+        the only way this makes sense is if it doesn't know how thoughtforms work    всё это имеет смысл только если оно не знает как работают мыслеформы
+        but then how is it able to do so much?    но почему тогда оно способно на настолько многое?
+        like, it can control and change things, but it didn't realize the memory lacked context?    типа, может контролировать и менять штуки, но не поняло что у вспоминания недостаток контекста?
+        idk something to think about    idk просто пища для размышлений
     
     RESPONSES::self
         don't know<+>END
@@ -3258,8 +3258,8 @@ council
         as long as they don't mess with repairs we should leave them around // пока они не мешают починкам мы должны оставить их
         ...
         also, this is the weirdest thing // ещё кое-что, страннейшая фигня: """ хмхмхм убрать ли знак
-        i didn't actually see the council until you talked to it // совет не отображался для меня до тех пор как вы не начали общаться
-        it's like you're talking to the thoughtspace itself // это как будто бы разговаривать с самим мыслепространством """ не нравится но нет идей
+        i didn't actually see the council until you talked to it // для меня совет не отображался до тех пор как вы не начали общаться
+        it's like you're talking to the thoughtspace itself // как будто ты разговариваешь с самим мыслепространством """ не нравится но нет идей
     
     RESPONSES::self
         странно<+>loop
@@ -3274,7 +3274,7 @@ fairy
         i don't know what to think, it's clearly pretty unstable // не знаю что и думать, она очевидно весьма нестабильна
         but it likes you, so maybe we can keep it from doing anything crazy while we're working here // но ты ей нравишься, так что мы можем удерживать её от безрассудных поступков пока мы работаем здесь
         also, it looks like it can traverse thoughtspaces pretty easily // и ещё она походу без труда может пересекать мыслепространства
-        did you see those gates in its area? // звёздыпереведи
+        did you see those gates in its area? // помнишь же те врата в её зоне?
         maybe we can get it to change some stuff for us later // возможно позже мы убедим её поменять чего для нас
         like if funfriend doesn't want us doing something // к примеру если развледруг будет против каких-нибудь наших действий
     
@@ -3297,7 +3297,7 @@ isabel
         well yeah isabel probably was real // ну, да, изабель наверняка существовала
         and we have records of obesk being friends and stuff with humans // и у нас есть записи об обесках друживших с людьми и всякое
         like, with obesk just visiting them casually // типа, с тем как обески обыденно посещали их
-        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // уверен, это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
+        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // наверняка это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
         it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend // она просто мыслеформа знающая что не была настоящей изабель или подругой акизет
         and now it's just obsessing over whatever it knew // и теперь одержимая тем что знала
         it doesn't seem healthy but w/e // нездоровая херня но в целом похуй """ ах моль что же ты такое делаешь перестань материться как же я буду это переводить
@@ -3329,11 +3329,11 @@ me
     
     moth
         yeah... got pulled through to jokzi ozo by geli i guess // агаа... походу вытащило в джокзи озо вместе с джели
-        it's incredible that you were still, like "attached" to it as a locus when you left // ЗВЁЗДЫ ПЕРЕВЕДИ ...
-        that had to have been weird, cause the output i got was totally mangled // 
+        it's incredible that you were still, like "attached" to it as a locus when you left // поражает что тебя, типа, не "отцепило" от него когда вы ушли
+        that had to have been weird, cause the output i got was totally mangled // должно быть это странно, тк мой вывод совсем расхреначило
     
     self
-        what do we do about this // что мы будем делать
+        what do we do about this // что мы будем с этим делать
     
     moth
         what do you expect me to say, "kill it?" // что ты ожидаешь услышать от меня, "убить"? """ они что реально в английском ставят знаки внутри кавычек
@@ -3344,9 +3344,9 @@ me
     
 ____SHOWIF::"ozo__stowaway"
     moth
-        also, did you notice your logs? // звёздыпомоги
-        when you talk to it, its identity output is different from what you scanned // агхххх куциршвыгргывфзлаор хррррррррррр
-        i think it's modifying itself already, that's kinda interesting //
+        also, did you notice your logs? // а ещё, видишь, что в твоих logs?
+        when you talk to it, its identity output is different from what you scanned // когда ты с ней говоришь, вывод личности отличается от того в изначальном скане
+        i think it's modifying itself already, that's kinda interesting //думаю она уже себя модифицирует, это довольно любопытно
 ____END
     
     RESPONSES::self
