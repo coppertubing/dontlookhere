@@ -825,7 +825,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         entMenu: {
             func: (consolething)=>{
-                if (body.attribute['menu'] != 'entities') return;
+                if (body.attributes['menu'] != 'entities') return;
                 document.querySelectorAll('#entity-menu .ent').forEach(e=>{
                     if(e.getAttribute('entname')) {
                         e.addEventListener('click', ()=>{
@@ -870,12 +870,12 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         gad: {
             func: (consolething)=>{
-                cor_ru.processSpecificTranslation(document.querySelectorAll(".mindsci-status"), "definition");
+                cor_ru.processSpecificTranslation(env.menu["system-menu"].querySelectorAll(".mindsci-status"), "definition");
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
-                cor_ru.observer.gad.itself.observe(document.querySelector(".mindsci-status"), { childList: true, subtree: true, attributes: true });
+                cor_ru.observer.gad.itself.observe(env.menu["system-menu"].querySelector(".mindsci-status"), { childList: true, subtree: true, attributes: true });
 
                 console.log("%cgad observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
