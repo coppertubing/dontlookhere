@@ -825,6 +825,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         entMenu: {
             func: (consolething)=>{
+                if (body.attribute['menu'] != 'entities') return;
                 document.querySelectorAll('#entity-menu .ent').forEach(e=>{
                     if(e.getAttribute('entname')) {
                         e.addEventListener('click', ()=>{
@@ -850,7 +851,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
-                cor_ru.observer.entMenu.itself.observe(document.querySelector("#entity-menu"), { childList: true, subtree: true, attributes: true });
+                cor_ru.observer.entMenu.itself.observe(body, { childList: false, subtree: false, attributes: true, attributeFilter: ['menu']});
 
                 console.log("%centMenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
@@ -915,6 +916,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 })
                 .then(()=>{
                     console.info("%cthen - @cor-RU:page", cor_ru.fancy.general)
+                    cor_ru.devved()
                             
                     processTranslation();
                     console.info("%cprocess1 - @cor-RU:page", cor_ru.fancy.general)
