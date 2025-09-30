@@ -5,6 +5,7 @@ if(location.pathname.includes("/index.html")) location.replace(location.pathname
 //shortcuts
 var content = document.querySelector('#content')
 var body = document.body
+var root = document.documentElement
 
 //flags - story progress, save, etc
 var flags = { dialogues: {}, dullvessel_position: 'orbit', detectedEntities: {}}
@@ -32,6 +33,13 @@ var env = {
             name: "sourceless",
             type: "sourceless",
             voice: false
+        },
+
+        "sourceless noprocess": {
+            name: "sourceless",
+            type: "sourceless",
+            voice: false,
+            noProcess: true
         },
 
         "combat": {
@@ -73,6 +81,15 @@ var env = {
             noProcess: true,
             voice: ()=>{play('muiScanner', 2)}
         },
+    
+        "sys quiet": {
+            name: "sys",
+            image: '/img/mui/mindspikelogoactive.gif',
+            type: "mindspike",
+            player: true,
+            noProcess: true,
+            voice: false
+        },
 
         funfriend: {
             element: "#funfriend",
@@ -82,7 +99,7 @@ var env = {
         },
 
         proxyfriend: {
-            element: "#ffproxy",
+            element: ".ffproxy",
             image: '/img/sprites/funfriend/proxyfriend.gif',
             type: "obesk funfriend",
             voice: ()=>{play('talkhigh', 1)}
@@ -99,6 +116,7 @@ var env = {
         bstrd: {
             image: '/img/sprites/bstrd/bstrd.gif',
             type: "bstrd portrait-cover",
+            element: ".bstrd",
             voice: ()=>play('talkgal', 0.4)
         },
     
@@ -127,7 +145,34 @@ var env = {
             image: "/img/sprites/daemons/knight/scan.gif",
             type: "bstrd uppercase portrait-contain",
             voice: ()=>play('talkcroak', 0.6)
-        }
+        },
+
+        fairy: {
+            element: ".ozofriend.eyefriend",
+            image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
+            type: "thoughtform fairy awakened portrait-haze portrait-auto portrait-center",
+            voice: ()=>play('talkfairy')
+        },
+        
+        envoy: {
+            image: "/img/local/city/envoybutton.gif",
+            type: "recollection portrait-bright portrait-cover",
+            element: ".envoy",
+            voice: ()=>play('talk', 0.9)
+        },
+
+        "s w   al kk": {
+            image: "/img/local/city/pedestrian5.gif",
+            type: "recollection portrait-top portrait-cover incoherent",
+            voice: ()=>play('talkcroak', 0.85),
+            element: ".swalk",
+        },
+
+        rotwatcher: {
+            element: ".rotwatcher",
+            type: "actor-sourceless rotwatcher thoughtform portrait-auto portrait-center",
+            voice: ()=>play('talkrot')
+        },
     },
     totalMessages: 0,
 
@@ -223,6 +268,10 @@ var env = {
                     const stageName = ev.detail.stage; //stage changed to
                 })
 
+                document.addEventListener('corru_mask', (ev)=>{
+                    const entity = ev.detail.mask; //mask name you swapped to
+                })
+
             can be manually triggered via dispatchEvent, i.e. "document.dispatchEvent(env.hooks.corru_loaded)" 
 
             the page object is updated periodically, so if you need to preserve it, be sure you do something like 'let currentPage = page' so you have the ref
@@ -244,6 +293,8 @@ var env = {
         corru_changed: new CustomEvent('corru_changed'),
         corru_net: new CustomEvent('corru_net'),
         corru_act: new CustomEvent('corru_act'),
+        corru_mask: new CustomEvent('corru_mask'),
+
         stage_change: new CustomEvent('stage_change'),
     },
 
@@ -274,15 +325,60 @@ var env = {
             definition: () => `'alters perception to tolerate high incoherence';'reveals gaps'${page.maskHungerNote ? page.maskHungerNote : ''}`
         },
 
-        /*
-        joy: { //soon
+        joy: {
+            specialName: () => `joy`,
+            sound: "joymask",
             on: ()=>{ },
             off: ()=>{ },
             maskImage: `url(/img/mui/mask/joy.gif), url(/img/textures/dithertran.gif), url(/img/textures/memoryhaze.gif)`,
-            showIf: "",
-            definition: "'may reveal certain thoughts'"
+            showIf: "ozo__isabel_joy",
+            definition: () => {
+                let final = `'alters perception';'references imported library of thoughtform patterns and observations'`
+                if(page.maskJoyNote) final += page.maskJoyNote; else final += "\nLOCAL_RESONANCE::'none detected'"
+
+                //give some hints about wanderers
+                let activity = "\nACTIVITY_DETECTION::"
+                let wanderers = []
+                let locations = []
+
+                if(env.buddy_globalFairy) wanderers.push(env.buddy_globalFairy)
+                if(env.buddy_globalRotwatcher) wanderers.push(env.buddy_globalRotwatcher)
+
+                wanderers.forEach(w=>{
+                    if(!locations.includes(w.currentLocation)) locations.push(w.currentLocation)
+                })
+
+                if(locations.length > 0) activity += locations.map(l => `'${l}'`).join(';')
+                else activity += "'none'"
+                final += activity
+
+                return final
+            }
+        },
+
+        freedom: {
+            sound: "freedommask",
+            on: ()=>{
+                if(env.stage.ref && !env.stage.freemove) {
+                    toggleFreemove(true)
+                    toggleMouseLook(true)
+                    if(body.getAttribute('menu') == "masks") toggleMasksMenu()
+                    if(env.freemoveHideTargets) body.classList.add("notargets")
+                }
+            },
+            off: ()=>{ 
+                if(env.stage.ref && env.stage.freemove) {
+                    toggleFreemove(false)
+                    toggleMouseLook(false, {resetAngle: true})
+                    if(body.getAttribute('menu') == "masks") toggleMasksMenu()
+                    body.classList.remove("notargets")
+                }
+            },
+            maskImage: `url(/img/mui/mask/freedom.gif)`,
+            definition: "'enables free movement in spatial thoughtforms';'hold SHIFT for slower movement';'can be utilized with other masks'",
+            showIf: "ozo__geli_freedom",
+            modular: true // can be used with other masks
         }
-        */
     },
 
     mss: {
@@ -292,13 +388,14 @@ var env = {
     }
 }
 
+env.dialogueActors["gordon"] = env.dialogueActors["envoy"]
+
+//initialize the window when dom is ready
 var swup
 var firstLoad = true
 var oldPage = {}
 var page
 var scanner
-
-//initialize the window when dom is ready
 ready(()=>{
     change("TEMP!!lastvisit", check("lastload"))
     change("lastload", Date.now())
@@ -312,6 +409,7 @@ ready(()=>{
     env.pressedKeys = {}
     body.addEventListener('keyup', function(e) {env.pressedKeys[e.key.toLowerCase()] = false})
     body.addEventListener('keydown', function(e) {env.pressedKeys[e.key.toLowerCase()] = true})
+    window.addEventListener('blur', () => { env.pressedKeys = {}}) // if you alt tab it should release stuff
 
     /////////////////INTERACTIVE STUFF/////////////////////////
     //right clicking is disabled because we have a special context menu! 
@@ -326,18 +424,18 @@ ready(()=>{
     //MUI examination handler
     //gets the index of the currently selected thingy in the scanner, prints out its examine message
     document.querySelector('#mindspike-examine').addEventListener('click', ()=>{
+        if(env.targetedEntity.exmExec) env.targetedEntity.exmExec()
         let effectiveDef = env.targetedEntity.text
         
         const localization = getLocalizationForPage()
         if(localization.entityDescriptions) if(localization.entityDescriptions[env.targetedEntityName]) {
             effectiveDef = localization.entityDescriptions[env.targetedEntityName]
         }
-        
+
         effectiveDef = effectiveDef.replace(/\n/g, "<br>")
         if(!env.targetedEntity.noProcess) effectiveDef = processDefinitionsInString(effectiveDef, {force: true})
-
+        
         readoutAdd({message: effectiveDef, type: `examine ${env.targetedEntity.type}`, name: processStringTranslation(env.targetedEntity.displayName || env.targetedEntityName), image: env.targetedEntity.image})
-        if(env.targetedEntity.exmExec) env.targetedEntity.exmExec()
         play('muiReadout')
 
         scanner.classList.remove('active')
@@ -454,6 +552,8 @@ ready(()=>{
                 //if left clicking on a target in MUI, show context menu. 
                 //if right clicking target, open MUI AND open a target menu. otherwise just open a target menu
                 } else if((ev.target.classList.contains('target') || env.targeted.length > 0) && (!body.classList.contains('in-menu'))) {
+                    scannerGetTargets()
+
                     switch(ev.button) {
                         case 0: 
                             if(env.mui) {
@@ -470,7 +570,13 @@ ready(()=>{
                 //if not hovering over a target or MUI element...
                 //left click deactivates MUI (like clicking out of an overlay), or closes an active menu if clicked out of a menu box
                 //right click toggles mui, or closes an active menu
-                } else if(!document.querySelector('#readout').contains(ev.target) && !ev.target.classList.contains('target') && !ev.target.classList.contains('noclosemenu')) {
+                } else if(
+                    env.menu["readout"] != ev.target &&
+                    !env.menu["readout"].contains(ev.target) && 
+                    !ev.target.classList.contains('target') && 
+                    !ev.target.classList.contains('noclosemenu') &&
+                    !ev.target.closest('.noclosemenu')
+                ) {
                     switch(ev.button) {
                         case 0: 
                             if(env.mui) MUI("off") //simply turn off the MUI if it's open
@@ -536,11 +642,16 @@ ready(()=>{
     * 1) they're hovering over a target and the MUI is on - stores targets for a variety of fun activities
     * 2) they're hovering over an element with a definition - moves the definition box to the mouse, updates its text, and adds an active class
     */
-    env.hoverIntervalRate = 100
+    env.defaultHoverRate = 100
+    env.hoverIntervalRate = env.defaultHoverRate
     env.hoverFunc = () => {
+        if(env?.stage?.freelook) {
+            env.cursor.x = window.innerWidth / 2
+            env.cursor.y = window.innerHeight / 2
+        }
+
         //definition tracking
         env.hovering = document.elementFromPoint(env.cursor.x, env.cursor.y)
-
         if(env.hovering) {
             if(env.hovering.hasAttribute('definition')) {
                 //flip the position of the transform based on which side of the screen it's on
@@ -555,7 +666,7 @@ ready(()=>{
         }
 
         //MUI tracking
-        if(!env.mui || env.scannerOpen || env.muiProhibited) return
+        if((!env.mui && !env?.stage?.freelook) || env.scannerOpen || env.muiProhibited) return
         scannerGetTargets()
     }
 
@@ -599,17 +710,20 @@ ready(()=>{
         }
     }
 
-    window.addEventListener('mousemove', e=> {
+    env.globalMouseMove = (e) => {
         if (env.mouseThrottle) {
             return
         }
-        env.cursor.x = e.clientX
-        env.cursor.y = e.clientY
+
+        if(!env.stage.freelook) {
+            env.cursor.x = e.clientX
+            env.cursor.y = e.clientY
+        }
         
         env.pageCursor.x = e.pageX
         env.pageCursor.y = e.pageY
         
-        if(!env.temporaryOptimize) { // limited during sensitive sequences, i.e. bullet hells
+        if(!env.temporaryOptimize || env?.stage?.freelook) { // limited during sensitive sequences, i.e. bullet hells
             env.defbox.style.setProperty("--x", env.cursor.x)
             env.defbox.style.setProperty("--y", env.cursor.y)
 
@@ -618,7 +732,9 @@ ready(()=>{
 
         env.mouseThrottle = true
         setTimeout(()=>env.mouseThrottle = false, env.mouseThrottleSpeed)
-    })
+    }
+
+    window.addEventListener('mousemove', env.globalMouseMove)
 
     //load volume settings and get the spike-button functional first thing
     //this approach to multiple volume sliders was kinda inspired by max (@the_dem)'s crack at a mod for it!
@@ -751,6 +867,14 @@ ready(()=>{
     let loadedMask = check('mask')
     if(loadedMask != false) mask({name: loadedMask, retrigger: true, playSound: false});
     else mask({name: 'reality', retrigger: true, playSound: false})
+
+    //also check for modular masks
+    for(const name in env.masks) {
+        const maskObj = env.masks[name]
+        if(maskObj.modular && check(`mask-${name}`)) {
+            mask({ name, retrigger: true, playSound: false, toggle: true })
+        }
+    }
     
     //chrome detection for fixing flickering
     if(window.chrome) {
@@ -767,7 +891,6 @@ ready(()=>{
         }
     }
 
-
     //moth tracker
     //we set this to be periodic rather than on every corru.changed, because otherwise it'd distract people i think
     //it already triggers as soon as you enter a new page anyway
@@ -781,6 +904,53 @@ ready(()=>{
         document.querySelector("#modtext").value = mods
         chatter({actor: 'sys', text: `ATTENTION::'${modList.length} mod(s) automatically initialized:<br>${modList.join("<br>")}'`, readout: false})
     }
+
+    //inactive menu storage
+    storeMenuElement('readout')
+    storeMenuElement('entity-menu')
+    storeMenuElement('entity-details')
+    storeMenuElement('system-menu')
+
+    //supporter stuff
+    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
+        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
+            document.querySelector('.sysbox.credits.kofi').remove()
+            return
+        }
+
+        //we make glyphs out of up to 3 letters from the name
+        function getEquidistantLetters(input) {
+            let result = []
+
+            if (input.length <= 3) {
+                for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
+            } else {
+                let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
+                indices.forEach(index => {
+                    result.push(input.charAt(index))
+                })
+            }
+
+            return result
+        }
+
+        let supporterBox = env.menu["system-menu"].querySelector('#iconsupporters')
+        data.forEach(donator=>{
+            if(donator.active && donator.highest_tier == "Fundfriend") {
+                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
+                let lettaDisplay = ``
+                lettas.forEach(letta=>{
+                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
+                })
+
+                supporterBox.insertAdjacentHTML('beforeend', `
+                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
+                        ${lettaDisplay}
+                    </li>
+                `)
+            }
+        })
+    })
 })
 
 //requires that you're on the page where the ent is defined
@@ -1102,31 +1272,15 @@ function chatter({actor, text, duration = 6000, sfx = true, delay = 0, log = tru
 
     env.setTimeout(()=>{
         let actorObj = getDialogueActor(actor)
-        let parentEl = customEl || document.querySelector(actorObj.element)
         
         //return if you're in dialogue with whoever this is already
-        if(env.currentDialogue.active == true && env.currentDialogue.actors[actor] != undefined) return
+        if(env.currentDialogue.active == true && env.currentDialogue.actors[actor] != undefined) return;
 
-        //otherwise show the chatter if the element still exists
-        if(parentEl) {
-            var chatterEl = parentEl.querySelector('.chatter-container')       
-
-            //if the chatter container doesn't exist, add it
-            if(!chatterEl) {
-                parentEl.insertAdjacentHTML('beforeend','<div class="chatter-container"></div>')
-                chatterEl = parentEl.querySelector('.chatter-container')       
-            }
-
-            env.totalMessages++
-
-            let chatterID = `chat${env.totalMessages}`
-            chatterEl.insertAdjacentHTML('beforeend', `<div class="chatter" id="${chatterID}">${finalText}</div>`)
-
-            setTimeout(()=>{
-                try{
-                    document.querySelector(`#${chatterID}`).remove()
-                } catch(e) { console.log('chatter aborted due to element removal') }
-            }, duration)
+        if (customEl) chatterElement(customEl, finalText, duration); 
+        else if (actorObj.element) {
+            document.querySelectorAll(actorObj.element).forEach(el => {
+                chatterElement(el, finalText, duration)
+            })
         }
 
         if(log) { 
@@ -1137,7 +1291,7 @@ function chatter({actor, text, duration = 6000, sfx = true, delay = 0, log = tru
             logMessage.show = readout //stops the minireadout popup from appearing by default
             logMessage.forceMini = readout //but if true, forces the minireadout to show
 
-            // option to only show mini if readout is not open
+            //option to only show mini if readout is not open
             if(readout == "closed") {
                 logMessage.show = !env.mui
                 logMessage.forceMini = !env.mui
@@ -1149,11 +1303,33 @@ function chatter({actor, text, duration = 6000, sfx = true, delay = 0, log = tru
     }, delay)
 }
 
+//chatter management for a given element
+function chatterElement(parentEl, text, duration) {
+    var chatterEl = parentEl.querySelector('.chatter-container')
+    
+    //if the chatter container doesn't exist, add it
+    if(!chatterEl) {
+        parentEl.insertAdjacentHTML('beforeend','<div class="chatter-container"></div>')
+        chatterEl = parentEl.querySelector('.chatter-container')       
+    }
+
+    env.totalMessages++
+
+    let chatterID = `chat${env.totalMessages}`
+    chatterEl.insertAdjacentHTML('beforeend', `<div class="chatter" id="${chatterID}">${text}</div>`)
+
+    setTimeout(()=>{
+        try{
+            document.querySelector(`#${chatterID}`).remove()
+        } catch(e) { console.log('chatter aborted due to element removal') }
+    }, duration)
+}
+
 //readout controls
 //print a message on the readout
 //if an actor name (should be in dialogueActors) is provided, uses info from that instead
 function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
-    let readout = document.querySelector('#readout')
+    let readout = env?.menu?.readout || document.querySelector('#readout')
     let miniReadout = document.querySelector('#minireadout')
     let effectiveMessage = message
     // console.log("readoutAdd got displayName", displayName)
@@ -1189,7 +1365,10 @@ function readoutAdd({message, type = "", name, displayName, image = false, show 
 
     //reveal all added stuff after a tiny delay
     let currentMessageNum = env.totalMessages
-    setTimeout(()=>document.querySelectorAll(`.message-${currentMessageNum}`).forEach(e=>e.classList.add('active')), 50)
+    setTimeout(()=> {
+        readout.querySelectorAll(`.message-${currentMessageNum}`).forEach(e=>e.classList.add('active'))
+        miniReadout.querySelectorAll(`.message-${currentMessageNum}`).forEach(e=>e.classList.add('active'))
+    }, 50)
     env.totalMessages++
 	
     //play readout add sound if not in dialogue, and also it should be shown
@@ -1304,6 +1483,9 @@ function reloadSessionLog() {
 function createEntity(entObj) {
     env.entities[entObj.name] = entObj
 
+    //used mainly for entity-based flag corrections, updating old references, etc
+    if(entObj.onCreated) entObj.onCreated()
+
     //we don't create the entity if it requests to be hidden,
     //OR if it requests to be limited to a certain page 
     //  (useful for entities from one page that need to show up on another, but without adding to the entity list)
@@ -1341,6 +1523,8 @@ function createEntity(entObj) {
 function entityShowActions(){
     var hasActions = false
 
+    if(!env.targetedEntity) return printError(`attempted to scan missing entity definition for ${env.targetedEntityName}`, false)
+
     if(env.targetedEntity.actions) {
         env.targetedEntity.actions.forEach(action => {
             if(shouldItShow(action)) hasActions = true
@@ -1353,10 +1537,10 @@ function entityShowActions(){
 
 //MUI mouse target detection function
 // todo: this is pretty inefficient. need to revisit
-function scannerGetTargets() {
+function scannerGetTargets(x = env.cursor.x, y = env.cursor.y) {
     env.targeted = []
 
-    let targets = document.elementsFromPoint(env.cursor.x, env.cursor.y)
+    let targets = document.elementsFromPoint(x, y)
     targets.forEach(el => {
         if(el.classList.contains('target')) {
             el.classList.add('targeted')
@@ -1425,41 +1609,110 @@ function scannerOpen() {
     }
 }
 
+/* MENU CONTROLS */
+// most menus are defined in the HTML of the page by default
+// but we don't want them to be using valuable DOM space until they're absolutely needed
+// so we store em
+function storeMenuElement(id) {
+    // also do a lil collection here for references
+    if(!env.menu) env.menu = {}
+    const element = document.getElementById(id)
+    if(!env.menu[id]) env.menu[id] = element
+
+    if(element && !env.menuStorage.elements[id]) {
+        env.menuStorage.elements[id] = element
+        element.remove()
+    }
+}
+
+function restoreMenuElement(id) {
+    if(env.menuStorage.elements[id]) {
+        document.body.appendChild(env.menuStorage.elements[id])
+        delete env.menuStorage.elements[id]
+    }
+}
+
+function cancelMenuRemoval(id) { // removals are done on a delay, so don't do it if reopening
+    if(!env.menuStorage.removalTimeouts[id]) return;
+    clearTimeout(env.menuStorage.removalTimeouts[id])
+    env.menuStorage.removalTimeouts[id] = null
+}
+
+function scheduleMenuRemoval(id, time = 2000) {
+    cancelMenuRemoval(id) // reset
+    env.menuStorage.removalTimeouts[id] = setTimeout(() => {
+        storeMenuElement(id)
+        env.menuStorage.removalTimeouts[id] = null
+    }, time)
+}
+
+env.menuStorage = {
+    elements: {}, // id: element
+    removalTimeouts: {}
+}
+
 //MUI toggles
 function MUI(state) {
     switch(state) {
         case "prohibit":
             body.classList.add('mui-prohibited')
             env.muiProhibited = true
-        break;
+        break
+
         case "deprohibit":
             body.classList.remove('mui-prohibited')
             env.muiProhibited = false
-        break;
+        break
     }
 
     //return if prohibited, or in a transition
     if(body.classList.contains('in-menu') || body.classList.contains('mui-prohibited') || body.getAttribute('state') == "corru-loaded" || body.classList.contains("loading") || body.getAttribute('state') == "corru-leaving") return
 
-    switch(state){
+    if(state === "on" || (state === "toggle" && !env.mui)) {
+        cancelMenuRemoval('readout')
+        restoreMenuElement('readout')
+    }
+
+    let effectiveState = state.replace("toggleOn", "on").replace("toggleOff", "off")
+    switch(effectiveState){
         case "toggle":
-            if(env.mui) MUI("off")
-            else MUI("on")
+            if(env.mui) { MUI("toggleOff") }
+            else { MUI("toggleOn") }
         break
 
         case "on":
+            if(document.activeElement) document.activeElement.blur()
             if(!env.mui) play('muiToggle')
-            body.classList.add('mui-active')
+            setTimeout(() => body.classList.add('mui-active'), 10)
+            setTimeout(() => env.menu["readout"].scrollTop = env.menu["readout"].scrollHeight, 20)
+            setTimeout(() => env.menu["readout"].classList.add("smoothscroll"), 30)
             env.mui = true
+
+            // we briefly pause mouselook during freemove if the MUI is open
+            // slight delay so we can get coords from a right click
+            if(env?.stage?.freemove) setTimeout(()=>{
+                toggleMouseLook(false)
+                
+                //notify the user where their mouse is
+                mousePing({duration: 400})
+            }, 100)
         break
 
         case "off":
+            if(document.activeElement) document.activeElement.blur()
             if(env.mui) play('muiToggle')
             body.classList.remove('mui-active')
+            env.menu["readout"].classList.remove('smoothscroll')
             env.mui = false
             
             scanner.classList.remove('active')
             env.scannerOpen = false
+
+            setTimeout(() => {
+                if(env?.stage?.freemove && !body.classList.contains("in-dialogue") && (["none", "masks"].includes(body.getAttribute('menu')))) toggleMouseLook(true) //re-enabled if paused    
+            }, 10)
+
+            scheduleMenuRemoval("readout")
         break
     }
 }
@@ -1474,20 +1727,32 @@ function toggleEntMenu() {
     if(body.getAttribute('menu') == "entities")  {
         body.classList.remove('in-menu')
         body.setAttribute('menu', 'none')
-    } else {
+        scheduleMenuRemoval("entity-menu")
+
         MUI('off')
+    } else {
+        cancelMenuRemoval("entity-menu")
+        restoreMenuElement('entity-menu')
+        restoreMenuElement('entity-details')
+
         document.querySelector('#entcontent').innerHTML = ""
         var menuContents = ``
 
         //for each page, build a div that contains all of the entities in that page, obscuring ones not seen yet
-        for (const pageName in flags.detectedEntities) {
+        for(const pageName in flags.detectedEntities) {
             const thisPage = flags.detectedEntities[pageName]
             var entListHTML = ""
 
             var entCount = 6 //starts at "one row"
-            for (const entityName in thisPage.entities) {
-                const entity = thisPage.entities[entityName]
 
+            //helpful for ensuring certain things are always first
+            const sortedEntities = Object.entries(thisPage.entities).sort(([_, entityA], [__, entityB]) => {
+                const orderA = entityA.order || 0;
+                const orderB = entityB.order || 0;
+                return orderA - orderB
+            })
+
+            for (const [entityName, entity] of sortedEntities) {
                 if(entity.pathLimit && (entity.pathLimit != thisPage.path)) {
                     delete thisPage.entities[entityName]
                     continue
@@ -1541,8 +1806,9 @@ function toggleEntMenu() {
         })
 
         //show menu
-        body.classList.add('in-menu')
+        setTimeout(() => body.classList.add('in-menu'), 10)
         body.setAttribute('menu', 'entities')
+        MUI('off')
         play('muiScanner')
     }
 }
@@ -1558,12 +1824,18 @@ function toggleSysMenu() {
         MUI('off')
         body.classList.remove('in-menu')
         body.setAttribute('menu', 'none')
+        scheduleMenuRemoval("system-menu")
     } else {
         //show menu
-        MUI('on')
-        body.classList.add('in-menu')
-        body.setAttribute('menu', 'system')
-        play('muiScanner')
+        cancelMenuRemoval("system-menu")
+        restoreMenuElement("system-menu")
+
+        setTimeout(() => {
+            MUI('on')
+            body.classList.add('in-menu')
+            body.setAttribute('menu', 'system')
+            play('muiScanner')            
+        }, 10)
     }
 }
 
@@ -1582,7 +1854,7 @@ function updatePreferenceAttributes() {
         break
     }
 
-    setTimeout(()=>document.querySelector('#readout').scrollTop = document.querySelector('#readout').scrollHeight, 1000)
+    if(!env.menuStorage.elements.readout) setTimeout(()=>env.menu["readout"].scrollTop = env.menu["readout"].scrollHeight, 1000)
 }
 
 function setQualityPreference(pref) {
@@ -1629,15 +1901,15 @@ function toggleMasksMenu() {
             if(shouldItShow(mask)) {
                 menuContents += `
                     <span 
-                        class="ozo-mask ozo-mask-${maskName} ${check('mask') == maskName ? "active" : ""}"
+                        class="ozo-mask ozo-mask-${maskName} ${mask.modular ? "ozo-multi-mask" : ""} ${( (check('mask') == maskName) || (check(`mask-${maskName}`)) ) ? "active" : ""}"
                         style="
-                            --maskImage: ${mask.maskImage};
+                            --maskImage: ${typeof mask.maskImage == "function" ? mask.maskImage() : mask.maskImage};
                             --maskDelay: ${0.3 + (i * 0.1)}s;
                         "
                         definition="${maskName.toUpperCase()}::${typeof mask.definition == "function" ? mask.definition() : mask.definition}"
                         mask="${maskName}"
                     >
-                        ${maskName}
+                        ${mask.specialName ? mask.specialName() : maskName}
                     </span>
                 `
                 i++
@@ -1654,12 +1926,19 @@ function toggleMasksMenu() {
                 let thisMask = e.getAttribute('mask')
                 play('obeskClick')
 
-                //handle mask swap on click
-                if(check('mask') != thisMask) {
+                //handle mask swap/toggle on click
+                if(e.classList.contains('ozo-multi-mask')) {
+                    if(check(`mask-${thisMask}`)) e.classList.remove('active')
+                    else e.classList.add('active')
+
                     mask({name: thisMask})
-                    
-                    document.querySelectorAll('.ozo-mask.active').forEach(el=>el.classList.remove('active'))
-                    e.classList.add('active')
+                } else {
+                    if(check('mask') != thisMask) {
+                        mask({name: thisMask})
+                        
+                        document.querySelectorAll('.ozo-mask.active:not(.ozo-multi-mask)').forEach(el=> el.classList.remove('active'))
+                        e.classList.add('active')
+                    }
                 }
             })
         })
@@ -1699,10 +1978,6 @@ function checkEpisodeProgress(){
         env.ep3 = false 
     }
 
-    if(check("ozo__council-task")) {
-        body.classList.add('masksunlocked')
-    }
-
     if(check('fbx__ep4intro')) { 
         body.classList.add('ep4')
         env.ep4 = true 
@@ -1721,14 +1996,23 @@ function checkEpisodeProgress(){
     } else {
         document.querySelector('#advance-notice').classList.remove('active')
     }
+
+    // mask related
+    if(check("ozo__council-task")) { 
+        body.classList.add('masksunlocked') 
+        body.classList.add('unityunlocked')
+    }
+
+    if(check("ozo__fairy_intro"))   body.classList.add('hungerunlocked')
+    if(check("ozo__isabel_joy"))    body.classList.add('joyunlocked')
+    if(check("ozo__geli_freedom"))  body.classList.add('freedomunlocked')
 }
 
 ///////////////////////////////////////////helpers
 //simple error reporter
 function printError (e, showErrorWarning = true) { 
-    if(showErrorWarning == "verbatim") chatter({actor: 'actual_site_error', text: e, readout: true})
-	else if(showErrorWarning) chatter({actor: 'actual_site_error', text: "something actually fucked up (not a part of the story) details are in the log and console", readout: true})
-	chatter({actor: 'actual_site_error', text: e})
+    if(showErrorWarning) chatter({actor: 'actual_site_error', text: "something actually fucked up (not a part of the story) details are in the log and console", readout: true})
+    chatter({actor: 'actual_site_error', text: e})
     console.warn(e)
     console.trace()
 }
@@ -1748,16 +2032,29 @@ function unsavedMenuWarning() {
 
 //easy menu exit
 function exitMenu(closeMUIToo = true) {
-    if(unsavedMenuWarning()) return
-
+    if(unsavedMenuWarning()) return;
     delete env.draggable
-    switch(body.getAttribute('menu')) {
+
+    let menu = body.getAttribute('menu')
+
+    switch(menu) {
         case "augment":
             play('obeskToggle')
         break
 
         case "party":
             toggleCrittaMenu()
+        break
+
+        case "entities":
+            scheduleMenuRemoval("entity-menu")
+            scheduleMenuRemoval("entity-details")
+            play('muiToggle')
+        break
+
+        case "system":
+            scheduleMenuRemoval("system-menu")
+            play('muiToggle')
         break
 
         default:
@@ -1847,7 +2144,7 @@ function mountSave(savestring, reload = true) {
         }
 
         if(decodedSave == null) {
-            printError('this save file is corrupt! plz email fiend@corru.works about it and send the save too just in case', "verbatim")
+            printError('this save file is corrupt! plz email fiend@corru.works about it and send the save too just in case')
             throw 'save load error'
         }
 
@@ -2010,6 +2307,9 @@ function change(key, value) {
     var flagpool = flags
     if(key.includes("TEMP!!")) flagpool = sessionStorage
     if(key.includes("PAGE!!")) flagpool = page.flags
+    if(key.includes("STAGE!!")) flagpool = env.stage?.current?.flags
+
+    if(!flagpool) { return false } // unsuccessful change
 
     switch(value) {
         case "++":
@@ -2038,7 +2338,8 @@ function change(key, value) {
     checkEpisodeProgress()
 
     // Dispatch the change event
-    document.dispatchEvent(new CustomEvent('corru_changed', { detail: { key, value } }));
+    document.dispatchEvent(new CustomEvent('corru_changed', { detail: { key, value } }))
+    return true // successful change
 }
 
 function updateFlags() {
@@ -2144,10 +2445,13 @@ function check(inputKey, inputValue = null) {
         if(key.includes("ENV!!")) {flagPool = env; key = key.replace("ENV!!", '')} //ENV!! is the session/page environment, it gathers content as you go through different areas and contains almost everything
         if(key.includes("TEMP!!")) flagPool = sessionStorage //TEMP!! is per session
         if(key.includes("PAGE!!")) flagPool = page.flags //PAGE!! is per page
+        if(key.includes("STAGE!!")) flagPool = env.stage?.current?.flags //STAGE!! are stage-instance flags, wiped on stage change
         if(key.includes('__') || key.includes('++')) { //__/++ indicates dialogue related, ++ is global
             flagPool = flags.dialogues
             if(!key.includes('-')) key = key + "-start" //if you're checking the general name of the dialogue, check the start visibility instead
         }
+
+        if(!flagPool) return false;
 
         let returnVal
         if(typeof flagPool[key] == "undefined") { //it's undefined
@@ -2235,7 +2539,7 @@ function changeBgm(newBgm, {length = 1000, preserve = true, rate = false, seek =
         setTimeout(()=>{
             if(env.bgm == oldBgm) return;
             if(pause) oldBgm.pause()
-            else if(oldBgm.playing()) oldBgm.stop()
+            else oldBgm.stop()
         }, length)
         
         if(preserve) { 
@@ -2322,6 +2626,7 @@ function round(x, to) {
 //page change shortcut
 function moveTo(destUrl, closeMui = true, ignoreLoadPreference = false){
     if(closeMui) {
+        env.noPointerLock = true
         MUI("off")
         MUI("deprohibit")
         if(body.classList.contains('in-dialogue')) endDialogue()
@@ -2358,12 +2663,35 @@ function corruRefresh(destination, delay = 5000) {
 
 //VFX/overlay manager
 //type is a string, i.e. "flash", "velzieflash"
-function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = false}) {
+function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = false, sound = false}) {
+    console.log("got", type)
     setTimeout(()=>{
         switch(type) {
             //grandfathered in old vfx commands
             case "flash":
                 flash(state)
+            break
+
+            case "darkflash":
+                if(state) {
+                    body.classList.add('darkflash')
+                    console.log("executing darkstat")
+                    if(sound) {                    
+                        corruStatic.play()
+                        corruStatic.fade(0, getModifiedVolume('sfx', 0.25), 400)
+                    }
+                }
+
+                flash(state)
+
+                if(!state) setTimeout(() => {
+                    body.classList.remove('darkflash')
+                    if(sound) {
+                        corruStatic.fade(getModifiedVolume('sfx', 0.25), 0, 400)
+                        setTimeout(() => corruStatic.stop(), 400) // probably need to add some conditions to this
+                    }
+                    console.log("executing darkstat")
+                }, 500)
             break
 
             case "velzieflash":
@@ -2400,6 +2728,21 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
                 }
             break
 
+            case "flowerwarp":
+                let flowerwarp = body.querySelector('#beacon-vfx')
+
+                if(state && !flowerwarp) {
+                    body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx flowerwarp ${state}"></div>`)
+
+                    flowerwarp = body.querySelector('#beacon-vfx')
+                    setTimeout(()=>flowerwarp.classList.add('active'), 100)
+                } else if(flowerwarp && !state) {
+                    //fade and remove
+                    flowerwarp.classList.remove('active')
+                    setTimeout(()=>flowerwarp.remove(), 800)
+                }
+            break
+
             case "skip":
                 if(!env.skipscreen) {
                     body.insertAdjacentHTML(`beforeend`,`<div id="skip-vfx" class="vfx"></div>`)
@@ -2421,6 +2764,24 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
     }, delay)
 }
 
+//lets you ping a location, typically the mouse pos
+//added specifically for freedom mask toggling but might have other uses
+function mousePing({x = env.cursor.x, y = env.cursor.y, duration = 1000} = {}) {
+    const pingId = `ping${performance.now()}`
+    const ping = document.createElement("div")
+    ping.id = pingId
+    ping.className = "ping"
+    ping.style.left = `${x}px`
+    ping.style.top = `${y}px`
+    ping.style.setProperty("--duration", `${duration}ms`)
+    body.appendChild(ping)
+
+    setTimeout(() => {
+        const el = document.getElementById(pingId)
+        if(el) el.remove()
+    }, duration)
+}
+
 //preloading assets that are about to be used
 function imagePreload(input) {
     const urls = Array.isArray(input) ? input : [input]
@@ -2430,15 +2791,20 @@ function imagePreload(input) {
     })
 }
 
-//legacy quick transition toggle - use VFX instead of this
+//legacy quick transition toggle - use VFX instead of this for any granular control
 function flash(state, velzie = false) {
     switch(state) {
         case true:
             if(velzie) body.classList.add('flash', 'velzie')
             else { body.classList.add('flash'); body.classList.remove('velzie') }
         break
+
         case false:
-            body.classList.remove('flash', 'velzie')
+            body.classList.add("flashfade")
+            body.classList.remove("flash", "velzie")
+            setTimeout(() => {
+                body.classList.remove("flashfade")
+            }, 400)
         break
     }
 }
@@ -2618,10 +2984,10 @@ var sfxmap = new Howl({
         talkflower6: [161000, 1000],
         talkflower7: [162000, 1000],
         talkflower8: [163000, 1000],
-        talkfloweralt1: [164000, 1000],
-        talkfloweralt2: [165000, 1000],
-        talkfloweralt3: [166000, 1000],
-        talkfloweralt4: [167000, 1000],
+        talkfloweralt1: [164000, 950],
+        talkfloweralt2: [165000, 950],
+        talkfloweralt3: [166000, 950],
+        talkfloweralt4: [167000, 950],
         talkfairy1: [168000, 1000],
         talkfairy2: [169000, 1000],
         talkfairy3: [170000, 1000],
@@ -2642,14 +3008,55 @@ var sfxmap = new Howl({
         okidoia2: [186000, 2000],
         okidoia3: [188000, 2000],
         okidoia4: [190000, 2000],
-        scarydoia1: [192000, 2000],
-        scarydoia2: [194000, 2000],
-        scarydoia3: [196000, 2000],
-        scarydoia4: [198000, 2000],
+        scarydoia1: [192500, 1500],
+        scarydoia2: [194500, 1500],
+        scarydoia3: [196500, 1500],
+        scarydoia4: [198500, 1500],
         laser: [200000, 4000],
         weirdbuild: [204000, 4000],
         bingbong: [208000, 4000],
         megastatus: [212000, 4000],
+        joymask: [216000, 4000],
+        freedommask: [220000, 4000],
+        talkoppress1: [224000, 4000],
+        talkoppress2: [228000, 4000],
+        talkoppress3: [232000, 4000],
+        talkoppress4: [236000, 4000],
+        talkether1: [240000, 2000],
+        talkether2: [242000, 2000],
+        talkether3: [244000, 2000],
+        talkether4: [246000, 2000],
+        talkether5: [248000, 2000],
+        talkether6: [250000, 2000],
+        talkether7: [252000, 2000],
+        talkether8: [254000, 2000],
+        talkrot1: [256000, 2000],
+        talkrot2: [258000, 2000],
+        talkrot3: [260000, 2000],
+        talkrot4: [262000, 2000],
+        talkrot5: [264000, 2000],
+        talkrot6: [266000, 2000],
+        talkrot7: [268000, 2000],
+        talkrot8: [270000, 2000],
+        carstart: [272000, 4000],
+        carstop: [276000, 2000],
+        elevator: [280000, 3500],
+        talkcase1: [288000, 1000],
+        talkcase2: [289000, 1000],
+        talkcase3: [290000, 1000],
+        talkcase4: [291000, 1000],
+        talkcase5: [292000, 1000],
+        talkcase6: [293000, 1000],
+        talkcase7: [294000, 1000],
+        talkcase8: [295000, 1000],
+        talkfeed1: [296000, 1900],
+        talkfeed2: [298000, 1900],
+        talkfeed3: [300000, 1900],
+        talkfeed4: [302000, 1900],
+        talkfeed5: [304000, 1900],
+        talkfeed6: [306000, 1900],
+        talkfeed7: [308000, 1900],
+        talkfeed8: [310000, 1900],
         __default: [0, 1]
     }
 });
@@ -2658,17 +3065,17 @@ var sfxmap = new Howl({
 //we drop the volume of the bgm slightly when playing something
 env.recentSfx = false
 function play(sfxName, pitch = true, volume = 0.75, forcePlay) {
-    if(forcePlay) env.recentSfx = false    
-    if(env.recentSfx || env.noSfx) return
+    if(forcePlay) env.recentSfx = false   
+    if((env.recentSfx || env.noSfx) && !forcePlay) return
     env.recentSfx = true
     
     //we may change this depending on the SFX played
     var sfx = sfxName
     
     //randomize the pitch slightly by default
-    if(pitch === true) {
+    if(pitch === true && !env.forceSfxInheritPitch) {
         sfxmap.rate((Math.random() * 0.2) + 0.9) 
-    } else if(pitch == "inherit") {
+    } else if(pitch == "inherit" || env.forceSfxInheritPitch) {
          //don't do anything, just go with the flow
     } else if(typeof pitch == "number") { //set the pitch if specified
         sfxmap.rate(pitch)
@@ -2691,6 +3098,11 @@ function play(sfxName, pitch = true, volume = 0.75, forcePlay) {
         case "talkfloweralt": sfx = `talkfloweralt${rand(1, 5)}`; break
         case "talkfairy": sfx = `talkfairy${rand(1, 9)}`; break
         case "talkmind": sfx = `talkmind${rand(1, 9)}`; break
+        case "talkoppress": sfx = `talkoppress${rand(1, 4)}`; break
+        case "talkether": sfx = `talkether${rand(1, 8)}`; break
+        case "talkrot": sfx = `talkrot${rand(1, 8)}`; break
+        case "talkcase": sfx = `talkcase${rand(1, 8)}`; break
+        case "talkfeed": sfx = `talkfeed${rand(1, 8)}`; break
         case "okidoia": sfx = `okidoia${rand(1, 5)}`; break
         case "scarydoia": sfx = `scarydoia${rand(1, 5)}`; break
         //shot also has a variety
@@ -2806,7 +3218,7 @@ async function gmss() {
 
     await fetch("https://state.corru.network/").then(response => response.json()).then(json=> {if(check("ENV!!ep2")) mss = json})
 
-    document.querySelectorAll('.mindsci-status').forEach(el=>{
+    env.menu["system-menu"].querySelectorAll('.mindsci-status').forEach(el=>{
         el.setAttribute('state', mss.state)
         el.setAttribute('status', mss.status)
         el.setAttribute('code', mss.code)
@@ -2815,7 +3227,8 @@ async function gmss() {
 
     let oldCode = env.mss ? env.mss.code : -99
     env.mss = mss
-
+    env.effectiveNet = env.mss.code
+    
     if((typeof env.fakenet != 'number' && mss.code != oldCode) || oldCode == -99) updateCode()
 }
 
@@ -2916,7 +3329,7 @@ function mothHasUnreadCheck() {
 
     there's always a mask active (even default)
 */
-function mask({name, retrigger = false, playSound = true}) {
+function mask({name, retrigger = false, playSound = true, toggle = undefined}) {
     let current = check('mask') || "reality"
     let currentMask = env.masks[current]
     let newMask = env.masks[name]
@@ -2928,10 +3341,36 @@ function mask({name, retrigger = false, playSound = true}) {
         play(newMask.sound, true, 0.5)
     }
 
-    change("mask", name)
-    body.setAttribute('mask', name)
-    if(current != name && typeof currentMask.off == "function") currentMask.off()
-    if((current != name && typeof newMask.on == "function") || retrigger) newMask.on()
+    newMask.name = name // cause we don't assign this in definition for redundancy
+
+    if(newMask.modular) { // modular masks can be used at the same time as others and have their own lil system
+        let maskActive = check(`mask-${name}`)
+        let shouldEnable = toggle === undefined ? !maskActive : !!toggle
+
+        if(shouldEnable && (!maskActive || retrigger)) {
+            body.classList.add(`mask-${newMask.name}`)
+            change(`mask-${name}`, true)
+            if(typeof newMask.on == "function") newMask.on()
+
+        } else if(!shouldEnable && (maskActive || retrigger)) {
+            body.classList.remove(`mask-${newMask.name}`)
+            change(`mask-${name}`, "DELETE")
+            if(typeof newMask.off == "function") newMask.off()
+        }
+
+    } else { // standard exclusive mask execution
+        change("mask", newMask.name)
+        body.setAttribute('mask', newMask.name)
+        body.classList.add(`mask-${newMask.name}`)
+        if(newMask.name != currentMask.name) body.classList.remove(`mask-${currentMask.name}`)
+
+        if((current != name && typeof currentMask.off == "function") || retrigger) currentMask.off()
+        if((current != name && typeof newMask.on == "function") || retrigger) newMask.on()
+    }
+
+    env.stage.lastTeleport = false
+    if(env.stage.ref) checkLocks()
+    document.dispatchEvent(new CustomEvent('corru_mask', { detail: { mask: name, oldMask: current } }))
 }
 
 /* 
@@ -2971,8 +3410,8 @@ function processDefinitionsInString(input, {force = false} = {}) {
         } else {
             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const edgeStart = `(?<=\\s|^|[,.;:!?'])`
-            const edgeEnd = `(?=\\s|$|[,.;:!?'])`
+            const edgeStart = `(?<=\\s|^|[-,.;:!?'])`
+            const edgeEnd = `(?=\\s|$|[-,.;:!?']|'s\\b|'d\\b|'ll\\b|'ve\\b|'re\\b|'m\\b|'t\\b)`
             const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
 
             // we check the scanningInput for matches
@@ -2987,7 +3426,10 @@ function processDefinitionsInString(input, {force = false} = {}) {
                     if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
                         return innerMatch
                     } 
-                    else { return innerMatch.replace(new RegExp(match[0], 'g'), replacement) }
+                    else { 
+                        const wordBoundaryRegex = new RegExp(`\\b${match[0]}\\b`, 'g')
+                        return innerMatch.replace(wordBoundaryRegex, replacement) 
+                    }
                 })
             }
         }

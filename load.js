@@ -17,7 +17,7 @@ cor_ru.observer.page.observe()
 
 document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})
 
-function stepKey(key) {
+/*function stepKey(key) {
     //we don't let any steps happen under certain circumstances
     if(env.stage.justStepped || 
         body.classList.contains('stage-transition') || 
@@ -133,7 +133,7 @@ function stepKey(key) {
         step()
         if(!env.stage.enemyPause) enemyStep()
     }
-}
+}*/
 
 page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -280,7 +280,7 @@ function generateDialogueObject(genString) {
     else return obj
 } */
 
-function processDefinitionsInString(input, {force = false} = {}) {
+/*function processDefinitionsInString(input, {force = false} = {}) {
     if(!input) return input;
     if(!input.includes) return input;
     if ((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
@@ -331,7 +331,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
         }
     })
     return finalInput
-}
+}*/
 
 /* nor this one
 function processTranslation(container, force = false) {
@@ -360,7 +360,8 @@ function processTranslation(container, force = false) {
     })
 }*/
 
-/*function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
+/*
+function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
     let readout = document.querySelector('#readout')
     let miniReadout = document.querySelector('#minireadout')
     let effectiveMessage = message
@@ -430,7 +431,8 @@ function processTranslation(container, force = false) {
 
         readout.insertAdjacentHTML('afterbegin', `<div class="message sourceless active">${processStringTranslation("internal log buffer cleared after reaching limit (80) due to attached external record device")}</div>`)
     }
-}*/
+}
+*/
 
 env.localization = {
    dialogues: {},
@@ -691,13 +693,13 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
     // funky functions that help with translation
 
-    processWeirdTranslation: function (selector, attribute = false) {
+    processSpecificTranslation: function (selector, attribute = false) { // --- this function is a mess yeah but im not fixing it cause it works
         if (selector == "mindpike") {
             document.querySelectorAll("#mindspike-examine").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ИЗУЧ"}})
             document.querySelectorAll("#mindspike-act").forEach(el=>{for (const childNode of el.childNodes) {childNode.textContent = "ДЕЙСТ"}})
         } // i hate ACT and EXM strings bleeding into shit
         else if (attribute == false) {
-            document.querySelectorAll(selector).forEach(el=>{
+            selector.forEach(el=>{
                 for (const childNode of el.childNodes) {
                     if (childNode.nodeType === Node.TEXT_NODE) {
                         if (childNode.textContent != processStringTranslation(childNode.textContent)) childNode.textContent = processStringTranslation(childNode.textContent)
@@ -706,7 +708,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             })
         }
         else {
-            document.querySelectorAll(selector).forEach(el=>{
+            selector.forEach(el=>{
                 if (el.getAttribute(attribute) != null) {
                     if (el.getAttribute(attribute) != processStringTranslation(el.getAttribute(attribute))) el.setAttribute(attribute, processStringTranslation(el.getAttribute(attribute)))
                 }
@@ -715,8 +717,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         return
     },
     processStatic: function (force) {
-        cor_ru.processWeirdTranslation('title');
-        cor_ru.processWeirdTranslation(".enter", 'page');
+        cor_ru.processSpecificTranslation(document.querySelectorAll('title'));
+        cor_ru.processSpecificTranslation(document.querySelectorAll(".enter"), 'page');
         if (force) processTranslation(document.querySelector(`#static`), true);
         else processTranslation(document.querySelector(`#static`));
     },
@@ -735,46 +737,57 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             processTranslation(document.querySelector(`#dialogue-skip`));
         }
     },
-    processMenu: function (force) {
-        document.querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')}) // we dont want to translate fundfriends (even tho it would be funny)
-        cor_ru.processWeirdTranslation('.ci-masks', 'definition');
-        cor_ru.processWeirdTranslation('.ozo-mask', 'definition');
-        cor_ru.processWeirdTranslation('#savetext', 'placeholder');
-        if (force) {
-            processTranslation(document.querySelector("#meta-menu")), true;
-            processTranslation(document.querySelector("#system-menu"), true);
-            processTranslation(document.querySelector("#entity-menu"), true);
-            processTranslation(document.querySelector(`#advance-notice`), true);
-        } else {
-            processTranslation(document.querySelector("#meta-menu"));
-            processTranslation(document.querySelector("#system-menu"));
-            processTranslation(document.querySelector("#entity-menu"));
-            processTranslation(document.querySelector(`#advance-notice`));
-        }
+    processMenu: function () { // cannot force this one because that would defeat the purpose of it
+        if (document.querySelector("#system-menu") != null) document.querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')}) // --- we dont want to translate fundfriends (even tho it would be funny)
+        env.menu['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
+        env.menuStorage.elements['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
+
+        if (document.querySelector("#system-menu") != null) cor_ru.processSpecificTranslation(document.querySelectorAll('#savetext'), 'placeholder');
+        cor_ru.processSpecificTranslation(env.menu['system-menu'].querySelectorAll('#savetext'), 'placeholder');
+        cor_ru.processSpecificTranslation(env.menuStorage.elements['system-menu'].querySelectorAll('#savetext'), 'placeholder');
+
+        if (document.querySelector("#system-menu") != null) processTranslation(document.querySelector("#system-menu"));
+        processTranslation(env.menu['system-menu'])
+        processTranslation(env.menuStorage.elements['system-menu'])
+
+        if (document.querySelector("#entity-menu") != null) processTranslation(document.querySelector("#entity-menu"));
+        processTranslation(env.menu['entity-menu'])
+        processTranslation(env.menuStorage.elements['entity-menu'])
+
+        processTranslation(document.querySelector("#meta-menu"));
+        processTranslation(document.querySelector(`#advance-notice`));
+        
+        cor_ru.processSpecificTranslation(document.querySelectorAll('.ci-masks'), 'definition');
+        cor_ru.processSpecificTranslation(document.querySelectorAll('.ozo-mask'), 'definition');
     },
     processReply: function () {
-        cor_ru.processWeirdTranslation('.reply', 'name');
-        cor_ru.processWeirdTranslation('.reply', 'definition');
-        cor_ru.processWeirdTranslation('.reply', 'endtext');
+        cor_ru.processSpecificTranslation(document.querySelectorAll('.reply'), 'name');
+        cor_ru.processSpecificTranslation(document.querySelectorAll('.reply'), 'definition');
+        cor_ru.processSpecificTranslation(document.querySelectorAll('.reply'), 'endtext');
     },
     processReadout: function (force) {
         processTranslation(document.querySelector("#minireadout"))
 
-        readout = document.querySelector("#readout")
-        messages = readout.querySelectorAll(".message")
-        length = messages.length - 1
+        dothething = function (selector) {
+            if (selector == null) return;
+            messages = selector.querySelectorAll(".message")
+            length = messages.length - 1
 
-        messages.forEach(el=>{
-            if (length > 0) {
-                el.classList.add('tskip')
-                el.querySelectorAll(" *").forEach(el=>{el.classList.add('tskip')})
-            } // dont want it touching old readouts
-            if (length == 1) {
-              if (el.lastElementChild.textContent == "NOTE::'restored partial recent log'") processTranslation(el, true)
-            } // touching the restored partial log note is fine tho
-            length--})
-        
-        processTranslation(document.querySelector("#readout"))
+            messages.forEach(el=>{
+                if (length > 0) {
+                    el.classList.add('tskip')
+                    el.querySelectorAll(" *").forEach(el=>{el.classList.add('tskip')})
+                } // dont want it touching old readouts
+                if (length == 1) {
+                if (el.lastElementChild.textContent == "NOTE::'restored partial recent log'") processTranslation(el, true)
+                } // touching the restored partial log note is fine tho
+                length--})
+            processTranslation(document.querySelector("#readout"))
+        }
+
+        dothething(document.querySelector("#readout"))
+        dothething(env.menu['readout'])
+        dothething(env.menuStorage.elements['readout'])
     },
 
     // obserbor. the itself of them gets defined later
@@ -796,10 +809,10 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 processTranslation();
                 processTranslation(document.querySelector(`#mindspike-scanner`));
                 processTranslation(document.querySelector(`#advance-notice`));
-                cor_ru.processWeirdTranslation("#content .target", "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+                cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
 
                 if (document.querySelector("#combat")) processTranslation(document.querySelector(`#combat`), "force") // force because things change in combat quite a lot so it does need to ignore the tdone
-                if (document.querySelector("#combat")) cor_ru.processWeirdTranslation(".floater", "amt")
+                if (document.querySelector("#combat")) cor_ru.processSpecificTranslation(document.querySelectorAll(".floater"), "amt")
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
@@ -856,7 +869,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         gad: {
             func: (consolething)=>{
-                cor_ru.processWeirdTranslation(".mindsci-status", "definition");
+                cor_ru.processSpecificTranslation(document.querySelectorAll(".mindsci-status"), "definition");
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
@@ -881,8 +894,8 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         masks: {
             func: (consolething)=>{
                 processTranslation(document.querySelector(`.ozo-mask-grid`))
-                cor_ru.processWeirdTranslation('.ci-masks', 'definition');
-                cor_ru.processWeirdTranslation('.ozo-mask', 'definition');
+                cor_ru.processSpecificTranslation(document.querySelectorAll('.ci-masks'), 'definition');
+                cor_ru.processSpecificTranslation(document.querySelectorAll('.ozo-mask'), 'definition');
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
@@ -902,7 +915,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 })
                 .then(()=>{
                     console.info("%cthen - @cor-RU:page", cor_ru.fancy.general)
-                    if (document.getElementsByClassName("cor-rudev").length == 0) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
                             
                     processTranslation();
                     console.info("%cprocess1 - @cor-RU:page", cor_ru.fancy.general)
@@ -917,9 +929,9 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                     processTranslation(document.querySelector(`.ozo-mask-grid`))
                     console.info("%cprocess3 - @cor-RU:page", cor_ru.fancy.general)
 
-                    cor_ru.processWeirdTranslation("mindpike");
-                    cor_ru.processWeirdTranslation(".mindsci-status", "definition");
-                    cor_ru.processWeirdTranslation("#content .target", "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+                    cor_ru.processSpecificTranslation("mindpike");
+                    cor_ru.processSpecificTranslation(document.querySelectorAll(".mindsci-status"), "definition");
+                    cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
                     console.info("%cprocess4 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.observer.common.observe();
@@ -965,6 +977,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
     </ul>
 </div>`,
+
+    devved: function () {
+        if (check("TEMP!!cor-rudev")) return;
+        if (document.querySelector(".devs") != null) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+        env.menu["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+        env.menuStorage.elements["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+        change("TEMP!!cor-rudev", true)
+    },
 
     // loading and updating stuff as we go
 
