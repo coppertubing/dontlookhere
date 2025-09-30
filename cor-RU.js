@@ -280,10 +280,10 @@ function generateDialogueObject(genString) {
     else return obj
 } */
 
-/*function processDefinitionsInString(input, {force = false} = {}) {
+function processDefinitionsInString(input, {force = false} = {}) {
     if(!input) return input;
     if(!input.includes) return input;
-    if ((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
+    if((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
 
     //we alter this string as it's processed to avoid definition overlaps
     let scanningInput = input
@@ -300,7 +300,7 @@ function generateDialogueObject(genString) {
     sortedDefinitions.forEach(([phrase, definition]) => {
         if(phrase.length > scanningInput.length) return;
 
-        const type = (typeof definition === "object") ? definition.type || "INHERITED CONTEXT" : "INHERITED CONTEXT";
+        const type = (typeof definition === "object") ? definition.type || processStringTranslation("INHERITED CONTEXT") : processStringTranslation("INHERITED CONTEXT");
         const text = (typeof definition === "object") ? definition.text || definition : definition;
 
         if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
@@ -310,28 +310,34 @@ function generateDialogueObject(genString) {
         } else {
             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const phraseRegex = new RegExp(`(?<![0-9A-Z_a-zа-яА-Я])(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})(?![0-9A-Z_a-zа-яА-Я])`, 'gi');
+            const edgeStart = `(?<=\\s|^|[-,.;:!?'])`
+            const edgeEnd = `(?=\\s|$|[-,.;:!?']|'s\\b|'d\\b|'ll\\b|'ve\\b|'re\\b|'m\\b|'t\\b)`
+            const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
 
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
                 const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
-                // replace the inputs - scanning to remove the match, finalInput to add the definition to the output
+                
+                //replace the inputs - scanning to remove the match, finalInput to add the definition to the output
                 scanningInput = scanningInput.replaceAll(match[0], "")
 
                 //we do this to target replacements only outside of HTML
-                finalInput = finalInput.replace(/(?<![0-9A-Z_a-zа-яА-Я])(<[^>]*>|[^<]+)(?![0-9A-Z_a-zа-яА-Я])/g, (innerMatch)=>{
+                const finalInputRegex = new RegExp(`${edgeStart}(<[^>]*>|[^<]+)${edgeEnd}`, 'g')
+                finalInput = finalInput.replace(finalInputRegex, (innerMatch)=>{
                     if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
                         return innerMatch
                     } 
-                    else {
-                        return innerMatch.replace(new RegExp(match[0], 'g'), replacement)
+                    else { 
+                        const wordBoundaryRegex = new RegExp(`${edgeStart}${match[0]}${edgeEnd}`, 'g')
+                        return innerMatch.replace(wordBoundaryRegex, replacement) 
                     }
                 })
             }
         }
     })
+    
     return finalInput
-}*/
+}
 
 /* nor this one
 function processTranslation(container, force = false) {
