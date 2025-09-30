@@ -823,49 +823,41 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 console.log("%ccommon observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
         },
-        entMenu: {
-            func: (consolething)=>{
-                if (body.attributes['menu'] != 'entities') return;
-                document.querySelectorAll('#entity-menu .ent').forEach(e=>{
-                    if(e.getAttribute('entname')) {
-                        e.addEventListener('click', ()=>{
-                            let entity = flags.detectedEntities[e.getAttribute('pagename')]['entities'][e.getAttribute('entname')]
-                            let container = document.querySelector('#entcontent')
-                            container.innerHTML = ""
-
-
-                            let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
-
-                            try {replay = getReadoutMsg({message: cor_ru.entity_menu[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu[entity.name]['name'], image: entity.image})}
-                            catch (error) {
-                                console.warn("could not localize " + entity.name + " - @cor-RU")
-                                console.error(error)
-                            }
-
-                            container.insertAdjacentHTML('beforeend', replay)
-                            setTimeout(()=>container.querySelector('.message').classList.add('active'), 5)
-                        })
-                    }
-                })
-                processTranslation(document.querySelector("#entity-menu"))
-                if (consolething != undefined) console.log(consolething[0], consolething[1]);
-            },
-            observe: ()=>{
-                cor_ru.observer.entMenu.itself.observe(body, { childList: false, subtree: false, attributes: true, attributeFilter: ['menu']});
-
-                console.log("%centMenu observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
-            }
-        },
-        warning: {
+        bodychildren: {
             func: (consolething)=>{
                 cor_ru.processWarning();
+                
+                if (document.querySelectorAll('#entity-menu .ent') != null) {
+                    document.querySelectorAll('#entity-menu .ent').forEach(e=>{
+                        if(e.getAttribute('entname')) {
+                            e.addEventListener('click', ()=>{
+                                let entity = flags.detectedEntities[e.getAttribute('pagename')]['entities'][e.getAttribute('entname')]
+                                let container = document.querySelector('#entcontent')
+                                container.innerHTML = ""
+
+
+                                let replay = getReadoutMsg({message: entity.text.replace(/\n/g, "<br>"), type: `examine ${entity.type}`, name: entity.displayName || entity.name, image: entity.image})
+
+                                try {replay = getReadoutMsg({message: cor_ru.entity_menu[entity.name]['desc'], type: `examine ${entity.type}`, name: cor_ru.entity_menu[entity.name]['name'], image: entity.image})}
+                                catch (error) {
+                                    console.warn("could not localize " + entity.name + " - @cor-RU")
+                                    console.error(error)
+                                }
+
+                                container.insertAdjacentHTML('beforeend', replay)
+                                setTimeout(()=>container.querySelector('.message').classList.add('active'), 5)
+                            })
+                        }
+                    })
+                    processTranslation(document.querySelector("#entity-menu"))
+                }
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
             observe: ()=>{
-                cor_ru.observer.warning.itself.observe(body, {subtree: false, childList: true});
+                cor_ru.observer.bodychildren.itself.observe(body, {subtree: false, childList: true});
 
-                console.log("%cwarning observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
+                console.log("%cbodychildren observer is set up! - @cor-RU", cor_ru.fancy.setobserver)
             }
         },
         gad: {
@@ -937,8 +929,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                     console.info("%cprocess4 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.observer.common.observe();
-                    cor_ru.observer.entMenu.observe();
-                    cor_ru.observer.warning.observe();
+                    cor_ru.observer.bodychildren.observe();
                     cor_ru.observer.gad.observe();
                     cor_ru.observer.dialogue.observe();
                     cor_ru.observer.masks.observe();
@@ -954,12 +945,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             }
         },
     },
-
-    /*observerWarn: new MutationObserver(()=>{
-        cor_ru.processWarning();
-        console.log("warnings observed! - @cor-RU", cor_ru.fancy.observed);
-    }),
-    observerWarnObserve: function () {cor_ru.observerWarn.observe("???", { childList: true })}, UNFINISHED*/
 
     // this is mildly annoying
 
@@ -1066,8 +1051,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 // yay! opbsbernr time
 
 cor_ru.observer.common.itself = new MutationObserver(()=>{cor_ru.observer.common.func(["%ccommon observed! - @cor-RU", cor_ru.fancy.observed])})
-cor_ru.observer.entMenu.itself = new MutationObserver(()=>{cor_ru.observer.entMenu.func(["%centMenu observed! - @cor-RU", cor_ru.fancy.observed])})
-cor_ru.observer.warning.itself = new MutationObserver(()=>{cor_ru.observer.warning.func(["%cwarning observed! - @cor-RU", cor_ru.fancy.observed])})
+cor_ru.observer.bodychildren.itself = new MutationObserver(()=>{cor_ru.observer.bodychildren.func(["%cbodychildren observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.gad.itself = new MutationObserver(()=>{cor_ru.observer.gad.func(["%cgad observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.dialogue.itself = new MutationObserver(()=>{cor_ru.observer.dialogue.func(["%cdialogue observed! - @cor-RU", cor_ru.fancy.observed])})
 cor_ru.observer.masks.itself = new MutationObserver(()=>{cor_ru.observer.masks.func(["%cmasks observed! - @cor-RU", cor_ru.fancy.observed])})
