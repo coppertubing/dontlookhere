@@ -15,7 +15,7 @@ env.stages['embassy_research'] = {
 
         switch(check("PAGE!!embassy_day")) {
             case 3:
-                document.querySelectorAll('.bozko.character, .kazki.character, .cavik.character, .gakvu.character, .tozik.character').forEach(e=>{
+                env.stage.querySelectorAll('.bozko.character, .kazki.character, .cavik.character, .gakvu.character, .tozik.character').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -31,14 +31,14 @@ env.stages['embassy_research'] = {
                     !check("gameplay_off")
                 ) {
                     startDialogue("d3_bstrdreveal")
-                    document.querySelectorAll(".gridpiece[slug='4']").forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+                    env.stage.querySelectorAll(".gridpiece[slug='4']").forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
                 } else if(check("PAGE!!archiveopen")) {
-                    document.querySelectorAll(".gridpiece[slug='4']").forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+                    env.stage.querySelectorAll(".gridpiece[slug='4']").forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
                 }
             break
 
             case 2:
-                document.querySelectorAll('.character').forEach(e=>{
+                env.stage.querySelectorAll('.character').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -48,7 +48,7 @@ env.stages['embassy_research'] = {
 
             case 1:
                 if(!check("PAGE!!d1_kbcollected")) {
-                    document.querySelectorAll('.kazki.character, .bozko.character').forEach(e=>{
+                    env.stage.querySelectorAll('.kazki.character, .bozko.character').forEach(e=>{
                         e.parentElement.classList.remove('prop', 'blocks')
                         e.parentElement.innerHTML = ""
                     })
@@ -63,7 +63,7 @@ env.stages['embassy_research'] = {
 
     onStep: ()=>{
         if(check("PAGE!!archiveopen")) {
-            document.querySelectorAll('.holedoor').forEach(el=>el.classList.remove('hide'))
+            env.stage.querySelectorAll('.holedoor').forEach(el=>el.classList.remove('hide'))
         }
     },
 
@@ -227,7 +227,7 @@ env.stages['embassy_personnel'] = {
 
         switch(check("PAGE!!embassy_day")) {
             case 3:
-                document.querySelectorAll('.character:not(.collapser)').forEach(e=>{
+                env.stage.querySelectorAll('.character:not(.collapser)').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -240,8 +240,9 @@ env.stages['embassy_personnel'] = {
                 toggleBgm(env.embassy.music)
             break
 
+            case -1:
             case 1:
-                document.querySelectorAll('.character.cavik, .character.bozko').forEach(e=>{
+                env.stage.querySelectorAll('.character.cavik, .character.bozko').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -448,7 +449,7 @@ env.stages['echovision'] = {
     },
 
     detonate: ()=>{
-        document.querySelectorAll(".gridpiece.empty").forEach(el=>el.style.transform = `translateZ(-50px) translate(${rand(-700, 700)}%, ${rand(-200, 200)}%) rotate(${rand(-180, 180)}deg) rotateX(${rand(-180, 180)}deg) rotateY(${rand(-180, 180)}deg)`)
+        env.stage.querySelectorAll(".gridpiece.empty").forEach(el=>el.style.transform = `translateZ(-50px) translate(${rand(-700, 700)}%, ${rand(-200, 200)}%) rotate(${rand(-180, 180)}deg) rotateX(${rand(-180, 180)}deg) rotateY(${rand(-180, 180)}deg)`)
         body.classList.add("detonating")
     },
 
@@ -458,11 +459,11 @@ env.stages['echovision'] = {
 
     entities: {
         "░": {
-            class: "empty plain step0 path-limited"
+            class: "empty plain step0 mainpath blocks path-limited"
         },
 
         "1": {
-            class: "empty plain step1 path-limited"
+            class: "empty plain step1 mainpath blocks  path-limited"
         },
 
         "e": {
@@ -477,7 +478,7 @@ env.stages['echovision'] = {
         },
 
         "2": {
-            class: "empty plain step2 path-limited"
+            class: "empty plain step2 mainpath blocks  path-limited"
         },
 
         "@": {
@@ -485,7 +486,7 @@ env.stages['echovision'] = {
         },
 
         "3": {
-            class: "empty plain step3 path-limited"
+            class: "empty plain step3 mainpath blocks path-limited"
         },
 
         "#": {
@@ -589,7 +590,7 @@ env.stages['embassy_recreation'] = {
 
         switch(check("PAGE!!embassy_day")) {
             case 3:
-                document.querySelectorAll('.character:not(.collapser), .prop .chair, .prop .container').forEach(e=>{
+                env.stage.querySelectorAll('.character:not(.collapser), .prop .chair, .prop .container').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -604,19 +605,29 @@ env.stages['embassy_recreation'] = {
                 if(isStageClear()) toggleBgm(env.embassy.music_collapse)
                 else toggleBgm(env.embassy.music_unsafe)
 
-                document.querySelectorAll('.gridpiece[slug="r"]').forEach(el=>{el.setAttribute('spot', 22); el.setAttribute('shouldFace', 'right')})
+                env.stage.querySelectorAll('.gridpiece[slug="r"]').forEach(el=>{el.setAttribute('spot', 22); el.setAttribute('shouldFace', 'right')})
             break
 
             case 1:
-                document.querySelectorAll('.character.tozik, .character.gakvu, .collapseonly').forEach(e=>{
+                env.stage.querySelectorAll('.character.tozik, .character.gakvu, .collapseonly, .bt').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
                 toggleBgm(env.embassy.music)
             break
 
+            case -1:
+                env.stage.querySelectorAll('.character:not(.bt), .collapseonly').forEach(e=>{
+                    e.parentElement.classList.remove('prop', 'blocks')
+                    e.parentElement.innerHTML = ""
+                })
+
+                toggleBgm(env.embassy.music)
+                startDialogue("d0_meetup")
+            break
+
             default:
-                document.querySelectorAll('.character.bozko, .character.kazki, .collapseonly').forEach(e=>{
+                env.stage.querySelectorAll('.character.bozko, .character.kazki, .collapseonly, .bt').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -822,13 +833,39 @@ env.stages['embassy_recreation'] = {
                 `
             }
         },
+
+        "9": {
+            class:"prop chartile blocks",
+            contains: {
+                id: "kazki",
+                class: "kazki character bt",
+                examineEntity: "kazki",
+                examinePriority: 2,
+                html: `<figure>
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="legs"></div>
+                </figure>`
+            }
+        },
+
+        "8": {
+            class:"prop chartile blocks",
+            contains: {
+                id: "gakvu",
+                class: "gakvu character bt",
+                examineEntity: "gakvu",
+                examinePriority: 2,
+                html: env.stageEntities.gakvuHTML
+            }
+        }
     },
 
     width: 13,
     plan: [
         'N','░','░','b','b','b','B','b','b','b','░','░','.',
         '.','░','+','b','b','b','f','b','b','b','+','░','.',
-        '.','░','░','░','░','░','ô','q','T','░','░','░','.',
+        '.','░','░','░','9','8','ô','q','T','░','░','░','.',
         '.','░','░','↕','░','░','░','░','░','↕','░','░','.',
         'G','6','↔','A','↔','░','░','░','↔','A','↔','░','.',
         '.','░','░','↕','Q','░','░','░','+','↕','░','░','.',
@@ -974,7 +1011,7 @@ env.stages['embassy_cquarters1'] = {
         if(!check('PAGE!!miltzameet')) {
             startDialogue("d3r1")
             change('PAGE!!miltzameet', true)
-        } else document.querySelectorAll('.character.miltza').forEach(e=>{
+        } else env.stage.querySelectorAll('.character.miltza').forEach(e=>{
             e.parentElement.classList.remove('prop', 'blocks')
             e.parentElement.innerHTML = ""
         })
@@ -1279,7 +1316,7 @@ env.stages['embassy_archivalintro'] = {
 
         "♠": {
             exec: ()=> {
-                if(document.querySelectorAll('.evil') && !check("PAGE!!archivewarn")) {
+                if(env.stage.querySelectorAll('.evil') && !check("PAGE!!archivewarn")) {
                     chatter({actor: 'akizet', text: 'beware - it is as i feared', readout: true})
                     setTimeout(()=>chatter({actor: 'akizet', text: 'archival golems are formed of black corru...', readout: true}), 2000)
                     setTimeout(()=>chatter({actor: 'akizet', text: 'they are particularly tough!', readout: true}), 4000)
@@ -1433,7 +1470,7 @@ env.stages['embassy_archivalcore'] = {
     },
 
     hidePillarCyst: ()=>{
-        document.querySelectorAll(".bstrdpillar").forEach(el=>el.classList.add('nocyst'))
+        env.stage.querySelectorAll(".bstrdpillar").forEach(el=>el.classList.add('nocyst'))
     },
     locale: "research",
 
@@ -1551,13 +1588,13 @@ env.stages['embassy_archivaldelivery'] = {
                 el.classList.add('destroyed')
             })
             
-            document.querySelectorAll('.lamp').forEach(e=>{
+            env.stage.querySelectorAll('.lamp').forEach(e=>{
                 e.parentElement.classList.remove('prop', 'blocks')
                 e.parentElement.innerHTML = ""
             })
         
             if(checkItem(env.ITEM_LIST.scary_black_box)) {
-                document.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
+                env.stage.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
             }
         } 
     },
@@ -1651,9 +1688,11 @@ env.stages['embassy_archivalcore_sensitive'] = {
 
     onStep: ()=>{
         if(check("PAGE!!archivemini")) {
-            document.querySelectorAll('.grid-plane .bstrdshelf, #grid-ref .bstrdshelf').forEach(el=>{
-                el.parentElement.classList.remove('prop', 'blocks')
-                el.parentElement.innerHTML = ""
+            [env.stage.real, env.stage.ref].forEach(layer => {
+                layer.querySelectorAll('.bstrdshelf').forEach(e => {
+                    e.parentElement.classList.remove('prop', 'blocks')
+                    e.parentElement.innerHTML = ""
+                })
             })
         }
     },
@@ -1749,7 +1788,7 @@ env.stages['embassy_archivalboss'] = {
             toggleBgm(env.embassy.music_collapse)
             content.classList.add("archives", "show-walls")
             content.classList.remove("bastard")
-            document.querySelectorAll('.maintcloak, .lamp, .bstrdboss').forEach(el=>{
+            env.stage.querySelectorAll('.maintcloak, .lamp, .bstrdboss').forEach(el=>{
                 el.parentElement.classList.remove('prop', 'blocks', 'bstrdbosspanel')
                 el.parentElement.innerHTML = ""
             })
@@ -1766,7 +1805,7 @@ env.stages['embassy_archivalboss'] = {
     },
 
     bossCollapse: ()=>{
-        document.querySelectorAll('.bstrdboss').forEach(el=>el.classList.add('broke'))
+        env.stage.querySelectorAll('.bstrdboss').forEach(el=>el.classList.add('broke'))
     },
 
     removeBastardBG: ()=>{  
@@ -1774,16 +1813,16 @@ env.stages['embassy_archivalboss'] = {
     },
 
     showPillar: ()=>{
-        document.querySelectorAll(".bstrdpillar").forEach(el=>el.parentElement.classList.remove('hide'))
+        env.stage.querySelectorAll(".bstrdpillar").forEach(el=>el.parentElement.classList.remove('hide'))
     },
 
     hidePillarCyst: ()=>{
-        document.querySelectorAll(".bstrdpillar").forEach(el=>el.classList.add('nocyst'))
+        env.stage.querySelectorAll(".bstrdpillar").forEach(el=>el.classList.add('nocyst'))
     },
 
     clearBossPals: ()=>{
-        document.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
-        document.querySelectorAll('.maintcloak, .lamp').forEach(el=>{
+        env.stage.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
+        env.stage.querySelectorAll('.maintcloak, .lamp').forEach(el=>{
             el.parentElement.classList.remove('prop', 'blocks', 'bstrdbosspanel')
             el.parentElement.innerHTML = ""
         })
@@ -1851,4 +1890,32 @@ env.stages['embassy_archivalboss'] = {
         '.', '.', '░', 'p', '░', '.', '.', 
         '.', '.', '.', '^', '.', '.', '.', 
     ]
+}
+
+env.stages['embassy_hangar'] = {
+    entities: {
+        v: { 
+            class:"prop blocks notile",
+            contains: {
+                dyp: {
+                    width: 6,
+                    height: 6,
+                    image: "url(/img/local/orbit/dullvessel/dockedvessel.gif)",
+                    transform: `translateY(10%)`
+                }              
+            }
+        }
+    },
+
+    width: 1,
+
+    plan:  `
+        v
+        .
+        .
+        .
+        .
+        .
+        p
+    `,
 }

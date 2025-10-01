@@ -73,6 +73,11 @@ class FishingMinigame extends HTMLElement {
         this.fish.fishsetDeg = rand(0, 360) 
         this.classList.add("notstarted")
         this.setAttribute("generated", true)
+        
+        if(check("mask-freedom")) {
+            change("STAGE!!freedomtoggled", true)
+            mask({name: "freedom", toggle: false, playSound: false})
+        }
     }
 
     applyFishStats() {
@@ -260,6 +265,12 @@ class FishingMinigame extends HTMLElement {
 
     disconnectedCallback() {
         this.stop()
+        if(typeof this.success == "boolean" && !this.success) {
+            if(check("STAGE!!freedomtoggled")) {
+                change("STAGE!!freedomtoggled", "DELETE")
+                mask({name: "freedom", toggle: true, playSound: false})
+            }
+        }
     }
 
     start() {
@@ -289,6 +300,7 @@ class FishingMinigame extends HTMLElement {
     done(success) {
         this.stop()
         this.complete = true
+        this.success = success
         if(this.endCallback) this.endCallback(success)
     }
 

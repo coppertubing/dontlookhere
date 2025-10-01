@@ -122,7 +122,8 @@ combat-grid.grid-plane {
     transform: translateY(-100%);
 }
 
-body:not([quality="low"]) #content .spritestatus-destabilized:not(.destructible) > :not(.target) {
+body:not([quality="low"]) #content .spritestatus-destabilized:not(.destructible) img,
+body:not([quality="low"]) #content .spritestatus-destabilized:not(.destructible) span {
     filter: blur(2px) contrast(2);
 }
 
@@ -138,6 +139,7 @@ combat-tile, combat-actor {
     --baseTileTransform: translate(calc(var(--x) * var(--gridTileSize)), calc(var(--y) * var(--gridTileSize)));
     transform: var(--baseTileTransform);
     transition: border-color 1s;
+    transform-style: preserve-3d;
 }
 
 /* 
@@ -208,7 +210,7 @@ combat-tile.noborder {
     border: unset;
 }
 
-combat-tile .tile-effects {
+.tile-effects {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -644,7 +646,7 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     position: absolute;
 }
 
-.effectfx, .effectfx * {
+.effectfx, .effectfx div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1986,7 +1988,7 @@ combat-grid .deadtainer {
     align-items: center;
 }
 
-combat-grid .deadtainer > * {
+combat-grid .deadtainer span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1995,30 +1997,30 @@ combat-grid .deadtainer > * {
     background-size: cover;
 }
 
-combat-grid .deadtainer.warp > * {
+combat-grid .deadtainer.warp span {
     background-image: url(/img/textures/heavy_warp.gif);
 }
 
-combat-grid .deadtainer > span:nth-child(1) {
+combat-grid .deadtainer span:nth-child(1) {
     transform-origin: top;
     transform: rotateX(90deg);
 }
 
-combat-grid .deadtainer > span:nth-child(2) {
+combat-grid .deadtainer span:nth-child(2) {
     transform-origin: left;
     transform: rotateY(-90deg);
 }
 
-combat-grid .deadtainer > span:nth-child(3) {
+combat-grid .deadtainer span:nth-child(3) {
     transform-origin: right;
     transform: rotateY(90deg);
 }
 
-combat-grid .deadtainer > span:nth-child(4) {
+combat-grid .deadtainer span:nth-child(4) {
     transform: translateZ(var(--gridTileSize));
 }
 
-combat-grid .deadtainer > span:nth-child(5) {
+combat-grid .deadtainer span:nth-child(5) {
     transform-origin: bottom;
     transform: rotateX(-90deg);
 }
@@ -2268,7 +2270,7 @@ combat-grid .pyramid figure span {
     transform: rotateX(-90deg) translateY(30%) translateZ(-50px) rotateX(30deg) rotate(20deg);
 }
 
-combat-grid .marbletable.coreholder {  
+combat-grid .marbletable.coreholder.dypcontent {  
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -2531,7 +2533,26 @@ combat-scene .ceremonyitself.sprite-wrapper .target {
     height: 200px;
 }
 
-
 combat-scene .ceremonyitself.sprite-wrapper .target::after {
     transform: translateZ(100px) rotate(calc(var(--playercontrol-rotation) * -1));
 }
+
+/* parasite only happens in this context so we do graphics and stuff here */
+.parapiece-sprite {
+    width: 100px;
+    height: 100px;
+    background: url(/img/local/beneath/palcyan.gif);
+    background-size: contain;
+}
+
+.actor-stand[team="enemy"] .parapiece-sprite {
+    background-image: url(/img/local/beneath/palpurp.gif);
+}
+
+combat-tile.entrance { background: cyan }
+combat-tile.vein { background: blue }
+combat-tile.tunnel { background: red }
+combat-tile.spawn { background: purple }
+combat-tile.card { background: orange }
+combat-tile.wep { background: green }
+combat-tile.fruit { background: var(--obesk-color) }

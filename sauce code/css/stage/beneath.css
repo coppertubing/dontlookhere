@@ -71,19 +71,34 @@
     100% { transform: var(--baseTransform) scaleY(0.75) rotateY(-40deg) translateX(-20%)}
 }
 
-.incoherentonly, .hungeronly {
+.incoherentonly, .hungeronly, .joyonly, .freedomonly {
     pointer-events: none;
     visibility: hidden;
 }
 
-body[n="i"] .incoherentonly, body[mask="hunger"] .hungeronly {
+body[n="i"] .incoherentonly, 
+.mask-hunger .hungeronly,
+.mask-joy .joyonly,
+.mask-freedom .freedomonly {
+    pointer-events: initial;
+    visibility: visible;
+}
+
+/* the rare combo (higher priority) */
+.hungeronly.freedomonly, .joyonly.freedomonly {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.mask-freedom.mask-joy .joyonly.freedomonly,
+.mask-freedom.mask-hunger .hungeronly.freedomonly {
     pointer-events: initial;
     visibility: visible;
 }
 
 /* ozo-adjacent */
 .ozofriend, .ozofriend > * { position: absolute; }
-.ozofriend, .ozofriend * { 
+.ozofriend, .ozofriend div, .ozofriend figure, figure.ozofriend { 
     backface-visibility: visible; 
     -webkit-backface-visibility: visible; 
     display: flex;
@@ -230,4 +245,147 @@ body[quality="low"] #realgrid .gridpiece.blocks.gap {
 
 #realgrid .isopod .target {
     transform: translateZ(calc(var(--gridTileSize) * 0.3));
+}
+
+/* camguy */
+.pagecontent.camguy::after, #realgrid .dypcontent.camguy::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/local/beneath/lost_pedestrian1head.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: -1;
+    animation: LOOKAROUND 5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+#realgrid .dypcontent.camguy.lookdown::after {
+    width: 50%;
+    background-image: url(/img/local/beneath/lost_pedestrian1head_solo.gif);
+    background-position: top;
+    --baseTransform: rotate(90deg) translate(50%, -70%);
+    transform: var(--baseTransform);
+    transform-origin: top;
+    animation: LOOKDOWN 10s cubic-bezier(.42,0,0,.83) infinite alternate
+}
+
+.pagecontent.camguy::after {
+    top: 10%;
+}
+
+#realgrid .dypcontent.camguy.half::after {
+    top: 15%;
+    height: 200%;
+}
+
+@keyframes LOOKDOWN {
+    0% { transform: var(--baseTransform) rotateY(-0deg) translateZ(-10px) }
+    100% { transform: var(--baseTransform) rotateY(80deg) translateZ( 0px) }
+}
+
+@keyframes LOOKAROUND {
+    0% { transform: rotateY(-60deg) translateZ(-10px) }
+    100% { transform: rotateY(60deg) translateZ(-10px) }
+}
+
+/* joy! */
+#realgrid .gridpiece.faketeleport.joyport,
+#realgrid .gridpiece.faketeleport.joyport:empty {
+    background: url(/img/textures/warp.png), url(/img/textures/memoryhaze5.gif);
+    background-position: center;
+    border: 10px solid var(--neutral-color);
+    border-style: outset;
+}
+
+#realgrid .joygap::after,
+#realgrid .joygap::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/textures/flowergate1.gif);
+    background-size: cover;
+    animation: BREATHE 10s ease-in-out infinite alternate;
+}
+
+#realgrid .joygap::after {
+    background-image: url(/img/textures/flowergate2.gif);
+    --baseTransform: translateZ(1px);
+    animation: SPIN 60s linear infinite;
+}
+
+#realgrid .joygap.closed::before {
+    background-image: url(/img/textures/flowergate3bw.gif);
+    animation: BREATHE 30s linear infinite alternate;
+}
+
+#realgrid .joygap.closed::after {
+    display: none;
+}
+
+#realgrid .joygap.creep::after {
+    background-image: url(/img/textures/flowergate2_creep.gif);
+}
+
+.joygarnish, .joygarnish::before, .joygarnish::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.joygarnish::after {
+    background: url(/img/local/joy/garnish_min.gif), url(/img/textures/flowergate0.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+}
+
+.joygarnish.garnishprop::after {
+    background-image: url(/img/local/joy/garnish_prop.gif);
+}
+
+.joygarnish.garnishbig::after {
+    background-image: url(/img/local/joy/garnish.gif);
+}
+
+.joygarnish.garnishportal::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/textures/ccontours.gif);
+    z-index: -2;
+    mask-image: url(/img/textures/spotgradientinversetiny.gif);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: 75%;
+}
+
+.garnishportal.caseportal::before {
+    background-image: url(/img/sprites/director/wigglyportal.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    mask-image: unset;
+    animation: BREATHE 10s ease-in-out infinite alternate;
+}
+
+.carsign {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: url(/img/local/joy/shrine.gif);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translate(-100%);
+    left: 0;
 }

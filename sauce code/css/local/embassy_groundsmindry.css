@@ -453,16 +453,16 @@ body[quality="regular"] #realgrid[stage="hall_lesser-dull"]::after {
     height: calc(3 *var(--gridTileSize));
 }
 
-#realgrid .megatainer > * {
+#realgrid .megatainer span {
     position: absolute;
     width: inherit;
     height: inherit;
     background-size: auto;
 }
 
-.megatainer > span:nth-child(3),
-.megatainer > span:nth-child(4),
-.megatainer > span:nth-child(1) {
+.megatainer span:nth-child(3),
+.megatainer span:nth-child(4),
+.megatainer span:nth-child(1) {
     display: none;
 }
 

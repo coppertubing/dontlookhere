@@ -30,8 +30,27 @@ createEntity({
 })
 
 createEntity({
+    name: 'recollection::better times',
+    type: "thoughtform",
+    order: -2,
+    image: "/img/textures/corruripple.gif",
+    text: `::EXPERIENTIAL THOUGHTFORM
+    ::ALERT::<span style="color:var(--bright-color)">'contiguous stream';'on recollection end';'resets stream to start'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'if all else must be cast aside to fit the truth';'let this one fragment of joy remain'</span>`,
+    actions: [
+        {
+            name: "experience",
+            exec: ()=>{
+                env.embassy.setDay(-1)
+            }
+        }
+    ]
+})
+
+createEntity({
     name: 'recollection::discovery',
     type: "thoughtform",
+    order: -1,
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
     ::ALERT::<span style="color:var(--bright-color)">'contiguous stream';'on recollection end';'resets stream to start'</span>
@@ -49,6 +68,7 @@ createEntity({
 createEntity({
     name: 'recollection::suspicion',
     type: "thoughtform",
+    order: -1,
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
     ::ALERT::<span style="color:var(--bright-color)">'contiguous stream';'on recollection end';'resets stream to start'</span>
@@ -66,6 +86,7 @@ createEntity({
 createEntity({
     name: 'recollection::collapse',
     type: "thoughtform collapse",
+    order: -1,
     image: "/img/textures/corruripple.gif",
     text: `::EXPERIENTIAL THOUGHTFORM
     ::ALERT::<span style="color:var(--bright-color)">'utilizes'::INTERNAL_ITERATION::'methods'</span>
@@ -398,7 +419,7 @@ createEntity({
     image: "/img/local/embassy/timestopper.gif",
     text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a minds eye, to share'</span>`
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a mind's eye, to share'</span>`
 })
 
 createEntity({
@@ -491,57 +512,6 @@ env.embassy.d2progress = (characters = false) =>{
             }
         }, 1000)
     }
-}
-
-//add randobesk figure to specified element
-env.embassy.randobesk = (destination) =>{
-    destination.innerHTML = ""
-
-    const options = {
-        accessory: ['back', 'front', 'none'],
-        receptors: ['jut', 'kiv', 'tir', 'vel']
-    }
-
-    const limits = {
-        accessory: {
-            back: 6,
-            front: 6
-        }, 
-        body: 15,
-        eyes: 45,
-        head: 20,
-        receptors: {
-            jut: 8,
-            kiv: 8,
-            tir: 8,
-            vel: 8
-        }
-    }
-
-    let randobesk = document.createElement("figure")
-    randobesk.classList.add('randobesk')
-
-    let receptorType = options.receptors[Math.floor(Math.random()*options.receptors.length)]
-    let accessoryType = options.accessory[Math.floor(Math.random()*options.accessory.length)]
-
-    let x = `${accessoryType == 'front' ? `url(/img/sprites/randobesk/accessory/${accessoryType}accessory${rand(1, limits.accessory[accessoryType])}.png),` : ""}
-    url(/img/sprites/randobesk/eyes/eyes${rand(1, limits.eyes)}.png), 
-    url(/img/sprites/randobesk/receptors/receptor${receptorType}${rand(1, limits.receptors[receptorType])}.png),
-    url(/img/sprites/randobesk/head/head${rand(1, limits.head)}.png), 
-    url(/img/sprites/randobesk/body/body${rand(1, limits.body)}.png)${accessoryType == 'back' ? "," : ""}
-    ${accessoryType == 'back' ? `url(/img/sprites/randobesk/accessory/${accessoryType}accessory${rand(1, limits.accessory[accessoryType])}.png)` : ""}`
-    console.log(x)
-    randobesk.style.backgroundImage = x
-
-    //finish off with the target, based on receptors
-    destination.insertAdjacentElement('beforeend', randobesk)
-    randobesk.insertAdjacentHTML('afterend', `<div class="target" entity="${receptorType} qou"></div>`)
-}
-
-env.embassy.regenRandobesk = () => {
-    document.querySelectorAll('#realgrid .randobesktile').forEach(e=>{
-        env.embassy.randobesk(e)
-    })
 }
 
 /* first load */
@@ -681,7 +651,7 @@ ____SHOWIF::[["netstat|<", 0], ["citystreet_gotdrinks"]]
         terrible as it was,
         it has awoken something
 ____SHOWIF::[["netstat|>=", 0]]
-        another θgaze upon this bright planet...
+        another θgaze upon this bright world...
         it calls for an equally bright beverage
 ____END
     
@@ -719,7 +689,7 @@ ____END
     
     barfriend
         here you go!
-            EXEC::document.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'))
+            EXEC::env.stage.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'));content.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'))
         please enjoy!!
     
     akizet
@@ -741,7 +711,10 @@ RESPOBJ::
             SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`recreation\`']]
             HIDEREAD::
         call research<+>research
-            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`']]
+            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`'], ['EXEC::check(\`PAGE!!embassy_day\`) != -1']]
+            HIDEREAD::
+        call research<+>researchno
+            SHOWIF::[['EXEC::env.embassy.relocatorReturn != \`research\`'], ['PAGE!!embassy_day', -1], ["PAGE!!movekoa", false]]
             HIDEREAD::
         nevermind<+>END
             EXEC::pauseSwapCam(false);
@@ -812,6 +785,97 @@ research
     RESPONSES::akizet
         thank you<+>END
             EXEC::pauseSwapCam(false)
+
+researchno
+    akizet
+        the call research center, please
+    
+    movefriend
+        OK!
+
+    sourceless
+        the path i took to the relocator seals
+        but... there is an uncharacteristic pause in function
+
+    movefriend
+        OH! ALL RIGHT
+
+    sourceless
+        a swarm of small, luminescent particles releases from the movefriend
+        and to my shock, the groundsmind's sigil is drawn in the air before its face
+
+    groundsmind
+        akizetesche
+    
+    sourceless
+        is there a problem?!
+        something has gone wrong already...
+        i knew it--i must always trust that feeling
+        the quiet crawl is always followed by a savage pounce
+        to celebrate a victory before it is truly won is a direct invitation to velzie's baleful light
+    
+    groundsmind
+        you have somewhere to be
+        do not trouble yourself with your devices
+
+    akizet
+        what?
+    
+    sourceless
+        ah? i spoke without thinking
+        for the barest θblink, i am without decorum
+
+    akizet
+        apologies, vekoa, but i thought it necessary to ensure, ah,
+
+    groundsmind
+        i am handling the rest
+
+    sourceless
+        again, i find myself without words, even thought, for a θblink
+        is this a condemnation? 
+        is there a flaw so fundamental that i cannot be trusted to fix it?
+        my receptors must have tightened into a coil of discomfort
+        for a quiet noise, like a tired chuckle, comes through the movefriend
+    
+    groundsmind
+        do not break this tendril of secrecy
+        but your tir has wrung a promise from me
+        you are not to enter the research chamber until celebrations are complete
+        
+    akizet
+        she...
+
+    groundsmind
+        it is unwise to deny the requests of a tir, especially so when they concern another
+        no matter how fickle or minor they may seem on the surface
+        they have a way of knowing what is best
+        now go. i have my own work to do
+
+    akizet
+        i... i see
+        fare well, then
+    
+    sourceless
+        the sigil disperses
+        i am left alone with the movefriend, dumbfounded
+
+    movefriend
+        OK
+        SO!
+        RECREATION IT IS!
+    
+    sourceless
+        a new hallway opens in place of the entry
+            EXEC::env.embassy.relocatorDestination('recreation')
+        surely it will be fine to leave this in the groundsmind's claws
+
+    movefriend
+        HAVE FUN!
+
+    RESPONSES::akizet
+        thank you...<+>END
+            EXEC::change("PAGE!!movekoa", true)
 `)
 
 /* DAY 1 - START */
@@ -824,7 +888,7 @@ start
 
     RESPONSES::akizet
         emerge from the chamber<+>emerge
-            EXEC::content.classList.add('swapcam')
+            EXEC::toggleSwapCam(true)
     
 emerge
     sourceless
@@ -838,8 +902,6 @@ emerge
     
     RESPONSES::akizet
         off to work<+>END
-
-SKIP::content.classList.add('swapcam')
 `)
 
 /* DAY 1 - TOZIK */
@@ -1775,7 +1837,7 @@ start
         see!
     
     sourceless
-        in our collective minds eye, a visualization of the signal is shown
+        in our collective mind's eye, a visualization of the signal is shown
             EXEC::env.embassy.setFocus(false);content.classList.add('signal')
         a strange spike... but not unexpected given the dull contrivance's proximity
     
@@ -1999,7 +2061,7 @@ connection
     RESPONSES::akizet
         go ahead<+>END
             FAKEEND::continue
-            EXEC::pauseSwapCam(false);body.classList.add("pathstep0");env.embassy.echoChatter(1)
+            EXEC::pauseSwapCam(false);body.classList.add("pathstep0");env.stage.querySelectorAll(".mainpath.blocks.step0").forEach(el=>el.classList.remove("blocks"));env.embassy.echoChatter(1)
 `)
 
 env.dialogues["echo1"] = generateDialogueObject(` 
@@ -3126,4 +3188,280 @@ ____END
             EXEC::change("embassy_d2_complete", true);change("TEMP!!ep1_goingtogordon", true);moveTo("/local/city/street/")
         end recollection<+>END
             EXEC::change("embassy_d2_complete", true);env.bgm.pause();corruRefresh()
+`)
+
+/** better times **/
+/** start**/
+env.dialogues["d0_start"] = generateDialogueObject(`
+start
+    sourceless
+        i pull my head from its resting place upon the face stand,
+            EXEC::setCam({x: 4, y: 0.15, rotation: -45, offsetCamera: "rotateX(10deg)", height: 1.25, distance: 0})
+            WAIT::1000
+            THEN::flash(false)
+        releasing it into the air above my shoulders
+            EXEC::setCam()
+        no need or time to examine its work too closely
+        i am anxious enough without fussing over the specifics of a long-forgotten face
+        the memories of our final preparations are clear enough in my mind,
+        yet the urge to double-check it all over again is so strong
+        the chance of any failure at this point is near impossible, yet...
+        there is a quiet crawling of uncertainty behind my thoughts
+        is it not wrong to celebrate before the spire's function has been fully confirmed?
+        hehe, kazki and bozko would hardly think so
+        they seek to celebrate every step on our path
+        regardless - the others await, i have taken long enough
+
+    RESPONSES::akizet
+        set out<+>END
+`)
+
+env.dialogues["movekoa"] = generateDialogueObject(`
+start
+    akizet
+        the call research center, please
+    
+    movefriend
+        OK!
+
+    sourceless
+        the path i took to the relocator seals
+        but... there is an uncharacteristic pause in function
+
+    movefriend
+        OH! ALL RIGHT
+
+    sourceless
+        a swarm of small, luminescent particles releases from the movefriend
+        and to my shock, the groundsmind's sigil is drawn in the air before its face
+            EXEC::document.querySelector('#realgrid .lifter').classList.add('vekoa')
+
+    groundsmind
+        akizetesche
+    
+    sourceless
+        is there a problem?!
+        something has gone wrong already...
+        i knew it--i always must trust that feeling
+        the quiet crawl is always followed by a savage pounce
+        to celebrate a victory before it is truly won is a direct invitation to velzie's baleful light
+    
+    groundsmind
+        you have somewhere to be
+        do not trouble yourself with your devices
+
+    akizet
+        what?
+    
+    sourceless
+        ah? i spoke without thinking
+        for the barest θblink, i am without decorum
+
+    akizet
+        apologies, vekoa, but i thought it necessary to ensure, ah,
+
+    vekoa
+        i am handling the rest
+
+    sourceless
+        again, i find myself without words, even thought, for a θblink
+        is this a condemnation? 
+        is there a flaw so fundamental that i cannot be trusted to fix it?
+        my receptors must have tightened into a coil of discomfort
+        for a quiet noise, like a tired chuckle, comes through the movefriend
+    
+    vekoa
+        do not break this tendril of secrecy
+        but your tir has wrung a promise from me
+        you are not to enter the research chamber until celebrations are complete
+        
+    akizet
+        she...
+
+    vekoa
+        it is unwise to deny the requests of a tir, especially so when they concern another
+        no matter how fickle or minor they may seem on the surface
+        they have a way of knowing what is best
+        now go. i have my own work to do
+
+    akizet
+        i... i see
+        fare well, then
+    
+    sourceless
+        the sigil disperses
+            EXEC::document.querySelector('#realgrid .lifter').classList.remove('vekoa')
+        i am left alone with the movefriend, dumbfounded
+
+    movefriend
+        OK
+        SO!
+        RECREATION IT IS!
+    
+    sourceless
+        a new hallway opens in place of the entry
+            EXEC::env.embassy.relocatorDestination('recreation')
+        surely it will be fine to leave this in the groundsmind's claws
+
+    movefriend
+        HAVE FUN!
+
+    RESPONSES::akizet
+        thank you...<+>END
+            EXEC::change("TEMP!!movekoa", true)
+`)
+
+/** recreation - gakvu and kazki **/
+env.dialogues["d0_meetup"] = generateDialogueObject(`
+start
+    kazki
+        akiii!!
+            EXEC::setCam({rotation: 0});toggleSwapCam(false)
+
+    sourceless
+        the θblink i enter, she shouts and waves from the barfriend's post
+            EXEC::content.classList.add('slowcam');
+        kazki and gakvu lounge in wait, though the others are not here
+        in fact, it is empty - the entire segment's crew must be out, already
+        it is for the best, now
+        it is embarrassing enough that cavik lets that name slip occasionally
+        i approach the giggling tir, a familiar teasing waggle in her receptors
+            EXEC::setCam({x: 4.5, y: 3, rotation: 0});
+        gakvu greets me with a little receptor wave,
+        then quickly settles it back into a forced resting curl
+        restraining her true reaction to my short name's use
+        i remain as outwardly unaffected as i can
+
+    akizet
+        hello, kazki, gakvu
+            EXEC::vnp({kazki: "show", gakvu: "show", hideStage: true})
+        where are the others of our team?
+        
+    gakvu
+        hangar, kazki's subdivision
+            EXEC::vnp({gakvu: "focus"})
+        i think they wanted to get a few things on the way up
+
+    kazki
+        yes! we are taking my vessel to the festivity!
+            EXEC::vnp({kazki: "focus"})
+        hehehe, that larval imprint really is adorable, aki
+        if you are ready, we should get going!
+
+    gakvu
+        i will reserve the movefriend
+            EXEC::vnp({kazki: "defocus"})
+        the system is a little strained from all the departures
+        best not to get stuck waiting
+
+    sourceless
+        gakvu sets her simulacra before the barfriend, setting off
+            EXEC::vnp({gakvu: "hide"});content.querySelector("#realgrid .gakvu.character").parentElement.classList.remove('prop', 'chartile', 'blocks', 'hassomething', 'tile-in-canvas');content.querySelector("#realgrid .gakvu.character").parentElement.innerHTML = ""
+        she hides her reaction to kazki's comments well,
+        giving me the opportunity to approach the smug tir more sternly
+        though my head must rise some distance from my shoulders to be on equal level
+    
+    akizet
+        i told you not to call me that in front of others, kazki
+
+    sourceless
+        disapproval is clear enough in my receptors, if not my voice
+        but perhaps not enough of an edge to elicit a proper reaction,
+        for she still speaks playfully
+    
+    kazki
+        okay, aki--zet. fine!
+        we--i, just thought it might help you unwind!
+        all of this polygonation finalization has been hard business...
+
+    akizet
+        i appreciate your concern and care, kazki
+        it has been, truly... 
+        but it is hardly over
+            EXEC::content.classList.remove('slowcam');
+        we still need to ensure that the dull synchronization is--
+            EXEC::setCam({x: 5, y: 7, rotation: 0, offsetCamera: "rotateX(120deg)", height: -1})
+            WAIT::1500
+            AUTOADVANCE::
+    
+    sourceless
+        in a quick movement unbefitting kazki, she grabs my head out of the air
+            EXEC::vn.done();setCam({x: 5, y: 7, rotation: 0, offsetCamera: "rotateX(120deg)", height: -1});content.classList.remove('slowcam')
+            WAIT::1500
+            AUTOADVANCE::
+        and with it in her claws, scurries off for the movefriend
+            EXEC::setCam({x: 5, y: 8, rotation: 0, offsetCamera: "rotateX(120deg)", height: -1})
+    
+    akizet
+        aah--kazki!!! you--!!
+
+    kazki
+        if you cannot relax by your own volition, 
+        i will just have to ensure you cannot do anything else!
+        ehehehehe
+        
+    sourceless
+        funfriend
+        guide my body to the movefriend before she leaves without it
+    
+    funfriend
+        OK AKIZET!!
+
+    sourceless
+        distantly, i feel it scramble after us...
+    
+    sys
+        ATTENTION::'stream damaged';'advancing to next coherent data'
+            EXEC::flash(true)
+    
+    RESPONSES::akizet
+        ...<+>hangar
+            EXEC::setCam();changeStage("embassy_hangar", false, "down", {noFlash: true})
+
+hangar
+    sourceless
+        ...emerging from the movefriend, my receptors back in a resting coil,
+        kazki's hangar subdivision is already prepared with an opened wall
+            EXEC::flash(false);vnp({bozko: "show far", tozik: "show far", cavik: "show far"})
+        bozko and tozik's conversation is indistinct from this distance,
+        obscured by the wind until we approach
+            EXEC::vnp({bozko: "show", tozik: "show"})
+    
+    bozko
+        ...roots link up with the directional spire in an underground curve
+            EXEC::vnp({bozko: "focus"})
+        it should provide better support, while working the same as any other polygonation configuration
+        of course, that part of it is not my field
+        never had the mind to deal with the dull plane, hehe
+
+    tozik
+        all performance reports i have seen are in line with the others
+            EXEC::vnp({tozik: "focus"})
+        your plan proved to be perfectly effective
+
+    sourceless
+        tozik caps their discussion, the two directing their attention to my approach
+            EXEC::vnp({tozik: "defocus"})
+        cavik stands to attention, having been distracted by a cyst
+            EXEC::vnp({cavik: "show"})
+
+    cavik
+        hey aki!
+
+    sourceless
+        a harmless moniker under most circumstances
+        but an indistinct murmur from gakvu to kazki behind me suggests conspiracy
+        her insistence on kazki adopting its usage will be a grave error
+        bozko gives a kind nod of his receptors in greeting
+    
+    bozko
+        ready to go?
+
+    akizet
+        hello, my friends
+        yes, let us board
+    
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::moveTo("/local/ocean/polygonation/");vn.done()
 `)

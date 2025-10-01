@@ -188,13 +188,13 @@ env.entities['membrane incision'] = {
         {
             name: "enter",
             exec: ()=>{
-                exitMenu(true);
+                exitMenu(true)
                 let delay = 1
                 change("TEMP!!cachePath", "funfriend")
 
                 if(env.buddy_ffproxy.shouldBeOnPage() && !check("cache__ff-start")) {
                     env.buddy_ffproxy.chatter({text: "WAIT WHAT ARE YOU DOING", readout: true})
-                    cutscene(true);
+                    cutscene(true)
 
                     delay = 4000
                     
@@ -214,14 +214,485 @@ env.entities['membrane incision'] = {
     ]  
 }
 
-env.dialogueActors["envoy"] = {
-    image: "/img/local/city/envoybutton.gif",
-    type: "recollection portrait-bright portrait-cover",
-    element: ".envoy",
-    voice: ()=>play('talk', 0.9)
+env.entities['˜CâR…'] = {
+    hide: true,
+    name: '˜CâR…',
+    type: "thoughtform-meta portrait-contain",
+    image: "/img/local/beneath/car.gif",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'total cohesion failure';'damaged contexts'">::HIGH INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to e—Ýÿach cousin th@ëir own bright <span class="code" definition="INHERITED CONTEXT::'corrucystic surface vehicle';'bulbous and armored';'partial translation';'implied closest cultural equivalent'">walker</span>'</span>
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                startDialogue("car")
+            },
+            showIf: () => env.stage.name == "abyss_wreck" && !check("car__intro")
+        },
+        {
+            name: "enter",
+            exec: ()=>{
+                forcePlay("carstart")
+                moveTo('/local/beneath/car/')
+            },
+            showIf: () => check("car__intro")
+        }
+    ]
 }
 
-env.dialogueActors["gordon"] = env.dialogueActors["envoy"]
+env.entities['referential scar'] = {
+    hide: true,
+    name: 'referential scar',
+    type: "thoughtform-meta portrait-contain portrait-haze",
+    image: "/img/textures/joyfractal.gif",
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'subjective nomenclature applied';'subjective visual profile applied'">NON-ENTITY</span>
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color">'a minute passage left by those leaping across memories';'entwined with countless others in the space between';'not camouflaged, merely difficult to spot';\n\n'i imagine you specifically cannot utilize one without another, similar end point in mind'</span>`,
+    actions: [
+        {
+            name: "utilize",
+            exec: ()=>{
+                if(getQueryDist("#creature", ".joytether") > 7) {
+                    chatter({actor: 'sourceless', text: "you can't focus on it from this far away.", readout: true,})
+                } else {
+                    if(check("joy#any")) startDialogue("++scar");
+                    else startDialogue("++scar", {specificChain: "early"})
+                }
+            },
+            showIf: () => {
+                if(env.stage.ref) { // stage cases
+                    if(check(`joy#${env.stage.name}`)) return true
+
+                    return (env.stage.name.includes("pit_") && check("joy#pit")) ||
+                            env.stage.name == "ozo_stranger"
+
+                } else { // flats
+                    return check(`joy#${page.dialoguePrefix}`)
+                }
+            }
+        }
+    ],
+
+    exmExec: ()=>{
+        let unlock = () => {
+            change("joy#any", true)
+            forcePlay("talkether", 2)
+            
+            let container = env?.stage?.ref ? env.stage : content
+            container.querySelectorAll(".joyfacet.unlinked").forEach(el=>{
+                el.classList.remove("unlinked")
+                el.classList.add("linked")
+            })
+        }
+
+        switch(env?.stage?.name) {
+            //flats
+            case undefined:
+            case null:
+                change(`joy#${page.dialoguePrefix}`, true)
+                unlock()
+            break
+
+            //stages
+            case "pit_base":
+            case "pit_melting":
+            case "pit_outer":
+            case "pit_halls":
+                change("joy#pit", true)
+                unlock()
+            break
+
+            case "office_hall":
+            case "dullvessel_quarters":
+            case "hullf":
+                //listed here just for reference
+            default:
+                if(env.stage.ref) change(`joy#${env.stage.name}`, true)
+                unlock()
+        }
+    }
+}
+
+// entities that SHOULD show up in the ent menu for somewhere need to be defined with da function
+// so we wait a sec for the main scripts to run, then run it and set up a load listener
+// should result in path limited entities always correctly showing up both in content and on the ENT menu.
+// might end up being last in the list which could be weird in some cases... not a huge deal though
+// eventually i want to rework the ENT menu to be a little more controlled anyway. it needs hints and stuff
+env.globalLimitedEntitySetup = () => {
+
+    //ozo related
+    createEntity({
+        name: 'fairy',
+        pathLimit: "/local/ozo/",
+        image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
+        type: "thoughtform obesk portrait-haze portrait-auto portrait-center",
+        text: `::RESPONSIVE THOUGHTFORM
+        ::EXPLICIT PURPOSE:'hunger'
+        <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
+        ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`,
+        actions: [
+            {
+                name: "hello",
+                exec: ()=> startDialogue('fairy_intro'),
+                showIf: [["ozo__fairy_intro", false], ["stageroom", "ozo_fairy"]]
+            },
+
+            {
+                name: "greet",
+                exec: ()=> startDialogue('fairy'),
+                showIf: [["ozo__fairy_intro", true], ["stageroom", "ozo_fairy"]]          
+            },
+                
+            {
+                name: "unity",
+                class: "act-ozo",
+                exec: ()=>{
+                    cutscene(true)
+
+                    chatter({actor: 'fairy', text: 'already here! stupid!', readout: true, delay: 2000})
+
+                    env.setTimeout(()=>{
+                        play("talkchoir", 0.75)
+                        vfx({type: 'beacon', state: true})
+                    }, 400)
+
+                    setTimeout(()=>{
+                        vfx({type: 'beacon', state: false})
+                        cutscene(false)
+                    }, 2000)
+                },
+                showIf: () => (page.path == "/local/ozo/") && check("mask", "unity")
+            },
+
+            // other zones
+            {
+                name: "hello",
+                exec: ()=> startDialogue('++fairytravel'),
+                showIf: () => page.path != "/local/ozo/"
+            },
+                
+            {
+                name: "unity",
+                class: "act-ozo",
+                exec: ()=>{
+                    cutscene(true)
+
+                    chatter({actor: 'fairy', text: 'i know the way back! stupid!', readout: true, delay: 1000})
+
+                    env.setTimeout(()=>{
+                        play("talkchoir", 0.75)
+                        vfx({type: 'beacon', state: true})
+                    }, 400)
+
+                    setTimeout(()=>{
+                        vfx({type: 'beacon', state: false})
+                        cutscene(false)
+                    }, 1000)
+                },
+                showIf: () => (page.path != "/local/ozo/") && check("mask", "unity"),
+            },
+        ]
+    })
+
+    // true wanderers
+    createEntity({
+        name: 'rotwatcher',
+        hide: true,
+        image: '/img/sprites/rot/rotxa.gif', 
+        type: "thoughtform obesk portrait-haze portrait-cover portrait-center",
+        text: `::RESPONSIVE THOUGHTFORM
+        ::EXPLICIT PURPOSE:'observation'
+        <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+        ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
+        <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
+        actions: [
+            // city intro
+            {
+                name: "hello",
+                exec: ()=> startDialogue('rotmeet'),
+                showIf: () => !check("citystreet__rotmeet") 
+            },
+
+            {
+                name: "what's that",
+                exec: ()=> startDialogue('++rotcity'),
+                showIf: () => check("stageroom", "city_cafe") && check("citystreet__rotmeet")
+            },
+
+            {
+                name: "what's going on here",
+                exec: ()=> startDialogue('++rotcityflip'),
+                showIf: () => check("stageroom", "city_banks_flip")
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotozo'),
+                showIf: () => check("stageroom", "ozo_entrance")
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotorbit'),
+                showIf: () => page.path == "/local/orbit/"
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotuncosm'),
+                showIf: () => page.path == "/local/uncosm/"
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotmaze'),
+                showIf: () => page.path == "/local/ocean/ship/interview/"
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotparasite'),
+                showIf: () => page.path == "/local/beneath/parasite/"
+            },
+
+            {
+                name: "what do you think",
+                exec: ()=> startDialogue('++rotpit'),
+                showIf: () => page.path == "/local/uncosm/pit/"
+            },
+
+            {// i think this is presently impossible
+                name: "unity",
+                class: "act-ozo",
+                exec: ()=>{
+                    cutscene(true)
+
+                    chatter({actor: 'rotwatcher', text: 'locational information exchange recognized. physical visitation is required for any conclusion to be offered. the rotwatcher is observed to hold this destination as pending investigation.', readout: true, delay: 1000})
+
+                    env.setTimeout(()=>{
+                        play("talkchoir", 0.75)
+                        vfx({type: 'beacon', state: true})
+                    }, 400)
+
+                    setTimeout(()=>{
+                        vfx({type: 'beacon', state: false})
+                        cutscene(false)
+                    }, 3000)
+
+                    change("unity_rot", true)
+                    change("TEMP!!rotpref", "/local/ozo/")
+                },
+                
+                showIf: () => check("mask", "unity")
+            },
+        ]
+    })
+
+    // travelling critters
+    createEntity({ // car guy
+        name: "s w   al kk",
+        pathLimit: "/local/beneath/",
+        type: "recollection thoughtform portrait-top portrait-cover",
+        image: "/img/local/city/pedestrian5.gif",
+        text: `::RESPONSIVE THOUGHTFORM
+        ::EXPLICIT PURPOSE::'recollection'
+        <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
+        actions: [
+            {
+                name: "greet",
+                exec: ()=>{
+                    chatter({
+                        actor: 's w   al kk', 
+                        text: [
+                            "car poblemn",
+                            " can oblemnt",
+                            "ar droblenmn",
+                            " radiator mufler hungry",
+                            "alien ? know .,   fix car ?",
+                            "car  s tuck"
+                        ].sample({noRepeat: true}),
+                        delay: 300
+                    })
+                },
+                showIf: () => !check("mask", "joy")
+            },
+            
+            {
+                name: "unity",
+                class: "act-ozo",
+                showIf: [["mask", "unity"]],
+                exec: ()=>{
+
+                    chatter({actor: 's w   al kk', text: 'far. dr ive  fix my   car', readout: true, delay: 2000})
+
+                    env.setTimeout(()=>{
+                        play("talkchoir", 0.75)
+                        vfx({type: 'beacon', state: true})
+                    }, 400)
+
+                    setTimeout(()=>{
+                        vfx({type: 'beacon', state: false})
+                    }, 2000)
+                },
+            },
+
+            {
+                name: "greet",
+                exec: ()=>{
+                    chatter({
+                        actor: 's w   al kk', 
+                        text: [
+                            "insurance   lincecense",
+                            "gous priceses",
+                            "  t otp speed 49 7345 engine",
+                            " radiat   or mufler hungry",
+                            "red  green ylow blue light  speet up",
+                            "car  so sgggoing",
+                            "  m eting go ok",
+                            "wrunc eetntenanceh",
+                            "irector",
+                            "autorized"
+                        ].sample({noRepeat: true}),
+                        delay: 300
+                    })
+                },
+                showIf: ["mask", "joy"]
+            },
+        ]
+    })
+
+    createEntity({ // camera guys
+        name: '×è.÷ùÏÏøø',
+        type: "recollection thoughtform portrait-ripple portrait-cover",
+        image: "/img/local/beneath/camportrait.gif",
+        text: `::INCOMPLETE THOUGHTFORM
+        ::SIGNATURE ILLEGIBLE`,
+        pathLimit: "/local/beneath/",
+
+        exmExec: ()=>{
+            if(check("mask", "joy")) {
+                if(!env.targetedEntity.text.includes("JOY_MASK") && env?.stage?.name != "abyss") {
+                    env.targetedEntity.text = env.targetedEntity.text += `\n<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`
+                }
+            }
+        },
+
+        actions: [
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('abyss'),
+                showIf: () => env.stage.name == 'abyss'
+            },           
+            {
+                name: "unity",
+                class: "act-ozo",
+                exec: ()=> env.cameraGuySnap('nope'),
+                showIf: () => { return env.stage.name == 'abyss' && check('mask', 'unity')}
+            },
+            {
+                name: "what are you looking at",
+                exec: ()=> env.cameraGuySnap('effigy'),
+                showIf: () => env.stage.name == 'abyss_ship'
+            },
+            
+            //e4a1
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('orbit'),
+                showIf: () => page.path == '/local/orbit/'
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('street'),
+                showIf: () => env.stage.name == 'city_street'
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('darkstreet'),
+                showIf: () => env.stage.name == 'city_street3'
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('banks'),
+                showIf: () => env.stage.name == 'city_banks'
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('banksflip'),
+                showIf: () => env.stage.name == 'city_banks_flip'
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('abysscity'),
+                showIf: () => env.stage.name == 'abyss_city',
+            },
+
+            {
+                name: "hello",
+                exec: ()=> env.cameraGuySnap('ozo'),
+                showIf: () => page.path == '/local/ozo/'
+            },
+        ],
+
+        //flag correction
+        onCreated: ()=>{
+            if(check("beneath_abysspic") && !check("cam_abyss")) change("cam_abyss", true)
+            if(check("beneath_nopic") && !check("cam_nope")) change("cam_nope", true)
+            if(check("beneath_effigypic") && !check("cam_effigy")) change("cam_effigy", true)
+        }
+    })
+}
+
+//global entity special functions
+env.cameraGuyThings = {
+    //base
+    abyss: '/img/local/beneath/bg/abyss.png',
+    nope: '/img/local/beneath/bg/nothanks.png',
+    effigy: () => !check("effigy_sipper") ? '/img/local/beneath/bg/EFFIGY.png' : '/img/local/beneath/bg/clear.png',
+
+    //e4a1
+    orbit: '/img/local/beneath/bg/outofreach.png',
+    street: '/img/local/beneath/bg/domain.png',
+    darkstreet: '/img/local/beneath/bg/quiet.png',
+
+    banks: '/img/local/beneath/bg/breach.png',
+    banksflip: '/img/local/beneath/bg/reflection.png',
+    abysscity: '/img/local/beneath/bg/haze.png',
+    ozo: '/img/local/beneath/bg/wastrels.png',
+}
+
+env.cameraGuySnap = (thing) => {
+    cutscene(true); play('click1'); flash(true)
+
+    const dl = env.cameraGuyThings[thing]
+    const flag = `cam_${thing}`
+
+    setTimeout(() => {
+        flash(false); play("muiScanner", 0.75); cutscene(false)
+        if(!dl) return
+
+        change(flag, true)
+
+        // kinda crazy how there's no direct "download this file" command in js huh
+        const downloadLink = document.createElement('a')
+        downloadLink.href = typeof dl === 'function' ? dl() : dl
+        downloadLink.target = "_blank"
+        downloadLink.download = ""
+        downloadLink.setAttribute("data-no-swup", true)
+        downloadLink.style.display = 'none'
+
+        //trigger DL
+        document.body.appendChild(downloadLink); downloadLink.click(); document.body.removeChild(downloadLink)
+    }, 1000)
+}
 
 /***************************************************************************/
 /***************************************************************************/
@@ -467,6 +938,8 @@ who
             SHOWIF::"hub__funfriend-purposeq"
         gordon<+>who_gordon
             SHOWIF::[['citystreet__envoy-end']]
+        director<+>who_director
+            SHOWIF::[['citystreet__director-meeting']]
         velzie<+>who_velzie
             SHOWIF::[['dullvessel__fixed-how']]
         nevermind<+>loop
@@ -490,7 +963,7 @@ who_akizetesche
     
     moth
         she's probably one of the better documented early obesk contacts
-        the story goes is, she led a team investigating the thing that led the obesk here
+        the way the story goes is, she led a team investigating the thing that led the obesk here
         kept doing these interviews where she talked at length about it, they named it 'the call'
         and then they all went missing a few years after first contact
         spooky shit
@@ -506,12 +979,66 @@ who_gordon
     
     moth
         good question
-        not finding a solid match, but he's clearly an FBX agent
+        not finding a solid match, but he's clearly an FBX officer
         it'd help if akizet's corrucyst actually remembered his face correctly
         i'll have to get back to you on this, maybe if we can snag a last name it'll be easier
     
     RESPONSES::self
         good luck<+>loop
+            FAKEEND::(back)
+
+who_director
+    self
+        who is director cassidy? what do you know about her?
+    
+    moth
+        right, she was the very first nomination for the director's office
+        don't know the official date off the top of my head, but,
+        the FBX didn't form until a few years after the embassy was discovered, so it must have been around the mid '20s
+        talk about a brutal time though
+        first contact, the collapse, <em>and then</em> the comms breakdown?
+        she probably had the highest highs and lowest lows out of any of them,
+        and she was still in office for almost ten years, which is insane
+        then, after that, uhh...
+        not too sure where she ended up
+        pretty sure she's still alive and well in the private sector?
+    
+    self
+        is it not common knowledge?
+
+    moth
+        no way, not for her
+        i mean, you understand the scope of everything that happened, right?
+        if i had all that happen on my watch,
+        then saw everything basically fall apart into what it is now,
+        i'd want to just quietly disappear too
+
+    self
+        what do you make of the thoughtform for her?
+        it seems very lucid
+
+    moth
+        yeah, jury's still out on whether that'll be helpful or a big problem
+
+____SHOWIF::"bt__d0_cass"
+    moth
+        clearly it knows a lot more about velzie than anyone else
+        gets around different places like it's nothing, too
+        super incoherent and non-cohesive,
+        but able to almost perfectly mimic the baseline coherence of a memory
+        kinda worried about what it's up to, but...
+        we'll have to wait and see
+____END
+
+    moth
+        i did notice something interesting in that office, though
+        on my end, the connectors around her were really hard to notice at first
+        not sure how they appeared to you, 
+        but they're very distinct from every other implementation i've seen so far
+        looks like it's been making its own sneaky ways of getting around
+        
+    RESPONSES::self
+        weird<+>loop
             FAKEEND::(back)
 
 who_velzie
@@ -554,6 +1081,10 @@ what
             SHOWIF::"ozo__council-task"
         dull plane<+>what_dull
             SHOWIF::"ep4__contact"
+        storm<+>what_storm
+            SHOWIF::"exm|pit|the storm greets us"
+        echo<+>what_echo
+            SHOWIF::"bt__d0_ptau"
         ...if knowing all this puts us in danger?<+>what_fbxlist
             SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
         nevermind<+>loop
@@ -698,7 +1229,7 @@ what_corrucyst
 
 what_thecall
     self
-        What is 'the call'?
+        What is "the call"?
     
     moth
         it's a pretty important part of human-obesk history that gets overlooked a lot
@@ -791,6 +1322,96 @@ what_dull
     
     RESPONSES::self
         all right<+>loop
+            FAKEEND::(back)
+
+what_storm
+    self
+        what do you think of the storm?
+
+    moth
+        oh i think plenty about it buddy
+        you and i at least know that it was a converter for data in some sense,
+        from the earlier talks we saw, 
+        i was really under the impression it was just a tool
+        as opposed to like, a thing that worked autonomously
+        but given that akizet was the only obesk involved in that project...
+        it makes sense that she'd have used an echo
+        i mean, the obesk use echoes anywhere they can fit them
+        setting one up to autonomously research and hybridize human/obesk tech is...
+        well, my gut reaction is that it's a really bad idea lol
+        but if it's an echo of akizet, and she really meant well for everyone,
+        in a perfect world we would all be immortal and living in luxury by now
+
+    self
+        do you think it's still around?
+
+    moth
+        dude, i don't know...
+        we <em>have</em> had some gigantic leaps since the collapse
+        infrastructure stuff like the mindspike industry, 
+        the pharma upheaval, all the medical implants, i mean...
+        a lot is pretty hard to explain without obesk interference, despite them being so scarce
+        but the air still sucks, water corps still exist, and rent still goes up
+        don't even get me started on the <span definition="INTERNAL CONTEXT::'fully automated employment system';'utilizes extensive monitoring to verify completion of arbitrary contract';'payment in proprietary pseudocurrency upon completion';'automated legal recourse if failed'">oracle economy</span>
+        it pisses me off thinking about how good we could have had it if this shit didn't happen
+        if the storm is still around, it sure hasn't scaled up enough to save humanity
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+
+what_echo
+    self
+        what do you know about echoes?
+    
+    moth
+        this is one of those things i could talk too long about buddy
+        but what you saw akizet say is pretty much the whole deal
+        absolutely fucked up ethical concerns aside,
+        they're essentially the cheapest and easiest way to make an ai
+        copy yourself, cut out what you don't need to fit it into a small cyst,
+        and you have a smart little guy ready to do whatever you need
+
+    self
+        the obesk didn't see any issues with this?
+
+    moth
+        oh, sure they did
+        but it was just like a fact of life to them
+        according to some interviews and articles i've read,
+        they get taught to internalize some wild stuff
+        "some version of you is probably going to be an echo someday, 
+        so just brace for that ahead of time,
+        and it probably will be kind of nice anyway"
+        it's total cultural cope
+        but if we got handed that same potential for infinite automation,
+        in what essentially would be, like, 
+        a mixture of our bronze age and industrial revolution,
+        we'd probably do the same thing
+
+    self
+        if thoughtforms can wake up and act like the ones in this cyst
+        do you know what they do with echoes that do the same thing?
+    
+    moth
+        yeah actually! this was a popular subject pre-collapse
+        once the way echoes work broke the news, it was all over the place
+        the opinions i read from various obesk was a little varied,
+        so i don't think they have one singular stance on the matter
+        from "we'd fix them" to "we'd adopt them as a child"
+        for the most part, despite what the obesk do, 
+        they don't really seem to see echoes as lesser or anything
+        they're still treated with respect and reverence
+        probably because they all know there's some portion of a real person in there 
+        so i doubt they'd, like, just kill one
+        the whole deal is still a big philosophical and moral debate topic
+        we've been getting closer to using that paradigm every day
+        echoes are still leagues ahead of what the best AI can do right now
+        the only thing stopping mindsci from trying it is the inevitable public backlash
+    
+    RESPONSES::self
+        i see<+>loop
             FAKEEND::(back)
 
 what_fbxlist
@@ -1275,6 +1896,276 @@ ____END
     
     RESPONSES::self
         ok<+>END
+`)
+
+//scars, formerly tethers, formerly facets, formerly chuck's
+env.dialogues[`++scar`] = generateDialogueObject(`
+early
+    sourceless
+        looking upon the flower is strangely dizzying.
+            EXEC::vfx({type: "flowerwarp", state: "yucky"});vfx({type: "darkflash", state: true});setTimeout(()=>body.classList.add('cull-stage'), 600)
+        your attention passes into it, through it, beyond the thoughtspace.
+        it is a hole.
+        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
+        they twist around each other in ways you aren't able to process.
+        you try, but it only succeeds in making you nauseous.
+    
+    RESPONSES::self
+        look away<+>END
+            EXEC::vfx({type: "darkflash", state: false});setTimeout(()=>body.classList.remove('cull-stage'), 600)
+
+
+start
+    sourceless
+____SHOWIF::["TEMP!!scartalk", false]
+        looking upon the flower is strangely dizzying.
+            EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
+        the physical presence it holds in the render is an illusion of the mask,
+        for your attention passes through it, into it, beyond the thoughtspace.
+        it is a hole.
+____END
+        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
+            EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
+        they twist around each other in ways you aren't able to process.
+        but some points feel familiar. you can reach towards them.
+            EXEC::change("TEMP!!scartalk", true)
+    
+    RESPONSES::self
+        ozo<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/ozo/")
+            FAKEEND::(travel)
+        auth<+>END
+            EXEC::moveTo("/hello/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#hello"
+        dull vessel<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/dullvessel/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#dullvessel_quarters"
+        city office<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/city/street/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#office_hall"
+        clemens romanus<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/ocean/ship/elsewhere/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#hullf"
+        lab<+>lab
+            FAKEEND::(select area)
+            SHOWIF::"joy#pit"
+        look away<+>END
+
+lab
+    sourceless
+        you focus upon the broken thoughtscape of the FBX laboratory.
+        the path diverges in directions you feel you shouldn't be able to see.
+        there is a sense of chronological order.
+
+    RESPONSES::self
+        beginning<+>END
+            EXEC::change("TEMP!!from", "tether_base");moveTo("/local/uncosm/pit/")
+            FAKEEND::(first region)
+            NOTE::technically this is being used as a 'to' but don't think about it too hard
+        hope<+>END
+            EXEC::change("TEMP!!from", "tether_outer");moveTo("/local/uncosm/pit/")
+            FAKEEND::(second region)
+        growth<+>END
+            EXEC::change("TEMP!!from", "tether_melting");moveTo("/local/uncosm/pit/")
+            FAKEEND::(third region)
+        overgrowth<+>END
+            EXEC::change("TEMP!!from", "tether_halls");moveTo("/local/uncosm/pit/")
+            FAKEEND::(fourth region)
+
+        nevermind<+>END
+
+END::vfx({type: "flowerwarp", state: false});body.classList.remove('fade-stage')
+`)
+
+//buddystuff
+env.dialogues[`++fairytravel`] = generateDialogueObject(`
+start
+    self
+        hello
+
+____SHOWIF::[["ENV!!pagePath", "/local/uncosm/"], ["PAGE!!fairytalk", false]]
+    fairy
+        interloper! come to join me in a hunt?
+        hehehe
+
+____SHOWIF::[["ENV!!pagePath", "/local/city/"], ["PAGE!!fairytalk", false]]
+        shh!
+        not too loud...
+        the tyrant could be near!
+        but hello, hello!!!!!!
+
+____SHOWIF::[["ENV!!pagePath", "/local/orbit/"], ["PAGE!!fairytalk", false]]
+        interloper, interloper!
+        i thought i felt you near!
+        just look at all this wasted space...
+        what is the tyrant even doing?! ahahaha
+
+____SHOWIF::[["ENV!!pagePath", "/local/ocean/ship/interview/"], ["PAGE!!fairytalk", false]]
+        ohh, interloper, interloper!
+        better not stay still for too long!
+        i think they want to bite you!
+        maybe i will join in? hehehe!
+
+____SHOWIF::[["ENV!!pagePath", "/local/uncosm/pit/"], ["PAGE!!fairytalk", false]]
+        interloper!!
+        what a lush thoughtscape, would you not agree?!
+        quite the cultivation that akizet got up to!!
+        
+____SHOWIF::["PAGE!!fairytalk", true]
+        what is it now?
+____END
+    
+    RESPONSES::self
+        what are you doing here?<+>uncosm
+            SHOWIF::["ENV!!pagePath", "/local/uncosm/"]
+        what are you doing here?<+>city
+            SHOWIF::["ENV!!pagePath", "/local/city/"]
+        what are you doing here?<+>orbit
+            SHOWIF::["ENV!!pagePath", "/local/orbit/"]
+        what are you doing here?<+>maze
+            SHOWIF::["ENV!!pagePath", "/local/ocean/ship/interview/"]
+        what are you doing here?<+>pit
+            SHOWIF::["ENV!!pagePath", "/local/uncosm/pit/"]
+        bye<+>END
+
+uncosm
+    self
+        what are you doing here?
+
+    fairy
+        preparing to dive, of course!!
+        we may have no shortage of resources thanks to your work, interloper,
+        but i would go crazyyy if i had to sit in the ozo forever!
+        so, the hunt continues! only now, it is for sport!
+        no one will weep for the mindless beasts in the dark
+        and what a vantage point--i never know what i will find from here!!
+        how strange it is that such a large gap to the uncosm goes unmended...
+        not that i mind! the longer it remains, the better! ahahaha
+
+    RESPONSES::self
+        ok bye<+>END
+
+city
+    self
+        what are you doing here?
+
+    fairy
+        taking a peek around while the tyrant's constructs are absent!
+        not that there is anything new here... boring
+        
+    self
+        is it safe for you?
+        doesn't incoherence alert them or something?
+
+    fairy
+        oh, it does?! oh no!! oh, i must go now!!
+        ahaha, just kidding!
+        there is much i can do to blend in, interloper!
+        surely you recall when we first met?
+        the shape of a 'proxyfriend' is all too simple, and coheres to any space...
+        but i need not camouflage myself to you!
+        anyway...
+        do not worry!! i will not eat anything here!
+        i know how you love your rote re-enactments of akizet's blunders
+        so, non-vital, uncosm only hunting for me! 
+        velzie's wrath! hehehe
+
+    self
+        thanks
+    
+    RESPONSES::self
+        ok bye<+>END
+
+orbit
+    self
+        what are you doing here?
+    
+    fairy
+        trying to see if there is ANYTHING fun here...
+        there used to be a lot!
+        i cannot quite remember what it was, but...
+        i can definitely recall that this place is a sad shell of its past!
+        although...
+        hehehe... i might be to blame!
+        i think i chewed this place up pretty badly!!
+        before your time, of course
+    
+    RESPONSES::self
+        ok bye<+>END
+
+maze
+    self
+        what are you doing here?
+    
+    fairy
+        what does it look like?
+        hunting for prey!!
+        not these lumbering things, though
+        too stupid... not even fun to toss around!
+        i can hardly imagine what damaged them so badly--scary!
+        ohh... if i could find what did it...
+        yees, that would be a worthy hunt!
+    
+    self
+        i wouldn't recommend it
+    
+    fairy
+        that is because you are a coward! haha!
+        now, watch out, they know you are here!
+        you might not be physical, not like me, but...
+        they will still be more than happy to try pouring their teeth into your mind!
+    
+    RESPONSES::self
+        ok bye<+>END
+
+pit
+    self
+        what are you doing here?
+    
+    fairy
+        silly interloper!
+        the hunt!!
+        how could i resist such a fruitful garden?!
+        so much variety here--so many things sheltered for so long!
+        surely you have noticed their careful entrapment...
+        that akizet was using them like tamed beasts! so clever!
+        have you seen those ones that pretend to be cousins at first?!
+        funny, but they hardly put up a fight...
+        it is those ones that spread out over the space and wait for disturbance...
+        yeess, such tough shells! such cunning!
+        i will crack one of them soon, and then--
+        oh, i suppose we cannot share...
+        more for me! ahahaha!!
+    
+    RESPONSES::self
+        ok bye<+>END
+
+END::change("PAGE!!fairytalk", true)
+`)
+
+env.dialogues["++rotmove"] = generateDialogueObject(`
+start
+    self
+        can you tell me about something else?
+    
+    sourceless
+        you feel its curiosity bleed into your mind.
+
+    rotwatcher
+        the audience is observed to make requests to know more.
+        this request can be fulfilled, though it requires that the subjected rotwatcher relocate.
+        when the audience accepts this condition, the rotwatcher is observed to fulfill the request.
+    
+    RESPONSES::self
+        sure<+>END
+            EXEC::env.buddy_globalRotwatcher.reroll()
+        nevermind<+>END
+
+END::revertBgm()
 `)
 
 //please forgive how ugly this is

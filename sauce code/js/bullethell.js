@@ -190,7 +190,7 @@ function bh_stop(){
 	env.bulletHell.ignoreRecentlyHit = false;
 	
 	env.temporaryOptimize = false
-	env.hoverIntervalRate = 100
+	env.hoverIntervalRate = env.defaultHoverRate
 
 	body.classList.remove('bh_started')
 

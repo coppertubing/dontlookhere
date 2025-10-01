@@ -1,3 +1,5 @@
+page.maskJoyNote = "\nLOCAL_RESONANCE::'moderate';'minor spatial thoughtspace'"
+
 createEntity({
     name: 'council',
     image: check('recosm_state', 'killed') ? '/img/sprites/council/godportrait.gif' : '/img/sprites/council/portrait.gif',
@@ -40,50 +42,7 @@ createEntity({
     ]
 })
 
-createEntity({
-    name: 'fairy',
-    image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
-    type: "thoughtform obesk portrait-haze portrait-auto portrait-center",
-    text: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE:'hunger'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`,
-    actions: [
-        {
-            name: "hello",
-            exec: ()=> startDialogue('fairy_intro'),
-            showIf: [["ozo__fairy_intro", false], ["stageroom", "ozo_fairy"]]
-        },
-
-        {
-            name: "greet",
-            exec: ()=> startDialogue('fairy'),
-            showIf: [["ozo__fairy_intro", true], ["stageroom", "ozo_fairy"]]          
-        },
-            
-        {
-            name: "unity",
-            class: "act-ozo",
-            showIf: [["mask", "unity"]],
-            exec: ()=>{
-                cutscene(true)
-
-                chatter({actor: 'fairy', text: 'already here! stupid!', readout: true, delay: 2000})
-
-                env.setTimeout(()=>{
-                    play("talkchoir", 0.75)
-                    vfx({type: 'beacon', state: true})
-                }, 400)
-
-                setTimeout(()=>{
-                    vfx({type: 'beacon', state: false})
-                    cutscene(false)
-                }, 2000)
-            },
-        }
-    ]
-})
-
+/* e4a1 note - fairy entity is in globalents now */
 createEntity({
     name: 'isabel',
     image: '/img/local/uncosm/ozo/flowerfriend_portrait.gif',
@@ -238,6 +197,23 @@ createEntity({
                             `i could rot here forever`, 
                             `i used to be scared of this place`,
                             `i could sleep here forever`
+                        ].sample({noRepeat: true})
+                    break
+
+                    case "hider": text = [
+                            `hm hmmm hmm hmm`, 
+                            `i like to visit here just in case`, 
+                            `one day she'll come back`, 
+                            `i saw a eye once`, // intentional typo don't fucking fix this or i;'l👽
+                        ].sample({noRepeat: true})
+                    break
+
+                    case "asker": text = [
+                            `oh? oh oh oh?`, 
+                            `really? cool! how??`, 
+                            `wait i wasn't listening can you say that again`, 
+                            `ohhhh i ohhh i get it ohh`,
+                            `huhh? you just tore it up??`,
                         ].sample({noRepeat: true})
                     break
 
@@ -398,6 +374,85 @@ createEntity({
 })
 
 env.jokzi = {
+    flowerCheck: (modStage = true) => {
+        let flowers = 0
+        
+        if(!check("effigy_fawners") && modStage) {
+            env.stage.querySelectorAll('.gridpiece[slug="a"], .gridpiece[slug="A"]').forEach(el=>{
+                el.innerHTML = ""
+                el.classList.remove('dyp')
+                el.classList.add('neglected')
+            })
+        } else { 
+            if(modStage) env.stage.querySelectorAll('.gridpiece[slug="◘"').forEach(el=>el.classList.remove('neglected')); 
+            flowers++ 
+        }
+        
+        if(!check("effigy_dancer") && modStage) {
+            env.stage.querySelectorAll('.gridpiece[slug="Ř"]').forEach(el=>{
+                el.innerHTML = ""
+                el.classList.remove('dyp', 'blocks')
+                el.classList.add('neglected')
+            })
+
+            env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+                el.querySelector('.akieffigy:last-child').remove()
+                let remainingEffigy = el.querySelector('.akieffigy')
+
+                remainingEffigy.setAttribute('type', 'dancersad')
+                remainingEffigy.classList.add('solo')
+            })
+        } else { 
+            if(modStage) env.stage.querySelectorAll('.gridpiece[slug="◙"').forEach(el=>el.classList.remove('neglected'));
+            flowers++ 
+        }
+        
+        if(!check("effigy_gamer") && modStage) {
+            env.stage.querySelectorAll('.gridpiece[slug="P"], .gridpiece[slug="Ȑ"], .gridpiece[slug="Â"]').forEach(el=>{
+                el.innerHTML = ""
+                el.classList.remove('dyp', 'blocks')
+                el.classList.add('neglected')
+            })
+
+            env.stage.querySelectorAll('.gridpiece[slug="Ä"] .akieffigy').forEach(el=>{
+                el.setAttribute('type', 'gamersad')
+                el.classList.add('solo')
+            })
+        } else { 
+            if(modStage) env.stage.querySelectorAll('.gridpiece[slug="♀"').forEach(el=>el.classList.remove('neglected')); 
+            flowers++ 
+        }
+
+        if(!check("effigy_sipper") && modStage) {
+            env.stage.querySelectorAll('.gridpiece[slug="ü"], .gridpiece[slug="Ŕ"]').forEach(el=>{
+                el.innerHTML = ""
+                el.classList.remove('dyp')
+                el.classList.add('neglected')
+            })
+        } else { 
+            if(modStage) env.stage.querySelectorAll('.gridpiece[slug="○"').forEach(el=>el.classList.remove('neglected')); 
+            flowers++ 
+        }
+
+        switch(flowers) {
+            case 0:
+                change("PAGE!!flowers", "few")
+            break
+            
+            case 1: case 2:
+                change("PAGE!!flowers", "low")
+            break
+
+            case 3:
+                change("PAGE!!flowers", "high")
+            break
+        
+            case 4:
+                change("PAGE!!flowers", "done")
+            break
+        }
+    },
+
     receptorcycle: ()=>{
         let councilReceptors = content.querySelector('.receptors')
         if(councilReceptors) {
@@ -425,18 +480,18 @@ env.jokzi = {
     },
 
     randomizeTiles: ()=>{
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
     },
     
     stageCheck: ()=>{
         switch(env.stage.name) {
             case "ozo_entrance":
                 if(check("citystreet__flower_beacon")) {
-                    document.querySelectorAll('.gridpiece[slug="1"], .gridpiece[slug="f"]').forEach(el=>{
+                    env.stage.querySelectorAll('.gridpiece[slug="1"], .gridpiece[slug="f"]').forEach(el=>{
                         el.classList.remove('raised-floaty')
                     })
 
-                    document.querySelectorAll('.gridpiece[slug="1"]').forEach(el=>{
+                    env.stage.querySelectorAll('.gridpiece[slug="1"]').forEach(el=>{
                         el.classList.remove('gap', 'blocks')
                     })
                 }
@@ -450,7 +505,7 @@ env.jokzi = {
             case "ozo_fairy":
                 if(!check("localorbit__fairy_beacon")) {
                     body.classList.add('nofairy')
-                    document.querySelectorAll('#realgrid .gridpiece[slug=░]').forEach(el=>el.classList.add('neglected'))
+                    env.stage.querySelectorAll('#realgrid .gridpiece[slug=░]').forEach(el=>el.classList.add('neglected'))
                 }
             break
 
@@ -463,8 +518,8 @@ env.jokzi = {
                     content.querySelector('.council').setAttribute('dance', 0)
                 }
 
-                if(check("citystreet__flower_beacon")) content.querySelectorAll(".noisabel").forEach(el=>el.classList.remove('neglected'))
-                if(check("localorbit__fairy_beacon")) content.querySelectorAll(".nofairy").forEach(el=>el.classList.remove('neglected'))
+                if(check("citystreet__flower_beacon")) env.stage.querySelectorAll(".noisabel").forEach(el=>el.classList.remove('neglected'))
+                if(check("localorbit__fairy_beacon")) env.stage.querySelectorAll(".nofairy").forEach(el=>el.classList.remove('neglected'))
 
                 let friendTally = 0
                 if(check("localorbit__fairy_beacon")) friendTally++;
@@ -475,8 +530,13 @@ env.jokzi = {
                 if(env.jokzi.event ? (env.jokzi.event.type == "normal" || !env.jokzi.event.type.includes("c_") || env.jokzi.event.type.includes("c_") && env.jokzi.event.observed) : true) {
                     if(!check("ozo__council_lady") && check("unity_lady")) {
                         startDialogue('council_lady')
+
                     } else if(!check("ozo__council_geliback") && check("e3a2__escapewin")) {
                         startDialogue('council_geliback')
+
+                    } else if(!check("ozo__council_wakizet") && check("pit__f3_unity")){
+                        startDialogue('council_wakizet')
+
                     } else if(
                         (!check("ozo__council_dance") && friendTally >= 2) ||
                         location.search.includes('dancedebug')
@@ -486,9 +546,9 @@ env.jokzi = {
                 }
 
                 if(check("e3a2__escapewin")) {
-                    body.querySelectorAll(".nogeli").forEach(el=>el.classList.remove('neglected', 'raised-floaty', 'raised', 'blocks'))
+                    env.stage.querySelectorAll(".nogeli").forEach(el=>el.classList.remove('neglected', 'raised-floaty', 'raised', 'blocks'))
                 } else {
-                    body.querySelectorAll(".lostdoor").forEach(el=>{
+                    env.stage.querySelectorAll(".lostdoor").forEach(el=>{
                         el.classList.remove('door', 'up', 'teleport')
                         el.classList.add('blocks', 'nothing')
                     })
@@ -498,76 +558,24 @@ env.jokzi = {
             break
 
             case "ozo_flower": //effigy checks
-                let flowers = 0
+                env.jokzi.flowerCheck()
                 
-                if(!check("effigy_fawners")) {
-                    document.querySelectorAll('.gridpiece[slug="a"], .gridpiece[slug="A"]').forEach(el=>{
-                        el.innerHTML = ""
-                        el.classList.remove('dyp')
-                        el.classList.add('neglected')
-                    })
-                } else { document.querySelectorAll('.gridpiece[slug="◘"').forEach(el=>el.classList.remove('neglected')); flowers++ }
-                
-                if(!check("effigy_dancer")) {
-                    document.querySelectorAll('.gridpiece[slug="Ř"]').forEach(el=>{
-                        el.innerHTML = ""
-                        el.classList.remove('dyp', 'blocks')
-                        el.classList.add('neglected')
-                    })
-
-                    document.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
-                        el.querySelector('.akieffigy:last-child').remove()
-                        let remainingEffigy = el.querySelector('.akieffigy')
-
-                        remainingEffigy.setAttribute('type', 'dancersad')
-                        remainingEffigy.classList.add('solo')
-                    })
-                } else { document.querySelectorAll('.gridpiece[slug="◙"').forEach(el=>el.classList.remove('neglected')); flowers++ }
-                
-                if(!check("effigy_gamer")) {
-                    document.querySelectorAll('.gridpiece[slug="P"], .gridpiece[slug="Ȑ"], .gridpiece[slug="Â"]').forEach(el=>{
-                        el.innerHTML = ""
-                        el.classList.remove('dyp', 'blocks')
-                        el.classList.add('neglected')
-                    })
-
-                    document.querySelectorAll('.gridpiece[slug="Ä"] .akieffigy').forEach(el=>{
-                        el.setAttribute('type', 'gamersad')
-                        el.classList.add('solo')
-                    })
-                } else { document.querySelectorAll('.gridpiece[slug="♀"').forEach(el=>el.classList.remove('neglected')); flowers++ }
-
-                if(!check("effigy_sipper")) {
-                    document.querySelectorAll('.gridpiece[slug="ü"], .gridpiece[slug="Ŕ"]').forEach(el=>{
-                        el.innerHTML = ""
-                        el.classList.remove('dyp')
-                        el.classList.add('neglected')
-                    })
-                } else { document.querySelectorAll('.gridpiece[slug="○"').forEach(el=>el.classList.remove('neglected')); flowers++ }
-
-                switch(flowers) {
-                    case 0:
-                        change("PAGE!!flowers", "few")
-                    break
-                    
-                    case 1: case 2:
-                        change("PAGE!!flowers", "low")
-                    break
-
-                    case 3:
-                        change("PAGE!!flowers", "high")
-                    break
-                
-                    case 4:
-                        change("PAGE!!flowers", "done")
-                    break
-                }
-
+                //requires MOST effigies, but if you're missing the really hard to find one that's ok B)
+                if(
+                    check("ozo__isabel_intro") 
+                    && 
+                    (
+                        ((check("PAGE!!flowers", "high") || check("PAGE!!flowers", "done")) && !check("ozo__isabel_joy")) 
+                        || check("TEMP!!forcejoyintro")
+                    )
+                ) {
+                    startDialogue('isabel_joy')
+                } 
             break
 
             case "ozo_adrift_dancers":
                 if(!check("effigy_dancer")) {
-                    document.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+                    env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('dyp', 'blocks')
                         el.classList.add('neglected')
@@ -578,14 +586,30 @@ env.jokzi = {
             case "ozo_adrift_darkroom":
             case "ozo_adrift_emptydream":
                 change("ozo_enterdark", true)
-                document.querySelectorAll('.gridpiece[slug="♠"] .dypcontent, .gridpiece[slug="♥"] .dypcontent').forEach(el=>{
+                env.stage.querySelectorAll('.gridpiece[slug="♠"] .dypcontent, .gridpiece[slug="♥"] .dypcontent').forEach(el=>{
                     el.style.setProperty('--dyp-transform', `translateY(${rand(-100, 100)}%) rotateY(${rand(-20, 20)}deg)`)
                     
                 })
             break
 
             case "ozo_lostone":
-                if(check("++bsteli-replay")) content.querySelectorAll(".e3a2loop").forEach(el=>el.classList.add('ready'))
+                //edge case protection that's not very well guarded here
+                //this can only happen if you closed out during the frame win transition to her room
+                //not adjusting the dialogue because you deserve what you get if you do this
+                if(!check("ozo__ozogeli")) startDialogue("ozogeli")
+
+                if(check("++bsteli-replay")) env.stage.querySelectorAll(".e3a2loop").forEach(el=>el.classList.add('ready'))
+
+                // we get this basically at any point after you free her and it's after EP4
+                // to kinda simulate some time passing...
+                // although i guess most people will only get her afterwards lol so wateva
+                if(check("freedomtut")) {
+                    playerMoveTo(0, 6, "right")
+                    chatter({actor: 'bsteli::bstrd', text: "u're NOT geting out of this EZ", readout: true})
+                    chatter({actor: 'bsteli::bstrd', text: 'PUT THE MASK ON INTERPOLATOUR!!!!!!!', readout: true, delay: 2000})
+                } else if(check("ozo__ozogeli") && (!check("ozo__geli_freedom-tried") && check("ep4__entrancefinal")) || check("TEMP!!forcegelimask")) {
+                    startDialogue('geli_freedom')
+                } 
             break
         }
 
@@ -595,6 +619,7 @@ env.jokzi = {
         switch(env.stage.name) {
             case "ozo_entrance":
             case "ozo_adrift_dancers":
+            case "ozo_stranger":
                 if(!env.bgm._src.includes("outside.ogg")) {
                     changeBgm(env.jokzi.outsideMusic, {length: 200, pause: true})
                 }
@@ -631,7 +656,7 @@ env.jokzi = {
         }
 
         if(!check("unity_lady")) {
-            document.querySelectorAll('.ladyonly').forEach(el=>{
+            env.stage.querySelectorAll('.ladyonly').forEach(el=>{
                 el.classList.add('hide')
                 el.classList.remove('teleport')
             })
@@ -639,7 +664,7 @@ env.jokzi = {
 
         if(isFirefoxOnWindows()) {
             setTimeout(()=>{
-                content.querySelectorAll(".raised, .raised-floaty:not(.locked)").forEach((el, i)=>{
+                env.stage.querySelectorAll(".raised, .raised-floaty:not(.locked)").forEach((el, i)=>{
                     el.style.setProperty("--floatyform", `translateZ(-50px) rotateX(${rand(-180, 180)}deg) rotateY(${rand(-180, 180)}deg) rotateZ(${rand(-180, 180)}deg)`)
                 })
             }, 200)
@@ -855,8 +880,17 @@ env.jokzi = {
         }
         
         if(env.jokzi.event) if(env.jokzi.event.danceChange) env.jokzi.event.danceChange(state)
-    }
-    
+    },
+
+    mask: (ev) => {
+        if(ev.detail.mask == "freedom") return;
+        switch(env.stage.name) {
+            case "ozo_adrift_dancers":
+            case "ozo_entrance":
+                if(ev.detail.oldMask == "joy" || ev.detail.mask == "joy") refreshStage()
+            break
+        }
+    }    
 }
 
 env.stageEntities['▒'] = { 
@@ -1004,6 +1038,61 @@ env.stageEntities["Ε"] = { // effigy
     } 
 },
 
+env.stageEntities['æ'] = {
+    class: "critical",
+    contains: {
+        examineEntity: "ækiZ¥Ét",
+        class: "face-creature wakizet",
+        dyp: {
+            width: 0.75,
+            height: 2.1,
+            image: 'url(/img/sprites/akizet/wakizet/wakizet.gif)',
+            style: `
+                transform: rotateX(-90deg) rotateY(180deg) rotateY(var(--faceAngle));
+                transition: transform 3s ease-in-out;
+            `
+        },
+    }
+}
+
+createEntity({
+    name: "ækiZ¥Ét",
+    type: "recollection thoughtform portrait-contain portrait-blocker freedomon",
+    image: "/img/sprites/akizet/wakizet/wakizetportrait.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection';<span style='color: var(--obesk-color)'>'defense'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to approach is to die';'stay away';'your only warning'</span>`,
+    actions: [
+        {
+            name: "speak",
+            exec: ()=>{ startDialogue('wakizet')},
+            showIf: [["stageroom", "ozo_stranger"]]
+        },
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"], ["stageroom", "ozo_stranger"]],
+            exec: ()=>{
+                cutscene(true)
+
+                chatter({actor: 'wakizet', text: '...', readout: true, delay: 2000})
+                chatter({actor: 'wakizet', text: 'yes, i know, interloper', readout: true, delay: 4000})
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                }, 4000)
+            },
+        }
+    ]
+})
+
 //utilized in canvas floors to combat vram usage
 env.stage.locales["clouded"] = [
     [".empty:not(.neglected)", "/img/local/uncosm/ozo/tiles/ozo.gif",],
@@ -1073,6 +1162,13 @@ env.stages['ozo_entrance'] = {
             lockExec: ()=>chatter({actor: 'sys', text: "NOTICE::'prohibitive incoherence'", readout: true})
         },
 
+        "J": {
+            class: "door up notile blocks fakeunlock",
+            teleportTarget: "ozo_stranger",
+            shouldFace: "up",
+            teleportSpot: 13
+        },
+
         "=": {
             class: "gap blocks raised-floaty",
         },
@@ -1085,29 +1181,265 @@ env.stages['ozo_entrance'] = {
         "2": {
             class: "gap blocks raised-floaty",
         },
+
+        P: {
+            class: "funnycloud",
+            contains: {
+                class: "joyonly freedomonly",
+                examineEntity: "×è.÷ùÏÏøø",
+                html: `<div class="joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "camguy lookdown",
+                    image: 'url(/img/local/beneath/lost_pedestrian1_lookdown.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: "rotateX(-80deg)"
+                }
+            } 
+        },
+
+        ⳉ: {
+            contains: { 
+                class: "rotainer",
+                examineEntity: "rotwatcher",
+                html: `
+                    <figure class="rotfig"></figure>
+                    <style id="rotwatcherstyle">
+                        @import url(/css/rotwatcher.css)
+                    </style>
+                `,
+                dyp: {
+                    image: 'transparent',
+                    width: 3,
+                    height: 2.5,
+                    transform: `rotateY(100deg) translateX(100%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        },
+
+        ϧ: {
+            class: "notile",
+            contains: { 
+                class: "rotxamine",
+                dyp: {
+                    image: 'url(/img/sprites/rot/rotxa.gif)',
+                    width: 3,
+                    height: 2,
+                    transform: `rotateY(100deg) translateX(100%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        }
+    },
+    
+    width: 9,
+
+    plans: {
+        default: `
+            ....O....
+            ....pP...
+            ....▓.=..
+            ..=.▓▓...
+            ...▓▓.=..
+            =..▓▓?...
+            f1▓▓▓▓...
+            =..?▓▓...
+            ...▓▓....
+            ..?.▓?.=.
+            ..??▓▓▓2F
+            ...▓▓?=.=
+            ..▓▓▓....
+            ...▓▓▓?..
+            ..▓?▓▓▓..
+            ....▓▓?..
+            ..??▓?...
+            ....S....
+        `, 
+
+        // e3a2 todo - on mask change reload
+        joy: `
+            ....O....
+            ....pP...
+            ....▓.=..
+            ..=.▓▓▓▓.
+            ...▓▓.=▓.
+            =..▓▓?.▓.
+            f1▓▓▓▓.▓.
+            =..?▓▓.J.
+            ...▓▓....
+            ..?.▓?.=.
+            ..??▓▓▓2F
+            ...▓▓?=.=
+            ..▓▓▓....
+            ...▓▓▓?..
+            ..▓?▓▓▓..
+            .ⳉϧ.▓▓?..
+            ..??▓?...
+            ....S....
+        `,
     },
 
-    width: 9,
-    plan: `
-        ....O....
-        ....p....
-        ....▓.=..
-        ..=.▓▓...
-        ...▓▓.=..
-        =..▓▓?...
-        f1▓▓▓▓...
-        =..?▓▓...
-        ...▓▓....
-        ..?.▓?.=.
-        ..??▓▓▓2F
-        ...▓▓?=.=
-        ..▓▓▓....
-        ...▓▓▓?..
-        ..▓?▓▓▓..
-        ....▓▓?..
-        ..??▓?...
-        ....S....
-    `
+    getPlan: function() {
+        if(check("mask", "joy") || check("pit__f3_unity")) { // once you get her, it stays open
+            return this.plans.joy
+        } else {
+            return this.plans.default
+        }
+    },
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+
+        if(!check("effigy_sipper")) newPlan = plan.replace('P', '=')
+
+        if(!check("mask", "joy") || env?.buddy_globalRotwatcher?.currentLocation != page.path) {
+            newPlan = newPlan.replace("ⳉ", ".")
+            newPlan = newPlan.replace("ϧ", ".")
+        }
+        
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+
+        return newPlan
+    }
+}
+
+env.stages['ozo_stranger'] = {
+    locale: "clouded",
+    exec: ()=>{
+        env.jokzi.stageCheck()
+        if(check("joysearch") && !check("pit__f3_unity")) startDialogue("joy_mysterydoor");
+        else if(check("joysearch")) startDialogue("joy_mysterydoor_late");
+          
+        env.stage.querySelectorAll("#ozofacet").forEach(el=>{
+            if(check("joy#any")) el.classList.add('linked')
+            else el.classList.add('unlinked')
+        })
+    },
+
+    entities: {
+        "J": {
+            class: "door down notile blocks",
+            teleportTarget: "ozo_entrance",
+            shouldFace: "up",
+            teleportSpot: 13,
+        },
+
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+        
+        "p": { //player spawn point
+            class: "neglected",
+            contains: {
+                id: "creature",
+                class: "player ally-sprite",
+                type: "player"
+            }
+        },
+
+        "a": {
+            contains: {
+                dyp: {
+                    width: 1.5,
+                    height: 2,
+                    image: 'transparent',
+                    transform: 'translate(-20%) rotateY(220deg)'
+                },
+
+                html: `
+                    <figure class="ozofriend akieffigy" type="hider">
+                        <div class="target" entity="effigy"></div>
+                        <img class="body" src="/img/local/uncosm/ozo/akieffigy_body.gif">
+                        <img class="head" src="/img/local/uncosm/ozo/akieffigy_head.gif">
+                    </figure>
+                `
+            } 
+        },
+
+        "Ä": { // event effigies
+            contains: {
+                dyp: {
+                    class: "face-creature",
+                    width: 1.5,
+                    height: 2,
+                    image: 'transparent',
+                },
+
+                html: `
+                    <figure class="ozofriend akieffigy" type="asker">
+                        <div class="target" entity="effigy"></div>
+                        <img class="body" src="/img/local/uncosm/ozo/akieffigy_body.gif">
+                        <img class="head" src="/img/local/uncosm/ozo/akieffigy_head.gif">
+                    </figure>
+                `
+            } 
+        },
+        
+        "ĵ": {
+            class: "notile blocks",
+            contains: {
+                html: `<div class="target joytarget" entity="referential scar"></div>`,
+                class: "joyfacet",
+                id: "ozofacet",
+                unique: true,
+                dyp: {
+                    image: 'transparent',
+                    width: 1.75,
+                    height: 2.25,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+        
+        "ṙ": {
+            class: "neglected ozofacetlanding",
+            shouldFace: "down",
+        },
+
+    },
+
+    width: 7,
+
+    plans: {
+        default: `
+            =..J.=.
+            ..▓p▓..
+            .=▓▓▓▓.
+            .▓▓▓▓=.
+            =.=▓▓..
+            ..▓▓=a=
+            ...▓..=
+            =..ṙ=..
+            ...ĵ..=
+        `,
+
+        wakizet: `
+            =..J.=.
+            ..▓p▓..
+            .=▓▓▓▓.
+            .▓▓▓▓=.
+            =.=▓▓..
+            .?▓▓=a=
+            .?æ▓..=
+            =.?ṙ=..
+            ...ĵ..=
+        `,
+    },
+
+    getPlan: function() { // will eventually have a more complete version
+        if(check("pit__f3_unity")) return this.plans.wakizet
+        return this.plans.default
+    },
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        
+        if(plan.includes("æ") && !check("joysearch")) newPlan = newPlan.replace("a", ".")
+
+        return newPlan
+    }
 }
 
 env.stage.locales["council"] = env.stage.locales["clouded"]
@@ -1122,7 +1454,7 @@ env.stages['ozo_council'] = {
                 class: "councilform",
                 html: `
                     <div class="target" entity="council"></div>
-                    <div class="councilwrap face-creature">
+                    <div class="councilwrap face-creature" id="councilwrap">
                         <div class="council" dance="1">
                             <img class="base" src="/img/sprites/council/coat_bot.gif">
                             <div class="head">
@@ -1171,6 +1503,10 @@ env.stages['ozo_council'] = {
 
         "?": {
             class: "raised-floaty raised blocks nogeli"
+        },
+
+        "!": { // event placement
+            class: "empty plain"
         },
 
         "e": {
@@ -1230,12 +1566,18 @@ env.stages['ozo_council'] = {
         .===121_░_.
         f==12☺21__F
         .=░=121░__.
-        .====1░___.
+        .====1!___.
         ..░?▓░░?_..
         ...?░▓?▓...
         ....▓▓▓....
         .....N.....
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 createEntity({
@@ -1333,7 +1675,7 @@ env.stages['ozo_flower'] = {
                     width: 7,
                     height: 3,
                     image: 'url(/img/local/uncosm/ozo/flowercitywallparted.gif)',
-                    noback: true,
+                noback: true,
                     transform: "rotateY(180deg) translateZ(calc(var(--gridTileSize) * 0.5))",
                 },
 
@@ -1581,6 +1923,14 @@ env.stages['ozo_flower'] = {
                 }
             } 
         },
+
+        "!": { // event thing
+            class: "empty plain"
+        },
+
+        "_": {
+            class: "blocks shiny alwaysshine"
+        }
     },
 
     width: 9,
@@ -1592,10 +1942,19 @@ env.stages['ozo_flower'] = {
         f◙ä◙░♀P♀F
         .r◙◙♀♀ÂȐ.
         .◙◘░░◘◘◘.
-        .◘◘◘◘░◘◘.
+        .◘◘◘◘!◘◘.
         ..tAUat..
         ...?.?...
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this)
+
+        if(check("joysearch")) newPlan = newPlan.replace("A", "_")
+        
+        return newPlan
+    }
 }
 
 env.stages['ozo_lady'] = {
@@ -1704,7 +2063,13 @@ env.stages['ozo_lady'] = {
         ▓.=R.r..▓
         .=?.L?=..
         .=.r.R..=
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 env.stage.locales["space"] = [
@@ -1817,6 +2182,10 @@ env.stages['ozo_fairy'] = {
                 html: `<figure></figure>`
             }
         },
+
+        "!": { // event loc
+            class: "neglected"
+        }
     },
 
     width: 11,
@@ -1829,12 +2198,18 @@ env.stages['ozo_fairy'] = {
         .▓▓▓░▓▓▓▓▓.
         .░░▓░▓░▓░░.
         .▓.?...?.░.
-        .▓?..☺Ṿ.?▓.
+        .!?..☺Ṿ.?▓.
         .▓.??PV.?░.
         .▓.ÖṼ.▓ö.▓.
         ..▓....▓▓▓.
         .?.▓.▓▓▓...
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 env.stages['ozo_lostone'] = {
@@ -1845,7 +2220,7 @@ env.stages['ozo_lostone'] = {
         env.jokzi.stageCheck()
 
         if(!check("unity_dog")) {
-            document.querySelectorAll('#realgrid .isopod').forEach(el=>el.remove())
+            env.stage.querySelectorAll('#realgrid .isopod').forEach(el=>el.remove())
         } else {
             env.dogSetup()
         }
@@ -1868,9 +2243,12 @@ env.stages['ozo_lostone'] = {
             lockFlag: "permalocked",
             lockExec: ()=> {
                 if(env.stage.name == 'ozo_lostone' && check('++bsteli-replay')) {
-                    if(content.getAttribute("event").includes("geli")) {
-                        chatter({actor: "sourceless", text: "geli isn't here.", readout: true})
-                    } else startDialogue('dreamchoice')
+                    if(content.getAttribute("event")) if(content.getAttribute("event").includes("geli") && content.getAttribute("event") != "w_geli") {
+                        return chatter({actor: "sourceless", text: "geli isn't here.", readout: true})
+                    }
+                    
+                    //no gameplay mode is not considered here bc optional replay
+                    startDialogue('dreamchoice')
                 }
             },
         },
@@ -1954,7 +2332,6 @@ env.stages['ozo_lostone'] = {
                     image: 'url(/img/local/critta/generiterminal.gif)',
                     transform: `rotateY(135deg);`,
                     style: "pointer-events: none;",
-                    noback: true,
                     width: 1.5,
                     height: 2,
                 }
@@ -2052,20 +2429,37 @@ env.stages['ozo_lostone'] = {
         "♠": {class: "vesselmetal"},
         "_": {class: "gap blocks"},
         "=": {class: "gap blocks raised-floaty"},
-        "░": {class: "empty neglected"}
+        "░": {class: "empty neglected"},
+        "f": {
+            class: "empty neglected",
+            exec: ()=>{
+                if(check("freedomtut")) {
+                    startDialogue("geli_freedom", {specificChain: "tried"})
+                    change("freedomtut", "DELETE")
+                }
+            }
+        },
+
+        "!": {class: "vesselmetal"} // event position
     },
 
     plan: `
         _.=_c_=.┼
         ...░p░..=
-        =.░░░._=░
-        ░..░░.=..
-        ....░....
-        ..T♠♠☺1..
-        .W%♠♠♠2Ü.
+        =.f░░._=░
+        .░.░░.=..
+        ░...░....
+        ░.T♠♠☺1..
+        ░W%♠♠!2Ü.
         ..t☻♠♠3..
         ..R.s....
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 /* ADRIFT - PARTS OF OZO THAT ARE DETACHED, OUT OF REPAIR, ETC */
@@ -2136,6 +2530,41 @@ env.stages['ozo_adrift_dancers'] = {
             shouldFace: "up"
         },
 
+        "¤": {
+            class: "notile",
+            contains: {
+                html: `
+                    <div class="target joyonly" entity="˜CâR…"></div>
+                    <div class="joyonly joygarnish garnishportal caseportal"><div class="carsign"></div></div>
+                `,
+                dyp: {
+                    image: 'url(/img/local/beneath/car.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(-90deg)"
+                }
+            } 
+        },
+
+        "ø": {
+            contains: {
+                examineEntity: "s w   al kk",
+                html: `<div class="joyonly joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "civvie swalk face-creature",
+                    image: 'url(/img/local/city/pedestrian5.gif)',
+                    width: 1.5,
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                    style: "transition: transform 400ms ease-in-out;"
+                }
+            } 
+        },
+
+        "j": {
+            class: "neglected",
+        }
+
     },
 
     width: 9,
@@ -2146,10 +2575,21 @@ env.stages['ozo_adrift_dancers'] = {
         .▓▓▓▓▓?=f
         .▓?.ä.=..
         .▓=..?...
-        =▓=..?...
-        .▓?......
+        =▓jjjjjj¤
+        .▓?.?..ø.
         .F.......
-    `
+    `,
+
+    planAdjustment: (plan) => {
+        let newPlan = plan
+
+        if(content.getAttribute("event") == "c_effigies" || content.getAttribute("event") == "f_effigies") newPlan = plan.replace("ä", "▓")
+
+        if(!check("mask", "joy") || !check("car__intro")) newPlan = plan.replace('ø', '.').replace('¤', '.').replaceAll("j", ".")
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+
+        return newPlan
+    }
 }
 
 env.stages['ozo_adrift_darkfield'] = {
@@ -2175,7 +2615,13 @@ env.stages['ozo_adrift_darkfield'] = {
         .░░░░░░░░░.
         .░░░░░░░░░.
         ...........
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 env.stages['ozo_adrift_darkroom'] = {
@@ -2383,7 +2829,13 @@ env.stages['ozo_adrift_darkroom'] = {
         ▒▒▒▒▒▒▒▒▒.░░░░░.▒▒▒▒▒▒▒▒▒
         ▒▒▒▒▒▒▒▒▒.░░░░░.▒▒▒▒▒▒▒▒▒
         ▒▒▒▒▒▒▒▒▒...C...▒▒▒▒▒▒▒▒▒
-    `
+    `,
+
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this) 
+        return newPlan
+    }
 }
 
 env.stages['ozo_adrift_emptydream'] = {
@@ -2432,6 +2884,10 @@ env.stages['ozo_adrift_emptydream'] = {
         '▒': {
             class: "invisiblewalk nothing",
         },
+
+        '!': {
+            class: "invisiblewalk nothing",
+        },
     },
 
     fogRadius: 5,
@@ -2443,7 +2899,7 @@ env.stages['ozo_adrift_emptydream'] = {
         .....?░p▒?.....
         .....?░▒░?.....
         ......▒▒░......
-        .....?░▒▒......
+        .....?░▒!......
         ......?..?.....
         ...............
         ...............
@@ -2483,14 +2939,31 @@ env.stages['ozo_adrift_emptydream'] = {
         ...............
         ...............
         .......○.......
-    `
+    `,
+    
+    planAdjustment: function (plan) {
+        let newPlan = plan
+        if(this.eventModifier) newPlan = this.eventModifier(newPlan, this)
+        return newPlan
+    }
 }
 
 //called on visit, determines what event (if any) to apply to ozo
 env.jokzi.runEvents = () => {
+    //special event test bypass
+    const eventParam = new URLSearchParams(window.location.search).get('setevent')
+    if(eventParam && env.jokzi.events[eventParam]) return env.jokzi.setEvent(eventParam);
+
+    // if any on-enter mask reception is pending, don't queue any events
+    let joyMaskPending = (!check("ozo__isabel_joy") && ((check("PAGE!!flowers", "high") || check("PAGE!!flowers", "done")) && !check("ozo__isabel_joy")) || check("TEMP!!forcejoyintro"))
+    let freedomMaskPending = (!check("ozo__geli_freedom") && (check("ep4__entrancefinal") || check("TEMP!!forcegelimask"))) || check("freedomtut")
+    if(joyMaskPending || freedomMaskPending) {
+        console.log(`not using events due to pending mask reception. joy pending: ${joyMaskPending}, freedom pending: ${freedomMaskPending}`)
+        return 
+    }
+
     // events are more common the longer it's been since the last one
-    let lastEvent = (check("e_ozo") || 0) * 0.05
-    let eventLikelihoodModifier = lastEvent
+    let eventLikelihoodModifier = (check("e_ozo") || 0) * 0.05
 
     //generate a weighted list to use weightRand with, also apply some useful stuff for later
     let weightedList = Object.entries(env.jokzi.events).map(ev => {
@@ -2503,6 +2976,7 @@ env.jokzi.runEvents = () => {
             //console.log("should show is", shouldItShow(ev[1]), "weight is", weight, "skipping", ev[0])
             return false
         }
+
         else return [
             ev[1], weight
         ]
@@ -2573,6 +3047,7 @@ env.jokzi.events = {
                     }
                 }
             }
+            
             document.addEventListener(listener.type, listener.exec)
             env.jokzi.listeners.push(listener)
 
@@ -2599,7 +3074,7 @@ env.jokzi.events = {
                 
                 setTimeout(()=>{
                     content.setAttribute("event", "normal")
-                    document.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
+                    env.stage.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('critical', 'dyp', 'blocks')
                         el.classList.add('empty', 'plain')
@@ -2663,7 +3138,7 @@ env.jokzi.events = {
                 
                 setTimeout(()=>{
                     content.setAttribute("event", "normal")
-                    document.querySelectorAll(".gridpiece[slug='Ϥ']").forEach(el=>{
+                    env.stage.querySelectorAll(".gridpiece[slug='Ϥ']").forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('critical', 'dyp', 'blocks')
                         el.classList.add('empty', 'plain')
@@ -2713,7 +3188,7 @@ env.jokzi.events = {
             
             setTimeout(()=>{
                 content.setAttribute("event", "normal")
-                document.querySelectorAll(".gridpiece[slug='Ϣ']").forEach(el=>{
+                env.stage.querySelectorAll(".gridpiece[slug='Ϣ']").forEach(el=>{
                     el.innerHTML = ""
                     el.classList.remove('critical', 'dyp', 'blocks')
                     el.classList.add('empty', 'nothing')
@@ -2776,9 +3251,7 @@ env.jokzi.events = {
             env.stageEntities["ϵ"].contains.html = env.stageEntities["ϵ"].contains.html.replaceAll("wanderer", "dancer")
             env.stageEntities["Ε"].contains.html = env.stageEntities["Ε"].contains.html.replaceAll("wanderer", "dancer")
 
-            env.jokzi.oldAdriftPlan = env.stages.ozo_adrift_dancers.plan
-            env.stages.ozo_adrift_dancers.plan = convertStagePlanStringToArray(env.stages.ozo_adrift_dancers.plan)
-            env.stages.ozo_adrift_dancers.plan[40] = "▓" 
+            // e4a1 - adrift_dancers alterations moved to its planAdjustment
 
             env.jokzi.oldLadyPlan = env.stages.ozo_lady.plan
             env.stages.ozo_lady.plan = convertStagePlanStringToArray(env.stages.ozo_lady.plan)
@@ -2814,7 +3287,7 @@ env.jokzi.events = {
             
             setTimeout(()=>{
                 content.setAttribute("event", "normal")
-                document.querySelectorAll(".gridpiece[slug='ϵ'], .gridpiece[slug='Ε']").forEach(el=>{
+                env.stage.querySelectorAll(".gridpiece[slug='ϵ'], .gridpiece[slug='Ε']").forEach(el=>{
                     el.innerHTML = ""
                     el.classList.remove('critical', 'dyp', 'blocks')
                     el.classList.add('empty', 'plain')
@@ -2823,7 +3296,6 @@ env.jokzi.events = {
                 chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
                 env.stages.ozo_council.plan = env.jokzi.oldCouncilPlan
                 env.stages.ozo_lady.plan = env.jokzi.oldLadyPlan
-                env.stages.ozo_adrift_dancers.plan = env.jokzi.oldAdriftPlan
                 vfx({type: "flash", state: false})
                 cutscene(false)
             }, 3000)
@@ -2865,7 +3337,7 @@ env.jokzi.events = {
             
             setTimeout(()=>{
                 content.setAttribute("event", "normal")
-                document.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
+                env.stage.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
                     el.innerHTML = ""
                     el.classList.remove('critical', 'dyp', 'blocks')
                     el.classList.add('empty', 'neglected')
@@ -2920,10 +3392,8 @@ env.jokzi.events = {
             env.stageEntities["Ε"].class = "critical notile"
             env.stageEntities["Ε"].contains.html = env.stageEntities["Ε"].contains.html.replaceAll("wanderer", "learner")
 
-            env.jokzi.oldAdriftPlan = env.stages.ozo_adrift_dancers.plan
-            env.stages.ozo_adrift_dancers.plan = convertStagePlanStringToArray(env.stages.ozo_adrift_dancers.plan)
-            env.stages.ozo_adrift_dancers.plan[40] = "▓" 
-
+            // e4a1 - adrift_dancers alterations moved to its planAdjustment
+            
             let listener = {
                 type: "stage_change",
                 exec: (ev) => {
@@ -3006,12 +3476,12 @@ env.jokzi.events = {
                 setTimeout(()=>{
                     chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
                     content.setAttribute("event", "normal")
-                    document.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
+                    env.stage.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('critical', 'dyp', 'blocks')
                         el.classList.add('empty', 'plain')
                     })
-                    document.querySelectorAll(".ozofriend.fakerloper").forEach(el=>el.remove())
+                    env.stage.querySelectorAll(".ozofriend.fakerloper").forEach(el=>el.remove())
                     
                     env.stages.ozo_lostone.plan = env.jokzi.oldLostOnePlan
                     env.stages.ozo_flower.plan = env.jokzi.oldFlowerPlan
@@ -3112,7 +3582,7 @@ env.jokzi.events = {
                 setTimeout(()=>{
                     chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
                     content.setAttribute("event", "normal")
-                    document.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
+                    env.stage.querySelectorAll(".gridpiece[slug='Ϩ']").forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('critical', 'dyp', 'blocks')
                         el.classList.add('empty', 'plain')
@@ -3160,7 +3630,7 @@ env.jokzi.events = {
             
             setTimeout(()=>{
                 content.setAttribute("event", "normal")
-                document.querySelectorAll(".gridpiece[slug='Ϣ']").forEach(el=>{
+                env.stage.querySelectorAll(".gridpiece[slug='Ϣ']").forEach(el=>{
                     el.innerHTML = ""
                     el.classList.remove('critical', 'dyp', 'blocks')
                     el.classList.add('empty', 'nothing')
@@ -3273,6 +3743,310 @@ env.jokzi.events = {
         },
 
         complete: ()=> {},
+    },
+
+    // e4a1 events for wakizet
+    // slightly higher prio except for dark ozo
+    d_wakizet: { 
+        weight: -0.1,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_d", false]],
+
+        //hopefully a more sane way of handling event modifications lol
+        //that hardcode shit got me rolling in the duirt like a beetle
+        wakizetRoomModifier: (plan, stage) => {
+            return plan.replace("æ", ".")            
+        },
+
+        darkRoomModifier: (plan, stage) => {
+            return plan.replace("!", "æ")
+        },
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_adrift_emptydream.eventModifier = this.darkRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_adrift_emptydream" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_d")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+        },
+
+        complete: ()=> {
+            cutscene(false)
+
+            vfx({type: "flash", state: true})
+            env.jokzi.event.completed = true
+
+            delete env.stages.ozo_adrift_emptydream.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+            
+            setTimeout(()=>{
+                content.setAttribute("event", "normal")
+                refreshStage()
+            }, 800)
+        },
+    },
+
+    w_council: { 
+        weight: 0.2,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_council", false]],
+        
+        wakizetRoomModifier: (plan, stage) => plan.replace("æ", "."),
+        eventRoomModifier: (plan, stage) => plan.replace("!", "æ"),
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_council.eventModifier = this.eventRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_council" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_council")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+
+            env.entities["ækiZ¥Ét"].actions.push({
+                name: "let's talk",
+                exec: ()=>{
+                    env.jokzi.event.complete()
+                },
+                showIf: ["stageroom", "ozo_council"]
+            })
+        },
+
+        complete: ()=> {
+            cutscene(true)
+            chatter({ actor: "wakizet", text:"fine", readout: true, delay: 400})
+            chatter({ actor: "wakizet", text:"come to my shelter", readout: true, delay: 2000})
+
+            delete env.stages.ozo_council.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+
+            setTimeout(() => {
+                cutscene(false)
+
+                vfx({type: "flash", state: true})
+                env.jokzi.event.completed = true
+                
+                setTimeout(()=>{
+                    content.setAttribute("event", "normal")
+                    chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
+                    refreshStage()
+                }, 800)
+                
+            }, 3000);
+        },
+    },
+
+    w_isabel: { 
+        weight: 0.2,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_isabel", false]],
+        
+        wakizetRoomModifier: (plan, stage) => plan.replace("æ", "."),
+        eventRoomModifier: (plan, stage) => plan.replace("!", "æ"),
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_flower.eventModifier = this.eventRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_flower" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_isabel")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+
+            env.entities["ækiZ¥Ét"].actions.push({
+                name: "let's talk",
+                exec: ()=>{
+                    env.jokzi.event.complete()
+                },
+                showIf: ["stageroom", "ozo_flower"]
+            })
+        },
+
+        complete: ()=> {
+            cutscene(true)
+            chatter({ actor: "wakizet", text:"fine. but we speak alone", readout: true, delay: 400})
+            chatter({ actor: "wakizet", text:"come to my shelter", readout: true, delay: 2000})
+            chatter({ actor: "wakizet", text:"isabel, we will finish later", readout: true, delay: 5000})
+
+            delete env.stages.ozo_flower.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+
+            setTimeout(() => {
+                cutscene(false)
+
+                vfx({type: "flash", state: true})
+                env.jokzi.event.completed = true
+                
+                setTimeout(()=>{
+                    content.setAttribute("event", "normal")
+                    chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
+                    refreshStage()
+                }, 800)
+                
+            }, 6000);
+        },
+    },
+
+    w_effigies: { 
+        weight: 0.2,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_effigies", false]],
+        
+        wakizetRoomModifier: (plan, stage) => plan.replaceAll("?", "Ä"),
+        eventRoomModifier: (plan, stage) => plan.replace("A", ".").replace("a", ".").replace("Ä", "░"),
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_flower.eventModifier = this.eventRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_stranger" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_effigies")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+        },
+
+        complete: ()=> {
+            cutscene(false)
+
+            vfx({type: "flash", state: true})
+            env.jokzi.event.completed = true
+
+            delete env.stages.ozo_flower.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+            
+            setTimeout(()=>{
+                content.setAttribute("event", "normal")
+                refreshStage()
+            }, 800)
+        },
+    },
+
+    w_fairy: { 
+        weight: 0.2,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_fairy", false]],
+        
+        wakizetRoomModifier: (plan, stage) => plan.replace("æ", "."),
+        eventRoomModifier: (plan, stage) => plan.replace("!", "æ"),
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_fairy.eventModifier = this.eventRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_fairy" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_fairy")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+        },
+
+        complete: ()=> {
+            cutscene(false)
+
+            vfx({type: "flash", state: true})
+            env.jokzi.event.completed = true
+
+            delete env.stages.ozo_fairy.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+            
+            setTimeout(()=>{
+                content.setAttribute("event", "normal")
+                refreshStage()
+            }, 800)
+        },
+    },
+
+    w_geli: { 
+        weight: 0.2,
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_geli", false]],
+        
+        wakizetRoomModifier: (plan, stage) => plan.replace("æ", "."),
+        eventRoomModifier: (plan, stage) => plan.replace("!", "æ"),
+
+        chosen: function() {
+            env.stages.ozo_stranger.eventModifier = this.wakizetRoomModifier
+            env.stages.ozo_lostone.eventModifier = this.eventRoomModifier
+
+            let listener = {
+                type: "stage_change",
+                exec: (ev) => {
+                    if(ev.detail.stage == "ozo_lostone" && !env.jokzi.event.observed) {
+                        startDialogue("e_w_geli")
+                        env.jokzi.event.seen()
+                    }
+                }
+            }
+            
+            document.addEventListener(listener.type, listener.exec)
+            env.jokzi.listeners.push(listener)
+
+            env.entities["ækiZ¥Ét"].actions.push({
+                name: "let's talk",
+                exec: ()=>{
+                    env.jokzi.event.complete()
+                },
+                showIf: ["stageroom", "ozo_lostone"]
+            })
+        },
+
+        complete: ()=> {
+            cutscene(true)
+            chatter({ actor: "wakizet", text:"fine", readout: true, delay: 400})
+            chatter({ actor: "wakizet", text:"come to my shelter", readout: true, delay: 2000})
+
+            delete env.stages.ozo_lostone.eventModifier
+            delete env.stages.ozo_stranger.eventModifier
+
+            setTimeout(() => {
+                cutscene(false)
+
+                vfx({type: "flash", state: true})
+                env.jokzi.event.completed = true
+                
+                setTimeout(()=>{
+                    content.setAttribute("event", "normal")
+                    chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resource location altered'", readout: true})
+                    refreshStage()
+                }, 800)
+                
+            }, 3000);
+        },
     },
 
     /*

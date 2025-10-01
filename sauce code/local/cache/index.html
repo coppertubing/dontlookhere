@@ -35,31 +35,31 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1753204289400582945"></script>	
-	<script src="/js/dialogue.js?1753204289400582945"></script>	
-	<script src="/js/globalents.js?1753204289400582945"></script>	
-	<script src="/js/cystStage.js?1753204289400582945"></script>
-	<script src="/js/buddy.js?1753204289400582945"></script>
-	<script src="/js/vn2.js?1753204289400582945"></script>
-	<script defer src="/js/saves.js?1753204289400582945"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1753204289400582945'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1753204289400582945'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
-	<div id='meta-menu'>
+	<div id='meta-menu' class="noclosemenu">
 		<!--core icon-->
 		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class='ci-moth moth-trigger' 
+		<i class='cicon ci-moth moth-trigger' 
 			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
 			definition="NOTE::'establishes external contact'"
-		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" 
+			<i class="cicon ci-masks mask-trigger" 
 				onclick="toggleMasksMenu()"
 				definition="NOTE::'influence thoughtspace';'third-party installation'"
 			></i>
@@ -68,7 +68,7 @@
 		</div>
 
 		<!--volume controls icon-->
-		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
 		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
@@ -85,12 +85,12 @@
 		</div>
 
 		<!--dropdown menu-->
-		<i class='ci-bars'></i>
+		<i class='cicon ci-bars'></i>
 		<div id='meta-links'>
 			<div id="mui-links">
-				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
-				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
-				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -102,10 +102,6 @@
 	<div id="mindspike-scanner">
 		<div id="mindspike-entities"></div>
 		<div id="mindspike-actions">
-			<form id="act">
-				<input type="text" id="act-input" placeholder="CONCEPT">
-				<input type="submit" id="act-submit" value="ENACT">
-			</form>
 			<div id="act-options">
 				<div class="act-option">connect</div>
 				<div class="act-option">back away</div>
@@ -142,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1753204289</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -319,50 +315,39 @@
 	</details>
 </div>
 
-<script>
-    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
-        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
-            document.querySelector('.sysbox.credits.kofi').remove()
-            return
-        }
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
 
-        let supporterBox = document.querySelector('#iconsupporters')
-        data.forEach(donator=>{
-            if(donator.active && donator.highest_tier == "Fundfriend") {
-                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
-                let lettaDisplay = ``
-                lettas.forEach(letta=>{
-                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
-                })
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
 
-                supporterBox.insertAdjacentHTML('beforeend', `
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
-                        ${lettaDisplay}
-                    </li>
-                `)
-            }
-        })
-    })
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
 
-    //we make glyphs out of up to 3 letters from the name
-    function getEquidistantLetters(input) {
-        let result = []
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
 
-        if (input.length <= 3) {
-            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
-        } else {
-            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
-            indices.forEach(index => {
-                result.push(input.charAt(index))
-            })
-        }
-
-        return result
-    }
-</script>
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
 	
 	<div id="content">
-		<div id="shadowcontainer">
+		<div id="shadowcontainer" class="cachecontainer">
     <div id="membrane" class="congfx"><div class="target" entity="ÉœÙ]ïå¥¹"></div></div>
     <div id="destroyed" class="congfx">
         <div class="ozo ep2on">
@@ -373,7 +358,13 @@
     <div id="connector" class="congfx"><div class="target" entity="the storm"></div></div>
     <div id="polyspire" class="congfx"><div class="target" entity="polygonation spire"></div></div>
     <div id="wreck" class="congfx"><div class="target" entity="? ???? ?? ?? ??"></div></div>
-    <div id="carrier"><!--this is a fake buddy setup just for the styling-->
+    <div class="pitgate">
+        <div class="joyportal">
+            <div class="target" entity="gate::¿þ©ÿ’ýäý"></div>
+            <figure></figure>
+        </div>
+    </div>
+    <div id="carrier" class="carrier"><!--this is a fake buddy setup just for the styling-->
         <div id="ffproxy" class="buddy ffproxy" style="--buddyimg: url(/img/sprites/funfriend/proxyfriend.gif); --size: 98px;">
             <div class="chatter-container"></div>
             <div class="target" entity="proxyfriend"></div>
@@ -387,15 +378,39 @@
     </div>
 </div>
 
-<div class="connection connection-1"><img src="/img/local/cache/connections1.gif" /></div>
-<div class="connection connection-2"><img src="/img/local/cache/connections2.gif" /></div>
-<div class="connection connection-3"><img src="/img/local/cache/connections3.gif" /></div>
-<div class="connection connection-4"><img src="/img/local/cache/connections4.gif" /></div>
-<div class="connection connection-5"><img src="/img/local/cache/connections5.gif" /></div>
-<div class="connection connection-6"><img src="/img/local/cache/connections6.gif" /></div>
+<div class="connection connection-1 baseconnection"><img src="/img/local/cache/connections1.gif" /></div>
+<div class="connection connection-2 baseconnection"><img src="/img/local/cache/connections2.gif" /></div>
+<div class="connection connection-3 baseconnection"><img src="/img/local/cache/connections3.gif" /></div>
+<div class="connection connection-4 baseconnection"><img src="/img/local/cache/connections4.gif" /></div>
+<div class="connection connection-5 baseconnection"><img src="/img/local/cache/connections5.gif" /></div>
+<div class="connection connection-6 baseconnection"><img src="/img/local/cache/connections6.gif" /></div>
+
+<div id="deepcontainer" class="cachecontainer">
+    <!--
+    not using blocks this time
+    <div class="blocktest blocks" style="width: 30px;height: 1000px;background: red;"></div>
+    <div class="blocktest blocks" style="width: 30px;height: 1000px;transform: translateX(-500px);background: red;"></div>
+    <div class="blocktest blocks" style="width: 1000px;height: 500px;background: red;"></div>
+    -->
+    <div class="target pitgate" entity="±L~&gt;#»{Â_÷ß"></div>
+    <div id="deepcarrier" class="carrier">
+        <div id="ffproxy" class="buddy ffproxy" style="--buddyimg: url(/img/sprites/funfriend/proxyfriend.gif); --size: 98px;">
+            <div class="chatter-container"></div>
+            <div class="target" entity="proxyfriend"></div>
+            <figure></figure>
+        </div>
+        <div id="god" class="god buddy" style="--buddyimg: url(/img/local/uncosm/tostile.gif); --size: 98px;">
+            <div class="chatter-container"></div>
+            <div class="target" entity="god"></div>
+            <figure></figure>
+        </div>
+    </div>
+</div>
 
 <style>
-body {
+@import url(/css/local/joy.css);
+
+body:not(.deep) {
     overflow: visible;
 }
 
@@ -428,7 +443,7 @@ body {
     z-index: -1;
 }
 
-#shadowcontainer {
+.cachecontainer {
     display: none;
     position: absolute;
     z-index: 2;
@@ -445,7 +460,7 @@ body {
     --webkit-clip-path: var(--clip);
 }
 
-#shadowcontainer::before, #shadowcontainer::after {
+.cachecontainer::before, .cachecontainer::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -459,7 +474,7 @@ body {
     z-index: -1;
 }
 
-#shadowcontainer::before {
+.cachecontainer::before {
     transform: unset;
     top: 0;
     bottom: unset;
@@ -468,11 +483,11 @@ body {
     background-position: bottom, top, top;
 }
 
-.guided #shadowcontainer {
+.guided.shadowcontainer #shadowcontainer, .guided.deepcontainer #deepcontainer {
     display: flex;
 }
 
-#carrier {
+.carrier {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -484,16 +499,17 @@ body {
     background: green;
     --pos: translate(50vw, 50vh);
     transform: translate(-50%, -50%) var(--pos);
+    z-index: 22;
 }
 
-#carrier .buddy {
+.carrier .buddy {
     transform: translate(-50%, -50%);
 }
 
-#carrier .buddy figure { animation: BUDDYBOUNCE-Y 1s ease-in-out infinite alternate }
-#carrier .buddy figure::after { animation: BUDDYBOUNCE-X 2s ease-in-out infinite alternate}
+.carrier .buddy figure { animation: BUDDYBOUNCE-Y 1s ease-in-out infinite alternate }
+.carrier .buddy figure::after { animation: BUDDYBOUNCE-X 2s ease-in-out infinite alternate}
 
-#carrier::after {
+.carrier::after {
     content: "";
     width: 121vmin;
     height: 121vmin;
@@ -512,10 +528,10 @@ body {
 }
 
 /* god version */
-.godguide #carrier::after {
+.godguide .carrier::after {
     background-image: url(/img/textures/spotgradientbig.gif), url(/img/textures/mneural.gif);
 }
-.godguide #carrier .buddy figure::after { filter: drop-shadow(0px 0px 10px); }
+.godguide .carrier .buddy figure::after { filter: drop-shadow(0px 0px 10px); }
 
 #god .chatter {
     font-size: 1.5em;
@@ -544,9 +560,13 @@ body {
 .connection {
     position: absolute;
     pointer-events: none;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
+}
+
+.shadowcontainer .baseconnection, .deepcontainer .deepconnection {
+    display: flex;
 }
 
 .connection img {
@@ -711,11 +731,11 @@ body {
 }
 
 /* quals */
-body[quality="low"] #content::after, body[quality="low"] #carrier::after {
+body[quality="low"] #content::after, body[quality="low"] .carrier::after {
     animation: unset;
 }
 
-body[quality="low"] #shadowcontainer {
+body[quality="low"] .cachecontainer {
     background-attachment: initial;
 }
 
@@ -795,9 +815,76 @@ body:not([quality="low"]) .ozo {
 }
 
 
-body[currentdialogue="godozo"] #shadowcontainer,
-body[currentdialogue="ffozo"] #shadowcontainer {
+body[currentdialogue="godozo"] .cachecontainer,
+body[currentdialogue="ffozo"] .cachecontainer {
     transform: translateX(-40vh);
+}
+
+.buddy .target {
+    width: 75%;
+    height: 75%;
+    top: 12.5%;
+    left: 12.5%;
+}
+
+/* e4a1 */
+#content.deepcontainer {
+    width: 200vh;
+    height: 200vh;
+}
+
+#content.deepcontainer::after {
+    background-image: url(/img/local/cache/cachedimension.gif?), url(/img/textures/mass_moderate.gif), url(/img/textures/warp.gif);
+    background-size: auto 300%, auto, cover;
+}
+
+#deepcontainer {
+    width: 200vh;
+    height: 200vh;
+    background: url(/img/local/cache/vatorwarp.gif), url(/img/local/uncosm/pit/core.gif), url(/img/textures/spotgradientinverse.gif), url(/img/textures/mspinnelsmalltran.gif);
+    background-size: contain, 50%, 50%, auto;
+    background-position: center;
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+}
+
+#content.deepcontainer #deepcontainer::before {
+    background-image: url(/img/local/ocean/wavesflip.gif), url(/img/textures/fadeinlonghalf.gif);
+    background-size: 100% 20%, auto 90%;
+    background-position: top, top;
+}
+
+#content.deepcontainer #deepcontainer::after {
+    background-image: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+    background-position: top;
+}
+
+
+/* joy update */
+.pitgate {
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 21
+}
+
+body.mask-joy .pitgate {
+    display: flex;
+}
+
+.target.pitgate {
+    width: 50vw;
+    height: 50vw;
+    top: unset;
+    left: unset;
+}
+
+.joyportal figure {
+    width: 50%;
+    height: 50%;
+    background: url(/img/textures/disruptionM.gif);
+    animation: SPIN 120s linear infinite;
 }
 </style>
 
@@ -819,7 +906,7 @@ body[currentdialogue="ffozo"] #shadowcontainer {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1753204289400582945,
+				cacheval: 1758921388640655831,
 
 				
 				image: "/img/socials/cache.gif",
@@ -858,7 +945,9 @@ body[currentdialogue="ffozo"] #shadowcontainer {
 				
 				
 				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
 					body.setAttribute('page', page.name)
 					content.setAttribute('page', page.name)
 					document.querySelector('#static .enter').setAttribute('page', page.title)
@@ -957,6 +1046,11 @@ body[currentdialogue="ffozo"] #shadowcontainer {
 					
 						
 						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
 							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
 						
 					
@@ -978,6 +1072,16 @@ body[currentdialogue="ffozo"] #shadowcontainer {
 						
 						
 							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
 						
 					
 						
@@ -1020,13 +1124,20 @@ body[currentdialogue="ffozo"] #shadowcontainer {
 							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
 						
 					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
+						
+					
 					
 					// definitions required for page
 					
 					
 					//dynamically inserted
 					 
-						env.dialogues[`ff`] = generateDialogueObject(`
+						page.maskJoyNote = "\nLOCAL_RESONANCE::'moderate';'connective thoughtform detected'"
+
+env.dialogues[`ff`] = generateDialogueObject(`
 start
     proxyfriend
         oh... that is interesting!
@@ -1271,6 +1382,210 @@ if(check("ENV!!ep2")) createEntity({
         }
     ] 
 })
+
+content.classList.add('shadowcontainer')
+
+
+
+/* joy */
+createEntity({
+    name: 'gate::¿þ©ÿ’ýäý',
+    type: "thoughtform portrait-blocker portrait-center joyon",
+    image: "/img/local/city/vatordoor.gif",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion'">::INCOHERENCE DETECTED</span>
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'either the thoughtform is truly destroyed or it is pretending to be';'not commonly intentional'">'hidden due to broken or missing shell'</span>`,
+    examinePriority: 2,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                if(check("TEMP!!cachePath") == "god" || location.search.includes('goddebug')) {
+                    if(!check("cache_god_deep")) {
+                        MUI("off"); MUI("prohibit");
+                        chatter({actor: 'god', text: "you want me to go where?", delay: 1000})
+                        chatter({actor: 'god', text: "my beloved friend, there is nothing...", delay: 3000})
+                        chatter({actor: 'god', text: "ah! no, no, there it is! yes, let us go!", delay: 6000})
+
+                        setTimeout(() => {
+                            page.moveZone("deep")
+                            MUI("deprohibit")
+                            chatter({actor: 'god', text: "what a keen eye you have", delay: 2000})
+                            chatter({actor: 'god', text: "let me know if you would like to return", delay: 4000})
+                            change("cache_god_deep", true)
+                        }, 9000);
+                    } else {
+                        page.moveZone("deep")
+                        chatter({actor: 'god', text: "into the depths!", delay: 3000})
+                    }
+
+                } else if((check("TEMP!!cachePath") == "funfriend" || location.search.includes('ffdebug') && (check("recosm_state", "spared") || !check("recosm_state")))) {
+                    if(!check("cache_ff_deep", "fail")) {
+                        MUI("off"); MUI("prohibit");
+                        chatter({actor: 'proxyfriend', text: "enter where?", delay: 1000})
+                        chatter({actor: 'proxyfriend', text: "not seeing it interloper", delay: 3000})
+                        chatter({actor: 'proxyfriend', text: "let me get closer maybe", delay: 6000})
+                        chatter({actor: 'proxyfriend', text: "...", delay: 8000})
+                        chatter({actor: 'proxyfriend', text: "......", delay: 10000})
+                        chatter({actor: 'proxyfriend', text: "interloper i think there is something there", delay: 14000})
+                        chatter({actor: 'proxyfriend', text: "but it is far too deep, submerged in the uncosm", delay: 18000})
+                        chatter({actor: 'proxyfriend', text: "not risking it even with a proxy", delay: 22000})
+                        chatter({actor: 'proxyfriend', text: "sorry", delay: 26000})
+                        change("cache_ff_deep", "fail")
+                        
+                        setTimeout(() => {
+                            MUI("deprohibit")
+                        }, 24000)
+                    } else {
+                        chatter({actor: 'proxyfriend', text: "told you no already interloper", delay: 2000})
+                        chatter({actor: 'proxyfriend', text: "this proxy would break apart before you would see anything", delay: 6000})
+                    }
+
+                } else if(check("TEMP!!cachePath") == "funfriend" || location.search.includes('ffdebug')) {
+                    if(!check("cache_ff_deep", "success")) {
+                        MUI("off"); MUI("prohibit");
+                        chatter({actor: 'proxyfriend', text: "enter where?", delay: 1000})
+                        chatter({actor: 'proxyfriend', text: "not seeing it interloper", delay: 3000})
+                        chatter({actor: 'proxyfriend', text: "let me get closer maybe", delay: 6000})
+                        chatter({actor: 'proxyfriend', text: "ohhh ahaha it is just barely in the cache", delay: 8000})
+                        chatter({actor: 'proxyfriend', text: "any deeper and i would be unable to enter!!", delay: 11000})
+                        chatter({actor: 'proxyfriend', text: "another pocket, how strange!", delay: 13000})
+
+                        setTimeout(() => {
+                            page.moveZone("deep")
+                            MUI("deprohibit")
+                            chatter({actor: 'proxyfriend', text: "ok this place is really bad for me", delay: 2000})
+                            chatter({actor: 'proxyfriend', text: "tolerable but make it quick", delay: 4000})
+                            change("cache_ff_deep", "success")
+                        }, 9000);
+                    } else {
+                        page.moveZone("deep")
+                        chatter({actor: 'proxyfriend', text: "please do not stay too long", delay: 3000})
+                    }
+                }
+            }
+        }
+    ]
+})
+
+createEntity({
+    name: '±L~>#»{Â_÷ß',
+    type: "thoughtform portrait-blocker portrait-center joyon",
+    image: "/img/local/city/vatordoor.gif",
+    text: `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'unknown thoughtspace';'invalid';...ERROR::'no valI½…’j‡à
+    ERROR::;§¤÷ª£N±)ˆ.µm
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'c¯+om²×e no cloš¬er'</span>
+    ERROR::Âkk¼¬ñ°×ê±•AÝú¤îyÝ×|Ý`,
+    examinePriority: 2,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                if(check("TEMP!!cachePath") == "god" || location.search.includes('goddebug')) {
+                    if(!check("cache__godpit")) {
+                        startDialogue("godpit")
+                    } else {
+                        chatter({actor: 'god', text: "bye my friend!!!!!"})
+                        MUI("off"); MUI("prohibit");
+                        setTimeout(() => {
+                            MUI("deprohibit")
+                            moveTo("/local/uncosm/pit/")
+                        }, 2000)
+                    }
+
+                } else if((check("TEMP!!cachePath") == "funfriend") || location.search.includes('ffdebug')) {
+                    if(!check("cache__ffpit")) {
+                        startDialogue("ffpit")
+                    } else {
+                        chatter({actor: 'proxyfriend', text: "i am leaving"})
+                        MUI("off"); MUI("prohibit");
+                        setTimeout(() => {
+                            MUI("deprohibit")
+                            moveTo("/local/uncosm/pit/")
+                        }, 2000)
+                    }
+                }
+            }
+        }
+    ]
+})
+
+env.dialogues[`ffpit`] = generateDialogueObject(`
+start
+    proxyfriend
+        wait! interloper!
+        what do you see it is too incoherent for me
+
+    self
+        it's a big... thing
+        i think there are buttons around it
+        i don't know
+
+    proxyfriend
+        strange! yes very strange!
+        of course your vision is a mystery to me
+        and i can barely comprehend anything here anyway
+        
+    self
+        comprehend?
+        what do you see?
+    
+    proxyfriend
+        ahahaha i see incoherence! 
+        is that not simple enough to say?
+        i suppose i can see 'buttons' now that you describe them
+        but it is all so deep beneath the cache
+        that it appears like writhing madness!!
+        it does look rather big whatever it is
+        you can enter it?
+    
+    self
+        i think i can try
+
+    proxyfriend
+        good! perhaps it is more of the information you seek!
+        that is less work for me hahahaha
+        ok go now
+    
+    RESPONSES::self
+        ok<+>END
+            EXEC::moveTo('/local/uncosm/pit/')
+            FAKEEND::(enter)
+`)
+
+
+env.dialogues[`godpit`] = generateDialogueObject(`
+start
+    god
+        ah! so soon?!
+        and to a sunken place, no less...
+        i thought we might dance in the dark for a while longer!
+        hehe only joking my beloved friend
+        we will meet again in time
+
+    self
+        you won't come with me?
+
+    god
+        even from up here, i can see that is a spatial thoughtform
+        you know my thoughts on that matter my friend
+            SHOWIF::"cache__godozo-not"
+____SHOWIF::["cache__godozo-not", false]
+        i much prefer low-dimensionality
+        anything else is too reminiscent of the endless, thoughtless torture i endured...
+        call it a distate for complexity, my friend!
+        hahaha
+____END
+        until our paths next cross
+        the friends and i shall lend our divine sight ever more!
+    
+    RESPONSES::self
+        ok bye<+>END
+            EXEC::moveTo('/local/uncosm/pit/')
+            FAKEEND::(enter)
+`)
 					
 					
 
@@ -1398,8 +1713,6 @@ thing
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					console.log('rendering buddies!')
-					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
 				},
 
@@ -1413,7 +1726,7 @@ thing
 					window.vnObj = page.vn
 
 					
-					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
 					
 					
 					body.setAttribute('state', 'corru-entered')
@@ -1426,6 +1739,7 @@ thing
 					}
 					if(page.bgm) {
 						page.bgm.volume(0)
+						
 						page.bgm.play()
 						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
@@ -1436,52 +1750,188 @@ thing
 
 					//dyn
 					 
-						var div = document.getElementById('carrier');
-var parent = document.getElementById('shadowcontainer')
-var animation = null;
+						page.carrier = document.getElementById('carrier')
+page.carrier.target = page.carrier.querySelector('.target')
+page.parent = document.getElementById('shadowcontainer')
+page.blocks = Array.from(page.parent.querySelectorAll(".blocks"))
+page.carrierSpeed = 200 // in pixels
+var animation = null
 
-function easeOut(t) {
-    return 1 - Math.pow(1 - t, 3);
+page.moveZone = (dest) => {
+    vfx({type: "darkflash", state: true, sound: true})
+
+    setTimeout(() => {
+        switch(dest) {
+            case "deep":
+                page.carrier = document.getElementById('deepcarrier')
+                page.carrier.target = page.carrier.querySelector('.target')
+                page.parent = document.getElementById('deepcontainer')
+                content.classList.remove('shadowcontainer')
+                content.classList.add('deepcontainer')
+                body.classList.add('deep')
+                page.blocks = Array.from(page.parent.querySelectorAll(".blocks"))
+                page.cacheZone = "deepcontainer"
+                page.carrierSpeed = 400 // in pixels
+
+                page.carrier.style.setProperty("--pos", "translate(150vh, 40vh)")
+                page.parent.style.setProperty("--clip", "circle(60vmin at 150vh 40vh)")
+
+                window.scrollTo({ left: 99999, top: 0 })
+            break
+
+            default:
+            case "regular":
+                page.carrier = document.getElementById('carrier')
+                page.carrier.target = page.carrier.querySelector('.target')
+                page.parent = document.getElementById('shadowcontainer')
+                content.classList.remove('deepcontainer')
+                content.classList.add('shadowcontainer')
+                body.classList.remove('deep')
+                page.cacheZone = "shadowcontainer"
+                page.carrierSpeed = 200 // in pixels
+            break
+        }
+
+        vfx({type: "darkflash", state: false, sound: true})
+    }, 600)
 }
 
+function easeOut(t) { return 1 - Math.pow(1 - t, 3) }
 content.addEventListener('click', function(event) {
     if (event.target.closest('#content')) {
-        if (animation) cancelAnimationFrame(animation);
-        play("muiClick", 0.75)
-        var parentRect = parent.getBoundingClientRect();
-        var divRect = div.getBoundingClientRect()
+        if (animation) cancelAnimationFrame(animation)
+        play("muiClick", 0.75, 0.5)
+        var parentRect = page.parent.getBoundingClientRect()
+        var divRect = page.carrier.getBoundingClientRect()
+
+        let scrollX = window.scrollX
+        let scrollY = window.scrollY
         
-        var startX = divRect.left - parentRect.left + window.scrollX;
-        var startY = divRect.top - parentRect.top + window.scrollY;
-        var endX = event.clientX - parentRect.left + window.scrollX;
-        var endY = event.clientY - parentRect.top + window.scrollY;
+        var startX = divRect.left - parentRect.left + scrollX
+        var startY = divRect.top - parentRect.top + scrollY
+        var endX = event.clientX - parentRect.left + scrollX
+        var endY = event.clientY - parentRect.top + scrollY
+
+        console.log(startX, startY, endX, endY)
         
-        var distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2));
-        var speed = 200; // in pixels per second
-        var duration = distance / speed * 1000; // in milliseconds
+        var distance = Math.sqrt(Math.pow(endX - startX, 2) + Math.pow(endY - startY, 2))
+        var duration = distance / page.carrierSpeed * 1000 // in milliseconds
         
-        var startTime = null;
+        var startTime = null
+        var lastValidX = null
+        var lastValidY = null
 
         function step(timestamp) {
-            if (!startTime) startTime = timestamp;
-            var progress = timestamp - startTime;
-            var percent = Math.min(progress / duration, 1);
-            var easedPercent = easeOut(percent);
-            var currentX = startX + (endX - startX) * easedPercent - window.scrollX;
-            var currentY = startY + (endY - startY) * easedPercent - window.scrollY;
+            if (!startTime) startTime = timestamp
+            var progress = timestamp - startTime
+            var percent = Math.min(progress / duration, 1)
+            var easedPercent = easeOut(percent)
+            var currentX = startX + (endX - startX) * easedPercent - scrollX
+            var currentY = startY + (endY - startY) * easedPercent - scrollY
 
-            div.style.setProperty('--pos', 'translate(' + currentX + 'px, ' + currentY + 'px)')
-            parent.style.setProperty('--clip', `circle(60vmin at ${currentX}px ${currentY}px`)
-            
+            if(!page.carrier || !page.parent) return; // in case you move zones while moving
+
+            page.carrier.style.setProperty('--pos', 'translate(' + currentX + 'px, ' + currentY + 'px)')
+            page.parent.style.setProperty('--clip', `circle(60vmin at ${currentX}px ${currentY}px`)
+
+            if(page.cacheZone == "deepcontainer") window.scrollTo({
+                left: currentX - window.innerWidth / 2,
+                top: currentY - window.innerHeight / 2,
+            })
+
+            // we check the corners/edges of the carrier for collision
+            // kinda lazy but lets us do more complex shapes more easily
+            // requires that both the goober and the obstacle are on screen or else it doesn't work
+            if(page.blocks.length) {
+                var carrierRect = {
+                    left: currentX - 25,
+                    right: currentX + 25,
+                    top: currentY - 25,
+                    bottom: currentY + 25,
+                    middleX: currentX,
+                    middleY: currentY
+                }
+                
+                var edgePoints = [
+                    [carrierRect.left, carrierRect.top],      // top-left
+                    [carrierRect.right, carrierRect.top],     // top-right
+                    [carrierRect.left, carrierRect.bottom],   // bottom-left
+                    [carrierRect.right, carrierRect.bottom],  // bottom-right
+                    [carrierRect.middleX, carrierRect.top],      // middle top
+                    [carrierRect.middleX, carrierRect.bottom],   // middle bottom
+                    [carrierRect.left, carrierRect.middleY],     // middle left
+                    [carrierRect.right, carrierRect.middleY]     // middle right
+                ]
+
+                // edge names for bumping logic (stuck prevention)
+                var edgeNames = [
+                    "top-left", "top-right", "bottom-left", "bottom-right",
+                    "top", "bottom", "left", "right"
+                ]
+
+                var overlappedEdges = []
+                parentRect = page.parent.getBoundingClientRect() // update relativity for this
+                for (let i = 0; i < edgePoints.length; i++) {
+                    var [x, y] = edgePoints[i]
+                    var globalX = x + parentRect.left
+                    var globalY = y + parentRect.top
+                    
+                    var elements = document.elementsFromPoint(globalX, globalY)
+                    if(page.blocks.some(block => elements.includes(block))) {
+                        overlappedEdges.push(edgeNames[i])
+                    }
+                }
+
+                if (overlappedEdges.length) {
+                    // unstick if you're in a wall
+                    let bumpX = 0, bumpY = 0
+                    overlappedEdges.forEach(edge => {
+                        switch (edge) {
+                            case "top-left":
+                            case "top":
+                            case "top-right":
+                                bumpY += 1
+                                break
+                            case "bottom-left":
+                            case "bottom":
+                            case "bottom-right":
+                                bumpY -= 1
+                                break
+                        }
+                        switch (edge) {
+                            case "top-left":
+                            case "left":
+                            case "bottom-left":
+                                bumpX += 1
+                                break
+                            case "top-right":
+                            case "right":
+                            case "bottom-right":
+                                bumpX -= 1
+                                break
+                        }
+                    })
+                    let bumpedX = (lastValidX !== null ? lastValidX : currentX) + bumpX
+                    let bumpedY = (lastValidY !== null ? lastValidY : currentY) + bumpY
+                    page.carrier.style.setProperty('--pos', 'translate(' + bumpedX + 'px, ' + bumpedY + 'px)')
+                    page.parent.style.setProperty('--clip', `circle(60vmin at ${bumpedX}px ${bumpedY}px`)
+                    animation = null
+                    return
+                } else {
+                    lastValidX = currentX
+                    lastValidY = currentY
+                }
+            }
+
             if (percent < 1) {
-                animation = requestAnimationFrame(step);
+                animation = requestAnimationFrame(step)
             } else {
-                animation = null;
+                animation = null
             }
         }
-        animation = requestAnimationFrame(step);
+        animation = requestAnimationFrame(step)
     }
-});
+})
 
 if(check("TEMP!!cachePath") == "funfriend" || location.search.includes('ffdebug')) {
     if(!check("cache__ff-start") && !check("hub__funfriend-ozogate")) startDialogue('ff'); //only run this dialogue if ff doesn't know you can enter the cache yet
@@ -1502,7 +1952,7 @@ if(check("TEMP!!cachePath") == "funfriend" || location.search.includes('ffdebug'
     content.classList.add('ffguide', 'guided')
 
 } else if(check("TEMP!!cachePath") == "god" || location.search.includes('goddebug')) {
-    if(!check("cache__god-start")) startDialogue('god');
+    if(!check("cache__god-start")) startDialogue('god')
     else {
         if(check("TEMP!!from", "ozo")) {
             chatter({actor: 'god', text: "i waited for you!"})
@@ -1522,12 +1972,24 @@ change("TEMP!!from", false)
 					document.dispatchEvent(env.hooks.corru_entered)
 					mothHasUnreadCheck()
 
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
 					setTimeout(()=>{
 						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
 					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
 				},
 
 				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
 					body.setAttribute('state', 'corru-leaving')
 					MUI("off")
 					env.waitOnLoad = false
@@ -1549,13 +2011,19 @@ change("TEMP!!from", false)
 
 					//dyn
 					
-					
+					body.classList.remove("deep")
+
             		change('TEMP!!sat', true)
 					Buddy.cleanPageBuddies({removeEl: false})
 					document.dispatchEvent(env.hooks.corru_leaving)
 
 					if(dest) swup.loadPage({url: dest})
 					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
 				}
 			}
 

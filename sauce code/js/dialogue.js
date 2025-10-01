@@ -8,25 +8,51 @@ env.currentDialogue = {
 }
 
 //starts the dialogue with a given dialogue chain name (must be defined in env.dialogues)
-function startDialogue(dialogueChain, settings = {originEntityID: null, specificChain: false}) {
-    if(body.classList.contains('in-dialogue')  || env.currentDialogue.active || !env.currentDialogue.canStart || check("TEMP!!nodialogue")){
+function startDialogue(dialogueChain, settings = {
+    originEntityID: null, 
+    specificChain: false, 
+    chatterlogue: false // special mode that lets you move and talk. doesn't count as a menu, but occupies the right side of the screen
+}) {
+    if(env.currentDialogue.active || !env.currentDialogue.canStart || check("TEMP!!nodialogue")){
         env.error = `tried to start dialogue ${dialogueChain} but either currently in dialogue or too soon after previous dialogue. consider using CHANGE::`
         return 
     }
-    if(body.classList.contains('mui-active') || body.getAttribute("menu") != "none") exitMenu()
-    
     //if origin entity is set, we keep track of that entity and also highlight it somehow (usually for dynamic purposes related)
     if(settings.originEntityID) {
         env.currentDialogue.originEntityID = `#${settings.originEntityID}`
-        document.querySelectorAll(`#realgrid ${settings.originEntityID}, #grid-ref ${settings.originEntityID}`).forEach(el=>{
-            el.classList.add('dialogue-origin')
+             
+        if(env.stage.current) [env.stage.real, env.stage.ref].forEach(layer => {
+            layer.querySelectorAll(settings.originEntityID).forEach(e => {
+                e.classList.add('dialogue-origin')
+            })
         })
+        
     } else env.currentDialogue.originEntityID = null
-    
-    body.classList.add('in-dialogue', 'in-menu')
+
+    env.currentDialogue.settings = settings
     env.currentDialogue.canStart = false
+    env.dialogueBox = document.getElementById("dialogue-box")
+
+    if(settings.chatterlogue) {
+        body.classList.add('in-chatterlogue')
+        env.dialogueBox.classList.add("chatterlogue")
+    } else {
+        body.classList.add('in-dialogue')
+        env.dialogueBox.classList.remove("chatterlogue")
+    }
+
+    //if the player is in a freemouse stage state, we pause that
+    if(env?.stage?.freemove && !settings.chatterlogue) {
+        setTimeout(() => {
+            if(!env.forcingSwap) pauseFreemove(true)
+        }, 50)
+    }
+
+    if(body.classList.contains('mui-active') || body.getAttribute("menu") != "none") exitMenu()
 
     if(!env.currentDialogue.active) { //if dialogue isn't active already, start the dialogue
+        if(!settings.chatterlogue) body.classList.add('in-menu')
+
         setTimeout(()=>{
             body.setAttribute('currentDialogue', dialogueChain)
             document.getElementById('dialogue-box').classList.toggle("can-skip", env.currentDialogue.chain?.skip ? true : false)
@@ -53,6 +79,11 @@ function startDialogue(dialogueChain, settings = {originEntityID: null, specific
             }
         }
     }
+
+    // based on the groundsmindry approach
+    // page-based tracking for having seen the dialogue...
+    // this probably won't cause any issues :^)
+    change(`PAGE!!${dialogueChain}`, true)
 }
 
 function changeDialogue(dialogueChain) {
@@ -143,7 +174,7 @@ function sendDialogue(dialogue, i = 0) {
                 }
 
                 //log the dialogue in the readout too
-                if(current.actor != "unknown") readoutAdd({message: current.text, image: currentActor.image, name: current.actor, displayName: currentActor.name, type: currentActor.type, sfx: false, actor: current.actor})
+                if(current.actor != "unknown") readoutAdd({message: current.text, image: currentActor.image, name: current.actor, displayName: currentActor.name, type: currentActor.type, sfx: false, actor: current.actor, show: false})
 
                 //execute any code attached to the message
                 if(current.exec) {
@@ -151,11 +182,13 @@ function sendDialogue(dialogue, i = 0) {
                 }
 
                 //play any actor voice sfx, stop any previous voices
-                if(currentActor.voice !== false && env.currentDialogue.prevSpeaker != current.actor && env.currentDialogue.prevSpeaker != "nobody stupid" && env.currentDialogue.prevSpeaker != "dialogue choice") sfxmap.stop()
-                if(typeof currentActor.voice == "function" || typeof currentActor.activeVoice == "function") {
-                    if(currentActor.activeVoice) currentActor.activeVoice(); else currentActor.voice()
-                } else if(currentActor.voice !== false) {
-                    play('muiReadout')
+                if(!current.silent) {
+                    if(currentActor.voice !== false && env.currentDialogue.prevSpeaker != current.actor && env.currentDialogue.prevSpeaker != "nobody stupid" && env.currentDialogue.prevSpeaker != "dialogue choice" && !env.noVoiceStop) sfxmap.stop()
+                    if(typeof currentActor.voice == "function" || typeof currentActor.activeVoice == "function") {
+                        if(currentActor.activeVoice) currentActor.activeVoice(); else currentActor.voice()
+                    } else if(currentActor.voice !== false) {
+                        play('muiReadout')
+                    }
                 }
 
                 //hide the portrait if it's the last person who talked, otherwise add one
@@ -401,18 +434,22 @@ function shouldItShow(thing, { execArg } = {}) {
 //clears out the dialogue box
 function endDialogue(endCallback = false) {
     body.removeAttribute('currentDialogue')
-    body.classList.remove('in-dialogue', 'in-menu')
+    body.classList.remove('in-dialogue', 'in-menu', 'in-chatterlogue')
 
     env.currentDialogue.active = false
     env.currentDialogue.prevSpeaker = false
-    document.querySelectorAll(`#realgrid ${env.currentDialogue.originEntityID}, #grid-ref ${env.currentDialogue.originEntityID}`).forEach(el=>{
-        el.classList.remove('dialogue-origin')
+    
+    if(env.stage.current) [env.stage.real, env.stage.ref].forEach(layer => {
+        layer.querySelectorAll(env.currentDialogue.originEntityID).forEach(e => {
+            e.classList.remove('dialogue-origin')
+        })
     })
-
+    
     markThisDialogueSeen('end')
     fixDialogueEnd()
     fixSkipDialogueBug()
 
+    if(!env.forcingSwap) pauseFreemove(false, false)
     checkEpisodeProgress()
 	setTimeout(()=>{
         env.currentDialogue.canStart = true
@@ -636,6 +673,7 @@ function generateDialogueObject(genString) {
         // note - this gets redefined at the bottom of case 0 so it's really just for top level stuff
         blockShowControl: false, // controls SHOWIF blocks that affect multiple dialogues
         blockShowOnceControl: false, // ditto for SHOWONCE
+        blockSilentControl: false, // ditto for SILENT
         blockNestControl: [] // this is like SHOWIF 2. there'd be a bunch of weird rewriting if it was an update to the base function
     }
 
@@ -681,6 +719,9 @@ function generateDialogueObject(genString) {
                     } else if(block.startsWith('SHOWONCE')) {
                         lastParent.blockShowOnceControl = true
 
+                    } else if(block.startsWith('SILENT')) {
+                        lastParent.blockSilentControl = true
+
                     } else if(block == 'END') {
                         //NESTIF should be nestable inside SHOWIF
                         if(lastParent?.blockNestControl?.length > 0) {
@@ -688,6 +729,7 @@ function generateDialogueObject(genString) {
                         } else  lastParent.blockShowControl = false
 
                         lastParent.blockShowOnceControl = false
+                        lastParent.blockSilentControl = false
                     }
                 }
 
@@ -780,6 +822,7 @@ function generateDialogueObject(genString) {
                     //same for showonce
                     if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl; /*console.log(lastParent[1])*/ }
                     if(lastParent.blockShowOnceControl) { lastParent[1].showOnce = lastParent.blockShowOnceControl }
+                    if(lastParent.blockSilentControl) { lastParent[1].silent = lastParent.blockSilentControl }
                     if(lastParent?.blockNestControl?.length) {
                         lastParent[1].showIf = (lastParent[1].showIf || []).concat(...lastParent.blockNestControl)
                     }
@@ -835,6 +878,7 @@ function generateDialogueObject(genString) {
                     if(text.startsWith("HIDEREAD::")) recipient.hideRead = true //applies only to replies
                     if(text.startsWith("UNREADCHECK::")) recipient.unreadCheck = Function(line.replace('UNREADCHECK::', '')) //applies only to replies. should return false (no unread), "within" or "unread"
                     if(text.startsWith("FAKEEND::")) recipient.fakeEnd = text.replace('FAKEEND::', '') || true //applies only to replies. takes either text to use or nothing
+                    if(text.startsWith("SILENT::")) recipient.silent = true //dialogue only. will not play talk noise
 
                     if(recipient.showIf && newReasons) {
                         recipient.showIf = recipient.showIf.concat(newReasons)

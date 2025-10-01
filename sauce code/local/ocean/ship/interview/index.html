@@ -35,31 +35,31 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1757535174264443963"></script>	
-	<script src="/js/dialogue.js?1757535174264443963"></script>	
-	<script src="/js/globalents.js?1757535174264443963"></script>	
-	<script src="/js/cystStage.js?1757535174264443963"></script>
-	<script src="/js/buddy.js?1757535174264443963"></script>
-	<script src="/js/vn2.js?1757535174264443963"></script>
-	<script defer src="/js/saves.js?1757535174264443963"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1757535174264443963'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1757535174264443963'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
-	<div id='meta-menu'>
+	<div id='meta-menu' class="noclosemenu">
 		<!--core icon-->
 		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class='ci-moth moth-trigger' 
+		<i class='cicon ci-moth moth-trigger' 
 			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
 			definition="NOTE::'establishes external contact'"
-		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" 
+			<i class="cicon ci-masks mask-trigger" 
 				onclick="toggleMasksMenu()"
 				definition="NOTE::'influence thoughtspace';'third-party installation'"
 			></i>
@@ -68,7 +68,7 @@
 		</div>
 
 		<!--volume controls icon-->
-		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
 		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
@@ -85,12 +85,12 @@
 		</div>
 
 		<!--dropdown menu-->
-		<i class='ci-bars'></i>
+		<i class='cicon ci-bars'></i>
 		<div id='meta-links'>
 			<div id="mui-links">
-				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
-				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
-				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -102,10 +102,6 @@
 	<div id="mindspike-scanner">
 		<div id="mindspike-entities"></div>
 		<div id="mindspike-actions">
-			<form id="act">
-				<input type="text" id="act-input" placeholder="CONCEPT">
-				<input type="submit" id="act-submit" value="ENACT">
-			</form>
 			<div id="act-options">
 				<div class="act-option">connect</div>
 				<div class="act-option">back away</div>
@@ -142,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1757535174</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -319,47 +315,36 @@
 	</details>
 </div>
 
-<script>
-    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
-        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
-            document.querySelector('.sysbox.credits.kofi').remove()
-            return
-        }
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
 
-        let supporterBox = document.querySelector('#iconsupporters')
-        data.forEach(donator=>{
-            if(donator.active && donator.highest_tier == "Fundfriend") {
-                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
-                let lettaDisplay = ``
-                lettas.forEach(letta=>{
-                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
-                })
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
 
-                supporterBox.insertAdjacentHTML('beforeend', `
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
-                        ${lettaDisplay}
-                    </li>
-                `)
-            }
-        })
-    })
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
 
-    //we make glyphs out of up to 3 letters from the name
-    function getEquidistantLetters(input) {
-        let result = []
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
 
-        if (input.length <= 3) {
-            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
-        } else {
-            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
-            indices.forEach(index => {
-                result.push(input.charAt(index))
-            })
-        }
-
-        return result
-    }
-</script>
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
 	
 	<div id="content">
 		<div class="damage"></div>
@@ -385,7 +370,7 @@
 
 <style>
 
-@import url(/css/stage/beneath.css?1757535174264443963);
+@import url(/css/stage/beneath.css?1758921388640655831);
 
     #content {
         background-color: white;
@@ -743,15 +728,15 @@
 <div id="stage-navigator">
     <span>SPATIAL NAVIGATION</span>
     <div class="stage-arrows">
-        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
-        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
-        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
-        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
     </div>
 </div>
 
 <style>
-    .grid-plane {
+    body:not(.mask-freedom) .grid-plane {
         --camera-distance: 1;
         --camera-offset: rotateX(-15deg);
     }
@@ -760,7 +745,7 @@
         width: 200%;
         height: 300%;
         position: absolute;
-        transform: rotateX(-90deg) translateY(-50%) rotateY( atan2( var(--distX), var(--distY) ));
+        transform: rotateX(-90deg) translateY(-50%) rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ));
         transition: transform 100ms;
         background-image: url(/img/local/ocean/ship/help.gif);
         backface-visibility: visible;
@@ -868,7 +853,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1757535174264443963,
+				cacheval: 1758921388640655831,
 
 				
 				image: "/img/socials/ship.gif",
@@ -909,7 +894,9 @@
 				
 				
 				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
 					body.setAttribute('page', page.name)
 					content.setAttribute('page', page.name)
 					document.querySelector('#static .enter').setAttribute('page', page.title)
@@ -1008,6 +995,11 @@
 					
 						
 						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
 							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
 						
 					
@@ -1029,6 +1021,16 @@
 						
 						
 							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
 						
 					
 						
@@ -1069,6 +1071,11 @@
 							
 							
 							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
 						
 					
 					
@@ -1277,7 +1284,7 @@ whyyoucame
         we needed a clear sign, and your planet gave it to us!
 
     interviewer
-        And that would be 'the call', right?
+        And that would be "the Call", right?
     
     akizet
         yes, yes! yes!! so you already have learned of it?
@@ -1297,7 +1304,7 @@ whyyoucame
         I CANNOT IMAGINE WHAT FANTASIES HE SPOUTED TO OUR COUSINS
 
     interviewer
-        What are your thoughts about the call? Basics aside.
+        What are your thoughts about the Call? Basics aside.
 
     akizet
         yes, it is a bizarre paradox...
@@ -1381,7 +1388,7 @@ whatwillyoudo
 
 thecall
     interviewer
-        What can you tell us about the call?
+        What can you tell us about the Call?
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov')
         We know the basics from our chat with Cavik, and a few of your theories.
         But--in your own words. What do you know?
@@ -1793,6 +1800,55 @@ ____END
         ok<+>END
 `)
 
+
+env.dialogues["++rotmaze"] = generateDialogueObject(`
+start
+    self
+        what's up with this place?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        catastrophic spatial delamination without conglomeration: end-state of thoughtspaces unable to enforce cohesion or coherence, alongside outer membrane failure.
+        thoughtspace is noted to no longer be possible to identify as a thoughtspace without prior knowledge of its location and existence, entirely dispersing into surrounding connective media.
+        referential end-points and thoughtforms formerly within may remain in operation as organelles continue to operate until expending all remaining resources.
+        organelles of fully delaminated and dispersed thoughtspaces are observed to no longer be recognized by distributive components of the cyst, resulting in cessation of further support.
+        present state is partial recession into dissociative pool. expected end-state is gradual starvation or consumption of remaining organelles, followed by full absorption into dissociative pool by recently reactivated grand stage cohesion enforcement components.
+        
+    self
+        what about the hostile things out there
+        any thoughts on those?
+
+    sourceless
+        it takes a moment to process your request.
+
+    rotwatcher
+        presence of insensate thoughtforms adapted to the dissociative pool, henceforth referenced to as a "scavenger" subtype, is observed.
+        scavengers remain a common fixture of the dissociative pool in the post-stasis state of the grand stage, a result of self-mutation in the face of unreasonably hostile environmental conditions.
+        typically comprised of one or more "lesser thoughtforms", the preceding classification being defined as thoughtforms of low memory importance, which are reliant upon a collective neural processor organelle within a host thoughtspace.
+        most mutation and adaptation will have occurred prior to the loss of coherent thought, remaining effective in survival while traversing connective media and the dissociative pool at large.
+        the scavenger subtype is observed to have little to no reasoning capability and will often retrieve resources with direct attack upon any suspected sources.
+
+    self
+        collective neural processor?
+        do all thoughtforms not just think on their own?
+
+    rotwatcher
+        due to its witnessed frequency, deference to a thoughtspace's neural processor organelle is assumed to be the default state.
+        however: the grand stage is known to distribute cognition inherently and at varying levels through presently unknown methods. it is assumed that neural processor organelles within thoughtspaces draw from this distribution and manage it for all thoughtforms under their reference.
+        therefore: thoughtforms capable of maintaining internal sentience are suspected to draw from this same distribution at higher levels through necessity of original purpose, random incidence of cognitive draw, or incidental adaptation via consumption of a component that maintained a high level of cognitive draw.
+        it is noted that this is not an exhaustive nor conclusive list, as the nature of cognition is difficult or impossible to observe directly. however: the previously listed mechanisms have been directly observed by the present rotwatcher.
+        
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        i see<+>END
+    
+END::revertBgm()
+`)
+
 if(check('interview1__firstchat-behonest')) {
     document.querySelector('#room-space').remove()
     content.classList.add('damaged')
@@ -1801,8 +1857,8 @@ env.interview.crazymode(true)
 
 /* incoherent only */    
 env.interview.die = ()=>{
-    cutscene(true);
-    page.bgm.stop();
+    cutscene(true)
+    page.bgm.stop()
     corruStatic.rate(1)
     env.clearIntervals()
     play('criticalError', 0.5, 0.5)
@@ -1840,7 +1896,7 @@ env.interview.startScary = ()=>{
         //though we're usin a different implementation style here
         closest = 999
         var creaturePos = stageCoordinatesFromId('creature')
-        document.querySelectorAll('#grid-ref .evil').forEach(el=>{
+        env.stage.ref.querySelectorAll('.evil').forEach(el=>{
             let dist = getXYDist(stageCoordinatesFromId(el.id), creaturePos)
             if(dist < closest) closest = dist
         })
@@ -1906,7 +1962,7 @@ createEntity({
                 }, 2000)
 
                 env.setTimeout(()=>{
-                    document.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
+                    env.stage.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
                     change("unity_lady", true)
                 }, 3000)
 
@@ -1919,6 +1975,23 @@ createEntity({
                     chatter({actor: 'moth', text: "not sure where it went", readout: true, delay: 5000})
                 }, 5000)
             },
+        }
+    ]
+})
+
+createEntity({
+    name: 'vessel surface',
+    hide: 'true',
+    type: "thoughtform portrait-bright portrait-cover",
+    image: "/img/local/ocean/ship/shipdooropenable.gif",
+    text: `::CONNECTOR THOUGHTFORM`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                change("TEMP!!from", "interview")
+                moveTo("/local/ocean/ship/deck/")
+            }
         }
     ]
 })
@@ -1982,6 +2055,30 @@ env.stageEntities['t'] = {
     } 
 }
 
+env.stageEntities["Ϣ"] = { // fairy
+    class: "critical notile",
+    contains: {
+        class: "face-creature",
+        dyp: {
+            image: 'transparent',
+            width: 4,
+            height: 4,
+            transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+            style: "transition: transform 300ms linear"
+        },
+
+        html: `
+            <figure class="ozofriend eyefriend">
+                <div class="target" entity="fairy"></div>
+                <img class="body" src="/img/local/uncosm/ozo/sprite_body.gif">
+                <div class="head">
+                    <img src="/img/local/uncosm/ozo/sprite_mask.gif">
+                </div>
+            </figure>
+        `
+    }
+},
+
 env.stages['remnants'] = {
     width: 18,
     fogRadius: 6,
@@ -1992,10 +2089,10 @@ env.stages['remnants'] = {
 
         //moves the spawn of one of the enemies to be less unfair
         if(check("PAGE!!lastStage", "room")) {
-            document.querySelectorAll('.despawnfromroom').forEach(el=>el.parentElement.innerHTML="")
+            env.stage.querySelectorAll('.despawnfromroom').forEach(el=>el.parentElement.innerHTML="")
             change("PAGE!!lastStage", false)
         } else {
-            document.querySelectorAll('.showfromroom').forEach(el=>el.parentElement.innerHTML="")
+            env.stage.querySelectorAll('.showfromroom').forEach(el=>el.parentElement.innerHTML="")
         }
     },
     leaveExec: ()=> {env.clearIntervals(); env.clearTimeouts()},
@@ -2078,6 +2175,12 @@ env.stages['remnants'] = {
         },
     },
 
+    planAdjustment: (plan) => {
+        console.log("in plan adjustment")
+        if(env?.buddy_globalFairy?.currentLocation != page.path) plan = plan.replace("Ϣ", ".")
+        return plan
+    },
+
     plan: `
         ...V..............
         ...O..░......░░...
@@ -2099,7 +2202,7 @@ env.stages['remnants'] = {
         .░░░░...░░░░░░░...
         ...░..░░░░..░..=..
         ...░.░..w..░♥░░...
-        .░░░....░..░......
+        .░░░.Ϣ..░..░......
         ...░░..░░..░..░░░.
         .░.░.░░░░░░░░░░░░░
         ...░░░.===.....░░░
@@ -2130,7 +2233,7 @@ env.stages['remnants_room'] = {
         env.stage.enemyPause = true
         change("PAGE!!lastStage", "room")
         if(check("unity_lady")) {
-            document.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
+            env.stage.querySelectorAll('.newevil.nomove').forEach(el=>el.remove())
         }
 
         if(env.interview.darkMusic.playing()) {
@@ -2138,7 +2241,7 @@ env.stages['remnants_room'] = {
         }
 
         if(check("fbx__depthrecovery2")) {
-            document.querySelectorAll(`.onlyonce`).forEach(el=>el.classList.add('blocks'))
+            env.stage.querySelectorAll(`.onlyonce`).forEach(el=>el.classList.add('blocks'))
         }
     },
 
@@ -2173,21 +2276,80 @@ env.stages['remnants_room'] = {
         '▒': {
             class: "invisiblewalk onlyonce"
         },
+
+        '^': {
+            class: "nothing notile blocks",
+            contains: {
+                examineEntity: "vessel surface",
+                class: "freedomonly",
+                dyp: {
+                    width: 1.5,
+                    height: 2.5,
+                    image: 'url(/img/local/ocean/ship/shipdooropenable.gif)',
+                    transform: "translateY(-400%) rotateX(-90deg) translateY(50%) rotate(30deg)"
+                }
+            }
+        },
+
+        ⳉ: {
+            class: "notile alwaysvis",
+            contains: { 
+                class: "rotainer",
+                examineEntity: "rotwatcher",
+                html: `
+                    <figure class="rotfig"></figure>
+                    <style id="rotwatcherstyle">
+                        @import url(/css/rotwatcher.css)
+                    </style>
+                `,
+                dyp: {
+                    image: 'transparent',
+                    width: 3,
+                    height: 2.5,
+                    transform: `rotateY(90deg) translateX(-50%) rotateY(110deg) translateX(-100%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        },
+
+        ϧ: {
+            class: "notile alwaysvis",
+            contains: { 
+                class: "rotxamine",
+                dyp: {
+                    image: 'url(/img/sprites/rot/rotxa.gif)',
+                    width: 3,
+                    height: 2,
+                    transform: `rotateY(90deg) translateX(-50%) rotateY(110deg) translateX(-150%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        }
     },
 
     plan: `
         ..=..=.........w..
-        .........==....=..
+        .........==.^..=..
         Tp░░░░░░░░░░░t.☻.Ẃ
-        ......=.....▒=....
+        ......=.ⳉϧ..▒=....
         =...=..=...=▒=.w..
         ...........=▒=....
         ...........=▒=....
         ...........=◘=....
         ...........=▒=....
         ............▒▒▒▒▒b
+    `,
 
-    `
+    planAdjustment: function (plan) {
+        let newPlan = plan
+
+        if(!check("mask", "joy") || env?.buddy_globalRotwatcher?.currentLocation != page.path) {
+            newPlan = newPlan.replace("ⳉ", ".")
+            newPlan = newPlan.replace("ϧ", ".")
+        }
+
+        return newPlan
+    }
 }
 
 env.stages['remnants_further'] = {
@@ -2433,8 +2595,6 @@ entities
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					console.log('rendering buddies!')
-					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
 				},
 
@@ -2448,7 +2608,7 @@ entities
 					window.vnObj = page.vn
 
 					
-					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
 					
 					
 					body.setAttribute('state', 'corru-entered')
@@ -2461,6 +2621,7 @@ entities
 					}
 					if(page.bgm) {
 						page.bgm.volume(0)
+						
 						page.bgm.play()
 						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
@@ -2485,17 +2646,26 @@ entities
         }
     }, 9000)
     setTimeout(()=>env.interview.decrazy(), 300)
+
 } else {
     page.bgm.rate(0.15)
     
     let from = check("TEMP!!from")
     if( from || check("netstat|<", 0) || location.search.includes('evildebug')) {
 
-        if(check("TEMP!!from", "clemens")) {
-            changeStage('remnants', 537, 'down')
-            change("TEMP!!from", false)
-        } else {
-            changeStage("remnants")
+        switch(check("TEMP!!from")) {
+            case "clemens":
+                changeStage('remnants', 537, 'down')
+                change("TEMP!!from", false)
+            break
+
+            case "deck":
+                changeStage('remnants_room', 48, 'right')
+                change("TEMP!!from", false)
+            break
+
+            default:
+                changeStage("remnants")
         }
         
         document.querySelectorAll('#room-space').forEach(el=>el.remove())
@@ -2511,12 +2681,24 @@ entities
 					document.dispatchEvent(env.hooks.corru_entered)
 					mothHasUnreadCheck()
 
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
 					setTimeout(()=>{
 						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
 					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
 				},
 
 				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
 					body.setAttribute('state', 'corru-leaving')
 					MUI("off")
 					env.waitOnLoad = false
@@ -2552,6 +2734,11 @@ delete env.interview
 
 					if(dest) swup.loadPage({url: dest})
 					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
 				}
 			}
 
@@ -2591,6 +2778,5 @@ delete env.interview
 	}
 	cryptocraze.remove()
 	</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d27fafd650894988a053584cfbc6883c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

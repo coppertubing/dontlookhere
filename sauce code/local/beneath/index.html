@@ -35,31 +35,31 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1757535174264443963"></script>	
-	<script src="/js/dialogue.js?1757535174264443963"></script>	
-	<script src="/js/globalents.js?1757535174264443963"></script>	
-	<script src="/js/cystStage.js?1757535174264443963"></script>
-	<script src="/js/buddy.js?1757535174264443963"></script>
-	<script src="/js/vn2.js?1757535174264443963"></script>
-	<script defer src="/js/saves.js?1757535174264443963"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1757535174264443963'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1757535174264443963'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
-	<div id='meta-menu'>
+	<div id='meta-menu' class="noclosemenu">
 		<!--core icon-->
 		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class='ci-moth moth-trigger' 
+		<i class='cicon ci-moth moth-trigger' 
 			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
 			definition="NOTE::'establishes external contact'"
-		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" 
+			<i class="cicon ci-masks mask-trigger" 
 				onclick="toggleMasksMenu()"
 				definition="NOTE::'influence thoughtspace';'third-party installation'"
 			></i>
@@ -68,7 +68,7 @@
 		</div>
 
 		<!--volume controls icon-->
-		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
 		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
@@ -85,12 +85,12 @@
 		</div>
 
 		<!--dropdown menu-->
-		<i class='ci-bars'></i>
+		<i class='cicon ci-bars'></i>
 		<div id='meta-links'>
 			<div id="mui-links">
-				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
-				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
-				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -102,10 +102,6 @@
 	<div id="mindspike-scanner">
 		<div id="mindspike-entities"></div>
 		<div id="mindspike-actions">
-			<form id="act">
-				<input type="text" id="act-input" placeholder="CONCEPT">
-				<input type="submit" id="act-submit" value="ENACT">
-			</form>
 			<div id="act-options">
 				<div class="act-option">connect</div>
 				<div class="act-option">back away</div>
@@ -142,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1757535174</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -319,47 +315,36 @@
 	</details>
 </div>
 
-<script>
-    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
-        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
-            document.querySelector('.sysbox.credits.kofi').remove()
-            return
-        }
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
 
-        let supporterBox = document.querySelector('#iconsupporters')
-        data.forEach(donator=>{
-            if(donator.active && donator.highest_tier == "Fundfriend") {
-                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
-                let lettaDisplay = ``
-                lettas.forEach(letta=>{
-                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
-                })
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
 
-                supporterBox.insertAdjacentHTML('beforeend', `
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
-                        ${lettaDisplay}
-                    </li>
-                `)
-            }
-        })
-    })
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
 
-    //we make glyphs out of up to 3 letters from the name
-    function getEquidistantLetters(input) {
-        let result = []
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
 
-        if (input.length <= 3) {
-            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
-        } else {
-            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
-            indices.forEach(index => {
-                result.push(input.charAt(index))
-            })
-        }
-
-        return result
-    }
-</script>
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
 	
 	<div id="content">
 		<div class="grid-plane">
@@ -372,16 +357,16 @@
 <div id="stage-navigator">
     <span>SPATIAL NAVIGATION</span>
     <div class="stage-arrows">
-        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
-        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
-        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
-        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
     </div>
 </div>
 
 <style>
 
-@import url(/css/stage/beneath.css?1757535174264443963);
+@import url(/css/stage/beneath.css?1758921388640655831);
 
 #content::after, #content::before {
     display: none;
@@ -409,6 +394,14 @@
     opacity: 0.25;
     transform: translateY(-15%);
     background-repeat: repeat-x, repeat;
+}
+
+.slowfall1 .grid-container {
+    transition: 1s ease-in;
+}
+
+.slowfall2 .grid-container {
+    transition: 10S ease-in;
 }
 
 #realgrid .gridpiece:empty, #realgrid .gridpiece.ocean:empty {
@@ -443,42 +436,6 @@
 
 #realgrid .gridpiece.watercity:empty {
     background: url(/img/textures/dithertile.gif), url(/img/textures/watertile.gif?), var(--bright-color);
-}
-
-#realgrid .dypcontent.pedestrian::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(/img/local/beneath/lost_pedestrian1head.gif);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: -1;
-    animation: LOOKAROUND 5s ease-in-out infinite alternate;
-    pointer-events: none;
-}
-
-#realgrid .dypcontent.pedestrian.lookdown::after {
-    width: 50%;
-    background-image: url(/img/local/beneath/lost_pedestrian1head_solo.gif);
-    background-position: top;
-    --baseTransform: rotate(90deg) translate(50%, -70%);
-    transform: var(--baseTransform);
-    transform-origin: top;
-    animation: LOOKDOWN 10s cubic-bezier(.42,0,0,.83) infinite alternate
-}
-
-@keyframes LOOKDOWN {
-    0% { transform: var(--baseTransform) rotateY(-0deg) translateZ(-10px) }
-    100% { transform: var(--baseTransform) rotateY(80deg) translateZ( 0px) }
-}
-
-@keyframes LOOKAROUND {
-    0% { transform: rotateY(-60deg) translateZ(-10px) }
-    100% { transform: rotateY(60deg) translateZ(-10px) }
 }
 
 /* side rooms */
@@ -522,10 +479,11 @@ body#abyss_ship #content::before {
     opacity: 0.1;
 }
 
-#abyss_wreck #realgrid .gridpiece:not(.blocks):empty {
+[stage="abyss_wreck"]#realgrid .gridpiece.empty {
     background: url(/img/textures/bustedtile.gif), var(--bright-color);
     background-size: auto;
     border: 0;
+    opacity: var(--intendedOpacity)
 }
 
 #realgrid .dancerzets .dypcontent {
@@ -549,11 +507,6 @@ body#abyss_city #content::after {
     body#abyss_city #content::after {
         background-size: cover;
     }
-}
-
-#realgrid .civvie {
-    transform: rotateX(-90deg) rotateY( atan2( var(--distX), var(--distY) ));
-    transition: 400ms transform ease-in-out;
 }
 
 /* jellyshop */
@@ -607,6 +560,10 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
     --dyp-image: url(/img/local/beneath/drowning_panic.gif) !important;
 }
 
+#realgrid .drowning[expression="safe"] {
+    --dyp-image: url(/img/local/beneath/drowning_safe.gif) !important;
+}
+
 .grid-plane[specialcam="drowningcam"] .grid-animator {
     --camera-x: 4;
     --camera-y: 5.2;
@@ -654,6 +611,27 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
     100% { transform: translateX(-50%) rotate(-2deg) }
 }
 
+
+body#abyss_city_shop[currentdialogue="drowning_fall"] #content::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: black;
+    background-image: url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/textures/panelpatterntranstrongermirror.gif?2), url(/img/textures/corrurippletran.gif);
+    background-size: auto, auto, auto 100%, auto;
+    background-position: center 0%, center 100%, center, center;
+    background-repeat: repeat-x, repeat-x, repeat-x, repeat;
+    opacity: 0;
+    transition: opacity 10s ease-in;
+}
+
+body#abyss_city_shop[currentdialogue="drowning_fall"] #content.breaking::after {
+    opacity: 1 !important;
+}
+
 </style>
 
 
@@ -674,7 +652,7 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1757535174264443963,
+				cacheval: 1758921388640655831,
 
 				
 				image: "/img/socials/beneath.gif",
@@ -716,7 +694,9 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 				
 				
 				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
 					body.setAttribute('page', page.name)
 					content.setAttribute('page', page.name)
 					document.querySelector('#static .enter').setAttribute('page', page.title)
@@ -815,6 +795,11 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 					
 						
 						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
 							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
 						
 					
@@ -836,6 +821,16 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 						
 						
 							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
 						
 					
 						
@@ -878,6 +873,11 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
 						
 					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
+						
+					
 					
 					// definitions required for page
 					
@@ -894,57 +894,8 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
 					
 					//dynamically inserted
 					 
-						env.abyss = {
-    snap: (thing)=>{
-        cutscene(true)
-        play('click1')
-        flash(true)
-
-        let dl = ""
-        let flag = ""
-        switch(thing) {
-            case "abyss":
-                dl = '/img/local/beneath/bg/abyss.png'
-                flag = "beneath_abysspic"
-            break
-
-            case "effigy":
-                if(!check("effigy_sipper")) dl = '/img/local/beneath/bg/EFFIGY.png';
-                else dl = '/img/local/beneath/bg/clear.png'
-                flag = "beneath_effigypic"
-            break
-
-            case "nope":
-                dl = '/img/local/beneath/bg/nothanks.png'
-                flag = "beneath_nopic"
-            break
-
-            default:
-                return
-        }
-
-        setTimeout(()=>{
-            flash(false)
-            play("muiScanner", 0.75)
-            cutscene(false)
-            
-            //add DL element
-            const downloadLink = document.createElement('a');
-            downloadLink.href = dl;
-            downloadLink.target = "_blank";
-            downloadLink.download = "";
-            downloadLink.setAttribute("data-no-swup", true);
-            downloadLink.style.display = 'none';
-            
-            //trigger download
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-            
-            change(flag, true)
-        }, 1000)
-    },
-    
+						page.maskJoyNote = "\nLOCAL_RESONANCE::'moderate';'connective thoughtform detected'"
+env.abyss = {    
     drowningStart: ()=>{
         cutscene(true)
         flash(true)
@@ -1013,7 +964,7 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
     },
     
     stageChange: ()=>{
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`);
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
 
         switch(env.stage.name) {
             case "abyss_city_shop": 
@@ -1040,7 +991,22 @@ body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
         sprite: {
             __default: [50, 106500, true]
         }
-    })
+    }),
+
+    drowningFall: () => {
+        content.classList.add("slowfall1")
+        ratween(env.bgm, 0.05, 10000)
+        setTimeout(()=>{
+            setCam({x: 4, y: 8, distance: 0, height: 0, rotation: 0, offsetCamera: "rotateX(90deg) rotate(700deg)"})
+            setTimeout(() => {
+                content.classList.add("slowfall2")
+                setCam({x: 4, y: 8, distance: 0, height: 0, rotation: 0, offsetCamera: "rotateX(90deg) translateZ(15000px) rotate(8000deg)"})
+            }, 700);
+            setTimeout(() => {
+                content.classList.add("breaking")
+            }, 3000);
+        }, 400)
+    }
 }
 
 env.stages['abyss'] = {
@@ -1136,8 +1102,7 @@ env.stages['abyss'] = {
             contains: {
                 examineEntity: "×è.÷ùÏÏøø",
                 dyp: {
-                    class: "pedestrian",
-                    type: "camera",
+                    class: "camguy",
                     image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
                     width: 1,
                     height: 2.5,
@@ -1300,7 +1265,7 @@ env.stages['abyss_wreck'] = {
         env.abyss.stageChange()
         
         if(check("effigy_dancer")) {
-            document.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+            env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
                 el.innerHTML = ""
                 el.classList.remove('dyp')
             })
@@ -1415,6 +1380,10 @@ env.stages['abyss_wreck'] = {
         C: {
             class: "notile",
             contains: {
+                html: `
+                    <div class="target joyonly" entity="˜CâR…"></div>
+                    <div class="joyonly joygarnish garnishportal caseportal"><div class="carsign"></div></div>
+                `,
                 dyp: {
                     image: 'url(/img/local/beneath/car.gif)',
                     width: 3,
@@ -1427,11 +1396,14 @@ env.stages['abyss_wreck'] = {
         c: {
             contains: {
                 examineEntity: "s w   al kk",
+                html: `<div class="joyonly joygarnish garnishprop"></div>`,
                 dyp: {
-                    class: "civvie",
+                    class: "civvie swalk face-creature",
                     image: 'url(/img/local/city/pedestrian5.gif)',
                     width: 1.5,
-                    height: 2
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                    style: "transition: transform 400ms ease-in-out;"
                 }
             } 
         },
@@ -1474,61 +1446,6 @@ env.stages['abyss_wreck'] = {
         .....W.....
     `
 }
-
-
-env.dialogueActors["s w   al kk"] = {
-    image: "/img/local/city/pedestrian5.gif",
-    type: "recollection portrait-top portrait-cover incoherent",
-    voice: ()=>play('talkcroak', 0.85),
-    element: ".civvie",
-}
-
-createEntity({
-    name: "s w   al kk",
-    type: "recollection thoughtform portrait-top portrait-cover",
-    image: "/img/local/city/pedestrian5.gif",
-    text: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
-    actions: [
-        {
-            name: "greet",
-            exec: ()=>{
-                chatter({
-                    actor: 's w   al kk', 
-                    text: [
-                        "car poblemn",
-                        " can oblemnt",
-                        "ar droblenmn",
-                        " radiator mufler hungry",
-                        "alien ? know .,   fix car ?",
-                        "car  s tuck"
-                    ].sample({noRepeat: true}),
-                    delay: 300
-                })
-            }
-        },
-        
-        {
-            name: "unity",
-            class: "act-ozo",
-            showIf: [["mask", "unity"]],
-            exec: ()=>{
-
-                chatter({actor: 's w   al kk', text: 'far. dr ive  fix my   car', readout: true, delay: 2000})
-
-                env.setTimeout(()=>{
-                    play("talkchoir", 0.75)
-                    vfx({type: 'beacon', state: true})
-                }, 400)
-
-                setTimeout(()=>{
-                    vfx({type: 'beacon', state: false})
-                }, 2000)
-            },
-        }
-    ]
-})
 
 createEntity({
     name: 'effigy',
@@ -1602,7 +1519,7 @@ createEntity({
                     vfx({type: 'flash', state: false})
 
                     change('effigy_dancer', true)
-                    document.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+                    env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('dyp')
                     })
@@ -1760,12 +1677,25 @@ env.stages['abyss_ship'] = {
             contains: {
                 examineEntity: "×è.÷ùÏÏøø",
                 dyp: {
-                    class: "pedestrian lookdown",
-                    type: "camera",
+                    class: "camguy lookdown",
                     image: 'url(/img/local/beneath/lost_pedestrian1_lookdown.gif)',
                     width: 2,
                     height: 2,
                     transform: 'rotateY(-90deg) translateX(25%)'
+                }
+            } 
+        },
+
+        e: {
+            class: "notile alwaysvis",
+            contains: {
+                class: "freedomonly",
+                examineEntity: "±ƒƒÍ_¾y",
+                dyp: {
+                    image: 'url(/img/local/beneath/effigydistant.gif)',
+                    width: 1,
+                    height: 1,
+                    style: "transform: translateZ(-10000px) translateY(500px);"
                 }
             } 
         },
@@ -1780,14 +1710,20 @@ env.stages['abyss_ship'] = {
         _==.░.ḧ.....
         =P+░░░=._...
         _=ḣ░.░+.=...
-        ...H░+░++░ov
+        .e.H░+░++░ov
         ..h.+.R_.=..
         ....░.......
         ..ḧ.+.......
         ....+.......
         ....O..h....
         ....V.......
-    `
+    `,
+
+    planAdjustment: (plan) => {
+        if(check("effigy_sipper")) return plan.replace('e', '.').replace('P', '=');
+
+        return plan
+    }
 }
 
 env.stages['abyss_city'] = {
@@ -1866,10 +1802,11 @@ env.stages['abyss_city'] = {
             class: "watercity",
             contains: {
                 dyp: {
-                    class: "civvie",
+                    class: "civvie face-creature",
                     image: 'url(/img/local/beneath/hollow1.gif)',
                     width: 1,
-                    height: 2
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
                 }
             } 
         },
@@ -1878,11 +1815,11 @@ env.stages['abyss_city'] = {
             class: "watercity",
             contains: {
                 dyp: {
-                    class: "civvie",
+                    class: "civvie face-creature",
                     image: 'url(/img/local/beneath/hollow2.gif)',
                     width: 1.5,
                     height: 2,
-                    transform: 'rotateY(180deg)'
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
                 }
             } 
         },
@@ -1916,10 +1853,27 @@ env.stages['abyss_city'] = {
                 }
             } 
         },
+
+        P: {
+            class: "notile",
+            contains: {
+                class: "joyonly freedomonly",
+                examineEntity: "×è.÷ùÏÏøø",
+                html: `<div class="joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "camguy half",
+                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
+                    width: 1,
+                    height: 1,
+                    transform: 'rotateY(-90deg) translateX(var(--tile2)) translateY(-100%)',
+                    style: "background-size: 100%;background-position: top;"
+                }
+            } 
+        },
     },
 
     plan: `
-        .....t.....
+        .....t..P..
         r..░░p░░...
         ...░░░░░r..
         ...L░░░L..=
@@ -1939,7 +1893,13 @@ env.stages['abyss_city'] = {
         ...=░░_░r..
         ...=.O=..=.
         ....=V_.=..
-    `
+    `,
+
+    planAdjustment: (plan) => {
+        if(!check("effigy_sipper")) return plan.replace('P', '=');
+
+        return plan
+    }
 }
 
 env.stages['abyss_city_shop'] = {
@@ -1950,7 +1910,12 @@ env.stages['abyss_city_shop'] = {
         env.abyss.stageChange()
         if(check("drowningCalmed")) { env.abyss.drowningFear(-1) }
             else { env.abyss.drowningFear(0) }
-        setTimeout(()=>env.stage.current.onStep(), 200)
+        if(check("abyss__drowning_fall") && check("drowningCalmed") && !check("drowning_relieved")) {
+            env.setTimeout(()=>chatter({actor: 'drowning', text: 'you are okay!!', readout: true}), 300)
+            env.setTimeout(()=>chatter({actor: 'drowning', text: 'what were you thinking??', readout: true}), 3300)
+            env.setTimeout(()=>chatter({actor: 'drowning::safe', text: 'you must take better care of yourself, akii...', readout: true}), 6300)
+            change("drowning_relieved", true)
+        }
     },
     onStep: ()=>{
         setTimeout(()=>{
@@ -2078,13 +2043,16 @@ env.stages['abyss_city_shop'] = {
                 if(!check("PAGE!!warned")) {
                     if(!check("drowningCalmed")) {
                         chatter({actor: 'drowning', text: 'akizet, we should not stray too far...', readout: true})
-                        setTimeout(()=>chatter({actor: 'drowning', text: 'the cousins are waiting for us on the shore!', readout: true}), 3000)
-                        setTimeout(()=>chatter({actor: 'drowning::scared', text: 'and-- it c an be dan gerous, if y ou go too  d e ep', readout: true}), 6000)
+                        env.setTimeout(()=>chatter({actor: 'drowning', text: 'the cousins are waiting for us on the shore!', readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'drowning::scared', text: 'and-- it c an be dan gerous, if y ou go too  d e ep', readout: true}), 6000)
+                        change("PAGE!!warned", true)
+                    } else if(!check("drowning_relieved")) {
+                        chatter({actor: 'drowning', text: 'aki! what do you keep looking at?', readout: true})
+                        env.setTimeout(()=>chatter({actor: 'drowning', text: 'i do not know what is on your mind, but...', readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'drowning::safe', text: 'just enjoy this moment!', readout: true}), 6000)
                         change("PAGE!!warned", true)
                     } else {
-                        chatter({actor: 'drowning', text: 'aki! what do you keep looking at?', readout: true})
-                        setTimeout(()=>chatter({actor: 'drowning', text: 'i do not know what is on your mind, but...', readout: true}), 3000)
-                        setTimeout(()=>chatter({actor: 'drowning::safe', text: 'just enjoy this moment!', readout: true}), 6000)
+                        chatter({actor: 'drowning', text: 'you had better not!', readout: true})
                         change("PAGE!!warned", true)
                     }
                 }
@@ -2140,6 +2108,13 @@ env.stages['abyss_city_shop'] = {
                 }
             } 
         },
+
+        ">": {
+            class: "nothing",
+            exec: ()=> {
+                startDialogue("drowning_fall")
+            }
+        },
     },
 
     plan: `
@@ -2151,7 +2126,7 @@ env.stages['abyss_city_shop'] = {
         ._░░░░░..
         [.._Kø.=]
         .=..░_...
-        .{.....}.
+        .{..>..}.
         ....=....
         ....s....
     `
@@ -2544,7 +2519,7 @@ ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        oh? d o you not mind that  an ymor e?
+        oh? d o you not dislike that  an ymor e?
 
     RESPOBJ::drowningResp2
 ____END
@@ -2955,31 +2930,84 @@ help
             FAKEEND::(back)
 `)
 
+env.dialogues[`drowning_fall`] = generateDialogueObject(`
+start
+    sourceless
+        the render feels unsteady.
+            EXEC::env.clearTimeouts()
+        panic spikes through the thoughtspace.
+
+____SHOWIF::['drowning_relieved', false]
+    drowning::panic
+        w  wa  wait you cannot  g go
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
+
+____SHOWIF::['drowning_relieved', true]
+    drowning::panic
+        s tu pi d ! !
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
+    
+    sourceless quiet
+        it feels like you're falling.
+            EXEC::env.abyss.drowningFall();play("scarydoia", 0.2, 1, true);env.forceSfxInheritPitch = true
+            WAIT::5000
+            AUTOADVANCE::
+        your mind spins.
+            WAIT::5000
+            EXEC::play("scarydoia", 0.2, 1, true);
+            THEN::play("scarydoia", 0.2, 1, true);vfx({type: "darkflash", state: true});
+
+    sys
+        NOTICE::ERROR::'memory stream lost';'retracing';'closest coherent position'
+
+    RESPONSES::self
+        ...<+>END
+            EXEC::change("TEMP!!from", "drowning");moveTo("/local/uncosm/pit/");env.forceSfxInheritPitch = false;body.classList.remove("hard-cut")
+`)
+
+/* e4a1 */
 createEntity({
-    name: '×è.÷ùÏÏøø',
-    type: "recollection thoughtform portrait-ripple portrait-cover",
-    image: "/img/local/beneath/camportrait.gif",
+    name: '±ƒƒÍ_¾y',
+    type: "thoughtform",
+    hide: true,
+    image: "/img/textures/corruripple.gif",
     text: `::INCOMPLETE THOUGHTFORM
     ::SIGNATURE ILLEGIBLE`,
-    actions: [
-        {
-            name: "hello",
-            exec: ()=> env.abyss.snap('abyss'),
-            showIf: () => env.stage.name == 'abyss'
-        },           
-        {
-            name: "unity",
-            class: "act-ozo",
-            exec: ()=> env.abyss.snap('nope'),
-            showIf: () => { return env.stage.name == 'abyss' && check('mask', 'unity')}
-        },
-        {
-            name: "what are you looking at",
-            exec: ()=> env.abyss.snap('effigy'),
-            showIf: () => env.stage.name == 'abyss_ship'
-        }
-    ]
+    exmExec: ()=>{
+        moveTo('/local/uncosm/effigy/', false)
+    }
 })
+
+env.dialogues[`car`] = generateDialogueObject(`
+start
+    sourceless
+        you begin to transfer thoughtspaces.
+        the incomplete entity nearby stirs.
+
+    s w   al kk
+        c   car
+        workiung  ?????
+    
+    self
+        maybe
+        it leads somewhere at least
+        follow me if you can
+
+    s w   al kk
+        lincesne  r  enewal
+            EXEC::env.noNavMessage = true
+
+    sys
+        ..__NAVIGATING::"câr"__..
+            EXEC::flash(true);forcePlay("carstart")
+
+    RESPONSES::self
+        ok<+>END
+
+END::moveTo('/local/beneath/car/')
+`)
 					
 					
 
@@ -3059,8 +3087,6 @@ ____END
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					console.log('rendering buddies!')
-					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
 				},
 
@@ -3074,7 +3100,7 @@ ____END
 					window.vnObj = page.vn
 
 					
-					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
 					
 					
 					body.setAttribute('state', 'corru-entered')
@@ -3087,6 +3113,7 @@ ____END
 					}
 					if(page.bgm) {
 						page.bgm.volume(0)
+						
 						page.bgm.play()
 						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
@@ -3114,6 +3141,14 @@ ____END
         changeStage('abyss_ship', 105, 'left')
     break
 
+    case "car":
+        changeStage("abyss_wreck", 155, 'right')
+    break
+
+    case "cass":
+        changeStage("abyss", 368, 'down')
+    break
+
     default:
         changeStage('abyss')
 }
@@ -3126,12 +3161,24 @@ if(!check('beneath')) startDialogue("++mothbeneath")
 					document.dispatchEvent(env.hooks.corru_entered)
 					mothHasUnreadCheck()
 
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
 					setTimeout(()=>{
 						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
 					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
 				},
 
 				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
 					body.setAttribute('state', 'corru-leaving')
 					MUI("off")
 					env.waitOnLoad = false
@@ -3163,6 +3210,11 @@ delete env.abyss
 
 					if(dest) swup.loadPage({url: dest})
 					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
 				}
 			}
 
@@ -3202,6 +3254,5 @@ delete env.abyss
 	}
 	cryptocraze.remove()
 	</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d27fafd650894988a053584cfbc6883c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

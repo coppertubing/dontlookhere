@@ -93,11 +93,11 @@ class CombatScene extends HTMLElement {
             <div id="ally-team" class="team"></div>
             <div class="key-navigator">
                 <div class="stage-arrows">
-                    <div class="up" key="w" onclick="javascript:env.rpg.playerCamControl('w')"><i class="ci-up"></i></div>
-                    <div class="left" key="a" onclick="javascript:env.rpg.playerCamControl('a')"><i class="ci-left"></i></div>
-                    <div class="down" key="s" onclick="javascript:env.rpg.playerCamControl('s')"><i class="ci-down"></i></div>
-                    <div class="right" key="d" onclick="javascript:env.rpg.playerCamControl('d')"><i class="ci-right"></i></div>
-                    <div class="look" key="hold shift" definition="NOTICE::'toggles LOOKING mode';'click on tile to move camera';'only functions during ally movement phase'" onclick="javascript:env.rpg.toggleLooking()"><i class="ci-nav"></i></div>
+                    <div class="up" key="w" onclick="javascript:env.rpg.playerCamControl('w')"><i class="cicon ci-up"></i></div>
+                    <div class="left" key="a" onclick="javascript:env.rpg.playerCamControl('a')"><i class="cicon ci-left"></i></div>
+                    <div class="down" key="s" onclick="javascript:env.rpg.playerCamControl('s')"><i class="cicon ci-down"></i></div>
+                    <div class="right" key="d" onclick="javascript:env.rpg.playerCamControl('d')"><i class="cicon ci-right"></i></div>
+                    <div class="look" key="hold shift" definition="NOTICE::'toggles LOOKING mode';'click on tile to move camera';'only functions during ally movement phase'" onclick="javascript:env.rpg.toggleLooking()"><i class="cicon ci-nav"></i></div>
                 </div>
             </div>
         `)
@@ -1556,7 +1556,7 @@ class CombatGrid extends HTMLElement {
             if(effectObj.tiles.length) {
                 this.tileEffects.push(effectObj)
             } else {
-                console.log ("didn't add tileEffects because of woke", tiles)
+                console.log("didn't add tileEffects because of woke", tiles)
                 return false
             }
 

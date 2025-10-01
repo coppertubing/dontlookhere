@@ -19,7 +19,8 @@
     --camera-height: 1.5; /* distance from ground */
     --camera-distance: 0.45; /* distance from 'true center' of the tile you're in */
     --camera-rotation: 0; /* direction/angle the camera is facing */
-    --camera-offset: translateZ(0); /* done prior to plane/realgrid transforms - i.e. rotateX(10deg) will make u look down no matter which way you turn */
+    --camera-tilt: 0; /* tilt of the camera - distinct from offset in that it's used specifically for first person looking up/down */
+    --camera-offset: translateZ(0); /* done prior to plane/realgrid transforms - i.e. rotateX(10deg) will make u look down 10deg no matter which way you turn */
     --personal-offset: translateZ(0); /* end-camera .realgrid transform - can be treated as 'transforming from true center' */
     --camera-x: var(--stage-steps-x);
     --camera-y: var(--stage-steps-y);
@@ -30,6 +31,31 @@
     transition: perspective 1s ease-in-out, opacity 1s ease-in-out;
     perspective: var(--perspective);
     will-change: contents;
+
+    /* common measures - very rarely ever go up past 5 honestly but good to have em */
+    --tile-10: calc(var(--gridTileSize) * -10);
+    --tile-9: calc(var(--gridTileSize) * -9);
+    --tile-8: calc(var(--gridTileSize) * -8);
+    --tile-7: calc(var(--gridTileSize) * -7);
+    --tile-6: calc(var(--gridTileSize) * -6);
+    --tile-5: calc(var(--gridTileSize) * -5);
+    --tile-4: calc(var(--gridTileSize) * -4);
+    --tile-3: calc(var(--gridTileSize) * -3);
+    --tile-2: calc(var(--gridTileSize) * -2);
+    --tile-1: calc(var(--gridTileSize) * -1);
+    --tile-f5: calc(var(--gridTileSize) * -.5);
+    --tile: var(--gridTileSize);
+    --tilef5: calc(var(--gridTileSize) * .5);
+    --tile1: calc(var(--gridTileSize) * 1);
+    --tile2: calc(var(--gridTileSize) * 2);
+    --tile3: calc(var(--gridTileSize) * 3);
+    --tile4: calc(var(--gridTileSize) * 4);
+    --tile5: calc(var(--gridTileSize) * 5);
+    --tile6: calc(var(--gridTileSize) * 6);
+    --tile7: calc(var(--gridTileSize) * 7);
+    --tile8: calc(var(--gridTileSize) * 8);
+    --tile9: calc(var(--gridTileSize) * 9);
+    --tile10: calc(var(--gridTileSize) * 10);
 }
 
 @media only screen and (max-height: 800px) {
@@ -50,21 +76,27 @@
     will-change: transform;
 }
 
-.grid-container, .grid-container * {
-    transform-style: preserve-3d;
-}
-
 .realgrid {
-    --intendedOpacity: 1;
     background: transparent;
     z-index: 1;
     transition: transform 400ms linear;
     width: calc(var(--stageWidth) * var(--gridTileSize));
+    --intendedOpacity: 1;
+    --faceAngle: 0deg;
 }
 
 .swapcam .realgrid.dynocam {
     transition: transform 1s ease-in-out;
 }
+
+/* preserve-3D hell */
+.grid-container, 
+.grid-container div,
+.grid-container figure,
+.grid-container span {
+    transform-style: preserve-3d;
+}
+
 
 /* transitions */
 .stage-transition .grid-container,
@@ -86,6 +118,13 @@
         translateY(calc(var(--perspective) - (var(--gridTileSize) * var(--camera-distance))))
         translateZ(calc(var(--camera-height) * -1 * var(--gridTileSize)))
         var(--camera-offset);
+
+    /* In freemove, we adjust height to be handled by the animator */
+    --freemoveBaseContainerTransform: 
+        rotateX(90deg) 
+        translateY(calc(var(--perspective) - (var(--gridTileSize) * var(--camera-distance))))
+        var(--camera-offset);
+
         
     transform: var(--baseContainerTransform);
 }
@@ -93,9 +132,19 @@
     transform: translateY(-200px)
 }
 
-    /* The animator simply rotates the camera in the direction the player is facing. */
+    /* 
+        The animator simply rotates the camera in the direction the player is facing by default.
+        TODO: the -1px may cause issues, this is to fix a weird jittering in the dark in firefox
+    */
 .grid-animator {
-    --baseAnimatorTransform: rotateZ(calc(var(--camera-rotation) * 1deg));
+    --baseAnimatorTransform: translateY(-1px) rotateZ(calc(var(--camera-rotation) * 1deg));
+
+    /* 
+        In freemove mode, some stuff is moved so that the animator is the closest to direct camera handling.
+        Height is also a simple adjustment for Z based on desired height (1.5 by default).
+    */
+    --freemoveAnimatorTransform: rotateX(calc(var(--camera-tilt) * 1deg)) rotateZ(calc(var(--camera-rotation) * 1deg)) translateZ(calc(var(--camera-height) * -1 * var(--gridTileSize)));
+
     transform: var(--baseAnimatorTransform);
 }
 
@@ -110,7 +159,14 @@
         translateX(calc(var(--camera-x) * var(--gridTileSize) * -1))    
         var(--personal-offset) 
     ;
-    transform: var(--baseRealGridTransform)
+
+    --freemoveRealGridTransform: 
+        translateY(calc(  (var(--camera-y) * var(--gridTileSize) * -1) + (0.5 * var(--gridTileSize))  ))
+        translateX(calc(  (var(--camera-x) * var(--gridTileSize) * -1) + (0.5 * var(--gridTileSize))  ))
+        var(--personal-offset)
+    ;
+
+    transform: var(--baseRealGridTransform) rotate(0.001deg);
 }
 
 /* 
@@ -130,8 +186,16 @@
         translateY(calc(var(--gridTileSize) * var(--realY)));
 }
 
+.piecewrapper.vis.hardopacity.empty {
+    --intendedOpacity: 1 !important;
+}
+
+.piecewrapper .nothing.hasnothing:empty {
+    display: none
+}
+
 .darkstage .gridpiece:empty, 
-.darkstage .gridpiece:not(.alwaysvis) > * {
+.darkstage .gridpiece:not(.alwaysvis) div {
     opacity: var(--intendedOpacity);
     transition: opacity 200ms linear;
 }
@@ -142,9 +206,109 @@
     border: 0 !important;
 }
 
+.slowcam #realgrid, .slowcam .grid-animator, .slowcam .grid-container {
+    transition: 3s ease-in-out;
+}
+
+/* transition modifier for freemove, + instant mode */
+.instantstagetran .realgrid,
+.instantstagetran .grid-container,
+.instantstagetran .grid-animator,
+.freemovetran .realgrid,
+.freemovetran .grid-container, 
+.freemovetran .grid-animator {
+    transition: unset;
+} 
+
+.freemoveinit .realgrid,
+.freemoveinit .grid-container, 
+.freemoveinit .grid-animator {
+    transition: transform 600ms linear !important;
+} 
+
+.freemove .realgrid { 
+    transform: var(--freemoveRealGridTransform)
+}
+
+.freemove .grid-container { 
+    transform: var(--freemoveBaseContainerTransform)
+}
+
+.freemove .grid-animator { 
+    transform: var(--freemoveAnimatorTransform)
+}
+
+body:not(.in-dialogue) .grid-plane.freemove {
+    --camera-distance: 0;
+}
+
+/* little debug positional info
+.freemove #realgrid::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: red;
+    top: 0;
+    left: 0;
+    transform: translate(calc(var(--stage-steps-x) * 200px), calc(var(--stage-steps-y) * 200px)) translateZ(10px);
+    z-index: 2;
+}
+*/
+
+    /* crosshair! */
+.grid-plane.freelook::before, .grid-plane.freelookblur::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background: url(/img/mui/cur/hair.gif);
+    z-index: 2;
+    background-position: center;
+}
+
+.firefreak .grid-plane::after {
+    /* TODO: this is a temporary patch for gordon's glitch hat. it somehow resolves it */
+    content: "☺︎";
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.1;
+    font-size: 1px;
+} 
+
+.grid-plane.freemove.freelookblur::after {
+    content: "CLICK ANYWHERE TO REFOCUS";
+    z-index: 100;
+    text-align: center;
+    white-space: nowrap;
+    font-family: barcodetext;
+    width: auto;
+    height: auto;
+    border-radius: unset;
+    border: unset;
+    font-size: 48px;
+    background: black;
+    padding: 0.5em;
+    opacity: 1;
+}  
+
+.freemove .realgrid {
+    transition: transform 100ms linear;
+}
+
+.notargets .grid-plane.freelook::before {
+    display: none;
+}
+
+.notargets #realgrid .target {
+    opacity: 0 !important;
+}
+
 /* DISPLAY CONTROLS */
 .cull-stage .grid-plane:not(combat-grid), 
-.cull-stage #grid-ref, 
 .cull-stage .grid,
 .cull-stage .stage-navigator, 
 .cull-stage #stage-navigator {
@@ -182,13 +346,16 @@
     transform-origin: center;
 }
 
-.gridpiece > * {
+.gridpiece div {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.gridpiece * {
+.gridpiece div,
+.gridpiece figure,
+.gridpiece span,
+.gridpiece canvas {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
 }
@@ -203,12 +370,18 @@
     opacity: 0;
 }
 
-.gridpiece.hide > *, .gridpiece.hide:before, .gridpiece.hide:after {
+.gridpiece.hide div,
+.gridpiece.hide span,
+.gridpiece.hide figure,
+.gridpiece.hide:before, 
+.gridpiece.hide:after {
     display: none;
 }
 
-.realgrid .gridpiece.blocks.nothing:not(.dyp), .realgrid .gridpiece.nothing:empty { visibility: hidden }
-.realgrid .gridpiece.blocks:empty, .realgrid .gridpiece.nothing {
+.realgrid .gridpiece.blocks.nothing:not(.dyp), .realgrid .gridpiece.nothing:empty,
+#realgrid .gridpiece.blocks.nothing:not(.dyp), #realgrid .gridpiece.nothing:empty { visibility: hidden }
+.realgrid .gridpiece.blocks:empty, .realgrid .gridpiece.nothing, 
+#realgrid .gridpiece.blocks:empty, #realgrid .gridpiece.nothing {
     background: transparent;
     border: 0px;
 }
@@ -233,10 +406,6 @@
     background-image: url('/img/textures/fadein.gif');
     background-size: cover;
     background-position: center;
-}
-
-.reference .gridpiece.teleport.blocks {
-    background: var(--neutral-color);
 }
 
 .realgrid .chatter-container, .realgrid .chatter-container .chatter {
@@ -279,6 +448,14 @@
     opacity: 0.5;
 }
 
+#stage-navigator {
+    display: none;
+}
+
+.stage-active #stage-navigator {
+    display: flex;
+}
+
 .in-menu #stage-navigator, .mui-active #stage-navigator, .hide-ui #stage-navigator,
 .in-menu .key-navigator, .mui-active .key-navigator, .hide-ui .key-navigator {
     opacity: 0;
@@ -307,6 +484,24 @@
     opacity: 1;
 }
 
+.mask-freedom .party-enabled #stage-navigator::before {
+    content: "PARTY::'open with impulse';'Z'";
+    position: absolute;
+    bottom: 2vh;
+    white-space: nowrap;
+    font-size: inherit;
+    font-family: barcodetext;
+    text-transform: uppercase;
+    transition: opacity 400ms;
+    opacity: 0;
+    background: var(--dark-color);
+    padding: 0.25em;
+}
+
+.mask-freedom.mui-active #stage-navigator, .mask-freedom.mui-active .party-enabled #stage-navigator::before {
+    opacity: 1;
+}
+
 .stage-arrows {
     display: flex;
     flex-wrap: wrap;
@@ -316,7 +511,7 @@
     position: relative;
 }
 
-.stage-arrows > div {
+.stage-arrows div {
     position: relative;
     display: inline-flex;
     background: var(--dark-color);
@@ -330,7 +525,7 @@
     cursor: pointer;
 }
 
-.stage-arrows > div[key]::after {
+.stage-arrows div[key]::after {
     content: attr(key);
     display: inline-flex;
     justify-content: center;
@@ -357,7 +552,7 @@
     opacity: 1;
 }
         
-.stage-arrows > div:hover {
+.stage-arrows div:hover {
     border-style: groove;
     color: var(--friend-color);
 }
@@ -380,6 +575,10 @@
 .swap .ci-zoomin, .swapcam .swap .ci-zoomout { display: none }
 .swapcam .swap .ci-zoomin, .swap .ci-zoomout { display: inline }
 .swapcam .swap { color: var(--friend-color); }
+
+.mask-freedom .stage-arrows {
+    display: none;
+}
 
 /* special stage controls - party menu */
 .stage-arrows > .party {
@@ -418,39 +617,8 @@ body[quality="regular"] .quality::after { content: "Quality: REGULAR" }
 body[quality="low"] .quality { color: var(--bright-color) }
 body[quality="low"] .quality::after { content: "Quality: LOW" }
 
-/* ref controls */
-.reference {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 16777271;
-    width: calc(1px * var(--stageWidth));
-    opacity: 0;
+body.mask-camera #stage-navigator {
     display: none;
-}
-
-.reference .gridpiece {
-    width: 1px !important;
-    height: 1px !important;
-    border: 0px !important;
-}
-
-.reference .gridpiece .target {
-    display: none !important;
-}
-
-.reference .gridpiece > * {
-    width: 1px !important;
-    height: 1px !important;
-    transform: unset !important;
-    position: relative !important;
-    top: unset !important;
-    bottom: unset !important;
-}
-
-.reference .gridpiece > * > * {
-    display: none !important;
-    pointer-events: none;
 }
 
 /* special modifiers */
@@ -465,6 +633,27 @@ body[quality="low"] .quality::after { content: "Quality: LOW" }
 }
   
 /* particular dudes */
+#realgrid .newevil .sprite-wrapper, 
+#realgrid .newevil .sprite-wrapper div,
+#realgrid .newevil .sprite-wrapper img {
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+}
+
+#realgrid .newevil .sprite-wrapper {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    transform-origin: center;
+    
+    transform: rotateX(-90deg) translateY(-50%) rotateY(180deg) rotateY(var(--faceAngle));
+}
+
+#realgrid .newevil .sprite {
+    max-height: calc(var(--gridTileSize) * 2);
+}
+
 .realgrid .pianoguy:after {
     position: absolute;
     background-image: url(pianofrog.gif);
@@ -520,8 +709,8 @@ body[quality="low"] .quality::after { content: "Quality: LOW" }
     --dyp-width: 1;
 }
 
-.realgrid .dyp > *,
-#realgrid .dyp > * {
+.realgrid .dyp .dypcontent,
+#realgrid .dyp .dypcontent {
     bottom: 50%;
     position: absolute;
     transform-origin: bottom;
@@ -535,8 +724,8 @@ body[quality="low"] .quality::after { content: "Quality: LOW" }
     backface-visibility: visible;
 }
 
-.realgrid .dyp > .dyp-canvas,
-#realgrid .dyp > .dyp-canvas {
+.realgrid .dyp .dyp-canvas,
+#realgrid .dyp .dyp-canvas {
     background: transparent;
     transform-style: unset;
 }
@@ -548,7 +737,7 @@ body[quality="low"] .quality::after { content: "Quality: LOW" }
     -webkit-backface-visibility: visible;
 }
 
-.realgrid .dyp > .dyp-noback {
+.realgrid .dyp .dyp-noback {
     backface-visibility: hidden !important;
 }
 
@@ -580,9 +769,15 @@ body[quality="low"] .quality::after { content: "Quality: LOW" }
     transform: rotateY(90deg);
 }
 
-body[quality="low"] .realgrid .dyp:not(.critical) *, 
-body[quality="low"] .realgrid .dyp:not(.critical) *::after, 
-body[quality="low"] .realgrid .dyp:not(.critical) *::before
+body[quality="low"] .realgrid .dyp:not(.critical) div, 
+body[quality="low"] .realgrid .dyp:not(.critical) div::after, 
+body[quality="low"] .realgrid .dyp:not(.critical) div::before, 
+body[quality="low"] .realgrid .dyp:not(.critical) span, 
+body[quality="low"] .realgrid .dyp:not(.critical) span::after, 
+body[quality="low"] .realgrid .dyp:not(.critical) span::before, 
+body[quality="low"] .realgrid .dyp:not(.critical) figure, 
+body[quality="low"] .realgrid .dyp:not(.critical) figure::after, 
+body[quality="low"] .realgrid .dyp:not(.critical) figure::before 
 {
     animation-play-state: paused;
 }

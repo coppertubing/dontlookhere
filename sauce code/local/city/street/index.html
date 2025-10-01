@@ -35,31 +35,31 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1757535174264443963"></script>	
-	<script src="/js/dialogue.js?1757535174264443963"></script>	
-	<script src="/js/globalents.js?1757535174264443963"></script>	
-	<script src="/js/cystStage.js?1757535174264443963"></script>
-	<script src="/js/buddy.js?1757535174264443963"></script>
-	<script src="/js/vn2.js?1757535174264443963"></script>
-	<script defer src="/js/saves.js?1757535174264443963"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1757535174264443963'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1757535174264443963'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
-	<div id='meta-menu'>
+	<div id='meta-menu' class="noclosemenu">
 		<!--core icon-->
 		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class='ci-moth moth-trigger' 
+		<i class='cicon ci-moth moth-trigger' 
 			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
 			definition="NOTE::'establishes external contact'"
-		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" 
+			<i class="cicon ci-masks mask-trigger" 
 				onclick="toggleMasksMenu()"
 				definition="NOTE::'influence thoughtspace';'third-party installation'"
 			></i>
@@ -68,7 +68,7 @@
 		</div>
 
 		<!--volume controls icon-->
-		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
 		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
@@ -85,12 +85,12 @@
 		</div>
 
 		<!--dropdown menu-->
-		<i class='ci-bars'></i>
+		<i class='cicon ci-bars'></i>
 		<div id='meta-links'>
 			<div id="mui-links">
-				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
-				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
-				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -102,10 +102,6 @@
 	<div id="mindspike-scanner">
 		<div id="mindspike-entities"></div>
 		<div id="mindspike-actions">
-			<form id="act">
-				<input type="text" id="act-input" placeholder="CONCEPT">
-				<input type="submit" id="act-submit" value="ENACT">
-			</form>
 			<div id="act-options">
 				<div class="act-option">connect</div>
 				<div class="act-option">back away</div>
@@ -142,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1757535174</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -319,47 +315,36 @@
 	</details>
 </div>
 
-<script>
-    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
-        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
-            document.querySelector('.sysbox.credits.kofi').remove()
-            return
-        }
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
 
-        let supporterBox = document.querySelector('#iconsupporters')
-        data.forEach(donator=>{
-            if(donator.active && donator.highest_tier == "Fundfriend") {
-                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
-                let lettaDisplay = ``
-                lettas.forEach(letta=>{
-                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
-                })
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
 
-                supporterBox.insertAdjacentHTML('beforeend', `
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
-                        ${lettaDisplay}
-                    </li>
-                `)
-            }
-        })
-    })
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
 
-    //we make glyphs out of up to 3 letters from the name
-    function getEquidistantLetters(input) {
-        let result = []
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
 
-        if (input.length <= 3) {
-            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
-        } else {
-            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
-            indices.forEach(index => {
-                result.push(input.charAt(index))
-            })
-        }
-
-        return result
-    }
-</script>
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
 	
 	<div id="content">
 		<div class="grid-plane">
@@ -372,10 +357,10 @@
 <div id="stage-navigator">
     <span>SPATIAL NAVIGATION</span>
     <div class="stage-arrows">
-        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
-        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
-        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
-        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
     </div>
 </div>
 
@@ -387,7 +372,10 @@
 
 <style>
 
-@import url(/css/stage/beneath.css?1757535174264443963);
+@import url(/css/stage/cass.css?1758921388640655831);
+@import url(/css/stage/beneath.css?1758921388640655831);
+@import url(/css/rotwatcher.css?1758921388640655831);
+@import url(/css/local/joy.css?1758921388640655831);
 #content {
     background: var(--bright-color);
     background-image: url(/img/textures/fadeinlong.gif), url(/img/local/city/street.gif);
@@ -493,7 +481,6 @@
 
 [stage*="city"] .gridpiece.road {
     background: black;
-    pointer-events: none;
 }
 
 #city_office #content {
@@ -506,11 +493,14 @@
     width: calc(var(--gridTileSize) * 5);
     height: calc(var(--gridTileSize) * 3);
     background-image: url(/img/local/city/elevators.gif);
-    background-size: contain;
+    background-size: 100% 100%;
     background-position: bottom;
     background-repeat: no-repeat;
 }
 
+.vator.alt {
+    background-image: url(/img/local/city/elevatorsnew.gif);
+}
 
 .building {
     transform: rotateX(-90deg) rotateY(-90deg) translateY(calc(var(--gridTileSize) * -6));
@@ -641,6 +631,26 @@
 .prop .civvie.busy {
     background-image: url(/img/local/city/pedestrian2.gif);
     transform: translateY(-25%) rotateZ(45deg) rotateX(-90deg);
+}
+
+#realgrid .busy.cup1::before {
+    content: "";
+    background: url(/img/local/city/papercup.gif);
+    width: 100%;
+    height: 100%;
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position: 26% 61%;
+}
+
+#realgrid .busy.cup2::before {
+    content: "";
+    background: url(/img/local/city/papercup.gif), url(/img/local/city/papercup.gif);
+    width: 100%;
+    height: 100%;
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position: 26% 61%, 74% 61%;
 }
 
 .prop .civvie.creep {
@@ -783,10 +793,6 @@
 
 #realgrid .portal figure {
     position: absolute;
-}
-
-.reference [id^="porthole"] {
-    display: none;
 }
 
 body[currentdialogue^="envoy"] .envoy, body.envoychat .envoy {
@@ -981,7 +987,7 @@ body:not([quality="low"]) #realgrid .tv::after {
     background-image: url(/img/local/city/streetnight.gif);
 }
 
-#realgrid[locale="nightcity"] .gridpiece:empty:not(.road):not(.blocks):not(.faketeleport):not(.gap) {
+#realgrid[locale="nightcity"] .gridpiece.plain:empty {
     background: url(/img/textures/dithertile.gif), url(/img/textures/staticContrast.gif);
 }
 
@@ -1017,11 +1023,11 @@ body#city_banks_flip #content {
     background-size: cover;
 }
 
-body#city_banks_flip .envoy {
+#content.hide-envoy .envoy, body#city_banks_flip .envoy {
     display: none;
 }
 
-#realgrid[locale="watercity"] .gridpiece:not(.blocks):not(.faketeleport):not(.gap):empty {
+#realgrid[locale="watercity"] .gridpiece.plain:empty {
     background: url(/img/textures/dithertile.gif), url(/img/textures/watertile.gif?), var(--bright-color);
 }
 
@@ -1030,6 +1036,266 @@ body#city_banks_flip .envoy {
     background: url(/img/textures/spotgradientinversetiny.gif), url(/img/textures/dithertile.gif), url(/img/textures/watertile.gif?), var(--bright-color);
     background-size: 150% 150%, auto;
     background-position: center;
+}
+
+/* e4a1 */
+#crossbutton {
+    width: 50px;
+    height: 50px;
+    bottom: 31%;
+    position: absolute;
+    cursor: pointer;
+    top: unset;
+    left: unset;
+    }
+
+#crossbutton::after {
+    white-space: nowrap;
+    font-size: 16px;
+    padding: 0.25em;
+}
+
+#office_elevator .gridpiece {
+    background: black;
+}
+              
+#office_elevator #content {
+    background: var(--bright-color);
+}
+
+#office_elevator #creature {
+    opacity: 0;
+}
+
+[stage="office_elevator"]#realgrid .dyp .dypcontent {
+    transition: transform 15s ease-in-out;
+}
+
+#content.breaking-1 {
+    transition: 5s;
+}
+
+#office_elevator #content.breaking0 {
+    background: var(--obesk-color)
+}
+
+.breaking1 [stage="office_elevator"]#realgrid .dyp .dypcontent {
+    transform: rotateX(-90deg) var(--dyp-transform) rotateX(-18deg) scaleY(1) scaleX(2) translateY(20%) rotate(10deg);
+}
+
+.breaking2 .grid-plane {
+    --perspective: 150px
+}
+
+.breaking2 .grid-animator {
+    --baseTransform: var(--baseAnimatorTransform);
+    animation: BIGSHAKE 100ms linear infinite;
+}
+
+
+#content.breaking2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 150vh;
+    background: url(/img/textures/corrurippletranblack.gif);
+    background-size: auto 50vh;
+    animation: FALLLINES 200ms steps(20) infinite;
+    background-position: top;
+    transition: opacity 500ms;
+}
+
+@keyframes FALLLINES {
+    0% { transform: translateY(0) }
+    100% { transform: translateY(-50vh) }
+}
+
+.breaking3 .grid-plane, .breaking3 .grid-container, .breaking3 .envoy {
+    transition: 3s;
+}
+
+/* accompany with setCam({x: 2, y: 1, rotation: 180, offsetCamera: "rotateX(-90deg) rotateZ(0deg)", distance: 1}) */
+.breaking4 .grid-plane {
+    --perspective: 10px;
+}
+
+.breaking4 .envoy {
+    transform: translate(45vw, 50vh) scaleY(4);
+    opacity: 0;
+}
+
+/* then setCam({x: 2, y: 3, rotation: 180, offsetCamera: "rotateX(-90deg) rotateZ(930deg)", distance: 3}) */
+.breaking5 .grid-container, .breaking5 #realgrid {
+    transition: 5s cubic-bezier(1,-0.01,1,1); 
+}
+
+#office_elevator #content::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: black;
+    background-image: url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/textures/panelpatterntranstrongermirror.gif?2), url(/img/textures/corrurippletran.gif);
+    background-size: auto, auto, auto 100%, auto;
+    background-position: center 0%, center 100%, center, center;
+    background-repeat: repeat-x, repeat-x, repeat-x, repeat;
+    opacity: 0;
+    transition: opacity 4s ease-in;
+}
+
+#office_elevator #content.breaking6::after {
+    opacity: 1;
+}
+
+#content.breaking6::before {
+    opacity: 0;
+}
+
+
+[locale="office"]#content {
+    background: white;
+    background-image: url(/img/local/city/officeupperbg.gif?);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+[locale="office"]#realgrid .gridpiece.plain, 
+[locale="office"]#realgrid .gridpiece.raised-floaty {
+    background: url(/img/textures/marble.gif);
+    border: unset;
+}
+
+[locale="office"]#realgrid .gridpiece.plain.gap, 
+[locale="office"]#realgrid .gridpiece.raised-floaty.gap {
+    background: url(/img/textures/corrurippletran.gif);
+}
+
+[locale="office_cass"]#content {
+    background: white;
+    background-image: url(/img/local/city/officetopbg.gif?);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+[locale="office_cass"]#realgrid .gridpiece.plain, 
+[locale="office_cass"]#realgrid .gridpiece.raised-floaty {
+    background: url(/img/textures/marble.gif);
+    border: unset;
+}
+
+[locale="office_data"]#content {
+    background: black;
+    background-image: url(/img/local/city/officeupperbgblack.gif?);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+}
+
+[locale="office_data"]#realgrid .gridpiece.plain, 
+[locale="office_data"]#realgrid .gridpiece.raised-floaty {
+    background: url(/img/textures/marbletranvertfaded.gif?);
+    border: unset;
+}
+
+#papercupyay {
+    position: absolute;
+    bottom: 0;
+    left: 15vw;
+    width: 25vw;
+    height: 50vh;
+    background: url(/img/local/city/papercup.gif);
+    background-position: bottom;
+    background-repeat: no-repeat;
+    transform: translateY(10vh) rotate(20deg);
+    transition: transform 2s ease-in-out;
+}
+
+#papercupyay.sip {
+    transform: translateY(10vh) rotate(20deg) rotateX(-80deg) scale(3);
+}
+
+.caseportal {
+    position: absolute;
+    width: var(--tile3);
+    height: var(--tile3);
+    background: black;
+    mask-image: url(/img/sprites/director/wigglymask.gif?6);
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#realgrid .dyp .dypcontent.caseportaleff {
+    background-position: center;
+}
+
+.caseportal .target {
+    width: 50%;
+    height: 50%;
+    top: unset;
+    left: unset;
+}
+
+/* datazone */
+.mask-hunger .datadoor {
+    background-image: url(/img/local/city/office/securedoor.gif) !important;
+    --dyp-width: 2.5 !important;
+    --dyp-height: 2.5 !important;
+}
+
+.locked .datadoorlock {
+    --dyp-image: url(/img/local/city/office/securedoordarkmelted.gif) !important;
+}
+
+.dataslide {
+    background-image: center;
+    background-size: contain;
+    animation-play-state: paused !important
+}
+
+#content.dataplay .dataslide {
+    animation-play-state: running !important;
+}
+
+.slide-1 { animation: DATASLIDE1 16s linear infinite }
+.slide-2 { animation: DATASLIDE2 16s linear infinite }
+.slide-3 { animation: DATASLIDE3 16s linear infinite }
+.slide-4 { animation: DATASLIDE4 16s linear infinite }
+
+@keyframes DATASLIDE1 {
+    0%, 24% { background-image: url(/img/local/city/office/data/slide1.gif) }
+    25%, 49% { background-image: url(/img/local/city/office/data/slide2.gif) }
+    50%, 74% { background-image: url(/img/local/city/office/data/slide3.gif) }
+    75%, 100% { background-image: url(/img/local/city/office/data/slide4.gif) }
+}
+
+@keyframes DATASLIDE2 {
+    0%, 24% { background-image: url(/img/local/city/office/data/slide1.gif) }
+    25%, 49% { background-image: url(/img/local/city/office/data/slide5.gif) }
+    50%, 74% { background-image: url(/img/local/city/office/data/slide6.gif) }
+    75%, 100% { background-image: url(/img/local/city/office/data/slide7.gif) }
+}
+
+@keyframes DATASLIDE3 {
+    0%, 24% { background-image: url(/img/local/city/office/data/slide1.gif) }
+    25%, 49% { background-image: url(/img/local/city/office/data/slide8.gif) }
+    50%, 74% { background-image: url(/img/local/city/office/data/slide9.gif) }
+    75%, 100% { background-image: url(/img/local/city/office/data/slide10.gif) }
+}
+
+@keyframes DATASLIDE4 {
+    0%, 24% { background-image: url(/img/local/city/office/data/slide1.gif) }
+    25%, 49% { background-image: url(/img/local/city/office/data/slide11.gif) }
+    50%, 74% { background-image: url(/img/local/city/office/data/slide12.gif) }
+    75%, 100% { background-image: url(/img/local/city/office/data/slide2.gif) }
 }
 </style>
 
@@ -1051,7 +1317,7 @@ body#city_banks_flip .envoy {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1757535174264443963,
+				cacheval: 1758921388640655831,
 
 				
 				image: "/img/socials/city.gif",
@@ -1078,10 +1344,15 @@ body#city_banks_flip .envoy {
 				
 				mothComment: ()=>{
     var moth = "pretty sure this envoy guy isn't being remembered right lmao"
-    
-    if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was"
 
-    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    if(env.stage.name.includes("office_data")) {
+        moth = "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing";
+        change("2040thing", true)
+    }
+    else if(env.stage.name.includes("office_")) moth = "this is definitely looking like the old west coast HQ";
+    else if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was";
+
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?";
 
     return moth
 }
@@ -1090,13 +1361,15 @@ body#city_banks_flip .envoy {
 
 				
 				mothChat: {
-					startName: "about the street",
+					startName: "about the city",
 					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
 				},
 				
 				
 				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
 					body.setAttribute('page', page.name)
 					content.setAttribute('page', page.name)
 					document.querySelector('#static .enter').setAttribute('page', page.title)
@@ -1195,6 +1468,11 @@ body#city_banks_flip .envoy {
 					
 						
 						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
 							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
 						
 					
@@ -1216,6 +1494,16 @@ body#city_banks_flip .envoy {
 						
 						
 							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
 						
 					
 						
@@ -1256,6 +1544,11 @@ body#city_banks_flip .envoy {
 							
 							
 							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
 						
 					
 					
@@ -1306,10 +1599,17 @@ body#city_banks_flip .envoy {
 							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
 						
 					
+						
+						
+							env.definitions[`θparasite`] = `'a simple game of resource management and theft';'an oltazni favorite'`;
+						
+					
 					
 					//dynamically inserted
 					 
-						//cleanup in case they left early
+						page.maskJoyNote = "\nLOCAL_RESONANCE::'major';'various spatial and responsive thoughtforms detected'"
+
+//cleanup in case they left early
 change('citystreet_cafeworking', false)
 
 env.citystreet = {
@@ -1347,6 +1647,61 @@ env.citystreet = {
         volume: 0.9,
         sprite: {
             __default: [0, 81450, true]
+        }
+    }),
+
+    officetheme: new Howl({
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.65
+        },
+        src: ['/audio/solaoffice.ogg'],
+        preload: true,
+        loop: true,
+        rate: 1,
+        volume: 0.65,
+        sprite: {
+            __default: [100, 999999999, true] // turns out this just works // WHAT THE FUCK
+        }
+    }),
+
+    officethemedata: new Howl({
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.9
+        },
+        onplay: ()=>content.classList.add('dataplay'),
+        onstop: ()=>content.classList.remove('dataplay'),
+        onpause: ()=>content.classList.remove('dataplay'),
+        src: ['/audio/soladata.ogg'],
+        preload: true,
+        loop: true,
+        rate: 1,
+        volume: 0.9,
+        sprite: {
+            __default: [50, 192040, true]
+        }
+    }),
+
+    walk: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/crossingwalk.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        sprite: {
+            __default: [0, 2500, true]
+        }
+    }),
+
+    wait: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/crossingwait.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        sprite: {
+            __default: [0, 2500, true]
         }
     }),
 
@@ -1440,7 +1795,7 @@ env.citystreet = {
                 setTimeout(()=>chatter({actor: 'envoy', text: `Pretty good, right?`}), 32000)
                 setTimeout(()=>chatter({actor: 'akizet', text: `it will do`}), 35000)
                 setTimeout(()=>chatter({actor: 'envoy', text: `Great! Let's head down to the office.`}), 37000)
-                setTimeout(()=>chatter({actor: 'envoy', text: `I heard you have some news about the call?`}), 39000)
+                setTimeout(()=>chatter({actor: 'envoy', text: `I heard you have some news about the Call?`}), 39000)
                 setTimeout(()=>chatter({actor: 'akizet', text: `oh yes, but... let us talk of it in private`}), 42000)
                 change('citystreet_gotdrinks', true)
 
@@ -1472,12 +1827,90 @@ env.citystreet = {
     },
 
     pickFlower: ()=>{
-        document.querySelectorAll('.peculiar.dyp').forEach(el=>{
+        env.stage.querySelectorAll('.peculiar.dyp').forEach(el=>{
         el.innerHTML = ""
             el.classList.remove('peculiar', 'dyp')
             el.classList.add('blocks')
         })
-    }
+    },
+
+    mask: (ev) => {
+        console.log("called", ev)
+        if(ev.detail.mask == "freedom") return;
+        if(ev.detail.oldMask == "joy" || ev.detail.mask == "joy") switch(env.stage.name) {
+            case "city_office":
+            case "city_street3":
+                refreshStage()
+            break
+            
+            case "city_cafe":
+            case "city_banks_flip":
+                if(env?.buddy_globalRotwatcher?.currentLocation == page.path && check("citystreet__rotmeet")) refreshStage()
+            break
+        }
+    },
+
+    descent: () => {
+        let done = check("pit__introdescent") || check("pit__altdescent")
+        let speedmode = check("TEMP!!elevatorfast")
+
+        env.forceSfxInheritPitch = true
+        sfxmap.rate(0.2)
+
+        let time = 0
+
+        MUI("off");MUI("prohibit")
+        env.setTimeout(()=> {content.classList.add("breaking-1")}, time += 400)
+        env.setTimeout(()=> {content.classList.add("breaking0")}, time += 100)
+        env.setTimeout(()=> {env.stage.noCamReset = true;content.classList.add("breaking1"); play("criticalError", 0.2, 0.75, true)}, time += 500)
+        env.setTimeout(()=> {play("scarydoia", 0.2, 1, true);vfx({type: "darkflash", state: true})}, time += 9000) // 9000
+        env.setTimeout(()=> {content.classList.add("breaking2"); if(check("mask-freedom")) mask({name: "freedom", toggle: false, playSound: false})}, time += 500); // 500
+        env.setTimeout(()=> {vfx({type: "darkflash", state: false})}, time += 500) // 500
+        chatter({actor: 'sys', text: `WARNING::'memory stream error';'extreme incoherence detected'`, delay: time += 500, readout: true, duration: 10000}) // 500
+        chatter({actor: 'envoy', text: `Again? Sorry for the trouble, it's an older building.`, delay: time += 500}) // 500
+        if(!speedmode) chatter({actor: 'envoy', text: `You'd think with all the funding we get that it'd be more reliable.`, delay: time += 2500,}) // 2500
+        if(!speedmode) chatter({actor: 'envoy', text: `Hahaha, I mean, there's more important stuff to spend money on than elevators.`, delay: time += 5000}) // 5000
+        env.setTimeout(()=> content.classList.add("breaking3"), time += 2000) // 2000
+        env.setTimeout(()=> {content.classList.add("breaking4"); play("scarydoia", 0.2, 1, true)}, time += 500) // 500
+        if(!speedmode) chatter({actor: 'envoy', text: `Anyway, ann y ,, an y way, any way, `, delay: time += 500}) // 500
+        env.setTimeout(()=> {setCam({x: 2, y: 2, rotation: 180, offsetCamera: "rotateX(-90deg) rotateZ(0deg)", distance: 1, height: 0}); cutscene(true); ratween(env.bgm, 2, 10000);play("scarydoia", 0.2, 1, true) }, time += 1500) // 1500
+        chatter({actor: 'sys', text: `ALERT::'exiting stream';'recollection locus unable to proceed'`, delay: time += 500, readout: true, duration: 10000}) // 500
+
+        if(!done) chatter({actor: 'moth', text: `dude? you ok in there?`, delay: time += 2000, readout: true}) // 2000
+        if(!done) chatter({actor: 'self', text: `just fine`, delay: time += 3000, readout: true}) // 3000
+
+        env.setTimeout(()=> {content.classList.add("breaking5"); play("scarydoia", 0.2, 1, true)}, time += 500) // 500
+        env.setTimeout(()=> {setCam({x: 2, y: 2, rotation: 180, offsetCamera: "rotateX(-90deg) rotateZ(930deg)", distance: 3, height: 0}); ratween(env.bgm, 0.1, 5000);content.classList.add("breaking6"); play("scarydoia", 0.2, 1, true)}, time += 500) // 500
+
+        chatter({actor: 'sys', text: `NOTICE::ERROR::'memory stream lost';'tracing closest coherent position'`, delay: time += 4500, readout: true, duration: 10000}) // 4500
+
+        env.setTimeout(()=> {
+            change("TEMP!!from", "citystreet")
+            body.classList.add('hard-cut')
+            play("scarydoia", 0.2, 1, true)
+            play("scarydoia", 0.2, 1, true)
+            moveTo("/local/uncosm/pit/")
+
+            setTimeout(()=> {
+                env.forceSfxInheritPitch = false
+                body.classList.remove('hard-cut')
+                play("scarydoia", 0.2, 1, true)
+                cutscene(false)
+                change("TEMP!!elevatorfast", true)
+            }, 2000)
+        }, time += 500)        // 500
+    },
+
+    oliverCup: ()=>{
+        content.querySelectorAll('#papercupyay').forEach(el=> el.remove())
+        change("STAGE!!watergave", true)
+        change("STAGE!!watercup", false)
+        change("STAGE!!sipped", false)
+
+        let count = check("PAGE!!olivercup") || 0
+        env.stage.querySelectorAll(".busy").forEach(el=>el.classList.add(`cup${count + 1}`))
+        change("PAGE!!olivercup", count + 1)
+    },
 }
 
 createEntity({
@@ -1542,6 +1975,11 @@ createEntity({
             name: "chat",
             exec: ()=> startDialogue('envoy'),
             showIf: ()=> (check('stageroom', 'city_street') || check('stageroom', 'city_street2') || check('stageroom', 'city_street3'))
+        },
+        {
+            name: "chat",
+            exec: ()=> startDialogue('envoyinside'),
+            showIf: ()=> (check('stageroom', 'office_elevator') || check('stageroom', 'office_hall'))
         },
         {
             name: "recommend",
@@ -1656,7 +2094,19 @@ createEntity({
             name: "observe",
             exec: ()=>{
                 startDialogue('walker3')
-            }
+            },
+            showIf: ()=> (check('stageroom', 'city_street'))
+        },
+        {
+            name: "chat",
+            exec: ()=> {
+                if(check("citystreet__oliverinside-cooler")) {
+                    startDialogue('oliverinside')
+                } else {
+                    startDialogue('oliverinside', {specificChain: "cooler"})
+                }
+            },
+            showIf: ()=> (check('stageroom', 'office_hall'))
         },
         
         {
@@ -1666,7 +2116,7 @@ createEntity({
             exec: ()=>{
                 cutscene(true)
 
-                chatter({actor: 'cloaked streetwalker', text: `What? Sorry, I can't go with you, I have a meeting at 2.`, readout: true, delay: 2000})
+                chatter({actor: 'cloaked streetwalker', text: `What? Sorry, I can't go with you, I have a meeting at nine.`, readout: true, delay: 2000})
                 chatter({actor: 'cloaked streetwalker', text: "Wish I could, though--sounds like fun!", readout: true, delay: 4000})
                 chatter({actor: 'sourceless', text: "is he speaking through his communicator?", readout: true, delay: 8000})
                 chatter({actor: 'sourceless', text: "why was he looking at me when he said that?", readout: true, delay: 12000})
@@ -1757,7 +2207,7 @@ env.dialogueActors["stre wal k"] = {
     element: ".creep",
 }
 
-env.dialogueActors["cloaked streetwalker"] = {
+env.dialogueActors["oliver"] = env.dialogueActors["cloaked streetwalker"] = {
     image: '/img/local/city/realeye.gif',
     type: "recollection portrait-bright portrait-cover",
     element: ".busy",
@@ -1794,7 +2244,7 @@ env.stageEntities['O'] = {
 }
 
 env.stageEntities['r'] = {
-    class:"road",
+    class:"road blocks",
 }
 
 env.stageEntities['l'] = {
@@ -1822,7 +2272,7 @@ env.stageEntities['i'] = {
 }
 
 env.stageEntities['R'] = {
-    class:"road prop",
+    class:"road prop blocks",
     contains: {
         slug: 'R',
         id: "car",
@@ -1831,7 +2281,7 @@ env.stageEntities['R'] = {
 }
 
 env.stageEntities['T'] = {
-    class:"road prop",
+    class:"road prop blocks",
     contains: {
         slug: 'R',
         id: "car",
@@ -1844,6 +2294,11 @@ env.stage.locales["city"] = [
     [".empty.plain", "/img/local/city/tiles/empty.gif"],
     [".prop", "/img/local/city/tiles/occupied.gif"],
     [".road", "/img/textures/black.gif"],
+]
+
+env.stage.locales["office"] = [
+    [".empty.plain", "/img/textures/marble.gif"],
+    [".prop", "/img/textures/marble.gif"],
 ]
 
 env.stage.locales["watercity"] = [
@@ -1900,25 +2355,46 @@ env.stages['city_street'] = {
                 examineEntity: "cloaked streetwalker"
             }
         },
+
+        P: {
+            class: "notile",
+            contains: {
+                class: "joyonly freedomonly",
+                examineEntity: "×è.÷ùÏÏøø",
+                html: `<div class="joygarnish garnishprop" style="transform: translateY(-25%) translateZ(-50px);"></div>`,
+                dyp: {
+                    class: "camguy lookdown",
+                    image: 'url(/img/local/beneath/lost_pedestrian1_lookdown.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: 'rotateY(253deg) translateY(var(--tile-9))'
+                }
+            } 
+        },
     },
 
-    plan: [
-        'r','r','r','r','.','.','O','.','.','.','.',
-        'r','r','r','r','░','░','p','░','░','r','.',
-        'r','r','r','r','░','░','░','░','░','r','.',
-        'r','r','r','r','░','░','░','░','░','r','.',
-        'r','r','r','r','░','░','l','░','░','r','.',
-        'r','r','r','r','░','░','░','░','l','r','.',
-        'r','r','r','r','░','░','░','░','b','r','.',
-        'r','r','r','r','░','░','░','░','░','e','f',
-        'r','r','r','r','░','░','░','░','░','r','.',
-        'r','r','r','r','░','l','░','░','░','r','.',
-        'r','r','r','r','░','░','░','░','l','r','.',
-        'r','r','r','r','░','░','l','░','░','r','.',
-        'r','r','r','r','░','░','░','░','░','r','.',
-        'r','r','r','r','░','░','░','░','░','r','.',
-        'r','R','R','r','.','.','s','.','.','.','.',
-    ]
+    plan: `
+        rrrr..O....
+        rrrr░░p░░r.
+        rrrr░░░░░r.
+        rrrr░░░░░r.
+        rrrr░░l░░r.
+        rrrr░░░░lr.
+        rrrr░░░░br.
+        rrrr░░░░░ef
+        rrrr░░░░░r.
+        rrrr░l░░░r.
+        rrrr░░░░lrP
+        rrrr░░l░░r.
+        rrrr░░░░░r.
+        rrrr░░░░░r.
+        rRRr..s....
+    `,
+
+    planAdjustment: (plan) => {
+        if(check("effigy_sipper")) return plan 
+        return plan.replace("P", ".")
+    }
 }
 
 env.stages['city_street2'] = {
@@ -1927,18 +2403,22 @@ env.stages['city_street2'] = {
     exec: ()=>{ 
         page.bgm.rate(1)
         if(!check('ep0_epilogue')) {
-            document.querySelectorAll('#grid-ref .later, #realgrid .later').forEach(e=>{
-                console.log(e)
-                e.classList.remove('prop', 'later')
-                e.innerHTML = ""
+            [env.stage.real, env.stage.ref].forEach(layer => {
+                layer.querySelectorAll('.later').forEach(e => {
+                    console.log(e)
+                    e.classList.remove('prop', 'later')
+                    e.innerHTML = ""
+                })
             })
         }
 
         if(!check('ENV!!ep2')) {
-            document.querySelectorAll('#grid-ref .ep2, #realgrid .ep2').forEach(e=>{
-                console.log(e)
-                e.classList.remove('prop', 'later', 'teleport')
-                e.innerHTML = ""
+            [env.stage.real, env.stage.ref].forEach(layer => {
+                layer.querySelectorAll('.ep2').forEach(e => {
+                    console.log(e)
+                    e.classList.remove('prop', 'later', 'teleport')
+                    e.innerHTML = ""
+                })
             })
         }
     },
@@ -1995,7 +2475,11 @@ env.stages['city_office'] = {
     locale: "city",
     width: 5,
     enterDirection: "up",
-    exec: ()=>env.bgm.rate(0.5),
+    exec: ()=>{
+        if(env.bgm._src.includes("office")) {
+            changeBgm(page.bgm, {rate: 0.5})
+        } else env.bgm.rate(0.5)
+    },
 
     entities: {
         e: {
@@ -2004,6 +2488,7 @@ env.stages['city_office'] = {
             shouldFace: 'left',
             teleportTarget: "city_street"
         },
+        
         v: {
             class: "blocks vators",
             contains: {
@@ -2011,27 +2496,88 @@ env.stages['city_office'] = {
                 id: 'chattrigger',
                 class: "vator",
                 examineEntity: "the room high up",
-                html: `<figure></figure>`
+                html: ``
             }
-        }
+        },
+        
+        V: {
+            class: "blocks vators",
+            contains: {
+                slug: 'v',
+                id: 'chattrigger',
+                class: "vator alt",
+                examineEntity: "the room high up",
+                html: ``
+            }
+        },
+        
+        J: {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    class: "joygap creep",
+                    image: 'url(/img/textures/flowergate0_creep.gif)',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+
+        E: {
+            teleportTarget: "office_elevator"
+        },
     },
 
-    plan: [
-        '.','.','e','.','.',
-        '░','░','p','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '.','.','v','.','.',
-    ]
+    plans: {
+        default: `
+            ..e..
+            ░░p░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ..v..
+        `,
+
+        joy: `
+            ..e..
+            ░░p░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            ░░░░░
+            E.V..
+            J....
+        `,
+    },
+
+    getPlan: function() {
+        let plan = this.plans.default
+        
+        switch(check("mask")) {
+            case "joy":
+                plan = this.plans.joy
+            break
+        }
+
+        return plan
+    },
 }
 
 createEntity({
@@ -2044,12 +2590,16 @@ createEntity({
         {
             name: "enter",
             exec: ()=> env.citystreet.envoyChat(true),
-            showIf: ()=>{return !check('interview1__firstchat-behonest')},
+            showIf: ()=>{
+                return !check('interview1__firstchat-behonest') && check('mask') != "joy"
+            },
         },
         {
             name: "enter",
             exec: ()=> env.citystreet.envoyChat(false),
-            showIf: ()=>{return check('interview1__firstchat-behonest')},
+            showIf: ()=>{
+                return check('interview1__firstchat-behonest') && check('mask') != "joy"
+            },
         }
     ]
 })
@@ -2149,10 +2699,12 @@ env.stages['city_cafe'] = {
     exec: ()=>{ 
         page.bgm.rate(0.9)
         if(!check('ep0_epilogue')) {
-            document.querySelectorAll('#grid-ref .later, #realgrid .later').forEach(e=>{
-                console.log(e)
-                e.classList.remove('prop', 'later')
-                e.innerHTML = ""
+            [env.stage.real, env.stage.ref].forEach(layer => {
+                layer.querySelectorAll('.later').forEach(e => {
+                    console.log(e)
+                    e.classList.remove('prop', 'later')
+                    e.innerHTML = ""
+                })
             })
         }
     },
@@ -2208,6 +2760,16 @@ env.stages['city_cafe'] = {
             }
         },
 
+        T: {
+            class: "prop later",
+            contains: {
+                slug: 'T',
+                id: 'creep',
+                class: "civvie creep rotxa",
+                examineEntity: "stre wal k"
+            }
+        },
+
         v: {
             class: "prop blocks ep1on",
             contains: {
@@ -2215,19 +2777,163 @@ env.stages['city_cafe'] = {
                 class: "tv",
                 examineEntity: "electric face box"
             }
-        }
+        },
+
+        ⳉ: {
+            class: "road blocks",
+            contains: { 
+                class: "rotainer",
+                examineEntity: "rotwatcher",
+                html: `<figure class="rotfig"></figure>`,
+                dyp: {
+                    image: 'transparent',
+                    width: 3,
+                    height: 2.5,
+                    transform: `rotateY(90deg) translateX(200%) rotateY(-45deg) translateX(-25%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        },        
     },
 
-    plan: [
-        '.','.','e','.','.',
-        't','░','p','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        '░','░','░','░','░',
-        'r','r','c','r','r',
-        'r','r','m','w','v',
-    ]
+    plan: `
+        ..e..
+        t░p░░
+        ░░░░░
+        ░░░░░
+        ░░░░░
+        rrcrr
+        ⳉrmwv
+    `,
+
+    planAdjustment: (plan) => {
+        console.log("hello.", plan)
+        let newPlan = plan
+        if(!check("mask", "joy") || env?.buddy_globalRotwatcher?.currentLocation != page.path) {
+            console.log("no joy")
+            newPlan = newPlan.replace("ⳉ", "r")
+        } else {
+            newPlan = newPlan.replace("t", "T")
+        }
+
+        console.log(plan)
+
+        return newPlan
+    }
 }
+
+/* e4a1 -> */ env.dialogues["rotmeet"] = generateDialogueObject(`
+start
+    sourceless
+        this thoughtform lingers over a malformed one.
+            EXEC::changeBgm(env.rotWatcherMusic)
+        its representation in the render is still, yet you feel it moving beneath the surface.
+        prodding at the damaged entity below it, somehow.
+
+    self
+        hello?
+
+    sourceless
+        its movement slowly ceases. you feel its attention upon you.
+        something presses against your mind's eye, and while concepts manifest as thoughts,
+        it feels like they aren't truly intended for you.
+    
+    rotwatcher
+        the audience: external force, alien to the grand stage. it has been observed for the first time recently.
+        no attempt using any known method of communication has succeeded in gaining the attention of the audience.
+        it is suspected to lack requisite sensory organs, precluding perception beyond standard coherent thoughtform presentation.
+        this marks the first occasion in which the audience has succeeded in communicating. the mechanism by which it has changed is unknown.
+
+    self
+        are you talking about me?
+        what are you?
+    
+    sourceless
+        the thing draws closer to your mind's eye.
+        its attention pulls into itself.
+
+    rotwatcher
+        rotwatcher: formerly predatory thoughtform, presenting emergent lucidity and cognitive function. self-assigned nomenclature predicated upon lost progenitor's knowledge.
+        suspected to be product of direct damage to purpose enforcement within delaminated spatial thoughtspace, followed by mutation and mindless survival of undetermined duration.
+        it is observed to wander, internally cataloguing forms of deterioration and their products without interference.
+
+    moth
+        that's... 
+        kind of useful?
+
+    self
+        i guess
+    
+    sourceless noprocess
+        you focus upon the rotwatcher.
+    
+    self
+        why do you do this?
+        can you tell me more?
+    
+    sourceless
+        it returns to examining the damaged thoughtform without answering.
+    
+    RESPONSES::self
+        what about that thoughtform?<+>CHANGE::++rotcity
+        whatever<+>END
+            
+END::revertBgm()
+`)
+
+/* e4a1 -> */ env.dialogues["++rotcity"] = generateDialogueObject(`
+start
+    self
+        what's up with this thoughtform?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        referentially sustained deterioration: common condition within damaged lesser thoughtforms.
+        critically damaged thoughtforms may continue existence with minimal remaining material, due to the physical referential tie made by their containing thoughtspace.
+        sustained connection allows thoughtspace organelles to provide resources and support unconditionally.
+        a significant number of damaged thoughtforms may be sustained by one thoughtspace, however it is a large strain that often results in catastrophic thoughtspace delamination.
+        this is a common trajectory and outcome that has been observed in large quantity throughout the deterioration of the grand stage.
+        however: the custodian's recent decision to dissociate most damaged thoughtforms has reduced its frequency.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+
+END::revertBgm()
+`)
+
+env.dialogues["++rotcityflip"] = generateDialogueObject(`
+start
+    self
+        what's going on here?
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        spatial delamination gradient: early stage of thoughtspace breakdown by consequence of malnutrition. common in regions of densely packed memories.
+        membrane of containing thoughtspace is observed to thin and melt. points of exit and entry become indistinguishable from adjacent connective media.
+        previously recorded instances suggest presently observed thoughtspace's trajectory to be regional conglomeration.
+
+    sourceless
+        you feel a part of the thoughtform twist underneath the render.
+
+    rotwatcher
+        regional conglomeration: blending of multiple adjacent thoughtspaces in middle or late stages of spatial delamination.
+        resulting organism combines organelles and remaining outer membrane material for continued survival.
+        it is presently unknown whether this function is a survival mechanism inherent to the thoughtspace classification of thoughtform or the result of an emergent sentience similar to independent thoughtform awakening.
+        further study is required. however: the arrival and abundance of external resources combined with the custodian's resumation of activity has slowed all known instances of early stage regional conglomeration, including present thoughtspace.
+        likelihood of further opportunity to study phenomena is extremely low without direct intervention. direct intervention is inadvisable for continued observation of the grand stage's recovery.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+`)
 
 env.dialogues.envoyStreetResponses = generateDialogueObject(`
 RESPOBJ::
@@ -2316,7 +3022,7 @@ cafe
         where is the 'cafe'?
     
     envoy
-        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
+        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
     
     RESPOBJ::envoyStreetResponses
 
@@ -2806,10 +3512,10 @@ start
     cloaked streetwalker
         Hey! Gordon! Who's this?
             EXEC::body.classList.add('zoom')
-        Let me guess, exchange initiative?
+        Let me guess, Exchange Initiative?
     
     envoy
-        Actually, Oliver, this is Akizetesche! "Signal" initiative.
+        Actually, Oliver, this is Akizetesche! "Signal" Initiative.
 
     cloaked streetwalker
         No shit! I didn't know you got assigned into that.
@@ -2824,7 +3530,7 @@ start
 
     cloaked streetwalker
         Sure thing, Akizet.
-        And hey, I'd love to chat, but I'm on booth duty in like 10.
+        And hey, I'd love to chat, but I'm on booth duty in like ten.
 
     envoy
         No worries, Oliver. We've got business too.
@@ -3073,18 +3779,74 @@ createEntity({
     ]
 })
 
+createEntity({
+    name: "vehicle stream crossing mechanism",
+    type: "recollection thoughtform portrait-auto portrait-center joyon",
+    image: "/img/local/city/blacklamp_crossing.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection';'experiential bridge'
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'devised before the later age of darkness out of fear for what may become of my most cherished memories';'hold these ones far from those who mean harm interloper'">'hidden via a camouflage of my own design'</span>`,
+    actions: [
+        {
+            name: "press",
+            exec: ()=>{
+                forcePlay("muiHover", 3)
+                if(env.citystreet.buttonActive && !env.citystreet.wait.playing() && !env.citystreet.walk.playing()) {
+                    env.citystreet.wait.play()
+                    env.citystreet.buttonTimeout = env.setTimeout(() => {
+                        refreshStage({specificPlan: "joycrossing"})
+                        env.bgm.rate(0.25)
+                        content.classList.add('hide-envoy')
+                        env.citystreet.wait.stop()
+                        env.citystreet.walk.play()
+                        env.setTimeout(() => {
+                            env.citystreet.walk.stop()
+                        }, 5000)
+                    }, rand(5000, 10000));
+                } else if(env.citystreet.buttonActive) {
+                    env.citystreet.wait.seek(0)
+                } else {
+                    env.citystreet.walk.seek(0)
+                }
+            },
+        }
+    ]
+})
+
 env.stages['city_street3'] = {
     locale: "nightcity",
     width: 14,
     exec: ()=>{ 
-        page.bgm.rate(1)
         if(!check('ep0_epilogue')) {
-            document.querySelectorAll('#grid-ref .later, #realgrid .later').forEach(e=>{
-                console.log(e)
-                e.classList.remove('prop', 'later')
-                e.innerHTML = ""
+            [env.stage.real, env.stage.ref].forEach(layer => {
+                layer.querySelectorAll('.later').forEach(e => {
+                    console.log(e)
+                    e.classList.remove('prop', 'later')
+                    e.innerHTML = ""
+                })
             })
         }
+
+        env.stage.real.querySelectorAll('#crossbutton').forEach(el=>{
+            el.addEventListener('mouseenter', ()=>{play("muiHover", 1)})
+
+            el.addEventListener('click', ()=>{
+                env.entities["vehicle stream crossing mechanism"].actions[0].exec()
+            })
+        })
+    },
+
+    leaveExec: ()=> {
+        env.citystreet.buttonActive = false
+        clearTimeout(env.citystreet.buttonTimeout)
+        env.setTimeout(() => {
+            if(env.stage.name != "city_street3" || check("mask") != "joy") {
+                env.citystreet.wait.stop()
+                env.citystreet.walk.stop()
+                env.bgm.rate(1)
+                content.classList.remove('hide-envoy')
+            }            
+        }, 50)
     },
 
     entities: {
@@ -3131,30 +3893,199 @@ env.stages['city_street3'] = {
                 }
             } 
         },
+
+        ";": {
+            class: "prop",
+            contains: { 
+                html: `<div id="crossbutton" class="target" entity="vehicle stream crossing mechanism"></div>`,
+                dyp: {
+                    image: 'url(/img/local/city/blacklamp_crossing.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: "rotateY(90deg)"
+                }
+            } 
+        },
+
+        "O": {
+            class: "prop road blocks",
+            contains: { 
+                dyp: {
+                    image: 'url(/img/local/city/crossing_locked.gif)',
+                    width: 2,
+                    height: 4,
+                    style: "transform: translate(50%, 12.5%);bottom: unset;"
+                }
+            } 
+        },
+
+        "o": {
+            class: "prop road blocks",
+            contains: { 
+                dyp: {
+                    image: 'url(/img/local/city/crossing.gif)',
+                    width: 2,
+                    height: 4,
+                    style: "transform: translate(50%, 12.5%);bottom: unset;"
+                }
+            } 
+        },
         
         "C": {
             teleportTarget: "city_banks",
             teleportSpot: 112,
             shouldFace: "down"
         },
+        
+
+        J: {
+            class: "road",
+            contains: {
+                dyp: {
+                    class: "joygap",
+                    image: 'url(/img/textures/flowergate0.gif)',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+
+        "j": {
+            class: "faketeleport joyport",
+            exec: ()=>{ 
+                change("TEMP!!from", "street")
+                moveTo("/local/city/aquarium/") 
+            }
+        },
+
+        "¤": {
+            class: "road darktile blocks",
+            contains: {
+                html: `
+                    <div class="target joyonly" entity="˜CâR…"></div>
+                    <div class="joyonly joygarnish garnishportal caseportal"><div class="carsign"></div></div>
+                `,
+                dyp: {
+                    image: 'url(/img/local/beneath/car.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(180deg)"
+                }
+            } 
+        },
+
+        "ø": {
+            contains: {
+                examineEntity: "s w   al kk",
+                html: `<div class="joyonly joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "civvie swalk face-creature",
+                    image: 'url(/img/local/city/pedestrian5.gif)',
+                    width: 1.5,
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                    style: "transition: transform 400ms ease-in-out;"
+                }
+            } 
+        },
+        
+        G: {
+            class: "notile",
+            contains: {
+                examineEntity: "×è.÷ùÏÏøø",
+                class: `joyonly freedomonly`,
+                html: `<div class="joygarnish garnishprop" style="backface-visibility: visible;"></div>`,
+                dyp: {
+                    class: "camguy",
+                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
+                    width: 1,
+                    height: 2.5,
+                    transform: 'translateZ(var(--tile-5)) translate(var(--tile-8)) rotateY(-120deg)'
+                }
+            } 
+        },
     },
 
-    plan: `
-        rrrr.n........
-        rrrr░p░r......
-        rrrrL░░r......
-        rrrr░░░P......
-        rrrrL░░r......
-        rrrr░░░r......
-        rrrrL░░rrr:rr.
-        rrrr░░░░░░░░░.
-        rrrrl░░░░░░░░C
-        rrrr░░░░░░░░░.
-        rrrrrrrrrrrrrr
-        rrrrrrrrrrrrrT
-        rrrrrrrrrrrrrT
-        rRRrrrrrrrrrrr
-    `
+    plans: {
+        default: `
+            rrrr.n........
+            rrrr░p░r......
+            rrrrL░░r......
+            rrrr░░░P......
+            rrrrL░░r......
+            rrrr░░░rG.....
+            rrrrL░░rrr:rr.
+            rrrr░░░░░░░░░.
+            rrrrl░░░░░░░░C
+            rrrr░░░░░░░░░.
+            rrrrrrrrrrrrrr
+            rrrrrrrrrrrrrT
+            rrrrrrrrrrrrrT
+            rRRrrrrrrrrrrr
+        `,
+
+        joy: `
+            rrrr.n........
+            rrrr░p░r......
+            rrrrL░░r......
+            rrrr░░░P......
+            rrrrL░░r......
+            rrrr░░░rG.....
+            rrrrL░░rrr:rr.
+            rrrr░░░░░░░░░.
+            rrrr;░░░░░░░░C
+            rrrr░░░░░░ø░░.
+            rrrrrrrrrrr¤rr
+            rrrrOrrrrrrrrT
+            rrrrrrrrrrrrrT
+            rRRrrrrrrrrrrr
+        `,
+
+        joycrossing: `
+            rrrr.n........
+            rrrr░p░r......
+            rrrrL░░r......
+            rrrr░░░P......
+            rrrrL░░r......
+            rrrr░░░rG.....
+            rrrrL░░rrr:rr.
+            rrrr░░░░░░░░░.
+            rrrr;░░░░░░░░C
+            rrrr░░░░░░ø░░.
+            rrrrr░rrrrr¤rr
+            rrrro░rrrrrrrr
+            rrrrr░rrrrrrrr
+            rrrrrjrrrrrrrr
+            rrrrrJrrrrrrrr
+        `,
+    },
+
+    getPlan: function() {
+        let plan = this.plans.default
+        
+        switch(check("mask")) {
+            case "joy":
+                plan = this.plans.joy
+                env.citystreet.buttonActive = true
+            break
+
+            default:
+                env.citystreet.buttonActive = false
+        }
+
+        return plan
+    },
+
+    planAdjustment: (plan) => {
+        let newPlan = plan
+
+        if(!check("effigy_sipper")) newPlan = newPlan.replace("G", ".")
+        if(!check("car__intro")) newPlan = newPlan.replace('ø', '░').replace('¤', 'r')
+
+        return newPlan
+    }
 }
 
 env.stages['city_flowers'] = {
@@ -3660,7 +4591,7 @@ END::vfx({type: 'beacon', state: false})
 env.stages['city_banks'] = {
     locale: "nightcity",
     width: 15,
-    exec: ()=> document.querySelectorAll("#realgrid .raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`),
+    exec: ()=> env.stage.querySelectorAll("#realgrid .raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`),
 
     entities: {        
         "t": {
@@ -3717,6 +4648,7 @@ env.stages['city_banks'] = {
 
         "▓": {
             class: "gap incoherentonly",
+            blockIf: ()=> !check("mask", "hunger") && env.effectiveNet >= 0
         },
 
         "h": {
@@ -3780,6 +4712,22 @@ env.stages['city_banks'] = {
                 }
             }
         },
+
+        P: {
+            class: "notile",
+            contains: {
+                class: "joyonly",
+                examineEntity: "×è.÷ùÏÏøø",
+                html: `<div class="joyonly freedomonly joygarnish garnishprop" style="transform: translateY(-25%) translateZ(-50px);"></div>`,
+                dyp: {
+                    class: "camguy lookdown",
+                    image: 'url(/img/local/beneath/lost_pedestrian1_lookdown.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: 'translateY(40%) rotateX(-132deg) rotateY(180deg) translateY(58%)'
+                }
+            } 
+        },
     },
 
     plan: `
@@ -3791,21 +4739,20 @@ env.stages['city_banks'] = {
         ..¡░░░░░░░░░¡..
         ..¡░L░░░░░L░¡..
         ..¡░░░░p░░░░¡..
-        .......t.......
-    `
+        .......t...P...
+    `,
+
+    planAdjustment: (plan) => {
+        if(check("effigy_sipper")) return plan 
+        return plan.replace("P", ".")
+    }
 }
 
 env.stages['city_banks_flip'] = {
     locale: "watercity",
     width: 15,
     exec: ()=> {
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
-        if(check("effigy_fawners")) {
-            document.querySelectorAll('.gridpiece[slug="a"], .gridpiece[slug="A"]').forEach(el=>{
-                el.innerHTML = ""
-                el.classList.remove('dyp')
-            })
-        }
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
     },
 
     entities: {        
@@ -3986,20 +4933,94 @@ env.stages['city_banks_flip'] = {
                 `
             } 
         },
+        
+        P: {
+            contains: {
+                examineEntity: "×è.÷ùÏÏøø",
+                class: `joyonly freedomonly`,
+                html: `<div class="joygarnish garnishprop" style="backface-visibility: visible;"></div>`,
+                dyp: {
+                    class: "camguy",
+                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
+                    width: 1,
+                    height: 2.5,
+                    transform: 'rotateY(-150deg)'
+                }
+            } 
+        },
+
+        ⳉ: {
+            contains: { 
+                class: "rotainer",
+                examineEntity: "rotwatcher",
+                html: `<figure class="rotfig"></figure>`,
+                dyp: {
+                    image: 'transparent',
+                    width: 3,
+                    height: 2.5,
+                    transform: `rotateY(90deg) translateX(200%) rotateY(-45deg) translateX(-25%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        },
+
+        ⳉ: {
+            contains: { 
+                class: "rotainer",
+                examineEntity: "rotwatcher",
+                html: `<figure class="rotfig"></figure>`,
+                dyp: {
+                    image: 'transparent',
+                    width: 3,
+                    height: 2.5,
+                    transform: `rotateY(90deg) translateX(200%) rotateY(-45deg) translateX(-25%) translateY(-50%)`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        },
+
+        ϧ: {
+            class: "notile",
+            contains: { 
+                class: "rotxamine",
+                dyp: {
+                    image: 'url(/img/sprites/rot/rotxa.gif)',
+                    width: 3,
+                    height: 2,
+                    transform: `rotateY(90deg) translateX(200%) rotateY(-45deg) translateX(0%) translateY(-100%) translateZ(var(--tile))`,
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                }
+            } 
+        }
     },
 
     plan: `
         ......=V_=.....
         .....=_O==.ḧ...
-        ..¡░░R░░░░░░¡..
+        ..¡P░R░░░░░░¡..
         ..¡░L░░░░░LA¡..
         ..¡░░░░░░░░a¡..
-        ..r░L░░░░░L░r..
-        ..»»»rrp»»»rr..
+        ..ⳉ░L░░░░░L░r..
+        .ϧ»»»rrp»»»rr..
         .......▓.......
         ...._..▓.=H._..
         .....=.t.._....
-    `
+    `,
+
+    planAdjustment: (plan) => {
+        let newPlan = plan
+
+        if(check("effigy_fawners")) newPlan = newPlan.replace("A", "░").replace("a", "░")
+        if(!check("effigy_sipper")) newPlan = newPlan.replace("P", "░")
+            
+        if(!check("mask", "joy") || env?.buddy_globalRotwatcher?.currentLocation != page.path || !check("citystreet__rotmeet")) {
+            console.log("no rot")
+            newPlan = newPlan.replace("ⳉ", "r")
+            newPlan = newPlan.replace("ϧ", ".")
+        }
+
+        return newPlan
+    }
 }
 
 createEntity({
@@ -4073,7 +5094,7 @@ createEntity({
                     vfx({type: 'flash', state: false})
 
                     change('effigy_fawners', true)
-                    document.querySelectorAll('.gridpiece[slug="a"], .gridpiece[slug="A"]').forEach(el=>{
+                    env.stage.querySelectorAll('.gridpiece[slug="a"], .gridpiece[slug="A"]').forEach(el=>{
                         el.innerHTML = ""
                         el.classList.remove('dyp')
                     })
@@ -4160,6 +5181,1563 @@ start
     RESPONSES::akizet
         i will<+>END
 `)
+
+/* e4a1 */
+createEntity({
+    name: "elevator buttons",
+    type: "recollection thoughtform joyon",
+    image: "/img/local/city/cafemenu.gif",
+    text: `::EXPERIENTIAL THOUGHTFORM
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'conflicting memory sources'">::INCOHERENCE DETECTED</span>,
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`,
+    actions: [
+        {
+            name: "utilize",
+            exec: ()=>{
+                startDialogue('elevator')
+            }
+        }
+    ]
+})
+
+env.stages['office_elevator'] = {
+    width: 5,
+    enterDirection: "up",
+    exec: ()=>env.bgm.rate(0.7),
+
+    entities: {        
+        e: {
+            class: "blocks notile",
+            contains: {
+                examineEntity: "elevator buttons",
+                dyp: {
+                    image: 'url(/img/local/city/vatordoor.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(180deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        ">": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/vatorwall.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(90deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        "<": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/vatorwall.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(-90deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        "v": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/vatorwall.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "translateZ(100px)"
+                }
+            } 
+        },
+    },
+
+    plans: {
+        default: `
+            ..v..
+            .░p░.
+            >░░░<
+            .░░░.
+            ..e..
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.default
+    },
+}
+
+createEntity({
+    name: "water cooler",
+    type: "recollection thoughtform joyon",
+    image: "/img/local/city/watercooler.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'primitive water containment';'not unlike the use of hollowed purifying bulbs in larval times'</span>`,
+    actions: [
+        {
+            name: "get water",
+            exec: ()=>{
+                if(getQueryDist("#creature", ".cooler") < 3) { 
+                    if(!check("STAGE!!watercup")) { 
+                        change("STAGE!!watercup", true)
+                        content.insertAdjacentHTML(`beforeend`, `<span id="papercupyay"><div class="target" entity="frightfully fragile vessel"></div></span>`)
+
+                        if(check("citystreet__oliverinside-cooler")) {
+                            chatter({actor: 'sourceless', text: 'i fetch a thin vessel from its repository, filling it with clear water', readout: true})
+                            chatter({actor: 'sourceless', text: 'i am not certain what trouble he was having...', readout: true, delay: 3000})
+                            chatter({actor: 'sourceless', text: 'the mechanism was quite simple', readout: true, delay: 6000})
+                        } else {
+                            chatter({actor: 'sourceless', text: 'i fetch a thin vessel from its repository, filling it with clear water', readout: true})
+                            chatter({actor: 'sourceless', text: 'what a fascinating little mechanism', readout: true, delay: 3000})
+                        }
+
+                    } else {
+                        chatter({actor: 'sourceless', text: 'i have no need for more', readout: true})
+                    }
+                } else {
+                    chatter({actor: 'sourceless', text: 'it is too far', readout: true})
+                }
+            }
+        }
+    ]
+})
+
+
+createEntity({
+    name: "frightfully fragile vessel",
+    type: "recollection thoughtform portrait-cover portrait-bright joyon",
+    image: "/img/local/city/papercup.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'water contained within the thinnest skin i have ever observed';'i must dull my claws so i do not puncture it'</span>`,
+    actions: [
+        {
+            name: "taste",
+            exec: ()=>{
+                change("STAGE!!sippin", true)
+                change("STAGE!!sipped", true)
+                content.querySelector("#papercupyay").classList.add('sip')
+
+                setTimeout(() => {
+                    chatter({actor: 'sourceless', text: 'i fear i may crush this flimsy thing, but it is worth a test', readout: true})
+                }, 1000)
+
+                setTimeout(() => {
+                    chatter({actor: 'sourceless', text: 'it... yes, it is water', readout: true})
+                    change("STAGE!!sippin", false)
+                    content.querySelector("#papercupyay").classList.remove('sip')
+                }, 6000)
+            },
+            showIf: () => !check("STAGE!!sippin")
+        }
+    ]
+})
+
+env.stages['office_hall'] = {
+    width: 13,
+    enterDirection: "down",
+    exec: ()=>{
+        env.bgm.rate(1)
+        content.querySelectorAll("#realgrid .raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+
+        if(!env.bgm._src.includes("solaoffice")) changeBgm(env.citystreet.officetheme, {rate: 1});
+        if(env.bgm) env.bgm.fade(env.bgm.volume(), 1, 1000)
+
+        env.stage.querySelectorAll("#officefacet").forEach(el=>{
+            if(check("joy#office_hall")) el.classList.add('linked')
+            else el.classList.add('unlinked')
+        })
+        
+        // whatever
+        let cupCount = check("PAGE!!olivercup") || 0
+
+        env.stage.querySelectorAll(".busy").forEach(el=>{
+            for (let i = 0; i < cupCount; i++) {
+                el.classList.add(`cup${i + 1}`)
+            }
+        })
+    },
+
+    leaveExec: ()=>{
+        content.querySelectorAll('#papercupyay').forEach(el=> el.remove())
+    },
+
+    locale: "office",
+
+    entities: {        
+        e: {
+            class: "blocks notile",
+            contains: {
+                examineEntity: "elevator buttons",
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoor.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    noback: true,
+                    transform: "rotateY(180deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        ">": {
+            class: "blocks",
+            teleportTarget: "test",
+            lockFlag: "permalocked",
+            lockExec: ()=>chatter({actor: "sourceless", text: "nothing awaits me there", readout: true}),
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoor.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "rotateY(90deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        "<": {
+            class: "blocks",
+            teleportTarget: "test",
+            lockFlag: "permalocked",
+            lockExec: ()=>chatter({actor: "sourceless", text: "nothing awaits me there", readout: true}),
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoor.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "rotateY(-90deg) translateZ(100px)"
+                }
+            } 
+        },
+
+        "v": {
+            class: "blocks",
+            teleportTarget: "office_cass",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoor.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "translateZ(100px)"
+                }
+            } 
+        },
+
+        "^": {
+            class: "blocks",
+            teleportTarget: "office_data",
+            lockFlag: "EXEC::check('mask', 'hunger')",
+            lockExec: ()=>chatter({actor: "sourceless", text: "i need not spend my time in the meeting chamber now", readout: true}),
+            contains: {
+                class: "datadoor",
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoorgnarpy.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "translateZ(var(--tile-f5)) rotateY(180deg)"
+                }
+            } 
+        },
+        
+        "e": {
+            class: "blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/elevatorsnewweirdbright.gif)',
+                    width: 7,
+                    height: 5,
+                    transform: "rotateY(180deg) translate(-13%, var(--tilef5)) translateZ(var(--tilef5))"
+                }
+            }
+        },
+
+        "=": {
+            class: "blocks raised-floaty",
+        },
+
+        a: {
+            teleportTarget: "office_elevator"
+        },
+        
+        "L": {
+            class: "blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/fbxmelt.gif)',
+                    width: 4,
+                    height: 4,
+                    transform: 'translate(-25%, 10%) translateZ(var(--tilef5))',
+                    style: "pointer-events: none;"
+                }
+            }
+        },
+
+        o: {
+            class: "prop",
+            contains: { 
+                class: "cooler",
+                examineEntity: "water cooler",
+                dyp: {
+                    image: 'url(/img/local/city/watercooler.gif)',
+                    width: 1,
+                    height: 2,
+                    transform: "rotateY(-45deg)"
+                }
+            } 
+        },
+
+        b: {
+            class: "prop",
+            contains: {
+                slug: 'j',
+                id: 'busy',
+                class: "civvie busy eyeball",
+                examineEntity: "cloaked streetwalker"
+            }
+        },
+        
+        "ĵ": {
+            class: "notile blocks",
+            contains: {
+                html: `<div class="target joytarget" entity="referential scar"></div>`,
+                class: "joyfacet",
+                id: "officefacet",
+                unique: true,
+                dyp: {
+                    image: 'transparent',
+                    width: 1.75,
+                    height: 2.25,
+                    transform: "rotateY(45deg) translateZ(var(--tile))",
+                }
+            } 
+        },
+        
+        "ṙ": {
+            class: "officefacetlanding empty plain",
+            shouldFace: "left",
+        },
+
+        "!": {
+            class: "gap blocks raised-floaty",
+        },
+    },
+
+    plans: {
+        default: `
+            ....v........
+            .=░░░░░......
+            ..░░░░░.=....
+            .>░░░░░<..=..
+            ..░░░░░...░o.
+            =.░░░░░=.=░░░
+            ..░░░░b..░=░░
+            .=░░░░░.==░=.
+            .>░░░░░<.=.░.
+            ..░░░░░.==..░
+            .=░░░░░...=░L
+            ..░░░░░░.=░=.
+            .>░░░░░░░░=.=
+            ..░░░░░░░░░ṙĵ
+            ..░░░░░░░░p=.
+            =!.!^.....a.e
+            ..=...!......
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.default
+    },
+}
+
+createEntity({
+    name: "•Œë÷Ž†",
+    hide: true,
+    type: "recollection thoughtform portrait-contain portrait-bright",
+    image: '/img/sprites/director/collector_head_handle_portrait.gif',
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'`,
+    examinePriority: 2,
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>{
+                if(check("citystreet__director-meeting")) {
+                    startDialogue("director")
+                } else {
+                    startDialogue("director", {specificChain: "meeting"})
+                }
+            }
+        }
+    ]
+})
+
+
+createEntity({
+    hide: true,
+    name: 'Þª†#¦¦¤‡?…—?',
+    image: '/img/local/uncosm/ozo/fairyviscera.gif',
+    type: "thoughtform portrait-cover",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::<span definition="NOTE::'non-standard format';'implies connector thoughtform';'attempting interpretation'">UNUSUAL SIGNATURE</span>
+    ::DESTINATION::ERROR::'unprocessable entity'::NON-RENDERABLE
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'destination exceeds incoherence threshold';'recommend repair'">::PROHIBITIVE INCOHERENCE</span>`,
+})
+
+createEntity({
+    hide: true,
+    name: 'Þª†#¦¦ìnÑ–R',
+    type: "thoughtform portrait-dark portrait-cover ep1on",
+    image: "/img/textures/slowatertiny.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::<span definition="NOTE::'non-standard format';'implies connector thoughtform';'attempting interpretation'">UNUSUAL SIGNATURE</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                change("TEMP!!from", "cass")
+                moveTo("/local/beneath/")
+                change("cassportal", true)
+            }
+        }
+    ]
+})
+
+createEntity({ 
+    hide: true,
+    name: 'Þª†#¦¦§†A·r»',
+    type: "thoughtform",
+    image: "/img/local/orbit/stars.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::<span definition="NOTE::'non-standard format';'implies connector thoughtform';'attempting interpretation'">UNUSUAL SIGNATURE</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                change("TEMP!!from", "cass")
+                moveTo("/local/orbit/")
+                change("cassportal", true)
+            }
+        }
+    ]
+})
+
+env.stages['office_cass'] = {
+    width: 7,
+    enterDirection: "down",
+    exec: ()=>{
+        env.bgm.rate(1)
+        content.querySelectorAll("#realgrid .raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+    },
+    locale: "office_cass",
+
+    entities: {
+        "=": {
+            class: "blocks raised-floaty",
+        },
+
+        C: {
+            class: "notile",
+            contains: {
+                html: `
+                    <span class="target" entity="•Œë÷Ž†"></span>
+                    <div id="collectorhead-animator" class="collectorpart stagepart">
+                        <div id="collectorhead" class="collectorpart stagepart">
+                            <div id="collectoreye" class="collectorpart stagepart"></div>
+                        </div>
+                    </div>
+                    <div id="collectorbody" class="collectorpart stagepart"></div>
+                `,
+                dyp: {
+                    class: "cass eye face-creature",
+                    image: 'transparent',
+                    width: 1,
+                    height: 2.3,
+                }
+            } 
+        },
+
+        d: {
+            contains: {
+                dyp: {
+                    width: 3,
+                    height: 1.75,
+                    image: 'url(/img/local/city/office/cassdesk.gif)',
+                    noback: true
+                }
+            } 
+        },
+
+        e: {
+            teleportTarget: "office_hall",
+            teleportSpot: 17,
+            shouldFace: "up",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/officedoor.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "rotateY(0deg) translateZ(-100px)"
+                }
+            } 
+        },
+        
+        "ö": {
+            class: "blocks notile",
+            contains: {
+                class: "caseportaleff",
+                dyp: {
+                    width: 5,
+                    height: 5,
+                    image: 'url(/img/sprites/director/path_orbit.gif)',
+                    noback: true,
+                    transform: `translateX(15%) rotateY(-45deg) translateY(15%) rotateX(30deg)`,
+                },
+                examineEntity: "Þª†#¦¦§†A·r»",
+            }
+        },
+        
+        "º": {
+            class: "blocks notile",
+            contains: {
+                class: "caseportaleff",
+                dyp: {
+                    width: 4,
+                    height: 3,
+                    image: 'url(/img/sprites/director/path_beneath.gif)',
+                    noback: true,
+                    transform: `translateX(-20%) rotateY(45deg) rotateX(20deg)`,
+                },
+                examineEntity: "Þª†#¦¦ìnÑ–R",
+            }
+        },
+        
+        "©": {
+            class: "blocks notile",
+            contains: {
+                class: "caseportaleff",
+                dyp: {
+                    width: 5,
+                    height: 5,
+                    image: 'url(/img/sprites/director/path_beyond.gif)',
+                    noback: true,
+                    transform: `translateX(15%) rotateY(-45deg) translateY(-50%) rotateX(-40deg) translateZ(var(--tile-1))`,
+                },
+                examineEntity: "Þª†#¦¦¤‡?…—?",
+            }
+        },
+        
+        "ë": {
+            class: "blocks notile",
+            contains: {
+                class: "caseportaleff",
+                dyp: {
+                    width: 5,
+                    height: 5,
+                    image: 'url(/img/sprites/director/path_cache.gif)',
+                    noback: true,
+                    transform: `translateX(-15%) rotateY(45deg) translateY(-55%) rotateX(-30deg)`,
+                },
+                examineEntity: "Þª†#¦¦¤‡?…—?",
+            }
+        },
+        
+        "Ö": {
+            class: "blocks notile",
+            contains: {
+                class: "caseportaleff",
+                dyp: {
+                    width: 6,
+                    height: 4,
+                    image: 'url(/img/sprites/director/path_swirl.gif)',
+                    noback: true,
+                    transform: `translateY(-5%) translateZ(var(--tile-1))`,
+                },
+                examineEntity: "Þª†#¦¦¤‡?…—?",
+            }
+        },
+        
+        "F": {
+            contains: {
+                dyp: {
+                    width: 1,
+                    height: 3,
+                    image: 'url(/img/local/city/office/cassflag.gif)',
+                    noback: true,
+                }
+            }
+        },
+    },
+
+    plans: {
+        default: `
+            ë..Ö..©
+            .░F░░░.
+            º=░C░=ö
+            .=.d.=.
+            .=====.
+            .░░░░░.
+            .=░░░░.
+            .░=░=..
+            =.=░░░=
+            .=░░=░.
+            .░=░=░.
+            .░.░.░.
+            ..=░..=
+            =..░...
+            ...p=..
+            =..e...
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.default
+    },
+}
+
+env.stages['office_data'] = {
+    enterDirection: "down",
+    exec: ()=>{
+        if(!env.bgm._src.includes("soladata")) changeBgm(env.citystreet.officethemedata, {rate: 1}); else env.bgm.rate(1)
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+
+        /* preload screens */
+        for (let i = 1; i <= 12; i++) {
+            imagePreload(`/img/local/city/office/data/slide${i}.gif`)
+        }
+
+        content.classList.add("hide-envoy")
+    },
+
+    leaveExec: ()=>{
+        content.classList.remove("hide-envoy")
+        change('dataroom', true)
+    },
+
+    locale: "office_data",
+    entities: {
+        "=": {
+            class: "blocks raised-floaty",
+        },
+
+        "š": {
+            class: "blocks",
+            teleportTarget: "office_hall",
+            teleportSpot: 186,
+            shouldFace: "down",
+            lockFlag: "dataroom",
+            contains: {
+                class: "datadoorlock",
+                dyp: {
+                    image: 'url(/img/local/city/office/securedoordark.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "translateZ(var(--tile-f5)) rotateY(180deg)"
+                }
+            } 
+        },
+
+        "s": {
+            class: "blocks",
+            teleportTarget: "office_hall",
+            teleportSpot: 186,
+            shouldFace: "down",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/city/office/securedoordark.gif)',
+                    width: 2.5,
+                    height: 2.5,
+                    transform: "translateZ(var(--tilef5)) rotateY(0deg)"
+                }
+            } 
+        },
+
+        "1": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-1 face-creature",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+
+        "2": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-2",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(-90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+
+        "3": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-3",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+
+        "4": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-4",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(-90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+
+        "5": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-2 face-creature",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+
+        "6": {
+            class: "prop notile",
+            contains: {
+                class: "dataslide slide-1",
+                dyp: {
+                    image: 'transparent',
+                    width: 5.4,
+                    height: 3.6,
+                    transform: "rotateY(-90deg) translateZ(100px) translateY(-30%)",
+                    noback: true,
+                    style: "animation-delay: 50ms !important;"
+                }
+            } 
+        },
+    },
+
+    width: 7,
+    plans: {
+        default: `
+            ..=s==.
+            =░░░░░.
+            .░░░░░=
+            .=░=░░.
+            .===░==
+            .==░░░.
+            5=░░=░6
+            .░░====
+            =░░===.
+            .░==░░=
+            .░░░░=.
+            .=░░░=.
+            .=░░░░.
+            .░=░=░.
+            .=░░===
+            .=░░░==
+            3=░░░░4
+            .░░░░░=
+            ===░░=.
+            .=░░░==
+            .░░░░░.
+            .░░=░=.
+            .=░░░=.
+            .=░=░=.
+            .===░░=
+            .=░░░░=
+            1░░░░░2
+            =====░.
+            ==░░░░.
+            .░=░=░.
+            .==░=..
+            ===p...
+            ..=š...
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.default
+    },
+}
+
+/* */
+env.dialogueActors["cass"] = { 
+    name: "director",
+    expressions: {
+        default: {
+            type: "portrait-contain portrait-bright",
+            voice: ()=>play("talkcase", 1.25),
+            image: '/img/sprites/director/collector_head_handle_portrait.gif',
+        },
+
+        open: {
+            type: "portrait-contain portrait-dark incoherent cass",
+            voice: ()=>play("talkcase", 0.5),
+            image: '/img/sprites/director/collector_eye_collection_portrait.gif',
+        },
+
+        whisper: {
+            type: "portrait-contain portrait-blocker incoherent cass",
+            voice: ()=>play("talkcase", 0.75),
+            image: '/img/sprites/director/collector_head_handle_portrait.gif',
+        },
+    }
+}
+
+env.dialogues["elevator"] = generateDialogueObject(`
+start
+    sourceless
+        a large quantity of numbered circles are set into the dead metal here
+____SHOWONCE::
+        gordon gives some idle instruction on which are relevant, which distantly registers...
+        but i am distracted in wondering - what happens if they need to add a new one?
+        would they have to re-cut a solid sheet of dead metal, and set in new buttons?
+        and of course, each button must have some sort of connective nerve...
+        actually, how would they even manage adding another segment to their metal towers?
+        the logistics of bright structures are hardly sensical to me
+        something to investigate i suppose
+        i notice gordon leaning forward after his explanation
+
+    gordon
+        ...You get all that?
+        It's really just the three buttons we'll be using.
+
+    sourceless
+        oh... yes--right
+        we have somewhere to be
+
+    akizet
+        yes, of course
+        thank you, gordon
+____END
+    
+    RESPONSES::akizet
+        high office<+>elevate
+            EXEC::change("TEMP!!vatordest", "office_hall")
+        ground level<+>elevate
+            EXEC::change("TEMP!!vatordest", "city_office")
+        lab<+>descent
+            SHOWIF::"citystreet__director-meeting"
+
+elevate
+    sourceless
+        the button lights up, and after a θblink, the elevator lurches into motion
+        soon, we arrive at our destination, the doors sliding open to release us
+            EXEC::changeStage(check("TEMP!!vatordest"));play("elevator")
+    
+    RESPONSES::akizet
+        exit<+>END
+
+descent
+    sourceless
+        the button lights up, and after a θblink, the elevator lurches into motion
+        ...        
+    
+    RESPONSES::akizet
+        wait<+>END
+            EXEC::env.citystreet.descent();play("elevator", 0.5)
+`)
+
+//intention is to have the specificChain change from start if it's your first time talking
+env.dialogues["director"] = generateDialogueObject(`
+start
+    sourceless
+        director cassidy stands within the office
+            EXEC::ratween(env.bgm, 0.75);setCam({x: 3, y: 4, rotation: 0})
+
+    RESPONSES::self
+        talk later?<+>talklater
+            SHOWIF::"bt__d0_cass"
+        hello?<+>talknow
+            SHOWIF::[["bt__d0_cass", false], ["citystreet__director-meeting", true]]
+        recall meeting<+>meeting
+
+    RESPONSES::akizet
+        leave<+>END
+
+talknow
+    self
+        hello?
+        are you lucid?
+
+    akizet
+        director! i thought i might step in to say, ah...
+
+    sourceless
+        the director holds a communicator to the side of her face,
+        slightly perturbed by my approach, as if i am impeding something
+
+    cass
+        Akizet, I really can't talk right now.
+        Let's save it for the next project meeting, all right?
+
+    akizet
+        oh? apologies, director
+        yes, it is no pressing matter
+        fare well
+
+____SHOWONCE::
+    moth
+        not getting anything from it right now...
+____END
+
+    RESPONSES::akizet
+        set out<+>END    
+
+talklater
+    self
+        you said we'd talk later
+            EXEC::vnp({cass: "show far", hideStage: true})
+        when is that?
+
+    sourceless
+        the director holds a communicator to the side of her face,
+        expression twisting with impatience
+
+    cass
+        Oh, you're still here?
+        The team is waiting for you, Akizet.
+        
+    akizet
+        ah--?
+        oh, yes, right, apologies
+        fare well, director
+
+    sourceless
+        i turn to leave, the director speaking indistinctly to her device as i go
+
+    cass::whisper
+        What was I saying? Right...
+            EXEC::vnp({cass: "show", hideStage: true})
+        I'm not ready to involve you in this project, yet.
+        I've been trying to help push you in the right direction, but...
+        You really weren't supposed to hear about any of this so soon.
+        But we're not opposed. What I'm doing will get you what you want.
+
+    self
+        you're talking to me, right?
+        what do you mean by that?
+        you'll help me repair and gather information?
+        figure out what happened?
+
+    sourceless incoherent
+        h  her voice quiets as  i   near the do or
+
+    cass::whisper
+        Yeah, basically. I could help you a lot more than the idiot above me.
+        I don't need to tell you how stubborn and inefficient they are.
+        Even I'm constantly getting grilled for what we're doing out here.
+        If they knew what's going on <em>now</em>... It'd be one hell of a spectacle.
+        Don't misunderstand, though. I do trust you.
+        I'm very interested in what we'll be able to do, together.
+        Until I can get you in. Just keep this between us. Off the record.
+        If word gets out, nobody's going to be happy.
+
+    sourceless incoherent
+        whaa t a st t range c on onversation
+        
+    sourceless
+        her voice drops further, beyond my ability to hear
+            EXEC::vn.done()
+
+    moth
+        the incoherence here is all over the place
+        not bad enough to cause any issues, so,
+        i think some part of this conversation was real at some point?
+        the director is just baaarely avoiding causing any sort of memory failure
+        not just with how she's talking, but even with the weird connectors
+        all of it's so carefully made and hidden
+        blends right in with all the other damage
+        really easy to miss if i wasn't looking for it specifically
+
+    self
+        what do we do about this?
+
+    moth
+        well...
+        it's not just me, right? she's gotta be talking about funfriend
+        and with how she's acting, she must be hiding from him specifically
+        not that out of the ordinary given what we've seen i guess
+        you could tell funfriend, but idk what he'd be able to do
+        it's not like we really have a motive or any damage to point at here
+        maybe we just leave it? see what happens?
+        up to you
+    
+    self
+        ok
+
+    RESPONSES::akizet
+        set out<+>END
+
+meeting
+    sourceless
+        a bright cousin stands in the office
+            EXEC::setCam({x: 3, y: 4, rotation: 0});ratween(env.bgm, 0.75)
+        having heard our entry, she closes her folding communicator
+
+____SHOWIF::["citystreet__director-meeting", false]
+    sourceless incoherent
+        an  nd l ooks thr rough me
+            EXEC::vnp({cass: "show far", hideStage: true});ratween(env.bgm, 0.5)
+        with no   sm all  sur r prise
+            EXEC::vnp({cass: "open", hideStage: true})
+            WAIT::2000
+            THEN::vnp({cass: "open eye", hideStage: true})
+    
+    sys
+        WARNING::"incoherence detected"
+        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+        
+    cass::open
+        Oh... That's not good.
+        How did you get in here?
+
+    moth
+        buddy this thing is going to cause a breakdown if you stay near it
+        incoherence just spiked like crazy
+        this is going to straight up crash 
+
+    gordon
+        Director Cassidy!
+    
+    sourceless incoherent
+        a nd st  ste p s    cl o ser
+        i ? ?   fee l   s ick
+
+    cass::open
+        I see...
+    
+    sourceless incoherent
+        clos es her  folding
+            EXEC::vnp({cass: "show open", hideStage: true});ratween(env.bgm, 0.75)
+            WAIT::2000
+            THEN::vnp({cass: "show", hideStage: true});env.stage.querySelectorAll(".teleport").forEach(e=>{e.setAttribute("teleport-target", "office_data");e.setAttribute("shouldFace", "down");e.removeAttribute("spot");})
+
+    sourceless
+        what? did i lose focus?
+        it felt like something was missing just now
+        no--no, everything is fine
+
+    moth
+        ok, it's just... gone
+        acceptable levels right now
+        this is new
+____SHOWIF::"citystreet__director-meeting"
+
+    gordon
+        Director Cassidy!
+
+____END
+    cass
+        Gordon, Akizetesche!
+            EXEC::vn.done()
+        It's good to see you both, truly.
+
+    sourceless
+        she steps closer to shake gordon's hand, then my claw
+        a small smile i have come to understand as 'polite' upon her face
+        when i make an effort to mimic it, she smiles wider, quietly exhaling
+
+    akizet
+        thank you for coming all this way
+        please, just call me akizet
+        i understand you had to take a flight?
+
+    sourceless
+        before she speaks, she fetches a small, flat rectangle from a pocket
+        one of the 'cards' that they use to regulate access, here
+
+    cass
+        It's no trouble. 
+    
+    sourceless
+        her eyes shift in a puzzling way, her gaze lacking the warmth it just had
+        she turns the card over in her hand, smile held steady
+    
+    cass
+        It's the least I could do, really.
+        We all appreciate what you're doing here, Akizet.
+    
+    sourceless
+        as the director, i imagine she must be deeply familiar with receptor language by now
+        and so i try to suppress the subtle unease her tone inspires
+
+    cass
+        Just like you wanted, we have as few hands and eyes involved as possible.
+        It's me, a few officers for oversight, Gordon here, and some very good technicians.
+
+    akizet
+        delightful!
+
+    cass
+        The only thing is, there are still parts that don't add up.
+
+    sourceless
+        she punctuates her words with an idle waving of the card, held tightly between two fingers
+        from the corner of my vision, i see gordon shift, having grown tense
+    
+    cass
+        The secrecy from <em>your own people</em> is <em>very</em> strange.
+        Obviously, I wouldn't ever decline what you're offering.
+        Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing.
+        This has the potential to be the biggest societal and technological leap in humanity's history.
+        It would be an incredible political bargaining chip, if we had to use it that way.
+        And yet, you only want help tracking the Call down,
+        Which, as you know, we're already doing - just without your technology.
+        And privacy? 
+        Not a word to any of the hundreds of other qou we're working with, not even your Council?
+        I need to know why you're doing this.
+
+    gordon
+        Director, as I explained in the proposal, recent discoverie--
+            WAIT::1000
+            AUTOADVANCE::
+        
+    cass
+        Yes, yes, yes, I know the circumstances.
+        But even the rest of her <em>team?</em>
+        It doesn't make sense.
+        What am I missing, Akizet?
+
+    sourceless
+        i feel her gaze bore into me, the smile flattened away over time
+        gordon said it was all approved already, why is she being so interrogative?
+        is this a trap? could the director have notified the council?
+        is she on some side of the terrible conflict? 
+        ah--did i forget to hide my unease? ÇO@vT)
+        i quickly loosen the curl of my receptors
+        there is no way out of this without telling at least a partial truth
+        
+    akizet
+        director, you are correct
+        i believe it may have been shelved for use in a potential negotiation
+        but there is little we could ever truly ask from you, our bright cousins
+        all qou i know wish only to help unite you with us in the stars
+        i understand this must seem idealistic, but it is true
+        we will have no shortage of the metals we require, with the gathering initiatives elsewhere
+        i have heard of contrivances made to dead, rich worlds, with nearly automated harvesting underway
+        i have read projections that we will be able to construct incredible minds,
+        cores the size of small planetoids, 
+        sure to solve every mystery that the void holds for us
+        and so, in time,
+        we will have everything we need, together. do you understand?
+        there is no desire great enough to ever justify holding this back from you
+        especially with how short your lives are, presently, just as ours were
+        so much brilliance will be lost if we wait
+        your politics, your technology, your... 'bargaining chips',
+        they are the tiniest parasites upon the tallest veilk
+        if there <em>is</em> something else...
+    
+    sourceless
+        a quiet rage boils in the back of my mind
+        i dearly wish to speak of the conflict
+        but as in θparasite, i must gather my bulbs
+        the director <em>must not know,</em> but without that knowledge,
+        the only conceivable reasons for my secrecy would be...
+        unspeakably grim prospects
+
+    akizet
+        ...then it is a grave error that the council did not inform us
+        if we cooperate, and use our combined technology to locate the call's origin,
+        and <em>then</em> i return to them and reveal all...
+        they will be unable to deny the value of our work together
+        even then, the fruit cannot be un-split - it will be in your hands
+        ...of course, there is a possibility i will be punished, even if my point is made clearly and publicly
+        and so, you see, i must not place my team at risk with this knowledge
+        <em>i</em> may be cast out as a deserter, but i will not allow my friends to suffer for my actions
+        and they would never place blame upon the bright cousins...
+        so it is only i who suffers in the event of failure
+    
+    sourceless
+        not a word i speak is false
+        but with all of my being, i hope those last words remain true
+        the director has hardly moved, her expression unchanged
+        briefly, i look to gordon, who is hearing all of this for the first time as well
+        he smiles, nodding once to reassure me, so i turn back to her
+        wordlessly, without warmth, she tips the card in her hand towards me in offering
+
+    cass
+        Hm.
+        That's very noble.
+        Well, everything's all set up.
+
+    sourceless
+        i... take the card
+        but, that is all?
+        this mundanity... does she believe me?
+        it is so difficult to read anything from her
+
+    cass
+        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments.
+        We have other obesk working down there on various projects,
+        But the team has been briefed on your privacy concerns. It should be safe for you.
+        That card will let you into your section.
+    
+    sourceless
+        a polite smile returns to her face
+
+    akizet
+        excellent
+        director, thank you for this opportunity
+    
+    cass
+        Likewise.
+        I have another meeting shortly, so, please excuse me.
+        It's been a pleasure, Akizet.
+        Gordon, we'll talk later.
+
+    gordon
+        Yes ma'am.
+
+    sourceless
+        gordon meets my gaze, and we turn to leave
+
+    cass::whisper
+        Be careful on the way down.
+            SHOWONCE::
+        I hear the elevator's been acting a little strange.
+            SHOWONCE::
+
+    RESPONSES::akizet
+        fare well<+>END
+
+END::vn.done();ratween(env.bgm, 1);setCam()
+`)
+
+env.dialogues.envoyInsideResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        meeting?<+>meeting
+        that interrogation<+>interrogation
+            SHOWIF::"citystreet__director-meeting"
+
+        let us proceed<+>END
+`)
+
+env.dialogues["envoyinside"] = generateDialogueObject(`
+start
+    sourceless
+        I STOP, AND GORDON FOLLOWS. HE RETURNS MY STARE
+            EXEC::ratween(env.bgm, 0.75)
+
+____SHOWONCE::
+    gordon
+        Nervous?
+
+    akizet
+        not terribly
+        everything was approved, you said?
+        this is merely a handoff?
+
+    gordon
+        Yeah,
+        Yeah...
+        It should be.
+        This is just about kicking off the operation.
+
+    akizet
+        i see
+____END
+    
+    RESPOBJ::envoyInsideResponses
+
+meeting
+    akizet
+        gordon!
+        this meeting with the director...
+
+    sourceless
+        i consider his face carefully
+        a member of the council would not descend in a proxy body merely to update my access in the embassy
+        why would a cousinly representative of equal sway take such measures?
+        there is something else going on here
+        so, i am direct with my concern
+    
+    akizet
+        do you expect it to be difficult?
+
+    gordon
+        Dif-- Difficult?
+
+    sourceless
+        he is quick to smile and shake his head slightly
+
+    gordon
+        Heheh, it's just a handoff.
+        But...
+        Well, this was all approved very, very quickly.
+        It's an unusual fast-track for an, uh, equally unusual project.
+        The deal isn't changed, if that's what you're worried about.
+        She probably just wants to meet you personally and get clear with your goals.
+    
+    akizet
+        very well...
+    
+    sourceless
+        i do not hide my displeasure with his answer
+        but he makes no amendment
+    
+    RESPOBJ::envoyInsideResponses
+
+interrogation
+    sourceless
+        my stare intensifies, receptors coiling tightly
+
+    akizet
+        gordon
+        why did you not warn me about that?
+    
+    sourceless
+        gordon grows confused, raising his hands defensively, glancing around before lowering his voice
+
+    gordon
+        Woah, Akizet, what--warn?
+        What did you expect?
+        Your offer came out of nowhere, and...
+        Well, it basically eclipsed everything else the bureau was doing in importance.
+        I know you wanted to keep your reasons secret.
+        W--she just wanted to make sure there weren't any strings attached.
+        You know, that this isn't part of some, some...
+        I mean, what you said--you meant it, right?
+    
+    sourceless
+        the tension in my receptors fades, and similarly, he stands easier
+
+    akizet
+        i did
+
+    sourceless
+        i am quiet for a θblink
+        really, i should not be frustrated with him, nor the director, should i?
+        it is the same investigative spirit that drove me to begin this, after all
+        i came to them like their very own mysterious message
+        they truly are our bright cousins
+        part of me wishes i could tell him more--about the conflict, what still stirs
+        but it is not time
+    
+    akizet
+        gordon, the more that i share...
+        the more becomes at risk
+    
+    gordon
+        Well, everything's on the table now, so...
+        We'll just be careful, right?
+        Come on, let's head down to the lab.
+        I can introduce you to the team.
+    
+    RESPOBJ::envoyInsideResponses
+
+END::ratween(env.bgm, 1)
+`)
+
+//intention is to have the specificChain change from start if it's your first time talking
+env.dialogues["oliverinside"] = generateDialogueObject(`
+start
+    sourceless
+        oliver lingers in the hall...
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0});ratween(env.bgm, 0.75)
+    
+    RESPONSES::akizet
+        greet<+>cooler
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        offer cup<+>gotwaterbonus
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", true]]
+        leave<+>END
+            EXEC::setCam()
+
+cooler
+    sourceless
+        to my surprise, oliver is here, within the high offices
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+        does he not usually operate elsewhere?
+        he fails to notice us at first, frustrated with the strange machine nearby
+        a bright blue bulb grows atop its pale, shiny stalk
+        gordon chuckles quietly, and i nearly pass him on the way to the meeting,
+        but he signals for me to stop, and we approach
+
+    oliver
+        C'mon...
+
+    gordon
+        Hey, Oliver!
+        What's the matter?
+
+    oliver
+        Gordon! Akizet! Nice to see ya.
+        The damn cooler's acting up again.
+        It always does this shit, man.
+    
+    akizet
+        cooler? is this a temperature regulator?
+    
+    oliver
+        Hahaha, what? 
+        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking.
+        Actually, I never thought to ask...
+        Do ya like drinking cold water? Or, did ya, I guess?
+
+    akizet
+        oh, yes, of course!
+        i see now, thank you, oliver
+        but--what is wrong with it?
+        is it not intact?
+
+    oliver
+        Well, I mean...
+        Look at it.
+
+    sourceless
+        he gestures vaguely to the machine
+            EXEC::setCam({x: 5, y: 7, rotation: -70, distance: -2})
+        i... i cannot quite make out what he means
+
+    oliver
+        How the hell am I supposed to get anything out of there?
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+
+    gordon
+        You put in a maintenance ticket?
+    
+    oliver
+        Ehh, not yet, but... 
+        It's not long before I've got a meeting with the Director.
+        Ah, well, I'll just get something from the vending machines.
+        Why are you two up here, anyway? 
+
+    sourceless
+        before we have a chance to respond, he answers himself in realization
+
+    oliver
+        Ahh, you're the Director's eight o'clock!
+        Shit, don't let me hold you.
+
+    gordon
+        Sure, Oliver. You know, if you don't want to pay for a drink...
+        You could check the big meeting room past the elevators.
+        I'm pretty sure there's a mini fridge in there.
+    
+    oliver
+        Ohh, good idea!
+
+    gordon
+        But we'd better not be late.
+    
+    akizet
+        ah, yes
+        goodbye, oliver
+        may your hunt bear fruit
+
+    oliver
+        See ya around.
+
+    RESPONSES::akizet
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        set out<+>END
+            EXEC::setCam()
+
+gotwater
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Huh?
+        Wait, how--
+            AUTOADVANCE::
+            WAIT::2000
+        Where did you get that?
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        That's not what I...
+        ...Yeah, sure, thanks.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Wait, did you drink from this?
+
+    akizet
+        there was no change in the contents, if that is what concerns you, oliver
+        would you like me to get another one?
+
+    oliver
+        Uh, no, it's--it's fine.
+        You should probably get to your meeting.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+gotwaterbonus
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Akizet, I--
+        I already...
+            AUTOADVANCE::
+            WAIT::2000
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        Okay.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Did you...?
+        Whatever, it's fine.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+END::ratween(env.bgm, 1)
+`)
 					
 					
 
@@ -4171,6 +6749,8 @@ RESPOBJ::
         where was this?<+>where
         can't progress?<+>elevatorblock
             SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
+        the slide room?<+>dataroom
+            SHOWIF::['dataroom', true]
 
         nevermind<+>CHANGE::++moth
             FAKEEND::(back)
@@ -4193,14 +6773,17 @@ where
     moth
         well i don't think there's a street on earth that has ever looked like this lol
         that said, she was one of the traveling diplomats back when they still sent those out
+            SHOWIF::["citystreet__director-meeting", false]
         idk what new zealand looked like back then, but i know the bureau had a facility there
-            SHOWIF::["citystreet__envoy-talkpeople", false]
+            SHOWIF::[["citystreet__envoy-talkpeople", false], ["citystreet__director-meeting", false]]
         so this could be an incoherent spatial memory of wherever that was
-            SHOWIF::["citystreet__envoy-talkpeople", false]
+            SHOWIF::[["citystreet__envoy-talkpeople", false], ["citystreet__director-meeting", false]]
         gordon mentioned it's in "the states"... so probably somewhere in the US
-            SHOWIF::["citystreet__envoy-talkpeople", true]
+            SHOWIF::[["citystreet__envoy-talkpeople", true], ["citystreet__director-meeting", false]]
         maybe somewhere on the west coast? that's where the old HQ was
-            SHOWIF::["citystreet__envoy-talkpeople", true]
+            SHOWIF::[["citystreet__envoy-talkpeople", true], ["citystreet__director-meeting", false]]
+        but after seeing inside the office, yeah, pretty sure it's at the old HQ
+            SHOWIF::["citystreet__director-meeting", true]
 
     RESPOBJ::mthresp
 
@@ -4213,6 +6796,52 @@ elevatorblock
         i want to say that it's incoherence, but the fact that the envoy personality is intact otherwise...
         seems like something else is changing it--your spike even reported that resources got removed
         we might be out of luck on this one, seems like there's plenty to see elsewhere though
+
+    RESPOBJ::mthresp
+
+dataroom
+    self
+        What are those slides about?
+    
+    moth
+        you can't read them on your end either, huh
+        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info
+        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details
+        but just from what i can make out, uh...
+        oh man, we used to put the FBX motto everywhere
+        anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon...
+        alongside some maps, probably about the polygonation spires or the call's location...
+        some signals intelligence stuff, that's probably us trying to detect the call
+        there's a few really interesting structural analyses of obesk tech, too
+
+    self
+        Why would we show Akizet that?
+        Isn't that kind of revealing?
+
+    moth
+        not really, i mean, the obesk knew we were studying them
+        before they made contact, we even sent some drones to take samples of the embassy
+        which obviously didn't work at all lol
+        maybe they were doing their own analyses with akizet's help, to get people up to speed
+        obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding
+        speaking of, there's a couple of human-looking schematics in there
+        god i wish akizet's memories were like
+        higher resolution
+
+____SHOWIF::"2040thing"
+    self
+        ok also what did you mean by 2040 thing
+
+    moth
+        that was a joke dude
+        kinda...
+        i mean that <em>is</em> when dark brutalism became a thing
+        but yeah i was kidding
+        we don't have any ominous dark hallways full of secret info
+        although...
+        there <em>is</em> the one...
+        but i can't tell you about that.
+____END
 
     RESPOBJ::mthresp
 `)
@@ -4231,8 +6860,6 @@ elevatorblock
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					console.log('rendering buddies!')
-					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
 				},
 
@@ -4246,7 +6873,7 @@ elevatorblock
 					window.vnObj = page.vn
 
 					
-					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
 					
 					
 					body.setAttribute('state', 'corru-entered')
@@ -4259,6 +6886,7 @@ elevatorblock
 					}
 					if(page.bgm) {
 						page.bgm.volume(0)
+						
 						page.bgm.play()
 						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
@@ -4272,6 +6900,18 @@ elevatorblock
 					switch(check("TEMP!!from")) {
     case "abyss_city":
         changeStage("city_banks_flip", 37, "up")
+    break
+
+    case "car": 
+        changeStage("city_street3", 137, "down")
+    break
+
+    case "aqua": 
+        changeStage("city_street3", 131, "down")
+    break
+
+    case "tether":
+        changeStage("office_hall", "officefacetlanding")
     break
 
     default:
@@ -4290,18 +6930,31 @@ elevatorblock
 
 change("TEMP!!from", false)
 document.addEventListener('keydown', stageKeypress)
+document.addEventListener('corru_mask', env.citystreet.mask)
 
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
 					document.dispatchEvent(env.hooks.corru_entered)
 					mothHasUnreadCheck()
 
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
 					setTimeout(()=>{
 						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
 					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
 				},
 
 				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
 					body.setAttribute('state', 'corru-leaving')
 					MUI("off")
 					env.waitOnLoad = false
@@ -4324,6 +6977,7 @@ document.addEventListener('keydown', stageKeypress)
 					//dyn
 					
 					stageCleanup()
+document.removeEventListener('corru_mask', env.citystreet.mask)
 delete env.citystreet
 
             		change('TEMP!!sat', true)
@@ -4332,6 +6986,11 @@ delete env.citystreet
 
 					if(dest) swup.loadPage({url: dest})
 					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
 				}
 			}
 
@@ -4371,6 +7030,5 @@ delete env.citystreet
 	}
 	cryptocraze.remove()
 	</script>
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"version":"2024.11.0","token":"d27fafd650894988a053584cfbc6883c","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>

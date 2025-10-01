@@ -884,11 +884,21 @@ function showActions(actor) {
                         ignoresActors: action.ignoresActors,
                         requiresPath: action.requiresPath,
                         includesOrigin: action.type.includes("self") || action.type.includesOrigin,
-                        onTileCheck: ({tile, validity, validTiles, data}) => {
-                            if(tile.untargetable) return false
-                            return true
+                        onTileCheck: ({tile}) => {
+                            let validity = true
+                            if(tile.untargetable) validity = false
+                            if(action?.aoe?.tileFilter) validity = action.aoe.tileFilter(tile, validity, actor) // additional arbitrary per-tile filter defined at action level
+
+                            return validity
                         }
                     })
+                    
+                    //specialTiles is an action function that can add arbitrary tiles
+                    if(action?.aoe?.specialTiles) {
+                        let specialTiles = action.aoe.specialTiles(actor)
+                        specialTiles.forEach(t=>t.classList.add('targetable-preview'))
+                        env.rpg.markedPreviewTiles = env.rpg.markedPreviewTiles.concat(specialTiles)
+                    }
                 } else {
                     env.rpg.markedPreviewTiles = []
                 }
@@ -2908,9 +2918,11 @@ if(!body.querySelector('#party-menu')) body.insertAdjacentHTML('beforeend', '<di
 function togglePartyMenu(refresh = false) {
     if(body.getAttribute('menu') == 'party' && refresh == false) {
         if(unsavedMenuWarning()) return; else env.unsavedChanges = false
+        
         body.classList.remove('in-menu')
         body.setAttribute('menu', 'none')
         toggleCrittaMenu() //only does anything if there is one on-page
+        MUI('off') // call this again to trigger freemove related stuff
 
         if(window.vn) {
             vn.hideStage(false, false)
@@ -2923,6 +2935,13 @@ function togglePartyMenu(refresh = false) {
             vn.hideStage(false, false)
             vn.fadeChars(false)
         }
+
+        if(env?.stage?.freemove) setTimeout(()=>{
+            toggleMouseLook(false)
+            
+            //notify the user where their mouse is
+            mousePing({duration: 400})
+        }, 100)
 
         //clear the menu, set up with new stuff
         let menu = document.querySelector('#party-menu')

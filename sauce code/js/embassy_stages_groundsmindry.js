@@ -152,7 +152,7 @@ env.stageEntities['Ṡ'] = {
     }
 }
 
-env.stageEntities['b'] = {  /* todo: uniqify - new texture maybe */
+env.stageEntities['b'] = {
     class: "blocks notile",
     contains: {
         class: "deadtainer",
@@ -993,17 +993,6 @@ env.stages['grm_lesser'] = {
     },
 
     entities: {
-        "?": {
-            class: "blocks",
-            contains: {
-                examineEntity: "lesser test",
-                dyp: {
-                    width: 1.5,
-                    height: 3,
-                }
-            } 
-        },
-
         'd': {
             class: "door grand down",
             teleportTarget: "grm_core",
@@ -1185,7 +1174,21 @@ env.stages['grm_lesser'] = {
 
         '▒': {
             class: "notile"
-        }
+        },
+
+        'τ': {
+            class: "notile",
+            blockIf: () => !check("mask", "joy")
+        },
+        
+        "!": {
+            class: "gap"
+        },
+
+        '?': {
+            teleportTarget: "out_early",
+            shouldFace: "up"
+        },
     },
 
     width: 15,
@@ -1280,7 +1283,9 @@ env.stages['grm_lesser'] = {
             Ep▒▒▒▒▒▒▒▒▒▒▒▒L
             .▒▒▒▒▒▒▒▒▒▒▒▒▒.
             .▒▒▒▒▒▒k▒Ĵ▒▒▒▒.
-            .....T.........
+            .....T........!
+            .............!.
+            ..........?!!!.
         `, 
     },
 
@@ -1294,10 +1299,9 @@ env.stages['grm_lesser'] = {
     altUnderFloor: {
         sprite: "/img/local/embassy/mind/darkfloor_lesser.gif",
         fit: "auto",
-        position: "center",
+        position: "top",
         repeat: "no-repeat",
     },
-
 
     getPlan: function() {
         let plan = this.plans.default
@@ -1326,6 +1330,11 @@ env.stages['grm_lesser'] = {
         //potentially some direct string alteration before returning the plan too
         return plan
     },
+
+    planAdjustment: (plan) => {
+        if(check("mask-freedom") && !check("groundstrd")) return plan
+        else return plan.replaceAll("!", ".").replaceAll("?", ".")
+    }
 }
 
 env.stages['hall_lesser-dull'] = {
@@ -2970,4 +2979,201 @@ env.stages['grm_core'] = {
         .......░p░.......
         ........L........
     `
+}
+
+/* e4a1 little sneka peka */
+env.stages['out_early'] = {
+    fogRadius: 8,
+    fogAlgorithm: "half",
+    width: 11,
+
+    exec: ()=> {
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+        env.stage.querySelectorAll('.bstrd.face-creature').forEach(el=>el.classList.remove("face-creature"))
+    },
+
+    onStep: ()=>{
+        let strength = Math.clamp((1 / (env.stage.stageH - 3)) * (env.stage.creatureLoc.y - 3), 0, 1)
+        content.style.setProperty('--bstrdcontrol', strength)  
+    },
+
+    //possibly the most scuffed way of limiting styles? the idea was interesting to me
+    //i don't want these styles to even be considered by the renderer off this zone since there's an import
+    //there's probably some shadowroot namespace bullshit i could do but it's not that serious
+    html: `
+        <style>
+            @import url(/css/stage/beneath.css);
+
+            #realgrid .gridpiece.invisiblewalk:empty {
+                background: transparent;
+                border: unset;
+            }
+
+            #realgrid .bstrd .head {
+                background-image: url(/img/sprites/combat/foes/bstface.gif), url(/img/sprites/combat/foes/bsthead.gif);
+            }
+
+            #realgrid .bstrd .body {
+                background-image: url(/img/sprites/combat/foes/bstbody.gif);
+            }
+
+            #realgrid .bstrd .arms {
+                background-image: url(/img/sprites/combat/foes/bstarms.gif);
+            }
+
+            .bstrd-hold #realgrid .bstrd .arms {
+                background-image: url(/img/sprites/combat/foes/bstgun.gif);
+            }
+
+            #realgrid .character.bstrd {
+                height: calc(var(--gridTileSize) * 2.5);
+                width: calc(var(--gridTileSize) * 1.5);
+            }
+
+            body[quality="regular"] .character.bstrd .arms, body[quality="regular"] .character.bstrd .head {
+                animation: TINYHOVER 3s ease-in-out infinite alternate;
+            }
+
+            body#out_early #content {
+                background: transparent;
+            }
+
+            body#out_early #content::after {
+                background: black;
+                opacity: calc(1 - var(--bstrdcontrol, 0))
+            }
+
+            body#out_early::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                display: block;
+                background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/static.gif);
+                background-size: 100% 100%, auto, auto;
+                transform: unset;
+            }
+
+            .scatterquickruuun {
+                animation-fill-mode: forwards !important;
+                animation-delay: 0.4s !important;
+            }
+
+            .scrammed {
+                display: none !important;
+            }
+
+            @keyframes SCRAM {
+                0% { transform: rotateX(-90deg) var(--dyp-transform) translateY(0%) scaleX(1); opacity: 1}
+                100% { transform: rotateX(-90deg) var(--dyp-transform) translateY(-100%) scaleX(0.2); opacity: 0}
+            }
+        </style>
+    `,
+
+    entities: {
+        "B": {
+            class: "prop notile",
+            contains: {
+                class: "bstrd character face-creature",
+                examineEntity: "bstrd",
+                html: `<figure>
+                    <div class="head"></div>
+                    <div class="body"></div>
+                    <div class="arms"></div>
+                </figure>`,
+            }
+        },
+
+        "?": {
+            class: "notile",
+            contains: {
+                html:  `<div class="daemonsprite sprite-wrapper" onmouseenter="env.grm.daemonScatter(this)">
+                    <figure class="daemon rook accurate-position">
+                        <img src="/img/sprites/daemons/rook/body.gif">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                        <div class="leftarm">
+                            <div class="downarm">
+                                <div class="upclaw"></div>
+                                <div class="downclaw"></div>
+                            </div>
+                        </div>
+                        <div class="rightarm">
+                            <div class="downarm">
+                                <div class="upclaw"></div>
+                                <div class="downclaw"></div>
+                            </div>
+                        </div>
+                    </figure>
+                </div>`,
+                dyp: {
+                    image: 'transparent',
+                    noback: true,
+                    width: 3,
+                    height: 3,
+                    transform: `rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ))`
+                }
+            }
+        },
+
+        "!": {
+            class: "notile",
+            contains: {
+                html:  `<div class="daemonsprite sprite-wrapper" onmouseenter="env.grm.daemonScatter(this)">
+                    <figure class="daemon pawn accurate-position">
+                        <img src="/img/sprites/daemons/pawn/base.gif">
+                        <div class="eye"></div>
+                        <div class="scraps noimg">
+                            <div class="scrap"></div>
+                            <div class="scrap"></div>
+                            <div class="scrap"></div>
+                            <div class="scrap"></div>
+                            <div class="scrap"></div>
+                        </div>
+                    </figure>
+                </div>`,
+                dyp: {
+                    image: 'transparent',
+                    noback: true,
+                    width: 3,
+                    height: 3,
+                    transform: `rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ))`
+                }
+            }
+        },
+
+        "=": {class: "gap blocks raised-floaty"},
+        "_": {class: "gap blocks"},
+        "▒": {class: "invisiblewalk nothing"},
+
+        "9": { teleportTarget: "grm_lesser" }
+    },
+
+    plan: `
+        ._.=_9_=...
+        ▒▒=░░p░=▒▒=
+        =▒=░░░░░=▒▒
+        .=▒░▒░░▒▒=▒
+        .=▒░▒▒=▒▒▒=
+        ..=▒▒▒░▒▒▒▒
+        ..=▒░░░▒░=▒
+        ..=▒░▒░▒===
+        ...=▒▒▒▒=..
+        .=.==▒▒=...
+        ....=▒==...
+        .?.=.==.=.!
+        =..=..=..=.
+        ....=....=.
+        ▒==▒▒▒?▒=.=
+        .▒▒=!B▒=▒▒.
+    `,
+
+    planAdjustment: (plan)=>{
+        if(check("groundstrd")) return plan.replaceAll("!", ".").replaceAll("?", ".").replaceAll("B", ".")
+
+        return plan
+    }
 }

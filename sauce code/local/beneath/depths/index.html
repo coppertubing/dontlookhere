@@ -35,31 +35,31 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1753204289400582945"></script>	
-	<script src="/js/dialogue.js?1753204289400582945"></script>	
-	<script src="/js/globalents.js?1753204289400582945"></script>	
-	<script src="/js/cystStage.js?1753204289400582945"></script>
-	<script src="/js/buddy.js?1753204289400582945"></script>
-	<script src="/js/vn2.js?1753204289400582945"></script>
-	<script defer src="/js/saves.js?1753204289400582945"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1753204289400582945'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1753204289400582945'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
-	<div id='meta-menu'>
+	<div id='meta-menu' class="noclosemenu">
 		<!--core icon-->
 		<div id='meta-icon'></div>
 
 		<!--moth icon-->
-		<i class='ci-moth moth-trigger' 
+		<i class='cicon ci-moth moth-trigger' 
 			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
 			definition="NOTE::'establishes external contact'"
-		><span class="mothnotice"><i class='ci-moth'></i></span></i>
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
 
 		<!--masks icon & menu-->
 		<div id="meta-mask">
-			<i class="ci-masks mask-trigger" 
+			<i class="cicon ci-masks mask-trigger" 
 				onclick="toggleMasksMenu()"
 				definition="NOTE::'influence thoughtspace';'third-party installation'"
 			></i>
@@ -68,7 +68,7 @@
 		</div>
 
 		<!--volume controls icon-->
-		<i id='meta-volume-toggle' class='ci-vol'></i>
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
 		<div id='meta-volume'>
 			<span class="meta-volume-wrapper">
 				<span>MASTER</span>
@@ -85,12 +85,12 @@
 		</div>
 
 		<!--dropdown menu-->
-		<i class='ci-bars'></i>
+		<i class='cicon ci-bars'></i>
 		<div id='meta-links'>
 			<div id="mui-links">
-				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='ci-nav'></i></a>
-				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='ci-ent'></i></a>
-				<a id='meta-sys' definition="NOTE::'system management'"><i class='ci-sys'></i></a>
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
 			</div>
 		</div>
 	</div>
@@ -102,10 +102,6 @@
 	<div id="mindspike-scanner">
 		<div id="mindspike-entities"></div>
 		<div id="mindspike-actions">
-			<form id="act">
-				<input type="text" id="act-input" placeholder="CONCEPT">
-				<input type="submit" id="act-submit" value="ENACT">
-			</form>
 			<div id="act-options">
 				<div class="act-option">connect</div>
 				<div class="act-option">back away</div>
@@ -142,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1753204289</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -319,47 +315,36 @@
 	</details>
 </div>
 
-<script>
-    fetch("https://corrukofisupporters.corru.workers.dev/api/").then(resp=>resp.json()).then(data=>{
-        if(!data.length || !data.some(sub => sub.highest_tier == "Fundfriend" && sub.active )) {
-            document.querySelector('.sysbox.credits.kofi').remove()
-            return
-        }
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
 
-        let supporterBox = document.querySelector('#iconsupporters')
-        data.forEach(donator=>{
-            if(donator.active && donator.highest_tier == "Fundfriend") {
-                let lettas = getEquidistantLetters(donator.name.replaceAll(" ", ""))
-                let lettaDisplay = ``
-                lettas.forEach(letta=>{
-                    lettaDisplay += `<span class="tskip">${letta[0]}</span>`
-                })
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
 
-                supporterBox.insertAdjacentHTML('beforeend', `
-                    <li class="fundfriend tskip" definition="FUNDFRIEND::${donator.name}" style="animation-delay: -${Math.random() * 20}s;">
-                        ${lettaDisplay}
-                    </li>
-                `)
-            }
-        })
-    })
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
 
-    //we make glyphs out of up to 3 letters from the name
-    function getEquidistantLetters(input) {
-        let result = []
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
 
-        if (input.length <= 3) {
-            for (let i = 0; i < input.length; i++) result.push(input.charAt(i))
-        } else {
-            let indices = [0, Math.floor(input.length * 0.5), input.length - 1]
-            indices.forEach(index => {
-                result.push(input.charAt(index))
-            })
-        }
-
-        return result
-    }
-</script>
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
 	
 	<div id="content">
 		<div class="grid-plane">
@@ -372,16 +357,16 @@
 <div id="stage-navigator">
     <span>SPATIAL NAVIGATION</span>
     <div class="stage-arrows">
-        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="ci-up"></i></div>
-        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="ci-left"></i></div>
-        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="ci-down"></i></div>
-        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="ci-right"></i></div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
     </div>
 </div>
 
 <style>
 
-@import url(/css/stage/beneath.css?1753204289400582945);
+@import url(/css/stage/beneath.css?1758921388640655831);
 
 #realgrid .gridpiece:empty {
     background: url(/img/textures/tranclouds.gif);
@@ -393,7 +378,7 @@
 
 #realgrid .disturbed {
     background-image: url(/img/local/beneath/vw_1.gif) !important;
-    --baseTransform: rotateX(-90deg) var(--dyp-transform);
+    --baseTransform: translateY(50%) rotateX(-90deg) var(--dyp-transform);
     animation: SPIN 600s linear infinite;
     transform-origin: center !important;
     transition: transform 10s ease-in;
@@ -483,7 +468,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1753204289400582945,
+				cacheval: 1758921388640655831,
 
 				
 
@@ -518,7 +503,9 @@
 				
 				
 				onLoaded: ()=>{	
-					document.querySelectorAll('#grid-ref').forEach(e=>e.remove())
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
 					body.setAttribute('page', page.name)
 					content.setAttribute('page', page.name)
 					document.querySelector('#static .enter').setAttribute('page', page.title)
@@ -617,6 +604,11 @@
 					
 						
 						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
 							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
 						
 					
@@ -638,6 +630,16 @@
 						
 						
 							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
 						
 					
 						
@@ -678,6 +680,11 @@
 							
 							
 							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
 						
 					
 					
@@ -788,6 +795,7 @@ createEntity({
             name: "enter",
             exec: ()=>{
                 change("TEMP!!beneath_depths_trigger", true)
+                change("beneath_depths", true)
                 env.depths.recede()
             },
             showIf: ["TEMP!!beneath_depths_trigger", false]
@@ -823,7 +831,7 @@ createEntity({
 env.stages['unknown'] = {
     exec: ()=>{
         if(check("fbx__depthrecovery2")) {
-            document.querySelectorAll(`.gridpiece[slug="e"]`).forEach(el=>el.innerHTML = "")
+            env.stage.querySelectorAll(`.gridpiece[slug="e"]`).forEach(el=>el.innerHTML = "")
             env.bgm.rate(0.01)
         }
     },
@@ -1086,8 +1094,6 @@ env.stages['unknown'] = {
 						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
 					}
 
-					console.log('rendering buddies!')
-					Buddy.renderGlobalBuddies()
 					document.dispatchEvent(env.hooks.corru_loaded)
 				},
 
@@ -1101,7 +1107,7 @@ env.stages['unknown'] = {
 					window.vnObj = page.vn
 
 					
-					readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
 					
 					
 					body.setAttribute('state', 'corru-entered')
@@ -1114,6 +1120,7 @@ env.stages['unknown'] = {
 					}
 					if(page.bgm) {
 						page.bgm.volume(0)
+						
 						page.bgm.play()
 						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
 						env.bgm = page.bgm
@@ -1132,12 +1139,24 @@ document.addEventListener('keydown', stageKeypress)
 					document.dispatchEvent(env.hooks.corru_entered)
 					mothHasUnreadCheck()
 
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
 					setTimeout(()=>{
 						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
 					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
 				},
 
 				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
 					body.setAttribute('state', 'corru-leaving')
 					MUI("off")
 					env.waitOnLoad = false
@@ -1168,6 +1187,11 @@ delete env.depths
 
 					if(dest) swup.loadPage({url: dest})
 					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
 				}
 			}
 

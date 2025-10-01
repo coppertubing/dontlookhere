@@ -109,13 +109,15 @@ RESPOBJ::
             SHOWIF::"citystreet__flower_beacon"
         council<+>council
         tyrant<+>tyrant
+        dog<+>dog
+            SHOWIF::"unity_dog"
+        akizet<+>wakizet
+            SHOWIF::"pit__f3_unity"
         fake me?<+>stowaway
         fairy teaching stowaway?<+>stowfeast
             SHOWIF::"ozo__e_f_stow"
         mask?<+>mask
-        dog<+>dog
-            SHOWIF::"unity_dog"
-
+            SHOWIF::["ozo__geli_freedom", false]
         back<+>loop
             FAKEEND::(back)
 `)
@@ -757,6 +759,67 @@ tyrant
         ...<+>oloop
             FAKEEND::(back)
 
+dog
+    self
+        so the dog is here now
+
+    bsteli::happy
+        ahaha, yes, kuulla!!
+        i was quite surprised when i saw it arrive!
+        well done, interloper!
+    
+    bsteli::think
+        though, i am not sure if it is particularly lucid... it has not yet spoken!
+        i found this very strange, but after i thought about it some more:
+        it was in the nature of its role to follow directions,
+        and you gave it a direction to go--here!
+        it will awaken in time, i am certain
+        but in the meantime, it does seem to enjoy our company, and it is not in pain,
+    
+    bsteli::bstrd
+        SO WHO CARES :P
+        dream dog time LOL
+
+    RESPONSES::self
+        i see<+>oloop
+            FAKEEND::(back)
+
+wakizet
+    self
+        what do you think of the akizet thoughtform?
+
+    bsteli::think
+        oh!! well...
+        it is a little strange to have an akizet out here
+        especially a 'real' one...
+
+    bsteli::concern
+        but, of course, make no mistake--i am very glad to have her!
+        i have just spent so much time watching her
+        another her, stumbling blindly through the same tragedies,
+        carrying so much stress from a life that she never even really lived...
+        even now, this one is like a wounded creature,
+        cowering from us beneath the same shelter,
+        tense, and ready to strike back at the slightest motion!!
+    
+    bsteli::think
+        ...
+
+    bsteli
+        but all are certain we can help her, and she is not unreasonable!
+        i simply hope we can help her find a more comfortable existence, here
+        and, you know, when she is more acclimated...
+
+    bsteli::happy
+        perhaps she might even enjoy our favorite dream!!
+    
+    bsteli
+        we must simply be patient
+
+    RESPONSES::self
+        yeah<+>oloop
+            FAKEEND::(back)
+
 stowaway
     self
         how is the stowaway doing?
@@ -797,29 +860,12 @@ mask
         cool<+>oloop
             FAKEEND::(back)
 
-dog
+freedom
     self
-        so the dog is here now
-
-    bsteli::happy
-        ahaha, yes, kuulla!!
-        i was quite surprised when i saw it arrive!
-        well done, interloper!
+        todo 
     
-    bsteli::think
-        though, i am not sure if it is particularly lucid... it has not yet spoken!
-        i found this very strange, but after i thought about it some more:
-        it was in the nature of its role to follow directions,
-        and you gave it a direction to go--here!
-        it will awaken in time, i am certain
-        but in the meantime, it does seem to enjoy our company, and it is not in pain,
-    
-    bsteli::bstrd
-        SO WHO CARES :P
-        dream dog time LOL
-
     RESPONSES::self
-        i see<+>oloop
+        cool<+>oloop
             FAKEEND::(back)
 
 END::env.jokzi ? env.jokzi.toggleSlow(false) : false
@@ -1178,7 +1224,7 @@ createEntity({
                 startDialogue("++bsteli")
                 vnp({bg: false, hideStage: true, bsteli: "show"})
             },
-            showIf: () => check("e3a2__geliintro") && (check("stageroom", "underlobby") || check("stageroom", "ozo_lostone") || check("e3a2escape", "in_progress"))
+            showIf: () => !check("freedomtut") && (check("e3a2__geliintro") && (check("stageroom", "underlobby") || check("stageroom", "ozo_lostone") || check("e3a2escape", "in_progress")))
         },
         {
             name: "unity",
@@ -1257,14 +1303,14 @@ createEntity({
             exec: ()=>{
                 startDialogue("dreamrun")
             },
-            showIf: ()=> env.stage.name == "ozo_lostone" && check("++bsteli-replay") && !check("gameplay_off") && !content.getAttribute("event").includes("geli")
+            showIf: ()=> env.stage.name == "ozo_lostone" && check("++bsteli-replay") && !check("gameplay_off") && !(content.getAttribute("event") || "").includes("geli")
         },
         {
             name: "dream of escape",
             exec: ()=>{
                 startDialogue("dreamescape")
             },
-            showIf: ()=> env.stage.name == "ozo_lostone" && check("++bsteli-replay") && !check("gameplay_off") && !content.getAttribute("event").includes("geli")
+            showIf: ()=> env.stage.name == "ozo_lostone" && check("++bsteli-replay") && !check("gameplay_off") && !(content.getAttribute("event") || "").includes("geli")
         },
     ]
 })

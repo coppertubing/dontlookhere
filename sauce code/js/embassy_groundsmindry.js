@@ -235,7 +235,29 @@ env.grm = {
             body.classList.remove("vello")
             content.classList.remove("voodbye")
         }, 10000)
-    }
+    },
+
+    daemonScatter: function(el) {
+        let id = el.parentElement.id
+        env.stage.querySelectorAll(`#${id}`).forEach(pEl=>{
+            pEl.classList.add('scatterquickruuun')
+            setTimeout(() => {
+                pEl.style.animation = `SCRAM 0.5s linear`
+            }, 400)
+            setTimeout(() => {
+                pEl.classList.add('scrammed')
+            }, 2000)
+        })
+    },
+
+    mask: (ev) => {
+        console.log("called", ev)
+        switch(env.stage.name) {
+            case "grm_lesser":
+                if(check("PAGE!!e4prog") == 15 && (ev.detail.oldMask == "freedom" || ev.detail.mask == "freedom") && !check("groundstrd")) refreshStage()
+            break
+        }
+    }    
 }
 
 env.grm.music_runningoutoftime.intendedVol = 0.75
@@ -997,4 +1019,42 @@ createEntity({
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'vekoa, the groundsmind';'the parasite's first and most critical victim';'her image, her body, wielded against us';'without sense?'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+/* e4a1 stuff */
+createEntity({
+    name: 'bstrd',
+    type: "thoughtform foe collapse bstrd portrait-cover",
+    image: "/img/sprites/bstrd/bstrd.gif",
+    hide: true,
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'entertainment';'memory management'`,
+    pathLimit: "/local/ocean/embassy",
+    actions: [
+        {
+            name: "greet",
+            exec: ()=>{
+                cutscene(true)
+                chatter({actor: 'bstrd', text: "huh HEY !!! HEY!!! WTF!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", readout: true, delay: 1000})
+                chatter({actor: 'bstrd', text: "!!!!!! !!!!!!!! !!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! !!!!! !!!!!!!!!!!!!!!!!!!! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", readout: true, delay: 3000})
+                chatter({actor: 'bstrd', text: "U cantot in BE IN HERE!!!!!! !!!", readout: true, delay: 6000})
+                chatter({actor: 'bstrd', text: "FUUU*K ITS NOT REUDY", readout: true, delay: 10000})
+                chatter({actor: 'bstrd', text: "u didnt see anything >%^{", readout: true, delay: 12000})
+                change("groundstrd", true)
+                setTimeout(()=>{
+                    cutscene(false)
+                    env.stage.querySelectorAll(`.bstrd`).forEach(pEl=>{
+                        pEl.style.setProperty('--dyp-transform', 'translateY(0)')
+                        pEl.classList.add('scatterquickruuun')
+                        setTimeout(() => {
+                            pEl.style.animation = `SCRAM 0.5s linear`
+                        }, 400)
+                        setTimeout(() => {
+                            pEl.classList.add('scrammed')
+                        }, 2000)
+                    })
+                }, 9000)
+            }
+        },
+    ]
 })

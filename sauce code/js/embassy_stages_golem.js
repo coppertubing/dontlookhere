@@ -607,25 +607,25 @@ env.stages['g_lobby'] = {
             change("postbstrdgeli", "DELETE")
         }
         
-        if(!check("PAGE!!bozcav")) document.querySelectorAll('.character.cavik, .character.bozko').forEach(e=>{
+        if(!check("PAGE!!bozcav")) env.stage.querySelectorAll('.character.cavik, .character.bozko').forEach(e=>{
             e.parentElement.classList.remove('prop', 'blocks')
             e.parentElement.innerHTML = ""
         })
         
-        if(check("PAGE!!goverride")) document.querySelectorAll(".big.sludged").forEach(el=>el.classList.remove('sludged'))
+        if(check("PAGE!!goverride")) env.stage.querySelectorAll(".big.sludged").forEach(el=>el.classList.remove('sludged'))
 
         //hide the ikgolem tile cause we're doin some trix here
-        document.querySelectorAll('.gridpiece[slug="Æ"').forEach(el=>el.classList.add('notile'))
+        env.stage.querySelectorAll('.gridpiece[slug="Æ"').forEach(el=>el.classList.add('notile'))
         
         //replace mindcores with the ikgolem as needed
-        if(check("PAGE!!ikgolem")) document.querySelectorAll('.gridpiece[slug="m"]').forEach(el=>el.innerHTML = "")
-        else document.querySelectorAll('.gridpiece[slug="Æ"').forEach(el=>el.innerHTML = "")
+        if(check("PAGE!!ikgolem")) env.stage.querySelectorAll('.gridpiece[slug="m"]').forEach(el=>el.innerHTML = "")
+        else env.stage.querySelectorAll('.gridpiece[slug="Æ"').forEach(el=>el.innerHTML = "")
 
         //show proceed option near tozik once boss is beat
         if(check("PAGE!!golboss") && env.ep4) {
-            document.querySelectorAll('.gridpiece[slug="€"]').forEach(el=>{el.classList.remove('hide')})
+            env.stage.querySelectorAll('.gridpiece[slug="€"]').forEach(el=>{el.classList.remove('hide')})
         } else {
-            document.querySelectorAll('.gridpiece[slug="€"]').forEach(el=>{el.classList.add('hide')})
+            env.stage.querySelectorAll('.gridpiece[slug="€"]').forEach(el=>{el.classList.add('hide')})
         }
     },
     entities: {
@@ -863,7 +863,7 @@ env.stages['g_boss'] = {
     exec: function () {
         env.stages.golemStageInit(this)
         if(!check("PAGE!!golboss")) {
-            document.querySelectorAll('.gridpiece[slug="T"]').forEach(el=>{el.classList.add('hide')})
+            env.stage.querySelectorAll('.gridpiece[slug="T"]').forEach(el=>{el.classList.add('hide')})
             startDialogue("boss")
         } else {
             env.stages['g_boss'].hideBoss()
@@ -881,11 +881,11 @@ env.stages['g_boss'] = {
     },
 
     hideBoss: () =>{
-        document.querySelectorAll('.gridpiece[slug="☺"]').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+        env.stage.querySelectorAll('.gridpiece[slug="☺"]').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
     },
 
     removeHatch: () =>{
-        document.querySelectorAll('.hasbp').forEach(el=>el.classList.add('openhatch'))
+        env.stage.querySelectorAll('.hasbp').forEach(el=>el.classList.add('openhatch'))
     },
 
     entities: {
@@ -1086,7 +1086,7 @@ env.stages['g_m_hall'] = {
         env.stages.golemStageInit(this)
         
         if(check("PAGE!!mboss")) {
-            document.querySelectorAll('.gridpiece[slug="K"]').forEach(el=>el.innerHTML = "")
+            env.stage.querySelectorAll('.gridpiece[slug="K"]').forEach(el=>el.innerHTML = "")
         }
     },
     entities: {
@@ -1656,11 +1656,11 @@ env.stages['g_m_dist'] = {
             env.stages['g_m_dist'].removeBoss()
         }
 
-        if(check("PAGE!!ikgolem")) document.querySelectorAll('.gridpiece[slug="s"]').forEach(el=>{el.innerHTML = "";el.classList.remove('blocks', 'darktile')})
+        if(check("PAGE!!ikgolem")) env.stage.querySelectorAll('.gridpiece[slug="s"]').forEach(el=>{el.innerHTML = "";el.classList.remove('blocks', 'darktile')})
     },
 
     removeBoss: function () {
-        document.querySelectorAll('.gridpiece[slug="☻"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+        env.stage.querySelectorAll('.gridpiece[slug="☻"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
     },
 
     entities: {
@@ -2188,7 +2188,7 @@ env.stages['g_s_storage'] = {
 
     removeBoss: function (removeBeamsToo = false) {
         if(check('PAGE!!sboss')) {
-            document.querySelectorAll('.gridpiece[slug="☻"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+            env.stage.querySelectorAll('.gridpiece[slug="☻"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
             if(removeBeamsToo) env.stages['g_s_storage'].normalize()
         }
     },
@@ -2199,7 +2199,7 @@ env.stages['g_s_storage'] = {
         content.classList.add('busted')
 
         //turns the beams into boxes
-        document.querySelectorAll('.dullbeam').forEach(el=>{
+        env.stage.querySelectorAll('.dullbeam').forEach(el=>{
             el.classList.remove('dullbeam')
             el.classList.add('deadtainer', 'special')
             el.parentElement.classList.remove('prop')
@@ -2208,7 +2208,7 @@ env.stages['g_s_storage'] = {
         })
 
         //update walls
-        document.querySelectorAll("canvas.wall").forEach(wall=>{
+        env.stage.querySelectorAll("canvas.wall").forEach(wall=>{
             wall.setAttribute("sprite", "/img/local/embassy/golemwallmelt.gif, /img/local/embassy/wallcover.gif" )
             wall.setAttribute("repeat", "repeat-x" )
             wall.setAttribute("fit", "auto, stretch")
@@ -2774,7 +2774,7 @@ env.stages['g_o_r_translation'] = {
     },
     removeWordfriend: function () {
         if(check('PAGE!!oboss')) {
-            document.querySelectorAll('.gridpiece[slug="W"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks', 'chartile'); el.classList.add('empty', 'circle')})
+            env.stage.querySelectorAll('.gridpiece[slug="W"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks', 'chartile'); el.classList.add('empty', 'circle')})
             initializeFloorCanvas(env.stage.current, env.stage.real)
         }
     },

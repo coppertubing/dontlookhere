@@ -678,7 +678,7 @@ class CrittaNode extends HTMLElement {
                     show: true,
                     forceMini: true,
                     sfx: false
-                })                
+                })
 
                 this.setThisAndAttribute('completed', true)
                 
@@ -1608,6 +1608,11 @@ class CrittaReward extends HTMLElement {
                     addItem("sfer_cube", qty)
                 } else {
                     chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${qty}';'${itemObj.name.toLowerCase()}'`, readout: false})
+                }
+
+                if(check("STAGE!!freedomtoggled")) {
+                    change("STAGE!!freedomtoggled", "DELETE")
+                    mask({name: "freedom", toggle: true, playSound: false})
                 }
             }
         },

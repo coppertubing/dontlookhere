@@ -14751,7 +14751,7 @@ if(typeof env.STATUS_EFFECTS == "undefined") env.STATUS_EFFECTS = {
         name: "miltzone",
         infinite: true,
         silent: true,
-        outgoingCrit: -100, // todo: remove when/if she gets her own action
+        outgoingCrit: -100,
         events: {
             onTurn: function() {
                 if(this.status.affecting.state == "lastStand") return;

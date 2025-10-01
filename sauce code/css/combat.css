@@ -98,7 +98,7 @@
     text-shadow: 2px 2px var(--dark-color);
 }
 
-.statdisplay > * { cursor: default }
+.statdisplay .span { cursor: default }
 .statdisplay [definition] { 
     cursor: alias;
     padding: 2px;
@@ -246,7 +246,7 @@
 .ticktype-special .status-count::before { content: "[" }
 .ticktype-special .status-count { color: var(--neutral-color); border-radius: 0 !important }
 
-.actor .actions {
+.actor .actions, .parasite-actions .actions {
     position: absolute;
     top: 0;
     left: 0;
@@ -275,7 +275,7 @@
     display: none;
 }
 
-.actor .actions:empty, .actor .actions.turnover, .shutdown .actor .actions {
+.actions:empty, .actions.turnover, .shutdown .actions {
     transform: translateY(-100%) scaleY(0.001);
     pointer-events: none;
     opacity: 0;
@@ -999,7 +999,16 @@ combat-scene[state="targeting"] .effect-message.fading {
     transition: all 1s ease-in-out, transform 200ms cubic-bezier(.86,0,.07,1), filter 0s linear !important;
 }
 
-.sprite-wrapper.dead *, .sprite-wrapper.dead *:before, .sprite-wrapper.dead *:after {
+.sprite-wrapper.dead div, 
+.sprite-wrapper.dead div:before, 
+.sprite-wrapper.dead div:after,
+.sprite-wrapper.dead figure, 
+.sprite-wrapper.dead figure:before, 
+.sprite-wrapper.dead figure:after,
+.sprite-wrapper.dead span, 
+.sprite-wrapper.dead span:before, 
+.sprite-wrapper.dead span:after,
+.sprite-wrapper.dead img {
     animation-play-state: paused !important;
 }
 
@@ -1752,9 +1761,11 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
 /* komplete */
-#combat.over *, #combat.over::after {
+/* todo: temporary comment out - let's see how this plays out
+#combat.over div, #combat.over figure, #combat.over span, #combat.over::after {
     animation-play-state: paused !important;
 }
+*/
 
 #combat.over {
     animation: komplete 1s cubic-bezier(.55,0,.39,1.26);
@@ -1809,10 +1820,6 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     pointer-events: none;
 }
 
-.partymember > *:not(.partymember-actions):not(.partymember-editzone).partymember > :not(.partymember-actions):not(.partymember-editzone):not(.item-clicktarget) {
-    pointer-events: none;
-}
-
 .partymember.draggable-mirror {
     z-index: 1000;
 }
@@ -1847,7 +1854,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     pointer-events: none;
 }
 
-.partymember-liner > * {
+.partymember-liner span, .partymember-liner button {
     display: inline-block;
     transform: translateY(-0.33em);
     white-space: nowrap;
@@ -2022,10 +2029,9 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     order: 100;
     border: 2px dashed;
     pointer-events: none;
-}
-
-.partymember-gone, .partymember-gone * {
-    color: var(--bright-color);
+    --neutral-color: var(--bright-color);
+    --friend-color: var(--bright-color);
+    --obesk-color: var(--bright-color);
 }
 
 .partymember-gone .partymember-hp::after {
@@ -2150,7 +2156,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     padding: 0.5em 0;
 }
 
-.item-usage > * {
+.item-usage span {
     display: block;
     margin-top: 1em;
     margin-bottom: 0.5em;
@@ -2167,7 +2173,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     color: var(--obesk-color);
 }
 
-.item-usage > :last-child {
+.item-usage span:last-child {
     margin-bottom: 0;
 }
   
@@ -2706,12 +2712,13 @@ body.cull-stage #content.bastard::before, body.cull-stage #content.bastard::afte
 }
 
 /* quality settings */
-body:not([quality="low"]) #content #enemy-graphic .golemsprite.dead .spritestack, 
-body:not([quality="low"]) #content #enemy-graphic .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) *:not(.filter) { filter: grayscale(1) contrast(3) invert(1) }
-body:not([quality="low"]) #content .struck:not(.destructible):not(.nofilter) { filter: grayscale(1) contrast(3) invert(1) }
-body:not([quality="low"]) #content .spritestatus-destabilized:not(.destructible) > *:not(.target) { filter: blur(5px) contrast(2) }
-body:not([quality="low"]) #content .actor.dead .portrait { filter: grayscale(1) contrast(2) invert(1) }
-    body:not([quality="low"]) #content .actor.dead#miltza .portrait { filter: grayscale(1) contrast(2) invert(1) }
+body[quality="regular"] .golemsprite.dead .spritestack, 
+body[quality="regular"] .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) div:not(.filter),
+body[quality="regular"] .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) .sprite:not(.filter) { filter: grayscale(1) contrast(3) invert(1) }
+body[quality="regular"] .struck:not(.destructible):not(.nofilter) { filter: grayscale(1) contrast(3) invert(1) }
+body[quality="regular"] .spritestatus-destabilized:not(.destructible) > div:not(.target) { filter: blur(5px) contrast(2) }
+body[quality="regular"] .actor.dead .portrait { filter: grayscale(1) contrast(2) invert(1) }
+    body[quality="regular"] .actor.dead#miltza .portrait { filter: grayscale(1) contrast(2) invert(1) }
 
 @media only screen and (max-width: 1366px)  {
     :root.bigmode div#combat #ally-team .actor {
@@ -2828,7 +2835,7 @@ body:not([quality="low"]) #content .actor.dead .portrait { filter: grayscale(1) 
     display: none;
 }
 
-body:not([quality="low"]) #content .spritestatus-destabilized .veilksprite img {
+body[quality="regular"] #content .spritestatus-destabilized .veilksprite img {
     filter: blur(5px) contrast(2);
 }
 
@@ -3042,7 +3049,7 @@ body:not([quality="low"]) #content .spritestatus-destabilized .veilksprite img {
 }
 
 /* maintenance cloak */
-body:not([quality="low"]) .maintcloak {
+body[quality="regular"] .maintcloak {
     transform-style: preserve-3d;
 }
 
@@ -3054,12 +3061,12 @@ body:not([quality="low"]) .maintcloak {
     animation: DANCE 5s ease-in-out infinite alternate;
 }
 
-body:not([quality="low"]) .maintcloak img:nth-child(2) {
+body[quality="regular"] .maintcloak img:nth-child(2) {
     animation: SPIN-Y 2s linear infinite;
     animation-delay: unset !important;
 }
 
-body:not([quality="low"]) .maintcloak img:nth-child(3) {
+body[quality="regular"] .maintcloak img:nth-child(3) {
     animation: SPIN-Y 2s linear infinite;
     animation-delay: unset !important;
     --baseTransform: rotateY(90deg);
@@ -3231,6 +3238,8 @@ body:not([quality="low"]) .maintcloak img:nth-child(3) {
     background-size: contain;
     position: absolute;
     backface-visibility: visible;
+    top: 40%;
+    right: 20%;
 }
 
 .wordfriend.sprite-wrapper.orbshake {
@@ -3249,6 +3258,10 @@ body:not([quality="low"]) .maintcloak img:nth-child(3) {
 .wordfriend .orb:nth-child(3) {
     top: 50%;
     left: 10%;
+}
+
+.wordfriend .orbs:nth-of-type(2) .orb:nth-child(2) {
+    right: 75%;
 }
 
 /* HUSKS */
@@ -3352,7 +3365,7 @@ body:not([quality="low"]) .maintcloak img:nth-child(3) {
     #realgrid .husk[type="4"][t="3"] .toplayer { transform: translateY(-25%); }
     #enemy-graphic .daemon-mimic.husk[type="4"][t="3"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type4_top3_mimic.gif); --baseTransform: translateY(3%);}
 
-body:not([quality="low"]) .husk .sprite {
+body[quality="regular"] .husk .sprite {
     animation: HUSKWOBBLE 5s cubic-bezier(.75,.02,.43,.96) infinite alternate;
     transform-origin: bottom;
 }
@@ -3371,7 +3384,7 @@ body:not([quality="low"]) .husk .sprite {
     margin: auto -5%;
 }
 
-body:not([quality="low"]) .hallucination .sprite-overflow  {
+body[quality="regular"] .hallucination .sprite-overflow  {
     animation: SHAKE 10ms linear infinite;
     transform-origin: bottom;
 }
@@ -3442,25 +3455,6 @@ body:not([quality="low"]) .hallucination .sprite-overflow  {
 }
 
 /* stage support */
-#realgrid .newevil .sprite-wrapper, #realgrid .newevil .sprite-wrapper * {
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
-}
-
-#realgrid .newevil .sprite-wrapper {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    position: absolute;
-    transform-origin: center;
-    
-    transform: rotateX(-90deg) translateY(-50%) rotateY(180deg) rotateY(var(--faceAngle));
-}
-
-#realgrid .newevil .sprite {
-    max-height: calc(var(--gridTileSize) * 2);
-}
-
 #realgrid .golemsprite .sprite,
 #realgrid .constructor-golem.golemsprite .sprite {
     animation-name: stage-hover;
@@ -3517,20 +3511,28 @@ body[quality="low"] #realgrid .newevil .sprite {
 	transform-origin: center;
 }
 
-.sprite-wrapper.struck.daemonsprite *, 
-.sprite-wrapper.struck.daemonsprite *::after, 
-.sprite-wrapper.basic-attack.daemonsprite *,
-.sprite-wrapper.basic-attack.daemonsprite *::after,
-.sprite-wrapper.wobble.daemonsprite *,
-.sprite-wrapper.wobble.daemonsprite *::after,
-.sprite-wrapper.daemonsprite.spritestatus-windup *,
-.sprite-wrapper.daemonsprite.spritestatus-windup *::after {
+.sprite-wrapper.struck.daemonsprite div, 
+.sprite-wrapper.struck.daemonsprite div::after, 
+.sprite-wrapper.basic-attack.daemonsprite div,
+.sprite-wrapper.basic-attack.daemonsprite div::after,
+.sprite-wrapper.wobble.daemonsprite div,
+.sprite-wrapper.wobble.daemonsprite div::after,
+.sprite-wrapper.daemonsprite.spritestatus-windup div,
+.sprite-wrapper.daemonsprite.spritestatus-windup div::after,
+.sprite-wrapper.struck.daemonsprite figure, 
+.sprite-wrapper.struck.daemonsprite figure::after, 
+.sprite-wrapper.basic-attack.daemonsprite figure,
+.sprite-wrapper.basic-attack.daemonsprite figure::after,
+.sprite-wrapper.wobble.daemonsprite figure,
+.sprite-wrapper.wobble.daemonsprite figure::after,
+.sprite-wrapper.daemonsprite.spritestatus-windup figure,
+.sprite-wrapper.daemonsprite.spritestatus-windup figure::after {
 	animation-duration: 400ms !important;
 }
 
 /* daemons have their individual parts invert instead of the whole sprite for animation reasons (it gets weird) */
 .sprite-wrapper.struck.daemonsprite { filter: unset !important; animation: BIGSHAKE 250ms !important; }
-body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
+body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
     filter: grayscale(1) contrast(3) invert(1);
     animation: shake-crazy 250ms;
 }
@@ -3553,7 +3555,7 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
 	--baseTransform: rotate(0deg);
 }
 
-.daemon.accurate-position :not(.noimg)::after {
+.daemon.accurate-position div:not(.noimg)::after {
 	content: "";
 	width: 100%;
 	height: 100%;
@@ -3910,7 +3912,7 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
     width: 20vw;
 }
 
-.daemon.king > * {
+.daemon.king img, .daemon.king div {
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -4122,7 +4124,7 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
 	transform-origin: center;
 }
 
-.daemon.bee .sides > * {
+.daemon.bee .sides span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -4132,8 +4134,8 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
     transition: transform 300ms;
 }
 
-.basic-attack .daemon.bee .sides > *,
-.struck .daemon.bee .sides > * {
+.basic-attack .daemon.bee .sides span,
+.struck .daemon.bee .sides span {
     --baseTransform: rotate(450deg);
 }
 
@@ -4294,11 +4296,11 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
     transform: translateY(0);
 }
 
-#chancepanel > img {
+#chancepanel img {
     width: 40vmin;
 }
 
-#chancepanel > img ~ * {
+#chancepanel .wheel, #chancepanel .display, #chancepanel .result {
     position: absolute;
     top: 0;
     width: 100%;
@@ -4398,7 +4400,7 @@ body:not([quality="low"]) .sprite-wrapper.daemonsprite.struck > * {
     display: block;
 }
 
-#chancepanel.spinning * {
+#chancepanel.spinning .wheel, #chancepanel.spinning .display, #chancepanel.spinning .result{
     animation-play-state: running;
 }
 

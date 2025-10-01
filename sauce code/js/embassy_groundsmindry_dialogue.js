@@ -402,7 +402,7 @@ start
         these ones are not responding to me, so i am not sure what is really going on there
             EXEC::vnp({arbitrary: "hide", arbitrary2: "show URL::/img/local/embassy/mind/map_structure.gif"})
         but that dark pattern is so familiar, too, like...
-        ah... do not mind my speculation!
+        ah... pay no mind to my speculation!
         go, attend to the others
             EXEC::vn.done();setCam({x: 5.5, y: 11, rotation: -60})
         i will let you know when i have a conclusion!!

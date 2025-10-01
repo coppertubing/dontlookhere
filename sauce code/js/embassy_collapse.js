@@ -935,7 +935,7 @@ start
         not seeing any physical damage
     
     sourceless
-        GAKVU RUMMAGES THROUGH HER FALSE VEILKSKIN COAT, PRODUCING A SMALL CORRUCYST
+        GAKVU RUMMAGES THROUGH HER FALSE VEILK SKIN COAT, PRODUCING A SMALL CORRUCYST
         A COMMUNICATIONS DEVICE, THOUGH IT MELTS IN HER CLAWS
     
     gakvu
@@ -1070,7 +1070,7 @@ start
     
     timestopper
         WHAT DO I DO WHAT DO I DO
-        IT IS GOING RIGHT FOR MY MIND-CORE IT IS GOING TO KILL ME
+        IT IS GOING RIGHT FOR MY MINDCORE IT IS GOING TO KILL ME
         THIS IS IT
     
     akizet
@@ -1419,7 +1419,7 @@ start
 
     gakvu
         sorry, just trying to stay positive
-        my mind-core follows a mobile groundsmindry pattern
+        my mindcore follows a mobile groundsmindry pattern
     
     tozik
         that is illegal
@@ -1567,7 +1567,7 @@ start
 
     gakvu
         they are still alive
-        their mind-cores, anyway
+        their mindcores, anyway
         we need to help them get out of the bodies, though
 
     tozik
@@ -1625,7 +1625,7 @@ start
 
     akizet
         very intentionally, too
-        they are going for mind-cores
+        they are going for mindcores
         what is your name?
     
     itzil
@@ -1770,7 +1770,7 @@ start
         it is too early to say anything for certain, but
         why was there no groundsmind symbol over these containers?
         they were united in the same goal as the golem in our chamber
-        going for the mind-cores...
+        going for the mindcores...
         
     sourceless
         HE FALLS SILENT, AND NEITHER I NOR GAKVU CAN REPLY
@@ -3168,7 +3168,7 @@ coat
     akizet
         gakvu!!
             SHOWIF::[["gakpause", false]]
-        do you mind... turning your coat off?
+        would you please... turn your coat off?
             SHOWIF::[["gakpause", false]]
         i fear it may draw undue attention
             SHOWIF::[["gakpause", false]]
@@ -3297,7 +3297,7 @@ holdingup
 
         i have never been hurt like this before... it is terrifying
             SHOWIF::'EXEC::page.party[1].hp <= 4'
-        but my mind-core is intact, and that is all that matters
+        but my mindcore is intact, and that is all that matters
             SHOWIF::'EXEC::page.party[1].hp <= 4'
 
     tozik

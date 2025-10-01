@@ -218,7 +218,7 @@ body.loading::after {
     font-size: 2em;
 }
 
-i[class^="ci-"], i[class*=" ci-"] {
+.cicon {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'corruicons' !important;
     speak: never;
@@ -252,7 +252,7 @@ i[class^="ci-"], i[class*=" ci-"] {
 
 /* GFX PROCESSING - dithering preservation stops at 1200px because below that it becomes illegible mostly */
 @media only screen and (min-width: 1200px) {
-    * {
+    div, img {
         -ms-interpolation-mode: nearest-neighbor;
         image-rendering: -webkit-optimize-contrast;
         image-rendering: -moz-crisp-edges;
@@ -266,16 +266,11 @@ i[class^="ci-"], i[class*=" ci-"] {
 }
 
 /* CSS RESET */
-* {box-sizing: border-box}
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline; box-sizing: border-box}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 
 ::selection {
 	background-color: transparent;
     color: inherit;
-}
-
-img::selection {
-	background-color: transparent;
 }
 
 input::selection, textarea::selection {
@@ -330,6 +325,10 @@ em {
     100% { transform: var(--baseTransform) translate(1px, -2px) rotate(1deg); }
 }
 
+.bigshake-anim {
+    animation: SHAKE 100ms linear infinite;
+}
+
 @keyframes BIGSHAKE {
     0% { transform: var(--baseTransform) translate(0px, 5px) rotate(0deg); }
     10% { transform: var(--baseTransform) translate(-5px, -5px) rotate(1deg); }
@@ -377,6 +376,11 @@ em {
     0% { transform: scale(0.001); opacity: 0;}
     50% { transform: scale(0.5); opacity: 1; }
     100% { transform: scale(1.5); opacity: 0;}
+}
+
+@keyframes BREATHE {
+    0% { transform: scale(1);}
+    100% { transform: scale(1.2); }
 }
 
 .refresh-anim {
@@ -462,6 +466,10 @@ body[state="corru-entered"].loading #static {
     animation-play-state: paused;
 }
 
+.darkflash #static:after {
+	background-image: url('/img/textures/badstatic.gif');
+}
+
 #static::before {
     content: "";
     position: absolute;
@@ -489,6 +497,10 @@ body[state*="corru-loaded"] #static div,
 body[state="corru-entered"].flash #static {
     opacity: 1;
     pointer-events: initial;
+    z-index: 2;
+}
+
+body.flashfade #static {
     z-index: 2;
 }
 
@@ -1126,7 +1138,8 @@ body.nosys #meta-sys {
     font-size: 1rem;
 }
 
-body[menu="entities"] #entity-menu, body[menu="entities"] #entity-details {
+body[menu="entities"].in-menu #entity-menu, 
+body[menu="entities"].in-menu #entity-details {
     transform: translateX(0vw);
     pointer-events: initial;
 }
@@ -1243,7 +1256,12 @@ body[menu="entities"] #entity-menu, body[menu="entities"] #entity-details {
 body:not(.ep1) .ep1on, /* after feeding only */
 body:not(.ep2) #entity-menu .thoughtform.collapse, /* after collapse can be unlocked only */
 body:not(.ep2) .ep2on, 
-body:not(.ep3) .ep3on /* after golem is unlocked */
+body:not(.ep3) .ep3on, /* after golem is unlocked */
+body:not(.ep4) .ep4on, /* groundsmindry unlocked */
+body:not(.masksunlocked) .maskon,
+body:not(.hungerunlocked) .hungeron,
+body:not(.joyunlocked) .joyon,
+body:not(.freedomunlocked) .freedomon
 { 
     display: none !important;
 }
@@ -1463,7 +1481,7 @@ details.sysblock[open] .sysbox, details.sysblock[open] details {
     margin-left: 0;
 }
 
-.systoggles > * {
+.systoggles > div {
     flex-basis: 300px;
     flex-grow: 1;
 }
@@ -1864,6 +1882,21 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     z-index: 2;
     background: var(--dark-color);
 }
+
+#dialogue-box.chatterlogue {
+    width: 25vw;
+}
+
+body.in-chatterlogue #dialogue-box.chatterlogue {
+    transform: unset;
+    border-left: 2px dashed;
+}
+
+#dialogue-box.chatterlogue {
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%); /* todo: proper dither */
+    pointer-events: initial;
+}
+
 
 @keyframes click-to-proceed {
     0% { opacity: 0; transform: translateY(-10px)}
@@ -2277,6 +2310,13 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     background-size: 150%, auto;
 }
 
+.readout-log .message.incoherent.cass,
+.actor-cass.incoherent .dialogue-text {
+    background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 70%, rgb(0, 0, 0) 90%, rgba(0, 0, 0, 0) 100%), url(/img/textures/fadein.gif), url(/img/textures/corruripplegrayscale.gif);
+    letter-spacing: 0.25em;
+    font-family: serif;
+}
+
 .dialogue-message.incoherent-mild .dialogue-text,
 .readout-log .message.incoherent-mild {
     letter-spacing: 0.25em;
@@ -2412,6 +2452,7 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
 .dialogue-message.mutter {
     color: var(--bright-color);
     letter-spacing: 5px;
+    text-transform: initial;
 }
 
 .dialogue-message.mutter .dialogue-text {
@@ -2436,6 +2477,10 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     z-index: -1;
 }
 
+.message.uppercase {
+    text-transform: uppercase !important;
+}
+
 /* READOUT */
 #readout {
 	position: fixed;
@@ -2450,11 +2495,14 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
 	background: var(--dark-color);
 	color: var(--bright-color);
 	font-family: spacemono;
-	scroll-behavior: smooth;
 	transition: transform 1s cubic-bezier(.33,.63,.14,.99);
     transform: translateX(-100%);
 	z-index: 25;
     scrollbar-color: #ffff00b5 var(--dark-color);
+}
+
+#readout.smoothscroll {
+	scroll-behavior: smooth;
 }
 
 #readout::after {
@@ -2603,10 +2651,6 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     display: block;
     margin-bottom: 0.25rem;
     border: 1px solid;
-}
-
-.readout-log .message.combat > * {
-  margin-top: 0.25rem;
 }
 
 .readout-log .combat .action-description {
@@ -2795,6 +2839,49 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     background: url(/img/textures/fadein.gif), url(/img/textures/corruripplegrayscale.gif);
     background-size: 100%, auto;
     filter: invert(1)
+}
+
+.dialogue-message.friend-color .dialogue-text, 
+.readout-log .message.friend-color {
+    --color: var(--friend-color);
+    color: var(--friend-color);
+    border-color: var(--friend-color)
+}
+
+.dialogue-message.obesk-color .dialogue-text, 
+.readout-log .message.obesk-color {
+    --color: var(--obesk-color);
+    color: var(--obesk-color);
+    border-color: var(--obesk-color)
+}
+
+.dialogue-message.rotwatcher .dialogue-text, 
+.readout-log .message.rotwatcher {
+    letter-spacing: 0;
+    text-shadow: 0px 1px #0000006b;
+    z-index: 1;
+    color: black;
+    background: white;
+    text-align: left;
+    line-height: 1.5em;
+    text-transform: uppercase;
+    border-bottom: 5px ridge var(--obesk-color);
+}
+
+.dialogue-message.rotwatcher .dialogue-text::after, 
+.readout-log .message.rotwatcher::after {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.4;
+    background: url(/img/textures/damagetran.gif), url(/img/textures/hazeflow.gif);
+    background-size: 100% auto, auto;
+    background-position: center;
 }
 
 /* special post-EP4 combat message layout. out here bc they are stored in readout log! */
@@ -3098,7 +3185,7 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     width: 104%;
 }
 
-/* IMAGE MODIFIERS. TODO: STANDARDIZE THIS SHIT YO */
+/* IMAGE MODIFIERS - this sucks still  */
 .menu .portrait-round img { border-radius: 100%; }
 .menu .portrait-bright img, .portrait-bright .dialogue-portrait::after { background-color: var(--bright-color) }
 .menu .portrait-dark img, .portrait-dark .dialogue-portrait::after { background-color: var(--dark-color) }
@@ -3308,10 +3395,6 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     content: "..__NO_ENTITY__..";
 }
 
-#mindspike-entities:empty ~ div {
-    display: none;
-}
-
 #mindspike-entities > .arrow {
     position: absolute;
     top: 50%;
@@ -3404,30 +3487,6 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     flex-direction: column;
 }
 
-#act {
-    display: none;
-    margin: 0.5em auto;
-}
-
-#act > * {
-    border: 0;
-    padding: 0.625rem;
-}
-
-#act-input {
-    background: var(--dark-color);
-    color: var(--neutral-color);
-    border: 2px solid var(--neutral-color);
-    text-align: center;
-    text-transform: uppercase;
-}
-
-#act-submit {
-    cursor: pointer;
-    background: var(--neutral-color);
-}  
-
-
 #act-options {
     text-align: center;
     display: flex;
@@ -3498,11 +3557,7 @@ body[state="corru-loaded"].in-dialogue #dialogue-box {
     animation-play-state: running;    
 }
 
-.mui-active .target {
-    opacity: 1;
-}
-
-body:not(.mui-active) .target:hover {
+.mui-active .target, .freemove .target, body:not(.mui-active) .target:hover {
     opacity: 1;
 }
 
@@ -3515,7 +3570,7 @@ body:not(.mui-active) .target[lowvis] {
 }
 
 /* chatter */
-.chatter-container {
+.chatter-container, .gridpiece .chatter-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -3626,7 +3681,7 @@ body:not(.mui-active) .target[lowvis] {
     max-width: 500px;
 }
 
-.actiondef *:not(img):empty {
+.actiondef div:empty, .actiondef span:empty {
     display: none;
 }
 
@@ -3648,7 +3703,9 @@ body:not(.mui-active) .target[lowvis] {
     text-transform: uppercase;
 }
 
-.actiondef-stats > *:before {
+.actiondef-stats .target:before,
+.actiondef-stats .hit:before,
+.actiondef-stats .crt:before {
     content: attr(info) "::";
     color: var(--neutral-color);
     text-transform: uppercase;
@@ -3728,7 +3785,9 @@ body:not(.mui-active) .target[lowvis] {
     margin-top: 0.5em;
 }
 
-.actiondef-status > * {
+.actiondef-status h6,
+.actiondef-status span,
+.actiondef-status img {
     display: inline;
     color: var(--bright-color);
 }
@@ -3890,13 +3949,13 @@ body:not(.mui-active) .target[lowvis] {
     transition: none;
 }
 
-.buddy figure {
+.buddy:not(.custombuddy) figure {
     width: 100%;
     height: 100%;
     animation: BUDDYBOUNCE-Y 1s ease-in-out infinite alternate
 }
 
-.buddy figure::after {
+.buddy:not(.custombuddy) figure::after {
     content: "";
     background-image: var(--buddyimg);
     background-size: contain;
@@ -4112,7 +4171,7 @@ body[page="corru-observer"]:not(.sitting) #advance-notice {
     border-bottom: 1px dotted var(--bright-color);
 }
 
-.objective *, .objective::before {
+.objective span, .objective::before {
     pointer-events: none;
 }
 
@@ -4258,7 +4317,10 @@ body[page="corru-observer"]:not(.sitting) #advance-notice {
     background: black;
 }
 
-.popup-warning .sysbox > * {
+.popup-warning .sysbox p,
+.popup-warning .sysbox h3,
+.popup-warning .sysbox div,
+.popup-warning .sysbox span {
     margin-bottom: 1rem;
 }
 
@@ -4337,6 +4399,12 @@ body[page="corru-observer"]:not(.sitting) #advance-notice {
     z-index: -1;
     background: url(/img/textures/ccontours.gif);
     pointer-events: none;
+}
+
+.ozo-mask.ozo-multi-mask.active::after {
+    background-image: url(/img/textures/yneural.gif);
+	background-color: black;
+	background-size: 150%;
 }
 
 .ozo-mask-grid {
@@ -4590,13 +4658,51 @@ body.chromium > .menu {
     width: 100vmax;
     height: 100vmax;
     border-radius: 100%;
-    border-radius: 100%;
 }
 
 #beacon-vfx.okidoia::after {
     background: url(/img/textures/wiggly2.gif);
     background-position: center;
     background-size: cover;
+}
+
+#beacon-vfx.flowerwarp {
+    width: 150vw;
+    height: 150vw;
+    top: unset;
+    left: unset;
+}
+
+#beacon-vfx.flowerwarp.active {
+    opacity: 1;
+}
+
+#beacon-vfx.flowerwarp::before, #beacon-vfx.flowerwarp::after {
+    content: "";
+    background: url(/img/local/joy/flowerwarp.gif);
+    background-position: center;
+    background-size: auto;
+    animation: SPIN 60s linear infinite;
+    width: inherit;
+    height: inherit;
+    border-radius: 100%;
+}
+
+#beacon-vfx.flowerwarp::after {
+    background: url(/img/textures/memoryhaze2.gif);
+    animation: SPIN 30s linear infinite;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 500px;
+    z-index: -1;
+}
+
+#beacon-vfx.flowerwarp.yucky::before {
+    background-image: url(/img/local/joy/flowerwarpyucky.gif)
+}
+
+#beacon-vfx.flowerwarp.yucky::after {
+    display: none;
 }
 
 /* VN - stored globally due to enough usage in multiple places */
@@ -4737,8 +4843,13 @@ body.chromium > .menu {
     height: 200vmin;
 }
 
-.vn-qou > *:not(.target), .vn-qou > *:not(.target)::after {
+.vn-qou div, 
+.vn-qou div::after {
     background-size: auto 100%;
+}
+
+.vn-qou .target {
+    background-size: 100% 100%;
 }
 
 /* VN - qou vn */
@@ -4813,11 +4924,16 @@ body.chromium > .menu {
 #bozko.vn-char .arms { background-image: url(/img/sprites/obesk/bozko/full/bozkoarms.gif);}
     #bozko.vn-char .arms::before { background-image: url(/img/sprites/obesk/bozko/full/bozkofingers.gif); content: ""; background-position: bottom;}
 
+#kazki.vn-char { --charTransform: translateY(-5%) }
 #kazki.vn-char .head { background-image: url(/img/sprites/obesk/kazki/full/kazkihead.gif), url(/img/sprites/obesk/kazki/full/kazkihair.gif)}
     .vn-wrapper.vn-con #kazki .head,
     #content[embassyday="2"] .vn-char#kazki .head { background-image: url(/img/sprites/obesk/kazki/full/connector.gif), url(/img/sprites/obesk/kazki/full/kazkihead.gif), url(/img/sprites/obesk/kazki/full/kazkihair.gif); }
 #kazki.vn-char .body { background-image: url(/img/sprites/obesk/kazki/full/kazkiarms.gif), url(/img/sprites/obesk/kazki/full/kazkishawl.gif)}
 #kazki.vn-char .legs { background-image: url(/img/sprites/obesk/kazki/full/kazkiorb.gif), url(/img/sprites/obesk/kazki/full/kazkilegs.gif)}
+
+.vn-wrapper[pos*="tallmode"] #kazki.vn-char {
+    --charTransform: translateY(-15%);
+}
 
 /* VN - mindcores */
 .vn-char.vn-mindcore {
@@ -5082,7 +5198,6 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 #telyu.vn-char .legs { background-image: url(/img/sprites/obesk/telyu/full/legs.gif) }
 #telyu.vn-char .tail { background-image: url(/img/sprites/obesk/telyu/full/tail.gif) }
 
-
 .vn-char#idril {
     --charTransform: translateY(5%);
     height: 180vmin;
@@ -5091,6 +5206,17 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 #idril.vn-char .head { background-image: url(/img/sprites/obesk/idril/full/head.gif)}
 #idril.vn-char .body { background-image: url(/img/sprites/obesk/idril/full/tubes.gif), url(/img/sprites/obesk/idril/full/body.gif) }
 #idril.vn-char .arm { background-image: url(/img/sprites/obesk/idril/full/arm.gif);}
+
+.vn-char#vekprox {
+    --charTransform: translateY(5%);
+    height: 180vmin;
+}
+
+#vekprox.vn-char .head { background-image: url(/img/sprites/vekoa/vekoaprox_head.gif); animation: TINYHOVER 30s ease-in-out infinite alternate;}
+#vekprox.vn-char .body { background-image: url(/img/sprites/vekoa/vekoaprox_body.gif)}
+
+.vn-char#malvisig {height: 180vmin;}
+#malvisig.vn-char .body { background-image: url(/img/local/embassy/parpy/malvifull.gif)}
 
 .vn-wrapper[for="arbitrary"] {
     height: 100vh;
@@ -5108,6 +5234,167 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 .vn-image img {
     max-height: 100vh;
     max-width: 50vw;
+}
+
+/* e4a1 characters */
+#collector.vn-char {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 3s ease-in-out;
+    transform-origin: center;
+}
+
+.vn-wrapper[pos*="far"] #collector {
+  --baseTransform: translateY(-100px) scale(0.17);
+}
+
+.vn-char .collectorpart {
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: unset;
+}
+
+#collectorbody {
+    background: url(/img/sprites/director/collector_body.gif);
+    background-repeat: no-repeat;
+    background-position: center top;
+    min-height: 2800px;
+    top: 0;
+}
+
+#collectorhead-animator {
+    animation: SLIGHTHOVER 10s ease-in-out infinite alternate;
+    z-index: 3;
+}
+
+#collectorhead {
+    width: 555px;
+    height: 584px;
+    top: 10px;
+    perspective: 1000px;
+    transition: transform 2s ease-in-out;
+}
+
+#collectorhead::before, #collectorhead::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background: url(/img/sprites/director/collector_head_filler.gif), url(/img/sprites/director/collector_head_handle.gif?);
+    background-repeat: no-repeat;
+    background-position: center;
+    transform-origin: 50px center;
+    transition: transform 2s ease-in-out;
+}
+
+#collectorhead::after {
+    background-image: url(/img/sprites/director/collector_head_filler.gif), url(/img/sprites/director/collector_head.gif?);
+}
+
+#collectoreye {
+    transform: translate(-230px);
+    z-index: 2;
+    transition: transform 400ms ease-in-out, opacity 100ms linear;
+    transform: translate(-230px) scaleY(0.001);
+}
+
+#collectoreye::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/sprites/director/collector_eye.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: FLOWERBLINK 10s ease-in-out infinite alternate;
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+#collectoreye::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 100%;
+    background: url(/img/sprites/director/collector_eye_collection.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 2s ease-in-out;
+    transition-delay: 1s;
+    opacity: 0;
+}
+
+#collectort {
+    background: black;
+    border-radius: 100%;
+    opacity: 0;
+    transition: opacity 4s, transform 10s ease-in-out;
+    transform: scale(2);
+    z-index: -1;
+}
+
+.vn-wrapper[pos*="open"] #collector #collectort {
+    transform: translateX(-230px);
+}
+
+.vn-wrapper[pos*="open"] #collector #collectorhead { transform: translateX(230px) }
+.vn-wrapper[pos*="open"] #collector #collectorhead::after { transform: rotateY(-180deg) }
+
+.vn-wrapper:not([pos*="open"]) #collector #collectoreye { opacity: 0; }
+.vn-wrapper[pos*="eye"] #collector #collectoreye { opacity: 1; transform: translate(-230px); }
+.vn-wrapper[pos*="eye"] #collector #collectoreye::after, .vn-wrapper[pos*="eye"] #collector #collectoreye::before { opacity: 1; }
+
+
+.vn-wrapper[pos*="transit"] #collector #collectort {
+    transform: translateX(-230px) scale(4);
+    opacity: 1;
+}
+
+.vn-wrapper[pos*="prep"] #collector #collectort {
+    transition-delay: 3s;
+}
+
+.vn-wrapper[pos*="prep"] #collector #collectorhead {
+    transition: transform 8s ease-in-out
+}
+
+.vn-wrapper[pos*="transit"] #collector #collectorhead::before,
+.vn-wrapper[pos*="transit"] #collector #collectorhead::after {
+    transition: transform 4s ease-in-out;
+}
+
+.vn-wrapper[pos*="transit"] #collector #collectorhead {
+    transform: scale(5) translateX(230px);
+    transform-origin: center;
+}
+
+.vn-wrapper[pos*="transit"] #collector #collectorhead::before {
+    transform: scale(1.5) rotateY(-60deg);
+}
+
+.vn-wrapper[pos*="transit"] #collector #collectorhead::after {
+    transform: scale(1.5) rotateY(-110deg);
+}
+
+@keyframes FLOWERBLINK {
+    0% { transform: translateZ(1px) scaleY(1) }
+    95% { transform: translateZ(1px) scaleY(1) }
+    100% { transform: translateZ(1px) scaleY(0.001) }
+}
+
+@keyframes SLIGHTHOVER {
+    0% { transform: translateY(-1%) rotate(-0.5deg) }
+    100% { transform: translateY(1%) rotate(0.5deg) }
 }
 
 /* special VN transforms based on focus */
@@ -5221,7 +5508,10 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
     transform: scale(1.75) translate(-50%, 25%);
 }
 
-#agolem *, #agolem *::after {
+#agolem .golemsprite, 
+#agolem .spritestack, 
+#agolem .sprite, 
+#agolem img {
   animation-play-state: paused;
 }
 
@@ -5254,11 +5544,12 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 }
 
 /* party-based VN-chars */
-.vn-wrapper.vn-party .vn-char > * {
+.vn-wrapper.vn-party .vn-char div {
     --baseTransform: translateX(-50%);
 }
 
-.vn-wrapper.vn-party, .vn-wrapper.vn-party > * {
+.vn-wrapper.vn-party, 
+.vn-wrapper.vn-party .vn-char {
     max-width: 25vw;
 }
 
@@ -5286,7 +5577,7 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 /* special "cut" functionality, class to be added to body */
 .hard-cut .menu-box,
 .hard-cut #content,
-.hard-cut #static,
+.hard-cut:not(.darkflash) #static,
 .hard-cut #mindspike-scanner, 
 .hard-cut #readout,
 .hard-cut #meta-menu {
@@ -5333,4 +5624,136 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
 
 #dialogue-skip .button {
     text-transform: uppercase;
+}
+
+/* freedom mask */
+#freedomControl::after {
+    content: "BTW hold shift when moving";
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    text-shadow: 1px 1px 10px black, 1px 1px 10px black;
+    line-height: 1em;
+    font-size: 25px;
+    transform: translate(-50%, 0) rotate(10deg);
+    background: black;
+    
+}
+
+#freedomControl {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 200px;
+    padding: 10px 50px;
+    background: url(/img/textures/paperplate.gif);
+    background-size: 100% 100%;
+    z-index: 1000;
+    font-size: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: 400ms;
+    text-shadow: 1px 1px 10px black, 1px 1px 10px black;
+}
+
+.mask-freedom.stage-active #freedomControl {
+    display: flex;
+}
+
+.mask-freedom.mui-active.stage-active #freedomControl {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+#freedomControl label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#freedomSensitivitySlider {
+    width: 200px;
+}
+
+#freedomWalkToggle {
+    margin-right: 5px;
+}
+
+body[menu="system"] #freedomControl,
+body[menu="entities"] #freedomControl {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+    #freedomSensitivitySlider {
+        overflow: hidden;
+        -webkit-appearance: none;
+        background-color: transparent;
+    }
+
+    #freedomSensitivitySlider::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        color: var(--bastard-color);
+        margin-top: -1px;
+    }
+
+    #freedomSensitivitySlider::-webkit-slider-thumb {
+        width: 10px;
+        -webkit-appearance: none;
+        height: 10px;
+        cursor: ew-resize;
+        background: var(--neutral-color);
+        box-shadow: -200px 0 0 200px var(--bastard-color);
+    }
+
+}
+
+/** FF*/
+#freedomSensitivitySlider::-moz-range-progress {
+    background-color: var(--bastard-color); 
+}
+#freedomSensitivitySlider::-moz-range-track {  
+    background-color: var(--neutral-color);
+}
+
+/* mouse ping */
+.ping {
+    position: fixed;
+    top: 0;
+    left: 0;
+    --baseTransform: translate(-50%, -50%);
+    --duration: 1000ms;
+    border: 2px dashed var(--neutral-color);
+    width: 20px;
+    height: 20px;
+    animation: PING var(--duration) linear;
+    z-index: 999;
+    border-radius: 100%;
+}
+
+@keyframes PING {
+    0% { 
+        transform: var(--baseTransform) rotate(360deg) scale(5);
+        opacity: 0;
+    }    
+
+    50% {
+        transform: var(--baseTransform) rotate(180deg) scale(3);
+        opacity: 1;
+    }
+
+    90% {
+        transform: var(--baseTransform) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+
+    92% { transform: var(--baseTransform); opacity: 0; }
+    96% { transform: var(--baseTransform); opacity: 1; }
+    100% { transform: var(--baseTransform); opacity: 0; }
 }

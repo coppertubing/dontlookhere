@@ -1,6 +1,57 @@
 /* general definitions */
 env.storingSwap = false
 env.embassy = {
+    //add randobesk figure to specified element
+    randobesk: (destination) =>{
+        destination.innerHTML = ""
+
+        const options = {
+            accessory: ['back', 'front', 'none'],
+            receptors: ['jut', 'kiv', 'tir', 'vel']
+        }
+
+        const limits = {
+            accessory: {
+                back: 6,
+                front: 6
+            }, 
+            body: 15,
+            eyes: 45,
+            head: 20,
+            receptors: {
+                jut: 8,
+                kiv: 8,
+                tir: 8,
+                vel: 8
+            }
+        }
+
+        let randobesk = document.createElement("figure")
+        randobesk.classList.add('randobesk')
+
+        let receptorType = options.receptors[Math.floor(Math.random()*options.receptors.length)]
+        let accessoryType = options.accessory[Math.floor(Math.random()*options.accessory.length)]
+
+        let x = `${accessoryType == 'front' ? `url(/img/sprites/randobesk/accessory/${accessoryType}accessory${rand(1, limits.accessory[accessoryType])}.png),` : ""}
+        url(/img/sprites/randobesk/eyes/eyes${rand(1, limits.eyes)}.png), 
+        url(/img/sprites/randobesk/receptors/receptor${receptorType}${rand(1, limits.receptors[receptorType])}.png),
+        url(/img/sprites/randobesk/head/head${rand(1, limits.head)}.png), 
+        url(/img/sprites/randobesk/body/body${rand(1, limits.body)}.png)${accessoryType == 'back' ? "," : ""}
+        ${accessoryType == 'back' ? `url(/img/sprites/randobesk/accessory/${accessoryType}accessory${rand(1, limits.accessory[accessoryType])}.png)` : ""}`
+        console.log(x)
+        randobesk.style.backgroundImage = x
+
+        //finish off with the target, based on receptors
+        destination.insertAdjacentElement('beforeend', randobesk)
+        randobesk.insertAdjacentHTML('afterend', `<div class="target" entity="${receptorType} qou"></div>`)
+    },
+
+    regenRandobesk: () => {
+        document.querySelectorAll('#realgrid .randobesktile').forEach(e=>{
+            env.embassy.randobesk(e)
+        })
+    },
+
     relocatorDestination: (location) => {
         if(!location) return
 
@@ -33,7 +84,7 @@ env.embassy = {
             break
         }
 
-        document.querySelectorAll('.teleport[slug="R"]').forEach(pad=>{
+        env.stage.querySelectorAll('.teleport[slug="R"]').forEach(pad=>{
             pad.classList.remove('locked')
             pad.setAttribute('teleport-target', destination.place)
             pad.setAttribute('spot', destination.spot)
@@ -190,7 +241,7 @@ env.embassy = {
                 env.combat.defaults.bgm = env.embassy.music_combat
                 env.combat.defaults.lossDialogue = 'd3_loss'
                 env.combat.defaults.endCallback = (loser)=>{
-                    if(document.querySelectorAll('.evil').length == 0) {
+                    if(env.stage.querySelectorAll('.evil').length == 0) {
                         switch(env.stage.name) {
                             case "embassy_recreation":
                                 startDialogue('d3_rec_clear')
@@ -276,7 +327,7 @@ env.embassy = {
 
                 env.combat.defaults.endCallback = (loser)=>{
                     setTimeout(()=>env.stages.golemSafeCheck(), 500)
-                    if(document.querySelectorAll('.evil').length == 0) {
+                    if(env.stage.querySelectorAll('.evil').length == 0) {
                         switch(env.stage.name) {
                             case "golem_test":
                                 startDialogue('intro')
@@ -427,6 +478,15 @@ env.embassy = {
 
                 page.maskHungerNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
                 page.maskUnityNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
+            break
+
+            case -1:
+                flash(true)
+                changeStage('embassy_quarters', 11, 'down', {noFlash: true})
+                setTimeout(()=>{if(!skipDialogue) startDialogue('d0_start'); else flash(false)})
+                ratween(env.bgm, 1, 1000)
+                change("PAGE!!akiroomunlocked", true) 
+                page.maskUnityNote = "\nRESONANCE::'none within this particular memory segment'";
             break
         }
 
@@ -656,12 +716,14 @@ env.embassy = {
 
                 env.setTimeout(()=>{
                     body.classList.add("pathstep1")
+                    env.stage.querySelectorAll(".mainpath.blocks.step1").forEach(el=>el.classList.remove("blocks"))
                 }, delay + 2000)
             break
 
             case 2:
-                MUI("on")
+                if(!check("mask-freedom")) MUI("on")
                 body.classList.add("pathstep2")
+                env.stage.querySelectorAll(".mainpath.blocks.step2").forEach(el=>el.classList.remove("blocks"))
                 chatter({actor: "akizet", text: "yes, i understand"})
 
                 chatter({actor: "echo", text: "thank you", delay: delay += 3000})
@@ -671,6 +733,7 @@ env.embassy = {
 
                 env.setTimeout(()=>{
                     body.classList.add("pathstep3")
+                    env.stage.querySelectorAll(".mainpath.blocks.step3").forEach(el=>el.classList.remove("blocks"))
                 }, delay + 2000)
 
                 chatter({actor: "echo", text: "but trust that i will know your response based on your actions", delay: delay += 4000})
@@ -681,7 +744,7 @@ env.embassy = {
             break
 
             case 3:
-                MUI("on")
+                if(!check("mask-freedom")) MUI("on")
                 chatter({actor: "sourceless", text: "there is no response - no thought, no meaning", delay: delay += 3000, readout: true})
                 chatter({actor: "sourceless", text: "in reality, i feel a strange runoff near my cyst-bearing receptor", delay: delay += 3000, readout: true})
                 let warningBgm = env.bgm
@@ -1767,7 +1830,7 @@ env.stageEntities['Æ'] = {
 }
 
 env.embassy.fixMovefriend = () => {
-    document.querySelectorAll('.target[entity="disrupted movefriend"]').forEach(e=>{
+    env.stage.querySelectorAll('.target[entity="disrupted movefriend"]').forEach(e=>{
         e.setAttribute('entity', 'movefriend')
     })
 }
@@ -1782,12 +1845,12 @@ env.stages['embassy_relocator'] = {
                 content.classList.add('show-vn')
 
                 //rewrite teleports to fit the golem page
-                document.querySelectorAll('.teleport:not([slug="R"])').forEach(el=>{
+                env.stage.querySelectorAll('.teleport:not([slug="R"])').forEach(el=>{
                     el.classList.add('locked')
                     el.setAttribute('lockflag', "permalocked")
                 })
                 
-                document.querySelectorAll('.teleport[slug="R"]').forEach(el=>{
+                env.stage.querySelectorAll('.teleport[slug="R"]').forEach(el=>{
                     if(check("PAGE!!embassy_day", 3.99)) {
                         el.setAttribute('teleport-target', 'grm_entry')
                         el.setAttribute('shouldface', 'down')
@@ -1798,7 +1861,7 @@ env.stages['embassy_relocator'] = {
                     }
                 })
 
-                document.querySelectorAll('.character').forEach(e=>{
+                env.stage.querySelectorAll('.character').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -1807,17 +1870,17 @@ env.stages['embassy_relocator'] = {
 
             case 3:
                 toggleBgm(env.embassy.music_safe)
-                document.querySelectorAll('.character:not(.collapser)').forEach(e=>{
+                env.stage.querySelectorAll('.character:not(.collapser)').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
 
-                if(!check("PAGE!!miltzameet")) document.querySelectorAll('.character.miltza').forEach(e=>{
+                if(!check("PAGE!!miltzameet")) env.stage.querySelectorAll('.character.miltza').forEach(e=>{
                         e.parentElement.classList.remove('prop', 'blocks')
                         e.parentElement.innerHTML = ""
                 })                
 
-                if(!check("PAGE!!recreation_leavable")) document.querySelectorAll('.character.mindcores').forEach(e=>{
+                if(!check("PAGE!!recreation_leavable")) env.stage.querySelectorAll('.character.mindcores').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -1826,7 +1889,7 @@ env.stages['embassy_relocator'] = {
                     if(check("PAGE!!movefixed")) {
                         document.querySelector('#realgrid .lifter').classList.add('fixed')
                     } else {
-                        document.querySelectorAll('.target[entity="movefriend"]').forEach(e=>{
+                        env.stage.querySelectorAll('.target[entity="movefriend"]').forEach(e=>{
                             e.setAttribute('entity', 'disrupted movefriend')
                         })
                     }
@@ -1844,9 +1907,10 @@ env.stages['embassy_relocator'] = {
                 }          
             break
 
+            case -1:
             case 1:
                 env.embassy.regenRandobesk()
-                document.querySelectorAll('.character.kazki, .character.collapser').forEach(e=>{
+                env.stage.querySelectorAll('.character.kazki, .character.collapser').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -1857,7 +1921,7 @@ env.stages['embassy_relocator'] = {
 
             case 2:
                 env.embassy.regenRandobesk()
-                document.querySelectorAll('.character.collapser').forEach(e=>{
+                env.stage.querySelectorAll('.character.collapser').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
@@ -1866,7 +1930,7 @@ env.stages['embassy_relocator'] = {
             break
 
             default: //not one of the original /embassy/ pages, i.e. EP3
-                document.querySelectorAll('.character:not(.collapser)').forEach(e=>{
+                env.stage.querySelectorAll('.character:not(.collapser)').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })                

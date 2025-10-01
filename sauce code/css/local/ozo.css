@@ -241,7 +241,8 @@ body#ozo_flat .ozoedges {
 /* STAGES - OZO DEFAULT */
 #realgrid .gridpiece, 
 #realgrid .gridpiece.raised.blocks,
-#realgrid .gridpiece.shiny {
+#realgrid .gridpiece.shiny,
+#realgrid .gridpiece.shiny.alwaysshine {
     background: url(/img/textures/memoryhaze.gif);
     background-size: cover;
     border: 20px double;
@@ -289,7 +290,7 @@ body#ozo_flat .ozoedges {
     100% { transform: var(--baseTransform) translateZ(calc(-0.3 * var(--gridTileSize))) rotate(360deg) }
 }
 
-.thoughts {
+.gridpiece .thoughts {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -363,10 +364,6 @@ body#ozo_entrance #ozobg .clouds {
 
 #realgrid .portal figure::after {
     background-image: url(/img/sprites/misc/sphereframewhite.gif);
-}
-
-.reference [id^="porthole"] {
-    display: none;
 }
 
 /* STAGES - clouded */
@@ -456,47 +453,56 @@ body[locale="flowers"] #ozobg {
     border-top-left-radius: 20%;
     box-shadow: 0px 0px 20px var(--neutral-color);
     background-image: url(/img/textures/memoryhaze2.gif);
-    --doorOffset: translateZ(0px);
+    --doorOffset: 5px;
 }
 
 #realgrid .door.left::after, #realgrid .door.left::before {
-    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(0.52 * var(--gridTileSize))) var(--doorOffset);
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(0.5 * var(--gridTileSize))) translateZ(var(--doorOffset));
 }
 
 #realgrid .door.right::after, #realgrid .door.right::before {
-    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(-0.52 * var(--gridTileSize))) rotateY(180deg) var(--doorOffset);
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) translateZ(calc(-0.5 * var(--gridTileSize))) rotateY(180deg) translateZ(var(--doorOffset));
 }
 
 #realgrid .door.up::after, #realgrid .door.up::before {
     transform-origin: bottom;
     bottom: 0;
-    transform: translateY(calc(var(--gridTileSize) * -1)) rotateX(-90deg) rotateY(180deg) var(--doorOffset);
+    transform: translateY(calc(var(--gridTileSize) * -1)) rotateX(-90deg) rotateY(180deg) translateZ(var(--doorOffset));
 }
 
 #realgrid .door.down::after, #realgrid .door.down::before {
-    transform: rotateX(-90deg) rotateY(0deg) translateY(-50%) translateZ(calc(0.52 * var(--gridTileSize))) var(--doorOffset);
+    transform: rotateX(-90deg) rotateY(0deg) translateY(-50%) translateZ(calc(0.5 * var(--gridTileSize))) translateZ(var(--doorOffset));
 }
 
 #realgrid .door::before {
     width: 300%;
     height: 300%;
     border-radius: 100%;
-    --doorOffset: translateZ(-1px);
+    --doorOffset: 4px;
     background-image: url(/img/textures/hazeflow.gif), url(/img/local/uncosm/ozo/cloudsblurreddark.gif);
     background-position: bottom;
 }
 
-#realgrid .door.locked::after, #realgrid .door.locked::before {
+/* bandaid patch for chrome crash. todo: this will cause issues eventually when we add more ozo stuff but for now it's fine. need to redo ozo doors to not use this fucked up pseudoelement system */
+#realgrid .door.up::after {
+    --doorOffset: -2px;
+}
+
+#realgrid .door.up::before {
+    --doorOffset: -3px;
+}
+
+#realgrid .door.locked:not(.fakeunlock)::after, #realgrid .door.locked:not(.fakeunlock)::before {
     border: 5px dotted var(--obesk-color);
     box-shadow: 0px 0px 20px var(--obesk-color);
     background-image: url(/img/textures/fearstill.gif);
 }
 
-.chromium #realgrid .door.locked::after {
+.chromium #realgrid .door.locked:not(.fakeunlock)::after {
     background-image: url(/img/textures/fear.gif);
 }
 
-#realgrid .door.locked::before {
+#realgrid .door.locked:not(.fakeunlock)::before {
     background-image: url(/img/textures/fearstill.gif);
     background-color: transparent;
 }  
@@ -609,7 +615,7 @@ body[locale="space"][quality="low"] #ozobg::before {
     animation: SPIN 120s linear infinite;
 }
 
-#realgrid .fairyportal {
+#realgrid .dyp .fairyportal {
     --baseTransform: rotateX(-90deg) var(--dyp-transform);
     transform-origin: center;
     transform: var(--baseTransform) rotate(0deg);
@@ -643,13 +649,13 @@ body[locale="space"][quality="low"] #ozobg::before {
     background: url(/img/textures/corruripple.gif);
 }
 
-#realgrid .distant-dull {
+#realgrid .dyp .distant-dull {
     animation: SPIN 420s linear infinite;
     --baseTransform: rotateX(-90deg) var(--dyp-transform);
     transform-origin: center;
 }
 
-body[quality="low"] #realgrid .distant-dull {
+body[quality="low"] #realgrid .dyp .distant-dull {
     display: none;
 }
 
@@ -817,6 +823,10 @@ body[quality="regular"] .geli .head {
     transition: transform 2s cubic-bezier(.75,-0.3,0,1.28);
 }
 
+.freemove .councilwrap, .freemove .councilform .target {
+    transform: var(--baseTransform) rotateY(var(--faceAngle));
+}
+
 .councilform .target {
     --baseTransform: rotateX(-90deg) translateY(-33%) rotateY(180deg);
 }
@@ -825,7 +835,7 @@ body[quality="regular"] .geli .head {
     display: none;
 }
 
-.council, .council * {
+.gridpiece .council, .gridpiece .council * {
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
     --baseTransform: translateX(0);
@@ -834,7 +844,7 @@ body[quality="regular"] .geli .head {
 .council {
     position: relative;
     transform-origin: center;
-    pointer-events: none;;
+    pointer-events: none;
 }
 
 .council img:not(.base) {
@@ -873,6 +883,7 @@ body[quality="regular"] .geli .head {
     width: 25%;
     padding-bottom: 25%;
     position: absolute;
+    display: block;
 }
 
 .council .arm.left {
@@ -890,6 +901,7 @@ body[quality="regular"] .geli .head {
     padding-top: 120%;
     position: absolute;
     top: 175%;
+    display: block;
 }
 
 .council .arm::after, .council .hand::after {
@@ -1201,7 +1213,7 @@ body[quality="regular"] .geli .head {
 }  
 
 /* cams */
-body[currentdialogue^="isabel"] .grid-animator {
+body[currentdialogue^="isabel"] .grid-plane:not(.customcam) .grid-animator {
     --camera-x:4;
     --camera-y:7;
     --personal-offset: rotateX(-10deg);
@@ -1396,6 +1408,10 @@ body[locale="darkclouds"] #ozobg .ozolayer.clouds .lower::after {
 
 #realgrid .gridpiece.locked.e3a2loop.ready {
     background-image: url(/img/textures/chromebmicroSTILL.gif)
+}
+
+#realgrid .side.front {
+    backface-visibility: visible;
 }
 
 /* visualizer stuff */
@@ -1663,4 +1679,31 @@ body[currentdialogue="e_i_fairy"] .grid-container {
     /* misc */
 .still .ozofriend.akieffigy img {
     animation: unset !important;
+}
+
+.face-creature .ozofriend.akieffigy {
+    --baseTransform: rotateY(var(--faceAngle));
+}
+
+    /* w_fairy */    
+.grid-plane[specialCam="e_w_fairy"] .wakizet { --faceAngle: 45deg !important; }
+.grid-plane[specialCam="e_w_fairy"] .ozofriend.eyefriend { transform: rotateY(60deg) translate(25%) !important }
+body[currentdialogue="e_w_fairy"] .distant-dull { display: none; }
+
+/* E4A1 */
+.gridpiece.funnycloud {
+    transform: translateZ(4000px);
+    background: transparent !important;
+    border: unset !important;
+}
+
+.gridpiece.funnycloud::after {
+    content: "";
+    position: absolute;
+    background: url(/img/local/uncosm/ozo/cloudfloor.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: var(--tile5);
+    height: var(--tile3);
 }

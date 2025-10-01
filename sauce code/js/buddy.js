@@ -20,12 +20,12 @@
         - Wander - picks a random spot on the page (extends beyond current scroll)
         - Element - follows a specific element (i.e. follows something else)
         - Element wander - picks spots within a specified element, moving randomly
-
-    
     
 */
 class Buddy {
     constructor(settings = {
+        abstract, // if abstract, doesn't render any element at all. used for wandering characters that don't manifest in flat ways
+        id, // unique ID across all buddies - used for tracking, not element ID
         element: {
             entity, // examine entity (if any)
             id, //unique ID across entire site (if global), otherwise whatever
@@ -33,7 +33,7 @@ class Buddy {
             img, // image for the default figure pseudoelement to use
             size, // size for the entity - uses default 75px
             figure, // if the figure should have any contents
-            actor //if the element also has a dialogueActor - used in chatter
+            actor, //if the element also has a dialogueActor - used in chatter
         },
         activity: {
             behavior: {
@@ -45,17 +45,19 @@ class Buddy {
                 element, //element gravitating to if wander-element or element
                 muiPause, // if true, pauses movement when MUI is open
             },
-            events: {
-                onRender, //called when created - even before the user has entered the page, but after content has been loaded
-                screenEnter, //called when appears visually within window
+            events: { // roughly in order
+                preRenderCheck, //called before created on page
+                onRender, //called in the onLoaded section, when created
                 pageEnter, //called when user enters the page (i.e. either loads in, or clicks the 'continue' button)
+                screenEnter, //called when appears visually within window
                 mouseEnter, //self explanatory
                 leaving, //called when leaving page
             }
         },
         location: { //used only if "global", meaning pages should be checking for them
             path, //string or array of paths
-            exploredOnly // i.e. won't select a path that hasn't been explored. if none explored, not created
+            exploredOnly, // i.e. won't select a path that hasn't been explored. if none explored, not created
+            special // function that can add more to the path list or alter otherwise
         }
     } = {}) { //constructor start
         //store all critical data
@@ -69,11 +71,12 @@ class Buddy {
         
             <div class="chatter-container"></div>
             ${settings.element.entity ? `<div class="target" entity="${settings.element.entity}"></div>` : ``}
-            <figure>${settings.element.figure ? settings.element.figure : ""}</figure>
+            <figure class="${settings.element.figureClasses ? settings.element.figureClasses : ""}">${settings.element.figure ? settings.element.figure : ""}</figure>
 
         </div>`
         this.elementData = settings.element
         this.activityData = settings.activity
+        this.abstract = settings.abstract
 
         //determine globalness, where it should be if so
         if(typeof settings.location != 'undefined') {
@@ -81,16 +84,27 @@ class Buddy {
 
             this.global = true
             this.locationData = settings.location
+            this.id = settings.id
             Buddy.globalBuddies.push(this)
 
-            this.setNewLocation()
+            if(check(`TEMP!!buddylocation-${this.id}`)) { //set to previous location if it exists
+                this.currentLocation = check(`TEMP!!buddylocation-${this.id}`)
+                console.log(`setting ${this.id} to previous location of ${this.currentLocation}`)
+            } else {
+                this.setNewLocation() //roll a location
+            }
+
             if(!this.shouldBeOnPage()) { //we don't want to continue with render if its not on this page
                 return this
             }
         }
 
         //continue with render
-        this.render()
+        if(!this.global) setTimeout(() => {
+            let render // need to explicitly set to false to skip
+            if(typeof this.activityData?.events?.preRenderCheck == "function") render = this.activityData.events.preRenderCheck()
+            if(render !== false) this.render()
+        }, 200)
         return this        
     }
 
@@ -103,36 +117,43 @@ class Buddy {
         //specific set
         if(specificLocation) {
             this.currentLocation = specificLocation
+            change(`TEMP!!buddylocation-${this.id}`, this.currentLocation)
             return this.currentLocation
         }
 
         //resets to original path - may not use, but didn't want to leave a gap in coverage
         if(typeof this.locationData.path == "string") {
             this.currentLocation = this.locationData.path
+            change(`TEMP!!buddylocation-${this.id}`, this.currentLocation)
             return this.currentLocation
         }
 
+        let paths = this.locationData.path.slice() //copy base array
+        if(this.locationData.special) this.locationData.special(paths) //modify just before use
+
         //otherwise, using locationData.path array
         switch(this.locationData.exploredOnly) {
-            case true: //we can reference detectedEntities for pages the user has been to
+            case true: //we can check visited_pathwithoutslash for visit data
                 let visitedAreas = []
-                for (const areaName in flags.detectedEntities) {
-                    const area = flags.detectedEntities[areaName];
-                    visitedAreas.push(area.path)
-                }
 
-                const possibleAreas = visitedAreas.filter(area => this.locationData.path.includes(area));
+                paths.forEach(path => {
+                    if(check(`visited_${path.replaceAll("/", "")}`)) visitedAreas.push(path)
+                })
+
+                const possibleAreas = visitedAreas.filter(area => paths.includes(area)).filter(area => area != this.currentLocation);
                 let selectedArea
                 if(possibleAreas.length) {
                     selectedArea = possibleAreas.sample()
                     this.currentLocation = selectedArea
+                    change(`TEMP!!buddylocation-${this.id}`, this.currentLocation)
                     return this.currentLocation
                 } else {
                     throw 'no possible areas'
                 }
 
             case false:
-                this.currentLocation = this.locationData.path.sample()
+                this.currentLocation = paths.sample()
+                change(`TEMP!!buddylocation-${this.id}`, this.currentLocation)
                 return this.currentLocation
         }
     }
@@ -145,29 +166,40 @@ class Buddy {
 
     // RENDER - creates the buddy within the current page's context
     render = () => {
-        content.insertAdjacentHTML('beforeEnd', this.html)
-        this.el = content.querySelector(`#${this.elementData.id}`)
-        console.log('buddy', this.el)
+        if(!this.abstract) {
+            content.insertAdjacentHTML('beforeEnd', this.html)
+            console.log("inserted this")
+            this.el = content.querySelector(`#${this.elementData.id}`)
+            this.el.classList.add('instant')
+            console.log('element registered', this.el)
+
+            this.xy = {x: 0, y: 0}
+            this.activateBehavior()
+        }
+
+        console.log('buddy', this.el, this.abstract, this.element)
 
         //constructor events
         try {
-            if(typeof this.activityData.events.onRender == "function") setTimeout(()=>{
-                this.activityData.events.onRender()
-                this.el.classList.add('instant')
-                setTimeout(()=>this.el.classList.remove('instant'), 100)
-            }, 10)
+            setTimeout(() => {
+                if(this.el) {
+                    setTimeout(()=>{
+                        this.el.classList.remove('instant')
+                        this.activateObserver()
+                    }, 100)
+                }
 
-            if(typeof this.activityData.events.mouseEnter == "function") this.el.addEventListener('mouseenter', this.activityData.events.mouseEnter)
-        } catch(e) { /* no events specified */ }
+                if(typeof this.activityData?.events?.onRender == "function") this.activityData.events.onRender()                
+            }, 30)
+
+            if(typeof this.activityData?.events?.mouseEnter == "function" && this.el) this.el.addEventListener('mouseenter', this.activityData.events.mouseEnter)
+        } catch(e) { console.log(e) /* todo: why is this a try catch again. what was 2023 me thinking */}
 
         Buddy.currentPageBuddies.push(this)
-        this.activateObserver()
-        this.xy = {x: 0, y: 0}
-        setTimeout(this.activateBehavior, 20)
     }
 
     //on removal, we can leave the element (useful when leaving), and note whether or not it's part of a leaving event
-    remove = ({removeEl, leaving}) => {
+    remove = ({removeEl = true, leaving = true} = {}) => {
         if(this.el != null) {
             if(removeEl) this.el.remove()
             if(typeof this.activityData.events != "undefined") this.el.removeEventListener('mouseenter', this.activityData.events.mouseEnter)
@@ -180,7 +212,7 @@ class Buddy {
         this.clearIntervals()
 
         //trigger removal callback after cleanup
-        if(leaving) if(typeof this.activityData.events != "undefined") if(typeof this.activityData.events.leaving == "function") this.activityData.events.leaving()
+        if(leaving) if(typeof this.activityData.events != "undefined") if(typeof this.activityData?.events?.leaving == "function") this.activityData.events.leaving()
 
         Buddy.currentPageBuddies.filter(buddy => buddy.elementData.id != this.elementData.id)
     }
@@ -198,6 +230,8 @@ class Buddy {
     //behavior is checked and acted upon every 200ms
     //behavior can change, (i.e. being set from follow to element)!
     activateBehavior = () => {
+        console.log("activating behavior for", this)
+        if(this.abstract) return;
         if(this.behaviorTimeout || this.behaving) throw 'already behaving'
         this.behaving = true
         this.runBehavior() //do initial one too
@@ -208,8 +242,8 @@ class Buddy {
         this.behaviorTimeout = setTimeout(this.runBehavior, this.activityData.behavior.rate || 1000)
 
         if(typeof this.activityData.behavior.muiPause == 'undefined' || this.activityData.behavior.muiPause === true ) 
-            if(body.classList.contains('in-menu') || body.classList.contains('mui-active')) return 
-        if(this.paused) return
+            if(body.classList.contains('in-menu') || body.classList.contains('mui-active')) return console.log("!! in menu")
+        if(this.paused) return console.log("!! paused")
 
         let behavior = this.activityData.behavior
         switch(behavior.type) {
@@ -276,7 +310,7 @@ class Buddy {
             targetDimensions = behavior.element.getBoundingClientRect()
         } else {
             targetEl = content
-            targetDimensions = content.getBoundingClientRect();
+            targetDimensions = content.getBoundingClientRect()
         }
 
         if(behavior.limit) { //limited - will go in pixel increments across the page, but not beyond boundaries
@@ -338,7 +372,7 @@ class Buddy {
     observer = null
     activateObserver = () => {
         if(typeof this.activityData.events != "object") return
-        if(typeof this.activityData.events.screenEnter != "function") return
+        if(typeof this.activityData?.events?.screenEnter != "function") return
         if(!this.el) throw 'no element to observe'
         this.observer = new IntersectionObserver(entries => {
             if(body.getAttribute("state") == "corru-loaded") return //dont chatter if they aren't actually in
@@ -370,12 +404,13 @@ class Buddy {
     timeouts = []
     setTimeout = (func, time) => {
         let newTimeout = setTimeout(func, time)
+        this.timeouts.push(newTimeout)
         env.timeouts.push(newTimeout)
         return newTimeout
     }
 
     clearTimeouts = ()=>{
-        env.timeouts.forEach(timeout => {
+        this.timeouts.forEach(timeout => {
             clearTimeout(timeout)
         });
     }
@@ -383,12 +418,13 @@ class Buddy {
     intervals = []
     setInterval = (func, time) => {
         let newInterval = setInterval(func, time)
+        this.intervals.push(newInterval)
         env.intervals.push(newInterval)
         return newInterval
     }
 
     clearIntervals = ()=>{
-        env.intervals.forEach(interval => {
+        this.intervals.forEach(interval => {
             clearInterval(interval)
         });
     }
@@ -400,10 +436,13 @@ class Buddy {
     // checks to see if any global buddies should be at the present page path
     // if they do, add the buddy to the content
     static renderGlobalBuddies = () => {
+        if(this.globalBuddies.length == 0) globalBuddyInit()
+        
+        console.log("buddies", this.globalBuddies)
         this.globalBuddies.forEach(buddy=>{
+            if(typeof buddy.activityData.events.preRenderCheck == "function") buddy.activityData.events.preRenderCheck()
             if(buddy.shouldBeOnPage() && !buddy.el) {
                 buddy.render()
-                Buddy.currentPageBuddies.push(buddy)
             }
         })
     }
@@ -429,11 +468,12 @@ class Buddy {
 }
 
 /* GLOBAL BUDDIES */
-/* these need to be set up an instant after bootup or else they fail*/
-setTimeout(()=>{
+function globalBuddyInit() {
     try {
         //proxies only show up after repairs have begun
         if(check("ep1_fed")) env.buddy_ffproxy = new Buddy({
+            id: "ffproxy",
+
             element: {
                 entity: "proxyfriend",
                 id: "ffproxy",
@@ -462,6 +502,7 @@ setTimeout(()=>{
                             env.buddy_ffproxy.activityData.behavior.element = patchOfChoice
 
                             patchOfChoice.querySelector(".repairpatch").insertAdjacentHTML('beforeend', `<div class="target" entity="membrane incision"></div>`)
+                            env.buddy_ffproxy.runBehavior()
                         } else { //drifting around, taking it easy
                             env.buddy_ffproxy.activityData.behavior.rate = 20000
                             env.buddy_ffproxy.activityData.behavior.speed = 5000
@@ -478,6 +519,8 @@ setTimeout(()=>{
 
         //friend shows up sometinmes :-p
         env.buddy_smile = new Buddy({
+            id: "thesmiler",
+            
             element: {
                 id: "thesmiler",
                 actor: "unknown",
@@ -506,5 +549,194 @@ setTimeout(()=>{
                 exploredOnly: true
             }
         })
+
+        //fairy wanders after being freed sometimes
+        //can appear in spatial areas, where it becomes abstract and is just used as a page flag basically
+        if(check("ozo__fairy_intro")) env.buddy_globalFairy = new Buddy({
+            id: "globalFairy",
+
+            element: {
+                id: "eyefriend",
+                actor: "fairy",
+                entity: "fairy",
+                size: "300px",
+                img: "/img/blank.gif",
+                muiPause: true,
+                figureClasses: "ozofriend eyefriend",
+                figure: `
+                    <img class="body" style="opacity: 1" src="/img/local/uncosm/ozo/sprite_body.gif">
+                    <div class="head" style="opacity: 1">
+                        <img src="/img/local/uncosm/ozo/sprite_mask.gif" style="opacity: 1">
+                    </div>
+                `,
+            },
+
+            activity: {
+                behavior: {type: 'wander', drift: 50, rate: 30000, speed: 5000},
+                events: {
+                    preRenderCheck: () => {
+                        //fairy avoids proxy
+                        if(env.buddy_ffproxy.currentLocation == env.buddy_globalFairy.currentLocation) {
+                            env.buddy_globalFairy.setNewLocation()
+                            console.log("new location set, avoiding funfriend")
+                        }
+
+                        console.log("prerender check for fairy", env.buddy_globalFairy)
+
+                        //in spatial areas, just used as a flag
+                        if(["/local/beneath/", "/local/ocean/ship/interview/", "/local/uncosm/pit/"].includes(env.buddy_globalFairy.currentLocation)) env.buddy_globalFairy.abstract = true
+                        else env.buddy_globalFairy.abstract = false
+                    },
+
+                    onRender: () => {
+                        if(!env.buddy_globalFairy.abstract) content.insertAdjacentHTML('afterbegin', `
+                            <style id="fairyspecialstyle">
+                                @import url(/css/local/minifairy.css)
+                            </style>
+                        `); else content.insertAdjacentHTML('afterbegin', `
+                            <style id="fairyspecialstyle">
+                                @import url(/css/stage/minifairy.css)
+                            </style>
+                        `)
+                    },
+
+                    screenEnter: ()=> {
+                        if(!check("PAGE!!seenFairy")) setTimeout(()=>env.buddy_globalFairy.chatter({text: "look who it is!"}), 750)
+
+                        change("PAGE!!seenFairy", true)
+                        change("seenFairyWander", true)
+                    }
+                }
+            },
+
+            location: {
+                path: ["/local/city/", "/local/orbit/", "/local/uncosm/", "/local/ocean/ship/interview/"],
+                exploredOnly: true,
+                special: (pathList) => {
+                    // fairy can show up in the pit if that's resolved
+                    if(check("ozo__fairy-wakizet")) pathList.push("/local/uncosm/pit/")
+                }
+            }
+        })
+
+        //rotwatcher appears after EP4, though you need joymask to see it
+        //like fairy, can appear in spatial areas, where it becomes abstract and is just used as a page flag
+        //only appears in the city cafe at first
+        if(env.ep4) env.buddy_globalRotwatcher = new Buddy({
+            id: "globalRotwatcher",
+
+            element: {
+                id: "rotwatcher",
+                actor: "rotwatcher",
+                entity: "rotwatcher",
+                size: "600px",
+                img: "/img/blank.gif",
+                muiPause: true,
+                classes: "custombuddy",
+                
+                figureClasses: "rotainer", //double rotainer sure it's just 100% 100%
+                figure: `
+                    <div class="rotainer rotxa rotxamove">
+                        <figure class="rotfig"></div>
+                    </div>
+                `,
+            },
+
+            activity: {
+                behavior: {type: 'wander', drift: 100, rate: 15000, speed: 8000, element: content.querySelector('.rotwatched'), muiPause: true},
+                events: {
+                    preRenderCheck: () => {
+                        //in spatial areas, just used as a flag
+                        if(["/local/ozo/", "/local/beneath/parasite/", "/local/city/street/", "/local/ocean/ship/interview/", "/local/uncosm/pit/"].includes(env.buddy_globalRotwatcher.currentLocation)) env.buddy_globalRotwatcher.abstract = true
+                        else env.buddy_globalRotwatcher.abstract = false
+                    },
+
+                    onRender: () => {
+                        env.buddy_globalRotwatcher.activityData.behavior.element = content.querySelector('.rotwatched')
+                        if(!env.buddy_globalRotwatcher.abstract) env.buddy_globalRotwatcher.runBehavior()
+                        content.insertAdjacentHTML('afterbegin', `
+                            <style id="rotwatcherstyle">
+                                @import url(/css/rotwatcher.css)
+                            </style>
+                        `)
+
+                        //define the music after render and add it to the page list
+                        //should get cleared and replaced as needed, treated the same as a page specific theme
+                        env.rotWatcherMusic = new Howl({
+                            onload: function () {
+                                page.howls.push(this)
+                                this.intendedVol = 0.75
+                            },
+                            src: ['/audio/solarot.ogg'],
+                            volume: 0.75,
+                            preload: true,
+                            loop: true,
+                            sprite: {
+                                __default: [50, 999999999, true]
+                            }
+                        })
+                    },
+                }
+            },
+
+            location: {
+                path: ["/local/city/street/"],
+                exploredOnly: true,
+                special: (pathList) => {
+                    //is always at the street first
+                    if(check("citystreet__rotmeet")) {
+                        pathList.push("/local/ozo/", "/local/orbit/", "/local/uncosm/", "/local/ocean/ship/interview/", "/local/uncosm/pit/", "/local/beneath/parasite/")
+                    }
+                }
+            }
+        })  
+
+        //additional execution for rerolling
+        //we prioritize unseen ones first
+        if(env.ep4) env.buddy_globalRotwatcher.reroll = function() {
+            let intendedDestination = false
+
+            if(check("TEMP!!rotpref")) {
+                intendedDestination = check("TEMP!!rotpref")
+                change("TEMP!!rotpref", false)
+            } else { // prioritize unseen dialogues
+                if(!check("++rotorbit")) intendedDestination = "/local/orbit/"
+                else if(!check("++rotuncosm")) intendedDestination = "/local/uncosm/"
+                else if(!check("++rotozo")) intendedDestination = "/local/ozo/"
+                else if(!check("++rotmaze")) intendedDestination = "/local/ocean/ship/interview/"
+                else if(!check("++rotparasite")) intendedDestination = "/local/beneath/parasite/"
+                else if(!check("++rotpit") && check("visited_localuncosmpit")) intendedDestination = "/local/uncosm/pit/"
+                else change("rot_e4a1", true)
+            }
+
+            let reroll = env.buddy_globalRotwatcher.setNewLocation(intendedDestination)
+            
+            chatter({actor: "sys", text: "ATTENTION::'thoughtform activity detected';'resources removed'", readout: true})                
+            chatter({actor: "sys", text: `ATTENTION::'thoughtform activity detected'::IN::'${
+                reroll.replaceAll("/", "").replace("local", "")
+                    .replace("oceanshipinterview", "funny little room")
+                    .replace("uncosmpit", "?-?l?-?a??-bs?")
+                    .replace("beneathparasite", "p?a-??r?-???s?-t?e?")
+            }'`, readout: true, delay: 3000})
+
+            vfx({type: "darkflash", state: true})
+            cutscene(true)
+
+            setTimeout(() => {
+                //on stages, we refresh stage
+                if(env.stage.name) {
+                    refreshStage({noFlash: true})
+                    env.buddy_globalRotwatcher.remove()
+                } else { // otherwise, it's a flash and remove
+                    env.buddy_globalRotwatcher.remove()
+                }
+            }, 2000)
+
+            setTimeout(() => {
+                vfx({type: "darkflash", state: false})
+                cutscene(false)
+            }, 4000);
+        }
+        
     } catch(e) { console.log('friendification failed', e) }
-}, 1000)
+}

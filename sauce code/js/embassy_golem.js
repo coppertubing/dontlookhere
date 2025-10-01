@@ -554,7 +554,7 @@ env.embassy.skips = {
         pauseSwapCam(false)
 
         env.embassy.geliState('on')
-        document.querySelectorAll('.geli').forEach(el=> el.classList.remove('inactive'))
+        env.stage.querySelectorAll('.geli').forEach(el=> el.classList.remove('inactive'))
     },
 
     m_clear: ()=>{
@@ -1595,7 +1595,7 @@ start
         then comes the rest of its body...
             EXEC::env.embassy.geliState('on')
         it looks down at the mindcore on its shoulder, away from us
-            EXEC::document.querySelectorAll('.geli').forEach(el=> el.classList.remove('inactive'))
+            EXEC::env.stage.querySelectorAll('.geli').forEach(el=> el.classList.remove('inactive'))
     
     geli
         hello, itzil
@@ -1661,7 +1661,7 @@ ____END
         look around more first<+>END
             EXEC::vn.done();pauseSwapCam(false)
 
-SKIP::env.embassy.skips.lobby_clear()
+SKIP::env.embassy.skips.lobby_clear();
 `)
 
 env.dialogues["geli_first"] = generateDialogueObject(`
@@ -2124,7 +2124,7 @@ door
         oh well<+>loop
             FAKEEND::(back)
 
-SKIP::
+SKIP::vn.done()
 `)
 
 env.dialogues["geli_beacon"] = generateDialogueObject(`
@@ -3805,8 +3805,17 @@ gordon
         That's better.
         Akizet, I just got off a half dozen other calls.
         They sent a probe.
+
+____SHOWIF::["citystreet__director-meeting", false]
         They did it. Those fuckers--sorry--they completely went over our heads.
         I know, I promised you--I even had assurances from <em>everyone</em> above me.
+
+____SHOWIF::["citystreet__director-meeting", true]
+        I know, I promised you--we had assurances from <em>everyone</em> to hold until you were ready.
+        There were some new officers on the project a few days ago, asking questions, I--
+        I don't know, the Director was tight-lipped about it. Some kind of oversight.
+        But I think those fuckers--sorry--they completely went over our heads.
+____END
     
     sourceless
         what is he implying?
@@ -3816,8 +3825,14 @@ gordon
         i nearly double over out of anxiety, my receptors crushing into themselves
     
     gordon
+____SHOWIF::["citystreet__director-meeting", false]
         Even worse is that they waited to tell me. I don't know how long it's been.
-        The reports I've been getting, I-I don't even know...
+        
+____SHOWIF::["citystreet__director-meeting", true]
+        I don't know how long this has been planned. This doesn't just happen out of nowhere.
+        Even worse is that I'm only getting scraps of info. No idea when it was sent out, or what they did.
+____END
+        But the reports I've been getting, I-I can hardly make sense of it...
         Polygonation spires collapsing, your ships spiralling out of control, it's--
 
     akizet
@@ -3825,7 +3840,7 @@ gordon
     
     sourceless
         no, no, no
-        this cannot be because of us...
+        this massacre cannot be because of us...
         because of <em>me</em>
         his voice changes, realizing from my tone that it is even worse than he can know
         growing quieter, more fearful, more like mine
@@ -3846,8 +3861,13 @@ gordon
     gordon
         Shit, I know. I know, I know, I know.
         But it doesn't work that way for us, Akizet.
+____SHOWIF::["citystreet__director-meeting", true]
+        We can't just hide things like this. I know you were assured we would keep it quiet...
+        But there are certain people we have to answer to, and I didn't want--
+____SHOWIF::["citystreet__director-meeting", false]
         We can't just hide things like this. I know I told you I would keep it quiet...
         But there were certain people I had to tell, and I didn't want--
+____END
         ...
 
     sourceless
@@ -3858,11 +3878,26 @@ gordon
         before i can convey my thoughts, his voice comes back into focus
     
     gordon
+____SHOWIF::["citystreet__director-meeting", true]
+        Look, the promise was a part of the project.
+        I trusted everyone we brought in, too.
+        I'm working on getting the details here. The whole system's fried.
+        We still have the storm, but I haven't been able to get straight answers from it, or...
+        Or the Director. Or anybody.
+        There's a whole chunk of the bureau that's not responding for one reason or another.
+        But I think there was a report on what we were doing passed up the chain, Akizet.
+        Through the Director, all the way up to the top.
+        And... Someone must have gotten scared. Maybe that's all it took.
+        Can't get any info on what happened down there. I don't even know if they know for sure.
+
+____SHOWIF::["citystreet__director-meeting", false]
         Look, they all promised me the same thing. I trusted them, too.
         But someone took what we found and ran it even higher up.
         We still have the Storm, but once they had the coordinates...
         Someone got scared. That's all it took.
         They're not telling me what happened down there. I don't even know if they know for sure.
+____END
+
         But whatever it was, it's bad.
         Akizet--<em>what</em> is happening? Where are you?
         Do you need help?
@@ -3900,7 +3935,13 @@ gordon
         is this all happening because of me...?
         no, no--the conflict is at the core of this, i know it
         and--gordon!! he is not without blame!!
+____SHOWIF::["citystreet__director-meeting", true]
+        my one point of entry, the hinge upon this entire operation
+____END
         i trusted him... he said he would listen
+____SHOWIF::["citystreet__director-meeting", true]
+        that certain boundaries would be assured, that these secrets would...
+____END
         ...
         i cannot bear this
         but if i crumble now, it is like succumbing to fear paralysis on the surface

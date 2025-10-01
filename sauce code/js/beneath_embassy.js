@@ -764,6 +764,7 @@ combat
                     
                     body.classList.remove('in-menu')
                     body.setAttribute('menu', 'none')
+                    if(env?.stage?.freemove) toggleMouseLook(true) //pause
                 break
 
                 default:
@@ -775,6 +776,7 @@ combat
                     
                     vn.hideStage(true, true)
                     vn.fadeChars(true)
+                    if(env?.stage?.freemove && !env.rpg?.active) toggleMouseLook(false) //pause
             }
         }
     },
@@ -1082,8 +1084,8 @@ createEntity({
                 startDialogue("bstrdmeet");
                 //this looks stupid but it's a bandaid to deal with a darkstage issue of teleporting from a "nothing" gridpiece (player gets weird and doesn't trigger execs anymore)
                 //not rly sure what's up - engoodification target
-                gridMoveTo(body.querySelector('#grid-ref #creature').parentElement, elementAtStageCoordinates(2, 4));step()
-                gridMoveTo(body.querySelector('#grid-ref #creature').parentElement, elementAtStageCoordinates(4, 25));step()
+                gridMoveTo(env.stage.ref.querySelector('#creature').parentElement, elementAtStageCoordinates(2, 4));step()
+                gridMoveTo(env.stage.ref.querySelector('#creature').parentElement, elementAtStageCoordinates(4, 25));step()
                 playerTurn({specificDirection: "up"});step()
             },
             showIf: [["e3a2__bstrdmeet", false], ["e3a2escape", false]]
@@ -1363,8 +1365,8 @@ env.stages['wanderpart'] = {
     },
 
     exec: ()=> {
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
-        document.querySelectorAll('.bstrd.face-creature').forEach(el=>el.classList.remove("face-creature"))
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+        env.stage.querySelectorAll('.bstrd.face-creature').forEach(el=>el.classList.remove("face-creature"))
     },
 
     hitTheGuy: ()=> {
@@ -1382,7 +1384,7 @@ env.stages['wanderpart'] = {
             class: "faketeleport alwaysvis",
             exec: ()=>{ 
                 change("TEMP!!from", "e3a2")
-                moveTo("/local/ocean/embassy/golem");
+                moveTo("/local/ocean/embassy/golem/");
                 chatter({ actor: "sys", text:"NOTICE::'entering iteration'", readout: true})
             }
         },
@@ -1487,7 +1489,7 @@ env.stages['completed'] = {
     },
 
     exec: ()=>{
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
     },
 
     entities: {
@@ -1495,7 +1497,7 @@ env.stages['completed'] = {
             class: "faketeleport alwaysvis",
             exec: ()=>{ 
                 change("TEMP!!from", "e3a2")
-                moveTo("/local/ocean/embassy/golem");
+                moveTo("/local/ocean/embassy/golem/");
                 chatter({ actor: "sys", text:"NOTICE::'entering iteration'", readout: true})
             }
         },
@@ -1544,23 +1546,23 @@ env.stages['underlobby'] = {
     width: 9,
 
     exec: ()=>{
-        document.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
+        env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
         if(!check("e3a2escape", "in_progress")) { // bstrd only shows up when escaping
-            document.querySelectorAll(".gridpiece[slug='B'], .gridpiece[slug='{']").forEach(el=>{
+            env.stage.querySelectorAll(".gridpiece[slug='B'], .gridpiece[slug='{']").forEach(el=>{
                 el.classList.remove("prop", "blocks")
                 el.classList.add('vesselmetal')
                 el.innerHTML = ""
                 el.setAttribute("slug", "♠")
             })
         } else {
-            document.querySelectorAll(".gridpiece[slug='☻']").forEach(el=>{
+            env.stage.querySelectorAll(".gridpiece[slug='☻']").forEach(el=>{
                 el.classList.remove("blocks")
                 el.classList.add("nothing")
                 el.innerHTML = ""
                 el.setAttribute("slug", ".")
             })
 
-            document.querySelectorAll(".gridpiece[slug='{']").forEach(el=>{
+            env.stage.querySelectorAll(".gridpiece[slug='{']").forEach(el=>{
                 el.children[0].style.setProperty("--charTransform", `rotateY(-145deg) translateY(-10%)`)
             })
         }
@@ -1571,7 +1573,7 @@ env.stages['underlobby'] = {
         else if(check("TEMP!!justdied", "loop") && !check("e3a2__deathreturn")) { startDialogue("deathreturn"); change("TEMP!!justdied", "DELETE") }  // first death return
         
 
-        document.querySelectorAll(".face-creature").forEach(el=>{
+        env.stage.querySelectorAll(".face-creature").forEach(el=>{
             el.style.transition = "unset"
             el.classList.remove("face-creature")
         })
@@ -1606,7 +1608,7 @@ env.stages['underlobby'] = {
             class: "faketeleport alwaysvis",
             exec: ()=>{ 
                 change("TEMP!!from", "e3a2")
-                moveTo("/local/ocean/embassy/golem");
+                moveTo("/local/ocean/embassy/golem/");
                 chatter({ actor: "sys", text:"NOTICE::'entering iteration'", readout: true})
             }
         },
@@ -2095,7 +2097,7 @@ env.stages['vessel_short'] = {
         }
 
         content.querySelector("#realgrid").insertAdjacentHTML('beforeend', `<canvas id="water" class="still"></canvas>`)
-        document.querySelectorAll(".face-creature").forEach(el=>el.classList.remove("face-creature"))
+        env.stage.querySelectorAll(".face-creature").forEach(el=>el.classList.remove("face-creature"))
     },
 
     entities: {

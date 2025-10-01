@@ -261,9 +261,14 @@ body[id="embassy_recreation"] .gridpiece .gakvu {
     --charTransform: rotateY(90deg) translateZ(calc(var(--gridTileSize) * 2.01)) translateY(20%);
 }
 
+body[id="embassy_recreation"] .gridpiece .kazki.bt, body[id="embassy_recreation"] .gridpiece .gakvu.bt {
+    --charTransform: translateZ(0);
+}
+
 /* bar drinks */
 .drinklayer {
-    transition: all 1s ease-in-out
+    transition: all 1s ease-in-out;
+    z-index: 2;
 }
 
 .drinklayer[drink="none"] {
@@ -397,7 +402,7 @@ body[quality="regular"].collapse #realgrid[stage="embassy_recreation"] .gridpiec
     --charTransform: translateZ(calc( -1.3 * var(--gridTileSize) )) rotateZ(15deg) rotateX(-10deg);
 }
 
-.dyingqou > * {
+.dyingqou figure {
     backface-visibility: visible;
 }
 
@@ -577,6 +582,8 @@ body[id="embassy_research"] #realgrid .desk figure {
 
 .timestopper canvas {
     position: absolute;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
 }
 
 .timestople {
@@ -715,6 +722,7 @@ body[id="embassy_research"] #realgrid .desk .doodad.d4 {
     height: 100%;
     background-image: url(/img/sprites/obesk/callwave.gif);
     background-size: 50% 100%;
+    left: 0;
 }
 
 body[quality="regular"] .callscreen::after {
@@ -1554,7 +1562,7 @@ body[currentdialogue="d2_bozkocavik"] #realgrid .bozko { --charTransform: rotate
 
 body[currentdialogue="d2_kazki"] .grid-animator {
     --camera-rotation: 90 !important;
-    --camera-x: 1;
+    --camera-x: 2;
     --camera-y: 3;
 }
 
@@ -2163,7 +2171,7 @@ body[quality="regular"] #realgrid[stage="echovision"] .gridpiece.empty::after {
 	100% { transform: translateZ(10px) rotate(2deg) rotateX(20deg) rotateZ(-70deg) rotateY(40deg)}
 }
 
-#realgrid .echosprite {
+#realgrid .echosprite.dypcontent {
     --directionalTransform: translateX(0);  
     --directionalRotate: rotate(0deg);
     --akiDistance: translateY(calc(var(--gridTileSize) * -0.5));
@@ -2181,15 +2189,15 @@ body[quality="regular"] #realgrid[stage="echovision"] .gridpiece.empty::after {
     transition: transform 600ms ease-in-out;
 }
 
-body.notchrome #realgrid .echosprite {
+body.notchrome #realgrid .echosprite.dypcontent {
     --akiDistance: translateY(calc(var(--gridTileSize) * -1));
 }
 
-body#echovision:not(.pathstep0) #realgrid .echosprite {
+body#echovision:not(.pathstep0) #realgrid .echosprite.dypcontent {
     --directionalTransform: scale(0.0001)
 }
 
-#realgrid .echosprite::after {
+#realgrid .echosprite.dypcontent::after {
     content: "";
     position: absolute;
     width: 200%;
@@ -2199,28 +2207,28 @@ body#echovision:not(.pathstep0) #realgrid .echosprite {
     transform: translateZ(-1px);
 }
 
-.grid-plane[lastmoved="left"] #realgrid .echosprite {
+.grid-plane[lastmoved="left"] #realgrid .echosprite.dypcontent {
     --directionalTransform: translateX(100%);
     --directionalRotate: rotate(-90deg)
 }
 
-.grid-plane[lastmoved="right"] #realgrid .echosprite {
+.grid-plane[lastmoved="right"] #realgrid .echosprite.dypcontent {
     --directionalTransform: translateX(-100%);
     --directionalRotate: rotate(90deg)
 }
 
-.grid-plane[lastmoved="up"] #realgrid .echosprite {
+.grid-plane[lastmoved="up"] #realgrid .echosprite.dypcontent {
     --directionalTransform: translateX(240%) rotateY(-70deg) translateX(50%);
     --directionalRotate: rotate(90deg)
 }
 
-.echosprite .chatter-container {
+.echosprite.dypcontent .chatter-container {
     transform: translateY(-10px);
     left: unset;
     width: 300px;
 }
 
-.echosprite .chatter {
+.echosprite.dypcontent .chatter {
     background-color: var(--bright-color);
     color: var(--dark-color);
     text-shadow: 1px 1px var(--friend-color);
@@ -2232,7 +2240,7 @@ body#echovision:not(.pathstep0) #realgrid .echosprite {
 }
 
 
-body.pathstep1:not(.pathstep2) #realgrid .echosprite {
+body.pathstep1:not(.pathstep2) #realgrid .echosprite.dypcontent {
     transform: 
         translate( calc(2 * var(--gridTileSize)), calc(12 * var(--gridTileSize)) ) 
         translateY(calc(var(--gridTileSize) * -0.5)) 
@@ -2240,7 +2248,7 @@ body.pathstep1:not(.pathstep2) #realgrid .echosprite {
         translateY(calc(var(--gridTileSize) * -1.25)) 
 }
 
-body.pathstep3 #realgrid .echosprite {
+body.pathstep3 #realgrid .echosprite.dypcontent {
     transform: 
         translate( calc(2 * var(--gridTileSize)), calc(0.75 * var(--gridTileSize)) )
         translateY(calc(var(--gridTileSize) * -0.5)) 
@@ -2350,6 +2358,9 @@ body#echovision .swapcam .grid-animator {
     transform: var(--hideTransform);
     --showTransform: rotate(30deg) translateX(-60%);
     --hideTransform: rotate(0deg) translateX(-200%);
+
+    /* e4a1 - might be a temporary patch */
+    --showTransform: rotate(30deg) translateX(-35%) translateY(-35%)
 }
 
 .groupgfx .silent::after {
@@ -2364,22 +2375,22 @@ body#echovision .swapcam .grid-animator {
     transform: var(--hideTransform);
     --showTransform: rotate(-25deg) translateX(-20%) translateY(30%);
     --hideTransform: rotate(-25deg) translateX(50%) translateY(100%);
+    
+    /* e4a1 - might be a temporary patch */;
+    --showTransform: rotate(-25deg) translateX(-5%) translateY(50%);
 }
 
-.echoprop > * {
+.echoprop div {
     transition: opacity 1s ease-in-out;
     opacity: 0;
 }
 
-#content[ech^="call"] .echoprop.callhost > * {
+#content[ech^="call"] .echoprop.callhost div,
+#content[ech^="calleye"] .echoprop.grouphost div {
     opacity: 1;
 }
 
-#content[ech^="calleye"] .echoprop.grouphost > * {
-    opacity: 1;
-}
-
-#content[ech^="calleyeclaw"] .groupgfx > div::before {
+#content[ech^="calleyeclaw"] .groupgfx div::before {
     opacity: 1;
     transform: var(--showTransform);
 }
@@ -2404,4 +2415,16 @@ body#echovision .swapcam .grid-animator {
 
 #content[ech^="crowd"] .crowdgfx .crowd {
     opacity: 1;
+}
+
+/* e4a1 */
+body#embassy_hangar #content::after {
+    transform: unset;
+    background: url(/img/local/embassy/parpy/hangarbg.gif);
+    background-size: cover;
+    background-position: center;
+}
+
+body#embassy_hangar .grid-plane {
+    perspective: 550px;
 }

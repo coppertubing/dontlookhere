@@ -54,14 +54,17 @@
     transition: transform 100ms linear;
 }
 
-.swapcam .truecreature > * {
+.swapcam .truecreature .creaturesprite {
     position: absolute;
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
 }
 
-.truecreature div.creaturesprite, .truecreature div.creaturesprite .graphic, .truecreature figure, .truecreature figure > div::after {
+.truecreature div.creaturesprite, 
+.truecreature div.creaturesprite .graphic, 
+.truecreature figure, 
+.truecreature figure div::after {
     position: absolute;
     background-size: contain;
     background-position: bottom center;
@@ -156,7 +159,7 @@
     background: url(/img/textures/corruripplegrayscale.gif);
 }
 
-#realgrid .gridpiece:not(.blocks):empty {
+#realgrid .hasnothing {
     background: black;
     border: 3px double var(--bright-color);
     border-style: dotted;
@@ -192,7 +195,10 @@
     -webkit-backface-visibility: visible;
 }
 
-.evil > figure, .evil > figure * {
+.evil figure, 
+.evil figure div,
+.evil figure span,
+.evil figure img {
     backface-visibility: visible;
     -webkit-backface-visibility: visible;
 }
@@ -663,7 +669,7 @@ body[id="embassy_relocator"] #content:not(.collapse)::before {
     100% { transform: rotate(180deg) translateY(50%) }
 }
 
-body[id^="embassy_relocator"] #realgrid .gridpiece:not(.blocks):empty, body[id^="embassy_relocator"] #realgrid .gridpiece.prop {
+[stage="embassy_relocator"]#realgrid .hasnothing, [stage="embassy_relocator"]#realgrid .gridpiece.prop {
     background: transparent;
     border: 2px double var(--friend-color);
 }
@@ -760,6 +766,22 @@ body[id="embassy_relocator"] .swapcam .grid-animator {
     border-style: double;
 }
 
+.lifter.vekoa::before, .lifter.vekoa figure::before, .lifter.vekoa figure::after {
+    display: none;
+}
+
+.lifter.vekoa::before {
+    display: block;
+    background: url(/img/local/embassy/groundsmindsigil.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-radius: unset;
+    transform: unset;
+    height: var(--tilef5);
+    animation: HOVER 4s ease-in-out infinite alternate;
+}
+
 #realgrid[stage="embassy_relocator"] .kazki {
     --charTransform: rotateY(90deg);
 }
@@ -783,7 +805,7 @@ body[id="embassy_relocator"] .swapcam .grid-animator {
     align-items: center;
 }
 
-#realgrid .deadtainer > * {
+#realgrid .deadtainer span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -792,31 +814,31 @@ body[id="embassy_relocator"] .swapcam .grid-animator {
     background-size: cover;
 }
 
-#realgrid .deadtainer > span:nth-child(1) {
+#realgrid .deadtainer span:nth-child(1) {
     transform-origin: top;
     transform: rotateX(90deg);
 }
 
-#realgrid .deadtainer > span:nth-child(2) {
+#realgrid .deadtainer span:nth-child(2) {
     transform-origin: left;
     transform: rotateY(-90deg);
 }
 
-#realgrid .deadtainer > span:nth-child(3) {
+#realgrid .deadtainer span:nth-child(3) {
     transform-origin: right;
     transform: rotateY(90deg);
 }
 
-#realgrid .deadtainer > span:nth-child(4) {
+#realgrid .deadtainer span:nth-child(4) {
     transform: translateZ(var(--gridTileSize));
 }
 
-#realgrid .deadtainer > span:nth-child(5) {
+#realgrid .deadtainer span:nth-child(5) {
     transform-origin: bottom;
     transform: rotateX(-90deg);
 }
 
-#realgrid .deadtainer.special > span:nth-child(6) {
+#realgrid .deadtainer.special span:nth-child(6) {
     transform: rotateX(-90deg) translateY(-150%) rotateY(1deg);
     background-image: url(/img/local/embassy/specialsfer.gif);
     background-color: transparent;
@@ -832,28 +854,28 @@ body[quality="low"] #realgrid .deadtainer > span ~ span {
     display: none;
 }
 
-#realgrid .deadtainer.vatbase > * {
+#realgrid .deadtainer.vatbase span {
     background-size: auto;
     background-position: center;
 }
 
-#realgrid .deadtainer.vatbase > span:nth-child(1) {
+#realgrid .deadtainer.vatbase span:nth-child(1) {
     transform: translateY(-100%) rotateX(90deg);
 }
 
-#realgrid .deadtainer.vatbase > span:nth-child(2) {
+#realgrid .deadtainer.vatbase span:nth-child(2) {
     display: none;
 }
 
-#realgrid .deadtainer.vatbase > span:nth-child(3) {
+#realgrid .deadtainer.vatbase span:nth-child(3) {
     height: 300%;
 }
 
-#realgrid .deadtainer.vatbase > span:nth-child(4) {
+#realgrid .deadtainer.vatbase span:nth-child(4) {
     height: 300%;
 }
 
-#realgrid .deadtainer.vatbase > span:nth-child(5) {
+#realgrid .deadtainer.vatbase span:nth-child(5) {
     transform: translateY(100%)rotateX(-90deg);
 }
 
@@ -862,12 +884,12 @@ body[quality="low"] #realgrid .deadtainer > span ~ span {
     height: 70%;
 }
 
-#realgrid .deadtainer.vatbase.otherside > span:nth-child(2) {
+#realgrid .deadtainer.vatbase.otherside span:nth-child(2) {
     display: block;
     height: 300%;
 }
 
-#realgrid .deadtainer.vatbase.otherside > span:nth-child(3) {
+#realgrid .deadtainer.vatbase.otherside span:nth-child(3) {
     display: none;
 }
 
@@ -916,7 +938,10 @@ body[quality="low"] .evil .lamp.collapsed figure { display: none }
 }
 
 #realgrid .character figure { pointer-events: none; }
-#realgrid .character figure, #realgrid .character figure *, #realgrid .character figure *::after, #realgrid .character figure *::before {
+#realgrid .character figure, 
+#realgrid .character figure div, 
+#realgrid .character figure div::after, 
+#realgrid .character figure div::before {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -1005,6 +1030,7 @@ body[quality="low"] #content .bozko {
 }
 
 /* KAZKI */
+.kazki figure { height: 120% !important; bottom: 0; } /* height buff. she should not feel as short as akizet */
 .kazki .head { background-image: url(/img/sprites/obesk/kazki/stage/kazkihair.gif); transform: translateZ(-1px); }
 .kazki .head::after { content: ""; background-image: url(/img/sprites/obesk/kazki/stage/kazkihead.gif); transform: translateZ(1px); }
 .kazki .body { background-image: url(/img/sprites/obesk/kazki/stage/kazkishawl.gif); }
@@ -1349,15 +1375,33 @@ body[quality="regular"] .idril .arm, #idril .arm {
 
 
 /* QUALITY CONTROLS - REGULAR AND UNDER JUST TOGGLES WHETHER THINGS ARE RUNNING ANIMS OR NOT */
-body[quality="low"] #realgrid .character *, 
-body[quality="low"] #realgrid .character *::after, 
-body[quality="low"] #realgrid .character *::before,
-body[quality="low"] #realgrid .prop *, 
-body[quality="low"] #realgrid .prop *::after, 
-body[quality="low"] #realgrid .prop *::before,
-body[quality="low"] #realgrid .dyp *, 
-body[quality="low"] #realgrid .dyp *::after, 
-body[quality="low"] #realgrid .dyp *::before
+body[quality="low"] #realgrid .character span, 
+body[quality="low"] #realgrid .character figure, 
+body[quality="low"] #realgrid .character img, 
+body[quality="low"] #realgrid .character span::after, 
+body[quality="low"] #realgrid .character figure::after, 
+body[quality="low"] #realgrid .character img::after, 
+body[quality="low"] #realgrid .character span::before, 
+body[quality="low"] #realgrid .character figure::before, 
+body[quality="low"] #realgrid .character img::before, 
+body[quality="low"] #realgrid .prop span, 
+body[quality="low"] #realgrid .prop figure, 
+body[quality="low"] #realgrid .prop img, 
+body[quality="low"] #realgrid .prop span::after, 
+body[quality="low"] #realgrid .prop figure::after, 
+body[quality="low"] #realgrid .prop img::after, 
+body[quality="low"] #realgrid .prop span::before, 
+body[quality="low"] #realgrid .prop figure::before, 
+body[quality="low"] #realgrid .prop img::before, 
+body[quality="low"] #realgrid .dyp span, 
+body[quality="low"] #realgrid .dyp figure, 
+body[quality="low"] #realgrid .dyp img, 
+body[quality="low"] #realgrid .dyp span::after, 
+body[quality="low"] #realgrid .dyp figure::after, 
+body[quality="low"] #realgrid .dyp img::after, 
+body[quality="low"] #realgrid .dyp span::before, 
+body[quality="low"] #realgrid .dyp figure::before, 
+body[quality="low"] #realgrid .dyp img::before
 {
     animation-play-state: paused;
 }
@@ -1376,15 +1420,16 @@ body[quality="low"] #realgrid .boothwalls,
 body[quality="low"] #realgrid .container:not(.showalways),
 body[quality="low"] #realgrid .gridpiece.wall::after, 
 body[quality="low"] #realgrid .gridpiece.wall::before,
-body[quality="low"] #realgrid .canopy figure *, 
+body[quality="low"] #realgrid .canopy figure .lid
+body[quality="low"] #realgrid .canopy figure .deskleg, 
 body[quality="low"] #realgrid .canopy figure::before, 
 body[quality="low"] #realgrid .canopy figure::after,
 body[quality="low"] #realgrid .bar::before, 
 body[quality="low"] #realgrid .bar::after,
 body[quality="low"] #realgrid[stage="embassy_research"]  .prop .desk .doodad:nth-child(2n+1),
 body[quality="low"] #realgrid .prop .deskleg,
-body[quality="low"] #realgrid .tendrils div:nth-child(1), 
-body[quality="low"] #realgrid .tendrils div:nth-child(2)
+body[quality="low"] #realgrid .tendrils .t1, 
+body[quality="low"] #realgrid .tendrils .t2
 {
     display: none;
 }
@@ -1413,29 +1458,13 @@ body[quality="low"] #realgrid .bar figure {
     transform: rotateX(-90deg) translateZ(calc(var(--gridTileSize) * -0.73)) translateY(-10%);
 }
 
-.stage-arrows .debugkey {
-    display: none;
-}
-
-.debug .stage-arrows .debugkey {
-    display: inline-flex;
-}
-
-.debug .prop:not(.enabled) > *, .debug .prop:not(.enabled) > ::after, .debug .prop:not(.enabled) > ::before {
-    display: var(--debugdisplay);
-}
-
-.debug {
-    --debugdisplay: none;
-}
-
 /* collapse-specific elements */
 .savepoint {
-    display: none;
+    display: none !important;
 }
 
 .collapse .savepoint {
-    display: block;
+    display: block !important;
     position: absolute;
     width: 100%;
     height: 100%;
