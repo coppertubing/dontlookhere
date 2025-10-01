@@ -1372,6 +1372,7 @@ RESPOBJ::
         имя?<+>name
         дом?<+>home
         маски?<+>masks
+            SHOWIF::["ozo__isabel_joy", false]
         назад<+>loop
             FAKEEND::(назад)
 `)
@@ -1478,7 +1479,7 @@ ____SHOWIF::['PAGE!!flowers', 'high']
         ...впрочем, я могла бы попросить тебя поискать оставшихся
         последних всегда труднее всего найти
 
-____SHOWIF::['PAGE!!flowers', 'done']
+____NESTIF::['PAGE!!flowers', 'done']
     isabel
         на сей θмиг идеально, лазутчик
         знаешь, у меня есть связь с моими акизетами
@@ -1486,9 +1487,14 @@ ____SHOWIF::['PAGE!!flowers', 'done']
         пропади хоть одна, я тут же это пойму...
         это чувство, мрак, нависавший надо мной, исчез
         и всё благодаря тебе
++____NESTIF::'ozo__isabel_joy'
+        i hope you enjoy the gift we have prepared for you
++____END
++____NESTIF::['ozo__isabel_joy', false]
         но пока что мне нечего предложить тебе взамен...
         дай мне немного времени
         а пока ждёшь, наслаждайся красотой, возвращённой тобой!
++____END
 ____END
 
     RESPONSES::self
@@ -1608,8 +1614,13 @@ memories
         осколки удовлетворения от утраченных, лучших времён...
         ты, лазутчик, ищешь воспоминания и правды
         а эти крохи сгодятся лишь для грёз
+____SHOWIF::["ozo__isabel_joy", false]
         и всё же, я в долгу перед тобой...
         маска, которую я готовлю, хорошо тебе сослужит
+____SHOWIF::["ozo__isabel_joy", true]
+        so, i hope my mask serves you well
+        it should offer a wealth of insight beyond the ozo
+____END
 
     RESPONSES::self
         окей<+>cloop
@@ -2226,7 +2237,7 @@ geli
         что нам делать
     
     fairy
-        "нам"?!
+        'нам'?!
         interloper - i have seen this memory!
         the tyrant has fashioned it into madness i could never even dream of!
         i did try cutting into it on my way here, but...
@@ -2496,7 +2507,7 @@ start
         oh, we hope it does not see us like this firmament of yours!
         whether it be in θgazes or θeyes, we will be on speaking terms again, we are certain...
         we will have much to discuss--so many questions!
-        now, about this "BSTRD"...?
+        now, about this 'BSTRD'...?
     
     bsteli::happy
         oh yes!! BSTRD!
@@ -2628,7 +2639,7 @@ start
         столько рук! такой размер! такая точность!!
         эффективность, с которою он сооружал то битое воспоминание, устрашает
         даже меня!! сколько времени прошло с тех пор, как меня кутал столький ужас!
-        меня посетила мысль, "я должна подраться с этою штукою"...
+        меня посетила мысль, 'я должна подраться с этою штукою'...
         но, подойди я ближе, он бы непременно растерзал меня и без единой мысли,
         может, аж не заметив, что я не просто очередной материал для размещения в починках!!!
         это вот так вот он двигался! жуть!
