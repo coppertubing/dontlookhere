@@ -746,19 +746,19 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     processMenu: function () { // cannot force this one because that would defeat the purpose of it
         if (document.querySelector("#system-menu") != null) document.querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')}) // --- we dont want to translate fundfriends (even tho it would be funny)
         env.menu['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
-        env.menuStorage.elements['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
+        if (env.menuStorage?.elements['system-menu'] != null) env.menuStorage.elements['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
 
         if (document.querySelector("#system-menu") != null) cor_ru.processSpecificTranslation(document.querySelectorAll('#savetext'), 'placeholder');
         cor_ru.processSpecificTranslation(env.menu['system-menu'].querySelectorAll('#savetext'), 'placeholder');
-        cor_ru.processSpecificTranslation(env.menuStorage.elements['system-menu'].querySelectorAll('#savetext'), 'placeholder');
+        if (env.menuStorage?.elements['system-menu'] != null) cor_ru.processSpecificTranslation(env.menuStorage.elements['system-menu'].querySelectorAll('#savetext'), 'placeholder');
 
         if (document.querySelector("#system-menu") != null) processTranslation(document.querySelector("#system-menu"));
         processTranslation(env.menu['system-menu'])
-        processTranslation(env.menuStorage.elements['system-menu'])
+        if (env.menuStorage?.elements['system-menu'] != null) processTranslation(env.menuStorage.elements['system-menu'])
 
         if (document.querySelector("#entity-menu") != null) processTranslation(document.querySelector("#entity-menu"));
         processTranslation(env.menu['entity-menu'])
-        processTranslation(env.menuStorage.elements['entity-menu'])
+        if (env.menuStorage?.elements['entity-menu'] != null) processTranslation(env.menuStorage.elements['entity-menu'])
 
         processTranslation(document.querySelector("#meta-menu"));
         processTranslation(document.querySelector(`#advance-notice`));
@@ -771,7 +771,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         cor_ru.processSpecificTranslation(document.querySelectorAll('.reply'), 'definition');
         cor_ru.processSpecificTranslation(document.querySelectorAll('.reply'), 'endtext');
     },
-    processReadout: function (force) {
+    processReadout: function () {
         processTranslation(document.querySelector("#minireadout"))
 
         dothething = function (selector) {
@@ -793,7 +793,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
         dothething(document.querySelector("#readout"))
         dothething(env.menu['readout'])
-        dothething(env.menuStorage.elements['readout'])
+        dothething(env.menuStorage?.elements['readout'])
     },
 
     // obserbor. the itself of them gets defined later
@@ -975,7 +975,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         if (check("TEMP!!cor-rudev")) return;
         if (document.querySelector(".devs") != null) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
         env.menu["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
-        env.menuStorage.elements["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
+        if (env.menuStorage?.elements['system-menu'] != null) env.menuStorage.elements["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
         change("TEMP!!cor-rudev", true)
     },
 

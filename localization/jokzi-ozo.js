@@ -31,7 +31,7 @@ env.localization.page['ozo'] = {dialogues: {},
         "geli": cor_ru.entity_menu['geli'].name,
         /*unity*/   "yes? what about it?": "",
 
-        "interviewer": cor_ru.entity_menu['interviewer'].name,
+        "interviewer": "интервьюер",
         /*unity*/   "peace...": "покой...",
 
         "interloper": cor_ru.entity_menu['interloper'].name,
@@ -151,13 +151,13 @@ env.localization.page['ozo'] = {dialogues: {},
 
         "interloper": cor_ru.entity_menu["interloper"].desc,
 
-        "interviewer": `::INCOMPLETE THOUGHTFORM
-    ::SIGNATURE ILLEGIBLE`,
+        "interviewer": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`,
 
         "sun": cor_ru.entity_menu["sun"].desc,
 
-        "gate::L‹ïAöIÁå": `::CONNECTOR THOUGHTFORM
-    ::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE`,
+        "gate::L‹ïAöIÁå": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+    ::ТОЧКА НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМА`,
         "wheel": cor_ru.entity_menu["wheel"].desc,
         "radio": cor_ru.entity_menu["radio"].desc,
         "basterminal": cor_ru.entity_menu["basterminal"].desc,
