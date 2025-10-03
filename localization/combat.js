@@ -943,10 +943,10 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - disabler_pulse - */
 
-    env.ACTIONS.disabler_pulse.name = "Импульс Отключателя" // Disabler Pulse
+    env.ACTIONS.disabler_pulse.name = "Импульс Отключителя" // Disabler Pulse
     env.ACTIONS.disabler_pulse.verb = "отключить" // disable
     env.ACTIONS.disabler_pulse.usage = {
-        "act": "%USER ВЫПУСКАЕТ ОТКЛЮЧАТЕЛЬ",
+        "act": "%USER ВЫПУСКАЕТ ОТКЛЮЧИТЕЛЬ",
         "hit": "%TARGET АННИГИЛИРОВАН%TAR(-/А/О)GET"
     }
     env.ACTIONS.disabler_pulse.details = {

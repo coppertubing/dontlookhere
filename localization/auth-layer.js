@@ -220,7 +220,7 @@ posthello
     RESPONSES::self
         похоже на то<+>END
 
-END::cutscene(false); MUI("deprohibit");content.classList.remove('looking', 'atyou');cor_ru.processWeirdTranslation("#content .target", "entaltname");`)
+END::cutscene(false); MUI("deprohibit");content.classList.remove('looking', 'atyou');cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname");`)
 
 env.dialogues["authfix"] = generateDialogueObject(` 
 start

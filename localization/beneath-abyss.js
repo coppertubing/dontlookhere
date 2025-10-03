@@ -286,52 +286,52 @@ resp1right
         вовремя для чего?
 
     sourceless
-        the thoughtform stirs, its unease dissipating slightly.
+        мыслеформа колыхается, кое-как разбавляя свою тревогу.
             EXEC::env.abyss.drowningFear(0)
-        after a short delay, new thoughts meet yours.
+        после короткой задержки новые мысли сталкиваются с твоими.
         
     sys
-        NOTICE::'memory stream located'
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     drowning sourceless
-        kazki and i tread through the loose soil beneath the waves of the bright shore
-        descending further from her envoy, 
-        who lingers and lounges beyond the water, in the fading light of their star
-        so strange that kazki has brought her with...
-        this is not even a diplomatic affair
+        казки и я ступаем по рыхлой земле под волнами светлого берега
+        спускаясь всё дальше от её посла, 
+        что задерживается и слоняется за пределами воды, в гаснущем сиянии их звезды
+        так странно, что казки привела её с собою...
+        это даже не дипломатическое мероприятие 
 
 ____SHOWONCE::
     moth
-        so that's what it was holding onto... try and stay on this
+        так вот за что она цеплялась... попробуй удержаться на этом
 ____END
 
     drowning sourceless
-        yet, almost every cousin she meets is like this
-        they easily bond, become friends, stay in touch for mundane matters...
-        i could hardly imagine gordon calling me as her cousinly friends do
-        the tir's blessing is especially effective on this world
-        a gentle flame's warmth through presence, 
-        even as we descend into the cold dark of these waters
+        и всё же, чуть ли не все близнецы, которых она встречает, именно такие
+        они легко привязываются, сдруживаются, поддерживают связь по сущим обыденностям...
+        мне трудно и представить, как гордон бы звонил мне, уподобая её близнецовым друзьям
+        дар тиров особенно плодотворен в этом мире
+        нежное тепло пламени в присутствии,
+        даже когда мы погружаемся в холодную темень этих вод
 
     drowning
-        hehe! -- хехе!
-        i am so glad you asked -- я так рада, что ты спросила
-        it is a sight afforded only to the <span definition="NOTE::INHERITED CONTEXT::'implies altered living state'">dead</span>! -- это зрелище, дозволенное лишь θсмертным! (так ведь?) (кстати почему не мёртвым)
-        you see--  -- видишь--
+        хехе!
+        я так рада, что ты спросила
+        это зрелище, дозволенное лишь θсмертным!
+        видишь--
 
     drowning sourceless
-        around us, through occasional impacts, bubble-like creatures gather, tendrils drifting in the current
+        вокруг нас, сквозь периодичные столкновения, собираются пузыреподобные существа, развевая отростками по потоку
 
     drowning akizet
-        you mean these little bubbles? 
-        they look like tiny akozak
+        ты про эти маленькие пузыри? 
+        они выглядят, будто крошечные акозаки
 
     drowning
-        aki!! this is not a problem to solve! -- аки!! это не проблема для решения!
-        just listen, and i will tell you! hehehe -- просто слушай, и я тебе расскажу! хехехе
+        аки!! это не какая-то проблема на решение!
+        просто слушай, и я тебе расскажу! хехехе
     
     drowning sourceless
-        the coils of my receptors tighten
+        завитки моих рецепторов стискиваются
 
     RESPOBJ::drowningResp2
 
@@ -341,116 +341,116 @@ resp2wrong1
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        no n o  yo u  ha v e to  t alk -- нет н ет  те бе  ну ж но  гов орить
+        нет н ет  те бе  ну ж но  гов орить
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        akiz et ...? are you ok ? -- акиз ет ...? ты в порядке ?
+        акиз ет ...? ты в поряд ке ?
 
     RESPOBJ::drowningResp2
 ____END
 
 resp2wrong2
     self
-        ok tell me
+        хорошо скажи мне
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        n o!  sh e was s o embar rasse d ! -- не т!  о на так смут и лась !
+        не т!  о на так смут и лась !
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        oh? d o you not mind that  an ymor e? -- о? т ы  б ольш е не про тив такого?
+        о? т ы  б ольш е не про тив такого?
 
     RESPOBJ::drowningResp2
 ____END
 
 resp2right
     self
-        what did you say?
+        что ты сказала?
 
     drowning sourceless
-        i pull my receptors back in disapproval
+        я оттягиваю свои рецепторы назад в знак неодобрения
             EXEC::env.abyss.drowningFear(0)
-        but the tendrils of hers only spread with her cousinly smile
-        she dips down slightly, looming over me
+        но отростки её собственных лишь расправляются вслед за близнецовой ухмылкой
+        она слегка наклоняется, нависая надо мной
 
     drowning
-        hehe! whaat? -- хехе! чтоо?
-        you let cavik call you aki, right? -- кавику можно называть тебя аки, не так ли?
+        хихи! чтоо?
+        кавику можно называть тебя аки, не так ли?
 
     drowning sourceless
-        the giddiness in her voice is heavy, unfettered...
-        effects of citric acid--simulated, but as high as can be allowed
-        hardly uncommon for her downtime,
+        the giddiness в её голосе - тяжёлая, раскрепощённая...
+        эффекты цитрусовой кислоты--симулированные, но на краю дозволенного
+        еле редкость для её hardly uncommon for her downtime,
         but even in the presence of her envoy friend?
         i would simply turn it down a little, if i were her...
         on most occasions, anyway--this is different
         i lift my orange simulacrum to my lips, glancing away to explain
 
     drowning akizet
-        that is different--an honor he holds from our larval lives
-        but it is just that: childish, larval... silly
+        это другое--честь, удостоенная ему с наших личиночных жизней
+        но она всего лишь этим и является: детской, личиночной... глупой
 
     drowning
-        well i like it! -- ну, мне так нравится!
-        and no one else can hear us here, -- никто другой нас тут не услышит,
-        so you will just have to feel silly! hehehe -- силлипроблемы продолжаются. глупенькая :)
+        ну, мне так нравится!
+        никто другой нас тут не услышит,
+        so you will just have to feel silly! hehehe -- силлипроблемы продолжаются. глупенькая :) --- мяу мяу
 
     drowning sourceless
         she rises again, pausing to drink from her own simulacrum
         i relax my receptors from their coil - i will permit this, for now
         
     drowning
-        besides, it is good for you to take it easy sometimes! -- сложно подумаю потом
-        you cannot always be worrying about our work and everything, akiii -- ты не можешь постоянно волноваться о нашей работе и всём остальном, акиии
-        ahaha! -- ахаха!
-        you know what they say about vel... -- знаешь ведь, что говорят про велов...
-        if you do not make velzie smile, a storm will find you! если не будешь радовать велзи, на тебя нагрянет шторм!   типа того потом подумаю
+        besides, it is good for you to take it easy sometimes! -- сложно подумаю потом --- мяу мяу
+        ты не можешь постоянно волноваться о нашей работе и всём остальном, акиии
+        ахаха!
+        знаешь ведь, что говорят про велов...
+        не будешь радовать велзи - на тебя нагрянет шторм!
 
     RESPOBJ::drowningResp3
 
 resp3wrong1
     self
-        i have a lot to do
+        у меня много дел
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        she w as  h  a pp y -- она б ыла  с  час тли ва
+        она б ыла  с  час тли ва
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        p lea se  let m e -- п рош у  дай мн е   или поз воль мн е
+        п рош у  поз воль мн е
 
     RESPOBJ::drowningResp3
 ____END
 
 resp3wrong2
     self
-        cavik is dumb
+        кавик тупой
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        am i  do ing so m e  thin g   wr o ng ?? -- я  де лаю что  -то  не т ак ??
+        я  де лаю что  -то  не т ак ??
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        bu t.. . it is co o l when i  do it. .. -- но.. .   я не понял потом
+        bu t.. . it is co o l when i  do it. .. -- но.. .   я не понял потом --- мяу мяу
 
     RESPOBJ::drowningResp3
 ____END
 
 resp3right
     self
-        you're right
+        ты права
         
     drowning sourceless
         maybe it is simply the citric haze, but...
@@ -463,8 +463,8 @@ resp3right
         yes--for this bright evening, i will eschew these weights
         
     drowning
-        yes!! -- да!!
-        and that means i can call you aki, too, right? -- и это значит, что я, тоже, могу называть тебя аки, да?
+        да!!
+        и это значит, что я, тоже, могу называть тебя аки, да?
         
     drowning akizet
         for now
@@ -475,10 +475,10 @@ resp3right
         where i expected teasing, her receptors are spread with a genuine warmth
 
     drowning
-        ok!! hehe... -- хорошо!! хехе...
-        cool --   хмммм как
-        ...oh! yes! -- ...ох! вот!
-        it is getting dark! look! -- уже темнеет! смотри!   добавил уже тк иначе был странный ритм. другие предложения?
+        хорошо!! хихи...
+        cool --   хмммм как --- мяу мяу
+        ...о! вот!
+        уже темнеет! смотри!
 
     drowning sourceless
         one of her tall receptors gestures towards the blackened depths, away from shore
@@ -486,9 +486,9 @@ resp3right
             EXEC::content.classList.add('jellymode', 'dim');
 
     drowning
-        these little things, they are called jellyfish! -- эти маленькие существа, они называются медузы!
-        they are a big problem for our cousins, because they bite when you touch them -- для наших близнецов они большая проблема, потому что кусаются, когда их трогаешь
-        but do not worry! their tiny little teeth cannot hurt us! -- но не волнуйся! их   tiny little teeth..... не пытаться вставить повторение и банально использовать смягчительное? "крошечные зубки"?   не могут нам навредить!
+        эти маленькие существа, они называются медузы!
+        для наших близнецов они - большая проблема, потому что кусаются, когда их трогаешь
+        но не волнуйся! их крошечные зубки не могут нам навредить!
         
     drowning sourceless
         finally, the last light of the cousins' star fades...
@@ -498,61 +498,61 @@ resp3right
 
 resp4wrong1
     self
-        you said they bite?
+        ты сказала, они кусаются?
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        we ar e  s af  e -- м ы в  без опас ност и
+        м ы в  без опас ност и
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        y es, but no t  u s! --   перевести после позапрошлой строчки
+        y es, but no t  u s! --   перевести после позапрошлой строчки --- мяу мяу
 
     RESPOBJ::drowningResp4
 ____END
 
 resp4wrong2
     self
-        we should kill them 
+        давай убьём их
 
 ____SHOWONCE::
     moth
-        dude cmon
+        чел ну кмон
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
-        w ha  t ? ?? -- ч то ? ??
+        ч то ? ??
             EXEC::env.abyss.drowningEject();
 ____END
 
 ____SHOWIF::['PAGE!!drowningScared', false]
     drowning::scared
-        th e y ar e n ot tha t  dan g er ous! -- о ни н е нас толь ко  о пас ны!
+        о ни н е нас толь ко  о пас ны!
 
     RESPOBJ::drowningResp4
 ____END
 
 resp4right
     self
-        but they aren't fish
+        но они не рыбы
     
     drowning akizet
-        right? the "fish" have scales, and distinctive eyes, which these...
+        ведь так? у "рыб" имеется чешуя, и характерные глаза, чего у этих...
 
     drowning
-        ehehe! i know! -- эхехе! да!
-        it is such a funny name! -- это очень забавное имяназвание!
+        эхехе! да!
+        это очень забавное название!
 
     drowning sourceless
-        my qou-eyes adjust to the deepening darkness...
+        мои куу-глаза подстраиваются под сгущающуюся темноту...
             EXEC::env.abyss.drowningFear(0)
-        above us, kazki's wavy hair flows in the current like the tendrils of these creatures
+        над нами, волнистые волосы казки развеваются в течении подобно отросткам этих существ
 
     drowning
-        but, look! -- но, смотри!
+        но, смотри!
 
     drowning sourceless
         she peers over my shoulder, pointing with one of her receptors to direct my gaze
@@ -567,92 +567,92 @@ resp4right
 
     drowning akizet
         ...
-        hehe
-        this is...
+        хехе
+        это...
 
     drowning
-        i know -- да
-        their waters always amaze me - if only ours had such vibrance! -- их воды всегда меня удивляют - были бы наши были такими живыми!   ???
+        да
+        их воды всегда меня удивляют - были бы наши были такими живыми!
         ...
-        ah, here! -- ах, вот!
-        sit with me! -- садись со мною!
-        zzoust!!
+        ах, вот!
+        садись со мною!
+        ззоуст!!
 
     drowning sourceless
         kazki falls back onto the seafloor, kicking up a small cloud of sand
             EXEC::change("drowningCalmed", true)
         i settle down beside her, laughing
-        she reaches over, clinking her simulacrum against mine with a pleased giggle of her own
-        we both take a drink
+        she reaches over, clinking her simulacrum against mine with a pleased giggle of her own с довольным смешком 
+        мы обе выпиваем
 
     drowning akizet
-        thank you for showing me this, kazki
-        how often does this happen?
+        спасибо, что показала мне это, казки
+        как часто такое происходит?
 
     drowning::safe
-        not often, apparently -- оказывается, не так уж часто
-        which is good for our cousins, of course... -- что, конечно, хорошо для наших близнецов...
-        these swarms mostly take them by surprise -- в основном эти swarms застают их врасплох
-        so, after seeing it myself, i knew i needed to bring you! -- после того, как я увидела это сама, я поняла, что обязана показать тебе!
+        оказывается, не так уж часто
+        что, конечно, хорошо для наших близнецов...
+        в основном эти стаи застают их врасплох 
+        после того, как я увидела это сама, я поняла, что обязана показать тебе!
     
     drowning sourceless
         i give her a curious look over our luminescent drinks
     
     drowning akizet
-        and not bozko? or--
+        и не бозко? или--
 
     drowning sourceless
-        the amused grin she casts down silences me
-        cousinly expressions come so easily to her
+        я умолкаю от её забавляющейся ухмылки
+        близнецовые выражения даются ей так просто
 
     drowning::safe
-        bozko loves the water, but... -- бозко нравятся воды, но...
-        aki, how long has it been since you took time to enjoy yourself? -- аки, когда ты в последний раз отдыхала и наслаждалась собою?   хаха шутка про сколько воды утекло. не особо нравится строка но потом
-        i think bozko will be fine! -- думаю бозко будет в порядке!
+        бозко нравятся воды, но...
+        аки, когда ты в последний раз отдыхала и наслаждалась собою?
+        думаю бозко будет в порядке!
 
     drowning akizet
-        but...then, what about tozik?
-        he spends so much time in our research chamber...
+        но...а что тогда с тозиком?
+        он столько времени проводит в нашем research chamber...
 
     drowning::safe
-        well, ok, that is a fair assessment -- ну, хорошо, это справедливое рассуждение
-        but i know you better than him! -- но я знаю тебя лучше, чем его!
-        gakvu will have to spend time with him, or something! -- гакву придётся провести с ним время, или вроде того!   странное помогите
-        a better question is, why not you? -- вот вопрос получше, почему не ты?
-        hehe! -- хехе!
-        you are working so hard to find a reason not to be here -- ты так стараешься найти причину не быть здесь
-        why is that...? -- почему так...?
-        you are not unhappy with me, are you? -- я тебя не расстроила, да ведь?   типа того нз главное выбросить основу
+        ну, хорошо, это справедливое рассуждение
+        но тебя я знаю лучше, чем его!
+        гакву придётся провести с ним время, наверное!
+        вот вопрос получше: почему не ты?
+        хихи!
+        ты так стараешься найти причину не быть здесь
+        почему...?
+        я тебя не расстроила, так ведь?
 
     drowning akizet
-        no, ah...
+        нет, э...
 
     drowning sourceless
         ...
         i peer down into the warm glow of my simulacrum
     
     drowning akizet
-        you know...
-        you are right
-        thank you for thinking of me, kazki
+        знаешь...
+        ты права
+        спасибо что думаешь обо мне, казки
 
     drowning sourceless
         i lean over, resting against her side
         she returns the gesture with a comfortable spread of her receptors
 
     drowning akizet
-        this will sound silly, but...
-        you are a good tir, you know?
+        прозвучит глупо, но...
+        ты - хорошая тир, знаешь?
 
     drowning::safe
-        ahaha!! -- ахаха!!
-        no no no, that is always nice to hear! -- нет-нет-нет, такое всегда приятно слышать!
-        ehehe... -- эхехе...
+        ахаха!!
+        нет-нет-нет, такое всегда приятно слышать!
+        эхехе...
         ...
-        thank you, aki -- спасибо, аки
+        спасибо, аки
 
     RESPONSES::self
-        watch the creatures<+>CHANGE::drowning_chat
+        наблюдать за существами<+>CHANGE::drowning_chat
             EXEC::change("PAGE!!warned", false)
             FAKEEND::proceed
 `)
@@ -660,11 +660,11 @@ resp4right
 env.localization.drowningChatResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        what happened?<+>cause
-        back door?<+>deeper
-        want to leave?<+>leave
-        need help?<+>help
-        ok bye<+>END
+        что случилось?<+>cause
+        проход позади??<+>deeper
+        хочешь уйти?<+>leave
+        нужна помощь?<+>help
+        ок пока<+>END
             EXEC::env.abyss.drowningEnd();content.classList.add('jellymode');
 `)
 
@@ -691,93 +691,94 @@ ____END
 
 cause
     self
-        how did you end up here?
-        ...and find this? under the water?
+        как ты здесь оказалась?
+        ...и нашла это место? под водой?
 
     sourceless
-        its attention is not upon you, even as it pulses thoughts to you.
+        её внимание не обращено на тебя, даже пока она посылает тебе мысли.
     
     drowning::safe
         ...
-        i fell -- я упала
-        hehe... -- хехе...
-        i slipped off of a little boat the bright cousins were showing me around in -- я соскользнула с маленькой лодки, в которой светлые близнецы показывали мне местность
-        and they were so worried i would get bitten by this swarm, -- и они так боялись, что меня укусит этот swarm,   покусает? 
-        but we are tougher than that! -- но мы слишком крепкие для такого!
+        я упала
+        хихи...
+        я соскользнула с маленькой лодки, из которой светлые близнецы показывали мне местность
+        и они так боялись, что меня покусает эта стая,
+        но мы слишком крепкие для такого! --- странное
         ...
         if you stay positive,
         you can survive all kinds of things! --     такие хорошие две строчки такой хороший персонаж <-- отложил их на потом
 
     RESPONSES::self
-        i see<+>loop
+        понятно<+>loop
             FAKEEND::(назад)
 
 deeper
     self
-        what is over there?
+        что это там?
 
     sourceless
-        the thoughtform fixes upon your mind's eye to understand.
+        мыслеформа концентрируется на твоём ментальном взоре, чтобы понять тебя
 
     drowning::safe
-        huh? oh! -- хм? о!
-        hehe, what a silly question -- хехе, что за silly вопрос
-        but i suppose, if you go too far, you will fall off the shelf! -- но, думаю, если зайдёшь слишком далеко, то упадёшь с шельфа!
-        into the depths, where even stranger fish live... -- в пучину, где живут рыбы ещё страннее...
-        and it is not safe for us to go so deep without a high-pressure body! -- и нам не безопасно заходить так глубоко без тела для высокого давления!
-        there is no need to do something so risky -- незачем делать что-то настолько рискованное
-        just stay here with me, where things are nice, ehehe -- просто останься со мною здесь, где всё хорошо, эхехе
+        хм? о!
+        хехе, что за глупый вопрос
+        но, думаю, если зайдёшь слишком далеко, то упадёшь с шельфа!
+        в пучину, где живут рыбы ещё страннее...
+        и нам небезопасно заходить так глубоко без тел для высокого давления!
+        незачем делать что-то настолько рискованное
+        просто останься со мною здесь, где всё хорошо, эхехе
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 leave
     self
-        don't you want to leave?
+        ты не хочешь уйти отсюда?
 
     drowning::safe
         ...
         why would i want to leave? --   перевести после прошлой
-        we are having a good time, right? hehe -- нам и сей θмиг хорошо, не так ли? хехе   что за слово-паразит на , right?  боже
-        and, more than that... -- и, помимо этого...
-        i know i am safe here -- я знаю, что здесь я в безопасности
+        нам и сей θмиг хорошо, не так ли? хехе
+        и, помимо этого...
+        я знаю, что здесь я в безопасности
         and it is familiar, too --   потом
         
     drowning
         ...
-        but... -- но...
-        i hope that you... -- я надеюсь, что ты...
-        come here with me, again, aki -- вновь прийдёшь сюда со мною, аки
-        it is so nice to talk to you -- с тобою так приятно разговаривать
-        i do not want you to become lonely, you know? -- знаешь ведь, я не хочу, чтобы ты стала одинока
+        но...
+        я надеюсь, что ты...
+        вновь прийдёшь сюда со мною, аки
+        с тобою так приятно разговаривать
+        знаешь ведь, я не хочу, чтобы тебе было одиноко
 
     drowning::safe
-        so, please, think of me from time to time! -- так что, пожалуйста, вспоминай обо мне иногда!
+        так что, пожалуйста, вспоминай обо мне время от времени!
 
     RESPONSES::self
-        ok<+>loop
+        окей<+>loop
             FAKEEND::(назад)
 
 help
     self
-        is there anything i can do for you?
+        я могу что-нибудь для тебя сделать?
 
     drowning::safe
-        what do you mean? -- о чём ты?
-        we have everything we need right here! -- у нас уже есть всё, что нам нужно!
-        i do not know what you could do to make things even better... -- я не знаю, как ты могла бы сделать вещи ещё лучше...
-        but thank you for asking, aki! -- но спасибо, что спросила, аки!
-        you are a good friend -- ты хорошая подруга
+        о чём ты?
+        у нас уже есть всё, что нам нужно!
+        я не знаю, как ты могла бы сделать вещи ещё лучше...
+        но спасибо, что спросила, аки!
+        ты хорошая подруга
 
     RESPONSES::self
-        you too<+>loop
+        и ты<+>loop
             FAKEEND::(назад)
 `)
 
 
 // === STUFF === //
 
+// --- this is so that the camerawalkers make you download files that are named in russian instead of english
 env.abyss.snap = (thing)=>{
     cutscene(true)
     play('click1')
@@ -790,19 +791,19 @@ env.abyss.snap = (thing)=>{
         case "abyss":
             dl = '/img/local/beneath/bg/abyss.png'
             flag = "beneath_abysspic"
-            filename = "бездна.png"
+            filename = "бездна.png" /* --- yay russian */
         break
 
         case "effigy":
-            if(!check("effigy_sipper")) {dl = '/img/local/beneath/bg/EFFIGY.png'; filename = "ЭФФИГИЯ.png"}
-            else {dl = '/img/local/beneath/bg/clear.png'; filename = "всёчисто.png"}
+            if(!check("effigy_sipper")) {dl = '/img/local/beneath/bg/EFFIGY.png'; filename = "ЭФФИГИЯ.png" /* --- yay russian */}
+            else {dl = '/img/local/beneath/bg/clear.png'; filename = "всёчисто.png" /* --- yay russian */}
             flag = "beneath_effigypic"
         break
 
         case "nope":
             dl = '/img/local/beneath/bg/nothanks.png'
             flag = "beneath_nopic"
-            filename = "нетспасибо.png"
+            filename = "нетспасибо.png" /* --- yay russian */
         break
  
         default:

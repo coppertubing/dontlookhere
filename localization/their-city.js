@@ -64,7 +64,7 @@ where
 
 // === TRANSLATING DA BEECH === //
 
-cor_ru.processWeirdTranslation(".loose-thought", "text")
+cor_ru.processSpecificTranslation(document.querySelectorAll(".loose-thought"), "text")
 
 document.querySelectorAll('#content .loose-thought .title').forEach(e=>{e.remove()})
 

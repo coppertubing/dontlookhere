@@ -325,7 +325,7 @@ if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„�
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `обрушение`
 
 setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") {
-    cor_ru.processWeirdTranslation(".dayname", "aria-label");
+    cor_ru.processSpecificTranslation(document.querySelectorAll(".dayname"), "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
@@ -1916,7 +1916,7 @@ start
         смотрите!
     
     sourceless
-        пред нашим общим мысленным взором возникает визуализация сигнала
+        пред нашим общим ментальным взором возникает визуализация сигнала
             EXEC::env.embassy.setFocus(false);content.classList.add('signal')
         необычный пик... но неудивительный, учитывая близость открытия серое
     
@@ -4605,7 +4605,7 @@ env.localization.page['embassy'].dialogues["d3_rec_clear"] = generateDialogueObj
 start
     sourceless
         TEXEC::env.combat.dynamicReward()
-        WITH THESE LAST FEW DEAD, КАК ТОЛЬКО ПОСЛЕДНИЕ ???????????? ах  я устал СУТОЛОКА УМОЛКАЕТ
+        КАК ТОЛЬКО ПОСЛЕДНИЕ из них погибают СУТОЛОКА УМОЛКАЕТ
         ТОЗИК ОПУСКАЕТСЯ НА КОЛЕНИ ВОЗЛЕ КОНТЕЙНЕРА, ГАКВУ - ВОЗЛЕ ДРУГОГО,
         И ОНИ РЫЩУТ ПО СЛЯКОТНЫМ ОСТАНКАМ
             EXEC::changeBgm(env.embassy.music_collapse, {rate: 1})
@@ -4616,7 +4616,7 @@ start
     sourceless
         МЕЖДУ НИМИ ТРИ КУБА СФЕРА, КАЖДЫЙ РАЗМЕРОМ НЕ БОЛЬШЕ КАЛЬСТИКА
             EXEC::env.embassy.advanceSfer(3, "rec_clear")
-        Я НАДЕЯЛАСЬ, В ЭТИХ КОНТЕЙНЕРАХ НАЙДЁТСЯ ЧТО-НИБУДЬ БОЛЬШЕЕ
+        Я НАДЕЯЛАСЬ, В ЭТИХ КОНТЕЙНЕРАХ НАЙДЁТСЯ БОЛЬШЕ
 
     tozik
         сфер найдётся, но я сомневаюсь, что этого достаточно для починки движедруга
@@ -4757,11 +4757,11 @@ start
 
     akizet
         ещё нет
-        мы думаем, атака продолжается
+        мы думаем атака продолжается
         как твоё имя?
 
     karik
-        ах, мои блестящие паразиты!
+        ах, мои сияющие паразиты!
         я - карик! как же нам не повезло познакомиться при таких обстоятельстввх!
 
     tozik
@@ -4788,7 +4788,7 @@ SKIP::vn.done();specialCam(false);pauseSwapCam(false)
 env.localization.page['embassy'].dialogues["d3_barfriend"] = generateDialogueObject(` 
 start
     sourceless
-        Я ОСТОРОЖНО ПРИБЛИЖАЮСЬ К БАРДРУГУ, ЗА МНОЙ - ГАКВУ И ТОЗИК
+        Я ОСТОРОЖНО ПРИБЛИЖАЮСЬ К БАРДРУГУ, ЗА МНОЮ - ГАКВУ И ТОЗИК
             EXEC::env.embassy.vn({gakvu: "defocus", tozik: "defocus"});pauseSwapCam(true)
         ОН УКРЫЛСЯ ЗА ПОВРЕЖДЁННЫМ РАЗДАТЧИКОМ СИМУЛЯКРОВ
 
@@ -4802,7 +4802,7 @@ start
 
     akizet
         нет, это...
-        это в порядке, но каким образом ты до сих пор в строю?
+        это ничего, но каким образом ты до сих пор в строю?
         почему эти контейнеры не атаковали тебя?
 
     barfriend
@@ -4848,7 +4848,7 @@ start
         
     sourceless
         ОН ЗАТИХАЕТ, И НИ Я, НИ ГАКВУ НЕ МОЖЕМ ОТВЕТИТЬ
-        В САМОМ ДЕЛЕ ПОКА РАНО
+        В САМОМ ДЕЛЕ - ПОКА РАНО
     
     RESPONSES::akizet
         продолжить двигаться<+>END
@@ -4865,7 +4865,7 @@ start
         ОНА ВНОВЬ ПРОТЯГИВАЕТ ЛАДОНИ, И ВНОВЬ СТЕНЫ МЕДЛЕННО ВЗБИВАЮТСЯ
             EXEC::change("PAGE!!cpersonnel_unlocked", true);
         МЫСЛЕЯДРА НЕПОДАЛЁКУ УСТАВИЛИСЬ НА НЕЁ... ОНИ НЕ ОБЕЩАЛИ, КАК МЫ
-        НО ГАКВУ МОЖЕТ ПОПОЗЖЕ С НИМИ ПОГОВОРИТЬ!
+        но гакву может поговорить с ними попозже!
         НАЧИНАЕТ ОБРАЗОВЫВАТЬСЯ ПУТЬ К ТОМУ θответвлению ПЕРСОНАЛА
 
     akizet
@@ -4873,7 +4873,7 @@ start
 
     gakvu
         глаза сомкнуты
-        может быть какой угодно
+        может быть каким угодно
 
     sourceless
         КАЗКИ ВЕДЬ НЕДАВНО ПЕРЕСЕЛИЛАСЬ БЛИЖЕ К ЗОНЕ ОТДЫХА, НЕТ?
@@ -5022,13 +5022,13 @@ start
     gakvu
         ...
         это какая-то бессмыслица...
-        они и правда убивают <em>всех</em> подряд...
+        они и правда убивают <em>всех подряд</em>...
 
     sourceless
         ВМЕСТО ПЕЧАЛИ, ЧТО Я ОЖИДАЛА УСЛЫШАТЬ ОТ НЕЁ,
-        ЕЁ ГОЛОС НАПОЛНЕН ЧЕМ-ТО ВРОДЕ МРАЧНОЙ ЛЮБОПЫТНОСТИ
+        ЕЁ ГОЛОС НАПОЛНЕН ЧЕМ-ТО ВРОДЕ мрачного любопытства
         ТОЗИК ПРЕКРАЩАЕТ СВОИ РАСКОПКИ НА МГНОВЕНИЕ, ЧТОБЫ ПОСМОТРЕТЬ НА ГАКВУ
-        МНЕ ВИДНО, ЧТО ОН ХОЧЕТ TO PRY, НО НЕ ДЕЛАЕТ ЭТОГО --- ПОЛЮБОПЫТСТВОВАТЬ??? СПРОСИТЬ ЕЁ ОБ ЭТОМ?
+        МНЕ ВИДНО, ЧТО ОН ХОЧЕТ ЕЁ РАССПРОСИТЬ, НО НЕ ДЕЛАЕТ ЭТОГО
         ДА И Я БЫ СЕЙЧАС НЕ СТАЛА...
     
     tozik
@@ -5088,8 +5088,8 @@ start
         нет
     
     akizet
-        и я тоже не понятия не имела...
-        мы могли бы воспользоваться ими?
+        и я тоже понятия не имела...
+        мы могли бы воспользоваться им?
 
     gakvu
         ты знаешь как работает светлое оружие?
@@ -5119,8 +5119,8 @@ start
         I AM NOT SURE WHAT SHE WOULD WANT US TO BRING, SO,
         I GRAB A FEW OF THESE MEMORY CYSTS, TO GIVE TO HER LATER
             EXEC::change("d3_kazkichest", true)
-        И!!
-        ЕЩЁ ТАМ ЕСТЬ НЕСКОЛЬКО <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::${env.ITEM_LIST['restorative'].description}">ВОССТАНОВИТЕЛЬНЫХ ЦИСТ</span>! ТАК ЧТО Я ТОЖЕ ИХ БЕРУ
+        А ЕЩЁ!!
+        ТАМ ЕСТЬ НЕСКОЛЬКО <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::${env.ITEM_LIST['restorative'].description}">ВОССТАНОВИТЕЛЬНЫХ ЦИСТ</span>! ТАК ЧТО Я БЕРУ И ИХ
             EXEC::env.embassy.conditionalItem('restorative', 4, 'chest')
     
     gakvu
@@ -5205,7 +5205,7 @@ start
     sourceless
         КАК МЫ СОБИРАЕМСЯ УХОДИТЬ, ЗВУК ОТКРЫВАЮЩЕЙСЯ ДВЕРИ ГРОМЧЕ, ЧЕМ ОБЫЧНО
         НЕБОЛЬШОЙ СБОЙ, БЫТЬ МОЖЕТ
-        НО КОНТЕЙНЕРЫ В УГЛУ, СЛОВНО ОЧНУВШИСЬ ОТ СНА, ВНЕЗАПНО БРОСАЮТСЯ НА НАС!!!
+        НО КОНТЕЙНЕРЫ В УГЛУ, СЛОВНО ОЧНУВШИСЬ ОТО СНА, ВНЕЗАПНО БРОСАЮТСЯ НА НАС!!!
             EXEC::specialCam('kazkicontainers');pauseSwapCam(true)
 
     RESPONSES::akizet
@@ -5275,7 +5275,7 @@ start
         да! вот!
     
     sourceless
-        ОНА ВЫКОРЧЁВЫВАЕТ НЕСКОЛЬКО КУБОВ СФЕРА ИЗ ОСТАНКОВ БЛИЗЛЕЖАЩИХ КОНТЕЙНЕРОВ
+        ОНА ВЫТАСКИВАЕТ НЕСКОЛЬКО КУБОВ СФЕРА ИЗ ОСТАНКОВ БЛИЗЛЕЖАЩИХ КОНТЕЙНЕРОВ
             EXEC::env.embassy.advanceSfer(2, "miltza")
         ВЫГЛЯДИТ ТАК, БУДТО ОНА ИХ УБИЛА
     
@@ -5442,7 +5442,7 @@ eye
 
     miltza
         хехе, ты не первая такое говоришь
-        это старая до-структуристская симболика из моей родины в экиве
+        это старая доструктуристская симболика из моей родины в экиве
         аканива - ты там бывала?
 
     akizet
@@ -5457,7 +5457,7 @@ eye
         но я считаю, что для близнецов важно изображать всё множество взглядов на глаз
         даже мёртвых взглядов!
         также она должна была смениться на структуристский взгляд, затем на центральный вазнийский, на некоторые другие...
-        но, в смешке велзи, в котором мы оказались,
+        но, в смешке велзи, в котором мы очутились,
         оказался готов только аканивиковый взгляд
 
     RESPONSES::akizet
@@ -5760,7 +5760,7 @@ awaken
             EXEC::changeBgm(env.embassy.music_p1boss_suspense, {rate: 0.5});document.querySelector('#realgrid .lifter').classList.remove('fixed')
     
     akizet
-        §кºъ
+        §кºε
         мы опять здесь застряли?
     
     tozik
