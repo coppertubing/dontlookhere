@@ -627,3 +627,7 @@ nogen
 
     RESPOBJ::mthrecosmresp
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

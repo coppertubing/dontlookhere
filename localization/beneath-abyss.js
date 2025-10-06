@@ -6,7 +6,7 @@
     adaptation for /local/beneath
     (---утопшая <3)
 
-    progress: drowning stuff partially finished, mothstuff unfinished as of 23.08.2025
+    progress: drowning stuff partially finished, mothstuff unfinished as of 04.10.2025
 */
 
 
@@ -27,6 +27,9 @@ env.localization.page['abyss'] = {dialogues: {},
         "so quiet! i want some music!": "так тихо! хочу музыку!",
         "breathe again! breathe again!": "вдохнуть вновь! вдохнуть вновь!",
         "aahaahaa wueee": "аахаахаа уииии",
+        
+        // weirdfigy
+        '±ƒƒÍ_¾y':'±ффЙ_¾я',
 
         // --- car poblemn guy ily
         "s w   al kk": cor_ru.entity_menu['s w   al kk'].name,
@@ -63,12 +66,22 @@ env.localization.page['abyss'] = {dialogues: {},
         "aki...": "аки...",
         "i want to stay a little longer, ok?": "я хочу побыть здесь ещё немного, хорошо?",
 
+        // fell
+        'you are okay!!': '',
+        'what were you thinking??': '',
+        'you must take better care of yourself, akii...': '',
+
+        // wanna fall down again?
+        'you had better not!': '',
+
         "hello": "привет"
     }, 
     entityDescriptions: {
         "×è.÷ùÏÏøø": cor_ru.entity_menu['×è.÷ùÏÏøø'].desc,
         "s w   al kk": cor_ru.entity_menu['s w   al kk'].desc,
         "Ƙø¿ƶḳ¿±": cor_ru.entity_menu['Ƙø¿ƶḳ¿±'].desc,
+        '±ƒƒÍ_¾y': `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE`
     },
 }
 
@@ -77,7 +90,7 @@ env.localization.page['abyss'] = {dialogues: {},
 
 // === DROWNING === //
 
-env.localization.drowningIntroResp = generateDialogueObject(`
+env.localization.page['abyss'].drowningIntroResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         что случилось?<+>introwrong1
@@ -85,7 +98,7 @@ RESPOBJ::
         я не акизет<+>introwrong3
 `)
 
-env.localization[`drowning_intro`] = generateDialogueObject(`
+env.localization.page['abyss'][`drowning_intro`] = generateDialogueObject(`
 start
     self
         привет?
@@ -151,7 +164,7 @@ introwrong3
             EXEC::env.abyss.drowningEject();
 `)
 
-env.localization[`drowning_ejected`] = generateDialogueObject(`
+env.localization.page['abyss'][`drowning_ejected`] = generateDialogueObject(`
 start
     moth
         чёрт
@@ -186,7 +199,7 @@ start
         ок<+>END
 `)
 
-env.localization.drowningResp1 = generateDialogueObject(`
+env.localization.page['abyss'].drowningResp1 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         давно не виделись<+>resp1wrong1
@@ -197,7 +210,7 @@ RESPOBJ::
             HIDEREAD::
 `)
 
-env.localization.drowningResp2 = generateDialogueObject(`
+env.localization.page['abyss'].drowningResp2 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         ...<+>resp2wrong1
@@ -208,7 +221,7 @@ RESPOBJ::
             HIDEREAD::
 `)
 
-env.localization.drowningResp3 = generateDialogueObject(`
+env.localization.page['abyss'].drowningResp3 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         у меня много дел<+>resp3wrong1
@@ -219,7 +232,7 @@ RESPOBJ::
             HIDEREAD::
 `)
 
-env.localization.drowningResp4 = generateDialogueObject(`
+env.localization.page['abyss'].drowningResp4 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         но они не рыбы<+>resp4right
@@ -230,7 +243,7 @@ RESPOBJ::
             HIDEREAD::
 `)
 
-env.localization[`drowning_hello`] = generateDialogueObject(`
+env.localization.page['abyss'][`drowning_hello`] = generateDialogueObject(`
 start
     self
         привет
@@ -657,7 +670,7 @@ resp4right
             FAKEEND::proceed
 `)
 
-env.localization.drowningChatResp = generateDialogueObject(`
+env.localization.page['abyss'].drowningChatResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         что случилось?<+>cause
@@ -668,7 +681,7 @@ RESPOBJ::
             EXEC::env.abyss.drowningEnd();content.classList.add('jellymode');
 `)
 
-env.localization[`drowning_chat`] = generateDialogueObject(`
+env.localization.page['abyss'][`drowning_chat`] = generateDialogueObject(`
 loop
     RESPOBJ::drowningChatResp
 
@@ -775,59 +788,74 @@ help
             FAKEEND::(назад)
 `)
 
+env.localization.page['abyss'].dialogues[`drowning_fall`] = generateDialogueObject(`
+start
+    sourceless
+        the render feels unsteady.
+            EXEC::env.clearTimeouts()
+        panic spikes through the thoughtspace.
 
-// === STUFF === //
+____SHOWIF::['drowning_relieved', false]
+    drowning::panic
+        w  wa  wait you cannot  g go
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
 
-// --- this is so that the camerawalkers make you download files that are named in russian instead of english
-env.abyss.snap = (thing)=>{
-    cutscene(true)
-    play('click1')
-    flash(true)
+____SHOWIF::['drowning_relieved', true]
+    drowning::panic
+        s tu pi d ! !
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
+    
+    sourceless quiet
+        it feels like you're falling.
+            EXEC::env.abyss.drowningFall();play("scarydoia", 0.2, 1, true);env.forceSfxInheritPitch = true
+            WAIT::5000
+            AUTOADVANCE::
+        your mind spins.
+            WAIT::5000
+            EXEC::play("scarydoia", 0.2, 1, true);
+            THEN::play("scarydoia", 0.2, 1, true);vfx({type: "darkflash", state: true});
 
-    let dl = ""
-    let flag = ""
-    let filename = ""
-    switch(thing) {
-        case "abyss":
-            dl = '/img/local/beneath/bg/abyss.png'
-            flag = "beneath_abysspic"
-            filename = "бездна.png" /* --- yay russian */
-        break
+    sys
+        NOTICE::ERROR::'memory stream lost';'retracing';'closest coherent position'
 
-        case "effigy":
-            if(!check("effigy_sipper")) {dl = '/img/local/beneath/bg/EFFIGY.png'; filename = "ЭФФИГИЯ.png" /* --- yay russian */}
-            else {dl = '/img/local/beneath/bg/clear.png'; filename = "всёчисто.png" /* --- yay russian */}
-            flag = "beneath_effigypic"
-        break
+    RESPONSES::self
+        ...<+>END
+            EXEC::change("TEMP!!from", "drowning");moveTo("/local/uncosm/pit/");env.forceSfxInheritPitch = false;body.classList.remove("hard-cut")
+`)
 
-        case "nope":
-            dl = '/img/local/beneath/bg/nothanks.png'
-            flag = "beneath_nopic"
-            filename = "нетспасибо.png" /* --- yay russian */
-        break
- 
-        default:
-            return
-    }
+env.localization.page['abyss'].dialogues[`car`] = generateDialogueObject(`
+start
+    sourceless
+        you begin to transfer thoughtspaces.
+        the incomplete entity nearby stirs.
 
-    setTimeout(()=>{
-        flash(false)
-        play("muiScanner", 0.75)
-        cutscene(false)
-            
-        //add DL element
-        const downloadLink = document.createElement('a');
-        downloadLink.href = dl;
-        downloadLink.target = "_blank";
-        downloadLink.download = filename;
-        downloadLink.setAttribute("data-no-swup", true);
-        downloadLink.style.display = 'none';
-            
-        //trigger download
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-            
-        change(flag, true)
-    }, 1000)
-}
+    s w   al kk
+        c   car
+        workiung  ?????
+    
+    self
+        maybe
+        it leads somewhere at least
+        follow me if you can
+
+    s w   al kk
+        lincesne  r  enewal
+            EXEC::env.noNavMessage = true
+
+    sys
+        ..__NAVIGATING::"câr"__..
+            EXEC::flash(true);forcePlay("carstart")
+
+    RESPONSES::self
+        ok<+>END
+
+END::moveTo('/local/beneath/car/')
+`)
+	
+// --- camerawalkers moved to everystuff.js as of e4a1
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

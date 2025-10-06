@@ -23,3 +23,7 @@ env.localization.page['localship'] = {dialogues: {},
         "clemens romanus": cor_ru.entity_menu["clemens romanus"].desc,
     }
 }
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

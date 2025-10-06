@@ -6,7 +6,7 @@
     adaptation for /hello
     (---i like sentries)
 
-    progress: fully finished as of 23.08.2025
+    progress: fully finished as of 03.10.2025
 */
 
 
@@ -15,6 +15,9 @@ env.localization.page['hello'] = {dialogues: {},
     strings: {
         "seems like overkill for an empty space if you ask me": "как по мне - явный перебор для такого пустого пространства",
         "wow, this place is just infested... it's so incoherent i'm not even picking up any entities": "ого, да это место просто переполнено... настолько бессвязно что я даже не улавливаю никаких сущностей",
+
+        // joy
+        "'minor'": "'малый'",
 
         "FOR YOU": "ДЛЯ ТЕБЯ",
         "FOR_YOU": "ДЛЯ_ТЕБЯ",
@@ -265,3 +268,7 @@ what
     RESPONSES::self
         окей<+>END
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

@@ -5,7 +5,7 @@
     > localization/cache.js
     adaptation for /local/cache
 
-    progress: only strings, dialogues left as of 23.08.2025
+    progress: only strings, dialogues left as of 04.10.2025
 */
 
 
@@ -32,12 +32,39 @@ env.localization.page['cache'] = {dialogues: {},
         "DO NOT TAKE TOO LONG PLEASE": "не задерживайся там пожалуйста",
         "MUCH TO DO": "много дел",
 
+        "i am leaving": "я ухожу",
+
+        "enter where?":"",
+        "not seeing it interloper":"",
+        "let me get closer maybe":"",
+        "interloper i think there is something there":"",
+        "but it is far too deep, submerged in the uncosm":"",
+        "not risking it even with a proxy":"",
+        "sorry":"извини",
+
+        "told you no already interloper":"",
+        "this proxy would break apart before you would see anything":"",
+
+        "ohhh ahaha it is just barely in the cache":"",
+        "any deeper and i would be unable to enter!!":"",
+        "another pocket, how strange!":"",
+
+        "ok this place is really bad for me":"",
+        "tolerable but make it quick":"",
+        "please do not stay too long":"",
+
         // god <3
         "i waited for you!": "я тебя подождало!",
-
         "have fun in there!": "повеселись там!",
-
         "take your time my friend": "не торопись мой друг",
+        "bye my friend!!!!!": "пока мой друг!!!!!",
+
+        "you want me to go where?": "",
+        "my beloved friend, there is nothing...": "",
+        "ah! no, no, there it is! yes, let us go!": "",
+
+        "what a keen eye you have": "",
+        "let me know if you would like to return": ""
     }, 
     entityDescriptions: {
         "the storm": cor_ru.entity_menu["the storm"].desc,
@@ -306,3 +333,82 @@ not
             EXEC::moveTo('/local/ozo/')
             FAKEEND::(войти)
 `)
+
+env.localization.page['cache'].dialogues[`ffpit`] = generateDialogueObject(`
+start
+    proxyfriend
+        wait! interloper!
+        what do you see it is too incoherent for me
+
+    self
+        it's a big... thing
+        i think there are buttons around it
+        i don't know
+
+    proxyfriend
+        strange! yes very strange!
+        of course your vision is a mystery to me
+        and i can barely comprehend anything here anyway
+        
+    self
+        comprehend?
+        what do you see?
+    
+    proxyfriend
+        ahahaha i see incoherence! 
+        is that not simple enough to say?
+        i suppose i can see 'buttons' now that you describe them
+        but it is all so deep beneath the cache
+        that it appears like writhing madness!!
+        it does look rather big whatever it is
+        you can enter it?
+    
+    self
+        i think i can try
+
+    proxyfriend
+        good! perhaps it is more of the information you seek!
+        that is less work for me hahahaha
+        ok go now
+    
+    RESPONSES::self
+        ok<+>END
+            EXEC::moveTo('/local/uncosm/pit/')
+            FAKEEND::(enter)
+`)
+
+
+env.localization.page['cache'].dialogues[`godpit`] = generateDialogueObject(`
+start
+    god
+        ah! so soon?!
+        and to a sunken place, no less...
+        i thought we might dance in the dark for a while longer!
+        hehe only joking my beloved friend
+        we will meet again in time
+
+    self
+        you won't come with me?
+
+    god
+        even from up here, i can see that is a spatial thoughtform
+        you know my thoughts on that matter my friend
+            SHOWIF::"cache__godozo-not"
+____SHOWIF::["cache__godozo-not", false]
+        i much prefer low-dimensionality
+        anything else is too reminiscent of the endless, thoughtless torture i endured...
+        call it a distate for complexity, my friend!
+        hahaha
+____END
+        until our paths next cross
+        the friends and i shall lend our divine sight ever more!
+    
+    RESPONSES::self
+        ok bye<+>END
+            EXEC::moveTo('/local/uncosm/pit/')
+            FAKEEND::(enter)
+`)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

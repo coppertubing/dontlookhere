@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__VESSEL_SURFACE__..</title>	
+<meta name="title" content="..__VESSEL_SURFACE__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/ship/deck">
+<meta property="og:title" content="..__VESSEL_SURFACE__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/shipdeck.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/ship/deck">
+<meta property="twitter:title" content="..__VESSEL_SURFACE__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/shipdeck.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1759426824626918236"></script>	
+	<script src="/js/dialogue.js?1759426824626918236"></script>	
+	<script src="/js/globalents.js?1759426824626918236"></script>	
+	<script src="/js/cystStage.js?1759426824626918236"></script>
+	<script src="/js/buddy.js?1759426824626918236"></script>
+	<script src="/js/vn2.js?1759426824626918236"></script>
+	<script defer src="/js/saves.js?1759426824626918236"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1759426824626918236'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1759426824626918236'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu' class="noclosemenu">
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='cicon ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="cicon ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='cicon ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__VESSEL_SURFACE__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1759426824</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
+
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
+
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
+
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
+	
+	<div id="content">
+		<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
+    </div>
+</div>
+
+<style>
+
+@import url(/css/stage/beneath.css?1759426824626918236);
+
+#content {
+    background: url(/img/local/ocean/ship/ship1.gif?);
+    background-size: cover;
+    background-position: bottom;
+}
+
+.gridpiece.plain, .gridpiece.blocks {
+    background: url(/img/textures/metalfloor.gif);
+}
+
+.stageloose {
+    transition: transform 1s ease-in-out;
+}
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__VESSEL_SURFACE__..",
+				name: "vessel-surface",
+				dialoguePrefix:  "deck" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1759426824626918236,
+
+				
+				image: "/img/socials/shipdeck.gif",
+				
+
+				
+				order: "4",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/ocean.ogg'],
+					preload: true,
+					loop: true,
+					
+					 rate: 0.75, 
+					sprite: {
+						__default: [50, 153000, true]
+					}
+				}),
+				
+
+				
+
+				
+				
+				onLoaded: ()=>{	
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+					
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							
+							
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+					
+					//dynamically inserted
+					
+					env.dialogues["navy"] = generateDialogueObject(`
+start
+    sourceless
+        a comfortable, cold darkness greets me as i amble out of the dead hatch
+        the curiosity of the bright cousins is insatiable,
+        so thorough and relentless that their star has had time to leave our sight yet again
+        my guide awaits, a communicator in one hand,
+            EXEC::playerMoveTo(3, 4, "up");setCam({x: 3, y:4, rotation: 180})
+        and in the other, between clawless fingers, a smoldering white cylinder
+        an ingestion method for a stimulant, as i understand it
+        the hatch swings shut behind me under its own weight, and his eyes lift from the glow of his communicator
+
+    guide
+        Hello, Akizet.
+        
+    sourceless
+        the greeting is joyless
+        before he speaks further, he brings the cylinder to his lips
+        the smoldering end brightens, then crumbles away with some slight movement
+        
+    guide
+        That went pretty long. More talk about the <span class="code">call</span>?
+
+    akizet
+        yes, θ█████...
+        ...to little end, unfortunately
+
+    sourceless
+        i feel his gaze upon my receptors, curious, as they curl with quiet frustration
+        after all, much delight has come from offering what we know to each bright questioner
+        without condition, without exception
+        it is their right to know all that we do, to share in all our progress
+        yet the progress on this particular subject is infuriatingly small
+    
+    akizet
+        i understand the questioning
+        it mirrors our own clawing at the truth
+        but... it has only served to highlight to both of our peoples,
+        how little is truly understood, even after all this work and time
+        as you well know, i am a key figure in its research, so...
+        when the answer to clawfuls of questions in sequence is simply,
+        'we do not know,' in one form or another,
+        it is... 
+        it is almost shameful
+
+    sourceless
+        i hold, letting the gentle frustration leave me
+
+    akizet
+        but there is so much other knowledge that we can offer,
+        so much more!! that it is hardly a problem
+
+    sourceless
+        the guide is silent, watching me still, an unfamiliar shape upon his face
+        not a smile, not a directed displeasure, but...
+        it bears similiarity to those i have seen upon my questioners in response to my answers
+        just before they remark upon the strangeness of our similarity again
+
+    akizet
+        regardless--is there another awaiting my word?
+
+    guide
+        Most of the labcoats are either sleeping, or wrapping up.
+        It's sounding like initial meetings are winding down.
+
+    sourceless
+        he breathes again through the ashen cylinder
+
+    guide
+        It was <span definition="INHERITED CONTEXT::'time specification';'well before the return of the bright cousin's star'">2AM</span> when I took over, and you were still going from yesterday...
+        You aren't tired?
+    
+    akizet
+        not in a way that matters, θ█████
+        the wakefulness of θdeath often feels inescapable
+        a ceaseless river of experience, unbroken,
+        and so, i could answer a thousand questions more, a million, so long as i...
+        
+    sourceless
+        the guide's shoulders shift low, expression flattening
+        with a tap of his fingers, the cylinder sheds its burnt particulates
+        i can nearly see a reflection of my larval self, 
+        being told to commence a search operation just after completing another
+
+    akizet
+        i...
+        ...actually, i believe i should return to the embassy to report what has been discussed
+        would you show me the way back to my dull vessel?
+    
+    sourceless
+        there is confusion, a short and quiet breath, a small smile
+
+    guide
+        Sure.
+        
+    RESPONSES::akizet
+        set out<+>END
+
+END::setCam()
+`)
+
+env.dialogueActors["guide"] = {
+    image: '/img/local/ocean/ship/navyguy.gif',
+    type: "thoughtform portrait-cover portrait-bright portrait-top",
+    voice: ()=>play('talkfloweralt', 0.5)
+}
+
+createEntity({
+    name: 'bright guardian',
+    hide: true,
+    image: '/img/local/ocean/ship/navyguy.gif', 
+    type: "recollection thoughtform portrait-bright portrait-cover portrait-top",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+    actions: [
+        {
+            name: "hello",
+            exec: ()=> {
+                startDialogue('navy')
+            }
+        },
+    
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"]],
+            exec: ()=>{
+                cutscene(true)
+
+                chatter({actor: 'guide', text: "That's a nice idea, but I'm way too tired.", readout: true, delay: 2000})
+                chatter({actor: 'guide', text: "Maybe tomorrow.", readout: true, delay: 4000})
+                chatter({actor: 'sourceless', text: 'he must be speaking to his communicator...', readout: true, delay: 7000})
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                }, 7000)
+            },
+        }
+    ]
+})
+
+env.stages['ship_deck'] = {
+    width: 5,
+
+    entities: {
+        G: {
+            class: "blocks",
+            contains: {
+                class: "face-creature",
+                examineEntity: "bright guardian",
+                dyp: {
+                    width: 1,
+                    height: 2.25,
+                    image: 'url(/img/local/ocean/ship/navyguy.gif)',
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))"
+                }
+            } 
+        },
+
+        D: {
+            teleport: "none",
+            lockFlag: "permalocked",
+            lockExec: ()=>chatter({actor: 'sys', text: "NOTICE::'prohibitive incoherence'", readout: true}),
+            contains: {
+                dyp: {
+                    noback: true,
+                    width: 1.5,
+                    height: 2.5,
+                    image: 'url(/img/local/ocean/ship/shipdoor.gif)',
+                    transform: "translateX(var(--tile-f5)) rotateY(-90deg)"
+                }
+            } 
+        },
+
+        E: {
+            class: "faketeleport joyport",
+            exec: ()=>{ 
+                change("TEMP!!from", "deck")
+                moveTo("/local/ocean/ship/interview/") 
+            }
+        },
+
+        d: {
+            contains: {
+                dyp: {
+                    noback: true,
+                    width: 1.5,
+                    height: 2.5,
+                    image: 'url(/img/local/ocean/ship/shipdooropenable.gif)',
+                    transform: "translateX(var(--tile-f5)) rotateY(-90deg) translateX(-66%)"
+                }
+            } 
+        },
+
+        W: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    noback: true,
+                    width: 11,
+                    height: 3,
+                    image: 'url(/img/local/ocean/ship/shipwall.gif)',
+                    transform: "translateX(calc(var(--tile-f5) + 1px)) rotateY(-90deg) translateX(var(--tile))"
+                }
+            } 
+        }
+    },
+
+    plan: `
+        .....
+        .░p░.
+        .░░░.
+        .░░░D
+        .░░░.
+        .░░GW
+        .░░░D
+        .░░░.
+        .░░░.
+        .░░░E
+        .░░░d
+        .░░░.
+        .....
+    `
+}
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					if(check("TEMP!!from", "interview")) {
+    changeStage('ship_deck', 48, 'left')
+} else {
+    changeStage('ship_deck')
+}
+document.addEventListener('keydown', stageKeypress)
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+				},
+
+				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					stageCleanup()
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
+				}
+			}
+
+			
+
+			env.pageName = "vessel-surface";
+			env.pagePath = location.pathname;
+			env.globalLimitedEntitySetup()
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

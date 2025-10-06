@@ -6238,3 +6238,7 @@ ____END
 
 SKIP::vn.done(); if(env.currentDialogue.branch.name == "start" || env.currentDialogue.branch.name == "begin") { change("PAGE!!embassy_day", 3.99);change("TEMP!!ep3->ep4transfer", true);moveTo("/local/ocean/embassy/groundsmindry/") } else { change("PAGE!!embassy_day", 3.5);change("PAGE!!ikawake", true);page.party.partyLimit = 3 }
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

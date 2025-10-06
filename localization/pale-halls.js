@@ -20,3 +20,7 @@ env.localization.page['ep4'] = {dialogues: {},
     }, 
     entityDescriptions: {},
 }
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

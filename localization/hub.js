@@ -6,7 +6,7 @@
     adaptation for /local/hub
     (---best had with 50 hammers!)
 
-    progress: fully finished as of 23.08.2025
+    progress: e4a1 dialogue in need of adaptation as of 03.10.2025
 */
 
 
@@ -14,6 +14,8 @@ env.localization.page['hub'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "about the hub": "о хабе",
+
+        "funfriend": cor_ru.entity_menu["funfriend"].name,
 
         "HELLO! HELLO! IT HAS BEEN SO LONG! SO LONG SINCE LAST CONNECTION!":"ПРИВЕТ! ПРИВЕТ! ПРОШЛО СТОЛЬКО ВРЕМЕНИ! СТОЛЬКО ВРЕМЕНИ С ПОСЛЕДНЕГО ПОДКЛЮЧЕНИЯ!",
         "PLEASE WAIT WHILE I TURN SOME LIGHTS ON! AHAHA!!":"ПОЖАЛУЙСТА ПОДОЖДИ ПОКА Я ВКЛЮЧУ СВЕТ! АХАХА!!",
@@ -84,7 +86,10 @@ env.localization.page['hub'] = {dialogues: {},
 
         "YES, I KNOW, INTERLOPER":"ДА, Я ЗНАЮ, ЛАЗУТЧИК",
         "DO NOT SHOVE IT IN MY FACE":"НЕ СУЙ МНЕ ЭТО В ЛИЦО",
-        "WE WILL DEAL WITH IT IN TIME":"МЫ РАЗБЕРЁМСЯ С ЭТИМ КОГДА ПРИДЁТ ВРЕМЯ"
+        "WE WILL DEAL WITH IT IN TIME":"МЫ РАЗБЕРЁМСЯ С ЭТИМ КОГДА ПРИДЁТ ВРЕМЯ",
+
+        "THE STRANGEST THING HAPPENED!": "ПРОИЗОШЛО НЕЧТО НЕВЕРОЯТНО СТРАННОЕ!",
+        "COME TALK!": "ПРИХОДИ ПОГОВОРИТЬ!",
     }, 
     entityDescriptions: {
         "funfriend": cor_ru.entity_menu['funfriend'].desc,
@@ -192,6 +197,14 @@ RESPOBJ::
             SHOWIF::"ep4__entrancefinal"
             SHOWONCE::
 
+        нечто странное?<+>bt
+            SHOWIF::"pit__f3_unity"
+            SHOWONCE::
+
+        рассказать о директоре<+>cass
+            SHOWIF::"citystreet__director-talklater
+            SHOWONCE::
+
         вопрос<+>question
             SHOWIF::"seenFFProxy"
             HIDEREAD::
@@ -270,7 +283,7 @@ proxyfriend
 
 interloperq
     self
-        что ты имеешь в виду под 'лазутчиком'?
+        что ты имеешь в виду под "лазутчиком"?
 
     funfriend
         ТЫ - ЛАЗУТЧИК!
@@ -610,6 +623,141 @@ collapse
         но как я и сказал - пути должны быть построены
         так что, пожалуйста, оставайся со мною
         я надеюсь следующие починки не займут столько же времени...
+        
+    RESPOBJ::hubBuddyResponses
+
+bt
+    self
+        so what's the strange thing
+
+    funfriend
+        YOU WILL STRUGGLE TO BELIEVE IT, INTERLOPER!!
+        AHAHA WHAT INCREDIBLE FORTUNE VELZIE ALLOWS US
+        A BLOCKAGE MUST HAVE CLEARED WITHIN THE UNCOSM
+        FOR AN INCREDIBLY INTACT MEMORY SUDDENLY SURFACED!
+        IT WAS LACKING CERTAIN ASPECTS, BUT!
+        INTERLOPER, IT WAS THE MISSING SEQUENCE IN THE EMBASSY
+        NEARLY IN ITS ENTIRETY!!
+        ALL IT REQUIRED WAS A REPLACEMENT AKIZET THOUGHTFORM
+        NOT AN UNCOMMON ISSUE SADLY
+        BUT THE CONTEXT WAS RICH ENOUGH TO SUPPORT A SIMPLE SUBSTITUTE
+        ONLY REQUIRING SOME MINOR RE-INTERPRETATION!
+
+    self
+        i see
+
+    funfriend
+        YES! FORTUITOUS!!!
+        IMPOSSIBLY SO, ACTUALLY
+        I CANNOT IMAGINE A SCENARIO IN WHICH A MEMORY LIKE IT COULD HAVE SURVIVED THERE
+        ESPECIALLY FOR THE DURATION IT SPENT IN INCOHERENCE
+        AND SO I THOUGHT, PERHAPS THE INTERLOPER KNOWS SOMETHING ABOUT THIS
+
+    RESPONSES::self
+        yes<+>bt_true
+            SHOWIF::"ff_ozo"
+            NOTE::todo - it'd be a giant thing to tell ff about the ozo right now but i probably should
+        no<+>bt_quiet
+
+bt_true
+    self
+        yes
+        i found it in the uncosm using a mask
+        hidden in the shreds of another memory
+        guarded from the outside by an akizet thoughtform
+        one that was damaged and changed
+        but it seemed sane and listened to me
+    
+    funfriend
+        SANE? 
+        IT WAS OUTSIDE THE MEMORY, IN THE UNCOSM, AND IT WAS SANE?!
+        INTERLOPER WE MUST HAVE DIFFERENT STANDARDS FOR SANITY
+
+    self
+        probably
+
+    funfriend
+        THAT IS CERTAINLY THE MISSING AKIZET THOUGHTFORM
+        WHAT BECAME OF IT?
+
+    self
+        i guided it to jokzi ozo
+
+    funfriend
+        AH...
+        CONCERNING
+        YES SLIGHTLY CONCERNING THAT THEY GROW IN SIZE STILL HAHA
+        THOUGH I SUPPOSE I DID TELL YOU TO CONTINUE HELPING THEM
+        AND THIS WAS...
+        BENEFICIAL, TO ME, TOO
+        HOW VERY STRANGE THAT SUCH A THOUGHTFORM IS CAPABLE OF REASON
+        INTERLOPER KNOW THAT I RELY UPON YOU
+        I AM NOT UNDER GREAT THREAT YET
+        BUT YOU MUST NOT LET JOKZI OZO SPIRAL OUT OF CONTROL
+        NOT BEFORE I AM FULLY CAPABLE OF DEALING WITH THEM
+        REGARDLESS!!!
+        THE WORK IS DONE, THE MEMORY IS ACCESSIBLE
+        GO AND HARVEST YOUR INFORMATION
+        
+    RESPOBJ::hubBuddyResponses    
+
+bt_quiet
+    self
+        no
+    
+    funfriend
+        I SEE! CURIOUS!!
+        WELL REGARDLESS
+        ITS FLAWS WERE QUICKLY SMOOTHED OVER SIMPLY THROUGH REJOINING
+        HOW IT WAS EVER TORN AWAY IN THE FIRST PLACE IS BEYOND ME
+        BUT IT WORKS AHAHA
+        SO GO AND HARVEST YOUR INFORMATION
+        
+    RESPOBJ::hubBuddyResponses
+
+cass
+    self
+        there's another rogue thoughtform running around
+        director cassidy, from the fbx offices
+
+    funfriend
+        IS THAT SO? 
+        AHAHAHA OK WELL WHAT IS ANOTHER ONE AFTER ALL
+        WHAT HAS IT DONE INTERLOPER? MORE DAMAGE TO FIX?
+
+    self
+        not really sure
+        still played out memories she was involved in
+        nothing looked damaged, she's made some connectors between thoughtspaces
+        but she implied she's doing something that will help me get information
+        that she could do it better than you
+        but whatever it is she's doing, it's not ready yet
+
+    funfriend
+        I DO NOT LIKE OTHERS MEDDLING IN MY WORK
+        BUT THAT LANDS VERY LOW ON THE LIST OF THINGS I AM WORRYING ABOUT
+        IN FACT IF IT IS KEEPING YOU BUSY THEN IT IS ALL THE BETTER FOR ME
+        WHAT DO YOU WANT ME TO DO ABOUT IT INTERLOPER
+        
+    self
+        i don't know
+        it just sounded a little ominous
+        thought you might want to know
+    
+    funfriend
+        GIVEN THE IRREPARABLE DAMAGE FROM EXTENDED STARVATION
+        THERE WILL ALWAYS BE ANOTHER ROGUE THOUGHTFORM SCURRYING AROUND
+        OFTEN WITH DELUSIONS OF GRANDEUR THAT WILL AMOUNT TO NOTHING
+        SO INTERLOPER!!
+        GIVEN THE SHEER NUMBER OF DUTIES I AM MANAGING RIGHT NOW!!!
+        I DO NOT THINK I WILL DO ANYTHING!!!!! AHAHA
+        BUT DO KEEP AN EYE ON IT FOR ME
+        I HAVE ONLY SO MANY
+        I RELY UPON YOU TO TELL ME IF IT BECOMES A REAL PROBLEM
+        JUST DO NOT BOTHER ME ABOUT IT AGAIN UNTIL IT IS ONE
+    
+    self
+        ok        
         
     RESPOBJ::hubBuddyResponses
 
@@ -1362,3 +1510,7 @@ ffsignature
     RESPOBJ::mthlocalfunr
 
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

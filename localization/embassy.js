@@ -107,7 +107,7 @@ env.localization.page['embassy'] = {dialogues: {},
         "better times": "ХОРОШИЕ ВРЕМЕНА",
         "discovery": "ОТКРЫТИЕ",
         "suspicion": "ПОДОЗРЕНИЕ",
-        "collapse": "обрушение",
+        "collapse": "ОБРУШЕНИЕ",
         "recollection": "вспоминание",
 
         "experience": "испытать",
@@ -7297,5 +7297,4 @@ ____END
 
 
 
-
-
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

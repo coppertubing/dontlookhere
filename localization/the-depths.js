@@ -68,3 +68,7 @@ abrupt
         кто ты?
             EXEC::env.depths.velzieBye();endDialogue()
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

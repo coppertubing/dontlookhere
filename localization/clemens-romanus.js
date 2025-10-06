@@ -17,3 +17,6 @@ env.localization.page['localship2'] = {dialogues: {},
     entityDescriptions: {},
 }
 
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

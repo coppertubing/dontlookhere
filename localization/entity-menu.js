@@ -696,7 +696,7 @@ cor_ru.entity_menu = {
         name: `совет`,
         desc: `::НЕОБРАБАТЫВАЕМАЯ МЫСЛЕФОРМА<br>::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'предполагает соединительную мыслеформу';'самосоединённая'">НЕОБЫЧНАЯ ПОДПИСЬ</span><br>::??-?_##)__L2xvY2FsL296by8`
     },
-    "fairy": {
+    "fairy": { // --- watch out! big shit's in everystuff.js too because everystuff loads before!
         name: `фея`,
         desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ:'голод'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'побрякушка, носима(ԘØ;;-__ОШИБКА::'необрабатываемо'__;'свободна! свободна!!'</span>`
     },

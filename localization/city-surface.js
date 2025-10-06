@@ -5,7 +5,7 @@
     > localization/city-surface.js
     adaptation for /local/city/street
 
-    progress: fully finished as of 23.08.2025
+    progress: e4a1 missing as of 03.10.2025
 */
 
 
@@ -18,7 +18,13 @@ env.localization.page['citystreet'] = {dialogues: {},
     strings: {
         "pretty sure this envoy guy isn't being remembered right lmao": "лмао кажется этого челика-посла не так хорошо запомнили",
         "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was": "значит контактным лицом акизет был какой-то \"гордон\"... посмотрим, смогу ли я на него выйти", 
-        "about the street": "об улице",
+        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"",
+        "this is definitely looking like the old west coast HQ": "",
+        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing": "",
+        "about the city": "о городе",
+
+        // joy resonance
+        "'major';'various spatial and responsive thoughtforms detected'": "'крупный';'обнаружены различные пространственные и отзывчивые мыслеформы'",
 
         "say hello": "сказать привет",
         "menu?": "меню?",
@@ -89,13 +95,13 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*akizet*/ "it will do": "сойдёт",
         /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
         /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу Зова?",
-        /*akizet*/ "oh yes, but... let us talk of it in private.": "а, да, но... давайте обсудим это наедине",
+        /*akizet*/ "oh yes, but... let us talk of it in private": "а, да, но... давайте обсудим это наедине",
 
 
         /*envoy*/ "wwEL LL isn' t t that peculiar ? ?": "чттОЖ ЖЖ ра ззв е е эт оне занн ят т нно ? ?",
         /*envoy*/ "elerv ator isn torking": "литф н еработает",
         /*envoy*/ "gu ess w e can    t t al k never talk": "пола гга ю мы може м пого гово ор и т ть никогда не поговорить",
-        /*envoy*/ "no talking so rry sorry sorry leave ovfice": "не поговрим про сти прости прости покиньте овфис",
+        /*envoy*/ "no talking so rry sorry sorry leave ovfice": "не поговрим про сти прости прости те покиньте овфис",
         
         /*moth*/ "uhh... ok": "эээ... ладно",
         /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить с развледругом об этом",
@@ -116,10 +122,10 @@ env.localization.page['citystreet'] = {dialogues: {},
 
         /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
-        /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at 2.'": "Что? Простите, я не могу пойти с вами, у меня назначена встреча в 2.",
+        /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at nine.'": "Что? Простите, я не могу пойти с вами, у меня назначена встреча в девять.",
         /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "Впрочем, хотелось бы--звучит весело!",
-        /*sourceless*/ "is he speaking through his communicator?": "он разговаривает через свой коммуникатор?",
-        /*sourceless*/ "why was he looking at me when he said that?": "почему он взглянул на меня, как только сказал это?",
+        /*sourceless*/ "is he speaking through his communicator?": "он через свой коммуникатор разговаривает?",
+        /*sourceless*/ "why was he looking at me when he said that?": "почему он на меня смотрел, пока это говорил?",
 
         /*stre wal k*/ "hurts": "больно",
 
@@ -204,7 +210,7 @@ start
             SHOWONCE::
         Если бы это был Чикаго или Нью-Йорк, мы бы Вас на крышу приземлили, но...
             SHOWONCE::
-        Учитывая, насколько загружено бюро, у нас полно обесков-гостей,
+        Учитывая, насколько загружено бюро, у нас полно гостей-обесков,
             SHOWONCE::
         На этом этапе можно сказать, что Ваш народ почти что часть города.
             SHOWONCE::
@@ -1466,6 +1472,844 @@ elevatorblock
     RESPOBJ::mthstreetresp
 `)
 
+
+/* e4a1 -> */ env.localization.page['citystreet'].dialogues["rotmeet"] = generateDialogueObject(`
+start
+    sourceless
+        this thoughtform lingers over a malformed one.
+            EXEC::changeBgm(env.rotWatcherMusic)
+        its representation in the render is still, yet you feel it moving beneath the surface.
+        prodding at the damaged entity below it, somehow.
+
+    self
+        hello?
+
+    sourceless
+        its movement slowly ceases. you feel its attention upon you.
+        something presses against your mind's eye, and while concepts manifest as thoughts,
+        it feels like they aren't truly intended for you.
+    
+    rotwatcher
+        the audience: external force, alien to the grand stage. it has been observed for the first time recently.
+        no attempt using any known method of communication has succeeded in gaining the attention of the audience.
+        it is suspected to lack requisite sensory organs, precluding perception beyond standard coherent thoughtform presentation.
+        this marks the first occasion in which the audience has succeeded in communicating. the mechanism by which it has changed is unknown.
+
+    self
+        are you talking about me?
+        what are you?
+    
+    sourceless
+        the thing draws closer to your mind's eye.
+        its attention pulls into itself.
+
+    rotwatcher
+        rotwatcher: formerly predatory thoughtform, presenting emergent lucidity and cognitive function. self-assigned nomenclature predicated upon lost progenitor's knowledge.
+        suspected to be product of direct damage to purpose enforcement within delaminated spatial thoughtspace, followed by mutation and mindless survival of undetermined duration.
+        it is observed to wander, internally cataloguing forms of deterioration and their products without interference.
+
+    moth
+        that's... 
+        kind of useful?
+
+    self
+        i guess
+    
+    sourceless noprocess
+        you focus upon the rotwatcher.
+    
+    self
+        why do you do this?
+        can you tell me more?
+    
+    sourceless
+        it returns to examining the damaged thoughtform without answering.
+    
+    RESPONSES::self
+        what about that thoughtform?<+>CHANGE::++rotcity
+        whatever<+>END
+            
+END::revertBgm()
+`)
+
+/* e4a1 -> */ env.localization.page['citystreet'].dialogues["++rotcity"] = generateDialogueObject(`
+start
+    self
+        what's up with this thoughtform?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        referentially sustained deterioration: common condition within damaged lesser thoughtforms.
+        critically damaged thoughtforms may continue existence with minimal remaining material, due to the physical referential tie made by their containing thoughtspace.
+        sustained connection allows thoughtspace organelles to provide resources and support unconditionally.
+        a significant number of damaged thoughtforms may be sustained by one thoughtspace, however it is a large strain that often results in catastrophic thoughtspace delamination.
+        this is a common trajectory and outcome that has been observed in large quantity throughout the deterioration of the grand stage.
+        however: the custodian's recent decision to dissociate most damaged thoughtforms has reduced its frequency.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+
+END::revertBgm()
+`)
+
+env.localization.page['citystreet'].dialogues["++rotcityflip"] = generateDialogueObject(`
+start
+    self
+        what's going on here?
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        spatial delamination gradient: early stage of thoughtspace breakdown by consequence of malnutrition. common in regions of densely packed memories.
+        membrane of containing thoughtspace is observed to thin and melt. points of exit and entry become indistinguishable from adjacent connective media.
+        previously recorded instances suggest presently observed thoughtspace's trajectory to be regional conglomeration.
+
+    sourceless
+        you feel a part of the thoughtform twist underneath the render.
+
+    rotwatcher
+        regional conglomeration: blending of multiple adjacent thoughtspaces in middle or late stages of spatial delamination.
+        resulting organism combines organelles and remaining outer membrane material for continued survival.
+        it is presently unknown whether this function is a survival mechanism inherent to the thoughtspace classification of thoughtform or the result of an emergent sentience similar to independent thoughtform awakening.
+        further study is required. however: the arrival and abundance of external resources combined with the custodian's resumation of activity has slowed all known instances of early stage regional conglomeration, including present thoughtspace.
+        likelihood of further opportunity to study phenomena is extremely low without direct intervention. direct intervention is inadvisable for continued observation of the grand stage's recovery.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+`)
+
+
+env.localization.page['citystreet'].dialogues["elevator"] = generateDialogueObject(`
+start
+    sourceless
+        a large quantity of numbered circles are set into the dead metal here
+____SHOWONCE::
+        gordon gives some idle instruction on which are relevant, which distantly registers...
+        but i am distracted in wondering - what happens if they need to add a new one?
+        would they have to re-cut a solid sheet of dead metal, and set in new buttons?
+        and of course, each button must have some sort of connective nerve...
+        actually, how would they even manage adding another segment to their metal towers?
+        the logistics of bright structures are hardly sensical to me
+        something to investigate i suppose
+        i notice gordon leaning forward after his explanation
+
+    gordon
+        ...You get all that?
+        It's really just the three buttons we'll be using.
+
+    sourceless
+        oh... yes--right
+        we have somewhere to be
+
+    akizet
+        yes, of course
+        thank you, gordon
+____END
+    
+    RESPONSES::akizet
+        high office<+>elevate
+            EXEC::change("TEMP!!vatordest", "office_hall")
+        ground level<+>elevate
+            EXEC::change("TEMP!!vatordest", "city_office")
+        lab<+>descent
+            SHOWIF::"citystreet__director-meeting"
+
+elevate
+    sourceless
+        the button lights up, and after a θblink, the elevator lurches into motion
+        soon, we arrive at our destination, the doors sliding open to release us
+            EXEC::changeStage(check("TEMP!!vatordest"));play("elevator")
+    
+    RESPONSES::akizet
+        exit<+>END
+
+descent
+    sourceless
+        the button lights up, and after a θblink, the elevator lurches into motion
+        ...        
+    
+    RESPONSES::akizet
+        wait<+>END
+            EXEC::env.citystreet.descent();play("elevator", 0.5)
+`)
+
+env.localization.page['citystreet'].dialogues["director"] = generateDialogueObject(`
+start
+    sourceless
+        director cassidy stands within the office
+            EXEC::ratween(env.bgm, 0.75);setCam({x: 3, y: 4, rotation: 0})
+
+    RESPONSES::self
+        talk later?<+>talklater
+            SHOWIF::"bt__d0_cass"
+        hello?<+>talknow
+            SHOWIF::[["bt__d0_cass", false], ["citystreet__director-meeting", true]]
+        recall meeting<+>meeting
+
+    RESPONSES::akizet
+        leave<+>END
+
+talknow
+    self
+        hello?
+        are you lucid?
+
+    akizet
+        director! i thought i might step in to say, ah...
+
+    sourceless
+        the director holds a communicator to the side of her face,
+        slightly perturbed by my approach, as if i am impeding something
+
+    cass
+        Akizet, I really can't talk right now.
+        Let's save it for the next project meeting, all right?
+
+    akizet
+        oh? apologies, director
+        yes, it is no pressing matter
+        fare well
+
+____SHOWONCE::
+    moth
+        not getting anything from it right now...
+____END
+
+    RESPONSES::akizet
+        set out<+>END    
+
+talklater
+    self
+        you said we'd talk later
+            EXEC::vnp({cass: "show far", hideStage: true})
+        when is that?
+
+    sourceless
+        the director holds a communicator to the side of her face,
+        expression twisting with impatience
+
+    cass
+        Oh, you're still here?
+        The team is waiting for you, Akizet.
+        
+    akizet
+        ah--?
+        oh, yes, right, apologies
+        fare well, director
+
+    sourceless
+        i turn to leave, the director speaking indistinctly to her device as i go
+
+    cass::whisper
+        What was I saying? Right...
+            EXEC::vnp({cass: "show", hideStage: true})
+        I'm not ready to involve you in this project, yet.
+        I've been trying to help push you in the right direction, but...
+        You really weren't supposed to hear about any of this so soon.
+        But we're not opposed. What I'm doing will get you what you want.
+
+    self
+        you're talking to me, right?
+        what do you mean by that?
+        you'll help me repair and gather information?
+        figure out what happened?
+
+    sourceless incoherent
+        h  her voice quiets as  i   near the do or
+
+    cass::whisper
+        Yeah, basically. I could help you a lot more than the idiot above me.
+        I don't need to tell you how stubborn and inefficient they are.
+        Even I'm constantly getting grilled for what we're doing out here.
+        If they knew what's going on <em>now</em>... It'd be one hell of a spectacle.
+        Don't misunderstand, though. I do trust you.
+        I'm very interested in what we'll be able to do, together.
+        Until I can get you in. Just keep this between us. Off the record.
+        If word gets out, nobody's going to be happy.
+
+    sourceless incoherent
+        whaa t a st t range c on onversation
+        
+    sourceless
+        her voice drops further, beyond my ability to hear
+            EXEC::vn.done()
+
+    moth
+        the incoherence here is all over the place
+        not bad enough to cause any issues, so,
+        i think some part of this conversation was real at some point?
+        the director is just baaarely avoiding causing any sort of memory failure
+        not just with how she's talking, but even with the weird connectors
+        all of it's so carefully made and hidden
+        blends right in with all the other damage
+        really easy to miss if i wasn't looking for it specifically
+
+    self
+        what do we do about this?
+
+    moth
+        well...
+        it's not just me, right? she's gotta be talking about funfriend
+        and with how she's acting, she must be hiding from him specifically
+        not that out of the ordinary given what we've seen i guess
+        you could tell funfriend, but idk what he'd be able to do
+        it's not like we really have a motive or any damage to point at here
+        maybe we just leave it? see what happens?
+        up to you
+    
+    self
+        ok
+
+    RESPONSES::akizet
+        set out<+>END
+
+meeting
+    sourceless
+        a bright cousin stands in the office
+            EXEC::setCam({x: 3, y: 4, rotation: 0});ratween(env.bgm, 0.75)
+        having heard our entry, she closes her folding communicator
+
+____SHOWIF::["citystreet__director-meeting", false]
+    sourceless incoherent
+        an  nd l ooks thr rough me
+            EXEC::vnp({cass: "show far", hideStage: true});ratween(env.bgm, 0.5)
+        with no   sm all  sur r prise
+            EXEC::vnp({cass: "open", hideStage: true})
+            WAIT::2000
+            THEN::vnp({cass: "open eye", hideStage: true})
+    
+    sys
+        WARNING::"incoherence detected"
+        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+        
+    cass::open
+        Oh... That's not good.
+        How did you get in here?
+
+    moth
+        buddy this thing is going to cause a breakdown if you stay near it
+        incoherence just spiked like crazy
+        this is going to straight up crash 
+
+    gordon
+        Director Cassidy!
+    
+    sourceless incoherent
+        a nd st  ste p s    cl o ser
+        i ? ?   fee l   s ick
+
+    cass::open
+        I see...
+    
+    sourceless incoherent
+        clos es her  folding
+            EXEC::vnp({cass: "show open", hideStage: true});ratween(env.bgm, 0.75)
+            WAIT::2000
+            THEN::vnp({cass: "show", hideStage: true});env.stage.querySelectorAll(".teleport").forEach(e=>{e.setAttribute("teleport-target", "office_data");e.setAttribute("shouldFace", "down");e.removeAttribute("spot");})
+
+    sourceless
+        what? did i lose focus?
+        it felt like something was missing just now
+        no--no, everything is fine
+
+    moth
+        ok, it's just... gone
+        acceptable levels right now
+        this is new
+____SHOWIF::"citystreet__director-meeting"
+
+    gordon
+        Director Cassidy!
+
+____END
+    cass
+        Gordon, Akizetesche!
+            EXEC::vn.done()
+        It's good to see you both, truly.
+
+    sourceless
+        she steps closer to shake gordon's hand, then my claw
+        a small smile i have come to understand as 'polite' upon her face
+        when i make an effort to mimic it, she smiles wider, quietly exhaling
+
+    akizet
+        thank you for coming all this way
+        please, just call me akizet
+        i understand you had to take a flight?
+
+    sourceless
+        before she speaks, she fetches a small, flat rectangle from a pocket
+        one of the 'cards' that they use to regulate access, here
+
+    cass
+        It's no trouble. 
+    
+    sourceless
+        her eyes shift in a puzzling way, her gaze lacking the warmth it just had
+        she turns the card over in her hand, smile held steady
+    
+    cass
+        It's the least I could do, really.
+        We all appreciate what you're doing here, Akizet.
+    
+    sourceless
+        as the director, i imagine she must be deeply familiar with receptor language by now
+        and so i try to suppress the subtle unease her tone inspires
+
+    cass
+        Just like you wanted, we have as few hands and eyes involved as possible.
+        It's me, a few officers for oversight, Gordon here, and some very good technicians.
+
+    akizet
+        delightful!
+
+    cass
+        The only thing is, there are still parts that don't add up.
+
+    sourceless
+        she punctuates her words with an idle waving of the card, held tightly between two fingers
+        from the corner of my vision, i see gordon shift, having grown tense
+    
+    cass
+        The secrecy from <em>your own people</em> is <em>very</em> strange.
+        Obviously, I wouldn't ever decline what you're offering.
+        Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing.
+        This has the potential to be the biggest societal and technological leap in humanity's history.
+        It would be an incredible political bargaining chip, if we had to use it that way.
+        And yet, you only want help tracking the Call down,
+        Which, as you know, we're already doing - just without your technology.
+        And privacy? 
+        Not a word to any of the hundreds of other qou we're working with, not even your Council?
+        I need to know why you're doing this.
+
+    gordon
+        Director, as I explained in the proposal, recent discoverie--
+            WAIT::1000
+            AUTOADVANCE::
+        
+    cass
+        Yes, yes, yes, I know the circumstances.
+        But even the rest of her <em>team?</em>
+        It doesn't make sense.
+        What am I missing, Akizet?
+
+    sourceless
+        i feel her gaze bore into me, the smile flattened away over time
+        gordon said it was all approved already, why is she being so interrogative?
+        is this a trap? could the director have notified the council?
+        is she on some side of the terrible conflict? 
+        ah--did i forget to hide my unease? ÇO@vT)
+        i quickly loosen the curl of my receptors
+        there is no way out of this without telling at least a partial truth
+        
+    akizet
+        director, you are correct
+        i believe it may have been shelved for use in a potential negotiation
+        but there is little we could ever truly ask from you, our bright cousins
+        all qou i know wish only to help unite you with us in the stars
+        i understand this must seem idealistic, but it is true
+        we will have no shortage of the metals we require, with the gathering initiatives elsewhere
+        i have heard of contrivances made to dead, rich worlds, with nearly automated harvesting underway
+        i have read projections that we will be able to construct incredible minds,
+        cores the size of small planetoids, 
+        sure to solve every mystery that the void holds for us
+        and so, in time,
+        we will have everything we need, together. do you understand?
+        there is no desire great enough to ever justify holding this back from you
+        especially with how short your lives are, presently, just as ours were
+        so much brilliance will be lost if we wait
+        your politics, your technology, your... 'bargaining chips',
+        they are the tiniest parasites upon the tallest veilk
+        if there <em>is</em> something else...
+    
+    sourceless
+        a quiet rage boils in the back of my mind
+        i dearly wish to speak of the conflict
+        but as in θparasite, i must gather my bulbs
+        the director <em>must not know,</em> but without that knowledge,
+        the only conceivable reasons for my secrecy would be...
+        unspeakably grim prospects
+
+    akizet
+        ...then it is a grave error that the council did not inform us
+        if we cooperate, and use our combined technology to locate the call's origin,
+        and <em>then</em> i return to them and reveal all...
+        they will be unable to deny the value of our work together
+        even then, the fruit cannot be un-split - it will be in your hands
+        ...of course, there is a possibility i will be punished, even if my point is made clearly and publicly
+        and so, you see, i must not place my team at risk with this knowledge
+        <em>i</em> may be cast out as a deserter, but i will not allow my friends to suffer for my actions
+        and they would never place blame upon the bright cousins...
+        so it is only i who suffers in the event of failure
+    
+    sourceless
+        not a word i speak is false
+        but with all of my being, i hope those last words remain true
+        the director has hardly moved, her expression unchanged
+        briefly, i look to gordon, who is hearing all of this for the first time as well
+        he smiles, nodding once to reassure me, so i turn back to her
+        wordlessly, without warmth, she tips the card in her hand towards me in offering
+
+    cass
+        Hm.
+        That's very noble.
+        Well, everything's all set up.
+
+    sourceless
+        i... take the card
+        but, that is all?
+        this mundanity... does she believe me?
+        it is so difficult to read anything from her
+
+    cass
+        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments.
+        We have other obesk working down there on various projects,
+        But the team has been briefed on your privacy concerns. It should be safe for you.
+        That card will let you into your section.
+    
+    sourceless
+        a polite smile returns to her face
+
+    akizet
+        excellent
+        director, thank you for this opportunity
+    
+    cass
+        Likewise.
+        I have another meeting shortly, so, please excuse me.
+        It's been a pleasure, Akizet.
+        Gordon, we'll talk later.
+
+    gordon
+        Yes ma'am.
+
+    sourceless
+        gordon meets my gaze, and we turn to leave
+
+    cass::whisper
+        Be careful on the way down.
+            SHOWONCE::
+        I hear the elevator's been acting a little strange.
+            SHOWONCE::
+
+    RESPONSES::akizet
+        fare well<+>END
+
+END::vn.done();ratween(env.bgm, 1);setCam()
+`)
+
+env.localization.page['citystreet'].dialogues.envoyInsideResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        meeting?<+>meeting
+        that interrogation<+>interrogation
+            SHOWIF::"citystreet__director-meeting"
+
+        let us proceed<+>END
+`)
+
+env.localization.page['citystreet'].dialogues["envoyinside"] = generateDialogueObject(`
+start
+    sourceless
+        I STOP, AND GORDON FOLLOWS. HE RETURNS MY STARE
+            EXEC::ratween(env.bgm, 0.75)
+
+____SHOWONCE::
+    gordon
+        Nervous?
+
+    akizet
+        not terribly
+        everything was approved, you said?
+        this is merely a handoff?
+
+    gordon
+        Yeah,
+        Yeah...
+        It should be.
+        This is just about kicking off the operation.
+
+    akizet
+        i see
+____END
+    
+    RESPOBJ::envoyInsideResponses
+
+meeting
+    akizet
+        gordon!
+        this meeting with the director...
+
+    sourceless
+        i consider his face carefully
+        a member of the council would not descend in a proxy body merely to update my access in the embassy
+        why would a cousinly representative of equal sway take such measures?
+        there is something else going on here
+        so, i am direct with my concern
+    
+    akizet
+        do you expect it to be difficult?
+
+    gordon
+        Dif-- Difficult?
+
+    sourceless
+        he is quick to smile and shake his head slightly
+
+    gordon
+        Heheh, it's just a handoff.
+        But...
+        Well, this was all approved very, very quickly.
+        It's an unusual fast-track for an, uh, equally unusual project.
+        The deal isn't changed, if that's what you're worried about.
+        She probably just wants to meet you personally and get clear with your goals.
+    
+    akizet
+        very well...
+    
+    sourceless
+        i do not hide my displeasure with his answer
+        but he makes no amendment
+    
+    RESPOBJ::envoyInsideResponses
+
+interrogation
+    sourceless
+        my stare intensifies, receptors coiling tightly
+
+    akizet
+        gordon
+        why did you not warn me about that?
+    
+    sourceless
+        gordon grows confused, raising his hands defensively, glancing around before lowering his voice
+
+    gordon
+        Woah, Akizet, what--warn?
+        What did you expect?
+        Your offer came out of nowhere, and...
+        Well, it basically eclipsed everything else the bureau was doing in importance.
+        I know you wanted to keep your reasons secret.
+        W--she just wanted to make sure there weren't any strings attached.
+        You know, that this isn't part of some, some...
+        I mean, what you said--you meant it, right?
+    
+    sourceless
+        the tension in my receptors fades, and similarly, he stands easier
+
+    akizet
+        i did
+
+    sourceless
+        i am quiet for a θblink
+        really, i should not be frustrated with him, nor the director, should i?
+        it is the same investigative spirit that drove me to begin this, after all
+        i came to them like their very own mysterious message
+        they truly are our bright cousins
+        part of me wishes i could tell him more--about the conflict, what still stirs
+        but it is not time
+    
+    akizet
+        gordon, the more that i share...
+        the more becomes at risk
+    
+    gordon
+        Well, everything's on the table now, so...
+        We'll just be careful, right?
+        Come on, let's head down to the lab.
+        I can introduce you to the team.
+    
+    RESPOBJ::envoyInsideResponses
+
+END::ratween(env.bgm, 1)
+`)
+
+env.localization.page['citystreet'].dialogues["oliverinside"] = generateDialogueObject(`
+start
+    sourceless
+        oliver lingers in the hall...
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0});ratween(env.bgm, 0.75)
+    
+    RESPONSES::akizet
+        greet<+>cooler
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        offer cup<+>gotwaterbonus
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", true]]
+        leave<+>END
+            EXEC::setCam()
+
+cooler
+    sourceless
+        to my surprise, oliver is here, within the high offices
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+        does he not usually operate elsewhere?
+        he fails to notice us at first, frustrated with the strange machine nearby
+        a bright blue bulb grows atop its pale, shiny stalk
+        gordon chuckles quietly, and i nearly pass him on the way to the meeting,
+        but he signals for me to stop, and we approach
+
+    oliver
+        C'mon...
+
+    gordon
+        Hey, Oliver!
+        What's the matter?
+
+    oliver
+        Gordon! Akizet! Nice to see ya.
+        The damn cooler's acting up again.
+        It always does this shit, man.
+    
+    akizet
+        cooler? is this a temperature regulator?
+    
+    oliver
+        Hahaha, what? 
+        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking.
+        Actually, I never thought to ask...
+        Do ya like drinking cold water? Or, did ya, I guess?
+
+    akizet
+        oh, yes, of course!
+        i see now, thank you, oliver
+        but--what is wrong with it?
+        is it not intact?
+
+    oliver
+        Well, I mean...
+        Look at it.
+
+    sourceless
+        he gestures vaguely to the machine
+            EXEC::setCam({x: 5, y: 7, rotation: -70, distance: -2})
+        i... i cannot quite make out what he means
+
+    oliver
+        How the hell am I supposed to get anything out of there?
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+
+    gordon
+        You put in a maintenance ticket?
+    
+    oliver
+        Ehh, not yet, but... 
+        It's not long before I've got a meeting with the Director.
+        Ah, well, I'll just get something from the vending machines.
+        Why are you two up here, anyway? 
+
+    sourceless
+        before we have a chance to respond, he answers himself in realization
+
+    oliver
+        Ahh, you're the Director's eight o'clock!
+        Shit, don't let me hold you.
+
+    gordon
+        Sure, Oliver. You know, if you don't want to pay for a drink...
+        You could check the big meeting room past the elevators.
+        I'm pretty sure there's a mini fridge in there.
+    
+    oliver
+        Ohh, good idea!
+
+    gordon
+        But we'd better not be late.
+    
+    akizet
+        ah, yes
+        goodbye, oliver
+        may your hunt bear fruit
+
+    oliver
+        See ya around.
+
+    RESPONSES::akizet
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        set out<+>END
+            EXEC::setCam()
+
+gotwater
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Huh?
+        Wait, how--
+            AUTOADVANCE::
+            WAIT::2000
+        Where did you get that?
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        That's not what I...
+        ...Yeah, sure, thanks.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Wait, did you drink from this?
+
+    akizet
+        there was no change in the contents, if that is what concerns you, oliver
+        would you like me to get another one?
+
+    oliver
+        Uh, no, it's--it's fine.
+        You should probably get to your meeting.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+gotwaterbonus
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Akizet, I--
+        I already...
+            AUTOADVANCE::
+            WAIT::2000
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        Okay.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Did you...?
+        Whatever, it's fine.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+END::ratween(env.bgm, 1)
+`)
+
 if (check("PAGE!!cor_ru_roomp") != true) { // avoiding infinite recursion cause that happens for some reason
     change("PAGE!!cor_ru_roomp", true)
     cor_ru.envoyChat = env.citystreet.envoyChat;
@@ -1474,3 +2318,7 @@ if (check("PAGE!!cor_ru_roomp") != true) { // avoiding infinite recursion cause 
         if (blockedoff) processTranslation(document.querySelectorAll("#content"), true)
     }
 }
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

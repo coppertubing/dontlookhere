@@ -349,6 +349,12 @@ env.localization['definitions'] = {
     "землемысльцах": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'уважаемый титул';'административная позиция';'частичный перевод';'сгенерировано из унаследованного описания'` },
 
 
+    "гнилезорец": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'обязанность в пещерном городе';'отслеживать рост вредоносных порослей';'изучать использование невредоносных порослей';'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    "гнилезорца": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'обязанность в пещерном городе';'отслеживать рост вредоносных порослей';'изучать использование невредоносных порослей';'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    "гнилезорцу": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'обязанность в пещерном городе';'отслеживать рост вредоносных порослей';'изучать использование невредоносных порослей';'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    "гнилезорцем": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'обязанность в пещерном городе';'отслеживать рост вредоносных порослей';'изучать использование невредоносных порослей';'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+    "гнилезорце": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'обязанность в пещерном городе';'отслеживать рост вредоносных порослей';'изучать использование невредоносных порослей';'частичный перевод';'подразумевается ближайший культурный эквивалент'"},
+
     // time
     "θтрёхглазого": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text":`'отрезок времени';'обороты вокруг глаза велзи';'религиозный подтекст'` },
 
@@ -562,7 +568,8 @@ env.localization['strings'] = {
 
     "__incomplete_thoughtform__": "__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__",
 
-    "funfriend": "развледруг",
+    "fairy": 'фея',
+    "rotwatcher": 'гнилезорец',
 
     "proxyfriend": "проксидруг",
         "HELLO INTERLOPER": "ПРИВЕТ ЛАЗУТЧИК",
@@ -673,7 +680,7 @@ env.localization['strings'] = {
     "p-a-r-s-t-e": "п-а-р-з-и-т",
     "p?a-??r?-???s?-t?e?": "п?а-??р?-???з?-и?т?",
 
-    "UNPROCESSABLE__!!": "ОБРАБОТКА_НЕВОЗМОЖНА __!!",
+    "UNPROCESSABLE__!!": "ОБРАБОТКА_НЕВОЗМОЖНА__!!",
     "error-unprocessable": "ошибка-обработка-невозможна",
 
     "__UNKNOWN": "__НЕИЗВЕСТНО",
@@ -705,12 +712,23 @@ env.localization['strings'] = {
     "'review scanned and detected entities'": "'просмотр просканированных и обнаруженных сущностей'",
     "'system management'": "'управление системой'",
     "'influence thoughtspace';'third-party installation'": "'влияние на мыслепространства';'сторонняя установка'",
+
     "REALITY::'no effect'": "РЕАЛЬНОСТЬ::'не имеет эффекта'",
     "UNITY::'enables additional ACT on responsive thoughtforms'": "ЕДИНСТВО::'добавляет дополнительное ДЕЙСТ на отзывчивых мыслеформах'",
     "HUNGER::'alters perception to tolerate high incoherence';'reveals gaps'": "ГОЛОД::'изменяет восприятие, позволяя выдерживать высокую бессвязность';'выявляет бреши'",
+    "JOY::'alters perception';'references imported library of thoughtform patterns and observations'": "РАДОСТЬ::'изменяет восприятие';'ссылается на импортированную библиотеку паттернов мыслеформ и наблюдений за ними'",
+    "FREEDOM::'enables free movement in spatial thoughtforms';'hold SHIFT for slower movement';'can be utilized with other masks'": "СВОБОДА::'позволяет свободно передвигаться в пространственных мыслеформах';'зажмите SHIFT для замедленного движения';'может использоваться с другими масками'",
+
     "RESONANCE::'none within this particular memory segment';'await further repairs'": "РЕЗОНАНС::'не имеется в этом конкретном сегменте вспоминания';'ожидайте дальнейших починок'",
     "RESONANCE::'detected in upcoming memory stream'": "РЕЗОНАНС::'обнаружен в предстоящем потоке памяти'",
     "RESONANCE::'limited'": "РЕЗОНАНС::'ограниченный'",
+
+    "LOCAL_RESONANCE::": "ЛОКАЛЬНЫЙ_РЕЗОНАНС::",
+        "'moderate';'connective thoughtform detected'": "'умеренный';'обнаружена соединительная мыслеформа'",
+    "'none detected'": "'не обнаружен'",
+
+    "ACTIVITY_DETECTION::":"ОБНАРУЖЕНИЕ_АКТИВНОСТИ::",
+    "'none'":"'нет'",
     
     "GAD": "ГАН",
     "'overcoherency block, exercise caution'": "'блок сверхсвязности, соблюдайте осторожность'",
@@ -1110,7 +1128,7 @@ env.localization['strings'] = {
     "special_vekoa_rush": "special_vekoa_rush",
     "tele_vekoa_rampage": "tele_vekoa_rampage",
 }
-env.localization['entityDescriptions'] = {
+env.localization['entityDescriptions'] = { // --- not referring to entity-menu.js because everystuff.js is loaded first and therefore would not be able to grab stuff outta there cause it doesnt Exist yet
     "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
 ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`,
@@ -1154,7 +1172,9 @@ env.localization['entityDescriptions'] = {
     "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`,
+
+    "fairy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ:'голод'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'побрякушка, носима(ԘØ;;-__ОШИБКА::'необрабатываемо'__;'свободна! свободна!!'</span>`,
 }
 
 
@@ -2203,3 +2223,50 @@ something
 
 END::env.hub.firstVisitEnd()
 `)
+
+
+// --- this is so that the camerawalkers make you download files that are named in russian instead of english
+cor_ru.cameraGuyThings = {
+    //base
+    abyss: 'бездна.png',
+    nope: 'нетспасибо.png',
+    effigy: () => !check("effigy_sipper") ? 'ЭФФИГИЯ.png' : 'всёчисто.png',
+
+    //e4a1
+    orbit: 'внедосягаемости.png',
+    street: 'владения.png', // ?
+    darkstreet: 'тихо.png',
+
+    banks: 'брешь.png', // ?
+    banksflip: 'отражение.png',
+    abysscity: 'туман.png',
+    ozo: 'расточители.png',
+}
+env.cameraGuySnap = (thing) => {
+    cutscene(true); play('click1'); flash(true)
+
+    const dl = env.cameraGuyThings[thing]
+    const flag = `cam_${thing}`
+
+    setTimeout(() => {
+        flash(false); play("muiScanner", 0.75); cutscene(false)
+        if(!dl) return
+
+        change(flag, true)
+
+        // kinda crazy how there's no direct "download this file" command in js huh
+        const downloadLink = document.createElement('a')
+        downloadLink.href = typeof dl === 'function' ? dl() : dl
+        downloadLink.target = "_blank"
+        downloadLink.download = cor_ru.cameraGuyThings[thing] // --- code change
+        downloadLink.setAttribute("data-no-swup", true)
+        downloadLink.style.display = 'none'
+
+        //trigger DL
+        document.body.appendChild(downloadLink); downloadLink.click(); document.body.removeChild(downloadLink)
+    }, 1000)
+}
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

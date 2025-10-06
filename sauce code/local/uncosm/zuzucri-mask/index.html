@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__UNKNOWN__..</title>	
+<meta name="title" content="..__UNKNOWN__..">
+<meta name="description" content="......">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/uncosm/zuzucri-mask/">
+<meta property="og:title" content="..__UNKNOWN__..">
+<meta property="og:description" content="......">
+<meta property="og:image" content="https://corru.observer/img/socials/where.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/uncosm/zuzucri-mask/">
+<meta property="twitter:title" content="..__UNKNOWN__..">
+<meta property="twitter:description" content="......">
+<meta property="twitter:image" content="https://corru.observer/img/socials/where.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1759426824626918236"></script>	
+	<script src="/js/dialogue.js?1759426824626918236"></script>	
+	<script src="/js/globalents.js?1759426824626918236"></script>	
+	<script src="/js/cystStage.js?1759426824626918236"></script>
+	<script src="/js/buddy.js?1759426824626918236"></script>
+	<script src="/js/vn2.js?1759426824626918236"></script>
+	<script defer src="/js/saves.js?1759426824626918236"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1759426824626918236'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1759426824626918236'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu' class="noclosemenu">
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='cicon ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="cicon ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='cicon ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__UNKNOWN__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1759426824</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
+
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
+
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
+
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
+	
+	<div id="content">
+		<style>
+#content::after, #content::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#content::after {
+    background: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+}
+
+#content::before {
+    background: url(/img/textures/spotgradientinverse.gif), url(/img/textures/corruripplegrayscale.gif);
+    background-size: 150% auto, auto;
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+}
+
+body.in-menu #content {
+    transform: unset !important;
+}
+</style>
+
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__UNKNOWN__..",
+				name: "unknown",
+				dialoguePrefix:  "sec" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1759426824626918236,
+
+				
+				image: "/img/socials/where.gif",
+				
+
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/hub.ogg'],
+					preload: true,
+					loop: true,
+					
+					 rate: 0.4, 
+					sprite: {
+						__default: [50, 153000, true]
+					}
+				}),
+				
+
+				
+
+				
+				
+				onLoaded: ()=>{	
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+
+					updatePreferenceAttributes()
+					
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`zuzucri-masks`] = `'corrucystic treatment for zuzucri infestation';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`spike in the heel`] = `'common idiom';'persistent issue'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ███`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+					
+					//dynamically inserted
+					
+					env.dialogueActors["stupid"] = {
+    type: "thoughtform portrait-contain portrait-darkripple larval loose-thought",
+    image: '/img/sprites/obesk/larval/larval1.gif',
+    voice: ()=>play('talkcore', 2),
+    player: true
+}
+
+env.dialogueActors["host"] = {
+    type: "thoughtform portrait-contain obesk qou portrait-spectral",
+    image: '/img/sprites/obesk/larval/something1.gif',
+    voice: ()=>play('talksignal', 1.5)
+}
+
+if(check("ep1_fed") == "container") {
+    env.dialogueActors["stupid"].image = '/img/sprites/obesk/larval/larval1h.gif'
+    env.dialogueActors["host"].image = '/img/sprites/obesk/larval/something1h.gif'
+}
+
+env.dialogues["zmask"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...opens, revealing a small chamber with a second reinforced hatch
+        an interlocking system of corru and carved stone
+        i step within, adjusting the corrucystic capsule in my arms
+        and after a small delay, the second hatch opens, the first closing behind me
+        the dark is overwhelming as always...
+        only the slightest illumination from organized growths along the walls
+        but the cavelight upon my waist carries enough light for me to safely enter,
+        and brings the shine of θ███'s eyes upon me, from across the chamber
+        two at first, then more--then two, again
+
+    stupid
+        θ███?
+
+    sourceless
+        if what they say is right, it should be θ███, right now...
+        she approaches slowly, carried by the zuzucri's limbs behind her
+        an indistinct mass that hides itself from me as best it can
+        her silence is unsettling, enough that i nearly back into the reinforced entrance out of precaution
+        a number of dark shapes rotate in the air above her, so--it must be working, right?
+        my fear is silenced by seeing the glimmer of her receptor ornaments
+        the joyous upturn and uncurl is enough to reassure me
+        
+    host
+        θ██████!!
+        come, sit!
+        i am so glad you came, i know it is a special θgaze...
+
+    stupid
+        ahh, that may be the case!
+        but i did not want you to miss out
+        in fact, nobody did--we all helped with this!
+
+    sourceless
+        i weave around furniture and corrucystic fixtures
+        they have turned this place into a combination of living chamber and workshop
+        though, i wonder how much she is actually able to use...
+        soon we are seated at a central table
+        at least, i am... she is simply lowered
+        the capsule thuds against its stone surface, despite my efforts to place it quietly
+
+    stupid
+        a <span definition="INHERITED CONTEXT::'celebration of veilk-fall';'inherited description-generated noun'">new-fall</span> feast!
+
+    sourceless
+        i unlatch the cavelight from my suit, placing it nearby the capsule
+        in its pale light, the shapes above her become clear
+        the zuzucri-masks - hovering in a wide, neat circle above and around her head
+        hollow corrucystic impressions of faces
+        moving their mouths, whispering near-inaudible nonsense
+        all with different receptors, changing orientation occasionally
+        each carries a spherical connector behind the mask's curve, but with nothing visibly attached...
+        like valika-borne cysts, without the tether? 
+        i must ask about that later
+        for now, i try not to focus on them directly too much--the θjut said it is best that way
+        with a few taps along the sides of the spherical capsule, its corrucystic cover splits and retracts,
+        releasing the aroma of seared veilk-vein, closed and stuffed with <span definition="INHERITED CONTEXT::'city heart';'fastest-rotting veilk organ';'named for practice of consuming rapidly in celebration of new veilk-fall'">ozoilaki</span> meat and savory fruit flesh
+        lesser capsules are arranged neatly within, containing a few different beverages
+        veilk's-blood being the most significant
+        the angled cavelight gives θ███'s eyes a clear glow,
+        revealing the splitting marks of her face, curling at the edges even now in anticipation of this delicacy
+
+    host
+        so it was a good one?!
+        this is so much...
+
+    stupid
+        yes! we are not sure how it happened, but...
+        middle-sized, conveniently close, good health... still alive, actually!
+        θ██████ and the examiners have been saying it had some malformed leg-tendrils,
+        and its growth must have gradually made it unable to support its own weight effectively anymore
+
+    host
+        lucky! but, sad
+        i always felt better when it was the older veilk...
+        and they have more varied parasites, too!
+        but, maybe velzie saw it fit to throw some fresh food our way
+        it has been a bad θeye...
+    
+    sourceless
+        i chuckle, maybe inappropriately
+        but it comes from the same place
+    
+    stupid
+        yes...
+        but, all things become balanced, right?
+    
+    sourceless
+        there is a hesitant affirmative twist in her receptors
+        one of her claws raises to grip a blade within the capsule
+        and... a tendril of the zuzucri rises from behind her, in place of her other claw,
+        a grim reminder of the scars from our fight, seizing a food-spike without thought
+        to her, it may even appear as her claw, for she uses it all the same
+        it is better if i do not ask
+
+    host
+        oh, did you bring any for yourself?
+    
+    stupid
+        i already ate at the celebration a θwink ago...
+        this is all for you!
+
+    host
+        ah...
+    
+    sourceless
+        her flat reaction brings a hollow to my heart
+        she must have been aware of the θjut's push to allow her to safely join us
+        it was foolish to raise her hopes
+        ...but she does not seem particularly upset
+
+    host
+        well, here
+    
+    sourceless
+        from the meal, she picks up one of the smaller beverage capsules with a mismatched third claw from behind her back
+        offering it to me with a kind curl, oblivious
+        it is an import from another cave-city, one of the blackish-grey drinks
+        not my favorite, but... i accept
+        she returns to her utensils, cutting into the vein
+        a thick cut is brought up to her face, which splits apart at the nose
+        spiralling teeth and muscle set into it as her face reforms, mimicking the motion of chewing
+        her eyes return, allowing her to see the small shock in my receptors
+        i am usually better about playing along, but, i have never seen her eat like this...
+        as to not unsettle her, i launch into catching up
+    
+    stupid
+        so how is it going here?
+        the ma--
+        
+    sourceless
+        i catch myself
+        i am sure the θjut would prefer i not discuss this with her
+        not without some defensive measure
+        but i have already started
+    
+    stupid
+        the, um, the new... the new things, they are trying
+    
+    host
+        oh! good!
+        the masks, you mean?
+        yes, very very good!!
+        they have the zuzucri in a state of almost constant deactivation
+        except for, uh, resting, and apparently some time after waking from sleep
+        i do not think they can do anything about that
+        but... as long as it--i--am fed, and i am not too stressed, it should not be an issue
+        
+    sourceless
+        another cut of the vein from the center is brought to her face
+        splitting into a monstrous maw again, tearing the vein's flesh with ease
+        i suppress my wincing
+        does she not realize the implicit threat in what she just said?
+        was that the beast speaking through her?
+
+    host
+        it really is all coming along so fast...
+        the only spike in the heel is that it feels endless
+        i do not remember sleeping, or dreaming, or waking...
+        it feels as if i have been wide awake since the moment it took me
+        jolted to different places, with a new set of faces every time
+        it is better now with the masks, but i am fatigued
+        i am not truly tired, not exactly... they told me that the zuzucri does sleep...
+        i just miss being able to feel it, myself
+        maybe if only because i am sealed in this little room
+        once they have the masks perfected, and they can let me out...
+        i am sure this will all feel better!!
+    
+    sourceless
+        with an excited curl in her receptors, she drinks of the veilk's-blood
+        held in the coil of a tendril, brought to her lips without the terrible split
+        "let me out"...
+        what are they telling her?
+        does she really think...
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
+
+
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					body.classList.add('codezone')
+startDialogue("zmask")
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+				},
+
+				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					body.classList.remove('codezone')
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
+				}
+			}
+
+			
+
+			env.pageName = "unknown";
+			env.pagePath = location.pathname;
+			env.globalLimitedEntitySetup()
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

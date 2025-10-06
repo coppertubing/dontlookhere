@@ -5,7 +5,7 @@
     > localization/beneath-parasite.js
     adaptation for /local/beneath/parasite
 
-    progress: piece strings, some dialogues and moth unfinished as of 23.08.2025
+    progress: piece strings, some dialogues and moth and rotwatcher unfinished as of 04.10.2025
 */
 
 
@@ -344,3 +344,38 @@ board
     RESPOBJ::mthresp
 
 `)
+
+env.localization.page['parasite'].dialogues["++rotparasite"] = generateDialogueObject(`
+start
+    self
+        what do you think about this place?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention stays upon you, silent, for a long moment.
+        it shifts away, to the various thoughtforms nearby.
+
+    rotwatcher
+        the thoughtspace at large is observed to be within a regional conglomeration of delaminated thoughtspaces, though its placement between a number of similarly deteriorated spaces allows its organelles to remain intact and largely untargeted by resource-seeking externally originated thoughtforms.
+        local thoughtforms display heretofore unseen symptoms of an unknown phenomena in which internal meaning and purpose assignment is disrupted or otherwise confused through the introduction of conflicting information and memory.
+        the present rotwatcher may estimate that a form of small-scale emergent conglomeration may have occurred in which the thoughtforms of a separate origin were broken down and utilized as resources for continued survival.
+        alternate possible cause #1: collective neural processor of present thoughtspace merged with a similar organelle of external origin during spatial delamination, combining resources for continued survival, alongside introducing aforementioned conflicting memory.
+        alternate possible cause #2: large amount of majorly deallocated or dissociated "embassy" related thoughtforms and thoughtspaces exist within the dissociative pool; adjacency to its horizon may have presented easily accessed resources for local thoughtforms during organelle starvation, allowing for subsumation of relevant information.
+        
+    sourceless
+        its matter-of-fact explanations carry a noticeable feeling of uncertainty and fascination.
+
+    rotwatcher
+        no conclusions may be made in confidence about the phenomena on display within the present thoughtspace.
+        
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+            
+END::revertBgm()
+`)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

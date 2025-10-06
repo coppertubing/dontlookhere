@@ -719,3 +719,7 @@ entities
 
     RESPOBJ::mthinterviewresp
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

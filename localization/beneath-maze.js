@@ -50,3 +50,5 @@ env.localization.page['beneathdepths'] = {dialogues: {},
 }
 
 
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

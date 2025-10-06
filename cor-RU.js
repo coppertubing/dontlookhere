@@ -979,51 +979,97 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         change("TEMP!!cor-rudev", true)
     },
 
+    // for credits
+    credits: `
+        <div class="creditblock developers">
+            <h2 definition="оригинальная команда и старые друзья">Corru Crew</h2>
+            <ul>
+                <li><a href="https://corru.works" target="_blank"><img src="/img/da_fiend.png" /> corru.works:</a> <span definition="программист/главный писатель/создатель музыки/визуальных ресурсов... я типа всё делаю лол" style="border-bottom: 1px dotted;display: inline-block;padding-bottom 2px;">Архитектор</span></li>
+                <li><a href="https://pocl.vip" target="_blank"><img src="/img/da_pocl.png" /> pocl.v:</a> Дизайн персонажей и главный художник подписей</li>
+                <li><a href="https://www.jacktenbusch.com" target="_blank"><img src="/img/da_tonk.png" /> JakkRabbitArt:</a> Творчество и поддержка иконок</li>
+                <li><a href="https://uh.fyi" target="_blank"><img src="/img/da_sha.png" /> Shaman:</a> Писательская поддержка и тестирование</li>
+                <li><a href="https://uh.fyi/redrealm" target="_blank"><img src="/img/da_fool.png" /> red:</a> Писательская поддержка и тестирование</li>
+                <li><span definition="у загадочного шейдер-мена нет сайта сорян"><img src="/img/da_kaz.png" /> Kazne:</span> Анимированные текстуры и шейдеры</li>
+            </ul>
+            <h2 definition="direct development/asset collaborators of significant proportion">Corruborators</h2>
+            <ul>
+                <li><a href="https://soundcloud.com/saiiko2" target="_blank"><img src="/img/da_saiiko.png" /> saiiko2</a>: Музыкальная поддержка <label>E3A2, E4</label></li>
+                <li><a href="https://sola.nekoweb.org/index.html" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
+                <li><a href="https://rainbowcutieo3o.neocities.org/" target="_blank"><img src="/img/da_bo.png" /> RainbowCutieo3o</a>: Творчество и поддержка дизайна персонажей <label>E4</label>, тестирование <label>E3A2, E4</label></li>
+            </ul>
+        </div>
+        <div class="creditblock contributors">
+            <h2 definition="единичные работы и упоминания других крутых людей">Дополнительные Вклады</h2>
+            <ul>
+                <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание "Jokzi Ozo" темы</li>
+                <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/ОБРАМЛЕНИЕ/</li>
+                <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octo</span></li>
+                <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4</label> <span class="denselist">Flanburgr, Ryanatorx, Novaenia, Octo</span> + <label>E4A1</label> <span class="denselist">rosy, spdx, anki</span></li>
+                <li><label class="codehelp">(КОД)</label><label>ВСЕ</label> <a href="https://marbelynrye.000.pe/" target="_blank">marbelynrye</a>: Огромное количество тестирования багов и предложений по коду</li>
+            </ul>
+        </div>
+        <div class="creditblock fundfriends">
+            <h2 definition="дражайшие финансовые спонсоры, без которых нас бы здесь не было">Fundfriends</h2>
+            <em>все, кто когда-либо поддерживал проект на <a href="https://ko-fi.com/corruworks" target="_blank">ko-fi</a> на уровне fundfriend!!</em>
+            <ul></ul>
+        </div>
+        <div class="creditblock contributors developers">
+            <ul>
+                <li><label>(???)</label><label>E3A2</label> Flan</li>
+            </ul>
+        </div>
+    `,
+
     // loading and updating stuff as we go
 
     list: {
         everything: "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
         page: {
-            fbx: "https://coppertubing.github.io/cor-RU/localization/basement.js",
+            fbx:                "https://coppertubing.github.io/cor-RU/localization/basement.js",
 
-            hello: "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
-            hub: "https://coppertubing.github.io/cor-RU/localization/hub.js",
+            hello:              "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
+            hub:                "https://coppertubing.github.io/cor-RU/localization/hub.js",
 
-            localcity: "https://coppertubing.github.io/cor-RU/localization/their-city.js",
-            citystreet: "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
+            localcity:          "https://coppertubing.github.io/cor-RU/localization/their-city.js",
+            citystreet:         "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
 
-            localorbit: "https://coppertubing.github.io/cor-RU/localization/the-void.js",
-            dullvessel: "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
+            localorbit:         "https://coppertubing.github.io/cor-RU/localization/the-void.js",
+            moon:               "https://coppertubing.github.io/cor-RU/localization/bright-moon.js",
+            dullvessel:         "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
 
-            localocean: "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
-            localship: "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
-            interview1: "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
+            localocean:         "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
+            localship:          "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
+            deck:               "https://coppertubing.github.io/cor-RU/localization/vessel-surface.js",
+            interview1:         "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
 
-            localdepths: "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
+            localdepths:        "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
 
-            localuncosm: "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
-            recosm: "https://coppertubing.github.io/cor-RU/localization/recosm.js",
-            localuncosmwhere: "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
-            sec: "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
+            localuncosm:        "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
+            recosm:             "https://coppertubing.github.io/cor-RU/localization/recosm.js",
+            localuncosmwhere:   "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
+            sec:                "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
+            pit:                "https://coppertubing.github.io/cor-RU/localization/labs.js",
 
-            localship2: "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
+            localship2:         "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
 
-            embassy: "https://coppertubing.github.io/cor-RU/localization/embassy.js",
-            gol: "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
-            ep4: "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
+            embassy:            "https://coppertubing.github.io/cor-RU/localization/embassy.js",
+            gol:                "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
+            ep4:                "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
+            "better-times":     "https://coppertubing.github.io/cor-RU/localization/better-times.js",
 
-            abyss: "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
-            parasite: "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
-            beneathdepths: "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
+            abyss:              "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
+            parasite:           "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
+            beneathdepths:      "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
+            car:                "https://coppertubing.github.io/cor-RU/localization/beneath-car.js",
 
-            e3a2: "https://coppertubing.github.io/cor-RU/localization/frame.js",
+            e3a2:               "https://coppertubing.github.io/cor-RU/localization/frame.js",
 
-            cache: "https://coppertubing.github.io/cor-RU/localization/cache.js",
-            ozo: "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
+            cache:              "https://coppertubing.github.io/cor-RU/localization/cache.js",
+            ozo:                "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
         },
-        combat: "https://coppertubing.github.io/cor-RU/localization/combat.js",
+        combat:     "https://coppertubing.github.io/cor-RU/localization/combat.js",
         entityMenu: "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
-        load: "https://coppertubing.github.io/cor-RU/load.js",
+        load:       "https://coppertubing.github.io/cor-RU/load.js",
     },
 
     updateResources: function (fresh = false) {
@@ -1084,7 +1130,7 @@ cor_ru['advancewarnclick'] = function () {
                     <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
                     <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста.</p>
                     <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
-                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз пройдите диалог с Гордоном в комнате высоко наверху до конца.</p>
+                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз???????????.</p>
                     <div class="buttons">
                         <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
                         <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
@@ -1103,7 +1149,7 @@ cor_ru['advancewarndialogue'] = function () {
                     <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
                     <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста. Имейте в виду, что лог продвигается автоматически при перезагрузке страницы.</p>
                     <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
-                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз пройдите диалог с Гордоном в комнате высоко наверху до конца.</p>
+                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз???????????.</p>
                     <div class="buttons">
                         <span id="gpu-done" class="button" onclick="document.querySelector('#ru-warning').remove()">оставить всё как есть</span>
                         <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>

@@ -3,6 +3,7 @@
 horriblefuckingthing = [
     '',
     'not_found',
+    'credits',
     'hello',
     'hub',
 

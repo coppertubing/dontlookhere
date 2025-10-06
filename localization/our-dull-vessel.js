@@ -411,3 +411,7 @@ locked
 
     RESPOBJ::mthdullresp
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

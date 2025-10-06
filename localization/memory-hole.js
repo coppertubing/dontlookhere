@@ -6,7 +6,7 @@
     adaptation for /local/uncosm/where and all of the memory hole pages
     (---hmmmmmmmmmmmmmm.........)
 
-    progress: every page finished, definitions unfinished, review needed, b o n u s as of 23.08.2025
+    progress: every page except for memholes finished, definitions unfinished, review needed, b o n u s as of 06.10.2025
 */
 
 
@@ -63,6 +63,9 @@ env.uncode = { // --- taking the function and adding stuff so it redirects you t
             else if (value == "зузукри") value = "zuzucri"
             else if (value == "зузукри-маски") value = "zuzucri-masks"
             else if (value == "ресурсы") value = "cor-ru"
+            else if (value == "зов") value = "call"
+            else if (value == "фея") value = "fairy"
+            else if (value == "ходилка штука потом переведу") value = "walker"
 
             if (swup.cache.exists(`/local/uncosm/${value}/`)) { // compatibility with memory hole mods
                 setTimeout(() => {
@@ -162,7 +165,81 @@ start
         что вообще происходит<+>END
 `)
 
+env.localization.page["sec"].dialogues["call"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
 
+    sourceless
+        ...minds continue to brush against one another through the collective,
+        mine, then hers, then mine again, shedding wordless impulses and knowledge back and forth
+        though she is far more active, sparsely allowing interjection
+        not that i mind, of course, mentally fatigued by today's instruction
+
+    frenetic
+        --you recall the great disruption some θgazes ago yes?
+        the collective and the dullvoice and the everything?
+    
+    wiser
+        disruptive especially for ukazni ozo, i imagine
+
+    frenetic
+        oh yes yes yes oh yes it was bad my whole study chamber almost detonated
+        i was designing this sustained connective pulse weapon where ummm
+        ok wait before i get into that yes the disruption
+        lots of research devices paused or broke down badly very badly
+        so much time wasted on recalibration and manual filtering uuugh hate hate hate
+        because of this new presence in the dull that is so noisy and everywhere
+        θeyes and θeyes of dull pattern training useless
+    
+    sourceless
+        i am met with the clear impulse of her stout receptors pressed against her head,
+        claws digging into her face, teeth grit, barely holding back a frustrated screech
+        of course, she is exaggerating for comedic effect, for she still holds an excited tone
+
+    frenetic
+        have you heard about what it is actually? where it is? why it is?
+
+    wiser
+        not yet, my friend
+        my work hardly concerns the dull
+        only murmurs have reached me
+
+    frenetic
+        oh oh oh oh good then i can tell you!!!!!!
+        at first we all thought someone broke the dull plane somehow hahahaa
+        it is like a loud noise i mean noise does not exist in the dull plane but you know that is easy to compare it to considering--
+        anyway most dull devices filtered it out automatically because it is a core fundamental that things that do not make sense are ignored for most devices
+        but we like that here we collect what does not make sense and so we have been looking at it constantly since it started
+        and it is still going! so loud and so strong and no sign of stopping!!!
+        still cannot make sense of it but so many new initiatives are springing up in ukazni ozo and i think one in that shore city and--
+        oh!!! θ██████ you should get one started in oltazni!!!!!
+
+    sourceless
+        my internal impulse to laugh is transmitted far faster than any external manifestation
+    
+    wiser
+        θ█████, i have quite enough to handle with this current clutch of vel
+        so much more distracted than any who have come before...
+        maybe when they can hold their own on the surface, i could pivot?
+        ah, perhaps with θ█████'s assistance!
+        i imagine he must be fascinated by this matter, as well
+        though it has been θeyes since i last spoke to him for longer than a moment...
+    
+    sourceless
+        ...perhaps he will even have forgiven me by now...
+    
+    frenetic
+        oh yes yes ok no hurry it is not going anywhere!!
+        whenever you want to start i am here i can help get you up to date and transmit listener designs and--
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
+`)
 env.localization.page["sec"].dialogues["cavik"] = generateDialogueObject(`
 start
     self
@@ -537,6 +614,69 @@ start
         
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
+`)
+env.localization.page["sec"].dialogues["fairy"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...nearly a spirelength from the ground, far above the surface vapors,
+        i continue to climb higher, higher still, rending the soft flesh of my carrier
+        claws caked with the veilk's fast-congealing blood, growing dull and numb in the bitter shore wind
+        the pack of cysts the θjut have assigned me to carry weighs heavily
+        yet the weight of my eyes, my legs, my arms, have all grown far greater
+        when was it i last slept?
+        with the sparse herd here, with clear-sky and direct gaze of velzie's eye,
+        i am at least unlikely to meet any surprise
+        so, the time has come for rest
+        how i wish i could simply rest in a zzepel... 
+        but little space was spared for comfort, instead taken by vital knowledge cysts
+        nearing the top of this carrier, i draw spikes from my suit,
+        stabbing them in a neat array, securing them to my tethering harness
+        finally, i draw the one comfort i am afforded: a veilkizt 
+        and with a push off the flesh of the veilk, a swing upon my tethers,
+        its hook impales the carrier's flesh, curving into it, seat secured by my weight
+        rest... at last
+        ....
+        nearly limp am i in the tethers, resting upon this thin platform
+        the shore is too close to sleep, eluzni just barely out of reach on foot
+        so for now--i simply observe
+        the gaze of velzie's eye as it swirls directly above, infinite stars beyond,
+        sparse veilk of this herd, stomping across this desolate plain
+        insultingly close beacon-lights floating high over eluzni, 
+        glowing with a soft violet that casts a haze in the damp, cold air
+        it is all a quiet beauty that i am far too tired to appreciate
+        ....
+        ah--i... nearly fell asleep
+        my carrier sways with a slow, thunderous step below
+        and as i stare up into the countless glimmering stars,
+        already mysteries, poorly understood except by the most eccentric ukaznians
+        i notice the strangest patch of darkness
+        within it, a collection of a few larger glimmering spots
+        yes--it moves different, distinct from the rest of the sky with the veilk's steps, yet still a part of it?
+        so i sit forward, brief wakefulness stirred in my eyes, staring close
+        quickly, i draw my aima cyst, hooking it to a receptor, releasing it into the air
+        it flickers a new sight into my mind, focusing, focusing further...
+        and the darkness twists
+            EXEC::ratween(env.bgm, 0.2, 20000);body.classList.add("eyes")
+            WAIT::4000
+        the darkness twists, five glimmering pale lights in an arc
+        previously upright, rotated now as if placed into the outer circle of a turning wheel
+        breath escapes, my receptors coiling tight, a jolt through me nearly displacing the veilkizt
+        my movement disturbs the aima cyst's focus, and i cannot find the patch again
+        i scan desperately--it was my imagination, no?
+        i am tired, this is known to happen, this--
+        i clutch my fairy ward, its spikes digging into the leathery cover over my palm
+        i cannot stay here
+        quickly, i rise, pulling free the veilkizt, removing tethers, i must leave, i must--
+
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/depths/")
 `)
 env.localization.page["sec"].dialogues["flower"] /*--- кс кс слизнячок (изабель) СЛИЗНЯЧОООООООООООООООООООООООООООООКРПГСНАВЧРЫЯВ*/ = generateDialogueObject(`
 start
@@ -1145,6 +1285,95 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
+env.localization.page["sec"].dialogues["walker"] = generateDialogueObject(`
+start
+    sys
+        NOTICE::'memory stream located'
+
+    sourceless
+        ...claws find little grasp upon the θwalker's glassy shell
+        a near impenetrable corrucystic carapace
+        fortunately, once i am past its folded, spindly legs,
+        some small holds are built into the sides,
+        allowing my ascent to its entry hatch easily
+        i descend into the dark interior, a spherical chamber with space for two to sit
+        alongside a chamber for materials--empty, for θ███████ and any others we find
+        the luminescent flesh of its walls, displaying information plainly, act as our only light
+        θ█████ already sits within, awakening various components
+        she does not look at me, nor do i express any delight in this rare occasion
+        θ███████ has been gone far too long for velzie to let this end kindly
+        and even worse, the murmurs of his sister having gone out before us, means she may well be...
+
+    tired
+        θ██████, you are freshly awoken, you will take up the primary connector
+    
+    stupid
+        what!! you know i--
+    
+    sourceless
+        with a harsh turn and stare, the reflection of light in her eyes silences me
+        it is always so miserable to deal with θ█████ 
+        but rarely does she allow an operation to go poorly
+    
+    stupid
+        --fine. fine, i will
+
+    sourceless
+        from an inset crevice above, i tug a large connector free,
+        bringing it to my receptors, already uncurled
+        and as its flesh softens, both weave into its cold sludge
+        in kind, muddy and alien senses weave through my skull,
+            EXEC::ratween(env.bgm, 0.35, 40000);play("weirdbuild", 0.5)
+            SILENT::
+        a sickly wave of feverish warmth and dull pain, leaving new awareness
+            EXEC::content.classList.add("altgo")
+            SILENT::
+        the six hard-shelled legs that i feel i have always had,
+        their joints familiar and easily stretched, raising my central shell from the cavestone
+
+    stupid
+        ..ughh...
+    
+    sourceless
+        though it feels it has always been this way, my sight has changed
+        it is made spherical, an assault of all directions from the skin of my shell
+        the blue-tinged stone of the ceiling approaches, while the very same of the ground grows distant
+        surrounding θjut stretch downwards, distorted by the warping of my singular sight
+        and the scent--the scent of the cave, every obesk, every particulate upon the wind, overtakes me
+        distant as my true body feels, i am certain my claws are balled into overwhelmed fists
+        wakeful awareness is exactly what the θwalker requires,
+        for any less and the mind crumbles to unconsciousness
+
+    stupid
+        ...all right, got--it...
+    
+    sourceless
+        speech comes uneven and stilted, the normal reflexes of my mouth small and unfamiliar
+        
+    tired
+        already? 
+        this is why you are a good fit for this, θ██████
+        take us out, i will connect with a coordinator for additional guidance
+
+    sourceless
+        i step forward with one leg, its harsh hooked tip striking and cracking the stone
+        only then, with the lurch of my core, does my lesser body register too much movement
+        i try to lift a claw, but instead raise my front-left leg...
+    
+    stupid
+        ah--could you--secure my tethers?
+    
+    tired
+        yes, yes, just start moving
+        we do not have time to...
+                                
+    sys
+        NOTICE::'memory stream terminated'
+
+    RESPONSES::sys
+        return<+>END
+            EXEC::moveTo("/local/uncosm/no/")
+`)
 env.localization.page["sec"].dialogues["yuzku"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
     sys
@@ -1574,8 +1803,8 @@ start
             EXEC::moveTo("/local/depths/")
 `)
 // effigy
-env.localization.page["sec"].dialogues.drinkquestions = generateDialogueObject(`
-RESPOBJ::
+env.localization.page["sec"].dialogues["bar"] = generateDialogueObject(`
+loop
     RESPONSES::self
         кто ты?<+>who
         как ты здесь оказалась?<+>here
@@ -1583,10 +1812,6 @@ RESPOBJ::
         джокзи озо<+>ozo
             SHOWIF::"ozo__council-task"
         пока<+>END
-`)
-env.localization.page["sec"].dialogues["bar"] = generateDialogueObject(`
-loop
-    RESPOBJ::drinkquestions
 
 start
     self
@@ -1598,7 +1823,13 @@ start
     effigy
         привееееетик!
 
-    RESPOBJ::drinkquestions
+    RESPONSES::self
+        кто ты?<+>who
+        как ты здесь оказалась?<+>here
+        можно мне выпить<+>drink
+        джокзи озо<+>ozo
+            SHOWIF::"ozo__council-task"
+        пока<+>END
 
 who
     self
@@ -1801,6 +2032,27 @@ start
 
 
 
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // --- hey buddy
 env.dialogueActors["corrurubonus"] = {
@@ -1864,7 +2116,7 @@ start
         только что
         наткнулись
         на пасхалку от самих разработчиков cor-ru!!!!!!
-        (cor-ru это руссификатор который вы сейчас используете если вы почему то не знаете)
+        (cor-ru это руссификатор который вы сейчас используете если вы почему-то не знаете)
 
     moth
         что
@@ -1927,6 +2179,43 @@ bonusContent = `
 
 body.in-menu #content {
     transform: unset !important;
+}
+
+.dialogue-message.rosrazum {
+	--background: url(/img/textures/fadein.gif), url(/img/textures/corrurippletran.gif), url(/img/textures/spotgradientinverse.gif), url(/img/textures/ceyetran.gif), url(/img/textures/cneural.gif), url(/img/textures/damagetran.gif), black;
+	--color: var(--obesk-color);
+}
+.dialogue-message.rosrazum .dialogue-text {
+	--color: var(--dark-color);
+	letter-spacing: 0.3em;
+	background-position: center left;
+	background-size: cover, cover;
+	box-shadow: 0px 0px 5px var(--friend-color);
+	border-color: var(--obesk-color);
+	text-shadow: 1px 1px var(--friend-color), -1px -1px var(--obesk-color);
+}
+.dialogue-message.rosrazum .dialogue-portrait {
+    
+}
+
+.dialogue-message.mleko {
+    
+}
+.dialogue-message.mleko .dialogue-text  {
+    
+}
+.dialogue-message.mleko .dialogue-portrait {
+    
+}
+
+.dialogue-message.lilfive {
+    
+}
+.dialogue-message.lilfive .dialogue-text  {
+    
+}
+.dialogue-message.lilfive .dialogue-portrait {
+    
 }
 </style>
 
@@ -2099,5 +2388,3 @@ if((location.pathname == "/local/uncosm/cor-ru/") && (page.dialoguePrefix.includ
     body.classList.remove('hard-cut')
 }
 }, true)
-
-

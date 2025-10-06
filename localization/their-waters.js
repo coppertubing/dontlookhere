@@ -27,3 +27,7 @@ env.localization.page['localocean'] = {dialogues: {},
 }
 
 if(check('hub__funfriend-ep1fed')) cor_ru.embassyCoherent(); // --ep!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

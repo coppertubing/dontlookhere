@@ -1,0 +1,4124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="/img/fav.gif">
+
+
+
+
+
+
+
+<title>..__BETTER_TIMES__..</title>	
+<meta name="title" content="..__BETTER_TIMES__..">
+<meta name="description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://corru.observer/local/ocean/polygonation/">
+<meta property="og:title" content="..__BETTER_TIMES__..">
+<meta property="og:description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+<meta property="og:image" content="https://corru.observer/img/socials/bt.gif">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://corru.observer/local/ocean/polygonation/">
+<meta property="twitter:title" content="..__BETTER_TIMES__..">
+<meta property="twitter:description" content="ANALYSIS::'spatial thoughtform';'recollection'::MINOR INCOHERENCE DETECTED">
+<meta property="twitter:image" content="https://corru.observer/img/socials/bt.gif">
+<meta name="theme-color" content="#ff00ff">
+<meta name="darkreader-lock">
+	
+	<script src="/js/lib/swup.min.js"></script>
+	<script src="/js/lib/howler.min.js"></script>
+	<script src="/js/lib/lettering.js"></script>	
+	<script src="/js/lib/lzstring.js"></script>	
+	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
+	<script src="/js/lib/draggable.bundle.js"></script>	
+	<script src="/js/corru.js?1759426824626918236"></script>	
+	<script src="/js/dialogue.js?1759426824626918236"></script>	
+	<script src="/js/globalents.js?1759426824626918236"></script>	
+	<script src="/js/cystStage.js?1759426824626918236"></script>
+	<script src="/js/buddy.js?1759426824626918236"></script>
+	<script src="/js/vn2.js?1759426824626918236"></script>
+	<script defer src="/js/saves.js?1759426824626918236"></script>
+	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1759426824626918236'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1759426824626918236'>
+</head>
+<body state="corru-unloaded" menu="none" class="loading">
+	<div id='meta-menu' class="noclosemenu">
+		<!--core icon-->
+		<div id='meta-icon'></div>
+
+		<!--moth icon-->
+		<i class='cicon ci-moth moth-trigger' 
+			onclick="if(!body.classList.contains('in-menu')) startDialogue('++moth')"
+			definition="NOTE::'establishes external contact'"
+		><span class="mothnotice"><i class='cicon ci-moth'></i></span></i>
+
+		<!--masks icon & menu-->
+		<div id="meta-mask">
+			<i class="cicon ci-masks mask-trigger" 
+				onclick="toggleMasksMenu()"
+				definition="NOTE::'influence thoughtspace';'third-party installation'"
+			></i>
+
+			<div id="masks" class="menu ozo-menu"><div class="ozo-mask-grid"></div></div>
+		</div>
+
+		<!--volume controls icon-->
+		<i id='meta-volume-toggle' class='cicon ci-vol'></i>
+		<div id='meta-volume'>
+			<span class="meta-volume-wrapper">
+				<span>MASTER</span>
+				<input type='range' min='0' max='1' value='0.5' step='0.1' class='slider vol-slider' for="volume" id='meta-volume-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>MUSIC</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-music" id='meta-volume-music-slider'>
+			</span>
+			<span class="meta-volume-wrapper">
+				<span>SFX</span>
+				<input type='range' min='0' max='1' value='1' step='0.1' class='slider vol-slider' for="volume-sfx" id='meta-volume-sfx-slider'>
+			</span>
+		</div>
+
+		<!--dropdown menu-->
+		<i class='cicon ci-bars'></i>
+		<div id='meta-links'>
+			<div id="mui-links">
+				<a id='meta-hub' definition="NOTE::'return to hub';'eject'"><i class='cicon ci-nav'></i></a>
+				<a id='meta-obs' definition="NOTE::'review scanned and detected entities'"><i class='cicon ci-ent'></i></a>
+				<a id='meta-sys' definition="NOTE::'system management'"><i class='cicon ci-sys'></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div id="advance-notice">
+		<div class="target always-targeted" entity="advance log"></div>
+	</div>
+	
+	<div id="mindspike-scanner">
+		<div id="mindspike-entities"></div>
+		<div id="mindspike-actions">
+			<div id="act-options">
+				<div class="act-option">connect</div>
+				<div class="act-option">back away</div>
+			</div>
+		</div>
+		<div id="mindspike-options">
+			<span id="mindspike-examine">EXM</span>
+			<span id="mindspike-act">ACT</span>
+			<span id="mindspike-back"><--</span>
+		</div>
+	</div>
+
+	<div id="static">
+		<div class="enter" onclick="page.onEnter()" page="..__BETTER_TIMES__..">
+			[[__PROCEED__]]
+		</div>
+	</div>
+
+	<div id="readout" class="readout-log menu"></div>
+	<div id="minireadout" class="readout-log menu"></div> 
+	<div id="definition-box"></div>
+	<div id="dialogue-box" class="menu-box menu" menu="dialogue"></div>
+
+	<div id="entity-menu" class="menu-box menu" menu="entities">
+		<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+		<div class="pagelist"></div>
+	</div>
+
+	<div id="entity-details" class="menu-box menu" menu="entities">
+		<div id="entbox">
+			<div id="entcontent" class="readout-log"></div>
+		</div>
+	</div>
+	
+	<div id="system-menu" class="menu-box menu" menu="system">
+	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1759426824</div>
+	<div class="mindsci-status"></div>
+	
+    <details class="sysblock">			
+		<summary>Mindspike Data Management</summary>
+
+		<div class="buttons">
+            <span class="button import primary">
+                <input type="file" id="fileInput" onchange="uploadSave(event)" accept=".corru">
+                Import File
+            </span>
+			<span id="export" class="button export primary">Export File</span>
+			<span id="select" class="button" definition="ATTENTION::'irreversible action';'select log EP'" onclick="startDialogue('++epselect')">Select</span>
+			<span id="delete" class="button" definition="ATTENTION::'irreversible action';'not advised';'may cause mental distress'">Delete</span>
+		</div>
+        
+        <details class="minor">
+            <summary>Advanced Operations</summary>
+            <details class="minor loadstring">
+                <summary definition="NOTICE::'legacy import';'recommend using file management above'">Load Neural String</summary>
+                <div class="stringinput">
+                    <input id="savetext" type="textarea" placeholder="NOTE::'paste data';'exercise caution'">
+                    <span id="import" class="button">Import String</span>
+                </div>
+            </details>
+            
+            <details class="minor modstring">
+                <summary definition="NOTICE::'third-party resources loaded by system';'allows for log modifications'">Modification URL List</summary>
+                <div class="stringinput">
+                    <p class="sysinfo">Data URLs should be separated by new lines. Hitting save will manually load and initialize all third party modifications listed. They will be initialized automatically from then on, in order, until removed.</p>
+                    <textarea id="modtext" placeholder="https://..."></textarea>
+                    <span id="savemods" class="button">Save List</span>
+                </div>
+            </details>
+        </details>
+
+		<div class="warning sysbox">
+			<h3>!!__Attention__!!</h3>
+			<span>Only import mindspike data and modifications from trusted sources. Illicit data is known to carry dangerous and often lethal thoughtforms. Failure to exercise caution could lead to stroke, chronos misalignment, or worse. By importing any data into your mindspike, you waive all right to medical claims against MINDSCI. For more information, please refer to your license agreement.</span>
+		</div>
+	</details>
+
+	<details class="sysblock center" id="quality-select">
+        <summary>Visual Preferences</summary>
+        <div class="systoggles">
+            <div class="sysbox">
+                <h3>General Quality</h3>
+                <p class="sysinfo">Lower overall quality of rendering, primarily in spatial environments. Favorable for low performance hardware.</p>
+                <div class="buttons">
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="low" class="button">Low</span>
+                    <span onclick="javascript:setQualityPreference(this.getAttribute('quality'))" quality="regular" class="button">Regular</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3>Interface Size</h3>
+                <p class="sysinfo">Altering your interface size preference will change the scale of all text, and scale all menus accordingly.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setSizePreference('large')" class="button large-size">Large</span>
+                    <span onclick="javascript:setSizePreference('normal')" class="button normal-size">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox widescreen">
+                <h3>Widescreen Adapter</h3>
+                <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
+                <div class="buttons">
+                    <span onclick="javascript:change('widegamer', 'adapter'); nonStandardScreenCheck()" wide="on" class="button">On</span>
+                    <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
+                </div>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock center" id="control-select">
+		<summary>Control Preferences</summary>
+        <div class="sysbox">
+            <h3>Intensity</h3>
+            <p class="sysinfo">Activate REDUCED INTENSITY to present alternative options to scenarios involving realtime controls.</p>
+
+            <div class="buttons">
+                <span onclick="javascript:setIntensityPreference(true)" class="button low-intensity" definition="META::'some gameplay sections use hardware-dependent features and can cause really bad performance on older/non-gaming machines';'activating this lets you pick alternate options in the moment that may run better'">Reduced Intensity</span>
+                <span onclick="javascript:setIntensityPreference(false)" class="button reg-intensity">Regular Intensity</span>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Gameplay</h3>
+            <p class="sysinfo">Logs of games or game-like experiences may contain inherited context of their rules, allowing for re-interpretive rendering through user input.</p>
+            <p class="sysinfo">This feature is intended for entertainment only, and may result in memory drift if misused. It may be disabled to ensure memories of games do not depart from their true events.</p>
+            
+            <div class="buttons">
+                <span onclick="javascript:setGameplayPreference(false)" class="button gameplay-off" definition="META::'this entirely bypasses non-explorative gameplay sections';'very little story is missed in doing so'">Disable Gameplay</span>
+                <span onclick="javascript:setGameplayPreference(true)" class="button gameplay-on">Enable Gameplay</span>
+            </div>
+        </div>
+	</details>
+
+	<details class="sysblock meta" open>
+		<summary>System Information</summary>
+
+        <div class="sysbox specs ulbox">
+            <h4>Mindspike Specifications</h4>
+            <ul>
+                <li><span>System Type:</span> Release Candidate</li>
+                <li><span>Version:</span> Tonga 1.1 <em class="definition" definition="NOTICE::'violation of terms of service';'modification of critical resources';'legally required authorization rejected for more than 730 consecutive days'">(SERVICE TERMINATED)</em></li>
+                <li><span>Device ID:</span> IUF8-2H8FG7-1K1KS-58G-HT5</li>
+                <li><span>Installation Agent:</span> Luis Forti</li>
+                <li><span>Installed on:</span> January 2nd, 2050</li>
+            </ul>
+        </div>
+
+        <div class="sysbox credits">
+            <div class="devs ulbox">
+                <ul>
+                    <h4>Core Services</h4>
+                    <li><a href="https://corru.works" target="_blank">Mindsci</a></li>
+                    <li><a href="https://neocities.org/site/corru" target="_blank">Neurosight</a></li>
+                </ul>
+
+                <ul>
+                    <h4>Rendering Support</h4>
+                    <li><a href="https://pocl.vip/" target="_blank">POCL Cortical Labs</a></li>
+                    <li><a href="https://www.jacktenbusch.com/" target="_blank">JakkRabbit, LLC</a></li>
+                    <li><span definition="mystery shader man has no website sorry but his name is Kazne">Ink Noetics, INC.</span></li>
+                </ul>
+
+                <ul>
+                    <h4>Quality Control</h4>
+                    <li><a href="https://uh.fyi/" target="_blank">OMNITRIBE</a></li>
+                    <li><a href="https://uh.fyi/redrealm" target="_blank">Redrealms Nootropics</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="sysbox credits kofi">
+            <div class="supporters">
+                <h4 definition="NOTE::'active fundfriend-level ko-fi supporters'">Active Support Groups</h4>
+                <ul id="iconsupporters" class="tskip"></ul>
+            </div>
+        </div>
+
+        <div class="sysbox support">
+            <h3>Support Actions</h3>
+            <div class="center">
+                <div class="buttons">
+                    <a href="https://ko-fi.com/corruworks" target="_blank" class="button kofi" definition="NOTE::'join the supporter ko-fi (its like patreon but less evil)'">
+                        Retry Service Renewal
+                    </a>
+
+                    <a href="https://corruworks.bandcamp.com/" target="_blank" class="button audio" definition="NOTE::'get the soundtrack'">
+                        Audiodigital Export
+                    </a>
+
+                    <a href="https://corru.store/" target="_blank" class="button merch" definition="NOTE::'merch!'">
+                        Physical Media
+                    </a>
+                    
+                    <span class="supportercredits button" definition="NOTE::'view all supporters and contributors'" onclick="window.open('/credits', 'Credits', 'width=600,height=600')">Additional Credits</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sysbox">
+            <h3>Abridged License</h3>
+            <span class="nonsense">this implant is provided on a permanent 'pre-mortis' b2.5 license, 'as-is', without any express or implied warranty. except as expressly set forth in the extended license, mindsci shall not have any liability for any direct, indirect, incidental, special, exemplary, or consequential damages (including without limitation loss of life), however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use or the exercise of the implant for non-insured, non-industrial purposes. with regards to external mindspike log manipulation: the entire risk as to the quality and performance of the recollection is with you. should any thoughtform prove defective in any respect, you (not the initial operator responsible for export) assume the cost of any necessary servicing, repair or correction. this disclaimer of warranty constitutes an essential part of this license. under no circumstances and under no legal theory, whether tort (including negligence), contract, or otherwise, shall you, the initial operator, any data editor, or any distributor of mindspike data, or any supplier of any of such parties, be liable to any person for any indirect, special, incidental, or consequential damages of any character including, without limitation, damages for loss of goodwill, work stoppage, implant failure or malfunction, or any and all other commercial damages or losses, even if such party shall have been informed of the possibility of such damages. this limitation of liability does apply to liability for death or personal injury resulting from such party's negligence. finally, for further information regarding usage, liability, limitations, and modification, please refer to the full license.</span>
+
+            <div class="center">
+                <a class="b8831" href="/8831.gif" target="_blank" data-no-swup>
+                    <img src="/8831.gif" class="allowmenu" alt="corru.observer 88x31 gif banner" definition="NOTE::'88x31 graphic for personal use'">
+                </a>
+            </div>
+        </div>
+	</details>
+</div>
+
+	<div id="freedomControl" class="noclosemenu bastard-font bastard-color">
+		<label for="freedomSensitivitySlider">SENSTITVITY: <span id="freedomSensitivityValue"></span></label>
+		<input type="range" id="freedomSensitivitySlider" min="0.025" max="0.800" step="0.005" value="0.1" oninput='change("freelookSensitivity", this.value);env.freelookSensitivity = this.value;window.freedomSensitivityValue.innerHTML = this.value * 1000'>
+
+		<label for="freedomWalkToggle" id="freedomWalk" definition="INHERITED CONTEXT::'hold shift'">
+			<input type="checkbox" id="freedomWalkToggle" onchange="env.freemoveDefaultIsWalk = this.checked; change('freemoveDefaultIsWalk', this.checked); this.blur();">
+			WALK BY DFALT
+		</label>
+
+		<label for="freedomTargetToggle" id="freedomTarget" definition="NOTE::'will not persist between sessions'">
+			<input type="checkbox" id="freedomTargetToggle" onchange="env.freemoveHideTargets = this.checked; this.blur(); body.classList.toggle('notargets', this.checked)">
+			HIDE TARGETS
+		</label>
+	</div>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const slider = document.getElementById('freedomSensitivitySlider')
+			const valueDisplay = document.getElementById('freedomSensitivityValue')
+			
+			setTimeout(()=>{
+				const walkToggle = document.getElementById('freedomWalkToggle')
+				walkToggle.checked = check('freemoveDefaultIsWalk') || false
+				env.freemoveDefaultIsWalk = walkToggle.checked
+
+				slider.value = check("freelookSensitivity") || 0.1
+				valueDisplay.textContent = (check("freelookSensitivity") || 0.1) * 1000
+			}, 400)
+		});
+	</script>
+	
+	<div id="content">
+		<div class="drinklayer" drink="none">
+    <div class="target drinktarget" entity="orange simulacrum" priority="5"></div>
+</div>
+
+<style>
+
+@import url(/css/local/embassy.css?1759426824626918236);
+@import url(/css/local/embassy_global.css?1759426824626918236);
+@import url(/css/stage/beneath.css);
+@import url(/css/stage/cass.css);
+
+#progjump {
+    position: absolute;
+    display: none;
+    z-index: 100;
+    top: 20vh;
+    left: 0;
+    max-width: 200px;
+}
+
+.debugmode #progjump {
+    display: flex;
+}
+
+#progjump summary, #progjump button {
+    display: inline-block;
+    min-width: 3em;
+    border: 2px solid purple;
+    background: black;
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 0.25em;
+    text-align: center;
+}
+
+#progjump summary {
+    width: 200px;
+}
+    
+#content {
+    background-color: var(--friend-color);   
+}
+
+/******************** nabbed from dullvessel */
+[stage="vessel"]#realgrid canvas { position: absolute; }
+[stage="vessel"]#realgrid .ceiling { transform: translateZ(calc( 3.5 * var(--gridTileSize) + 1px )) rotateY(180deg); }
+[stage="vessel"]#realgrid .floor { transform: translateZ(-2px) }
+
+body#vessel #content::after {
+    transform: rotate(0);
+    background: url(/img/local/embassy/parpy/fauna.gif?1), url(/img/local/embassy/parpy/faunaflip.gif?1);
+    background-position: 0 200%, 0 -100%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-color: var(--obesk-color)
+}
+
+#realgrid[stage="vessel"] .hasnothing {
+    background: unset;
+    border: 2px dashed #ffffff52;
+}
+
+.dsprite {
+    transform: rotateX(-90deg);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-origin: bottom;
+    bottom: 0;
+}
+
+.dsprite figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+}
+
+.dsprite figure > * {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.dsprite[id^="pilotcyst"] {
+    width: 300%;
+    height: 300%;
+}
+
+.dsprite[id^="pilotcyst"] figure {
+    width: 150%;
+    height: 150%;
+}
+
+.dsprite[id^="pilotcyst"] .target {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: unset;
+    left: unset;
+}
+
+.dsprite[id^="pilotcyst"] .chair {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_chair.gif);
+    transform: translateY(10%) translateZ(calc( var(--gridTileSize) * 0.75 ));
+    width: 75%;
+    height: 75%;
+}
+
+.dsprite[id^="pilotcyst"] .tendrils {
+    animation: HOVER 10s ease-in-out infinite alternate;
+    --baseTransform: translateZ(-50px);
+    transform: translateZ(-50px);
+    width: 150%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dsprite[id^="pilotcyst"] .tendrils::after {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere_tendrils.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    animation: TENDRILS 60s ease-in-out infinite alternate;
+}
+
+.dsprite[id^="pilotcyst"] .base {
+    background-image: url(/img/local/orbit/dullvessel/pilotsphere.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: PILOTSPIN 40s ease-in-out infinite alternate;
+    width: 100%;
+    height: 100%;
+}
+
+.dsprite[id^="pilotcyst"] figure::after {
+    content: "";
+    position: absolute;
+    border-radius: 25%;
+    background: url(/img/sprites/funfriend/kazfriend.gif);
+    width: 25%;
+    height: 10%;
+    background-size: 100%;
+    --baseTransform: rotate(180deg) translateY(-25%);
+    background-position: 0 calc( var(--gridTileSize) * -0.2);
+    background-repeat: no-repeat;
+    backface-visibility: hidden;
+    opacity: 1;
+    animation: HOVER 5s ease-in-out infinite alternate;
+}
+
+#realgrid .repair.teleport[slug="U"]::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: inherit;
+    background: black;
+    transform: translateZ(calc(var(--gridTileSize) * 3.5))
+}
+
+#realgrid .repair.teleport[slug="D"] {
+    background: transparent
+}
+
+.dsprite.dullscreens {
+    height: 200%;
+    width: 200%;
+    background-image: url(/img/local/orbit/dullvessel/clawscreen.gif);
+    --baseTransform: rotateX(-90deg) translateY(-25%) translateZ(10px) var(--rotation) translateX(-50%);
+    --rotation: rotateY(45deg);
+    transform: var(--baseTransform);
+}
+
+.dsprite.dullscreens.side {
+    --rotation: rotateY(145deg);
+    backface-visibility: visible;
+}
+
+body:not([quality="low"]) .dsprite.dullscreens {
+    animation: SCREENHOVER 10s ease-in-out infinite alternate;
+}
+
+@keyframes SCREENHOVER {
+    0% { transform: var(--baseTransform) rotate(-5deg) }
+    100% { transform: var(--baseTransform) rotate(0deg) }
+}
+
+.notacouch::after {
+    content: "";
+    position: absolute;
+    background: inherit;
+    width: 100%;
+    height: 100%;
+    transform: rotateX(100deg);
+    transform-origin: top;
+}
+
+.notacouch::before {
+    content: "";
+    width: 50%;
+    height: 50%;
+    background: url(/img/local/embassy/display.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 50%;
+    position: absolute;
+    transform-origin: top;
+    transform: rotateX(90deg) translateY(-100%);
+}
+
+/*********************bridge*/
+body#bridge #content::after {
+    background: url(/img/local/embassy/parpy/cloudset.gif);
+    height: 250vh;
+    background-size: cover;
+    background-position: bottom;
+    position: absolute;
+    bottom: 0;
+    transform: translateY(max(calc(var(--camera-tilt) * 1vh), 0vh));
+    transition: unset;
+}
+
+#realgrid[stage="bridge"] .hasnothing {
+    background: url(/img/textures/gripped.gif), url(/img/textures/bustedtile.gif);
+    background-position: center;
+    border: 10px double var(--friend-color);
+}
+
+/*********************connective*/
+body#connective #content::after {
+    background: black;
+}
+
+#realgrid .ceiling {
+    position: absolute;
+    transform: translateZ(var(--tile3)) rotate(180deg);
+}
+
+body#connective .gridpiece.cwall.cornerwall.north canvas.wall:last-child,
+body#connective .gridpiece.cwall.cornerwall.south canvas.wall:last-child {
+    display: none;
+}
+
+body#connective .gridpiece.cwall.cornerwall.north canvas.wall:first-child {
+    transform: rotate(-90deg) rotateX(-90deg) rotate(180deg) translate(100%, 100%);
+}
+
+
+/*********************party*/
+#party #vn::after {
+    background-image: linear-gradient(0deg, rgba(255, 255, 0, 0.3) 0%, rgb(0, 0, 0) 100%);
+}
+
+body#party #content::after {
+    background-image: url(/img/textures/fadeinbufferflip.gif), url(/img/local/embassy/parpy/oceansky.gif);
+    transform: unset;
+    background-position: bottom center;
+    background-size: auto, center;
+    background-repeat: repeat-x, no-repeat;
+}
+
+[stage="partytest"]#realgrid .hasnothing {
+    background: black;
+    border: 3px double var(--bright-color);
+    border-style: dotted;
+    background: url(/img/local/city/aqua/parktile.gif);
+    border: unset;
+}
+
+.savepoint {
+    display: block !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: var(--baseTransform);
+    background-image: url(/img/textures/target.png);
+    border-radius: 100%;
+    transition: opacity 1s ease-in-out;
+    animation: unset !important;
+}
+
+.centerbar figure {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centerbar .barlines {
+    transform: translateY(20%) rotateX(90deg);
+    background: transparent;
+    border-radius: 100%;
+    border: 60px double var(--friend-color);
+}
+
+.centerbar .barlines::after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border: inherit;
+    border-radius: inherit;
+    transform: translateZ(-40px);
+}
+
+.centerbar .barroof {
+    transform: translateY(0%) rotateX(-90deg);
+    width: 150%;
+    height: 150%;
+    background: url(/img/local/embassy/parpy/bartop.gif);
+    background-size: contain;
+}
+
+#realgrid .gridpiece.yayball {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    background: transparent;
+    border: unset;
+}
+
+#realgrid .gridpiece.yayball::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(/img/local/embassy/parpy/yayballc.gif);
+    transform-origin: center;
+    --baseTransform: rotateX(-90deg) translateY(-400%);
+    transform: var(--baseTransform);
+    animation: YAYBALL 30s ease-in-out infinite;
+    animation-delay: inherit;
+}
+
+@keyframes YAYBALL {
+    0% { transform: var(--baseTransform) translateY(0%) rotateY(360deg) }
+    50% { transform: var(--baseTransform) translateY(100%) rotateY(0deg) }
+    100% { transform: var(--baseTransform) translateY(00%) rotateY(360deg) }
+}
+
+.tausprite::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: var(--tile);
+    height: var(--tilef5);
+    background-image: url(/img/local/city/realeye.gif), radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 30%);
+    background-size: auto 50%, cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 100%;
+    transform: var(--baseTransform);
+    --baseTransform: translate(-10%, -75%) rotateY(-10deg);
+    animation: SPIN 20s linear infinite alternate;
+}
+
+.tausprite .target {
+    transform: translate(-10%, -25%);
+}
+
+
+#realgrid .barfriend {
+    transform: translateY(-25%) rotateX(-90deg) translateZ(calc(-1 * var(--gridTileSize)));
+}
+
+.barfriend figure {
+    background-image: url(/img/local/beneath/barfriend.gif);
+    animation: TINYHOVER 5s ease-in-out infinite alternate;
+    width: 100%;
+    height: 100%;
+}
+
+/* cams */
+.swapcam .grid-animator[activestage="vessel"] { transform: rotateZ(0deg) }
+
+.swapcam .grid-animator[activestage="bridge"] {transform: rotateZ(0deg)}
+.swapcam .grid-container[activestage="bridge"] {
+    --camera-height: 3;
+    
+    --camera-x: 7;
+    --camera-y: 4.5;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotate(5deg)
+        rotateX(-25deg)
+        rotate(var(--faceAngle));
+}
+
+.swapcam .grid-animator[activestage="connective"] {transform: rotateZ(0deg)}
+.swapcam .grid-container[activestage="connective"] {
+    --camera-height: 1;
+    
+    --camera-x: 6;
+    --camera-y: 0;
+    
+    --camera-offset:
+        rotateX(-20deg)
+        rotate(135deg);
+}
+
+
+.swapcam .grid-animator[activestage="party"] {transform: rotateZ(0deg)}
+.swapcam .grid-container[activestage="party"] {
+    --camera-height: 0.5;
+    --camera-distance: -1;
+    
+    --camera-x: 6;
+    --camera-y: 6;
+    
+    --distX: calc(var(--camera-x) - var(--stage-steps-x));
+    --distY: calc(var(--camera-y) - var(--stage-steps-y));
+    
+    --camera-offset: 
+        rotate(var(--faceAngle));
+}
+
+</style>
+
+<div class="grid-plane">
+    <div class="grid-container">
+        <div class="grid-animator">
+        </div>
+    </div>
+</div>
+
+<div id="stage-navigator">
+    <span>SPATIAL NAVIGATION</span>
+    <div class="stage-arrows">
+        <div class="quality" key="quality" onclick="javascript:stepKey('q')">
+            <i class="cicon ci-quality"></i>    
+        </div>
+        <div class="up" key="w" onclick="javascript:stepKey('w')"><i class="cicon ci-up"></i></div>
+        <div class="left" key="a" onclick="javascript:stepKey('a')"><i class="cicon ci-left"></i></div>
+        <div class="down" key="s" onclick="javascript:stepKey('s')"><i class="cicon ci-down"></i></div>
+        <div class="right" key="d" onclick="javascript:stepKey('d')"><i class="cicon ci-right"></i></div>
+        <div class="swap" key="e" onclick="javascript:stepKey('e')">
+            <i class="cicon ci-zoomin"></i>
+            <i class="cicon ci-zoomout"></i>    
+        </div>
+    </div>
+</div>
+
+<details id="progjump" class="debugonly">
+    <summary>stagejump menu</summary>
+    <button onclick="changeStage('vessel')">vessel</button>
+    <button onclick="changeStage('bridge')">bridge</button>
+    <button onclick="changeStage('connective')">connective</button>
+    <button onclick="changeStage('party')">party</button>
+</details>
+
+
+		<script id="PageData">
+			content = document.querySelector('#content')
+			body = document.body
+
+			if(typeof page == "object") {
+				oldPage = page
+			}
+
+			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
+			page = {
+				title: "..__BETTER_TIMES__..",
+				name: "better-times",
+				dialoguePrefix:  "bt" ,
+				path: location.pathname,
+				flags: {},
+				howls: [],
+				cacheval: 1759426824626918236,
+
+				
+				image: "/img/socials/bt.gif",
+				
+
+				
+				order: "4",
+				
+
+				
+				bgm: new Howl({
+					onload: function () {page.howls.push(this)},
+					src: ['/audio/bettertimes.ogg'],
+					preload: true,
+					loop: true,
+					
+					 rate: 1, 
+					sprite: {
+						__default: [50, 9999999, true]
+					}
+				}),
+				
+
+				
+				mothComment: ()=>{
+    let moth = "this memory is super intact, minus a few little weird bits. she did a good job of keeping it together, all things considered"
+    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+
+    return moth
+}
+,
+				
+
+				
+				mothChat: {
+					startName: "about this memory",
+					getDest: ()=>{return `mth++${page.dialoguePrefix}`},
+				},
+				
+				
+				onLoaded: ()=>{	
+					env.stage.ref = null
+					change("stageroom", "DELETE")
+					body.id = ""
+					body.setAttribute('page', page.name)
+					content.setAttribute('page', page.name)
+					document.querySelector('#static .enter').setAttribute('page', page.title)
+					document.scrollingElement.scrollTop = 0
+					
+						env.waitOnLoad = env.waitOnLoadIgnore ? false : true
+
+						if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+							corruStatic.fade(corruStatic.volume(), 0, 1000)
+							setTimeout(()=> corruStatic.stop(), 1001)
+						}
+					
+
+					updatePreferenceAttributes()
+					
+					// global defs
+					
+					
+					
+						
+						
+							env.definitions[`θjut`] = `'engineer';'caste'`;
+						
+					
+						
+						
+							env.definitions[`vel`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`tir`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`kiv`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`qou`] = `'caste';'partial meaning loss due to damaged context'`;
+						
+					
+						
+						
+							env.definitions[`velzie`] = `'god'`;
+						
+					
+						
+						
+							env.definitions[`veilk`] = `'surface fauna';'foundation of entire ecosystem';'enormous and endless'`;
+						
+					
+						
+						
+							env.definitions[`ukazni ozo`] = `'surface city';'mountainous fortress';'origin of dull pulse weaponry'`;
+						
+					
+						
+						
+							env.definitions[`secri`] = `'predator';'infection';'primal terror'`;
+						
+					
+						
+						
+							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`golem`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`golems`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`velzie's stage`] = `'all that can be observed';'physical reality';'religious term now used scientifically';'partial translation';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`θeye`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θeyes`] = `'time period';'patrols around the eye of velzie';'religious implication'`;
+						
+					
+						
+						
+							env.definitions[`θgazes`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgazely`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θgaze`] = `'time period';'numerous within eyes'`;
+						
+					
+						
+						
+							env.definitions[`θwinks`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θwink`] = `'time period';'numerous within gazes'`;
+						
+					
+						
+						
+							env.definitions[`θblinks`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θblink`] = `'time period';'numerous within winks'`;
+						
+					
+						
+						
+							env.definitions[`θstares`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							env.definitions[`θstare`] = `'time period';'grouping of contiguous unbroken gazes';'length varies by season'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`uncosm`] = { type: `NOTE`, text: `'reconstructive translation';'implies non-world'`};
+						
+					
+						
+						
+							env.definitions[`jokzi ozo`] = `'home';'fortress upon jokzi'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeath`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeaths`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θdeathly`] = { type: `NOTE`, text: `'implies altered living state'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`fairy`] = { type: `NOTE`, text: `'partial translation';'implied closest cultural equivalent'`};
+						
+					
+						
+						
+							env.definitions[`rotwatcher`] = `'duty within cave-city';'monitor for harmful growth';'study use of non-harmful growth';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+					
+					// definitions required for page
+					
+						
+						
+							env.definitions[`may velzie look away at last`] = `'common idiom';'wishing for uncertain times to withdraw'`;
+						
+					
+						
+						
+							env.definitions[`velzie will rage`] = `'common idiom';'velzie's narrative intent is defied';'often in reference to unexpected fortune'`;
+						
+					
+						
+						
+							env.definitions[`a parasite will grow in any flesh it finds`] = `'common idiom';'all are governed by their immutable nature'`;
+						
+					
+						
+						
+							env.definitions[`pariiku`] = `'tiny sphere of veilk bone';'melted into near-perfect shape via acid mixture';'used in dull tithing'`;
+						
+					
+						
+						
+							env.definitions[`immovable stone`] = `'common idiom';'a kiv at rest is an immovable stone'`;
+						
+					
+						
+						
+							env.definitions[`bled the light from my teeth`] = `'idiom combination';'vel's speech channel velzie's wit';'light bled away as a loss of velzie's favor'`;
+						
+					
+						
+						
+							env.definitions[`new-fall`] = `'celebration of veilk-fall';'inherited description-generated noun'`;
+						
+					
+						
+						
+							env.definitions[`auxiliaries`] = `'extended call research team';'partial translation';'implied closest cultural equivalent'`;
+						
+					
+						
+						
+							env.definitions[`uuzk`] = `'common ekivik cuisine';'nutrient ingot'`;
+						
+					
+						
+						
+							env.definitions[`vel's mask`] = `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							
+							
+							env.definitions[`θ███████`] = { type: `ERROR`, text: `'missing entity'`};
+						
+					
+						
+						
+							env.definitions[`keep velzie entertained`] = `'common phrase';'religious implication';'implies wish for safe journey'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`kalstik`] = { type: `TRANSLATION FAILED`, text: `CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL`};
+						
+					
+						
+						
+							env.definitions[`kozazni`] = `'vaznian cave-city';'home of kazki';'known for fungal farms'`;
+						
+					
+						
+						
+							env.definitions[`ekivik`] = `'ethnic implication';'origination from continent';'ekiva'`;
+						
+					
+					
+					//dynamically inserted
+					 
+						
+/* existing entity upgrading so we don't have to redefine or keep stacking actions on character entities */
+/* gotta do this on an event delay so we don't do it toooo soon*/
+page.entOverwrite = () => {
+    if(env.entities.cavik) if(!env.entities.cavik.actions.find(action => action.fromPolygonation)) {
+        env.entities.cavik.actions.push(
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_vessel")
+                },
+                showIf: [["stageroom", "vessel"], ["PAGE!!state", "bridged"]],
+                fromPolygonation: true
+            },
+
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_pvekik")
+                },
+                showIf: [["stageroom", "party"]],
+                fromPolygonation: true
+            },
+        )
+    }
+
+    if(env.entities.kazki) if(!env.entities.kazki.actions.find(action => action.fromPolygonation)) {
+        env.entities.kazki.actions.push(
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_vessel")
+                },
+                showIf: [["stageroom", "vessel"], ["PAGE!!state", "bridged"]],
+                fromPolygonation: true
+            },
+
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_pkazki")
+                },
+                showIf: [["stageroom", "party"]],
+                fromPolygonation: true
+            },
+        )
+    }   
+    
+    if(env.entities.bozko) if(!env.entities.bozko.actions.find(action => action.fromPolygonation)) {
+        env.entities.bozko.actions.push(
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_center")
+                },
+                showIf: [["stageroom", "connective"]],
+                fromPolygonation: true
+            },
+
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_pbozko")
+                },
+                showIf: [["stageroom", "party"]],
+                fromPolygonation: true
+            },
+        )
+    }   
+    
+    if(env.entities.gakvu) if(!env.entities.gakvu.actions.find(action => action.fromPolygonation)) {
+        env.entities.gakvu.actions.push(
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_center")
+                },
+                showIf: [["stageroom", "connective"]],
+                fromPolygonation: true
+            },
+
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_ptozvu")
+                },
+                showIf: [["stageroom", "party"]],
+                fromPolygonation: true
+            },
+        )
+    }   
+    
+    if(env.entities.tozik) if(!env.entities.tozik.actions.find(action => action.fromPolygonation)) {
+        env.entities.tozik.actions.push(
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_center")
+                },
+                showIf: [["stageroom", "connective"]],
+                fromPolygonation: true
+            },
+
+            {
+                name: "approach",
+                exec: ()=> {
+                    startDialogue("d0_ptozvu")
+                },
+                showIf: [["stageroom", "party"]],
+                fromPolygonation: true
+            },
+        )
+    }   
+
+    document.removeEventListener('corru_resources_added', page.entOverwrite)
+}
+document.addEventListener('corru_resources_added', page.entOverwrite)
+
+addResources([
+    "/js/embassy.js"
+])
+
+env.polygonation = {
+    //you can stay and talk to moth after the party before reverting to the embassy
+    //when you end that dialogue, it should kick you out
+    endingMothListener: () => {
+        setInterval(()=>{
+            if(!env.currentDialogue.active) corruRefresh("/local/ocean/embassy/");
+        }, 1000)
+    }
+}
+
+createEntity({
+    name: "•Œë÷Ž†",
+    hide: true,
+    type: "recollection thoughtform portrait-contain portrait-bright",
+    image: '/img/sprites/director/collector_head_handle_portrait.gif',
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'`,
+    actions: [
+        {
+            name: "hello?",
+            exec: ()=>{
+                startDialogue("d0_cass")
+            }
+        }
+    ]
+})
+
+createEntity({
+    name: 'dignitary',
+    type: "recollection thoughtform portrait-bright portrait-cover",
+    image: "/img/local/city/realeye.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`,
+    actions: [ 
+        {
+            name: "approach",
+            exec: ()=>{
+                startDialogue("d0_ptau")
+            }
+        },
+    ]
+})
+
+createEntity({
+    name: "kazki's pilot cyst",
+    type: "thoughtform",
+    image: "/img/local/orbit/dullvessel/pilotsphere_tendrils.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'another mind suited to utilizing dull limbs';'utilizes a curious non-standard display'</span>`,
+})
+
+createEntity({
+    name: "nerve terminal",
+    type: "recollection thoughtform portrait-auto portrait-bright",
+    image: '/img/local/embassy/parpy/veinterminal.gif',
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection','unique scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'central informational joint of the spire's many listeners and organs';'one of several';'offers little control beyond status reports'</span>`,
+})
+
+createEntity({
+    name: `vekoa's proxy`,
+    image: '/img/sprites/vekoa/vekoaproxyportrait.gif',
+    type: "thoughtform qou recollection portrait-blocker portrait-cover",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a mixture of a distant limb and echo';'periodic reconnection to original mind'</span>`,
+    actions: [ 
+        {
+            name: "approach",
+            exec: ()=>{
+                startDialogue("d0_pvekik")
+            }
+        },
+    ]
+})
+
+createEntity({
+    name: 'malvi',
+    type: "recollection thoughtform portrait-static portrait-cover",
+    image: "/img/local/embassy/parpy/malviportrait.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style='color: var(--friend-color)'>::RECONSTRUCTED SIGNATURE CONTEXT</span>
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("ekivik")} geometric influence'
+    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("vel")} receptors, folded sharply'
+    <span style='color: var(--friend-color)'>+</span><span definition="INHERITED CONTEXT::'non-religious'">'depiction of utilitous additional arms'</span>
+    <span style='color: var(--friend-color)'>+</span><span definition="INHERITED CONTEXT::'far-ekiva practice';'illustrated with purpose'">'identification tapestry'</span>
+    <span style='color: var(--friend-color)'>+</span>'self-designed signature'`,
+    actions: [ 
+        {
+            name: "approach",
+            exec: ()=>{
+                startDialogue("d0_malvi")
+            }
+        },
+    ]
+})
+
+createEntity({
+    name: "mobile simulacra dispensary",
+    type: "recollection thoughtform portrait-auto portrait-bright",
+    image: '/img/local/embassy/parpy/mobilebar.gif',
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection','unique scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'similar to a deployed spireseed, though temporary';'unfolds and fixes into loose soil with tendrils'</span>`,
+})
+
+createEntity({
+    name: "auxiliaries",
+    type: "recollection thoughtform portrait-cover portrait-bright",
+    image: '/img/local/embassy/parpy/tempcrowd.gif',
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'missing resources'">::INCOHERENCE DETECTED</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'away-teams and branches of support';'the many limbs of the call research initiative'</span>`,
+})
+
+createEntity({
+    name: 'proceed',
+    type: "system-component",
+    hide: true,
+    image: "/img/textures/target.png",
+    text: `::SYSTEM COMPONENT
+    ::UTILIZE TO CONTROL MEMORY STREAM`,
+    actions: [ 
+        {
+            name: "proceed",
+            exec: ()=>{
+                startDialogue("d0_vesselproceed")
+            }
+        },
+    ]
+})
+
+createEntity({
+    name: 'conclude',
+    type: "system-component",
+    hide: true,
+    image: "/img/textures/target.png",
+    text: `::SYSTEM COMPONENT
+    ::UTILIZE TO CONTROL MEMORY STREAM`,
+    actions: [ 
+        {
+            name: "conclude",
+            exec: ()=>{
+                startDialogue("d0_end")
+            }
+        },
+    ]
+})
+
+createEntity({
+    name: 'guktik ward',
+    type: "thoughtform portrait-centertop portrait-dark",
+    image: "/img/local/embassy/f3.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'imitation of <span definition="INHERITED CONTEXT::'social surface predator';'grave formed out of exoskeletal pieces by pack'">post-mortem guktik</span>';'associated with hunting prowess'</span>`
+})
+
+createEntity({
+    name: `kazki's simulacra`,
+    pathLimit: "/local/ocean/embassy",
+    type: "thoughtform collapse portrait-cover",
+    image: "/img/local/embassy/drinkypile.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a variety of flavors, some with psychoactive effects';'includes veilks-blood, zzoust, orange juice, a black fungal flavor from kozazni'</span>`,
+    actions: [
+        {
+            name: "sip-u-lacrum",
+            exec: () => { chatter({actor: 'akizet', text: 'there will be time for that at the celebration', readout: true}); change('PAGE!!kazkisip', true) },
+            showIf: ['PAGE!!kazkisip', false]
+        }
+    ]
+})
+
+createEntity({
+    name: 'simulacra display',
+    type: "thoughtform",
+    image: "/img/local/embassy/parpy/simuline.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a selection of varied flavor and texture memories'</span>
+    ::ADDITIONAL NOTE::<span style='color: var(--obesk-color)'>'hi interloper this is funfriend i could not locate the others within this memory';'i will fill them in later';'but she did order the orange'</span>`,
+    actions: [
+        {
+            name: "orange",
+            exec: ()=>{  
+                if(check("STAGE!!havesip")) {
+                    chatter({actor: 'sourceless', text: 'i set my previous simulacrum aside, and fetch an orange one', readout: true})
+                } else {
+                    chatter({actor: 'sourceless', text: 'i fetch an orange juice simulacrum', readout: true})                    
+                }
+
+                content.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'))
+                env.stage.querySelectorAll('.drinklayer').forEach(e=>e.setAttribute('drink', 'orange'))
+                change("STAGE!!havesip", true)
+            },
+
+            showIf: ()=> {return !content.classList.contains('sipping')}
+        }
+    ]
+})
+
+createEntity({
+    name: 'orange simulacrum',
+    examinePriority: 5,
+    hide: true,
+    type: "thoughtform",
+    image: "/img/local/embassy/drinkybigorange.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recollection'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a delightful reconstruction of the bright-fruit by the materials initiative'</span>`,
+    actions: [
+        {
+            name: "sip-u-lacrum",
+            exec: ()=>{  
+                content.classList.add('sipping')
+                change('PAGE!!citrusip', "++")
+                chatter({actor: 'sourceless', text: 'THE SIMULACRUM STAYS THE SAME, BUT THE TASTE REGISTERS CLEARLY', readout: true})
+                setTimeout(()=>chatter({actor: 'sourceless', text: 'THE BRIGHTNESS OF IT DISTORTS MY FEATURES AND SENDS MY RECEPTORS INTO A REFLEXIVE CURL', readout: true}), 3000)
+                setTimeout(()=>chatter({actor: 'sourceless', text: 'STRONG!! BUT THE CITRUS INSPIRES A PLEASANT SATIATION', readout: true}), 7000)
+                setTimeout(()=>{content.classList.remove('sipping')}, 5000)
+            },
+            showIf: ()=> {return !content.classList.contains('sipping')}
+        }
+    ]
+})
+
+env.stages['vessel'] = {
+    creature: ()=> env.stageEntities.embassyCreature(),
+    entities: {
+        O: {
+            teleportTarget: "bridge",
+        },
+
+        o: {
+            teleportTarget: "party",
+        },
+
+        c: {
+            class:"blocks",
+            contains: {
+                id: "pilotcyst",
+                examineEntity: "kazki's pilot cyst",
+                class: "dsprite",
+                html: `<figure> <div class="chair"></div> <div class="tendrils"></div> <div class="base"></div> </figure>`
+            }
+        },
+
+        s: {
+            class:"blocks",
+            contains: {
+                class: "dullscreens sprite",
+                html: `<figure></figure>`
+            }
+        },
+
+        ç: {
+            class:"blocks",
+            contains: {
+                class: "dullscreens sprite side",
+                html: `<figure></figure>`
+            }
+        },
+        
+        P: {
+            class:"blocks repair",
+            contains: {
+                class: "parasiteboard",
+                html: `<div class="target" entity="parasite plane"></div><figure class="boardproper"></figure>`
+            }
+        },
+
+        "☺": {
+            exec: ()=> { if(check('ep1_fed')) content.classList.add('lookdown') }
+        },
+
+        "☻": {
+            exec: ()=>{ if(check('ep1_fed')) content.classList.remove('lookdown') } 
+        },
+
+        "_": {
+            class: "gap raised-floaty blocks incoherentonly",
+        },
+
+        "$": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    class: 'savepoint proceed always-targeted',
+                    image: 'url(/img/textures/target.png)',
+                    width: 1,
+                    height: 1,
+                    transform: `rotateY(-20deg) translateY(-100%)`,
+                    noback: true,
+                },
+                examineEntity: "proceed",
+            }
+        },
+
+        C: {
+            class: "notile",
+            contains: {
+                html: `
+                    <span class="target" entity="•Œë÷Ž†"></span>
+                    <div id="collectorhead-animator" class="collectorpart stagepart">
+                        <div id="collectorhead" class="collectorpart stagepart">
+                            <div id="collectoreye" class="collectorpart stagepart"></div>
+                        </div>
+                    </div>
+                    <div id="collectorbody" class="collectorpart stagepart"></div>
+                `,
+                dyp: {
+                    class: "cass",
+                    image: 'transparent',
+                    width: 1,
+                    height: 2.3,
+                    transform: "rotateY(-90deg) translateX(-600%) rotateY(45deg) translateX(400%)"
+                }
+            } 
+        },
+
+        '♣': {
+            class: "repair blocks r-hide",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/orbit/dullvessel/climbwall.gif)',
+                    width: 3,
+                    height: 4,
+                    transform: "rotateY(90deg)"
+                }
+            }
+        },
+
+        U: {
+            class: "notile blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/doorhalflocked.gif)',
+                    width: 1.5,
+                    height: 3,
+                    style: `transform: translateZ(calc(var(--tile) * 3.5)) translate(50%, 33%);bottom: unset;`
+                }
+            }
+        },
+
+        D: {
+            class: "notile blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/doorhalf.gif)',
+                    width: 1.5,
+                    height: 3,
+                    style: `transform: translate(50%, -33%) translateZ(1px);bottom: unset`
+                }
+            }
+        },
+
+        Y: {
+            class: "prop",
+            contains: {
+                examineEntity: "guktik ward",
+                dyp: {
+                    image: 'url(/img/local/embassy/f3.gif)',
+                    width: 1,
+                    height: 2.5,
+                    cross: true,
+                }
+            }
+        },
+
+        Σ: {
+            class: "prop",
+            contains: {
+                class: "notacouch",
+                dyp: {
+                    image: 'url(/img/local/embassy/f0.gif)',
+                    width: 2,
+                    height: 1,
+                    transform: " rotateY(-20deg) translateY(-50%) rotateX(90deg) translateY(50%)"
+                }
+            }
+        },
+
+        ß: {
+            class: "prop",
+            contains: {
+                class: "notacouch",
+                dyp: {
+                    image: 'url(/img/local/embassy/f0.gif)',
+                    width: 2,
+                    height: 1,
+                    transform: " rotateY(-160deg) translateY(-50%) rotateX(90deg) translateY(50%)"
+                }
+            }
+        },
+
+        "¥": {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/shelf.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: "translateX(-49%) rotateY(90deg)"
+                }
+            }
+        },
+
+        "☼": {
+            class: "notile",
+            contains: {
+                examineEntity: "kazki's simulacra",
+                dyp: {
+                    image: 'url(/img/local/embassy/drinkypile.gif)',
+                    width: 1,
+                    height: 0.5,
+                    transform: "rotateY(90deg) translate(22%, -200%)"
+                }
+            }
+        },
+
+        "9": {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/closetback.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: "rotateY(45deg)"
+                }
+            }
+        },
+
+        "8": {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/closetback.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: "rotateY(-45deg)"
+                }
+            }
+        },
+    },
+
+    width: 11,
+    enterDirection: "down",
+
+    plans: {
+        default: `
+            ....scç....
+            ....░░░....
+            ...░K░░░...
+            ..Y░░░░░Y..
+            U░░░░░░░Σ░.
+            ♣░k░░pTvG░.
+            D░░░░░░░ß░.
+            ..Y░░░░░Y..
+            _..░░░░░...
+            .._.░░░....
+            .....O.....
+        `,
+
+        bridged: /* just remove non-kazki/cavik */ `
+            ....scç....
+            ....░░░....
+            ...YK░vY$..
+            ..9░░░░░░..
+            U░░░░░░░Σ..
+            ♣░░░░p░░░☼¥
+            D░░░░░░░ß..
+            ..8░░░░░░..
+            _..Y░░░Y...
+            .._.░░░....
+            .....O.....
+        `,
+
+        landed: /* remove all non-cass chars */ `
+            ....scç....
+            ....░░░..C.
+            ...░░░░░...
+            ..Y░░░░░Y..
+            U░░░░░░░Σ░.
+            ♣░░░░p░░░░.
+            D░░░░░░░ß░.
+            ..Y░░░░░Y..
+            _..░░░░░...
+            .._.░░░....
+            .....o.....
+        `,
+    },
+
+    html: `
+        <canvas class="ceiling" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="12" baseHeight="12"></canvas>
+        <canvas class="floor" fit="stretch" sprite="/img/local/orbit/dullvessel/foundationsmall.gif" baseWidth="12" baseHeight="12"></canvas>
+    `,
+
+    getPlan: function() {
+        switch(check("PAGE!!state")) {
+            case "bridged":
+                //hide/show proceed depending on prog
+                if(!check("PAGE!!repaired")) {
+                    return this.plans[check("PAGE!!state")].replace("$", ".")
+                }
+                
+                return this.plans[check("PAGE!!state")]
+
+            default:
+                return this.plans[check("PAGE!!state")] || this.plans.default
+        }
+    },
+
+    planAdjustment: (plan)=> {
+        if(check("bt__d0_cass")) return plan.replace("C", ".");
+        else return plan
+    }
+}
+
+env.stages['bridge'] = {
+    creature: ()=> env.stageEntities.embassyCreature(),
+    exec: () => page.contentTracksAngles = true,
+    leaveExec: () => page.contentTracksAngles = false,
+
+    entities: {
+        U: {
+            teleportTarget: "vessel",
+            teleportSpot: 104
+        },
+
+        D: {
+            teleportTarget: "connective",
+            contains: {
+                dyp: {
+                    image: "url(/img/local/embassy/parpy/polydoor.gif)",
+                    width: 3,
+                    height: 3,
+                    transform: "translateZ(var(--tile1)) rotateX(-20deg)"
+                }
+            }
+        },
+
+        V: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: "url(/img/local/orbit/dullvessel/vessel.gif)",
+                    width: 10, height: 10,
+                    transform: "translateY(33%)",
+                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);animation: HOVER 60s ease-in-out infinite alternate;`
+                }
+            }
+        },
+
+        P: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: "url(/img/local/embassy/parpy/polymask.gif)",
+                    width: 30, height: 50,
+                    noback: true,
+                    style: "background-size: 100% 100%;",
+                    transform: "translateZ(var(--tile-9)) translateY(50%) rotateX(-20deg) rotateY(180deg)"
+                }
+            }
+        },
+
+        w: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: "url(/img/textures/gripped.gif)",
+                    width: 9,
+                    height: 1,
+                    transform: 'rotateY(90deg) translateZ(var(--tile-f5)) rotateX(-20deg)',
+                    style: `background-size: auto;background-repeat: repeat;border-top: 10px double var(--friend-color);`
+                }
+            }
+        },
+
+        W: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    image: "url(/img/textures/gripped.gif)",
+                    width: 9,
+                    height: 1,
+                    transform: 'rotateY(90deg) translateZ(var(--tilef5)) rotateX(20deg)',
+                    style: `background-size: auto;background-repeat: repeat;border-top: 10px double var(--friend-color);`
+                }
+            }
+        }
+    },
+
+    width: 3,
+
+    plan:  `
+        .V.
+        .U.
+        .p.
+        .░.
+        W░w
+        .░.
+        .░.
+        .D.
+        .P.
+    `,
+}
+
+env.stage.locales["connective"] = [
+    [".empty.plain, .darktile, .nothing, .notile, .blocks:not(.teleport)", "/img/blank.gif"],
+]
+
+env.stages['connective'] = {
+    creature: ()=> env.stageEntities.embassyCreature(),
+    locale: "connective",
+    entities: {
+        U: {
+            teleportTarget: "bridge",
+            teleportSpot: 19,
+            contains: {
+                dyp: {
+                    image: "url(/img/local/embassy/parpy/polydoor.gif)",
+                    width: 3,
+                    height: 3,
+                    transform: "translateZ(var(--tile-1)) translateY(-25%) rotateX(-30deg)"
+                }
+            }
+        },
+
+        'Ṇ': { 
+            class:"blocks cwall north cornerwall nothing",
+            contains: {
+                html: `
+                    <canvas class="wall" sprite="/img/local/embassy/parpy/veinwall.gif, /img/local/embassy/wallcover.gif" repeat="repeat-x" position="center" fit="auto, stretch" baseWidth="7" baseHeight="3"></canvas>
+                    <canvas class="wall" sprite="/img/local/embassy/parpy/veinwall.gif, /img/local/embassy/wallcover.gif" repeat="repeat-x" position="center" fit="auto, stretch" baseWidth="7" baseHeight="3"></canvas>
+                `
+            }
+        },
+
+        'Ṡ': { 
+            class:"blocks cwall south cornerwall nothing",
+            contains: {
+                html: `
+                    <canvas class="wall" sprite="/img/local/embassy/parpy/veinwall.gif, /img/local/embassy/wallcover.gif" repeat="repeat-x" position="center" fit="auto, stretch" baseWidth="7" baseHeight="3"></canvas>
+                    <canvas class="wall" sprite="/img/local/embassy/parpy/veinwall.gif, /img/local/embassy/wallcover.gif" repeat="repeat-x" position="center" fit="auto, stretch" baseWidth="7" baseHeight="3"></canvas>
+                `
+            }
+        },
+
+        'V': { 
+            class:"notile",
+            contains: {
+                dyp: {
+                    class: "veindouble",
+                    image: 'url(/img/local/embassy/parpy/veindouble.gif)',
+                    width: 5,
+                    height: 3,
+                    transform: "rotateY(90deg) translateX(var(--tile-4)) rotateY(10deg)"
+                }
+            }
+        },
+
+        'v': { 
+            class:"notile",
+            contains: {
+                dyp: {
+                    class: "veinhang",
+                    image: 'url(/img/local/embassy/parpy/veinhangstretch.gif)',
+                    width: 5,
+                    height: 3,
+                    transform: "rotateY(90deg) translateX(var(--tile4)) rotateY(75deg) translateX(var(--tile-1))"
+                }
+            }
+        },
+
+        't': { 
+            class:"notile",
+            contains: {
+                examineEntity: "nerve terminal",
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/veinterminal.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: "translateY(var(--tile-f5))"
+                }
+            }
+        },
+    },
+
+    exec: () => {
+        env.stage.querySelectorAll(".veindouble").forEach(el=>{
+            el.style.setProperty("--dyp-transform", `rotateY(90deg) translateX(var(--tile-4)) rotateY(${rand(-15, 15)}deg)`)
+        })
+
+        env.stage.real.querySelectorAll(".character").forEach(el=>{
+            if(el.id.startsWith("gakvu")) el.style.setProperty("--charTransform", "translateX(80%) rotateY(-20deg)");
+            else if(el.id.startsWith("tozik")) el.style.setProperty("--charTransform", "translateZ(var(--tilef5)) rotateY(20deg)");
+            else if(el.id.startsWith("bozko")) el.style.setProperty("--charTransform", "translateX(-50%) rotateY(50deg)");
+        })
+
+    },
+
+    underFloor: {
+        sprite: "/img/local/embassy/parpy/connectivefloor.gif",
+        fit: "stretch",
+        position: "center",
+    },
+
+    html: `
+        <canvas class="ceiling" sprite="/img/local/embassy/parpy/connectivefloor.gif" fit="auto" position="center" baseWidth="7" baseHeight="7"></canvas>
+    `,
+    
+    width: 9,
+    shouldFace: "up",
+
+    plan:  `
+        Ṇ.V.U.V..
+        .░░░p░░░.
+        .░░░░░░░.
+        .░.░░░k░.
+        .░G░░░.░.
+        .░.░░░.░.
+        .░░░░░░░.
+        .░░T░░░░.
+        ...vt...Ṡ
+    `,
+}
+
+env.stage.locales["party"] = [
+    [".blocks:not(.teleport):not(.nothing)", "/img/local/embassy/parpy/outtilepurp.gif"],
+    [".empty.plain, .darktile, .nothing, .notile", "/img/blank.gif"],
+]
+
+env.stages['party'] = {
+    creature: ()=> env.stageEntities.embassyCreature(),
+    locale: "party",
+
+    exec: () => {
+        env.stage.wallH = env.stage.stageH - 2
+        env.stage.wallW = env.stage.stageW - 2
+        env.embassy.regenRandobesk()
+        env.stage.querySelectorAll(".yayball").forEach(el=>{
+            el.style.animationDelay = `-${rand(0, 20)}s`
+        })
+
+        env.stage.real.querySelectorAll(".character").forEach(el=>{
+            if(el.id.startsWith("gakvu")) el.style.setProperty("--charTransform", "rotateY(20deg)");
+            else if(el.id.startsWith("tozik")) el.style.setProperty("--charTransform", "rotateY(-20deg)");
+            else if(el.id.startsWith("bozko")) el.style.setProperty("--charTransform", "rotateY(-20deg)");
+        })
+
+
+        startDialogue("d0_party")
+    },
+
+    entities: {
+        'Ṇ': {
+            class:"blocks cwall north cornerwall darktile notile",
+            contains: {
+                html: `
+                    <canvas class="wall w-wall" sprite="/img/local/embassy/parpy/palmlines2.gif" fit="stretch" baseWidth="[wallH]" baseHeight="5"></canvas>
+                    <canvas class="wall n-wall" sprite="/img/local/embassy/parpy/palmline.gif" fit="stretch" baseWidth="[wallW]" baseHeight="5"></canvas>
+                `
+            }
+        },
+
+        'Ṡ': {
+            class:"blocks cwall south cornerwall darktile notile",
+            contains: {
+                html: `
+                    <canvas class="wall e-wall" sprite="/img/local/embassy/parpy/palmlines1.gif" fit="stretch" baseWidth="[wallH]" baseHeight="5"></canvas>
+                    <canvas class="wall s-wall hide" style="display: none" sprite="/img/local/embassy/parpy/palmline.gif" fit="stretch" baseWidth="[wallW]" baseHeight="5"></canvas>
+                `
+            }
+        },
+
+        "♦": {
+            class: "blocks notile",
+            contains: {
+                html: `
+                    <span class="tinyspireface f1"></span>
+                    <span class="tinyspireface f2"></span>
+                    <span class="tinyspireface f3"></span>
+                    <span class="tinyspireface f4"></span>
+                `,
+
+                dyp: {
+                    class: "tinyspire",
+                    width: 3,
+                    height: 6,
+                    image: "transparent"
+                }
+            }             
+        },
+
+        "$": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    class: 'savepoint proceed always-targeted',
+                    image: 'url(/img/textures/target.png)',
+                    width: 1,
+                    height: 1,
+                    transform: "rotateY(-180deg) translateY(-100%)"
+                },
+                examineEntity: "conclude",
+            }
+        },
+
+        "U": {
+            class: "blocks notile",
+            contains: {
+                dyp: {
+                    class: "tausprite",
+                    image: 'url(/img/local/embassy/parpy/tau.gif)',
+                    width: 1,
+                    height: 1.6,
+                    style: "background-size: contain;",
+                    transform: "rotateY(45deg)"
+                },
+                examineEntity: "dignitary",
+            }
+        },
+
+        "M": {
+            class: "prop blocks chartile",
+            contains: {
+                examineEntity: "malvi",
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/malvisig.gif)',
+                    width: 1,
+                    height: 2.5,
+                    transform: "rotateY(-20deg)"
+                },                
+            }
+        },
+
+        "V": {
+            class: "prop blocks chartile",
+            contains: {
+                examineEntity: "vekoa's proxy",
+                dyp: {
+                    image: 'url(/img/sprites/vekoa/vekoaprox.gif)',
+                    width: 1,
+                    height: 2,
+                    transform: "rotateY(-20deg)"
+                },                
+            }
+        },
+
+        "R": {
+            contains: {
+                examineEntity: "auxiliaries",
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/crowd1.gif)',
+                    width: 4.5,
+                    height: 2,
+                    transform: "rotateY(-45deg) translateY(-10%)"
+                },                
+            }
+        },
+
+        "r": {
+            contains: {
+                examineEntity: "auxiliaries",
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/crowd2.gif)',
+                    width: 4.5,
+                    height: 2,
+                    transform: "rotateY(-135deg) translateY(-10%)"
+                },                
+            }
+        },
+
+        // paaaty 
+        // partuyyy
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! yeees! !
+        "0": {
+            class: "notile",
+            contains: {
+                examineEntity: "mobile simulacra dispensary",
+                class: "face-creature centerbar",
+                html: `<figure class="barlines"></figure><figure class="barroof"></figure>`,
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/mobilebarnolid.gif)',
+                    height: 3,
+                    width: 3,
+                    transform: "rotateY(var(--faceAngle))",
+                    style: "transition: 300ms linear;"
+                }
+            }
+        },
+
+        "B": {
+            class: "yayball"
+        },
+
+        "F": {
+            class: "notile",
+            contains: {
+                examineEntity: "barfriend",
+                dyp: {
+                    image: 'url(/img/sprites/obesk/golem.gif)',
+                    width: 1,
+                    height: 2,
+                    style: "--baseTransform: translateX(-20%) rotateX(-90deg) rotateY(80deg);animation: TINYHOVER 5s ease-in-out infinite alternate;"
+                },                
+            }
+        },
+
+        "f": {
+            class: "notile",
+            contains: {
+                examineEntity: "simulacra display",
+                dyp: {
+                    image: 'url(/img/local/embassy/parpy/simuline.gif)',
+                    width: 1.25,
+                    height: 0.5,
+                    transform: `translateY(-180%) rotateY(45deg)`
+                },                
+            }
+        }
+
+    },
+
+    width: 13,
+
+    // - and + are generics, currently omitted
+    plans:  {
+        default: `
+            Ṇ............
+            .░░░░░p░░░░░.
+            .░r░░░░░░░R░.
+            .░KB░░░░░B░░.
+            .░░░░░░░░░░░.
+            .░░░░...░░░░.
+            .░░░k.0FU░░░.
+            .░░░░..f░░░░.
+            .v░░░T░G░░░░.
+            .V░B░░░░░B░░.
+            .░░░░░░░░░░░.
+            .░░░░░B░░░M░.
+            ......$.....Ṡ
+        `,
+
+        //K kaz
+        //U tau
+        //k bozko
+        //T tozik
+        //G gakvu
+        //v cavik
+        //M malvi
+        late: `
+            Ṇ............
+            .░░░░░p░░░░░.
+            .░░░░░░░░░░░.
+            .░░B░░░░░B░░.
+            .░░░░░░░░░░░.
+            .░░░░...░░░░.
+            .░░░k.0FT░░░.
+            .░░░v..fG░░░.
+            .░░░░░KU░░░░.
+            .░░B░░░░░B░░.
+            .░░░░░░░░░░░.
+            .░░░░░B░░░░░.
+            ............Ṡ
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.default // alt is only manual refresh
+    },
+
+    underFloor: {
+        sprite: "/img/local/embassy/parpy/floortest.gif",
+        fit: "auto",
+        position: "center",
+    },
+}
+
+/** better times **/
+
+/**
+ * kazkiship - proceed
+**/
+env.dialogueActors["pilot cyst"] = {
+    elementID: "pilotcyst0",
+    image: "/img/local/orbit/dullvessel/pilotsphere_tendrils.gif",
+    type: "obesk pilotcyst",
+    noProcess: true,
+    voice: ()=>play('talk', 0.4)
+}
+
+env.dialogues["d0_flight"] = generateDialogueObject(`
+start
+    sourceless
+        the team clambers into the vessel
+        and after a θblink, kazki's pilot speaks
+
+    pilot cyst
+        hello friends!
+        it will be a bit of a trip! so settle in!
+
+    sourceless
+        hers is so friendly...
+
+    RESPONSES::akizet
+        wait<+>wait
+            EXEC::flash(true)
+
+wait
+    sourceless
+        sparse idle chatter passes the time,
+        but much has already been said throughout the θgaze
+        kazki lingers near the pilot cyst, receptors half-closed in annoyance
+            EXEC::setCam({x: 5, y:3});flash(false)
+        her head slowly shifts side to side...
+        one of her tells - she just communicated with someone, internally
+        i cannot help but overhear when she speaks to the pilot
+
+    kazki
+        hmm
+        now? well, we should...
+        yes, go ahead and align with the spire
+        it will not take long!
+    
+    pilot cyst
+        okay kazki!
+
+    sourceless
+        she turns to address the team, finding me nearby
+            EXEC::vnp({kazki: "show", hideStage: true})
+        with a kind dip of her receptors, they soon settle into a more open state
+    
+    kazki
+        everyone!
+        we will be stopping--briefly--by the connective center of the polygonation spire!
+
+    cavik
+        oh!
+            EXEC::vnp({cavik: "show far"})
+
+    sourceless
+        cavik's attention is drawn in the form of delight
+        yet that insidious crawl returns
+
+    kazki
+        it seems vekoa noticed some reception delays...
+            EXEC::vnp({kazki: "focus"})
+        and so she thinks there is a diagnostic cyst attached somewhere still!
+
+    sourceless
+        but it is gone, just as easily
+        this fault lies not with my team, nor any one really
+        a simple mistake
+            EXEC::vnp({cavik: "hide"})
+
+    tozik
+        she wants <em>us</em> to find it?
+            EXEC::vnp({tozik: "showleft far"})
+        it could be smaller than a kalstik
+    
+    sourceless
+        her head sways from side to side again, receptors fidgeting
+        the delay this could pose to our celebration threatens even kazki's cheer
+        
+    kazki
+        weell, she seemed certain it would be easy to find...
+            EXEC::vnp({kazki: "focus"})
+        and we are the closest airborne vessel right now...
+    
+    tozik
+        fine
+
+    gakvu
+        perhaps we should wager over who can find it first
+            EXEC::vnp({gakvu: "show far", kazki: "defocus"})
+    
+    tozik
+        ha
+        all right
+    
+    bozko
+        the spire is using lighter-weight corru, 
+            EXEC::vnp({gakvu: "hide", tozik: "hide", bozko: "showleft far"})
+        so a bridge and tunnel directly to the center from the air should be trivial
+        no conflict if i guide the pilot, right?
+
+    sourceless
+        bozko draws close to the pilot cyst, donning a connective cyst
+            EXEC::vnp({bozko: "show"})
+        distantly, tozik and gakvu discuss their 'wager'
+
+    kazki
+        no, go right ahead!
+        and, akizet...
+            EXEC::vnp({bozko: "hide"})
+    
+    sourceless
+        it is only as she looms nearby that i realize the tight coil in my receptors
+        can i be held at fault for worrying over our work so much?
+        should it not be the default state when so many resources are poured into it?
+        
+    kazki
+        she said everything else is fine
+        integrity, directional connectivity, dull roots
+        so, do not worry so much!
+    
+    akizet
+        that is good...
+        bozko, tozik, you are most familiar with the organs of these spires
+            EXEC::vnp({kazki: "hide", bozko: "show", tozik: "show"})
+        may i rest the search upon your shoulders?
+
+    sourceless
+        bozko waves a receptor back at me affirmatively
+    
+    tozik
+        of course
+
+    gakvu
+        me too
+            EXEC::vnp({gakvu: "show far"})
+        i have never once been inside a connective center,
+            EXEC::vnp({gakvu: "show"})
+        but i would like very much to beat tozik
+    
+    sourceless
+        i laugh, relieved, just as i feel the vessel's movement halt
+        then lurch slightly as a dock is formed with the spire outside
+        its hatch brightens, and the search team sets out
+            EXEC::change("PAGE!!state", "bridged");vnp({gakvu: "hide", bozko: "hide", tozik: "hide"})
+        may velzie look away at last
+            EXEC::refreshStage();vn.done();setCam()
+
+    RESPONSES::akizet
+        set out<+>END
+
+SKIP::vn.done();setCam();change("PAGE!!state", "bridged");refreshStage()
+`)
+
+/**
+ * checktime - kazki / cavik
+**/
+env.dialogues["d0_vessel"] = generateDialogueObject(`
+start
+    sourceless
+        cavik and kazki linger in the vessel
+            EXEC::pauseSwapCam(true);setCam({x: 5, y:3, rotation: 0})
+        she has always been an attentive listener,
+        drawing long talks even from tozik
+        so naturally, if she allows him to start, as she has,
+        cavik's extensive archival work allows an endless stream of knowledge to flow forth
+
+    cavik
+        ...is empirical, in a way!
+            EXEC::vnp({kazki: "show", cavik: "show", hideStage: true})
+        have you ever heard the stories of <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithes</span> nearly making it through a trip?
+    
+    kazki
+        no!
+        that is possible?!
+
+    sourceless
+        i approach to listen more closely, earning a small receptor wave from both
+        for all of his silly knowledge, there is plenty still of interest
+        and that is certainly a peculiar thing to mention
+    
+    cavik
+        hi aki!
+    
+    kazki
+        hi, aki! hehehe
+
+    akizet
+        hello, my friends
+        just waiting - please, continue
+
+    cavik
+        anyway--it is possible, very!
+        just exceedingly rare... but with all of my downtime in the archives,
+        i have come across a few recorded instances, and reviewed their studies
+        each time, it was a very simple object the bearer had come to know, wholly
+    
+    kazki
+        well, i knew my receptor shells pretty well...
+
+    cavik
+        haha, no no, ah,
+        as in--every detail unmistakable, inside and out, down to composition!
+        for example!! the most prominent case was a pariiku
+        the sort offered at zevazni orbit-ports, you know
+        but this one in particular was created by the once-tir who carried it into the contrivance
+        carved from parii, then melted and shaped imperfectly by their own labor, the study noted
+        when they emerged from the contrivance's opposite point, it was mostly gone, but...
+        the outermost layer still remained, most intact near a dent in its shape that they had been familiar with
+        but it crumbled to dust in their claws at the slightest movement, later
+
+    kazki
+        ohh!!
+        that is so strange!
+    
+    akizet
+        hmm
+        do you think the <span definition="NOTE::'partial translation';'inherited description-generated noun'">life-pod</span> project is familiar with this?
+
+    cavik
+        ahh, i think so...
+        it would be strange if they were not, given it was in the spire's archival system
+        but, i should still check in and be certain!
+        maybe my interest would inspire them to welcome my claws into their work, hehe
+
+    kazki
+        hmmm
+        so, if i prepare my own <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithe</span> and study it thoroughly for our eventual trip back to obeski,
+        and it makes it through...
+        you are saying that is the easiest way to have a gathering of θjut fawning over me?
+    
+    akizet
+        you need not work so hard for that, kazki
+        simply visit the materials segment more often, and that should be enough
+
+    cavik
+        hahaha!
+        they do have tir up there, you know
+
+    sourceless
+        it is only now that i notice the time we have waited
+        should the others not have found that cyst by now?
+
+    akizet
+        i will leave you to your scheming, my friends
+        i am going to check on the others
+
+    sourceless
+        my suggestions earns a hard stare from kazki
+        yes, yes, she is right about my overworking
+        but this will hardly take a θblink
+        an unsteady agreement is reached just through our wordless receptor movements
+    
+    kazki
+        all right!            
+
+    RESPONSES::akizet
+        back soon<+>END
+            EXEC::change("PAGE!!vesselchat", true);pauseSwapCam(false);setCam();vn.done()
+
+SKIP::change("PAGE!!vesselchat", true);pauseSwapCam(false);setCam();vn.done()
+`)
+
+/**
+ * checktime - gakvu/tozik/bozko
+**/
+env.dialogues["d0_center"] = generateDialogueObject(`
+start
+    sourceless
+        while bozko lifts bundles of glimmering veins tied together, searching physically,
+            EXEC::setCam({x: 4, y:2, rotation: 235});pauseSwapCam(true);ratween(env.bgm, 0.8)
+        tozik accesses a nearby terminal for its connective cyst
+            EXEC::setCam({x: 4, y:6, rotation: 180})
+        presumably to locate the exact point of delay
+        ...given the number of veins in this chamber, neither route seems particularly advantageous
+            EXEC::setCam({x: 4, y:2, rotation: 180})
+        but i have no better alternative to pose
+        i nearly step forward to help bozko, 
+        but the space is so small that my attempt would only hinder him
+        gakvu hardly makes an effort to help either, striding around slowly
+        her receptors twirl in such a way that i find myself bracing for a wry comment
+    
+    gakvu
+        another fine example of vaznian architecture
+            EXEC::vnp({gakvu: "show", hideStage: true})
+        
+    bozko
+        haha!
+            EXEC::vnp({bozko: "showleft far"})
+        yes, with every vein in plain reach
+        you speak as if an ekivik's touch would be any better
+        were this another featureless cube of a chamber,
+        we would be prying the spire's flesh away for the very same veins
+        
+    tozik
+        the pre-made mess does keep this simple
+            EXEC::vnp({tozik: "showright far"})
+
+    sourceless
+        so flat is his comment that i can hardly tell if it is a joke
+        still, a quiet laugh finds its way through each of us
+        but after some time searching, our good-will fades
+        bozko floats back from the vein bundles, now mentally searching for any one he did not check
+        and, subtle to those without great familiarity in θjut receptors, tozik grows frustrated
+    
+    akizet
+        are we certain the diagnostic cyst is in here?
+    
+    tozik
+        it has to be
+            EXEC::vnp({gakvu: "far", tozik: "focus"})
+        but it is not leaving a clear enough mark on performance for me to detect
+        i am surprised that the groundsmind could even detect it
+        though, it might only affect the true output... i may need to use a different terminal
+    
+    sourceless
+        gakvu rolls her head about, tired of waiting
+    
+    gakvu
+        what about <em>inside</em> the bundles?
+            EXEC::vnp({gakvu: "focus"})
+
+    sourceless
+        her gaze fixes on a complicated bundle at the other end of the chamber, and she gestures to it
+            EXEC::setCam({x: 5, y:5, rotation: -90});vn.done()
+        bozko goes to search it with his disconnected claws, particularly beneficial here
+            EXEC::vnp({bozko: "show downleft"})
+        though i sense that he does it mostly to demonstrate the futility
+
+    bozko
+        yes, see, but they are typically attached to the outside, 
+        and that is a lot of surface area to...
+
+    sourceless
+        there is a quiet tap from one of his clawtips meeting with something hard
+        his receptors pull back in shock as he produces a small sphere from the bundle
+        the offending diagnostic cyst, recognizable with its small glowing 'temporary' sigil
+        
+    bozko
+        velzie will rage
+        that... was a very good guess, gakvu
+
+    akizet
+        yes, impressive!!
+    
+    gakvu
+        so, i win the wager?
+            EXEC::vnp({gakvu: "showright"})
+
+    tozik
+        no
+            EXEC::vnp({tozik: "showright"})
+        bozko found it
+    
+    gakvu
+        what! but i--!!
+        akizet, decide
+            EXEC::vnp({gakvu: "focus"})
+
+    akizet
+        hmm...
+        bozko <em>was</em> the one to pluck it        
+
+    sourceless
+        bozko laughs, working to replace the bundles he moved
+            EXEC::vnp({tozik: "hide", gakvu: "hide"})
+        gakvu's receptors twist into themselves with the slightest frustration
+    
+    bozko
+        come, tidy the center
+        festivities await
+
+    gakvu
+        fine. fine
+        then we both lose, tozik
+        fine
+
+    sourceless
+        though he is silent as he undoes his work with the terminal,
+        tozik's free receptor stands with the clearest amusement
+
+    sys
+        NOTICE::'stream continues';'kazki dull vessel'
+
+    RESPONSES::akizet
+        return<+>END
+            EXEC::change("PAGE!!repaired", true);vn.done();setCam();pauseSwapCam(false);ratween(env.bgm, 1)
+
+SKIP::change("PAGE!!repaired", true);vn.done();setCam();pauseSwapCam(false);ratween(env.bgm, 1)
+`)
+
+/**
+ * checktime - proceed
+**/
+env.dialogues["d0_vesselproceed"] = generateDialogueObject(`
+start
+    sourceless
+        gathered again in the vessel, our interim task complete,
+        the rest of the flight is quick and uneventful
+        movement slows once more, and a gentle thump signals our landing
+    
+    pilot cyst
+        landed not far from the shore!
+        there are a lot of ground parasites here ahaha
+        could not get closer safely without harming them
+        but your destination is very close!
+    
+    kazki
+        thank youuu
+        come on!
+
+    sourceless
+        the vessel's hatch opens to cool, humid air, and we set out
+            EXEC::change("PAGE!!state", "landed");refreshStage()
+
+    RESPONSES::akizet
+        leave<+>END
+`)
+
+/**
+ * checktime - proceed secret
+**/
+
+env.dialogueActors["cass"] = { 
+    name: "director",
+    expressions: {
+        default: {
+            type: "portrait-contain portrait-bright",
+            voice: ()=>play("talkcase", 1.25),
+            image: '/img/sprites/director/collector_head_handle_portrait.gif',
+        },
+
+        open: {
+            type: "portrait-contain portrait-dark incoherent cass",
+            voice: ()=>play("talkcase", 0.5),
+            image: '/img/sprites/director/collector_eye_collection_portrait.gif',
+        },
+
+        whisper: {
+            type: "portrait-contain portrait-blocker incoherent cass",
+            voice: ()=>play("talkcase", 0.75),
+            image: '/img/sprites/director/collector_head_handle_portrait.gif',
+        },
+    }
+}
+
+env.dialogues["d0_cass"] = generateDialogueObject(`
+start
+    sourceless
+        that... is a bright cousin
+            EXEC::pauseSwapCam(true);ratween(env.bgm, 0.5);vnp({cass: "show far", hideStage: true})
+        on kazki's vessel?
+        when could they have gotten on?
+        no no, something is wrong about them--that is no cousin
+        they are unmoving, unusually tall, and there is a...
+            EXEC::vnp({cass: "show", hideStage: true})
+        it makes me feel sick. starved
+        i clutch my head and step back, a larval nausea crawling through me
+    
+    akizet
+        hello?
+        wh... 
+        where did-
+        who are you?
+        you should not be in here
+    
+    sourceless
+        she fixes her gaze upon, or--through me,
+            EXEC::vnp({cass: "open"});ratween(env.bgm, 0.25)
+            WAIT::2000
+            THEN::vnp({cass: "open eye"})
+
+    sourceless incoherent
+        wi i th   m any e yes
+
+    cass::open
+        You're really making a mess of things.
+    
+    akizet
+        me? of--of what?
+
+    cass::open
+        There's nothing to be done, I suppose.
+        A parasite will grow in any flesh it finds.
+
+    sourceless
+        i move to take another step back, but there are no feet, there is no floor here
+        i feel the walls melting away, i feel it all crawling back
+        the dark, the silence, the teeth and cilia
+        I CANNOT THINK WITH ALL THIS NOISE
+
+____SHOWIF::["citystreet__director", false]
+    moth
+        christ buddy that is NOT supposed to be here
+        it's spiking incoherence in a pretty terminal way
+        this memory is going to collapse if it's here for much longer
+
+____SHOWIF::["citystreet__director", true]
+    moth
+        what the hell? how?
+        her being here is spiking incoherence in a pretty terminal way
+        this memory is going to collapse if she's here much longer
+____END
+
+    self
+        are you talking to me?
+
+    cass::open
+        I understand you're trying to help.
+        But you're a giant stumbling around in our world.
+        The wrong move will kill us.
+        If you're after what I think you are,
+        That great big <em>thing</em> at the bottom,
+        Then the darkness can't be allowed to fade.
+
+        Cultivate it where you can.
+            SHOWIF::["recosm_state", false]
+
+        Keep cultivating it where you can.
+            SHOWIF::["recosm_state", "spared"]
+
+        You're doing a good job of keeping it alive. Don't stop.
+            SHOWIF::[["recosm_state", "spared"], ["e3a2escape", "complete"], ["localorbit__fairy_beacon", true]]
+
+        Stop trying to get rid of it.
+            SHOWIF::["recosm_state", "killed"]
+        Or none of us will be happy.
+            SHOWIF::["recosm_state", "killed"]
+
+    self
+        big thing?
+
+    cass::open
+        You know what I'm talking about.
+        I can't be out here.
+        We'll talk later.
+
+    sys
+        ATTENTION::'thoughtform activity detected'
+            EXEC::vn.done();flash(true)
+        ATTENTION::'resources removed'
+            EXEC::flash(false);content.querySelectorAll('.cass').forEach(el => el.remove())
+
+    sourceless
+        a claw rakes across the back of my mind
+        i... am afraid?
+        no, i am fine, what am i thinking?
+        what was i doing in here?
+        the others--they are waiting outside for me
+
+    moth
+        ok... it's stabilized
+        how polite
+        but there isn't really anything left for me to draw info from now
+        looking back at the logs, it had that same sort of weird incoherent balance that the ozo things do
+        just, a lot heavier overall...? like, its presence was enough to start causing a breakdown
+    
+    self
+        do you think it's telling the truth?
+
+    moth
+____SHOWIF::"EXEC::check(\`recosm__enemy-ep1seen\`) || check(\`visited_localbeneathdepths\`)"
+        hard to say, but this is the first time any thought has acknowledged what we've seen
+        really seems like she was implying something with velzie, right?
+        that was pretty direct and cogent, and it's the biggest thing we know of
+        for what i think, well...
+        we need to recover memories and repair shit with funfriend,
+        but it's sounding like we need to balance it out with the ecosystem that's developed
+        even if it's just to keep whatever velzie is intact
+        the more i'm learning about it, the more important it seems to whatever really happened here, you know?
+        so... yeah, probably, at least a little
+
+____SHOWIF::"EXEC::!check(\`recosm__enemy-ep1seen\`) && !check(\`visited_localbeneathdepths\`)"
+        about what? that was pretty fucking vague
+        except the 'killing us' part
+        that's probably true actually. the cyst has so much incoherence
+        if funfriend restored it to a perfect state, 
+        nearly all of these free-floating things would end up gone
+        that would also be a lot of insight into obesk thoughtforms gone, too
+        it sounds like this thing is just trying to protect itself from us
+        but there might still be merit to what it's saying
+
+____END
+
+    self
+        ok
+        what do we do about it?
+    
+    moth
+____SHOWIF::"citystreet__director-meeting"
+        it seemed like this was the exact same thoughtform, signature wise, as the director in the city
+        maybe we go talk to her again later? get more info?
+
+____SHOWIF::["citystreet__director-meeting", false]
+        uhhh
+        i mean this isn't really very actionable, right?
+        oh, i do have one idea, hold on
+        ...
+        ok, yeah, i was able to get a read on her signature before she left
+        looks like whoever or whatever she is, she originates from the city thoughtspace
+        could go looking around there later
+____END
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::pauseSwapCam(false);ratween(env.bgm, 0.8)
+`)
+
+
+/**
+ * party - opening
+**/
+env.dialogues["d0_party"] = generateDialogueObject(`
+start
+    sourceless
+        i join the team outside, following their weaving through dense bright parasite crowds
+            EXEC::content.classList.add("slowcam");pauseSwapCam(true);ratween(env.bgm, 1)
+        in short time, we reach the clearing - surrounded by fauna, with a fine view of the spire
+        celebratory light-bulbs hover in the air around a small central simulacra bar
+            EXEC::setCam({x:6, y:1, rotation: 180, offsetCamera: "rotateX(10deg)", height: 2})
+        a comfortable number of qou partake, the most familiar receptors from away-teams and constructors
+        one peculiar golem catches my eye, mingling with the qou...
+            EXEC::setCam({x:6, y:3, rotation: 135})
+        there even seems to be a bright cousin present! surely part of a scattered group
+            EXEC::setCam({x:6, y:3, rotation: 210, distance: 0})
+        this should be interesting
+            EXEC::setCam();content.classList.remove("slowcam")
+        ah, but there are matters to which i must attend, before all else
+        i would like a drink
+
+    RESPONSES::akizet
+        enjoy<+>END
+            EXEC::pauseSwapCam(false)
+
+SKIP::setCam();content.classList.remove("slowcam");pauseSwapCam(false)
+`)
+
+/**
+ * party - bozko
+**/
+env.dialogues["d0_pbozko"] = generateDialogueObject(`
+start
+    sourceless
+        bozko gazes idly at the research segment's newest victory atop the water
+            EXEC::vnp({bozko: "show", hideStage: true});ratween(env.bgm, 0.8)
+        he grasps a pale simulacra, his receptors flattened outwards, content
+        just as they say - as an immovable stone
+        autonomous vessels hover near the distant spire, occasionally shifting in position,
+        likely conducting tests of its dull plane function
+
+    akizet
+        bozko!
+        i expected to see you drifting about
+        have you tired yourself of the gathering so soon?
+    
+    bozko
+        it is the other way around, akizet
+        the auxiliary construction teams, they have seen enough of me in these recent θgazes
+        all they needed from me was a declaration of good work,
+        and a promise not to hear from me even once until our next project
+
+    akizet
+        did you gnaw at them so constantly? hehe
+
+    sourceless
+        his receptors raise in amusement
+
+    bozko
+        i should spare you the gruesome details, akizet
+        but i guided them all as if velzie's claws were feeling for cracks every θblink
+        heheh. they are used to it, though--this one was just slightly more arduous
+        
+    akizet
+        i do hear sometimes that you are, hm...
+        'more than expected' for a vaznian structural overseer
+        ehehee
+            SHOWIF::"PAGE!!citrusip"
+    
+    bozko
+        hah! i have heard it myself, akizet
+        the teams have tozik to thank for that
+        you know well how his comments can inspire doubt in the most basic of foundations
+        in fact, we have him to thank for foreseeing a 'drifting' issue
+        this spire much resembles a half-submerged veilk, as a result
+    
+    sourceless
+        the initial design proposal from many θstares prior is still clear in my mind
+        if only for its controversial reception and hard-won approval
+    
+    bozko
+        glad as i am, proud as i am...
+        may we never have to deviate so much again
+    
+    akizet
+        yes, may velzie be so kind, my friend
+        
+    RESPONSES::akizet
+        rest well<+>END
+            EXEC::vn.done()
+
+SKIP::vn.done()
+END::ratween(env.bgm, 1)
+`)
+
+/**
+ * party - tozikvu
+ * tozik and gakvu 
+**/
+env.dialogues["d0_ptozvu"] = generateDialogueObject(`
+start
+    sourceless
+        a common sight - tozik appearing to ignore gakvu,
+            EXEC::vnp({gakvu: "show far", tozik: "show far", hideStage: true});pauseSwapCam(true);ratween(env.bgm, 0.8)
+        while she chatters on about something in a subtle attempt to provoke a rare response
+        i start to approach, but the sight inspires a quiet discomfort
+        a sort of distant, unwelcome envy...
+        she finds ways to eschew the emotional weight of our tasks, 
+        yet makes the same progress, or even more than expected
+        in a state of play as we toil together
+        a muddled reflection of the early θeyes of my θdeathly work
+        is it my role as director that has bled the light from my teeth?
+        i really must listen to kazki more...
+        it is not as if the call will quicken at our request
+
+    gakvu
+        hey, akizet
+            EXEC::vnp({gakvu: "show", tozik: "show"})
+
+    sourceless
+        what--oh
+        i suppose i did stop nearby
+        what am i doing? this is a celebration, no place for such thoughts
+        my receptors relax in a joyous greeting
+        
+    akizet
+        gakvu, tozik!
+        my friends
+        enjoying yourselves?
+    
+    gakvu
+        perhaps too much
+
+    tozik
+        well enough
+        it was... 
+        good, to meet with the auxiliaries again
+
+    akizet
+        yes, i imagine it must have been nearly an θeye since you last spoke directly?
+        in our chamber, it is too easy to forget the larger efforts at our back
+
+    gakvu
+        oh, enough about all of that
+        akizet, i was encouraging tozik to try the vaznian simulacra
+    
+    sourceless
+        she gestures to the display along the sides of the simulacra bar
+        a playful twist showing both in her receptors and voice
+
+    gakvu
+        such a variety within our claws, and yet he shuns them!
+        especially the food!
+        can you believe it? any recommendations?
+
+    sourceless
+        my attention shifts to the selection
+            EXEC::vn.done();setCam({x:7, y:7, rotation: 45, distance: 1, height: 1})
+        many of these were suggested by flesh-nostalgic vaznian auxiliaries,
+        flavors of drink and food drawn from obscure corners of the continent
+        the food simulacra especially are a rare sight, 
+        invoking both the sensation of taste, as a common simulacrum might,
+        <em>and</em> the feeling and texture between teeth,
+        without ever needing such features to be manifested!
+        though, i only recognize a single new-fall feast variant...
+        still fitting for the occasion, and well worth trying!
+            EXEC::vnp({gakvu: "show", tozik: "show", hideStage: true});
+
+    akizet
+        well, if you like the sort of, ah...
+
+    tozik
+        not necessary, akizet
+            EXEC::setCam()
+        
+    sourceless
+        gakvu laughs at his abrupt, tired delivery
+    
+    tozik
+        do not let gakvu deceive you, akizet
+        for neither will she try them
+
+    akizet
+        really?
+
+    sourceless
+        immediately, our shared suspicion settles on gakvu
+        whose receptors curl back coyly, accompanied with a short chuckle
+            EXEC::vnp({gakvu: "focus", tozik: "show"});
+
+    gakvu
+        oh, akizet, i have simply done all the research i need already
+        i may picture these gruesome meals in great detail without their direct memory
+        
+    akizet
+        what? do you both have a distaste for vaznian cuisine?
+
+    gakvu
+        distaste? hardly, hardly, akizet! 
+        it is inspired--artful, in a way, how veilk-vein fit into nearly every aspect of the vaznian diet
+        yes, i find the many varieties fascinating...
+        in the same way i might regard a pile of mismatched, half-digested bones left in a veilk's path
+        'how did that get there? what is that shape?'
+        
+    sourceless
+        again she laughs, even wringing a small movement from tozik's receptors
+        she jabs at memories she will not even briefly entertain
+        for a θblink i am frustrated, but in the next i realize,
+        she has changed targets in her prodding--from tozik, to me
+        where tozik might simply shun her in defense,
+        i know well how to retaliate
+    
+    akizet
+        aha. i see
+        i suppose you were the type to prefer it all preprocessed by a tir's acid, hm?
+        certainly we would see uuzk simulacra in the hands of every auxiliary, were they available
+
+    gakvu
+        ha! haha!
+        akizet, that is a deep recollection, i am impressed
+        the last i recall of those was in my larval youth
+        did you ever visit ekiva?
+
+    akizet
+        only after my θdeath, i fear, some θeyes before i left for earth
+        visiting a friend i had made over the collective, for sight-seeing
+        the larval population of her cave-city still prepared uuzk
+        in far more palatable flavors and textures than their ancient inspiration, but...
+        i suppose it looked to me as the more desperate veilk-vein meals look to you, hehe
+
+    sourceless
+        gakvu nods, her assault upon my patience shelved for curiosity
+        though i notice tozik has twisted away, distracted himself
+        she is quick to follow my gaze, adopting her vel's mask once more
+
+    gakvu
+        ah? has this talk of uuzk soured your appetite further, tozik?
+
+    tozik
+        just the orange simulacrum will do
+            EXEC::vnp({gakvu: "show", tozik: "show"});
+
+    sourceless
+        gakvu's quiet laughter is reinvigorated
+    
+    akizet
+        hehe, all right - enjoy the festivities, my friends
+
+    tozik
+        sure
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::vn.done();setCam();pauseSwapCam(false)
+
+SKIP::vn.done();setCam();pauseSwapCam(false)
+END::ratween(env.bgm, 1)
+`)
+
+/**
+ * party - human
+**/
+
+env.dialogueActors["cousin"] = { 
+    image: '/img/local/city/realeye.gif',
+    type: "recollection portrait-bright portrait-cover",
+    voice: ()=>play('talkfloweralt', 0.5)
+}
+
+env.dialogueActors["barfriend"] = {
+    image: "/img/sprites/obesk/golemportrait.gif",
+    type: "obesk uppercase",
+    voice: ()=>play('talk', 1.5)
+}
+
+env.dialogues["d0_ptau"] = generateDialogueObject(`
+start
+    sourceless
+        the bright cousin at the simulacra bar has drawn some curiosity, mine included
+            EXEC::setCam({x: 7.5, y: 5, rotation: 180});pauseSwapCam(true);ratween(env.bgm, 0.8)
+        one of a few local dignitaries involved in this long process,
+        invited to celebrate both its completion and the fortune it will bring
+        
+    cousin
+        ...So if you're this "echo"...
+            EXEC::setCam({x: 7.5, y: 5.5, rotation: 160})
+        Do you have the same memories?
+        Do you think exactly the same? Like, as the person you were based on?
+
+    sourceless
+        his voice is almost interrogative, the sign of an idle curiosity becoming more
+        so, before the others hovering nearby can take this chance to seize his ear,
+        i coil my receptors with a quiet chuckle, drawing near innocently
+        as if i were merely approaching for a simulacrum of my own
+        but truly, i might want to help explain
+        it always is the same questions with the bright cousins and our constructs
+
+    barfriend
+        no, tau!
+
+    sourceless
+        the barfriend's answer comes quickly,
+        delivered in a pleased tone, as if this would satisfy the cousin
+        of course, after a delay, he exhales in a scoff
+
+    akizet
+        you should try to limit your questions, my friend
+            EXEC::setCam({x: 7.75, y: 5.5, rotation: 210})
+        the cores of these service constructs are quite simple
+        tau is your name?
+
+    cousin
+        Yeah! And you must be Akizetesche?
+
+    sourceless
+        my translator core operates at a slight delay in deciphering my name
+        it must be an unusual pronounciation for the local dialect...
+        still, he does well, and with a notable smile, we shake hands
+
+    akizet
+        you may call me akizet, tau
+        and you are curious about the barfriend's mind?
+
+    cousin
+        Akizet! Cool, cool.
+        It's interesting, but I was more curious about the fake drinks and food you have here.
+        θ████ was asking about it, and...
+        What did I just--huh?
+        I mean, θ████.
+        That's not...
+        There was someo¥©êˆne I came here with. 
+        I'm not sure where she went.
+        I--I don't...
+        Anyway, the--drinks? The drinks?
+
+    moth
+        weird, that was an incoherence spike
+            SHOWONCE::
+        self-stabilized, so... not a big deal
+            SHOWONCE::
+        surprised there aren't more given where you fished this up from lol
+            SHOWONCE::
+
+    sourceless
+        i laugh, about to explain, as kazki approaches with gakvu in tow
+            EXEC::vnp({kazki: "show", gakvu: "show shiftleft"});setCam({x: 7.75, y: 5.25, rotation: 250})
+        they were nearby, chattering about something else,
+        but were drawn in by the novelty of a cousin at a simulacra bar, too
+    
+    kazki
+        oh, tau!! you want to try one?!
+        hehe! i have noo idea if they would even work for you...
+    
+    sourceless
+        a familiar giddiness rings in her voice
+        an artificial intoxicant, likely citric acid, set quite high
+
+    akizet
+        yes, i imagine that you, ah...
+
+    gakvu
+        you should try one. here, try mine
+    
+    sourceless
+        gakvu hands him a simulacrum with an unfamiliar hue
+        one of the more exotic ones being offered here
+        her receptors twist deviously, unabashed, 
+        knowing the cousin cannot decipher the meaning of the movement
+        tau smiles, muttering some thanks, before turning it over in his hands
+        he prods and pulls at its wobbly surface, baffled
+        before bringing it to his lips in a fruitless sip-like movement
+        then, he tries to bite it half-heartedly, 
+        recoiling at the first contact with his tongue, face twisting, hissing through his teeth
+        gakvu and kazki suppress their laughter expertly
+        i am not so adept
+
+    cousin
+        <span definition="INHERITED CONTEXT::'name of well-known religious figure';'taught once by a cousin of its taboo and profane nature';'does speaking it incite his wrath?';'perhaps his eye turns upon them when it is spoken'">Jesus! Jesus!</span>
+        What--did I do it wrong?
+        Come on. How do you do it?
+    
+    sourceless
+        as entertaining as it is to see him sputter, 
+        there is still an unspoken rule of kindness towards the cousins
+        gakvu knows this well, and need not even be prompted
+    
+    gakvu
+        forgive my trickery, tau, i could not resist
+        there is no bite or sip, though we often make the motions
+        when it makes contact with our external senses,
+        a connection is made, basically a brief memory transfer
+        just enough to simulate the flavor and experience of a single sip or bite
+        
+    sourceless
+        she gestures to me to demonstrate, and so tau hands the simulacra over
+        i start to bring it up to my face, but...
+        why is there still that devious twist in her receptors?
+        it only grows more intense in response to my suspicious glare
+        so i am hardly surprised when, after a 'sip',
+        my receptors suddenly twist in discomfort
+        some sort of foul fermented flavor, shocking even in this charitable memory from an enjoyer
+        one of the outer vaznian 'acquired tastes', i imagine
+        my face remains flat, even smiling slightly, as my receptors writhe in response
+    
+    cousin
+        Huh. So, is it good?
+    
+    kazki
+        see her receptors? she loves it!
+    
+    gakvu
+        yeah, exactly
+        
+    sourceless
+        calmly, i set the simulacrum on the bartop, nodding slowly
+        the two hide their own entertainment from the cousin well
+        briefly, they turn the topic to some specifics of the spire, before departing
+            EXEC::vn.done();setCam({x: 7.75, y: 5.5, rotation: 210})
+        but i am distracted by the internal process of purging that simulacrum's memory
+        i will have my revenge
+
+    RESPONSES::akizet
+        echoes<+>echoes
+        depart<+>END
+
+echoes
+    sourceless
+        i always enjoy introducing bright cousins to our concepts
+            EXEC::setCam({x: 7.75, y: 5.5, rotation: 210})
+        and so, i catch the cousin's attention again
+
+    akizet
+        tau!
+        you were curious about the barfriend, too, yes?
+
+    cousin
+        Oh, yeah!
+        It's... Just like a person. Or an AI pretending really well.
+        It told me a little bit about "echoes" being an "imprint" or something, but...
+        How does it work? 
+        It can't just be a copy, right?
+
+    sourceless
+        it cannot be? why not?
+        ah--it is clear enough in his voice
+        it is the depth that drives his curiosity, and forms the uneasiness in his tone
+        truly, he wonders why it is content to stay in its role indefinitely
+        my gaze drifts away, receptors slowly wringing in thought
+        
+    akizet
+        it can be, but that is not the entire view
+        a θjut in the echo-making field could explain this better, but as i understand,
+        for these simpler service echoes, a baseline is taken and...
+        i suppose you could say it is pared away, like removing the unwanted skin and tendrils of a fruit
+        until all that is left is what is required for its function!
+        then, it is given layers of limits, domain knowledge, guidance...
+        creating a mind in the shape of a 'person', as you say, 
+        one that may even be very familiar to the original obesk,
+        but without the underlying structures--experiences--that gave the original their shape
+        and often without many of the processes that may once have been utilized
+        does that make sense? 
+    
+    sourceless
+        a somewhat derivative and tired explanation, but one i am pleased to deliver
+        so i refocus on tau, remembering to give a small smile
+            EXEC::setCam({x: 7.75, y: 5.5, rotation: 150})
+        but he is distracted, exchanging a stare with the barfriend
+        it takes me a θblink to understand the shape of his face, one unfamiliar to me
+
+    cousin
+        Yeah...
+
+    sourceless
+        it is plain in his voice...
+        ...i may have only unnerved him more
+
+    akizet
+        but--perhaps my knowledge of the process is outdated!
+        i am among some of the older qou, you understand,
+        so maybe it is better left to a θjut, hehe
+        or, perhaps a tir, who may guide you to one with just the right knowledge!
+
+    cousin
+        Sure. 
+        Thanks, Akizet.
+                
+    RESPONSES::akizet
+        depart<+>END
+
+END::setCam();vn.done();pauseSwapCam(false);ratween(env.bgm, 1)
+`)
+
+/**
+ * party - vekoa / cavik
+**/
+
+env.dialogueActors["proxy"] = { 
+    image: '/img/sprites/vekoa/vekoaproxyportrait.gif',
+    type: "thoughtform qou recollection portrait-blocker portrait-cover",
+    voice: ()=>play('talkhigh', 0.75)
+}
+env.dialogues["d0_pvekik"] = generateDialogueObject(`
+start
+    sourceless
+        as i approach, it quickly becomes clear
+            EXEC::setCam({x: 2, y: 8.5, rotation: 90});pauseSwapCam(true);ratween(env.bgm, 0.8)
+        this is no simple golem, it is vekoa!!
+            EXEC::vnp({vekprox: "show", cavik: "show", hideStage: true})
+        did she really obtain a proxy just for this occasion?
+        i should not be so surprised...
+        she does like to keep up with our work, 
+        even if it is hardly the most demanding of her, compared to materials or maintenance
+        in fact, that may be why...
+        regardless, the golem stares at cavik as he spouts spirited questioning
+        it only bears a sigil, no receptors to reference, so...
+        whatever she is feeling is unreadable
+        ßÃÆM...
+            SHOWIF::"PAGE!!citrusip"
+    
+    cavik
+        ...so cool! how often does it resynchronize?
+    
+    proxy
+        for this one, every few θblinks, unless my mind is occupied otherwise
+
+    cavik
+        wow!! and it is not disorienting?
+
+    proxy
+        ha. you must not be familiar with my role
+        sometimes i am issued corrections from my primary mind, but...
+        it is no less disorienting than occupying clawfuls of golems and organs
+
+    sourceless
+        vekoa's voice, imperfectly replicated, carries an uncharacteristic patience
+        normally she is so eager to end a conversation and return to some distant work
+        it is... truly refreshing, to see her like this
+        even if it is only partially her
+
+    akizet
+        hello, cavik!
+        and vekoa! it is an honor to have you
+        in a proxy golem no less--exotic!
+
+    sourceless
+        I OFFER A KIND BOW, BENDING AT THE WAIST, RECEPTORS DIPPING IN RESPECT--SURELY SHE WILL APPRECIATE THIS GESTURE
+            SHOWIF::"PAGE!!citrusip"
+
+____SHOWIF::["PAGE!!citrusip", false]
+    cavik
+        oh, hi akizet!
+
+    proxy
+        hello, akizetesche
+____END
+
+____SHOWIF::["PAGE!!citrusip", true]
+    cavik
+        oh, hi aki!!
+
+    proxy
+        hello, akizetesche.
+____END
+
+    proxy
+        yes, it seemed a pleasant occasion to drag this out from beneath θeyes of dust
+        i believe it was reserved for council visits, from beyond the contrivance
+        but better implementations were made for them, so this is something of a relic
+    
+    sourceless
+        the golem raises a gauntlet, twisting it in the air to demonstrate
+        its joints, both here and in the dull plane, are rudimentary
+        then, it gestures to cavik
+
+    proxy
+        cavikormak was expressing interest in trying it, himself
+    
+    akizet
+        really, for what?
+
+    cavik
+        huh, ah, processing twice as much archival data at once?
+        discussing the merits of call interpretation with myself?
+        hahaha! i really have no idea what purpose it could serve with us
+        it just seems like a fascinating paradigm to try out
+        are you familiar with the proxy resynchronization process, akizet?
+    
+    akizet
+        only at a surface level, my friend
+        let me hear about it on our trip back, yes?
+
+    sourceless
+        i would rather not get caught up in a long conversation when there are so many qou to greet
+        still, his receptors raise in delight at the clear invitation to explain at length
+    
+    cavik
+        aha! of course!
+
+    akizet
+        though i do wonder, vekoa
+        are you able to relax, using that?
+    
+    sourceless
+        the constant stresses of groundsmindry escape none of us
+    
+    proxy
+        interesting question... yes, akizetesche
+        its mind operates separate from my own except for brief overlaps
+        and so, this self has no reason to worry about the work elsewhere
+        allowing its memories of calm to soothe my true mind as they are exchanged
+        really, it is very pleasant - i may have to employ it more
+    
+    akizet
+        i agree! all of us would, i am certain, with how much you carry
+        physical groundsmindry fatigue may be a distant larval problem,
+        but we sometimes do worry, ah,
+        
+    proxy
+        hah. do not worry over things you hardly know, akizet
+        but i appreciate your concern
+        in other matters, the northern hemisphere auxiliaries wanted to speak with you
+        θ███████ was rather intoxicated, so i assume it was more about sharing congratulations
+    
+    akizet
+        ah! yes, i have been looking for them, myself
+        perhaps we are just barely evading one another
+        i should find them! fare well, my friends
+
+    proxy
+        until your return, akizetesche
+
+    cavik
+        keep velzie entertained!
+
+    RESPONSES::akizet
+        depart<+>END
+            EXEC::vn.done();pauseSwapCam(false);setCam();
+
+SKIP::vn.done();pauseSwapCam(false);setCam();
+END::ratween(env.bgm, 1)
+`)
+
+/**
+ * party - kazki
+**/
+env.dialogues["d0_pkazki"] = generateDialogueObject(`
+start
+    sourceless
+        kazki lingers near the auxiliaries,
+            EXEC::setCam({x: 2, y: 4, rotation: 0});pauseSwapCam(true);ratween(env.bgm, 0.8)
+        some jovial conversation concluding just as i approach
+        never one to stay unoccupied for long, she is--upon me quickly
+            EXEC::vnp({kazki: "show", hideStage: true})
+
+    kazki
+        akiiii!!
+        ...zet!
+    
+    sourceless
+        of course, already artificially intoxicated, enough to notice immediately,
+        the glowing simulacrum in one claw clearly to blame
+        our shared pastime, laid bare beneath the kind gaze of their <span definition="INHERITED CONTEXT::'the screaming eye that reared the bright cousins';'requires ocular manipulation to directly observe'">sun</span>
+            SHOWIF::"PAGE!!citrusip"
+        with an amused curl of my receptors, i narrow my eyes in false judgement,
+            SHOWIF::"PAGE!!citrusip"
+        then lift my own simulacrum to my lips
+            SHOWIF::"PAGE!!citrusip"
+            EXEC::content.classList.add('sipping')
+            WAIT::2000
+            THEN::content.classList.remove('sipping')
+
+    akizet
+        hehe, hello kazki
+        i see you are taking to the occasion well
+    
+    kazki
+        yeees
+        i always love meeting with the auxiliaries!
+        this group here, you know--kiviku's subdivision,
+        they were the team who composed the seed for the polygonation spire!
+        the seed and vein system, both!! both duties!!
+
+    sourceless
+        i affirm with my receptors bemusedly, for this is all familiar to me
+        she says it as if i were not the one who made it so
+        this silly tir, handpicked for my team, ehehe
+            SHOWIF::"PAGE!!citrusip"
+    
+    kazki
+        you know, akii, they really look up to you...
+        that is why they let you saddle them with so much work, ehehehe
+        
+    akizet
+        to me? 
+        nonsense, kazki, they surely sought the honor of working with bozko
+        i merely provided direction and oversight, while--
+
+    sourceless
+        kazki's other claw interrupts me by swooping underneath my head, where a larval neck might lay,
+            EXEC::vn.done();
+        then gripping and raising it quickly to her eye level
+            EXEC::setCam({x: 2, y: 2.75, rotation: 0, height: 2, offsetCamera: "rotateX(10deg)"});
+        my claws snap up for it in shock, as if she might toss it away,
+        but of course, she does not, so i relax
+        though the flustered displeasure is still clear in my receptors
+    
+    kazki
+        quiet akiii. they do!! eehehehe
+        you always act like you are not doing anything!
+        just because our work is often slow and quiet,
+        does not mean it is unnoticed!
+        it is clear to everyone how hard you are pushing forward
+        especially in so slow a field
+        aaand--
+        if you do not believe yourself, for i do know how you tend to think,
+        believe me, then, yes? ehehe
+
+    sourceless
+        i am shocked into silence by the sudden praise
+        yes, i have heard the sentiment, it has inspired a warmth in my heart before
+        but to hear it so insistently, with no space for dispute,
+        it is affirming in its own, new way
+        in this θblink, she pulls my head closer to hers, as if listening for the slightest whisper from a communicator
+            EXEC::setCam({x: 1.35, y: 2.75, rotation: 60, height: 2, offsetCamera: "rotateX(10deg)"})
+        
+    kazki
+        hmmmm? hello? i did not disconnect your head, did i? eeheehee
+
+    sourceless
+        enough of this teasing--i snatch my head from her claw, settling it back over my shoulders with a sharp twist
+            EXEC::setCam({x: 2, y: 4, rotation: 0});vnp({kazki: "show", hideStage: true})
+    
+    akizet
+        yes--fine, yes, kazki!
+        i... i do appreciate the reassurance
+        if the occasion rises, pass on my appreciation, will you?
+        
+    kazki
+        yay!! good! goood!!
+        
+    sourceless
+        a distant group of auxiliaries catches sight of us both, waving eagerly
+    
+    kazki
+        ohh! hiii tuuvaaaa!!
+        excuse me, akii, we will celebrate more soon!! i should finish my rounds, ehehe!
+    
+    sourceless
+        kazki scurries off to mingle with them, her loud chatter flowing easily
+            EXEC::vnp({kazki: "hide"})
+        velzie was unusually kind to lend us such a tireless tir
+
+    RESPONSES::akizet
+        ...<+>END
+            EXEC::vn.done();pauseSwapCam(false);setCam();
+
+SKIP::vn.done();pauseSwapCam(false);setCam()
+END::ratween(env.bgm, 1)
+`)
+
+/**
+ * party - malvi
+**/
+env.dialogueActors["malvi"] = { 
+    image: '/img/local/embassy/parpy/malviportrait.gif',
+    type: "recollection thoughtform qou obesk portrait-static portrait-cover",
+    voice: ()=>play('talkhigh', 0.5)
+}
+env.dialogues["d0_malvi"] = generateDialogueObject(`
+start
+    sourceless
+        malvi, here?
+            EXEC::pauseSwapCam(true);setCam({x: 10.5, y: 10, rotation: 180});ratween(env.bgm, 0.8)
+        let alone beyond the base of the spine??
+        such a rare occasion! 
+        it is only through the collective that we have spoken since the early θgazes
+        i approach with unrestrained curiosity and delight
+
+    akizet
+        malvi!
+        you crawled out of the embassy by your own volition?
+        or did vekoa force you away?
+            SHOWIF::"embassy__movekoa"
+
+    sourceless
+        malvi's head twists in the air to observe me, body otherwise unmoving
+            EXEC::vnp({malvisig: "show", hideStage: true})
+        receptors locked in an idle twist, with no reaction to my approach
+        as unreadable as ever, any joy well hidden
+
+    malvi
+        akizetesche
+        it was indeed my duty that brought me here
+        i thought to verify some aspects of the spire physically
+        of course, your dignitaries could not leave me to my business when they saw my vessel,
+        and so i have been pried away, forced into this celebration
+        rooted here as a young veilk trapped in a resting herd
+    
+    sourceless
+        malvi's receptors drift down with sadness, even in their complex twist...
+        ...of course, restored with a formerly hidden simulacrum raised from two claws
+        if it were not for my familarity with gakvu's acts,
+        i would nearly have taken malvi's disappointment seriously        
+
+    malvi
+        really, there was no better excuse to leave the connection efforts in the hands of my assistants
+
+    sourceless
+        i laugh, for seeing malvi in such light spirit is so rare
+        though we are not truly familiar with one another,
+        we have always had a quiet, shared understanding
+        both vel, both managing a great initiative, 
+        both rarely able to demonstrate the spark of velzie within us
+
+____SHOWIF::"embassy__movekoa"
+    malvi
+        though it is strange that you mention vekoa so readily
+        'forced away?'
+        do not tell me she had to force you here, to your own celebration
+
+    akizet
+        ah... well,
+        i did intend to check upon a few matters--
+            AUTOADVANCE::
+            WAIT::2000
+
+____SHOWIF::["embassy__movekoa", false]
+    malvi
+        'by my own volition...'
+        what a hasty assumption to make
+        are you not here by <em>your</em> own volition?
+
+    akizet
+        ah... well,
+        if not for my team's joined arrival,
+        i would have lingered just a θblink longer at the embassy,
+        just to ensure that--
+            AUTOADVANCE::
+            WAIT::2000
+____END
+
+    malvi
+        ridiculous
+
+    sourceless
+        malvi's head rolls slightly in the air
+    
+    malvi
+        it is true what they say about you, akizetesche
+    
+    akizet
+        and what is that?
+
+    sourceless
+        i try to suppress my surprise--i actually do not know what 'they say'
+        of course, this could be another subtle jest
+        but who better to know than the arbiter of our operational omniscience?
+
+    malvi
+        you cannot help but manage far too much at once, far too quickly
+
+    sourceless
+        but i do it well, do i not? all the things i manage?
+        my receptors curl inwards with slight shame
+        who would spread such a sentiment??
+    
+    malvi
+        ah--? hahaha
+        akizetesche, do not look so glum
+        if it were truly a problem, you would not be where you are
+        but if it is clear even to <em>me</em>,
+        then it will fall to velzie alone to have you met with a proper break
+        while we may be tireless in θdeath,
+        there is no need to sprint forever
+        all knowledge will be ours, in time
+
+    sourceless
+        the tension in my curls fades
+
+    akizet
+        that is true, malvi...
+        yes, i will try to relax
+        how very strange to hear all this from an archivist, hehe
+
+    malvi
+        strange? hardly
+        my wisdom and knowledge are infinite
+    
+    sourceless
+        malvi does not veil their jest
+    
+    malvi
+        now go, do not disappoint me
+        
+    RESPONSES::akizet
+        fare well<+>END
+            EXEC::setCam();pauseSwapCam(false);vn.done();
+
+SKIP::setCam();pauseSwapCam(false);vn.done();
+`)
+
+/**
+ * party - proceed / ending
+**/
+env.dialogues["d0_end"] = generateDialogueObject(`
+start
+    sourceless
+        time passes, and the sky grows darker as the <span definition="INHERITED CONTEXT::'the screaming eye that reared the bright cousins';'requires ocular manipulation to directly observe'">sun</span> leaves us
+            EXEC::refreshStage({specificPlan: "late"});pauseSwapCam(true);setCam({x: 8, y: 10, rotation: 25});specialCam("latemode");;ratween(env.bgm, 0.75)
+        many qou have departed already, and my team has found one another near the simulacra bar
+        content in having met so many distant friends again
+        without our auxiliaries, such a scale could never have been reached
+        surprisingly, that bright cousin lingers, as well
+        and naturally is engrossed in conversation with kazki
+        but our slow reunion has caught her attention, and they draw close as i am inspired to speak
+            EXEC::vnp({bozko: "show far", cavik: "show far", kazki: "show far", gakvu: "show far", tozik: "show far", hideStage: true})
+
+    akizet
+        my friends, allow me one last θblink to voice our triumph before we depart
+        the work we have done on this bright world is staggering
+        truly--the network of spires we have built, the dedication in resources, earned with our progress...
+        evasive as it seems, 
+        the call's truth rests closer to our claws than it has ever been before
+        in time, may we solve this mystery, together
+
+    sourceless
+        the spread of receptors before me rest with contented agreement
+        even gakvu, who i thought might interject with some jest, has nothing to add
+        just as i might continue, i am cut short by an unexpected flash of light
+            EXEC::flash(true)
+            WAIT::400
+            THEN::flash(false)
+        we are left somewhat dazed, frozen--as if it were the sign of a predator beginning an attack
+        gradually, we turn towards the source--the bright cousin, tau, holding his communicator
+            EXEC::vn.done();setCam({x: 7.5, y: 9, rotation: 25, distance: 0})
+        a nervous stutter seizes his voice, intimidated by our silence
+    
+    cousin
+        Ah, shit.
+        Sorry, I--I forgot the flash was on.
+    
+    tozik
+        what?
+
+    kazki
+        ohh! you were taking a <span definition="INHERITED CONTEXT::'exact physical memory of sight from specific angle';'fascinating bright technology';'no memory drift in final product'">'photo'</span>!
+    
+    sourceless
+        kazki clasps her claws in excited realization, her receptors making a similar gesture
+    
+    kazki
+        bright communicators have a wealth of functions, little <span definition="INHERITED CONTEXT::'cousinly mechanism for capturing visual memory'">'cameras'</span> included!
+        tau, tau, will you take another <span definition="INHERITED CONTEXT::'exact physical memory of sight from specific angle';'fascinating bright technology';'no memory drift in final product'">photo</span> for us?
+        come, everyone, come in close! oh, where should we stand?!
+
+    bozko
+        hah! fun idea
+        bright pictures are just the one view, yes?
+    
+    cousin
+        Right!
+    
+    cavik
+        like a mural, bozko!
+        or a <span definition="NOTE::'partial translation';'implied closest functional equivalent';'technological implication'">window</span> with a frozen perspective!
+
+    bozko
+        i see...
+        so, over here, let us stand before the spire and coast
+    
+    kazki
+        perfect, perfect!
+
+    sourceless
+        kazki beckons to each of us gradually, placing us expertly alongside one another by the height of our qou-bodies
+            EXEC::vnp({bozko: "show", cavik: "show", kazki: "show tallmode", gakvu: "show", tozik: "show", hideStage: true})
+        so naturally, i am in front...
+        i! i did not feel the need to augment my stature, with my...
+            SHOWIF::"PAGE!!citrusip"
+
+    cousin
+        Right, so, just look at this little circle here, and hold still!
+        You can--smile, if you want. Usually we do that!
+
+    sourceless
+        my head spins above the pedestal of my neck, briefly glancing at the others
+        all imitate a cousinly smile to the best of their ability
+        kazki's smile is, of course, the most practiced
+        and tozik's receptors reflect a bracing for the 'flash'...
+    
+    cousin
+        Okay, here we go!
+    
+    sourceless
+        quickly, i realign my head, and stare at the communicator's camera
+        and after a short delay, there is a flash
+            EXEC::flash(true)
+        the θblink imprinted on this cousin's communicator,
+        sure to be in our claws, eventually
+            
+    sys
+        ATTENTION::'memory stream end';'render terminated'
+
+____SHOWONCE::
+    moth
+        huh, alright
+        if you want to talk about any of that, we should do it before you leave the thoughtspace
+        i'll hold it off from transferring you if you want to chat now
+____END
+
+    RESPONSES::self
+        speak with moth<+>CHANGE::++moth
+            EXEC::env.polygonation.endingMothListener()
+            HIDEREAD::
+
+    RESPONSES::sys
+        end recollection and return to embassy<+>END
+            EXEC::corruRefresh("/local/ocean/embassy/")
+`)
+					
+					
+
+					 
+					//mothchat definition
+					env.dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        auxiliaries<+>aux
+            SHOWIF::"EXEC::check(\`bt__d0_pbozko\`) || check(\`bt__d0_ptozvu\`) || check(\`bt__d0_pvekik\`) || check(\`bt__d0_pkazki\`) || check(\`bt__d0_end\`) || check(\`exm|polygonation|auxiliaries\`)"
+
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+
+env.dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+loop
+    RESPOBJ::mthresp
+
+start
+    self
+        question about the memory here
+
+    moth
+        what's up?
+    
+    RESPOBJ::mthresp
+
+aux
+    self
+        what do you know about the auxiliaries?
+        was the call team that large?
+
+    moth
+        yeah, it wasn't just the six of them lol
+        akizet and her team were generally understood to be the core of the initiative
+        kinda like leadership, although i don't think all of them had the same level of responsibility
+        hard to say since only akizet and kazki made public appearances, for the most part...
+        pretty sure 'auxiliaries' is how they reference other specialized teams though
+        like for construction, cross-initiative collaborators, that kind of stuff
+        i'll bet that's what most of those non-interactive qou recollections in the embassy were supposed to be
+
+____SHOWIF::"EXEC::check(\`exm|embassy|tir qou\`) || check(\`exm|embassy|vel qou\`) || check(\`exm|embassy|kiv qou\`) || check(\`exm|embassy|jut qou\`)"
+        and, looking over your scans of them...
+        they might have even played some minor active part in those memories once
+        but if funfriend had to wing it with repairing them, that's all totally lost now 
+____END
+
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
+`)
+					
+					
+
+					
+						document.querySelector('body').classList.remove('nomoth')
+					
+
+					if(firstLoad || env.waitOnLoad) {
+						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
+						body.setAttribute('state', 'corru-loaded')
+					} else {
+						page.onEnter()
+						if(oldPage.bgm) oldPage.bgm.unload() //unloads the old page music to save memory
+					}
+
+					document.dispatchEvent(env.hooks.corru_loaded)
+				},
+
+				onEnter: ()=>{
+					if(!page.dialoguePrefix.includes("notfound")) {
+						change(`visited_${location.pathname.replace(/\//g, '')}`, true)
+					}
+					
+					//global VN object update
+					page.vn = new VN()
+					window.vnObj = page.vn
+
+					
+					if(!env.noNavMessage) readoutAdd({message: `..__NAVIGATING::"${page.name}"__..`, name:"sys", actor: "sys", type: "navigation", show: false, sfx: false})
+					
+					
+					body.setAttribute('state', 'corru-entered')
+					firstLoad = false
+
+					
+					if(corruStatic.playing() && !body.classList.contains("hard-cut")) {
+						corruStatic.fade(corruStatic.volume(), 0, 1000)
+						setTimeout(()=> corruStatic.stop(), 1001)
+					}
+					if(page.bgm) {
+						page.bgm.volume(0)
+						
+						page.bgm.play()
+						page.bgm.fade(0, getModifiedVolume('music', 1), 1000)
+						env.bgm = page.bgm
+					} else {
+						env.bgm = null
+					}
+					
+
+					//dyn
+					
+					changeStage('vessel')
+startDialogue("d0_flight")
+document.addEventListener('keydown', stageKeypress)
+
+if(location.search.includes('testnav')) {
+   body.classList.add('debugmode')
+}
+
+					Buddy.triggerPageBuddies()
+					document.querySelector('#PageData').remove()
+					document.dispatchEvent(env.hooks.corru_entered)
+					mothHasUnreadCheck()
+
+					const urlParams = new URLSearchParams(window.location.search)
+					if(urlParams.has('goto')) {
+						const goto = urlParams.get('goto')
+						setTimeout(() => {
+							changeStage(goto)
+						}, 800)
+					}
+
+					setTimeout(()=>{
+						if(oldPage) if(oldPage.howls) oldPage.howls.forEach(howl=>howl.unload())
+					}, 400)
+				
+					console.log('rendering buddies!')
+					Buddy.renderGlobalBuddies()
+				},
+
+				onLeaving: (dest = false)=>{
+					env.noPointerLock = false
+					body.setAttribute('state', 'corru-leaving')
+					MUI("off")
+					env.waitOnLoad = false
+
+					if(env.bgm){
+						let oldbgm = env.bgm
+						env.bgm = null
+						if(oldbgm.playing()) {
+							oldbgm.fade(oldbgm.volume(), 0, 1000)
+							setTimeout(()=> oldbgm.stop(), 1001)
+						}
+					}
+
+					if(!body.classList.contains("hard-cut")) {
+						corruStatic.volume(0)
+						corruStatic.play()
+						corruStatic.fade(0, env.corruStaticBaseVol, 1000)
+					}
+
+					//dyn
+					
+					document.removeEventListener('corru_resources_added', page.entOverwrite)
+stageCleanup()
+page.bgm.unload()
+
+            		change('TEMP!!sat', true)
+					Buddy.cleanPageBuddies({removeEl: false})
+					document.dispatchEvent(env.hooks.corru_leaving)
+
+					if(dest) swup.loadPage({url: dest})
+					delete page.vn
+
+					if(body.getAttribute('menu') == "masks") {
+						body.classList.remove('in-tiny-menu', 'expand-menu')
+						body.setAttribute('menu', 'none')
+					}
+				}
+			}
+
+			
+
+			env.pageName = "better-times";
+			env.pagePath = location.pathname;
+			env.globalLimitedEntitySetup()
+		</script>
+	</div>
+
+	<!-- i got my eye on you -->
+	<script data-goatcounter="https://corru.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+	<script id="cryptocraze">
+	if(document.referrer.includes("/t.co/")) { 
+		document.body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn">
+			<span>hi, corru is unaffiliated with any crypto stuff. if a crypto twitter account claimed this is their work, report them. they're trying to scam you! the only real corru account is "corruworks"</span>
+			<span>(if not - sorry for the spooky non-diegetic message! it's a long story... I hope you enjoy my work!)</span>
+		</div>
+
+		<style>
+			.cryptowarn { display: none; }
+			body[state="corru-loaded"] .cryptowarn {
+			position: absolute;
+			z-index: 20000;
+			background: blue;
+			padding: 0.5em;
+			max-width: 50vw;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: 14px;
+			}
+		</style>`)
+	}
+	cryptocraze.remove()
+	</script>
+</body>
+</html>

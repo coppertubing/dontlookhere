@@ -262,3 +262,7 @@ dull
 
     RESPOBJ::mthvoidresp
 `)
+
+
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
