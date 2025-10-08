@@ -45,7 +45,7 @@ function stepKey(key) {
     var moving = false
     let closeMenu = true // suggestion per @ripplesplash from corrucord - previously closed menu immediately unless it was Z
 
-    // walk cyrillic style!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // --- walk cyrillic style!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (key.toLowerCase() == 'ц') key = 'w'
     else if (key.toLowerCase() == 'ф') key = 'a'
     else if (key.toLowerCase() == 'ы') key = 's'
@@ -147,6 +147,3 @@ function stepKey(key) {
 }
 
 page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// setTimeout(()=>chatter({actor: 'corruru', text: `cor-RU успешно инициализирован! @dutokrisa и @bra1nslug_ благодарят вас за использование`, readout: true}), 500)
-// setTimeout(()=>chatter({actor: 'corruru', text: `нашли баг, ошибку в тексте, странную фичу или у вас просто есть предложение? напишите нам!`, readout: true}), 3000)

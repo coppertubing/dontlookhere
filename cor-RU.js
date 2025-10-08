@@ -516,40 +516,32 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         },
         page: {
             func: (consolething)=>{
-                console.info("%cbeginning function - @cor-RU:page", cor_ru.fancy.general)
                 new Promise((resolve) => {
-                    console.log("%cpromise - @cor-RU:page", cor_ru.fancy.general)
                     if (consolething) cor_ru.updateResources()
                     resolve(getLocalizationForPage(true))
                 })
                 .then(()=>{
-                    console.info("%cthen - @cor-RU:page", cor_ru.fancy.general)
                     cor_ru.devved()
                             
                     processTranslation();
-                    console.info("%cprocess1 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processStatic(true);
                     cor_ru.processMenu();
                     cor_ru.processWarning();
-                    console.info("%cprocess2 - @cor-RU:page", cor_ru.fancy.general)
 
                     processTranslation(document.querySelector(`#definition-box`));
                     processTranslation(document.querySelector(`#mindspike-scanner`));
                     processTranslation(document.querySelector(`.ozo-mask-grid`))
-                    console.info("%cprocess3 - @cor-RU:page", cor_ru.fancy.general)
 
                     cor_ru.processSpecificTranslation("mindpike");
                     cor_ru.processSpecificTranslation(document.querySelectorAll(".mindsci-status"), "definition");
-                    cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname") // safeguard bc i noticed sometimes they just wont get translated correctly. wack
-                    console.info("%cprocess4 - @cor-RU:page", cor_ru.fancy.general)
+                    cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname") // safeguard bc i noticed sometimes they just ? wont get translated correctly. wack
 
                     cor_ru.observer.common.observe();
                     cor_ru.observer.bodychildren.observe();
                     cor_ru.observer.gad.observe();
                     cor_ru.observer.dialogue.observe();
                     cor_ru.observer.masks.observe();
-                    console.info("%cobservers - @cor-RU:page", cor_ru.fancy.general)
 
                     if (consolething) console.log(consolething[0], consolething[1])
                 })
@@ -577,7 +569,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         <h4 class="tdone">НЕОФИЦИАЛЬНАЯ КОМАНДА ПЕРЕВОДА</h4>
         <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
         <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
-        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord, @bruhslug в telegram!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
+        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord, @bruhslug в telegram!" class="tdone">Фонд "Моллюск"</span></li>
     </ul>
 </div>`,
 
