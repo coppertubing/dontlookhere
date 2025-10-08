@@ -4,6 +4,7 @@
 
     > load.js
     just a thingy to patch up stuff after the rest of da mod is loaded!
+    also a small quality of life addition: you can now walk with ya keyboard even if its toggled to a language with cyrillic alphabet
 
     progress: fully finished as of 23.08.2025
 */
@@ -17,9 +18,12 @@ cor_ru.observer.page.observe()
 
 document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()})
 
-/*function stepKey(key) {
+
+function stepKey(key) {
     //we don't let any steps happen under certain circumstances
-    if(env.stage.justStepped || 
+    if(
+        env.stage.freemove ||
+        env.stage.justStepped || 
         body.classList.contains('stage-transition') || 
         body.classList.contains('cull-stage') || 
         body.classList.contains('in-dialogue') || 
@@ -35,8 +39,13 @@ document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()
         setTimeout(() => {env.stage.justStepped = false}, 100)
     }
 
-    // --- let us walk cyrillic-style!!!!!!!!!!!!
+    let homeBox = stageCoordinatesFromId('creature')
+    let homePlate = elementAtStageCoordinates(homeBox.x, homeBox.y)
+    var targetSquare
+    var moving = false
+    let closeMenu = true // suggestion per @ripplesplash from corrucord - previously closed menu immediately unless it was Z
 
+    // walk cyrillic style!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     if (key.toLowerCase() == 'ц') key = 'w'
     else if (key.toLowerCase() == 'ф') key = 'a'
     else if (key.toLowerCase() == 'ы') key = 's'
@@ -45,13 +54,7 @@ document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()
     else if (key.toLowerCase() == 'у') key = 'e'
     else if (key.toLowerCase() == 'я') key = 'z'
 
-    let homeBox = stageCoordinatesFromId('creature')
-    let homePlate = elementAtStageCoordinates(homeBox.x, homeBox.y)
-    var targetSquare
-    var moving = false
-    let closeMenu = true // suggestion per @ripplesplash from corrucord - previously closed menu immediately unless it was Z
-
-    switch(key) {
+    switch(key.toLowerCase()) {
         //movement
         case "arrowup":
         case "w": //move in direction you're looking
@@ -60,7 +63,8 @@ document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()
 
         case "arrowleft":
         case "a": // turn left
-            playerTurn({clockwise: false})
+            if(env.pressedKeys.shift) moving = "strafeleft"
+            else playerTurn({clockwise: false})
         break;
 
         case "arrowdown":
@@ -70,18 +74,14 @@ document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()
 
         case "arrowright":
         case "d": //turn right
-            playerTurn()
+            if(env.pressedKeys.shift) moving = "straferight"
+            else playerTurn()
         break;	
 
         case "e":
             //we only want this happening on stages where it's expected
-            if(document.querySelector('#stage-navigator .swap') || check("TEMP!!allowswap")) {
-                setTimeout(()=>{
-                    content.classList.toggle('swapcam')
-                    updateCameraTracking()
-                }, stageAngleReset())
-            }
-        break;
+            if(document.querySelector('#stage-navigator .swap') || check("TEMP!!allowswap")) toggleSwapCam()
+        break
 
         case "q":
             switch(body.getAttribute('quality')) {
@@ -109,31 +109,42 @@ document.addEventListener('corru_resources_added', ()=>{cor_ru.updateResources()
     if(body.classList.contains('in-menu') && closeMenu) exitMenu(false)
 
     if(moving) {
-        var modifier = 1
-        if(moving == "back") modifier = -1
+        var modifier = 1;
+        if(moving == "back") modifier = -1;
 
         switch(env.stage.lastMoved) {
             case "up":
-                targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y + modifier)
+                if (moving === "strafeleft") targetSquare = elementAtStageCoordinates(homeBox.x + 1, homeBox.y)
+                else if (moving === "straferight") targetSquare = elementAtStageCoordinates(homeBox.x - 1, homeBox.y)
+                else targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y + modifier);
             break
+
             case "right":
-                targetSquare = elementAtStageCoordinates(homeBox.x + modifier, homeBox.y)
+                if (moving === "strafeleft") targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y - 1);
+                else if (moving === "straferight") targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y + 1);
+                else targetSquare = elementAtStageCoordinates(homeBox.x + modifier, homeBox.y);
             break
+
             case "down":
-                targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y - modifier)
+                if (moving === "strafeleft") targetSquare = elementAtStageCoordinates(homeBox.x - 1, homeBox.y);
+                else if (moving === "straferight") targetSquare = elementAtStageCoordinates(homeBox.x + 1, homeBox.y);
+                else targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y - modifier);
             break
+
             case "left":
-                targetSquare = elementAtStageCoordinates(homeBox.x - modifier, homeBox.y)             
+                if (moving === "strafeleft") targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y + 1);
+                else if (moving === "straferight") targetSquare = elementAtStageCoordinates(homeBox.x, homeBox.y - 1);
+                else targetSquare = elementAtStageCoordinates(homeBox.x - modifier, homeBox.y);
             break
         }
     }
-            
+    
     if(targetSquare != undefined) {
         gridMoveTo(homePlate, targetSquare);
         step()
         if(!env.stage.enemyPause) enemyStep()
     }
-}*/
+}
 
 page.formedDefinitionStrings = undefined // evil!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

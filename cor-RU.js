@@ -1,5 +1,5 @@
 /*/ если вы очутились здесь и не понимаете, что это такое, скорее всего /*/
-/*/ вы нажали на ссылку вместо того, чтобы правильно её установить.     /*/
+/*/ вы нажали на ссылку вместо того, чтобы правильно установить мод.    /*/
 /*/ не смотрите в в код дальше, если боитесь спойлеров!!! хихи          /*/
 /*/ видео по установке:                                                 /*/
 /*/ страница мода: https://github.com/cor-RU/cor-RU                     /*/
@@ -9,21 +9,24 @@
 /*
     cor-RU - мод на полную русскую адаптацию для corru.observer
 
-        от @dutokrisa и @bra1nslug_
+        от @dutokrisa и @bra1nslug_ (@bruhslug в телеграме)
         на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
         некоторые части используют код vielk memory hole example от @adr_furret
 
         EP0 протестировано: @akizetism
-        EP0-1 протестировано: @spaniel_00
+        EP1 протестировано: @spaniel_00
 
         (все упоминания - никнеймы в дискорде)
 
-    в данный момент доступна адаптация до конца EP2
+    в данный момент доступна адаптация до конца EP0
 
 
     не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
 
-    вы можете обращаться к @dutokrisa или @bra1nslug_ за любыми вопросами, просьбами, предложениями или баг репортами
+    за любыми отзывами, вопросами, просьбами, предложениями или баг репортами вы можете обратиться к нам:
+        к @dutokrisa или @bra1nslug_ (@bruhslug в телеграме)
+        по анонимной гугл форме - https://forms.gle/HHGhd4zU3VmJQgPCA
+        в дискорд сервер cor-RU - https://discord.gg/QtqqCh8myn
 
 
     спасибо за использование нашего мода <3
@@ -32,413 +35,30 @@
 
     cor-RU - a full russian adaptation mod for corru.observer
 
-        by @dutokrisa and @bra1nslug_
+        by @dutokrisa and @bra1nslug_ (@bruhslug in telegram)
         based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
         certain parts use code of vielk memory hole example by @adr_furret
 
         EP0 playtested by: @akizetism
-        EP0-1 playtested by: @spaniel_00
+        EP1 playtested by: @spaniel_00
 
         (all mentions are discord usernames)
 
-    adaptation up until the end of EP2 currently availible
+    adaptation up until the end of EP0 currently availible
 
 
     feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
 
-    you can reach out to @dutokrisa or @bra1nslug_ for any questions, requests, suggestions or bug reports
+    you can reach out to us for any feedback, questions, requests, suggestions or bug reports via:
+        @dutokrisa or @bra1nslug_ (@bruhslug in telegram) [RECOMMENDED FOR NON-RUSSIAN SPEAKING PEOPLE]
+        anonymous google form - https://forms.gle/HHGhd4zU3VmJQgPCA
+        cor-RU discord server - https://discord.gg/QtqqCh8myn
 
 
     thank you for using our mod <3
 */
 
 
-console.log("hello world! - @cor-RU")
-
-// temporary until corru.works fixes it
-
-
-/* dont think we need that one anymore. will test
-function generateDialogueObject(genString) {
-	let split = genString.split('\n')
-	let obj = {}
-    let lastParent = { // used to track depth
-        blockShowControl: false, // controls SHOWIF blocks that affect multiple dialogues
-        blockShowOnceControl: false // ditto for SHOWONCE
-    }
-
-    function parseShowif(showif) {
-        let finalShowIf = showif
-            .replace('SHOWIF::', '')
-            .replace(/'/g, '"')// removes the showif indicator and swaps single quotes for double (required for json parse for whatever reason)
-            .replace(/</g, '\\u003c') //apparently < and > throw errors if they're used unescaped in JSON... weird
-            .replace(/>/g, '\\u003e')
-
-        try {
-            return upgradeShowIf(JSON.parse(`{ "reasons":${finalShowIf}}`).reasons) 
-        } catch(e) {console.log(showif, e)}
-    }
-	
-	split.forEach(initialLine => {
-        let line = initialLine.replace(/\s+$/, '') // remove trailing space on RIGHT SIDE only
-        let tabs = (line.match(/    /g) || []).length // since left side matters for this
-        var text
-
-        //console.log(line)
-        //console.log(tabs)
-        switch(tabs) {
-            // lv0 - branch name. if it starts with end, it's an end function
-            // if it's a dialogue branch, just define the object for later and redef lastParent
-            case 0: 
-                if(line == "") return;
-
-                //block handling
-                else if(line.startsWith('____')) {
-                    let block = line.replace('____', '')
-
-                    if(block.startsWith('SHOWIF')) {
-                        lastParent.blockShowControl = parseShowif(block)
-
-                    } else if(block.startsWith('SHOWONCE')) {
-                        lastParent.blockShowOnceControl = true
-
-                    } else if(block == 'END') {
-                        lastParent.blockShowControl = false
-                        lastParent.blockShowOnceControl = false
-                    }
-                }
-
-
-                //special handling
-                else if(line.startsWith('END::')) { //this is a function to exec at the end of the dialogue
-                    obj['end'] = Function(line.replace('END::', ''))
-                    lastParent = {}
-                } else if(line.startsWith('SKIPTIME::')) { //defaults to 1000
-                    obj['skipTime'] = Number(line.replace('SKIPTIME::', ''))
-                    lastParent = {}
-                } else if(line.startsWith('SKIP::')) { //like END, but fired instantly when dialogue is skipped
-                    obj['skip'] = Function(line.replace('SKIP::', ''))
-                    lastParent = {}
-                } else if(line.startsWith('SKIPNOTICE::')) { //adds a message to the skip warning
-                    obj['skipNotice'] = line.replace('SKIPNOTICE::', '')
-                    lastParent = {}
-                } else if(line.startsWith('RESPOBJ::')) { //this is means it's just a reusable response list object definition, not a full dialogue tree
-                    obj = {responses: []}
-                    lastParent = {"0": obj}
-                }
-
-                //regular dialogue handling
-                else {
-                    obj[line] = { name: line, body: [], responses: [] }
-                    lastParent = {"0": obj[line]}
-                }
-            break
-
-            // lv1 - dialogue from an actor, or responses from an actor
-            // if RESPONSES, simply mark that we're in the responses section via lastParent[1]
-            // otherwise, it's an actor, so create a dialogue line object and add to lastParent[2]
-            case 1:
-                lastParent[1] = false 
-                lastParent[2] = false // clears depth
-
-                text = line.replace('    ', '')
-                if(text == "") return
-                if(text.includes("RESPONSES::")) { //actor for responses
-                    let newResponses = { name: text.replace('RESPONSES::', ''), replies: [] }
-                    lastParent[1] = newResponses
-                    lastParent[0].responses.push(newResponses)
-
-                } else if(text.includes("RESPOBJ::")) { //it's the name of a reusable response object, i.e. env.hello.generalReceptionistResponses
-                    let respobj = text.replace('RESPOBJ::', '')
-
-                    if (env.localization) {
-
-                        let localization = {};
-
-                        if(env.localization.dialogues) localization = env.localization.dialogues
-                        if(env.localization.page) {
-                            let values = Object.values(env.localization.page)
-                            for (let i = 0; i < values.length; i++) {
-                                if(values[i]['dialogues']) Object.assign(localization, values[i]['dialogues'])
-                            }
-                        }
-                        lastParent[0].responses = localization[respobj] || env.dialogues[respobj]
-                    }
-                    else lastParent[0].responses = env.dialogues[respobj]
-
-                    if(typeof lastParent[0].responses == "undefined") throw "the respobj you're trying to use doesn't exist (or hasn't been defined yet - remember these have to exist before your dialogue definition): " + respobj
-
-                } else { //actor for dialogue
-                    let newDialogue = { actor: text }
-                    lastParent[1] = newDialogue
-                    lastParent[0].body.push(newDialogue)
-                }
-            break
-
-            // lv2 - dialogue text, OR name/destination for a response
-            // if contains <+>, then response - split by that and assign relevant info to the lastParent[1]
-            // otherwise, add as text to lastParent[1] - it's just dialogue text
-            case 2:
-                text = line.replace('        ', '')
-                if(text == "") return
-                if(!text.includes("<+>")) { //regular actor dialogue
-                    lastParent[2] = false // clears depth
-
-                    if(lastParent[1].text) { // if it already has text, make a new object with the same actor
-                        let newDialogue = { 
-                            actor: lastParent[1].actor,
-                            "text": text
-                        }
-                        lastParent[1] = newDialogue
-                        lastParent[0].body.push(newDialogue)
-                    } else {
-                        lastParent[1].text = text
-                    }
-
-                    try{
-                        if(lastParent[1].text.includes('TEXEC::')) { //if it contains TEXEC, then that means it has a text exec - a function that returns a string to use when it appears
-                            
-                            lastParent[1].texec = Function(`return ${text.replace('TEXEC::', '')}`)
-                        }
-                    } catch(e) {console.log(e); console.log(lastParent, line)}
-                    
-                    //if there's a surrounding block control, we add the showIf condition to the dialogue object
-                    //same for showonce
-                    if(lastParent.blockShowControl) { lastParent[1].showIf = lastParent.blockShowControl;  }
-                    if(lastParent.blockShowOnceControl) { lastParent[1].showOnce = lastParent.blockShowOnceControl }
-                    
-                } else { //reply text and location
-                    let replyInfo = text.split('<+>')
-                    
-                    var replyName = replyInfo[0]
-                    var replyDest = replyInfo[1]
-                    
-                    let replyObj = {
-                        name: replyName,
-                        destination: replyDest
-                    }
-
-                    try{
-                        if(replyName.includes('TEXEC::')) { //ditto to regular dialogue functionality
-                            replyObj.texec = Function(`return ${replyName.replace('TEXEC::', '')}`)
-                        }
-                    } catch(e) {console.log(e); console.log(lastParent, line)}
-
-                    lastParent[1].replies.push(replyObj)
-                    lastParent[2] = replyObj
-                    
-                    //can be affected by block controls
-                    if(lastParent.blockShowControl) { lastParent[2].showIf = lastParent.blockShowControl;  }
-                    if(lastParent.blockShowOnceControl) { lastParent[2].showOnce = lastParent.blockShowOnceControl }
-                }
-            break
-
-            // lv3 - optional details like WAIT and EXEC - exec applies to both replies and dialogue lines
-            // wait is only used by dialogue lines, but no harm in checking for it on reply anyway
-            // uses lastParent[1] or lastParent[2] based on whether lastParent[2] is false or not (true means parent is reply)
-            case 3: 
-                var recipient = lastParent[1]
-                if(lastParent[2]) recipient = lastParent[2]
-
-                try {
-                    text = line.replace('            ', '')
-                    newReasons = false
-
-                    if(text == "") return
-                    if(text.startsWith("EXEC::")) recipient.exec = Function(line.replace('EXEC::', ''))
-                    if(text.startsWith("WAIT::")) recipient.wait = line.replace('WAIT::', '') //applies only to dialogue
-                    if(text.startsWith("THEN::")) recipient.then = Function(line.replace('THEN::', '')) //applies only to dialogue (js executed after a wait)
-                    if(text.startsWith("AUTOADVANCE::")) recipient.autoAdvance = true //applies only to dialogue
-                    if(text.startsWith("SHOWIF::")) newReasons = parseShowif(line)
-                    if(text.startsWith("SHOWONCE::")) recipient.showOnce = true
-                    if(text.startsWith("CLASS::")) recipient.class = text.replace('CLASS::', '') //adds specified text as classes (split by space) to the element rendered
-                    if(text.startsWith("HIDEREAD::")) recipient.hideRead = true //applies only to replies
-                    if(text.startsWith("UNREADCHECK::")) recipient.unreadCheck = Function(line.replace('UNREADCHECK::', '')) //applies only to replies. should return false (no unread), "within" or "unread"
-                    if(text.startsWith("FAKEEND::")) recipient.fakeEnd = text.replace('FAKEEND::', '') || true //applies only to replies. takes either text to use or nothing
-
-                    if(recipient.showIf && newReasons) {
-                        recipient.showIf = recipient.showIf.concat(newReasons)
-                    } else if(newReasons) {
-                        recipient.showIf = newReasons
-                    }
-                } catch(e) {
-                    console.log("dialogue parsing error, present line is: ", line)
-                    throw (e)
-                }
-            break
-        }
-    })
-
-    //return just the responses if the object has this - means it's a respobj definition
-    //also marks it as such with a special ID for use with tracking 
-    if(obj.responses) {
-        obj.responses.respobj = Math.random() * 1000
-        return obj.responses
-    }
-
-    //otherwise, return the full obj
-    else return obj
-} */
-
-function processDefinitionsInString(input, {force = false} = {}) {
-    if(!input) return input;
-    if(!input.includes) return input;
-    if((input.includes('definition=') && input.includes("::")) && !force) return input; //if there's a manual definition, we want to skip this
-
-    //we alter this string as it's processed to avoid definition overlaps
-    let scanningInput = input
-    let finalInput = input
-
-    //initialize the page definitions with any translation overrides if it isn't already set up
-    if(!page.formedDefinitionStrings) {
-        const localization = getLocalizationForPage()
-        page.formedDefinitionStrings = {...env.definitions, ...localization.definitions }
-    }
-    
-    //we want to prioritize phrases over words
-    const sortedDefinitions = Object.entries(page.formedDefinitionStrings).sort((a, b) => b[0].length - a[0].length)
-    sortedDefinitions.forEach(([phrase, definition]) => {
-        if(phrase.length > scanningInput.length) return;
-
-        const type = (typeof definition === "object") ? definition.type || processStringTranslation("INHERITED CONTEXT") : processStringTranslation("INHERITED CONTEXT");
-        const text = (typeof definition === "object") ? definition.text || definition : definition;
-
-        if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
-            //used mostly for special/context sensitive ones
-            finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${phrase.replace("θ", "")}</span>`)
-
-        } else {
-            //this regex looks literally insane but it's a faster way of looking up phrases in the string
-            //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
-            const edgeStart = `(?<=\\s|^|[-,.;:!?'])`
-            const edgeEnd = `(?=\\s|$|[-,.;:!?']|'s\\b|'d\\b|'ll\\b|'ve\\b|'re\\b|'m\\b|'t\\b)`
-            const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
-
-            // we check the scanningInput for matches
-            while ((match = phraseRegex.exec(scanningInput)) !== null) {
-                const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
-                
-                //replace the inputs - scanning to remove the match, finalInput to add the definition to the output
-                scanningInput = scanningInput.replaceAll(match[0], "")
-
-                //we do this to target replacements only outside of HTML
-                const finalInputRegex = new RegExp(`${edgeStart}(<[^>]*>|[^<]+)${edgeEnd}`, 'g')
-                finalInput = finalInput.replace(finalInputRegex, (innerMatch)=>{
-                    if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
-                        return innerMatch
-                    } 
-                    else { 
-                        const wordBoundaryRegex = new RegExp(`${edgeStart}${match[0]}${edgeEnd}`, 'g')
-                        return innerMatch.replace(wordBoundaryRegex, replacement) 
-                    }
-                })
-            }
-        }
-    })
-    
-    return finalInput
-}
-
-/* nor this one
-function processTranslation(container, force = false) {
-    if(!env.localization.strings) return;
-    let outerEl = container || content
-
-    outerEl.querySelectorAll(force ?" *" : "*:not(.tskip, .tdone, script, style)").forEach(el=>{
-        //translates definition hover regardless of children since that's safe
-        let def = el.getAttribute("definition")
-        if(def) { el.setAttribute("definition", processStringTranslation(def)) }
-
-        //same with entity
-        let ent = el.getAttribute("entity")
-        if(ent) { el.setAttribute("entaltname", processStringTranslation(ent))}
-
-        // if something has child elements, we want to process its text nodes separately from its children
-        // this is because the querySelectorAll already grabs everything - no need to traverse
-        for (const childNode of el.childNodes) {
-            if (childNode.nodeType === Node.TEXT_NODE) {
-                if(childNode.textContent.trim().length == 0) continue; // skip if functionally whitespace
-              childNode.textContent = processStringTranslation(childNode.textContent)
-            }
-        }
-        if(el.childNodes.length == 0) {console.log("skipped for", el); return el.classList.add('tskip')}
-        el.classList.add("tdone")
-    })
-}*/
-
-/*
-function readoutAdd({message, type = "", name, displayName, image = false, show = true, forceMini = false, sfx = true, actor = false, noStore = false}) {
-    let readout = document.querySelector('#readout')
-    let miniReadout = document.querySelector('#minireadout')
-    let effectiveMessage = message
-    // console.log("readoutAdd got displayName", displayName)
-
-    if (!displayName && name) displayName = processStringTranslation(name)
-
-    var addition
-    if(actor) {
-        // console.log("actor path")
-        if(actor.name == "unknown") return
-        let actorObj = getDialogueActor(actor)
-        effectiveMessage = processStringTranslation(actorObj.noProcess ? effectiveMessage : processDefinitionsInString(effectiveMessage))
-        addition = getReadoutMsg({message: effectiveMessage, image: actorObj.image, displayName: processStringTranslation(displayName), name: actor || displayName, type: actorObj.type, msgClass: actorObj.class})
-    } else {
-        //console.log("actorless path")
-        addition = getReadoutMsg({message: processStringTranslation(name == "moth" || name == "sys" ? effectiveMessage : processDefinitionsInString(effectiveMessage)), type: type, name, displayName: processStringTranslation(displayName), image: image})
-    }
-
-    //add the message to the main readout
-    readout.insertAdjacentHTML('beforeend', addition)
-	readout.scrollTop = readout.scrollHeight //scroll to it on the readout too
-
-    //if the readout isn't open and you aren't in dialogue... (unless forced to show)
-    //add the message to the mini readout, with a timer to remove it after a few seconds
-    if(show) {
-        if((!body.classList.contains('mui-active') && !body.classList.contains('in-dialogue')) || forceMini) {
-            miniReadout.insertAdjacentHTML('beforeend', addition)
-            let newMessage = document.querySelector(`#minireadout .message-${env.totalMessages}`)
-            setTimeout(() => {
-                newMessage.classList.remove('active')
-                setTimeout(()=>newMessage.remove(), 1000)
-            }, 5000);
-        }
-    }
-
-    //reveal all added stuff after a tiny delay
-    let currentMessageNum = env.totalMessages
-    setTimeout(()=>document.querySelectorAll(`.message-${currentMessageNum}`).forEach(e=>e.classList.add('active')), 50)
-    env.totalMessages++
-	
-    //play readout add sound if not in dialogue, and also it should be shown
-    if(!env.currentDialogue.active) {
-        if(sfx == true) play('muiReadout') //no custom sound
-        else if(typeof sfx == "function") sfx()
-        else if(typeof sfx == "string") play(sfx)
-        else if(typeof sfx == "object") {
-            play(sfx.sound, sfx.pitch)
-        }
-    }
-
-    //store message in session log in case of refreshes
-    //not too many though cause it used to be 1000 and that's a ton LOL
-    if(!noStore) {
-        if(env.logStore.length > 80) env.logStore.shift();
-        env.logStore.push(addition)
-        sessionStorage['log'] = JSON.stringify(env.logStore)
-    }
-
-    //also limit number of log entries that can show - used to be limitless, but we need a limit
-    if (readout.children.length > 80) {
-        var elementsToRemove = readout.children.length - 80
-    
-        for (var i = 0; i < elementsToRemove; i++) {
-            readout.removeChild(readout.children[0])
-        }
-
-        readout.insertAdjacentHTML('afterbegin', `<div class="message sourceless active">${processStringTranslation("internal log buffer cleared after reaching limit (80) due to attached external record device")}</div>`)
-    }
-}
-*/
 
 env.localization = {
    dialogues: {},
@@ -744,21 +364,11 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         }
     },
     processMenu: function () { // cannot force this one because that would defeat the purpose of it
-        if (document.querySelector("#system-menu") != null) document.querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')}) // --- we dont want to translate fundfriends (even tho it would be funny)
-        env.menu['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
-        if (env.menuStorage?.elements['system-menu'] != null) env.menuStorage.elements['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})
-
-        if (document.querySelector("#system-menu") != null) cor_ru.processSpecificTranslation(document.querySelectorAll('#savetext'), 'placeholder');
+        env.menu['system-menu'].querySelectorAll(".fundfriend").forEach(el=>{el.classList.add('tskip')})  // --- we dont want to translate fundfriends (even tho it would be funny)
         cor_ru.processSpecificTranslation(env.menu['system-menu'].querySelectorAll('#savetext'), 'placeholder');
-        if (env.menuStorage?.elements['system-menu'] != null) cor_ru.processSpecificTranslation(env.menuStorage.elements['system-menu'].querySelectorAll('#savetext'), 'placeholder');
-
-        if (document.querySelector("#system-menu") != null) processTranslation(document.querySelector("#system-menu"));
         processTranslation(env.menu['system-menu'])
-        if (env.menuStorage?.elements['system-menu'] != null) processTranslation(env.menuStorage.elements['system-menu'])
 
-        if (document.querySelector("#entity-menu") != null) processTranslation(document.querySelector("#entity-menu"));
         processTranslation(env.menu['entity-menu'])
-        if (env.menuStorage?.elements['entity-menu'] != null) processTranslation(env.menuStorage.elements['entity-menu'])
 
         processTranslation(document.querySelector("#meta-menu"));
         processTranslation(document.querySelector(`#advance-notice`));
@@ -967,16 +577,12 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         <h4 class="tdone">НЕОФИЦИАЛЬНАЯ КОМАНДА ПЕРЕВОДА</h4>
         <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
         <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
-        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
+        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord, @bruhslug в telegram!" class="tdone">Фонд "ПЯТЁРОЧНЁК"</span></li>
     </ul>
 </div>`,
 
     devved: function () {
-        if (check("TEMP!!cor-rudev")) return;
-        if (document.querySelector(".devs") != null) document.querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
-        env.menu["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
-        if (env.menuStorage?.elements['system-menu'] != null) env.menuStorage.elements["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
-        change("TEMP!!cor-rudev", true)
+        if (env.menu["system-menu"].querySelector(".devs.cor-ru") == null) env.menu["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
     },
 
     // for credits
@@ -1187,8 +793,8 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa or @bra1nslug_ on discord if you have any questions, requests, suggestions or bugs to report - @cor-RU", cor_ru.fancy.general)
-console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в discord, если есть вопросы, просьбы, предложения или надо зарепортить баг - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {
     document.head.appendChild(
