@@ -1879,27 +1879,27 @@ ____END
         from the corner of my vision, i see gordon shift, having grown tense
     
     cass
-        The secrecy from <em>your own people</em> is <em>very</em> strange.
-        Obviously, I wouldn't ever decline what you're offering.
-        Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing.
-        This has the potential to be the biggest societal and technological leap in humanity's history.
-        It would be an incredible political bargaining chip, if we had to use it that way.
-        And yet, you only want help tracking the Call down,
-        Which, as you know, we're already doing - just without your technology.
-        And privacy? 
-        Not a word to any of the hundreds of other qou we're working with, not even your Council?
-        I need to know why you're doing this.
+        The secrecy from <em>your own people</em> is <em>very</em> strange. // Срекретность от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
+        Obviously, I wouldn't ever decline what you're offering. // Очевидно, я бы ни за что не отказалась от вашего предложения. 
+        Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing. // Любая страна, любая корпорация--чëрт, да кто угодно с улицы <em>убил бы</em> за подобное.
+        This has the potential to be the biggest societal and technological leap in humanity's history. // У этого есть потенциал стать самым большим общественным и социальным рывком в истории человечества. 
+        It would be an incredible political bargaining chip, if we had to use it that way. // Это стало бы немыслимым политическим козырем, если бы нам пришлось так это использовать.  агхх слишком много "это" но я не знаю как исправить 
+        And yet, you only want help tracking the Call down, // И всё же, вы просите только о помощи с отслеживанием Зова,
+        Which, as you know, we're already doing - just without your technology. // Чем, насколько я знаю, мы уже занимаемся - разница лишь в отсутствии ваших технологий. "" почему здесь дефис
+        And privacy?  // И приватность?
+        Not a word to any of the hundreds of other qou we're working with, not even your Council?  // Ни слова ни одному из тех тысяч других куу, с которыми мы работаем, и даже вашему Совету?
+        I need to know why you're doing this. // Мне нужно знать, почему Вы делаете это.
 
     gordon
-        Director, as I explained in the proposal, recent discoverie--
+        Director, as I explained in the proposal, recent discoverie-- // Директор, как я и объяснил в обращении, недавнее открытие--
             WAIT::1000
             AUTOADVANCE::
         
     cass
-        Yes, yes, yes, I know the circumstances.
-        But even the rest of her <em>team?</em>
-        It doesn't make sense.
-        What am I missing, Akizet?
+        Yes, yes, yes, I know the circumstances. // Да-да-да, я знаю обстоятельства.
+        But even the rest of her <em>team?</em> // Но даже никому из её <em>команды?</em>
+        It doesn't make sense. // В этом нет никакого смысла.
+        What am I missing, Akizet? // Что я упускаю, Акизет?
 
     sourceless
         i feel her gaze bore into me, the smile flattened away over time
@@ -1959,9 +1959,9 @@ ____END
         wordlessly, without warmth, she tips the card in her hand towards me in offering
 
     cass
-        Hm.
-        That's very noble.
-        Well, everything's all set up.
+        Hm. // Хм.
+        That's very noble. // Это крайне благородно.
+        Well, everything's all set up. // Что ж, всё уже готово. "" мямяумяу
 
     sourceless
         i... take the card
@@ -1970,10 +1970,10 @@ ____END
         it is so difficult to read anything from her
 
     cass
-        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments.
-        We have other obesk working down there on various projects,
-        But the team has been briefed on your privacy concerns. It should be safe for you.
-        That card will let you into your section.
+        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments. // Любой может попасть на операционный/оперативный? этаж, но у каждого доступ только к отделу, относящейся к их задаче.
+        We have other obesk working down there on various projects, // У нас есть и другие обески, работающие внизу над всевозможными проектами,
+        But the team has been briefed on your privacy concerns. It should be safe for you. // Но команда проинформирована о ваших соображениях конфиденциальности. Для вас это должно быть безопасно """ последнее странное. может потом будут мысли
+        That card will let you into your section. // Эта карта позволит Вам попасть в ваш отдел.
     
     sourceless
         a polite smile returns to her face
@@ -1983,21 +1983,21 @@ ____END
         director, thank you for this opportunity
     
     cass
-        Likewise.
-        I have another meeting shortly, so, please excuse me.
-        It's been a pleasure, Akizet.
-        Gordon, we'll talk later.
+        Likewise.// Взаимно.
+        I have another meeting shortly, so, please excuse me. // У меня немного времени до следющей встречи, так что, прошу меня простить.
+        It's been a pleasure, Akizet. // Было приятно встретиться, Акизет.
+        Gordon, we'll talk later. // Гордон, поговорим позже.
 
     gordon
-        Yes ma'am.
+        Yes ma'am. // Да, мэм. """ ЖАЛКИЙ ЖАЛКИЙ ЖАЛКИЙ
 
     sourceless
         gordon meets my gaze, and we turn to leave
 
     cass::whisper
-        Be careful on the way down.
+        Be careful on the way down. // Будьте осторожны на пути вниз.
             SHOWONCE::
-        I hear the elevator's been acting a little strange.
+        I hear the elevator's been acting a little strange. // Я слышала, что лифт ведёт себя немного странно/с лифтом что-то неладное.
             SHOWONCE::
 
     RESPONSES::akizet
@@ -2024,7 +2024,7 @@ start
 
 ____SHOWONCE::
     gordon
-        Nervous?
+        Nervous? // Нервничаете?
 
     akizet
         not terribly
@@ -2032,10 +2032,10 @@ ____SHOWONCE::
         this is merely a handoff?
 
     gordon
-        Yeah,
-        Yeah...
-        It should be.
-        This is just about kicking off the operation.
+        Yeah, // Ага,
+        Yeah... // Ага...
+        It should be. // Должно было.
+        This is just about kicking off the operation. // Речь только о запуске операции.
 
     akizet
         i see
@@ -2059,18 +2059,18 @@ meeting
         do you expect it to be difficult?
 
     gordon
-        Dif-- Difficult?
+        Dif-- Difficult? // 
 
     sourceless
         he is quick to smile and shake his head slightly
 
     gordon
-        Heheh, it's just a handoff.
-        But...
-        Well, this was all approved very, very quickly.
-        It's an unusual fast-track for an, uh, equally unusual project.
-        The deal isn't changed, if that's what you're worried about.
-        She probably just wants to meet you personally and get clear with your goals.
+        Heheh, it's just a handoff. // Хехех, это обыкновенный handoff.
+        But... // Но...
+        Well, this was all approved very, very quickly. // Что ж, всё одобрялось очень, очень быстро.
+        It's an unusual fast-track for an, uh, equally unusual project. // Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
+        The deal isn't changed, if that's what you're worried about. // Сделка никак не изменилась, если Вы об этом беспокоитесь.
+        She probably just wants to meet you personally and get clear with your goals. // Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
     
     akizet
         very well...
@@ -2093,14 +2093,14 @@ interrogation
         gordon grows confused, raising his hands defensively, glancing around before lowering his voice
 
     gordon
-        Woah, Akizet, what--warn?
-        What did you expect?
-        Your offer came out of nowhere, and...
-        Well, it basically eclipsed everything else the bureau was doing in importance.
-        I know you wanted to keep your reasons secret.
-        W--she just wanted to make sure there weren't any strings attached.
-        You know, that this isn't part of some, some...
-        I mean, what you said--you meant it, right?
+        Woah, Akizet, what--warn? // Ну и ну, Акизет, что--предупредили?
+        What did you expect? // Чего Вы ожидали?
+        Your offer came out of nowhere, and... // Ваше предложение появилось из ниоткуда, и...
+        Well, it basically eclipsed everything else the bureau was doing in importance. // Ну, по сути, затмило по важности всё, чем занималось бюро.
+        I know you wanted to keep your reasons secret. //  Я знаю, что Вы хотели сохранить свои причины в секрете.
+        W--she just wanted to make sure there weren't any strings attached. // М--она просто хотела убедиться в том, что между вами нет недосказанностей. "" окей я не увере насколько правильно это переводить так
+        You know, that this isn't part of some, some... // Вы знаете, что это не часть какого-то, какого-то...
+        I mean, what you said--you meant it, right? // Я имею в виду, то, о чём Вы сказали--Вы это и имели в виду, так? "" смешной
     
     sourceless
         the tension in my receptors fades, and similarly, he stands easier
@@ -2122,10 +2122,10 @@ interrogation
         the more becomes at risk
     
     gordon
-        Well, everything's on the table now, so...
-        We'll just be careful, right?
-        Come on, let's head down to the lab.
-        I can introduce you to the team.
+        Well, everything's on the table now, so... // Что ж, всё уже на кону, так что...
+        We'll just be careful, right? // Мы просто будем осторожны, да?
+        Come on, let's head down to the lab. // Давайте, спустимся в лабораторию.
+        I can introduce you to the team. // Я могу познакомить Вас с командой.
     
     RESPOBJ::envoyInsideResponses
 
@@ -2158,25 +2158,25 @@ cooler
         but he signals for me to stop, and we approach
 
     oliver
-        C'mon...
+        C'mon... // Ну же...
 
     gordon
-        Hey, Oliver!
-        What's the matter?
+        Hey, Oliver! // Эй, Оливер!
+        What's the matter? // Чего тут?
 
     oliver
-        Gordon! Akizet! Nice to see ya.
-        The damn cooler's acting up again.
-        It always does this shit, man.
+        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! 
+        The damn cooler's acting up again. // Да кулер опять тупит.
+        It always does this shit, man. // Каждый раз одна и та же херь.
     
     akizet
         cooler? is this a temperature regulator?
     
     oliver
-        Hahaha, what? 
-        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking.
-        Actually, I never thought to ask...
-        Do ya like drinking cold water? Or, did ya, I guess?
+        Hahaha, what? // Хахаха, чего?
+        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking. // Не-не, это НАЧИНАЕМ УТРО С ПЕРЕВОДА НЕПЕРЕВОДИМОЙ ШУТКИ кулер для <em>воды</em>. Сохраняет воду холодной. Ну, знаешь, для питья.
+        Actually, I never thought to ask... // Вообще, мне никогда в голову не приходило спросить...
+        Do ya like drinking cold water? Or, did ya, I guess? // Вам нравится пить холодную воду? Или, я полагаю, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
 
     akizet
         oh, yes, of course!
@@ -2185,8 +2185,8 @@ cooler
         is it not intact?
 
     oliver
-        Well, I mean...
-        Look at it.
+        Well, I mean... // Ну, я имею в виду...
+        Look at it. // Взгляни на него.
 
     sourceless
         he gestures vaguely to the machine
@@ -2194,35 +2194,35 @@ cooler
         i... i cannot quite make out what he means
 
     oliver
-        How the hell am I supposed to get anything out of there?
+        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать?
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon
-        You put in a maintenance ticket?
+        You put in a maintenance ticket? // Ты оформил талон на обслуживание? """ 
     
     oliver
-        Ehh, not yet, but... 
-        It's not long before I've got a meeting with the Director.
-        Ah, well, I'll just get something from the vending machines.
-        Why are you two up here, anyway? 
+        Ehh, not yet, but... // Ну-у, пока ещё нет, но...
+        It's not long before I've got a meeting with the Director. // У меня тут встреча с Директором скоро.
+        Ah, well, I'll just get something from the vending machines. // А-а, ладно, просто захвачу чего из торгового автомата.
+        Why are you two up here, anyway?  // В любом случае, зачем вы двое здесь?
 
     sourceless
         before we have a chance to respond, he answers himself in realization
 
     oliver
-        Ahh, you're the Director's eight o'clock!
-        Shit, don't let me hold you.
+        Ahh, you're the Director's eight o'clock! // Ааа, вы Директорские в восемь часов!
+        Shit, don't let me hold you. // Дерьмо, не дайте мне вас задержать.
 
     gordon
-        Sure, Oliver. You know, if you don't want to pay for a drink...
-        You could check the big meeting room past the elevators.
-        I'm pretty sure there's a mini fridge in there.
+        Sure, Oliver. You know, if you don't want to pay for a drink... // Разумеется, Оливер. К слову, если не хочешь платить за напиток...
+        You could check the big meeting room past the elevators. // Можешь проверить большую комнату для совещаний после лифтов.
+        I'm pretty sure there's a mini fridge in there. // Уверен, там есть мини-холодильник.
     
     oliver
-        Ohh, good idea!
+        Ohh, good idea! // Оох, хорошая идея!
 
     gordon
-        But we'd better not be late.
+        But we'd better not be late. // Но нам лучше бы не опаздывать.
     
     akizet
         ah, yes
@@ -2230,7 +2230,7 @@ cooler
         may your hunt bear fruit
 
     oliver
-        See ya around.
+        See ya around. // Свидимся.
 
     RESPONSES::akizet
         offer cup<+>gotwater
@@ -2247,30 +2247,30 @@ gotwater
             EXEC::env.citystreet.oliverCup()
 
     oliver
-        Huh?
-        Wait, how--
+        Huh? // Хах?
+        Wait, how-- // Погоди, как--
             AUTOADVANCE::
             WAIT::2000
-        Where did you get that?
+        Where did you get that? // Откуда она у тебя?
     
     akizet
         very glad to have helped, my friend
     
     oliver
-        That's not what I...
-        ...Yeah, sure, thanks.
+        That's not what I... // Это не то что я...
+        ...Yeah, sure, thanks. // ...Да-а, конечно, спасибо.
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Wait, did you drink from this?
+        Wait, did you drink from this? // Погоди, ты, пила из него?
 
     akizet
         there was no change in the contents, if that is what concerns you, oliver
         would you like me to get another one?
 
     oliver
-        Uh, no, it's--it's fine.
-        You should probably get to your meeting.
+        Uh, no, it's--it's fine. // Э-э, нет, всё--всё в порядке.
+        You should probably get to your meeting. // Тебе, наверное, на встречу уже пора.
 ____END
 
     RESPONSES::akizet
@@ -2286,8 +2286,8 @@ gotwaterbonus
             EXEC::env.citystreet.oliverCup()
 
     oliver
-        Akizet, I--
-        I already...
+        Akizet, I-- // Акизет, У--
+        I already... // У меня уже...
             AUTOADVANCE::
             WAIT::2000
     
@@ -2295,12 +2295,12 @@ gotwaterbonus
         very glad to have helped, my friend
     
     oliver
-        Okay.
+        Okay. // Ладно.
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Did you...?
-        Whatever, it's fine.
+        Did you...? // Ты, что...?
+        Whatever, it's fine. // Неважно, ничего страшного.
 ____END
 
     RESPONSES::akizet
