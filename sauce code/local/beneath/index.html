@@ -11,21 +11,21 @@
 
 
 
-<title>p?a-??r?-???s?-t?e?</title>	
-<meta name="title" content="p?a-??r?-???s?-t?e?">
+<title>a?-?b?-????-y?s?</title>	
+<meta name="title" content="a?-?b?-????-y?s?">
 <meta name="description" content="ANALYSIS::'incomplete';'fragmented';'spatial thoughtform'::INCOHERENCE DETECTED::ADVISE::'do not render'">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://corru.observer/local/beneath/parasite/">
-<meta property="og:title" content="p?a-??r?-???s?-t?e?">
+<meta property="og:url" content="https://corru.observer/local/beneath/">
+<meta property="og:title" content="a?-?b?-????-y?s?">
 <meta property="og:description" content="ANALYSIS::'incomplete';'fragmented';'spatial thoughtform'::INCOHERENCE DETECTED::ADVISE::'do not render'">
-<meta property="og:image" content="https://corru.observer/img/socials/beneathparasite.gif">
+<meta property="og:image" content="https://corru.observer/img/socials/beneath.gif">
 
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://corru.observer/local/beneath/parasite/">
-<meta property="twitter:title" content="p?a-??r?-???s?-t?e?">
+<meta property="twitter:url" content="https://corru.observer/local/beneath/">
+<meta property="twitter:title" content="a?-?b?-????-y?s?">
 <meta property="twitter:description" content="ANALYSIS::'incomplete';'fragmented';'spatial thoughtform'::INCOHERENCE DETECTED::ADVISE::'do not render'">
-<meta property="twitter:image" content="https://corru.observer/img/socials/beneathparasite.gif">
+<meta property="twitter:image" content="https://corru.observer/img/socials/beneath.gif">
 <meta name="theme-color" content="#ff00ff">
 <meta name="darkreader-lock">
 	
@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1759426824626918236"></script>	
-	<script src="/js/dialogue.js?1759426824626918236"></script>	
-	<script src="/js/globalents.js?1759426824626918236"></script>	
-	<script src="/js/cystStage.js?1759426824626918236"></script>
-	<script src="/js/buddy.js?1759426824626918236"></script>
-	<script src="/js/vn2.js?1759426824626918236"></script>
-	<script defer src="/js/saves.js?1759426824626918236"></script>
+	<script src="/js/corru.js?1758921388640655831"></script>	
+	<script src="/js/dialogue.js?1758921388640655831"></script>	
+	<script src="/js/globalents.js?1758921388640655831"></script>	
+	<script src="/js/cystStage.js?1758921388640655831"></script>
+	<script src="/js/buddy.js?1758921388640655831"></script>
+	<script src="/js/vn2.js?1758921388640655831"></script>
+	<script defer src="/js/saves.js?1758921388640655831"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1759426824626918236'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1759426824626918236'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -115,7 +115,7 @@
 	</div>
 
 	<div id="static">
-		<div class="enter" onclick="page.onEnter()" page="p?a-??r?-???s?-t?e?">
+		<div class="enter" onclick="page.onEnter()" page="a?-?b?-????-y?s?">
 			[[__PROCEED__]]
 		</div>
 	</div>
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1759426824</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -366,250 +366,270 @@
 
 <style>
 
-@import url(/css/stage/beneath.css?1759426824626918236);
+@import url(/css/stage/beneath.css?1758921388640655831);
 
-#content::after {
+#content::after, #content::before {
+    display: none;
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(/img/local/beneath/parasitesky.gif), url(/img/textures/mass_moderate.gif);
-    background-size: cover, auto;
-    background-position: bottom;
-    background-repeat: no-repeat, repeat;
     z-index: -1;
 }
 
-#realgrid .gridpiece:empty {
-    border: 0;
-    background: transparent;
-}
-
-#content:not(.isabel) #realgrid .gridpiece.isabelonly {
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.gridpiece.slot::after {
+#content::after {
+    display: block;
     content: "";
     position: absolute;
-    width: 190%;
-    height: 190%;
-    top: 5%;
-    left: 5%;
-    background: black;
-    transform: translateZ(-1px);
-    border-radius: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, var(--friend-color) 0%, #0000), url(/img/local/beneath/abyssaltran.gif);
+    background-size: auto, cover;
+    background-position: bottom;
     z-index: -1;
-    background: url(/img/local/beneath/slot.gif);
-    border: 10px ridge var(--obesk-color);
-    background-size: cover;
+    opacity: 0.25;
+    transform: translateY(-15%);
+    background-repeat: repeat-x, repeat;
 }
 
-#realgrid.dark .gridpiece.slot {
+.slowfall1 .grid-container {
+    transition: 1s ease-in;
+}
+
+.slowfall2 .grid-container {
+    transition: 10S ease-in;
+}
+
+#realgrid .gridpiece:empty, #realgrid .gridpiece.ocean:empty {
+    background: url(/img/textures/dithertran.gif), var(--friend-color);
+    border: 1px dotted;
+}
+
+#realgrid .gridpiece.ocean.blocks, #realgrid .gridpiece.ocean.dyp {
+    background-image: url(/img/textures/spotgradientinversetiny.gif), url(/img/textures/dithertran.gif);
+    background-size: 200% 200%, auto;
+    background-position: center;
+    background-color: var(--friend-color);
+    border: 10px double var(--dark-color);
+}
+
+/* city crossover */
+#realgrid .gridpiece.city {
+    background: url(/img/textures/panelpattern.gif);
+    border: 10px double var(--dark-color);
+}
+
+#realgrid .gridpiece.city:empty {
+    background: url(/img/textures/staticContrast.gif);
+    border: 3px double var(--dark-color);
+}
+
+#realgrid .gridpiece.watercity {
+    background: url(/img/textures/spotgradientinversetiny.gif), url(/img/textures/dithertile.gif), url(/img/textures/watertile.gif?), var(--bright-color);
+    background-size: 150% 150%, auto;
+    background-position: center;
+}
+
+#realgrid .gridpiece.watercity:empty {
+    background: url(/img/textures/dithertile.gif), url(/img/textures/watertile.gif?), var(--bright-color);
+}
+
+/* side rooms */
+#realgrid .gridpiece.wreck {
+    border: 2px dashed var(--bright-color);
+    background: url(/img/local/ocean/ship/pipesdark.gif);
+}
+
+#realgrid .gridpiece.busted, 
+#realgrid .gridpiece.busted:empty {
+    background: url(/img/textures/bustedtile.gif), var(--friend-color);
+    background-size: auto;
+    background-position: bottom;
+}
+
+body#abyss_ship #content::after {
+    background: linear-gradient(180deg, var(--friend-color) 0%, #0000 50%), url(/img/local/ocean/ship/w.gif);
+    background-size: auto, 20%;
+    background-position: center;
+    background-repeat: repeat-x, repeat-x;
+    opacity: 0.3;
+}
+
+body#abyss_ship #content::before {
+    display: block;
+    width: 125vmax;
+    height: 125vmax;
+    top: unset;
+    left: unset;
+    animation: SPIN 150s linear infinite;
+    background-image: url(/img/local/ocean/depths/warpstatic.gif);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: -5;
+    border-radius: 100%;
+}
+
+/* wreck */
+#abyss_wreck #content::after {
+    opacity: 0.1;
+}
+
+[stage="abyss_wreck"]#realgrid .gridpiece.empty {
+    background: url(/img/textures/bustedtile.gif), var(--bright-color);
+    background-size: auto;
+    border: 0;
+    opacity: var(--intendedOpacity)
+}
+
+#realgrid .dancerzets .dypcontent {
     opacity: 1;
 }
 
-#realgrid.dark .gridpiece.slot::after {
+#realgrid .dancerzets .ozofriend.akieffigy {
     opacity: var(--intendedOpacity);
+    --baseTransform: translateX(0);
 }
 
-.gridpiece.slot.cyside::after {
-    border-color: var(--friend-color);
-}
 
-#realgrid .gridpiece.slot.celki {
-    transform: translateZ(calc(var(--gridTileSize) * 2))
-}
-
-.gridpiece.slot.celki::after,
-.gridpiece.slot.celkizone::after {
-    background: url(/img/textures/spotgradientinversewhitetiny.gif), var(--friend-color);
-    background-size: contain;
-    top: -50%;
-    left: -50%;
-    width: 300%;
-    height: 300%;
-}
-
-#realgrid[stage="parasite_celki"] .gridpiece.slot.celki::after, 
-#realgrid[stage="parasite_celki"] .gridpiece.slot.celkizone::after {
-  display: none;
-}
-
-#realgrid .celkifloor {
-    border-radius: 100%;
-    border: 20px ridge var(--obesk-color);
-    transform: translateZ(calc(var(--gridTileSize)* -0.15));
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform-style: unset !important;
-}
-
-#realgrid .celkifloor.fallback {
-    border: 20px ridge var(--obesk-color);
-    width: calc(var(--gridTileSize) * 5);
-    height: calc(var(--gridTileSize) * 5);
-    z-index: -1;
-    transform: translate(60%, 60%);
-    background: var(--friend-color);
-    top: unset;
-    left: unset;
-}
-
-#realgrid .gridpiece.slot.vein {
-    transform: translateZ(calc(var(--gridTileSize) * 1))
-}
-
-.gridpiece.slot.vein::after {
-    background: url(/img/textures/spotgradientinversewhitetiny.gif), var(--friend-color);
-    background-size: contain;
-}
-
-#realgrid .gridpiece.slot.vein.teleport {
-    transform: translateZ(calc(var(--gridTileSize) * 0.5));
-}
-
-.gridpiece.slot.vein.teleport::after {
-    background: url(/img/textures/spotgradientinversewhitetiny.gif), var(--neutral-color);
-    background-size: contain;
-    border-color: var(--neutral-color);
-}
-
-#realgrid .gridpiece.slot.vein.teleport.flat {
+/* watercity */
+body#abyss_city #content::after {
+    background: linear-gradient(180deg, #00ffffb5 0%, #0000), url(/img/local/beneath/watercity.gif);
+    opacity: 0.75;
     transform: unset;
 }
 
-.gridpiece.slot.occupied::after {
-    background-size: 120%;
-    background-repeat: no-repeat;
+@media only screen and (min-width: 1920px), (min-height: 1080px) {
+    body#abyss_city #content::after {
+        background-size: cover;
+    }
+}
+
+/* jellyshop */
+#realgrid .drowning {
+    transform: rotateX(-90deg) rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ));
+    transition: 1s all ease-in-out;
+}
+
+body#abyss_city_shop #content::after {
+    background: linear-gradient(180deg, #00ffffb5 0%, #0000), url(/img/local/beneath/watercity.gif);
+    transform: unset;
+    opacity: var(--darkening);
+    transition: 400ms ease-in-out;
+}
+
+body#abyss_city_shop[currentdialogue^="drowning_"] #content::after {
+    opacity: 0 !important;
+}
+
+#realgrid .gridpiece.teleport.blocks.abyssdoor {
+    background: #ffff0000;
+    border: 10px solid #ffff00;
+    border-style: outset;
+    background-image: url(/img/textures/watertiledoor.gif?);
     background-position: center;
 }
 
-.gridpiece.slot.cy::after {
-    background-image: url(/img/textures/spotgradientinverse.gif);
-    background-color: var(--friend-color);
-    border-color: var(--friend-color);
-}
-
-.gridpiece.slot.ma::after {
-    background-image: url(/img/textures/spotgradientinverse.gif);
-    background-color: var(--obesk-color); 
-    border-color: var(--obesk-color);
-}
-
-#realgrid .gridpiece.teleport.slot, #realgrid .gridpiece.teleport.occupied {
-    background: transparent;
-    border: unset;
-}
-
-#realgrid .dyp .ep4board {
-    background: url(/img/local/beneath/gridistort.gif);
-    background-size: cover;
+#realgrid .gridpiece.teleport.blocks.abyssdoorfake {
+    background: #ffff0000;
+    border: 10px solid #ffff0000;
+    border-style: outset;
+    background-image: url(/img/textures/watertiledoorfake.png);
     background-position: center;
-    border-radius: 25%;
-    transform-origin: center;
 }
 
-#realgrid .ep4board figure {
+#realgrid .dyp .dypcontent.preload {
+    transform: var(--baseTransform);
+    --baseTransform: rotateX(-90deg) translateY(1000%) var(--dyp-transform);
+    opacity: 0.001%;
+}
+
+#realgrid .drowning {
+    --dyp-image: url(/img/local/beneath/drowning.gif) !important;
+}
+
+#realgrid .drowning[expression="scared"] {
+    --dyp-image: url(/img/local/beneath/drowning_scared.gif) !important;
+}
+
+#realgrid .drowning[expression="panic"] {
+    --dyp-image: url(/img/local/beneath/drowning_panic.gif) !important;
+}
+
+#realgrid .drowning[expression="safe"] {
+    --dyp-image: url(/img/local/beneath/drowning_safe.gif) !important;
+}
+
+.grid-plane[specialcam="drowningcam"] .grid-animator {
+    --camera-x: 4;
+    --camera-y: 5.2;
+    --personal-offset: rotateX(-10.5deg) translateZ(calc(var(--gridTileSize) * 1));
+    --camera-rotation: 180 !important;
+}
+
+.jellymode .grid-plane[specialcam="drowningcam"] .grid-animator {
+    --camera-y: 4;
+    --personal-offset: rotateX(-15.5deg) translateZ(calc(var(--gridTileSize) * 1));
+}
+
+#content::before {
     content: "";
     position: absolute;
-    width: calc(var(--gridTileSize) * 0.5);
-    height: calc(var(--gridTileSize) * 0.5);
-    --baseTransform: rotateX(90deg) translateY(-50%);
-    transform: var(--baseTransform);
-    background-image: url(/img/local/beneath/akifig.gif?);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    backface-visibility: visible;
-    -webkit-backface-visibility: visible;
-    pointer-events: none;
-}
-
-#realgrid .ep4board figure.aki {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * 0.5));
-}
-
-#realgrid .ep4board figure.cav {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * 0.3)) translateX(50%) rotateY(20deg);
-    background-image: url(/img/local/beneath/cavfig.gif?);
-}
-
-#realgrid .ep4board figure.tainer {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * -0.3)) translateX(-50%);
-    background-image: url(/img/local/beneath/containerfig.gif?);
-    height: 75px;
-}
-
-#realgrid .ep4board figure.tainer:nth-of-type(3) {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * -0.1)) translateX(-70%) rotateY(20deg);
-}
-
-#realgrid .ep4board figure.tainer:nth-of-type(5) {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * 0.2)) translateX(10%) rotateY(20deg);
-}
-
-#realgrid .ep4board figure.golem {
-    transform: var(--baseTransform) translateZ(calc(var(--gridTileSize) * -0.4)) translateX(30%) rotateY(-20deg);
-    background-image: url(/img/local/beneath/golemfig.gif?);
-}
-
-.ep4board .akieffigy img {
-    width: 100%;
+    top: 0;
+    left: 0;
+    width: 200%;
     height: 100%;
-    object-fit: contain;
+    background-image: url(/img/local/beneath/storeswarm.gif??);
+    z-index: -1;
+    display: block;
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    animation: JELLYDRIFT 120s ease-in-out infinite alternate;
+    opacity: 0;
+    animation-play-state: paused;
+    filter: unset;
 }
 
-.ep4board .ozofriend.akieffigy {
-    transform-style: unset;
+#content.jellymode::before {
+    animation-play-state: running;
+    filter: blur(0.65px);
+    opacity: 0.75;
 }
 
-#realgrid .ep4board figure.akieffigy {
-    --baseTransform: translate(-50%, -150%) rotateX(90deg) rotateY(180deg);
-    height: calc(var(--gridTileSize) * 0.4);
-}
-
-#realgrid .ep4board .akieffigy .target::before, #realgrid .ep4board .akieffigy .target::after {
-    font-size: 16px;
-    padding: 0.5em;
-}
-
-#realgrid .ep4board figure.akieffigy {
-    pointer-events: initial;
-}
-
-body[currentdialogue="players"] .grid-container {
-    --camera-y: 2;
-    --camera-x: 3;
-    --camera-rotation: 180;
-    --camera-height: 1;
-}
-
-.critta {
-  animation: devil 0.75s ease-in-out infinite alternate;
-  --baseTransform: rotateX(-90deg) var(--dyp-transform);
-  transform: var(--baseTransform);
-}
-
-@keyframes devil {
-    0% { transform: var(--baseTransform) scaleX(1) scaleY(1)}
-    100% { transform: var(--baseTransform) scaleX(0.75) scaleY(1.25)}
-}
-
-/* tunnel */
-#parasite_tunnel #content::after {
+#content.jellymode.dim::before {
+    animation-play-state: running;
+    filter: blur(0.65px);
     opacity: 0.2;
 }
 
-/* connector */
-#parasite_abyss #content::after {
-    background: linear-gradient(180deg, #0ff 0%, #0000), url(/img/local/beneath/parasitesky.gif);
-    background-size: cover;
-    opacity: 0.1;
+@keyframes JELLYDRIFT {
+    0% { transform: translateX(0%) rotate(1deg) }
+    100% { transform: translateX(-50%) rotate(-2deg) }
+}
+
+
+body#abyss_city_shop[currentdialogue="drowning_fall"] #content::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: black;
+    background-image: url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/local/uncosm/pit/core_bg_slight.gif?5), url(/img/textures/panelpatterntranstrongermirror.gif?2), url(/img/textures/corrurippletran.gif);
+    background-size: auto, auto, auto 100%, auto;
+    background-position: center 0%, center 100%, center, center;
+    background-repeat: repeat-x, repeat-x, repeat-x, repeat;
+    opacity: 0;
+    transition: opacity 10s ease-in;
+}
+
+body#abyss_city_shop[currentdialogue="drowning_fall"] #content.breaking::after {
+    opacity: 1 !important;
 }
 
 </style>
@@ -626,32 +646,32 @@ body[currentdialogue="players"] .grid-container {
 
 			// This script is generated per-page based on jekyll front-matter and other inputs. If you're looking at how stuff was done, be prepared for truly terrible whitespace management. It's prettier when I'm working on it, trust me.
 			page = {
-				title: "p?a-??r?-???s?-t?e?",
-				name: "p-a-r-s-t-e",
-				dialoguePrefix:  "parasite" ,
+				title: "a?-?b?-????-y?s?",
+				name: "a-b-y-s",
+				dialoguePrefix:  "abyss" ,
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1759426824626918236,
+				cacheval: 1758921388640655831,
 
 				
-				image: "/img/socials/beneathparasite.gif",
+				image: "/img/socials/beneath.gif",
 				
 
 				
-				order: "32",
+				order: "31",
 				
 
 				
 				bgm: new Howl({
 					onload: function () {page.howls.push(this)},
-					src: ['/audio/beneath_friendly.ogg'],
+					src: ['/audio/beneath_abyss.ogg'],
 					preload: true,
 					loop: true,
 					
 					
 					sprite: {
-						__default: [50, 169328, true]
+						__default: [50, 170667, true]
 					}
 				}),
 				
@@ -863,907 +883,569 @@ body[currentdialogue="players"] .grid-container {
 					
 						
 						
-							env.definitions[`zuzucri`] = `'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'`;
+							env.definitions[`akozak`] = `'burrowing slime';'sinkhole';'many arms'`;
 						
 					
 						
 						
-							env.definitions[`celki blight-bulbs`] = `'partial translation';'inherited description-generated noun';'parasite upon parasite'`;
+							env.definitions[`θzzoust`] = `'interjection';'savor this rare moment';'toast not properly spoken unless shouted'`;
 						
 					
 					
 					//dynamically inserted
 					 
-						env.parasite = {
-    stageLoad: () => {            
+						page.maskJoyNote = "\nLOCAL_RESONANCE::'moderate';'connective thoughtform detected'"
+env.abyss = {    
+    drowningStart: ()=>{
+        cutscene(true)
+        flash(true)
+        env.stage.current.fogRadius = 14
+
+        setTimeout(()=>{
+            specialCam("drowningcam")
+            setTimeout(()=>{flash(false); cutscene(false)}, 400)
+            step()
+        }, 400)
+    },
+    
+    drowningEject: ()=>{
+        cutscene(true)
+        setTimeout(()=>{
+            play("criticalError", 1)
+            flash(true)
+            setTimeout(()=>{
+                endDialogue()
+                specialCam(false)
+                cutscene(false)
+                ratween(env.bgm, .8)
+                changeStage('abyss_city', 104, 'left')
+                setTimeout(()=>{
+                    flash(false)
+                    setTimeout(()=>{
+                        if(check("abyss__drowning_ejected", false)) startDialogue('drowning_ejected')
+                        content.classList.remove('jellymode')
+                    }, 400)
+                }, 2000)
+            }, 400)
+        }, 4000)
+    },
+    
+    drowningEnd: ()=>{
+        cutscene(true)
+        flash(true)
+        setTimeout(()=>{
+            specialCam(false)
+            setTimeout(()=>{flash(false); cutscene(false)}, 400)
+        }, 400)
+    },
+
+    drowningFear: (fear) => {
+        if(fear < 0) {
+            change("PAGE!!drowningScared", false)
+            ratween(env.bgm, .8)
+
+            document.querySelectorAll('.drowning').forEach(el=>el.setAttribute('expression', 'safe'))
+        } else if(fear == 0) {
+            change("PAGE!!drowningScared", false)
+            ratween(env.bgm, .8)
+
+            document.querySelectorAll('.drowning').forEach(el=>el.setAttribute('expression', ''))
+        } else if(fear == 1) {
+            change("PAGE!!drowningScared", true)
+            ratween(env.bgm, .5)
+
+            document.querySelectorAll('.drowning').forEach(el=>el.setAttribute('expression', 'scared'))
+        } else if(fear <= 2) {
+            change("PAGE!!drowningScared", true)
+            ratween(env.bgm, .2)
+
+            document.querySelectorAll('.drowning').forEach(el=>el.setAttribute('expression', 'panic'))
+        }
+    },
+    
+    stageChange: ()=>{
         env.stage.querySelectorAll(".raised-floaty").forEach((e) => e.style.animationDelay = `${-1 * rand(1, 20)}s`)
 
-        env.stage.querySelectorAll(".critta.rand").forEach(critta=>{
-            var letter
-
-            if(critta.parentElement.classList.contains("cy")) letter = 'c'
-            else letter = 'm'
-
-            console.log(`url(/img/local/beneath/pieces/${letter}${rand(1, 4)}.gif)`)
-            critta.style.setProperty("--dyp-image", `url(/img/local/beneath/pieces/${letter}${rand(1, 4)}.gif)`)
-        })
-
         switch(env.stage.name) {
-            case "parasite_tunnel":
-            case "parasite_abyss":
-                env.bgm.rate(0.8)
+            case "abyss_city_shop": 
+                if(env.bgm._src.includes("abyss.ogg")) {
+                    changeBgm(env.abyss.adriftMusic, {length: 200, pause: true})
+                }
             break
 
             default:
-                env.bgm.rate(1)
+                if(!env.bgm._src.includes("abyss.ogg")) {
+                    changeBgm(page.bgm, {length: 200, pause: true})
+                }
             break
         }
+    },
+
+    adriftMusic: new Howl({
+        onload: function () {page.howls.push(this)},
+        src: ['/audio/november.ogg'],
+        preload: true,
+        loop: true,
+        volume: 1,
+        rate: 0.8,
+        sprite: {
+            __default: [50, 106500, true]
+        }
+    }),
+
+    drowningFall: () => {
+        content.classList.add("slowfall1")
+        ratween(env.bgm, 0.05, 10000)
+        setTimeout(()=>{
+            setCam({x: 4, y: 8, distance: 0, height: 0, rotation: 0, offsetCamera: "rotateX(90deg) rotate(700deg)"})
+            setTimeout(() => {
+                content.classList.add("slowfall2")
+                setCam({x: 4, y: 8, distance: 0, height: 0, rotation: 0, offsetCamera: "rotateX(90deg) translateZ(15000px) rotate(8000deg)"})
+            }, 700);
+            setTimeout(() => {
+                content.classList.add("breaking")
+            }, 3000);
+        }, 400)
     }
 }
 
-env.stages['parasite'] = {
-    width: 14,
-    fogRadius: 8,
+env.stages['abyss'] = {
+    width: 18,
+    fogRadius: 6,
     fogAlgorithm: "half",
-    exec: ()=> env.parasite.stageLoad(),
-    prerenderExec: ()=> {
-        if(check("hub__funfriend-mothframe2")) {
-            env.stages['parasite'].entities["G"] = env.stages['parasite'].entities['R']
-            env.stages['parasite'].entities["g"] = env.stages['parasite'].entities['r']
-        }
-    },
+    exec: ()=> env.abyss.stageChange(),
     entities: {
+        "_": {
+            class: "gap blocks",
+        },
+
         "=": {
             class: "gap blocks raised-floaty",
-        },
-
-        r: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta rand",
-                    type: "board",
-                    image: 'url(/img/local/beneath/palcyan.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        R: {
-            class: "slot occupied ma",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta rand",
-                    type: "board",
-                    image: 'url(/img/local/beneath/palpurp.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5)) rotateY(180deg)"
-                }
-            } 
-        },
-
-        "C": {
-            class: "celki slot blocks",
-        },
-        
-        "c": {
-            class: "vein slot blocks",
-        },
-        
-        "ć": {
-            class: "vein slot",
-            teleportTarget: "parasite_celki",
-            teleportSpot: 10,
-            shouldFace: "up"
-        },
-        
-        "ȼ": {
-            class: "occupied",
-            teleportTarget: "parasite_celki",
-            teleportSpot: 10,
-            shouldFace: "up"
-        },
-        
-        "Ċ": {
-            class: "vein slot",
-            teleportTarget: "parasite_celki",
-            teleportSpot: 38,
-            shouldFace: "down"
-        },
-        
-        "Ȼ": {
-            class: "occupied",
-            teleportTarget: "parasite_celki",
-            teleportSpot: 38,
-            shouldFace: "down"
-        },
-        
-        "V": {
-            class: "vein slot",
-            teleportTarget: "parasite_tunnel",
-            shouldFace: "down"
-        },
-        
-        "_": {
-            class: "slot",
-        },
-        
-        "/": {
-            class: "slot cyside",
-        },
-        
-        "+": {
-            class: "occupied blocks",
-        },
-        
-        "T": {
-            class: "vein slot flat",
-            teleportTarget: "parasite_tunnel",
-            teleportSpot: "151",
-            shouldFace: "left"
-        },
-        
-        "t": {
-            class: "occupied",
-            teleportTarget: "parasite_tunnel",
-            teleportSpot: "151",
-            shouldFace: "left"
-        },
-
-        S: {
-            class: "slot occupied ma",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta shelf",
-                    type: "shelf",
-                    image: 'url(/img/local/beneath/pieces/shelf.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        A: {
-            class: "slot",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta a",
-                    type: "a",
-                    image: 'url(/img/local/beneath/pieces/a.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(-30%) translateZ(calc(var(--gridTileSize) * 0.25)) rotateY(135deg) translateX(50%)"
-                }
-            } 
         },
 
         V: {
-            class: "slot occupied cy",
             contains: {
-                examineEntity: "piece",
                 dyp: {
-                    class: "critta c",
-                    type: "c",
-                    image: 'url(/img/local/beneath/pieces/c.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        i: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta i",
-                    type: "i",
-                    image: 'url(/img/local/beneath/pieces/i.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        "k": {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta k",
-                    type: "k",
-                    image: 'url(/img/local/beneath/pieces/ka.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * .5))"
-                }
-            } 
-        },
-
-        K: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta pal",
-                    type: "pal",
-                    image: 'url(/img/local/beneath/pieces/k.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) rotateY(180deg) translateZ(calc(var(--gridTileSize) * -0.5))"
-                }
-            } 
-        },
-
-        G: {
-            class: "slot occupied ma",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta",
-                    type: "gk",
-                    image: 'url(/img/local/beneath/pieces/g.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        g: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta",
-                    type: "mi",
-                    image: 'url(/img/local/beneath/pieces/m.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        ⳉ: {
-            class: "notile",
-            contains: { 
-                class: "rotainer",
-                examineEntity: "rotwatcher",
-                html: `
-                    <figure class="rotfig"></figure>
-                    <style id="rotwatcherstyle">
-                        @import url(/css/rotwatcher.css)
-                    </style>
-                `,
-                dyp: {
+                    class: "vesselgap",
                     image: 'transparent',
                     width: 3,
-                    height: 2.5,
-                    transform: `translateX(-100%) rotateY(10deg)`,
-                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
+                    height: 3,
+                    noback: true,
                 }
             } 
         },
 
-        ϧ: {
-            class: "notile",
-            contains: { 
-                class: "rotxamine",
-                dyp: {
-                    image: 'url(/img/sprites/rot/rotxa.gif)',
-                    width: 3,
-                    height: 2,
-                    transform: `translateX(-150%) rotateY(10deg) translateY(-50%)`,
-                    style: `--baseTransform: rotateX(-90deg) var(--dyp-transform);`,
-                }
-            } 
-        }
-    },
-
-    plan: `
-        ....=.Tt..=...
-        ......tt=...ⳉϧ
-        i+k+/░/p/░G+V+
-        ++++░░░░░░++++
-        /░/░/░/░/░/░/░
-        ░░░░░░░░░░░░░░
-        /░/░r+/░/░/░/░
-        ░░░░++░░░░░░░░
-        r+ćȼc+C+c+ĊȻ_░
-        ++ȼȼ++++++ȻȻ░░
-        R+_░_░_░_░_░_░
-        ++░░░░░░░░░░░░
-        _░R+_░_░_░R+K+
-        ░░++░░░░░░++++
-        S+A+R+_░g+_░R+
-        ++++++░░++░░++
-    `,
-
-    planAdjustment: function (plan) {
-        let newPlan = plan
-
-        if(!check("mask", "joy") || env?.buddy_globalRotwatcher?.currentLocation != page.path) {
-            newPlan = newPlan.replace("ⳉ", ".")
-            newPlan = newPlan.replace("ϧ", ".")
-        }
-
-        return newPlan
-    }
-}
-
-env.stages['parasite_celki'] = {
-    width: 7,
-    fogRadius: 14,
-    fogAlgorithm: "half",
-    prerenderExec: ()=> {
-        if(!check("hub__funfriend-mothframe2")) {
-            env.stages['parasite_celki'].entities["R"] = env.stageEntities['░']
-            env.stages['parasite_celki'].entities["_"] = env.stageEntities['░']
-            env.stages['parasite_celki'].entities["r"] = env.stageEntities['░']
-        }
-    },
-
-    exec: ()=> {
-        env.parasite.stageLoad()
-        
-        if(check("effigy_gamer")) {
-            env.stage.querySelectorAll('.ep4board .akieffigy').forEach(el=>el.remove())
-        }
-    },
-    entities: {
-        "=": {
-            class: "gap blocks raised-floaty",
-        },
-
-        r: {
+        v: {
             contains: {
-                examineEntity: "piece",
                 dyp: {
-                    class: "critta",
-                    type: "gamer",
-                    image: 'url(/img/local/beneath/pieces/g.gif)',
-                    width: 2,
-                    height: 2,
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
                     transform: "rotateY(90deg)"
                 }
             } 
         },
 
-        R: {
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta",
-                    type: "gamer_m",
-                    image: 'url(/img/local/beneath/pieces/m.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "rotateY(-90deg)"
-                }
-            } 
-        },
-
-        E: {
-            teleportTarget: "parasite",
-            teleportSpot: 108,
-            shouldFace: "down"
-        },
-
-        e: {
-            teleportTarget: "parasite",
-            teleportSpot: 143,
-            shouldFace: "up"
-        },
-
-        T: {
-            teleportTarget: "parasite_abyss",
-            teleportSpot: 8,
-            shouldFace: "up"
-        },
-        
-        "_": {
-            class: "slot celkizone",
-            contains: {
-                html: `
-                    <figure class="aki"></figure>
-                    <figure class="cav"></figure>
-                    <figure class="tainer"></figure>
-                    <figure class="tainer"></figure>
-                    <figure class="golem"></figure>
-                    <figure class="tainer"></figure>
-                    
-                    <figure class="ozofriend akieffigy" type="gamer">
-                        <div class="target" entity="effigy"></div>
-                        <img class="body" src="/img/local/uncosm/ozo/akieffigy_body2.gif">
-                        <img class="head" src="/img/local/uncosm/ozo/akieffigy_head2.gif">
-                    </figure>
-                `,
-                examineEntity: "tactical board",
-                dyp: {
-                    class: "ep4board critical",
-                    image: 'transparent',
-                    width: 1.5,
-                    height: 1.5,
-                    transform: "translateY(-33%) rotateX(-90deg) translateY(-50%)"
-                }
-            } 
-        },
-    },
-
-    plan: `
-        ...e...
-        .░░p░░=
-        .░░░░░.
-        ░░r_R░T
-        .░░░░░=
-        =░░░░░.
-        ...E.=.
-    `,
-
-    html: window.chrome ? ` <canvas class="celkifloor" sprite="/img/local/beneath/celkifloor.gif" fit="stretch" baseWidth="7" baseHeight="7"></canvas>` : `<div class="celkifloor fallback"></div>`
-}
-
-env.stages['parasite_abyss'] = {
-    width: 6,
-    fogRadius: 5,
-    fogAlgorithm: "half",
-    exec: ()=> env.parasite.stageLoad(),
-    entities: {
-        "=": {
-            class: "gap blocks raised-floaty",
-        },
-
-        t: {
-            teleportTarget: "parasite_celki",
-            teleportSpot: 26,
-            shouldFace: "left"
-        },
-
-        o: {
-            class: "faketeleport",
-            exec: ()=>{ 
-                change("TEMP!!from", "parasite")
-                moveTo("/local/beneath/") 
-            }
-        },
-        
-        "/": {
-            class: "slot cyside",
-        },
-
-        r: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta",
-                    type: "water",
-                    image: 'url(/img/local/beneath/pieces/b.gif)',
-                    width: 2,
-                    height: 2,
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        V: {
-            contains: {
-                dyp: {
-                    noback: true,
-                    class: "vesselgap",
-                    image: 'transparent',
-                    width: 3,
-                    height: 3,
-                    transform: 'rotateY(180deg)'
-                }
-            } 
-        },
-    },
-
-    plan: `
-        ..t...
-        ../░.=
-        .=░░..
-        ../░r.
-        ..░░..
-        ==/░..
-        =.░░.=
-        ../░..
-        ..░░..
-        ../░==
-        ..░░.=
-        ../░..
-        ..░p..
-        ...o..
-        ...V..
-    `
-}
-
-env.stages['parasite_tunnel'] = {
-    width: 14,
-    fogRadius: 8,
-    fogAlgorithm: "half",
-    exec: ()=> {
-        env.parasite.stageLoad()
-        if(check("citystreet__flower_beacon") && check("effigy_gamer")) content.classList.add('isabel')
-    },
-    leaveExec: ()=> content.classList.remove('isabel'),
-    entities: {
-        "=": {
-            class: "gap blocks raised-floaty",
-        },
-        
-        "_": {
-            class: "gap blocks",
-        },
-
-        V: {
-            contains: {
-                dyp: {
-                    noback: true,
-                    class: "vesselgap",
-                    image: 'transparent',
-                    width: 3,
-                    height: 3,
-                }
-            } 
-        },
-
-        r: {
-            class: "slot occupied cy",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta",
-                    image: 'url(/img/local/beneath/pieces/t.gif)',
-                    width: 2,
-                    height: 2,
-                    type: "t",
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5))"
-                }
-            } 
-        },
-
-        R: {
-            class: "slot occupied ma",
-            contains: {
-                examineEntity: "piece",
-                dyp: {
-                    class: "critta lost",
-                    image: 'url(/img/local/beneath/pieces/m1lost.gif)',
-                    width: 2,
-                    height: 2,
-                    type: "lost",
-                    transform: "translateX(26%) translateZ(calc(var(--gridTileSize) * 0.5)) rotateY(180deg)"
-                }
-            } 
-        },
-        
-        "+": {
-            class: "occupied blocks",
-        },
-        
-        "!": {
-            class: "slot",
-        },
-        
-        "/": {
-            class: "slot cyside",
-        },
-        
-        "T": {
-            class: "vein slot flat",
-            teleportTarget: "parasite",
-            shouldFace: "up"
-        },
-        
-        "t": {
-            class: "occupied",
-            teleportTarget: "parasite",
-            shouldFace: "up"
-        },
-
         "O": {
             class: "faketeleport",
             exec: ()=>{ 
-                change("TEMP!!from", "parasite")
+                change("TEMP!!from", "abyss")
                 moveTo("/local/dullvessel/") 
             }
         },
 
-        v: {
-            class: "isabelonly",
+        "t": {
+            class: "abyssdoor",
+            teleportTarget: "abyss_ship",
+            teleportSpot: 16,
+            shouldFace: "up"
+        },
+
+        "o": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "abyss")
+                moveTo("/local/beneath/parasite/") 
+            }
+        },
+
+        l: {
+            class: "watercity",
             contains: {
                 dyp: {
-                    class: "vesselgap",
-                    image: 'transparent',
-                    width: 3,
-                    height: 3,
-                    noback: true,
-                    transform: 'rotateY(90deg)'
+                    class: "lamp",
+                    image: 'url(/img/local/city/lampflip.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: 'rotateY(180deg)'
                 }
             } 
         },
 
-        "o": {
-            class: "isabelonly faketeleport",
-            exec: ()=>{ 
-                if(check("citystreet__flower_beacon") && check("effigy_gamer")) {
-                    change("TEMP!!from", "parasite")
-                    moveTo("/local/ozo/") 
+        L: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "lamp",
+                    image: 'url(/img/local/beneath/waterlamp.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: 'rotateY(180deg)'
+                }
+            } 
+        },
+
+        P: {
+            class: "watercity",
+            contains: {
+                examineEntity: "×è.÷ùÏÏøø",
+                dyp: {
+                    class: "camguy",
+                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
+                    width: 1,
+                    height: 2.5,
+                    transform: 'rotateY(180deg)'
+                }
+            } 
+        },
+
+        "☼": {
+            class: "watercity",
+        },
+
+        "+": {
+            class: "ocean blocks",
+        },
+
+        "1": {
+            class: "ocean",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/beneath/rock1.gif)',
+                    width: 1.5,
+                    height: 1.5,
+                    transform: "rotateY(30deg)"
                 }
             }
+        },
+
+        "2": {
+            class: "ocean",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/beneath/rock2.gif)',
+                    width: 2,
+                    height: 1.5,
+                    transform: "rotateY(-60deg)"
+                }
+            }
+        },
+
+        "3": {
+            class: "ocean",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/beneath/rock3.gif)',
+                    width: 2.5,
+                    height: 1.5,
+                    transform: "rotateY(66deg)"
+                }
+            }
+        },
+
+        "h": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand1.gif)',
+                    width: 1.5,
+                    height: 3,
+                }
+            }
+        },
+
+        "ḣ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand2.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(-40deg)'
+                }
+            }
+        },
+
+        "ĥ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand3.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(150deg)'
+                }
+            }
+        },
+
+        "ḧ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand4.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(60deg)'
+                }
+            }
+        },
+
+        "H": {
+            class: "gap",
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hands.gif)',
+                    width: 2,
+                    height: 3,
+                    transform: 'rotateY(240deg)'
+                }
+            }
+        },
+
+        "▒": {
+            class: "busted",
+        },
+
+        "T": {
+            class: "abyssdoor",
+            teleportTarget: "abyss_city",
+            shouldFace: "up"
+        },
+
+        "W": {
+            teleportTarget: "abyss_wreck",
+            shouldFace: "up"
         },
     },
 
     plan: `
-        .......V......
-        ......=O=...=.
-        =.!░/░/p/░._..
-        ..░░░░░░░░....
-        /░/░==/░!░/░r+
-        ░░░░==░░░░░░++
-        ../░!░/░/░/░!░
-        ..░░░░░░░░░░░░
-        vo/░/░..====_.
-        ..░░░░..=__=_.
-        R+../░/░!░/░Tt
-        ++..░░░░░░░░tt
+        ..........V.......
+        ........==O.=.....
+        .......=░░p░=.....
+        .......=░░░░+=....
+        ......=░2░░░3==...
+        .....=...░░░+=....
+        .......=..░░..=...
+        .........░░░......
+        ........░░░=......
+        vo░......░░░=.....
+        ..░......=░░....hḧ
+        ..░.....1░░░...▒▒t
+        ..░░....░░░=...░▒ĥ
+        ...░.....░░....▒..
+        ...░+░░░░░░░░░░░..
+        ...░2░░░░░░░░░+░░.
+        ░░░░+░_____░░░2░░░
+        ☼░░░░░ḧ☼P☼=░░░+░░.
+        ░☼+░░░=☼l☼H░░░.░..
+        .☼3░░░_=_ḣ_░░..░░.
+        .☼+░░░░░░░░░....░.
+        LTL.............W.
     `
 }
 
-createEntity({
-    name: 'piece',
-    type: "thoughtform",
-    image: "/img/local/beneath/palpurp.gif",
-    noProcess: true,
-    text: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'game element'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'parasite game piece';'cute stylizations of ${processDefinitionsInString("celki blight-bulbs")}'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'ignoring thoughtspace specifications';'missing resources'">::INCOHERENCE DETECTED</span>`,
-    actions: [
-        {
-            name: "greet",
-            class: "nosound",
-            exec: ()=>{
-                let piece = env.targetedEntityParent
-                let text = "do you remember the rules?"
-                let actor = "piece"
-                switch(piece.style.getPropertyValue('--dyp-type')) {
-                    case "lost": text = [
-                            `haha he a89 y934 ahiuiu `, 
-                            `êád•7877 7 77 `, 
-                            `hehea v0-9xjkl;'ehehe hehe`, 
-                            `IMˆkPL ay  Game? ??`
-                        ].sample({noRepeat: true})
-                    break
+env.stages['abyss_wreck'] = {
+    width: 11,
+    fogRadius: 5,
+    fogAlgorithm: "half",
+    exec: ()=> {
+        env.abyss.stageChange()
+        
+        if(check("effigy_dancer")) {
+            env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+                el.innerHTML = ""
+                el.classList.remove('dyp')
+            })
+        }
+    },
+    entities: {
+        "_": {
+            class: "gap blocks",
+        },
 
-                    case "board": text = [
-                            `get out of the way!`,
-                            `where are the rules`, 
-                            `win wiin! !winN!!!`,
-                            `everything is counting on this!`, 
-                            `how many lives will be lost if they succeed??`, 
-                            `move once attack once ok left left`,
-                            `we will meet them beneath`,
-                            `do not let them escape alive!`,
-                            `have you heard their plans? sickening!!`,
-                            `celki celki celki`,
-                        ].sample({noRepeat: true})
-                    break
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
 
-                    case "gamer": 
-                    case "gamer_m":
-                        startDialogue("players")
-                        change('beneath_team', true)
-                        return
-                    break
+        "1": {
+            teleportTarget: "abyss",
+            teleportSpot: 376
+        },
 
-                    case "shelf": text = '...'
-                    actor = "shelf"
-                    break
-
-                    case "a": text = [
-                            `if i am quick...`, 
-                            `what was that? hello?`, 
-                            `quiet...`, 
-                            `it has to be here`
-                        ].sample({noRepeat: true})
-                        actor = "curled piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "t": text = '...'
-                        actor = "stacked-eye piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "c": text = text = [
-                            `just being here is so fun!`, 
-                            `much better than maintenance work`, 
-                            `board rules? game? why bother?`,
-                            `do you know where my friend went?`,
-                        ].sample({noRepeat: true})
-                        actor = "pleased piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "i": text = text = [
-                            `someone is missing`,
-                            `where is she`,
-                            `can we really make it?`,
-                            `are you counting on me?`,
-                            `kuulla would know what to do`,
-                        ].sample({noRepeat: true})
-                        actor = "weeping piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "k": text = text = [
-                            `ha ha ha!!`,
-                            `ha haa!! ha ha ha!!`,
-                            `hahaha!! haha!!`,
-                            `hello`
-                        ].sample({noRepeat: true})
-                        actor = "four-eyed piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "water": text = [
-                            `quiet...`,
-                            `...`,
-                            `do you hear it too?`,
-                            `...`,
-                            `...`,
-                            `...`,
-                            `nice here.. .`,
-                        ].sample({noRepeat: true})
-                        actor = "calm piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "pal": text = [
-                            `helo helllooo!`, 
-                            `we are friends now ok`, 
-                            `you are so soso cool!!!`, 
-                            `do not worry we will find the rules ahaha`,
-                            `hehehe we are having a good time!!` ,
-                            `celki celki celki!`,
-                        ].sample({noRepeat: true})
-                        actor = "friendly piece"
-                        change('beneath_team', true)
-                    break
-
-                    case "gk": text = [
-                            `wrong side? no i am ok`,
-                            `turns out it is not so simple`,
-                            `i want to play a different game`,
-                            `seen any rules? me either`,
-                        ].sample()
-                        change('beneath_team', true)
-                    break
-
-                    case "mi": text = [
-                            `how do i get out of here??`,
-                            `what are we doing?`,
-                            `i need to make some calls`,
-                            `is there not a way out?`,
-                        ].sample()
-                        change('beneath_team', true)
-                    break
+        W: {
+            class: "alwaysvis notile",
+            contains: {
+                dyp: {
+                    class: "wreck",
+                    image: 'url(/img/local/beneath/wreck.gif)',
+                    width: 15,
+                    height: 10,
+                    noback: true,
+                    transform: 'rotateY(180deg)'
                 }
+            } 
+        },
+    
+        "ä": {
+            class: "dancerzets critical",
+            contains: {
+                dyp: {
+                    width: 1.5,
+                    height: 2,
+                    image: 'transparent',
+                },
 
-                chatter({
-                    actor,
-                    text,
-                    readout: true,
-                    customEl: piece
-                })
+                html: `
+                    <figure class="ozofriend akieffigy" style="--danceMult: -0.25;" type="dancer">
+                        <div class="target" entity="effigy"></div>
+                        <img class="body" src="/img/local/uncosm/ozo/akieffigy_body2.gif">
+                        <img class="head" src="/img/local/uncosm/ozo/akieffigy_head2.gif">
+                    </figure>
+                `
+            } 
+        },
+
+        "h": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand1.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(-40deg) translateY(50%)'
+                }
             }
         },
-        
-        {
-            name: "unity",
-            class: "act-ozo",
-            showIf: [["mask", "unity"]],
-            exec: ()=>{
-                cutscene(true)
 
-                let piece = env.targetedEntityParent
-                let text = "shut up! there is a war to be won!!"
-                let actor = "piece"
-                switch(piece.style.getPropertyValue('--dyp-type')) {
-                    case "lost": text = [
-                            `hehehehehehehehehe`, 
-                            `the ea ters`, 
-                        ].sample({noRepeat: true})
-                    break
-
-                    case "board": text = [
-                        `stop bothering me!`,
-                        `there is no time for peace!!`,
-                    ].sample({noRepeat: true})
-                    break
-
-                    case "gamer": text = [
-                        `hold on we must finish this game`,
-                        `and leave this unfinished?! no!`,
-                    ].sample({noRepeat: true})
-                    actor = "smiling piece"
-                    break
-
-                    case "gamer_m": text = [
-                        `hold on we must finish this game`,
-                        `and leave this unfinished?! no!`,
-                    ].sample()
-                    actor = "many-eyed piece"
-                    break
-
-                    case "a": text = `that would be nice... but i must finish my investigation`
-                    actor = "curled piece"
-                    break
-
-                    case "shelf": text = '...'
-                    actor = "shelf"
-                    break
-
-                    case "c": text = `what? no thanks! my friend is here`
-                    actor = "pleased piece"
-                    break
-
-                    case "i": text = `just another strange place... i want to go home`
-                    actor = "weeping piece"
-                    break
-
-                    case "k": text = `i cannot leave when there are still foes to be crushed!`
-                    actor = "four-eyed piece"
-                    break
-
-                    case "t": text = `‡Hƒøwh A_A^t was it fºr, then...`
-                    actor = "stacked-eye piece"
-                    break
-
-                    case "water": text = `too loud...`
-                    actor = "calm piece"
-                    break
-
-                    case "pal": text = `aaw cool!! convince my friends and i will come!!`
-                    actor = "friendly piece"
-                    break
+        "ḣ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand2.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(-40deg) translateY(50%)'
                 }
+            }
+        },
 
-                chatter({
-                    actor,
-                    text,
-                    readout: true,
-                    customEl: piece,
-                    delay: 2000
-                })
+        "ĥ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand3.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(150deg) translateY(50%)'
+                }
+            }
+        },
 
-                env.setTimeout(()=>{
-                    play("talkchoir", 0.75)
-                    vfx({type: 'beacon', state: true})
-                }, 400)
+        "ḧ": {
+            contains: {
+                dyp: {
+                    class: "hand",
+                    image: 'url(/img/local/beneath/hand4.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(60deg) translateY(50%)'
+                }
+            }
+        },
 
-                setTimeout(()=>{
-                    vfx({type: 'beacon', state: false})
-                    cutscene(false)
-                }, 2000)
-            },
-        }
-    ]
-})
+        "H": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hands.gif)',
+                    width: 2,
+                    height: 3
+                }
+            }
+        },
+
+        C: {
+            class: "notile",
+            contains: {
+                html: `
+                    <div class="target joyonly" entity="˜CâR…"></div>
+                    <div class="joyonly joygarnish garnishportal caseportal"><div class="carsign"></div></div>
+                `,
+                dyp: {
+                    image: 'url(/img/local/beneath/car.gif)',
+                    width: 3,
+                    height: 3,
+                    transform: "rotateY(90deg)"
+                }
+            } 
+        },
+
+        c: {
+            contains: {
+                examineEntity: "s w   al kk",
+                html: `<div class="joyonly joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "civvie swalk face-creature",
+                    image: 'url(/img/local/city/pedestrian5.gif)',
+                    width: 1.5,
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                    style: "transition: transform 400ms ease-in-out;"
+                }
+            } 
+        },
+    },
+
+    plan: `
+        .....1....=
+        =...░p░░...
+        ..░░░░░░=..
+        =░░░=░░=.ḧ.
+        .ĥ░░░░░░=░░
+        ░=░░..=░░░=
+        .=░░░.ḣ...=
+        ░░=░░░=░░░.
+        ....░░░░.=.
+        ..░=.h░░=.=
+        .h░░░░░░ḧ..
+        ..=░..=░░==
+        =.=░░...ĥ.=
+        .=░░░░=░░░.
+        C░░░=░░░.=.
+        .c░==.░...=
+        ==░==░░=.ḧ.
+        ..░░░░░░=░░
+        ░=░░..=░░░=
+        .=░░░.░░..=
+        ░░=░░░=░░░.
+        .░░░░░░░.=.
+        ..░=.h░░=.=
+        .h░░░░░░░..
+        ..=░..=░░==
+        ..=░░...ĥ.=
+        ..=░░░=░░░.
+        ....░░░░_=.
+        ...=.░░░._=
+        =..=häḣ=_=.
+        ...=ĥ=ḧ=...
+        ...H...H...
+        .....H.....
+        .....W.....
+    `
+}
 
 createEntity({
     name: 'effigy',
@@ -1782,18 +1464,19 @@ createEntity({
             chatter({actor: 'moth', text: "but the data here is so messed up i can't really tell what happened to it", readout: true, delay: 7000})
         }
     },
-    
+
     actions: [
         {
             name: "greet",
             exec: ()=>{
                 let effigy = env.targetedEntityParent
                 let text = [
-                    `i can take them!`, 
-                    `use focus stupid!`,
-                    `can i have the bozko augment`,
-                    `the groundsmind stands no chance!`,
-                    `don't use any items ok?`,
+                    `ahahahaha`, 
+                    `new friends! new friends!`,
+                    `do you know how to dream?`,
+                    `so quiet! i want some music!`,
+                    `breathe again! breathe again!`,
+                    `aahaahaa wueee`,
                 ].sample({noRepeat: true})
                 
 
@@ -1815,17 +1498,10 @@ createEntity({
                 let effigy = env.targetedEntityParent
                 cutscene(true)
 
-                chatter({actor: 'effigy', text: `isabel...`, readout: true, customEl: effigy, delay: 2000})
-                chatter({actor: 'effigy', text: `that's right!`, readout: true, delay: 4000})
-                chatter({actor: 'effigy', text: `i gotta go home!`, readout: true, delay: 7000})
-                chatter({actor: 'effigy', text: `this was fun byee!`, readout: true, delay: 9000})
-                
-                chatter({actor: 'smiling piece', text: `what!! no fair!`, readout: true, delay: 11000})
-                chatter({actor: 'smiling piece', text: `come back!!!`, readout: true, delay: 12000})
-                chatter({actor: 'smiling piece', text: `leaving mid game.... rude`, readout: true, delay: 15000})
-
-                chatter({actor: 'many-eyed piece', text: `that counts as a death`, readout: true, delay: 20000})
-                chatter({actor: 'smiling piece', text: `it does not!!`, readout: true, delay: 22000})
+                chatter({actor: 'effigy', text: `oh hi! what...`, readout: true, customEl: effigy, delay: 2000})
+                chatter({actor: 'effigy', text: `i have my new friends here...`, readout: true, delay: 4000})
+                chatter({actor: 'effigy', text: `...but i miss isabel!!!`, readout: true, delay: 7000})
+                chatter({actor: 'effigy', text: `i'll come back to visit ok?? bye!!`, readout: true, delay: 9000})
 
                 env.setTimeout(()=>{
                     play("talkchoir", 0.75)
@@ -1842,8 +1518,11 @@ createEntity({
                     vfx({type: 'beacon', state: false})
                     vfx({type: 'flash', state: false})
 
-                    change('effigy_gamer', true)
-                    env.stage.querySelectorAll('.ep4board .akieffigy').forEach(el=>el.remove())
+                    change('effigy_dancer', true)
+                    env.stage.querySelectorAll('.gridpiece[slug="ä"]').forEach(el=>{
+                        el.innerHTML = ""
+                        el.classList.remove('dyp')
+                    })
                     cutscene(false)
                 }, 11000)
             },
@@ -1851,242 +1530,1483 @@ createEntity({
     ]
 })
 
-env.dialogueActors["piece"] = {
-    image: "/img/local/beneath/palpurp.gif",
-    type: "thoughtform portrait-cover incoherent",
-    voice: ()=>play("talkcore", 3)
-}    
+env.stages['abyss_ship'] = {
+    width: 12,
+    fogRadius: 6,
+    fogAlgorithm: "half",
+    exec: ()=> env.abyss.stageChange(),
+    entities: {
+        "_": {
+            class: "gap blocks",
+        },
 
-env.dialogueActors["shelf"] = {
-    image: "/img/local/beneath/pieces/shelf.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talkcore", 2.5)
-} 
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
 
-env.dialogueActors["smiling piece"] = {
-    image: "/img/local/beneath/pieces/g.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talklaugh", 3)
-}        
+        "+": {
+            class: "wreck"
+        },
 
-env.dialogueActors["many-eyed piece"] = {
-    image: "/img/local/beneath/pieces/m.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talkgal", 2.5)
-} 
+        "░": {
+            class: "busted"
+        },
 
-env.dialogueActors["curled piece"] = {
-    image: "/img/local/beneath/pieces/a.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talk", 3)
-}
+        V: {
+            contains: {
+                dyp: {
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: 'rotateY(180deg)'
+                }
+            } 
+        },
 
-env.dialogueActors["calm piece"] = {
-    image: "/img/local/beneath/pieces/b.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talk", 0.6)
-}
-
-env.dialogueActors["pleased piece"] = {
-    image: "/img/local/beneath/pieces/c.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talk", 3.3)
-}
-
-env.dialogueActors["weeping piece"] = {
-    image: "/img/local/beneath/pieces/i.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talkcore", 3.5)
-}
-
-env.dialogueActors["friendly piece"] = {
-    image: "/img/local/beneath/pieces/k.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talklaugh", 2.5)
-}
-
-env.dialogueActors["four-eyed piece"] = {
-    image: "/img/local/beneath/pieces/ka.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talkcore", 3)
-}
-
-env.dialogueActors["stacked-eye piece"] = {
-    image: "/img/local/beneath/pieces/t.gif",
-    type: "thoughtform portrait-cover incoherent obesk incoherent-mild",
-    voice: ()=>play("talk", 0.8)
-}
-
-createEntity({
-    name: 'tactical board',
-    pathLimit: "/local/ocean/embassy/",
-    type: "thoughtform",
-    image: "/img/sprites/obesk/cystrack.gif",
-    text: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'mismatched code';'missing resources'">::INCOHERENCE DETECTED</span>`,
-    exmExec: ()=>{
-        if(!check('beneath_board')) {
-            change('beneath_board', true)
-            chatter({actor: 'moth', text: 'is that framing device code?', readout: true, delay: 3000})
-            chatter({actor: 'moth', text: "shit... it's probably got a memory leak", readout: true, delay: 6000})
-
-            if(check("e3a2escape")) {
-                chatter({actor: 'moth', text: "well, not really that surprised i guess. anything goes now that the firmament has a hole", readout: true, delay: 12000})
-            } else {
-                if(check("embassy__d3_archivebossend")) chatter({actor: 'moth', text: `i hope that bstrd thing hasn't gotten out`, readout: true, delay: 12000})
+        "O": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "abyss_ship")
+                moveTo("/local/ocean/ship/elsewhere/") 
             }
+        },
 
-        }
+        v: {
+            contains: {
+                dyp: {
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: 'rotateY(-90deg)'
+                }
+            } 
+        },
+
+        "o": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "abyss_ship")
+                moveTo("/local/ozo/") 
+            }
+        },
+
+        "t": {
+            class: "abyssdoor",
+            teleportTarget: "abyss",
+            teleportSpot: 214,
+            shouldFace: "left"
+        },
+
+        "h": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hand1.gif)',
+                    width: 1.5,
+                    height: 3,
+                }
+            }
+        },
+
+        "ḣ": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hand2.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(-40deg)'
+                }
+            }
+        },
+
+        "ĥ": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hand3.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(150deg)'
+                }
+            }
+        },
+
+        "ḧ": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hand4.gif)',
+                    width: 1.5,
+                    height: 3,
+                    transform: 'rotateY(60deg)'
+                }
+            }
+        },
+
+        "H": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hands.gif)',
+                    width: 2,
+                    height: 3,
+                    transform: 'rotateY(240deg)'
+                }
+            }
+        },
+
+        "R": {
+            contains: {
+                dyp: {
+                    class: "hand invert",
+                    image: 'url(/img/local/beneath/hands.gif)',
+                    width: 2,
+                    height: 3,
+                    transform: 'rotateY(-40deg)'
+                }
+            }
+        },
+
+        P: {
+            class: "gap",
+            contains: {
+                examineEntity: "×è.÷ùÏÏøø",
+                dyp: {
+                    class: "camguy lookdown",
+                    image: 'url(/img/local/beneath/lost_pedestrian1_lookdown.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: 'rotateY(-90deg) translateX(25%)'
+                }
+            } 
+        },
+
+        e: {
+            class: "notile alwaysvis",
+            contains: {
+                class: "freedomonly",
+                examineEntity: "±ƒƒÍ_¾y",
+                dyp: {
+                    image: 'url(/img/local/beneath/effigydistant.gif)',
+                    width: 1,
+                    height: 1,
+                    style: "transform: translateZ(-10000px) translateY(500px);"
+                }
+            } 
+        },
+    },
+
+    plan: `
+        ....t.......
+        ....p.......
+        ...h░.......
+        ....+.......
+        ....░ĥ......
+        _==.░.ḧ.....
+        =P+░░░=._...
+        _=ḣ░.░+.=...
+        .e.H░+░++░ov
+        ..h.+.R_.=..
+        ....░.......
+        ..ḧ.+.......
+        ....+.......
+        ....O..h....
+        ....V.......
+    `,
+
+    planAdjustment: (plan) => {
+        if(check("effigy_sipper")) return plan.replace('e', '.').replace('P', '=');
+
+        return plan
     }
+}
+
+env.stages['abyss_city'] = {
+    width: 11,
+    fogRadius: 10,
+    fogAlgorithm: "half",
+    exec: ()=> {
+        env.abyss.stageChange()
+        content.classList.remove('jellymode')
+    },
+    entities: {
+        "_": {
+            class: "gap blocks",
+        },
+
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+
+        "░": {
+            class: "watercity"
+        },
+
+        p: {
+            class: "watercity",
+            contains: {
+                slug: 'p',
+                id: "creature",
+                class: "player ally-sprite",
+                type: "player"
+            }
+        },
+
+        "t": {
+            class: "abyssdoor",
+            teleportTarget: "abyss",
+            teleportSpot: 361,
+            shouldFace: "down"
+        },
+
+        V: {
+            contains: {
+                dyp: {
+                    class: "vesselgap",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: 'rotateY(180deg)'
+                }
+            } 
+        },
+
+        "O": {
+            class: "faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "abyss_city")
+                moveTo("/local/city/street/") 
+            }
+        },
+
+        L: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "lamp",
+                    image: 'url(/img/local/beneath/waterlamp.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: 'rotateY(90deg)'
+                }
+            } 
+        },
+
+        C: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "civvie face-creature",
+                    image: 'url(/img/local/beneath/hollow1.gif)',
+                    width: 1,
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                }
+            } 
+        },
+
+        c: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "civvie face-creature",
+                    image: 'url(/img/local/beneath/hollow2.gif)',
+                    width: 1.5,
+                    height: 2,
+                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
+                }
+            } 
+        },
+
+        r: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    class: "coral",
+                    image: 'url(/img/local/beneath/coralfade.gif)',
+                    width: 2,
+                    height: 2,
+                    transform: 'rotateY(90deg)'
+                }
+            } 
+        },
+
+        S: {
+            class: "abyssdoor",
+            teleportTarget: "abyss_city_shop",
+            teleportSpot: 7,
+            shouldFace: "up",
+            contains: {
+                dyp: {
+                    class: "store",
+                    image: 'url(/img/local/beneath/storefront.gif)',
+                    width: 7,
+                    height: 4.5,
+                    noback: true,
+                    transform: 'translateX(7.5%) rotateY(90deg)'
+                }
+            } 
+        },
+
+        P: {
+            class: "notile",
+            contains: {
+                class: "joyonly freedomonly",
+                examineEntity: "×è.÷ùÏÏøø",
+                html: `<div class="joygarnish garnishprop"></div>`,
+                dyp: {
+                    class: "camguy half",
+                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
+                    width: 1,
+                    height: 1,
+                    transform: 'rotateY(-90deg) translateX(var(--tile2)) translateY(-100%)',
+                    style: "background-size: 100%;background-position: top;"
+                }
+            } 
+        },
+    },
+
+    plan: `
+        .....t..P..
+        r..░░p░░...
+        ...░░░░░r..
+        ...L░░░L..=
+        ...░c░░░...
+        .=.░░░░░...
+        ....░░░....
+        ...L░░░L...
+        .r.░░░░░...
+        ..S░░░C░...
+        ...░░░░░...
+        ...L░░░L...
+        ...░░░░░.r.
+        ...░░░░░...
+        ..r░░░░░...
+        .=.L░░_L...
+        ...░=░░..=.
+        ...=░░_░r..
+        ...=.O=..=.
+        ....=V_.=..
+    `,
+
+    planAdjustment: (plan) => {
+        if(!check("effigy_sipper")) return plan.replace('P', '=');
+
+        return plan
+    }
+}
+
+env.stages['abyss_city_shop'] = {
+    width: 9,
+    fogRadius: 7,
+    fogAlgorithm: "half",
+    exec: ()=> { 
+        env.abyss.stageChange()
+        if(check("drowningCalmed")) { env.abyss.drowningFear(-1) }
+            else { env.abyss.drowningFear(0) }
+        if(check("abyss__drowning_fall") && check("drowningCalmed") && !check("drowning_relieved")) {
+            env.setTimeout(()=>chatter({actor: 'drowning', text: 'you are okay!!', readout: true}), 300)
+            env.setTimeout(()=>chatter({actor: 'drowning', text: 'what were you thinking??', readout: true}), 3300)
+            env.setTimeout(()=>chatter({actor: 'drowning::safe', text: 'you must take better care of yourself, akii...', readout: true}), 6300)
+            change("drowning_relieved", true)
+        }
+    },
+    onStep: ()=>{
+        setTimeout(()=>{
+            let strength = 1 - (0 + env.stage.creatureLoc.y) / 5
+            content.style.setProperty('--darkening', strength)
+        }, 100)
+    },
+    entities: {
+        p: {
+            class: "watercity",
+            contains: {
+                slug: 'p',
+                id: "creature",
+                class: "player ally-sprite",
+                type: "player"
+            }
+        },
+
+        "_": {
+            class: "gap blocks",
+        },
+
+        "=": {
+            class: "gap blocks raised-floaty",
+        },
+
+        "░": {
+            class: "watercity"
+        },
+
+        S: {
+            class: "abyssdoor",
+            teleportTarget: "abyss_city",
+            teleportSpot: 102,
+            shouldFace: "right",
+            contains: {
+                dyp: {
+                    class: "store",
+                    image: 'url(/img/local/beneath/storefront.gif)',
+                    width: 7,
+                    height: 4.5,
+                    noback: true,
+                    transform: 'translateZ(100px)'
+                }
+            } 
+        },
+
+        s: {
+            class: "abyssdoorfake",
+            teleportTarget: "nothing",
+            lockFlag: "permalocked",
+            lockExec: ()=>{
+                if(!check("drowningCalmed")) { chatter({actor: 'drowning::panic', text: ". . .", readout: true}); env.abyss.drowningEject() }
+                    else { chatter({actor: 'drowning', text: "...", readout: true}) }
+            },
+            contains: {
+                dyp: {
+                    class: "store",
+                    image: 'url(/img/local/beneath/storefrontsealed.gif)',
+                    width: 7,
+                    height: 4.5,
+                    noback: true,
+                    transform: 'rotateY(180deg) translateZ(100px)'
+                }
+            } 
+        },
+
+        L: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "lamp",
+                    image: 'url(/img/local/beneath/waterlamp.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: 'rotateY(-45deg)'
+                }
+            } 
+        },
+
+        R: {
+            class: "watercity",
+            contains: {
+                dyp: {
+                    class: "lamp",
+                    image: 'url(/img/local/beneath/waterlamp.gif)',
+                    width: 1.5,
+                    height: 4,
+                    transform: 'rotateY(45deg)'
+                }
+            } 
+        },
+
+        K: {
+            class: "watercity",
+            contains: {
+                examineEntity: "Ƙø¿ƶḳ¿±",
+                dyp: {
+                    class: 'drowning face-creature',
+                    image: 'url(/img/local/beneath/drowning.gif)',
+                    width: 1.5,
+                    height: 2.5,
+                    transform: 'rotateY(180deg)'
+                }
+            } 
+        },
+
+        Ḳ: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    class: "preload",
+                    image: 'url(/img/local/beneath/drowning_scared.gif), url(/img/local/beneath/drowning_panic.gif), url(/img/local/beneath/drowning_safe.gif)',
+                    width: 1.5,
+                    height: 2.5,
+                    transform: 'translate(20%) rotateY(-200deg)',
+                    style: "pointer-events: none;",
+                }
+            } 
+        },
+
+        "ø": {
+            class: "watercity",
+            exec: ()=> {
+                if(!check("PAGE!!warned")) {
+                    if(!check("drowningCalmed")) {
+                        chatter({actor: 'drowning', text: 'akizet, we should not stray too far...', readout: true})
+                        env.setTimeout(()=>chatter({actor: 'drowning', text: 'the cousins are waiting for us on the shore!', readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'drowning::scared', text: 'and-- it c an be dan gerous, if y ou go too  d e ep', readout: true}), 6000)
+                        change("PAGE!!warned", true)
+                    } else if(!check("drowning_relieved")) {
+                        chatter({actor: 'drowning', text: 'aki! what do you keep looking at?', readout: true})
+                        env.setTimeout(()=>chatter({actor: 'drowning', text: 'i do not know what is on your mind, but...', readout: true}), 3000)
+                        env.setTimeout(()=>chatter({actor: 'drowning::safe', text: 'just enjoy this moment!', readout: true}), 6000)
+                        change("PAGE!!warned", true)
+                    } else {
+                        chatter({actor: 'drowning', text: 'you had better not!', readout: true})
+                        change("PAGE!!warned", true)
+                    }
+                }
+            }
+        },
+
+        //THE PROPS BELOW ARE OFFSET SO THAT THEY'RE ALL VISIBLE IN THE FOG WHEN STANDING IN FRONT OF HER
+
+        '[': {
+            contains: {
+                dyp: {
+                    class: "storewall",
+                    image: 'url(/img/local/beneath/storewall.gif)',
+                    width: 3,
+                    height: 4.5,
+                    transform: 'rotateY(90deg) translateX(200px) translateZ(100px)'
+                }
+            } 
+        },
+
+        ']': {
+            contains: {
+                dyp: {
+                    class: "storewall",
+                    image: 'url(/img/local/beneath/storewall.gif)',
+                    width: 3,
+                    height: 4.5,
+                    transform: 'rotateY(90deg) translateX(200px) translateZ(-100px)'
+                }
+            } 
+        },
+
+        '{': {
+            contains: {
+                dyp: {
+                    class: "storewallripped",
+                    image: 'url(/img/local/beneath/storewallripped.gif)',
+                    width: 3,
+                    height: 4.5,
+                    transform: 'rotateY(100deg) translateZ(-70px)'
+                }
+            } 
+        },
+
+        '}': {
+            contains: {
+                dyp: {
+                    class: "storewallripped",
+                    image: 'url(/img/local/beneath/storewallripped.gif)',
+                    width: 3,
+                    height: 4.5,
+                    transform: 'rotateY(80deg) translateZ(70px)'
+                }
+            } 
+        },
+
+        ">": {
+            class: "nothing",
+            exec: ()=> {
+                startDialogue("drowning_fall")
+            }
+        },
+    },
+
+    plan: `
+        Ḳ...S....
+        .R░░p░░L.
+        .░░░░░░░.
+        [░░░░░░░]
+        .░░░░░░_.
+        ._░░░░░..
+        [.._Kø.=]
+        .=..░_...
+        .{..>..}.
+        ....=....
+        ....s....
+    `
+}
+
+createEntity({ 
+    name: 'Ƙø¿ƶḳ¿±',
+    type: "recollection thoughtform portrait-darkstatic portrait-cover",
+    image: "/img/local/beneath/drowningportrait.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE`,
+    actions: [
+        {
+            name: "hello?",
+            exec: ()=>{ startDialogue('drowning_intro'); env.abyss.drowningStart() },
+            showIf: ["abyss__drowning_intro", false]
+        },
+        
+        {
+            name: "hello",
+            exec: ()=>{ startDialogue('drowning_hello'); env.abyss.drowningStart() },
+            showIf: [["abyss__drowning_intro", true], ["drowningCalmed", false]]
+        },
+
+        {
+            name: "hello",
+            exec: ()=>{ startDialogue('drowning_chat'); env.abyss.drowningStart() },
+            showIf: [["abyss__drowning_intro", true], ["drowningCalmed", true]]
+        },
+        
+        {
+            name: "unity",
+            class: "act-ozo",
+            showIf: [["mask", "unity"]],
+            exec: ()=> {
+                cutscene(true)
+
+                if(!check("drowningCalmed")) {
+                    chatter({actor: 'drowning::scared', text: 'oh ..', readout: true, delay: 2000})
+                    chatter({actor: 'drowning::scared', text: 'b ut,  we are ha ving a g ood tim e  he re', readout: true, delay: 4000})
+                    chatter({actor: 'drowning::scared', text: 'righ t, aki zet.. .?', readout: true, delay: 6000})
+                } else {
+                    chatter({actor: 'drowning::scared', text: '...', readout: true, delay: 2000})
+                    chatter({actor: 'drowning', text: 'aki...', readout: true, delay: 4000})
+                    chatter({actor: 'drowning::safe', text: 'i want to stay a little longer, ok?', readout: true, delay: 6000})                    
+                }
+
+                env.setTimeout(()=>{
+                    play("talkchoir", 0.75)
+                    vfx({type: 'beacon', state: true})
+                }, 400)
+
+                setTimeout(()=>{
+                    vfx({type: 'beacon', state: false})
+                    cutscene(false)
+                }, 6000)
+            },
+        }
+    ]
 })
 
-env.dialogues.pieceresp = generateDialogueObject(`
+env.dialogueActors["drowning"] = {
+    name: "Ƙø¿ƶḳ¿±",
+    expressions: {
+        default: {
+            image: "/img/local/beneath/drowningportrait.gif",
+            voice: ()=>play("talklaugh", .9),
+            type: "recollection thoughtform portrait-darkstatic portrait-cover drowning",
+            exec: ()=>{env.abyss.drowningFear(0)}
+        },
+        scared: {
+            image: "/img/local/beneath/drowningportrait_scared.gif",
+            voice: ()=>play("talklaugh", .75),
+            type: "recollection thoughtform portrait-darkstatic portrait-cover drowning drowning_scared",
+            exec: ()=>{env.abyss.drowningFear(1)}
+        },
+        panic: {
+            image: "/img/local/beneath/drowningportrait_panic.gif",
+            voice: ()=>play("talklaugh", .6),
+            type: "recollection thoughtform portrait-darkstatic portrait-cover drowning drowning_panic",
+            exec: ()=>{env.abyss.drowningFear(2)}
+        },
+        safe: {
+            image: "/img/local/beneath/drowningportrait_safe.gif",
+            voice: ()=>play("talklaugh", .9),
+            type: "recollection thoughtform portrait-darkstatic portrait-cover drowning",
+            exec: ()=>{env.abyss.drowningFear(-1)}
+        },
+    }
+}
+
+env.dialogueActors["drowning sourceless"] = {
+    name: "$Ø‰Ɍ¿ɇ§",
+    type: "drowning_sourceless",
+    voice: ()=>play('muiReadout', .75)
+}
+
+env.dialogueActors["drowning akizet"] = {
+    name: "Â£¿Ž¿",
+    type: "recollection thoughtform portrait-darkstatic portrait-cover drowning",
+    image: '/img/textures/weyetran.gif',
+    voice: ()=>play('talksignal', 1.5),
+    player: true
+}
+
+env.dialogues.drowningIntroResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        what are you doing?<+>what
-        look like team members?<+>look
-            SHOWIF::"embassy__d3_movefriend_finish"
-        information?<+>info
-        ok bye<+>END
+        what happened?<+>introwrong1
+        back door?<+>introwrong2
+        i'm not akizet<+>introwrong3
 `)
 
-env.dialogues[`players`] = generateDialogueObject(`
-loop
-    RESPOBJ::pieceresp
+env.dialogues[`drowning_intro`] = generateDialogueObject(`
+start
+    self
+        hello?
 
+    sourceless
+        an uncomfortable attention fixes upon your mind's eye.
+        ...
+
+    drowning
+        come, akizet!
+        we are just in time!
+
+    self
+        are you kazki?
+
+    moth
+        wtf, is that what that is?
+        it's hard to pick out what you're talking to on my side
+        these in-between places are so scrambled
+
+    sourceless
+        the thoughtform's attention turns frantic, like a cornered animal.
+            EXEC::env.abyss.drowningFear(1)
+        something ripples beneath the render, beyond your connection's ability to properly perceive.
+
+    drowning::scared
+        wh a t  kind of question is  tha t?
+        aha ha silly v el
+
+    moth
+        ah, got it
+        yeah, that's definitely some intact visual data
+        i wonder where this one came from... definitely not the embassy memories
+        but be careful dude
+        i only spotted it because its incoherence spiked
+        if that goes too high, your mindspike will bail and retrace you out of there
+        you're already on thin ice from the environment
+
+    RESPOBJ::drowningIntroResp
+
+introwrong1
+    self
+        how did you get here?
+
+    drowning::panic
+        ple a se sto p
+            EXEC::env.abyss.drowningEject();
+
+introwrong2
+    self
+        where does the door behind you go?
+
+    drowning::panic
+        no n o  no s hut up
+            EXEC::env.abyss.drowningEject();
+
+introwrong3
+    self
+        i'm not akizet
+
+    drowning::panic
+        yo u a re  hu rtin g  me
+            EXEC::env.abyss.drowningEject();
+`)
+
+env.dialogues[`drowning_ejected`] = generateDialogueObject(`
+start
+    moth
+        damn
+        not a distant retrace though
+
+    self
+        it's lucid
+
+    moth
+        what, you think so?
+        you know, it's possible for incoherent thoughtforms to act up, but not really be aware
+    
+    self
+        i could feel it when it looked at me
+        it knows i'm not akizet
+
+    moth
+        got it...
+        damn, can't imagine what it's like to be lucid in someplace like this
+        it's probably clinging to whatever's left of the memory it came from
+        but that might mean it has some info we could use!
+        why don't you try playing along? act like akizet would
+        maybe that'll keep it from freaking out
+
+    self
+        how
+
+    moth
+        idk, just say things you think she might say
+
+    RESPONSES::self
+        ok<+>END
+`)
+
+env.dialogues.drowningResp1 = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        long time no see<+>resp1wrong1
+            HIDEREAD::
+        what's happening?<+>resp1right
+            HIDEREAD::
+        where are we?<+>resp1wrong2
+            HIDEREAD::
+`)
+
+env.dialogues.drowningResp2 = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        ...<+>resp2wrong1
+            HIDEREAD::
+        ok<+>resp2wrong2
+            HIDEREAD::
+        aki?<+>resp2right
+            HIDEREAD::
+`)
+
+env.dialogues.drowningResp3 = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        i have a lot to do<+>resp3wrong1
+            HIDEREAD::
+        you're right<+>resp3right
+            HIDEREAD::
+        cavik is dumb<+>resp3wrong2
+            HIDEREAD::
+`)
+
+env.dialogues.drowningResp4 = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        but they aren't fish<+>resp4right
+            HIDEREAD::
+        they bite?<+>resp4wrong1
+            HIDEREAD::
+        we should kill them<+>resp4wrong2
+            HIDEREAD::
+`)
+
+env.dialogues[`drowning_hello`] = generateDialogueObject(`
 start
     self
         hello
-    
+
     sourceless
-        your interruption earns the minds of the thoughtforms
-        the feeling of their attention is mixed with palpable annoyance
-    
-    many-eyed piece
-        we are busy!
-        what do you want!
-    
-    smiling piece
-        stop distracting her
-        this next move is important
-        
-    RESPOBJ::pieceresp
-    
-what
-    self
-        what are you doing
-    
-    smiling piece
-        nobody knows the rules anymore!
-        so we looked for some and found this out there
-        its rules do not seem right for our board...
-        but we are trying it out anyway!
+        its uneasy attention fixes upon you in short bursts, as if avoiding eye contact.
 
-    many-eyed piece
-        and i am winning
-        her kind always loses
-    
-    smiling piece
-        ahaha!!
-        that is what you think, stupid bulb!
-        akizet and cavik still stand!
-        you do not even know my inventory!
+    drowning
+        come, akizet!!
+        we are just in time!
 
-____SHOWIF::"beneath_board"
+    sourceless
+        ...
+
+    RESPOBJ::drowningResp1
+
+resp1wrong1
     self
-        this thing is part of another memory
-        how did you get it?
-    
-    smiling piece
-        it was just floating above us
-        i had to stack upon my team to reach it!
-    
-    many-eyed piece
-        shut up!
-        i am thinking...
+        i haven't seen you in a while
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        no i  w as nev er alon e
+            EXEC::env.abyss.drowningEject();
 ____END
 
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        but we hav e been togeth er all d ay?
+
+    RESPOBJ::drowningResp1
+____END
+
+resp1wrong2
+    self
+        where are we?
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        i forg o t  i f orgot th e n am e
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        hah a, sil ly ..!
+
+    RESPOBJ::drowningResp1
+____END
+
+resp1right
+    self
+        just in time for what?
+
+    sourceless
+        the thoughtform stirs, its unease dissipating slightly.
+            EXEC::env.abyss.drowningFear(0)
+        after a short delay, new thoughts meet yours.
+        
+    sys
+        NOTICE::'memory stream located'
+
+    drowning sourceless
+        kazki and i tread through the loose soil beneath the waves of the bright shore
+        descending further from her envoy, 
+        who lingers and lounges beyond the water, in the fading light of their star
+        so strange that kazki has brought her with...
+        this is not even a diplomatic affair
+
+____SHOWONCE::
+    moth
+        so that's what it was holding onto... try and stay on this
+____END
+
+    drowning sourceless
+        yet, almost every cousin she meets is like this
+        they easily bond, become friends, stay in touch for mundane matters...
+        i could hardly imagine gordon calling me as her cousinly friends do
+        the tir's blessing is especially effective on this world
+        a gentle flame's warmth through presence, 
+        even as we descend into the cold dark of these waters
+
+    drowning
+        hehe!
+        i am so glad you asked
+        it is a sight afforded only to the <span definition="NOTE::INHERITED CONTEXT::'implies altered living state'">dead</span>!
+        you see--
+
+    drowning sourceless
+        around us, through occasional impacts, bubble-like creatures gather, tendrils drifting in the current
+
+    drowning akizet
+        you mean these little bubbles? 
+        they look like tiny akozak
+
+    drowning
+        aki!! this is not a problem to solve!
+        just listen, and i will tell you! hehehe
+    
+    drowning sourceless
+        the coils of my receptors tighten
+
+    RESPOBJ::drowningResp2
+
+resp2wrong1
+    self
+        ...
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        no n o  yo u  ha v e to  t alk
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        akiz et ...? are you ok ?
+
+    RESPOBJ::drowningResp2
+____END
+
+resp2wrong2
+    self
+        ok tell me
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        n o!  sh e was s o embar rasse d !
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        oh? d o you not dislike that  an ymor e?
+
+    RESPOBJ::drowningResp2
+____END
+
+resp2right
+    self
+        what did you say?
+
+    drowning sourceless
+        i pull my receptors back in disapproval
+            EXEC::env.abyss.drowningFear(0)
+        but the tendrils of hers only spread with her cousinly smile
+        she dips down slightly, looming over me
+
+    drowning
+        hehe! whaat?
+        you let cavik call you aki, right?
+
+    drowning sourceless
+        the giddiness in her voice is heavy, unfettered...
+        effects of citric acid--simulated, but as high as can be allowed
+        hardly uncommon for her downtime,
+        but even in the presence of her envoy friend?
+        i would simply turn it down a little, if i were her...
+        on most occasions, anyway--this is different
+        i lift my orange simulacrum to my lips, glancing away to explain
+
+    drowning akizet
+        that is different--an honor he holds from our larval lives
+        but it is just that: childish, larval... silly
+
+    drowning
+        well i like it!
+        and no one else can hear us here,
+        so you will just have to feel silly! hehehe
+
+    drowning sourceless
+        she rises again, pausing to drink from her own simulacrum
+        i relax my receptors from their coil - i will permit this, for now
+        
+    drowning
+        besides, it is good for you to take it easy sometimes!
+        you cannot always be worrying about our work and everything, akiii
+        ahaha!
+        you know what they say about vel...
+        if you do not make velzie smile, a storm will find you!
+
+    RESPOBJ::drowningResp3
+
+resp3wrong1
+    self
+        i have a lot to do
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        she w as  h  a pp y
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        p lea se  let m e
+
+    RESPOBJ::drowningResp3
+____END
+
+resp3wrong2
+    self
+        cavik is dumb
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        am i  do ing so m e  thin g   wr o ng ??
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        bu t.. . it is co o l when i  do it. ..
+
+    RESPOBJ::drowningResp3
+____END
+
+resp3right
+    self
+        you're right
+        
+    drowning sourceless
+        maybe it is simply the citric haze, but...
+            EXEC::env.abyss.drowningFear(0)
+        when was the last time i thought about anything else?
+        the call, our research, it is only that, every θgaze
+        like the natural curl of my receptors are simply out of stress and focus
+        yet here, we are free from this burden, just for a while
+        i understand the deserters, now
+        yes--for this bright evening, i will eschew these weights
+        
+    drowning
+        yes!!
+        and that means i can call you aki, too, right?
+        
+    drowning akizet
+        for now
+        and <em>not</em> in front of others
+        
+    drowning sourceless
+        even with my stern delivery, her receptors curl with delight, and i occupy myself with my drink
+        where i expected teasing, her receptors are spread with a genuine warmth
+
+    drowning
+        ok!! hehe...
+        cool
+        ...oh! yes!
+        it is getting dark! look!
+
+    drowning sourceless
+        one of her tall receptors gestures towards the blackened depths, away from shore
+        the little bubble creatures are swarming, bumbling blindly around one another
+            EXEC::content.classList.add('jellymode', 'dim');
+
+    drowning
+        these little things, they are called jellyfish!
+        they are a big problem for our cousins, because they bite when you touch them
+        but do not worry! their tiny little teeth cannot hurt us!
+        
+    drowning sourceless
+        finally, the last light of the cousins' star fades...
+        and we are left together in total darkness
+
+    RESPOBJ::drowningResp4
+
+resp4wrong1
+    self
+        you said they bite?
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        we ar e  s af  e
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        y es, but no t  u s!
+
+    RESPOBJ::drowningResp4
+____END
+
+resp4wrong2
+    self
+        we should kill them 
+
+____SHOWONCE::
+    moth
+        dude cmon
+____END
+
+____SHOWIF::['PAGE!!drowningScared', true]
+    drowning::panic
+        w ha  t ? ??
+            EXEC::env.abyss.drowningEject();
+____END
+
+____SHOWIF::['PAGE!!drowningScared', false]
+    drowning::scared
+        th e y ar e n ot tha t  dan g er ous!
+
+    RESPOBJ::drowningResp4
+____END
+
+resp4right
+    self
+        but they aren't fish
+    
+    drowning akizet
+        right? the "fish" have scales, and distinctive eyes, which these...
+
+    drowning
+        ehehe! i know!
+        it is such a funny name!
+
+    drowning sourceless
+        my qou-eyes adjust to the deepening darkness...
+            EXEC::env.abyss.drowningFear(0)
+        above us, kazki's wavy hair flows in the current like the tendrils of these creatures
+
+    drowning
+        but, look!
+
+    drowning sourceless
+        she peers over my shoulder, pointing with one of her receptors to direct my gaze
+        a closer receptor nearly bumps into one of mine, but both recoil from that boundary
+        the little jellyfish have begun to glow,
+            EXEC::content.classList.add('jellymode');content.classList.remove('dim')
+        unevenly, strangely, not like the fruits of home
+        the ocean current pushes them, and they glimmer in groups
+        they bump into one another, and they pulse as if in greeting
+        barring the current, it is silence around us, surrounded with gentle flashes and flows of their quiet light
+        away from the lamps and fires of the cousins' shore, it is as if we are home again in the dark
+
+    drowning akizet
+        ...
+        hehe
+        this is...
+
+    drowning
+        i know
+        their waters always amaze me - if only ours had such vibrance!
+        ...
+        ah, here!
+        sit with me!
+        θzzoust!!
+
+    drowning sourceless
+        kazki falls back onto the seafloor, kicking up a small cloud of sand
+            EXEC::change("drowningCalmed", true)
+        i settle down beside her, laughing
+        she reaches over, clinking her simulacrum against mine with a pleased giggle of her own
+        we both take a drink
+
+    drowning akizet
+        thank you for showing me this, kazki
+        how often does this happen?
+
+    drowning::safe
+        not often, apparently
+        which is good for our cousins, of course...
+        these swarms mostly take them by surprise
+        so, after seeing it myself, i knew i needed to bring you!
+    
+    drowning sourceless
+        i give her a curious look over our luminescent drinks
+    
+    drowning akizet
+        and not bozko? or--
+
+    drowning sourceless
+        the amused grin she casts down silences me
+        cousinly expressions come so easily to her
+
+    drowning::safe
+        bozko loves the water, but...
+        aki, how long has it been since you took time to enjoy yourself?
+        i think bozko will be fine!
+
+    drowning akizet
+        but...then, what about tozik?
+        he spends so much time in our research chamber...
+
+    drowning::safe
+        well, ok, that is a fair assessment
+        but i know you better than him!
+        gakvu will have to spend time with him, or something!
+        a better question is, why not you?
+        hehe!
+        you are working so hard to find a reason not to be here
+        why is that...?
+        you are not unhappy with me, are you?
+
+    drowning akizet
+        no, ah...
+
+    drowning sourceless
+        ...
+        i peer down into the warm glow of my simulacrum
+    
+    drowning akizet
+        you know...
+        you are right
+        thank you for thinking of me, kazki
+
+    drowning sourceless
+        i lean over, resting against her side
+        she returns the gesture with a comfortable spread of her receptors
+
+    drowning akizet
+        this will sound silly, but...
+        you are a good tir, you know?
+
+    drowning::safe
+        ahaha!!
+        no no no, that is always nice to hear!
+        ehehe...
+        ...
+        thank you, aki
+
     RESPONSES::self
-        sorry<+>loop
+        watch the creatures<+>CHANGE::drowning_chat
+            EXEC::change("PAGE!!warned", false)
+            FAKEEND::proceed
+`)
+
+env.dialogues.drowningChatResp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what happened?<+>cause
+        back door?<+>deeper
+        want to leave?<+>leave
+        need help?<+>help
+        ok bye<+>END
+            EXEC::env.abyss.drowningEnd();content.classList.add('jellymode');
+`)
+
+env.dialogues[`drowning_chat`] = generateDialogueObject(`
+loop
+    RESPOBJ::drowningChatResp
+
+start
+    drowning sourceless
+        we relax together amidst the glimmering swarm,
+            EXEC::content.classList.add('jellymode');content.classList.remove('dim')
+        in no hurry to return to the shore
+        the silence is comfortable, but...
+        is there anything i want to ask her?
+
+____SHOWONCE::
+    moth
+        ok, that part was different - more incoherent than the rest
+        i think that came from it directly... so, keep playing along,
+        but this is our chance to get some info out of it
+____END
+
+    RESPOBJ::drowningChatResp
+
+cause
+    self
+        how did you end up here?
+        ...and find this? under the water?
+
+    sourceless
+        its attention is not upon you, even as it pulses thoughts to you.
+    
+    drowning::safe
+        ...
+        i fell
+        hehe...
+        i slipped off of a little boat the bright cousins were showing me around in
+        and they were so worried i would get bitten by this swarm,
+        but we are tougher than that!
+        ...
+        if you stay positive,
+        you can survive all kinds of things!
+
+    RESPONSES::self
+        i see<+>loop
             FAKEEND::(back)
 
-info
+deeper
     self
-        i'm looking for information
-        i need to know what happened to akizet
-    
+        what is over there?
+
     sourceless
-        an immeasurably powerful sense of dread washes through your connection
-        the smiling piece's attention shifts to the board, 
-        then to something you cannot see
-    
-    smiling piece
-        what do you mean? did i miss a rule?
-        she is right here!
-    
-    many-eyed piece
-        no they must know something you do not
-        we should remove akizet from play to be safe
-    
-    smiling piece
-        shut up!! <span class="code" definition="INHERITED CONTEXT::'violent parasitic surface fauna';'hijacks mind of victim for use as social camouflage';'ekivik profanity'">zuzucri</span>!
-        another word and i tear your stupid thought membrane to pieces!
+        the thoughtform fixes upon your mind's eye to understand.
+
+    drowning::safe
+        huh? oh!
+        hehe, what a silly question
+        but i suppose, if you go too far, you will fall off the shelf!
+        into the depths, where even stranger fish live...
+        and it is not safe for us to go so deep without a high-pressure body!
+        there is no need to do something so risky
+        just stay here with me, where things are nice, ehehe
 
     RESPONSES::self
-        ...<+>loop
+        ok<+>loop
             FAKEEND::(back)
 
-look
+leave
     self
-        why do you look like gakvu and miltza
-    
-    smiling piece
-        who? the game pieces?
-        we do not look anything like them
-        look. we are busy
-        can you please please please just go away
-        you look and feel so weird and i do not like it
-    
-    sourceless
-        your mind's eye shifts to the miltza-like piece
-        it only watches in silent agreement
+        don't you want to leave?
+
+    drowning::safe
+        ...
+        why would i want to leave?
+        we are having a good time, right? hehe
+        and, more than that...
+        i know i am safe here
+        and it is familiar, too
+        
+    drowning
+        ...
+        but...
+        i hope that you...
+        come here with me, again, aki
+        it is so nice to talk to you
+        i do not want you to become lonely, you know?
+
+    drowning::safe
+        so, please, think of me from time to time!
 
     RESPONSES::self
-        umm<+>loop
+        ok<+>loop
+            FAKEEND::(back)
+
+help
+    self
+        is there anything i can do for you?
+
+    drowning::safe
+        what do you mean?
+        we have everything we need right here!
+        i do not know what you could do to make things even better...
+        but thank you for asking, aki!
+        you are a good friend
+
+    RESPONSES::self
+        you too<+>loop
             FAKEEND::(back)
 `)
 
-/* e4a1 */
-env.dialogues["++rotparasite"] = generateDialogueObject(`
+env.dialogues[`drowning_fall`] = generateDialogueObject(`
 start
-    self
-        what do you think about this place?
-            EXEC::changeBgm(env.rotWatcherMusic)
-
-    sourceless noprocess
-        the rotwatcher's attention stays upon you, silent, for a long moment.
-        it shifts away, to the various thoughtforms nearby.
-
-    rotwatcher
-        the thoughtspace at large is observed to be within a regional conglomeration of delaminated thoughtspaces, though its placement between a number of similarly deteriorated spaces allows its organelles to remain intact and largely untargeted by resource-seeking externally originated thoughtforms.
-        local thoughtforms display heretofore unseen symptoms of an unknown phenomena in which internal meaning and purpose assignment is disrupted or otherwise confused through the introduction of conflicting information and memory.
-        the present rotwatcher may estimate that a form of small-scale emergent conglomeration may have occurred in which the thoughtforms of a separate origin were broken down and utilized as resources for continued survival.
-        alternate possible cause #1: collective neural processor of present thoughtspace merged with a similar organelle of external origin during spatial delamination, combining resources for continued survival, alongside introducing aforementioned conflicting memory.
-        alternate possible cause #2: large amount of majorly deallocated or dissociated "embassy" related thoughtforms and thoughtspaces exist within the dissociative pool; adjacency to its horizon may have presented easily accessed resources for local thoughtforms during organelle starvation, allowing for subsumation of relevant information.
-        
     sourceless
-        its matter-of-fact explanations carry a noticeable feeling of uncertainty and fascination.
+        the render feels unsteady.
+            EXEC::env.clearTimeouts()
+        panic spikes through the thoughtspace.
 
-    rotwatcher
-        no conclusions may be made in confidence about the phenomena on display within the present thoughtspace.
-        
+____SHOWIF::['drowning_relieved', false]
+    drowning::panic
+        w  wa  wait you cannot  g go
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
+
+____SHOWIF::['drowning_relieved', true]
+    drowning::panic
+        s tu pi d ! !
+            EXEC::setCam({x: 4, y: 8, distance: 0, height: 1.5, rotation: 0})
+____END
+    
+    sourceless quiet
+        it feels like you're falling.
+            EXEC::env.abyss.drowningFall();play("scarydoia", 0.2, 1, true);env.forceSfxInheritPitch = true
+            WAIT::5000
+            AUTOADVANCE::
+        your mind spins.
+            WAIT::5000
+            EXEC::play("scarydoia", 0.2, 1, true);
+            THEN::play("scarydoia", 0.2, 1, true);vfx({type: "darkflash", state: true});
+
+    sys
+        NOTICE::ERROR::'memory stream lost';'retracing';'closest coherent position'
+
     RESPONSES::self
-        tell me about something else?<+>CHANGE::++rotmove
-            HIDEREAD::
+        ...<+>END
+            EXEC::change("TEMP!!from", "drowning");moveTo("/local/uncosm/pit/");env.forceSfxInheritPitch = false;body.classList.remove("hard-cut")
+`)
+
+/* e4a1 */
+createEntity({
+    name: '±ƒƒÍ_¾y',
+    type: "thoughtform",
+    hide: true,
+    image: "/img/textures/corruripple.gif",
+    text: `::INCOMPLETE THOUGHTFORM
+    ::SIGNATURE ILLEGIBLE`,
+    exmExec: ()=>{
+        moveTo('/local/uncosm/effigy/', false)
+    }
+})
+
+env.dialogues[`car`] = generateDialogueObject(`
+start
+    sourceless
+        you begin to transfer thoughtspaces.
+        the incomplete entity nearby stirs.
+
+    s w   al kk
+        c   car
+        workiung  ?????
+    
+    self
+        maybe
+        it leads somewhere at least
+        follow me if you can
+
+    s w   al kk
+        lincesne  r  enewal
+            EXEC::env.noNavMessage = true
+
+    sys
+        ..__NAVIGATING::"câr"__..
+            EXEC::flash(true);forcePlay("carstart")
+
+    RESPONSES::self
         ok<+>END
-            
-END::revertBgm()
+
+END::moveTo('/local/beneath/car/')
 `)
 					
 					
@@ -2096,11 +3016,9 @@ END::revertBgm()
 					env.dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        game board?<+>what
-        some look like the call team<+>team
-            SHOWIF::[["beneath_team", true], ["embassy_d1_complete", true]]
-        structuring device code?<+>board
-            SHOWIF::[["beneath_team", true], ["embassy__d3_tutorial", true]]
+        ocean floor?<+>ocean
+        camera guy?<+>camera
+            SHOWIF::"beneath_abysspic"
         nevermind<+>CHANGE::++moth
             FAKEEND::(back)
 `)
@@ -2115,46 +3033,42 @@ start
     
     RESPOBJ::mthresp
 
-what
+ocean
     self
-        can you see anything?
-        this looks like a big game board
-        the pieces are all alive
-        i don't think they know how to play
+        this looks pretty coherently like it's underwater
+        maybe the ocean floor or something
     
     moth
-        lol?
-        well i'm reading this is supposed to be an experiential bridge
-        it's also kind of intact, but the thoughtspace isn't closed
-        maybe this is something funfriend is working on fixing,
-        and it just got started by putting all the pieces back
+        yeah, it actually looks like this is almost kind of coherent
+        it's like it has a bunch of holes in it where other stuff is flowing through
+        i don't doubt akizet actually walked around in the ocean a bunch
     
     RESPOBJ::mthresp
 
-team
+camera
     self
-        some of the pieces on this board thing look like the call team
+        there's this thing that looks like a guy with a camera for a face
+        i think it tried to give something to me
     
     moth
-        yeah, i picked up you trying to talk to one
-        definitely different from the others somehow...
-        maybe some kind of memory bleed?
-        the readout is still messed up, so idk for sure
+        oh yeah?
+        whatever it is, i didn't see it on my end
+        were any senses attached?
     
-    RESPOBJ::mthresp
-
-board
     self
-        you mentioned that board was framing device code
-        is that going to be a problem?
-        
+        a visual of an eye underwater
+        might be the ocean floor or something
+        nothing else
+    
     moth
-        prooobably not?
-        i don't know how funfriend mapped the device to the embassy
-        because it's literally never been done before with obesk stuff lol
-        everything is connected in these cysts, so...
-        other parts were bound to start picking up pieces of it one way or another i guess
-        at least they're having fun with it
+        ok...
+        well, like i said, you're deep in incoherence right now
+        it's probably just a busted thoughtform that still has a little bit of memory
+____SHOWIF::["gol__s_calls-gordon", false]
+        whatever it is, we'll probably have to wait for funfriend to actually fix it
+____SHOWIF::["gol__s_calls-gordon", true]
+        maybe it's something that knows about the whole "they sent a probe" thing and is trying to act the part
+____END
     
     RESPOBJ::mthresp
 `)
@@ -2211,25 +3125,36 @@ board
 					//dyn
 					
 					switch(check("TEMP!!from")) {
-    case "ozo":
-        changeStage('parasite_tunnel', 114, 'up')
+    case "clemens":
+        changeStage('abyss_ship', 148, 'down')
     break
 
-    case "dullvessel":
-        changeStage('parasite_tunnel', 35, 'right')
+    case "parasite":
+        changeStage('abyss', 164, 'up')
     break
 
-    case "abyss":
-        changeStage('parasite_abyss', 75, 'down')
+    case "street":
+        changeStage("abyss_city", 192, 'down')
+    break
+
+    case "ozo_fairy":
+        changeStage('abyss_ship', 105, 'left')
+    break
+
+    case "car":
+        changeStage("abyss_wreck", 155, 'right')
+    break
+
+    case "cass":
+        changeStage("abyss", 368, 'down')
     break
 
     default:
-        changeStage('parasite_tunnel')
+        changeStage('abyss')
 }
 change("TEMP!!from", false)
-if(!check('beneath')) startDialogue("++mothbeneath")
-
 document.addEventListener('keydown', stageKeypress)
+if(!check('beneath')) startDialogue("++mothbeneath")
 
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
@@ -2276,7 +3201,8 @@ document.addEventListener('keydown', stageKeypress)
 					//dyn
 					
 					stageCleanup()
-delete env.parasite
+env.abyss.adriftMusic.unload()
+delete env.abyss
 
             		change('TEMP!!sat', true)
 					Buddy.cleanPageBuddies({removeEl: false})
@@ -2294,9 +3220,8 @@ delete env.parasite
 
 			
 
-			env.pageName = "p-a-r-s-t-e";
+			env.pageName = "a-b-y-s";
 			env.pagePath = location.pathname;
-			env.globalLimitedEntitySetup()
 		</script>
 	</div>
 
