@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1758921388640655831"></script>	
-	<script src="/js/dialogue.js?1758921388640655831"></script>	
-	<script src="/js/globalents.js?1758921388640655831"></script>	
-	<script src="/js/cystStage.js?1758921388640655831"></script>
-	<script src="/js/buddy.js?1758921388640655831"></script>
-	<script src="/js/vn2.js?1758921388640655831"></script>
-	<script defer src="/js/saves.js?1758921388640655831"></script>
+	<script src="/js/corru.js?1759426824626918236"></script>	
+	<script src="/js/dialogue.js?1759426824626918236"></script>	
+	<script src="/js/globalents.js?1759426824626918236"></script>	
+	<script src="/js/cystStage.js?1759426824626918236"></script>
+	<script src="/js/buddy.js?1759426824626918236"></script>
+	<script src="/js/vn2.js?1759426824626918236"></script>
+	<script defer src="/js/saves.js?1759426824626918236"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1758921388640655831'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1758921388640655831'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1759426824626918236'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1759426824626918236'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1758921388</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1759426824</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -349,9 +349,9 @@
 	<div id="content">
 		<style>
 
-@import url(/css/stage/beneath.css?1758921388640655831);
-@import url(/css/local/joy.css?1758921388640655831);
-@import url(/css/local/ozo.css?1758921388640655831);
+@import url(/css/stage/beneath.css?1759426824626918236);
+@import url(/css/local/joy.css?1759426824626918236);
+@import url(/css/local/ozo.css?1759426824626918236);
 </style>
 
 <div class="grid-plane">
@@ -411,7 +411,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1758921388640655831,
+				cacheval: 1759426824626918236,
 
 				
 				image: "/img/socials/ozo.gif",
@@ -1087,6 +1087,7 @@ delete env.jokzi
 
 			env.pageName = "jokzi-ozo";
 			env.pagePath = location.pathname;
+			env.globalLimitedEntitySetup()
 		</script>
 	</div>
 

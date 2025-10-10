@@ -91,7 +91,12 @@ class Buddy {
                 this.currentLocation = check(`TEMP!!buddylocation-${this.id}`)
                 console.log(`setting ${this.id} to previous location of ${this.currentLocation}`)
             } else {
-                this.setNewLocation() //roll a location
+                try {
+                    this.setNewLocation() //roll a location
+                } catch(e) { // no possible locations
+                    this.currentLocation = false
+                    console.warn(`no possible locations for ${this.id}, not setting location`)
+                }
             }
 
             if(!this.shouldBeOnPage()) { //we don't want to continue with render if its not on this page
@@ -534,11 +539,11 @@ function globalBuddyInit() {
                     screenEnter: ()=> {
                         change("seenSmiler", true)
                         setTimeout(()=>{env.buddy_smile.el.classList.add("fadeaway"), 10000})
-                        env.buddy_smile.setNewLocation()
+                        try { env.buddy_smile.setNewLocation() } catch(e) { /* no possible locations */ }
                     },
                     mouseEnter: ()=> {
                         env.buddy_smile.el.classList.add("fadeaway")
-                        env.buddy_smile.setNewLocation()
+                        try { env.buddy_smile.setNewLocation() } catch(e) { /* no possible locations */ }
                         setTimeout(()=>{env.buddy_smile.el.remove()}, 5000)
                     }
                 }

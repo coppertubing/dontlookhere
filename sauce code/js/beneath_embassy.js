@@ -3963,6 +3963,7 @@ env.e3a2.merchant.commerce.push({
 
         content.insertAdjacentHTML(`beforeend`, `<critta-reward type="${reward.slug}" difficulty="2"></critta-reward`)
         chatter({actor: "sys", text: `exchanged 10 ${env.ITEM_LIST['sfer_cube'].name} for ${reward.name}`, readout: true })
+        setTimeout(()=>{if(env?.stage?.freemove) toggleMouseLook(false)}, 500) //pause
     }
 })
 

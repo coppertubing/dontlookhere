@@ -324,331 +324,339 @@ env.entities['referential scar'] = {
 env.globalLimitedEntitySetup = () => {
 
     //ozo related
-    createEntity({
-        name: 'fairy',
-        pathLimit: "/local/ozo/",
-        image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
-        type: "thoughtform obesk portrait-haze portrait-auto portrait-center",
-        text: `::RESPONSIVE THOUGHTFORM
-        ::EXPLICIT PURPOSE:'hunger'
-        <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
-        ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`,
-        actions: [
-            {
-                name: "hello",
-                exec: ()=> startDialogue('fairy_intro'),
-                showIf: [["ozo__fairy_intro", false], ["stageroom", "ozo_fairy"]]
-            },
-
-            {
-                name: "greet",
-                exec: ()=> startDialogue('fairy'),
-                showIf: [["ozo__fairy_intro", true], ["stageroom", "ozo_fairy"]]          
-            },
-                
-            {
-                name: "unity",
-                class: "act-ozo",
-                exec: ()=>{
-                    cutscene(true)
-
-                    chatter({actor: 'fairy', text: 'already here! stupid!', readout: true, delay: 2000})
-
-                    env.setTimeout(()=>{
-                        play("talkchoir", 0.75)
-                        vfx({type: 'beacon', state: true})
-                    }, 400)
-
-                    setTimeout(()=>{
-                        vfx({type: 'beacon', state: false})
-                        cutscene(false)
-                    }, 2000)
+    try {
+        createEntity({
+            name: 'fairy',
+            pathLimit: "/local/ozo/",
+            image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
+            type: "thoughtform obesk portrait-haze portrait-auto portrait-center",
+            text: `::RESPONSIVE THOUGHTFORM
+            ::EXPLICIT PURPOSE:'hunger'
+            <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
+            ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`,
+            actions: [
+                {
+                    name: "hello",
+                    exec: ()=> startDialogue('fairy_intro'),
+                    showIf: [["ozo__fairy_intro", false], ["stageroom", "ozo_fairy"]]
                 },
-                showIf: () => (page.path == "/local/ozo/") && check("mask", "unity")
-            },
 
-            // other zones
-            {
-                name: "hello",
-                exec: ()=> startDialogue('++fairytravel'),
-                showIf: () => page.path != "/local/ozo/"
-            },
-                
-            {
-                name: "unity",
-                class: "act-ozo",
-                exec: ()=>{
-                    cutscene(true)
-
-                    chatter({actor: 'fairy', text: 'i know the way back! stupid!', readout: true, delay: 1000})
-
-                    env.setTimeout(()=>{
-                        play("talkchoir", 0.75)
-                        vfx({type: 'beacon', state: true})
-                    }, 400)
-
-                    setTimeout(()=>{
-                        vfx({type: 'beacon', state: false})
-                        cutscene(false)
-                    }, 1000)
+                {
+                    name: "greet",
+                    exec: ()=> startDialogue('fairy'),
+                    showIf: [["ozo__fairy_intro", true], ["stageroom", "ozo_fairy"]]          
                 },
-                showIf: () => (page.path != "/local/ozo/") && check("mask", "unity"),
-            },
-        ]
-    })
+                    
+                {
+                    name: "unity",
+                    class: "act-ozo",
+                    exec: ()=>{
+                        cutscene(true)
+
+                        chatter({actor: 'fairy', text: 'already here! stupid!', readout: true, delay: 2000})
+
+                        env.setTimeout(()=>{
+                            play("talkchoir", 0.75)
+                            vfx({type: 'beacon', state: true})
+                        }, 400)
+
+                        setTimeout(()=>{
+                            vfx({type: 'beacon', state: false})
+                            cutscene(false)
+                        }, 2000)
+                    },
+                    showIf: () => (page.path == "/local/ozo/") && check("mask", "unity")
+                },
+
+                // other zones
+                {
+                    name: "hello",
+                    exec: ()=> startDialogue('++fairytravel'),
+                    showIf: () => page.path != "/local/ozo/"
+                },
+                    
+                {
+                    name: "unity",
+                    class: "act-ozo",
+                    exec: ()=>{
+                        cutscene(true)
+
+                        chatter({actor: 'fairy', text: 'i know the way back! stupid!', readout: true, delay: 1000})
+
+                        env.setTimeout(()=>{
+                            play("talkchoir", 0.75)
+                            vfx({type: 'beacon', state: true})
+                        }, 400)
+
+                        setTimeout(()=>{
+                            vfx({type: 'beacon', state: false})
+                            cutscene(false)
+                        }, 1000)
+                    },
+                    showIf: () => (page.path != "/local/ozo/") && check("mask", "unity"),
+                },
+            ]
+        })
+    } catch(e) {console.error(e); printError(e, true)}
 
     // true wanderers
-    createEntity({
-        name: 'rotwatcher',
-        hide: true,
-        image: '/img/sprites/rot/rotxa.gif', 
-        type: "thoughtform obesk portrait-haze portrait-cover portrait-center",
-        text: `::RESPONSIVE THOUGHTFORM
-        ::EXPLICIT PURPOSE:'observation'
-        <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
-        ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
-        <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
-        actions: [
-            // city intro
-            {
-                name: "hello",
-                exec: ()=> startDialogue('rotmeet'),
-                showIf: () => !check("citystreet__rotmeet") 
-            },
-
-            {
-                name: "what's that",
-                exec: ()=> startDialogue('++rotcity'),
-                showIf: () => check("stageroom", "city_cafe") && check("citystreet__rotmeet")
-            },
-
-            {
-                name: "what's going on here",
-                exec: ()=> startDialogue('++rotcityflip'),
-                showIf: () => check("stageroom", "city_banks_flip")
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotozo'),
-                showIf: () => check("stageroom", "ozo_entrance")
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotorbit'),
-                showIf: () => page.path == "/local/orbit/"
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotuncosm'),
-                showIf: () => page.path == "/local/uncosm/"
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotmaze'),
-                showIf: () => page.path == "/local/ocean/ship/interview/"
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotparasite'),
-                showIf: () => page.path == "/local/beneath/parasite/"
-            },
-
-            {
-                name: "what do you think",
-                exec: ()=> startDialogue('++rotpit'),
-                showIf: () => page.path == "/local/uncosm/pit/"
-            },
-
-            {// i think this is presently impossible
-                name: "unity",
-                class: "act-ozo",
-                exec: ()=>{
-                    cutscene(true)
-
-                    chatter({actor: 'rotwatcher', text: 'locational information exchange recognized. physical visitation is required for any conclusion to be offered. the rotwatcher is observed to hold this destination as pending investigation.', readout: true, delay: 1000})
-
-                    env.setTimeout(()=>{
-                        play("talkchoir", 0.75)
-                        vfx({type: 'beacon', state: true})
-                    }, 400)
-
-                    setTimeout(()=>{
-                        vfx({type: 'beacon', state: false})
-                        cutscene(false)
-                    }, 3000)
-
-                    change("unity_rot", true)
-                    change("TEMP!!rotpref", "/local/ozo/")
+    try {
+        createEntity({
+            name: 'rotwatcher',
+            hide: true,
+            image: '/img/sprites/rot/rotxa.gif', 
+            type: "thoughtform obesk portrait-haze portrait-cover portrait-center",
+            text: `::RESPONSIVE THOUGHTFORM
+            ::EXPLICIT PURPOSE:'observation'
+            <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+            ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
+            <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
+            actions: [
+                // city intro
+                {
+                    name: "hello",
+                    exec: ()=> startDialogue('rotmeet'),
+                    showIf: () => !check("citystreet__rotmeet") 
                 },
-                
-                showIf: () => check("mask", "unity")
-            },
-        ]
-    })
+
+                {
+                    name: "what's that",
+                    exec: ()=> startDialogue('++rotcity'),
+                    showIf: () => check("stageroom", "city_cafe") && check("citystreet__rotmeet")
+                },
+
+                {
+                    name: "what's going on here",
+                    exec: ()=> startDialogue('++rotcityflip'),
+                    showIf: () => check("stageroom", "city_banks_flip")
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotozo'),
+                    showIf: () => check("stageroom", "ozo_entrance")
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotorbit'),
+                    showIf: () => page.path == "/local/orbit/"
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotuncosm'),
+                    showIf: () => page.path == "/local/uncosm/"
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotmaze'),
+                    showIf: () => page.path == "/local/ocean/ship/interview/"
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotparasite'),
+                    showIf: () => page.path == "/local/beneath/parasite/"
+                },
+
+                {
+                    name: "what do you think",
+                    exec: ()=> startDialogue('++rotpit'),
+                    showIf: () => page.path == "/local/uncosm/pit/"
+                },
+
+                {// i think this is presently impossible
+                    name: "unity",
+                    class: "act-ozo",
+                    exec: ()=>{
+                        cutscene(true)
+
+                        chatter({actor: 'rotwatcher', text: 'locational information exchange recognized. physical visitation is required for any conclusion to be offered. the rotwatcher is observed to hold this destination as pending investigation.', readout: true, delay: 1000})
+
+                        env.setTimeout(()=>{
+                            play("talkchoir", 0.75)
+                            vfx({type: 'beacon', state: true})
+                        }, 400)
+
+                        setTimeout(()=>{
+                            vfx({type: 'beacon', state: false})
+                            cutscene(false)
+                        }, 3000)
+
+                        change("unity_rot", true)
+                        change("TEMP!!rotpref", "/local/ozo/")
+                    },
+                    
+                    showIf: () => check("mask", "unity")
+                },
+            ]
+        })
+    } catch(e) {console.error(e); printError(e, true)}
 
     // travelling critters
-    createEntity({ // car guy
-        name: "s w   al kk",
-        pathLimit: "/local/beneath/",
-        type: "recollection thoughtform portrait-top portrait-cover",
-        image: "/img/local/city/pedestrian5.gif",
-        text: `::RESPONSIVE THOUGHTFORM
-        ::EXPLICIT PURPOSE::'recollection'
-        <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
-        actions: [
-            {
-                name: "greet",
-                exec: ()=>{
-                    chatter({
-                        actor: 's w   al kk', 
-                        text: [
-                            "car poblemn",
-                            " can oblemnt",
-                            "ar droblenmn",
-                            " radiator mufler hungry",
-                            "alien ? know .,   fix car ?",
-                            "car  s tuck"
-                        ].sample({noRepeat: true}),
-                        delay: 300
-                    })
+    try {
+        createEntity({ // car guy
+            name: "s w   al kk",
+            pathLimit: "/local/beneath/",
+            type: "recollection thoughtform portrait-top portrait-cover",
+            image: "/img/local/city/pedestrian5.gif",
+            text: `::RESPONSIVE THOUGHTFORM
+            ::EXPLICIT PURPOSE::'recollection'
+            <span style="color: var(--obesk-color)" definition="ANALYSIS::'extremely degraded visual profile','low cohesion'">::HIGH INCOHERENCE DETECTED</span>`,
+            actions: [
+                {
+                    name: "greet",
+                    exec: ()=>{
+                        chatter({
+                            actor: 's w   al kk', 
+                            text: [
+                                "car poblemn",
+                                " can oblemnt",
+                                "ar droblenmn",
+                                " radiator mufler hungry",
+                                "alien ? know .,   fix car ?",
+                                "car  s tuck"
+                            ].sample({noRepeat: true}),
+                            delay: 300
+                        })
+                    },
+                    showIf: () => !check("mask", "joy")
                 },
-                showIf: () => !check("mask", "joy")
-            },
-            
-            {
-                name: "unity",
-                class: "act-ozo",
-                showIf: [["mask", "unity"]],
-                exec: ()=>{
+                
+                {
+                    name: "unity",
+                    class: "act-ozo",
+                    showIf: [["mask", "unity"]],
+                    exec: ()=>{
 
-                    chatter({actor: 's w   al kk', text: 'far. dr ive  fix my   car', readout: true, delay: 2000})
+                        chatter({actor: 's w   al kk', text: 'far. dr ive  fix my   car', readout: true, delay: 2000})
 
-                    env.setTimeout(()=>{
-                        play("talkchoir", 0.75)
-                        vfx({type: 'beacon', state: true})
-                    }, 400)
+                        env.setTimeout(()=>{
+                            play("talkchoir", 0.75)
+                            vfx({type: 'beacon', state: true})
+                        }, 400)
 
-                    setTimeout(()=>{
-                        vfx({type: 'beacon', state: false})
-                    }, 2000)
+                        setTimeout(()=>{
+                            vfx({type: 'beacon', state: false})
+                        }, 2000)
+                    },
                 },
-            },
 
-            {
-                name: "greet",
-                exec: ()=>{
-                    chatter({
-                        actor: 's w   al kk', 
-                        text: [
-                            "insurance   lincecense",
-                            "gous priceses",
-                            "  t otp speed 49 7345 engine",
-                            " radiat   or mufler hungry",
-                            "red  green ylow blue light  speet up",
-                            "car  so sgggoing",
-                            "  m eting go ok",
-                            "wrunc eetntenanceh",
-                            "irector",
-                            "autorized"
-                        ].sample({noRepeat: true}),
-                        delay: 300
-                    })
+                {
+                    name: "greet",
+                    exec: ()=>{
+                        chatter({
+                            actor: 's w   al kk', 
+                            text: [
+                                "insurance   lincecense",
+                                "gous priceses",
+                                "  t otp speed 49 7345 engine",
+                                " radiat   or mufler hungry",
+                                "red  green ylow blue light  speet up",
+                                "car  so sgggoing",
+                                "  m eting go ok",
+                                "wrunc eetntenanceh",
+                                "irector",
+                                "autorized"
+                            ].sample({noRepeat: true}),
+                            delay: 300
+                        })
+                    },
+                    showIf: ["mask", "joy"]
                 },
-                showIf: ["mask", "joy"]
-            },
-        ]
-    })
+            ]
+        })
+    } catch(e) {console.error(e); printError(e, true)}
 
-    createEntity({ // camera guys
-        name: '×è.÷ùÏÏøø',
-        type: "recollection thoughtform portrait-ripple portrait-cover",
-        image: "/img/local/beneath/camportrait.gif",
-        text: `::INCOMPLETE THOUGHTFORM
-        ::SIGNATURE ILLEGIBLE`,
-        pathLimit: "/local/beneath/",
+    try {
+        createEntity({ // camera guys
+            name: '×è.÷ùÏÏøø',
+            type: "recollection thoughtform portrait-ripple portrait-cover",
+            image: "/img/local/beneath/camportrait.gif",
+            text: `::INCOMPLETE THOUGHTFORM
+            ::SIGNATURE ILLEGIBLE`,
+            pathLimit: "/local/beneath/",
 
-        exmExec: ()=>{
-            if(check("mask", "joy")) {
-                if(!env.targetedEntity.text.includes("JOY_MASK") && env?.stage?.name != "abyss") {
-                    env.targetedEntity.text = env.targetedEntity.text += `\n<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`
+            exmExec: ()=>{
+                if(check("mask", "joy")) {
+                    if(!env.targetedEntity.text.includes("JOY_MASK") && env?.stage?.name != "abyss") {
+                        env.targetedEntity.text = env.targetedEntity.text += `\n<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`
+                    }
                 }
+            },
+
+            actions: [
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('abyss'),
+                    showIf: () => env.stage.name == 'abyss'
+                },           
+                {
+                    name: "unity",
+                    class: "act-ozo",
+                    exec: ()=> env.cameraGuySnap('nope'),
+                    showIf: () => { return env.stage.name == 'abyss' && check('mask', 'unity')}
+                },
+                {
+                    name: "what are you looking at",
+                    exec: ()=> env.cameraGuySnap('effigy'),
+                    showIf: () => env.stage.name == 'abyss_ship'
+                },
+                
+                //e4a1
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('orbit'),
+                    showIf: () => page.path == '/local/orbit/'
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('street'),
+                    showIf: () => env.stage.name == 'city_street'
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('darkstreet'),
+                    showIf: () => env.stage.name == 'city_street3'
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('banks'),
+                    showIf: () => env.stage.name == 'city_banks'
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('banksflip'),
+                    showIf: () => env.stage.name == 'city_banks_flip'
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('abysscity'),
+                    showIf: () => env.stage.name == 'abyss_city',
+                },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('ozo'),
+                    showIf: () => page.path == '/local/ozo/'
+                },
+            ],
+
+            //flag correction
+            onCreated: ()=>{
+                if(check("beneath_abysspic") && !check("cam_abyss")) change("cam_abyss", true)
+                if(check("beneath_nopic") && !check("cam_nope")) change("cam_nope", true)
+                if(check("beneath_effigypic") && !check("cam_effigy")) change("cam_effigy", true)
             }
-        },
-
-        actions: [
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('abyss'),
-                showIf: () => env.stage.name == 'abyss'
-            },           
-            {
-                name: "unity",
-                class: "act-ozo",
-                exec: ()=> env.cameraGuySnap('nope'),
-                showIf: () => { return env.stage.name == 'abyss' && check('mask', 'unity')}
-            },
-            {
-                name: "what are you looking at",
-                exec: ()=> env.cameraGuySnap('effigy'),
-                showIf: () => env.stage.name == 'abyss_ship'
-            },
-            
-            //e4a1
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('orbit'),
-                showIf: () => page.path == '/local/orbit/'
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('street'),
-                showIf: () => env.stage.name == 'city_street'
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('darkstreet'),
-                showIf: () => env.stage.name == 'city_street3'
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('banks'),
-                showIf: () => env.stage.name == 'city_banks'
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('banksflip'),
-                showIf: () => env.stage.name == 'city_banks_flip'
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('abysscity'),
-                showIf: () => env.stage.name == 'abyss_city',
-            },
-
-            {
-                name: "hello",
-                exec: ()=> env.cameraGuySnap('ozo'),
-                showIf: () => page.path == '/local/ozo/'
-            },
-        ],
-
-        //flag correction
-        onCreated: ()=>{
-            if(check("beneath_abysspic") && !check("cam_abyss")) change("cam_abyss", true)
-            if(check("beneath_nopic") && !check("cam_nope")) change("cam_nope", true)
-            if(check("beneath_effigypic") && !check("cam_effigy")) change("cam_effigy", true)
-        }
-    })
+        })
+    } catch(e) {console.error(e); printError(e, true)}
 }
 
 //global entity special functions

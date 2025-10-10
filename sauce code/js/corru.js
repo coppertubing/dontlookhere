@@ -1481,6 +1481,7 @@ function reloadSessionLog() {
 //entity creation for page use
 //takes an entity object with a name - adds it to the environment, then adds to the detectedEntities object for the page it's presently on
 function createEntity(entObj) {
+    if(!page && entObj.pathLimit) return printError(`attempted to create pathlimited entity ${entObj.name} before page was defined`, false)
     env.entities[entObj.name] = entObj
 
     //used mainly for entity-based flag corrections, updating old references, etc

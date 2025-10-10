@@ -856,6 +856,7 @@ function toggleMouseLook(enable = undefined, {resetAngle = false, delayCoords = 
             return (env?.currentDialogue?.active && !env?.currentDialogue?.settings?.chatterlogue) ||
                 body.classList.contains('in-menu') ||
                 env?.rpg?.active ||
+                env.rewardScreenActive ||
                 env.cutscene ||
                 document.activeElement.tagName == 'INPUT' ||
                 document.activeElement.tagName == 'TEXTAREA' ||

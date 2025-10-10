@@ -731,7 +731,7 @@ class CrittaNode extends HTMLElement {
             }
         } else {
             rewardEl.completeCallback = () => closeCombat(loser)
-            if(env.e3a2) env.e3a2.updateExchangeScreen()
+            if(env.e3a2) env.e3a2.updateExchangeScreen()     
         }
     }
 
@@ -1109,6 +1109,12 @@ class CrittaReward extends HTMLElement {
         }
 
         this.generate()
+        
+        env.rewardScreenActive = true
+        setTimeout(() => {
+            if(env?.stage?.freemove && !env.rpg?.active) toggleMouseLook(false) //pause
+            console.log(env?.stage?.freemove, !env.rpg?.active, "attempted to pause")
+        }, 200)
     }
 
     // begins the "PENDING" stage
@@ -1273,6 +1279,13 @@ class CrittaReward extends HTMLElement {
     closeout() {
         this.classList.add("pre-show", "fading")
         if(this.completeCallback) this.completeCallback();
+
+        delete env.rewardScreenActive
+        setTimeout(()=>{
+            if(env?.stage?.freemove && !env.rewardScreenActive) toggleMouseLook(true) //unpause
+            console.log(env?.stage?.freemove, "attempted to unpause")
+        }, 500)
+        
         setTimeout(()=>{
             this.remove()
         }, 2000)
