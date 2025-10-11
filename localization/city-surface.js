@@ -1602,8 +1602,8 @@ ____SHOWONCE::
         i notice gordon leaning forward after his explanation
 
     gordon
-        ...You get all that?
-        It's really just the three buttons we'll be using.
+        ...You get all that? // ...Вы всё поняли?
+        It's really just the three buttons we'll be using. // На деле мы будем использовать только три кнопки.
 
     sourceless
         oh... yes--right
@@ -1670,8 +1670,8 @@ talknow
         slightly perturbed by my approach, as if i am impeding something
 
     cass
-        Akizet, I really can't talk right now.
-        Let's save it for the next project meeting, all right?
+        Akizet, I really can't talk right now. // Акизет, я действительно не могу говорить сейчас.
+        Let's save it for the next project meeting, all right? // Отложим это до следующей встречи по поводу проекта, хорошо?
 
     akizet
         oh? apologies, director
@@ -1697,8 +1697,8 @@ talklater
         expression twisting with impatience
 
     cass
-        Oh, you're still here?
-        The team is waiting for you, Akizet.
+        Oh, you're still here? // О, Вы ещё здесь?
+        The team is waiting for you, Akizet. // Команда ждёт Вас, Акизет.
         
     akizet
         ah--?
@@ -1709,12 +1709,12 @@ talklater
         i turn to leave, the director speaking indistinctly to her device as i go
 
     cass::whisper
-        What was I saying? Right...
+        What was I saying? Right... // О чём я говорила? Точно...
             EXEC::vnp({cass: "show", hideStage: true})
-        I'm not ready to involve you in this project, yet.
-        I've been trying to help push you in the right direction, but...
-        You really weren't supposed to hear about any of this so soon.
-        But we're not opposed. What I'm doing will get you what you want.
+        I'm not ready to involve you in this project, yet. // Я не готова вовлекать Вас в этот проект, пока.
+        I've been trying to help push you in the right direction, but... // Я старалась подтолкнуть Вас в нужном направлении, но...
+        You really weren't supposed to hear about any of this so soon. // Совсем не предпологалсь, что Вы услышите о чём либо из этого скоро.
+        But we're not opposed. What I'm doing will get you what you want. // Но мы по одну сторону баррикад. То, чем я занимаюсь, приведёт Вас к желаемому.
 
     self
         you're talking to me, right?
@@ -1726,14 +1726,14 @@ talklater
         h  her voice quiets as  i   near the do or
 
     cass::whisper
-        Yeah, basically. I could help you a lot more than the idiot above me.
-        I don't need to tell you how stubborn and inefficient they are.
-        Even I'm constantly getting grilled for what we're doing out here.
-        If they knew what's going on <em>now</em>... It'd be one hell of a spectacle.
-        Don't misunderstand, though. I do trust you.
-        I'm very interested in what we'll be able to do, together.
-        Until I can get you in. Just keep this between us. Off the record.
-        If word gets out, nobody's going to be happy.
+        Yeah, basically. I could help you a lot more than the idiot above me. // Да, по большей части. Я могла бы помочь Вам куда больше, чем идиот надо мной.
+        I don't need to tell you how stubborn and inefficient they are. // Мне не нужно объяснять, насколько он упёртый и неэффективный.
+        Even I'm constantly getting grilled for what we're doing out here. // Даже я постоянно отхватываю за то, чем мы тут занимаемся.
+        If they knew what's going on <em>now</em>... It'd be one hell of a spectacle. // Если бы он только знал, что происходит <em>сейчас</em>... Это было бы адское зрелище.
+        Don't misunderstand, though. I do trust you. // Впрочем не поймите неправильно. Я доверяю Вам.
+        I'm very interested in what we'll be able to do, together. // Я заинтересована тем, на что мы будем способны, вместе.
+        Until I can get you in. Just keep this between us. Off the record. // До тех пор пока я не могу вовлечь Вас. Пусть это останется между нами. Вне протокола.
+        If word gets out, nobody's going to be happy. // Если слух проскользнёт - никто не будет рад.
 
     sourceless incoherent
         whaa t a st t range c on onversation
@@ -1791,8 +1791,8 @@ ____SHOWIF::["citystreet__director-meeting", false]
         WARNING::"cohesion error detected";"non-fatal";"continuing render"
         
     cass::open
-        Oh... That's not good.
-        How did you get in here?
+        Oh... That's not good. // Ох... Это нехорошо.
+        How did you get in here? // Как Вы сюда попали?
 
     moth
         buddy this thing is going to cause a breakdown if you stay near it
@@ -1800,14 +1800,14 @@ ____SHOWIF::["citystreet__director-meeting", false]
         this is going to straight up crash 
 
     gordon
-        Director Cassidy!
+        Директор Кэссиди!
     
     sourceless incoherent
         a nd st  ste p s    cl o ser
         i ? ?   fee l   s ick
 
     cass::open
-        I see...
+        Понятно...
     
     sourceless incoherent
         clos es her  folding
@@ -1827,13 +1827,13 @@ ____SHOWIF::["citystreet__director-meeting", false]
 ____SHOWIF::"citystreet__director-meeting"
 
     gordon
-        Director Cassidy!
+        Директор Кэссиди!
 
 ____END
     cass
-        Gordon, Akizetesche!
+        Гордон, Акизетеше!
             EXEC::vn.done()
-        It's good to see you both, truly.
+        It's good to see you both, truly. // Рада видеть вас обоих, правда.
 
     sourceless
         she steps closer to shake gordon's hand, then my claw
@@ -1850,36 +1850,36 @@ ____END
         one of the 'cards' that they use to regulate access, here
 
     cass
-        It's no trouble. 
+        Это не проблема. 
     
     sourceless
         her eyes shift in a puzzling way, her gaze lacking the warmth it just had
         she turns the card over in her hand, smile held steady
     
     cass
-        It's the least I could do, really.
-        We all appreciate what you're doing here, Akizet.
+        It's the least I could do, really. // Правда, это меньшее, что я могу сделать
+        We all appreciate what you're doing here, Akizet. // Мы все ценим ваши усилия, Акизет.
     
     sourceless
         as the director, i imagine she must be deeply familiar with receptor language by now
         and so i try to suppress the subtle unease her tone inspires
 
     cass
-        Just like you wanted, we have as few hands and eyes involved as possible.
-        It's me, a few officers for oversight, Gordon here, and some very good technicians.
+        Just like you wanted, we have as few hands and eyes involved as possible. // Точно как Вы и хотели, мы привлекли настолько мало рук и глаз, насколько это возможно.
+        It's me, a few officers for oversight, Gordon here, and some very good technicians. // Это я, несколько офицеров для надзора, Гордон здесь и очень хорошие техники.
 
     akizet
-        delightful!
+        delightful! """ неописуемо нелепый ответ. её навыки в этом поражают даже меня
 
     cass
-        The only thing is, there are still parts that don't add up.
+        The only thing is, there are still parts that don't add up. // Единственное, есть моменты, которые никак не сходятся.
 
     sourceless
         she punctuates her words with an idle waving of the card, held tightly between two fingers
         from the corner of my vision, i see gordon shift, having grown tense
     
     cass
-        The secrecy from <em>your own people</em> is <em>very</em> strange. // Срекретность от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
+        The secrecy from <em>your own people</em> is <em>very</em> strange. // Секретность от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
         Obviously, I wouldn't ever decline what you're offering. // Очевидно, я бы ни за что не отказалась от вашего предложения. 
         Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing. // Любая страна, любая корпорация--чëрт, да кто угодно с улицы <em>убил бы</em> за подобное.
         This has the potential to be the biggest societal and technological leap in humanity's history. // У этого есть потенциал стать самым большим общественным и социальным рывком в истории человечества. 
@@ -1887,11 +1887,11 @@ ____END
         And yet, you only want help tracking the Call down, // И всё же, вы просите только о помощи с отслеживанием Зова,
         Which, as you know, we're already doing - just without your technology. // Чем, насколько я знаю, мы уже занимаемся - разница лишь в отсутствии ваших технологий. "" почему здесь дефис
         And privacy?  // И приватность?
-        Not a word to any of the hundreds of other qou we're working with, not even your Council?  // Ни слова ни одному из тех тысяч других куу, с которыми мы работаем, и даже вашему Совету?
+        Not a word to any of the hundreds of other qou we're working with, not even your Council?  // Ни слова ни одному из тех сотен других куу, с которыми мы работаем, и даже вашему Совету?
         I need to know why you're doing this. // Мне нужно знать, почему Вы делаете это.
 
     gordon
-        Director, as I explained in the proposal, recent discoverie-- // Директор, как я и объяснил в обращении, недавнее открытие--
+        Director, as I explained in the proposal, recent discoverie-- // Директор, как я и объяснил в обращении, недавние открытия--
             WAIT::1000
             AUTOADVANCE::
         
@@ -1970,10 +1970,10 @@ ____END
         it is so difficult to read anything from her
 
     cass
-        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments. // Любой может попасть на операционный/оперативный? этаж, но у каждого доступ только к отделу, относящейся к их задаче.
-        We have other obesk working down there on various projects, // У нас есть и другие обески, работающие внизу над всевозможными проектами,
+        Anyone can go to the operations floor, but they can only access the sections relevant to their assignments. // Любой может попасть на операционный/оперативный? этаж, но у каждого доступ только к отделу, относящемуся к их задаче.
+        We have other obesk working down there on various projects, // У нас внизу есть и другие обески, работающие над всевозможными проектами,
         But the team has been briefed on your privacy concerns. It should be safe for you. // Но команда проинформирована о ваших соображениях конфиденциальности. Для вас это должно быть безопасно """ последнее странное. может потом будут мысли
-        That card will let you into your section. // Эта карта позволит Вам попасть в ваш отдел.
+        That card will let you into your section. // Эта карта позволит Вам попасть в Ваш отдел.
     
     sourceless
         a polite smile returns to her face
@@ -1984,7 +1984,7 @@ ____END
     
     cass
         Likewise.// Взаимно.
-        I have another meeting shortly, so, please excuse me. // У меня немного времени до следющей встречи, так что, прошу меня простить.
+        I have another meeting shortly, so, please excuse me. // У меня немного времени до следующей встречи, так что прошу меня простить.
         It's been a pleasure, Akizet. // Было приятно встретиться, Акизет.
         Gordon, we'll talk later. // Гордон, поговорим позже.
 
@@ -1997,7 +1997,7 @@ ____END
     cass::whisper
         Be careful on the way down. // Будьте осторожны на пути вниз.
             SHOWONCE::
-        I hear the elevator's been acting a little strange. // Я слышала, что лифт ведёт себя немного странно/с лифтом что-то неладное.
+        I hear the elevator's been acting a little strange. // Я слышала, что с лифтом что-то неладное.
             SHOWONCE::
 
     RESPONSES::akizet
@@ -2034,7 +2034,7 @@ ____SHOWONCE::
     gordon
         Yeah, // Ага,
         Yeah... // Ага...
-        It should be. // Должно было.
+        It should be. // Должно быть.
         This is just about kicking off the operation. // Речь только о запуске операции.
 
     akizet
