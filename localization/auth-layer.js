@@ -73,7 +73,7 @@ RESPOBJ::
     RESPONSES::self
         назначение?<+>purpose
             SHOWONCE::
-        кто верифицирован?<+>whoisverified
+        кто авторизован?<+>whoisverified
             SHOWONCE::
         а назначение этой цисты?<+>corrupurpose
             SHOWONCE::
@@ -146,7 +146,7 @@ ____SHOWIF::[["hello__sentry-whoisverified"]]
         ИЗВИНИ МЫ НЕ СОВСЕМ ПОНИМАЕМ ОТКУДА ВЗЯЛАСЬ ЭТА АГРЕССИЯ
             EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
         ДУМАТЬ ТАК ТРУДНО
-        У ТЕБЯ ЕСТЬ ТОПЛИВО
+        ЕСТЬ ЛИ У ТЕБЯ КАКОЕ-НИБУДЬ ТОПЛИВО
 ____END
 
     RESPOBJ::generalsentryResponses

@@ -621,10 +621,10 @@ start
         NOTICE::'memory stream located'
 
     sourceless
-        ...nearly a spirelength from the ground, far above the surface vapors,
-        i continue to climb higher, higher still, rending the soft flesh of my carrier
-        claws caked with the veilk's fast-congealing blood, growing dull and numb in the bitter shore wind
-        the pack of cysts the θjut have assigned me to carry weighs heavily
+        ...nearly a spirelength from the ground, far above the surface vapors, // почти на высоте шпиля от земли, куда выше поверхностного пара,
+        i continue to climb higher, higher still, rending the soft flesh of my carrier // я продолжаю карабкаться выше и ещё выше, раздирая мягкую плоть моего носителя
+        claws caked with the veilk's fast-congealing blood, growing dull and numb in the bitter shore wind // когти окрашены запёкшейся кровью вейлька, немея и становясь всё более тупыми под непримиримыми побережными ветрами 
+        the pack of cysts the θjut have assigned me to carry weighs heavily /
         yet the weight of my eyes, my legs, my arms, have all grown far greater
         when was it i last slept?
         with the sparse herd here, with clear-sky and direct gaze of velzie's eye,
