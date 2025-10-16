@@ -20,6 +20,8 @@ env.localization.page['localocean'] = {dialogues: {},
         "rise": "вынырнуть",
     }, 
     entityDescriptions: {
+        'our dull vessel': cor_ru.entity_menu["our dull vessel"].desc,
+        'their vessel': cor_ru.entity_menu["their vessel"].desc,
         "the embassy": cor_ru.entity_menu["the embassy"].desc,
         'gate::the depths': cor_ru.entity_menu["gate::the depths"].desc,
         'stilted shore': cor_ru.entity_menu["stilted shore"].desc,

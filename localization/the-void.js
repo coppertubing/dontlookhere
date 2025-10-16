@@ -22,6 +22,7 @@ env.localization.page['localorbit'] = {dialogues: {},
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
         'gate::the dull contrivance': cor_ru.entity_menu["gate::the dull contrivance"].desc,
         'gate::bright moon': cor_ru.entity_menu["gate::bright moon"].desc,
+        'our dull vessel': cor_ru.entity_menu["our dull vessel"].desc,
     }
 }
 
