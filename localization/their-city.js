@@ -62,6 +62,10 @@ where
     RESPOBJ::mthcityresp
 `)
 
+
+getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
+
+
 // === TRANSLATING DA BEECH === //
 
 cor_ru.processSpecificTranslation(document.querySelectorAll(".loose-thought"), "text")
@@ -73,7 +77,3 @@ document.querySelectorAll('#content .loose-thought').forEach(e=>{e.insertAdjacen
 new Lettering('#content .loose-thought .title').letters()
 
 document.querySelectorAll("#content .loose-thought .title > span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
-
-
-
-getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

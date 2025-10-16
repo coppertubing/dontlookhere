@@ -5,7 +5,7 @@
     > localization/the-funny-little-room.js
     adaptation for /local/ocean/ship/interview
 
-    progress: only moth unfinished as of 23.08.2025
+    progress: only moth and rotwatcher unfinished as of 23.08.2025
 */
 
 
@@ -32,6 +32,59 @@ env.localization.page['interview1'] = {dialogues: {},
 
 
 // === DIALOGUES === //
+
+
+// == MOTH == //
+
+env.localization.page["interview1"].dialogues.mthinterviewresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        остатки интервью?<+>interview
+        сущности<+>entities
+            SHOWIF::"interviewbeast_seen"
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page["interview1"].dialogues["mth++interview1"] = generateDialogueObject(`
+start
+    self
+        у меня вопрос
+
+    moth
+        ага?
+    
+    RESPOBJ::mthinterviewresp
+
+interview
+    self
+        почему это на месте того интервью?
+
+    moth
+        хз
+        velzie tore it apart, right?
+        what you're seeing might be the remnants
+        as for why you're able to render it,
+        that's beyond me
+    
+    RESPOBJ::mthinterviewresp
+
+entities
+    self
+        что это за штуки здесь со мной
+        ты их видишь, да?
+    
+    moth
+        i can barely read anything here on my end
+        but nothing even close to a signature on them, so i can't say for sure...
+        maybe they're rogue thoughtforms
+        they have to eat, right? could be scavengers or something
+
+    RESPOBJ::mthinterviewresp
+`)
+
+
+// == INTERVIEW == //
+
 env.localization.page["interview1"].dialogues.interviewResponses = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::interviewer
@@ -166,7 +219,7 @@ whyyoucame
         Ранее сегодня, мы, ах, очень--крайне долго разговаривали об этом с одним из ваших инженеров!
 
     akizet
-        кавик?
+        с кавиком?
     
     interviewer
         Что, простите?
@@ -631,6 +684,9 @@ behonest
             EXEC::moveTo('/local/ocean/ship/')
 `)
 
+
+// == POST-VELZIE == //
+
 env.localization.page["interview1"].dialogues["dead"] = generateDialogueObject(`
 start
     sys
@@ -674,50 +730,55 @@ ____END
         ок<+>END
 `)
 
-env.localization.page["interview1"].dialogues.mthinterviewresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        остатки интервью?<+>interview
-        сущности<+>entities
-            SHOWIF::"interviewbeast_seen"
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-env.localization.page["interview1"].dialogues["mth++interview1"] = generateDialogueObject(`
+
+// == ROTWATCHER == //
+
+env.localization.page["interview1"].dialogues["++rotmaze"] = generateDialogueObject(`
 start
     self
-        у меня вопрос
+        what's up with this place?
+            EXEC::changeBgm(env.rotWatcherMusic)
 
-    moth
-        ага?
-    
-    RESPOBJ::mthinterviewresp
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
 
-interview
+    rotwatcher
+        catastrophic spatial delamination without conglomeration: end-state of thoughtspaces unable to enforce cohesion or coherence, alongside outer membrane failure.
+        thoughtspace is noted to no longer be possible to identify as a thoughtspace without prior knowledge of its location and existence, entirely dispersing into surrounding connective media.
+        referential end-points and thoughtforms formerly within may remain in operation as organelles continue to operate until expending all remaining resources.
+        organelles of fully delaminated and dispersed thoughtspaces are observed to no longer be recognized by distributive components of the cyst, resulting in cessation of further support.
+        present state is partial recession into dissociative pool. expected end-state is gradual starvation or consumption of remaining organelles, followed by full absorption into dissociative pool by recently reactivated grand stage cohesion enforcement components.
+        
     self
-        почему это на месте того интервью?
+        what about the hostile things out there
+        any thoughts on those?
 
-    moth
-        хз
-        velzie tore it apart, right?
-        what you're seeing might be the remnants
-        as for why you're able to render it,
-        that's beyond me
-    
-    RESPOBJ::mthinterviewresp
+    sourceless
+        it takes a moment to process your request.
 
-entities
+    rotwatcher
+        presence of insensate thoughtforms adapted to the dissociative pool, henceforth referenced to as a "scavenger" subtype, is observed.
+        scavengers remain a common fixture of the dissociative pool in the post-stasis state of the grand stage, a result of self-mutation in the face of unreasonably hostile environmental conditions.
+        typically comprised of one or more "lesser thoughtforms", the preceding classification being defined as thoughtforms of low memory importance, which are reliant upon a collective neural processor organelle within a host thoughtspace.
+        most mutation and adaptation will have occurred prior to the loss of coherent thought, remaining effective in survival while traversing connective media and the dissociative pool at large.
+        the scavenger subtype is observed to have little to no reasoning capability and will often retrieve resources with direct attack upon any suspected sources.
+
     self
-        что это за штуки здесь со мной
-        ты их видишь, да?
-    
-    moth
-        i can barely read anything here on my end
-        but nothing even close to a signature on them, so i can't say for sure...
-        maybe they're rogue thoughtforms
-        they have to eat, right? could be scavengers or something
+        collective neural processor?
+        do all thoughtforms not just think on their own?
 
-    RESPOBJ::mthinterviewresp
+    rotwatcher
+        due to its witnessed frequency, deference to a thoughtspace's neural processor organelle is assumed to be the default state.
+        however: the grand stage is known to distribute cognition inherently and at varying levels through presently unknown methods. it is assumed that neural processor organelles within thoughtspaces draw from this distribution and manage it for all thoughtforms under their reference.
+        therefore: thoughtforms capable of maintaining internal sentience are suspected to draw from this same distribution at higher levels through necessity of original purpose, random incidence of cognitive draw, or incidental adaptation via consumption of a component that maintained a high level of cognitive draw.
+        it is noted that this is not an exhaustive nor conclusive list, as the nature of cognition is difficult or impossible to observe directly. however: the previously listed mechanisms have been directly observed by the present rotwatcher.
+        
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        i see<+>END
+    
+END::revertBgm()
 `)
 
 

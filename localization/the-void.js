@@ -6,7 +6,7 @@
     adaptation for /local/orbit
     (---so vast and empty!)
 
-    progress: fully finished as of 23.08.2025
+    progress: rotwatcher missing as of 12.10.2025
 */
 
 
@@ -21,11 +21,67 @@ env.localization.page['localorbit'] = {dialogues: {},
         'proxyfriend?': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
         'gate::the dull contrivance': cor_ru.entity_menu["gate::the dull contrivance"].desc,
+        'gate::bright moon': cor_ru.entity_menu["gate::bright moon"].desc,
     }
 }
 
 
 // === DIALOGUES === //
+
+
+// == MOTH == //
+
+env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        открытие серое?<+>dull
+            SHOWIF::[['EXEC::env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull()']]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{ // --- i forgot why we have it but shit breaks without it iirc
+    try {
+        if(flags.detectedEntities["..__THE_VOID__.."].entities["gate::the dull contrivance"].scanned) {
+            return true
+        } else {
+            return false
+        }
+    } catch(e) {
+        return false
+    }
+}
+env.localization.page['localorbit'].dialogues["mth++localorbit"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этой мыслеформе
+
+    moth
+        давай, нападай
+    
+    RESPOBJ::mthvoidresp
+
+dull
+    self
+        что ты знаешь об открытии серое?
+    
+    moth
+        да не так уж много за исключением того что оно всё ещё там
+        и что, оказывается, органическая жизнь не выживает проход через него, так что им могут пользоваться только куу
+        по крайней мере, так они говорили в некоторых старых интервью
+        а вот как по мне, я думаю они просто не хотят гостей в родном мире
+        ....
+        сорян я тут на логи смотрю
+        по-видимому твой мыслекол говорит что это соединительная мыслеформа?
+        может с помощью этой штуки мы сможем как следует рассмотреть обескию
+        если починить её вообще получится
+
+    RESPOBJ::mthvoidresp
+`)
+
+
+// == FAIRY == //
+
 env.localization.page['localorbit'].dialogues.fairyresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -215,52 +271,36 @@ start
 END::vfx({type: "beacon", state: false})
 `)
 
-env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        открытие серое?<+>dull
-            SHOWIF::[['EXEC::env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull()']]
 
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull = ()=>{ // i forgot why we have it but shit breaks without it iirc
-    try {
-        if(flags.detectedEntities["..__THE_VOID__.."].entities["gate::the dull contrivance"].scanned) {
-            return true
-        } else {
-            return false
-        }
-    } catch(e) {
-        return false
-    }
-}
-env.localization.page['localorbit'].dialogues["mth++localorbit"] = generateDialogueObject(`
+// == ROTWATCHER == //
+
+env.localization.page['localorbit'].dialogues["++rotorbit"] = generateDialogueObject(`
 start
     self
-        у меня есть вопрос об этой мыслеформе
+        what do you think about the contrivance?
+            EXEC::changeBgm(env.rotWatcherMusic)
 
-    moth
-        давай, нападай
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        total connective failure: in which a connector thoughtform is observed to no longer have a known referential end-point.
+        common and mundane result of deterioration within the grand stage. however: currently observed instance is recognized as having an unusual lack of damage often associated with deterioration-based failure.
+        fashion of disconnection is consistent with deliberate pre-stasis erasure, by mechanism of an authorized component organelle.
     
-    RESPOBJ::mthvoidresp
-
-dull
     self
-        что ты знаешь об открытии серое?
-    
-    moth
-        да не так уж много за исключением того что оно всё ещё там
-        и что, оказывается, органическая жизнь не выживает проход через него, так что им могут пользоваться только куу
-        по крайней мере, так они говорили в некоторых старых интервью
-        а вот как по мне, я думаю они просто не хотят гостей в родном мире
-        ....
-        сорян я тут на логи смотрю
-        по-видимому твой мыслекол говорит что это соединительная мыслеформа?
-        может с помощью этой штуки мы сможем как следует рассмотреть обескию
-        если починить её вообще получится
+        erasure?
+        does that mean this will never lead to anything?
 
-    RESPOBJ::mthvoidresp
+    rotwatcher
+        it is observed that the connector's reference is absent. therefore: no conclusions of any confidence may be made of the current state of the originally intended end-point.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        i see<+>END
+        
+END::revertBgm()
 `)
 
 

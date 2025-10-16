@@ -87,6 +87,57 @@ env.localization.page['fbx'] = {dialogues: {},
 }
 
 // === DIALOGUES === //
+    // see everystuff.js for depthrecovery and depthrecovery2 dialogue
+
+    
+// == MOTH == //
+
+env.localization.page["fbx"].dialogues.mthhubresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        где нашли эти цисты?<+>where
+        что делать с этим пистолетом<+>gun
+            SHOWIF::[["ep1_showmaterials", "both"], ["ep1_fed", true]]
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page['fbx'].dialogues["mth++fbx"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос
+
+    moth
+        ага?
+    
+    RESPOBJ::mthhubresp
+
+gun
+    self
+        так что, мы просто оставим этот пистолет?
+
+    moth
+        о, ну
+        знаешь, он может пригодиться
+        если честно мне просто не хотелось его ну вот прям щас возвращать лол
+        вроде НИОКР он не сильно нужен, им нечасто приходится что-то убивать
+        я верну попозже
+    
+    RESPOBJ::mthhubresp
+
+where
+    self
+        откуда это всё достали?
+    
+    moth
+        с какого-то крушения на дне океана возле новой зеландии
+        и под "возле" я имею в виду, типа, километров так за тыщу от юго-восточного берега
+        просто это всё нашли в такой жопе мира что...
+        ну, мне показалось ничего ближе новой зеландии ты не узнаешь
+        они считают что оно отплыло достаточно далеко от того места, где изначально упало
+        по их оценкам, провалялось там внизу лет 20-30 если не больше
+
+    RESPOBJ::mthhubresp
+`)
 
 
 env.localization.page['fbx'].dialogues["index"] = generateDialogueObject(`
@@ -145,116 +196,7 @@ sit
         
 END::env.enableSpikeCursor();MUI('deprohibit')
 `)
-env.localization.page['fbx'].dialogues["depthrecovery"] = generateDialogueObject(` 
-start
-    sourceless quiet
-        острая боль пронзает твой череп. твой мыслекол отдёргивается от цисты.
-            WAIT::3000
 
-    sys
-        ВНИМАНИЕ::'аварийное отключение завершено'
-        АНАЛИЗ::'минимальное повреждение соединителя';'минимальное нервное воздействие'
-            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
-    
-    moth
-        с тобой всё в порядке?
-        о, бля
-    
-    sourceless
-        моль судорожно выдирает провода из дымящегося процессора. в комнате пахнет жареной электроникой.
-
-    moth
-        господи боже
-        чел, твой мыслекол тебе жизнь только что спас
-        ну не похоже, что эта штука пыталась тебя прям убить, но чёрт только взгляни на это
-        я ограничу разветвитель сигнала на случай если такое опять произойдёт
-    
-    RESPONSES::self
-        что теперь?<+>whatnow_lk
-            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", false]]
-        что теперь?<+>whatnow_lk
-            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", true]]
-        что теперь?<+>whatnow_mk
-            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container", false]]
-        что теперь?<+>whatnow_hk
-            SHOWIF::[["hub__funfriend-fuelthanks"],["exm|dullvessel|container"]]
-
-whatnow_lk
-    self
-        а что теперь?
-
-    moth
-        что ж...
-        нам нужно починить эту штуку. просто представь что мы могли бы в ней найти, серьёзно
-        вот только одна проблемка...
-        всё, что сюда поступает, рано или поздно умирает тк мы не знаем как поддерживать жизнь корру
-        и не то чтобы мы могли бы спросить совета у обесков          
-        похоже, что на сейчас лучший вариант - переподключиться и найти способ сохранить цисту в живых... 
-        не забывай насколько долго эта штука продержалась на дне океана, там должно быть хоть что-то полезное
-        так что забирайся обратно и осмотрись повнимательнее... в худшем случае мы просто добудем больше данных
-        звучит хорошо?
-
-    RESPONSES::self
-        что насчёт той сущности?<+>entity
-        звучит хорошо<+>END
-
-whatnow_mk
-    self
-        а что теперь?
-
-    moth
-        что ж...
-        та управляющая системой штука, развледруг - это наш ключ к обслуживанию и восстановлению этой цисты
-        а нам нужно починить вот это всё. мы могли бы СТОЛЬКО всего узнать, серьёзно
-        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
-        ток представь если мы с тобой раскроем секрет сохранения жизни корру, может они наконец переселят меня из подвала
-        но короче--мой заказ на, типа, какие-нибудь там медные трубки уже получили
-        не самый странный заказ из нашего отдела, веришь или нет
-        так что нам нужно немного подождать пока его не доставят
-        звучит хорошо?
-
-    RESPONSES::self
-        что насчёт той сущности?<+>entity
-        звучит хорошо<+>END
-
-whatnow_hk
-    self
-        а что теперь?
-
-    moth
-        что ж...
-        очевидно нам нужно починить эту штуку. мы могли бы СТОЛЬКО всего узнать, серьёзно
-        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
-        ток представь что мы могли бы сделать с такого рода находкой, может они бы наконец переселили меня из подвала
-        но согласно этому развледругу, нам нужно дать колонне немного металла, и это по всей видимости будет питать корруцисту
-        ...и я подозреваю что наш контейнер - один из тех что на корабле акизет, так что в нём наверняка припасено что-нибудь что мы можем использовать
-        я просто не совсем понимаю как его открыть если не ломать его
-        сделай одолжение - переподключись и спроси об этом у развледруга, может у него будет предложение
-
-    RESPONSES::self
-        что насчёт той сущности?<+>entity
-        звучит хорошо<+>END
-
-entity
-    self
-        что насчёт той сущности, которая меня выгнала?
-
-    moth
-        о, э
-        как-то бестактно вышло с моей стороны, извини
-        на этот раз мне удалось отследить её речь с помощью прямого доступа к потоку
-        ну мы всё слышали - убивать тебя не хочет
-        на самом деле выживание этой штуки зависит от нас, и судя по всему оно <em>хочет</em> выжить
-        может быть другого способа выкинуть тебя из того мыслепространства не было
-        а его, как я полагаю, оно пока будет держать в качестве преимущества
-        но слушай, не беспокойся об этом, я слежу за всей операцией
-        если что-либо подобное повторится, я позабочусь о том чтобы с тобой всё было в порядке
-    
-    RESPONSES::self
-        хорошо<+>END
-
-END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0_epilogue', 'started');flash(false)}, 1000)
-`)
 env.localization.page['fbx'].dialogues["ep1feed"] = generateDialogueObject(` 
 start
     moth
@@ -462,6 +404,7 @@ kill
 
 END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab', 'containerseq');change('ep1_fed', 'container')
 `)
+
 env.localization.page['fbx'].dialogues["ep2intro"] = generateDialogueObject(` 
 start
     moth
@@ -476,6 +419,7 @@ start
     RESPONSES::self
         ок<+>END
 `)
+
 env.localization.page['fbx'].dialogues["ep3intro"] = generateDialogueObject(` 
 start
     moth
@@ -502,60 +446,7 @@ start
     RESPONSES::self
         ok...<+>END
 `)
-env.localization.page['fbx'].dialogues["depthrecovery2"] = generateDialogueObject(` 
-start
-    sourceless quiet
-        твои глаза перефокусируются, пока мыслекол отдёргивается
-            WAIT::3000
-        боль разливается по твоему позвоночнику
 
-    sys
-        ВНИМАНИЕ::'аварийное отключение завершено'
-        АНАЛИЗ::'нет повреждений соединителя';'минимальное нервное воздействие'
-            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
-
-    moth
-        слава богу
-        похоже установленные мной лимиты сдержали это
-        чё случилось-то, чел?
-        ты бродил<блинскийлопер> по какой-то совершенно нечитаемой чуши в моём логе
-        инициировал<блинскийлопер> передвижение в новое мыслепространство, а потом...
-        а потом оно типа... взорвалось?
-    
-    self
-        я что-то нашёл<блинскийлопер>
-        попробовал войти<блинскийлопер>, но велзи мне помешала<блинскийвелзи???>
-        прямо как в прошлый раз
-        но сейчас было немного по-другому
-        велзи не ожидала<блинскийвелзи???> моего появления
-        она<блинскийвелзи???> как будто отчаянно пыталась что-то остановить
-
-    moth
-        didn't it lead you to whatever this was last time?
-        was it the same thing?
-
-    self
-        looked similar but different
-
-    moth
-        well, comparing the logs, 
-        it looks like it's at least part of the same thing
-        but the data that hit you is way different...
-        last time it was just noise, probably to disrupt your connection
-        but this time it was structured somehow
-        not enough to make sense of, but...
-        i think you nearly connected to whatever it was
-        still, maybe next time you find some giant incoherent thing,
-        don't just blindly enter it, ok?
-        the throttling we set up protected you this time
-        but it's not perfect, and some of it still hit your brain
-        so like... take it easy for a bit
-    
-    RESPONSES::self
-        ok<+>END
-    
-END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');env.enableSpikeCursor();flash(false)}, 1000)
-`)
 env.localization.page['fbx'].dialogues["ep4intro"] = generateDialogueObject(` 
 start
     moth
@@ -615,53 +506,6 @@ start
 
     RESPONSES::self
         ok<+>END
-`)
-
-env.localization.page["fbx"].dialogues.mthhubresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        где нашли эти цисты?<+>where
-        что делать с этим пистолетом<+>gun
-            SHOWIF::[["ep1_showmaterials", "both"], ["ep1_fed", true]]
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-env.localization.page['fbx'].dialogues["mth++fbx"] = generateDialogueObject(`
-start
-    self
-        у меня есть вопрос
-
-    moth
-        ага?
-    
-    RESPOBJ::mthhubresp
-
-gun
-    self
-        так что, мы просто оставим этот пистолет?
-
-    moth
-        о, ну
-        знаешь, он может пригодиться
-        если честно мне просто не хотелось его ну вот прям щас возвращать лол
-        вроде НИОКР он не сильно нужен, им нечасто приходится что-то убивать
-        я верну попозже
-    
-    RESPOBJ::mthhubresp
-
-where
-    self
-        откуда это всё достали?
-    
-    moth
-        с какого-то крушения на дне океана возле новой зеландии
-        и под "возле" я имею в виду, типа, километров так за тыщу от юго-восточного берега
-        просто это всё нашли в такой жопе мира что...
-        ну, мне показалось ничего ближе новой зеландии ты не узнаешь
-        они считают что оно отплыло достаточно далеко от того места, где изначально упало
-        по их оценкам, провалялось там внизу лет 20-30 если не больше
-
-    RESPOBJ::mthhubresp
 `)
 
 

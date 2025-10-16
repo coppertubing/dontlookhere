@@ -5,7 +5,7 @@
     > localization/their-waters.js
     adaptation for /local/ocean
 
-    progress: as of 23.08.2025
+    progress: vessel surface missing as of 12.10.2025
 */
 
 
@@ -23,6 +23,10 @@ env.localization.page['localocean'] = {dialogues: {},
         "the embassy": cor_ru.entity_menu["the embassy"].desc,
         'gate::the depths': cor_ru.entity_menu["gate::the depths"].desc,
         'stilted shore': cor_ru.entity_menu["stilted shore"].desc,
+        'gate::vessel surface': `::CONNECTOR THOUGHTFORM
+    ::DESTINATION::'low dimensional thoughtspace';'internal'
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'partial cohesion failure'">::INCOHERENCE DETECTED</span>
+    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly accidental with minor thoughtspaces';'especially those contained within others'">'hidden via size and membrane damage'</span>`
     }
 }
 

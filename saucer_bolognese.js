@@ -14,6 +14,7 @@ horriblefuckingthing = [
     'local/cache',
     'local/city',
         'local/city/street',
+        'local/city/aquarium',
     'local/depths',
     'local/dullvessel',
     'local/ocean',

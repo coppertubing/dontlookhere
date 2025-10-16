@@ -630,6 +630,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
             localcity:          "https://coppertubing.github.io/cor-RU/localization/their-city.js",
             citystreet:         "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
+            aquarium:           "https://coppertubing.github.io/cor-RU/localization/aquarium.js",
 
             localorbit:         "https://coppertubing.github.io/cor-RU/localization/the-void.js",
             moon:               "https://coppertubing.github.io/cor-RU/localization/bright-moon.js",

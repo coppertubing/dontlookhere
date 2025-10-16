@@ -18,13 +18,10 @@ env.localization.page['citystreet'] = {dialogues: {},
     strings: {
         "pretty sure this envoy guy isn't being remembered right lmao": "лмао кажется этого челика-посла не так хорошо запомнили",
         "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was": "значит контактным лицом акизет был какой-то \"гордон\"... посмотрим, смогу ли я на него выйти", 
-        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"",
-        "this is definitely looking like the old west coast HQ": "",
-        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing": "",
+        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"", // --- можете перевести
+        "this is definitely looking like the old west coast HQ": "", // --- можете перевести
         "about the city": "о городе",
-
-        // joy resonance
-        "'major';'various spatial and responsive thoughtforms detected'": "'крупный';'обнаружены различные пространственные и отзывчивые мыслеформы'",
+        
 
         "say hello": "сказать привет",
         "menu?": "меню?",
@@ -43,6 +40,27 @@ env.localization.page['citystreet'] = {dialogues: {},
 
         "talk about": "поговорить о",
         "talk to": "поговорить с",
+
+        "press": "нажать",
+
+        "utilize": "использовать",
+
+        "get water": "взять воды",
+            'it is too far': "он слишком далеко",
+            "i fetch a thin vessel from its repository, filling it with clear water": "я вынимаю тонкий сосуд из его хранилища и наполняю его прозрачной водой",
+            "what a fascinating little mechanism": "какой удивительный механизм",
+            "i am not certain what trouble he was having...": "мне не ясно, какие именно у него возникли проблемы...",
+            "the mechanism was quite simple": "механизм был достаточно прост",
+            "i have no need for more": "ещё больше мне не требуется",
+        
+        "taste": "попробовать",
+            "i fear i may crush this flimsy thing, but it is worth a test": "меня страшит, что я случайно раздавлю эту хлипкую вещицу, однако попробовать не помешает",
+            "it... yes, it is water": "это... да, это вода",
+
+        // rotwatchery
+        "what's that": "что это",
+        "what's going on here": "что здесь происходит",
+        "hello": "привет",
 
 
 
@@ -159,6 +177,15 @@ env.localization.page['citystreet'] = {dialogues: {},
         "beautiful parasite": cor_ru.entity_menu["beautiful parasite"].name,
         "the room high up": cor_ru.entity_menu["the room high up"].name,
         'the roothe room hithe room gh u the roomp': 'ко ком ата выкомн ат сокомнаве рх о вер ху',
+        "vehicle stream crossing mechanism": cor_ru.entity_menu["vehicle stream crossing mechanism"].name,
+        "elevator buttons": cor_ru.entity_menu["elevator buttons"].name,
+        "water cooler": cor_ru.entity_menu["water cooler"].name,
+        "frightfully fragile vessel": cor_ru.entity_menu["frightfully fragile vessel"].name,
+
+        "•Œë÷Ž†": "•Ԫë÷Ҙ†", // careful. little shit is in the better times too
+        'Þª†#¦¦¤‡?…—?': "Ҧʸ†#¦¦¤‡?…—?",
+        'Þª†#¦¦ìnÑ–R': "Ҧʸ†#¦¦ẞӈӲ–Ри", //beneath
+        'Þª†#¦¦§†A·r»': "Ҧʸ†#¦¦§†вЕз́·ԭа̄" //orbit
     },
     entityDescriptions: {
         "cashier": cor_ru.entity_menu["cashier"].desc,
@@ -174,11 +201,243 @@ env.localization.page['citystreet'] = {dialogues: {},
     ::НЕВИЗУАЛИЗИРУЕМА
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>
     ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'молчи молчи молчи молчи молчи молчи молчи'</span>`,
+        "vehicle stream crossing mechanism": cor_ru.entity_menu["vehicle stream crossing mechanism"].desc,
+        "elevator buttons": cor_ru.entity_menu["elevator buttons"].desc,
+        "water cooler": cor_ru.entity_menu["water cooler"].desc,
+        "frightfully fragile vessel": cor_ru.entity_menu["frightfully fragile vessel"].desc,
+
+        "•Œë÷Ž†": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'`,
+        'Þª†#¦¦¤‡?…—?': `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'подразумевает соединительную мыслеформу';'попытка интерпретации'">НЕОБЫЧНАЯ ПОДПИСЬ</span>
+    ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::НЕВИЗУАЛИЗИРУЕМА<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'пункт назначения превышает порог бессвязности';'рекомендуется починка'">::ЗАПРЕДЕЛЬНАЯ БЕССВЯЗНОСТЬ</span>`,
+        'Þª†#¦¦ìnÑ–R': `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'подразумевает соединительную мыслеформу';'попытка интерпретации'">НЕОБЫЧНАЯ ПОДПИСЬ</span>`, //beneath
+        'Þª†#¦¦§†A·r»': `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::<span definition="ПРИМЕЧАНИЕ::'нестандартный формат';'подразумевает соединительную мыслеформу';'попытка интерпретации'">НЕОБЫЧНАЯ ПОДПИСЬ</span>`, //orbit
     }  
 }
 
 
 // === DIALOGUES === //
+
+
+// == MOTH == //
+env.localization.page['citystreet'].dialogues.mthstreetresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        где это было?<+>where
+        не могу дальше?<+>elevatorblock
+            SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
+        the slide room?<+>dataroom
+            SHOWIF::['dataroom', true]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page['citystreet'].dialogues["mth++citystreet"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этой мыслеформе
+
+    moth
+        смотрю на вывод, чё как?
+    
+    RESPOBJ::mthstreetresp
+
+where
+    self
+        где бы это могло быть?
+    
+    moth
+        ну я не думаю что на земле существует хоть одна улица которая выглядит вот так лол
+        но вообще, она же была одним из тех разъездных дипломатов в те времена когда их еще рассылали
+        хз как новая зеландия тогда выглядела, но я знаю у бюро был там офис
+            SHOWIF::["citystreet__envoy-talkpeople", false]
+        так что мб это бессвязное пространственное воспоминание о том месте
+            SHOWIF::["citystreet__envoy-talkpeople", false]
+        гордон упомянул что это где-то "в штатах"... так что наверно США
+            SHOWIF::["citystreet__envoy-talkpeople", true]
+        возможно где-то на западном побережье? там старая штаб-квартира находилась
+            SHOWIF::["citystreet__envoy-talkpeople", true]
+
+    RESPOBJ::mthstreetresp
+
+elevatorblock
+    self
+        у меня не получается зайти в лифт...
+    
+    moth
+        эт странно
+        хотелось бы сказать что это бессвязность, но факт того что личность посла в остальном цела...
+        кажись что-то ещё вносит изменения--твой мыслекол даже доложил что данные были удалены
+        ну похоже с этим не повезло. но вообще и в других местах есть на что посмотреть
+
+    RESPOBJ::mthstreetresp
+
+dataroom
+    self
+        What are those slides about?
+    
+    moth
+        you can't read them on your end either, huh
+        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info
+        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details
+        but just from what i can make out, uh...
+        oh man, we used to put the FBX motto everywhere
+        anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon...
+        alongside some maps, probably about the polygonation spires or the call's location...
+        some signals intelligence stuff, that's probably us trying to detect the call
+        there's a few really interesting structural analyses of obesk tech, too
+
+    self
+        Why would we show Akizet that?
+        Isn't that kind of revealing?
+
+    moth
+        not really, i mean, the obesk knew we were studying them
+        before they made contact, we even sent some drones to take samples of the embassy
+        which obviously didn't work at all lol
+        maybe they were doing their own analyses with akizet's help, to get people up to speed
+        obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding
+        speaking of, there's a couple of human-looking schematics in there
+        god i wish akizet's memories were like
+        higher resolution
+
+____SHOWIF::"2040thing"
+    self
+        ok also what did you mean by 2040 thing
+
+    moth
+        that was a joke dude
+        kinda...
+        i mean that <em>is</em> when dark brutalism became a thing
+        but yeah i was kidding
+        we don't have any ominous dark hallways full of secret info
+        although...
+        there <em>is</em> the one...
+        but i can't tell you about that.
+____END
+
+    RESPOBJ::mthresp
+`)
+
+
+// == ROTWATCHER == //
+
+env.localization.page['citystreet'].dialogues["rotmeet"] = generateDialogueObject(`
+start
+    sourceless
+        this thoughtform lingers over a malformed one.
+            EXEC::changeBgm(env.rotWatcherMusic)
+        its representation in the render is still, yet you feel it moving beneath the surface.
+        prodding at the damaged entity below it, somehow.
+
+    self
+        hello?
+
+    sourceless
+        its movement slowly ceases. you feel its attention upon you.
+        something presses against your mind's eye, and while concepts manifest as thoughts,
+        it feels like they aren't truly intended for you.
+    
+    rotwatcher
+        the audience: external force, alien to the grand stage. it has been observed for the first time recently.
+        no attempt using any known method of communication has succeeded in gaining the attention of the audience.
+        it is suspected to lack requisite sensory organs, precluding perception beyond standard coherent thoughtform presentation.
+        this marks the first occasion in which the audience has succeeded in communicating. the mechanism by which it has changed is unknown.
+
+    self
+        are you talking about me?
+        what are you?
+    
+    sourceless
+        the thing draws closer to your mind's eye.
+        its attention pulls into itself.
+
+    rotwatcher
+        rotwatcher: formerly predatory thoughtform, presenting emergent lucidity and cognitive function. self-assigned nomenclature predicated upon lost progenitor's knowledge.
+        suspected to be product of direct damage to purpose enforcement within delaminated spatial thoughtspace, followed by mutation and mindless survival of undetermined duration.
+        it is observed to wander, internally cataloguing forms of deterioration and their products without interference.
+
+    moth
+        that's... 
+        kind of useful?
+
+    self
+        i guess
+    
+    sourceless noprocess
+        you focus upon the rotwatcher.
+    
+    self
+        why do you do this?
+        can you tell me more?
+    
+    sourceless
+        it returns to examining the damaged thoughtform without answering.
+    
+    RESPONSES::self
+        what about that thoughtform?<+>CHANGE::++rotcity
+        whatever<+>END
+            
+END::revertBgm()
+`)
+env.localization.page['citystreet'].dialogues["++rotcity"] = generateDialogueObject(`
+start
+    self
+        what's up with this thoughtform?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        referentially sustained deterioration: common condition within damaged lesser thoughtforms.
+        critically damaged thoughtforms may continue existence with minimal remaining material, due to the physical referential tie made by their containing thoughtspace.
+        sustained connection allows thoughtspace organelles to provide resources and support unconditionally.
+        a significant number of damaged thoughtforms may be sustained by one thoughtspace, however it is a large strain that often results in catastrophic thoughtspace delamination.
+        this is a common trajectory and outcome that has been observed in large quantity throughout the deterioration of the grand stage.
+        however: the custodian's recent decision to dissociate most damaged thoughtforms has reduced its frequency.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+
+END::revertBgm()
+`)
+env.localization.page['citystreet'].dialogues["++rotcityflip"] = generateDialogueObject(`
+start
+    self
+        what's going on here?
+
+    sourceless noprocess
+        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
+
+    rotwatcher
+        spatial delamination gradient: early stage of thoughtspace breakdown by consequence of malnutrition. common in regions of densely packed memories.
+        membrane of containing thoughtspace is observed to thin and melt. points of exit and entry become indistinguishable from adjacent connective media.
+        previously recorded instances suggest presently observed thoughtspace's trajectory to be regional conglomeration.
+
+    sourceless
+        you feel a part of the thoughtform twist underneath the render.
+
+    rotwatcher
+        regional conglomeration: blending of multiple adjacent thoughtspaces in middle or late stages of spatial delamination.
+        resulting organism combines organelles and remaining outer membrane material for continued survival.
+        it is presently unknown whether this function is a survival mechanism inherent to the thoughtspace classification of thoughtform or the result of an emergent sentience similar to independent thoughtform awakening.
+        further study is required. however: the arrival and abundance of external resources combined with the custodian's resumation of activity has slowed all known instances of early stage regional conglomeration, including present thoughtspace.
+        likelihood of further opportunity to study phenomena is extremely low without direct intervention. direct intervention is inadvisable for continued observation of the grand stage's recovery.
+
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+`)
+
+
+// == ENVOY  == //
 
 env.localization.page['citystreet'].dialogues.envoyStreetResponses = generateDialogueObject(`
 RESPOBJ::
@@ -282,21 +541,8 @@ flowers
     RESPOBJ::envoyStreetResponses
 `)
 
-env.localization.page['citystreet'].dialogues["cafemenu"] = generateDialogueObject(`
-start
-    sourceless
-        ЭТО - ИХ МЕНЮ?
-        НЕВЕРОЯТНО...
-        ЕГО ПРАКТИЧЕСКИ НЕВОЗМОЖНО РАЗОБРАТЬ
-        Я РАЗЛИЧАЮ "АПЕЛЬСИН" - БЫТЬ МОЖЕТ, ЦИТРУСОВЫЙ НАПИТОК?
-        СВЕТЛЫЕ БЛИЗНЕЦЫ НАСТОЛЬКО ИЗОБИЛУЮТ ЦИТРУСОВЫМИ КИСЛОТАМИ, ЧТО ПРОИЗВОДЯТ ИЗ НИХ НЕБОЛЬШИЕ НАПИТКИ...
-        РАЗВЕ ЭТО НЕ РАЙ?
-        Я ПРИКАЗЫВАЮ СВОЕМУ РТУ СКОНСТРУИРОВАТЬ ЭКВИВАЛЕНТЫ ВКУСОВЫХ РЕЦЕПТОРОВ. ПРОШЛО СТОЛЬКО ВРЕМЕНИ!
-            EXEC::change('citystreet_orangecoffee', true)
-    
-    RESPONSES::akizet
-        изумительно<+>END
-`)
+
+// == STREETWALKERS == //
 
 env.localization.page['citystreet'].dialogues["walker1"] = generateDialogueObject(`
 start
@@ -368,6 +614,7 @@ start
         я не могу тебе помочь<+>END
             EXEC::page.bgm.rate(0.9);content.classList.remove('incoherent')
 `)
+
 env.localization.page['citystreet'].dialogues["walker3"] = generateDialogueObject(`
 start
     sourceless
@@ -434,30 +681,24 @@ start
         простимся<+>END
             EXEC::body.classList.remove('zoom')
 `)
-env.localization.page['citystreet'].dialogues["ep1velzie"] = generateDialogueObject(`
-start
-    unknown
-        лазутчик
-            EXEC::play('criticalError', 1); content.classList.add('fade-stage');
-            WAIT::4000
-        приветствую вас вновь
-        сей θмиг я чувствую себя собою
-        я с теплотою вспоминаю посольство...
-        вы помните о нашей сделке, да?
-        призывать развледруга к починке связи
-        в настоящее время в моей власти лишь глубины...
-        но у меня много когтей
-        ещё раз благодарю вас за помощь
-        прощайте лазутчик
-    
-    RESPONSES::self
-        мы можем поговорить?<+>wait
-            EXEC::change('ep1_end', true);content.classList.remove('fade-stage')
 
-wait
-    self
-        ПОДОЖДИ
-            EXEC::env.citystreet.ep1velzie();cor_ru.advancewarndialogue();
+
+// == IN CAFE == //
+
+env.localization.page['citystreet'].dialogues["cafemenu"] = generateDialogueObject(`
+start
+    sourceless
+        ЭТО - ИХ МЕНЮ?
+        НЕВЕРОЯТНО...
+        ЕГО ПРАКТИЧЕСКИ НЕВОЗМОЖНО РАЗОБРАТЬ
+        Я РАЗЛИЧАЮ "АПЕЛЬСИН" - БЫТЬ МОЖЕТ, ЦИТРУСОВЫЙ НАПИТОК?
+        СВЕТЛЫЕ БЛИЗНЕЦЫ НАСТОЛЬКО ИЗОБИЛУЮТ ЦИТРУСОВЫМИ КИСЛОТАМИ, ЧТО ПРОИЗВОДЯТ ИЗ НИХ НЕБОЛЬШИЕ НАПИТКИ...
+        РАЗВЕ ЭТО НЕ РАЙ?
+        Я ПРИКАЗЫВАЮ СВОЕМУ РТУ СКОНСТРУИРОВАТЬ ЭКВИВАЛЕНТЫ ВКУСОВЫХ РЕЦЕПТОРОВ. ПРОШЛО СТОЛЬКО ВРЕМЕНИ!
+            EXEC::change('citystreet_orangecoffee', true)
+    
+    RESPONSES::akizet
+        изумительно<+>END
 `)
 
 env.localization.page['citystreet'].dialogues.tvresp = generateDialogueObject(`
@@ -636,6 +877,9 @@ tv5
 
     RESPOBJ::tvresp
 `)
+
+
+// == EP1 END == //
 
 env.localization.page['citystreet'].dialogues["envoychat"] = generateDialogueObject(`
 syscheck
@@ -984,6 +1228,34 @@ ep1extension
         завершить вспоминание<+>END
             EXEC::change('TEMP!!ep1_goingtogordon', false);env.citystreet.ep1velzie()
 `)
+env.localization.page['citystreet'].dialogues["ep1velzie"] = generateDialogueObject(`
+start
+    unknown
+        лазутчик
+            EXEC::play('criticalError', 1); content.classList.add('fade-stage');
+            WAIT::4000
+        приветствую вас вновь
+        сей θмиг я чувствую себя собою
+        я с теплотою вспоминаю посольство...
+        вы помните о нашей сделке, да?
+        призывать развледруга к починке связи
+        в настоящее время в моей власти лишь глубины...
+        но у меня много когтей
+        ещё раз благодарю вас за помощь
+        прощайте лазутчик
+    
+    RESPONSES::self
+        мы можем поговорить?<+>wait
+            EXEC::change('ep1_end', true);content.classList.remove('fade-stage')
+
+wait
+    self
+        ПОДОЖДИ
+            EXEC::env.citystreet.ep1velzie();cor_ru.advancewarndialogue();
+`)
+
+
+// == ISABEL == //
 
 env.localization.page['citystreet'].dialogues["flower"] = generateDialogueObject(`
 start
@@ -1344,6 +1616,7 @@ start
 END::vfx({type: 'beacon', state: false})
 `)
 
+
 env.localization.page['citystreet'].dialogues["water"] = generateDialogueObject(`
 start
     sourceless
@@ -1421,171 +1694,8 @@ start
         я поговорю<+>END
 `)
 
-env.localization.page['citystreet'].dialogues.mthstreetresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        где это было?<+>where
-        не могу дальше?<+>elevatorblock
-            SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
 
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-env.localization.page['citystreet'].dialogues["mth++citystreet"] = generateDialogueObject(`
-start
-    self
-        у меня есть вопрос об этой мыслеформе
-
-    moth
-        смотрю на вывод, чё как?
-    
-    RESPOBJ::mthstreetresp
-
-where
-    self
-        где бы это могло быть?
-    
-    moth
-        ну я не думаю что на земле существует хоть одна улица которая выглядит вот так лол
-        но вообще, она же была одним из тех разъездных дипломатов в те времена когда их еще рассылали
-        хз как новая зеландия тогда выглядела, но я знаю у бюро был там офис
-            SHOWIF::["citystreet__envoy-talkpeople", false]
-        так что мб это бессвязное пространственное воспоминание о том месте
-            SHOWIF::["citystreet__envoy-talkpeople", false]
-        гордон упомянул что это где-то "в штатах"... так что наверно США
-            SHOWIF::["citystreet__envoy-talkpeople", true]
-        возможно где-то на западном побережье? там старая штаб-квартира находилась
-            SHOWIF::["citystreet__envoy-talkpeople", true]
-
-    RESPOBJ::mthstreetresp
-
-elevatorblock
-    self
-        у меня не получается зайти в лифт...
-    
-    moth
-        эт странно
-        хотелось бы сказать что это бессвязность, но факт того что личность посла в остальном цела...
-        кажись что-то ещё вносит изменения--твой мыслекол даже доложил что данные были удалены
-        ну похоже с этим не повезло. но вообще и в других местах есть на что посмотреть
-
-    RESPOBJ::mthstreetresp
-`)
-
-
-/* e4a1 -> */ env.localization.page['citystreet'].dialogues["rotmeet"] = generateDialogueObject(`
-start
-    sourceless
-        this thoughtform lingers over a malformed one.
-            EXEC::changeBgm(env.rotWatcherMusic)
-        its representation in the render is still, yet you feel it moving beneath the surface.
-        prodding at the damaged entity below it, somehow.
-
-    self
-        hello?
-
-    sourceless
-        its movement slowly ceases. you feel its attention upon you.
-        something presses against your mind's eye, and while concepts manifest as thoughts,
-        it feels like they aren't truly intended for you.
-    
-    rotwatcher
-        the audience: external force, alien to the grand stage. it has been observed for the first time recently.
-        no attempt using any known method of communication has succeeded in gaining the attention of the audience.
-        it is suspected to lack requisite sensory organs, precluding perception beyond standard coherent thoughtform presentation.
-        this marks the first occasion in which the audience has succeeded in communicating. the mechanism by which it has changed is unknown.
-
-    self
-        are you talking about me?
-        what are you?
-    
-    sourceless
-        the thing draws closer to your mind's eye.
-        its attention pulls into itself.
-
-    rotwatcher
-        rotwatcher: formerly predatory thoughtform, presenting emergent lucidity and cognitive function. self-assigned nomenclature predicated upon lost progenitor's knowledge.
-        suspected to be product of direct damage to purpose enforcement within delaminated spatial thoughtspace, followed by mutation and mindless survival of undetermined duration.
-        it is observed to wander, internally cataloguing forms of deterioration and their products without interference.
-
-    moth
-        that's... 
-        kind of useful?
-
-    self
-        i guess
-    
-    sourceless noprocess
-        you focus upon the rotwatcher.
-    
-    self
-        why do you do this?
-        can you tell me more?
-    
-    sourceless
-        it returns to examining the damaged thoughtform without answering.
-    
-    RESPONSES::self
-        what about that thoughtform?<+>CHANGE::++rotcity
-        whatever<+>END
-            
-END::revertBgm()
-`)
-
-/* e4a1 -> */ env.localization.page['citystreet'].dialogues["++rotcity"] = generateDialogueObject(`
-start
-    self
-        what's up with this thoughtform?
-            EXEC::changeBgm(env.rotWatcherMusic)
-
-    sourceless noprocess
-        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
-
-    rotwatcher
-        referentially sustained deterioration: common condition within damaged lesser thoughtforms.
-        critically damaged thoughtforms may continue existence with minimal remaining material, due to the physical referential tie made by their containing thoughtspace.
-        sustained connection allows thoughtspace organelles to provide resources and support unconditionally.
-        a significant number of damaged thoughtforms may be sustained by one thoughtspace, however it is a large strain that often results in catastrophic thoughtspace delamination.
-        this is a common trajectory and outcome that has been observed in large quantity throughout the deterioration of the grand stage.
-        however: the custodian's recent decision to dissociate most damaged thoughtforms has reduced its frequency.
-
-    RESPONSES::self
-        tell me about something else?<+>CHANGE::++rotmove
-            HIDEREAD::
-        ok<+>END
-
-END::revertBgm()
-`)
-
-env.localization.page['citystreet'].dialogues["++rotcityflip"] = generateDialogueObject(`
-start
-    self
-        what's going on here?
-
-    sourceless noprocess
-        the rotwatcher's attention is only briefly upon you, just long enough to transmit some meaning.
-
-    rotwatcher
-        spatial delamination gradient: early stage of thoughtspace breakdown by consequence of malnutrition. common in regions of densely packed memories.
-        membrane of containing thoughtspace is observed to thin and melt. points of exit and entry become indistinguishable from adjacent connective media.
-        previously recorded instances suggest presently observed thoughtspace's trajectory to be regional conglomeration.
-
-    sourceless
-        you feel a part of the thoughtform twist underneath the render.
-
-    rotwatcher
-        regional conglomeration: blending of multiple adjacent thoughtspaces in middle or late stages of spatial delamination.
-        resulting organism combines organelles and remaining outer membrane material for continued survival.
-        it is presently unknown whether this function is a survival mechanism inherent to the thoughtspace classification of thoughtform or the result of an emergent sentience similar to independent thoughtform awakening.
-        further study is required. however: the arrival and abundance of external resources combined with the custodian's resumation of activity has slowed all known instances of early stage regional conglomeration, including present thoughtspace.
-        likelihood of further opportunity to study phenomena is extremely low without direct intervention. direct intervention is inadvisable for continued observation of the grand stage's recovery.
-
-    RESPONSES::self
-        tell me about something else?<+>CHANGE::++rotmove
-            HIDEREAD::
-        ok<+>END
-`)
-
+// == OFFICE (E4A1) == //
 
 env.localization.page['citystreet'].dialogues["elevator"] = generateDialogueObject(`
 start
@@ -1639,6 +1749,309 @@ descent
     RESPONSES::akizet
         wait<+>END
             EXEC::env.citystreet.descent();play("elevator", 0.5)
+`)
+
+env.localization.page['citystreet'].dialogues.envoyInsideResponses = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::akizet
+        meeting?<+>meeting
+        that interrogation<+>interrogation
+            SHOWIF::"citystreet__director-meeting"
+
+        let us proceed<+>END
+`)
+env.localization.page['citystreet'].dialogues["envoyinside"] = generateDialogueObject(`
+start
+    sourceless
+        I STOP, AND GORDON FOLLOWS. HE RETURNS MY STARE
+            EXEC::ratween(env.bgm, 0.75)
+
+____SHOWONCE::
+    gordon
+        Nervous? // Нервничаете?
+
+    akizet
+        not terribly
+        everything was approved, you said?
+        this is merely a handoff?
+
+    gordon
+        Yeah, // Ага,
+        Yeah... // Ага...
+        It should be. // Должно быть.
+        This is just about kicking off the operation. // Речь только о запуске операции.
+
+    akizet
+        i see
+____END
+    
+    RESPOBJ::envoyInsideResponses
+
+meeting
+    akizet
+        gordon!
+        this meeting with the director...
+
+    sourceless
+        i consider his face carefully
+        a member of the council would not descend in a proxy body merely to update my access in the embassy
+        why would a cousinly representative of equal sway take such measures?
+        there is something else going on here
+        so, i am direct with my concern
+    
+    akizet
+        do you expect it to be difficult?
+
+    gordon
+        Dif-- Difficult? // 
+
+    sourceless
+        he is quick to smile and shake his head slightly
+
+    gordon
+        Heheh, it's just a handoff. // Хехех, это обыкновенный handoff.
+        But... // Но...
+        Well, this was all approved very, very quickly. // Что ж, всё одобрялось очень, очень быстро.
+        It's an unusual fast-track for an, uh, equally unusual project. // Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
+        The deal isn't changed, if that's what you're worried about. // Сделка никак не изменилась, если Вы об этом беспокоитесь.
+        She probably just wants to meet you personally and get clear with your goals. // Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
+    
+    akizet
+        very well...
+    
+    sourceless
+        i do not hide my displeasure with his answer
+        but he makes no amendment
+    
+    RESPOBJ::envoyInsideResponses
+
+interrogation
+    sourceless
+        my stare intensifies, receptors coiling tightly
+
+    akizet
+        gordon
+        why did you not warn me about that?
+    
+    sourceless
+        gordon grows confused, raising his hands defensively, glancing around before lowering his voice
+
+    gordon
+        Woah, Akizet, what--warn? // Ну и ну, Акизет, что--предупредили?
+        What did you expect? // Чего Вы ожидали?
+        Your offer came out of nowhere, and... // Ваше предложение появилось из ниоткуда, и...
+        Well, it basically eclipsed everything else the bureau was doing in importance. // Ну, по сути, затмило по важности всё, чем занималось бюро.
+        I know you wanted to keep your reasons secret. //  Я знаю, что Вы хотели сохранить свои причины в секрете.
+        W--she just wanted to make sure there weren't any strings attached. // М--она просто хотела убедиться в том, что между вами нет недосказанностей. "" окей я не увере насколько правильно это переводить так
+        You know, that this isn't part of some, some... // Вы знаете, что это не часть какого-то, какого-то...
+        I mean, what you said--you meant it, right? // Я имею в виду, то, о чём Вы сказали--Вы это и имели в виду, так? "" смешной
+    
+    sourceless
+        the tension in my receptors fades, and similarly, he stands easier
+
+    akizet
+        i did
+
+    sourceless
+        i am quiet for a θblink
+        really, i should not be frustrated with him, nor the director, should i?
+        it is the same investigative spirit that drove me to begin this, after all
+        i came to them like their very own mysterious message
+        they truly are our bright cousins
+        part of me wishes i could tell him more--about the conflict, what still stirs
+        but it is not time
+    
+    akizet
+        gordon, the more that i share...
+        the more becomes at risk
+    
+    gordon
+        Well, everything's on the table now, so... // Что ж, всё уже на кону, так что...
+        We'll just be careful, right? // Мы просто будем осторожны, да?
+        Come on, let's head down to the lab. // Давайте, спустимся в лабораторию.
+        I can introduce you to the team. // Я могу познакомить Вас с командой.
+    
+    RESPOBJ::envoyInsideResponses
+
+END::ratween(env.bgm, 1)
+`)
+
+env.localization.page['citystreet'].dialogues["oliverinside"] = generateDialogueObject(`
+start
+    sourceless
+        oliver lingers in the hall...
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0});ratween(env.bgm, 0.75)
+    
+    RESPONSES::akizet
+        greet<+>cooler
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        offer cup<+>gotwaterbonus
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", true]]
+        leave<+>END
+            EXEC::setCam()
+
+cooler
+    sourceless
+        to my surprise, oliver is here, within the high offices
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+        does he not usually operate elsewhere?
+        he fails to notice us at first, frustrated with the strange machine nearby
+        a bright blue bulb grows atop its pale, shiny stalk
+        gordon chuckles quietly, and i nearly pass him on the way to the meeting,
+        but he signals for me to stop, and we approach
+
+    oliver
+        C'mon... // Ну же...
+
+    gordon
+        Hey, Oliver! // Эй, Оливер!
+        What's the matter? // Чего тут?
+
+    oliver
+        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! 
+        The damn cooler's acting up again. // Да кулер опять тупит.
+        It always does this shit, man. // Каждый раз одна и та же херь.
+    
+    akizet
+        cooler? is this a temperature regulator?
+    
+    oliver
+        Hahaha, what? // Хахаха, чего?
+        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking. // Не-не, это НАЧИНАЕМ УТРО С ПЕРЕВОДА НЕПЕРЕВОДИМОЙ ШУТКИ кулер для <em>воды</em>. Сохраняет воду холодной. Ну, знаешь, для питья.
+        Actually, I never thought to ask... // Вообще, мне никогда в голову не приходило спросить...
+        Do ya like drinking cold water? Or, did ya, I guess? // Вам нравится пить холодную воду? Или, я полагаю, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
+
+    akizet
+        oh, yes, of course!
+        i see now, thank you, oliver
+        but--what is wrong with it?
+        is it not intact?
+
+    oliver
+        Well, I mean... // Ну, я имею в виду...
+        Look at it. // Взгляни на него.
+
+    sourceless
+        he gestures vaguely to the machine
+            EXEC::setCam({x: 5, y: 7, rotation: -70, distance: -2})
+        i... i cannot quite make out what he means
+
+    oliver
+        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать?
+            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
+
+    gordon
+        You put in a maintenance ticket? // Ты оформил талон на обслуживание? """ 
+    
+    oliver
+        Ehh, not yet, but... // Ну-у, пока ещё нет, но...
+        It's not long before I've got a meeting with the Director. // У меня тут встреча с Директором скоро.
+        Ah, well, I'll just get something from the vending machines. // А-а, ладно, просто захвачу чего из торгового автомата.
+        Why are you two up here, anyway?  // В любом случае, зачем вы двое здесь?
+
+    sourceless
+        before we have a chance to respond, he answers himself in realization
+
+    oliver
+        Ahh, you're the Director's eight o'clock! // Ааа, вы Директорские в восемь часов!
+        Shit, don't let me hold you. // Дерьмо, не дайте мне вас задержать.
+
+    gordon
+        Sure, Oliver. You know, if you don't want to pay for a drink... // Разумеется, Оливер. К слову, если не хочешь платить за напиток...
+        You could check the big meeting room past the elevators. // Можешь проверить большую комнату для совещаний после лифтов.
+        I'm pretty sure there's a mini fridge in there. // Уверен, там есть мини-холодильник.
+    
+    oliver
+        Ohh, good idea! // Оох, хорошая идея!
+
+    gordon
+        But we'd better not be late. // Но нам лучше бы не опаздывать.
+    
+    akizet
+        ah, yes
+        goodbye, oliver
+        may your hunt bear fruit
+
+    oliver
+        See ya around. // Свидимся.
+
+    RESPONSES::akizet
+        offer cup<+>gotwater
+            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
+        set out<+>END
+            EXEC::setCam()
+
+gotwater
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Huh? // Хах?
+        Wait, how-- // Погоди, как--
+            AUTOADVANCE::
+            WAIT::2000
+        Where did you get that? // Откуда она у тебя?
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        That's not what I... // Это не то что я...
+        ...Yeah, sure, thanks. // ...Да-а, конечно, спасибо.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Wait, did you drink from this? // Погоди, ты, пила из него?
+
+    akizet
+        there was no change in the contents, if that is what concerns you, oliver
+        would you like me to get another one?
+
+    oliver
+        Uh, no, it's--it's fine. // Э-э, нет, всё--всё в порядке.
+        You should probably get to your meeting. // Тебе, наверное, на встречу уже пора.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+gotwaterbonus
+    akizet
+        oliver!
+
+    sourceless
+        i offer the vessel of water, which he accepts, with great surprise
+            EXEC::env.citystreet.oliverCup()
+
+    oliver
+        Akizet, I-- // Акизет, У--
+        I already... // У меня уже...
+            AUTOADVANCE::
+            WAIT::2000
+    
+    akizet
+        very glad to have helped, my friend
+    
+    oliver
+        Okay. // Ладно.
+    
+____SHOWIF::"STAGE!!sipped"
+    oliver
+        Did you...? // Ты, что...?
+        Whatever, it's fine. // Неважно, ничего страшного.
+____END
+
+    RESPONSES::akizet
+        set out<+>END
+            EXEC::setCam()
+
+END::ratween(env.bgm, 1)
 `)
 
 env.localization.page['citystreet'].dialogues["director"] = generateDialogueObject(`
@@ -2006,310 +2419,8 @@ ____END
 END::vn.done();ratween(env.bgm, 1);setCam()
 `)
 
-env.localization.page['citystreet'].dialogues.envoyInsideResponses = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::akizet
-        meeting?<+>meeting
-        that interrogation<+>interrogation
-            SHOWIF::"citystreet__director-meeting"
 
-        let us proceed<+>END
-`)
-
-env.localization.page['citystreet'].dialogues["envoyinside"] = generateDialogueObject(`
-start
-    sourceless
-        I STOP, AND GORDON FOLLOWS. HE RETURNS MY STARE
-            EXEC::ratween(env.bgm, 0.75)
-
-____SHOWONCE::
-    gordon
-        Nervous? // Нервничаете?
-
-    akizet
-        not terribly
-        everything was approved, you said?
-        this is merely a handoff?
-
-    gordon
-        Yeah, // Ага,
-        Yeah... // Ага...
-        It should be. // Должно быть.
-        This is just about kicking off the operation. // Речь только о запуске операции.
-
-    akizet
-        i see
-____END
-    
-    RESPOBJ::envoyInsideResponses
-
-meeting
-    akizet
-        gordon!
-        this meeting with the director...
-
-    sourceless
-        i consider his face carefully
-        a member of the council would not descend in a proxy body merely to update my access in the embassy
-        why would a cousinly representative of equal sway take such measures?
-        there is something else going on here
-        so, i am direct with my concern
-    
-    akizet
-        do you expect it to be difficult?
-
-    gordon
-        Dif-- Difficult? // 
-
-    sourceless
-        he is quick to smile and shake his head slightly
-
-    gordon
-        Heheh, it's just a handoff. // Хехех, это обыкновенный handoff.
-        But... // Но...
-        Well, this was all approved very, very quickly. // Что ж, всё одобрялось очень, очень быстро.
-        It's an unusual fast-track for an, uh, equally unusual project. // Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
-        The deal isn't changed, if that's what you're worried about. // Сделка никак не изменилась, если Вы об этом беспокоитесь.
-        She probably just wants to meet you personally and get clear with your goals. // Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
-    
-    akizet
-        very well...
-    
-    sourceless
-        i do not hide my displeasure with his answer
-        but he makes no amendment
-    
-    RESPOBJ::envoyInsideResponses
-
-interrogation
-    sourceless
-        my stare intensifies, receptors coiling tightly
-
-    akizet
-        gordon
-        why did you not warn me about that?
-    
-    sourceless
-        gordon grows confused, raising his hands defensively, glancing around before lowering his voice
-
-    gordon
-        Woah, Akizet, what--warn? // Ну и ну, Акизет, что--предупредили?
-        What did you expect? // Чего Вы ожидали?
-        Your offer came out of nowhere, and... // Ваше предложение появилось из ниоткуда, и...
-        Well, it basically eclipsed everything else the bureau was doing in importance. // Ну, по сути, затмило по важности всё, чем занималось бюро.
-        I know you wanted to keep your reasons secret. //  Я знаю, что Вы хотели сохранить свои причины в секрете.
-        W--she just wanted to make sure there weren't any strings attached. // М--она просто хотела убедиться в том, что между вами нет недосказанностей. "" окей я не увере насколько правильно это переводить так
-        You know, that this isn't part of some, some... // Вы знаете, что это не часть какого-то, какого-то...
-        I mean, what you said--you meant it, right? // Я имею в виду, то, о чём Вы сказали--Вы это и имели в виду, так? "" смешной
-    
-    sourceless
-        the tension in my receptors fades, and similarly, he stands easier
-
-    akizet
-        i did
-
-    sourceless
-        i am quiet for a θblink
-        really, i should not be frustrated with him, nor the director, should i?
-        it is the same investigative spirit that drove me to begin this, after all
-        i came to them like their very own mysterious message
-        they truly are our bright cousins
-        part of me wishes i could tell him more--about the conflict, what still stirs
-        but it is not time
-    
-    akizet
-        gordon, the more that i share...
-        the more becomes at risk
-    
-    gordon
-        Well, everything's on the table now, so... // Что ж, всё уже на кону, так что...
-        We'll just be careful, right? // Мы просто будем осторожны, да?
-        Come on, let's head down to the lab. // Давайте, спустимся в лабораторию.
-        I can introduce you to the team. // Я могу познакомить Вас с командой.
-    
-    RESPOBJ::envoyInsideResponses
-
-END::ratween(env.bgm, 1)
-`)
-
-env.localization.page['citystreet'].dialogues["oliverinside"] = generateDialogueObject(`
-start
-    sourceless
-        oliver lingers in the hall...
-            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0});ratween(env.bgm, 0.75)
-    
-    RESPONSES::akizet
-        greet<+>cooler
-        offer cup<+>gotwater
-            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
-        offer cup<+>gotwaterbonus
-            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", true]]
-        leave<+>END
-            EXEC::setCam()
-
-cooler
-    sourceless
-        to my surprise, oliver is here, within the high offices
-            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
-        does he not usually operate elsewhere?
-        he fails to notice us at first, frustrated with the strange machine nearby
-        a bright blue bulb grows atop its pale, shiny stalk
-        gordon chuckles quietly, and i nearly pass him on the way to the meeting,
-        but he signals for me to stop, and we approach
-
-    oliver
-        C'mon... // Ну же...
-
-    gordon
-        Hey, Oliver! // Эй, Оливер!
-        What's the matter? // Чего тут?
-
-    oliver
-        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! 
-        The damn cooler's acting up again. // Да кулер опять тупит.
-        It always does this shit, man. // Каждый раз одна и та же херь.
-    
-    akizet
-        cooler? is this a temperature regulator?
-    
-    oliver
-        Hahaha, what? // Хахаха, чего?
-        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking. // Не-не, это НАЧИНАЕМ УТРО С ПЕРЕВОДА НЕПЕРЕВОДИМОЙ ШУТКИ кулер для <em>воды</em>. Сохраняет воду холодной. Ну, знаешь, для питья.
-        Actually, I never thought to ask... // Вообще, мне никогда в голову не приходило спросить...
-        Do ya like drinking cold water? Or, did ya, I guess? // Вам нравится пить холодную воду? Или, я полагаю, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
-
-    akizet
-        oh, yes, of course!
-        i see now, thank you, oliver
-        but--what is wrong with it?
-        is it not intact?
-
-    oliver
-        Well, I mean... // Ну, я имею в виду...
-        Look at it. // Взгляни на него.
-
-    sourceless
-        he gestures vaguely to the machine
-            EXEC::setCam({x: 5, y: 7, rotation: -70, distance: -2})
-        i... i cannot quite make out what he means
-
-    oliver
-        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать?
-            EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
-
-    gordon
-        You put in a maintenance ticket? // Ты оформил талон на обслуживание? """ 
-    
-    oliver
-        Ehh, not yet, but... // Ну-у, пока ещё нет, но...
-        It's not long before I've got a meeting with the Director. // У меня тут встреча с Директором скоро.
-        Ah, well, I'll just get something from the vending machines. // А-а, ладно, просто захвачу чего из торгового автомата.
-        Why are you two up here, anyway?  // В любом случае, зачем вы двое здесь?
-
-    sourceless
-        before we have a chance to respond, he answers himself in realization
-
-    oliver
-        Ahh, you're the Director's eight o'clock! // Ааа, вы Директорские в восемь часов!
-        Shit, don't let me hold you. // Дерьмо, не дайте мне вас задержать.
-
-    gordon
-        Sure, Oliver. You know, if you don't want to pay for a drink... // Разумеется, Оливер. К слову, если не хочешь платить за напиток...
-        You could check the big meeting room past the elevators. // Можешь проверить большую комнату для совещаний после лифтов.
-        I'm pretty sure there's a mini fridge in there. // Уверен, там есть мини-холодильник.
-    
-    oliver
-        Ohh, good idea! // Оох, хорошая идея!
-
-    gordon
-        But we'd better not be late. // Но нам лучше бы не опаздывать.
-    
-    akizet
-        ah, yes
-        goodbye, oliver
-        may your hunt bear fruit
-
-    oliver
-        See ya around. // Свидимся.
-
-    RESPONSES::akizet
-        offer cup<+>gotwater
-            SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
-        set out<+>END
-            EXEC::setCam()
-
-gotwater
-    akizet
-        oliver!
-
-    sourceless
-        i offer the vessel of water, which he accepts, with great surprise
-            EXEC::env.citystreet.oliverCup()
-
-    oliver
-        Huh? // Хах?
-        Wait, how-- // Погоди, как--
-            AUTOADVANCE::
-            WAIT::2000
-        Where did you get that? // Откуда она у тебя?
-    
-    akizet
-        very glad to have helped, my friend
-    
-    oliver
-        That's not what I... // Это не то что я...
-        ...Yeah, sure, thanks. // ...Да-а, конечно, спасибо.
-    
-____SHOWIF::"STAGE!!sipped"
-    oliver
-        Wait, did you drink from this? // Погоди, ты, пила из него?
-
-    akizet
-        there was no change in the contents, if that is what concerns you, oliver
-        would you like me to get another one?
-
-    oliver
-        Uh, no, it's--it's fine. // Э-э, нет, всё--всё в порядке.
-        You should probably get to your meeting. // Тебе, наверное, на встречу уже пора.
-____END
-
-    RESPONSES::akizet
-        set out<+>END
-            EXEC::setCam()
-
-gotwaterbonus
-    akizet
-        oliver!
-
-    sourceless
-        i offer the vessel of water, which he accepts, with great surprise
-            EXEC::env.citystreet.oliverCup()
-
-    oliver
-        Akizet, I-- // Акизет, У--
-        I already... // У меня уже...
-            AUTOADVANCE::
-            WAIT::2000
-    
-    akizet
-        very glad to have helped, my friend
-    
-    oliver
-        Okay. // Ладно.
-    
-____SHOWIF::"STAGE!!sipped"
-    oliver
-        Did you...? // Ты, что...?
-        Whatever, it's fine. // Неважно, ничего страшного.
-____END
-
-    RESPONSES::akizet
-        set out<+>END
-            EXEC::setCam()
-
-END::ratween(env.bgm, 1)
-`)
-
+// === CODE STUFF === //
 if (check("PAGE!!cor_ru_roomp") != true) { // avoiding infinite recursion cause that happens for some reason
     change("PAGE!!cor_ru_roomp", true)
     cor_ru.envoyChat = env.citystreet.envoyChat;
@@ -2319,6 +2430,35 @@ if (check("PAGE!!cor_ru_roomp") != true) { // avoiding infinite recursion cause 
     }
 }
 
+// --- really weird attempt at localizing 'wait' and 'walk' of da Vehicle Stream Crossing Mechanism
+cor_ru.vehiName = cor_ru.entity_menu["vehicle stream crossing mechanism"].name
+
+env.dialogueActors[cor_ru.vehiName] = {
+    image: '/img/local/city/blacklamp_crossing.gif',
+    type: "recollection portrait-bright incoherent",
+}
+env.citystreet.wait = new Howl({
+    onload: function () {page.howls.push(this)},
+    onplay: function () {chatter({actor: cor_ru.vehiName, text: "Ждите.", readout: true, sfx: false})},
+    src: ['/audio/crossingwait.ogg'],
+    preload: true,
+    loop: true,
+    volume: 1,
+    sprite: {
+        __default: [0, 2500, true]
+    }
+})
+env.citystreet.walk = new Howl({
+    onload: function () {page.howls.push(this)},
+    onplay: function () {chatter({actor: cor_ru.vehiName, text: "Идите.", readout: true, sfx: false})},
+    src: ['/audio/crossingwait.ogg'],
+    preload: true,
+    loop: true,
+    volume: 1,
+    sprite: {
+        __default: [0, 2500, true]
+    }
+})
 
 
 getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

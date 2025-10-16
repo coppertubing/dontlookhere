@@ -159,8 +159,112 @@ env.localization.page['parasite'] = {dialogues: {},
     },
 }
 
+// === DIALOGUES === //
 
-// === DIALOGUE === //
+
+// == MOTH == //
+
+env.localization.page['parasite'].dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        игровая доска?<+>what
+        some look like the call team<+>team
+            SHOWIF::[["beneath_team", true], ["embassy_d1_complete", true]]
+        structuring device code?<+>board
+            SHOWIF::[["beneath_team", true], ["embassy__d3_tutorial", true]]
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page['parasite'].dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этом месте
+
+    moth
+        ага?
+    
+    RESPOBJ::mthresp
+
+what
+    self
+        ты что-то видишь?
+        это выглядит как большая игровая доска
+        а все фигурки живые
+        не думаю что они знают как играть
+    
+    moth
+        лол?
+        ну я как я погляжу по идее это должно быть эмпирическим мостом
+        и ещё оно вроде как нетронуто, хотя мыслепространство не закрыто
+        maybe this is something funfriend is working on fixing, // быть может это с этим сейчас возится развледруг
+        and it just got started by putting all the pieces back // и он ток начал сгребать все фишки назад
+    
+    RESPOBJ::mthresp
+
+team
+    self
+        some of the pieces on this board thing look like the call team // некоторые фишки на этой штуковине типа доски выглядят как члены ???????команды зова 
+    
+    moth
+        yeah, i picked up you trying to talk to one // ага, мне удалось выудить твою попытку поговорить с одной
+        definitely different from the others somehow... // явно как-то отличается от остальных...
+        maybe some kind of memory bleed? // может какая утечка памяти?
+        the readout is still messed up, so idk for sure // показания до сих пор херовые, так что я в общем-то хз
+    
+    RESPOBJ::mthresp
+
+board
+    self
+        you mentioned that board was framing device code // ты говоришь что доска была кодом обрамляющего устройства
+        is that going to be a problem? // это не доставит нам проблем?
+        
+    moth
+        prooobably not? // навееерное нет?
+        i don't know how funfriend mapped the device to the embassy // чёрт знает как развледруг наложил устройство на посольство
+        because it's literally never been done before with obesk stuff lol // ибо оно до этого вообще никогда не применялось на обесковых штуках лол
+        everything is connected in these cysts, so... // в цистах всё связано между собой, так что...
+        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать подбирать куски то тут то там
+        at least they're having fun with it // главное что им по фану
+    
+    RESPOBJ::mthresp
+
+`)
+
+
+// == ROTWATCHER == // 
+
+env.localization.page['parasite'].dialogues["++rotparasite"] = generateDialogueObject(`
+start
+    self
+        what do you think about this place?
+            EXEC::changeBgm(env.rotWatcherMusic)
+
+    sourceless noprocess
+        the rotwatcher's attention stays upon you, silent, for a long moment.
+        it shifts away, to the various thoughtforms nearby.
+
+    rotwatcher
+        the thoughtspace at large is observed to be within a regional conglomeration of delaminated thoughtspaces, though its placement between a number of similarly deteriorated spaces allows its organelles to remain intact and largely untargeted by resource-seeking externally originated thoughtforms.
+        local thoughtforms display heretofore unseen symptoms of an unknown phenomena in which internal meaning and purpose assignment is disrupted or otherwise confused through the introduction of conflicting information and memory.
+        the present rotwatcher may estimate that a form of small-scale emergent conglomeration may have occurred in which the thoughtforms of a separate origin were broken down and utilized as resources for continued survival.
+        alternate possible cause #1: collective neural processor of present thoughtspace merged with a similar organelle of external origin during spatial delamination, combining resources for continued survival, alongside introducing aforementioned conflicting memory.
+        alternate possible cause #2: large amount of majorly deallocated or dissociated "embassy" related thoughtforms and thoughtspaces exist within the dissociative pool; adjacency to its horizon may have presented easily accessed resources for local thoughtforms during organelle starvation, allowing for subsumation of relevant information.
+        
+    sourceless
+        its matter-of-fact explanations carry a noticeable feeling of uncertainty and fascination.
+
+    rotwatcher
+        no conclusions may be made in confidence about the phenomena on display within the present thoughtspace.
+        
+    RESPONSES::self
+        tell me about something else?<+>CHANGE::++rotmove
+            HIDEREAD::
+        ok<+>END
+            
+END::revertBgm()
+`)
+
+
 
 env.localization.page['parasite'].dialogues.pieceresp = generateDialogueObject(`
 RESPOBJ::
@@ -171,7 +275,6 @@ RESPOBJ::
         информация?<+>info
         ок пока<+>END
 `)
-
 env.localization.page['parasite'].dialogues[`players`] = generateDialogueObject(`
 loop
     RESPOBJ::pieceresp
@@ -277,105 +380,6 @@ look
         эээ<+>loop
             FAKEEND::(назад)
 `)
-
-env.localization.page['parasite'].dialogues.mthresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        игровая доска?<+>what
-        some look like the call team<+>team
-            SHOWIF::[["beneath_team", true], ["embassy_d1_complete", true]]
-        structuring device code?<+>board
-            SHOWIF::[["beneath_team", true], ["embassy__d3_tutorial", true]]
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-
-env.localization.page['parasite'].dialogues[`mth++${page.dialoguePrefix}`] = generateDialogueObject(`
-start
-    self
-        у меня есть вопрос об этом месте
-
-    moth
-        ага?
-    
-    RESPOBJ::mthresp
-
-what
-    self
-        ты что-то видишь?
-        это выглядит как большая игровая доска
-        а все фигурки живые
-        не думаю что они знают как играть
-    
-    moth
-        лол?
-        ну я как я погляжу по идее это должно быть эмпирическим мостом
-        и ещё оно вроде как нетронуто, хотя мыслепространство не закрыто
-        maybe this is something funfriend is working on fixing, // быть может это с этим сейчас возится развледруг
-        and it just got started by putting all the pieces back // и он ток начал сгребать все фишки назад
-    
-    RESPOBJ::mthresp
-
-team
-    self
-        some of the pieces on this board thing look like the call team // некоторые фишки на этой штуковине типа доски выглядят как члены ???????команды зова 
-    
-    moth
-        yeah, i picked up you trying to talk to one // ага, мне удалось выудить твою попытку поговорить с одной
-        definitely different from the others somehow... // явно как-то отличается от остальных...
-        maybe some kind of memory bleed? // может какая утечка памяти?
-        the readout is still messed up, so idk for sure // показания до сих пор херовые, так что я в общем-то хз
-    
-    RESPOBJ::mthresp
-
-board
-    self
-        you mentioned that board was framing device code // ты говоришь что доска была кодом обрамляющего устройства
-        is that going to be a problem? // это не доставит нам проблем?
-        
-    moth
-        prooobably not? // навееерное нет?
-        i don't know how funfriend mapped the device to the embassy // чёрт знает как развледруг наложил устройство на посольство
-        because it's literally never been done before with obesk stuff lol // ибо оно до этого вообще никогда не применялось на обесковых штуках лол
-        everything is connected in these cysts, so... // в цистах всё связано между собой, так что...
-        other parts were bound to start picking up pieces of it one way or another i guess // полагаю другие части должны были начать подбирать куски то тут то там
-        at least they're having fun with it // главное что им по фану
-    
-    RESPOBJ::mthresp
-
-`)
-
-env.localization.page['parasite'].dialogues["++rotparasite"] = generateDialogueObject(`
-start
-    self
-        what do you think about this place?
-            EXEC::changeBgm(env.rotWatcherMusic)
-
-    sourceless noprocess
-        the rotwatcher's attention stays upon you, silent, for a long moment.
-        it shifts away, to the various thoughtforms nearby.
-
-    rotwatcher
-        the thoughtspace at large is observed to be within a regional conglomeration of delaminated thoughtspaces, though its placement between a number of similarly deteriorated spaces allows its organelles to remain intact and largely untargeted by resource-seeking externally originated thoughtforms.
-        local thoughtforms display heretofore unseen symptoms of an unknown phenomena in which internal meaning and purpose assignment is disrupted or otherwise confused through the introduction of conflicting information and memory.
-        the present rotwatcher may estimate that a form of small-scale emergent conglomeration may have occurred in which the thoughtforms of a separate origin were broken down and utilized as resources for continued survival.
-        alternate possible cause #1: collective neural processor of present thoughtspace merged with a similar organelle of external origin during spatial delamination, combining resources for continued survival, alongside introducing aforementioned conflicting memory.
-        alternate possible cause #2: large amount of majorly deallocated or dissociated "embassy" related thoughtforms and thoughtspaces exist within the dissociative pool; adjacency to its horizon may have presented easily accessed resources for local thoughtforms during organelle starvation, allowing for subsumation of relevant information.
-        
-    sourceless
-        its matter-of-fact explanations carry a noticeable feeling of uncertainty and fascination.
-
-    rotwatcher
-        no conclusions may be made in confidence about the phenomena on display within the present thoughtspace.
-        
-    RESPONSES::self
-        tell me about something else?<+>CHANGE::++rotmove
-            HIDEREAD::
-        ok<+>END
-            
-END::revertBgm()
-`)
-
 
 
 getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

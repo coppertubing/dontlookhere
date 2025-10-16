@@ -324,14 +324,19 @@ env.localization.page['embassy'] = {dialogues: {},
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `обрушение`
 
-setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") {
+setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // --- beech adaptation
     cor_ru.processSpecificTranslation(document.querySelectorAll(".dayname"), "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()
     document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
 }}, 10)
 
+
 // === DIALOGUES === //
+
+
+// == MOTH == //
+
 env.localization.page['embassy'].dialogues.mthembresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -761,6 +766,9 @@ groundsmind
 
 `)
 
+
+// == MISC == //
+
 env.localization.page['embassy'].dialogues["quality"] = generateDialogueObject(` 
 start
     moth
@@ -938,6 +946,34 @@ research
 
 
 // == DISCOVERY == //
+
+env.localization.page['embassy'].dialogues["d1_start"] = generateDialogueObject(` 
+start
+    sourceless
+        моё сознание возобновляется
+        омолаживающая камера раскрывается, и извне струится свечение цистозного стекла посольства
+        сквозь далекое открытие серое я чувствую, что начался новый θвзор
+
+    RESPONSES::akizet
+        выйти из камеры<+>emerge
+            EXEC::content.classList.add('swapcam')
+    
+emerge
+    sourceless
+        я выкарабкиваюсь из камеры, куу-тело - освежённое
+        оно ощущается таким же, как сразу после моего вознесения
+        редкое, но чудесное ощущение - словно я могла бы извернуть его в любую форму
+        но меня ждёт работа...
+        близится сосредоточённое совещание моей инициативы по исследованию зова
+        и что за дивное событие - в этот раз в нашем распоряжении особенно необычное оборудование!
+        я должна собрать нашу команду, тогда мы сможем начать
+    
+    RESPONSES::akizet
+        за работу<+>END
+
+SKIP::content.classList.add('swapcam')
+`)
+
 env.localization.page['embassy'].dialogues["d1_akizet"] = generateDialogueObject(` 
 start
     sourceless
@@ -975,32 +1011,6 @@ interact
     
     RESPONSES::self
         чёрт<+>END
-`)
-env.localization.page['embassy'].dialogues["d1_start"] = generateDialogueObject(` 
-start
-    sourceless
-        моё сознание возобновляется
-        омолаживающая камера раскрывается, и извне струится свечение цистозного стекла посольства
-        сквозь далекое открытие серое я чувствую, что начался новый θвзор
-
-    RESPONSES::akizet
-        выйти из камеры<+>emerge
-            EXEC::content.classList.add('swapcam')
-    
-emerge
-    sourceless
-        я выкарабкиваюсь из камеры, куу-тело - освежённое
-        оно ощущается таким же, как сразу после моего вознесения
-        редкое, но чудесное ощущение - словно я могла бы извернуть его в любую форму
-        но меня ждёт работа...
-        близится сосредоточённое совещание моей инициативы по исследованию зова
-        и что за дивное событие - в этот раз в нашем распоряжении особенно необычное оборудование!
-        я должна собрать нашу команду, тогда мы сможем начать
-    
-    RESPONSES::akizet
-        за работу<+>END
-
-SKIP::content.classList.add('swapcam')
 `)
 
 env.localization.page['embassy'].dialogues["d1_tozik"] = generateDialogueObject(` 
@@ -1468,6 +1478,7 @@ focus
 
     RESPOBJ::d1_kazkibozkoresp
 `)
+
 env.localization.page['embassy'].dialogues["d1_kazki_research"] = generateDialogueObject(`
 start
     akizet
@@ -1482,6 +1493,7 @@ start
     RESPONSES::akizet
         мы скоро начнём<+>END
 `)
+
 env.localization.page['embassy'].dialogues["d1_bozko_research"] = generateDialogueObject(`
 start
     akizet
@@ -2058,6 +2070,31 @@ SKIP::content.classList.remove('cull-stage', 'showfocus');content.classList.remo
 
 
 // == SUSPISION == //
+
+
+env.localization.page['embassy'].dialogues["d2_start"] = generateDialogueObject(` 
+start
+    sourceless
+        Я ПРОБУЖДАЮСЬ ОТ НЕПОДВИЖНОСТИ СВОЕГО ОМОЛОЖЕНИЯ
+        сквозь далекое открытие серое я чувствую, что начался новый θвзор
+            EXEC::env.embassy.slowCam()
+
+        и пока я выкарабкиваюсь из камеры, я замечаю что-то новое...
+            EXEC::specialCam('cystfocus')
+
+        НЕЗНАКОМАЯ ЦИСТА, ЛЕЖАЩАЯ НА МОЁМ СТОЛЕ
+        ЭТО ТА, ЧТО Я ОДОЛЖИЛА КАВИКУ, ВОЗВРАЩЁННАЯ В МОЕЙ ДРЁМЕ?
+        МОЖЕТ, АРХИВ ДИЗАЙНА С РОДИНЫ, КОТОРЫЙ Я ДАЛА КАЗКИ...
+        ИЛИ ЛОЖНАЯ СРЕДА-ИГРА ОТ ГАКВУ?
+            SHOWIF::[["embassy__d1_gakvu-false"]]
+        СТОИТ ПРОВЕРИТЬ ЕЁ И УБЕДИТЬСЯ
+            EXEC::env.embassy.slowCam()
+
+    RESPONSES::akizet
+        любопытно<+>END
+            EXEC::specialCam(false);pauseSwapCam(false)
+`)
+
 env.localization.page['embassy'].dialogues["d2_akizet"] = generateDialogueObject(` 
 start
     sourceless
@@ -2100,28 +2137,6 @@ who
 
     RESPONSES::akizet
         меня ждёт работа<+>END
-`)
-env.localization.page['embassy'].dialogues["d2_start"] = generateDialogueObject(` 
-start
-    sourceless
-        Я ПРОБУЖДАЮСЬ ОТ НЕПОДВИЖНОСТИ СВОЕГО ОМОЛОЖЕНИЯ
-        сквозь далекое открытие серое я чувствую, что начался новый θвзор
-            EXEC::env.embassy.slowCam()
-
-        и пока я выкарабкиваюсь из камеры, я замечаю что-то новое...
-            EXEC::specialCam('cystfocus')
-
-        НЕЗНАКОМАЯ ЦИСТА, ЛЕЖАЩАЯ НА МОЁМ СТОЛЕ
-        ЭТО ТА, ЧТО Я ОДОЛЖИЛА КАВИКУ, ВОЗВРАЩЁННАЯ В МОЕЙ ДРЁМЕ?
-        МОЖЕТ, АРХИВ ДИЗАЙНА С РОДИНЫ, КОТОРЫЙ Я ДАЛА КАЗКИ...
-        ИЛИ ЛОЖНАЯ СРЕДА-ИГРА ОТ ГАКВУ?
-            SHOWIF::[["embassy__d1_gakvu-false"]]
-        СТОИТ ПРОВЕРИТЬ ЕЁ И УБЕДИТЬСЯ
-            EXEC::env.embassy.slowCam()
-
-    RESPONSES::akizet
-        любопытно<+>END
-            EXEC::specialCam(false);pauseSwapCam(false)
 `)
 
 env.localization.page['embassy'].dialogues["cyst"] = generateDialogueObject(` 
@@ -3401,6 +3416,7 @@ ____END
 
 // == COLLAPSE == //
 
+// = MISC = //
 env.localization.page['embassy'].dialogues["mothframe"] = generateDialogueObject(` 
 start
     sys
@@ -3543,7 +3559,7 @@ start
 END::if(page.newit) {env.embassy.newCollapseIteration(page.newit)}
 `)
 
-
+// = RECOLLECTION = //
 env.localization.page['embassy'].dialogues["d3_start"] = generateDialogueObject(`
 start
     sourceless
@@ -5112,7 +5128,7 @@ start
             EXEC::pauseSwapCam(true)
         WITH A WAVE OF MY HAND UNDERNEATH ITS MAGNETIC CONNECTOR CYST,
         THE GROUND-CONTAINER LIQUEFIES ITS COVER
-        ВНУТРИ Я НАХОЖУ ОДЕЖДУ ИЗ ЛОЖНОЙ ВЕЙЛЬК-КОЖИ.. (МОДНАЯ!)
+        ВНУТРИ Я НАХОЖУ ОДЕЖДУ ИЗ ЛОЖНОЙ ВЕЙЛЬКОВОЙ КОЖИ.. (МОДНАЯ!)
         КАКИЕ-ТО ИНСТРУМЕНТЫ ДЛЯ ОБСЛУЖИВАНИЯ...
         SOME OF THESE ARE TOO POORLY MARKED TO DISCERN,
         BUT I THINK THERE ARE MEMORY CYSTS IN HERE TOO...
@@ -6201,8 +6217,7 @@ ____END
             FAKEEND::(end recollection)
 `)
 
-
-
+// = EVIL MODE = //
 env.localization.page['embassy'].dialogues["d3_bstrdreveal"] = generateDialogueObject(`
 start
     sourceless

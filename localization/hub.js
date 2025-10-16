@@ -100,6 +100,125 @@ env.localization.page['hub'] = {dialogues: {},
 
 
 // === DIALOGUES === //
+    // see everystuff.js for firstvisit dialogue
+    
+
+// == MOTH == //
+
+env.localization.page["hub"].dialogues.mthlocalr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        о развледруге<+>funfriend
+            SHOWIF::[['hub__funfriend-fuelthanks']]
+        о вратах<+>gates
+            SHOWIF::[['visited_localorbit']]
+        это всё<+>CHANGE::++moth
+            FAKEEND::(назад)
+`) 
+env.localization.page["hub"].dialogues.mthlocalfunr = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        поведение<+>ffdemeanor
+            SHOWIF::['ep1_fed', false]
+        ситуация с топливом<+>fffuel
+            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
+        подпись<+>ffsignature
+            SHOWIF::[['hub__funfriend-signatureq']]
+        хватит о развледруге<+>loop
+            FAKEEND::(назад)
+`)
+env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
+    try {
+        if(flags.detectedEntities['..__OUR_DULL_VESSEL__..'].entities.container.scanned) {
+            return check == true
+        } else {
+            return check == false
+        }
+    } catch(e) {
+        return check == false
+    }
+}
+env.localization.page["hub"].dialogues["mth++hub"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос об этом мыслепространстве
+
+    moth
+        ага у меня тоже пара найдётся
+        но что у тебя на уме?
+    
+    RESPOBJ::mthlocalr
+    
+gates
+    self
+        что это за врата?
+    
+    moth
+        ну грубо говоря это просто соединительные мыслеформы, ничего особенного
+        но вот это уточнение про "врата" какое-то вычурное
+        наверно это несёт в себе какое-то культурное значение, они и свои межзвёздные червоточины называют "вратами" или чем-то таким
+        так что можно считать это обозначением того что они были нарочно созданы кем-то в качестве ярлыка
+        это имеет смысл раз эта штука предназначена для хранения воспоминаний, иначе вышел бы полный кавардак
+    
+    RESPOBJ::mthlocalr
+
+loop
+    self
+        больше ничего
+        
+    RESPOBJ::mthlocalr
+
+funfriend
+    self
+        об этом "развледруге"...
+    RESPOBJ::mthlocalfunr
+
+ffdemeanor
+    self
+        он ужасно дружелюбен несмотря на то, что знает, кто мы такие
+    
+    moth
+        ага мне тоже это показалось странным
+        может его так спроектировали, типа маленький чувачок-ассистент
+        или может он просто выгнать нас не может раз слой авторизации 'диссоциировался'
+        не ну если бы мне пришлось голодать бог знает сколько на дне океана мне б тоже было фиолетово кто пришёл меня спасать лол
+        так что может и ему будет фиолетово пока мы не достанем топливо
+        знаешь что, на всякий случай, предлагаю найти здесь всё что можно прежде чем помочь ему должным образом
+        это может быть нашей единственной возможностью--может он и правда нас пропускает лишь потому что циста голодает
+
+    RESPOBJ::mthlocalfunr
+
+fffuel
+    self
+        что нам делать с топливом?
+
+    moth
+        ну... нам лучше бы попридержать заправку до тех пор пока не найдём всё что можем
+        пока всё выглядит достаточно стабильно, а то обесковая техника начинает чудить когда голодает
+        я думаю это могло бы сыграть нам в пользу если мы опять столкнёмся с чем-нибудь вроде авторизационного слоя
+        впрочем... когда дело дойдёт до самого процесса,
+        люди сверху скоро достанут нам кучу дешёвых медных трубок, так что можно использовать их... если "развледруг" поделится, как
+            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(false)']]
+        мы наверняка сможем воспользоваться тем что внутри нашего контейнера, звучит как металл и выглядит прям как те большие на корабле акизет
+            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(true)']]
+        
+    RESPOBJ::mthlocalfunr
+
+ffsignature
+    self
+        почему у меня нет подписи?
+
+    moth
+        вообще я без понятия почему он её не видит
+        потому что насколько я знаю, большинство мыслеколов имеют подпись для авторизационных целей
+        скорее всего он искал определенный тип, наверняка легко понять что твой соединитель неорганический
+
+    RESPOBJ::mthlocalfunr
+
+`)
+
+
+// == FUNFRIEND == //
 
 env.localization.page["hub"].dialogues.hubBuddyResponses = generateDialogueObject(`
 RESPOBJ::
@@ -202,7 +321,7 @@ RESPOBJ::
             SHOWONCE::
 
         рассказать о директоре<+>cass
-            SHOWIF::"citystreet__director-talklater
+            SHOWIF::"citystreet__director-talklater"
             SHOWONCE::
 
         вопрос<+>question
@@ -1396,119 +1515,6 @@ start
 
     RESPONSES::self
         окей<+>END
-`)
-
-
-env.localization.page["hub"].dialogues.mthlocalr = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        о развледруге<+>funfriend
-            SHOWIF::[['hub__funfriend-fuelthanks']]
-        о вратах<+>gates
-            SHOWIF::[['visited_localorbit']]
-        это всё<+>CHANGE::++moth
-            FAKEEND::(назад)
-`) 
-env.localization.page["hub"].dialogues.mthlocalfunr = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        поведение<+>ffdemeanor
-            SHOWIF::['ep1_fed', false]
-        ситуация с топливом<+>fffuel
-            SHOWIF::[['hub__funfriend-fuelthanks'], ['ep1_fed', false]]
-        подпись<+>ffsignature
-            SHOWIF::[['hub__funfriend-signatureq']]
-        хватит о развледруге<+>loop
-            FAKEEND::(назад)
-`)
-env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer = (check = true)=>{
-    try {
-        if(flags.detectedEntities['..__OUR_DULL_VESSEL__..'].entities.container.scanned) {
-            return check == true
-        } else {
-            return check == false
-        }
-    } catch(e) {
-        return check == false
-    }
-}
-env.localization.page["hub"].dialogues["mth++hub"] = generateDialogueObject(`
-start
-    self
-        у меня есть вопрос об этом мыслепространстве
-
-    moth
-        ага у меня тоже пара найдётся
-        но что у тебя на уме?
-    
-    RESPOBJ::mthlocalr
-    
-gates
-    self
-        что это за врата?
-    
-    moth
-        ну грубо говоря это просто соединительные мыслеформы, ничего особенного
-        но вот это уточнение про "врата" какое-то вычурное
-        наверно это несёт в себе какое-то культурное значение, они и свои межзвёздные червоточины называют "вратами" или чем-то таким
-        так что можно считать это обозначением того что они были нарочно созданы кем-то в качестве ярлыка
-        это имеет смысл раз эта штука предназначена для хранения воспоминаний, иначе вышел бы полный кавардак
-    
-    RESPOBJ::mthlocalr
-
-loop
-    self
-        больше ничего
-        
-    RESPOBJ::mthlocalr
-
-funfriend
-    self
-        об этом "развледруге"...
-    RESPOBJ::mthlocalfunr
-
-ffdemeanor
-    self
-        он ужасно дружелюбен несмотря на то, что знает, кто мы такие
-    
-    moth
-        ага мне тоже это показалось странным
-        может его так спроектировали, типа маленький чувачок-ассистент
-        или может он просто выгнать нас не может раз слой авторизации 'диссоциировался'
-        не ну если бы мне пришлось голодать бог знает сколько на дне океана мне б тоже было фиолетово кто пришёл меня спасать лол
-        так что может и ему будет фиолетово пока мы не достанем топливо
-        знаешь что, на всякий случай, предлагаю найти здесь всё что можно прежде чем помочь ему должным образом
-        это может быть нашей единственной возможностью--может он и правда нас пропускает лишь потому что циста голодает
-
-    RESPOBJ::mthlocalfunr
-
-fffuel
-    self
-        что нам делать с топливом?
-
-    moth
-        ну... нам лучше бы попридержать заправку до тех пор пока не найдём всё что можем
-        пока всё выглядит достаточно стабильно, а то обесковая техника начинает чудить когда голодает
-        я думаю это могло бы сыграть нам в пользу если мы опять столкнёмся с чем-нибудь вроде авторизационного слоя
-        впрочем... когда дело дойдёт до самого процесса,
-        люди сверху скоро достанут нам кучу дешёвых медных трубок, так что можно использовать их... если "развледруг" поделится, как
-            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(false)']]
-        мы наверняка сможем воспользоваться тем что внутри нашего контейнера, звучит как металл и выглядит прям как те большие на корабле акизет
-            SHOWIF::[['EXEC::env.localization.page.hub.dialogues.mthlocalfunr.scannedContainer(true)']]
-        
-    RESPOBJ::mthlocalfunr
-
-ffsignature
-    self
-        почему у меня нет подписи?
-
-    moth
-        вообще я без понятия почему он её не видит
-        потому что насколько я знаю, большинство мыслеколов имеют подпись для авторизационных целей
-        скорее всего он искал определенный тип, наверняка легко понять что твой соединитель неорганический
-
-    RESPOBJ::mthlocalfunr
-
 `)
 
 

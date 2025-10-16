@@ -32,7 +32,6 @@ env.localization.page['abyss'] = {dialogues: {},
         '±ƒƒÍ_¾y':'±ффЙ_¾я',
 
         // --- car poblemn guy ily
-        "s w   al kk": cor_ru.entity_menu['s w   al kk'].name,
         "car poblemn": "побема с маши ой",
         " can oblemnt": " орбема с маширой",
         "ar droblenmn": "проелбва м машной",
@@ -66,7 +65,7 @@ env.localization.page['abyss'] = {dialogues: {},
         "aki...": "аки...",
         "i want to stay a little longer, ok?": "я хочу побыть здесь ещё немного, хорошо?",
 
-        // fell
+        // fell - кскскск
         'you are okay!!': '',
         'what were you thinking??': '',
         'you must take better care of yourself, akii...': '',
@@ -77,28 +76,88 @@ env.localization.page['abyss'] = {dialogues: {},
         "hello": "привет"
     }, 
     entityDescriptions: {
-        "×è.÷ùÏÏøø": cor_ru.entity_menu['×è.÷ùÏÏøø'].desc,
-        "s w   al kk": cor_ru.entity_menu['s w   al kk'].desc,
         "Ƙø¿ƶḳ¿±": cor_ru.entity_menu['Ƙø¿ƶḳ¿±'].desc,
-        '±ƒƒÍ_¾y': `::INCOMPLETE THOUGHTFORM
-    ::SIGNATURE ILLEGIBLE`
+        '±ƒƒÍ_¾y': `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+    ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`
     },
 }
 
 
 // === DIALOGUES === //
 
-// === DROWNING === //
 
-env.localization.page['abyss'].drowningIntroResp = generateDialogueObject(`
+// == MOTH == //
+
+env.localization.page['abyss'].dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        ocean floor?<+>ocean
+        camera guy?<+>camera
+            SHOWIF::"beneath_abysspic"
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(back)
+`)
+env.localization.page['abyss'].dialogues[`mth++abyss`] = generateDialogueObject(`
+start
+    self
+        I have a question about this place
+
+    moth
+        yeah?
+    
+    RESPOBJ::mthresp
+
+ocean
+    self
+        this looks pretty coherently like it's underwater
+        maybe the ocean floor or something
+    
+    moth
+        yeah, it actually looks like this is almost kind of coherent
+        it's like it has a bunch of holes in it where other stuff is flowing through
+        i don't doubt akizet actually walked around in the ocean a bunch
+    
+    RESPOBJ::mthresp
+
+camera
+    self
+        there's this thing that looks like a guy with a camera for a face
+        i think it tried to give something to me
+    
+    moth
+        oh yeah?
+        whatever it is, i didn't see it on my end
+        were any senses attached?
+    
+    self
+        a visual of an eye underwater
+        might be the ocean floor or something
+        nothing else
+    
+    moth
+        ok...
+        well, like i said, you're deep in incoherence right now
+        it's probably just a busted thoughtform that still has a little bit of memory
+____SHOWIF::["gol__s_calls-gordon", false]
+        whatever it is, we'll probably have to wait for funfriend to actually fix it
+____SHOWIF::["gol__s_calls-gordon", true]
+        maybe it's something that knows about the whole "they sent a probe" thing and is trying to act the part
+____END
+    
+    RESPOBJ::mthresp
+`)
+
+
+// == DROWNING == //
+
+env.localization.page['abyss'].dialogues.drowningIntroResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         что случилось?<+>introwrong1
         проход позади?<+>introwrong2
         я не акизет<+>introwrong3
 `)
-
-env.localization.page['abyss'][`drowning_intro`] = generateDialogueObject(`
+env.localization.page['abyss'].dialogues[`drowning_intro`] = generateDialogueObject(`
 start
     self
         привет?
@@ -163,8 +222,7 @@ introwrong3
         мн е от это г о  б оль но
             EXEC::env.abyss.drowningEject();
 `)
-
-env.localization.page['abyss'][`drowning_ejected`] = generateDialogueObject(`
+env.localization.page['abyss'].dialogues[`drowning_ejected`] = generateDialogueObject(`
 start
     moth
         чёрт
@@ -198,8 +256,7 @@ start
     RESPONSES::self
         ок<+>END
 `)
-
-env.localization.page['abyss'].drowningResp1 = generateDialogueObject(`
+env.localization.page['abyss'].dialogues.drowningResp1 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         давно не виделись<+>resp1wrong1
@@ -209,8 +266,7 @@ RESPOBJ::
         где мы?<+>resp1wrong2
             HIDEREAD::
 `)
-
-env.localization.page['abyss'].drowningResp2 = generateDialogueObject(`
+env.localization.page['abyss'].dialogues.drowningResp2 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         ...<+>resp2wrong1
@@ -220,8 +276,7 @@ RESPOBJ::
         аки?<+>resp2right
             HIDEREAD::
 `)
-
-env.localization.page['abyss'].drowningResp3 = generateDialogueObject(`
+env.localization.page['abyss'].dialogues.drowningResp3 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         у меня много дел<+>resp3wrong1
@@ -231,8 +286,7 @@ RESPOBJ::
         кавик тупой<+>resp3wrong2
             HIDEREAD::
 `)
-
-env.localization.page['abyss'].drowningResp4 = generateDialogueObject(`
+env.localization.page['abyss'].dialogues.drowningResp4 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         но они не рыбы<+>resp4right
@@ -242,8 +296,7 @@ RESPOBJ::
         давай убьём их<+>resp4wrong2
             HIDEREAD::
 `)
-
-env.localization.page['abyss'][`drowning_hello`] = generateDialogueObject(`
+env.localization.page['abyss'].dialogues[`drowning_hello`] = generateDialogueObject(`
 start
     self
         привет
@@ -329,7 +382,7 @@ ____END
     drowning
         хехе!
         я так рада, что ты спросила
-        это зрелище, дозволенное лишь θсмертным!
+        это зрелище, дозволенное лишь <span definition="ПРИМЕЧАНИЕ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'подразумевает изменённое состояние проживания'">мертвецам</span>!
         видишь--
 
     drowning sourceless
@@ -669,8 +722,7 @@ resp4right
             EXEC::change("PAGE!!warned", false)
             FAKEEND::proceed
 `)
-
-env.localization.page['abyss'].drowningChatResp = generateDialogueObject(`
+env.localization.page['abyss'].dialogues.drowningChatResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         что случилось?<+>cause
@@ -680,8 +732,7 @@ RESPOBJ::
         ок пока<+>END
             EXEC::env.abyss.drowningEnd();content.classList.add('jellymode');
 `)
-
-env.localization.page['abyss'][`drowning_chat`] = generateDialogueObject(`
+env.localization.page['abyss'].dialogues[`drowning_chat`] = generateDialogueObject(`
 loop
     RESPOBJ::drowningChatResp
 
@@ -787,7 +838,6 @@ help
         и ты<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['abyss'].dialogues[`drowning_fall`] = generateDialogueObject(`
 start
     sourceless
@@ -824,6 +874,8 @@ ____END
         ...<+>END
             EXEC::change("TEMP!!from", "drowning");moveTo("/local/uncosm/pit/");env.forceSfxInheritPitch = false;body.classList.remove("hard-cut")
 `)
+
+
 
 env.localization.page['abyss'].dialogues[`car`] = generateDialogueObject(`
 start

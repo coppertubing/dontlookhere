@@ -16,8 +16,6 @@ env.localization.page['ozo'] = {dialogues: {},
         "this place is wild": "дикое место",
         "about jokzi ozo": "о джокзи озо",
 
-        // joy
-        "'moderate';'minor spatial thoughtspace'": "'умеренный';'малое пространственное мыслепространство'",
 
         "hello": "привет",
 
@@ -58,10 +56,10 @@ env.localization.page['ozo'] = {dialogues: {},
         "gate::gate::?/::G:a;;T:E": cor_ru.entity_menu['gate::gate::?/::G:a;;T:E'].name,
         "gate::gaGATE::te::?/..::G:a;;T:E": cor_ru.entity_menu["gate::gaGATE::te::?/..::G:a;;T:E"].name,
 
-        "ækiZ¥Ét": "æкиЗ¥Éт",
+        "ækiZ¥Ét": cor_ru.entity_menu['ækiZ¥Ét'].name,
 
 
-        // === event shit i dont wanna sort
+        // == event shit i dont wanna sort
         "ATTENTION::'thoughtform activity detected';'resource location altered'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'",
 
         /*loperact*/ "let's talk": "давай поговорим",
@@ -97,7 +95,7 @@ env.localization.page['ozo'] = {dialogues: {},
         "still here": "ещё тут",
         "come back": "вернуться",
 
-        // === effigy
+        // == effigy
         // dancer
         "ahahahaha": "ахахаха",
         "hehehehe": "хихихихи",
@@ -194,14 +192,184 @@ env.localization.page['ozo'] = {dialogues: {},
 
         "gate::gate::?/::G:a;;T:E": cor_ru.entity_menu['gate::gate::?/::G:a;;T:E'].desc,
         "gate::gaGATE::te::?/..::G:a;;T:E": cor_ru.entity_menu["gate::gaGATE::te::?/..::G:a;;T:E"].desc,
+
+        "ækiZ¥Ét": cor_ru.entity_menu['ækiZ¥Ét'].desc,
     },
 }
-
 
 // === DIALOGUES === //
 
 
-// === COUNCIL === //
+// == MOTH == //
+
+env.localization.page['ozo'].dialogues.mthresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        what does this look like to you?<+>what
+
+        trust them?<+>trust
+            SHOWIF::[["ozo__council_intro"], ["ozo__isabel_intro"], ["ozo__fairy_intro"]]
+
+        council?<+>council
+            SHOWIF::"ozo__council_intro"
+
+        fairy?<+>fairy
+            SHOWIF::"ozo__fairy_intro"
+
+        isabel?<+>isabel
+            SHOWIF::"ozo__isabel_intro"
+
+        fake me?<+>me
+            SHOWIF::"e3a2__escapewin"
+
+        nevermind<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page['ozo'].dialogues[`mth++ozo`] = generateDialogueObject(`
+loop
+    RESPOBJ::mthresp
+
+start
+    self
+        у меня есть вопросы об этом джокзи озо
+
+    moth
+        чё как?
+    
+    RESPOBJ::mthresp
+
+what
+    self
+        как это выглядит для тебя?
+    
+    moth
+        like in my readout? // в выводе что ль?
+        this almost looks like a dream recording you'd find online // это выглядит почти как те записи снов из инета
+        it's completely coherent, at least in terms of rendering // они целиком связны, по крайней мере если говорить о рендере
+        the thoughtforms i can see are all non-cohesive and broken up, // все мыслеформы что я вижу бессвязны и поломаны,
+        but they're existing in this space without issues somehow // но каким-то боком они существуют здесь без всяких проблем
+        really just bizarre lol // прост очень странно лол
+        it's kind of wild to think, but... //  даже дико думать об этом, но...
+        maybe this happens when <em>any</em> corrucyst starts to die and break down? //  быть может это то что происходит с <em>каждой</em> погибающей и ломающейся цистой?
+        like we know most of the time it leads to total nonsense incoherence that we can't read // как бы мы знаем что по большей части это ведёт к полной бессмысленной и нечитаемой бесссвязности,
+        but it's not out of the question that they could all start forming little pocket worlds like this // но это не значит что они не могут начать формировать карманные миры по типу этого
+    
+    RESPONSES::self
+        стрёмно<+>loop
+            FAKEEND::(назад)
+
+council
+    self
+        what do you think of the council? // что ты думаешь о совете?
+        should we do what they want? // должны ли мы слушаться его?
+    
+    moth
+        they seem really nice, // по мне так он на самом деле славный,
+        especially since they didn't blow up your brain or anything when you let them send that mask stuff // в особенности потому что он не взорвал твой мозг или что-то такое когда они засунули тебе в бошку ту маску
+        we could get a lot of insight from them, i think // думаю мы сможем вытянуть из него много инфы
+        even if whatever memories they fused with to make this all happen are probably completely lost, // даже если, скорее всего, любые воспоминания с которыми они слились для этого всего, полностью утеряны
+        i bet they've been around, watching everything that happened through the cyst's starvation // сто пудов они застали всё что произошло когда циста голодала
+        as long as they don't mess with repairs we should leave them around // пока они не мешают починкам мы должны оставить их
+        ...
+        also, this is the weirdest thing // ещё кое-что, страннейшая фигня: """ хмхмхм убрать ли знак
+        i didn't actually see the council until you talked to it // для меня совет не отображался до тех пор как вы не начали общаться
+        it's like you're talking to the thoughtspace itself // как будто ты разговариваешь с самим мыслепространством """ не нравится но нет идей
+    
+    RESPONSES::self
+        странно<+>loop
+            FAKEEND::(назад)
+
+fairy
+    self
+        что ты думаешь о фее?
+        
+    moth
+        it's so fucked up that your mindspike calls it a 'fairy' // ёбнуться можно что твой мыслекол зовёт это "феей"
+        i don't know what to think, it's clearly pretty unstable // не знаю что и думать, она очевидно весьма нестабильна
+        but it likes you, so maybe we can keep it from doing anything crazy while we're working here // но ты ей нравишься, так что мы можем удерживать её от безрассудных поступков пока мы работаем здесь
+        also, it looks like it can traverse thoughtspaces pretty easily // и ещё она походу без труда может пересекать мыслепространства
+        did you see those gates in its area? // помнишь же те врата в её зоне?
+        maybe we can get it to change some stuff for us later // возможно позже мы убедим её поменять чего для нас
+        like if funfriend doesn't want us doing something // к примеру если развледруг будет против каких-нибудь наших действий
+    
+    RESPONSES::self
+        ага<+>loop
+            FAKEEND::(назад)
+
+isabel
+    self
+        что ты думаешь об изабель?
+        
+    moth
+        well, it's probably harmless // что ж, она скорее всего безобидна
+        whatever's going on there is parasocial as hell though // впрочем что бы здесь ни происходило оно всё пиздец какое парасоциальное
+    
+    self
+        you don't think she was real? // ты не думаешь что она существовала?
+    
+    moth
+        well yeah isabel probably was real // ну, да, изабель наверняка существовала
+        and we have records of obesk being friends and stuff with humans // и у нас есть записи об обесках друживших с людьми и всякое
+        like, with obesk just visiting them casually // типа, с тем как обески обыденно посещали их
+        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // наверняка это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
+        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend // она просто мыслеформа знающая что не была настоящей изабель или подругой акизет
+        and now it's just obsessing over whatever it knew // и теперь одержимая тем что знала
+        it doesn't seem healthy but w/e // нездоровая херня но в целом похуй """ ах моль что же ты такое делаешь перестань материться как же я буду это переводить
+        not hurting anything here // это ничему не вредит
+    
+    RESPONSES::self
+        окей<+>loop
+            FAKEEND::(назад)
+
+trust
+    self
+        should we trust these thoughtforms? // стоит ли нам доверять этим мыслеформам?
+        
+    moth
+        they're all pretty harmless and cooperative // в целом они все довольно безобидные и сговорчивые
+        i don't think they're even blocking anything // я даже не думаю что они блокируют хоть что-то
+        we would have heard about them sooner // в противном случае мы бы услышали о них раньше
+        seems like they're all just trying to make do with being stuck in the cyst // походу они все просто пытаются справиться с тем что застряли в цисте
+        idk i don't think we really need to do anything about them // хз не думаю что нам реально нужно что-то сделать с ними
+        i'd only object if they wanted to majorly mess up memories or stop repairs // до тех пор пока они не слишком чудят с воспоминаниями или останавливают починки
+    
+    RESPONSES::self
+        хорошо<+>loop
+            FAKEEND::(назад)
+
+me
+    self
+        so this fake me is still here // итак это лже-я всё ещё здесь
+    
+    moth
+        yeah... got pulled through to jokzi ozo by geli i guess // агаа... походу вытащило в джокзи озо вместе с джели
+        it's incredible that you were still, like "attached" to it as a locus when you left // поражает что тебя, типа, не "отцепило" от него когда вы ушли
+        that had to have been weird, cause the output i got was totally mangled // должно быть это странно, тк мой вывод совсем расхреначило
+    
+    self
+        what do we do about this // что мы будем с этим делать
+    
+    moth
+        what do you expect me to say, "kill it?" // что ты ожидаешь услышать от меня, "убить"? """ они что реально в английском ставят знаки внутри кавычек
+        it's fine, it's such an empty shell of a thoughtform it basically can't do anything // всё в порядке, это настолько пустая оболочка от мыслеформы что она ни на что не способна
+        the FBX won't go crazy over it either // ФБКС тоже не взбесится из-за этого
+        you were going to leave a mark on this cyst somehow anyway /// тебе так или иначе пришлось бы наследить в этой цисте
+        comes with the territory of what we're doing // в такой уж сфере работаем
+    
+____SHOWIF::"ozo__stowaway"
+    moth
+        also, did you notice your logs? // а ещё, видишь, что в твоих logs?
+        when you talk to it, its identity output is different from what you scanned // когда ты с ней говоришь, вывод личности отличается от того в изначальном скане
+        i think it's modifying itself already, that's kinda interesting //думаю она уже себя модифицирует, это довольно любопытно
+____END
+    
+    RESPONSES::self
+        ага<+>loop
+            FAKEEND::(назад)
+`)
+
+
+// == COUNCIL == //
 
 env.localization.page['ozo'].dialogues["council_intro"] = generateDialogueObject(`
 start
@@ -265,7 +433,6 @@ start
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues.councilResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -284,7 +451,6 @@ RESPOBJ::
         bye<+>END
             EXEC::env.jokzi.councilToggle()
 `)
-
 env.localization.page['ozo'].dialogues.councilRejoiningResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -315,7 +481,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.councilQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -330,7 +495,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.councilPlaceQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -353,7 +517,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.councilCystQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -371,7 +534,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.interloperQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::council
@@ -380,7 +542,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues["council"] = generateDialogueObject(`
 loop
     RESPOBJ::councilResp
@@ -1314,7 +1475,6 @@ dull
 
 END::change("PAGE!!introswap", false);env.jokzi.toggleSlow(false);change("PAGE!!questionswap", "DELETE")
 `)
-
 env.localization.page['ozo'].dialogues["council_dance"] = generateDialogueObject(`
 start
     council
@@ -1389,7 +1549,8 @@ start
 END::env.jokzi.toggleSlow(false)
 `)
 
-// === ISABEL === //
+
+// == ISABEL == //
 
 env.localization.page['ozo'].dialogues["isabel_intro"] = generateDialogueObject(`
 start
@@ -1418,7 +1579,6 @@ start
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues.isabelResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1433,7 +1593,6 @@ RESPOBJ::
             SHOWIF::"unity_lady"
         пока<+>END
 `)
-
 env.localization.page['ozo'].dialogues.isabelYResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1444,7 +1603,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.isabelCResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1456,7 +1614,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.isabelOResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1478,7 +1635,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues["isabel"] = generateDialogueObject(`
 loop
     RESPOBJ::isabelResp
@@ -2024,7 +2180,6 @@ wakizet
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues["isabel_joy"] = generateDialogueObject(`
 start
     sys
@@ -2180,7 +2335,6 @@ start
 
 END::env.jokzi.toggleSlow(false);vfx({type:'beacon', state: false});
 `)
-
 env.localization.page['ozo'].dialogues["joy_mysterydoor"] = generateDialogueObject(`
 start
     effigy
@@ -2227,7 +2381,6 @@ start
         ok<+>END
             EXEC::change("joysearch", false);setCam()
 `)
-
 env.localization.page['ozo'].dialogues["joy_mysterydoor_late"] = generateDialogueObject(`
 start
     effigy
@@ -2273,7 +2426,8 @@ start
             EXEC::change("joysearch", false);setCam()
 `)
 
-// === FAIRY === //
+
+// == FAIRY == //
 
 env.localization.page['ozo'].dialogues["fairy_intro"] = generateDialogueObject(`
 start
@@ -2326,7 +2480,6 @@ start
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues.fairyResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2335,7 +2488,6 @@ RESPOBJ::
         воспоминания и циста<+>cloop
         пока<+>END
 `)
-
 env.localization.page['ozo'].dialogues.fairyYResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2346,7 +2498,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.fairyCResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2357,7 +2508,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues.fairyOResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2378,7 +2528,6 @@ RESPOBJ::
         назад<+>loop
             FAKEEND::(назад)
 `)
-
 env.localization.page['ozo'].dialogues["fairy"] = generateDialogueObject(`
 loop
     RESPOBJ::fairyResp
@@ -2781,7 +2930,9 @@ dull
 END::env.jokzi.toggleSlow(false)
 `)
 
-// === INTERVIEWER === //
+
+// == INTERVIEWER == //
+
 env.localization.page['ozo'].dialogues["council_lady"] = generateDialogueObject(`
 start
     council
@@ -2833,7 +2984,6 @@ ____END
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues["lady_shattered"] = generateDialogueObject(`
 start
     self
@@ -2891,7 +3041,9 @@ ____END
 END::env.jokzi.toggleSlow(false)
 `)
 
-// === WAKIZET === //
+
+// == WAKIZET == //
+
 env.localization.page['ozo'].dialogues.wakiResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2901,7 +3053,6 @@ RESPOBJ::
         this area<+>room
         bye<+>END
 `)
-
 env.localization.page['ozo'].dialogues.wakiYResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2916,7 +3067,6 @@ RESPOBJ::
         back<+>loop
             FAKEEND::(back)
 `)
-
 env.localization.page['ozo'].dialogues.wakiCResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -2930,7 +3080,6 @@ RESPOBJ::
         back<+>loop
             FAKEEND::(back)
 `)
-
 env.localization.page['ozo'].dialogues["wakizet"] = generateDialogueObject(`
 loop
     RESPOBJ::wakiResp
@@ -3570,7 +3719,8 @@ room
 END::env.jokzi.toggleSlow(false);setCam()
 `)
 
-// === EVENTS === //
+
+// == EVENTS == //
 
 env.localization.page['ozo'].dialogues["e_c_geli"] = generateDialogueObject(`
 start
@@ -3633,7 +3783,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_c_isabel"] = generateDialogueObject(`
 start
     sys
@@ -3717,7 +3866,6 @@ ____END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_c_fairy"] = generateDialogueObject(`
 start
     sys
@@ -3786,7 +3934,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_f_geli"] = generateDialogueObject(`
 start
     sys
@@ -3876,7 +4023,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_f_stow"] = generateDialogueObject(`
 start
     sys
@@ -3950,7 +4096,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_f_effigies"] = generateDialogueObject(`
 start
     sys
@@ -4022,7 +4167,6 @@ start
 
 END::env.jokzi.toggleSlow(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_i_gelistow"] = generateDialogueObject(`
 start
     sys
@@ -4130,7 +4274,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_i_geli"] = generateDialogueObject(`
 start
     sys
@@ -4198,7 +4341,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_i_fairy"] = generateDialogueObject(`
 start
     sys
@@ -4292,178 +4434,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 
-`)
-
-
-// === MOTH === //
-
-env.localization.page['ozo'].dialogues.mthresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        what does this look like to you?<+>what
-
-        trust them?<+>trust
-            SHOWIF::[["ozo__council_intro"], ["ozo__isabel_intro"], ["ozo__fairy_intro"]]
-
-        council?<+>council
-            SHOWIF::"ozo__council_intro"
-
-        fairy?<+>fairy
-            SHOWIF::"ozo__fairy_intro"
-
-        isabel?<+>isabel
-            SHOWIF::"ozo__isabel_intro"
-
-        fake me?<+>me
-            SHOWIF::"e3a2__escapewin"
-
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-
-env.localization.page['ozo'].dialogues[`mth++ozo`] = generateDialogueObject(`
-loop
-    RESPOBJ::mthresp
-
-start
-    self
-        у меня есть вопросы об этом джокзи озо
-
-    moth
-        чё как?
-    
-    RESPOBJ::mthresp
-
-what
-    self
-        как это выглядит для тебя?
-    
-    moth
-        like in my readout? // в выводе что ль?
-        this almost looks like a dream recording you'd find online // это выглядит почти как те записи снов из инета
-        it's completely coherent, at least in terms of rendering // они целиком связны, по крайней мере если говорить о рендере
-        the thoughtforms i can see are all non-cohesive and broken up, // все мыслеформы что я вижу бессвязны и поломаны,
-        but they're existing in this space without issues somehow // но каким-то боком они существуют здесь без всяких проблем
-        really just bizarre lol // прост очень странно лол
-        it's kind of wild to think, but... //  даже дико думать об этом, но...
-        maybe this happens when <em>any</em> corrucyst starts to die and break down? //  быть может это то что происходит с <em>каждой</em> погибающей и ломающейся цистой?
-        like we know most of the time it leads to total nonsense incoherence that we can't read // как бы мы знаем что по большей части это ведёт к полной бессмысленной и нечитаемой бесссвязности,
-        but it's not out of the question that they could all start forming little pocket worlds like this // но это не значит что они не могут начать формировать карманные миры по типу этого
-    
-    RESPONSES::self
-        стрёмно<+>loop
-            FAKEEND::(назад)
-
-council
-    self
-        what do you think of the council? // что ты думаешь о совете?
-        should we do what they want? // должны ли мы слушаться его?
-    
-    moth
-        they seem really nice, // по мне так он на самом деле славный,
-        especially since they didn't blow up your brain or anything when you let them send that mask stuff // в особенности потому что он не взорвал твой мозг или что-то такое когда они засунули тебе в бошку ту маску
-        we could get a lot of insight from them, i think // думаю мы сможем вытянуть из него много инфы
-        even if whatever memories they fused with to make this all happen are probably completely lost, // даже если, скорее всего, любые воспоминания с которыми они слились для этого всего, полностью утеряны
-        i bet they've been around, watching everything that happened through the cyst's starvation // сто пудов они застали всё что произошло когда циста голодала
-        as long as they don't mess with repairs we should leave them around // пока они не мешают починкам мы должны оставить их
-        ...
-        also, this is the weirdest thing // ещё кое-что, страннейшая фигня: """ хмхмхм убрать ли знак
-        i didn't actually see the council until you talked to it // для меня совет не отображался до тех пор как вы не начали общаться
-        it's like you're talking to the thoughtspace itself // как будто ты разговариваешь с самим мыслепространством """ не нравится но нет идей
-    
-    RESPONSES::self
-        странно<+>loop
-            FAKEEND::(назад)
-
-fairy
-    self
-        что ты думаешь о фее?
-        
-    moth
-        it's so fucked up that your mindspike calls it a 'fairy' // ёбнуться можно что твой мыслекол зовёт это "феей"
-        i don't know what to think, it's clearly pretty unstable // не знаю что и думать, она очевидно весьма нестабильна
-        but it likes you, so maybe we can keep it from doing anything crazy while we're working here // но ты ей нравишься, так что мы можем удерживать её от безрассудных поступков пока мы работаем здесь
-        also, it looks like it can traverse thoughtspaces pretty easily // и ещё она походу без труда может пересекать мыслепространства
-        did you see those gates in its area? // помнишь же те врата в её зоне?
-        maybe we can get it to change some stuff for us later // возможно позже мы убедим её поменять чего для нас
-        like if funfriend doesn't want us doing something // к примеру если развледруг будет против каких-нибудь наших действий
-    
-    RESPONSES::self
-        ага<+>loop
-            FAKEEND::(назад)
-
-isabel
-    self
-        что ты думаешь об изабель?
-        
-    moth
-        well, it's probably harmless // что ж, она скорее всего безобидна
-        whatever's going on there is parasocial as hell though // впрочем что бы здесь ни происходило оно всё пиздец какое парасоциальное
-    
-    self
-        you don't think she was real? // ты не думаешь что она существовала?
-    
-    moth
-        well yeah isabel probably was real // ну, да, изабель наверняка существовала
-        and we have records of obesk being friends and stuff with humans // и у нас есть записи об обесках друживших с людьми и всякое
-        like, with obesk just visiting them casually // типа, с тем как обески обыденно посещали их
-        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // наверняка это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
-        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend // она просто мыслеформа знающая что не была настоящей изабель или подругой акизет
-        and now it's just obsessing over whatever it knew // и теперь одержимая тем что знала
-        it doesn't seem healthy but w/e // нездоровая херня но в целом похуй """ ах моль что же ты такое делаешь перестань материться как же я буду это переводить
-        not hurting anything here // это ничему не вредит
-    
-    RESPONSES::self
-        окей<+>loop
-            FAKEEND::(назад)
-
-trust
-    self
-        should we trust these thoughtforms? // стоит ли нам доверять этим мыслеформам?
-        
-    moth
-        they're all pretty harmless and cooperative // в целом они все довольно безобидные и сговорчивые
-        i don't think they're even blocking anything // я даже не думаю что они блокируют хоть что-то
-        we would have heard about them sooner // в противном случае мы бы услышали о них раньше
-        seems like they're all just trying to make do with being stuck in the cyst // походу они все просто пытаются справиться с тем что застряли в цисте
-        idk i don't think we really need to do anything about them // хз не думаю что нам реально нужно что-то сделать с ними
-        i'd only object if they wanted to majorly mess up memories or stop repairs // до тех пор пока они не слишком чудят с воспоминаниями или останавливают починки
-    
-    RESPONSES::self
-        хорошо<+>loop
-            FAKEEND::(назад)
-
-me
-    self
-        so this fake me is still here // итак это лже-я всё ещё здесь
-    
-    moth
-        yeah... got pulled through to jokzi ozo by geli i guess // агаа... походу вытащило в джокзи озо вместе с джели
-        it's incredible that you were still, like "attached" to it as a locus when you left // поражает что тебя, типа, не "отцепило" от него когда вы ушли
-        that had to have been weird, cause the output i got was totally mangled // должно быть это странно, тк мой вывод совсем расхреначило
-    
-    self
-        what do we do about this // что мы будем с этим делать
-    
-    moth
-        what do you expect me to say, "kill it?" // что ты ожидаешь услышать от меня, "убить"? """ они что реально в английском ставят знаки внутри кавычек
-        it's fine, it's such an empty shell of a thoughtform it basically can't do anything // всё в порядке, это настолько пустая оболочка от мыслеформы что она ни на что не способна
-        the FBX won't go crazy over it either // ФБКС тоже не взбесится из-за этого
-        you were going to leave a mark on this cyst somehow anyway /// тебе так или иначе пришлось бы наследить в этой цисте
-        comes with the territory of what we're doing // в такой уж сфере работаем
-    
-____SHOWIF::"ozo__stowaway"
-    moth
-        also, did you notice your logs? // а ещё, видишь, что в твоих logs?
-        when you talk to it, its identity output is different from what you scanned // когда ты с ней говоришь, вывод личности отличается от того в изначальном скане
-        i think it's modifying itself already, that's kinda interesting //думаю она уже себя модифицирует, это довольно любопытно
-____END
-    
-    RESPONSES::self
-        ага<+>loop
-            FAKEEND::(назад)
-`)
-					
+`)		
 env.localization.page['ozo'].dialogues["e_w_council"] = generateDialogueObject(`
 start
     sys
@@ -4537,7 +4508,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_w_isabel"] = generateDialogueObject(`
 start
     sys
@@ -4618,8 +4588,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
-
 env.localization.page['ozo'].dialogues["e_w_effigies"] = generateDialogueObject(`
 start
     sys
@@ -4742,8 +4710,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
-
 env.localization.page['ozo'].dialogues["e_w_fairy"] = generateDialogueObject(`
 start
     sys
@@ -4850,7 +4816,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_w_geli"] = generateDialogueObject(`
 start
     sys
@@ -4916,7 +4881,6 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-
 env.localization.page['ozo'].dialogues["e_w_d"] = generateDialogueObject(`
 start
     sys
@@ -4966,7 +4930,9 @@ start
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
 
-// === ROTWATCHER === //
+
+// == ROTWATCHER == //
+
 env.localization.page['ozo'].dialogues["++rotozo"] = generateDialogueObject(`
 start
     self

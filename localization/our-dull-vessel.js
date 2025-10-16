@@ -64,6 +64,140 @@ env.localization.page['dullvessel'] = {dialogues: {},
 
 // === DIALOGUES === //
 
+
+// == MOTH == //
+
+env.localization.page["dullvessel"].dialogues.mthdullresp = generateDialogueObject(`
+RESPOBJ::
+    RESPONSES::self
+        судно серое?<+>dullvessel
+        внутренности кораблей?<+>seen
+        глазика?<+>glazika
+            SHOWIF::[["dullvessel__glazika-start"]]
+        это то крушение?<+>wreck
+
+        тело акизет?<+>body
+            SHOWIF::"exm|dullvessel|high-pressure body"
+
+        тёмное место?<+>dark
+            SHOWIF::"beneath_dullvessel"
+
+        комната акизет опять недоступна?<+>locked
+            SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
+
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
+`)
+env.localization.page["dullvessel"].dialogues["mth++dullvessel"] = generateDialogueObject(`
+start
+    self
+        у меня есть вопрос о судне серое
+
+    moth
+        чё как?
+    
+    RESPOBJ::mthdullresp
+
+dullvessel
+    self
+        почему оно называется "судно серое"?
+    
+    moth
+        ну это судно которое проходит сквозь серое
+        они так называют место через которое проходят во время межзвёздных путешествий
+        хотя можно подумать что они назвали его очень скучным кораблём или подобным
+        и если честно, глядя на его состояние, 
+        мне так и подумалось
+
+    RESPOBJ::mthdullresp
+
+seen
+    self
+        тебе не приходилось видеть внутренности обесковых кораблей?
+    
+    moth
+        не вживую, только по старым фотографиям и видеозаписям исследований затонувших кораблей
+        вот этот оооочень маленький, скорее всего ток для личного пользования
+        странно что в данных памяти оно числится как "наше" судно серое
+        в любом случае, очень круто взглянуть на настоящий
+        даже если он пустоват...
+        типа где акизет должна сидеть? неужели та ракушечная штука - единственное кресло?
+
+    RESPOBJ::mthdullresp
+
+glazika
+    self
+        что такое глазика?
+
+    moth
+        я без малейшего понятия лол
+        хотя она тусуется с этими контейнерами
+        может это как ИИ-помощник или что-то вроде того
+
+    RESPOBJ::mthdullresp
+
+wreck
+    self
+        это - то крушение, где нашли цисты?
+    
+    moth
+        должно быть
+        но в крушении было гораздо больше всего чем здесь
+        на фотках оно выглядело более "обжитым" если ты понимаешь
+        кто знает
+        может акизет сильно не задумывалась о мебели
+
+    RESPOBJ::mthdullresp
+
+body
+    self
+        is that body in akizet's room what she looked like?
+    
+    moth
+        you haven't just looked up what she looked like yet? lol
+        yeah, i mean it sorta does, but i'm not getting any real detail
+        it might be a little more minimal than what she casually, uh...
+        'wore'
+        but based on the inherited context, she probably only ever used that one underwater
+
+    RESPOBJ::mthdullresp
+
+dark
+    self
+        what is the dark area i found?
+        the rendering gets weird in there
+    
+    moth
+        not sure, there's not enough data in there for me to go off of
+        it's definitely part of some <em>different</em> thoughtspace, though
+        the dull vessel is a weird thoughtform because it moves around
+        it doesn't actually enter thoughtspaces, it just attaches to them
+        i don't know why it's set up like this, maybe it was more efficient or something
+        anyway, i think what you saw is part of some memory it attached to a really long time ago, that maybe fell apart
+        like it's some vestigial scrap left of something that rotted off
+        that'd explain that weird incoherence gap where the entrance would be
+        
+    RESPOBJ::mthdullresp
+
+locked
+    self
+        i can't get back into akizet's room
+        i was there earlier just fine
+    
+    moth
+        wtf? yeah i still have the logs
+        it looks like your incoherence tolerance might have been different though
+        could have been something with the <span definition="INTERNAL CONTEXT::'global ambient dissonance value';'known to fluctuate'">GAD value</span>
+            SHOWIF::"++mothfj"
+        did you do anything last time?
+        were you using any of those masks?
+            SHOWIF::"ozo__fairy_intro"
+
+    RESPOBJ::mthdullresp
+`)
+
+
+
 env.localization.page["dullvessel"].dialogues["pilot"] = generateDialogueObject(`
 start
     akizet
@@ -282,136 +416,6 @@ absence
 
     RESPOBJ::glazikaResponses
 `)
-
-env.localization.page["dullvessel"].dialogues.mthdullresp = generateDialogueObject(`
-RESPOBJ::
-    RESPONSES::self
-        судно серое?<+>dullvessel
-        внутренности кораблей?<+>seen
-        глазика?<+>glazika
-            SHOWIF::[["dullvessel__glazika-start"]]
-        это то крушение?<+>wreck
-
-        тело акизет?<+>body
-            SHOWIF::"exm|dullvessel|high-pressure body"
-
-        тёмное место?<+>dark
-            SHOWIF::"beneath_dullvessel"
-
-        комната акизет опять недоступна?<+>locked
-            SHOWIF::[["beneath_akiroom"], ["netstat|>=", 0]]
-
-        неважно<+>CHANGE::++moth
-            FAKEEND::(назад)
-`)
-env.localization.page["dullvessel"].dialogues["mth++dullvessel"] = generateDialogueObject(`
-start
-    self
-        у меня есть вопрос о судне серое
-
-    moth
-        чё как?
-    
-    RESPOBJ::mthdullresp
-
-dullvessel
-    self
-        почему оно называется "судно серое"?
-    
-    moth
-        ну это судно которое проходит сквозь серое
-        они так называют место через которое проходят во время межзвёздных путешествий
-        хотя можно подумать что они назвали его очень скучным кораблём или подобным
-        и если честно, глядя на его состояние, 
-        мне так и подумалось
-
-    RESPOBJ::mthdullresp
-
-seen
-    self
-        тебе не приходилось видеть внутренности обесковых кораблей?
-    
-    moth
-        не вживую, только по старым фотографиям и видеозаписям исследований затонувших кораблей
-        вот этот оооочень маленький, скорее всего ток для личного пользования
-        странно что в данных памяти оно числится как "наше" судно серое
-        в любом случае, очень круто взглянуть на настоящий
-        даже если он пустоват...
-        типа где акизет должна сидеть? неужели та ракушечная штука - единственное кресло?
-
-    RESPOBJ::mthdullresp
-
-glazika
-    self
-        что такое глазика?
-
-    moth
-        я без малейшего понятия лол
-        хотя она тусуется с этими контейнерами
-        может это как ИИ-помощник или что-то вроде того
-
-    RESPOBJ::mthdullresp
-
-wreck
-    self
-        это - то крушение, где нашли цисты?
-    
-    moth
-        должно быть
-        но в крушении было гораздо больше всего чем здесь
-        на фотках оно выглядело более "обжитым" если ты понимаешь
-        кто знает
-        может акизет сильно не задумывалась о мебели
-
-    RESPOBJ::mthdullresp
-
-body
-    self
-        is that body in akizet's room what she looked like?
-    
-    moth
-        you haven't just looked up what she looked like yet? lol
-        yeah, i mean it sorta does, but i'm not getting any real detail
-        it might be a little more minimal than what she casually, uh...
-        'wore'
-        but based on the inherited context, she probably only ever used that one underwater
-
-    RESPOBJ::mthdullresp
-
-dark
-    self
-        what is the dark area i found?
-        the rendering gets weird in there
-    
-    moth
-        not sure, there's not enough data in there for me to go off of
-        it's definitely part of some <em>different</em> thoughtspace, though
-        the dull vessel is a weird thoughtform because it moves around
-        it doesn't actually enter thoughtspaces, it just attaches to them
-        i don't know why it's set up like this, maybe it was more efficient or something
-        anyway, i think what you saw is part of some memory it attached to a really long time ago, that maybe fell apart
-        like it's some vestigial scrap left of something that rotted off
-        that'd explain that weird incoherence gap where the entrance would be
-        
-    RESPOBJ::mthdullresp
-
-locked
-    self
-        i can't get back into akizet's room
-        i was there earlier just fine
-    
-    moth
-        wtf? yeah i still have the logs
-        it looks like your incoherence tolerance might have been different though
-        could have been something with the <span definition="INTERNAL CONTEXT::'global ambient dissonance value';'known to fluctuate'">GAD value</span>
-            SHOWIF::"++mothfj"
-        did you do anything last time?
-        were you using any of those masks?
-            SHOWIF::"ozo__fairy_intro"
-
-    RESPOBJ::mthdullresp
-`)
-
 
 
 getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up

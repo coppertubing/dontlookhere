@@ -382,6 +382,8 @@ env.localization['definitions'] = {
     "θвзорами": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в глазах'" },
     "θвзорах": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в глазах'" },
 
+    "ежевзорно": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в глазах'" },
+
 
     "θподмиг": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны во взорах'" },
     "θподмига": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны во взорах'" },
@@ -408,6 +410,10 @@ env.localization['definitions'] = {
     "θмигами": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в подмигах'" },
     "θмигах": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в подмигах'" },
 
+
+    "θstare": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    // --- ЧТО ЭТО ТАКОЕ??????????????????!!!!!!!!!!????!!! ЧТО ЭТО???????? АААААААААААААААААА ПОМОГИТЕ!!!!!!!!!!!!
+
     
     // akizet cyst-specific
     "беспространство": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытие'"},
@@ -419,8 +425,9 @@ env.localization['definitions'] = {
 
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'" },
 }
-getLocalizationForPage(true);
+getLocalizationForPage(true); // --- evil
 env.localization['strings'] = {  
+    // mothspeak
     "what's up buddy?": "чё как, дружище?",
     "anything else?": "что-нибудь ещё?",
     "what's up?": "чё как?",
@@ -430,15 +437,23 @@ env.localization['strings'] = {
 
     "about this thoughtform": "об этой мыслеформе",
 
+
+    // response things
+
     "'has no unutilized responses'": `'не имеет неиспользованных ответов'`,
     "'has unutilized responses'": `'имеет неиспользованные ответы'`,
     "'previously utilized response'": `'ранее использованный ответ'`,
     "'response not yet utilized'": `'неиспользованный ответ'`,
     "'response leads to unused responses'": `'ответ ведёт к неиспользованным ответам'`,
     "'dynamic response'": `'динамичный ответ'`,
+    "end chat": "закончить разговор",
+    "back": "назад",
 
 
+    // --- you can greet a lot of funny little guys here in corru observer
     "greet": "поздороваться",
+    // --- and enter a lot of funny little rooms
+    "enter": "войти",
 
     "'clearing mindspike buffer'; 'no progress will be lost'": "'очистка буфера мыслекола';'прогресс не будет потерян'",
     "NOTICE::'loading resources';'please wait'": "УВЕДОМЛЕНИЕ::'прогрузка ресурсов';'пожалуйста, подождите'",
@@ -447,14 +462,9 @@ env.localization['strings'] = {
 
     // "EXM": "ИЗУЧ",
     // "ACT": "ДЕЙСТ",
-    // --- such short letter combinations have a habit of bleeding into places
+    // --- such short letter combinations have a habit of bleeding into places! dont like em. made another way of implementing them
 
     "'additional ACT enabled';'rescan": "'доступно дополнительное ДЕЙСТ';'пересканируйте",
-
-    "end chat": "закончить разговор",
-    "back": "назад",
-
-    "enter": "войти",
 
     // all spike notifs
 
@@ -557,10 +567,6 @@ env.localization['strings'] = {
     "'thoughtform activity detected'::'resources removed'": "'обнаружена мыслеформенная деятельность'::'удалены данные'",
 
     "unity": "единство",
-    "effigy": "эффигия",
-
-    /*moth*/ "this is so weird... i think that's meant to be akizet": "очень странно... я думаю она должна была быть акизет",
-    /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
 
 
     // READOUT NOTIFS AND GATES AND basically locations lol JUST STUFF ITS SUPER POORLY ORGANIZED AGAIN BUT IM NOT CHANGING IT OK
@@ -569,7 +575,32 @@ env.localization['strings'] = {
     "__incomplete_thoughtform__": "__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__",
 
     "fairy": 'фея',
+        /*unity*/ 'i know the way back! stupid!': 'да знаю я обратно путь! тупица!',
     "rotwatcher": 'гнилезорец',
+        /*unity*/ 'locational information exchange recognized. physical visitation is required for any conclusion to be offered. the rotwatcher is observed to hold this destination as pending investigation.': '',
+        "what do you think": "что думаешь?",
+
+    "effigy": "эффигия",
+        /*moth*/ "this is so weird... i think that's meant to be akizet": "очень странно... я думаю она должна была быть акизет",
+        /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
+
+    "s w   al kk": "п р     ох йй",
+        "NOTE::'referencing third-party context installation'::JOY_MASK": "",
+        "::INTERNAL CONTEXT": "",
+        "ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'": "",
+        "'hidden via gradient obfuscation'": "",
+
+        "insurance   lincecense": "страховая  лицецензия",
+        "gous priceses": "ццеуны еа бемзин",
+        "  t otp speed 49 7345 engine": "  м  максскорость 49 7345 двигтель",
+        " radiat   or mufler hungry": " глушит   ель раиатора голодный",
+        "red  green ylow blue light  speet up": "крас й зел ёный жлтый ссиний свет  больще скрсти",
+        "car  so sgggoing": "мшина  еееедет",
+        "  m eting go ok": "  c вещание ппрошло хх оршо",
+        "wrunc eetntenanceh": "", // ?
+        "irector": "иректор",
+        "autorized": "авторизованыоа",
+
 
     "proxyfriend": "проксидруг",
         "HELLO INTERLOPER": "ПРИВЕТ ЛАЗУТЧИК",
@@ -585,10 +616,13 @@ env.localization['strings'] = {
         "NOT RIGHT NOW PLEASE": "НЕ СЕЙ θМИГ ПОЖАЛУЙСТА",
         "DIFFICULT TO SPEAK THROUGH PROXY": "ТРУДНО ГОВОРИТЬ ПО ПРОКСИ",
         "CONDUCTING MEMBRANE REVIEWS": "ПРОВОЖУ ОСМОТР МЕМБРАНЫ",
-        "BE ON YOUR WAY": "ИДИ СВОЕЙ ДОРОГОЙ",
+        "BE ON YOUR WAY": "ИДИ СВОЕЮ ДОРОГОЮ",
 
         "WAIT WHAT ARE YOU DOING": "ПОСТОЙ ЧТО ТЫ ДЕЛАЕШЬ",
         "INTERLOPER!!": "ЛАЗУТЧИК!!",
+
+    "referential scar": '',
+        "you can't focus on it from this far away.": '', 
 
 
 
@@ -606,9 +640,15 @@ env.localization['strings'] = {
     "city-surface": "поверхность-города",
     "THEY WATCH": "ОНИ СМОТРЯТ",
 
+    "..__AQUARIUM": "..__АКВАРИУМ",
+    "aquarium": "аквариум",
+
     "the_void": "ПУСТОТА",
     "the-void": "пустота",
     "the void": "ПУСТОТА",
+
+    "BRIGHT_MOON": "СВЕТЛАЯ_ЛУНА",
+    "bright-moon": "светлая-луна",
 
     "their_waters": "ИХ_ВОДЫ",
     "their-waters": "их-воды",
@@ -627,10 +667,12 @@ env.localization['strings'] = {
     "clemens-romanus": "климент-римский",
     "clemens romanus": "КЛИМЕНТ РИМСКИЙ",
 
+    "VESSEL_SURFACE": "ПОВЕРХНОСТЬ_СУДНА",
+    "vessel-surface": "поверхность-судна",
+
     "our_dull_vessel": "НАШЕ_СУДНО_СЕРОЕ",
     "our-dull-vessel": "наше-судно-серое",
     "our dull vessel": "НАШЕ СУДНО СЕРОЕ",
-
     
     "the_dull_contrivance": "открытие_серое",
     "the dull contrivance": "открытие серое",
@@ -641,11 +683,12 @@ env.localization['strings'] = {
 
     "GOLEM_MAINTENANCE": "ОБСЛУЖИВАНИЕ_ГОЛЕМОВ",
     "golem-maintenance": "обслуживание-големов",
-    "GOLEM MAINTENANCE": "ОБСЛУЖИВАНИЕ ГОЛЕМОВ",
 
     "PALE_HALLS": "БЛЕДНЫЕ_КОРИДОРЫ",
     "pale-halls": "бледные-коридоры",
-    "PALE HALLS": "БЛЕДНЫЕ КОРИДОРЫ",
+
+    "BETTER_TIMES": "ХОРОШИЕ_ВРЕМЕНА",
+    "better-times": "хорошие-времена",
 
     "»é»¯uÂ%S¥(»": "»é»¯уÂ%ЗЙ(»",
 
@@ -671,7 +714,6 @@ env.localization['strings'] = {
     "::/FRAME/": "::/ОБРАМЛЕНИЕ/",
     "frame": "обрамление",
     
-
     "a?-?b?-????-y?s?": "б?-?ез?-????-н?а?",
     "a-b-y-s": "б-ез-н-а",
 
@@ -679,6 +721,12 @@ env.localization['strings'] = {
     "PARASITE_PLANE": "ПАРАЗИТНАЯ_ПРОЕКЦИЯ",
     "p-a-r-s-t-e": "п-а-р-з-и-т",
     "p?a-??r?-???s?-t?e?": "п?а-??р?-???з?-и?т?",
+
+    "»˜CâR…»": "»˜МâШ((иԩ{а…»",
+    "câr": "мâшиԩа",
+
+    "?-?l?-?a??-bs?": "?-?л?-?a??-бо?-??р-?ат-о???-?ия?",
+    "l-a-bs": "л-а-бо-р-ат-о-ия",
 
     "UNPROCESSABLE__!!": "ОБРАБОТКА_НЕВОЗМОЖНА__!!",
     "error-unprocessable": "ошибка-обработка-невозможна",
@@ -724,8 +772,14 @@ env.localization['strings'] = {
     "RESONANCE::'limited'": "РЕЗОНАНС::'ограниченный'",
 
     "LOCAL_RESONANCE::": "ЛОКАЛЬНЫЙ_РЕЗОНАНС::",
-        "'moderate';'connective thoughtform detected'": "'умеренный';'обнаружена соединительная мыслеформа'",
-    "'none detected'": "'не обнаружен'",
+        "'major';'various spatial and responsive thoughtforms detected'": "'крупный';'обнаружены различные пространственные и отзывчивые мыслеформы'",
+        "'moderate';": "'умеренный';",
+            "'connective thoughtform detected'": "'обнаружена соединительная мыслеформа'",
+            "'minor spatial thoughtspace'": "'малое пространственное мыслепространство'",
+            "'connective and responsive thoughtform detected'": "'обнаружена соединительная и отзывчивая мыслеформа'",
+        "'minor'": "'малый'",
+        "'passive';'mask not required'": "'пассивный';'маска не требуется'",
+        "'none detected'": "'не обнаружен'",
 
     "ACTIVITY_DETECTION::":"ОБНАРУЖЕНИЕ_АКТИВНОСТИ::",
     "'none'":"'нет'",
@@ -927,208 +981,208 @@ env.localization['strings'] = {
 
 
     // --- safeguards for combat, this is needed so they wont get accidentally translated and output no definition
-    "effect-message": "effect-message",
-    "message-actions": "message-actions",
+        "effect-message": "effect-message",
+        "message-actions": "message-actions",
 
-    "win": "win",
-    "nothing": "nothing",
-    "cower": "cower",
-    "truly_nothing": "truly_nothing",
-    "evade": "evade",
-    "skitter": "skitter",
-    "malfunction": "malfunction",
-    "attack": "attack",
-    "akizet_attack": "akizet_attack",
-    "eviscerate": "eviscerate",
-    "stab": "stab",
-    "frenzy": "frenzy",
-    "gakvu_attack": "gakvu_attack",
-    "countercall": "countercall",
-    "destabilize": "destabilize",
-    "tozik_attack": "tozik_attack",
-    "parasite": "parasite",
-    "mend": "mend",
-    "optimize": "optimize",
-    "miltza_attack": "miltza_attack",
-    "spy": "spy",
-    "ultra_spy": "ultra_spy",
-    "subvert": "subvert",
-    "spy_analyze": "spy_analyze",
-    "spy_target": "spy_target",
-    "drone_strike": "drone_strike",
-    "cavik_attack": "cavik_attack",
-    "bazruka": "bazruka",
-    "bozko_attack": "bozko_attack",
-    "cripple": "cripple",
-    "guard": "guard",
-    "special_guard_all": "special_guard_all",
-    "special_guard_all_bonus": "special_guard_all_bonus",
-    "shell": "shell",
-    "brawl_weak": "brawl_weak",
-    "brawl": "brawl",
-    "ik_attack": "ik_attack",
-    "dullflare": "dullflare",
-    "swipe": "swipe",
-    "disabler_pulse": "disabler_pulse",
-    "foe_stab": "foe_stab",
-    "barrier": "barrier",
-    "special_limited_carapace": "special_limited_carapace",
-    "enemy_shell": "enemy_shell",
-    "restore": "restore",
-    "special_spy_all": "special_spy_all",
-    "special_attack_all": "special_attack_all",
-    "special_barrier_allies": "special_barrier_allies",
-    "special_strong_barrier_allies": "special_strong_barrier_allies",
-    "special_restorative_barrier": "special_restorative_barrier",
-    "incoherent_gundown": "incoherent_gundown",
-    "special_fullauto": "special_fullauto",
-    "special_fullauto_player": "special_fullauto_player",
-    "movefriend_attack": "movefriend_attack",
-    "special_mass_destabilize": "special_mass_destabilize",
-    "special_movefriend_annihilate": "special_movefriend_annihilate",
-    "special_archiveshelf_annihilate": "special_archiveshelf_annihilate",
-    "incoherent_movefriend": "incoherent_movefriend",
-    "windup": "windup",
-    "windup_cover": "windup_cover",
-    "focused_windup": "focused_windup",
-    "hold_aim": "hold_aim",
-    "archival_smash": "archival_smash",
-    "kivii_grasp": "kivii_grasp",
-    "rez": "rez",
-    "husk_attack": "husk_attack",
-    "husk_attack_weak": "husk_attack_weak",
-    "speak": "speak",
-    "berserk": "berserk",
-    "special_self_destruct": "special_self_destruct",
-    "special_dullsummon": "special_dullsummon",
-    "special_dullbuff": "special_dullbuff",
-    "special_chant": "special_chant",
-    "incoherent_golemboss": "incoherent_golemboss",
-    "special_steerleft": "special_steerleft",
-    "special_steerright": "special_steerright",
-    "special_floorit": "special_floorit",
-    "sidearm": "sidearm",
-    "unfocused_shot": "unfocused_shot",
-    "focused_shot": "focused_shot",
-    "primary": "primary",
-    "secondary": "secondary",
-    "daze_lastresort": "daze_lastresort",
-    "daze_good": "daze_good",
-    "sacrifice": "sacrifice",
-    "special_final_sacrifice": "special_final_sacrifice",
-    "sacrifice_restore": "sacrifice_restore",
-    "ichor_passive_restore": "ichor_passive_restore",
-    "surge": "surge",
-    "wild_surge": "wild_surge",
-    "exploit": "exploit",
-    "coordination": "coordination",
-    "plot": "plot",
-    "special_enact": "special_enact",
-    "mad_claw": "mad_claw",
-    "revise": "revise",
-    "bone_break": "bone_break",
-    "special_invite_storm": "special_invite_storm",
-    "special_invoke_madness": "special_invoke_madness",
-    "special_inversion": "special_inversion",
-    "attack_weak": "attack_weak",
-    "enforce": "enforce",
-    "focused_guard": "focused_guard",
-    "spikes": "spikes",
-    "siphon": "siphon",
-    "bite": "bite",
-    "empower": "empower",
-    "distraction_weak": "distraction_weak",
-    "lesser_wound": "lesser_wound",
-    "wound": "wound",
-    "wound_lastresort": "wound_lastresort",
-    "special_barrier_allies_weak": "special_barrier_allies_weak",
-    "special_carapace_allies": "special_carapace_allies",
-    "special_judgement": "special_judgement",
-    "special_rule": "special_rule",
-    "special_chant_mega": "special_chant_mega",
-    "husk_attack_rot": "husk_attack_rot",
-    "special_sillyspawn": "special_sillyspawn",
-    "special_sillybuff": "special_sillybuff",
-    "special_wallspawn": "special_wallspawn",
-    "special_wallspawn_boat": "special_wallspawn_boat",
-    "boat_clw_windup": "boat_clw_windup",
-    "special_boat_clw_grab": "special_boat_clw_grab",
-    "special_boat_waveattack": "special_boat_waveattack",
-    "special_malware_drill": "special_malware_drill",
-    "special_malware_rot": "special_malware_rot",
-    "special_malware_rewrite": "special_malware_rewrite",
-    "special_malware_empower": "special_malware_empower",
-    "intrusive_smash": "intrusive_smash",
-    "special_intrusive": "special_intrusive",
-    "special_intrusive_ally": "special_intrusive_ally",
-    "detonate": "detonate",
-    "incoherent_mimic": "incoherent_mimic",
-    "bomb_plant": "bomb_plant",
-    "special_bomb_detonate": "special_bomb_detonate",
-    "special_bomb_detonate_victim": "special_bomb_detonate_victim",
-    "scene_evade": "scene_evade",
-    "scene_akizet_attack": "scene_akizet_attack",
-    "scene_frenzy": "scene_frenzy",
-    "scene_gakvu_attack": "scene_gakvu_attack",
-    "scene_parasite": "scene_parasite",
-    "scene_mend": "scene_mend",
-    "scene_spy": "scene_spy",
-    "scene_bozko_attack": "scene_bozko_attack",
-    "scene_guard": "scene_guard",
-    "scene_pull": "scene_pull",
-    "scene_cavik_attack": "scene_cavik_attack",
-    "scene_miltza_attack": "scene_miltza_attack",
-    "scene_dullflare": "scene_dullflare",
-    "scene_kavruka": "scene_kavruka",
-    "scene_satik": "scene_satik",
-    "scene_arm_rifle": "scene_arm_rifle",
-    "scene_rifle": "scene_rifle",
-    "arch_whelm": "arch_whelm",
-    "special_arch_support": "special_arch_support",
-    "special_arch_harasser_stab": "special_arch_harasser_stab",
-    "arch_harasser_stab": "arch_harasser_stab",
-    "arch_punch": "arch_punch",
-    "arch_bomb": "arch_bomb",
-    "arch_bomb_hit": "arch_bomb_hit",
-    "special_arch_tele_channel": "special_arch_tele_channel",
-    "arch_tele_sweep": "arch_tele_sweep",
-    "tele_arch_hulk_rampage": "tele_arch_hulk_rampage",
-    "arch_hulk_rampage": "arch_hulk_rampage",
-    "arch_pull": "arch_pull",
-    "special_archivist": "special_archivist",
-    "tele_archivist_rampage": "tele_archivist_rampage",
-    "archivist_charge": "archivist_charge",
-    "miltza_charge": "miltza_charge",
-    "spine_golem_lunge": "spine_golem_lunge",
-    "special_tele_splitbeam": "special_tele_splitbeam",
-    "splitbeam_hit": "splitbeam_hit",
-    "special_heartwall": "special_heartwall",
-    "tele_dullflare_evil": "tele_dullflare_evil",
-    "scene_dullflare_evil": "scene_dullflare_evil",
-    "scene_kivii_grasp": "scene_kivii_grasp",
-    "tele_kivii_grasp": "tele_kivii_grasp",
-    "special_tele_itzil": "special_tele_itzil",
-    "special_tele_kivii": "special_tele_kivii",
-    "scene_kivii_smash": "scene_kivii_smash",
-    "special_itzka": "special_itzka",
-    "scene_bozko_attack_desperation": "scene_bozko_attack_desperation",
-    "scene_cavik_attack_desperation": "scene_cavik_attack_desperation",
-    "scene_gakvu_attack_desperation": "scene_gakvu_attack_desperation",
-    "tele_tendril_swipe": "tele_tendril_swipe",
-    "special_tendril_slam": "special_tendril_slam",
-    "special_wall_undulate": "special_wall_undulate",
-    "special_tele_golemblast": "special_tele_golemblast",
-    "tele_enraged_rampage": "tele_enraged_rampage",
-    "vekfight_assault": "vekfight_assault",
-    "vekfight_rush": "vekfight_rush",
-    "special_eye_boss": "special_eye_boss",
-    "eyeboss_hit": "eyeboss_hit",
-    "special_epicenter": "special_epicenter",
-    "vekoa_swipe": "vekoa_swipe",
-    "special_vekoa_rush": "special_vekoa_rush",
-    "tele_vekoa_rampage": "tele_vekoa_rampage",
+        "win": "win",
+        "nothing": "nothing",
+        "cower": "cower",
+        "truly_nothing": "truly_nothing",
+        "evade": "evade",
+        "skitter": "skitter",
+        "malfunction": "malfunction",
+        "attack": "attack",
+        "akizet_attack": "akizet_attack",
+        "eviscerate": "eviscerate",
+        "stab": "stab",
+        "frenzy": "frenzy",
+        "gakvu_attack": "gakvu_attack",
+        "countercall": "countercall",
+        "destabilize": "destabilize",
+        "tozik_attack": "tozik_attack",
+        "parasite": "parasite",
+        "mend": "mend",
+        "optimize": "optimize",
+        "miltza_attack": "miltza_attack",
+        "spy": "spy",
+        "ultra_spy": "ultra_spy",
+        "subvert": "subvert",
+        "spy_analyze": "spy_analyze",
+        "spy_target": "spy_target",
+        "drone_strike": "drone_strike",
+        "cavik_attack": "cavik_attack",
+        "bazruka": "bazruka",
+        "bozko_attack": "bozko_attack",
+        "cripple": "cripple",
+        "guard": "guard",
+        "special_guard_all": "special_guard_all",
+        "special_guard_all_bonus": "special_guard_all_bonus",
+        "shell": "shell",
+        "brawl_weak": "brawl_weak",
+        "brawl": "brawl",
+        "ik_attack": "ik_attack",
+        "dullflare": "dullflare",
+        "swipe": "swipe",
+        "disabler_pulse": "disabler_pulse",
+        "foe_stab": "foe_stab",
+        "barrier": "barrier",
+        "special_limited_carapace": "special_limited_carapace",
+        "enemy_shell": "enemy_shell",
+        "restore": "restore",
+        "special_spy_all": "special_spy_all",
+        "special_attack_all": "special_attack_all",
+        "special_barrier_allies": "special_barrier_allies",
+        "special_strong_barrier_allies": "special_strong_barrier_allies",
+        "special_restorative_barrier": "special_restorative_barrier",
+        "incoherent_gundown": "incoherent_gundown",
+        "special_fullauto": "special_fullauto",
+        "special_fullauto_player": "special_fullauto_player",
+        "movefriend_attack": "movefriend_attack",
+        "special_mass_destabilize": "special_mass_destabilize",
+        "special_movefriend_annihilate": "special_movefriend_annihilate",
+        "special_archiveshelf_annihilate": "special_archiveshelf_annihilate",
+        "incoherent_movefriend": "incoherent_movefriend",
+        "windup": "windup",
+        "windup_cover": "windup_cover",
+        "focused_windup": "focused_windup",
+        "hold_aim": "hold_aim",
+        "archival_smash": "archival_smash",
+        "kivii_grasp": "kivii_grasp",
+        "rez": "rez",
+        "husk_attack": "husk_attack",
+        "husk_attack_weak": "husk_attack_weak",
+        "speak": "speak",
+        "berserk": "berserk",
+        "special_self_destruct": "special_self_destruct",
+        "special_dullsummon": "special_dullsummon",
+        "special_dullbuff": "special_dullbuff",
+        "special_chant": "special_chant",
+        "incoherent_golemboss": "incoherent_golemboss",
+        "special_steerleft": "special_steerleft",
+        "special_steerright": "special_steerright",
+        "special_floorit": "special_floorit",
+        "sidearm": "sidearm",
+        "unfocused_shot": "unfocused_shot",
+        "focused_shot": "focused_shot",
+        "primary": "primary",
+        "secondary": "secondary",
+        "daze_lastresort": "daze_lastresort",
+        "daze_good": "daze_good",
+        "sacrifice": "sacrifice",
+        "special_final_sacrifice": "special_final_sacrifice",
+        "sacrifice_restore": "sacrifice_restore",
+        "ichor_passive_restore": "ichor_passive_restore",
+        "surge": "surge",
+        "wild_surge": "wild_surge",
+        "exploit": "exploit",
+        "coordination": "coordination",
+        "plot": "plot",
+        "special_enact": "special_enact",
+        "mad_claw": "mad_claw",
+        "revise": "revise",
+        "bone_break": "bone_break",
+        "special_invite_storm": "special_invite_storm",
+        "special_invoke_madness": "special_invoke_madness",
+        "special_inversion": "special_inversion",
+        "attack_weak": "attack_weak",
+        "enforce": "enforce",
+        "focused_guard": "focused_guard",
+        "spikes": "spikes",
+        "siphon": "siphon",
+        "bite": "bite",
+        "empower": "empower",
+        "distraction_weak": "distraction_weak",
+        "lesser_wound": "lesser_wound",
+        "wound": "wound",
+        "wound_lastresort": "wound_lastresort",
+        "special_barrier_allies_weak": "special_barrier_allies_weak",
+        "special_carapace_allies": "special_carapace_allies",
+        "special_judgement": "special_judgement",
+        "special_rule": "special_rule",
+        "special_chant_mega": "special_chant_mega",
+        "husk_attack_rot": "husk_attack_rot",
+        "special_sillyspawn": "special_sillyspawn",
+        "special_sillybuff": "special_sillybuff",
+        "special_wallspawn": "special_wallspawn",
+        "special_wallspawn_boat": "special_wallspawn_boat",
+        "boat_clw_windup": "boat_clw_windup",
+        "special_boat_clw_grab": "special_boat_clw_grab",
+        "special_boat_waveattack": "special_boat_waveattack",
+        "special_malware_drill": "special_malware_drill",
+        "special_malware_rot": "special_malware_rot",
+        "special_malware_rewrite": "special_malware_rewrite",
+        "special_malware_empower": "special_malware_empower",
+        "intrusive_smash": "intrusive_smash",
+        "special_intrusive": "special_intrusive",
+        "special_intrusive_ally": "special_intrusive_ally",
+        "detonate": "detonate",
+        "incoherent_mimic": "incoherent_mimic",
+        "bomb_plant": "bomb_plant",
+        "special_bomb_detonate": "special_bomb_detonate",
+        "special_bomb_detonate_victim": "special_bomb_detonate_victim",
+        "scene_evade": "scene_evade",
+        "scene_akizet_attack": "scene_akizet_attack",
+        "scene_frenzy": "scene_frenzy",
+        "scene_gakvu_attack": "scene_gakvu_attack",
+        "scene_parasite": "scene_parasite",
+        "scene_mend": "scene_mend",
+        "scene_spy": "scene_spy",
+        "scene_bozko_attack": "scene_bozko_attack",
+        "scene_guard": "scene_guard",
+        "scene_pull": "scene_pull",
+        "scene_cavik_attack": "scene_cavik_attack",
+        "scene_miltza_attack": "scene_miltza_attack",
+        "scene_dullflare": "scene_dullflare",
+        "scene_kavruka": "scene_kavruka",
+        "scene_satik": "scene_satik",
+        "scene_arm_rifle": "scene_arm_rifle",
+        "scene_rifle": "scene_rifle",
+        "arch_whelm": "arch_whelm",
+        "special_arch_support": "special_arch_support",
+        "special_arch_harasser_stab": "special_arch_harasser_stab",
+        "arch_harasser_stab": "arch_harasser_stab",
+        "arch_punch": "arch_punch",
+        "arch_bomb": "arch_bomb",
+        "arch_bomb_hit": "arch_bomb_hit",
+        "special_arch_tele_channel": "special_arch_tele_channel",
+        "arch_tele_sweep": "arch_tele_sweep",
+        "tele_arch_hulk_rampage": "tele_arch_hulk_rampage",
+        "arch_hulk_rampage": "arch_hulk_rampage",
+        "arch_pull": "arch_pull",
+        "special_archivist": "special_archivist",
+        "tele_archivist_rampage": "tele_archivist_rampage",
+        "archivist_charge": "archivist_charge",
+        "miltza_charge": "miltza_charge",
+        "spine_golem_lunge": "spine_golem_lunge",
+        "special_tele_splitbeam": "special_tele_splitbeam",
+        "splitbeam_hit": "splitbeam_hit",
+        "special_heartwall": "special_heartwall",
+        "tele_dullflare_evil": "tele_dullflare_evil",
+        "scene_dullflare_evil": "scene_dullflare_evil",
+        "scene_kivii_grasp": "scene_kivii_grasp",
+        "tele_kivii_grasp": "tele_kivii_grasp",
+        "special_tele_itzil": "special_tele_itzil",
+        "special_tele_kivii": "special_tele_kivii",
+        "scene_kivii_smash": "scene_kivii_smash",
+        "special_itzka": "special_itzka",
+        "scene_bozko_attack_desperation": "scene_bozko_attack_desperation",
+        "scene_cavik_attack_desperation": "scene_cavik_attack_desperation",
+        "scene_gakvu_attack_desperation": "scene_gakvu_attack_desperation",
+        "tele_tendril_swipe": "tele_tendril_swipe",
+        "special_tendril_slam": "special_tendril_slam",
+        "special_wall_undulate": "special_wall_undulate",
+        "special_tele_golemblast": "special_tele_golemblast",
+        "tele_enraged_rampage": "tele_enraged_rampage",
+        "vekfight_assault": "vekfight_assault",
+        "vekfight_rush": "vekfight_rush",
+        "special_eye_boss": "special_eye_boss",
+        "eyeboss_hit": "eyeboss_hit",
+        "special_epicenter": "special_epicenter",
+        "vekoa_swipe": "vekoa_swipe",
+        "special_vekoa_rush": "special_vekoa_rush",
+        "tele_vekoa_rampage": "tele_vekoa_rampage",
 }
-env.localization['entityDescriptions'] = { // --- not referring to entity-menu.js because everystuff.js is loaded first and therefore would not be able to grab stuff outta there cause it doesnt Exist yet
+env.localization['entityDescriptions'] = { // --- not referring to entity-menu.js because everystuff.js is loaded first and therefore would not be able to grab stuff outta there cause it doesnt Exist ! yet
     "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
 ::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`,
@@ -1145,16 +1199,6 @@ env.localization['entityDescriptions'] = { // --- not referring to entity-menu.j
 ::ПУНКТ НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'выступление';'велзи гогочет от восторга'</span>`,
 
-    "our dull vessel": `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'повторяющаяся локация';'изменение состояния мыслеформ'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'некоторые элементы обладают предельно низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
-
-    'their vessel': `::ПРОСТРАНСТВЕННАЯ МЫСЛЕФОРМА
-::НИЗКОРАЗМЕРНАЯ
-::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'множество сущностей с низкой связностью'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'мёртвые судна окружали наш <span class="code">шпиль</span>';'близнецы нашли нас быстро'</span>`,
-
     "gate::gate::gate::": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
 ::ПУНКТ НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМА
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'максимальная бессвязность';'визуализация возможна';'не рекомендуется'">::ОШИБКА ОБРАБОТКИ</span>`,
@@ -1169,105 +1213,46 @@ env.localization['entityDescriptions'] = { // --- not referring to entity-menu.j
     "proxyfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
 
+    // --- these things........... could be ANYWHERE
+
     "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'изабель! изабель! изабель!'</span>`,
 
-    "fairy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ:'голод'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'побрякушка, носима(ԘØ;;-__ОШИБКА::'необрабатываемо'__;'свободна! свободна!!'</span>`,
-}
+    "fairy": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+::ЯВНОЕ НАЗНАЧЕНИЕ:'голод'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'повреждение подписи'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'побрякушка, носима(ԘØ;;-__ОШИБКА::'необрабатываемо'__;'свободна! свободна!!'</span>`,
 
+    "×è.÷ùÏÏøø": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
+::НЕРАЗБЕРИМАЯ ПОДПИСЬ`,
+
+    'rotwatcher': `::RESPONSIVE THOUGHTFORM
+::EXPLICIT PURPOSE:'observation'
+<span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
+::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
+<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
+
+    "s w   al kk": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>`,
+
+    '˜CâR…': `::CONNECTOR THOUGHTFORM
+::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE
+<span style="color: var(--obesk-color)" definition="ANALYSIS::'total cohesion failure';'damaged contexts'">::HIGH INCOHERENCE DETECTED</span>
+::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to e—Ýÿach cousin th@ëir own bright <span class="code" definition="INHERITED CONTEXT::'corrucystic surface vehicle';'bulbous and armored';'partial translation';'implied closest cultural equivalent'">walker</span>'</span>
+<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`,
+
+    'referential scar': `::CORRUCYSTIC COMPONENT
+::<span definition="NOTE::'subjective nomenclature applied';'subjective visual profile applied'">NON-ENTITY</span>
+<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color">'a minute passage left by those leaping across memories';'entwined with countless others in the space between';'not camouflaged, merely difficult to spot';\n\n'i imagine you specifically cannot utilize one without another, similar end point in mind'</span>`
+}
 
 // === DIALOGUES === //
-env.localization.dialogues["++epselect"] = generateDialogueObject(`
-start
-    sys
-        ВНИМАНИЕ::'выбор любого эпизода сбросит текущий прогресс'
-        РЕКОМЕНДАЦИЯ::'экспортируйте сохранение до выбора эпизода'
-        РЕКОМЕНДАЦИЯ::'подтвердите намерение ниже'
-    
-    RESPONSES::self
-        продолжить, потеря текущего прогресса не проблема<+>proceed
-            HIDEREAD::
-        неважно, я хочу сохранить текущий прогресс<+>END
 
-proceed
-    sys
-        ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'выбор лога'
 
-    RESPONSES::sys
-        эпизод 0<+>END
-            EXEC::cutscene(true);setTimeout(()=>deleteSave(), 1000)
-            FAKEEND::(загрузить EP0)
-        эпизод 1<+>END
-            EXEC::mountSave(GlobalSaves.ep1start)
-            FAKEEND::(загрузить EP1)
-        эпизод 2<+>END
-            EXEC::mountSave(GlobalSaves.ep2start)
-            FAKEEND::(загрузить EP2)
-        эпизод 3<+>END
-            EXEC::mountSave(GlobalSaves.ep3start)
-            FAKEEND::(загрузить EP3)
-        эпизод 4<+>END
-            EXEC::mountSave(GlobalSaves.ep4start)
-            FAKEEND::(загрузить EP4)
-    
-    RESPONSES::self
-        неважно, я хочу сохранить текущий прогресс<+>END
-`)
-env.localization.dialogues["menu_hub"] ={
-    start: {
-        name: "start",
-        body: [
-            {
-                actor: "sys",
-                text: "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'намерение'"
-            },
-        ],
+// == MOTH == //
 
-        responses: [
-            {
-                name: "self",
-                replies: [
-                    {
-                        name: 'вернуться в хаб',
-                        destination: 'EXEC::endDialogue()',
-                        hideRead: true,
-                        exec: ()=>{
-                            cutscene(true)
-                            corruRefresh('/hub/', 3000)
-                            if(env.e3a2) env.e3a2.clearWarningListener()
-                            setTimeout(()=>{
-                                readoutAdd({message: `EXECUTING::'retrace';'localhost'`, name:"sys"})
-                            }, 1000)
-                        }
-                    },
-                    {
-                        name: 'отключиться',
-                        destination: 'EXEC::endDialogue()',
-                        hideRead: true,
-                        exec: ()=>{
-                            cutscene(true)
-                            corruRefresh('/', 3000)
-                            if(env.e3a2) env.e3a2.clearWarningListener()
-                            setTimeout(()=>{
-                                readoutAdd({message: `EXECUTING::'eject'`, name:"sys"})
-                            }, 1000)
-                        }
-                    },
-                    {
-                        name: `неважно`,
-                        destination: 'END',
-                        exec: ()=>{
-                            endDialogue()
-                            setTimeout(()=> readoutAdd({message: `NOTE::'aborted'`, name:"sys"}), 1000)
-                        }
-                    }
-                ]
-            }
-        ]
-    },
-}
 env.localization.dialogues.mthglobalresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
@@ -1376,6 +1361,8 @@ who
             SHOWIF::"hub__funfriend-purposeq"
         гордон<+>who_gordon
             SHOWIF::[['citystreet__envoy-end']]
+        директор<+>who_director
+            SHOWIF::[['citystreet__director-meeting']]
         велзи<+>who_velzie
             SHOWIF::[['dullvessel__fixed-how']]
         неважно<+>loop
@@ -1415,13 +1402,67 @@ who_gordon
 
     moth
         хороший вопрос
-        не могу найти точное совпадение, но он стопудов агент ФБКС
+        не могу подобрать точное совпадение, но он стопудов офицер ФБКС
         было бы легче если бы корруциста акизет помнила его лицо по-нормальному
         ещё вернёмся к этому, может мы ухватим его фамилию и будет проще
 
     RESPONSES::self
         удачи<+>loop
             FAKEEND::(назад)
+
+who_director
+    self
+        who is director cassidy? what do you know about her?
+    
+    moth
+        right, she was the very first nomination for the director's office
+        don't know the official date off the top of my head, but,
+        the FBX didn't form until a few years after the embassy was discovered, so it must have been around the mid '20s
+        talk about a brutal time though
+        first contact, the collapse, <em>and then</em> the comms breakdown?
+        she probably had the highest highs and lowest lows out of any of them,
+        and she was still in office for almost ten years, which is insane
+        then, after that, uhh...
+        not too sure where she ended up
+        pretty sure she's still alive and well in the private sector?
+    
+    self
+        is it not common knowledge?
+
+    moth
+        no way, not for her
+        i mean, you understand the scope of everything that happened, right?
+        if i had all that happen on my watch,
+        then saw everything basically fall apart into what it is now,
+        i'd want to just quietly disappear too
+
+    self
+        what do you make of the thoughtform for her?
+        it seems very lucid
+
+    moth
+        yeah, jury's still out on whether that'll be helpful or a big problem
+
+____SHOWIF::"bt__d0_cass"
+    moth
+        clearly it knows a lot more about velzie than anyone else
+        gets around different places like it's nothing, too
+        super incoherent and non-cohesive,
+        but able to almost perfectly mimic the baseline coherence of a memory
+        kinda worried about what it's up to, but...
+        we'll have to wait and see
+____END
+
+    moth
+        i did notice something interesting in that office, though
+        on my end, the connectors around her were really hard to notice at first
+        not sure how they appeared to you, 
+        but they're very distinct from every other implementation i've seen so far
+        looks like it's been making its own sneaky ways of getting around
+        
+    RESPONSES::self
+        weird<+>loop
+            FAKEEND::(back)
 
 who_velzie
     self
@@ -1464,6 +1505,10 @@ what
             SHOWIF::"ozo__council-task"
         серое<+>what_dull
             SHOWIF::"ep4__contact"
+        шторм<+>what_storm
+            SHOWIF::"exm|pit|the storm greets us"
+        эхо<+>what_echo
+            SHOWIF::"bt__d0_ptau"
         ...если эти знания ставят нас под угрозу?<+>what_fbxlist
             SHOWIF::[["ep1_end", true], ["ep4__h2h", false]]
         неважно<+>loop
@@ -1701,6 +1746,96 @@ what_dull
     RESPONSES::self
         хорошо<+>loop
             FAKEEND::(назад)
+
+what_storm
+    self
+        what do you think of the storm?
+
+    moth
+        oh i think plenty about it buddy
+        you and i at least know that it was a converter for data in some sense,
+        from the earlier talks we saw, 
+        i was really under the impression it was just a tool
+        as opposed to like, a thing that worked autonomously
+        but given that akizet was the only obesk involved in that project...
+        it makes sense that she'd have used an echo
+        i mean, the obesk use echoes anywhere they can fit them
+        setting one up to autonomously research and hybridize human/obesk tech is...
+        well, my gut reaction is that it's a really bad idea lol
+        but if it's an echo of akizet, and she really meant well for everyone,
+        in a perfect world we would all be immortal and living in luxury by now
+
+    self
+        do you think it's still around?
+
+    moth
+        dude, i don't know...
+        we <em>have</em> had some gigantic leaps since the collapse
+        infrastructure stuff like the mindspike industry, 
+        the pharma upheaval, all the medical implants, i mean...
+        a lot is pretty hard to explain without obesk interference, despite them being so scarce
+        but the air still sucks, water corps still exist, and rent still goes up
+        don't even get me started on the <span definition="INTERNAL CONTEXT::'fully automated employment system';'utilizes extensive monitoring to verify completion of arbitrary contract';'payment in proprietary pseudocurrency upon completion';'automated legal recourse if failed'">oracle economy</span>
+        it pisses me off thinking about how good we could have had it if this shit didn't happen
+        if the storm is still around, it sure hasn't scaled up enough to save humanity
+    
+    RESPONSES::self
+        all right<+>loop
+            FAKEEND::(back)
+
+
+what_echo
+    self
+        what do you know about echoes?
+    
+    moth
+        this is one of those things i could talk too long about buddy
+        but what you saw akizet say is pretty much the whole deal
+        absolutely fucked up ethical concerns aside,
+        they're essentially the cheapest and easiest way to make an ai
+        copy yourself, cut out what you don't need to fit it into a small cyst,
+        and you have a smart little guy ready to do whatever you need
+
+    self
+        the obesk didn't see any issues with this?
+
+    moth
+        oh, sure they did
+        but it was just like a fact of life to them
+        according to some interviews and articles i've read,
+        they get taught to internalize some wild stuff
+        "some version of you is probably going to be an echo someday, 
+        so just brace for that ahead of time,
+        and it probably will be kind of nice anyway"
+        it's total cultural cope
+        but if we got handed that same potential for infinite automation,
+        in what essentially would be, like, 
+        a mixture of our bronze age and industrial revolution,
+        we'd probably do the same thing
+
+    self
+        if thoughtforms can wake up and act like the ones in this cyst
+        do you know what they do with echoes that do the same thing?
+    
+    moth
+        yeah actually! this was a popular subject pre-collapse
+        once the way echoes work broke the news, it was all over the place
+        the opinions i read from various obesk was a little varied,
+        so i don't think they have one singular stance on the matter
+        from "we'd fix them" to "we'd adopt them as a child"
+        for the most part, despite what the obesk do, 
+        they don't really seem to see echoes as lesser or anything
+        they're still treated with respect and reverence
+        probably because they all know there's some portion of a real person in there 
+        so i doubt they'd, like, just kill one
+        the whole deal is still a big philosophical and moral debate topic
+        we've been getting closer to using that paradigm every day
+        echoes are still leagues ahead of what the best AI can do right now
+        the only thing stopping mindsci from trying it is the inevitable public backlash
+    
+    RESPONSES::self
+        i see<+>loop
+            FAKEEND::(back)
 
 what_fbxlist
     self
@@ -2188,10 +2323,376 @@ ____END
 `)
 
 
-// --- this is actually from the hub
-// --- but while we were testing it just REFUSED to load properly or something so you'd get english firstvisit when you got to the hub
-// --- so we put it here
-env.localization.dialogues["firstvisit"] = generateDialogueObject(`
+// == ROTWATCHER == //
+env.localization.dialogues["++rotmove"] = generateDialogueObject(`
+start
+    self
+        can you tell me about something else?
+    
+    sourceless
+        you feel its curiosity bleed into your mind.
+
+    rotwatcher
+        the audience is observed to make requests to know more.
+        this request can be fulfilled, though it requires that the subjected rotwatcher relocate.
+        when the audience accepts this condition, the rotwatcher is observed to fulfill the request.
+    
+    RESPONSES::self
+        sure<+>END
+            EXEC::env.buddy_globalRotwatcher.reroll()
+        nevermind<+>END
+
+END::revertBgm()
+`)
+
+
+// == FAIRY == //
+env.localization.dialogues[`++fairytravel`] = generateDialogueObject(`
+start
+    self
+        hello
+
+____SHOWIF::[["ENV!!pagePath", "/local/uncosm/"], ["PAGE!!fairytalk", false]]
+    fairy
+        interloper! come to join me in a hunt?
+        hehehe
+
+____SHOWIF::[["ENV!!pagePath", "/local/city/"], ["PAGE!!fairytalk", false]]
+        shh!
+        not too loud...
+        the tyrant could be near!
+        but hello, hello!!!!!!
+
+____SHOWIF::[["ENV!!pagePath", "/local/orbit/"], ["PAGE!!fairytalk", false]]
+        interloper, interloper!
+        i thought i felt you near!
+        just look at all this wasted space...
+        what is the tyrant even doing?! ahahaha
+
+____SHOWIF::[["ENV!!pagePath", "/local/ocean/ship/interview/"], ["PAGE!!fairytalk", false]]
+        ohh, interloper, interloper!
+        better not stay still for too long!
+        i think they want to bite you!
+        maybe i will join in? hehehe!
+
+____SHOWIF::[["ENV!!pagePath", "/local/uncosm/pit/"], ["PAGE!!fairytalk", false]]
+        interloper!!
+        what a lush thoughtscape, would you not agree?!
+        quite the cultivation that akizet got up to!!
+        
+____SHOWIF::["PAGE!!fairytalk", true]
+        what is it now?
+____END
+    
+    RESPONSES::self
+        what are you doing here?<+>uncosm
+            SHOWIF::["ENV!!pagePath", "/local/uncosm/"]
+        what are you doing here?<+>city
+            SHOWIF::["ENV!!pagePath", "/local/city/"]
+        what are you doing here?<+>orbit
+            SHOWIF::["ENV!!pagePath", "/local/orbit/"]
+        what are you doing here?<+>maze
+            SHOWIF::["ENV!!pagePath", "/local/ocean/ship/interview/"]
+        what are you doing here?<+>pit
+            SHOWIF::["ENV!!pagePath", "/local/uncosm/pit/"]
+        bye<+>END
+
+uncosm
+    self
+        what are you doing here?
+
+    fairy
+        preparing to dive, of course!!
+        we may have no shortage of resources thanks to your work, interloper,
+        but i would go crazyyy if i had to sit in the ozo forever!
+        so, the hunt continues! only now, it is for sport!
+        no one will weep for the mindless beasts in the dark
+        and what a vantage point--i never know what i will find from here!!
+        how strange it is that such a large gap to the uncosm goes unmended...
+        not that i mind! the longer it remains, the better! ahahaha
+
+    RESPONSES::self
+        ok bye<+>END
+
+city
+    self
+        what are you doing here?
+
+    fairy
+        taking a peek around while the tyrant's constructs are absent!
+        not that there is anything new here... boring
+        
+    self
+        is it safe for you?
+        doesn't incoherence alert them or something?
+
+    fairy
+        oh, it does?! oh no!! oh, i must go now!!
+        ahaha, just kidding!
+        there is much i can do to blend in, interloper!
+        surely you recall when we first met?
+        the shape of a 'proxyfriend' is all too simple, and coheres to any space...
+        but i need not camouflage myself to you!
+        anyway...
+        do not worry!! i will not eat anything here!
+        i know how you love your rote re-enactments of akizet's blunders
+        so, non-vital, uncosm only hunting for me! 
+        velzie's wrath! hehehe
+
+    self
+        thanks
+    
+    RESPONSES::self
+        ok bye<+>END
+
+orbit
+    self
+        what are you doing here?
+    
+    fairy
+        trying to see if there is ANYTHING fun here...
+        there used to be a lot!
+        i cannot quite remember what it was, but...
+        i can definitely recall that this place is a sad shell of its past!
+        although...
+        hehehe... i might be to blame!
+        i think i chewed this place up pretty badly!!
+        before your time, of course
+    
+    RESPONSES::self
+        ok bye<+>END
+
+maze
+    self
+        what are you doing here?
+    
+    fairy
+        what does it look like?
+        hunting for prey!!
+        not these lumbering things, though
+        too stupid... not even fun to toss around!
+        i can hardly imagine what damaged them so badly--scary!
+        ohh... if i could find what did it...
+        yees, that would be a worthy hunt!
+    
+    self
+        i wouldn't recommend it
+    
+    fairy
+        that is because you are a coward! haha!
+        now, watch out, they know you are here!
+        you might not be physical, not like me, but...
+        they will still be more than happy to try pouring their teeth into your mind!
+    
+    RESPONSES::self
+        ok bye<+>END
+
+pit
+    self
+        what are you doing here?
+    
+    fairy
+        silly interloper!
+        the hunt!!
+        how could i resist such a fruitful garden?!
+        so much variety here--so many things sheltered for so long!
+        surely you have noticed their careful entrapment...
+        that akizet was using them like tamed beasts! so clever!
+        have you seen those ones that pretend to be cousins at first?!
+        funny, but they hardly put up a fight...
+        it is those ones that spread out over the space and wait for disturbance...
+        yeess, such tough shells! such cunning!
+        i will crack one of them soon, and then--
+        oh, i suppose we cannot share...
+        more for me! ahahaha!!
+    
+    RESPONSES::self
+        ok bye<+>END
+
+END::change("PAGE!!fairytalk", true)
+`)
+
+
+// == SCARS == //
+env.localization.dialogues[`++scar`] = generateDialogueObject(`
+early
+    sourceless
+        looking upon the flower is strangely dizzying.
+            EXEC::vfx({type: "flowerwarp", state: "yucky"});vfx({type: "darkflash", state: true});setTimeout(()=>body.classList.add('cull-stage'), 600)
+        your attention passes into it, through it, beyond the thoughtspace.
+        it is a hole.
+        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
+        they twist around each other in ways you aren't able to process.
+        you try, but it only succeeds in making you nauseous.
+    
+    RESPONSES::self
+        look away<+>END
+            EXEC::vfx({type: "darkflash", state: false});setTimeout(()=>body.classList.remove('cull-stage'), 600)
+
+
+start
+    sourceless
+____SHOWIF::["TEMP!!scartalk", false]
+        looking upon the flower is strangely dizzying.
+            EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
+        the physical presence it holds in the render is an illusion of the mask,
+        for your attention passes through it, into it, beyond the thoughtspace.
+        it is a hole.
+____END
+        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
+            EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
+        they twist around each other in ways you aren't able to process.
+        but some points feel familiar. you can reach towards them.
+            EXEC::change("TEMP!!scartalk", true)
+    
+    RESPONSES::self
+        ozo<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/ozo/")
+            FAKEEND::(travel)
+        auth<+>END
+            EXEC::moveTo("/hello/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#hello"
+        dull vessel<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/dullvessel/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#dullvessel_quarters"
+        city office<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/city/street/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#office_hall"
+        clemens romanus<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/ocean/ship/elsewhere/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#hullf"
+        lab<+>lab
+            FAKEEND::(select area)
+            SHOWIF::"joy#pit"
+        look away<+>END
+
+lab
+    sourceless
+        you focus upon the broken thoughtscape of the FBX laboratory.
+        the path diverges in directions you feel you shouldn't be able to see.
+        there is a sense of chronological order.
+
+    RESPONSES::self
+        beginning<+>END
+            EXEC::change("TEMP!!from", "tether_base");moveTo("/local/uncosm/pit/")
+            FAKEEND::(first region)
+            NOTE::technically this is being used as a 'to' but don't think about it too hard
+        hope<+>END
+            EXEC::change("TEMP!!from", "tether_outer");moveTo("/local/uncosm/pit/")
+            FAKEEND::(second region)
+        growth<+>END
+            EXEC::change("TEMP!!from", "tether_melting");moveTo("/local/uncosm/pit/")
+            FAKEEND::(third region)
+        overgrowth<+>END
+            EXEC::change("TEMP!!from", "tether_halls");moveTo("/local/uncosm/pit/")
+            FAKEEND::(fourth region)
+
+        nevermind<+>END
+
+END::vfx({type: "flowerwarp", state: false});body.classList.remove('fade-stage')
+`)
+
+
+// == MISC == //
+
+env.localization.dialogues["++epselect"] = generateDialogueObject(`
+start
+    sys
+        ВНИМАНИЕ::'выбор любого эпизода сбросит текущий прогресс'
+        РЕКОМЕНДАЦИЯ::'экспортируйте сохранение до выбора эпизода'
+        РЕКОМЕНДАЦИЯ::'подтвердите намерение ниже'
+    
+    RESPONSES::self
+        продолжить, потеря текущего прогресса не проблема<+>proceed
+            HIDEREAD::
+        неважно, я хочу сохранить текущий прогресс<+>END
+
+proceed
+    sys
+        ЗАПРОС_ПОЛЬЗОВАТЕЛЮ::'выбор лога'
+
+    RESPONSES::sys
+        эпизод 0<+>END
+            EXEC::cutscene(true);setTimeout(()=>deleteSave(), 1000)
+            FAKEEND::(загрузить EP0)
+        эпизод 1<+>END
+            EXEC::mountSave(GlobalSaves.ep1start)
+            FAKEEND::(загрузить EP1)
+        эпизод 2<+>END
+            EXEC::mountSave(GlobalSaves.ep2start)
+            FAKEEND::(загрузить EP2)
+        эпизод 3<+>END
+            EXEC::mountSave(GlobalSaves.ep3start)
+            FAKEEND::(загрузить EP3)
+        эпизод 4<+>END
+            EXEC::mountSave(GlobalSaves.ep4start)
+            FAKEEND::(загрузить EP4)
+    
+    RESPONSES::self
+        неважно, я хочу сохранить текущий прогресс<+>END
+`)
+env.localization.dialogues["menu_hub"] = {
+    start: {
+        name: "start",
+        body: [
+            {
+                actor: "sys",
+                text: "ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'намерение'"
+            },
+        ],
+
+        responses: [
+            {
+                name: "self",
+                replies: [
+                    {
+                        name: 'вернуться в хаб',
+                        destination: 'EXEC::endDialogue()',
+                        hideRead: true,
+                        exec: ()=>{
+                            cutscene(true)
+                            corruRefresh('/hub/', 3000)
+                            if(env.e3a2) env.e3a2.clearWarningListener()
+                            setTimeout(()=>{
+                                readoutAdd({message: `EXECUTING::'retrace';'localhost'`, name:"sys"})
+                            }, 1000)
+                        }
+                    },
+                    {
+                        name: 'отключиться',
+                        destination: 'EXEC::endDialogue()',
+                        hideRead: true,
+                        exec: ()=>{
+                            cutscene(true)
+                            corruRefresh('/', 3000)
+                            if(env.e3a2) env.e3a2.clearWarningListener()
+                            setTimeout(()=>{
+                                readoutAdd({message: `EXECUTING::'eject'`, name:"sys"})
+                            }, 1000)
+                        }
+                    },
+                    {
+                        name: `неважно`,
+                        destination: 'END',
+                        exec: ()=>{
+                            endDialogue()
+                            setTimeout(()=> readoutAdd({message: `NOTE::'aborted'`, name:"sys"}), 1000)
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+}
+
+
+// == STUFF FROM OTHER PAGES THAT DOES NOT LOAD PROPERLY ON SAID PAGES SO WE PUT IT HERE == //
+
+env.localization.dialogues["firstvisit"] /*from hub.js*/ = generateDialogueObject(`
 start
     moth
         окей, я сейчас просматриваю логи...
@@ -2223,7 +2724,173 @@ something
 
 END::env.hub.firstVisitEnd()
 `)
+env.localization.dialogues["depthrecovery"] /*from basement.js*/ = generateDialogueObject(` 
+start
+    sourceless quiet
+        острая боль пронзает твой череп. твой мыслекол отдёргивается от цисты.
+            WAIT::3000
 
+    sys
+        ВНИМАНИЕ::'аварийное отключение завершено'
+        АНАЛИЗ::'минимальное повреждение соединителя';'минимальное нервное воздействие'
+            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
+    
+    moth
+        с тобой всё в порядке?
+        о, бля
+    
+    sourceless
+        моль судорожно выдирает провода из дымящегося процессора. в комнате пахнет жареной электроникой.
+
+    moth
+        господи боже
+        чел, твой мыслекол тебе жизнь только что спас
+        ну не похоже, что эта штука пыталась тебя прям убить, но чёрт только взгляни на это
+        я ограничу разветвитель сигнала на случай если такое опять произойдёт
+    
+    RESPONSES::self
+        что теперь?<+>whatnow_lk
+            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", false]]
+        что теперь?<+>whatnow_lk
+            SHOWIF::[["hub__funfriend-fuelthanks", false],["exm|dullvessel|container", true]]
+        что теперь?<+>whatnow_mk
+            SHOWIF::[["hub__funfriend-fuelthanks", true],["exm|dullvessel|container", false]]
+        что теперь?<+>whatnow_hk
+            SHOWIF::[["hub__funfriend-fuelthanks"],["exm|dullvessel|container"]]
+
+whatnow_lk
+    self
+        а что теперь?
+
+    moth
+        что ж...
+        нам нужно починить эту штуку. просто представь что мы могли бы в ней найти, серьёзно
+        вот только одна проблемка...
+        всё, что сюда поступает, рано или поздно умирает тк мы не знаем как поддерживать жизнь корру
+        и не то чтобы мы могли бы спросить совета у обесков          
+        похоже, что на сейчас лучший вариант - переподключиться и найти способ сохранить цисту в живых... 
+        не забывай насколько долго эта штука продержалась на дне океана, там должно быть хоть что-то полезное
+        так что забирайся обратно и осмотрись повнимательнее... в худшем случае мы просто добудем больше данных
+        звучит хорошо?
+
+    RESPONSES::self
+        что насчёт той сущности?<+>entity
+        звучит хорошо<+>END
+
+whatnow_mk
+    self
+        а что теперь?
+
+    moth
+        что ж...
+        та управляющая системой штука, развледруг - это наш ключ к обслуживанию и восстановлению этой цисты
+        а нам нужно починить вот это всё. мы могли бы СТОЛЬКО всего узнать, серьёзно
+        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
+        ток представь если мы с тобой раскроем секрет сохранения жизни корру, может они наконец переселят меня из подвала
+        но короче--мой заказ на, типа, какие-нибудь там медные трубки уже получили
+        не самый странный заказ из нашего отдела, веришь или нет
+        так что нам нужно немного подождать пока его не доставят
+        звучит хорошо?
+
+    RESPONSES::self
+        что насчёт той сущности?<+>entity
+        звучит хорошо<+>END
+
+whatnow_hk
+    self
+        а что теперь?
+
+    moth
+        что ж...
+        очевидно нам нужно починить эту штуку. мы могли бы СТОЛЬКО всего узнать, серьёзно
+        у нас никогда не выходило поддерживать корруцистозную технику, не говоря уже о её починке
+        ток представь что мы могли бы сделать с такого рода находкой, может они бы наконец переселили меня из подвала
+        но согласно этому развледругу, нам нужно дать колонне немного металла, и это по всей видимости будет питать корруцисту
+        ...и я подозреваю что наш контейнер - один из тех что на корабле акизет, так что в нём наверняка припасено что-нибудь что мы можем использовать
+        я просто не совсем понимаю как его открыть если не ломать его
+        сделай одолжение - переподключись и спроси об этом у развледруга, может у него будет предложение
+
+    RESPONSES::self
+        что насчёт той сущности?<+>entity
+        звучит хорошо<+>END
+
+entity
+    self
+        что насчёт той сущности, которая меня выгнала?
+
+    moth
+        о, э
+        как-то бестактно вышло с моей стороны, извини
+        на этот раз мне удалось отследить её речь с помощью прямого доступа к потоку
+        ну мы всё слышали - убивать тебя не хочет
+        на самом деле выживание этой штуки зависит от нас, и судя по всему оно <em>хочет</em> выжить
+        может быть другого способа выкинуть тебя из того мыслепространства не было
+        а его, как я полагаю, оно пока будет держать в качестве преимущества
+        но слушай, не беспокойся об этом, я слежу за всей операцией
+        если что-либо подобное повторится, я позабочусь о том чтобы с тобой всё было в порядке
+    
+    RESPONSES::self
+        хорошо<+>END
+
+END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0_epilogue', 'started');flash(false)}, 1000)
+`)
+env.localization.dialogues["depthrecovery2"] /*from basement.js*/ = generateDialogueObject(` 
+start
+    sourceless quiet
+        твои глаза перефокусируются, пока мыслекол отдёргивается
+            WAIT::3000
+        боль разливается по твоему позвоночнику
+
+    sys
+        ВНИМАНИЕ::'аварийное отключение завершено'
+        АНАЛИЗ::'нет повреждений соединителя';'минимальное нервное воздействие'
+            EXEC::document.querySelector('#connection-overlay').classList.add('fade');setTimeout(()=>document.querySelector('#connection-overlay').classList.remove('show'),3000)
+
+    moth
+        слава богу
+        похоже установленные мной лимиты сдержали это
+        чё случилось-то, чел?
+        ты бродил<блинскийлопер> по какой-то совершенно нечитаемой чуши в моём логе
+        а после инициации передвижения в новое мыслепространство оно...
+        после этого оно типа... взорвалось?
+    
+    self
+        я что-то нашёл<блинскийлопер>
+        попробовал войти<блинскийлопер>, но велзи мне помешала<блинскийвелзи???>
+        прямо как в прошлый раз
+        но сейчас было немного по-другому
+        велзи не ожидала<блинскийвелзи???> моего появления
+        она<блинскийвелзи???> как будто отчаянно пыталась что-то остановить
+
+    moth
+        didn't it lead you to whatever this was last time?
+        was it the same thing?
+
+    self
+        looked similar but different
+
+    moth
+        well, comparing the logs, 
+        it looks like it's at least part of the same thing
+        but the data that hit you is way different...
+        last time it was just noise, probably to disrupt your connection
+        but this time it was structured somehow
+        not enough to make sense of, but...
+        i think you nearly connected to whatever it was
+        still, maybe next time you find some giant incoherent thing,
+        don't just blindly enter it, ok?
+        the throttling we set up protected you this time
+        but it's not perfect, and some of it still hit your brain
+        so like... take it easy for a bit
+    
+    RESPONSES::self
+        ok<+>END
+    
+END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');env.enableSpikeCursor();flash(false)}, 1000)
+`)
+
+
+// === CODE === //
 
 // --- this is so that the camerawalkers make you download files that are named in russian instead of english
 cor_ru.cameraGuyThings = {

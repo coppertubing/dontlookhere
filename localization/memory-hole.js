@@ -150,7 +150,9 @@ env.localization.page['sec'] = {dialogues: {},
 
 env.localization.page['sry'] = {dialogues: {}, strings: {"..__F($JKSV&*Z^)": "..__Ф($ЖКСВ&*З^)"}}
 
+
 // === DIALOGUES === //
+
 env.localization.page["localuncosmwhere"].dialogues["wrong"] = generateDialogueObject(`
 start
     ¥Óñ«J
@@ -165,6 +167,7 @@ start
         что вообще происходит<+>END
 `)
 
+// == MEMHOLES == //
 env.localization.page["sec"].dialogues["call"] = generateDialogueObject(`
 start
     sys
@@ -1802,7 +1805,7 @@ start
         вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
-// effigy
+// = EFFIGY = //
 env.localization.page["sec"].dialogues["bar"] = generateDialogueObject(`
 loop
     RESPONSES::self
@@ -1934,7 +1937,7 @@ start
         вернуться<+>END
             EXEC::moveTo('/local/uncosm/where/')
 `)
-// sorry
+// = SORRY = //
 env.localization.page["sry"].dialogues["velzie"] = generateDialogueObject(`
 start
     sys
