@@ -12,7 +12,7 @@ class FPFight {
         this.validMoves = {
             strike: {
                 name: "strike",
-                desc: "TYPE::'stationary heavy attack';'knock enemy back on unguarded hit';'overpower advancing foe'\nPOWER::2\nPREPARATION::'improves range and power by 1'",
+                desc: "TYPE::'stationary strike';'deflects unwound advancing strike'\nWIND UP::'increases range and power'",
                 priority: 2,
                 range: 1,
                 kb: 1,
@@ -31,7 +31,7 @@ class FPFight {
 
             advance: {
                 name: "advance",
-                desc: "TYPE::'move forward';'initiate light attack on foe if met'\nPOWER::1\nPREPARATION::'improves power and tile knockback by 1'",
+                desc: "TYPE::'advancing strike'\nWIND UP::'increases range and power'",
                 priority: 1,
                 range: 0,
                 kb: 1,
@@ -45,7 +45,7 @@ class FPFight {
 
             guard: {
                 name: "guard",
-                desc: "TYPE::'hold position and block next attack';'siphon enemy power';'removed at end of turn or when hit by ADVANCE'",
+                desc: "TYPE::'hold position and block next attack';'siphon WIND UP';\n'removed at end of turn or when hit by ADVANCE'",
                 type: 'guard',
                 enemyLogic: (currentEnemyMoves) => { //only guards once, if at all, and only within decent range. also won't guard if close to knocking player in
                     return (!currentEnemyMoves.includes('guard') && (this.distance < 3) && (this.enemy.position < this.height - 3))
@@ -54,7 +54,7 @@ class FPFight {
 
             windup: {
                 name: "Wind Up",
-                desc: "TYPE::'move back and enhance next attack';'beware of damage tile'\nCONTEXT::'preparation increases:';'attack strength';'range of STRIKE';'knockback of ADVANCE';\n'lost when attacking or hit'",
+                desc: "TYPE::'move back and charge next attack';'lost when attacking or hit'",
                 type: 'prepare',
                 posMod: -1,
                 enemyLogic: (currentEnemyMoves) => { //only winds up once, and only if not prepared already. also not if in range of damage
@@ -121,44 +121,46 @@ class FPFight {
         body.classList.add('in-melee')
         content.insertAdjacentHTML("beforeend", `
             <div class="fp fp-unsetcam fp-stopped">
+                    <div class="fp-animator">
 
-                <div class="fp-grid-container">
-                    <div class="fp-crane">
-                        <div class="fpgrid-look">
-                            <div class="fpgrid"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fp-controls">
-                    <div class="fp-enemy-queue fp-queuelist"></div>
-
-                    <div class="fp-buttons">
-                        <div class="offensive">
-                            <button definition="${this.validMoves.strike.desc}" onclick="javascript:window.melee.enqueue('strike')">strike</button>
-                            <button definition="${this.validMoves.advance.desc}" onclick="javascript:window.melee.enqueue('advance')">advance</button>
-                        </div>
-                        <div class="prepare">
-                            <button definition="${this.validMoves.guard.desc}" onclick="javascript:window.melee.enqueue('guard')">guard</button>
-                            <button definition="${this.validMoves.windup.desc}" onclick="javascript:window.melee.enqueue('windup')">wind up</button>
+                    <div class="fp-grid-container">
+                        <div class="fp-crane">
+                            <div class="fpgrid-look">
+                                <div class="fpgrid"></div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="fp-queue">
-                        <div class="fp-current-queue fp-queuelist"></div>
-                        <div class="fp-queue-buttons">
-                            <button class="go" onclick="javascript:window.melee.step(window.melee.queue)">go</button>
-                            <button class="clear" onclick="javascript:window.melee.clearQueue()">clear</button>
+                    <div class="fp-controls">
+                        <div class="fp-enemy-queue fp-queuelist"></div>
+
+                        <div class="fp-buttons">
+                            <div class="offensive">
+                                <button definition="${this.validMoves.strike.desc}" onclick="javascript:window.melee.enqueue('strike')">strike</button>
+                                <button definition="${this.validMoves.advance.desc}" onclick="javascript:window.melee.enqueue('advance')">advance</button>
+                            </div>
+                            <div class="prepare">
+                                <button definition="${this.validMoves.guard.desc}" onclick="javascript:window.melee.enqueue('guard')">guard</button>
+                                <button definition="${this.validMoves.windup.desc}" onclick="javascript:window.melee.enqueue('windup')">wind up</button>
+                            </div>
+                        </div>
+
+                        <div class="fp-queue">
+                            <div class="fp-current-queue fp-queuelist"></div>
+                            <div class="fp-queue-buttons">
+                                <button class="go" onclick="javascript:window.melee.step(window.melee.queue)">go</button>
+                                <button class="clear" onclick="javascript:window.melee.clearQueue()">clear</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div id="fp-declare">
-                    <!-- example:
-                    <div class="fp-declare player">IK::'advance'</div>
-                    <div class="fp-declare enemy">FOE::'advance'</div>
-                    <div class="fp-declare-winner enemy">FOE</div>
-                    -->
+                    <div id="fp-declare">
+                        <!-- example:
+                        <div class="fp-declare player">IK::'advance'</div>
+                        <div class="fp-declare enemy">FOE::'advance'</div>
+                        <div class="fp-declare-winner enemy">FOE</div>
+                        -->
+                    </div>
                 </div>
             </div>
         `)
@@ -239,13 +241,8 @@ class FPFight {
     tutorialStep() {
         if(!this.el.classList.contains('tutorialzoom') && !this.el.classList.contains('tutorial1')) { this.el.classList.add('tutorialzoom', 'tutorial', 'fp-unsetcam', 'fp-hide'); body.classList.remove('in-melee'); return}
         if(!this.el.classList.contains('tutorial1')) { this.el.classList.add('tutorial1'); this.el.classList.remove('fp-hide', 'fp-unsetcam');  body.classList.add('in-melee'); return}
-        if(!this.el.classList.contains('tutorial2')) { this.el.classList.add('tutorial2'); this.el.classList.remove('tutorialzoom'); return}
-        if(!this.el.classList.contains('tutorial3')) { this.el.classList.add('tutorial3'); return}
-        if(!this.el.classList.contains('tutorial4')) { this.el.classList.add('tutorial4'); return}
-        if(!this.el.classList.contains('tutorial5')) { this.el.classList.add('tutorial5'); return}
-        if(!this.el.classList.contains('tutorial6')) { this.el.classList.add('tutorial6'); return}
         
-        this.el.classList.remove('tutorial', 'tutorial1', 'tutorial2', 'tutorial3', 'tutorial4', 'tutorial5', 'tutorial6')
+        this.el.classList.remove('tutorial', 'tutorial1', 'tutorial2', 'tutorial3', 'tutorial4', 'tutorial5', 'tutorial6', 'tutorialzoom', 'fp-hide', 'fp-unsetcam')
     }
 
     //generates the enemy plan for the next turn, and updates their queue to show one preview

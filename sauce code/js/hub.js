@@ -901,7 +901,6 @@ ah1
     RESPONSES::self
         how do i get to the 'uncosm'<+>ah1uncosm
         what is the 'uncosm'<+>ah1whatuncosm
-        how do i use the proxy<+>ah1proxy
         ok<+>loop
             FAKEEND::(back)
 
@@ -921,7 +920,6 @@ ah1uncosm
     RESPONSES::self
         how do i get to the 'uncosm'<+>ah1uncosm
         what is the 'uncosm'<+>ah1whatuncosm
-        how do i use the proxy<+>ah1proxy
         ok<+>loop
             FAKEEND::(back)
 
@@ -948,38 +946,6 @@ ah1whatuncosm
     RESPONSES::self
         how do i get to the 'uncosm'<+>ah1uncosm
         what is the 'uncosm'<+>ah1whatuncosm
-        how do i use the proxy<+>ah1proxy
-        ok<+>loop
-            FAKEEND::(back)
-
-ah1proxy
-    self
-        how do i use your proxy
-
-    funfriend
-        INTERLOPER I HAVE NO IDEA HOW TO PUT THIS IN A WAY YOU UNDERSTAND
-        BUT BASICALLY YOU ¤Mqë5yÚ*ü7Ìq¾ÏÚz)Œ
-        ý±Âß£Ë$1Väƒü‹kõþwX=Ãyº‚0×6ÒÂ
-
-    sys
-        ATTENTION::'attempting thought reformation'
-        ANALYSIS::'proxy thoughtform follows primary mode of direction'
-        ANALYSIS::'usual controls are replaced with a disruption pulse'
-        ANALYSIS::'direct the proxy over marked targets and pulse to disrupt them'
-        ANALYSIS::'disruption will disperse incoherent thoughtforms'
-        ANALYSIS::'avoid incoherence as it will gradually destroy the proxy'
-        NOTICE::'assistance available';'if required';'enable <span style="NOTE::'presents alternatives to proxy controls';'intended to resolve hardware issues'">REDUCED INTENSITY</span> within system menu'
-
-    funfriend
-        IF IT SOUNDS COMPLEX, IT IS NOT
-        JUST GO TRY IT
-        I CAN MAKE MORE PROXIES
-        JUST IN CASE YOU MANAGE TO FUMBLE IT INTO THE ABYSS SOMEHOW
-
-    RESPONSES::self
-        how do i get to the 'uncosm'<+>ah1uncosm
-        what is the 'uncosm'<+>ah1whatuncosm
-        how do i use the proxy<+>ah1proxy
         ok<+>loop
             FAKEEND::(back)
 

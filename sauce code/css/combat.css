@@ -2427,6 +2427,23 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     cursor: pointer;
 }
 
+
+.augment-option.notinteractedyet::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 10px 5px var(--friend-color);
+    border-radius: 100%;
+    opacity: 0;
+    animation: INTERACTHIGHLIGHT 2s ease-in-out infinite alternate;
+}
+
+@keyframes INTERACTHIGHLIGHT {
+    000% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
 #augment-stats {
     display: flex;
     justify-content: space-between;

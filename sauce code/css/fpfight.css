@@ -6,7 +6,7 @@
 	perspective: 1000px;
 }
 
-.fp-grid-container, .fpgrid-look, .fp-crane, .fp {
+.fp-container, .fp-grid-container, .fpgrid-look, .fp-crane, .fp, .fp-animator {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -525,7 +525,7 @@
 }
 
 .fp-controls::before {
-	content: "OBJECTIVE::'form plan for ally IK to destroy foe';'damage is dealt on marked death tiles'";
+	content: "OBJECTIVE::'push enemy onto marked death tile'";
 	font-size: 0.75rem;
 	position: absolute;
 	bottom: 0;
@@ -606,8 +606,9 @@
 }
 
 /* special animations */
-.fp.shake {
+.fp.shake .fp-animator {
 	animation: BIGSHAKE 200ms linear infinite;
+	transform-style: preserve-3d
 }
 
 .fp.backtilt .fpgrid {

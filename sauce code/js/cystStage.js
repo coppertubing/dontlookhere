@@ -867,12 +867,9 @@ function toggleMouseLook(enable = undefined, {resetAngle = false, delayCoords = 
             let closestUiElement = ev ? ev.target.closest(".noclosemenu") : false
 
             if(noLockConditions() || closestUiElement || env.noPointerLock) return console.log("not locking bc either noLock or ui element");
-            try {
-                document.body.requestPointerLock({ unadjustedMovement: true })
-            } catch(e) {
-                console.warn("doesn't support unadjustedMovement")
-                document.body.requestPointerLock()
-            }
+
+            document.body.requestPointerLock({ unadjustedMovement: true })
+            document.body.requestPointerLock()
 
             setTimeout(() => {
                 if(document.pointerLockElement && env.stage.freemove) {

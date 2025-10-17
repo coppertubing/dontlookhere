@@ -878,7 +878,7 @@ body#aqua_final::before {
 					
 					
 					sprite: {
-						__default: [50, 149500, true]
+						__default: [50, 9999999999, true]
 					}
 				}),
 				
@@ -1204,7 +1204,7 @@ createEntity({
     name: "tree",
     type: "recollection thoughtform portrait-cover",
     image: "/img/local/city/aqua/parktree.gif",  
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'common cousinly fauna';'reminescent of <span class='code'>veilk</span>'</span>`,
 })
@@ -1213,7 +1213,7 @@ createEntity({
     name: "depth dwellers",
     type: "recollection thoughtform portrait-auto",
     image: "/img/local/city/aqua/aquacircleexm.gif",
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'strange fauna';'dwelling under impossibly great pressure';'inspires the slightest sense of kinship and familiarity'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'potential tampering'">::INCOHERENCE DETECTED</span>`,

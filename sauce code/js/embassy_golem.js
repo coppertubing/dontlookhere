@@ -5011,19 +5011,8 @@ ____END
         ATTENTION::'utilizing structure':'MELEE'
             EXEC::page.melee.tutorialStep()
         ATTENTION::'neural controls adjusted';'command menu enabled'
-            EXEC::page.melee.tutorialStep()
-        NOTICE::'enqueue two actions for ally to enact';'foe will select two options'
+        NOTICE::'entities enqueue two actions to enact'
         NOTICE::'either entity being knocked into DULL COLUMN will end round'
-        EXECUTING::'action list'
-        STRIKE::'stationary punch';'stave off enemy advance'
-            EXEC::page.melee.tutorialStep()
-        ADVANCE::'forward movement';'attack enemy on contact'
-            EXEC::page.melee.tutorialStep()
-        GUARD::'stationary defense';'steal attack charge if enemy wound up'
-            EXEC::page.melee.tutorialStep()
-        WIND UP::'move back one space and charge attack';'improves ADVANCE, STRIKE'
-            EXEC::page.melee.tutorialStep()
-        WARNING::'winner of evenly matched attacks decided randomly'
 
 ____SHOWONCE::
     self
@@ -5033,7 +5022,7 @@ ____SHOWONCE::
     
     moth
         lol no
-        still, there's only four actions, how hard can it be?
+        but it looks like everything here's got inherited context, so just eyeball it first
         besides, didn't it only get hard last time when that bastard showed up?
             SHOWIF::"item|sorry_cyst"
         just hit stuff, it'll work out

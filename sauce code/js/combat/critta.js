@@ -2124,6 +2124,7 @@ class CrittaMenu extends HTMLElement {
         //handling for when toggling an augment on/off
         else if(el.classList.contains("augment-option")) {
             this.eyeDrop.open = false
+            change("PAGE!!usedAugment", true)
 
             if(!this.editingMember.augmentChanges) {
                 this.editingMember.augmentChanges = {add: [], remove: []}
@@ -2376,7 +2377,7 @@ class CrittaMenu extends HTMLElement {
                     augmentList.forEach(augmentData=>{
                         showAnything = true
                         let augment = augmentData.augment
-                        componentAugments += `<div class="augment-option noclosemenu"
+                        componentAugments += `<div class="augment-option noclosemenu ${(!check("PAGE!!usedAugment") && augmentData.affordable) ? "notinteractedyet" : ""}"
                             member="${editingMember.slug}"
                             actor="${editingMember.combatActor}"
                             slug="${augment.slug}"

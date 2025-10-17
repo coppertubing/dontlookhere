@@ -431,6 +431,11 @@
         color: var(--obesk-color);
     }
 
+    .safe #hp[hp]::after {
+        content: "SAFE\A" attr(hp);
+        color: var(--friend-color);
+    }
+
     #content.death {
         transition: opacity 5s ease-out;
         filter: grayscale(1);
@@ -972,6 +977,13 @@
         animation: DEBRISCRASH var(--life) linear;
         animation-fill-mode: forwards;
     }
+
+    .debris.safe-debris {
+        z-index: 6;
+        width: 7.5vmax;
+        height: 7.5vmax;
+    }
+
     @keyframes DEBRISCRASH {
         0% { transform: rotate(var(--angle)) translateY(-100vmax) scale(1);}
         50% { transform: rotate(var(--angle)) translateY(-50vmax) scale(1);}
@@ -991,6 +1003,11 @@
         background-image: url(/img/textures/mcontours.gif);
         animation: SPIN var(--speed) linear infinite;
         border-radius: 100%;
+    }
+
+    .debris-stone.bh_platform {
+        background-image: url(/img/textures/ccontours.gif);
+        z-index: 5;
     }
 
     .shake {
@@ -1690,6 +1707,7 @@ env.dialogues["lowintensitycallout"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'proxy generation prompted';'realtime control required'
+        NOTICE::'utilize <span definition="NOTE::'limbic motor beacon'">LMB</span> to trigger dissociative pulse';'avoid contact with incoherence'
         NOTICE::'certain hardware configurations may be incompatible'
         NOTICE::'enable REDUCED INTENSITY within system menu if required'
         USER REQUEST::'continue?'
@@ -2281,7 +2299,7 @@ env.recosm = {
                 //detection for final phase
                 } else if(el.classList.contains('eyesupport') && el.classList.contains('clickable')) {
                     el.classList.remove('clickable')
-                    el.classList.add('bh_platform')
+                    el.classList.add('bh_platform', 'bh_safe')
                     play('muiClick', 0.75)
 
                     //all eyesupports turned, so end the spin mode
@@ -2666,6 +2684,11 @@ env.recosm = {
                     bh_invuln(false)
                     env.recosm.changePhase(3)
 
+                    //checkpoint yay
+                    //formerly granted after beating this point once but that's kinda mean
+                    if(!check("recosm_finalseen")) change("recosm_finalseen", 1)
+                    else change("recosm_finalseen", Number(check("recosm_finalseen")) + 1)
+
                     if(check("recosm_finalseen") >= 2) { 
                         env.setTimeout(()=>chatter({actor: 'god', text: `i am growing tired of this, messenger`, readout: true}), 3000)
                         env.setTimeout(()=>chatter({actor: 'god', text: `do you not see that it is pointless?`, readout: true}), 8000)
@@ -2724,9 +2747,6 @@ env.recosm = {
                 case 9:
                     env.recosm.changeHP(env.recosm.hp + 1)
                     env.clearTimeouts()
-
-                    if(!check("recosm_finalseen")) change("recosm_finalseen", 1)
-                    else change("recosm_finalseen", Number(check("recosm_finalseen")) + 1)
                     
                     //bastard explodes
                     env.bst.vortex.classList.add('debrisend')
@@ -2845,23 +2865,29 @@ env.recosm = {
         var spinSpeed = rand(3, 10)
         var angle, lifeSpeed
 
+        //occasionally pull in something safe by accident
+        const isPlatform = Math.random() < 0.05
+
         if(spiral) {
             env.bulletHell.lastAngle += 30
             angle = env.bulletHell.lastAngle
-            lifeSpeed = rand(4, 7)
+            lifeSpeed = isPlatform ? rand(15, 20) : rand(4, 7)
         } else {
             angle = rand(0, 360)
-            lifeSpeed = rand(3, 10)
+            lifeSpeed = isPlatform ? rand(8, 14) : rand(3, 10)
         }
 
         const debris = document.createElement('div')
         debris.classList.add('debris')
         debris.style.setProperty('--life', `${lifeSpeed}s`)
-        debris.style.setProperty('--speed', `${spinSpeed}s`)
+        debris.style.setProperty('--speed', `${spinSpeed * (isPlatform ? 1.5 : 1)}s`) // slower spin for platforms
         debris.style.setProperty('--angle', `${angle}deg`)
 
         const stone = document.createElement('div')
-        stone.classList.add('bh_damager', 'debris-stone')
+
+        if(isPlatform) { stone.classList.add("bh_safe", "bh_platform", "debris-stone"); debris.classList.add('safe-debris') } 
+        else stone.classList.add('bh_damager', 'debris-stone')
+
         debris.insertAdjacentElement('beforeend', stone)
 
         document.querySelector('.bastard-vortex').insertAdjacentElement('beforeend', debris)
