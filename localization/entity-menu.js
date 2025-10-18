@@ -219,13 +219,13 @@ cor_ru.entity_menu = {
     },
     "tree": {
         name: `дерево`,
-        desc: `::RESPONSIVE THOUGHTFORM
+        desc: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'common cousinly fauna';'reminescent of <span class='code'>veilk</span>'</span>`
     },
     "depth dwellers": {
         name: `обитатели глубин`,
-        desc: `::RESPONSIVE THOUGHTFORM
+        desc: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'strange fauna';'dwelling under impossibly great pressure';'inspires the slightest sense of kinship and familiarity'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'potential tampering'">::INCOHERENCE DETECTED</span>`
