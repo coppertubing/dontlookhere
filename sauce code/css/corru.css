@@ -3703,9 +3703,7 @@ body:not(.mui-active) .target[lowvis] {
     text-transform: uppercase;
 }
 
-.actiondef-stats .target:before,
-.actiondef-stats .hit:before,
-.actiondef-stats .crt:before {
+.actiondef-stats .actiondef-stat:before {
     content: attr(info) "::";
     color: var(--neutral-color);
     text-transform: uppercase;

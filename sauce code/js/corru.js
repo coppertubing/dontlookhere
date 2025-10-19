@@ -424,13 +424,13 @@ ready(()=>{
     //MUI examination handler
     //gets the index of the currently selected thingy in the scanner, prints out its examine message
     document.querySelector('#mindspike-examine').addEventListener('click', ()=>{
-        if(env.targetedEntity.exmExec) env.targetedEntity.exmExec()
-        let effectiveDef = env.targetedEntity.text
-        
         const localization = getLocalizationForPage()
         if(localization.entityDescriptions) if(localization.entityDescriptions[env.targetedEntityName]) {
-            effectiveDef = localization.entityDescriptions[env.targetedEntityName]
+            env.targetedEntity.text = localization.entityDescriptions[env.targetedEntityName]
         }
+
+        if(env.targetedEntity.exmExec) env.targetedEntity.exmExec()
+        let effectiveDef = env.targetedEntity.text
 
         effectiveDef = effectiveDef.replace(/\n/g, "<br>")
         if(!env.targetedEntity.noProcess) effectiveDef = processDefinitionsInString(effectiveDef, {force: true})
@@ -1005,9 +1005,9 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
             <div class="actiondef-heading">
                 <h5>[ACTIONNAME]</h5>
                 <div class="actiondef-stats">
-                    <span info="target">[TARGETS]</span>
-                    <span info="hit">[HIT%]</span>
-                    <span info="crt">[CRIT%]</span>
+                    <span class="actiondef-stat" info="target">[TARGETS]</span>
+                    <span class="actiondef-stat" info="hit">[HIT%]</span>
+                    <span class="actiondef-stat" info="crt">[CRIT%]</span>
                 </div>
             </div>
             
@@ -1333,6 +1333,8 @@ function readoutAdd({message, type = "", name, displayName, image = false, show 
     let miniReadout = document.querySelector('#minireadout')
     let effectiveMessage = message
     // console.log("readoutAdd got displayName", displayName)
+
+    if(!displayName) displayName = name
 
     var addition
     if(actor) {
@@ -3401,7 +3403,7 @@ function processDefinitionsInString(input, {force = false} = {}) {
     sortedDefinitions.forEach(([phrase, definition]) => {
         if(phrase.length > scanningInput.length) return;
 
-        const type = (typeof definition === "object") ? definition.type || "INHERITED CONTEXT" : "INHERITED CONTEXT";
+        const type = (typeof definition === "object") ? definition.type || processStringTranslation("INHERITED CONTEXT") : processStringTranslation("INHERITED CONTEXT");
         const text = (typeof definition === "object") ? definition.text || definition : definition;
 
         if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
@@ -3423,12 +3425,13 @@ function processDefinitionsInString(input, {force = false} = {}) {
                 scanningInput = scanningInput.replaceAll(match[0], "")
 
                 //we do this to target replacements only outside of HTML
-                finalInput = finalInput.replace(/\b(<[^>]*>|[^<]+)\b/g, (innerMatch)=>{
+                const finalInputRegex = new RegExp(`${edgeStart}(<[^>]*>|[^<]+)${edgeEnd}`, 'g')
+                finalInput = finalInput.replace(finalInputRegex, (innerMatch)=>{
                     if(innerMatch.includes("definition") || innerMatch.startsWith("<")) {
                         return innerMatch
                     } 
                     else { 
-                        const wordBoundaryRegex = new RegExp(`\\b${match[0]}\\b`, 'g')
+                        const wordBoundaryRegex = new RegExp(`${edgeStart}${match[0]}${edgeEnd}`, 'g')
                         return innerMatch.replace(wordBoundaryRegex, replacement) 
                     }
                 })

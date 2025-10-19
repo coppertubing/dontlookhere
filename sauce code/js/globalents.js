@@ -582,7 +582,7 @@ env.globalLimitedEntitySetup = () => {
             exmExec: ()=>{
                 if(check("mask", "joy")) {
                     if(!env.targetedEntity.text.includes("JOY_MASK") && env?.stage?.name != "abyss") {
-                        env.targetedEntity.text = env.targetedEntity.text += `\n<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`
+                        env.targetedEntity.text = env.targetedEntity.text += `\n<span definition="${processStringTranslation(`NOTE::'referencing third-party context installation'::JOY_MASK`)}">${processStringTranslation(`::INTERNAL CONTEXT`)}</span>::<span class="bright-color" definition="${processStringTranslation(`ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'`)}">${processStringTranslation(`'hidden via gradient obfuscation'`)}</span>`
                     }
                 }
             },

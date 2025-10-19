@@ -100,6 +100,7 @@ function bh_start({
 		cursorPos: env.pageCursor,
 		pressedKeys: env.pressedKeys,
 	}
+	
 	env.bulletHell.moveWorkerHighData = () => env.bulletHell.moveWorker.postMessage(env.bulletHell.moveWorkerHighDataObj)
 	
 	//every 500ms, send infrequent changes (speed limit, speed divider, window size)
@@ -130,22 +131,28 @@ function bh_start({
 			let pLoc = env.bulletHell.p.getBoundingClientRect()
 			let hitElements = document.elementsFromPoint(pLoc.x + (pLoc.width / 2), pLoc.y + (pLoc.height / 2))
 			var onPlatform = false
+			var safe = false
 
 			hitElements.forEach(el => {
 				if(el.classList.contains("bh_platform") || el.classList.contains("clickable")) { // "elevated" above whatever - elementsFromPoint goes top down, so anything past this is ignored
 					onPlatform = true
-				}
-
-				if(el.classList.contains("bh_blocker") && !onPlatform) {
-					body.classList.add("bh_blocker-active")						
-				} else {
-					body.classList.remove("bh_blocker-active")
+					if(el.classList.contains("bh_safe")) safe = true
 				}
 
 				if(el.classList.contains("bh_damager") && !onPlatform) {
 					bh_hit(env.bulletHell.onHit)
 				}
 			})
+
+			if(safe && !env.bulletHell.platformNoted) {
+				env.bulletHell.platformNoted = true
+				env.bulletHell.p.classList.add('safe')
+				console.log("adding note because safe")
+			} else if(!safe && env.bulletHell.platformNoted) {
+				env.bulletHell.platformNoted = false
+				env.bulletHell.p.classList.remove('safe')
+				console.log("removing note because not safe")
+			}
 
 			//GC cleanup
 			hitElements = null
@@ -168,6 +175,7 @@ function bh_start({
 	env.bulletHell.moveWorker.postMessage({
 		initPos: env.bulletHell.cursorDelta
 	})
+
 	env.bulletHell.moveWorkerLowData()
 }
 
