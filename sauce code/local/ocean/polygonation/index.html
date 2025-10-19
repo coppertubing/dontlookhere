@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1760647475409394634"></script>	
-	<script src="/js/dialogue.js?1760647475409394634"></script>	
-	<script src="/js/globalents.js?1760647475409394634"></script>	
-	<script src="/js/cystStage.js?1760647475409394634"></script>
-	<script src="/js/buddy.js?1760647475409394634"></script>
-	<script src="/js/vn2.js?1760647475409394634"></script>
-	<script defer src="/js/saves.js?1760647475409394634"></script>
+	<script src="/js/corru.js?1760745221789006110"></script>	
+	<script src="/js/dialogue.js?1760745221789006110"></script>	
+	<script src="/js/globalents.js?1760745221789006110"></script>	
+	<script src="/js/cystStage.js?1760745221789006110"></script>
+	<script src="/js/buddy.js?1760745221789006110"></script>
+	<script src="/js/vn2.js?1760745221789006110"></script>
+	<script defer src="/js/saves.js?1760745221789006110"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1760647475409394634'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1760647475409394634'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1760745221789006110'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1760745221789006110'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1760647475</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1760745221</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -353,8 +353,8 @@
 
 <style>
 
-@import url(/css/local/embassy.css?1760647475409394634);
-@import url(/css/local/embassy_global.css?1760647475409394634);
+@import url(/css/local/embassy.css?1760745221789006110);
+@import url(/css/local/embassy_global.css?1760745221789006110);
 @import url(/css/stage/beneath.css);
 @import url(/css/stage/cass.css);
 
@@ -840,7 +840,7 @@ body#party #content::after {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1760647475409394634,
+				cacheval: 1760745221789006110,
 
 				
 				image: "/img/socials/bt.gif",
@@ -1335,7 +1335,7 @@ createEntity({
     name: "kazki's pilot cyst",
     type: "thoughtform",
     image: "/img/local/orbit/dullvessel/pilotsphere_tendrils.gif",
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'another mind suited to utilizing dull limbs';'utilizes a curious non-standard display'</span>`,
 })
@@ -1344,7 +1344,7 @@ createEntity({
     name: "nerve terminal",
     type: "recollection thoughtform portrait-auto portrait-bright",
     image: '/img/local/embassy/parpy/veinterminal.gif',
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'central informational joint of the spire's many listeners and organs';'one of several';'offers little control beyond status reports'</span>`,
 })
@@ -1392,7 +1392,7 @@ createEntity({
     name: "mobile simulacra dispensary",
     type: "recollection thoughtform portrait-auto portrait-bright",
     image: '/img/local/embassy/parpy/mobilebar.gif',
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection','unique scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'similar to a deployed spireseed, though temporary';'unfolds and fixes into loose soil with tendrils'</span>`,
 })
@@ -1401,7 +1401,7 @@ createEntity({
     name: "auxiliaries",
     type: "recollection thoughtform portrait-cover portrait-bright",
     image: '/img/local/embassy/parpy/tempcrowd.gif',
-    text: `::RESPONSIVE THOUGHTFORM
+    text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recollection'
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'missing resources'">::INCOHERENCE DETECTED</span>
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'away-teams and branches of support';'the many limbs of the call research initiative'</span>`,

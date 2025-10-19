@@ -285,6 +285,66 @@
     }
 </style>
 
+<script>
+//block for loading mods as necessary (anything that translates credits for example)
+
+//adaptation to fit a page without the rest of corru.js
+function addResources(resList, i = 0) {
+    document.body.classList.add('loading')
+    if(i == resList.length) {
+        document.body.classList.remove('loading')
+        setTimeout(()=>document.dispatchEvent(new CustomEvent('corru_resources_added', { detail: { resList } })), 500)
+        return
+    }
+
+    let res = resList[i]
+    let resEl
+
+    //if array, may have a 'showif' type exec and skip loading this resource
+    //useful in case of classes
+    if(typeof res == "object") {
+        if(typeof res[1] == "function") {
+            if(!res[1]()) return addResources(resList, i+1);
+            res = res[0]
+        }
+    }
+
+    console.log(res)
+
+    if(res.includes(".js")) { //script
+        resEl = document.createElement('script')
+        resEl.src = `${res}?v=${Date.now()}`
+
+    } else if(res.includes(".css")) { //style
+        resEl = document.createElement('link')
+        resEl.href = `${res}?v=${Date.now()}`
+        resEl.rel = "stylesheet"
+        resEl.type = "text/css"
+    } else { 
+        console.warn(`unable to load resource ${res}, wrong type`)
+    }
+    
+    document.body.appendChild(resEl)
+    resEl.onload = ()=>addResources(resList, i+1)
+    resEl.onerror = (er)=>{
+        addResources(resList, i+1)
+        console.warn(`unable to load resource ${res}, check F12 console for specific issue (most likely cross origin headers failure though)`)
+    }
+}
+
+var flags = { dialogues: {}, dullvessel_position: 'orbit', detectedEntities: {}}
+if(localStorage.getItem('flags') && localStorage.getItem('flags') != "null") {
+    flags = JSON.parse(localStorage.getItem('flags'))
+}
+
+let mods = flags["modList"]
+if(mods) {
+    let modList = mods.split("\n").filter(line => line.trim() !== "")
+    addResources(modList)
+    console.log("loaded mods")
+}
+</script>
+
 
 
 	<!-- i got my eye on you -->

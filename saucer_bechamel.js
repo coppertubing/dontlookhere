@@ -8,6 +8,7 @@ horriblefuckingthing = [
     'hub',
 
     'local/beneath',
+        'local/beneath/car',
         'local/beneath/depths',
         'local/beneath/embassy',
         'local/beneath/parasite',
