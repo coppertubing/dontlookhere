@@ -68,13 +68,6 @@ env.localization = {
    page: {}
 }
 
-env.dialogueActors["corruru"] = {
-    name: "cor-ru",
-    image: "/img/textures/yeyetran.gif",
-    type: "tdone corruru portrait-contain",
-    voice: ()=>{play('talkcroak', 1.75)}
-}
-
 cor_ru = {
     css: `
 @font-face {
@@ -113,13 +106,8 @@ cor_ru = {
 }
 
 
-
-.ru {
-    color: var(--bastard-color) !important;
-}
-
 body[state="corru-loaded"][menu="none"]:not(.in-dialogue)::before, body.loading::after, body.corru-refreshing::after {
-    content: "ПРЕДУПРЕЖДЕНИЕ:'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАЗРЕШЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
+    content: "ПРЕДУПРЕЖДЕНИЕ::'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАСШИРЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
     font-family: spacemono;
     font-size: 0.75em;
     max-width: 600px;
@@ -260,54 +248,32 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     background-image: url(https://coppertubing.github.io/cor-RU/images/hello.gif) !important;
 }
 
-.actor-corrurubonus .dialogue-text {
-    text-transform: uppercase;
-}
-
-.dialogue-message.corruru.dialogue-text, 
-.readout-log .message.corruru {
-    background: url(/img/textures/fadein.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
-    background-size: 150%, auto;
-    text-shadow: 1px 1px var(--neutral-color);
-    font-size: 1.25em;
-    letter-spacing: 0.25em;
-}
-
-.dialogue-message.corruru .dialogue-portrait::after {
-    background-size: 125%;
+#realgrid .cor-rusign {
+    width: 40%;
+    height: 40%;
+    cursor: alias;
+    background: url(/img/mui/marblynryetarget_microcyan.svg), var(--signImage);
+    background-repeat: no-repeat;
     background-position: center;
+    background-size: 100% 100%, contain;
+    animation: TINYHOVER 5s ease-in-out infinite alternate;
+    --baseTransform: translateZ(10px);
 }
-
-.dialogue-message.corruru, .message.corruru {
-    --bright-color: var(--bastard-color);
-}
-
-.dialogue-message.corruru .dialogue-text {
-    padding: 0.3em;
-}
-
-.dialogue-message.corruru {
-    --background: url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
-    --color: var(--bastard-color);
-    text-shadow: 1px 1px var(--neutral-color);
-    font-size: 1.25em;
-    letter-spacing: 0.25em;
-}
-    
-.dialogue-message.corruru .dialogue-portrait::before {
-    width: 100%;
-    right: 0;
-    border-radius: 0;
-    transform: translateX(100%);
-}
-
-.dialogue-message.corruru, .message.corruru {
-    color: var(--bright-color);
-}  
-    
-.message.corruru img {
+.mui-active #realgrid .cor-rusign::after, #realgrid .cor-rusign:hover::after {
+    content: "";
+    background-color: #ffffff38;
+    position: absolute;
+    width: 150%;
+    height: 75%;
+    top: -25%;
+    left: -25%;
     border-radius: 100%;
-}`,
+    animation: SPIN 10s linear infinite;
+    border: 2px dotted var(--neutral-color);
+    backface-visibility: hidden;
+    --webkit-backface-visibility: hidden;
+}
+`,
 
     // i like colors
 

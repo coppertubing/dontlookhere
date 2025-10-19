@@ -31,10 +31,10 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
         /*sourceless*/ 'did i say something to imply that?': "",
     }, 
     entityDescriptions: {
-        "return": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';'experiential bridge'`,
-        "continue": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';'experiential bridge'`,
+        "return": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'`,
+        "continue": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'`,
 
         "bench": cor_ru.entity_menu["bench"].desc,
         "tree": cor_ru.entity_menu["tree"].desc,
@@ -400,6 +400,210 @@ start
 
 SKIP::
 END::ratween(env.localization.page['aquarium'].bgm, 1)
+`)
+
+env.localization.page['aquarium'].dialogues["arch"] = generateDialogueObject(`
+start
+    sourceless
+        the clear arch above us bring the embassy's perspective projections to mind
+            EXEC::content.classList.add("slowcam");setCam({offsetCamera: "rotateX(20deg)", height: 2, rotation: 90, x: 3, y: 8});playerMoveTo(3, 8, "left");ratween(env.bgm, 0.8)
+        activity amongst the water fauna is surely reduced due to the time,
+        but some shapes still wander through the habitat, their strange skin glimmering in the overhead light
+        i look up to my side, expecting to see isabel observing the larger one passing overhead
+            EXEC::setCam({offsetCamera: "rotateX(10deg)", height: 1.75, rotation: 145, x: 3, y: 8.5})
+        but her eyes are distant, closing for long periods, then quickly blinking
+        is she lost in thought? the motion is distantly familiar
+        no... no, she is tired, her body fighting for rest
+        larval exhaustion - a feeling left so far in the past that it nearly inspires envy
+        of course, her eyes refocus as they shift down to me, staring straight at her
+    
+    sleepybel
+        Haha, what?
+    
+    akizet
+        has the day treated you so poorly?
+
+    sourceless
+        day? that is not what i intended to, ah...
+        the disguise-skin must attempt to adjust language for me
+
+    sleepybel
+        Huh? What are you...
+        Oh, right. Yeah, sorry. It's been a long one.
+        It's... We don't have to talk about it. Work stuff.
+        We're here to forget about all of that, remember?
+
+    akizet
+        clearly it weighs upon you, my friend
+        would it help to speak of it?
+
+    sourceless
+        for a moment, the darkened hall is silent
+        only distant and gentle habitat-maintaining machinery echoes, burbling as a river would
+        isabel hesitates to break her own rule, but my expression convinces her to pass the threshold
+        she seats us both upon one of the archway's benches
+            EXEC::setCam({offsetCamera: "rotateX(10deg)", height: 1.5, rotation: 145, x: 3, y: 8})
+    
+    sleepybel
+        Okay, just a little. Then we're back to ignoring it.
+    
+    akizet
+        of course, hehe
+    
+    sleepybel
+        So, I was working with a couple.
+        And they wanted to do this big, fancy wedding this month.
+        Like, covered in flowers. Wanted some exotic ones that I had to source and import...
+        We'd been planning it for months, and they paid an upfront fee...
+        Half of the total. We talked about it all.
+        Maybe that was stupid in hindsight, but the money was good. It made sense at the time.
+        And today, I don't know, they cancelled it--not the wedding, but the flower part.
+        Wouldn't even tell me why. Had to run through and try to cancel orders, get refunds...
+        But I was really relying on that second half to break even this month.
+
+    sourceless
+        through her explanation, her eyes drift to follow shapes moving in the dark water
+        but even as i try my best to follow her story,
+        her description of their commerce is quick to shake my understanding
+        the concepts are familiar, but their application here...
+    
+    akizet
+        frustrating... it is unjust for them to leave you without explanation
+        but what do you mean by "break even"?
+    
+    sourceless
+        isabel shakes her head, sighing, landing her gaze upon me without emotion
+    
+    sleepybel
+        It's expensive here. You know, rent--for the store, for my own place, for...
+
+    sourceless
+        with a sharp exhale and chuckle, an incredulous smile twists out of her disappointment
+
+    sleepybel
+        Wait, Aki, you did have money back home, right?
+        Do you get paid for your job here?
+        I'm only just realizing, this has... never really come up.
+        I mean, I guess with Gordon back when we met, but that was different.
+    
+    sourceless
+        she surely does not mean it in the way that i understand
+        for a moment, my attention drifts as i scour my mind for the right words
+        i have seen cousins exchange their currency plenty of times, yes, but...
+        the implications of this trade upon their lives had never set in
+        oh, but isabel has erupted with laughter
+        again, my disguise-skin has twisted its expression into one of intense, distant focus
+        is it so funny that i struggle to explain?
+    
+    akizet
+        yes! yes, we did, hehe, forgive me--
+        ah, there, i have said it again...
+
+    sleepybel
+        Ha.
+    
+    akizet
+        it was not on an individual level, exactly, isabel
+        it was only after sfer had been, ah, 'invented', that we had a true currency to use
+        and even then, it was primarily for inter-city trade
+        before that, especially during my larval <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">years</span>, 
+        we simply exchanged raw resources, food, or favors for the same from other cave-cities
+    
+    sourceless
+        i pause, but she expects me to continue, i see it in her fascination
+        what is it she seeks to know?
+        ah--yes, it is the inverse of my confusion that grips her
+
+    akizet
+        ...but, on an individual level, these matters were irrelevant
+        the oltazni council allocated resources where they were needed
+        essentials were provided, and artisans might demand small trades or favors, but...
+        all worked towards our common goal of survival and community
+        even in my travels, most other collectives were the same
+        so prevalent is this, that some suspect it to be an instinct in our larval minds
+        <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">today</span>, our interstellar operations operate like one large collective, so,
+        it is much the same - at least for laborers like myself
+        but i imagine the council must drive themselves mad with modern allocation decisions, in all their complexity
+        i believe they have significant cognitive enhancements, 
+        or perhaps other automated tools, but i have never investigated in detail
+    
+    sourceless
+        i deliver this knowledge with a matter-of-fact tone, as it is true mundanity
+        these matters never occupy my mind, for i was never a trade-runner
+        yet isabel absorbs every word as the bright parasites drink water
+        far more awake, focused - but there is something about her eyes...
+        is this not what she wanted to hear?
+    
+    sleepybel
+        Huh. That's cute.
+    
+    sourceless
+        these words pierce me--a compliment, though not spoken as one
+        have i only worsened her mood?!
+
+    sleepybel
+        I almost wish it worked that way here, but...
+        It never would.
+        We're all on our own, Aki.
+
+    sourceless
+        pain bleeds through the nonchalance of her words
+        Å+¾ð…!Œ
+        i should not have pressed her
+        one more little death to haunt me
+
+    akizet
+        i... i am sorry, isabel
+    
+    sourceless
+        if she must hunt for her own currency, and she struggles so,
+        perhaps i could help?
+        already, long-dead instincts spark within me: the urge to hunt
+        surely the cousins must store mass quantities somewhere
+        one cloaking skin, and the right moves, and maybe i could...
+        or! perhaps it could be manufactured directly?
+
+    sleepybel
+        No, it's not--ugh, I'm sorry too, Aki.
+        It's just been a hard few months for me on the business side of things.
+        Thanks for sharing that, though. It's always interesting hearing about your home.
+    
+    sourceless
+        she coils an arm around my shoulder, pulling me into a half embrace,
+        shelving my thoughts of the hunt
+        i return the gesture gently - she could use the comfort
+    
+    sleepybel
+        It's weird how easy it is to forget you're from another world, sometimes.
+        Maybe things will work out, eventually.
+        It's been going pretty well so far, so, 
+        I just need to hold out until you aliens fix everything, right?
+
+    sourceless
+        the tension is shed with some brief laughter between us
+        she is not wrong
+        it has always been the intention that we could help, long-term
+        but that crosses far past the boundary of what we ought to ignore for this time
+        and so, a silent moment of observation passes, our attention on the waters
+        we leave the topic behind happily
+        but her exhaustion remains an issue - something to be solved
+        i rise, and she joins me
+            EXEC::setCam({offsetCamera: "rotateX(0deg)", height: 1.5, rotation: 145, x: 3, y: 8})
+    
+    akizet
+        let us stop by that 'restaurant'
+    
+    sleepybel
+        Haha!
+        That's not how you say it, Aki.
+        But yeah, let's go.
+        
+    RESPONSES::akizet
+        continue<+>END
+            EXEC::setCam()
+
+SKIP::setCam()
+END::content.classList.remove("slowcam");ratween(env.bgm, 1)
 `)
 
 env.localization.page['aquarium'].dialogues["restorounte"] = generateDialogueObject(`

@@ -2056,7 +2056,62 @@ getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
 
 
 
+/* WIP ZONE also i took some css and an actor from cor-RU.js cause they are useless
+env.dialogueActors["corruru"] = {
+    name: "cor-ru",
+    image: "/img/textures/yeyetran.gif",
+    type: "tdone corruru portrait-contain",
+    voice: ()=>{play('talkcroak', 1.75)}
+}
+    
+.actor-corrurubonus .dialogue-text {
+    text-transform: uppercase;
+}
 
+.dialogue-message.corruru.dialogue-text, 
+.readout-log .message.corruru {
+    background: url(/img/textures/fadein.gif), url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
+    background-size: 150%, auto;
+    text-shadow: 1px 1px var(--neutral-color);
+    font-size: 1.25em;
+    letter-spacing: 0.25em;
+}
+
+.dialogue-message.corruru .dialogue-portrait::after {
+    background-size: 125%;
+    background-position: center;
+}
+
+.dialogue-message.corruru, .message.corruru {
+    --bright-color: var(--bastard-color);
+}
+
+.dialogue-message.corruru .dialogue-text {
+    padding: 0.3em;
+}
+
+.dialogue-message.corruru {
+    --background: url(/img/textures/corruripplebastard.gif), url(/img/textures/badstatic.gif);
+    --color: var(--bastard-color);
+    text-shadow: 1px 1px var(--neutral-color);
+    font-size: 1.25em;
+    letter-spacing: 0.25em;
+}
+    
+.dialogue-message.corruru .dialogue-portrait::before {
+    width: 100%;
+    right: 0;
+    border-radius: 0;
+    transform: translateX(100%);
+}
+
+.dialogue-message.corruru, .message.corruru {
+    color: var(--bright-color);
+}  
+    
+.message.corruru img {
+    border-radius: 100%;
+} */
 // --- hey buddy
 env.dialogueActors["corrurubonus"] = {
     name: "cor-ru",

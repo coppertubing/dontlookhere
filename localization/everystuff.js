@@ -793,8 +793,8 @@ env.localization['strings'] = {
 
     "return": "назад",
     "mindspike data management": "управление данными мыслекола",
-    "import file": "импортировать",
-    "export file": "экспортировать",
+    "import file": "импорт файла",
+    "export file": "экспорт файла",
     "select": "выбрать",
     "delete": "удалить",
     "advanced operations": "продвинутые операции",
