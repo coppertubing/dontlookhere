@@ -18,7 +18,7 @@
 
         (все упоминания - никнеймы в дискорде)
 
-    в данный момент доступна адаптация до конца EP0
+    на данный момент доступна адаптация до конца EP0
 
 
     не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
@@ -308,6 +308,12 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         }
         return
     },
+    processEntityNamesSafeguard: function () { // --- bc i noticed sometimes they just wont get translated correctly. wack
+        document.querySelectorAll("#content .target").forEach(el=>{
+            let ent = el.getAttribute("entity")
+            if(ent) { el.setAttribute("entaltname", processStringTranslation(ent))}
+        })
+    },
     processStatic: function (force) {
         cor_ru.processSpecificTranslation(document.querySelectorAll('title'));
         cor_ru.processSpecificTranslation(document.querySelectorAll(".enter"), 'page');
@@ -391,10 +397,12 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
                 processTranslation();
                 processTranslation(document.querySelector(`#mindspike-scanner`));
                 processTranslation(document.querySelector(`#advance-notice`));
-                cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname"); // safeguard bc i noticed sometimes they just wont get translated correctly. wack
+                cor_ru.processEntityNamesSafeguard();
 
-                if (document.querySelector("#combat")) processTranslation(document.querySelector(`#combat`), "force") // force because things change in combat quite a lot so it does need to ignore the tdone
-                if (document.querySelector("#combat")) cor_ru.processSpecificTranslation(document.querySelectorAll(".floater"), "amt")
+                if (document.querySelector("#combat")) {
+                    processTranslation(document.querySelector(`#combat`), true) // force because things change in combat quite a lot so it does need to ignore the tdone
+                    cor_ru.processSpecificTranslation(document.querySelectorAll(".floater"), "amt")
+                }
 
                 if (consolething != undefined) console.log(consolething[0], consolething[1]);
             },
@@ -501,7 +509,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 
                     cor_ru.processSpecificTranslation("mindpike");
                     cor_ru.processSpecificTranslation(document.querySelectorAll(".mindsci-status"), "definition");
-                    cor_ru.processSpecificTranslation(document.querySelectorAll("#content .target"), "entaltname") // safeguard bc i noticed sometimes they just ? wont get translated correctly. wack
+                    cor_ru.processEntityNamesSafeguard();
 
                     cor_ru.observer.common.observe();
                     cor_ru.observer.bodychildren.observe();
