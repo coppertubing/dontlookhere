@@ -183,17 +183,13 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
     content: "ПРАВАЯ КНОПКА МЫШИ";
 }
 
-.target.always-targeted,
-.target.always-targeted::after,
-#realgrid .target.always-targeted::before,
-.always-targeted .target,
-.always-targeted .target::after,
-.always-targeted #realgrid .target::before {
-    opacity: 1;
+.target.always-targeted[entaltname]::after,
+.target.targeted[entaltname]::after,
+#realgrid .target.targeted[entaltname]::before,
+.always-targeted .target[entaltname]::after,
+.always-targeted .target[entaltname]::before {
     content: attr(entaltname) !important;
-    white-space: nowrap;
 }
-
 
 @media screen and (max-width: 799px), (max-height: 599px) {
 	html:not(.mobile):after, html:not(.mobile):before {
@@ -251,8 +247,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 #realgrid .cor-rusign {
     width: 40%;
     height: 40%;
-    cursor: alias;
-    background: url(/img/mui/marblynryetarget_microcyan.svg), var(--signImage);
+    cursor: alias;;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100% 100%, contain;

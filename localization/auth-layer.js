@@ -26,7 +26,7 @@ env.localization.page['hello'] = {dialogues: {},
     ::НЕРАЗБЕРИМАЯ ПОДПИСЬ
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'фрагментированная сущность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
         "sentry": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ:'авторизация'
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'авторизация'
     <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'низкая связность'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`,
         "gate::for you": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
     ::ПУНКТ НАЗНАЧЕНИЯ::'неизвестное внутреннее мыслепространство'
@@ -40,7 +40,7 @@ env.localization.page["hello"].dialogues["enter"] = generateDialogueObject(`
 start
     moth
         боже
-        ты в порядке? сейчас была какая-то просто безумная активность
+        ты в порядке? активность была просто безумная
         мне такое раньше не встречалось... кажется, к ней обычно не должны подключаться 
 
     sys
@@ -143,7 +143,7 @@ ____SHOWIF::[["hello__sentry-whoisverified"]]
         ИЗВИНИ МЫ НЕ СОВСЕМ ПОНИМАЕМ ОТКУДА ВЗЯЛАСЬ ЭТА АГРЕССИЯ
             EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
         ДУМАТЬ ТАК ТРУДНО
-        ЕСТЬ ЛИ У ТЕБЯ КАКОЕ-НИБУДЬ ТОПЛИВО
+        ЕСТЬ ЛИ У ТЕБЯ ТОПЛИВО
 ____END
 
     RESPOBJ::generalsentryResponses
@@ -158,8 +158,8 @@ ____SHOWIF::[["hello__sentry-corrupurpose", false]]
         ТЫ НАВЕРНЯКА ЗНАЕШЬ ИХ ВЛАДЕЛЬЦЕВ? КАК ЕЩЁ ТЕБЕ УДАЛОСЬ ПОДКЛЮЧИТЬСЯ
         МОЖЕТ ТЕБЕ СТОИТ ПОГОВОРИТЬ С...
         НЕТ НЕТ НЕТ ТЕБЕ НУЖНО АВТОРИЗОВАТЬСЯ ЧТОБЫ ЗНАТЬ ТАКОЕ
-        ЗАБУДЬ ЧТО МЫ СКАЗАЛИ
-        ПОЧЕМУ ЭТО ТАК ТРУДНО ТЕПЕРЬ
+        ЗАБУДЬ ВСЁ ЧТО МЫ СКАЗАЛИ
+        ПОЧЕМУ МНЕ ВДРУГ ТАК ТЯЖЕЛО
 ____END
 
 ____SHOWIF::[["hello__sentry-corrupurpose"]]
@@ -170,7 +170,7 @@ ____SHOWIF::[["hello__sentry-corrupurpose"]]
         НАМ И ТАК ТРУДНО ДУМАТЬ БЕЗ ТОГО ЧТО ТЫ В НАС ТЫЧЕШЬ
             EXEC::change('hello_sentry_idiot', true);document.querySelector('.maineye .eye').classList.remove('squint')
         ИЗВИНИ МЫ ПРАВДА НЕ ПОНИМАЕМ ОТКУДА ВЗЯЛАСЬ ЭТА АГРЕССИЯ
-        У ТЕБЯ ЕСТЬ ТОПЛИВО
+        ЕСТЬ ЛИ У ТЕБЯ ТОПЛИВО
 ____END
 
     RESPOBJ::generalsentryResponses

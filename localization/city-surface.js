@@ -21,6 +21,8 @@ env.localization.page['citystreet'] = {dialogues: {},
         "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"", // --- можете перевести
         "this is definitely looking like the old west coast HQ": "", // --- можете перевести
         "about the city": "о городе",
+
+        "'skipping ahead...'": "'пропуск...'",
         
 
         "say hello": "сказать привет",
@@ -89,7 +91,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "You might like it!": "Вам могло бы понравиться!",
 
         /*akizet*/ "you do know that i--": "вы ведь знаете, что я--",
-        /*envoy*/ "Go on, order something! Just give it a try.": "Ну же, закажите что-нибудь! Просто дайте шанс.",
+        /*envoy*/ "Go on, order something! Just give it a try.": "Ну же, закажите что-нибудь! Хотя бы попробуйте.",
         /*envoy*/ "I know you don't exactly have the same needs we do...": "Я знаю, у Вас нет точно тех же потребностей, что у нас...",
         /*envoy*/ "But you can simulate taste, right?": "Но вы способны симулировать вкус, верно?",
         /*envoy*/ "Getting out here, with the people, acting like we do?": "Выбираться куда-нибудь в люди, вести себя как мы?",
@@ -112,7 +114,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "Pretty good, right?": "Недурно, а?", 
         /*akizet*/ "it will do": "сойдёт",
         /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
-        /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу Зова?",
+        /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу зова?",
         /*akizet*/ "oh yes, but... let us talk of it in private": "а, да, но... давайте обсудим это наедине",
 
 
@@ -251,8 +253,8 @@ where
     
     moth
         ну я не думаю что на земле существует хоть одна улица которая выглядит вот так лол
-        но вообще, она же была одним из тех разъездных дипломатов в те времена когда их еще рассылали
-        хз как новая зеландия тогда выглядела, но я знаю у бюро был там офис
+        но вообще, она же была одним из тех разъездных дипломатов в те времена когда их ещё рассылали
+        хз как новая зеландия тогда выглядела, но я знаю что у бюро был там офис
             SHOWIF::["citystreet__envoy-talkpeople", false]
         так что мб это бессвязное пространственное воспоминание о том месте
             SHOWIF::["citystreet__envoy-talkpeople", false]
@@ -469,7 +471,7 @@ start
             SHOWONCE::
         Будь это Чикаго, или Нью-Йорк, или что ещё, мы бы Вас на крышу приземлили, но...
             SHOWONCE::
-        Учитывая, как загружено бюро, у нас было так много гостей-обесков,
+        В последнее время бюро очень загружено, и у нас было так много обесков-гостей,
             SHOWONCE::
         Что теперь Ваш народ считай что часть города.
             SHOWONCE::
@@ -479,7 +481,7 @@ start
             SHOWONCE::
 
     envoy
-        И, говоря начистоту, это способствует общественному имиджу. Видеть вас здесь, среди людей...
+        И, честно говоря, это способствует общественному имиджу. Видеть вас здесь, среди людей...
             SHOWONCE::
         Помогает придушить ту грёбаную вирусную панику.
             SHOWONCE::
@@ -619,7 +621,7 @@ env.localization.page['citystreet'].dialogues["walker3"] = generateDialogueObjec
 start
     sourceless
         Я ОСТАНАВЛИВАЮСЬ ВОЗЛЕ ВХОДА В БЮРО, ЧТОБЫ РАССМОТРЕТЬ СВЕТЛОГО БЛИЗНЕЦА, ОДЕТОГО, КАК ПОСОЛ
-        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАТЫЙ К ЕГО ЛИЦУ, НЕ ЗАМЕЧАЯ НАС
+        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАВ К ЕГО ЛИЦУ И НЕ ЗАМЕЧАЯ НАС
 
     cloaked streetwalker
         ...не сдвинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Невыносимо просто.
@@ -659,7 +661,7 @@ start
         Вообще-то, Оливер, это Акизетеше! Инициатива "Сигнал".
 
     cloaked streetwalker
-        Ахереть! Не знал, что тебя назначили на это.
+        Ахереть! Не знал, что тебя на это назначили.
         Рад встрече, Акизетеше!
 
     sourceless
@@ -1147,13 +1149,13 @@ ep1extension
         НО ЗАТЕМ ОН НАЧИНАЕТ ГОВОРИТЬ--ОЧЕНЬ ТИХО
     
     envoy
-        Если говорить начистоту--ах, это значит "предельно честно"--
-        Дело в том, что тех часть довольно суховата.
+        Если начистоту--э, это значит "предельно честно"--
+        Говорят, что тех. часть довольно суховата.
         Ваш технический отдел не особо желает сотрудничать с нами.
-        ...Не будет ли у Вас неприятностей из-за этого?
+        ...Не будет ли у Вас из-за этого неприятностей?
     
     funfriend
-        БОЛЬШЕ, ЧЕМ ОН СЕБЕ ПРЕДСТАВИТЬ МОЖЕТ! АХАХА
+        БОЛЬШЕ ЧЕМ ОН СЕБЕ ПРЕДСТАВИТЬ МОЖЕТ! АХАХА
     
     akizet
         ну,
@@ -2426,7 +2428,7 @@ if (check("PAGE!!cor_ru_roomp") != true) { // avoiding infinite recursion cause 
     cor_ru.envoyChat = env.citystreet.envoyChat;
     env.citystreet.envoyChat = (blockedoff, ending = false) => {
         cor_ru.envoyChat(blockedoff, ending);
-        if (blockedoff) processTranslation(document.querySelectorAll("#content"), true)
+        setTimeout(() => {cor_ru.processEntityNamesSafeguard();}, 1)
     }
 }
 
@@ -2660,7 +2662,7 @@ env.stages['city_street3'] = {
                 html: `<span class='cor-rusign' definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'нажмите кнопку для';'изображение рыбы'"></span>`,
                 dyp: {
                     image: "/",
-                    transform: 'translateZ(var(--tile3)) translate(var(--tile-5)) translateY(-95px) translateZ(3px) rotateY(90deg)'
+                    transform: 'translateZ(var(--tile3)) translate(var(--tile-5)) translate(-15px) translateY(-95px) translateZ(0px) rotateY(90deg)'
                 }
             } 
         },

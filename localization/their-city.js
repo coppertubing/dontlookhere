@@ -51,13 +51,13 @@ where
     moth
         честн говоря не думаю, что это какой-то конкретный город
         выглядит как куча всего, смешанного вместе... типа как символы городов, а не их настоящие изображения
-            SHOWIF::[['hub__funfriend-kickout', false]]
+            SHOWIF::[['hub__funfriend-kickoutq', false]]
         раз эта циста голодает, может быть воспоминания акизетеше о наших городах сбились вместе чтобы выжить
-            SHOWIF::[['hub__funfriend-kickout']]
+            SHOWIF::[['hub__funfriend-kickoutq']]
         мы наблюдали такое поведение на физическом уровне в голодающих корруцистозных устройствах,
-            SHOWIF::[['hub__funfriend-kickout']]
+            SHOWIF::[['hub__funfriend-kickoutq']]
         так что могу поспорить что оно распространяется и на психический
-            SHOWIF::[['hub__funfriend-kickout']]
+            SHOWIF::[['hub__funfriend-kickoutq']]
 
     RESPOBJ::mthcityresp
 `)
