@@ -58,7 +58,57 @@
     thank you for using our mod <3
 */
 
-
+if (window.location.pathname == '/credits') {
+    devcol = `
+<style>
+@font-face {
+    font-family: 'spacemono';
+    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
+    font-weight: normal; 
+    font-style: normal;
+    font-display: swap;
+}
+</style>
+<div class="creditblock developers">
+    <h2 definition="оригинальная команда и старые друзья">Corru Crew</h2>
+    <ul>
+        <li><a href="https://corru.works" target="_blank"><img src="/img/da_fiend.png" /> corru.works:</a> <span definition="программист/главный писатель/создатель музыки/визуальных ресурсов... я типа всё делаю лол" style="border-bottom: 1px dotted;display: inline-block;padding-bottom 2px;">Архитектор</span></li>
+        <li><a href="https://pocl.vip" target="_blank"><img src="/img/da_pocl.png" /> pocl.v:</a> Дизайн персонажей и главный художник подписей</li>
+        <li><a href="https://www.jacktenbusch.com" target="_blank"><img src="/img/da_tonk.png" /> JakkRabbitArt:</a> Творчество и поддержка иконок</li>
+        <li><a href="https://uh.fyi" target="_blank"><img src="/img/da_sha.png" /> Shaman:</a> Писательская поддержка и тестирование</li>
+        <li><a href="https://uh.fyi/redrealm" target="_blank"><img src="/img/da_fool.png" /> red:</a> Писательская поддержка и тестирование</li>
+        <li><span definition="у загадочного шейдер-мена нет сайта сорян"><img src="/img/da_kaz.png" /> Kazne:</span> Анимированные текстуры и шейдеры</li>
+    </ul>
+    <h2 definition="direct development/asset collaborators of significant proportion">Corruborators</h2>
+    <ul>
+        <li><a href="https://soundcloud.com/saiiko2" target="_blank"><img src="/img/da_saiiko.png" /> saiiko2</a>: Музыкальная поддержка <label>E3A2, E4</label></li>
+        <li><a href="https://sola.nekoweb.org/index.html" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
+        <li><a href="https://rainbowcutieo3o.neocities.org/" target="_blank"><img src="/img/da_bo.png" /> RainbowCutieo3o</a>: Творчество и поддержка дизайна персонажей <label>E4</label>, тестирование <label>E3A2, E4</label></li>
+    </ul>
+</div>
+<div class="creditblock contributors">
+    <h2 definition="единичные работы и упоминания других крутых людей">Дополнительные Вклады</h2>
+    <ul>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание "Jokzi Ozo" темы</li>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/ОБРАМЛЕНИЕ/</li>
+        <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octo</span></li>
+        <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4</label> <span class="denselist">Flanburgr, Ryanatorx, Novaenia, Octo</span> + <label>E4A1</label> <span class="denselist">rosy, spdx, anki</span></li>
+        <li><label class="codehelp">(КОД)</label><label>ВСЕ</label> <a href="https://marbelynrye.000.pe/" target="_blank">marbelynrye</a>: Огромное количество тестирования багов и предложений по коду</li>
+    </ul>
+</div>`
+    fund = `
+<h2 definition="дражайшие финансовые спонсоры, без которых нас бы здесь не было">Fundfriends</h2>
+<em>все, кто когда-либо поддерживал проект на <a href="https://ko-fi.com/corruworks" target="_blank">ko-fi</a> на уровне fundfriend!!</em>
+    `
+    document.querySelector(".developers").remove()
+    document.querySelector(".contributors").remove()
+    document.querySelector("main").insertAdjacentHTML("afterbegin", devcol)
+    document.querySelector(".fundfriends :first-child").remove()
+    document.querySelector(".fundfriends :first-child").remove()
+    document.querySelector(".fundfriends").insertAdjacentHTML("afterbegin", fund)
+    throw new Error("hi dont mind me cor-RU is not supposed to load properly in credits")
+}
 
 env.localization = {
    dialogues: {},
@@ -554,47 +604,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         if (env.menu["system-menu"].querySelector(".devs.cor-ru") == null) env.menu["system-menu"].querySelector(".devs").insertAdjacentHTML('afterend', cor_ru.devElement)
     },
 
-    // for credits
-    credits: `
-        <div class="creditblock developers">
-            <h2 definition="оригинальная команда и старые друзья">Corru Crew</h2>
-            <ul>
-                <li><a href="https://corru.works" target="_blank"><img src="/img/da_fiend.png" /> corru.works:</a> <span definition="программист/главный писатель/создатель музыки/визуальных ресурсов... я типа всё делаю лол" style="border-bottom: 1px dotted;display: inline-block;padding-bottom 2px;">Архитектор</span></li>
-                <li><a href="https://pocl.vip" target="_blank"><img src="/img/da_pocl.png" /> pocl.v:</a> Дизайн персонажей и главный художник подписей</li>
-                <li><a href="https://www.jacktenbusch.com" target="_blank"><img src="/img/da_tonk.png" /> JakkRabbitArt:</a> Творчество и поддержка иконок</li>
-                <li><a href="https://uh.fyi" target="_blank"><img src="/img/da_sha.png" /> Shaman:</a> Писательская поддержка и тестирование</li>
-                <li><a href="https://uh.fyi/redrealm" target="_blank"><img src="/img/da_fool.png" /> red:</a> Писательская поддержка и тестирование</li>
-                <li><span definition="у загадочного шейдер-мена нет сайта сорян"><img src="/img/da_kaz.png" /> Kazne:</span> Анимированные текстуры и шейдеры</li>
-            </ul>
-            <h2 definition="direct development/asset collaborators of significant proportion">Corruborators</h2>
-            <ul>
-                <li><a href="https://soundcloud.com/saiiko2" target="_blank"><img src="/img/da_saiiko.png" /> saiiko2</a>: Музыкальная поддержка <label>E3A2, E4</label></li>
-                <li><a href="https://sola.nekoweb.org/index.html" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
-                <li><a href="https://rainbowcutieo3o.neocities.org/" target="_blank"><img src="/img/da_bo.png" /> RainbowCutieo3o</a>: Творчество и поддержка дизайна персонажей <label>E4</label>, тестирование <label>E3A2, E4</label></li>
-            </ul>
-        </div>
-        <div class="creditblock contributors">
-            <h2 definition="единичные работы и упоминания других крутых людей">Дополнительные Вклады</h2>
-            <ul>
-                <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание "Jokzi Ozo" темы</li>
-                <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/ОБРАМЛЕНИЕ/</li>
-                <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octo</span></li>
-                <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4</label> <span class="denselist">Flanburgr, Ryanatorx, Novaenia, Octo</span> + <label>E4A1</label> <span class="denselist">rosy, spdx, anki</span></li>
-                <li><label class="codehelp">(КОД)</label><label>ВСЕ</label> <a href="https://marbelynrye.000.pe/" target="_blank">marbelynrye</a>: Огромное количество тестирования багов и предложений по коду</li>
-            </ul>
-        </div>
-        <div class="creditblock fundfriends">
-            <h2 definition="дражайшие финансовые спонсоры, без которых нас бы здесь не было">Fundfriends</h2>
-            <em>все, кто когда-либо поддерживал проект на <a href="https://ko-fi.com/corruworks" target="_blank">ko-fi</a> на уровне fundfriend!!</em>
-            <ul></ul>
-        </div>
-        <div class="creditblock contributors developers">
-            <ul>
-                <li><label>(???)</label><label>E3A2</label> Flan</li>
-            </ul>
-        </div>
-    `,
-
     // loading and updating stuff as we go
 
     list: {
@@ -764,7 +773,7 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speaking: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speakers: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
 console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {

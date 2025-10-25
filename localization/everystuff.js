@@ -859,7 +859,7 @@ env.localization['strings'] = {
     "выглядит так, будто интервью продолжает поток памяти, а не сбрасывает его полностью. может стоит довести его до конца и посмотреть не откроются ли там какие ещё нейронные пути",
 
     "that ship area seemed pretty empty for the amount of data your spike pulled, check it again":
-    "тот корабль показался мне слишком пустым для того количества данных, которое извлёк твой мыслекол. оглядись там ещё разок",
+    "тот корабль показался мне слишком пустым для количества данных, которое извлёк твой мыслекол. оглядись там ещё разок",
 
     "i'm seeing a lot of data in the ocean area for what we saw, did you check everything there?":
     "я вижу ещё целую кучу данных в океане, мы там точно всё проверили?",
@@ -893,7 +893,7 @@ env.localization['strings'] = {
     "нам надо разобраться, как сохранить эту штуковину в живых. думаю тебе стоит поговорить с той развледружной фигнюшкой, у неё может оказаться пара идеек",
 
     "there's some really strange activity in that depths thoughtspace, like it's constantly being changed. your mindspike isn't alerting you to it because it's happening like a thousand times a second. look for anything at all in there":
-    "тут чё-то реально странное с глубинами, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. порыскай там хоть что-нибудь",
+    "тут чё-то реально странное с глубинами, они как будто постоянно изменяются. твой мыслекол не уведомляет тебя потому что это происходит ну типа тыщу раз в секунду. поищи там хоть что",
 
     "i saw some activity when you told the vessel to 'dive', something is definitely changing in the ocean. try and find what it is":
     "тут подскочила активность когда судно серое нырнуло, что-то точно изменилось в океане. попробуй разузнать, что это",
@@ -908,7 +908,7 @@ env.localization['strings'] = {
     "проверь что там с пилотной цистой на корабле, я помню там были какие-то искажённые данные",
 
     "well your spike reported activity in the dull vessel thoughtform, why not check that out? our friend seems to have changed something there":
-    "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? твоя таинственная улыбка похоже что-то изменила",
+    "ну, твой мыслекол сообщил о какой-то деятельности в мыслеформе судна серое, почему бы не разведать там обстановку? наша таинственная улыбка похоже что-то изменила",
 
     // ep1
     "if you're talking about this thoughtform, try interacting with akizet--you'll need to be zoomed out":
