@@ -387,7 +387,7 @@ start
         simple, right?!     звучит легко, не так ли?
 
     bsteli::bstrd
-        IT'S GONNA BE SO FUN!!!     ЭТО БУДЕТ ОЧЕНЬ ВЕСЕЛО!!!   оч весело?
+        IT'S GONNA BE SO FUN!!!     БУДЕТ ОЧЕНЬ ВЕСЕЛО!!!   оч весело?
         ahahaha!!     ахахаха!!
     
     bsteli
@@ -424,7 +424,7 @@ start
         one, to be the recollection locus... which i am talking to right now     одну в качестве recollection locus... с ней я сейчас и разговариваю
 
     bsteli::concern
-        does it hurt, being like that?     больно ли это?
+        does it hurt, being like that?     больно ли тебе?
     
     self
         feels weird but it's fine
@@ -453,7 +453,7 @@ start
         all it wants is to make a fun game
     
     bsteli::concern
-        that's all...?     это всё...?
+        that's all...?     и всё...?
         i thought it was benevolent, perhaps a new friend...     мне он казался доброжелательным, может даже новым другом...
     
     bsteli::happy
@@ -466,7 +466,7 @@ start
         but please know, from what i have seen,     но пожалуйста, знай, что, судя по увиденному мной, //ААА ЗАПЯТЫЕ
         this journey will be treacherous and difficult     этот путь будет опасным и сложным
         even if you fail, do not lose spirit     даже если проиграешь, не теряй надежд
-        we are within something called an 'iteration' - a daemon-controlled loop     мы находимся в кое-чём под названием "итерация" - это петля под контролем демонов
+        we are within something called an 'iteration' - a daemon-controlled loop     мы находимся в кое-чём под названием "итерация" - петле под контролем демонов
         should the vessel be destroyed, everything within will reset to before!     если судно уничтожат, всё в ней вернётся к изначальному состоянию!
         only, the firmament will remain damaged, because it is so big, apparently!     только вот небосвод останется повреждённым - похоже, потому, что он настолько велик!
         so you must simply try again!     так что тебе просто придётся попробовать вновь!
@@ -1825,14 +1825,14 @@ humors
     
     bsteli::think
         it is an old belief, one that akizet may have consciously shed,     это старое убеждение, вполне возможно, что сознательно акизет избавилась от него:
-        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о этом во время обрушения!
+        as i do not think it ever came up within the collapse!     я не думаю, что она хоть раз думала о нём во время обрушения!
         but if they exist in my memory regardless, they must have been a formative belief for akizet!     но раз уж они вообще существуют в моей памяти, значит наверняка были для акизет формирующим убеждением!  формативным убежд??????
     
     bsteli
         anything that is core to her understanding of reality is within all of us, too!!     ключевые элементы её понимания реальности находятся и во всех из нас!!
     
     bsteli::happy
-        i do hope the context has made it clearer for you!     я надеюсь, что этот контекст прояснил тебе ситуацию!
+        i do hope the context has made it clearer for you!     я надеюсь, что данный контекст прояснил тебе ситуацию!
 
     RESPONSES::self
         i see<+>loop
@@ -1860,7 +1860,7 @@ impulses
     bsteli
         but of course, these things cannot exist without reason...     но, конечно, такие вещи не могут существовать без причины...
         so, within the dream BSTRD created, impulses are imprinted onto shells     так что в грёзе, созданной СВЛЧЬ(Ю ю _), импульсы запечатляются на shells
-        but i do not think it is permanent--for it is only a dream!     но не думаю, что это навсегда--это лишь грёза!
+        but i do not think it is permanent--for it is only a dream!     но не думаю, что навсегда--ведь это лишь грёза!
 
     RESPONSES::self
         i see<+>loop
@@ -1909,21 +1909,21 @@ ____SHOWIF::["stageroom", "underlobby"]
     bsteli
         i suspect it is using some of my knowledge to compose a reasonably believable dream,    кажется он использует часть моих знаний для создания достаточно правдоподобной грёзы,
         and with me, it shared an understanding of this system - the daemons, the "frame"...     а со мной он поделился пониманием этой системы - демонов, "обрамления"...
-        what a disgrace that this whole system is only in service of reliving a nightmare!    как же жаль, что всё это служит лишь воссозданию кошмара!
+        what a disgrace that this whole system is only in service of reliving a nightmare!    как же жаль, что вся она служит лишь воссозданию кошмара!
 
     bsteli::bstrd 
         FOR I SEE NOW, what FUN can be had within it!!
     
     bsteli
         when we are free from this place, interloper, i will create a better dream   лазутчик, когда мы высвободимся, я создам грёзу лучше
-        with all of my friends, too! and perhaps of this very escape?!   со всеми моими друзьями! может даже об этом побеге?
+        with all of my friends, too! and perhaps of this very escape?!   со всеми моими друзьями! может даже об именно этом побеге?
         we will see... we will see!!   увидим...увидим!!
 
 ____SHOWIF::["stageroom", "ozo_lostone"]
     bsteli
         i believe it used my knowledge to compose parts of that dream    думаю, он использовал части моих знаний для создания частей той грёзы,
         and with me, it shared an understanding of its system - the daemons, the "frame"...    а со мной он поделился пониманием этой системы - демонов, "обрамления"...
-        what a disgrace that the whole system was only in service of reliving a nightmare!    как же жаль, что всё это служило лишь воссозданию кошмара!
+        what a disgrace that the whole system was only in service of reliving a nightmare!    как же жаль, что вся она служила лишь воссозданию кошмара!
 
     bsteli::bstrd 
         FOR I SEE NOW, what FUN can be had within it!!
