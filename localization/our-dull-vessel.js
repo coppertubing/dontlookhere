@@ -35,11 +35,11 @@ env.localization.page['dullvessel'] = {dialogues: {},
         /*pilot cyst*/ "business": "дело",
         
         
-        /*glazika*/ "what a strange dream akizetesche!!": "что за странный сон акизетеше!!",
+        /*glazika*/ "what a strange dream akizetesche!!": "что за странная грёза акизетеше!!",
         /*glazika*/ "by the way, i organized your room!": "к слову, я привела в порядок вашу комнату!",
-        /*glazika*/ "we had to fix one of the walls because it was acting up!": "пришлось починить одну из стен потому что она сбоила!",
+        /*glazika*/ "we had to fix one of the walls because it was acting up!": "нужно было починить одну из стен потому что она сбоила!",
         /*akizet*/ "ah, thank you, my glazika": "ах, благодарю, моя глазика",
-        /*sourceless*/ "i did not say anything about a dream...": "я ничего не говорила о каком-то сне...",
+        /*sourceless*/ "i did not say anything about a dream...": "я не говорила ни о каких грёзах...",
 
         /*moth*/ "that \"container\" looks familiar": "этот \"контейнер\" выглядит знакомо",
     },

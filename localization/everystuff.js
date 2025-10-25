@@ -638,7 +638,6 @@ env.localization['strings'] = {
 
     "city_surface": "ПОВЕРХНОСТЬ_ГОРОДА",
     "city-surface": "поверхность-города",
-    "THEY WATCH": "ОНИ СМОТРЯТ",
 
     "..__AQUARIUM": "..__АКВАРИУМ",
     "aquarium": "аквариум",
@@ -673,9 +672,6 @@ env.localization['strings'] = {
     "our_dull_vessel": "НАШЕ_СУДНО_СЕРОЕ",
     "our-dull-vessel": "наше-судно-серое",
     "our dull vessel": "НАШЕ СУДНО СЕРОЕ",
-    
-    "the_dull_contrivance": "открытие_серое",
-    "the dull contrivance": "открытие серое",
 
     "the_embassy": "ПОСОЛЬСТВО",
     "the-embassy": "посольство",

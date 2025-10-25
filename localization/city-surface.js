@@ -225,7 +225,7 @@ env.localization.page['citystreet'] = {dialogues: {},
 
 
 // == MOTH == //
-env.localization.page['citystreet'].dialogues.mthstreetresp = generateDialogueObject(`
+env.localization.page['citystreet'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
         где это было?<+>where
@@ -245,7 +245,7 @@ start
     moth
         смотрю на вывод, чё как?
     
-    RESPOBJ::mthstreetresp
+    RESPOBJ::mthresp
 
 where
     self
@@ -263,7 +263,7 @@ where
         возможно где-то на западном побережье? там старая штаб-квартира находилась
             SHOWIF::["citystreet__envoy-talkpeople", true]
 
-    RESPOBJ::mthstreetresp
+    RESPOBJ::mthresp
 
 elevatorblock
     self
@@ -275,7 +275,7 @@ elevatorblock
         кажись что-то ещё вносит изменения--твой мыслекол даже доложил что данные были удалены
         ну похоже с этим не повезло. но вообще и в других местах есть на что посмотреть
 
-    RESPOBJ::mthstreetresp
+    RESPOBJ::mthresp
 
 dataroom
     self

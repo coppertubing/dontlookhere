@@ -18,7 +18,7 @@
 
         (все упоминания - никнеймы в дискорде)
 
-    на данный момент доступна адаптация до конца EP0
+    на данный момент публично доступна адаптация вплоть до конца EP0
 
 
     не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
@@ -44,7 +44,7 @@
 
         (all mentions are discord usernames)
 
-    adaptation up until the end of EP0 currently availible
+    adaptation up until the end of EP0 currently publically availible
 
 
     feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
@@ -267,6 +267,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     border: 2px dotted var(--neutral-color);
     backface-visibility: hidden;
     --webkit-backface-visibility: hidden;
+}
+
+.rulink {
+    color: #b2ffff;
+}
+.rulink:hover {
+    text-decoration-line: underline;
+    color: #ffffff;
 }
 `,
 
@@ -653,7 +661,7 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
         }
         else {
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])}}
-                else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! - @cor-RU")
+                else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU")
             if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
                 if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
                     combat = document.createElement('script')
@@ -699,6 +707,7 @@ cor_ru['advancewarnclick'] = function () {
                     <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста.</p>
                     <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
                     <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз???????????.</p>
+                    <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
                     <div class="buttons">
                         <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
                         <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
@@ -755,7 +764,7 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speaking: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
 console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {
