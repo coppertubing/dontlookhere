@@ -164,7 +164,6 @@ env.localization.page['citystreet'] = {dialogues: {},
         "i want to dream again": "я хочу грезить снова",
 
         "hhel o": "ппр в ет",
-        "akizet": "акизет",
         "nice  ,  weather": "хорошая  ,  погода",
         "safe ": "безопасно",
 

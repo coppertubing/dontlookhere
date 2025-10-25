@@ -121,7 +121,6 @@ env.localization.page['embassy'] = {dialogues: {},
         "convene": "созвать",
 
         "akizetesche": cor_ru.entity_menu["akizetesche"].name,
-        "akizet": "акизет",
         "think to self": "подумать про себя",
         "ruminate over cyst": "размышлять о цисте",
 

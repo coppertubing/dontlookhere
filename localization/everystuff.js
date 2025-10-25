@@ -427,6 +427,8 @@ env.localization['definitions'] = {
 }
 getLocalizationForPage(true); // --- evil
 env.localization['strings'] = {  
+    "akizet": "акизет",
+
     // mothspeak
     "what's up buddy?": "чё как, дружище?",
     "anything else?": "что-нибудь ещё?",
