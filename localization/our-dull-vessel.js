@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/our-dull-vessel.js
-    adaptation for /local/dullvessel
+    localization for /local/dullvessel
 
     progress: mothdialogue and some ent descs unfinished, need to see what else could be missing cause i dont remmeber shit as of 23.08.2025
 */

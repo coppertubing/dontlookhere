@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/beneath-car.js
-    adaptation for /local/beneath/car
+    localization for /local/beneath/car
     (--- car guyyyyyyyyyyyy)
 
     progress: done as of 11.10.2025

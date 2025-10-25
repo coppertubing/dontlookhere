@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/cache.js
-    adaptation for /local/cache
+    localization for /local/cache
 
     progress: only strings, dialogues left as of 04.10.2025
 */

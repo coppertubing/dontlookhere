@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/jokzi-ozo.js
-    adaptation for /local/ozo
+    localization for /local/ozo
     (---окзи джозо)
 
     progress: ep2 close to being finished, most notably moth + few council + interviewer dialogues missing, review needed as of 23.08.2025

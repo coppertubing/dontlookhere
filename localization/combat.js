@@ -1,10 +1,10 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/combat.js
     combat!
-    this bad boy not only handles the adaptation of everything used in combat like actors and actions and effects and css and stuff...
+    this bad boy not only handles the localization of everything used in combat like actors and actions and effects and css and stuff...
     but also adds support for inflection of words! so neat, right? the combat floaters are gonna be in grammatical agreement!!! yay!!!
 
     progress: always stuff to finish buuut ep2 should be done as of 23.08.2025

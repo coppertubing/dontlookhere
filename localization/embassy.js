@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/embassy.js
-    adaptation for /local/ocean/embassy
+    localization for /local/ocean/embassy
     for combat, see combat.js
     (---akizet youre so good at decisions)
 
@@ -324,7 +324,7 @@ env.localization.page['embassy'] = {dialogues: {},
 if (check("embassy_d1_complete")) env.localization.page['embassy'].strings['„²!Äë±#Rã'] = `ПОДОЗРЕНИЕ`
 if (check("fbx__ep2intro-end")) env.localization.page['embassy'].strings['ø¥¬À‰'] = `обрушение`
 
-setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // --- beech adaptation
+setTimeout(()=>{if (document.querySelector(".dayname").getAttribute("aria-label") == "BETTER TIMES") { // --- beech localization
     cor_ru.processSpecificTranslation(document.querySelectorAll(".dayname"), "aria-label");
     document.querySelectorAll(".dayname").forEach(e=>{e.replaceChildren(''); e.insertAdjacentHTML("afterbegin", e.getAttribute('aria-label'))})
     new Lettering('#content .dayname').letters()

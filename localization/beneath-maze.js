@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/beneath-maze.js
-    adaptation for /local/beneath/depths
+    localization for /local/beneath/depths
 
     progress: just fill these things out and we're done as of 23.08.2025
 */

@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/beneath-abyss.js
-    adaptation for /local/beneath
+    localization for /local/beneath
     (---утопшая <3)
 
     progress: drowning stuff partially finished, mothstuff unfinished as of 04.10.2025

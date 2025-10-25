@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/recosm.js
-    adaptation for /local/uncosm/recosm
+    localization for /local/uncosm/recosm
     (---did you kill it?)
 
     progress: fully finished as of 23.08.2025

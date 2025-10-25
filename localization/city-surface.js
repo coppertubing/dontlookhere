@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/city-surface.js
-    adaptation for /local/city/street
+    localization for /local/city/street
 
     progress: e4a1 missing as of 03.10.2025
 */

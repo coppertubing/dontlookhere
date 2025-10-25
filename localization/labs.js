@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/labs.js
-    adaptation for /local/uncosm/pit
+    localization for /local/uncosm/pit
 
     progress: nothin (figure out beskletters) as of 06.10.2025
 */

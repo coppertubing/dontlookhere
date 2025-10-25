@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/aquarium.js
-    adaptation for /local/city/aquarium
+    localization for /local/city/aquarium
 
     progress: nothin as of 12.10.2025
 */

@@ -7,55 +7,11 @@
 
 
 /*
-    cor-RU - мод на полную русскую адаптацию для corru.observer
+    cor-RU - a russian localization mod for corru.observer;
+    see https://github.com/cor-RU/cor-RU for more info
 
-        от @dutokrisa и @bra1nslug_ (@bruhslug в телеграме)
-        на основе ENV.LOCALIZATION V1 EXAMPLE от @corruworks
-        некоторые части используют код vielk memory hole example от @adr_furret
-
-        EP0 протестировано: @akizetism
-        EP1 протестировано: @spaniel_00
-
-        (все упоминания - никнеймы в дискорде)
-
-    на данный момент публично доступна адаптация вплоть до конца EP0
-
-
-    не стесняйтесь смотреть на код и/или брать его для разработки собственных модов. просто не забудьте указать наше авторство, хихи
-
-    за любыми отзывами, вопросами, просьбами, предложениями или баг репортами вы можете обратиться к нам:
-        к @dutokrisa или @bra1nslug_ (@bruhslug в телеграме)
-        по анонимной гугл форме - https://forms.gle/HHGhd4zU3VmJQgPCA
-        в дискорд сервер cor-RU - https://discord.gg/QtqqCh8myn
-
-
-    спасибо за использование нашего мода <3
-
-            ======
-
-    cor-RU - a full russian adaptation mod for corru.observer
-
-        by @dutokrisa and @bra1nslug_ (@bruhslug in telegram)
-        based on ENV.LOCALIZATION V1 EXAMPLE by @corruworks
-        certain parts use code of vielk memory hole example by @adr_furret
-
-        EP0 playtested by: @akizetism
-        EP1 playtested by: @spaniel_00
-
-        (all mentions are discord usernames)
-
-    adaptation up until the end of EP0 currently publically availible
-
-
-    feel free to look at the code and/or use it to develop your own mods. just don't forget to credit us, hehe
-
-    you can reach out to us for any feedback, questions, requests, suggestions or bug reports via:
-        @dutokrisa or @bra1nslug_ (@bruhslug in telegram) [RECOMMENDED FOR NON-RUSSIAN SPEAKING PEOPLE]
-        anonymous google form - https://forms.gle/HHGhd4zU3VmJQgPCA
-        cor-RU discord server - https://discord.gg/QtqqCh8myn
-
-
-    thank you for using our mod <3
+    > cor-RU.js
+    important code!!! and loads the whole mod!!! yay!!!
 */
 
 if (window.location.pathname == '/credits') {

@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/the-void.js
-    adaptation for /local/orbit
+    localization for /local/orbit
     (---so vast and empty!)
 
     progress: rotwatcher missing as of 12.10.2025

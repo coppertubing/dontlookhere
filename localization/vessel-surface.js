@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/vessel-surface.js
-    adaptation for /local/ocean/ship/deck
+    localization for /local/ocean/ship/deck
 
     progress: nothin (all ported) as of 12.10.2025
 */

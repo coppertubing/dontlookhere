@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/the-funny-little-room.js
-    adaptation for /local/ocean/ship/interview
+    localization for /local/ocean/ship/interview
 
     progress: only moth and rotwatcher unfinished as of 23.08.2025
 */

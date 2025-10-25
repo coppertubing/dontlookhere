@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/their-waters.js
-    adaptation for /local/ocean
+    localization for /local/ocean
 
     progress: vessel surface missing as of 12.10.2025
 */

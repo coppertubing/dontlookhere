@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/memory-hole.js
-    adaptation for /local/uncosm/where and all of the memory hole pages
+    localization for /local/uncosm/where and all of the memory hole pages
     (---hmmmmmmmmmmmmmm.........)
 
     progress: every page except for memholes finished, definitions unfinished, review needed, b o n u s as of 06.10.2025

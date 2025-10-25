@@ -1,9 +1,9 @@
 /*
-    cor-RU - a full russian adaptation mod for corru.observer;
+    cor-RU - a russian localization mod for corru.observer;
     see https://github.com/cor-RU/cor-RU for more info
 
     > localization/beneath-parasite.js
-    adaptation for /local/beneath/parasite
+    localization for /local/beneath/parasite
 
     progress: piece strings, some dialogues and moth and rotwatcher unfinished as of 04.10.2025
 */
