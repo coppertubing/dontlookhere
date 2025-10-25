@@ -90,7 +90,7 @@ if (window.location.pathname == '/credits') {
 <div class="creditblock contributors">
     <h2 definition="единичные работы и упоминания других крутых людей">Дополнительные Вклады</h2>
     <ul>
-        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание "Jokzi Ozo" темы</li>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание темы "Jokzi Ozo"</li>
         <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/ОБРАМЛЕНИЕ/</li>
         <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octo</span></li>
         <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4</label> <span class="denselist">Flanburgr, Ryanatorx, Novaenia, Octo</span> + <label>E4A1</label> <span class="denselist">rosy, spdx, anki</span></li>
