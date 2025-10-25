@@ -80,7 +80,7 @@ if (window.location.pathname == '/credits') {
         <li><a href="https://uh.fyi/redrealm" target="_blank"><img src="/img/da_fool.png" /> red:</a> Писательская поддержка и тестирование</li>
         <li><span definition="у загадочного шейдер-мена нет сайта сорян"><img src="/img/da_kaz.png" /> Kazne:</span> Анимированные текстуры и шейдеры</li>
     </ul>
-    <h2 definition="direct development/asset collaborators of significant proportion">Corruborators</h2>
+    <h2 definition="значимые коллабораторы по прямой разработке/ресурсам">Corruborators</h2>
     <ul>
         <li><a href="https://soundcloud.com/saiiko2" target="_blank"><img src="/img/da_saiiko.png" /> saiiko2</a>: Музыкальная поддержка <label>E3A2, E4</label></li>
         <li><a href="https://sola.nekoweb.org/index.html" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
