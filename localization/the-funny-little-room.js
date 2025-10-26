@@ -535,7 +535,7 @@ integritycontinue
             EXEC::document.querySelector('#room-space').classList.add('warp2')
             WAIT::5000
         Мне почему-то... так... странно?
-        Что это? Где---?
+        Что такое? Где---?
     
     moth
         чё это за хуйня?
@@ -566,7 +566,7 @@ integritycontinue
     sourceless
         ЭТА БЕЗДУМНАЯ МЫСЛЕФОРМА ОТРАВИТ ПРОСТРАНСТВО
             EXEC::document.querySelector('.akizet.sprite').classList.remove('looking')
-        ПОЖАЛУЙСТА, ПОДОЖДИ НЕМНОГО, НАБЛЮДАТЕЛЬ
+        ПОЖАЛУЙСТА, ПОДОЖДИ НЕМНОГО, ОБОЗРЕВАТЕЛЬ
         Я ДОЛЖНА ЕЁ УСПОКОИТЬ
     
     interviewer
@@ -601,7 +601,7 @@ integritycontinue
             EXEC::document.querySelector('#room-space').classList.remove('squish', 'warp2');env.interview.cam('side');document.querySelector('.interviewer').remove()
             WAIT::5000
 
-        НЕ ОПЛАКИВАЙ ЕЁ, НАБЛЮДАТЕЛЬ
+        НЕ ОПЛАКИВАЙ ЕЁ, ОБОЗРЕВАТЕЛЬ
             EXEC::document.querySelector('#room-space').classList.remove('warp1');env.interview.cam('akizet-direct');
 
         ОНА СНОВА ВЫРАСТЕТ
