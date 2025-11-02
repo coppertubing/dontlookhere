@@ -26,7 +26,7 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
 
         // unitybel
         /*isabel*/ 'Huh?': "А?",
-        /*isabel*/ "You really want to leave so soon?": "",
+        /*isabel*/ "You really want to leave so soon?": "Ты правда хочешь уйти так скоро?",
         /*akizet*/ "what? no, no, of course not": "",
         /*sourceless*/ 'did i say something to imply that?': "",
     }, 
@@ -131,7 +131,7 @@ start
         ...
     
     sleepybel
-        Aki?
+        Аки?
             EXEC::content.classList.add("quickabel")
 
     sourceless
@@ -144,9 +144,9 @@ start
         she laughs a little, taking some steps closer
 
     sleepybel
-        Are you just--sitting in the rain?
-        Isn't that uncomfortable?
-        I should have mentioned something about bringing an umbrella, haha.
+        Ты что просто--сидишь под дождём?
+        Тебе разве не неприятно?
+        Пожалуй стоило предупредить тебя захватить какой-нибудь зонт, хаха.
             EXEC::content.classList.remove("quickabel")
     
     sourceless
@@ -157,8 +157,8 @@ start
         she sits quickly beside me, the rain-shield now over both of us
     
     sleepybel
-        Oh... Are you okay?
-        What's going on?
+        Ох... Ты в порядке?
+        Что-то случилось?
     
     sourceless
         with a quick shake of my head, i center myself, ridding myself of this haunting for now
@@ -170,21 +170,21 @@ start
         ...ah, i suppose, like you say, i was 'thinking about work...'
     
     sleepybel
-        It's still been that tough, huh?
-        I get it.
-        I mean... Haha, not exactly, I can't imagine it's that similar, but...
-        Well, quit thinking about it, okay?
-        We're both just going to forget about everything else tonight.
+        Вся так же тяжко, да?
+        Понимаю.
+        То есть... Хаха, не совсем. Навряд ли всё точно так же, но..
+        Что ж, хватит беспокоиться об этом, хорошо?
+        Этой ночью мы обе собираемся позабыть обо всём остальном.
     
     sourceless
         i laugh and nod in agreement--already, there is a sense of freedom in that shared void
         simultaneously, she pinches at the cloth of my coat, confused
     
     sleepybel
-        How are you not soaked?
-        Oh, right, this is... Yeah, right. 
-        Okay, good, I wouldn't want to walk in with an umbrella, 
-        And then have you following behind me like I just left you in the rain.
+        И как ты только не промокла?
+        А, точно, это... Да, ага.
+        Ладно, хорошо. Я бы не хотела зайти с зонтом,
+        Пока ты волочишься позади меня так, словно я только что оставила тебя под дождём.
     
     akizet
         <span definition="INHERITED CONTEXT::'being intentionally obtuse'">i do not see the problem</span>
@@ -194,24 +194,24 @@ start
             EXEC::setCam({x: 4, y: 8, rotation: 90});playerMoveTo(4, 8, "left")
 
     sleepybel
-        Uh-huh.
-        Okay, so, Dee's waiting for us at the side door, that'll be our way in.
-        Apparently it's going to be in a weird state, because the aquarium is usually closed by now,
-        but the big night event doesn't start for another hour or so...
-        So, all the other exhibits are still unlocked!
-        She said the restaurant would still be open, too.
-        It's for the overtime workers, but she told them we'd be coming, so...
-        We'll be able to see everything <em>and</em> get some food.
-        I wasn't sure how that would turn out, but we got really lucky.
+        Ага.
+        Окей, так, Ди ждёт нас около служебного входа, через неё мы и пройдём.
+        Разумеется, там будет немного странно - аквариум обычно уже закрыт к этому времени,
+        но всё равно главное ночное мероприятие не начнётся в ближайший час, так что...
+        Так что, все другие выставки всё ещё открыты!
+        Ещё она сказала, что ресторан тоже будет открыт.
+        Вообще ,он для работников на сверхурочных, но она предупредила их, что мы придём, итак...
+        Мы сможем взглянуть на всё <em>и-и</em> немного перекусить.
+        Я была не уверена как всё пройдёт, но в итоге нам очень повезло.
     
     akizet
         is that different from how the habitat usually operates?
     
     sleepybel
-        Well, it's not usually open at night. And usually they don't let people in during prep.
-        So, the main difference is how it's pretty much just going to be the two of us in there.
-        It's usually pretty crowded, so this is special...
-        Come on, let's go!
+        Ну, они обычно не открыты по ночам. И обычно они не впускают людей во время приготовлений.
+        Поэтомы вся разница в том, что там будем считай только мы вдвоём.
+        Вообще-то там довольно многолюдно, поэтому этот раз должен быть особенным...
+        Ну же, пошли!
 
     RESPONSES::akizet
         set out<+>END
@@ -237,7 +237,7 @@ start
             AUTOADVANCE::
 
     sleepybel
-        Akizet?
+        Акизет?
             EXEC::content.classList.add("sideabel")
 
     sourceless
@@ -246,17 +246,17 @@ start
         my disguise-skin must be conveying my awe in an unsubtle way
         
     sleepybel
-        You okay?
+        Всё хорошо?
 
     akizet
         ye--yes, absolutely!
         forgive me, i was distracted by the... construction
 
     sleepybel
-        Haha! Forgive you?? You have got to stop saying that.
-        I'm just... I don't know, surprised!
-        You've seen so much, and you get this excited at seeing a lobby?
-        Haven't you seen the whole world at this point?
+        Хаха! Извинить тебя?? Прекращай повторять это.
+        Я просто... Не знаю, удивилась!
+        Ты уже столько всего повидала, но так оцепенела увидев вестибюль?
+        Разве к этому моменту ты не успела повидать весь мир?
     
     akizet
         only from a distant view in the sky, isabel
@@ -270,20 +270,20 @@ start
         ah... where do we go, first?
 
     sleepybel
-        There's still,
+        Я думаю,
         
     sourceless
         isabel checks her glowing communicator, pulled from an insulated pocket
     
     sleepybel
-        The better part of an hour to go before they'll be ready to let us into the exhibit, I think.
-        Even if we are getting special access right now, I guess there's still some last-minute panic.
-        Probably don't want us getting in the way.
-        So, in the meantime, we can go wherever!
-        They're only going to close off the other exhibits for the public opening.
-        And if anyone asks, I've got the magic words that'll make the staff leave us alone.
-        "Dee let us in. Yup, Dee's friend."
-        Anyway, there's no wrong answer. I've seen everything in here and it's all cool.
+        Пройдёт не меньше часа прежде чем нас впустят на выставку.
+        Хоть мы и получили особый доступ, наверняка там ещё будет суматоха перед самым открытием. """ мой мозг не обрабатывает эти строчки ууу """ << как же я тебя понимаю
+        Пожалуй не хочется путаться у них под ногами.
+        Ну, а пока можем идти куда угодно!
+        Они закроют остальные экспонаты только на время публичного открытия.
+        И если кто спросит, у меня припасены волшебные слова, и сотрудники оставят нас в покое.
+        "Ди впустила нас. Агась, друзья Ди".
+        В любом случае, неправильного ответа нет. Я всё здесь видела, и всё крутое.
             
     sourceless
         her smile brightens, and with a short laugh,
@@ -291,7 +291,7 @@ start
             EXEC::content.classList.remove("sideabel")
         
     sleepybel
-        So, lead the way!
+        Итак, веди!
 
     sys
         NOTICE::'non-contiguous memory stream'
@@ -323,9 +323,9 @@ start
         and i am nearly mirroring her own expression
     
     sleepybel
-        It's weird seeing your face so... I don't know, "active".
-        I thought I was pretty good at figuring out how you were feeling by your receptors.
-        But now I'm pretty sure I've been missing a lot of it.
+        Странно видеть твоё лицо таким... Не знаю, "активным".
+        Я думала, что научилась неплохо различать твои чувства по рецепторам.
+        Но теперь почти уверена, что упустила многие из них.
     
     sourceless
         i feel my smile fade, torn down by a distant internal conflict
@@ -333,17 +333,17 @@ start
         my shift in expression, perhaps visible confusion, prompts her to laugh and continue
         
     sleepybel
-        Akizet, it's cute!
-        That's what I'm saying.
-        I think I've seen you smile a few times before, but not like this.
-        You totally lose the "stoic ancient alien" facade.
+        Акизет, это мило!
+        Я это хотела сказать.
+        Думаю, я видела, как ты улыбаешься пару раз, но не так, как ты это делаешь сейчас.
+        Ты растеряла весь свой облик "непоколебимого древнего пришельца".
     
     akizet
         is that how i appeared to you?
 
     sleepybel
-        Yeah... Yeah, along with every other obesk.
-        Except for the ones trying really hard on TV.
+        Да... Да, как и любые другие обески.
+        Пожалуй за исключением тех с телевизора, кто правда очень старался.
     
     sourceless
         i stop and examine isabel's face, a thought coming to mind
@@ -358,7 +358,7 @@ start
         but i must wonder how much else i have missed, my eye untrained
 
     sleepybel
-        Yes, Aki?
+        Да, Аки?
 
     sourceless
         ah, i have been staring
@@ -384,8 +384,8 @@ start
             AUTOADVANCE::
 
     sleepybel
-        Okay, nooo.
-        Let's wait until it doesn't involve drilling into my skull.
+        Окей, нееет.
+        Давай подождём, пока они не придумают способ не предполагающий вслерливание в мой череп.
 
     sourceless
         her laugh is infectious
@@ -418,7 +418,7 @@ start
         of course, her eyes refocus as they shift down to me, staring straight at her
     
     sleepybel
-        Haha, what?
+        Хехе, чего?
     
     akizet
         has the day treated you so poorly?
@@ -428,10 +428,10 @@ start
         the disguise-skin must attempt to adjust language for me
 
     sleepybel
-        Huh? What are you...
-        Oh, right. Yeah, sorry. It's been a long one.
-        It's... We don't have to talk about it. Work stuff.
-        We're here to forget about all of that, remember?
+        А? О чём...
+        Ох, ага. Да, прости. Длинным выдался.
+        Это... Мы не должны это обсуждать. Дела на работе.
+        Мы здесь чтобы позабыть обо всём этом, помнишь?
 
     akizet
         clearly it weighs upon you, my friend
@@ -445,21 +445,21 @@ start
             EXEC::setCam({offsetCamera: "rotateX(10deg)", height: 1.5, rotation: 145, x: 3, y: 8})
     
     sleepybel
-        Okay, just a little. Then we're back to ignoring it.
+        Ладно, совсем немножко. А затем продолжим это игнорировать.
     
     akizet
         of course, hehe
     
     sleepybel
-        So, I was working with a couple.
-        And they wanted to do this big, fancy wedding this month.
-        Like, covered in flowers. Wanted some exotic ones that I had to source and import...
-        We'd been planning it for months, and they paid an upfront fee...
-        Half of the total. We talked about it all.
-        Maybe that was stupid in hindsight, but the money was good. It made sense at the time.
-        And today, I don't know, they cancelled it--not the wedding, but the flower part.
-        Wouldn't even tell me why. Had to run through and try to cancel orders, get refunds...
-        But I was really relying on that second half to break even this month.
+        Итак, я работала с одной парой.
+        И они хотели устроить такую большую, шикарную свадьбу в этом месяце. 
+        Как бы, всю устиланную цветами. Ещё и экзотичными, которые мне пришлось искать и импортировать...
+        Мы планировали её месяцами, и они заплатили авансом...
+        Половину от итоговой суммы. Мы всё обсудили.
+        Наверное, если посмотреть назад, это глупо выглядит, но деньги были приличными. Тогда это, казалось, имело смысл. 
+        А сегодня, я не понимаю, они всё отменили--не свадьбу, а часть с цветами.
+        Даже не сказали мне, почему. Пришлось впопыхах отменять заказы, получать возвраты...
+        Но я очень рассчитывала, что эта вторая половина поможет мне выйти в ноль этим месяцем.
 
     sourceless
         through her explanation, her eyes drift to follow shapes moving in the dark water
@@ -475,17 +475,17 @@ start
         isabel shakes her head, sighing, landing her gaze upon me without emotion
     
     sleepybel
-        It's expensive here. You know, rent--for the store, for my own place, for...
+        Здесь дорого. Ну, знаешь, аренда--за магазин, за собственное жильё, за...
 
     sourceless
         with a sharp exhale and chuckle, an incredulous smile twists out of her disappointment
 
     sleepybel
-        Wait, Aki, you did have money back home, right?
-        Do you get paid for your job here?
-        I'm only just realizing, this has... never really come up.
-        I mean, I guess with Gordon back when we met, but that was different.
-    
+        Погоди-ка, Аки, у вас дома же есть деньги?
+        Тебе платят за работу здесь?
+        Я только сейчас поняла, что эта тема... Никогда и не поднималась.
+        То есть, может с Гордоном, когда мы познакомились, но это не то.
+     
     sourceless
         she surely does not mean it in the way that i understand
         for a moment, my attention drifts as i scour my mind for the right words
@@ -500,7 +500,7 @@ start
         ah, there, i have said it again...
 
     sleepybel
-        Ha.
+        Ха.
     
     akizet
         it was not on an individual level, exactly, isabel
@@ -535,16 +535,16 @@ start
         is this not what she wanted to hear?
     
     sleepybel
-        Huh. That's cute.
+        Хах. Мило.
     
     sourceless
-        these words pierce me--a compliment, though not spoken as one
+        these words pierce me--a compliment, though not spoken as one // Это смешно. Они смешные
         have i only worsened her mood?!
 
     sleepybel
-        I almost wish it worked that way here, but...
-        It never would.
-        We're all on our own, Aki.
+        Мне почти хочется, чтобы здесь всё работало так же, но...
+        Это невозможно.
+        Мы все сами по себе, Аки.
 
     sourceless
         pain bleeds through the nonchalance of her words
@@ -558,15 +558,15 @@ start
     sourceless
         if she must hunt for her own currency, and she struggles so,
         perhaps i could help?
-        already, long-dead instincts spark within me: the urge to hunt
+        already, long-dead instincts spark within me: the urge to hunt // Аки-добытчица в её с Изиной целиком и полностью традиционной ксеносемье <з
         surely the cousins must store mass quantities somewhere
         one cloaking skin, and the right moves, and maybe i could...
         or! perhaps it could be manufactured directly?
 
     sleepybel
-        No, it's not--ugh, I'm sorry too, Aki.
-        It's just been a hard few months for me on the business side of things.
-        Thanks for sharing that, though. It's always interesting hearing about your home.
+        Нет, ничего--агх, прости и меня, Аки.
+        Просто для меня это были непростые несколько месяцев в плане бизнеса.
+        Но спасибо, что поделилась. Всегда интересно послушать о твоём доме.
     
     sourceless
         she coils an arm around my shoulder, pulling me into a half embrace,
@@ -574,10 +574,10 @@ start
         i return the gesture gently - she could use the comfort
     
     sleepybel
-        It's weird how easy it is to forget you're from another world, sometimes.
-        Maybe things will work out, eventually.
-        It's been going pretty well so far, so, 
-        I just need to hold out until you aliens fix everything, right?
+        Даже странно насколько порою легко забыть то, что ты из другого мира.
+        Быть может, всё наладится само собою.
+        До этих пор всё шло довольно неплохо, так что,
+        Мне просто нужно продержаться, пока вы, пришельцы, всё не исправите, да?
 
     sourceless
         the tension is shed with some brief laughter between us
@@ -594,9 +594,9 @@ start
         let us stop by that 'restaurant'
     
     sleepybel
-        Haha!
-        That's not how you say it, Aki.
-        But yeah, let's go.
+        Хаха!
+        Это не так говорится, Аки.
+        Но да, пошли.
         
     RESPONSES::akizet
         continue<+>END
@@ -617,8 +617,8 @@ start
         the cooked flesh parting easily, as savory as a <span definition="INHERITED CONTEXT::'violent surface river fauna';'imitates mature celki glow'">deceiving bulb</span>'s flesh
 
     sleepybel
-        I thought it might have just been rose-tinted memories from when I was a kid, but...
-        It's still crazy how good this is for an aquarium restaurant. Honestly.
+        Я думала, что это были всего лишь розовые воспоминания со времён, когда я была ребёнком, но...
+        Всё ещё поразительно, насколько это хорошо для ресторана при аквариуме. Серьёзно.
 
     sourceless
         rose-tinted? 
@@ -628,7 +628,7 @@ start
         though i hold no conflict with it, in isabel's company
     
     sleepybel
-        That means it really is just as good as I remember, haha.
+        Это значит, что она хороша настолько же, насколько я её запомнила, хаха.
 
     akizet
         ah!
@@ -653,11 +653,11 @@ start
         i join her in laughter - i suppose that was a rather abrupt question...
     
     sleepybel
-        Oh my god, Aki!
-        You are adorable.
-        It's an expensive shithole, always has been.
-        So, for someone like me, it's as close as things get to paradise.
-        Which is to say, it's pretty far off.
+        Боже мой, Аки!
+        Ты очаровательна.
+        Это дорогущая дыра, всегда ею была.
+        Так что для кого-то вроде меня, это самое близкое к раю место.
+        то, кстати говоря, всё ещё далековато.
     
     sourceless
         she laughs again, though i fail to join her this time
@@ -667,8 +667,8 @@ start
         but it is hard to place the boundary, so i do not press further
         
     sleepybel
-        I'm sorry, it's not--it's not that bad.
-        There's good with the bad. It balances out. What is that religious thing you say?
+        Прости, всё не--это не так уж плохо.
+        Нет худа без добра. Всё уравновешено. Что за религиозная вещь, которую вы говорите?
 
     sourceless
         my receptors--no, my face, it smiles slightly, again reading my impulses
@@ -678,10 +678,10 @@ start
             EXEC::setCam({x: 2, y: 6, rotation: -90, distance: 0.2})
 
     sleepybel
-        Yeah, it's like that. I don't know, maybe not "terror" exactly...
-        Maybe that's accurate for this month.
-        But, my point is, with everything you've told me, 
-        I'd probably think your home was a paradise, too.
+        Ага, всё так же. Не знаю, может не совсем "ужас"...
+        Может, это больше подходит к текущему месяцу.
+        Но, с моей точки зрения, судя по всему, что ты мне рассказывала,
+        Я бы, наверное, тоже подумала, что твой дом - рай.
 
     akizet
         you might, were you to visit in the modern <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">day</span>
@@ -696,8 +696,8 @@ start
         i struggle to parse that it is a mock-pout until she speaks, obvious in her tone
 
     sleepybel
-        Okay, well, that's not fair.
-        I was <em>expecting</em> you to say that it's not a paradise either.
+        Ладно, что ж, это нечестно.
+        Я <em>ожидала</em>, ты скажешь, что твой тоже не рай.
 
     akizet
         yes, well, you <em>would</em> have to avoid the surface and its flesh-seizing parasites
@@ -717,9 +717,9 @@ start
         actually, you would have to help mitigate emotional damage from them, so--
     
     sleepybel
-        Right, so, <em>not</em> a paradise.
-        You're just trying to make it sound better.
-        You dork.
+        Ага, так, <em>не</em> рай.
+        Ты просто пытаешься приукрасить.
+        Ты балда. // мне кажется я кучу раз слышал это слово но никогда не видел чтобы его писали  ЭТО НЕМНОЖКО СТРАННО... окей вариант заменить на тупица/придурок
     
     akizet
         hehe, i suppose
@@ -747,7 +747,7 @@ start
         bioluminescence, enormous hard-shelled scavengers, writhing masses of tendrils...
             
     sleepybel
-        Hey Aki, is it true that there's no life in your oceans?
+        Эй, Аки, а правда, что в вашем океане нет жизни?
             EXEC::content.classList.add("sideabel")
     
     sourceless
@@ -756,7 +756,7 @@ start
         i delay a moment, considering my words carefully as if speaking with one of the envoys
 
     sleepybel
-        Sorry if--if that's not something you're supposed to talk about.
+        Прости, если--если это что-то, о чём ты не должна говорить.
             EXEC::content.classList.add("centerbel");content.classList.remove("sideabel")
 
     sourceless
@@ -764,13 +764,13 @@ start
         but my caution evaporates as her explanation unfolds
 
     sleepybel
-        I just remember Dee telling me about how the place wanted to get an Obeski exhibit going.
-        There's apparently some obesk who's really into making little, uh...
-        Like, fake Obeski animals, that they got in touch with.
-        Then the word came down that your oceans are dead?
-        Maybe it's just something that got mistranslated.
-        It might still happen, because of the continental critters.
-        But I just thought that part was really interesting.
+        Я просто вспомнила из рассказов Ди, что в этом месте хотели сделать выставку Обескии.
+        Видимо, есть какие-то обески, которые улекаются созданием маленьких, э...
+        Типа, Обесковых животных, и они с ними связались.
+        А потом речь зашла о том, что ваши океаны как бы мертвы?
+        Возможно, эту часть просто неверно перевели.
+        It might still happen, because of the continental critters. // Может это и сейчас происходит из-за континентальной живности. """ Не очень понял...
+        Но мне показалось, что это в самом деле интересная тема.
 
     akizet
         ah, well, i am no expert on the matter
@@ -798,7 +798,7 @@ start
         her eyes are wide, shocked into the same state as when i scare her with my pranks
     
     sleepybel
-        That doesn't bother you?
+        И тебя это никак не волнует?
 
     akizet
         hardly
@@ -807,8 +807,8 @@ start
         but our deaths are long, there is plenty of time to...
     
     sleepybel
-        No, no, the--the blanket thing <em>being there</em>.
-        I mean, the whole ocean floor. Like, around the entire world?
+        Нет-нет, та--та штука типа ковра, которая <em>там есть</em>.
+        Другими словами, дно океана целиком. Типа, вообще по всему миру?
 
     akizet
         oh?
@@ -821,7 +821,7 @@ start
         she is silent for a θblink, breaking it with an exasperated chuckle
 
     sleepybel
-        Aki, that's really freaky.
+        Аки, это реально поехавше.
 
     akizet
         well, there is nothing to be done, isabel
@@ -836,8 +836,8 @@ start
         her laugh echoes through the darkened hall
 
     sleepybel
-        Wow, it's weird hearing you say that. Freaky.
-        Looks like there's a second ocean for me to be scared of, now.
+        Вау, странно слышать это от тебя. Поехавше.
+        Судя по всему, теперь я буду бояться ещё одного океана.
     
     akizet
         hehe, it was your request!
@@ -863,9 +863,9 @@ start
             EXEC::change("PAGE!!talkedfinal", true)
     
     sleepybel
-        It's pretty, right?
-        It's been a few years since they've used lights like this for an exhibit.
-        God, no, it's... It's almost been a decade.
+        Красиво, правда?
+        Они уже как несколько лет не использовали освещение так для выставки.
+        Боже, нет, прошло... Прошло почти десятилетие с последнего раза.
             EXEC::playerMoveTo(13, 35, "up");env.localization.page['aquarium'].stage.querySelectorAll(".stageabel").forEach(el=>el.innerHTML = "")
     
     sourceless
@@ -880,9 +880,9 @@ start
         a moment of silence passes, slowly growing heavier as i realize she probably thinks the same
 
     sleepybel
-        Is it the same way for you, Akizet?
+        У тебя так же, Акизет?
             EXEC::setCam({x: 13, y: 34.5, rotation: 110, height: 1.5, offsetCamera: "rotateX(20deg)"});content.classList.add("sitabel");
-        The way things just keep going, and you don't even notice how fast it gets.
+        То, как всё идёт своим чередом, а ты даже не замечаешь, насколько стремительно.
 
     sourceless
         confusion and surprise is surely painted upon my false face
@@ -896,20 +896,20 @@ start
         there have been <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">decades</span> where i have gone entirely without words to larval friends
 
     sleepybel
-        Yeah, just like that.
-        Well, maybe not <em>just</em> like that...
-        It's just so easy to get distracted, for so long.
-        I've had that shop for four years now, I think.
-        Chasing the dream of making it work in a place that keeps getting worse.
-        And it's great, I mean, it <em>is</em> like I've always wanted it, sometimes.
-        But... 
-        I've barely seen my brother, I almost missed flying out to my dad's funeral because of a bad month...
-        It's been years since I've talked to some of my friends. 
-        I can't remember the last time I took a break.
-        There's so much to deal with, everywhere, all the time. 
-        Sometimes, when I'm working, 
-        I'll just blink and realize how long it's been since everything in my life's happened.
-        Like I've been in a trance or something, missing everything around me.
+        Ага, точно так же.
+        Ну, может не прямо <em>точно</em> так же...
+        Просто, забыться так легко, мне нужно будет основательно перечитать аквариум божечки........
+        Я заправляю этим магазинчиком уже как четыре года, кажется.
+        Преследуя мечту заставить всё работать в месте, которое с каждым днём становится лишь хуже.
+        И это здорово, то есть, иногда это <em>так</em>, как я и хотела.
+        Но...
+        Я едва ли вижусь с братом, я почти пропустила вылет на похороны отца из-за плохого месяца...
+        Прошли годы с тех пор, как я общалась с некоторыми из своих друзей.
+        Не могу и вспомнить последний раз, когда я брала передышку.
+        Столько дел, везде, всегда.
+        Иногда, когда я работаю,
+        Я просто моргну и осознаю - как много времени прошло со всего, что произошло в моей жизни.
+        Как если бы я была в чём-то вроде транса, упуская всё вокруг.
     
     sourceless
         she shifts to face me more directly, smiling a little, but her eyes...
@@ -919,12 +919,12 @@ start
         for a moment, there is silence, broken by a quiet scoff
 
     sleepybel
-        Sorry, I know that's a hell of a thing to bring up.
-        I just wanted to say, ever since you started coming by,
-        It feels like you break me out of it.
-        Yeah, that's it, I kind of 'snap out of it'. I still have to go back, but...
-        I get to wake up for a little while. Things get put into perspective.
-        You know what I mean?
+        Извини, я знаю, что подняла ту ещё тему.
+        Я просто хотела сказать, с тех пор, как ты начала приходить,
+        Ты словно вырываешь меня из этого всего.
+        Да, именно, я как бы "прихожу в чувство". Мне всё ещё приходится вернуться, но...
+        Я могу проснуться ненадолго. Всё встаёт на свои места.
+        Ты понимаешь, о чём я?
 
     sourceless
         put into perspective...
@@ -952,8 +952,8 @@ start
         she laughs at the absurdity of my escalation, and i join her
     
     sleepybel
-        Oh yeah?
-        I thought you would have grown out of your "let's run away" phase a hundred years ago.
+        Да ну?
+        Мне казалось, ты переросла свою "давай сбежим" фазу сотню лет назад.
     
     akizet
         vel are exceptionally proficient runners, isabel
@@ -1010,8 +1010,8 @@ start
         a 'smirk'...
 
     sleepybel
-        Yeah, I think I got it.
-        It's really okay that I have this?
+        Да, думаю разобралась.
+        Мне точно можно хранить что-то такое?
         
     akizet
         these are usually reserved for special direct contacts
@@ -1029,8 +1029,8 @@ start
         me from velzie's winding path
     
     sleepybel
-        This is really nice, Aki.
-        Thanks.
+        Это очень мило, Аки.
+        Спасибо.
     
     sourceless
         she pulls me into a firm hug, which i reciprocate easily
@@ -1061,7 +1061,7 @@ start
             EXEC::vfx({type: "darkflash", state: false});
     
     sleepybel
-        Thanks for coming out, Aki. I know it's hard with how busy you've been, lately.
+        Thanks for coming out, Aki. I know it's hard with how busy you've been, lately. // Спасибо, что пришла, Аки. Ты так загружена в последнее время, я понимаю, что это было непросто.
             EXEC::content.classList.add("centerbel");
 
     akizet
@@ -1072,7 +1072,7 @@ start
         perhaps we may visit a few more places, in the 'evenings', when your work is done?
     
     sleepybel
-        Yeah! Yeah, yeah, sure. I'll see what I can find.
+        Yeah! Yeah, yeah, sure. I'll see what I can find. // Да! Да, да, конечно. Я постараюсь найти время.
     
     sourceless
         she smiles, there is kindness in her voice, but the weight lingers
@@ -1085,9 +1085,9 @@ start
         i think it would be delightful to visit those fields you spoke to me of
     
     sleepybel
-        Oh, yeah! You think you could actually fly us both out?
-        I guess I thought your ship would just, like, kill me.
-        They look so violent with how they move on TV.
+        О, ага! Думаешь, получится перевезти нас обоих?
+        Кажется я думала, что твое судно просто, как бы, убьёт меня.
+        По телевизору они выглядят такими жестокими в движении.
         
     akizet
         what? no! 
@@ -1096,8 +1096,8 @@ start
         perhaps i could even show you now, if--
         
     sleepybel
-        Aki.
-        You might not need sleep, but I've been awake waaay too long.
+        Аки.
+        Тебе сон может и не нужен, но я не спала уже слииишком долго.
     
     sourceless
         ah--my excitement seized my voice before reason could, as it often does
@@ -1110,8 +1110,8 @@ start
         may velzie smile upon you
 
     sleepybel
-        Haha!
-        Yeah, you too, Aki.
+        Хаха!
+        Ага, и тебе, Аки.
             EXEC::content.classList.remove("centerbel");content.classList.remove("sideabel");content.classList.remove("sitabel");
             
     sys
