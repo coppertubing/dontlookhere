@@ -857,7 +857,7 @@ ____END
         stay high and far away from any bodies or inactive golems
     
     itzil
-        ok akizet!
+        хорошо акизет!
     
     RESPONSES::akizet
         continue<+>END
