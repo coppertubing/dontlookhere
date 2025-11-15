@@ -624,55 +624,55 @@ start
         NOTICE::'memory stream located'
 
     sourceless
-        ...nearly a spirelength from the ground, far above the surface vapors, // почти на высоте шпиля от земли, куда выше поверхностного пара,
-        i continue to climb higher, higher still, rending the soft flesh of my carrier // я продолжаю карабкаться выше и ещё выше, раздирая мягкую плоть моего носителя
-        claws caked with the veilk's fast-congealing blood, growing dull and numb in the bitter shore wind // когти окрашены запёкшейся кровью вейлька, немея и становясь всё более тупыми под непримиримыми побережными ветрами 
-        the pack of cysts the θjut have assigned me to carry weighs heavily /
-        yet the weight of my eyes, my legs, my arms, have all grown far greater
-        when was it i last slept?
-        with the sparse herd here, with clear-sky and direct gaze of velzie's eye,
-        i am at least unlikely to meet any surprise
-        so, the time has come for rest
-        how i wish i could simply rest in a zzepel... 
-        but little space was spared for comfort, instead taken by vital knowledge cysts
-        nearing the top of this carrier, i draw spikes from my suit,
-        stabbing them in a neat array, securing them to my tethering harness
-        finally, i draw the one comfort i am afforded: a veilkizt 
-        and with a push off the flesh of the veilk, a swing upon my tethers,
-        its hook impales the carrier's flesh, curving into it, seat secured by my weight
-        rest... at last
+        ...почти на высоте шпиля от земли, куда выше поверхностных паров,
+        я продолжаю карабкаться всё выше и выше, раздирая мягкую плоть своего носителя
+        когти окрашены запёкшеюся кровью вейлька, делаясь тупее и немея под непримиримыми прибрежными ветрами 
+        порученная мне θжатами тяжёлая груда цист тянет вниз
+        и всё же, мои глаза, ноги и руки стали куда тяжелее.
+        как давно я спала?
+        с немногочисленным стадом, чистонебьем (нет дефениции?) и под прямым взором глаза велзи,
+        мне, по крайней мере, вряд ли стоит ожидать сюрпризов
+        итак, наступило время отдыха
+        как бы мне хотелось просто напросто отлежаться в ззепеле...
+        но комфорту не было места, заместо него оно было выделено цистам с жизненно важными знаниями внутри
+        недалеко от вершины своего носителя, я вытаскиваю шипы из костюма
+        и вонзаю их аккуратным рядком, прикрепляя каждый к своему ремню безопасности
+        чтобы, наконец, извлечь единственный позволенный себе комфорт: вейлькизт
+        оттолкнувшись от плоти вейлька, качнувшись на своих привязях,
+        их крюки впиваются глубже в плоть, изгибаются вовнутрь, сиденье поддерживается моим весом 
+        отдых... после всего
         ....
-        nearly limp am i in the tethers, resting upon this thin platform
-        the shore is too close to sleep, eluzni just barely out of reach on foot
-        so for now--i simply observe
-        the gaze of velzie's eye as it swirls directly above, infinite stars beyond,
-        sparse veilk of this herd, stomping across this desolate plain
-        insultingly close beacon-lights floating high over eluzni, 
-        glowing with a soft violet that casts a haze in the damp, cold air
-        it is all a quiet beauty that i am far too tired to appreciate
+        так расслабилась, что чуть не повисла на привезях, сидя на этой тонкой платформе "" я так много думаю об этой строчке. почему. ведь должна быть какая-то причина. в этих буквах скрыто больше смысла, чем какие-то слова. точно, здесь скрыты чувства, эмоции. подбор, расстанвока - всё имеет смысл. ничто не сделано просто так. каждое слово, каждая буква и её расположение важно. так вот. почему здесь так? сначала мне показалось, что это бессмыслица, не такая уж редкость в корру, но теперь.. окей возможно она просто реально задремала а потом "аой" резко проснулась подняла голову "ой поисла ээ я ой на привезяха блин почти что ахаха нельзя. нельзя спать" ну знаете спросонья там по буквам номрально не попадаешь ну вот короче. мнение? что мне с этой строчкой делать. ЭТО ВАЖНАЯ СТРОЧКА. Важно понимать что корруворкс несёт. иои кто бы то ни писал эту шедеврострочку
+        нельзя засыпать, когда побережье так близко, до элузни едва ли не ногой подать
+        так что сей миг--я просто наблюдаю
+        завихряющийся прямо надо мною взор велзи, бесконечные звёзды вовне 
+        один из немногочисленных вейльков этого стада, топчащийся через эту безжизненную пустошь
+        до смехотворного близкие огни маяков, плавающие высоко над элузни,
+        издающие мягкий лиловый свет, бросающий марево во влажный, холодный воздух
+        это всё - безмятежная красота, которую я не способна оценить по достоинству в пору усталости
         ....
-        ah--i... nearly fell asleep
-        my carrier sways with a slow, thunderous step below
-        and as i stare up into the countless glimmering stars,
-        already mysteries, poorly understood except by the most eccentric ukaznians
-        i notice the strangest patch of darkness
-        within it, a collection of a few larger glimmering spots
-        yes--it moves different, distinct from the rest of the sky with the veilk's steps, yet still a part of it?
-        so i sit forward, brief wakefulness stirred in my eyes, staring close
-        quickly, i draw my aima cyst, hooking it to a receptor, releasing it into the air
-        it flickers a new sight into my mind, focusing, focusing further...
-        and the darkness twists
+        ах--я... почти задремала
+        мой носитель покачивается с медленным, оглушительным шагом внизу
+        и я взираю на бесчисленные мерцающие звёзды,
+        непонятные каждому, кроме самых эксцентричных указнийцев, загадки
+        я замечаю страннейшее скопление тьмы
+        внутри которой группа мерцающих пятен побольше
+        точно--они двигаются иначе, отдельно от всего неба, не с шагами вейлька, но всё так же оставаясь его частью?
+        я выпрямляюсь, в глазах блеснула бодрость, и вглядываюсь ближе
+        вмиг, я вытаскиваю айма цисту, прикрепляю её к рецептору, выпускаю в воздух
+        и новый взор мелькает в моём сознании, фокусируясь, фокусируясь всё дальше...
+        и тьма шевельнулась
             EXEC::ratween(env.bgm, 0.2, 20000);body.classList.add("eyes")
             WAIT::4000
-        the darkness twists, five glimmering pale lights in an arc
-        previously upright, rotated now as if placed into the outer circle of a turning wheel
-        breath escapes, my receptors coiling tight, a jolt through me nearly displacing the veilkizt
-        my movement disturbs the aima cyst's focus, and i cannot find the patch again
-        i scan desperately--it was my imagination, no?
-        i am tired, this is known to happen, this--
-        i clutch my fairy ward, its spikes digging into the leathery cover over my palm
-        i cannot stay here
-        quickly, i rise, pulling free the veilkizt, removing tethers, i must leave, i must--
+        тьма шевельнулась: пять мерцающих бледных огней, сложившиеся в арку
+        находящиеся до этого вертикально, а теперь, будто помещённые во внешний круг крутящегося колеса
+        я невольно выдыхаю, рецепторы закручиваются в тугую спираль, содрогнувшись, я едва не сместила вейлькизт
+        моё движение встревожило фокус айма цисты, я больше не могу найти то скопление
+        я отчаянно сканирую--это было только моё воображение, так?
+        я устала, такое порою случается, это--
+        я сжимаю оберег от фей, его шипы впиваются в кожистое покрытие на руке
+        мне нельзя здесь оставаться
+        быстро, я поднимаюсь, стягиваю вейлькизт, снимаю привязи, я должна уйти, я должна--
 
     sys
         NOTICE::'memory stream terminated'
@@ -1192,60 +1192,60 @@ start
 `)
 env.localization.page["sec"].dialogues["surface"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
+    start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        I AM AWOKEN IN MY SLEEPING SHELL BY A RAPPING AT ITS COVER
-        WHAT TIME IS IT? HAS THE θgaze ENDED ALREADY?
-        SO TIRED... WHATEVER IT IS, IT CAN WAIT
+        I AM AWOKEN IN MY SLEEPING SHELL BY A RAPPING AT ITS COVER // МОЙ СОН ПОТРЕВОЖЕН СТУКОМ, РАЗДАЮЩИМСЯ ПО ПОКРЫТИЮ ОБОЛОЧКИ ДЛЯ СНА
+        WHAT TIME IS IT? HAS THE θgaze ENDED ALREADY? // КАКОЕ СЕЙ θмиг ВРЕМЯ? НЕУЖЕЛИ θвзор УЖЕ ЗАКОНЧИЛСЯ?
+        SO TIRED... WHATEVER IT IS, IT CAN WAIT // ТАК УСТАЛА... ЧТО БЫ ТО НИ БЫЛО, ОНО ПОДОЖДЁТ "" выжата как сельки :)
 
     stupid
-        uuugh go away
-        my duties are not until <span definition="NOTE::'partial translation';'inherited description-generated noun'">clear-sky</span>
-        
+        uuugh go awa // ааагх уходи
+        my duties are not until <span definition="NOTE::'partial translation';'inherited description-generated noun'">clear-sky</span> // моя служба не прежде <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано из унаследованного описания'">чистонебья</span> // кричу бежззвучно как слизнясок  и бтюсь головой об стену но моя голова слишком мягкая а тело слишком аедленное "" лол. ночнячок момент
     tired
         θ██████, it is me
     
     sourceless
-        AND SHE IS NOT GOING AWAY...
-        I LET MY HEAD FALL BACK AGAINST THE POD'S INTERNAL FUZZ
-        SHE HISSES A SIGH OF FRUSTRATION
+        AND SHE IS NOT GOING AWAY... // И НИКУДА ОНА НЕ УХОДИТ...
+        I LET MY HEAD FALL BACK AGAINST THE POD'S INTERNAL FUZZ // Я ОТКИДЫВАЮ ГОЛОВУ ОБРАТНО НА ПУХ, ПОКРЫВАЮЩИЙ ВНУТРЕННИЙ ОТСЕК
+        SHE HISSES A SIGH OF FRUSTRATION // ОНА ВЗДЫХАЕТ, ШИПЯ ОТ ТЩЕТНОСТИ
     
     tired
         there is a problem
 
     stupid
-        not my problem for another, uuummm,
+        not my problem for another, uuummm, // не моя проблема в ближайший, аааммм,
 
     sourceless
-        I ROLL OVER TO CHECK THE <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION SUCCESSFUL">ZENRUKA</span>
-        WITH AN UNLATCHING OF ITS CONTAINER, I SEE THAT IT IS STILL INTACT
-        YES, IT WOULD HAVE DETONATED BY NOW IF IT WERE TIME
-        THOUGH, ITS DECAY IS SUCH THAT I PROBABLY ONLY HAVE ABOUT TWO OR THREE θwinks...
-        AH--
-        SUDDENLY, THE COVER OF MY POD IS LIFTED
-        MY RECEPTORS COIL IN SHOCK, AND I COVER MY EYES FROM THE LIGHT
-        θ█████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME
+        I ROLL OVER TO CHECK THE// Я ПЕРЕКАТЫВАЮСЬ, ЧТОБЫ ПРОВЕРИТЬ <span definition="ПЕРЕВОД НЕ УДАЛСЯ::ПРИЧИНА:'нет эквивалентного внутреннего значения';'нет уместного унаследованного контекста'::УСПЕШНАЯ КИРИЛЛИЗАЦИЯ">ЗЕНРУКУ</span>
+        WITH AN UNLATCHING OF ITS CONTAINER, I SEE THAT IT IS STILL INTACT // ОТПЕРЕВ ЕЁ КОНТЕЙНЕР, Я ВИЖУ, ЧТО ТА ВСЁ ЕЩЁ ЦЕЛА
+        YES, IT WOULD HAVE DETONATED BY NOW IF IT WERE TIME // АГА, ОНА БЫ УЖЕ СДЕТОНИРОВАЛА, ПОДОЙДИ ВРЕМЯ
+        THOUGH, ITS DECAY IS SUCH THAT I PROBABLY ONLY HAVE ABOUT TWO OR THREE θwinks... // ХОТЯ ОНА ТАК РАЗЛОЖИЛАСЬ, ЧТО У МЕНЯ, КАЖЕТСЯ, ОКОЛО ДВУХ ИЛИ ТРЁХ θподмигов
+        AH-- // АХ--
+        SUDDENLY, THE COVER OF MY POD IS LIFTED // ВНЕЗАПНО, ОБОЛОЧКА МОЕЙ КАПСУЛЫ СДВИГАЕТСЯ
+        MY RECEPTORS COIL IN SHOCK, AND I COVER MY EYES FROM THE LIGHT // МОИ РЕЦЕПТОРЫ ЗАВИВАЮТСЯ ОТ ШОКА, И Я ПРЯЧУ ГЛАЗА ОТ СВЕТА
+        θ█████ PARTIALLY BLOCKS IT AS SHE LEERS AT ME // θ█████ ПЕРЕКРЫВАЕТ ЕГО ЧАСТЬ, УХМЫЛЯЯСЬ НА МЕНЯ
 
     tired
-        this is not a joke, kelnit
+        this is not a joke, kelnit // """ вот это слово в памятку добавишь хорошо
         θ███████ has not returned
         he is not responding on the dullvoice either
         with how long he has been out, it will not be long before his trail is dispersed
 
     sourceless
-        SHE LEAVES HER EXPLANATION THERE, STARING AT ME EXPECTANTLY
-        MUCH AS I WANT TO TELL HER TO SKITTER AWAY,
-        THIS IS NOT A RESPONSIBILITY THAT CAN BE ASSIGNED TO ANYONE ELSE
+        SHE LEAVES HER EXPLANATION THERE, STARING AT ME EXPECTANTLY // НА ЭТОМ ОНА ЗАКАНЧИВАЕТ СВОЁ ОБЪЯСНЕНИЕ, УСТАВИВШИСЬ ВЫЖИДАЮЩЕ
+        MUCH AS I WANT TO TELL HER TO SKITTER AWAY, // КАК БЫ МНЕ НИ ХОТЕЛОСЬ СКАЗАТЬ ЕЙ СКРЫТЬСЯ С ГЛАЗ МОИХ,
+        THIS IS NOT A RESPONSIBILITY THAT CAN BE ASSIGNED TO ANYONE ELSE // ЭТО НЕ ТА ОТВЕТСТВЕННОСТЬ, КОТОРУЮ МОЖНО ВОЗЛОЖИТЬ НА КОГО-ЛИБО ЕЩЁ
         
     stupid
-        fine...
-        i will meet you at the entrance
-        and have the θjut prepare the walker for us
+        ладно...
+        i will meet you at the entrance // я встречу тебя на входу
+        and have the θjut prepare the walker for us // и скажи θжатам подготовить ходеня для нас
 
     tired
-        do not waste any time
+        do not waste any times // "" ????? 
         
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -1260,26 +1260,26 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        ...though the spirestorm is distant, its rage echoes here in the form of little water droplets
-        the veilk are drenched already, allowing my claws to find easy purchase in their thick, waterlogged flesh
-        this one i have chosen to be my carrier has myriad pockmarks from similar travelers
-        but at this height, they have grown sparse, and the ground has disappeared in the surface vapors and darkness...
-        how far would i fall, if i failed to hold on now? what a thrill!!
-        i am certain to have no visitors here, so i reach over my shoulder to activate my zzepel
+        ...пусть шпилешторм и далёк, его свирепость эхом доносится даже до сюда, принимая форму капелек воды
+        вейльк уже промок насквозь, позволяя моим когтя без труда проникнуть в его толстую, вздутую от воды плоть
+        на выбранном мною вейльке видны несчётные рубцы, оставленные такими же, как и я, путешественниками
+        но на этой высоте их численность стала куда меньше, а земля растворилась в поверхностных парах и мраке...
+        как далеко пришлось бы падать, не удайся мне сейчас удержаться? до чего трепещущий ужас!!
+        я навряд ли повстречаю здесь гостей, так что тянусь до плеча и активирую ззепель
     
     sourceless quiet
-        it extends outwards from me to form a semispherical corrucystic shell, biting into the flesh of my carrier to secure itself
+        он расширяется в сторону от меня, формирую полусферическую корруцистозную оболочку, вгрызающуюся в плоть моего носителя для закрепления
             EXEC::ratween(env.bgm, 0.5);play('stab', 0.75)
     
     sourceless
-        i am sealed into darkness for only a θblink, as once the respite is fully formed, the inner lights activate, and it detaches from my back-carrier
-        these lights are pale, unreliable chemicals, and it is not quite as spacious as i would like...
-        but i can finally let my limbs relax
-        and so i place my back against the clammy flesh of the veilk, my legs in restful support against the hard shell the zzepel has formed
-        ugh... but the humidity is near unbearable - the cooling winds of this height are unable to reach me any longer
-        there is a great tremble as the veilk's next step lands distantly below
-        how long will it be before it carries me past the <span class="code">spire</span>? 
-        i should check with that coordinator...
+        я погружаюсь во тьму лишь на θмиг, ведь когда убежище полностью сформировалось, внутренние огни зажигаются, и он отсоединяется от ?спины моего носителя? ?моего крепления на спине? наверное второе..
+        огни тусклые, ненадёжные химикаты, и он не так просторен, как мне бы хотелось...
+        но я наконец-таки могу позволить своим конечностям отдохнуть
+        я распологаюсь спиной к липкому телу вейлька, ноги удобно поддержвают меня, уперевшись в твёрдую оболочку, сформированую ззепелем "" фуу в этом мемхоле так много запятых
+        брр... но влажность почти невыносима - меня больше не обдувают прохладные ветра этих высот
+        очередной шаг вейлька, приземлившийся далеко внизу, сотрясает ззепель
+        как долго мне придётся ждать, прежде чем этот носитель донесёт меня через <span class="code">шпиль</span>?
+        надо бы проверить через этот координатор...
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -1294,24 +1294,24 @@ start
         NOTICE::'memory stream located'
 
     sourceless
-        ...claws find little grasp upon the θwalker's glassy shell
-        a near impenetrable corrucystic carapace
-        fortunately, once i am past its folded, spindly legs,
-        some small holds are built into the sides,
-        allowing my ascent to its entry hatch easily
-        i descend into the dark interior, a spherical chamber with space for two to sit
-        alongside a chamber for materials--empty, for θ███████ and any others we find
-        the luminescent flesh of its walls, displaying information plainly, act as our only light
-        θ█████ already sits within, awakening various components
-        she does not look at me, nor do i express any delight in this rare occasion
-        θ███████ has been gone far too long for velzie to let this end kindly
-        and even worse, the murmurs of his sister having gone out before us, means she may well be...
+        ...claws find little grasp upon the θwalker's glassy shell // ...когти едва нащупывают опору в стеклянной оболочке θходеня ((сырой мемхол, игнорируйте))
+        a near impenetrable corrucystic carapace // практически непроницаемый корруцистический панцирь
+        fortunately, once i am past its folded, spindly legs, // к счастью, пересекя его сложенные, долговязые ноги,
+        some small holds are built into the sides, // несколько маленьких выемок, встроенные по его сторонам,
+        allowing my ascent to its entry hatch easily // позволяют с лёгкость добраться до входного люка
+        i descend into the dark interior, a spherical chamber with space for two to sit // я спускаюсь в его тёмное нутро, сефиреческая комната с сидениями для двоих
+        alongside a chamber for materials--empty, for θ███████ and any others we find // рядом с комнатой для материалов--пустой, предназначенной θ███████ и других, кого найдём
+        the luminescent flesh of its walls, displaying information plainly, act as our only light // люминесцентная плоть этих стен, отчётливо отображающая информацию, является единственным нашим источником света
+        θ█████ already sits within, awakening various components // θ█████ уже внутри, пробуждает различные компоненты
+        she does not look at me, nor do i express any delight in this rare occasion // она не смотрит в мою сторону, как и я не выражаю никакого удовольствия от этой редкой возможности
+        θ███████ has been gone far too long for velzie to let this end kindly // θ███████ был пропащим уже слишком долго, велзи не допустил бы хороший конец
+        and even worse, the murmurs of his sister having gone out before us, means she may well be... // и того хуже, слухи о том, что его сестра ушла раньше нас, означает, что и она могла...
 
     tired
         θ██████, you are freshly awoken, you will take up the primary connector
     
     stupid
-        what!! you know i--
+        what!! you know i-- // чего!! ты же знаешь, я--
     
     sourceless
         with a harsh turn and stare, the reflection of light in her eyes silences me
@@ -1319,13 +1319,13 @@ start
         but rarely does she allow an operation to go poorly
     
     stupid
-        --fine. fine, i will
+        --fine. fine, i will // --ладно. ладно, сейчас займусь
 
     sourceless
-        from an inset crevice above, i tug a large connector free,
-        bringing it to my receptors, already uncurled
-        and as its flesh softens, both weave into its cold sludge
-        in kind, muddy and alien senses weave through my skull,
+        from an inset crevice above, i tug a large connector free, // я вытягиваю большой соединитель из врезной щели наверху,
+        bringing it to my receptors, already uncurled // поднося его к своим уже разогнутым рецепторам,
+        and as its flesh softens, both weave into its cold sludge // вплетая оба в холодным шлам, когда его плоть размягчается 
+        in kind, muddy and alien senses weave through my skull, // я переумал я не хочу 5 мемхолов это будет 4 мемхола
             EXEC::ratween(env.bgm, 0.35, 40000);play("weirdbuild", 0.5)
             SILENT::
         a sickly wave of feverish warmth and dull pain, leaving new awareness
@@ -1466,23 +1466,24 @@ start
 `)
 env.localization.page["sec"].dialogues["zuzucri"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
 start
+    start
     sys
         УВЕДОМЛЕНИЕ::'найден поток памяти'
     
     sourceless
-        the silence of this dormant herd is almost too much
-        only the wind and thunder masks our slight movements as we draw closer to θ███
-        it is by velzie's favor alone that she has survived out here so long... poor vel!!
-        she sits against her dull beacon in the little clearing, bleeding, surrounded by the two bodies of her running companions
-        it is fortunate that we found them while the eye still lights our path!    
-        when I nearly enter the clearing, θ██████ grabs my arm and pulls me back,
-        hiding us both from θ███'s view around a juvenile veilk tendril
-        we speak silently, through the dullvoice:
+        безмолвная тишина этого покоящегося стада почти оглушает
+        лишь ветер и гроза скрывают наши малейшие движения на пути к θ███
+        по воле велзи и ею одной она продержалась здесь так долго... бедная вел!!
+        она сидит напротив своего маяка серое в небольшом просвете, истекает кровью, в окружении двух трупов её бежцев-компаньонов
+        большое везение, что мы нашли их, когда глаз ещё освещает наш путь!
+        я почти ступаю в просвет, но θ██████ хватает меня за руку и оттягивает назад,
+        пряча нас обоих от взора θ███ за отростком юного вейлька
+        мы перешёптываемся через сероеглас:
     
     stupid
-        what?
-        there is no threat of secri here
-        besides, how would one have deployed a beacon?
+        что такое?
+        угрозы секри здесь нет
+        к тому же, как бы оно использовало маяк?
     
     guard
         just wait - take a closer look      
@@ -1491,32 +1492,32 @@ start
         if she is here, why has she not received any of our calls?      
     
     sourceless
-        the scent of vel and kiv, two dead - exactly what we see... what is he worried about?
-        with a quick impulse, i instruct my valika-borne aima cyst to peer around the side
-        θ███ is sitting a little strangely, perhaps with too large of a pack,
-        but from this side angle it is hard to tell
-        the wind shifts towards us, the trio's trails made more apparent
-        the vel's scent is strange, sickly, metallic...
+        запах вела и кива, двое мертвы - то же мы и видим... отчего он так встревожен?
+        беглым импульсом я даю указание выглянуть своей валика-рождённой айма цисте 
+        θ███ сидит слегка необычно, с, наверное, чересчур громоздким снаряжением за спиной
+        но с такого угла сложно сказать
+        ветер переменяется в нашу сторону, шлейф троицы становится отчётливей
+        запах вела странный, нездоровый, металлический...
     
     stupid
-        you are right
-        stay here
-        prepare your dull-pulse, and keep it aimed on her
+        ты прав
+        оставайся здесь
+        подготовь пульс серое и держи нацеленным на неё
     
     sourceless
-        i feel his affirmation through the dullvoice, and so i twist about,
-        calling out in my surface voice before i step into full view of θ███,
+        я выхожу, почувствовав его согласие через сероеглас,
+        взывая поверхностным голосом, прежде чем полностью показаться в поле зрения θ███,
     
     stupid
-        θ███! is that you?
-        are you all right?
+        θ███! это ты?
+        ты в порядке?
     
     sourceless
-        a cloud passes between the eye and this veilk herd just as i see θ███ turn towards me,
-        and while we are plunged into darkness, i feel a terrible dread
-        for i thought i saw her face split apart for an instant
-        but as it passes, she pushes herself to her feet,
-        face intact and spiraling receptors curled tight with worry
+        облако проплывает между глазом и стадом вейльков в тот же миг, как θ███ оборачивается ко мне
+        и пока мы погружены во тьму, я ощущаю чудовищный страх
+        когда, как мне кажется, её лицо на мгновение рассеклось
+        но мгновение проходит, она отталкивается от земли и поднимается на ноги
+        лицо цело, а рецепторы-спирали туго завиты
         
     host
         θ██████...?
@@ -1526,11 +1527,11 @@ start
         i did not do anything! please!      
     
     sourceless
-        her arms and face are stained cyan with blood, 
-        claws longer than they ought to be--more numerous than they should be...
-        a dark, angular shape is obscured behind her, barely visible over her shoulders
-        parts of it twist occasionally--alive!!
-        θ██████ communicates to me via dullvoice,
+        её руки и лицо перепачканы циановой кровью,
+        когти длиннее, чем они должны быть--многочисленнее, чем должны быть...
+        тёмная, тощая фигура скрывается за нею, едва видимая за плечами
+        части фигуры изредка изгибаются--живое!!
+        θ██████ связывается со мною по сероегласу,
         
     guard
         θ██████ - she is lost      
@@ -1538,21 +1539,21 @@ start
         preparing to release the pulse      
     
     sourceless
-        silently, as to not alert θ███ that i have a companion,
-        i gesture for him to wait with a claw behind my back, and he obliges
-        though every nerve in my body commands me to flee,
-        i know - i must soothe θ███, lest the beast stop wielding her mind
+        молча, дабы не встревожить θ███, дав знать о своем компаньоне,
+        я говорю ему ждать жестом когтя за спиною, и он слушается
+        несмотря на то, что каждый нерв в моём теле кричит мне бежать
+        я знаю - я должна успокоить θ███, иначе зверь перестанет владеть её разумом
     
     stupid
-        θ███, it is all right...
-        what happened?
+        θ███, всё в порядке...
+        что произошло?
     
     sourceless
-        θ███ approaches, but her legs do not move, dragging against the soil
-        only as soon as the zuzucri notices my eyes upon her legs does she begin to walk with them
-        i raise one of my climbing gauntlets defensively, and she halts, bringing her claws to her eyes
-        she weeps, and my aima cyst detects movement in the dark shape behind her
-        a number of eyes blinking in unison, the true shape of the beast too hard to make out
+        θ███ приближается, но её ноги не шевелятся, волочимые по земле
+        лишь когда зузукри замечает мой взгляд на её ногах, она начинает ходить на них
+        я оборонительно поднимаю одну из перчаток для восхождения, и она останавливается, поднося когти к глазам
+        она всхлипывает, и моя айма циста обнаруживает движение в тёмной фигуре позади неё
+        множество глаз моргнуло в унисон, истинный облик зверя слишком сложно разобрать
     
     host
         sorry... sorry...      
@@ -1563,53 +1564,53 @@ start
         and... and you cannot let me stay here      
     
     sourceless
-        though θ██████ would undoubtedly prefer that we free her from her role,
-        i have an idea...
-        with some rummaging through my cloak, i produce that little mindcore that θ█████ granted me
-        it <em>was</em> for me, but if there is any chance we can save θ███...
-        i offer it to her, arm outstretched, tilted away in case i must evade
-        the zuzucri will surely be appeased by my apparent acceptance of her
+        хоть θ██████ безо всяких сомнений предпочёл бы освободить её от этой роли,
+        у меня есть идея...
+        покопавшись в плаще, я извлекаю это маленькое мыслеядро, вручённое мне θ█████
+        оно <em>предназначалось</em> для меня, но если есть хоть крошечный шанс спасти θ███...
+        я предлагаю его ей, рука протянута, но слегка отклонена на случай, если придётся уклоняться
+        зузукри наверняка умиротворён моим явным принятием её
     
     stupid
-        no, θ███, it is OK!
-        just put this on your receptor, and we can help you
+        no, θ███, it is OK! // нет, θ███, всё ОК! втх. бессвязность?
+        просто помести это на свой рецептор, и мы сможем тебе помочь
     
     sourceless
-        she pulls her claws from her face, an extra one i had not noticed disappearing behind her back
-        her receptors uncurl with hope and delight, and in her face i more clearly see the zuzucri's facade
-        yes--split into four quadrants, occasionally parting to breathe... i nearly strike her then
-        but i wait, and she takes the mindcore, allowing me to step back further...
-        as she places it on a receptor, she...
-        no, wait, it does not part for her?
-        she brings it to her face, and it is clearly operational, but...
+        она отводит когти от лица, и лишний, который я не заметила, исчезает за её спиною
+        её рецепторы разгибаются в надежде и восторге, а на лице становится более очевидно обличие зузукри
+        именно--рассечённое на четверти, переодически разделяющиеся для вдоха... я едва сдержалась чтобы не атаковать её
+        но я жду, и она принимает мыслеядро, позволяя мне сделать шаг назад
+        и когда она помещает его на рецептор, то...
+        нет, подожди, оно ей не подходит?
+        она подносит его к лицу, и, очевидно, оно исправно, но...
     
     host
         θ██████... it will not let me      
     
     stupid
-        ah...
+        ах...
     
     sourceless
-        the corru, it does not recognize her...
-        velzie snatches away my hope once more, inspiration replaced with despair
-        just as i prepare to signal to θ██████, her claws dig into the shell of the cyst,
-        and she begins to lunge it towards the sharp end of her receptor, sobbing
+        корру, оно не узнаёт её...
+        в очередной раз велзи крадёт мою надежду, воодушевление сменяется отчаянием
+        только я собираюсь подать сигнал θ██████, как её когти погружаются внутрь оболочки цисты,
+        и, хныча, она начинает насаживать её на острый конец рецептора
     
     stupid
-        no, wait--!
+        нет, стой--!
 
     sourceless
-        out of stupid impulse, i snatch that arm by the wrist
-        and as i do, her face splits apart, the zuzucri's hidden limbs rearing in the dark
-        its teeth linger only a receptor's length away
-        a terror i have never known grips me, my limbs silent and unable to recoil
+        повинуясь безмозглому импульсу, я цепляюсь в эту руку за запястье
+        и тут же её лицо рассекается, зузукри разводит спрятанные во тьме конечности
+        его зубы рассекают воздух в рецепторе от меня
+        неведомый мне ранее ужас стискивает всё моё тело, конечности не реагируют, не в состоянии одёрнуться
     
     guard
         we're done - releasing pulse now      
 
     sourceless
-        a blinding flash beams between me and the beast, severing her mindcore-bearing claw
-        i have only a θblink to scramble away, before--
+        ослепляющая вспышка полыхнула между мною и чудовищем, разрубая когти, сжавшие мыслеядро
+       у меня только θмиг на побег, прежде чем--
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -1859,8 +1860,8 @@ here
         земля упала а потом мне стало очень плохо
         это было ужасно... 
         я хотела вернуться к грёзам
-        но что-то в темноте поймало меня!
-        и посадило сюда! 
+        но что-то в темноте поймало меня! // """ ТАК МИЛО. Познакомьте крошку развледруга с акизетами. пусть они его замучают. это будет мило. Если это был развледруг, а не нечто... Изабель была бы благодарна в любом случае. это мило. это мило
+        и посадило сюда! //"""  "огрызочек акизет идёт сюда..."
         я даже видела как оно собирало это место!
         круто!
     
