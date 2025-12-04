@@ -2348,164 +2348,164 @@ END::revertBgm()
 env.localization.dialogues[`++fairytravel`] = generateDialogueObject(`
 start
     self
-        hello
+        привет
 
 ____SHOWIF::[["ENV!!pagePath", "/local/uncosm/"], ["PAGE!!fairytalk", false]]
     fairy
-        interloper! come to join me in a hunt?
-        hehehe
+        лазутчик! тоже хочешь на охоту?
+        хихихи
 
 ____SHOWIF::[["ENV!!pagePath", "/local/city/"], ["PAGE!!fairytalk", false]]
-        shh!
-        not too loud...
-        the tyrant could be near!
-        but hello, hello!!!!!!
+        тсс!
+        не так громко...
+        а вдруг тиран неподалёку?
+        но привет, привет!!!!!!
 
 ____SHOWIF::[["ENV!!pagePath", "/local/orbit/"], ["PAGE!!fairytalk", false]]
-        interloper, interloper!
-        i thought i felt you near!
-        just look at all this wasted space...
-        what is the tyrant even doing?! ahahaha
+        лазутчик, лазутчик!
+        я то думала, что тебя где-то почувствовала!
+        просто взгляни на всё это изведённое пространство...
+        чем тиран вообще занимается?! ахахаха
 
 ____SHOWIF::[["ENV!!pagePath", "/local/ocean/ship/interview/"], ["PAGE!!fairytalk", false]]
-        ohh, interloper, interloper!
-        better not stay still for too long!
-        i think they want to bite you!
-        maybe i will join in? hehehe!
+        ооо, лазутчик, лазутчик!
+        долго на месте лучше не стоять!
+        кажется, они хотят попробовать тебя на вкус!
+        может и мне тоже? хихихи!
 
 ____SHOWIF::[["ENV!!pagePath", "/local/uncosm/pit/"], ["PAGE!!fairytalk", false]]
-        interloper!!
-        what a lush thoughtscape, would you not agree?!
-        quite the cultivation that akizet got up to!!
+        лазутчик!!
+        что за пышное мыслепространство, не согласишься?!
+        акизет неплохо тут всего развела!!
         
 ____SHOWIF::["PAGE!!fairytalk", true]
-        what is it now?
+        ага, что ещё?
 ____END
     
     RESPONSES::self
-        what are you doing here?<+>uncosm
+        что ты здесь делаешь?<+>uncosm
             SHOWIF::["ENV!!pagePath", "/local/uncosm/"]
-        what are you doing here?<+>city
+        что ты здесь делаешь?<+>city
             SHOWIF::["ENV!!pagePath", "/local/city/"]
-        what are you doing here?<+>orbit
+        что ты здесь делаешь?<+>orbit
             SHOWIF::["ENV!!pagePath", "/local/orbit/"]
-        what are you doing here?<+>maze
+        что ты здесь делаешь?<+>maze
             SHOWIF::["ENV!!pagePath", "/local/ocean/ship/interview/"]
-        what are you doing here?<+>pit
+        что ты здесь делаешь?<+>pit
             SHOWIF::["ENV!!pagePath", "/local/uncosm/pit/"]
         bye<+>END
 
 uncosm
     self
-        what are you doing here?
+        что ты здесь делаешь?
 
     fairy
-        preparing to dive, of course!!
-        we may have no shortage of resources thanks to your work, interloper,
-        but i would go crazyyy if i had to sit in the ozo forever!
-        so, the hunt continues! only now, it is for sport!
-        no one will weep for the mindless beasts in the dark
-        and what a vantage point--i never know what i will find from here!!
-        how strange it is that such a large gap to the uncosm goes unmended...
-        not that i mind! the longer it remains, the better! ahahaha
+        нырять готовлюсь, разумеется!!
+        ныне у нас может и нет недостатка ресурсов благодаря твоей работе, лазутчик,
+        но я бы с ума сошла, если бы вечно в озо сидела!
+        так что охота продолжается! разве что теперь лишь ради досуга!
+        бездумных зверей изо тьмы оплакивать никто не будет
+        а точка обзора какая--отсюда никогда не ясно, что меня там ждёт!!
+        как странно, что столь большая брешь в беспространство так и открыта...
+        не то чтобы меня это волнует! чем дольше она здесь, тем лучше! ахахаха
 
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 city
     self
-        what are you doing here?
+        что ты здесь делаешь?
 
     fairy
-        taking a peek around while the tyrant's constructs are absent!
-        not that there is anything new here... boring
+        подглядываю, пока конструкты тирана не смотрят!
+        не то чтобы здесь появилось хоть что-нибудь новенькое... скукотень
         
     self
-        is it safe for you?
-        doesn't incoherence alert them or something?
+        ты тут в безопасности?
+        разве они не чувствуют бессвязность?
 
     fairy
-        oh, it does?! oh no!! oh, i must go now!!
-        ahaha, just kidding!
-        there is much i can do to blend in, interloper!
-        surely you recall when we first met?
-        the shape of a 'proxyfriend' is all too simple, and coheres to any space...
-        but i need not camouflage myself to you!
-        anyway...
-        do not worry!! i will not eat anything here!
-        i know how you love your rote re-enactments of akizet's blunders
-        so, non-vital, uncosm only hunting for me! 
-        velzie's wrath! hehehe
+        правда?! о нет!! ох, мне лучше идти!!
+        ахаха, шучу!
+        у меня много способов вписаться, лазутчик!
+        помнишь ведь нашу первую встречу?
+        форма "проксидруга" до смешного проста и связна для любого пространства...
+        но камуфляж от тебя мне не надобен!
+        так или иначе...
+        не бойся!! я тут ничего не съем!
+        я знаю, как ты обожаешь эти нудные воссоздания акизетовых промахов
+        так что пока улов только из беспространства, всё безобидно! 
+        разгневайся велзи! хихихи
 
     self
-        thanks
+        спасибо
     
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 orbit
     self
-        what are you doing here?
+        что ты здесь делаешь?
     
     fairy
-        trying to see if there is ANYTHING fun here...
-        there used to be a lot!
-        i cannot quite remember what it was, but...
-        i can definitely recall that this place is a sad shell of its past!
-        although...
-        hehehe... i might be to blame!
-        i think i chewed this place up pretty badly!!
-        before your time, of course
+        смотрю есть ли тут хоть ЧТО-НИБУДЬ весёлое...
+        раньше здесь было куда больше всего!
+        вспомнить не могу, чего именно, но...
+        я без сомнений помню, что это место - теперь лишь печальный ошмёток минувшего!
+        хотя...
+        хехехе... быть может, вина моя!
+        мне кажется я тут неплохо всего пожевала!!
+        до твоего прихода, разумеется
     
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 maze
     self
-        what are you doing here?
+        что ты здесь делаешь?
     
     fairy
-        what does it look like?
-        hunting for prey!!
-        not these lumbering things, though
-        too stupid... not even fun to toss around!
-        i can hardly imagine what damaged them so badly--scary!
-        ohh... if i could find what did it...
-        yees, that would be a worthy hunt!
+        а ты как думаешь?
+        на добычу охочусь!!
+        только не на эти ветхие штучки
+        больно глупые... их даже швырять туда-сюда скучно!
+        я еле представить себе могу, что их так истерзало--жуть!
+        ууу... вот если я его разыщу...
+        даа, вот это бы задалась охота!
     
     self
-        i wouldn't recommend it
+        не стоит, думаю
     
     fairy
-        that is because you are a coward! haha!
-        now, watch out, they know you are here!
-        you might not be physical, not like me, but...
-        they will still be more than happy to try pouring their teeth into your mind!
+        это потому что ты - трусишка! хаха!
+        а теперь поосторожнее, они в курсе, что ты тут!
+        you might not be physical, not like me, but... --- помогите
+        они всё ещё не прочь всыпать зубы в твой разум!
     
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 pit
     self
-        what are you doing here?
+        что ты здесь делаешь?
     
     fairy
-        silly interloper!
-        the hunt!!
-        how could i resist such a fruitful garden?!
-        so much variety here--so many things sheltered for so long!
-        surely you have noticed their careful entrapment...
-        that akizet was using them like tamed beasts! so clever!
-        have you seen those ones that pretend to be cousins at first?!
-        funny, but they hardly put up a fight...
-        it is those ones that spread out over the space and wait for disturbance...
-        yeess, such tough shells! such cunning!
-        i will crack one of them soon, and then--
-        oh, i suppose we cannot share...
-        more for me! ahahaha!!
+        ну лазутчик!
+        на охоте я!!
+        вот как устоять пред таким роскошным садом?!
+        такое разнообразие--так много столь долго спрятанных плодов!
+        несомненно их бережное заточение не ускользнуло от твоих глаз...
+        что акизет пользовалась ими словно ручным зверьём! как умно!
+        тебе встречались те, что сперва притворяются близнецами?!
+        смешные, но еле сопротивляются...
+        зато вот те разостлавшиеся, поджидающие любое беспокойство...
+        даааа, какие крепкие оболочки! а что за коварность!
+        какую-нибудь из них я расколю, и потом--
+        о, полагаю трапезу нам не разделить...
+        мне же больше! ахахаха!!
     
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
 
 END::change("PAGE!!fairytalk", true)
 `)
