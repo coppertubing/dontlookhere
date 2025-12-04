@@ -2224,7 +2224,7 @@ gad
         я просто работаю в странной области где это не так лол
         к счастью для тебя, я знаю историю!
         короче, раньше когда мыслеколы были в разработке а прототипы тестировались
-        они начали замечать эти рандомные баги в визуализации и записи
+        они начали замечать рандомные баги в визуализации и записи
         типа они запускали штуки которые всегда должны выводить одно и то же, но вместо этого получали небольшие отклонения
         майндсай НЕ МОГ выяснить чзх творилась
         так что кто-то установил такой крошечный компонент, чётотам фьортофт - помню ток фамилию
@@ -2402,11 +2402,11 @@ uncosm
     fairy
         нырять готовлюсь, разумеется!!
         ныне у нас может и нет недостатка ресурсов благодаря твоей работе, лазутчик,
-        но я бы с ума сошла, если бы вечно в озо сидела!
+        но я бы с умаааа сошла, если бы вечно торчала в озо!
         так что охота продолжается! разве что теперь лишь ради досуга!
         бездумных зверей изо тьмы оплакивать никто не будет
         а точка обзора какая--отсюда никогда не ясно, что меня там ждёт!!
-        как странно, что столь большая брешь в беспространство так и открыта...
+        как странно, что столь большая брешь в беспространство так и не закрыта...
         не то чтобы меня это волнует! чем дольше она здесь, тем лучше! ахахаха
 
     RESPONSES::self
@@ -2471,7 +2471,7 @@ maze
         больно глупые... их даже швырять туда-сюда скучно!
         я еле представить себе могу, что их так истерзало--жуть!
         ууу... вот если я его разыщу...
-        даа, вот это бы задалась охота!
+        даа, вот это охота задалась бы!
     
     self
         не стоит, думаю
@@ -2515,81 +2515,81 @@ END::change("PAGE!!fairytalk", true)
 env.localization.dialogues[`++scar`] = generateDialogueObject(`
 early
     sourceless
-        looking upon the flower is strangely dizzying.
+        от вида этого цветка у тебя по-странному кружится голова.
             EXEC::vfx({type: "flowerwarp", state: "yucky"});vfx({type: "darkflash", state: true});setTimeout(()=>body.classList.add('cull-stage'), 600)
-        your attention passes into it, through it, beyond the thoughtspace.
-        it is a hole.
-        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
-        they twist around each other in ways you aren't able to process.
-        you try, but it only succeeds in making you nauseous.
+        твоё внимание проникает в него, через него, за пределы мыслепространства.
+        это дыра.
+        калейдоскопическое, бессмысленное переплетение путей раскатывается перед твоим мысленным взором.
+        они закручиваются вокруг друг друга таким образом, что ты не в силах воспринять.
+        ты пытаешься, но от этого в итоге разве что тошнит.
     
     RESPONSES::self
-        look away<+>END
+        отвести взгляд<+>END
             EXEC::vfx({type: "darkflash", state: false});setTimeout(()=>body.classList.remove('cull-stage'), 600)
 
 
 start
     sourceless
 ____SHOWIF::["TEMP!!scartalk", false]
-        looking upon the flower is strangely dizzying.
+        от вида этого цветка у тебя по-странному кружится голова.
             EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
-        the physical presence it holds in the render is an illusion of the mask,
-        for your attention passes through it, into it, beyond the thoughtspace.
-        it is a hole.
+        физический облик, возникающий в визуализации - не больше, чем иллюзия маски,
+        ибо твоё внимание проникает в него, через него, за пределы мыслепространства.
+        это дыра.
 ____END
-        a kaleidoscopic, nonsensical weave of paths is laid against your mind's eye.
+        калейдоскопическое, бессмысленное переплетение путей раскатывается перед твоим мысленным взором.
             EXEC::vfx({type: "flowerwarp", state: true});setTimeout(()=>body.classList.add('fade-stage'), 600)
-        they twist around each other in ways you aren't able to process.
-        but some points feel familiar. you can reach towards them.
+        они закручиваются вокруг друг друга таким образом, что ты не в силах воспринять.
+        но некоторые места кажутся знакомыми. до них можно дотянуться.
             EXEC::change("TEMP!!scartalk", true)
     
     RESPONSES::self
-        ozo<+>END
+        озо<+>END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/ozo/")
-            FAKEEND::(travel)
-        auth<+>END
+            FAKEEND::(переместиться)
+        авторизация<+>END
             EXEC::moveTo("/hello/")
-            FAKEEND::(travel)
+            FAKEEND::(переместиться)
             SHOWIF::"joy#hello"
-        dull vessel<+>END
+        судно серое<+>END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/dullvessel/")
-            FAKEEND::(travel)
+            FAKEEND::(переместиться)
             SHOWIF::"joy#dullvessel_quarters"
-        city office<+>END
+        офис<+>END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/city/street/")
-            FAKEEND::(travel)
+            FAKEEND::(переместиться)
             SHOWIF::"joy#office_hall"
-        clemens romanus<+>END
+        климент римский<+>END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/ocean/ship/elsewhere/")
-            FAKEEND::(travel)
+            FAKEEND::(переместиться)
             SHOWIF::"joy#hullf"
-        lab<+>lab
-            FAKEEND::(select area)
+        лаборатория<+>lab
+            FAKEEND::(выбрать локацию)
             SHOWIF::"joy#pit"
-        look away<+>END
+        отвести взгляд<+>END
 
 lab
     sourceless
-        you focus upon the broken thoughtscape of the FBX laboratory.
-        the path diverges in directions you feel you shouldn't be able to see.
-        there is a sense of chronological order.
+        ты сосредотачиваешься на рухлом мыслепространстве лаборатории ФБКС.
+        путь развлетвляется по направлениям, которые ты, как тебе кажется/чувствуется, --- ААААААААААААААААААААААААА you feel you shouldn't be able to see.
+        в них ощущается хронологический порядок.
 
     RESPONSES::self
-        beginning<+>END
+        начало<+>END
             EXEC::change("TEMP!!from", "tether_base");moveTo("/local/uncosm/pit/")
-            FAKEEND::(first region)
+            FAKEEND::(первая локация)
             NOTE::technically this is being used as a 'to' but don't think about it too hard
-        hope<+>END
+        надежда<+>END
             EXEC::change("TEMP!!from", "tether_outer");moveTo("/local/uncosm/pit/")
-            FAKEEND::(second region)
-        growth<+>END
+            FAKEEND::(вторая локация)
+        рост<+>END
             EXEC::change("TEMP!!from", "tether_melting");moveTo("/local/uncosm/pit/")
-            FAKEEND::(third region)
-        overgrowth<+>END
+            FAKEEND::(третья локация)
+        перерост<+>END
             EXEC::change("TEMP!!from", "tether_halls");moveTo("/local/uncosm/pit/")
-            FAKEEND::(fourth region)
+            FAKEEND::(четвёртая локация)
 
-        nevermind<+>END
+        неважно<+>END
 
 END::vfx({type: "flowerwarp", state: false});body.classList.remove('fade-stage')
 `)
@@ -2835,7 +2835,7 @@ END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0
 env.localization.dialogues["depthrecovery2"] /*from basement.js*/ = generateDialogueObject(` 
 start
     sourceless quiet
-        твои глаза перефокусируются, пока мыслекол отдёргивается
+        твои глаза снова сосредотачиваются, пока мыслекол отдёргивается
             WAIT::3000
         боль разливается по твоему позвоночнику
 
