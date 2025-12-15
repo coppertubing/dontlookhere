@@ -13,7 +13,7 @@ env.localization.page['localdepths'] = {dialogues: {},
     definitions: {}, 
     strings: {
         "don't worry, i'm seeing this. keep going": "не волнуйся, я тоже это вижу. продолжай",
-        "i think our friend altered this one while you were out, i'm seeing less data... gotta keep its leverage somehow i guess": "думаю наш приятель поменял вот эту пока нас не было, я вижу меньше данных... ну, надо как-то сохранять рычаг давления",
+        "i think our friend altered this one while you were out, i'm seeing less data... gotta keep its leverage somehow i guess": "думаю наш приятель поменял тут всё пока нас не было, я вижу меньше данных... ну, надо как-то сохранять рычаг давления",
 
         "UNKNOWN": "НЕИЗВЕСТНО",
 

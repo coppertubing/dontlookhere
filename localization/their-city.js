@@ -12,7 +12,7 @@
 env.localization.page['localcity'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "this is prettyyyy busted... but at least it's something": "довооольно поломанное... но хоть что-то",
+        "this is prettyyyy busted... but at least it's something": "как всё запущено... но хоть что-то",
 
         "glimmering spires mark their cities": cor_ru.entity_menu["glimmering spires mark their cities"].name,
         "these grand icons of their control": cor_ru.entity_menu["these grand icons of their control"].name,
@@ -50,7 +50,7 @@ where
     
     moth
         честн говоря не думаю, что это какой-то конкретный город
-        выглядит как куча всего, смешанного вместе... типа как символы городов, а не их настоящие изображения
+        тут все вперемешку.. словно это символы городов, а не их конкретное отображение
             SHOWIF::[['hub__funfriend-kickoutq', false]]
         раз эта циста голодает, может быть воспоминания акизетеше о наших городах сбились вместе чтобы выжить
             SHOWIF::[['hub__funfriend-kickoutq']]
