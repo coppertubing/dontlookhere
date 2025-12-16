@@ -130,7 +130,7 @@ env.localization.page['sec'] = {dialogues: {},
 
         "hello?": "привет?",
         "ERROR::'infinite stream loop';'retracing';'last coherent position'": "ОШИБКА::'бесконечная петля потока';'возвращение';'последняя связная позиция'",
-        "ATTENTION::'thoughtform activity detected'::'resources removed'": "ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'::'удалены данные'",
+        "ATTENTION::'thoughtform activity detected'::'resources removed'": "ВНИМАНИЕ::'обнаружена мыслеформенная активность'::'удалены данные'",
 
         /*effigy*/ "jokzi... jokzi ozo!!": "джокзи... джокзи озо!!",
         /*effigy*/ "that's right! i have a home!!": "точно!! у меня же дом есть!!",

@@ -1606,7 +1606,7 @@ start
             EXEC::flash(true);forcePlay('criticalError', 1.5);
 
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
             EXEC::env.citystreet.pickFlower()
         ВНИМАНИЕ::'удалены данные'
             EXEC::flash(false)

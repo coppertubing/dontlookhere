@@ -19,7 +19,7 @@ env.localization.page['hello'] = {dialogues: {},
         "FOR YOU": "ДЛЯ ТЕБЯ",
         "FOR_YOU": "ДЛЯ_ТЕБЯ",
         "sentry": "КАРАУЛ",
-        "'thoughtform activity detected'::'advise re-examination'": "'обнаружена мыслеформенная деятельность'::'рекомендуется повторное сканирование'",
+        "'thoughtform activity detected'::'advise re-examination'": "'обнаружена мыслеформенная активность'::'рекомендуется повторное сканирование'",
     },
     entityDescriptions: {
         "???": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА

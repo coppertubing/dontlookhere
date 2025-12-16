@@ -566,7 +566,7 @@ env.localization['strings'] = {
     "activate adapter": "активировать адаптер",
 
 
-    "'thoughtform activity detected'::'resources removed'": "'обнаружена мыслеформенная деятельность'::'удалены данные'",
+    "'thoughtform activity detected'::'resources removed'": "'обнаружена мыслеформенная активность'::'удалены данные'",
 
     "unity": "единство",
 

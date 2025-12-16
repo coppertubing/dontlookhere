@@ -265,7 +265,7 @@ start
             EXEC::flash(true);forcePlay('criticalError', 1.5);
 
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная деятельность'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'
         ВНИМАНИЕ::'удалены данные'
             EXEC::page.buddy_fairy.remove({removeEl: true, leaving: false});flash(false)
 
