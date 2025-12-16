@@ -19,25 +19,25 @@ env.localization.page['fbx'] = {dialogues: {},
         "DENDRITIC CYST": "ДЕНДРИТНАЯ ЦИСТА",
         "touch": "потрогать",
         "lift": "поднять",
-        "the notes I got say that there were apparently a ton of these on the ship": "в записях говорилось, что на корабле вот таких вот была просто куча",
+        "the notes I got say that there were apparently a ton of these on the ship": "в отчёте указано, что таких на корабле была целая куча",
         "all sorts of sizes too": "причём самых разных размеров",
-        "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми... так что захватили только одну маленькую",
+        "but most were too heavy to retrieve... so we just got this small one": "но большинство были слишком тяжёлыми... так что захватили только вот эту маленькую",
         "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it": "у дендритной цисты жёсткая внешняя оболочка. не похоже, что к ней можно подключиться",
-        "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста неожиданно тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
+        "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table": "дендритная циста на удивление тяжела. при повороте изнутри раздаётся каскад звенящих металлических звуков. когда ты ставишь её обратно, её отростки находят новый способ удержаться на столе",
 
         "FRACTALLINE CYST": "ФРАКТАЛЬНАЯ ЦИСТА", 
         "nobody knows what this one is.. pretty sure it's dead though": "никто не знает, что именно это такое.. но думаю она дохлая",
         "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone": "оболочка фрактальной цисты склизкая и упругая. если ты сожмёшь её сильнее, она наверняка лопнет... лучше оставить её в покое",
 
         "CYST": "ЦИСТА", 
-        "so this is the mystery piece": "а вот и гость программы",
+        "so this is the mystery piece": "а вот и гвоздь программы",
         "it's in bizarrely good condition considering it was at the bottom of the ocean for however long it's been since, y'know": "в поразительно хорошем состоянии, учитывая сколько она провалялась на дне океана с тех пор как, ну знаешь",
-        "no clue what it is aside from some similar internal structure to network cysts we've found before": "без малейшего понятия что она делает, но её внутренности напоминают ранее найденные сетевые цисты",
-        "the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.": "у цисты твёрдая внешняя оболочка, однако несколько круглых точек наверху менее плотные, чем всё остальное. в твоём опыте это обычно точки соединения. ты определённо можешь просканировать их более тщательно.",
+        "no clue what it is aside from some similar internal structure to network cysts we've found before": "понятия не имею для чего она, но внутренности напоминают ранее найденные сетевые цисты",
+        "the cyst has a solid outer shell. a few circular points near the top are less firm than the rest. in your experience, these are usually connection points. you can definitely scan this point more thoroughly.": "оболочка цисты довольно твёрдая, однако несколько круглых точек наверху менее плотные, чем всё остальное. как подсказывает твой опыт, обычно это точки соединения. стоит просканировать их более тщательно.",
         "depth scan": "подробное сканирование",
         "ANALYSIS::'valid nerve point';'connection enabled'": "АНАЛИЗ::'действительная нервная точка';'доступно подключение'",
         "::CORRUCYSTIC ENTITY": "`::КОРРУЦИСТОЗНАЯ СУЩНОСТЬ",
-        "::NO FUNCTION SIGNATURE": "::НЕТ ПОДПИСИ ФУКНЦИИ",
+        "::NO FUNCTION SIGNATURE": "::НЕТ ПОДПИСИ ФУНКЦИИ",
         "::CONNECTIVE MEMBRANE EXPOSED": "::ОБНАЖЁННАЯ СОЕДИНИТЕЛЬНАЯ МЕМБРАНА",
 
         "CYSTIC COLUMN": "ЦИСТОЗНАЯ КОЛОННА", 
@@ -145,7 +145,7 @@ start
     moth
         эй, дружище, добро пожаловать 
         честно у меня были сомнения, что ты появишься на такой мелкий улов
-        в последнее время находят столько кораблекрушений
+        в последнее время что только не находят в океане
         в любом случае сейчас я всё запущу, можешь пока осмотреться
         
     sourceless
@@ -163,12 +163,12 @@ whatis
         что это?
     moth
         находка с обескового крушения недалеко от новой зеландии
-        в записях говорится, почти всё расплавилось, что немного странно...
-        во всяком случае... главная из них это вот эта большая
-        пьедесталы обычно означают "важно", но этот непомеченный
+        в отчёте говорится, почти всё расплавилось, что немного странно...
+        во всяком случае... главная это вот эта большая
+        пьедесталы обычно означают "важное", но этот непомеченный
         алекс сделал базовый скан, сказал напоминает сетевой узел
-        мы даже не знаем наверняка, примет ли оно мыслекол
-        ну, тебе платят так или иначе, так что... терзай
+        мы даже не знаем наверняка, примет ли она мыслекол
+        ну, тебе платят в любом случае, так что... дерзай
         
     RESPONSES::self
         сесть<+>sit
@@ -187,7 +187,7 @@ sit
         сиденье холодное и неудобное. свет от твоего защитного снаряжения рассеивается в перламутровых цистах.
         
     moth
-        как по старинке - мыслекол на готове
+        как по старинке - мыслекол наготове
 
     RESPONSES::self
         что это<+>whatis
