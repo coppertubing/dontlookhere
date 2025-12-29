@@ -141,7 +141,7 @@ env.localization.page['sec'] = {dialogues: {},
         "cavik": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'не указано'
 <span style='color: var(--friend-color)'>::РЕКОНСТРУИРОВАННЫЙ КОНТЕКСТ ПОДПИСИ</span>
-<span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влияние'
+<span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("вазнийское")} сюрреалистическое влиянье'
 <span style='color: var(--friend-color)'>+</span>'метка <span onmouseenter="javascript:env.secavik.cavikDmg(1);document.querySelectorAll('.message.cavik').forEach(el=>el.querySelector('img').src = '/img/sprites/obesk/cavik/paintrait.gif')" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'пещерный город';'я хочу очнуться';'я хочу домой'">олтазни</span>'
 <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("жат")}-рецепторы, обращ“—» ¯x¶›¢Ã°!
 ::ОШИБКА::'окончен поток'недейстОШИБКА::ИÓú=ER::Й"¨úр::äÀ*^Уó¬ól£«â'`,

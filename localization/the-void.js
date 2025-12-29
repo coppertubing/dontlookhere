@@ -38,7 +38,7 @@ env.localization.page['localorbit'] = {dialogues: {},
 env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        открытие серое?<+>dull
+        открытье серое?<+>dull
             SHOWIF::[['EXEC::env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull()']]
 
         неважно<+>CHANGE::++moth
@@ -164,7 +164,7 @@ what
         ПРЕДУПРЕЖДЕНИЕ::'обнаружена ошибка связности';'некритическая';'визуализация продолжается'
     
     fairy
-        ты хочешь информацию, да? воспоминания?
+        ты хочешь информацию, да? воспоминанья?
         мне нужно вернуться к своим друзьям!
         и ты мне поможешь!
         и потом я бы помогла тебе!
@@ -207,7 +207,7 @@ help
         разыщи мой дом!
             EXEC::content.classList.add('showfairy')
         во тьме! в пробелах между!
-        разыщи оружие и принеси его мне!
+        разыщи оружье и принеси его мне!
         и я стану свободна!
         ура!!
     
@@ -248,7 +248,7 @@ helpme
 env.localization.page['localorbit'].dialogues["fairy_beacon"] = generateDialogueObject(`
 start
     fairy
-        о! сияние!
+        о! сиянье!
             EXEC::content.classList.add('showfairy');page.buddy_fairy.center()
         совет, совет, я тебя слышу!!
         я вырвусь на свободу! я вернусь!

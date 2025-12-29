@@ -17,7 +17,7 @@ env.localization.page['parasite'] = {dialogues: {},
 
         //effigy
         "i can take them!": "я с ними справлюсь!",
-        "use focus stupid!": "используй сосредоточение глупая!",
+        "use focus stupid!": "используй сосредоточенье глупая!",
         "can i have the bozko augment": "можно мне бозко",
         "the groundsmind stands no chance!": "у землемысльца нет ни шанса!",
         "don't use any items ok?": "не используй предметы окей?",
@@ -92,7 +92,7 @@ env.localization.page['parasite'] = {dialogues: {},
         "quiet...": "тихо...",
         "it has to be here": "это должно быть здесь",
         // unity
-        "that would be nice... but i must finish my investigation": "было бы неплохо... но я должна завершить своё исследование",
+        "that would be nice... but i must finish my investigation": "было бы неплохо... но я должна завершить своё исследованье",
 
         // pleased
         "just being here is so fun!": "просто нвходиться здесь уже так весело!",
@@ -143,7 +143,7 @@ env.localization.page['parasite'] = {dialogues: {},
         "wrong side? no i am ok": "не та сторона? неа всё в порядке",
         "turns out it is not so simple": "выяснилось это не так уж просто",
         "i want to play a different game": "я хочу сыграть в другую игру",
-        "seen any rules? me either": "знаешь какие-нибудь правила? я тоже",
+        "seen any rules? me either": "знаешь какие-нибудь правила? и я тоже",
 
         // mi
         "how do i get out of here??": "как мне выбраться отсюда??",
