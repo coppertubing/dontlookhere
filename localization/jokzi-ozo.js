@@ -13,7 +13,7 @@
 env.localization.page['ozo'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "this place is wild": "дикое место",
+        "this place is wild": "место прост дикое",
         "about jokzi ozo": "о джокзи озо",
 
 
@@ -75,9 +75,9 @@ env.localization.page['ozo'] = {dialogues: {},
 
         /*wakizet*/ "fine": "ладно",
 
-        /*loperact*/ "you should join in": "", // --- присоединяйся к танцу
-        /*stowaway*/ "join in": "", // --- присоединяйся 
-        // --- всегда интерпретировал это мол безбилетник лазутчика тоже танцевать приглашает
+        /*loperact*/ "you should join in": "не хочешь присоединиться?",
+        /*stowaway*/ "join in": "хочешь присоединиться",
+        // --- всегда интерпретировал это мол безбилетник лазутчика тоже танцевать приглашает. энивей этот перевод как по мне выполняет похожую фукнцию: безбилетник намекает на то что лазутчику тоже хочется присоединиться
 
         /*effigy*/ "aww!!": "авв!!",
         /*effigy*/ "we'll come back later!": "мы вернёмся позже!",
@@ -205,24 +205,27 @@ env.localization.page['ozo'] = {dialogues: {},
 env.localization.page['ozo'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        what does this look like to you?<+>what
+        как это всё для тебя выглядит?<+>what
 
-        trust them?<+>trust
+        довериться им?<+>trust
             SHOWIF::[["ozo__council_intro"], ["ozo__isabel_intro"], ["ozo__fairy_intro"]]
 
-        council?<+>council
+        совет?<+>council
             SHOWIF::"ozo__council_intro"
 
-        fairy?<+>fairy
+        фея?<+>fairy
             SHOWIF::"ozo__fairy_intro"
 
-        isabel?<+>isabel
+        изабель?<+>isabel
             SHOWIF::"ozo__isabel_intro"
 
-        fake me?<+>me
+        лже-я?<+>me
             SHOWIF::"e3a2__escapewin"
 
-        nevermind<+>CHANGE::++moth
+        акизет<+>waki
+            SHOWIF::"ozo__wakizet"
+
+        неважно<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
 env.localization.page['ozo'].dialogues[`mth++ozo`] = generateDialogueObject(`
@@ -240,19 +243,19 @@ start
 
 what
     self
-        как это выглядит для тебя?
+        как это всё для тебя выглядит?
     
     moth
-        like in my readout? // в выводе что ль?
-        this almost looks like a dream recording you'd find online // это выглядит почти как те записи снов из инета
-        it's completely coherent, at least in terms of rendering // они целиком связны, по крайней мере если говорить о рендере
-        the thoughtforms i can see are all non-cohesive and broken up, // все мыслеформы что я вижу бессвязны и поломаны,
-        but they're existing in this space without issues somehow // но каким-то боком они существуют здесь без всяких проблем
-        really just bizarre lol // прост очень странно лол
-        it's kind of wild to think, but... //  даже дико думать об этом, но...
-        maybe this happens when <em>any</em> corrucyst starts to die and break down? //  быть может это то что происходит с <em>каждой</em> погибающей и ломающейся цистой?
-        like we know most of the time it leads to total nonsense incoherence that we can't read // как бы мы знаем что по большей части это ведёт к полной бессмысленной и нечитаемой бесссвязности,
-        but it's not out of the question that they could all start forming little pocket worlds like this // но это не значит что они не могут начать формировать карманные миры по типу этого
+        типа в выводе?
+        ну почти как типичная запись сна из интернета
+        всё вполне связно, по крайней мере если говорить о визуале
+        а все видимые мыслеформы бессвязные и поломанные,
+        но каким-то боком они существуют здесь без всяких проблем
+        просто капец странно лол
+        даже дико думать об таком, но...
+        может это то что происходит с <em>каждой</em> погибающей и сломанной цистой?
+        как бы мы знаем что по большей части это ведёт к нечитаемой и полностью бессмысленной бесссвязности,
+        но это не значит что они не могут тоже формировать карманные миры по типу этого
     
     RESPONSES::self
         стрёмно<+>loop
@@ -260,20 +263,20 @@ what
 
 council
     self
-        what do you think of the council? // что ты думаешь о совете?
-        should we do what they want? // должны ли мы слушаться его?
+        что ты думаешь о совете?
+        должны ли мы слушаться его?
     
     moth
-        they seem really nice, // по мне так он на самом деле славный,
-        especially since they didn't blow up your brain or anything when you let them send that mask stuff // в особенности потому что он не взорвал твой мозг или что-то такое когда они засунули тебе в бошку ту маску
-        we could get a lot of insight from them, i think // думаю мы сможем вытянуть из него много инфы
-        even if whatever memories they fused with to make this all happen are probably completely lost, // даже если, скорее всего, любые воспоминания с которыми они слились для этого всего, полностью утеряны
-        i bet they've been around, watching everything that happened through the cyst's starvation // сто пудов они застали всё что произошло когда циста голодала
-        as long as they don't mess with repairs we should leave them around // пока они не мешают починкам мы должны оставить их
+        по мне так он на самом деле славный,
+        в особенности потому что он не взорвал твой мозг когда засунул ту маску тебе в бошку
+        думаю мы сможем вытянуть из него много инфы
+        даже если все те воспоминания, которые в этот совет слились, теперь скорее всего окончательно утрачены
+        наверняка он тут уже давно и застал всё что происходило пока циста голодала
+        до тех пор пока он не мешает починкам давай его оставим
         ...
-        also, this is the weirdest thing // ещё кое-что, страннейшая фигня: """ хмхмхм убрать ли знак
-        i didn't actually see the council until you talked to it // для меня совет не отображался до тех пор как вы не начали общаться
-        it's like you're talking to the thoughtspace itself // как будто ты разговариваешь с самим мыслепространством """ не нравится но нет идей
+        ещё кое-что, страннейшая фигня:
+        совет не отображался для меня пока вы не начали разговаривать
+        it's like you're talking to the thoughtspace itself // как будто ты разговариваешь с самим мыслепространством """ не нравится но нет идей --- звезды помогай
     
     RESPONSES::self
         странно<+>loop
@@ -284,13 +287,13 @@ fairy
         что ты думаешь о фее?
         
     moth
-        it's so fucked up that your mindspike calls it a 'fairy' // ёбнуться можно что твой мыслекол зовёт это "феей"
-        i don't know what to think, it's clearly pretty unstable // не знаю что и думать, она очевидно весьма нестабильна
-        but it likes you, so maybe we can keep it from doing anything crazy while we're working here // но ты ей нравишься, так что мы можем удерживать её от безрассудных поступков пока мы работаем здесь
-        also, it looks like it can traverse thoughtspaces pretty easily // и ещё она походу без труда может пересекать мыслепространства
-        did you see those gates in its area? // помнишь же те врата в её зоне?
-        maybe we can get it to change some stuff for us later // возможно позже мы убедим её поменять чего для нас
-        like if funfriend doesn't want us doing something // к примеру если развледруг будет против каких-нибудь наших действий
+        ёбнуться можно что твой мыслекол зовёт это "феей"
+        не знаю что и думать, она очевидно крайне неустойчива
+        но ты ей нравишься, так что может быть она не будет творить дичь пока мы здесь работаем
+        и ещё она походу без труда может пересекать мыслепространства
+        помнишь же те врата в её зоне?
+        возможно позже мы могли бы убедить её поменять чего для нас
+        типа если у развледруга появятся претензии к нашим планам
     
     RESPONSES::self
         ага<+>loop
@@ -301,21 +304,21 @@ isabel
         что ты думаешь об изабель?
         
     moth
-        well, it's probably harmless // что ж, она скорее всего безобидна
-        whatever's going on there is parasocial as hell though // впрочем что бы здесь ни происходило оно всё пиздец какое парасоциальное
+        что ж, она скорее всего безобидна
+        впрочем что бы здесь ни происходило оно всё пиздец какое парасоциальное
     
     self
-        you don't think she was real? // ты не думаешь что она существовала?
+        ты не думаешь что она существовала?
     
     moth
-        well yeah isabel probably was real // ну, да, изабель наверняка существовала
-        and we have records of obesk being friends and stuff with humans // и у нас есть записи об обесках друживших с людьми и всякое
-        like, with obesk just visiting them casually // типа, с тем как обески обыденно посещали их
-        pretty sure that's where the conspiracy theory about them wearing human disguises came from too // наверняка это то откуда растут ноги у конспирологической теории про обесков маскирующихся под людей 
-        it's just that this is a thoughtform who knows it wasn't actually isabel or akizet's friend // она просто мыслеформа знающая что не была настоящей изабель или подругой акизет
-        and now it's just obsessing over whatever it knew // и теперь одержимая тем что знала
-        it doesn't seem healthy but w/e // нездоровая херня но в целом похуй """ ах моль что же ты такое делаешь перестань материться как же я буду это переводить
-        not hurting anything here // это ничему не вредит
+        ну, не, изабель-то наверняка существовала
+        и у нас есть записи об обесках друживших с людьми и всякое
+        типа, с тем как обески обыденно посещали их
+        наверняка это то откуда растут ноги у теории про обесков маскирующихся под людей
+        просто это - мыслеформа знающая что не была настоящей изабель или подругой акизет
+        и теперь одержимая тем что знала
+        как по мне нездоровая херня но в целом похуй
+        здесь это ничему не вредит
     
     RESPONSES::self
         окей<+>loop
@@ -323,15 +326,15 @@ isabel
 
 trust
     self
-        should we trust these thoughtforms? // стоит ли нам доверять этим мыслеформам?
+        стоит ли нам доверять этим мыслеформам?
         
     moth
-        they're all pretty harmless and cooperative // в целом они все довольно безобидные и сговорчивые
-        i don't think they're even blocking anything // я даже не думаю что они блокируют хоть что-то
-        we would have heard about them sooner // в противном случае мы бы услышали о них раньше
-        seems like they're all just trying to make do with being stuck in the cyst // походу они все просто пытаются справиться с тем что застряли в цисте
-        idk i don't think we really need to do anything about them // хз не думаю что нам реально нужно что-то сделать с ними
-        i'd only object if they wanted to majorly mess up memories or stop repairs // до тех пор пока они не слишком чудят с воспоминаниями или останавливают починки
+        в целом они все довольно безобидные и сговорчивые
+        я даже не думаю что они препятствуют хоть чему-то
+        иначе мы бы услышали о них раньше
+        мне кажется они все просто пытаются справиться с тем что застряли в цисте
+        хз не думаю что нам реально надо с ними что-то делать
+        до тех пор пока они не слишком чудят с воспоминаниями или останавливают починки мне норм
     
     RESPONSES::self
         хорошо<+>loop
@@ -339,32 +342,61 @@ trust
 
 me
     self
-        so this fake me is still here // итак это лже-я всё ещё здесь
+        эта штука всё ещё здесь
+            COR-RU::--- пожалуйста давайте оставим так прошу прошу прошу
     
     moth
-        yeah... got pulled through to jokzi ozo by geli i guess // агаа... походу вытащило в джокзи озо вместе с джели
-        it's incredible that you were still, like "attached" to it as a locus when you left // поражает что тебя, типа, не "отцепило" от него когда вы ушли
-        that had to have been weird, cause the output i got was totally mangled // должно быть это странно, тк мой вывод совсем расхреначило
+        ага... наверн вытащило в джокзи озо вместе с джели
+        поражает что тебя, типа, не "отцепило" от него как от локуса когда вы ушли
+        наверно было оч странно тк мой вывод совсем расхреначило
     
     self
-        what do we do about this // что мы будем с этим делать
+        и что нам делать
     
     moth
-        what do you expect me to say, "kill it?" // что ты ожидаешь услышать от меня, "убить"? """ они что реально в английском ставят знаки внутри кавычек
-        it's fine, it's such an empty shell of a thoughtform it basically can't do anything // всё в порядке, это настолько пустая оболочка от мыслеформы что она ни на что не способна
-        the FBX won't go crazy over it either // ФБКС тоже не взбесится из-за этого
-        you were going to leave a mark on this cyst somehow anyway /// тебе так или иначе пришлось бы наследить в этой цисте
-        comes with the territory of what we're doing // в такой уж сфере работаем
+        что ты услышать-то хочешь, "давай убьём"?
+            COR-RU::""" они что реально в английском ставят знаки внутри кавычек
+        всё в порядке, это настолько пустая оболочка от мыслеформы что она ни на что не способна
+        ФБКС тоже не взбесится из-за этого
+        тебе так или иначе пришлось бы наследить в этой цисте
+        в такой уж сфере работаем
     
 ____SHOWIF::"ozo__stowaway"
     moth
-        also, did you notice your logs? // а ещё, видишь, что в твоих logs?
-        when you talk to it, its identity output is different from what you scanned // когда ты с ней говоришь, вывод личности отличается от того в изначальном скане
-        i think it's modifying itself already, that's kinda interesting //думаю она уже себя модифицирует, это довольно любопытно
+        а ещё, видишь что в твоих логах?
+        когда ты с ней говоришь, вывод личности отличается от того что было в изначальном скане
+        думаю она уже себя модифицирует, это довольно любопытно
 ____END
     
     RESPONSES::self
         ага<+>loop
+            FAKEEND::(назад)
+
+waki
+    self
+        the lucid akizet thoughtform here doesn't seem very trusting or happy
+
+    moth
+        yyyeaaah
+        probably just needs to warm up to the place, right?
+        that's on the ozo thoughts to help, though
+        we can't really do any more for it right now
+
+    self
+        do you think we'll be able to get anything useful from it?
+        
+    moth
+        probably?
+        the thing is, it's a weirdly shaped thoughtform, and it's been throwing off my analysis
+        i imagine on account of whatever it did to survive down there
+        but it is larger than most others, which means it probably has a lot of inherited context
+        maybe we can get more once it lowers its guard...
+        that aside, i do think it'll be useful in the long run beyond just direct info
+        i bet it could stand in for akizet in memories that don't have an intact locus
+        but... that's just a theory, we haven't seen one of those
+    
+    RESPONSES::self
+        хорошо<+>loop
             FAKEEND::(назад)
 `)
 
@@ -413,7 +445,7 @@ start
         и вот ты здесь!
         находишь наше пристанище в отступающем безумии!
         и какая же жалость... ох какая же досада!! что только сей θмиг ты здесь
-        светлые поля - сгнили, звёзды - угасли
+        светлые поля сгнили, звёзды - угасли
         наши же друзья - все пропали...
 
     sourceless
@@ -436,46 +468,46 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues.councilResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        stowaway?<+>stowawaydance
+        безбилетник?<+>stowawaydance
             SHOWIF::'PAGE!!c_stow'
-        simple task?<+>task
+        простое задание?<+>task
             SHOWONCE::
         rejoining<+>rloop
             SHOWIF::'ozo__council-task'
-        questions<+>qloop
-        questions for me?<+>iloop
-        let's dance<+>dance
+        вопросы<+>qloop
+        вопросы мне?<+>iloop
+        потанцуем<+>dance
             SHOWIF::[["ozo__council_dance", true], ['ozodance', false]]
-        stop dancing<+>stopdance
+        хватит танцевать<+>stopdance
             SHOWIF::'ozodance'
-        bye<+>END
+        пока<+>END
             EXEC::env.jokzi.councilToggle()
 `)
 env.localization.page['ozo'].dialogues.councilRejoiningResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        anyone else?<+>anyone
+        ещё кто-нибудь?<+>anyone
             SHOWIF::[["citystreet__flower_beacon", true], ["localorbit__fairy_beacon", true], ["e3a2__escapewin", false]]
 
-        flower<+>flowersaved
+        цветок<+>flowersaved
             SHOWIF::["citystreet__flower_beacon", true]
-        fairy<+>fairysaved
+        фея<+>fairysaved
             SHOWIF::["localorbit__fairy_beacon", true]
 
-        flower<+>flower
+        цветок<+>flower
             SHOWIF::["citystreet__flower_beacon", false]
-        fairy<+>fairy
+        фея<+>fairy
             SHOWIF::["localorbit__fairy_beacon", false]
 
         lost one<+>third
             SHOWIF::["e3a2__escapewin", false]
 
-        geli?<+>geli
+        джели?<+>geli
             SHOWIF::[["geli_beacon", true], ["e3a2__escapewin", false]]
-        geli?<+>gelifree
+        джели?<+>gelifree
             SHOWIF::"e3a2__escapewin"
 
-        cavik?<+>cavik
+        кавик?<+>cavik
             SHOWIF::["secavik", "beaconed"]
 
         назад<+>loop
@@ -484,12 +516,12 @@ RESPOBJ::
 env.localization.page['ozo'].dialogues.councilQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        hide masks<+>leverage
+        спрятать маски<+>leverage
             SHOWIF::"leverage"
             SHOWONCE::
-        about you and this place...<+>ploop
-        about the cyst and elsewhere...<+>cloop
-        geli's vessel?<+>vessel
+        о тебе и этом месте...<+>ploop
+        о цисте и других местах...<+>cloop
+        судно джели?<+>vessel
             SHOWIF::"e3a2__escapewin"
 
         назад<+>loop
@@ -498,21 +530,21 @@ RESPOBJ::
 env.localization.page['ozo'].dialogues.councilPlaceQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        why dancing?<+>dancing
+        почему танцы?<+>dancing
             SHOWIF::"ozo__council_dance"
-        'we'?<+>we
-        this place?<+>ozo
-        three ages?<+>history
+        &quot;мы&quot;?<+>we
+        это место?<+>ozo
+        три эпохи?<+>history
             SHOWIF::"ozo__council-ozo"
-        akizet's coat?<+>akicoat
-        god?<+>godlike
+        накидка акизет?<+>akicoat
+        божество?<+>godlike
             SHOWIF::['recosm_state', 'killed']
-        how long have you been here?<+>time
-        feast?<+>feast
-        dreams?<+>dreams
-        dark area<+>dark
+        сколько ты здесь?<+>time
+        пир?<+>feast
+        грёзы?<+>dreams
+        тёмное место<+>dark
             SHOWIF::"ozo_enterdark"
-        stowaway?<+>stowaway
+        безбилетник?<+>stowaway
             SHOWIF::"e3a2__escapewin"
         назад<+>loop
             FAKEEND::(назад)
@@ -520,16 +552,16 @@ RESPOBJ::
 env.localization.page['ozo'].dialogues.councilCystQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        velzie?<+>velzie
-        god?<+>god
+        велзи?<+>velzie
+        божество?<+>god
             SHOWIF::['recosm_state', 'spared']
-        tyrant?<+>tyrant
+        тиран?<+>tyrant
         funfriend's power?<+>funfriend
             SHOWIF::'ozo__council-tyrant'
         coherence regulator<+>coreg
             SHOWIF::'fbx__ep3intro'
-        akizet?<+>akizet
-        dull plane?<+>dull
+        акизет?<+>akizet
+        среда серое?<+>dull
             SHOWIF::"ep4__entrancefinal"
         назад<+>loop
             FAKEEND::(назад)
@@ -537,8 +569,8 @@ RESPOBJ::
 env.localization.page['ozo'].dialogues.interloperQuestionsResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::council
-        real name?<+>iname
-        purpose?<+>ipurpose
+        настоящее имя?<+>iname
+        назначенье?<+>ipurpose
         назад<+>loop
             FAKEEND::(назад)
 `)
