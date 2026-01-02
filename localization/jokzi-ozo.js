@@ -472,7 +472,7 @@ RESPOBJ::
             SHOWIF::'PAGE!!c_stow'
         простое задание?<+>task
             SHOWONCE::
-        rejoining<+>rloop
+        воссоединение<+>rloop
             SHOWIF::'ozo__council-task'
         вопросы<+>qloop
         вопросы мне?<+>iloop
@@ -486,7 +486,7 @@ RESPOBJ::
 env.localization.page['ozo'].dialogues.councilRejoiningResp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        ещё кто-нибудь?<+>anyone
+        кто-нибудь ещё?<+>anyone
             SHOWIF::[["citystreet__flower_beacon", true], ["localorbit__fairy_beacon", true], ["e3a2__escapewin", false]]
 
         цветок<+>flowersaved
@@ -499,7 +499,7 @@ RESPOBJ::
         фея<+>fairy
             SHOWIF::["localorbit__fairy_beacon", false]
 
-        lost one<+>third
+        lostone<+>third
             SHOWIF::["e3a2__escapewin", false]
 
         джели?<+>geli
@@ -556,9 +556,9 @@ RESPOBJ::
         божество?<+>god
             SHOWIF::['recosm_state', 'spared']
         тиран?<+>tyrant
-        funfriend's power?<+>funfriend
+        власть развледруга?<+>funfriend
             SHOWIF::'ozo__council-tyrant'
-        coherence regulator<+>coreg
+        регулятор связности<+>coreg
             SHOWIF::'fbx__ep3intro'
         акизет?<+>akizet
         среда серое?<+>dull
@@ -747,7 +747,7 @@ flower
 
 anyone
     self
-        не считая the lost one
+        не считая оставшуюся пропажу
         все о ком ты просил теперь здесь
         что теперь? нужен ещё кто-нибудь?
     
@@ -977,7 +977,7 @@ dancing
 we
     self
         почему "мы"
-        тут больше никого нет
+        ты тут один
     
     council
         любопытно!!
@@ -2674,7 +2674,7 @@ akizet
         тупица!
         наземнобежец, спотыкавшаяся, да спотыкавшаяся, да сдохшая
         и продолжившая спотыкаться в θсмерти!
-        ты смотришь в её воспоминания, да?
+        ты просматриваешь её воспоминания, да?
         я заглянула в посольство по пути сюда! что за идиотина!!
         наверняка сглупила и впрямь обо что-то там наконец убилась!
         не знаю, что конкретно она там натворила, да и не волнует это меня
@@ -2784,16 +2784,16 @@ council
 
 lostone
     self
-        the council said there's a 'lost one' they want me to find
-        someone who went missing when you and the flower did
+        совет сказал что мне нужно найти ещё кого-то
+        кого-то кто пропал вместе с тобой и цветком
     
     fairy
-        oh, yes, i feel their absence--one of ozo's fresh wounds!
-        but after all the tyrant has done... i have no idea where they could be
-        or even what they are!
-        but if it was so recent, surely they are hidden somewhere within akizet's memories
-        forced back into whatever menial role they served...
-        look at the areas the tyrant has repaired! they have to be there!
+        о, да, я тоже ощутила некое отсутствие--одна из свежих ран озо!
+        но после всего, что проделал тиран... я и понятия не имею, кто вообще отсутствует
+        или куда этого кого-то дели!
+        но раз пропажа такая недавняя, наверняка тирану понадобилось что-то из воспоминаний акизет!
+        заточить очередную мысль в утомительную, некогда уже отброшенную роль...
+        покопошись в местах, починенных тираном! кто-нибудь да найдётся!
     
     RESPONSES::self
         окей<+>oloop
@@ -2855,9 +2855,9 @@ stowaway
         безбилетнике? 
         а, странная штука!
         ахахаха я обожаю эту штуку!!
-        тебе стоит увидеть, как оно реагирует на мои трюки!
+        увидеть бы тебе, как оно реагирует на мои трюки!
         как маленький любопытный зверёк
-        а внутри - ничего, оно опустошено так, как я до этого никогда не видела
+        а внутри - пусто. опустошённое до такой степени, какую я до этого ещё никогда не видела
         так что, думаю, оно отлично примет наши знания
         мои тем более!! хихихии
 
@@ -2898,7 +2898,7 @@ wakizet
 
 history
     self
-        каково прошлое джокзи озо?
+        какое у джокзи озо прошлое?
     
     fairy
         всё веселье без тебя прошло, так ведь?
@@ -3018,56 +3018,57 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues["lady_shattered"] = generateDialogueObject(`
 start
     self
-        hello?
+        привет?
             EXEC::env.jokzi.toggleSlow(true)
     
     incoviewer
-        ... // звёзды переведи. и моль тоже 🥺
+        ...
     
     RESPONSES::self
-        meteorite<+>meteorite
-        leave<+>END
+        метеорит<+>meteorite
+        уйти<+>END
         
 meteorite
     self
-        do you know anything about a meteorite?
-        the thing velzie destroyed the interview room over?
+        ты ничего не знаешь о метеорите?
+        из-за которого та мыслеформа, велзи, разорвала на части комнату с интервью?
     
     incoviewer
         ...
-        no    нет
+        нет
         ...
-        is this real?     это реально?
+        это по-настоящему?
     
     moth
-        this thoughtform's completely mangled dude    чел эта мыслеформа совсем искалечена
-        but she made me think about the situation some more...    но из-за неё я снова думаю о той ситуации...
-        that version of akizet in the interview, remember how velzie tried to make her talk about the meteorite?    та версия акизет в интервью, помнишь как велзи попыталось заставить её рассказать о метеорите?
-        she probably had no inherited knowledge of it    наверняка у неё не было о нём унаследованных знаний
+        чел эта мыслеформа просто в мясо
+        но из-за неё я снова думаю о той ситуации...
+        та версия акизет с интервью, помнишь как велзи попыталось заставить её рассказать о метеорите?
+        наверно у неё не было унаследованных знаний о нём
 ____SHOWIF::['ep4__contact', false]
-        like, whatever it was trying to pull out of her and show us...    типа, что бы оно не пыталось вытянуть из неё дабы показать нам
-        it must have been from a different memory, something that happened to akizet later    наверняка относится к другому вспоминанию, чему-то что случилось с акизет дальше
-        but why was it trying so hard to make her talk about it?    но почему оно так старалось заставить её о нём рассказать?
-        did it not even know? how could it not have?    оно не знало об этом? каким образом?
-        all of these jokzi ozo thoughtforms seem to know how their world works    все эти мыслеформы с джокзи озо знают как работает их мир
-        they made these mask things, they even seem to be able to change each other    они создают эти маскоштуки, даже умеют изменять друг друга
-        if velzie wasn't just doing that to scare us or something,    если велзи не пыталось напугать нас или типа того,
+        типа, что бы оно не пыталось из неё вытянуть и показать...
+        наверняка относится к другому вспоминанию, чему-то что случилось с акизет ток позже
+        но почему оно так старалось заставить её говорить?
+        оно хоть знало об этом? если нет, каким образом?
+        все эти мыслеформы с джокзи озо понимают как работает их мир
+        они создают эти масочные штуки, даже умеют изменять друг друга
+        и если велзи не пыталось просто напугать нас,
 ____SHOWIF::'ep4__contact'
-        especially since, as far as we've seen, the only mention of it was in the embassy    особенно потому что, насколько мы видели, он упоминался только в посольстве
-        a completely different memory, with its own thoughtspace and inherited context    совершенно другом вспоминании, с собственным мыслепространством и унаследованным контекстом
-        but it was still trying to get her to talk about it anyway?    но оно всё ещё пыталось заставить её рассказать о нём?
-        how did it not know that would only cause problems?    каким образом оно не знало что это просто создаст проблем?
-        all of these jokzi ozo thoughtforms seem to know how their world works    все эти мыслеформы с джокзи озо знают как работает их мир
-        they made these mask things, they even seem to be able to change each other    они создают эти маскоштуки, даже умеют изменять друг друга
-        yet velzie accidentally breaks shit, assuming that wasn't just a fear tactic early on    пока велзи случайно ломает всякую хрень, если конечно у него не было ранней тактикой нагонять страх
+        тем более что, насколько мы знаем, упоминался он только в посольстве
+        совершенно другом вспоминании, с собственным мыслепространством и унаследованным контекстом
+        но оно всё равно пыталось заставить её говорить?
+        каким образом оно не осознавало что это только вызовет проблемы?
+        все эти мыслеформы с джокзи озо понимают как работает их мир
+        они создают эти масочные штуки, даже умеют изменять друг друга
+        пока велзи случайно ломает всякую хрень, если конечно у него не было ранней тактикой нагонять страх
 ____END
-        the only way this makes sense is if it doesn't know how thoughtforms work    всё это имеет смысл только если оно не знает как работают мыслеформы
-        but then how is it able to do so much?    но почему тогда оно способно на настолько многое?
-        like, it can control and change things, but it didn't realize the memory lacked context?    типа, может контролировать и менять штуки, но не поняло что у вспоминания недостаток контекста?
-        idk something to think about    idk просто пища для размышлений
+        всё это имеет смысл только если оно не понимает как мыслеформы работают
+        но тогда как оно способно на столькое?
+        типа, контролировать и вносить изменения оно может спокойно,
+        а понять что у воспоминания попросту нет нужного контекста - никак?
+        хз просто пища для размышлений
     
     RESPONSES::self
-        don't know<+>END
+        не знаю<+>END
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -3753,7 +3754,7 @@ END::env.jokzi.toggleSlow(false);setCam()
 
 // == EVENTS == //
 
-env.localization.page['ozo'].dialogues["e_c_geli"] = generateDialogueObject(`
+/*джели совет об устройстве - незав*/ env.localization.page['ozo'].dialogues["e_c_geli"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -3814,7 +3815,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_c_isabel"] = generateDialogueObject(`
+/*изабель совет об интервьюере - зав*/ env.localization.page['ozo'].dialogues["e_c_isabel"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -3831,63 +3832,63 @@ ____SHOWIF::"e3a2escape"
 ____END
 
     council
-        we do not understand--how is it different?      в таком случае мы не понимаем--в чём именно отличие?
-        was it chewed upon, then?      выходит, её грызли?
-        it was surrounded with hostile thoughts, from what we could intuit      нам казалось, что её окружали агрессивные мысли
+        в таком случае мы не понимаем--в чём же именно отличие?
+        выходит, её cгрызли?
+        наcколько мы уловили, её окружали агрессивные мысли
     
     isabel
-        было несколько следов, но ни один из них не стал причиной истинного ущерба
-        нет, это было что-то иное--как бы мне вообще это объяснить...
+        следы были, но ни один из них не являлся причиной истинного ущерба
+        нет, это было что-то другое--как бы мне вообще объяснить...
         раны не сходятся ни с чем, что я когда-либо видела
-        мембрана была разорвана и поражена, но без жестокого умысла,
-        а как если бы что-то прорвалось насквозь и вовнутрь, и всё же не изменяло того, чего касалось
-        прошу, поймите - я просто строю догадки // в оригинале тире но хз может вы знаете как лучше
-        однако это единственное объяснение...
-        нечто, что настолько отчаялось в поисках неких специфичных знаний,
+        мембрана вся разорвана и поражена, но произошло это не с жестоким умыслом,
+        а как если бы что-то прорвалось насквозь и вовнутрь, и всё же не изменило того, чего коснулось
+        прошу, поймите, я всего лишь строю догадки
+        однако это - единственное объяснение...
+        нечто, что настолько отчаялось в поисках каких-то конкретных знаний,
         что почти разорвало её на части, безразличное до ущерба
-        думаете, что лазутчик...?
+        вы не думаете, что лазутчик...?
     
     sourceless
-        the weight of the thoughtspace shifts, and you feel attention upon your presence.
-        it is only now that they have noticed you.
+        вес мыслепространства смещается, и ты чувствуешь внимание к твоему присутствию.
+        только сейчас тебя заметили.
             EXEC::specialCam("e_c_isabel_attention")
     
     council
-        oh, hello, dear interloper!      ох, привет, дорогой лазутчик!
+        ох, привет, дорогой лазутчик!
     
     sourceless
-        you feel isabel's gaze. it grasps at your presence, like she's trying to pry at your thoughts.
-        but that's not how this works.
+        ты ощущаешь пристальный взгляд изабель. он цепляется за твоё присутствие, словно она пытается вникнуть в твои мысли.
+        но это так не работает.
     
     self
-        you're talking about the interviewer
-        i know what did it
+        вы обсуждаете интервьюера
+        я знаю кто это сделал
 ____SHOWIF::"ozo__council-velzie"
-        it was the entity i told you about
+        та самая сущность, мы говорили о ней
 ____SHOWIF::["ozo__council-velzie", false]
-        an entity i think is named velzie
+        сущность которую, кажется, зовут велзи
 ____END
-        i watched it tear apart the entire thoughtspace
-        it was trying to get the thoughtforms to tell me something
-        something about a meteorite
+        она растерзала всё мыслепространство у меня на глазах
+        и пыталось заставить мыслеформы рассказать мне о чём-то
+        о каком-то метеорите
     
     council
-        fascinating...      поразительно...
+        поразительно...
     
     isabel
         это сходится с моими находками
         ущерб выглядит непредумышленным,
-        но он был нанесён чем-то, что явно не имеет представление о нашем мире
+        но его нанесло что-то, что явно не имеет представление о нашем мире
         или, по крайней мере, имеет неполное...
-        лазутчик, тебе лучше держать рецепторы востро
-        не знаю, чем именно является велзи, но ты имеешь дело явно не с обыкновенной пробудившейся мыслеформой
+        лазутчик, соблюдай осторожность
+        какое бы велзи это ни было, ты имеешь дело явно не с простой пробудившейся мыслеформой
     
     council
-        возможно, это один из потерянных components?
-        мы знаем, что великие органы цисты ранее действовали, как собственные миры
-        if one were to melt and merge with ours, it could easily have powers beyond what any of us may conceive      если бы такой сплавился и слился с нашим, чтоточтото
-        still, this is merely conjecture... keep us informed, dear interloper!      я устал уээ
-        now, all that said--did you wish to speak with us?    // """ звёзды допереведи ну или я сам (мле лень)
+        быть может, это один из потерянных компонентов?
+        мы знаем, что великие органы цисты ранее выступали в роли собственных миров
+        если бы один из них сплавился и слился с нашим, он вполне мог бы обладать силами за пределами нашего воображения
+        впрочем, это же всего лишь гипотеза... держи нас в курсе, дорогой лазутчик!
+        а теперь, высказав всё--хотелось ли тебе с нами поговорить?
 
     RESPONSES::self
         да<+>CHANGE::council
@@ -3897,7 +3898,7 @@ ____END
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_c_fairy"] = generateDialogueObject(`
+/*фея совет о регуляторе - зав*/ env.localization.page['ozo'].dialogues["e_c_fairy"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -3913,26 +3914,26 @@ start
         ахаха!! ооо, совет, но видели бы вы его!
         хотя мне лучше помолиться велзи, чтобы не видели никогда...
         из моих наблюдений, даже за моими иллюзиями и с большого расстояния,
-        мне стало ясно, что это - некий enforcer связности! // --- исполнитель? правоприменитель? контролёр? принудитель?
+        мне стало ясно, что это - некий принудитель связности!
         столько рук! такой размер! такая точность!!
         эффективность, с которою он сооружал то битое воспоминание, устрашает
         даже меня!! сколько времени прошло с тех пор, как меня кутал столький ужас!
-        меня посетила мысль, 'я должна подраться с этою штукою'...
-        но, подойди я ближе, он бы непременно растерзал меня и без единой мысли,
-        может, аж не заметив, что я не просто очередной материал для размещения в починках!!!
-        это вот так вот он двигался! жуть!
+        меня посетила мысль, "я должна подраться с этою штукою"...
+        но, подойди я ближе, он бы непременно растерзал и меня без единой мысли,
+        может, аж не заметив, что я - не просто очередной материал для размещения в починках!!!
+        вот так вот он двигался! жуть!
     
     council
         тревожащее развитие... спасибо за эти вести, дорогая фея
         было мудро с твоей стороны не нападать на него
-        сложно понять, знает ли тиран, что мы всё ещё здесь...
+        сложно понять, знает ли тиран, что мы до сих пор здесь...
         но если он посчитает нас виновными в атаке, то точно пришлёт того зверя
-        мы уверены, что он всё ещё видет нас сродни опухоли
-        хотя--если ты правильно оценила активность этого оружия - почему оно нас ещё так и не нашло?
+        сомнений нет, что мы ему всё ещё сродни опухоли
+        хотя--если ты правильно оценила активность этого оружия, почему оно нас пока так и не нашло?
     
     fairy
         я прилагаю все усилия, чтобы замаскировать твою внешнюю оболочку!
-        плюс, поскольку мы держимся так близко к беспространству, он вряд ли даже может нас увидеть!
+        плюс, поскольку мы держимся так близко к беспространству, он вряд ли даже в силах нас увидеть!
     
     council
         может и так...
@@ -3965,7 +3966,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_f_geli"] = generateDialogueObject(`
+/*джели фея о джеливещах - незав*/ env.localization.page['ozo'].dialogues["e_f_geli"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4054,7 +4055,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_f_stow"] = generateDialogueObject(`
+/*фея безбилетник о кусь кусь - зав*/ env.localization.page['ozo'].dialogues["e_f_stow"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4127,7 +4128,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_f_effigies"] = generateDialogueObject(`
+/*фея эффигии о феевещах - зав*/ env.localization.page['ozo'].dialogues["e_f_effigies"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4146,7 +4147,7 @@ start
     
     sourceless
         ты приближаешься, чтобы лучше уловить значение,
-        но осязаемое внимание этих мыслеформ устремляется к тебе.
+        но осязаемое внимание мыслеформ устремляется к тебе.
     
     effigy
         лазутчик!!
@@ -4198,7 +4199,7 @@ start
 
 END::env.jokzi.toggleSlow(false)
 `)
-env.localization.page['ozo'].dialogues["e_i_gelistow"] = generateDialogueObject(`
+/*джели изабель безбилетник о безбилетникостранностях - незав*/ env.localization.page['ozo'].dialogues["e_i_gelistow"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4305,7 +4306,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_i_geli"] = generateDialogueObject(`
+/*изабель джели о фрейме - незав*/ env.localization.page['ozo'].dialogues["e_i_geli"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4372,7 +4373,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_i_fairy"] = generateDialogueObject(`
+/*фея изабель о разводе - зав*/ env.localization.page['ozo'].dialogues["e_i_fairy"] = generateDialogueObject(`
 start
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность'
@@ -4409,12 +4410,12 @@ start
     isabel
         достаточно
         не вешала я вывеску олтазни в твоей бестолковой грёзе
-        что мне с этого? думаешь, мне хочется донимать тебя?
+        что мне с этого? думаешь, мне нравится донимать тебя?
         думать о тебе - последнее, чего я хочу
         я уж скорее решу грезить о романе с тираном
-        и к тому же - нравится тебе это или нет,
-        но ты не можешь избежать нашего прошлого, акизет - наш остов
-        во всяком случае, ты могла повесить её в своей грёзе случайно
+        и к тому же, нравится тебе это или нет,
+        но ты не можешь отрицать наше прошлое, акизет - наш остов
+        во всяком случае, ты могла бы повесить её в своей грёзе случайно
         теперь,
         тебе пора уйти.
     
@@ -4422,10 +4423,10 @@ start
         уйти? куда? в свою осквернённую грёзу?
         отговорки! отговорки!! провокация!!
         я требую, чтобы <em>ты</em> избавилась от вывески! 
-        или об этом услышит совет!
+        или об этом услышат в совете!
     
     sourceless
-        вновь нарастает напряжение, но твоё присутствие, похоже, смягчает его действиеЯ.
+        вновь нарастает напряжение, но твоё присутствие, похоже, смягчает его действие.
         они замечают тебя.
     
     fairy
@@ -4437,7 +4438,7 @@ start
         здравствуй, лазутчик...
     
     fairy
-        ты хочешь поговорить с этой мразью?
+        хочешь поговорить с этой мразью?
         ну я вас оставлю! пока!
         но мы с тобой ещё не закончили...
     
@@ -4454,7 +4455,7 @@ start
     isabel
         не обращай внимания
         просто ещё один пример бессмысленных феиных перепалок
-        всем известно, что почти любое упоминание акизет в её снах провоцирует нападки...
+        всем известно, что почти любое упоминание акизет в её грёзах провоцирует нападки...
         но, как мне кажется, в этот раз это была просто попытка вывести меня из себя
         а теперь, тебе что-то надо?
         
@@ -4466,7 +4467,7 @@ start
 END::env.jokzi.toggleSlow(false);specialCam(false)
 
 `)		
-env.localization.page['ozo'].dialogues["e_w_council"] = generateDialogueObject(`
+/*вакизет совет о ну что вакизет делает обычно со всеми. подозревает - незав*/ env.localization.page['ozo'].dialogues["e_w_council"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
@@ -4539,7 +4540,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_w_isabel"] = generateDialogueObject(`
+/*вакизет изабель (она опять подозревает) - незав*/ env.localization.page['ozo'].dialogues["e_w_isabel"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
@@ -4619,7 +4620,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_w_effigies"] = generateDialogueObject(`
+/*эффигии уничтожают вакизет - незав*/ env.localization.page['ozo'].dialogues["e_w_effigies"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
@@ -4741,7 +4742,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_w_fairy"] = generateDialogueObject(`
+/*вакизет уничтожает фею - незав*/ env.localization.page['ozo'].dialogues["e_w_fairy"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
@@ -4847,7 +4848,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_w_geli"] = generateDialogueObject(`
+/*вакизет джели дружат - незав*/ env.localization.page['ozo'].dialogues["e_w_geli"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
@@ -4912,7 +4913,7 @@ start
 
 END::env.jokzi.toggleSlow(false);specialCam(false)
 `)
-env.localization.page['ozo'].dialogues["e_w_d"] = generateDialogueObject(`
+/*вакизет пришла - незав*/ env.localization.page['ozo'].dialogues["e_w_d"] = generateDialogueObject(`
 start
     sys
         ATTENTION::'thoughtform activity detected'
