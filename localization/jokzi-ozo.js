@@ -6,7 +6,7 @@
     localization for /local/ozo
     (---окзи джозо)
 
-    progress: ep2 close to being finished, most notably moth + few council + interviewer dialogues missing, review needed as of 23.08.2025
+    progress: ep2 fully complete, missing geli stowaway (accessible after ep3) and wakizet (accessible after ep4) as well as most events featuring them as of 02.01.2026
 */
 
 
@@ -777,7 +777,7 @@ flowersaved
         её маленьких акизет! хехехехе
         тебе не нужно допрашивать нас о ней...
         обо всём, что тебе желается узнать, с великою радостью расскажет она сама!
-        иди же! иди в её поля, поговори с ней!
+        иди же! иди в её поля, поговори с нею!
 
     RESPONSES::self
         отлично<+>loop
@@ -1830,7 +1830,7 @@ masks
         я создаю только один тип масок, лазутчик
         воплощения радости
         я знаю, что ты думаешь: как это поможет тебе?
-        ты вечно в поисках знаний!
+        вечно в поисках знаний!
         я бы могла ответить... но не будет ли лучше, оставь мы это сюрпризом?
         хехехе
 
@@ -2000,7 +2000,7 @@ council
         принесли себя в жертву, потеряв себя ради всего
         и теперь, каждый свой θвзор, совет пляшет в своих амальгамных грёзах
         он жизнерадостен, и мне нравится находиться рядом с ним
-        но я не могу взглянуть ему в глаза, не увидев там тени моих первейших друзей
+        но я не могу взглянуть ему в глаза, не увидев там тени моих ранних друзей
         ...
         ...я почти что сделала то же самое...
         имею в виду, почти что пожертвовала собой, вступив в совет
@@ -2968,51 +2968,51 @@ END::env.jokzi.toggleSlow(false)
 env.localization.page['ozo'].dialogues["council_lady"] = generateDialogueObject(`
 start
     council
-        interloper! there you are!
+        лазутчик! вот ты где!
             EXEC::env.jokzi.toggleSlow(true)
-        you caused quite a stir with that strange thoughtform you sent to us!!
-        it clamored at our boundaries! as if it fled a predator!
-        half-shredded, pieces torn away completely, almost beyond reason...
-        what happened to it, we must know!!
+        та странная мыслеформа, отправленная тобою--она подняла такой переполох!
+        она билась у наших границ! будто спасаясь от хищника!
+        изодранная, с полностью оторванными кусками, почти потерявшая весь рассудок...
+        что же с ней приключилось, мы обязаны знать!!
     
     self
-        something tore apart the thoughtspace it was in
-        that "velzie" i mentioned
+        что-то разорвало то мыслепространство где она находилась
+        то самое "велзи"
             SHOWIF::"ozo__council-velzie"
-        i was able to go back to where it was and found it in the debris
-        there were entities i think were hostile too
-        they forced me out when i touched them
+        она была там в оставшихся обломках
+        ещё там ходили другие сущности, кажется агрессивные
+        они выкидывали меня при касании
             SHOWIF::"interviewdie"
     
     council
-        ah, brave interloper! you must have been well within the uncosm by then
-        thoughtspaces can be chewed at, broken piecemeal...
-        but, to simply shred one apart like that...? 
-        nothing we know holds that much power!
-        how could we have never seen this before?
+        ах, храбрый лазутчик! you must have been well within the uncosm by then --- понятия не имею помогите
+        мыслепространства можно жевать, разламывать на кусочки...
+        но чтобы вот так просто разорвать его на части...? 
+        ничто из того, что нам известно, не обладает такою силою!
+        как же мы раньше не видели подобного?
 
 ____SHOWIF::"ozo__council-velzie"
-        perhaps this velzie of yours is a greater issue than we predicted
-        yes, we will have the fairy watch for anything like it!
+        пожалуй, это твоё велзи - проблема серьёзнее, чем мы предполагали
+        да, мы поручим фее следить за любыми похожими сущностями!
 ____END
 
 ____SHOWIF::"citystreet__flower_beacon"
-        as for the thoughtform you sent to us, we gave it to isabel
-        she is skilled in thoughtform repairs, and so that is where it will be best served
+        а что же касается мыслеформы, присланной тобою: мы передали её изабель
+        она искусна в восстановленьи мыслеформ, так что именно с ней ей будет лучше всего
 ____SHOWIF::["citystreet__flower_beacon", false]
-        as for the thoughtform you sent to us,
+        а что же касается мыслеформы, присланной тобою:
             EXEC::change("early_lady", true)
-        we are containing it within the flower's old space
-        she was always better at repairing thoughtforms...
-        if you find her, she will help, we are sure!
-        for now, we must keep the gate closed, as it is somewhat violent...
+        мы содержим её в прежнем пространстве цветка
+        ей всегда лучше давалось восстановленье мыслеформ...
+        если ты её найдёшь, она поможет, мы уверены!
+        но пока что мы должны запереть врата, а то она несколько склонна к насилию...
         ...
 ____END
-        in another time, it would have simply been another thought to consume...
-        but replete in metals as we are thanks to you, we need not resort to that any longer
+        в другие времена она бы просто стала очередною мыслью на поглощенье...
+        но с тем изобильем металлов, с коим мы ныне живём благодаря тебе, нам больше не нужно прибегать к такому
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 
 END::env.jokzi.toggleSlow(false)
 `)
@@ -3835,7 +3835,7 @@ ____END
     council
         в таком случае мы не понимаем--в чём же именно отличье?
         выходит, её cгрызли?
-        наcколько мы уловили, её окружали агрессивные мысли
+        наcколько мы поняли, её окружали агрессивные мысли
     
     isabel
         следы были, но ни один из них не являлся причиной истинного ущерба
