@@ -27,8 +27,8 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
         // unitybel
         /*isabel*/ 'Huh?': "А?",
         /*isabel*/ "You really want to leave so soon?": "Ты правда хочешь уйти так скоро?",
-        /*akizet*/ "what? no, no, of course not": "",
-        /*sourceless*/ 'did i say something to imply that?': "",
+        /*akizet*/ "what? no, no, of course not": "что? нет, нет, вовсе нет",
+        /*sourceless*/ 'did i say something to imply that?': "?",
     }, 
     entityDescriptions: {
         "return": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
@@ -56,7 +56,7 @@ RESPOBJ::
             SHOWIF::"aqua__meetup"
 
         nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 env.localization.page['aquarium'].dialogues[`mth++aquarium`] = generateDialogueObject(`
 loop
@@ -64,10 +64,10 @@ loop
 
 start
     self
-        question
+        вопрос
 
     moth
-        what's up?
+        чё как?
     
     RESPOBJ::mthresp
     
@@ -85,15 +85,15 @@ stealthbody
         they've probably only gotten better at blending in since then
 
     self
-        ok
-        are you a qou
+        ладно
+        ты куу?
 
     moth
-        boy, i wish
+        если бы
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        ок<+>loop
+            FAKEEND::(назад)
 `)
 
 
@@ -102,17 +102,17 @@ stealthbody
 env.localization.page['aquarium'].dialogues["meetup"] = generateDialogueObject(`
 start
     sourceless
-        the center of the cousins' park, not far from our destination
-        i am early
+        центр близнецового парка, не так далеко от нашего места назначенья
+        я явилась рано
             EXEC::content.classList.add("slowcam");content.classList.remove("instabel")
-        so, i sit, the cold, gentle rain suffusing my disguised form
+        так что я сижу, моя замаскированная фигура в облегании нежного холодного дождя
             EXEC::setCam({x: 4, y: 8.5, rotation: 0});playerMoveTo(4, 8, "left")
-        there is some organizational work that i could do while here, as there always is, but...
-        the rain, the fog, it is so familiar
-        like a dream of that simpler past, riding veilk, hunting
-        without the weight of my duties, or the madness of the hidden conflict on my shoulders...
-        there is peace here
-        so i allow myself to feel as a larval obesk might
+        я могла бы заняться организационной работой пока здесь, она всегда найдётся, но...
+        дождь, туман, они так знакомы
+        словно грёза о простом прошлом, верхом на вейльке, на охоте
+        без груза обязательств или сумасшествия тайного конфликта на моём уме...
+        царит мир
+        и я дозволяю себе чувства, какие бы испытывал личиночный обеск
         this shifting body is not designed for sensory accuracy, but still, echoes are felt
         i shiver, huddle into myself, pull this false cloth coat tighter
         not that it makes a difference--it is a part of the body, carefully-shaped corrucystic flesh,
@@ -127,7 +127,7 @@ start
         so perhaps it is not a path i walk, but instead a constant, hastening tumble that velzie has pushed me into
         it all feels so far beyond my claws. there is nothing for me to grasp
         but maybe there is still time to change the course... 
-        something...
+        что-нибудь...
         ...
     
     sleepybel
@@ -140,7 +140,7 @@ start
             WAIT::1000
             THEN::content.classList.remove("hideabel");content.classList.add("standobel")
         isabel, carrying a thin half-dome to shield herself from the rain
-        how long has it been?
+        сколько времени минуло?
         she laughs a little, taking some steps closer
 
     sleepybel

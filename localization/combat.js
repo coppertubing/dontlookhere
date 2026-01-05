@@ -455,7 +455,7 @@ cor_ru.combat['redefineActions'] = function () {
 
     /* - evade - */
 
-    env.ACTIONS.evade.name = "Сосредоточение" // Focus
+    env.ACTIONS.evade.name = "Сосредоточенье" // Focus --- а хотя не буду здесь копошиться. всё равно всё менять лол
     env.ACTIONS.evade.usage = {
         "act": "%USER ЖДЁТ ПОДХОДЯЩИЙ МОМЕНТ"
     }
