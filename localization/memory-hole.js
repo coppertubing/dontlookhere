@@ -1383,75 +1383,75 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        i have to contain myself from skittering well ahead of θ█████
-        the gathering chamber's festivities will not go anywhere... just keep walking slowly...
-        he is talking--what was he talking about again?
+        приходится следить за собою, чтобы не уйти далеко впрёд θ██████
+        празднества зала собраний никуда не денутся... хватит торопиться...
+        он говорит--ещё раз, о чём он говорил?
 
     hesitant
         ...and, right in the center of the cysts, they have this tiny pale gray one--and it connects to that very place!      ...и, прямо в центре цист, есть такая крошечная серая--и она прямо к этому и подключается!
 
     stupid
-        no way!
+        да ну!
 
     sourceless
-        i have no idea
+        я без понятия
 
     hesitant
         right?! to think, it was right beneath our receptors all this time      перевести после реплики?! и ведь оно всё это время находилось прямо под нашими рецепторами
         i wager we could even see runners flying over the veilk, eventually!      держу пари(?), мы рано или поздно увидим, как бежцы летают над вейльками!
     
     stupid
-        with wings?
+        на крыльях?
     
     hesitant
         n-no, with the nodes! imagine--great hovering spheres attached to a back-piece, with veins up to receptors to control elevation, and direction...      н-нет, (перевести после предыдущей)! представь--великие левитирующие сферы, присоединённые к наспинному сегменту, с венами к рецепторами чтобы управлять высотою, и направлением...
     
     sourceless
-        oh, yes... the dull bone stuff
-        this all is interesting, but i do not care enough to learn deeply of it
-        still, it is good to see him so excited, he has been so anxious lately
-        as we continue up the tunnel, i notice a tir up ahead replacing one of the yuzku globes with one of the new corrucysts
-        i stop nearby to observe her work, θ█████ trailing off and stopping near me soon after
+        а, ага... про кость серое
+        это всё очень интересно, но волнует меня недостаточно, чтобы углубляться в тему
+        и всё же приятно видеть его таким воодушевлённым, последнее время он был таким тревожным
+        с подъёмом по тоннелю, я замечаю тира впереди, заменяющую один из юзку шаров на одну из новых корруцист "" переводить корру означает обречь себя. Все будут думать какой же это дурацкий перевод. Но это не перевод такой. Это корру
+        я останавливаюсь неподалёку, чтобы понаблюдать за её работою, θ█████ замолкает и скоро останавливается рядом
     
     stupid
-        hey!
-        that is one of the new cavelights, right?
+        привет! 
+        это один из новых пещерных огней, верно?
     
     other
         ah? oh, yes!      ах? о, да!
     
     stupid
-        can i see?
+        могу я взглянуть?
     
     sourceless
-        i scurry closer to the tir, and she pulls a different glowing corrucyst from her basket for me
-        holding it in my claws, it has the same cyan light--no, brighter--than the old yuzku globes, but...
-        it does not have the distinctive rattle and tap of the little creatures climbing and falling within
+        я спешу к тиру, и она вытягивает для меня светящуюся корруцисту из своей корзины,
+        перекладывая её мне в когти, у неё такой же голубой свет--нет, ярче--чем старые юзку шары, но...
+        она обделена характерными дребезжанием и постукиванием маленьких существ, карабкающихся и падающих внутри
     
     stupid
-        oh, it is so quiet!
-        i am going to miss all the old yuzku...
+        о, такая тихая!
+        я буду скучать по всем старым юзку....
     
     sourceless
-        the tir laughs as she finishes latching the replacement globe into its wall socket
+        тир посмеиватся, заканчивая защёлкивать шар в его настенном гнезде
 
     other
         i will not!      а я нет!
         maintenance and feeding was such a chore...      содержание и кормление так надоедали...
-        with these new ones, all i do is put in a strange little blue square the θjut pass along,      с этими новыми всё, что я делаю - ложу странный маленький синий куб, переданный θжатами,
+        with these new ones, all i do is put in a strange little blue square the θjut pass along,      с этими новыми всё, что я делаю - ложу странный маленький синий куб, переданный θжатами, """ кладу!!!
         then it lasts for θgazes and θgazes!      и его хватает на θвзоры и θвзоры!
 
     stupid
-        a square...
-        θ█████, could that be the 'sfer' stuff?
+        куб...
+        θ█████, может ли быть что это тот "сфер"?
     
     hesitant
         haha, no, i think this is a new one      хаха, нет, думаю это что-то новое
         it is probably a byproduct, or maybe it could be a specific sfer variant...      скорее всего побочный продукт, или, может, специальный тип сфера...
     
     sourceless
-        i dip my receptors to the tir, and she responds in kind
-        with a simple gesture to θ█████, we continue on our journey
+        я склоняю свои рецепторы тиру, и она отвечает мне тем же
+        подав простой жест θ██████, мы продолжаем наш путь
     
     hesitant
         ...see, in the sfer "vats" that the zevazni foundries came up with,      видишь ли, в сферовых "чашах", которые придумали зевазнийские цехи,

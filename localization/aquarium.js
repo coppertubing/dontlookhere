@@ -26,7 +26,7 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
 
         // unitybel
         /*isabel*/ 'Huh?': "А?",
-        /*isabel*/ "You really want to leave so soon?": "Ты правда хочешь уйти так скоро?",
+        /*isabel*/ "You really want to leave so soon?": "Правда? Ты уже хочешь уйти?",
         /*akizet*/ "what? no, no, of course not": "что? нет, нет, вовсе нет",
         /*sourceless*/ 'did i say something to imply that?': "?",
     }, 
@@ -668,7 +668,7 @@ start
         
     sleepybel
         Прости, всё не--всё не так уж плохо.
-        Нет худа без добра. Всё уравновешено. Как же звучало то ваше религиозное выражение?
+        Нет худа без добра. Всё уравновешено. Как же звучит то ваше религиозное выражение?
 
     sourceless
         my receptors--no, my face, it smiles slightly, again reading my impulses
@@ -919,7 +919,7 @@ start
         for a moment, there is silence, broken by a quiet scoff
 
     sleepybel
-        Извини, я знаю, что подняла ту ещё тему.
+        Извини, знаю, я ту ещё тему подняла.
         Я просто хотела сказать, с тех пор, как ты начала приходить,
         Ты словно вырываешь меня из этого всего.
         Да, именно, я как бы "прихожу в чувство". Мне всё ещё приходится вернуться, но...

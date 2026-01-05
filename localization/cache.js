@@ -65,7 +65,7 @@ env.localization.page['cache'] = {dialogues: {},
         "my beloved friend, there is nothing...": "мой обожаемый друг, здесь ничего нет...",
         "ah! no, no, there it is! yes, let us go!": "а! нет, нет, есть же! да, пошли!",
 
-        "what a keen eye you have": "какой у тебя острый глаз",
+        "what a keen eye you have": "до чего у тебя острый глаз",
         "let me know if you would like to return": "дай мне знать, если захочешь вернуться",
         "into the depths!": "в глубины!"
     }, 
@@ -387,30 +387,30 @@ not
             EXEC::moveTo('/local/ozo/')
             FAKEEND::(войти)
 `)
-env.localization.page['cache'].dialogues[`godpit`] = generateDialogueObject(`
+env.localization.page['cache'].dialogues[godpit] = generateDialogueObject(`
 start
     god
-        ah! so soon?!
-        and to a sunken place, no less...
-        i thought we might dance in the dark for a while longer!
-        hehe only joking my beloved friend
-        we will meet again in time
+        ах! так скоро?!
+        и в потонувшее место, никак иначе...
+        я уж было подумало, мы потанцуем в темноте ещё немножко!
+        хехе, это шутка и всего, мой дражайший друг
+        наступит время и мы встретимся вновь
 
     self
         you won't come with me?
 
     god
-        even from up here, i can see that is a spatial thoughtform
-        you know my thoughts on that matter my friend
+        даже будучи здесь я вижу - это пространственная мыслеформа
+        и, мой друг, ты знаешь моё мнение на их счёт
             SHOWIF::"cache__godozo-not"
 ____SHOWIF::["cache__godozo-not", false]
-        i much prefer low-dimensionality
-        anything else is too reminiscent of the endless, thoughtless torture i endured...
-        call it a distate for complexity, my friend!
-        hahaha
+        я куда боле предпочитаю низкомерные 
+        иные пробуждают в памяти моменты нескончаемой, бессмысленной пытки что я пережило...
+        зови это отторжением сложности, друг мой!
+        хахаха """ несмешно
 ____END
-        until our paths next cross
-        the friends and i shall lend our divine sight ever more!
+        а покуда наши пути не перескутся,
+        мне и друзьям должно и дальше дарить наш божественный взгляд! """ человечество должно нормализовать создание новых слов
     
     RESPONSES::self
         ok bye<+>END

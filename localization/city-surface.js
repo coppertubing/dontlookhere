@@ -1839,7 +1839,7 @@ interrogation
 
     gordon
         Woah, Akizet, what--warn? // Ну и ну, Акизет, что--предупредили?
-        What did you expect? // Чего Вы ожидали?
+        What did you expect? // А чего Вы ожидали?
         Your offer came out of nowhere, and... // Ваше предложение появилось из ниоткуда, и...
         Well, it basically eclipsed everything else the bureau was doing in importance. // Ну, по сути, затмило по важности всё, чем занималось бюро.
         I know you wanted to keep your reasons secret. //  Я знаю, что Вы хотели сохранить свои причины в секрете.

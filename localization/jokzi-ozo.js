@@ -4207,9 +4207,9 @@ start
             EXEC::env.jokzi.toggleSlow(true)
     
     isabel
-        ...i have tried my work, but,
-        that's the problem, geli
-        there isn't actually anything wrong with it...
+        ...i have tried my work, but, // я пыталась сделать хоть что-то, но
+        that's the problem, geli // проблема как раз в этом, джели
+        there isn't actually anything wrong with it... // с ним уже всё в порядке...
     
     bsteli
         are you sure?
@@ -4224,44 +4224,44 @@ start
         ahaha!! nothing! nothing!
     
     isabel
-        i am sure, geli
+        i am sure, geli // после джелиной
             EXEC::specialCam(false)
-        when i go to patch any lesions, or replace any broken organs...
-        there is just nothing to replace, for what is missing is purely personal
-        yes, that's it - it's as if your friend is completely intact, 
-        but any organelle that could have held any memory or identity is completely bare
-        what would i replace? would i tell it how it should act? who it should be? 
-        after all, it has the faculties to learn this all again, unlike my usual subjects
-        i can only describe the way it's been hollowed as "surgical"
-        when i first realized it, i have to admit, it scared me
-        if these "daemons" were ever to escape the embassy and run amok,
-        this could happen to <em>everything</em>
-        and then what would become of our world?
-        even the tyrant is a miniscule parasite in comparison to this threat
+        when i go to patch any lesions, or replace any broken organs... // когда я собираюсь залатать какое-нибудь повреждение, или заменить неисправный орган...
+        there is just nothing to replace, for what is missing is purely personal // я не нахожу что заменить, ведь что отсутствует - сугубо личностное
+        yes, that's it - it's as if your friend is completely intact, // да, верно - это будто твой друг абсолютно цел,
+        but any organelle that could have held any memory or identity is completely bare // но любая органелла, что отвечала бы за воспоминания или индивидуальность, пуста
+        what would i replace? would i tell it how it should act? who it should be? // и что мне заменять? должна ли я сказать ему как себя вести? кем он должен быть?
+        after all, it has the faculties to learn this all again, unlike my usual subjects // в конце концов оно обладает способностью выучить всё снова, в отличие от моих обычных подопечных
+        i can only describe the way it's been hollowed as "surgical" // я могу только описать его опустошение как "хирургическое"
+        when i first realized it, i have to admit, it scared me // и должна признать, когда я только это поняла - это открытие напугало меня
+        if these "daemons" were ever to escape the embassy and run amok, // если это "демоны" когда либо сбогут из покольства и начнут беспредел,
+        this could happen to <em>everything</em> // такое может произойти со <em>всем</em>
+        and then what would become of our world? // и во что же тогда превратится наш мир?
+        even the tyrant is a miniscule parasite in comparison to this threat // даже тиран всего лишь ничтожный паразит на фоне этой угрозы
     
     bsteli::concern
         ...
     
     isabel
-        yes, i think that we...
+        yes, i think that we... // да, думаю мы...
     
     effigy
         interloper! interloper!
         hi interloper!
     
     isabel
-        oh, hello - how long have you been there?
+        oh, hello - how long have you been there?  // о, привет - как давно ты здесь?
             EXEC::specialCam("e_i_worry")
     
     self
         i know you're worried about the daemons
     
     stowaway
-        worried
+        worried // """ ❤️
     
     isabel
-        yes, i was just about to propose to geli that we speak to you
-        after all, it was you who brought them here
+        yes, i was just about to propose to geli that we speak to you // да, я как раз собиралась предложить джели поговорить с тобой
+        after all, it was you who brought them here // как никак это было твоим решением принести их сюда
     
     bsteli::concern
         i--!
@@ -4275,11 +4275,11 @@ start
         i didn't know it worked like this
     
     isabel
-        i know you wouldn't have done this out of malice
-        for whatever reason you have brought them here,
-        it is clear that you <em>must</em> remove them when you no longer need them
-        i can't know what will become of the thoughtforms that were made into daemons afterwards,
-        but they must not persist with your instruction longer than it's needed
+        i know you wouldn't have done this out of malice // я знаю, ты не сделаешь нечто такое из злого умысла
+        for whatever reason you have brought them here, // но в чём бы ни был твой истинный замысел,
+        it is clear that you <em>must</em> remove them when you no longer need them // очевидно, что именно тебе <em>положено</em> избавиться от них, когда они больше не нужны
+        i can't know what will become of the thoughtforms that were made into daemons afterwards, // не знаю что произойдёт с превращёнными в демонов после,
+        but they must not persist with your instruction longer than it's needed // но они не должны следовать инструкциям дольше необходимого
     
     bsteli
         she is right, interloper
@@ -4297,8 +4297,8 @@ start
         we'll remove them later
     
     isabel
-        thank you
-        now, did you need something?
+        thank you // спасибо
+        now, did you need something? // а теперь, тебе что-то нужно?
         
     RESPONSES::self
         да<+>CHANGE::isabel
@@ -4391,7 +4391,7 @@ start
     
     isabel
         я не знаю, что ещё тебе сказать
-        это именно то, чего я хочу - не иметь к тебе никакого отношенья
+        это именно то, чего я хочу - не иметь к тебе никакого отношения
         это мог быть кто угодно
     
     fairy
@@ -4441,7 +4441,7 @@ start
     fairy
         хочешь поговорить с этой мразью?
         ну я вас оставлю! пока!
-        но мы с тобой ещё не закончили...
+        но мы с тобою ещё не закончили...
     
     sys
         ВНИМАНИЕ::'обнаружена мыслеформенная активность';'изменено местоположение данных'
