@@ -4207,9 +4207,9 @@ start
             EXEC::env.jokzi.toggleSlow(true)
     
     isabel
-        ...i have tried my work, but, // я пыталась сделать хоть что-то, но
-        that's the problem, geli // проблема как раз в этом, джели
-        there isn't actually anything wrong with it... // с ним уже всё в порядке...
+        ...я пыталась сделать хоть что-то, но,
+        в этом и проблема, джели
+        оно такое, каким и должно быть...
     
     bsteli
         are you sure?
@@ -4217,40 +4217,40 @@ start
         i do not even know if it understands what is wrong!
     
     stowaway
-        what is wrong
+        what is wrong // "" тупица <з
             EXEC::specialCam("e_i_stowclose")
         
     effigy
-        ahaha!! nothing! nothing!
+        ahaha!! nothing! nothing! // "" я так люблю атмосферу здесь, я даже не знаю как описать. будто сидишь за столом в советской квартирке с жёлтым светом, на столе скатерть с забавным ярким узором, чай, конфетки, какое-то будничное обсуждения, а за окном с белыми узорчатыми занавесками уже вечер и темно, холодно, а на этой кухне тепло и ещё часы размеренно тикают на стене и ты сидишь в этом уюте не вслушиваясь в разговоры пьёшь чай со сладостями и всё так хорошо в жизни. или будто ты санитар в дурдоме. не уверен чего больше
     
     isabel
         i am sure, geli // после джелиной
             EXEC::specialCam(false)
-        when i go to patch any lesions, or replace any broken organs... // когда я собираюсь залатать какое-нибудь повреждение, или заменить неисправный орган...
-        there is just nothing to replace, for what is missing is purely personal // я не нахожу что заменить, ведь что отсутствует - сугубо личностное
-        yes, that's it - it's as if your friend is completely intact, // да, верно - это будто твой друг абсолютно цел,
-        but any organelle that could have held any memory or identity is completely bare // но любая органелла, что отвечала бы за воспоминания или индивидуальность, пуста
-        what would i replace? would i tell it how it should act? who it should be? // и что мне заменять? должна ли я сказать ему как себя вести? кем он должен быть?
-        after all, it has the faculties to learn this all again, unlike my usual subjects // в конце концов оно обладает способностью выучить всё снова, в отличие от моих обычных подопечных
-        i can only describe the way it's been hollowed as "surgical" // я могу только описать его опустошение как "хирургическое"
-        when i first realized it, i have to admit, it scared me // и должна признать, когда я только это поняла - это открытие напугало меня
-        if these "daemons" were ever to escape the embassy and run amok, // если это "демоны" когда либо сбогут из покольства и начнут беспредел,
-        this could happen to <em>everything</em> // такое может произойти со <em>всем</em>
-        and then what would become of our world? // и во что же тогда превратится наш мир?
-        even the tyrant is a miniscule parasite in comparison to this threat // даже тиран всего лишь ничтожный паразит на фоне этой угрозы
+        когда я собираюсь залатать какое-нибудь повреждение или заменить неисправный орган...
+        я не нахожу что заменять, ведь отсутствующее сугубо личностное
+        да, точно - это будто твой друг абсолютно цел,
+        но любая органелла, что отвечала бы за воспоминания или индивидуальность, пуста
+        и что мне заменять? должна ли я сказать ему, как себя вести? кем он должен быть?
+        в конце концов, оно обладает способностью выучить всё снова, в отличие от моих обычных подопечных
+        я могу только описать его опустошение как "хирургическое"
+        и должна признать, когда я только это поняла - это открытие напугало меня
+        если эти "демоны" когда либо сбегут из посольства и начнут беспредел, // сбогут из покольства 😭 помогите этом слизнячку нехорошо "" мне не нравится "начнут беспредел"...
+        такое может произойти со <em>всем</em>
+        и во что же тогда превратится наш мир?
+        даже тиран лишь ничтожный паразит на фоне этой угрозы
     
     bsteli::concern
         ...
     
     isabel
-        yes, i think that we... // да, думаю мы...
+        да, думаю, что мы...
     
     effigy
         interloper! interloper!
         hi interloper!
     
     isabel
-        oh, hello - how long have you been there?  // о, привет - как давно ты здесь?
+        о, привет - как давно ты здесь?
             EXEC::specialCam("e_i_worry")
     
     self
@@ -4260,26 +4260,26 @@ start
         worried // """ ❤️
     
     isabel
-        yes, i was just about to propose to geli that we speak to you // да, я как раз собиралась предложить джели поговорить с тобой
-        after all, it was you who brought them here // как никак это было твоим решением принести их сюда
+        да, я как раз собиралась предложить джели поговорить с тобой
+        всё же они здесь по твоей вине
     
     bsteli::concern
         i--!
         i did not tell her that!!
     
     isabel
-        your avoidance of the subject is clear enough
-        and who else would introduce this new threat but our mysterious interloper?
+        достаточно того, как ты избегаешь темы
+        и кому ещё предоставить нам это новую угрозу, если не нашему таинственному лазутчику?
 
     self
         i didn't know it worked like this
     
     isabel
-        i know you wouldn't have done this out of malice // я знаю, ты не сделаешь нечто такое из злого умысла
-        for whatever reason you have brought them here, // но в чём бы ни был твой истинный замысел,
-        it is clear that you <em>must</em> remove them when you no longer need them // очевидно, что именно тебе <em>положено</em> избавиться от них, когда они больше не нужны
-        i can't know what will become of the thoughtforms that were made into daemons afterwards, // не знаю что произойдёт с превращёнными в демонов после,
-        but they must not persist with your instruction longer than it's needed // но они не должны следовать инструкциям дольше необходимого
+        я знаю, ты не сделаешь нечто такое из злого умысла
+        но в чём бы ни был твой истинный замысел,
+        очевидно, что это твоя <em>обязанность</em> избавиться от них, когда они больше не нужны
+        не знаю, что произойдёт с превращёнными в демонов после,
+        но они не должны следовать инструкциям дольше необходимого
     
     bsteli
         she is right, interloper
@@ -4297,8 +4297,8 @@ start
         we'll remove them later
     
     isabel
-        thank you // спасибо
-        now, did you need something? // а теперь, тебе что-то нужно?
+        спасибо
+        а теперь, тебе что-то было нужно?
         
     RESPONSES::self
         да<+>CHANGE::isabel
@@ -4320,18 +4320,18 @@ start
         please, you must try it at least once! it is my first new dream!
     
     isabel
-        i don't like dreams about violence, geli
-        i admire the work you have put in, but it just isn't something i can play a role in
-        conflict is fine, some violence is ok, but when it's ceaseless combat...
+        мне не нравятся грёзы о насилии, джели
+        я восхищаюсь проделанной тобой работой, но это просто не то, в чём я могу принять роль
+        конфликты - без проблем, немного насилия - нормально, но когда это непрерывная бойня...
     
     bsteli
         no no!! it is more nuanced than that!
         it is not just a dream of violence, but of strategy, and exploration!
     
     isabel
-        that's it, though--the violence is without meaning
-        even the context of the dream is that it is an illusion, within its own story
-        but there are no characters for me to connect to - it is disconnected from everything
+        и всё же это оно--для насилия нет причин
+        даже контекст грёзы заключается в том, что это иллюзия без наличия в нём собственного сюжета "" КАК ЖЕ ОНА ЕЁ ЖЁСТКО КРИТИКУЕТ
+        в ней нет даже персонажей, к которым я могла бы проникнуться - она оторвана от всего
     
     bsteli
         there are characters!! there are the shells, the interloper, and the voice on the radio!
@@ -4341,8 +4341,8 @@ start
         + JUST WAIT TILL U SEE DA BOAT >%^)
     
     isabel
-        ah!
-        i really wish you wouldn't do that
+        ах!
+        я правда предпочла бы, чтобы ты это не делала
     
     bsteli::think
         all right, what if...
@@ -4355,17 +4355,17 @@ start
         imagine the emotion! the worry for the other still-dreaming team members!
         
     isabel
-        hmm...
-        maybe...
+        хмм...
+        возможно... // "" изабель, ты так предсказуема
     
     sourceless
         isabel's attention fixes upon your presence
             EXEC::specialCam("e_i_worry")
     
     isabel
-        oh, interloper
-        welcome
-        did you need something?
+        о, лазутчик
+        добро пожаловать
+        тебе что-то нужно?
         
     RESPONSES::self
         да<+>CHANGE::isabel
@@ -4553,9 +4553,9 @@ start
         isabel recoils suddenly, before resuming an indescribable effort.
 
     isabel
-        will you stop that?
-        this is part of the process, i'm not attacking you
-        the wound is deep, and i believe you are missing some--
+        может ты прекратишь?
+        это всего лишь часть процесса, я не нападаю на тебя
+        рана глубокая, и наверняка у тебя отсутствуют--
             AUTOADVANCE::
         
     wakizet
@@ -4564,8 +4564,8 @@ start
         <em>do not</em> concern yourself with any other matter
 
     isabel
-        of course, akizet, but...
-        you still do not trust me?
+        конечно, акизет, но...
+        ты до сих пор не доверёшь мне?
 
     sourceless
         a moment of silent tension passes as the work continues.
@@ -4581,22 +4581,22 @@ start
         that would make it much easier for you, would it not?
         
     isabel
-        akizet, no, i wouldn't do that
-        that isn't--that's not how i work
-        the other akizets you see here, they were...
+        акизет, нет, я бы не стала это делать
+        это не--это не то, как я работаю
+        акизет, которых ты видишь здесь, они были...
 
     sourceless
         isabel's attention sweeps across the thoughtspace, across effigies.
         briefly, it passes over you with a silent impulse of acknowledgement.
 
     isabel
-        ...in shreds, barely held together
-        some were senselessly violent, others silent or unthinking
-        all nearly lost in their entirety to madness
-        you're <em>different</em>
-        i've never met one like you
-        not only intact after surviving the darkness, but stronger for it
-        you fascinate me in a way that i wouldn't ever change
+        ...разорваны в клочья, почти на грани
+        одни были беспричинно жестоки, другие безмолвны или бездумны
+        и все они едва не оказались потеряны в безумии
+        ты же <em>иная</em>
+        я не встречала ни одну подобную тебе
+        ту, кто не только осталась целой, выживая во тьме, но и кого бы эта тьма закалила
+        ты завораживаешь меня такой, какую бы я ни за что не стала менять // "" ЭТО ТАКАЯ ВАЖНАЯ СТРОЧКА НО Я НЕ ЗНАЮ КАК ПЕРЕВЕСТИ ЕЁ ДОСТОЙНО...
         
     sourceless
         the akizet thoughtform withdraws its frustration, silent.
@@ -4604,14 +4604,14 @@ start
         isabel recoils beneath the render.
 
     isabel
-        akizet, if you keep--
+        акизет, если ты продолжишь--
     
     wakizet
-        hello, interloper
+        hello, interloper  // "" ей в чувствах признаются, а ей лазутчик интереснее!!
 
     isabel
-        ah! yes, the interloper
-        forgive me, i was distracted--did you need something?
+        а! да, лазутчик
+        извини меня, я отвлеклась--тебе что-то нужно?
         
     RESPONSES::self
         yes<+>CHANGE::isabel

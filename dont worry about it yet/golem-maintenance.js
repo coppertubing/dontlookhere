@@ -3410,9 +3410,9 @@ bozko
         bozko... what has he seen...?
     
     bozko
-        akizet
-        where are you?
-        are you hurt?
+        акизет
+        где ты?
+        ты ранена?
     
     akizet
         bozko, i have gakvu, tozik, and some others from our floor
@@ -3421,19 +3421,19 @@ bozko
         have you seen cavik?
     
     bozko
-        yes
-        cavik is with me
-        there were some others, but...
+        да
+        кавик со мною
+        с нами были и другие, но...
         ...
     
     sourceless
         no concept needs to be formed
     
     bozko
-        ...we are heading down for the exact same reason
-        the archival tunnels are still mostly intact
-        we occasionally need to detonate some to open blocked paths,
-        but they serve well enough in our descent
+        ...мы направляемся вниз по той же причине
+        архивные тоннели по большей части ещё целы
+        нам время от время приходится взрывать некоторые, чтобы освободить путь,
+        но они достаточно хорошо сослужили нам во время спуска
     
     akizet
         what!!
@@ -3441,7 +3441,7 @@ bozko
         it is only with the help of the timestopper we have been able to...
     
     bozko
-        they are not a problem
+        они не проблема
     
     sourceless
         something about him is different - he is even shorter in tone
@@ -3449,19 +3449,19 @@ bozko
         he has altered himself, somehow
     
     bozko
-        we are nearly to golem maintenance ourselves
-        i will let cavik know you called
-        he will be relieved to know you are all right
-        as am i...
+        мы уже близки к обслуживанию големов
+        я дам знать кавику, что ты звонила
+        он будет рад узнать, что вы в порядке
+        как и я...
         
     akizet
         bozko, did you... did you do anything to yourself?
     
     bozko
-        akizet... i...
-        no--i will explain when we are there
-        i must focus
-        more of these surface-sent golems are coming
+        акизет... я...
+        нет--я объясню, когда мы будем там
+        я должен сфокусироваться
+        ещё больше этих подосланных с поверхности големов на подходе // "" surface-sent ??
     
     akizet
         please be careful!!
@@ -3700,8 +3700,8 @@ accept
         akizet... you...
     
     bozko
-        i told you not to go ahead of me
-        that one was still intact
+        я же говорил тебе не ломиться вперёд меня
+        этот оказался ещё целым
             EXEC::vnp({cavik: "show", bozko: "show"})
 
     sourceless
@@ -3713,7 +3713,7 @@ accept
         behind him is bozko, who had just dropped down...
         and smashed the golem before it could...
         ...
-        funfriend, did that message get sent?
+        funfriend, did that message get sent? // мне даже жаль дуто. придётся переводить такое
     
     funfriend
         yes, akizet!!
@@ -3724,9 +3724,9 @@ accept
         bozko waves one of his gauntlets to rid it of viscera
     
     bozko
-        still, good work, this vein was a clean detonation
-        akizet, it is good to see you are still all together
-        what is the situation?
+        тем не менее, хорошая работа, это вена сдетанировала чисто
+        акизет, рад видеть что вы все всё ещё вместе
+        как обстановка?
     
     sourceless
         i am unable to respond, locked in shock with cavik
@@ -3768,7 +3768,7 @@ ____END
         and then we will be unstoppable
     
     bozko
-        all right
+        хорошо
     
     sourceless
         i expect the subtle twist of his receptors whenever he is about to say something clever
@@ -3779,7 +3779,7 @@ ____END
         a terrible darkness looms over him
     
     bozko
-        we are here to help
+        мы здесь чтобы помочь
     
     cavik
         ...yeah!
@@ -5704,9 +5704,9 @@ survival
         the twist in his receptors grows more severe as he eyes a gauntlet
     
     bozko
-        a θjut friend from materials modified the dull nodes to have greater range
-        ...to help me collect ocean specimen on our trips more effectively
-        but now, i use the modification to fight from afar
+        мой друг-жат из материалов модифицировал дальность узлов серое
+        ...чтобы помочь мне со сбором океанических образцов во время наших вылазок
+        но теперь, я пользуюсь этой модификацией в боях на расстоянии
     
     sourceless
         is it that simple? no...
@@ -5719,12 +5719,12 @@ survival
         but--
     
     bozko
-        and i have seen this all before
-        when i was larval, my home suffered a secri infestation
-        i was one of the defenders, and...
-        so many of my friends, my family, were lost
-        killed, then brought to terrible life again
-        only for <em>me</em> and the few defenders who remained, to...
+        и мне приходилось видеть всё это прежде
+        когда я был личинкою, мой дом страдал от заражения секри
+        я был в ряду защитников, и...
+        такое множество моих друзей, членов семьи, были потеряны
+        убиты, а затем возвращены вновь возвращены к кошмарной жизни
+        только чтобы <em>я</em> и несколько других, оставшихся защитников, были...
     
     sourceless
         he clutches his face, growing silent
@@ -5733,15 +5733,15 @@ survival
         bozko, you--you do not have to--
     
     bozko
-        i died there, and i suppressed the memory
-        i always knew it was there...
-        and now i have to use it again
-        i had never fought like it before, and never did again
-        but it is now all that has kept cavik and i intact
-        akizet... it is like it has been overlapping
-        these caves, these people... it feels like i am larval,
-        fighting for my life again against everyone i once knew
-        i keep trying to rewrite it, or suppress it just enough...
+        я погиб там, и я подавил вопоминания
+        я всегда знал что оно тут...
+        и в конечном итоге я вынужден обратиться к нему снова
+        я сражался как никогда, и после всего не делал того же 
+        но теперь это единственное благодаря чему я и кавик целы
+        акизет... оно будто накладывается поверх реальности
+        эти пещеры, эти люди... ощущение, словно я личинка,
+        вновь сражающаяся за свою жизнь против всех кого я когда либо знал
+        я всё пытаюсь переписать его, или подавить в достаточной мере...
     
     sourceless
         the twist in his receptors becomes undone, 
@@ -5749,7 +5749,7 @@ survival
         it is anger--spite, maybe disgust
     
     bozko
-        velzie's fondness for repetition is truly nauseating
+        тяга вельзи к повторенью поистине тошнотворна
 
     RESPONSES::akizet
         ...<+>loop
@@ -5763,12 +5763,12 @@ notalone
         we have made it this far--and together, we will finish this
         
     bozko
-        yes...
-        i understand the strength of the timestopper
-        but akizet, i cannot let anyone else meet their final deaths
-        not even a chance can remain
-        i will do whatever it takes to get us all out
-        the aftermath, whatever happens to me... does not matter
+        это так...
+        я осознаю силу времядержца
+        тем не менее, акизет, я не могу допустить чтобы кто либо ещё встретил свою заключительную смерть
+        пусть не останется даже и шанса
+        я пойду на что угодно, если это вытащит нас отсюда
+        в конце концов, что бы то ни случилось со мною... ничего не значит
     
     akizet
         yes it does!!
@@ -5787,7 +5787,7 @@ notalone
         please, just be careful
     
     bozko
-        i will, akizet
+        я буду, акизет
 
     RESPONSES::akizet
         ...<+>loop
@@ -5811,11 +5811,11 @@ theory
         all at once comes a crushing darkness
         
     bozko
-        i cannot begin to speculate how
-        but it is an infestation, spreading outwards...
-        since even golems cut off from the network were hostile
-        so the source must be destroyed--the groundsmindry
-        and i will ensure that whoever has orchestrated this does not escape
+        я не могу начать строить догадки как именно
+        но это заражение, распространяющееся вовне...
+        раз уж даже големы отрезанные от сети теперь настроены против нас
+        следовательно должен быть уничтожен её источник--землемыслье
+        и кто бы то ни стоял за занавесом, я позабочусь, чтобы он не сбежал
 
     RESPONSES::akizet
         we will, bozko<+>loop
@@ -5937,7 +5937,7 @@ start
     geli::concern
         oh, sorry!
             EXEC::env.dialogueActors["geli"].expressions.concern.exec()
-        <span definition="INHERITED CONTEXT::'ÿÎL;ö9ÿÿÿy	Det me ou t¶'">nothing is wrong!</span>
+        <span definition="INHERITED CONTEXT::'ÿÎL;ö9ÿÿÿy	Det me ou t¶'">nothing is wrong!</span> // ДЕТ МИ АУ Т %( АУУУуУУУУ Т!!!!!!!!! T^T
         <span definition="INHERITED CONTEXT::'cannotH‰(HT$0I m ove';'help'">nothing!!</span>
         <span definition="INHERITED CONTEXT::'Ä(ÃÌ@Strange thought';'førcing plaÇe‹|$'">nothing!</span>
         <span definition="INHERITED CONTEXT::'‹ÆNTERH‹t$@H‹|$';'TH|†E';'ÿÿÿÿÿÿDOOR|GAP';'find‹ù‰elp'">please let me know if there is anything i can do for you!!!</span>

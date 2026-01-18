@@ -5619,7 +5619,7 @@ ok
     itzil
         предостаточно!
         всё это очень пугает, но...
-        я нескончаемо рада что вы нам помогаете!
+        вы бы знали как меня радует что вы нам помогаете!
 
     karik
         если у вас останется сфер после починок,
@@ -6032,10 +6032,10 @@ ____END
         IT IS FAR CLOSER!
 
     itzil
-        that is right! // всё верно!
+        всё верно!
             EXEC::env.embassy.vn({itzil: 'display show', gakvu: 'nocon defocus', tozik: 'defocus'});
-        the golem maintenance θsegment block is just below this one! // блок θсегмента обслуживанья големов прямо под нашим!
-        and there is a lot of weaponry there, too!! // и он тоже полон оружья!!
+        блок θсегмента обслуживанья големов прямо под нашим!
+        и он тоже полон оружья!!
 
     gakvu
         you see what i am suggesting
@@ -6066,7 +6066,7 @@ ____END
         BUT THE MINDCORES SPEAK UP FIRST
     
     itzil
-        i am not leaving until i save my kivii! // я не уйду пока не спасу свою кивии!
+        я не уйду пока не спасу свою кивии!
 
     karik
         maybe we could get into the golems down there and help, too!     может мы сможем забраться в находящихся там големов и тоже помогать!
