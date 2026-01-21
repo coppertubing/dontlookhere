@@ -5,24 +5,24 @@
     > localization/labs.js
     localization for /local/uncosm/pit
 
-    progress: nothin (figure out beskletters) as of 06.10.2025
+    progress: some strings; we need to get all non-drowning intros before release as of 18.01.2026
 */
 
 env.localization.page['pit'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "this place reads so weird. it's totally broken apart, but i'm still picking up this really focused oppressive gloom over it": "",
+        "this place reads so weird. it's totally broken apart, but i'm still picking up this really focused oppressive gloom over it": "такое странное место. оно совершенно разбито на части, но я всё ещё улавливаю эту очень сосредоточенную гнетущую мрачность над ним",
         
-        "::CONNECTION_COHERENCY_REDUCTION::'instability detected'": "",
-        "::CONNECTION_COHERENCY_REDUCTION::'critical instability detected'": "",
-        "::CONNECTION_DISRUPTION::'retracing';'last coherent position'": "",
+        "::CONNECTION_COHERENCY_REDUCTION::'instability detected'": "::СОКРАЩЕНИЕ_СВЯЗНОСТИ_СОЕДИНЕНИЯ::'обнаружена нестабильность'",
+        "::CONNECTION_COHERENCY_REDUCTION::'critical instability detected'": "::СОКРАЩЕНИЕ_СВЯЗНОСТИ_СОЕДИНЕНИЯ::'обнаружена критическая нестабильность'",
+        "::CONNECTION_DISRUPTION::'retracing';'last coherent position'": "::НАРУШЕНИЕ_СОЕДИНЕНИЯ::'возвращение';'последная связная позиция'",
         "'severe data overload'": "'значительная перегрузка данных'",
-        "::'closest coherent position updated'": "",
+        "::'closest coherent position updated'": "::'ближайшая связная позиция обновлена'",
 
 
-        "something is coming.": "",
-        "something's attention sweeps the area for movement.": "",
-        "the attention recedes.": "",
+        "something is coming.": "что-то идёт.",
+        "something's attention sweeps the area for movement.": "чьё-то внимание прочёсывает местность в поисках движения.",
+        "the attention recedes.": "внимание отступает.",
 
         
 
@@ -46,22 +46,22 @@ env.localization.page['pit'] = {dialogues: {},
 
         "ækiZ¥Ét": cor_ru.entity_menu['ækiZ¥Ét'].name,
         "akizet": 'акизет',
-        "keycard": "", // --- назвать пропускным...
-            "my 'keycard', found again! very good": "",
-            "i will not have to ask for another... again...": "",
-            "this should grant me entry to my region": "",
+        "keycard": "ключ-карта", // --- назвать пропускным...
+            "my 'keycard', found again! very good": "моя \"ключ-карта\", вновь найденная! очень хорошо",
+            "i will not have to ask for another... again...": "мне не придётся просить ещё одну... опять...",
+            "this should grant me entry to my region": "она даст мне доступ в мой регион",
 
-            "ah. i have forgotten my 'keycard' in the other chamber again": "",
-            "the cousins hold so many secrets, so many locked doors": "",
-            "but i suppose we are balanced in this way": "",
-            "yes, it should be around here still": "",
+            "ah. i have forgotten my 'keycard' in the other chamber again": "а. я вновь забыла свою \"ключ-карту\" в другой камере",
+            "the cousins hold so many secrets, so many locked doors": "у близнецов столько секретов, столько запертых дверей",
+            "but i suppose we are balanced in this way": "но я полагаю, что таким образом мы в равновесьи",
+            "yes, it should be around here still": "да, она должна быть где-то здесь",
 
     }, 
     entityDescriptions: {
         "ækiZ¥Ét": cor_ru.entity_menu['ækiZ¥Ét'].desc,
-        "keycard": `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','experiential bridge'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'thin identifying sheet';'contains some strange magnetism';'a fascinating technology'</span>`,
+        "keycard": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','эмпирический мост'
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'тонкий идентификационный лист';'обладает странным магнетизмом';'удивительная технология'</span>`,
         
     }
 }
@@ -74,12 +74,12 @@ env.localization.page['pit'] = {dialogues: {},
 env.localization.page['pit'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        oppressive impulse?<+>impulse
+        гнетущая мрачность?<+>impulse
         roaming entities?<+>ravenous
             SHOWIF::"pit__beastintro"
 
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.localization.page['pit'].dialogues[`mth++pit`] = generateDialogueObject(`
 loop
@@ -87,48 +87,48 @@ loop
 
 start
     self
-        question about this space
+        вопрос об этом пространстве
 
     moth
-        what's up?
+        чё как?
     
     RESPOBJ::mthresp
 
 impulse
     self
-        what do you mean by 'oppressive gloom'?
+        что ты имеешь в виду под "гнетущей мрачностью"?
 
     moth
-        okay, well, to preface, there's this emotional analysis component we've got
-        gives me a decent surface level impression of the emotional vibe of a memory
-        it's like a list of percentages assigned to standard codes for a huge array of emotions
-        usually it doesn't give any useful info we don't already get from the actual content of the memory, so i tend not to watch it too closely
-        it's a gamble with corrucystic stuff especially
-        i just don't think i've ever seen it so clear before...
-        this whole place gives off a weird mix of sadness and violent anger
-        you're the one connected, you don't feel it?
+        окей, короче, в качестве предисловия: у тут нас есть эдакий компонент эмоционального анализа
+        даёт мне приличное количество поверхностной инфы об эмоциональной составляющей воспоминания
+        типа как список процентов, присвоенных стандартным кодам для огромного количества эмоций
+        обычно от него нет ничего такого полезного, чего мы сами бы уже не нашли, поэтому я не слежу за ним особо
+        с корруцистозными штуками всё равно то работает то нет
+        мне кажется просто до этого показатели ещё ни разу не бывали такими отчётливыми...
+        всё это место излучает странную смесь грусти и лютого гнева
+        это ты тут с мыслеколом в цисте, ты разве не чувствуешь?
         
     self
-        i can kind of hear it i guess
+        вроде как слышу наверное
 
 ____SHOWIF::["pit__f1", false]
     moth
-        weird
-        whatever it is, 
-        i really don't think it's coming from the broken up memory bits here
-        it's too coherently read when everything else is all chewed apart
-        not sure what to make of that yet
+        странно
+        чем бы оно ни было, 
+        серьёзно не думаю что оно исходит от этих раздолбанных кусочков памяти
+        читается больно связным по сравнению со всем остальным
+        пока не знаю какие выводы делать
 
 ____SHOWIF::["pit__f1", true]
     moth
-        weird
+        странно
         still, that akizet thoughtform probably has something to do with it
         maybe it's like some sort of warding mechanism she set up to scare off scavengers
 ____END
     
     RESPONSES::self
-        i see<+>loop
-            FAKEEND::(back)
+        понятно<+>loop
+            FAKEEND::(назад)
 
 ravenous
     self
@@ -180,7 +180,7 @@ ____END
     
     RESPONSES::self
         all right<+>loop
-            FAKEEND::(back)
+            FAKEEND::(назад)
 `)
 
 
@@ -189,17 +189,17 @@ ____END
 env.localization.page['pit'].dialogues["intro"] = generateDialogueObject(`
 start
     sourceless
-        you feel moth tap at the table, drawing your attention.
+        ты чувствуешь, как моль стучит по столу, привлекая твоё внимание.
 
     moth
-        hey, what did you just do?
+        эй, это что щас было?
     
     self
-        there was something new in the cache
-        it just brought me to this dark place
+        что-то новое в кэше
+        меня просто кинуло в какое-то тёмное место
 
     moth
-        interesting...
+        интересно...
 ____SHOWIF::"++mothbeneath"
         this is kinda like those other broken up places you've been
         but... worse
@@ -214,7 +214,7 @@ ____END
         get to looking buddy
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 env.localization.page['pit'].dialogues["introdescent"] = generateDialogueObject(`
 start
@@ -245,7 +245,7 @@ ____END
         get to looking buddy
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 env.localization.page['pit'].dialogues["introdrowning"] = generateDialogueObject(`
 start
@@ -282,19 +282,19 @@ start
         get to looking buddy
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 env.localization.page['pit'].dialogues["altintro"] = generateDialogueObject(`
 start
     moth
-        oh, here again?
+        о, снова здесь?
         ok, it's in the uncosm, from a hole in the cache... 
         that kind of supports my theory that it was a direct part of a memory once
         pretty obvious with all the fbx stuff, but,
         it's like there's this big gap that was left by it getting pulled down here
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 env.localization.page['pit'].dialogues["altdescent"] = generateDialogueObject(`
 start
@@ -369,25 +369,25 @@ ____END
 env.localization.page['pit'].dialogues["nofreedom"] = generateDialogueObject(`
 start
     sourceless
-        a realization strikes you as you try to move forward.
+        тебя осеняет, когда ты пытаешься пройти вперёд.
 
     self
-        i don't think there's any way to get through here
+        я не думаю, что здесь можно пройти
 
     moth
-        what do you mean?
+        о чём ты именно?
 
     self
-        it's spatial but nothing is lining up right
-        can we do anything about that?
+        она пространственная но всё просто вразнос, нет прямых линий
+        мы что-нибудь можем с этим сделать?
 
     moth
-        i don't think so, not directly...
-        this is somewhere in the uncosm, so it's out of funfriend's range, i think
-        maybe come back here later?
+        не думаю. во всяком случае не напрямую...
+        это где-то в беспространстве, а значит за пределами влияния развледруга, кажись
+        вернись позже, может?
 
     RESPONSES::self
-        ok<+>END
+        ок<+>END
 `)
 env.localization.page['pit'].dialogues["beastintro"] = generateDialogueObject(`
 start
@@ -672,7 +672,7 @@ start
         so maybe they're safe?
 
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 env.localization.page['pit'].dialogues["f1"] = generateDialogueObject(`
 start
@@ -1109,7 +1109,7 @@ ____END
             EXEC::env.noVoiceStop = false
         
     RESPONSES::self
-        ok<+>END
+        окей<+>END
 `)
 
 
@@ -1134,7 +1134,7 @@ start
     RESPONSES::self
         tell me about something else?<+>CHANGE::++rotmove
             HIDEREAD::
-        ok<+>END
+        окей<+>END
 
 END::toggleBgm(page.bgm)
 `)

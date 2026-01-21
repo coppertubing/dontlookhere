@@ -5,7 +5,7 @@
     > localization/aquarium.js
     localization for /local/city/aquarium
 
-    progress: nothin as of 12.10.2025
+    progress: a couple dialogues, also whats up with defs as of 19.01.2026
 */
 
 env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {},
@@ -28,7 +28,7 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
         /*isabel*/ 'Huh?': "А?",
         /*isabel*/ "You really want to leave so soon?": "Правда? Ты уже хочешь уйти?",
         /*akizet*/ "what? no, no, of course not": "что? нет, нет, вовсе нет",
-        /*sourceless*/ 'did i say something to imply that?': "?",
+        /*sourceless*/ 'did i say something to imply that?': "я разве что-то такое говорила?",
     }, 
     entityDescriptions: {
         "return": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
@@ -52,10 +52,10 @@ env.localization.page['aquarium'].localization.page['aquarium'] = {dialogues: {}
 env.localization.page['aquarium'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        disguise body?<+>stealthbody
+        маскировочное тело?<+>stealthbody
             SHOWIF::"aqua__meetup"
 
-        nevermind<+>CHANGE::++moth
+        неважно<+>CHANGE::++moth
             FAKEEND::(назад)
 `)
 env.localization.page['aquarium'].dialogues[`mth++aquarium`] = generateDialogueObject(`
@@ -73,23 +73,23 @@ start
     
 stealthbody
     self
-        so the obesk actually did use disguise bodies
-        and it sounds like they were common
-        wasn't that just a conspiracy theory?
+        так выходит обески действительно использовали маскировочные тела
+        и звучит так, будто использовали часто
+        разве это не была всего лишь теория заговора?
 
     moth
-        yeah... yeah that's how it was spun
-        it's always been super plausible though. i've been a believer personally
-        they had to learn our languages somehow
-        and i really do think they're still walking among us
-        they've probably only gotten better at blending in since then
+        ага... да, её так и преподносили
+        но она всегда была оч правдоподобной. вот лично у меня никогда не было сомнений
+        им же надо было как-то выучить наши языки
+        и я реально думаю что они до сих пор живут среди нас
+        они наверняка теперь ещё лучше сливаются с толпой
 
     self
         ладно
         ты куу?
 
     moth
-        если бы
+        ох, если бы
 
     RESPONSES::self
         ок<+>loop
@@ -105,28 +105,28 @@ start
         центр близнецового парка, не так далеко от нашего места назначенья
         я явилась рано
             EXEC::content.classList.add("slowcam");content.classList.remove("instabel")
-        так что я сижу, моя замаскированная фигура в облегании нежного холодного дождя
+        так что я сажусь, моя замаскированная фигура в облегании нежного холодного дождя
             EXEC::setCam({x: 4, y: 8.5, rotation: 0});playerMoveTo(4, 8, "left")
-        я могла бы заняться организационной работой пока здесь, она всегда найдётся, но...
+        я могла бы заняться организационною работою пока здесь, она всегда найдётся, но...
         дождь, туман, они так знакомы
-        словно грёза о простом прошлом, верхом на вейльке, на охоте
+        словно грёза о простом прошлом, катаньи на вейльке, на охоте
         без груза обязательств или сумасшествия тайного конфликта на моём уме...
         царит мир
         и я дозволяю себе чувства, какие бы испытывал личиночный обеск
-        this shifting body is not designed for sensory accuracy, but still, echoes are felt
-        i shiver, huddle into myself, pull this false cloth coat tighter
-        not that it makes a difference--it is a part of the body, carefully-shaped corrucystic flesh,
-        and so the rain slides off as if it were made of metal
-        i raise a claw--or, a cousinly hand, i suppose
-        watching the droplets run off it unnaturally, shining in the fiery light from the stalk behind me
-        this moment, meaningless in itself, instills such a longing to flee
-        not from this night, this one moment of peace, but from the conspiracy suffocating my mindcore
-        the path i tread to this moment has disappeared behind me, and i am lost in the complexity of it all
-        entertaining the team, disappearing to work with the cousins, treading upon a thin branch
-        even now, the storm is continuing our efforts tirelessly, its periodic updates consistently bearing progress
-        so perhaps it is not a path i walk, but instead a constant, hastening tumble that velzie has pushed me into
-        it all feels so far beyond my claws. there is nothing for me to grasp
-        but maybe there is still time to change the course... 
+        это изменчивое тело не разработано для точности восприятия, и всё же отголоски ощущаются
+        я дрожу, сжимаюсь в комок, плотнее натягиваю этот ложный тканевый плащ
+        не то чтобы это имеет значение--он часть тела, тщательно сформированная корруцистозная плоть,
+        и оттого дождь скатывается по нему, как по металлу
+        я приподнимаю коготь--или близнецовую руку, полагаю
+        наблюдая, как капли неестественно стекают с неё, поблёскивая в огненном свете со стебля позади меня
+        это мгновенье, само по себе бессмысленное, внушает мне столькую жажду бегства
+        не от этой ночи, не от этого мирного мгновенья, а от заговора, удушающего моё мыслеядро
+        тропа, по которой я пришла к данному моменту, канула в небытье за мною, а я погрязла в запутанности всего происходящего
+        развлекая команду, исчезая на работу с близнецами, ступая по тонкой ветви
+        даже сей θмиг шторм неустанно продолжает наши усилья, регулярно оповещая о стабильном прогрессе
+        так что, быть может, я не иду по этой тропе, а постоянно набирая скорость падаю и скатываюсь по ней, куда меня столкнуло велзи
+        кажется, будто всё настолько вне досягаемости моих когтей. мне не за что зацепиться
+        но, возможно, ещё есть время изменить направленье... 
         что-нибудь...
         ...
     
@@ -135,13 +135,13 @@ start
             EXEC::content.classList.add("quickabel")
 
     sourceless
-        a voice from behind startles me, accompanied with a pattering of droplets upon stretched fabric
+        голос позади, сопровождаемый стуком капель по натянутой ткани, застаёт меня врасплох
             EXEC::setCam({x: 4, y: 8.5, rotation: 70});
             WAIT::1000
             THEN::content.classList.remove("hideabel");content.classList.add("standobel")
-        isabel, carrying a thin half-dome to shield herself from the rain
+        изабель, экипированная тонким полукуполом, защищающим её от дождя
         сколько времени минуло?
-        she laughs a little, taking some steps closer
+        она немного смеётся, делая несколько шагов ближе
 
     sleepybel
         Ты что, просто--сидишь под дождём?
@@ -150,71 +150,71 @@ start
             EXEC::content.classList.remove("quickabel")
     
     sourceless
-        when i turn up to face her, i forget that this body adapts receptor movements into facial expressions
+        поворачиваясь к ней, я забываю, что это тело адаптирует движения рецепторов под выражения лиц
             EXEC::setCam({x: 4, y: 8.5, rotation: 70, offsetCamera: "rotateX(20deg)", height: 1.75});content.classList.remove("standobel");content.classList.add("centerbel")
-        and so the joy in her face fades into concern, seeing mine...
-        which i only now realize must be some distant despair
-        she sits quickly beside me, the rain-shield now over both of us
+        и тогда радость на её лице сменяется беспокойством, когда она видит моё собственное...
+        которое, как я только сей θмиг осознаю, наверняка отражает какого-то рода далёкое отчаянье
+        она поспешно садится около меня, дождевой щит - укрывающий нас обеих
     
     sleepybel
         Ох... Ты в порядке?
         Что-то случилось?
     
     sourceless
-        with a quick shake of my head, i center myself, ridding myself of this haunting for now
-        seeing her is enough to bring a smile
+        быстро тряхнув головою, я восстанавливаю равновесье и избавляюсь от этого наважденья
+        увидеть её достаточно, чтобы улыбнуться
         
     akizet
-        yes! yes, apologies,
-        it is so good to see you, my friend
-        ...ah, i suppose, like you say, i was 'thinking about work...'
+        да! да, извини меня,
+        как же приятно тебя видеть, моя подруга!
+        ...ах, полагаю, как ты говоришь, я "думала о работе..."
     
     sleepybel
         Всё так же тяжко, да?
         Понимаю.
         То есть... Хаха, не совсем. Навряд ли всё точно так же, но..
-        Что ж, хватит беспокоиться об этом, хорошо?
-        Этой ночью мы обе собираемся позабыть обо всём остальном.
+        Что ж, хватит беспокоиться о ней, хорошо?
+        Этой ночью мы обе собираемся забыть обо всём остальном.
     
     sourceless
-        i laugh and nod in agreement--already, there is a sense of freedom in that shared void
-        simultaneously, she pinches at the cloth of my coat, confused
+        я смеюсь и киваю в согласьи--чувство свободы уже возникает в нашей общей пустоте
+        в то же время она щипает ткань моего плаща, озадаченная
     
     sleepybel
         И как ты только не промокла?
         А, точно, это... Да, ага.
-        Ладно, хорошо. Я бы не хотела зайти с зонтом,
-        Пока ты волочишься позади меня так, словно я только что оставила тебя под дождём.
+        Окей, отлично. Не хотелось бы мне зайти с зонтом,
+        И чтобы ты потом волочилась за мной с видом, словно я просто оставила тебя под дождём.
     
     akizet
-        <span definition="INHERITED CONTEXT::'being intentionally obtuse'">i do not see the problem</span>
+        <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'намеренная глупость'">я не вижу проблемы</span>
     
     sourceless
-        she chuckles and stands, pulling me to my feet alongside her
+        она хихикает и встаёт, поднимая меня на ноги следом за собою
             EXEC::setCam({x: 4, y: 8, rotation: 90});playerMoveTo(4, 8, "left")
 
     sleepybel
         Ага.
-        Окей, так, Ди ждёт нас около служебного входа, через него мы и пройдём.
-        Разумеется, там будет немного странно - аквариум обычно уже закрыт к этому времени,
-        но до главного ночного мероприятия всё равно ещё около часа, и...
-        И все другие выставки всё ещё открыты!
+        Окей, короче, Ди ждёт нас около служебного входа, через него мы и войдём.
+        Судя по её словам, аквариум будет в странном виде, а то обычно он к этому времени уже закрыт, --- аргументация: apparently, стоявшее в оригинале, очень часто используется чтобы передать чужую речь, куда чаще чем чтобы обозначить "очевидно"
+        но до главного ночного мероприятия ещё около часа...
+        Так что, все другие выставки всё ещё открыты!
         Ещё она сказала, что ресторан тоже будет открыт.
-        Вообще, он для работников на сверхурочных, но она предупредила их, что мы придём, итак...
-        Мы сможем взглянуть на всё <em>и-и</em> немного перекусить.
-        Я была не уверена, как всё пройдёт, но в итоге нам очень повезло.
+        Вообще, он для работников на сверхурочных, но она предупредила их, что мы придём, так что...
+        Можем взглянуть на всё <em>и</em> чем-нибудь перекусить.
+        Я не была уверена, как всё выйдет, но в итоге нам очень повезло.
     
     akizet
-        is that different from how the habitat usually operates?
+        это отличается от того, как обычно работает эта среда обитанья?
     
     sleepybel
-        Ну, они обычно не открыты по ночам. И обычно они не впускают людей во время приготовлений.
-        Поэтому вся разница в том, что там будем считай что только мы вдвоём.
-        Вообще, обычно там довольно много людей, так что этот раз должен быть особенным...
+        Ну, он обычно не открыт по ночам. И обычно он не впускает людей во время приготовлений.
+        Поэтому вся разница в том, что там будем, считай, что только мы вдвоём.
+        Обычно там такие толпы, так что этот раз особенный...
         Ну же, пошли!
 
     RESPONSES::akizet
-        set out<+>END
+        отправиться<+>END
             EXEC::change("PAGE!!metabel", true);refreshStage({noFlash: true});content.classList.remove("slowcam", "centerbel", "quickabel");setCam()
 
 SKIP::change("PAGE!!metabel", true);refreshStage({noFlash: true});content.classList.remove("centerbel", "quickabel", "slowcam", "standobel");setCam()
@@ -223,16 +223,16 @@ SKIP::change("PAGE!!metabel", true);refreshStage({noFlash: true});content.classL
 env.localization.page['aquarium'].dialogues["entry"] = generateDialogueObject(`
 start
     sourceless
-        the entry chamber of this false habitat halts my movement
+        входная камера этой ложной среды обитанья останавливает моё движенье
             EXEC::ratween(env.localization.page['aquarium'].bgm, 0.8)
-        for i am gripped by similar visions of the past
-        oltazni's central social chamber, adorned with banners of painted veilk skin,
-        connective tunnels along each wall, even bored into the upper chamber, for climbing
-        each lit by their own uniquely-dyed <span class="code">yuzku</span> globes, some even hovering in the air...
-        it is that very same grandeur, but spoken in a cousinly tongue, here
-        but by that same measure, it is mundane and static
-        so much of their construction is like this
-        another testament to th
+        ибо я охвачена подобными виденьями прошлого
+        центральная общественная камера олтазни, увешанная знаменами из раскрашенной вейльковой кожи
+        соединительные туннели вдоль стен, даже проделанные в верхней камере, для лазанья
+        и каждый освещён собственным индивидуально окрашенным <span class="code">юзку</span> шаром, некоторые аж парят в воздухе...
+        это то же самое величье, но выраженное на близнецовом языке, здесь
+        однако по тем же меркам оно обыденно и статично
+        такое количество их строений именно такое
+        очередное доказательст
             WAIT::1000
             AUTOADVANCE::
 
@@ -241,64 +241,64 @@ start
             EXEC::content.classList.add("sideabel")
 
     sourceless
-        isabel interrupts my marveling with a hand wiggled before my eyes
-        she restrains her laughter with a tight smile
-        my disguise-skin must be conveying my awe in an unsubtle way
+        изабель прерывает моё изумленье взмахом руки перед моими глазами
+        она сдерживает смех плотной улыбкой
+        должно быть, тело откровенно выражает мой восторг
         
     sleepybel
         Всё хорошо?
 
     akizet
-        ye--yes, absolutely!
-        forgive me, i was distracted by the... construction
+        д--да, так точно!
+        извини меня, меня отвлекло это... сооруженье
 
     sleepybel
-        Хаха! Извинить тебя?? Прекращай это повторять.
+        Хаха! Извинить тебя?? Тебе пора прекращать это повторять.
         Я просто... Не знаю, удивилась!
-        Ты уже столько всего повидала, но так оцепенела, увидев вестибюль?
-        Разве ты не успела повидать весь мир?
+        Ты уже столько всего повидала, но так оцепенела от какого-то вестибюля?
+        Разве ты уже не объездила весь мир?
     
     akizet
-        only from a distant view in the sky, isabel
-        this place struck me with reminiscence
-        the lights, the banners, its very shape evoking festivals from my home
+        лишь в небе, изабель
+        это место навеяло на меня воспоминанья
+        освещенье, знамена, сама форма помещенья напомнили мне о фестивалях на родине
 
     sourceless
-        as i gesture forth for emphasis, another matter comes to mind
-    
+        и пока я указываю жестами для выразительности, ко мне приходит вопрос
+
     akizet
-        ah... where do we go, first?
+        а... куда мы пойдём сперва?
 
     sleepybel
-        Я думаю,
+        Осталось,
         
     sourceless
-        isabel checks her glowing communicator, pulled from an insulated pocket
+        изабель проверяет свой светящийся коммуникатор, извлечённый из теплоизолированного кармана
     
     sleepybel
-        Осталось чуть менее часа, прежде чем они будут готовы впустить нас на выставку.
-        Хоть мы и получили особый доступ, наверняка там ещё будет суматоха перед самым открытием. """ мой мозг не обрабатывает эти строчки ууу """ << как же я тебя понимаю
-        Пожалуй, не хотят, чтобы мы путались у них под ногами.
+        Чуть меньше часа, прежде чем они будут готовы впустить нас на выставку, думаю.
+        Мы хоть и получили особый доступ, наверно там до сих пор небольшая суматоха.
+        Скорее всего, не хотят, чтобы мы путались у них под ногами.
         Ну, а пока можем идти куда угодно!
         Они закроют остальные экспонаты только на время публичного открытия.
-        И если кто спросит, у меня припасены волшебные слова, и сотрудники оставят нас в покое.
+        И если кто спросит, у меня припасены волшебные слова против любых сотрудников.
         "Ди впустила нас. Агась, друзья Ди".
         В любом случае, неправильного ответа нет. Я всё здесь видела, и всё крутое.
             
     sourceless
-        her smile brightens, and with a short laugh,
-        she shoves me ahead with a little push to my shoulder
+        она улыбается сильнее, и с коротким смешком,
+        она толкает меня вперёд небольшим нажатьем в плечо
             EXEC::content.classList.remove("sideabel")
         
     sleepybel
-        Итак, веди!
+        Так что иди первой!
 
     sys
-        NOTICE::'non-contiguous memory stream'
-        NOTICE::'utilize entity';'ISABEL';'to access location-based recollection'
+        УВЕДОМЛЕНИЕ::'непоследовательный поток памяти'
+        УВЕДОМЛЕНИЕ::'используйте сущность';'ИЗАБЕЛЬ';'для доступа к вспоминанию на основе локации'
 
     RESPONSES::akizet
-        explore<+>END
+        исследовать<+>END
             EXEC::change("PAGE!!lobbybel", true)
 
 SKIP::content.classList.remove("sideabel");change("PAGE!!lobbybel", true)
@@ -308,78 +308,78 @@ END::ratween(env.localization.page['aquarium'].bgm, 1)
 env.localization.page['aquarium'].dialogues["bigtank"] = generateDialogueObject(`
 start
     sourceless
-        as we walk along, isabel suddenly prods at my coat 
+        пока мы идём, изабель неожиданно тычет в мой плащ
             EXEC::ratween(env.localization.page['aquarium'].bgm, 0.8)
-        which, as she well knows, is my skin
-        so she very quickly earns my attention
-        grinning down at me, silent
+        который, как она прекрасно знает, является моею кожею
+        так что она очень быстро привлекает моё вниманье
+        ухмыляясь на меня сверху вниз, молча
 
     akizet
-        what?
+        что?
     
     sourceless
-        so bright is my mood in this moment that a small chuckle chases my query
-        only then do i remember - yet again - that this body smiles for me
-        and i am nearly mirroring her own expression
+        так ярко моё настроенье, что вслед за моим вопросом увязывается маленький смешок
+        только тогда я вспоминаю - в который уже раз - что это тело улыбается за меня
+        и я почти повторяю её собственное выраженье
     
     sleepybel
         Странно видеть твоё лицо таким... Не знаю, "активным".
         Я думала, что научилась неплохо различать твои чувства по рецепторам.
-        Но теперь почти уверена, что упустила многие из них.
+        Но теперь почти уверена, что упускала многие из них.
     
     sourceless
-        i feel my smile fade, torn down by a distant internal conflict
-        is it 'weird'? she did say it with a smile - though i know her to choose words carefully
-        my shift in expression, perhaps visible confusion, prompts her to laugh and continue
+        я чувствую, как моя улыбка меркнет, раздираемая далёким внутренним конфликтом
+        это "странно"? она выразилась с улыбкой - хотя я знаю, что она умееет тщательно подбирать слова
+        моё изменившееся выражение, возможно, видимое замешательство, побуждает её рассмеяться и продолжить
         
     sleepybel
         Акизет, это мило!
-        Я это хотела сказать.
-        Думаю, я видела, как ты улыбаешься пару раз, но не так, как ты это делаешь сейчас.
-        Ты растеряла весь свой облик "непоколебимого древнего пришельца".
+        Вот что я хотела сказать.
+        Кажется, я видела, чтобы ты улыбалась пару раз, но не так, как сейчас.
+        Ты полностью растеряла весь свой облик "непоколебимого древнего пришельца".
     
     akizet
-        is that how i appeared to you?
+        такою я тебе казалась?
 
     sleepybel
-        Да... Да, как и любые другие обески.
-        Пожалуй за исключением тех с телевизора, кто правда очень старался.
+        Да... Да, как и все обески.
+        За исключением очень сильно старающихся с телевизора.
     
     sourceless
-        i stop and examine isabel's face, a thought coming to mind
-        the many movements of the cousinly face elude me
-        smiling is obvious, ubiquitous
-        even a larval obesk may smile slightly in moments of great delight
-        but in this instant alone, there are countless subtleties i struggle to place
-        an uneven movement of her eyebrows, a slow inward curling of her lips
-        from the small sound she makes, a quick breath through her nose,
-        this is all in line with a teasing suppression of laughter
-        delightfully common in our conversations, enough for me to recognize
-        but i must wonder how much else i have missed, my eye untrained
+        я останавливаюсь и изучаю лицо изабель, задумываясь
+        многочисленные движенья близнецового лица неуловимы для меня
+        улыбки очевидны, повсеместны
+        даже личиночный обеск может слегка приулыбнуться в мгновенье великого восторга
+        но в одном только этом θмиге есть бессчётное количество тонкостей, которые я с трудом распознаю
+        неровное шевеленье бровей, медленное сгибанье губ внутрь
+        небольшой звук, производимый быстрым вдохом через нос,
+        всё это соответствует дразнящему подавленью смеха
+        приятно распространенное явленье в наших разговорах, достаточно для того, чтобы я его узнавала
+        однако я всё же гадаю, сколько ещё пропускает мой нетренированный глаз
 
     sleepybel
         Да, Аки?
 
     sourceless
-        ah, i have been staring
-        while my receptors would normally have signalled my pondering through a slow roll,
-        this body has adapted it into an intense expression i am unfamiliar with
-        as soon as i am broken from thought, it is gone without a trace, too soon for me to investigate
-        but it is surely what she was nearly laughing at
-        in my flustering realization, her laughter finally manifests
+        ах, я уставилась на неё
+        тогда как мои рецепторы обычно бы обозначили мои размышленья медленным вращеньем
+        это тело преобразовало их в напряжённое выражение, с коим я не знакома
+        cтоит мне оторваться от мыслей, как оно исчезает без следа, слишком быстро, чтобы я успела его изучить
+        но, несомненно, именно от него она сдерживала смех
+        моё смущённое осознание наносит последний удар, и она наконец-то хохочет
 
     akizet
-        apologies! i was merely thinking--
-        there is much i have yet to decipher from your face, as well
-        i do wonder how you might look with receptors
-        hmm... a branching pair--like this!
+        извини! я всего лишь задумалась--
+        мне предстоит расшифровать ещё многое и в твоём лице
+        я гадаю, как бы ты выглядела с рецепторами
+        хмм... с парой ветвящихся--вот таких!
     
     sourceless
-        i bring my claws--my hands, up to the sides of my head, miming tir receptors
+        я подношу когти--руки, к бокам своей головы, имитируя тир-рецепторы
 
     akizet
-        last i heard, the false receptors initiative is now only somewhat invasive
-        all it requires is a few small incisions in the cranial--
+        насколько я слышала, инициатива ложных рецепторов теперь лишь частично инвазивна
+        всё, что требуется - это несколько небольших разрезов в черепной--
             WAIT::2000
             AUTOADVANCE::
 
@@ -388,15 +388,15 @@ start
         Давай подождём, пока они не придумают способ, не предполагающий вслерливание в мой череп.
 
     sourceless
-        her laugh is infectious
+        её смех заразителен
 
     akizet
-        the cousinly reservation over body modification is truly puzzling, isabel
-        but i have observed your preference
-        i will pass word along to hurry their work
+        близнецовые предостережения по поводу телесных изменений поистине озадачивают, изабель
+        но я отметила твоё предпочтение
+        я передам слово, чтобы они поспешили
 
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
 
 SKIP::
 END::ratween(env.localization.page['aquarium'].bgm, 1)
@@ -599,7 +599,7 @@ start
         Но да, пошли.
         
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::setCam()
 
 SKIP::setCam()
@@ -728,7 +728,7 @@ start
             THEN::setCam()
 
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::refreshStage()
 
 SKIP::refreshStage();setCam();content.classList.remove("slowcam");flash(false)
@@ -843,7 +843,7 @@ start
         hehe, it was your request!
 
     RESPONSES::akizet
-        continue<+>END
+        продолжить<+>END
             EXEC::content.classList.remove("sideabel");content.classList.remove("centerbel")
 
 SKIP::content.classList.remove("sideabel");content.classList.remove("centerbel")

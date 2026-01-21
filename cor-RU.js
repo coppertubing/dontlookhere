@@ -145,10 +145,6 @@ body.loading::after {
 #meta-menu .moth-trigger:after,
 #meta-menu .mask-trigger:after { 
     content: "МОЛЬ"  !important; 
-    left: 0;
-    right: 0;
-    text-align: center;
-    transition-delay: 0s;
 }
 #meta-menu .mask-trigger:after { content: "МАСК"  !important; }
 #mui-links #meta-obs:after { content: "СУЩ"  !important; }
@@ -668,14 +664,16 @@ cor_ru['advancewarnclick'] = function () {
             <div class="sysblock">
                 <div class="sysbox ru">
                     <h3>!!__ПРЕДУПРЕЖДЕНИЕ__!!</h3>
-                    <p class="sysinfo">СТОП! Вы достигли конца <em>полноценно переведённого контента cor-RU!</em></p>
-                    <p class="sysinfo">Следующий эпизод будет состоять практически полностью из английского текста.</p>
-                    <p class="sysinfo">Мы рекомендуем удалить cor-RU при дальнейшем прохождении игры, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или другие странности. (Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу)</p>
-                    <p class="sysinfo">Вы также можете отказаться от продвижения лога и приостановить игру на текущем эпизоде. Чтобы снова вызвать "продвинуть лог", ещё раз???????????.</p>
+                    <p class="sysinfo">Поздравляем! cor-RU - это работа в прогрессе, и Вы только что <em>достигли конца локализации основного контента!</em>.</p>
+                    <p class="sysinfo">Контент из последующих эпизодов/"логов" (EP3, EP4) будет на английском языке.<br>Учтите, что весь <em>опциональный</em> контент, который возможно достичь в рамках текущего эпизода (EP2), локализован. <span style="font-size:75%">(Если Вы нашли что-нибудь на английском, не продвигаясь дальше EP2... расскажите пожалуйста этоважно)</span></p>
+                    <p class="sysinfo">При продвижении лога рекомендуется удалить cor-RU, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или прочие странности.<br>Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу.</p>
+                    <p class="sysinfo">Вы также можете приостановить игру на текущем эпизоде. В таком случае кнопка "продвинуть лог" исчезнет, а игра будет вести себя так, будто Вы не прошли воспоминания обвала до конца.<br>Чтобы снова вызвать "продвинуть лог", Вы можете либо заново пройти воспоминание обвала, либо зайти в системное меню и нажать "вызвать продвижение лога".</p>
                     <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
+                    <p class="sysinfo">Спасибо за то, что играли с cor-RU!</p>
                     <div class="buttons">
-                        <span id="gpu-done" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
-                        <span id="gpu-hide" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
+                        <span id="rulog" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
+                        <span id="rustay" class="button" onclick="change('ep1_end', false);document.querySelector('#ru-warning').remove();checkEpisodeProgress()">приостановить на текущем эпизоде</span>
+                        <span id="rumeow" class="button" onclick="document.querySelector('#ru-warning').remove()">кнопочка котоаряничего не делает</span>
                     </div>
                 </div>
             </div>

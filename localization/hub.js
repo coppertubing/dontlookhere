@@ -94,7 +94,7 @@ env.localization.page['hub'] = {dialogues: {},
     entityDescriptions: {
         "funfriend": cor_ru.entity_menu['funfriend'].desc,
         "gate::hello": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-    ::ТОЧКА НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внешний слой'`
+    ::ТОЧКА НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внешний слой'`
     }
 }
 

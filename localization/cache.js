@@ -5,7 +5,7 @@
     > localization/cache.js
     localization for /local/cache
 
-    progress: only strings, dialogues left as of 04.10.2025
+    progress: done as of 18.01.2026
 */
 
 
@@ -49,7 +49,7 @@ env.localization.page['cache'] = {dialogues: {},
 
         "ohhh ahaha it is just barely in the cache":"ооо ахаха оно еле-еле в кэще",
         "any deeper and i would be unable to enter!!":"хоть немного глубже и я бы уже не смог войти!!",
-        "another pocket, how strange!":"как странно!", // ??????
+        "another pocket, how strange!":"очередной карман, как странно!", // ??????
 
         "ok this place is really bad for me":"окей мне в этом месте очень плохо",
         "tolerable but make it quick":"терпимо но давай побыстрее",
@@ -140,7 +140,7 @@ spheres
     
     moth
         любопытно что ты их так описываешь, скоплениями
-        у большинства компонентов корруцистических устройств есть такие, типа...
+        у большинства компонентов корруцистозных устройств есть такие, типа...
         физические клетки которые массово собираются в скопления
         маленькая корру клетка может быть какой-нибудь второстепенной мыслеформой,
         а большая - руководить всеми соединёнными что поменьше
@@ -211,7 +211,7 @@ start
     
     proxyfriend
         как?
-        ну, тебе надо т1Ъäфý±ÂяÒÂ£Ë$ю‹кõþж̑X0×6=Ãэº‚
+        ну тебе надо т1Ъäфý±ÂяÒÂ£Ë$ю‹кõþж̑X0×6=Ãэº‚
 
     sys
         ВНИМАНИЕ::'попытка реформации мысли'
@@ -258,8 +258,8 @@ what
 
     proxyfriend
         оплот безумья,
-        ужасающие грёзы грезимые -- это не слово -- бессвязными мыслеформами
-        осквернители!! житья акизет!!
+        ужасающие грёзы бессвязных мыслеформам
+        осквернителей!! житья акизет!!
         даже представить не могу какой непоправимый вред они нанесли остаткам её воспоминаний...
         если это не просто какая-то пустая оболочка, мы обязаны что-то предпринять
         иди туда и расскажи что увидишь
@@ -275,44 +275,44 @@ what
 env.localization.page['cache'].dialogues[`ffpit`] = generateDialogueObject(`
 start
     proxyfriend
-        wait! interloper!
-        what do you see it is too incoherent for me
+        подожди! лазутчик!
+        что ты видишь здесь слишком бессвязно для меня
 
     self
-        it's a big... thing
-        i think there are buttons around it
-        i don't know
+        большая... штука
+        кажется, вокруг неё кнопки
+        не знаю
 
     proxyfriend
-        strange! yes very strange!
-        of course your vision is a mystery to me
-        and i can barely comprehend anything here anyway
+        странно! да очень странно!
+        разумеется твоё зрение для меня загадка
+        да и вообще я тут почти ничего не воспринимаю
         
     self
-        comprehend?
-        what do you see?
+        не воспринимаешь?
+        что ты видишь?
     
     proxyfriend
-        ahahaha i see incoherence! 
-        is that not simple enough to say?
-        i suppose i can see 'buttons' now that you describe them
-        but it is all so deep beneath the cache
-        that it appears like writhing madness!!
-        it does look rather big whatever it is
-        you can enter it?
+        ахахаха я вижу бессвязность! 
+        разве не достаточно просто понять?
+        полагаю теперь я могу различить "кнопки" после твоего описанья
+        но всё это так глубоко под кэшем
+        что оно выглядит будто кишащее безумье!!
+        чем бы это ни было оно действительно выглядит крупным
+        ты можешь войти туда?
     
     self
-        i think i can try
+        думаю могу попытаться
 
     proxyfriend
-        good! perhaps it is more of the information you seek!
-        that is less work for me hahahaha
-        ok go now
+        отлично! быть может там ещё больше полезной тебе информации!
+        меньше работы для меня хахахаха
+        ок иди уже
     
     RESPONSES::self
-        ok<+>END
+        окей<+>END
             EXEC::moveTo('/local/uncosm/pit/')
-            FAKEEND::(enter)
+            FAKEEND::(войти)
 `)
 
 
@@ -373,13 +373,13 @@ not
         почему нет
     
     god
-        это сложно... // :: мне не нравится но у меня нет других вариантов, помогите    что тут
-        от мыслеформ, что действуют как сцены,
+        всё сложно...
+        от мыслеформ, что представляют из себя сцены,
         мне делается тошно
-        всё о чём я могу думать - о временах до своего высвобожденья...
+        всё, о чём я могу думать - о временах до своего высвобожденья...
         скрученное в полузабытое, мучительное ничто
         мой прекрасный мир так прост не без причины!
-        так что нет--я не могу присоединиться к тебе сейчас
+        так что нет--я не могу присоединиться к тебе сей θмиг
         но будь там что интересное - поведай о том мне!
     
     RESPONSES::self
@@ -387,7 +387,7 @@ not
             EXEC::moveTo('/local/ozo/')
             FAKEEND::(войти)
 `)
-env.localization.page['cache'].dialogues[godpit] = generateDialogueObject(`
+env.localization.page['cache'].dialogues[`godpit`] = generateDialogueObject(`
 start
     god
         ах! так скоро?!
@@ -397,25 +397,25 @@ start
         наступит время и мы встретимся вновь
 
     self
-        you won't come with me?
+        ты не пойдёшь со мной?
 
     god
         даже будучи здесь я вижу - это пространственная мыслеформа
         и, мой друг, ты знаешь моё мнение на их счёт
             SHOWIF::"cache__godozo-not"
 ____SHOWIF::["cache__godozo-not", false]
-        я куда боле предпочитаю низкомерные 
-        иные пробуждают в памяти моменты нескончаемой, бессмысленной пытки что я пережило...
+        я куда более предпочитаю низкомерные 
+        иные пробуждают в памяти пережитые мною мгновенья нескончаемой, бессмысленной пытки...
         зови это отторжением сложности, друг мой!
-        хахаха """ несмешно
+        хахаха
 ____END
-        а покуда наши пути не перескутся,
-        мне и друзьям должно и дальше дарить наш божественный взгляд! """ человечество должно нормализовать создание новых слов
+        а покуда наши пути не пересекутся,
+        мы с друзьями и дальше будем готовы одолжить тебе наш божественный взгляд!
     
     RESPONSES::self
-        ok bye<+>END
+        ок пока<+>END
             EXEC::moveTo('/local/uncosm/pit/')
-            FAKEEND::(enter)
+            FAKEEND::(войти)
 `)
 
 

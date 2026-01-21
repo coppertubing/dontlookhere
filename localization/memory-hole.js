@@ -15,7 +15,7 @@ env.localization.page['localuncosmwhere'] = {dialogues: {},
     strings: {
         "yeah i got nothing here. seems like you could give it some input, but... no clue what it wants": "дааа не знаю тут. похоже ты можешь что-то ввести, но... без понятия чего оно хочет",
 
-        "memoryhole": "брешь памяти",
+        "memoryhole": "брешьпамяти", // --- веление корруворкс
 
         "hehehehehe noo nooo!!": "хихихихихи неет нееет!!",
 

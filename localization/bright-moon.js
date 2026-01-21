@@ -5,14 +5,14 @@
     > localization/bright-moon.js
     localization for /local/orbit/moon
 
-    progress: nothin as of 06.10.2025
+    progress: done as of 18.01.2026
 */
 
 env.localization.page['moon'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "looks like this must have been during a solar eclipse... i'd go up there to watch too if it was that easy": "",
-        "looks like this must have been during a lunar eclipse... i'd go up there to watch too if it was that easy": "",
+        "looks like this must have been during a solar eclipse... i'd go up there to watch too if it was that easy": "похоже это было во время солнечного затмения... вот бы и мне можно было так легко посмотреть",
+        "looks like this must have been during a lunar eclipse... i'd go up there to watch too if it was that easy": "похоже это было во время лунного затмения... вот бы и мне можно было так легко посмотреть",
 
         "about this place": "об этом месте",
 
@@ -34,10 +34,10 @@ env.localization.page['moon'] = {dialogues: {},
 env.localization.page['moon'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        lunar eclipse<+>lunar
-        structure?<+>base
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        лунное затмение<+>lunar
+        постройка?<+>base
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.localization.page['moon'].dialogues[`mth++moon`] = generateDialogueObject(`
 loop
@@ -54,64 +54,63 @@ start
 
 lunar
     self
-        you said solar eclipse
-            NOTE::inspired by rosy
+        говоришь что солнечное затмение
 
     moth
-        yeah?
-        pretty sure that's what this is a memory of
+        ага?
+        выглядит так будто воспоминание именно об этом
 
     self
-        the earth is bigger than the moon
+        земля больше луны
         
     moth
-        okay, obviously, what about it?
+        окей, очевидно, и что такое?
 
     self
-        that makes this a lunar eclipse
+        значит это - лунное затмение
 
     moth
-        dude, we're seeing the sun from the moon with the earth in the way
-        the sun is eclipsed, it's a solar eclipse
-        right? 
+        чел, мы смотрим на солнце с луны с землёй посередине
+        солнце затмевается, это солнечное затмение
+        нет?
 
     self
-        that's what a lunar eclipse is
+        это и есть лунное затмение
 
     moth
-        what?
-        okay hold on, isn't a lunar eclipse when the...
+        чего?
+        окей погоди, разве лунное затмение это не когда...
 
     sourceless
         ......
     
     moth
-        shit i guess i had it backwards
-        all right, well, noted
+        бля походу всё таки наоборот
+        лады, ну, запомню
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        окей<+>loop
+            FAKEEND::(назад)
     
 base
     self
-        what is that thing they have on the moon
+        что это за штука у них на луне
 
     moth
-        that's their main contrivance anchor!
-        still up there today actually
-        interestingly, according to lunar satellite data i've been following,
-        it basically gets more direct obesk ship traffic than earth at this point lol
-        we don't know too much about the specifics, still, but...
-        it lives up to its name - keeps the contrivance pulled along, somehow
-        allegedly the contrivance doesn't have any sort of gravitational presence, so it's necessary
-        i do know it keeps the thing floating way over the sun's orbital plane 
-        out of the way enough to not be a problem, close enough to allow for reasonable travel
-        pretty sure there's only been one instance of an asteroid even getting close to it
+        это их главный якорь открытия!
+        до сих пор там, кстати
+        любопытно то, что согласно данным лунных спутников,
+        it basically gets more direct obesk ship traffic than earth at this point лол
+        мы не слишком много знаем о конкретных деталях, но...
+        он соответствует своему названию - тянет открытие за собой, каким-то образом
+        как утверждается у открытия нет никакого гравитационного присутствия, поэтому он необходим
+        точно знаю что он держит открытие над орбитальной плоскостью солнца
+        достаточно в сторонке чтобы не было проблем, достаточно близко чтобы можно было удобно путешествовать
+        вроде как был всего один случай когда какой-то астероид даже приблизился к нему
 
     RESPONSES::self
-        ok<+>loop
-            FAKEEND::(back)
+        окей<+>loop
+            FAKEEND::(назад)
 `)
 
 

@@ -587,10 +587,10 @@ env.localization['strings'] = {
         /*moth*/ "but the data here is so messed up i can't really tell what happened to it": "но данные здесь в таком хреновом состоянии что даже не скажешь что с ней приключилось",
 
     "s w   al kk": "п р     ох йй",
-        "NOTE::'referencing third-party context installation'::JOY_MASK": "",
-        "::INTERNAL CONTEXT": "",
-        "ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'": "",
-        "'hidden via gradient obfuscation'": "",
+        "NOTE::'referencing third-party context installation'::JOY_MASK": "ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ",
+        "::INTERNAL CONTEXT": "::ВНУТРЕННИЙ КОНТЕКСТ",
+        "ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'": "АНАЛИЗ::'словно лёгкая дымка в мыслепространстве';'скользкая и трудно воспринимаемая, пока не войдёшь в неё';'может скрывать близлежащие сущности';'как правило, случайна';'но я видела намеренное использование в некоторых местах'",
+        "'hidden via gradient obfuscation'": "'скрыта посредством градиентного затуманивания'",
 
         "insurance   lincecense": "страховая  лицецензия",
         "gous priceses": "ццеуны еа бемзин",
@@ -599,7 +599,7 @@ env.localization['strings'] = {
         "red  green ylow blue light  speet up": "крас й зел ёный жлтый ссиний свет  больще скрсти",
         "car  so sgggoing": "мшина  еееедет",
         "  m eting go ok": "  c вещание ппрошло хх оршо",
-        "wrunc eetntenanceh": "", // ?
+        "wrunc eetntenanceh": "", // ? ?
         "irector": "иректор",
         "autorized": "авторизованыоа",
 
@@ -623,8 +623,8 @@ env.localization['strings'] = {
         "WAIT WHAT ARE YOU DOING": "ПОСТОЙ ЧТО ТЫ ДЕЛАЕШЬ",
         "INTERLOPER!!": "ЛАЗУТЧИК!!",
 
-    "referential scar": '',
-        "you can't focus on it from this far away.": '', 
+    "referential scar": 'ссылочный рубец',
+        "you can't focus on it from this far away.": 'не выходит сосредоточиться на нём с такого расстояния.', 
 
 
 
@@ -939,22 +939,22 @@ env.localization['strings'] = {
 
     // ep2
     "nothing for now, just gotta wait for funfriend <span definition=\"NOTE::'advance log'\">to finish more of the memory</span>":
-    "",
+    "пока ничего, просто ждём пока развледруг не доделает <span definition=\"ПРИМЕЧАНИЕ::'продвинуть лог'::ПРЕДУПРЕЖДЕНИЕ::'конец локализованного контента';'язык последующего лога';'английский'\">воспоминание</span>",
 
     "just keep working your way through the collapse memory, we've got more to see":
-    "",
+    "просто продолжай работать с вспоминанием обвала, там ещё есть на что посмотреть",
 
     "looks like we're all set with the framing device, go check out the collapse memory again":
-    "",
+    "походу с обрамляющим устройством всё решено, пошли посмотрим как там обвал",
 
     "gotta talk to funfriend about installing my framing device":
-    "",
+    "надо бы поговорить с развледругом об установке моего обрамляющего устройства",
 
     "let's go check out the embassy, funfriend said it fixed some stuff in there up":
-    "",
+    "давай-ка в посольство, развледруг сказал мол починил там штук",
 
     "we gotta see what's new! talk to funfriend, it'll probably tell you what's up":
-    "",
+    "надо узнать чего нового! поболтай с развледругом, он наверняка тебе всё расскажет",
 
     // ep3
     "we're on the wait again. can't do anything till funfriend fixes <span definition=\"NOTE::'advance log'\">more of the memory</span>":
@@ -1182,15 +1182,15 @@ env.localization['strings'] = {
 }
 env.localization['entityDescriptions'] = { // --- not referring to entity-menu.js because everystuff.js is loaded first and therefore would not be able to grab stuff outta there cause it doesnt Exist ! yet
     "gate::their city": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+::ПУНКТ НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внутреннее'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их мёртвые шпили, символы контроля'</span>`,
 
     "gate::their waters": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+::ПУНКТ НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внутреннее'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'их огромная внутренняя пустота';'наш неестественный берег';'конец'</span>`,
 
     "gate::the void": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
-::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'
+::ПУНКТ НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внутреннее'
 ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'обитель <span definition="ПРИМЕЧАНИЕ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'подразумевает изменённое состоянье проживания'">мертвецов</span>'</span>`,
 
     "gate::the embassy": `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
@@ -1211,7 +1211,7 @@ env.localization['entityDescriptions'] = { // --- not referring to entity-menu.j
     "proxyfriend": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспомогательное приложение';'подключён к центральному ассистенту'`,
 
-    // --- these things........... could be ANYWHERE
+    // --- these things........... could be ANYWHERE... watch out! some of em are in entity-menu.js
 
     "effigy": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
@@ -1225,25 +1225,25 @@ env.localization['entityDescriptions'] = { // --- not referring to entity-menu.j
     "×è.÷ùÏÏøø": `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА
 ::НЕРАЗБЕРИМАЯ ПОДПИСЬ`,
 
-    'rotwatcher': `::RESPONSIVE THOUGHTFORM
-::EXPLICIT PURPOSE:'observation'
-<span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
-::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
-<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
+    'rotwatcher': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+::ЯВНОЕ НАЗНАЧЕНИЕ::'наблюденье'
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности';'деформированная сущность';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)'>'простое крœс т)Ъ®‡;-__ОШИБКА::'необрабатываемо'__;'каталогизатор'</span>
+<span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'широко используется в качестве защиты недавно очнувшимися мыслеформами';'иногда непреднамеренно';'просто, но эффективно'">'скрыта посредством преломляющей мембраны'</span>`,
 
     "s w   al kk": `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
 ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
 <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградированный визуальный профиль';'предельно низкая связность'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>`,
 
-    '˜CâR…': `::CONNECTOR THOUGHTFORM
-::DESTINATION::ERROR::'unprocessable entity'::RENDERABLE
-<span style="color: var(--obesk-color)" definition="ANALYSIS::'total cohesion failure';'damaged contexts'">::HIGH INCOHERENCE DETECTED</span>
-::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to e—Ýÿach cousin th@ëir own bright <span class="code" definition="INHERITED CONTEXT::'corrucystic surface vehicle';'bulbous and armored';'partial translation';'implied closest cultural equivalent'">walker</span>'</span>
-<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`,
+    '˜CâR…': `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА
+::ТОЧКА НАЗНАЧЕНИЯ::ОШИБКА::'необрабатываемая сущность'::ВИЗУАЛИЗИРУЕМА
+<span style="color: var(--obesk-color)" definition="АНАЛИЗ::'полное нарушение связности';'повреждённые контексты'">::ОБНАРУЖЕНА ВЫСОКАЯ БЕССВЯЗНОСТЬ</span>
+::УНАСЛЕДОВАННЫЙ КОНТЕКСТ:<span style='color: var(--obesk-color)'>'каж—Д̈дому близӉецу с@бс́тẞенный светлы%й <span class="code" definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'корруцистозное средство передвиженья по поверхности';'округлый и бронированный';'частичный перевод';'подразумевается ближайший культурный эквивалент'">ходок</span>'</span>
+<span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'словно лёгкая дымка в мыслепространстве';'скользкая и трудно воспринимаемая, пока не войдёшь в неё';'может скрывать близлежащие сущности';'как правило, случайна';'но я видела намеренное использование в некоторых местах'">'скрыта посредством градиентного затуманивания'</span>`,
 
-    'referential scar': `::CORRUCYSTIC COMPONENT
-::<span definition="NOTE::'subjective nomenclature applied';'subjective visual profile applied'">NON-ENTITY</span>
-<span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color">'a minute passage left by those leaping across memories';'entwined with countless others in the space between';'not camouflaged, merely difficult to spot';\n\n'i imagine you specifically cannot utilize one without another, similar end point in mind'</span>`
+    'referential scar': `::КОРРУЦИСТОЗНЫЙ КОМПОНЕНТ
+::<span definition="ПРИМЕЧАНИЕ::'применена субъективная номенклатура';'применён субъективный визуальный профиль'">НЕ СУЩНОСТЬ</span>
+<span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color">'мимолётный проход, оставшийся от прыгающих сквозь воспоминания';'переплетается с бессчётным количеством других в межпространстве';'не замаскирован, просто трудно заметить';\n\n'представляю, что конкретно ты не сможешь воспользоваться одним из них без аналогичного конечного пункта на уме'</span>`
 }
 
 // === DIALOGUES === //

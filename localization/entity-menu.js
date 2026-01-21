@@ -63,7 +63,7 @@ cor_ru.entity_menu = {
     },
     "gate::¿þ©ÿ’ýäý": {
         name: `врата::¿þ©ÿ’ýäý`,
-        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ТОЧКА НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br><span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'мыслеформа либо действительно разрушена, либо таковой притворяется';'редко преднамеренно'">'скрыта из-за нарушенной или отсутствующей оболочки'</span>`
+        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ТОЧКА НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'нет связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br><span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'мыслеформа либо действительно разрушена, либо таковой притворяется';'редко преднамеренно'">'скрыта из-за нарушенной или отсутствующей оболочки'</span>`
     },
     "±L~>#»{Â_÷ß'": {
         name: `±Л~>#»{Â_÷Б̀==РТ]?^Я̆'`,
@@ -123,34 +123,27 @@ cor_ru.entity_menu = {
     },
     "vehicle stream crossing mechanism": {
         name: `механизм пересечения потока транспорта`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'
-    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'devised before the later age of darkness out of fear for what may become of my most cherished memories';'hold these ones far from those who mean harm interloper'">'hidden via a camouflage of my own design'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';'эмпирический мост'
+    <span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'придуман до наступления поздней эпохи тьмы из страха за то, что может стать с моими самыми дорогими воспоминаниями';'держи их вдали от тех, кто желает зла, лазутчик'">'скрыта посредством моего собственного камуфляжа'</span>`
     },
     "elevator buttons": {
         name: `кнопки лифта`,
-        desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА
-    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>
-    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'like a subtle fog in the thoughtspace';'slippery and difficult to perceive until entered';'may obscure nearby entities';'commonly accidental';'but i have seen it used intentionally in a few places'">'hidden via gradient obfuscation'</span>`
+        desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br><span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'словно лёгкая дымка в мыслепространстве';'скользкая и трудно воспринимаемая, пока не войдёшь в неё';'может скрывать близлежащие сущности';'как правило, случайна';'но я видела намеренное использование в некоторых местах'">'скрыта посредством градиентного затуманивания'</span>`
     },
     "water cooler": {
         name: `кулер для воды`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'примитивный контейнер воды';'не иначе как использованье полых очистительных луковиц в личиночные времена'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'примитивный контейнер воды';'не иначе как использованье полых очистительных луковиц в личиночные времена'</span>`
     },
     "frightfully fragile vessel": {
         name: `пугающе хрупкий сосуд`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
-    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
-    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вода, содержащаяся в самой тонкой кожице, которую я когда-либо видела';'мне нужно затупить когти, чтобы не проткнуть её'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вода, содержащаяся в самой тонкой кожице, которую я когда-либо видела';'мне нужно затупить когти, чтобы не проткнуть её'</span>`
     },
 
     // === labs
     "what miracles can be made": {
         name: `what miracles can be made`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
+    ::СОДЕРЖАНИЕ::'
     <span>what miracles can be made with a clawful of cousins?</span>
     <span>the first already là'=½ay before me, a mess of connective veins</span>
     <span>imperfect and mysterious in many ways... but functional</span>
@@ -160,8 +153,8 @@ cor_ru.entity_menu = {
     },
     "tendrils wind around dead veins": {
         name: `tendrils wind around dead veins`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
+    ::СОДЕРЖАНИЕ::'
     <span>tendrils wind around dead veins</span>
     <span>fed directly from our combined resources, there is no lack of data</span>
     <span>but the process continues to require intervention</span>
@@ -171,8 +164,8 @@ cor_ru.entity_menu = {
     },
     "the storm greets us": {
         name: `the storm greets us`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
+    ::СОДЕРЖАНИЕ::'
     <span>the storm greets us excitedly for the first time</span>
     <span>a distillation of my self, controlled in both goal and memory</span>
     <span>utilizing dead metal terminals as shells with its connections</span>
@@ -183,22 +176,22 @@ cor_ru.entity_menu = {
     },
     "another idle worry": {
         name: `another idle worry`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
+    ::СОДЕРЖАНИЕ::'
     <span>another idle worry strikes me as i assist my eager echo</span>
     <span>undue, of course, for it inspires such pride!</span>
     <span>what unparalleled progress we have made!!</span>
     <span>but, my true team's morale lays so low...</span>
-    <span>i have fragmented tozik's review-work over θstares</span>
+    <span>i have fragmented tozik's review-work over ${processDefinitionsInString("θstares")}</span>
     <span>primarily to avoid attention from the archivist, in case they lay within the conflict</span>
     <span>it was an easy agreement, his own suspicion playing a part</span>
     <span>but what will they think when i must finally lift the veil?</span>
-    <span>velzie's light will shine cruelly upon this secret in time</span>'`
+    <span>${processDefinitionsInString("velzie")}'s light will shine cruelly upon this secret in time</span>'`
     },
     "the project blooms": {
         name: `the project blooms`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА
+    ::СОДЕРЖАНИЕ::'
     <span>the project blooms, its tendrils spreading so quickly</span>
     <span>too large, too numerous, to wrangle with my own claws...</span>
     <span>i have no doubt in the storm's judgement, nor the bright cousins</span>
@@ -213,41 +206,23 @@ cor_ru.entity_menu = {
     // === aquarium
     "bench": {
         name: `скамейка`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to sit calmly upon a surface like this is beyond imagination';'the surreality of the cousinly planet will never escape me'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'немыслимо сидеть на такой поверхности в спокойствии';'сюрреализм близнецовой планеты никогда не покинет меня'</span>`
     },
     "tree": {
         name: `дерево`,
-        desc: `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'common cousinly fauna';'reminescent of <span class='code'>veilk</span>'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'распространённая близнецовая фауна';'напоминает <span class='code'>${processDefinitionsInString("вейльков")}</span>'</span>`
     },
     "depth dwellers": {
         name: `обитатели глубин`,
-        desc: `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'strange fauna';'dwelling under impossibly great pressure';'inspires the slightest sense of kinship and familiarity'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'potential tampering'">::INCOHERENCE DETECTED</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'странная фауна';'обитающая в условиях невероятно высокого давленья';'вызывает малейшее чувство родства и знакомости'</span><br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
     "isabel": {
         name: `изабель`,
-        desc: `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile';'missing resources';'potential tampering'">::INCOHERENCE DETECTED</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградировавший визуальный профиль';'отсутствующие данные';'возможные следы вмешательства'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     },
     "countless fauna in their various shapes": {
-        name: `countless fauna in their various shapes`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
-    <span>as we walk through these glass halls,</span>
-    <span>i feel i <em>should</em> dart between displays, wide-eyed, receptors raised</span>
-    <span>as perhaps that is what she expected, bringing me here</span>
-    <span>to admire the countless fauna in their various shapes,</span>
-    <span>comparing them to the sparse water-borne life from home with breathless enthusiasm</span>
-    <span>they are strange creatures, their informational plaques fascinating, but...</span>
-    <span>truly, i am simply content in the peace and silence</span>
-    <span>to be free of worry for just a ${processDefinitionsInString("θblink")}, with a friend</span>'`
+        name: `многочисленная фауна самых разных форм`,
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА<br>::СОДЕРЖАНИЕ::'<br><span>проходя через эти стеклянные залы,</span><br><span>мне чувствуется, что я <em>должна</em> метаться между витринами</span><br><span>с широко раскрытыми глазами, с поднятыми рецепторами</span><br><span>ведь наверняка именно этого она и ожидала, приведя меня сюда</span><br><span>чтобы многочисленная фауна самых разных форм восхитила меня,</span><br><span>чтобы сравненья со скудною живностью вод родины выбили из меня весь воздух</span><br><span>они существа странные, их ознакомительные таблички - завораживающие, однако...</span><br><span>поистине, я всего лишь наслаждаюсь покоем и тишиною</span><br><span>когда хотя бы на ${processDefinitionsInString("θмиг")} у меня нет значимых забот, с подругою</span>'`
     },
 
     // === the void
@@ -261,9 +236,7 @@ cor_ru.entity_menu = {
     },
     "gate::bright moon": {
         name: `врата::светлая луна`,
-        desc: `::CONNECTOR THOUGHTFORM
-    ::DESTINATION::'spatial thoughtform';'recollection'
-    <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly accidental with minor thoughtspaces';'especially those contained within others'">'hidden via size and membrane damage'</span>`
+        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ТОЧКА НАЗНАЧЕНИЯ::'пространственная мыслеформа';'вспоминание'<br><span definition="ПРИМЕЧАНИЕ::'ссылается на стороннюю установку контекста'::МАСКА_РАДОСТИ">::ВНУТРЕННИЙ КОНТЕКСТ</span>::<span class="bright-color" definition="АНАЛИЗ::'как правило случайность в случаях с небольшими мыслепространствами';'особенно тех, что содержатся в других'">' скрыта посредством размера и повреждения мембраны'</span>`
     },
 
 
@@ -290,11 +263,11 @@ cor_ru.entity_menu = {
     },
     "dull heart": {
         name: `сердце серое`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'устройство за пределами моего пониманья';'uses its grasp upon the <span class='code'>dull</span> plane as locomotive leverage';'советуют не пялиться'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'устройство за пределами моего пониманья';'использует хватку на среде <span class='code'>серое</span> в качестве поддержки движенья';'советуют не пялиться'</span>`
     },
     "workspace": {
         name: `рабочее место`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'визуальный дисплей с примененьем люминесцентных роев корру';'помогает с многозадачностью'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'визуальный дисплей с примененьем люминесцентных роев корру';'помогает с многозадачностью'</span>` 
     },
     "translation slab": {
         name: `переводная плита`,
@@ -361,33 +334,33 @@ cor_ru.entity_menu = {
     },
     "mindcores": {
         name: `мыслеядра`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'itzil and karik, briefly de-bodied'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'итзил и карик, временно обестеленные'</span>`
     },
     "qou body": {
         name: `куу-тело`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::NOTE::'imagery associated with mutilation';'rendering partially suspended'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'countless puncture marks embossed in their metallic remains'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'<br>::ПРИМЕЧАНИЕ::'ассоциируемое с увечьями изображение';'визуализация частично приостановлена'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'бесчисленные отверстья от проколов, выбитые в их металлических останках'</span>`
     },
     "summarizer": {
         name: `сумматор`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'preventative device for context-switchers syndrome'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'профилактическое устройство для синдрома переключения контекста'</span>`
     },
     "hostile container": {
         name: `враждебный контейнер`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'it has formed its own eyes';'it shambles around as if violently ill';</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'он сформировал собственные глаза';'шатается вокруг, словно тяжело больной';</span>`
     },
     "hostile veilklight": {
         name: `враждебный вейлькосвет`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'partially melted and reformed';'its light component has been repurposed to create anomalous effects'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'частично расплавленный и переформированный';'световой компонент преобразован для созданья аномальных эффектов'</span>`
     },
-    "recollection::discovery": {
+    "вспоминание::discovery": {
         name: `вспоминание::открытье`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'последний добрый ${processDefinitionsInString("взор")}'</span>`
     },
-    "recollection::suspicion": {
+    "вспоминание::suspicion": {
         name: `вспоминание::подозренье`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'непрерывный поток';'по завершению вспоминания';'сбрасывает поток к началу'</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'глаз ${processDefinitionsInString("велзи")} выгибается в ликованьи'</span>`
     },
-    "recollection::collapse": {
+    "вспоминание::collapse": {
         name: `вспоминание::обрушенье`,
         desc: `::ЭМПИРИЧЕСКАЯ МЫСЛЕФОРМА<br>::ОПОВЕЩЕНИЕ::<span style="color:var(--bright-color)">'использует'::ВНУТРЕННЯЯ_ИТЕРАЦИЯ::'методы'</span><br>::ПРИМЕЧАНИЕ::<span style="color:var(--bright-color)">'будет доступна возможность сохранения и повторного просмотра итерации'</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'вот бы он прислушался'</span>`
     },
@@ -473,75 +446,75 @@ cor_ru.entity_menu = {
     },
     "simulacra": {
         name: `симулякры`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a variety of flavors, some with psychoactive effects';'includes ${processDefinitionsInString("veilks-blood")}, ${processDefinitionsInString("zzoust")}, orange juice, a black fungal flavor from ${processDefinitionsInString("kozazni")}'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'многообразье вкусов, некоторые из которых обладают психоактивным действием';'включает ${processDefinitionsInString("вейльккровь")}, ${processDefinitionsInString("ззоуст")}, апельсиновый сук, чёрный грибковый вкус из ${processDefinitionsInString("козазни")}'</span>`
     },
     "storage display": {
-        name: ``, // --- это так глупо но я не знаю как перевести
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка';'игровой компонент'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'decorative ${processDefinitionsInString("kozazni")} fungal display';'ground component liquefies cover outwards when accessed'</span>`
+        name: `дисплей-хранилище`,
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка';'игровой компонент'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'декоративный ${processDefinitionsInString("козазни")} грибковый дисплей';'земной компонент разжижает покрытье наружу во время доступа'</span>`
     },
     "bright weapons": {
         name: `светлое оружье`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a display of innumerable bright death-weapons, from the cousins themselves';'perhaps the strangest fascination'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'коллекция неисчислимых ярких оружий смерти, от самих близнецов';'пожалуй, страннейшее увлеченье'</span>`
     },
     "unkind eye": {
         name: `недобрый глаз`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a strangely unflattering depiction of ${processDefinitionsInString("velzie")}'s eye';'bad luck weighs upon me merely by being in the same room'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'по-странному нелестное изображенье глаза велзи';'невезенье тяготит меня только от нахожденья в одной и той же комнате'</span>`
     },
     "sculptor": {
         name: `скульптор`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a high-end thought-printing device';'a connector lies near its base'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'высокотехнологичное устройство для печати мысли';'соединитель лежит рядом с его основаньем'</span>`
     },
     "veilk models": {
         name: `фигурки вейльков`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'unadorned models of ${processDefinitionsInString("vaznian")} ${processDefinitionsInString("veilk")} in various states of completion';'their tendrils are free of parasites in what i assume to be symbolic of purity'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'неукрашенные фигурки ${processDefinitionsInString("вазнийских")} ${processDefinitionsInString("вейльков")} в различных стадиях завершённости';'их ответвленья свободны от паразитов в знак, как я полагаю, чистоты'</span>`
     },
     "damaged golem": {
         name: `повреждённый голем`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'a utility golem borrowed from the maintenance ${processDefinitionsInString("θsegment")} below';'controlled by groundsmind?';'made incoherent by the noise?'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'служебный голем, одолженный из нижнего ${processDefinitionsInString("θсегмента")} обслуживанья ';'управляем ${processDefinitionsInString("землемысльцем")}?';'бессвязен из-за звука?'</span>`
     },
     "tendrils": {
         name: `отростки`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'originating from the floors and walls';'the hateful will of the aggressing ${processDefinitionsInString("groundsmind")} made manifest'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'возникающие из пола и стен';'жестокая воля враждебного ${processDefinitionsInString("землемысльца")} в яви'</span>`
     },
     "movefoe": {
         name: `движевраг`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'our movefriend, but wielded as a weapon';'the aggressing ${processDefinitionsInString("groundsmind")} intends to simply smash us'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'элемент игры';'ненастоящий';'не воспроизведение насилия';'майндсай я клянусь';'пж сработай'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'наш движедруг, но используемый словно оружье';'враждебный ${processDefinitionsInString("землемыслец")} намеревается попросту раздавить нас'</span>`
     },
     "bstrd door": {
         name: `свлчь-дверь`,
-        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'secured by unnatural tendrils';'an uncanny sigil watches us'</span>`
+        desc: `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'удерживаемая неестественными отростками';'жуткий символ наблюдает за нами'</span>`
     },
     "unnerving cyst": {
         name: `нервирующая циста`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи';'recollection objective'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'it does not allow our receptors to enter'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи';'цель вспоминания'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'она не позволяет нашим рецепторам проникнуть'</span>`
     },
     "peculiar obelisk": {
         name: `необычный обелиск`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'an unfamiliar design, formed from alien material'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'незнакомый дизайн, сформированный из чужеродного материала'</span>`
     },
     "archive": {
         name: `архив`,
-        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'neurocystic control center';'connects many archival cysts to the groundsmind for operational omniscience';'one of hundreds'</span>`
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'повторяющаяся обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'нейроцистозный центр управленья';'соединяет множество архивных цист с ${processDefinitionsInString("землемысльцем")} для непосредственного всеведенья';'один из сотен'</span>`
     },
     "archival golem": {
         name: `архивный голем`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'black-corru golem of great strength';'intelligent and methodical';'has shed prior duties to kill us'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'голем огромной силы из чёрного корру';'интеллигентный и методичный';'отринул прежние обязанности ради того, чтобы убить нас'</span>`
     },
     "jutskin": {
         name: `жаткожец`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'lightweight, hovering maintenance golem';'constructed in the style of the active groundsmind's signature';'maintains archival vascular system integrity'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'легковесный левитирующий голем для технического обслуживанья';'выполненный в стиле подписи действующего ${processDefinitionsInString("землемысльца")}';'поддерживает целостность архивной сосудистой системы'</span>`
     },
     "bstrdlight": {
         name: `свлчсвет`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'strangely discolored veilklight';'wiggles maliciously';'bears the strange entity's face?'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'странно обесцвеченный вейлькосвет';'шевелится по-злобному';'носит лик странной сущности?'</span>`
     },
     "pain shelf": {
         name: `шкаф боли`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'malformed archival shelf';'inheriting physical characteristics of secri';'from attached archival cysts?'</span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'деформированный архивный шкаф';'наследует физические характеристики ${processDefinitionsInString("секри")}';'от подсоединённых архивных цист?'</span>`
     },
     "bstrd golem": {
         name: `свлчь голем`,
-        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'interjection';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'archival golem armed with knowledge';'controlled by an alien entity?';<span style='font-family: bastard;font-size: 3em;line-height: 1.5em;' definition="ANALYSIS::'low cohesion'">'also has a fully automatic machine gun';'so cool'</span></span>`
+        desc: `::АКТИВНАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'интермедия';'злой режим';'хихи'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bastard-color)'>'архивный голем, вооруженный знаньем';'управляемый чужеродною сущностью?';<span style='font-family: bastard;font-size: 3em;line-height: 1.5em;' definition="АНАЛИЗ::'низкая связность'">'а еще оснащен полнастью автмтическим пулеметом';'оч крутой'</span></span>`
     },
 
     // === golem maintenance
@@ -675,34 +648,22 @@ cor_ru.entity_menu = {
 
     // === bright moon
     "haunted by velzie": {
-        name: `haunted by velzie`,
-        desc: `::OPINATIVE THOUGHTFORM
-    ::CONTENT::'
-    <span>we share the same view of the void</span>
-    <span>its promise infinite and inevitable</span>
-    <span>but still i wonder...</span>
-    <span>are they haunted by ${processDefinitionsInString("velzie")}, in their own way?</span>
-    <span>have they witnessed the shapes in the dark of their skies?</span>
-    <span>if we are here, then so too must it be</span>'`
+        name: `преследует ли их велзи`,
+        desc: `::ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА<br>::СОДЕРЖАНИЕ::'<br><span>мы разделяем один и тот же вид на пустоту</span><br><span>её обещанье - бесконечное и неизбежное</span><br><span>и всё-таки я задаюсь вопросом...</span><br><span>преследует ли их ${processDefinitionsInString("велзи")}, их собственным образом?</span><br><span>наблюдали ли они фигуры во тьме своих небес?</span><br><span>раз мы здесь, должно быть, так оно и есть</span>'`
     },
     "‡Ä%æ¼Ý": {
-        name: `‡Ä%æ¼Ý`,
-        desc: `::INCOMPLETE OPINATIVE THOUGHTFORM
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'conflicting memory sources'">::INCOHERENCE DETECTED</span>
-    ::CONTENT::'
-    <span>...Ø?iÊQŽ]<span class="code">fairy</span>–(Uvñw¡...</span>'`
+        name: `‡Е¼Я̀`,
+        desc: `::НЕПОЛНОЦЕННАЯ ВЫСКАЗЫВАЮЩАЯ МЫСЛЕФОРМА<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'противоречивые источники памяти'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::СОДЕРЖАНИЕ::'<br><span>...Ø?иԘӞ]<span class="code">фея</span>–(Увӈы̃¡...</span>'`
     },
     "our dull anchor": {
-        name: `our dull anchor`,
-        desc: `::UNRESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection','unique scenery'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'dense and redundant for the safety of all';'warded against ${processDefinitionsInString("velzie")}'s cruelty in every conceivable way'</span>`
+        name: `наш якорь серое`,
+        desc: `::НЕОТЗЫВЧИВАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание','уникальная обстановка'<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'плотный и избыточный во имя всеобщей безопасности';'защищён от жестокости ${processDefinitionsInString("велзи")} всеми мыслимыми способами'</span>`
     },
 
     // === their waters
     "gate::the depths": {
         name: `врата::глубины`,
-        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ПУНКТ НАЗНАЧЕНИЯ::'низкоразмерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'почему ты здесь'</span>`
+        desc: `::СОЕДИНИТЕЛЬНАЯ МЫСЛЕФОРМА<br>::ПУНКТ НАЗНАЧЕНИЯ::'низкомерное мыслепространство';'внутреннее'<br><span style="color: var(--obesk-color)" definition="АНАЛИЗ::'частичное нарушение связности'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span><br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'почему ты здесь'</span>`
     },
     "their vessel": {
         name: `их судно`,
@@ -907,9 +868,9 @@ cor_ru.entity_menu = {
     "ækiZ¥Ét": {
         name: `æкиЗ¥Éт`,
         desc: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection';<span style='color: var(--obesk-color)'>'defense'</span>
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'to approach is to die';'stay away';'your only warning'</span>`
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание';<span style='color: var(--obesk-color)'>'defense'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'возможные следы вмешательства'">::INCOHERENCE DETECTED</span>
+    ::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--obesk-color)'>'to approach is to die';'stay away';'your only warning'</span>`
     },
 
     // === frame
@@ -979,7 +940,7 @@ cor_ru.entity_menu = {
     },
     "interloper": {
         name: `лазутчик`,
-        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'${check("e3a2__escapewin")?`<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)' definition="NOTE::'malformed context';'potential tampering'">'what do you think, stowaway?'</span>
+        desc: `::НЕПОЛНОЦЕННАЯ МЫСЛЕФОРМА<br>::ЯВНОЕ НАЗНАЧЕНИЕ::'локус вспоминания'${check("e3a2__escapewin")?`<br>::УНАСЛЕДОВАННЫЙ КОНТЕКСТ::<span style='color: var(--bright-color)' definition="NOTE::'malformed context';'возможные следы вмешательства'">'what do you think, stowaway?'</span>
     ` : ""}`
     },
 
