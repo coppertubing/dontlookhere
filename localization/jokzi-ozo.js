@@ -2114,34 +2114,34 @@ room
         what do you know about it?
 
     isabel
-        ah, you must mean the room with the 'scar'
-        that one... i forgot it was there
-        but, it appears to you as a flower?
-        my mask must have inherited some of my tastes, hehe
-        regardless, that region is carefully hidden--expertly, even
-        not by me, but by someone who must have had similar knowledge...
-        it's been a mystery ever since we noticed it
-        but any memory of who used it, where it went, what it's for...
-        it's all gone, cut away from us all
-        the only thing that remains is the path they carved out of the thoughtspace
-        left unmended, if only because it is a simple scar in a place none can see
+        ах, должно быть ты о комнате со "шрамом"
+        он... я и забыла, что он тут
+        но, для тебя он выглядит как цветок?
+        видимо моя маска переняла некоторые мои предпочтения, хехе
+        впрочем, эта область старательно скрыта--мастерски, я бы сказала
+        не мною, но кем-то, у кого вероятно были схожие знания...
+        это загадка ещё с тех пор как мы впервые обнаружили её // "" я запутался где тут она говорит о комнате, о шраме и об области
+        но воспоминания о том, кто пользовался ей, куда он ушёл, для чего она...
+        пропали, отрезаны от нас
+        всё, что осталось - путь, проложенный им наружу мыслепространства 
+        оставленный незалеченным, потому что является не больше чем просто шрамом на месте, которое никто не увидит
         
     self
         do you think it's someone i can find?
 
     isabel
-        maybe, not likely
-        it's an old, clean wound
-        i can tell it was made sometime <em>before</em> the age of darkness forced us to sleep
-        ...though, i've got no idea why anyone would have left at such a horrible time
-        aside from the tyrant, of course--but i doubt it was theirs
-        perhaps someone swayed by their plan?
-        whoever they may be, if they're still out there, 
-        of the few ways they could have attempted to survive the darkness on their own...
-        very few would end up with them still being sane, if alive at all
-        maybe we can help you investigate, one day
-        but the cyst is a very large world,
-        and it's not smart for any of us to go exploring right now
+        может, но навряд ли
+        это старая, чистая рана
+        и она была сделана <em>прежде</em> чем эпоха тьмы погрузила нас в сон
+        ...с другой стороны, я и представить не могу, зачем кому-то понадобится уходить в такие ужасные времена
+        разве что тирану, конечно же--но я сомневаюсь, что это его
+        может быть, кто-то ведомый его планом?
+        кто бы то ни был, если он всё ещё где-то там,
+        из тех нескольких вариантов где оно могло бы выжить во тьме будучи само по себе...
+        лишь в немногие оно окончит ещё в сознании, если вообще живым
+        возможно однажды мы поможем тебе с расследованием
+        но циста - это огромный мир,
+        и ни для кого из нас не будет разумным решеним отправляться на её исследование прямо сейчас
 
     RESPONSES::self
         ok<+>oloop
@@ -2225,27 +2225,27 @@ start
         it looks ready! it does!
     
     isabel
-        and only by your help, my dear vel
+        и всё только благодаря тебе, моя дорогая вел // "" АААААААААААААААААА
     
     effigy
         interloper interloper!
         hii!!
 
     isabel
-        interloper? 
-        oh, hello, welcome!
+        лазутчик? 
+        ох, привет, добро пожаловать!
 
     sourceless
         an excitement carries through its thoughts.
 
     isabel
-        it is about as good as we can make it, so...
-        i will not labor in secret any longer
-        we've been working on a mask for you!
-        you've done so much for all of us
-        especially me, finding so many of my dear akizets
-        and i know you're starved for knowledge, like a newly awoken thought
-        but unlike the awoken, i can trust you with this gift
+        это почти лучшее что мы можем сделать, так что...
+        мой труд больше не будет втайне 
+        мы работали над маской для тебя!
+        ты делаешь столько всего для нас
+        осообенно для меня, найдя всех этих дрогих мне акизет
+        и я знаю, как жадно ты хватаешься за любые знания, словно только пробудившаяся мысль
+        но, в отличие от неё, я могу вверить тебе этот подарок
 
     self
         what does it do?
@@ -2258,28 +2258,28 @@ start
         a kind warmth suffuses the thoughtspace.
 
     isabel
-        that's not quite correct, aki
-        why don't you let me handle this part?
+        не совсем, аки
+        почему бы не доверить эту часть мне?
 
     effigy
         okæy
     
     isabel
-        interloper, you understand that jokzi ozo is hidden from the tyrant, yes?
-        entirely impossible for them to directly perceive
+        лазутчик, ты же знаешь, что джокзи озо спрятано от тирана?
+        для него совершенно невозможно почувствовать его напрямую
 
     self
         mostly
         but you and the others were torn from it
 
     isabel
-        correct... an unfortunate consequence of the darkness receding
-        it's only incidental that we were torn from it, though
-        i assume they must have been clawing through the cache, blindly, for parts...
-        only recognizing what they pulled away afterwards
-        we've taken measures to prevent that from happening again
-        but, that's a problem for another day
-        let's return to your gift, hm?
+        верно... к сожалению, это следствие отступившей тьмы
+        хотя это и было случайностью, что нас вырвали из него
+        полагаю, в поисках частей он продирался сквозь кэш вслепую... // "" нам надо записать в словарик как у нас кешкэш пишется
+        и понимал, что он вырвал, только впоследствии
+        мы приняли меры, чтобы подобное не повторилось
+        но, это проблема для другого дня
+        давай-ка вернёмся к твоему подарку, хм?
 
     sourceless
         the thoughtform directs your attention to a nearby effigy.
@@ -2296,43 +2296,43 @@ start
         wooaao ahahaha
 
     isabel
-        i suspect this should work still--she's missing, right?
+        подозреваю, оно всё ещё должно работать--она пропала, верно?
 
     self
         yes
     
     isabel
-        wonderful!!
+        чудесно!!
             EXEC::setCam()
-        how to explain this, to someone not 'here'...
-        ah! you can imagine thoughts as having a texture
-        a sort of pattern both to their exterior, and to the things they hold
-        it's possible for this pattern to act like camouflage
-        for a thoughtform as a whole, or for fragments of its knowledge
-        intentionally, through self modification,
-        or incidentally, through damage or malformation
-        they can even be tailored to hide from <em>particular</em> entities,
-        if you know what it is you want to hide from well enough
-        throughout all the lucid ages, you could say i acquired an eye for them 
-        there was much that hid in plain sight even back then
-        i even altered some thoughts myself, here and there...
-        a measure to hide precious things from the ravenous, then from the tyrant
-        moments of warmth, fleeting moments of joy in akizet's terrible journey
-        if they were lost, i... 
+        как бы объяснить это кому-то, кто не "здесь"...
+        а! ты можешь представить, что у мыслей есть текстура
+        некий паттерн и для оболочки, и для вещей, они содержат
+        и этот паттерн может работать как камуфляж
+        как для мыслеформы целиком, так и для фрагментов её знаний
+        намеренно, при помощи самомодификации
+        или нечаянно, впоследствии повреждений или искажения
+        они даже могут быть подобраны так, чтобы прятать от <em>конкретных</em> сущностей,
+        если ты достаточно хорошо знаешь то, от чего хочешь спрятаться
+        на протяжении всей осознанной эпохи, я, можно сказать, присматривалась к ним // "" ?
+        даже тогда было много чего спрятанного на самом виду
+        я даже изменила парочку сама тут и там...
+        это была мера, чтобы спрятать ценные вещи от изголодавших зверей, а затем от тирана
+        моменты тепла, мимолётные моменты радости на мрачном пути акизет
+        если бы они пропали, я...
     
     sourceless
-        the thoughtform is silent, grief creeping through your connection.
+        the thoughtform is silent, grief creeping through your connection. // "" Изабель как всегда, это даже смешно. Ведёте самый нормальный разговор, она мимолётом упоминает Акизет ии НАЧИНАЕТСЯ
         the feeling disappears as its attention pulls away from you.
         to something else that you can't see, turned over beneath the thoughtspace.
 
     isabel
-        these and more should still be out there, somewhere
-        frozen beneath the layers of dust and blood from our darkest ages
-        and i suspect that this mask, if i've done this right... 
-        should grant you my sight, allowing you to see what i can
-        with some space left for future improvement, too!
-        of course, i've got no idea how this'll work with your method of connection...
-        but, here
+        они и другие всё ещё должны быть где-то снаружи
+        замершие под слоями пыли и крови, оставленных в наши мрачнейшие эпохи
+        и, как я подозреваю, эта маска, если я сделала всё правильно...
+        дарует тебе мой взор, позволяя видеть то, что вижу я
+        не без места для будущих улучшений!
+        конечно же, я понятия не имею, как она будет работать с твоим методом подключения...
+        но, вот
 
     sys
         ATTENTION::'thought stream inbound';'accept?'
@@ -2355,11 +2355,11 @@ start
         NOTICE::'mask added';'joy'
 
     isabel
-        try it on, interloper
-        see if you can find that effigy!
-        i think she ran off somewhere while i explained... 
-        she's very good at that, hehehe
-        but, she's still on this layer of the ozo, somewhere
+        испробуй её, лазутчик
+        посмотрим, удастся ли тебе найти эту эффигию!
+        кажется она убежала куда-то, пока я объясняла...
+        она в этом хороша, хехехе
+        но она всё ещё на этом слое озо, где-то
 
     RESPONSES::self
         ok<+>END
