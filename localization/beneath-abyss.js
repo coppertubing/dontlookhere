@@ -6,7 +6,7 @@
     localization for /local/beneath
     (---утопшая <3)
 
-    progress: drowning stuff partially finished, mothstuff unfinished as of 04.10.2025
+    progress: WATCH OUT FOR THE MOTH PROBE LINE LATER ON!!!!! needs drowning dialogue! otherwise done as of 22.01.2026
 */
 
 
@@ -91,57 +91,57 @@ env.localization.page['abyss'] = {dialogues: {},
 env.localization.page['abyss'].dialogues.mthresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        ocean floor?<+>ocean
-        camera guy?<+>camera
+        дно океана?<+>ocean
+        камерачелик?<+>camera
             SHOWIF::"beneath_abysspic"
-        nevermind<+>CHANGE::++moth
-            FAKEEND::(back)
+        неважно<+>CHANGE::++moth
+            FAKEEND::(назад)
 `)
 env.localization.page['abyss'].dialogues[`mth++abyss`] = generateDialogueObject(`
 start
     self
-        I have a question about this place
+        у меня вопрос об этом месте
 
     moth
-        yeah?
+        ага?
     
     RESPOBJ::mthresp
 
 ocean
     self
-        this looks pretty coherently like it's underwater
-        maybe the ocean floor or something
+        выглядит достаточно связно будто это под водой
+        может дно океана
     
     moth
-        yeah, it actually looks like this is almost kind of coherent
-        it's like it has a bunch of holes in it where other stuff is flowing through
-        i don't doubt akizet actually walked around in the ocean a bunch
+        ага, и впрямь похоже что это место почти связно
+        у него как будто куча дыр с которых капает всякая другая фигня
+        я не сомневаюсь что акизет и правда много ходила по океану
     
     RESPOBJ::mthresp
 
 camera
     self
-        there's this thing that looks like a guy with a camera for a face
-        i think it tried to give something to me
+        тут какая-то штука которая выглядит как человек с камерой вместо лица
+        кажется он попытался мне что-то дать
     
     moth
-        oh yeah?
-        whatever it is, i didn't see it on my end
-        were any senses attached?
+        о рил?
+        чем бы ни было, у меня ничего не показалось
+        он приложил какие-нибудь чувства?
     
     self
-        a visual of an eye underwater
-        might be the ocean floor or something
-        nothing else
+        изображение глаза под водой
+        может быть типа дно океана
+        больше ничего
     
     moth
-        ok...
-        well, like i said, you're deep in incoherence right now
-        it's probably just a busted thoughtform that still has a little bit of memory
+        окей...
+        ну, опять же, ты сейчас по горло в бессвязности
+        скорее всего это просто поломанная мыслеформа в которой ещё осталось немножко памяти
 ____SHOWIF::["gol__s_calls-gordon", false]
-        whatever it is, we'll probably have to wait for funfriend to actually fix it
+        что бы это ни было, нам скорее всего придётся ждать пока развледруг не дочинит
 ____SHOWIF::["gol__s_calls-gordon", true]
-        maybe it's something that knows about the whole "they sent a probe" thing and is trying to act the part
+        maybe it's something that knows about the whole "they sent a probe" thing and is trying to act the part --- !!!!!!!!!!!
 ____END
     
     RESPOBJ::mthresp
@@ -176,7 +176,7 @@ start
     moth
         втф, так это она?
         у меня тут трудно разобрать с чем ты разговариваешь
-        these in-between places are so scrambled --- позже
+        эти межпространственные места такие запутанные
 
     sourceless
         внимание мыслеформы дичает, словно у загнанного в угол животного.
@@ -420,7 +420,7 @@ ____END
 
 resp2wrong2
     self
-        хорошо скажи мне
+        хорошо расскажи мне
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
@@ -450,17 +450,17 @@ resp2right
         кавику можно называть тебя аки, не так ли?
 
     drowning sourceless
-        the giddiness в её голосе - тяжёлая, раскрепощённая...
+        увеселенье в её голосе - тяжёлое, раскрепощённое...
         эффекты цитрусовой кислоты--симулированные, но на краю дозволенного
-        еле редкость для её hardly uncommon for her downtime,
-        but even in the presence of her envoy friend?
-        i would simply turn it down a little, if i were her...
-        on most occasions, anyway--this is different
-        i lift my orange simulacrum to my lips, glancing away to explain
+        еле редкость для её свободного времяпровожденья,
+        но даже в присутствии её подруги-посла?
+        на её месте я бы просто немного их приглушила...
+        в большинстве случаев, впрочем--это другое
+        я подношу апельсиновый симулякр к губам и отвожу взгляд, чтобы объяснить
 
     drowning akizet
         это другое--честь, удостоенная ему с наших личиночных жизней
-        но она всего лишь этим и является: детской, личиночной... глупой
+        но она всего лишь этим и является: детскою, личиночною... глупою
 
     drowning
         ну, мне так нравится!
@@ -468,8 +468,8 @@ resp2right
         so you will just have to feel silly! hehehe -- силлипроблемы продолжаются. глупенькая :) --- мяу мяу
 
     drowning sourceless
-        she rises again, pausing to drink from her own simulacrum
-        i relax my receptors from their coil - i will permit this, for now
+        она вновь поднимается, делая паузу, чтобы глотнуть из собственного симулякра
+        я разжимаю завитки рецепторов - я дозволю ей это, на пока что
         
     drowning
         besides, it is good for you to take it easy sometimes! -- сложно подумаю потом --- мяу мяу
@@ -519,10 +519,10 @@ resp3right
         ты права
         
     drowning sourceless
-        maybe it is simply the citric haze, but...
+        быть может, то всего лишь цитрусовая пелена, но...
             EXEC::env.abyss.drowningFear(0)
-        when was the last time i thought about anything else?
-        the call, our research, it is only that, every θgaze
+        когда я в последний раз думала хоть о чём-нибудь другом?
+        зов, наши исследования, только это, каждый θвзор
         like the natural curl of my receptors are simply out of stress and focus
         yet here, we are free from this burden, just for a while
         i understand the deserters, now
@@ -530,11 +530,11 @@ resp3right
         
     drowning
         да!!
-        и это значит, что я, тоже, могу называть тебя аки, да?
+        и это значит, что я тоже могу называть тебя аки, да?
         
     drowning akizet
-        for now
-        and <em>not</em> in front of others
+        на пока что
+        и <em>не</em> перед остальными
         
     drowning sourceless
         even with my stern delivery, her receptors curl with delight, and i occupy myself with my drink
@@ -557,14 +557,14 @@ resp3right
         но не волнуйся! их крошечные зубки не могут нам навредить!
         
     drowning sourceless
-        finally, the last light of the cousins' star fades...
-        and we are left together in total darkness
+        наконец, последний свет звезды близнецов угасает...
+        и мы остаёмся наедине в полной тьме
 
     RESPOBJ::drowningResp4
 
 resp4wrong1
     self
-        ты сказала, они кусаются?
+        ты сказала они кусаются?
 
 ____SHOWIF::['PAGE!!drowningScared', true]
     drowning::panic
@@ -613,7 +613,7 @@ resp4right
         это очень забавное названье!
 
     drowning sourceless
-        мои куу-глаза подстраиваются под сгущающуюся темноту...
+        мои куу-глаза подстраиваются под сгущающуюся тьму...
             EXEC::env.abyss.drowningFear(0)
         над нами, волнистые волосы казки развеваются в теченьи подобно отросткам этих существ
 
@@ -645,9 +645,9 @@ resp4right
         ззоуст!!
 
     drowning sourceless
-        kazki falls back onto the seafloor, kicking up a small cloud of sand
+        казки падает обратно на морское дно, вздымая облачко песка
             EXEC::change("drowningCalmed", true)
-        i settle down beside her, laughing
+        я устраиваюсь рядом с ней и смеюсь
         she reaches over, clinking her simulacrum against mine with a pleased giggle of her own с довольным смешком 
         мы обе выпиваем
 
@@ -662,10 +662,10 @@ resp4right
         после того, как я увидела это сама, я поняла, что обязана показать тебе!
     
     drowning sourceless
-        i give her a curious look over our luminescent drinks
+        я бросаю на неё любопытствующий взгляд за нашими люминесцентными напитками
     
     drowning akizet
-        и не бозко? или--
+        а не бозко? или--
 
     drowning sourceless
         я умолкаю от её забавляющейся ухмылки
@@ -678,7 +678,7 @@ resp4right
 
     drowning akizet
         но...а что тогда с тозиком?
-        он столько времени проводит в нашем research chamber...
+        он столько времени проводит в нашей камере исследований...
 
     drowning::safe
         ну, хорошо, это справедливое рассужденье
@@ -695,7 +695,7 @@ resp4right
 
     drowning sourceless
         ...
-        i peer down into the warm glow of my simulacrum
+        я заглядываю в тёплое свеченье моего симулякра
     
     drowning akizet
         знаешь...
@@ -720,7 +720,7 @@ resp4right
     RESPONSES::self
         наблюдать за существами<+>CHANGE::drowning_chat
             EXEC::change("PAGE!!warned", false)
-            FAKEEND::proceed
+            FAKEEND::(продолжить)
 `)
 env.localization.page['abyss'].dialogues.drowningChatResp = generateDialogueObject(`
 RESPOBJ::
@@ -738,17 +738,17 @@ loop
 
 start
     drowning sourceless
-        we relax together amidst the glimmering swarm,
+        мы расслабляемся вместе посреди сверкающего роя,
             EXEC::content.classList.add('jellymode');content.classList.remove('dim')
-        in no hurry to return to the shore
-        the silence is comfortable, but...
-        is there anything i want to ask her?
+        не спеша возвращаться на берег
+        тишина уютна, но...
+        я ничего не хочу у неё спросить?
 
 ____SHOWONCE::
     moth
-        ok, that part was different - more incoherent than the rest
-        i think that came from it directly... so, keep playing along,
-        but this is our chance to get some info out of it
+        ок вот эта часть немного другая - более бессвязная чем остальное
+        похоже напрямую от неё... так что, подыгрывай и дальше,
+        но это наш шанс получить из неё информацию
 ____END
 
     RESPOBJ::drowningChatResp
@@ -767,7 +767,7 @@ cause
         хихи...
         я соскользнула с маленькой лодки, из которой светлые близнецы показывали мне местность
         и они так боялись, что меня покусает эта стая,
-        но мы слишком крепкие для такого! --- странное
+        но мы слишком крепкие для такого! --- странное --- но мы им не по зубам!
         ...
         if you stay positive,
         you can survive all kinds of things! --     такие хорошие две строчки такой хороший персонаж <-- отложил их на потом
@@ -880,28 +880,28 @@ ____END
 env.localization.page['abyss'].dialogues[`car`] = generateDialogueObject(`
 start
     sourceless
-        you begin to transfer thoughtspaces.
-        the incomplete entity nearby stirs.
+        ты начинаешь перемещаться между мыслепространствами.
+        неполноценная сущность неподалёку колышется.
 
     s w   al kk
-        c   car
-        workiung  ?????
+        м   машина
+        работаует  ?????
     
     self
-        maybe
-        it leads somewhere at least
-        follow me if you can
+        может быть
+        по крайней мере она куда-то ведёт
+        иди за мной, если сможешь
 
     s w   al kk
-        lincesne  r  enewal
+        п  родлен ие  удоствоерения
             EXEC::env.noNavMessage = true
 
     sys
-        ..__NAVIGATING::"câr"__..
+        ..__НАВИГАЦИЯ::'мâшиԩа'__..
             EXEC::flash(true);forcePlay("carstart")
 
     RESPONSES::self
-        ok<+>END
+        ок<+>END
 
 END::moveTo('/local/beneath/car/')
 `)

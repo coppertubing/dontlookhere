@@ -5,25 +5,25 @@
     > localization/vessel-surface.js
     localization for /local/ocean/ship/deck
 
-    progress: nothin (all ported) as of 12.10.2025
+    progress: only guide dialogue (слизнячок кскс) as of 19.02.2025
 */
 
 env.localization.page['deck'] = {dialogues: {},
     definitions: {}, 
     strings: {
-        "bright guardian": "",
-        "guide": "",
+        "bright guardian": "светлый страж",
+        "guide": "проводник",
         // --- unity this guyyyyy
         "That's a nice idea, but I'm way too tired.": "",
         "Maybe tomorrow.": "",
-        'he must be speaking to his communicator...': '',
+        'he must be speaking to his communicator...': 'должно быть, он разговаривает по своему коммуникатору...',
         // --- doors hate youuuuuu
-        "NOTICE::'prohibitive incoherence'": "",
+        "NOTICE::'prohibitive incoherence'": "УВЕДОМЛЕНИЕ::'запредельная бессвязность'",
     }, 
     entityDescriptions: {
-        'bright guardian': `::RESPONSIVE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'recollection'
-    <span style="color: var(--obesk-color)" definition="ANALYSIS::'degraded visual profile'">::INCOHERENCE DETECTED</span>`
+        'bright guardian': `::ОТЗЫВЧИВАЯ МЫСЛЕФОРМА
+    ::ЯВНОЕ НАЗНАЧЕНИЕ::'вспоминание'
+    <span style="color: var(--obesk-color)" definition="АНАЛИЗ::'деградировавший визуальный профиль'">::ОБНАРУЖЕНА БЕССВЯЗНОСТЬ</span>`
     }
 }
 
@@ -32,100 +32,100 @@ env.localization.page['deck'] = {dialogues: {},
 env.localization.page['deck'].dialogues["navy"] = generateDialogueObject(`
 start
     sourceless
-        a comfortable, cold darkness greets me as i amble out of the dead hatch
-        the curiosity of the bright cousins is insatiable,
-        so thorough and relentless that their star has had time to leave our sight yet again
-        my guide awaits, a communicator in one hand,
+        приятная, холодная тьма встречает меня, когда я выбираюсь из мёртвого люка
+        любопытство светлых близнецов ненасытно,
+        и настолько тщательно и неустанно, что их звезде хватило времени вновь покинуть наше поле зренья
+        мой проводник ждёт, держа в одной руке коммуникатор.
             EXEC::playerMoveTo(3, 4, "up");setCam({x: 3, y:4, rotation: 180})
-        and in the other, between clawless fingers, a smoldering white cylinder
-        an ingestion method for a stimulant, as i understand it
-        the hatch swings shut behind me under its own weight, and his eyes lift from the glow of his communicator
+        а в другой - белый тлеющий цилиндр меж двух бескоготных пальцев
+        способ приёма стимулирующего средства, насколько я понимаю
+        люк захлопывается за моею спиною под собственным весом, и глаза проводника отрываются от свеченья коммуникатора
 
     guide
         Hello, Akizet.
         
     sourceless
-        the greeting is joyless
-        before he speaks further, he brings the cylinder to his lips
-        the smoldering end brightens, then crumbles away with some slight movement
+        приветствие лишено всякой радости
+        прежде чем продолжить, он подносит цилиндр к губам
+        тлеющий конец разгорается, а затем осыпается с малейшим движеньем
         
     guide
         That went pretty long. More talk about the <span class="code">call</span>?
 
     akizet
-        yes, θ█████...
-        ...to little end, unfortunately
+        да, θ█████...
+        ...с малыми результатами, к сожалению
 
     sourceless
-        i feel his gaze upon my receptors, curious, as they curl with quiet frustration
-        after all, much delight has come from offering what we know to each bright questioner
-        without condition, without exception
-        it is their right to know all that we do, to share in all our progress
-        yet the progress on this particular subject is infuriatingly small
+        я чувствую его любопытный взор на моих рецепторах, когда они скручиваются от тихого разочарованья
+        в конце концов, немалое количество радости произошло от доставки наших знаний любому светлому вопрошателю
+        без условий, без исключений
+        они вправе знать обо всём, чем мы занимаемся, разделить весь наш прогресс
+        вот только в этой области прогресс ужасающе мал
     
     akizet
-        i understand the questioning
-        it mirrors our own clawing at the truth
-        but... it has only served to highlight to both of our peoples,
-        how little is truly understood, even after all this work and time
-        as you well know, i am a key figure in its research, so...
-        when the answer to clawfuls of questions in sequence is simply,
-        'we do not know,' in one form or another,
-        it is... 
-        it is almost shameful
+        я понимаю ваши расспросы
+        они отражают наше собственное чирканье по истине
+        однако... они лишь продолжают подчеркивать обеим народам,
+        насколько мало мы понимаем, даже спустя столько времени и труда
+        как вам хорошо известно, я играю ключевую роль в его исследовании, так что..
+        когда ответ на горсти вопросов подряд - это всего лишь,
+        "мы не знаем", в той или иной форме,
+        становится... 
+        становится почти что стыдно
 
     sourceless
-        i hold, letting the gentle frustration leave me
+        я задерживаюсь, позволяя лёгкой досаде покинуть меня
 
     akizet
-        but there is so much other knowledge that we can offer,
-        so much more!! that it is hardly a problem
+        но мы можем предложить столько других знаний,
+        столько всего!! что это едва ли проблема
 
     sourceless
-        the guide is silent, watching me still, an unfamiliar shape upon his face
-        not a smile, not a directed displeasure, but...
-        it bears similiarity to those i have seen upon my questioners in response to my answers
-        just before they remark upon the strangeness of our similarity again
+        проводник безмолвствует, наблюдая за мною, на его лице - незнакомое выраженье
+        ни улыбка, ни прямое недовольство, но...
+        напоминающее те, что я видела у своих вопрошателей в ответ на мои объясненья
+        прямо перед тем, как они вновь сошлются на странность наших сходств
 
     akizet
-        regardless--is there another awaiting my word?
+        в любом случае--моё слово ещё где-то ждут?
 
     guide
         Most of the labcoats are either sleeping, or wrapping up.
         It's sounding like initial meetings are winding down.
 
     sourceless
-        he breathes again through the ashen cylinder
+        он снова вдыхает через пепельный цилиндр
 
     guide
-        It was <span definition="INHERITED CONTEXT::'time specification';'well before the return of the bright cousin's star'">2AM</span> when I took over, and you were still going from yesterday...
+        It was <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'указанье времени';'задолго до возвращенья звезды светлых близнецов'">2AM</span> when I took over, and you were still going from yesterday...
         You aren't tired?
     
     akizet
-        not in a way that matters, θ█████
-        the wakefulness of θdeath often feels inescapable
-        a ceaseless river of experience, unbroken,
-        and so, i could answer a thousand questions more, a million, so long as i...
+        не в том смысле, который имеет значенье, θ█████
+        бодрствованье в θсмерти часто кажется неотвратимым
+        неисчерпаемою рекою переживаний, беспрерывным,
+        и потому я могла бы ответить ещё на тысячу, ещё на миллион вопросов до тех пор, пока я...
         
     sourceless
-        the guide's shoulders shift low, expression flattening
-        with a tap of his fingers, the cylinder sheds its burnt particulates
-        i can nearly see a reflection of my larval self, 
-        being told to commence a search operation just after completing another
+        плечи проводника опускаются, выраженье его лица становится более плоским
+        стук пальцев - и сгоревшие частицы сыпятся с цилиндра
+        я чуть ли не заглядываю в отраженье своей личиночной себя --- ПОМОГИТЕ ОНО ЗВУЧИТ СТРАШНО,
+        которую только что послали на поисковую операцию сразу после завершенья другой
 
     akizet
-        i...
-        ...actually, i believe i should return to the embassy to report what has been discussed
-        would you show me the way back to my dull vessel?
+        я...
+        ...на самом деле, думаю, мне следует вернуться в посольство и доложить о состоявшихся обсужденьях
+        вы не могли бы показать мне путь к моему судну серое?
     
     sourceless
-        there is confusion, a short and quiet breath, a small smile
+        замешательство, короткий и тихий вздох, слабая улыбка
 
     guide
         Sure.
         
     RESPONSES::akizet
-        set out<+>END
+        отправиться<+>END
 
 END::setCam()
 `)

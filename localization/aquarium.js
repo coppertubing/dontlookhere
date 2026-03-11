@@ -113,11 +113,11 @@ start
         без груза обязательств или сумасшествия тайного конфликта на моём уме...
         царит мир
         и я дозволяю себе чувства, какие бы испытывал личиночный обеск
-        это изменчивое тело не разработано для точности восприятия, и всё же отголоски ощущаются
-        я дрожу, сжимаюсь в комок, плотнее натягиваю этот ложный тканевый плащ
-        не то чтобы это имеет значение--он часть тела, тщательно сформированная корруцистозная плоть,
+        это изменчивое тело не разработано для точности восприятья, и всё же отголоски ощущаются
+        я дрожу, сжимаюсь в комок, плотнее стягиваю этот ложный тканевый плащ
+        не то чтобы это имеет значение--он есть часть этого тела, тщательно сформированная корруцистозная плоть,
         и оттого дождь скатывается по нему, как по металлу
-        я приподнимаю коготь--или близнецовую руку, полагаю
+        я приподнимаю коготь--или, полагаю, близнецовую руку
         наблюдая, как капли неестественно стекают с неё, поблёскивая в огненном свете со стебля позади меня
         это мгновенье, само по себе бессмысленное, внушает мне столькую жажду бегства
         не от этой ночи, не от этого мирного мгновенья, а от заговора, удушающего моё мыслеядро
@@ -150,7 +150,7 @@ start
             EXEC::content.classList.remove("quickabel")
     
     sourceless
-        поворачиваясь к ней, я забываю, что это тело адаптирует движения рецепторов под выражения лиц
+        поворачиваясь к ней, я забываю, что это тело адаптирует движенья рецепторов под выраженья лиц
             EXEC::setCam({x: 4, y: 8.5, rotation: 70, offsetCamera: "rotateX(20deg)", height: 1.75});content.classList.remove("standobel");content.classList.add("centerbel")
         и тогда радость на её лице сменяется беспокойством, когда она видит моё собственное...
         которое, как я только сей θмиг осознаю, наверняка отражает какого-то рода далёкое отчаянье
@@ -161,7 +161,7 @@ start
         Что-то случилось?
     
     sourceless
-        быстро тряхнув головою, я восстанавливаю равновесье и избавляюсь от этого наважденья
+        быстро тряхнув головою, я восстанавливаю равновесье и пока что избавляюсь от этого наважденья
         увидеть её достаточно, чтобы улыбнуться
         
     akizet
@@ -184,7 +184,7 @@ start
         И как ты только не промокла?
         А, точно, это... Да, ага.
         Окей, отлично. Не хотелось бы мне зайти с зонтом,
-        И чтобы ты потом волочилась за мной с видом, словно я просто оставила тебя под дождём.
+        Пока ты волочишься следом за мной с видом, словно я просто оставила тебя под дождём.
     
     akizet
         <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'намеренная глупость'">я не вижу проблемы</span>
@@ -208,7 +208,7 @@ start
         это отличается от того, как обычно работает эта среда обитанья?
     
     sleepybel
-        Ну, он обычно не открыт по ночам. И обычно он не впускает людей во время приготовлений.
+        Ну, он обычно не открыт по ночам. И обычно они не впускают людей во время приготовлений
         Поэтому вся разница в том, что там будем, считай, что только мы вдвоём.
         Обычно там такие толпы, так что этот раз особенный...
         Ну же, пошли!
@@ -228,10 +228,10 @@ start
         ибо я охвачена подобными виденьями прошлого
         центральная общественная камера олтазни, увешанная знаменами из раскрашенной вейльковой кожи
         соединительные туннели вдоль стен, даже проделанные в верхней камере, для лазанья
-        и каждый освещён собственным индивидуально окрашенным <span class="code">юзку</span> шаром, некоторые аж парят в воздухе...
+        и каждый освещён собственными индивидуально окрашенными <span class="code">юзку</span> шарами, некоторые аж парят в воздухе...
         это то же самое величье, но выраженное на близнецовом языке, здесь
         однако по тем же меркам оно обыденно и статично
-        такое количество их строений именно такое
+        великое количество их строений именно такое
         очередное доказательст
             WAIT::1000
             AUTOADVANCE::
@@ -253,13 +253,13 @@ start
         извини меня, меня отвлекло это... сооруженье
 
     sleepybel
-        Хаха! Извинить тебя?? Тебе пора прекращать это повторять.
+        Хаха! Извинить тебя?? Прекращай это повторять.
         Я просто... Не знаю, удивилась!
         Ты уже столько всего повидала, но так оцепенела от какого-то вестибюля?
-        Разве ты уже не объездила весь мир?
+        Разве ты уже не успела повидать весь мир?
     
     akizet
-        лишь в небе, изабель
+        разве что из неба, изабель
         это место навеяло на меня воспоминанья
         освещенье, знамена, сама форма помещенья напомнили мне о фестивалях на родине
 
@@ -329,8 +329,8 @@ start
     
     sourceless
         я чувствую, как моя улыбка меркнет, раздираемая далёким внутренним конфликтом
-        это "странно"? она выразилась с улыбкой - хотя я знаю, что она умееет тщательно подбирать слова
-        моё изменившееся выражение, возможно, видимое замешательство, побуждает её рассмеяться и продолжить
+        это "странно"? она выразилась с улыбкой - хотя я знаю, что она умеет тщательно подбирать слова
+        моё изменившееся выраженье, возможно, видимое замешательство, побуждает её рассмеяться и продолжить
         
     sleepybel
         Акизет, это мило!
@@ -351,10 +351,10 @@ start
         улыбки очевидны, повсеместны
         даже личиночный обеск может слегка приулыбнуться в мгновенье великого восторга
         но в одном только этом θмиге есть бессчётное количество тонкостей, которые я с трудом распознаю
-        неровное шевеленье бровей, медленное сгибанье губ внутрь
+        неровное шевеленье бровей, медленное сгибанье губ вонутрь
         небольшой звук, производимый быстрым вдохом через нос,
         всё это соответствует дразнящему подавленью смеха
-        приятно распространенное явленье в наших разговорах, достаточно для того, чтобы я его узнавала
+        приятно распространённое явленье в наших разговорах, достаточно для того, чтобы я его узнавала
         однако я всё же гадаю, сколько ещё пропускает мой нетренированный глаз
 
     sleepybel
@@ -363,10 +363,10 @@ start
     sourceless
         ах, я уставилась на неё
         тогда как мои рецепторы обычно бы обозначили мои размышленья медленным вращеньем
-        это тело преобразовало их в напряжённое выражение, с коим я не знакома
+        это тело преобразовало их в напряжённое выраженье, с коим я не знакома
         cтоит мне оторваться от мыслей, как оно исчезает без следа, слишком быстро, чтобы я успела его изучить
         но, несомненно, именно от него она сдерживала смех
-        моё смущённое осознание наносит последний удар, и она наконец-то хохочет
+        моё смущённое осознанье наносит последний удар, и она наконец-то хохочет
 
     akizet
         извини! я всего лишь задумалась--
@@ -391,8 +391,8 @@ start
         её смех заразителен
 
     akizet
-        близнецовые предостережения по поводу телесных изменений поистине озадачивают, изабель
-        но я отметила твоё предпочтение
+        близнецовые предостереженья по поводу телесных изменений поистине озадачивают, изабель
+        но я отметила твоё предпочтенье
         я передам слово, чтобы они поспешили
 
     RESPONSES::akizet
@@ -405,50 +405,50 @@ END::ratween(env.localization.page['aquarium'].bgm, 1)
 env.localization.page['aquarium'].dialogues["arch"] = generateDialogueObject(`
 start
     sourceless
-        the clear arch above us bring the embassy's perspective projections to mind
+        прозрачная арка над нами наводит на мысль о зрительных проекциях в посольстве --- мне не нравится переводить как перспективных мне кажется речь о perspective как о точка зрения типа
             EXEC::content.classList.add("slowcam");setCam({offsetCamera: "rotateX(20deg)", height: 2, rotation: 90, x: 3, y: 8});playerMoveTo(3, 8, "left");ratween(env.bgm, 0.8)
-        activity amongst the water fauna is surely reduced due to the time,
-        but some shapes still wander through the habitat, their strange skin glimmering in the overhead light
-        i look up to my side, expecting to see isabel observing the larger one passing overhead
+        активность водной фауны, безусловно, снижена в связи с временем суток,
+        но какие-то очертанья всё ещё блуждают по среде, переливаясь своею странною кожею в освещеньи
+        я перевожу взгляд в сторону, ожидая, что изабель наблюдает за тем крупным, проплывающим над нами
             EXEC::setCam({offsetCamera: "rotateX(10deg)", height: 1.75, rotation: 145, x: 3, y: 8.5})
-        but her eyes are distant, closing for long periods, then quickly blinking
-        is she lost in thought? the motion is distantly familiar
-        no... no, she is tired, her body fighting for rest
-        larval exhaustion - a feeling left so far in the past that it nearly inspires envy
-        of course, her eyes refocus as they shift down to me, staring straight at her
+        но её глаза отстранены, надолго закрываются, а затем быстро промаргиваются
+        её окутали раздумья? движенье смутно напоминает мне о чём-то
+        нет... нет, она утомлена, борящаяся с телом за бодрствованье
+        личиночное истощенье - чувство, оставшееся так далеко в прошлом, что оно почти внушает зависть
+        конечно, её глаза вновь сосредотачиваются, стоит ей обратить вниманье на мой взор
     
     sleepybel
         Хехе, чего?
     
     akizet
-        has the day treated you so poorly?
+        неужели день обошёлся с тобой так плохо?
 
     sourceless
-        day? that is not what i intended to, ah...
-        the disguise-skin must attempt to adjust language for me
+        день? я не это собиралась, ах...
+        должно быть, моя маскировка пытается подстроить мне язык
 
     sleepybel
         А? О чём...
         Ох, ага. Да, прости. Длинным выдался.
-        Это... Мы не должны это обсуждать. Дела на работе.
-        Мы здесь чтобы позабыть обо всём этом, помнишь?
+        Это... Да не стоит это обсуждать. Дела на работе.
+        Мы здесь, чтобы позабыть обо всём этом, помнишь? --- это это это 
 
     akizet
-        clearly it weighs upon you, my friend
-        would it help to speak of it?
+        очевидно, что они тяготят тебя, подруга моя
+        не помог бы тебе разговор о них?
 
     sourceless
-        for a moment, the darkened hall is silent
-        only distant and gentle habitat-maintaining machinery echoes, burbling as a river would
-        isabel hesitates to break her own rule, but my expression convinces her to pass the threshold
-        she seats us both upon one of the archway's benches
+        на мгновенье тёмный коридор утихает
+        вдали нежно шумит лишь оборудованье для поддержки среды обитанья, журча подобно реке
+        изабель колеблется перед нарушеньем собственного правила, но моё выражение убеждает её переступить порог
+        мы усаживаемся на одну из скамей у арки
             EXEC::setCam({offsetCamera: "rotateX(10deg)", height: 1.5, rotation: 145, x: 3, y: 8})
     
     sleepybel
-        Ладно, совсем немножко. А затем продолжим это игнорировать.
+        Ладно, совсем немножко. --- А затем продолжим это игнорировать. --- не нравится 
     
     akizet
-        of course, hehe
+        разумеется, хихи
     
     sleepybel
         Итак, я работала с одной парой.
@@ -456,10 +456,10 @@ start
         Как бы, всю устиланную цветами. Ещё и экзотичными, которые мне пришлось искать и импортировать...
         Мы планировали её месяцами, и они заплатили авансом...
         Половину от итоговой суммы. Мы всё обсудили.
-        Наверное, если посмотреть назад, это глупо выглядит, но деньги были приличными. Тогда это, казалось, имело смысл. 
-        А сегодня, я не понимаю, они всё отменили--не свадьбу, а часть с цветами.
+        Оглыдывясь, наверно, глупо это было, но деньги были приличными. Тогда казалось, что смысл есть. 
+        А сегодня, не знаю, они всё отменили--не свадьбу, а часть с цветами.
         Даже не сказали мне, почему. Пришлось впопыхах пытаться отменить заказы, получить возвраты...
-        Но я очень рассчитывала на эту вторую половину, надеялась, что с ней я смогу выйти в ноль этим месяцем. // "" возможно другой знак перед надеялась, но подумаю потом
+        Но я очень рассчитывала на эту вторую половину, надеялась, что с ней я смогу выйти в ноль этим месяцем. // "" возможно другой знак перед надеялась, но подумаю потом --- Но я очень рассчитывала на эту вторую половину, чтобы выйти в ноль этим месяцем?
 
     sourceless
         through her explanation, her eyes drift to follow shapes moving in the dark water
@@ -468,11 +468,11 @@ start
         the concepts are familiar, but their application here...
     
     akizet
-        frustrating... it is unjust for them to leave you without explanation
-        but what do you mean by "break even"?
+        огорчает... несправедливо с их стороны бросить тебя без объяснений
+        но что ты имеешь в виду под "выйти в ноль"?
     
     sourceless
-        isabel shakes her head, sighing, landing her gaze upon me without emotion
+        изабель трясёт головой, вздыхая и опуская взгляд на меня безо всякой эмоции
     
     sleepybel
         Здесь дорого. Ну, знаешь, аренда--за магазин, за собственное жильё, за...
@@ -496,17 +496,17 @@ start
         is it so funny that i struggle to explain?
     
     akizet
-        yes! yes, we did, hehe, forgive me--
-        ah, there, i have said it again...
+        да! да, есть, хихи, извини--
+        а, ну вот, я опять повторяюсь...
 
     sleepybel
         Ха.
-    
+
     akizet
         it was not on an individual level, exactly, isabel
         it was only after sfer had been, ah, 'invented', that we had a true currency to use
         and even then, it was primarily for inter-city trade
-        before that, especially during my larval <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">years</span>, 
+        before that, especially during my larval <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">years</span>, 
         we simply exchanged raw resources, food, or favors for the same from other cave-cities
     
     sourceless
@@ -521,7 +521,7 @@ start
         all worked towards our common goal of survival and community
         even in my travels, most other collectives were the same
         so prevalent is this, that some suspect it to be an instinct in our larval minds
-        <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">today</span>, our interstellar operations operate like one large collective, so,
+        <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">today</span>, our interstellar operations operate like one large collective, so,
         it is much the same - at least for laborers like myself
         but i imagine the council must drive themselves mad with modern allocation decisions, in all their complexity
         i believe they have significant cognitive enhancements, 
@@ -538,8 +538,8 @@ start
         Хах. Мило.
     
     sourceless
-        these words pierce me--a compliment, though not spoken as one // Это смешно. Они смешные
-        have i only worsened her mood?!
+        её слова пронзают меня--комплимент, но не произнесённый как таковой
+        я что, только ухудшила её настроение?!
 
     sleepybel
         Мне почти хочется, чтобы здесь всё работало так же, но...
@@ -684,7 +684,7 @@ start
         Я бы, наверное, тоже подумала, что твой дом - рай.
 
     akizet
-        you might, were you to visit in the modern <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">day</span>
+        you might, were you to visit in the modern <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">day</span>
         the corrucystic revolution truly changed everything
         before that, it was... ah...
         really, i nearly wonder how we all bore the burden
@@ -825,7 +825,7 @@ start
 
     akizet
         well, there is nothing to be done, isabel
-        it has rested there for what must be <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">millenia</span>
+        it has rested there for what must be <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">millenia</span>
         and it shows no sign of ever changing that
         there is a sort of comfort in knowing it is silent, really
         that no great shapes may rise from the dark unexpectedly
@@ -893,7 +893,7 @@ start
         yes, it...
         it is especially so in θdeath
         time is nearly forgotten, but it passes still
-        there have been <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">decades</span> where i have gone entirely without words to larval friends
+        there have been <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">decades</span> where i have gone entirely without words to larval friends
 
     sleepybel
         Ага, точно так же.
@@ -1066,7 +1066,7 @@ start
 
     akizet
         what? nonsense!!
-        i am busy, yes, but i linger in this city more than ever in recent <span definition="INHERITED CONTEXT::'phrase auto-translation and correction';'provided by body';'function of disguise'">weeks</span>, 
+        i am busy, yes, but i linger in this city more than ever in recent <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'автоперевод и коррекция фраз';'предоставляется телом';'функция маскировки'">weeks</span>, 
         sure to continue for some time, given my, ah... project
         and of course, the act of sleep not being within my needs
         perhaps we may visit a few more places, in the 'evenings', when your work is done?

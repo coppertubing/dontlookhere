@@ -5,7 +5,7 @@
     > localization/the-funny-little-room.js
     localization for /local/ocean/ship/interview
 
-    progress: only moth and rotwatcher unfinished as of 23.08.2025
+    progress: only rotwatcher unfinished as of 25.02.2026
 */
 
 
@@ -61,10 +61,10 @@ interview
 
     moth
         хз
-        velzie tore it apart, right?
-        what you're seeing might be the remnants
-        as for why you're able to render it,
-        that's beyond me
+        тут же всё порванное после велзи, не?
+        может то что ты видишь - это его останки
+        а почему оно у тебя вообще визуализируется,
+        это выше моего понимания
     
     RESPOBJ::mthinterviewresp
 
@@ -74,10 +74,10 @@ entities
         ты их видишь, да?
     
     moth
-        i can barely read anything here on my end
-        but nothing even close to a signature on them, so i can't say for sure...
-        maybe they're rogue thoughtforms
-        they have to eat, right? could be scavengers or something
+        у меня тут еле-еле хоть что-то можно разобрать
+        но на них ничего даже близкого к подписи, так что точно не скажу...
+        наверно дикие мыслеформы
+        им же надо чем-то питаться, нет? может падальщики какие-нить
 
     RESPOBJ::mthinterviewresp
 `)

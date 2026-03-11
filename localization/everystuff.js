@@ -597,7 +597,7 @@ env.localization['strings'] = {
         "  t otp speed 49 7345 engine": "  м  максскорость 49 7345 двигтель",
         " radiat   or mufler hungry": " глушит   ель раиатора голодный",
         "red  green ylow blue light  speet up": "крас й зел ёный жлтый ссиний свет  больще скрсти",
-        "car  so sgggoing": "мшина  еееедет",
+        "car  so sgggoing": "мшина  е еееедет",
         "  m eting go ok": "  c вещание ппрошло хх оршо",
         "wrunc eetntenanceh": "", // ? ?
         "irector": "иректор",

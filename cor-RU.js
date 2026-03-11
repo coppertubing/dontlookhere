@@ -1,7 +1,7 @@
 /*/ если вы очутились здесь и не понимаете, что это такое, скорее всего /*/
 /*/ вы нажали на ссылку вместо того, чтобы правильно установить мод.    /*/
 /*/ не смотрите в в код дальше, если боитесь спойлеров!!! хихи          /*/
-/*/ видео по установке: https://cor-RU.github.io/cor-RU/tutorial.MP4    /*/
+/*/ видео по установке: https://cor-RU.github.io/dontlookhere/tutorial.MP4    /*/
 /*/ страница мода: https://github.com/cor-RU/cor-RU                     /*/
 
 
@@ -19,8 +19,8 @@ if (window.location.pathname == '/credits') {
 <style>
 @font-face {
     font-family: 'spacemono';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/modfont.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/modfont.woff') format('woff');
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -78,8 +78,8 @@ cor_ru = {
     css: `
 @font-face {
     font-family: 'spacemono';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/modfont.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/modfont.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/modfont.woff') format('woff');
     font-weight: normal; 
     font-style: normal;
     font-display: swap;
@@ -87,8 +87,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcode';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barc.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/barc.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/barc.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -96,8 +96,8 @@ cor_ru = {
 
 @font-face {
     font-family: 'barcodetext';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff2') format('woff2'),
-        url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/barcode.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/barcode.woff2') format('woff2'),
+        url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/barcode.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -105,7 +105,7 @@ cor_ru = {
 
 @font-face {
     font-family: 'beech';
-    src: url('https://raw.githubusercontent.com/coppertubing/cor-RU/recode/fonts/beechy.woff') format('woff');
+    src: url('https://raw.githubusercontent.com/coppertubing/dontlookhere/recode/fonts/beechy.woff') format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -243,7 +243,7 @@ body[quality="regular"] .quality::after { content: "Качество: ОБЫЧН
 body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" }
 
 .dialogue-message.incoherenthello .dialogue-text, .readout-log .message.incoherenthello {
-    background-image: url(https://coppertubing.github.io/cor-RU/images/hello.gif) !important;
+    background-image: url(https://coppertubing.github.io/dontlookhere/images/hello.gif) !important;
 }
 
 #realgrid .cor-rusign {
@@ -559,54 +559,54 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     // loading and updating stuff as we go
 
     list: {
-        everything: "https://coppertubing.github.io/cor-RU/localization/everystuff.js",
+        everything: "https://coppertubing.github.io/dontlookhere/localization/everystuff.js",
         page: {
-            fbx:                "https://coppertubing.github.io/cor-RU/localization/basement.js",
+            fbx:                "https://coppertubing.github.io/dontlookhere/localization/basement.js",
 
-            hello:              "https://coppertubing.github.io/cor-RU/localization/auth-layer.js",
-            hub:                "https://coppertubing.github.io/cor-RU/localization/hub.js",
+            hello:              "https://coppertubing.github.io/dontlookhere/localization/auth-layer.js",
+            hub:                "https://coppertubing.github.io/dontlookhere/localization/hub.js",
 
-            localcity:          "https://coppertubing.github.io/cor-RU/localization/their-city.js",
-            citystreet:         "https://coppertubing.github.io/cor-RU/localization/city-surface.js",
-            aquarium:           "https://coppertubing.github.io/cor-RU/localization/aquarium.js",
+            localcity:          "https://coppertubing.github.io/dontlookhere/localization/their-city.js",
+            citystreet:         "https://coppertubing.github.io/dontlookhere/localization/city-surface.js",
+            aquarium:           "https://coppertubing.github.io/dontlookhere/localization/aquarium.js",
 
-            localorbit:         "https://coppertubing.github.io/cor-RU/localization/the-void.js",
-            moon:               "https://coppertubing.github.io/cor-RU/localization/bright-moon.js",
-            dullvessel:         "https://coppertubing.github.io/cor-RU/localization/our-dull-vessel.js",
+            localorbit:         "https://coppertubing.github.io/dontlookhere/localization/the-void.js",
+            moon:               "https://coppertubing.github.io/dontlookhere/localization/bright-moon.js",
+            dullvessel:         "https://coppertubing.github.io/dontlookhere/localization/our-dull-vessel.js",
 
-            localocean:         "https://coppertubing.github.io/cor-RU/localization/their-waters.js",
-            localship:          "https://coppertubing.github.io/cor-RU/localization/their-vessel.js",
-            deck:               "https://coppertubing.github.io/cor-RU/localization/vessel-surface.js",
-            interview1:         "https://coppertubing.github.io/cor-RU/localization/the-funny-little-room.js",
+            localocean:         "https://coppertubing.github.io/dontlookhere/localization/their-waters.js",
+            localship:          "https://coppertubing.github.io/dontlookhere/localization/their-vessel.js",
+            deck:               "https://coppertubing.github.io/dontlookhere/localization/vessel-surface.js",
+            interview1:         "https://coppertubing.github.io/dontlookhere/localization/the-funny-little-room.js",
 
-            localdepths:        "https://coppertubing.github.io/cor-RU/localization/the-depths.js",
+            localdepths:        "https://coppertubing.github.io/dontlookhere/localization/the-depths.js",
 
-            localuncosm:        "https://coppertubing.github.io/cor-RU/localization/uncosm.js",
-            recosm:             "https://coppertubing.github.io/cor-RU/localization/recosm.js",
-            localuncosmwhere:   "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
-            sec:                "https://coppertubing.github.io/cor-RU/localization/memory-hole.js",
-            pit:                "https://coppertubing.github.io/cor-RU/localization/labs.js",
+            localuncosm:        "https://coppertubing.github.io/dontlookhere/localization/uncosm.js",
+            recosm:             "https://coppertubing.github.io/dontlookhere/localization/recosm.js",
+            localuncosmwhere:   "https://coppertubing.github.io/dontlookhere/localization/memory-hole.js",
+            sec:                "https://coppertubing.github.io/dontlookhere/localization/memory-hole.js",
+            pit:                "https://coppertubing.github.io/dontlookhere/localization/labs.js",
 
-            localship2:         "https://coppertubing.github.io/cor-RU/localization/clemens-romanus.js",
+            localship2:         "https://coppertubing.github.io/dontlookhere/localization/clemens-romanus.js",
 
-            embassy:            "https://coppertubing.github.io/cor-RU/localization/embassy.js",
-            gol:                "https://coppertubing.github.io/cor-RU/localization/golem-maintenance.js",
-            ep4:                "https://coppertubing.github.io/cor-RU/localization/pale-halls.js",
-            "better-times":     "https://coppertubing.github.io/cor-RU/localization/better-times.js",
+            embassy:            "https://coppertubing.github.io/dontlookhere/localization/embassy.js",
+            gol:                "https://coppertubing.github.io/dontlookhere/localization/golem-maintenance.js",
+            ep4:                "https://coppertubing.github.io/dontlookhere/localization/pale-halls.js",
+            "better-times":     "https://coppertubing.github.io/dontlookhere/localization/better-times.js",
 
-            abyss:              "https://coppertubing.github.io/cor-RU/localization/beneath-abyss.js",
-            parasite:           "https://coppertubing.github.io/cor-RU/localization/beneath-parasite.js",
-            beneathdepths:      "https://coppertubing.github.io/cor-RU/localization/beneath-maze.js",
-            car:                "https://coppertubing.github.io/cor-RU/localization/beneath-car.js",
+            abyss:              "https://coppertubing.github.io/dontlookhere/localization/beneath-abyss.js",
+            parasite:           "https://coppertubing.github.io/dontlookhere/localization/beneath-parasite.js",
+            beneathdepths:      "https://coppertubing.github.io/dontlookhere/localization/beneath-maze.js",
+            car:                "https://coppertubing.github.io/dontlookhere/localization/beneath-car.js",
 
-            e3a2:               "https://coppertubing.github.io/cor-RU/localization/frame.js",
+            e3a2:               "https://coppertubing.github.io/dontlookhere/localization/frame.js",
 
-            cache:              "https://coppertubing.github.io/cor-RU/localization/cache.js",
-            ozo:                "https://coppertubing.github.io/cor-RU/localization/jokzi-ozo.js"
+            cache:              "https://coppertubing.github.io/dontlookhere/localization/cache.js",
+            ozo:                "https://coppertubing.github.io/dontlookhere/localization/jokzi-ozo.js"
         },
-        combat:     "https://coppertubing.github.io/cor-RU/localization/combat.js",
-        entityMenu: "https://coppertubing.github.io/cor-RU/localization/entity-menu.js",
-        load:       "https://coppertubing.github.io/cor-RU/load.js",
+        combat:     "https://coppertubing.github.io/dontlookhere/localization/combat.js",
+        entityMenu: "https://coppertubing.github.io/dontlookhere/localization/entity-menu.js",
+        load:       "https://coppertubing.github.io/dontlookhere/load.js",
     },
 
     updateResources: function (fresh = false) {
@@ -668,7 +668,7 @@ cor_ru['advancewarnclick'] = function () {
                     <p class="sysinfo">Контент из последующих эпизодов/"логов" (EP3, EP4) будет на английском языке.<br>Учтите, что весь <em>опциональный</em> контент, который возможно достичь в рамках текущего эпизода (EP2), локализован. <span style="font-size:75%">(Если Вы нашли что-нибудь на английском, не продвигаясь дальше EP2... расскажите пожалуйста этоважно)</span></p>
                     <p class="sysinfo">При продвижении лога рекомендуется удалить cor-RU, ибо поведение мода в непротестированных эпизодах непредсказуемо и может повлечь за собой баги или прочие странности.<br>Сделать это можно, просто убрав ссылку на мод из url-листа модификаций в системном меню и перезагрузив страницу.</p>
                     <p class="sysinfo">Вы также можете приостановить игру на текущем эпизоде. В таком случае кнопка "продвинуть лог" исчезнет, а игра будет вести себя так, будто Вы не прошли воспоминания обвала до конца.<br>Чтобы снова вызвать "продвинуть лог", Вы можете либо заново пройти воспоминание обвала, либо зайти в системное меню и нажать "вызвать продвижение лога".</p>
-                    <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/QtqqCh8myn">дискорд сервер</a>.</p>
+                    <p class="sysinfo">Если есть вопросы, просьбы, предложения или надо зарепортить баг, обращайтесь к @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме. Также доступны: <a target="_blank" class="rulink" href="https://forms.gle/HHGhd4zU3VmJQgPCA">анонимная гугл форма</a> и <a target="_blank" class="rulink" href="https://discord.gg/GRx4Vqh2ar">дискорд сервер</a>.</p>
                     <p class="sysinfo">Спасибо за то, что играли с cor-RU!</p>
                     <div class="buttons">
                         <span id="rulog" class="button" onclick="cor_ru.advance();document.querySelector('#ru-warning').remove()">продвинуть лог</span>
@@ -727,8 +727,8 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speakers: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
-console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/QtqqCh8myn) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speakers: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/GRx4Vqh2ar) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/GRx4Vqh2ar) - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {
     document.head.appendChild(
