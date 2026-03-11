@@ -192,8 +192,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     --baseTransform: translateZ(10px);
 }
 .mui-active #realgrid .cor-rusign::after, #realgrid .cor-rusign:hover::after {
+    filter: opacity(1) !important;
+}
+#realgrid .cor-rusign::after {
+    transition: filter 0.2s ease;
+    filter: opacity(0);
     content: "";
     background-color: #ffffff38;
+    border: 2px dotted var(--neutral-color);
     position: absolute;
     width: 150%;
     height: 75%;
@@ -201,7 +207,6 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     left: -25%;
     border-radius: 100%;
     animation: SPIN 10s linear infinite;
-    border: 2px dotted var(--neutral-color);
     backface-visibility: hidden;
     --webkit-backface-visibility: hidden;
 }

@@ -2467,7 +2467,7 @@ env.citystreet.walk = new Howl({
 env.stages['city_street3']["entities"]["Ъ"] = { // --- defining the entity that will make the sign appear
     class: "notile",
     contains: {
-        html: `<span class='cor-rusign' definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'нажмите кнопку для';'изображение рыбы'"></span>`, // --- text of the sign and its css class
+        html: `<span class='cor-rusign tskip' definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'нажмите кнопку для';'изображение рыбы'"></span>`, // --- text of the sign and its css class
         dyp: {
             image: "/", 
             transform: 'translateZ(var(--tile3)) translate(var(--tile-5)) translate(-15px) translateY(-95px) translateZ(0px) rotateY(90deg)' // --- physically the sign is like. somewhere where the player cannot see it cause 1. you cant place a sign directly over the VSCM due to how stages work 2. i couldnt bother with finding out how to change its sprite to invisible when i can just hide it lol. sooo you gotta push it around to the desired spot via all that translate stuff
