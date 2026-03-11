@@ -4,7 +4,8 @@
 
     > localization/everystuff.js
     behold! the most poorly organized file in this entire mod! though that makes sense, its basically a remnant from the times we were writing cor-ru in one big file, not really having structure or direction! scary
-    it houses everything that is not dedicated to a particular page. also almost all definitions! fun! we need those to be availiable At All Times due to entmenu stuff
+    it houses everything that is not dedicated to a particular page*. also almost all definitions! fun! we need those to be availiable At All Times due to entmenu stuff
+        * - certain dialogues that do not get localized properly because they start sooner than the corresponding localization file manages to load in were put here as well to fix the issue
 
     progress: anything could happen as of 23.08.2025
 */

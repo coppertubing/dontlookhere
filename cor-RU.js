@@ -1,7 +1,7 @@
 /*/ если вы очутились здесь и не понимаете, что это такое, скорее всего /*/
 /*/ вы нажали на ссылку вместо того, чтобы правильно установить мод.    /*/
 /*/ не смотрите в в код дальше, если боитесь спойлеров!!! хихи          /*/
-/*/ видео по установке: https://cor-RU.github.io/dontlookhere/tutorial.MP4    /*/
+/*/ видео по установке: https://cor-RU.github.io/cor-RU/tutorial.MP4    /*/
 /*/ страница мода: https://github.com/cor-RU/cor-RU                     /*/
 
 
@@ -14,7 +14,7 @@
     important code!!! and loads the whole mod!!! yay!!!
 */
 
-if (window.location.pathname == '/credits') {
+if (window.location.pathname == '/credits') { // credits load mods in a very limited manner so firstly we check if we're in credits, then either load the whole mod or only execute this little bit of code
     devcol = `
 <style>
 @font-face {
@@ -63,7 +63,7 @@ if (window.location.pathname == '/credits') {
     document.querySelector(".fundfriends :first-child").remove()
     document.querySelector(".fundfriends :first-child").remove()
     document.querySelector(".fundfriends").insertAdjacentHTML("afterbegin", fund)
-    throw new Error("hi dont mind me cor-RU is not supposed to load properly in credits")
+    throw new Error("hi dont mind me! cor-RU is not supposed to load properly in credits. this little error intentionally prevents it from executing any further")
 }
 
 env.localization = {
@@ -114,28 +114,10 @@ cor_ru = {
 
 body[state="corru-loaded"][menu="none"]:not(.in-dialogue)::before, body.loading::after, body.corru-refreshing::after {
     content: "ПРЕДУПРЕЖДЕНИЕ::'Использование мыслекола может вызвать приступы у людей с ФОТОСЕНСИТИВНОЙ ЭПИЛЕПСИЕЙ, в том числе из-за вспышек света.';\\A'Удостоверьтесь, что АППАРАТНОЕ УСКОРЕНИЕ включено во избежание временной несоосности.';\\A'Сторонние РАСШИРЕНИЯ могут мешать производительности.';\\A'Продолжение по усмотрению пользователя.'";
-    font-family: spacemono;
-    font-size: 0.75em;
-    max-width: 600px;
-    position: fixed;
-    z-index: 1000;
-    display: block;
-    top: 10vh;
-    background: var(--dark-color);
-    padding: 0.25em;
-    text-align: center;
-    line-height: 1.25em;
-    white-space: pre-wrap;
-    pointer-events: none;
 }
 
 body.loading::after, body.corru-refreshing::after {
     content: "ВНИМАНИЕ::'очистка буфера мыслекола';'прогресс не будет потерян'";
-    padding: 1em;
-    top: 50%;
-    transform: translateY(-100%);
-    opacity: 1;
-    display: block;
 }
 
 body.loading::after {
@@ -153,24 +135,10 @@ body.loading::after {
 
 #dialogue-box.dialogue-click-proceed::after {
     content: "VVV КЛИК/ENTER ДЛЯ ПРОДОЛЖЕНИЯ VVV";
-    display: block;
-    width: 100%;
-    text-align: center;
-    animation: click-to-proceed 1s linear infinite;
 } 
 
 #dialogue-box.can-skip::before {
     content: "ЛИНЕЙНЫЙ СЕГМЕНТ ПОТОКА - ПРОПУСК С ESC";
-    display: block;
-    text-align: center;
-    padding: 0.5em;
-    color: var(--neutral-color);
-    font-size: 0.75rem;
-    opacity: 0.5;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-    background: var(--dark-color);
 }
 
 #dialogue-skip::before {
@@ -194,49 +162,13 @@ body:not(.mui-active) .target::after, body:not(.mui-active) #realgrid .target::b
 }
 
 @media screen and (max-width: 799px), (max-height: 599px) {
-	html:not(.mobile):after, html:not(.mobile):before {
-		position: fixed;
-		z-index: 1001231231231231230;
-		top: 0;
-		left: 0;
-		height: 100%;
-	}
-	
 	html:not(.mobile):after {
 		content: "ОШИБКА::\\A'текущее устройство визуализации непригодно';\\a'требуется нейронный вывод не менее 800x600'";
-		box-sizing: border-box;
-		white-space: pre-wrap;
-		width: 100vw;
-		height: 100vh;
-		max-width: 100%;
-		display: flex;
-		margin: auto;
-		justify-content: center;
-		align-items: center;
-		font-family: 'barcodetext', sans-serif;
-		font-size: 2rem;	
-        line-height: 1.5em;
-		letter-spacing: 2.5px;
-		padding: 10px;
-		color: var(--bright-color);
-		text-align: center;
-	}
-	
-	html:not(.mobile):before {
-		content: "";
-		position: fixed;
-		background-color: var(--dark-color);
-		width: 100%;
 	}
 }
 
 #mindspike-scanner span.loose-thought::after {
     content: "..__НЕПОЛНОЦЕННАЯ_МЫСЛЕФОРМА__..";
-    display: block;
-    font-family: spacemono;
-    letter-spacing: 0;
-    font-size: 0.63rem;
-    margin-top: -0.5em;
 }
 
 body[quality="regular"] .quality::after { content: "Качество: ОБЫЧНОЕ" }
@@ -245,6 +177,9 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
 .dialogue-message.incoherenthello .dialogue-text, .readout-log .message.incoherenthello {
     background-image: url(https://coppertubing.github.io/dontlookhere/images/hello.gif) !important;
 }
+
+
+
 
 #realgrid .cor-rusign {
     width: 40%;
