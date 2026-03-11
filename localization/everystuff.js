@@ -431,7 +431,7 @@ env.localization['strings'] = {
     "akizet": "акизет",
 
     // mothspeak
-    "what's up buddy?": "чё как, дружище?",
+    "what's up buddy": "чё как, дружище",
     "anything else?": "что-нибудь ещё?",
     "what's up?": "чё как?",
     "anything else on your mind?": "что-нибудь ещё на уме?",
@@ -626,6 +626,7 @@ env.localization['strings'] = {
 
     "referential scar": 'ссылочный рубец',
         "you can't focus on it from this far away.": 'не выходит сосредоточиться на нём с такого расстояния.', 
+        "utilize": "воспользоваться",
 
 
 

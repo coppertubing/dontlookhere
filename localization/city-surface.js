@@ -1939,7 +1939,7 @@ cooler
         i... i cannot quite make out what he means
 
     oliver
-        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать?
+        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать? --- И каким хером отсюда хоть что-то достанешь?
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon
@@ -2436,7 +2436,7 @@ cor_ru.vehiName = cor_ru.entity_menu["vehicle stream crossing mechanism"].name
 
 env.dialogueActors[cor_ru.vehiName] = {
     image: '/img/local/city/blacklamp_crossing.gif',
-    type: "recollection portrait-bright incoherent",
+    type: "recollection portrait-auto portrait-center incoherent",
 }
 env.citystreet.wait = new Howl({
     onload: function () {page.howls.push(this)},
@@ -2452,7 +2452,7 @@ env.citystreet.wait = new Howl({
 env.citystreet.walk = new Howl({
     onload: function () {page.howls.push(this)},
     onplay: function () {chatter({actor: cor_ru.vehiName, text: "Идите.", readout: true, sfx: false})},
-    src: ['/audio/crossingwait.ogg'],
+    src: ['/audio/crossingwalk.ogg'],
     preload: true,
     loop: true,
     volume: 1,
@@ -2461,292 +2461,54 @@ env.citystreet.walk = new Howl({
     }
 })
 
-// --- sorry we are torturing the stage to add in a Localizationy Sign Definition Thing(s)
-env.stages['city_street3'] = {
-    locale: "nightcity",
-    width: 14,
-    exec: ()=>{ 
-        if(!check('ep0_epilogue')) {
-            [env.stage.real, env.stage.ref].forEach(layer => {
-                layer.querySelectorAll('.later').forEach(e => {
-                    console.log(e)
-                    e.classList.remove('prop', 'later')
-                    e.innerHTML = ""
-                })
-            })
+// --- golem maintenance-esque inherited context sign to localize the vehicle stream crossing mechanism's "press button for fish"
+// --- trying to be as non invasive as possible but yknow
+
+env.stages['city_street3']["entities"]["Ъ"] = { // --- defining the entity that will make the sign appear
+    class: "notile",
+    contains: {
+        html: `<span class='cor-rusign' definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'нажмите кнопку для';'изображение рыбы'"></span>`, // --- text of the sign and its css class
+        dyp: {
+            image: "/", 
+            transform: 'translateZ(var(--tile3)) translate(var(--tile-5)) translate(-15px) translateY(-95px) translateZ(0px) rotateY(90deg)' // --- physically the sign is like. somewhere where the player cannot see it cause 1. you cant place a sign directly over the VSCM due to how stages work 2. i couldnt bother with finding out how to change its sprite to invisible when i can just hide it lol. sooo you gotta push it around to the desired spot via all that translate stuff
         }
-
-        env.stage.real.querySelectorAll('#crossbutton').forEach(el=>{
-            el.addEventListener('mouseenter', ()=>{play("muiHover", 1)})
-
-            el.addEventListener('click', ()=>{
-                env.entities["vehicle stream crossing mechanism"].actions[0].exec()
-            })
-        })
-    },
-
-    leaveExec: ()=> {
-        env.citystreet.buttonActive = false
-        clearTimeout(env.citystreet.buttonTimeout)
-        env.setTimeout(() => {
-            if(env.stage.name != "city_street3" || check("mask") != "joy") {
-                env.citystreet.wait.stop()
-                env.citystreet.walk.stop()
-                env.bgm.rate(1)
-                content.classList.remove('hide-envoy')
-            }            
-        }, 50)
-    },
-
-    entities: {
-        n: {
-            teleportSpot: 83,
-            teleportTarget: "city_street2"
-        },
-
-        P: {
-            teleportTarget: "city_flowers",
-            shouldFace: 'up',
-            contains: {
-                dyp: {
-                    width: 5,
-                    height: 4,
-                    image: 'url(/img/local/city/flowershop.gif)',
-                    transform: `translateX(10%) rotateY(-90deg)`,
-                    noback: true
-                }
-            } 
-        },
-    
-        ":": {
-            teleportTarget: "city_flowers",
-            shouldFace: 'up',
-            contains: {
-                dyp: {
-                    width: 5,
-                    height: 4,
-                    image: 'url(/img/local/city/flowershop.gif)',
-                    transform: "rotateY(90deg) translateX(10%) rotateY(-90deg)",
-                    noback: true
-                }
-            } 
-        },
-
-        L: {
-            class: "prop",
-            contains: { 
-                dyp: {
-                    image: 'url(/img/local/city/blacklamp.gif)',
-                    width: 1.5,
-                    height: 4
-                }
-            } 
-        },
-
-        ";": {
-            class: "prop",
-            contains: { 
-                html: `<div id="crossbutton" class="target" entity="vehicle stream crossing mechanism"></div>`,
-                dyp: {
-                    image: 'url(/img/local/city/blacklamp_crossing.gif)',
-                    width: 1.5,
-                    height: 4,
-                    transform: "rotateY(90deg)",
-                }
-            } 
-        },
-
-        "O": {
-            class: "prop road blocks",
-            contains: { 
-                dyp: {
-                    image: 'url(/img/local/city/crossing_locked.gif)',
-                    width: 2,
-                    height: 4,
-                    style: "transform: translate(50%, 12.5%);bottom: unset;"
-                }
-            } 
-        },
-
-        "o": {
-            class: "prop road blocks",
-            contains: { 
-                dyp: {
-                    image: 'url(/img/local/city/crossing.gif)',
-                    width: 2,
-                    height: 4,
-                    style: "transform: translate(50%, 12.5%);bottom: unset;"
-                }
-            } 
-        },
-        
-        "C": {
-            teleportTarget: "city_banks",
-            teleportSpot: 112,
-            shouldFace: "down"
-        },
-        
-
-        J: {
-            class: "road",
-            contains: {
-                dyp: {
-                    class: "joygap",
-                    image: 'url(/img/textures/flowergate0.gif)',
-                    width: 3,
-                    height: 3,
-                    noback: true,
-                    transform: "rotateY(180deg)"
-                }
-            } 
-        },
-
-        "j": {
-            class: "faketeleport joyport",
-            exec: ()=>{ 
-                change("TEMP!!from", "street")
-                moveTo("/local/city/aquarium/") 
-            }
-        },
-
-        "¤": {
-            class: "road darktile blocks",
-            contains: {
-                html: `
-                    <div class="target joyonly" entity="˜CâR…"></div>
-                    <div class="joyonly joygarnish garnishportal caseportal"><div class="carsign"></div></div>
-                `,
-                dyp: {
-                    image: 'url(/img/local/beneath/car.gif)',
-                    width: 3,
-                    height: 3,
-                    transform: "rotateY(180deg)"
-                }
-            } 
-        },
-
-        "ø": {
-            contains: {
-                examineEntity: "s w   al kk",
-                html: `<div class="joyonly joygarnish garnishprop"></div>`,
-                dyp: {
-                    class: "civvie swalk face-creature",
-                    image: 'url(/img/local/city/pedestrian5.gif)',
-                    width: 1.5,
-                    height: 2,
-                    transform: "rotateY(180deg) rotateY(var(--faceAngle))",
-                    style: "transition: transform 400ms ease-in-out;"
-                }
-            } 
-        },
-        
-        G: {
-            class: "notile",
-            contains: {
-                examineEntity: "×è.÷ùÏÏøø",
-                class: `joyonly freedomonly`,
-                html: `<div class="joygarnish garnishprop" style="backface-visibility: visible;"></div>`,
-                dyp: {
-                    class: "camguy",
-                    image: 'url(/img/local/beneath/lost_pedestrian1.gif)',
-                    width: 1,
-                    height: 2.5,
-                    transform: 'translateZ(var(--tile-5)) translate(var(--tile-8)) rotateY(-120deg)'
-                }
-            } 
-        },
-        Ъ: { // --- actual cor-ru addition
-            class: "notile",
-            contains: {
-                html: `<span class='cor-rusign' definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'нажмите кнопку для';'изображение рыбы'"></span>`,
-                dyp: {
-                    image: "/",
-                    transform: 'translateZ(var(--tile3)) translate(var(--tile-5)) translate(-15px) translateY(-95px) translateZ(0px) rotateY(90deg)'
-                }
-            } 
-        },
-    },
-
-    plans: {
-        default: `
-            rrrr.n........
-            rrrr░p░r......
-            rrrrL░░r......
-            rrrr░░░P......
-            rrrrL░░r......
-            rrrr░░░rG.....
-            rrrrL░░rrr:rr.
-            rrrr░░░░░░░░░.
-            rrrrl░░░░░░░░C
-            rrrr░░░░░░░░░.
-            rrrrrrrrrrrrrr
-            rrrrrrrrrrrrrT
-            rrrrrrrrrrrrrT
-            rRRrrrrrrrrrrr
-        `,
-
-        joy: `
-            rrrr.n........
-            rrrr░p░r......
-            rrrrL░░r......
-            rrrr░░░P......
-            rrrrL░░r......
-            rrrr░░░rGЪ....
-            rrrrL░░rrr:rr.
-            rrrr░░░░░░░░░.
-            rrrr;░░░░░░░░C
-            rrrr░░░░░░ø░░.
-            rrrrrrrrrrr¤rr
-            rrrrOrrrrrrrrT
-            rrrrrrrrrrrrrT
-            rRRrrrrrrrrrrr
-        `, // --- actual cor-ru addition (see that Ъ?)
-
-        joycrossing: `
-            rrrr.n........
-            rrrr░p░r......
-            rrrrL░░r......
-            rrrr░░░P......
-            rrrrL░░r......
-            rrrr░░░rGЪ....
-            rrrrL░░rrr:rr.
-            rrrr░░░░░░░░░.
-            rrrr;░░░░░░░░C
-            rrrr░░░░░░ø░░.
-            rrrrr░rrrrr¤rr
-            rrrro░rrrrrrrr
-            rrrrr░rrrrrrrr
-            rrrrrjrrrrrrrr
-            rrrrrJrrrrrrrr
-        `, // --- actual cor-ru addition (see that Ъ?)
-    },
-
-    getPlan: function() {
-        let plan = this.plans.default
-        
-        switch(check("mask")) {
-            case "joy":
-                plan = this.plans.joy
-                env.citystreet.buttonActive = true
-            break
-
-            default:
-                env.citystreet.buttonActive = false
-        }
-
-        return plan
-    },
-
-    planAdjustment: (plan) => {
-        let newPlan = plan
-
-        if(!check("effigy_sipper")) newPlan = newPlan.replace("G", ".")
-        if(!check("car__intro")) newPlan = newPlan.replace('ø', '░').replace('¤', 'r')
-
-        return newPlan
-    }
+    } 
 }
+// --- joy and joycrossing plans changed to include our sign entity. see that Ъ?
+env.stages['city_street3']["plans"]["joy"] = `
+    rrrr.n........
+    rrrr░p░r......
+    rrrrL░░r......
+    rrrr░░░P......
+    rrrrL░░r......
+    rrrr░░░rGЪ....
+    rrrrL░░rrr:rr.
+    rrrr░░░░░░░░░.
+    rrrr;░░░░░░░░C
+    rrrr░░░░░░ø░░.
+    rrrrrrrrrrr¤rr
+    rrrrOrrrrrrrrT
+    rrrrrrrrrrrrrT
+    rRRrrrrrrrrrrr
+`
+env.stages['city_street3']["plans"]["joycrossing"] = `
+    rrrr.n........
+    rrrr░p░r......
+    rrrrL░░r......
+    rrrr░░░P......
+    rrrrL░░r......
+    rrrr░░░rGЪ....
+    rrrrL░░rrr:rr.
+    rrrr░░░░░░░░░.
+    rrrr;░░░░░░░░C
+    rrrr░░░░░░ø░░.
+    rrrrr░rrrrr¤rr
+    rrrro░rrrrrrrr
+    rrrrr░rrrrrrrr
+    rrrrrjrrrrrrrr
+    rrrrrJrrrrrrrr
+`
 
-refreshStage({noFlash: true})
+refreshStage({noFlash: true}) // --- updating the stage real quick so that it reflects the changes
 
 getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
