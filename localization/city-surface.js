@@ -229,7 +229,7 @@ RESPOBJ::
         где это было?<+>where
         не могу дальше?<+>elevatorblock
             SHOWIF::[['interview1__firstchat-behonest', false], ['citystreet_triedchat', true]]
-        the slide room?<+>dataroom
+        комната со слайдами?<+>dataroom
             SHOWIF::['dataroom', true]
 
         неважно<+>CHANGE::++moth
@@ -277,10 +277,10 @@ elevatorblock
 
 dataroom
     self
-        What are those slides about? // О чём эти слайды?
+        а о чём те слайды?
     
     moth
-        you can't read them on your end either, huh "" так ты тоже не можешь их прочитать, хах
+        ага, значит тебе тоже ничего не видно
         well i guess the FBX really opened up to akizet, because that looked like some pretty serious info // ну видать ФБКС в самом деле раскрылось акизет, потому что это всё выглядит как серьёзная инфа
         not the kind of presentation you'd give a visiting official, you wouldn't give them technical details // какому-нибудь приезжему чиновнику не стал
         but just from what i can make out, uh...
@@ -301,8 +301,8 @@ dataroom
         maybe they were doing their own analyses with akizet's help, to get people up to speed
         obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding
         speaking of, there's a couple of human-looking schematics in there
-        god i wish akizet's memories were like
-        higher resolution
+        боже вот бы воспоминания акизет были типа
+        в более высоком разрешении
 
 ____SHOWIF::"2040thing"
     self
@@ -1938,11 +1938,7 @@ cooler
         i... i cannot quite make out what he means
 
     oliver
-<<<<<<< HEAD
-        Каким хером я должен что-то отсюда достать?
-=======
         How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать? --- И каким хером отсюда хоть что-то достанешь?
->>>>>>> 33368d451c7d9e2fa772de8178030b510c14f27f
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon

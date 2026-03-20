@@ -258,7 +258,7 @@ whynow
             EXEC::env.interview.classMod('ease');env.interview.camSpeed("2s");env.interview.cam('akipov');
     
     funfriend
-        примечание: семь лет примерно равны трём θглазам
+        примечанье: семь лет примерно равны трём θглазам
             EXEC::env.interview.cam('akipovup')
     
     akizet

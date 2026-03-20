@@ -5,7 +5,7 @@
     > localization/uncosm.js
     localization for /local/uncosm
 
-    progress: fully finished as of 23.08.2025
+    progress: fully finished except for rotwatcher as of 23.08.2025
 */
 
 

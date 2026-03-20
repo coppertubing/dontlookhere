@@ -5,7 +5,7 @@
     > localization/beneath-maze.js
     localization for /local/beneath/depths
 
-    progress: just fill these things out and we're done as of 23.08.2025
+    progress: done as of 11.03.2026
 */
 
 

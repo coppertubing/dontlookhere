@@ -442,8 +442,8 @@ resp2right
     drowning sourceless
         я оттягиваю свои рецепторы назад в знак неодобренья
             EXEC::env.abyss.drowningFear(0)
-        но отростки её собственных лишь расправляются вслед за близнецовой ухмылкой
-        она слегка наклоняется, нависая надо мной
+        но отростки её собственных лишь расправляются вслед за близнецовою ухмылкою
+        она слегка наклоняется, нависая надо мною
 
     drowning
         хихи! чтоо?
@@ -522,7 +522,7 @@ resp3right
         быть может, то всего лишь цитрусовая пелена, но...
             EXEC::env.abyss.drowningFear(0)
         когда я в последний раз думала хоть о чём-нибудь другом?
-        зов, наши исследования, только это, каждый θвзор
+        зов, наши исследованья, только это, каждый θвзор
         like the natural curl of my receptors are simply out of stress and focus
         yet here, we are free from this burden, just for a while
         i understand the deserters, now

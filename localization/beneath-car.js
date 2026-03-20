@@ -73,40 +73,6 @@ start
     RESPONSES::self
         ок<+>END
 `)
-/* ORIG DIALOGUE FOR COMPARISON ILL REMOVE THIS LATER
-env.dialogues[`intro`] = generateDialogueObject(`
-start
-    sourceless
-        you feel a number of direct connections to and from this disjointed thoughtspace.
-            EXEC::flash(false)
-    
-    self
-        some of these are coherent places
-
-    moth
-        huh, yeah
-        these connections are kinda weird, too
-        not like the usual proper connective gates
-        more like holes that got torn open?
-        surprised funfriend hasn't caught them
-        maybe they're tiny idk
-
-    sourceless
-        though it isn't presenting visibly,
-        you feel that loitering thoughtform's presence.
-
-    self
-        be careful if you go to any of these places
-        maybe mimic whatever it was hiding this from you
-
-    s w   al kk
-        s sp speeed limit
-
-    RESPONSES::self
-        ok<+>END
-`)
-
-*/
 
 
 getLocalizationForPage(true) // --- ensuring that Nothing Gets Fucked Up
