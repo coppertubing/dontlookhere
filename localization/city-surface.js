@@ -56,7 +56,7 @@ env.localization.page['citystreet'] = {dialogues: {},
             "i have no need for more": "ещё больше мне не требуется",
         
         "taste": "попробовать",
-            "i fear i may crush this flimsy thing, but it is worth a test": "меня страшит, что я случайно раздавлю эту хлипкую вещицу, однако попробовать не помешает",
+            "i fear i may crush this flimsy thing, but it is worth a test": "меня страшит, что я случайно раздавлю эту хлипкую вещицу, однако попробовать не помешает", // "" как-то не тот смысл. Но оно стоит того чтобы попробовать? Типа того
             "it... yes, it is water": "это... да, это вода",
 
         // rotwatchery
@@ -95,7 +95,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "I know you don't exactly have the same needs we do...": "Я знаю, у Вас нет тех же потребностей, что у нас...",
         /*envoy*/ "But you can simulate taste, right?": "Но вы способны симулировать вкус, верно?",
         /*envoy*/ "Getting out here, with the people, acting like we do?": "Выбираться куда-нибудь в люди, вести себя как мы?",
-        /*envoy*/ "It makes a difference. Helps lessen the tension.": "Это имеет значение. Помогает ослабить напряжение.",
+        /*envoy*/ "It makes a difference. Helps lessen the tension.": "Всё это имеет значение. Помогает ослабить напряжение.",
 
         /*akizet*/ "i will have the orange": "апельсин, пожалуйста",
         /*cashier*/ "The...": "Апель...",
@@ -128,9 +128,8 @@ env.localization.page['citystreet'] = {dialogues: {},
 
 
         // unity
-
-        /*cashier*/ "Huh...?": "Ох...?",
-        /*cashier*/ "Sorry Akizet, we don't serve that here...": "Простите, Акизет, но у нас ничего такого не подают...",
+/*cashier*/ "Huh...?": "Ох...?",
+        /*cashier*/ "Sorry Akizet, we don't serve that here...": "Простите, Акизет, но у нас это не подают...",
         /*cashier*/ "But I wish we did!": "Хотя хотелось бы!",
         /*sourceless*/ "what? i said nothing...": "что? я ничего не говорила...",
 
@@ -278,12 +277,12 @@ elevatorblock
 
 dataroom
     self
-        What are those slides about?
+        What are those slides about? // О чём эти слайды?
     
     moth
-        you can't read them on your end either, huh
-        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info
-        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details
+        you can't read them on your end either, huh "" так ты тоже не можешь их прочитать, хах
+        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info // ну видать ФБКС в самом деле раскрылось акизет, потому что это всё выглядит как серьёзная инфа
+        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details // какому-нибудь приезжему чиновнику не стал
         but just from what i can make out, uh...
         oh man, we used to put the FBX motto everywhere
         anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon...
@@ -1903,14 +1902,14 @@ cooler
         but he signals for me to stop, and we approach
 
     oliver
-        C'mon... // Ну же...
+        Ну же...
 
     gordon
-        Hey, Oliver! // Эй, Оливер!
-        What's the matter? // Чего тут?
+        Эй, Оливер!
+        Чего тут?
 
     oliver
-        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! 
+        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! Рад встрече.
         The damn cooler's acting up again. // Да кулер опять тупит.
         It always does this shit, man. // Каждый раз одна и та же херь.
     
@@ -1918,10 +1917,10 @@ cooler
         cooler? is this a temperature regulator?
     
     oliver
-        Hahaha, what? // Хахаха, чего?
-        No, no, it's a <em>water</em> cooler. It keeps water cold. You know, for drinking. // Не-не, это НАЧИНАЕМ УТРО С ПЕРЕВОДА НЕПЕРЕВОДИМОЙ ШУТКИ кулер для <em>воды</em>. Сохраняет воду холодной. Ну, знаешь, для питья.
-        Actually, I never thought to ask... // Вообще, мне никогда в голову не приходило спросить...
-        Do ya like drinking cold water? Or, did ya, I guess? // Вам нравится пить холодную воду? Или, я полагаю, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
+        Хахаха, чего?
+        Не-не, это <span style="кор-ру хз" definition="блаблабла мы не можем это перевести блаблабла">кулер для <em>воды</em></span>. Сохраняет воду холодной. Ну, знаешь, для питья.
+        Вообще, мне никогда в голову не приходило спросить, но...
+        Вам нравится пить холодную воду? Или, скорее, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
 
     akizet
         oh, yes, of course!
@@ -1930,8 +1929,8 @@ cooler
         is it not intact?
 
     oliver
-        Well, I mean... // Ну, я имею в виду...
-        Look at it. // Взгляни на него.
+        Ну, я хочу сказать...
+        Взгляни на него.
 
     sourceless
         he gestures vaguely to the machine
@@ -1939,35 +1938,39 @@ cooler
         i... i cannot quite make out what he means
 
     oliver
+<<<<<<< HEAD
+        Каким хером я должен что-то отсюда достать?
+=======
         How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать? --- И каким хером отсюда хоть что-то достанешь?
+>>>>>>> 33368d451c7d9e2fa772de8178030b510c14f27f
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon
-        You put in a maintenance ticket? // Ты оформил талон на обслуживание? """ 
+        Ты оформил талон на обслуживание? 
     
     oliver
-        Ehh, not yet, but... // Ну-у, пока ещё нет, но...
-        It's not long before I've got a meeting with the Director. // У меня тут встреча с Директором скоро.
-        Ah, well, I'll just get something from the vending machines. // А-а, ладно, просто захвачу чего из торгового автомата.
-        Why are you two up here, anyway?  // В любом случае, зачем вы двое здесь?
+        Эээ, нет ещё, но...
+        У меня как бы встреча с Директором скоро.
+        Аа, ладно, просто захвачу чего из торгового автомата.
+        Впрочем, а вы двое здесь зачем?
 
     sourceless
         before we have a chance to respond, he answers himself in realization
 
     oliver
-        Ahh, you're the Director's eight o'clock! // Ааа, вы Директорские в восемь часов!
-        Shit, don't let me hold you. // Дерьмо, не дайте мне вас задержать.
+        Ааа, вы Директорские "в восемь часов"!
+        Вот дерьмо, не дайте мне вас задержать.
 
     gordon
-        Sure, Oliver. You know, if you don't want to pay for a drink... // Разумеется, Оливер. К слову, если не хочешь платить за напиток...
-        You could check the big meeting room past the elevators. // Можешь проверить большую комнату для совещаний после лифтов.
-        I'm pretty sure there's a mini fridge in there. // Уверен, там есть мини-холодильник.
+        Разумеется, Оливер. К слову, если не хочешь платить за напиток...
+        Можешь проверить большой зал для совещаний за лифтами.
+        Там наверняка есть мини-холодильник.
     
     oliver
-        Ohh, good idea! // Оох, хорошая идея!
+        Ооо, славная идейка! """ он глупый он глупыйонглупыйон глупый онглупый онлглыйогувлорв мне он ТАК сильно напоминает одного персонажа которого эм я буквально знаю только из картинок одного художникаБОЖЕ МОЙ КОТЁНОЧЕК 
 
     gordon
-        But we'd better not be late. // Но нам лучше бы не опаздывать.
+        Но лучше бы нам не опаздывать.
     
     akizet
         ah, yes
@@ -1975,7 +1978,7 @@ cooler
         may your hunt bear fruit
 
     oliver
-        See ya around. // Свидимся.
+        Свидимся.
 
     RESPONSES::akizet
         offer cup<+>gotwater
@@ -1992,30 +1995,30 @@ gotwater
             EXEC::env.citystreet.oliverCup()
 
     oliver
-        Huh? // Хах?
-        Wait, how-- // Погоди, как--
+        Хах?
+        Погоди, как--
             AUTOADVANCE::
             WAIT::2000
-        Where did you get that? // Откуда она у тебя?
+        Откуда она у тебя?
     
     akizet
         very glad to have helped, my friend
     
     oliver
-        That's not what I... // Это не то что я...
-        ...Yeah, sure, thanks. // ...Да-а, конечно, спасибо.
+        Это не то что я...
+        Да-а, конечно, спасибо.
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Wait, did you drink from this? // Погоди, ты, пила из него?
+        Погоди, ты пила из него?
 
     akizet
         there was no change in the contents, if that is what concerns you, oliver
         would you like me to get another one?
 
     oliver
-        Uh, no, it's--it's fine. // Э-э, нет, всё--всё в порядке.
-        You should probably get to your meeting. // Тебе, наверное, на встречу уже пора.
+        Э-э, нет, всё--всё в порядке.
+        Тебе, наверное, на встречу уже пора.
 ____END
 
     RESPONSES::akizet
@@ -2031,8 +2034,8 @@ gotwaterbonus
             EXEC::env.citystreet.oliverCup()
 
     oliver
-        Akizet, I-- // Акизет, У--
-        I already... // У меня уже...
+        Акизет, У--
+        У меня уже... "" он в таком отчаянии
             AUTOADVANCE::
             WAIT::2000
     
@@ -2040,12 +2043,12 @@ gotwaterbonus
         very glad to have helped, my friend
     
     oliver
-        Okay. // Ладно.
+        Ладно.
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Did you...? // Ты, что...?
-        Whatever, it's fine. // Неважно, ничего страшного.
+        Ты, что...?
+        Плевать, пусть будет так.
 ____END
 
     RESPONSES::akizet
@@ -2084,8 +2087,8 @@ talknow
         slightly perturbed by my approach, as if i am impeding something
 
     cass
-        Akizet, I really can't talk right now. // Акизет, я действительно не могу говорить сейчас.
-        Let's save it for the next project meeting, all right? // Отложим это до следующей встречи по поводу проекта, хорошо?
+        Акизет, я правда не могу сейчас разговорить.
+        Отложим это до следующей встречи по поводу проекта, хорошо?
 
     akizet
         oh? apologies, director
@@ -2111,8 +2114,8 @@ talklater
         expression twisting with impatience
 
     cass
-        Oh, you're still here? // О, Вы ещё здесь?
-        The team is waiting for you, Akizet. // Команда ждёт Вас, Акизет.
+        О, Вы ещё здесь?
+        Команда вас ждёт, Акизет.
         
     akizet
         ah--?
@@ -2123,12 +2126,12 @@ talklater
         i turn to leave, the director speaking indistinctly to her device as i go
 
     cass::whisper
-        What was I saying? Right... // О чём я говорила? Точно...
+        О чём я говорила? Точно...
             EXEC::vnp({cass: "show", hideStage: true})
-        I'm not ready to involve you in this project, yet. // Я не готова вовлекать Вас в этот проект, пока.
-        I've been trying to help push you in the right direction, but... // Я старалась подтолкнуть Вас в нужном направлении, но...
-        You really weren't supposed to hear about any of this so soon. // Совсем не предпологалсь, что Вы услышите о чём либо из этого скоро.
-        But we're not opposed. What I'm doing will get you what you want. // Но мы по одну сторону баррикад. То, чем я занимаюсь, приведёт Вас к желаемому.
+        Я не готова вовлекать Вас в этот проект, пока.
+        Я старалась подтолкнуть Вас в нужном направлении, но...
+        Не предполагалось, что Вы услышите о чём либо из этого так рано.
+        Но мы по одну сторону баррикад. То, чем я занимаюсь, приведёт Вас к желаемому.
 
     self
         you're talking to me, right?
@@ -2140,14 +2143,14 @@ talklater
         h  her voice quiets as  i   near the do or
 
     cass::whisper
-        Yeah, basically. I could help you a lot more than the idiot above me. // Да, главным образом. Я могла бы помочь Вам куда больше, чем идиот надо мной.
-        I don't need to tell you how stubborn and inefficient they are. // Мне не нужно объяснять, насколько он упёртый и неэффективный.
-        Even I'm constantly getting grilled for what we're doing out here. // Даже я постоянно отхватываю за то, чем мы тут занимаемся.
-        If they knew what's going on <em>now</em>... It'd be one hell of a spectacle. // Если бы он только знал, что происходит <em>сейчас</em>... Это было бы адское зрелище.
-        Don't misunderstand, though. I do trust you. // Впрочем, не поймите неправильно. Я доверяю Вам.
-        I'm very interested in what we'll be able to do, together. // Я заинтригована тем, на что мы будем способны, вместе.
-        Until I can get you in. Just keep this between us. Off the record. // До тех пор пока я не могу вовлечь Вас. Пусть это останется между нами. Вне протокола.
-        If word gets out, nobody's going to be happy. // Если слух проскользнёт - никто не будет рад.
+        Да, главным образом. Я способна помочь Вам куда больше, чем кретин надо мной.
+        Мне не нужно говорить, какой же он упёртый и неэффективный.
+        Даже я постоянно отхватываю за то, чем мы тут занимаемся.
+        Если бы он только знал, что творится <em>сейчас</em>... Это было бы адское зрелище.
+        Впрочем, не поймите неправильно. Я доверяю Вам.
+        Я заинтригована тем, на что мы будем способны вместе.
+        И до тех пор, пока я не могу вовлечь Вас. Пусть это останется между нами. Вне протокола.
+        Если пойдёт слух - никто не обрадуется.
 
     sourceless incoherent
         whaa t a st t range c on onversation
@@ -2205,8 +2208,8 @@ ____SHOWIF::["citystreet__director-meeting", false]
         WARNING::"cohesion error detected";"non-fatal";"continuing render"
         
     cass::open
-        Oh... That's not good. // Ох... Это нехорошо.
-        How did you get in here? // Как Вы сюда попали?
+        Ох... Это нехорошо.
+        Как Вы сюда попали?
 
     moth
         buddy this thing is going to cause a breakdown if you stay near it
@@ -2247,7 +2250,7 @@ ____END
     cass
         Гордон, Акизетеше!
             EXEC::vn.done()
-        It's good to see you both, truly. // Рада видеть вас обоих, правда.
+        Рада видеть вас обоих, правда.
 
     sourceless
         she steps closer to shake gordon's hand, then my claw
@@ -2271,33 +2274,33 @@ ____END
         she turns the card over in her hand, smile held steady
     
     cass
-        It's the least I could do, really. // Правда, это меньшее, что я могу сделать
-        We all appreciate what you're doing here, Akizet. // Мы все ценим ваши усилия, Акизет.
+        Правда, это меньшее, что я могу сделать
+        Мы все ценим то, чем вы здесь занимаетесь, Акизет.
     
     sourceless
         as the director, i imagine she must be deeply familiar with receptor language by now
         and so i try to suppress the subtle unease her tone inspires
 
     cass
-        Just like you wanted, we have as few hands and eyes involved as possible. // Точно как Вы и хотели, мы привлекли настолько мало рук и глаз, насколько это возможно.
-        It's me, a few officers for oversight, Gordon here, and some very good technicians. // Это я, несколько агентов для надзора, Гордон здесь и очень хорошие техники.
+        Точно как Вы и хотели, мы привлекли настолько мало рук и глаз, насколько это возможно.
+        Это я, агенты для надзора, Гордон здесь и несколько выдающихся техников.
 
     akizet
         delightful! """ неописуемо нелепый ответ. её навыки в этом поражают даже меня
 
     cass
-        The only thing is, there are still parts that don't add up. // Единственное, есть моменты, которые никак не сходятся.
+       Единственное, есть один момент, который никак не сходится.
 
     sourceless
         she punctuates her words with an idle waving of the card, held tightly between two fingers
         from the corner of my vision, i see gordon shift, having grown tense
     
     cass
-        The secrecy from <em>your own people</em> is <em>very</em> strange. // Секретность от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
-        Obviously, I wouldn't ever decline what you're offering. // Очевидно, я бы ни за что не отказалась от вашего предложения. 
-        Any country, corporation--hell, anyone off the street would <em>kill</em> for this thing. // Любая страна, любая корпорация--чëрт, да кто угодно с улицы <em>убил бы</em> за подобное.
-        This has the potential to be the biggest societal and technological leap in humanity's history. // У этого есть потенциал стать самым большим общественным и социальным рывком в истории человечества. 
-        It would be an incredible political bargaining chip, if we had to use it that way. // Это стало бы немыслимым политическим козырем, если бы нам пришлось так это использовать.  агхх слишком много "это" но я не знаю как исправить 
+        Утаивание от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
+        Очевидно, я ни в коем случае не отказалась бы от Вашего предложения. 
+        Любая страна, любая корпорация--чëрт, да любый с улицы <em>убил бы</em> за него.
+        У этого есть потенциал стать самым большим общественным и социальным рывком в истории человечества. 
+        Если бы нам понадобилось, оно бы стало невероятным политическим козырем.  агхх слишком много "это" но я не знаю как исправить 
         And yet, you only want help tracking the Call down, // И всё же, вы просите только о помощи с отслеживанием Зова,
         Which, as you know, we're already doing - just without your technology. // Чем, насколько я знаю, мы уже занимаемся - разница лишь в отсутствии ваших технологий. "" почему здесь дефис
         And privacy?  // И приватность?
@@ -2310,10 +2313,10 @@ ____END
             AUTOADVANCE::
         
     cass
-        Yes, yes, yes, I know the circumstances. // Да-да-да, я знаю обстоятельства.
-        But even the rest of her <em>team?</em> // Но даже никому из её <em>команды?</em>
-        It doesn't make sense. // В этом нет никакого смысла.
-        What am I missing, Akizet? // Что я упускаю, Акизет?
+        Да-да-да, я знаю обстоятельства.
+        Но даже никому из её <em>команды?</em>
+        В этом нет никакого смысла.
+        Что я упускаю, Акизет?
 
     sourceless
         i feel her gaze bore into me, the smile flattened away over time
@@ -2373,9 +2376,9 @@ ____END
         wordlessly, without warmth, she tips the card in her hand towards me in offering
 
     cass
-        Hm. // Хм.
-        That's very noble. // Это крайне благородно.
-        Well, everything's all set up. // Что ж, всё уже готово. "" мямяумяу
+        Хм.
+        Это крайне благородно.
+        Well, everything's all set up. // Что ж, всё уже готово. "" мямяумяу "" ??? почему ты мяукаешь
 
     sourceless
         i... take the card
