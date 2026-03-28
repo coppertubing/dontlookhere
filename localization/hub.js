@@ -966,8 +966,8 @@ ah1
         ОНА БУДЕТ РЕАГИРОВАТЬ НА ТВОИ УКАЗАНья И ОБЛАДАЕТ СПОСОБНОСТЬЮ УДАЛЯТЬ
 
     RESPONSES::self
-        как попасть в беспространство<+>ah1uncosm
-        что такое беспространство<+>ah1whatuncosm
+        как попасть в &quot;беспространство&quot;<+>ah1uncosm
+        что такое &quot;беспространство&quot;<+>ah1whatuncosm
         окей<+>loop
             FAKEEND::(назад)
 
@@ -985,8 +985,8 @@ ah1uncosm
         И РАЗЫЩИ СВОЮ ЖЕРТВУ
 
     RESPONSES::self
-        как попасть в беспространство<+>ah1uncosm
-        что такое беспространство<+>ah1whatuncosm
+        как попасть в &quot;беспространство&quot;<+>ah1uncosm
+        что такое &quot;беспространство&quot;<+>ah1whatuncosm
         окей<+>loop
             FAKEEND::(назад)
 
@@ -1011,8 +1011,8 @@ ah1whatuncosm
         ЭТО БЫЛО БЫ ОЧЕНЬ КСТАТИ
 
     RESPONSES::self
-        как попасть в беспространство<+>ah1uncosm
-        что такое беспространство<+>ah1whatuncosm
+        как попасть в &quot;беспространство&quot;<+>ah1uncosm
+        что такое &quot;беспространство&quot;<+>ah1whatuncosm
         окей<+>loop
             FAKEEND::(назад)
 

@@ -139,7 +139,7 @@ env.localization.page["recosm"].dialogues["lowintensitycallout"] = generateDialo
 start
     sys
         ВНИМАНИЕ::'запрошена генерация прокси';'необходимо управление в реальном времени'
-        NOTICE::'utilize <span definition="NOTE::'limbic motor beacon'">LMB</span> to trigger dissociative pulse';'avoid contact with incoherence'
+        NOTICE::'utilize --- а хотя оно наверно поменяется с эмбасси ревроком. пофиг. лялялялял лопер глупый <span definition="ПРИМЕЧАНИЕ::'лимбический контроль моторики'">ЛКМ</span> to trigger dissociative pulse';'avoid contact with incoherence'
         УВЕДОМЛЕНИЕ::'некоторые конфигурации оборудования могут быть несовместимы'
         УВЕДОМЛЕНИЕ::'активируйте ПОНИЖЕННУЮ ИНТЕНСИВНОСТЬ в системном меню, если необходимо'
         ЗАПРОС ПОЛЬЗОВАТЕЛЮ::'продолжить?'

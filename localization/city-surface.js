@@ -2346,7 +2346,7 @@ ____END
     sourceless
         a quiet rage boils in the back of my mind
         i dearly wish to speak of the conflict
-        but as in θparasite, i must gather my bulbs
+        but as in <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'простая игра управленья ресурсами и воровством';'любима в олтазни'">parasite,</span> i must gather my bulbs
         the director <em>must not know,</em> but without that knowledge,
         the only conceivable reasons for my secrecy would be...
         unspeakably grim prospects

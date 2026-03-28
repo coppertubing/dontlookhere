@@ -11,7 +11,9 @@
 
 
 env.localization.page['abyss'] = {dialogues: {},
-    definitions: {}, 
+    definitions: {
+        "θззоуст": {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'восклицание';'вкуси это редкое мгновение';'правильное произношенье исключительно выкриком'`}
+    }, 
     strings: {
         "still not getting anything detailed here": "",
         "about whatever this is": "о том, чем бы это ни было",
@@ -139,7 +141,7 @@ camera
         ну, опять же, ты сейчас по горло в бессвязности
         скорее всего это просто поломанная мыслеформа в которой ещё осталось немножко памяти
 ____SHOWIF::["gol__s_calls-gordon", false]
-        что бы это ни было, нам скорее всего придётся ждать пока развледруг не дочинит его "" больше местоимений
+        что бы это ни было, нам скорее всего придётся ждать пока развледруг не дочинит его
 ____SHOWIF::["gol__s_calls-gordon", true]
         maybe it's something that knows about the whole "they sent a probe" thing and is trying to act the part --- !!!!!!!!!!!
 ____END
@@ -289,7 +291,7 @@ RESPOBJ::
 env.localization.page['abyss'].dialogues.drowningResp4 = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        но они не рыбы<+>resp4right
+        но они не как луна<+>resp4right
             HIDEREAD::
         они кусаются?<+>resp4wrong1
             HIDEREAD::
@@ -447,7 +449,7 @@ resp2right
 
     drowning
         хихи! чтоо?
-        кавику можно называть тебя аки, не так ли?
+        кавику можно называть тебя аки, не так ли? --- кавик же зовёт тебя аки, не так ли?
 
     drowning sourceless
         увеселенье в её голосе - тяжёлое, раскрепощённое...
@@ -519,14 +521,14 @@ resp3right
         ты права
         
     drowning sourceless
-        быть может, то всего лишь цитрусовая пелена, но...
+        быть может, то - всего лишь цитрусовая пелена, но...
             EXEC::env.abyss.drowningFear(0)
         когда я в последний раз думала хоть о чём-нибудь другом?
         зов, наши исследованья, только это, каждый θвзор
         like the natural curl of my receptors are simply out of stress and focus
         yet here, we are free from this burden, just for a while
-        i understand the deserters, now
-        yes--for this bright evening, i will eschew these weights
+        i understand the deserters, now --- хз как эти три строки переводить помогайте мяу мяу
+        да--на этот светлый вечер я отброшу эти грузы
         
     drowning
         да!!
@@ -537,24 +539,24 @@ resp3right
         и <em>не</em> перед остальными
         
     drowning sourceless
-        even with my stern delivery, her receptors curl with delight, and i occupy myself with my drink
-        where i expected teasing, her receptors are spread with a genuine warmth
+        несмотря на строгость моего тона, её рецепторы сгибаются от восторга, а я испиваю из своего напитка
+        там, где я предвидела подразниванья, её рецепторы раскрываются с искреннею теплотою
 
     drowning
         хорошо!! хихи...
-        cool --   хмммм как --- мяу мяу
+        класс
         ...о! вот!
         уже темнеет! смотри!
 
     drowning sourceless
-        one of her tall receptors gestures towards the blackened depths, away from shore
-        the little bubble creatures are swarming, bumbling blindly around one another
+        один из её высоких рецепторов делает жест в сторону почерневших глубин, вдали от берега
+        маленькие пузыреподобные существа роятся, слепо налетая друг на друга
             EXEC::content.classList.add('jellymode', 'dim');
 
     drowning
-        эти маленькие существа, они называются медузы!
-        для наших близнецов они - большая проблема, потому что кусаются, когда их трогаешь
-        но не волнуйся! их крошечные зубки не могут нам навредить!
+        эти маленькие существа, они называются лунные медузы!
+        для наших близнецов они - большая проблема, потому что кусаются, если до них дотронуться
+        но не волнуйся! их крошечные зубки нам не навредят!
         
     drowning sourceless
         наконец, последний свет звезды близнецов угасает...
@@ -603,10 +605,10 @@ ____END
 
 resp4right
     self
-        но они не рыбы
+        но они не похожи на луну
     
     drowning akizet
-        ведь так? у "рыб" имеется чешуя, и характерные глаза, чего у этих...
+        ведь так? и их количество куда больше предполагает имя, связанное со звёздами...
 
     drowning
         эхехе! да!
@@ -621,15 +623,15 @@ resp4right
         но, смотри!
 
     drowning sourceless
-        she peers over my shoulder, pointing with one of her receptors to direct my gaze
-        a closer receptor nearly bumps into one of mine, but both recoil from that boundary
-        the little jellyfish have begun to glow,
+        она заглядывает за моё плечо, направляя мой взгляд одним из рецепторов
+        другой рецептор поближе чуть не натыкается на мой собственный, однако оба отшатываются от этой границы
+        маленькие лунные медузы стали светиться,
             EXEC::content.classList.add('jellymode');content.classList.remove('dim')
-        unevenly, strangely, not like the fruits of home
-        the ocean current pushes them, and they glimmer in groups
-        they bump into one another, and they pulse as if in greeting
-        barring the current, it is silence around us, surrounded with gentle flashes and flows of their quiet light
-        away from the lamps and fires of the cousins' shore, it is as if we are home again in the dark
+        неравномерно, по-странному, отнюдь не фрукты с родины
+        морское теченье толкает их, и они мерцают в группах
+        они сталкиваются с друг другом, и они загораются, будто обмениваясь приветствиями
+        не считая теченье, мы окружены лишь тишиною и нежными взблесками их молчаливого света
+        вдали от ламп и огней близнецового берега, словно мы вновь дома, в его тьме
 
     drowning akizet
         ...
@@ -642,13 +644,14 @@ resp4right
         ...
         ах, вот!
         садись со мною!
-        ззоуст!!
+        θззоуст!!
 
     drowning sourceless
         казки падает обратно на морское дно, вздымая облачко песка
             EXEC::change("drowningCalmed", true)
         я устраиваюсь рядом с ней и смеюсь
-        she reaches over, clinking her simulacrum against mine with a pleased giggle of her own с довольным смешком 
+        она тянется ко мне с довольной усмешкой и наши симулякры звенят от столкновенья
+            cor-ru::--- я не знаю что за призрак отсебятины вселился в меня это проклятый диалог. энивейс подругому строчка звучала ужасно я оставляю это
         мы обе выпиваем
 
     drowning akizet
@@ -659,16 +662,16 @@ resp4right
         оказывается, не так уж часто
         что, конечно, хорошо для наших близнецов...
         в основном эти стаи застают их врасплох 
-        после того, как я увидела это сама, я поняла, что обязана показать тебе!
+        после того, как я увидела это сама, я поняла, что обязана показать и тебе! ---увидела это сама мне кажется могло бы быть лучше
     
     drowning sourceless
-        я бросаю на неё любопытствующий взгляд за нашими люминесцентными напитками
+        я бросаю на неё любопытствующий взгляд
     
     drowning akizet
         а не бозко? или--
 
     drowning sourceless
-        я умолкаю от её забавляющейся ухмылки
+        и умолкаю от её забавляющейся ухмылки
         близнецовые выраженья даются ей так просто
 
     drowning::safe
@@ -681,14 +684,14 @@ resp4right
         он столько времени проводит в нашей камере исследований...
 
     drowning::safe
-        ну, хорошо, это справедливое рассужденье
+        ну, хорошо, справедливое рассужденье
         но тебя я знаю лучше, чем его!
         гакву придётся провести с ним время, наверное!
         вот вопрос получше: почему не ты?
         хихи!
         ты так стараешься найти причину не быть здесь
         почему...?
-        я тебя не расстроила, так ведь?
+        я же тебя ничем не расстроила?
 
     drowning akizet
         нет, э...
@@ -703,8 +706,8 @@ resp4right
         спасибо что думаешь обо мне, казки
 
     drowning sourceless
-        i lean over, resting against her side
-        she returns the gesture with a comfortable spread of her receptors
+        я прижимаюсь к её боку, расслабляясь
+        она отвечает на жест тем же самым, её рецепторы - раскрытые в довольстве
 
     drowning akizet
         прозвучит глупо, но...

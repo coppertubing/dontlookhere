@@ -11,7 +11,9 @@
 
 
 env.localization.page['ozo'] = {dialogues: {},
-    definitions: {}, 
+    definitions: {
+        "текеки": {"type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'наземная фауна';'известна имитированьем звуков'`}
+    }, 
     strings: {
         "this place is wild": "место прост дикое",
         "about jokzi ozo": "о джокзи озо",
@@ -499,7 +501,7 @@ RESPOBJ::
         фея<+>fairy
             SHOWIF::["localorbit__fairy_beacon", false]
 
-        lostone<+>third
+        потерянный<+>third
             SHOWIF::["e3a2__escapewin", false]
 
         джели?<+>geli
@@ -698,7 +700,7 @@ task
         да!! они всё увидят!
         все наши танцы!
         так иди же--найди их! освободи их!
-        цветок! фею! потерянного! // блин у меня вчера  была идея как это переводить но я забыл --- ой
+        цветок! фею! потерянного!
         мы уверены, что и они поделятся с тобою своими любимыми масками!
     
     moth
@@ -1651,7 +1653,7 @@ RESPOBJ::
         совет?<+>council
         фея?<+>fairy
             SHOWIF::"localorbit__fairy_beacon"
-        lost one??????<+>lostone
+        потерянный?<+>lostone
             SHOWIF::["e3a2__escapewin", false]
         джели?<+>gelifree
             SHOWIF::"e3a2__escapewin"
@@ -2549,7 +2551,7 @@ RESPOBJ::
         совет?<+>council
         изабель?<+>isabel
             SHOWIF::"citystreet__flower_beacon"
-        lost one?<+>lostone
+        потерянный?<+>lostone
             SHOWIF::["geli_beacon", false]
         джели?<+>geli
             SHOWIF::[["geli_beacon", true], ["e3a2__escapewin", false]]
