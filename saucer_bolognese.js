@@ -132,7 +132,7 @@ function fuckingGetThem(i = 0) {
                             if (corrucode.charAt(char) == ourcode.charAt(char)) {}
                             else {
                                 differences++;
-                                console.error("OOPS FOUND A DIFFERENCE!!!!! (characters dont add up) PLEASE INSPECT THIS CLOSER: view-source:https://corru.observer/" + horriblefuckingthing[i]);
+                                console.error("OOPS FOUND A DIFFERENCE!!!!! (characters dont add up) PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
                                 console.log(`${corrucode.charAt(char-5)}${corrucode.charAt(char-4)}${corrucode.charAt(char-3)}${corrucode.charAt(char-2)}${corrucode.charAt(char-1)}${corrucode.charAt(char)}${corrucode.charAt(char+1)}${corrucode.charAt(char+2)}${corrucode.charAt(char+3)}${corrucode.charAt(char+4)}${corrucode.charAt(char+5)} vs ${ourcode.charAt(char-5)}${ourcode.charAt(char-4)}${ourcode.charAt(char-3)}${ourcode.charAt(char-2)}${ourcode.charAt(char-1)}${ourcode.charAt(char)}${ourcode.charAt(char+1)}${ourcode.charAt(char+2)}${ourcode.charAt(char+3)}${ourcode.charAt(char+4)}${ourcode.charAt(char+5)}`)
                                 for (let charLog = char+5; charLog<corrucode.length;charLog++) {
                                     if (corrucode.charAt(charLog) == ourcode.charAt(charLog)) {}
@@ -148,7 +148,7 @@ function fuckingGetThem(i = 0) {
                     }
               		else {
                         differences++;
-                        console.error("OOPS FOUND A DIFFERENCE!!!!! (lengths dont add up!) PLEASE INSPECT THIS CLOSER: view-source:https://corru.observer/" + horriblefuckingthing[i]);
+                        console.error("OOPS FOUND A DIFFERENCE!!!!! (lengths dont add up!) PLEASE INSPECT THIS CLOSER: " + horriblefuckingthing[i]);
                      console.log(corrucode.length, ourcode.length);
                         console.info(corrucode, ourcode)
                     }
