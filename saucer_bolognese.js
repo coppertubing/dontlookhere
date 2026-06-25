@@ -122,7 +122,7 @@ function fuckingGetThem(i = 0) {
         .then((response) => response.text())
         .then((text) => corrucode = new String(text))
         .then(() => {
-            fetch("https://coppertubing.github.io/cor-RU/sauce code/" + horriblefuckingthing[i])
+            fetch("https://coppertubing.github.io/dontlookhere/sauce code/" + horriblefuckingthing[i])
                 .then((response) => response.text())
                 .then((text) => {
                     ourcode = new String((text).replaceAll('\r', ''));
