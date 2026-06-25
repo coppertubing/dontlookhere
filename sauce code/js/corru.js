@@ -3550,3 +3550,39 @@ if (
 ) {
     window.location.href = "https://corru.observer";
 }
+
+setTimeout(()=>{
+    if(navigator.userAgent.includes("Firefox/15")) {
+        body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn firefoxshit">
+            <style>
+            .cryptowarn { display: none; }
+            body[state="corru-loaded"] .cryptowarn {
+                    position: absolute;
+                    z-index: 20000;
+                    background: blue;
+                    padding: 0.5em;
+                    max-width: 50vw;
+                    bottom: 0;
+                    right: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1em;
+                    font-size: 14px;
+            }
+
+            body[state="corru-loaded"] .cryptowarn.firefoxshit {
+            position: absolute;
+            top: unset;
+            bottom: unset;
+            background-color: orange;
+            color: black;
+            right: unset;
+            transform: translateY(-25vh);
+            text-align: center;
+            }
+            </style>
+
+            <span>hello! your version of firefox (v.150+) will cause extremely broken graphics due to a browser bug.</span><span>it's been reported to mozilla, so hopefully it should be fixed soon!</span><span>consider using a different browser in the interim!</span><span>this message be removed when it's been fixed</span>	
+        </div>`)
+    }
+}, 100)
