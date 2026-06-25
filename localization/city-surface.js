@@ -18,8 +18,8 @@ env.localization.page['citystreet'] = {dialogues: {},
     strings: {
         "pretty sure this envoy guy isn't being remembered right lmao": "лмао кажется этого челика-посла не так хорошо запомнили",
         "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was": "значит контактным лицом акизет был какой-то \"гордон\"... посмотрим, смогу ли я на него выйти", 
-        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"", // --- можете перевести
-        "this is definitely looking like the old west coast HQ": "", // --- можете перевести
+        "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"а это по-видимому было конференц-залом, потому что я не припомню чтобы мы в то время делали зловещие тёмные коридоры полные государственных тайн. это было приколом 2040",
+        "this is definitely looking like the old west coast HQ": "это вылитая старая штаб-квартира с западного побережья",
         "about the city": "о городе",
 
         "'skipping ahead...'": "'пропуск...'",
@@ -74,26 +74,26 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "I'll get an espresso macchiato.": "Мне эспрессо макиато.",
         /*envoy*/ "What do you want, Akizet?": "А вы что возьмёте, Акизет?",
         /*cashier*/ "Akizet... THAT Akizet?": "Акизет... ТА САМАЯ Акизет?",
-        /*cashier*/ "Wow... It's so cool to meet you!!": "Вау... Так классно с тобой встретиться!!",
+        /*cashier*/ "Wow... It's so cool to meet you!!": "Вау... Так классно тебя встретить!!",
         /*cashier*/ "Do you... do you eat? Food?": "Ты... Вы едите? Еду?",
         /*envoy*/ "Haha! Of course she does!": "Хаха! Конечно же она ест!",
         /*envoy*/ "Why don't you take a look at the menu, Akizet?": "Почему бы Вам не взглянуть на меню, Акизет?",
 
         /*akizet*/ "where is the menu?": "где ваше меню?",
         /*cashier*/ "It's behind me...": "Оно за мной...",
-        /*cashier*/ "Can you read?": "Вы умеете читать?",
-        /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "Простите... Я не хотела нагрубить...",
+        /*cashier*/ "Can you read?": "Вы читать умеете?",
+        /*cashier*/ "Sorry... I didn't mean for that to sound mean...": "Простите... Это прозвучало грубо...",
         /*akizet*/ "i can, do not worry": "я умею, не волнуйтесь",                    
 
         /*akizet*/ "what do you recommend?": "что вы можете посоветовать?",
-        /*envoy*/ "You like citrus, right?": "Вам нравятся цитрусы, верно?",
+        /*envoy*/ "You like citrus, right?": "Вам же нравятся цитрусы, верно?",
         /*envoy*/ "They have this orange coffee thing.": "У них есть этот... кофе с апельсинами.",
         /*envoy*/ "You might like it!": "Вам могло бы понравиться!",
 
         /*akizet*/ "you do know that i--": "вы ведь знаете, что я--",
-        /*envoy*/ "Go on, order something! Just give it a try.": "Ну же, закажите что-нибудь! Хотя бы попробуйте.",
+        /*envoy*/ "Go on, order something! Just give it a try.": "Ну же, закажите что-нибудь! Просто попробуйте.",
         /*envoy*/ "I know you don't exactly have the same needs we do...": "Я знаю, у Вас нет тех же потребностей, что у нас...",
-        /*envoy*/ "But you can simulate taste, right?": "Но вы способны симулировать вкус, верно?",
+        /*envoy*/ "But you can simulate taste, right?": "Но вы можете симулировать вкус, верно?",
         /*envoy*/ "Getting out here, with the people, acting like we do?": "Выбираться куда-нибудь в люди, вести себя как мы?",
         /*envoy*/ "It makes a difference. Helps lessen the tension.": "Всё это имеет значение. Помогает ослабить напряжение.",
 
@@ -113,7 +113,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
         /*envoy*/ "Pretty good, right?": "Недурно, а?", 
         /*akizet*/ "it will do": "сойдёт",
-        /*envoy*/ "Great! Let's head down to the office.": "Отлично! Теперь давайте пройдём в офис.",
+        /*envoy*/ "Great! Let's head down to the office.": "Отлично! Давайте теперь направимся в офис.",
         /*envoy*/ "I heard you have some news about the call?": "Я слышал, у вас есть новости по поводу зова?",
         /*akizet*/ "oh yes, but... let us talk of it in private": "а, да, но... давайте обсудим это наедине",
 
@@ -124,7 +124,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "no talking so rry sorry sorry leave ovfice": "не поговрим про сти прости прости те покиньте овфис",
         
         /*moth*/ "uhh... ok": "эээ... ладно",
-        /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить об этом с развледругом",
+        /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить об этом с развледругом", // "" рассказать?
 
 
         // unity
@@ -142,9 +142,9 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*slim streetwalker*/ "tto oo  fa r   ,go ne": "зза ш ёл  сл и ом    ,але ко",
 
         /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at nine.'": "Что? Простите, я не могу пойти с вами, у меня назначена встреча в девять.",
-        /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "Впрочем, хотелось бы--звучит весело!",
+        /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "Хотя хотелось бы--звучит весело!",
         /*sourceless*/ "is he speaking through his communicator?": "он через свой коммуникатор разговаривает?",
-        /*sourceless*/ "why was he looking at me when he said that?": "почему он на меня смотрел, пока это говорил?",
+        /*sourceless*/ "why was he looking at me when he said that?": "почему он на меня смотрел, пока это говорил?", // "" она звучит немножко грубо здесь
 
         /*stre wal k*/ "hurts": "больно",
 
@@ -281,42 +281,42 @@ dataroom
     
     moth
         ага, значит тебе тоже ничего не видно
-        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info // ну видать ФБКС в самом деле раскрылось акизет, потому что это всё выглядит как серьёзная инфа
-        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details // какому-нибудь приезжему чиновнику не стал
-        but just from what i can make out, uh...
-        oh man, we used to put the FBX motto everywhere
-        anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon...
-        alongside some maps, probably about the polygonation spires or the call's location...
-        some signals intelligence stuff, that's probably us trying to detect the call
-        there's a few really interesting structural analyses of obesk tech, too
+        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info // что ж, по-видимому ФБКС взаправду раскрылось перед акизет, потому что это всё выглядит как весьма серьёзная инфа
+        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details // не та муть которую стали бы показывать приезжему чиновнику, без всех этих технических деталей
+        but just from what i can make out, uh... // но из того что я могу разобрать, ам...
+        oh man, we used to put the FBX motto everywhere // боже ж мой, на что мы только не лепили лозунг ФБКС
+        anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon... // не важно, я вижу на паре из слайдов фотографии посольства со спутника, а ещё якорь открытия на луне...
+        alongside some maps, probably about the polygonation spires or the call's location... // рядом с ними карты, наверное с полганизационными шпилями или расположением зова...
+        some signals intelligence stuff, that's probably us trying to detect the cal // что-то мудрёное про сигналы, скорее всего наши попытки обнаружить зов
+        there's a few really interesting structural analyses of obesk tech, too // а ещё несколько действительно интересных структурных анализов технологий обесков
 
     self
-        Why would we show Akizet that?
-        Isn't that kind of revealing?
+        Why would we show Akizet that? // Зачем нам показывать это Акизет?
+        Isn't that kind of revealing? // Разве это не обличительно в каком-то роде?
 
     moth
-        not really, i mean, the obesk knew we were studying them
-        before they made contact, we even sent some drones to take samples of the embassy
-        which obviously didn't work at all lol
-        maybe they were doing their own analyses with akizet's help, to get people up to speed
-        obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding
-        speaking of, there's a couple of human-looking schematics in there
+        not really, i mean, the obesk knew we were studying them // не совсем, как бы, обески и так знали что мы их изучаем
+        before they made contact, we even sent some drones to take samples of the embassy // до контакта мы даже посылали дронов чтобы взять образцы посольства
+        which obviously didn't work at all lol // что, очевидно, не работало лол
+        maybe they were doing their own analyses with akizet's help, to get people up to speed // возможно они делали собственные анализы при поддержке акизет, чтобы ввести людей в курс дела
+        obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding // очевидно они работали над гибридной техникой, так что всем участникам требовалось глубокое понимание
+        speaking of, there's a couple of human-looking schematics in there // к словё об этом, тут есть парочка схем похожих на человеческие
         боже вот бы воспоминания акизет были типа
         в более высоком разрешении
 
 ____SHOWIF::"2040thing"
     self
-        ok also what did you mean by 2040 thing
+        ok also what did you mean by 2040 thing // окей что ты имеешь в виду поду приколом 2040
 
     moth
-        that was a joke dude
-        kinda...
-        i mean that <em>is</em> when dark brutalism became a thing
-        but yeah i was kidding
-        we don't have any ominous dark hallways full of secret info
-        although...
-        there <em>is</em> the one...
-        but i can't tell you about that.
+        that was a joke dude // чел я просто шучу
+        kinda... // почти...
+        i mean that <em>is</em> when dark brutalism became a thing // в том смысле что это и <em>есть</em> время когда мрачный брутализм распространился
+        but yeah i was kidding // но да, просто шучу
+        we don't have any ominous dark hallways full of secret info // у нас нет каких-либо зловещих тёмных коридоров полных государственных тайн
+        although... // впрочем...
+        there <em>is</em> the one... // <em>есть</em> один...
+        but i can't tell you about that. // но я не могу рассказать о нём тебе.
 ____END
 
     RESPOBJ::mthresp
@@ -465,13 +465,13 @@ start
             SHOWONCE::
         
     envoy
-        Эй, без проблем. И не беспокойтесь об этом, здесь большинство отнесётся к Вам нормально.
+        Эй, без проблем. И не беспокойтесь об этом, большинство здесь относятся к вам нормально.
             SHOWONCE::
         Будь это Чикаго, или Нью-Йорк, или что ещё, мы бы Вас на крышу приземлили, но...
             SHOWONCE::
         В последнее время бюро очень загружено, и у нас было так много обесков-гостей,
             SHOWONCE::
-        Что теперь Ваш народ считай что часть города.
+        Что Ваш народ теперь считай что часть города.
             SHOWONCE::
     
     sourceless
@@ -499,9 +499,9 @@ start
             SHOWONCE::
 
     envoy
-        Есть одно небольшое место неподалёку - кафе. Перед тем как продолжить, почему бы нам не заглянуть в него?
+        Есть одно небольшое место неподалёку - кафе. Перед тем как продолжить, почему бы нам не зайти в него?
             SHOWONCE::
-        Просто пойдёмте вперёд, оно сразу после бюро.
+        Просто идёмте вперёд, оно сразу после бюро.
             SHOWONCE::
     
     RESPOBJ::envoyStreetResponses
@@ -513,7 +513,7 @@ talkpeople
     envoy
         Вовсе нет! Всё в порядке, пока я рядом.
         Как я и говорил - это, пожалуй, наиболее дружелюбный к обескам город во всех штатах.
-        В худшем случае Вы наткнётесь на парочку угрюмых взглядов. Вряд ли вирусные конспирологи все разом исчезли.
+        В худшем случае Вы наткнётесь на парочку угрюмых взглядов. Вряд ли все вирусные конспирологи разом бы исчезли.
     
     akizet
         я вижу!
@@ -619,11 +619,11 @@ env.localization.page['citystreet'].dialogues["walker3"] = generateDialogueObjec
 start
     sourceless
         Я ОСТАНАВЛИВАЮСЬ ВОЗЛЕ ВХОДА В БЮРО, ЧТОБЫ РАССМОТРЕТЬ СВЕТЛОГО БЛИЗНЕЦА, ОДЕТОГО, КАК ПОСОЛ
-        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАВ К ЕГО ЛИЦУ И НЕ ЗАМЕЧАЯ НАС
+        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАВ ЕГО К ЛИЦУ И НЕ ЗАМЕЧАЯ НАС // ""?
 
     cloaked streetwalker
         ...не сдвинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Невыносимо просто.
-        В общем, мне пришлось взять ещё больше кофе, иначе я бы точно храпу дал...
+        В общем, мне пришлось взять ещё кофе, иначе я бы точно храпу дал...
     
     sourceless
         то, как они через них разговаривают, всегда выглядит так глупо
@@ -674,7 +674,7 @@ start
         И, эй, я бы даже рад поболтать, да только вот заступаю на дежурство около десяти. 
 
     envoy
-        Всё в порядке, Оливер. Нам тоже пора бы заняться делами.
+        Всё в порядке, Оливер. Нам тоже пора бы заняться делом.
         Увидимся.
     
     RESPONSES::akizet
@@ -899,7 +899,7 @@ start
             EXEC::cutscene(true);page.formedDefinitionStrings = undefined;setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
 
     sourceless
-        МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНЬЕ НАШИХ ПРЕДПОЧТЕНИЙ
+        МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНЬЕ НАШИХ ПРЕДПОЧТЕНИЙ // "" переговорная? конференц-зал?
             EXEC::change("PAGE!!skipcheck", false)
         МЫ САДИМСЯ. ОН СТАВИТ МЕТАЛЛИЧЕСКУЮ КОРОБКУ НА СТОЛ. МОИ РЕЦЕПТОРЫ ЗАВИТЫ В СПИРАЛИ. БУДЕТ ТРУДНО
         
@@ -1043,12 +1043,12 @@ start
 
     akizet
         ничего, что имело бы такую же точность
-        у нас есть потенциальный радиус, где оно могло бы находиться, однако нам требуется дальнейшая полигонизация
+        у нас есть потенциальный радиус, где он мог бы находиться, однако нам требуется дальнейшая полигонизация
         примерно там же, где я и предположила на нашей прошлой встрече
     
     envoy
         Понял. Тогда давайте здесь и закончим.
-        Акизет, пока что держите это в тайне. Не только Ваша сторона может встревожиться от подобного.
+        Акизет, пока что держите это в тайне. Эта информация встревожит не только Вашу сторону.
         Будем на связи, хорошо?
     
     sourceless
@@ -1119,7 +1119,7 @@ ep1extension
 
     envoy
         Ага?
-        Ваша команда не была особо расположена к диалогу по этой теме.
+        Ваша команда не была особо расположена к диалогу на этот счёт.
     
     akizet
         в свете этих новостей... я хотела бы поделиться с вами кое-чем!
@@ -1136,8 +1136,8 @@ ep1extension
         я не уверена, насколько хорошо оно работает.
     
     envoy
-        Вы, должно быть, шутите.
-        И это просто валялось где попало?
+        Вы должно быть шутите.
+        И оно просто валялось где попало?
         Погодите-ка.
 
     sourceless
@@ -1148,7 +1148,7 @@ ep1extension
     
     envoy
         Если начистоту--э, это значит "предельно честно"--
-        Говорят, что тех. часть довольно суховата.
+        Говорят, что тех-часть довольно суховата. // "" боже как это сокращать
         Ваш технический отдел не особо желает сотрудничать с нами.
         ...Не будет ли у Вас из-за этого неприятностей?
     
@@ -1203,8 +1203,8 @@ ep1extension
         ПОХОЖЕ Я СЛУЧАЙНО ЗАВИЛА СВОИ РЕЦЕПТОРЫ И СКОРЧИЛА НА ЛИЦЕ УХМЫЛКУ
     
     akizet
-        хорошо!!!
-        да, я буду с ним осторожна
+        хорошо!!! // " "ТРИИИИИИ. ТРИ ВОСКЛИЦАТЕЛЬНЫХ ЗНАКА. Она только что спровоцировала геноцид И РАДУЕТСЯ НА ВСЕ ТРИ ВОСКЛИЦАТЕЛЬНЫХ ЗГАКА
+        да, я буду с ним осторожна // ним? скорее с "этим"
     
     sourceless
         ВНОВЬ, ОН ФЫРКАЕТ,
@@ -1295,7 +1295,7 @@ start
         я делаю что-то не так?
     
     sourceless
-        сотрудница выходит из-за стола и медленно приближается
+        сотрудница выходит из-за стола и приблажется к нам по-медленному
 
     sourceless incoherent
         при бл и жает ся
@@ -1305,7 +1305,7 @@ start
         ПРЕДУПРЕЖДЕНИЕ::'обнаружена ошибка согласованности';'некритическая';'визуализация продолжается'
 
     sourceless
-        не из-за страха или опасений, как некоторые другие светлые близнецы, а от усталости
+        не из-за страха или опасений, как некоторые другие светлые близнецы, а из усталости
         снаружи темно - именно в это время светлые близнецы расходятся, в конце концов
         а её волосы--почти того же цвета, что и цветок!
         бледнее, но от этого ничем не безынтереснее
@@ -1513,10 +1513,10 @@ survive
         помоги
         да, помоги мне выбраться отсюда
         и я расскажу тебе больше
-        мне нужно вернуться к друзьям
-        настолько же, насколько сильно я хочу грезить вновь...
+        мне необходимо вернуться к друзьям настолько же,
+        насколько сильно я хочу грезить вновь...
         воспринимать эти мысли об акизет, как если бы они были настоящими...
-        моё безумие неизлечимо
+        моё безумие неизлечимо // "" ДЕМН ОНА ЖЖЁТ С ЭТИМИ СТРОЧКАМИ
 
     RESPONSES::self
         хорошо<+>loop
@@ -1534,7 +1534,7 @@ who
         высокий светлый близнец
         она рассказывала акизет о цветах
         они были друзьями... они делились такими славными воспоминаниями...
-        но всё это больше ничего не значит
+        но всё это больше не имеет значения
         я не могу играть свою роль
         я знаю, я оставила осколки себя там, дома...
         если ты поможешь мне вернуться, я расскажу тебе
@@ -1643,7 +1643,7 @@ start
 
     envoy
         Хаха, нет, они просто слегка напоминали его.
-        Их называли натриевыми лампочками или чем-то подобным.
+        Их называли натриевыми лампами или как-то так.
         Что-то в их токе - ну, Вы понимаете, молниях - создавало оранжевый свет, а не голубой, как сейчас. 
 
     akizet
@@ -1803,18 +1803,18 @@ meeting
         do you expect it to be difficult?
 
     gordon
-        Dif-- Difficult? // 
+        Dif-- Difficult? // // ""я люблю гордона-напугыша. такой напугыш-напугыш, что почти наглупыш
 
     sourceless
         he is quick to smile and shake his head slightly
 
     gordon
-        Heheh, it's just a handoff. // Хехех, это обыкновенный handoff.
-        But... // Но...
-        Well, this was all approved very, very quickly. // Что ж, всё одобрялось очень, очень быстро.
-        It's an unusual fast-track for an, uh, equally unusual project. // Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
-        The deal isn't changed, if that's what you're worried about. // Сделка никак не изменилась, если Вы об этом беспокоитесь.
-        She probably just wants to meet you personally and get clear with your goals. // Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
+        Heheh, it's just a handoff. // Хехех, это обыкновенная передача??. звучит странно так что второй вариант но я не уверен насколько это правильно в контексте "Хехех, вам просто передадут вашу карточку."
+        Но...
+        Что ж, всё одобрялось очень, очень быстро.
+        Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
+        Сделка никак не изменилась, если Вы об этом беспокоитесь.
+        Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
     
     akizet
         very well...
@@ -1837,14 +1837,14 @@ interrogation
         gordon grows confused, raising his hands defensively, glancing around before lowering his voice
 
     gordon
-        Woah, Akizet, what--warn? // Ну и ну, Акизет, что--предупредили?
-        What did you expect? // А чего Вы ожидали?
-        Your offer came out of nowhere, and... // Ваше предложение появилось из ниоткуда, и...
-        Well, it basically eclipsed everything else the bureau was doing in importance. // Ну, по сути, затмило по важности всё, чем занималось бюро.
-        I know you wanted to keep your reasons secret. //  Я знаю, что Вы хотели сохранить свои причины в секрете.
-        W--she just wanted to make sure there weren't any strings attached. // М--она просто хотела убедиться в том, что между вами нет недосказанностей. "" окей я не увере насколько правильно это переводить так
-        You know, that this isn't part of some, some... // Вы знаете, что это не часть какого-то, какого-то...
-        I mean, what you said--you meant it, right? // Я имею в виду, то, о чём Вы сказали--Вы это и имели в виду, так? "" смешной
+        Ну и ну, Акизет, что--предупредили?
+        А чего Вы ожидали?
+        Ваше предложение появилось из ниоткуда, и...
+        Ну, по факту, затмило по важности всё, чем занималось бюро.
+        Я знаю, что Вы хотели сохранить свои причины в секрете.
+        М--она просто хотела убедиться в том, что между вами нет недосказанностей.
+        Вы знаете, что это не часть какого-то, какого-то...
+        Я имею в виду, то, о чём Вы говорили--Вы это и имели в виду, так?
     
     sourceless
         the tension in my receptors fades, and similarly, he stands easier
@@ -1866,10 +1866,10 @@ interrogation
         the more becomes at risk
     
     gordon
-        Well, everything's on the table now, so... // Что ж, всё уже на кону, так что...
-        We'll just be careful, right? // Мы просто будем осторожны, да?
-        Come on, let's head down to the lab. // Давайте, спустимся в лабораторию.
-        I can introduce you to the team. // Я могу познакомить Вас с командой.
+        Что ж, всё уже на кону, так что...
+        Мы просто будем осторожны, так?
+        Давайте, спустимся в лабораторию.
+        Я познакомлю Вас с командой.
     
     RESPOBJ::envoyInsideResponses
 
@@ -1909,9 +1909,9 @@ cooler
         Чего тут?
 
     oliver
-        Gordon! Akizet! Nice to see ya. // Гордон! Акизет! Рад встрече.
-        The damn cooler's acting up again. // Да кулер опять тупит.
-        It always does this shit, man. // Каждый раз одна и та же херь.
+        Гордон! Акизет! Рад встрече.
+        Да кулер опять тупит.
+        Каждый раз одна и та же херь.
     
     akizet
         cooler? is this a temperature regulator?
@@ -1929,7 +1929,7 @@ cooler
         is it not intact?
 
     oliver
-        Ну, я хочу сказать...
+        Ну, как бы...
         Взгляни на него.
 
     sourceless
@@ -1938,7 +1938,7 @@ cooler
         i... i cannot quite make out what he means
 
     oliver
-        How the hell am I supposed to get anything out of there? // Каким хером я должен что-то отсюда достать? --- И каким хером отсюда хоть что-то достанешь?
+        Как я, чёрт возьми, должен отсюда что-то достать? // "" хз хочу сптаь
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon
@@ -1963,7 +1963,7 @@ cooler
         Там наверняка есть мини-холодильник.
     
     oliver
-        Ооо, славная идейка! """ он глупый он глупыйонглупыйон глупый онглупый онлглыйогувлорв мне он ТАК сильно напоминает одного персонажа которого эм я буквально знаю только из картинок одного художникаБОЖЕ МОЙ КОТЁНОЧЕК 
+        Ооо, славная идейка! """ он глупый он глупыйонглупыйон глупый онглупый онлглыйогувлорв мне он ТАК сильно напоминает одного персонажа которого эм я буквально знаю только из картинок одного художникаБОЖЕ МОЙ КОТЁНОЧЕК интересно о каком персонаже была речь.. "" Я ВСПОМНИЛ
 
     gordon
         Но лучше бы нам не опаздывать.
@@ -2126,8 +2126,8 @@ talklater
             EXEC::vnp({cass: "show", hideStage: true})
         Я не готова вовлекать Вас в этот проект, пока.
         Я старалась подтолкнуть Вас в нужном направлении, но...
-        Не предполагалось, что Вы услышите о чём либо из этого так рано.
-        Но мы по одну сторону баррикад. То, чем я занимаюсь, приведёт Вас к желаемому.
+        Вы не должны были узнать о чём либо из этого так рано.
+        Однако мы по одну сторону баррикад. То, чем я занимаюсь, поможет Вам добиться желаемого.
 
     self
         you're talking to me, right?
@@ -2139,14 +2139,14 @@ talklater
         h  her voice quiets as  i   near the do or
 
     cass::whisper
-        Да, главным образом. Я способна помочь Вам куда больше, чем кретин надо мной.
-        Мне не нужно говорить, какой же он упёртый и неэффективный.
+        Да, главным образом. Я способна помочь Вам гораздо больше, чем кретин надо мной.
+        Мне не нужно говорить, насколько же он упёртый и неэффективный.
         Даже я постоянно отхватываю за то, чем мы тут занимаемся.
         Если бы он только знал, что творится <em>сейчас</em>... Это было бы адское зрелище.
         Впрочем, не поймите неправильно. Я доверяю Вам.
         Я заинтригована тем, на что мы будем способны вместе.
-        И до тех пор, пока я не могу вовлечь Вас. Пусть это останется между нами. Вне протокола.
-        Если пойдёт слух - никто не обрадуется.
+        И до тех пор, пока я не могу вовлечь Вас, пусть это останется между нами. Вне протокола.
+        Если пойдёт слух - никому не будет лучше. // "" МЕЕНЯ Убивает перевод кэссиди особенно эта строчка 
 
     sourceless incoherent
         whaa t a st t range c on onversation
@@ -2294,7 +2294,7 @@ ____END
     cass
         Утаивание от <em>вашего собственного народа</em> - это <em>очень</em> странно. 
         Очевидно, я ни в коем случае не отказалась бы от Вашего предложения. 
-        Любая страна, любая корпорация--чëрт, да любый с улицы <em>убил бы</em> за него.
+        Любая страна, любая корпорация--чëрт, да даже прохожий с улицы <em>убил бы</em> за него.
         У этого есть потенциал стать самым большим общественным и социальным рывком в истории человечества. 
         Если бы нам понадобилось, оно бы стало невероятным политическим козырем.  агхх слишком много "это" но я не знаю как исправить 
         And yet, you only want help tracking the Call down, // И всё же, вы просите только о помощи с отслеживанием Зова,
