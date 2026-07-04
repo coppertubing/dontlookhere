@@ -440,7 +440,11 @@ env.localization['definitions'] = {
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'" },
 }
 getLocalizationForPage(true); // --- evil
-env.localization['strings'] = {  
+env.localization['strings'] = {
+    // censorshiiip
+    "https://coppertubing.github.io/dontlookhere/": "неп",
+    
+    // kize :)
     "akizet": "акизет",
 
     // mothspeak
@@ -1374,7 +1378,7 @@ who
             SHOWIF::"hub__funfriend-purposeq"
         гордон<+>who_gordon
             SHOWIF::[['citystreet__envoy-end']]
-        директор<+>who_director
+        директорша<+>who_director
             SHOWIF::[['citystreet__director-meeting']]
         велзи<+>who_velzie
             SHOWIF::[['dullvessel__fixed-how']]
@@ -1400,7 +1404,7 @@ who_akizetesche
     moth
         из ранних контактов среди обесков она, наверное, одна из наилучше задокументированных
         история гласит, она возглавляла команду по исследованию вещи, приведшей сюда обесков
-        постоянно давала долгие, подробные интервью о ней, они назвали это "зов"
+        постоянно давала долгие, подробные интервью о ней, они назвали её "зовом"
         а потом они все пропали через несколько лет после первого контакта
         стрёмная херня
         безумие что эта корруциста смогла продержаться так долго
@@ -1425,7 +1429,7 @@ who_gordon
 
 who_director
     self
-        who is director cassidy? what do you know about her?
+        who is director cassidy? what do you know about her? // --- to dooo
     
     moth
         right, she was the very first nomination for the director's office
