@@ -15,7 +15,7 @@ env.localization.page['dullvessel'] = {dialogues: {},
         "did akizet not have furniture? this ship is so empty... honestly i kinda hope it just got lost through incoherence or something": "у акизет что, мебели не было? такой пустой корабль... если честно надеюсь что она просто пропала из-за бессвязности или чё-т такого",
         "woah... look at this, dude. this is a different thoughtspace, somehow": "воу... ток погляди на это. каким-то образом это другое мыслепространство",
         "looks like funfriend's restored a little bit here, there's definitely more data than before": "похоже развледруг тут потрудился, здесь точно прибавилось данных",
-        "about the dull vessel": "о судне серое",
+        "about the dull vessel": "о судне далля",
 
         "pilot cyst": cor_ru.entity_menu["pilot cyst"].name,
         "glazika": cor_ru.entity_menu["glazika"].name,
@@ -70,7 +70,7 @@ env.localization.page['dullvessel'] = {dialogues: {},
 env.localization.page["dullvessel"].dialogues.mthdullresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        судно серое?<+>dullvessel
+        судно далля?<+>dullvessel
         внутренности кораблей?<+>seen
         глазика?<+>glazika
             SHOWIF::[["dullvessel__glazika-start"]]
@@ -91,7 +91,7 @@ RESPOBJ::
 env.localization.page["dullvessel"].dialogues["mth++dullvessel"] = generateDialogueObject(`
 start
     self
-        у меня есть вопрос о судне серое
+        у меня есть вопрос о судне далля
 
     moth
         чё как?
@@ -100,10 +100,10 @@ start
 
 dullvessel
     self
-        почему оно называется "судно серое"?
+        почему оно называется "судно далля"?
     
     moth
-        ну это судно которое проходит сквозь серое
+        ну это судно которое проходит сквозь далль
         они так называют место через которое проходят во время межзвёздных путешествий
         хотя не зная про него можно подумать, что корабль назвали за то какой он скучный
         и если честно, глядя на его состояние, 
@@ -118,7 +118,7 @@ seen
     moth
         не вживую, только по старым фотографиям и видеозаписям исследований затонувших кораблей
         вот этот оооочень маленький, скорее всего ток для личного пользования
-        странно что в данных памяти оно числится как "наше" судно серое
+        странно что в данных памяти оно числится как "наше" судно далля
         в любом случае, очень круто взглянуть на настоящий
         даже если он пустоват...
         типа где акизет сидеть должна? неужели та ракушечная штука - единственное кресло?
@@ -303,7 +303,7 @@ change
             EXEC::env.dullVessel.swapLocation()
     
     sys
-        ВНИМАНИЕ::'обнаружена мыслеформенная активность'::'судносерое'
+        ВНИМАНИЕ::'обнаружена мыслеформенная активность'::'суднодалля'
 
     pilot cyst
         теперь

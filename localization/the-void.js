@@ -38,7 +38,7 @@ env.localization.page['localorbit'] = {dialogues: {},
 env.localization.page['localorbit'].dialogues.mthvoidresp = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::self
-        открытье серое?<+>dull
+        открытье далля?<+>dull
             SHOWIF::[['EXEC::env.localization.page.localorbit.dialogues.mthvoidresp.scannedDull()']]
 
         неважно<+>CHANGE::++moth
@@ -67,7 +67,7 @@ start
 
 dull
     self
-        что ты знаешь об открытии серое?
+        что ты знаешь об открытии далля?
     
     moth
         да не так уж много за исключением того что оно всё ещё там
@@ -234,7 +234,7 @@ helpme
     fairy
         я знаю многое!
             EXEC::content.classList.add('showfairy')
-        туннели... пробелы между! я помню их!
+        тоннели... пробелы между! я помню их!
         ты ведь тоже хочешь знать, правда?
         о, столькое можно лицезреть!!
         но я прикована к этому месту!
