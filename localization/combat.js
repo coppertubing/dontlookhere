@@ -3494,7 +3494,7 @@ cor_ru.combat['redefineItems'] = function () {
 
     /* - Aima Cyst - */
 
-    env.ITEM_LIST.aima_cyst.name = "Айма-Циста" // Aima Cyst
+    env.ITEM_LIST.aima_cyst.name = "эйма-Циста" // Aima Cyst
     env.ITEM_LIST.aima_cyst.description = "'привязываемая к рецептору циста для прицела';'традиционное охотничье приспособление';'полезна для многозадачности'" // 'receptor-tied targeting cyst';'traditional hunting implement';'useful for multitasking'
 
     /* - Kavruka - */

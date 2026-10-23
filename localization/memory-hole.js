@@ -171,7 +171,7 @@ start
 env.localization.page["sec"].dialogues["call"] = generateDialogueObject(`
 start
     sys
-        NOTICE::'memory stream located'
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
         ...minds continue to brush against one another through the collective,
@@ -237,10 +237,10 @@ start
         whenever you want to start i am here i can help get you up to date and transmit listener designs and--
 
     sys
-        NOTICE::'memory stream terminated'
+        УВЕДОМЛЕНИЕ::'окончен поток памяти'
 
     RESPONSES::sys
-        return<+>END
+        вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
 env.localization.page["sec"].dialogues["cavik"] = generateDialogueObject(`
@@ -362,7 +362,7 @@ start
         ЕГО ПОРОГ РАСШИРЯЕТСЯ НАРУЖУ И КАК ТОЛЬКО ОН ГАСНЕТ, Я ЗАМЕЧАЮ ЕЁ
         ГРУДУ МЁРТВОГО МЕТАЛЛА, В ТАКОЙ-ТО ПУСТОШИ
         НЕКОЕ СУДНО, ИЗГОТОВЛЕННОЕ БЛИЗНЕЦАМИ, НО...
-        Я ПЕРЕВОЖУ СВОЁ ВНИМАНИЕ НАРУЖУ И ОБМЕНИВАЮСЬ ВЗГЛЯДОМ С θ█████
+        Я ПЕРЕВОЖУ МОЁ ВНИМАНИЕ НАРУЖУ И ОБМЕНИВАЮСЬ ВЗГЛЯДОМ С θ█████
 
 
     origin
@@ -496,44 +496,44 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        θ███'s dog skitters away from me, but in this closed chamber, it can only go so far // собака θ███ бросилась в сторону от меня, но в этом закрытом помещении бежать ей было некуда
-        it stands no chance as i leap forth, curling my arms under its shell and pulling it into a hug // у него не было и шанса, когда я сделала рывок вперёд, обвив руки под его панцирем и утянув в объятье
-        it squeaks like an unripe celki when i tear it from the ground, and i spin while i dance around θ███'s furniture // он пищит как незрелый сельки, когда я отрываю его от земли и кручусь в танце вокруг мебели θ███
-        i see the lights of θ███'s optics peering skeptically from the connected cooking chamber, but pay her no mind // я замечаю как мелькнули огни оптики θ███, уставившейся на меня из соединённой готовительной комната, но не придаю ей вниманья
-    
+        собака θ███ бросается прочь от меня, но в закрытом помещеньи бежать ей некуда
+        у неё нет и шанса, когда я делаю рывок вперёд, обвивая руки под её панцирем и утягивая в объятье
+        она пищит как незрелый сельки, когда я отрываю её от земли, крутясь в танце вокруг мебели θ███
+        я замечаю мельканье огней оптики θ███, уставившейся на меня из соседней камеры готовки, но не придаю ей вниманья
+
     kind
         о, θ███, прекрати свои издевательства, ему страшно
-    
+   
     sourceless
-        her flat voice betrays her amusement // в её ровном голосе слышно предательское веселье
-    
+        её ровный голос выдаёт её развеселённость
+   
     stupid
-        i cannot help myself, dear sister! // ничего не могу с собою поделать, дорогая сестра!
-        i see food, i must hunt! // я вижу еду - я выхожу на охоту!
-    
+        ничего не могу с собою поделать, дорогая сестра!
+        я вижу еду - я выхожу на охоту!
+   
     sourceless
-        still, i set down the dog and leap backwards // и всё же, я опускаю собаку и отпрыгиваю назад
-        it skitters and turns about to face me, waiting for my next move // она отбегает и разворачивается встречаясь со мною лицом к лицу, выжидая мой следующий ход // "" котывоителикотывоители
-    
+        и всё же, я опускаю собаку и отпрыгиваю назад
+        она отбегает и разворачивается мордою ко мне, выжидая мой следующий ход
+   
     stupid
-        see what i said? // видишь о чём я?
-        clearly, it is merely play-deprived! // очевидно же, ему просто не хватало игры!
+        видишь, о чём я?
+        очевидно же, ей просто не хватало игры!
 
     dog
         ь̀́
-    
+   
     sourceless
-        i half-lunge at it, stopping just an instant after i start, to tell it we are not done // я бросаюсь на него, но останавливаюсь на середине давая понять - мы ещё не закончили
-        it ducks lower to the ground in response, and after another moment of stillness, it scurries towards me abruptly // он пригибается ниже к полу в ответ, и через короткий момент тишины, резко выскакивает на меня
-        i laugh and squeal in surprise, backing off and nearly climbing backwards up the wall // смеясь и вопя от удивленья, я пячусь назад почти взбираясь на стену 
-        even θ███ laughs as it chases me about // даже θ███ смеётся, когда тот начинает гонять меня вокруг
-        i narrowly avoid crashing into θ███'s ornate kalstik stand // я едва уклоняюсь от столкновения с роскошною стойкой для кальстика
-    
+        я бросаюсь на неё, тут же останавливаясь, чтобы дать знать - мы ещё не закончили
+        в ответ она пригибается ниже к полу и, через очередной момент тишины, резко выскакивает на меня
+        смеясь и вопя от удивленья, я отступаю, чуть не взбираясь на стену задом наперёд
+        даже θ███ смеётся, когда она начинает гонять меня повсюду
+        и я едва уклоняюсь от столкновенья с роскошною стойкою для кальстика θ███
+   
     kind
-        all right, all right... // хорошо, хорошо...
-        just do not break anything, please!! // просто, прошу, не разбейте ничего!!
-        i am almost done in here // я почти закончила
-    
+        хорошо, хорошо...
+        просто, прошу, не разбейте ничего!!
+        я почти закончила
+   
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
 
@@ -547,25 +547,25 @@ start
         УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
-        THROUGH MY CONNECTION TO THE PILOT CYST, I SEE IT BEFORE US
-        THIS IS THE THIRD TIME I HAVE EVER USED THE DULL
-        SOME LARVAL FEAR GRIPS ME, THREATENING THAT IT WILL DISINTEGRATE ME...
-        TOTAL ANNIHILATION, REMOVAL FROM VELZIE'S STAGE FOR ALL TIME
-        OR WORSE - SOMETHING WITHIN WILL FIND ME ON MY PATH THROUGH
-        BUT OF COURSE, IT IS SUPERSTITION
+        СКВОЗЬ СОЕДИНЕНЬЕ С ПИЛОТНОЙ ЦИСТОЙ Я ВИЖУ ЕГО ПРЕД НАМИ // THROUGH MY CONNECTION TO THE PILOT CYST, I SEE IT BEFORE US
+        ЭТО - ТРЕТИЙ РАЗ, КАК Я ПОЛЬЗУЮСЬ ДАЛЛЕМ // THIS IS THE THIRD TIME I HAVE EVER USED THE DULL
+        ЛИЧИНОЧНЫЙ СТРАХ ЦЕПЛЯЕТСЯ ЗА МЕНЯ, ШЕПЧА УГРОЗЫ, ЧТО ОН СОТРЁТ/РАСЩЕПИТ МЕНЯ... // SOME LARVAL FEAR GRIPS ME, THREATENING THAT IT WILL DISINTEGRATE ME...
+        ПОЛНОЕ УНИЧТОЖЕНЬЕ, УДАЛЕНЬЕ СО СЦЕНЫ ВЕЛЗИ ДО СКОНЧАНЬЯ МИРА/НАВЕКИ/НАВСЕГДА // TOTAL ANNIHILATION, REMOVAL FROM VELZIE'S STAGE FOR ALL TIME
+        ИЛИ ЧЕГО ХУЖЕ - ЧТО-НИБУДЬ ОБНАРУЖИТ МЕНЯ ПО ПУТИ // OR WORSE - SOMETHING WITHIN WILL FIND ME ON MY PATH THROUGH
+        НО, КОНЕЧНО, ЭТО ВСЁ СУЕВЕРЬЯ // BUT OF COURSE, IT IS SUPERSTITION
 
     mind
-        approaching
+        приближаюсь
             EXEC::env.dull.portal.classList.add("zoom1")
 
     sourceless
-        INDEED, NO LIFE AS WE UNDERSTAND IT COULD EXIST IN THE DULL
-        THAT IS WHAT THEY SAY
-        DULLZKOVIK'S EXTENDED STUDIES HAVE PROVEN IT, AFTER ALL
-        ENOUGH STUDY TO HAVE DRIVEN HIM MAD
-        WHAT IS HE ON, HIS FOURTH RENEWAL NOW?
-        AHAHA VELZIE SO FAVORS TORMENTING HIM
-        AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
+        РАЗУМЕЕТСЯ, ЖИЗНЬ В ПРИВЫЧНОМ СМЫСЛЕ ЭТОГО СЛОВА НЕ СПОСОБНА СУЩЕСТВОВАТЬ В ДАЛЛЕ // INDEED, NO LIFE AS WE UNDERSTAND IT COULD EXIST IN THE DULL
+        ВСЕ ЭТО ЗНАЮТ // THAT IS WHAT THEY SAY
+        КАК НИКАК, ДЛИТЕЛЬНЫЕ ИССЛЕДОВАНЬЯ ДАЛЛЬЗКОВИКА ДОКАЗАЛИ ЭТО // DULLZKOVIK'S EXTENDED STUDIES HAVE PROVEN IT, AFTER ALL
+        ДЛИТЕЛЬНЫЕ НАСТОЛЬКО, ЧТОБЫ СОЙТИ С УМА // ENOUGH STUDY TO HAVE DRIVEN HIM MAD
+        НА КАКОМ ОН УЖЕ ОБНОВЛЕНЬИ, ЧЕТВЁРТОМ? // WHAT IS HE ON, HIS FOURTH RENEWAL NOW?
+        АХАХА ВЕЛЗИ УЖ ЛЮБИТ ЕГО МУЧАТЬ // AHAHA VELZIE SO FAVORS TORMENTING HIM
+        АХ - Я ПОЛУЧАЮ/ПОЛУЧИЛА ОФИЦИАЛЬНОЕ СООБЩЕНЬЕ/ИЗВЕЩЕНЬЕ // AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
 
     other
         внимание, θ██████! 
@@ -574,12 +574,12 @@ start
         you are all clear to proceed!     ты можешь продолжать движение!
         be sure you release all active dull tethers or hearts,      не забудь отпустить все активные шнуры или сердца далля,
         also expect to lose communications for a little bit      и знай, что ненадолго потеряешь связь
-        oh yes, and if you brought any <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithes</span>,      ах да, и если ты взяла с собою какие-либо <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">десятины</span>,
+        oh yes, and if you brought any <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">tithes</span>,      ах да, и если ты взяла с собою какие-либо <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано из унаследованного описания'">десятины</span>,
         say your goodbyes! hehe     попрощайся с ними! хехе
 
     origin
-        of course, thank you
-        <span definition="INHERITED CONTEXT::'common phrase';'religious implication';'implies wish for safe journey'">keep velzie entertained</span>, will you?
+        конечно, спасибо
+        <span definition="УНАСЛЕДОВАННЫЙ КОНТЕКСТ::'распространённый оборот речи';'религиозный подтекст';'пожеланье безопасного путешествия'">займите велзи чем-нибудь</span>, хорошо? // keep velzie entertained, will you?
 
     other
         hehehe, we will hold a performance just for you     хехехе, мы чтототам я устал
@@ -592,26 +592,26 @@ start
     
     sourceless
         THE VESSEL SHIFTS AS SOON AS THE HEARTS RELEASE
-        MY <span definition="NOTE::'partial translation';'implied closest cultural equivalent'">TITHE</span>... I CLUTCH ONE OF MY PRESERVED LARVAL RECEPTOR SHELLS
-        A HARD, HOLLOW SPIRAL OF SEGMENTED CHITIN,
-        A PART OF MYSELF TO REMAIN IN THE DULL, OUTSIDE OF VELZIE'S CREATION
-        I DISCONNECT FROM THE PILOT CYST ABRUPTLY - PERHAPS I SHOULD NOT LOOK
+        МОЯ <span definition="ПРИМЕЧАНИЕ::'частичный перевод';'сгенерировано из унаследованного описания'">ДЕСЯТИНА</span>... Я СТИСКИВАЮ В КОГТЯХ ОДНУ ИЗ СВОИХ СОХРАНИВШИХСЯ ЛИЧИНОЧНЫХ ОБОЛОЧЕК РЕЦЕПТОРА // I CLUTCH ONE OF MY PRESERVED LARVAL RECEPTOR SHELLS
+        ТВЁРДАЯ, ПУСТАЯ СПИРАЛЬ СЕГМЕНТИРОВАННОГО ХИТИНА // A HARD, HOLLOW SPIRAL OF SEGMENTED CHITIN,
+        ЧАСТИЧКА МЕНЯ, ЧТО ОСТАНЕТСЯ В ДАЛЛЕ, ЗА ПРЕДЕЛАМИ ТВОРЕНЬЯ ВЕЛЗИ // A PART OF MYSELF TO REMAIN IN THE DULL, OUTSIDE OF VELZIE'S CREATION
+        Я РЕЗКО ОТКЛЮЧАЮСЬ ОТ ПИЛОТНОЙ ЦИСТЫ - МОЖЕТ, НЕ СТОИТ МНЕ СМОТРЕТЬ // I DISCONNECT FROM THE PILOT CYST ABRUPTLY - PERHAPS I SHOULD NOT LOOK
             EXEC::content.classList.add('nostars')
-        I CLOSE MY EYES... NO, I TURN THEM OFF
+        Я ЗАКРЫВАЮ ГЛАЗА... НЕТ, Я ВЫКЛЮЧАЮ ИХ // I CLOSE MY EYES... NO, I TURN THEM OFF
             EXEC::changeBgm(env.dull.bgm404, {length: 6000})
-        AND I DISABLE MY SENSATION - BEST TO BE SAFE
-        INDEED, PERHAPS EVEN SOUND SHOULD BE LIMITED
-        I PULL THE MEMBRANES AROUND MY MINDCORE CLOSER TO IT
-        I AM NOTHING, IN A VOID, AND NOTHING IS ABOUT TO HAPPEN
-        YET STILL I SEE IT IN MY MINDS EYE, I HEAR ITS SILENCE ROARING
-        NO MATTER WHAT I DISABLE, IT IS STILL PERCEIVED, RESONATING WITHIN MY θdeathly FORM
+        И ОТКЛЮЧАЮ ОСЯЗАНЬЕ - НА ВСЯКИЙ СЛУЧАЙ // AND I DISABLE MY SENSATION - BEST TO BE SAFE
+        ВООБЩЕ, ДАЖЕ И ЗВУК СТОИЛО БЫ ОГРАНИЧИТЬ // INDEED, PERHAPS EVEN SOUND SHOULD BE LIMITED
+        Я ПРИТЯГИВАЮ МЕМБРАНЫ ВОКРУГ МОЕГО МЫСЛЕЯДРА ПОБЛИЖЕ // I PULL THE MEMBRANES AROUND MY MINDCORE CLOSER TO IT
+        Я - НИЧТО, В ПУСТОТЕ, И НИЧЕГО НЕ ПРОИСХОДИТ // I AM NOTHING, IN A VOID, AND NOTHING IS ABOUT TO HAPPEN
+        И ВСЁ РАВНО Я ВИЖУ ЕГО В СВОЁМ СОЗНАНЬИ, СЛЫШУ РЁВ ЕГО ТИШИНЫ // YET STILL I SEE IT IN MY MINDS EYE, I HEAR ITS SILENCE ROARING
+        ЧТО БЫ Я НИ ОТКЛЮЧАЛА, ОН ВСЁ ЕЩЁ ВОСПРИНИМАЕТСЯ МНОЮ, РЕЗОНИРУЯ С МОЕЮ θСМЕРТНОЮ ФОРМОЮ // NO MATTER WHAT I DISABLE, IT IS STILL PERCEIVED, RESONATING WITHIN MY θdeathly FORM
             EXEC::env.dull.portal.classList.add("quick")
-        I TRY TO THINK OF ANYTHING ELSE, BUT IT IS HERE BEFORE ME,
-        AND IT IS COMING
+        Я ПЫТАЮСЬ ЗАНЯТЬ СВОИ МЫСЛИ ЧЕМ УГОДНО ДРУГИМ, НО ОН ЗДЕСЬ ПРЕДО МНОЮ, // I TRY TO THINK OF ANYTHING ELSE, BUT IT IS HERE BEFORE ME,
+        И ОН ПРИБЛИЖАЕТСЯ
             EXEC::env.dull.portal.classList.add("zoom5");env.dull.closeout()
-        AND IT IS HERE
-        AND IT IS HERE
-        AND IT IS HERE
+        И ОН ЗДЕСЬ
+        И ОН ЗДЕСЬ
+        И ОН ЗДЕСЬ
         
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -619,64 +619,65 @@ start
 env.localization.page["sec"].dialogues["fairy"] = generateDialogueObject(`
 start
     sys
-        NOTICE::'memory stream located'
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
 
     sourceless
         ...почти на высоте шпиля от земли, куда выше поверхностных паров,
-        я продолжаю карабкаться всё выше и выше, раздирая мягкую плоть своего переносчика
-        когти окрашены запёкшеюся кровью вейлька, делаясь тупее и немея под непримиримыми прибрежными ветрами 
+        я продолжаю карабкаться всё выше и выше, раздирая мягкую плоть моего переносчика
+        когти, вымоченные в быстро сворачивающейся крови вейлька, затупляются и немеют под непримиримыми прибрежными ветрами
         порученная мне θжатами тяжёлая груда цист тянет вниз
-        и всё же мои глаза, ноги и руки стали куда тяжелее их
+        и всё же мои глаза, ноги и руки стали куда тяжелее неё
         как давно я спала?
-        с немногочисленным стадом, чистонебьем (нет дефениции?) и под прямым взором глаза велзи,
-        мне, по крайней мере, вряд ли стоит ожидать сюрпризов
-        итак, наступило время отдыха
+        учитывая немногочисленное стадо, чистонебье и прямой взор глаза велзи,
+        мне, по крайней мере, можно не ожидать сюрпризов
+        и с этим наступает время отдыха
         как бы мне хотелось просто напросто отлежаться в ззепеле...
-        но комфорту не было места, заместо него оно было выделено цистам с жизненно важными знаниями внутри
-        недалеко от вершины своего носителя, я вытаскиваю шипы из костюма
-        и вонзаю их аккуратным рядком, прикрепляя каждый к своему ремню безопасности
-        чтобы, наконец, извлечь единственный позволенный себе комфорт: вейлькизт
-        оттолкнувшись от плоти вейлька, качнувшись на своих привязях,
-        их крюки впиваются глубже в плоть, изгибаются вовнутрь, сиденье поддерживается моим весом 
-        отдых... после всего
+        но комфорту не было места, кое уделили цистам с жизненно важными знаньями
+        недалеко от вершины моего переносчика, я вытаскиваю шипы из костюма
+        и вонзаю их аккуратным рядом, прикрепляя каждый к ремню безопасности
+        чтобы, наконец, извлечь единственный дозволенный мне комфорт: вейлькизт
+        оттолкнувшись от плоти вейлька и качнувшись на привязях,
+        его крюки впиваются в плоть, изгибаясь вовнутрь; сиденье удерживается моим собственным весом
+        отдых... наконец-то
         ....
-        так расслабилась, что чуть не повисла на привезях, сидя на этой тонкой платформе "" я так много думаю об этой строчке. почему. ведь должна быть какая-то причина. в этих буквах скрыто больше смысла, чем какие-то слова. точно, здесь скрыты чувства, эмоции. подбор, расстанвока - всё имеет смысл. ничто не сделано просто так. каждое слово, каждая буква и её расположение важно. так вот. почему здесь так? сначала мне показалось, что это бессмыслица, не такая уж редкость в корру, но теперь.. окей возможно она просто реально задремала а потом "аой" резко проснулась подняла голову "ой поисла ээ я ой на привезяха блин почти что ахаха нельзя. нельзя спать" ну знаете спросонья там по буквам номрально не попадаешь ну вот короче. мнение? что мне с этой строчкой делать. ЭТО ВАЖНАЯ СТРОЧКА. Важно понимать что корруворкс несёт. иои кто бы то ни писал эту шедеврострочку
-        нельзя засыпать, когда побережье так близко, до элузни едва ли не ногой подать
-        так что сей θмиг--я просто наблюдаю
-        завихряющийся прямо надо мною взор велзи, бесконечные звёзды вовне 
-        один из немногочисленных вейльков этого стада, топчащийся через эту безжизненную пустошь
-        до смехотворного близкие огни маяков, плавающие высоко над элузни,
-        издающие мягкий лиловый свет, бросающий марево во влажный, холодный воздух
+        чуть не повисла я на привязях, что так расслабилась, сидя на этой тонкой платформе
+  	        COR-RU::"" я так много думаю об этой строчке. почему. ведь должна быть какая-то причина. в этих буквах скрыто больше смысла, чем какие-то слова. точно, здесь скрыты чувства, эмоции. подбор, расстанвока - всё имеет смысл. ничто не сделано просто так. каждое слово, каждая буква и её расположение важно. так вот. почему здесь так? сначала мне показалось, что это бессмыслица, не такая уж редкость в корру, но теперь.. окей возможно она просто реально задремала а потом "аой" резко проснулась подняла голову "ой поисла ээ я ой на привезяха блин почти что ахаха нельзя. нельзя спать" ну знаете спросонья там по буквам номрально не попадаешь ну вот короче. мнение? что мне с этой строчкой делать. ЭТО ВАЖНАЯ СТРОЧКА. Важно понимать что корруворкс несёт. иои кто бы то ни писал эту шедеврострочку
+        нельзя засыпать, когда побережье так близко, до элузни едва ли не ногою подать
+        так что сей θмиг--я лишь наблюдаю
+        завихряющийся прямо надо мною глаз велзи, бесконечные звёзды вовне
+        один из немногочисленных вейльков этого стада, топчащийся чрез эту безжизненную пустошь
+        до обиды близкие путеводные огни, парящие высоко над элузни,
+        излучающие мягкий лиловый свет, бросающий марево во влажный, холодный воздух
         это всё - безмятежная красота, которую я не способна оценить по достоинству в пору усталости
         ....
-        ах--я... почти задремала
-        мой носитель покачивается с медленным, оглушительным шагом внизу
-        и я взираю на бесчисленные мерцающие звёзды,
-        непонятные каждому, кроме самых эксцентричных указнийцев, загадки
-        я замечаю страннейшее скопление тьмы
-        внутри которой группа мерцающих пятен побольше
-        точно--они двигаются иначе, отдельно от всего неба, не с шагами вейлька, но всё так же оставаясь его частью?
-        я выпрямляюсь, в глазах блеснула бодрость, и вглядываюсь ближе
-        вмиг, я вытаскиваю айма цисту, прикрепляю её к рецептору, выпускаю в воздух
-        и новый взор мелькает в моём сознании, фокусируясь, фокусируясь всё дальше...
-        и тьма шевельнулась
+        ах--я... чуть не задремала
+        мой переносчик покачивается с медленным, оглушительным шагом
+        и когда я взираю на бесчисленные мерцающие звёзды,
+        загадки, непонятные любому, кроме самых эксцентричных указнийцев,
+        то замечаю страннейшее пятно тьмы
+        внутри которой - группа мерцающих точек побольше
+        точно--они двигаются иначе, отдельно от всего неба под шаги вейлька, но всё так же оставаясь его частью?
+        я выпрямляюсь, глаза - озарённые краткою бодростью, и вглядываюсь внимательнее
+        вмиг я вынимаю эйма цисту, прикрепляю её к рецептору, выпускаю её в воздух
+        и новый взор мелькает в моём сознаньи, фокусируясь, фокусируясь всё сильнее...
+        и тьма шевелится
             EXEC::ratween(env.bgm, 0.2, 20000);body.classList.add("eyes")
             WAIT::4000
-        тьма шевельнулась: пять мерцающих бледных огней, сложившиеся в арку
-        находящиеся до этого вертикально, а теперь, будто помещённые во внешний круг крутящегося колеса
-        я невольно выдыхаю, рецепторы закручиваются в тугую спираль, содрогнувшись, я едва не сместила вейлькизт
-        моё движение встревожило фокус айма цисты, я больше не могу найти то скопление
-        я отчаянно сканирую--это было только моё воображение, так?
+        тьма шевелится: пять бледных мерцающих огней в дуге
+        расположенные до этого вертикально, а теперь повернувшиеся, будто во внешнем кругу крутящегося колеса
+        я невольно выдыхаю, рецепторы закручиваются в тугую спираль, я едва не смещаю вейлькизт
+        движенье тревожит фокус эйма цисты, и я больше не могу найти то пятно
+        я отчаянно озираюсь--то было всего моё воображенье, так?
         я устала, такое порою случается, это--
-        я сжимаю оберег от фей, его шипы впиваются в кожистое покрытие на руке
+        я сжимаю оберег от фей, его шипы впиваются в кожное покрытье на моей ладони
         мне нельзя здесь оставаться
-        быстро, я поднимаюсь, стягиваю вейлькизт, снимаю привязи, я должна уйти, я должна--
+        я быстро поднимаюсь, стягиваю вейлькизт, снимаю привязи, мне нужно уйти, мне нужно--
 
     sys
-        NOTICE::'memory stream terminated'
+        УВЕДОМЛЕНИЕ::'окончен поток памяти'
 
     RESPONSES::sys
-        return<+>END
+        вернуться<+>END
             EXEC::moveTo("/local/depths/")
 `)
 env.localization.page["sec"].dialogues["flower"] /*--- кс кс слизнячок (изабель) СЛИЗНЯЧОООООООООООООООООООООООООООООКРПГСНАВЧРЫЯВ*/ = generateDialogueObject(`
@@ -688,48 +689,48 @@ start
         after peering through the thick glass of θ██████'s trading chamber to ensure no other bright cousins linger within, i push through the front entry
         a chime with the distinct buzz of their lightning announces my entry, and θ██████ peeks out from the door in the back,
         barely visible through the stands and displays of bright ground-parasites
-        no no... 'flowers'... i must call them 'flowers'
+        нет-нет... "цветы"... я должна называть их "цветами"
     
     flower
         Эй, подождите минутку!
         Мы вот-вот закроемся, так что дайте знать, если Вам что-нибудь нужно, и я быстренько Вас обслужу.
     
     sourceless
-        as predicted - she does not recognize my form
-        i idly browse the yellow ones, quietly creeping towards the back, where she lingers out of sight
-        how will i surprise her, i wonder?
-        oh--what if i smoothed over this face!! featureless... she will be terrified!!
-        hehehe... an effortless morph for this disguise
-        when she finally emerges, i face away from her, acting as if i am merely browsing
+        как и предсказано - она не узнаёт мой облик // as predicted - she does not recognize my form
+        // i idly browse the yellow ones, quietly creeping towards the back, where she lingers out of sight
+        интересно, как бы мне застать её в расплох? // how will i surprise her, i wonder?
+        о--а что если разгладить это лицо!! без всяких черт... она будет в ужасе!! // oh--what if i smoothed over this face!! featureless... she will be terrified!!
+        хихихи... легчайшее преображенье для этой маскировки // hehehe... an effortless morph for this disguise
+        // when she finally emerges, i face away from her, acting as if i am merely browsing
     
     flower
         Эй, Вы меня слышали? Может быть Вам помочь найти--
 
     sourceless
-        i turn to face her
-        despite having no visible eyes, i can still see her
-        her face turns pale, smile fading, half-stepping back, but half frozen in terror
+        я поворачиваюсь к ней // i turn to face her
+        несмотря на отсутствие видимых глаз, я всё ещё вижу её // despite having no visible eyes, i can still see her
+        её лицо бледнеет, улыбка пропадает, она пытается отшагнуть, но замирает от ужаса // her face turns pale, smile fading, half-stepping back, but half frozen in terror
     
     flower
         Боже мой.
         Боже мой.
 
     sourceless
-        i lift my arms, this hideously malleable disguise-form allowing me to extend them out to twice their length
-        my neck, too--yes, how horrifying this must be!!
-        in my plain voice, though with mock-intimidation, i announce to her...
+        я поднимаю руки, вытягивая их в два раза длиннее этим до смеху податливым обликом-маскировкою // i lift my arms, this hideously malleable disguise-form allowing me to extend them out to twice their length
+        и шею тоже--да, как же страшно это должно быть!! // my neck, too--yes, how horrifying this must be!!
+        обычным голосом, пусть сквозь притворную угрозу, я оглашаю ей... // in my plain voice, though with mock-intimidation, i announce to her...
 
     wiser
-        no...
-        it is you i seek!
+        нет...
+        это тебя я ищу!
 
     sourceless
-        i curve my unwieldy arms forwards, waggling my claws at her
-        in an instant, her terror starts to fade, replaced with an exasperated, single laugh
-        then another, and then more, as she places a hand over her face
-        at the same time, i pull my form back to a standard appearance, reforming my face--which reads my receptor impulses as a terrible grin
-        i laugh, more than i have in so many θeyes,
-        it is like i am larval again
+        я загибаю свои неуклюжие руки вперёд, шевеля на неё когтями // i curve my unwieldy arms forwards, waggling my claws at her
+        в θмиг её ужас начинает угасать, сменяясь единственным измученным смешком // in an instant, her terror starts to fade, replaced with an exasperated, single laugh
+        и ещё одним, и ещё, пока она прикрывает лицо рукою // then another, and then more, as she places a hand over her face
+        в то же время я придаю своему облику обычный вид, восстанавливая лицо--что считывает мои рецепторные импульсы как ужасную ухмылку // at the same time, i pull my form back to a standard appearance, reforming my face--which reads my receptor impulses as a terrible grin
+        я смеюсь столько, сколько не смеялась многие θглаза // i laugh, more than i have in so many θeyes,
+        словно я вновь личиночна // it is like i am larval again
     
     flower
         θ██████, какого...
@@ -738,30 +739,30 @@ start
         Когда ты сказала "маскировка", я представила, не знаю, шляпу с широкими полями и плащ?
     
     sourceless
-        funfriend - make a note of that
+        развледруг - запиши это // funfriend - make a note of that
     
     wiser
-        ahh, yes, yes, this is it!!
-        this was an old research form, used in the early θgazes of our research into your languages...
-        it is kind of fun to use
+        ааа, да, да, это она и есть!! // ahh, yes, yes, this is it!!
+        старый облик для исследований, из ранних θвзоров изученья ваших языков... // this was an old research form, used in the early θgazes of our research into your languages...
+        им немного весело пользоваться // it is kind of fun to use
     
     sourceless
-        θ██████ steps forward, poking at the fabric of one of my sleeves
-        she continues laughing, mostly from relief that i am not a horrible monster
+        θ██████ ступает ближе, тыкая в ткань одного из моих рукавов // θ██████ steps forward, poking at the fabric of one of my sleeves
+        она продолжает смеяться, в основном от облегченья, что я - не ужасное чудище // she continues laughing, mostly from relief that i am not a horrible monster
     
     flower
         И что это такое? Ты настоящая катастрофа.
-        Нам нужно поработать над твоим "Стилем Светлых Близнецов".
+        Нам нужно поработать над твоим "Стилем Светлых Близнецов". -- закосом под светлых близнецов?
         В любом случае, дай мне несколько минут, я закончу оставшиеся дела и мы можем идти.
     
     wiser
-        all right!
+        хорошо!
 
     flower
         И НЕ ДЕЛАЙ так больше, поняла?
     
     sourceless
-        i take great care not to give her a verbal answer
+        я очень стараюсь не дать ей устного ответа // i take great care not to give her a verbal answer
 
     sys
         УВЕДОМЛЕНИЕ::'окончен поток памяти'
@@ -889,7 +890,7 @@ start
 
     stupid
         что принесло тебя сюда? у них появились ещё устройства мне на пробу?
-        айма цисты были просто невероятными, это было словно...
+        эйма цисты были просто невероятными, это было словно...
         глаз моего разума, приумноженный, парил вне моего тела
         это дезориентирует, но... открывает глаза. хехехе
     
@@ -983,7 +984,7 @@ start
         θ█████ САДИТСЯ НА МОЮ ОРУЖЕЙНУЮ СТАНЦИЮ НАПРОТИВ МЕНЯ         θ█████ SITS DOWN AT MY _ARMORY STATION_, ACROSS FROM ME
 
     hesitant
-        так же, как айма цисты становятся продолжением твоего разума
+        так же, как эйма цисты становятся продолжением твоего разума
         это делает и мыслеядро--так они это называют
         не могу даже представить, какому безумцу это пришло в голову, но... 
         оно перекладывает твой разум в себя, а затем отсоединяется,
@@ -1083,12 +1084,12 @@ start
         ах! вот!
                                 
     sourceless
-        ЕГО АЙМА ЦИСТЫ СВОДЯТ СВОИ ВЗГЛЯДЫ НА СВЕТЯЩЕЙСЯ ЩЕЛИ В ТЕЛЕ ВЕЙЛЬКА
+        ЕГО эйма ЦИСТЫ СВОДЯТ СВОИ ВЗГЛЯДЫ НА СВЕТЯЩЕЙСЯ ЩЕЛИ В ТЕЛЕ ВЕЙЛЬКА
         МЫ ОСТАНАВЛИВАЕМСЯ В УНИСОН И ПЕЩЕРНЫЙ СТРАЖ ПОЧТИ ЧТО ДЕЛАЕТ ШАГ ВПЕРЁД, НО Я ОСТАНАВЛИВАЮ ЕГО, ПОВОРАЧИВАЯСЬ ВПОЛОБОРОТА
         ОН КИДАЕТ НА МЕНЯ НЕГОДУЮЩИЙ ВЗГЛЯД, НО ПОНИМАЕТ - ЭТО ВЕСЕЛЬЕ ПОЛАГАЕТСЯ θ██████, НЕ НАМ
         ВАЛИКА-РОЖДЁННЫЕ ЦИСТЫ θ██████ ЦЕЛЯТСЯ В СУЩЕСТВО, ПОКА ОН МЕДЛЕННО И ОСТОРОЖНО ШАГАЕТ ДАЛЬШЕ
         ЕГО ШАГИ НАСТОЛЬКО ТИХИЕ, ДАЖЕ НЕСМОТРЯ НА ПОЧВУ ИЗ СГНИВШЕГО ВЕЙЛЬКА... ВОТ БЫ Я ТОЖЕ ТАК МОГЛА!!
-        КАК ТОЛЬКО АЙМА ЦИСТЫ ЕГО ВАЛИКИ СВЕТЯТСЯ В ПОДТВЕРЖДЕНИЕ, ЦЕНТРАЛЬНАЯ ИСПУСКАЕТ ИМПУЛЬС СЕРОГО СВЕТА
+        КАК ТОЛЬКО эйма ЦИСТЫ ЕГО ВАЛИКИ СВЕТЯТСЯ В ПОДТВЕРЖДЕНИЕ, ЦЕНТРАЛЬНАЯ ИСПУСКАЕТ ИМПУЛЬС СЕРОГО СВЕТА
         КОГДА НАШЕ ЗРЕНИЕ ВОЗВРАЩАЕТСЯ, КОНЕЧНОСТЬ ВЕЙЛЬКА РАССЕЧЕНА, ВЫСВОБОЖДАЯ СВЕЧЕНИЕ ПЛОДОВ СЕЛЬКИ
 
     elder
@@ -1178,7 +1179,7 @@ start
         неистовый вихрь, что опускается ниже облаков, кружит вокруг едва различимой пустой фигуры, принимающей форму лишь в момент, когда молния атакует её
         матовый чёрный монолит, безликий и опасный, исчезающий в небе: вазнийский шпиль...
         выше, чем самые высокие горы, шире, чем всё, что когда-либо возводилось
-        и всё же, не будь у меня айма цисты, я бы никак не смогла его увидеть!
+        и всё же, не будь у меня эйма цисты, я бы никак не смогла его увидеть!
         он становится всё ближе с каждым сотрясающим шагом моего вейлька-носителя: отведённое мне на восхищение время крайне ограничено - мне нужно возвращаться...
 
     sys
@@ -1289,7 +1290,7 @@ start
 env.localization.page["sec"].dialogues["walker"] = generateDialogueObject(`
 start
     sys
-        NOTICE::'memory stream located'
+        УВЕДОМЛЕНИЕ::'найден поток памяти'
 
         sourceless
         ...claws find little grasp upon the θwalker's glassy shell 
@@ -1369,10 +1370,10 @@ start
         we do not have time to...
                                 
     sys
-        NOTICE::'memory stream terminated'
+        УВЕДОМЛЕНИЕ::'окончен поток памяти'
 
     RESPONSES::sys
-        return<+>END
+        вернуться<+>END
             EXEC::moveTo("/local/uncosm/no/")
 `)
 env.localization.page["sec"].dialogues["yuzku"] /*--- кс кс слизнячок*/ = generateDialogueObject(`
@@ -1490,7 +1491,7 @@ env.localization.page["sec"].dialogues["zuzucri"] /*--- кс кс слизняч
     
     sourceless
         запах вела и кива, двое мертво - то же, что мы и видим... отчего он так встревожен?
-        беглым импульсом я даю указание выглянуть своей валика-рождённой айма цисте
+        беглым импульсом я даю указание выглянуть своей валика-рождённой эйма цисте
         θ███ сидит слегка необычно, с, наверное, чересчур громоздким снаряжением за спиной
         но с такого угла сложно сказать
         ветер переменяется в нашу сторону, шлейф троицы становится отчётливей
@@ -1549,7 +1550,7 @@ env.localization.page["sec"].dialogues["zuzucri"] /*--- кс кс слизняч
         θ███ приближается, но её ноги не шевелятся, волочимые по земле
         лишь заметив мой взгляд, обращённый на них, зузукри заставляет её идти
         я оборонительно поднимаю одну из своих перчаток для восхождения, и она останавливается, поднеся когти к глазам
-        раздаются её всхлипы, и моя айма циста выявляет движение в тёмной фигуре позади неё
+        раздаются её всхлипы, и моя эйма циста выявляет движение в тёмной фигуре позади неё
         множество глаз моргнуло в унисон, истинный облик зверя невозможно разобрать
     
     host

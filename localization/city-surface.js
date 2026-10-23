@@ -19,7 +19,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         "pretty sure this envoy guy isn't being remembered right lmao": "лмао кажется этого челика-посла не так хорошо запомнили",
         "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was": "значит контактным лицом акизет был какой-то \"гордон\"... посмотрим, смогу ли я на него выйти", 
         "this must have been a meeting room once, cause i don't think we built ominous dark hallways to display secret stuff back then. that was a 2040 thing":"а это по-видимому было конференц-залом, потому что я не припомню чтобы мы в то время делали зловещие тёмные коридоры полные государственных тайн. это было приколом 2040",
-        "this is definitely looking like the old west coast HQ": "это вылитая старая штаб-квартира с западного побережья",
+        "this is definitely looking like the old west coast HQ": "ну вот это уже вылитая старая штаб-квартира с западного побережья",
         "about the city": "о городе",
 
         "'skipping ahead...'": "'пропуск...'",
@@ -124,11 +124,11 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*envoy*/ "no talking so rry sorry sorry leave ovfice": "не поговрим про сти прости прости те покиньте овфис",
         
         /*moth*/ "uhh... ok": "эээ... ладно",
-        /*moth*/ "you should definitely talk to funfriend about that": "тебе точно надо поговорить об этом с развледругом", // "" рассказать?
+        /*moth*/ "you should definitely talk to funfriend about that": "тебе точно стоит рассказать об этом развледругу",
 
 
         // unity
-/*cashier*/ "Huh...?": "Ох...?",
+        /*cashier*/ "Huh...?": "Ох...?",
         /*cashier*/ "Sorry Akizet, we don't serve that here...": "Простите, Акизет, но у нас это не подают...",
         /*cashier*/ "But I wish we did!": "Хотя хотелось бы!",
         /*sourceless*/ "what? i said nothing...": "что? я ничего не говорила...",
@@ -144,7 +144,7 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*cloaked streetwalker*/ "What? Sorry, I can't go with you, I have a meeting at nine.'": "Что? Простите, я не могу пойти с вами, у меня назначена встреча в девять.",
         /*cloaked streetwalker*/ "Wish I could, though--sounds like fun!": "Хотя хотелось бы--звучит весело!",
         /*sourceless*/ "is he speaking through his communicator?": "он через свой коммуникатор разговаривает?",
-        /*sourceless*/ "why was he looking at me when he said that?": "почему он на меня смотрел, пока это говорил?", // "" она звучит немножко грубо здесь
+        /*sourceless*/ "why was he looking at me when he said that?": "почему он на меня смотрел, пока это говорил?", // "" она звучит немножко грубо здесь --- yjhvfkmyj 👍
 
         /*stre wal k*/ "hurts": "больно",
 
@@ -281,42 +281,42 @@ dataroom
     
     moth
         ага, значит тебе тоже ничего не видно
-        well i guess the FBX really opened up to akizet, because that looked like some pretty serious info // что ж, по-видимому ФБКС взаправду раскрылось перед акизет, потому что это всё выглядит как весьма серьёзная инфа
-        not the kind of presentation you'd give a visiting official, you wouldn't give them technical details // не та муть которую стали бы показывать приезжему чиновнику, без всех этих технических деталей
-        but just from what i can make out, uh... // но из того что я могу разобрать, ам...
-        oh man, we used to put the FBX motto everywhere // боже ж мой, на что мы только не лепили лозунг ФБКС
-        anyway, a couple of those slides have satellite photography of the embassy, and the contrivance anchor on the moon... // не важно, я вижу на паре из слайдов фотографии посольства со спутника, а ещё якорь открытия на луне...
-        alongside some maps, probably about the polygonation spires or the call's location... // рядом с ними карты, наверное с полганизационными шпилями или расположением зова...
-        some signals intelligence stuff, that's probably us trying to detect the cal // что-то мудрёное про сигналы, скорее всего наши попытки обнаружить зов
-        there's a few really interesting structural analyses of obesk tech, too // а ещё несколько действительно интересных структурных анализов технологий обесков
+        что ж, по-видимому ФБКС взаправду раскрылось перед акизет, потому что это всё выглядит как весьма серьёзная инфа
+        не та муть которую стали бы показывать приезжему чиновнику, без всех этих технических деталей
+        но из того что я могу разобрать, э...
+        боже ж мой, на что мы только не лепили лозунг ФБКС
+        ну короче, на некоторых слайдах есть спутниковые снимки посольства и якоря открытия на луне...
+        рядом с ними карты, наверное с полиганизационными шпилями или расположением зова...
+        что-то мудрёное про сигналы, скорее всего наши попытки засечь зов
+        и ещё пара реально интересных структурных анализов обесковой технологии
 
     self
-        Why would we show Akizet that? // Зачем нам показывать это Акизет?
-        Isn't that kind of revealing? // Разве это не обличительно в каком-то роде?
+        зачем нам показывать это акизет?
+        разве это не слишком откровенно?
 
     moth
-        not really, i mean, the obesk knew we were studying them // не совсем, как бы, обески и так знали что мы их изучаем
-        before they made contact, we even sent some drones to take samples of the embassy // до контакта мы даже посылали дронов чтобы взять образцы посольства
-        which obviously didn't work at all lol // что, очевидно, не работало лол
-        maybe they were doing their own analyses with akizet's help, to get people up to speed // возможно они делали собственные анализы при поддержке акизет, чтобы ввести людей в курс дела
-        obviously they were working on hybrid tech, so everyone involved would need a pretty thorough understanding // очевидно они работали над гибридной техникой, так что всем участникам требовалось глубокое понимание
-        speaking of, there's a couple of human-looking schematics in there // к словё об этом, тут есть парочка схем похожих на человеческие
+        не совсем, ну типа, обески и так знали что мы их изучаем
+        до контакта мы даже послали дронов чтобы собрать образцы посольства
+        что очевидно не вышло лол
+        может они занимались какими-то собственными анализами с поддержкой акизет чтоб все вошли в курс дела
+        они ж работали над гибридной техникой, так что всем участникам требовалось глубокое понимание
+        кстати говоря, там есть пара схем которые выглядят как человеческие
         боже вот бы воспоминания акизет были типа
         в более высоком разрешении
 
 ____SHOWIF::"2040thing"
     self
-        ok also what did you mean by 2040 thing // окей что ты имеешь в виду поду приколом 2040
+        ок а в каком смысле прикол 2040
 
     moth
-        that was a joke dude // чел я просто шучу
-        kinda... // почти...
-        i mean that <em>is</em> when dark brutalism became a thing // в том смысле что это и <em>есть</em> время когда мрачный брутализм распространился
-        but yeah i was kidding // но да, просто шучу
-        we don't have any ominous dark hallways full of secret info // у нас нет каких-либо зловещих тёмных коридоров полных государственных тайн
-        although... // впрочем...
-        there <em>is</em> the one... // <em>есть</em> один...
-        but i can't tell you about that. // но я не могу рассказать о нём тебе.
+        чел это была шутка
+        почти...
+        ну типа именно <em>тогда</em> тёмный брутализм как раз-таки вырос в популярности
+        но да, просто шутка
+        нет у нас никаких зловещих тёмных коридоров полных государственных тайн
+        хотя...
+        <em>есть</em> один...
+        но я не могу рассказать тебе о нём.
 ____END
 
     RESPOBJ::mthresp
@@ -499,7 +499,7 @@ start
             SHOWONCE::
 
     envoy
-        Есть одно небольшое место неподалёку - кафе. Перед тем как продолжить, почему бы нам не зайти в него?
+        Есть одно небольшое место неподалёку - кафе. Перед тем как продолжить, почему бы нам не заглянуть туда?
             SHOWONCE::
         Просто идёмте вперёд, оно сразу после бюро.
             SHOWONCE::
@@ -619,7 +619,7 @@ env.localization.page['citystreet'].dialogues["walker3"] = generateDialogueObjec
 start
     sourceless
         Я ОСТАНАВЛИВАЮСЬ ВОЗЛЕ ВХОДА В БЮРО, ЧТОБЫ РАССМОТРЕТЬ СВЕТЛОГО БЛИЗНЕЦА, ОДЕТОГО, КАК ПОСОЛ
-        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАВ ЕГО К ЛИЦУ И НЕ ЗАМЕЧАЯ НАС // ""?
+        ОН РАЗГОВАРИВАЕТ В МАЛЕНЬКИЙ КОРОБЧАТЫЙ КОММУНИКАТОР, ПРИЖАВ ЕГО К ЛИЦУ И НЕ ЗАМЕЧАЯ НАС
 
     cloaked streetwalker
         ...не сдвинулось с мёртвой точки, так что это было всё равно, что смотреть, как краска сохнет на стене. Невыносимо просто.
@@ -899,7 +899,7 @@ start
             EXEC::cutscene(true);page.formedDefinitionStrings = undefined;setTimeout(()=>{sendDialogue(env.currentDialogue.chain['syscheck']);cutscene(false);}, 1000)
 
     sourceless
-        МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНЬЕ НАШИХ ПРЕДПОЧТЕНИЙ // "" переговорная? конференц-зал?
+        МЫ С ПОСЛОМ СТУПАЕМ В ТУСКЛУЮ КОМНАТУ ДЛЯ ПЕРЕГОВОРОВ, ГДЕ ЗАДЁРНУТЫЕ ШТОРЫ ВЫРАЖАЮТ ЛЮБЕЗНОЕ ПРИЗНАНЬЕ НАШИХ ПРЕДПОЧТЕНИЙ
             EXEC::change("PAGE!!skipcheck", false)
         МЫ САДИМСЯ. ОН СТАВИТ МЕТАЛЛИЧЕСКУЮ КОРОБКУ НА СТОЛ. МОИ РЕЦЕПТОРЫ ЗАВИТЫ В СПИРАЛИ. БУДЕТ ТРУДНО
         
@@ -1148,7 +1148,7 @@ ep1extension
     
     envoy
         Если начистоту--э, это значит "предельно честно"--
-        Говорят, что тех-часть довольно суховата. // "" боже как это сокращать
+        Говорят, что тех-часть довольно суховата.
         Ваш технический отдел не особо желает сотрудничать с нами.
         ...Не будет ли у Вас из-за этого неприятностей?
     
@@ -1295,7 +1295,7 @@ start
         я делаю что-то не так?
     
     sourceless
-        сотрудница выходит из-за стола и приблажется к нам по-медленному
+        сотрудница выходит из-за стола и приближается к нам по-медленному
 
     sourceless incoherent
         при бл и жает ся
@@ -1516,7 +1516,8 @@ survive
         мне необходимо вернуться к друзьям настолько же,
         насколько сильно я хочу грезить вновь...
         воспринимать эти мысли об акизет, как если бы они были настоящими...
-        моё безумие неизлечимо // "" ДЕМН ОНА ЖЖЁТ С ЭТИМИ СТРОЧКАМИ
+        моё безумие неизлечимо
+            COR-RU::// "" ДЕМН ОНА ЖЖЁТ С ЭТИМИ СТРОЧКАМИ
 
     RESPONSES::self
         хорошо<+>loop
@@ -1700,170 +1701,171 @@ start
 env.localization.page['citystreet'].dialogues["elevator"] = generateDialogueObject(`
 start
     sourceless
-        a large quantity of numbered circles are set into the dead metal here
+        великое количество пронумерованных кругов вставлено в мёртвый металл
 ____SHOWONCE::
-        gordon gives some idle instruction on which are relevant, which distantly registers...
-        but i am distracted in wondering - what happens if they need to add a new one?
-        would they have to re-cut a solid sheet of dead metal, and set in new buttons?
-        and of course, each button must have some sort of connective nerve...
-        actually, how would they even manage adding another segment to their metal towers?
-        the logistics of bright structures are hardly sensical to me
-        something to investigate i suppose
-        i notice gordon leaning forward after his explanation
+        гордон даёт мне инструкцию, какие из них имеют значение, что отдалённо понимается мною
+        но я отвлекаюсь на размышленья - а что происходит, когда им нужно добавить новую?
+        им придётся заново вырезать целый лист мёртвого металла и вставить новые кнопки?
+        и, естественно, каждой кнопке понадобится какой-нибудь соединительный нерв...
+        на самом деле, как бы они вообще добавили ещё один сегмент к своим металлическим башням?
+        логистика светлых конструкций мне совершенно не понятна
+        полагаю, стоило бы её изучить
+        я замечаю, как гордон наклоняется после своего объясненья
 
     gordon
-        ...You get all that? // ...Вы всё поняли?
-        It's really just the three buttons we'll be using. // На деле мы будем использовать только три кнопки.
+        ...Вы всё поняли?
+        На деле мы будем использовать только три кнопки.
 
     sourceless
-        oh... yes--right
-        we have somewhere to be
+        о... да--точно
+        мы куда-то направляемся
 
     akizet
-        yes, of course
-        thank you, gordon
+        да, конечно
+        благодарю вас, гордон
 ____END
     
     RESPONSES::akizet
-        high office<+>elevate
+        главное управленье<+>elevate
             EXEC::change("TEMP!!vatordest", "office_hall")
-        ground level<+>elevate
+        первый этаж<+>elevate
             EXEC::change("TEMP!!vatordest", "city_office")
-        lab<+>descent
+        лаборатория<+>descent
             SHOWIF::"citystreet__director-meeting"
 
 elevate
     sourceless
-        the button lights up, and after a θblink, the elevator lurches into motion
-        soon, we arrive at our destination, the doors sliding open to release us
+        кнопка загорается, и θмигом позже лифт приходит в движенье
+        вскоре мы прибываем в наш пункт назначенья. двери раздвигаются, чтобы высвободить нас
             EXEC::changeStage(check("TEMP!!vatordest"));play("elevator")
     
     RESPONSES::akizet
-        exit<+>END
+        выйти<+>END
 
 descent
     sourceless
-        the button lights up, and after a θblink, the elevator lurches into motion
+        кнопка загорается, и θмигом позже лифт приходит в движенье
         ...        
     
     RESPONSES::akizet
-        wait<+>END
+        подождать<+>END
             EXEC::env.citystreet.descent();play("elevator", 0.5)
 `)
 
 env.localization.page['citystreet'].dialogues.envoyInsideResponses = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
-        meeting?<+>meeting
-        that interrogation<+>interrogation
+        встреча?<+>meeting
+        тот допрос<+>interrogation
             SHOWIF::"citystreet__director-meeting"
 
-        let us proceed<+>END
+        давайте пойдём дальше<+>END
 `)
 env.localization.page['citystreet'].dialogues["envoyinside"] = generateDialogueObject(`
 start
     sourceless
-        I STOP, AND GORDON FOLLOWS. HE RETURNS MY STARE
+        Я ОСТАНАВЛИВАЮСЬ, И ПОСОЛ ТОЖЕ. МЫ ОБМЕНИВАЕМСЯ ВЗГЛЯДАМИ
             EXEC::ratween(env.bgm, 0.75)
 
 ____SHOWONCE::
     gordon
-        Nervous? // Нервничаете?
+        Нервничаете?
 
     akizet
-        not terribly
-        everything was approved, you said?
-        this is merely a handoff?
+        не слишком
+        вы сказали, что всё одобрено?
+        это всего лишь передача?
 
     gordon
-        Yeah, // Ага,
-        Yeah... // Ага...
-        It should be. // Должно быть.
-        This is just about kicking off the operation. // Речь только о запуске операции.
+        Ага,
+        Ага...
+        Должна быть.
+        Речь только о запуске операции.
 
     akizet
-        i see
+        я вижу
 ____END
     
     RESPOBJ::envoyInsideResponses
 
 meeting
     akizet
-        gordon!
-        this meeting with the director...
+        гордон!
+        о встрече с директоршой...
 
     sourceless
-        i consider his face carefully
-        a member of the council would not descend in a proxy body merely to update my access in the embassy
-        why would a cousinly representative of equal sway take such measures?
-        there is something else going on here
-        so, i am direct with my concern
+        я внимательно рассматриваю его лицо
+        член совета не стал бы нисходить ко мне в прокси-теле ради простого обновленья моих полномочий в посольстве
+        зачем близнецовому представителю равного влиянья идти на подобные меры?
+        к этому есть что-то ещё
+        потому я выражаю свои опасенья прямо
     
     akizet
-        do you expect it to be difficult?
+        вы ожидаете, что она будет трудною?
 
     gordon
-        Dif-- Difficult? // // ""я люблю гордона-напугыша. такой напугыш-напугыш, что почти наглупыш
+        Тру-- Трудной?
+            COR-RU::// // ""я люблю гордона-напугыша. такой напугыш-напугыш, что почти наглупыш
 
     sourceless
-        he is quick to smile and shake his head slightly
+        он быстро улыбается и слегка качает головою
 
     gordon
-        Heheh, it's just a handoff. // Хехех, это обыкновенная передача??. звучит странно так что второй вариант но я не уверен насколько это правильно в контексте "Хехех, вам просто передадут вашу карточку."
+        Хехех, это обыкновенная передача.
         Но...
-        Что ж, всё одобрялось очень, очень быстро.
+        Что ж, всё это одобрилось очень, очень быстро.
         Это до необычного короткий отрывок времени для, э, такого же необычного проекта.
         Сделка никак не изменилась, если Вы об этом беспокоитесь.
         Скорее всего она просто хочет встретитьсь с Вами лично и прояснить Ваши цели.
     
     akizet
-        very well...
+        хорошо...
     
     sourceless
-        i do not hide my displeasure with his answer
-        but he makes no amendment
+        я не скрываю недовольства его ответом
+        но он не высказывает никаких поправок
     
     RESPOBJ::envoyInsideResponses
 
 interrogation
     sourceless
-        my stare intensifies, receptors coiling tightly
+        мой взгляд обостряется, рецепторы - сжимаются
 
     akizet
-        gordon
-        why did you not warn me about that?
+        гордон
+        почему вы меня об этом не предупредили?
     
     sourceless
-        gordon grows confused, raising his hands defensively, glancing around before lowering his voice
+        гордон смущается, оборонительно вскидывает руки, а затем понижает голос, оглянувшись по сторонам
 
     gordon
         Ну и ну, Акизет, что--предупредили?
         А чего Вы ожидали?
         Ваше предложение появилось из ниоткуда, и...
-        Ну, по факту, затмило по важности всё, чем занималось бюро.
-        Я знаю, что Вы хотели сохранить свои причины в секрете.
-        М--она просто хотела убедиться в том, что между вами нет недосказанностей.
-        Вы знаете, что это не часть какого-то, какого-то...
+        Ну, по сути, затмило по важности всё остальное, чем занималось бюро.
+        Я знаю, что Вы бы хотели сохранить свои причины в секрете.
+        М--она просто хотела убедиться в том, что между вами нет никаких недосказанностей.
+        Вы понимаете; что это не часть какого-то, какого-то...
         Я имею в виду, то, о чём Вы говорили--Вы это и имели в виду, так?
     
     sourceless
-        the tension in my receptors fades, and similarly, he stands easier
+        напряженье в моих рецепторах рассеивается, и он тоже успокаивается
 
     akizet
-        i did
+        да
 
     sourceless
-        i am quiet for a θblink
-        really, i should not be frustrated with him, nor the director, should i?
-        it is the same investigative spirit that drove me to begin this, after all
-        i came to them like their very own mysterious message
-        they truly are our bright cousins
-        part of me wishes i could tell him more--about the conflict, what still stirs
-        but it is not time
+        я замолкаю на θмиг
+        по правде говоря, мне не стоит сердиться ни на него, ни на директоршу, так ведь?
+        это тот же самый исследовательский дух, что подтолкнул меня начать всё это, в конце концов
+        я явилась им подобно их собственному загадочному сообщенью
+        они и вправду наши светлые близнецы
+        часть меня хотела бы поведать ему о большем--о всё ещё бурлящем конфликте
+        но ещё не время
     
     akizet
-        gordon, the more that i share...
-        the more becomes at risk
+        гордон, чем больше я делюсь...
+        тем выше риск
     
     gordon
         Что ж, всё уже на кону, так что...
@@ -1879,27 +1881,27 @@ END::ratween(env.bgm, 1)
 env.localization.page['citystreet'].dialogues["oliverinside"] = generateDialogueObject(`
 start
     sourceless
-        oliver lingers in the hall...
+        оливер стоит в коридоре...
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0});ratween(env.bgm, 0.75)
     
     RESPONSES::akizet
-        greet<+>cooler
-        offer cup<+>gotwater
+        поздороваться<+>cooler
+        предложить стаканчик<+>gotwater
             SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
-        offer cup<+>gotwaterbonus
+        предложить стаканчик<+>gotwaterbonus
             SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", true]]
-        leave<+>END
+        уйти<+>END
             EXEC::setCam()
 
 cooler
     sourceless
-        to my surprise, oliver is here, within the high offices
+        к моему удивленью, оливер здесь, в главном управленьи
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
-        does he not usually operate elsewhere?
-        he fails to notice us at first, frustrated with the strange machine nearby
-        a bright blue bulb grows atop its pale, shiny stalk
-        gordon chuckles quietly, and i nearly pass him on the way to the meeting,
-        but he signals for me to stop, and we approach
+        разве он обычно не работает в другом месте?
+        сперва он не замечает нас, поглощённый странною машиною неподалеку
+        ярко-голубая луковица растёт на её бледном, глянцевом стебле
+        гордон тихо усмехается, и я чуть не прохожу мимо по пути на встречу,
+        но он подаёт мне сигнал остановиться, и мы приближаемся
 
     oliver
         Ну же...
@@ -1914,31 +1916,31 @@ cooler
         Каждый раз одна и та же херь.
     
     akizet
-        cooler? is this a temperature regulator?
+        кулер? это регулятор температуры?
     
     oliver
         Хахаха, чего?
-        Не-не, это <span style="кор-ру хз" definition="блаблабла мы не можем это перевести блаблабла">кулер для <em>воды</em></span>. Сохраняет воду холодной. Ну, знаешь, для питья.
+        Не-не, это кулер для <em>воды</em>. Сохраняет воду холодной. Ну, знаешь, для питья.
         Вообще, мне никогда в голову не приходило спросить, но...
-        Вам нравится пить холодную воду? Или, скорее, нравилось? // я задал слишком высокую планку для перевода оливера и больше не могу её перепрыгнуть. я в слезах
+        Вам нравится пить холодную воду? Ну, нравилось?
 
     akizet
-        oh, yes, of course!
-        i see now, thank you, oliver
-        but--what is wrong with it?
-        is it not intact?
+        о, да, разумеется!
+        теперь я вижу, спасибо вам, оливер
+        но--что с ним не так?
+        он не цел?
 
     oliver
         Ну, как бы...
-        Взгляни на него.
+        Взгляните на него.
 
     sourceless
-        he gestures vaguely to the machine
+        он делает жест в сторону машины
             EXEC::setCam({x: 5, y: 7, rotation: -70, distance: -2})
-        i... i cannot quite make out what he means
+        я... я не совсем могу разобрать, что именно он желает этим передать
 
     oliver
-        Как я, чёрт возьми, должен отсюда что-то достать? // "" хз хочу сптаь
+        Как я, чёрт возьми, должен отсюда что-то достать? // "" хз хочу сптаь --- И как, чёрт подери, из него хоть что-нибудь нальёшь?
             EXEC::setCam({x: 5, y: 7, rotation: -45, distance: 0})
 
     gordon
@@ -1946,12 +1948,12 @@ cooler
     
     oliver
         Эээ, нет ещё, но...
-        У меня как бы встреча с Директором скоро.
+        У меня как бы встреча с Директоршей скоро.
         Аа, ладно, просто захвачу чего из торгового автомата.
         Впрочем, а вы двое здесь зачем?
 
     sourceless
-        before we have a chance to respond, he answers himself in realization
+        прежде чем у нас появляется возможность ответить, он спохватывается в озареньи
 
     oliver
         Ааа, вы Директорские "в восемь часов"!
@@ -1963,42 +1965,43 @@ cooler
         Там наверняка есть мини-холодильник.
     
     oliver
-        Ооо, славная идейка! """ он глупый он глупыйонглупыйон глупый онглупый онлглыйогувлорв мне он ТАК сильно напоминает одного персонажа которого эм я буквально знаю только из картинок одного художникаБОЖЕ МОЙ КОТЁНОЧЕК интересно о каком персонаже была речь.. "" Я ВСПОМНИЛ
+        Ооо, славная идейка!
+            COR-RU::""" он глупый он глупыйонглупыйон глупый онглупый онлглыйогувлорв мне он ТАК сильно напоминает одного персонажа которого эм я буквально знаю только из картинок одного художникаБОЖЕ МОЙ КОТЁНОЧЕК интересно о каком персонаже была речь.. "" Я ВСПОМНИЛ
 
     gordon
         Но лучше бы нам не опаздывать.
     
     akizet
-        ah, yes
-        goodbye, oliver
-        may your hunt bear fruit
+        ах, да
+        простимся, оливер
+        пусть ваша охота будет плодотворною
 
     oliver
         Свидимся.
 
     RESPONSES::akizet
-        offer cup<+>gotwater
+        предложить стаканчик<+>gotwater
             SHOWIF::[["STAGE!!watercup", true], ["STAGE!!watergave", false]]
-        set out<+>END
+        выдвинуться<+>END
             EXEC::setCam()
 
 gotwater
     akizet
-        oliver!
+        оливер!
 
     sourceless
-        i offer the vessel of water, which he accepts, with great surprise
+        я предлагаю ему сосуд с водой, и он принимает его с большим удивленьем
             EXEC::env.citystreet.oliverCup()
 
     oliver
         Хах?
-        Погоди, как--
+        Погодите, как--
             AUTOADVANCE::
             WAIT::2000
-        Откуда она у тебя?
+        Откуда он у Вас?
     
     akizet
-        very glad to have helped, my friend
+        очень рада, что смогла помочь, мой друг
     
     oliver
         Это не то что я...
@@ -2006,49 +2009,50 @@ gotwater
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Погоди, ты пила из него?
+        Погоди, Вы пили из него?
 
     akizet
-        there was no change in the contents, if that is what concerns you, oliver
-        would you like me to get another one?
+        его содержимое не изменилось, если вас волнует это, оливер
+        хотите, чтобы я принесла другой?
 
     oliver
         Э-э, нет, всё--всё в порядке.
-        Тебе, наверное, на встречу уже пора.
+        Вам, наверное, на встречу уже пора.
 ____END
 
     RESPONSES::akizet
-        set out<+>END
+        выдвинуться<+>END
             EXEC::setCam()
 
 gotwaterbonus
     akizet
-        oliver!
+        оливер!
 
     sourceless
-        i offer the vessel of water, which he accepts, with great surprise
+        я предлагаю ему сосуд с водой, и он принимает его с большим удивленьем
             EXEC::env.citystreet.oliverCup()
 
     oliver
         Акизет, У--
-        У меня уже... "" он в таком отчаянии
+        У меня уже...
+            COR-RU::"" он в таком отчаянии
             AUTOADVANCE::
             WAIT::2000
     
     akizet
-        very glad to have helped, my friend
+        очень рада, что смогла помочь, мой друг
     
     oliver
         Ладно.
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Ты, что...?
+        Вы, что...?
         Плевать, пусть будет так.
 ____END
 
     RESPONSES::akizet
-        set out<+>END
+        выдвинуться<+>END
             EXEC::setCam()
 
 END::ratween(env.bgm, 1)
@@ -2057,102 +2061,103 @@ END::ratween(env.bgm, 1)
 env.localization.page['citystreet'].dialogues["director"] = generateDialogueObject(`
 start
     sourceless
-        director cassidy stands within the office
+        Директорша Кэссиди стоит в офисе
             EXEC::ratween(env.bgm, 0.75);setCam({x: 3, y: 4, rotation: 0})
 
     RESPONSES::self
-        talk later?<+>talklater
+        поговорим позже?<+>talklater
             SHOWIF::"bt__d0_cass"
-        hello?<+>talknow
+        привет?<+>talknow
             SHOWIF::[["bt__d0_cass", false], ["citystreet__director-meeting", true]]
-        recall meeting<+>meeting
+        вспомнить встречу<+>meeting
 
     RESPONSES::akizet
-        leave<+>END
+        уйти<+>END
 
 talknow
     self
-        hello?
-        are you lucid?
+        привет?
+        ты в сознании?
 
     akizet
-        director! i thought i might step in to say, ah...
+       директорша! я подумала, что загляну, чтобы сказать, э...
 
     sourceless
-        the director holds a communicator to the side of her face,
-        slightly perturbed by my approach, as if i am impeding something
+        директорша прижимает коммуникатор к боку лица,
+        слегка раздражённая моим входом, словно я чему-то препятствую
 
     cass
-        Акизет, я правда не могу сейчас разговорить.
-        Отложим это до следующей встречи по поводу проекта, хорошо?
+        Акизет, я сейчас правда не могу разговаривать.
+        Отложим это до следующей встречи, хорошо?
 
     akizet
-        oh? apologies, director
-        yes, it is no pressing matter
-        fare well
+        ох? извините, директорша
+        да, это не срочный вопрос
+        простимся
 
 ____SHOWONCE::
     moth
-        not getting anything from it right now...
+        никакой пользы от неё сейчас...
 ____END
 
     RESPONSES::akizet
-        set out<+>END    
+        выдвинуться<+>END    
 
 talklater
     self
-        you said we'd talk later
+        ты сказала мы поговорим позже
             EXEC::vnp({cass: "show far", hideStage: true})
-        when is that?
+        когда это?
 
     sourceless
-        the director holds a communicator to the side of her face,
-        expression twisting with impatience
+        директорша прижимает коммуникатор к боку лица
+        с выраженьем, искривлённым от нетерпенья
 
     cass
         О, Вы ещё здесь?
-        Команда вас ждёт, Акизет.
+        Команда ждёт Вас, Акизет.
         
     akizet
-        ah--?
-        oh, yes, right, apologies
-        fare well, director
+        а--?
+        ох, да, точно, извините
+        простимся, директорша
 
     sourceless
-        i turn to leave, the director speaking indistinctly to her device as i go
+        я разворачиваюсь к выходу, пока директорша невнятно говорит по своему прибору
 
     cass::whisper
         О чём я говорила? Точно...
             EXEC::vnp({cass: "show", hideStage: true})
-        Я не готова вовлекать Вас в этот проект, пока.
+        Я не готова вовлекать Вас в этот проект, пока что.
         Я старалась подтолкнуть Вас в нужном направлении, но...
-        Вы не должны были узнать о чём либо из этого так рано.
+        Вы не должны были узнать о чём-либо из этого так рано.
         Однако мы по одну сторону баррикад. То, чем я занимаюсь, поможет Вам добиться желаемого.
 
     self
-        you're talking to me, right?
-        what do you mean by that?
-        you'll help me repair and gather information?
-        figure out what happened?
+        ты это мне, да?
+        что ты имеешь в виду?
+        ты поможешь мне с починками и сбором информации?
+        поможешь разобраться, что случилось?
 
     sourceless incoherent
-        h  her voice quiets as  i   near the do or
+        е  eё  голос стих ает,  ко гда    я  подх ожу к    дв ери
 
     cass::whisper
-        Да, главным образом. Я способна помочь Вам гораздо больше, чем кретин надо мной.
-        Мне не нужно говорить, насколько же он упёртый и неэффективный.
+        Да, по сути. Я бы помогла Вам гораздо больше, чем кретин надо мной.
+        Мне не нужно объяснять, насколько же он упёртый и неэффективный.
         Даже я постоянно отхватываю за то, чем мы тут занимаемся.
-        Если бы он только знал, что творится <em>сейчас</em>... Это было бы адское зрелище.
+        Если бы он только знал, что творится <em>сейчас</em>... Зрелище было бы адским.
         Впрочем, не поймите неправильно. Я доверяю Вам.
-        Я заинтригована тем, на что мы будем способны вместе.
-        И до тех пор, пока я не могу вовлечь Вас, пусть это останется между нами. Вне протокола.
-        Если пойдёт слух - никому не будет лучше. // "" МЕЕНЯ Убивает перевод кэссиди особенно эта строчка 
+        Я заинтригована тем, чего мы бы могли достичь. Вместе.
+        И до тех пор, пока у меня не выйдет устроить Вас, пусть это останется между нами. Вне протокола.
+        Если пойдёт слух - никому не будет лучше.
+            COR-RU::// "" МЕЕНЯ Убивает перевод кэссиди особенно эта строчка 
 
     sourceless incoherent
-        whaa t a st t range c on onversation
+        каа  ка я  ст т ранная  бесе еседа
         
     sourceless
-        her voice drops further, beyond my ability to hear
+        её голос становится настолько тихим, что я не в силах его разобрать
             EXEC::vn.done()
 
     moth
@@ -2166,126 +2171,127 @@ talklater
         really easy to miss if i wasn't looking for it specifically
 
     self
-        what do we do about this?
+        что нам делать по этому поводу?
 
     moth
-        well...
-        it's not just me, right? she's gotta be talking about funfriend
-        and with how she's acting, she must be hiding from him specifically
-        not that out of the ordinary given what we've seen i guess
-        you could tell funfriend, but idk what he'd be able to do
-        it's not like we really have a motive or any damage to point at here
-        maybe we just leave it? see what happens?
-        up to you
+        ну...
+        это же не только мне так показалось, да? речь наверняка была про развледруга
+        и судя по её поведению, скорее всего она прячется именно от него
+        не так уж и необычно с учётом всего остального наверн
+        можешь рассказать развледругу, но я хз что он бы сделал
+        типа в качестве доказательств у нас не то чтобы есть мотив или уже причинённый вред
+        может просто оставить как есть? посмотрим что будет?
+        ты решай
     
     self
-        ok
+        ок
 
     RESPONSES::akizet
-        set out<+>END
+        выдвинуться<+>END
 
 meeting
     sourceless
-        a bright cousin stands in the office
+        светлый близнец стоит в офисе
             EXEC::setCam({x: 3, y: 4, rotation: 0});ratween(env.bgm, 0.75)
-        having heard our entry, she closes her folding communicator
+        услышав наш вход, она захлопывает свой складной коммуникатор
 
 ____SHOWIF::["citystreet__director-meeting", false]
     sourceless incoherent
-        an  nd l ooks thr rough me
+        и   см о отрит ск  возь   м ня
             EXEC::vnp({cass: "show far", hideStage: true});ratween(env.bgm, 0.5)
-        with no   sm all  sur r prise
+        не б б ез великого уди в ленья
             EXEC::vnp({cass: "open", hideStage: true})
             WAIT::2000
             THEN::vnp({cass: "open eye", hideStage: true})
     
     sys
-        WARNING::"incoherence detected"
-        WARNING::"cohesion error detected";"non-fatal";"continuing render"
+        ВНИМАНИЕ::'обнаружена бессвязность'
+        ВНИМАНИЕ::'обнаружена ошибка согласованности';'некритическая';'визуализация продолжается'
         
     cass::open
         Ох... Это нехорошо.
         Как Вы сюда попали?
 
     moth
-        buddy this thing is going to cause a breakdown if you stay near it
-        incoherence just spiked like crazy
-        this is going to straight up crash 
+        дружище эта хрень щас тут всё сломает если ты сейчас не уйдёшь
+        бессвязность подскочила как бешеная
+        оно вот-вот прям крашнется
 
     gordon
-        Директор Кэссиди!
+        Директорша Кэссиди!
     
     sourceless incoherent
-        a nd st  ste p s    cl o ser
-        i ? ?   fee l   s ick
+        и по  под х о дит    бли ж е
+        ме  н я ? ?   то ш   н ит
 
     cass::open
         Понятно...
     
     sourceless incoherent
-        clos es her  folding
+        а  хл оп  ывает   сво й  складной
             EXEC::vnp({cass: "show open", hideStage: true});ratween(env.bgm, 0.75)
             WAIT::2000
             THEN::vnp({cass: "show", hideStage: true});env.stage.querySelectorAll(".teleport").forEach(e=>{e.setAttribute("teleport-target", "office_data");e.setAttribute("shouldFace", "down");e.removeAttribute("spot");})
 
     sourceless
-        what? did i lose focus?
-        it felt like something was missing just now
-        no--no, everything is fine
+        что? я на что-то отвлеклась?
+        чувство, будто сей θмиг чего-то не хватает
+        нет--нет, всё в порядке
 
     moth
-        ok, it's just... gone
-        acceptable levels right now
-        this is new
+        окей, теперь она просто... пропала
+        уровни приемлемые
+        это что-то новенькое
 ____SHOWIF::"citystreet__director-meeting"
 
     gordon
-        Директор Кэссиди!
+        Директорша Кэссиди!
 
 ____END
     cass
         Гордон, Акизетеше!
             EXEC::vn.done()
-        Рада видеть вас обоих, правда.
+        Рада видеть вас обоих, правда. // -- обоих..
 
     sourceless
-        she steps closer to shake gordon's hand, then my claw
-        a small smile i have come to understand as 'polite' upon her face
-        when i make an effort to mimic it, she smiles wider, quietly exhaling
+        она делает шаг ближе, чтобы пожать руку гордона, затем - мой коготь
+        улыбаясь таким образом, который я распознаю как "вежливый"
+        когда я пробую сымитировать его, её улыбка разрастается с тихим выдохом
 
     akizet
-        thank you for coming all this way
-        please, just call me akizet
-        i understand you had to take a flight?
+        я благодарю вас за ваше прибытье
+        прошу, просто зовите меня акизет
+        насколько я понимаю, вам потребовался перелёт?
 
     sourceless
-        before she speaks, she fetches a small, flat rectangle from a pocket
-        one of the 'cards' that they use to regulate access, here
+        перед тем как заговорить, она вынимает небольшой, плоский прямоугольник из кармана
+        одна из "карт", с помощью которых они здесь регулируют доступ
 
     cass
         Это не проблема. 
     
     sourceless
-        her eyes shift in a puzzling way, her gaze lacking the warmth it just had
-        she turns the card over in her hand, smile held steady
+        её взгляд неразберимо меняется; теплота, находящаяся в нём ещё мгновенье назад, исчезает
+        она переворачивает карту в руке, не теряя улыбки
     
     cass
-        Правда, это меньшее, что я могу сделать
-        Мы все ценим то, чем вы здесь занимаетесь, Акизет.
+        Правда, это меньшее, что я могла бы сделать.
+        Мы все ценим то, чем Вы занимаетесь, Акизет.
     
     sourceless
-        as the director, i imagine she must be deeply familiar with receptor language by now
-        and so i try to suppress the subtle unease her tone inspires
+        будучи директоршою, я представляю, она должна быть уже хорошо знакома с языком рецепторов
+        и потому я стараюсь подавить лёгкое волненье, вызванное её тоном
 
     cass
-        Точно как Вы и хотели, мы привлекли настолько мало рук и глаз, насколько это возможно.
-        Это я, агенты для надзора, Гордон здесь и несколько выдающихся техников.
+        Как Вы и хотели, мы привлекли настолько мало рук и глаз, насколько это возможно.
+        Это я, пара агентов для надзора, Гордон и несколько выдающихся техников.
 
     akizet
-        delightful! """ неописуемо нелепый ответ. её навыки в этом поражают даже меня
+        дивно!
+            COR-RU::""" неописуемо нелепый ответ. её навыки в этом поражают даже меня
 
     cass
-       Единственное, есть один момент, который никак не сходится.
+       Вот только есть один момент, который никак не сходится.
 
     sourceless
         she punctuates her words with an idle waving of the card, held tightly between two fingers
@@ -2304,7 +2310,7 @@ ____END
         I need to know why you're doing this. // Мне нужно знать, почему Вы делаете это.
 
     gordon
-        Director, as I explained in the proposal, recent discoverie-- // Директор, как я и объяснил в обращении, недавние открытия--
+        Директорша, как я и объяснил в обращении, недавние открытия--
             WAIT::1000
             AUTOADVANCE::
         
@@ -2374,10 +2380,11 @@ ____END
     cass
         Хм.
         Это крайне благородно.
-        Well, everything's all set up. // Что ж, всё уже готово. "" мямяумяу "" ??? почему ты мяукаешь
+        Что ж, всё уже готово. 
+            COR-RU::"" мямяумяу "" ??? почему ты мяукаешь
 
     sourceless
-        i... take the card
+        я... беру карту
         but, that is all?
         this mundanity... does she believe me?
         it is so difficult to read anything from her

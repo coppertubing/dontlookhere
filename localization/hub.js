@@ -320,7 +320,7 @@ RESPOBJ::
             SHOWIF::"pit__f3_unity"
             SHOWONCE::
 
-        рассказать о директоре<+>cass
+        рассказать о директорше<+>cass
             SHOWIF::"citystreet__director-talklater"
             SHOWONCE::
 
