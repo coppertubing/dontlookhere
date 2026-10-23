@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1792701508361270151"></script>	
+	<script src="/js/dialogue.js?1792701508361270151"></script>	
+	<script src="/js/globalents.js?1792701508361270151"></script>	
+	<script src="/js/cystStage.js?1792701508361270151"></script>
+	<script src="/js/buddy.js?1792701508361270151"></script>
+	<script src="/js/vn2.js?1792701508361270151"></script>
+	<script defer src="/js/saves.js?1792701508361270151"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1792701508361270151'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1792701508361270151'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1792701508</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,6 +407,7 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div id="room-space">
     <div id="room-animator">
         <div id="room">
@@ -420,7 +481,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1792701508361270151,
 
 				
 				image: "/img/socials/intro.gif",
@@ -892,7 +953,7 @@ whatis
         this is a find from an obesk wreck not far from new zealand
         the notes i got said that it was mostly melted, which is kinda weird...
         anyway... the main piece here is that big one
-        a pedestal usually means 'important', but it's unmarked
+        a pedestal usually means "important", but it's unmarked
         alex did a basic scan, said it kinda looks like a network node
         we don't even really know if it'll accept a mindspike
         but you're getting paid either way, so... have at it
@@ -1120,7 +1181,7 @@ env.entities['dendritic cyst'] = {
         name: "touch",
         showIf: "ocon_examined",
         message: {
-            text: "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it",
+            text: "the dendritic cyst has a rigid outer shell. it's unlikely that there's any way to connect to it.",
             actor: "sourceless"
         }
     }, 
@@ -1128,7 +1189,7 @@ env.entities['dendritic cyst'] = {
         name: "lift",
         showIf: "ocon_examined",
         message: {
-            text: "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table",
+            text: "the dendritic cyst is surprisingly heavy. turning it in your hands produces a cascade of metallic clinking noises from within. when you set it back down, its tendrils find a new orientation to support itself on the table.",
             actor: "sourceless"
         }
     }]
@@ -1154,7 +1215,7 @@ env.entities['fractalline cyst'] = {
         name: "touch",
         showIf: "geye_examined",
         message: {
-            text: "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone",
+            text: "the fractalline cyst's outer shell is slimy and has some yield. if you squeezed it enough, it would probably turn to sludge... best to just leave this one alone.",
             actor: "sourceless"
         }
     }]
@@ -1170,15 +1231,15 @@ start
             SHOWIF::[["TEMP!!sat"]]
 
     sourceless
-        MOTH HOLDS UP A JINGLING PLASTIC CONTAINER FILLED WITH SMALL COPPER TUBES, CUT TO A VERY SHORT LENGTH
-        IT IS SET ON THE TABLE, THE FRACTALLINE CYST REMOVED TO MAKE SPACE
+        MOTH HOLDS UP A JINGLING PLASTIC CONTAINER FILLED WITH SMALL COPPER TUBES, CUT TO A VERY SHORT LENGTH.
+        IT IS SET ON THE TABLE, THE FRACTALLINE CYST REMOVED TO MAKE SPACE.
             EXEC::content.classList.add('showcopper')
 
     moth
         since i'm pretty sure this one is dead, i'm just gonna...
     
     sourceless
-        THE FRACTALLINE CYST IS DELIVERED INTO A BIOHAZARD BIN NEARBY
+        THE FRACTALLINE CYST IS DELIVERED INTO A BIOHAZARD BIN NEARBY.
     
     moth
         anyway - ready to feed a corrucyst?
@@ -1188,7 +1249,7 @@ start
             SHOWIF::[["ep0_epilogue", "done"]]
 
     sourceless
-        MOTH RAISES, THEN LEAVES A CYLINDRICAL GUN NEAR THE DENDRITIC CYST
+        MOTH RAISES, THEN LEAVES A CYLINDRICAL GUN NEAR THE DENDRITIC CYST.
             SHOWIF::[["ep0_epilogue", "done"]]
             EXEC::content.classList.add('showgun')
     
@@ -1205,7 +1266,7 @@ start
             SHOWIF::[["ep0_epilogue", "done"]]
         simple - i completely forgot to cancel the copper order, so, we got both of them.
             SHOWIF::[["ep0_epilogue", "done"]]
-        so we could go either route here, either use the copper, or kill the container and use akizet's 'processed metals'
+        so we could go either route here, either use the copper, or kill the container and use akizet's "processed metals"
             SHOWIF::[["ep0_epilogue", "done"]]
         personally i'd go with the copper, cause i don't know what the container will do
             SHOWIF::[["ep0_epilogue", "done"]]
@@ -1227,8 +1288,8 @@ start
             SHOWIF::[["ep0_epilogue", "done"]]
 
     sourceless
-        YOU PULL THE PLASTIC CONTAINER CLOSER AND UNCLASP THE LID
-        THE COPPER RODS GLIMMER IN THE FOCUSED LIGHT
+        YOU PULL THE PLASTIC CONTAINER CLOSER AND UNCLASP THE LID.
+        THE COPPER RODS GLIMMER IN THE FOCUSED LIGHT.
 
     moth
         all right!
@@ -1241,10 +1302,10 @@ start
     
 move
     sourceless
-        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST.
             EXEC::body.classList.add('cystgrab')
-        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
-        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP.
+        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED.
             EXEC::body.classList.add('cystlift')
         
     moth
@@ -1256,17 +1317,17 @@ move
 
 dump
     sourceless
-        YOU ANGLE THE CONTAINER DIAGONALLY AND CAREFULLY SHAKE THE METAL ROD IN SMALL BATCHES
-        THEY FILL THE COLUMN'S CAVITY WITH METALLIC CLINKS, AND AN OPAQUE, MERCURY-LIKE LIQUID SLOWLY RISES OVER THE METAL
-        IT ROILS AND WRITHES AROUND THE COPPER RODS LIKE IT'S ALIVE
-        THE FANS OF THE CHAMBER GROW LOUDER FOLLOWING A FEW KEYTAPS FROM MOTH
+        YOU ANGLE THE CONTAINER DIAGONALLY AND CAREFULLY SHAKE THE METAL ROD IN SMALL BATCHES.
+        THEY FILL THE COLUMN'S CAVITY WITH METALLIC CLINKS, AND AN OPAQUE, MERCURY-LIKE LIQUID SLOWLY RISES OVER THE METAL.
+        IT ROILS AND WRITHES AROUND THE COPPER RODS LIKE IT'S ALIVE.
+        THE FANS OF THE CHAMBER GROW LOUDER FOLLOWING A FEW KEYTAPS FROM MOTH.
             EXEC::body.classList.add('pourcopper')
         
     moth
         just in case
 
     sourceless
-        YOU SET THE EMPTY CONTAINER OUT OF THE WAY
+        YOU SET THE EMPTY CONTAINER OUT OF THE WAY.
             EXEC::body.classList.add('emptycopper');body.classList.remove('pourcopper', 'cystlift')
 
     RESPONSES::self
@@ -1291,9 +1352,9 @@ END::env.spikeMoveLoopPaused = false;body.classList.remove('prepgrab');;change('
 env.dialogues["ep1feed_container"] = generateDialogueObject(` 
 start
     sourceless
-        YOU GRASP THE CATTLE GUN AND AIM IT AWAY, EXPERIMENTALLY PULLING THE TRIGGER
-        A SPIKE EJECTS FROM THE TIP IN THE BLINK OF AN EYE WITH A LOUD HISS, THEN RECEDES
-        YOU FEEL SOMETHING RUMBLE INSIDE THE GUN AS IT RESETS
+        YOU GRASP THE CATTLE GUN AND AIM IT AWAY, EXPERIMENTALLY PULLING THE TRIGGER.
+        A SPIKE EJECTS FROM THE TIP IN THE BLINK OF AN EYE WITH A LOUD HISS, THEN RECEDES.
+        YOU FEEL SOMETHING RUMBLE INSIDE THE GUN AS IT RESETS.
 
     self
         All right
@@ -1308,10 +1369,10 @@ start
     
 move
     sourceless
-        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST
+        YOU MANEUVER YOUR MINDSPIKE AND EXTEND ITS UTILITY CLAWS TO CLASP AROUND THE CYST.
             EXEC::body.classList.add('cystgrab')
-        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP
-        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED
+        THE CYSTIC GLASS OF ITS SKIN YIELDS SLIGHTLY AND PERMITS A GOOD GRASP.
+        YOU PULL, AND THOUGH IT HAS A MAGNETIC ATTRACTION TO ITS POSITION OVER THE COLUMN, IT IS EASILY REMOVED.
             EXEC::body.classList.add('cystlift', 'containerseq')
         
     moth
@@ -1322,16 +1383,16 @@ move
 
 grab
     sourceless
-        YOU FETCH THE CORRUCYSTIC CONTAINER AND LIFT IT FROM THE TABLE, HOLDING IT UPSIDE-DOWN
+        YOU FETCH THE CORRUCYSTIC CONTAINER AND LIFT IT FROM THE TABLE, HOLDING IT UPSIDE-DOWN.
             WAIT::1000
             EXEC::body.classList.add('containerfade');setTimeout(()=>body.classList.add('containercenter'), 400)
-        ITS DENDRITIC TENDRILS WAVE IN THE AIR LAZILY
+        ITS DENDRITIC TENDRILS WAVE IN THE AIR LAZILY.
     
     moth
         so funfriend said that if you hit the base of it, that it'll instantly die
         and if you don't,
         it will... what did it say again?
-        'respond violently to trauma'
+        "respond violently to trauma"
         well it couldn't be that bad, it's not that big and your suit is pretty thick
         but... 
         well, if you have to throw it, don't throw it towards my machines
@@ -1341,20 +1402,20 @@ grab
 
 kill
     sourceless
-        YOU ANGLE THE CATTLE GUN BETWEEN THE CYST'S SUPPORTIVE TENDRILS
+        YOU ANGLE THE CATTLE GUN BETWEEN THE CYST'S SUPPORTIVE TENDRILS.
             EXEC::body.classList.add('containeraim')
-        A FEW ATTACH TO THE SIDES OF THE WEAPON, TESTING ITS VIABILITY AS A CONNECTION, BUT LET IT PASS
-        THE BARREL SOON TAPS AGAINST THE GLASSY UNDERSIDE, AND SO YOU SQUEEZE THE TRIGGER
-        YOU FEEL A SURPRISING JOLT IN BOTH HANDS. A CRACK RINGS IN THE ROOM, THE CYST'S TENDRILS THRASHING
+        A FEW ATTACH TO THE SIDES OF THE WEAPON, TESTING ITS VIABILITY AS A CONNECTION, BUT LET IT PASS.
+        THE BARREL SOON TAPS AGAINST THE GLASSY UNDERSIDE, AND SO YOU SQUEEZE THE TRIGGER.
+        YOU FEEL A SURPRISING JOLT IN BOTH HANDS. A CRACK RINGS IN THE ROOM, THE CYST'S TENDRILS THRASHING.
             WAIT::2000
             EXEC::env.intro.glass.rate(1.25);env.intro.glass.play();flash(true);setTimeout(()=>body.classList.add('containershot'), 200);setTimeout(()=>flash(false), 400)
-        THEY QUICKLY FALL LIMP AND START TO MELT
+        THEY QUICKLY FALL LIMP AND START TO MELT.
             EXEC::body.classList.remove('containershot')
-        YOU DROP THE ENTIRE THING IN THE COLUMN'S CAVITY BEFORE IT COLLAPSES
+        YOU DROP THE ENTIRE THING IN THE COLUMN'S CAVITY BEFORE IT COLLAPSES.
             EXEC::body.classList.add('containerdrop');body.classList.remove('containerfade')
-        THERE IS A GLIMMER OF GOLD-COLORED METAL, BUT IT DISAPPEARS BENEATH THE SLUDGIFIED CONTAINER
+        THERE IS A GLIMMER OF GOLD-COLORED METAL, BUT IT DISAPPEARS BENEATH THE SLUDGIFIED CONTAINER.
             EXEC::body.classList.remove('containeraim')
-        YOU LOWER THE CYST AND SET THE GUN DOWN
+        YOU LOWER THE CYST AND SET THE GUN DOWN.
             EXEC::body.classList.remove('cystlift', 'containercenter')
     
     moth
@@ -1456,9 +1517,9 @@ start
 env.dialogues["depthrecovery2"] = generateDialogueObject(` 
 start
     sourceless quiet
-        your eyes refocus as your mindspike recoils
+        your eyes refocus as your mindspike recoils.
             WAIT::3000
-        pain radiates through your spine
+        pain radiates through your spine.
 
     sys
         ATTENTION::'emergency ejection complete'
@@ -1613,7 +1674,7 @@ where
     
     moth
         so they found this stuff in a wreck along the ocean floor near new zealand
-        and by 'near', I mean like a thousand miles off the southeast coast
+        and by "near", I mean like a thousand miles off the southeast coast
         it's just that it was found so far out from anything else, that, like...
         new zealand is just the closest point of reference i figured you'd recognize
         they think it had drifted a pretty far distance from wherever it actually fell
@@ -1628,7 +1689,7 @@ where
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -1680,7 +1741,7 @@ if(check("TEMP!!ejected", "beneath")) {
 
 //regular intros
 } else if(!check('introcompleted')) { // if they're new
-    body.classList.add('slowdialogue', 'nomoth', 'noent', 'nosys') //to ease the player into the dialogue system
+    body.classList.add('slowdialogue', 'nomoth', 'noent', 'nosys', 'staticrun') //to ease the player into the dialogue system
     setTimeout(()=>{
         startDialogue("index")
 
@@ -1754,8 +1815,9 @@ if(check("TEMP!!ejected", "beneath")) {
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 
@@ -1810,7 +1872,7 @@ setTimeout(()=>{
     delete env.introConnect
 }, 15000)
 
-body.classList.remove("nomoth", "noent")
+body.classList.remove("nomoth", "noent", "staticrun")
 cutscene(false)
 MUI("deprohibit")
 

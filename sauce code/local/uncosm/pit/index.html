@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,6 +407,7 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div class="grid-plane">
     <div class="grid-container">
         <div class="grid-animator">
@@ -451,24 +512,14 @@
     background-image: url(/img/textures/damageinvert.gif) !important;
 }
 
-#content.damagehit .grid-animator {
+#content.damagehit .gridplane:not(.freelook):not(.freelookblur) .grid-animator {
     animation: BIGSHAKE 200ms linear infinite;
     --baseTransform: var(--baseAnimatorTransform);
 }
 
-#content.damagehit .freelookblur .grid-animator, 
-#content.damagehit .freelook .grid-animator {
-    --baseTransform: var(--freemoveAnimatorTransform);
-}
-
 #content.damagehit .grid-plane {
-    --camera-distance: 1.45;
-}
-
-#content.damagehit .freelookblur .grid-plane, 
-#content.damagehit .freelook .grid-plane {
-    --camera-distance: 0;
-    --perspective: 200px;
+    perspective: 50px !important;
+    transition: perspective 100ms ease-in-out, opacity 1s ease-in-out;
 }
 
 #content {
@@ -693,7 +744,7 @@
     transition: 200ms;
 }
 
-.newevil.looker div.sprite {
+#realgrid .newevil.looker div.sprite {
     width: 200px;
     height: 400px;
     background: url(/img/local/uncosm/pit/looker.gif);
@@ -741,7 +792,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/pit.gif",
@@ -1279,7 +1330,7 @@ env.ravenous = {
         `…ÁÀð…Íãswirling endlesslyãšqÖïìstress manifests as wind tearing at my mind;ÂºG €üÔÖ…`,
         `…HQWHl'blueprints' as the cousins say"œ÷- ™5A]Á¨„capable of sustaining the depth's pressure:ÑÑ¸Ó5¨x˜`,
         `Q÷°Ýlpreparations commenced7ìN{Ç½ßÝ·ÌRÞ…soon all will be knownÍãsw…`,
-        `…€âX²åweeksãÉGregular sessions with gakvu and tozik8J1)‘Roccupy attention for a whileå…`,
+        `…€âX²åθstaresãÉGregular sessions with gakvu and tozik8J1)‘Roccupy attention for a whileå…`,
         `…æŒ/(wait for me±ÖÝ›nædo not do not do not“w`,
         `¡ÔæLgÌˆ9Ëagree uneasily‰IT ‘2f H„how about a drinkIž¯x›æ«½¯…`,
         `Ó}®uncharacteristicïžö&worry in the director's eyes‚±ŒL”Ûã…`,
@@ -3500,7 +3551,7 @@ start
         oh, here again?
         ok, it's in the uncosm, from a hole in the cache... 
         that kind of supports my theory that it was a direct part of a memory once
-        pretty obvious with all the fbx stuff, but,
+        pretty obvious with all the FBX stuff, but,
         it's like there's this big gap that was left by it getting pulled down here
 
     RESPONSES::self
@@ -3523,7 +3574,7 @@ ____SHOWIF::["pit__introdrowning", false]
     moth
         a few things in my logs suggest there was some sort of connection between the city and here at some point
         probably even a direct part of it, or maybe contained by it. idk
-        pretty obvious with all the fbx stuff anyway
+        pretty obvious with all the FBX stuff anyway
         based off how you got here earlier, it makes sense 
         through a pit in the cache, leading down into the uncosm...
         it's like there's this big tunnel that was left by it getting pulled down here
@@ -3568,7 +3619,7 @@ ____SHOWIF::["pit__introdescent", false]
     moth
         a few things in my logs suggest there was some sort of connection between the city and here at some point
         probably even a direct part of it, or maybe contained by it. idk
-        pretty obvious with all the fbx stuff anyway
+        pretty obvious with all the FBX stuff anyway
         based off how you got here earlier, it makes sense 
         through a pit in the cache, leading down into the uncosm...
         it's like there's this big tunnel that was left by it getting pulled down here
@@ -3869,7 +3920,7 @@ start
     moth
         right, it's worth a shot if you can find it again
         but, new problem
-        you remember how when you entered, it said something about a 'coherent location attempt'?
+        you remember how when you entered, it said something about a "coherent location attempt"?
         your spike found that first memory fragment and treated it as the entry point
         like, that's how it would have entered the space again if you had left
         looks like it was just updated to see <em>this spot</em> as the entry point
@@ -4406,7 +4457,7 @@ start
 
 impulse
     self
-        what do you mean by 'oppressive gloom'?
+        what do you mean by "oppressive gloom"?
 
     moth
         okay, well, to preface, there's this emotional analysis component we've got
@@ -4454,7 +4505,7 @@ ravenous
         these are some really unique adaptations
         like, the first type you saw, the ones that fake coherence
         they have just random bits of memory looped into themselves
-        probably to lure other things closer to 'catch' them
+        probably to lure other things closer to "catch" them
 
 ____SHOWIF::"spida"
     self
@@ -4499,7 +4550,7 @@ ____END
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -4673,8 +4724,9 @@ if(location.search.includes('testnav')) {
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 
