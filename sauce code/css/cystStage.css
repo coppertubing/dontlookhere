@@ -97,6 +97,13 @@
     transform-style: preserve-3d;
 }
 
+.gridpiece.flat-gridpiece, .piecewrapper.flat-piecewrapper  {
+    transform-style: flat;
+}
+
+.gridpiece.flat-gridpiece:not(:empty) {
+    transform-style: preserve-3d;
+}
 
 /* transitions */
 .stage-transition .grid-container,
@@ -143,7 +150,9 @@
         In freemove mode, some stuff is moved so that the animator is the closest to direct camera handling.
         Height is also a simple adjustment for Z based on desired height (1.5 by default).
     */
+    /* this is handled by freemoveUpdateReal in cystStage
     --freemoveAnimatorTransform: rotateX(calc(var(--camera-tilt) * 1deg)) rotateZ(calc(var(--camera-rotation) * 1deg)) translateZ(calc(var(--camera-height) * -1 * var(--gridTileSize)));
+    */
 
     transform: var(--baseAnimatorTransform);
 }
@@ -160,11 +169,13 @@
         var(--personal-offset) 
     ;
 
+    /* this is handled by freemoveUpdateReal in cystStage
     --freemoveRealGridTransform: 
         translateY(calc(  (var(--camera-y) * var(--gridTileSize) * -1) + (0.5 * var(--gridTileSize))  ))
         translateX(calc(  (var(--camera-x) * var(--gridTileSize) * -1) + (0.5 * var(--gridTileSize))  ))
         var(--personal-offset)
     ;
+    */
 
     transform: var(--baseRealGridTransform) rotate(0.001deg);
 }
@@ -181,9 +192,11 @@
 
 .piecewrapper { 
     position: absolute;
+    /* set directly by cystStage now, as a speculative optimization
     transform: 
         translateX(calc(var(--gridTileSize) * var(--realX))) 
         translateY(calc(var(--gridTileSize) * var(--realY)));
+    */
 }
 
 .piecewrapper.vis.hardopacity.empty {
@@ -195,7 +208,7 @@
 }
 
 .darkstage .gridpiece:empty, 
-.darkstage .gridpiece:not(.alwaysvis) div {
+.darkstage .gridpiece:not(.alwaysvis) div:not(.target) {
     opacity: var(--intendedOpacity);
     transition: opacity 200ms linear;
 }
@@ -296,7 +309,7 @@ body:not(.in-dialogue) .grid-plane.freemove {
 }  
 
 .freemove .realgrid {
-    transition: transform 100ms linear;
+    transition: unset;
 }
 
 .notargets .grid-plane.freelook::before {
@@ -435,7 +448,7 @@ body:not(.in-dialogue) .grid-plane.freemove {
 
 /* HTML navigation */
 #stage-navigator, .key-navigator {
-    z-index: 2;
+    z-index: 101;
     position: absolute;
     bottom: 0;
     padding: 10px;
@@ -605,7 +618,7 @@ body:not(.in-dialogue) .grid-plane.freemove {
 }
 
 .stage-arrows > div.quality::after {
-    content: "QUALTIY: " attr(quality);
+    content: "QUALITY: " attr(quality);
     width: auto;
     border-radius: 10px;
     padding: 0.25em;
@@ -633,6 +646,12 @@ body.mask-camera #stage-navigator {
 }
   
 /* particular dudes */
+#realgrid .newevil.dypcontent {
+    transform: unset;
+    bottom: unset;
+    opacity: 1; /* evils work different on darkstages from normal tiles */
+}
+
 #realgrid .newevil .sprite-wrapper, 
 #realgrid .newevil .sprite-wrapper div,
 #realgrid .newevil .sprite-wrapper img {
@@ -652,6 +671,10 @@ body.mask-camera #stage-navigator {
 
 #realgrid .newevil .sprite {
     max-height: calc(var(--gridTileSize) * 2);
+}
+
+#realgrid .newevil.tallevil .sprite {
+    max-height: calc(var(--gridTileSize) * 2.5);
 }
 
 .realgrid .pianoguy:after {
@@ -693,6 +716,41 @@ body.mask-camera #stage-navigator {
     border-color: var(--bright-color);
 }
 
+.realgrid .gridpiece.dangertile {
+    color: var(--dark-color) !important;
+    background: url(/img/textures/tileshade.gif), var(--obesk-color) !important;
+    background-position: center !important;
+    border: 20px double !important;
+    transform-style: preserve-3d;
+}
+
+.realgrid .gridpiece.dangertile::after {
+    content: "";
+    font-size: var(--gridTileSize);
+    transform: var(--baseTransform);
+    animation: SPIN-Y 4s linear infinite;
+    position: absolute;
+    --baseTransform: rotateX(-90deg) translateY(var(--tile-1)) translateY(var(--tile-f5));
+    background: url(/img/textures/eyetrantiny.gif);
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.realgrid .gridpiece.dangertile.needswork::after {
+    content: "?";
+    color: red;
+}
+
+.realgrid .gridpiece.dangertile.bstrd {
+    color: var(--bastard-color) !important;
+}
+
+.in-dialogue .realgrid .gridpiece.dangertile::after {
+    display: none;
+}
+
 /* DYNAMIC PROPS (ep3)
     these are less hardcoded props made up of classes, like regular HTML would be...
     as opposed to the insane mess that all the old .props are
@@ -709,8 +767,8 @@ body.mask-camera #stage-navigator {
     --dyp-width: 1;
 }
 
-.realgrid .dyp .dypcontent,
-#realgrid .dyp .dypcontent {
+.realgrid .dypcontent,
+#realgrid .dypcontent {
     bottom: 50%;
     position: absolute;
     transform-origin: bottom;
@@ -749,7 +807,7 @@ body.mask-camera #stage-navigator {
     display: none !important;
 }
 
-.realgrid .dyp .dyp-cross {
+.realgrid .dyp .dyp-cross, #realgrid .dyp .dyp-cross {
     background-image: unset;
 }
 

@@ -35,11 +35,14 @@ env.stage.setPlaneProp = (name, value, force) => {
 env.stage.execPlaneProps = () => {
     if(page.freedomUpdateCallback) page.freedomUpdateCallback()
 
+    let updateAnimator = false
+    let updateRealGrid = false
+
     for (const prop in env.stage._rafUpdates) {
 
         if(prop == "--camera-rotation" || prop == "--camera-tilt" || prop == "--jump-height") {
             if(env.stage.freelook || (prop == "--camera-rotation" && env.stage.freemove)) {
-                freemoveUpdateAnimator()
+                updateAnimator = true
             } else {
                 env.stage.plane.style.setProperty(prop, env.stage._rafUpdates[prop])
             }
@@ -47,14 +50,16 @@ env.stage.execPlaneProps = () => {
 
         if(prop == "--stage-steps-x" || prop == "--stage-steps-y") {
             if(env.stage.freemove) {
-                freemoveUpdateReal()
-                
+                updateRealGrid = true
             } else {
                 env.stage.plane.style.setProperty(prop, env.stage._rafUpdates[prop])
             }
 
         }
     }
+
+    if(updateAnimator) freemoveUpdateAnimator()
+    if(updateRealGrid) freemoveUpdateReal()
 
     if(page.contentTracksAngles === true) {
         content.style.setProperty("--camera-tilt", env.stage.values["--camera-tilt"] || 0)
@@ -64,6 +69,8 @@ env.stage.execPlaneProps = () => {
     env.stage._rafUpdates = {}
     env.stage._rafPending = false
 }
+
+
 
 // like querySelectorAll for both the ref and real grid
 env.stage.querySelectorAll = (query) => {
@@ -80,14 +87,15 @@ env.stage.angles = {
 }
 
 env.stageEntityNum = 0
-function changeStage(targetStage, spot = false, direction = false, options = { duration: 400, noFlash: false, specificPlan: false }){
+function changeStage(targetStage, spot = false, direction = false, options = { duration: 400, noFlash: false, specificPlan: false, darkFlash: false }){
     if(!env.stages[targetStage]) { printError(`tried to go to a nonexistent stage "${targetStage}"`); throw `tried to go to a nonexistent stage "${targetStage}"`}
     body.classList.add('stage-transition')
     static.style.transitionDuration = `${options.duration}ms`
     env.stage.changing = true
 
     if(!options.noFlash) {
-        flash(true)
+        if(options.darkFlash) vfx({type: "darkflash", state: true})
+        else flash(true)
         MUI("off")
     }
 
@@ -141,7 +149,8 @@ function changeStage(targetStage, spot = false, direction = false, options = { d
 
             if(stage.entities) {
                 if(stage.entities[piece]) {
-                    pieceEntity = stage.entities[piece];
+                    if(stage.entities[piece].reference) pieceEntity = env.stageEntities[stage.entities[piece].reference] // referential pieces mostly for getPlan conditional alteration
+                    else pieceEntity = stage.entities[piece]
                 }
             }
 
@@ -149,7 +158,7 @@ function changeStage(targetStage, spot = false, direction = false, options = { d
             if(!pieceEntity) alert(`failed to find piece for ${piece}`)
             let pieceClass = `${pieceEntity.class || ""}`
 
-            if(pieceEntity.contains) { if(pieceEntity.contains.dyp) {
+            if(pieceEntity.contains) { if(pieceEntity.contains.dyp && !pieceEntity.contains.noDypClass) {
                 pieceClass += " dyp"
             }}
 
@@ -330,6 +339,10 @@ function changeStage(targetStage, spot = false, direction = false, options = { d
         
         //virtualgrid used in darkstep only
         env.stage.virtualGrid = env.stage.ref.querySelectorAll('.gridpiece')
+        env.stage.alwaysVisGridPieces = new Set(
+            Array.from(env.stage.ref.querySelectorAll('.gridpiece.alwaysvis, .gridpiece .alwaysvis'))
+                .map(el => el.classList.contains('gridpiece') ? el : el.parentElement)
+        )
 
         if(env.stage.current.fogRadius) {
             content.classList.add('darkstage')
@@ -356,6 +369,7 @@ function changeStage(targetStage, spot = false, direction = false, options = { d
 
             //stages can have arbitrary HTML added to the end for walls, ceilings, etc
             if(stage.html) { newStage.insertAdjacentHTML('beforeend', processStageVariables(stage.html)) }
+            if(!env.stage.current.fogRadius) flattenEmptyTiles(newStage)
             initializeAssetCanvases()
 
             if(
@@ -416,11 +430,35 @@ function changeStage(targetStage, spot = false, direction = false, options = { d
         }, 10);
 
         setTimeout(()=>{
-            if(!options.noFlash) flash(false)
+            if(!options.noFlash) {
+                if(options.darkFlash) vfx({type: "darkflash", state: false})
+                else flash(false)
+            }
             static.style.transitionDuration = ``
+            if(env.stage.freemove) {
+                freemoveUpdateAnimator()
+                freemoveUpdateReal()
+            }
+
             body.classList.remove('stage-transition')
         }, options.duration * 0.5)
     }, options.duration); 
+}
+
+//if a tile has no ::before/::after and no content, we want to reduce the 3D contexts created
+function updateFlatGridPiece(piece) {
+    if(!piece?.classList?.contains("gridpiece") || piece?.classList?.contains("raised-floaty")) return
+
+    const beforeContent = window.getComputedStyle(piece, "::before").content
+    const afterContent = window.getComputedStyle(piece, "::after").content
+    const isFlat = !piece.hasChildNodes() && ["none", "normal"].includes(beforeContent) && ["none", "normal"].includes(afterContent)
+
+    piece.classList.toggle("flat-gridpiece", isFlat)
+    if(piece.parentElement?.classList.contains("piecewrapper")) piece.parentElement.classList.toggle("flat-piecewrapper", isFlat)
+}
+
+function flattenEmptyTiles(grid) {
+    Array.from(grid.children).forEach(updateFlatGridPiece)
 }
 
 //generates the contains HTML/classes based on provided stage entity info
@@ -477,6 +515,7 @@ function generateStageEntityContents(pieceEntity, i) {
             ${pieceEntity.contains.dialogue ? `dialogue="${pieceEntity.contains.dialogue /* this is on-contact dialogue triggered by stage enemies */}"` : ""}
             ${pieceEntity.contains.aiRate ? `airate="${pieceEntity.contains.aiRate}"` : ""}
             ${pieceEntity.contains.aiType ? `aitype="${pieceEntity.contains.aiType}"` : ""}
+            ${pieceEntity.contains.destClass ? `destclass="${pieceEntity.contains.destClass}"` : ""}
             ${typeof i != "undefined" ? `origin-spot="${i+1}"` : ""}
         >
             ${htmlToShow}
@@ -487,11 +526,11 @@ function generateStageEntityContents(pieceEntity, i) {
 }
 
 // a simple stage refresh shortcut that ensures the creature remains in the same spot
-function refreshStage({duration = 100, noFlash = false, specificPlan = false} = {}) { 
+function refreshStage({duration = 100, noFlash = false, darkFlash = false, specificPlan = false} = {}) { 
     if(env.stage.name == null) return console.warn("tried to refreshstage when stage not active"); // stage not active
 
     env.stage.plane.classList.add("instantstagetran")
-    changeStage(env.stage.name, env.stage.creatureI, env.stage.lastMoved, {duration, noFlash, specificPlan})
+    changeStage(env.stage.name, env.stage.creatureI, env.stage.lastMoved, {duration, noFlash, specificPlan, darkFlash})
     setTimeout(() => {
         env.stage.plane.classList.remove("instantstagetran")
     }, duration)
@@ -571,6 +610,22 @@ function playerTurn({clockwise = true, specificDirection = false } = {}) {
 function playerMoveTo(x, y, dir) {
     gridMoveTo(env.stage.ref.querySelector('#creature').parentElement, elementAtStageCoordinates(x, y))
     if(dir) playerTurn({specificDirection: dir})
+    setTimeout(()=> {
+        step()
+        
+        //freemove only
+        if(!env.stage.freemove) return;
+        env.stage.setPlaneProp("--camera-tilt", 0)        
+        env.stage.setPlaneProp('--stage-steps-x', env.stage.creatureLoc.x + 0.5)
+        env.stage.setPlaneProp('--stage-steps-y', env.stage.creatureLoc.y + 0.5)
+    }, 10)
+}
+
+//shortcut for moving player to a tile that has a sepcific class
+function playerMoveToClass(className, dir) {
+    gridMoveTo(env.stage.ref.querySelector('#creature').parentElement, env.stage.ref.querySelector(`.${className}`))
+    if(dir) playerTurn({specificDirection: dir})
+
     setTimeout(()=> {
         step()
         
@@ -778,7 +833,7 @@ function stepKey(key) {
 function toggleFreemove(state, {slow = false, transition = true} = {}) {
     if(!env.stage.current) return;
 
-    if(state) {
+    if(state) { 
         if(env.stage?.current?.noFreedom) return;
         
         content.classList.remove('swapcam')
@@ -821,8 +876,7 @@ function toggleFreemove(state, {slow = false, transition = true} = {}) {
             env.stage.plane.classList.remove("freemovetran")
         }
 
-        clearInterval(env.stage.freemoveInterval)
-        delete env.stage.freemoveInterval
+        stopFreemoveLoop()
         window.removeEventListener("keydown", freemoveKeyDown)
         window.removeEventListener("keyup", freemoveKeyUp)
         window.removeEventListener("blur", freemoveKeyUp)
@@ -868,8 +922,16 @@ function toggleMouseLook(enable = undefined, {resetAngle = false, delayCoords = 
 
             if(noLockConditions() || closestUiElement || env.noPointerLock) return console.log("not locking bc either noLock or ui element");
 
-            document.body.requestPointerLock({ unadjustedMovement: true })
-            document.body.requestPointerLock()
+            let attemptedPointerLock
+            try {
+                //if the user is on linux, skip this
+                if(!navigator.platform.toLowerCase().includes('linux')) document.body.requestPointerLock({ unadjustedMovement: true })
+            } catch(e) {
+                attemptedPointerLock = true
+                setTimeout(()=>{ document.body.requestPointerLock() }, 50) // retry without parameters 
+            }
+
+            if(!document.pointerLockElement && !attemptedPointerLock) document.body.requestPointerLock()
 
             setTimeout(() => {
                 if(document.pointerLockElement && env.stage.freemove) {
@@ -885,7 +947,7 @@ function toggleMouseLook(enable = undefined, {resetAngle = false, delayCoords = 
                 } else if(!env.stage.freelook) {
                     env.stage.plane.classList.remove("freelookblur")
                 }
-            }, 50)
+            }, attemptedPointerLock ? 100 : 50)
         }
 
         env.stage.requestLock()
@@ -912,6 +974,8 @@ function toggleMouseLook(enable = undefined, {resetAngle = false, delayCoords = 
         }, 1000)
         
         env.stage.plane.classList.remove("freelookblur")
+
+        freemoveUpdateAnimator(); freemoveUpdateReal()
     } else {
         env.stage.plane.classList.remove('freelook')
         env.stage.plane.classList.remove('freelookblur')
@@ -945,10 +1009,10 @@ function freemoveKeyDown(e) {
 
     const k = e.key.toLowerCase()
     if (["q","e","w","a","s","d","arrowup","arrowdown","arrowleft","arrowright"," "].includes(k)) {
-        if(!env.stage.freemoveInterval) {
-            env.stage.lastMoveTime = performance.now() - 100
+        if(!env.stage.freemoveAnimationFrame) {
+            env.stage.lastMoveTime = performance.now()
             freemoveKey()
-            env.stage.freemoveInterval = setInterval(() => freemoveKey(), 100)
+            startFreemoveLoop()
         } 
         e.preventDefault()
     } else if(k == "z") {
@@ -972,11 +1036,27 @@ function freemoveKeyUp() {
         !env.pressedKeys.arrowright &&
         !env.pressedKeys[" "]
     ) {
-        clearInterval(env.stage.freemoveInterval)
+        stopFreemoveLoop()
         clearInterval(env.stage.backupInterval)
-        delete env.stage.freemoveInterval
         delete env.stage.backupInterval
     }
+}
+
+function startFreemoveLoop() {
+    if(env.stage.freemoveAnimationFrame) return
+
+    const tick = () => {
+        freemoveKey()
+        env.stage.freemoveAnimationFrame = requestAnimationFrame(tick)
+    }
+
+    env.stage.freemoveAnimationFrame = requestAnimationFrame(tick)
+}
+
+function stopFreemoveLoop() {
+    if(!env.stage.freemoveAnimationFrame) return
+    cancelAnimationFrame(env.stage.freemoveAnimationFrame)
+    delete env.stage.freemoveAnimationFrame
 }
 
 //you might think using two different methods for the movement and mouselooking is dumb but this ended up running insanely well compared to other implements
@@ -1092,8 +1172,8 @@ function freemoveKey() {
                 newY = currentY
 
             } else { // movement totally blocked
-                if(targetTileX !== currentTileX) newX = targetTileX > currentTileX ? (Math.floor(currentX) + 0.92) : Math.floor(currentX) + 0.08
-                if(targetTileY !== currentTileY) newY = targetTileY > currentTileY ? (Math.floor(currentY) + 0.92) : Math.floor(currentY) + 0.08
+                if(targetTileX !== currentTileX) newX = targetTileX > currentTileX ? (Math.floor(currentX) + 0.999) : Math.floor(currentX) + 0.001
+                if(targetTileY !== currentTileY) newY = targetTileY > currentTileY ? (Math.floor(currentY) + 0.999) : Math.floor(currentY) + 0.001
             }
         } 
         
@@ -1162,15 +1242,6 @@ function pauseFreemove(pausing = true, transition = true) {
     }
 }
 
-// we get special setting functions for the camera to improve performance
-function freemoveUpdateReal() {
-    env.stage.real.style.transform = `
-        translateY(${ (env.stage.values["--stage-steps-y"] * 200 * -1) + (0.5 * 200) }px)
-        translateX(${ (env.stage.values["--stage-steps-x"] * 200 * -1) + (0.5 * 200) }px)
-        var(--personal-offset)
-    `
-}
-
 // this is literally just for fun it doesn't do anything you can't jump over shit 
 function easeOutQuad(t) { return t * (2 - t) }
 function easeInQuad(t) { return t * t }
@@ -1213,6 +1284,15 @@ function freemoveJump() { // this is
     }
     
     env.stage.jumpAnimationId = requestAnimationFrame(animateJump)
+}
+
+// we get special setting functions for the camera to improve performance
+function freemoveUpdateReal() {
+    env.stage.real.style.transform = `
+        translateY(${ (env.stage.values["--stage-steps-y"] * 200 * -1) + (0.5 * 200) }px)
+        translateX(${ (env.stage.values["--stage-steps-x"] * 200 * -1) + (0.5 * 200) }px)
+        var(--personal-offset)
+    `
 }
 
 function freemoveUpdateAnimator() {
@@ -1363,7 +1443,7 @@ function step() {
         gridMoveTo(realParent, env.stage.real.querySelector(`.gridpiece[i="${refParent.getAttribute('i')}"]`))
 
         //executes any onStep
-        if(typeof env.stage.current.onStep == "function") env.stage.current.onStep()
+        if(typeof env.stage.current.onStep == "function") env.stage.current.onStep(realCreature.parentElement)
         
         //executes any function the entity has within its room or default object
         let entSlug = refParent.getAttribute('slug')
@@ -1410,55 +1490,93 @@ function darkStep() {
     // obtain elements within the fog radius of player
     // determine which elements need to be removed and which need to be added
     let maxRadius = env.stage.current.fogRadius;
-    let spot = stageCoordinatesFromId('creature');
+    let spot = stageCoordinatesFromId('creature')
     let newVisibleGridPieces = new Set()
 
     // update stage with current fog state
-    let realGrid = content.querySelector("#realgrid")
-    realGrid.style.setProperty("--fogRadius", maxRadius)
+    let realGrid = env.stage.real
+    if(realGrid._fogRadius !== maxRadius) {
+        realGrid.style.setProperty("--fogRadius", maxRadius)
+        realGrid._fogRadius = maxRadius
+    }
 
     // get all intended tiles, update existing ones, add new ones
     let visRings = getSurroundingTiles(spot.x, spot.y, maxRadius);
     let newTiles = document.createDocumentFragment()
+    let newWrappers = []
+    let newCanvases = []
     
-    visRings.forEach((ring, i) => ring.forEach(rEl => {
+    visRings.forEach((ring, i) => {
+        let opacity = fogOpacityCalculation(i, maxRadius, env.stage.current.fogAlgorithm)
+
+        ring.forEach(rEl => {
         //if the tile isn't in visible gridpieces, then we want to add it with a new index
+            let alwaysVis = rEl.classList.contains("alwaysvis") || rEl.firstElementChild?.classList?.contains("alwaysvis")
 
-        let alwaysVis = rEl.classList.contains("alwaysvis") || rEl.firstElementChild?.classList?.contains("alwaysvis")
+            if(env.stage.visibleGridPieces.has(rEl)) { // UPDATE
+                let intendedOpacity = alwaysVis ? 1 : opacity
+                // these aren't used anywhere so i'm just commenting them out for now
+                //rEl.cousin.style.setProperty("--distX", rEl.position.xDist)
+                //rEl.cousin.style.setProperty("--distY", rEl.position.yDist)
+                if(rEl.cousin._intendedOpacity !== intendedOpacity) {
+                    rEl.cousin.style.setProperty('--intendedOpacity', intendedOpacity)
+                    rEl.cousin._intendedOpacity = intendedOpacity
+                }
+                if(rEl.cousin._trueOpacity !== opacity) {
+                    rEl.cousin.style.setProperty('--trueOpacity', opacity)
+                    rEl.cousin._trueOpacity = opacity
+                }
 
-        if(env.stage.visibleGridPieces.has(rEl)) { // UPDATE
-            let opacity = fogOpacityCalculation(i, maxRadius, env.stage.current.fogAlgorithm)
-            rEl.cousin.style.setProperty("--distX", rEl.position.xDist)
-            rEl.cousin.style.setProperty("--distY", rEl.position.yDist)
-            rEl.cousin.style.setProperty('--intendedOpacity', alwaysVis ? 1 : opacity)
-            rEl.cousin.style.setProperty('--trueOpacity', opacity)
-            
-        } else { // ADD (via documentFragment - lets you add a bunch of stuff at once)
-            let tile = document.createElement("div")            
-            let opacity = fogOpacityCalculation(i, maxRadius, env.stage.current.fogAlgorithm)
+            } else { // ADD (via documentFragment - lets you add a bunch of stuff at once)
+                let tile = document.createElement("div")            
 
-            //this can be done with style.setProperty, etc, but this just made sense to do since it's bulk
-            tile.setAttribute('class', `piecewrapper vis ${rEl.classList.contains("hardopacity") ? 'hardopacity' : ''} ${rEl.innerHTML != "" ? "stuff" : "empty"} `)
-            tile.setAttribute('style', `
-                --distX: ${rEl.position.xDist}; 
-                --distY: ${rEl.position.yDist};
-                --realX: ${rEl.position.x};
-                --realY: ${rEl.position.y};
-                --intendedOpacity: ${alwaysVis ? 1 : opacity};
-                --trueOpacity: ${opacity};
-            `)
-            tile.innerHTML = rEl.outerHTML
-            rEl.cousin = tile
+                //this can be done with style.setProperty, etc, but this just made sense to do since it's bulk
+                tile.setAttribute('class', `piecewrapper vis ${rEl.classList.contains("hardopacity") ? 'hardopacity' : ''} ${rEl.hasChildNodes() ? "stuff" : "empty"} `)
+                /* not setting these anymore. less stuff
+                    --distX: ${rEl.position.xDist}; 
+                    --distY: ${rEl.position.yDist};
+                    --realX: ${rEl.position.x};
+                    --realY: ${rEl.position.y};
+                */
+                tile.setAttribute('style', `
+                    --intendedOpacity: ${alwaysVis ? 1 : opacity};
+                    --trueOpacity: ${opacity};
+                `)
 
-            if(newVisibleGridPieces.has(rEl)) return;
-            newTiles.appendChild(tile)
-        }
+                tile.style.transform = `
+                    translateX(${rEl.position.x * 200}px)
+                    translateY(${rEl.position.y * 200}px)
+                `
 
-        newVisibleGridPieces.add(rEl)
-    }));
+                let realTile = rEl.cloneNode(true)
+                let entity = realTile.firstElementChild
+                let realEntity = entity?.id && realGrid.querySelector(`#${entity.id}`)
+
+                if(realEntity) {
+                    realTile.replaceChildren()
+                    realTile.classList.remove("hassomething")
+                    realTile.classList.add("hasnothing")
+                }
+                
+                tile.appendChild(realTile)
+
+                rEl.cousin = tile
+                tile._intendedOpacity = alwaysVis ? 1 : opacity
+                tile._trueOpacity = opacity
+                newWrappers.push(tile)
+                newCanvases.push(...tile.querySelectorAll("canvas[sprite]"))
+
+                if(newVisibleGridPieces.has(rEl)) return;
+                newTiles.appendChild(tile)
+            }
+
+            newVisibleGridPieces.add(rEl)
+        })
+    })
 
     // add all new tiles at once
     realGrid.appendChild(newTiles)
+    newWrappers.forEach(wrapper => updateFlatGridPiece(wrapper.firstElementChild))
 
     // handle removal of tiles not in the new setup
     env.stage.visibleGridPieces.forEach(el => {
@@ -1470,7 +1588,7 @@ function darkStep() {
     
     // Update the global set of visible grid pieces
     env.stage.visibleGridPieces = newVisibleGridPieces;
-    initializeAssetCanvases()
+    newCanvases.forEach(canvas => initializeAssetCanvas(canvas))
 }
 
 // gets arrays of squares of tiles around the specified point (using breadth-first search)
@@ -1502,7 +1620,7 @@ function getSurroundingTiles(centerX, centerY, maxRadius) {
                         (Math.abs(xDist) <= 1 && Math.abs(yDist) <= 1)
                     )
 
-                    || piece.innerHTML != "" // we also render 'nothing' tiles if they actually contain something
+                    || piece.hasChildNodes() // we also render 'nothing' tiles if they actually contain something
                 )
             ) {
                 result[radius].push(piece)
@@ -1537,12 +1655,10 @@ function getSurroundingTiles(centerX, centerY, maxRadius) {
 
     //get alwaysVis tiles, or tiles with alwaysVis pieces, only if they aren't already in the alwaysVis set
     let alwaysVisTiles = []
-    env.stage.ref.querySelectorAll(".gridpiece.alwaysvis, .gridpiece .alwaysvis").forEach(el => {
-        let tile = el
-
-        if(!el.classList.contains("gridpiece")) { 
-            tile = el.parentElement
-        }
+    env.stage.alwaysVisGridPieces.forEach(tile => {
+        //visifcontains is so we can see critters moving distantly in embres without having to have either them or the would-be tiles actually be taking up space
+        //otherwise it's like 184 alwaysvis tiles. eek! performance!!
+        if(tile.classList.contains("visifcontains") && !tile.firstElementChild) return;
 
         if(!alwaysVisInRange.has(tile)) {
             alwaysVisTiles.push(tile)
@@ -1584,10 +1700,16 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
         return false
     }
 
+    env.stage.lastGridMovingEnt = origin.firstElementChild
     let blocks = target.classList.contains('blocks')
-    if(target.hasAttribute("blockif")) {
-        let entSlug = target.getAttribute('slug')        
 
+    if(!blocks && origin?.firstElementChild?.id == "creature") {
+        blocks = target.classList.contains("noplayer")
+    }
+    
+    if(!blocks && target.hasAttribute("blockif")) {
+        let entSlug = target.getAttribute('slug')        
+    
         if(entSlug && env.stages[body.id].entities) {
             let ent = env.stageEntities[entSlug] || env.stages[body.id].entities[entSlug]
             if(ent.blockIf) blocks = getShowValidity(ent.blockIf)
@@ -1607,6 +1729,7 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
         target.appendChild(movingElement)
         origin.innerHTML = "" // to trigger :empty
         origin.classList.add('hasnothing')
+        origin.classList.remove('hassomething')
 
         if(mirror) { //this is where we move the visual representation on the realgrid
             //dark stages use a different non-indexed system. this does not support different mirrorGridPieces (but that system also is from a scrapped thing so who cares)
@@ -1619,7 +1742,9 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
                 //first - check if the enemy is even rendered on the realgrid
                 if(mirrorPosition) {
                     if(!targetPosition) {//if targetPosition is outside of the radius, then we just remove the mirror guy
+                        mirrorPosition.classList.remove('hassomething')
                         mirrorPosition.innerHTML = ""
+                        
                     } else {//if they're already here and moving in the radius, just move em like normal
                         if(originI != targetI) {
                             gridMoveTo(mirrorPosition, targetPosition)
@@ -1645,6 +1770,8 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
 
         //elements can trigger alwaysvis and necessitate a grid update on move
         if(movingElement.classList.contains("alwaysvis") && env.stage.current.fogRadius) {
+            if(!origin.classList.contains("alwaysvis")) env.stage.alwaysVisGridPieces.delete(origin)
+            env.stage.alwaysVisGridPieces.add(target)
             darkStep()
             updateCameraTracking()
         }
@@ -1654,6 +1781,9 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
         for (var i = 0; i < targetContents.length; i++) {
             targetContents[i].style.transform = ""
         }
+
+        updateFlatGridPiece(origin)
+        updateFlatGridPiece(target)
 
         return true;
 
@@ -1716,10 +1846,10 @@ function gridMoveTo(origin, target, mirror = undefined, mirrorGridPiece = '#real
 }
 
 function updateStageCreature() {
-    try{ 
-        let creature = env.stage.real.querySelector('.truecreature')
-        creature.innerHTML = env.stage.current.creature()
-    } catch(e) {console.log('stage creature update failed', e)}
+    let creature = env.stage.real.querySelector('.truecreature')
+
+    if(!env.stage.current.creature || !creature) return;
+    creature.innerHTML = env.stage.current.creature()
 }
 
 function generateAttributes (piece) {
@@ -1753,8 +1883,7 @@ function stageCleanup() {
         env.stage.requestLock = false
         env.stage.real.style.transform = ""
 
-        clearInterval(env.stage.freemoveInterval)
-        delete env.stage.freemoveInterval
+        stopFreemoveLoop()
 
         document.exitPointerLock()
         window.removeEventListener("keydown", freemoveKeyDown)
@@ -1867,7 +1996,7 @@ function setCam({
 
 // ENEMY ADDITIONS
 function enemyStep() {
-    if(check("TEMP!!noevil") || !env.stage.ref || env.cutscene || body.classList.contains('in-dialogue')) return;
+    if(check("TEMP!!noevil") || !env.stage.ref || env.cutscene || body.classList.contains('in-dialogue') || page.noEvil) return;
     if(!env.currentDialogue.active && !document.querySelector('#combat')) {
         //only one 'hit' is processed per combined enemy step
         //since it usually involves starting a dialogue
@@ -1970,7 +2099,8 @@ env.stage.ai = {
 
         const start = stageCoordinatesFromIndex(el.parentElement.getAttribute('i'))
         const goal = stageCoordinatesFromId('creature')
-        if(!goal) return;
+
+        if(!goal) return console.log("no goal, stopping");
 
         const path = env.stage.ai._bfsPathfinding(start, goal, el);
 
@@ -2020,6 +2150,34 @@ env.stage.ai = {
         }
         
         return false
+    },
+
+    runner: (el, contactExec = env.stage.ai._defaultContact) => {
+        if(el.classList.contains('dead', 'nomove')) return;
+        if(!el.destClass && !el.destIndex) return console.warn('runner AI requires either destClass or destIndex on element')
+        let targetTile
+
+        if(el.destClass) targetTile = env.stage.ref.querySelector(`.gridpiece.${el.destClass}`)
+        if(el.destIndex) targetTile = env.stage.ref.querySelector(`.gridpiece[i="${el.destIndex}"]`)
+
+        if(!targetTile) return console.warn(`runner AI could not find destination on stage`)
+        
+        const currentPos = stageCoordinatesFromIndex(el.parentElement.getAttribute('i'))
+        const targetPos = stageCoordinatesFromIndex(targetTile.getAttribute('i'))
+        
+        if(currentPos.x === targetPos.x && currentPos.y === targetPos.y) {
+            contactExec(el)
+            return false
+        }
+
+        let moved = false        
+        if(Math.random() < 0.1) {
+            moved = env.stage.ai.wander(el, contactExec)
+        } else {
+            moved = env.stage.ai.directToTile(el, targetTile, contactExec)
+        }
+        
+        return moved
     },
 
     //uses a map of spida statuses, changed by tile execs
@@ -2149,6 +2307,54 @@ env.stage.ai = {
         return true
     },
 
+    // move opposite from player to maintain distance
+    // if against a wall or blocks thing, pick a random valid direction
+    moveAway: (el, contactExec = env.stage.ai._defaultContact) => {
+        const currentPos = stageCoordinatesFromIndex(el.parentElement.getAttribute('i'))
+        const playerPos = stageCoordinatesFromId('creature')
+
+        const directions = [
+            {x: 0, y: -1},
+            {x: 1, y: 0},
+            {x: -1, y: 0},
+            {x: 0, y: 1}
+        ];
+
+        const distance = direction => Math.abs(currentPos.x + direction.x - playerPos.x) + Math.abs(currentPos.y + direction.y - playerPos.y)
+        const currentDistance = Math.abs(currentPos.x - playerPos.x) + Math.abs(currentPos.y - playerPos.y)
+        const validDirections = directions.filter(direction => {
+            const targetTile = elementAtStageCoordinates(currentPos.x + direction.x, currentPos.y + direction.y)
+            return targetTile && !targetTile.classList.contains('blocks') && !targetTile.classList.contains('noevil') && !targetTile.firstElementChild
+        })
+
+        const farther = validDirections.filter(direction => distance(direction) > currentDistance)
+        const candidates = (farther.length ? farther : validDirections).sort(() => Math.random() - 0.5)
+
+        if(!candidates.length) return false
+        const direction = candidates[0]
+        const targetTile = elementAtStageCoordinates(currentPos.x + direction.x, currentPos.y + direction.y)
+        const enemyMirror = env.stage.real.querySelector(`#${el.id}`)
+        const mirrorParent = enemyMirror ? enemyMirror.parentElement : false
+
+        gridMoveTo(el.parentElement, targetTile, env.stage.current.fogRadius ? true : mirrorParent)
+        return true
+    },
+
+    // if the player is close enough, the entity will wander away from the player
+    avoidant: (el, contactExec = env.stage.ai._defaultContact) => {
+        const elDist = getElDist(el, env.stage.creature)
+        let moved = false
+
+        if(elDist <= 2) {
+            el.aiRate = 50
+            moved = env.stage.ai.moveAway(el, contactExec)
+        } else {
+            el.aiRate = el.defaultAiRate
+        }
+
+        return moved
+    },
+
     //moves between two points smartly, calling contactExec when reaching either position to toggle going to the other
     //can probably be used within other AIs to do stuff like 'patrol but briefly chase if player is in range'
     //todo: this is on hold cause i didn't have a use for it in this update but i still like the idea
@@ -2161,7 +2367,7 @@ env.stage.ai = {
         const queue = [[start]]
         const visited = new Set()
         visited.add(`${start.x},${start.y}`)
-    
+
         while (queue.length > 0) {
             const path = queue.shift()
             const pos = path[path.length - 1]
@@ -2179,7 +2385,9 @@ env.stage.ai = {
     
             neighbors.forEach(neighbor => {
                 const tile = elementAtStageCoordinates(neighbor.x, neighbor.y)
-                if(tile) if(!tile.classList.contains('blocks') && !tile.classList.contains("noevil")) {
+                
+                // this creature check fucking sucks and i hate it but i don't have time to come up with a better solution arrrrgh AAAAAHHH!!!! AAAAAAAAAAAAAAAA
+                if(tile) if(!tile.classList.contains('blocks') && !tile.classList.contains("noevil") && (!tile.firstElementChild || tile.firstElementChild?.id == "creature")) {
                     const key = `${neighbor.x},${neighbor.y}`
                     if (!visited.has(key)) {
                         visited.add(key)
@@ -2194,11 +2402,15 @@ env.stage.ai = {
 
     //contactExec used when there isn't a custom one
     _defaultContact: (el) => {
-        let result = el.getAttribute('dialogue')
+        if(env.stage.current.contactExec) { // can be locally overwritten
+            return env.stage.current.contactExec(el)
+        }
 
+        let result = el.getAttribute('dialogue')
+        if(!result) return;
         if(result.includes("EXEC::")) {
             //console.log('executing')
-            Function(`${result.replace('EXEC::', '')}`)()
+            Function(`${result.replace('EXEC::', '')}`)(el)
         } else { 
             //start contact dialogue
             //console.log('result is dialogue', result)

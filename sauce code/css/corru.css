@@ -87,7 +87,16 @@ body.loading::after {
     --neutral-color: #ffff00;
     --bastard-color: #ff0066;
     --fundfriend-color: #00ff66;
+    --dread-color: #6D0000;
     --baseTransform: translateX(0);
+
+    /* ui accessibility stuff */
+    --menu-panel-pattern-bg: url(/img/textures/panelpatterntranflip.gif);
+    --freedom-control-bg: url(/img/textures/paperplate.gif);
+    --saturation-modifier: l; 
+    --brightness-modifier: l;
+    --render-contrast: 1;
+    --render-brightness:1;
 
     --bigFont: 20px;
     --regularFont: 16px;
@@ -99,21 +108,42 @@ body.loading::after {
     font-size: var(--regularFont);
 }
 
-.dark-color { color: var(--dark-color); }
-.bright-color { color: var(--bright-color); }
-.friend-color { color: var(--friend-color); }
-.obesk-color { color: var(--obesk-color); }
-.neutral-color { color: var(--neutral-color); }
-.bastard-color { color: var(--bastard-color); }
-.fundfriend-color { color: var(--fundfriend-color); }
+.dark-color, d-col { color: var(--dark-color); }
+.bright-color, b-col { color: var(--bright-color); }
+.friend-color, f-col { color: var(--friend-color); }
+.obesk-color, o-col { color: var(--obesk-color); }
+.neutral-color, n-col { color: var(--neutral-color); }
+.bastard-color, bst-col { color: var(--bastard-color); }
+.fundfriend-color, ff-col { color: var(--fundfriend-color); }
+.dread-color, dr-col { color: var(--dread-color); }
 
 .dark-shadow { text-shadow: 1px 1px var(--dark-color); }
 .bright-shadow { text-shadow: 1px 1px var(--bright-color); }
-.friend-shadow { text-shadow: 1px 1px var(--friend-color); }
-.obesk-shadow { text-shadow: 1px 1px var(--obesk-color); }
-.neutral-shadow { text-shadow: 1px 1px #ffff0082; } /* blehh */
+.friend-shadow { text-shadow: 1px 1px #00ffff96; } /* blehh */
+.obesk-shadow { text-shadow: 1px 1px #ff00ffb0; } /* these are overwhelming if not given some opacity */
+.neutral-shadow { text-shadow: 1px 1px #ffff0082; }
 .bastard-shadow { text-shadow: 1px 1px var(--bastard-color); }
 .fundfriend-shadow { text-shadow: 1px 1px var(--fundfriend-color); }
+.dread-shadow { text-shadow: 1px 1px var(--dread-color); }
+
+body[palette_preference="subdued"] .menu,
+body[palette_preference="subdued"] #meta-menu,
+body[palette_preference="subdued"] #mindspike-scanner,
+body[palette_preference="subdued"] #definition-box,
+body[palette_preference="subdued"] #enemy-team,
+body[palette_preference="subdued"] #ally-team,
+body[palette_preference="subdued"] #key-navigator,
+body[palette_preference="subdued"] #freedomControl {
+    --menu-panel-pattern-bg: url(/img/textures/panelpatterntranflipsubdued.gif);
+    --freedom-control-bg: url(/img/textures/paperplatesubdued.gif);
+    --ui-saturation-modifier: 70%;
+    --ui-brightness-modifier: 10%; 
+    --dark-color: hsl(from black h s var(--ui-brightness-modifier));
+    --friend-color: hsl(from #00ffff h s var(--ui-saturation-modifier));
+    --obesk-color: hsl(from #ff00ff h s var(--ui-saturation-modifier));
+    --bastard-color: hsl(from #ff0066 h s var(--ui-saturation-modifier));
+    --fundfriend-color: hsl(from #00ff66 h s var(--ui-saturation-modifier));
+}
 
 /* fonts */
 @font-face {
@@ -218,6 +248,16 @@ body.loading::after {
     font-size: 2em;
 }
 
+@font-face {
+    font-family: 'sharetech';
+    src: url('/fonts/ShareTechMono-Regular.woff2') format('woff2'),
+        url('/fonts/ShareTechMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.sharetech { font-family: sharetech, sans-serif }
+
 .cicon {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'corruicons' !important;
@@ -267,6 +307,15 @@ body.loading::after {
 
 /* CSS RESET */
 a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline; box-sizing: border-box}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
+
+button {
+    all: unset
+}
+
+button:focus-visible {
+    outline: 3px double var(--bright-color);
+    outline-offset: 1px;
+}
 
 ::selection {
 	background-color: transparent;
@@ -372,15 +421,14 @@ em {
     100% { transform: var(--baseTransform) rotate(1deg) }
 }
 
-@keyframes GROWPULSE {
-    0% { transform: scale(0.001); opacity: 0;}
-    50% { transform: scale(0.5); opacity: 1; }
-    100% { transform: scale(1.5); opacity: 0;}
-}
-
 @keyframes BREATHE {
     0% { transform: scale(1);}
     100% { transform: scale(1.2); }
+}
+
+@keyframes FADEIN {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 .refresh-anim {
@@ -431,6 +479,19 @@ html.ftb {
     will-change: transform;
 }
 
+.render-filter{
+    display: none;
+    width: 100%;
+    height: 100%;
+    top:0px;
+    left:0px;
+    position: absolute;
+    z-index: 100;
+    pointer-events: none;
+    transition:opacity 1s;
+    backdrop-filter: contrast(var(--render-contrast)) brightness(var(--render-brightness))
+}
+
 html.is-animating #content {
     opacity: 0;
 }
@@ -457,7 +518,6 @@ body[state="corru-entered"].loading #static {
     background: var(--bright-color);
 	background-image: url('/img/textures/static.gif');
 	animation: STATIC 1s steps(4) infinite;
-	animation-play-state: running;
 	position: fixed;
 	left: -50%;
 	top: -100%;
@@ -510,7 +570,8 @@ body.flash #static {
 
 body[state="corru-loaded"] #static::after,
 body[state="corru-leaving"] #static::after,
-body.flash #static::after {
+body.flash #static::after,
+body.staticrun #static::after {
     animation-play-state: running;
 }
 
@@ -1056,13 +1117,15 @@ body.nosys #meta-sys {
 
 /* MENUS */
 .menu-box {
+    --transform-transition: transform 400ms ease-in-out;
+
     position: fixed;
     top: 0;
     right: 0;
     width: 50vw;
     height: 100vh;
     background: var(--dark-color);
-    transition: transform 400ms ease-in-out;
+    transition: var(--transform-transition);
     z-index: 20;
     transform: translateX(55vw);
     pointer-events: none;
@@ -1117,6 +1180,17 @@ body.nosys #meta-sys {
     justify-content: center;
     align-items: stretch;
     flex-wrap: wrap;
+}
+
+/* not sure where stuff is normalized/reset so putting it here for now */
+input[type="range"] {
+    appearance: none;
+    -webkit-appearance:none;
+    width: 100%; 
+}
+
+input[type="range"]:focus {
+  outline: none;
 }
 
 .menureturn {
@@ -1328,6 +1402,15 @@ body[menu="system"] #system-menu, :root.bigmode body[menu="system"] #system-menu
     pointer-events: initial;
     z-index: 40;
 }
+#system-menu {
+    --filter-duration: 300ms; /* in ms */
+    transition: var(--transform-transition), filter var(--filter-duration) cubic-bezier(0.22, 1, 0.36, 1), background 1s;
+}
+#system-menu.darkened{
+    --filter-duration: 300ms;
+    filter: brightness(0);
+    pointer-events: none !important;
+}
 
 .sysblock {
     color: var(--neutral-color);
@@ -1354,6 +1437,15 @@ body[menu="system"] #system-menu, :root.bigmode body[menu="system"] #system-menu
     font-size: 2.5em;
 }
 
+
+h3.experimental::after {
+    content: "!! EXPERIMENTAL !!";
+    color: var(--bastard-color);
+    display: block;
+    font-size: 0.75rem;
+    font-family: sharetech;
+}
+
 .sysbox h4 {
     text-align: center;
     margin: 0.5em;
@@ -1375,7 +1467,7 @@ body[menu="system"] #system-menu, :root.bigmode body[menu="system"] #system-menu
 }
 
 details.sysblock[open] {
-    background: url(/img/textures/panelpatterntranflip.gif), var(--neutral-color);
+    background: var(--menu-panel-pattern-bg), var(--neutral-color);
     padding: 1em;
     background-position: 50% 50%;
     background-size: auto 100%;
@@ -1418,6 +1510,14 @@ details.sysblock[open] .sysbox, details.sysblock[open] details {
 
 #system-menu details.minor summary::before {
     left: 0.5em;
+}
+
+#system-menu #quality-select div:has(details.minor) {
+    width:100%;
+}
+
+#system-menu #quality-select details.minor[open] {
+    padding-bottom: 1em;
 }
 
 .minor.loadstring summary {
@@ -1510,6 +1610,59 @@ details.sysblock[open] .sysbox, details.sysblock[open] details {
 
 .button.import {
     position: relative;
+}
+
+.sysblock input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 2em;
+    color: var(--neutral-color);
+    background-color: var(--dark-color);
+    padding: 0.25em;
+    border: 1px solid;
+    margin-top: 0.5em;
+    height:1em;
+}
+
+.sysblock input[type="range"]:hover {
+    background-color: var(--neutral-color);
+    color: var(--dark-color);
+}
+
+.sysblock input[type="range"]::-moz-range-thumb {
+    border: 1px solid;
+    border-radius: 0px;
+    background-color: var(--neutral-color);
+}
+.sysblock input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height:1em;
+    width:1em;
+    border: 1px solid;
+    border-radius: 0px;
+    margin-top: -0.35em; /* :( */
+    background-color: var(--neutral-color)  
+}
+
+.sysblock input[type="range"]:hover::-moz-range-thumb {
+    border-color: var(--neutral-color);
+    background-color: var(--dark-color);
+}
+
+.sysblock input[type="range"]::-moz-range-track {
+    width: 90%;
+    height: 10px;
+    border: 1px solid;
+    color: inherit;
+}
+.sysblock input[type="range"]::-webkit-slider-runnable-track {
+    width: 90%;
+    height: 10px;
+    border: 1px solid;
+    color: inherit;
 }
 
 #fileInput {
@@ -1812,11 +1965,25 @@ body[low_intensity="true"] #control-select .low-intensity,
 body[low_intensity="false"] #control-select .reg-intensity,
 body[gameplay_off="true"] #control-select .gameplay-off,
 body[gameplay_off="false"] #control-select .gameplay-on,
+body[palette_preference="normal"] #quality-select .normal-palette,
+body[palette_preference="subdued"] #quality-select .subdued-palette,
+body[combat_background_preference="normal"] #quality-select .normal-combat-backgrounds,
+body[combat_background_preference="subdued"] #quality-select .subdued-combat-backgrounds,
 :root:not(.bigmode) #quality-select .normal-size,
 :root.bigmode #quality-select .large-size,
 #system-menu .button.primary:hover {
     color: var(--dark-color);
     background: var(--friend-color);
+}
+
+body[enable_render_filter="true"] .render-filter{
+    display: block;
+}
+
+/*temporary fix, there's a performance cost but it stops flickering*/
+body[enable_render_filter="true"] .errorzone{
+    display: block;
+    filter: contrast(var(--render-contrast)) brightness(var(--render-brightness)) 
 }
 
 #system-menu details[open] summary:hover {
@@ -1838,7 +2005,48 @@ body[gameplay_off="false"] #control-select .gameplay-on,
     text-align: center;
     justify-content: center;
 }
+
+
+#system-menu .sysinfo.meta {
+    font-size: 0.75rem;
+    margin-top: 1em;
+    text-align: left;
+    position: relative;
+    line-height: 1.25em;
+    width: 100%;
+    padding: unset;
+}
+
+#system-menu .sysinfo.meta[open] {
+    background: blue !important;
+}
+
+#system-menu .sysinfo.meta p {
+    padding: 1em;
+}
+
+#system-menu .sysinfo.meta summary {
+    padding: 0.6em;
+    width: 100%;
+    margin: unset;
+}
   
+#system-menu .sysinfo.meta[open]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+    width: 50px;
+    height: 50px;
+    background: url(/img/viendbot.png);
+    background-size: cover;
+    border-radius: 100%;
+    --baseTransform: translate(25%, -25%) rotate(40deg);
+    transform: var(--baseTransform);
+    animation: SHAKE 200ms steps(2) infinite;
+}
+
 /* DIALOGUE MENU */
 .in-dialogue #dialogue-box {
     transform: translateX(0vw);
@@ -1913,6 +2121,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 .dialogue-message, .dialogue-actor {
     --color: var(--bright-color);
     --background: var(--dark-color);
+    --backgroundGradient: url(/img/blank.gif);
     font-size: 1rem;
     letter-spacing: 0.25px;
     color: var(--color);
@@ -1956,11 +2165,13 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     border-color: inherit;
     padding: 0.6em;
     margin: 0.6em;
-    background: var(--background);
+    background: var(--backgroundGradient), var(--background);
+    background-position: center;
+    background-size: auto 100%, auto;
     color: var(--color);
     position: relative;
     word-break: break-word;
-    line-height: 1.1;
+    line-height: 1.5;
 }  
   
 .dialogue-text p {
@@ -2197,6 +2408,59 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     background-size: auto 100%;
 }
 
+.dialogue-message.plainsys {
+    border: unset !important;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.actor-plainsys.from-player .dialogue-text, 
+.readout-log .message.plainsys {
+    font-family: sharetech, monospace;
+    padding: 0.2rem 0.6rem;
+    --color: var(--neutral-color);
+    color: var(--color);
+    line-height: 1.5em;
+    text-align: left;
+    border: unset;
+}
+
+.actor-plainsys .dialogue-text::before, .readout-log .message.plainsys p::before {
+  content: "::";
+}
+
+.actor-plainsys.from-player .dialogue-text {
+    margin: 0;
+}
+
+.readout-log .message.plainsys {
+    font-size: 1rem;
+}
+
+.dialogue-message.asis .dialogue-text, .readout-log .message.asis {
+    border: unset;
+    padding: 0;
+    position: relative;
+    text-align: left;
+    overflow: visible;
+}
+
+.dialogue-message.asis .actiondef {
+    position: relative;
+    margin-bottom: 1em;
+    font-size: 0.75rem;
+}
+
+.dialogue-message.actor-definitionget .dialogue-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actor-plainsys .bastard-font {
+    font-size: 2em;
+}
+
 .actor-movefriend, .actor-timestopper, .timestopper {
     text-transform: uppercase;
 }
@@ -2204,6 +2468,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 .dialogue-message.obesk {
     --background: url(/img/textures/corruripple.gif);
     --color: var(--obesk-color);
+    --backgroundGradient: url(/img/textures/dialoguegradient.gif);
     text-shadow: 1px 1px var(--bright-color);
     font-size: 1.25em;
     letter-spacing: 0.25em;
@@ -2236,7 +2501,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     font-size: 1rem;
 }
 
-.larval .dialogue-portrait, .larval.message img {
+.larval .dialogue-portrait, .larval.message .message-portrait {
     background-image: url(/img/textures/ccontours.gif);
 }
 
@@ -2250,7 +2515,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 }
 
 .dialogue-message.qou.akizet {
-    letter-spacing: 0.25em;
+    letter-spacing: 0.15em;
 }
 
 .funfriend .dialogue-portrait::after {
@@ -2325,6 +2590,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 .dialogue-message.actor-echo, .message.actor-echo {
     --background: var(--bright-color);
     --color: var(--dark-color);
+    --backgroundGradient: url(/img/blank.gif);
     text-shadow: 1px 1px var(--friend-color);
     border-color: var(--friend-color);
     font-size: 1em;
@@ -2345,11 +2611,17 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     --background: linear-gradient(0deg, rgba(0,0,0,0.79) 0%, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 75%, rgba(0,0,0,0.9) 100%), url(/img/textures/stun.gif);
 }
 
-.dialogue-message.bstrd .dialogue-text, .dialogue-message.actor-bsteli.expression__bstrd .dialogue-text {
+.dialogue-message.bstrd .dialogue-text, 
+.dialogue-message.actor-bsteli.expression__bstrd .dialogue-text,
+.dialogue-message.actor-bugout .dialogue-text {
     font-family: bastard;
     font-size: 3em;
     margin: 0.5rem;
     padding: 0.3em;
+}
+
+.dialogue-message.bstrd .dialogue-text, 
+.dialogue-message.actor-bsteli.expression__bstrd .dialogue-text {
     background-image: linear-gradient(0deg, rgba(0,0,0,0.79) 0%, rgb(0, 0, 0) 25%, rgb(0, 0, 0) 50%, rgb(0, 0, 0) 75%, rgba(0,0,0,0.9) 100%), url(/img/textures/stun.gif);
 }
 
@@ -2495,7 +2767,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 	background: var(--dark-color);
 	color: var(--bright-color);
 	font-family: spacemono;
-	transition: transform 1s cubic-bezier(.33,.63,.14,.99);
+	transition: transform 1s cubic-bezier(.33,.63,.14,.99), background 1s;
     transform: translateX(-100%);
 	z-index: 25;
     scrollbar-color: #ffff00b5 var(--dark-color);
@@ -2546,7 +2818,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 }
 
 .readout-log .message h2 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     line-height: 1em;
     margin-bottom: 0.3rem;
     border-bottom: 1px solid;
@@ -2563,7 +2835,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     text-transform: uppercase;
 }
 
-.readout-log .message img {
+.readout-log .message .message-portrait {
 	float: left;
     width: 3.5rem;
     height: 3.5rem;
@@ -2676,7 +2948,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 	color: var(--friend-color);
 }
 
-.readout-log .message.moth img {
+.readout-log .message.moth .message-portrait {
     background: url(/img/sprites/moth/mothman.gif) white;
     background-size: 165%;
     background-position: center top
@@ -2886,7 +3158,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 
 /* special post-EP4 combat message layout. out here bc they are stored in readout log! */
 .effect-message {
-    z-index: 100;
+    z-index: 150;
     background: var(--dark-color);
     position: absolute;
     --border-size: 2px;
@@ -2894,13 +3166,17 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     pointer-events: none;
 }
 
+/*
 .effect-message[team="ally"] {
-    bottom: 30vh;
+    bottom: 40vh;
+    top: unset;
 }
 
 .effect-message[team="enemy"] {
     top: 30vh;
+    bottom: unset;
 }
+*/
 
 .effect-message .ally, .effect-message .good {
     color: var(--friend-color);
@@ -2922,6 +3198,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 
 .message-actions .action {
     position: relative;
+    display: block;
 }
 
 .message-actions .subaction {
@@ -2932,7 +3209,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 }
 
 .message-actions .action:first-child {
-    font-size: 2em;
+    font-size: 1.5em;
     text-align: center;
     padding: 0.5rem;
     overflow: hidden;
@@ -3017,8 +3294,33 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     text-align: center;
 }
 
-.effect-message .action-reason {
+#readout .action-main[definition]::after {
+    content: "ACTION DETAIL";
+    font-size: 0.5rem;
     color: var(--neutral-color);
+    border: 1px dashed;
+    padding: 0.25em;
+    margin-left: 1em;
+    background: black;
+    vertical-align: center;
+}
+
+.action-reason::after {
+    content: "::";
+}
+
+.action-reason.reason-icon::before {
+    content: "";
+    width: 1em;
+    display: inline-block;
+    height: 1em;
+    border-radius: 100%;
+    background-image: var(--icon);
+    background-size: contain;
+    background-position: center;
+    margin-right: 0.25em;
+    border: 1px solid;
+    vertical-align: middle;
 }
 
 .effect-message .action-hit {
@@ -3030,16 +3332,24 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     margin: 0 0.5rem;
 }
 
+.action-hit::before {
+    content: "++++";
+    color: var(--bright-color);
+    font-size: 0.5rem;
+}
+
 .action-hit.miss::before {
-    content: "-";
+    content: "miss";
+    color: var(--bright-color);
 }
 
 .action-hit.hit::before {
-    content: "*";
+    content: "hit ";
+    color: var(--neutral-color);
 }
 
-.action-hit.crit::before, .action-hit.crit::after {
-    content: "!";
+.action-hit.crit::before{
+    content: "crit";
     color: var(--neutral-color);
 }
 
@@ -3095,7 +3405,7 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 .affected {
     display: flex;
     flex-wrap: wrap;
-    padding: 0.25rem 0;
+    padding: 0.25rem 0 0.25rem 0.5em;
     font-size: 0.75em;
 }
 
@@ -3107,9 +3417,9 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
     margin-right: 0.5em;
     display: inline-flex;
 }
-.affected-name {
-    margin-right: auto;
-    margin-left: 0.5em;
+
+.affected .stat .status span {
+    --color: currentcolor; /* for definition underlines */
 }
 
 .affected-name::after {
@@ -3186,38 +3496,45 @@ body.in-chatterlogue #dialogue-box.chatterlogue {
 }
 
 /* IMAGE MODIFIERS - this sucks still  */
-.menu .portrait-round img { border-radius: 100%; }
-.menu .portrait-bright img, .portrait-bright .dialogue-portrait::after { background-color: var(--bright-color) }
-.menu .portrait-dark img, .portrait-dark .dialogue-portrait::after { background-color: var(--dark-color) }
-.menu .portrait-blocker img, .portrait-blocker .dialogue-portrait { background-image: url(/img/textures/blocker.gif)}
-.menu .portrait-ripple img { background-image: url(/img/textures/corruripple.gif)}
-.menu .portrait-darkripple img { background-image: url(/img/textures/corruripplegrayscale.gif)}
-.menu .portrait-static img { background-image: url(/img/textures/static.gif)}
-.menu .portrait-darkstatic img, .portrait-darkstatic .dialogue-portrait { background-image: url(/img/textures/badstatic.gif)}
-.menu .portrait-fear img { background-image: url(/img/textures/fear.gif); background-size: cover;}
-.menu .portrait-cover img { object-fit: cover }
-.menu .portrait-contain img { object-fit: contain }
-.menu .portrait-auto img, .portrait-auto .dialogue-portrait::after { object-fit: none; background-size: auto; }
-.menu .portrait-top img { object-position: top }
-.menu .portrait-topish img { object-position: 50% 20% }
-.menu .portrait-center img, .portrait-center .dialogue-portrait::after { object-position: center; background-position: center; }
-.menu .portrait-centertop img { object-position: center 35% }
-.menu .portrait-bottom img { object-position: bottom }
-.menu .portrait-centerlow img { object-position: center 65% }
-.menu .portrait-bw img { filter: grayscale(1) contrast(2) }
-.menu .portrait-haze img, .menu .portrait-haze .dialogue-portrait { background: url(/img/textures/memoryhaze.gif); background-size: cover; }
-.menu .portrait-spectral img, .menu .portrait-spectral .dialogue-portrait {
+.menu .portrait-round .message-portrait { border-radius: 100%; }
+.menu .portrait-bright .message-portrait, .portrait-bright .dialogue-portrait::after { background-color: var(--bright-color) }
+.menu .portrait-dark .message-portrait, .portrait-dark .dialogue-portrait::after { background-color: var(--dark-color) }
+.menu .portrait-blocker .message-portrait, .portrait-blocker .dialogue-portrait { background-image: url(/img/textures/blocker.gif)}
+.menu .portrait-ripple .message-portrait { background-image: url(/img/textures/corruripple.gif)}
+.menu .portrait-darkripple .message-portrait { background-image: url(/img/textures/corruripplegrayscale.gif)}
+.menu .portrait-static .message-portrait { background-image: url(/img/textures/static.gif)}
+.menu .portrait-darkstatic .message-portrait, .portrait-darkstatic .dialogue-portrait { background-image: url(/img/textures/badstatic.gif)}
+.menu .portrait-fear .message-portrait { background-image: url(/img/textures/fear.gif); background-size: cover;}
+.menu .portrait-dull .message-portrait { background-image: url(/img/local/orbit/core.gif); background-size: cover;}
+.menu .portrait-cover .message-portrait { object-fit: cover }
+.menu .portrait-contain .message-portrait { object-fit: contain }
+.menu .portrait-auto .message-portrait, .portrait-auto .dialogue-portrait::after { object-fit: none; background-size: auto; }
+.menu .portrait-top .message-portrait { object-position: top }
+.menu .portrait-topish .message-portrait { object-position: 50% 20% }
+.menu .portrait-center .message-portrait, .portrait-center .dialogue-portrait::after { object-position: center; background-position: center; }
+.menu .portrait-centertop .message-portrait { object-position: center 35% }
+.menu .portrait-bottom .message-portrait { object-position: bottom }
+.menu .portrait-centerlow .message-portrait { object-position: center 65% }
+.menu .portrait-bw .message-portrait { filter: grayscale(1) contrast(2) }
+.menu .portrait-haze .message-portrait, .menu .portrait-haze .dialogue-portrait { background: url(/img/textures/memoryhaze.gif); background-size: cover; }
+.menu .portrait-spectral .message-portrait, .menu .portrait-spectral .dialogue-portrait {
     background: url(/img/textures/spotgradientinversetiny.gif);
     background-color: var(--bright-color);
     background-position: center;
     background-size: 120%;
 }
 
+.menu .portrait-hermit .message-portrait, .menu .portrait-hermit .dialogue-portrait {
+    background-image: url(/img/local/embassy/resources/hermit/hermit_face_2.gif);
+    background-size: 200% 200%;
+    background-position: center;
+}
+
 .portrait-cover .dialogue-portrait::after { background-position: center; background-size: cover; }
 .portrait-top .dialogue-portrait::after { background-position: top; }
 
 @media only screen and (min-width: 2100px) { /* to avoid awkward cutoffs on big screens */
-    .menu .portrait-auto img, .portrait-auto .dialogue-portrait::after { object-fit: cover; background-size: cover; }
+    .menu .portrait-auto .message-portrait, .portrait-auto .dialogue-portrait::after { object-fit: cover; background-size: cover; }
 }
 
 /* TARGETS */
@@ -3647,7 +3964,8 @@ body:not(.mui-active) .target[lowvis] {
     border: unset;
 }
 
-.mui-active #definition-box[for="tile"].active {
+.mui-active #definition-box[for="tile"].active,
+.shifthold #definition-box[for="tile"].active {
     opacity: 1;
 }
 
@@ -3661,7 +3979,7 @@ body:not(.mui-active) .target[lowvis] {
     line-height: 1.5em;
 }
 
-.readout-log [definition], #dialogue-box [definition]:not(.reply), .message [definition], #party-menu [definition], .sysinfo [definition], #system-menu [definition].definition {
+.readout-log [definition], #dialogue-box [definition]:not(.reply), .message [definition], #party-menu [definition]:not(.nodefstyle), .sysinfo [definition], #system-menu [definition].definition {
     display: inline-block;
     border-bottom: 1px dashed var(--color, var(--bright-color));
     padding-bottom: 2px;
@@ -3687,11 +4005,19 @@ body:not(.mui-active) .target[lowvis] {
 
 .actiondef-heading {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     border-bottom: 1px solid var(--neutral-color);
     padding-bottom: 0.5em;
     margin-bottom: 0.75em;
     min-height: 4em;
+}
+
+.actiondef-flavor {
+    flex-basis: 80%;
+    margin: 0 0 0.5em;
+    font-family: sharetech;
+    color: var(--bright-color)
 }
 
 .actiondef-stats {
@@ -3743,10 +4069,23 @@ body:not(.mui-active) .target[lowvis] {
     white-space: pre-line;
 }
 
+.actiondef em {
+    font-style: initial;
+    color: var(--neutral-color);
+}
+
 .actiondef-conditional em {
     font-style: initial;
     text-transform: uppercase;
     color: var(--friend-color);
+}
+
+.actiondef-conditional em[bad] {
+    color: var(--obesk-color);
+}
+
+.actiondef-conditional em[neutral] {
+    color: var(--neutral-color);
 }
 
 .actiondef-effect .actiondef-flavor {
@@ -3763,16 +4102,71 @@ body:not(.mui-active) .target[lowvis] {
 .actiondef-statuses {
     margin-top: 0.5em;
     text-transform: uppercase;
+    color: var(--bright-color);
+}
+
+#definition-box[for="action"] .actiondef-statuses {
+    position: absolute;
+    padding-top: 0.75em;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(100%);
+}
+
+.shifthold #definition-box[for="action"] .actiondef-statuses {
+    position: relative;
+    transform: unset;
+    width: auto;
+    border-top: 1px solid var(--neutral-color);
+    margin-top: 0.75em;
+}
+
+#definition-box[for="action"] .actiondef-statuses .shiftdetail {
+    display: none !important;
+}
+
+.actiondef-statuses.hasshiftdetail::before {
+    content: "NOTE::'hold shift for detail'";
+    font-style: italic;
+    font-size: 10px;
+    color: var(--neutral-color);
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.25em
+}
+
+.actiondef-statuses.hasshiftdetail::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+}
+
+.shifthold .actiondef-statuses.hasshiftdetail::before {
+    display: none;
 }
 
 .actiondef-status {
     --status-color: var(--obesk-color);
     border: 1px solid var(--status-color);
-    padding: 0.5em;
+    padding: 0.25em;
+    line-height: 1.5em;
+}
+
+#definition-box[for="action"] .actiondef-status {
+    display: none;
+}
+
+.shifthold #definition-box[for="action"] .actiondef-status {
+    display: block;
 }
 
 .actiondef-status.beneficial {
     --status-color: var(--friend-color);
+}
+
+.actiondef-status.complex {
+    --status-color: var(--neutral-color);
 }
 
 .actiondef-status.infodisplay {
@@ -3787,7 +4181,6 @@ body:not(.mui-active) .target[lowvis] {
 .actiondef-status span,
 .actiondef-status img {
     display: inline;
-    color: var(--bright-color);
 }
 
 .actiondef-status h6 {
@@ -3798,11 +4191,11 @@ body:not(.mui-active) .target[lowvis] {
 .actiondef-status-icon {
     display: inline;
     vertical-align: middle;
-    width: 25px;
-    height: 25px;
+    width: 14px;
+    height: 14px;
     border-radius: 100%;
     border: inherit;
-    margin: -0.3em 0;
+    margin: -0.3em 0 0;
 }
 
 .status-removes .actiondef-status-icon {
@@ -3835,14 +4228,19 @@ body:not(.mui-active) .target[lowvis] {
 .actiondef-status.impulse::after {
     content: "IMPULSE";
     font-family: "bastard";
-    font-size: 3em;
+    font-size: 2em;
     top: 0;
     right: 0;
     bottom: unset;
     background: black;
     padding: 0.1em;
-    transform: translate(50%, -50%) rotate(25deg);
+    transform: translate(50%, -75%) rotate(25deg);
     color: var(--bastard-color)
+}
+
+.actiondef-status .minorstate {
+    opacity: 0.75;
+    font-size: 0.75em;
 }
 
 .actiondef-origin {
@@ -3867,6 +4265,94 @@ body:not(.mui-active) .target[lowvis] {
     margin-top: unset;
 }
 
+.actiondef .shiftdetail, .shiftdetail {
+    display: none;
+}
+
+.shifthold .actiondef .shiftdetail, 
+.shifthold .shiftdetail {
+    display: inline;
+}
+
+.shifthold .actiondef .shiftdetail.greaterdetail, 
+.shifthold .shiftdetail.greaterdetail {
+    display: block;
+    font-size: 0.75em;
+}
+
+.actiondef .modified {
+    position: relative;
+    color: var(--neutral-color);
+}
+
+
+.shifthold .modified::before {
+    content: "(" attr(base) ")";
+    margin-right: 0.5em;
+    color: var(--bright-color);
+    opacity: 0.75;
+}
+
+.actiondef .modified::after {
+    content: "*";
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -25%);
+    color: var(--neutral-color);
+}
+
+.actiondef-modification:empty {
+    display: block !important;
+    font-style: italic;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.25em;
+    transform: translateY(100%) translateY(1px);
+    background: black;
+    border: 1px dashed;
+    border-top: unset;
+}
+
+.actiondef-modification::before {
+    content: "*";
+}
+.actiondef-modification::after {
+    content: "::'modified by status'";
+    font-size: 0.75em;
+}
+
+.defstatusicon::before {
+    content: "";
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    background: var(--defstatusicon);
+    background-size: contain;
+    border: 1px solid;
+    border-radius: 100%;
+    vertical-align: center;
+    margin-right: 0.25em;
+    image-rendering: optimizequality;
+}
+
+.defstatusicon.obesk-shadow::before {
+    border-color: var(--obesk-color)
+}
+
+.defstatusicon.friend-shadow::before {
+    border-color: var(--friend-color)
+}
+
+.defstatusicon.neutral-shadow::before {
+    border-color: var(--neutral-color)
+}
+
+.defstatusicon, span.defstatusicon {
+    display: inline-block;
+}
 
 /* LOOSE THOUGHTS - FLOATING TEXT */
 #content .loose-thought {
@@ -4091,12 +4577,15 @@ body:not([quality="low"]) .repairpatch::before {animation: SPIN 120s linear infi
     transition: transform 1s ease-in-out;
 }
 
-#advance-notice, 
-.in-dialogue #advance-notice, 
-.in-combat #advance-notice,
+#advance-notice,
 body[state="corru-loaded"] #advance-notice,
 body[page="corru-observer"]:not(.sitting) #advance-notice {
     display: none;
+}
+
+.in-dialogue #advance-notice, 
+.in-combat #advance-notice {
+    display: none !important;
 }
 
 #advance-notice.active {
@@ -4114,7 +4603,7 @@ body[page="corru-observer"]:not(.sitting) #advance-notice {
     flex-direction: column;
     justify-content: flex-start;
     position: fixed;
-    z-index: 19;
+    z-index: 101;
     top: 1rem;
     right: 1rem;
     padding: 1rem;
@@ -4136,13 +4625,14 @@ body[page="corru-observer"]:not(.sitting) #advance-notice {
     margin-bottom: 1rem;
 }
 
+#objectives.active {
+    transform: unset;
+}
+
 .in-menu #objectives {
     transform: translateY(-150%);
     opacity: 0;
-}
-
-#objectives.active {
-    transform: unset;
+    pointer-events: none;
 }
 
 .objective::before {
@@ -4586,6 +5076,10 @@ body.chromium > .menu {
     background: var(--dark-color);
 }
 
+#skip-vfx[specialtext]::before {
+    content: attr(specialtext)
+}
+
 
 #skip-vfx::after {
     content: "PERHAPS HE IS RIGHT - PERHAPS IT IS THE MOMENTS OF PEACE THAT ARE TRULY ONLY A DREAM... THESE MOMENTS FADE SO QUICKLY, DISAPPEARING LIKE AN EYELESS FOG IN THE FACE OF WHAT VELZIE FORCES US TO ENDURE ON ITS TWISTED STAGE";
@@ -4599,6 +5093,27 @@ body.chromium > .menu {
     transform-origin: 20% 25%;
     z-index: -1;
     color: var(--friend-color);
+}
+
+#skip-vfx.combatskip::after {
+    color: var(--obesk-color);
+    content: "HOW QUICKLY THE INSTINCTS RETURN - THE HARD SHELLS OF THESE TERRIBLE THINGS GIVE WAY UNDERNEATH MY STRIKES, CRACKING AND CRUNCHING LIKE THE CHITIN OF OUR ANCIENT FOES... THEIR BLOOD LACKS WARMTH BUT IT SPILLS AND COATS MY CLAWS ALL THE SAME";
+}
+
+#skip-vfx.reversion {
+    background: url(/img/textures/ultradarkclouds.gif);
+}
+
+#skip-vfx.reversion::before {
+    color: var(--bright-color);
+    font-size: 6em;
+}
+
+#skip-vfx.reversion::after {
+    content: "NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE NO MORE";
+    color: var(--bright-color);
+    animation-direction: reverse;
+    font-size: 10em;
 }
 
 @keyframes SKIPSCAN {
@@ -4701,6 +5216,71 @@ body.chromium > .menu {
 
 #beacon-vfx.flowerwarp.yucky::after {
     display: none;
+}
+
+/* global version of the 'errorzone' graphic */
+#beacon-vfx.signal {
+    position: absolute;
+    width: 150vmax;
+    height: 150vmax;
+    top: unset;
+    left: unset;
+    background-image: url(/img/textures/warp.gif), url(/img/textures/corrurippletran_STILL.gif), url(/img/textures/tranclouds.gif);
+    background-position: center;
+    background-size: cover, auto, auto;
+    background-color: transparent;
+    animation: SPIN 6s linear infinite reverse;
+    transition: opacity 200ms linear;
+    pointer-events: none;
+    z-index: 101;
+}
+
+#beacon-vfx.signal.slow {
+    transition: opacity 5s ease-in;
+}
+
+#beacon-vfx.active.signal.full {
+    opacity: 1;
+    background-color: var(--dark-color);
+}
+
+#beacon-vfx.signal::after, #beacon-vfx.signal::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: inherit;
+    animation: SPIN 10s ease-in-out infinite alternate;
+    background-color: transparent;
+}
+
+#beacon-vfx.signal::before {
+    animation-direction: reverse;
+    animation-duration: 10s;
+}
+
+/* hermit shapes beacon */
+#beacon-vfx.hermitshapes.active {
+    opacity: 1;
+}
+
+#beacon-vfx.hermitshapes {
+    background: url(/img/local/embassy/resources/hermit/hermit_face_2.gif);
+}
+
+#beacon-vfx.hermitshapes::before, #beacon-vfx.hermitshapes::after {
+    z-index: -2;
+    background-image: url(/img/local/embassy/resources/hermit/hermitshapes.gif);
+    background-size: 50%;
+}
+
+#beacon-vfx.hermitshapes::after {
+    background-image: url(/img/local/embassy/resources/hermit/bgtest_prewarp_ceiltest_hole.gif), url(/img/local/embassy/resources/hermit/hermitshapes.gif);
+    background-size: 10%, 50%, 50%;
+    z-index: -5;
+    opacity: 1;
 }
 
 /* VN - stored globally due to enough usage in multiple places */
@@ -5609,6 +6189,10 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
     content: "CONFIRM::'skip stream segment'";
 }
 
+#dialogue-skip.skip-combat::before {
+    display: none;
+}
+
 #dialogue-skip::after {
     content: "";
     position: absolute;
@@ -5650,7 +6234,7 @@ body[quality="regular"] .vn-bstrd .arms, body[quality="regular"] .vn-bstrd .head
     width: 300px;
     height: 200px;
     padding: 10px 50px;
-    background: url(/img/textures/paperplate.gif);
+    background: var(--freedom-control-bg);
     background-size: 100% 100%;
     z-index: 1000;
     font-size: 30px;
@@ -5727,22 +6311,24 @@ body[menu="entities"] #freedomControl {
     left: 0;
     --baseTransform: translate(-50%, -50%);
     --duration: 1000ms;
+    --scale: 5;
     border: 2px dashed var(--neutral-color);
     width: 20px;
     height: 20px;
     animation: PING var(--duration) linear;
     z-index: 999;
     border-radius: 100%;
+    pointer-events: none;
 }
 
 @keyframes PING {
     0% { 
-        transform: var(--baseTransform) rotate(360deg) scale(5);
+        transform: var(--baseTransform) rotate(360deg) scale(var(--scale));
         opacity: 0;
     }    
 
     50% {
-        transform: var(--baseTransform) rotate(180deg) scale(3);
+        transform: var(--baseTransform) rotate(180deg) scale(calc(var(--scale) * 0.5));
         opacity: 1;
     }
 

@@ -126,6 +126,7 @@ page.flags.augmentMax = 0
 page.partyMenuEnabled = true
 page.party.reorganizable = true
 page.party.crittamode = true
+page.party.noPreserveHealth = true
 body.classList.add('party-enabled')
 body.classList.remove('augments-enabled')
 
@@ -327,6 +328,19 @@ env.e3a2 = {
             sprite: {
                 intro: [0, 24000],
                 __default: [24000, 96000, true]
+            }
+        },
+
+        {
+            name: "Le dÃ©lire des nÃ©gations",
+            category: 'boss',
+            note: 'recall from translation core combat',
+            src: ['/audio/tv.ogg'],
+            randomRates: [0.9, 1],
+            randomStarts: [0, 110],
+            volume: 0.9,
+            sprite: {
+                __default: [0, 999999999, true]
             }
         },
         
@@ -590,21 +604,21 @@ env.e3a2 = {
 
         //built-in mod protection
         env.e3a2.preferredBgm = {
-            boss: env.e3a2.tracks.boss[check("e3a2m_boss")] || env.e3a2.miniboss,
-            combat: env.e3a2.tracks.combat[check("e3a2m_combat")] || env.e3a2.combat,
+            boss: (check("e3a2m_boss") || "").startsWith("random") ? "random-boss" : (env.e3a2.tracks.boss[check("e3a2m_boss")] || env.e3a2.miniboss),
+            combat: (check("e3a2m_combat") || "").startsWith("random") ? "random-combat" : (env.e3a2.tracks.combat[check("e3a2m_combat")] || env.e3a2.combat),
             peace: env.e3a2.tracks.peace[check("e3a2m_peace")] || page.bgm
         }
 
         // it can be "random" or "mute"
         if(typeof env.e3a2.preferredBgm.boss != "string") env.e3a2.preferredBgm.boss.load(); 
-        else if(env.e3a2.preferredBgm.boss == "random") Object.entries(env.e3a2.tracks.boss).filter(t=>shouldItShow(t[1])).forEach(t=>t[1].load())
+        else if(env.e3a2.preferredBgm.boss.startsWith("random")) Object.entries(env.e3a2.tracks.boss).filter(t=>shouldItShow(t[1])).forEach(t=>t[1].load())
         else if(env.e3a2.preferredBgm.boss == "mute") {
             env.e3a2.preferredBgm.boss = env.e3a2.miniboss
             env.e3a2.preferredBgm.boss.mute(true)
         }
 
         if(typeof env.e3a2.preferredBgm.combat != "string") env.e3a2.preferredBgm.combat.load(); 
-        else if(env.e3a2.preferredBgm.combat == "random")  Object.entries(env.e3a2.tracks.combat).filter(t=>shouldItShow(t[1])).forEach(t=>t[1].load())
+        else if(env.e3a2.preferredBgm.combat.startsWith("random"))  Object.entries(env.e3a2.tracks.combat).filter(t=>shouldItShow(t[1])).forEach(t=>t[1].load())
         else if(env.e3a2.preferredBgm.combat == "mute") {
             env.e3a2.preferredBgm.combat = env.e3a2.combat
             env.e3a2.preferredBgm.combat.mute(true)
@@ -756,6 +770,7 @@ combat
             content.insertAdjacentHTML('beforeend', '<critta-map></critta-map>')
             env.e3a2.map = content.querySelector("critta-map")
             setTimeout(()=>env.e3a2.toggleMap(), 100)
+
         } else {
             switch(body.getAttribute('menu')) {
                 case "crittamap":
@@ -764,7 +779,10 @@ combat
                     
                     body.classList.remove('in-menu')
                     body.setAttribute('menu', 'none')
-                    if(env?.stage?.freemove) toggleMouseLook(true) //pause
+                    console.log("freemove trigger point", env?.stage?.freemove, check("mask-freedom"))
+                    if(check("STAGE!!freedomtoggled")) {
+                        mask({name: "freedom", toggle: true, playSound: false}) // unpause
+                    }
                 break
 
                 default:
@@ -776,7 +794,11 @@ combat
                     
                     vn.hideStage(true, true)
                     vn.fadeChars(true)
-                    if(env?.stage?.freemove && !env.rpg?.active) toggleMouseLook(false) //pause
+                    console.log("freemove pause point", env?.stage?.freemove, !env?.rpg?.active)
+                    if(env?.stage?.freemove && !env.rpg?.active) {
+                        change("STAGE!!freedomtoggled", true)
+                        mask({name: "freedom", toggle: false, playSound: false}) //pause
+                    }
             }
         }
     },
@@ -807,6 +829,8 @@ combat
             env.e3a2.clearWarningListener()
             corruRefresh() 
         } else { // regenerate the map
+            //equipment grows less common over time
+            env.crittaMap.weights["item"] = env.crittaMap.weights["item"] ? env.crittaMap.weights["item"] - 0.5 : -0.25
             env.crittaMap.loops++
             env.crittaMap.generate()
             if(env.e3a2 && body.getAttribute("menu") != "crittamap") env.e3a2.toggleMap()
@@ -1163,7 +1187,7 @@ createEntity({
 
 createEntity({
     name: 'clw',
-    image: '/img/sprites/daemons/rook/scan.gif',
+    image: '/img/sprites/daemons/knight/scan.gif',
     type: "thoughtform daemon portrait-cover",
     pathLimit: "/local/beneath/embassy/",
     text: `::ACTIVE THOUGHTFORM
@@ -1183,7 +1207,7 @@ createEntity({
 
 createEntity({
     name: 'enfc',
-    image: '/img/sprites/daemons/knight/scan.gif',
+    image: '/img/sprites/daemons/rook/scan.gif',
     type: "thoughtform daemon portrait-cover",
     pathLimit: "/local/beneath/embassy/",
     text: `::ACTIVE THOUGHTFORM
@@ -1280,12 +1304,56 @@ createEntity({
     ]
 })
 
+createEntity({
+    name: 'shellgrinder',
+    hide: true,
+    image: '/img/local/critta/fairygrinderinner.gif',
+    type: "thoughtform daemon portrait-cover",
+    pathLimit: "/local/beneath/embassy/",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery'
+    ::INHERITED CONTEXT::<span class="neutral-color" definition="INHERITED CONTEXT::'YOU WILL NOT SURVIVE WITHOUT THIS HA HA HA HA HA HA'">'PAY TRIBUTE OR DIE INTERLOPER!!'</span>`,
+    actions: [
+        {
+            name: "approach",
+            exec: ()=>{
+                cutscene(true)
+                MUI("off")
+                let id = `reward${env.crittaCount++}`
+                content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" class="pre-show" type="shellGrinderApproach"></critta-reward>`)
+                MUI("prohibit")
+                setTimeout(()=>{
+                    cutscene(false)
+                    document.getElementById(id).classList.remove("pre-show")
+                }, 100)
+
+                chatter({ actor: "fairy", text: [
+                    "no progress is made without loss!! ahahaha"
+                ].sample(), readout: true, delay: 800})
+            },
+            showIf: ()=> (page.party.length > 1) && (!content.querySelector("#content critta-reward[type='shellGrinderApproach']"))
+        },
+        {
+            name: "approach",
+            exec: ()=>{
+                chatter({ actor: "fairy", text: [
+                    "ahaha!!! no easy way out for you!!",
+                    "lose the right way!!!",
+                    "are you stupid?",
+                    "ahahaha!! i am NOT letting you do that"
+                ].sample(), readout: true, delay: 800})
+            },
+            showIf: ()=> page.party.length == 1
+        }
+    ]
+})
+
 /************ STAGES **************/
 env.stageEntities["c"] = {class:"prop blocks genericblocker"}
-env.stageEntities["♠"] = {class: "vesselmetal"}
+env.stageEntities["â™ "] = {class: "vesselmetal"}
 env.stageEntities["_"] = {class: "gap blocks"}
 env.stageEntities["="] = {class: "gap blocks raised-floaty"}
-env.stageEntities["▒"] = {class: "invisiblewalk nothing"}
+env.stageEntities["â–’"] = {class: "invisiblewalk nothing"}
 env.stageEntities["B"] = {
     class: "prop blocks",
     contains: {
@@ -1327,7 +1395,7 @@ env.stageEntities["w"] = {
     } 
 }
 
-env.stageEntities["☻"] = {
+env.stageEntities["â˜»"] = {
     class: "prop blocks",
     contains: {
         class: "geli character bstrdized",
@@ -1392,8 +1460,10 @@ env.stages['wanderpart'] = {
         "?": {
             class: "notile",
             contains: {
+                class: "face-creature newevil",
+                noDypClass: true, // to ignore the usual stylings
                 html:  `<div class="daemonsprite sprite-wrapper">
-                    <figure class="daemon pawn clean accurate-position">
+                    <figure class="daemon pawn accurate-position">
                         <img src="/img/sprites/daemons/pawn/base.gif">
                         <div class="eye"></div>
                         <div class="scraps noimg">
@@ -1410,16 +1480,17 @@ env.stages['wanderpart'] = {
                     noback: true,
                     width: 3,
                     height: 3,
-                    transform: `rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ))`
-                }
+                },
             }
         },
 
         "!": {
             class: "notile",
             contains: {
+                class: "face-creature newevil",
+                noDypClass: true, // to ignore the usual stylings
                 html:  `<div class="daemonsprite sprite-wrapper hitme">
-                    <figure class="daemon pawn clean accurate-position">
+                    <figure class="daemon pawn accurate-position">
                         <img src="/img/sprites/daemons/pawn/base.gif">
                         <div class="eye"></div>
                         <div class="scraps noimg">
@@ -1436,8 +1507,7 @@ env.stages['wanderpart'] = {
                     noback: true,
                     width: 3,
                     height: 3,
-                    transform: `rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ))`
-                }
+                },
             }
         },
     },
@@ -1445,32 +1515,32 @@ env.stages['wanderpart'] = {
         .....w.....
         .....V.....
         ._.=_o_=...
-        ▒▒▒░░p░░▒▒▒
-        ▒▒░░░░░░░▒▒
-        ==▒░▒░░▒▒▒▒
-        .=▒░▒▒░▒▒▒=
-        ?.=▒▒▒░▒▒▒▒
-        ..=▒░░░▒░▒▒
-        .=▒░▒░▒▒▒▒▒
-        ▒▒▒▒▒▒▒▒░▒=
-        ░▒▒▒▒▒=▒▒▒▒
-        ▒▒░░▒▒▒░▒▒▒
-        ▒▒▒▒▒▒░▒▒▒░
-        =▒▒▒░▒░▒▒==
-        ▒▒▒▒▒▒▒▒=..
-        ▒▒▒░▒▒▒=..?
-        ▒░░▒▒▒▒=...
-        ▒▒▒▒▒▒▒▒=..
-        ▒▒▒▒▒▒░▒▒=.
-        =▒▒▒▒▒▒▒▒▒=
-        ▒==▒▒▒▒▒===
-        ▒▒▒=▒▒▒=▒▒▒
-        ▒▒==▒==▒▒░▒
-        ▒▒==░=░░▒▒▒
-        ░▒░.░.░?░▒░
-        ▒░░.B!░░▒▒▒
-        ▒▒?▒░░░░?▒▒
-        ▒░░░▒=▒▒▒▒▒
+        â–’â–’â–’â–‘â–‘pâ–‘â–‘â–’â–’â–’
+        â–’â–’â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–’â–’
+        ==â–’â–‘â–’â–‘â–‘â–’â–’â–’â–’
+        .=â–’â–‘â–’â–’â–‘â–’â–’â–’=
+        ?.=â–’â–’â–’â–‘â–’â–’â–’â–’
+        ..=â–’â–‘â–‘â–‘â–’â–‘â–’â–’
+        .=â–’â–‘â–’â–‘â–’â–’â–’â–’â–’
+        â–’â–’â–’â–’â–’â–’â–’â–’â–‘â–’=
+        â–‘â–’â–’â–’â–’â–’=â–’â–’â–’â–’
+        â–’â–’â–‘â–‘â–’â–’â–’â–‘â–’â–’â–’
+        â–’â–’â–’â–’â–’â–’â–‘â–’â–’â–’â–‘
+        =â–’â–’â–’â–‘â–’â–‘â–’â–’==
+        â–’â–’â–’â–’â–’â–’â–’â–’=..
+        â–’â–’â–’â–‘â–’â–’â–’=..?
+        â–’â–‘â–‘â–’â–’â–’â–’=...
+        â–’â–’â–’â–’â–’â–’â–’â–’=..
+        â–’â–’â–’â–’â–’â–’â–‘â–’â–’=.
+        =â–’â–’â–’â–’â–’â–’â–’â–’â–’=
+        â–’==â–’â–’â–’â–’â–’===
+        â–’â–’â–’=â–’â–’â–’=â–’â–’â–’
+        â–’â–’==â–’==â–’â–’â–‘â–’
+        â–’â–’==â–‘=â–‘â–‘â–’â–’â–’
+        â–‘â–’â–‘.â–‘.â–‘?â–‘â–’â–‘
+        â–’â–‘â–‘.B!â–‘â–‘â–’â–’â–’
+        â–’â–’?â–’â–‘â–‘â–‘â–‘?â–’â–’
+        â–’â–‘â–‘â–‘â–’=â–’â–’â–’â–’â–’
     `
 }
 
@@ -1505,6 +1575,8 @@ env.stages['completed'] = {
         "?": {
             class: "notile",
             contains: {
+                class: "face-creature newevil",
+                noDypClass: true, // to ignore the usual stylings
                 html:  `<div class="daemonsprite sprite-wrapper">
                     <figure class="daemon pawn clean accurate-position">
                         <img src="/img/sprites/daemons/pawn/base.gif">
@@ -1523,21 +1595,53 @@ env.stages['completed'] = {
                     noback: true,
                     width: 3,
                     height: 3,
-                    transform: `rotateY(180deg) rotateY( atan2( var(--distX), var(--distY) ))`
-                }
+                },
             }
         },
+
+        X: {
+            class: "notile",
+            contains: {
+                dyp: {
+                    class: "vesselgap freedomgate",
+                    image: 'transparent',
+                    width: 3,
+                    height: 3,
+                    noback: true,
+                    transform: "rotateY(135deg) translateZ(calc(var(--gridTileSize) * 0.5))"
+                }
+            } 
+        },
+        
+        x: {
+            class: "freedomtile",
+        },
+
+        R: {
+            class: "freedomport faketeleport",
+            exec: ()=>{ 
+                change("TEMP!!from", "e3a2")
+                moveTo("/local/ocean/embassy/resources/");
+            }
+        },
+
+        r: {
+            class: "plain empty resourcereturn",
+            shouldFace: "down"
+        }
     },
 
     plan: `
         ....w....
         ....V....
         _.=_o_=..
-        ...░p░..=
-        .=░.░░...
-        ==░░░._=░
-        ?.=░=.=..
-        ....=.?..
+        ...â–‘pâ–‘..=
+        .=â–‘.â–‘â–‘...
+        ==â–‘â–‘â–‘._=â–‘
+        ?.=r=.=..
+        .=x.=.?..
+        .R.......
+        X........
     `
 }
 
@@ -1552,10 +1656,10 @@ env.stages['underlobby'] = {
                 el.classList.remove("prop", "blocks")
                 el.classList.add('vesselmetal')
                 el.innerHTML = ""
-                el.setAttribute("slug", "♠")
+                el.setAttribute("slug", "â™ ")
             })
         } else {
-            env.stage.querySelectorAll(".gridpiece[slug='☻']").forEach(el=>{
+            env.stage.querySelectorAll(".gridpiece[slug='â˜»']").forEach(el=>{
                 el.classList.remove("blocks")
                 el.classList.add("nothing")
                 el.innerHTML = ""
@@ -1616,6 +1720,7 @@ env.stages['underlobby'] = {
         "W": {
             class: "notile",
             contains: {
+                class: "wheel",
                 examineEntity: "wheel",
                 html: `<div class="side front"></div>`,
                 dyp: {
@@ -1628,7 +1733,7 @@ env.stages['underlobby'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -1759,14 +1864,14 @@ env.stages['underlobby'] = {
         ....w....
         ....V....
         _.=_o_=..
-        ...░p░..=
-        .=░.░░☻..
-        =.░░░._=░
-        ░..░░.=..
-        ....░....
-        ..T♠♠♠1..
-        .W%♠♠♠2Ü.
-        ..tB♠{3..
+        ...â–‘pâ–‘..=
+        .=â–‘.â–‘â–‘â˜»..
+        =.â–‘â–‘â–‘._=â–‘
+        â–‘..â–‘â–‘.=..
+        ....â–‘....
+        ..Tâ™ â™ â™ 1..
+        .W%â™ â™ â™ 2Ãœ.
+        ..tBâ™ {3..
         ..R.s....
     `
 }
@@ -1867,6 +1972,7 @@ env.stages['vessel'] = {
         "W": {
             class: "notile",
             contains: {
+                class: "wheel",
                 examineEntity: "wheel",
                 html: `<div class="side front"></div>`,
                 dyp: {
@@ -1879,7 +1985,7 @@ env.stages['vessel'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -1957,8 +2063,7 @@ env.stages['vessel'] = {
         "T": {
             class: "prop blocks",
             contains: {
-                examineEntity: "exchange terminal",
-                html: `<div class="exchangescreen"></div>`,
+                html: `<critta-flashsale></critta-flashsale>`,
                 dyp: {
                     class: "terminal",
                     image: 'url(/img/local/critta/generiterminal2.gif)',
@@ -2050,18 +2155,53 @@ env.stages['vessel'] = {
                 }
             } 
         },
+
+        "M": {
+            class: "prop blocks",
+            contains: {
+                examineEntity: "shellgrinder",
+                html: `<div class="fairygrinder"></div>`,
+                dyp: {
+                    class: "meatgrinder",
+                    image: 'url(/img/local/critta/fairygrindermachine.gif)',
+                    transform: `rotateY(90deg) translateX(25%) rotateY(90deg) translateX(-33%) rotateY(-45deg)`,
+                    noback: true,
+                    width: 1.5,
+                    height: 2,
+                }
+            } 
+        },
     },
 
-    plan: `
-        ....┼
-        ..W..
-        Rt░T.
-        f░░░F
-        s░p░S
-        f░░░F
-        .321b
-        ..Ü..
-    `
+    // we only do altplans for specific gamemode calls
+    getPlan: function() {
+        let plan = this.plans.default
+        return plan
+    },
+
+    plans: {
+        default: `
+            ....â”¼
+            ..W..
+            Rtâ–‘T.
+            fâ–‘â–‘â–‘F
+            sâ–‘pâ–‘S
+            fâ–‘â–‘â–‘F
+            .321b
+            ..Ãœ..
+        `,
+
+        shellmode:  `
+            ....â”¼
+            ..W..
+            Rtâ–‘T.
+            fâ–‘â–‘â–‘F
+            sâ–‘pâ–‘S
+            fâ–‘â–‘â–‘F
+            M321b
+            ..Ãœ..
+        `,
+    },
 }
 
 env.stages['vessel_short'] = {
@@ -2104,6 +2244,7 @@ env.stages['vessel_short'] = {
         "W": {
             class: "notile",
             contains: {
+                class: "wheel",
                 examineEntity: "wheel",
                 html: `<div class="side front"></div>`,
                 dyp: {
@@ -2116,7 +2257,7 @@ env.stages['vessel_short'] = {
             }
         },
 
-        "Ü": {
+        "Ãœ": {
             class: "notile",
             contains: {
                 html: `<div class="side back"></div>`,
@@ -2250,11 +2391,11 @@ env.stages['vessel_short'] = {
     plan: `
         .....
         ..W..
-        Rt░T.
-        .░░░.
-        s░p░S
-        .░░░.
-        ..Ü..
+        Rtâ–‘T.
+        .â–‘â–‘â–‘.
+        sâ–‘pâ–‘S
+        .â–‘â–‘â–‘.
+        ..Ãœ..
     `
 }
 
@@ -2311,7 +2452,7 @@ ____SHOWIF::['embassy__d3_archiveintro', false]
         it's part of the system, to make things harder
         you know, for entertainment purposes. optional stuff
         my framing device friend adds things like this all the time
-        weird that it can talk though
+        kinda funny that it can talk though
 
     self
         so where's the hard mode?
@@ -2324,6 +2465,7 @@ ____END
         so i was gonna make my own new place from scratch..........................................
         BUT ITS GABAGE!!!
         I KEEP ALIGNING THESE TILES! WRONG!!
+        they keep WIGLING.,,..
         >:(
         it's just all WRONG!
         + now u r here
@@ -2380,8 +2522,8 @@ ____END
     bstrd
         u want a framing device? u GET THESE FREAKS
         hidine behind ur game '_'
-        running #s, STATES EFFECTS, keepin conteXt,
-        these 1s build stuff
+        running #s, STATES EFFECTS, keepin sht where it OUGHTER BE,..
+        these 1s RITE HERE build stuff
         daemons RUN IT ALL
         BORING SHI*TTTT 
         GET IT??
@@ -2412,12 +2554,6 @@ ____END
     bstrd
         '_'
 
-    moth
-        you know,
-        i was trying to look over the code for this thing to suggest something
-        that appeal might work, cause all bstrd does is take goals and make them "fun"
-        push a little more
-
     self
         maybe put these daemon things in the way into the framing device somehow
         like something you don't have to build
@@ -2429,7 +2565,7 @@ ____END
         IM thinkig...
         ...
         i know wat 2 do..,
-        WE'LL MAKE A NEW MEMORY ITERATION!
+        WE'LL MAKE A NEW MEMORY!
         STARRING U!!
         YEA!!!@!!!
     
@@ -2467,14 +2603,28 @@ ____END
     
     bstrd
         big supise 4 u...
-        THE thoutspace WALLS IS ONE BIG DAEMON
+        the whole game..... DA WALLS...
+        our FREAKINE W0RLD...!!!!
+        IS ONE BIG DAEMON!!!!!!
         :0
-        its called FIRMAMENT
-        keeps everythig INSIDE + lies 2 ur spike
+            EXEC::forcePlay("criticalError", 0.5)
+            WAIT::3000
+            AUTOADVANCE::
+        >:0!!!!!!
+            EXEC::forcePlay("criticalError", 0.3)
+            WAIT::3000
+
+    self
+        ok?
+
+    bstrd
+        its a thoghtsprograms called FIRMAMENT
+        big buuble that SUROUNDS a MEMORY
+        keeps everythig INSIDE iteration + lies 2 ur spike
         So... >>:) 
-        i intersect part of it in my FAKE LITEL MEMORY where u break it + escape
-        if it THINKS memory is about u breaking thru it,
-        and u actually manage to defeat it,
+        i push a new FAKE LITEL MEMORY where u break it + escape
+        if it THINKS memory is about u breaking thru IT,
+        and we BLOW IT UP!!!!!
         RULE 1ND!!!
         it HAS 2 LET U + JELY ESCAPE :D
         = HARD MODE COMPLETE
@@ -2609,20 +2759,6 @@ start
         from me, it sought 'material' for the memory it wanted to manifest!
         my knowledge of obesk names and esoteric concepts for its strange game...
         i suppose you will see them soon!
-        and with me, it shared its plans:
-        BSTRD is forcing all of the daemons in a long path into a new dream
-        at the end of this path is part of the wall we could escape through
-        which, i know to be the part of the membrane of the thoughtspace, but...
-    
-    bsteli::happy
-        BSTRD knows it as the 'firmament'! what a silly name!
-    
-    bsteli
-        it is a wall to be picked away at
-        and should it fall, for us to escape through
-    
-    bsteli::happy
-        simple, right?!
 
     bsteli::bstrd
         IT'S GONNA BE SO FUN!!!
@@ -2691,7 +2827,7 @@ start
         all it wants is to make a fun game
     
     bsteli::concern
-        that's all...?
+        that's all this is to it...?
         i thought it was benevolent, perhaps a new friend...
     
     bsteli::happy
@@ -2704,10 +2840,21 @@ start
         but please know, from what i have seen,
         this journey will be treacherous and difficult
         even if you fail, do not lose spirit
-        we are within something called an 'iteration' - a daemon-controlled loop
-        should the vessel be destroyed, everything within will reset to before!
-        only, the firmament will remain damaged, because it is so big, apparently!
+        it was imparted unto me that while failure will result in a reset,
+        the firmament will remain damaged, because it is so big, apparently!
         so you must simply try again!
+
+    sourceless
+        something in the space above and around you shifts.
+
+    bsteli::happy
+        ah--! and there is the 'short cut'!
+        the BSTRD told me about this, though it does sort of escape my grasp, haha...
+
+    bsteli
+        there is some sort of 'selection' you use to reach this place?
+        a direct link has been made from there to here!
+        it should persist, regardless of your position in akizet's memories of the collapse!        
 
     RESPONSES::self
         question<+>CHANGE::++bsteli
@@ -2895,7 +3042,7 @@ start
         so even if u die itll keep DA DAMAGE U DID 4EVER
         >%^}
         just break it apart then come back 4 geli
-        THEN WE SAIL 🏴‍☠️
+        THEN WE SAIL ðŸ´â€â˜ ï¸
     
     sourceless
         the radio clicks off.
@@ -2923,7 +3070,7 @@ ____SHOWONCE::
         the radio falls in the space nearby, clicking on.
     
     bstrd
-        DAMN!!! LOL
+        DAMN IS RITE!!! LOL
         u got owned
         but DONE EVEN WORRY
         just RESET

@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,13 +407,14 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<style>
     
-    @import url(/css/combat.css?1776972202354301552);
-    @import url(/css/local/embassy.css?1776972202354301552);
-    @import url(/css/local/embassy_global.css?1776972202354301552);
-    @import url(/css/combatGrid.css?1776972202354301552);
-    @import url(/css/local/embassy_groundsmindry.css?1776972202354301552);
+    @import url(/css/combat.css?1791592572941837278);
+    @import url(/css/local/embassy.css?1791592572941837278);
+    @import url(/css/local/embassy_global.css?1791592572941837278);
+    @import url(/css/combatGrid.css?1791592572941837278);
+    @import url(/css/local/embassy_groundsmindry.css?1791592572941837278);
 </style>
 
 <div class="grid-plane">
@@ -424,6 +485,18 @@
     </details>
 </details>
 
+<div class="precombat">
+  <div class="continue">
+    <div class="continue-notice">:: memory stream halted
+:: alter party if desired</div>
+    <div class="proceed intermediary-only"><div entity="save/proceed" class="target always-targeted"></div></div>
+    <div class="proceed itempause-only"><div entity="continue" class="target always-targeted"></div></div>
+    <div class="stage-arrows">
+        <div class="party" onclick="javascript:togglePartyMenu()"><i class="cicon ci-group"></i></div>
+        </div>
+    </div>
+</div>
+
 
 		<script id="PageData">
 			content = document.querySelector('#content')
@@ -441,7 +514,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/groundsmindry.gif",
@@ -480,6 +553,7 @@
     }
 
     if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    else if(check("PAGE!!weirdload")) moth = "looks like you wormed your way back into an inactive space... i doubt you'll get far without a recollection locus"
 
     return moth
 }
@@ -749,7 +823,7 @@
 					
 						
 						
-							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'additional media for coaxing spireblood into faster flows';'terrestrial use only'`;
 						
 					
 						
@@ -785,6 +859,11 @@
 						
 						
 							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`vecrivi`] = `'niche maintenance tool';'assists in draining damaged equipment of inert corru'`;
 						
 					
 						
@@ -990,6 +1069,13 @@
 					
 						
 						
+							
+							
+							env.definitions[`stagehand`] = { type: `NOTE`, text: `'partial translation';'implied closest functional equivalent';'adherent to performist beliefs';'perception of self as guiding force to others';'pursuant of intrigue to entertain velzie';'troublemaker'`};
+						
+					
+						
+						
 							env.definitions[`velzie smiles`] = `'common idiom';'god is entertained with antics';'religious implication'`;
 						
 					
@@ -1007,7 +1093,7 @@
 						
 							
 							
-							env.definitions[`cloaking skin`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+							env.definitions[`cloaking skin`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun';'rare subterfuge technology';'utilized mostly for pre-contact retrieval of resources';'intensive to install and remove';'no good reason for use now'`};
 						
 					
 					
@@ -1043,6 +1129,8 @@ RESPOBJ::
             SHOWIF::'ep4__lesser_attack'
         infection?<+>infection
             SHOWIF::"ep4__contact"
+        telyu?<+>telyu
+            SHOWIF::"ep4__heart_clear"
         tactical combat?<+>combat
             SHOWIF::"ep4__lesser_attack"
         what do you think happened here?<+>thoughts
@@ -1186,6 +1274,42 @@ infection
         maybe<+>loop
             FAKEEND::(back)
 
+telyu
+    self
+        telyu mentioned doing stuff before first contact
+        her team "moving things into place"
+        do you know anything about that
+    
+    moth
+        nnnoooo
+        at least, not with that sort of ominous verbiage lol
+        i'm not too surprised, they had to get resources somehow
+        especially stuff to get a handle on our languages
+        we still don't have specifics on how they did that
+
+    RESPONSES::self
+        ok<+>telyu2
+            FAKEEND::(back)
+
+telyu2
+    moth
+        actually, hold on, 
+        you know what really bugs me about her?
+        i can believe qou sneaking around and stealing shit
+        but she seemed really familiar with, like,
+        the manipulation of people
+        it's generally accepted that that's not something obesk are good at
+        maybe she had a cyst for it? a lot of practice?
+        idk it's just weird
+        especially if she isn't involved with the "conflict"
+        really makes me wonder how far their infiltrating went
+        if we get read into this stuff after our report, we might get the big picture
+        at least, i really hope that's something we know about already
+        
+    RESPONSES::self
+        yeah<+>loop
+            FAKEEND::(back)    
+
 combat
     self
         this tactical combat thing is cool
@@ -1243,7 +1367,7 @@ thoughts
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -1288,18 +1412,29 @@ thoughts
 
 					//dyn
 					
-					// the embassy pass will add these probably
-page.maskHungerNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
-page.maskUnityNote = "\nRESONANCE::'none within this particular memory segment';'await further repairs'";
+					page.maskHungerNote = "\nRESONANCE::'minor';'connective thoughtform detected'";
+page.maskJoyNote = "\nRESONANCE::'minor';'connective thoughtform detected'";
+page.maskUnityNote = "\nRESONANCE::'none within this particular memory segment';";
 
 env.embassy.progWatcher = (ev) => {
     //mainly for debug
     if(ev.detail.key == "PAGE!!e4prog") {
         body.setAttribute("e4prog", check("PAGE!!e4prog"))
 
-        if(check("PAGE!!e4prog") > 2) { change("PAGE!!ikgolem-gone", true) } else {change("PAGE!!ikgolem-gone", "DELETE") }
-        if(check("PAGE!!e4prog") > 12) { change("PAGE!!miltza-gone", true);change("PAGE!!tozik-gone", "???"); } else {change("PAGE!!miltza-gone", "DELETE");change("PAGE!!tozik-gone", "DELETE") }
-        if(check("PAGE!!e4prog") > 14) { change("PAGE!!tozpain", true) } else {change("PAGE!!tozpain", "DELETE") }
+        let prog = check("PAGE!!e4prog")
+
+        if(prog > 2) { change("PAGE!!ikgolem-gone", true); } else {change("PAGE!!ikgolem-gone", "DELETE") }
+        if(prog > 12) { change("PAGE!!miltza-gone", true);change("PAGE!!tozik-gone", "???"); } else {change("PAGE!!miltza-gone", "DELETE");change("PAGE!!tozik-gone", "DELETE") }
+        if(prog > 14) { change("PAGE!!tozpain", true) } else {change("PAGE!!tozpain", "DELETE") }
+
+
+        if(prog && page.party) {
+            if(prog > 3 && prog < 11) {
+                page.party.partyLimit = 4
+            } else {
+                page.party.partyLimit = 7
+            }
+        }
     }
 }
 document.addEventListener('corru_changed', env.embassy.progWatcher)
@@ -1311,6 +1446,23 @@ if(location.search.includes('debug')) {
         change('collapseSave', GlobalSaves.collapseSave_ep4start)
         env.embassy.loadCollapseSave()
         change("TEMP!!ep3->ep4transfer", true)
+
+        setTimeout(()=>{
+            addItem("eq_restorative", 1)
+            addItem("eq_aima_cyst", 1)
+            addItem("eq_kavruka", 1)
+            addItem("eq_fusedlight", 1)
+            addItem("eq_pariispike", 1)
+            addItem("eq_disabler", 1)
+            addItem("eq_satik", 1)
+            addItem("eq_shell", 1)
+            addItem("eq_antistatus", 1)
+            addItem("eq_surge", 1)
+            addItem("eq_translator", 1)
+            addItem("eq_siphon", 1)
+            
+            chatter({actor: 'actual_site_error', text: "you have all items but they aren't all equipped yet", readout: true})
+        }, 2000)
     }
 }
 
@@ -1339,28 +1491,65 @@ if(check("TEMP!!ep3->ep4transfer")) {
     page.party.forEach(m=>delete m.augments)
 
 } else if(!check("PAGE!!embassy_day", 3.99)) {
-    moveTo("/local/ocean/embassy/")
-    return
+    switch(check("TEMP!!from")) {
+        case "ep4_joy":
+            change("PAGE!!weirdload", true)
+            content.classList.add("weirdload")
+            document.querySelector('#stage-navigator .swap').remove();document.querySelector('#stage-navigator .party').remove()
+            changeStage("grm_entry")
+        break
+
+        case "ep4_hunger":
+            change("PAGE!!weirdload", true)
+            content.classList.add("weirdload")
+            document.querySelector('#stage-navigator .swap').remove();document.querySelector('#stage-navigator .party').remove()
+            changeStage("grm_lesser", "resourcereturnhunger")
+        break
+
+        default:
+            moveTo("/local/ocean/embassy/")
+            return
+    }
+
+    change("TEMP!!from", "DELETE")
 } else {
     changeStage(page.saveZone)
+}
+
+if(!check("PAGE!!weirdload")) {
+    body.setAttribute("e4prog", check("PAGE!!e4prog"))
+
+    if(check('gakpause')) {
+        content.classList.add('gakpause')
+    }
+
+    env.embassy.initializeEmbassyCombatSettings({ep: 3.99})
+    change("TEMP!!lshift", "DELETE")
+    env.embassy.progWatcher({detail: {key: "PAGE!!e4prog"}})
+    change("PAGE!!ikawake", true)
+
+    // item grants from having certain things done, ever
+    // EP2
+    if(check("embassy__d3_archiveintro") && !checkItem("eq_satik")) addItem('eq_satik', 1)
+    if(check("embassy__d3_archivedeliveryclear") && !checkItem("eq_siphon")) addItem('eq_siphon', 1)
+    if(check("embassy__d3_archivebossend") && !checkItem("sorry_cyst")) addItem('sorry_cyst', 1)
+
+    // EP3
+    if(check("gol__ops_bossclear") && !checkItem("eq_translator")) addItem('eq_translator', 1)
+    if(check("gol__ops_friendsclear") && !checkItem("eq_antistatus")) addItem('eq_antistatus', 1)
+    if(check("gol__m_minvat") && !checkItem("eq_pariispike")) {
+        addItem('eq_pariispike', 1)
+        addItem('eq_surge', 1)
+    }
+    if(check("gol__m_mingun") && !checkItem("eq_rifle")) addItem('eq_rifle', 1)
 }
 
 change("PAGE!!akirearrange", true)
 change("PAGE!!nopartyvn", true)
 change("PAGE!!2dcombat", true)
 vn.renderParty() // to get rid of them ironically
-body.setAttribute("e4prog", check("PAGE!!e4prog"))
 
-if(check('gakpause')) {
-    content.classList.add('gakpause')
-}
-
-env.embassy.initializeEmbassyCombatSettings({ep: 3.99})
 document.addEventListener('keydown', stageKeypress)
-change("TEMP!!lshift", "DELETE")
-env.embassy.progWatcher({detail: {key: "PAGE!!e4prog"}})
-change("PAGE!!ikawake", true)
-
 document.addEventListener('corru_mask', env.grm.mask)
 
 					Buddy.triggerPageBuddies()
@@ -1371,8 +1560,9 @@ document.addEventListener('corru_mask', env.grm.mask)
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 

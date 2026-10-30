@@ -905,6 +905,35 @@ start
         ATTENTION::"iteration commencement point";"continue?"
         WARNING::"no save point detected";"unable to recover progress if lost"
 
+____SHOWIF::["framemodes_unlocked", false]
+    bsteli
+        oh! and interloper!
+
+    bsteli::think
+        the dream is already quite fun, i think...
+
+    bsteli::happy
+        but i have prepared another 'MODE', as the BSTRD would call it!
+    
+    bsteli
+        the BSTRD was very interested in intensity, and, well...
+
+    bsteli::bstrd
+        so am I!!! }:P
+
+    bsteli
+        but i wondered, what if we took it slower?
+        whether that interests you or not...
+        this will at least make it simpler for the others to make new 'MODES', if they like!
+        
+    bsteli::happy
+        i imagine the fairy might enjoy the opportunity! ahaha!
+
+    bsteli
+        once you have entered the dream, take a close look at the wheel's terminal!
+            EXEC::change("framemodes_unlocked", true)
+____END
+
     RESPONSES::self
         ok<+>END
             EXEC::vn.done();change("TEMP!!from", "geliozo");moveTo("/local/beneath/embassy/")
@@ -1161,11 +1190,11 @@ humors
 fish
     basterminal
         select fish spawn rate
-        10% is default
+        15% is default
     
     RESPONSES::self
-        normal (10%)<+>loop
-            EXEC::change("e3a2_fishchance", "0.1")
+        normal (15%)<+>loop
+            EXEC::change("e3a2_fishchance", "0.15")
             HIDEREAD::
         foolish (25%)<+>loop
             EXEC::change("e3a2_fishchance", "0.25")
@@ -1421,7 +1450,7 @@ createEntity({
 })
 
 /* dog - used across beneath, golem, and ozo */
-env.stageEntities['┼'] = {
+env.stageEntities['â”¼'] = {
     class: "blocks notile",
     contains: {
         class: "isopod_host",

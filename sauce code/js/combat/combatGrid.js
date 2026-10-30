@@ -26,16 +26,14 @@ class CombatScene extends HTMLElement {
         }
 
         this.scenario.name = this.getAttribute('scenario')
+        env.lastScenario = this.scenario
 
-        takePartySnapshot(this.scenario.name) // snapshot may not be used everywhere but it's a safe assumption
-
+        this.specialProps = {}
         this.turnData = { turn: 0 }
         this.grid = document.createElement('combat-grid')
         this.grid.classList.add("grid-plane")
         this.grid.scene = this
         this.grid.scenario = this.scenario
-        this.grid.style.setProperty("--playercontrol-rotation-raw", "135")
-        this.grid.style.setProperty("--playercontrol-tilt-raw", "30")
         if(this.scenario.combatClass) {
             this.scenario.combatClass.split(" ").forEach(cc =>this.classList.add(cc))
         }
@@ -45,15 +43,21 @@ class CombatScene extends HTMLElement {
         this.keypress = (e) => { 
             if(env.rpg.turnData) if(!env.rpg.turnData.twistRefresh) {env.rpg.turnData.twistRefresh = true; env.rpg.refresh()}
 
-            if(e.key.toLowerCase() == "shift" && env.rpg.state == "normal" && !env.currentDialogue?.active && env.rpg.currentTeam.name == "ally") {
+            if(e.key.toLowerCase() == "shift" && env.rpg.state == "normal" && !env.currentDialogue?.active && env.rpg.currentTeam.name == "ally" && !env.currentDefinition.startsWith("ACTION++") && !env.currentDefinition.startsWith("STATUS++")) {
                 env.rpg.state = "looking"
+                env.rpg.toggleStatPlates(true)
 
-            } else if(!this.pauseControls) this.playerCamControl(e.key.toLowerCase()) 
+            } else if(!this.pauseControls && !env.currentDialogue?.active) this.playerCamControl(e.key.toLowerCase())
+
+            if(e.key.toLowerCase() == "e") {
+                env.rpg.toggleTemporarySpeedup({state: true, speed: 200})
+            }
         }
 
         this.keyup = (e) => {
             if(!env.currentDialogue?.active && e.key.toLowerCase() === 'shift' && env.rpg.state == "looking" && env.rpg.currentTeam.name == "ally") {
                 env.rpg.state = 'normal'
+                env.rpg.toggleStatPlates(false)
             }
         }
 
@@ -62,10 +66,10 @@ class CombatScene extends HTMLElement {
 
             if(env.rpg.state == "looking") {
                 env.rpg.state = "normal"
-            } else {
-                if(env.rpg.state == "normal") {
-                    env.rpg.state = "looking"
-                }
+                env.rpg.toggleStatPlates(false)
+            } else if(env.rpg.state == "normal") {
+                env.rpg.state = "looking"
+                env.rpg.toggleStatPlates(true)
             }
         }
 
@@ -89,6 +93,7 @@ class CombatScene extends HTMLElement {
 
         this.classList.add("intro", "team-intro")
         this.insertAdjacentHTML('beforeend', `
+            <div class="render-filter"></div>
             <div id="enemy-team" class="team"></div>
             <div id="ally-team" class="team"></div>
             <div class="key-navigator">
@@ -98,6 +103,7 @@ class CombatScene extends HTMLElement {
                     <div class="down" key="s" onclick="javascript:env.rpg.playerCamControl('s')"><i class="cicon ci-down"></i></div>
                     <div class="right" key="d" onclick="javascript:env.rpg.playerCamControl('d')"><i class="cicon ci-right"></i></div>
                     <div class="look" key="hold shift" definition="NOTICE::'toggles LOOKING mode';'click on tile to move camera';'only functions during ally movement phase'" onclick="javascript:env.rpg.toggleLooking()"><i class="cicon ci-nav"></i></div>
+                    <div class="speed" key="e" definition="NOTICE::'speed up time for rest of enemy team turns'" onclick="javascript:env.rpg.toggleTemporarySpeedup({state: true, speed: 200})"><i class="cicon ci-right"></i></div>
                 </div>
             </div>
         `)
@@ -113,7 +119,9 @@ class CombatScene extends HTMLElement {
         env.rpg.entCount = 0
         env.rpg.globalListeners = {}
         env.rpg.telegraphQueue = []
+        env.rpg.actorsToRemovePiecesOf = new Set()
         env.rpg.highlightedActors = new Set()
+        env.rpg.baseAdvanceRate = env.ADVANCE_RATE
         createRPGeffectMessage()
     
         env.rpg.enemyTeam = {name: "enemy", members: []}
@@ -126,6 +134,7 @@ class CombatScene extends HTMLElement {
         //team initialization
         this.partyLimit = page?.party?.partyLimit || 100 // bet you wont
         let initAllyTeam = this.scenario.initAllyTeam()
+        env.rpg.allyTeam.initial = initAllyTeam
         initAllyTeam.forEach((member, i) => {
             if(i >= this.partyLimit ) return
     
@@ -147,6 +156,7 @@ class CombatScene extends HTMLElement {
         });
     
         let initEnemyTeam = this.scenario.initEnemyTeam()
+        env.rpg.enemyTeam.initial = initEnemyTeam
         initEnemyTeam.forEach(member => {
             let newActor = initializeActor(member,
                 {
@@ -204,6 +214,11 @@ class CombatScene extends HTMLElement {
         if(env.rpg.turnOrder[0].piece) env.rpg.turnOrder[0].piece.focusOnTile()
         updateStats()
 
+        //initialize stun immunity on each actor with special stun immunity
+        env.rpg.turnOrder.forEach(actor=>{
+            if(actor.effectiveStats.stunImmunityMod) addStatus({target: actor, status: "stun_immune", length: actor.effectiveStats.stunImmunityMod, noReact: true})
+        })
+
         setTimeout(() => advanceTurn(), 100)
 
         if(this.scenario.bgm) { // remember this is a function in this version
@@ -220,6 +235,12 @@ class CombatScene extends HTMLElement {
         if(this.scenario.bgmVol) { env.bgm.volume(getModifiedVolume('music', this.scenario.bgmVol)); env.bgm.intendedVol = this.scenario.bgmVol }
         if(this.scenario.startCallback) this.scenario.startCallback();
         } catch(e) { alert(e); console.log(e) }
+        
+        this.setGridProperty("--playercontrol-rotation", "135deg")
+        this.setGridProperty("--playercontrol-tilt", "-30deg")
+        
+        env.rpg.enemyTeam.element = env.rpg.querySelector('#enemy-team')
+        env.rpg.allyTeam.element = env.rpg.querySelector('#ally-team')
     }
 
     refresh() { // what's the point of refreshing?
@@ -230,8 +251,61 @@ class CombatScene extends HTMLElement {
         // so it doesn't doze off? wtf
         // i almost wish this didn't work cause it'd be easier to go like 'oh well, that's just how it runs'
         if(!isFirefoxOnWindows()) return;
+        //console.trace()
         env.rpg.classList.add("refresh-anim")
         setTimeout(()=>env.rpg.classList.remove("refresh-anim"), 10)
+    }
+
+    //welcome to antivariables. this is me hating on CSS variables after my loving relationship with them for 4 years
+    //turns out they're performance hell if you use them like i have been
+    //basically, instead of relying on CSS to cascade down with some really frequently changing stuff,
+    //i'm now having it directly set the transforms. specifically useful when there's a LOT of things listening to these
+    // ONLY USING THIS FOR OFTEN-CHANGING STUFF PRESENTLY
+    setGridProperty(property, value) {
+        this.specialProps[property] = value
+        this.updatePropertyListeners({changedProp: property})
+    }
+
+    //takes a prop (i.e. --playercontrol-rotation) and directly updates the intendedtransform
+    updatePropertyListeners({changedProp, specificEl, forceTransformVariable, forceDirectAttribute}) {
+        let listeners = specificEl || this.querySelectorAll(`[listeningfor*="${changedProp}"]`)
+        if(specificEl) listeners = [listeners]
+        
+        //listeners can either ask for the variable to be set (used in pseudoelements), or to have the transform directly set
+        listeners.forEach(el => {
+            try { 
+                let attributeList = el.getAttribute("listeningfor")
+                let transformVariable = el.getAttribute("transformvariable") || forceTransformVariable
+
+                if(!attributeList) return;
+
+                if(el.getAttribute("directattribute") || forceDirectAttribute) {
+                    for(const [prop, value] of Object.entries(this.specialProps)) {
+                        if(attributeList.includes(prop) && prop.includes("--")) el.style.setProperty(prop, value)
+                    }
+                }
+                
+                if((!forceDirectAttribute || forceDirectAttribute == "both") && !el.hasAttribute("directattribute")) {
+                    let transform = el.getAttribute('intendedtransform')
+
+                    for(const [prop, value] of Object.entries(this.specialProps)) {
+                        if(prop.includes("--")) transform = transform.replaceAll(`var(${prop})`, value)
+                    }
+                    
+                    if(transformVariable) {
+                        el.style.setProperty(transformVariable, transform)
+                        //console.log(`final transform variable on ${el.id} is`, transformVariable, "which was set to", el.style.getPropertyValue(transformVariable))
+                    } else {
+                        el.style.transform = transform
+                        //console.log(`final transform on ${el.id} is`, transform, "which was set to", el.style.transform)
+                    }
+                }
+            } catch(e) { 
+                console.log(changedProp, el, e)
+                printError(e)
+                printError(`problem updating property listeners for ${changedProp} on element ${el.toString()}`)
+            }
+        })
     }
 
     /************************************
@@ -270,7 +344,7 @@ class CombatScene extends HTMLElement {
 
         //account for actor distances in target pools - initially unsorted
         //console.log("enemy_actordist", performance.now())
-        let actorDistances = enemy.piece.getActorDistance({includeSelf: true})
+        let actorDistances = enemy.piece.getActorDistance({includeSelf: true, avoidHazardTiles: enemy?.immunities?.scene_edge ? true : false}) // technically there are other sorts of hazard tiles but let's keep it simple
         //console.log("enemy_actordist", performance.now())
         /*
             actorDistances becomes an array i.e.
@@ -299,9 +373,8 @@ class CombatScene extends HTMLElement {
         const eligible = (action, actor) => {
             //check a special eligibility thingy before anything else
             let good = true
-            if(action.specialEligibility) {
-                good = action.specialEligibility({user: enemy, target: actor});
-            }
+
+            if(action.targetFilter) good = action.targetFilter(enemy, actor) 
             if(!good) return false;
 
             let type = action.type
@@ -310,9 +383,9 @@ class CombatScene extends HTMLElement {
             } else if (type.includes('support') && type.includes('rez')) {
                 return actor.team.name === 'enemy' && actor.state === 'dead'
             } else if (type.includes('support') && !type.includes('self')) {
-                return actor.team.name === 'enemy' && actor.state !== 'dead'
-            } else if (type.includes('support')) {
                 return actor.team.name === 'enemy' && actor.state !== 'dead' && actor.slug != enemy.slug
+            } else if (type.includes('support')) {
+                return actor.team.name === 'enemy' && actor.state !== 'dead'
             } else if (type.includes('rez')) {
                 return actor.team.name === 'enemy' && actor.state === 'dead'
             } else if (type.includes('target')) {
@@ -394,42 +467,68 @@ class CombatScene extends HTMLElement {
                             but since this is after the check for dist.endDistance <= range, there should always be at least one tile in the slice
                         */
 
-                        if (eligible(action, dist.actor)) {
+                        if(eligible(action, dist.actor)) {
                             let inRangeTiles = dist.path.slice(dist.path.length - range)
+                            let safeTiles = inRangeTiles.filter(tile => !tile.hazardous)
                             let selectedTile
 
                             //console.log("current in range tiles", inRangeTiles)
 
-                            if(action.ignoresLOS) {
-                                selectedTile = inRangeTiles[0]
-                            } else {
-                                selectedTile = inRangeTiles.find(tile => tile.hasSightLineTo(dist.actor.piece.tile))
-                            }
+                            // proceed if there are safe tiles available
+                            if(safeTiles.length > 0) {
+                                if(action.ignoresLOS) {
+                                    selectedTile = safeTiles[0]
+                                } else {
+                                    selectedTile = safeTiles.find(tile => tile.hasSightLineTo(dist.actor.piece.tile))
+                                }
 
-                            //console.log(enemy.slug, dist, inRangeTiles, selectedTile)
-                            if(selectedTile) return addAction('moveact', dist.actor, action, selectedTile, dist)
+                                //console.log(enemy.slug, dist, inRangeTiles, selectedTile)
+                                if(selectedTile) return addAction('moveact', dist.actor, action, selectedTile, dist)
+                            }
                         }
                     }
 
                     // can't use this turn even with movement, so just find a way to get closer (even if invalid)
-                    if (eligible(action, dist.actor)) return addAction('oor', dist.actor, action, dist.path[move] || dist.path[dist.path.length - 1], dist)
+                    if(eligible(action, dist.actor)) {
+                        // furthest tile the enemy can reach
+                        let moveIndex = Math.min(move, dist.path.length - 1)
+                        let targetTile = dist.path[moveIndex]
+                        
+                        // default target is hazardous, find the furthest safe tile we can reach
+                        // kinda sloppy but most stage arrangements should make this ok
+                        if(targetTile.hazardous) {
+                            for (let i = moveIndex; i >= 0; i--) {
+                                if(!dist.path[i].hazardous) {
+                                    targetTile = dist.path[i]
+                                    break
+                                }
+                            }
+                        }
+                        
+                        return addAction('oor', dist.actor, action, targetTile, dist)
+                    }
                 }
             })
         })
         //console.log("enemy_actioncheck", performance.now())
-        //console.log("enemy selections are", actionMap)
+        console.log("enemy selections are", actionMap)
 
         //so we can avoid cases where enemies dance between targets in outOfRangeMove and flounder around obstacles
         //if they focus on one target until a better one comes along, that'd work better
-        let actorActionSelection = {actor: enemy, action: env.ACTIONS["nothing"]}
+        let actorActionSelection
         let pool
         if(actionMap.inRange.length && actionMap.inRangeIfMove.length) pool = actionMap.inRange.concat(actionMap.inRangeIfMove)
         else if(actionMap.inRange.length) pool = actionMap.inRange
         else if(actionMap.inRangeIfMove.length) pool = actionMap.inRangeIfMove
-        else if(actionMap.outOfRange.length) pool = actionMap.outOfRange
+        else if(actionMap.outOfRange.every(act=>act.tile == enemy.piece.tile) && enemy.lastResortActions) { // if they're boxed in and have a last resort action (MUST BE SELF/SPECIAL), use it
+            pool = enemy.lastResortActions.map(actionName => {
+                let action = env.ACTIONS[actionName]
+                return {actor: enemy, action, type: "act", tile: enemy.piece.tile}
+            })
+        } else if(actionMap.outOfRange.length) pool = actionMap.outOfRange
         else {
-            // will this ever happen?
-            throw 'hello this shouldnt happen probably but there are no valid actions in the action map'
+            console.warn("no valid actions in actor's action map. maybe a problem if there's no targetFilters involved")
+            pool = [{actor: enemy, action: env.ACTIONS["nothing"], type: "act", tile: null}]
         }
 
         actorActionSelection = pool.sample()
@@ -447,7 +546,6 @@ class CombatScene extends HTMLElement {
         //variance is an integer indicating i.e. "can be selected tile, OR variance-sized square around selected tile"
         //this can cheat range, but it's fine
         if(action?.aoe?.variance) {
-            console.log("!!!! VARIANCE")
             let variance = this.grid.markTiles({
                 originTile: selectedTile,
                 shape: "square",
@@ -455,17 +553,18 @@ class CombatScene extends HTMLElement {
                 includesOrigin: true
             })
 
-            console.log("variance is", variance)
-            selectedTile = variance.sample()
-            console.log("final is,", selectedTile)            
+            selectedTile = variance.sample()         
         }
 
-        this.targetingFor = {actor: enemy, action, selectedTile}
+        this.targetingFor = {actor: enemy, action, selectedTile, target: actorActionSelection.actor}
+
         // focus on actor only if it'd meaningfully affect the camera
+        let cameraDelay = 0
         if(
             enemy.piece.getDistance(env.rpg.lastActor) > 4
         ) {
             enemy.piece.focusOnTile()
+            cameraDelay = 500
         }
 
         let actionCallback = () => {
@@ -528,7 +627,7 @@ class CombatScene extends HTMLElement {
                 // Show the targeting range of the selected action
                 if(action.targeting != "special") setTimeout(() => {
                     enemy.piece.startTargeting(action)
-                }, executionTime * innerSteps++)
+                }, (executionTime * innerSteps++) + cameraDelay)
         
                 // Highlight the selected target's tile
                 setTimeout(() => {
@@ -559,7 +658,7 @@ class CombatScene extends HTMLElement {
 
                         env.rpg.uncleanedClasses = ["aoe-preview", "aoe-preview-beneficial"]
                     }
-                }, executionTime * innerSteps++)
+                }, (executionTime * innerSteps++) + cameraDelay)
             }
 
             //hide the selection and attack!
@@ -576,7 +675,7 @@ class CombatScene extends HTMLElement {
                 selectedTile.classList.remove('enemy-targeted')
                 if(enemy.piece) enemy.piece.endTargeting()
                 actionCallback()
-            }, executionTime * innerSteps++)
+            }, (executionTime * innerSteps++) + cameraDelay)
         }
 
         // we first display movement plans if the enemy has any
@@ -584,13 +683,12 @@ class CombatScene extends HTMLElement {
             // If the enemy is moving, display the enemy's movement
             setTimeout(() => {
                 enemy.piece.startMovement()
-            }, executionTime * steps++)
+            }, (executionTime * steps++) + cameraDelay)
 
             // Show selected tile the enemy is moving to
             setTimeout(() => {
                 actorActionSelection.tile.classList.add('enemy-moving-to')
-            }, executionTime * steps++)
-
+            }, (executionTime * steps++) + cameraDelay)
 
             // Trigger the enemy moving to that tile
             setTimeout(() => {
@@ -613,7 +711,7 @@ class CombatScene extends HTMLElement {
                     console.warn(e, "enemy died during turn movement")
                     advanceTurn(enemy)
                 }
-            }, executionTime * steps++)
+            }, (executionTime * steps++) + cameraDelay)
         } else if(actorActionSelection.type == 'act') {
             enemy.lastUsed = false
             actionAnimationCallback()
@@ -630,7 +728,7 @@ class CombatScene extends HTMLElement {
             case "prehalt": // done before checking if the advance should be stopped, useful for telegraphed actions
                 if( // we only go in here if a turn was halted, AND last actor != this actor. (in case of multi-turns)
                     (this.grid.tileEffects.length && !env.rpg.haltedAttempt) &&
-                    (env.rpg.currentActor != env.rpg.lastActor)
+                    (env.rpg.currentActor != upcomingActor)
                 ) {
                     //console.log("effectAdvance", performance.now())
                     this.grid.advanceTileEffects({prevActor: env.rpg.currentActor, actor: upcomingActor})
@@ -640,6 +738,10 @@ class CombatScene extends HTMLElement {
                     if(env.rpg.telegraphQueue.length) {
                         env.rpg.halt = "telegraph"
                     }
+                }
+
+                if(!env.rpg.halt && env.rpg.actorsToRemovePiecesOf.size) {
+                    env.rpg.halt = "deadPieces"
                 }
                 
                 // end movement phase for current actor if necessary
@@ -658,10 +760,49 @@ class CombatScene extends HTMLElement {
                 //console.log("clearing targetingFor")
                 delete this.targetingFor
 
-                if(env.rpg.currentActor != env.rpg.lastActor) {
+                if((env.rpg.currentActor != env.rpg.lastActor) && env.rpg.currentActor.box) {
                     env.rpg.currentActor.box.classList.remove("current-turn")
                     env.rpg.currentActor.box.classList.add("compactor")
                 }
+
+                //run any turn-ending related events
+                //console.log("starttileeffectcheck", performance.now())
+                if(this.currentActor?.piece?.tile?.effects?.length) this.currentActor.piece.tile.effects.forEach(effect => {
+                    if(
+                        effect.host?.events?.onActorAffected && 
+                        !env?.rpg?.turnData?.calledTileEffects && 
+                        (effect.tickEvenIfOriginDead || this.currentActor?.state != "dead") 
+                    ) {
+                        effect.host.events.onActorAffected({actor: this.currentActor, reason: "turnend"})
+
+                        // if the effect is affectNearbyOnTurnEnd we also want to trigger it for anyone in the tile effect generally
+                        if(effect.host.affectNearbyOnTurnEnd && effect.host?.anchorActor == this.currentActor) {
+                            effect.host.tiles.filter(t => t.piece && (t.piece.actor != this.currentActor)).forEach(t => {
+                                effect.host.events.onActorAffected({actor: t.piece.actor, reason: "turnend-nearby"})
+                            })
+                        }
+                    }
+                })
+
+                //separately from onActorAffected, an 'onAnyTurnEnd' (whereas the above is for the current actor mainly)
+                env.rpg.turnOrder.forEach(actor=>{
+                    if(actor?.piece?.tile?.effects?.length && actor.state != "dead") {
+                        actor.piece.tile.effects.forEach(effect=>{
+                            if(effect?.host?.events?.onAnyTurnEnd) effect.host.events.onAnyTurnEnd({actor})
+                        })
+                    }
+                })
+
+                //console.log("endtileeffectcheck", performance.now())
+
+                if(this.currentActor.state != "dead" && !env?.rpg?.turnData?.calledTileEffects) {
+                    this.grid.advanceTileEffects({actor: this.currentActor, tickType: "onTurnEnd"})
+                }
+
+                env.rpg.turnData.calledTileEffects = true
+                env.rpg.forceStopMovement = false // fallback
+                
+                //console.log("done before", performance.now())
             break
 
             case "halted": // on a successfully halted turn, we can look at the reason and execute telegraphs if needed
@@ -672,27 +813,19 @@ class CombatScene extends HTMLElement {
                         this.grid.runTelegraphsInQueue()
                     } catch(e) { printError(e) }
                 }
+
+                if(env.rpg.actorsToRemovePiecesOf.size) {
+                    this.removePendingPieces()
+                }
             break
 
             case "before": // can be treated like the end of the previous actor's turn - currentActor still refers to the previous person
-
-                //run any turn-ending related events
-                //console.log("starttileeffectcheck", performance.now())
-                if(this.currentActor?.piece?.tile?.effects?.length) this.currentActor.piece.tile.effects.forEach(effect => {
-                    if(effect.host?.events?.onActorAffected) effect.host.events.onActorAffected({actor: this.currentActor, reason: "endturn"})
-                })
-                //console.log("endtileeffectcheck", performance.now())
-
-                if(this.currentActor.state != "dead") {
-                    this.grid.advanceTileEffects({actor: this.currentActor, tickType: "onTurnEnd"})
-                }
-                
-                //console.log("done before", performance.now())
+                if(upcomingActor?.team?.name == "ally") this.toggleTemporarySpeedup({state: false})
             break
 
             case "after": // this is after all values have been changed and attacks/moves are in motion - NOT the end of their turn.
                 //console.log("advancemod after", performance.now())
-                if(this.currentActor.state != "dead") {
+                if(this.currentActor.state != "dead" && this.currentActor.box) {
                     env.rpg.currentActor.box.classList.add("current-turn")
                     env.rpg.currentActor.piece.classList.add("acting")
                     env.rpg.currentActor.box.classList.remove("compactor")
@@ -708,10 +841,76 @@ class CombatScene extends HTMLElement {
                     if(this.currentActor.piece.tile && this.currentActor.team.name == "ally") this.grid.focusOnTile(this.currentActor.piece.tile)
                     //console.log("focus", performance.now())
                 }
-                    
-                //console.log("done after", performance.now())
+
+                //lockup prevention
+                if(env.rpg.state == "animating") setTimeout(()=>{
+                    if(env.rpg.state == "animating") env.rpg.state = "normal"
+                }, 500)
             break
         }
+    }
+
+    toggleTemporarySpeedup({speed, state}) {
+        if(env.currentDialogue?.active || env.rpg.halt) return;
+
+        let actualState = (state !== undefined) ? state : !env.tempAdvanceRateStorage
+        console.log("actualState for toggleTemporarySpeedup is", actualState)
+
+        if(actualState && !env.tempAdvanceRateStorage) {
+            if(env.rpg.currentActor.team.name == "enemy") {
+                env.tempAdvanceRateStorage = env.ADVANCE_RATE
+                env.ADVANCE_RATE = speed
+                console.log("advance rate set to", speed, "for enemy turn")
+                this.classList.add("spedup")
+                play("talkrot1", 3)
+                chatter({actor: 'plainsys', text: `processing speed increased`, readout: true})
+            } else {
+                console.log("current actor isn't team enemy so not doing")
+            }
+        } else if(env.tempAdvanceRateStorage) {
+            env.ADVANCE_RATE = env.tempAdvanceRateStorage
+            delete env.tempAdvanceRateStorage
+            this.classList.remove("spedup")
+            console.log("advance rate reset to normal", env.ADVANCE_RATE)
+            chatter({actor: 'plainsys', text: `processing speed normalized`, readout: true})
+        }
+    }
+
+    removePendingPieces(asyncCall = false) {
+        env.rpg.actorsToRemovePiecesOf.forEach(actor=> this.removePendingPiece(actor, asyncCall))
+        env.rpg.actorsToRemovePiecesOf.forEach(actor=> env.rpg.actorsToRemovePiecesOf.delete(actor))
+        
+        if(env.rpg.halt == "deadPieces" && !asyncCall) setTimeout(() => {
+            env.rpg.halt = false
+            advanceTurn(env.rpg.currentActor)
+        }, 500)
+    }
+
+    removePendingPiece(actor) {
+        let removed = false
+        if(actor.piece) {
+            actor.deadPiece = actor.piece // we separate because many things use .piece as a reference for if an actor has a grid presence
+            if(actor.piece.tile) {
+                actor.lastLivingTile = actor.piece.tile
+                actor.piece.tile.piece = null
+            }
+            actor.piece.tile = null
+            actor.piece = null
+
+            env.rpg.updatePropertyListeners({specificEl: actor.deadPiece.stand, forceDirectAttribute: true})
+            actor.deadPiece.style.setProperty("--rotsnap", env.rpg.specialProps["--playercontrol-rotation"])
+            actor.deadPiece.style.setProperty("--dieangle", `${rand(-30, 30)}deg`)
+            actor.deadPiece.classList.add('deadpiece')
+
+            setTimeout(() => {
+                triggerStatusEvents({target: actor, eventName: "onPieceRemove"})
+            }, 500)
+
+            removed = true
+        }
+
+        env.rpg.actorsToRemovePiecesOf.delete(actor)
+        return removed
     }
 
     //todo - targeting doesn't account for special conditions (i.e. dead only) yet
@@ -743,6 +942,7 @@ class CombatScene extends HTMLElement {
             clearActionsDisplay()
             showActions(actor)
 
+            env.rpg.toggleStatPlates(false)
             delete env.rpg.nevermind
         }
         env.rpg.querySelector('.target-nevermind').addEventListener('mousedown', env.rpg.nevermind)
@@ -775,18 +975,35 @@ class CombatScene extends HTMLElement {
     /************************************
     *************************************
              STATE MANAGEMENT
-    *************************************
+    ************************************* 
     ************************************/
     //used for styling, limiting, click events, etc.
     set state(newState) {
         //console.log("newState", newState, newState == false, newState == "false")
         if(newState == false || newState == "false") {
+            this._state = "normal"
             this.setAttribute('state', 'normal')
-        } else this.setAttribute('state', newState)
+        } else {
+            this._state = newState
+            this.setAttribute('state', newState)
+        }
+
+        // emergency fallback. if we're animating after 15 seconds from the last animation,
+        // something's busted. this might fix it
+        if(newState == "animating" && !env.rpg.specialAnimation) {
+            clearTimeout(this._stateTimeout)
+            this._stateTimeout = setTimeout(() => {
+                if(this._state == "animating") {
+                    this._state = "normal"
+                    this.setAttribute('state', 'normal')
+                    console.warn(`ANIMATION TIMEOUT WAS TRIGGERED!!! last animation called: ${env.rpg.lastActionAnimation}`)
+                }
+            }, 15000)
+        }
     }
 
     get state() {
-        return this.getAttribute('state')
+        return this._state
     }
 
     // we also want to store and set some extra stuff in this version of the system
@@ -816,13 +1033,13 @@ class CombatScene extends HTMLElement {
     *************************************
     ************************************/
     playerCamControl(direction) {
-        const rotationRaw = parseFloat(this.grid.style.getPropertyValue("--playercontrol-rotation-raw"))
-        const tiltRaw = parseFloat(this.grid.style.getPropertyValue("--playercontrol-tilt-raw"))
+        const rotationRaw = parseFloat(this.specialProps["--playercontrol-rotation"].replace('deg', '')) || 0
+        const tiltRaw = (parseFloat(this.specialProps["--playercontrol-tilt"].replace('deg', '')) * -1) || 0
 
-        if ((direction === "w" || direction === "arrowup") && tiltRaw <= 75) this.grid.style.setProperty("--playercontrol-tilt-raw", tiltRaw + 15) 
-        else if ((direction === "s" || direction === "arrowdown") && tiltRaw >= 30) this.grid.style.setProperty("--playercontrol-tilt-raw", tiltRaw - 15)  
-        else if ((direction === "a" || direction === "arrowleft")) this.grid.style.setProperty("--playercontrol-rotation-raw", rotationRaw - 45)
-        else if ((direction === "d" || direction === "arrowright")) this.grid.style.setProperty("--playercontrol-rotation-raw", rotationRaw + 45)
+        if ((direction === "w" || direction === "arrowup") && tiltRaw <= 75) this.setGridProperty("--playercontrol-tilt", `${(tiltRaw + 15) * -1}deg`) 
+        else if ((direction === "s" || direction === "arrowdown") && tiltRaw >= 30) this.setGridProperty("--playercontrol-tilt", `${(tiltRaw - 15) * -1}deg`)  
+        else if ((direction === "a" || direction === "arrowleft")) this.setGridProperty("--playercontrol-rotation", `${rotationRaw - 45}deg`)
+        else if ((direction === "d" || direction === "arrowright")) this.setGridProperty("--playercontrol-rotation", `${rotationRaw + 45}deg`)
     
         let hoveringActor = env?.hovering?.classList ? env.hovering.classList.contains("actor") || env.hovering.closest(".actor") : false
         if(env.rpg.highlightedActors.size && this.state != "targeting" && !hoveringActor) {
@@ -855,17 +1072,19 @@ class CombatScene extends HTMLElement {
         detailMode = false,
         hideAllies = false
     } = {}) {
+        if(env.rpg.cameraLock) return;
+
         let setSomething = false
     
-        if(x !== false) {this.grid.style.setProperty("--camera-x", x); setSomething = true} else this.grid.style.removeProperty("--camera-x");
-        if(y !== false) {this.grid.style.setProperty("--camera-y", y); setSomething = true} else this.grid.style.removeProperty("--camera-y");
+        if(x !== false) {this.setGridProperty("--camera-x", x); setSomething = true};
+        if(y !== false) {this.setGridProperty("--camera-y", y); setSomething = true};
         if(height !== false) {this.grid.style.setProperty("--camera-height", height); setSomething = true} else this.grid.style.removeProperty("--camera-height");
         if(distance !== false) {this.grid.style.setProperty("--camera-distance", distance); setSomething = true} else this.grid.style.removeProperty("--camera-distance");
         if(offsetCamera !== false) {this.grid.style.setProperty("--camera-offset", offsetCamera); setSomething = true} else this.grid.style.removeProperty("--camera-offset");
         
-        if(playerRotation !== false) {this.grid.style.setProperty("--playercontrol-rotation", `${playerRotation}deg`); setSomething = true} else this.grid.style.removeProperty("--playercontrol-rotation");
-        if(playerTilt !== false) {this.grid.style.setProperty("--playercontrol-tilt", `${playerTilt}deg`); setSomething = true} else this.grid.style.removeProperty("--playercontrol-tilt");
-        
+        if(playerRotation !== false) {this.specialProps.oldRotation = this.specialProps["--playercontrol-rotation"]; this.setGridProperty("--playercontrol-rotation", `${playerRotation}deg`); this.grid.style.setProperty("--playercontrol-rotation", `${playerRotation}deg`); setSomething = true} else if(this.specialProps.oldRotation !== undefined) {this.setGridProperty("--playercontrol-rotation", this.specialProps.oldRotation); delete this.specialProps.oldRotation; this.grid.style.removeProperty("--playercontrol-rotation")};
+        if(playerTilt !== false) {this.specialProps.oldTilt = this.specialProps["--playercontrol-tilt"]; this.setGridProperty("--playercontrol-tilt", `${playerTilt}deg`); this.grid.style.setProperty("--playercontrol-tilt", `${playerTilt}deg`); setSomething = true} else if(this.specialProps.oldTilt !== undefined) {this.setGridProperty("--playercontrol-tilt", this.specialProps.oldTilt); delete this.specialProps.oldTilt; this.grid.style.removeProperty("--playercontrol-tilt")};
+
         if(perspective !== false) {this.grid.style.setProperty("--perspective", perspective); this.grid.classList.add('perspective'); setSomething = true} else {this.grid.style.removeProperty("--perspective"); this.grid.classList.remove('perspective')}
         if(gridTileSize !== false) {this.grid.style.setProperty("--gridTileSize", `${gridTileSize}px`); setSomething = true} else this.grid.style.removeProperty("--gridTileSize");
         if(detailMode !== false) {
@@ -886,6 +1105,15 @@ class CombatScene extends HTMLElement {
         } else {
             this.grid.customCam = false
         }
+    }
+
+    //toggles the display of actor statPlates
+    toggleStatPlates(state) {
+        this.actorList.forEach(actor=>{
+            if(actor?.piece) {
+                actor.piece.toggleStatPlate(state)
+            }
+        })
     }
 
     /************************************
@@ -1075,10 +1303,18 @@ class CombatGrid extends HTMLElement {
 
     renderGrid() {
         this.innerHTML = `
-            <div id='combat-rotator' class='grid-container'>
+            <div id='combat-rotator' class='grid-container' listeningfor="--playercontrol-tilt--playercontrol-rotation" intendedtransform="
+        rotateX(90deg) 
+        translateY(calc(var(--perspective) - (var(--gridTileSize) * var(--camera-distance))))
+        translateZ(calc(var(--camera-height) * -1 * var(--gridTileSize)))
+        rotateX(var(--playercontrol-tilt))
+        rotateZ(var(--playercontrol-rotation))
+        var(--camera-offset)">
                 <div id='combat-extra'>
                     <div id='combat-animator' class='grid-animator'>
-                        <div id='combat-realgrid' class='realgrid'></div>
+                        <div id='combat-realgrid' class='realgrid' listeningfor="--camera-x--camera-y" intendedtransform="translateY(calc(var(--camera-y) * var(--gridTileSize) * -1)) 
+        translateX(calc(var(--camera-x) * var(--gridTileSize) * -1))    
+        var(--personal-offset)"></div>
                     </div>
                 </div>
             </div>`
@@ -1117,27 +1353,40 @@ class CombatGrid extends HTMLElement {
     }
 
     focusOnTile(tile) {
-        if(!tile) return;
-        this.style.setProperty('--stage-steps-x', tile.x)
-        this.style.setProperty('--stage-steps-y', tile.y)
+        if(!tile || env.rpg.cameraLock) return;
+        env.rpg.setGridProperty('--camera-x', tile.x) 
+        env.rpg.setGridProperty('--camera-y', tile.y)
         if(env.rpg.highlightedActors.size) clearActorHighlights()
     }
 
     // places an actor piece back on the board
-    replaceActorPiece({target, location, specificTile}) {
-        if(target?.piece?.tile) return; // they're already on the board
+    // animation is any actorAnim)
+    // ING TODO - remove default animation
+    replaceActorPiece({target, location, specificTile, anim = "fallin", animDuration = 500}) {
         if(target.deadPiece) {
             target.deadPiece.remove()
             delete target.deadPiece
+
+        } else if(target.piece) { // if their pre-deadpiece is still on the board somehow
+            env.rpg.actorsToRemovePiecesOf.delete(target)
+            target.piece.remove()
+
+            if(target.piece.tile) target.piece.tile.piece = null
+            target.piece.tile = null
+            target.piece = null
         }
 
-        console.log("got target", target, location)
+        console.log("replaceactorpiece got", target, location, specificTile)
         let newTile
         switch(location) {
             case "currentActor": // finds the closest touching tile to the current actor and places the piece there
                 try {
                     if(env.rpg.currentActor?.piece?.tile) newTile = env.rpg?.currentActor?.piece?.tile.getClosestOpenTile();
-                    else newTile = target.team.members.find(m=>m.state == "living").piece.tile.getClosestOpenTile()
+                    else {
+                        let targetTile = target.team.members.find(m=>m.state == "living")?.piece?.tile
+                        if(!targetTile) targetTile = target.team.members[0]?._piece?.tile || target.team.members[0]?.deadpiece?.tile || target.lastLivingTile
+                        if(targetTile) newTile = targetTile.getClosestOpenTile()
+                    }
                 } catch(e) {printError(e)}
 
             case "specificTile":
@@ -1145,7 +1394,7 @@ class CombatGrid extends HTMLElement {
             
 
             default: // this means the location isn't a special case and we should target by tile class
-                if(location && location != "currentActor" && !newTile) {
+                if(location && location != "currentActor" && location != "specificTile" && !newTile) {
                     newTile = this.tilesByType[location].filter(tile=>!tile.piece).sample()
                     if(newTile) break
                     console.log("no valid tile found in", this.tilesByType[location])
@@ -1154,7 +1403,6 @@ class CombatGrid extends HTMLElement {
                 //if there's no location specified, or no valid spawn points, then we continue to regular spawn behavior
 
             case "spawn": // finds any valid spawn position, preferring team/slug names like regular spawns
-                
                 if(!newTile && this.spawnPoints[target?.base?.slug]) { newTile = this.spawnPoints[target?.base?.slug].filter(tile => !tile.piece).sample() }
                 if(!newTile && this.spawnPoints[target?.team?.name]) { newTile = this.spawnPoints[target?.team?.name].filter(tile => !tile.piece).sample() }
                 if(!newTile) { newTile = this.spawnPoints.lastresort.filter(tile => !tile.piece).sample() }
@@ -1163,6 +1411,23 @@ class CombatGrid extends HTMLElement {
         }
 
         if(newTile) newTile.createActor(target); else printError(`couldn't rez ${target.slug} due to no valid tiles given location req (${location})`, true)
+
+        if(anim && target.piece) {
+            env.rpg.updatePropertyListeners({specificEl: target.piece.stand, forceDirectAttribute: "both"})
+            env.rpg.updatePropertyListeners({specificEl: target.sprite, forceDirectAttribute: "both"})
+            env.rpg.updatePropertyListeners({specificEl: target.sprite.hitBox, forceDirectAttribute: "both"})
+            
+            target.piece.classList.add(`actoranim-${anim}`)
+            setTimeout(()=>{
+                target.piece.classList.remove(`actoranim-${anim}`)
+            }, animDuration + 50)
+        }
+
+        else if(target.piece) setTimeout(() => {
+            env.rpg.updatePropertyListeners({specificEl: target.piece.stand})
+            env.rpg.updatePropertyListeners({specificEl: target.sprite})
+            env.rpg.updatePropertyListeners({specificEl: target.sprite.hitBox})
+        }, 50)
     }
 
     clearMovableTiles() {
@@ -1191,12 +1456,14 @@ class CombatGrid extends HTMLElement {
         // optional
         includesOrigin = false, // if origin should be included in the marking
         addClass, // class to add to valid tiles
+        pathMarkTo, // a tile that we'll get the path to, and then markTiles the passed specs to every tile on the way
 
         // optional checks for common requirements
         ignoresObstacles = false, // if 'blocks' doesn't matter, set to true
         ignoresActors = true, // set to false to fail potential tiles if they have actors
         requiresPath = false, // to check if origin has a valid path to each potential tile
         ignoresLOS = false, //typically we DO care about LOS so this is false by default
+        markingForActionTarget = false, // if this is true, we don't care that some tiles are "soft" blocks - they should be targetable for requiresPath
         
         // optional functions
         onTileCheck, // additional check function on a tile's validity. return end validity in case of alteration
@@ -1206,11 +1473,43 @@ class CombatGrid extends HTMLElement {
         // return modifications
         // pleaseReturn can take... "valid" for valid tiles, or "actors" for actors on valid tiles
         pleaseReturn = "valid", 
+        sortByOriginDistance = true,
 
         // passthrough data - give an object here and you can do stuff with it in checks
         data
     }) {
         if(!originTile) return [];
+
+        // pathMarkTo lets us draw sillay shapelines
+        // probably should only do this with circles and squares cause I have no idea what will happen with others
+        if(pathMarkTo) {
+            const path = originTile.pathfindTo(pathMarkTo, {ignoresActors, ignoresObstacles})
+            if(!path) return []
+
+            const allValidTiles = new Set()
+            for(const pathTile of path) {
+                const results = this.markTiles({ 
+                    // kill me
+                    originTile: pathTile, shape, customShape, size, direction,
+                    includesOrigin, addClass, ignoresObstacles, ignoresActors,
+                    requiresPath, ignoresLOS, markingForActionTarget,
+                    onTileCheck, onEachValidTile, onEachValidTileActor,
+                    pleaseReturn, sortByOriginDistance: false, data
+                })
+                for(const result of results) allValidTiles.add(result)
+            }
+
+            let returnValue = [...allValidTiles]
+            if(sortByOriginDistance) {
+                returnValue.sort((a, b) => {
+                    const aTile = a.piece ? a.piece.tile : a
+                    const bTile = b.piece ? b.piece.tile : b
+                    return aTile.distFrom(originTile) - bTile.distFrom(originTile)
+                })
+            }
+
+            return returnValue
+        }
 
         const validTiles = []
         if(includesOrigin) validTiles.push(originTile)
@@ -1244,12 +1543,15 @@ class CombatGrid extends HTMLElement {
                         for (const neighbor of neighbors) {
                             if(
                                 visited.has(neighbor) ||
-                                (!ignoresObstacles && neighbor.blocking === true) || 
+                                (!ignoresObstacles && (
+                                    neighbor.blocking === true ||
+                                    (neighbor.blocking === "soft" && !markingForActionTarget)
+                                )) ||
                                 (!ignoresActors && neighbor.piece)
                             ) continue
 
-                            const path = originTile.pathfindTo(neighbor)
-                            if (path && baseTiles.includes(neighbor)) {
+                            const path = originTile.pathfindTo(neighbor, {ignoresActors, ignoresObstacles, pathfindingForTargeting: markingForActionTarget})
+                            if(path && baseTiles.includes(neighbor)) {
                                 const pathDistance = path.length - 1
                                 if (pathDistance <= size) {
                                     push(neighbor)
@@ -1280,10 +1582,18 @@ class CombatGrid extends HTMLElement {
             if(tile?.piece?.actor && onEachValidTileActor) onEachValidTileActor({tile, actor: tile.piece.actor, data})
         })
 
-        switch(pleaseReturn) {
-            case "actors": return validTiles.map(tile => tile.piece?.actor).filter(actor => actor !== undefined)
-            default: return validTiles
+        let returnValue = pleaseReturn == "actors" ? validTiles.map(tile => tile.piece?.actor).filter(actor => actor !== undefined) : validTiles
+        if(sortByOriginDistance) {
+            returnValue.sort((a, b) => {
+                const aTile = a.piece ? a.piece.tile : a
+                const bTile = b.piece ? b.piece.tile : b
+                const aDistance = aTile.distFrom(originTile)
+                const bDistance = bTile.distFrom(originTile)
+                return aDistance - bDistance
+            })
         }
+        
+        return returnValue
     }
 
     //returns either actors or tiles for an action. requires a selected tile
@@ -1330,6 +1640,7 @@ class CombatGrid extends HTMLElement {
                 case "actors": newValidity = tile.piece; break
                 case "allies": newValidity = tile.piece && tile?.piece?.actor?.team?.name == actor?.team.name; break
                 case "foes": newValidity = tile.piece && tile?.piece?.actor?.team?.name == actor?.enemyTeam.name; break
+                case "nonallies": newValidity = tile.piece && tile?.piece?.actor?.team?.name != actor?.team.name; break
             }
             
             if(onTileCheck) {
@@ -1345,7 +1656,7 @@ class CombatGrid extends HTMLElement {
             shape: aoe.shape,
             size: aoe.size,
             onTileCheck: tileCheck,
-            pleaseReturn: (actingOn == "allies" || actingOn == "foes") ? "actors" : actingOn,
+            pleaseReturn: (actingOn == "allies" || actingOn == "foes" || actingOn == "nonallies") ? "actors" : actingOn,
 
             //AOE optionals
             //we make some assumptions about what's wanted if not specified 
@@ -1365,7 +1676,17 @@ class CombatGrid extends HTMLElement {
             case "cone": 
             case "custom":
                 markPassData.originTile = originTile || (aoe.distant ? tile : actor.piece.tile)
-                markPassData.direction = aoe.distant ? markPassData.originTile.getRelativeDirection(actor.piece.tile, true) : markPassData.originTile.getRelativeDirection(tile)
+
+                if(aoe.distant == "onTargetTile") {
+                    markPassData.originTile = tile.getTileByRelativity(
+                        Math.sign(actor.piece.tile.x - tile.x),
+                        Math.sign(actor.piece.tile.y - tile.y)
+                    )
+                }
+
+                //ing update - not toooo sure why i did this
+                //markPassData.direction = aoe.distant ? markPassData.originTile.getRelativeDirection(actor.piece.tile, true) : markPassData.originTile.getRelativeDirection(tile)
+                markPassData.direction = markPassData.originTile.getRelativeDirection(tile)
                 markPassData.includesOrigin = typeof aoe.includesOrigin == "undefined" ? false : aoe.includesOrigin
             break
 
@@ -1380,8 +1701,10 @@ class CombatGrid extends HTMLElement {
     // shared shortcut function used by player and enemy targeting
     // uses an action's AOE effects on a target tile (typically one that contains a target)
     // returns affected targets, or false
-    handleActionAOE({originActor, targetTile, action}) {
+    handleActionAOE({originActor, targetTile, action, actionSettings = {}}) {
         if(!action.aoe) return false;
+        env.rpg.lastUpdate = Date.now()
+        delayAdvance(200)
 
         let effectExec = () => {
             if(action.aoe?.effect) {
@@ -1392,11 +1715,11 @@ class CombatGrid extends HTMLElement {
                     pleaseReturn: "valid"
                 })
                 
-                action.aoe.effect({user: originActor, tiles: aoeTiles, selectedTile: targetTile})
+                action.aoe.effect({user: originActor, tiles: aoeTiles, selectedTile: targetTile, beingUsedAsync: actionSettings.beingUsedAsync})
             }
         }
         
-        if(action?.aoe?.effectBeforeExec) effectExec();
+        if(action?.aoe?.effectBeforeExec) effectExec()
         let potentialTargets = this.getAoETargets({
             tile: targetTile,
             actor: originActor,
@@ -1411,37 +1734,72 @@ class CombatGrid extends HTMLElement {
 
         if(potentialTargets.length || action.type.includes("ground")) {
             let strikeLogic = ()=>{
-                if(action.aoe && !action?.aoe?.effectBeforeExec) effectExec();
+                if(action.aoe && !action?.aoe?.effectBeforeExec) effectExec()
 
                 let initialAction
                 if(potentialTargets.length) potentialTargets.forEach((targetActor, i) => {
                     if(!i) {
-                        initialAction = useAction(originActor, action, potentialTargets[0], {sceneAnim: action.sceneAnim, noUseMessage: action.type.includes("telegraph")})
+                        initialAction = useAction(originActor, action, potentialTargets[0], {sceneAnim: action.sceneAnim, noUseMessage: action.type.includes("telegraph"), ... actionSettings})
                         return
                     }
 
                     setTimeout(()=>{
-                        useAction(originActor, action, targetActor, {actionMessageIndex: initialAction.i, sceneAnim: action.sceneAnim, noUseMessage: action.type.includes("telegraph")})
+                        useAction(originActor, action, targetActor, {actionMessageIndex: initialAction.i, sceneAnim: action.sceneAnim, noUseMessage: action.type.includes("telegraph"), ... actionSettings})
                     }, i * env.ADVANCE_RATE * 0.1)
-                });
+                })
 
                 //meaning this is a ground target and a self-exec
-                else if(action.type.includes("self")) useAction(originActor, action, originActor, {sceneAnim: action.sceneAnim})
+                else if(action.type.includes("self")) useAction(originActor, action, originActor, {sceneAnim: action.sceneAnim, ... actionSettings})
             }
 
             if(this.scene.uncleanedTargets) this.cleanUncleanedTargets()
 
             //we do and return an async animation if it's got one
             if(action.sceneAnim && originActor?.piece?.tile && targetTile) {
-                this.scene.state = "animating"
-                return env.COMBAT_ANIMS[action.sceneAnim].exec({strikeLogic, originXY: {x: originActor.piece.tile.x, y: originActor.piece.tile.y}, targetXY: {x: targetTile.x, y: targetTile.y}, origin: originActor, action})
+                let anim = env.COMBAT_ANIMS[action.sceneAnim]
+                if(!anim) throw `no animation definition found for ${action.sceneAnim}`
+                
+                if(!actionSettings.beingUsedAsync) {
+                    env.rpg.lastActionAnimation = action.sceneAnim
+                    this.scene.state = "animating"
+                    if(anim?.duration) { delayAdvance(anim.duration + 100) }
+                }
+
+                return anim.exec({strikeLogic, originXY: {x: originActor.piece.tile.x, y: originActor.piece.tile.y}, targetXY: {x: targetTile.x, y: targetTile.y}, origin: originActor, targetTile, potentialTargets, action, data: actionSettings})
             } else {
-                strikeLogic()
+                setTimeout(()=>strikeLogic(), 20)
                 return true
             }
         }
 
         return false
+    }
+
+    //similar to how handleActionAOE uses sceneAnims, this function lets you specify any arbitrary resolve with any arbitrary animation
+    handleAnim(sceneAnim, strikeLogic, settings = {
+        // you probably want to pass these unless it's specifically an animation that doesn't need them
+        origin,
+        targetTile, /* or */ target,
+
+        //interpreted from above if not passed
+        originXY,
+        targetXY,
+
+        //bonus data
+        potentialTargets, // list of tiles with potential targets in em
+        action,
+        tileEffect,
+        data
+    }) {
+        if(!settings.originXY) settings.originXY = settings.origin?.piece?.tile ? {x: settings.origin.piece.tile.x, y: settings.origin.piece.tile.y} : null
+        if(!settings.targetXY) settings.targetXY = settings.targetTile ? {x: settings.targetTile.x, y: settings.targetTile.y} : (settings.target?.piece?.tile ? {x: settings.target.piece.tile.x, y: settings.target.piece.tile.y} : null)
+
+        if(env.COMBAT_ANIMS[sceneAnim] && (settings.originXY || settings.targetXY)) {
+            env.rpg.lastUpdate = new Date() + env.COMBAT_ANIMS[sceneAnim].duration
+            return env.COMBAT_ANIMS[sceneAnim].exec({strikeLogic, ...settings})
+        } else {
+            throw 'insufficient stuff for animation idiot'
+        }
     }
 
     // tile effects work pretty similarly to status effects
@@ -1453,12 +1811,16 @@ class CombatGrid extends HTMLElement {
         effect: effectName, 
         length = 1, 
         origin, // who the tile effect is created by
+        makeInfinite,
 
         //telegraph only section obviously
         telegraphFor, // action slug to be used on expiration
         telegraphAnim, // string name of something defined in combat_anims. needs to be the new promise format to work
         telegraphFrom, // (optional) original caster, if not origin 
         telegraphExec, // (optional) can be used in place of telegraphFor, arbitrary code executed on affected tiles when tg goes off
+        additionalTelegraphExec, // (optional) additional function executed regardless of the telegraph type
+        telegraphTargets, // (optional) "allies" or "foes" to target the resolve solely by team.
+        noTelegraphFocus, // (optional) set true to not focus on any tile automatically while telegraphing
 
         //for tile effects that move, basically. can be 'anchored' to things in different ways
         anchorType, // can specify either "origin" (anchor to creator), "actor" (specify in anchorTo), or "tile" (anchor to changeable tile position)
@@ -1467,6 +1829,7 @@ class CombatGrid extends HTMLElement {
 
         originTile, // not strictly required but often used with specifically made actions and tile effects
         data, // general use tile-effect data accessible from within events
+        direction, // used mostly in styling for the effect FX
         specialClass, //classes added to the tileEffect's html effect
         specialHTML, //additional HTML added to the effect (doesnt overwrite existing)
 
@@ -1474,6 +1837,8 @@ class CombatGrid extends HTMLElement {
         specialName,
         specialHelp,
         specialRequiresOrigin, //overrides if an effect should be removed on origin removal
+        specialRenderEffect, //can pass 'false' to not render at all, or 'anchor' to only render on anchor tile
+        specialAlwaysHappenFirst, // in a run telegraphs call, will be sorted to the front
     }) {
         if(!CombatGrid.TILE_EFFECTS[effectName]) {
             chatter({actor: 'actual_site_error', text: `you're trying to add an effect that doesn't exist !\n(${effectName})`, readout: true})
@@ -1486,18 +1851,28 @@ class CombatGrid extends HTMLElement {
 
         effectObj.id = effectId
         effectObj.origin = origin || false 
+        effectObj.originTeam = origin?.team
         effectObj.tiles = [] // will check for valid tiles below
-        if(!anchorType) effectObj.originTile = originTile 
+        effectObj.originTile = originTile 
         if(!originTile && effectObj.tiles.length == 1) effectObj.originTile = effectObj.tiles[0]
         effectObj.telegraphFrom = telegraphFrom // this is only necessary for effects anchored to actors that they did not create. (i.e. cavik planting a bomb on someone - he's telegraphFrom, while that someone is origin for anchoring purposes)
         effectObj.telegraphFor = telegraphExec || (telegraphFor ? env.ACTIONS[telegraphFor] : false)
         effectObj.telegraphAnim = telegraphAnim ? env.COMBAT_ANIMS[telegraphAnim] : false
+        effectObj.telegraphTargets = telegraphTargets
+        effectObj.noTelegraphFocus = noTelegraphFocus
+        effectObj.additionalTelegraphExec = additionalTelegraphExec
+        effectObj.direction = direction
         effectObj.data = data
         effectObj.specialClass = specialClass
         effectObj.specialHTML = specialHTML
+        effectObj.justCreated = true
+        effectObj.createdTurn = env.rpg.turnData.turn
+        if(specialAlwaysHappenFirst) effectObj.alwaysHappenFirst = true
+        if(makeInfinite) effectObj.infinite = true
         if(specialName) effectObj.name = specialName
         if(specialHelp) effectObj.help = specialHelp
         if(specialRequiresOrigin !== undefined) effectObj.requiresOrigin = specialRequiresOrigin
+        if(specialRenderEffect) effectObj.renderEffect = specialRenderEffect
         if(effectObj.events) {
             effectObj.events = {... effectObj.events}
             effectObj.events.effect = effectObj
@@ -1507,23 +1882,31 @@ class CombatGrid extends HTMLElement {
         
         //if an anchorType exist, we track the positions of tiles relative to the focus point
         if(anchorType) {
-            let anchorTo = anchorActor || origin
+            let anchorTo
+            
+            switch(anchorType) {
+                case "tile": anchorTo = originTile; break
+                case "origin": anchorTo = origin; break
+                case "actor": anchorTo = anchorActor; break
+            }
             
             //console.log("!!! ANCHORING TO", anchorTo)
             if(anchorType == "origin" || anchorType == "actor") {
                 if(!anchorTo.hostingEffects) anchorTo.hostingEffects = []
                 anchorTo.hostingEffects.push(effectObj)
                 effectObj.anchorActor = anchorTo
-                effectObj.originTile = anchorTo.piece.tile
+                if(!effectObj.originTile) effectObj.originTile = anchorTo.piece.tile
             }
 
             effectObj.anchorType = anchorType
-            effectObj.anchorTo = anchorCoordinates || anchorTo?.piece?.tile?.coordinates
+            effectObj.anchorTo = anchorCoordinates || anchorTo?.coordinates || effectObj?.originTile?.coordinates
             if(anchorType == "tile" && !effectObj.anchorTo) effectObj.anchorTo = tiles[0] ? tiles[0].coordinates : false;
+            else effectObj.anchorTo = anchorTo?.piece?.tile?.coordinates
+            
             if(effectObj.anchorTo) {
                 effectObj.anchorTo = {x: effectObj.anchorTo.x, y: effectObj.anchorTo.y} // we make a new object so it isn't a pointer if tile coordinates are passed
                 effectObj.tileRelativity = []
-                effectObj.originTile = this.getTileFromCoordinates(effectObj.anchorTo.x, effectObj.anchorTo.y)
+                if(!effectObj.originTile) effectObj.originTile = this.getTileFromCoordinates(effectObj.anchorTo.x, effectObj.anchorTo.y)
             } else {
                 console.warn(`tried to anchor for ${effectObj.name}, but there was no valid anchor (no tiles or actors)`)
                 return false;
@@ -1548,6 +1931,7 @@ class CombatGrid extends HTMLElement {
                 tile.addToEffect(effectObj, {length, addingBy: "creation"})
 
                 if(effectObj.anchorType) {
+                    console.log("pushing relativity for", tile, "with anchorTo", effectObj.anchorTo, tile.x - effectObj.anchorTo.x, tile.y - effectObj.anchorTo.y)
                     effectObj.tileRelativity.push({x: tile.x - effectObj.anchorTo.x, y: tile.y - effectObj.anchorTo.y, tile})
                 }
             })
@@ -1602,8 +1986,7 @@ class CombatGrid extends HTMLElement {
                 //we return if it's either got a specific tickType and this tileEffect doesn't have one,
                 //or if it doesn't and the tickType is specified
                 (tickType && effect.tickType != tickType) ||
-                (!tickType && effect.tickType) ||
-                (!effect.tickEvenIfOriginDead && actor?.state == "dead") // this resolves to false if there's no origin btw
+                (!tickType && effect.tickType)
             ) return;
 
             //on loop, we cast on neutral actors
@@ -1611,9 +1994,12 @@ class CombatGrid extends HTMLElement {
                 effect.tiles.forEach(tile=>{
                     if (
                         tile?.piece?.actor?.team?.name == "neutral" &&
-                        effect?.events?.onActorAffected
+                        effect?.events?.onActorAffected &&
+                        !env.rpg.turnData.loopCalled
                     ) effect.events.onActorAffected({actor: tile.piece.actor, reason: "turnend"})
                 })
+
+                env.rpg.turnData.loopCalled = true
             }
 
             if(
@@ -1628,6 +2014,13 @@ class CombatGrid extends HTMLElement {
                 !effect.advanceEveryTurn
             ) return;
 
+            //avoiding ticking at the end of the turn that it was created on (i.e. selfcast miltza direction)
+            if(tickType == "onTurnEnd" && effect.justCreated) {
+                effect.justCreated = false
+                return
+            }
+
+            if(effect?.events?.onBeforeEffectAdvance) effect.events.onBeforeEffectAdvance({incitingActor: actor})
             this.advanceTileEffect(effect, actor)
         })
     }
@@ -1692,10 +2085,13 @@ class CombatGrid extends HTMLElement {
                 newAnchorY = effectObj.anchorTo.y + (directional.direction.includes("up") ? -1 : directional.direction.includes("down") ? 1 : 0) * directional.strength
             }
 
+            if(newAnchorX == effectObj.anchorTo.x && newAnchorY == effectObj.anchorTo.y) return console.warn("tried to move effect", effectObj, "to own position");
+
             let oldOrigin = effectObj.originTile
             effectObj.anchorTo.x = newAnchorX
             effectObj.anchorTo.y = newAnchorY
             effectObj.originTile = this.getTileFromCoordinates(newAnchorX, newAnchorY)
+            console.log("new origin set", effectObj.originTile, "from old origin", oldOrigin, "with new anchor coordinates", effectObj.anchorTo)
 
             //assumes that all tiles are the same length - for anchored effects, can't imagine a scenario where they wouldn't be
             let length = effectObj.tiles[0].effectMap[effectObj.id].length
@@ -1707,33 +2103,40 @@ class CombatGrid extends HTMLElement {
                 return this.getTileFromCoordinates(newX, newY)
             }).filter(tile => tile) // get rid of any null/falses from off-grid coords
 
+            console.log("current tiles are", effectObj.tiles, "and new tiles are", newTiles)
+
             //only remove what isn't going to stay
             effectObj.tiles.forEach(tile => {
-                if (!newTiles.includes(tile)) tile.removeFromEffect(effectObj, { removingBy: "shifting" })
+                if(!newTiles.includes(tile)) tile.removeFromEffect(effectObj, { removingBy: "shifting" })
             })
 
             //if it's fully left the grid, we treat it as gone
             if(!newTiles.length && !effectObj.tiles.length) {
+                console.log("effect has fully left the grid, deleting", effectObj)
                 this.deleteTileEffect(effectObj)
                 return
             }
         
             //add da new stuff
             newTiles.forEach(tile => {
-                if (!effectObj.tiles.includes(tile)) tile.addToEffect(effectObj, { length, addingBy: "shifting" })
+                if(!effectObj.tiles.includes(tile)) tile.addToEffect(effectObj, { length, addingBy: "shifting" })
             })
 
             //for updating graphical stuff
             //new originTile might not exist (i.e. stepped off stage)
             if(effectObj.originTile) effectObj.originTile.makeEffectOriginTile(effectObj, true)
             if(oldOrigin) oldOrigin.makeEffectOriginTile(effectObj, false)
+            if(effectObj.events?.onShifted) effectObj.events.onShifted({oldOrigin, newOrigin: effectObj.originTile})
         } catch(e) {printError(e)}
     }
 
     addTelegraphToQueue(effect) {
         effect.resolve = () => {
             effect.affectedActors = effect.tiles.map(tile => tile?.piece?.actor).filter(actor => actor)
-            console.log('hi, in the resolve now for', effect.name, effect)
+            switch(effect.telegraphTargets) {
+                case "allies": effect.affectedActors = effect.affectedActors.filter(actor => actor.team.name == effect.originTeam.name); break
+                case "foes": effect.affectedActors = effect.affectedActors.filter(actor => actor.team.name != effect.originTeam.name); break // should catch neutrals
+            }
             
             if(typeof effect.telegraphFor == "function") {
                 effect.telegraphFor(effect)
@@ -1745,6 +2148,10 @@ class CombatGrid extends HTMLElement {
                     }
                 })
             }
+
+            if(effect.additionalTelegraphExec) effect.additionalTelegraphExec(effect)
+            if(effect.events?.onTelegraphResolve) effect.events.onTelegraphResolve()
+            effect.ranTelegraph = true
         }
         
         env.rpg.telegraphQueue.push(effect)
@@ -1754,6 +2161,12 @@ class CombatGrid extends HTMLElement {
     runTelegraphsInQueue({noAdvance = false, forActor} = {}) {
         if(env.rpg.halt == "telegraph") env.rpg.halt = false
         let renderedQueue = []
+
+        env.rpg.telegraphQueue.sort((a, b) => {
+            if(a.alwaysHappenFirst && !b.alwaysHappenFirst) return -1
+            else if(!a.alwaysHappenFirst && b.alwaysHappenFirst) return 1
+            else return 0
+        })
 
         env.rpg.telegraphQueue.forEach((telegraphEffect) => {
             if(forActor) {
@@ -1766,6 +2179,8 @@ class CombatGrid extends HTMLElement {
 
             renderedQueue.push(
                 async () => {
+                    if(!env.rpg.active) return;
+
                     console.log("running telegraph", telegraphEffect.name, telegraphEffect, "which has tiles", telegraphEffect.tiles)
                     if(telegraphEffect.telegraphAnim) {
                         
@@ -1778,7 +2193,7 @@ class CombatGrid extends HTMLElement {
                             telegraphEffect.tiles.find(t=>t?.piece?.actor?.team?.name == "neutral") || 
                             telegraphEffect?.originTile
 
-                        if(focus) {
+                        if(focus && !telegraphEffect.noTelegraphFocus) {
                             console.log("focus is", focus, "from stack", 
                                 telegraphEffect.tiles.find(t=>t?.piece?.actor?.team?.name == "ally"),
                                 telegraphEffect.tiles.find(t=>t?.piece?.actor?.team?.name == "enemy"),
@@ -1807,7 +2222,7 @@ class CombatGrid extends HTMLElement {
                     }
 
                     try{
-                        env.rpg.grid.deleteTileEffect(telegraphEffect)
+                        if(!telegraphEffect.keepAfterTelegraph && env.rpg.active) env.rpg.grid.deleteTileEffect(telegraphEffect)
                     } catch(e) {printError(e)}
                 }
             )
@@ -1890,7 +2305,13 @@ class CombatGrid extends HTMLElement {
                     //if it's an AOE, we use markTiles to check for potential hits
                     //if no actors are found, then we don't do anything
                     } else if(activeAction.aoe) {
-                        if(activeAction.type.includes("movement") && (selectedTile.piece && selectedTile.piece != activeActor.piece)) return;
+                        if(
+                            activeAction.type.includes("movement") && 
+                            (selectedTile.piece && selectedTile.piece != activeActor.piece) && 
+                            activeAction.ignoresActors == false
+                        ) return;
+
+                        console.log("passing targeting check")
 
                         //console.log("detected aoe", activeAction.aoe, activeAction)
                         let aoeResults = this.handleActionAOE({originActor: activeActor, targetTile: selectedTile, action: activeAction})
@@ -1900,7 +2321,7 @@ class CombatGrid extends HTMLElement {
                             completeTargeting(activeActor, activeAction, actionItem, false) 
                             if(typeof aoeResults == "object" && !activeAction.type.includes("special")) {
                                 aoeResults.then(() => {
-                                    advanceTurn(activeActor)
+                                    setTimeout(()=> advanceTurn(activeActor), env.ADVANCE_RATE * 0.1)
                                 })
                             } else if(aoeResults === true && !activeAction.type.includes("special")) {
                                 setTimeout(()=>advanceTurn(activeActor), env.ADVANCE_RATE)
@@ -2089,8 +2510,6 @@ class CombatTile extends HTMLElement {
         this.coordinates = {x: this.x, y: this.y}
 
         this.renderContains()
-        this.insertAdjacentHTML(`beforeend`, `<div class="tile-effects"></div>`)
-        this.effectsEl = this.querySelector(".tile-effects")
         this.effects = []
         this.effectMap = {} // for quick id-based checking
         this.pseudopieces = [] // tile effects sometimes serve as proxies for a main piece
@@ -2163,13 +2582,37 @@ class CombatTile extends HTMLElement {
         }
         
         let effectHTML
-        if(!effectObj.invisible) {
-            this.effectsEl.insertAdjacentHTML(`beforeend`, `<div class="effectfx effectfx-${effectObj.slug} ${effectObj.class || ""} ${effectObj.specialClass || ""} ${effectObj.originTile == this ? `effectfx-origin` : ''}" style="--i: ${this.effects.length}" team="${effectObj.origin?.team?.name}" effectid="${effectObj.id}">${effectObj.effectHTML || ""}${effectObj.specialHTML || ""}</div>`)
+        if(
+            !effectObj.invisible &&
+            effectObj.renderEffect !== false &&
+            (
+                typeof effectObj.renderEffect == "undefined" ||
+                (effectObj.renderEffect == "originTile" && effectObj.originTile == this)   
+            )
+        ) {
+            if(!this.effectsEl) {
+                this.effectsEl = document.createElement("div")
+                this.effectsEl.classList.add("tile-effects")
+                this.classList.add('has-visible-effects')
+                this.appendChild(this.effectsEl)
+            }
+
+            this.effectsEl.insertAdjacentHTML(`beforeend`, `<div class="effectfx effectfx-${effectObj.slug} ${effectObj.class || ""} ${effectObj.specialClass || ""} ${effectObj.originTile == this ? `effectfx-origin` : ''}" style="--i: ${this.effects.length}" team="${effectObj.origin?.team?.name}" effectid="${effectObj.id}" ${effectObj.direction ? `direction="${effectObj.direction}"` : ''}>${effectObj.effectHTML || ""}${effectObj.specialHTML || ""}</div>`)
             effectHTML = this.effectsEl.querySelector(`.effectfx[effectid="${effectObj.id}"]`)
         }
 
         effectObj.tiles.push(this)
-        if(effectObj.anchorType && addingBy != "shifting") effectObj.tileRelativity.push({x: this.x - effectObj.anchorTo.x, y: this.y - effectObj.anchorTo.y, tile: this})
+        if(effectObj.anchorType && addingBy != "shifting") {
+            let relObj = {
+                x: this.x - effectObj.anchorTo.x,
+                y: this.y - effectObj.anchorTo.y,
+                tile: this
+            }
+
+            if(!effectObj.tileRelativity.find(rel => rel.x == relObj.x && rel.y == relObj.y)) {
+                effectObj.tileRelativity.push(relObj)
+            }
+        }
 
         let details = {
             host: effectObj,
@@ -2188,6 +2631,7 @@ class CombatTile extends HTMLElement {
         }
 
         this.classList.add("effectbearer")
+        if(effectObj.tileClass) this.classList.add(effectObj.tileClass)
         this.setAttribute("definition", "TILE++")
         
         //actors are affected by fields when tiles get them under most cases
@@ -2198,15 +2642,60 @@ class CombatTile extends HTMLElement {
         //this can also trigger onEnter, even if shifting
         if(effectObj?.events?.onEnter && this.piece) effectObj.events.onEnter({actor: this.piece.actor})
 
+        if(effectObj.cameraListener && effectObj.originTile == this) {
+            this.cameraListener = true
+            this.setAttribute("listeningfor", "--playercontrol-tilt--playercontrol-rotation")
+            this.setAttribute("directattribute", true)
+            env.rpg.updatePropertyListeners({specificEl: this, forceDirectAttribute: true})
+        }
+
+        //keep track of if pathfinding may want to avoid
+        this.updateIfHazardous()
+
         return true
     }
 
     //shortcut for swapping origin tile of effects
-    makeEffectOriginTile(effectObj, state = true) {
-        let thisInstance = this.effectMap[effectObj.id]
-        if(thisInstance) {
-            thisInstance.fx.classList.toggle(`effectfx-origin`, state)
+    makeEffectOriginTile(activeObj, state = true) {
+        let thisInstance = this.effectMap[activeObj.id]
+        let effectObj = thisInstance?.host
+
+        if(!effectObj) return;
+        if(thisInstance?.fx) {
+            if(!state && effectObj.renderEffect == "originTile" && effectObj.originTile != this) {
+                thisInstance.fx.remove()
+                thisInstance.fx = false
+                if(!this.effects.length) {
+                    this.classList.remove("effectbearer")
+                    this.removeAttribute("definition")
+                    if(this.effectsEl) {
+                        this.effectsEl.remove()
+                        this.classList.removeStatus('has-visible-effects')
+                        delete this.effectsEl
+                    }
+                }
+            } else thisInstance.fx.classList.toggle(`effectfx-origin`, state)
+        } else if(state && effectObj.renderEffect == "originTile" && effectObj.originTile == this) {
+            if(!this.effectsEl) {
+                this.effectsEl = document.createElement("div")
+                this.effectsEl.classList.add("tile-effects")
+                this.classList.add('has-visible-effects')
+                this.appendChild(this.effectsEl)
+            }
+
+            this.effectsEl.insertAdjacentHTML(`beforeend`, `<div class="effectfx effectfx-${effectObj.slug} ${effectObj.class || ""} ${effectObj.specialClass || ""} ${effectObj.originTile == this ? `effectfx-origin` : ''}" style="--i: ${this.effects.length}" team="${effectObj.origin?.team?.name}" effectid="${effectObj.id}" ${effectObj.direction ? `direction="${effectObj.direction}"` : ''}>${effectObj.effectHTML || ""}${effectObj.specialHTML || ""}</div>`)
+            let effectHTML = this.effectsEl.querySelector(`.effectfx[effectid="${effectObj.id}"]`)
+            let details = {
+                host: effectObj,
+                fx: effectHTML,
+                length: thisInstance.length
+            }
+
+            this.effects[this.effects.findIndex(effect => effect.host.id === effectObj.id)] = details
+            this.effectMap[effectObj.id] = details
         }
+
+        if(effectObj?.events?.onOriginChange) effectObj.events.onOriginChange({tile: this})
     }
 
     //can be either a string name or effectObj (but object is best)
@@ -2247,11 +2736,23 @@ class CombatTile extends HTMLElement {
         this.effects = this.effects.filter(existing => existing !== effectObj)
         delete this.effectMap[effectObj.host.id]
 
+        this.classList.remove(effectObj.host.tileClass)
         if(!this.effects.length) {
             this.classList.remove("effectbearer")
             this.removeAttribute("definition")
+            if(this.effectsEl) {
+                this.effectsEl.remove()
+                delete this.effectsEl
+            }
         }
 
+        if(this.cameraListener && !this.effects.some(effect => effect.host.cameraListener)) {
+            this.cameraListener = false
+            this.removeAttribute("listeningfor")
+            this.removeAttribute("directattribute")
+        }
+
+        this.updateIfHazardous()
         return true
     }
 
@@ -2299,6 +2800,7 @@ class CombatTile extends HTMLElement {
 
         this.grid.realgrid.appendChild(combatActor)
         this.piece = combatActor
+        
     }
 
     set x(value) {
@@ -2322,17 +2824,18 @@ class CombatTile extends HTMLElement {
     }
 
     set piece(piece) {
-        this._piece = piece
-
         if(piece == null) {
             if(this?._piece?.actor?.tileClass) this.classList.remove(... this._piece.actor.tileClass.split(" "))
             this.classList.remove("piecebearer")
             this.removeAttribute("team")
+            this._lastPiece = this._piece
+            this._piece = piece
         } else {
             if(piece?.actor?.tileClass) this.classList.add(... piece.actor.tileClass.split(" "))
             this.classList.add("piecebearer")
             this.setAttribute("team", piece.actor.team.name)
             this.grid[piece.actor.slug] = this
+            this._piece = piece
         }
     }
 
@@ -2358,13 +2861,15 @@ class CombatTile extends HTMLElement {
     /* DOM events */
     onMouseEnter(ev) {
         if(this.scene.currentTeam.name != "ally") return;
-
         if(this.scene.uncleanedTargets) this.grid.cleanUncleanedTargets()
+        if(env.rpg.kbPredictionTiles) env.rpg.kbPredictionTiles.clearTiles()
 
         let targetingFor = this.scene.targetingFor
 
         // if we're in targeting and the user is hovering over a targetable tile, we should show the AOE effects if any
-        if(this.classList.contains("targetable") && this.scene.state == "targeting" && this.scene?.targetingFor?.action?.aoe) {            
+        if(this.classList.contains("targetable") && this.scene.state == "targeting" && this.scene?.targetingFor?.action?.aoe) {        
+            this.scene.hoveredTile = this
+
             this.scene.uncleanedTargets = this.grid.getAoETargets({
                 tile: this,
                 actor: targetingFor.actor,
@@ -2392,6 +2897,8 @@ class CombatTile extends HTMLElement {
             
         // if we're in targeting and hovering over a targetable tile, but the action is a regular single target,
         } else if(this.classList.contains("targetable") && this.scene.state == "targeting") {
+            this.scene.hoveredTile = this
+
             this.scene.uncleanedTargets = [this]
             this.scene.uncleanedClasses = []
 
@@ -2401,10 +2908,11 @@ class CombatTile extends HTMLElement {
         }
 
         //this one is just for 'distant' extra aoes, as in 'target' origin
-        if(this.scene.uncleanedTargets && targetingFor?.action?.stats?.extraAOE) for (const aoeName in targetingFor.action.stats.extraAOE) {
-            const aoeInfo = targetingFor.action.stats.extraAOE[aoeName]
-
-            if(aoeInfo.origin == "target")  {
+        let handleExtraAOE = (aoeInfo) => {
+            if(
+                aoeInfo.origin == "target" &&
+                (!aoeInfo.showIf || aoeInfo.showIf(targetingFor.actor, this.piece?.actor, targetingFor.action))
+            )  {
                 this.scene.uncleanedTargets = this.scene.uncleanedTargets.concat(env.rpg.grid.markTiles({
                     originTile: this,
                     shape: aoeInfo.shape || 'square',
@@ -2422,12 +2930,56 @@ class CombatTile extends HTMLElement {
                 }))
 
                 this.scene.uncleanedClasses.push(aoeInfo.addClass)
+
+            //dash-towards types will just get the pathfind-to landing point
+            } else if(aoeInfo.origin == "dash-towards") {
+                let dashLanding = this.getClosestOpenTile({ignoresActors: true, ignoresObstacles: true, pathfindFrom: targetingFor.actor.piece.tile})
+                
+                if(dashLanding) {
+                    if(dashLanding.piece && dashLanding.piece == targetingFor.actor.piece) dashLanding = targetingFor.actor.piece.tile // no movement necessary
+                    else if(dashLanding.piece) dashLanding = dashLanding.getClosestOpenTile({ignoresActors: false, ignoresObstacles: false, pathfindFrom: targetingFor.actor.piece.tile}) // since the path ignores some stuff, we get the closest actual open tile
+                    if(aoeInfo.canHit && dashLanding.piece) if(!aoeInfo.canHit(targetingFor.actor, dashLanding.piece.actor)) return;
+                    dashLanding.classList.add(aoeInfo.addClass)
+                    this.scene.uncleanedTargets.push(dashLanding)
+                    this.scene.uncleanedClasses.push(aoeInfo.addClass)
+                }
+
+            //pull-towards are like dash-towards, but find the closest point to the targeting actor
+            } else if(aoeInfo.origin == "pull-towards" && this.piece) {
+                let pullLanding = targetingFor.actor.piece.tile.getClosestOpenTile({ignoresActors: true, ignoresObstacles: true, pathfindFrom: this})
+
+                if(pullLanding) {
+                    if(pullLanding.piece && pullLanding.piece == this.piece) pullLanding = this // no movement necessary
+                    else pullLanding = pullLanding.getClosestOpenTile() // since the path ignores some stuff, we get the closest actual open tile
+                    if(aoeInfo.canHit && pullLanding.piece) if(!aoeInfo.canHit(targetingFor.actor, pullLanding.piece.actor)) return;
+                    pullLanding.classList.add(aoeInfo.addClass)
+                    this.scene.uncleanedTargets.push(pullLanding)
+                    this.scene.uncleanedClasses.push(aoeInfo.addClass)
+                }
             }
+        }
+
+        if(this.scene.uncleanedTargets) {
+            if(targetingFor?.action?.stats?.extraAOE) for (const aoeName in targetingFor.action.stats.extraAOE) {
+                const aoeInfo = targetingFor.action.stats.extraAOE[aoeName]
+                handleExtraAOE(aoeInfo)
+            }
+
+            if(targetingFor?.actor?.extraAOEFromStatuses?.length) targetingFor.actor.extraAOEFromStatuses.forEach(aoeInfo =>{
+                handleExtraAOE(aoeInfo)
+            })
         }
 
         // if we're in neutral state and this tile has an actor piece, we should highlight their box
         else if(this.piece && this.scene.state == "normal") { 
             if(this.piece && this.piece?.actor != env.rpg.currentActor) this.piece.actor.highlight("piece")
+        } 
+    
+        // if we're in neutral state and there's movement, draw a path from the origin to the destination
+        // to show you the path you'll take
+        else if(this.scene.state == "normal" && this.scene.movingFor && this.classList.contains("movable")) {
+            env.rpg.querySelectorAll('.allypathing').forEach(line=>line.close())
+            this.scene.movingFor.piece.tile.drawPathLine(this, {drawEffectLineSettings: {duration: 500, angleDriftAmount: 0, effectClass: "pathing allypathing"}})
         }
     }
     
@@ -2435,6 +2987,7 @@ class CombatTile extends HTMLElement {
     onMouseLeave(ev) {
         if(env.rpg.currentTeam.name != "ally") return;
         this.grid.cleanUncleanedTargets()
+        this.scene.hoveredTile = false
 
         if(this.piece && this.scene.state == "normal" && this.piece?.actor != env.rpg.currentActor) this.piece.actor.highlight(false)
     }
@@ -2445,11 +2998,19 @@ class CombatTile extends HTMLElement {
         //you can pass a "towards" option to say - just get the closest path possible
         //towards returns will be an object with detailed results rather than an array
         //used mostly in enemy pathfinding failures (i.e. no valid path to target)
-        towards = false
+        towards = false,
+
+        //for pathfound actions
+        ignoresActors = false,
+        ignoresObstacles = false,
+        pathfindingForTargeting = false,
+        
+        //for enemy pathfinding - avoid landing on hazardous tiles
+        avoidHazardTiles = false
     } = {}) {
         const start = performance.now()
 
-        let pathInfo = _pathfindLogic(startTile, endTile)
+        let pathInfo = _pathfindLogic(startTile, endTile, {ignoresActors, ignoresObstacles, pathfindingForTargeting, avoidHazardTiles})
 
         if(towards) {
             let towardsResults = _pathfindTowardsLogic(endTile, pathInfo)
@@ -2470,7 +3031,11 @@ class CombatTile extends HTMLElement {
 
                  // only break this way if it's not in cutscene
                 if(!env.currentDialogue.active && env.rpg.currentActor?.team?.name == "enemy") {
-                    if(!env.silenceFailedPathfinding) printError(`pathfinding failed during an animation sequence within ${env.rpg.currentActor.name}'s turn!`, true)
+                    if(!env.silenceFailedPathfinding) {
+                        printError(`pathfinding failed during an animation sequence within ${env.rpg.currentActor.name}'s turn!`, true)
+                        console.log("pathfind fail data:", startTile, endTile)
+                        console.trace()
+                    }
                     startTile.scene.state = false 
                     advanceTurn()
                 } else if(!env.currentDialogue.active && env.rpg.currentActor?.team?.name == "ally" & env.rpg.currentActor.piece) {
@@ -2664,15 +3229,17 @@ class CombatTile extends HTMLElement {
             console.log(startTile, endTile)
             throw 'queried tiles do not exist. probably means the scene stage plan is missing some definitions'
         }
+        if(endTile.blockLOS) { return false }
+        
         let x0 = startTile.x, y0 = startTile.y;
         let x1 = endTile.x, y1 = endTile.y;
         let dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0);
         let sx = (x0 < x1) ? 1 : -1, sy = (y0 < y1) ? 1 : -1;
         let err = dx - dy
     
-        while(true) { // 
-            if(startTile.grid.getTileFromCoordinates(x0, y0).blocksLOS) { return false }
-    
+        while(true) {  
+            if(startTile.grid.getTileFromCoordinates(x0, y0).blockLOS) { return false }
+                
             if(x0 === x1 && y0 === y1) break
             let e2 = 2 * err
             if(e2 > -dy) { err -= dy; x0 += sx }
@@ -2680,6 +3247,27 @@ class CombatTile extends HTMLElement {
         }
     
         return true
+    }
+
+    //drawEffectLine chain between two tiles
+    static drawPathLine(startTile, endTile, { towards = false, towardsLength = false, drawEffectLineSettings = {duration: 5000, angleDriftAmount: 0, effectClass: "pathing"} } = {}) { 
+        let path
+
+        if(towards) {
+            path = startTile.pathfindTo(endTile, {towards: true})?.path
+            if(path) {
+                if(towardsLength) path = path.slice(0, towardsLength + 1)
+            }
+        } else {
+            path = startTile.pathfindTo(endTile)
+        }
+
+        //calls drawEffectLine between each tile in the path
+        if(path) {
+            for(let i = 0; i < path.length - 1; i++) {
+                drawEffectLine(path[i], path[i + 1], drawEffectLineSettings)
+            }
+        }
     }
     
     distFrom(endTile) {
@@ -2710,34 +3298,46 @@ class CombatTile extends HTMLElement {
     }
 
     //shortcuts
-    //returns one of the closest open tiles, or false if none are found within 4 steps
-    getClosestOpenTile({avoidDamageTiles = true, direction = null} = {}) {
-        if(!this.piece) return this // cuz it's open :b
+    updateIfHazardous() {
+        this.hazardous = this.effects.some(effectObj => effectObj.host.hazardous)
+    }
 
-        let radius = 1
+    //returns one of the closest open tiles, or false if none are found within 4 steps
+    //pathfind is like getting the closest open by pathfinding with regular settings (i.e. respecting actors and obstacles)
+    getClosestOpenTile({avoidDamageTiles = true, direction = null, pathfindFrom = false, ignoresObstacles, ignoresActors, searchRadius = 4} = {}) {
+        if(!this.piece && !this.offLimitsExceptFor) return this // cuz it's open :b
+
         let validTiles = []
         let fallbackTiles = []
-        let visitedTiles = new Set()
 
-        while (validTiles.length === 0 && radius < 4) {
-            for (let x = this.x - radius; x <= this.x + radius; x++) {
-                for (let y = this.y - radius; y <= this.y + radius; y++) {
-                    const tile = this.grid.getTileFromCoordinates(x, y)
-                    if (tile && !tile.piece && !tile.blocking && !visitedTiles.has(tile)) {
-                        if (direction) {
-                            const relativeDirection = this.getRelativeDirection(tile)
-                            if (!relativeDirection.includes(direction) && relativeDirection !== direction.split('-')[0] && relativeDirection !== direction.split('-')[1]) {
-                                fallbackTiles.push(tile)
-                                visitedTiles.add(tile)
-                                continue
+        if(!pathfindFrom) {
+            let radius = 1
+            let visitedTiles = new Set()
+
+            while (validTiles.length === 0 && radius < searchRadius) {
+                for (let x = this.x - radius; x <= this.x + radius; x++) {
+                    for (let y = this.y - radius; y <= this.y + radius; y++) {
+                        const tile = this.grid.getTileFromCoordinates(x, y)
+                        if (tile && !tile.piece && !tile.blocking && !visitedTiles.has(tile) && !tile.offLimitsExceptFor) {
+                            if (direction) {
+                                const relativeDirection = this.getRelativeDirection(tile)
+                                if (!relativeDirection.includes(direction) && relativeDirection !== direction.split('-')[0] && relativeDirection !== direction.split('-')[1]) {
+                                    fallbackTiles.push(tile)
+                                    visitedTiles.add(tile)
+                                    continue
+                                }
                             }
+                            validTiles.push(tile)
+                            visitedTiles.add(tile)
                         }
-                        validTiles.push(tile)
-                        visitedTiles.add(tile)
                     }
                 }
+                radius++
             }
-            radius++
+        } else {
+            let pathfindResults = pathfindFrom.pathfindTo(this, {towards: true, ignoresObstacles, ignoresActors})
+            if(pathfindResults?.path?.length) validTiles.push(pathfindResults.path.pop())
+            else if(pathfindResults?.length) validTiles.push(pathfindResults.pop())
         }
 
         if(validTiles.length === 0) validTiles = fallbackTiles
@@ -2745,7 +3345,7 @@ class CombatTile extends HTMLElement {
 
         if(avoidDamageTiles) {
             let baseTiles = validTiles
-            validTiles = validTiles.filter(tile => !tile.classList.contains("damagetile"))
+            validTiles = validTiles.filter(tile => !tile.classList.contains("damagetile") && !tile.hazardous)
             //we avoid, but will fall back to them if needed
             if(validTiles.length) return validTiles.sample();
             else return baseTiles.sample()
@@ -2762,10 +3362,97 @@ class CombatTile extends HTMLElement {
         return this.grid.getTileFromCoordinates(this.x + dx, this.y + dy)
     }
 
+    //checks if there's a clear line between this tile and a target tile
+    //returns the blocking tile if any LOS-blocking tile or piece-holding tile is in the path
+    //returns the target tile if the line is clear
+    traceTo(targetTile, {ignoresActors = false, teamFocus = false, ignoreSpecificTeam = false} = {}) {
+        if(!targetTile) return false
+        if(this === targetTile) return targetTile
+        if(targetTile.blockLOS) return targetTile
+
+        let x0 = this.x, y0 = this.y
+        let x1 = targetTile.x, y1 = targetTile.y
+        let dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0)
+        let sx = (x0 < x1) ? 1 : -1, sy = (y0 < y1) ? 1 : -1
+        let err = dx - dy
+
+        while(true) {
+            if(x0 === x1 && y0 === y1) break
+
+            let e2 = 2 * err
+            if(e2 > -dy) { err -= dy; x0 += sx }
+            if(e2 < dx) { err += dx; y0 += sy }
+
+            //skip the endpoint itself
+            if(x0 === x1 && y0 === y1) break
+
+            const tile = this.grid.getTileFromCoordinates(x0, y0)
+            if(!tile) return false
+            if(tile.blockLOS) return tile
+            if(!ignoresActors && (tile._piece || tile._hasPseudopiece)) {
+                let piece = tile._piece || tile.piece
+                if(piece && !piece?.actor?.noTrace) {
+                    if(teamFocus) {
+                        if(piece?.actor?.team?.name == teamFocus) return tile
+                    } else if(ignoreSpecificTeam) {
+                        if(piece?.actor?.team?.name != ignoreSpecificTeam) return tile
+                    } else return tile
+                }
+            }
+        }
+
+        return targetTile
+    }
+
+    //traces in a cardinal direction until hitting the grid edge, an obstacle, or an actor
+    //returns an array of tiles in the path
+    //the last tile is the one that stopped the trace (obstacle/actor) or the last valid tile
+    traceDirection(direction, {ignoresActors = false, teamFocus = false, ignoreSpecificTeam = false} = {}) {
+        let dx = 0, dy = 0
+        switch (direction) {
+            case 'up': dy = -1; break
+            case 'down': dy = 1; break
+            case 'left': dx = -1; break
+            case 'right': dx = 1; break
+            case 'up-left': dx = -1; dy = -1; break
+            case 'up-right': dx = 1; dy = -1; break
+            case 'down-left': dx = -1; dy = 1; break
+            case 'down-right': dx = 1; dy = 1; break
+            default: return []
+        }
+
+        const traced = []
+        let x = this.x + dx, y = this.y + dy
+
+        while(true) {
+            const tile = this.grid.getTileFromCoordinates(x, y)
+            if(!tile) break
+
+            if(tile.blockLOS) { traced.push(tile); break }
+            if(!ignoresActors && (tile._piece || tile._hasPseudopiece)) {
+                let piece = tile._piece || tile.piece
+                if(piece && !piece?.actor?.noTrace) {
+                    if(teamFocus) {
+                        if(piece?.actor?.team?.name == teamFocus) { traced.push(tile); break }
+                    } else if(ignoreSpecificTeam) {
+                        if(piece?.actor?.team?.name != ignoreSpecificTeam) { traced.push(tile); break }   
+                    } else { traced.push(tile); break }
+                }
+            }
+
+            traced.push(tile)
+            x += dx
+            y += dy
+        }
+
+        return traced
+    }
+
     /* instances shortcut */
     hasSightLineTo(endTile) { return CombatTile.hasSightLineTo(this, endTile) } 
     getNeighbors(options) { return CombatTile.getNeighbors(this, options) } 
     pathfindTo(endTile, options) { return CombatTile.pathfindTo(this, endTile, options) } 
+    drawPathLine(endTile, options) { return CombatTile.drawPathLine(this, endTile, options || {drawEffectLineSettings: {duration: 5000, angleDriftAmount: 0, effectClass: "pathing"}}) }
 
     //we do this to limit DOM interaction during pathfinding
     static get observedAttributes() { return ['class'] }
@@ -2791,6 +3478,14 @@ class CombatTile extends HTMLElement {
 class CombatActor extends HTMLElement {
     constructor() { super() }
 
+    static TRANSFORMS = {
+        default: "translateY(-50%) rotateX(-90deg) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -0.5))",
+        destructible: "unset",
+        statPlate: `translateZ(var(--statHeight)) rotateX(calc(-90deg)) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -1)) translateY(calc(var(--gridTileSize) * -1)) translateZ(1000px)`,
+        floatBox: `translateZ(75px) rotateX(calc(-90deg)) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -1)) translateY(calc(var(--gridTileSize) * -1)) translateZ(800px)`,
+        statusPainter: `rotateX(calc(-90deg)) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -1)) translateY(calc(var(--gridTileSize) * -1)) translateZ(200px)`
+    }
+
     connectedCallback() {
         this.grid = this.tile.grid
         this.x = this.tile.x;
@@ -2799,17 +3494,38 @@ class CombatActor extends HTMLElement {
         //we assume that the actor is set in advance
         if(this.actor.graphic) {
             this.innerHTML = `
-            <div class="actor-stand ${this.actor.base.standClass || ""}" for="${this.actor.base.slug}" team="${this.actor.team.name}">
+            <div class="actor-stand ${this.actor.base.standClass || ""}" for="${this.actor.base.slug}" team="${this.actor.team.name}" listeningfor="--playercontrol-rotation--playercontrol-tilt" ${CombatActor.TRANSFORMS[this.actor.base.standClass] ? `intendedtransform="${CombatActor.TRANSFORMS[this.actor.base.standClass]}"` : `intendedtransform="${CombatActor.TRANSFORMS.default}"`}>
                 ${this.actor.graphic.replaceAll('%SLUG', this.actor.slug)}
-                <div class="floatbox"></div>
                 <div class="combat-dialogue"></div>
             </div>
+            <div class="floatbox" listeningfor="--playercontrol-rotation--playercontrol-tilt" intendedtransform="${CombatActor.TRANSFORMS.floatBox}"></div>
             `
 
+            if(this.actor.base.pieceClass) this.classList.add(this.actor.base.pieceClass)
+
             //there's probably a smarter way of doing this lol whatever
+            this.stand = this.firstElementChild
             this.actor.sprite = this.firstElementChild.children[0]
-            this.actor.sprite.hitBox = this.firstElementChild.children[1]
-            this.actor.sprite.dialogueBox = this.firstElementChild.children[2]
+            this.actor.sprite.hitBox = this.lastElementChild
+            this.actor.sprite.dialogueBox = this.firstElementChild.children[1]
+
+
+            if(this.actor.painter != "nopainter") {
+                //set up the "status-painter"
+                this.actor.sprite.statusPainter = document.createElement("div")
+                this.actor.sprite.statusPainter.classList.add("statuspainter")
+
+                if(this.actor.painter == "stand") {
+                    this.appendChild(this.actor.sprite.statusPainter)
+                    this.actor.sprite.statusPainter.classList.add("standpainter")
+                    this.actor.sprite.statusPainter.setAttribute("listeningfor", "--playercontrol-rotation--playercontrol-tilt")
+                    this.actor.sprite.statusPainter.setAttribute("intendedtransform", CombatActor.TRANSFORMS.statusPainter)
+                } else {
+                    this.actor.sprite.statusPainter.classList.add('sprite-wrapper') // for the styling. probably no knock-on effects
+                    this.stand.appendChild(this.actor.sprite.statusPainter)
+                }
+            }
+
         } else this.actor.sprite = this
 
         if(this.actor.base.events) {
@@ -2827,17 +3543,19 @@ class CombatActor extends HTMLElement {
     startTargeting(action, actionItem) {
         this.scene.state = "targeting"
         if(env.rpg.currentTeam.name == "ally") this.scene.targetingFor = {actor: this.actor, action, actionItem}
+        let ignoresActors = typeof action.ignoresActors == "undefined" ? true : action.ignoresActors
 
         this.scene.currentTargetableTiles = this.grid.markTiles({
             originTile: this.tile,
             shape: action.targeting || 'square', // to be altered per action
             size: action?.stats?.range || action.range || 1,
             addClass: "targetable",
-            ignoresObstacles: action.ignoresBlocks || false,
-            ignoresActors: typeof action.ignoresActors == "undefined" ? true : action.ignoresActors,
-            requiresPath: action.requiresPath || false,
             includesOrigin: typeof action.includesOrigin != "undefined" ? action.includesOrigin : action.type.includes("self"),
+            requiresPath: action.requiresPath,
+            ignoresObstacles: action.ignoresBlocks,
+            ignoresActors: ignoresActors,
             ignoresLOS: action.ignoresLOS,
+            markingForActionTarget: true,
             onTileCheck: ({tile, validity, validTiles, data}) => {
                 if(tile.piece && action.type.includes("opponent") && tile?.piece?.actor?.team?.name == this.actor.team.name) return false
                 if(tile.untargetable) return false
@@ -2846,30 +3564,23 @@ class CombatActor extends HTMLElement {
                     if(this.scene.targetingFor.action?.aoe?.canHit) 
                         if(!this.scene.targetingFor.action.aoe.canHit(this.scene.targetingFor.actor, tile.piece.actor)) 
                             return false 
-                } else if(action.type.includes("movement") && tile.piece) return false // movement actions move to the selected tile
+                } else if((action.type.includes("movement") && tile.piece) && !ignoresActors) return false // movement actions move to the selected tile. if it ignoresActors then it can move to a tile with someone on it, but if it doesn't, then it probably has a backup case
                 return true
             }
         })
 
-        this.scene.statPlates = []
-        this.scene.actorList.forEach(actor=>{
-            if(actor?.piece?.tile) {
-                let statPlate = document.createElement('div')
-                statPlate.classList.add('piece-stat')
-                statPlate.textContent = `${actor.hp}HP${actor.bp ? `::${actor.bp}BP` : ``}`
-                this.scene.statPlates.push(statPlate)
-                actor.piece.tile.insertAdjacentElement('beforeend', statPlate)
-            }
-        })
-
+        env.rpg.toggleStatPlates(false) // to refresh em just in case
+        env.rpg.toggleStatPlates(true)
         env.rpg.refresh()
     }
 
     endTargeting() {
         delete env.rpg.nevermind
         this.scene.state = false
+        
         if(this.scene.currentTargetableTiles) this.scene.currentTargetableTiles.forEach(tile => tile.classList.remove('targetable'))
-        if(this.scene?.statPlates?.length) this.scene.statPlates.forEach(statPlate=>statPlate.remove())
+        if(env.rpg.kbPredictionTiles) env.rpg.kbPredictionTiles.clearTiles()
+        env.rpg.toggleStatPlates(false)
     }
 
     //on player turns, you can move an actor around as much as you want within their starting range
@@ -2892,6 +3603,8 @@ class CombatActor extends HTMLElement {
         })
 
         env.rpg.refresh()
+        this.toggleStatPlate(true)
+        setTimeout(() => this.toggleStatPlate(false), env.ADVANCE_RATE) // just a little reminder flash
     }
 
     endMovement() {
@@ -2907,21 +3620,28 @@ class CombatActor extends HTMLElement {
     }
     
     //walks a character to their chosen tile
-    stepToTile(tile, {speed = 200, stepCallback, endCallback} = {}) {
+    stepToTile(tile, {speed = env.ADVANCE_RATE * 0.2, stepCallback, endCallback, follow = true} = {}) {
         this.scene.state = "animating"
+        tile.offLimitsExceptFor = this // weird pseudoblock state only used for movement
+
         let path = this.tile.pathfindTo(tile)
         if (path) {
             let i = 0
             const animateStep = () => {
                 try{ 
-                    if (i < path.length) {
+                    if (i < path.length && !env.rpg.forceStopMovement) {
                         const nextTile = path[i]
                         this.moveToTile(nextTile, {follow: false, reason: "stepping"})
                         this.animateTimeout = setTimeout(animateStep, speed + ++i)
                         if (stepCallback) stepCallback(nextTile, {timeout, endCallback}); // in case of some sort of cancellation
+                    } else if(env.rpg.forceStopMovement) {
+                        delete env.rpg.forceStopMovement
+                        tile.offLimitsExceptFor = false
+                    
                     } else {
                         this.scene.state = false
                         if(endCallback) endCallback()
+                        tile.offLimitsExceptFor = false
                     }
                 } catch(e) {printError(e)}
             }
@@ -2934,7 +3654,7 @@ class CombatActor extends HTMLElement {
         }
 
         //we animate to da tile
-        tile.focusOnThisTile()
+        if(follow) tile.focusOnThisTile()
 
         //call immediately if it's a self-animate
         if(this.tile == tile) { 
@@ -2959,7 +3679,7 @@ class CombatActor extends HTMLElement {
     }
 
     //special animation type
-    animateToTile(tile, {duration, animation, endCallback, follow = false} = {}) {
+    animateToTile(tile, {duration, animation, endCallback, follow = false, specialReason} = {}) {
         this.scene.state = "animating"
 
         let oldTile = this.tile
@@ -2968,15 +3688,28 @@ class CombatActor extends HTMLElement {
         this.style.setProperty("--anim-y-from", oldTile.y)
         this.style.setProperty("--anim-x-to", tile.x)
         this.style.setProperty("--anim-y-to", tile.y)
+        env.rpg.updatePropertyListeners({specificEl: this.stand, forceDirectAttribute: true})
 
         this.classList.add(`actoranim-${animation}`)
 
         if(follow) tile.focusOnThisTile()
-
+        
+        // mark tile as not possible to go to during animation
+        tile.offLimitsExceptFor = this // weird pseudoblock state only used for movement
+        env.rpg.lastUpdate = Date.now()
+        
         setTimeout(() => {
-            this.moveToTile(tile, {follow, reason: "animating"})
+            if(env.rpg.haltedByBufferTime) delayAdvance(duration)
+                
+            //if(env.rpg.currentActor.team.name == "ally") this.scene.state = false
+            this.moveToTile(tile, {follow, reason: specialReason || "animating"})
             this.classList.remove(`actoranim-${animation}`)
-            if(endCallback) endCallback()            
+            tile.offLimitsExceptFor = false
+            if(endCallback) endCallback()
+            if(this.classList.contains("deadpiece")) {
+                this.classList.remove("deadpiece")
+                setTimeout(()=> this.classList.add("deadpiece"), 50) // retrigger in case it got cancelled by the anim
+            }
         }, duration + 50) //buffer time
 
         env.rpg.refresh()
@@ -2984,7 +3717,8 @@ class CombatActor extends HTMLElement {
 
     //direct move - teleports actor to position
     moveToTile(tile, {follow = true, reason} = {}) {
-        if (this.tile == tile || !this.tile) { return }
+        if(this.tile == tile || !this.tile || (tile.offLimitsExceptFor && tile.offLimitsExceptFor != this)) { return }
+        this.toggleStatPlate(false)
 
         if(tile.piece) {
             console.warn(this, "tried to move to a tile with someone on it", tile, "probably due to changing circumstances")
@@ -3013,20 +3747,20 @@ class CombatActor extends HTMLElement {
         //if the tile they're entering has tileEffects, check for relevant events
         this.tile.effects.forEach(effect => {
             //only do onEnter if the one they're coming from isn't in it
-            if(effect.host?.events?.onEnter && !oldTile.effectMap[effect.host.id]) effect.host.events.onEnter({actor: this.actor});
+            //or if the effect is marked as alwaysTriggerOnEnter
+            if(
+                effect.host?.events?.onEnter && 
+                (!oldTile.effectMap[effect.host.id] || effect.host.alwaysTriggerOnEnter)
+            ) effect.host.events.onEnter({actor: this.actor});
 
             if(reason) {
-                //console.log(reason, oldTile, tile, effect.host?.events?.onActorAffected)
-                if(reason == "knockback" && 
+                if(reason == "knockbackEnd" && 
                     oldTile != tile && 
                     effect.host?.events?.onActorAffected &&
                     (
                         //we only hit enemies with knockback effects once
-                        (// and don't do it if their old tile was the same effect
-                            !env.rpg.turnData[`${this.actor.slug}-${effect.host.id}`] &&
-                            !oldTile.effectMap[effect.host.id]
-                        ) 
-                        ||              
+                        !env.rpg.turnData[`${this.actor.slug}-${effect.host.id}`]
+                        ||
                         //unless it's retriggerable          
                         effect.host.knockbackRetrigger
                     )
@@ -3034,7 +3768,6 @@ class CombatActor extends HTMLElement {
                     effect.host.events.onActorAffected({tile: this.tile, actor: this.actor, reason });
                     env.rpg.turnData[`${this.actor.slug}-${effect.host.id}`] = true
                 }
-                
             }
         })
 
@@ -3047,14 +3780,20 @@ class CombatActor extends HTMLElement {
     //shortcut for calling moveToTile on a slight delay and adding teleport class to actor
     teleportToTile(tile, settings = {}) {
         this.classList.add("teleporting")
+        tile.offLimitsExceptFor = this
+
         if(settings.instant) {
             this.moveToTile(tile, settings)
             this.classList.remove("teleporting")
         } else {
-            env.setTimeout(() => this.moveToTile(tile, settings), 10)
+            env.setTimeout(() => {
+                this.moveToTile(tile, settings)
+                tile.offLimitsExceptFor = false
+            }, 10)
             env.setTimeout(() => this.classList.remove("teleporting"), 200)
         }
     }
+
     moveToCoords(x, y, options) {
         const tile = this.grid.getTileFromCoordinates(x, y);
         if (tile) {
@@ -3064,8 +3803,39 @@ class CombatActor extends HTMLElement {
         }
     }
 
+    //shortcut for knocking a piece off to some other random tile
+    displace({possibleTiles, endCallback} = {}) {
+        //get pieces that have no distortion
+        let tiles = possibleTiles
+
+        console.log("got ppossible tiles", possibleTiles)
+        if(!tiles) tiles = env.rpg.grid.tilesByType.basic.filter(t=>{
+            return !t.piece && (t.effects.length == 0 || !t.effects.some(e=>e.host.slug == "scene_edge"))
+        })
+
+        console.log("ending up with these tiles to displace to", tiles)
+
+        let launchTile = tiles.sample()
+
+        //fall back to any tile
+        if(!launchTile) launchTile = env.rpg.grid.tilesByType.basic.filter(t=>!t.piece && !t.classList.contains("noland")).sample()
+
+        if(launchTile) {
+            let actor = this.actor
+            let isCurrentActor = actor == env.rpg.currentActor
+            if(actor.piece) {
+                actor.displacing = true
+                actor.piece.animateToTile(launchTile, {animation: "displace", duration: 1000, follow: isCurrentActor, endCallback: ()=>{
+                    actor.displacing = false
+                    if(env.rpg.movingFor == actor && env.rpg.turnData.showingActions) actor.piece.startMovement()
+                    if(endCallback) endCallback()
+                }})
+            }
+        }
+    }
+
     //dist shortcut - can take an RPG actor object, combat-actor, or combat-tile
-    getDistance(target, {detailed = false} = {}) {
+    getDistance(target, {detailed = false, avoidHazardTiles = false} = {}) {
         let targetX, targetY;
         if(target?.piece?.tile) {targetX = target.piece.tile.x; targetY = target.piece.tile.y; } 
         else if(target instanceof CombatActor) { targetX = target.tile.x; targetY = target.tile.y; } 
@@ -3082,7 +3852,7 @@ class CombatActor extends HTMLElement {
         if(detailed) {
             if(target.piece.tile == this.tile) return { rawDistance: distance, pathDistance: 0, path: [], canEnter: true};
 
-            const path = this.tile.pathfindTo(target?.piece.tile || target.tile || target, { towards: true })
+            const path = this.tile.pathfindTo(target?.piece.tile || target.tile || target, { towards: true, avoidHazardTiles })
             if(typeof path.pathDistance == "undefined") return { rawDistance: distance, pathDistance: path.length - 1, path, canEnter: true}
             return { rawDistance: distance, pathDistance: path.pathDistance, path: path.path, endDistance: path.distance, canEnter: false }
         }
@@ -3091,13 +3861,13 @@ class CombatActor extends HTMLElement {
     }
 
     //dist shortcut - takes an array of actors (or none), gets the distance from each
-    getActorDistance({actors, includeSelf} = {}) {
+    getActorDistance({actors, includeSelf, avoidHazardTiles = false} = {}) {
         const distances = []
         let list = actors || env.rpg.turnOrder
 
         list.forEach(actor => {
             if ((actor !== this.actor || includeSelf) && actor.piece) {
-                const distance = this.getDistance(actor, {detailed: true})
+                const distance = this.getDistance(actor, {detailed: true, avoidHazardTiles})
                 distance.actor = actor
                 distances.push(distance)
             }
@@ -3110,7 +3880,7 @@ class CombatActor extends HTMLElement {
     // notably, this doesn't just push them back until they hit something, but will also try 
     // to knock them further diagonally if the strength is not yet spent
     // can pass an onImpact function for any extra effects desired
-    knockback({direction, strength = 1, onImpact = false, ignoreMods = false, follow = true} = {}) {
+    knockback({direction, strength = 1, onImpact = false, ignoreMods = false, follow = true, falloff = true} = {}) {
         if(this.actor?.immunities?.knockback) return false;
 
         if(env.rpg.movingFor == this.actor) {
@@ -3141,11 +3911,12 @@ class CombatActor extends HTMLElement {
         if(!ignoreMods && this.actor?.statusEffects?.length) {
             this.actor.statusEffects.forEach(status => {
                 if(status.knockmod) remainingStrength += status.knockmod;
-            });
+            })
         }
         
         while (remainingStrength > 0) {
             let nextTile = this.grid.getTileFromCoordinates(this.x + dx, this.y + dy);
+            env.rpg.lastUpdate = Date.now()
 
             // in the case of pseudopieces attached to this
             let nextTilePiece //nextTile can be null
@@ -3167,15 +3938,33 @@ class CombatActor extends HTMLElement {
                     }
                 }
             }
+            
+            //final check
+            nextTilePiece = nextTile?.piece == this ? null : nextTile?.piece
+            
+            let lastTile = this.tile
+            if(lastTile.knockHighlightTimeout) {
+                lastTile.classList.remove("knockedover", lastTile.knockDirectionClass)
+                clearTimeout(lastTile.knockHighlightTimeout)
+            }
+            
+            lastTile.knockDirectionClass = `kbo-${effectiveDirection.replace(" ", "-")}`
+            setTimeout(() => lastTile.classList.add("knockedover", lastTile.knockDirectionClass), 10)
+            lastTile.knockHighlightTimeout = setTimeout(() => {
+                lastTile.classList.remove("knockedover", lastTile.knockDirectionClass)
+                lastTile.knockHighlightTimeout = null
+            }, 1610) // what was i cooking with this number
 
-            if (nextTile && !nextTilePiece && !nextTile.blocking) {
-                this.moveToTile(nextTile, {follow: false, reason: "knockback"})
+            if(nextTile && !nextTilePiece && !nextTile.blocking) {
                 remainingStrength--
+                this.moveToTile(nextTile, {follow: false, reason: remainingStrength == 0 ? "knockbackEnd" : "knockback"})
 
             //if they hit SOMEONE rather than a generic obstacle, transfer some knockback to them before trying again
             } else if(nextTile && nextTilePiece) {
                 if(onImpact) {onImpact({remainingStrength}); console.log("IMPACT!!")}
-                nextTilePiece.knockback({direction: effectiveDirection, strength: remainingStrength - 1})
+                nextTilePiece.knockback({direction: effectiveDirection, strength: falloff ? remainingStrength - 1 : remainingStrength, falloff})
+                if(!falloff && !nextTile.piece) this.moveToTile(nextTile, {follow: false, reason: remainingStrength == 0 ? "knockbackEnd" : "knockback"})
+                
                 remainingStrength--
 
             // they hit something hard and can't keep going
@@ -3185,7 +3974,19 @@ class CombatActor extends HTMLElement {
             }
         }
         
-        if(this.actor == env.rpg.currentActor) {
+        //knockbackEnd calling for early termination
+        if(remainingStrength > 0 && this.tile != originalTile) {
+            this.tile.effects.forEach(effect => {
+                if(effect.host?.events?.onActorAffected && 
+                    (!env.rpg.turnData[`${this.actor.slug}-${effect.host.id}`] || effect.host.knockbackRetrigger)
+                ) {
+                    effect.host.events.onActorAffected({tile: this.tile, actor: this.actor, reason: "knockbackEnd"})
+                    env.rpg.turnData[`${this.actor.slug}-${effect.host.id}`] = true
+                }
+            })
+        }
+        
+        if((this.actor == env.rpg.currentActor) && env.rpg.state == "animating") {
             if(follow) this.focusOnTile()
             
             //some fallback protection
@@ -3196,6 +3997,190 @@ class CombatActor extends HTMLElement {
         }
 
         return true
+    }
+
+    //predicts the knockback path without actually moving the piece
+    //returns an array of tiles that would be traversed during knockback, in order
+    //if we draw, then it'll add a kb-path class to the affected tiles, and give them a --direction style variable to rotate a floaty line to demonstrate path
+    predictKnockback({direction, strength = 1, ignoreMods = false, alsoDraw = false} = {}) {
+        if(this.actor?.immunities?.knockback) return [];
+
+        let effectiveDirection = direction
+        if(effectiveDirection == "random" || effectiveDirection == "none" || !direction) {
+            if(effectiveDirection == "none") console.warn("predictKB got direction 'none', choosing a random direction instead", this)
+            effectiveDirection = ['up', 'down', 'left', 'right', 'up-left', 'up-right', 'down-left', 'down-right'].sample()
+        }
+
+        let dx = effectiveDirection.includes('left') ? -1 : effectiveDirection.includes('right') ? 1 : 0
+        let dy = effectiveDirection.includes('up') ? -1 : effectiveDirection.includes('down') ? 1 : 0
+        let remainingStrength = strength
+        let x = this.x
+        let y = this.y
+        let path = []
+
+        //if it's negative KB, we invert the direction BEFORE any mods
+        if(remainingStrength < 0) {
+            dx = dx * -1
+            dy = dy * -1
+            remainingStrength = remainingStrength * -1
+        }
+
+        //some statuses may reduce or increase the strength of knockback (.knockmod)
+        if(!ignoreMods && this.actor?.statusEffects?.length) {
+            this.actor.statusEffects.forEach(status => {
+                if(status.knockmod) remainingStrength += status.knockmod
+            })
+        }
+        
+        while(remainingStrength > 0) {
+            let nextTile = this.grid.getTileFromCoordinates(x + dx, y + dy)
+
+            // in the case of pseudopieces attached to this
+            let nextTilePiece //nextTile can be null
+            if(nextTile) nextTilePiece = nextTile.piece == this ? null : nextTile.piece 
+
+            //if the next tile is blocked, try to move in the x or y direction separately
+            if (!nextTile || nextTilePiece || nextTile.blocking) {
+                if (dx !== 0 && dy !== 0) {
+                    //try moving in the x direction only
+                    let xTile = this.grid.getTileFromCoordinates(x + dx, y)
+                    if (xTile && !xTile.piece && !xTile.blocking) {
+                        nextTile = xTile
+                    } else {
+                        //try moving in the y direction only
+                        let yTile = this.grid.getTileFromCoordinates(x, y + dy)
+                        if (yTile && !yTile.piece && !yTile.blocking) {
+                            nextTile = yTile
+                        }
+                    }
+                }
+            }
+            
+            //final check
+            nextTilePiece = nextTile?.piece == this ? null : nextTile?.piece
+
+            if (nextTile && !nextTilePiece && !nextTile.blocking) {
+                path.push(nextTile)
+                x = nextTile.x
+                y = nextTile.y
+                remainingStrength--
+
+            //if they would hit someone, stop prediction and return current path
+            } else if(nextTile && nextTilePiece) {
+                break
+
+            // they would hit something hard and can't keep going
+            } else {
+                break
+            }
+        }
+
+        // calc the direction for each step in the path and apply visualization
+        if(alsoDraw) {
+            if(!env.rpg.kbPredictionTiles) {
+                env.rpg.kbPredictionTiles = new Set()
+                env.rpg.kbPredictionTiles.clearTiles = function() {
+                    //console.log("removing tiles")
+                    this.forEach(tile => {
+                        tile.kbVisualizers?.forEach(vis => vis.remove())
+                        tile.kbVisualizers.clear()
+                    })
+                    this.clear()
+                }
+            }
+
+            let prevX = this.x
+            let prevY = this.y
+            
+            path.forEach((tile, index) => {
+                let stepDx = tile.x - prevX
+                let stepDy = tile.y - prevY
+                let angle = Math.atan2(stepDy, stepDx) * 180 / Math.PI
+                
+                //console.log("adding", tile, "with angle", angle, "from step dx", stepDx, "and step dy", stepDy)
+                let kbVis = document.createElement('div')
+                kbVis.classList.add('kb-vis')
+                if(index === path.length - 1) kbVis.classList.add('kb-vis-final')
+                kbVis.style.setProperty('--direction', angle + 'deg')
+                tile.appendChild(kbVis)
+
+                if(!tile.kbVisualizers) tile.kbVisualizers = new Set()
+                tile.kbVisualizers.add(kbVis)
+                env.rpg.kbPredictionTiles.add(tile)
+                
+                prevX = tile.x
+                prevY = tile.y
+            })
+        }
+        
+        return path
+    }
+
+    //for use in combatHit, addStatus, any time you'd want to only briefly show the statplate
+    flashStatPlate(duration = env.ADVANCE_RATE * 2) {
+        let plate
+        setTimeout(() => {
+            plate = this.toggleStatPlate(true)
+            setTimeout(()=>{
+                if(this?.statPlate == plate) this.toggleStatPlate(false)
+            }, duration)
+        }, env.ADVANCE_RATE * 0.25)
+    }
+
+    // this also will swap to an outlined sprite temporarily
+    toggleStatPlate(state) {
+        this.showingStatPlate = state
+        if(state) {
+            if(this.statPlate) this.toggleStatPlate(false)
+            this.insertAdjacentElement('beforeend', this.getStatPlate())
+        
+            if(this.actor.team.name != "ally" && !this.actor.noOutline && !this.actor.outlined) {
+                this.actor.outlined = true
+                this.actor.sprite.querySelectorAll('img').forEach(img => {
+                    img.src = img.src.replace('.gif', '_outline.gif')
+                })
+            }
+
+        } else if(this.statPlate) {
+            this.statPlate.remove()
+            this.statPlate = null
+
+            if(this.actor.team.name != "ally" && !this.actor.noOutline && this.actor.outlined) {
+                this.actor.sprite.querySelectorAll('img').forEach(img => {
+                    img.src = img.src.replace('_outline', '')
+                })
+                this.actor.outlined = false
+            }
+        }
+        
+        return this.statPlate
+    }
+
+    getStatPlate() {
+        let actor = this.actor
+        let statPlate = document.createElement('div')
+        statPlate.classList.add('piece-stat')
+        statPlate.setAttribute("listeningfor", `--playercontrol-rotation--playercontrol-tilt`)
+        statPlate.setAttribute("intendedtransform", CombatActor.TRANSFORMS.statPlate)
+        statPlate.classList.add(`${actor.team.name}-colors`)
+        env.rpg.updatePropertyListeners({specificEl: statPlate})
+
+        let hpDisplay = `${actor.hp}HP${actor.bp ? `::${actor.bp}BP` : ``}`
+        /*
+        let statusHTML = ""
+        if(actor.box) statusHTML = actor.box.querySelector('.statuses').innerHTML
+
+            <div class="ps-statuses">${statusHTML}</div>
+        */
+        statPlate.innerHTML = `
+            ${actor.base.noHPDisplay ? '' : `<div class="ps-hp">${hpDisplay}</div>`}
+            <div class="ps-hitpredict"><div class="hitpredict"></div></div>
+        `
+
+        if(env.rpg.state == "targeting") insertHitPredictHTML(this.scene.targetingFor.actor, this.scene.targetingFor.action, this.actor, statPlate.querySelector('.ps-hitpredict'))
+        this.statPlate = statPlate
+
+        return statPlate
     }
 
     //misc shortcuts
@@ -3214,11 +4199,13 @@ class CombatActor extends HTMLElement {
             if(this._tile) this._tile.piece = null // clear old piece
 
             //update self settings and new tile
+            this._lastTile = this._tile
             this._tile = tile
             this._tile.piece = this
             this.x = tile.x
             this.y = tile.y
         } else { // clearing bc dead or something
+            this._lastTile = this._tile
             this._tile = tile
         }
     }
@@ -3251,6 +4238,7 @@ class CombatActor extends HTMLElement {
 
     //on remove, take it off da tile
     disconnectedCallback() {
+        this.toggleStatPlate(false)
         if(this.tile) {
             this.tile.piece = null
             this.tile = null
@@ -3275,7 +4263,9 @@ _gScore = new Map()
 _fScore = new Map()
 _visited = new Set()
 
-function _pathfindLogic(startTile, endTile) {
+//ing update - you should never use ignoresActors/ignoresObstacles in legitimate animations
+//it's mostly for pathfound actions
+function _pathfindLogic(startTile, endTile, {ignoresActors, ignoresObstacles, pathfindingForTargeting, avoidHazardTiles = false} = {}) {
     _openSet.clear()
     _cameFrom.clear()
     _gScore.clear()
@@ -3294,7 +4284,13 @@ function _pathfindLogic(startTile, endTile) {
 
         let neighbors = env.rpg.grid.neighborMap.get(current)
         for (let neighbor of neighbors) {
-            if (_visited.has(neighbor) || neighbor?._piece || neighbor?._hasPseudopiece || neighbor?.blocking) continue;
+            if (
+                _visited.has(neighbor) || 
+                (!ignoresActors && neighbor?._piece) || 
+                (!ignoresActors && neighbor?._hasPseudopiece) || 
+                (!ignoresObstacles && (neighbor?.blocking === true || (neighbor?.blocking === "soft" && !pathfindingForTargeting))) ||
+                (avoidHazardTiles && neighbor?.hazardous)
+            ) continue;
 
             let tentativeGScore = _gScore.get(current) + current.distFrom(neighbor)
             if (tentativeGScore < _gScore.get(neighbor) || !_gScore.has(neighbor)) {

@@ -90,6 +90,20 @@ var env = {
             noProcess: true,
             voice: false
         },
+    
+        plainsys: {
+            type: "plainsys noname",
+            player: true,
+            noProcess: true,
+            voice: ()=>{play('muiScanner', 2)}
+        },
+    
+        definitionget: {
+            type: "noname asis",
+            player: true,
+            noProcess: true,
+            voice: ()=>{play('muiScanner', 2)}
+        },
 
         funfriend: {
             element: "#funfriend",
@@ -108,7 +122,7 @@ var env = {
         akizet: {
             image: '/img/sprites/akizet/portrait.gif',
             type: "obesk qou akizet",
-            element: ".truecreature .akizet",
+            element: ".truecreature .akizet.creaturesprite",
             player: true,
             voice: ()=>play('talk', 2.5)
         },
@@ -142,8 +156,9 @@ var env = {
         },
 
         bugout: {
-            image: "/img/sprites/daemons/knight/scan.gif",
-            type: "bstrd uppercase portrait-contain",
+            image: "/img/sprites/daemons/bugout/scan.gif",
+            element: ".bugoutcreature",
+            type: "bastard-font portrait-contain",
             voice: ()=>play('talkcroak', 0.6)
         },
 
@@ -272,6 +287,10 @@ var env = {
                     const entity = ev.detail.mask; //mask name you swapped to
                 })
 
+                document.addEventListener('corru_mui', (ev)=>{
+                    // triggers when the MUI is toggled
+                })
+
             can be manually triggered via dispatchEvent, i.e. "document.dispatchEvent(env.hooks.corru_loaded)" 
 
             the page object is updated periodically, so if you need to preserve it, be sure you do something like 'let currentPage = page' so you have the ref
@@ -294,6 +313,7 @@ var env = {
         corru_net: new CustomEvent('corru_net'),
         corru_act: new CustomEvent('corru_act'),
         corru_mask: new CustomEvent('corru_mask'),
+        corru_mui: new CustomEvent('corru_mui'),
 
         stage_change: new CustomEvent('stage_change'),
     },
@@ -385,10 +405,58 @@ var env = {
         state: 0.5,
         status: "coherent",
         code: 0
+    },
+
+    // for drawing random incoherent chars from
+    incoherentLibrary: [... "wµ¬îV°0KöÂFå÷ú*¼iÿfÝ~üxÛ4BœpºQôuæÕ¡ÔUCÅïSáMÓ”ƒûTÉÊÎý¯Ÿaéõž-&5«¶¾ßì6¢Ëlã‰çÄ£+¤yàdÙmzItj®½ðŠYÜ#±b©íLÚÆÐš„"]
+}
+
+//some global dialogue actors are just aliases of others
+env.dialogueActors["gordon"] = env.dialogueActors["envoy"]
+
+//pressed key management - some keys have special global effects
+function pressedKeys(key, state) {
+    lowKey = key.toLowerCase()
+
+    if(lowKey == "reset") {
+        for(const key in env.pressedKeys) pressedKeys(key, false)
+        return
+    }
+
+    //emergency backup key
+    if(lowKey == "x") lowKey = "shift"
+
+    env.pressedKeys[lowKey] = state
+
+    switch(lowKey) {
+        case "shift":
+            shiftDetailToggle(state)
+        break
     }
 }
 
-env.dialogueActors["gordon"] = env.dialogueActors["envoy"]
+// for long toggling shiftdetails
+function shiftDetailToggle(state, hard) {
+    if(!hard && env.shiftDetailToggle) return; 
+
+    if(state) {
+        env.shiftDetail = state
+        env.shiftDetailToggle = hard
+        body.classList.add("shifthold")
+        if(env?.rpg?.active) { /* RPG has a not-class for rendering efficiency */
+            env.rpg.classList.add("shifthold")
+            env.rpg.classList.remove("unshifted")
+        }
+    } else {
+        env.shiftDetail = state
+        env.shiftDetailToggle = false
+        body.classList.remove("shifthold")
+        if(env?.rpg?.active) {
+            env.rpg.classList.remove("shifthold")
+            env.rpg.classList.add("unshifted")
+        }
+    }
+}
 
 //initialize the window when dom is ready
 var swup
@@ -400,16 +468,16 @@ ready(()=>{
     change("TEMP!!lastvisit", check("lastload"))
     change("lastload", Date.now())
 
-    if(localStorage['volume']) {
-        Howler.volume(localStorage['volume'])
+    if(localStorage['volume'] || localStorage['volume-sfx'] || localStorage['volume-music']) {
+        if(localStorage['volume'])Howler.volume(localStorage['volume'])
         document.querySelectorAll('.vol-slider').forEach(slider => slider.value = localStorage[slider.getAttribute('for')] || 1)
     } else Howler.volume(0.5) //we start them at 0.5, 1, 1
     
     scanner = document.querySelector('#mindspike-scanner')
     env.pressedKeys = {}
-    body.addEventListener('keyup', function(e) {env.pressedKeys[e.key.toLowerCase()] = false})
-    body.addEventListener('keydown', function(e) {env.pressedKeys[e.key.toLowerCase()] = true})
-    window.addEventListener('blur', () => { env.pressedKeys = {}}) // if you alt tab it should release stuff
+    body.addEventListener('keyup', function(e) { pressedKeys(e.key, false) })
+    body.addEventListener('keydown', function(e) { pressedKeys(e.key, true) })
+    window.addEventListener('blur', () => { pressedKeys("reset") }) // if you alt tab it should release stuff
 
     /////////////////INTERACTIVE STUFF/////////////////////////
     //right clicking is disabled because we have a special context menu! 
@@ -478,7 +546,11 @@ ready(()=>{
                     
                     let playSound = true
                     if(action.class) if(action.class.includes("nosound")) playSound = false
-                    if(playSound) play('muiClick')
+                    if(playSound) {
+                        setTimeout(()=>{ // a delay so that, if the action triggers a sound, that overrides this
+                            if(!env.recentSfx) play('muiClick')
+                        }, 50)
+                    }
                     
                     scanner.classList.remove('active')
                     scanner.querySelectorAll(".act-option").forEach(action => action.classList.add("closeout"))
@@ -659,9 +731,17 @@ ready(()=>{
                 if(env.cursor.y < (window.innerHeight / 2)) env.defbox.style.setProperty("--yFlip", 0); else env.defbox.style.setProperty("--yFlip", -1)
 
                 env.defbox.classList.add('active')
-                definitionRender(env.hovering)
+                env.definitionShowing = true
+                try {
+                    definitionRender(env.hovering)
+                    env.currentDefinition = env.hovering.getAttribute('definition')
+                } catch(e) {
+                    printError(`definition hover error: ${e}`)
+                }
             } else {
                 env.defbox.classList.remove('active')
+                env.definitionShowing = false
+                env.currentDefinition = ""
             }
         }
 
@@ -685,6 +765,7 @@ ready(()=>{
     env.pageCursor = {x: 0, y: 0}
     env.defbox = document.getElementById('definition-box')
     env.mouseThrottle = false
+    env.mouseThrottleSpeedBase = 50
     env.mouseThrottleSpeed = 50
     env.toggleMouseThrottleLowSpeed = (set = "toggle") => {
         let on = set
@@ -699,19 +780,19 @@ ready(()=>{
 
         switch(on) {
             case true:
-                env.mousethrottlespeed = 250
+                env.mouseThrottleSpeed = 250
                 env.defbox.classList.add("slow")
             break
 
             case false:
-                env.mousethrottlespeed = 50
+                env.mouseThrottleSpeed = 50
                 env.defbox.classList.remove("slow")
             break
         }
     }
 
     env.globalMouseMove = (e) => {
-        if (env.mouseThrottle) {
+        if(env.mouseThrottle) {
             return
         }
 
@@ -736,23 +817,30 @@ ready(()=>{
 
     window.addEventListener('mousemove', env.globalMouseMove)
 
-    //load volume settings and get the spike-button functional first thing
+    //load volume and contrast settings, get the spike-button functional first thing
     //this approach to multiple volume sliders was kinda inspired by max (@the_dem)'s crack at a mod for it!
-    document.querySelectorAll('.vol-slider').forEach(slider => {
-        let sliderFor = slider.getAttribute('for')
-
-        slider.addEventListener('input', ev=>{
-            localStorage[sliderFor] = ev.target.value
+    document.body.addEventListener('input',ev=>{
+        let input = ev.target
+        if(ev.target.type == 'range'){
+            let sliderFor = input.getAttribute('for')
+            localStorage[sliderFor] = input.value
+            
             switch(sliderFor) {
+                case "render-brightness":
+                        setRenderBrightnessPreference(input.value)
+                    break;
+                case "render-contrast":
+                        setRenderContrastPreference(input.value)
+                    break;
+
                 case "volume": play("obeskHover"); Howler.volume(ev.target.value); break
                 case "volume-sfx": play("obeskHover"); break
-
                 case "volume-music": if(env.bgm) {
                     if(env.bgmIsFading) return;
                     env.bgm.volume(getModifiedVolume('music', env.bgm.intendedVol ? env.bgm.intendedVol : 1))
                 }; break
             }
-        })
+        }
     })
 
     document.querySelector('#meta-volume-toggle').addEventListener('click', e=>{
@@ -760,7 +848,7 @@ ready(()=>{
         if(volume > 0) volume = 0; else volume = 0.5
 
         document.querySelector('#meta-volume-slider').value = volume
-        document.querySelector('#meta-volume-slider').dispatchEvent(new Event('input'))
+        document.querySelector('#meta-volume-slider').dispatchEvent(new Event('input', {bubbles:true    }))
     })
 
     /////////////////MENUUUUUUUUUUS////////////
@@ -839,7 +927,7 @@ ready(()=>{
 
     //////////////////AUDIOOOO/////////////////////////////////
     //audio for permanent fixtures
-    document.querySelectorAll(`#mindspike-act, #mindspike-examine, #mindspike-back, #mui-links > *, #meta-icon, .menureturn, #meta-menu .moth-trigger, #system-menu summary, #system-menu .button`).forEach(e=>{
+    document.querySelectorAll(`#mindspike-act, #mindspike-examine, #mindspike-back, #mui-links > *, #meta-icon, .menureturn, #meta-menu .moth-trigger, #system-menu summary, #system-menu .button, #system-menu input[type="range"]`).forEach(e=>{
         e.addEventListener('mouseenter', ()=>play('muiHover'))
         e.addEventListener('click', ()=> play('muiClick'))
     })
@@ -997,42 +1085,126 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
     if(env.defbox.rendering == defEl) return
     env.defbox.rendering = defEl
     let definition = defEl.getAttribute('definition')
+    let definitionNote = defEl.getAttribute("extraDefinitionNote") || ""
+    if(definitionNote.includes("++")) definitionNote = "" // some fake defEls passed in use a fake getAttribute, a ++ means it's one of these instances
     
     //if we're looking at an action, we want to sub in dynamic variables and use a special template
     if(definition.startsWith("ACTION++") && env.ACTIONS) {
-        let template = `
+        let templateModified = false
+        let template = `${definitionNote}
         <div class="actiondef">
             <div class="actiondef-heading">
                 <h5>[ACTIONNAME]</h5>
                 <div class="actiondef-stats">
                     <span class="actiondef-stat" info="target">[TARGETS]</span>
-                    <span class="actiondef-stat" info="hit">[HIT%]</span>
-                    <span class="actiondef-stat" info="crt">[CRIT%]</span>
+                    <span class="actiondef-stat" info="acc">[HIT%]</span>
+                    <span class="actiondef-stat" info="crit">[CRIT%]</span>
                 </div>
+                [flavor] <!-- smaller, extra display text if there isn't enough flavor room in onUse/onHit-->
             </div>
             
             <div class="actiondef-effect">
                 <h6>EFFECT</h6>
                 [ACTHELP] <!-- fallback only -->
-                [flavor] <!-- smaller, extra display text if there isn't enough flavor room in onUse/onHit-->
+                
                 [onUse] <!-- general use effect i.e. focus -->
                 [onHit] <!-- hit effect -->
                 [onCrit] <!-- crit effect -->
                 [conditional] <!-- if an action has some special other effect -->
+                [specialNotes] <!-- tacked on based on actor data (actionDefSpecialNotator) -->
             </div>
             
             <!-- statuses, etc -->
-            <div class="actiondef-statuses">{STATUSES}</div>
+            <div class="actiondef-statuses hasshiftdetail">{STATUSES}</div>
+
+            <!-- extra demarkation -->
+            {NOTICE}
         </div>
         `
 
         let action = env.ACTIONS[definition.split("++")[1]]
+        let actor = env?.rpg?.actors ? env.rpg.actors[defEl.getAttribute('fromactor')] : false
+        let targetActor = env?.rpg?.actors ? env.rpg.actors[defEl.getAttribute('toactor')] : false
+
+        console.log("rendering action definition for", action, "from", actor, "to", targetActor)
         if(!action) {
             env.defbox.innerHTML = `no definition for ${definition.split("++")[1]}. this is probably a bug`
             return
         }
 
-        let statuses = new Set();
+        /* modifiers that are used here:
+            * amt = outgoingMult
+            * acc = outgoingToHit
+            * crit = outgoingCrit
+            
+            crit and amt also have flat versions (no acc yet cause it hasn't been needed)
+            * flatAmt = outgoingFlat
+            * flatCrit = outgoingFlatCrit
+        */
+        let actorStats = actor?.effectiveStats || {}
+        let targetStats = targetActor?.effectiveStats || {}
+
+        const statKeyMap = {
+            'amt': 'outgoingMult',
+            'accuracy': 'outgoingToHit',
+            'crit': 'outgoingCrit',
+            'inamt': 'incomingMult',
+            'inaccuracy': 'incomingToHit',
+            'incrit': 'incomingCrit'
+        }
+        
+        const flatStatKeyMap = {
+            'amt': 'outgoingFlat',
+            'accuracy': 'outgoingFlatToHit',
+            'crit': 'outgoingFlatCrit',
+            'inamt': 'incomingFlat',
+            'inaccuracy': 'incomingFlatToHit',
+            'incrit': 'incomingFlatCrit'
+        }
+        
+        let getModifiedStat = (statKey, specialStatMap) => {
+            let statMap = specialStatMap || action.stats || action || {}
+            let baseStat = statMap[statKey]
+            if(!baseStat && baseStat !== 0) return false;
+
+            let modifiedStat = baseStat
+            let modified = false
+
+            const multStatKey = statKeyMap[statKey]
+            const flatStatKey = flatStatKeyMap[statKey]
+
+            const multStatkeyTarget = statKeyMap["in" + statKey]
+            const flatStatkeyTarget = flatStatKeyMap["in" + statKey]
+
+            let modifiedStatMult = 1
+            let modifiedStatFlat = 0
+
+            //incoming modifications from target actor
+            if(targetActor) {
+                if(multStatkeyTarget && targetStats[multStatkeyTarget]) { modifiedStatMult += targetStats[multStatkeyTarget]; modified = true; templateModified = true }
+                if(flatStatkeyTarget && targetStats[flatStatkeyTarget]) { modifiedStatFlat += targetStats[flatStatkeyTarget]; modified = true; templateModified = true }
+            }
+
+            //ING TODO - account for heal flats
+
+            //outgoing modifications from origin actor            
+            if(multStatKey && actorStats[multStatKey]) { modifiedStatMult += actorStats[multStatKey]; modified = true; templateModified = true }
+            if(flatStatKey && actorStats[flatStatKey]) { modifiedStatFlat += actorStats[flatStatKey]; modified = true; templateModified = true }
+
+            modifiedStat = (modifiedStat + modifiedStatFlat) * modifiedStatMult
+            if(statKey == "amt") {
+                modifiedStat = Math.floor(modifiedStat)
+                if(modifiedStatMult < 1 && modifiedStatFlat >= 0 && modifiedStat == 0) modifiedStat = Math.max(1, modifiedStat) // amts are always reduced to 1 minimum when it's by percent
+            }
+
+            return {
+                modified: modified,
+                final: Math.round(modifiedStat * 100) / 100,
+                base: Math.round(baseStat * 100) / 100
+            }
+        }
+
+        let statuses = new Set()
         const placeholders = template.match(/\[(.*?)\]/g)
         placeholders.forEach((placeholder) => {
             let replacement = ""
@@ -1042,24 +1214,32 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
                 //the simple ones
                 case '[ACTIONNAME]': replacement = action.name; break
                 case '[HIT%]': 
-                    let accuracy = action?.stats?.accuracy || action.accuracy
-                    replacement = ((action?.stats?.autohit || action.autohit) ? "auto" : `${accuracy * 100}%`) || "auto";
-                    if(replacement == "auto" || accuracy >= 1) {
-                        replacement = `<span class="friend-shadow">${replacement}</span>`
-                    } else if(accuracy <= 0.6) {
-                        replacement = `<span class="obesk-shadow">${replacement}</span>`
-                    } else if(!accuracy) {
-                        replacement = `100%`
-                    }
+                    let accuracy = getModifiedStat('accuracy')
+
+                    var classes = ""
+                    if(action?.stats?.autohit || action.autohit || accuracy?.final >= 1) classes += "friend-shadow"
+                    else if(accuracy?.final <= 0.6) classes += "obesk-shadow"
+                    if(accuracy?.modified) classes += " modified"
+
+                    replacement = `<span class="${classes}" ${accuracy?.modified ? `base="${Math.floor(accuracy.base * 100)}%"` : ""}
+                        >${((action?.stats?.autohit || action.autohit) ? "auto" : `${Math.floor(accuracy?.final * 100)}%`) || "auto"}</span>`;
+                    
+                    if(!accuracy && !action?.stats?.autohit && !action.autohit) replacement = `100%` // default
                 break
+
                 case '[CRIT%]': 
-                    let crit = action?.stats?.crit || action.crit
-                    replacement = crit ? `${crit * 100}%` : "";
-                    if(crit >= .9) {
-                        replacement = `<span class="friend-shadow">${replacement}</span>`
-                    } else if(crit <= 0.4) {
-                        replacement = `<span class="obesk-shadow">${replacement}</span>`
-                    }
+                    let crit = getModifiedStat('crit')
+
+                    if(crit) {
+                        var classes = ""
+                        if(crit?.final >= 0.9) classes += "friend-shadow"
+                        else if(crit?.final <= 0.4) classes += "obesk-shadow"
+                        if(crit?.modified) classes += " modified"
+
+                        if(crit) replacement = `<span class="${classes}" ${crit?.modified ? `base="${Math.floor(crit.base * 100)}%"` : ""}
+                            >${crit ? `${Math.floor(crit.final * 100)}%` : ""}</span>`;
+
+                    } else replacement = ""
                 break
 
                 //effects
@@ -1086,10 +1266,26 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
                 case '[onHit]':
                 case '[onCrit]':
                 case '[conditional]':
+                case '[specialNotes]':
                     if (action.details) {
                         let type = placeholder.slice(1, -1) //remove the brackets
                         let template = action.details[type]
-                        if(typeof template == "function") template = template();
+                        if(typeof template == "function") template = template(actor)
+                        let statMap = {... action.stats} //to leave space for notators
+
+                        //added by statuses that modify actions in a notable way
+                        //notators return something like what an action's conditional string might
+                        //should include its own prefix of ("THING::")
+                        if(type == "specialNotes" && actor?.actionDefSpecialNotatorStatuses?.length) {
+                            template = ""
+                            actor.actionDefSpecialNotatorStatuses.forEach(notatorStatus => {
+                                let extraNote = notatorStatus.actionDefSpecialNotator(action, statMap, actor)
+                                console.log("got notator extra note:", extraNote)
+                                if(extraNote) {
+                                    template += `\n${extraNote}`
+                                }
+                            })
+                        }
 
                         if(template) {
                             const statPlaceholders = template.match(/\[(STAT|STATUS)::(.*?)\]/g)
@@ -1098,44 +1294,93 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
                                 let [_, type, statKey] = statPlaceholder.match(/\[(STAT|STATUS)::(.*?)\]/)
                                 let statDisplay = ""
                                 let statClass = "neutral-shadow"
+                                let statAttr = ""
+                                let statDef = ""
 
                                 switch(type) {
                                     case "STATUS":
-                                        let info = action.stats.status[statKey]
-                                        let status = env.STATUS_EFFECTS[info.name]
-                                        if(status.beneficial) statClass = "status friend-shadow"; else statClass = "status obesk-shadow"
+                                        let info = statMap.status[statKey]
+                                        if(!info) return printError(`action ${action.name} is trying to reference status not defined in stat block ${statKey}`);
+                                        let statusName = info.name
+                                        let statusLength = info.length
+                                        let baseStatusName = statusName
+                                        let baseStatusLength = statusLength
+
+                                        //modify both name and length if applicable
+                                        if(actor?.actionDefStatusReplacers) {
+                                            actor.actionDefStatusReplacers.forEach(replacer => {
+                                                [statusName, statusLength] = replacer(statusName, statusLength)
+                                            })
+                                        }
+
+                                        let status = env.STATUS_EFFECTS[statusName]
+                                        if(status.beneficial) statClass = "status friend-shadow defstatusicon"; else statClass = "status obesk-shadow defstatusicon"
                                         statDisplay = `${status.name}`
-                                        if(isFinite(info.length)) { // we only add to the display if a length is specified                                            
-                                            statDisplay = `${info.length < 0 ? "-" : `+`}${status.infinite || status.passive ? '' : `${info.length}T:`}${statDisplay}`
+
+                                        console.log("status display:", statDisplay, "length:", statusLength, "base:", baseStatusName, baseStatusLength)
+                                        if(baseStatusName != statusName || baseStatusLength != statusLength) {
+                                            templateModified = true
+                                            statClass += " modified"
+                                            statAttr = `base="${baseStatusLength < 0 ? "-" : isFinite(baseStatusLength) ? `+` : ''}${(isFinite(baseStatusLength) && !(status.infinite || status.passive)) ? `:${baseStatusLength}T` : ''}${baseStatusName}"`
+                                        }
+
+                                        if(isFinite(statusLength)) { // we only add to the display if a length is specified                                            
+                                            statDisplay = `${statusLength < 0 ? "-" : `+`}${status.infinite || status.passive ? '' : `${statusLength}T:`}${statDisplay}`
                                             statuses.add(status)
                                         } else if(info.showReference) { // or if it's for reference
                                             statuses.add(status)
                                         }
+
+                                        statAttr += ` definition="STATUS++${status.slug}" style="--defstatusicon: url(${status.icon || `/img/sprites/combat/statuses/${status.slug}.gif` })"`
                                     break
                                     
                                     default: //stat
-                                        let statNum = action.stats[statKey]
-                                        switch(statKey) {                                            
-                                            case "crit": statDisplay = `${statNum * 100}%`; break;
-                                            case "accuracy": statDisplay = `${statNum * 100}%`; break;
-                                            case "kb": statDisplay = `KB::${statNum}`; statuses.add(env.STATUS_EFFECTS['kb']); break;
+                                        let effectiveStatKey = statKey 
+                                        if(statKey == "bp") effectiveStatKey = "amt"
+
+                                        let statNum = statMap[effectiveStatKey]
+                                        let modifiedStat = getModifiedStat(effectiveStatKey, statMap)
+                                        let baseStatDisplay = statNum
+                                        if(modifiedStat?.modified) statNum = modifiedStat.final
+
+                                        switch(statKey) {                                         
+                                            case "accuracy": case "crit": 
+                                                statDisplay = `${statNum * 100}%`; baseStatDisplay = `${baseStatDisplay * 100}%`
+                                            break
+
+                                            case "kb": statDisplay = `KNOCKBACK::${statNum}`; statuses.add(env.STATUS_EFFECTS['kb']); break; // not modifiable yet
                                             case "bp": case "amtBP":
-                                                statDisplay = `<span class="actiondef-bp">${statNum > 0 ? `+${statNum}` : statNum}BP</span>`; 
+                                                statDisplay = `<span class="actiondef-bp">${statNum > 0 ? `+${statNum}` : statNum} BARRIER</span>`
+                                                baseStatDisplay = `${baseStatDisplay > 0 ? `+${baseStatDisplay}` : baseStatDisplay} BARRIER`
+
                                                 if(statNum > 0) statClass = "friend-shadow"; else statClass = "obesk-shadow"
-                                                statuses.add(env.STATUS_EFFECTS['bp']);
-                                            break;
+                                                statuses.add(env.STATUS_EFFECTS['bp'])
+                                            break
                                                 
                                             default: 
                                                 if(statKey.includes("HP") || statKey == "amt") {
-                                                    statDisplay = `${(-statNum) > 0 ? `+${-statNum}` : -statNum}HP`; 
+                                                    statDisplay = `${(-statNum) > 0 ? `+${-statNum}` : -statNum}HP`;
+                                                    baseStatDisplay = `${(-baseStatDisplay) > 0 ? `+${-baseStatDisplay}` : -baseStatDisplay}HP`
                                                     if(statNum < 0) statClass = "friend-shadow"; else statClass = "obesk-shadow"
-                                                } else statDisplay = statNum; 
-                                            break;
+                                                } else statDisplay = statNum
+                                            break
+                                        }
+
+                                        if(modifiedStat?.modified) {
+                                            statClass += " modified"
+                                            statAttr = `base="${baseStatDisplay}"`
+                                        }
+
+                                        if(statKey == "bp" || statKey == "amtBP" || statKey == "kb") {
+                                            let keyDef = statKey.replace('amt', '').toLowerCase()
+                                            statClass += " defstatusicon"
+                                            statAttr += ` definition="STATUS++${keyDef}" style="--defstatusicon: url(${env.STATUS_EFFECTS[keyDef].icon || `/img/sprites/combat/statuses/${keyDef}.gif` })"`
                                         }
                                 }
 
-                                
-                                template = template.replace(statPlaceholder, statDisplay ? `<span class="${statClass}">${statDisplay}</span>` : "")
+                                template = template.replace(statPlaceholder, statDisplay ? 
+                                    `<span class="${statClass}" ${statAttr}>${statDisplay}</span>`
+                                 : "")
                             })
 
                             replacement = `<span class="actiondef-${type.toLowerCase()}">${template}</span>`;
@@ -1156,12 +1401,12 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
             let statusesHTML = ""
             
             statuses.forEach(status => {
-                let removes = ""
+                let removes = "\n"
                 if(status?.removes?.length) {
-                    status.removes.forEach(removeSlug => {
+                    status.removes.forEach((removeSlug, i) => {
                         let removeStatus = env.STATUS_EFFECTS[removeSlug]
                         if(removeStatus.advancedStatus && !page.showAdvancedStatuses) return;
-                        removes += `, <span class="status-removes ${removeStatus.beneficial ? `friend-color` : `obesk-color`}">-<img class="actiondef-status-icon" src="${removeStatus.icon || `/img/sprites/combat/statuses/${removeStatus.slug}.gif` }" aria-hidden='true'>${removeStatus.name}</span>`
+                        removes += `<span class="status-removes minorstate">${ i == 0 ? "removes " : ""}<span class=" ${removeStatus.beneficial ? `friend-color` : `obesk-color`}"><img class="actiondef-status-icon" src="${removeStatus.icon || `/img/sprites/combat/statuses/${removeStatus.slug}.gif` }" aria-hidden='true'>${removeStatus.name}</span>${i < status.removes.length - 1 ? ", " : ""}</span>`
                     })
                 }
 
@@ -1178,6 +1423,11 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
         } else template = template.replace("{STATUSES}", "")
 
         // Replace the template in the env.defbox.innerText
+        if(templateModified) {
+            template = template.replace(`class="actiondef"`, `class="actiondef defmodified"`)
+            template = template.replace(`{NOTICE}`, `<span class="actiondef-modification"></span>`)
+        } else template = template.replace(`{NOTICE}`, "")
+        
         if(returnHTML) {
             return template
         } else {
@@ -1188,7 +1438,7 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
     //it's an action hover, but actions aren't defined (as referenced in logic of above block)
     } else if(definition.startsWith("ACTION++")) {
         env.defbox.setAttribute("for", "regular")
-        env.defbox.innerHTML = "ERROR::'missing context'"
+        env.defbox.innerHTML = `${definitionNote}\nERROR::'missing context'`
 
     } else if(definition.startsWith("TILE++") && defEl.classList.contains("effectbearer") && defEl.effects && CombatGrid) {
         let effectList = ""
@@ -1214,11 +1464,32 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
         })
         
 
-        let template = `
+        let template = `${definitionNote}
         <div class="actiondef tiledef">
             <div class="actiondef-statuses">${effectList}</div>
         </div>
         `
+
+        // give icons to any references
+        let tempDiv = document.createElement("div")
+        tempDiv.innerHTML = template
+        let statusDefEls = tempDiv.querySelectorAll("[definition^='STATUS++']")
+        statusDefEls.forEach(statusDefEl => {
+            let statusSlug = statusDefEl.getAttribute("definition").split("++")[1]
+            let statusObj = env.STATUS_EFFECTS[statusSlug]
+            if(!statusObj) return console.warn(`no status definition found for ${statusSlug} in action definition`)
+
+            let statusIcon = statusObj.icon || `/img/sprites/combat/statuses/${statusObj.slug}.gif`
+            statusDefEl.style.setProperty("--defstatusicon", `url(${statusIcon})`)
+            statusDefEl.classList.add("defstatusicon")
+
+            if(statusDefEl.tagName == "SPAN") {
+                let colorType = statusObj.beneficial ? "friend-color" : "obesk-color"
+                if(statusObj.beneficial == "complex") colorType = "neutral-color"
+                statusDefEl.classList.add(colorType)
+            }
+        })
+        template = tempDiv.innerHTML
 
         if(returnHTML) {
             return template
@@ -1226,6 +1497,7 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
             env.defbox.setAttribute("for", "tile")
             env.defbox.innerHTML = template
         }
+        
     } else if(definition.startsWith("STATUS++") && env.STATUS_EFFECTS) {
         let statusSlug = definition.split("++")[1]
         let statusObj = defEl.statusObj || env.STATUS_EFFECTS[statusSlug]
@@ -1234,17 +1506,39 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
             return
         }
 
+        const statusHelp = processHelp(statusObj)
         const statusesHTML = `
-            <div class="actiondef-status ${statusObj.beneficial ? "beneficial" : ""} ${statusObj.passive ? "passive" : ""} ${env.crittaMap && statusObj.impulse ? "impulse" : ""}">
+            <div class="actiondef-status ${statusObj.beneficial ? statusObj.beneficial == "complex" ? "complex" : "beneficial" : ""} ${statusObj.passive ? "passive" : ""} ${env.crittaMap && statusObj.impulse ? "impulse" : ""}">
                 <img class="actiondef-status-icon" src="${statusObj.icon || `/img/sprites/combat/statuses/${statusObj.slug}.gif`}" aria-hidden="true">
-                <h6>${statusObj.name}::</h6><span>${processHelp(statusObj)}</span>
+                <h6>${statusObj.name}::</h6><span>${statusHelp}</span>
             </div>
         `
-        const template = `
+        let template = `${definitionNote}
             <div class="actiondef statusdef">
-                <div class="actiondef-statuses">${statusesHTML}</div>
+                <div class="actiondef-statuses ${statusHelp.includes("shiftdetail") ? "hasshiftdetail" : ""}">${statusesHTML}</div>
             </div>
         `
+
+        // give icons to any references
+        let tempDiv = document.createElement("div")
+        tempDiv.innerHTML = template
+        let statusDefEls = tempDiv.querySelectorAll("[definition^='STATUS++']")
+        statusDefEls.forEach(statusDefEl => {
+            let statusSlug = statusDefEl.getAttribute("definition").split("++")[1]
+            let statusObj = env.STATUS_EFFECTS[statusSlug]
+            if(!statusObj) return console.warn(`no status definition found for ${statusSlug} in action definition`)
+
+            let statusIcon = statusObj.icon || `/img/sprites/combat/statuses/${statusObj.slug}.gif`
+            statusDefEl.style.setProperty("--defstatusicon", `url(${statusIcon})`)
+            statusDefEl.classList.add("defstatusicon")
+
+            if(statusDefEl.tagName == "SPAN") {
+                let colorType = statusObj.beneficial ? "friend-color" : "obesk-color"
+                if(statusObj.beneficial == "complex") colorType = "neutral-color"
+                statusDefEl.classList.add(colorType)
+            }
+        })
+        template = tempDiv.innerHTML
 
         if(returnHTML) {
             return template
@@ -1254,11 +1548,12 @@ function definitionRender(defEl, {returnHTML = false} = {}) {
         }
 
     } else { // default
+        let finalDefinition = `${definitionNote ? `${definitionNote}\n` : ""}${defEl.getAttribute('definition')}`
         if(returnHTML) {
-            return defEl.getAttribute('definition')
+            return finalDefinition
         } else {
             env.defbox.setAttribute("for", "regular")
-            env.defbox.innerHTML = defEl.getAttribute('definition')
+            env.defbox.innerHTML = finalDefinition
         }
     }
 }
@@ -1276,10 +1571,10 @@ function chatter({actor, text, duration = 6000, sfx = true, delay = 0, log = tru
         //return if you're in dialogue with whoever this is already
         if(env.currentDialogue.active == true && env.currentDialogue.actors[actor] != undefined) return;
 
-        if (customEl) chatterElement(customEl, finalText, duration); 
+        if(customEl) chatterElement(customEl, finalText, duration, actorObj); 
         else if (actorObj.element) {
             document.querySelectorAll(actorObj.element).forEach(el => {
-                chatterElement(el, finalText, duration)
+                chatterElement(el, finalText, duration, actorObj)
             })
         }
 
@@ -1304,7 +1599,7 @@ function chatter({actor, text, duration = 6000, sfx = true, delay = 0, log = tru
 }
 
 //chatter management for a given element
-function chatterElement(parentEl, text, duration) {
+function chatterElement(parentEl, text, duration, actor) {
     var chatterEl = parentEl.querySelector('.chatter-container')
     
     //if the chatter container doesn't exist, add it
@@ -1316,7 +1611,7 @@ function chatterElement(parentEl, text, duration) {
     env.totalMessages++
 
     let chatterID = `chat${env.totalMessages}`
-    chatterEl.insertAdjacentHTML('beforeend', `<div class="chatter" id="${chatterID}">${text}</div>`)
+    chatterEl.insertAdjacentHTML('beforeend', `<div class="chatter" id="${chatterID}"><span class="${actor?.type}">${text}</span></div>`)
 
     setTimeout(()=>{
         try{
@@ -1412,11 +1707,11 @@ function getReadoutMsg({message, type = "", name, displayName: inputDisplayName,
     //only set the image if it isn't moth (this will most likely be less specific down the line)
     // console.log("getReadout is", image, name)
     if(image && name != "moth") {
-        header = header + `<img src='${image}'>`
+        header = header + `<img class="message-portrait" src='${image}'>`
     }
 
     //actor specific checks
-    if(name && name != "sys" && !type.includes("sourceless")) { //actor isn't system or narration, so add their name with the usual prefix/affix
+    if(name && name != "sys" && !type.includes("sourceless") && !type.includes("noname")) { //actor isn't system or narration, so add their name with the usual prefix/affix
         header = header + `<h2>!!__${displayName.replace(/ /g, '_')}__!!</h2>`
     } else if (name == "sys") { //actor IS system, so skip for now
         effectiveType = "sys"
@@ -1430,13 +1725,13 @@ function getReadoutMsg({message, type = "", name, displayName: inputDisplayName,
     //effectiveType handles specific actors that may have unique appearances on the readout
     switch(effectiveType) {
         case("moth"):
-            header = `<img src="/img/blank.gif">` + header
+            header = `<img class="message-portrait" src="/img/blank.gif">` + header
             content = message
             eClass = "moth"
             break
 
         case("sys"):
-            header = `<img src='/img/mui/mindspikelogoactive.gif'>`
+            header = `<img class="message-portrait" src='/img/mui/mindspikelogoactive.gif'>`
             content = message
             eClass = "sys"
             break
@@ -1489,13 +1784,20 @@ function createEntity(entObj) {
     //used mainly for entity-based flag corrections, updating old references, etc
     if(entObj.onCreated) entObj.onCreated()
 
+    //if the entity was previously normal but is now entObj.hide for one reason or another,
+    //we want to remove it from the flags
+    if(entObj.hide && flags['detectedEntities']?.[page.title]?.['entities']?.[entObj.name]) {
+        console.log("ENTITY REMOVED!!!", entObj)
+        delete flags['detectedEntities'][page.title]['entities'][entObj.name]
+    }
+
     //we don't create the entity if it requests to be hidden,
     //OR if it requests to be limited to a certain page 
     //  (useful for entities from one page that need to show up on another, but without adding to the entity list)
     if(
         entObj.hide
         || ((entObj.pathLimit) && (entObj.pathLimit != page.path))
-    ) return
+    ) return;
 
     //detect if page is in detctedEntities - if not, add it with relevant info
     if(!flags['detectedEntities'][page.title]) {
@@ -1699,6 +2001,8 @@ function MUI(state) {
                 //notify the user where their mouse is
                 mousePing({duration: 400})
             }, 100)
+
+            document.dispatchEvent(new CustomEvent('corru_mui'))
         break
 
         case "off":
@@ -1837,7 +2141,10 @@ function toggleSysMenu() {
             MUI('on')
             body.classList.add('in-menu')
             body.setAttribute('menu', 'system')
-            play('muiScanner')            
+            play('muiScanner')
+            
+            //set sys menu slider visuals
+            document.querySelectorAll('#system-menu .slider').forEach(slider => slider.value = localStorage[slider.getAttribute('for')] || 1)
         }, 10)
     }
 }
@@ -1846,7 +2153,11 @@ function updatePreferenceAttributes() {
     body.setAttribute('quality', (check('default_quality') || "regular").replace("high", "regular"))
     body.setAttribute('low_intensity', check('low_intensity'))
     body.setAttribute('gameplay_off', check('gameplay_off'))
-    
+    body.setAttribute('palette_preference', check('palette_preference') || 'normal')
+    body.setAttribute('combat_background_preference', check('combat_background_preference') || 'normal')
+    updateRenderFilterAttribute('--render-brightness', check('render_brightness_preference') || 1)
+    updateRenderFilterAttribute('--render-contrast', check('render_contrast_preference') || 1)
+
     switch(check("size_preference")) {
         case "normal":
             document.documentElement.classList.remove("bigmode")
@@ -1855,6 +2166,19 @@ function updatePreferenceAttributes() {
         case "large":
             document.documentElement.classList.add("bigmode")
         break
+    }
+
+    function updateRenderFilterAttribute(prop, value){
+        document.documentElement.style.setProperty(prop, value)
+        let brightness = document.documentElement.style.getPropertyValue('--render-brightness')
+        let contrast = document.documentElement.style.getPropertyValue('--render-contrast')
+        console.log(brightness,contrast)
+
+        if(brightness < 1 || contrast < 1) {
+            body.setAttribute('enable_render_filter','true')
+        } else {
+            body.setAttribute('enable_render_filter', 'false')
+        }
     }
 
     if(!env.menuStorage.elements.readout) setTimeout(()=>env.menu["readout"].scrollTop = env.menu["readout"].scrollHeight, 1000)
@@ -1885,6 +2209,43 @@ function setGameplayPreference(pref) {
 function setSizePreference(pref) {
     chatter({actor: 'sys', text: `ATTENTION::'interface size';'set to ${pref}'`, readout: true})
     change('size_preference', pref)
+    updatePreferenceAttributes()
+}
+
+function setPalettePreference(pref) {
+    chatter({actor: 'sys', text: `ATTENTION::'interface palette';'set to ${pref}'`, readout: true})
+    
+    //transition to avoid flicker on swap
+    let systemMenu = document.getElementById("system-menu")
+    let waitDurationMs = 300;
+    let transitionDurationMs;
+
+    systemMenu.classList.add('darkened');
+    transitionDurationMs = parseFloat(getComputedStyle(systemMenu).getPropertyValue('--filter-duration')) || 0;
+
+    change('palette_preference', pref);
+
+    setTimeout(()=>{
+        updatePreferenceAttributes();
+        setTimeout(()=>{
+            systemMenu.classList.remove("darkened");
+        },waitDurationMs)  
+    },transitionDurationMs)
+}
+
+function setCombatBackgroundPreference(pref) {
+    chatter({actor: 'sys', text: `ATTENTION::'combat background intensity';'set to ${pref}'`, readout: true})
+    change('combat_background_preference', pref)
+    updatePreferenceAttributes()
+}
+
+function setRenderBrightnessPreference(pref) {
+    change('render_brightness_preference', pref)
+    updatePreferenceAttributes()
+}
+
+function setRenderContrastPreference(pref) {
+    change('render_contrast_preference', pref)
     updatePreferenceAttributes()
 }
 
@@ -2261,11 +2622,13 @@ function uploadSave(ev) {
 }
 
 //loading mechanism to be used in onLoaded - adds scripts and styles IN ORDER of the array given
-function addResources(resList, i = 0) {
+function addResources(resList, i = 0, callback) {
     env.loading = true; body.classList.add('loading')
     if(i == resList.length) {
         body.classList.remove('loading')
+        change("TEMP!!waitOnLoad", false)
         setTimeout(()=>document.dispatchEvent(new CustomEvent('corru_resources_added', { detail: { resList } })), 500)
+        if(callback) callback()
         return env.loading = false 
     }
 
@@ -2276,7 +2639,7 @@ function addResources(resList, i = 0) {
     //useful in case of classes
     if(typeof res == "object") {
         if(typeof res[1] == "function") {
-            if(!res[1]()) return addResources(resList, i+1);
+            if(!res[1]()) return addResources(resList, i+1, callback);
             res = res[0]
         }
     }
@@ -2298,9 +2661,9 @@ function addResources(resList, i = 0) {
     }
     
     content.appendChild(resEl)
-    resEl.onload = ()=>addResources(resList, i+1)
+    resEl.onload = ()=>addResources(resList, i+1, callback)
     resEl.onerror = (er)=>{
-        addResources(resList, i+1)
+        addResources(resList, i+1, callback)
         printError(`unable to load resource ${res}, check F12 console for specific issue (most likely cross origin headers failure though)`, true)
     }
 }
@@ -2405,6 +2768,15 @@ function check(inputKey, inputValue = null) {
         else if(value === false)    return present == false
         else                        return present
 
+    } else if(key.includes('pau|')) { //checking to see if someone is in the party at all
+        if(!page.party) return 'no party'
+        let query = key.split('|')
+        let present = page.party.some(mem=>mem.slug === query[1])
+
+        if(value === true)          return present == true
+        else if(value === false)    return present == false
+        else                        return present
+
     } else if(key.includes('aug|')) { //checks to see if augment is in use by anyone in party
         let query = key.split('|')
         if(!page.party) return 'no party'
@@ -2415,6 +2787,18 @@ function check(inputKey, inputValue = null) {
         if(value === true)          return usingAugment == true
         else if(value === false)    return usingAugment == false
         else                        return usingAugment
+
+    } else if(key.includes('eq|')) { //checks to see if equipment is in use by anyone in party
+        let query = key.split('|')
+        if(!page.party) return 'no party'
+        let usingItem = page.party.some(member=>{
+            if(member.equipment) return member.equipment.includes(query[1])
+        })
+
+        if(value === true)          return usingItem == true
+        else if(value === false)    return usingItem == false
+        else                        return usingItem
+
 
     } else if(key.includes('item|')) { //checking to see if an item is in the party inventory
         //item|name|gt, #   greater than
@@ -2532,7 +2916,7 @@ function upgradeShowIf(showIf) {
 }
 
 //changes env.bgm to the specified new bgm, storing the old as env.oldBgm
-function changeBgm(newBgm, {length = 1000, preserve = true, rate = false, seek = false, pause = false} = {}) {
+function changeBgm(newBgm, {length = 1000, preserve = true, rate = false, seek = false, pause = false, copySeekTime = false} = {}) {
     if(env.bgm == newBgm || env.stopBgmChanges) return
 
     console.log("changing to", newBgm)
@@ -2553,6 +2937,14 @@ function changeBgm(newBgm, {length = 1000, preserve = true, rate = false, seek =
         env.bgm = newBgm
         if(rate) env.bgm.rate(rate)
         if(seek) env.bgm.seek(seek)
+
+        // only copy seek if the seek time is shorter than the end of the new song
+        if(copySeekTime && env.oldBgm) {
+            let oldSeek = env.oldBgm.seek()
+            let newDuration = env.bgm.duration()
+            if(oldSeek < newDuration) env.bgm.seek(oldSeek)
+        }
+
         env.bgm.volume(0)
         env.bgm.play()
         env.bgmIsFading = true
@@ -2585,10 +2977,11 @@ function toggleBgm(song, preserve = false) {
         }
 
         if(env.bgm.intendedRate) env.bgm.rate(env.bgm.intendedRate)
+        let oldVolume = oldBgm.volume() || 0
         env.bgm.volume(0)
         env.bgm.play()
         env.bgm.fade(0, getModifiedVolume('music', env.bgm.intendedVol ? env.bgm.intendedVol : 1), 400)
-        oldBgm.fade(oldBgm.volume(), 0, 400)
+        oldBgm.fade(oldVolume, 0, 400)
         setTimeout(()=>oldBgm.pause(), 400)
     }
 }
@@ -2600,7 +2993,7 @@ function toggleBgm(song, preserve = false) {
 */
 function getModifiedVolume(type, desiredVol) {
     let groupVol = localStorage[`volume-${type}`] || 1
-    return desiredVol * groupVol    
+    return desiredVol * groupVol
 }
 
 //basic slugify function to make json-friendly names, this is from some stack overflow somewhere
@@ -2666,7 +3059,7 @@ function corruRefresh(destination, delay = 5000) {
 
 //VFX/overlay manager
 //type is a string, i.e. "flash", "velzieflash"
-function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = false, sound = false}) {
+function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = false, sound = false, options = {}}) {
     console.log("got", type)
     setTimeout(()=>{
         switch(type) {
@@ -2702,12 +3095,12 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
             break
 
             case "beacon":
-                let beacon = body.querySelector('#beacon-vfx')
+                let beacon = body.querySelector('.vfx.beaconbase')
 
                 if(state && !beacon) {
-                    body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx"></div>`)
+                    body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx beaconbase"></div>`)
 
-                    beacon = body.querySelector('#beacon-vfx')
+                    beacon = body.querySelector('.vfx.beaconbase')
                     setTimeout(()=>beacon.classList.add('active'), 100)
                 } else if(beacon) {
                     //fade and remove
@@ -2716,13 +3109,32 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
                 }
             break
 
+            case "signal":
+                let signal = body.querySelector('.vfx.signal')
+
+                if(state && !signal) {
+                    body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx signal ${options.slow ? "slow" : ""} ${options.full ? "full" : ""}"></div>`)
+
+                    signal = body.querySelector('#beacon-vfx')
+                    setTimeout(()=>signal.classList.add('active'), 100)
+                } else if(signal && state === false) {
+                    //fade and remove
+                    signal.classList.remove('active')
+                    setTimeout(()=>signal.remove(), 5000)
+                } else if(signal) {
+                    //option modification
+                    if(options.slow) signal.classList.add("slow")
+                    if(options.full) signal.classList.add("full")
+                }            
+            break
+
             case "okidoia":
-                let okidoki = body.querySelector('#beacon-vfx')
+                let okidoki = body.querySelector('.vfx.okidoia')
 
                 if(state && !okidoki) {
                     body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx okidoia"></div>`)
 
-                    okidoki = body.querySelector('#beacon-vfx')
+                    okidoki = body.querySelector('.vfx.okidoia')
                     setTimeout(()=>okidoki.classList.add('active'), 100)
                 } else if(okidoki) {
                     //fade and remove
@@ -2732,12 +3144,12 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
             break
 
             case "flowerwarp":
-                let flowerwarp = body.querySelector('#beacon-vfx')
+                let flowerwarp = body.querySelector('.vfx.flowerwarp')
 
                 if(state && !flowerwarp) {
                     body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx flowerwarp ${state}"></div>`)
 
-                    flowerwarp = body.querySelector('#beacon-vfx')
+                    flowerwarp = body.querySelector('.flowerwarp.vfx')
                     setTimeout(()=>flowerwarp.classList.add('active'), 100)
                 } else if(flowerwarp && !state) {
                     //fade and remove
@@ -2746,10 +3158,33 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
                 }
             break
 
+            case "hermitshapes":
+                let hermitshapes = body.querySelector('.vfx.hermitshapes')
+
+                if(state && !hermitshapes) {
+                    body.insertAdjacentHTML(`beforeend`, `<div id="beacon-vfx" class="vfx hermitshapes ${state}"></div>`)
+
+                    hermitshapes = body.querySelector('.hermitshapes.vfx')
+                    setTimeout(()=>hermitshapes.classList.add('active'), 100)
+                } else if(hermitshapes && !state) {
+                    //fade and remove
+                    hermitshapes.classList.remove('active')
+                    setTimeout(()=>hermitshapes.remove(), 800)
+                }
+            break
+
             case "skip":
                 if(!env.skipscreen) {
                     body.insertAdjacentHTML(`beforeend`,`<div id="skip-vfx" class="vfx"></div>`)
                     env.skipscreen = body.querySelector("#skip-vfx")
+                }
+
+                if(options.skipText) env.skipscreen.setAttribute('specialtext', options.skipText)
+                else env.skipscreen.removeAttribute('specialtext')
+                
+                env.skipscreen.className = 'vfx'
+                if(options.class) {
+                    env.skipscreen.classList.add(...options.class.split(' '))
                 }
 
                 if(state) {
@@ -2769,7 +3204,7 @@ function vfx({type, state, delay = 0, cutscene: useCutscene = null, callback = f
 
 //lets you ping a location, typically the mouse pos
 //added specifically for freedom mask toggling but might have other uses
-function mousePing({x = env.cursor.x, y = env.cursor.y, duration = 1000} = {}) {
+function mousePing({x = env.cursor.x, y = env.cursor.y, duration = 1000, scale = 5} = {}) {
     const pingId = `ping${performance.now()}`
     const ping = document.createElement("div")
     ping.id = pingId
@@ -2777,6 +3212,7 @@ function mousePing({x = env.cursor.x, y = env.cursor.y, duration = 1000} = {}) {
     ping.style.left = `${x}px`
     ping.style.top = `${y}px`
     ping.style.setProperty("--duration", `${duration}ms`)
+    ping.style.setProperty("--scale", `${scale}`)
     body.appendChild(ping)
 
     setTimeout(() => {
@@ -3115,10 +3551,13 @@ function play(sfxName, pitch = true, volume = 0.75, forcePlay) {
     //duck the BGM briefly so the SFX doesn't layer with it too hard
     //also adjusts the amount by which we duck proportionally to the loudness of SFX
     if(env.bgm && !env.bgmIsFading && !env.noBgmDuck && localStorage['volume-sfx'] !== "0") {
-        let intended = getModifiedVolume('music', env.bgm.intendedVol ? env.bgm.intendedVol : 1)
+        let bgm = env.bgm // in case it changes in the timeout time
+        let intended = getModifiedVolume('music', bgm.intendedVol ? bgm.intendedVol : 1)
         let duckAmt = 1 - (isFinite(localStorage['volume-sfx']) ? (localStorage['volume-sfx'] * 0.5) : 0.5)
-        env.bgm.volume(intended * duckAmt)
-        setTimeout(()=>{ try{env.bgm.fade(intended * duckAmt, intended, 500)} catch(e) {} }, 500)
+        bgm.volume(intended * duckAmt)
+        setTimeout(()=>{ try{
+            if(bgm == env.bgm) bgm.fade(bgm.volume(), intended, 500)
+        } catch(e) {} }, 500)
     }
     
     //play!
@@ -3160,7 +3599,35 @@ function ratween(howl, desiredRate, duration = 1000) {
 /** terrible practice area **/
 //add random extension to Array
 //you can tell it to not use the same value as the last time, if that's possible
-Array.prototype.sample = function({noRepeat, remove} = {noRepeat: false, remove: false}){
+//passing count causes it to become an array return instead
+Array.prototype.sample = function({noRepeat, remove, count} = {noRepeat: false, remove: false, count: undefined}){
+    //count sample
+    if(count !== undefined) {
+        let results = []
+        let availableIndices = [...Array(this.length).keys()]
+        let actualCount = noRepeat ? Math.min(count, this.length) : count
+        
+        for(let i = 0; i < actualCount; i++) {
+            let indexPool = noRepeat ? availableIndices : [...Array(this.length).keys()]
+            if(indexPool.length === 0) break
+            
+            let selectedIndex = indexPool[rand(0, indexPool.length)]
+            
+            if(remove) {
+                results.push(this.splice(selectedIndex, 1)[0])
+                availableIndices = availableIndices.map(idx => idx > selectedIndex ? idx - 1 : idx).filter(idx => idx !== selectedIndex)
+            } else {
+                results.push(this[selectedIndex])
+                if(noRepeat) {
+                    availableIndices = availableIndices.filter(idx => idx !== selectedIndex)
+                }
+            }
+        }
+        
+        return results
+    }
+    
+    //single sample
     let value = rand(0, this.length)
 
     if(noRepeat && this.length > 1) while(value == this.lastSampleValue) value = rand(0, this.length)
@@ -3180,6 +3647,11 @@ function calculateAngle(x1, y1, x2, y2) {
 //since ff windows has a major css processing issue
 function isFirefoxOnWindows() {
     return navigator.userAgent.indexOf('Firefox') !== -1 && navigator.userAgent.indexOf('Windows') !== -1;
+}
+
+// yuuuup
+function titleize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
 /* polyfills */
@@ -3249,11 +3721,12 @@ function updateCode() {
     document.dispatchEvent(new CustomEvent('corru_net'));
 }
 
-gmss()
+setTimeout(()=>gmss(), 100)
 setInterval(gmss, 300000)
 
 //GPU detection - this is done to show an alert to turn on acceleration
 function runGPUCheck(){
+    if(window.location.hostname.includes(".dev")) return; // unpkg gets a cors error on dev domain for some fucking reason
     DetectGPU.getGPUTier().then(res => {
         if(res.type == "FALLBACK") { //if this result happens, it means hardware acceleration is off (or they don't have a GPU... frightening thought)
             if(!check('ignoregpu')) {
@@ -3337,7 +3810,7 @@ function mask({name, retrigger = false, playSound = true, toggle = undefined}) {
     let currentMask = env.masks[current]
     let newMask = env.masks[name]
 
-    if(typeof newMask == "undefined") throw `bad mask detected - ${name}`
+    if(typeof newMask == "undefined") return printError(`bad mask detected - ${name}`, true)
     if(playSound) {
         env.recentSfx = false
         sfxmap.stop()
@@ -3408,21 +3881,27 @@ function processDefinitionsInString(input, {force = false} = {}) {
 
         if(phrase[0] == "θ") { //theta definitions are prefixed so that they can be immediately replaced without scanning
             //used mostly for special/context sensitive ones
-            finalInput = finalInput.replaceAll(phrase, `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${phrase.replace("θ", "")}</span>`)
+            const thetaRegex = new RegExp(`${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}([-,.;:!?']*)`, 'gi')
+            finalInput = finalInput.replace(thetaRegex, (fullMatch, punct) => {
+                const display = fullMatch.replace("θ", "")
+                return `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${display}</span>`
+            })
 
-        } else {
-            //this regex looks literally insane but it's a faster way of looking up phrases in the string
+        } else { // regular definitions
+             //this regex looks literally insane but it's a faster way of looking up phrases in the string
             //it also prepares them to be replaced if they're found by surrounding them with () and handling the escaping of any special characters
             const edgeStart = `(?<=\\s|^|[-,.;:!?'])`
             const edgeEnd = `(?=\\s|$|[-,.;:!?']|'s\\b|'d\\b|'ll\\b|'ve\\b|'re\\b|'m\\b|'t\\b)`
-            const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})${edgeEnd}`, 'gi');
+            const phraseRegex = new RegExp(`${edgeStart}(${phrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})([-,.;:!?]*)${edgeEnd}`, 'gi');
 
             // we check the scanningInput for matches
             while ((match = phraseRegex.exec(scanningInput)) !== null) {
-                const replacement = `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${match[0]}</span>`;
+                const matchedPhrase = match[1]
+                const trailingPunct = match[2] || ""
                 
                 //replace the inputs - scanning to remove the match, finalInput to add the definition to the output
-                scanningInput = scanningInput.replaceAll(match[0], "")
+                const fullMatch = matchedPhrase + trailingPunct
+                scanningInput = scanningInput.replaceAll(fullMatch, "")
 
                 //we do this to target replacements only outside of HTML
                 const finalInputRegex = new RegExp(`${edgeStart}(<[^>]*>|[^<]+)${edgeEnd}`, 'g')
@@ -3431,8 +3910,10 @@ function processDefinitionsInString(input, {force = false} = {}) {
                         return innerMatch
                     } 
                     else { 
-                        const wordBoundaryRegex = new RegExp(`${edgeStart}${match[0]}${edgeEnd}`, 'g')
-                        return innerMatch.replace(wordBoundaryRegex, replacement) 
+                        const wordBoundaryRegex = new RegExp(`${edgeStart}${matchedPhrase.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')}([-,.;:!?]*)${edgeEnd}`, 'g')
+                        return innerMatch.replace(wordBoundaryRegex, (wbMatch, wbPunct) => {
+                            return `<span class="definition" definition="${type}::${text.replace("θ", "").replace('"', "'")}">${matchedPhrase}${wbPunct || ""}</span>`
+                        }) 
                     }
                 })
             }
@@ -3550,39 +4031,3 @@ if (
 ) {
     window.location.href = "https://corru.observer";
 }
-
-setTimeout(()=>{
-    if(navigator.userAgent.includes("Firefox/15")) {
-        body.insertAdjacentHTML("afterbegin", `<div class="cryptowarn firefoxshit">
-            <style>
-            .cryptowarn { display: none; }
-            body[state="corru-loaded"] .cryptowarn {
-                    position: absolute;
-                    z-index: 20000;
-                    background: blue;
-                    padding: 0.5em;
-                    max-width: 50vw;
-                    bottom: 0;
-                    right: 0;
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1em;
-                    font-size: 14px;
-            }
-
-            body[state="corru-loaded"] .cryptowarn.firefoxshit {
-            position: absolute;
-            top: unset;
-            bottom: unset;
-            background-color: orange;
-            color: black;
-            right: unset;
-            transform: translateY(-25vh);
-            text-align: center;
-            }
-            </style>
-
-            <span>hello! your version of firefox (v.150+) will cause extremely broken graphics due to a browser bug.</span><span>it's been reported to mozilla, so hopefully it should be fixed soon!</span><span>consider using a different browser in the interim!</span><span>this message be removed when it's been fixed</span>	
-        </div>`)
-    }
-}, 100)

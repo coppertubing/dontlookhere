@@ -136,15 +136,18 @@ env.embassy = {
     },
 
     initializeEmbassyCombatSettings: ({ep = 2} = {}) => {
+        //in the collapse, fights are now fixed positions you walk into
+        page.noEvil = true
+
         //load up shared music/sounds
         env.embassy.music_collapse = new Howl({
             onload: function () {page.howls.push(this)},
-            src: ['/audio/embassy_collapse.ogg'],
+            src: ['/audio/embassy_collapse_ambient.ogg'],
             preload: true,
             loop: true,
             volume: 1,
             sprite: {
-                __default: [20, 119930, true]
+                __default: [0, 99999999, true]
             }
         })
 
@@ -155,7 +158,7 @@ env.embassy = {
             loop: true,
             volume: 1,
             sprite: {
-                __default: [20, 73990, true]
+                __default: [0, 7399999990, true]
             },
         })
 
@@ -168,7 +171,7 @@ env.embassy = {
                     loop: true,
                     volume: 0,
                     sprite: {
-                        __default: [0, 179998, true]
+                        __default: [0, 17999999998, true]
                     }
                 })
         
@@ -179,7 +182,7 @@ env.embassy = {
                     loop: true,
                     volume: 1,
                     sprite: {
-                        __default: [0, 159988, true]
+                        __default: [0, 15999999988, true]
                     }
                 })
         
@@ -190,7 +193,7 @@ env.embassy = {
                     loop: true,
                     volume: 0,
                     sprite: {
-                        __default: [0, 85330, true]
+                        __default: [0, 859999330, true]
                     }
                 })
         
@@ -213,7 +216,7 @@ env.embassy = {
                     loop: true,
                     volume: 1,
                     sprite: {
-                        __default: [1, 23950, true]
+                        __default: [0, 2993950, true]
                     }
                 })
 
@@ -234,35 +237,11 @@ env.embassy = {
                     preload: true,
                     volume: 1,
                     sprite: {
-                        __default: [1, 131800, true]
+                        __default: [0, 131984, true]
                     }
                 })
 
-                env.combat.defaults.bgm = env.embassy.music_combat
-                env.combat.defaults.lossDialogue = 'd3_loss'
-                env.combat.defaults.endCallback = (loser)=>{
-                    if(env.stage.querySelectorAll('.evil').length == 0) {
-                        switch(env.stage.name) {
-                            case "embassy_recreation":
-                                startDialogue('d3_rec_clear')
-                            break
-                            
-                            case "embassy_cpersonnel": 
-                                startDialogue('d3_person_clear')
-                            break
-                            
-                            case "embassy_archivalintro": 
-                                startDialogue('d3_archiveintro')
-                            break
-        
-                            default: 
-                                startDialogue('d3_genericenemyvictory')
-                        }
-                    } else {
-                        startDialogue('d3_genericenemyvictory')
-                    }
-                }
-        
+                env.combat.defaults.bgm = env.embassy.music_combat        
                 if(!env.loadedSave) {
                         page.party = [
                         {
@@ -271,6 +250,7 @@ env.embassy = {
                             combatActor: "akizet",
                             class: "Surface Veteran",
                             hp: 15,
+                            mustBeInParty: true
                         },
                 
                         {
@@ -299,12 +279,30 @@ env.embassy = {
                 //defaults and music
                 page.party.reorganizable = true
                 env.embassy.music_golems_combat = new Howl({
+                    onload: function () {
+                        page.howls.push(this)
+                        this.intendedVol = 1
+                    },
                     src: ['/audio/embassy_golems_combat.ogg'],
                     preload: true,
                     loop: true,
                     volume: 1,
                     sprite: {
                         __default: [0, 159988, true]
+                    }
+                })
+                
+                env.embassy.music_golems_tvcombat = new Howl({
+                    onload: function () {
+                        page.howls.push(this)
+                        this.intendedVol = 0.9
+                    },
+                    src: ['/audio/tv.ogg'],
+                    preload: true,
+                    loop: true,
+                    volume: 0.9,
+                    sprite: {
+                        __default: [0, 999999999, true]
                     }
                 })
                 env.combat.defaults.lossDialogue = 'loss'
@@ -316,10 +314,15 @@ env.embassy = {
             
                     //swap gakvu with miltza per the ending of collapse part 1
                     //gotta 0-delay it (to run after current runtime) cuz otherwise it doesn't work
+                    /* ING UPDATE - this is kinda unnecessary with all the changes. commenting for now....
                     setTimeout(()=>{
-                        [page.party[1], page.party[3]] = [page.party[3], page.party[1]]
+                        let gakvuIndex = page.party.findIndex(m => m.slug == "gakvu");
+                        let miltzaIndex = page.party.findIndex(m => m.slug == "miltza");
+
+                        [page.party[gakvuIndex], page.party[miltzaIndex]] = [page.party[miltzaIndex], page.party[gakvuIndex]]
                         vn.renderParty()
                     }, 0)        
+                    */
                 }
 
                 //used in dynamic combat for embassy_golems to mix up the start spot a little
@@ -396,7 +399,6 @@ env.embassy = {
 
             case 3.99:
                 page.party.partyLimit = 7
-                if(check("PAGE!!archivesclear") && check("PAGE!!archivesclear") != "skipped") addItem(env.ITEM_LIST.symbiotic_rifle)
             break
         }
 
@@ -412,7 +414,11 @@ env.embassy = {
 
         //collapse always has party
         page.partyMenuEnabled = true
+        page.party.reorganizable = true // and you can reorder the party whenever
         content.classList.add('party-enabled')
+
+        //we don't preserve health between fights in this mode
+        page.party.noPreserveHealth = true
 
         //sorry cyst always stays
         if(check("PAGE!!archivesclear") && check("PAGE!!archivesclear") != "skipped") addItem(env.ITEM_LIST.sorry_cyst)
@@ -426,7 +432,127 @@ env.embassy = {
                 document.querySelectorAll('#stage-navigator, #party-menu').forEach(el=>el.classList.remove('low-health'))
         }, 2000)
 
+        //permanent item grant
+        if(check("lever-Ξ") && !check("PAGE!!lever-Ξ")) change("PAGE!!lever-Ξ", "initial")
+        if(check("PAGE!!lever-Ξ", "initial")) {
+            addItem('eq_restorative', 10)
+            addItem('eq_aima_cyst', 10)
+            addItem('eq_kavruka', 10)
+            addItem('eq_fusedlight', 10)
+            addItem('eq_disabler', 10)
+            addItem('eq_satik', 10)
+            addItem('eq_siphon', 10)
+            addItem('eq_rifle', 10)
+            change("PAGE!!lever-Ξ", "ep2grant")
+        }
+
+        if(check("PAGE!!lever-Ξ", "ep2grant") && env.ep3) {
+            addItem('eq_pariispike', 10)
+            addItem('eq_shell', 10)
+            addItem('eq_antistatus', 10)
+            addItem('eq_surge', 10)
+            addItem('eq_translator', 10)
+            change("PAGE!!lever-Ξ", "ep3grant")
+        }
+
+        if(check("PAGE!!lever-Ξ", "ep3grant") && check("e3a2__intro")) {
+            addItem('eq_rot', 10)
+            addItem('eq_wound', 10)
+            addItem('eq_spikes', 10)
+            addItem('fish_sniper', 10)
+            addItem('fish_ruka', 10)
+            addItem('fish_boot', 10)
+            addItem('fish_normal', 999)
+            if(check("flan")) addItem('fish_wheel', 10)
+            change("PAGE!!lever-Ξ", "e3a2grant")
+        }
+
+        if(check("pulled-lever")) change("loaded-lever", true)
+    },
+
+    //ing rework fight trigger
+    //a little better suited for how we're handling stuff now
+    startOrSkipFight: ({
+        specificFormation, 
+
+        skipCallback, // notably called after win callback
+        winCallback, 
+        lossCallback, 
         
+        skipDialogue, // prioritized over win dialogue
+        winDialogue, 
+        lossDialogue,
+
+        lossScramble = true
+    }) => {
+        page.party.forEach(m=>{ // keep track of who fought and in what parts for relevant dialogue. might not get used much but useful
+            change(`PAGE!!${m.slug}_fought_d${check("PAGE!!embassy_day")}`, true)
+        })
+
+        change("PAGE!!lastFight", specificFormation)
+
+        if(check("gameplay_off")) {            
+            vfx({type: "skip", state: true, useCutscene: true, options: {class: "combatskip", skipText: `EXECUTING::'THOUGHTFORM COMBAT BYPASS'`}})
+            let vol = Howler.volume()
+            Howler.volume(0)
+
+            setTimeout(() => {
+                vfx({type: "skip", state: false, useCutscene: false, delay: 1000, callback: ()=> Howler.volume(vol)})                
+                chatter({ actor: "sys", text:`ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"`, readout: true, forceMini: true, delay: 1100})
+                winCallback ? winCallback({name: "enemy"}) : false
+                skipCallback ? skipCallback() : false
+
+                if(skipDialogue || winDialogue) startDialogue(skipDialogue || winDialogue) // defaults to skip dialogue
+            }, 2000)
+        } else {
+            env.combat.dynamicCombat({
+                specificFormation,
+                specificCallback: (loser)=>{
+                    if(loser.name == "ally") {
+                        if(lossScramble) env.combat.lossScramble()
+
+                        lossCallback ? lossCallback(loser) : false
+                        if(lossDialogue) startDialogue(lossDialogue); else env.embassy.generalLoss(loser)
+                    } else {
+                        winCallback ? winCallback(loser) : false
+                        if(winDialogue) startDialogue(winDialogue)
+                    }
+                }})
+        }
+    },
+
+    lossReversion: (delay = 3000) => {
+        let vol = Howler.volume()
+        Howler.volume(0)
+        vfx({type: "skip", state: true, useCutscene: true, options: {class: "reversion", skipText: `EXECUTING::'MEMORY STREAM REVERSION'`}})
+        change("PAGE!!reverting", true)
+
+        content.classList.remove('goodbye', 'dying')
+        changeStage(env.stage.name)
+
+        //some fights might need flag reversions
+        switch(check("PAGE!!lastFight")) {
+            case "tutorial_golem":
+                change("PAGE!!skiptut", true)
+                env.embassy.startTutorialGolem()
+            break
+
+            default: 
+            break                
+        }
+
+        setTimeout(() => {
+            vfx({type: "skip", state: false, useCutscene: true, options: {class: "reversion", skipText: `EXECUTING::'MEMORY STREAM REVERSION'`}});
+            change("PAGE!!reverting", false)
+            env.bgm.rate(env.bgm.intendedRate || 1)
+            Howler.volume(vol)
+        }, delay)
+    },
+
+    //
+    generalLoss: () => {
+        startDialogue("collapse_loss")
+        // not really sure if we need this yet... losscallback and dialogue might be enough
     },
 
     setDay: (day = 1, {skipDialogue = false, specificZone = false} = {})=>{
@@ -455,9 +581,9 @@ env.embassy = {
 
                 env.embassy.initializeEmbassyCombatSettings()
                 
-                // the embassy pass will add more but until golem there's no use for masks
-                page.maskHungerNote = "\nRESONANCE::'detected in upcoming memory stream'";
-                page.maskUnityNote = "\nRESONANCE::'detected in upcoming memory stream'";
+                page.maskHungerNote = "\nRESONANCE::'minor';'connective thoughtform detected'";
+                page.maskUnityNote = "\nRESONANCE::'minor';'connective thoughtform detected'";
+                change("PAGE!!ingsave", true) // represents a save in the rework
             break
 
             case 2:
@@ -492,7 +618,7 @@ env.embassy = {
 
         setTimeout(()=>{
             body.classList.remove('daychanging')
-            document.querySelector('.dayselect').classList.add('derender')
+            document.querySelectorAll('.dayselect, .frameshortcut').forEach(el=>el.remove())
         }, 2000)
         
     },
@@ -548,7 +674,7 @@ env.embassy = {
         } else if(callback) callback()
     },
 
-    //takes 1, 2, or 3 (but 3 doesn't xist yet so don't pass that :P)
+    //takes 1, 2, or 3
     newCollapseIteration: (part) => {
         switch(part) {
             case 1:
@@ -567,15 +693,15 @@ env.embassy = {
             case 3:
                 cutscene(false)
                 change("collapseSave", GlobalSaves.collapseSave_ep4start)
-                change("TEMP!!ep3->e43transfer", true)
-                moveTo("/local/ocean/embassy/groundsmindry/")
+                change("TEMP!!ep4immediate", true)
+                moveTo("/local/ocean/embassy/golem/")
             break
         }
     },
 
     loadCollapseSave: () => {
         let collapseSave = check('collapseSave')
-        if(!collapseSave) throw 'no save'
+        if(!collapseSave) return;
 
         page.saveZone = collapseSave.saveZone
         page.flags = {... collapseSave.pageFlags}
@@ -589,7 +715,6 @@ env.embassy = {
         
         page.party.inventory = []
         collapseSave.inventory.forEach(item=>{
-            console.log(item)
             page.party.inventory.push([... item])
         })
         
@@ -629,7 +754,80 @@ env.embassy = {
             }
         })
 
+        if(!check("PAGE!!ingsave")) env.embassy.handleIngSaveUpgrade()
+
         vn.renderParty()
+    },
+
+    // most pageflags work differently but map more or less directly to old ones
+    // and of course the items are all different now too
+    handleIngSaveUpgrade: () => {
+        let flagMap = {
+            // ep2 flags
+            "PAGE!!recreation_leavable": [["PAGE!!recreation", "cleared"]],
+            "PAGE!!mindcore1extracted": [["PAGE!!recreation", "cleared"]],
+            "PAGE!!mindcore2extracted": [["PAGE!!recreation", "cleared"]],
+            "PAGE!!kazkiroom": [["PAGE!!cpersonnel", "cleared"]],
+            "PAGE!!kazkiambush": [["PAGE!!cpersonnel", "cleared"]],
+            "PAGE!!archivewarn": [["PAGE!!aintro", "cleared"]],
+            "PAGE!!archiveambush": [["PAGE!!acontainers", "cleared"]],
+            "PAGE!!bstrdlock": [["PAGE!!ahallmix", "cleared"], ["PAGE!!ahallcloak", "cleared"]],
+            "PAGE!!archivemini": [["PAGE!!ashelf", "cleared"]],
+            "PAGE!!archivesclear": [["PAGE!!aboss", "cleared"]],
+
+            // ep3 flags
+            "PAGE!!gp": [["PAGE!!g_personnel", "cleared"], ["PAGE!!g_personnel_huskrun", true]],
+            "PAGE!!geliawake": [["PAGE!!g_lobby", "cleared"], ["PAGE!!g_lobby_huskrun", true], ["PAGE!!g_tunnel_huskrun", true]],
+            "PAGE!!minvats": [["PAGE!!g_m_minor", "cleared"]],
+            "PAGE!!smidclear": [["PAGE!!g_s_sfer", "cleared"]],
+            "PAGE!!sboss": [["PAGE!!g_m_dist", "cleared"]],
+            "PAGE!!oboss": [["PAGE!!g_o_r_translation", "cleared"]],
+            "PAGE!!mboss": [["PAGE!!g_m_dist", "cleared"]],
+            "PAGE!!golboss": [["PAGE!!g_boss", "cleared"]]
+
+            // ep4 flags
+            // actually i don't think i changed how any of this works
+        }
+
+        let flagUpdates = Object.entries(flagMap)
+        flagUpdates.forEach(flagMapping=>{
+            if(check(flagMapping[0])) {
+                flagMapping[1].forEach(flag=>{
+                    console.log([flag[0], flag[1]])
+                    change(flag[0], flag[1])
+                })
+            }
+        })
+
+        //items and general
+        page.party.noPreserveHealth = true
+        try { // remove old items
+            page.party.inventory = page.party.inventory.filter(item => !["aima_cyst", "kavruka", "restorative", "disabler", "satik_cyst", "core_translation", "symbiotic_rifle"].includes(item[0].slug))
+        } catch(e) { /* */ }
+
+        page.party.forEach(m=>delete m.augments)
+
+        // progress-based item grants
+        // EP2
+        if(check("PAGE!!recreation", "cleared") && !checkItem("eq_kavruka")) { addItem('eq_kavruka', 1);addItem('eq_aima_cyst', 1) }
+        if(check("PAGE!!miltzameet") && !checkItem("eq_disabler")) addItem('eq_disabler', 1)
+        if(check("PAGE!!archivewarn") && !checkItem("eq_satik")) addItem('eq_satik', 1)
+        if(check("PAGE!!acontainers", "cleared") && !checkItem("eq_siphon")) addItem('eq_siphon', 1)
+
+        // EP3
+        if(check("PAGE!!oboss") && !checkItem("eq_translator")) addItem('eq_translator', 1)
+        if(check("PAGE!!g_o_r_friends", "cleared") && !checkItem("eq_antistatus")) addItem('eq_antistatus', 1)
+        if(check("PAGE!!g_m_minor") && !checkItem("eq_pariispike")) {
+            addItem('eq_pariispike', 1)
+            addItem('eq_surge', 1)
+        }
+        if(check("PAGE!!g_m_minor") && check("PAGE!!aboss", "cleared") && !checkItem("eq_rifle")) addItem('eq_rifle', 1)
+
+        change("PAGE!!ingSave", "imported")
+
+        setTimeout(()=>{                
+            chatter({actor: 'plainsys', text: "NOTICE::item system altered;use PARTY MENU to set equipment", readout: true})
+        }, 2000)
     },
 
     //see vn2.js
@@ -848,8 +1046,18 @@ env.embassy = {
         if(addItem(newItem, n)) {
             if(reason) env.embassy.reasons[reason] = true
         }
-    }
+    },
 
+    mask: (ev) => {
+        if(ev.detail.mask == "freedom") return;
+
+        if( // technically there's no other masks that matter for this but it's futureproofing
+            (
+                ["joy", "hunger"].includes(ev.detail.oldMask) ||
+                ["joy", "hunger"].includes(ev.detail.mask)
+            ) && ["embassy_recreation"].includes(env.stage.name)
+        ) refreshStage()
+    },
 }
 
 /* team members */
@@ -1132,7 +1340,7 @@ createEntity({
             exec: ()=>{
                 startDialogue('d3_miltza')
             }, 
-            showIf: ["PAGE!!embassy_day", 3]
+            showIf: [["PAGE!!embassy_day", 3], ["PAGE!!movefoeactive", false]]
         },
         {
             name: "chat",
@@ -1200,7 +1408,7 @@ createEntity({
             exec: ()=>{
                 startDialogue('d3_mind')
             }, 
-            showIf: ["PAGE!!embassy_day", 3]
+            showIf: [["PAGE!!embassy_day", 3], ["PAGE!!movefoeactive", false]]
         },
         {
             name: "chat",
@@ -1358,40 +1566,8 @@ createEntity({
     ::UTILIZE TO CONTROL MEMORY STREAM`,
     actions: [ 
         {
-            name: "save & heal",
+            name: "save",
             exec: ()=>{
-                let healed = false
-                let healnames = ""
-                
-                page.party.forEach(member=>{
-                    if(!check(`PAGE!!${member.slug}-gone`) && member.hp) {
-                        let combatActor = env.COMBAT_ACTORS[member.combatActor]
-                        if(member.hp > combatActor.maxhp) member.hp = combatActor.maxhp
-                        if(member.hp >= Math.floor(combatActor.maxhp * 0.5)) return
-        
-                        healnames += `'${member.name}';`
-                        member.hp = Math.floor(combatActor.maxhp * 0.5)
-                        healed = true
-                    }
-                })
-    
-                if(healed) readoutAdd({
-                    message: `<div class="action-text">NOTE::${healnames}'restored HP to 50% max'</div>`, 
-                    name: "sourceless", 
-                    type: "sourceless combat", 
-                    show: true,
-                    forceMini: true,
-                    sfx: false
-                })
-                else readoutAdd({
-                    message: `<div class="action-text">NOTE::'no healing completed';'only restores under 50% max'</div>`, 
-                    name: "sourceless", 
-                    type: "sourceless combat", 
-                    show: true,
-                    forceMini: true,
-                    sfx: false
-                })
-
                 env.embassy.collapseSave({effects: true})
             },
             showIf: ()=>check("PAGE!!e4prog") && !env?.rpg?.active
@@ -1468,6 +1644,14 @@ createEntity({
             showIf: ()=>{return check("PAGE!!e4prog", 12) && env.stage.name == "hall_heart-entry" && !env?.rpg?.active}
         },
 
+        { /* split hall continue if paused */
+            name: "proceed",
+            exec: ()=>{
+                startDialogue("split_clearhall_ing", {specificChain: "continue"})
+            },
+            showIf: ()=>{return check("PAGE!!e4prog", 12) && env.stage.name == "intermediary" && !env?.rpg?.active}
+        },
+
         { /* entry reloop continue */
             name: "proceed",
             exec: ()=>{
@@ -1486,6 +1670,50 @@ createEntity({
     ]
 })
 
+/* global embassy dialogues */
+//d3_loss renamed so returners can see the new stuff
+env.dialogues["collapse_loss"] = generateDialogueObject(`
+start
+    sourceless
+        A SHARP LIMB STRIKES MY MINDCORE
+        ...
+            EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 6000);content.classList.add('dying');
+        WHAT IS HAPPENING
+            WAIT::1000
+        EVERYTHING HAS STOPPED
+            WAIT::1000
+        HELLO?
+        TOZIK? GAKVU??
+        FUNFRIEND?
+        IS ANYONE THERE?
+        HELP
+
+    unknown
+        ...
+            SHOWONCE::
+
+____SHOWONCE::
+    sys
+        EXECUTING::"structure direction";"iteration termination"
+
+    plainsys
+        current iteration choices led to destruction of recollection locus
+        render unable to proceed in present state; no coherent data for memory stream
+        reversion to last stable state recommended
+
+    sys
+        END::
+____END
+
+    RESPONSES::sys
+        rewind<+>END
+            EXEC::env.embassy.lossReversion()
+            FAKEEND::(retry fight)
+
+        end recollection<+>END
+            EXEC::moveTo("/local/ocean/embassy/")
+            FAKEEND::(return to memory selection)
+`)
 
 /* global embassy actors */
 env.dialogueActors["movefriend"] = {
@@ -1511,32 +1739,89 @@ env.dialogueActors["tozik"] = {
             voice: ()=>play('talk', 0.8),
             image: "/img/sprites/obesk/tozik/portrait_pain.gif",
         },
-    }
+
+        empty: {
+            element: ".hermimicked",
+            type: "portrait-contain portrait-hermit",
+            voice: ()=>{/* empty */},
+            image: "/img/sprites/obesk/tozik/portrait_empty.gif",
+        }
+    },
 }
 
 env.dialogueActors["gakvu"] = {
-    image: "/img/sprites/obesk/gakvu/portrait.gif",
-    element: ".truecreature .gakvu",
-    type: "obesk qou gakvu portrait-contain",
-    voice: ()=>play('talklaugh', 1)
+    name: "gakvu",
+    expressions: {
+        default: {
+            type: "obesk qou gakvu portrait-contain",
+            element: ".truecreature .gakvu",
+            voice: ()=>play('talklaugh', 1),
+            image: "/img/sprites/obesk/gakvu/portrait.gif",
+        },
+
+        empty: {
+            element: ".hermimicked",
+            type: "portrait-contain portrait-hermit",
+            voice: ()=>{/* empty */},
+            image: "/img/sprites/obesk/gakvu/portrait_empty.gif"
+        }
+    }
 }
 
 env.dialogueActors["kazki"] = {
-    image: "/img/sprites/obesk/kazki/portrait.gif",
-    type: "obesk qou kazki portrait-contain",
-    voice: ()=>play('talklaugh', 1.2)
+    name: "kazki",
+    expressions: {
+        default: {
+            type: "obesk qou kazki portrait-contain",
+            voice: ()=>play('talklaugh', 1.2),
+            image: "/img/sprites/obesk/kazki/portrait.gif",
+        },
+
+        empty: {
+            element: ".hermimicked",
+            type: "portrait-contain portrait-hermit",
+            voice: ()=>{/* empty */},
+            image: "/img/sprites/obesk/kazki/portrait_empty.gif"
+        }
+    },
 }
 
 env.dialogueActors["bozko"] = {
-    image: "/img/sprites/obesk/bozko/portrait.gif",
-    type: "obesk qou bozko portrait-contain",
-    voice: ()=>play('talk', 0.8)
+    name: "bozko",
+    expressions: {
+        default: {
+            type: "obesk qou bozko portrait-contain",
+            element: ".truecreature .bozko",
+            voice: ()=>play('talk', 0.8),
+            image: "/img/sprites/obesk/bozko/portrait.gif",
+        },
+
+        empty: {
+            element: ".hermimicked",
+            type: "portrait-contain portrait-hermit",
+            voice: ()=>{/* empty */},
+            image: "/img/sprites/obesk/bozko/portrait_empty.gif"
+        }
+    }
 }
 
 env.dialogueActors["cavik"] = {
-    image: "/img/sprites/obesk/cavik/portrait.gif",
-    type: "obesk qou cavik portrait-contain",
-    voice: ()=>play('talk', 1.3)
+    name: "cavik",
+    expressions: {
+        default: {
+            type: "obesk qou cavik portrait-contain",
+            element: ".truecreature .cavik",
+            voice: ()=>play('talk', 1.3),
+            image: "/img/sprites/obesk/cavik/portrait.gif",
+        },
+
+        empty: {
+            element: ".hermimicked",
+            type: "portrait-contain portrait-hermit",
+            voice: ()=>{/* empty */},
+            image: "/img/sprites/obesk/cavik/portrait_empty.gif"
+        }
+    }
 }
 
 env.dialogueActors["groundsmind"] = {
@@ -1612,11 +1897,12 @@ env.stageEntities.embassyCreature = () => {
         case 3.5:
             creature = env.stageEntities.embassyCreatures.akizet
 
-            //get second and third members, placing them and adding their positions
-            //creature sprite strings need to have 'pos' which is replaced and gives them their transform based on their party placement
-            try { creature += env.stageEntities.embassyCreatures[page.party[1].slug].replace("pos", 'pos="left"') } catch(e) { console.log(e) }
-            try { creature += env.stageEntities.embassyCreatures[page.party[2].slug].replace("pos", 'pos="right"') } catch(e) { console.log(e) }
-            
+            //get and add the two other page.party members that aren't akizet
+            let otherMembers = page.party.filter(mem => mem.slug !== "akizet")
+            otherMembers.forEach((mem, i) => {
+                if(i > 1) return;
+                creature += env.stageEntities.embassyCreatures[mem.slug].replace("pos", `pos="${i === 0 ? 'left' : 'right'}"`)
+            })            
         return creature
 
         case 3: //no positioning required for day 3 cause its always these guys
@@ -1701,7 +1987,6 @@ env.stageEntities['l'] = {
         html: `<figure><div class="target" entity="veilklight"></div></figure>`
     }
 }
-
 
 env.stageEntities.cavikHTML = `<figure>
 <div class="head"></div>
@@ -1834,6 +2119,7 @@ env.embassy.fixMovefriend = () => {
         e.setAttribute('entity', 'movefriend')
     })
 }
+
 env.stages['embassy_relocator'] = {
     creature: env.stageEntities.embassyCreature,
     exec: ()=> { 
@@ -1869,7 +2155,8 @@ env.stages['embassy_relocator'] = {
                 //continue to regular day 3 case as well
 
             case 3:
-                toggleBgm(env.embassy.music_safe)
+                check("PAGE!!movefoeactive") ? toggleBgm(env.embassy.music_p1boss_suspense) : toggleBgm(env.embassy.music_safe)
+
                 env.stage.querySelectorAll('.character:not(.collapser)').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
@@ -1890,7 +2177,11 @@ env.stages['embassy_relocator'] = {
                         document.querySelector('#realgrid .lifter').classList.add('fixed')
                     } else {
                         env.stage.querySelectorAll('.target[entity="movefriend"]').forEach(e=>{
-                            e.setAttribute('entity', 'disrupted movefriend')
+                            if(check("PAGE!!movefoeactive")) {
+                                e.setAttribute('entity', 'movefoe')
+                                e.parentElement.classList.remove('fixed')
+                                e.parentElement.classList.add('aggressormode')
+                            } else e.setAttribute('entity', 'disrupted movefriend')
                         })
                     }
 
@@ -1900,11 +2191,12 @@ env.stages['embassy_relocator'] = {
                     } else if(check("PAGE!!queue_person_enable") && !check('PAGE!!cpersonnel_unlocked')) {
                         startDialogue("d3_person_enable")
                         change('PAGE!!queue_person_enable', false)
-                    } else if(env.embassy.enoughSfer() && !check('PAGE!!movefriendqueued')) {
+                    } else if(check("PAGE!!miltzameet") && !check('PAGE!!movefriendqueued')) {
                         startDialogue("d3_relocator_return")
                         change('PAGE!!movefriendqueued', true)
-                    }      
-                }          
+                    }
+                }
+                
             break
 
             case -1:
@@ -1959,6 +2251,7 @@ env.stages['embassy_relocator'] = {
             class: "locked",
             teleportTarget: "embassy_recreation",
             lockFlag: "PAGE!!recreation_unlocked",
+            teleportSpot: 136,
             shouldFace:"down"
         },
 
@@ -1976,18 +2269,47 @@ env.stages['embassy_relocator'] = {
                 examineEntity: "save iteration",
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'movefriend_survival',
+                skipCallback: () => {
+                    startDialogue("d3_movefriend_finish")
+                    env.setTimeout(()=>changeBgm(env.embassy.music_safe), 1000)
+                }
+            }),
+        },
     },
 
     width: 7,
-    plan: [
-        '.','.','.','.','.','.','.',
-        '.','.','.','R','.','.','.',
-        '.','.','M','p','m','.','.',
-        '%','K','░','░','░','+','^',
-        '.','.','░','░','░','.','.',
-        '.','.','.','░','Y','.','.',
-        '.','.','.','g','.','.','.',
-    ],
+    plans: {
+        default: `
+            .......
+            ...R...
+            ..Mpm..
+            %K░░░+^
+            ..░░░..
+            ...░Y..
+            ...g...
+        `,
+
+        movefoe: `
+            .......
+            ..m....
+            ..Mp░..
+            ..░░░..
+            ..@@@..
+            ...@Y..
+            ...g...
+        `,
+    },
+
+    getPlan: function() {
+        let plan = this.plans.default
+        if(check("PAGE!!movefoeactive")) plan = this.plans.movefoe
+        return plan
+    },
 
     html: ()=>{
         if(content.classList.contains("collapse")) {
@@ -2004,3 +2326,56 @@ env.stages['embassy_relocator'] = {
     }
 }
 
+
+env.dialogues["statustest"] = generateDialogueObject(`
+start
+    plainsys
+        you got item yay
+
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_restorative"}, {returnHTML: true})
+        
+    RESPONSES::self
+        ok<+>END
+`)
+
+
+env.dialogues["++ingfixoption"] = generateDialogueObject(`
+start
+    sys
+        ERROR::'memory stream halted'
+
+    bugout
+        player
+        since last iteration continue
+        BIG CHANGE to your brainsgame is made
+        deep foundanional change ok
+        to ALL ITEM
+        to ALL COmBAT
+        some word is change
+        we only do this 1 time forever ok?
+        save adabtation possible
+        BUT
+        o_o
+        consider RESTART due to BIG!!! CHANGE!!!
+        may be weird due to BIG!!!!! change
+        select measure to continuing please
+    
+    sys
+        EXECUTING::'functional selection'
+        
+    plainsys
+        CONTINUE - persist with current save but adapt
+        BACK OUT - return to selection to create new iteration
+
+    sys
+        END::
+        
+    RESPONSES::self
+        continue<+>END
+            HIDEREAD::
+            EXEC::change("TEMP!!permitIngUpgrade", true);env.entities["recollection::collapse"].actions.find(action=>action.name == "load iteration").exec()
+        back out<+>END
+            HIDEREAD::
+            EXEC::moveTo("/local/ocean/embassy/")
+`)

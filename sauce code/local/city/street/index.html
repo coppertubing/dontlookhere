@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,6 +407,7 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div class="grid-plane">
     <div class="grid-container">
         <div class="grid-animator">
@@ -372,10 +433,10 @@
 
 <style>
 
-@import url(/css/stage/cass.css?1776972202354301552);
-@import url(/css/stage/beneath.css?1776972202354301552);
-@import url(/css/rotwatcher.css?1776972202354301552);
-@import url(/css/local/joy.css?1776972202354301552);
+@import url(/css/stage/cass.css?1791592572941837278);
+@import url(/css/stage/beneath.css?1791592572941837278);
+@import url(/css/rotwatcher.css?1791592572941837278);
+@import url(/css/local/joy.css?1791592572941837278);
 #content {
     background: var(--bright-color);
     background-image: url(/img/textures/fadeinlong.gif), url(/img/local/city/street.gif);
@@ -1317,7 +1378,7 @@ body#city_banks_flip #content {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/city.gif",
@@ -1350,7 +1411,7 @@ body#city_banks_flip #content {
         change("2040thing", true)
     }
     else if(env.stage.name.includes("office_")) moth = "this is definitely looking like the old west coast HQ";
-    else if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a 'gordon'... i'm gonna see if i can track down who this was";
+    else if(check('citystreet__envoy-end')) moth = "so akizet's assigned contact was a \"gordon\"... i'm gonna see if i can track down who this was";
 
     if(env.currentDialogue.justChanged) moth = "anything else on your mind?";
 
@@ -1780,7 +1841,7 @@ env.citystreet = {
                 setTimeout(()=>chatter({actor: 'cashier', text: 'Oh, yeah! OK!'}), 3000)
                 setTimeout(()=>chatter({actor: 'cashier', text: `Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô`}), 5000)
                 setTimeout(()=>chatter({actor: 'envoy', text: `I got you covered, Akizet.`}), 7000)
-                setTimeout(()=>chatter({actor: 'sourceless', text: `THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.`}), 9000)
+                setTimeout(()=>chatter({actor: 'sourceless', text: `THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES`}), 9000)
                 setTimeout(()=>{
                     chatter({actor: 'cashier', text: `Just wait a minute and we'll have those ready.`})
                     document.querySelector('.grid-plane').classList.add('cafeworking')
@@ -1790,7 +1851,7 @@ env.citystreet = {
                 setTimeout(()=>chatter({actor: 'sourceless', text: `SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS`}), 18000)
                 setTimeout(()=>chatter({actor: 'envoy', text: `Hey, thanks. You have a good day.`}), 20000)
                 setTimeout(()=>chatter({actor: 'cashier', text: `Thanks!! You too!!`}), 22000)
-                setTimeout(()=>chatter({actor: 'sourceless', text: `I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.`}), 25000)
+                setTimeout(()=>chatter({actor: 'sourceless', text: `I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT`}), 25000)
                 setTimeout(()=>chatter({actor: 'sourceless', text: `THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE`}), 28000)
                 setTimeout(()=>chatter({actor: 'envoy', text: `Pretty good, right?`}), 32000)
                 setTimeout(()=>chatter({actor: 'akizet', text: `it will do`}), 35000)
@@ -1905,7 +1966,6 @@ env.citystreet = {
         content.querySelectorAll('#papercupyay').forEach(el=> el.remove())
         change("STAGE!!watergave", true)
         change("STAGE!!watercup", false)
-        change("STAGE!!sipped", false)
 
         let count = check("PAGE!!olivercup") || 0
         env.stage.querySelectorAll(".busy").forEach(el=>el.classList.add(`cup${count + 1}`))
@@ -2958,7 +3018,7 @@ start
             SHOWONCE::
         i understand there is some lingering fear...
             SHOWONCE::
-        especially in these packed areas.
+        especially in these packed areas
             SHOWONCE::
         
     envoy
@@ -3022,13 +3082,13 @@ cafe
         where is the 'cafe'?
     
     envoy
-        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
+        It's real close by. Just keep walking down the street, look for the ˜/ŒôfªœDŠ/d 0E@bright yellow door.
     
     RESPOBJ::envoyStreetResponses
 
 flowers
     akizet
-        i recall you mentioning a "flower shop", once...
+        i recall you mentioning a 'flower shop', once...
         where is that?
     
     envoy
@@ -3171,7 +3231,7 @@ start
     
     akizet
         well no, that may not entirely be the case
-        it could be something--corrucystic, as it must be--that has been taught to relay this message
+        it could be something - corrucystic, as it must be - that has been taught to relay this message
         but otherwise, that is correct
     
     sourceless
@@ -3522,7 +3582,7 @@ start
         Nice to meet ya, Akizetesche!
 
     sourceless
-        I DIP MY HEAD, RECEPTORS CURLED BACK RESPECTFULLY.
+        I DIP MY HEAD, RECEPTORS CURLED BACK RESPECTFULLY
     
     akizet
         i extend the same to you, oliver, my friend
@@ -3704,7 +3764,7 @@ tv4
     television
         ...still on edge after an OFO entered its no-fly zone.
         The OFO allegedly hovered in place over the base for nearly twenty minutes, not responding to radio warnings. When jets were deployed,
-        It circled the base twice <em>while being pursued</em>, in what today's press release is calling a 'clear rejection of boundaries'.
+        It circled the base twice <em>while being pursued</em>, in what today's press release is calling a "clear rejection of boundaries".
         Obesk representatives have clarified that the pilot of the OFO is being located and investigated internally,
         And that all OFOs will be outfitted with radio devices. But the question remains:
         How much can be forgiven before a stand has to be made?
@@ -3769,7 +3829,7 @@ createEntity({
                 }, 400)
 
                 setTimeout(()=>{
-                    chatter({actor: 'television', text: '...heavier storms are inbound...advisory remains in effect...', readout: true})
+                    chatter({actor: 'television', text: '...heavier storms are inbound... advisory remains in effect...', readout: true})
                     cutscene(false)
                     vfx({type: 'beacon', state: false})
                 }, 2000)
@@ -6704,7 +6764,7 @@ ____END
 
     RESPONSES::akizet
         set out<+>END
-            EXEC::setCam()
+            EXEC::setCam();change("STAGE!!sipped", "DELETE")
 
 gotwaterbonus
     akizet
@@ -6734,7 +6794,7 @@ ____END
 
     RESPONSES::akizet
         set out<+>END
-            EXEC::setCam()
+            EXEC::setCam();change("STAGE!!sipped", "DELETE")
 
 END::ratween(env.bgm, 1)
 `)
@@ -6852,7 +6912,7 @@ ____END
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -6940,8 +7000,9 @@ document.addEventListener('corru_mask', env.citystreet.mask)
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 

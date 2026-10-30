@@ -73,7 +73,7 @@
     height: 100%;
 }
 
-.swapcam .truecreature .akizet {
+.swapcam .truecreature .akizet.creaturesprite {
     background-size: auto 80%;
     background-image: url(/img/sprites/akizet/robe.gif);
 }
@@ -337,7 +337,7 @@
     background-size: 100% 100%;
 }
 
-.collapse #realgrid .lamp.collapsed figure {
+.collapse #realgrid .evil .lamp.collapsed figure {
     transform: translate(-10%, 60%) rotate(20deg);
 }
 
@@ -465,7 +465,7 @@
     animation: TINYHOVER 5s ease-in-out infinite alternate;
 }
 
-body[quality="regular"].collapse #realgrid .spiregolem::before, 
+body[quality="regular"] .collapse #realgrid .spiregolem::before, 
 body[quality="regular"] .attendant-sprite::before {
     content: "";
     position: absolute;
@@ -476,7 +476,7 @@ body[quality="regular"] .attendant-sprite::before {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    --baseTransform: translateZ(10px);
+    --baseTransform: translateZ(-10px);
     animation: SPIN 10s linear infinite;
     z-index: 2;
 }
@@ -1579,6 +1579,7 @@ body.in-combat #bh_player.active { opacity: 1}
 body #content.collapse.dying::after {
     background: url(/img/textures/damagetran.gif), url(/img/textures/ultradarkclouds.gif) !important;
     background-size: 100% 100%, auto !important;
+    transform: unset !important;
 }
 
 .dying .grid-container {
@@ -1595,4 +1596,18 @@ body[quality="regular"].goodbye .grid-container {
 
 #content.goodbye .grid-container {
     transform: translate(15%, 75%) translateZ(-100vw)
+}
+
+/* maskproofing */
+.incoherentonly, .hungeronly, .joyonly, .freedomonly {
+    pointer-events: none;
+    visibility: hidden;
+}
+
+body[n="i"] .incoherentonly, 
+.mask-hunger .hungeronly,
+.mask-joy .joyonly,
+.mask-freedom .freedomonly {
+    pointer-events: initial;
+    visibility: visible;
 }

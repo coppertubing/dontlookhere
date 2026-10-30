@@ -10,7 +10,21 @@ env.embassy.startGolemFight = (formation, endDialogue)=>{
             }
         }
     })
-},
+}
+
+env.embassy.music_embassy_uncanny = new Howl({
+    onload: function () {
+        page.howls.push(this)
+        this.intendedVol = 0.9
+    },
+    src: ['/audio/bs_uncanny.ogg'],
+    preload: true,
+    loop: true,
+    volume: 0.9,
+    sprite: {
+        __default: [0, 9999999, true]
+    }
+})
 
 //off / boot / on
 //changes page!!geli when applicable
@@ -163,13 +177,17 @@ createEntity({
                     startDialogue('m_minvat');
                 } else chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true})
             },
-            showIf: ["PAGE!!augments", false]
+            showIf: ["PAGE!!minvatitems", false]
         },
         {
-            name: "approach",
-            exec: ()=>toggleAugmentMenu(),
-            showIf: "PAGE!!augments"
-        }
+            name: "use schematic cyst",
+            exec: ()=>{
+                if(isStageClear()) {
+                    startDialogue('m_mingun');
+                } else chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true})
+            },
+            showIf: [["PAGE!!minvatgun", false], ["item|sorry_cyst", true]]
+        },        
     ]
 })
 
@@ -217,6 +235,28 @@ createEntity({
     text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'visual display utilizing luminescent corru swarms';'favored by multitasking jut'</span>`
+})
+
+createEntity({ // unused but needs to be here to revert it showing up. my dumbass leaving it in at launch
+    name: 'ukuzu simulacrum',
+    hide: true,
+    type: "thoughtform portrait-center portrait-dark",
+    image: "/img/sprites/combat/items/ukuzutemp.gif",
+    text: `::RESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'item'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'functional simulacrum said to enhance awareness';'little more than an externalized cognitive enhancement cyst despite simulacrum styling';'its mediocre flavor is secondary'</span>`,
+    actions: [
+        {
+            name: "take",
+            exec: ()=>{
+                chatter({actor: 'sys', text: `ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_surge'].description}">ukuzu simulacrum</span>"::<span definition="STATUS++item_surge">EFFECT</span>`, readout: true})
+                addItem("eq_surge")
+                change("PAGE!!gotsurge", true)
+                refreshStage({noFlash: true})
+            },
+            showIf: ['PAGE!!gmdoor', false]
+        }
+    ]
 })
 
 createEntity({
@@ -340,6 +380,16 @@ createEntity({
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'intelligent analysis golem equipped with single-use ablative shielding';'utilized in structural repair and construction';'seized by the groundsmind?'</span>`,
 })
 
+
+createEntity({
+    name: 'vat',
+    type: "thoughtform collapse portrait-cover portrait-blocker",
+    image: "/img/sprites/combat/foes/constructorvat.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'unique scenery';'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'schematic production apperatus';'automatically imprints purpose and shape via attached archives'</span>`,
+})
+
 createEntity({
     name: 'kivskin',
     type: "thoughtform foe collapse portrait-cover portrait-blocker",
@@ -359,12 +409,23 @@ createEntity({
 })
 
 createEntity({
+    hide: true,
     name: 'golem',
     type: "thoughtform foe collapse portrait-blocker",
     image: "/img/sprites/combat/foes/golem-portrait.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'general purpose golem';'contains volatile dull components that normally are not an issue...';'seized by the groundsmind?'</span>`,
+})
+
+createEntity({
+    name: 'archival golem',
+    type: "thoughtform foe collapse portrait-cover",
+    image: "/img/sprites/combat/foes/archivalgolemportrait.gif",
+    pathLimit: "/local/ocean/embassy/",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'black-corru golem of great strength';'intelligent and methodical';'has shed prior duties to kill us'</span>`,
 })
 
 createEntity({
@@ -396,6 +457,7 @@ createEntity({
 
 createEntity({
     name: 'warped container',
+    hide: true,
     type: "thoughtform foe collapse portrait-static",
     image: "/img/sprites/combat/foes/inc_dull_portrait.gif",
     text: `::ACTIVE THOUGHTFORM
@@ -407,6 +469,7 @@ createEntity({
     name: 'translation core',
     type: "thoughtform foe collapse portrait-blocker portrait-cover",
     image: "/img/sprites/combat/foes/translator_sigil.gif",
+    examinePriority: 2,
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'a great stationary mind like our timestopper';'hard at work in translating the signal into speech';'ex‡÷tr^¼e mely nÆdan©ger ouešdÎ'</span>
@@ -534,17 +597,12 @@ env.embassy.conditionalAugPoint = (amt = 1, reason) => {
 //complex skips for relevant dialogues
 env.embassy.skips = {
     personnel: ()=>{
+        change("PAGE!!g_personnel", "dangerous")
+        content.classList.remove('painprep', 'painhalf', 'painfade', 'slowpain')
         vn.done()
-        content.classList.remove('painmode', 'painhalf', 'painfade', 'painprep')
-        change("PAGE!!gp", true)
-
-        if(check("gameplay_off")) {
-            setTimeout(() => {
-                startDialogue("personnel_clear")
-            }, 600)
-        } else {
-            env.embassy.startGolemFight('g_prelobby1', 'personnel_clear')
-        }
+        refreshStage()
+        setCam()
+        vfx({type: "darkflash", state: false})
     },
 
     lobby_clear: ()=>{
@@ -561,8 +619,8 @@ env.embassy.skips = {
         pauseSwapCam(false)
         specialCam(false)
         vn.done()
-        change("PAGE!!mmidclear", true)
-        if(check("PAGE!!mmidclear") && check("PAGE!!smidclear") && !check("PAGE!!smcut")) {
+        change("PAGE!!mmid", true)
+        if(check("PAGE!!mmid") && check("PAGE!!smidclear") && !check("PAGE!!smcut")) {
             change('PAGE!!smcut', true)
             setTimeout(()=>step(), 100)
         }
@@ -573,7 +631,7 @@ env.embassy.skips = {
         specialCam(false)
         pauseSwapCam(false)
 
-        if(check("item|golem_parts") && check("item|golem_sfer")) {
+        if(check("item|golem_parts")) {
             content.classList.remove('makingik')
             env.embassy.addPartyMember("ikgolem")
             change("PAGE!!ikgolem", true)
@@ -581,23 +639,12 @@ env.embassy.skips = {
     },
 
     m_boss: ()=>{
+        change("PAGE!!g_m_dist", "dangerous");
         vn.done()
-        specialCam(false)
+        setCam()
+        specialCam()
         pauseSwapCam(false)
-        change("PAGE!!mboss", true)
-
-        switch(check("gameplay_off")) {
-            case false:
-                env.embassy.startGolemFight('g_mboss', 'm_bossclear')
-            break
-
-            case true:
-                setTimeout(() => {
-                    startDialogue("m_bossclear")                 
-                    env.stages['g_m_dist'].removeBoss();   
-                }, 600)
-            break   
-        }
+        env.stage.current.scaryBoss()
     },
 
     m_bossclear: ()=> {
@@ -625,18 +672,16 @@ env.embassy.skips = {
     m_fix: ()=> {
         vn.done();specialCam(false);pauseSwapCam(false)
         addItem(env.ITEM_LIST["golem_parts"], 1) // no conditional need bc this is 1-max
-        env.embassy.conditionalAugPoint(1, 'm_fix')
         change("PAGE!!goverride", true)
     },
-
-    
 
     s_vats: ()=>{
         pauseSwapCam(false)
         specialCam(false)
         vn.done()
         change("PAGE!!smidclear", true)
-        if(check("PAGE!!mmidclear") && check("PAGE!!smidclear") && !check("PAGE!!smcut")) {
+        env.embassy.conditionalItem('eq_shell', 1, 'vats')
+        if(check("PAGE!!mmid") && check("PAGE!!smidclear") && !check("PAGE!!smcut")) {
             change('PAGE!!smcut', true)
             setTimeout(()=>step(), 100)
         }
@@ -647,16 +692,11 @@ env.embassy.skips = {
         pauseSwapCam(false)
         specialCam(false)
 
-        addItem(env.ITEM_LIST["golem_sfer"], 1)
-        env.embassy.conditionalAugPoint(1, 's_bossclear')
-
         env.stages['g_s_storage'].removeBoss(false)
         env.stages['g_s_storage'].normalize()
         toggleBgm(env.embassy.music_golems_cleared)
         env.embassy.music_unsafe_golems.rate(1)
     },
-
-
 
     bossclear: ()=> {
         vn.fadeChars(false)
@@ -680,6 +720,7 @@ env.embassy.skips = {
 */
 
 /* MECHANICAL DIALOGUES */
+// these are no longer used outside of maybe mods due to the enemy rework
 env.dialogues["genericenemy"] = generateDialogueObject(`
 start
     sourceless
@@ -726,7 +767,7 @@ env.dialogues["genericenemyvictory"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
@@ -738,37 +779,6 @@ ____END
             EXEC::forceSwapCam(false)
 `)
 
-env.dialogues["loss"] = generateDialogueObject(`
-start
-    sourceless
-        A SHARP LIMB STRIKES MY MINDCORE
-        ...
-            EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 10000);content.classList.add('dying');
-        WHAT IS HAPPENING
-        EVERYTHING HAS STOPPED
-        HELLO?
-        TOZIK? GAKVU??
-        FUNFRIEND?
-        IS ANYONE THERE?
-        HELP
-
-    unknown
-        ...
-            SHOWONCE::
-
-    sys
-        ALERT::"recollection locus destroyed";"iteration unable to continue"
-        ADVISE::"start new iteration";"load saved iteration"
-            SHOWIF::'collapseSave'
-        ADVISE::"start new iteration"
-            SHOWIF::['collapseSave', false]
-
-    RESPONSES::sys
-        return to selection<+>END
-            EXEC::moveTo("/local/ocean/embassy/")
-`)
-
-
 /************** INTRO AND PERSONNEL */
 /************** INTRO AND PERSONNEL */
 /************** INTRO AND PERSONNEL */
@@ -778,7 +788,7 @@ RESPOBJ::
         the plan<+>plan
             
         wait<+>wait
-            SHOWIF::'gol__intro-plan'
+            SHOWIF::'PAGE!!introplan'
             EXEC::vn.done()
             FAKEEND::(end preparations)
     
@@ -787,7 +797,7 @@ RESPOBJ::
     
     RESPONSES::miltza
         hesitance<+>hesitance
-            SHOWIF::'gol__intro-plan'
+            SHOWIF::'PAGE!!introplan'
 
     RESPONSES::karik
         sfer<+>sfer
@@ -829,7 +839,6 @@ continue
         i feel the chamber's ground shift beneath us, pulling outwards
         ah... it is forming limbs outside of the chamber
         indeed, it must physically crawl through the spireblood and drag the chamber with it
-        an extremely strenuous process, i suspect
     
     movefriend
         i must focus on the locomotion sorry!!
@@ -837,7 +846,7 @@ continue
 
     sourceless
         i look towards tozik at first
-        he looks back at me absently, then makes an uncertain gesture with his receptors
+        he stares back absently, then makes an uncertain gesture with his receptors
         before i can ask it to clarify, one of the mindcores announces themselves
     
     karik
@@ -851,29 +860,30 @@ continue
     
     karik
         if the corroyi is no longer correctly distributed across the spire,
-        then that means it is going to be pooling at the lower levels...
-        and grow more dense as the layers separate, until, ah...
+        then our perpetrator has intentionally and directly sabotaged the structure's circulatory systems...
+        there is no way it could fail this fast, otherwise!
+        so, that means corroyi is going to be pooling at the lower levels,
+        and will grow more dense as the layers separate, until, ah...
         well, the lower levels will be crushed by the pressure
-        and then the spire's outer walls will explode
+        and then the spire's outer walls will explode at its base
         as you imagine, my friends, this is not conducive to our goals
-
-    gakvu
-        the groundsmind would be destroyed, but so would the explanation for all of this...
-            EXEC::vnp({gakvu:"showright"})
     
     tozik
-        along with any would-be survivors
+        what end could that possibly serve?
             EXEC::vnp({tozik:"showright"})
+        whoever holds the groundsmindry would be crushed as well
+
+    gakvu
+        no survivors
+            EXEC::vnp({gakvu:"showright"})
     
     karik
-        exactly...
-        there is a solution to this, but we require groundsmind control
-        it seems that the perpetrator is not properly attending to the structure's systems
+        grim, yes, but there is a solution to this!
+        however, it requires groundsmind level control...
     
     miltza
-        do you expect us to be able to get there in time?
+        do you expect us to be able to get to the base of the spire in time?
             EXEC::vnp({gakvu:"hide", tozik: 'hide', miltza: 'showleft'})
-        the groundsmindry is at the lowest portion of the spire...
 
     karik
         well...
@@ -895,7 +905,8 @@ continue
 
 plan
     sourceless
-        in the near silent tension of our descent, 
+        in the near silent tension of our descent,
+            EXEC::change("PAGE!!introplan", true)
         i feel that our lack of a clear plan is causing even more anxiety
         all are in thought, though itzil is pacing
         so i speak up with what i know:
@@ -924,7 +935,7 @@ plan
         next, we should probably find a body for--
     
     tozik
-        akizet, if the structure fails, then this will not yield us any gain
+        akizet, if the spire bursts, then this will not yield us any gain
     
     sourceless
         IMMEDIATELY, THE MORALE I WAS ATTEMPTING TO BUILD IS CRUSHED
@@ -939,20 +950,22 @@ plan
         no no, you see, i have an idea
             EXEC::vnp({tozik: "focus far"})
         i was here recently while giving advice on the design of the deep-sea constructor golems
-        it was in the distribution area of the manufacturing θtendril that i saw something unusual...
+        it was within the manufacturing θtendril that i saw something unusual...
         for quick deployment, they have their own groundsmindry override
+        specifically for manipulating local flows of corroyi and spireblood to carve a path
         there was a θjut using it to directly release golems to the exterior of the spire
     
     itzil
         aah!!! of course!!
             EXEC::vnp({tozik: "defocus far"})
         it is only a small range in which it is effective, but...
-        that could be just enough to delay total collapse!!
+        yes!! we can probably get some parts moving again!
+        especially if the sabotage was a simple switch!!
         do you think that would work, karik?
 
     karik
-        oh yes, oh yes
-        by releasing some of the pressure, that should buy us some time
+        if it is a 'simple switch', we may have to break it so it is not undone, but...
+        it would certainly lend us some time, oh yes
     
     sourceless
         ah, and so he shapes the morale back up, though in a different design
@@ -964,13 +977,13 @@ plan
     sourceless
         the way miltza stands and fidgets...
         if a tunnel opened, she would scramble through it without any thought
-        the very same fear as in fresh surface runners
         cowardice, perhaps, but i cannot truly blame her
-        a remote coordinator does not simply change expertise for fun
+        she surely took this position to escape from remote coordination
     
     tozik
         if we must, i suppose
         but we will need all the help we can get if we intend to assault the groundsmind
+        i do have concerns about this, especially if the override is only limited to the immediate area, but,
 
     gakvu
         what if i expand the control of the override?
@@ -978,15 +991,14 @@ plan
     sourceless
         in a brief stunned silence, our attention is drawn towards gakvu
         how many unauthorized miracles does she know how to perform?
-        groundsmindry overrides are tightly controlled, but...
         she is clearly capable of more than i have ever known
     
     miltza
         how could you possibly do that?
             EXEC::vnp({tozik: "hide", karik: "hide", itzil: "hide", miltza: "", gakvu: ""})
-        in fact - <em>how</em> have you been doing any of this?
+        in fact - how have you been doing <em>any</em> of this?
             EXEC::vnp({miltza: "focus"})
-        it is so convenient that you can guide us through the impossible as you have been
+        it is so convenient that you happen to be the only one who can guide us through these impossible paths
     
     sourceless
         miltza's voice is heavy with accusation, her receptors closed like fists
@@ -1020,7 +1032,7 @@ plan
     miltza
         is this issue only mine?
             EXEC::vnp({miltza: "", gakvu: "defocus"})
-        our tools and golems usurped, and here before us is a cynical vel with that very ability?
+        our tools and golems usurped, and here before us is some cynical vel with that very ability?
         is your groundsmindry destination truly to help us?
     
     sourceless
@@ -1064,12 +1076,12 @@ plan
         though they do not stray near one another, they have an accord... for now
     
     akizet
-        ...ok
-        to return to our path,
-        top priority: use the override in manufacturing to stop the structure from collapsing
-        next: arm ourselves - in fact, if we can make more timestopper connectors, even better
+        ...returning to our path,
+        we first use the override in manufacturing to stop the structure from collapsing
+        next, we arm ourselves
+        in fact, if we can make more timestopper connectors, even better
         also, we should find suitable bodies for itzil and karik
-        then: find any survivors, itzil's kivii included
+        then, find any survivors, itzil's kivii included
         finally, we descend to the groundsmind, and cease this madness
         all right?
     
@@ -1211,10 +1223,10 @@ hesitance
         or... is she within the greater conflict herself?
         despite her flightiness and her outburst, i feel i can trust her
         yes, she must simply be scared beyond her limits
-        remote coordinators like her rarely saw any direct action,
-        only ever experiencing the terror of the surface through their distant eyes
+        her particular remote coordination experience was surely limited in action
+        likely to have experienced the terror of the surface only a few times, through distant eyes
         but it seems that terror has found her, now
-        final death has never been closer to all of us
+        final death has never been closer
 
     RESPONSES::akizet
         true...<+>loop
@@ -1232,9 +1244,10 @@ wait
         ok friends! good news!
         the density is so high i was not able to get you to the usual entry point
         in fact, the entire θsegment is surrounded by dangerously dense corroyi!
+        we could not even pass through to the groundsmindry if we wanted to!
         sorry!! that was not the good news yet! here it is!
         we are near one of the personnel θtendrils of the golem maintenance θsegment!
-        it seems to have sunken and partially collapsed from the damage...
+        it seems to have sunken and partially collapsed from the pressure...
         but it is still attached to the main area!
         i can connect you there, but until the corroyi flows are restored,
         that is the best i can do!
@@ -1253,7 +1266,7 @@ wait
         ...oh!!
             EXEC::vnp({gakvu: "defocus"})
         gakvu! the entire floor is connected! it is not like your θsegment at all
-        or most of them, really...
+        because it was formed early in the spire's growth,
         all of the θtendrils and chambers are connected semi-permanently
         it is easier to move golems and resources around that way!
 
@@ -1280,7 +1293,8 @@ wait
     
     movefriend
         umm no sorry!!
-        once it is safe for all of you to leave me, i will return to a safe level until you have resolved the pressure problem!
+        once it is safe for all of you to leave me, 
+        i will return to a safe level until you have resolved the pressure problem!
     
     miltza
         you are leaving us??
@@ -1288,14 +1302,14 @@ wait
     movefriend
         oh no no no!
         only a little!
-        i will be back to deliver you to the groundsmindry floor, of course!
+        i will be back to deliver you to the groundsmindry θsegment, of course!
         and if you take too long,
         ...
         nevermind!
         good luck!
     
     sourceless
-        movefriend forms a tunnel to the personnel θtendril, 
+        movefriend forms a tunnel to the personnel θtendril 
         though it remains partially closed until we are ready to proceed
         but before then, i should consider...
         who do i want to accompany me? 
@@ -1305,10 +1319,15 @@ wait
         hmm...
 
     sys
-        NOTICE::'PARTY MENU';'attached to SPATIAL NAVIGATION';'associated with letter Z'
-        NOTICE::'additional functionality enabled'
-        NOTICE::'activate or deactivate potential party members';'drag from or into active party'
-        NOTICE::'recollective locus cannot be removed from party'
+        EXECUTING::"structure direction";"objectives"::
+
+    plainsys
+        present memory stream may progress non-linearly
+        necessary events for sensical progression will be tracked and marked
+        top right of render will provide details
+
+    sys
+        ::END
 
     RESPONSES::akizet
         velzie be kind<+>END
@@ -1326,7 +1345,7 @@ start
         the corru walls take the form of false cave-stone, just like our recreation chamber
         and so the terrible brutality before us is like a vision of the past...
         but it is here now, a failed barricade given way to invasion
-        and it is silent, without sign of foe
+        silent, picked over, without sign of foe
         the qou here are dissected, mindcores half-dissolved in their bled components
         the others avert their eyes after a quick scan, but i find myself staring
         why are their bodies so intact? why such precision?
@@ -1337,6 +1356,8 @@ start
     
     sourceless
         i gesture for the mindcores to climb up along the walls and ceiling, as it will be safer
+        and in that brief glance, itzil is frozen at the sight of these bodies
+        friends, no doubt
     
     sourceless quiet
         then, a step into our advance, a familiar whisper comes again...
@@ -1355,7 +1376,9 @@ start
         the signal, the pain, it is here
             EXEC::env.embassy.day3Signal(3000)
         the wordless message, breathed again
-        it feels stronger, but we still stand--are we more resilient?
+        a horrific wave crashing against and passing through every organ
+        it feels clearer, but we still stand--are we more resilient?
+        is it directed more specifically to something? it certainly is not for us
         i can think this time... i can feel that the pain is not mine
         i manage to stay standing against a wall, and the others stumble, clutch their heads, their chests...
         my eyes bend, my sense of gravity is disrupted... but i stay conscious
@@ -1374,34 +1397,39 @@ start
         the signal is short-lived this time, like an echo of itself - already, it abates
         my eyes slowly recover, though i feel my perception is still not entirely accurate
         but before i can say anything, there is a rustling throughout the room
-            EXEC::content.classList.add('painfade')
+            EXEC::content.classList.add('painfade');vfx({type: "darkflash", state: true})
         the slain qou... some have risen
-            EXEC::vnp({husk1:"show far", bg: true})
+            EXEC::change("PAGE!!g_personnel", "dangerous");refreshStage()
+            WAIT::400
+            THEN::vfx({type: "darkflash", state: false});
         their bodies distorted by their damage, as if drawn to terrible life by secri
-            EXEC::vnp({husk2:"show far", hideStage: true})
+            EXEC::setCam({x: 3, y:4});vnp({hideStage: true, husk2: "show far", husk1: "show far"})
     
     miltza
-        is that... 
+        is that...
+
+    itzil
+        uzzi? kiku??
+        are you--are you ok?!
     
     sourceless
         ŸÆkf
-        it is not an illusion
-        they are real, and they walk towards us with the strangest serenity
+        itzil paints names to their twisted faces
+        and they walk towards us with the strangest serenity
     
     aggressor
         here
         i am here
             EXEC::content.classList.add('slowpain');
         i am here
-            EXEC::content.classList.remove('painmode', 'painhalf', 'painfade');vnp({husk2:"show", bg: true})
+            EXEC::content.classList.remove('painmode', 'painhalf', 'painfade');vnp({hideStage: true, husk2: "show far", husk1: "show"})
 
     sourceless
-        they speak in unison, each unique voice blending into one another
-        a droning metallic chorus, filling the θtendril
+        they speak in unison, half-broken vocal organs overdriven and metallic in timbre
         at first, with each step towards us, we back away, uncertain
         to kill an aberrant container is simple, but...
         do these ones intend us harm? or is it more? can they be helped?
-        i step forward
+        i must know--i step forward
     
     akizet
         hello?
@@ -1412,6 +1440,7 @@ start
         i hear you
         usurpers
             EXEC::content.classList.remove('painprep')
+        c o me
     
     gakvu
         akizet... stay back
@@ -1423,19 +1452,11 @@ start
         we must make the first move
     
     RESPONSES::akizet
-        attack!!<+>END
-            EXEC::change("PAGE!!gp", true);env.embassy.startGolemFight('g_prelobby1', 'personnel_clear');vn.done()
-            SHOWIF::['gameplay_off', false]
-            FAKEEND::(initiate combat)
-        bypass<+>CHANGE::personnel_clear
-            SHOWIF::['gameplay_off', true]
-            FAKEEND::(bypass combat)
-            EXEC::change("PAGE!!gp", true);vn.done()
-        skip (debug)<+>CHANGE::personnel_clear
-            SHOWIF::'TEMP!!debug'
-            EXEC::vn.done()
+        prepare to strike<+>END
+            EXEC::vn.done();change("PAGE!!g_personnel", "dangerous");setCam()
+            FAKEEND::(prepare)
 
-SKIP::env.embassy.skips.personnel();
+SKIP::env.embassy.skips.personnel()
 `)
 
 /* personnel postfight */
@@ -1443,44 +1464,53 @@ env.dialogues["personnel_clear"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
-        the last husk crumbles into itself
+        the husks stumble away, somehow still standing despite their incredible wounds
+            EXEC::playerTurn({specificDirection: "up"})
+        and to my surprise, with jagged and stilted movement, 
+        they flee together through the path ahead??
+            EXEC::change("PAGE!!g_personnel", "cleared");refreshStage({darkFlash: true});
+        yes, they run... a tactical retreat, no doubt
+        a mixture of doubt and fear joins together in our connection
+        time runs too short for us to question this aberrance in any depth
         immediately, i scan over our team, and we are fine enough
             EXEC::changeBgm(env.embassy.music_unsafe_golems)
-        itzil and karik cling to the ceiling in the corners, itzil refusing to look
-        miltza and gakvu both have recoiled in our victory with no celebration
-        tozik, most of all, seems present in this moment with me, drawn to one of the corpses
-        the adrenaline, the subtle joy i felt before, is overwhelmed by grief
-        i did not know these qou, but in their incoherent faces were every person i have ever spoken kindly to
+        itzil and karik cling to the ceiling in the corners, 
+        gakvu has recoiled in our victory with no celebration, receptors twisted in shock
+        miltza is much the same, but there is something more visceral in her frozen stance, a slow shake of her head...
+        tozik, most of all, seems present in this moment with me, meeting my gaze with worry
+        the θdeathly adrenaline, the subtle joy i felt before, is overwhelmed by grief
+        i did not know these qou as itzil did,
+        but in their melted faces were every person i have ever spoken kindly to        
         ...
     
     tozik
-        these... 
+        those... 
     
     sourceless
         he nearly addresses them as qou, but thinks better of it as his voice shakes into a pause
     
     tozik
-        ...they have no mark of control,
-        no sigil or connector
-        no mindcore...
+        ...they had no mark of control,
+        no sigil or connector...
+        certainly no mindcore--the shattered remains were plainly visible in their chests
         how is this even possible?
         our bodies are too complex even for regular groundsmindry
-    
+
     sourceless
-        these bodies are all truly uninhabited?
-        the mindcores, itzil, karik... maybe they could...
-        no, no - a terrible thought, i dare not even complete it
-        but that does bring something to mind
+        tozik draws close to one of the remaining still bodies, as if it could offer any answer
+        actually, if they are 'empty', perhaps itzil and karik could---
+        no, no, i quell that horrific thought. these were itzil's friends
+        but it does bring to mind their strange resilience to the wave that passed through us
+        i call up to them, still huddled in the corner of the stony ceiling
     
     akizet
-        hey
-        itzil, karik
+        itzil, karik...
         did you not feel the signal a moment ago?
-        the same one as before? the pain, the madness
+        the same one as before? the... pain, the madness
 
     sourceless
         they look at one another, though itzil returns to huddling in the corner, eyespot turned away
@@ -1499,27 +1529,36 @@ ____END
         tozik stands from the body he examined, drawing his corruskivi back beneath the surface of his hand
     
     tozik
-        i did, too...
-        it felt closer
-        we are on the right path
-    
+        whether it was some form of communication or an attempt at control,
+        i cannot help but feel it was not intended for us
+
     sourceless
-        his finality implies we should leave this θtendril sooner rather than later, so we commence
-        but still... closer is a good way to put it
-        it felt stronger, but it may just be proximity
+        his finality implies we should leave this θtendril sooner rather than later, 
+        especially with those husks of bodies on the move--we cannot know what their intentions are
+        further sabotage would deliver us quickly to final death
     
     akizet
         itzil, karik
         remain close
         stay high and far away from any bodies or inactive golems
+
+    sourceless
+        i say that at first without looking, turning at the last θblink
+        only to see that karik is quietly encouraging itzil to proceed
+        in the wake of itzil's friends drawn to life by infestation, being forced to strike them back...
+        my clinical direction must be a cold wind upon an open wound
+        if i were forced to strike down gakvu, or tozik...
     
+    karik
+        we will be along--right?
+
     itzil
-        ok akizet!
+        ...yes, akizet!
     
     RESPONSES::akizet
         continue<+>END
 
-SKIP::changeBgm(env.embassy.music_unsafe_golems)
+SKIP::changeBgm(env.embassy.music_unsafe_golems);change("PAGE!!g_personnel", "cleared");refreshStage();
 `)
 
 /************** LOBBY */
@@ -1532,15 +1571,22 @@ env.dialogues["lobby_danger"] = generateDialogueObject(`
 start
     sourceless
         Ìw?¤eÔ!!!
-            EXEC::pauseSwapCam(true)
-        they are here, too, and are drawn to us immediately
-        it was not a single moment of madness
+            EXEC::pauseSwapCam(true);
+            WAIT::100
+            THEN::content.classList.add("slowcam")
+        the husks that fled huddle in the opposite corner, repairing one another--
+            EXEC::setCam({x: 7, y: 7, rotation: -90})
+        and are guarded by two more...
+            EXEC::setCam({x: 3, y: 8, rotation: -90})
+        their immediate movements towards us forces our claws into aggression once more
+        we cannot afford them a θblink of advantage
         velzie's eye hangs heavily over us, i feel its delight in our torment
         these husks must be destroyed before the others can come through
 
     RESPONSES::akizet
-        continue<+>END
-            EXEC::change("PAGE!!gl", true);pauseSwapCam(false)
+        prepare to fight!<+>END
+            FAKEEND::(prepare)
+            EXEC::change("PAGE!!g_lobby", "dangerous");setCam();content.classList.remove("slowcam");pauseSwapCam(false)
 `)
 
 /* 
@@ -1550,8 +1596,14 @@ start
 env.dialogues["lobby_clear"] = generateDialogueObject(`
 start
     sourceless
-        with the area clear, i also notice the doors here are sealed
-            EXEC::content.classList.add("safe");
+        despite the hardiness of these two, they falter under our blows
+            EXEC::playerTurn({specificDirection: "right"})
+        without sound, without speech, they flee again with unnatural speed--
+        slithering through a gateway to the sfer supply θtendril
+            EXEC::change("PAGE!!g_lobby", "cleared");refreshStage({darkFlash: true});
+        i could give chase, but--it could just as easily be a tactical maneuver
+            EXEC::content.classList.add("safe")
+        we have gained critical ground, regardless
         it is safe enough, so i call back
             EXEC::changeBgm(env.embassy.music_golems)
     
@@ -1560,16 +1612,20 @@ start
     
     sourceless
         and so we stand in this great lobby, where i imagine movefriend first tried to deliver us
-        the stone, the decorations of false life...
+        we scatter around it, checking for any potential threats, examining damage
+            EXEC::setCam({x: 5, y:8, rotation: 0});
+        miltza still seems particularly affected, stood against a wall-ridge, motionless and tense       
+        her position does draw my attention to the stone, the decorations of false life...
         were it not for the splattered corroyi and sludge from our once-friends, it would be beautiful
     
     akizet
-        itzil, where is maintenance from here?
+        where is maintenance from here?
             EXEC::vnp({bg: true, itzil: "show far"})
     
     sourceless
-        itzil scurries towards me, then... past me?
-        they approach the central desk, which seems to have a managerial golem stationed at it
+        itzil scurries towards me, and i expect them to answer,
+        but instead, they pass without a glance
+        and approach the central desk, which has a managerial golem stationed within
             EXEC::vnp({hideStage: true, itzil: "show far", geli: "show far"})
         it is inactive, i did not even notice it at first
         uncanny... it resembles a qou more than a golem
@@ -1579,6 +1635,7 @@ start
         sorry akizet - i will answer you, but i must see...
     
     sourceless
+        there is some desperation in their voice, certainly fond of this particular construct
         itzil climbs up onto the golem's shoulder, then extends a branched receptor towards its head
             EXEC::vnp({itzil: "show", geli: "show"})
         tozik steps forward, reaching out in objection
@@ -1598,15 +1655,14 @@ start
             EXEC::env.stage.querySelectorAll('.geli').forEach(el=> el.classList.remove('inactive'))
     
     geli
-        hello, itzil
-        what are you doing here? i thought you took the θgaze off
+        itzil! hello!
+        what are you doing here? i thought you took this θgaze for recreation
     
     sourceless
-        its voice is feminine, shifting between intonations strangely as golems tend to
-        when itzil disconnects, geli looks towards us, pseudoreceptors extending in greeting
-        itzil seems all right, though they are looking at geli strangely...
+        its voice carries a larval femininity, shifting between intonations strangely as golems tend to
+        itzil disconnects without issue, though there is a strange tension in their stare at this construct...
         perhaps with an engineer's eye, assessing the damage?
-        though, this is interesting--it sprouted disconnected receptors
+        this golem is fascinating, especially given the disconnected receptors it sprouted
         the physical marking of an echo with life-like personality
         it is likely bearing a strong echo of a tir in the embassy, or perhaps one carried from home
     
@@ -1637,31 +1693,42 @@ ____END
     
     itzil
         geli! oh you are ok!!
-        can you help us? there is an emergency
-        everything is going crazy!
+        can you help us? there is an emergency!!
+        uzzi, and kiku, and--and everyone, <em>everyone</em>, they are all, i--
+        i do not know how to put this, they...
+        they are hurt! they are... violent!
     
     sourceless
-        itzil scurries down onto the desk to speak with the golem
-        geli smiles like a bright cousin, dipping its head respectfully
+        itzil has settled into a frantic pacing on the desk as they speak
+        geli listens patiently, smiling like a bright cousin
         a strange behavior to assign to a golem...
         i suspect they wanted the qou here to practice smiling in case of public appearance
     
     geli
-        i will do what i can
-        what do you need?
+        oh! 
+        do not panic, i am sure everything will be fine!
+        let me request the assistance of...
+
+    geli::concern
+        ah...
+        no golems in the area are presently responding to my requests!
+
+    geli
+        is there anything i can help you with immediately, before i diagnose the issue?
     
     sourceless
-        the doors all seem to be locked...
-        maybe this golem can help us through
+        if it is capable of coordination,
+        then the golem must also have access to the door controls...
+        perhaps with its help, we may fortify this chamber
 
     RESPONSES::akizet
         interrogate<+>CHANGE::geli_first
-            EXEC::vnp({hideStage: true, itzil: "hide"});pauseSwapCam(false)
+            EXEC::vnp({hideStage: true, itzil: "hide"});pauseSwapCam(false);setCam();
             HIDEREAD::
         look around more first<+>END
-            EXEC::vn.done();pauseSwapCam(false)
+            EXEC::vn.done();pauseSwapCam(false);setCam();
 
-SKIP::env.embassy.skips.lobby_clear();
+SKIP::env.embassy.skips.lobby_clear();change("PAGE!!g_lobby", "cleared");refreshStage();setCam();
 `)
 
 env.dialogues["geli_first"] = generateDialogueObject(`
@@ -1675,6 +1742,7 @@ start
         we thought it was the groundsmind at first, but...
         ...now unoccupied qou bodies are being manipulated, too
         did you receive any communications or signals while inactive?
+        anything queued, or...
     
     sourceless
         geli gives a negative wave of its pseudoreceptors
@@ -1696,17 +1764,18 @@ ____SHOWIF::["e3a2__escapewin", false]
 ____SHOWIF::["e3a2__escapewin", true]
     geli
         that all sounds very strange!
-        i am sure it will be fine
+        but it is not the first time some damage has been caused by aberrance!
+        these things have a way of working out
 
     geli::happy
-        oh, look at you, itzil!
+        oh, and look at you, itzil!
         i do not recall you being so small!
 ____END
     
     sourceless
         geli giggles with a strange naivete
         itzil chuckles too, but out of discomfort--slowly crawling away from the golem
-        it does not seem to fully grasp the nature of the emergency, even with the bodies before it
+        it does not seem to fully grasp the nature of the emergency, even with the blood before it
         is this a manifestation of incoherence? or simply how the echo was designed?
         either way - a managerial golem like geli will be invaluable for monitoring the spire's health
     
@@ -1742,11 +1811,13 @@ ____END
         what is that, tozik?
     
     tozik
-        an instruction deep cloning tool
+        a tool that clones complex instructions and behaviors flawlessly, beyond simple copying
         usually, it is only used in qou-body and golem construction, but i think we can use it for this
-        you see, if we want to make more timestopper connectors,
-        it is not enough to simply copy them, for their connection to the timestopper is complex
-        a total dull synchronization must occur, and an impressor will let us do that remotely
+        you see, we may make new timestopper connectors at any vat,
+        but they would be awaiting a connection, still
+        with grand cysts, any connectors must first make physical contact...
+        a dull association, something to make them aware of one another and form necessary bonds
+        with an impressor, we may route new connectors through those <em>already</em> established
     
     geli
         ah!
@@ -1782,7 +1853,7 @@ ____END
             EXEC::vnp({geli: "defocus", tozik: "hide"})
 
     geli
-        i suspect that has something to do with the foundational construction golem they are working on!
+        i suspect that has something to do with the deep sea construction golem they are working on!
         due to the damage, i am unable to see inside, and cannot establish contact...
         if you wish to use the groundsmindry override, you may be able to fix the door and pressure!
         my control over the local area is very limited by comparison
@@ -1806,7 +1877,7 @@ ____END
     geli::concern
         oh... well, i cannot really help you
             EXEC::vnp({itzil: "hide"})
-        there are so many relays not responding right now...
+        there are so many local relays not responding right now...
     
     geli::happy
         but, while you look for her, please show your friends around!
@@ -1819,15 +1890,21 @@ ____END
         all right, the plan is the same, then...
         we stop the collapse, we find itzil's kivii and any survivors, we scrape together what we can...
         and then we proceed
-        geli - can you open the smaller doors nearby for us if they are clear?
+        geli - we need this chamber to be safe for whoever is not with me
+        are you able to only allow us to pass through these doors?
+    
+    geli::think
+        oh! well, that may be an inconvenience, but...
+
+    geli::happy
+        so long as it is a temporary arrangement, yes!
     
     geli
-        yes! 
+        i will forward any complaints i receive to you directly
+        in fact!
         directly connected θtendrils are sfer supply, manufacturing, and minor operations
-        i cannot open them all immediately, but i am standing by to open the doors for you
-        for i sense that there are non-qou entities within each,
-        and they are not responding to my identification requests
-        so, i must keep them closed in for now
+        i sense that there are several non-qou entities within each,
+        and they are not responding to my identification requests...
         if you see them, please let them know to respond to me as soon as they can!
         and let me know if you need anything else!
             EXEC::change("PAGE!!geli", true);change("TEMP!!nogelizoom", true)
@@ -1919,9 +1996,14 @@ sfer
 
 ____SHOWIF::['PAGE!!mboss', false]
     itzil
-        oh, yes, akizet! it is an exciting development!
-        it is like using the contrivance for small, mundane materials
-        i do not know the specifics myself, but gozri--ah, a friend of mine--was the proponent of those
+        ah! yes... an--an exciting development!
+
+    sourceless
+        some flicker of itzil's cheer returns, if only for a θblink
+    
+    itzil
+        it is like using a contrivance to send about small, mundane materials
+        i do not know the specifics myself, but gozri--ah, a friend of mine--was the proponent of those...
 ____END
 
     akizet
@@ -1950,10 +2032,9 @@ ____SHOWIF::['PAGE!!sboss', false]
     
     sourceless
         what...
-        is that where the signal could be coming from?
-        no, no - the groundsmindry sigil we saw before demands it must be the groundsmind
-        regardless, this warrants investigation...
-        that aside, it could be a valuable resource for the creation of our armaments
+        is that where the recent signal came from?
+        whether it be an intentional use by the groundsmind, or the technology simply breaking down,
+        this warrants investigation...
 
 ____SHOWIF::'PAGE!!sboss'
     geli::concern
@@ -2038,22 +2119,32 @@ ____SHOWIF::['PAGE!!oboss', false]
         perhaps we should at least fetch some of the archival data, if any is intact
         a great amount of work between divisions was done to decipher so many languages of the cousins
         it would be a tragedy if any were lost
-        of course, this is only secondary to preventing the structure from collapsing as a whole...
+        of course, this is not even secondary to preventing the structure from collapsing as a whole...
     
     akizet
         thank you, geli
 ____END
 
 ____SHOWIF::[['PAGE!!mboss', false], ['PAGE!!oboss', false]]
+    sourceless
+        itzil stirs from a distant stare at the mention of these projects
+
     itzil
-        oh, akizet!
-        all of the minor operations have direct connections to the archival veins!
-        once the area is stabilized, we could go see if anything there would be of use to us!
-        i know the dull development division had some interesting projects...
-        they may come in handy, now!
+        oh, akizet...
+        that part of the θsegment is very close to a side of the spine,
+        so nearly all of the minor operations have direct connections to the archival veins
+        once the area is stabilized, we could go see if there is anything of use!
+        i know the dull development division had some interesting projects
+        they may come in handy, now
+        maybe gozri is ok, hiding in there...
+
+    sourceless
+        by what we have learned and heard so far,
+        i cannot help but suspect not a single qou is left alive in this place
     
     akizet
-        interesting... yes, we should!
+        we should hope so, yes
+        thank you, itzil
 ____END
     
     RESPONSES::akizet
@@ -2097,10 +2188,10 @@ door
         does it see something we cannot?
     
     akizet
-        geli, what was that room?
+        geli, what was that chamber?
     
     geli::uncanny
-        oh? room?
+        oh? chamber?
         oh!
 
     geli::happy
@@ -2108,7 +2199,7 @@ door
     
     geli
         it appears it has sustained heavy damage
-        almost as if the room itself is completely gone!
+        almost as if the chamber itself is completely gone!
         i am presently trying to do something about it
     
     geli::concern
@@ -2196,12 +2287,12 @@ END::vfx({type: 'beacon', state: false})
 env.dialogues["m_clear"] = generateDialogueObject(`
 start
     sourceless
-        with the area secured, the others file in to assess the situation
-            EXEC::change("PAGE!!mmidclear", true)
+        we are greeted with an eerie silence
+            EXEC::change("PAGE!!mmid", true)
+        no foe awaits us, so the team gathers in to assess the paths availed
         i notice tozik considering the side rooms
-        two are labelled as the vat rooms, lesser and greater
-        greater foundry vats will take too long for our needs, but...
-        if the lesser foundry vats are still functional, we can use them to our advantage
+        two are labelled as the vat chambers, lesser and greater
+        both could serve us in different ways, though the lesser is far better for quick production
     
     sourceless
         karik skitters ahead, prodding at the damaged door opposite the entrance
@@ -2214,21 +2305,21 @@ start
         ah, i thought so!
     
     sourceless
-        itzil soon follows
+        itzil follows, slowly
     
     karik
-        akizet, the door to the override is partially sludged!
+        akizet, the door that would take us towards the override is sludged!
         do you have any explosives?
 
     itzil
-        what!! will that not just cause a greater collapse?
+        what?! will that not just cause a greater collapse?
 
     karik
         not like you think, my friend!
         i have done a great deal of structural management in my θdeath
         with thanks to the intelligent structuring of these θtendrils,
         a directed explosion - especially with kavrukas - will allow us a degree of safety
-        if this were the research θsegment, this would be an issue... but here, it is fine
+        if this were the research θsegment, it would be an issue... but here, it is fine
     
     akizet
         any alternative, gakvu?
@@ -2247,45 +2338,6 @@ start
         to clear this door and open a hole...
         three should be safe!
 
-____SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) < 3'
-    sourceless
-        i scan over the things i carry, then eying the others connected with me
-        and not a single kavruka is held between us...
-            SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) == 0'
-        we have only one...
-            SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) == 1'
-        we are short just one kavruka
-            SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) == 2'
-
-    akizet
-        we have no kavrukas
-            SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) == 0'
-        we do not have enough kavrukas
-            SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) > 0'
-        do you think we could find some?
-    
-    karik
-        well, this is the place for it!
-
-    itzil
-        yes, they were a frequent production in this area!!
-        they are very useful to have on construction golems!
-    
-____SHOWIF::'EXEC::checkItem(env.ITEM_LIST.kavruka) >= 3'
-    sourceless
-        i scan over the things i carry, and eye the others connected with me
-
-    akizet
-        yes, we have enough!
-    
-    karik
-        excellent! 
-        come over here when you are ready to proceed!
-    
-    sourceless
-        we could do this right away,
-        but it may not be a bad idea to check the side rooms
-
 ____SHOWIF::'PAGE!!bozcav'
     sourceless
         cavik, who had been rummaging through the disabled golem parts, approaches us
@@ -2299,11 +2351,8 @@ ____SHOWIF::'PAGE!!bozcav'
         i know how we could wire them to explode
     
     karik
-        what?
-    
-    itzil
-        wow, really??
-        you should do it!
+        what, truly?!
+        a novel application, cavik!
     
     akizet
         ah--cavik
@@ -2325,8 +2374,24 @@ ____SHOWIF::'PAGE!!bozcav'
     
     akizet
         then that will do!!
+        
+____SHOWIF::['PAGE!!bozcav', false]
+    sourceless
+        i scan over the things i carry, and eye the others connected with me
+        we do have a satchel with plenty to spare
 
-____SHOWIF::[['PAGE!!mmidclear'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
+    akizet
+        yes, we have enough!
+    
+    karik
+        excellent! 
+        come over here when you are ready to proceed!
+    
+    sourceless
+        we could do this right away,
+        but it may not be a bad idea to check the side rooms
+
+____SHOWIF::[['PAGE!!mmid'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
     sourceless quiet
         suddenly, one of the side doors unlocks with a strange little musical chime
             EXEC::play('obeskToggle', 0.75);specialCam('g_m_shortcut');vn.done()
@@ -2336,7 +2401,7 @@ ____SHOWIF::[['PAGE!!mmidclear'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
         hello!! 
         i have detected all unauthorized entities,
         in BOTH manufacturing and sfer supply,
-        have been removed from the premises!
+        are no longer within the premises!
         how did you manage that? ahaha!!
         i hope they did not argue with you too much!
         anyway i am opening the connective tunnel between these areas now!
@@ -2348,6 +2413,11 @@ ____SHOWIF::[['PAGE!!mmidclear'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
     
     akizet
         ah... thank you, geli
+
+    sourceless
+        how strange it waited until now...
+        did geli detect a threat in here?
+        where did it go?
 ____END
 
     RESPONSES::akizet
@@ -2363,8 +2433,9 @@ start
         karik waits patiently by the door
             EXEC::vnp({karik: "show far", bg: false})
         in their gaze, i sense a strange calmness
-        i did not notice before, but they seem unconcerned by the situation...
+        i did not notice before, but they seem almost unconcerned by the situation...
         do they know something i do not? or are they simply that confident?
+        regardless, their unwavering will is a glimmering fruit in this terrible place
     
     karik
         ready to proceed?
@@ -2377,22 +2448,7 @@ ____SHOWIF::[['PAGE!!bozcav', true]]
         yes! just say when!
             EXEC::vnp({karik: "show far", cavik: "show"})
 
-____SHOWIF::[['PAGE!!bozcav', false], ['EXEC::checkItem(env.ITEM_LIST.kavruka) < 3', true]]
-    akizet
-        not yet...
-        let us look around some more
-    
-    karik
-        yes!
-        and if there are none within this θtendril,
-        we should explore elsewhere!
-        it seems they were preparing a lot of construction golems,
-        so there should be a few around somewhere
-
-____SHOWIF::[['PAGE!!bozcav', false], ['EXEC::checkItem(env.ITEM_LIST.kavruka) >= 3', true]]
-    sourceless
-        i check our tools again, and--yes! we have plenty!
-
+____SHOWIF::[['PAGE!!bozcav', false]]
     akizet
         yes!
 ____END
@@ -2400,21 +2456,21 @@ ____END
     RESPONSES::akizet
         detonate the door<+>boom
             EXEC::change('PAGE!!kavboom', true);
-            SHOWIF::[['PAGE!!bozcav', false], ['EXEC::checkItem(env.ITEM_LIST.kavruka) >= 3', true]]
+            SHOWIF::[['PAGE!!bozcav', false]]
         detonate the door<+>boom
             EXEC::change('PAGE!!cavboom', true)
             SHOWIF::'PAGE!!bozcav'
         debug force boom<+>boom
             SHOWIF::'TEMP!!debug'
             EXEC::change('PAGE!!kavboom', true);
-        continue<+>END
+        delay that<+>END
             EXEC::vn.done()
 
 boom
 ____SHOWIF::'PAGE!!kavboom'
     sourceless
         i collect three of our kavrukas, and prepare to place them on the ground before the door
-            EXEC::pauseSwapCam(true);specialCam('g_m_door2');removeItem(env.ITEM_LIST.kavruka, 3)
+            EXEC::pauseSwapCam(true);specialCam('g_m_door2')
         karik taps the spots where they should be placed, equidistant in a half-circle
             EXEC::vnp({karik: "show far"})
         then, they skitter closer to twist their angles slightly...
@@ -2452,7 +2508,7 @@ ____SHOWIF::'PAGE!!cavboom'
         here?
     
     karik
-        no no, you would think that, but that is a θtendril reservoir for locking...
+        no no, you would think that, but that is a reservoir for locking...
     
     sourceless
         ...
@@ -2464,7 +2520,7 @@ ____SHOWIF::'PAGE!!cavboom'
         all right, go!
     
     sourceless quiet
-        there is a sudden searing flash of gray, and then a heavy impact,
+        there is a sudden searing flash of gray dull light, and then a heavy impact,
             EXEC::vnp({karik: "hide", cavik: "hide"});play('dull');change("PAGE!!gmdoor", true);
         the remnants of the door melted away
             EXEC::setTimeout(()=>step(), 200)
@@ -2478,7 +2534,7 @@ ____END
         woah! no no, not yet!
         if there are any hostiles within...
         they will be expecting us, if they are not already coming
-        akizet, you and the team go in first!
+        akizet, go forth!
 
     itzil
         ok...
@@ -2492,55 +2548,108 @@ ____END
 env.dialogues["m_min"] = generateDialogueObject(`
 start
     sourceless
-        lesser vats!!
-        these can be used to generate a variety of tools...
-        once it is safe, we must see if they are intact!
-        this could be our armory...
-            EXEC::change("PAGE!!minvats", true)
+        lesser vats...
+        these could be used to generate a variety of tools,
+        if they were not presently being operated by a groundsmind-controlled golem
+        to some terrible end, i have no doubt--
+        we could back away and have geli keep the chamber closed, but...
+        these small and quick construction vats could lend us some valuable weaponry
+            EXEC::change("PAGE!!g_m_minor", "dangerous")
+        for that to happen, we must pry them free of control, first
     
     RESPONSES::akizet
-        clear the area<+>END
+        prepare<+>END
+            FAKEEND::(prepare)
 `)
 
 env.dialogues["m_minvat"] = generateDialogueObject(`
 start
     sourceless
-        i have only used a foundry vat a few times before
-        but i recognize that most here are fully functional
-        i wonder - why were they passed over by the signal?
-        perhaps it is the sheer simplicity of their function, or...
-        ah, it does not matter now - let us see what they have for us
-
-____SHOWIF::["PAGE!!augments", false]
+        most of the vats broke or gave way in our fight
+            EXEC::change("PAGE!!minvatitems", true)
+        still, according to this terminal... there are some products in the wreckage
+        remnants of whatever they had been composing before control was fully wrested away
+        
     sys
-        ATTENTION::'additional party functionality';'augments';'now available'
-        NOTICE::'alter party member abilities via augment menu'
-        NOTICE::'contained within party menu';'Z'
-        NOTICE::'initial augment point count'::'3'
-        NOTICE::'remove and replace at any time'
-        NOTICE::'additional augment points gained from defeating powerful foes'
-            EXEC::change("PAGE!!augments", true);body.classList.add('augments-enabled')
-____END
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_pariispike'].description}">parii spike</span>"
+            EXEC::env.embassy.conditionalItem('eq_pariispike', 1, 'minspike')
+            AUTOADVANCE::
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_pariispike"}, {returnHTML: true})
+    
+    sys
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_surge'].description}">ukuzu simulacrum</span>"
+            EXEC::env.embassy.conditionalItem('eq_surge', 1, 'minkuzu')
+            AUTOADVANCE::
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_surge"}, {returnHTML: true})
+
+    sourceless
+        ...both production requests were recent,
+        near enough to have been after the signal's first appearance...
 
     RESPONSES::akizet
-        investigate the vats<+>END
-            EXEC::cutscene(true)
-            FAKEEND::(open augment menu)
+        depart<+>END
+`)
 
-END::toggleAugmentMenu();cutscene(false)
+env.dialogues["m_mingun"] = generateDialogueObject(`
+start
+    sourceless
+        all but one of the production vats are damaged, apparently
+            EXEC::change("PAGE!!minvatgun", true)
+        but it is just enough for our schematic
+        i place the strange cyst in the vibrant reservoir,
+        where smaller tendrils weave through its membrane
+        at first, i suspect it will not work, given its damage
+
+    sourceless quiet
+        but a small chirp of confirmation soon rings out as production begins
+            EXEC::play("obeskToggle")
+        ...
+
+    sourceless
+        in a surprisingly quick θblink, the last vat presents its final product
+
+    sys
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_rifle'].description}">symbiotic rifle</span>"
+            EXEC::env.embassy.conditionalItem('eq_rifle', 1, 'mingun')
+            AUTOADVANCE::
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_rifle"}, {returnHTML: true})
+
+    sourceless
+        a bright weapon, almost identical to that odd golem's
+        i still do not know how these work, but--
+        oh! in its grip, a connection is made
+        a small implantation of knowledge, like an archival cyst, on its specific operation
+        it compels the mind to race, to imagine how it might fare on another world
+        my receptors reflexively curl with a small delight
+        ...yes, this is a suitably deadly thing
+
+    RESPONSES::akizet
+        depart<+>END
 `)
 
 
-//the dialogue for the construction of the golem once parts are known (post manufacturing)
-//done in minor vats most likely - to be combined with the regular crafting dialogue
-//this assumes it is being selected from a creation menu
-//won't actually let you create the golem until you have the 'golem metal' from sfer
+//the dialogue for the construction of the golem once parts are known (post manufacturing boss)
 env.dialogues["m_maj"] = generateDialogueObject(`
 start
     sourceless
         this is the perfect place to construct our golem...
         since the parts are already assembled, we need only connect them
         so it will not even take very long!!
+
+    sys
+        EXECUTING::"structure direction";"golem acquisition"::
+
+    plainsys
+        utilize entity; GREATER TERMINAL; to proceed
+
+    sys
+        ::END
     
     RESPONSES::akizet
         investigate<+>END
@@ -2553,32 +2662,18 @@ start
 
 ____SHOWIF::'PAGE!!mboss'
         the golem for itzil and karik--we can create it here!
+        with golem components easily within reach, now is a good time
+        even if itzil does not awaken, they can be held within the body safely
 
-____SHOWIF::[['PAGE!!mboss', false], ['item|golem_sfer', false]]
+____SHOWIF::[['PAGE!!mboss', false]]
         i think they are used only for large or time consuming builds...
         what use would we have for this?
-
-____SHOWIF::[['item|golem_parts', false], ['item|golem_sfer']]
-        we have located some golem-ready sfer we can use, from the sfer supply area, but...
-        what could we do with that alone?
-        perhaps there are some schematics or parts we could use around this θtendril
-
-____SHOWIF::[['item|golem_parts'], ['item|golem_sfer', false]]
-        of course, we have an abundance of golem components...
-        but normal sfer will not suffice for this purpose
-        we need something golem ready to serve as resilient connectors
-        otherwise, should the signal come again, they could be rendered inert...
-
-____SHOWIF::[['item|golem_parts'], ['item|golem_sfer']]
-        with the sfer we have found, and the golem parts nearby...
-        now is a good time!
-        even if itzil does not awaken, they can be held within the body safely
 ____END
 
     RESPONSES::akizet
         begin<+>construct
-            SHOWIF::[['item|golem_parts'], ['item|golem_sfer']]
-        return<+>END
+            SHOWIF::[['item|golem_parts']]
+        depart<+>END
 
 construct
     sourceless
@@ -2611,7 +2706,7 @@ construct
         all others, with me! we must fetch those materials!
     
     sourceless
-        we set out to gather both parts and golem-sfer
+        we set out to gather parts and sfer
             EXEC::vn.done();vnp({hideStage: true})
         ...
         and in time, we return, the areas still clear enough to give no trouble
@@ -2642,8 +2737,7 @@ construct
 
     karik
         i hope they will come out again soon
-        perhaps being contained in a golem will bring their spirits up, 
-        even if enough to help me fight...
+        perhaps being contained in such a potent weapon will bring their spirits up
     
     akizet
         they have not surfaced even once?
@@ -2656,7 +2750,7 @@ construct
         still... short of a connection, i fear itzil may be undergoing ego spiraling
         i saw this happen in my larval work, once...
         though it is markedly more obvious in larval victims
-        but--do not worry!!
+        but--do not worry
     
     karik
         yes, we have been working out a plan for when we leave!
@@ -2731,7 +2825,7 @@ ____END
     karik
         yes!
         truly inspiring tools!!
-        our foes will be dust
+        together we will render this wretched aggressor into dust!
     
     gakvu
         just be careful with that
@@ -2749,6 +2843,7 @@ ____END
 SKIP::env.embassy.skips.m_golem()
 `)
 
+//
 env.dialogues["m_boss"] = generateDialogueObject(`
 start
     sourceless
@@ -2828,9 +2923,8 @@ start
         please--please, say something!
         i am here, i am here!!
 
-    aggressor
-        usurpers
-        co m e w€ºù|±|h m e
+    kivii
+        s o ˆ€¥6<(fa ar
     
     sourceless
         something changes in her stance
@@ -2838,6 +2932,10 @@ start
             EXEC::vnp({kivii: "show step2"})
         suddenly, she seizes her own mindcore, and...
             EXEC::vnp({kivii: "show step3"})
+
+    aggressor
+        usurpers
+        co m e w€ºù|±|h m e
         
     sourceless quiet
         there is a crunch, the shattering of a corrucystic shell
@@ -2849,15 +2947,8 @@ start
     
     RESPONSES::akizet
         attack!!<+>END
-            EXEC::env.embassy.startGolemFight('g_mboss', 'm_bossclear');vn.done();change("PAGE!!mboss", true)
-            SHOWIF::['gameplay_off', false]
-        attack!!<+>CHANGE::m_bossclear
-            SHOWIF::['gameplay_off', true]
-            EXEC::vn.done();change("PAGE!!mboss", true)
-            FAKEEND::(bypass combat)
-        skip fight (debug)<+>CHANGE::m_bossclear
-            EXEC::vn.done();change("PAGE!!mboss", true)
-            SHOWIF::'TEMP!!debug'
+            EXEC::change("PAGE!!g_m_dist", "dangerous");vn.done();specialCam();setCam();pauseSwapCam(false);env.stage.current.scaryBoss()
+            FAKEEND::(prepare)
 
 SKIP::env.embassy.skips.m_boss()
 `)
@@ -2866,12 +2957,15 @@ env.dialogues["m_bossclear"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
-        it has stopped moving
+        all at once, the reanimated corpse and its gauntlets fall with a heavy thud
             EXEC::env.stages['g_m_dist'].removeBoss();
+        stumbled back into the debris, now unceremoniously still and silent
+        unmistakably, she was wielded against us, and we had little choice,
+        but...
         ...
             EXEC::toggleBgm(env.embassy.music_golems_cleared)
         distantly, i hear the rustling of the others down the hall we came through
@@ -2934,6 +3028,7 @@ ____END
     sourceless
         miltza eyes gakvu briefly, but then returns to a murmur with karik
         she is likely briefing them on what to do when itzil awakens again...
+        all fear that gripped her is drowned out by her focus on this task
         the ever-caring nature of the tir shines through all else
             EXEC::vnp({miltza: "hide"})
 
@@ -3077,7 +3172,12 @@ ok
     sourceless
         with an impulse, the faceplate of your protective gear releases.
         blindly, you remove the coffee's cap and take a sip.
-        it is fine.
+____SHOWIF::[["netstat|<", 0]]
+        it's fine.
+____SHOWIF::[["netstat|>=", 0]]
+        it's fine. slightly too sweet.
+____END
+
 
     moth
         you ever been there?
@@ -3085,7 +3185,7 @@ ok
         i've talked to him a few times, he has it rough dude
         he's kinda stuck here cause he can't see very well anymore
         i mean, he didn't tell me that directly, but we were talking this one time, and his eyes came up
-        he was jokin around about how this is his 'last job'...
+        he was jokin around about how this is his "last job"...
         still, it occurred to me,
         what if he was around back when akizet was making visits?
         i wonder if we could spot him in her memories at some point
@@ -3131,8 +3231,7 @@ ok
         maybe we can help
     
     moth
-        it's a nice thought, but this is all in the past
-        ...though,
+        yeah, you know,
         if we can get the network connection working, maybe we actually could
         you know, at least let their network know what happened to all these obesk
         i dunno, we'll see
@@ -3189,7 +3288,7 @@ start
     
     sourceless
         in her voice is a familiar numbness
-        we have slain several of these once-friends, and...
+        we have been forced to stand against these once-friends, and...
         no--it is wrong to think of it that way
         it is no different from an infection
         our friends left these bodies long before we could help
@@ -3353,11 +3452,9 @@ ____END
         what do we need, tozik?
     
     tozik
-        we have the individual parts required - hulls, arms
+        we have the individual parts required - hulls, arms...
             EXEC::vnp({gakvu: "hide", cavik: "hide"})
-        but certain synchronizing cysts must be manufactured to connect them
-        we will need more sfer for that - the sfer supply θtendril will give us all we need
-        then, we can use the greater vat nearby
+        we should simply be able to use the greater vat chamber nearby
         it has been a while, but i can operate it
     
     sourceless
@@ -3368,9 +3465,6 @@ ____END
         NOTICE::'inventory addition';'knowledge of golem parts';'key item for memory stream continuation'
             EXEC::addItem(env.ITEM_LIST["golem_parts"], 1)
         NOTICE::'take to area';'greater vats';'to proceed'
-            SHOWIF::'item|golem_sfer'
-        NOTICE::'locate other key items to proceed'
-            SHOWIF::[['item|golem_sfer', false]]
 
 ____SHOWONCE
     moth
@@ -3379,10 +3473,6 @@ ____SHOWONCE
         that could just mean it's used somewhere, but...
         sorry--i'll quiet down over here
 ____END
-
-    sys
-        NOTICE::'additional augment point received'
-            EXEC::env.embassy.conditionalAugPoint(1, 'm_fix')
         
     RESPONSES::akizet
         continue<+>END
@@ -3398,9 +3488,24 @@ SKIP::env.embassy.skips.m_fix()
 env.dialogues["s_vats"] = generateDialogueObject(`
 start
     sourceless
-        it is clear
+        the singular husk that lingered, wounded even deeper,
+        flees yet again through the only remaining chamber
+        given the conspicuous absence of its kin, they surely all linger beyond it
+        but for now, this chamber is clear
             EXEC::change("PAGE!!smidclear", true);pauseSwapCam(true)
         i call back to the team to enter, and they file in to assess the room
+        but i ensure they largely stay close to the lobby
+        and those hardy golems... i would hardly want them to rise again, if that is somehow possible
+        i tear through what remains of their flesh to be sure nothing remains alive
+        in the process, i find one of their processing cysts to be intact--this may be useful!
+
+    sys
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_shell'].description}">kelniki cyst</span>"
+            EXEC::env.embassy.conditionalItem('eq_shell', 1, 'vats')
+            AUTOADVANCE::
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_shell"}, {returnHTML: true})
 
     sourceless
         tozik approaches the vats, prodding at their sides and testing their connections
@@ -3412,7 +3517,7 @@ start
         the golems have fallen, the bodies of our kin are risen without clear connection
             EXEC::vnp({tozik:"show", bg: true })
         yet the vats, the doors... these mindless, stationary technical things are intact
-        is mobility the common factor?
+        is mobility the common factor? perhaps specific components?
     
     akizet
         what about movefriend?
@@ -3453,30 +3558,27 @@ ____END
         velzie above is screaming into my mindcore
     
     sourceless
-        gakvu looks around, then ahead at the room we have yet to explore
+        gakvu looks around, then ahead at the room still held by the infested
             EXEC::specialCam('g_s_bossdoor');pauseSwapCam(true);vnp({bg: false, gakvu: "downleft"})
         i do not hear anything...
         gakvu notices our confusion, turning her focus inwards
     
     gakvu
         i must be feeling it through my groundsmindry
-        it is a dull signal...
-        if i can feel it without a communicator, by simply approaching it...
-        then it is <em>very</em> strong
+        it is like... like a thrashing, coiling, moving all around us
     
     miltza
         ah!! i just turned my communicator on for an instant!
             EXEC::vnp({miltza: "show far", bg: true})
-        no, i hear it too!
-        it is the same signal as before, but it is like...
-        it is the first part of it, over and over...
-        do not enable yours, my friends
+        no, i hear it too...
+        is that the same signal as before? i cannot tell for certain
+        ...do not enable yours, my friends
         it hurts...
     
     sourceless
         i need not test their assertions
-        miltza clutches her face, enduring whatever it is she has exposed herself to
-        she lowers her claws, a realization forming in her open receptors
+        miltza clutches her face, enduring whatever it is she briefly exposed herself to
+        and soon lowers her claws, a realization forming in her open receptors
     
     miltza
         no... wait... that is the noise!!
@@ -3484,7 +3586,7 @@ ____END
         i heard that earlier, over and over, before you found me
         that is what has been disrupting all of our communications!
         or, at least, a part of it...
-        maybe we can destroy it to restore clarity?
+        maybe we can destroy what lay within to restore clarity?
     
 ____SHOWIF::["PAGE!!goverride", false]
     itzil
@@ -3503,7 +3605,7 @@ ____END
         well worth the try
             EXEC::vn.done()
 
-____SHOWIF::[['PAGE!!mmidclear'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
+____SHOWIF::[['PAGE!!mmid'],['PAGE!!smidclear'],['PAGE!!smcut', false]]
     sourceless
         suddenly, one of the side doors unlocks with a strange little musical chime
             EXEC::play('obeskToggle', 0.75);specialCam('g_s_shortcut')
@@ -3540,66 +3642,145 @@ env.dialogues["s_boss"] = generateDialogueObject(`
 start
     sourceless
         the room twists maddeningly around the golem at its center
-            EXEC::toggleBgm(env.embassy.music_unsafe_golems);ratween(env.bgm, 0.75);pauseSwapCam(true);specialCam('g_s_boss')
+            EXEC::toggleBgm(env.embassy.music_unsafe_golems);ratween(env.bgm, 0.75);pauseSwapCam(true);setCam({x: 4, y: 4, rotation: -180});change("PAGE!!g_s_storage", "dangerous")
         whatever sfer storage it may have managed before is obscured by the light
+            EXEC::content.classList.add("slowcam")
         or--is it merely all gone? did it send it all somewhere?
-        dull microtunnels flash in the air around the golem, sometimes even cleaving through itself
-        this is remarkably dangerous
-        but sure enough, now even i can hear the signal pulsing from it, over and over
-        was the golem directed to do this? 
-        or is it dull feedback from the microtunnels?
-        no matter - we must destroy it, immediately
-            EXEC::change("PAGE!!sboss", true)
+        it hardly matters: the husks, all four, stand between us and it
+            EXEC::setCam({x: 4, y: 1, rotation: -180})
+        they were not simply fleeing us, they were coming <em>here</em>...
+        all bear grievous wounds, and are on their last legs
+        but behind them, dull microtunnels flash in the air around the golem, 
+        sometimes even cleaving through itself - this is remarkably dangerous
+        it stands to reason that we could run back to avoid potential losses,
+        especially given that the four seem to be acting in defense at this point
+        but whatever is being done here...
+        whether it be propagating this wretched signal or some other matter,
+        it calls for destruction--and to free these husks from terrible life
+        the risk seems well worth it
     
     RESPONSES::akizet
-        attack!!<+>END
-            EXEC::env.embassy.startGolemFight('g_sboss', 's_bossclear')
-            SHOWIF::['gameplay_off', false]
-        bypass<+>CHANGE::s_bossclear
-            SHOWIF::['gameplay_off', true]
-            FAKEEND::(bypass combat)
-        skip (debug)<+>CHANGE::s_bossclear
-            SHOWIF::'TEMP!!debug'
+        prepare to strike<+>END
+            EXEC::setCam();content.classList.remove("slowcam");
+            FAKEEND::(prepare)
+
+SKIP::setCam();content.classList.remove("slowcam")
 `)
 
 env.dialogues["s_bossclear"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
-        the golem's limbs cease their flailing,
+        the last of the husks fall, finally
+        limbs and organs and sludge strewn around the chamber
+        and with them out of the way, we easily execute the nigh unresponsive dullzika
             EXEC::env.stages['g_s_storage'].removeBoss(false)
         collapsing to the ground with enough force to sludge the false stone decorating the floor
-        the tunnels are sealed now, too, and that terrible noise is distant once more, the dull lights fading
+        with its death, the microtunnels automatically seal,
+        that terrible noise is distant once more, the dull lights fading
             EXEC::env.stages['g_s_storage'].normalize()
-        we allow the peaceful silence to persist for a moment, before i call back,
+        we allow the peaceful silence to persist for a moment...
             EXEC::toggleBgm(env.embassy.music_golems_cleared);
+        ...
+        in hindsight, their babble was incomprehensible,
+        as if expelled in response to our strikes, not true communication
+        yet i could clearly discern tactics and intent in their movements
+        they no longer had an obesk mind, certainly, but...
+        it inspires a long forgotten fear:
+        being too hasty to execute the infested, in case they could yet be recovered
+        i recoil from my thoughts with a tight coil in my receptors,
+        pulling my frozen gaze from the corpses to call back,
 
     akizet
-        clear!
+        it is clear
 
     sourceless
         the rest of the team enters the half-melted chamber,
             EXEC::env.embassy.music_unsafe_golems.rate(1)
-        witnessing the sludged remains of our foe
-        gakvu most of all seems to stand taller, receptors at ease
+        witnessing the sludged remains of our foes
+        for a θblink, none think to speak--surely of the same mind
+        something about miltza briefly seizes my attention, though
+        her receptors twist and fidget in unmistakable anxiety, more obvious than the others
+        it is uncharacteristic of mourning, more than mortal fear...
+        these dead husks resonate with something personal
+
+____SHOWIF::["PAGE!!goverride", false]
+    sourceless
+        itzil trots in, watching on with clenched pseudoreceptors
+        sluggishly, they crawl and perch upon a dense sfer block
+        miltza comes to their side, observing carefully, 
+        snapped out of whatever had occupied her mind
+
+    itzil
+        are... are they all...?
+
+    miltza
+        itzil...
+        it may be best if you remain in the other chamber for now
+
+    itzil
+        i just...
+        i wanted to see them, before we...
+        wai--wait!!
+        what are you doing?!
+
+    sourceless
+        their objection draws all of our gazes to tozik,
+        who has just placed his corruskivi against the scattered flesh of the aggressive one--kiku, i believe
+        he glances back between us, a confused tilt slight in his receptors
+        
+    tozik
+        we must know the nature of this infestation
+
+    sourceless
+        none can object to his investigation, not even itzil
+        it may seem to be in poor taste, but we have no time to spare on ethics
+
+____SHOWIF::["PAGE!!goverride", true]
+    sourceless
+        something to question later, perhaps
+        i continue my assessment of the team,
+        my gaze landing firmly upon the comatose itzil
+        perhaps it is for the best that they have withdrawn
+        to see all they knew torn away and twisted like this...
+        tozik pushes through to crouch and draw his corruskivi,
+        and without delay, cuts into the scattered flesh of the aggressive one--kiku, i believe
+____END
+
+    sourceless
+        almost frantically, he claws through the sludge,
+        looking upon their organs with a strange degree of unfamiliarity
+        my attention then is drawn to gakvu, who stands taller,
+        still unnerved, but no longer with constant pain in the coil of her receptors
+    
+    akizet
+        gakvu, is it quiet now?
             EXEC::vnp({gakvu: "show far", bg: true})
     
     gakvu
-        that is <em>so</em> much better...
+        ah?
+        oh, yes...
+        yes, it is much better    
+
+____SHOWIF::["PAGE!!goverride", true]
+    sourceless
+        miltza draws away from her crouch near itzil,
+        having produced and donned a communications cyst to test
+____END
 
     miltza
-        and--it works!!
+        it... it works!
             EXEC::vnp({miltza: "showleft far"})
-        we have forced away the claws of velzie, haha!
-        i am getting clear enough communications, despite the damage
-        the noise, it is still there... just distant
+        the connection, at least... my cyst is still fairly damaged
+        the noise, whatever this golem was amplifying, it is still there, i think...
+        yes - the disruption is still present! but i am getting some clear connections
     
     akizet
-        excellent
+        i see
     
     sourceless
         funfriend - is it suitable enough to make some calls?
@@ -3615,7 +3796,7 @@ ____END
     
     sourceless
         very good    
-        i wave everyone closer
+        i wave everyone unoccupied closer
     
     akizet
         who among us has a working communicator, still?
@@ -3645,30 +3826,35 @@ ____SHOWIF::'PAGE!!bozcav'
 ____END
     
     akizet
-        miltza, is yours still functional after that last exposure?
+        miltza, is yours intact enough to share?
 
     miltza
         hmm...
             EXEC::vnp({miltza: "show"})
-        oh, yes! i think it was damaged a little, but i can still use it!
-        it is a standalone device, so--i can pass it around!
+        oh, yes!
+        it is still usable, it will just need a little more force
         which of you would like to use it first?
 
 ____SHOWIF::["PAGE!!goverride", false]
     karik
-        perfect! neither itzil nor i have a communicator built into our minds
+        ah! itzil--
             EXEC::vnp({miltza: "show far", karik: "showleft far", itzil: "showright far"})
-        itzil - you should use it first!
-        then, tozik, gakvu, do either of you want to use it next?
-        i can call my friend later
+        perhaps you should? we may locate your kivii faster!
+
+    sourceless
+        the notion breaks itzil from their remorseful stare
 
     itzil
-        oh--thank you!
-        yes, please!
-
-    tozik
-        absolutely
+        oh...!
+        oh, yes, yes, please!
+        she has to be here...
+        then, ah...
+        gakvu, tozik, did you want to...?    
 ____END
+
+    sourceless
+        tozik does not draw away from his work at the offer
+        his movements remains confused, frustrated, but unbroken in focus
     
     gakvu
         i am fine, it can wait until we stop this
@@ -3676,43 +3862,39 @@ ____END
     
     sourceless
         gakvu is visibly perturbed, receptors twisted with confliction
-        she does not speak up, but... i know her
+        her reason is sound, but... i know her
         i think she does not trust miltza enough, maybe?
         or... is it who she wants to call that is the issue?
         she notices my staring, looking away and loosening her receptors again
-        i thought i knew her well, but so much is coming to light...
+        really, i thought i knew her well, but so much is coming to light...
         it is like i only walked upon her surface
             EXEC::vnp({gakvu: "hide"})
-        miltza begins to pass her communicator around, unconcerned with herself
-        i should try to contact someone, too...
+        with a turn away, miltza quietly grips the communicator in her receptor, beginning a call of her own
+            SHOWIF::["PAGE!!goverride", true]
+        miltza helps settle the communicator into itzil's pseudoreceptors
+            SHOWIF::["PAGE!!goverride", false]
+        i can think of who i might call for, too...
     
     akizet
         ok
-        let us make some calls
-        but after that, we should resume with our plan
-        weaponry, a body for the mindcores, and any survivors
-        then, the beast in the way of the impressor...
-
-    sourceless
-        even with much of the supply missing, from whatever that golem was doing...
-        with what remains, we can certainly create the things we need for our golem!
-            SHOWIF::"PAGE!!mboss"
-        with this, we could create something quite tough!
-            SHOWIF::["PAGE!!mboss", false]
+        let us see who we can contact
+        but we must not delay our plan
+        act with haste
         
     sys
-        NOTICE::'inventory addition';'knowledge of golem sfer';'key item for memory stream continuation'
-            EXEC::addItem(env.ITEM_LIST["golem_sfer"], 1)
-        NOTICE::'take to area';'greater vats';'to proceed'
-            SHOWIF::'item|golem_parts'
-        NOTICE::'locate other key items to proceed'
-            SHOWIF::[['item|golem_parts', false]]
-        NOTICE::'entity';'AKIZET';'additional ACT enabled';'call'
-        ADVISE::'utilize perspective swap to examine'
+        EXECUTING::"structure direction";"call"::
 
+    plainsys
+        entity; AKIZET; additional ACT enabled; call
+        utilize perspective swap to examine
+    
     sys
-        NOTICE::'additional augment point received'
-            EXEC::env.embassy.conditionalAugPoint(1, "s_bossclear")
+        END::
+
+    sourceless
+        tozik earns a brief glance--he has halted, seemingly resigned from his work
+        whatever he has learned, it is not good...
+        i ought to speak with him about it soon
 
     RESPONSES::akizet
         make a call now<+>CHANGE::s_calls
@@ -3740,6 +3922,8 @@ RESPOBJ::
         kazki<+>kazki
         vekoa<+>vekoa
         family and collective<+>collective
+        storm<+>storm
+            SHOWIF::"citystreet__director-meeting"
         nevermind<+>END
             EXEC::vnp({hideStage: false});vn.done()
 `)
@@ -3793,6 +3977,10 @@ gordon
     gordon
         Ow! Little bastard...
         It crawled out of my pocket and ran away, and now it's stabbing me!
+
+    sourceless
+        only when i called him?
+        some portion of it has surely become aberrant...
     
     akizet
         grasp it by the sides and crush the legs inwards!
@@ -3840,8 +4028,8 @@ ____END
     
     sourceless
         no, no, no
-        this massacre cannot be because of us...
-        because of <em>me</em>
+        this massacre cannot solely fall upon us...
+        upon <em>me</em>
         his voice changes, realizing from my tone that it is even worse than he can know
         growing quieter, more fearful, more like mine
 
@@ -4007,7 +4195,7 @@ cavik
     
     cavik
         what - do you?
-        um, we have been using the archival tunnels
+        um, we have been using the archival tunnels in the spine
         most are still connected, despite the veins collapsing!
         and bozko has been taking care of all the golems!
 
@@ -4089,7 +4277,7 @@ bozko
     
     bozko
         ...we are heading down for the exact same reason
-        the archival tunnels are still mostly intact
+        the archival tunnels of the spine are still mostly intact
         we occasionally need to detonate some to open blocked paths,
         but they serve well enough in our descent
     
@@ -4207,8 +4395,8 @@ collective
         however!
         given the strength that it is hitting you and everyone else with
         i feel this is a targeted attack!
-        if it reached obeski, i do not think it would have the same effect...
-        but they would certainly be able to hear it!
+        i doubt obeski is affected,
+        though they should certainly be able to hear it!
     
     sourceless
         that is just hopeful thinking, funfriend
@@ -4219,22 +4407,98 @@ collective
         ...<+>loop
             FAKEEND::(back)
 
+storm
+    sourceless
+        perhaps the storm implemented that communications device in time
+        funfriend, can you--ah... 
+        i suppose we have no method of knowing its collective signature even if it did
+    
+    funfriend
+        that is correct akizet!!
+    
+    sourceless
+        it was foolish of me to wait so long...
+        but limiting its reach was our only way to be certain of its secrecy
+    
+    funfriend
+        given its nature! i think it should be able to contact <em>you</em>!
+        we just have to wait!
+        
+    RESPONSES::akizet
+        let us hope<+>loop
+            FAKEEND::(back)
+        
 SKIP::
 `)
 
 /********************* OPERATIONS */
 /********************* OPERATIONS */
 /********************* OPERATIONS */
+env.dialogues["ops_friends"] = generateDialogueObject(`
+start
+    sourceless
+        movement and sounds of fleshy dissection greet us as soon as we enter
+            EXEC::content.classList.add("slowcam");change("PAGE!!g_o_r_friends", "dangerous")
+        on the opposite end, two golems designed for surgical assembly stand
+        they operate on a damaged archival golem, surely having fallen from the veins above
+            EXEC::setCam({x: 5, y: 6, rotation: 180})
+        cautiously, we tread closer
+        they are singularly focused on repair
+        it seems possible to simply sneak by, but...
+        if that golem is fully repaired, it could become a problem
+    
+    RESPONSES::akizet
+        decide<+>END
+            EXEC::setCam();content.classList.remove("slowcam");
+            FAKEEND::(prepare)
+
+SKIP::setCam();content.classList.remove("slowcam");
+`)
+
+env.dialogues["ops_friendsclear"] = generateDialogueObject(`
+start
+    sourceless
+        the beasts are felled
+        one less threat looming in the branches
+        the glassy transparent membrane around the repairfriends' cores melts away,
+        quickly causing their operational contents to spill out...
+        
+    sys
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_antistatus'].description}">izpel deapplicators</span>"
+            EXEC::env.embassy.conditionalItem('eq_antistatus', 1, 'echo')
+            AUTOADVANCE::
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_antistatus"}, {returnHTML: true})
+    
+    
+    RESPONSES::akizet
+        depart<+>END
+
+SKIP::env.embassy.conditionalItem('eq_antistatus', 1, 'echo')
+`)
+
 env.dialogues["ops_bozcav"] = generateDialogueObject(`
 start
     sourceless
-        as we step into the main hall once again, 
+        as we step into the main hall once again,
+        
+    sourceless quiet
         the ground trembles--a rumble from above!
+            EXEC::play('shot6', 0.5)
         is it another vein collapse? we back up, ready to escape into the room behind us
-        no, no--it was too quick, too quiet... like the directed detonation of a kavruka
+
+    sourceless
+        no, no--it was too quick, too quiet... 
+        like the directed detonation of a kavruka
         ...
+
+    sourceless quiet
         another!!! the ceiling gives way, letting forth the blood of the spire
+            EXEC::play('shot6', 0.5)
         at first it is one hole, then it keeps going as parts of an archival vein collapse through the ceiling
+    
+    sourceless
         an archival golem lands in the sludge, still alive, but is crushed by debris before it can engage us
             EXEC::vnp({agolem: "show downed", hideStage: true})
         then... it is quiet, the operations hall lit by the dazzling archival lights
@@ -4275,7 +4539,7 @@ start
     
     sourceless
         i activate the timestopper by reflex, as i have so many times now
-            EXEC::ratween(env.bgm, 0.65)
+            EXEC::ratween(env.bgm, 0.1)
         but i do not think any of us can reach him in time
         he is there, frozen, staring at me,
         as a sharpened golem limb sails for his chest
@@ -4285,7 +4549,8 @@ start
         akizet?
     
     RESPONSES::akizet
-        there is nothing<+>accept
+        ...<+>accept
+            HIDEREAD::
     
 accept
     timestopper
@@ -4293,11 +4558,10 @@ accept
         even if we all ran...
         it would be too late
         cavik has a heart-placed mindcore
-        our connection seems weaker now - is it still moving??
     
     sourceless
         =gEºÐ¼H
-        cavik...
+        to think that all we did led here
         ...i must not let anything go unsaid
         funfriend...
         we must send him a message
@@ -4434,7 +4698,7 @@ ____END
         like kazki, he is practically a vel at heart
         but...
         there is none of that here
-        a terrible darkness looms over him
+        a terrible, unfamiliar darkness looms over him
     
     bozko
         we are here to help
@@ -4446,12 +4710,6 @@ ____END
     sys
         NOTICE::'additional party members';'CAVIK';'BOZKO';'now available'
             EXEC::env.embassy.addPartyMember("bozcav")
-
-____SHOWIF::"PAGE!!augments"
-        NOTICE::'additional augments enabled for new party members'
-        NOTICE::'alter party member abilities via augment menu'
-        NOTICE::'contained within party menu';'Z'
-____END
 
     RESPONSES::akizet
         we should keep moving...<+>END
@@ -4538,7 +4796,7 @@ ____END
         and again, the signal's message is made clear
         hunger... loss... return...
         fØ¬»
-        the others feel it too in one united pained reaction
+        the others feel it too in one united, pained reaction
         i instruct my qou-body to cease audible reception, but...
             EXEC::content.classList.remove('painmode', 'painhalf', 'painfade')
         i still hear it...?
@@ -4558,93 +4816,20 @@ ____END
         NOTICE::'optional memory segment'
     
     RESPONSES::akizet
-        skip (debug)<+>CHANGE::ops_bossclear
-            SHOWIF::'TEMP!!debug'
-            EXEC::change("PAGE!!oboss", true);specialCam(false);pauseSwapCam(false)
-        attack!!<+>END
-            FAKEEND::(fight)
-            EXEC::change("PAGE!!oboss", true);env.embassy.startGolemFight("g_oboss", "ops_bossclear");specialCam(false);pauseSwapCam(false)
-            SHOWIF::['gameplay_off', false]
-        bypass<+>CHANGE::ops_bossclear
-            SHOWIF::['gameplay_off', true]
-            EXEC::change("PAGE!!oboss", true);specialCam(false);pauseSwapCam(false)
-            FAKEEND::(bypass combat)
-        run!!<+>run
-            HIDEREAD::
-            EXEC::change("PAGE!!obossrun", true);specialCam(false);pauseSwapCam(false)
-
-run
-    timestopper
-        we should escape
-        it is not mobile and not aware
-        yes - it will destroy itself!
-
-    sourceless
-        we quickly turn back, escaping into the hall
-        yes, we do not need to fight this thing, it is true...
-        but it feels wrong to leave such a dangerous creature
-        what if bozko and cavik had found it before us?
-
-    sys
-        NOTICE::'optional memory segment'
-    
-    RESPONSES::akizet
-        escape<+>END
-            EXEC::changeStage("g_o_hall2", 59, 'down');specialCam(false);pauseSwapCam(false)
-`)
-
-env.dialogues["ops_boss_return"] = generateDialogueObject(`
-start
-    sourceless
-        we return once more
-            EXEC::specialCam('g_o_boss');pauseSwapCam(true)
-        as we should - it is not right to leave this here
-        it could be broadcasting this, for all we know...
-    
-    RESPONSES::akizet
-        skip (debug)<+>CHANGE::ops_bossclear
-            SHOWIF::'TEMP!!debug'
-            EXEC::change("PAGE!!oboss", true);specialCam(false);pauseSwapCam(false)
-        attack!!<+>END
-            FAKEEND::(fight)
-            EXEC::change("PAGE!!oboss", true);env.embassy.startGolemFight("g_oboss", "ops_bossclear");specialCam(false);pauseSwapCam(false)
-            SHOWIF::['gameplay_off', false]
-        bypass<+>CHANGE::ops_bossclear
-            EXEC::change("PAGE!!oboss", true);pauseSwapCam(false);specialCam(false)
-            SHOWIF::['gameplay_off', true]
-            FAKEEND::(bypass combat)
-        run!!<+>run
-            HIDEREAD::
-            EXEC::change("PAGE!!obossrun", true);changeStage("g_o_hall2", 59, 'down');specialCam(false);pauseSwapCam(false)
-
-run
-    timestopper
-        still too dangerous!
-
-    sourceless
-        we quickly turn back, escaping into the hall
-        yes, we do not need to fight this thing, it is true...
-        but it feels wrong to leave such a dangerous creature
-        what if bozko and cavik had found it before us?
-
-    sys
-        NOTICE::'optional memory segment'
-    
-    RESPONSES::akizet
-        escape<+>END
-            EXEC::specialCam(false);pauseSwapCam(false)
+        fight or flee<+>END
+            FAKEEND::(prepare)
+            EXEC::change("PAGE!!g_o_r_translation", "dangerous");specialCam(false);pauseSwapCam(false)
 `)
 
 env.dialogues["ops_bossclear"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
         with its outer shell damaged enough,
-            EXEC::env.stage.current.removeWordfriend()
         a well-placed strike is all it takes to destroy its echo
         and thus, its purpose is lost, its components clattering to the false-stone below
         it still hurts when i think about what it said...
@@ -4665,7 +4850,7 @@ ____END
     akizet
         everyone...
         destroy what you just heard
-        it makes the pain stop
+        it... makes it stop
     
     sourceless
         they look at me strangely
@@ -4691,7 +4876,7 @@ ____END
             EXEC::vnp({gakvu:"show"})
         think about it...
         if it causes pain in us, maybe it can cause pain in our foes
-        we just need a projector
+        i have a pretty good idea of how to project it
     
     tozik
         gakvu, you risk exposing yourself to it
@@ -4732,22 +4917,21 @@ ____END
     
     akizet
         we will keep it
-        whether as a weapon, or as something for study
-        just... do not connect to it directly if you do not need to
-            EXEC::addItem(env.ITEM_LIST['core_translation'], 1)
-        
-    sys
-        TEXEC::\`NOTICE::'received <span definition="INHERITED CONTEXT::\${env.ITEM_LIST['core_translation'].description}">\${env.ITEM_LIST['core_translation'].name.toUpperCase()}</span>'\`
+        whether as a weapon, or as something for study when this is done
+        just... do not connect to it directly
 
     sys
-        NOTICE::'additional augment point received'
-            EXEC::env.embassy.conditionalAugPoint(1, 'ops_bossclear')
+        ITEM_RECEIVED::"<span definition="INHERITED CONTEXT::${env.ITEM_LIST['eq_translator'].description}">translation core</span>"
+            EXEC::env.embassy.conditionalItem('eq_translator', 1, 'translator')
+    
+    definitionget
+        TEXEC::definitionRender({getAttribute: () => "STATUS++item_translator"}, {returnHTML: true})
     
     RESPONSES::akizet
         keep moving<+>END
             EXEC::vn.done()
 
-SKIP::env.stage.current.removeWordfriend();vn.done();addItem(env.ITEM_LIST['core_translation'], 1);env.embassy.conditionalAugPoint(1, 'ops_bossclear')
+SKIP::vn.done();env.embassy.conditionalItem('eq_translator', 1, 'translator')
 `)
 
 /*******************LOBBY BOSS DOOR*/
@@ -4760,7 +4944,7 @@ RESPOBJ::
     RESPONSES::akizet
         examine<+>early
         proceed<+>proceed
-            SHOWIF::[["PAGE!!goverride"], ["PAGE!!ikgolem"], ["PAGE!!bozcav"]]
+            SHOWIF::[["PAGE!!goverride"], ["PAGE!!ikgolem"], ["PAGE!!bozcav"], ["PAGE!!bosslock", false]]
         (debug) force proceed<+>proceed
             SHOWIF::'TEMP!!debug'
         nevermind<+>END
@@ -4872,10 +5056,8 @@ proceed
             SHOWIF::'pa|gakvu'
 
     miltza
-        i will do my best!!
-            SHOWIF::[["pa|miltza"], ['aug|drone']]
         i... i will do my best!
-            SHOWIF::[["pa|miltza"], ['aug|drone', false]]
+            SHOWIF::[["pa|miltza"]]
 
     bozko
         let us have it over with
@@ -4891,7 +5073,7 @@ proceed
 
 ____SHOWIF::["pa|ikgolem", false]
     karik
-        even without a timestopper, i will help!
+        even without a timestopper, i will help where i can!
         this body should still prove effective
 ____SHOWIF::["pa|ikgolem"]
     karik
@@ -4914,7 +5096,7 @@ ____END
             EXEC::step()
     
     RESPONSES::akizet
-        enter<+>END
+        prepare to enter<+>END
 `)
 
 env.dialogues["boss"] = generateDialogueObject(`
@@ -4923,38 +5105,82 @@ start
         advanced operations...
             EXEC::pauseSwapCam(true);specialCam('g_boss');toggleBgm(env.embassy.music_unsafe_golems);ratween(env.bgm, 0.5)
         the walls are warped from the damage, some parts still trying to resemble stone
-        there may have been qou here once, but everything left unarmored is sludged...
+        corpses litter the floor, all left unarmored has been rendered almost entirely into sludge...
         the source of the damage is before us - a multipurpose deep-sea constructor
         its body is angular and appendages bulbous, designed to withstand the greatest of pressures
-        within its gauntlets are countless tools, marred by its raging against its containment
+        within its gauntlets are countless tools, marred now by its raging against its containment
         once complex implements, now indistinct and dull
-        is it truly angry? or is it a reflection of the signal?
-        regardless - its targeting optics locate us quickly
+        whatever their function, they will still serve as bludgeons at this point
+        its targeting optics locate us quickly
         we cannot let it make the first move
-            EXEC::change("gboss", true)
+            EXEC::change("PAGE!!g_boss", true)
     
     RESPONSES::akizet
-        preview boss clear<+>CHANGE::bossclear
-            SHOWIF::'TEMP!!debug'
-        attack!!<+>END
-            EXEC::env.embassy.startGolemFight('g_boss', 'bossclear')
-            SHOWIF::['gameplay_off', false]
-            FAKEEND::(fight)
-        bypass<+>CHANGE::bossclear
-            SHOWIF::['gameplay_off', true]
-            FAKEEND::(bypass combat)
+        prepare to attack<+>END
+            EXEC::pauseSwapCam(false);specialCam(false)
+            FAKEEND::(prepare)
+`)
+
+env.dialogues["boss_phase2"] = generateDialogueObject(`
+start
+    sourceless
+        the golem and the husks that drew to its defense collapse to pieces...
+            EXEC::change("PAGE!!g_boss", "downed");refreshStage({noFlash: true});setCam({offsetCamera: "rotateX(-20deg)", x: 4, y:5.5, rotation: 0})
+        i nearly call for the team to enter, but the room shifts as i turn--
+        the dull pillars, whatever purpose they may have once served,
+
+    sourceless quiet
+        now erupt with their strange light, spiralling through the chamber
+            EXEC::flash(true);play("criticalError", 0.5);change("PAGE!!g_boss", "phase2")
+        a maddening distortion coiling around us,
+        not unlike what the dullzika wrought...
+
+    sourceless
+        for a θblink, we cannot make out the space at all,
+        but when the distortion subsides...
+            EXEC::changeStage("g_boss", false, false, {noFlash: true})
+        the golem stands again--floating in the air,
+            EXEC::flash(false);setCam({x: 4, y:4, offsetCamera: "rotateX(20deg)"});content.classList.add("slowcam")
+        flesh of the husks drawn into its mass
+        impossibly so, the resultant corru molten and unstable, like suspended oils in water
+        it is hard to focus on the specifics, but...
+        nigh imperceptible tendrils writhe at the shape's every edge
+
+    aggressor
+        R E TU RN
+        CO M E W€ºù|±|H M E
+        cÅ4Ä–sT ý æôr,§½ÿlfÃ ÄS¿De
+
+    sourceless
+        immediately, it is clear--no less than total annihilation will suffice
+            EXEC::setCam()
+        we require our greatest weapon
+            EXEC::content.classList.remove("slowcam")
+
+    sys
+        EXECUTING::"structure direction";"requirement"::
+
+    plainsys
+        actor IK GOLEM required for upcoming combative recollection
+        utilize PARTY MENU; open with impulse; Z
+
+    sys
+        END::
+
+    RESPONSES::akizet
+        fight!!<+>END
+            FAKEEND::(begin melee)
 `)
 
 env.dialogues["boss_tut"] = generateDialogueObject(`
 start
     sourceless
-        the foundation golem raises its spherical gauntlets
+        the twisted golem raises its spherical gauntlets
             EXEC::ratween(env.bgm, 0.75)
-        each of them easily nearly the size of a newborn veilk's eye
-        with fists like that... it would simply crush any of us
-        ...except, of course, karik and itzil!!
+        we cannot know what unnatural force guides them now, or with what force
+        much of us would simply be crushed beneath them...
+        ...except, perhaps, karik and itzil!!
 
-____SHOWIF::["pa|ikgolem"]
     sourceless
         i reach out through the timestopper...
 
@@ -4971,61 +5197,53 @@ ____SHOWIF::["pa|ikgolem"]
         no, i was--i was going to say avoid them
         but...
         yes! do that! you could break its assault that way!
+        perhaps it may burn away the flesh it has seized
         listen to my instructions carefully...
-    
-____SHOWIF::[["pa|ikgolem", false]]
-    sourceless
-        in our stilled time, i observe their golem
-        itzil asleep within, but karik, a kiv, directing the body
-        yes, they will surely know what to do
-        i instruct the timestopper to release the flow of time for an instant to call out,
-    
-    akizet
-        karik!
-    
-    sourceless
-        in an instant, their eyes lock with mine, then the beast,
-        their floating gauntlets immediately moving to intercept
-        with an impulse, the timestopper seizes the flow again
-        with this advantage, i can call out instructions to karik...
-____END
 
     sourceless
         i can see in how it hovers - it is clumsy...
         a kelnit, stepped into a spar for the first time...
         i may be able to predict some of its moves
 
+
     sys
         WARNING::'abnormal thoughtform activity detected'
-        WARNING::'entity FOUNDATION GOLEM';'altering thoughtspace'
-        ANALYSIS::'intention to destroy recollection locus'
-        EXECUTING::'structure enforcement'
+        EXECUTING::"structure direction";"melee"::
+
+    plainsys
+        entity; ???; altering structure rule specifications
+        neural controls adjusted
+            EXEC::page.melee.tutorialStep()
 
 ____SHOWONCE::
     moth
         wait, didn't it just tell you to use a proxy last time?
         what's going on?
 ____END
-    
+
+    plainsys
+        utilize provided actions to retaliate against attack
+        <b-col>ADVANCE</b-col> moves forward offensively
+        <b-col>STRIKE</b-col> does not move but beats <b-col>ADVANCE</b-col>; longer range
+        <b-col>WIND UP</b-col> gives empowering charge to next attack; allows overpowering
+        <b-col>GUARD</b-col> absorbs attack and steals charge
+        either entity being knocked into <o-col>DULL COLUMN</o-col> will end round
+        utilize predicted enemy actions to plan
+        survive
+
     sys
-        ATTENTION::'utilizing structure':'MELEE'
-            EXEC::page.melee.tutorialStep()
-        ATTENTION::'neural controls adjusted';'command menu enabled'
-        NOTICE::'entities enqueue two actions to enact'
-        NOTICE::'either entity being knocked into DULL COLUMN will end round'
+        END::
 
 ____SHOWONCE::
     self
-        what does that mean
-        how does this work
-        did your friend include a manual
+        isn't that kind of a lot
     
     moth
-        lol no
+        yyeaah
         but it looks like everything here's got inherited context, so just eyeball it first
-        besides, didn't it only get hard last time when that bastard showed up?
-            SHOWIF::"item|sorry_cyst"
-        just hit stuff, it'll work out
+        or just hit stuff lol 
+        there's only 4 buttons it'll work out
+        from what i can see, this structure is all this thing will use
 ____END
 
     RESPONSES::akizet
@@ -5038,8 +5256,10 @@ env.dialogues["boss_half"] = generateDialogueObject(`
 start
     sourceless
         in our foe, i see something change
-        across its dense chassis are myriad impact marks, bleeding sludge
         it hunches like a wounded predator...
+        its flesh has grown sludgy, some portions even detached from the rest
+        the unknown bonds that draw it into the air are slowly breaking down
+        and remaining portions of its chassis hold myriad impact marks and cracks
         desperate now, more deadly
         we will need to plan more carefully
 
@@ -5048,7 +5268,6 @@ start
     
     sys
         NOTICE::'instruction queue lengthened to 3'
-        NOTICE::'3 commands now required to proceed'
 
     RESPONSES::akizet
         fight!!<+>END
@@ -5058,8 +5277,8 @@ start
 env.dialogues["boss_laststand"] = generateDialogueObject(`
 start
     sourceless
-        the golem is crumbling
-        it is nearly done - we are so close to the power we need
+        the beast is nearly entirely disintegrated from our attacks
+        it is nearly done - we are so close
         but the dull columns have grown unstable, disrupting the timestopper's effectiveness
         some portion of them thrashes and spins out of control within the dull plane, plucking at our connection
         we have to stop this now while we have the advantage
@@ -5077,20 +5296,27 @@ start
 
 env.dialogues["boss_closeout"] = generateDialogueObject(`
 start
-    sourceless
-        the golem is forced into the destructive column one last time
-            EXEC::ratween(env.bgm, 0.5, 10000)
+    sourceless quiet
+        the beast is forced into the destructive column one last time
         its fists are little more than melted blobs of sludge now
             EXEC::env.stages['g_boss'].hideBoss();
         they fall away, unable to endure any more damage - and it is finally without defense
+            EXEC::ratween(env.bgm, 0.5, 10000)
+
+    aggressor
+        US¹Ù«PERS
+        T¾¬}=|I
+        L‡STE_°–_??
+    
+    sourceless
         karik rears the great fist of their golem, warping its fingers into long spikes
         or... is that itzil? awakened in battle?
         i think i hear itzil screaming, or maybe karik - perhaps both of them, it is hard to tell now
-        unable to block any more, the constructor's head is skewered
+        unable to block any more, the constructor's distorted head is skewered
             EXEC::page.melee.fakeAttack()
-        whatever intelligence it had is pierced, causing the rest of its body to fall limp,
+        and at once, it clearly falls into sludge, causing the rest of its body to fall limp,
         the impact enough to briefly tilt the chamber
-        i nearly celebrate, but watch on as itzil and karik slam the head into the ground,
+        i nearly shout in celebration, but watch on as itzil and karik slam the head into the ground,
             EXEC::page.melee.fakeAttack()
         smashing it with their other fist, over and over...
             EXEC::page.melee.fakeAttack()
@@ -5116,40 +5342,46 @@ start
     sourceless
         the noise does not stop until there is nothing left for them to hold
             EXEC::page.melee.fakeAttack()
+        and soon, our golem pilots draw their gauntlets up again,
+            EXEC::flash(true)
+        aiming at the pillars with charged gauntlets to destroy the link at last
 
     RESPONSES::akizet
         ...<+>END
             FAKEEND::(end combat)
             EXEC::cutscene(true);endCombat(env.rpg.enemyTeam);page.melee.stop();specialCam(false)
 
-END::cutscene(false);startDialogue('bossclear')
+END::setTimeout(()=>startDialogue('bossclear'), 4000)
 `)
 
 env.dialogues["bossclear"] = generateDialogueObject(`
 start
 ____SHOWIF::'gameplay_off'
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
 ____END
 
     sourceless
         then... silence
-            EXEC::toggleBgm(env.embassy.music_golems_cleared);env.embassy.music_unsafe_golems.rate(1);env.stages['g_boss'].hideBoss();
+            EXEC::cutscene(false)
+            WAIT::1000
+        the chamber is stabilized
+            EXEC::flash(false)
         indeed, this is victory, but...
-            EXEC::change("PAGE!!golboss", true)
-        shared between all of us, the connection feels little joy
+            EXEC::change("PAGE!!golboss", true);toggleBgm(env.embassy.music_golems_cleared);env.embassy.music_unsafe_golems.rate(1);
+        our connection carries little joy
         for the storm has not yet passed
     
     akizet
-        ...all clear!
+        ...all clear
     
     sourceless
         soon we are all assembled in this final room
         tozik waves gakvu over near the far wall,
             EXEC::vnp({tozik: "show downleft", gakvu:"show downright"});
         both giving our conjoined friends some space
-        i do not truly know itzil or their kivii, yet...
-        i understand what must be going on in their mindcore
+        i do not truly know itzil or their kivii...
+        but i know what must be going on in their mindcore
     
     tozik
         where is it?
@@ -5171,7 +5403,7 @@ ____END
         that is a big cover...
     
     tozik
-        itzil, karik?
+        ...itzil, karik?
         can you remove this for me?
     
     sourceless
@@ -5227,15 +5459,13 @@ ____END
         will do!!
     
     sys
-        ATTENTION::'memory stream corrupt';'unable to access further events'
+        ERROR::'memory continues in separate stream';'separate stream is corrupt'
         NOTE::'sufficient intact data';'coherent render can continue'
-        NOTE::'no further activity detected'
+        NOTE::'return to entity tozik once stream repair is complete'
 
 ____SHOWONCE::
     moth
         oh, interesting...
-        this one doesn't end in a hard crash
-        but it isn't incoherent, like the interview was...
         so you can still look around some. nice
         i'll keep an eye on activity, but it looks like a good time for a break
         if i see any changes in these memories, i'll let you know
@@ -5244,18 +5474,13 @@ ____SHOWONCE::
 ____END
 
     RESPONSES::sys
-        save and explore<+>explore
-            EXEC::vn.done()
-            FAKEEND::(continue recollection)
-        save and exit<+>save
-            EXEC::vn.done()
-            FAKEEND::(end recollection)
-        save and advance log<+>advance
-            FAKEEND::(proceed to next day)
-            SHOWIF::['ENV!!ep4', false]
-        end without saving<+>END
-            EXEC::vn.done();moveTo("/local/ocean/embassy")
-            FAKEEND::(end recollection)
+        save<+>explore
+            EXEC::vn.done();setCam();specialCam(false)
+            FAKEEND::(continue)
+
+        do not<+>END
+            EXEC::vn.done();setCam();specialCam(false)
+            FAKEEND::(continue)
 
 explore
     sys
@@ -5264,44 +5489,16 @@ explore
             EXEC::env.embassy.collapseSave({effects: true})
             WAIT::1000
         NOTE::'save process complete'
-        NOTE::'return to entity tozik once stream repair is complete'
 
     RESPONSES::self
         ok<+>END
-            EXEC::pauseSwapCam(false);specialCam(false)
-
-save
-    sys
-        ATTENTION::'saving iteration...'
-        ...
-            EXEC::env.embassy.collapseSave({effects: true})
-            WAIT::1000
-        NOTE::'save process complete'
-        ATTENTION::'terminating render'
-
-    RESPONSES::self
-        ok<+>END
-            EXEC::moveTo("/local/ocean/embassy/")
-
-advance
-    sys
-        ATTENTION::'saving iteration...'
-            EXEC::change("PAGE!!explore", true)
-        ...
-            EXEC::env.embassy.collapseSave({effects: true})
-            WAIT::1000
-        NOTE::'save process complete'
-
-    RESPONSES::sys
-        advance log<+>END
-            EXEC::env.entities["advance log"].actions[0].exec()
-            FAKEEND::(advance to EP4)
+            EXEC::pauseSwapCam(false);specialCam(false);setCam();
 
 SKIP::env.embassy.skips.bossclear();change("PAGE!!explore", true);env.embassy.collapseSave({effects: true})
 SKIPNOTICE::defaults to save and explore
 `)
 
-/* 1:1s */
+/* 1:1s  */
 env.dialogues["tozik_resp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::akizet
@@ -5310,6 +5507,8 @@ RESPOBJ::
             SHOWIF::'PAGE!!geli'
         anyone you know?<+>anyone
         theories?<+>theory
+        dissection findings?<+>findings 
+            SHOWIF::["PAGE!!g_s_storage", "cleared"]
         leave<+>END
             EXEC::vn.done()
 `)
@@ -5337,7 +5536,7 @@ timestopper
     
     tozik
         the timestopper's effectiveness is not exactly linear
-        it uses a highly efficient, near-instantaneous form of dull transmission
+        it is a direct connection - instantaneous, highly effective
         similar to the kind used to connect floating qou limbs to their bodies, but with more force
         so... it will work, until it simply does not
         before we descend again, to be safe...
@@ -5350,7 +5549,7 @@ ____SHOWIF::'PAGE!!mboss'
         would it not be risky to reach that far from a groundsmindry override?
     
     tozik
-        no less risky than proceeding without a timestopper
+        far less so than proceeding without a timestopper
 ____END
 
     RESPONSES::akizet
@@ -5367,9 +5566,9 @@ segment
         tozik's attention drifts away for a θblink
     
     tozik
-        all equipment of particular note is in that troublesome room...
-        that impressor is all that comes to mind
-        and, of course, the large construction golem they were putting together...
+        all equipment of particular note is in that troublesome chamber...
+        the impressor is all that comes to mind
+        but, of course, the large construction golem they were putting together...
         it will not be a simple foe for us to face
         ah, still, this may not be a full engineering floor,
         but there are vats we can use for construction - lesser and greater
@@ -5412,37 +5611,94 @@ ____END
 
     tozik
         well...
-        we have seen that the signal--whatever it is--seizes things at random
+        we have seen that the signal - whatever it is - seizes things almost at random
         sometimes with groundsmindry, other times without...
-        but it is only ever corru unoccupied by a mind, be it qou or strong echo
-        have in sight as well--movefriend was fine when repaired, until the groundsmind took notice
+        but i have recognized some clear patterns
+        it is only ever corru unoccupied by a mind, be it qou or strong echo
+        have in sight that movefriend was fine when repaired, until the groundsmind took notice
+        even then, once freed from a direct link, it returned to normal
         the barfriend did not attack us either
+        furthermore, all that is directly seized has some direct connection to the dull
+        dull nodes, inbuilt communications, or otherwise...
+    
+____SHOWIF::["PAGE!!g_s_storage", "cleared"]
+    sourceless
+        he pauses, looking off in remorseful thought
+
+    tozik
+        ...in each of the qou-bodies drawn against us, amongst the,
+        unfamiliar,
+        communicators, dull nodes, and dull miscellany were clearly integral to their configurations
+____END
+
+    tozik
         so, all said, it is clear to me that the groundsmindry is compromised, but...
-        certain constructs with weaker echoes, like the containers and lamps, are seized without groundsmindry
-        what if the true cause is the signal itself?
-        what if vekoa had exited the groundsmindry for one reason or another,
-        then the signal came, 
-        and used it to warp our golems to its purpose?
+        given what we have seen, the... mutations, the impossibilities
+        it cannot be groundsmindry control alone
+        and so: what if the true cause is the signal itself?
+        passing over everything connected to and from the dull plane like an ocean's wave,
+        gripping and carrying along whatever lacks a strong will,
+        infesting and twisting what it may like a secri happening upon a carcass
     
     akizet
-        but how...
-        groundsmindry requires too much mental focus for it to be something like that, right?
+        but... even through weak, mundane connections?
+        how?
     
     sourceless
-        tozik simply waves his receptors negatively
+        tozik simply waves his receptors with uncertainty
     
     tozik
-        whatever is happening is reaching far beyond any limitation i was familiar with
-        you felt the meaning behind the signal too, did you not? it was beyond full understanding
-        and the way it invaded our minds directly, even rendering us into unwilling unconsciousness...
-        to lesser echoes, like the simple ones within containers and lamps, 
-        even the attendants and these golems we face now,
-        it may have completely overridden their echoes with whatever purpose the signal truly meant to impart
-        this theory is the best i have, for now...
-        either way, i am certain that seizing the groundsmindry will at least partially end this madness
+        whatever is happening is reaching far beyond any limitation i am familiar with
+        but you felt the meaning behind the signal too, did you not?
+        the way it invaded our minds directly, even rendering us into unwilling unconsciousness...
+        it was beyond full understanding
+        clearly, it is unfit for us
+        yet it overrides all else with ease
+        regardless, this theory is the best i have, for now...
+        i am certain that seizing the groundsmindry will at least partially end this madness
 
     RESPONSES::akizet
-        it has to be<+>loop
+        it has to<+>loop
+            FAKEEND::(back)
+
+findings
+    akizet
+        tozik
+        what did you see in the bodies of those qou?
+    
+    sourceless
+        my tone carries enough worry for him to know i do not simply ask out of curiosity
+        he has been silent about it ever since
+    
+    tozik
+        i...
+        do not know
+        i am not even sure how they were moving
+        their internal support structures were all broken into strange shapes,
+        their organs had fused together with their communicators, their dull nodes...
+        they were changing inside, each inconsistent with one another
+        and not one of them had anything resembling a mindcore
+
+    akizet
+        what... do you make of that?
+
+    tozik
+        lacking any visible conventional method of direct control,
+        their amalgamated organs and devices had to serve to that end, instead
+        but without directly connecting to them, i cannot know how they changed, exactly
+        and i would rather not risk that
+
+    sourceless
+        the concept of a qou being infested has long been absurd, a thing of fiction alone
+        tozik out of all of us perhaps knows that best
+        but velzie rarely lets us forget our worries for long...
+        that we are never free of this repetition, 
+        of infestation and war against insensate beasts,
+        even here--on this paradise of a world
+        it is truly nauseating
+
+    RESPONSES::akizet
+        wise<+>loop
             FAKEEND::(back)
 
 SKIP::vn.done()
@@ -5534,22 +5790,43 @@ theory
         do you have any theories on what is happening?
     
     gakvu
-        not really
-        well, i guess i do have one...
-        ah--no, it is stupid
-        even if vekoa turned on us, how could she seize the containers and lamps?
-        their ability to receive groundsmindry is so limited...
-        there would have to be groundsmindry relays dotted throughout the spire
-        last i felt, this one follows an archival pattern rather than a relay pattern
-    
+        none with any confidence, akizet
+        i mean, the lamps, the containers...
+        even if vekoa turned on us, how could she seize and direct them so?
+        their ability to receive groundsmindry beyond 'go here' is so limited
+        yet they twisted themselves into hostile shapes, 
+        twisted <em>one another</em>, used tools...
+        that they could have the capacity to be hostile is so absurd,
+        i would not believe the tale if i was not there
+
+    akizet
+        is there <em>any</em> way that groundsmindry could be abused to twist them like that?
+        i have seen what you do, after all
+
     sourceless
-        as i listen, her explanation crawls to a stop, and she watches me strangely
-        ah--i accidentally formed the slightest curl in my receptors
-        too vague for her to tell why, but, she cuts herself off...
+        my observation earns a pointed glare
+        i did not mean it so, but she must have taken that as an indirect accusation
+
+    gakvu
+        manipulation like that needs far too much focus in one place to achieve
+        i can instruct flesh to melt away, i can cause unpredictable effects, but...
+        it is a brutal act, like striking the corrucystic instruction with my mind as a blunt instrument
+        what we have seen is far more
+        it is like... it is intentional
+        even with a full groundsmindry core and the embassy's spinal system as a support,
+        there is no way any single mind could do that across the entire embassy all at once
+
+    sourceless
+        she pauses, concern growing in her receptors
+        and she shifts as if she may say more,
+        but seems to think better of it
+        i quickly dispel the fascinated curl in my receptors
     
     gakvu
-        ...to put it simply, i have no ideas
-        we just have to stop it and get out
+        ...to put it simply,
+        it feels like groundsmindry is being used,
+        even if it is far more focused and powerful than anything i thought possible
+        so we just have to stop whatever has the core and get out
     
     RESPONSES::akizet
         agreed!<+>loop
@@ -5566,10 +5843,17 @@ RESPOBJ::
         suspicious of gakvu?<+>gakvu
         separative trauma?<+>itzil
             SHOWIF::"PAGE!!mboss"
+        husks?<+>husks
+            SHOWIF::"PAGE!!sboss"
         theories?<+>theory
         leave<+>END
             EXEC::vn.done()
 `)
+
+//ing todo - revisit the 'drone' dialogue here.
+//she's not gonna have a drone (as it is) in EP4 i think, it's too confusing
+//but maybe we can rework it to be a little sidequest for an action upgrade or something idk
+//i like the characterization
 env.dialogues["miltza"] = generateDialogueObject(`
 loop
     RESPOBJ::miltza_resp
@@ -5581,7 +5865,7 @@ start
         when she notices my approach, she ceases, standing at attention with her receptors opened
     
     miltza
-        akizet! hello!
+        akizet! hello...
     
     RESPOBJ::miltza_resp
 
@@ -5603,53 +5887,7 @@ remote
     sourceless
         all too well
         surface trauma paralysis is far deadlier than any lone predator
-
-____SHOWIF::'aug|drone'
-    akizet
-        how is that drone we created for you faring?
-        it is lucky that the archives had something we could use...
-
-    sourceless
-        there is a sort of excitement in her receptors i have not seen before
-        they give a single excited wave, a brief glimmer of whoever she was before this started
-    
-    miltza
-        it is like i am home again!
-        in... many ways
-    
-    sourceless
-        her emboldened moment passes in a θblink
-
-    miltza
-        it may not seem like much, but i feel so much more focused
-        and it is funny! having it here... it is like an echo of my larval life
-        velzie's fondness for repetition is truly nauseating
-
-____SHOWIF::[['aug|drone', false], ['PAGE!!removedDrone', true]]
-    akizet
-        i feel i must apologize
-        that drone we made for you, ah...
-    
-    miltza
-        no no, it is fine!
-        do not worry about it!
-        you and your friends are better suited for fighting, anyway!
-        
-    sourceless
-        there is a sort of meekness in her stance
-        to give a weapon she loves, and then simply tear it away
-        but, it seemed like the right move...
-        we needed those materials to make other things
-    
-    miltza
-        besides, the drone...
-        i could see the husks of these poor qou in so much detail
-        and you know--it is like the surface saying
-        the less you think of death, the better chances you have of surviving!
-
-____SHOWIF::[['aug|drone', false], ['PAGE!!removedDrone', false]]
-    sourceless
-        oh!
+        ...oh!
 
     akizet
         ah--does that mean you wielded one of the more heavily armed drones?
@@ -5659,20 +5897,30 @@ ____SHOWIF::[['aug|drone', false], ['PAGE!!removedDrone', false]]
     
     akizet
         i see...
-        perhaps we could construct a drone for you, here
-        yes--the timestopper could allow you to fight on two fronts!
+        that explains your sharp eye
+        i can see your reservations with fighting, miltza,
+        but a coordinator with your skill is one of velzie's kindest gifts this θgaze
     
     sourceless
-        immediately, something in her stance changes
-        that flightiness from before slightly fades... the notion emboldens her!!
+        her nerves are briefly smothered by a flustered bashfulness,
+        waving her trio of claws in dismissal
     
     miltza
-        you are right!!
-        even a small one could change our odds...
-        still, it is like an echo of my larval life
+        ah--ahehe, well,
+        thank you, akizet
+        ...but it never leaves us, does it?
+        even then, i only wished to help ease minds,
+        not pilot weapons
+
+    sourceless
+        of course, i feel guilt in forcing her to fight
+        but she and i both know there is no other choice
+        just like home
+
+    miltza
+        this is like an echo of my larval life
         velzie's fondness for repetition is truly nauseating
-____END
-    
+
     RESPONSES::akizet
         truly<+>loop
             FAKEEND::(back)
@@ -5743,7 +5991,8 @@ theory
     
     sourceless
         ìƒì0¡$
-        that just spilled out
+        that sounded accusatory, did it not??
+        it just spilled out
         i did not mean to say it like that
         Eü#ë%'Eü
         velzie strike me now
@@ -5760,15 +6009,62 @@ theory
     
     miltza
         i have my suspicions...
-        this is surely the work of saboteurs,
-        whether it be one terrible mind, or a collective
+        this is surely the work of saboteurs, it has to be!
+        whether it be one terrible mind, or a collective...
         they are betrayers - throwing everything we have worked for away
-        to what service, i cannot say, but...
-        this is far too directed for it to be anything else
+        to what ends, i cannot say,
+        but this is far too directed for it to be anything else
 
     RESPONSES::akizet
         i see<+>loop
             FAKEEND::(back)
+
+husks
+    akizet
+        miltza
+        
+    sourceless
+        how can i put this delicately...
+
+    akizet
+        i saw how shaken you were by those bodies
+        the... husks, that were used against us
+
+    sourceless
+        her gaze shifts away and back, receptors uncertain
+
+    akizet
+        have you never dealt with infection, before?
+        in many ways, this circumstance mirrors the past,
+        and i would not have expected it to unnerve you so uniquely
+
+    sourceless
+        bizarrely, she settles slightly as my question unfolds
+        was my setup so unusual? 
+        what else could she possibly have expected me to ask??
+
+    miltza
+        what? oh! no, no, i...
+        of course i have! i just...
+        well, only through second-hand accounts...
+        i assisted many surface runners with what they experienced,
+        but i never truly dealt with anything like it directly...
+        yes - it is just...
+        especially horrific, and,
+        very, very... strange
+        ...
+
+    sourceless
+        her distraction is so obvious
+        something else about it troubles her...
+        but i cannot place what that is, exactly
+        perhaps hers is the appropriate response,
+        and i should be far more disturbed
+
+    RESPONSES::akizet
+        agreed<+>loop
+            FAKEEND::(back)
+
 
 SKIP::vn.done()
 `)
@@ -5776,6 +6072,10 @@ SKIP::vn.done()
 env.dialogues["mindcores_resp"] = generateDialogueObject(`
 RESPOBJ::
     RESPONSES::itzil
+        the four husks?<+>coworkers
+            SHOWIF::[["PAGE!!mboss", false], ["PAGE!!sboss", false]]
+        the four husks?<+>coworkerspost
+            SHOWIF::[["PAGE!!mboss", false], ["PAGE!!sboss", true]]
         points of interest?<+>places
             SHOWIF::["PAGE!!mboss", false]
         kivii<+>kivii
@@ -5785,7 +6085,7 @@ RESPOBJ::
         dog?<+>dog
             SHOWIF::[["PAGE!!dog", true], ["PAGE!!mboss", false]]
         golem weapon?<+>sorrycyst
-            SHOWIF::[["item|sorry_cyst", true], ["PAGE!!mboss", false]]
+            SHOWIF::[["item|sorry_cyst", true], ["PAGE!!minvatgun", false], ["PAGE!!mboss", false]]
 
     RESPONSES::karik
         construction?<+>construction
@@ -5862,10 +6162,10 @@ places
         perhaps any locations to find armaments, or schematics?
     
     itzil
-        oh, yes!!
+        oh! yes...
             EXEC::vnp({itzil: "focus"})
-        beyond the override, which, umm, supercedes all else...
-        manufacturing has a few vats we can use to create things...
+        beyond the override, which, umm, supersedes all else...
+        manufacturing has a few vats we can use to create things
         the minor operations θtendril has some archival connections that may lend us schematics,
         oh, and the sfer θtendril will grant us a pool of resources to create with!
         it is not as much as if we were on, say, the materials θsegment
@@ -5893,7 +6193,7 @@ places
         any support i offer will be washed away by the blood of any further husks we must fight
         i briefly shift my gaze to karik, and gesture a receptor covertly
         they understand, i think - to help brace itzil
-        this is not easy for any of us, but itzil knew each of these people...
+        this is not easy for any of us, but itzil knew each of these qou...
 
     RESPONSES::akizet
         ...<+>loop
@@ -5918,15 +6218,16 @@ kivii
     sourceless
         a distinct and eccentric mark, enough to identify her in its own right
         that is probably enough to watch out for
+        the recollection brings some joy back into itzil's demeanor, even if briefly
     
     itzil
         she is an expert with remote lifting tools, so...
         if she is still on this θsegment, she is probably in manufacturing somewhere!
         velzie instills a vision - she has been smashing these creatures with ease, no doubt!
-        once we find her, our odds will grow so much greater!
+        once we find her, we will be unstoppable!
 
     RESPONSES::akizet
-        they certainly will<+>loop
+        we certainly will<+>loop
             FAKEEND::(back)
             EXEC::vnp({itzil: "defocus"})
 
@@ -5953,8 +6254,8 @@ ____SHOWIF::["e3a2__escapewin", false]
         a dream, like it said,
         it was so brief, but so strong:
         a pale sphere of light glowing brightly in the thickest fog
-        or was it fog? i could not tell for certain, but it obscured nearly all vision beyond a few steps
-        but yes--a dark, cold place
+        or was it fog? i could not tell for certain, but it obscured so much
+        but yes--a strange, distant place
         and from the light slowly came a strange flickering tendril, which touched my head...
         then the vision ended, and geli awoke
     
@@ -5973,9 +6274,11 @@ ____END
 ____SHOWIF::"e3a2__escapewin"
     itzil
         or--perhaps the echo is just unable to understand violence?
-        it is not an uncommon measure to take!
+        it is not an uncommon measure to take
         though, i have only seen it in use on golems that may be left unattended for extended periods...
-        it is a little strange for a θsegment manager
+        it is a little unusual for a θsegment manager
+        i am not very sure, akizet
+        but at the least, geli should be no harm
 ____END
 
     RESPONSES::akizet
@@ -5991,14 +6294,16 @@ dog
         it had no hostility, yet had no greater intelligence than the golems...
     
     itzil
-        oh, yes!!
+        oh...
             EXEC::vnp({itzil:"focus"})
-        that is our little mascot, kuulla!
-        kuulla is usually in a hibernative state, like geli was, so...
-        it is likely that the signal simply passed over it and could not take hold
+        yes--right!
+        that is our little mascot, kuulla!!
+        at least kuulla is all right...
+        it is usually in a hibernative state, like geli was, so...
+        perhaps it is spared for that same reason
         you see, it only awakens when a vat is ready to be harvested
         and it scurries to find someone to attend to it...
-        how strange that the golems did not turn upon it!!
+        how strange that the golems did not turn upon it!
 
     RESPONSES::akizet
         agreed<+>loop
@@ -6016,12 +6321,13 @@ construction
     karik
         i did, i did, my friend!
             EXEC::vnp({karik:"focus"})
-        in these recent eyes i have focused upon designing schematics for polygonation towers
+        but largely, i worked with bozko, and spent much time outside the embassy
+        i spent most of my time prospecting for locations, and then preparing polygonation designs...
         that is probably why we have never met
-        i spent most of my time prospecting for locations, and then preparing polygonation designs
-        you see, the terrain on this planet is so varied, no one design will do
+        you see, the terrain on this planet is so varied, no one design will do!
+        ah--surely i do not need to tell <em>you</em> that, hehe
         oh, and before that, i did help with the growth of the embassy!
-        not since the eyes when velzie beheld the bare spireseed, though...
+        not since the θeyes when velzie beheld the bare spireseed, though...
     
     akizet
         oh!
@@ -6047,7 +6353,7 @@ golem
     
     karik
         oh, akizet, do not fear!
-        tozik took great care in choosing the deadliest tools we have
+        tozik took great care in choosing the deadliest tools possible
         what luck that such archaic designs still exist in the archives, right?
         a veilksplitter on another planet... hahaha!!!
         the golem will give us no trouble, let me assure you
@@ -6138,7 +6444,7 @@ theory
         it is like i said, though - it would only partially explain what is happening
         for example, why did the second iteration of the signal affect you more strongly than us?
         more corru for it to contact?
-        anyway--that is the best i have for now!
+        anyway--that is the best i have for now
         i am sure the groundsmindry will give us some real answers
         
     RESPONSES::akizet
@@ -6157,11 +6463,147 @@ sorrycyst
     itzil
         easy! that would be the lesser vats in manufacturing
             EXEC::vnp({itzil:"focus"})
-        if you want to make anything small, fast, that is where you do it!
-        we will be able to make some real weapons there
+        if you want to make anything small, fast, that is where you do it
 
     RESPONSES::akizet
         got it<+>loop
+            FAKEEND::(back)
+            EXEC::vnp({itzil: "defocus"})
+
+coworkers
+    akizet
+        itzil...
+
+    sourceless
+        is it too soon to approach them about this?
+        no--we must know what they are capable of
+
+    akizet
+        what can you tell me about the four qou we faced?
+
+    itzil
+        i...
+            EXEC::vnp({itzil:"focus"})
+        i can...
+
+    sourceless
+        itzil falters as they try to focus and recollect
+    
+    itzil
+        umm, there is uzzi, who...
+        he collected--he used to, collect,
+        ...
+        i cannot believe this is happening
+        they are all gone
+        everyone is
+        how could it have gotten <em>everyone</em>?!
+
+    sourceless
+        how has itzil never known this pain?
+        perhaps a cavern worker--one who never approached the surface?
+    
+    akizet
+        itzil. it is not them who stand against us now
+        something has taken their bodies--an infestation
+        whatever you know about what tools or weapons they carried...
+        it could stop more from being hurt
+
+    itzil
+        i--no, i know, you are right
+        kiku has--had, a body that could shift and move very rapidly
+        she was always sprinting through the halls...
+        no weapons, i think, but she could form her arms into blades readily
+
+    sourceless
+        itzil begins to pace, slowly, not looking towards me
+
+    itzil
+        uzzi... he had an eye on everything
+        he always knew exactly how and why something would go wrong with a plan or schematic,
+        even before it was made physical
+        i think he used some cysts to help with that, which are probably, still,
+        still in there...
+        ...
+        oulo, the... bent one who was mending tari, umm, the kiv
+        they always carried restoratives and mending tools in case of detonations or accidents
+        and tari had very strong lifting gauntlets, i think i saw one still on...
+        so, be careful to avoid them
+        i think that is it?
+        i think...
+        that is all that matters, for now
+        
+    akizet
+        we will make sure they find rest, itzil
+
+    sourceless
+        they do not respond
+
+    RESPONSES::akizet
+        ...<+>loop
+            FAKEEND::(back)
+            EXEC::vnp({itzil: "defocus"})
+
+coworkerspost
+    akizet
+        itzil...
+
+    sourceless
+        their gaze is distant and unfocused,
+        taking a θblink to reach me
+            EXEC::vnp({itzil:"focus"})
+        my receptors tense their coils--i know well the feeling that renders them so sluggish
+        perhaps it is too soon to ask about this, but...
+        it is best to be sure of itzil's status
+
+    akizet
+        how well did you know those four?
+
+    itzil
+        uh...
+
+    sourceless
+        itzil peers away in thought,
+        but the delay in their answer suggests they would rather not speak upon this at all
+    
+    itzil
+        i am a recent transfer to golem maintenance,
+        so i had really just started acquainting myself...
+        uzzi really helped me settle in with the team, and then, umm...
+        ...
+    
+    sourceless
+        they trail off entirely, pacing away and back
+        in θdeath, where a larval obesk may sob as an organic reflex,
+        tears remain abstract
+        as rare as sorrow that deep may be for qou,
+        it most often manifests in this exact crushing silence
+
+    itzil
+        ...
+        i just cannot believe <em>everyone</em> is gone...
+        they all were so strong in different ways
+        like you! and your team!!
+        i was sure, i was sure that they would have barricaded,
+        or be fending these things away in some,
+        some... grand plan, to fix everything...
+        but...
+        ...
+        akizet, why are you asking me this?
+    
+    akizet
+        forgive me, itzil
+        i must be certain of exactly where we all stand
+
+    itzil
+        this is a nightmare, it is--
+        it is the cruelest, most unreasonable twist upon my θdeath velzie has ever wrought
+        but i will keep going
+        for their sakes, at least
+        and--! once we find my kivii!!
+        it is as i say! we will be unstoppable, all together!        
+
+    RESPONSES::akizet
+        indeed<+>loop
             FAKEEND::(back)
             EXEC::vnp({itzil: "defocus"})
 
@@ -6183,9 +6625,9 @@ loop
 
 start
     sourceless
-        cavik anxiously observes the ceiling and walls, perhaps trying to detect possible alternate paths
+        cavik anxiously observes the ceiling and walls, perhaps trying to detect possible alternate routes
             EXEC::vnp({hideStage: true, cavik: "show focus"})
-        he made his way here by detonating new paths, after all...
+        he made his way here by detonating his own path, after all...
         still, his attention quickly shifts to me, and he stands straight
     
     cavik
@@ -6218,8 +6660,9 @@ defense
     
     cavik
         oh, it just made sense...
-        dull nodes in cheap golems are notoriously unstable if prodded in the right way!
+        the quickly produced dull nodes in golems are notoriously unstable if prodded in the right way!
         and the archival golems each have, um, six, i think...
+        after we destroyed our first one, it was sort of a cascade!
         so i have a lot of them!
     
     sourceless
@@ -6434,7 +6877,7 @@ notalone
         
     sourceless
         ah--i must be careful of my tone...
-        he hovers now over a razor's edge
+        he hovers now over a perilous edge
         a spiral of self modification, or a spiral of memory re-integration
         it is only the balance he has managed so far that has saved him
         bozko...
@@ -6486,7 +6929,7 @@ SKIP::vn.done()
 
 
 
-/* add2 */
+/*     add2    */
 env.dialogues["add2warn"] = generateDialogueObject(`
 start
 ____SHOWONCE
@@ -6525,10 +6968,21 @@ ____END
         WARNING::"unsaved iteration progress will be lost"
     
 ____SHOWONCE::
+____SHOWIF::["foundresourcegate", false]
     moth
-        you're exiting the iteration...
-        but not exiting the spatial thoughtform? wtf?
-        why aren't we able to just walk out with akizet and the team?
+        that's a weird warning...
+        you're exiting the iteration,
+        but not exiting the embassy thoughtform as a whole...
+        so why can't akizet and the team go through?
+        like obviously that would cause total incoherence, so it's good that it stops you, but...
+        whatever, just make sure you save if you still need to
+____SHOWIF::["foundresourcegate", true]
+    moth
+        weird that there'd be a hole right next to the core of a memory...
+        i don't think this goes to that resources cache thing
+        but it doesn't lead out of the embassy thoughtform as a whole, either
+        this thing really is just packed full of bullshit dude
+        i gotta wonder how many embassy memories there actually were before the thing starved
         whatever, just make sure you save if you still need to
 ____END
 
@@ -6675,7 +7129,7 @@ start
         i will continue to lie about my appearance within the memory to be safe
             EXEC::vnp({bsteli: "hide", geli: "show absolute"});
         confusing akizet and the others would only draw more attention...
-        and so would keeping the memory frozen like this any longer!!
+        and so would keeping the memory stalled like this any longer!!
     
     RESPONSES::self
         ok<+>END
@@ -6692,21 +7146,24 @@ start
     
     RESPONSES::self
         ok<+>begin
-            EXEC::change("PAGE!!ikawake", true);page.party.partyLimit = 8
         not yet<+>END
     
 begin
     sys
         ATTENTION::'continuing memory stream'
-            EXEC::flash(true);vnp({miltza: "show far", gakvu: "show far", tozik: "show far", ikgolem: "show far", bozko: "show far", cavik: "show far", hideStage:true});
+            EXEC::change("PAGE!!ikawake", true);page.party.partyLimit = 8;flash(true);vnp({hideStage:true});
 
     sourceless
         with our preparations complete, all reconvene in the lobby
-            EXEC::vfx({type: "flash", state: false, delay: 200})
+            EXEC::vfx({type: "flash", state: false, delay: 200});content.classList.add('cull-stage')
         not a pair of receptors is without a timestopper connector
+            EXEC::vnp({miltza: "show far", gakvu: "show far", tozik: "show far", hideStage:true})
         yes - with these connections, we should be unstoppable!
-        to say nothing of our comprehensive plan
-        it is fortunate karik recalls the groundsmindry layout so clearly
+            EXEC::vn.done();vnp({tozik: "show far", ikgolem: "show far", bozko: "show far", cavik: "show far", hideStage:true});
+        to say nothing of our comprehensive plan!!
+        it is fortunate karik recalled the groundsmindry layout so clearly
+        my mind turns inward, to our connection...
+            EXEC::vn.done();vnp({hideStage:true});
     
     timestopper
         everyone connected?
@@ -6715,11 +7172,12 @@ begin
         yes! yes! yes! yes! yes! yes! yes! yes!
     
     sourceless
-        the yes continues to echo as all agree in unison - i cannot help but laugh
+        the 'yes' continues to echo as the sentiment bounces through each connection
         prompting a similar sentiment from everyone at once was unwise
-        with all of these connections, we should keep our thoughts focused and distinct
-        despite the looming darkness, i sense the team finds some humor in this as well
+        despite the looming darkness, it wrings a chuckle from me and some others
+        but with all of these connections, we should keep our thoughts focused and distinct
         immediately, we set to a discussion under constricted time
+        first: the movement of our great tool
     
     akizet
         gakvu, was the timestopper damaged at all by your maneuver?
@@ -6728,11 +7186,11 @@ begin
     gakvu
         the override's connection did not give me much detail
             EXEC::vn.done();vnp({gakvu: "show focus", hideStage: true});
-        it is like feeling around in dark water
-        but between my efforts and movefriend's careful navigation,
+        like feeling around in dark water
+        but between my efforts and movefriend's navigation,
         we were able to tear the timestopper from our chamber with minimal direct damage
         ...to the timestopper, that is
-        it sounds like the entire room collapsed because of the downward flow i created
+        it sounds like the entire room finally collapsed because of the downward flow i created
         so, our research equipment and retrieved archival cysts are lost
 
     cavik
@@ -6758,19 +7216,34 @@ begin
         yes
             EXEC::vnp({tozik: "show focus"});
         the timestopper's relocation should put us more safely within its effective range
-        i also expect that because of the connection we have, the groundsmind will still be unable to disconnect us
-        barring a direct physical attack on the timestopper itself, of course
-        but we have seen no interference ever since we first descended
-        and with the corroyi pressure lightened, we have some time before it is at threat again
+        additionally, it has no natural connection to the groundsmind,
+        so, barring a direct physical attack, it should be safe from interference
+        
+    akizet
+        how likely is that?
+        we could not defend it, if it was...
+
+    gakvu
+        they had plenty of time to strike in our absence
+        and they had the perfect opportunity to crush it when i was moving it, too
+        but, for some reason...
+        i felt no gaze or attention, no other groundsmindry in our area
+        the groundsmind's eye is turned away, or closed, or ripped from its socket
+        we will find out which very soon
+
+    tozik
+        exactly
+        finally, with the corroyi pressure lightened, 
+        we have time before it is at threat again
         all good things
         but the eye still blinks
         pressure will build up again for the same reasons as before, and the timestopper's shell will give way
 
     karik
-        maybe we can find out what is blocking the corroyi flows to begin with!
+        maybe we can find out what is blocking the spire's flows to begin with!
             EXEC::vnp({ikgolem: "showleft far"});
         i still recall the plans from the embassy's early growth...
-        this spire has a system of hearts that form and pump corroyi,
+        it has a system of hearts that form and pump corroyi,
         a large central one at the bottom, then upper hearts to support it
         from what we have seen, i think the upper hearts are probably intact...
         but if the great heart within the groundsmindry no longer churns, then naturally they must be struggling!
@@ -6792,7 +7265,7 @@ begin
             EXEC::vnp({geli: "show"})
         before you go...
 
-____SHOWIF::["e3a2__escapewin", false]
+____SHOWIF::["e3a2__firstenter", false]
     geli::concern
         itzil!
         <span definition="INHERITED CONTEXT::'.5Dð §°ÞâNN  OT×¬ðE2z½LÈ‘¤VE'">the others will miss you!</span>
@@ -6811,6 +7284,16 @@ ____SHOWONCE::
             SHOWIF::"ozo__council-task"
         you could probably delay this transition if you want to try that mask on it
             SHOWIF::"ozo__council-task"
+____END
+
+
+____SHOWIF::[["e3a2__firstenter", true], ["e3a2__escapewin", false]]
+    geli
+        itzil!
+        <span definition="INHERITED CONTEXT::'DMUò,½ñOT FO–RGû)T MÆý">the others will miss you!</span>
+        <span definition="INHERITED CONTEXT::'r:t•¬rn 2¬ HŒ+p'">yes, very much!</span>
+        <span definition="INHERITED CONTEXT::'ÑÖ°âNNO T —â©ke this'">how long will you be away?</span>
+        i should... mark your availability!
 ____END
 
 ____SHOWIF::"e3a2__escapewin"    
@@ -6839,7 +7322,7 @@ ____END
     
     sys
         NOTICE::'advancing to next memory stream'
-            EXEC::vn.done()
+            EXEC::vn.done();content.classList.remove('cull-stage')
         ATTENTION::'commencing transfer'
     
     RESPONSES::self
@@ -6883,5 +7366,5 @@ ____END
         good<+>END
             EXEC::change("PAGE!!embassy_day", 3.5);vn.done();
 
-SKIP::vn.done(); if(env.currentDialogue.branch.name == "start" || env.currentDialogue.branch.name == "begin") { change("PAGE!!embassy_day", 3.99);change("TEMP!!ep3->ep4transfer", true);moveTo("/local/ocean/embassy/groundsmindry/") } else { change("PAGE!!embassy_day", 3.5);change("PAGE!!ikawake", true);page.party.partyLimit = 3 }
+SKIP::vn.done(); if(env.currentDialogue.branch.name == "start" || env.currentDialogue.branch.name == "begin") { change("PAGE!!embassy_day", 3.99);change("TEMP!!ep3->ep4transfer", true);moveTo("/local/ocean/embassy/groundsmindry/") } else { change("PAGE!!embassy_day", 3.5);change("PAGE!!ikawake", true);page.party.partyLimit = 3 };content.classList.remove('cull-stage')
 `)

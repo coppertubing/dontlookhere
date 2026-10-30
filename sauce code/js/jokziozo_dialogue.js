@@ -29,7 +29,7 @@ start
         think more! think!! what is your name?
     
     self
-        they are calling me an 'interloper'
+        they are calling me an "interloper"
     
     council
         ah!!
@@ -206,8 +206,8 @@ ____SHOWIF::'PAGE!!introswap'
 
 ____SHOWIF::[['PAGE!!introswap', false], ["PAGE!!depressed", true], ["PAGE!!questionswap", false]]
     sourceless
-        the council sways idly
-        their mind is fixed upon yours, awaiting the slightest impulse
+        the council sways idly.
+        their mind is fixed upon yours, awaiting the slightest impulse.
 
     council
         interloper, interloper!
@@ -216,9 +216,9 @@ ____SHOWIF::[['PAGE!!introswap', false], ["PAGE!!depressed", true], ["PAGE!!ques
 
 ____SHOWIF::[['PAGE!!introswap', false], ["PAGE!!depressed", false], ["PAGE!!questionswap", false]]
     sourceless
-        the council dances idly
+        the council dances idly.
             EXEC::env.jokzi.toggleSlow(true)
-        their mind is fixed upon yours, awaiting the slightest impulse
+        their mind is fixed upon yours, awaiting the slightest impulse.
 
     council
         interloper, interloper!
@@ -708,7 +708,7 @@ feast
 
 dreams
     self
-        when you say 'dream',
+        when you say "dream",
         what does that mean?
     
     council
@@ -952,7 +952,7 @@ akizet
         this was long ago, mind you--when it first fought against the fading of our world
         so many friends torn from us, so much knowledge lost!!
         worse still--we doubt even it knows where that memory is, now...
-        the only shred we recall is that we--the cyst--were torn from her body for one reason or another!
+        the only shred we recall is that we - the cyst - were torn from her body for one reason or another!
         and obviously, that does not bode well, does it? hahaha!
         sorry! we do not mean to laugh! we know it is sad!
         but it is all so far in the past now, and look what joy was wrought from her!
@@ -976,7 +976,7 @@ iname
     
     sourceless
         ...
-        the eyes within the eyes of the council watch your mind with incredible hunger
+        the eyes within the eyes of the council watch your mind with incredible hunger.
     
     self
         just call me interloper
@@ -1473,13 +1473,13 @@ ____SHOWIF::'PAGE!!isaswap'
             EXEC::env.jokzi.toggleSlow(true)
     
     sourceless
-        the thoughtform's mind is quiet, waiting for you
+        the thoughtform's mind is quiet, waiting for you.
 
 ____SHOWIF::['PAGE!!isaswap', false]
     sourceless
-        the thoughtform's attention is elsewhere at first
+        the thoughtform's attention is elsewhere at first.
             EXEC::env.jokzi.toggleSlow(true)
-        but it feels your mind's eye, and attends to you
+        but it feels your mind's eye, and attends to you.
     
     isabel
         oh... interloper
@@ -1824,7 +1824,7 @@ fairy
 
 lostone
     self
-        the council talked about a third 'lost one'
+        the council talked about a third "lost one"
         do you know who they could be talking about?
     
     isabel
@@ -1861,7 +1861,7 @@ history
         ...
     
     sourceless
-        apprehension bleeds from the thoughtform
+        apprehension bleeds from the thoughtform.
     
     isabel
         i don't want to think about it
@@ -2068,6 +2068,9 @@ RESPOBJ::
         you<+>yloop
         jokzi ozo<+>oloop
         memories and the cyst<+>cloop
+        frame mode?<+>framemode
+            SHOWIF::"framemodes_unlocked"
+            SHOWONCE::
         bye<+>END
 `)
 
@@ -2138,6 +2141,35 @@ ____END
 
     RESPOBJ::fairyResp
 
+framemode
+    self
+        geli has a new thing for modes in frame
+        do you want to make one?
+
+    fairy
+        modes??
+
+    self
+        it changes the way the dream works
+        you could make it play out a different way
+
+    fairy
+        what!
+        what!!!!
+        yes!!!!!!!!!
+        ahahaha! oh, yes!!
+        that silly thing looks like fun! 
+        but do you not think it is a bit too skewed in your favor?
+        i will pry my way in and form one anew!
+        we will kill and die and eat together, interloper!!!
+        but mostly it is you who will die! 
+        ahahaha!!!!
+        i will have it ready for your next visit!
+            EXEC::change("framemode_fairy", true)
+        
+    RESPONSES::self
+        cool<+>loop
+            FAKEEND::(back)
 
 yloop
     RESPOBJ::fairyYResp
@@ -2339,7 +2371,7 @@ council
 
 lostone
     self
-        the council said there's a 'lost one' they want me to find
+        the council said there's a "lost one" they want me to find
         someone who went missing when you and the flower did
     
     fairy
@@ -2395,11 +2427,21 @@ gelifree
         and yet, now geli and the other early feasters feel so ashamed!
         stupid... they should be proud
         anyway, whatever you did sure made them a lot more fun!
+____SHOWIF::["framemode_fairy", false]
         have you seen that strange little dream of theirs?
         ahahaha! oh, i want to join in!!
+____SHOWIF::["framemode_fairy", true]
+        and what a delight it is to pry about in that little dream of theirs!
+        the sheer, endless violence... ahahaha!!
+        yes, they truly have changed!
+____END
     
     RESPONSES::self
         could be fun<+>oloop
+            SHOWIF::["framemode_fairy", false]
+            FAKEEND::(back)
+        guess so<+>oloop
+            SHOWIF::["framemode_fairy", true]
             FAKEEND::(back)
 
 stowaway
@@ -3037,7 +3079,7 @@ bt
     self
         your memory is safe
         it was placed back in the repaired embassy thoughtspace
-        and it's called 'better times'
+        and it's called "better times"
         i went through it myself
 
     wakizet
@@ -3131,7 +3173,7 @@ oloopearly
         i appreciate isabel's patience and care,
         but it is strange to have someone i have never met treat me like an old friend
         especially after so much time fending against every living thing
-        and her... 'akizets,' are... 
+        and her... 'akizets', are... 
 
     wakeless
         ...what is it, exactly? so hard to place!
@@ -3296,7 +3338,7 @@ start
     council
         hello again, dear interloper!
             EXEC::env.jokzi.toggleSlow(true);env.jokzi.councilToggle();
-        what a fascinating new thing you've introduced us to...
+        what a fascinating new thing you have introduced us to...
         we are so very excited!! a stable akizet at last!
         damaged, yes, but sane and lucid--well within reach of full repair!!
 
@@ -3307,6 +3349,7 @@ start
         oh yes, oh yes, akizet thoughtforms are rarely even close to intact!
         so often are they trapped in unbreakable dreams, quietly gnawed to pieces...
         there is a reason isabel has so many of those reformed akizets, hehe
+            SHOWIF::"citystreet__flower_beacon"
         even those who play the role of akizet within our dreams,
         rarely, if ever, do they actually originate as akizet actors!
         it is more of an adopted role, a common protagonist, you see
@@ -3314,10 +3357,22 @@ start
         we hope we can do right by her!
         all are on their best behavior!
         and if you would like to speak to her, 
+
+____SHOWIF::"ozo__isabel_joy"
+    council
         we recall seeing her linger on the outskirts
         it seems she would prefer some time alone...
         after what we heard from her explanation of the past,
         it may be some time--and we can hardly blame her!
+
+____SHOWIF::["ozo__isabel_joy", false]
+    council
+        we would point you directly, but...
+        we are not quite sure where she went!
+        it seems she would prefer some time alone...
+        after what we heard from her explanation of the past,
+        it may be some time--and we can hardly blame her!
+____END
 
     RESPONSES::self
         question<+>CHANGE::council
@@ -3526,7 +3581,7 @@ END::env.jokzi.toggleSlow(false)
 
 env.dialogues["geli_freedom"] = generateDialogueObject(`
 start
-    sourceless
+    sys
         ATTENTION::'thoughtform activity detected'
             EXEC::vnp({bg: false, hideStage: true, bsteli: "show"});env.jokzi.toggleSlow(true)
             AUTOADVANCE::
@@ -3621,7 +3676,7 @@ start
 tried
     bsteli::happy
         ahaha, look at you go!
-            EXEC::env.jokzi.toggleSlow(true)
+            EXEC::vnp({bg: false, hideStage: true, bsteli: "show"});env.jokzi.toggleSlow(true)
 
     bsteli
         how does it feel?
@@ -3635,11 +3690,16 @@ tried
 
     bsteli
         the others helped me pick up the craft
+        
+____SHOWIF::"citystreet__flower_beacon"
+    bsteli
         isabel especially, but after i learned the basics,
         she saw what i was making, and...
 
     bsteli::concern
         i think i unsettled her, a little
+____END
+    bsteli::concern
         much of the alien knowledge the BSTRD instilled within me was used in its creation
         and so, it is somewhat unnatural, looking at the finished mask, but...
 
@@ -3678,6 +3738,7 @@ tried
 
     moth
         hey buddy, what is that actually doing?
+            EXEC::vn.done()
         it's not looking any different on my end
         aside from you... moving diagonally?
         now that i'm seeing it, i don't think i've ever seen you do that in here
@@ -3689,13 +3750,14 @@ tried
     
     moth
         interesting
-        i never really thought about how you 'move' in there
+        i never really thought about how you "move" in there
         cool
 
     RESPONSES::self
         yeah<+>END
 
-END::env.jokzi.toggleSlow(false);vfx({type:'beacon', state: false});
+
+END::env.jokzi.toggleSlow(false);vfx({type:'beacon', state: false});vn.done()
 `)
 
 /* event additions */
@@ -3733,14 +3795,14 @@ start
         oh, we hope it does not see us like this firmament of yours!
         whether it be in θgazes or θeyes, we will be on speaking terms again, we are certain...
         we will have much to discuss--so many questions!
-        now, about this 'BSTRD'...?
+        now, about this 'bstrd'...?
     
     bsteli::happy
         oh yes!! BSTRD!
         it started when...
     
     sourceless
-        an attentive pressure weighs upon your presence
+        an attentive pressure weighs upon your presence.
     
     council
         geli! our dear! forgive the interruption...
@@ -4034,7 +4096,7 @@ start
         you are a natural, my hollow friend!
     
     sourceless
-        you feel the stowaway's attention upon your presence
+        you feel the stowaway's attention upon your presence.
     
     stowaway
         hollow friend
@@ -4310,7 +4372,7 @@ start
         maybe...
     
     sourceless
-        isabel's attention fixes upon your presence
+        isabel's attention fixes upon your presence.
             EXEC::specialCam("e_i_worry")
     
     isabel

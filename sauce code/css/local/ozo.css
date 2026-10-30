@@ -1414,6 +1414,15 @@ body[locale="darkclouds"] #ozobg .ozolayer.clouds .lower::after {
     backface-visibility: visible;
 }
 
+#realgrid .dyp .distant-daemons {
+    animation: SHAKE 10s steps(3) infinite alternate;
+    --baseTransform: rotateX(-90deg) var(--dyp-transform);
+}
+
+body[quality="low"] #realgrid .dyp .distant-daemons {
+    display: none;
+}
+
 /* visualizer stuff */
 body[locale="council"][songstate="intro"] .clouds .upper { transform: translateY(25%) }
 body[locale="council"][songstate="intro"] .clouds .lower { transform: translateY(-25%) }

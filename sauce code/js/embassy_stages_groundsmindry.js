@@ -56,10 +56,22 @@ env.stage.locales["mind"].underFloor = {
 }
 
 env.stages.grmStageInit = (stage) => {
+    //flat page
+    if(env.stage.name == "intermediary" || env.stage.name == "itempause") {
+        body.classList.add('cull-stage', env.stage.name)
+        toggleBgm(env.grm.music_oki)
+        return
+    } else if(body.classList.contains('intermediary') || body.classList.contains('itempause')) body.classList.remove('intermediary', 'itempause', 'cull-stage')
+
     content.classList.add('show-walls', 'collapse', 'show-vn')
 
     env.stage.wallH = env.stage.stageH - 2
     env.stage.wallW = env.stage.stageW - 2
+
+    if(check("PAGE!!weirdload")) {
+        changeBgm(env.grm.music_embassy_uncanny)
+        return
+    }
 
     if(isStageClear()) {
         content.classList.add('safe')
@@ -104,7 +116,6 @@ env.stages.grmStageInit = (stage) => {
                 toggleBgm(env.grm.music_coresong)
             }
         break
-
         
         default:
             toggleBgm(env.grm.music_coresong)
@@ -235,7 +246,7 @@ env.stages['grm_entry'] = {
         env.stages.grmStageInit(this)
         switch(check("PAGE!!e4prog")) {
             case false: /* first entrance */
-                env.grm.startDialogueOnce("entrance")
+                if(!check("PAGE!!weirdload")) env.grm.startDialogueOnce("entrance")
             break
 
             case 1:
@@ -321,7 +332,7 @@ env.stages['grm_entry'] = {
             teleportSpot: 66,
             shouldFace: "left",
             lockFlag: "EXEC::check('PAGE!!e4prog') > 999",
-            lockExec: ()=>chatter({actor: 'sourceless', text: 'not this way, not yet', readout: true}),
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: 'not this way, not yet', readout: true}),
             /*
             contains: {
                 class: "lonewall",
@@ -341,11 +352,20 @@ env.stages['grm_entry'] = {
             }
         },
 
+        'l': {
+            class: "door angled right",
+            teleportTarget: "hall_entry-lesser",
+            contains: {
+                class: "lonewall",
+                html: `<canvas class="wall e-wall" sprite="/img/local/embassy/mind/marbling_pillars_short_m.gif" fit="stretch-y" position="bottom left" baseWidth="5" baseHeight="3.5"></canvas>`
+            }
+        },
+
         'F': {
             class: "door up",
             lockFlag: "permalocked",
             teleportTarget: "grm_core",
-            lockExec: ()=>chatter({actor: 'sourceless', text: 'there is no turning back now', readout: true}),
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: 'there is no turning back now', readout: true}),
         },
         
         "6": {
@@ -641,7 +661,20 @@ env.stages['grm_entry'] = {
                     transform: 'rotateY(45deg) translateX(50%)'
                 }
             } 
-        }
+        },
+
+        ĵ: { 
+            class:"prop blocks notile",
+            contains: {
+                examineEntity: "▣",
+                dyp: {
+                    width: 4,
+                    height: 4,
+                    image: "url(/img/textures/flowergate0.gif), url(/img/textures/flowergate1.gif)",
+                    transform: `translateX(-200px) rotateY(-180deg)`
+                }              
+            }
+        },
     },
 
     width: 11,
@@ -665,7 +698,7 @@ env.stages['grm_entry'] = {
             .‼‼2▒▒▒3‼‼.
             .‼‼‼▒▒▒‼‼‼.
             .‼‼‼▒p▒‼‼‼.
-            .....F.....
+            .....Fĵ....
         `, 
 
         initialstep: `
@@ -686,7 +719,7 @@ env.stages['grm_entry'] = {
             .‼‼2▒▒▒3‼‼.
             .‼‼‼▒▒▒‼‼‼.
             .‼‼‼▒p▒‼‼‼.
-            .....F.....
+            .....Fĵ....
         `, 
 
         fullteam: `
@@ -707,7 +740,7 @@ env.stages['grm_entry'] = {
             .‼‼2▒▒▒3‼‼.
             .‼‼‼▒▒▒‼‼‼.
             .‼‼‼▒▒▒‼‼‼.
-            .....F.....
+            .....Fĵ....
         `, 
 
         returning: `
@@ -728,7 +761,7 @@ env.stages['grm_entry'] = {
             ○‼‼‼▒▒▒‼‼‼○
             ○‼‼‼▒▒▒‼‼‼○
             ○‼‼‼▒▒▒‼‼‼○
-            ○○○○○F○○○○○
+            ○○○○○Fĵ○○○○
         `, 
 
         final: `
@@ -772,6 +805,27 @@ env.stages['grm_entry'] = {
             .‼‼‼▒p▒‼‼‼.
             .....F.....
         `, 
+
+        empty: `
+            Ṇ....%.....
+            .░░░○♦○░░░.
+            .░░░░6░░░░.
+            C░░░░░░░░░l
+            .░░░░░░░░░.
+            .░░░░░░░░░.
+            .○░░░░░░░○.
+            .○○░░░░░○○.
+            .○○○░░░○○○.
+            .‼‼‼▒▒▒‼‼‼.
+            .‼‼‼▒▒▒‼‼‼.
+            .‼‼1▒▒▒4‼‼.
+            .‼‼‼▒▒▒‼‼‼.
+            .‼‼‼▒▒▒‼‼‼.
+            .‼‼2▒▒▒3‼‼.
+            .‼‼‼▒▒▒‼‼‼.
+            .‼‼‼▒p▒‼‼‼.
+            .....Fĵ....
+        `, 
     },
 
     getPlan: function() {
@@ -810,7 +864,19 @@ env.stages['grm_entry'] = {
             break
         }
 
+        if(check("PAGE!!weirdload")) plan = this.plans.empty
+
         return plan
+    },
+
+    planAdjustment: function(plan) {
+        let newPlan = plan
+
+        if(!check("mask", "joy")) {
+            newPlan = newPlan.replaceAll("ĵ", ".")
+        }
+
+        return newPlan 
     },
 }
 
@@ -830,7 +896,7 @@ env.stages['hall_entry-lesser'] = {
         },
 
         'L': {
-            class: "door angled right fuckthisdoor", /* doesn't load on chrome for some reason. might load if we animate it */
+            class: "door angled right fuckthisdoor", 
             teleportTarget: "grm_lesser",
         },
 
@@ -839,7 +905,7 @@ env.stages['hall_entry-lesser'] = {
             teleportTarget: "g_lobby",
             teleportSpot: 42,
             lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'sourceless', text: 'personnel and secondary chambers, unwilling to open to us', readout: true})
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: 'personnel and secondary chambers, unwilling to open to us', readout: true})
         },
 
         "F": {
@@ -861,7 +927,7 @@ env.stages['hall_entry-lesser'] = {
             teleportTarget: "g_lobby",
             teleportSpot: 42,
             lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'sourceless', text: '...', readout: true})
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: '...', readout: true})
         },
 
         '2': {
@@ -869,7 +935,7 @@ env.stages['hall_entry-lesser'] = {
             teleportTarget: "g_lobby",
             teleportSpot: 42,
             lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'sourceless', text: '...', readout: true})
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: '...', readout: true})
         },
 
         '3': {
@@ -877,7 +943,7 @@ env.stages['hall_entry-lesser'] = {
             teleportTarget: "g_lobby",
             teleportSpot: 42,
             lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'sourceless', text: '...', readout: true})
+            lockExec: ()=>check("PAGE!!weirdload") ? null : chatter({actor: 'sourceless', text: '...', readout: true})
         },
 
         '4': {
@@ -908,9 +974,22 @@ env.stages['hall_entry-lesser'] = {
             .░░░░░░░░░░░░░░░░░░░░░░░░░░░.
             ......1.......2.......3......
         `, 
+
+        // completely identical. for now.
+        empty: `
+            Ṇ................
+            .░░░░F░░░░░F░░░░.
+            .░░░░░░░░░░░░░░░.
+            Ep░░░░░░░░░░░░░░L
+            .░░░░░░░░░░░░░░░.
+            .░░░░F░░░░░F░░░░.
+            ...x....x....x..Ṡ
+        `, 
     },
 
     getPlan: function() {
+        if(check("PAGE!!weirdload")) return this.plans.empty
+        
         let plan
 
         if(check("PAGE!!e4prog") == 13) {
@@ -923,7 +1002,6 @@ env.stages['hall_entry-lesser'] = {
             this.ignoreUnderFloor = false
         }
 
-        //potentially some direct string alteration before returning the plan too
         return plan
     },
 }
@@ -934,6 +1012,7 @@ env.stages['grm_lesser'] = {
     enterDirection: "right",
     exec: function () {
         env.stages.grmStageInit(this)
+
         switch(check("PAGE!!e4prog")) {
             case 2: /* first entrance */
                 env.grm.startDialogueOnce("lesser")
@@ -1005,6 +1084,11 @@ env.stages['grm_lesser'] = {
             teleportTarget: "grm_core",
             lockFlag: "permalocked",
             lockExec: ()=>chatter({actor: 'sys', text: "NOTICE::'utilize PROCEED entity';'precaution to allow iteration saving'", readout: true})
+        },
+
+        'Ð': {
+            class: "door grand down lit critical",
+            teleportTarget: "grm_core",
         },
 
         'E': {
@@ -1189,6 +1273,49 @@ env.stages['grm_lesser'] = {
             teleportTarget: "out_early",
             shouldFace: "up"
         },
+
+        'e': {
+            class: "door angled left",
+            teleportTarget: "hall_entry-lesser",
+            teleportSpot: 66,
+            shouldFace: "left"
+        },
+
+        'l': {
+            class: "door angled right",
+            teleportTarget: "hall_lesser-dull",
+            lockFlag: "permalocked"
+        },
+
+        Ḣ: { 
+            class:"prop blocks notile",
+            contains: {
+                examineEntity: "ÃwÃIÏ",
+                dyp: {
+                    class: "weirdeyes hungeronly",
+                    width: 1,
+                    height: 1,
+                    image: "url(/img/sprites/combat/foes/hallucinations/eyetransparent_purble.gif)",
+                    transform: `translateX(-150%) translateY(-100%) rotateY(90deg) translateX(100%)`
+                }              
+            }
+        },
+
+        ḣ: { 
+            class:"prop blocks notile",
+            contains: {
+                examineEntity: "ÃwÃIÏ",
+                dyp: {
+                    class: "weirdeyes hungeronly",
+                    width: 1,
+                    height: 1,
+                    image: "url(/img/sprites/combat/foes/hallucinations/eyetransparent_purble.gif)",
+                    transform: `translateX(150%) translateY(-100%) rotateY(90deg) translateX(100%)`
+                }              
+            }
+        },
+
+        "▌": {class: "empty plain resourcereturnhunger", shouldFace: "right"},
     },
 
     width: 15,
@@ -1199,6 +1326,24 @@ env.stages['grm_lesser'] = {
             .░░░░░░░░░░░░░.
             Ep░░░░░░░░░░░░L
             .░░░░░░░░░░░░░.
+            .░░░░░░░░░░░░░.
+            .‼‼‼░░░░░░░‼‼‼.
+            .‼♦‼░░-O♥░░‼♦‼.
+            .‼‼‼░░░░░░░‼‼‼.
+            .░░░░░░░░░░░░░.
+            .░░░░░░░░░░░░░.
+            .‼‼‼░░‼‼‼░░‼‼‼.
+            .‼♦‼░░‼♦‼░░‼♦‼.
+            .‼‼‼░░‼‼‼░░‼‼‼.
+            ..............Ṡ
+        `, 
+
+        empty: `
+            Ṇ......Ð.......
+            .░░░░░░░░░░░░░.
+            .░░░░░░░░░░░░░.
+            ep▌░░░░░░░░░░░l
+            ḣ░░░░░░░░░░░░░.
             .░░░░░░░░░░░░░.
             .‼‼‼░░░░░░░‼‼‼.
             .‼♦‼░░-O♥░░‼♦‼.
@@ -1281,7 +1426,7 @@ env.stages['grm_lesser'] = {
             .▒▒▒v▒▒▒▒▒▒G▒▒.
             .▒▒▒▒▒▒▒▒▒▒▒▒▒.
             Ep▒▒▒▒▒▒▒▒▒▒▒▒L
-            .▒▒▒▒▒▒▒▒▒▒▒▒▒.
+            Ḣ▒▒▒▒▒▒▒▒▒▒▒▒▒.
             .▒▒▒▒▒▒k▒Ĵ▒▒▒▒.
             .....T........!
             .............!.
@@ -1306,6 +1451,8 @@ env.stages['grm_lesser'] = {
     getPlan: function() {
         let plan = this.plans.default
         this.underFloor = this.baseUnderFloor
+
+        if(check("PAGE!!weirdload")) return this.plans.empty
 
         if(check("PAGE!!e4prog") == 2) {
             plan = this.plans.team
@@ -1332,10 +1479,169 @@ env.stages['grm_lesser'] = {
     },
 
     planAdjustment: (plan) => {
-        if(check("mask-freedom") && !check("groundstrd")) return plan
-        else return plan.replaceAll("!", ".").replaceAll("?", ".")
+        let newPlan = plan
+
+        if(!check("mask-freedom") || check("groundstrd")) newPlan = newPlan.replaceAll("!", ".").replaceAll("?", ".")
+        if(!check("mask", "hunger")) {
+            newPlan = newPlan.replaceAll("Ḣ", ".").replaceAll('ḣ', '.')
+        }
+
+        return newPlan
     }
 }
+
+
+createEntity({
+    name: 'ÃwÃIÏ',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep4_hunger"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep4hungerwarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep4hungerwarn"] = generateDialogueObject(`
+start
+    sourceless
+        what is that?
+            EXEC::change("foundresourcegate", true)
+        i have felt watched here, all of us have,
+        but this feels different
+        a presence lingers in the dark, impossibly beyond the walls made physical again
+        something about it inspires a strange, sickly shiver
+        another of vekoa's tricks? a limb waiting to strike?
+        despite my attention, it does nothing
+        perhaps its reach is as limited as mine?
+        it may be best to ignore it, but...
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+        well, it's not BSTRD's frame thing again
++____END
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep4_hunger");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep4_hunger");moveTo("/local/ocean/embassy/resources/")
+`)
+
+createEntity({ // todo
+    name: '▣',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep4_joy"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep4joywarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep4joywarn"] = generateDialogueObject(`
+start
+    sourceless
+        what is that?
+            EXEC::change("foundresourcegate", true)
+        i would not have expected these walls to hold a projection display
+        and what odd shapes swirl 'behind' the gate!
+        something about it inspires a strange, sickly shiver
+        perhaps it is best to ignore it, but...
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+        well, it's not BSTRD's frame thing again
++____END
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep4_joy");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep4_joy");moveTo("/local/ocean/embassy/resources/")
+`)
 
 env.stages['hall_lesser-dull'] = {
     creature: env.stageEntities.embassyCreature,
@@ -2781,6 +3087,9 @@ env.stages['grm_core'] = {
     locale: "core",
     exec: function () {
         env.stages.grmStageInit(this)
+        if(check("PAGE!!weirdload")) {
+            env.stage.querySelectorAll(".lesserdoor").forEach(el => el.classList.add("lit"))
+        }
     },
     enterDirection: "down",
 
@@ -2797,12 +3106,10 @@ env.stages['grm_core'] = {
         },
 
         'L': {
-            class: "door up grand",
+            class: "door up grand lesserdoor",
             teleportTarget: "grm_lesser",
             teleportSpot: 22,
             shouldFace: "up",
-            lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'actual_site_error', text: 'this room is just for da cutscene', readout: true}),
         },
 
         'D': {
@@ -2810,8 +3117,7 @@ env.stages['grm_core'] = {
             teleportTarget: "grm_dull_front",
             teleportSpot: 22,
             shouldFace: "up",
-            lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'actual_site_error', text: 'this room is just for da cutscene', readout: true}),
+            lockFlag: "permalocked"
         },
 
         'P': {
@@ -2819,8 +3125,7 @@ env.stages['grm_core'] = {
             teleportTarget: "grm_spine",
             teleportSpot: 22,
             shouldFace: "up",
-            lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'actual_site_error', text: 'this room is just for da cutscene', readout: true}),
+            lockFlag: "permalocked"
         },
 
         'C': {
@@ -2828,8 +3133,7 @@ env.stages['grm_core'] = {
             teleportTarget: "grm_heart",
             teleportSpot: 22,
             shouldFace: "up",
-            lockFlag: "permalocked",
-            lockExec: ()=>chatter({actor: 'actual_site_error', text: 'this room is just for da cutscene', readout: true}),
+            lockFlag: "permalocked"
         },
 
         "M": {
@@ -3176,4 +3480,23 @@ env.stages['out_early'] = {
 
         return plan
     }
+}
+
+// these don't really *need* to be stages, but it ended up being really easy this way
+env.stages['intermediary'] = { // pause between hall and cavik/miltza sequences
+    locale: "flat",
+    exec: function () {
+        env.stages.grmStageInit(this)
+    },
+    width: 1,
+    plan: `p`
+}
+
+env.stages['itempause'] = { // temporary reversion pause before retrying a fight
+    locale: "flat",
+    exec: function () {
+        env.stages.grmStageInit(this)
+    },
+    width: 1,
+    plan: `p`
 }

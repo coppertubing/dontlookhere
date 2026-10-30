@@ -23,7 +23,7 @@ function bh_start({
 		hits: 0,
 		bulletCount: 0,
 		speedDivider: 2,
-		speedLimit: Math.max(window.innerHeight * 0.015, window.innerWidth * 0.015), // pixel speed limit since last draw
+		speedLimit: Math.max(window.innerHeight * 0.047, window.innerWidth * 0.047), // pixel speed limit since last draw
 		cursorDelta: {x: 100, y: 100},
 		
 		timeouts: [],
@@ -70,66 +70,25 @@ function bh_start({
 	env.bulletHell.onHit = onHit
 	env.bulletHell.p = document.querySelector('#bh_player')
 	env.bulletHell.p.classList.add('active')
-	env.bulletHell.lastMouseX = env.pageCursor.x
 	env.bulletHell.wasdEnabled = true
 	env.bulletHell.usingKeyControls = false
 	env.bulletHell.usePageBounds = usePageBounds || false //if false, uses viewport bounds - if true, uses page (content) bounds
 
-	//events on THIS thread:
-	//on mouse move, send position
-	env.bulletHell.mouseEvent = function(e){
-		env.bulletHell.moveWorker.postMessage({
-			cursorPos: env.pageCursor
-		})
-	}
-	
-	//on message receive, update cursor position with received style string
-	env.bulletHell.moveWorkerMessage = function(e) {
-		env.bulletHell.p.style.top = e.data.position.y + 'px';
-		env.bulletHell.p.style.left = e.data.position.x + 'px';
-		env.bulletHell.cursorDelta = e.data.position
-
-		if(env.bulletHell.usingOnMove) env.bulletHell.onMove(e.data.position)
-	}
-
-	//intervals on THIS thread:
-	//every 30ms, send held keys, whether it's paused
-	//we define and reuse this object to not trigger garbage collection
-	//since it's using env object, no updates needed before sending
-	env.bulletHell.moveWorkerHighDataObj = {
-		cursorPos: env.pageCursor,
-		pressedKeys: env.pressedKeys,
-	}
-	
-	env.bulletHell.moveWorkerHighData = () => env.bulletHell.moveWorker.postMessage(env.bulletHell.moveWorkerHighDataObj)
-	
-	//every 500ms, send infrequent changes (speed limit, speed divider, window size)
-	//we define and reuse this object to not trigger garbage collection
-	env.bulletHell.moveWorkerLowDataObj = {
-		wasdEnabled: env.bulletHell.wasdEnabled,
-		speedLimit: env.bulletHell.speedLimit,
-		usePageBounds: env.bulletHell.usePageBounds,
-		speedDivider: env.bulletHell.speedDivider,
-		paused: env.bulletHell.paused,
-
-		//this is NOT updated automatically
-		windowSize: env.bulletHell.usePageBounds ? {x: content.getBoundingClientRect().width, y: content.getBoundingClientRect().height} : {x: window.innerWidth, y: window.innerHeight}
-	}
-
-	env.bulletHell.moveWorkerLowData = () => { 
-		env.bulletHell.moveWorkerLowDataObj.wasdEnabled = env.bulletHell.wasdEnabled
-		env.bulletHell.moveWorkerLowDataObj.speedLimit = env.bulletHell.speedLimit,
-		env.bulletHell.moveWorkerLowDataObj.speedDivider = env.bulletHell.speedDivider,
-		env.bulletHell.moveWorkerLowDataObj.paused = env.bulletHell.paused
-
-		env.bulletHell.moveWorker.postMessage(env.bulletHell.moveWorkerLowDataObj)
-	}
+	env.bulletHell.targetPos = {x: env.pageCursor.x, y: env.pageCursor.y}
+    env.bulletHell.currentPos = {...env.pageCursor}
+	env.bulletHell.lastMousePos = {...env.pageCursor}
+	env.bulletHell.lastFrameTime = performance.now()
+	animatePlayer()
+	env.mouseThrottleSpeed = 16
 
 	//detect any hits
 	env.bulletHell.hitterLoop = function(){
-		if(!env.bulletHell.paused && !env.bulletHell.invulnerable) {		
-			let pLoc = env.bulletHell.p.getBoundingClientRect()
-			let hitElements = document.elementsFromPoint(pLoc.x + (pLoc.width / 2), pLoc.y + (pLoc.height / 2))
+		if(!env.bulletHell.paused && !env.bulletHell.invulnerable) {	
+			let pRect = env.bulletHell.p.getBoundingClientRect()
+			let pX = pRect.left + (pRect.width / 2)
+			let pY = pRect.top + (pRect.height / 2)
+
+			let hitElements = document.elementsFromPoint(pX, pY)
 			var onPlatform = false
 			var safe = false
 
@@ -161,55 +120,91 @@ function bh_start({
 		if(env.bulletHell.over) clearInterval(env.bulletHell.hitterLoop)
 	}
 
-	//begin...
-	window.addEventListener('mousemove', env.bulletHell.mouseEvent, {passive: true})
 	env.bulletHell.hitterInterval = setInterval(env.bulletHell.hitterLoop, 100)
-
-	//worker setup
-	env.bulletHell.moveWorker = new Worker("/js/bullethell_playermovement.js")
-	env.bulletHell.moveWorker.onmessage = env.bulletHell.moveWorkerMessage
-
-	//worker data feeds
-	env.bulletHell.moveWorkerHighInterval = setInterval(env.bulletHell.moveWorkerHighData, 30)
-	env.bulletHell.moveWorkerLowInterval = setInterval(env.bulletHell.moveWorkerLowData, 500)
-	env.bulletHell.moveWorker.postMessage({
-		initPos: env.bulletHell.cursorDelta
-	})
-
-	env.bulletHell.moveWorkerLowData()
 }
 
-//adds a low-priority player-like check for another element
-//this doesn't use workers, it's just gonna be a 100ms check
-//intended for use with the 'carrier' idea
-function bh_friend({
-	el = `<div id="carrier"></div>`,
-	onMove,
-	onHit,
-	onEnd
-}) {
+// ing update - reverted using a webworker (which was just a random stab in the dark at fixing perf)
+function animatePlayer(currentTime) {
+	if(!env.bulletHell.paused && !env.bulletHell.over) {
+		if(!env.bulletHell.lastFrameTime) env.bulletHell.lastFrameTime = currentTime
+        const deltaTime = currentTime - env.bulletHell.lastFrameTime
+        const deltaMultiplier = deltaTime / 16.67 // assumes 60fps
+        env.bulletHell.lastFrameTime = currentTime
 
+		let usingWASD = false
+		if(env.bulletHell.wasdEnabled) {
+            const keySpeed = ((env.bulletHell.speedLimit / env.bulletHell.speedDivider) * deltaMultiplier) / (env.pressedKeys.shift || env.bulletHell.slowed ? 10 : 4)
+            if(env.pressedKeys.w || env.pressedKeys.arrowup) { env.bulletHell.targetPos.y -= keySpeed; usingWASD = true }
+            if(env.pressedKeys.a || env.pressedKeys.arrowleft) { env.bulletHell.targetPos.x -= keySpeed; usingWASD = true }
+            if(env.pressedKeys.s || env.pressedKeys.arrowdown) { env.bulletHell.targetPos.y += keySpeed; usingWASD = true }
+            if(env.pressedKeys.d || env.pressedKeys.arrowright) { env.bulletHell.targetPos.x += keySpeed; usingWASD = true }
+		}
+
+        if(!usingWASD) { // using mousemovement
+            if(env.bulletHell.lastMousePos.x !== env.pageCursor.x || env.bulletHell.lastMousePos.y !== env.pageCursor.y) {
+                env.bulletHell.targetPos.x = env.pageCursor.x
+                env.bulletHell.targetPos.y = env.pageCursor.y
+                env.bulletHell.lastMousePos.x = env.pageCursor.x
+                env.bulletHell.lastMousePos.y = env.pageCursor.y
+            }
+        }
+		
+		//screen bounds
+		let bounds = env.bulletHell.usePageBounds 
+			? {x: content.getBoundingClientRect().width, y: content.getBoundingClientRect().height}
+			: {x: window.innerWidth, y: window.innerHeight}
+		
+		env.bulletHell.targetPos.x = Math.clamp(env.bulletHell.targetPos.x, 0, bounds.x)
+		env.bulletHell.targetPos.y = Math.clamp(env.bulletHell.targetPos.y, 0, bounds.y)
+		
+		//deltaaaa
+		let xD = (env.bulletHell.targetPos.x - env.bulletHell.currentPos.x)
+		let yD = (env.bulletHell.targetPos.y - env.bulletHell.currentPos.y)
+		
+		//speed limit so diagonal movement isn't OP
+        const effectiveSpeedLimit = env.bulletHell.speedLimit * deltaMultiplier
+		const totalMovement = Math.abs(xD) + Math.abs(yD)
+		if(totalMovement > effectiveSpeedLimit) {
+			let xRatio = Math.abs(xD) / totalMovement
+			let yRatio = Math.abs(yD) / totalMovement
+			xD = (xD > 0 ? 1 : -1) * effectiveSpeedLimit * xRatio
+			yD = (yD > 0 ? 1 : -1) * effectiveSpeedLimit * yRatio
+		}
+
+		//smoothing
+		if(!usingWASD) {
+			xD = xD / 6
+			yD = yD / 6
+		}
+		
+		env.bulletHell.currentPos.x += xD
+		env.bulletHell.currentPos.y += yD
+		env.bulletHell.p.style.transform = `translate(${env.bulletHell.currentPos.x - 15}px, ${env.bulletHell.currentPos.y - 15}px)`
+		env.bulletHell.cursorDelta = {...env.bulletHell.currentPos}
+		
+		if(env.bulletHell.usingOnMove) env.bulletHell.onMove(env.bulletHell.currentPos)
+	}
+	
+	if(!env.bulletHell.over) {
+		env.bulletHell.animationFrame = requestAnimationFrame(animatePlayer)
+	}
 }
-
 //ends bh and cleans up
 function bh_stop(){
+	if(env.debug) return;
     env.bulletHell.paused = true
 	env.bulletHell.over = true
-	env.bulletHell.ignoreRecentlyHit = false;
+	env.bulletHell.ignoreRecentlyHit = false
+	env.mouseThrottleSpeed = env.mouseThrottleSpeedBase
 	
 	env.temporaryOptimize = false
 	env.hoverIntervalRate = env.defaultHoverRate
 
 	body.classList.remove('bh_started')
 
-	env.bulletHell.moveWorker.terminate()
-	window.removeEventListener('mousemove', env.bulletHell.mouseEvent)
-
-	clearTimeout(env.bulletHell.moveWorkerHighInterval)
-	clearTimeout(env.bulletHell.moveWorkerLowInterval)
-	try {
-		clearInterval(env.bulletHell.bulletTimeout)
-	} catch (e) { /* no gunner - gotta update this one to the interval system */ }
+    if(env.bulletHell.animationFrame) {
+        cancelAnimationFrame(env.bulletHell.animationFrame)
+    }
 
 	env.bulletHell.clearIntervals()
 	env.bulletHell.clearTimeouts()
@@ -227,8 +222,8 @@ function bh_hit(onHit = false) {
         if(typeof onHit == "function") onHitValue = onHit() //if there's a custom onhit, do it
 		console.log(onHitValue)
 		
-		body.classList.add(`bh_${onHitValue}`)
-		setTimeout(function(){ body.classList.remove(`bh_${onHitValue}`) }, env.bulletHell.protectionTime)
+		env.bulletHell.p.classList.add(`bh_${onHitValue}`)
+		setTimeout(function(){ env.bulletHell.p.classList.remove(`bh_${onHitValue}`) }, env.bulletHell.protectionTime)
 		setTimeout(function(){ env.bulletHell.recentlyHit = false }, env.bulletHell.protectionTime)
 	}
 }
@@ -248,9 +243,10 @@ function bh_invuln(state) {
 // 	healthy - above, plus spikes from any side, and a random pit position
 //  threatened - above, plus pillars that come down slowly occasionally
 //	final stand - above, minus pillars, but the walls close in to create an enclosed circle (similar to old hello)
+//todo this comment block is out of date as of Ing
 function bh_movefriend({level="tutorial", duration=15000}) {
-	var sending = {} //holds objects passed to attack functions
 	var effectiveDuration = duration
+	env.rpg.noLineMode = true
 
 	//switch to determine what to send and how quickly to send it
 	var possibleConfigs
@@ -269,6 +265,7 @@ function bh_movefriend({level="tutorial", duration=15000}) {
 		env.rpg.vortex.classList.remove('active')
 		env.rpg.actionZone.classList.remove('active')
 		if(env.rpg.active) ratween(env.bgm, 0.75)
+		env.rpg.noLineMode = false
 						
 		setTimeout(()=>{
 			env.rpg.vortex.remove()
@@ -278,334 +275,344 @@ function bh_movefriend({level="tutorial", duration=15000}) {
 		}, 2000)
 	}
 
-	switch(level) {
-		case "tutorial":
-			//starts with top bullets, then moves to faster side ones
-			let topBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 5000, targetPlayer: 0.25 }), 500)
-			bh_wall({side: "left", size: 35, speed: 12000})
-			bh_wall({side: "top", size: 35, speed: 12000})
-			bh_wall({side: "right", size: 35, speed: 12000})
-			bh_wall({side: "bottom", size: 35, speed: 12000})
-			env.bulletHell.setTimeout(()=> {
-					clearInterval(topBullets)
-					env.bulletHell.intervals.push(bh_spiralspike({speed: 5000, rate: 500}))
-			}, 5000)
-		break
-
-		case "healthy":
-			//we start with the list of 'basic' attacks
-			possibleConfigs = [
-				//two random pits and random spikes
-				()=> {
-					bh_pit({ spot: "random", growSpeed: 5000, size: "75vmax" })
-					bh_pit({ spot: "random", growSpeed: 5000, size: "75vmax" })
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 1 }), 500)
-					env.bulletHell.intervals.push(bh_spiralspike({speed: 5000, rate: 1000}))
-				},
-		
-				//diagonal pits that shift to other pits, with random spikes
-				()=> {
-					let firstPits = [bh_pit({ spot: "top left", growSpeed: 5000, size: "75vmax" }), bh_pit({ spot: "bottom right", growSpeed: 5000, size: "75vmax" })]
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 1 }), 500)
-					env.bulletHell.setTimeout(()=>{
-						firstPits.forEach(el=>el.classList.remove('growing'))
-						bh_pit({ spot: "bottom left", growSpeed: 5000, size: "75vmax" })
-						bh_pit({ spot: "top right", growSpeed: 5000, size: "75vmax" })
-					}, 8000)
-				},
-
-				//a wall comes in from above, then below, while speedy horizontal spikes are thrown
-				()=> {
-					let topWall = bh_wall({side: "top"})
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "horizontal", duration: 3000, targetPlayer: 1, targetVariance: 200 }), 500)
-
-					env.bulletHell.setTimeout(()=>{
-						topWall.classList.add('inactive')
-						let bottomWall = bh_wall({side: "bottom"})
-					}, 8000)
-				},
-
-				//ditto, but turned 90 degrees
-				()=> {
-					let topWall = bh_wall({side: "right"})
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 3000, targetPlayer: 1, targetVariance: 200 }), 500)
-
-					env.bulletHell.setTimeout(()=>{
-						topWall.classList.add('inactive')
-						let bottomWall = bh_wall({side: "left"})
-					}, 8000)
-				},
-			]
-			possibleConfigs[rand(0, possibleConfigs.length)]()
-		break
-
-		case "threatened":
-			//then comes the list of more intermediate attacks
-			possibleConfigs = [
-				//walls come in from bottom and left with bullets from above, then shifts down to left corner through some more walls, then moves to right corner
-				()=> {
-					let bottomWall = bh_wall({side: "bottom", speed: 5000, size: 70})
-					let leftWall = bh_wall({side: "left", speed: 5000, size: 70})
-					let bottomBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "bottom", duration: 5000, targetPlayer: 0 }), 500)
-
-					var topBullets, topWall, rightWall
-					env.bulletHell.setTimeout(()=>{
-						bottomWall.classList.add('inactive')
-						leftWall.classList.add('inactive')
-
-						clearInterval(bottomBullets)
-						topBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "top", duration: 5000, targetPlayer: 0 }), 900)
-
-						topWall = bh_wall({side: "top", speed: 5000, size: 70})
-						rightWall = bh_wall({side: "right", speed: 5000, size: 70})
-					}, 5000)
-
-					env.bulletHell.setTimeout(()=>{
-						rightWall.classList.add('inactive')
-						bh_wall({side: "left", speed: 5000, size: 70})
-					}, 10000)
-				},
-				
-				//spiral spike attack
-				()=>{
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "horizontal", duration: 8000, targetPlayer: 0}), 900)
-					
-					env.bulletHell.setTimeout(()=>{
-						bh_pit({spot: "center", size: "80vmax"})
-						env.bulletHell.intervals.push(bh_spiralspike({}))
-					}, 2000)
-					env.bulletHell.setTimeout(()=>{
-						bh_pit({spot: "top left", size: "50vmax"})
-						bh_pit({spot: "bottom right", size: "45vmax"})
-					}, 4000)
-					env.bulletHell.setTimeout(()=>{
-						bh_pit({spot: "bottom left", size: "45vmax"})
-						bh_pit({spot: "top right", size: "50vmax"})
-					}, 4000)
-				},
-				
-				
-				//pits form, only leaving one spot (the center) safe at first
-				//outer pits recede, while a center one expands
-				()=>{
-					let topLeftPit = bh_pit({spot: "top left", size: '70vmax', growSpeed: "3000"})
-					let midLeftPit = bh_pit({spot: "center left", size: '70vmax', growSpeed: "3000"})
-					let botLeftPit = bh_pit({spot: "bottom left", size: '70vmax', growSpeed: "3000"})
-					let topRightPit = bh_pit({spot: "top right", size: '75vmax', growSpeed: "3000"})
-					let midRightPit = bh_pit({spot: "center right", size: '70vmax', growSpeed: "3000"})
-					let botRightPit = bh_pit({spot: "bottom right", size: '70vmax', growSpeed: "3000"})
-					let botPit = bh_pit({spot: "bottom", size: '50vmax', growSpeed: "3000"})
-					let topPit = bh_pit({spot: "top", size: '50vmax', growSpeed: "3000"})
-					let cenPit;
-
-					env.bulletHell.speedDivider = 3
-
-					let bullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 5000, targetPlayer: 0.8, targetVariance: 400}), 500)
-					env.bulletHell.setTimeout(()=>{
-						cenPit = bh_pit({spot: "center", size: "80vmax", growSpeed: "8000"})
-						midLeftPit.classList.remove('growing')
-						midRightPit.classList.remove('growing')
-					}, 3000)
-
-					env.bulletHell.setTimeout(()=>{
-						midLeftPit.style.setProperty("--growSpeed", "4000ms")
-						midRightPit.style.setProperty("--growSpeed", "4000ms")
-						midLeftPit.classList.add('growing')
-						midRightPit.classList.add('growing')
-
-						topLeftPit.classList.remove('growing')
-						botRightPit.classList.remove('growing')
-						
-						env.bulletHell.speedDivider = 4
-					}, 6000)
-
-					env.bulletHell.setTimeout(()=>{
-						topLeftPit.style.setProperty("--growSpeed", "4000ms")
-						botRightPit.style.setProperty("--growSpeed", "4000ms")
-						topLeftPit.classList.add('growing')
-						botRightPit.classList.add('growing')
-
-						topPit.classList.remove('growing')
-						botPit.classList.remove('growing')
-					}, 10000)
-				}
-				
-			]
-			possibleConfigs[rand(0, possibleConfigs.length)]()
-		break
-
-		case "last stand":
-			//in this mode, it starts with pits in all corners that grow over some time
-			changeBgm(env.embassy.music_p1boss_laststand, {preserve: false, length: 7000})
-
-			let currentPits = [
-				bh_pit({ spot: "top left", growSpeed: 7500, size: "75vmax" }),
-				bh_pit({ spot: "top right", growSpeed: 7500, size: "75vmax" }),
-				bh_pit({ spot: "bottom left", growSpeed: 7500, size: "75vmax" }),
-				bh_pit({ spot: "bottom right", growSpeed: 7500, size: "75vmax" }),
-			]
-
-			let fastSpeed = 500
-			if(window.innerHeight < 800) {
-				fastSpeed = 900
-			}
-
-			//meanwhile some mostly targeted side spikes fly in
-			let currentSpikes = []
-			env.bulletHell.setTimeout(()=>{
-				currentSpikes.push(
-					env.bulletHell.setInterval(()=>bh_sidespike({ side: "left", duration: 3000, targetPlayer: 0.8 }), fastSpeed)
-				)
-
-				env.bulletHell.setTimeout(()=>
-					currentSpikes.push(
-						env.bulletHell.setInterval(()=>bh_sidespike({ side: "right", duration: 3000, targetPlayer: 0.8 }), fastSpeed)
-					)
-				, 250)
-			}, 1000)
-
-			var firstSpiral
-			env.bulletHell.setTimeout(()=>{
-				firstSpiral = bh_spiralspike({speed: 3000, rate: fastSpeed, targetPlayer: 0.5, targetVariance: 100})
-			}, 5000)
-
-			//after a little bit of survival, we put walls over the pits and then fade the pits away
-			//then the side spikes are swapped out for vertical spikes
-			let currentWalls = []
-			env.bulletHell.setTimeout(()=>{
-				currentPits.forEach(el=>{
-					el.classList.remove('growing')
-					env.bulletHell.setTimeout(()=>el.remove, 7500)
-				})
-
-				currentWalls.push(
-					bh_wall({side: "top", speed: 10000, size: 40}),
-					bh_wall({side: "bottom", speed: 10000, size: 40})
-				)
-
-				env.bulletHell.setTimeout(()=>{
-					currentSpikes.forEach(spike => clearInterval(spike))
-					currentSpikes = []
-				}, 4000)
-
-				env.bulletHell.setTimeout(()=>{
-					currentSpikes.push(
-						env.bulletHell.setInterval(()=>bh_sidespike({ side: "top", duration: 3000, targetPlayer: 0.8, targetvariance: 300 }), 1000)
-					)
-	
-					env.bulletHell.setTimeout(()=>
-						currentSpikes.push(
-							env.bulletHell.setInterval(()=>bh_sidespike({ side: "bottom", duration: 3000, targetPlayer: 0.8, targetvariance: 300 }), 1000)
-						)
-					, 500)
-	
-					env.bulletHell.setTimeout(()=>
-						currentSpikes.push(
-							env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 4000, targetPlayer: 0 }), 1000)
-						)
-					, 750)
-				}, 4005)
-			}, 10000)
-
-			//after a little longer, a wall closes in from the left, then retracts as another comes in from the right
-			var leftWall
-			env.bulletHell.setTimeout(()=>{
-				leftWall = bh_wall({side: "left", speed: 10000, size: 60})
-				currentWalls.push(leftWall)
-			}, 20000)
-
-			//the left wall recedes again, letting the right one come in
-			var rightWall
-			env.bulletHell.setTimeout(()=>{
-				let tempLeft = leftWall
-				tempLeft.classList.add("inactive")
-				env.bulletHell.setTimeout(()=>{tempLeft.remove()}, 10000)
-
-				rightWall = bh_wall({side: "right", speed: 10000, size: 60})
-				currentWalls.push(rightWall)
-
-				clearInterval(firstSpiral)
-			}, 30000)
-
-			//the walls recede, giving way to growing pits
-			var briefSpiral
-			env.bulletHell.setTimeout(()=>{
-				currentWalls.forEach(wall=>{
-					wall.classList.add('inactive')
-					env.bulletHell.setTimeout(()=>{wall.remove()}, 10000)
-				})
-
-				briefSpiral = bh_spiralspike({speed: 5000, rate: 800, targetPlayer: 0.5, targetVariance: 100})
-
-				bh_pit({spot: "top right", size: "100vmax", growSpeed: 30000})
-				bh_pit({spot: "top left", size: "100vmax", growSpeed: 30000})
-				bh_pit({spot: "bottom right", size: "100vmax", growSpeed: 30000})
-				bh_pit({spot: "bottom left", size: "100vmax", growSpeed: 30000})
-				bh_pit({spot: "top", size: "40vmax", growSpeed: 30000})
-				bh_pit({spot: "bottom", size: "40vmax", growSpeed: 30000})
-
-				currentSpikes.forEach(spike => clearInterval(spike))
-				currentSpikes = []
-			}, 35000)
-			
-			//spikes are refreshed to be a little more aggressive, slowly growing less so
-			//at first they're fairly targeted
-			let lastSpikes
-			env.bulletHell.setTimeout(()=>{
-				clearInterval(lastSpikes)
-				lastSpikes = env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 3000, targetPlayer: 0.7, targetvariance: 100 }), 400)
-				ratween(env.bgm, 0.5, 20000)
-			}, 35000)
-
-			env.bulletHell.setTimeout(()=>{
-				firstSpiral = bh_spiralspike({speed: 4000, rate: fastSpeed, targetPlayer: 0.5, targetVariance: 100})
-			}, 40000)
-
-			//then they grow slower and more random
-			env.bulletHell.setTimeout(()=>{
-				clearInterval(lastSpikes)
-				clearInterval(firstSpiral)
-				clearInterval(briefSpiral)
-				env.bulletHell.speedDivider = 3
-				env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 0.5, targetvariance: 200 }), 600)
-				env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 6000, targetPlayer: 0.5, targetvariance: 300 }), 800)
-                env.setTimeout(()=>chatter({actor: 'gakvu', text: 'just hold on....', readout: true}), 1000)
-			}, 45000)
-
-			//gakvu tries to get through
-			var gakplat
-			env.bulletHell.setTimeout(()=>{
-				env.rpg.actionZone.insertAdjacentHTML("beforeend", `<div class="bh_platform bh_gakvuplatform">`)
-				gakplat = document.querySelector(".bh_gakvuplatform")
-                env.setTimeout(()=>chatter({actor: 'gakvu', text: 'i almost...', readout: true}), 100)
-
-				env.bulletHell.setTimeout(()=>gakplat.classList.add('active'), 100)
-				env.bulletHell.setTimeout(()=>gakplat.classList.add('activefail'), 2000)
-                env.setTimeout(()=>chatter({actor: 'gakvu', text: 'ⵙ┴❀ᚈ⒫', readout: true}), 2000)
-			}, 55000)
-			
-			//finally, they stop, gakvu breaking through
-			env.bulletHell.setTimeout(()=>{
-				env.bulletHell.clearIntervals()
-                chatter({actor: 'gakvu', text: 'got it!!', readout: true})
-				setTimeout(()=>{play("mend", 0.25)}, 1000),
-				env.bulletHell.setTimeout(()=>{gakplat.classList.remove('activefail'); play("mend", 0.25)}, 2000)
-				env.bulletHell.setTimeout(()=>gakplat.classList.add('explosion'), 4100)
-			}, 63000)
-
-			env.bulletHell.setTimeout(()=>{
-				try{ endCombat(env.rpg.enemyTeam) } catch(e) { /* miltzabug */ }
-				env.embassy.endMovefriendBoss()
-			}, 68000)
-		break
-	}
+	// execute specified level accounting for allies 
+	let count = env.rpg.turnOrder.filter(actor => hasStatus(actor, 'story_tendrilfinal') && !hasStatus(actor, 'stun') && actor.hp > 0).length
+	bh_movefriend.attackMap[level](count)
 
 	//set up ending based on input duration
 	env.bulletHell.setTimeout(env.bulletHell.complete, effectiveDuration); 
 }
 
+bh_movefriend.attackMap = {
+	// closes in with targeted spikes
+	tutorial: (bonusGuys) => {
+		let topBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 5000, targetPlayer: 0.25 }), 500)
+		bh_wall({side: "left", size: 35, speed: 12000})
+		bh_wall({side: "top", size: 35, speed: 12000})
+		bh_wall({side: "right", size: 35, speed: 12000})
+		bh_wall({side: "bottom", size: 35, speed: 12000})
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 2000, rate: 500, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_spiralspike({duration: 2000, rate: 1000, targetVariance: 25, specialClass: "tendrilbonus"}))
+			
+		env.bulletHell.setTimeout(()=> {
+				clearInterval(topBullets)
+				env.bulletHell.intervals.push(bh_spiralspike({speed: 5000, rate: 500}))
+		}, 5000)
+	},
+
+	//two random pits and random spikes
+	healthy1: () => {
+		bh_pit({ spot: "random", growSpeed: 5000, size: "75vmax" })
+		bh_pit({ spot: "random", growSpeed: 5000, size: "75vmax" })
+		env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 1 }), 500)
+		env.bulletHell.intervals.push(bh_spiralspike({speed: 5000, rate: 1000}))
+	},
+
+	//diagonal pits that shift to other pits, with random spikes
+	healthy2: (bonusGuys) => {
+		let firstPits = [bh_pit({ spot: "top left", growSpeed: 5000, size: "75vmax" }), bh_pit({ spot: "bottom right", growSpeed: 5000, size: "75vmax" })]
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 3000, rate: 500, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_spiralspike({duration: 2000, rate: 1000, targetVariance: 25, specialClass: "tendrilbonus"}))
+
+		env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 1 }), 500)
+		env.bulletHell.setTimeout(()=>{
+			firstPits.forEach(el=>el.classList.remove('growing'))
+			bh_pit({ spot: "bottom left", growSpeed: 5000, size: "75vmax" })
+			bh_pit({ spot: "top right", growSpeed: 5000, size: "75vmax" })
+		}, 8000)
+	},
+
+	//a wall comes in from above, then below, while speedy horizontal spikes are thrown
+	healthy3: (bonusGuys) => {
+		let topWall = bh_wall({side: "top"})
+		env.bulletHell.setInterval(()=>bh_sidespike({ side: "horizontal", duration: 3000, targetPlayer: 1, targetVariance: 200 }), 500)
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 3000, rate: 500, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_sidespike({duration: 2000, rate: 1000, targetVariance: 25, specialClass: "tendrilbonus"}))
+
+		env.bulletHell.setTimeout(()=>{
+			topWall.classList.add('inactive')
+			let bottomWall = bh_wall({side: "bottom"})
+		}, 8000)
+	},
+
+	//ditto, but turned 90 degrees
+	healthy4: () => {
+		let topWall = bh_wall({side: "right"})
+		env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 3000, targetPlayer: 1, targetVariance: 200 }), 500)
+
+		env.bulletHell.setTimeout(()=>{
+			topWall.classList.add('inactive')
+			let bottomWall = bh_wall({side: "left"})
+		}, 8000)
+	},
+
+	//walls come in from bottom and left with bullets from above, then shifts down to left corner through some more walls, then moves to right corner
+	advanced1: (bonusGuys) => {
+		let bottomWall = bh_wall({side: "bottom", speed: 5000, size: 70})
+		let leftWall = bh_wall({side: "left", speed: 5000, size: 70})
+		let bottomBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "bottom", duration: 5000, targetPlayer: 0 }), 500)
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 3000, rate: 500, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_spiralspike({duration: 1500, rate: 1000, targetVariance: 25, specialClass: "tendrilbonus"}))
+
+		var topBullets, topWall, rightWall
+		env.bulletHell.setTimeout(()=>{
+			bottomWall.classList.add('inactive')
+			leftWall.classList.add('inactive')
+
+			clearInterval(bottomBullets)
+			topBullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "top", duration: 5000, targetPlayer: 0 }), 900)
+
+			topWall = bh_wall({side: "top", speed: 5000, size: 70})
+			rightWall = bh_wall({side: "right", speed: 5000, size: 70})
+		}, 5000)
+
+		env.bulletHell.setTimeout(()=>{
+			rightWall.classList.add('inactive')
+			bh_wall({side: "left", speed: 5000, size: 70})
+		}, 10000)
+	},
+
+	//spiral spike attack
+	advanced2: () => {
+		env.bulletHell.setInterval(()=>bh_sidespike({ side: "horizontal", duration: 8000, targetPlayer: 0}), 900)
+		
+		env.bulletHell.setTimeout(()=>{
+			bh_pit({spot: "center", size: "80vmax"})
+			env.bulletHell.intervals.push(bh_spiralspike({}))
+		}, 2000)
+		env.bulletHell.setTimeout(()=>{
+			bh_pit({spot: "top left", size: "50vmax"})
+			bh_pit({spot: "bottom right", size: "45vmax"})
+		}, 4000)
+		env.bulletHell.setTimeout(()=>{
+			bh_pit({spot: "bottom left", size: "45vmax"})
+			bh_pit({spot: "top right", size: "50vmax"})
+		}, 4000)
+	},
+
+	//pits form, only leaving one spot (the center) safe at first
+	//outer pits recede, while a center one expands
+	advanced3: (bonusGuys) => {
+		let topLeftPit = bh_pit({spot: "top left", size: '70vmax', growSpeed: "3000"})
+		let midLeftPit = bh_pit({spot: "center left", size: '70vmax', growSpeed: "3000"})
+		let botLeftPit = bh_pit({spot: "bottom left", size: '70vmax', growSpeed: "3000"})
+		let topRightPit = bh_pit({spot: "top right", size: '75vmax', growSpeed: "3000"})
+		let midRightPit = bh_pit({spot: "center right", size: '70vmax', growSpeed: "3000"})
+		let botRightPit = bh_pit({spot: "bottom right", size: '70vmax', growSpeed: "3000"})
+		let botPit = bh_pit({spot: "bottom", size: '50vmax', growSpeed: "3000"})
+		let topPit = bh_pit({spot: "top", size: '50vmax', growSpeed: "3000"})
+		let cenPit;
+
+		env.bulletHell.speedDivider = 3
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 3000, rate: 1000, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_spiralspike({duration: 2000, rate: 2000, targetVariance: 25, specialClass: "tendrilbonus"}))
+
+		let bullets = env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 5000, targetPlayer: 0.8, targetVariance: 400}), 500)
+		env.bulletHell.setTimeout(()=>{
+			cenPit = bh_pit({spot: "center", size: "80vmax", growSpeed: "8000"})
+			midLeftPit.classList.remove('growing')
+			midRightPit.classList.remove('growing')
+		}, 3000)
+
+		env.bulletHell.setTimeout(()=>{
+			midLeftPit.style.setProperty("--growSpeed", "4000ms")
+			midRightPit.style.setProperty("--growSpeed", "4000ms")
+			midLeftPit.classList.add('growing')
+			midRightPit.classList.add('growing')
+
+			topLeftPit.classList.remove('growing')
+			botRightPit.classList.remove('growing')
+			
+			env.bulletHell.speedDivider = 4
+		}, 6000)
+
+		env.bulletHell.setTimeout(()=>{
+			topLeftPit.style.setProperty("--growSpeed", "4000ms")
+			botRightPit.style.setProperty("--growSpeed", "4000ms")
+			topLeftPit.classList.add('growing')
+			botRightPit.classList.add('growing')
+
+			topPit.classList.remove('growing')
+			botPit.classList.remove('growing')
+		}, 10000)
+	},
+
+	lastStand: (bonusGuys) => {
+		//in this mode, it starts with pits in all corners that grow over some time
+		changeBgm(env.embassy.music_p1boss_laststand, {preserve: false, length: 7000})
+
+		if(bonusGuys > 0) env.bulletHell.intervals.push(bh_spiralspike({duration: 4000, rate: 1000, targetVariance: 50, specialClass: "tendrilbonus"}))
+		if(bonusGuys > 1) env.bulletHell.intervals.push(bh_spiralspike({duration: 2000, rate: 2000, targetVariance: 25, specialClass: "tendrilbonus"}))
+		
+		let currentPits = [
+			bh_pit({ spot: "top left", growSpeed: 7500, size: "75vmax" }),
+			bh_pit({ spot: "top right", growSpeed: 7500, size: "75vmax" }),
+			bh_pit({ spot: "bottom left", growSpeed: 7500, size: "75vmax" }),
+			bh_pit({ spot: "bottom right", growSpeed: 7500, size: "75vmax" }),
+		]
+
+		let fastSpeed = 500
+		if(window.innerHeight < 800) {
+			fastSpeed = 900
+		}
+
+		//meanwhile some mostly targeted side spikes fly in
+		let currentSpikes = []
+		env.bulletHell.setTimeout(()=>{
+			currentSpikes.push(
+				env.bulletHell.setInterval(()=>bh_sidespike({ side: "left", duration: 3000, targetPlayer: 0.8 }), fastSpeed)
+			)
+
+			env.bulletHell.setTimeout(()=>
+				currentSpikes.push(
+					env.bulletHell.setInterval(()=>bh_sidespike({ side: "right", duration: 3000, targetPlayer: 0.8 }), fastSpeed)
+				)
+			, 250)
+		}, 1000)
+
+		var firstSpiral
+		env.bulletHell.setTimeout(()=>{
+			firstSpiral = bh_spiralspike({speed: 3000, rate: fastSpeed, targetPlayer: 0.5, targetVariance: 100})
+		}, 5000)
+
+		//after a little bit of survival, we put walls over the pits and then fade the pits away
+		//then the side spikes are swapped out for vertical spikes
+		let currentWalls = []
+		env.bulletHell.setTimeout(()=>{
+			currentPits.forEach(el=>{
+				el.classList.remove('growing')
+				env.bulletHell.setTimeout(()=>el.remove, 7500)
+			})
+
+			currentWalls.push(
+				bh_wall({side: "top", speed: 10000, size: 40}),
+				bh_wall({side: "bottom", speed: 10000, size: 40})
+			)
+
+			env.bulletHell.setTimeout(()=>{
+				currentSpikes.forEach(spike => clearInterval(spike))
+				currentSpikes = []
+			}, 4000)
+
+			env.bulletHell.setTimeout(()=>{
+				currentSpikes.push(
+					env.bulletHell.setInterval(()=>bh_sidespike({ side: "top", duration: 3000, targetPlayer: 0.8, targetvariance: 300 }), 1000)
+				)
+
+				env.bulletHell.setTimeout(()=>
+					currentSpikes.push(
+						env.bulletHell.setInterval(()=>bh_sidespike({ side: "bottom", duration: 3000, targetPlayer: 0.8, targetvariance: 300 }), 1000)
+					)
+				, 500)
+
+				env.bulletHell.setTimeout(()=>
+					currentSpikes.push(
+						env.bulletHell.setInterval(()=>bh_sidespike({ side: "vertical", duration: 4000, targetPlayer: 0 }), 1000)
+					)
+				, 750)
+			}, 4005)
+		}, 10000)
+
+		//after a little longer, a wall closes in from the left, then retracts as another comes in from the right
+		var leftWall
+		env.bulletHell.setTimeout(()=>{
+			leftWall = bh_wall({side: "left", speed: 10000, size: 60})
+			currentWalls.push(leftWall)
+		}, 20000)
+
+		//the left wall recedes again, letting the right one come in
+		var rightWall
+		env.bulletHell.setTimeout(()=>{
+			let tempLeft = leftWall
+			tempLeft.classList.add("inactive")
+			env.bulletHell.setTimeout(()=>{tempLeft.remove()}, 10000)
+
+			rightWall = bh_wall({side: "right", speed: 10000, size: 60})
+			currentWalls.push(rightWall)
+
+			clearInterval(firstSpiral)
+		}, 30000)
+
+		//the walls recede, giving way to growing pits
+		var briefSpiral
+		env.bulletHell.setTimeout(()=>{
+			currentWalls.forEach(wall=>{
+				wall.classList.add('inactive')
+				env.bulletHell.setTimeout(()=>{wall.remove()}, 10000)
+			})
+
+			briefSpiral = bh_spiralspike({speed: 5000, rate: 800, targetPlayer: 0.5, targetVariance: 100})
+
+			bh_pit({spot: "top right", size: "100vmax", growSpeed: 30000})
+			bh_pit({spot: "top left", size: "100vmax", growSpeed: 30000})
+			bh_pit({spot: "bottom right", size: "100vmax", growSpeed: 30000})
+			bh_pit({spot: "bottom left", size: "100vmax", growSpeed: 30000})
+			bh_pit({spot: "top", size: "40vmax", growSpeed: 30000})
+			bh_pit({spot: "bottom", size: "40vmax", growSpeed: 30000})
+
+			currentSpikes.forEach(spike => clearInterval(spike))
+			currentSpikes = []
+		}, 35000)
+		
+		//spikes are refreshed to be a little more aggressive, slowly growing less so
+		//at first they're fairly targeted
+		let lastSpikes
+		env.bulletHell.setTimeout(()=>{
+			clearInterval(lastSpikes)
+			lastSpikes = env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 3000, targetPlayer: 0.7, targetvariance: 100 }), 400)
+			ratween(env.bgm, 0.5, 20000)
+		}, 35000)
+
+		env.bulletHell.setTimeout(()=>{
+			firstSpiral = bh_spiralspike({speed: 4000, rate: fastSpeed, targetPlayer: 0.5, targetVariance: 100})
+		}, 40000)
+
+		//then they grow slower and more random
+		env.bulletHell.setTimeout(()=>{
+			clearInterval(lastSpikes)
+			clearInterval(firstSpiral)
+			clearInterval(briefSpiral)
+			env.bulletHell.speedDivider = 3
+			env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 4000, targetPlayer: 0.5, targetvariance: 200 }), 600)
+			env.bulletHell.setInterval(()=>bh_sidespike({ side: "random", duration: 6000, targetPlayer: 0.5, targetvariance: 300 }), 800)
+			env.setTimeout(()=>chatter({actor: 'gakvu', text: 'just hold on....', readout: true}), 1000)
+		}, 45000)
+
+		//gakvu tries to get through
+		var gakplat
+		env.bulletHell.setTimeout(()=>{
+			env.rpg.actionZone.insertAdjacentHTML("beforeend", `<div class="bh_platform bh_gakvuplatform">`)
+			gakplat = document.querySelector(".bh_gakvuplatform")
+			env.setTimeout(()=>chatter({actor: 'gakvu', text: 'i almost...', readout: true}), 100)
+
+			env.bulletHell.setTimeout(()=>gakplat.classList.add('active'), 100)
+			env.bulletHell.setTimeout(()=>gakplat.classList.add('activefail'), 2000)
+			env.setTimeout(()=>chatter({actor: 'gakvu', text: 'âµ™â”´â€ášˆâ’«', readout: true}), 2000)
+		}, 55000)
+		
+		//finally, they stop, gakvu breaking through
+		env.bulletHell.setTimeout(()=>{
+			env.bulletHell.clearIntervals()
+			chatter({actor: 'gakvu', text: 'got it!!', readout: true})
+			setTimeout(()=>{play("mend", 0.25)}, 1000),
+			env.bulletHell.setTimeout(()=>{gakplat.classList.remove('activefail'); play("mend", 0.25)}, 2000)
+			env.bulletHell.setTimeout(()=>gakplat.classList.add('explosion'), 4100)
+		}, 63000)
+
+		env.bulletHell.setTimeout(()=>{
+			try{ endCombat(env.rpg.enemyTeam) } catch(e) { /* miltzabug */ }
+			env.embassy.endMovefriendBoss()
+		}, 68000)
+	},
+}
+
 //returns an interval that sends spikes towards the player in a spiral pattern
-function bh_spiralspike({rate = 400, duration = 3000, angleIncrement = 30, targetPlayer = 0.9, targetVariance = 100}) {
+function bh_spiralspike({rate = 400, duration = 3000, angleIncrement = 30, targetPlayer = 0.9, targetVariance = 100, specialClass}) {
 	if(!env.bulletHell.lastAngle || env.bulletHell.lastAngle > 360) env.bulletHell.lastAngle = 0
 	var angle
 
@@ -625,7 +632,7 @@ function bh_spiralspike({rate = 400, duration = 3000, angleIncrement = 30, targe
 		let currentBullet = env.bulletHell.bulletCount++
 		document.querySelector('.bh_damage-wrapper').insertAdjacentHTML('beforeend', `
 			<div id="bh_spike-${currentBullet}" 
-			  class="bh_spiralspike" 
+			  class="bh_spiralspike ${specialClass ? specialClass : false}" 
 			  style="--x: ${randX}px; --y: ${randY}px; --angle: ${angle}deg; --duration: ${duration}ms;">
 				<div class="bh_damager bh_movespike"></div>
 			</div>
@@ -641,7 +648,7 @@ function bh_spiralspike({rate = 400, duration = 3000, angleIncrement = 30, targe
 //targetPlayer (false/between 0 and 1 (%) of the time/true) determines if they drop on player position or not
 //duration is how long it takes to travel across the map
 //targetvariance is, in pixels, how wide the inaccuracies can be
-function bh_sidespike({side = "random", targetPlayer = 0.5, duration=10000, targetVariance = 100}) {
+function bh_sidespike({side = "random", targetPlayer = 0.5, duration=10000, targetVariance = 100, specialClass}) {
 	let origin, decidedSide
 
 	//determine the side to use if it's one of the random options
@@ -672,7 +679,7 @@ function bh_sidespike({side = "random", targetPlayer = 0.5, duration=10000, targ
 	let currentBullet = env.bulletHell.bulletCount++
 	document.querySelector('.bh_damage-wrapper').insertAdjacentHTML('beforeend', `
 		<div id="bh_spike-${currentBullet}" 
-			class="bh_damager bh_movespike" 
+			class="bh_damager bh_movespike ${specialClass ? specialClass : false}" 
 			side="${decidedSide}"
 			style="--duration: ${duration}; --x: ${origin.x}px; --y: ${origin.y}px">
 		</div>
@@ -760,7 +767,7 @@ function bh_gundown(urgency = "low"){
 			env.rpg.vortex.remove()
 			env.rpg.actionZone.remove()
 			env.bulletHell.p.remove()
-			if(env.rpg.currentActor.name == "BSTRD Golem") advanceTurn();
+			if(env.rpg.currentActor.base.slug == "bstrdboss") advanceTurn();
 		}, 2000)
 
 		env.bulletHell.p.classList.remove('active')

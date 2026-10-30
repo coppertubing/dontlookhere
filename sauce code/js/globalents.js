@@ -277,11 +277,10 @@ env.entities['referential scar'] = {
     ],
 
     exmExec: ()=>{
-        let unlock = () => {
+        let unlock = (container = env?.stage?.ref ? env.stage : content) => {
             change("joy#any", true)
             forcePlay("talkether", 2)
             
-            let container = env?.stage?.ref ? env.stage : content
             container.querySelectorAll(".joyfacet.unlinked").forEach(el=>{
                 el.classList.remove("unlinked")
                 el.classList.add("linked")
@@ -293,7 +292,7 @@ env.entities['referential scar'] = {
             case undefined:
             case null:
                 change(`joy#${page.dialoguePrefix}`, true)
-                unlock()
+                unlock(content)
             break
 
             //stages
@@ -331,7 +330,7 @@ env.globalLimitedEntitySetup = () => {
             image: '/img/local/uncosm/ozo/sprite_portrait.gif', 
             type: "thoughtform obesk portrait-haze portrait-auto portrait-center",
             text: `::RESPONSIVE THOUGHTFORM
-            ::EXPLICIT PURPOSE:'hunger'
+            ::EXPLICIT PURPOSE::'hunger'
             <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'signature corruption'">::INCOHERENCE DETECTED</span>
             ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'trinket worn b(ÝØ;;-__ERROR::'unprocessable'__;'free! free!!'</span>`,
             actions: [
@@ -407,7 +406,7 @@ env.globalLimitedEntitySetup = () => {
             image: '/img/sprites/rot/rotxa.gif', 
             type: "thoughtform obesk portrait-haze portrait-cover portrait-center",
             text: `::RESPONSIVE THOUGHTFORM
-            ::EXPLICIT PURPOSE:'observation'
+            ::EXPLICIT PURPOSE::'observation'
             <span style="color: var(--obesk-color)" definition="ANALYSIS::'no cohesion';'malformed entity';'potential tampering'">::INCOHERENCE DETECTED</span>
             ::INHERITED CONTEXT::<span style='color: var(--bright-color)'>'a simple chœr t)Ý®‡;-__ERROR::'unprocessable'__;'cataloguer'</span>
             <span definition="NOTE::'referencing third-party context installation'::JOY_MASK">::INTERNAL CONTEXT</span>::<span class="bright-color" definition="ANALYSIS::'commonly used as a defense by newly awoken thoughtforms';'sometimes unintentional';'simple but effective'">'hidden via refractive membrane camouflage'</span>`,
@@ -647,6 +646,12 @@ env.globalLimitedEntitySetup = () => {
                     exec: ()=> env.cameraGuySnap('ozo'),
                     showIf: () => page.path == '/local/ozo/'
                 },
+
+                {
+                    name: "hello",
+                    exec: ()=> env.cameraGuySnap('resources'),
+                    showIf: () => page.path == '/local/ocean/embassy/resources/'
+                },
             ],
 
             //flag correction
@@ -675,6 +680,7 @@ env.cameraGuyThings = {
     banksflip: '/img/local/beneath/bg/reflection.png',
     abysscity: '/img/local/beneath/bg/haze.png',
     ozo: '/img/local/beneath/bg/wastrels.png',
+    resources: '/img/local/beneath/bg/resources.png'
 }
 
 env.cameraGuySnap = (thing) => {
@@ -972,7 +978,7 @@ who_akizetesche
     moth
         she's probably one of the better documented early obesk contacts
         the way the story goes is, she led a team investigating the thing that led the obesk here
-        kept doing these interviews where she talked at length about it, they named it 'the call'
+        kept doing these interviews where she talked at length about it, they named it "the call"
         and then they all went missing a few years after first contact
         spooky shit
         insane that this corrucyst managed to survive that long
@@ -1054,7 +1060,7 @@ who_velzie
         Who is Velzie?
     
     moth
-        velzie is like roughly their word for 'god'
+        velzie is like roughly their word for "god"
         there's more to it than that but i assume you're asking about <em>the</em> velzie
         like the one the pilot cyst was talking about
         i noticed that when it mentioned that name, it didn't have any context
@@ -1128,7 +1134,7 @@ what_secri
         if you're actually serious, they're one of the creatures i actually know a bit about
         they're basically the apex predator on obeski
         like pretty much half of all obeski fauna, they're a parasite
-        or some kind of fungal infection... we don't really know for certain
+        or some kind of fungal-like infection... we don't really know for certain
         and they're microscopic, but once they infect one of the surface critters, or a larval obesk...
         well, we've only had verbal descriptions since the exchange initiative was never forthcoming with recreations,
         but apparently they can rapidly reshape the flesh of most critters, and hijack their brains to spread more
@@ -1270,7 +1276,7 @@ what_smile
         oh, so it looks like a smiling face to you?
         maybe my malware theory has some weight after all
         in short, i still have no idea what that rogue friend of ours is
-        but i'm pretty sure it's calling itself 'velzie', going off what the pilotcyst said
+        but i'm pretty sure it's calling itself "velzie", going off what the pilotcyst said
             SHOWIF::[['dullvessel__fixed-start']]
     
     RESPONSES::self
@@ -1283,7 +1289,7 @@ what_fuel
     
     moth
         in interviews they always just said it's something they grow... 
-        most theories are that it's some metallic-based fungus that corru can consume
+        most theories are that it's some living metallic substance, kinda like a fungus
         going off what funfriend said, it seems like they can use a bunch of different metals to create it
             SHOWIF::[["hub__funfriend-essentialmetalq"]]
         i guess it makes sense that they'd use metal to grow it, but i have no idea how that could work
@@ -1504,6 +1510,35 @@ why_involved
         ok<+>loop
             FAKEEND::(back)
 
+why_informal
+    self
+        Why are these thoughtforms thinking things like "ok"?
+
+
+    moth
+        oh
+        umm...
+        well, i haven't put in the report yet
+        look, if we get to the bottom of this whole thing ourselves, do you know how huge that'll be?
+        if i told anyone what we were up to in here, they'd snatch it out of our hands
+        ...then give it to some higher-up researcher, who would take all the credit
+        this could be our "make it" moment, dude
+    
+    self
+        Aren't there cameras watching us? What about the data?
+
+    moth
+        not in the basement
+        this is an analog-only zone, or at least it was when it was busier years ago
+        it's a little more lax now, but they never really changed the tech in the walls
+        especially since every find like this usually ends up being a dud
+        so... they don't get the data til we send it up
+        you and me are the only ones in on this for now, buddy
+    
+    RESPONSES::self
+        ok<+>loop
+            FAKEEND::(back)
+
 why_callme
     self
         Why did you call me for this?
@@ -1523,7 +1558,7 @@ why_connect
         Why am I able to connect to this so seamlessly?
     
     moth
-        well in case you forgot, you definitely installed that fbx patch i gave you
+        well in case you forgot, you definitely installed that FBX patch i gave you
         mindspikes usually can't just do this
         apparently corrucysts give off and receive almost identical signals to nervos slots
         it's a pretty incredible coincidence, honestly a miracle that it works at all
@@ -1541,6 +1576,10 @@ why_thoughts
         well you're dealing with raw thought
         the corrucyst isn't literally thinking the words you're receiving from it
         your brain is just interpreting the concepts that it's outputting in a way you understand
+____SHOWIF::"hub__funfriend"
+        like, funfriend didn't actually think "OK" at you
+        it was probably some sort of equivalent casual affirmative signal
+____END
     
     RESPONSES::self
         cool<+>loop
@@ -1575,7 +1614,6 @@ mothep1end
         they've always had this image of total harmony, despite their homeworld
         and you know, with the call...
         i think it's only a few years until the call is "complete" if all this is true
-        or... maybe even less?
         idk just some quick headmath
         if we can get to the bottom of this soon and bring it all to the higher ups...
         could you even imagine the kind of renown we'd both get?
@@ -1843,7 +1881,7 @@ gad
 env.dialogues[`++mothbeneath`] = generateDialogueObject(`
 start
     sourceless
-        beyond your connection, moth's shoes scrape against the concrete in panic
+        beyond your connection, moth's shoes scrape against the concrete in panic.
             EXEC::change("beneath", true)
 
     moth
@@ -1950,6 +1988,10 @@ ____END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/dullvessel/")
             FAKEEND::(travel)
             SHOWIF::"joy#dullvessel_quarters"
+        embassy resources<+>END
+            EXEC::change("TEMP!!from", "tether");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(travel)
+            SHOWIF::"joy#resource_j2"
         city office<+>END
             EXEC::change("TEMP!!from", "tether");moveTo("/local/city/street/")
             FAKEEND::(travel)

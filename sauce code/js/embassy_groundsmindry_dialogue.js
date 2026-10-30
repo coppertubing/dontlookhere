@@ -68,9 +68,10 @@ start
     sourceless
         corroyi murmurs beyond the walls as we descend to threats unknown
         the movefriend barely fits us together, elbow to elbow
-        miltza's third arm fidgets with her others - we are beyond escape, and i feel it eats at her
+        miltza's third arm fidgets with her others
             EXEC::vnp({miltza: "showleft", bg: true})
-        itzil is awake within the golem with karik, and both are frighteningly quiet...
+        the horrors we have witnessed only seem to gnaw more deeply at her in this silence
+        itzil is awake within the golem with karik, and both are frighteningly silent...
             EXEC::vnp({ikgolem: "showleft", miltza: "hide"})
         but i feel a bubbling grief and rage through our connection, which karik must be trying to temper
         bozko rests against a wall and silently assists in prying apart the golem viscera we dragged in,
@@ -86,24 +87,24 @@ start
     gakvu
         another thing you cannot hear, huh?
             EXEC::vnp({tozik: "show", gakvu: "show focus"})
-        it is like a buzzing, too many quiet words to understand
+        it is like a buzzing, quiet thoughts passing too quickly to understand
         i can make do, it is just terribly distracting
         
     tozik
-        no, and not even after swapping our connectors
+        no, and not even after swapping our connectors...
             EXEC::vnp({tozik: "focus"})
-        but you are right about communications
-        there must be other dull-equipped golems doing what the dullzika had done,
-        as the wall of noise is almost identical
-        ...and it hurts you, all the same, even without a communicator
+        i would attribute it to a communications issue, like what we were met with in maintenance,
+        if not for your lack of a communicator
     
     sourceless
         tozik hands the connector back to her, where it finds a home upon her receptor again
+        he stares, lost in thought for a θblink
     
     tozik
-        another hint at some greater truth of this attack signal, still yet to form a whole
-        but i feel it is safe to assume that whatever is attacking us is using something... <em>approximating</em> groundsmindry
-        that is surely why you can sense it, even when we cannot
+        your groundsmindry affords you this sense
+        it is safe to assume that whatever is attacking us is using something... <em>approximating</em> groundsmindry
+        overlapping enough in function...
+        but, in some way, perfectly distinct
         
     gakvu
         well obviously
@@ -111,7 +112,7 @@ start
     sourceless
         it is plain in tozik's receptors that he was not done speaking,
         and he is left staring at gakvu with a flat expression
-        it strikes clear regret into her
+        it strikes a small regret into her
     
     gakvu
         ah... sorry tozik
@@ -125,68 +126,90 @@ start
     
     gakvu
         in our foes, whenever i have twisted or struck them...
-        and occasionally in the remains of others we have left in our wake,
-        i have glimpsed vague shapes of the instruction left by the hostile signal
+        and in the remains of others we have left in our wake,
+        there are vague shapes of the instruction left by the signal
         you are right--all this time, on a surface level, it has <em>felt</em> like groundsmindry
-        it has the same authority, the same texture as re-instruction
-        like when vekoa instructed that golem to help us before this started
+        it has the same authority, the same texture...
         but the more i think about what i have seen, the more it vexes me
-        they were not given new directives, for there were no clear thoughts to find
-        it was deeper, more abstract... 
-        they were impulses, like emotions, not clear thoughts
-        longing, or anger, or desperation--or all of them, 
-        but beyond them, different somehow
-        it is violent, messy...
-        not just inspiring them to kill us, but gradually changing their internals
+        they were not just given new directives, for there were no clear thoughts to find
+        it was...
+    
+    sourceless
+        she pauses, struggling to place words to her discoveries
+
+    gakvu
+        closer to impulses, unconscious emotion
+        longing, or anger, or desperation--or all of them
+        what i saw was familiar enough to understand the 'tone', but...
+        their contents were unfamiliar,
+        like murmurs of a language i have never heard
+        and within our foes, nearly all the internals i expected to find while attacking,
+        if they were not already fused and strange,
+        they were well on their way...
         ah, given velzie's inordinate fondness for parasites, i want to call it an infection
         it is almost nostalgic
 
     cavik
-        i think i noticed something similar...
+        i noticed something similar!!
             EXEC::vnp({cavik: "showright far focus", gakvu: "defocus"})
         of the dull nodes i harvested from golems we have been fighting,
         the most recent ones are so weirdly malformed
         i had to actually break some of them off from their bodies!
 
     gakvu
-        right, dull nodes are some of the strange ones
+        yeah, dull nodes have been the most noticeable...
             EXEC::vnp({cavik: "hide", gakvu: "focus"})
-        in what i saw, it must have targeted specific organs
-        communications, dull components, anything with connectivity,
-        leaving marks, rewriting their purpose more deeply than i could understand...
-        spreading outwards, fusing together, creating unfamiliar shapes
-        at first i thought it was simply a result of our foes sludging and incohering,
-        but after seeing more, it is deeper than that...
-        it is intentional, but incomplete
-        does this make any sense? i struggle to place it in words
-        anything touched by the signal has been changing, slowly
-        to what end, only velzie may know
+        really--communications, dull components, anything with any connectivity at all
+        these have been the most malformed, every time
+        that is where it must flow through first
+        to what ends, only velzie may know
     
     tozik
         'infection' is fitting
             EXEC::vnp({tozik: "focus"})
+        in my inspections, every body has been twisted, 
+            SHOWIF::["PAGE!!g_s_storage", "cleared"]
+        inside and out, like a secri's touch
+            SHOWIF::["PAGE!!g_s_storage", "cleared"]
         but what does that make of us? wounds aside, none have shown any symptom
-        yet i clearly recall the signal passing through me
+        yet i clearly recall the feeling of the signal passing through me,
+        and the many blows we have exchanged with the afflicted...
     
     gakvu
-        well, think about how inconsistent it has been
+        well, whatever is being done, it is very messy
             EXEC::vnp({gakvu: "focus"})
         only some devices, only some golems... 
         some risen against us, some entirely sludged by the signal, or unresponsive
-        you recall how movefriend simply began to die, instead of immediately trying to kill us?
-    
-    tozik
-        yes, the echo was still intact... like geli's, or barfriend's
+
+    sourceless
+        a focused tension forms in her receptors
     
     gakvu
-        it seems like consciousness is a barrier, to some extent...
-        but it also must be that it can attempt to grasp something and fail
-        either by luck, a bad connection, or failing to break through strong instruction
-        like that of our mindcores
-        i think of when the first signal hit, how in my brief unconsciousness, 
-        it must have nearly taken hold of my leg, for it began to melt and change
-        but at once, almost without thought, i rose and fixed it
-        i was able to reform it as if it were a simple incorrect shape instruction after sitting for too long
+        whenever it screams that signal...
+        it feels like a wave crashing over you, too, right?
+        not targeted to us, not even bearing a single clear thought
+        it is insensate, testing everything, everywhere
+        floodwater carelessly finding cracks to flow into,
+        whether that ends in taking root, finding nothing, 
+        or tearing its subjects apart
+        like how movefriend simply began to die
+    
+    tozik
+        but the echo was mostly intact
+        the same as geli's, or barfriend's
+    
+    sourceless
+        gakvu dips her head in acknowledgement
+        ha... their speculation actually brings some comfort,
+        reminiscent of our chats in better times
+
+    gakvu
+        clearly, instruction and consciousness hold some insulation from it
+        especially visible in our mindcores
+        in the first impact of the signal, in my brief unconsciousness, 
+        it must have nearly taken hold of my leg, for it began to melt
+        but as soon as i recovered, i rose and fixed it, not even realizing anything was wrong
+        like a simple incorrect shape instruction after sitting for too long
         it only struck me as strange after we began to see more
     
     itzil
@@ -207,15 +230,16 @@ start
         is that enough for it to seize us?
         
     tozik
-        a frightening thought, given the precise targeting of our foes
+        the wounds in the dead have been so precisely aimed to wound mindcores
             EXEC::vnp({tozik: "focus"})
-        this whole time, i thought they were simply destroying them
-        but now i worry--what if they were not just broken, but changed?
+        <em>so</em> precisely...
+        they looked sludged, cracked in half, melted with the rest of their bodies
+        now i must wonder if they were more than simply broken
     
     sourceless
         bozko remains upon his duties, clearly listening, but indifferent
         is it unusual that miltza has not given her insight? does she have any?
-        she fidgets so strangely, clearly uncomfortable with the topic
+        she still fidgets so strangely, clearly uncomfortable with the topic
         no, i am overthinking this--it is just a worrying thing to discuss, that is natural
     
     tozik
@@ -239,20 +263,20 @@ start
     
     sourceless
         everyone stands fully, organizing themselves and their weapons
-            EXEC::vnp({miltza: "show far", ikgolem: "show far", bozko: "show far", cavik: "show far", tozik: "show far", gakvu: "show far", bg:true})
+            EXEC::vnp({miltza: "show far", ikgolem: "show far", bozko: "show far", cavik: "show far", tozik: "show far", gakvu: "show far", bg:true, hideStage: true})
         i should only need to briefly reiterate the plan
         especially after the exhaustive deliberation done during our preparations
     
     akizet
         all right, it is as we planned
         our efforts have all proceeded as expected, and this final victory will be no exception
-        these foes have shown themselves to be rabid, acting with singular purpose, but without tactics
+        these foes have shown themselves to be rabid, acting with singular purpose, but nearly without tactics
         and as in a true infestation, this is our greatest advantage
         once we enter, split into your groups
         follow the ring-hall of the groundsmindry in opposite directions, until we meet again
         remove attackers, clear chambers, find survivors, reunite for great threats if needed...
         and when the core is defenseless, we enter the central chamber to seize it
-        gakvu or tozik, you are up for interim groundsmind when the time comes
+        gakvu, tozik, one of you must serve as interim groundsmind when it is time
         are we all aligned?
     
     sourceless
@@ -276,23 +300,6 @@ start
     akizet
         open the path, movefriend
 
-    sys
-        ATTENTION::'party functionality';'augments';'now disabled'
-        NOTICE::'all party member actions upgraded to accommodate'
-        NOTICE::'exception';'symbiotic rifle';'activate via item'
-            SHOWIF::'item|sorry_cyst'
-        NOTICE::'exception';'signal inverter';'directly upgraded gakvu actions'
-            SHOWIF::'item|core_translation'
-
-____SHOWONCE::
-
-    moth
-        bullshit
-        oh well
-        i guess that's how it goes with something fluid like this
-
-____END
-
 ____SHOWIF::"gameplay_off"
     sys
         ATTENTION::"altered gameplay system ahead"
@@ -312,8 +319,8 @@ env.dialogues["entrance"] = generateDialogueObject(`
 start
     sourceless
         the entry vein - our first step
-        one of the only paths into the groundsmindry θsegment's shell
-        the entire θsegment is a fixed shape, like golem maintenance, but out of structural necessity
+        one of the only paths into the groundsmindry θsegment's dome-like structure
+        a fixed shape like golem maintenance, but out of pressure-withstanding necessity rather than convenience
         formed from a mixture of black corru and dead sediment, creating a unique marbling and shimmer
         the rare 'pale corru'... a misleading name, for it is closer to dead metal
         but it is ornate, as it ought to be, given its importance here
@@ -332,11 +339,10 @@ start
         cavik, tozik - check the terminals, the state of the θsegment
         akizet will watch over you
         itzil, karik, bozko, miltza - check the doors to adjacent chambers
-        if you find any foes, immediately retreat
-        if there are no foes in there either, return to notify us
+        foes or no, immediately retreat to notify us
         we should not split up too much before we are ready
         oh, and gakvu, sense what you can from here
-        the core should just be beyond this wall, i think
+        the core should just be beyond that θwindow
     
     sourceless
         the team sets out to their duties
@@ -369,7 +375,7 @@ start
         what do you see?
     
     cavik
-        oh, akizet, it is really something!
+        oh, akizet, it is really something...
         i have never seen a spire break down like this
         look, over here, this view of the archival spine status is clearest
             EXEC::setCam({x: 6, y: 14, rotation: -90})
@@ -384,8 +390,8 @@ start
         well, some of it is debris from the upper veins collapsing into lower ones, but...
         from what i can gather, it actually started with resource issues
         the spine has its own dedicated spireblood circulation, independent of the spire's hearts
-        and <em>all</em> of it has been getting drawn away, pulled down here
-        that alone would not have caused the damage, if not for the hearts themselves slowing
+        and <em>all</em> of it has been getting drawn away, pulled down to the groundsmindry
+        that alone would not have caused all the damage,
             EXEC::vnp({arbitrary: "hide", hideStage: false, bg: false})
         but you can see over on this one--the hearts have been stalled for a while!
             EXEC::setCam({x: 4, y: 14, rotation: 90})
@@ -401,7 +407,7 @@ start
             EXEC::vnp({arbitrary: "show URL::/img/local/embassy/mind/map_mind.gif", hideStage: true, bg: false})
         these ones are not responding to me, so i am not sure what is really going on there
             EXEC::vnp({arbitrary: "hide", arbitrary2: "show URL::/img/local/embassy/mind/map_structure.gif"})
-        but that dark pattern is so familiar, too, like...
+        that dark pattern is hard to place, but, it is strangely familiar...
         ah... pay no mind to my speculation!
         go, attend to the others
             EXEC::vn.done();setCam({x: 5.5, y: 11, rotation: -60})
@@ -432,7 +438,7 @@ start
             EXEC::vnp({arbitrary: "show URL::/img/local/embassy/mind/map_groundsmindry_bigger.gif", hideStage: true, bg: "original"})
         a central groundsmindry core, surrounded by five chambers
         this is one of them, minor as it seems
-        lesser chambers attach to the halls, probably serving as personnel and storage
+        lesser chambers attach to the halls, probably serving as personnel rooms and storage
         but most of this is obscured by incoherence
             EXEC::vn.done()
     
@@ -444,7 +450,7 @@ start
     tozik
         it looks like this terminal was disconnected from all input at some point
         i am trying to check its core, so that i may directly access what it knows
-        specifically when it lost input
+        specifically when it lost connection
         but if you mean around the θsegment, the display has drifted too much to tell
         one of the chambers looks damaged, but the rest seem fine
         if you ignore the flickering circle in the center
@@ -463,7 +469,7 @@ env.dialogues["entrance_proceed"] = generateDialogueObject(`
 start
     sourceless
         i linger near gakvu, watching over the team as they find what they can
-            EXEC::setCam({x: 7, y: 2, rotation: 0});
+            EXEC::setCam({x: 7, y: 2, rotation: 0});pauseSwapCam(true)
         but something about the twist of her receptors in particular worries me
         she stares into the θwindow... or perhaps beyond it
     
@@ -482,8 +488,8 @@ start
     gakvu
         this is where that buzzing was coming from
             EXEC::setCam({x: 7, y: 1.5, rotation: 0});
-        but this close, it does not pain me as it did
-        yet it is so much clearer now... and it is not without sense
+        strangely, it does not pain me as it did before
+        it is so much clearer now...
 
     sourceless
         gakvu's chuckle carries a bitter hate
@@ -542,7 +548,7 @@ start
         that is--the precursor structure to a dull contrivance...
         but i have never seen it on this scale before!
         usually they are either very very small for testing,
-        or very very large to make a proper continuous contrivance...
+        or very very large to make a proper contrivance...
         if this completes, 
         i think it would be open just long enough to consume the entire embassy before closing!
         there must be an opposite side, a destination to reach, but...
@@ -550,11 +556,12 @@ start
             EXEC::env.noBgmDuck = false
     
     sourceless
-        what--?
+        what?!
         was this the true purpose of the attack?
         or an emergency measure taken by vekoa?
         feeling the shared shock of tozik and gakvu, a part of me screams to flee
-        i seize cavik, glancing towards the θwindow again,
+        without a dull vessel, i must imagine none of us would survive the trip
+        i seize cavik, my gaze drawn to the writhing θwindow again,
     
     akizet
         cavik--how much time do we have?
@@ -625,7 +632,7 @@ start
     
     gakvu
         ah...
-        ...and what resource is greater than the embassy's critical systems
+        ...and what resource is more available than the embassy's blood
         
     sourceless
         tozik remains silent, having cut into the side of the map terminal for a direct connection
@@ -662,7 +669,7 @@ start
         it still is unreadable
     
     tozik
-        there is a part of the groundsmindry θsegment called the "dull mind"
+        there is a part of the groundsmindry θsegment called the 'dull mind'
             EXEC::vnp({tozik: "focus"})
         it is the marked one, near the top
     
@@ -700,7 +707,7 @@ start
         well, what do you recommend?
     
     tozik
-        one of the adjacent chambers is the "lesser mind"
+        one of the adjacent chambers is the 'lesser mind'
         it seems to be a place where other qou could directly assist in groundsmindry duties
         a dead end if the dull mind is truly gone,
         but we may be able to use some of its equipment similarly to the override panel in golem maintenance
@@ -721,16 +728,16 @@ start
     akizet
         oh, bozko, ah...
         cavik, catch everyone else up on the situation as we move
-        as you must have learned yourselves, this is not as straightforward as we thought...
+        as you must have learned yourselves, our path is not as simple as expected...
     
     cavik
         will do!
     
     RESPONSES::akizet
         set out<+>END
-            EXEC::vn.done();playerMoveTo(7,2);setCam();refreshStage({noFlash: true})
+            EXEC::vn.done();playerMoveTo(7,2);setCam();refreshStage({noFlash: true});pauseSwapCam(false)
 
-SKIP::env.noBgmDuck = false;changeBgm(env.grm.music_coresong, {length: 10});change("PAGE!!e4prog", 2);vfx({type: "okidoia", state: false});playerMoveTo(7,2);setCam();refreshStage({noFlash: true});vn.done()
+SKIP::env.noBgmDuck = false;changeBgm(env.grm.music_coresong, {length: 10});change("PAGE!!e4prog", 2);vfx({type: "okidoia", state: false});playerMoveTo(7,2);setCam();refreshStage({noFlash: true});vn.done();pauseSwapCam(false)
 `)
 
 /* !P2A - lesser mind before combat */
@@ -819,9 +826,7 @@ start
     sourceless
         miltza lingers near our golem, still quiet
             EXEC::vnp({miltza: "show far", hideStage: true})
-        she fidgets with the small remote coordination drone we formed for her before descending
-        a simple sphere, with robust dull positioning and propulsion
-        it is possible that she is truly busy preparing it, but...
+        she fidgets with one of the cysts she retrieved from her chamber
         really, i do not think she has said anything since we arrived
         clearly she is nervous, she always has been
         but it seems more intense than before - perhaps to the point of distraction
@@ -838,8 +843,8 @@ start
         oh, akizet, i...
         
     sourceless
-        she places the drone in a pouch within her cloak
-        it clinks against a number of other cysts, likely the ones retrieved from her room long ago
+        she places the cyst in a pouch within her cloak
+        it clinks against a number of other personal cysts, surely of art and design
         her receptors stretch open and closed as she places words to her thoughts
     
     miltza
@@ -867,7 +872,8 @@ start
     sourceless
         even with fleeing as an option, a thought that has come to her many times,
         there is no easing of her tension
-        could it be something else bothering her?
+        something else haunts her, something she dances away from speaking about
+        this is really no time to pry further
 
     RESPONSES::akizet
         return to investigation<+>END
@@ -963,7 +969,7 @@ start
     
     sourceless
         gakvu's eyes follow their path - from the door, to each of the lesser pods
-        they form some sort of connection, merging disappearing into the flesh near each base
+        they form some sort of connection, merging and disappearing into the flesh near each base
 
     gakvu
         well, i can only tell that these connect to the core somehow
@@ -1160,26 +1166,27 @@ start
     cavik
         i--i do not know!!
             EXEC::env.noBgmDuck = false;
-        this... i think this is the overlap! it must be growing outwards...
+        this... i think this is the overlap!
 
     sourceless
         another shock strikes my mindcore
             EXEC::flash(true);play('criticalError', 0.3);vfx({type: "okidoia", state: false})
         some part of me is falling, but the floor is still beneath my feet
-            EXEC::env.grm.combat("ep4_intro_1");ratween(env.bgm, 0.5)
+            EXEC::env.grm.combat("ep4_ingtro_1");ratween(env.bgm, 0.5)
         there is a feeling of some great shape slithering, coiling around the chamber
         and when my mind recovers, enough to see...
         the room is unrecognizable, lost in itself
-            EXEC::flash(false)
+            EXEC::env.rpg.setCam({playerRotation: 0, playerTilt: 0});flash(false)
         an island of sanity with frayed edges, as if suffocated by the surface's vapor
         and from it, something has come for us
-        misshapen things, hazy silhouettes, formed from this broken nature
-        when i look at them, i see familiar shapes...
-        husks, like before? golems? something else? 
-        they move without the fatigue of our past foes
-        i cannot truly make sense of them
-        but their presence alone seems to strengthen the effect of this distortion
-        they must be the source of this, or a part, somehow
+        a misshapen thing, a hazy silhouette, formed from this broken light
+        when i look at it, i see a familiar shape...
+        a husk, like before? something else...?
+        it moves without the fatigue of our past foes
+        i cannot truly make sense of it
+        but its presence alone seems to strengthen the effect of this distortion
+        a torch illuminating reality away as if it were darkness
+        this shape must be the source of this, or a part, somehow...
         it must be stopped before we are lost to this overlap
         no friends will be made here
     
@@ -1193,10 +1200,12 @@ start
     sourceless
         the question immediately chills my mind
             EXEC::flash(true);env.rpg.pauseControls = true
-        i look nearby, but see only bozko, itzil and karik
-            EXEC::env.rpg.classList.remove('fpv');env.rpg.classList.add('tutorialzoomout');vfx({type: "flash", state: false, delay: 1000})
+        i look nearby, but see...
+            EXEC::env.rpg.classList.remove('fpv');env.rpg.setCam();env.rpg.grid.style.setProperty("--playercontrol-rotation-raw", 0);env.rpg.grid.style.setProperty("--playercontrol-tilt-raw", 45);env.rpg.classList.add('tutorialzoomout');vfx({type: "flash", state: false, delay: 1000})
+        no one?
         where are...?
-        there is no time - these creatures are upon us
+        there is no time - this creature is upon me
+        and the panic from the others suggests a similar situation
     
     akizet
         everyone--fight to the best of your ability
@@ -1205,31 +1214,37 @@ start
     RESPONSES::akizet
         fight!<+>CHANGE::combatadjust
             FAKEEND::start combat
-            EXEC::pauseSwapCam(false);setCam();change("TEMP!!lshift", "DELETE");env.embassy.slowCam(false);content.classList.remove("forcewobble")
+            EXEC::flash(true);pauseSwapCam(false);setCam();change("TEMP!!lshift", "DELETE");env.embassy.slowCam(false);content.classList.remove("forcewobble")
 
 END::content.classList.remove('forcewobble');
-SKIP::env.noBgmDuck = false;env.grm.combat("ep4_intro_1");vfx({type: "okidoia", state: false});vn.done();pauseSwapCam(false);setCam();flash(true);setTimeout(()=>{startDialogue("combatadjust")}, 800);change("TEMP!!lshift", "DELETE");env.embassy.slowCam(false);env.rpg.classList.remove("fpv");content.classList.remove("forcewobble");env.stopBgmChanges = false
+SKIP::env.noBgmDuck = false;env.grm.combat("ep4_ingtro_1");vfx({type: "okidoia", state: false});vn.done();pauseSwapCam(false);setCam();flash(true);setTimeout(()=>{startDialogue("combatadjust")}, 800);change("TEMP!!lshift", "DELETE");env.embassy.slowCam(false);env.rpg.classList.remove("fpv");content.classList.remove("forcewobble");env.stopBgmChanges = false
 `)
 
 env.dialogues["combatadjust"] = generateDialogueObject(` 
 start
     sys
-        ATTENTION::'thoughtform combat initiated';'scenario necessitates extra dimension'
-            EXEC::flash(true);setTimeout(()=>{env.rpg.classList.remove("hideteams", "tutorialzoomout");flash(false)}, 400);env.rpg.pauseControls = false
-        ATTENTION::'utilizing structure';'tactical combat'
-        NOTICE::'core combat structure is unaltered'
-        NOTICE::'actors may move a limited range before using an action';'action use ends turn'
-        NOTICE::'all actions adjusted to account for range and area of effect'
-        NOTICE::'utilize <span definition="NOTE::'limbic motor beacon'">LMB</span> to direct movement and action use'
-        NOTICE::'utilize movement keys to alter spatial angle'
-        NOTICE::'utilize <span definition="NOTE::'contextually shifted limbic motor beacon'">SHIFT LMB</span> to direct vision during ally movement'
+        EXECUTING::"structure direction";"tactical combat"::
+            WAIT::1000
+            THEN::flash(false);env.rpg.pauseControls = false;env.rpg.classList.remove('tutorialzoomout')
     
+    plainsys
+        stream necessitates extra combat dimension
+        core structures of combat are unaltered
+        actors may move a limited range before using an action; action use ends turn
+        all actions adjusted to account for range; area of effect; additional effects
+        some statuses adjusted to accommodate extra dimension
+        utilize <span definition="NOTE::'limbic motor beacon'">LMB</span> to direct movement and action use
+        utilize movement impulses to alter view of combat scene; liberal use recommended
+
+    sys
+        END::
+
     sourceless
-        we must be rid of these foes quickly, so that i can help the others
+        i must be rid of this foe quickly, so that i can help the others
         but corners of the room have become distorted, dangerous,
         i am reminded of how we destroyed the foundation golem just a θwink ago
-        we should avoid them, but...
-        so too can we use them, with carefully angled strikes
+        i should avoid them, but...
+        so too might i use them to harm this creature, with carefully angled strikes
 
 ____SHOWIF::"gameplay_off"
     sys
@@ -1240,6 +1255,7 @@ ____END
         begin<+>END
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", false]
+            EXEC::env.rpg.classList.remove('hideteams')
         begin<+>nogame
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", true]
@@ -1250,20 +1266,18 @@ nogame
         NOTICE::"contextual narration applied"
 
     sourceless
-        our claws and fists meet with these... entities
+        i am perhaps too eager to tear my claws into this entity
             EXEC::env.rpg.allyTeam.members.forEach(m=>m.piece.knockback({direction: "up", strength: 2, follow: false}));env.rpg.classList.add('hideteams')
             WAIT::1000
             THEN::flash(true)
-        though they appear at first like swarm projections, illusions...
+        though it appeared at first like a swarm projection, some sort of illusion...
 
     sourceless quiet
-        they can be stabbed, they bleed,
+        it can be stabbed, it bleeds,
             EXEC::play("crit", 0.75)
-        and can be torn apart by our golem's dull pulse weaponry
-            EXEC::play("dull", 0.75)
-        so too can they strike us, physical in all ways that matter
+        so too can it strike me, physical in all ways that matter
             EXEC::play("hit", 0.75)
-        but each time one is damaged enough, they simply split apart
+        but once damaged enough, it simply splits apart
             EXEC::flash(false)
         fading into the light that has submerged the chamber in madness
             EXEC::env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats(true)
@@ -1277,18 +1291,62 @@ nogame
 env.dialogues["lesser_attack2"] = generateDialogueObject(` 
 start
     sourceless
-        with our foes fallen, i shift my inner focus to the others
+        with the beast broken apart, i shift my attention to the others
+            EXEC::env.rpg.removePendingPieces()
+        passing over visions of their own similar situations, tensing the timestopper to dodge and weave in counterattack
+        bozko and cavik seem to be near one another,
+        with gakvu, miltza, and our golem in another space
+        each on islands of sanity in this strange light, trapped as i am
+    
+    timestopper
+        how could we have been separated what is happening
+        push them back watch out
+
+    akizet
+        i am not sure how to reach you, but i will lend--
+
+    sourceless
+        a soundless thought, like a scream, resonates through the space
+        cavik and bozko have broken something enormous
             EXEC::flash(true);env.stopBgmChanges = true
             WAIT::1000
             THEN::closeCombat(env.rpg.enemyTeam, true)
-        my wordless request to access their senses is granted immediately
-            EXEC::env.grm.combat("ep4_intro_2");setTimeout(()=>flash(false), 1000);env.rpg.classList.add('hideteams');env.stopBgmChanges = false
-        i only hope i can guide them well enough...
+        seemingly in response, my space distorts violently, all senses overwhelmed with the light of the dull--
+        an impact that nearly sends me to what i believe to be the ground
+        in my staggering, i suddenly find myself standing alongside them
+            EXEC::env.grm.combat("ep4_ingtro_2");setTimeout(()=>flash(false), 1000);env.rpg.classList.add('hideteams');env.stopBgmChanges = false
+        another space familiar enough to identify as still part of the lesser mind chamber
+
+    akizet
+        what did you--?
+
+    bozko
+        look
+        the tendril over there, that pillar
+            EXEC::env.rpg.actorList.find(a=>a.base.slug == "ceremony_tendril_plus").piece.focusOnTile()
+    
+    cavik
+        yes, we--we destroyed one just like it near us, and...
+
+    sourceless
+        that is all i must know
+
+    akizet
+        then let us break another
+        we must reunite with the others
+    
+    sys
+        EXECUTING::"structure direction";"additional controls"::
+            EXEC::env.rpg.currentActor.piece.focusOnTile()
+
+    plainsys
+        utilize <span definition="NOTE::'ennui impulse'">E</span> during enemy turn to increase time advancement
+        employ <span definition="NOTE::'contextual shifted'">SHIFT</span> to enter 'looking' state
+        highlights entities and permits movement of vision
+        both toggleable in lower left view
 
     sys
-        NOTICE::'many actions utilize TILE EFFECTS'
-        NOTICE::'functions vary from persistent effects to telegraphed actions'
-        NOTICE::'utilize scanner to determine function if needed'
+        END::
 
     RESPONSES::akizet
         follow my instruction<+>END
@@ -1301,22 +1359,83 @@ start
     
 nogame
     sourceless
-        gakvu, cavik, and miltza stand in a chamber shaped much differently than ours
-        still reminiscent, but almost as if misremembered
-        and the foes that face them seem equipped to use the unstable nature of this place
-        capable of instant relocation, bending the light downwards in a delayed strike...
-        but between the three qou, they are well equipped to deal even with this
+        between my and bozko's brute force,
+        and cavik's employment of equally brutal explosives,
+        we soon tear the strange vein and its guardians asunder
             EXEC::env.rpg.allyTeam.members.forEach(m=>m.piece.knockback({direction: "up", strength: 2, follow: false}));env.rpg.classList.add('hideteams');flash(true)
-        especially with my assistance, for even at a distance, direction with the timestopper is effective
-        their foes are torn apart--even gakvu's groundsmindry works, strangely
         
     RESPONSES::akizet
         ...<+>CHANGE::lesser_attack3
             FAKEEND::(continue)
 `)
 
-/* */
+
 env.dialogues["lesser_attack3"] = generateDialogueObject(` 
+start
+    sourceless
+        the vein breaks apart, the space rippling around us...
+        but it subsides, and we remain here
+        immediately, my mind turns to those not present, and i project--
+
+    timestopper
+        do you see any very large shapes
+        like the leg of a small veilk
+        yes all around us!!
+        but these things are--
+
+    sourceless
+        i exchange glances with cavik and bozko, adjusting my connector
+    
+    timestopper
+        ignore them and destroy it
+        i will guide you
+
+    sourceless
+        i shift the balance of my mind from my body, further into the timestopper
+            EXEC::flash(true);env.stopBgmChanges = true
+            WAIT::1000
+            THEN::closeCombat(env.rpg.enemyTeam, true)
+        my wordless request to access their senses is granted immediately
+            EXEC::env.grm.combat("ep4_ingtro_3");setTimeout(()=>flash(false), 1000);env.rpg.classList.add('hideteams');env.stopBgmChanges = false
+        i only hope i can guide them well enough...
+
+    sys
+        EXECUTING::"structure direction";"telegraphed actions"::
+    
+    plainsys
+        many foe actions may create areas of imminent danger
+        areas will execute actions on any actor within after a delay
+        beware
+
+    sys
+        END::
+
+    RESPONSES::akizet
+        follow my instruction<+>END
+            FAKEEND::(continue)
+            SHOWIF::["gameplay_off", false]
+            EXEC::env.rpg.classList.remove('hideteams')
+        follow my instruction<+>nogame
+            FAKEEND::(continue)
+            SHOWIF::["gameplay_off", true]
+    
+nogame
+    sourceless
+        the three stand valiantly against these monstrosities
+        our golem's weaponry in particular nearly renders my assistance unnecessary
+        a fearsome thing!!
+        their foes are torn apart
+        strangely, gakvu's groundsmindry seems equally effective on them
+        and soon, the veins surrounding them fall...
+            EXEC::env.rpg.allyTeam.members.forEach(m=>m.piece.knockback({direction: "up", strength: 2, follow: false}));env.rpg.classList.add('hideteams');flash(true)    
+        
+    RESPONSES::akizet
+        ...<+>CHANGE::lesser_attack4
+            FAKEEND::(continue)
+`)
+
+/* */
+env.dialogues["lesser_attack4"] = generateDialogueObject(`
 start
     sourceless
         the last of the entities dissipate from the attacks of my friends, but...
@@ -1364,22 +1483,23 @@ env.dialogues["lesser_vekoa"] = generateDialogueObject(`
 start
     sourceless
         the last of these solidified threats have been dispersed
-            EXEC::imagePreload(["/img/sprites/vekoa/vekoaspec.gif", "/img/sprites/obesk/ikgol/gridtiny_cinematic.gif", "/img/sprites/obesk/ikgol/gridtiny_collapse.gif"])
-        with each one felled, the space has grown more familiar
-        still distorted, but... the change is felt
+            EXEC::imagePreload(["/img/sprites/vekoa/vekoaspec.gif", "/img/sprites/obesk/ikgol/gridtiny_cinematic.gif", "/img/sprites/obesk/ikgol/gridtiny_collapse.gif"]);
+        no more strange veins present themselves to be broken, so doubt begins to well, but...
+            EXEC::env.rpg.removePendingPieces()
+        with each one felled, the light fades slightly, the space grows more familiar
         as if we were waking from a dream
         we take this instant to recover
             EXEC::env.rpg.allyTeam.members.forEach(m=>{m.hp = m.maxhp;combatRevive(m)})
     
     bozko
         i do not understand...
-        they are formless, but can be touched and destroyed
-        they hurt, but leave no mark beyond melted flesh
+        they can be hit and torn, but fade away when they break
+        they can strike us, but leave no mark beyond melted flesh
     
     sourceless
         everything we fought--it is all gone, leaving no carcass
-        and beyond that, gakvu's groundsmindry still seems to work against them?
-        they cannot be corru, can they?
+        and beyond that, gakvu's groundsmindry continues to shine against them?
+        they must be corru in some capacity, but... how?
         these questions must wait, for one entity remains
             EXEC::env.rpg.actors.vekoa_boss.piece.focusOnTile()
         malformed and impossible to distinguish, like a haze in the air
@@ -1404,7 +1524,7 @@ start
         i want to help him, but...
         my attention is drawn back to the last presence, i cannot lose focus
         whatever happened seems to have given it a solid form, fully manifested
-            EXEC::env.rpg.actors.vekoa_boss.piece.focusOnTile();env.rpg.currentActor = env.rpg.actors.vekoa_boss;
+            EXEC::env.rpg.currentActor = env.rpg.actors.vekoa_boss;
         but still, i can barely make it out...
         is that...?
         vekoa
@@ -1449,7 +1569,7 @@ start
         the okidoia focuses upon me, maybe all of us
 
     okidoia
-        öu•:\ì ÷îcome|ï4;âŠ
+        öu•:ì ÷îcome|ï4;âŠ
         x3Ã0ÆbeforeEÆ®s²7] –´dÌ|—Û
     
     sourceless quiet
@@ -1457,7 +1577,7 @@ start
         it reverberates against our minds, barely intersecting with them
 
     sourceless
-        unable to truly connect
+        familiar in some ways, but alien in far more
         i expect to have to retaliate against an attack, but she remains afar
         this is a true attempt to communicate something...
     
@@ -1476,9 +1596,11 @@ start
         my vision blurs, until i can shake these tendrils from my mind's eye
         i cannot understand it, truly--and i think i must not
         could this feeling itself be a sign of some parasite biting into my flesh?
-        vekoa still does not move, gesturing in welcome towards the door
+        vekoa still does not move, slowly gesturing in welcome towards the door
         does she want us to see what she has done?
-        or perhaps she wants us to enter--to accept our deaths?
+        or perhaps she wants us to enter...
+        but to enter such a violent dull phenomenon would surely tear our bodies apart
+        does she expect us to accept our deaths?
         is she stupid?
         i will repay this insult
     
@@ -1489,14 +1611,15 @@ start
     sourceless
         bozko must have come to a similar conclusion, for he speaks with rage
             EXEC::env.noBgmDuck = false;
-        something with reason clearly lingers within this shape, for it is taken aback by his words
+        something with reason clearly lingers within this shape, taken aback by his words
         these are not mindless husks we face, now... 
-        but they cannot be any more than parasites - no qou would ever abide this tragedy
+        but they cannot be any more than parasites wielding minds
+        no qou would ever abide this tragedy, such senseless slaughter
         in his anger, the okidoia grew silent
         vekoa's receptors convey a sort of... frustration, maybe
         it is always difficult to tell with θjut from afar
         the pause is heavy, all of us frozen in uncertainty
-        she--it speaks again...not in words, but visions, a memory
+        she--it speaks again... not in words, but visions, a memory
             EXEC::vfx({type: "okidoia", state: "mild"});body.classList.add('vis-flash', 'vis1')
         
     okidoia
@@ -1529,7 +1652,7 @@ start
         the θjut hands me a mindcore connector, and then one to my tirii
         i sense fear in our entangled receptors, and i laugh
         embracing deÆÎÕqêath is a strange idea, but we know there is nothing to be afraid of
-        m¹ZŸŸK\¾Õ\AQëi6ìÏ
+        m¹ZŸŸK¾ÕAQëi6ìÏ
         so i say: "tirii, do not be so nervous!"
         "i am here with you, and we will begin anew together"
         se•~+•¥ŸèagainÚ±½9¶ÄwÁK‰
@@ -1560,7 +1683,7 @@ start
         that was the golem...!!
             EXEC::flash(false);env.rpg.setCam({x: 5, y: 6, playerRotation: -25, playerTilt: -10, height: 1.5, distance: 0, detailMode: true, gridTileSize: 200})
         already, it hovers aggressively towards our foe
-            EXEC::env.rpg.actors.ikgolem.piece.stepToTile(env.rpg.grid.getTileFromCoordinates(6, 3))
+            EXEC::env.rpg.actors.ikgolem.piece.stepToTile(env.rpg.grid.getTileFromCoordinates(6, 3), {follow: false})
     
     karik
         itzil--stop--!!
@@ -1602,6 +1725,7 @@ start
         karik scurries away, having escaped the viscera, retreating into the opposite hall out of wild fear
         but itzil... itzil is held in vekoa's claw
             EXEC::env.rpg.currentActor = env.rpg.actors.vekoa_boss
+        turned over curiously, like no more than a fruit plucked from a veilk
         
     itzil
         nonononono!!!
@@ -1617,7 +1741,7 @@ start
         i do not know, i cannot grasp it
     
     cavik
-        if i throw a bomb now, it might just hit itzil...
+        if i throw an explosive now, it might just hit itzil...
 
     akizet
         then it falls to direct force
@@ -1648,8 +1772,9 @@ start
         i still live, but it is too late
             EXEC::flash(false);ratween(env.bgm, 0.6)
         itzil is melted in vekoa's claws, joining with the light
-        their shrieking fades into an overjoyed laughter, distorting metallically,
-        before i feel their voice join in the same senseless okidoia
+        their shrieking fades into an overjoyed laughter,
+        distorting metallically while their vocalizer breaks apart,
+        and soon, i feel their voice join in the same senseless okidoia...
         there is nothing left
         slowly, i stand
         but... to strike directly...
@@ -1692,7 +1817,7 @@ start
         her sadness becomes conflicted, tense, as her gaze passes over us
         what is running through her mind?
         whose mind is it? 
-        vekoa would surely never act with such malice
+        for vekoa would surely never act with such malice
         resigned to some decision, she casts her eye unto me in a sharp motion,
 
     sourceless quiet
@@ -1703,6 +1828,7 @@ start
         ...
             EXEC::env.rpg.halt = false;closeCombat(env.rpg.enemyTeam);
         ...
+            WAIT::2000
 
     sourceless
         and then...
@@ -1769,6 +1895,7 @@ start
         it obscures the luminescent floor pigmentation, leaving us with sparse ambient light
         we are lit only by the θwindow and the horrific dull light of the overlap
             EXEC::setCam({x: 11, y: 4, rotation: 45})
+        which does not illuminate as much as it does obfuscate
         bozko watches over the path behind us
         while tozik has started to stand, still looking ill
             EXEC::setCam({x: 11, y: 3, rotation: -135})
@@ -1927,7 +2054,7 @@ ____END
         ...
         bozko lingers between us and the way we came, turned away
             EXEC::vnp({bozko: "hide"})
-        miltza's receptors are like fists, her head finding support in her claws
+        miltza's receptors are like fists, her face buried in her claws, trembling
             EXEC::vnp({miltza: "hide"})
         cavik sits against the inner wall, uncertain
             EXEC::vnp({cavik: "hide", tozik: "hide"})
@@ -1957,6 +2084,7 @@ ____END
     
     sourceless
         all focus upon her, though miltza's attention is the most striking
+        her claws have lowered away from her face, receptors twisting into a nervous clasp
         for the first time since we arrived, she seems truly present
     
     gakvu
@@ -1971,9 +2099,9 @@ ____END
         whatever she is about to do is difficult for her, too...
     
     gakvu
-        this was not your fault, akizet
+        you cannot blame yourself for this, akizet
         whoever left that message wanted to protect you, i am sure
-        but there is more happening than you know
+        but there is far more happening than you know
         if we are to die down here, then...
         why not tear away the rest of the veil they tarnished?
 
@@ -1986,9 +2114,9 @@ ____END
         let us speak plainly
         
     sourceless
-        an unexpected shift of focus to miltza--terrified, but...
+        an unexpected shift of focus to miltza--overwhelmed, but...
         realization is plain in her receptors, like a weight has been lifted from them
-        but there is an urgency in her voice, countering some implicit accusation
+        there is still an urgency in her voice, countering some implicit accusation
         spilling forth as stone in a collapsing cave
     
     miltza
@@ -2007,7 +2135,7 @@ ____END
 
     sourceless
         miltza is quieted, sat against the wall in a nervous ball
-        guilt is plain in her receptors, and she averts our gazes
+        deep worry is plain in her receptors, and she averts our gazes
         but gakvu...
         after all this time, she has been a part of this conflict?
         and how confidently she speaks!
@@ -2020,7 +2148,7 @@ ____END
         especially with what time we may have
         but the message was truthful, akizet
         there is... something, in the ocean, here
-        it is often called 'the meteorite,' 
+        it is often called 'the meteorite', 
         if only to avoid evoking its true nature in communications
         all evidence points to it being a corrucystic entity, as you probably expect...
         but it is so much more than that 
@@ -2136,7 +2264,7 @@ ____END
         just down the hall, miltza
         what must be the meteorite's hideous mind is wielding the images of our fallen
         wearing vekoa's face as a zuzucri would
-        look now, upon the fruits of the council's hubris, and despair
+        look now, upon the fruits of the council's hubris, and feast
         perhaps we should just embrace it and be done with it all
         that way, we will at least know who was right, yes?
         of course--we should wait and see where this contrivance takes us
@@ -2159,7 +2287,7 @@ ____END
     tozik
         this explains the public record...
             EXEC::vnp({cavik: "showleft far", tozik: "showright far", miltza: "hide"})
-        perhaps it was altered right after the spike we noticed, for this "veil"
+        perhaps it was altered right after the spike we noticed, for this 'veil'
     
     cavik
         ...and what does this really mean?
@@ -2185,8 +2313,7 @@ ____END
     miltza
         akizet
         this second veil exists... or, existed, for a reason
-        i cannot let you think that you are truly to blame, here
-        the fault for this madness lies with the one who threatened you
+        the true fault for this madness lies with the one who threatened you
         but even then... the storm was only growing as the call went on
         velzie would have let it spill forth into consequence one way or another
         
@@ -2235,7 +2362,7 @@ ____END
     
     sourceless
         cavik suddenly perks up, shuffling towards the sludged door
-        he feels at it, even placing his head against it to focus his hearing
+        he feels at it, adjusting his head so that he might hear anything within,
     
     cavik
         oh, wow, wow!
@@ -2262,10 +2389,10 @@ ____END
     cavik
         akizet, silences are artificial shapes within the dull plane, 
             EXEC::vnp({cavik: "focus"})
-        designed to be isolated from all other connection
+        designed to be isolated from all other connection for sensitive work
         you can think of them like, uh, bubbles! or cages! 
         they must be entered physically, you see
-        and they <em>always must</em> be maintained with active constructs
+        and they <em>always</em> must be maintained with active constructs
     
     akizet
         i see...
@@ -2311,7 +2438,7 @@ start
             EXEC::pauseSwapCam(true);flash(true)
         after some headway is made, and with a great crash, the doors are forced open
             EXEC::flash(false);changeStage("grm_dull_front")
-        we are greeted with a comforting darkness, granted by sludge obscuring the floor lights
+        we are greeted with a comforting darkness, granted by sludge obscuring the floor light
         the door's damage was an illusion...
         furniture had been piled against it and sludged, appearing like a collapse to the outside
         perhaps to trick vekoa's golems, should any have remained?
@@ -2418,7 +2545,7 @@ start
         oh, yeah... silencing spires!
             EXEC::vnp({idril: "focus"})
         you see, me and the others, we had this big plan 
-        we were going to enclose the groundsmindry core in a silence, then retake it
+        we were going to enclose the groundsmindry core in a massive silence, then retake it
         and we actually did make a lot of them!
         we even had half of our team go up into the spine, placing them in the archives overhead...
         but once the ceremony truly started, well,
@@ -2443,7 +2570,7 @@ start
         she is too quick to deviate in this time of crisis
     
     akizet
-        idril, you say 'we,' 'others,' but--where are they?
+        idril, you say 'we', 'others', but--where are they?
             EXEC::vnp({cavik: "hide"})
     
     idril
@@ -2463,7 +2590,7 @@ start
     
     idril
         me, i have just been watching...
-        what is visible of the ceremony, from my dullima pod, is very pretty
+        what is visible of the ceremony from my dullima pod, is very pretty
         like a parasite bulb blooming out from a dead beast
         curling around the framework of the embassy's dull connections
         you can take a look with it if you want, it is still open
@@ -2493,9 +2620,10 @@ start
         not until other qou started to shelter in here, telling me what was happening
         and then when i finally looked outside the silence,
         i could see the core prying at the dull plane, preparing to open a gate...
-        which immediately revealed a problem: the core does not usually have a gate-capable organ!
+        which immediately revealed a problem: 
+        the core does not usually have a gate-capable organ!
         and from what the others told me, every resource was starting to get pulled down here...
-        those two facts are enough to know the core is being used in a very, very bad way!!
+        those two facts are enough to know the core is being used in a very, very unusual way!!
         so, i just started doing my job
         that is what the point of the dull mind is, after all - to deal with dull issues
         or... was, haha
@@ -2512,9 +2640,9 @@ start
         the core has been siphoning resources from every connection it has
         mainly the spine and the heart, which is why the spire is suffering
         we would just have to sever the core from its resources
-        probably with bombs, which... we have the materials for, right here
+        probably with explosive charges, which... we have the materials for, right here
         our silencing spires used a great deal of unstable components from local golems
-        then, vekoa, if she has any sense at all, which... 
+        after that, vekoa, if she has any sense at all, which... 
         i am not sure of anymore, honestly
         she should stop the ceremony, or risk starving the core to death
         because, she needs it, to do whatever she is doing
@@ -2528,7 +2656,7 @@ start
         if you have a movefriend, maybe we should get out of here instead?
     
     sourceless
-        she speaks as if the decision were no more than a plan for the next meal...
+        she speaks as if the decision were no more than a plan for her next meal...
         and awaits my response with the most idle curiosity in the tilt of her receptors
         with both of our plans in ruins, is there really no option?
         it truly sounds like we can only flee...
@@ -2632,9 +2760,9 @@ start
         ok
         cavik, come, help me link these together
         we will need to make some pretty strong explosives
-        we should have them form little silences around themselves until they detonate
+        and they should be set to project little silences around themselves until they detonate...
         in the dull plane, small silences are impossible to notice from the outside,
-        so they should totally slip the groundsmind's eye
+        so they should totally slip the groundsmind's eye!
     
     cavik
         oh, yes! perfect!!
@@ -2677,7 +2805,7 @@ start
         it will not take long to prepare, so--ready yourselves!
             EXEC::vnp({cavik: "hide", idril: "show"})
         the spine is just down the next corridor...
-        plant a bomb there, do the same in the heart, 
+        plant a charge there, do the same in the heart, 
         then circle around and detonate from the lesser mind, yes?
         it will probably be safest there, since it is opposite to our targets
         
@@ -2934,6 +3062,7 @@ foes
         the chamber twisted without breaking, changing into different shapes
         and then they came through, these shapes of dull-light
         appearing like qou or golem, i think--but they were hazy, inaccurate
+        they defended these enormous veins made of the same material
         we struck them, they fell, they disappeared as if they were never here...
         but more formed, effortlessly, until vekoa cast us aside
 
@@ -2968,7 +3097,7 @@ foes
         and the distortion of the chamber really sounds like yutzi's displacement...
         a rarely observed phenomenon in overlaps, where anchoring tendrils, ah, 'displace' physical space
         really, it is more of a 'pulling' than a 'displacement', if the theory is right
-        but i will spare you all the specifics, hehe
+        but i will spare you all the technical specifics, hehe
         it would have to be that the ceremony was specifically, consciously grasping the chamber you were in
         like grabbing a <span definition="TRANSLATION FAILED::CAUSE:'no equivalent internal meaning';'no relevant inherited context'::ROMANIZATION FAILED">A6qw­ý¢è</span> through its protective membrane, but without breaking it
     
@@ -3084,7 +3213,7 @@ pods
         as if time were not running out
         cavik seems to understand my frustration before i even say anything
         he pauses, giving idril a little fold of his receptors, as if to urge her onward
-        quietly requesting her help with their bomb
+        quietly requesting her help with their explosive
     
     idril
         oh, hehe, right...
@@ -3111,7 +3240,7 @@ ceremony
     
     cavik
         oh! it was the distortion on the swarm displays...
-            EXEC::vnp({cavik: "focus"})
+            EXEC::vnp({cavik: "focus"}) 
         there is this unmistakable pattern that forms whenever corru tries to represent the dull plane
         it is pale, usually with flickering black stripes
         i saw it often during my work on the life-pod project!
@@ -3401,7 +3530,7 @@ start
     miltza
         without any doubt, akizet
         it is true that i dream of a peaceful joining with the meteorite,
-        but this... 
+        but this...
         this is not how it should be
 
     RESPONSES::akizet
@@ -3465,7 +3594,6 @@ go
     akizet
         and tozik...
             EXEC::vnp({tozik: "focus"})
-        i am sure idril could use your help preparing here
         are you certain you are well enough to continue fighting?
     
     tozik
@@ -3473,10 +3601,41 @@ go
         if i am lost, then i would have my final θwinks be in service of our plan
         
     RESPONSES::akizet
-        then let us go<+>END
+        then let us go<+>hallenter
+            FAKEEND::continue
             EXEC::change("PAGE!!e4prog", 5);changeStage("hall_dull-spine");vn.done()
 
+hallenter
+    sourceless
+        the hall is dark, twisted, the dull light failing to illuminate as normal light may
+        at this edge of the silence, a thought occurs to me...
+
+    akizet
+        ...velzie may shatter our path in any number of ways
+        idril, karik, and the critical pieces of our plan,
+        i would not risk their safety - they must stay behind
+        and given the overlap can separate us unexpectedly...
+        two should remain, should the worst come to pass
+
+    sys
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only the first four party members will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+        upcoming foes are hardy but few
+
+    sys
+        END::
+
+    RESPONSES::akizet
+        continue as-is<+>END
+        coordinate<+>END
+            FAKEEND::(open party menu)
+            EXEC::cutscene(true);env.partyPending = true;
+
 SKIP::change("PAGE!!e4prog", 5);changeStage("hall_dull-spine");vn.done()
+END::env.partyPending == true ? (cutscene(false), togglePartyMenu(), env.partyPending = false) : false
 `)
 
 /* 
@@ -3485,46 +3644,60 @@ SKIP::change("PAGE!!e4prog", 5);changeStage("hall_dull-spine");vn.done()
 env.dialogues["spine"] = generateDialogueObject(` 
 start
     sourceless
-        beyond this hideously distorted door is our first stop - the spinal link
-        more of those creatures must linger beyond, surely standing guard
-        maybe simply existing to expand the ceremony
-        or maybe vekoa prepared them to stop us should we have found our way through?
-        ...but from doing what? surely they cannot simply be here to kill us
-        and she cannot know of our new plans already
-        does she really think these things will stop us so easily?
-        after all, she seems entirely capable of reason
-        so why does she not simply destroy us all herself, as she did itzil?
-        are we so small a threat to whatever she is doing,
+        beyond this hideously distorted door is our first stop - the archival spine
+        the critical base of all knowledge the embassy has ever carried,
+        host to the entire archival system, carrying such incredible fruits
+        our momentum has carried us ahead so quickly,
+        fast enough that, only now...
+        the weight of what will be lost from the spine's destruction causes a brief hesitation
+        so many discoveries, memories, brilliant works in progress...
+        ...
+        but it must be done if we are to save the minds that bestowed them
+        in our infinite θdeaths, it can all be formed again
+        regardless, the writhing light suggests infestation
+        limbs of the ceremony surely linger within, feeding from the connection
+        more illusions must await to stop us, too
+        after all--vekoa cannot know our plan, only that we have one direction to go
+        but i must wonder...
+        the ease with which vekoa dispatched our golem haunts me still
+        she could simply eliminate us, instantly, as she did it
+        are we so small an apparent threat to whatever she is doing...
         that she does not care to deal with us directly?
-        but there is no time to interrogate these thoughts further
-        we must enter and deal with our foes
-        stepping closer to open it, a flare of indistinct thoughts and senses burn through my mind
-        as cavik said - the timestopper reconnected!
+        what will she do when that changes...?
+        but enough thought and hesitation
+        we must enter and deal with our foe
+        stepping closer to access the door, a flare of indistinct thoughts and senses burn through my mind
+        as cavik said - the timestopper reconnects as we leave the silence's threshold!!
     
     timestopper
         hello?
         ok yes yes
         we are good
-        everyone - we need only remove their presence, move in a bomb, and continue
+        those who stay behind, remain at the edge of the silence
+        your focus and guidance should serve us well even if no surprise attack comes
+        everyone else - we need only clear the area, move in a charge, and continue
         
     RESPONSES::akizet
         enter and fight!!<+>END
             FAKEEND::start combat
-            EXEC::env.grm.combat("ep4_spine")
+            EXEC::env.grm.combat("ep4_sping")
 
-SKIP::env.grm.combat("ep4_spine");
+    RESPONSES::sys
+        delay<+>END
+
+SKIP::env.grm.combat("ep4_sping");
 `)
 
 env.dialogues["archivist"] = generateDialogueObject(`
 start
     sourceless
-        it is as we expected - another warped space
+        as we expected - the chamber is infested, coiled in barely perceptible tendrils
             EXEC::env.rpg.classList.add("hideteams");env.rpg.setCam({playerRotation: -45, playerTilt: -30})
-        the true shape of the room is here, somewhere, but beyond us
+        its shape is warped, likely condensed slightly by the overlap's nature
         strangely, there are no foes to be seen...
-        but a lifted section of the chamber hangs in the center,
-        the spinal tether - a lift to the base of the archival system above
-        but paused, out of reach
+        but a platform hangs in the center
+        the spinal tether - a lift to the archival system's tunnels above
+        raised, out of reach
         and a shape moves around its surface, half obscured from our angle
         another survivor?
         could it be like karik said? are they evacuating, still?
@@ -3539,36 +3712,81 @@ start
         i have disturbed something
         the shape upon the tether steps closer to its edge, staring down at us
         it is malvi--the lead archivist, receptors drawn back with a sort of annoyance
-            EXEC::env.rpg.actors.spine_archivist.piece.focusOnTile();env.rpg.setCam({x: 11, y: 7, playerRotation: -45, playerTilt: -30})
+            EXEC::env.rpg.actors.spine_archivist_ing.piece.focusOnTile();env.rpg.setCam({x: 15, y: 3, playerRotation: -45, playerTilt: -30})
         still living, despite all of this?!
     
+
+____SHOWIF::["PAGE!!archivistgreeter", "cavik"]
     cavik
         malvi!
         come, quickly, we have a--
+
+    sourceless
+        gakvu is the first to grasp that something is wrong, silencing us with an impulse:
+            SHOWIF::"pa|gakvu"
+        gakvu, observing through our senses, is quick to silence us with a wordless impulse:
+            SHOWIF::["pa|gakvu", false]
+        malvi is not well
+
+____SHOWIF::["PAGE!!archivistgreeter", "akizet"]
+    akizet
+        malvi?
     
     sourceless
-        gakvu is the first to grasp that something is wrong, warning us with an impulse
-        cavik falls silent, and before we have time to investigate...
+        another capable set of claws! velzie must be distracted
+        we must get them to safety quickly
+
+    akizet
+        malvi!! descend, quickly, we--
+
+    sourceless
+        gakvu is the first to grasp that something is wrong, silencing us with an impulse:
+            SHOWIF::"pa|gakvu"
+        gakvu, observing through our senses, is quick to silence us with a wordless impulse:
+            SHOWIF::["pa|gakvu", false]
+        malvi is not well
+
+
+____SHOWIF::["PAGE!!archivistgreeter", "tozik"]
+    sourceless
+        tozik's receptors twist with dread as he and malvi's gazes meet
+        his entire body tenses, some realization forming ahead of the rest of us
+        when he finally speaks, his voice is flat, low:
     
+    tozik
+        malvi is not alone        
+____END
+    
+____SHOWIF::"PAGE!!archivistgreeteristozik"
+    archivist
+        «½8ësearch teamÍ»?
+        }ÿyou se²=n´ow
+        —turn•,b>}&k
+        &w¤i‡
+____SHOWIF::["PAGE!!archivistgreeteristozik", false]
     archivist
         «½8ësearch teamÍ»?
         }íspeaks clearlyÿB  ut²åÿ±á
         ¬¨»no time for distractions
-        co m e w€ºù|±|h m e
+        —turn•,b>&w¤i‡
+____END
 
     sourceless
-        faint arcs lead from their silhouette into the light
-        like tendrils of the overlap, wielding their corpse as a zuzucri might
-        or is that the contact affliction?
+        faint arcs lead from their silhouette into the dull light
+        like tendons of the overlap, wielding their corpse as a zuzucri might
+        or... is that the contact affliction?
         malvi raises their arms, claws seeming to disappear into the haze
-        and at once, illusions of golems press through the overlap around us
-            EXEC::env.rpg.spawnGolems();env.rpg.setCam({x: 11, y: 7, playerRotation: -45, playerTilt: -10});
-            WAIT::1000
+        and at once, malformed shapes split off from the veins that line the edges of the space
+            EXEC::play("dull");midCombatActorAdd(env.rpg.enemyTeam, "spine_keeper_ing", "right");midCombatActorAdd(env.rpg.enemyTeam, "spine_keeper_ing", "right");midCombatActorAdd(env.rpg.enemyTeam, "spine_keeper_ing", "right");ratween(env.bgm, 1)
+            WAIT::500
+            THEN::env.rpg.actors.akizet.piece.focusOnTile();env.rpg.setCam();
+        they crackle and twist in place until they resemble familar archival golems...
+        i will not entertain whatever this measure is
 
     timestopper
-        they are lost
-            EXEC::env.rpg.actors.akizet.piece.focusOnTile();env.rpg.setCam();
-        we must clear the area
+        we must strike--malvi is lost
+        destroy these veins
+        the golems, too, if we must
         and...
         deal with the archivist, if there is no other way
 
@@ -3580,7 +3798,7 @@ ____END
     RESPONSES::akizet
         attack!!<+>END
             SHOWIF::["gameplay_off", false]
-            EXEC::env.rpg.classList.remove("hideteams");env.rpg.grid.querySelector('.spinecolumn').style.backgroundImage = "url(/img/local/embassy/mind/spinering_dither.gif)"
+            EXEC::env.rpg.classList.remove("hideteams");env.rpg.grid.querySelector('.spinecolumn').style.backgroundImage = "url(/img/local/embassy/mind/spinering_dither.gif)";env.rpg.actors.akizet.piece.focusOnTile()
             FAKEEND::(begin)
         attack!!<+>nogame
             SHOWIF::["gameplay_off", true]
@@ -3588,60 +3806,60 @@ ____END
     
 nogame
     sourceless
-        together, we fight off these illusions, shaped like archival golems
-        a natural choice for malvi, given their position, but...
-            EXEC::flash(true)
-        is it as simple as a choice? are they taking shapes arbitrarily?
-        these beasts seem to be formed out of the dull light of the overlap
-        could they not be anything?
+        together, we fight off these golems, evading oppressive strikes from above...
+        occasionally, they were mended by colors bleeding in from beyond the overlap,
+        as if the spine's knowledge were in the very air, carving them back into working shape
+            EXEC::flash(true)        
         we destroy them, taking some hits of our own...
-            EXEC::flash(false);env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats(true)
+            EXEC::env.rpg.enemyTeam.members.forEach(m=>m != env.rpg.actors.spine_archivist_ing ? m.hp = 0 : false);env.rpg.actorList.find(a=>a.base.slug == "ceremony_tendril_plus").hp = 30;updateStats();advanceTurn();env.rpg.grid.tileEffects.filter(e=>e.slug == "telegraph").forEach(e=>env.rpg.grid.deleteTileEffect(e))
         
     RESPONSES::akizet
         ...<+>CHANGE::archivist2
+            EXEC::flash(false)
             FAKEEND::(continue)
 `)
     
 env.dialogues["archivist2"] = generateDialogueObject(`
 start
     sourceless
-        the archivist recoils in pain, claws drawn back to their sides
-            EXEC::env.rpg.archivistCutscene(1);env.rpg.grid.tileEffects.forEach(e => env.rpg.grid.deleteTileEffect(e))
+        with enough damage to what must be the archivist's efforts,
+            EXEC::env.rpg.classList.add('hideteams');env.rpg.p2 = true
+        they seem to recoil in pain
         their shape writhes in the light of the overlap,
         as if we have been striking them this whole time
     
     archivist
-        ¤±Òÿ=WA ST ING %‰¶š TI ME
         [¶ÿ=>drastic measure)%‰
         ÷no!²²ave rs i on¬_.g?ç
-        )§=X«všrpers®¿æshÞ»
 
     sourceless
-        they step forward, tumbling off the tether
-            EXEC::env.rpg.archivistCutscene(1)
-        and when they strike the ground...
-            EXEC::flash(true)
-        the overlap twists, coils tighter around itself
-            EXEC::env.rpg.classList.remove('spinelift', 'ep4scene');env.rpg.archivistCutscene(2)
-        malvi is drawn back to their feet by what wields them
-            EXEC::env.rpg.actors.spine_archivist.piece.focusOnTile()
-        i mistake their stance at first for anger, senseless fury
-        but in their twisted receptors is a great fear
-        this is no husk...
-        are they being animated against their will?
-        perhaps we might be able to help, but...
-        they clearly intend to kill us
-        we can only defend ourselves
+        malvi steps forward, dropping off the tether
+            EXEC::env.rpg.archivistCutscene(2)
+        and with a heavy thud, their body lands, limbs and head slightly delayed
+        their arms and head shiver and twitch unnaturally, the infested form emanating a soundless thought
 
-    sys
-        ANALYSIS::'context shift'
-        NOTICE::'entity ARCHIVIST';'acts twice'
+    archivist
+        )§=X«všrpers®¿æshÞ»
+        ¤±Òÿ=WA ST ING %‰¶š TI ME
+        …Ô;»CO M E W€ºù|±|H M E
+
+    sourceless
+        i mistake their stance at first for anger, senseless fury
+        but as the twitching calms, it is closer to a frustration turning to worry
+        clearly we have made enough of an impact to demand direct attention
+        though driven by some alien conviction, this is truly no husk... 
+        could we possibly help them??
+        there is so little we know about this, that no potential measures follow that thought
+        and they clearly intend to kill us...
+        or worse, if their still-living but unreasonable state is sign enough
+        we can only defend ourselves
+            EXEC::env.rpg.halt = false
             
     RESPONSES::akizet
         attack!<+>END
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", false]
-            EXEC::env.rpg.halt = false;if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove('hideteams')
+            EXEC::env.rpg.halt = false;if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove("hideteams")
         attack!<+>nogame
             SHOWIF::["gameplay_off", true]
             FAKEEND::(continue)
@@ -3649,39 +3867,116 @@ start
 nogame
     sourceless
         malvi, or... whatever wields them,
-        is vicious, wild
+        is calculated at first, drawing mass from the ceremony...
+            EXEC::useAction(env.rpg.actors.spine_archivist_ing, env.ACTIONS.special_archivist_raise)
+            WAIT::1500
+        shaping it into more golems to strike us, 
+            WAIT::1500
+        while using their many arms to keep us back from the last vein
+            WAIT::1500
+            EXEC::env.rpg.actors.spine_archivist_ing.piece.focusOnTile()
+        but we eventually tear it down...
+        the light of the overlap suddenly fades
+            EXEC::env.rpg.archivistCutscene(3);env.rpg.grid.tileEffects.forEach(e => env.rpg.grid.deleteTileEffect(e))
+        those veins have surely curled away to bleed and die in a place we cannot perceive
+        and malvi loses all reason, suddenly and visibly possessed of a senseless rage
+        or--is that fear? the way their body distorts makes their expression nigh unreadable
+        they are upon us quickly, frighteningly,
         their many claws allowing them to strike constantly, possessed of some endless energy
-        all while they seem to call invisible limbs, surely extensions of the ceremony, to lash out at us
         we may be conflicted, but there is no mercy here
-        malvi is stopped through relentless attacks of our own
+        malvi is stopped through relentless attacks of our own...
             EXEC::env.rpg.halt = true;env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats(true)
         
     RESPONSES::akizet
         ...<+>CHANGE::spine_clear
-            EXEC::env.rpg.halt = false;closeCombat(env.rpg.enemyTeam);flash(true)
+            EXEC::env.rpg.halt = false;closeCombat(env.rpg.enemyTeam);flash(true);change("PAGE!!archdeath", "a")
             FAKEEND::(continue)
+`)
+
+// if you kill the veins first
+env.dialogues["archivist3a"] = generateDialogueObject(`
+start
+    sourceless
+        when the last vein falls, the visible overlap suddenly fades
+            EXEC::env.rpg.classList.add('hideteams');env.rpg.p3 = true
+        the masses that surround us, the tendrils dancing in the air overhead--
+        all disappear, the light illuminating them snuffed out
+            EXEC::env.rpg.archivistCutscene(3)
+        malvi is the sole source of this dull light now,
+            EXEC::env.rpg.actors.spine_archivist_ing.piece.focusOnTile()
+        gripping their floating head in something between agony and terror
+    
+    archivist
+        NX&–½…WH,™Y
+        ——ⱤEMŒM BEɌ¾”
+        A-´#&ST:°¢]
+    
+    sourceless
+        whatever sparse knowledge we could sift from their strange thoughts is fading beneath noise
+        and their stance shifts, claws curling in rage--
+        we are no longer a mere annoyance
+            
+    RESPONSES::akizet
+        finish it<+>END
+            FAKEEND::(continue)
+            EXEC::env.rpg.halt = false;if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove('hideteams');change("PAGE!!archdeath", "a")
+`)
+
+// if you kill the archivist first
+env.dialogues["archivist3b"] = generateDialogueObject(`
+start
+    sourceless
+        malvi's form falls apart fully, arms torn away, bleeding...
+            EXEC::env.rpg.classList.add('hideteams');env.rpg.grid.tileEffects.forEach(e => env.rpg.grid.deleteTileEffect(e))
+        the ceremony's tendrils cannot hold their manipulated form together any longer
+        and in their absence, the beastly masses and constructs they guided seem lost
+        we make quick work of the remaining vein...
+            EXEC::flash(true)
+            WAIT::1500
+            THEN::env.rpg.archivistCutscene(3);ratween(env.bgm, 0.5)
+        and when it falls, the visible overlap suddenly fades
+            WAIT::1500
+            THEN::flash(false)            
+        the masses that surrounded us, the tendrils dancing in the air overhead--
+        all disappear, the light illuminating them snuffed out
+        and... it is silent
+            
+    RESPONSES::akizet
+        ...<+>CHANGE::spine_clear
+            FAKEEND::(continue)
+            EXEC::env.rpg.halt = false;if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove('hideteams');change("PAGE!!archdeath", "b")
 `)
 
 env.dialogues["spine_clear"] = generateDialogueObject(` 
 start
+____SHOWIF::['PAGE!!archdeath', 'a']
     sourceless
-        when malvi falls, the distortion fades, drawn into itself
+        when malvi falls, the distortion twists away and into itself, 
             EXEC::flash(true)
-        for an instant, i could see their limbs being pulled in different directions
+        a maneuver my mind struggles to truly comprehend
+____SHOWIF::['PAGE!!archdeath', 'b']
+    sourceless
+        the distortion twists away and into itself, a maneuver my mind struggles to comprehend
+            EXEC::flash(true)
+            WAIT::1000
+            THEN::closeCombat(env.rpg.enemyTeam)
+____END
         and when my vision stabilizes... the spinal root is dark
             EXEC::env.embassy.slowCam();change("PAGE!!e4prog", 6);changeStage("grm_spine");setCam({x: 1, y: 8, rotation: -90});
-        the archivist's body lies lifeless - more mangled than we left it, curiously
+        the archivist's body lies lifeless, the only remnant of what held this place
             EXEC::setCam({x: 2, y: 8, rotation: -135});
-        as if the receding overlap tore something within them away
-        could a mindcore still be within? some remnant?
+        it is more mangled than we left it, curiously... 
+        as if the overlap's recession tore even more away
+        could a mindcore still be within? some fragment we could save?
         and the tether has fallen--or was it on the ground the whole time?
-        even after the overlap's recession, i still feel it...
+        even with the overlap pressed back, i still feel it...
             EXEC::setCam({x: 3, y: 8, rotation: -90, height: 1.7, offsetCamera: 'rotateX(20deg)'});
         a physical uncertainty at the edge of my senses
         where does the room truly end and begin?
             EXEC::setCam({x: 5, y: 8, rotation: -20});
         our victory is but a stone dropped in water
-        rippling the surface of the overlap, revealing what lies below, but soon to settle again
+        rippling the surface of what drowns this place,
+        revealing the physical reality that lies below, briefly, but... soon to settle again
         still, the critical parts we have come to detonate are within plain view
             EXEC::setCam({x: 6, y: 6, rotation: 45});
         these spinal roots, connecting to the great pool of knowledge beneath our feet,
@@ -3701,7 +3996,7 @@ start
     
     timestopper
         with me, everyone
-        we cannot let them see the bomb being set!!
+        we cannot let them see the charge being set!!
     
     sourceless
         as i step out to face whatever opened the door, i see...
@@ -3734,8 +4029,9 @@ start
         with a focusing of my eyes, i see a vague shimmer...
         just in time for it to flicker away, revealing our qou
             EXEC::vnp({telyu: "show far", bg: true})
-        a cloaking skin! of course! where did she find that...?
-        and a tuvazu-tail, just as karik described...
+        a cloaking skin! of course! fortuitous, if strange!
+        with it deactivated, her garb and striking receptor decoration brings to mind entertainers from my youth
+        and she bears a tuvazu-tail, just as karik described...
     
     akizet
         yes! hello! are you--telyu?
@@ -3750,8 +4046,8 @@ start
 
     sourceless
         her eyes flick up to the imperceptible ceiling
-        it is bathed in darkness, yet still lit with a dull haze
-        like smoke gathering in a cave, creeping closer to suffocate us
+        it is bathed in darkness, obscured further by a dull haze
+        like smoke gathering at the top of a cave, creeping closer to suffocate us
     
     telyu
         i do not know what is happening, but...
@@ -3828,7 +4124,7 @@ start
         but, where to start?
         well, we should speak of our new plan, first!
         come, look at what we have created! just over there, by bozko, the big kiv
-        yes, we are planting bombs to sever the resources that...
+        yes, we are planting explosive charges to sever the resources that...
     
     sourceless
         as telyu carries them away, and the plan is outlined further,
@@ -3851,7 +4147,8 @@ start
         all right...
         once idril is done, we will be just a few steps away from victory
         let this cloud drift by
-        there is only the explosive placement in the heart, then the lesser mind...
+        all that remains is the explosive placement in the heart, then the lesser mind...
+        not much further now
     
     sys
         NOTICE::'marked entities contain dialogue unique to this stream segment'
@@ -3866,14 +4163,14 @@ SKIP::change("PAGE!!e4prog", 7);changeStage("grm_spine");refreshStage();vn.done(
 `)
 
 
-/**** !P7 - Spine's optional dialogues and bomb/setout ****/
+/**** !P7 - Spine's optional dialogues and bomb/setout ****/ 
 env.dialogues["spine_kartel"] = generateDialogueObject(`
 start
     sourceless
         near the door to the heart's hall, telyu and karik linger
             EXEC::vnp({karik: "show", telyu: "show", hideStage: true})
         she sits against the wall, holding an arm up for karik to speak upon
-        before they are audible, i see karik swatting at the air as if punching,
+        before they are audible, i see karik swatting spindly limbs at the air as if punching,
         surely recounting our victory in golem maintenance
         telyu snickers, receptors slightly curled with contentment
 
@@ -3985,9 +4282,8 @@ start
     
     sourceless
         where gakvu might be annoyed at what surely has been incessant questioning,
-        miltza is clearly entertained, answering kindly
-        despite the circumstance, she is without fear for the first time since we met
-        at least, for this θblink
+        miltza is mildly entertained--confident, even
+        her tension remains, but this is clearly a welcome distraction
 
     miltza
         ahehe, well, there are internal theories, yes...
@@ -3995,8 +4291,8 @@ start
         but i have no particular holding to any one
         really, it should make no difference
         an ancient creature, a construct, some fragment of a greater origin...
-        regardless of any descriptor, should we not want to know what its purpose is?
-        though, if all of this is possible from only a briefly emitted signal from it...
+        regardless of any descriptor, should we not want to establish contact?
+        though, if only a briefly emitted signal from it caused all this...
 
     sourceless
         she shifts uncomfortably, looking away from cavik
@@ -4015,14 +4311,16 @@ start
         what do you make of these entities we face?
     
     miltza
+        what--what do i make of it??
         i am only a sculptor, akizet, my involvement aside
             EXEC::vnp({miltza: "focus"})
+        all i know about the dull plane and dull constructs is what it takes to travel...
         but after all we have seen, 
         i suspect that whatever directs the ceremony is absorbing any thought it can
         memories, images of self, schematics for golems from the spine's vast knowledge...
         after all, we stand atop a lake of memories and designs!
         to what end, i cannot say, really
-        but that is how it must be able to weave such familiar shapes
+        but that is surely why we have seen such familiar shapes
     
     cavik
         but this does line up with your expectation of awakening, right?
@@ -4041,9 +4339,11 @@ start
         if they are truly qou, the same we used to work with,
         why would they act this way? 
         how could they have changed so much?
-        malvi just tried to kill us all
-        without hardly any attempt to communicate...
+        malvi just tried to kill us all!
+        their attempts at communication, if that is what it was...
+        there was little sense to be found
         where is the reason? the kindness?
+        the willingness to simply sit and negotiate?
         i will not lie and say i do not wish for an awakening...
         the possibility to join with the ancient mind
         but...
@@ -4249,7 +4549,7 @@ start
         idril withdraws from the box to think for a θblink
     
     idril
-        like prying open a very resilient gate!
+        like prying open a very resilient shell!
             EXEC::vnp({idril: "focus"})
         an incision is made, in this case by the core,
         and you stick something into it, and pry one way or the other
@@ -4257,10 +4557,12 @@ start
         and sometimes getting pushed back by someone on the other side! ahaha
         but eventually, the gate is torn open
         that is the ceremony! yes!
-        a many-limbed gate-opener!
+        a many-limbed shell-cracker!
         the overlap really is just a place where the cracks have been pulled wider
-        you should read about ceremonial operations sometime!
-        they are so fascinating!
+        you should peruse some cysts about ceremonial operations sometime!
+        an occupation so incomprehensible to those outside, 
+        it is almost only explained through metaphor!
+        fascinating and entertaining in equal measure, ahahaha
     
     sourceless
         idril returns to wiring her explosives
@@ -4280,7 +4582,8 @@ start
         i...
         there is so much to process
         velzie twists our path so much, it is hard to even think
-        but... for now, yes
+        but...
+        i am moving
 
     RESPONSES::akizet
         thanks<+>END
@@ -4423,52 +4726,46 @@ SKIP::setCam();change("PAGE!!e4prog", 8);changeStage("hall_spine-heart");vn.done
 /**** !P8 / !P9 - the heart ****/
 env.dialogues["heart"] = generateDialogueObject(` 
 start
-    sourceless
+    sourceless 
         like the spine's hall, this door warps in a similarly unsettling way
         it reforms slightly as we approach, our presence acting like cavelights in darkness
         illuminating how it should appear, pulled away from the dull's gray light
-        another threshold... another chamber coiled in the ceremony's parasitic tendrils
+        another threshold... another chamber coiled in the ceremony's parasitic veins
         we will deal with them
         there is no time for doubt--not anymore, and not after what we have seen
-        
+
+    sys
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only the first four party members will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+        upcoming foe possesses large amount of health; rapidly regenerates
+
+    sys
+        END::
+
     RESPONSES::akizet
-        proceed<+>enter
-            FAKEEND::start combat
+        continue as-is<+>enter
+            FAKEEND::(start combat)
             EXEC::flash(true)
+        coordinate<+>END
+            FAKEEND::(open party menu)
+            EXEC::cutscene(true);env.partyPending = true;
 
 enter
     sourceless
         we push through the haze...
-            EXEC::env.grm.combat("ep4_heart");env.rpg.classList.add('hideteams')
+            EXEC::env.grm.combat("ep4_heart_ing");env.rpg.classList.add('hideteams')
             WAIT::500
         to find a strange clearing
             EXEC::flash(false)
-        barely visible dead containers line its distorted edges
-        it must be that these are grasped by vekoa, probably being consumed...
-        suddenly, a flare of panic passes through the timestopper
-        as tozik peers into the haze beyond
-    
-    tozik
-        it was waiting for us
-            EXEC::env.rpg.halt = true;env.rpg.settings.turnCallback(env.rpg.enemyTeam.members[0], env.rpg.allyTeam.members[0], true)
-        brace yourselves - an impact impends
-            EXEC::env.rpg.grid.advanceTileEffects({prevActor: env.rpg.enemyTeam.members[2], actor: env.rpg.allyTeam.members[0]});env.rpg.grid.tileEffects[1].tiles[0].focusOnThisTile()
-    
-    sourceless
-        i do not question him
-            WAIT::400
-        all of us brace instantly, and as he said--
-            EXEC::env.rpg.grid.runTelegraphsInQueue()
-            WAIT::4000
-            AUTOADVANCE::
-        as if we stand near the steps of a great veilk,
-        we are tossed about, something manipulating the chamber's physicality
-    
-    sys
-        ANALYSIS::'context shift'
-        NOTICE::'ally team turn start is subject to unresistable strength 2 knockback'
-            EXEC::env.rpg.settings.turnCallback(env.rpg.enemyTeam.members[0], env.rpg.allyTeam.members[0], true)
-
+        we stand on something solid, but this chamber cannot truly be the heart
+        a massive structure stands in the center, 
+        writhing and churning as it pulls resources from something beneath
+        with all its revolting tendrils and siphons
+        we clearly must tear it all apart
+        
 ____SHOWIF::"gameplay_off"
     sys
         NOTICE::"gameplay is presently disabled";"re-enable in SYS menu if undesired"
@@ -4476,105 +4773,39 @@ ____END
 
     RESPONSES::akizet
         fight!!<+>END
-            EXEC::env.rpg.halt = false;showActions(env.rpg.currentActor);env.rpg.currentActor.piece.startMovement();env.rpg.classList.remove('hideteams');
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", false]
+            EXEC::env.rpg.classList.remove('hideteams')
         fight!!<+>nogame
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", true]
     
 nogame
     sourceless
-        another close fight, headed by a singular brutish creature
+        this parasitic limb of the ceremony thrashes and wrests the space into chaos
             EXEC::flash(true);env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats()
-        charging about the space, threatening to throw us into the destructive distortion at its edges
-        all while shapes beyond our perception thrash us to and fro
-        but with my direction - we manage to repel them with our own brutal approach
-        
-    RESPONSES::akizet
-        ...<+>END
-            EXEC::env.rpg.settings.manualStopCallback(env.rpg.enemyTeam)
-            FAKEEND::(continue)
-`)
-
-env.dialogues["heart_wall"] = generateDialogueObject(` 
-start
-    sourceless
-        with these lesser instruments of vekoa broken apart,
-            EXEC::env.rpg.grid.style.setProperty("--playercontrol-tilt-raw", 20);env.rpg.grid.style.setProperty("--playercontrol-rotation-raw", -315);env.rpg.settings.turnCallback(env.rpg.enemyTeam.members[0], env.rpg.allyTeam.members[0])
-        the chamber folds into itself, rotated in a way i cannot make sense of
-        becoming a similar space, but now divided by a dull shape
-    
-    akizet
-        what is this??
-    
-    tozik
-        have you not been seeing these?
-
-    sourceless
-        he speaks as if we cannot see the ground beneath us
-        an impulse of confusion is all he needs to begin explaining
-    
-    tozik
-        it is from these limbs that vekoa's aggressors break off from
-        i have been noticing them all around us, above, in the distance...
-        so i believe them to be the ceremony's anchoring limbs
-        this is one of the only major ones intersecting this particular space
-        if we sever it, i expect the overlap to recede
-    
-    gakvu
-        you <em>see</em> them?
-    
-    sourceless
-        gakvu's worry is not unfounded
-        his affliction is undoubtedly granting him some strange new perception
-        but worry can wait
-    
-    cavik
-        ohh--if it is an anchoring limb, then it is stationary!
-        i can attach my bombs directly to it, they will work much better!
-    
-    akizet
-        then do it!
-
-    sys
-        ATTENTION::'entity CAVIK';'enabled additional actions'
-        NOTICE::'PLANT';'attach explosive to target'
-        NOTICE::'DETONATE';'activate explosives'
-        NOTICE::'extremely effective against destructibles'  
-        
-    RESPONSES::akizet
-        proceed<+>END
-            SHOWIF::["gameplay_off", false]
-            FAKEEND::(continue)
-            EXEC::var i = env.rpg.turnOrder.findIndex(a => a == env.rpg.actors.cavik);env.rpg.currentActorIndex = i - 1;advanceTurn();
-        proceed<+>nogame
-            FAKEEND::(continue)
-            SHOWIF::["gameplay_off", true]
-    
-nogame
-    sourceless
-        through cavik's clever application,
-            EXEC::flash(true)
-        this obstacle, a greater shape that only slightly intersects with our vision...
-        it is blown apart
+        threatening to throw us into sharp and alien limbs, or further beyond into the destructive distortion at its edges
+        but with my direction - we manage to tear its siphons apart, beat away its tendrils...
+        and soon, tear its true flesh asunder entirely
         
     RESPONSES::akizet
         ...<+>CHANGE::heart_clear
             FAKEEND::(continue)
+
+END::env.partyPending == true ? (cutscene(false), togglePartyMenu(), env.partyPending = false) : false
 `)
 
 env.dialogues["heart_clear"] = generateDialogueObject(` 
 start
     sourceless
-        with the last of our strikes, the vein splits apart under some incredible tension
+        with the last of our strikes, the parasite splits apart under some incredible tension
             EXEC::flash(true)
             WAIT::400
             THEN::closeCombat(env.rpg.enemyTeam)
-        the room's color and shape swirls back to its true form
-        or... it should have
+        the room's color and shape swirls back to its true form...
+        or--it should have
             EXEC::change("PAGE!!e4prog", 9);changeStage("grm_heart");pauseSwapCam();setCam({x: 4, y: 3, rotation: -145});
-        but the chamber returns to only the barest memory of how it must have been
+        instead the chamber returns to the barest memory of how it must have been
         the only sane part of this room is the portion of the spireheart that intersects with it
             EXEC::setCam({x: 5, y: 3, rotation: -170, offsetCamera: "rotateX(20deg)", height: 1.75});
         and what a wretched state it is in
@@ -4587,7 +4818,7 @@ start
         in some capacity
 
     akizet
-        simply destroying these creatures helped in the spine
+        simply destroying the veins helped in the spine...
         if this chamber is not returning to normal after an even greater blow...
         what does that mean?
     
@@ -4646,9 +4877,8 @@ start
         just as another precaution, i have been breaking these projectors...
         the θwindows, they have the capability to give two-way sensory data
         we may stand within the overlap, but the fewer methods vekoa has to watch us, the better!
-        already got the one in the spine!
-        but i am trying to sever a vein i know is in here, and my claws are not sharp enough!
-        my qou-body is the fixed-state type, so i cannot resolve this simply...
+        i am trying to sever a vein in here, but my claws are not sharp enough...
+        my qou-body is the fixed-state type, so i cannot resolve this simply
         velzie saw fit to make <em>this</em> vein in particular reinforced
     
     sourceless
@@ -4682,12 +4912,10 @@ start
     telyu
         oh, do not look so shocked!
             EXEC::vnp({telyu: "show", hideStage: true})
-        i told him i would not say anything about that part, but,
-        well, who could keep quiet about this, right?
-        i was always pretty sure something was going on...
-        you should have seen what they had me and my team up to during the first veil,
-        before we made public contact with the cousins, you know
-        but, anyway, i was curious...
+        i told him i would not say anything, but,
+        velzie's light pours over us for a reason
+        to stay silent would be to squander the stage
+        so, i am curious...
         do you blame yourself for all of this?
         
     sourceless
@@ -4695,7 +4923,8 @@ start
         the room is so warped, these θwindows must hardly be a concern at all
         did she simply want to get me alone?
         then--what is it exactly within this θwindow that i am puncturing?
-        is this a trap? does she blame me? is this vengeance for her lost team?
+        is this a trap? does she blame me?
+        is this vengeance for her lost team? is she as vengeful as itzil?
         what happens when i let go?
     
     akizet
@@ -4707,47 +4936,60 @@ start
     
     sourceless
         surely she can see the terror in my receptors
-        yet, i cannot make out anything in hers
-        she is neutral, unaggressive, perhaps slightly sad--why does she inspire such fear?
-        perhaps it is because no well-meaning materials operative still wears a cloaking skin...
+        yet she is neutral, perhaps solemn--why does she inspire such fear?
         
     telyu
-        it is pretty clear that you do
-        look at you! ahaha
-        but i have not made up my mind yet
+        well, look at you! ahaha
+        
+    sourceless
+        in her tone, her appraisal, seems a strange sense of knowing
+        yes, that is it - that is what unsettles me
+        this clear sense of familiar certainty
+
+    telyu
+        akizet, you know...
+        you should have seen what they had my team up to during the first veil
+        before we made public contact with the cousins
+        moving things into place, inside, outside...
+        all for our big performance to go well
         ...
-        really, to me...
-        it sounds like you were used
+        when i look at you, 
+        i see an actor moved into place
         someone cut beneath velzie and manipulated your role
         making you do what they wanted...
         so they would not have to take the fall that you will
-        your team can forgive you all they want,
-        but it is all misplaced
-        for i am sure whoever truly set this trap for you is quietly celebrating
+    
+    sourceless
+        telyu's expression shifts, spite peeking through her mask
+        her eyes flick towards gakvu and miltza, only for a θblink
+
+    telyu
+        i am sure whoever truly set this trap for you is quietly celebrating
         while all of my friends might be dead, or worse
     
     sourceless
         my gaze drifts away
             EXEC::change("PAGE!!e4prog", 10);refreshStage({noFlash: true})
         this is something i had not truly considered
-        the conflict is real, as miltza confirmed
-        after all, she was uninvolved in everything that came before, so she had no way of knowing
-        so what is telyu really saying, here? what does she know, anyway?
-        how could anyone have predicted i would reach for that converter to give to gordon?
+        was the care of that message a facade?
+        but how could anyone have predicted i would work with the cousins??
         it is impossible to have so much foresight
         she glances towards my claws, still submerged in the θwindow
             EXEC::vnp({telyu: "show shiftleft", hideStage: false, bg: false})
     
     telyu
-        do you not think it is a little strange how both of your involved friends forgave you instantly?
-        you probably know them better than me, maybe it is not my place to say
+        do you not think it is a little strange,
+        how both of your involved friends forgave you instantly?
+        perhaps they simply see the same thing i do
+        you know them better than me, maybe it is not my place to say
         i just wanted to let you know what <em>i</em> thought, from my perch in the herd
-        and you can let go of that, you know
+        in the end, this seems to be your performance
+        --and you can let go of that
         i am sure it is good and dead now
     
     sourceless
         out of precaution, suspicion, i do...
-        but i tear them suddenly, stepping back urgently,
+        i tear my claws away suddenly, stepping back urgently,
             EXEC::vnp({telyu: "hide shiftleft"});setCam({x: 12, y: 3, rotation: 0});
         as if it might explode
         but it does not
@@ -4765,14 +5007,12 @@ start
     
     sourceless
         and after my call back, i twist to face telyu
-        what a rude, upsetting thing to speak to me about - especially now!
+        what rude, upsetting things to suggest - especially now!
         i should make this known to her
         but... she is gone
             EXEC::setCam({x: 12, y: 3, rotation: 40});
-        surely to scout ahead for us, as she did not seem ill-meaning
-        but why would she say all of this to me <em>now?</em>
-    
-    sourceless
+        surely to scout ahead for us, as promised
+        a meddler, a stagehand maybe, but she does not seem ill-meaning
         i glance around the room from this vantage point, at my team as they converse
             EXEC::setCam({x: 12, y: 3, rotation: 120});
         who could gain anything from all of this happening?
@@ -4869,13 +5109,17 @@ start
         it was as if the eye of velzie itself were within claw's reach
         burning its gaze inwards, into itself, into me
         and then--i began to feel myself being dragged, drawn deeper into this vision
-        so i found my arm again, back here, and tore the connector away
+        the further i was taken, the more i felt i understood, it was so much--
+        but, i... i found my arm again, back here, and tore the connector away
     
     sourceless
         he continues to shake his head, receptors crushing backwards with despair
-        his voice wavers with such terror and sadness, the depth of which i have never seen in him
+        miltza watches with clear focus, receptors tense, but uniquely attentive
+        as he continues, his voice wavers with such terror and sadness, 
+        the depth of which i have never witnessed in him before
     
     tozik
+        all that i felt i understood slipped away quickly,
         but it still reached for me, even without the connector, and it found grasp in something
         something <em>inside my mind</em>--and it is moving, it is pulling
         the affliction, the infection we spoke of...
@@ -4931,7 +5175,7 @@ END::if(env.stage.current.markCharEvents) env.stage.current.markCharEvents();
 SKIP::playerMoveTo(7,6,"up");setCam();vn.done()
 `)
 
-env.dialogues["heart_bomb"] = generateDialogueObject(` 
+env.dialogues["heart_bomb"] = generateDialogueObject(`
 start
     sourceless
         we stand and wait, prepared for the worst--another attack, a call from cavik or bozko...
@@ -5030,7 +5274,7 @@ start
         my senses take a θblink to respond...
             EXEC::refreshStage({noFlash: true, specificPlan: "collapsing"});setCam({x: 13, y: 3, rotation: 130});env.grm.music_runningoutoftime.rate(0.5);toggleBgm(env.grm.music_runningoutoftime);env.bgm.seek(40)
         but when i recover, my movements are slowed, burdened with the weight of sludge
-            EXEC::content.classList.add('heartbreak');flash(false)
+            EXEC::content.classList.add('heartbreak', 'cull-stage');flash(false);
     
     sourceless
         the room is collapsing, filling with mixing torrents of corroyi, spireblood, water--
@@ -5057,7 +5301,7 @@ start
         i follow without question to the next hall, and the door closes quickly behind us
             EXEC::flash(true)
         the chamber is out of sight, yet murky water still twists and fades in the void beyond the walls
-            EXEC::changeStage("hall_heart-entry", false, "right", {specificPlan: "prehelping"});content.classList.remove("heartbreak");vfx({type: "flash", state: false, delay: 1000});setCam({x: 2, y: 3, rotation: 90, offsetCamera: "rotateX(20deg)"})
+            EXEC::changeStage("hall_heart-entry", false, "right", {specificPlan: "prehelping"});content.classList.remove("heartbreak", "cull-stage");vfx({type: "flash", state: false, delay: 1000});setCam({x: 2, y: 3, rotation: 90, offsetCamera: "rotateX(20deg)"})
         our door begins to bulge outwards, lights fading away, but it holds
         i get a good look at the others here... we are separated
             EXEC::setCam({x: 1, y: 5, rotation: 315})
@@ -5113,7 +5357,7 @@ start
         you may not need to if you move quickly enough
         but... the detonator is lost, so we must improvise
         on your way back around, in the spine,
-        manually set the bomb to detonate, preferably with you not in the chamber
+        manually set the charge to detonate, preferably with you not in the chamber
         then follow the path back to the lesser mind and meet us there
     
     cavik
@@ -5143,7 +5387,7 @@ start
     
     cavik
         uh... aki...
-        they are here, and we really do not have, um...
+        something is here, and we really do not have, um...
     
     akizet
         i know
@@ -5175,8 +5419,15 @@ start
         i must act now
 
     sys
-        NOTICE::'continuous combat segment approaching';'pausing stream to offer save point'
-        ADVISE::'save before advancing';'utilize PROCEED entity to save or advance stream'
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only entities MILTZA; TOZIK; CAVIK; will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+        upcoming sequence contains large targets
+
+    sys
+        END::
     
     RESPONSES::akizet
         prepare to connect<+>END
@@ -5193,8 +5444,8 @@ start
     
     sourceless
         having the permissions i need from the split team,
-        i disconnect from my external senses, focusing entirely on the connection
-        i cannot mess this up... 
+        i remove myself from my senses, focusing entirely on the connection
+        i cannot fail them... 
         no more mistakes
     
     RESPONSES::akizet
@@ -5210,81 +5461,44 @@ connect
     sourceless
         implicitly allowing my access through their connections,
         i can see the obstacles that lie ahead
-            EXEC::env.grm ? env.grm.combat("ep4_split1") : content.insertAdjacentHTML('beforeend', "<combat-scene scenario='ep4_split1'></combat-scene>");vfx({type: "flash", state: false, delay: 1000});env.rpg.setCam({x: 3, playerRotation: 0, playerTilt: -30, height: 1.5, distance: 2, detailMode: 'tiny', gridTileSize: 100, offsetCamera: 'rotateX(0deg)'});setTimeout(()=>ratween(env.bgm, 0.5), 1000);env.rpg.classList.add('hideteams')
-        a handful of vekoa's entities bar their path
+            EXEC::env.grm ? env.grm.combat("ep4_split_1_ing") : content.insertAdjacentHTML('beforeend', "<combat-scene scenario='ep4_split_1_ing'></combat-scene>");vfx({type: "flash", state: false, delay: 1000});setTimeout(()=>ratween(env.bgm, 0.5), 1000);env.rpg.classList.add('hideteams')
+        something like that parasite's membrane bars their path
 
     akizet
-        this should be trivial
-        follow my instruction
-
-    sourceless
-        as they advance, ready to fight, the door ahead...
-        it distorts, as if something is coiling around it, writhing
-        in an instant, it takes the shape of an eye
-            EXEC::midCombatActorAdd(env.rpg.enemyTeam, "split_eye", "left");vfx({type: "okidoia", state: "mild"})
-
-    sourceless quiet
-        the hall shakes, lengthens, splitting apart the clear path ahead
-            EXEC::env.rpg.longmode()
-            WAIT::3000
-        while i try to think out what to do,
-        their panic eats at my focus
-
-    miltza
-        how--?
-        this cannot be where we die!!
-
-    cavik
-        no, no, it will be okay, we just need to hold them off!!
-        um, akizet, it moved us, somehow...
-    
-    akizet
-        yes, i...
+        we must reunite - perhaps there is shelter to be found at the dull mind?
     
     tozik
-        nothing moved
-        there is just something in the way
-        do you not see it?
+        it is possible
+        but vekoa must be diverting focus to deal with us directly
+        look, there
 
     sourceless
-        tozik directs my attention with a thought
-            EXEC::env.rpg.setCam({x: 3, y: 19, playerRotation: 0, playerTilt: -30, height: 1.5, distance: 2, detailMode: 'tiny', gridTileSize: 100, offsetCamera: 'rotateX(0deg)'})
-        the gaps... they are not gaps
-            EXEC::env.rpg.classList.add("tendrilveal")
+        tozik urges the trio to advance, staring into the dull horizon behind
+        from cavik and miltza's senses, it is little more than warping light
+        but with some focus, tozik makes clear what we do not see
+            EXEC::midCombatActorAdd(env.rpg.enemyTeam, "split_advancer", "left")
+        an attention, nearly physical in its intensity, pressing against the threshold
+        furiously grasping, swallowing the space into the overlap
+        miltza stumbles away from it, horrifically startled
 
     sourceless
-        his altered sight affords worrying clarity of the situation
-        distorted barricades stand ahead
-        like fallen branches stretched out from the dull haze
-
-    tozik
-        they are large tendrils from the ceremony...
-        coiling around the hall, interfering with physical space
-        i can see it... bending... folding it into itself
-        do you see it?
+        velzie has left little time to work with before the ceremony's limbs upon them...
+        if the blockades are as hardy as what we faced before, then,
+        we must apply our resources carefully
 
     akizet
-        no, just the outline...
-    
-    tozik
-        vekoa must be diverting focus to deal with us directly
-        if they are close enough to be physical,
-        they are close enough to destroy
+        cavik--your explosives!
 
-    akizet
-        cavik--your explosives?
-    
     cavik
         oh!! yes!
-        if i can get close enough, i can place them directly...
-        that should work!!
-    
+        it may be the best force we are afforded, here...
+        
     akizet
         good eye, tozik
-    
+
     tozik
         it is not mine
-
+        
     akizet
         ah...
 
@@ -5297,7 +5511,7 @@ ____END
         begin<+>END
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", false]
-            EXEC::env.rpg.halt = false;env.rpg.introDone = true;env.rpg.currentActorIndex = 6;advanceTurn();vfx({type: "okidoia", state: false});env.rpg.currentActor.piece.startMovement();env.rpg.setCam();ratween(env.bgm, 0.9);env.rpg.classList.remove('hideteams')
+            EXEC::env.rpg.halt = false;env.rpg.introDone = true;vfx({type: "okidoia", state: false});ratween(env.bgm, 0.9);env.rpg.classList.remove('hideteams')
         begin<+>nogame
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", true]
@@ -5305,44 +5519,57 @@ ____END
     
 nogame
     sourceless
-        fighting through more of the ceremony's limbs,
-        the three are ill-equipped to deal with much of what faces them
-        but through their own ingenuity and my combat knowledge, they pull through
-            EXEC::env.rpg.enemyTeam.members.forEach(m=>m.originalSlug != "split_eye" ? m.hp = 0 : m.hp = 1);updateStats()
-        each tendril that falls appears to solidify the space again...
-            EXEC::let t = env.rpg.actors.destructible_split_tendril_1;t.hp = 0;updateStats({actor: t});env.rpg.halt = false;advanceTurn()
-        splitting apart into more foes to face...
-            EXEC::advanceTurn()
-        which, in turn, are dealt with
-            EXEC::env.rpg.enemyTeam.members.forEach(m=>m.originalSlug != "split_eye" ? m.hp = 0 : m.hp = 1);updateStats()
+        as we expect, these dull, membranous walls suffer our physical acts
+        but cavik's stockpiled explosive devices serve best in clearing the path
+        hastily pressing forward as the space seems to collapse behind them...
         and when they reach the door again, still blocked by one last appendage of the ceremony,
-            EXEC::let t = env.rpg.actors.destructible_split_tendril_2;t.hp = 0;updateStats({actor: t});advanceTurn()
         it is as physical as every previous obstacle, and torn down all the same
-        with particular thanks to cavik's bombs, serving as powerful, improvised blasting charges
             EXEC::env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats()
         
     RESPONSES::akizet
-        ...<+>CHANGE::split_clearhall
+        ...<+>CHANGE::split_clearhall_ing
             FAKEEND::(continue)
 `)
 
-env.dialogues["split_clearhall"] = generateDialogueObject(` 
+env.dialogues["split_clearhall_ing"] = generateDialogueObject(` 
 start
     sourceless
-        that shape--the eye, it breaks apart, releasing the door
-            EXEC::flash(true);env.rpg.actors.split_eye.hp = 0;env.rpg.actors.split_eye.state = "living";env.rpg.actors.split_eye.lastStand = false;env.rpg.halt = true;updateStats()
-        the overlap's grasp of the hall fades
+        the blockage breaks apart, releasing its grip on the door's space
+            EXEC::flash(true)
         and so... the path to the spine awaits them
 
     akizet
         proceed, quickly
     
     sourceless
-        no time is wasted as they enter
+        no time is wasted as they enter...
             EXEC::flash(true);env.rpg.halt = false;closeCombat(env.rpg.enemyTeam);
             WAIT::2000
-        the spine is far more incoherent than before - vekoa is surely grasping at it
-            EXEC::vfx({type: "flash", state: false, delay: 2000});env.grm ? env.grm.combat("ep4_split2") : content.insertAdjacentHTML('beforeend', "<combat-scene scenario='ep4_split2'></combat-scene>");env.rpg.classList.add('hideteams')
+
+    sys
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only entity CAVIK will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+
+    sys
+        END::
+        
+    RESPONSES::sys
+        continue<+>continue
+            FAKEEND::(continue)
+        pause<+>END
+            FAKEEND::(adjust party/save)
+            EXEC::changeStage("intermediary")
+
+continue
+    sourceless
+        ...and the door gives way to the familiar spine
+            EXEC::flash(true)
+            WAIT::2000
+        it is far more incoherent than before - vekoa is surely grasping at it
+            EXEC::vfx({type: "flash", state: false, delay: 2000});env.grm ? env.grm.combat("ep4_split_2_ing") : content.insertAdjacentHTML('beforeend', "<combat-scene scenario='ep4_split_2_ing'></combat-scene>");env.rpg.classList.add('hideteams')
         but still, it is strangely silent, empty...
             EXEC::env.rpg.actors.cavik.piece.endMovement();env.rpg.actors.cavik.piece.stepToCoords(7, 11);env.rpg.actors.miltza.piece.stepToCoords(8, 11);env.rpg.setCam({playerRotation: -45})
         perhaps that attack in the hall was all she could muster?
@@ -5360,7 +5587,7 @@ start
     
     sourceless
         cavik runs to tozik's side, helping him up to his feet again
-        his body is shifting in ways that cavik tactfully avoids perceiving
+        his body is shifting in ways that cavik tactfully avoids observing
     
     tozik
         it is... in here...
@@ -5369,7 +5596,7 @@ start
     
     akizet
         focus on what must be done, tozik
-        and keep in mind how much we need you
+        and have in sight how much we need you
         just a little further
         
     sourceless
@@ -5423,75 +5650,89 @@ start
         but, we, i do not think we have enough time!
         it--it is vekoa!!
 
+    sourceless
+        all are fixed upon her arrival
+        there is a pit in all of our hearts
+        and from one comes a feeling of regret, of resignation
+        strangely, almost a sort of longing...
+
     miltza
-        wait, wait,
-        there is something...
-        that i can try
-        no, i...
-        i--i have to try
         keep working on the explosive
             EXEC::env.noBgmDuck = false;
     
-    akizet
-        try what?
-        miltza?
-    
     sourceless
+        there is such a heavy weight in her tone
+        that feeling was hers
         suddenly, her senses disappear from the timestopper
             EXEC::env.rpg.actors.miltza.sprite.querySelector('img').src = "/img/sprites/obesk/miltza/gridtiny_nocon.gif" 
+
+    akizet
+        what--miltza???
+
+    sourceless
         cavik is my only active connection now, and i see...
             EXEC::env.rpg.actors.miltza.piece.stepToCoords(11, 7)
-        she has shoved her connector in his confused claws,
-        and stormed towards vekoa?!
+        she has shoved her connector into his confused claws,
+        and stepped towards vekoa?!
     
     cavik
         aki--she took off the connector!!
             EXEC::env.rpg.actors.cavik.piece.focusOnTile()
-        she is shouting at vekoa, hold on, let me try and feed this through...
+        she is, um, speaking to vekoa, hold on, let me try and feed this through...
     
     sourceless
-        miltza is calling to vekoa, challenging her...
-        but... vekoa's form is flickering and twitching, unsteady
+        miltza's stance is firm, confident, but deeply exhausted
+        she comes to stand far too close to vekoa,
+        whose form is flickering and twitching, unsteady
         the color bleeds from the world around her in radiating waves
-        with all we have seen, miltza still tries to reason...
-        i focus through cavik's senses until she becomes clear
+        but she watches peacefully, visibly curious
+        i focus through cavik's senses until miltza's speech becomes clear
     
     miltza
-        ...no more! i cannot...
+        ...please, just speak?
             EXEC::env.rpg.actors.miltza.piece.focusOnTile()
-        this was doomed from the start
-        i have always felt it
-        and for what? 
-        this must be it, this must be the moment
-        vekoa, please,
-        if--if this is an awakening,
-        if it is finally here
-        even imperfect...
-        i have to know
-
+        this plan is doomed--it is flailing, at this point
+        tumbling down a steep ridge...
+        perhaps it always was
+        if--if this is an awakening...
+        you surely know what i mean--
+    
     sourceless
-        from cavik's view, i can hardly see, but...
-        i think vekoa's stance softened
-        she is actually listening
-        whatever may come, this is delaying her for tozik, at least
+        she turns towards cavik and tozik, briefly turning her back to this predator
+        vekoa watches on, unhurried, an odd tilt to her head
+        whatever may come, this is at least delaying her for tozik's work
+
+    miltza
+        if this is the moment, finally, then...
+        why the violence? why such force?
+        why will you not speak plainly?!
+        there must be a purpose!! a reason?!
+        
+    sourceless
+        her voice rises, furiously interrogative
+        vekoa's stance softens, no longer poised to strike
 
     miltza
         i have labored so long,
         done so much in their name,
-        yet i have never had any answers... 
-        only worthless faith
-        please--show me!
-        say anything!!
+        it cannot be for some mindless parasite
+        the ancient mind is meant to help us...
+        ...
+        please. say anything
 
     sourceless
         the sorrow in her voice is striking
         there is no readiness in her stance, this is not just some deception
-        miltza's drone is inactive, disconnected, lying on the tether
-        she truly intends to...
+        she truly intends to entertain whatever vekoa may offer...
+        ...and an offer comes--an open claw is slowly raised to her
+
+    okidoia
+        ‡•[·see_=ï—§ÍþË?¼¿
+        ¨h|—|P¯?;¿ŸÜ¿—
     
     cavik
-        miltza, just--get away from her, come on!
-        you have seen what happens!
+        miltza, just--get away from her!!
+        you have seen what happens! this is madness!
         
     sourceless
         from within the bomb's silence, tozik speaks to cavik
@@ -5513,14 +5754,27 @@ start
         just focus on the bomb!!
     
     sourceless
-        miltza storms closer to vekoa, surely to make more demands
+        miltza gazes down at vekoa's flickering claw, stepping closer slowly
             EXEC::env.rpg.actors.miltza.piece.stepToCoords(12, 7)
-        but to my surprise, vekoa does not strike
-        she reaches out, and grasps miltza in a kind embrace
-        one that silences miltza's cries
+        but she halts, glancing back to tozik, cavik,
+        the tense fear in her receptors loosened by mental fatigue
+
+    miltza
+        cavik, you... cannot understand how much i have given
+        if this is it, if this is really how it has to be...
+    
+    sourceless
+        in miltza's hesitance, 
+        vekoa suddenly steps forward--miltza's vulnerability leaving such an obvious opening
+        of course the parasite chooses to strike, its nature finally laid bare--
+        ...no, wait
+        vekoa does not strike
+        she has grasped miltza in a sudden embrace
+        with all the care of comforting a loved one in grief
+        and she is shocked into silence by the contact
     
     sourceless quiet 
-        dull light distorts around them, and cavik must look away
+        then--physical reality fades around them, dull light overpowering it, forcing cavik's gaze away
             EXEC::forcePlay('fear', 0.4);env.rpg.actors.miltza.sprite.classList.add('struck');env.rpg.refresh();flash(true)
         i cannot make out the details
             EXEC::midCombatActorRemove(env.rpg.actors.miltza, {fast: true});
@@ -5529,7 +5783,7 @@ start
         but something horrific is happening to her
 
     akizet
-        cavik, forget it, you need to move
+        cavik, you need to flee
             EXEC::env.rpg.actors.cavik.piece.focusOnTile()
         now!!
         get tozik, go to the door, and...
@@ -5555,13 +5809,13 @@ start
 
     sourceless
         cavik's fury flares through my mind as he watches tozik's ascent
-        vekoa is gone, too
-        but miltza begins to stand... tearing cavik's attention back to her
+        in his quick glancing around, i note that vekoa is gone
+        but miltza stands, finally clear, tearing cavik's attention back to her
             EXEC::changeBgm(page.solaMiltzaCombat, {length: 2000, preserve: false});env.rpg.actors.split_miltza.piece.focusOnTile()
         in an instant, the chamber is suffocated in darkness
             EXEC::env.rpg.classList.add('darkwobble', 'miltzamode')
         her twisted shape stares at him, waiting...
-        but he calls up to tozik
+        he calls up to tozik
     
     cavik
         i am not leaving you!!
@@ -5574,7 +5828,7 @@ start
         and cavik...
         tozik's affliction may be too far progressed - he must stay disconnected
         we need you to stop her
-        that is <em>not</em> miltza
+        that <em>cannot</em> be miltza
 
     sourceless
         tozik needs no further instruction, his connection disappearing into silence
@@ -5582,7 +5836,7 @@ start
         and i feel his confirmation
         with careful aim, cavik pitches an improvised explosive at miltza
             WAIT::2000
-            THEN::addStatus({target: env.rpg.actors.split_miltza, status: "unnatural_carapace", length: 2});env.rpg.halt = false;env.rpg.actors.split_miltza.piece.focusOnTile();env.rpg.grid.handleActionAOE({originActor: env.rpg.actors.cavik, targetTile: env.rpg.actors.split_miltza.piece.tile, action: env.ACTIONS["scene_cavik_attack"]})
+            THEN::env.rpg.halt = false;env.rpg.actors.split_miltza.piece.focusOnTile();env.rpg.grid.handleActionAOE({originActor: env.rpg.actors.cavik, targetTile: env.rpg.actors.split_miltza.piece.tile, action: env.ACTIONS["scene_cavik_attack"]})
         but...
         she is hardly affected, stepping forward through the blast
             EXEC::env.rpg.halt = true;env.rpg.state = "normal";env.rpg.actors.split_miltza.piece.moveToCoords(11, 7);env.rpg.effectMessage.close();body.classList.add('vis-flash', 'vis3')
@@ -5593,6 +5847,7 @@ start
             EXEC::flash(true);body.classList.add("vis-flash-blur")
         fear what must be done‰-<˜°×gì
         ØE±¡only ¼  chance³†@
+        H‰¦–trµ±¶t,;¸mÈ
         xü›û co m e w€ºù|±|h m e
             EXEC::flash(false)
 
@@ -5614,20 +5869,20 @@ start
         there is a spark of realization
     
     cavik
-        i--i may!
-        my explosives have a much more substantial blast, if...
-        if they have more material to use...
+        actually, i--
+        i have no need!
 
     sourceless
         cavik directs my attention to the spinal root nearby
-            EXEC::env.rpg.grid.getTileFromCoordinates(3, 11).focusOnThisTile()
+            EXEC::env.rpg.grid.getTileFromCoordinates(3, 11).focusOnThisTile();env.rpg.enemyTeam.members.filter(m=>m.base.slug=="destructible_spineroot").forEach(m=>addStatus({target: m, status: "bomb_volatile"}))
 
     cavik
-        the roots--yes, i can lodge some explosives in them!
-        and then, when she gets close...
+        the roots--the fluid they bear, it is highly reactive!
+        it will start a terrible flame, but...
+        surely it will incinerate her?
 
     akizet
-        you know what must be done
+        then you know what must be done
             EXEC::env.rpg.actors.cavik.piece.focusOnTile()
         i will guide you, my friend
     
@@ -5638,22 +5893,29 @@ start
         we can do this
             EXEC::env.rpg.querySelectorAll('.movable').forEach(t=>t.classList.remove('movable'));env.rpg.halt = false;env.rpg.currentActorIndex = 1;env.rpg.currentActor = env.rpg.actors.split_miltza
 
+    sys
+        EXECUTING::"structure direction";"unique scenario";"detonation"::
+
+    plainsys
+        primary opponent possesses damage resistance; knockback resistance; <span definition="ACTION++scene_cavik_attack">IED</span> insufficient for direct attack
+        utilize scenery and action; <span definition="ACTION++cavik_charge">CHARGE</span>; to manipulate position and incur damage
+
+    sys
+        END::
+
 ____SHOWIF::"gameplay_off"
     sys
         NOTICE::"gameplay is presently disabled";"re-enable in SYS menu if undesired"
 ____END
 
-    sys
-        NOTICE::"repeat applications of PLANT increase radius"
-
     RESPONSES::akizet
         guide the fight!!<+>END
             SHOWIF::["gameplay_off", false]
             FAKEEND::start combat
-            EXEC::removeStatus(env.rpg.actors.cavik, "fear");env.rpg.classList.remove('hideteams');env.bgm.rate(env.bgm.intendedRate);env.rpg.actors.cavik.piece.startMovement();env.rpg.setCam();env.rpg.halt = false;advanceTurn();
+            EXEC::removeStatus(env.rpg.actors.cavik, "terror");env.rpg.classList.remove('hideteams');env.bgm.rate(env.bgm.intendedRate);env.rpg.actors.cavik.piece.startMovement();env.rpg.setCam();env.rpg.halt = false;advanceTurn();
         guide the fight!!<+>CHANGE::spine_miltza_nogame
             SHOWIF::["gameplay_off", true]
-            EXEC::removeStatus(env.rpg.actors.cavik, "fear");env.bgm.rate(env.bgm.intendedRate);env.rpg.setCam();
+            EXEC::removeStatus(env.rpg.actors.cavik, "terror");env.bgm.rate(env.bgm.intendedRate);env.rpg.setCam();
     
 SKIP::env.noBgmDuck = false;env.grm.skipSpineIntro();body.classList.remove("vis-flash-blur", "vis-3", "vis-flash");flash(false);
 SKIPTIME::3000
@@ -5662,7 +5924,7 @@ SKIPTIME::3000
 env.dialogues["spine_miltza_nogame"] = generateDialogueObject(` 
 start
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
             EXEC::cutscene(false);env.rpg.classList.add("hideteams")
         NOTICE::"contextual narration applied"
 
@@ -5684,7 +5946,6 @@ start
         ...<+>CHANGE::spine_miltzaphase
             EXEC::flash(false);env.rpg.actors.split_miltza.piece.moveToCoords(8, 5)
             FAKEEND::(continue)
-
 `)
 
 env.dialogues["spine_miltzaphase"] = generateDialogueObject(` 
@@ -5700,14 +5961,14 @@ ____SHOWIF::['PAGE!!cavikblunder', true]
 
 ____SHOWIF::['PAGE!!cavikblunder', false]
     sourceless
-        after suffering two of these explosions, 
+        after suffering enough of these horrific burns,
         miltza's stride becomes more of a stumble
             EXEC::env.rpg.actors.split_miltza.piece.moveToCoords(8, 5)
-        the dull's light around her grows less vibrant
-        is she more vulnerable?
+        the dull's light around her altered flesh grows less vibrant
+        is she breaking apart? more vulnerable?
         or is this merely a sign of the ceremony's focus being diverted?
         suddenly, the overlap's light floods the chamber,
-            EXEC::forcePlay('fear', 0.75);env.rpg.actorList.forEach(a=>{if(a.originalSlug.startsWith("destructible")) {a.statusEffects[0].trigger(true)}});env.rpg.classList.remove("darkwobble");env.rpg.classList.add('purewobble');ratween(env.bgm, 1.1);env.bgm.intendedRate = 1.1
+            EXEC::forcePlay('fear', 0.75);env.rpg.actorList.forEach(a=>{if(a.originalSlug.startsWith("destructible") && a.statusEffects[0]?.trigger) {a.statusEffects[0].trigger(true)}});env.rpg.classList.remove("darkwobble");env.rpg.classList.add('purewobble');ratween(env.bgm, 1.1);env.bgm.intendedRate = 1.1
         invisible limbs coiling around the roots,
         suffusing them in a dangerous distortion, where cavik should not tread
 ____END
@@ -5741,15 +6002,16 @@ ____END
         i was... conducting a quick search, in case...
         it does not matter - i am here to help you
         i am not sure what you have to work with down there, but,
-        the archival connector above has some large, heavy devices
+        the archival connector above has these heavy containers...
+        carrying that same explosive fluid as the reservoir beneath you
         and the floor has been breaking apart, leaving some holes...
         so... i am going to push them down, one after the other
         i will try to show you where they will land
         in fact, this one right here might work...
             EXEC::env.rpg.telyuDrop();env.rpg.halt = false;
-        try to get her in position somehow
-        knock her around with your explosives, i do not know
-        just watch yourself
+        you should be able to set them off as you have been with the tethers, but,
+        that whole area is going to be coated in flames
+        so watch yourself
         
     sourceless
         despite her clear reluctance in using our timestopper,
@@ -5760,17 +6022,17 @@ ____END
     RESPONSES::akizet
         guide the fight!!<+>END
             FAKEEND::(continue)
-            EXEC::env.rpg.phase2 = true;env.rpg.halt = false;advanceTurn();
+            EXEC::env.rpg.phase2 = true;env.rpg.halt = false;advanceTurn();ratween(env.bgm, 1)
             SHOWIF::["gameplay_off", false]
         guide the fight!!<+>nogame
             FAKEEND::(continue)
-            EXEC::flash(true);env.rpg.phase2 = true;env.rpg.halt = false;
+            EXEC::flash(true);env.rpg.phase2 = true;env.rpg.halt = false;ratween(env.bgm, 1)
             SHOWIF::["gameplay_off", true]
 
 nogame
     sourceless
-        through gaps in the ceiling above, telyu drops heavy equipment, unstable materials...
-        and with cavik's explosives, miltza - fatigued and struggling - is forced into position 
+        through gaps in the ceiling above, telyu drops unstable materials...
+        and with cavik's explosives, miltza - fatigued and struggling - is forced about the space
         she is crushed and detonated, to our shared horror and regret
             EXEC::flash(true)
         but what choice is there? she would have infected cavik, too
@@ -5790,15 +6052,21 @@ start
     sourceless quiet
         miltza's flickering form drops to the ground, motionless
             EXEC::env.noBgmDuck = true;changeBgm(env.grm.music_antag, {length: 5000, seek: 40, rate: 0.5, preserve: false});env.rpg.effectMessage.close();
+        the chemical flames of their conflict curl around the whole space, spreading slowly
+            EXEC::env.rpg.burnEverything()
+        yet the mass of fire fails to approach,
+            EXEC::flash(false);env.rpg.actors.cavik.piece.focusOnTile();env.rpg.effectMessage.close()       
+        licking at a barely perceptible barrier of the ceremony's light around the two
+        but why? miltza is lost...
+        vekoa could easily allow cavik to be swallowed in flames
 
     sourceless
-        cavik has approached, hesitantly
-            EXEC::flash(false);env.rpg.actors.cavik.piece.focusOnTile();env.rpg.effectMessage.close()
-        she is in a strange state...
-        the corru of her material body melded with the almost imperceptible tendrils of the ceremony
-        here, but not here
+        he approaches, hesitantly, similarly confused
+        the remains of miltza's material body still burn a strange color...
+        distorting, melding with barely visible veins in the air
+        dead and melted corru sloughing off shaped dull light
         cavik nearly says something
-        an apology, maybe--his despair is overpowering
+        an apology, maybe - his despair is overpowering
         but miltza's arm shifts, claws pressing against the ground, attempting to push herself up again
 
     cavik
@@ -5825,15 +6093,15 @@ start
     sourceless
         he is frozen for a θblink
         but with my encouragement, he produces one last explosive, 
-        tossing it gently towards miltza and backing away--something he may detonate at will
+        tossing it gently towards miltza and backing away - something he may detonate at will
             EXEC::env.rpg.actors.cavik.piece.stepToCoords(7,4);
     
     sourceless
-        miltza turns her gaze towards the bomb, receptors opening 
+        miltza turns her gaze towards the explosive, receptors opening 
         the okidoia laughs tearfully through her
 
     cavik
-        miltza, i... i hope...
+        miltza, i... i hope this is...
         ...
 
     okidoia
@@ -5856,7 +6124,7 @@ start
         cavik refuses to look at the remains
     
     cavik
-        it is done...
+        it is done
     
     akizet
         cavik, you...
@@ -5879,7 +6147,7 @@ start
     akizet
         fine
         proceed back through the dull mind
-        we are going to finish this in the lesser mind
+        then, we will finish this in the lesser mind
         meet us there
         understood? cavik?
     
@@ -5894,10 +6162,8 @@ start
 
 ____SHOWONCE::
     moth
-        how the hell are they holding it together like this?
-        i feel like i'm gonna be sick dude
-        just... man, they really just killed her
-        just like that
+        it's crazy how well they're all holding it together
+        just, damn. i feel like i'm gonna be sick dude
         it seemed to me like she was trying to say something, too
         i gotta wonder how much they were able to understand at the time
         maybe something with this voice they're hearing wasn't, like...
@@ -5940,9 +6206,15 @@ start
         are they okay??
             EXEC::vnp({karik: "show", hideStage: true})
 
+    sourceless
+        silence hangs between me, gakvu, and bozko
+        though their attention remained here, fighting off some other force,
+        they were simultaneously subject to the same feelings and sensations
+
     akizet
         cavik, tozik, and telyu--yes...
-        but, miltza has been lost
+        but...
+        miltza is lost
     
     sourceless
         karik is shocked by my bluntness
@@ -5951,9 +6223,9 @@ start
         if we never entered that room, and scavenged somewhere else?
     
     akizet
-        she... she knew the risks...
-        we all do
-        she confronted vekoa directly, to buy them time...
+        she... 
+        she knew the risks...
+        we all did
         ...
         bozko, gakvu? how are you faring?
             EXEC::vnp({karik: "hide", gakvu: "show", bozko: "show", hideStage: true})
@@ -6083,8 +6355,13 @@ continue
         it will all be gone soon, even if we succeed
         this moment is the end of everything as it was
         ...but i must not let myself be distracted
-        gakvu stands on her own again thanks to idril, but with some difficulty
+        my attention turns to the others present--bozko, gakvu, idril, karik...
+        miltza was taken with only a focused touch from the host of the ceremony
+        if i am careless, then...
+        any one of them could be next
+        my gaze fixes specifically upon gakvu,
             EXEC::setCam({x: 5, y: 4, rotation: 0})
+        who stands on her own again thanks to idril, but with some difficulty
     
     akizet
         how is she?
@@ -6296,7 +6573,7 @@ start
         i fear that the timestopper will give out before we are through
         akizet, we really do not even have time to talk
         we must stop vekoa, and get into the core, fast
-        or collapse is not just likely, it is inevitable        
+        or total collapse is not just likely, it is inevitable        
     
     RESPONSES::akizet
         understood<+>END
@@ -6342,6 +6619,24 @@ END::if(env.stage.current.markCharEvents) env.stage.current.markCharEvents();
 /**** !P14 - akizet and team proceeds into lesser mind****/
 env.dialogues["entry_loopproceed"] = generateDialogueObject(` 
 start
+    sys
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only entities AKIZET; CAVIK; BOZKO; GAKVU; will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+        upcoming foe possesses large amount of health; utilizes wide area attacks
+
+    sys
+        END::
+
+    RESPONSES::akizet
+        continue as-is<+>continue
+        coordinate<+>END
+            FAKEEND::(open party menu)
+            EXEC::cutscene(true);env.partyPending = true;
+
+continue
     sourceless
         it is hard to believe this is the same hall we walked before...
         we stay closely grouped together as we advance, prepared for the worst
@@ -6352,8 +6647,9 @@ start
         that is so cool! ahaha
 
     akizet
-        cool?!
-        idril, how can we be sure of any walls or floors now??
+        cool?! 
+        idril... 
+        how can we be certain we will not simply tumble into the dull??
 
     idril
         ohh, do not worry so much!!
@@ -6364,10 +6660,13 @@ start
         why is this hall so much worse than anywhere else?
 
     idril
-        as the ceremony shrinks, the overlap is drawn in closer, too!
+        with the way the ceremony has been shrinking..
+        the overlap is probably drawn in closer, too...!
         so, it is a smaller radius of effect, but much more intense, under higher pressure
-        like holding a little light against your eye!
-        it will probably only get stranger!
+        like a little light being drawn closer and closer to your eye...
+        if i am right, it will only get stranger!
+        there is much i have heard about the process, but only ever from others...
+        it is so exciting to be witness to it directly!
 
     sourceless
         at the end of this twisted path lies the door to the lesser mind
@@ -6384,34 +6683,34 @@ start
         and so we proceed....
             EXEC::flash(true)
             WAIT::2000
-            THEN::vfx({type: "flash", state: false, delay: 1000});env.grm.combat("ep4_lesserboss");env.rpg.classList.add('hideteams');removeStatus(env.rpg.actors.cavik, "fear")
+            THEN::vfx({type: "flash", state: false, delay: 1000});env.grm.combat("ep4_lesserboss_ing");env.rpg.classList.add('hideteams');removeStatus(env.rpg.actors.cavik, "fear")
 
         to find idril's expectation correct
-        the room's configuration is wrong, likely coiled in the same tendrils that tozik saw
+        the room's configuration is familiar, but altered
         immediately my mind turns to the golem we lost, but...
         there is no carcass to be found, especially not with the distortion so heavy
-        beyond a claustrophobic passage between the pods, cavik prepares a handful of explosives
-        i step forward to begin searching for any foes
+        across the way, cavik prepares a handful of explosives out of precaution
+        i step forward to begin searching for any foes...
             EXEC::env.rpg.actors.akizet.piece.moveToCoords(4, 4, {follow: false})
         but the instant i do, bozko pulls me back--!!
-            EXEC::env.rpg.actors.akizet.piece.moveToCoords(3, 4, {follow: false});flash(true);forcePlay("dull");midCombatActorAdd(env.rpg.enemyTeam, "lesser_itzil", "left")
+            EXEC::env.rpg.actors.akizet.piece.moveToCoords(3, 4, {follow: false});flash(true);forcePlay("dull");midCombatActorAdd(env.rpg.enemyTeam, "lesser_itzil_ing", "left")
             WAIT::2000
             THEN::env.rpg.actors.akizet.piece.moveToCoords(3, 4, {follow: false});flash(false);midCombatActorRemove(env.rpg.actors.cutscenedriver)
         a powerful dull pulse blasts through the corridor
         one that could only have come from...
         our golem
-            EXEC::env.rpg.actors.lesser_itzil.piece.focusOnTile()
+            EXEC::env.rpg.actors.lesser_itzil_ing.piece.focusOnTile()
         there it is, hovering...
-        not exactly repaired, but unbroken - an amalgamation animated by the ceremony
-        and between the edges of the pods i spot another foe...
+        not exactly repaired, but unbroken
+        an amalgamation of what is and what was weaved by the ceremony's veins
+        and in the pit of light before it, forms...
             WAIT::300
-        the familiar shape of...
-        dozkallvi
-            EXEC::midCombatActorAdd(env.rpg.enemyTeam, "lesser_kivii", "right")
-        itzil and dozkallvi, both here, reunited...
-            EXEC::env.rpg.actors.lesser_kivii.piece.focusOnTile()
+        the familiar shape of... dozkallvi
+            EXEC::midCombatActorAdd(env.rpg.enemyTeam, "lesser_kivii_ing", "right")
+        itzil and dozkallvi, both here, reunited
+            EXEC::env.rpg.actors.lesser_kivii_ing.piece.focusOnTile()
+        my rage boils out of my core
         vekoa is taunting us
-        rage boils in my mind
         that my mistakes would be used against me so readily...
         the okidoia comes again--not to speak, not to grant visions, but...
         to laugh, playfully, without contempt
@@ -6433,20 +6732,22 @@ ____END
             EXEC::env.rpg.actors.akizet.piece.focusOnTile();env.bgm.rate(0.8);env.bgm.intendedRate = 0.8;
 
 SKIP::env.grm.skipLesserBossIntro()
+END::env.partyPending == true ? (cutscene(false), togglePartyMenu(), env.partyPending = false) : false
 `)
 
 env.dialogues["lesserboss_nogame"] = generateDialogueObject(` 
 start
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
             EXEC::cutscene(false);env.rpg.classList.add("hideteams")
         NOTICE::"contextual narration applied"
 
     sourceless
         our twisted golem uses its powerful weaponry against us, 
             EXEC::flash(true)
-        and dozkallvi's image strikes with familiar gauntlets, conjured from the overlap
-        there is a sort of lightness in their motions
+        and dozkallvi's image strikes with familiar gauntlets, conjured from the overlap,
+        even twisting the stage about to force us closer to the burning light
+        there is a sort of joy in their motions, like a dance
         as if the pair are not taking our fight seriously
         but it is their mistake, for in time, we land decisive strikes
             EXEC::env.rpg.enemyTeam.members.forEach(m=>m.hp = 0);updateStats()
@@ -6468,8 +6769,9 @@ start
             EXEC::env.rpg.phaseChange();env.rpg.classList.add('fearmode');ratween(env.bgm, 0.5)
             WAIT::2000
             THEN::flash(false)
-        only to see that the remnant of our golem has collapsed, fused with the ground
+        only to see that the remnant of our golem has collapsed,
             EXEC::env.rpg.actors.lesser_itzka.piece.focusOnTile();
+        the light that suffused the ground rising into its carcass
         despite this, no victory is had yet - something is happening...
             EXEC::flash(true);play('criticalError', 0.3);
             WAIT::1000
@@ -6635,7 +6937,7 @@ start
         after a pause, she takes a step forward, and we prepare to fight again
     
     sourceless quiet
-        but she moves not to strike, waving her claws urgently, her incomprehensible okidoia crying out
+        but she does not move to strike, instead waving her claws urgently, her incomprehensible okidoia crying out
             EXEC::play("scarydoia")
         pleading...? 
             EXEC::play("scarydoia")
@@ -6665,7 +6967,8 @@ start
         but it is frighteningly dark
         the okidoia, the overlap's distortion...
         it is dim, distant, but not gone
-        the door to the groundsmindry chamber stands open, ready for us to proceed...
+        the door to the groundsmindry chamber stands open
+        our final step
     
     idril
         wow!
@@ -6719,7 +7022,8 @@ start
         i still feel it, something, connecting to me...
         and when you detonated that last bomb, 
         i felt it think
-        an intention from the voice, the one that vekoa spoke with, burning with desperation:
+        an intention from the voice, all of the voices,
+        desperate, and... scared...
         she is trying to form a lesser contrivance with what is left
         if she does that... the core is gone
 
@@ -6736,7 +7040,7 @@ start
         and that means we can still interact with the ceremony!!
             EXEC::vnp({cavik: "show focus", tozik: "hide"})
         so if it is breaking apart...
-        we just have to go in there and destroy what's left!!
+        we just have to go in there and destroy what is left!!
 
     idril
         ohh! yes!
@@ -6749,10 +7053,11 @@ start
     
     idril
         noo!
-        while the core is being used as a catalyst, it is technically separate from the ceremony...
-        it is more like an entrance! it created the small cut that the ceremony was formed through
-        so if you sever the ceremony's organs, the tendrils that widen it will snap even more...
-        and if enough gives way, it should give out all at once!
+        the core is, umm... a catalyst!
+        like an entrance!
+        if you sever the dull organs that have formed around it,
+        the tendrils of the ceremony will start to snap, too..
+        and if enough gives way, the overlap should collapse all at once, i think...!
         entirely cleaving the ceremony from material reality, and leaving the core for us!!
         sure, it may have a few extra organs and appendages, but...
         everything should still be there!
@@ -6766,11 +7071,12 @@ start
         we can end this slaughter
         but - why is vekoa even still trying?
         any time i think of what her plan could be,
-        there is this quiet doubt within, one that has grown as we have seen more
+        there is this quiet doubt within, one that has grown with every specter we meet...
         a suspicion that slaughter is not the right word
         but no - the horror in the θsegments above are plain reminders
+        my doubt is worn away with the barest thought of what she has done to our friends
         what we are doing is right, and we must press on
-        for the sake of any who still live
+        for the sake of any who still live above
         there is a moment of heavy silence as i look amongst the team
         gakvu's body is giving way, it is clear to see
             EXEC::vnp({gakvu: "show far"})
@@ -6809,10 +7115,11 @@ start
         and all our other materials went into making the stationary explosives...
         
     akizet
-        save them for critical detonations, then
+        deploy them well, then
             EXEC::vn.clear()
-        telyu, idril, do you have any weapons cavik could use?
+        telyu, idril, do you have any other weapons we might employ?
             EXEC::vnp({telyu: "show", idril: "show"})
+
     telyu
         nothing that is not attached to me!
     
@@ -6920,7 +7227,7 @@ start
         bozko and i will lead the way
         if we stay together, it will be fine
         whatever you bring will be enough, i am certain
-        vekoa will surely try to distract us with false foes, but...
+        vekoa will surely try to distract us, but...
         we need only harm the ceremony enough for it to give way
     
     sourceless
@@ -7000,7 +7307,7 @@ start
         ...dispersed, sliced apart|!— to their cheers...
 
     tozik
-        but know that i am so happy to have learned the truth
+        know that i am so happy to have learned the truth
         if you carry it to everyone else...
         
     tozik::mutter
@@ -7107,7 +7414,7 @@ start
         velzie's fondness for repetition is truly nauseating
         if this works out, and we really can stop the collapse...
         maybe it will be a sign i never should have stopped, huh?
-        perhaps quiet sabotage of those who mean harm is my calling
+        perhaps quiet sabotage of those who mean harm is velzie's place for me
     
     sourceless
         a part of the conflict as she is, on a side that seems to be smaller...
@@ -7158,7 +7465,7 @@ start
     sourceless
         a strange demand, some sort of precaution...
         she will not say it, but she thinks she is going to die here
-        but i will not let that happen
+        i will not let that happen
     
     akizet
         yes... i think so
@@ -7210,10 +7517,11 @@ start
         that signal, or scream, as my other friends called it...
         that easily could have been a product of the groundsmindry core being misused
         our mindcores are often ignorant of groundsmindry signals, though...
-        so it was as if vekoa were sending something else through the broadcast relays!
+        so it was as if vekoa were sending something else through the spine's relays!
+        some special new thing...
         that aside... groundsmindry and a ceremony alone would not cause the strange affliction we have seen
-        which is something entirely new!
-        really akizet, it is all so fascinating and unprecedented!
+        it is entirely unprecedented...!
+        really akizet, it is all so fascinating!
         i am sure i will be studying this, for θeyes and θeyes!
         assuming we survive, of course, hehe
 
@@ -7344,6 +7652,8 @@ isabel
         What's up?
 
     sourceless
+        her casual tone tears a pit through my core
+        the last echo of a time before all this pain...
         with her synchronous connection, it would take far too long to relay all we have learned
         and even if i did... it would place her in unwarranted danger
         after all, she is merely a custodian of bright parasites
@@ -7409,7 +7719,8 @@ isabel
     isabel
         Akizet...
         I'll miss you.
-        And if you... If you need somewhere to hide,
+        And if you... 
+        If you need somewhere to hide,
         You know where to find me.
         Good luck, okay?
     
@@ -7550,12 +7861,24 @@ start
         standing before the door, i look over those assembled
             EXEC::vnp({gakvu: "show far", idril: "show far", cavik: "show far", karik:"show far", bozko: "show far", tozik: "show far", hideStage: true})
         each friend, old and new,
-        all perched upon this last branch of our plan, perhaps to fall
+        all perched upon this last branch of our plan,
+        perhaps to fall into the suffocating dull fog below
         they have followed me here... entertained this insane effort
         and it may be the last time i see any one of them
         they peer back at me expectantly
         are we ready to risk everything?
         have we made peace?
+
+    sys
+        EXECUTING::"structure direction";"party limitation"::
+
+    plainsys
+        only entities AKIZET; CAVIK; BOZKO; GAKVU; will be utilized in upcoming combat
+        utilize PARTY MENU to organize; open with impulse; Z
+        upcoming sequence contains large targets
+
+    sys
+        END::
 
     RESPONSES::akizet
         it is time<+>time
@@ -7577,7 +7900,6 @@ time
     tozik
         wait...
             EXEC::vnp({tozik: "show far focus"})
-        ca…¸¾vik
         come, take this
 
     sourceless
@@ -7593,15 +7915,14 @@ time
 
     sourceless
         cavik comes to take it, though it does not seem to be as light as tozik made it appear
-        it takes some balancing before cavik is able to hold it effectively
+        it takes some balancing before he is able to hold it effectively
         fitting over one of his claws, held up by the other, his stance shifted to balance the weight
     
     cavik
-        this is the dull pulse component, right?
+        this is the golem's dull pulse weapon, right?
     
     sourceless
         tozik affirms with his receptors
-        the weapon's weight will hinder cavik slightly, but...
         i trust tozik - it should still be a boon in the coming conflict
 
     tozik
@@ -7634,7 +7955,7 @@ time
     
     sourceless quiet
         with one last grim exchange of gazes, we reassemble before the threshold
-            EXEC::env.noBgmDuck = true;setCam({x: 7, y: 3, rotation: 0});vn.done();changeBgm(env.grm.music_oki, {length: 4000, seek: 0})
+            EXEC::env.noBgmDuck = true;setCam({x: 7, y: 3, rotation: 0});vn.done();
 
     sourceless
         idril watches on with excitement,
@@ -7650,24 +7971,51 @@ time
         we just have this final step... then it is over
         
     sourceless
-        together, we enter the grand door at last
-            EXEC::flash(true);env.noBgmDuck = false;
+        together, we move to enter the grand door at last
+            EXEC::flash(true);
+            WAIT::500
+            THEN::content.classList.add('finalescrollmode', 'finalescrollprep');env.stopBgmChanges = true;env.grm.combat("ep4_vek_pt1_ing")
         the horizon of the dull overlap twists in welcome
-        and once we pass the threshold... a ripple of anger meets us
-            EXEC::env.grm.combat("ep4_vek_pt1");removeStatus(env.rpg.actors.cavik, "fear")
+            EXEC::env.stopBgmChanges = false;changeBgm(env.grm.music_oki, {length: 5000, seek: 0, rate: 0.25});
+
+    sourceless
+        and so, i lead through the threshold...
+            EXEC::removeStatus(env.rpg.actors.cavik, "fear");
+        the color and shape of this focused overlap burns through our senses,
+            EXEC::flash(false);content.classList.add("finalescroll");change("PAGE!!finalescroll", true);setTimeout(()=>change("PAGE!!finalescroll", false), 20000);env.rpg.classList.add('hideteams');ratween(env.bgm, 1, 20000)
+        carrying meanings they ought not be able to discern
+        the color is a loosening grip, the infinite shape is worry
+        a writhing mass pressed up against the thin membrane of physical reality
+        its tendrils, winding past and around us, radiate remorse
+        not for its actions, not for those lost, but...
+        for me, for us, we who rally against it
+        ...
+            SHOWIF::"PAGE!!finalescroll"
+            WAIT::5000
+        ...
+            SHOWIF::"PAGE!!finalescroll"
+            WAIT::5000
+        ...
+            SHOWIF::"PAGE!!finalescroll"
+            WAIT::5000
+        ...
+            SHOWIF::"PAGE!!finalescroll"
+            WAIT::5000
+
+    sourceless
+        and once we fully pass the threshold... a ripple of anger meets us
+            EXEC::content.classList.add('scrolldone');env.noBgmDuck = false;env.noBgmChange = false
             WAIT::1000
-            THEN::ratween(env.bgm, 0.5)
+            THEN::changeBgm(page.finaleSong, {rate: 0.5});
         the chamber's color burns, bathed in dull light from the groundsmindry core
             EXEC::env.rpg.classList.add('hideteams');vfx({type: "flash", state: false, delay: 1000});env.rpg.setCam({x: 9, y:9, playerRotation: 45, playerTilt: -30})
         a blinding shape, this nightmare made physical
-        from it stems a writhing mass of veins that disappear in all directions
-        and our foes, instruments of the ceremony, await us
         vekoa is not present, surely still within the core, attempting to direct what remains
         we cannot force her out, not yet...
         the core is too entwined with the ceremony to risk harming directly
         but we will not need to
         for some of the ceremony's veins coil around the chamber tightly, plainly visible,
-            EXEC::env.rpg.setCam({x: 9, y:2, playerRotation: 60, playerTilt: -20})
+            EXEC::env.rpg.setCam({x: 9, y:2, playerRotation: 60, playerTilt: -20});content.classList.remove('finalescrollmode', 'finalescrollprep', 'scrolldone', 'finalescroll')
         pulled close and pressed into physicality, likely because of our efforts
         the smaller it becomes, the more will be forced into physicality...
         and the easier it will be to break apart
@@ -7684,10 +8032,11 @@ time
         it is not an accusation - it is a ña3ÙæmêÓ§°Ü÷ßR
 
     sourceless
-        desperate, fragmented words...
+        desperate, fragmented voices...
             EXEC::vfx({type: "okidoia", state: false});flash(false)
-        if there were ever a point to reason, it is long past
+        if there were ever a time for civil reason, it is long past
             EXEC::body.classList.remove('vis-flash', 'vis5', 'vis-flash-blur')
+        she has had her chances, and each has ended in tragedy
         whether it is truly her, or a parasite grasping at emotions it does not understand,
         what she has done is unforgivable, and what she intends to do will kill even more
         the overlap pulses, tendrils shifting, the world distorting
@@ -7712,11 +8061,14 @@ time
             EXEC::env.rpg.actors.akizet.piece.focusOnTile()
 
     sys
-        ANALYSIS::'context shift'
-        NOTICE::'ALLY entities';'granted last stand status'
-        NOTICE::'automatic self-revival upon DOWN';'once'
-        NOTICE::'actions broadly improved'
-        NOTICE::'entity CAVIK';'primary action altered'
+        EXECUTING::"structure direction";"last stand"::
+    
+    plainsys
+        all ally entities gain <span definition="STATUS++desperation">LAST STAND</span>
+        entity; CAVIK; granted additional item action; <span definition="ACTION++tele_directbeam">DULL BLAST</span>
+
+    sys
+        END::
 
 ____SHOWIF::"gameplay_off"
     sys
@@ -7733,18 +8085,19 @@ ____END
             FAKEEND::skip gameplay
             EXEC::ratween(env.bgm, 1)
 
-SKIP::env.noBgmDuck = false;env.grm.combat("ep4_vek_pt1");flash(false);setCam();vn.done();if(check("gameplay_off")) { cutscene(true); setTimeout(()=>{startDialogue("vekoaboss_nogame"); cutscene(false)}, 1200)} else {env.rpg.classList.remove('hideteams')};ratween(env.bgm, 1);env.oldBgm = env.grm.music_oki;env.bgm.saveRate = 1;env.rpg.setCam();vfx({type: "okidoia", state: false});body.classList.remove('vis-flash', 'vis5', 'vis-flash-blur')
+SKIP::env.noBgmDuck = false;env.stopBgmChanges = false;env.grm.combat("ep4_vek_pt1_ing");flash(false);setCam();vn.done();if(check("gameplay_off")) { cutscene(true); setTimeout(()=>{startDialogue("vekoaboss_nogame"); cutscene(false)}, 1200)} else {env.rpg.classList.remove('hideteams')};ratween(env.bgm, 1);env.oldBgm = env.grm.music_oki;env.bgm.saveRate = 1;env.rpg.setCam();vfx({type: "okidoia", state: false});body.classList.remove('vis-flash', 'vis5', 'vis-flash-blur');content.classList.remove('finalescrollmode', 'finalescrollprep', 'scrolldone', 'finalescroll')
 `)
 
 env.dialogues["vekoaboss_nogame"] = generateDialogueObject(` 
 start
     sys
-        ATTENTION::"thoughtform combat gameplay bypassed";'toggle within system menu if desired'
+        ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"
             EXEC::cutscene(false);env.rpg.classList.add("hideteams")
         NOTICE::"contextual narration applied"
 
     sourceless
-        it is hard fought, but we reach the first clear organ of the ceremony we can find
+        despite the desperate and deadly efforts of the ceremony,
+        we reach the first clear organ we can find
             EXEC::flash(true)
             WAIT::1000
             THEN::env.rpg.grid.style.setProperty("--playercontrol-tilt-raw", 20);env.rpg.grid.style.setProperty("--playercontrol-rotation-raw", -225);env.rpg.actors.akizet.piece.moveToCoords(8, 2);env.rpg.actors.cavik.piece.moveToCoords(8, 1);env.rpg.actors.gakvu.piece.moveToCoords(7,3);env.rpg.actors.bozko.piece.moveToCoords(9, 3);flash(false)
@@ -7781,34 +8134,32 @@ start
         the only way t¥¨äÍ£R˜Òw"
 
     sourceless
-        vekoa's illusions around us have broken apart, splitting into countless minute strands,
-        and have instead formed into a protective membrane - she has caught onto our plans
+        countless minute strands of dull light divert from tendrils beyond the threshold,
+        weaving into distantly familiar shapes--qou, who take defensive stances...
             EXEC::env.rpg.setCam({x: 8, y:14, playerRotation: 165, playerTilt: -30})
-        it writhes, forming offensive appendages
-        seemingly stationary, but no less of a threat
-        but in order to defend, it too must be physical
-        we will tear it all down
+        but in order to defend this organ, they too must be physical
+        we will tear these illusions apart
     
     RESPONSES::akizet
         attack<+>END
             SHOWIF::["gameplay_off", false]
             FAKEEND::(continue)
-            EXEC::env.rpg.halt = false;env.rpg.setCam();if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove('hideteams');ratween(env.bgm, 1)
+            EXEC::env.rpg.halt = false;env.rpg.setCam({playerRotation: 135});if(env.rpg.haltedAttempt) advanceTurn();env.rpg.classList.remove('hideteams');ratween(env.bgm, 1)
         attack<+>nogame
-            EXEC::env.rpg.setCam()
+            EXEC::env.rpg.setCam({playerRotation: 135})
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", true]
 
 nogame
     sourceless
-        the wall, formed of countless minute strands, lashes out at us with spiked limbs
+        the false qou are rended, detonated, broken apart with blunt force
             EXEC::flash(true)
             WAIT::1000
             THEN::env.rpg.actors.akizet.piece.moveToCoords(8, 13);env.rpg.actors.cavik.piece.moveToCoords(8, 14);env.rpg.actors.gakvu.piece.moveToCoords(7,13);env.rpg.actors.bozko.piece.moveToCoords(9, 12);flash(false)
-        its movement is distantly familiar, reminiscent of a room being reshaped
-        similar to movefriend, when it was wielded against us
-        but like it, this form falls
-            EXEC::env.rpg.enemyTeam.members.forEach(m=> m != env.rpg.currentVein ? m.hp = 0 : 0);updateStats();
+        their movement is familiar, clearly drawing upon real experience,
+        much in the same way that the parasitic husks acted
+        but like them, these forms fall
+            EXEC::env.rpg.enemyTeam.members.forEach(m=> m.hp = 0);updateStats();
         
     RESPONSES::akizet
         ...<+>CHANGE::vekoa_p2
@@ -7820,19 +8171,11 @@ nogame
 env.dialogues["vekoa_p2"] = generateDialogueObject(` 
 start
     sourceless
-        the protective wall collapses into itself, tendrils breaking apart
-            EXEC::imagePreload(["/img/sprites/vekoa/vekoaspec.gif", "/img/sprites/vekoa/vekoaspec_shot.gif"]);env.rpg.allyTeam.members.forEach(m=>{m.hp = m.maxhp;combatRevive(m)});env.rpg.clearCavikSpot();
-        and with this opening, i nearly call for cavik to rush in--
-            EXEC::env.rpg.actors.cavik.piece.stepToCoords(8, 14);ratween(env.bgm, 0.75)
-        but he is already here, wielding the modified dull pulse
-            EXEC::forcePlay('dull');flash(true)
-        firing it continuously into the veins at close range, severing them all
-            EXEC::env.rpg.currentVein.hp = 0;updateStats(env.rpg.currentVein)
-        and it is done - the overlap rippling as the ceremony beyond is crippled further
-            EXEC::env.noBgmDuck = true;
+        the vein snaps, the ceremony writhing all around us as it is crippled further
+            EXEC::imagePreload(["/img/sprites/vekoa/vekoaspec.gif", "/img/sprites/vekoa/vekoaspec_shot.gif"]);env.rpg.allyTeam.members.forEach(m=>{m.hp = m.maxhp;combatRevive(m)});forcePlay('dull');flash(true);env.noBgmDuck = true;
         the feeling of a scream tears through us, as another shape manifests nearby
             EXEC::env.rpg.p2();env.rpg.classList.add('fearmode');changeBgm(env.grm.music_antag, {length: 10000, seek: 32, preserve: false})
-            WAIT::1000
+            WAIT::2000
             THEN::flash(false);env.rpg.actors.vekoa_boss.piece.moveToCoords(8, 11, {follow: false})
         it seems vekoa cannot afford to delegate any longer
             EXEC::env.rpg.setCam({x: 8, y: 13, playerRotation: 0, playerTilt: 10, height: 1, distance: 0, detailMode: true, gridTileSize: 200, offsetCamera: 'rotateX(0deg)', hideAllies: true});content.querySelector("#vekoasprite").src = "/img/sprites/vekoa/vekoaspec.gif";flash(false);env.rpg.classList.add('bigcloseup');env.rpg.actors.vekoa_boss.piece.moveToCoords(8, 11, {follow: false})
@@ -7880,14 +8223,13 @@ start
         N©÷·./ ò¤,_)Ë Í‡)šš« DËÅ?}
     
     sourceless
-        what is she really trying to tell me?
+        she... is insisting something, but...
             EXEC::flash(false)
-        why bother speaking at all?
+        i cannot make sense of it, like every previous attempt
             EXEC::body.classList.remove('vis-flash', 'vis6', 'vis-flash-blur')
-        it had occurred to me before, but...
-        could she truly not <em>want</em> to kill us? are we forcing her claws?
-        would she prefer we simply leave?
-        besides, after so much death, why would she care to spare <em>us?</em>
+        the tone is familiar, as if...
+        as if she is the one reasoning with some unreasonable parasite
+        are we forcing her claws? would she prefer we simply leave?
         but before she can continue, the air shimmers behind her,
         and the distinctive glow of a disabler pulses
         telyu--she is here!!
@@ -7897,8 +8239,8 @@ start
         sending her forward in an uneasy stumble
         i scramble away while her conjured form writhes, struggling to hold shape
             EXEC::env.rpg.actors.akizet.piece.stepToCoords(8,13)
-        briefly uncloaked, telyu tosses a collection of restoratives and supplies to us, salvaged from the dull mind
-            EXEC::addItem("restorative", 6);addItem("kavruka", 4);addItem("aima_cyst", 2);env.rpg.actorList.forEach(a=>a.hp = a.maxhp)
+        briefly uncloaked, telyu tosses a collection of restoratives and supplies to us to keep us fighting
+            EXEC::env.rpg.actorList.forEach(a=>a.hp = a.maxhp)
         before vanishing once more - no time to gloat
             EXEC::midCombatActorRemove(env.rpg.actors.telyu)
         still, vekoa is recovering... a simple disabler would not stop this
@@ -7923,15 +8265,9 @@ start
         they collect telyu's resources, preparing to charge ahead to sever the other veins, while i...
             EXEC::env.rpg.actors.akizet.piece.stepToCoords(8,12);env.rpg.halt = false;flash(true);closeCombat(env.rpg.enemyTeam)
             WAIT::3000
-            THEN::env.grm.combat("ep4_vek_pt2")
+            THEN::env.grm.combat("ep4_vek_pt2_ing")
         i advance upon vekoa, striking her and sending us both into the blinding vortex around the core
             EXEC::flash(false);
-
-    sys
-        ANALYSIS::'context shift'
-        NOTICE::'entities';'VEKOA';'AKIZET';'act twice'
-        NOTICE::'actions altered'
-        WARNING::'items disabled'
 
     sourceless
         this close to the core, the overlap is even more oppressive...
@@ -7974,7 +8310,7 @@ start
         and so, as we continue, my mind's eye is drawn to them as well...
             EXEC::if(env.rpg) {env.rpg.halt = false;flash(true);closeCombat(env.rpg.enemyTeam)} else {flash(true)}
             WAIT::2500
-            THEN::flash(false);env.grm.combat("ep4_vek_pt3");removeStatus(env.rpg.actors.cavik, "fear")
+            THEN::flash(false);env.grm.combat("ep4_vek_pt3_ing");removeStatus(env.rpg.actors.cavik, "fear")
         between my movements and my strikes, i can lend guidance
     
     sourceless
@@ -7983,19 +8319,17 @@ start
         as the ceremony destabilizes, so too does the shape of this twisted chamber
         critical veins nearby flicker with instability, incorporeal
             EXEC::env.rpg.setCam({x: 9, y: 2, playerRotation: -0, playerTilt: -40})
-        gleaming images of large golems ahead warp the space - they must be the source of this shielding
-        a strange leverage keeping the ceremony's organs out of reach...
-        they must be destroyed first
-
-    timestopper
-        there are so many, still...
-        and they will keep coming
-        just press on
+        ahead, a familiar shape bars their path, the gleaming image of our archivist warping the space
+        their body surely still lay back in the spine, under mountains of immovable sludge
+        and yet here they stand, barely perceptible tendrils drawing between them and the vein
+        animated by it? shielding it...? 
+        i cannot tell for certain, especially not through borrowed senses...
+        product of these organs or no, they must be torn away from our path all the same
     
     sourceless quiet
-        as they start to advance, a disabler burst suddenly disperses one of their foes
+        as my friends start to advance, a disabler burst suddenly disperses one of their foes
             WAIT::2000
-            THEN::midCombatActorAdd(env.rpg.allyTeam, "telyu");env.rpg.setCam();env.rpg.actors.telyu.piece.focusOnTile();let a = env.rpg.grid.querySelector("combat-tile[slug='?']").piece.actor;a.hp = 1;useAction(env.rpg.actors.telyu, env.ACTIONS.disabler_pulse, a);forcePlay('shot6', 0.5)
+            THEN::midCombatActorAdd(env.rpg.allyTeam, "telyu");env.rpg.setCam();env.rpg.actors.telyu.piece.focusOnTile();let a = env.rpg.grid.querySelector("combat-tile[slug='X']").piece.actor;a.hp = 1;useAction(env.rpg.actors.telyu, env.ACTIONS.disabler_pulse, a);forcePlay('shot6', 0.5)
         
     sourceless
         telyu has come to help... without a timestopper?
@@ -8004,7 +8338,7 @@ start
         but no one needs to speak of the danger, 
         for danger is of no consequence in these final moments
         they must clear the way
-            EXEC::env.rpg.currentActor.piece.focusOnTile()
+            EXEC::env.rpg.currentActor.piece.focusOnTile();env.rpg.removePendingPieces()
         
     RESPONSES::akizet
         begin<+>END
@@ -8019,11 +8353,12 @@ start
 nogame
     sourceless
         the team advances, tearing apart foes and covering one another
-            EXEC::flash(true)        
-        the golems pose a great threat in how they wield the overlap's light
+            EXEC::flash(true)
+        malvi, or their image, conjures shapes to form into golems, just as we once witnessed
+        their sheer number poses such an incredible threat
         but as a stranded surface team might fend off a pack of predators,
         my friends work together in a silent flow
-        but eventually... something catches them by surprise
+        eventually... something catches them by surprise
     
     RESPONSES::akizet
         ...<+>CHANGE::vekoa_p3_tozik
@@ -8057,11 +8392,11 @@ start
 
 nogame
     sourceless
-        together, with great effort, they tear through these foes
+        together, with great effort, they tear through these illusions
         and where blows may have been fatal, there is tozik
         he is repairing their wounds with more efficiency than ever before,
         as if he is thriving in this warped space, in his altered state
-        in time, the golems struggle to hold under their assault
+        in time, malvi struggles to hold under their assault
     
     RESPONSES::akizet
         ...<+>CHANGE::vekoa_p4
@@ -8071,26 +8406,28 @@ nogame
 env.dialogues["vekoa_p4"] = generateDialogueObject(` 
 start
     sourceless
-        as the protectors snap apart, the overlap constricts
+        as malvi falls, the overlap constricts
             EXEC::if(!env?.rpg?.active) flash(true);imagePreload(["/img/sprites/vekoa/vekoaspec_despair.gif", "/img/sprites/vekoa/vekoaspec_activefreak.gif"])
-        the veins feel closer - it is their chance to strike
-        cavik hurries ahead to sever them, and--
+        the vein feels closer - it is their chance to strike
+        cavik hurries ahead to sever it, and--
             EXEC::if(env.rpg) {env.rpg.halt = false;flash(true);closeCombat(env.rpg.enemyTeam)} else {flash(true)}
             WAIT::2500
-            THEN::flash(false);env.grm.combat("ep4_vek_pt4");env.rpg.setCam({x: 5, y: 4, playerRotation: 0, playerTilt: -10});env.rpg.classList.add('hideteams');
+            THEN::flash(false);env.grm.combat("ep4_vek_pt4_ing");env.rpg.setCam({x: 6, y: 4, playerRotation: 0, playerTilt: -10});env.rpg.classList.add('hideteams');
         
     sourceless quiet
         i step back from vekoa as she lunges at me, a narrow miss
             EXEC::play("miss", 0.75)
         it is rare that she misses, though the same could be said for me
         but she follows with a successful strike, and i am flung away...
-            EXEC::play("stab");env.rpg.actors.akizet.piece.knockback({direction: "left", strength: 2, follow: false});env.rpg.actors.vekoa_1v1.piece.moveToCoords(5, 7)
+            EXEC::play("stab");env.rpg.actors.akizet.piece.knockback({direction: "left", strength: 2, follow: false});env.rpg.actors.vekoa_1v1_ing.piece.moveToCoords(6, 8);env.rpg.grid.classList.add('struck')
+            WAIT::400
+            THEN::env.rpg.grid.classList.remove('struck')
         we are both ragged, and though it is clear that she can simply reform...
         while fighting on two fronts, she is unable to spend the focus
         but before i can retaliate, a great blast rocks the space, and the overlap writhes
             EXEC::flash(true);play('criticalError', 0.3)
             WAIT::2000
-            THEN::env.rpg.classList.add("pt4");flash(false);env.chrome ? env.rpg.setCam({x: 5, y: 9, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200}) : env.rpg.setCam({x: 5, y: 7, playerRotation: 0, distance: 2, perspective: "1000px", playerTilt: 20, height: 1, detailMode: true, hideAllies: true, gridTileSize: 200})
+            THEN::env.rpg.classList.add("pt4");flash(false);env.chrome ? env.rpg.setCam({x: 6, y: 10, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200}) : env.rpg.setCam({x: 6, y: 8, playerRotation: 0, distance: 2, perspective: "1000px", playerTilt: 20, height: 1, detailMode: true, hideAllies: true, gridTileSize: 200})
         another critical strike to the ceremony
         they have done it
         and from what i sense from their thoughts,
@@ -8098,7 +8435,7 @@ start
         her claws come up to grip her face, where they break apart into countless tendrils
             EXEC::flash(true)
             WAIT::400
-            THEN::env.rpg.actors.vekoa_1v1.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_despair.gif";env.rpg.actors.vekoa_1v1.sprite.querySelector('img').style.width = "150px";flash(false)
+            THEN::env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_despair.gif";env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').style.width = "150px";flash(false)
         her entire body is fraying - the illusion of familiarity is broken
 
     okidoia::dark
@@ -8121,12 +8458,12 @@ start
         before i can make out any detail, the threads that formed vekoa stab into it
             EXEC::flash(true)
             WAIT::400
-            THEN::env.rpg.actors.vekoa_1v1.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_activefreak.gif";env.rpg.actors.vekoa_1v1.sprite.classList.add('freakmode');env.rpg.actors.vekoa_1v1.sprite.querySelector('img').style.width = ""
+            THEN::env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_activefreak.gif";env.rpg.actors.vekoa_1v1_ing.sprite.classList.add('freakmode');env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').style.width = ""
         weaving through it like the toothed roots of a veilk leg, plunging into soil
             EXEC::flash(false)
         it was a body... her body? 
         the combined form is hideous, terrifying, half-formed of physical corru
-            EXEC::env.chrome ? env.rpg.setCam({x: 5, y: 10, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.75, hideAllies: true, detailMode: true, gridTileSize: 200}) : env.rpg.setCam({x: 5, y: 7, playerRotation: 0, distance: 2, playerTilt: 20, height: 1, detailMode: true, hideAllies: true, gridTileSize: 200, perspective: "1000px"})
+            EXEC::env.chrome ? env.rpg.setCam({x: 6, y: 10, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.75, hideAllies: true, detailMode: true, gridTileSize: 200}) : env.rpg.setCam({x: 6, y: 8, playerRotation: 0, distance: 2, playerTilt: 20, height: 1, detailMode: true, hideAllies: true, gridTileSize: 200, perspective: "1000px"})
         and her posture, receptors, gaze - even the feeling in the air,
         is a bone-chilling hatred, blame, burning into me
         
@@ -8148,12 +8485,12 @@ start
     RESPONSES::akizet
         begin<+>END
             SHOWIF::["gameplay_off", false]
-            EXEC::env.rpg.setCam();env.rpg.grid.style.setProperty("--playercontrol-tilt-raw", 20);env.rpg.grid.style.setProperty("--playercontrol-rotation-raw", 0);env.rpg.classList.remove('hideteams')
+            EXEC::env.rpg.setCam();env.rpg.classList.remove('hideteams');env.rpg.setGridProperty("--playercontrol-tilt", "-20deg")
             FAKEEND::(continue)
         begin<+>nogame
             FAKEEND::(continue)
             SHOWIF::["gameplay_off", true]
-            EXEC::env.rpg.setCam();env.rpg.grid.style.setProperty("--playercontrol-tilt-raw", 20);env.rpg.grid.style.setProperty("--playercontrol-rotation-raw", 0);
+            EXEC::env.rpg.setCam();env.rpg.setGridProperty("--playercontrol-tilt", "-20deg")
 
 nogame
     sourceless
@@ -8215,7 +8552,7 @@ start
         it is the others who must complete their task
             EXEC::env.rpg.halt = false;flash(true);closeCombat(env.rpg.enemyTeam)
             WAIT::2500
-            THEN::flash(false);env.grm.combat("ep4_vek_pt5");removeStatus(env.rpg.actors.cavik, "fear");
+            THEN::flash(false);env.grm.combat("ep4_vek_pt5_ing");removeStatus(env.rpg.actors.cavik, "fear");
         
     sourceless
         with the ceremony so broken, the remaining space of the overlap is hard to even understand
@@ -8234,12 +8571,12 @@ start
         
     RESPONSES::akizet
         begin<+>END
-            EXEC::env.rpg.setCam()
+            EXEC::env.rpg.setCam();env.rpg.currentActor.piece.focusOnTile()
             SHOWIF::["gameplay_off", false]
             FAKEEND::(continue)
         begin<+>nogame
             FAKEEND::(continue)
-            EXEC::env.rpg.setCam()
+            EXEC::env.rpg.setCam();env.rpg.currentActor.piece.focusOnTile()
             SHOWIF::["gameplay_off", true]
 
 nogame
@@ -8264,7 +8601,7 @@ start
         a critical alert passes through my body, something approximating immense pain
             EXEC::flash(true);closeCombat(env.rpg.enemyTeam);forcePlay('stab', 0.75)
             WAIT::2500
-            THEN::flash(false);env.grm.combat("ep4_vek_pt6");env.rpg.setCam({x: 5, y: 5, playerRotation: -90, playerTilt: -10});env.rpg.classList.add('hideteams')
+            THEN::flash(false);env.grm.combat("ep4_vek_pt6_ing");env.rpg.setCam({x: 5, y: 5, playerRotation: -90, playerTilt: -10});env.rpg.classList.add('hideteams')
         i am torn back to focus upon my body by the shock
             EXEC::env.rpg.actors.akizet.piece.knockback({direction: "up", strength: 1, follow: false})
         how much have i bled?
@@ -8341,7 +8678,9 @@ env.dialogues["vekoaboss_clear"] = generateDialogueObject(`
 start
     sourceless
         and with a final strike,
-            EXEC::env.rpg.classList.add('hideteams');flash(false);env.rpg.actors.akizet.piece ? env.rpg.actors.akizet.piece.moveToCoords(3, 7) : '';env.rpg.actors.vekoa_1v1.piece.moveToCoords(5, 7);env.rpg.setCam({x: 5, y: 9, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200});env.rpg.actors.vekoa_1v1.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_activefreak.gif";env.rpg.grid.tileEffects.forEach(e => env.rpg.grid.deleteTileEffect(e))
+            EXEC::env.rpg.halt = true;env.rpg.classList.add('hideteams');flash(true);
+            WAIT::2000
+            THEN::flash(false);env.rpg.actors.akizet.piece ? env.rpg.actors.akizet.piece.moveToCoords(3, 7) : '';env.rpg.actors.vekoa_1v1_ing.piece.moveToCoords(6, 7);env.rpg.setCam({x: 6, y: 9, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 0, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200});env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').src = "/img/sprites/vekoa/vekoaspec_activefreak.gif";env.rpg.grid.tileEffects.forEach(e => env.rpg.grid.deleteTileEffect(e));env.rpg.cameraLock = true
 ____SHOWIF::["PAGE!!akizetblunder", false]
     sourceless
         vekoa's crumbling form erodes further
@@ -8384,7 +8723,7 @@ ____SHOWIF::["PAGE!!akizetblunder", true]
     sourceless
         the darkness, the dull light, they twist together
         vekoa's mangled form seems infinite, stretching up into them both
-            EXEC::env.rpg.setCam({x: 5, y: 8.5, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 60, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200});env.rpg.actors.vekoa_1v1.sprite.querySelector('img').style.width = "450px"
+            EXEC::env.rpg.cameraLock = false;env.rpg.setCam({x: 6, y: 8.5, playerRotation: 0, perspective: "1000px", distance: 0, playerTilt: 60, height: 0.5, hideAllies: true, detailMode: true, gridTileSize: 200});env.rpg.actors.vekoa_1v1_ing.sprite.querySelector('img').style.width = "450px";env.rpg.cameraLock = true
         it stops, simply looming nearby
         the shape that looks down at me is almost unrecognizable
         its claws close and open, splitting into threads of light with every motion
@@ -8833,10 +9172,10 @@ closeout
     
     self
         velzie, enough
-        i am running out of time
+        i'm running out of time
         the cyst may soon be out of my hands
-        if you have answers, explanations,
-        then give them to me now
+        if you've got answers, explanations,
+        now's the time
     
     moth
         whoa
@@ -8978,16 +9317,28 @@ start
     sys
         ATTENTION::'memory stream interrupted'
         ATTENTION::'invalid procedure'
-        ATTENTION::'revert actions?'
-        NOTICE::'retry';'revert to starting state of combat proceeding'
-        NOTICE::'grace retry';'revert to start of combat proceeding';'regain all HP';'gain minor item advantage'
-        NOTICE::'exit';'return to memory selection'
+        EXECUTING::"structure direction";"reversion"::
+
+    plainsys
+        retry;revert to starting state of combat
+        reorganize;pause stream to adjust party and items
+        exit;return to memory selection to reload
+
+    sys
+        END::
+            EXEC::env.lastScenario = env.rpg.scenario
+            NOTE::this is mainly set in combatGrid but just in case we're doing it here too
     
     RESPONSES::sys
         retry<+>END
-            EXEC::restorePartySnapshot();CombatScene.SCENARIOS[env.partySnapshot.scenarioName].retry()
-        grace retry<+>END
-            EXEC::restorePartySnapshot(true);CombatScene.SCENARIOS[env.partySnapshot.scenarioName].retry()
-        leave iteration<+>END
+            EXEC::env.lastScenario.retry()
+            FAKEEND::(immediate retry)
+
+        reorganize<+>END
+            EXEC::flash(true);setTimeout(()=>{closeCombat(env.rpg.allyTeam, true);changeStage("itempause")}, 500)
+            FAKEEND::(pause)
+        
+        exit<+>END
             EXEC::moveTo("/local/ocean/embassy/")
+            FAKEEND::(return to selection)
 `)

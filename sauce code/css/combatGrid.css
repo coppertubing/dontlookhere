@@ -1,3 +1,13 @@
+combat-scene#combat.intro {
+    animation: intro-fade 1s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes intro-fade {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
 /* 
     CAM 
     while this combat system doesn't use stage functions, it DOES use many of the same
@@ -31,18 +41,13 @@ combat-grid.grid-plane { /* this is an extension of grid-plane */
     --playercontrol-tilt: calc(var(--playercontrol-tilt-raw) * -1deg);
     transform: translateY(100px);
     transition: transform 400ms ease-in-out;
+    contain: layout style;
 
     /* we do a tiny anim on hit to ensure filters etc are visible */
     /* otherwise adding a filter to someone makes them disappear instead of actually doing it */
     /* coincidentally this also makes firefox suddenly run better whenever it happens lol? so double win*/
     animation-iteration-count: 1 !important;
 }
-
-/*
-combat-scene[state="targeting"][team="ally"] combat-grid {
-    transform: translateY(0);
-}
-*/
 
 #combat-rotator.grid-container {
     --baseContainerTransform: 
@@ -134,9 +139,9 @@ combat-tile, combat-actor {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    border: 1px dashed var(--bright-color);
+    border: 1px solid var(--dark-color);
     position: absolute;
-    --baseTileTransform: translate(calc(var(--x) * var(--gridTileSize)), calc(var(--y) * var(--gridTileSize)));
+    --baseTileTransform: translate(calc(var(--x) * var(--gridTileSize)), calc(var(--y) * var(--gridTileSize))) translateZ(1px);
     transform: var(--baseTileTransform);
     transition: border-color 1s;
     transform-style: preserve-3d;
@@ -172,7 +177,7 @@ combat-tile::after {
 }
 
 combat-tile {
-    background: var(--dark-color);
+    background: rgba(25, 25, 25, 1)
 }
 
 combat-tile.notile {
@@ -206,6 +211,11 @@ combat-tile:hover .pseudopiece::after {
     font-size: 45px;
 }
 
+.effectfx.pseudopiece::after {
+    opacity: 0.75;
+    border: 5px solid var(--border-color);
+}
+
 combat-tile.noborder {
     border: unset;
 }
@@ -214,37 +224,45 @@ combat-tile.noborder {
     width: 100%;
     height: 100%;
     position: absolute;
-    display: flex;
     justify-content: center;
     align-items: center;
-    pointer-events: none;;
+    pointer-events: none;
+    display: none;
 }
 
 combat-tile.effectbearer {
     will-change: transform;
 }
 
-combat-tile.effectbearer:hover {
+combat-tile.effectbearer .tile-effects {
+    display: flex;
+}
+
+combat-tile.effectbearer.has-visible-effects:hover {
     background: url(/img/mui/marblynryetarget.svg), black;
     background-size: 80% 80%;
     background-position: center;  
     background-repeat: no-repeat;
 }
 
-
-combat-scene[state="normal"] combat-tile.effectbearer:hover .tile-effects::before {
-    content: "EFFECT";
+combat-tile.effectbearer:hover .tile-effects::before {
+    content: "RIGHT\a CLICK";
     display: block;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: var(--neutral-color);
     font-size: 1drem;
     width: auto;
     height: auto;
     padding: 0.25em;
-    transform: translateZ(20px) rotate(calc(var(--playercontrol-rotation) * -1));
+    transform: translateZ(20px);
     background: url(/img/mui/marblynryetarget.svg), black;
+}
+
+.mui-active combat-tile.effectbearer:hover .tile-effects::before {
+    content: "EFFECT"
 }
 
 combat-tile.piecebearer:not(.targetable),
@@ -257,26 +275,74 @@ combat-tile.effectbearer {
     cursor: alias
 }
 
-combat-tile .piece-stat {
+.piece-stat {
     position: absolute;
+    padding: 0.25em;
+    transition: transform 300ms linear;
+    --statHeight: 10px;
+    transform: translateZ(var(--statHeight)) rotateX(calc(-90deg)) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -0.5)) translateY(calc(var(--gridTileSize) * -1));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    pointer-events: none;
+}
+
+.in-dialogue .piece-stat {
+    display: none;
+}
+
+.ps-hp {
     background: var(--dark-color);
     color: var(--bright-color);
     border: 2px solid var(--team-color);
     text-shadow: 1px 1px var(--team-color);
-    padding: 0.25em;
-    transition: all 300ms linear;
-    --statHeight: 10px;
-    transform: translateZ(var(--statHeight)) rotateX(calc(-90deg)) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -0.5)) translateY(calc(var(--gridTileSize) * -1));
+}
+
+.ps-statuses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.ps-statuses:empty {
     display: none;
-    pointer-events: none;
 }
 
-combat-scene[state="targeting"] combat-tile.piecebearer .piece-stat {
-    display: block;
+.ps-statuses .status-effect {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: -0.25em -0.25em 0 0;
 }
 
-combat-tile.piecebearer.targetable:hover .piece-stat, 
-combat-tile.piecebearer.aoe-preview .piece-stat {
+.ps-statuses .status-effect:first-child:last-child {
+    margin: 0;
+}
+
+.ps-statuses .status-name, .ps-statuses .status-count {
+    display: none !important;   
+}
+
+/* not displaying these presently. on-grid should probably just be for reference of who has what
+.ps-statuses .status-count {
+    font-size: 0.75em;
+    opacity: 0.75;
+}
+*/
+
+.ps-hitpredict .hitpredict {
+    position: relative;
+    transform: unset;
+    white-space: nowrap;
+    font-size: 0.8em;
+    border: 1px solid var(--neutral-color);
+}
+
+combat-actor.highlight .piece-stat {
     color: var(--neutral-color);
 }
 
@@ -315,13 +381,16 @@ combat-actor::before {
     content: "";
     box-sizing: border-box;
     position: absolute;
-    width: var(--gridTileSize);
-    height: var(--gridTileSize);
+    width: 50px;
+    height: 50px;
     border: 25px double var(--border-color, var(--bright-color));
     background: var(--background-color, transparent);
     border-radius: 100%;
-    transition: opacity 500ms ease-in-out;
     pointer-events: none;
+}
+
+combat-actor.noring::after {
+    display: none !important;
 }
 
 combat-actor[team="ally"], .pseudopiece[team="ally"] {
@@ -385,7 +454,8 @@ combat-actor .actor-stand {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 300ms linear;
+    transition: transform 300ms linear;
+    will-change: transform;
 }
 
 combat-actor .actor-stand.static {
@@ -432,21 +502,32 @@ combat-actor .item-ghost img {
 /* MOVEMENT & INTERACTION */
 combat-scene {
     --team-color: var(--neutral-color);
+    --team-transparent-color: rgba(255, 255, 0, 0.33);
     --interact-bg-light: url(/img/textures/dithertileyellowweak.gif);
     --interact-bg-heavy: url(/img/textures/dithertileyellow.gif);
 }
 
-combat-scene[team="ally"], combat-tile.piecebearer[team="ally"], #ally-team {
+combat-scene[team="ally"], 
+combat-tile.piecebearer[team="ally"], 
+.ally-colors,
+#ally-team {
     --team-color: var(--friend-color);
+    --team-transparent-color: rgba(0, 255, 255, 0.33);
     --interact-bg-light: url(/img/textures/dithertilecyansparse.gif);
 }
 
-combat-scene[team="enemy"], combat-tile.piecebearer[team="enemy"], #enemy-team {
+combat-scene[team="enemy"], 
+combat-tile.piecebearer[team="enemy"], 
+.enemy-colors,
+#enemy-team {
     --team-color: var(--obesk-color);
+    --team-transparent-color: rgba(255, 0, 255, 0.33);
     --interact-bg-light: url(/img/textures/dithertilemagenta.gif);
 }
 
-combat-scene[team="neutral"], combat-tile.piecebearer[team="neutral"] {
+combat-scene[team="neutral"], 
+combat-tile.piecebearer[team="neutral"],
+.neutral-colors {
     --team-color: var(--bright-color);
 }
 
@@ -457,30 +538,36 @@ combat-scene[team="ally"] combat-tile.targetable {
 
 combat-scene[state="normal"] combat-tile.movable::before {
     display: block;
-    background: var(--interact-bg-light);
-    border: 2px dashed var(--neutral-color);
-}
-
-combat-scene[state="normal"][team="ally"] combat-tile.movable::before {
-    background-color: #0ff3;
-}
-
-combat-tile.targetable::before { 
-    display: block;
-    border: 5px dashed var(--neutral-color);
-    background: url(/img/textures/dithertileyellow.gif);
+    border: 2px ridge var(--neutral-color);
+    border-radius: 100%;
+    width: 33%;
+    height: 33%;
+    transform: translateZ(2px);
 }
 
 combat-scene[state="normal"] combat-tile.targetable-preview::before { 
     display: block;
     border: 5px dashed var(--dark-color);
     background: url(/img/textures/dithertileyellowweak.gif);
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    border-radius: unset;
 }
 
-combat-scene[state="normal"] combat-tile.truerange::before { 
+combat-scene combat-tile.truerange::before { 
     display: block;
     border: 5px dashed var(--dark-color);
     background: url(/img/textures/dithertilemagenta.gif);
+}
+
+combat-tile.truerange::after {
+    background: transparent;
+}
+
+
+combat-tile.damagetile {
+    box-sizing: border-box;
 }
 
 combat-tile.beneficial {
@@ -492,6 +579,33 @@ combat-tile.beneficial::after {
     font-size: 4em;
     display: block;
     color: var(--friend-color);
+    animation: GRID-SPINNYCON 2s linear infinite reverse;
+}
+
+combat-tile.spy::before { 
+    display: block;
+    border: 5px dashed var(--dark-color);
+    background: url(/img/textures/dithertileyellowweak.gif);
+}
+
+combat-tile.spy::after { 
+    content: "";
+    width: 2em;
+    height: 2em;
+    background: url(/img/textures/yeyetrantiny.gif);
+    background-size: cover;
+    display: block;
+    animation: GRID-SPINNYCON 2s linear infinite reverse;
+}
+
+combat-tile.explosivefollowup::after { 
+    content: "";
+    width: 32px;
+    height: 32px;
+    background: url(/img/sprites/combat/passives/kavruka_satchel.gif);
+    background-size: cover;
+    border: 2px solid var(--obesk-color);
+    display: block;
     animation: GRID-SPINNYCON 2s linear infinite reverse;
 }
 
@@ -533,7 +647,18 @@ combat-scene[state="animating"] .actions::after {
     color: var(--neutral-color);
 }
 
+combat-tile.targetable::before { 
+    display: block;
+    border: 5px dashed var(--neutral-color);
+    background: url(/img/textures/dithertileyellowsuperweak.gif);
+}
+
 /* CAMMING */
+combat-scene[state="looking"] .team {
+    opacity: 0.1;
+    pointer-events: none;
+}
+
 combat-scene[state="looking"] combat-tile:hover::after,
 combat-scene[state="looking"] combat-tile:hover::before {
     display: block;
@@ -560,7 +685,12 @@ combat-scene[state="looking"] combat-tile:hover::before {
     border: 5px dashed var(--neutral-color);
 }
 
-.stage-arrows > .look {
+combat-scene[state="looking"] .piecebearer {
+    background: var(--team-color) !important;
+}
+
+.stage-arrows .look,
+.stage-arrows .speed {
     position: absolute;
     top: 0;
     right: 0;
@@ -572,7 +702,8 @@ combat-scene[state="looking"] combat-tile:hover::before {
     transform: scale(0.75);
 }
 
-.stage-arrows > .look i {
+.stage-arrows > .look i,
+.stage-arrows .speed i {
     pointer-events: none;
 }
 
@@ -595,11 +726,32 @@ combat-scene[state="looking"][team="ally"] .stage-arrows .look {
     transform: scale(1.25);
 }
 
+.stage-arrows .speed {
+    color: var(--obesk-color);
+    right: -1.5em;
+    transform: scale(1);
+    opacity: 1;
+    cursor: pointer;
+}
+
+combat-scene[team="ally"] .stage-arrows .speed {
+    opacity: 0.5;
+    color: var(--bright-color);
+    transform: scale(0.75);
+    cursor: not-allowed;
+}
+
+combat-scene.spedup .stage-arrows .speed {
+    --baseTransform: scale(1.5);
+    animation: SHAKE 100ms steps(2) infinite;
+    box-shadow: 0px 0px 10px var(--obesk-color);
+}
+
 /* TARGETING */
 combat-tile.targetable.aoe-preview::before {
     display: block;
     border: 5px solid var(--dark-color);
-    background: var(--neutral-color);
+    background: url(/img/textures/dithertileyellow.gif);
 }
 
 combat-tile.aoe-preview:not(.targetable)::before {
@@ -608,7 +760,7 @@ combat-tile.aoe-preview:not(.targetable)::before {
     background: var(--obesk-color);
 }
 
-combat-tile.aoe-preview::after {
+combat-tile.aoe-preview::after, combat-tile.truerange::after {
     content: "";
     position: absolute;
     display: block;
@@ -626,7 +778,7 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
   
 @keyframes GRID-HOVERICON {
     0% { transform: translateZ(0); opacity: 0;}
-    50% { transform: translateZ(25px); opacity: 1;}
+    50% { transform: translateZ(25px); opacity: 0.5;}
     100% { transform: translateZ(50px); opacity: 0;}
 }
   
@@ -634,6 +786,12 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     0% { transform: rotateX(-90deg) translateY(-100%) rotateY(0deg); opacity: 0; }
     50% { transform: rotateX(-90deg) translateY(-75%) rotateY(180deg); opacity: 1; }
     100% { transform: rotateX(-90deg) translateY(-25%) rotateY(360deg); opacity: 0; }
+}  
+  
+@keyframes GRID-SPINNYCON-MEGA {
+    0% { transform: rotateX(-90deg) translateY(-325%) scale(0.5) rotateY(0deg); opacity: 0; }
+    50% { transform: rotateX(-90deg) translateY(-125%) scale(1) rotateY(180deg); opacity: 1; }
+    100% { transform: rotateX(-90deg) translateY(-25%) scale(2) rotateY(360deg); opacity: 0; }
 }  
 
 /* TILE EFFECTS */
@@ -663,8 +821,26 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     --team-line: dashed;
 }
 
-.effectfx-burning {
-    background: url(/img/textures/disruptionM.gif);
+.effectfx-burning, .effectfx-chemical_fire {
+    background: url(/img/textures/mflametiny.gif);
+    background-color: black;
+    opacity: 0.5;
+}
+
+.effectfx-unstable_distortion {
+    background: url(/img/textures/blflametiny.gif);
+}
+
+.effectfx-burning_distortion {
+    background: url(/img/textures/mspinnelsmalltran.gif);
+}
+
+.effectfx-heart_consumption {
+    background: url(/img/sprites/combat/passives/ravenous_parasite_circle.gif), url(/img/textures/danger.gif);
+    background-size: auto, contain;
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+    border-color: var(--neutral-color);
 }
 
 .effectfx.projectile {
@@ -719,21 +895,26 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     border: 5px dashed var(--obesk-color)
 }
 
-.effectfx-guarding {
+.effectfx .guarding.dyne {
     transform: translateZ(50px);
     border-style: dashed;
-    background: url(/img/textures/redirection_small.gif?1);
+    background: url(/img/textures/redirection.gif);
+    background-color: var(--team-transparent-color); /* we cheat a little for readability */
     background-position: center;
+    opacity: 0.75;
 }
 
-.effectfx-heart_knock, 
-.effectfx-scene_edge {
+.effectfx[team="enemy"] .guarding.dyne {
+    background-image: url(/img/textures/redirectionm.gif)
+}
+
+.effectfx-heart_knock {
     background: url(/img/textures/warp_scene_edge.png);
     border: 20px dotted var(--dark-color);
 }
 
-.effectfx-scene_edge {
-    border: unset;
+combat-tile.scene_edge-tile {
+    background: url(/img/textures/warp_scene_edge.png);
 }
 
 .effectfx-telegraph {
@@ -744,7 +925,8 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     width: 100%; 
     height: 100%;
     position: absolute;
-    background: url(/img/textures/dithertilemagentasparsemega.gif);
+    background:  #ff00ff21;
+    transform: translateZ(1px);
 }
 
 .effectfx .telegraph::after {
@@ -754,7 +936,7 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     height: 50%;
     border-radius: inherit;
     position: absolute;
-    animation: GROWPULSE 1s linear infinite;
+    animation: TELEGROWPULSE 1s linear infinite;
     transform-origin: center;
     color: var(--team-color);
     border: 2px solid var(--team-color);
@@ -764,19 +946,77 @@ combat-tile.aoe-preview.aoe-preview-beneficial::after {
     align-items: center;
 }
 
-.effectfx-spying {
-    border: 2px dashed var(--friend-color);
-    background: url(/img/textures/dithertileyellowsuperweak.gif)
+.effectfx .dyne {
+    width: var(--size);
+    height: var(--size);
+    border: 5px solid var(--team-color);
 }
 
-.effectfx-spying.effectfx-origin {
-    background: url(/img/textures/ceyetrangrid.gif);
-    width: 400px;
-    height: 400px;
-    background-position: center;
-    border-radius: 100%;
-    transform: translateZ(31px);
+.effectfx .dyne::after {
+    font-size: 75px;
+    width: 75%;
+    height: 75%;
+}
+
+@keyframes TELEGROWPULSEMODEST {
+    0% { transform: scale(0.001); opacity: 0;}
+    50% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(1); opacity: 0;}
+}
+
+@keyframes TELEGROWPULSE {
+    0% { transform: scale(0.001); opacity: 0;}
+    50% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.5); opacity: 0;}
+}
+
+.bigswing .telegraph::after {
+    width: 300%;
+    height: 200%;
+    animation: unset;
+    --baseTransform: translateZ(100px) var(--swingAngle);
+    transform-origin: center;
+    font-size: 100px;
+    transform: var(--baseTransform);
+    animation: TELEGROWSWING 1s infinite;
+}
+
+.bigswing[direction="down"] { --swingAngle: rotate(0deg) }
+.bigswing[direction="right"] { --swingAngle: rotate(-90deg) }
+.bigswing[direction="up"] { --swingAngle: rotate(180deg) }
+.bigswing[direction="left"] { --swingAngle: rotate(90deg) }
+
+@keyframes TELEGROWSWING {
+    0% { transform: var(--baseTransform) scale(0.5); opacity: 0;}
+    50% { transform: var(--baseTransform) translateY(33%)  scale(1); opacity: 1; }
+    100% { transform: var(--baseTransform) translateY(33%)  scale(1); opacity: 0;}
+}
+
+.effectfx-spying, .effectfx-direction_target, .effectfx-direction_terror {
     border: unset;
+}
+
+.effectfx-spying.effectfx-origin, 
+.effectfx-direction_target.effectfx-origin,
+.effectfx-direction_terror.effectfx-origin {
+    background: url(/img/textures/ceyetrangrid.gif);
+    width: 300px;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 75%;
+    transform: translateZ(10px);
+    border: 2px dashed var(--friend-color);
+    background-color: rgba(0, 255, 255, 0.25); /* we cheat a little for readability */
+}
+
+.effectfx-direction_terror.effectfx-origin {
+    background-image: url(/img/sprites/combat/foes/kazeye_dull_tiny.gif), url(/img/textures/fear.gif);
+    background-color: rgba(255, 0, 255, 0.25); /* we cheat a little for readability */
+    border: 2px solid var(--bright-color);
+    background-size: 75%, auto;
+    transform: translateZ(1px);
+    background-repeat: no-repeat, repeat;
 }
 
 .effectfx-scrambler {
@@ -841,12 +1081,29 @@ combat-tile.telegraphing {
     84% { transform: var(--baseTileTransform)}
 }
 
+combat-tile.telegraphing-mega {
+    animation: TELETILE_MEGA 1200ms ease-in-out;
+}
+
+@keyframes TELETILE_MEGA {
+    0% { transform: var(--baseTileTransform)}
+    77% { transform: var(--baseTileTransform) translateZ(90px) rotate(180deg); background: var(--obesk-color);}
+    84% { transform: var(--baseTileTransform) translateZ(-90px)}
+    100% { transform: var(--baseTileTransform)}
+}
+
 .effectfx.charge {
-    border-radius: 100%;
     --baseTransform: translateZ(100px);
-    background: url(/img/textures/fresnelmtiny.gif);
+    background: url(/img/textures/fresnelytiny.gif);
     background-size: contain;
     transform: var(--baseTransform);
+    color: var(--neutral-color);
+    border: unset;
+}
+
+.effectfx.charge.spent {
+    background: url(/img/textures/fresnelmtiny.gif);
+    border-color: var(--dark-color);
 }
 
 .effectfx.charge.effectfx-charge_active {
@@ -856,11 +1113,15 @@ combat-tile.telegraphing {
 
 .effectfx.charge::after {
     content: "!";
-    color: var(--obesk-color);
     --baseTransform: rotateX(-90deg) rotateY(var(--playercontrol-rotation)) rotateX(calc(var(--playercontrol-tilt) * -0.5));
     font-size: calc(var(--gridTileSize));
     animation: SPIN-Y 1s linear infinite;
     transform: var(--baseTransform);
+    text-shadow: 2px 2px var(--obesk-color);
+}
+
+.effectfx.charge.spent::after {
+    display: none;
 }
 
 .effectfx.effectfx-antimelee.charge {
@@ -880,10 +1141,66 @@ combat-tile.telegraphing {
     color: var(--neutral-color);
 }
 
+.effectfx.effectfx-clawing_distortion {
+    background: url(/img/sprites/combat/passives/encroaching_force_circle.gif), url(/img/textures/danger_vague.gif);
+    background-size: auto;
+    background-repeat: no-repeat, repeat;
+    background-position: center;
+}
+
+.movable .effectfx.effectfx-clawing_distortion {
+    background-color: black;
+    background-position: 10% 10%;
+}
+
+.effectfx.effectfx-opportunity {
+    background: url(/img/sprites/combat/statuses/opportunity_round.gif?5), url(/img/sprites/combat/statuses/opportunity_round.gif?5), url(/img/sprites/combat/statuses/opportunity_round.gif?5), url(/img/sprites/combat/statuses/opportunity_round.gif?5), url(/img/textures/danger_vague.gif);
+    background-size: auto;
+    background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+    background-position: 10% 10%, 90% 90%, 90% 10%, 10% 90%;
+}
+
+.effectfx.effectfx-opportunity.spent {
+    background: url(/img/textures/danger_vague.gif);
+    opacity: 0.5;
+}
+
+.effectfx.opportunity.effectfx-origin {
+    --baseTransform: translateZ(10px);
+    transform: var(--baseTransform);
+    color: var(--obesk-color);
+    width: 300%;
+    height: 300%;
+    border: 10px dashed var(--obesk-color);
+    background: transparent;
+}
+
+.effectfx.opportunity.spent.effectfx-origin {
+    opacity: 0.5;
+    color: var(--obesk-color);
+    border: 5px dashed var(--obesk-color);
+    box-shadow: 0px 0px 0px 5px var(--dark-color);
+}
+
+.effectfx.opportunity.effectfx-origin::after {
+    content: "!";
+    --baseTransform: rotateX(-90deg) translateY(-50%);
+    font-size: 100px;
+    text-shadow: 2px 2px var(--dark-color);
+    animation: SPIN-Y 1s linear infinite;
+    transform: var(--baseTransform);
+}
+
+.effectfx.opportunity.spent.effectfx-origin::after {
+    display: none;
+}
+
+/*
 .effectfx-channel_target {
     background: url(/img/textures/fearstill_tiny_dither.gif);
     transform: translateZ(25px);
 }
+*/
 
 .effectfx-channel_host {
     height: 100%;
@@ -894,16 +1211,33 @@ combat-tile.telegraphing {
     border-radius: 100%;
 }
 
+/*
 .effectfx-channel_target.effectfx-origin {
-    width: 300px;
-    height: 300px;
-    background: url(/img/sprites/combat/foes/kazeye_dull.gif);
+    width: 150px;
+    height: 150px;
+    background: url(/img/sprites/combat/foes/kazeye_tiny.gif);
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transform: translateZ(300px);
+    --baseTransform: translateZ(5px);
+    animation: SPIN 10s steps(30) infinite;
     border-radius: 100%;
     border: unset;
 }  
+
+/*
+.effectfx.effectfx-channel_target.effectfx-origin::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/sprites/combat/crosshair.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateZ(-1px);
+    animation: SPIN 10s steps(30) infinite;
+}
+*/
 
 .effectfx.effectfx-drone_haunt_target {
     background: url(/img/sprites/combat/dronetarget.gif);
@@ -935,11 +1269,7 @@ combat-tile.telegraphing {
 }
 
 .effectfx.iedtime {
-    border: 2px solid var(--obesk-color);
-}
-
-.iedtime:not(.effectfx-telegraph.effectfx-origin) .telegraph {
-    display: none;
+    border: unset;
 }
 
 .iedtime.effectfx-telegraph.effectfx-origin::before {
@@ -948,7 +1278,8 @@ combat-tile.telegraphing {
     width: 25px;
     height: 25px;
     background-image: url(/img/sprites/combat/patientbomb.gif);
-    transform: rotateX(-90deg) translateY(-50%) rotateY(var(--playercontrol-rotation));
+    --baseTransform: rotateX(-90deg) translateY(-50%) rotateY(var(--playercontrol-rotation));
+    transform: var(--baseTransform);
     background-size: contain;
 }
 
@@ -956,37 +1287,268 @@ combat-tile.telegraphing {
     background-image: url(/img/sprites/combat/patientbomb_warp.gif);
 }
 
-.iedtime.effectfx-telegraph.effectfx-origin .telegraph {
-    height: 400%;
-    width: 400%;
+.iedtime.effectfx-telegraph.effectfx-origin .telegraph,
+.iedtime_big.effectfx-telegraph.effectfx-origin .telegraph {
+    height: 300%;
+    width: 300%;
+    border-radius: unset;
+    transform: translateZ(1px);
+    border: 5px solid var(--team-color);
+    background: #ff00ff21;
+}
+
+.iedtime_big.effectfx-telegraph.effectfx-origin .telegraph {
+    height: 500%;
+    width: 500%;
+}
+
+.iedtime.effectfx-telegraph .telegraph::after,
+.iedtime_big.effectfx-telegraph .telegraph::after,
+.dropgraph.effectfx-telegraph .telegraph::after,
+.telegraph.bombdrop::after {
+    font-size: 75px;
+    width: 100%;
+    height: 100%;
+    animation-name: BOMBDROP;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sprite-wrapper.spritestatus-destabilized.destabomb::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url(/img/sprites/combat/foes/formless_9.gif);
+    animation: shake-crazy 100ms steps(1) infinite;
+    opacity: 0.5;
+}
+
+.archivist-upgrade.effectfx {
+    width: 300%;
+    height: 300%;
+    background: url(/img/textures/hazeflow.gif);
+    transform: translateZ(10px);
+    border: unset;
+}
+
+.archivist-upgrade-big.effectfx {
+    width: 500%;
+    height: 500%;
+}
+
+.archivist-upgrade .telegraph,
+.archivist-upgrade-big .telegraph {
+    background-color: #ffffff38;
+    border: 5px solid;
+}
+
+.archivist-upgrade .telegraph::after,
+.archivist-upgrade-big .telegraph::after {
+    background: url(/img/textures/warp.png);
+    animation-name: BOMBDROP;
+    width: 100%;
+    height: 100%;
+    animation-direction: reverse;
+    background-position: center;
+}
+
+@keyframes BOMBDROP {
+    0% { transform: translateZ(20px); opacity: 0;}
+    50% { transform: translateZ(10px); opacity: 1; }
+    100% { transform: translateZ(0px); opacity: 0;}
+}
+
+.boomfx .iedtime.effectfx-telegraph.effectfx-origin::before,
+.boomfx .iedtime_big.effectfx-telegraph.effectfx-origin::before {
+    animation: BIGSHAKE 100ms linear infinite;
+}
+
+.effectfx-deathbomb .dyne {
+    border-width: 1px;
+}
+
+.effectfx-deathbomb .dyne::after {
+    display: none;
+}
+
+.effectfx-deathbomb::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    background: url(/img/sprites/combat/statuses/bomb_dull.gif);
+    background-size: contain;
     border-radius: 100%;
+    border: 2px solid var(--friend-color);
+    transform: translateZ(200px) rotateX(90deg);
+    animation: BOMBHOVER 3s linear infinite;
+}
+
+.effectfx-firebomb .dyne {
+    border-width: 3px;
+    border-color: var(--neutral-color);
+}
+
+.effectfx-firebomb .dyne::after {
+    display: none;
+}
+
+.effectfx-firebomb::after {
+    content: "";
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    background: url(/img/sprites/combat/statuses/bomb_planted.gif);
+    background-size: contain;
+    border-radius: 100%;
+    border: 2px solid var(--neutral-color);
+    transform: translateZ(200px) rotateX(90deg);
+    animation: BOMBHOVERTALL 1s linear infinite;
+}
+
+@keyframes BOMBHOVER {
+  0% { transform: rotate(0deg) translateZ(200px) rotateX(90deg) }
+  100% { transform: rotate(360deg) translateZ(200px) rotateX(90deg)}
+}
+
+@keyframes BOMBHOVERTALL {
+  0% { transform: rotate(0deg) translateZ(400px) rotateX(90deg) }
+  100% { transform: rotate(360deg) translateZ(400px) rotateX(90deg)}
+}
+
+.boomfx::after, .miniboomfx::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 200%;
+    height: 200%;
+    background: url(/img/sprites/combat/dullsplosion.png);
+    background-size: cover;
+    animation: BOMBSPLOSION 1.5s linear;
+    animation-fill-mode: forwards;
+}
+
+.miniboomfx::after {
+    width: 100%;
+    height: 100%;
+    background: url(/img/sprites/combat/friendsplosion.png);
+    background-size: cover;
+    animation-name: MINIBOMBSPLOSION;
+    animation-duration: 500ms;
+}
+
+@keyframes BOMBSPLOSION {
+    0% { transform: translateZ(2px) scale(0.1) rotate(0deg); opacity: 0;}
+    30% { transform: translateZ(20px) scale(0.2) rotate(144deg); opacity: 1}
+    33% { transform: translateZ(50px) scale(2) rotate(288deg); opacity: 1}
+    80% { transform: translateZ(50px) scale(3) rotate(1152deg); opacity: 0.75}
+    100% { transform: translateZ(50px) scale(4) rotate(1440deg); opacity: 0;}
+}
+
+@keyframes MINIBOMBSPLOSION {
+    0% { transform: translateZ(2px) scale(0.1) rotate(0deg); opacity: 0;}
+    40% { transform: translateZ(50px) scale(2) rotate(288deg); opacity: 1}
+    80% { transform: translateZ(50px) scale(3) rotate(1152deg); opacity: 0.75}
+    100% { transform: translateZ(50px) scale(4) rotate(1440deg); opacity: 0;}
+}
+
+
+.iedtime_plus.effectfx-origin::before, .iedtime_plus.effectfx-origin::after {
+    content: "";
+    position: absolute;
+    width: var(--tile);
+    height: var(--tile3);
+    background: rgba(255, 0, 255, 0.33);
+    border: 5px solid var(--team-color);
+    transform: translateZ(1px)
+}
+
+.iedtime_plus.effectfx-origin::after {
+    width: var(--tile3);
+    height: var(--tile);
+}
+
+.iedtime_plus.effectfx-origin .telegraph {
+    transform: translateZ(2px);
+    width: 150%;
+    height: 150%;
+}
+
+.effectfx-telegraph.plus, .effectfx-telegraph.plus .telegraph {
+    border: unset;
+    background: unset;
+}
+
+.effectfx-telegraph.plus::before, .effectfx-telegraph.plus .telegraph::before, .effectfx-telegraph.plus::after, .effectfx-telegraph.plus .telegraph::after {
+    content: "";
+    width: calc((var(--size) + 1) * (var(--tile) * 2));
+    height: calc((var(--size) + 1) * (var(--tile) * 2));
+    border: 2px solid var(--team-color);
+    position: absolute;
+    background: rgba(255, 0, 255, 0.25);
     transform: translateZ(1px);
 }
 
-.iedtime.effectfx-telegraph .telegraph::after {
-    font-size: 75px;
+.effectfx-telegraph.plus::before, .effectfx-telegraph.plus .telegraph::before {
+    width: var(--tile);
+}
+
+.effectfx-telegraph.plus::after, .effectfx-telegraph.plus .telegraph::after {
+    height: var(--tile);
+}
+
+.effectfx-telegraph.plus .telegraph::before, .effectfx-telegraph.plus .telegraph::after {
+    animation: TELEGROWPULSEMODEST 1s linear infinite;
+}
+
+.effectfx-telegraph.square {
+    width: calc((1 + (var(--size) * 2)) * 100%);
+    height: calc((1 + (var(--size) * 2)) * 100%);
+    transform: translateZ(1px);
+}
+
+.terrorsquare .telegraph {
+    background: url(/img/sprites/combat/foes/kazeye_dull.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.terrorsquare .telegraph::after {
+    background: url(/img/textures/fear.gif);
+    color: var(--obesk-color);
+    font-size: 100px;
+}
+
+.effectfx-telegraph.terrorsquare {
+    --team-color: var(--bright-color);
 }
   
 .effectfx.aimed-at {
-    border: unset;
+    border: 5px var(--team-color) solid;
+    background: url(/img/textures/danger.gif);
+    border-radius: 100%;
 }
 
 .effectfx.aimed-at .telegraph {
     display: none;
 }
   
-.effectfx.aimed-at::before {
+.effectfx.aimed-at.effectfx-origin::before {
     content: "";
     position: absolute;
     width: 160%;
     height: 160%;
-    background: url(/img/sprites/combat/crosshair.gif), url(/img/sprites/combat/neutralcrosshair.gif), url(/img/textures/spotgradientinversemicro.gif);
+    background: url(/img/sprites/combat/crosshair.gif);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover, auto, auto 30%;
+    background-size: cover;
     --baseTransform: translateZ(100px);
     transform: var(--baseTransform);
     animation: SPIN 10s steps(20) infinite;
+}
+
+.effectfx.aimed-at.effectfx-origin[team="ally"]::before {
+    background-image: url(/img/sprites/combat/allycrosshair.gif);
 }
 
 .effectfx-telegraph.aiming-at .telegraph::after {
@@ -1008,15 +1570,34 @@ combat-tile.telegraphing {
     display: none;
 }
 
-.archtelegraph .effectfx.archivist::after {
+.archtelegraph .effectfx.archivist::after,
+.scramblefx::after {
     content: "";
     position: absolute;
+    display: block;
     width: 200%;
     height: 200%;
     background: url(/img/sprites/combat/foes/formless_charger.gif);
     background-size: cover;
     --baseTransform: translateZ(50px);
     animation: PULSETELEGRAPH 2s linear;
+    animation-fill-mode: forwards;
+}
+
+.scramblefx::after {
+    animation-duration: 1s;
+    --baseTransform: translateZ(10px);
+}
+
+.scramblefx.minorfx::after {
+    width: 100%;
+    height: 100%;
+    animation-duration: 500ms;
+}
+
+.scramblefx.bigscramblefx::after {
+    width: 300%;
+    height: 300%;
 }
 
 @keyframes PULSETELEGRAPH {
@@ -1025,6 +1606,36 @@ combat-tile.telegraphing {
     30% { transform: var(--baseTransform) scale(1.2) rotate(72deg); opacity: 1}
     80% { transform: var(--baseTransform) scale(1.8) rotate(288deg); opacity: 0.75}
     100% { transform: var(--baseTransform) scale(2) rotate(360deg); opacity: 0;}
+}
+
+.empowerfx::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 150%;
+    height: 250%;
+    background: url(/img/sprites/combat/foes/archivist_attacker_dangle.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    animation: GRID-SPINNYCON-MEGA 2s linear;
+    animation-fill-mode: forwards;  
+    --baseTransform: translateZ(10px);
+}
+
+.archspinfx::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 250%;
+    height: 350%;
+    background: url(/img/sprites/combat/foes/archivist_attacker_dangle.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    animation: SPIN 400ms linear infinite;
+    animation-fill-mode: forwards;  
+    --baseTransform: translateZ(100px);
 }
 
 .effectfx-telegraph.projectile {
@@ -1059,7 +1670,8 @@ combat-tile.telegraphing {
     display: none;
 }
 
-.effectfx-telegraph.haunted::after {
+.effectfx-telegraph.haunted::after,
+.effectfx-channel_target::after {
     content: "";
     position: absolute;
     width: 200%;
@@ -1087,22 +1699,22 @@ combat-scene .team {
 }
 
 combat-scene .actor {
-    border: 1px dashed var(--team-color);
     opacity: 1;
     min-width: unset;
-    transition: all 1s ease, border-radius 0.2s ease-in-out, transform 200ms cubic-bezier(.55,0,.39,1.26), margin 200ms, filter 0s linear, box-shadow 0s linear, padding 0s linear;
+    transition: trasform 50ms;
     margin: 0;
     padding: 5px;
 }
 
 /* substitute for gap since otherwise phasing isn't smooth */
 combat-scene .actor ~ .actor {
-    margin-left: 1vw;
+    margin-left: 5px;
 }
 
 combat-scene .actor.current-turn {
     border-color: var(--neutral-color) !important;
     border-style: solid;
+    margin: 0 2vw;
 }
 
 combat-scene .actor .portrait {
@@ -1127,6 +1739,13 @@ combat-scene .actor .actions {
     left: unset;
 }
 
+.actor.enemyactor {
+    min-height: 70px;
+    min-width: 100px;
+    border: unset;
+}
+
+/*
 combat-scene .compactor {
     padding: 0;
     min-width: 100px;
@@ -1134,18 +1753,20 @@ combat-scene .compactor {
     border-radius: 100%;
     flex-direction: column;
 }
+*/
 
 combat-scene .compactor .name {
     min-width: unset;
+    font-size: 1.75rem;
 }
 
 combat-scene #ally-team .compactor .name {
     display: none;  
 }
 
-combat-scene .compactor .statdisplay {
+/* combat-scene .compactor .statdisplay {
     max-height: 0px;
-}
+} */
 
 combat-scene .compactor .points {
     font-size: 0.75em;
@@ -1185,14 +1806,32 @@ combat-scene .actor.has-statuses::after {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 50px;
+    height: 25px;
     transform: translateY(-80%);
     z-index: -12;
 }
 
-combat-scene #enemy-team .compactor:not(.acting, .highlight, .important) {
-    margin: 0 -2%;
+.compactor .status-effect.passivetype-item {
+    width: 0.75rem;
+    height: 0.75em;
 }
+
+.compactor .portrait {
+    width: 70px;
+    height: 70px;
+}
+
+.compactor.allyactor {
+    border-radius: 100%;
+}
+
+.compactor .statdisplay {
+    display: contents;
+}
+
+/* combat-scene #enemy-team .compactor:not(.acting, .highlight, .important) {
+    margin: 0 -5px;
+} */
 
 combat-scene .actor.last-stand {
     pointer-events: initial;
@@ -1242,11 +1881,15 @@ html.cutscene combat-tile,
     cursor: initial !important;
 }
     /* dying anim in general */
+combat-actor.dyingpiece::after {
+    border-color: var(--bright-color) !important;
+}
+
 combat-actor.deadpiece::after {
     opacity: 0;
 }
 
-combat-actor.deadpiece .actor-stand:not(.nodie) {
+combat-actor.deadpiece .actor-stand:not(.nodie):not(.destructible) {
     animation: DIEEE 0.5s cubic-bezier(.75,2.04,.24,.19);
     animation-fill-mode: forwards;
 }
@@ -1265,12 +1908,33 @@ combat-actor .sprite-wrapper.dead:not(.nofilter) {
 }
 
     /* dying anim for ethereal */
-combat-actor.phasing .sprite-wrapper {
+combat-actor.phasing .sprite-wrapper:not(.destructible) {
     opacity: 0 !important;
     transform: scaleX(1.5) !important;
     animation: unset !important;
     transition: all 1s ease-in-out, transform 1s cubic-bezier(.86,0,.07,1) !important;
 }
+
+combat-actor.deadpiece .destructible span,
+combat-actor.deadpiece .destructible img,
+combat-actor.deadpiece .destructible::before,
+combat-actor.deadpiece .destructible::after {
+    opacity: 0.5;
+}
+
+combat-actor.phasing .sprite-wrapper.destructible span,
+combat-actor.phasing .sprite-wrapper.destructible img,
+combat-actor.phasing .sprite-wrapper.destructible::before,
+combat-actor.phasing .sprite-wrapper.destructible::after {
+    opacity: 0 !important;
+    transition: all 1s ease-in-out, transform 1s cubic-bezier(.86,0,.07,1) !important;
+}
+
+combat-actor.phasing .sprite-wrapper.destructible {
+    transform: scaleY(0.2) scaleX(1.5) !important;
+    transition: all 1s ease-in-out, transform 1s cubic-bezier(.86,0,.07,1) !important;
+}
+
 
     /* combat-dialogue sticks to sprites instead */
 .actor-stand .combat-dialogue {
@@ -1304,17 +1968,17 @@ combat-scene .effect-message[team] {
 }
 
     /* on-grid floatbox adjustments! hooray! */
-.actor-stand .floatbox {
+combat-actor .floatbox {
     bottom: unset;
-    top: 50%;
+    transition: transform 300ms linear;
 }
 
-.actor-stand .floatbox .floater {
+combat-actor .floatbox .floater.floating {
     animation: FLOATER-FADE calc((var(--size, 1) + 1) * 1.5s) linear;
     animation-fill-mode: forwards;
 }
 
-.actor-stand .floatbox .floater::after {
+combat-actor .floatbox .floater.floating .floatcontent {
     animation: FLOATER-GRID calc(var(--size, 1) * 0.5s) cubic-bezier(0,1.11,1,1.01);
     animation-fill-mode: forwards;
 }
@@ -1388,7 +2052,8 @@ combat-grid.detailmode combat-actor .sprite-wrapper.vekoa img {
     width: 500px;
 }
 
-.fearmode #vekoa_boss-sprite-wrapper::after, .vekoaholder.dyp > div::after {
+.fearmode #vekoa_boss-sprite-wrapper::after, 
+.vekoaholder.dyp > div::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -1399,17 +2064,29 @@ combat-grid.detailmode combat-actor .sprite-wrapper.vekoa img {
     background-size: cover;
 }
 
+#combat[scenario="ep4_split_2_ing"] #vekoa_boss-sprite-wrapper::after {
+    display: none !important;
+}
+
 combat-grid.detailmode combat-actor[team="ally"] .sprite-wrapper, 
 combat-grid.detailmode combat-actor[team="enemy"] .sprite-wrapper {
     filter: unset;
 }
 
+.detailmode combat-tile:not(.notile) {
+    background: var(--dark-color);
+}
+
+.detailmode combat-tile {
+    border: unset;
+}
+
 /* specific thingies */
-combat-tile.destructiblebearer .piece-stat {
+combat-actor.destructiblebearer .piece-stat {
     --statHeight: 150px;
 }
 
-combat-tile.destructiblebearertall .piece-stat {
+combat-actor.destructiblebearertall .piece-stat {
     --statHeight: 200px;
 }
 
@@ -1461,6 +2138,10 @@ combat-grid.detailmode.tinydetailmode .sprite-wrapper .adullgfx {
     pointer-events: none;
 }
 
+combat-scene[state="looking"] .sprite-wrapper.splittendril::after {
+    background-image: url(/img/sprites/combat/foes/splittendril_outline.gif);
+}
+
 .tendrilveal .sprite-wrapper.splittendril:after {
     opacity: 1;
 }
@@ -1472,6 +2153,39 @@ combat-grid.detailmode.tinydetailmode .sprite-wrapper .adullgfx {
     transform: rotateX(90deg) translateY(150px);
     background-image: url(/img/sprites/combat/foes/splittendril_solid.gif);
     background-size: 100% 100%;
+}
+
+.sprite-wrapper.splittendril.vertical::after, 
+.sprite-wrapper.splittendril.vertical::before {
+    content: "";
+    position: absolute;
+    transform: rotateX(90deg) translateY(350px) rotateX(calc(var(--playercontrol-tilt) * -0.01));
+    opacity: 1;
+    width: calc(var(--gridTileSize) * 3);
+    height: calc(var(--gridTileSize) * 7);
+    background-image: url(/img/sprites/combat/foes/splittendril_vertical.gif?1);
+    background-size: contain;
+}
+
+combat-scene[state="looking"] .sprite-wrapper.splittendril.vertical::after, 
+combat-scene[state="looking"] .sprite-wrapper.splittendril.vertical::before {
+    background-image: url(/img/sprites/combat/foes/splittendril_vertical_outline.gif?1);
+}
+
+.sprite-wrapper.splittendril.vertical::before {
+    transform: rotate(90deg) rotateX(90deg) translateY(350px) rotateX(calc(var(--playercontrol-tilt) * -0.01));  
+}
+
+.sprite-wrapper.splittendril.spinewall::after {
+    opacity: 1;
+    width: calc(var(--gridTileSize) * 5);
+    height: calc(var(--gridTileSize) * 2);
+    transform: rotateX(90deg) translateY(80px);
+    background-size: 100% 100%;
+}
+
+.sprite-wrapper.splittendril.spinewall.rotated::after {
+    transform: rotateX(90deg) translateY(80px) rotateY(90deg);
 }
 
 #split_eye-sprite {
@@ -1505,25 +2219,37 @@ combat-grid.detailmode.tinydetailmode .sprite-wrapper .adullgfx {
     background: url(/img/sprites/combat/foes/itzka.gif);
 }
 
+combat-scene[state="looking"] .sprite-wrapper.itzka.visible img {
+    background: url(/img/sprites/combat/foes/itzka_outline.gif);
+}
+
 .sprite-wrapper.archivist-mega img {
     width: 175px;
+}
+
+combat-tile.fogged {
+    background: url(/img/textures/scene_edge.gif);
 }
 
 #combat.megawarp::before {
     background-image: url(/img/textures/abberwobble.gif);
 }
 
+#combat.megawarp::after {
+    background-image: url(/img/textures/barelyfaded.gif);
+}
+
 #combat.vek1v1:before,
 #combat.ep4scene:before {
-    background: url(/img/textures/90white.gif), url(/img/textures/abberwobble.gif);
+    background: url(/img/textures/gridgradient.gif), url(/img/textures/abberwobble.gif);
     background-position: center;
-    background-size: auto 100%, 100% auto;
+    background-size: 105% 105%, 100% auto;
 }
 
 #combat.ep4scene.introscene:not(.fearmode):before {
-    background-image: url(/img/textures/panelpatterntranwhite.gif), url(/img/textures/abberwobblestill.gif);
+    background-image: url(/img/textures/gridgradient.gif), url(/img/textures/abberwobblestill.gif);
+    background-size: 105% 105%, auto;
 }
-
 
 #combat.vek1v1:after,
 #combat.ep4scene:after {
@@ -1568,20 +2294,30 @@ combat-grid.detailmode.tinydetailmode .sprite-wrapper .adullgfx {
     position: absolute;
     width: calc(var(--gridTileSize) * 6);
     height: calc(var(--gridTileSize) * 6);
-    top: 0;
     background: url(/img/local/embassy/mind/bigdoorwarplight3.gif?);
     background-position: top;
     background-repeat: no-repeat;
-    transform: translateY(calc(var(--gridTileSize) * 0.5)) translateZ(2px);
     background-size: contain;
+    transform-origin: top;
+    transform: rotate(90deg) translateY(calc(var(--gridTileSize) * -0.6)) translateZ(1px);
+    top: 50%;
+}
+
+#combat.fearmode.doorincombat .bigdoortainer .dyp::after {
+    opacity: 0.25;
+}
+
+#combat.fearmode.introscene .bigdoortainer .dyp::after {
+    transform: translateY(calc(var(--gridTileSize) * -0.6)) translateZ(1px);
 }
 
 .fearmode .pyramid.pyrapod figure::after, .fearmode .pyramid.pyrapod figure::before {
     opacity: 0.1;
 }
 
-combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure::after {
-    background-image: url(/img/local/embassy/mind/verticalveingrid.gif)
+combat-grid .pyramid.pyrapod figure::before, 
+combat-grid .pyramid.pyrapod figure::after {
+    background-image: url(/img/local/embassy/mind/verticalveingridnowhite.gif);
 }
 
 /* might look better without perspective
@@ -1643,25 +2379,15 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
     animation-delay: 400ms;
 }
 
-.kiviismash .telegraph {
-    transform: translateZ(2px);
-    border-radius: 100%;
-    border: 2px solid var(--obesk-color);
-    width: 150px;
-    height: 150px;
+.effectfx.kiviismash {
+    border: unset;
 }
 
-.kiviismash .telegraph::after {
-    content: "";
-    background-image: url(/img/sprites/combat/kbcross_ally.gif?);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 150px;
-    color: var(--neutral-color);
-    width: 200px;
-    height: 200px;
-    font-size: 100px;
-    border: 5px dashed var(--neutral-color);
+.kiviismash .telegraph {
+    transform: translateZ(2px);
+    border: 2px solid var(--obesk-color);
+    width: 300%;
+    height: 300%;
 }
 
 .heartbash-transition combat-grid.grid-plane {
@@ -1671,6 +2397,15 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
 .heartbash-transition #combat-realgrid.realgrid {
     transition: transform 1000ms cubic-bezier(.08,.82,.18,2.5) !important;
 }
+
+.smashbash-transition #combat-extra {
+    transition: transform 1000ms cubic-bezier(.14,.43,.18,1.5) !important;
+}
+
+#combat-extra.up-smashbash-tilt { transform: rotateX(15deg)}
+#combat-extra.down-smashbash-tilt { transform: rotateX(-15deg)}
+#combat-extra.left-smashbash-tilt { transform: rotateY(-15deg)}
+#combat-extra.right-smashbash-tilt { transform: rotateY(15deg)}
 
 .hb-left { --hbtilt: rotate(-90deg) }
 .hb-right {--hbtilt: rotate(90deg) }
@@ -1686,53 +2421,166 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
 }
 
 .heartbash .telegraph {
-    transform: translateZ(2px) var(--hbtilt) translateY(100%) translateZ(100px);
+    transform: translateZ(2px) var(--hbtilt) translateY(100%);
     background: unset;
-    width: 500px;
-    height: 100px;
 }
 
-.heartbash .telegraph::after {
-    content: "1";  
+.heartbash .telegraph::after, .heartbash .telegraph::before {
+    content: "KNOCK::" attr(strength);
+    color: var(--neutral-color);
+    background: rgba(0, 0, 0, 0.63);
     background-image: url(/img/sprites/combat/kbarrow_ally.gif);
+    background-size: contain;
+    background-repeat: repeat;
     background-position: center;
-    background-repeat: repeat-x;
-    background-size: 100px;
-    color: var(--obesk-color);
     width: 100%;
-    height: 100%;
+    height: calc(var(--stage-height) * 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-size: 100px;
     border: 5px dashed var(--neutral-color);
     text-shadow: 1px 1px black, -1px -1px black;
-    animation: SCROLLUP 1s linear infinite;
-    font-family: beech
+    font-family: sharetech;
+    animation: unset;
+    position: absolute;
+    animation: SCROLLUPMID 2s linear infinite;
 }
 
-.heartbash.hb-1 .telegraph::after {
-    content: "2";
-    animation-duration: 3s;
+.heartbash .telegraph::after {
+    right: calc((var(--stage-width) * 50px) + 50px);
 }
 
-@keyframes SCROLLUP {
-    0% { transform: translateY(0); opacity: 0; }
-    20% { transform: translateY(-20%); opacity: 1;}
-    90% { transform: translateY(-90%); opacity: 0;}
+.heartbash .telegraph::before {
+    left: calc((var(--stage-width) * 50px) + 50px);  
+}
+
+.vek1v1 .heartbash .telegraph::after {
+    right: calc((var(--stage-width) * 50px) - 150px);
+    width: 200%
+}
+
+.vek1v1 .heartbash .telegraph::before {
+    left: calc((var(--stage-width) * 50px) - 150px);
+    width: 200%
+}
+
+@keyframes SCROLLUPMIDLEFT {
+    0% { transform: translateX(500%); opacity: 0; }
+    20% { transform: translateX(0%) translateY(-25%); opacity: 0.5;}
+    90% { transform: translateY(-50%); opacity: 0.75;}
     100% { transform: translateY(-100%); opacity: 0;}
 }
 
-
-.riftcharger {
-    --specialAnimTransform: translateY(-25%);
+@keyframes SCROLLUPMIDRIGHT {
+    0% { transform: translateX(-500%); opacity: 0; }
+    20% { transform: translateX(0%) translateY(-25%); opacity: 0.5;}
+    90% { transform: translateY(-50%); opacity: 0.75;}
+    100% { transform: translateY(-100%); opacity: 0;}
 }
+
+@keyframes SCROLLUPMID {
+    0% { transform: translateY(25%); opacity: 0; }
+    20% { transform: translateY(0%); opacity: 0.5;}
+    90% { transform: translateY(-50%); opacity: 0.75;}
+    100% { transform: translateY(-100%); opacity: 0;}
+}
+
+.heartbash.smashbash .telegraph {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(2px);
+}
+
+.heartbash.smashbash .telegraph::after {
+    animation: HOVER 400ms ease-in-out infinite alternate;
+    --baseTransform: rotateX(-90deg) translateY(-100%) rotateY(var(--playercontrol-rotation));
+    background-image: url(/img/sprites/combat/foes/kivii/gauntlet_slam.gif);
+    width: 300%;
+    height: 300%;
+    background-color: transparent;
+    border: unset;
+    background-size: cover;
+}
+
+/*
+@keyframes SCROLLUP {
+    0% { transform: translateY(200%); opacity: 0; }
+    20% { transform: translateY(70%); opacity: 0.5;}
+    90% { transform: translateY(-90%); opacity: 0.75;}
+    100% { transform: translateY(-200%); opacity: 0;}
+}
+*/
+
+@keyframes SCROLLUP {
+    0% { transform: translateY(200%); opacity: 0; }
+    20% { transform: translateY(200%); opacity: 0.5;}
+    90% { transform: translateY(150%); opacity: 0.75;}
+    100% { transform: translateY(-100%); opacity: 0;}
+}
+
+.sprite-wrapper.riftcharger .slice1, .sprite-wrapper.riftcharger .slice2 {
+    content: "";
+    position: absolute;
+    transform: rotateX(-90deg) translateY(-50%) rotateX(calc(var(--playercontrol-tilt) * -0.01));
+    opacity: 1;
+}
+
+.sprite-wrapper.riftcharger .slice2 {
+    transform: rotate(90deg) rotateX(-90deg) translateY(-50%) rotateX(calc(var(--playercontrol-tilt) * -0.01));  
+}
+
 
 .riftcharger::after {
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url(/img/sprites/combat/foes/kazeye_tiny.gif);
+    width: 300px;
+    height: 150px;
+    background-image: url(/img/sprites/combat/foes/kazeye_mid.gif);
     background-position: center;
     background-repeat: no-repeat;
+    transform: rotateX(-90deg) translateY(-400px) rotateY(var(--playercontrol-rotation));  
+    transition: transform 500ms linear;
+}
+
+.parasitewall {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pwall {
+    position: absolute;
+    width: var(--tile4);
+    background: url(/img/sprites/combat/foes/splittendril.gif);
+    background-position: center;
+    background-size: 100% 100%;
+    height: 125px;
+    transform: rotateX(-90deg) translateY(-50%) rotateX(-15deg);
+}
+
+.pwall-right {
+    transform-origin: right;
+    transform: rotateX(-90deg) rotateY(90deg) translateY(-50%) rotateX(-15deg);
+}
+
+.pwall-left {
+    transform-origin: left;
+    transform: rotateX(-90deg) rotateY(-90deg) translateY(-50%) rotateX(15deg);
+}
+
+.pwall-down {
+    transform: rotateX(-90deg) translateY(-50%) translateZ(400px) rotateX(15deg);
+}
+
+.pwall.pwinner {
+    width: var(--tile2);
+}
+
+.pwall.pwinner.pwall-down {
+    transform: rotateX(-90deg) translateY(-50%) translateZ(200px) rotateX(15deg);
 }
 
 /* attack anims */
@@ -1742,11 +2590,11 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
     left: 0;
     width: 100px;
     height: 100px;
-    --originPos: translate(
+    --originPos: translateZ(1px) translate(
         calc(var(--x) * var(--gridTileSize)),
         calc(var(--y) * var(--gridTileSize))
     );
-    --destPos: translate(
+    --destPos: translateZ(1px) translate(
         calc(var(--destX) * var(--gridTileSize)),
         calc(var(--destY) * var(--gridTileSize))
     );
@@ -1827,6 +2675,96 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
     100% { transform: var(--destPos) scale(6) rotate(320deg); opacity: 0; }
 }
 
+
+.snipe-exchange {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    transform: translate(
+        calc(var(--x) * var(--gridTileSize)),
+        calc(var(--y) * var(--gridTileSize))
+    );
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.snipe-exchange::after {
+    content: "";
+    position: absolute;
+    height: calc((var(--dist) * 100px) + 50px);
+    width: 50px;
+    background: url(/img/sprites/combat/gridfx/grabber_spectral.gif);
+    background-position: center;
+    background-size: 100% 100%;
+    bottom: 25px;
+    transform-origin: bottom;
+    transform: rotate(var(--angle)) translateZ(100px);
+    animation: snipe-beam 900ms ease-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes snipe-beam {
+    0% { transform: rotate(var(--angle)) translateZ(100px) scaleX(0) scaleY(0); opacity: 0;}
+    33% { transform: rotate(var(--angle)) translateZ(100px) scaleX(1); opacity: 1;}
+    100% { transform: rotate(var(--angle)) translateZ(100px) scaleX(5); opacity: 0; }
+}
+
+@keyframes snipe-beam-nogrow {
+    0% { transform: rotate(var(--angle)) translateZ(100px) scaleY(0); opacity: 0;}
+    33% { transform: rotate(var(--angle)) translateZ(100px); opacity: 1;}
+    100% { transform: rotate(var(--angle)) translateZ(100px); opacity: 0; }
+}
+
+.throwsnipe::after {
+    width: 100px;
+    animation-name: snipe-beam-nogrow;
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.terrorsnipe-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/grabber_ceremony.gif)
+}
+
+.frenzy-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/attack_frenzy.gif);
+}
+
+.bozgrab-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/grabber_bozko.gif);
+}
+
+.bozswing-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/attack_bozkoswing.gif);
+}
+
+.distraction-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/attack_distraction.gif);
+}
+
+.bstrdsnipe-exchange::after {
+    animation-duration: 300ms;
+    background-image: url(/img/sprites/combat/gridfx/attack_bstrdbeam.gif);
+}
+
+/* wider arcs */
+.widesnipe::after {
+    width: 300px;
+}
+
+.overwhelm-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/attack_overwhelm.gif)
+}
+
+.corruskivi-exchange::after {
+    background-image: url(/img/sprites/combat/gridfx/attack_corruskivi.gif)
+}
+
 /* debug stuff */
 .proptest {
     background: orange;
@@ -1843,6 +2781,7 @@ combat-grid .pyramid.pyrapod figure::before, combat-grid .pyramid.pyrapod figure
     font-size: 0.75em;
     border: 1px solid red;
     display: none;
+    opacity: 0.3
 }
 
 .e4test .action[action="win"] {
@@ -1885,11 +2824,12 @@ combat-actor[for="cutscenedriver"] {
 }
 
 .spinelift .spineholder .dypcontent { /* used only in first spine encounter */
-    transform: translateZ(400px);
+    transform: translateZ(700px);
 }
 
-.spinelift combat-actor[for="spine_archivist"] {
-    transform: var(--baseTileTransform) translate(0, 70px) translateZ(400px);
+.spinelift combat-actor[for="spine_archivist"],
+.spinelift combat-actor[for="spine_archivist_ing"] {
+    transform: var(--baseTileTransform) translate(0, 70px) translateZ(700px);
 }
     
 .spinecolumn {
@@ -1957,6 +2897,10 @@ combat-scene .spinepool::after, combat-scene .spinepool::before {
     pointer-events: none;
 } 
 
+combat-scene[state="looking"] .spinepool-actor::after, combat-scene[state="looking"] .spinepool-actor::before {
+    background-image: url(/img/local/embassy/mind/spinalanchorcombat_outline.gif);
+}
+
 .spinepool-actor.warp::before, .spinepool-actor.warp::after {
     background-image: url(/img/local/embassy/mind/spinalanchorcombatwarp.gif);
 }
@@ -1993,12 +2937,20 @@ combat-grid .deadtainer span {
     width: 100%;
     height: 100%;
     background: transparent;
-    background-image: url(/img/textures/heavy.gif);
+    background-image: url(/img/textures/heavy_dithered.gif);
     background-size: cover;
 }
 
 combat-grid .deadtainer.warp span {
-    background-image: url(/img/textures/heavy_warp.gif);
+    background-image: url(/img/textures/heavy_warp.gif), url(/img/textures/heavy_dithered.gif);
+}
+
+combat-scene[state="looking"] .deadtainer.warp span {
+    background-image: url(/img/textures/heavy_warp_outline.gif), url(/img/textures/heavy_dithered_outline.gif);
+}
+
+combat-scene[state="looking"] .deadtainer span {
+    background-image: url(/img/textures/heavy_dithered_outline.gif);
 }
 
 combat-grid .deadtainer span:nth-child(1) {
@@ -2025,6 +2977,13 @@ combat-grid .deadtainer span:nth-child(5) {
     transform: rotateX(-90deg);
 }
 
+.splithall #combat-realgrid {
+    background: url(/img/textures/abberwobble.gif);
+}
+
+.actor#split_advancer .points {
+    display: none;
+}
 
 /* miltza cutscene */
 .lift-ready {
@@ -2046,8 +3005,7 @@ combat-actor.lifting {
 #combat.fearmode[scenario="ep4_split2"] .bigdoortainer .dyp::after {
     width: calc(var(--gridTileSize) * 4);
     height: calc(var(--gridTileSize) * 4);
-    top: unset;
-    transform: rotate(90deg) translateY(35%) translateZ(2px);
+    transform: rotate(90deg) translateY(calc(var(--gridTileSize) * -0.6)) translateZ(1px);
 }
 
 #combat.fearmode[scenario="ep4_split2"] .bigdoor {
@@ -2134,6 +3092,31 @@ combat-grid .pyramid figure span {
     background-image: url(/img/sprites/combat/foes/splittendril_attacker_dangle.gif?);
 }
 
+.kiviismash.archivistversion::before {
+    background-image: url(/img/sprites/combat/foes/archivist_attacker_dangle.gif);
+}
+
+.kiviismash.eyefall::before {
+    animation: unset;
+    background-image: url(/img/sprites/combat/foes/kazeye_tiny.gif);
+    transform: translateZ(20px) translateZ(calc((var(--length) - 1) * 200px));
+    width: var(--tile3);
+    transition: transform 500ms, opacity 300ms;
+    height: var(--tile3);
+    border: 5px dashed var(--obesk-color);
+    background-size: 250px;
+    background-color: rgba(255, 0, 255, calc(1 - var(--length) * .5));
+    opacity: calc(1 - var(--length) * .25);
+}
+
+.kiviismash.eyefall .telegraph {
+    display: none;
+}
+
+.effectfx.eyefall.expiring::before {
+    opacity: 0;
+}
+
 .effectfx-telegraph.archivist .telegraph::after {
     display: none;
 }
@@ -2213,6 +3196,49 @@ combat-grid .pyramid figure span {
     100% { transform: var(--baseActorTransform) rotateY(360deg);} 
 }
 
+.actoranim-displace {
+    animation: 1s SCENE-DISPLACE-PIECE ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.actoranim-displace .actor-stand {
+    animation: 1s SCENE-DISPLACE-STAND ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes SCENE-DISPLACE-PIECE {
+    0% { transform: translate(calc(var(--anim-x-from) * var(--gridTileSize)), calc(var(--anim-y-from) * var(--gridTileSize))) translateZ(1px)}
+    100% { transform: translate(calc(var(--anim-x-to) * var(--gridTileSize)), calc(var(--anim-y-to) * var(--gridTileSize))) translateZ(1px)}
+}
+
+@keyframes SCENE-DISPLACE-STAND {
+    0% { transform: var(--baseActorTransform)}
+    25% { transform: var(--baseActorTransform) translateY(-200px) rotateY(90deg) scaleX(3) scaleY(0.25) }
+    50% { transform: var(--baseActorTransform) translateY(-200px) rotateY(180deg) scaleX(0.25) scaleY(3)}
+    75% { transform: var(--baseActorTransform) translateY(-200px) rotateY(270deg) scaleX(0.5) scaleY(1) }
+    100% { transform: var(--baseActorTransform) rotateY(360deg);} 
+}
+
+.actoranim-fallin {
+    animation: 500ms SCENE-FALL-PIECE cubic-bezier(.07,1.47,.74,.71);
+    animation-fill-mode: forwards;
+}
+
+.actoranim-fallin .actor-stand {
+    animation: 500ms SCENE-FALL-STAND ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes SCENE-FALL-PIECE {
+    0% { transform: var(--baseTileTransform) translateZ(900px) }
+    100% { transform: var(--baseTileTransform) translateZ(1px) }
+}
+
+@keyframes SCENE-FALL-STAND {
+    0% { opacity: 0; transform: var(--baseActorTransform) scaleY(0.5)}
+    100% { opacity: 1; transform: var(--baseActorTransform) scaleY(1)} 
+}
+
 /* finale */
 .finale #combat-realgrid {
     background: url(/img/local/embassy/mind/megacircle_combatstage.gif);
@@ -2221,20 +3247,47 @@ combat-grid .pyramid figure span {
     background-size: cover;
 }
 
+body[quality="regular"] .finale[scenario="ep4_vek_pt1_ing"] #combat-realgrid::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    --baseTransform: translate(-50%, -50%);
+    width: 50%;
+    height: 50%;
+    background: url(/img/local/embassy/mind/megacircle_combatstage_small.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    animation: SPIN 20s linear infinite;
+}
+
 .finale combat-tile:not(.notile) {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(0, 0, 0, 0.95);
+}
+
+.finale.vek1v1 combat-tile:not(.notile) { /* auraloss is too much for .95 */
+    background: rgba(0, 0, 0, 0.75);    
 }
 
 .finale combat-tile.dimmer {
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.finale .effectfx-scene_edge {
+.finale .damagetile, .miltzamode .damagetile {
     background: url(/img/textures/warp_scene_edge.png), url(/img/textures/danger.gif);
+    background-color: rgba(255, 0, 255, 0.25);
+    border: 1px solid var(--obesk-color);
 }
   
 #combat.finale::before {
     background: url(/img/textures/panelpatterntranwhite.gif);
+}
+
+@media only screen and (min-height: 1080px) {
+    #combat.finale::before {
+        background-size: auto 100%
+    }    
 }
   
 #combat.finale::after {
@@ -2246,6 +3299,7 @@ combat-grid .pyramid figure span {
     background-color: white;
 }
 
+.spritestatus-redirection .sprite.veins,
 .spritestatus-shroud .sprite.veins {
     opacity: 0.25;
 }
@@ -2257,16 +3311,16 @@ combat-grid .pyramid figure span {
     position: absolute;
 }
 
-.veins.sprite:last-child {
+.veins.sprite.veinbot {
     transform: rotateX(-90deg) translateY(50%) translateZ(-50px);
     width: 600px;
 }
 
-.busted .veins.sprite:first-child {
+.busted .veins.sprite.veintop {
     transform: rotateX(-90deg) translateY(-75%) translateZ(-50px) rotateX(-30deg);
 }
 
-.busted .veins.sprite:last-child {
+.busted .veins.sprite.veinbot {
     transform: rotateX(-90deg) translateY(30%) translateZ(-50px) rotateX(30deg) rotate(20deg);
 }
 
@@ -2279,6 +3333,8 @@ combat-grid .marbletable.coreholder.dypcontent {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 25px double var(--obesk-color);
+    border-radius: 100%;
 }
 
 combat-grid .marbletable.coreholder::after,
@@ -2286,7 +3342,7 @@ combat-grid .marbletable.coreholder::before {
     transform: var(--baseTransform);
     width: 100%;
     height: 100%;
-    background-image: inherit;
+    background-image: url(/img/local/embassy/mind/corewarp.gif?) !important;
     --baseAnimatorTransform: ;
     --baseTransform: rotateX(90deg);
 
@@ -2397,11 +3453,15 @@ img.vekoa1v1 {
 
 body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized .sprite, 
 body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::before,
-body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::after {
+body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::after,
+body[quality="regular"] #vekoa_1v1_ing-sprite-wrapper.spritestatus-destabilized .sprite, 
+body[quality="regular"] #vekoa_1v1_ing-sprite-wrapper.spritestatus-destabilized::before,
+body[quality="regular"] #vekoa_1v1_ing-sprite-wrapper.spritestatus-destabilized::after {
     animation: SHAKE 300ms steps(5) infinite;
 }
 
-body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::before {
+body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::before,
+body[quality="regular"] #vekoa_1v1_ing-sprite-wrapper.spritestatus-destabilized::before {
     --baseTransform: scale(1.75) translateY(-10%);
 }
 
@@ -2409,9 +3469,11 @@ body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::bef
     max-width: 200px;
 }
 
+/*
 .vekoa.reversion::after {
     --baseTransform: translateX(-50%);
 }
+*/
 
 .finale.vek1v1 combat-tile.center {
     z-index: -1;
@@ -2431,15 +3493,6 @@ body[quality="regular"] #vekoa_1v1-sprite-wrapper.spritestatus-destabilized::bef
     animation: SPIN 5s linear infinite !important;
     --dyp-height: 5 !important;
     --dyp-width: 5 !important;
-}
-
-.vek1v1 .item-container {
-    display: none;
-}
-
-.vek1v1 .heartbash .telegraph::after {
-    color: var(--dark-color);
-    background-color: var(--obesk-color);
 }
 
 /* additional callouts */
@@ -2470,7 +3523,7 @@ combat-grid .spritestatus-telegraph::after, combat-grid .spritestatus-channeling
 combat-grid .spritestatus-aiming_indicator::after {
     width: 60px;
     height: 60px;
-    background: url(/img/sprites/combat/crosshair.gif), url(/img/textures/spotgradientinversewhitetiny.gif);
+    background: url(/img/sprites/combat/crosshair.gif);
     --baseTransform: translateY(0%);
     z-index: 2;
     background-repeat: no-repeat;
@@ -2528,31 +3581,483 @@ combat-scene .splittendril .target {
 }
 
 combat-scene .ceremonyitself.sprite-wrapper .target {
-    transform: translate(-50%, -50%) translateZ(2px) translateY(-100px) rotateX(90deg);
+    transform: translateY(-100%) translateX(-50%) translateZ(250px);
     width: 200px;
     height: 200px;
 }
 
-combat-scene .ceremonyitself.sprite-wrapper .target::after {
-    transform: translateZ(100px) rotate(calc(var(--playercontrol-rotation) * -1));
+/* ING - kb path prediction early dev */
+.kb-vis {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 5px dashed var(--bright-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--neutral-color);
+    text-shadow: 1px 1px black, -1px 1px black, 1px -1px black, -1px -1px black;
+    font-size: 5em;
+    transform: translateZ(25px);
 }
 
-/* parasite only happens in this context so we do graphics and stuff here */
-.parapiece-sprite {
+.kb-vis::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(/img/sprites/combat/kb.gif);
+    background-size: contain;
+    transform: rotate(var(--direction));
+}
+
+.kb-vis.kb-vis-final::after {
+    background-image: url(/img/sprites/combat/kb_crosshair.gif);
+}
+
+combat-tile.knockedover::before {
+    background-color: var(--neutral-color);
+    background-image: url(/img/sprites/combat/kbarrow_black.gif);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: none;
+    border: 2px dashed var(--dark-color);
+    border-radius: 100%;
+    width: 60%;
+    height: 60%;
+    display: block;
+    animation: FADE 1600ms linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes FADE {
+    0% { opacity: 1 }
+    50% { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+combat-tile.knockedover.kbo-down::before {transform: rotate(180deg) translateZ(5px)}
+combat-tile.knockedover.kbo-left::before {transform: rotate(-90deg) translateZ(5px)}
+combat-tile.knockedover.kbo-right::before {transform: rotate(90deg) translateZ(5px)}
+combat-tile.knockedover.kbo-up-left::before {transform: rotate(-45deg) translateZ(5px)}
+combat-tile.knockedover.kbo-up-right::before {transform: rotate(45deg) translateZ(5px)}
+combat-tile.knockedover.kbo-down-left::before {transform: rotate(-135deg) translateZ(5px)}
+combat-tile.knockedover.kbo-down-right::before {transform: rotate(135deg) translateZ(5px)}
+
+.effectline.knockwarn {
+    background: unset;
+    border: 3px dotted var(--neutral-color);
+    width: calc(var(--distance) - 100px);
+    border-radius: 100%;
+    transform: translateY(-50%) translateZ(25px) rotate(var(--angle));
+    box-shadow: 0px 0px 5px 5px var(--dark-color), 0px 0px 0px 8px var(--friend-color);
+}
+
+.effectline.knockwarn.short {
+    width: calc(var(--distance));
+}
+
+.effectline.knockwarn::after, .effectline.knockwarn::before {
+    content: "";
+    position: absolute;
+    right: 0px;
     width: 100px;
     height: 100px;
-    background: url(/img/local/beneath/palcyan.gif);
+    background: url(/img/sprites/combat/kb_outline.gif);
     background-size: contain;
+    --baseTransform: rotate(0deg);
 }
 
-.actor-stand[team="enemy"] .parapiece-sprite {
-    background-image: url(/img/local/beneath/palpurp.gif);
+.effectline.knockwarn::before {
+    /*animation: KNOCKWARN 3s linear infinite;*/
+    background-size: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
 }
 
-combat-tile.entrance { background: cyan }
-combat-tile.vein { background: blue }
-combat-tile.tunnel { background: red }
-combat-tile.spawn { background: purple }
-combat-tile.card { background: orange }
-combat-tile.wep { background: green }
-combat-tile.fruit { background: var(--obesk-color) }
+.effectline.knockwarn::after {
+    background-image: url(/img/sprites/combat/kb_crosshair.gif);
+    width: 50px;
+    height: 50px;
+    right: -25px;
+}
+
+@keyframes KNOCKWARN {
+    0% { transform: translateX(-200%); opacity: 0.25;}
+    50% { transform: translateX(0%); opacity: 1;}
+    100% { transform: translateX(50px); opacity: 0;}
+}
+
+/* ING - dash landing points */
+combat-tile.dash-landing::before {
+    display: block;
+    border: 10px dashed var(--friend-color);
+}
+
+combat-tile.dash-landing::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 10px dashed var(--neutral-color);
+    animation: GRID-HOVERICON 1s linear infinite reverse;
+    pointer-events: none;
+}
+
+/* ING - effectline overlap */
+combat-grid .effectline {
+    transform: translateY(-50%) translateZ(100px) rotate(var(--angle));
+    --uprightAngle: calc((var(--playercontrol-rotation) + var(--angle)) * -1) !important;
+    transform-style: preserve-3d;
+}
+
+combat-grid .effectline.selforigin.icon {
+    transform: translateZ(150px) rotate(calc(var(--playercontrol-rotation) * -1)) rotateX(calc(var(--playercontrol-tilt) * -1)) rotateX(-90deg);
+    transform-origin: center;
+}
+
+combat-grid .effectline.baseline.icon.selforigin::after {
+    animation: BASELINE_ICON_SELF 5s cubic-bezier(0,.32,0,.93) reverse;
+    --baseTransform: translateY(0);
+    animation-fill-mode: forwards;
+}
+
+combat-grid .effectline.pathing {
+    background: transparent;
+    height: 5px;
+    border: 5px var(--neutral-color) dashed;
+    transform: translateZ(10px) rotate(var(--angle));
+}
+
+combat-grid .effectline.pathing.pathwarn {
+    height: 10px;
+    border: 10px var(--obesk-color) dashed;
+}
+
+.effectline.megabeam {
+    height: 30px;
+    border: 2px var(--neutral-color) solid;
+    border-left: unset;
+    border-right: unset;
+}
+
+.effectline.megabeam.eyebeam {
+    height: 5px;
+    border: 1px var(--obesk-color) solid;
+    border-left: unset;
+    border-right: unset;
+    background: url(/img/textures/fearstill_tiny.gif);
+    background-color: var(--obesk-color);
+}
+
+.effectline.aimbeam {
+    height: 10px;
+}
+
+/* ING - targeting minimization */
+
+combat-scene[state="targeting"][team="ally"] .piece-stat,
+combat-scene[state="targeting"][team="ally"] combat-actor .actor-stand,
+combat-scene[state="targeting"][team="ally"] combat-actor::after {
+    opacity: 0.25;
+}
+
+combat-scene[state="targeting"] .piece-stat {
+    opacity: 0.5;
+}
+
+combat-scene[state="targeting"] combat-actor.highlight .piece-stat,
+combat-scene[state="targeting"] combat-actor.highlight .actor-stand,
+combat-scene[state="targeting"] combat-actor.acting .actor-stand,
+combat-scene[state="targeting"] combat-actor.highlight::after,
+combat-scene[state="targeting"] combat-actor .actor-stand.destructible {
+    opacity: 1;
+}
+
+/* ING - some better mechanical visuals */
+.sprite-wrapper.spritestatus-story_targeted::after {
+    content: "";
+    position: absolute;
+    display: block;
+    z-index: 1;
+    background-image: url(/img/sprites/combat/crosshair.gif), url(/img/sprites/combat/foes/kazeye_dull_tiny.gif), url(/img/textures/spotgradientinversemicro.gif);
+    width: 75px;
+    height: 75px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: SPIN 5s steps(20) infinite;
+}
+
+.targeting .allyactor.targetable.status-counter.clickbox::before {
+    --baseTransform: translateY(-250%);
+}
+
+/* ING - more responsiveness */
+@media only screen and (max-width: 1400px) {
+    .actor.enemyactor {
+        min-height: 60px;
+    }
+}
+
+@media only screen and (max-height: 800px) {
+    .actions .action {
+        flex-basis: 1%;
+    }
+
+    .team-overflow .compactor .passives .status-effect {
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .actor.compactor .portrait {
+        height: 60px;
+        width: 60px;
+    }
+
+    #enemy-team {
+        top: 2em;
+    }
+
+    #ally-team {
+        bottom: 1em;
+    }
+}
+
+.team-overflow .actor {
+    border: 1px dashed var(--team-color);
+    margin: 0 -2%;
+    border-radius: 100%;
+}
+
+.team-overflow .actor.highlight,
+.team-overflow .actor.current-turn {
+    margin: 0 1vw 0 3vw;
+    border-radius: unset;
+}
+
+/* STATUSPAINTER - visual effects for statuses on-stage! */
+body[quality="low"] .statuspainter {
+    display: none !important;
+}
+
+.statuspainter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.in-dialogue .statuspainter {
+    display: none;
+}
+
+.statuspaint {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.statuspainter.standpainter {
+    width: 100px;
+    height: 250px;
+    transition: transform 300ms linear;
+}
+
+.statuspaint::before, .statuspaint::after {
+    width: 32px;
+    height: 32px;
+    display: block;
+    border-radius: 100%;
+    position: absolute;
+    --baseTransform: translate(0);
+}
+
+.painter-puncture::before, .painter-puncture::after,
+.painter-regen::before, .painter-regen::after {
+    content: "";
+    background: url(/img/sprites/combat/statuses/puncture.gif);
+    top: 10%;
+    animation: PAINTER_HEALTH 2s linear infinite reverse;
+    border: 1px solid var(--obesk-color);
+}
+
+.painter-puncture::after, .painter-regen::after {
+    right: 10%;
+    --baseTransform: translateY(100%);
+    animation-delay: -1s;
+}
+
+.painter-regen::before, .painter-regen::after {
+    background-image: url(/img/sprites/combat/statuses/regen.gif);
+    border-color: var(--friend-color);
+    animation-direction: unset;
+}
+
+@keyframes PAINTER_HEALTH {
+    0% { opacity: 0; transform: translateY(150px) var(--baseTransform) scale(0.2) }
+    75% { opacity: 1; transform: translateY(40px) var(--baseTransform) }
+    100% { opacity: 0; transform: translateY(40px) var(--baseTransform) scaleX(0.25) }
+}
+
+.painter-focused::before {
+    content: "";
+    background: url(/img/sprites/combat/statuses/focused.gif);
+    animation: PAINTER_ACCURACY 2s linear infinite;
+    border: 1px solid var(--friend-color);
+    box-shadow: 0px 0px 5px var(--friend-color);
+    left: 50%;
+    --baseTransform: translateX(-50%);
+}
+
+@keyframes PAINTER_ACCURACY {
+    0% { opacity: 0; transform: translateX(-70px) var(--baseTransform) scale(0.5) }
+    25% { opacity: 1; transform: translateX(0px) var(--baseTransform) }
+    75% { opacity: 1; transform: translateX(35px) var(--baseTransform) }
+    100% { opacity: 0; transform: translateX(70px) var(--baseTransform) scale(0.5) }
+}
+
+.painter-evasion::before, .painter-vulnerable::before, .painter-critical_flaw::before {
+    content: "";
+    background: url(/img/sprites/combat/statuses/evasion.gif);
+    animation: PAINTER_HITCHANCE 3s linear infinite;
+    --baseTransform: translate(-25px) translateZ(-50px);
+    border: 1px solid var(--friend-color);
+    box-shadow: 0px 0px 5px var(--friend-color);
+    left: 20%;
+}
+
+.painter-vulnerable::before {
+    background-image: url(/img/sprites/combat/statuses/vulnerable.gif);
+    box-shadow: 0px 0px 5px var(--obesk-color);
+    border-color: var(--obesk-color);
+    animation-direction: reverse;
+}
+
+.painter-critical_flaw::before {
+    background-image: url(/img/sprites/combat/statuses/critical_flaw.gif);
+    border: 1px solid var(--obesk-color);
+    box-shadow: 0px 0px 10px var(--obesk-color);
+    animation-direction: reverse;
+    --baseTransform: translate(-25px) translateZ(-45px) scale(1.5);
+}
+
+@keyframes PAINTER_HITCHANCE {
+    0% { opacity: 0; transform: rotateY(0deg) translateY(100px) var(--baseTransform) scale(0.5) }
+    25% { opacity: 1; transform: rotateY(90deg) translateY(75px) var(--baseTransform) }
+    50% { opacity: 1; transform: rotateY(180deg) translateY(50px) var(--baseTransform) }
+    100% { opacity: 0; transform: rotateY(360deg) translateY(0px) var(--baseTransform) scale(0.5)}
+}
+
+.painter-terror::before {
+    content: "";
+    background: url(/img/sprites/combat/statuses/fear.gif);
+    animation: PAINTER_TERROR 2s linear infinite ALTERNATE;
+    border: 1px solid var(--obesk-color);
+    box-shadow: 0px 0px 10px var(--dark-color);
+    left: 50%;
+    --baseTransform: translateX(-50%);
+}
+
+@keyframes PAINTER_TERROR {
+    0% { opacity: 0; transform: var(--baseTransform); }
+    100% { opacity: 1; transform: var(--baseTransform);  }
+}
+
+.painter-stun::before, .painter-stun::after {
+    content: "";
+    background: url(/img/sprites/combat/statuses/stun.gif);
+    animation: PAINTER_STUN 2s linear infinite;
+    border: 1px solid var(--obesk-color);
+    box-shadow: 0px 0px 10px 10px var(--dark-color);
+    left: 25%;
+    --baseTransform: translateX(50px);
+}
+
+.painter-stun::after {
+    left: unset;
+    right: 20%;
+    --baseTransform: translateX(-50px);
+}
+
+@keyframes PAINTER_STUN {
+    0% { opacity: 0; transform: rotateY(0deg) var(--baseTransform) }
+    50% { opacity: 1; transform: rotateY(180deg) var(--baseTransform) }
+    100% { opacity: 0; transform: rotateY(360deg) var(--baseTransform) }
+}
+
+.painter-stun_immune::before {
+    content: "";
+    background: url(/img/sprites/combat/statuses/stun_immunity.gif);
+    transform: translateX(50px);
+    border: 1px solid var(--friend-color);
+    box-shadow: 0px 0px 10px var(--neutral-color);
+    left: 25%;
+}
+
+.painter-carapace::before {
+    content: "";
+    background-image: url(/img/sprites/combat/statuses/carapace.gif);
+    border: 1px solid var(--friend-color);
+    left: 25%;
+    top: 75px;
+    animation: PAINTER_EXPAND 2s linear infinite;
+}
+
+@keyframes PAINTER_EXPAND {
+    0% { opacity: 0; transform: scale(1.5) }
+    50% { opacity: 1; transform: scale(2) }
+    100% { opacity: 0; transform: scale(2)}
+}
+
+.painter-siphon::before {
+    content: "";
+    background-image: url(/img/sprites/combat/statuses/siphon.gif);
+    border: 1px solid var(--obesk-color);
+    box-shadow: 0px 0px 10px var(--obesk-color);
+    left: 25%;
+    top: 50px;
+    animation: PAINTER_FLATTEN 2s linear infinite;
+    z-index: 2;
+}
+
+@keyframes PAINTER_FLATTEN {
+    0% { opacity: 0; transform: scaleX(0.5) }
+    50% { opacity: 1; transform: scaleY(1) }
+    100% { opacity: 0; transform: scaleY(0.25) scaleX(2)}
+}
+
+.painter-counter::before {
+    content: "";
+    background-image: url(/img/sprites/combat/statuses/counter.gif);
+    border: 1px solid var(--friend-color);
+    box-shadow: 0px 0px 10px var(--neutral-color);
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+}
+
+.painter-surge::before {
+    content: "";
+    background-image: url(/img/sprites/combat/statuses/surge.gif);
+    --baseTransform: translateX(-50%) translateZ(-10px);
+    left: 0%;
+    animation: PAINTER_ACTION 1s ease infinite alternate;
+    border: 1px solid var(--friend-color);
+    box-shadow: 0px 0px 5px var(--neutral-color);
+}
+
+@keyframes PAINTER_ACTION {
+    0% { transform: translateY(-75%) var(--baseTransform)}
+    100% { transform: translateY(-100%) var(--baseTransform)}
+}
+
+.painter-repairs::before {
+    content: "";
+    background: url(/img/sprites/combat/statuses/repairs.gif);
+    border: 1px solid var(--friend-color);
+    left: 25%;
+    top: 33%;
+    animation: PAINTER_FLATTEN 2s linear infinite reverse;
+}

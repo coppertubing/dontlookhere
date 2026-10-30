@@ -21,8 +21,10 @@ class CrittaMap extends HTMLElement {
             <button class="button" intent="closemenu" onclick="env.e3a2.toggleMap()">Close</button>
             <ul id="globals"></ul>
             <figure id="map"></figure>
-            <div class="exchangescreen"></div>
+            <critta-flashsale></critta-flashsale>
+            <div class="button" intent="gamemode" id="gamemodeselect"></div>
         `
+
         this.map = this.querySelector("#map")
         this.globalList = this.querySelector("#globals")
         this.id = `map${env.crittaCount++}`
@@ -31,7 +33,16 @@ class CrittaMap extends HTMLElement {
         this.weights = {} // reward weighting
         this.globalModifiers = {} // received from looping or wagers. structured i.e. {modSlug: modQty, ...}
         this.currentRowSetting = CrittaMap.ROWSETTINGS.base;
-        this.baseFishChance = 0.1
+        this.baseFishChance = 0.15
+        this.sferDeclineBonus = 0
+        this.onNodeGenerationEvents = [/* (node) => {something to do with the node} */]
+        
+        this.gamemodeSelect = this.querySelector("#gamemodeselect")
+        this.gamemode = CrittaMap.GAMEMODES.base
+        if(!check("framemodes_unlocked") && !check("PAGE!!tempmodeselection")) {
+            this.gamemodeSelect.remove()
+        }
+
         this.applyOptions()
         this.generate() 
 
@@ -57,6 +68,16 @@ class CrittaMap extends HTMLElement {
         this.selectedNode = null
         this.classList.add("generating")
         this.removeAttribute("sidelock")
+
+        // delete custom statuses from this iteration to avoid memory leakin on looong runs
+        // unless it's from a shellmode reward!
+        if(this.customStatuses) {
+            for (const status of this.customStatuses) {
+                if(!env.STATUS_EFFECTS[status.slug].retainBetweenLoops) delete env.STATUS_EFFECTS[status.slug]
+            }
+
+            if(this.customStatuses.length) this.customStatuses = this.customStatuses.filter(status => env.STATUS_EFFECTS[status.slug]?.retainBetweenLoops)
+        }
         
         //first get all possible elements that the nodes can be
         this.possibleZoneComponents = []
@@ -165,6 +186,12 @@ class CrittaMap extends HTMLElement {
             this.clearSelectedNode()
         }
 
+        switch(el.getAttribute("intent")) {
+            case "gamemode":
+                if(!this.shipmoving) content.insertAdjacentHTML(`beforeend`, `<critta-reward id="" type="gamemode"></critta-reward>`)
+            break
+        }
+
         if(el.classList.contains("exchangescreen")) startDialogue("merchant")
     }
 
@@ -193,11 +220,11 @@ class CrittaMap extends HTMLElement {
         //tension affects a few things and i want to make it clear
         let definition = 
             `TENSION::${this.tension + 1}/6
-            ANALYSIS::'thoughtspace revision stress';'affects valid foe forms';'affects valid shell impulses'
+            ANALYSIS::'revision tension increases both powerful foe presence and resources'
             CURRENT FOES::${foeHelp}`
 
-        if(this.tension >= 1) definition += `\n2+::ACTION IMPULSES AVAILABLE`; else definition += `\n2+::???`
-        if(this.tension >= 3) definition += `\n4+::FATED IMPULSES AVAILABLE`; else definition += `\n4+::???`
+        if(this.tension > 0) definition += `\n1+::ACTION IMPULSES AVAILABLE`; else definition += `\n1+::???`
+        if(this.tension > 1) definition += `\n2+::FATED IMPULSES AVAILABLE`; else definition += `\n2+::???`
 
         let outerHTML = `<li mod="tension" qty="${this.tension + 1}" style="--priority: -10;" definition="${definition}"></li>`
 
@@ -272,12 +299,12 @@ class CrittaMap extends HTMLElement {
             },
             {
                 count: 2,
-                difficulties: [... "21"],
+                difficulties: [... "11"],
                 sideLock: true
             },
             {
                 count: 4,
-                difficulties: [... "1201"],
+                difficulties: [... "1100"],
                 sideLock: true
             },
             {
@@ -366,21 +393,148 @@ class CrittaMap extends HTMLElement {
         ]
     }
 
-    /* Tension enemy ratings determine the chance of enemies/minibosses spawning from different pools.
-        0: 80% collapse, 20% golem
-        1: 45% collapse, 45% golem, 10% daemon 
-        2: 70% golem, 20% daemon, 10% collapse
-        3: 50% golem, 50% daemon
-        4: 80% daemon, 20% golem
-        5: 100% daemon
+    /* 
+        Tension enemy ratings determine the chance of enemies/minibosses spawning from different pools. 
+        rebalanced according to the fact that few runs go beyond 2 or 3 loops, 
+        so we want to make sure people can at least see the higher tiers without needing to grind a lot
     */
     static TENSIONWEIGHT = {
         '0': [["collapse", 1]],
-        '1': [["collapse", 0.5], ["golem", 0.5]],
-        '2': [["golem", 0.7], ["collapse", 0.2], ["daemon", 0.1]],
-        '3': [["golem", 0.6], ["daemon", 0.4]],
+        '1': [["collapse", 0.3], ["golem", 0.6], ["daemon", 0.1]],
+        '2': [["golem", 0.5], ["collapse", 0.1], ["daemon", 0.4]],
+        // past here we just slowly slide into daemon territory further
+        '3': [["golem", 0.4], ["daemon", 0.6]],
         '4': [["daemon", 0.8], ["golem", 0.2]],
+        // Doom
         '5': [["daemon", 1]],
+    }
+
+    /* 
+        gamemodes are basically just a wrapper with a name/desc for execs that re-weight things or change various things
+        
+    */
+    static GAMEMODES = {
+        base: { 
+            slug: "base",
+            name: "BSTRD's Vision",
+            image: "/img/sprites/combat/modifiers/default_mode.gif",
+            component: "rot",
+            help: "fast-paced and generous<br><br><n-col>no alterations, default</n-col>",
+            setExec: function () {
+                env.crittaMap.gamemode = CrittaMap.GAMEMODES.base
+                //sorry nothing
+            }
+        },
+
+        // slow mode is analogous to Regular in the original crittamode
+        // rewards are throttled, more things are gated
+        // should make for a longer journey, with the higher tensions being far more dangerous
+        slow: {
+            slug: "slow",
+            name: "Starved Dream",
+            image: "/img/sprites/combat/modifiers/slow_mode.gif",
+            component: "bone",
+            help: "slow and methodical, a longer journey<br><br><n-col>caches</n-col> are <o-col>less numerous and generous</o-col><br>reward types limited by node density<br><br><n-col>powerful shop offerings</n-col> are <o-col>limited to higher TENSION</o-col>",
+            setExec: function() {
+                env.crittaMap.gamemode = CrittaMap.GAMEMODES.slow
+
+                //this means that both minor and moderate nodes will have only one reward
+                //balances out since minor will only have components now, moderates are rewarding in that they can give other stuff
+                env.crittaMap.rewardMod = -1
+                env.crittaMap.baseSferSalePrice = 1
+
+                // shop gated more heavily
+                CrittaFlashSale.OFFERINGS.specificImpulse.minimumTension = 1
+                CrittaFlashSale.OFFERINGS.specificItem.minimumTension = 1
+
+                CrittaFlashSale.OFFERINGS.specificImpulse.possibleImpulses.forEach(i=>{
+                    if(["retaliation", "ichor_last_stand", "impatient", "active_support", "visionary"].includes(i.slug)) i.minimumTension += 2
+                    if(["fated_bone", "fated_ichor", "fated_claws", "fated_eyes", "fated_light"].includes(i.slug)) i.minimumTension += 4
+                })
+
+                // nodes
+                env.crittaMap.difficultyMods = {
+                    diff0: {
+                        possibleRewards: ["component"] // minor only gives humors
+                    },
+
+                    // impulses and equipment only show up on moderate threat or higher
+                    diff1: {},
+
+                    // majors and bosses no longer have guaranteed impulse
+                    diff2: {
+                        baseRewards: [], 
+                    },
+
+                    // bosses will no longer offer equipment
+                    // mainly because it feels really bad at later tensions
+                    diff3: {
+                        baseRewards: [],
+                        possibleRewards: ["impulse", "component"]
+                    },
+                }
+                
+                env.crittaMap.generate()
+            }
+        },
+
+        // shellmode has the player gathering shells rather than humors or impulses, with quality generated based on difficulty/iteration count
+        // so, we drop humors, reduce node rewards similarly to above, and disable editing
+        shell: {
+            slug: "shell",
+            name: "Shellmode",
+            image: "/img/sprites/combat/modifiers/shell_mode.gif",
+            component: "light",
+            showIf: () => check("framemode_fairy") || check("PAGE!!tempmodeselection"),
+            help: "so many will die!!! ahahaahaha!!!!!!<br><br><n-col>shell editing</n-col> is <o-col>DISABLED</o-col><br><n-col>shells <o-col>DOWN</o-col></n-col> on combat end are <o-col>DELETED</o-col><br><br><n-col>shell caches replace humor caches</n-col><br><f-col>quality increases with node density and TENSION</f-col><br><br><n-col>SHELLGRINDER</n-col> eats shells to offer <f-col>powerful boons</f-col>",
+            setExec: function() {
+                env.crittaMap.gamemode = CrittaMap.GAMEMODES.shell
+
+                //like slow, this means that both minor and moderate nodes will have only one reward
+                //difficulty increase gives better shells so it's fine though
+                env.crittaMap.rewardMod = -1
+                CrittaReward.REWARDTYPES.component.baseWeight = 0
+                CrittaReward.REWARDTYPES.component.dontSpawnNormally = true
+                CrittaReward.REWARDTYPES.shell.baseWeight = 1
+                CrittaReward.REWARDTYPES.shell.dontSpawnNormally = false
+
+                // disable editing. even names and images. if a shell's ugly but really good statwise you have to make an incineration value call
+                env.crittaMap.disableShellEditing = true
+                page.flags.components = {} // you won't be spending these
+
+                // nodes
+                env.crittaMap.difficultyMods = {
+                    // majors and bosses no longer have guaranteed impulse in line with the reduced rewards
+                    diff2: {
+                        baseRewards: [], 
+                    },
+
+                    // bosses will no longer offer equipment
+                    diff3: {
+                        baseRewards: [],
+                        possibleRewards: ["impulse", "shell"]
+                    },
+                }
+
+                // set up shell loss
+                env.crittaMap.loseDeadShells = true
+
+                // add shell grinder
+                if(page.path == "/concepts/critta/") {
+                    let button = document.createElement('button')
+                    button.id = "concept-shellgrinder"
+                    button.textContent = "STEP UP TO SHELL GRINDER"
+                    button.addEventListener("click", ()=>{
+                        content.insertAdjacentHTML(`beforeend`, `<critta-reward id="waaaa" type="shellGrinderApproach"></critta-reward>`)
+                    })
+                    content.querySelector("critta-map").appendChild(button)
+
+                }
+                env.crittaMap.generate()
+                
+                if(env?.stage?.name == "vessel") refreshStage({specificPlan: "shellmode"})
+            }
+        }
     }
 }
 customElements.define('critta-map', CrittaMap);
@@ -400,6 +554,7 @@ class CrittaNode extends HTMLElement {
         this.difficulty = this.getAttribute("difficulty")
         let component = this.getAttribute("component")
         this.component = component ? env.COMBAT_COMPONENTS[this.getAttribute("component")] : false
+        this.bonusModifiers = []
         this.generate()
 
         //determine the 'side' this node is on - used in sidelock
@@ -428,21 +583,24 @@ class CrittaNode extends HTMLElement {
             if(this.component.combatModifiers) {
                 let modifierSlug = this.component.combatModifiers.sample()
                 this.modifier = env.MODIFIERS[modifierSlug]
+                this.modifierStatus = this.modifier.getStatus()
+                if(this.modifierStatus) this.style.setProperty("--modifierIcon", `url(${this.modifierStatus.icon})`)
                 this.setAttribute("modifier", modifierSlug)
             }
 
             //additionally, we should know what rewards a node will have to begin with
             let possibleRewards = Object.entries(CrittaReward.REWARDTYPES).map(([rewardType, rewardData]) => [rewardData, (typeof rewardData.baseWeight == "undefined" ? 0 : rewardData.baseWeight) + (env.crittaMap.weights[rewardType] || 0)])
+            
+            //filter down to possible rewards if it's limited for this difficulty
+            if(env.crittaMap.difficultyMods) if(env.crittaMap.difficultyMods[`diff${this.difficulty}`]?.possibleRewards) {
+                possibleRewards = possibleRewards.filter(r => env.crittaMap.difficultyMods[`diff${this.difficulty}`]?.possibleRewards.includes(r[0].slug))
+            }
+
             console.log("te", this.difficulty, typeof this.difficulty)
             switch(this.difficulty) {
-                case "0":
-                case "1":
-                    this.rewards = [CrittaReward.REWARDTYPES["component"]]
-                break
-
                 case "2":
                 case "3":
-                    this.rewards = [CrittaReward.REWARDTYPES["impulse"]]
+                    this.rewards = env.crittaMap.difficultyMods?.diff3?.baseRewards ? [... env.crittaMap.difficultyMods.diff3.baseRewards] : [CrittaReward.REWARDTYPES["impulse"]]
                 break
 
                 default:
@@ -451,7 +609,7 @@ class CrittaNode extends HTMLElement {
 
             //do reward rolls
             //weightRand is a new thing in corru.js near rand
-            for (let i = 0; i < Math.clamp(Number(this.difficulty) + 1, 1, 3); i++) {
+            for (let i = 0; i < Math.clamp(Number(this.difficulty) + 1 + (env.crittaMap.rewardMod || 0), 1, 3); i++) {
                 this.rewards.push(weightRand(possibleRewards))
             }
 
@@ -469,6 +627,7 @@ class CrittaNode extends HTMLElement {
         }
 
         rewardPreview.insertAdjacentHTML('beforeend', rewards)
+        if(env.crittaMap?.onNodeGenerationEvents?.length > 0) for (const event of env.crittaMap.onNodeGenerationEvents) env.MODIFIERS[event].onNodeGeneration(this)
 
         this.setAttribute("generated", true)
     }
@@ -495,6 +654,8 @@ class CrittaNode extends HTMLElement {
 
     //when a node is moved to, either trigger a fight or note it was safe
     onMovedTo() {
+        env.crittaMap.currentNode = this
+
         console.log("sidelock?", this.sideLock, this.side)
         if(this.sideLock && this.side != "center") {
             env.crittaMap.setAttribute("sidelock", this.side)
@@ -503,8 +664,6 @@ class CrittaNode extends HTMLElement {
             env.crittaMap.removeAttribute("sidelock")
             console.log("unlocking")
         }
-
-        chatter({actor: 'sourceless', text: `daemons spring forth from the ocean!`, readout: true})
 
         let classes = `${this.difficulty == "4" ? "" : "crittamode"}${this.formation.class ? ` ${this.formation.class}` : ""}`
         let effectiveEnemies = this.formation.enemies
@@ -554,8 +713,52 @@ class CrittaNode extends HTMLElement {
             actorSpriteProcess: (actor) => CrittaNode.daemonSpawn(actor, "sprite"),
             startCallback: ()=> {
                 if(this.component) env.rpg.setAttribute('component', this.component.slug);
-                if(this.modifier) env.rpg.insertAdjacentHTML('beforeend', `<div component="${this.component.slug}" definition="EFFECT::${this.modifier.getHelp().toUpperCase()}" class="modifier">${this.modifier.name}</div>`);
+                
+                if(env.rpg.classList.contains("nomodifierintro")) {
+                    env.rpg.insertAdjacentHTML('beforeend', `<div component="${this.component.slug}" definition="${this.modifierStatus ? `STATUS++${this.modifierStatus.slug}` : `EFFECT::${this.modifier.getHelp().toUpperCase()}`}" class="modifier" style="--icon: url(${this.modifierStatus ? this.modifierStatus.icon : ''})">${this.modifier.name}</div>`);
+
+                } else if(this.modifier) {
+                    env.rpg.classList.add('hideteams')
+                    env.rpg.insertAdjacentHTML('beforeend', `<div component="${this.component.slug}" definition="${this.modifierStatus ? `STATUS++${this.modifierStatus.slug}` : `EFFECT::${this.modifier.getHelp().toUpperCase()}`}" class="modifier intro"  style="--icon: url(${this.modifierStatus ? this.modifierStatus.icon : ''})">${this.modifier.name}</div>`);
+                    if(this.modifier.getStatus) env.rpg.classList.add(`modifierstyle-${this.modifier.getStatus().slug}`)
+                    let modifierEl = env.rpg.querySelector('.modifier.intro')
+                    bgm.rate(0.1)
+
+                    setTimeout(() => {
+                        bgm.rate(0.1)
+                        env.rpg.classList.remove('hideteams')
+                    }, 400)
+                    
+                    setTimeout(() => {
+                        ratween(bgm, bgmRate, 4000)
+                        if(this.component.sound) play(this.component.sound, 0.75)
+                        env.rpg.turnOrder.forEach(actor=>{
+                            drawEffectLine(modifierEl, actor.box, {
+                                color: this.component.color || 'bastard',
+                                effectClass: `baseline icon componentline component-${this.component.slug}`,
+                                duration: 3000,
+                                angleDriftAmount: 0,
+                                style: `
+                                    --icon: url(${this.modifierStatus.icon || `/img/sprites/combat/statuses/${this.modifierStatus.slug}.gif`});
+                                    --count: 0; 
+                                    --variation: 0px
+                                `
+                            })
+                        })
+                    }, 1400)
+
+                    setTimeout(() => {
+                        modifierEl.classList.remove('intro')
+                    }, 4000);
+                }
                 env.rpg.setAttribute('tension', this.tension);
+                
+                if(this.formation.startCallback) this.formation.startCallback(settings)
+
+                env.rpg.insertAdjacentHTML(`beforeend`, `
+                    <button class="forfeit-combat" onmouseenter="play('muiHover')" onclick="play('muiClick');forfeitCombatDialog()">FORFEIT</button>
+                `)
+                env.rpg.forfeitEl = env.rpg.querySelector('.forfeit-combat')
             }
         }
 
@@ -591,17 +794,43 @@ class CrittaNode extends HTMLElement {
     handleVictory(loser) {
         if(env.rpg.handling) return;
         env.rpg.handling = true
-        ratween(env.bgm, 0.25)
+        if(env.rpg.forfeitEl) env.rpg.forfeitEl.remove()
 
-        if(this.type == "boss") {
-            if(loser.name == "enemy") return; //handled by status
+        ratween(env.bgm, 0.25)
+        console.log(this, loser, env.rpg.actors.critta_boss)
+        console.trace()
+        if(this.difficulty == 4) {
+            if(loser.name == "ally" && env?.rpg?.actors?.critta_boss) {
+                console.log("in the zone")
+                if(env.rpg.actors.critta_boss.hp > 0) {
+                    startDialogue(check("PAGE!!dream") ? "dreamloop" : "loop")
+                    env.rpg.handling = false
+                    return;
+                }
+            }
+        } else if(env.crittaMap.loseDeadShells) {
+            let deadShells = env.rpg.allyTeam.members.filter(actor=>actor.state == "dead" && actor.member)
+            if(deadShells.length > 0) {
+                let deadShellNames = deadShells.map(s=>s.name).join(", ")
+                let deadShellSlugs = deadShells.map(s=>s.member.slug)
+                chatter({actor: 'sourceless', text: `${deadShellNames} ${deadShells.length > 1 ? 'are' : 'is'} lost.`, readout: true, sfx: false, duration: 10000})
+
+                deadShellSlugs.forEach(slug => {
+                    let i = page.party.findIndex(member => member.slug === slug)
+                    page.party[i].lossReason = "combat"
+                    if(!env.crittaMap.lostShells) env.crittaMap.lostShells = []
+                    env.crittaMap.lostShells.push(page.party[i])
+
+                    if(i !== -1) page.party.splice(i, 1)
+                })
+            }
         }
 
         switch(loser.name) {
             case "enemy": // SUCCESS - the daemons sink beneath the ocean. {REWARD TABLE} [CONTINUE]
                 env.rpg.insertAdjacentHTML(`beforeend`, `
                     <div id="crittaresult" class="hideresult">
-                        <h1><span>Success :)</span></h1>
+                        <h1><span>${((this.difficulty == 4) && env.rpg.actors.critta_boss.hp > 0) ? `Success? :/` : `Success :)` }</span></h1>
                         <button class="button">Retrieve Resources</button>
                     </div>
                 `)
@@ -631,12 +860,9 @@ class CrittaNode extends HTMLElement {
             e.addEventListener('mouseenter', ()=>play('muiHover'))
             e.addEventListener('click', ()=> {
                 play('muiClick')
-                
-                if(loser.name == "enemy") {
-                    this.reapRewards(loser);
-                    env.rpg.classList.add('reaping-rewards')
-                }
-                else this.complete(loser);
+
+                this.reapRewards(loser)
+                env.rpg.classList.add('reaping-rewards')
 
                 e.style.pointerEvents = "none"
                 e.disabled = true
@@ -648,17 +874,14 @@ class CrittaNode extends HTMLElement {
     //win/loss type stuff goes here too
     complete(loser) { // "ally", "enemy", or "nofight"
         if(this.completed) return;
-        this.completed = true
 
+        if(env.rpg.forfeitEl) env.rpg.forfeitEl.remove()
         if(loser == "nofight") {
             chatter({actor: 'sourceless', text: `nothing's here.`, readout: true})
         
         } else switch(loser.name) {
-            case "enemy":
-                if(this.type == "boss") { // boss defeat has a whole thing going on
-                    return
-                }
-                
+            case "enemy":                
+                //ing rework note - not removed in case we reimplement as a global modifier
                 let healed = false
                 
                 page.party.slice(page.party.partyLimit || 3, page.party.length).forEach(member=>{
@@ -680,12 +903,14 @@ class CrittaNode extends HTMLElement {
                     sfx: false
                 })
 
+                env.crittaMap.lastSuccessfulNode = this
                 this.setThisAndAttribute('completed', true)
+                CrittaFlashSale.reroll()
                 
-                //only 10% chance for fishy spot cause fishies are so fucked up. on april 1st it's 25% chance
+                //only 10% chance for fishy spot cause fishies are so fucked up. on april 1st it's 50% chance
                 let chance = env.crittaMap.baseFishChance;
                 let today = new Date()
-                if(today.getMonth() === 3 && today.getDate() === 1) chance = 0.25;
+                if(today.getMonth() === 3 && today.getDate() === 1) chance = 0.50;
 
                 setTimeout(()=>{
                     if(env.e3a2.startFishing && Math.random() < chance) {
@@ -697,18 +922,8 @@ class CrittaNode extends HTMLElement {
                 }, 2000)
             break
 
-            case "ally":
-                if(env.e3a2 && body.getAttribute("menu") == "crittamap") {
-                    env.e3a2.toggleMap(true)
-                }
-                env.combat.lossState(check("PAGE!!dream") ? "dreamdeath" : "death")
-                content.classList.add('goodbye');content.classList.add('dying')
-                closeCombat(loser)
-
-                if(page.pixi) {
-                    page.pixi.stop()
-                    page.pixi.view.classList.add("still", "fade")
-                }
+            case "ally": // ing rework todo - this is now in sacrifice_giveup, change to instead reapLoss
+                env.crittaMap.playerShip.moveTo(env.crittaMap.lastSuccessfulNode || this, { retryOffset: env.crittaMap.lastSuccessfulNode ? false : true})
             break
         }
     }
@@ -718,14 +933,16 @@ class CrittaNode extends HTMLElement {
     reapRewards(loser, i = 0) {
         let reward = this.rewards[i]
         if(!reward) throw 'somehow exceeded node reward length';
+
+        if(loser.name == "ally") reward = CrittaReward.REWARDTYPES["sacrifice"]
         
         let id = `reward${env.crittaCount++}`
-        content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" class="pre-show" type="${reward.slug}" difficulty="${this.difficulty}" component="${this.component.slug}"></critta-reward`)
+        content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" class="pre-show" type="${reward.slug}" difficulty="${this.difficulty}" component="${this.component.slug}"></critta-reward>`)
 
         let rewardEl = content.querySelector(`critta-reward#${id}`)
         setTimeout(() => rewardEl.activate(), 100);
         
-        if(i < this.rewards.length - 1) {
+        if((i < this.rewards.length - 1) && (loser.name != "ally")) {
             rewardEl.completeCallback = () => {
                 this.reapRewards(loser, i+1)
             }
@@ -738,9 +955,23 @@ class CrittaNode extends HTMLElement {
     getModifiers() {
         let modifiers = []
         if(this.modifier) modifiers.push(this.modifier);
+        if(this.bonusModifiers.length) modifiers = modifiers.concat(this.bonusModifiers)
         modifiers = modifiers.concat(env.crittaMap.getModArray())
 
         return modifiers
+    }
+
+    // mainly just for the shellmode thing but this could have other uses
+    addStatusModifier(status) {
+        if(!this.bonusModifiers) this.bonusModifiers = []
+        this.bonusModifiers.push({
+            name: status.name,
+            getHelp: ()=> status.help,
+            getStatus: ()=> status,
+            alterations: {
+                all: [ ["STATUS", status.slug] ]
+            }
+        })
     }
 
     getAlterations() {
@@ -786,19 +1017,19 @@ class CrittaNode extends HTMLElement {
         switch(this.difficulty) {
             case "0":
                 nodeDensity = "low"
-                densityDefinition= "'scarce unallocated resources';'lesser thoughtforms'"
+                densityDefinition= "'scarce resources';'expect low difficulty'"
                 difficultyClass = "low"
             break
 
             case "1":
                 nodeDensity = "normal"
-                densityDefinition= "'conglomeration of unallocated resources and thoughtforms'"
+                densityDefinition= "'difficulty in line with or lesser than standard scenarios'"
                 difficultyClass = "mid"
             break
 
             case "2":
                 nodeDensity = "high"
-                densityDefinition= "'plentiful unallocated resources';'greater thoughtforms'"
+                densityDefinition= "'plentiful resources';'expect great resistance'"
                 difficultyClass = "high"
             break
 
@@ -813,7 +1044,7 @@ class CrittaNode extends HTMLElement {
 
             case "4":
                 nodeDensity = "???"
-                densityDefinition= "'intersection of enormous thoughtform';'extreme HP pool';'persists between iterations'"
+                densityDefinition= "'intersection of enormous thoughtform';'extreme HP pool persists between iterations'"
                 difficultyClass = "boss"
             break
         }
@@ -821,7 +1052,30 @@ class CrittaNode extends HTMLElement {
         // display modifiers
         let mainModString = false
         if(this.component && this.modifier) {
-            mainModString = `<div component="${this.component.slug}" definition="EFFECT::${this.modifier.getHelp().toUpperCase()}" class="modifier">${this.modifier.name}</div>`
+            let def = `EFFECT::${this.modifier.getHelp().toUpperCase()}`
+            mainModString = `<div component="${this.component.slug}" definition="${def}" class="modifier">${this.modifier.name}</div>`
+
+            if(this.modifierStatus) {
+                def = definitionRender({getAttribute: () => `STATUS++${this.modifierStatus.slug}`}, {returnHTML: true})
+                mainModString = `
+                    <div class="modifierinfo" component="${this.component.slug}" style="--icon: url(${this.modifierStatus.icon})">
+                        <div class="modifier" definition="STATUS++${this.modifierStatus.slug}">${this.modifier.name}</div>
+                        <div class="modifierstatus">${def.replace(` impulse">`, `">`)}</div>
+                    </div>
+                `
+            }
+
+            if(this.bonusModifiers.length) {
+                this.bonusModifiers.forEach(modifier => {
+                    def = definitionRender({getAttribute: () => `STATUS++${modifier.getStatus().slug}`}, {returnHTML: true})
+                    mainModString += `
+                        <div class="modifierinfo submod ${this.bonusModifiers.length > 1 ? 'multiplemod' : ''}" component="rot" style="--icon: url(${modifier.getStatus().icon})">
+                            <div class="modifier" definition="STATUS++${modifier.getStatus().slug}">${modifier.name}</div>
+                            <div class="modifierstatus">${def.replace(` impulse">`, `">`)}</div>
+                        </div>
+                    `
+                })
+            }
         }
 
         //determine how we want to angle this menu to fit on screen
@@ -990,8 +1244,29 @@ class CrittaNode extends HTMLElement {
         
                 //actor-specific overrides
                 switch(actor.originalSlug) {
+                    case "movefoe_frame":
+                        actor.name = "Wavefoe"
+                    break;
+
                     case "kivii":
                         actor.name = "Greater Husk"
+                    break;
+
+                    case "husk_observer":
+                    case "lesserhusk_observer":
+                        actor.name = "Vigilant Husk"
+                    break;
+
+                    case "husk_striker":
+                        actor.name = "Relentless Husk"
+                    break;
+
+                    case "husk_support":
+                        actor.name = "Vital Husk"
+                    break;
+
+                    case "husk_guard_frame":
+                        actor.name = "Guardian Husk"
                     break;
 
                     case "bstrdboss_lowintensity":
@@ -1004,8 +1279,8 @@ class CrittaNode extends HTMLElement {
                 }
             break
 
-            case "sprite":
-                if(!actor.sprite) {
+            case "sprite": //ing todo - temporarily disabled husk mimic
+                if(!actor.sprite || actor.originalSlug == "husk" || actor.originalSlug == "hallucination") {
                     return
                 }
 
@@ -1020,12 +1295,53 @@ class CrittaNode extends HTMLElement {
                         actor.sprite.querySelectorAll('img').forEach(el=> {if(el.src.includes("bstface")) el.remove()} )
                     break;
 
-                    case "husk":
+                    case "lesserhusk":
                         setTimeout(()=>{
-                            actor.sprite.setAttribute("type", 4)
-                            actor.sprite.setAttribute("b", 4)
-                            actor.sprite.setAttribute("t", 3)
+                            actor.sprite.setAttribute("dtype", "lh")
+                            actor.sprite.setAttribute("type", "1")
+                            actor.sprite.setAttribute("b", "2")
+                            actor.sprite.setAttribute("t", "3")
+                            actor.sprite.querySelector("img.basis").src = `/img/sprites/combat/foes/husks/type1_bottom2_mimic.gif`
+                        }, 100)
+                    break;
+
+                    case "lesserhusk_stabber":
+                        setTimeout(()=>{
+                            actor.sprite.setAttribute("dtype", "ls")
+                            actor.sprite.setAttribute("type", "4")
+                            actor.sprite.setAttribute("b", "1")
+                            actor.sprite.setAttribute("t", "3")
                             actor.sprite.querySelector("img.basis").src = `/img/sprites/combat/foes/husks/type4_bottom1_mimic.gif`
+                        }, 100)
+                    break;
+
+                    case "lesserhusk_observer":
+                        setTimeout(()=>{
+                            actor.sprite.setAttribute("dtype", "lo")
+                            actor.sprite.setAttribute("type", "2")
+                            actor.sprite.setAttribute("b", "1")
+                            actor.sprite.setAttribute("t", "1")
+                            actor.sprite.querySelector("img.basis").src = `/img/sprites/combat/foes/husks/type2_bottom1_mimic.gif`
+                        }, 100)
+                    break;
+
+                    case "husk_guard_frame":
+                        setTimeout(()=>{
+                            actor.sprite.setAttribute("dtype", "hg")
+                            actor.sprite.setAttribute("type", "3")
+                            actor.sprite.setAttribute("b", "2")
+                            actor.sprite.setAttribute("t", "2")
+                            actor.sprite.querySelector("img.basis").src = `/img/sprites/combat/foes/husks/type3_bottom2_mimic.gif`
+                        }, 100)
+                    break;
+
+                    case "husk_support":
+                        setTimeout(()=>{
+                            actor.sprite.setAttribute("dtype", "hs")
+                            actor.sprite.setAttribute("type", "1")
+                            actor.sprite.setAttribute("b", "2")
+                            actor.sprite.setAttribute("t", "2")
+                            actor.sprite.querySelector("img.basis").src = `/img/sprites/combat/foes/husks/type1_bottom2_mimic.gif`
                         }, 100)
                     break;
                 }
@@ -1063,16 +1379,21 @@ class CrittaShip extends HTMLElement {
         let vminY = (((nodePos.y - mapPos.y) + nodePos.height / 2) / mapPos.width) * 100
 
         this.style.setProperty("--x", `${vminX}vmin`)
-        this.style.setProperty("--y", `${vminY}vmin`)
+        this.style.setProperty("--y", `${vminY + (settings.retryOffset ? 10 : 0)}vmin`)
 
         this.canMove = false
+        env.crittaMap.classList.add("shipmoving")
+        env.crittaMap.shipmoving = true
+
+        // this is removed on your first movement
+        if(env.crittaMap.gamemodeSelect) env.crittaMap.gamemodeSelect.remove()
 
         setTimeout(()=>{
             if(settings.done) settings.done()
-        }, 2000)
-        setTimeout(()=>{
             this.canMove = true
-        }, 4000)
+            env.crittaMap.classList.remove("shipmoving")
+            env.crittaMap.shipmoving = true
+        }, 2000)
     }
 }
 customElements.define('critta-ship', CrittaShip);
@@ -1098,6 +1419,8 @@ class CrittaReward extends HTMLElement {
         this.type = CrittaReward.REWARDTYPES[this.typeName]
         this.component = this.getAttribute("component")
         this.difficulty = this.getAttribute("difficulty")
+        this.usesSferBonus = this.hasAttribute("nosferbonus") ? false : (this.type.ignoresSferBonus ? false : true) // to specify via sale insertion
+        this.fixedSferSalePrice = this.getAttribute("specialprice") ? Number(this.getAttribute("specialprice")) : false
         this.id = this.id || `reward${env.crittaCount++}`
 
         this.openCallback = false
@@ -1145,7 +1468,7 @@ class CrittaReward extends HTMLElement {
                         <span class="display">
                             <img class="${this.getAttribute('type')}-img ${rewardObj.imageClass || ""}" src="${rewardObj.image}">
                         </span>
-                        <span class="info">
+                        <span class="info ${rewardObj.infoClass || ""}">
                             <span class="name">${rewardObj.name}</span>
                             <span class="description">${rewardObj.description}</span>
                         </span>
@@ -1165,6 +1488,14 @@ class CrittaReward extends HTMLElement {
                         </span>
                     `
                 break
+
+                case "actor":
+                    labelContent = `
+                        <span class="info">
+                            ${generatePartySlide(rewardObj.actor, {noEquipment: true, detailedPassives: true})}
+                        </span>
+                    `
+                break
             }
 
             contents += `<div class="reward-option ${rewardObj.class ? rewardObj.class : ''}" style="--index: ${Number(i)}" ${rewardObj.component ? `component="${typeof rewardObj.component == "object" ? rewardObj.component.slug : rewardObj.component}"` : ""}>
@@ -1178,25 +1509,41 @@ class CrittaReward extends HTMLElement {
         let actorSelection = ``
         if(this.type.actorSelection) {
             for (let i = 0; i < page.party.length; i++) {
-                const member = page.party[i];
-                actorSelection += `<div class="actor-option" style="--index: ${i}">
+                const member = page.party[i]
+
+                let specialAlterations = member.alterations ? [...new Set(member.alterations.map(impulse => impulse[3]).filter(type => type != "common"))] : false
+                let hasSpecialImpulseFlags = ""
+                if(specialAlterations?.length) {
+                    specialAlterations.forEach(type => {
+                        hasSpecialImpulseFlags += ` has-${type}-impulse`
+                    })
+                }
+
+                actorSelection += `<div class="actor-option ${hasSpecialImpulseFlags}" style="--index: ${i}">
                     <input type="radio" name="${this.id}-actor" value="${member.slug}" id="${member.slug}-actor">
                     <label for="${member.slug}-actor">
-                        ${generatePartySlide(member)}
+                        ${generatePartySlide(member, {noEquipment: true})}
                     </label>
                 </div>`
             }
 
-            actorSelection = `<fieldset class="actor-choice" type="actor" help="select a shell" style="--total: ${page.party.length}">${actorSelection}</fieldset>`
+            actorSelection = `<fieldset class="actor-choice" type="actor" help="select a shell" style="--total: ${page.party.length}">
+                ${page.party.length > 4 ? `<div class="actor-overflow">` : ""}
+                ${actorSelection}
+                ${page.party.length > 4 ? `</div>` : ""}
+            </fieldset>`
         }
 
+        this.salePrice = this.fixedSferSalePrice || ((this.type.declineValue || env.crittaMap.baseSferDeclineValue || 2) + (this.usesSferBonus ? env.crittaMap.sferDeclineBonus : 0))
         this.innerHTML = `
-            <h1 definition="NOTICE::${this.type.description}">${this.type.name}</h1>
-            <fieldset type="main" help="${this.type.help}" style="--total: ${this.rewardSet.length}">${contents}</fieldset>
-            ${this.type.actorSelection ? actorSelection : ""}
-            <div class="buttons">
-                <button disabled class="button" intent="confirm">Confirm</button>
-                ${this.type.canDecline ? `<button class="button" intent="decline">Decline</button>` : ""}
+            <div class="reward-wrapper">
+                <h1 definition="NOTICE::${this.type.description}">${this.type.name}</h1>
+                <fieldset type="main" help="${this.type.help}" style="--total: ${this.rewardSet.length}">${contents}</fieldset>
+                ${this.type.actorSelection ? actorSelection : ""}
+                <div class="buttons">
+                    <button disabled class="button" intent="confirm">Confirm</button>
+                    ${this.type.canDecline ? `<button class="button" definition="NOTE::'exchange for ${this.salePrice} sfer cubes'" intent="decline">Decline</button>` : ""}
+                </div>
             </div>
         `
 
@@ -1212,7 +1559,7 @@ class CrittaReward extends HTMLElement {
             this.selections[thisType] = false
 
             //if a reward has an eligibility check for a party member, execute that and disable/deselect as needed
-            fieldset.addEventListener('change', () => {
+            fieldset.trigger = () => {
                 this.selections[thisType] = fieldset.querySelector('input[type="radio"]:checked')
 
                 if(thisType == "main" && this.type.actorSelection) {
@@ -1231,10 +1578,19 @@ class CrittaReward extends HTMLElement {
                             }
                         }
                     }
+
+                    // also mark when it's a replacable impulse type, i.e. fated or action
+                    if(selectedReward?.impulse?.impulse?.type && selectedReward?.impulse?.impulse?.type != "common") {
+                        this.setAttribute("impulsereplace", `${selectedReward?.impulse?.impulse?.type}`)
+                    } else this.removeAttribute("impulsereplace")
                 }
 
-                this.checkReadiness()
-            })
+                setTimeout(() => {
+                    this.checkReadiness()                    
+                }, 50)
+            }
+
+            fieldset.addEventListener('change', fieldset.trigger)
         })
         
         this.confirm.addEventListener('click', () => {
@@ -1254,16 +1610,33 @@ class CrittaReward extends HTMLElement {
         })
         
         this.querySelectorAll('button[intent="decline"]').forEach(el=>el.addEventListener('click', () => {
+            chatter({actor: 'plainsys', text: `resource exchanged for ${this.salePrice} sfer cubes`, readout: true})
+            addItem('sfer_cube', this.salePrice)
             this.closeout()
         }))
 
         this.setAttribute("generated", true)
+        if(this.type.onGenerate) this.type.onGenerate(this)
     }
 
     // marks the confirm button as either disabled or not based on selections
     checkReadiness() {
         let canProceed = true
-        for (const [selectionType, selectionValue] of Object.entries(this.selections)) if(!selectionValue) canProceed = false
+        for (const [selectionType, selectionValue] of Object.entries(this.selections)) {
+            console.log('checking readiness on', selectionType, selectionValue)
+            if(!selectionValue) canProceed = false
+            console.log('canProceed is now', canProceed)
+        }
+        
+        // if the selected reward doesn't need an actor, ignore that requirement
+        if(!this.type.actorSelection) canProceed = true
+
+        // if the reward type does have actor selection, but the selected reward doesn't need an actor, ignore that requirement
+        console.log('checking actor selection bypass for', this.type.actorSelection, this.selections?.main?.value, this.rewardSet[this.selections?.main?.value])
+        if(this.type.actorSelection && this.selections?.main?.value) 
+            if(this.rewardSet[this.selections.main.value].picksActor === false) canProceed = true 
+        console.log('final canProceed is', canProceed)
+
         this.confirm.disabled = !canProceed
 
         return canProceed
@@ -1300,9 +1673,10 @@ class CrittaReward extends HTMLElement {
         component: {
             slug: "component",
             name: "Humor Cache",
-            description: "'behavioral organelle';'influences available actions'",
+            description: "'behavioral organelle';'forms basis of shell';'grants unique actions'",
             help: "select humor\nequippable shell alteration",
-            baseWeight: 1.5,
+            baseWeight: 1,
+            canDecline: true,
             getOptions: function (thisReward) {
                 let rewardSet = []
 
@@ -1358,7 +1732,7 @@ class CrittaReward extends HTMLElement {
             //takes a rewardObj from a rewardSet
             reapOption: function (thisReward, rewardObj) {
                 CrittaReward.safeAdd(page.flags.components, rewardObj.component.slug, rewardObj.quantity)
-                chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${rewardObj.quantity} ${rewardObj.component.name.toLowerCase()}'`, readout: false})
+                chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${rewardObj.quantity} ${rewardObj.component.name.toLowerCase()}'`, readout: true})
             }
         },
 
@@ -1366,11 +1740,11 @@ class CrittaReward extends HTMLElement {
         impulse: {
             slug: "impulse",
             name: "Impulse Cache",
-            description: "'knowledge pattern organelle';'permanently alters proficiencies'",
+            description: "'knowledge pattern organelle';'grants selection of permanent passive effect'",
             help: "select impulse\npermanent shell alterations",
             actorSelection: true,
             canDecline: true,
-            baseWeight: 0.5,
+            baseWeight: 0.25,
 
             // generates selection from status effects
             getOptions: function (thisReward) {
@@ -1391,36 +1765,52 @@ class CrittaReward extends HTMLElement {
                         break
 
                         case "fated":
-                            if(env.crittaMap.tension < 3) continue;
+                            if(env.crittaMap.tension < 2) continue;
                             possibleImpulses.push(impulse)
                         break
                     }
                 }
 
                 possibleImpulses = shuffle(possibleImpulses)
+
+                let themedOnly = thisReward.getAttribute("componentexclusive")
                 
                 let rewardImpulses = []
                 let themedReward
+
+                //if it's themedOnly, all three are drawn here. otherwise, just one is
                 if(thisReward.component) {
-                    let componentIndex = possibleImpulses.findIndex(status => status[1].impulse.component == thisReward.component)
-                    if(componentIndex) {
-                        themedReward = possibleImpulses.splice(componentIndex, 1)[0]
-                        rewardImpulses.push(themedReward)
+                    for(let i = 0; i < (themedOnly ? 3 : 1); i++) {
+                        let componentIndex = possibleImpulses.findIndex(status => status[1].impulse.component == thisReward.component)
+                        if(componentIndex != -1) {
+                            themedReward = possibleImpulses.splice(componentIndex, 1)[0]
+                            rewardImpulses.push(themedReward)
+                        }
                     }
-                }
-                //then the randoms to fill the rest of the slots
-                for (let i = 0; i < (themedReward ? 2 : 3); i++) rewardImpulses.push(possibleImpulses.shift());
+                } else themedOnly = false // just in case
+
+                //then the randoms to fill the rest of the slots if not themedOnly
+                if(!themedOnly) for (let i = 0; i < (themedReward ? 2 : 3); i++) rewardImpulses.push(possibleImpulses.shift());
 
                 //construct rewardSet objects
                 for (const [statusSlug, status] of rewardImpulses) {
-                    let description = status.help
+                    let defRenderEl = document.createElement('div')
+                    defRenderEl.innerHTML = definitionRender({getAttribute: () => `STATUS++${status.slug}`}, {returnHTML: true})
+                    defRenderEl.querySelector('.actiondef-status-icon')?.remove()
+                    defRenderEl.querySelector('h6')?.remove()
+                    let prunedDef = defRenderEl.querySelector('.actiondef-status')?.innerHTML || ''
+
+                    let description = prunedDef.trim()
+                    let infoClass
                     switch(status.impulse.type) {
                         case "fated":
-                            description += `\n<span style="color: var(--neutral-color)">shells can only have one fated impulse, but it can be replaced with another</span>`
+                            description += CrittaReward.STRINGS.fatedHelp
+                            infoClass = "fated-impulse-title"
                         break
 
                         case "action":
-                            description += `\n<span style="color: var(--neutral-color)">shells can only have one action impulse, but it can be replaced with another</span>`
+                            description += CrittaReward.STRINGS.actionHelp
+                            infoClass = "action-impulse-title"
                         break
                     }
 
@@ -1433,6 +1823,7 @@ class CrittaReward extends HTMLElement {
                         component: status.impulse.component ? status.impulse.component : false,
                         impulse: status,
                         imageClass: `passive-${statusSlug}`,
+                        infoClass,
                         //we don't let you stack
                         eligibilityCheck: (member) => {
                             //check to make sure they don't already have it
@@ -1467,77 +1858,168 @@ class CrittaReward extends HTMLElement {
                 console.log('this type is', rewardObj.impulse.impulse.type, 'so overwrrite is', overwritten)
 
                 selectedActor.alterations.push(["STATUS", rewardObj.impulse.slug, "IMPULSE", rewardObj.impulse.impulse.type])
-                chatter({actor: 'sys', text: `NOTICE::${overwritten ? `${rewardObj.impulse.impulse.type} impulse <span definition="EFFECT::${processHelp(overwritten, {caps: true})}">${overwritten.name.toUpperCase()}</span> overwritten` : 'shell imprinted with impulse'}'shell imprinted with impulse';'<span definition="EFFECT::${processHelp(rewardObj.impulse, {caps: true})}">${rewardObj.impulse.name.toUpperCase()}</span>'`, readout: overwritten ? true : false})
+                if(overwritten) chatter({actor: 'plainsys', text: `<p>${rewardObj.impulse.impulse.type} impulse <b-col definition="STATUS++${overwritten.slug}">${overwritten.name}</b-col> impulse overwritten with <b-col definition="STATUS++${rewardObj.impulse.slug}">${rewardObj.impulse.name}</b-col></p>`, readout: true})
+            },
+        },
+
+        // gives a selection of one impulse out of 3. one is guaranteed to be this component's type
+        // the element has to have an extra attribute for the specific impulse ID
+        /* 
+            <critta-reward id="${id}" class="pre-show" type="${reward.slug}" impulse="${impulse.slug}"></critta-reward>
+        */
+        specificImpulse: {
+            slug: "specificImpulse",
+            name: "Impulse Assignment",
+            description: "'knowledge pattern organelle';'grants permanent passive'",
+            help: "grant permanent alteration to shell",
+            actorSelection: true,
+            canDecline: true,
+            ignoresSferBonus: true,
+            baseWeight: 0, // does not spawn normally
+
+            // generates selection from status effects
+            getOptions: function (thisReward) {
+                let impulseSlug = thisReward.getAttribute("impulse")
+                let status = env.STATUS_EFFECTS[impulseSlug]
+
+                let defRenderEl = document.createElement('div')
+                defRenderEl.innerHTML = definitionRender({getAttribute: () => `STATUS++${status.slug}`}, {returnHTML: true})
+                defRenderEl.querySelector('h6')?.remove()
+                defRenderEl.querySelector('.actiondef-status-icon')?.remove()
+                let prunedDef = defRenderEl.querySelector('.actiondef-status')?.innerHTML || ''
+                let description = prunedDef.trim()
+                
+                let infoClass
+                switch(status.impulse.type) {
+                    case "fated":
+                        description += CrittaReward.STRINGS.fatedHelp
+                        infoClass = "fated-impulse-title"
+                    break
+
+                    case "action":
+                        description += CrittaReward.STRINGS.actionHelp
+                        infoClass = "action-impulse-title"
+                    break
+                }
+
+                return [{
+                    name: status.name,
+                    description: description,
+                    quantity: 1,
+                    displayType: "image",
+                    image: status.icon,
+                    component: status.impulse.component ? status.impulse.component : false,
+                    impulse: status,
+                    imageClass: `passive-${status.slug}`,
+                    infoClass,
+                    eligibilityCheck: (member) => {
+                        //check to make sure they don't already have it
+                        return (
+                            (member.alterations ? !member.alterations.some(alteration => alteration[1] == status.slug && alteration[2] == "IMPULSE") : true)
+                            && //then check and see if the status itself has an eligibility check
+                            (typeof status.impulse.eligibility == "function" ? status.impulse.eligibility(member) : true)
+                        )
+                    }
+                }]
+            },
+
+            reapOption: function (thisReward, rewardObj, selectedActor) {
+                if(!selectedActor.alterations) selectedActor.alterations = []
+                //if you picked a fated or action impulse, overwrite the old one
+                let overwritten = false
+
+                if(rewardObj.impulse.impulse.type == "fated" || rewardObj.impulse.impulse.type == "action") {
+                    selectedActor.alterations = selectedActor.alterations.filter(alter=>{
+                        if(alter[3] == rewardObj.impulse.impulse.type) {
+                            overwritten = env.STATUS_EFFECTS[alter[1]]
+                            return false
+                        } else {
+                            return true
+                        }
+                    })
+                }
+
+                console.log('this type is', rewardObj.impulse.impulse.type, 'so overwrrite is', overwritten)
+
+                selectedActor.alterations.push(["STATUS", rewardObj.impulse.slug, "IMPULSE", rewardObj.impulse.impulse.type])
+                if(overwritten) chatter({actor: 'plainsys', text: `<p>${rewardObj.impulse.impulse.type} impulse <b-col definition="STATUS++${overwritten.slug}">${overwritten.name}</b-col> impulse overwritten with <b-col definition="STATUS++${rewardObj.impulse.slug}">${rewardObj.impulse.name}</b-col></p>`, readout: true})
+            },
+
+            onGenerate: (element) => { // checks the impulse so you don't have to click it first. it's only the one
+                element.querySelector('input').checked = true
+                element.querySelector('fieldset').trigger()
             }
         },
 
         item: {
             slug: "item",
-            name: "Item Cache",
-            description: "'single-use actions and materials'",
-            help: "select collection\nexchange at terminal if needed",
+            name: "Equipment Cache",
+            description: "'powerful equipment'",
+            help: "select option\nor decline for 1 sfer",
             baseWeight: 0.75,
-            
-            //items can be from one of three sets - support, offense, special.
-            //item caches always offer one from each set
+            canDecline: true,
+
+            //item caches always offer one support item, one offense item, and then another selected from both (plus a chance for sfer)
             options: {
                 support: [
-                    ["restorative", 4, "ichor"],
-                    ["satik_cyst", 4, "bone"],
+                    ["eq_restorative", 1, "ichor"],
+                    ["eq_satik", 1, "ichor"],
+                    ["eq_shell", 1, "bone"],
+                    ["eq_surge", 1, "claws"],
+                    ["eq_siphon", 1, "ichor"],
+                    ["eq_spikes", 1, "bone"],
+                    ["eq_fusedlight", 1, "light"],
                 ],
 
                 offense: [
-                    ["kavruka", 4, "claws"],
-                    ["aima_cyst", 4, "eyes"],
-                    ["error", 4, "light"],
-                ],
-
-                special: [
-                    ["sfer_cube", 5],
-                    ["disabler", 2, "claws"],
-                    ["drill", 1, "bstrd"],
-                    ["rot", 1, "bstrd"],
-                    ["rewrite", 1, "bstrd"],
-                    ["empower", 1, "bstrd"],
+                    ["eq_kavruka", 1, "claws"],
+                    ["eq_pariispike", 1, "claws"],
+                    ["eq_disabler", 1, "bone"],
+                    ["eq_aima_cyst", 1, "eyes"],
+                    ["eq_antistatus", 1, "ichor"],
+                    ["eq_wound", 1, "claws"],
                 ]
-
             },
 
             // generates selection from sets of valid item rewards, held within here
             getOptions: function (thisReward) {
                 let rewardSet = []
 
+                if(!this.madeCombinedPool) {
+                    this.options.combined = this.options.support.concat(this.options.offense)
+                    this.options.combined.push(["sfer_cube", 5, "bone"])
+                    this.madeCombinedPool = true
+                }
+
                 for (const [setName, itemSelections] of Object.entries(this.options)) {
-                    let hitMax
-
-                    //only show items that they aren't capped on
-                    let validItems = itemSelections.filter(([itemSlug, amt]) => {
-                        let currentQty = checkItem(itemSlug)
-                        let ref = env.ITEM_LIST[itemSlug]
-
-                        if((currentQty + amt) > ref.max) return false;
-                        else return true
-                    })
-                    if(validItems.length == 0) {validItems.push(["sfer_cube", 5]); hitMax = true}
+                    //filter out items that are already being offered - mainly for combined pool
+                    let validItems = itemSelections.filter(([itemSlug, amt]) => !rewardSet.some(rewardObj => rewardObj.itemSet[0] == itemSlug))
+                    if(validItems.length == 0) {validItems.push(["sfer_cube", 5, "bone"])}
                     
                     let itemSet = validItems.sample()
                     let [itemSlug, itemQty] = itemSet
                     let itemRef = env.ITEM_LIST[itemSlug]
                     let currentQty = checkItem(itemSlug)
                     let itemAction = check("PAGE!!2dcombat") ? (itemRef.sceneAction || itemRef.combatAction) : itemRef.combatAction
+                    let status = false
+                    if(itemRef.type == "equipment") status = env.STATUS_EFFECTS[itemRef.alterations.find(a=>a[0] == "STATUS")[1]]
 
                     rewardSet.push({
-                        name: `${itemRef.name} <span class="qty">(${itemQty})</span>`,
+                        name: `${itemRef.name}${itemQty > 1 ? ` <span class="qty">(${itemQty})</span>` : ''}`,
                         description: `
                         <div class="item-details">
-                            ${(itemRef.exec || itemRef.combatAction) ? `<div class="item-usage">
+                            <div class="item-usage">
                                 ${itemRef.exec ? `<span class="item-ooc">${processHelp(itemRef, {specialObj: itemRef.oocnote})}</span>` : ``}
                                 ${itemRef.combatAction ? `<span class="item-ic"><span definition="ACTION++${itemAction.slug}">${itemAction.name.toUpperCase()}</span></span>` : ``}
-                            </div>`
-                            : 
-                            `<div class="item-description">::FUNCTION::${processHelp(itemRef, {specialObj: itemRef.description})}</div>`
-                            }
-                            ${currentQty ? `<div class="currently-held">current inventory: ${checkItem(itemSlug)} / ${itemRef.max}</div>` : ''}
+                                ${status ? `<span class="item-eq">${definitionRender({getAttribute: () => `STATUS++${status.slug}`}, {returnHTML: true})}</span>` : ``}
+                                ${status?.grantsActions ? 
+                                    status.grantsActions.map(grantActionSlug => {
+                                        let grantAction = env.ACTIONS[grantActionSlug]
+                                        return `<span class="item-eq-action"><span definition="ACTION++${grantAction.slug}">${grantAction.name.toUpperCase()}</span></span>`
+                                    }).join("\n")
+                                : ``}
+                            </div>
+                            ${currentQty ? `<div class="currently-held">CURRENT_INVENTORY::'${checkItem(itemSlug)}${itemRef.max ? ` / ${itemRef.max}` : ''}'</div>` : ''}
                         </div>
                         `,
                         displayType: "image",
@@ -1560,7 +2042,7 @@ class CrittaReward extends HTMLElement {
                     chatter({actor: 'sys', text: `ATTENTION::'unable to retrieve item due to maximum';'${itemObj.name}';'automatically converted to ${qty} sfer cube'`, readout: false})
                     addItem("sfer_cube", qty)
                 } else {
-                    chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${qty}';'${itemObj.name.toLowerCase()}'`, readout: false})
+                    chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${qty}';'${itemObj.name.toLowerCase()}'`, readout: true})
                 }
             }
         },
@@ -1571,13 +2053,13 @@ class CrittaReward extends HTMLElement {
             description: "'special single-use actions or materials'",
             help: "claim catch or feed to terminal",
             baseWeight: 0,
+            canDecline: true,
 
             getOptions: function (thisReward) {
                 let rewardSet = []
 
                 let fishRewards = [
-                    [page.lastCaughtFish.item, 1, page.lastCaughtFish.component],
-                    ["sfer_cube", 2]
+                    [page.lastCaughtFish.item, 1, page.lastCaughtFish.component]
                 ]
 
                 for (const itemSet of fishRewards) {
@@ -1587,7 +2069,7 @@ class CrittaReward extends HTMLElement {
                     let currentQty = checkItem(itemSlug)
 
                     rewardSet.push({
-                        name: `${itemRef.name} <span class="qty">(${itemQty})</span>`,
+                        name: `${itemRef.name}${itemQty > 1 ? ` <span class="qty">(${itemQty})</span>` : ''}`,
                         description: `
                         <div class="item-details">
                             <div class="item-description">::FUNCTION::${itemRef.description}</div>
@@ -1597,7 +2079,7 @@ class CrittaReward extends HTMLElement {
                             </div>`
                             : ``
                             }
-                            ${currentQty ? `<div class="currently-held">current inventory: ${checkItem(itemSlug)} / ${itemRef.max}</div>` : ''}
+                            ${currentQty ? `<div class="currently-held">CURRENT_INVENTORY::'${checkItem(itemSlug)}${itemRef.max ? ` / ${itemRef.max}` : ''}'</div>` : ''}
                         </div>
                         `,
                         displayType: "image",
@@ -1620,13 +2102,18 @@ class CrittaReward extends HTMLElement {
                     chatter({actor: 'sys', text: `ATTENTION::'unable to retrieve item due to maximum';'${itemObj.name}';'automatically converted to ${qty} sfer cube'`, readout: false})
                     addItem("sfer_cube", qty)
                 } else {
-                    chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${qty}';'${itemObj.name.toLowerCase()}'`, readout: false})
+                    chatter({actor: 'sys', text: `NOTICE::'retrieved resource';'${qty}';'${itemObj.name.toLowerCase()}'`, readout: true})
                 }
 
                 if(check("STAGE!!freedomtoggled")) {
                     change("STAGE!!freedomtoggled", "DELETE")
                     mask({name: "freedom", toggle: true, playSound: false})
                 }
+            },
+
+            onGenerate: (element) => { // checks the fish so you don't have to click it first. it's only the one
+                element.querySelector('input').checked = true
+                element.querySelector('fieldset').trigger()
             }
         },
 
@@ -1665,7 +2152,7 @@ class CrittaReward extends HTMLElement {
                     let description = mod.getHelp()
                     let name = mod.name
                     let num = env.crittaMap.getModQty(modSlug)
-                    if(mod.tension) description += `\n<span class="${mod.tension > 1 ? "obesk" : "neutral"}-color" definition="NOTICE::'will raise difficulty of opponents'">${mod.tension > 0 ? `+${mod.tension}` : mod.tension } TENSION</span>`
+                    if(mod.tension) description += `\n\n<span class="${mod.tension > 1 ? "bastard" : "neutral"}-color" definition="NOTICE::'will raise difficulty of opponents'">${mod.tension > 0 ? `+${mod.tension}` : mod.tension } TENSION</span>`
                     if(typeof mod.stacks == "number" && num) name += ` <span class="neutral-color" definition="NOTICE::'limited revision';'cannot be enacted more than maximum number'">(${num}/${mod.stacks})</span>`
 
                     rewardSet.push({
@@ -1690,12 +2177,926 @@ class CrittaReward extends HTMLElement {
                 env.crittaMap.generate()            
             }
         },
+
+        // when you lose, you get a choice of what to sacrifice to keep going
+        sacrifice: {
+            slug: "sacrifice",
+            name: "Continuation Ritual",
+            description: "'sacrifice to continue iteration'",
+            help: "pay to proceed",
+            baseWeight: 0, // does not spawn normally
+            actorSelection: true,
+            
+            getOptions: function (thisReward) {
+                let rewardSet = []
+
+                let possibleSacrifices = shuffle(Object.entries(env.MODIFIERS).filter(entry => {
+                    return (
+                        entry[1].sacrifice &&
+                        shouldItShow(entry[1]) &&
+                        !entry[1].giveUp
+                
+                    )
+                }))
+
+                let sacrificeOptions = []
+
+                //sacrifices are always 2 actual options, and 1 true give up option
+                if(possibleSacrifices.length < 2) sacrificeOptions = possibleSacrifices;
+                else for (let i = 0; i < 2; i++) sacrificeOptions.push(possibleSacrifices.shift())
+                sacrificeOptions.push(["sacrifice_giveup", env.MODIFIERS["sacrifice_giveup"]])
+
+                if(page.party.length == 0) sacrificeOptions = [["sacrifice_giveup", env.MODIFIERS["sacrifice_giveup"]]] // force giveup if you lose all your shells somehow
+                
+                for (const [sacSlug, sacrifice] of sacrificeOptions) {
+                    let description = sacrifice.getHelp()
+                    let name = sacrifice.name
+
+                    rewardSet.push({
+                        name,
+                        description,
+                        quantity: 1,
+                        displayType: "image",
+                        image: sacrifice.icon,
+                        component: sacrifice.component ? sacrifice.component : false,
+                        class: sacSlug,
+                        picksActor: sacrifice.picksActor,
+                        sacrifice,
+                        eligibilityCheck: (member) => {
+                            if(typeof sacrifice.picksActor == "function") return sacrifice.picksActor(member);
+                            else if(typeof sacrifice.picksActor == "boolean") return sacrifice.picksActor;
+                            else return false;
+                        }
+                    })
+                }
+
+                return rewardSet
+            },
+            
+            reapOption: function (thisReward, rewardObj, selectedActor) {
+                if(rewardObj.sacrifice.onChosen) rewardObj.sacrifice.onChosen(selectedActor)
+            }
+        },
+
+        // special gamemode cache: shell
+        // lets you select one of three randomly generated shells with their own impulses and humors
+        // amount they have of each is partially decided by difficulty and tension
+        shell: {
+            slug: "shell",
+            name: "Shell Cache",
+            description: "'bundled organelle';'grants selection of new fighter'",
+            help: "select shell",
+            canDecline: true,
+            baseWeight: 0, // does not spawn normally
+
+            getOptions: function (thisReward) {
+                let rewardSet = []
+                let shells = [CrittaMenu.generateNewShell(), CrittaMenu.generateNewShell(), CrittaMenu.generateNewShell()]
+                let thisComponent = thisReward.component
+                if(thisComponent == "intrusive") thisComponent = "light"
+
+                /* 
+                    shell rating is like so:
+                        - basicToGive / augmentsToGive
+                            - minimum 1
+                            - Difficulty added
+                            - Tension added
+
+                            - if under 3, randomly fill two slots
+                            - if 3, coinflip on whether to fully augment one slot, or split across all 3 slots
+                            - 4 to 5, get one augment then fill slots with basic until full
+                            - 6, get one augment then flip on whether to augment again, or fill rest with basic slots
+                            - 7 and 8, get two augments and fill slots
+                            - 9 and over, fully augged
+
+                            - any spillover is given to impulsesToGive cause we like fun
+
+                        - impulsesToGive will be based on difficulty and tension
+                            - minimum 0
+                            - difficulty added
+                            - tension added
+                            - if it's over 9, then a fated or action impulse of thisReward.component is guaranteed
+
+                        - thisReward.component will decide what the majority of impulses and humors will be
+                */
+
+                let rating = 1 + Number(thisReward.difficulty) + env.crittaMap.tension + (env.crittaMap?.shellRatingBonus || 0)
+                console.log("rating for shell rewards is", rating, "with difficulty", thisReward.difficulty, "and tension", env.crittaMap.tension)
+
+                // there's a lot of impulses so we're gathering this before the shell loop
+                let impulses = []
+
+                for (const impulse of Object.entries(env.STATUS_EFFECTS).filter(entry => entry[1].impulse)) {
+                    switch(impulse[1].impulse.type) {
+                        case "common":
+                            impulses.push(impulse)
+                        break
+
+                        case "action":
+                            if(env.crittaMap.tension < 1) continue;
+                            impulses.push(impulse)
+                        break
+
+                        case "fated":
+                            if(env.crittaMap.tension < 2) continue;
+                            impulses.push(impulse)
+                        break
+                    }
+                }
+
+                shells.forEach(shell => {
+                    shell.components = {}
+                    shell.augments = []
+                    shell.alterations = []
+                    shell.rating = rating
+
+                    // determine humors and augments first
+                    let basicsToGive = 1 + rating
+                    let augmentsToGive = 0
+
+                    // nothing, we're filling slots
+                    if (basicsToGive < 3) { 
+
+                    // coinflip on whether to fully augment one slot, or split across all 3 slots
+                    } else if (basicsToGive === 3) { 
+                        if(Math.random() < 0.5) {
+                            augmentsToGive = 1
+                            basicsToGive = 0
+                        }
+
+                    // get one augment then fill slots with basic until full
+                    } else if (basicsToGive >= 4 && basicsToGive <= 5) { 
+                        augmentsToGive = 1
+                        basicsToGive -= 3
+
+                    // get one augment then flip on whether to augment again, or fill rest with basic slots
+                    } else if (basicsToGive === 6) { 
+                        if(Math.random() < 0.5) {
+                            augmentsToGive = 2
+                            basicsToGive = 0
+                        } else {
+                            augmentsToGive = 1
+                            basicsToGive -= 3
+                        }
+
+                    // get two augments and fill slots
+                    } else if (basicsToGive === 7 || basicsToGive === 8) {
+                        augmentsToGive = 2
+                        basicsToGive -= 6
+
+                    // full augments babey
+                    } else if (basicsToGive >= 9) { 
+                        augmentsToGive = 3
+                        basicsToGive -= 9 // still want to track this in case we can spend them on bonus impulses
+                    }
+
+                    let remainingSlots = ["primary", "secondary", "utility"]
+
+                    console.log("shell", shell.name, "has", augmentsToGive, "augments and", basicsToGive, "basics to give with rating", rating)
+                    // give augments first
+                    if(augmentsToGive) {
+                        let possibleAugments = Object.entries(env.ACTOR_AUGMENTS.generic).filter(([slug, augment]) => remainingSlots.includes(augment.component[0]))
+                        let relevantAugments = possibleAugments.filter(([slug, augment]) => augment.component[1] == thisComponent)
+                        
+                        // first one will always be of the relevant component
+                        for (let i = 0; i < augmentsToGive; i++) {
+                            let augmentToGive
+                            
+                            if(i == 0 && relevantAugments.length) {
+                                augmentToGive = relevantAugments.sample({remove: true})
+                                possibleAugments = possibleAugments.filter(aug => aug !== augmentToGive)
+                            } else {
+                                augmentToGive = possibleAugments.sample({remove: true})
+                            }
+
+                            remainingSlots = remainingSlots.filter(slot => slot != augmentToGive[1].component[0])
+                            shell.components[augmentToGive[1].component[0]] = augmentToGive[1].component[1]
+                            shell.augments.push(augmentToGive[0])
+                            console.log("gave shell", shell.name, "augment", augmentToGive[0], "in slot", augmentToGive[1].component[0], "with component", augmentToGive[1].component[1],"remaining slots", remainingSlots)
+                        }
+                    }
+
+                    // then basics
+                    let basicsSpent = 0
+                    if(basicsToGive) {
+                        // anything that can spawn normally, so modded stuff is included
+                        let possibleComponents = Object.entries(env.COMBAT_COMPONENTS).filter(c=>!c[1].dontSpawnNormally).map(c=>c[0])
+                        let relevantComponent = possibleComponents.find(c=>c == thisComponent)
+
+                        for(let i = 0; i < basicsToGive; i++) {
+                            if(!remainingSlots.length) break
+                            basicsSpent++
+                            
+                            let slot = remainingSlots.sample({remove: true})
+                            let componentToGive = i == 0 ? relevantComponent : possibleComponents.sample()
+                            shell.components[slot] = componentToGive
+                            console.log("gave shell", shell.name, "basic component", componentToGive, "in slot", slot, "remaining slots", remainingSlots)
+                        }
+                    }
+
+                    // now impulses, with a bonus given based on basics leftover
+                    let impulsesToGive = rating + basicsToGive - basicsSpent
+                    console.log("impulsesToGive is", impulsesToGive, "with rating", rating, "and basicsToGive", basicsToGive, "and basicsSpent", basicsSpent)
+                    if(impulsesToGive > 0) {
+                        let possibleImpulses = [... impulses]
+
+                        // first half of impulses given will always be of this component type, if possible
+                        // also, if we're over 9 impulsesToGive, always give either a fated or action impulse of thisReward.component
+                        for(let i = 0; i < impulsesToGive; i++) {
+                            if(!possibleImpulses.length) break
+                            let impulse
+                            
+                            // first half or if over 9, prioritize relevant component
+                            let givenSpecial
+                            if(i < impulsesToGive / 2 || (impulsesToGive > 9 && !givenSpecial)) {
+                                let relevantImpulses = possibleImpulses.filter(([slug, status]) => status.impulse.component == thisComponent)
+                                if(relevantImpulses.length) {
+                                    impulse = relevantImpulses.sample({remove: true})
+                                    possibleImpulses = possibleImpulses.filter(imp => imp !== impulse)
+                                    givenSpecial = true
+                                } else {
+                                    impulse = possibleImpulses.sample({remove: true})
+                                }
+                            } else {
+                                impulse = possibleImpulses.sample({remove: true})
+                            }
+                            
+                            shell.alterations.push([
+                                "STATUS",
+                                impulse[0],
+                                "IMPULSE",
+                                impulse[1].impulse.type
+                            ])
+                        }
+                    }
+
+                    //bonus for intrusive shells
+                    if(thisReward.component == "intrusive") {
+                        shell.alterations.push([
+                            "STATUS",
+                            ["destabilized_p_obliteration", "destabilized_p_statuses", "destabilized_p_support", "destabilized_p_surge", "light_extreme"].sample(),
+                            "IMPULSE",
+                            "common"
+                        ])
+                    } 
+                })
+                
+                shells.forEach(shell => {
+                    console.log("generated shell offer", shell)
+                    rewardSet.push({
+                        name: shell.name,
+                        quantity: 1,
+                        displayType: "actor",
+                        imageClass: "actor",
+                        image: shell.portraitUrl,
+                        actor: shell,
+                    })
+                })
+
+                return rewardSet
+            },
+
+            reapOption: function (thisReward, rewardObj) {
+                page.party.push(rewardObj.actor)
+            },
+        },
+
+        // the first phase of using the shell grinder - gives you a choice of shell to destroy, OR the choice to back off
+        // easier than a new thing, more soulful than a dialogue choice
+        shellGrinderApproach: {
+            slug: "shellGrinderApproach",
+            name: "OMINOUS MACHINE",
+            description: "'cast a shell to be sacrificed';'receive powerful rewards'",
+            help: "you need this interloper",
+            actorSelection: true,
+            baseWeight: 0, 
+
+            // there's always just these two
+            getOptions: function (thisReward) {
+                let rewardSet = []
+                
+                rewardSet.push({
+                    name: "SACRIFICE SHELL",
+                    description: "choose a shell to sacrifice",
+                    quantity: 1,
+                    displayType: "image",
+                    image: "/img/sprites/combat/modifiers/sacrifice_shell.gif",
+                    component: "intrusive",
+                    picksActor: true,
+                    eligibilityCheck: (member) => true
+                })
+                
+                rewardSet.push({
+                    name: "BACK AWAY",
+                    description: "be a coward",
+                    quantity: 1,
+                    displayType: "image",
+                    image: "/img/sprites/combat/modifiers/back_away.gif",
+                    component: "light",
+                    picksActor: false,
+                    eligibilityCheck: (member) => false
+                })
+
+                return rewardSet
+            },
+            
+            reapOption: function (thisReward, rewardObj, selectedActor) {
+                if(selectedActor) {
+                    env.MODIFIERS.sacrifice_shell.onChosen(selectedActor)
+                    selectedActor.lossReason = "grinder"
+                    cutscene(true)
+                    ratween(env.bgm, 0.25)
+                    vfx({type: "darkflash", state: true})
+                    play("talkfairy", 0.25)
+                    setTimeout(()=>play("stab"), 250)
+                    setTimeout(()=>play("stab", 0.5), 750)
+                    setTimeout(()=>{play("stab", 0.25);forcePlay("talkfairy", 0.25)}, 1500)
+                    setTimeout(()=>{
+                        ratween(env.bgm, 1)
+                        let id = `reward${env.crittaCount++}`
+                        content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" type="shellGrinderReward" component="light"></critta-reward>`)
+                    }, 2000)
+                    setTimeout(()=>{
+                        cutscene(false);
+                        vfx({type: "darkflash", state: false})
+                    }, 3000)
+                } else {
+                    MUI("deprohibit")
+                    chatter({ actor: "fairy", text: [
+                        "think about it interloper...",
+                        "you WILL need this!",
+                        "so you choose failure!! ahahaaha!!!!"
+                    ].sample(), readout: true, delay: 800})
+                    return // nothing
+                }
+            }
+        },
+
+        // metarewards for choosing to kill a shell
+        // we also store the shell you discarded, for... reasons...
+        shellGrinderReward: {
+            slug: "shellGrinderReward",
+            name: "THE SKY COILS WITH JOY",
+            description: "'select a blessing'",
+            help: "shell rating improves all future shells found\nthe rest is up to chance! hehehee!!!",
+            actorSelection: true,
+            baseWeight: 0, 
+
+            possibleModifierStatuses: ["light_extreme", "light_laughterhouse", "eyes_hypercritical", "claws_rabid", "bone_spikes", "bone_ablative", "aug_eyes_direction", "aug_eyes_advantage", "destabilized_n_unsteady", "destabilized_n_flow", "destabilized_n_squishy", "destabilized_p_obliteration", "destabilized_p_surge"],
+
+            // for now these are hardcoded
+            getOptions: function (thisReward) {
+                let rewardSet = []
+                
+                rewardSet.push({
+                    name: "FINER CROP",
+                    description: "<f-col>+1 to future shell rating</f-col><br>rating determines number of humors, augments, and impulses",
+                    quantity: 1,
+                    displayType: "image",
+                    image: "/img/sprites/combat/modifiers/finer_crop.gif",
+                    component: "rot",
+                    picksActor: false,
+                    eligibilityCheck: (member) => false,
+                    onPick: () => {
+                        if(!env.crittaMap.shellRatingBonus) env.crittaMap.shellRatingBonus = 0  
+                        env.crittaMap.shellRatingBonus += 1
+                        play("obeskToggle", 0.5)
+                    }
+                })
+
+                let status = env.MODIFIERS.global_megaglee.makeNewStatus({power: 2, oneOff: true, forceBeneficial: true, retain: true})
+                rewardSet.push({
+                    name: `BLESSING::${status.name}`,
+                    description: `grants a <n-col>randomly formed passive</n-col> to selected shell<br>${definitionRender({getAttribute: () => `STATUS++${status.slug}`}, {returnHTML: true})}`,
+                    quantity: 1,
+                    displayType: "image",
+                    image: "/img/sprites/combat/modifiers/shell_blessing.gif",
+                    component: "eyes",
+                    impulse: status,
+                    imageClass: `passive-${status.slug}`,
+                    infoClass: `info-${status.slug}`,
+                    picksActor: true,
+                    eligibilityCheck: (member) => true,
+                    onPick: (member) => {
+                        member.alterations = member.alterations || []
+                        member.alterations.push(["STATUS", status.slug, "IMPULSE", "BLESSING"])
+                        play("obeskToggle", 0.5)
+                    }
+                })
+                
+                
+                let modifierStatus = env.STATUS_EFFECTS[this.possibleModifierStatuses.sample()]
+                rewardSet.push({
+                    name: `PACT::${modifierStatus.name}`,
+                    description: `<n-col>all nodes</n-col> in this iteration <n-col>gain modifier</n-col><br>${definitionRender({getAttribute: () => `STATUS++${modifierStatus.slug}`}, {returnHTML: true})}`,
+                    quantity: 1,
+                    displayType: "image",
+                    image: modifierStatus.icon,
+                    component: "light",
+                    picksActor: false,
+                    eligibilityCheck: (member) => false,
+                    onPick: () => {
+                        env.crittaMap.querySelectorAll("critta-node").forEach(node=>node.addStatusModifier(modifierStatus))
+                        play("obeskToggle", 0.5)
+                    }
+                })
+
+                return rewardSet
+            },
+            
+            reapOption: function (thisReward, rewardObj, selectedActor) {
+                MUI("deprohibit")
+                rewardObj.onPick(selectedActor)
+            }
+        },
+
+        // yet another meta reward type
+        // this is just for gamemode selection
+        gamemode: {
+            slug: "gamemode",
+            name: "FRAME SHIFT",
+            description: "'select a gamemode'",
+            help: "'alters the rules of the dream'",
+            baseWeight: 0, 
+
+            getOptions: function (thisReward) {
+                let rewardSet = []
+                
+                let gamemodes = Object.entries(CrittaMap.GAMEMODES)
+                gamemodes.forEach(([modeSlug, mode])=>{
+                    if(shouldItShow(mode)) rewardSet.push({
+                        name: mode.name,
+                        description: mode.help,
+                        quantity: 1,
+                        displayType: "image",
+                        image: mode.image || "/img/sprites/combat/passives/hunger.gif",
+                        component: mode.component || "intrusive",
+                        mode
+                    })
+                })
+
+                return rewardSet
+            },
+            
+            reapOption: function (thisReward, rewardObj, selectedActor) {
+                if(rewardObj.mode.slug == "base") return; // this is mostly the decline option
+
+                rewardObj.mode.setExec()
+                play("elevator", 0.75)
+                env.crittaMap.gamemodeSelect.remove()
+            }
+        },
     }
 
     //initializer and adder for some rewards
-    static safeAdd(pool, name, value) { if(pool[name]) pool[name] += value; else pool[name] = value }
+    static safeAdd(pool, name, value) { 
+        if(pool[name]) pool[name] += value; else pool[name] = value 
+        if(CrittaFlashSale.flashSaleScreens) CrittaFlashSale.refreshAll()
+    }
+
+    static STRINGS = {
+        fatedHelp: `\n\n<bst-col>shells can only have one fated impulse</bst-col>`,
+        actionHelp: `\n\n<bst-col>shells can only have one action impulse</bst-col>`,
+    }
 }
-customElements.define('critta-reward', CrittaReward);
+customElements.define('critta-reward', CrittaReward)
+
+
+// ing update - new 'ON DA MENU' trade system in favor of the overly involved dialogue or some full-fledged shop system
+class CrittaFlashSale extends HTMLElement {
+    //we out here abusing semantic tags
+    static TEMPLATE = () => `
+        <header>
+            <h1 definition="ANALYSIS::'new offer after every node';'u may lock it if u want ,'^)'">DA MENU</h1>
+        </header>
+
+        <section class="flashsale-offering">
+            <button class="flashsale-reroll" intent="reroll"><span class="flashsale-reroll-title">REROLL<br>SFER::2</span></button>
+            <section class="flashsale-banner">
+                <figure>
+                    <img class="flashsale-image" src="/img/konstrukttiny.gif"></img>
+                </figure>            
+                <h3><bst-col>${check("PAGE!!dream") ? "GELI DELI" : "BSTRD BARGAIN"}</bst-col></h3>
+            </section>
+            <figcaption>
+                <article><p class="bastard-font bastard-color" style="font-size: 2em;">NEW OFFER EACH FIGHT >%^)</p></article>
+                <aside></aside>
+            </figcaption>
+        </section>
+
+        <main>
+            <button definition="ANALYSIS::'pay specified number of humor'" class="flashsale-button flashsale-basebutton" disabled intent="humor" amt="0" component="">humor</button>
+            <button definition="ANALYSIS::'toggle lock';'prevents reroll of offering after fights'" class="flashsale-button flashsale-lock" disabled intent="lock" amt="0" component="">lock</button>
+            <button definition="ANALYSIS::'pay specified number of sfer'" class="flashsale-button flashsale-basebutton" disabled intent="sfer" amt="0">sfer</button>
+        </main>
+    `
+
+    constructor() {
+        super()
+        // no need for GX fix because all screens have shared global state
+        
+        this.addEventListener("click", this.clickEvent.bind(this))
+        //todo: event listener for corruChanged to see if you have enough components/items
+        this.innerHTML = CrittaFlashSale.TEMPLATE()
+        this.figureEl = this.querySelector('section figure')
+        this.imageEl = this.figureEl.querySelector('img')
+        this.titleEl = this.querySelector('section h3')
+        this.captionContainerEl = this.querySelector('section figcaption')
+        this.descriptionEl = this.captionContainerEl.querySelector('article')
+        this.truncatedDescriptionEl = this.captionContainerEl.querySelector('aside')
+        this.buttonHumor = this.querySelector('button[intent="humor"]')
+        this.buttonLock = this.querySelector('button[intent="lock"]')
+        this.buttonSfer = this.querySelector('button[intent="sfer"]')
+        this.buttonReroll = this.querySelector('button[intent="reroll"]')
+        CrittaFlashSale.locked = CrittaFlashSale.locked || false
+
+        if(!CrittaFlashSale.flashSaleScreens) CrittaFlashSale.flashSaleScreens = []
+        CrittaFlashSale.flashSaleScreens.push(this)
+        //we reroll only via node success, you don't start with anything on this screen except the base template
+        this.refresh()
+
+        if(!CrittaFlashSale.tracking) { // could unhook this but navigation from this page deletes everything so w/e
+            document.addEventListener('corru_changed', CrittaFlashSale.changeTracker)
+        }
+    }
+
+    clickEvent(event) {
+        //detects if you're clicking a button with intent="humor", intent="lock", or intent="sfer"
+        let el = event.target
+        if(!el.hasAttribute('intent') || el.disabled) return;
+
+        let intent = el.getAttribute('intent')
+        if(!intent) return;
+
+        switch(intent) {
+            case "humor":
+                play('muiClick')
+                CrittaFlashSale.buy('humor')
+            break
+            
+            case "lock":
+                play('muiClick')
+                CrittaFlashSale.toggleLock()
+            break
+            
+            case "sfer":
+                play('muiClick')
+                CrittaFlashSale.buy('sfer')
+            break
+            
+            case "reroll":
+                play("muiToggle", 2)
+                CrittaFlashSale.buy('reroll', this.buttonReroll)
+            break
+        }
+    }
+
+    //refreshes interface according to current offering. also used to see if you can afford whatever's up after changes
+    refresh() {
+        if(!CrittaFlashSale.offering) return;
+
+        //info updates
+        let offering = CrittaFlashSale.offering
+        let component = offering.component ? offering.component : ""
+        this.setAttribute("component", component)
+        this.imageEl.src = offering.img
+        this.imageEl.setAttribute("type", offering.type)
+
+        this.titleEl.innerText = offering.specialTitle || offering.infoObject.name
+        this.titleEl.setAttribute("type", offering.type)
+
+        let description // prefers to pick and display these in order: status definition, or .help, or .description
+        if(offering.specialDescription) {
+            description = `<center>${offering.specialDescription}</center>`
+            this.truncatedDescriptionEl.innerHTML = ``
+            this.captionContainerEl.classList.remove("has-status")
+        } else if(offering.status) {
+            description = definitionRender({getAttribute: () => `STATUS++${offering.status.slug}`}, {returnHTML: true})
+            this.truncatedDescriptionEl.innerHTML = `<span class="neutral-color" definition="STATUS++${offering.status.slug}">EFFECT::<span class="bright-color" style="pointer-events: none;">${offering.status.name}</span></span>`
+            this.captionContainerEl.classList.add("has-status")
+        } else if(offering.infoObject) {
+            description = typeof offering.infoObject.help == "function" ? offering.infoObject.help() : offering.infoObject.help
+            description = description || offering.infoObject.description // some items without statuses will have this
+
+            description = `<p>${description}</p>`
+            this.truncatedDescriptionEl.innerHTML = ``
+            this.captionContainerEl.classList.remove("has-status")
+        }
+        this.descriptionEl.innerHTML = description
+
+        //cost button updates
+        let humorTotals = CrittaMenu.getTotals()
+        this.buttonHumor.setAttribute("amt", offering.humorCost)
+        this.buttonHumor.innerText = `${offering.humorType}::${offering.humorCost}`
+        this.buttonHumor.disabled = (humorTotals[offering.humorType].available) < offering.humorCost
+        this.buttonHumor.setAttribute("component", offering.humorType || "")
+        if(this.buttonHumor.disabled) {
+            this.buttonHumor.classList.add("flashsale-unaffordable")
+            this.buttonHumor.classList.remove("flashsale-affordable")
+        } else {
+            this.buttonHumor.classList.remove("flashsale-unaffordable")
+            this.buttonHumor.classList.add("flashsale-affordable")
+        }
+
+        this.buttonLock.innerText = CrittaFlashSale.locked ? "UNLOCK" : "LOCK"
+        this.buttonLock.classList.toggle("locked", CrittaFlashSale.locked)
+        this.buttonLock.disabled = false // you can always toggle lock but it starts disabled
+
+        this.buttonSfer.setAttribute("amt", offering.sferCost)
+        this.buttonSfer.innerText = `sfer::${offering.sferCost}`
+        this.buttonSfer.disabled = (checkItem("sfer_cube") < offering.sferCost)
+        if(this.buttonSfer.disabled) {
+            this.buttonSfer.classList.add("flashsale-unaffordable")
+            this.buttonSfer.classList.remove("flashsale-affordable")
+        } else {
+            this.buttonSfer.classList.remove("flashsale-unaffordable")
+            this.buttonSfer.classList.add("flashsale-affordable")
+        }
+
+        this.buttonReroll.disabled = CrittaFlashSale.locked || (checkItem("sfer_cube") < 2)
+        if(this.buttonReroll.disabled) {
+            this.buttonReroll.classList.remove("flashsale-affordable")
+        } else {
+            this.buttonReroll.classList.add("flashsale-affordable")
+        }
+    }
+
+    static changeTracker(ev) {
+        if(ev.detail.key.includes('ITEM!!')) CrittaFlashSale.refreshAll()
+    }
+
+    static refreshAll() {
+        if(!CrittaFlashSale.flashSaleScreens) return;
+        for(const screen of CrittaFlashSale.flashSaleScreens) screen.refresh()
+    }
+
+    //selects something new from possible options
+    //offerings are stored on a global level so we can have multiple synchronized flashsale screens
+    static reroll(force) {
+        if(CrittaFlashSale.locked && !force) return;
+
+        //maybe todo - can use type to add special weight conditions with revisions or something
+        CrittaFlashSale.possibleOfferings = Object.entries(CrittaFlashSale.OFFERINGS).map(([type, data]) => [data, (typeof data.baseWeight == "undefined" ? 0 : data.baseWeight)])
+
+        //filter based on minimum tension
+        CrittaFlashSale.possibleOfferings = CrittaFlashSale.possibleOfferings.filter(([data]) => {
+            if(typeof data.minimumTension == "number") return env.crittaMap.tension >= data.minimumTension;
+            return true;
+        })
+        
+        if(CrittaFlashSale.offeringGroup) CrittaFlashSale.possibleOfferings = CrittaFlashSale.possibleOfferings.filter(([data]) => data !== CrittaFlashSale.offeringGroup)
+        CrittaFlashSale.offeringGroup = weightRand(CrittaFlashSale.possibleOfferings)
+        CrittaFlashSale.offering = CrittaFlashSale.offeringGroup.getOffering()
+
+        CrittaFlashSale.toggleLock(false) //simultaneously unlocks after buying and refreshes all
+    }
+
+    //prevents rerolling except by force
+    static toggleLock(state) {
+        CrittaFlashSale.locked = typeof state == "boolean" ? state : !CrittaFlashSale.locked
+        CrittaFlashSale.refreshAll()
+    }
+
+    //this is only ever called if you can already afford stuff, so we don't need to do checks
+    static buy(method, element) {
+        switch(method) {
+            case "humor":
+                CrittaReward.safeAdd(page.flags.components, CrittaFlashSale.offering.humorType, -CrittaFlashSale.offering.humorCost)    
+            break
+
+            case "sfer":
+                removeItem("sfer_cube", CrittaFlashSale.offering.sferCost)
+            break
+
+            case "reroll":
+                removeItem("sfer_cube", 2)
+                play('muiClick')
+                element.classList.add('flashsale-rerolling')
+                setTimeout(() => {
+                    element.classList.remove('flashsale-rerolling')
+                }, 400)
+                CrittaFlashSale.reroll(true)
+                chatter({actor: 'plainsys', text: `consumed 2 sfer cube for reroll`, readout: false})
+                return; // just a reroll!
+            break
+        }
+
+        play('muiClick')
+        CrittaFlashSale.offeringGroup.reapExec(CrittaFlashSale.offering)
+        CrittaFlashSale.reroll(true)
+    }
+
+    //planned offerings are - specific items (weird ones), specific impulses (weird ones), impulse cache, fish spot (rare)
+    static OFFERINGS = {
+        specificItem: {
+            slug: "specificItem",
+            baseWeight: 1,
+            minimumTension: 0,
+            possibleItems: [
+                { slug: "eq_rot", quantity: 1, component: "rot", humorCost: 2, sferCost: 4 },
+                { slug: "eq_translator", quantity: 1, component: "light", humorCost: 2, sferCost: 4 },
+                { slug: "eq_rifle", quantity: 1, component: "rot", humorCost: 4, sferCost: 8 } // expensive as fuck because this is free plan/enact more or less
+            ], //mainly for either weird ones or early access
+
+            getOffering: function () {
+                /* 
+                    { // rewardObj schema
+                        img,
+                        type, (string of offering type, maybe used for styling)
+                        quantity, (if applicable)
+                        infoObject (anything that has "name", and "description" or "help", so we don't have to define more strings),
+                        status, // will display status definition instead of .help/.desc if provided
+                        humorCost,
+                        humorType,
+                        sferCost
+                    }
+                */
+
+                let itemSelect = this.possibleItems.sample()
+                let item = env.ITEM_LIST[itemSelect.slug]
+
+                return { // rewardObj schema
+                    img: item.image,
+                    type: "item",
+                    component: itemSelect.component,
+                    infoObject: item,
+                    status: item.type == "equipment" ? env.STATUS_EFFECTS[item.alterations.find(alt=>alt[0]=="STATUS")[1]] : false,
+                    sferCost: itemSelect.sferCost || 2,
+                    humorCost: itemSelect.humorCost || 1,
+                    humorType: itemSelect.humorTypes ? itemSelect.humorTypes.sample() : ["claws", "bone", "ichor", "light", "eyes"].sample(),
+                    quantity: itemSelect.quantity || 1,
+                }
+            },
+
+            //reapExec is post paying, so it's just delivery
+            reapExec: function(rewardObj) {
+                console.log('should get item from', rewardObj)
+
+                addItem(rewardObj.infoObject.slug, rewardObj.quantity || 1)
+                chatter({actor: 'plainsys', text: `retrieved resource ${rewardObj.quantity ? rewardObj.quantity + "::" : ""}${rewardObj.infoObject.name.toUpperCase()}`, readout: true})
+            },
+        },
+
+        specificImpulse: {
+            slug: "specificImpulse",
+            baseWeight: 1,
+            declineValue: 1,
+            minimumTension: 0,
+            ignoresSferBonus: true,
+            possibleImpulses: [
+                { slug: "daemon_rot", humorCost: 3, sferCost: 4},
+                { slug: "daemon_bomb", humorCost: 3, sferCost: 4},
+                
+                { slug: "light_laughterhouse", humorCost: 2, sferCost: 3, humorTypes: ["light", "claws", "eyes"]},
+                { slug: "light_humorist", humorCost: 2, sferCost: 3 },
+
+                // action impulses
+                { slug: "retaliation", humorCost: 2, sferCost: 3, humorTypes: ["bone"], minimumTension: 0,},
+                { slug: "ichor_last_stand", humorCost: 2, sferCost: 3, humorTypes: ["ichor"], minimumTension: 0,},
+                { slug: "impatient", humorCost: 2, sferCost: 3, humorTypes: ["claws"], minimumTension: 0,},
+                { slug: "active_support", humorCost: 2, sferCost: 3, humorTypes: ["eyes"], minimumTension: 0,},
+                { slug: "visionary", humorCost: 2, sferCost: 3, humorTypes: ["light"], minimumTension: 0,},
+
+                // fates
+                { slug: "fated_bone", humorCost: 4, sferCost: 6, humorTypes: ["bone"], minimumTension: 0,},
+                { slug: "fated_ichor", humorCost: 4, sferCost: 6, humorTypes: ["ichor"], minimumTension: 0,},
+                { slug: "fated_claws", humorCost: 4, sferCost: 6, humorTypes: ["claws"], minimumTension: 0,},
+                { slug: "fated_eyes", humorCost: 4, sferCost: 6, humorTypes: ["eyes"], minimumTension: 0,},
+                { slug: "fated_light", humorCost: 4, sferCost: 6, humorTypes: ["light"], minimumTension: 0,},
+                
+            ],  //mainly for either weird ones or early access to actions and fates
+
+            getOffering: function () {
+                // filter out any impulses that every shell already has
+                let availableImpulses = this.possibleImpulses.filter(impulseSelect => {
+                    return !page.party.every(m=>m.alterations ? m.alterations.some(alteration => alteration[1] == impulseSelect.slug && alteration[2] == "IMPULSE"): false)
+                })
+
+                // also check against minimum tension if it exists
+                availableImpulses = availableImpulses.filter(impulseSelect => {
+                    if(typeof impulseSelect.minimumTension == "number") return env.crittaMap.tension >= impulseSelect.minimumTension;
+                    return true;
+                })
+
+                if(availableImpulses.length == 0) {
+                    //all specific impulses are taken, fallback to impulse cache
+                    return CrittaFlashSale.OFFERINGS.impulseCache.getOffering()
+                }
+
+                let impulseSelect = availableImpulses.sample()
+                let impulse = env.STATUS_EFFECTS[impulseSelect.slug]
+
+                return {
+                    img: impulse.icon,
+                    type: "impulse",
+                    component: impulse?.impulse?.component,
+                    infoObject: impulse,
+                    status: impulse,
+                    sferCost: impulseSelect.sferCost || 2,
+                    humorCost: impulseSelect.humorCost || 1,
+                    humorType: impulseSelect.humorTypes ? impulseSelect.humorTypes.sample() : ["claws", "bone", "ichor", "light", "eyes"].sample()
+                }
+            },
+
+            reapExec: function(rewardObj) {
+                console.log('should get impulse from', rewardObj)
+                let id = `reward${env.crittaCount++}`
+                content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" specialprice="1" nosferbonus class="pre-show" type="specificImpulse" impulse="${rewardObj.infoObject.slug}"></critta-reward>`)
+                let rewardEl = document.getElementById(id)
+                setTimeout(() => rewardEl.activate(), 100)
+            },
+        },
+
+        impulseCache: { // specifically gives impulses ONLY from the component shown
+            slug: "impulseCache",
+            baseWeight: 0.75,
+            minimumTension: 0,
+
+            getOffering: function () {
+                let component = ["claws", "bone", "ichor", "light", "eyes"].sample()
+
+                return {
+                    img: `/img/sprites/combat/statuses/lootbox_frame.gif`,
+                    type: "cache",
+                    component: component,
+                    infoObject: CrittaReward.REWARDTYPES.impulse,
+                    specialTitle: CrittaReward.REWARDTYPES.impulse.name.split(" ")[0],
+                    specialDescription: `'grants permanent passive';\n'exclusively offers <span style="text-shadow: 1px 1px var(--${env.COMBAT_COMPONENTS[component].color || "bright"}-color)">${component.toUpperCase()}</span> impulses'`,
+                    sferCost: 3,
+                    humorCost: 2,
+                    humorType: component
+                }
+            },
+
+            reapExec: function(rewardObj) {
+                console.log('should get impulse cache from', rewardObj)
+                let id = `reward${env.crittaCount++}`
+                content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" specialprice="1"nosferbonus class="pre-show" type="impulse" difficulty="2" componentexclusive="true" component="${rewardObj.component}"></critta-reward>`)
+                let rewardEl = document.getElementById(id)
+                setTimeout(() => rewardEl.activate(), 100)
+            },
+        },
+
+        itemCache: {
+            slug: "itemCache",
+            baseWeight: 0.75,
+            minimumTension: 0,
+
+            getOffering: function () {
+                let component = ["claws", "bone", "ichor", "light", "eyes"].sample()
+
+                return {
+                    img: `/img/sprites/combat/statuses/lootbox_corru.gif`,
+                    type: "cache",
+                    component: "light",
+                    infoObject: CrittaReward.REWARDTYPES.item,
+                    specialTitle: CrittaReward.REWARDTYPES.item.name.split(" ")[0],
+                    specialDescription: `'grants powerful equipment'`,
+                    sferCost: 4,
+                    humorCost: 2,
+                    humorType: component
+                }
+            },
+
+            reapExec: function(rewardObj) {
+                console.log('should get item cache from', rewardObj)
+                let id = `reward${env.crittaCount++}`
+                content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" class="pre-show" specialprice="1" nosferbonus type="item" difficulty="2" component="${rewardObj.component}"></critta-reward>`)
+                let rewardEl = document.getElementById(id)
+                setTimeout(() => rewardEl.activate(), 100)
+            },
+        },
+
+        fishingHole: {
+            slug: "fishingHole",
+            baseWeight: 0.3,
+            minimumTension: 0,
+
+            getOffering: function () {
+                let component = ["claws", "bone", "ichor", "light", "eyes"].sample()
+
+                return {
+                    img: `/img/sprites/combat/items/lonefish.gif`,
+                    type: "fish",
+                    component: "rot",
+                    specialTitle: "fishing hole",
+                    specialDescription: `'fishy time'`,
+                    sferCost: 4,
+                    humorCost: 2,
+                    humorType: component
+                }
+            },
+
+            reapExec: function(rewardObj) {
+                [... content.querySelectorAll(".fishy")].sample().classList.add("active")
+                if(Math.random() < 0.3) [... content.querySelectorAll(".fishy")].sample().classList.add("active") // chance for more than one
+                chatter({actor: 'sourceless', text: `the water around the vessel stirs...`, readout: true, sfx: false})
+                setTimeout(()=>play("talkchoir", 0.5), 2000)
+            },
+        },
+    }
+}
+customElements.define('critta-flashsale', CrittaFlashSale)
 
 class CrittaMenu extends HTMLElement {
     constructor() {
@@ -1823,8 +3224,8 @@ class CrittaMenu extends HTMLElement {
 
         if(this.selectedMember) {
             // if there's not yet a current entity copy, or it's different from the actual selection, update the copy
-            if(!this.editingMember || this.editingMember?.slug != this.selectedMember) { 
-                console.log('redefining editingMember', this.editingMember?.slug, this.selectedMember )
+            if(!this.editingMember || this.editingMember?.partySlug != this.selectedMember) { 
+                console.log('redefining editingMember', this.editingMember?.partySlug, this.selectedMember )
                 this.resetEditingMember()
             }
 
@@ -1891,7 +3292,7 @@ class CrittaMenu extends HTMLElement {
 
             // display actions
             let actionsEl = this.info.querySelector(".partymember-actions")
-            actionsEl.innerHTML = "<h2>Actions</h2>" + generatePartyActions(this.editingMember)
+            actionsEl.innerHTML = "<h2>Actions</h2>" + generatePartyActions(this.editingMember, {createDryReference: true})
 
             //mark unsaved changes if necessary
             this.notifyUnsaved()
@@ -1928,6 +3329,9 @@ class CrittaMenu extends HTMLElement {
                 }, anim == "omega-saved" ? 200 : 100);
                 this.resetAnim = false
             }
+
+            // in case any humors are freed
+            if(CrittaFlashSale) CrittaFlashSale.refreshAll()
         }
     }
 
@@ -2046,16 +3450,21 @@ class CrittaMenu extends HTMLElement {
 
                 case "save":
                     // update member
-                    let i = page.party.findIndex(member => member.slug == this.editingMember.slug)
-                    if(i >= 0) page.party[i] = this.editingMember
+                    let i = page.party.findIndex(member => member.slug == this.editingMember.partySlug)
+                    if(i >= 0) {
+                        let oldMemberVersion = page.party[i]
+                        this.editingMember.equipment = oldMemberVersion.equipment // item slots are only in the party menu, so if you change them while editing it should use the 'old member'
+                        this.editingMember.slug = this.editingMember.partySlug // no longer 'genericediting'
+                        page.party[i] = this.editingMember
+                    }
                     else throw 'party member not found!!'
 
                     this.editingMember.justSaved = "just-saved"
 
                     //apply pending augment changes
                     if(this.editingMember.augmentChanges) {
-                        for (const augmentSlug of this.editingMember.augmentChanges.add) addAugment(this.editingMember.slug, augmentSlug)
-                        for (const augmentSlug of this.editingMember.augmentChanges.remove) removeAugment(this.editingMember.slug, augmentSlug)
+                        for (const augmentSlug of this.editingMember.augmentChanges.add) addAugment(this.editingMember.partySlug, augmentSlug)
+                        for (const augmentSlug of this.editingMember.augmentChanges.remove) removeAugment(this.editingMember.partySlug, augmentSlug)
 
                         delete this.editingMember.augmentChanges
                     }
@@ -2254,6 +3663,10 @@ class CrittaMenu extends HTMLElement {
 
     resetEditingMember() {
         this.editingMember = JSON.parse(JSON.stringify(page.party.find(member=>member.slug == this.selectedMember)))
+
+        // for dry generation purposes, to be distinct from the party menu
+        this.editingMember.partySlug = this.selectedMember
+        this.editingMember.slug = "genericediting" 
     }
 
     // marks an element and clears previous selection
@@ -2374,11 +3787,15 @@ class CrittaMenu extends HTMLElement {
                 ${(()=>{
                     let componentAugments = ""
                     
+                    //ing update - augments will either be a status that explains what it does, OR just the first action it grants
+                    //anything more complex than replacing one action should prooobably have a status as its first thing to explain it, even if it's an invisible no-effect status just for the description
+                    //this won't happen in my current plans though that's just a note for modders 
                     augmentList.forEach(augmentData=>{
                         showAnything = true
                         let augment = augmentData.augment
+                        let augmentDefinition = augment.alterations[0][0] == "STATUS" ? `STATUS++${augment.alterations[0][1]}` : `ACTION++${augment.alterations[0][1]}`
                         componentAugments += `<div class="augment-option noclosemenu ${(!check("PAGE!!usedAugment") && augmentData.affordable) ? "notinteractedyet" : ""}"
-                            member="${editingMember.slug}"
+                            member="${editingMember.partySlug}"
                             actor="${editingMember.combatActor}"
                             slug="${augment.slug}"
                             inuse="${augmentData.inUse}"
@@ -2387,12 +3804,13 @@ class CrittaMenu extends HTMLElement {
                             cost="${augment.cost}"
                             parent-component="${componentName}"
                             style="--img: url(${augment.image || "/img/sprites/combat/items/aimacyst.gif"})"
-                            definition="${augmentData.unlocked ? 
-                                `AUGMENT::'${augment.name}'\nCOST::${augment.cost} ${componentName.toUpperCase()}${augmentData.affordable || augmentData.inUse ? `${augmentData.inUse ? " (click to remove)" : ``}` : " (cannot afford)"}\nINHERITED CONTEXT::\n\t${augment.description.replaceAll(';', '\n\t')}`
+                            definition="${augmentDefinition}"
+                            fromActor="genericediting"
+                            extraDefinitionNote="${augmentData.unlocked ? 
+                                `<span class='augnote'><n-col>AUGMENT::</n-col>'${augment.name}'\n<n-col>COST::</n-col>${augment.cost} ${componentName.toUpperCase()}${augmentData.affordable || augmentData.inUse ? `${augmentData.inUse ? " <n-col>(click to remove)</n-col>" : ``}` : " <o-col>(cannot afford)</o-col>"}\n<n-col>INFO::</n-col>${augment.description}</span>`
                                 : 
-                                `AUGMENT::UNKNOWN\nNOTICE::'obtain data source to utilize'`
-                            }
-                            "
+                                `<span class='augnote'><n-col>AUGMENT::</n-col>UNKNOWN\n<n-col>NOTICE::</n-col>'obtain data source to utilize'</span>`
+                            }"
                         >
                         </div>`
                     })
@@ -2442,6 +3860,7 @@ class CrittaMenu extends HTMLElement {
                         type="action"
                         override="${effectiveOverride}"
                         definition="ACTION++${actionObj.slug}"
+                        fromactor="genericediting"
                     >${actionObj.name}</div>
                 `
             }
@@ -2565,7 +3984,7 @@ class CrittaMenu extends HTMLElement {
 
                 default:
                     effectiveObj = env.ACTIONS[component.alterations[0][1]]
-                    nameHTML = `<span class="name component-ability" slot="${slotName}" definition="ACTION++${effectiveObj.slug}">${effectiveObj.name}</span>`
+                    nameHTML = `<span class="name component-ability" slot="${slotName}" definition="ACTION++${effectiveObj.slug}" fromactor="genericediting">${effectiveObj.name}</span>`
             }
         } else {
             nameHTML = `<span class="name component-stats" definition="EFFECT::'stat benefit'">PASSIVE</span>`
@@ -2617,13 +4036,12 @@ class CrittaMenu extends HTMLElement {
         let nameLength = rand(3, 6)
         let name = ""
         for (let i = 0; i < nameLength; i++) {
-            name += this.incoherentLibrary.sample()
+            name += env.incoherentLibrary.sample()
         }
         return name
     }
 
-    //identity pools - the incoherent library becomes an array that's randomly selected from to make incoherent names
-    static incoherentLibrary = [... "wµ¬îV°0KöÂFå÷ú*¼iÿfÝ~üxÛ4BœpºQôuæÕ¡ÔUCÅïSáMÓ”ƒûTÉÊÎý¯Ÿaéõž-&5«¶¾ßì6¢Ëlã‰çÄ£+¤yàdÙmzItj®½ðŠYÜ#±b©íLÚÆÐš„"]
+    //identity pools
     static possibleShellEyes = [ // shell eyes are both internal (i.e. jakkrabbit) and external corru enjoyer submissions (to be credited on /credits/)
         "/img/sprites/randobesk/signatures/jakkrabbitart1.gif",
         "/img/sprites/randobesk/signatures/jakkrabbitart2.gif",

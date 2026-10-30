@@ -16,13 +16,13 @@
 <meta name="description" content="......">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://corru.observer/local/uncosm/cavik/">
+<meta property="og:url" content="https://corru.observer/local/uncosm/call/">
 <meta property="og:title" content="..__UNKNOWN__..">
 <meta property="og:description" content="......">
 <meta property="og:image" content="https://corru.observer/img/socials/where.gif">
 
 <meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://corru.observer/local/uncosm/cavik/">
+<meta property="twitter:url" content="https://corru.observer/local/uncosm/call/">
 <meta property="twitter:title" content="..__UNKNOWN__..">
 <meta property="twitter:description" content="......">
 <meta property="twitter:image" content="https://corru.observer/img/socials/where.gif">
@@ -408,146 +408,18 @@
 	
 	<div id="content">
 		<div class="render-filter"></div>
-		<div class="depthbox">
-    <div class="depthlimit" style="--depth: 115">
-        <div class="depths">
-            <div class="oltaznibanner"></div>
-            <div class="dread"></div>
-            <div class="he">
-                <img src="/img/sprites/obesk/cavik/full/cavikboots.gif" />
-                <img src="/img/sprites/obesk/cavik/full/cavikabdomen.gif" />
-                <img src="/img/sprites/obesk/cavik/full/cavikhands.gif" />
-                <img src="/img/sprites/obesk/cavik/full/cavikponcho.gif" />
-                <img src="/img/sprites/obesk/cavik/full/cavikhair.gif" />
-                <img class="mask1" src="/img/sprites/obesk/cavik/full/cavikmasksecret.gif" />
-                <img class="mask2" src="/img/sprites/obesk/cavik/full/cavikmasksecret2.gif" />
-                <img class="mask3" src="/img/sprites/obesk/cavik/full/cavikmask.gif" />
-                <div class="target" entity="cavik"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-.depthbox {
-    width: 100%;
-    max-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.in-dialogue .depthbox {
-    overflow-y: hidden;
-}
-
-.depthlimit {
-    max-height: calc(var(--depth) * 1vh);
-    width: 100%;
-    overflow-x: hidden;
-    overflow-y: hidden;
-}
-
-.depths {
-    position: relative;
-    background: url(/img/textures/ultradarkclouds.gif);
-    width: 100%;
-    height: 2500vh;
-}
-
-.oltaznibanner, .dread {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    pointer-events: none;
-}
-
-.oltaznibanner::after, .oltaznibanner::before {
+		<style>
+#content::before {
     content: "";
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url(/img/sprites/obesk/cavik/full/oltazni1.gif);
-    animation: oltdrift 20s ease-in infinite;
-    background-position-x: left;
-    transform-origin: center;
-    pointer-events: none;
+    background: url(/img/textures/static.gif);
+    background-size: auto;
 }
 
-.oltaznibanner::before {
-    background: url(/img/sprites/obesk/cavik/full/oltazni2.gif);
-    background-position-x: right;
-    animation: oltdrift 20s ease-in-out infinite;
-}
-
-@keyframes oltdrift {
-    0% { background-position-y: 0%; background-position-x: 0%}
-    50% { background-position-y: 668px; background-position-x: 100%}
-    100% { background-position-y: 1336px; background-position-x: 0%;}
-}
-
-.dread {
-    background-image: url(/img/sprites/obesk/cavik/full/dread.gif), linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%);
-    background-position: bottom center;
-    background-repeat: no-repeat;
-    background-size: auto 100%;
-    z-index: 2;
-}
-
-.he {
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80vh;
-    z-index: 2;
-    filter: drop-shadow(0px 1px var(--obesk-color));
-}
-
-.he > img {
-    position: absolute;
-    height: 80vh;
-}
-
-.he .target {
-    top: unset;
-    left: unset;
-    width: 25%;
-}
-
-.he.dmg1 .mask2, .he.dmg2 .mask1 {
-    display: block;
-}
-
-.he .mask2, .he .mask1,
-.he.dmg1 .mask3, .he.dmg2 .mask2, .he.dmg2 .mask3 {
-    display: none;
-}
-
-.he.dmg2 {
-    filter: grayscale(1) brightness(2) contrast(2);
-}
-
-.quiet .oltaznibanner, .quiet .he > img:not(.mask1), .quiet .he .target {
-    display: none;
-}
-
-.beaconed .he {
-    display: none;
-}
-
-.quiet .mask1 {
-    display: block;
-    transform: rotate(45deg) translate(80%, 70%);
-}
-
-.quiet .he {
-    filter: unset;
-}
-
-body.mask-unity .quiet .he .target {
-    display: flex;
+body.in-menu #content {
+    transform: unset !important;
 }
 </style>
 
@@ -580,29 +452,17 @@ body.mask-unity .quiet .he .target {
 				
 				bgm: new Howl({
 					onload: function () {page.howls.push(this)},
-					src: ['/audio/television.ogg'],
+					src: ['/audio/hub.ogg'],
 					preload: true,
 					loop: true,
 					
-					 rate: 0.7, 
+					 rate: 0.4, 
 					sprite: {
-						__default: [50, 81450, true]
+						__default: [50, 153000, true]
 					}
 				}),
 				
 
-				
-				mothComment: ()=>{
-    let moth = "don't look at me lol"
-    
-    if(check("secavik", "beaconed")) moth = "that unity thing actually worked on this? it didn't even seem like there was anything left... weird"
-    else if(check("secavik")) moth = "looks like it lost coherence once you pulled that memory from it"
-
-    if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
-
-    return moth
-}
-,
 				
 
 				
@@ -797,7 +657,9 @@ body.mask-unity .quiet .he .target {
 					
 						
 						
-							env.definitions[`vaznian`] = `'ethnic implication';'origination from continent';'vazni'`;
+							
+							
+							env.definitions[`θ█████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
 						
@@ -807,214 +669,101 @@ body.mask-unity .quiet .he .target {
 							env.definitions[`θ██████`] = { type: `ERROR`, text: `'missing entity'`};
 						
 					
+						
+						
+							env.definitions[`oltazni`] = `'home';'vaznian cave-city'`;
+						
+					
+						
+						
+							
+							
+							env.definitions[`dullvoice`] = { type: `NOTE`, text: `'partial translation';'inherited description-generated noun'`};
+						
+					
 					
 					//dynamically inserted
 					
-					env.secavik = {
-    scroll: function(){
-        if(env.currentDialogue.active) return
-        let depthBox = document.querySelector('.depthbox')
-        var rate = 5
-        var threshold = 0.96
-
-        let volRatio = Math.clamp((depthBox.scrollTop - (2 * window.outerHeight)) / (50 * window.outerHeight), 0, 1)
-        let bgmVol = Math.clamp((-1 * volRatio * 1.5) + 1, 0, 0.7)
-        page.bgm.rate(bgmVol)
-        
-        let scrollTopMax = depthBox.scrollHeight - depthBox.offsetHeight
-        if(depthBox.scrollTop > (scrollTopMax * threshold)) {
-            let limitBox = document.querySelector('.depthlimit')
-            let depthLimit = Number(limitBox.style.getPropertyValue('--depth')) + rate
-            limitBox.style.setProperty('--depth', depthLimit) 
-        }
-    },
-
-    cavik: content.querySelector('.he'),
-    cavikDmg: (amt)=>{env.secavik.cavik.classList.add(`dmg${amt}`)},
-
-    closeout: ()=>{
-        env.secavik.cavikDmg(2);
-        page.bgm.pause();
-        cutscene(true);
-        change('secavik', true);
-
-        setTimeout(()=>{
-            play('criticalError', 0.5, 0.5)
-            readoutAdd({message: `ERROR::'infinite stream loop';'retracing';'last coherent position'`, name:"sys"})
-            cutscene(false)
-            moveTo("/local/depths/");
-        }, 10000)
-    }
-}
-
-env.dialogueActors["origin"] = {
-    type: "thoughtform portrait-contain obesk qou portrait-dark",
-    image: '/img/textures/weyetran.gif',
-    voice: ()=>play('talksignal', 2),
+					env.dialogueActors["wiser"] = {
+    type: "obesk uppercase obesk-color",
+    image: '/img/textures/disruptionM.gif',
+    voice: ()=>play('talkcore', 1.75),
     player: true
 }
 
-env.dialogueActors["cavik"] = {
-    image: "/img/sprites/obesk/cavik/portrait.gif",
-    type: "obesk qou cavik portrait-contain",
-    voice: ()=>play('talk', 1.3)
+env.dialogueActors["frenetic"] = {
+    type: "obesk uppercase friend-color",
+    image: '/img/textures/disruptionC.gif',
+    voice: ()=>play('talkcore', 2.25),
 }
 
-env.dialogueActors["c a"] = {
-    image: "/img/sprites/obesk/cavik/paintrait2.gif",
-    type: "obesk qou cavik portrait-contain",
-    voice: ()=>play('talksignal', 0.75)
-}
-
-env.dialogueActors["cv i k"] = {
-    image: "/img/sprites/obesk/cavik/paintrait.gif",
-    type: "incoherent cavik portrait-contain",
-    voice: ()=>play('talksignal', 0.75)
-}
-
-createEntity({
-    name: 'cavik',
-    hide: true,
-    type: "thoughtform qou obesk cavik",
-    image: "/img/sprites/obesk/cavik/portrait.gif",
-    noProcess: true,
-    text: `::INCOMPLETE THOUGHTFORM
-    ::EXPLICIT PURPOSE::'unspecified'
-    <span style='color: var(--friend-color)'>::RECONSTRUCTED SIGNATURE CONTEXT</span>
-    <span style='color: var(--friend-color)'>+</span>'<span definition="INHERITED CONTEXT::'ethnic implication';'origination from continent';'vazni'">vaznian</span> surrealist influence'
-    <span style='color: var(--friend-color)'>+</span>'mark of <span onmouseenter="javascript:env.secavik.cavikDmg(1);document.querySelectorAll('.message.cavik').forEach(el=>el.querySelector('img').src = '/img/sprites/obesk/cavik/paintrait.gif')" definition="INHERITED CONTEXT::'cave-city';'i want to wake up';'i want to go home'">oltazni</span>'
-    <span style='color: var(--friend-color)'>+</span>'${processDefinitionsInString("jut")} receptors, backw“—» ¯x¶›¢Ã°!
-    ::ERROR::'stream terminated';'invalERROR::IÓú=ER::W"¨úr::äÀ*^Só¬ól£«â'`,
-    actions: [
-        {
-            name: "hello?",
-            exec: ()=>{
-                startDialogue('cavik')
-            },
-            showIf: ["secavik", false]
-        },
-
-        {
-            name: "unity",
-            class: "act-ozo",
-            exec: ()=>{
-                cutscene(true);MUI('off')
-
-                env.setTimeout(()=>{
-                    play('criticalError', 1, 0.5, true)
-                    vfx({type: 'beacon', state: true})
-                    vfx({type: 'flash', state: true})
-                }, 400)
-
-                env.setTimeout(()=>{
-                    readoutAdd({message: `<p>ATTENTION::'thoughtform activity detected'::'resources removed'</p>`, name:"sys"})
-                    change("secavik", "beaconed")
-                    content.classList.add('beaconed')
-                    vfx({type: 'flash', state: false})
-                    cutscene(false)
-                }, 2000)
-
-                setTimeout(()=>{
-                    vfx({type: 'beacon', state: false})
-                }, 4000)
-            },
-            showIf: [["mask", "unity"]]
-        }
-    ]
-})
-
-env.dialogues["cavik"] = generateDialogueObject(`
+env.dialogues["call"] = generateDialogueObject(`
 start
-    self
-        hello?
-
-    sourceless
-        ...
-        ...
-    
-____SHOWIF::"embassy_d1_complete"
-    moth
-        hold on, what exactly are you looking at?
-        is this just cavik from the embassy?
-        is he doing anything?
-    
-    self
-        he's just standing there
-____SHOWIF::["embassy_d1_complete", false]
-    moth
-        hold on, what exactly are you looking at?
-        is that another obesk signature? how did you even figure this out?
-        ...is it doing anything?
-    
-    self
-        it's just standing there
-____END
-
-    sourceless
-        ...
-    
-    self
-        hello?
-        
     sys
         NOTICE::'memory stream located'
 
     sourceless
-        AFTER THE BRIGHT COUSINS STEP AWAY, I CLENCH MY CLAWS
-            EXEC::ratween(page.bgm, 0.2)
-        BEFORE HE CAN SAY ANYTHING, I GRIP CAVIK BY HIS FOREARM AND LEAD HIM DOWN THE HALL
-        PERHAPS HE ALREADY KNOWS SOMETHING IS WRONG FROM THE WAY THEY REACTED TO ME
+        ...minds continue to brush against one another through the collective,
+        mine, then hers, then mine again, shedding wordless impulses and knowledge back and forth
+        though she is far more active, sparsely allowing interjection
+        not that i mind, of course, mentally fatigued by today's instruction
 
-    cavik
-        you are scaring me!! stop!
-        what is going on?
-        why did you not tell us anything?
-        this is good, is it not??
-        it is everything we have ever worked for!
-        or--
+    frenetic
+        --you recall the great disruption some θgazes ago yes?
+        the collective and the dullvoice and the everything?
+    
+    wiser
+        disruptive especially for ukazni ozo, i imagine
+
+    frenetic
+        oh yes yes yes oh yes it was bad my whole study chamber almost detonated
+        i was designing this sustained connective pulse weapon where ummm
+        ok wait before i get into that yes the disruption
+        lots of research devices paused or broke down badly very badly
+        so much time wasted on recalibration and manual filtering uuugh hate hate hate
+        because of this new presence in the dull that is so noisy and everywhere
+        θeyes and θeyes of dull pattern training useless
+    
+    sourceless
+        i am met with the clear impulse of her stout receptors pressed against her head,
+        claws digging into her face, teeth grit, barely holding back a frustrated screech
+        of course, she is exaggerating for comedic effect, for she still holds an excited tone
+
+    frenetic
+        have you heard about what it is actually? where it is? why it is?
+
+    wiser
+        not yet, my friend
+        my work hardly concerns the dull
+        only murmurs have reached me
+
+    frenetic
+        oh oh oh oh good then i can tell you!!!!!!
+        at first we all thought someone broke the dull plane somehow hahahaa
+        it is like a loud noise i mean noise does not exist in the dull plane but you know that is easy to compare it to considering--
+        anyway most dull devices filtered it out automatically because it is a core fundamental that things that do not make sense are ignored for most devices
+        but we like that here we collect what does not make sense and so we have been looking at it constantly since it started
+        and it is still going! so loud and so strong and no sign of stopping!!!
+        still cannot make sense of it but so many new initiatives are springing up in ukazni ozo and i think one in that shore city and--
+        oh!!! θ██████ you should get one started in oltazni!!!!!
 
     sourceless
-        I GRIP HIM BY THE SHOULDERS
-        HIS RECEPTORS RECOIL, AND HE FREEZES, AS IF SPOTTED BY A PREDATOR
-        IT MUST BE SOMETHING IN MY RECEPTORS, OR MAYBE MY EYES
-        THERE CAN BE NO MISUNDERSTANDING
-
-    origin
-        cavik
-        you cannot tell anyone
-        not even our team
-        no matter what
-
+        my internal impulse to laugh is transmitted far faster than any external manifestation
+    
+    wiser
+        θ█████, i have quite enough to handle with this current clutch of vel
+        so much more distracted than any who have come before...
+        maybe when they can hold their own on the surface, i could pivot?
+        ah, perhaps with θ█████'s assistance!
+        i imagine he must be fascinated by this matter, as well
+        though it has been θeyes since i last spoke to him for longer than a moment...
+    
     sourceless
-        MY VOICE WAVERS WITH MORTAL FEAR
-
-    origin
-        understand?
-        especially not now...
-
-    cavik
-        θ██████...
-        i have never seen you like this
-        will you please tell me what is going on?
-        please
-        pleas e
-        it hurts
-            EXEC::env.secavik.cavikDmg(1)
-        hurts
-            EXEC::ratween(page.bgm, 0.1)
+        ...perhaps he will even have forgiven me by now...
     
-    c a
-        someone is there
-        i feel you
-        i cannot wake up
-        you have to end this
-        its going to start again
-        you have to end this
-        please
-    
-    cv i k
-        p  l  e a  s  e
-            EXEC::env.secavik.closeout()
+    frenetic
+        oh yes yes ok no hurry it is not going anywhere!!
+        whenever you want to start i am here i can help get you up to date and transmit listener designs and--
 
     sys
         NOTICE::'memory stream terminated'
@@ -1076,13 +825,8 @@ ____END
 
 					//dyn
 					
-					content.querySelector('.depthbox').addEventListener('scroll', env.secavik.scroll)
-content.querySelector('.depthbox').focus()
-if(check('secavik')) {
-    content.classList.add('quiet')
-    if(check('secavik') == "beaconed") content.classList.add('beaconed')
-    env.bgm.pause()
-}
+					body.classList.add('codezone')
+startDialogue("call")
 
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
@@ -1129,7 +873,7 @@ if(check('secavik')) {
 
 					//dyn
 					
-					delete env.secavik
+					body.classList.remove('codezone')
 
             		change('TEMP!!sat', true)
 					Buddy.cleanPageBuddies({removeEl: false})

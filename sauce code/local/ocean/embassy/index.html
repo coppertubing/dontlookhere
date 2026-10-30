@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,11 +407,12 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<style>
 
-@import url(/css/combat.css?1776972202354301552);
-@import url(/css/bullethell.css?1776972202354301552);
-@import url(/css/local/embassy.css?1776972202354301552);
+@import url(/css/combat.css?1791592572941837278);
+@import url(/css/bullethell.css?1791592572941837278);
+@import url(/css/local/embassy.css?1791592572941837278);
 </style>
 
 <div class="dayselect">
@@ -373,8 +434,11 @@
     </span>
 </div>
 
-<script>
-</script>
+<div class="frameshortcut">
+    <span class="framehole">
+        <div class="target always-targeted" entity="::/FRAME/"></div>
+    </span>
+</div>
 
 <div class="grid-plane">
     <div class="grid-container">
@@ -451,7 +515,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/embassy.gif",
@@ -478,6 +542,7 @@
 				
 				mothComment: ()=>{
     var moth
+
     switch(check("PAGE!!embassy_day")) {
         case 3:
             if(env.stage.name.includes("archiv") && check("embassy__d3_bstrdintro")) {
@@ -489,7 +554,7 @@
 
         case 2:
             if(check("PAGE!!cystmelted")) moth = "this is fucked up dude, imagine if you couldn't trust any of us"
-            else moth = "did she really label this memory as 'suspicion'? or was that funfriend? that's kinda ominous"
+            else moth = "did she really label this memory as \"suspicion\"? or was that funfriend? that's kinda ominous"
         break
 
         case 1:
@@ -511,13 +576,15 @@
                 moth = "if those were two of the memories she chose to store, what are these other ones??"
             } else if(check("embassy_d1_complete")) {
                 if(check("citystreet__envoychat-end")) moth = "jesus... well that first memory lines up with what akizet told gordon. but why would she go to us if they agreed to keep it quiet?"
-                else moth = "holy smokes. yeah i don't think we ever heard about this part of the call... hey--there's another memory that's been fixed, open it"
+                else moth = "holy smokes. yeah i don't think we ever heard about this part of the call. let's get into that next memory"
             } else {
                 moth = "this is the most dense thoughtform i think i've ever seen... they have such a strange way of storing data"
             }
     }
 
     if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    else if(check("PAGE!!weirdload")) moth = "looks like you wormed your way back into an inactive space... i doubt you'll get far without a recollection locus"
+
     return moth
 }
 ,
@@ -760,12 +827,27 @@
 					
 						
 						
+							env.definitions[`spireblood`] = `'viscous and resource-rich corru';'surplus quantities often stored within aqueous suspension between tendrils for both immediate supply and chamber breach protection'`;
+						
+					
+						
+						
 							env.definitions[`vazni`] = `'continent';'home';'central to inhabitable zone'`;
 						
 					
 						
 						
 							env.definitions[`vaznian`] = `'ethnic implication';'origination from continent';'vazni'`;
+						
+					
+						
+						
+							env.definitions[`guktik`] = `'social predator';'bladed arms';'cooked flesh goes well with zzoust'`;
+						
+					
+						
+						
+							env.definitions[`ekiva`] = `'continent';'second most populous';'near edge of inhabitable zone'`;
 						
 					
 						
@@ -785,7 +867,7 @@
 					
 						
 						
-							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'additional media for coaxing spireblood into faster flows';'terrestrial use only'`;
 						
 					
 						
@@ -796,6 +878,11 @@
 						
 						
 							env.definitions[`kozazni`] = `'vaznian cave-city';'home of kazki';'known for fungal farms'`;
+						
+					
+						
+						
+							env.definitions[`cavebound`] = `'individual(s) with extremely limited exposure to surface horrors';'partial translation';'inherited description-generated noun'`;
 						
 					
 						
@@ -821,6 +908,11 @@
 						
 						
 							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`vecrivi`] = `'niche maintenance tool';'assists in draining damaged equipment of inert corru'`;
 						
 					
 						
@@ -906,6 +998,26 @@
 							env.definitions[`akanivik`] = `'ethnic implication';'origination from cave-city';'akaniva'`;
 						
 					
+						
+						
+							env.definitions[`θradiant`] = `'time period';'regularly occurring luminescent flare in the eye of velzie';'indication of progression through an eye'`;
+						
+					
+						
+						
+							env.definitions[`θradiants`] = `'time period';'regularly occurring luminescent flare in the eye of velzie';'indication of progression through an eye'`;
+						
+					
+						
+						
+							env.definitions[`vel's mask`] = `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`;
+						
+					
+						
+						
+							env.definitions[`auxiliaries`] = `'extended call research team';'partial translation';'implied closest cultural equivalent'`;
+						
+					
 					
 					//dynamically inserted
 					
@@ -977,7 +1089,6 @@ groundsmindry
         ok<+>loop
             FAKEEND::(back)
 
-
 bstrd
     self
         WHAT IS THIS BSTRD THING
@@ -1025,6 +1136,8 @@ structureloop
 
 obeskloop
     RESPONSES::self
+        akizet in suspicion<+>akizet
+            SHOWIF::"embassy_d2_complete"
         kazki guns?<+>kazkiguns
             SHOWIF::"embassy__d3r2-end"
         weird looking obesk?<+>weirdlook
@@ -1103,7 +1216,7 @@ ____SHOWIF::['ep4__h2h', false]
         i mean, that's me making an assumption
         because if we knew anything, we'd probably have already connected it to the collapse somehow
         we didn't and still don't have any tools that can detect dull signals
-        but the fact we didn't know about it does at least confirm that it was a dull signal            
+        but the fact we didn't know about it does at least strongly suggest that it <em>was</em> a dull signal            
 ____END
 
     RESPONSES::self
@@ -1176,6 +1289,30 @@ otherattacks
         ok<+>collapseloop
             FAKEEND::(back)
     
+akizet
+    self
+        in the "suspicion" memory
+        akizet looks like an idiot
+        is there something i'm missing
+
+    moth
+        uhh welllll 
+        there is, SORT OF, a cultural context for that
+        it's pretty well understood that obesk are really bad liars
+        aside from this new conflict stuff,
+        everything we have on their history looks totally harmonious
+        i guess they have social parasites, but that's different
+        like, subterfuge between obesk just isn't something that happens
+        and she obviously wanted to settle things right away
+        so maybe she thought whoever it was would have been just as...
+        awkward? standoffish?
+        hard to say for sure
+        but if i sucked at lying, and i knew it,
+        that's definitely not what i would have done lol
+
+    RESPONSES::self
+        true<+>obeskloop
+            FAKEEND::(back)
 
 kazkiguns
     self
@@ -1219,7 +1356,7 @@ locked
         something to talk to funfriend about for sure
         and the last one... holy smokes
         i don't think your mindspike will even let you render it?
-        it's still busted, but i'm also reading that it has 'aggressive action'
+        it's still busted, but i'm also reading that it has "aggressive action"
         even if we get it repaired,
         your mindspike will block out combat simulations
         it's, like... a legal thing. remember that big mindsci lawsuit?
@@ -1265,7 +1402,7 @@ archives
     moth
         well, i can see from surface-level context that it's part of the groundsmindry system
             SHOWIF::[["exm|embassy|archive", false]]
-        there are apparently a lot of them, and since it uses the word 'vein'...
+        there are apparently a lot of them, and since it uses the word "vein"...
             SHOWIF::[["exm|embassy|archive", false]]
         there's probably a whole system they're connected to
             SHOWIF::[["exm|embassy|archive", false]]
@@ -1278,7 +1415,7 @@ archives
             SHOWIF::[["exm|embassy|archive", true]]
         and all of them had the obesk's data cysts loaded up in bulk amounts...
             SHOWIF::[["exm|embassy|archive", true]]
-        ...which all funnelled knowledge down to the groundsmind for 'operational omniscience'
+        ...which all funnelled knowledge down to the groundsmind for "operational omniscience"
             SHOWIF::[["exm|embassy|archive", true]]
         that's a pretty cool idea, but i can only imagine it made the collapse happen faster
             SHOWIF::[["exm|embassy|archive", true]]
@@ -1306,7 +1443,7 @@ ____SHOWIF::"ep4__entrancefinal"
 
 ____SHOWIF::["ep4__entrancefinal", false]
         nobody really knows why, that's when the obesk started closing up
-        stopped sending out visitors to cities, fbx contacts made themselves sparse...
+        stopped sending out visitors to cities, FBX contacts made themselves sparse...
         it was a whole thing
         and the ocean around the embassy hasn't really been the same since
 ____END
@@ -1365,7 +1502,7 @@ groundsmind
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -1447,14 +1584,61 @@ if(!check('embassy__quality-end')) {
     }, 500)
 }
 
-if(check('gakpause')) {
-    content.classList.add('gakpause')
+if(check('gakpause')) content.classList.add('gakpause');
+
+if(!check('e3a2__geliintro') || check("e3a2__escapewin")) { 
+    // available just for pre-freeplay unlock
+    content.querySelector(".frameshortcut").remove()
 }
 
 content.classList.add('show-vn')
-
 new Lettering('#content .dayname').letters()
 document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.animationDelay = `${-1 * (i * 0.25)}s`)
+
+if(check("TEMP!!from")) {
+    let collapseSave = check('collapseSave')
+
+    // ing todo: reduce repetition
+    switch(check("TEMP!!from")) {
+        case "ep2_hunger":
+            if(collapseSave?.pageFlags?.["PAGE!!embassy_day"] == 3) {
+                env.entities["recollection::collapse"].actions.find(a=>a.name == "load iteration").exec()
+                change("TEMP!!from", "DELETE")
+            } else {
+                //if you're coming from the resources area to a place you don't belong,
+                //we load a weird empty version of the room
+                document.addEventListener('keydown', stageKeypress)
+                document.querySelectorAll('.dayselect, .frameshortcut').forEach(el=>el.remove())
+                change("PAGE!!weirdload", true)
+                content.classList.add("weirdload")
+                change("PAGE!!nopartyvn", true)
+                document.querySelector('#stage-navigator .swap').remove();document.querySelector('#stage-navigator .party').remove()
+                changeStage("embassy_recreation", "resourcereturn", false, {specificPlan: "empty"})
+            }
+        break
+
+        case "ep2_joy":
+            if(collapseSave?.pageFlags?.["PAGE!!embassy_day"] == 3) {
+                env.entities["recollection::collapse"].actions.find(a=>a.name == "load iteration").exec()
+                change("TEMP!!from", "DELETE")
+            } else {
+                //if you're coming from the resources area to a place you don't belong,
+                //we load a weird empty version of the room
+                document.addEventListener('keydown', stageKeypress)
+                document.querySelectorAll('.dayselect, .frameshortcut').forEach(el=>el.remove())
+                change("PAGE!!weirdload", true)
+                content.classList.add("weirdload")
+                change("PAGE!!nopartyvn", true)
+                document.querySelector('#stage-navigator .swap').remove();document.querySelector('#stage-navigator .party').remove()
+                changeStage("embassy_cquarters1", "resourcereturn", false, {specificPlan: "empty"})
+            }
+        break
+    }
+
+    change("TEMP!!from", "DELETE")
+}
+
+document.addEventListener('corru_mask', env.embassy.mask)
 
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
@@ -1464,8 +1648,9 @@ document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.an
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 
@@ -1504,6 +1689,7 @@ document.querySelectorAll("#content .dayname span").forEach((e, i) => e.style.an
 combatCleanup()
 env.clearIntervals()
 body.classList.remove('nomenus');
+if(env.embassy) document.removeEventListener('corru_mask', env.embassy.mask)
 
             		change('TEMP!!sat', true)
 					Buddy.cleanPageBuddies({removeEl: false})

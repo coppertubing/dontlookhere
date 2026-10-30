@@ -8,10 +8,15 @@ env.stage.locales["golem"] = [
 env.stage.locales.golem_tunnel = env.stage.locales.golem
 
 env.stages.golemSafeCheck = () => {
+    if(check("PAGE!!weirdload")) return;
     setTimeout(()=>{
         if(isStageClear()) {
             content.classList.add('safe')
-            if(env.stage.name == "g_lobby") toggleBgm(env.embassy.music_golems);
+            if(!check("PAGE!!g_lobby", "cleared")) { // ease into the music a bit more
+                if(!check("PAGE!!g_personnel")) toggleBgm(page.bgm)
+                else toggleBgm(env.embassy.music_unsafe_golems)
+            }
+            else if(env.stage.name == "g_lobby") toggleBgm(env.embassy.music_golems);
             else toggleBgm(env.embassy.music_golems_cleared);
         } else {
             content.classList.remove('safe')
@@ -22,6 +27,7 @@ env.stages.golemSafeCheck = () => {
 
 env.stages.golemStageInit = (stage) => {
     content.classList.add('show-walls', 'collapse', 'show-vn')
+    env.stages.clearRunners()
 
     env.stage.wallH = env.stage.stageH - 2
     env.stage.wallW = env.stage.stageW - 2
@@ -39,11 +45,48 @@ env.stages.golemStageInit = (stage) => {
         }
     }, 200)
     
-    if(check("PAGE!!mboss")) { //change to carry sprite
+    if(check("PAGE!!goverride")) { //change to carry sprite
         content.classList.add('itzilout')
     }
         
     env.stages.golemSafeCheck()
+}
+
+//discount scarymode for visual of enemies running away
+env.stages.startRunners = () => {
+
+    env.stage.current.contactExec = (el) => {
+        env.stage.querySelectorAll(`#${el.id}`).forEach(el => el.remove())
+    }
+
+    env.stage.scaryList = []
+    env.stage.scaryListTypes = {}
+    env.stage.ref.querySelectorAll('.runnerhusk').forEach(el => {
+        el.aiType = el.getAttribute("aitype") || "classic"
+        el.destClass = el.getAttribute("destclass")
+        el.aiRate = env.currentDialogue.active ? 400 : Number(el.getAttribute("airate"))
+        el.defaultAiRate = el.aiRate
+
+        if(!env.stage.scaryListTypes[el.aiType]) env.stage.scaryListTypes[el.aiType] = []
+        env.stage.scaryListTypes[el.aiType].push(el)
+
+        const executeAI = () => {
+            if(env.stage.current.noScary || !el.parentElement) return;
+            let aiRate = el.aiRate || 1000
+            el.currentTimeout = setTimeout(executeAI, aiRate)
+            if(env.stage.ai[el.aiType](el)) updateCameraTracking()
+        }
+
+        env.stage.scaryList.push(el)
+        executeAI()
+    })
+}
+
+env.stages.clearRunners = () => {
+    if(!env.stage.scaryList) return;
+    env.stage.scaryList.forEach(el => {
+        clearTimeout(el.currentTimeout)
+    })
 }
 
 /* GLOBAL GOELM PROPS */
@@ -221,50 +264,64 @@ env.stageEntities['┼'] = {
 /* FOES */
 env.stageEntities['0'] = {
     contains: {
-        id: "foe",
-        class: "evil newevil staysdead initial-evil",
-        type: "g_prelobby1",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['husk'].graphic
-    }
+        id: "huskstriker",
+        class: "evil newevil runnerhusk specialhusk husk-striker",
+        html: env.COMBAT_ACTORS['husk'].graphic,
+        aiRate: 150,
+        aiType: "runner",
+        destClass: "huskrundest",
+        unique: true,
+    },
 },
+
+env.stageEntities[')'] = {
+    contains: {
+        id: "huskobserver",
+        class: "evil newevil runnerhusk specialhusk husk-observer",
+        html: env.COMBAT_ACTORS['husk'].graphic,
+        aiRate: 150,
+        aiType: "runner",
+        destClass: "huskrundest",
+        unique: true,
+    }
+}
 
 env.stageEntities['1'] = {
     contains: {
-        id: "foe",
-        class: "evil newevil staysdead initial-evil",
-        type: "g_prelobby2",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['surgeon_golem'].graphic
+        id: "huskguard",
+        class: "evil newevil runnerhusk specialhusk husk-guard",
+        html: env.COMBAT_ACTORS['husk'].graphic,
+        aiRate: 150,
+        aiType: "runner",
+        destClass: "huskrundest",
+        unique: true,
     }
 },
 
-env.stageEntities['2'] = {
+env.stageEntities['!'] = {
     contains: {
-        id: "foe",
-        class: "evil newevil staysdead initial-evil",
-        type: "g_prelobby3",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['pressure_golem'].graphic
+        id: "husksupport",
+        class: "evil newevil runnerhusk specialhusk husk-support",
+        html: env.COMBAT_ACTORS['husk'].graphic,
+        aiRate: 150,
+        aiType: "runner",
+        destClass: "huskrundest",
+        unique: true,
     }
 },
 
 env.stageEntities['3'] = {
     contains: {
         id: "foe",
-        class: "evil newevil staysdead m-evil",
-        type: "g_m1",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['husk'].graphic
+        class: "evil newevil s-evil",
+        html: env.COMBAT_ACTORS['pressure_golem'].graphic
     }
 },
 
 env.stageEntities['4'] = {
     contains: {
         id: "foe",
-        class: "evil newevil staysdead m-evil",
-        type: "g_m2",
-        dialogue: "genericenemy",
+        class: "evil newevil m-evil",
         html: env.COMBAT_ACTORS['constructor_golem'].graphic
     }
 },
@@ -272,10 +329,16 @@ env.stageEntities['4'] = {
 env.stageEntities['5'] = {
     contains: {
         id: "foe",
-        class: "evil newevil staysdead m-evil",
-        type: "g_m3",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['husk'].graphic
+        class: "evil newevil o-evil",
+        html: env.COMBAT_ACTORS['wounded_archival_golem'].graphic
+    }
+},
+
+env.stageEntities['%'] = {
+    contains: {
+        id: "foe",
+        class: "evil newevil o-evil",
+        html: env.COMBAT_ACTORS['repairfriend'].graphic
     }
 },
 
@@ -286,16 +349,6 @@ env.stageEntities['6'] = {
         type: "g_s1",
         dialogue: "genericenemy",
         html: env.COMBAT_ACTORS['husk'].graphic
-    }
-},
-
-env.stageEntities['7'] = {
-    contains: {
-        id: "foe",
-        class: "evil newevil staysdead s-evil",
-        type: "g_s2",
-        dialogue: "genericenemy",
-        html: env.COMBAT_ACTORS['pressure_golem'].graphic
     }
 },
 
@@ -410,8 +463,13 @@ env.stages['g_personnel'] = {
         env.stages.golemStageInit(this)
         content.querySelector('.cornerwall.north').classList.add('meltnorth')
 
-        if(!check("PAGE!!gp")) {
-            startDialogue("personnel")
+        if(!check("PAGE!!g_personnel")) {
+            startDialogue("personnel", {force: true})
+        }
+
+        if((check("PAGE!!g_personnel", "cleared") && !check("PAGE!!g_personnel_huskrun")) || env.debug) {
+            env.stages.startRunners()
+            change("PAGE!!g_personnel_huskrun", true)
         }
     },
     entities: {        
@@ -487,19 +545,71 @@ env.stages['g_personnel'] = {
                 `
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_husks_1',
+                winDialogue: 'personnel_clear'
+            }),
+        },
+
+        X: {
+            class: "empty plain huskrundest",
+        },
+        
     },
     width: 7,
-    plan: `
-        Ṇ......
-        ]..M..[
-        .░░p░░.
-        ]▀░░░░{
-        ┠░░░░░┨
-        }╒░░╒░{
-        .b░b░▀.
-        }░░░b░[
-        ..┻t┻.Ṡ
-    `,
+    plans: {
+        default: `
+            Ṇ......
+            ]..M..[
+            .░░p░░.
+            ]▀░░░░{
+            ┠░░░░░┨
+            }╒░░╒░{
+            .b░b░▀.
+            }░░░b░[
+            ..┻t┻.Ṡ
+        `,
+
+        danger: `
+            Ṇ......
+            ]..M..[
+            .░░p░░.
+            ]▀░░░░{
+            ┠@@@@@┨
+            }░)░0░{
+            .b░b░▀.
+            }░░░b░[
+            ..┻t┻.Ṡ
+        `,
+
+        safe: `
+            Ṇ......
+            ]..M..[
+            .░░p░░.
+            ]▀░░░░{
+            ┠░░░░░┨
+            }░)░0░{
+            .b░b░▀.
+            }░░Xb░[
+            ..┻t┻.Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_personnel")) {
+            case "dangerous": return this.plans.danger
+            case "cleared": 
+                let safe = this.plans.safe
+                
+                if(check("PAGE!!g_personnel_huskrun")) safe = safe.replaceAll(')', '░').replaceAll('0', '░').replaceAll('X', '░')
+
+                return safe
+            default: return this.plans.default
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/local/embassy/golemceiling.gif, /img/local/embassy/ceilingcover.gif" fit="auto, stretch" repeat="repeat" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -511,7 +621,13 @@ env.stages['g_personnel_tunnel'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
+
+        if(!check("PAGE!!g_tunnel_huskrun")) {
+            env.stages.startRunners()
+            change("PAGE!!g_tunnel_huskrun", true)
+        }
     },
+
     entities: {
         "%": {
             class: "locked",
@@ -569,25 +685,38 @@ env.stages['g_personnel_tunnel'] = {
                 `
             }
         },
+
+        X: {
+            class: "empty plain huskrundest",
+        },
     },
     width: 5,
-    plan: `
-        Ṇ┰P┰.
-        .░p░.
-        .░░░.
-        .b░░.
-        .░░░.
-        .░░░.
-        .░░░.
-        ☺░░░☺
-        .░░░.
-        .░░░.
-        .░░░.
-        .░░b.
-        .░1░.
-        .░░░.
-        .┻L┻Ṡ
-    `,
+    plans: {
+        default: `
+            Ṇ┰P┰.
+            .░p░.
+            .░░░.
+            .b░).
+            .░░░.
+            .░░░.
+            .░0░.
+            ☺░░░☺
+            .░░░.
+            .░░░.
+            .░░░.
+            .░░b.
+            .░░░.
+            .░X░.
+            .┻L┻Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        let plan = this.plans.default
+        if(check("PAGE!!g_tunnel_huskrun") && !env.debug) plan = plan.replaceAll(')', '░').replaceAll('0', '░').replaceAll('X', '░')
+
+        return plan
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -600,10 +729,10 @@ env.stages['g_lobby'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
-        if(!check("PAGE!!gl")) {
-            startDialogue("lobby_danger")
+        if(!check("PAGE!!g_lobby")) {
+            startDialogue("lobby_danger", {force: true})
         } else if(check("postbstrdgeli")) {
-            startDialogue('gelialtered')
+            startDialogue('gelialtered', {force: true})
             change("postbstrdgeli", "DELETE")
         }
         
@@ -627,6 +756,11 @@ env.stages['g_lobby'] = {
         } else {
             env.stage.querySelectorAll('.gridpiece[slug="€"]').forEach(el=>{el.classList.add('hide')})
         }
+
+        if(!check("PAGE!!g_lobby_huskrun") && check("PAGE!!g_lobby", "cleared")) { // one-time husk run
+            env.stages.startRunners()
+            change("PAGE!!g_lobby_huskrun", true)
+        }
     },
     entities: {
         "%": {
@@ -644,6 +778,7 @@ env.stages['g_lobby'] = {
             contains: {
                 class: "geli character face-creature",
                 examineEntity: "geli",
+                examinePriority: 3,
                 html: `<figure>
                     <div class="head"></div>
                     <div class="body"></div>
@@ -670,7 +805,7 @@ env.stages['g_lobby'] = {
             teleportTarget: "g_o_hall1",
             lockFlag: "PAGE!!geli",
             shouldFace: "up",
-            lockExec: ()=>chatter({actor: 'akizet', text: 'it is locked. perhaps that golem can help', readout: true}),
+            lockExec: ()=>chatter({actor: 'akizet', text: 'i need to make sure this chamber is safe. perhaps that golem can help', readout: true}),
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'minor operations'"></span>`,
                 dyp: {
@@ -686,7 +821,7 @@ env.stages['g_lobby'] = {
             lockFlag: "PAGE!!geli",
             teleportSpot: 13,
             shouldFace: "up",
-            lockExec: ()=>chatter({actor: 'akizet', text: 'it is locked. perhaps that golem can help', readout: true}),
+            lockExec: ()=>chatter({actor: 'akizet', text: 'i need to make sure this chamber is safe. perhaps that golem can help', readout: true}),
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'manufacturing'"></span>`,
                 dyp: {
@@ -702,7 +837,7 @@ env.stages['g_lobby'] = {
             lockFlag: "PAGE!!geli",
             teleportSpot: 13,
             shouldFace: "up",
-            lockExec: ()=>chatter({actor: 'akizet', text: 'it is locked. perhaps that golem can help', readout: true}),
+            lockExec: ()=>chatter({actor: 'akizet', text: 'i need to make sure this chamber is safe. perhaps that golem can help', readout: true}),
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'sfer supply'"></span>`,
                 dyp: {
@@ -722,7 +857,7 @@ env.stages['g_lobby'] = {
             class: "door down big sludged",
             teleportTarget: "g_boss",
             lockFlag: "PAGE!!bosslock",
-            lockExec: ()=> isStageClear() ? startDialogue('lobby_bossdoor') : chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true}), 
+            lockExec: ()=> isStageClear() ? startDialogue('lobby_bossdoor', {force: true}) : chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true}), 
             examineEntity: "grand door",
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'advanced operations'"></span>`,
@@ -740,9 +875,9 @@ env.stages['g_lobby'] = {
             lockExec: ()=> {
                 if((check("mask") == "hunger") && (check("PAGE!!geliawake")) ) {
                     if(check("geli_beacon", false)) {
-                        startDialogue("geli_beacon_fallback")
+                        startDialogue("geli_beacon_fallback", {force: true})
                     } else {
-                        startDialogue("add2warn")                        
+                        startDialogue("add2warn", {force: true})                        
                     }
                 } else {
                     chatter({actor: 'akizet', text: 'whatever this was connected to is gone now', readout: true})
@@ -835,21 +970,60 @@ env.stages['g_lobby'] = {
                 `
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_husks_2',
+                winDialogue: 'lobby_clear'
+            }),
+        },
+
+        X: {
+            class: "empty plain huskrundest",
+        },
     },
     width: 11,
-    plan: `
-        Ṇ..Æ.₧...€.
-        .fMmY░░GTF.
-        .░░░░░░░░░.
-        O░░░k░v░░░%
-        .░░░‼c‼░░░.
-        .░░░c☻c░░░.
-        .░░░‼c‼░░░.
-        P░░░░░░2░░ś
-        .░░░░p░░░░.
-        .F░░░░░░░+.
-        .....τ....Ṡ
-    `,
+
+    plans: {
+        safe: `
+            Ṇ..Æ.₧...€.
+            .fMmY░░GTF.
+            .░░░░░░░░░.
+            O░░░k░v░░░%
+            .░░░‼c‼░░░.
+            .░░░c☻c░░).
+            .░░░‼c‼░0░.
+            P░░░░░!░░Xś
+            .░░░░p░░░░.
+            .F░░░░1░░+.
+            .....τ....Ṡ
+        `,
+
+        danger: `
+            Ṇ....₧...€.
+            .f░░░░░░░F.
+            .░░░░░░░░░.
+            O░░░░░░░░░%
+            .░░░‼c‼░░░.
+            .░░░c☻c░░).
+            .@@@‼c‼░0░.
+            P░p░@!░░░░ś
+            .░░░@░░░░░.
+            .F░░@1░░░+.
+            .....τ....Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_lobby")) {
+            case "cleared": 
+                let safe = this.plans.safe
+                if(check("PAGE!!g_lobby_huskrun")) safe = safe.replaceAll(')', '░').replaceAll('0', '░').replaceAll('!', '░').replaceAll('1', '░').replaceAll('X', '░')   
+                return safe
+            default: return this.plans.danger
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -862,13 +1036,17 @@ env.stages['g_boss'] = {
     enterDirection: "down",
     exec: function () {
         env.stages.golemStageInit(this)
-        if(!check("PAGE!!golboss")) {
+        if(!check("PAGE!!g_boss")) {
             env.stage.querySelectorAll('.gridpiece[slug="T"]').forEach(el=>{el.classList.add('hide')})
-            startDialogue("boss")
-        } else {
-            env.stages['g_boss'].hideBoss()
-            env.stages['g_boss'].removeHatch()
+            startDialogue("boss", {force: true})
         }
+        
+        if(check("PAGE!!g_boss", "phase2")) content.classList.add('dullified')
+        else content.classList.remove('dullified')
+    },
+
+    leaveExec: function () {
+        content.classList.remove('dullified')
     },
 
     onStep: ()=>{
@@ -896,21 +1074,18 @@ env.stages['g_boss'] = {
         },
 
         "☺": {
-            class: "prop chartile blocks",
             contains: {
-                class: "boss",
-                examineEntity: "qou body",
-                html: `<div class="sprite-wrapper golemsprite bossgolem">
-                    <img src="/img/sprites/combat/foes/golemboss.gif" class="sprite golemsprite-base">
-                    
-                    <div class="sprite golemsprite-head">
-                        <img src="/img/sprites/combat/foes/golemboss-head_stage.gif">
-                    </div>
-                    <img src="/img/sprites/combat/foes/golemboss-body_stage.gif" class="sprite golemsprite-body">
-                    <img src="/img/sprites/combat/foes/golemboss-arms_stage.gif" class="sprite golemsprite-arms">
+                id: "foe",
+                class: "evil newevil tallevil m-evil",
+                html: env.COMBAT_ACTORS['foundation_golem'].graphic
+            }
+        },
 
-                    <div class="target" entity="foundation golem"></div>
-                </div>`
+        "☻": {
+            contains: {
+                id: "foe",
+                class: "evil newevil tallevil m-evil",
+                html: env.COMBAT_ACTORS['boss_golem'].graphic
             }
         },
         
@@ -1060,19 +1235,116 @@ env.stages['g_boss'] = {
                 `
             }
         },
+
+        '9': { 
+            class:"blocks cwall north cornerwall",
+            contains: {
+                html: `
+                    <canvas class="wall" sprite="/img/local/embassy/golemwallmeltfadedoubledull.gif" fit="stretch" baseWidth="[wallH]" baseHeight="5"></canvas>
+                    <canvas class="wall" sprite="/img/local/embassy/golemwallmeltfadedoubledull.gif" fit="stretch" baseWidth="[wallW]" baseHeight="5"></canvas>
+                `
+            }
+        },
+
+        '0': { 
+            class:"blocks cwall south cornerwall",
+            contains: {
+                html: `
+                    <canvas class="wall" sprite="/img/local/embassy/golemwallmeltfadedoubledull.gif" fit="stretch" baseWidth="[wallH]" baseHeight="5"></canvas>
+                    <canvas class="wall" sprite="/img/local/embassy/golemwallmeltfadedoubledull.gif" fit="stretch" baseWidth="[wallW]" baseHeight="5"></canvas>
+                `
+            }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_boss',
+                winDialogue: "boss_phase2"
+            }),
+        },
+
+        "#": {
+            class: "dangertile",
+            exec: () => check("pa|ikgolem") ? env.embassy.startOrSkipFight({
+                specificFormation: 'golem_boss_final',
+                winCallback: () => { change("PAGE!!g_boss", "cleared");refreshStage({noFlash: true}); },
+                winDialogue: "bossclear"
+            }) : chatter({ actor: "plainsys", text:"ikgolem must be in party", readout: true}),
+        },
+
+        "S": {
+            class: "blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/local/embassy/golemcorpse_f.gif)',
+                    width: 2.5,
+                    height: 1.5,
+                    transform: 'rotateY(20deg)',
+                }
+            } 
+        },
     },
     width: 9,
-    plan: `
-        Ṇ..J.J...
-        .D▀‼C░░░.
-        h‼|░░░░░;
-        .░░░░░░░.
-        .♥░░☺░░♦.
-        .░░░░░░‼.
-        h░C░░░|‼H
-        .░░░p‼‼‼d
-        ....L...Ṡ
-    `,
+
+    plans: {
+        danger: `
+            Ṇ..J.J...
+            .D▀‼C░▀░.
+            h‼|░░░░░;
+            .░▀░░░░▀.
+            .♥░░☺░░♦.
+            .@@@@@@‼.
+            h░C░░░|‼H
+            .░░░p‼‼‼d
+            ....L...Ṡ
+        `,
+
+        downed: `
+            Ṇ..J.J...
+            .D▀‼C░░░.
+            h‼|░░░░░;
+            .░░░▀░░░.
+            .♥░▀S▀░♦.
+            .░░░░░░‼.
+            h░C░░░|‼H
+            .░░░p‼‼‼d
+            ....L...Ṡ
+        `,
+
+        phase2: `
+            9..J.J...
+            .D░‼C░░░.
+            h‼|░░░░░;
+            .░░░░░░░.
+            .♥..☻..♦.
+            .░.###.‼.
+            h░.#p#.‼H
+            .░.###.‼d
+            ........0
+        `,
+
+        safe: `
+            Ṇ..J.J...
+            .D▀‼C░░░.
+            h‼|░░░░░;
+            .░░░░░░░.
+            .♥░░░░░♦.
+            .░░░░░░‼.
+            h░C░░░|‼H
+            .░░░p‼‼‼d
+            ....L...Ṡ
+        `
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_boss")) {
+            default: return this.plans.danger
+            case "downed": return this.plans.downed
+            case "phase2": return this.plans.phase2
+            case "cleared": return this.plans.safe
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -1084,6 +1356,8 @@ env.stages['g_m_hall'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
+
+        if(!check("PAGE!!mmid")) startDialogue("m_clear", {force: true})
         
         if(check("PAGE!!mboss")) {
             env.stage.querySelectorAll('.gridpiece[slug="K"]').forEach(el=>el.innerHTML = "")
@@ -1105,7 +1379,7 @@ env.stages['g_m_hall'] = {
             teleportTarget: "g_lobby",
             teleportSpot: 42,
             shouldFace: "left",
-            lockExec: ()=>{if(isStageClear()) startDialogue('m_door'); else chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true})},
+            lockExec: ()=>{if(isStageClear()) startDialogue('m_door', {force: true}); else chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true})},
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'lobby'"></span>`,
                 dyp: {
@@ -1168,7 +1442,7 @@ env.stages['g_m_hall'] = {
             shouldFace: "up",
             lockExec: ()=> {
                 if(isStageClear()) {
-                    startDialogue('m_door')
+                    startDialogue('m_door', {force: true})
                 } else {
                     chatter({actor: 'sourceless', text: 'we must clear the area first', readout: true})
                 }
@@ -1344,24 +1618,45 @@ env.stages['g_m_hall'] = {
             }
         },
 
+        "U": {
+            class: "notile",
+            contains: {
+                examineEntity: "ukuzu simulacrum",
+                dyp: {
+                    image: 'url(/img/sprites/combat/items/guncyst_dither.gif)',
+                    width: 1,
+                    height: 1,
+                    transform: 'translateY(-100%) rotateY(45deg) translateX(-0%)',
+                }
+            } 
+        }
     },
     width: 9,
-    //maintenance hall should have some fiends, perhaps some destroyed scenery
-    plan: `
-        Ṇ...L....
-        .DC.p░░b.
-        .σH░░░░░.
-        .g░░░░░░<
-        ]░░░3░░░.
-        .θ░░░░░░(
-        hg░░░░░░.
-        .dC►░░░b.
-        ..≤K^...Ṡ
-    `,
+    //maintenance hall is like a little general workspace area
+    //no monsters here anymore
+    plans: {
+        default: `
+            Ṇ...L....
+            .DC.p░░b.
+            .σH░░░░░.
+            .g░░░░░░<
+            ]░░░░░░░.
+            .θ░░░░░░(
+            hg░░░░░░.
+            .dC►░░░b.
+            ..≤K^...Ṡ
+        `,
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
-    `
+    `,
+
+    getPlan: function() {
+        let plan = this.plans.default
+        if(check("PAGE!!gotsurge")) plan = plan.replaceAll("U", ".")
+        return plan
+    }
 }
 
 env.stages['g_m_minor'] = {
@@ -1369,7 +1664,9 @@ env.stages['g_m_minor'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
-        if(!check("PAGE!!minvats")) startDialogue("m_min")
+        if(!check("PAGE!!g_m_minor")) {
+            startDialogue("m_min", {force: true})
+        }
     },
     entities: {
         "^": {
@@ -1406,6 +1703,7 @@ env.stages['g_m_minor'] = {
         "╢": {
             class: "prop blocks notile",
             contains: {
+                examineEntity: "vat",
                 dyp: {
                     image: 'url(/img/local/embassy/vat.gif)',
                     width: 1,
@@ -1419,6 +1717,7 @@ env.stages['g_m_minor'] = {
         "┐": {
             class: "prop blocks notile",
             contains: {
+                examineEntity: "vat",
                 dyp: {
                     image: 'url(/img/local/embassy/vatbroke.gif)',
                     width: 1,
@@ -1448,18 +1747,45 @@ env.stages['g_m_minor'] = {
                 `
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_constructor',
+                winCallback: () => { change("PAGE!!g_m_minor", "cleared");refreshStage(); },
+            }),
+        },
     },
     width: 9,
     //a minor vats (square tech) with a central control, some storage
-    plan: `
-        Ṇ..┰^┰...
-        .b░░p░░b.
-        .░░░░░░b.
-        .░░░░░4░.
-        .░.╢Ü╢.░.
-        .╢┐.╢.╢┐.
-        ........Ṡ
-    `,
+    plans: {
+        safe: `
+            Ṇ..┰^┰...
+            .b░░p░░b.
+            .░░░░░░b.
+            .░░░░░░░.
+            .░.┐Ü┐.░.
+            .┐┐.┐.╢┐.
+            ........Ṡ
+        `,
+
+        danger: `
+            Ṇ..┰^┰...
+            .b░░p░░b.
+            .@@@@@@b.
+            .░░░4░░░.
+            .░.╢Ü╢.░.
+            .╢┐.╢.╢┐.
+            ........Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_m_minor")) {
+            case "cleared": return this.plans.safe
+            default: return this.plans.danger
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -1473,7 +1799,7 @@ env.stages['g_m_major'] = {
         env.stages.golemStageInit(this)
 
         if(!check("PAGE!!majvatsnote") && check("PAGE!!mboss")) {
-            startDialogue("m_maj")
+            startDialogue("m_maj", {force: true})
             change("PAGE!!majvatsnote", true)
         }
 
@@ -1650,17 +1976,20 @@ env.stages['g_m_dist'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
-        if(!check("PAGE!!mboss")) {
-            startDialogue("m_boss")
-        } else {
-            env.stages['g_m_dist'].removeBoss()
+        if(!check("PAGE!!g_m_dist")) {
+            startDialogue("m_boss", {force: true})
         }
 
+        if(check("PAGE!!g_m_dist", "dangerous")) env.stage.current.scaryBoss()
         if(check("PAGE!!ikgolem")) env.stage.querySelectorAll('.gridpiece[slug="s"]').forEach(el=>{el.innerHTML = "";el.classList.remove('blocks', 'darktile')})
     },
 
     removeBoss: function () {
         env.stage.querySelectorAll('.gridpiece[slug="☻"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks')})
+    },
+
+    scaryBoss: function() {
+        env.stage.querySelectorAll('.gridpiece[slug="☻"] .sprite').forEach(img=>img.src = "/img/sprites/combat/foes/kivii/4.gif")
     },
 
     entities: {
@@ -1669,6 +1998,8 @@ env.stages['g_m_dist'] = {
             teleportTarget: "g_m_hall",
             teleportSpot: 67,
             shouldFace: "down",
+            lockFlag: "EXEC::isStageClear()", // would fuck with too many dialogues if you could back out here
+            lockExec: ()=>chatter({actor: 'sourceless', text: 'she is too great a threat to leave here', readout: true}),
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'manufacturing'"></span>`,
                 dyp: {
@@ -1681,7 +2012,7 @@ env.stages['g_m_dist'] = {
         "☻": {
             class: "blocks darktile",
             contains: {
-                class: "boss evil newevil important",
+                class: "boss evil newevil tallevil important",
                 html: env.COMBAT_ACTORS['kivii'].graphic.replace("combat.gif", "1.gif")
             }
         },
@@ -1871,23 +2202,77 @@ env.stages['g_m_dist'] = {
                     <canvas class="wall" sprite="/img/textures/fadein.gif, /img/textures/panelpatterntranshort.gif, /img/local/embassy/wallcover.gif" position="top, bottom" repeat="repeat-x" fit="auto, stretch-y, stretch" baseWidth="[wallW]" baseHeight="3"></canvas>
                 `
             }
-        }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_kivii',
+                winCallback: () => { change("PAGE!!g_m_dist", "cleared");change("PAGE!!mboss", true);refreshStage(); },
+                winDialogue: 'm_bossclear'
+            }),
+        },
+
+        "G": {
+            class: "blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/sprites/combat/foes/kivii/gauntlet_busted.gif)',
+                    width: 3,
+                    height: 1,
+                    transform: 'rotateY(190deg)',
+                }
+            } 
+        },
+
+        "g": {
+            class: "blocks",
+            contains: {
+                dyp: {
+                    image: 'url(/img/sprites/combat/foes/kivii/gauntlet_busted.gif)',
+                    width: 3,
+                    height: 1,
+                    transform: 'rotateY(20deg)',
+                }
+            } 
+        },
     },
     width: 9,
     //┠┰┨┻
     //shelves of golem parts, spilled containers, dead qou
-    //the boss is in front of some sort of equipment, with the override off to the side
-    plan: `
-        Ṇ..┰^┰...
-        .‼‼░p░░b.
-        h‼|░░░░░H
-        >‼‼V░░░C.
-        ┠D‼░░C░b┨
-        g‼V░☻░░‼.
-        h|s░░░‼‼H
-        .░░░░‼Sùd
-        ..Ü┻J┻..Ṡ
-    `,
+
+    plans: {
+        danger: `
+            Ṇ..┰^┰...
+            .‼‼░p░░b.
+            h‼|░░░░░H
+            >‼‼@@@@C.
+            ┠D‼░░C░b┨
+            g‼V░☻░░‼.
+            h|s░░░‼‼H
+            .░░░░‼Sùd
+            ..Ü┻J┻..Ṡ
+        `,
+
+        safe: `
+            Ṇ..┰^┰...
+            .‼‼░p░░b.
+            h‼|░░░░░H
+            >‼‼░░░░C.
+            ┠D‼░░CGb┨
+            g‼V░░▀G‼.
+            h|s░░g‼‼H
+            .░░░░‼Sùd
+            ..Ü┻J┻..Ṡ
+        `
+    },
+
+    getPlan: function() {
+        switch(check("PAGE!!g_m_dist")) {
+            case "cleared": return this.plans.safe
+            case "dangerous": default: return this.plans.danger
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/textures/black.gif" fit="stretch" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -2002,7 +2387,7 @@ env.stages['g_s_metals'] = {
         .00░p░░b.
         .0¥░░░░b.
         .◙0░░░░c┨
-        .0╝░6░░b.
+        .0╝░░░░b.
         .00░░░░b.
         ....v...Ṡ
     `,
@@ -2145,24 +2530,56 @@ env.stages['g_s_sfer'] = {
                 }
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_husks_interlude',
+                winCallback: () => { change("PAGE!!g_s_sfer", "cleared");refreshStage(); },
+                winDialogue: 's_vats'
+            }),
+        },
     },
     width: 9,
     //this should almost look like a mix between an aquarium and a garden
     //with vats built into walls and repositories for materials no longer needed
 
-    plan: `
-        Ṇ...^...┼
-        ..░░p░░..
-        VB░░░░░_.
-        ..░░░░░..
-        ..░░░░░░.
-        .Ü░░7░░░m
-        ..░░░░░░.
-        .↓░░░░░..
-        ¶B░░░░░_.
-        .ò░░░░░..
-        ....v...Ṡ
-    `,
+    plans: {
+        safe: `
+            Ṇ...^...┼
+            ..░░p░░..
+            VB░░░░░_.
+            ..░░░░░..
+            ..░░░░░░.
+            .Ü░░░░░░m
+            ..░░░░░░.
+            .↓░░░░░..
+            ¶B░░░░░_.
+            .ò░░░░░..
+            ....v...Ṡ
+        `,
+
+        danger: `
+            Ṇ...^...┼
+            ..░░p░░..
+            VB░░░░░_.
+            ..░░░░░..
+            ..░░░░░░.
+            .Ü░░░░░░m
+            ..@@@@@@.
+            .↓░3░3░..
+            ¶B░░!░░_.
+            .ò░░░░░..
+            ....v...Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_s_sfer")) {
+            case "cleared": return this.plans.safe
+            default: return this.plans.danger
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/local/embassy/golemceiling.gif, /img/local/embassy/ceilingcover.gif" fit="auto, stretch" repeat="repeat" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -2174,10 +2591,11 @@ env.stages['g_s_storage'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
-        if(!check("PAGE!!sboss")) {
-            startDialogue("s_boss")
-            content.classList.add('dullified')
+        if(!check("PAGE!!g_s_storage")) {
+            startDialogue("s_boss", {force: true})
         }
+
+        if(!check("PAGE!!g_s_storage", "cleared")) content.classList.add('dullified')
 
         env.stages['g_s_storage'].removeBoss(true)
     },
@@ -2245,7 +2663,7 @@ env.stages['g_s_storage'] = {
             class: "prop blocks notile",
             contains: {
                 class: "boss",
-                examineEntity: "qou body",
+                examineEntity: "dullzika",
                 html: `<div class="sprite-wrapper golemsprite dullzika" id="%SLUG-sprite-wrapper" style="transform: rotateY(180deg)">
                     <img src="/img/sprites/combat/foes/turboglazika.gif" id="%SLUG-golemsprite-base" class="sprite golemsprite-base">
                     
@@ -2276,20 +2694,49 @@ env.stages['g_s_storage'] = {
                     <canvas class="wall" sprite="/img/local/embassy/golemwallmeltfadedoubledull.gif" fit="stretch" baseWidth="[wallW]" baseHeight="5"></canvas>
                 `
             }
-        }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_husks_3',
+                winCallback: () => { change("PAGE!!g_s_storage", "cleared");change("PAGE!!sboss", true);refreshStage(); },
+                winDialogue: 's_bossclear'
+            }),
+        },
 
     },
     width: 9,
-    plan: `
-        Ṇ...^....
-        .░░░p░░░.
-        .░░☺░░░░.
-        .░|░░░☺░.
-        .░☺░☻░░░.
-        .░░░☺░|░.
-        .░░░|░░░.
-        ........Ṡ
-    `,
+    plans: {
+        danger: `
+            Ṇ...^....
+            .░|@p@░░.
+            .░░@@@|░.
+            .░░0░1░░.
+            .░☺)░!☺░.
+            .░☺░☻░☺░.
+            .░░░░░░░.
+            ........Ṡ
+        `,
+
+        safe: `
+            Ṇ...^....
+            .░|░p░░░.
+            .░░░░░|░.
+            .░░░░░░░.
+            .░☺░░░☺░.
+            .░☺░░░☺░.
+            .░░░░░░░.
+            ........Ṡ
+        `,
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_s_storage")) {
+            case "cleared": return this.plans.safe
+            default: return this.plans.danger
+        }
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/local/embassy/golemceiling.gif, /img/local/embassy/ceilingcover.gif" fit="auto, stretch" repeat="repeat" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -2420,7 +2867,7 @@ env.stages['g_o_hall2'] = {
 
         "☻": {
             exec: ()=> {
-                if(!check("PAGE!!bozcav")) startDialogue("ops_bozcav")
+                if(!check("PAGE!!bozcav")) startDialogue("ops_bozcav", {force: true})
             }
         },
 
@@ -2517,6 +2964,11 @@ env.stages['g_o_r_dull'] = {
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
+
+        if(check("PAGE!!weirdload")) {
+            changeBgm(env.embassy.music_embassy_uncanny)
+            return
+        }
     },
     entities: {
         "%": {
@@ -2530,6 +2982,21 @@ env.stages['g_o_r_dull'] = {
             teleportTarget: "g_o_hall1",
             teleportSpot: 22,
             shouldFace: "right",
+            contains: {
+                html: `<span class='sign' definition="INHERITED CONTEXT::'minor operations'"></span>`,
+                dyp: {
+                    class: "doorsign",
+                    style: "--signImage: url(/img/local/embassy/sign_MO.gif);"
+                }
+            } 
+        },
+
+        "h": {
+            class: "door slim right",
+            teleportTarget: "g_o_hall1",
+            teleportSpot: 22,
+            shouldFace: "right",
+            lockFlag: "permalocked",
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'minor operations'"></span>`,
                 dyp: {
@@ -2571,21 +3038,56 @@ env.stages['g_o_r_dull'] = {
             }
         },
 
+        E: { 
+            class:"prop blocks notile",
+            contains: {
+                examineEntity: "ÃwÃIÏ",
+                dyp: {
+                    class: "weirdeyes hungeronly vesselgap",
+                    width: 1,
+                    height: 1,
+                    image: "url(/img/sprites/combat/foes/hallucinations/eyetransparent_purble.gif)",
+                    transform: `translateY(-100%) translateX(-4000px) rotateY(90deg)`
+                }              
+            }
+        },
+
     },
     width: 11,
-    plan: `
-        ...........
-        .....○.....
-        ....○○○....
-        ...○○○○○...
-        ..○○.Ü.○○..
-        .○○○.☺.○○pH
-        ..○○.Ü.○○..
-        ...○○○○○...
-        ....○○○....
-        .....○.....
-        .....D.....
-    `,
+    plans: {
+        base: `
+            ...........
+            .....○.....
+            ....○○○....
+            ...○○○○○...
+            ..○○.Ü.○○..
+            E○○○.☺.○○pH
+            ..○○.Ü.○○..
+            ...○○○○○...
+            ....○○○....
+            .....○.....
+            .....D.....
+        `,
+
+        empty: `
+            ...........
+            .....○.....
+            ....○○○....
+            ...○○○○○...
+            ..○○.Ü.○○..
+            E○○○.☺.○○ph
+            ..○○.Ü.○○..
+            ...○○○○○...
+            ....○○○....
+            .....○.....
+            .....D.....
+        `,
+    },
+    
+    getPlan: function() {
+        if(check("PAGE!!weirdload")) return this.plans.empty
+        else return this.plans.base
+    },
 
     html: `
         <canvas class="golemceiling dullrug" sprite="/img/textures/black.gif, /img/local/embassy/dullrug.gif" fit="stretch, auto" repeat="repeat, no-repeat" position="center" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -2593,23 +3095,113 @@ env.stages['g_o_r_dull'] = {
     `
 }
 
+createEntity({
+    name: 'ÃwÃIÏ',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep3_hunger"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep3hungerwarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep3hungerwarn"] = generateDialogueObject(`
+start
+    sourceless
+        what is that?
+            EXEC::change("foundresourcegate", true)
+        a flickering in the projection of the walls?
+        something about it inspires a strange, sickly shiver
+        perhaps it is best to ignore it, but...
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+        well, it's not BSTRD's frame thing again
++____END
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep3_hunger");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep3_hunger");moveTo("/local/ocean/embassy/resources/")
+`)
+
 env.stages['g_o_r_friends'] = {
     locale: "golem",
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         env.stages.golemStageInit(this)
+        if(check("PAGE!!weirdload")) {
+            changeBgm(env.embassy.music_embassy_uncanny)
+            return;
+        }
+        
+        if(!check("PAGE!!g_o_r_friends")) {
+            startDialogue("ops_friends", {force: true})
+        }
     },
     entities: {
-        "%": {
-            class: "locked",
-            teleportTarget: "test",
-            lockFlag: "permalocked"
-        },
-
         "H": {
             class: "door slim right",
             teleportTarget: "g_o_hall2",
             teleportSpot: 15,
+            shouldFace: "right",
+            contains: {
+                html: `<span class='sign' definition="INHERITED CONTEXT::'minor operations'"></span>`,
+                dyp: {
+                    class: "doorsign",
+                    style: "--signImage: url(/img/local/embassy/sign_MO.gif);"
+                }
+            } 
+        },
+
+        "ĥ": {
+            class: "door slim right",
+            teleportTarget: "g_o_hall2",
+            teleportSpot: 15,
+            lockFlag: "permalocked",
             shouldFace: "right",
             contains: {
                 html: `<span class='sign' definition="INHERITED CONTEXT::'minor operations'"></span>`,
@@ -2735,23 +3327,86 @@ env.stages['g_o_r_friends'] = {
                     transform: 'rotateY(45deg)'
                 }
             } 
-        }
+        },
 
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_repair',
+                winCallback: () => { change("PAGE!!g_o_r_friends", "cleared");refreshStage(); },
+                winDialogue: "ops_friendsclear"
+            }),
+        },
+
+        ḣ: { 
+            class:"prop blocks notile",
+            contains: {
+                class: "joyonly",
+                examineEntity: "▣",
+                html: "<div class='joygarnish garnishportal'></div>",
+                dyp: {
+                    width: 2,
+                    height: 2,
+                    image: "url(/img/local/embassy/resources/hermit/shapes.gif)",
+                    transform: `translateX(50%) rotateY(90deg) translateX(-50%)`,
+                }              
+            }
+        },
+
+        o: {
+            class: "empty circle resourcereturn"
+        }
     },
     width: 11,
-    plan: `
-        .....D.....
-        .....p.....
-        ....○○○....
-        ..F○○○○○f..
-        ..M○○○○|○..
-        h○○○○○○○○○H
-        ..m|○@○○○..
-        ..ƒ○○○○○Ƒ..
-        ....M○M....
-        .....m.....
-        ...........
-    `,
+    plans: {
+        safe: `
+            .....D.....
+            .....p.....
+            ....○○○....
+            ..F○○○○○f..
+            ḣ.M○○○○|○..
+            ho○○○○○○○○H
+            ..m|○○○○○..
+            ..ƒ○○○○○Ƒ..
+            ....M○M....
+            .....m.....
+            ...........
+        `,
+
+        empty: `
+            .....D.....
+            .....p.....
+            ....○○○....
+            ..F○○○○○f..
+            ḣ.M○○○○|○..
+            ho○○○○○○○○ĥ
+            ..m|○○○○○..
+            ..ƒ○○○○○Ƒ..
+            ....M○M....
+            .....m.....
+            ...........
+        `,
+
+        danger: `
+            .....D.....
+            .....p.....
+            ....○○○....
+            ..F○○○○○f..
+            ḣ.M○○○○|○..
+            ho○○○○○○○○H
+            ..m|@@@@○..
+            ..ƒ@%○%@Ƒ..
+            ....M5M....
+            .....m.....
+            ...........
+        `,
+    },
+    
+    getPlan: function() {
+        if(check("PAGE!!weirdload")) return this.plans.empty
+        if(check("PAGE!!g_o_r_friends") === "cleared") return this.plans.safe
+        return this.plans.danger
+    },
 
     html: `
         <canvas class="golemceiling" sprite="/img/local/embassy/golemceiling.gif, /img/local/embassy/ceilingcover.gif" fit="auto, stretch" repeat="repeat" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>
@@ -2759,23 +3414,87 @@ env.stages['g_o_r_friends'] = {
     `
 }
 
+createEntity({ // todo
+    name: '▣',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep3_joy"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep3joywarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep3joywarn"] = generateDialogueObject(`
+start
+    sourceless
+        something about this archival hatch...
+            EXEC::change("foundresourcegate", true)
+        it feels familiar, as if i have crawled through it before
+        but i have never once been in this room
+        something about it inspires a strange, sickly shiver
+        perhaps it is best to ignore it, but...
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+        well, it's not BSTRD's frame thing again
++____END
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep3_joy");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep3_joy");moveTo("/local/ocean/embassy/resources/")
+`)
+
 env.stages['g_o_r_translation'] = {
     locale: "golem",
     creature: env.stageEntities.embassyCreature,
     exec: function () {
         toggleBgm(env.embassy.music_television)
-        if(!check("PAGE!!obosslearn")) {
-            startDialogue("ops_boss")
-        } else if(check("PAGE!!obossrun") && !check('PAGE!!oboss')) {
-            startDialogue("ops_boss_return")
-        }
-      
-        env.stages['g_o_r_translation'].removeWordfriend()
-    },
-    removeWordfriend: function () {
-        if(check('PAGE!!oboss')) {
-            env.stage.querySelectorAll('.gridpiece[slug="W"').forEach(el=>{el.innerHTML = ""; el.classList.remove('prop', 'blocks', 'chartile'); el.classList.add('empty', 'circle')})
-            initializeFloorCanvas(env.stage.current, env.stage.real)
+        if(!check("PAGE!!g_o_r_translation")) {
+            startDialogue("ops_boss", {force: true})
         }
     },
 
@@ -2847,7 +3566,6 @@ env.stages['g_o_r_translation'] = {
             class: "prop chartile blocks",
             contains: {
                 class: "wordfriend",
-                examineEntity: "qou body",
                 html: `<div class="sprite-wrapper">
                     <div class="spinny">
                         <img src="/img/sprites/combat/foes/translator_core.gif" class="sprite diamond">
@@ -2865,25 +3583,60 @@ env.stages['g_o_r_translation'] = {
                         <div class="orb"></div>
                     </div>
 
-                    <div class="target" entity="damaged golem"></div>
+                    <div class="target" entity="translation core"></div>
                 </div>`
             }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'golem_translator',
+                winCallback: () => { change("PAGE!!g_o_r_translation", "cleared");change("PAGE!!oboss", true);refreshStage(); },
+                winDialogue: 'ops_bossclear'
+            }),
+        },
+    },
+    
+    width: 11,
+    plans: {
+        safe: `
+            .....H.....
+            .....p.....
+            ....○○○|...
+            ...|○○○○.|.
+            .|.○○○○○...
+            ..a○○○○○t..
+            ...○○○○○...
+            .....A.....
+            ...........
+            ...........
+            ...........
+
+        `,
+        
+        danger: `
+            .....H.....
+            .....p.....
+            ....○○○|...
+            ...|@@@@.|.
+            .|.○○○○○...
+            ..a○○W○○t..
+            ...○○○○○...
+            .....A.....
+            ...........
+            ...........
+            ...........
+
+        `
+    },
+    
+    getPlan: function() {
+        switch(check("PAGE!!g_o_r_translation")) {
+            case "cleared": return this.plans.safe
+            default: return this.plans.danger
         }
     },
-    width: 11,
-    plan: `
-        .....H.....
-        .....p.....
-        ....○○○|...
-        ...|○○○○.|.
-        .|.○○○○○...
-        ..a○○W○○t..
-        ...○○○○○...
-        .....A.....
-        ...........
-        ...........
-        ...........
-    `,
 
     html: `
         <canvas class="golemceiling dullrug" sprite="/img/textures/blackstaticSTILL.gif" fit="auto" repeat="repeat" baseWidth="[wallW]" baseHeight="[wallH]"></canvas>

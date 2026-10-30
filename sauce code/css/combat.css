@@ -18,28 +18,35 @@
     --img: url(/img/placeholdportrait.gif);
 }
 
+/* low intensity combat backgrounds */
+body[combat_background_preference="subdued"] #combat::before,
+body[combat_background_preference="subdued"] #combat::after {
+    filter: brightness(50%) contrast(70%) blur(1px) !important
+}
+
 .team {
     display: flex;
-    width: 100%;
+    row-gap: 3em;
     justify-content: center;
     position: absolute;
     transition: 400ms cubic-bezier(.55,0,.39,1.26);
-    z-index: 101;
+    z-index: 105;
 }
 
 #ally-team {
-    bottom: 5vh;
+    bottom: 3em;
+    flex-wrap: wrap;
 }
 
 #enemy-team {
-    top: 5vh;
+    top: 3em;
 }
 
 .actor {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #000000d4;
+    background: rgb(from var(--dark-color) r g b / 0.83); /*#000000d4*/
     min-width: 15vw;
     padding: 0.5vw 1vw;
     margin: 0 5px;
@@ -50,11 +57,15 @@
     z-index: 2;
 }
 
-#ally-team .actor, .actor.dead {
+.actor.current-turn {
+    box-shadow: 0px 0px 0px 3px var(--neutral-color);
+}
+
+.actor.allyactor, .actor.dead {
     background-color: var(--dark-color);
 }
 
-:root.bigmode div#combat #ally-team .actor {
+:root.bigmode div#combat .actor.allyactor {
     min-width: 20vw;
 }
 
@@ -77,6 +88,10 @@
     background-size: auto 30px;
     background-repeat: no-repeat;
     background-position: 95% 95%;
+}
+
+.actor.aiming .statusbg {
+    display: none;
 }
 
 .actor .clickbox {
@@ -148,9 +163,8 @@
     min-width: 4em;
     text-align: center;
     text-transform: uppercase;
-    margin-bottom: 0.25em;
     font-family: barcodetext;
-    background: #000000ad;
+    background: rgb(from var(--dark-color) r g b / 0.68) /*#000000ad*/;
     padding: 0.1em;
 }
 
@@ -158,7 +172,7 @@
     color: var(--obesk-color);
 }
 
-#ally-team .actor .name {
+.actor.allyactor .name {
     color: var(--friend-color);
 }
 
@@ -189,6 +203,24 @@
     z-index: 5;
 }
 
+.actor:not(.status-overflow) .statuses .status-subeffect {
+    margin-left: 2em;
+    margin-bottom: 0.5em;
+}
+
+.actor:not(.status-overflow) .status-subeffect::after {
+    content: "";
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--border-color);
+    position: absolute;
+    left: 0;
+    transform: translate(-150%, -25%);
+    width: 2em;
+    height: 0.5em;
+    z-index: -1;
+}
+
 .statuses:hover {
     background: black;
 }
@@ -201,7 +233,9 @@
     margin-left: 0.5em;      
 }
 
-.compactor .statuses .status-effect, .statuses .status-effect::before {
+.compactor .statuses .status-effect, 
+.statuses .status-effect::before,
+.ps-statuses .status-effect {
     content: "";
     position: relative;
     background-image: var(--img);
@@ -230,6 +264,7 @@
 }
 
 .statuses .status-effect {
+    text-shadow: 1px 1px 6px var(--border-color);
     z-index: 2;
 }
 
@@ -246,11 +281,10 @@
 .ticktype-special .status-count::before { content: "[" }
 .ticktype-special .status-count { color: var(--neutral-color); border-radius: 0 !important }
 
-.actor .actions, .parasite-actions .actions {
+.actor .actions {
     position: absolute;
     top: 0;
     left: 0;
-    padding: 10px;
     width: 100%;
     z-index: 2;
     background: var(--dark-color);
@@ -260,6 +294,8 @@
     transform: translateY(-100%);
     transform-origin: bottom;
     transition: opacity 200ms linear, transform 400ms cubic-bezier(.55,0,.39,1.26);
+    gap: 5px;
+    padding: 10px;
 }
 
 .actor.disable .actions {
@@ -281,7 +317,7 @@
     opacity: 0;
 }
 
-.actions .action, .actions .item-container {
+.actions .action {
     position: relative;
     display: flex;
     justify-content: center;
@@ -292,7 +328,6 @@
     background: var(--dark-color);
     color: var(--neutral-color);
     border: 1px solid;
-    margin: 5px;
     padding: 5px;
     cursor: pointer;
     transition: transform 200ms cubic-bezier(.55,0,.39,1.26);
@@ -305,13 +340,12 @@
     cursor: not-allowed;
   }
 
-.actor.dead, #ally-team .actor.dead, .actor.last-stand, #ally-team .actor.last-stand {
+.actor.dead, .actor.allyactor.dead, .actor.last-stand, .actor.allyactor.last-stand {
     color: var(--dark-color);
     background: var(--bright-color);
 }
 
 .actor.dead .name, .actor.last-stand .name {
-    color: var(--dark-color) !important;
     background: transparent;
 }
 
@@ -327,6 +361,7 @@
     text-shadow: initial;
     font-size: 1em;
     width: 100%;
+    border-color: var(--obesk-color);
 }
 
 .actor.last-stand .hp::after {
@@ -337,8 +372,11 @@
     white-space: nowrap;
 }
 
+.actor.last-stand.inactive-stand .hp::after {
+    content: "!!inactive!!"
+}
+
 .actor.last-stand {
-    pointer-events: none;
     box-shadow: 0px 0px 10px var(--obesk-color);
     border: 2px solid var(--obesk-color);
     box-sizing: border-box;
@@ -349,27 +387,17 @@
     display: none;
 }
 
-.item-container summary {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    padding: 0.25em;
-}
-
 .actions .item-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: unset;
-    transform: translateY(-100%);
     font-size: 0.75em;
-    cursor: unset;
-    display: block;
-    width: 100%;
-    flex-basis: 100%;
     background: var(--neutral-color);
     color: var(--dark-color);
     overflow: hidden;
+    display: flex;
+    width: 110%;
+    gap: 5px;
+    padding: 0px 5px;
+    border: 1px solid;
+    margin: -10px -10px 0px -10px;
 }
 
 .item-container .action {
@@ -443,7 +471,8 @@
 }
 
 .targeting #enemy-team {
-    transform: translateY(50vh);
+    z-index: 102;
+    transform: translateY(calc(50vh - 50%));
 }
 
 .targeting .status-untargetable {
@@ -483,6 +512,33 @@
     transform: scale(1.1);
 }
 
+/* hitpredict stuff for ing update*/
+.hitpredict {
+    pointer-events: none;
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    font-size: 0.65rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: var(--bright-color);
+    background: var(--dark-color);
+    padding: 0.25em;
+    transform: translateY(-100%);
+}
+
+.hitpredict:empty {
+    display: none;
+}
+
+.predstat::before {
+    content: attr(stat) "::";
+    display: inline-block;
+}
+
+
 /* STATUS EFFECTS */
 .actor .statusbg, .actor .statusbg:after, .actor .statusbg:before, .actor .statusfx, .use-message.use-crit:after {
     display: flex;
@@ -502,6 +558,19 @@
 
 .actor.dead:not(.targetable) .statusbg {
     display: none;
+}
+
+.actor .statusbg::after {
+    z-index: 30;
+    top: unset;
+    left: unset;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--dark-color) 0%, var(--dark-color) 30%, transparent 100%);
+}
+
+.actor.allyactor .statusbg::after {
+    transform: translateX(25%)
 }
 
 .actor.status-puncture .statusfx-puncture, .actor.status-rot .statusfx-rot {
@@ -594,14 +663,16 @@
     animation: hover-minor 5s ease-in-out infinite alternate;
 }
 
-.actor.status-fear .statusfx-fear {
+.actor.status-fear .statusgen-fear,
+.actor.status-terror .statusgen-fear {
     background-image: radial-gradient(circle, rgb(0, 0, 0) 50%, rgba(0,0,0,0) 100%), url(/img/textures/fear.gif);
     background-position: center;
     background-size: auto 100%;
     mix-blend-mode: hue;
 }
 
-.actor.status-madness.status-fear .statusfx-fear {
+.actor.status-madness.status-fear .statusgen-fear,
+.actor.status-madness.status-terror .statusgen-fear {
     background-image: radial-gradient(circle, rgb(0, 0, 0) 50%, rgba(0,0,0,0) 60%), url(/img/textures/fear.gif), url(/img/textures/blflametran.gif);
     background-size: auto;
     mix-blend-mode: unset;
@@ -623,7 +694,7 @@
     background-position: center;
 }
 
-body[quality="low"] .actor.status-fear .statusfx-fear {
+body[quality="low"] .actor.status-fear .statusgen-fear {
     mix-blend-mode: unset;
     opacity: 0.75;
 }
@@ -665,6 +736,21 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
     background-repeat: no-repeat;
 }
 
+.actor .statusgen-targeted {
+    background-image: url(/img/sprites/combat/crosshair.gif), url(/img/textures/spotgradientinversemicro.gif);
+    height: 100%;
+    width: 40%;
+    left: 2%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 50;
+}
+
+body[quality="regular"] .actor .statusgen-targeted {
+    animation: SPIN 10s linear infinite;
+}
+
 .actor.status-million_teeth {
     border-color: var(--neutral-color) !important;
     border-style: dashed !important;
@@ -689,9 +775,49 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
     display: none;
 }
 
+.actor.status-story_movefoe .hp,
 .actor.status-shroud_vekoa .hp, 
 .actor.status-shroud_vekoa .bp { display: none }
+.actor.status-story_movefoe .name,
 .actor.status-shroud_vekoa .name { margin-bottom: 0 }
+
+/* ing new status stuff */
+.statusfx.statusfx-counter {
+    top: unset;
+    left: unset;
+    background: url(/img/textures/claws.gif);
+    z-index: 20;
+    clip-path: polygon(100% 100%, 100% 0%, 93% 11.15%, 99.03% 19.04%, 94.99% 28.25%, 100% 44.5%, 92.98% 53.85%, 100% 65.5%, 91.76% 77.79%, 100% 82.75%, 95.37% 90.5%, 84.73% 98.34%, 72.64% 93.01%, 64% 98.95%, 52.38% 95.25%, 43.18% 98.34%, 29.93% 93.01%, 16.68% 98.34%, 4.75% 90.5%, 0% 75.75%, 4.82% 61.88%, 0% 50%, 4.89% 33.25%, 0% 22.5%, 4.89% 11.15%, 7.25% 0%, 14.75% 7.7%, 22.25% 0%, 33.27% 7.69%, 44.3% 0%, 56.7% 5.07%, 71.6% 3.33%, 85.96% 7.69%, 100% 0%, 0% 0%, 0% 100%);
+}
+
+.targeting .targetable.status-counter .clickbox {
+    display: flex;
+    justify-content: center;
+}
+
+.targeting .targetable.status-counter:not(.status-stun) .clickbox::before {
+    content: "!!COUNTERING!!";
+    font-family: barcodetext;
+    font-size: 2rem;
+    color: var(--neutral-color);
+    background: black;
+    padding: 0.25em;
+    top: 0;
+    position: absolute;
+    width: auto;
+    text-align: center;
+    background: black;
+    transform: translateY(-150%);
+    --baseTransform: translateY(-150%);
+    animation: SHAKE 1s linear infinite;
+}
+
+.actor.targetable.status-counter .statusbg::before {
+    background-image: url(/img/textures/rot.png);
+    z-index: 20;
+    background-color: transparent;
+    background-size: auto 100%;
+}
 
 /* PASSIVES - like statuses but more compact and out of the way */
 .actor .passives {
@@ -706,7 +832,6 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
     height: auto;
     transform: translateY(99%);
     margin: auto;
-    z-index: -11;
 }
 
 .passives .status-effect {
@@ -731,7 +856,7 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
 #party-menu .passives .status-effect { display: flex; }
 
 .passives .status-effect.bad { border-color: var(--obesk-color); }
-.passives .status-effect.unique { border-color: var(--neutral-color); }
+.passives .status-effect.unique, .passives .status-effect.complex { border-color: var(--neutral-color); }
 
 .passives .status-effect::after, .passives .status-effect::before {
     content: "";
@@ -751,8 +876,58 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
     height: 140%;
 }
 
+.passives .status-effect.disabled {
+    border-color: var(--bright-color);
+    filter:  grayscale(1) contrast(3);
+}
+
+.passives .status-effect.disabled::before, 
+.passives .status-effect.disabled::after {
+    opacity: 0.5;
+}
+
+.status-effect.passivetype-item {
+    position: absolute;
+    top: -0.25em;
+    left: 0.25em;
+    transform: translateY(-110%);
+    z-index: 2;
+    border: 1px var(--neutral-color) dashed;
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.status-effect.passivetype-item ~ .passivetype-item {
+    transform: translate(120%, -110%);
+}
+
+.status-effect.passivetype-item::after,
+.status-effect.passivetype-item::before {
+    display: none;
+}
+
+.crittamode .status-effect.passivetype-item {
+    left: 2.5em; /* bc of componentdisplay */
+}
+
 .actor.dead .passives {
     filter: grayscale(1) contrast(2) invert(1);
+}
+
+.passives .warped-passive {
+    border-color: transparent;
+}
+
+.passives .warped-passive::before {
+    background: url(/img/textures/heavy_warp.gif);
+    animation: SPIN 1000ms steps(15) infinite;
+    width: 130%;
+    height: 130%;
+    background-color: var(--bright-color);
+}
+
+.passives .ctrl-passive {
+    border-color: var(--bastard-color) !important;
 }
 
 .passive-visionary { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/lightbg.gif) !important; }
@@ -761,6 +936,18 @@ body[quality="low"] .actor.status-fear .statusfx-fear {
 .passive-impatient { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/clawsbg.gif) !important; }
 .passive-ichor_last_stand { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/ichorbg.gif) !important; }
 .passive-retaliation { background-image: var(--img, var(--fallback-status-image)), url(/img/sprites/combat/passives/bonebg.gif) !important; }
+
+.status-effect.passive-ctrl {
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    right: 0;
+    top: -1em;
+}
+
+.status-effect.passive-ctrl::after {
+    display: none;
+}
 
 /* ACTION TEXT (vestigial) */
 .use-message {
@@ -889,6 +1076,116 @@ combat-scene[state="targeting"] .effect-message.fading {
     z-index: 11;
 }
 
+/* experimental and shelved styling for truncating minimizable effects */
+/*
+#combat .message-actions {
+    text-align: center;
+}
+
+#combat .message-actions .minimizable .action-hits,
+#combat .message-actions .minimizable .action-text {
+    display: none;
+}
+
+#combat .message-actions .important {
+    text-align: left;
+}
+
+#combat .message-actions .minimizable {
+    display: inline-flex;
+    border: unset;
+    box-shadow: unset;
+    padding: unset;
+    position: static;
+    margin: 0.5em 0;
+}
+
+#combat .message-actions .subaction.noreason {
+    display: none;
+}
+
+#combat .message-actions .subaction.minimizable[totalhits]:not(.important)::after {
+    content: "x" attr(totalhits);
+    display: inline;
+    position: relative;
+    top: unset;
+    left: unset;
+    box-shadow: unset;
+    margin-top: auto;
+    width: auto;
+    font-size: 0.75em;
+}
+
+#combat .message-actions .minimizable::before {
+    content: "++";
+}
+
+#combat .message-actions .minimizable ~ .minimizable.subaction::before {
+    content: "::";
+    display: inline;
+}
+
+#combat .message-actions .minimizable .action-reason::after {
+    display: none;
+}
+*/
+
+#combat .effect-message {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+#combat.unshifted .message-actions .subaction.minimizable {
+    display: none !important;
+}
+
+#combat.unshifted .message-actions .important:last-of-type {
+    border-bottom: var(--border-size) solid var(--neutral-color);
+}
+
+#combat.unshifted .message-actions .subaction.first-minimizable {
+    display: block !important;
+    border: unset !important;
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-style: italic;
+    font-size: 10px;
+    color: var(--neutral-color);
+    transform: translateY(100%);
+    padding: 0.5em;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#combat.unshifted .message-actions .first-minimizable::after {
+    content: "NOTE::'full detail in log'";
+    box-shadow: unset !important;
+    position: relative;
+    padding: 0.5rem;
+    display: inline-block;
+    width: auto !important;
+}
+
+#combat.unshifted .message-actions .first-minimizable .action-main,
+#combat.unshifted .message-actions .first-minimizable .action-hits {
+    display: none;
+}
+
+#combat.unshifted .message-actions .first-minimizable {
+    display: block !important;
+    border: unset !important;
+    padding: 0 !important;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-style: italic;
+    font-size: 10px;
+    color: var(--neutral-color);
+    transform: translateY(100%);
+    background: black;
+    opacity: 0.75;
+}
+
 @keyframes CRIT-SLIDE-IN {
     0% { transform: scaleX(0.25) rotate(20deg) translateY(-50vh); opacity: 0; }
 }
@@ -921,6 +1218,17 @@ combat-scene[state="targeting"] .effect-message.fading {
     z-index: -10;
 }
 
+.combatbg { /* special new class for doing a custom background element*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #enemy-graphic {
     position: absolute;
     display: flex;
@@ -930,6 +1238,10 @@ combat-scene[state="targeting"] .effect-message.fading {
     width: 100%;
     height: 100%;
     transition: opacity 2s ease-in-out;
+}
+
+#combat.downshift #enemy-graphic {
+    top: 10%;
 }
 
 #combat.temp-perspective #enemy-graphic {
@@ -1088,19 +1400,19 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
     /* special choice screen attack, but for movefriend */
-.sprite-wrapper.special_choice-movefriend {
+.sprite-wrapper.special_choice-zoom {
     transform: scale(2);
     z-index: 2;
 }
 
 .choice-attack {
-    transform: translateY(10vh);
-    z-index: 102;
     position: fixed;
     background: black;
     padding: 5em;
     border: 2px dashed;
     color: var(--neutral-color);
+    z-index: 150;
+    box-shadow: 0px 0px 100px 100px var(--dark-color);
 }
 
 .choice-title {
@@ -1108,9 +1420,17 @@ combat-scene[state="targeting"] .effect-message.fading {
     margin-bottom: 1em;
 }
 
+.choice-title.subtext {
+    color: var(--bastard-color);
+    font-size: 0.75em;
+    font-family: sharetech;
+}
+
 .choice-attack .button {
     display: block;
     transition: 200ms ease-in-out;
+    font-family: spacemono;
+    font-size: 1em;
 }
 
 .choice-attack .button ~ .button {
@@ -1121,160 +1441,461 @@ combat-scene[state="targeting"] .effect-message.fading {
     transform: scale(1.1);
 }
 
+
+
+/* effectLines - a fun visual animation for async effects and whatnot */
+.effectline {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: var(--originX);
+    top: var(--originY);
+    width: var(--distance);
+    color: var(--color, var(--neutral-color));
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, var(--color, var(--neutral-color)) 35%, var(--color, var(--neutral-color)) 65%, rgba(0, 0, 0, 0) 100%);
+    height: 2px;
+    transform-origin: 0 50%;
+    transform: rotate(var(--angle));
+    pointer-events: none;
+    z-index: 200;
+    transition: opacity 400ms;
+    opacity: 0;
+}
+
+.effectline.drawn {
+    opacity: 1;
+}
+
+.effectline.baseline {
+    animation: FADE-OUT 400ms ease-in-out;
+    animation-delay: var(--duration, 1s);
+    animation-fill-mode: forwards;
+}
+
+.effectline.baseline.icon {
+    animation-delay: var(--duration, 3s);
+}
+
+.effectline.combat-hit {
+    z-index: 201;
+    --count: 0;
+}
+
+@keyframes FADE-OUT {
+    0% { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+/* the main effects */
+.effectline.baseline.hitmark::after,
+.effectline.baseline.icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 20px dashed;
+    animation: BASELINE_PULSE 400ms ease-out;
+    animation-fill-mode: forwards;
+    border-radius: 100%;
+}
+
+.effectline.icon {
+    height: 0px;
+    border: 1px dashed;
+    border-radius: 100%;
+}
+
+.effectline.baseline.icon::after {
+    background: var(--icon);
+    background-size: cover;
+    border: 1px solid;
+    left: unset;
+    right: 0;
+    width: 64px;
+    height: 64px;
+    --baseTransform: translateX(calc(var(--count, 0) * -75%)) translateY(var(--variation, 0)) rotate(var(--uprightAngle));
+    animation: BASELINE_ICON 3s cubic-bezier(0,.32,0,.93);
+    animation-fill-mode: forwards;
+    opacity: 0.95;
+    box-shadow: 0px 0px 10px;
+}
+
+/* keeps icons upright and in sight based on team*/
+.effectline.selforigin.icon {
+    --lineRotation: -90deg; 
+    transform: rotate(var(--lineRotation));
+}
+
+.effectline.selforigin.icon.enemyflip {
+    --lineRotation: 90deg
+}
+
+.effectline.baseline.icon.selforigin::after {
+    animation: BASELINE_ICON_SELF 5s cubic-bezier(0,.32,0,.93) reverse;
+    --baseTransform: rotate(var(--uprightAngle)) rotate(calc(var(--lineRotation) * -1));
+    animation-fill-mode: forwards;
+}
+
+/* ing todo: this !important shit is so ass make fun of me if i don't fix this */
+.effectline.combat-hit::before, .effectline.baseline.text::before {
+    content: attr(amt);
+    position: absolute;
+    right: 0;
+    --baseTransform: translateX(calc(var(--count, 0) * -33%)) translateY(var(--variation, 0)) rotate(var(--uprightAngle));
+    font-size: 3rem;
+    padding: 0.25em;
+    background: black;
+    animation: BASELINE_HIT 5s ease-out;
+    animation-fill-mode: forwards;
+    background: url(/img/textures/spotgradientinversemicro.gif) !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.95;
+}
+
+.effectline.baseline.text::before {
+    content: attr(text);
+    position: absolute;
+    right: unset;
+    background: rgba(0, 0, 0, 0.438) !important;
+    animation: unset !important;
+    transform: rotate(var(--uprightAngle)) !important;
+}
+
+.effectline.baseline.text.selforigin::before {
+    content: attr(text);
+    position: absolute;
+    right: unset;
+    background: black !important;
+    animation: unset !important;
+    transform: rotate(90deg) !important;
+}
+
+.effectline.combat-hit.type-barrier::before {
+    background-image: url(/img/sprites/combat/shield.gif), url(/img/textures/spotgradientinversemicro.gif) !important;
+    background-size: 50%, cover !important;
+    background-position: top right, center !important;
+    padding: 0.5em;
+}
+
+.effectline.combat-hit.result-crit::before {
+    border-color: var(--neutral-color)
+}
+
+.effectline.combat-hit.result-miss::before,
+.effectline.combat-hit:not([amt])::before {
+    display: none !important;
+}
+
+@keyframes BASELINE_ICON {
+    0% { transform: translateX(calc(-1 * (var(--distance) * 0.75))) scale(0.25) var(--baseTransform); }
+    50% { transform: translateX(0) var(--baseTransform) }
+    90% { transform: scale(0.7) translateX(0) var(--baseTransform) }
+    100% { transform: scale(0.25) translateX(0) var(--baseTransform) }
+}
+
+@keyframes BASELINE_ICON_SELF {
+    0% { transform: translateX(0) scale(0.25) var(--baseTransform); opacity: 1; }
+    100% { transform: rotate(var(--angle)) translateX(200%) scale(1.25) var(--baseTransform); opacity: 0.8; }
+}
+
+@keyframes BASELINE_HIT {
+    0% { transform: translateX(calc(-1 * (var(--distance) * 0.25))) scale(0.75) var(--baseTransform); }
+    40% { transform: var(--baseTransform) }
+    100% { transform: scale(0.8) var(--baseTransform) }
+}
+
+@keyframes BASELINE_PULSE {
+    0% { transform: translateX(-50%); opacity: 0; }
+    10% { transform: translateX(-50%) rotate(0deg); opacity: 1; }
+    90% { transform: translateX(calc(var(--distance) - 50%)) rotate(360deg); opacity: 1;}
+    100% { transform: translateX(calc(var(--distance) - 50%)); opacity: 0;}
+}
+
+.effectline.thick {
+    height: 10px;
+    border: unset;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 0) 0%, var(--color, var(--neutral-color)) 35%, var(--color, var(--neutral-color)) 65%, rgba(0, 0, 0, 0) 100%);
+}
+
+.effectline.thick.mega {
+    height: 50px;
+}
+
+.effectline.bstrdaim {
+    height: 20px;
+    background: url(/img/textures/chromebmicro.gif);
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+
+.effectline.bstrdaim::before {
+    content: "WATCH OUT!!";
+    --baseTransform: rotate(var(--uprightAngle));
+    background: rgba(0, 0, 0, 0.75);
+    padding: 0.25em;
+    font-family: bastard;
+    font-size: 3rem;
+    opacity: 1;
+    animation: SHAKE 200ms steps(5) infinite;
+    z-index: 220;
+}
+
+.effectline.bstrdaim.icon::after {
+    background-color: black;
+}
+
+.effectline.fear {
+    height: 20px;
+    background: url(/img/textures/fearstill.gif);
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;    
+}
+
+.effectline.destabilizebonus {
+    height: 20px;
+    background: url(/img/textures/heavy_warp.gif);
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;    
+}
+
+.effectline.redirection {
+    height: 40px;
+    background-image: url(/img/textures/redirection_small.gif);
+    background-color: var(--dark-color);
+    border: 2px solid var(--friend-color);
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;    
+}
+
+.effectline.redirection.text::before {
+    color: var(--bright-color);
+    background: var(--dark-color);
+    border: inherit;
+    font-size: 1rem;
+    opacity: 1;
+}
+
+.effectline.redirection.redirect-warning {
+    height: 10px !important;
+    border-top-left-radius: unset;
+    transform: rotate(var(--angle)) translateY(5vh);
+}
+
+.effectline.redirection.redirect-warning.text::before {
+    font-size: 0.75em;
+    box-shadow: 0px 0px 10px var(--friend-color);
+    border-radius: 100%;
+    padding: 0.5em 1em;
+}
+
+.effectline.componentline {
+    background: var(--background);
+    background-color: var(--color);
+    height: 5px;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+
+.effectline.thick.spiked {
+    background-image: url(/img/textures/spiked.gif), url(/img/textures/dithertilemagentasparse.gif);
+}
+
 /* hit floaters */
 .floatbox {
     position: absolute;
-    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3;
 }
 
 .floatbox .floater {
     position: absolute;
+    opacity: 0;
     z-index: 2;
     --offset: 0%;
     --position: 0;
+    --mult: 1;
 }
 
 .floatbox .floater.hitfloat {
     z-index: 3;
+    --mult: 2;
+    font-size: 1.5rem;
 }
 
-.floatbox .floater::after {
-    content: attr(amt);
+.floatbox .floater.statusfloat {
+    --mult: 1.25;
+}
+
+.floatbox .floater.arbfloat {
+    --mult: 2.5;
+}
+
+.floatbox .floatcontent {
     display: inline-block;
-    font-size: 4em;
+    font-size: 3em;
     --baseTransform: rotate(calc(var(--angle) * 1deg)) translateX(calc(var(--position) * 1%));
     transform: var(--baseTransform);
     padding: 0.25em;
-    background: #000000d4;
+    background: rgb(from var(--dark-color) r g b / 0.83) /*#000000d4*/;
+    opacity: 0;
 }
 
-.floatbox .floater.result-true.amt-positive::after, 
-.floatbox .floater.result-crit.amt-positive::after {
+.floatbox .floater.result-true.amt-positive .floatcontent, 
+.floatbox .floater.result-crit.amt-positive .floatcontent,
+.effectline.combat-hit.result-crit.amt-positive::before,
+.effectline.combat-hit.result-true.amt-positive::before {
     color: var(--bright-color);
-    text-shadow: 1px 1px var(--dark-color), 2px 2px var(--dark-color);
+    text-shadow: 1px 1px var(--dark-color), 2px 2px var(--obesk-color);
     background-image: url(/img/textures/rottile_small.png);
     background-size: cover;
     background-position: center;
 }
 
-.floatbox .floater.result-crit.amt-positive::after {
+.floatbox .floater.result-crit.amt-positive .floatcontent,
+.effectline.combat-hit.result-crit.amt-positive::before {
     content: attr(amt) "!";
     color: var(--bright-color);
-    text-shadow: 2px 2px var(--obesk-color), -2px -2px var(--neutral-color), 5px 5px var(--neutral-color);
+    text-shadow: 2px 2px var(--obesk-color), -2px -2px var(--neutral-color);
 }
 
-.floatbox .floater.result-true.amt-negative::after, 
-.floatbox .floater.result-crit.amt-negative::after {
+.floatbox .floater.result-true.amt-negative .floatcontent, 
+.floatbox .floater.result-crit.amt-negative .floatcontent, 
+.effectline.combat-hit.result-true.amt-negative::before {
     color: var(--bright-color);
-    text-shadow: 1px 1px 5px var(--dark-color), 2px 2px var(--dark-color);
+    text-shadow: 1px 1px 5px var(--dark-color), 2px 2px var(--friend-color);
     background-image: url(/img/textures/regen_small.png);
     background-size: cover;
     background-position: center;
 }
 
-.floatbox .floater.result-crit.amt-negative::after {
+.floatbox .floater.result-crit.amt-negative .floatcontent,
+.effectline.combat-hit.result-crit.amt-negative::before {
     content: attr(amt) "!";
     color: var(--bright-color);
-    text-shadow: 2px 2px var(--friend-color), -2px -2px var(--neutral-color), 5px 5px var(--neutral-color);
+    text-shadow: 2px 2px var(--friend-color), -2px -2px var(--neutral-color);
 }
 
-.floatbox .floater.result-true.amt-positive:not(.type-barrier):not(.amt-blocked)::after {
+.floatbox .floater.result-true.amt-positive:not(.type-barrier):not(.amt-blocked) .floatcontent,
+.effectline.combat-hit.result-true.amt-positive:not(.type-barrier):not(.amt-blocked)::before {
     content: "-" attr(amt);
 }
 
-.floatbox .floater.result-crit.amt-positive:not(.type-barrier):not(.amt-blocked)::after {
+.floatbox .floater.result-crit.amt-positive:not(.type-barrier):not(.amt-blocked) .floatcontent,
+.effectline.combat-hit.result-crit.amt-positive:not(.type-barrier):not(.amt-blocked)::before {
     content: "-" attr(amt) "!";
 }
 
-.floatbox .floater.statusfloat::after {
+.floatbox .floater.blocked { /* shelving the '0's for now */
+    display: none !important;
+}
+
+.floatbox .floater.statusfloat .floatcontent {
     content: attr(amt) " " attr(status);
     white-space: nowrap;
     font-size: 3em;
     z-index: 1;
 }
 
-.floatbox .floater.statusfloat.status-good::after {
+.floatbox .floater.statusfloat[passive] .floatcontent {
+    border: 5px solid var(--neutral-color);
+}
+
+.floatbox .floater.statusfloat.status-good .floatcontent {
     color: var(--friend-color)
 }
 
-.floatbox .floater.statusfloat.status-bad::after {
+.floatbox .floater.statusfloat.status-complex .floatcontent {
+    color: var(--neutral-color)
+}
+
+.floatbox .floater.statusfloat.status-bad .floatcontent {
     color: var(--obesk-color)
 }
 
-.floatbox .floater.arbfloat::after {
+.floatbox .floater.arbfloat .floatcontent {
     font-size: 2.5em;
     content: attr(string)
 }
 
-.floatbox .floater.arbfloat.good-true::after {
+.floatbox .floater.arbfloat.good-true .floatcontent {
     color: var(--friend-color)
 }
 
-.floatbox .floater.arbfloat.good-false::after {
+.floatbox .floater.arbfloat.good-false .floatcontent {
     color: var(--obesk-color)
 }
 
-.floatbox .floater.arbfloat.action::after {
+.floatbox .floater.arbfloat.action .floatcontent {
     color: var(--neutral-color)
 }
 
-.floatbox .floater.arbfloat.fate::after {
+.floatbox .floater.arbfloat.fate .floatcontent {
     color: var(--dark-color);
     background: url(/img/textures/warp.png);
     background-position: center;
     background-color: white;
 }
 
-.floatbox .floater.type-barrier.amt-positive::after {
+.floatbox .floater.type-barrier.amt-positive .floatcontent {
     background-image: url(/img/textures/spotgradientinversemicro.gif), url(/img/sprites/combat/shield.gif), url(/img/textures/rottile_small.png);
     background-size: 100%, cover, cover;
     background-repeat: no-repeat, repeat;
 }
 
-.floatbox .floater.type-barrier.amt-positive::after {
+.floatbox .floater.type-barrier.amt-positive .floatcontent {
     color: var(--friend-color);
 }
-
-#ally-team .floatbox {
-    top: 0;
-    bottom: unset;
-}
-
-
-
 
 .floatbox .floater.floating {
     position: absolute;
     z-index: 2;
+    opacity: 1;
     animation: FLOATER-FADE calc((var(--size, 1) + 1) * 1.5s) linear;
     animation-fill-mode: forwards;
     --offset: 0%;
     --position: 0;
 }
 
-.floatbox .floater.floating::after {
+.floatbox .floater.floating .floatcontent {
+    opacity: 1;
     animation: FLOATER-ENEMY calc(var(--size, 1) * 1s) cubic-bezier(0,1.11,1,1.01);
     animation-fill-mode: forwards;
 }
 
-#ally-team .floatbox .floater.floating::after {
+.actor.allyactor .floatbox .floater.floating .floatcontent {
+    opacity: 1;
     animation: FLOATER-ALLY calc(var(--size, 1) * 1s) cubic-bezier(0,1.11,1,1.01);
     animation-fill-mode: forwards;
 }
 
+.floatbox .statusfloat .floatcontent::before {
+    content: "";
+    background: var(--icon);
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-size: cover;
+    border-radius: 100%;
+    vertical-align: bottom;
+    margin-right: 0.25em;
+    border: 1px solid;
+}
+
 @keyframes FLOATER-ENEMY {
     000% {transform: var(--baseTransform) scale(0.0001) translateY(0%); }
-    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(200% + var(--offset))); }
+    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(var(--mult) * 200px + var(--offset))); }
 }
 
 @keyframes FLOATER-ALLY {
     000% {transform: var(--baseTransform) scale(0.0001) translateY(0%); }
-    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(-200% - var(--offset))); }
+    100% {transform: var(--baseTransform) scale(calc((var(--size, 1.5)) * 0.5)) translateY(calc(var(--mult) * -200px - var(--offset))); }
 }
 
 @keyframes FLOATER-FADE {
@@ -1350,31 +1971,27 @@ combat-scene[state="targeting"] .effect-message.fading {
     opacity: 0;
 }
 
-#ally-team .actor .combat-dialogue {
+.actor.allyactor .combat-dialogue {
     top: 0;
     transform: translateY(calc(-100% - 2em));
     text-shadow: 1px 1px var(--friend-color);
     transform-origin: bottom;
 }
 
-#ally-team .actor .combat-dialogue:empty {
+.actor.allyactor .combat-dialogue:empty {
     transform: translateY(calc(-100% - 2em)) scaleY(0.0001);
     opacity: 0;
 }
 
-#ally-team .actor .combat-dialogue::after {
+.actor.allyactor .combat-dialogue::after {
     transform: rotate(180deg) translateY(-100%);
     top: unset;
     bottom: 0;
 }
 
-#enemy-team .actor .combat-dialogue {
-    transform: translateY(150%);
-}
-
 .actor.speaking {
     z-index: 20;
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 /* general animations */
@@ -1385,8 +2002,8 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
 @keyframes hover {
-    0% { transform: translateY(-5vh)}
-    100% { transform: translateY(2vh)}
+    0% { transform: var(--baseTransform) translateY(-5vh)}
+    100% { transform: var(--baseTransform) translateY(2vh)}
 }
 
 @keyframes stage-hover {
@@ -1395,8 +2012,8 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
 @keyframes hover-half {
-    0%  { transform: translateY(-2.5vh)}
-    100% { transform: translateY(1vh)}
+    0%  { transform: var(--baseTransform) translateY(-2.5vh)}
+    100% { transform: var(--baseTransform) translateY(1vh)}
 }
 
 @keyframes stage-hover-half {
@@ -1448,9 +2065,9 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
 @keyframes devil-heal {
-    0%, 50%, 100% { transform: scaleX(1) scaleY(1)}
-    25% { transform: scaleX(0.5) scaleY(1.5) skew(-2deg)}
-    75% { transform: scaleX(0.5) scaleY(1.5) skew(2deg)}
+    0%, 50%, 100% { transform: var(--baseTransform) scaleX(1) scaleY(1)}
+    25% { transform: var(--baseTransform) scaleX(0.5) scaleY(1.5) skew(-2deg)}
+    75% { transform: var(--baseTransform) scaleX(0.5) scaleY(1.5) skew(2deg)}
 }
 
 @keyframes spying {
@@ -1638,7 +2255,7 @@ combat-scene[state="targeting"] .effect-message.fading {
 }
 
 .in-golem-vortex .team .actor.speaking {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .bh-action {
@@ -1800,6 +2417,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
     padding: calc(0.5vw + 2em) 0.5vw calc(0.5vw + 1.5em);
     margin: 0.5vw 0;
     border: 1px solid;
@@ -1824,9 +2442,15 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     z-index: 1000;
 }
 
-.reorganizable .partymember.partymember-akizet:not(.draggable) {
-    color: var(--obesk-color);
-    cursor: not-allowed;
+.partymember-akizet.draggable-mirror::after {
+    content: "AKIZET MUST REMAIN IN ACTIVE PARTY";
+    position: absolute;
+    color: var(--neutral-color);
+    white-space: nowrap;
+    bottom: 0;
+    transform: translateY(125%);
+    padding: 1em;
+    background: black;
 }
 
 .partymember.draggable {
@@ -1838,8 +2462,9 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     cursor: grabbing;
 }
 
-#party-menu:not(.e4menu) .partymember.draggable:nth-of-type(3) ~ .partymember {
+.reorganizable.reorganizing .partymember {
     color: var(--neutral-color);
+
 }
 
 .partymember-liner {
@@ -1851,7 +2476,6 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     font-size: 2.5em;
     text-transform: uppercase;
     overflow: hidden;
-    pointer-events: none;
 }
 
 .partymember-liner span, .partymember-liner button {
@@ -1865,6 +2489,13 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     top: unset;
     bottom: -0.5vw;
     font-size: 2em;
+    cursor: alias;
+}
+
+.partymember-class {
+    color: var(--bright-color);
+    border-bottom: 1px dashed var(--bright-color);
+    pointer-events: none;
 }
 
 .partymember-hp, .partymember-name {
@@ -1878,6 +2509,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
 .partymember-filler {
     flex-grow: 1;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .partymember-filler::after {
@@ -1917,6 +2549,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     padding: 0.5em 0;   
     text-transform: uppercase;
     display: flex;
+    --color: #ffffff73;
 }
 
 .partymember-action::before {
@@ -1926,6 +2559,11 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
 .partymember-action.windup-action::before {
     content: ":W";
     color: var(--neutral-color);
+}
+
+.partymember-action.itemaction::before {
+    content: '++';
+    color: var(--friend-color);
 }
 
 #party-members .party-title {
@@ -1938,20 +2576,17 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
 }
 
 .party-title::after {
-    content: "OBESK EQUIPPED WITH TIMESTOPPERS";
+    content: "OBESK EQUIPPED WITH TIMESTOPPERS\A DRAG TO ALTER ORDER";
     display: block;
     font-family: spacemono;
     font-size: 0.75rem;
     margin: 0.5em 0 0;
+    white-space: pre;
 }
 
 .party-title.party-inactive::after {
     content: "OBESK ON THE SIDELINES\A CLICK & DRAG OVER ACTIVE MEMBER TO SWAP";
     white-space: pre;
-}
-
-.e4menu .party-title::after {
-    content: "OBESK EQUIPPED WITH TIMESTOPPERS\A CLICK & DRAG OVER ACTIVE MEMBER TO SWAP PREFERRED ORDER"
 }
 
 .partymember-passives {
@@ -1969,6 +2604,20 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     max-height: 65%;
 }
 
+.passiveoverflow .partymember-passive {
+    width: 1em;
+    height: 1em;
+}
+
+.megaoverflow .partymember-passive {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+.partymember-passive.status-effect::after {
+    display: none;
+}
+
 .crittamember .partymember-name {
     font-family: spacemono;
     font-size: 1rem;
@@ -1979,17 +2628,12 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     opacity: 1;
 }
 
-:root.bigmode #party-menu {
-    width: 66vw;
-    transform: translateX(66vw)
-}
-
 .partymember-composition, #party-menu .partymember-composition {
 	width: 2rem;
 	height: 2rem;
 	position: absolute;
 	border-radius: 100%;
-	display: flex;
+	display: flex !important;
 	flex-wrap: wrap;
 	overflow: hidden;
 	border: 1px solid var(--neutral-color);
@@ -2046,15 +2690,267 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     filter: grayscale(1) contrast(2);
 }
 
-@media only screen and (max-width: 1200px) {
-    #party-menu {
-        width: 66vw;
-        transform: translateX(66vw)
-    }
+.partymember-gone partymember-equipment {
+    opacity: 0;
+}
 
-    :root.bigmode #party-inventory .item {
-        flex-basis: calc(50% - 10px);
-    }
+/* party menu - equipment slots and whatnot */
+.equipment-slot {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bright-color);
+}
+
+.equipment-slot ~ .equipment-slot {
+    margin-top: 0.25rem;
+}
+
+.equipment-slot.filled {
+    color: var(--friend-color);
+    border-radius: 100%;
+}
+
+.equipment-slot.active {
+    color: var(--neutral-color);
+}
+
+.equipment-slot.filled::after,
+.equipment-slot.filled::before {
+    content: "";
+    transition: all 0.2s ease;
+    position: absolute;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    background-image: var(--statusIcon);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: inherit;
+}
+
+.equipment-slot.filled::after {
+    background-image: var(--image);
+    width: 250%;
+    height: 250%;
+    border-radius: inherit;
+    z-index: 2;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 800ms, opacity 400ms;
+}
+
+
+.equipment-slot.filled.newly-equipped::before {
+    animation: EQUIPMENT-SPIN-IN 2s ease;
+    border: inherit;
+    z-index: 4;
+}
+
+@keyframes EQUIPMENT-SPIN-IN {
+    0% { transform: scale(1); opacity: 0;}
+    20% { transform: scale(2) rotate(0deg) }
+    50% { transform: scale(2) rotate(0deg) }
+    100% { transform: scale(1) rotate(-360deg) }
+}
+
+.equipment-slot:not(.active).filled:hover::after,
+.equipment-slot.active.filled:hover::after {
+    transform: scale(1) translate(50%, 50%);
+    opacity: 1;
+}
+
+.equipment-slot:not(.active):hover {
+    border-color: var(--neutral-color);
+    box-shadow: 0px 0px 10px;
+}
+
+
+.equipment-slot.tutorial-highlight::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    box-shadow: 0px 0px 10px 5px var(--neutral-color);
+    animation: FADEIN 2s linear infinite alternate;
+    z-index: -1;
+}
+
+.equipment-menu {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    color: var(--neutral-color);
+    background: var(--dark-color);
+    border: 1px solid;
+    padding: 0.25rem;
+    max-height: 20vmax;
+    min-width: 250px;
+    overflow-y: auto;
+    display: block;
+    z-index: 10;
+    font-size: 0.75rem;
+    pointer-events: none;
+    transition: transform 600ms cubic-bezier(.15,.94,.23,.93), opacity 200ms;
+    transform: scaleY(0.01);
+    transform-origin: top;
+    opacity: 0;
+}
+
+.equipment-menu.leftside {
+    left: 50%;
+    right: unset;
+}
+
+.equipment-menu:empty::before {
+    content: "NO EQUIPMENT AVAILABLE";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1.5rem;
+    padding: 0.75rem 0;
+    text-align: center;
+}
+
+.equipment-slot.active .equipment-menu {
+    pointer-events: initial;
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.equipment-option {
+    cursor: pointer;
+    border: 1px solid;
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: var(--friend-color);
+    flex-direction: column;
+    padding-left: 60px;
+    min-height: 50px;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+}
+
+.equipment-option.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.equipment-option.disabled:hover {
+    background: transparent;
+}
+
+.equipment-remove {
+    color: var(--obesk-color);
+    width: 100%;
+    padding: unset;
+    background: unset;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    font-size: 1rem;
+}
+
+.equipment-remove:hover {
+    color: var(--neutral-color)
+}
+
+.equipment-empty-slot {
+    font-size: 1.5rem;
+    pointer-events: none;
+    transition: 1s cubic-bezier(.54,-0.32,0,.96);
+}
+
+.equipment-slot:hover .equipment-empty-slot,
+.equipment-slot.active .equipment-empty-slot {
+    color: var(--neutral-color);
+    transform: scale(2) rotate(360deg);
+}
+
+.equipment-option ~ .equipment-option {
+    margin-top: 0.5em;
+}
+
+.equipment-option-image {
+    width: 50px;
+    height: 50px;
+    min-height: 100%;
+    background: var(--image);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-right: 1px solid;
+    position: absolute;
+    left: 0;
+    transition: 1s;
+    cursor: alias;
+}
+
+.equipment-option-image.pending-image::after {
+    content: "visual damaged";
+    color: var(--neutral-color);
+    background: var(--dark-color);
+    border: 1px solid;
+    padding: 0.25em;
+    font-size: 0.75em;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: sharetech;
+}
+
+.equipment-option-image.pending-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.equipment-option-detail {
+    text-transform: uppercase;
+    text-align: right;
+    padding: 0.25em 0.5em;
+    color: var(--neutral-color);
+}
+
+.equipment-option-status {
+    color: var(--friend-color);
+    font-size: 0.75rem;
+    border-bottom: 1px dashed;
+}
+
+.equipment-option-status::before {
+    content: "+";
+    color: var(--neutral-color);
+}
+
+.equipment-option:hover {
+    border-color: var(--neutral-color);
+    box-shadow: 0px 0px 10px var(--neutral-color);
+}
+
+.equipment-option:hover .equipment-option-name {
+    color: var(--bright-color);
+}
+
+.equipment-option:hover .equipment-option-image {
+    transform: scale(2);
+    border-radius: 100%;
+    background-color: var(--bright-color);
+    border: 1px dashed black;
 }
 
 /* inventory menu */
@@ -2063,6 +2959,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     flex-wrap: wrap;
     justify-content: center;
     font-size: 0.75rem;
+    gap: 1em;
 }
 
 #party-inventory h3 {
@@ -2081,18 +2978,33 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     justify-content: center;
     align-items: flex-start;
     align-items: center;
-    padding: 0.5vw;
+    padding: 0.5rem;
     border: 1px solid var(--neutral-color);
-    flex-basis: calc(33% - 10px);
+    flex-basis: calc(50% - 1em);
     flex-shrink: 0;
     flex-direction: column;
-    gap: 1em;
 }  
 
 .item-portrait {
     width: 100%;
     margin-bottom: auto;
     position: relative;
+}
+
+.item-portrait.pending-image::after {
+    content: "VISUAL RECONSTRUCTION PENDING";
+    font-family: sharetech;
+    position: absolute;
+    background: var(--dark-color);
+    padding: 1em;
+    border: 1px solid;
+    color: var(--neutral-color);
+}
+
+.item-portrait.pending-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .item-image {
@@ -2144,19 +3056,27 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     text-transform: uppercase;
 }
 
-.item[data-usability="both"] .item-usability, .item[data-usability="ooc"] .item-usability {
+.item[usability="both"] .item-usability, .item[usability="ooc"] .item-usability {
     color: var(--friend-color);
 }
 
-.item[data-usability="ic"] .item-usability {
+.item[usability="ic"] .item-usability {
     color: var(--obesk-color);
 }
 
 .item-description {
     padding: 0.5em 0;
+    line-height: 1.5em;
 }
 
-.item-usage span {
+.item-usage {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.item-usage .item-legacy {
     display: block;
     margin-top: 1em;
     margin-bottom: 0.5em;
@@ -2173,7 +3093,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     color: var(--obesk-color);
 }
 
-.item-usage span:last-child {
+.item-usage .item-legacy:last-child {
     margin-bottom: 0;
 }
   
@@ -2188,16 +3108,40 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     color: var(--friend-color);
 }
 
+.item-ic.item-eq::before {
+    content: '::COMBAT EFFECT::';
+    color: var(--neutral-color);
+}
+
+.item-eq-action::before {
+    content: 'GRANTS ACTION::';
+    color: var(--neutral-color);
+}
+
+.item-eq-action { /* todo: permanent disable that will maybe stay? we wrote the action right into the statuses*/
+    display: none;
+}
+
+.item-eq .actiondef {
+    position: relative;
+	margin-bottom: 1em;
+}
+
+.item-eq .actiondef-status.passive::after,
+.item-eq .actiondef-status.passive::before {
+    display: none;
+}
+
 .item.target-origin {
     z-index: 2;
 }
 
-.item[data-usability="both"].target-origin, .item[data-usability="ooc"].target-origin,
-.item[data-usability="both"]:not(.target-origin):hover, .item[data-usability="ooc"]:not(.target-origin):hover {
+.item[usability="both"].target-origin, .item[usability="ooc"].target-origin,
+.item[usability="both"]:not(.target-origin):hover, .item[usability="ooc"]:not(.target-origin):hover {
     background: url(/img/textures/badstatic.gif);
 }
 
-.item[data-usability="both"]:not(.target-origin):hover, .item[data-usability="ooc"]:not(.target-origin):hover {
+.item[usability="both"]:not(.target-origin):hover, .item[usability="ooc"]:not(.target-origin):hover {
     cursor: pointer;
     --neutral-color: var(--friend-color);
 }
@@ -2281,6 +3225,23 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     display: none;
 }
 
+.party-targeting .item-sell {
+    display: none;
+}
+
+.item-sell {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 1.25em;
+}
+
+.item-sell-button {
+    color: var(--bastard-color);
+    border-top: 0;
+    border-right: 0;
+}
+
 @media only screen and (max-width: 1400px) {
     .partymember-liner {
         font-size: 2em;
@@ -2292,10 +3253,28 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
 
     .partymember {
         padding: calc(0.5vw + 1.5em) 0.5vw calc(0.5vw + 1em);
+        flex-direction: column;
     }
     
     .item-stats {
         flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 1700px) {
+    partymember-equipment {
+        width: 100%;
+    }
+
+    .equipment-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0.25em;
+    }
+
+    .equipment-slot ~ .equipment-slot {
+        margin-top: unset;
     }
 }
 
@@ -2388,7 +3367,6 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
 
 .augment-options {
     display: flex;
-    flex-wrap: wrap;
     position: relative;
 }
 
@@ -2582,6 +3560,15 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     background-color: transparent;
 }
 
+#combat.bastard.bonked::before {
+    animation: unset;
+    background: url(/img/textures/static.gif);
+}
+
+#combat.bastard.bonked::after {
+    display: none;
+}
+
 #combat.bastard {
     --obesk-color: var(--bastard-color);
 }
@@ -2626,7 +3613,7 @@ body[menu="party"] #party-menu, :root.bigmode body[menu="party"] #party-menu {
     align-items: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    z-index: -10;
+    z-index: -9;
 }
 
 #bstrdancers::after, #bstrdancers::before {
@@ -2668,6 +3655,12 @@ body[quality="low"] #bstrdancers::before, body[quality="low"] #bstrdancers::afte
 #combat.bastard.cull::after, #combat.bastard.cull::before, #combat.bastard.cull #bstrdancers { display: none; }
 body.cull-stage #content.bastard::before, body.cull-stage #content.bastard::after { display: none; }
   
+
+#combat.bastard #enemy-team .passives {
+    width: auto;
+}
+
+
 /* SPECIAL INSTRUCTIONS */
 .low-health .item-restorative, .low-health .party {
     animation: LOWHP 1s ease-in-out infinite alternate;
@@ -2733,12 +3726,13 @@ body[quality="regular"] .golemsprite.dead .spritestack,
 body[quality="regular"] .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) div:not(.filter),
 body[quality="regular"] .sprite-wrapper.dead:not(.golemsprite):not(.nofilter) .sprite:not(.filter) { filter: grayscale(1) contrast(3) invert(1) }
 body[quality="regular"] .struck:not(.destructible):not(.nofilter) { filter: grayscale(1) contrast(3) invert(1) }
-body[quality="regular"] .spritestatus-destabilized:not(.destructible) > div:not(.target) { filter: blur(5px) contrast(2) }
+body[quality="regular"] .spritestatus-destabilized:not(.destructible) > div:not(.target), body[quality="regular"] .daemonsprite.spritestatus-destabilized .daemon.falsecritta, body[quality="regular"] .daemonsprite.spritestatus-destabilized .impetus { filter: blur(5px) contrast(2) }
+body[quality="regular"] .portrait.spritestatus-destabilized { filter: blur(2px) contrast(2) }
 body[quality="regular"] .actor.dead .portrait { filter: grayscale(1) contrast(2) invert(1) }
     body[quality="regular"] .actor.dead#miltza .portrait { filter: grayscale(1) contrast(2) invert(1) }
 
 @media only screen and (max-width: 1366px)  {
-    :root.bigmode div#combat #ally-team .actor {
+    :root.bigmode div#combat .actor.allyactor {
         min-width: 30vw;
     }
     
@@ -2801,15 +3795,14 @@ body[quality="regular"] .actor.dead .portrait { filter: grayscale(1) contrast(2)
     animation: hover-minor 4s ease-in-out infinite alternate;
 }
 
+.collapse-enrage .attendant-sprite::before, .collapse-enrage .attendant-sprite::after, .collapse-enrage .attendant-sprite {
+    animation: SHAKE 200ms linear infinite !important;
+}
+
 /* veilklight */
 .sprite-wrapper .veilksprite {
     animation: bomber 5s cubic-bezier(.29,.01,.07,1.07) infinite alternate;
     transform-origin: bottom;
-}
-
-#enemy-graphic .veilksprite.bstrdlight .sprite {
-    width: 250px;
-    height: auto;
 }
 
 .sprite-wrapper .veilksprite .sprite {
@@ -2862,6 +3855,10 @@ body[quality="regular"] #content .spritestatus-destabilized .veilksprite img {
     background-image: url(/img/sprites/bstrd/bstrd.gif);
     background-size: 55%;
     background-position: center 20%;
+}
+
+#enemy-graphic .bstrdlight img {
+    height: auto;
 }
   
 
@@ -2920,6 +3917,259 @@ body[quality="regular"] #content .spritestatus-destabilized .veilksprite img {
     animation: hover-half 2s ease-in-out infinite alternate;
 }
 
+.golemsprite.tutorial-golem-malfunction .golemsprite-head { --baseTransform: rotate(-10deg); animation: SHAKE 0.5s infinite }
+.golemsprite.tutorial-golem-malfunction .golemsprite-neck { --baseTransform: rotate(-10deg) translateY(10%) }
+.golemsprite.tutorial-golem-malfunction .golemsprite-body { --baseTransform: rotate(10deg) translateY(20%); animation: SHAKE 1s infinite }
+.golemsprite.tutorial-golem-malfunction .golemsprite-leftarm { --baseTransform: rotate(-20deg); animation: SHAKE 2s infinite }
+.golemsprite.tutorial-golem-malfunction .golemsprite-rightarm { --baseTransform: rotate(20deg); animation: SHAKE 0.5s infinite }
+
+#combat.tutorialgolem::after {
+    animation: unset;
+    background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/static.gif);
+    background-size: 100% 150%, auto;
+    width: 100%;
+    height: 100%;
+}
+
+#combat.collapse-enrage::before {
+    background-image: url(/img/textures/golembg.gif);
+    background-color: black;
+    animation: SPIN 360s linear infinite;
+    width: 150vmax;
+    height: 150vmax;
+}
+
+#combat.collapse-enrage::after {
+    transform: rotate(180deg) translateY(-50%);
+    background-image: url(/img/textures/fadeinlonghalf.gif);
+    background-size: auto 100%;
+}
+
+/* ing rework collapse pt1 enemies */
+#combat.listenerfight::before {
+    background-image: url(/img/local/embassy/caveceiling.gif);
+    background-position: center;
+    animation: SPIN 360s linear infinite;
+    width: 150vmax;
+    height: 150vmax;
+    background-color: black;
+}
+
+#combat.listenerfight::after {
+  transform: rotate(180deg);
+}
+
+.sprite-wrapper[for="listener"] {
+    position: absolute;
+    margin-top: -10%;
+}
+
+.container-sprite::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+    bottom: 20%;
+    left: 15%;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.5;
+}
+
+.container-sprite[for="container_exploder"]::before {
+    background-image: url(/img/sprites/combat/items/kavruka_dither.gif)
+}
+
+.container-sprite[for="container_evader"]::before {
+    /*background-image: url(/img/sprites/combat/items/malwarec_dither.gif)*/
+}
+
+.container-sprite[for="container_spy"]::before {
+    background-image: url(/img/sprites/combat/items/aimacyst_dither.gif)
+}
+
+.container-sprite[for="container_sfer"]::before {
+    background-image: url(/img/sprites/combat/items/cube_dither.gif)
+}
+
+/* ing rework movefriend */
+.movefight::before, .movefight::after {
+    display: none;
+}
+
+.movefight {
+    background: black;
+}
+
+#movefoe-bg::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200vmax;
+    height: 200vmax;
+    pointer-events: none;
+    background: url(/img/textures/barelyfaded.gif);
+    background-color: var(--friend-color);
+    background-position: top;
+    background-size: 50% 25%;
+    animation: RELOCATOR 10s linear infinite;
+}
+
+#combat.movetumble #movefoe-bg, #combat.movetumble #enemy-graphic {
+    animation: SPIN 5s linear;
+}
+
+#combat.movetumble::before, #combat.movetumble::after {
+    animation: ADVANCEDTUMBLE 5s linear;
+}
+
+@keyframes ADVANCEDTUMBLE {
+    0% { transform: scale(1) rotate(0deg) }
+    10% { transform: scale(3) rotate(36deg)}
+    90% { transform: scale(3) rotate(324deg)}
+    100% { transform: scale(1) rotate(360deg)}
+}
+
+#combat.movecollide #enemy-graphic, #combat.movecollide .combatbg {
+    animation: MF-COLLIDE 3.5s cubic-bezier(1,.04,.17,1) !important;
+}
+
+.actor.movetumble {
+    animation: SPIN 1s cubic-bezier(0,0,.39,1.98)
+}
+
+.actor.movecollide {
+    animation: shake-crazy 400ms cubic-bezier(0,0,.39,1.98)
+}
+
+@keyframes MF-COLLIDE {
+    0%, 32%, 64%, 100% { transform: translateX(0) rotate(-0deg)}
+    16%, 80% { transform: translateX(-25%) rotate(-10deg)}
+    48% { transform: translateX(25%) rotate(10deg)}
+}
+
+#combat.movecollide::before, #combat.movecollide::after {
+    animation: ADVANCEDMF-COLLIDE 3.5s cubic-bezier(1,.04,.17,1);
+}
+
+@keyframes ADVANCEDMF-COLLIDE {
+    0%, 32%, 64%, 100% { transform: translateX(0) rotate(-0deg)}
+    16%, 80% { transform: scale(1.5) rotate(-10deg)}
+    48% { transform: scale(1.5) rotate(10deg)}
+}
+
+#enemy-graphic .lifter {
+    width: 75vh;
+    height: 75vh;
+    position: relative;
+    backface-visibility: unset;
+    -webkit-backface-visibility: unset;
+    transform: unset;
+    background: url(/img/local/embassy/liftfrienddark.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#enemy-graphic .lifter figure::after, #enemy-graphic .lifter figure::before, #enemy-graphic .lifter::after  {
+    content: unset;
+}
+
+#enemy-graphic .lifter.sprite figure::after, .lifter.aggressormode figure::after {
+    content: "";
+    width: 25vh;
+    height: 25vh;
+    display: block;
+    background: url(/img/sprites/aggressor/aggressoroverlay.png), url(/img/local/orbit/core.gif), radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 45%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain, auto;
+    animation: SPIN 20s linear infinite reverse;
+    border-radius: 100%;
+}
+  
+#enemy-graphic [id^="movefriend"] .target {
+    width: 25%;
+    height: 25%;
+    top: unset;
+    left: unset;
+}
+
+#enemy-graphic .struck[id^="movefriend"], 
+#enemy-graphic .spritestatus-destabilized[id^="movefriend"] {
+    filter: unset;
+}
+
+#movefoe_relay-sprite-wrapper {
+    position: absolute;
+    top: 30vh;
+    right: 30vw;
+    z-index: -1;
+}
+
+#enemy-graphic #movefoe_relay-sprite-wrapper .sprite {
+    height: auto;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#movefoe_relay-sprite-wrapper figure {
+    position: absolute;
+    width: 30vmax;
+    height: 30vmax;
+    background: url(/img/sprites/combat/foes/ingrelay_closed.gif?2);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#movefoe_relay-sprite-wrapper.open-panel figure {
+    background-image: url(/img/sprites/combat/foes/ingrelay_open.gif?2);
+    width: 20vmax;
+    height: 20vmax;
+}
+
+#enemy-graphic .sprite[id^="tendrils"] {
+    width: 50vh;
+    margin: auto -20vh;
+}
+
+.status-effect.statustext-story_movefoe_turnsleft {
+    --border-color: var(--neutral-color);
+    font-size: 1rem !important;
+    padding: 0.5em 0 !important;
+    background: black !important;
+}
+
+.actor.status-story_movefoe.last-stand .hp {
+    display: flex;
+}
+
+.daemon-mimic .lifter::before {
+    display: none;
+}
+
+#enemy-graphic .daemon-mimic .lifter.sprite {
+    background-image: url(/img/sprites/combat/foes/lifter_mimic.gif?3)
+}
+
+#enemy-graphic .daemon-mimic .lifter.sprite figure::after {
+    border-color: var(--bastard-color);
+    background-image: url(/img/sprites/daemons/generaleye.gif), url(/img/sprites/daemons/queenring.gif), url(/img/sprites/aggressor/aggressoroverlay_mimic.png?), url(/img/textures/papermelttiny.gif);
+    background-size: auto;
+    background-repeat: no-repeat, no-repeat, repeat;
+}
+
+#enemy-graphic .sprite-wrapper[for="movefoe_tendrils_frame"] {
+    flex-basis: 20%;
+}
+
 /* archival golem variation of golemsprite */
 #enemy-graphic .archival-golem.golemsprite {
     margin: initial;
@@ -2965,6 +4215,10 @@ body[quality="regular"] #content .spritestatus-destabilized .veilksprite img {
 
 .bstrd-golem .gunraise, .bstrd-golem .gunblam, .bstrd-golem .gunlower {
     animation-delay: unset !important;
+}
+
+#bstrdboss-sprite-wrapper.fall .spritestack {
+    transform: rotate(90deg) translateX(50%);
 }
 
 /* golem maintenance golemsprites */
@@ -3013,56 +4267,14 @@ body[quality="regular"] #content .spritestatus-destabilized .veilksprite img {
     animation: hover-half 5s ease-in-out infinite alternate;
 }
 
-/* movefoe boss */
-#enemy-graphic .lifter {
-    width: 75vh;
-    height: 75vh;
-    position: relative;
-    backface-visibility: unset;
-    -webkit-backface-visibility: unset;
-    transform: unset;
-    background: url(/img/local/embassy/liftfrienddark.gif);
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* ing update for constructor fight*/
+.constructlimb.sprite-wrapper, #constructor_boss-sprite-wrapper {
+    position: absolute;
+    z-index: 2;
 }
 
-#enemy-graphic .lifter figure::after, #enemy-graphic .lifter figure::before, #enemy-graphic .lifter::after  {
-    content: unset;
-}
-
-#enemy-graphic .lifter.sprite figure::after, .lifter.aggressormode figure::after {
-    content: "";
-    width: 25vh;
-    height: 25vh;
-    display: block;
-    background: url(/img/sprites/aggressor/aggressoroverlay.png), url(/img/local/orbit/core.gif), radial-gradient(circle, rgba(255,255,255,1) 10%, rgba(0,0,0,0) 45%);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain, auto;
-    animation: SPIN 20s linear infinite reverse;
-    border-radius: 100%;
-}
-  
-
-#enemy-graphic [id^="movefriend"] .target {
-    width: 25%;
-    height: 25%;
-    top: unset;
-    left: unset;
-}
-
-#enemy-graphic .struck[id^="movefriend"], 
-#enemy-graphic .spritestatus-destabilized[id^="movefriend"] {
-    filter: unset;
-}
-
-#enemy-graphic .sprite[id^="tendrils"] {
-    width: 50vh;
-    margin: auto -20vh;
+.constructlimb .sprite {
+    animation: HOVER 1s ease-in-out infinite alternate;
 }
 
 /* maintenance cloak */
@@ -3072,21 +4284,39 @@ body[quality="regular"] .maintcloak {
 
 #enemy-graphic .maintcloak .sprite {
     height: 65vh;
+    filter: unset;
 }
 
-.maintcloak .sprite:first-child {
+.maintcloak .maintbody {
     animation: DANCE 5s ease-in-out infinite alternate;
 }
 
-body[quality="regular"] .maintcloak img:nth-child(2) {
+body[quality="regular"] .maintcloak .mainthead {
     animation: SPIN-Y 2s linear infinite;
     animation-delay: unset !important;
 }
 
-body[quality="regular"] .maintcloak img:nth-child(3) {
+body[quality="regular"] .maintcloak .mainthead.perp {
     animation: SPIN-Y 2s linear infinite;
     animation-delay: unset !important;
     --baseTransform: rotateY(90deg);
+}
+
+.maintcloak.basic-attack {
+    animation-duration: 200ms;
+}
+
+.maintcloak .spritestack {
+    transform-style: preserve-3d;
+    transition: transform 400ms ease;
+}
+
+body[quality="regular"] .basic-attack.maintcloak .spritestack {
+    transform: scaleY(2) rotateX(-110deg);
+}
+
+body[quality="regular"] .basic-attack.maintcloak .mainthead {
+    animation-duration: 200ms;
 }
 
 @keyframes DANCE {
@@ -3130,7 +4360,43 @@ body[quality="regular"] .maintcloak img:nth-child(3) {
     100% { transform: scaleX(1) scaleY(1)}
 }
 
+/* EP3 zone */
+#combat.ep3fight::after, #combat.ep3fight::before {
+    transform: rotate(0deg)
+}
+
+#combat.ep3fight::before {
+    background-image: url(/img/textures/fadeinlong.gif), url(/img/textures/warpsmall.gif);
+    background-color: var(--bright-color);
+    background-repeat: no-repeat, repeat, repeat;
+    background-size: cover;
+}
+
+
+#combat.huskfinal::before {
+    background: url(/img/local/orbit/core.gif);
+    background-color: var(--bright-color)
+}
+
+#combat.huskfinal::after {
+    background: url(/img/local/embassy/golemwallmeltfadedoubledull.gif);
+    background-repeat: repeat-x;
+    background-position: center;
+}
+
+#combat.huskfinal.nowalls::after {
+    display: none;
+}
+
 /* glazika boss */
+.bgsprite.dullzika {
+    margin-bottom: 20vh;
+    width: 20vw;
+    --baseTransform: scale(0.5);
+    transform: var(--baseTransform);
+    opacity: 0.5;
+}
+
 #enemy-graphic .dullzika.sprite-wrapper {
     z-index: -1;
 }
@@ -3186,7 +4452,8 @@ body[quality="regular"] .maintcloak img:nth-child(3) {
 
 .containerspam #enemy-team .actor[id^="dull_container"], 
 .translatorzone #enemy-team .actor[id^="hallucination"],
-.summonerboss #enemy-team .actor:not(.mainfoe) {
+.summonerboss #enemy-team .actor:not(.mainfoe),
+#enemy-team .actor.tinyplate {
     font-size: 0.8em;
     min-width: 100px;
     padding: 0.5vw;
@@ -3281,6 +4548,19 @@ body[quality="regular"] .maintcloak img:nth-child(3) {
     right: 75%;
 }
 
+.spritestatus-destabilized.wordfriend .spinny {
+  filter: unset !important;
+}
+
+.wordfriend.daemon-mimic .orb {
+    background-image: url(/img/textures/chromebwave.gif), url(/img/sprites/daemons/queenring.gif);
+    border-radius: 100%;
+}
+
+body[quality="regular"] .spritestatus-destabilized.wordfriend .diamond {
+  filter: blur(5px) contrast(2);
+}
+
 /* HUSKS */
 /* these guys have a special sprite selection system */
 #enemy-graphic .husk .sprite {
@@ -3369,7 +4649,6 @@ body[quality="regular"] .maintcloak img:nth-child(3) {
 #enemy-graphic .husk[type="4"] .bottomlayer, #enemy-graphic .husk[type="4"] .toplayer { width: 230%; height: 120%;}
 .husk[type="4"][b="1"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom1.gif) }
 .husk[type="4"][b="2"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom2.gif) }
-#combat .daemon-mimic.husk .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom1_mimic.gif) }
 .husk[type="4"][t="1"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top1.gif) }
 .husk[type="4"][t="2"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top2.gif) }
     .husk[type="4"][t="2"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type4_top2_eyes.gif); }
@@ -3380,7 +4659,32 @@ body[quality="regular"] .maintcloak img:nth-child(3) {
 #enemy-graphic .husk[type="4"][t="3"] .toplayer, 
 .husk[type="4"][t="3"] .toplayer { background-image: url(/img/sprites/combat/foes/husks/type4_top3.gif); height: 250% }
     #realgrid .husk[type="4"][t="3"] .toplayer { transform: translateY(-25%); }
-    #enemy-graphic .daemon-mimic.husk[type="4"][t="3"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type4_top3_mimic.gif); --baseTransform: translateY(3%);}
+
+
+/* special daemon types */
+#enemy-graphic .daemon-mimic.husk[dtype="lh"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type1_bottom2_mimic.gif) }
+#enemy-graphic .daemon-mimic.husk[dtype="lh"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type1_top3_mimic.gif)}
+
+#enemy-graphic .daemon-mimic.husk[dtype="ls"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type4_bottom1_mimic.gif) }
+#enemy-graphic .daemon-mimic.husk[dtype="ls"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type4_top3_mimic.gif)}
+
+#enemy-graphic .daemon-mimic.husk[dtype="lo"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type2_bottom1_mimic.gif) }
+#enemy-graphic .daemon-mimic.husk[dtype="lo"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type2_top1_mimic.gif);}
+    #enemy-graphic .daemon-mimic.husk[dtype="lo"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type2_top1_eyes_mimic.gif) }
+
+#enemy-graphic .daemon-mimic.husk[dtype="hg"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type3_bottom2_mimic.gif) }
+#enemy-graphic .daemon-mimic.husk[dtype="hg"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type3_top2_mimic.gif);}
+    #enemy-graphic .daemon-mimic.husk[dtype="hg"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type3_top2_eyes_mimic.gif) }
+
+#enemy-graphic .daemon-mimic.husk[dtype="hs"] .bottomlayer { background-image: url(/img/sprites/combat/foes/husks/type1_bottom2_mimic.gif) }
+#enemy-graphic .daemon-mimic.husk[dtype="hs"] .toplayer {background-image: url(/img/sprites/combat/foes/husks/type1_top2_mimic.gif);}
+    #enemy-graphic .daemon-mimic.husk[dtype="hs"] .toplayer::after { background-image: url(/img/sprites/combat/foes/husks/type1_top2_eyes_mimic.gif) }
+
+
+#enemy-graphic .spritestatus-destabilized.daemon-mimic.husk .toplayer::after,
+#enemy-graphic .spritestatus-puncture.husk.daemon-mimic .toplayer::after,
+#enemy-graphic .spritestatus-focused.husk.daemon-mimic .toplayer::after { animation: SHAKE 200ms linear infinite; }
+
 
 body[quality="regular"] .husk .sprite {
     animation: HUSKWOBBLE 5s cubic-bezier(.75,.02,.43,.96) infinite alternate;
@@ -3410,6 +4714,11 @@ body[quality="regular"] .hallucination .sprite-overflow  {
     animation-delay: 0.35s;
 }
 
+.hallucination .sprite.base {
+    animation-delay: -0.25s;
+    opacity: 0.5;
+}
+
 /* final golem boss */
 #combat.bossgolem #enemy-graphic {
     top: 15%;
@@ -3430,6 +4739,60 @@ body[quality="regular"] .hallucination .sprite-overflow  {
 .bossgolem.golemsprite .sprite {
     animation-duration: 20s;
 }
+
+.bossgolem.warped .sprite {
+    animation-delay: unset !important;
+}
+
+.bossgolem.warped .golemsprite-head::after { display: none }
+.bossgolem.warped .golemsprite-head::before {
+    content: "";
+    position: absolute;
+    width: 110%;
+    height: 120%;
+    background-image: url(/img/sprites/combat/foes/husks/sickeye_nausea.gif), url(/img/sprites/combat/foes/husks/type4_top2.gif);
+    background-size: 33%, contain;
+    z-index: 2;
+    background-position: center 20%, center top;
+    background-repeat: no-repeat;
+    bottom: 0;
+}
+
+.bossgolem.golemsprite.warped .sprite,
+.bossgolem.golemsprite.warped .corebits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bossgolem.golemsprite.warped .corebits {
+    z-index: -1;
+}
+
+.bossgolem.warped .corebits::after {
+    content: "";
+    position: absolute;
+    animation: SPIN 10s linear infinite;
+    background: url(/img/local/embassy/mind/corewarp.gif);
+    width: 100%;
+    padding-top: 30%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    --baseTransform: translateY(-25%);
+    z-index: -1;
+}
+
+/* constructor */
+#combat.constructorzone::before {
+    background-image: url(/img/local/embassy/vatwall.gif);
+    background-size: cover;
+}
+
+#combat.constructorzone::after {
+    background-image: url(/img/textures/fadeinhardhalf.gif);
+}
+
 
 /* kivii */
 #combat.kiviifight::before {
@@ -3458,6 +4821,11 @@ body[quality="regular"] .hallucination .sprite-overflow  {
 
 #enemy-graphic .sprite-wrapper.kiviigauntlet {
     margin: auto -5%;
+}
+
+.sprite-wrapper.kiviigauntlet.spritestatus-destabilized img {
+    filter: blur(2px);
+    animation: SHAKE 200ms linear infinite !important;
 }
     
 /* system interconnective classes */
@@ -3497,18 +4865,21 @@ body[quality="low"] #realgrid .newevil .sprite {
 }
 
 /************ EP3ADD2 ********/
-.bstrdactor .combat-dialogue {
+.bstrdactor .combat-dialogue,
+.bstrdspeech .combat-dialogue {
     font-family: bastard;
     font-size: 2em;
     text-transform: initial;
 }
 
-.bstrdactor  .combat-dialogue::after {
+.bstrdactor .combat-dialogue::after,
+.bstrdspeech .combat-dialogue::after {
     font-size: 1em;
 }
 
 /* preserve crispiness on the newspaper enemies*/
 .sprite-wrapper.daemonsprite { transform-style: unset }
+.sprite-wrapper.daemonsprite.royalty { transform: var(--baseTransform); --baseTransform: translateY(-10%); }
 
 .actor.daemonactor {
     background: url(/img/textures/paperplate.gif);
@@ -3695,6 +5066,12 @@ body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
   --baseTransform: translate(200%, -6%);
   --delay: 3s;
 }
+
+.daemon.bishop.clean .tendril:nth-of-type(1) {--img: url(/img/sprites/daemons/bishop/tend1_clean.gif)}
+.daemon.bishop.clean .tendril:nth-of-type(2) {--img: url(/img/sprites/daemons/bishop/tend2_clean.gif)}
+.daemon.bishop.clean .tendril:nth-of-type(3) {--img: url(/img/sprites/daemons/bishop/tend3_clean.gif)}
+.daemon.bishop.clean .tendril:nth-of-type(4) {--img: url(/img/sprites/daemons/bishop/tend4_clean.gif)}
+.daemon.bishop.clean .tendril:nth-of-type(5) {--img: url(/img/sprites/daemons/bishop/tend5_clean.gif)}
 
 @keyframes SWAY {
   0% { transform: var(--baseTransform) translateX(-20%) rotate(-5deg)}
@@ -4248,6 +5625,66 @@ body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
 	100% { transform: translateY(0) }
 }
 
+/* BUGOUT */
+.daemon.bugout {
+	animation: SHAKE 30s steps(5) infinite alternate;
+}
+
+.daemon.bugout .downclaw::after, .daemon.bugout .upclaw::after {
+	animation: BIGSHAKE 10s steps(2) infinite alternate;
+	animation-delay: var(--delay)
+}
+
+.daemon.bugout .eye {
+    width: 17%;
+    height: 17%;
+    --img: url(/img/sprites/daemons/bugout/eye_r1.gif);
+    --baseTransform: translate(40%, -55%);
+}
+
+.daemon.bugout .eye:nth-of-type(2) {
+    width: 12.5%;
+    height: 12.5%;
+    --img: url(/img/sprites/daemons/bugout/eye_r2.gif);
+    --baseTransform: translate(145%, -45%);
+}
+
+.daemon.bugout .eye:nth-of-type(3) {
+    width: 17%;
+    height: 17%;
+    --img: url(/img/sprites/daemons/bugout/eye_l1.gif);
+    --baseTransform: translate(-40%, -60%);
+}
+
+.daemon.bugout .eye:nth-of-type(4) {
+    width: 12.5%;
+    height: 12.5%;
+    --img: url(/img/sprites/daemons/bugout/eye_l2.gif);
+    --baseTransform: translate(-145%, -55%);
+}
+
+.daemon.bugout .rightclip {
+    --img: url(/img/sprites/daemons/bugout/right_clip.gif);
+    width: 50%;
+    height: 50%;
+    --baseTransform: translate(60%, 45%)
+} 
+
+.daemon.bugout .leftclip {
+    --img: url(/img/sprites/daemons/bugout/left_clip.gif);
+    width: 50%;
+    height: 50%;
+    --baseTransform: translate(-60%, 45%)
+} 
+
+.daemon.bugout .rightclip::after {
+	animation-duration: 8s;
+}
+
+.daemon.bugout .leftclip::after {
+	animation-duration: 9s; 
+}
+
 /* Intrusive */
 .intrusiveactor .combat-dialogue span {
     font-family: intrusive;
@@ -4484,11 +5921,14 @@ body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
 /* finally ending the status megastack issue */
 .status-effect.status-bad {
     --border-color: var(--obesk-color);
-    border-color: var(--border-color)
 }
 
 .status-effect.status-good {
     --border-color: var(--friend-color);
+}
+
+.status-effect.status-complex {
+    --border-color: var(--neutral-color);
 }
 
 .compactor .statuses, .status-overflow .statuses {
@@ -4524,7 +5964,10 @@ body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
     display: none;
 }
 
-.compactor .status-count, .status-overflow .status-count {
+.compactor .status-count, 
+.status-overflow .status-count
+/*,.ps-statuses .status-count - this might be unnecessary*/
+{
     margin: 0;
     position: absolute;
     top: 0;
@@ -4593,4 +6036,451 @@ body[quality="regular"] .sprite-wrapper.daemonsprite.struck figure {
 .mui-active .panicbutton {
     right: 15em;
     animation: SHAKE 400ms linear infinite;
+}
+
+@media only screen and (max-width: 1400px) {
+    .compactor .statuses .status-effect, .status-overflow .statuses .status-effect {
+        width: 24px;
+        height: 24px;
+        /* margin: -5px; */
+    }
+
+    .status-overflow .statuses {
+        margin: 0.25em 0;
+        width: 80px;
+    }
+
+    .status-overflow .statuses .status-count {
+        font-size: 0.65rem;
+    }
+}
+
+/* freeposition mechanic */
+#combat.bstrdattack #enemy-team .actor {
+  opacity: 0.1;
+}
+
+#combat.bstrdattack .effect-message {
+    opacity: 0;
+}
+
+#combat.revealbstrd #enemy-team .actor {
+    opacity: 1;
+}
+
+#combat.bstrdattack .target {
+    display: none !important;
+}
+
+#combat.bastard.bonked #enemy-team .name {
+    font-size: 1.5em;
+}
+
+.freeposition-box {
+    position: absolute !important;
+    cursor: grab;
+    z-index: 100;
+    border: 10px ridge var(--bastard-color);
+    transition: none;
+    transform: var(--positionTransform) var(--baseOffset);
+    --positionTransform: translate(0, 0);
+    --baseOffset: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+}
+
+.freeposition-box:hover::before {
+    content: "DRAG";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    font-family: barcodetext;
+    background: black;
+    padding: 0.25em;
+    font-size: 2em;
+    transform: translate(-105%, -50%);
+    color: var(--neutral-color);
+    pointer-events: none;
+}
+
+
+.draghighlight .freeposition-box::after {
+    content: "v drag v";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    --baseTransform: translate(-50%, -150%);
+    color: var(--bastard-color);
+    background: var(--dark-color);
+    padding: 0.1em;
+    font-size: 4em;
+    font-family: "bastard";
+    white-space: nowrap;
+    opacity: 1;
+    animation: SHAKE 100ms linear infinite;
+}
+
+.freeposition-box .actor {
+    margin: 0;
+}
+
+.freeposition-box .actor.dead {
+    opacity: 0.3;
+}
+
+.freeposition-box.dragging {
+    cursor: grabbing;
+    z-index: 200;
+}
+
+.freepos-zone {
+    position: absolute;
+    top: 0;
+    left: 0;
+    --baseOffset: translate(-50%, -50%);
+    --positionTransform: translate(0vw, 0vh);
+    --baseTransform: var(--positionTransform) var(--baseOffset);
+    transform: var(--baseTransform);
+    z-index: 20;
+    border: 2px solid var(--obesk-color);
+}
+
+.freepos-circle {
+    --size: 0;
+    width: calc(var(--size) * 1vmax);
+    height: calc(var(--size) * 1vmax);
+    border-radius: 100%;
+    transition: 500ms;
+}
+
+.freepos-bstrdshot {
+    border: 2px dotted transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 200ms;
+    background: url(/img/sprites/combat/bstrdcrosshair.gif), url(/img/sprites/combat/bstrdwarning.png);
+    background-size: cover, auto;
+    z-index: 200;
+    pointer-events: none;
+}
+
+.freepos-bstrdshot.freepos-bstrdshot-windup {
+	animation: unset;
+	background: transparent;
+}
+
+.freepos-bstrdshot.freepos-bstrdshot-windup::before {
+	content: "";
+	position: absolute;
+	width: 110%;
+	height: 110%;
+	border-radius: 100%;
+    background: url(/img/sprites/combat/bstrdcrosshair.gif), url(/img/sprites/combat/crosshair.gif);
+    background-size: 100%, 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+	opacity: 0;
+	animation: DR_SHOT_WINDUP 500ms cubic-bezier(0,0,0,1);
+	animation-delay: var(--delay);
+    animation-duration: var(--aimtime);
+	animation-fill-mode: forwards;
+	transform-origin: center;
+}
+
+.freepos-bstrdshot::after {
+	content: "";
+	position: absolute;
+	width: 30%;
+	height: 30%;
+	border-radius: 100%;
+    background: url(/img/sprites/combat/bstrdcrosshair.gif), url(/img/sprites/combat/crosshair.gif), url(/img/sprites/combat/bstrdwarning.png), url(/img/sprites/combat/bstrdwarning.png);
+    background-size: cover, 90%, cover, auto;
+    --baseTransform: translateZ(0);
+    animation: SPIN 200ms steps(20) infinite;
+	opacity: 1;
+}
+
+@keyframes DR_SHOT_WINDUP {
+	0%, 50% {
+		opacity: 0;
+		transform: rotate(0deg)
+	}
+
+	100% {
+		opacity: 1;
+		transform: rotate(1800deg)
+	}  
+}
+
+.freepos-kavruka, .kavruka-explosion-vfx {
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.freepos-kavruka {
+	animation: DR_GRENADE 400ms cubic-bezier(.26,.78,.44,1.57);
+	background-image: url(/img/sprites/combat/items/kavruka_dither.gif);
+	background-size: 90%;
+    background-position: center;
+	background-repeat: no-repeat;
+    transition: unset;
+}
+
+.freepos-kavruka.exploding {
+    opacity: 0;
+}
+
+.freepos-kavruka.grabbable {
+    cursor: grab;
+    background-color: var(--neutral-color);
+    border: 5px ridge var(--neutral-color);
+    z-index: 200;
+}
+
+.freepos-kavruka.grabbable.dragging {
+    cursor: grabbing
+}
+
+.freepos-kavruka::after {
+	content: "";
+	position: absolute;
+    width: calc(var(--realSize) * 1vmax);
+    height: calc(var(--realSize) * 1vmax);
+	transform-origin: center;
+	pointer-events: none;
+    border-radius: 100%;
+    background: url(/img/sprites/combat/bstrdwarning.png);
+    border: 5px ridge var(--bastard-color);
+    animation: DR_GRENADETELERGRAPH var(--fuseTime) linear;
+    animation-fill-mode: forwards;
+}
+
+.freepos-kavruka::before {
+	content: "DRAG!!";
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--realSize) * 1vmax);
+    height: calc(var(--realSize) * 1vmax);
+    border-radius: 100%;
+    border: 2px dotted var(--bastard-color);
+	color: var(--bastard-color);
+	text-shadow: 1px 1px var(--obesk-color);
+	font-family: bastard;
+	font-size: 3em;
+	animation: FADEIN 500ms steps(10) infinite alternate;
+    text-shadow: 1px 1px black,  2px 2px black, 3px 3px black, 5px 5px black;
+    pointer-events: none;
+}
+
+.kavruka-explosion-vfx {
+    border: unset;
+	background: url(/img/sprites/combat/bstrdwarning.png);
+	animation: SPIN 100ms steps(10) infinite;
+    transition: opacity 200ms;
+    opacity: 0;
+}
+
+.kavruka-explosion-vfx.vis {
+    opacity: 1;
+}
+
+.kavruka-explosion-vfx::after {
+    content: "";
+    position: absolute;
+    width: calc(var(--size) * 2vmax);
+    height: calc(var(--size) * 2vmax);
+	background-image: url(/img/sprites/combat/explosion.png);
+	animation: DR_GRENADEXPLODE 1s ease-out;
+	animation-fill-mode: forwards;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.freepos-fire {
+    background: url(/img/textures/bflame.gif);
+    z-index: -10;
+}
+
+.freepos-fire.merging {
+    --baseTransform: var(--positionTransform) var(--baseOffset);
+    --futurePositionTransform: var(--baseTransform);
+    animation: DR_FIREMERGE 800ms ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes DR_GRENADE {
+	0% { 
+		transform: var(--baseTransform) scale(0.5) translateY(-60vh) rotate(360deg);
+		opacity: 0;
+	}
+
+	100% {
+		transform: var(--baseTransform) scale(1) translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+}
+
+@keyframes DR_GRENADEXPLODE {
+	0%, 100% { 
+		transform: scale(0.00)
+	}
+
+	50% {
+		transform: scale(1)
+	}
+}
+
+@keyframes DR_GRENADETELERGRAPH {
+	0% { 
+		transform: scale(0.00)
+	}
+
+	100% {
+		transform: scale(1)
+	}
+}
+
+@keyframes DR_FIREMERGE {
+    0% { transform: var(--baseTransform) }
+    100% { transform: var(--futurePositionTransform) var(--baseOffset); opacity: 0; }
+}
+
+/* weird bonus content mechanic zone: ing hunger stuff */
+
+.noactions .actions {
+    display: none;
+}
+
+.statusaction, .targeting .acting .statusaction {
+    pointer-events: none;
+}
+
+.acting .statusaction {
+    border: 1px solid var(--neutral-color);
+    padding: 0.5em;
+    cursor: pointer;
+    pointer-events: initial;
+}
+
+.targeting .acting .statusaction {
+    opacity: 0.5;
+}
+
+.statterfight #enemy-graphic {
+    pointer-events: none;
+}
+
+.backgroundactor {
+    position: absolute;
+    z-index: -1;
+}
+
+.backgroundactor[count="1"] {
+    transform: translate(-20vw);
+}
+
+.backgroundactor[count="2"] {
+    transform: translate(-40vw, -20vh)
+}
+
+.backgroundactor[count="3"] {
+    transform: translate(40vw, -20vh)
+}
+
+.backgroundactor[count="4"] {
+    transform: translate(20vw, 20vh)
+}
+
+#combat.statterfight::after {
+    z-index: -1;
+    background: url(/img/textures/fadeinlonghalf.gif);
+    background-color: white;
+    clip-path: polygon(0% 0%, 100% 0%, 80.5% 0%, 100% 0%, 100% 100%, 66.5% 38.25%, 100% 100%, 100% 100%, 0% 100%, 30.62% 66.25%, 57.82% 36.27%, 0% 100%, 0% 0%);
+    transition: clip-path 2s ease-in-out;
+}
+
+#combat.statterfight.stg1::after {
+    clip-path: polygon(0% 0%, 100% 0%, 80.5% 0%, 100% 0%, 100% 100%, 66.5% 38.25%, 100% 100%, 100% 100%, 0% 100%, 34.76% 56.82%, 55.07% 24.77%, 0% 100%, 0% 0%);
+}
+
+#combat.statterfight.stg2::after {
+    clip-path: polygon(0% 0%, 100% 0%, 68.25% 0%, 97.25% 0%, 100% 100%, 67.38% 28.41%, 100% 100%, 100% 100%, 0% 100%, 47.84% 83.52%, 19.07% 0%, 0% 100%, 3.75% 0%);
+}
+
+#combat.statterfight.stg3::after {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 68.5%, 90.91% 3.41%, 20% 100%, 84.16% 42.16%, 100% 100%, 100% 100%, 0% 100%, 47.84% 83.52%, 19.07% 0%, 0% 100%, 78.51% 21.49%);
+}
+
+#combat.statterfight.stg4::after {
+    clip-path: polygon(0% 0%, 49.75% 0%, 100% 68.5%, 90.91% 3.41%, 100% 100%, 51.41% 58.16%, 100% 100%, 54.83% 30.27%, 0% 100%, 100% 6.52%, 19.07% 0%, 0% 100%, 23.47% 16.07%);
+}
+
+/* forfeiture */
+.forfeit-combat, .endturn-combat {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	font-family: bastard;
+	border-radius: 0;
+	font-size: 1.5rem;
+	color: var(--dark-color);
+	background: transparent;
+	border: unset;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	z-index: 102;
+}
+
+.endturn-combat {
+	top: 2em;
+}
+
+.forfeit-combat::after, .endturn-combat::after {
+	content: "";
+	position: absolute;
+	width: 130%;
+	height: 150%;
+	z-index: -1;
+	background: url(/img/sprites/bstrd/labelbutton.gif);
+	background-size: 100% 100%;
+}
+
+.endturn-combat::after {
+    background-image: url(/img/sprites/bstrd/labelbuttonunaffordable.gif)
+}
+
+/* quick lil detail toggle */
+#detail-toggle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0.25em;
+    color: var(--neutral-color);
+    cursor: pointer;
+    z-index: 200;
+    display: flex;
+    font-size: 2rem;
+    background: black;
+}
+
+#detail-toggle i {
+    pointer-events: none;
+    color: var(--neutral-color);
+}
+
+#detail-toggle .ci-zoomout, .shifthold #detail-toggle .ci-zoomin {
+    display: none;
+}
+
+.shifthold #detail-toggle .ci-zoomout {
+    display: block;
+    color: var(--friend-color);
 }

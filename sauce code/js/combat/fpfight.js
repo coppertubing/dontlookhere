@@ -77,7 +77,9 @@ class FPFight {
     start({
         koCallback,
         movesPerStep = 2,
-        height = 7
+        height = 7,
+        containingEl = content,
+        onStage = false
     }) {
         if(body.classList.contains("in-melee")) throw 'already doing melee'
         this.movesPerStep = Number(movesPerStep)
@@ -115,11 +117,12 @@ class FPFight {
 
         this.running = true
         this.paused = true
+        this.onStage = onStage
         
-        MUI("prohibit")
+        if(!this.onStage) MUI("prohibit")
         
-        body.classList.add('in-melee')
-        content.insertAdjacentHTML("beforeend", `
+        if(!this.onStage) body.classList.add('in-melee')
+        containingEl.insertAdjacentHTML("beforeend", `
             <div class="fp fp-unsetcam fp-stopped">
                     <div class="fp-animator">
 
@@ -192,6 +195,7 @@ class FPFight {
         this.grid.insertAdjacentHTML(`beforeend`, `
             <figure id="fp-enemy" class="fp-ent">
                 <div class="fp-golem">
+                    <div class="corebits"></div>
                     <div class="left fist"></div>
                     <div class="right fist"></div>
                 </div>
@@ -230,12 +234,16 @@ class FPFight {
 
     stop() {
         this.running = false
-        MUI("deprohibit")
+        if(!this.onStage) MUI("deprohibit")
 
         this.el.classList.add('fp-unsetcam', 'fp-stopped')
-        body.classList.remove('in-melee')
-        setTimeout(()=>this.el.classList.remove('fp-start'), 2000)
-        setTimeout(()=>this.el.remove(), 4000)
+        if(!this.onStage) body.classList.remove('in-melee')
+        if(!this.onStage) {
+            setTimeout(()=>this.el.classList.remove('fp-start'), 2000)
+            setTimeout(()=>this.el.remove(), 4000)
+        } else {
+            this.el.remove()
+        }
     }
 
     tutorialStep() {

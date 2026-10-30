@@ -25,15 +25,16 @@ env.grm = {
 
     defaultRetry: (callback, autoStartScene = true) => {
         env.rpg.cancelClose = false
+        MUI("off")
         vfx({type: "skip", state: true, useCutscene: true})
         let vol = Howler.volume()
         Howler.volume(0)
 
-        closeCombat(env.rpg.allyTeam, true)
+        if(env?.rpg?.classList) closeCombat(env.rpg.allyTeam, true)
 
         setTimeout(() => {
             if(callback) callback()
-            if(autoStartScene) content.insertAdjacentHTML(`beforeend`, `<combat-scene scenario='${env.partySnapshot.scenarioName}'></combat-scene>`)
+            if(autoStartScene) content.insertAdjacentHTML(`beforeend`, `<combat-scene scenario='${env.lastScenario.name}'></combat-scene>`)
         }, 3000)
 
         setTimeout(() => {
@@ -81,11 +82,11 @@ env.grm = {
 
     skipSpineIntro: () => {
         change("PAGE!!cavikblunder", "DELETE")
-        if(env?.rpg?.allyTeam && env.rpg.scenario.name == "ep4_split1") closeCombat(env.rpg.allyTeam, true)
+        if(env?.rpg?.allyTeam && env.rpg.scenario.name == "ep4_split_1_ing") closeCombat(env.rpg.allyTeam, true)
             
         if(!env?.rpg?.miltzaSkipState) {
             setTimeout(() => {
-                env.grm.combat("ep4_split2")
+                env.grm.combat("ep4_split_2_ing") 
             }, 1100)
 
             setTimeout(() => {
@@ -103,7 +104,7 @@ env.grm = {
     skipLesserBossIntro: () => {
         if(!env?.rpg?.lesserSkipState) {
             setTimeout(() => {
-                env.grm.combat("ep4_lesserboss")
+                env.grm.combat("ep4_lesserboss_ing")
             }, 1100)
 
             setTimeout(() => {
@@ -126,6 +127,20 @@ env.grm = {
         page.flags.startOnce.push(name)
     },
 
+    music_embassy_uncanny: new Howl({
+        onload: function () {
+            page.howls.push(this)
+            this.intendedVol = 0.9
+        },
+        src: ['/audio/bs_uncanny.ogg'],
+        preload: true,
+        loop: true,
+        volume: 0.9,
+        sprite: {
+            __default: [0, 9999999, true]
+        }
+    }),
+
     music_coresong: new Howl({
         onload: function () {page.howls.push(this)},
         src: ['/audio/coresong.ogg'],
@@ -133,7 +148,7 @@ env.grm = {
         loop: true,
         volume: 0,
         sprite: {
-            __default: [0, 85000, true]
+            __default: [0, 9999999, true]
         }
     }),
 
@@ -144,7 +159,7 @@ env.grm = {
         loop: true,
         volume: 0,
         sprite: {
-            __default: [2, 137126, true]
+            __default: [2, 9999999, true]
         }
     }),
 
@@ -155,7 +170,7 @@ env.grm = {
         loop: true,
         volume: 0,
         sprite: {
-            __default: [2, 144000, true]
+            __default: [2, 9999999, true]
         }
     }),
 
@@ -169,7 +184,7 @@ env.grm = {
         loop: true,
         volume: 0.6,
         sprite: {
-            __default: [2, 166907, true]
+            __default: [2, 9999999, true]
         }
     }),
 
@@ -180,7 +195,7 @@ env.grm = {
         loop: true,
         volume: 1,
         sprite: {
-            __default: [2, 131980, true]
+            __default: [2, 9999999, true]
         }
     }),
 
@@ -191,7 +206,7 @@ env.grm = {
         loop: true,
         volume: 1,
         sprite: {
-            __default: [20, 55540, true]
+            __default: [20, 9999999, true]
         },
     }),
 
@@ -202,7 +217,7 @@ env.grm = {
         loop: true,
         volume: 1,
         sprite: {
-            __default: [10, 85300, true]
+            __default: [10, 9999999, true]
         },
     }),
 
@@ -213,7 +228,7 @@ env.grm = {
         loop: true,
         volume: 0,
         sprite: {
-            __default: [100, 34500, true]
+            __default: [10, 9999999, true]
         }
     }),
 
@@ -253,11 +268,18 @@ env.grm = {
     mask: (ev) => {
         console.log("called", ev)
         switch(env.stage.name) {
+            case "grm_entry":
+                if((ev.detail.oldMask == "joy" || ev.detail.mask == "joy")) refreshStage()
+            break
+
             case "grm_lesser":
-                if(check("PAGE!!e4prog") == 15 && (ev.detail.oldMask == "freedom" || ev.detail.mask == "freedom") && !check("groundstrd")) refreshStage()
+                if(check("PAGE!!e4prog") == 15 && 
+                    ((ev.detail.oldMask == "freedom" || ev.detail.mask == "freedom") && !check("groundstrd")) ||
+                    ((ev.detail.oldMask == "hunger" || ev.detail.mask == "hunger"))
+                ) refreshStage()
             break
         }
-    }    
+    }
 }
 
 env.grm.music_runningoutoftime.intendedVol = 0.75
@@ -828,7 +850,7 @@ createEntity({
     image: "/img/sprites/combat/foes/formless-eyes_12.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a shape without form';'bears no eyes, yet i feel them upon me';'strikes clumsily, without focus'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'an unformed limb of the ceremony';'bears no eyes, yet i feel them upon me';'strikes clumsily, without focus'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'highly limited visual profile';'reconstruction incomplete'">::INCOHERENCE DETECTED</span>`,
 })
 
@@ -838,7 +860,7 @@ createEntity({
     image: "/img/sprites/combat/foes/shaped_1.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a distantly familiar shape';'utilizes powerful swings'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a distantly familiar shape';'throws the punches of a skilled fighter'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -848,7 +870,7 @@ createEntity({
     image: "/img/sprites/combat/foes/shaped_2.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a distantly familiar shape';'seems to form explosive charges'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a distantly familiar shape';'somehow sunders the overlap to create terrible detonations'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -858,7 +880,7 @@ createEntity({
     image: "/img/sprites/combat/foes/attendant_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the flickering shape of an attendant';'moves erratically and stabs with sharp limb'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the unsteady shape of an attendant';'strikes by vision alone with a flickering limb'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -868,22 +890,43 @@ createEntity({
     image: "/img/sprites/combat/foes/jutskin_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the writhing shape of an attendant';'coils around others to repair and reinforce'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the writhing shape of an attendant';'restores gaps in the torn light of its fellow imitations'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
 createEntity({
-    name: "spectral horror",
-    type: "thoughtform collapse portrait-spectral portrait-center portrait-auto",
-    image: "/img/sprites/combat/foes/formless_charger.gif",
+    name: "heart parasite",
+    type: "thoughtform collapse portrait-spectral portrait-bottom portrait-auto",
+    image: "/img/sprites/combat/foes/heart_freak.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'countless limbs, yet no distinct shape or center';'like an ${processDefinitionsInString("akozak")} dug from its pit'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'corru drawn up into the overlap, accumulated over an invisible shape';'draws from all vital sources with its ${processDefinitionsInString("akozak")}-like limbs'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'highly limited visual profile';'reconstruction incomplete'">::INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({
+    name: "parasitic limb",
+    type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
+    image: "/img/sprites/combat/foes/splittendril_attacker_dangle_spaced.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'${processDefinitionsInString("akozak")}-like limb';'even mimics its behavior, drawing us close that it may bite'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'highly limited visual profile';'reconstruction incomplete'">::INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({
+    name: "parasitic siphon",
+    type: "thoughtform collapse portrait-spectral portrait-top portrait-auto",
+    image: "/img/sprites/combat/foes/splittendril_attacker.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'${processDefinitionsInString("akozak")}-like limb';'dutifully tears from all we have built'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'highly limited visual profile';'reconstruction incomplete'">::INCOHERENCE DETECTED</span>`,
 })
 
 createEntity({
     name: "spectral golem",
+    hide: true, // no longer obtainable, doing this to make it disappear
     type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
     image: "/img/sprites/combat/foes/golem_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
@@ -918,17 +961,17 @@ createEntity({
     image: "/img/sprites/combat/foes/archivalgolem_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'bears the imposing shape of an archival golem';'lunges with detached fists, terribly powerful if given time to wind up'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'projects the imposing shape of an archival golem';'relentlessly pursues a target with single mind'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
 createEntity({
     name: "spectral eye",
     type: "thoughtform collapse portrait-spectral portrait-center portrait-auto",
-    image: "/img/sprites/combat/foes/kazeye_tiny.gif",
+    image: "/img/sprites/combat/foes/kazeye_dull_tiny.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'a small part of some enormous whole intersecting with ${processDefinitionsInString("velzie's stage")}';'projects dangerous unfocused dull light'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the attention of the ceremony made manifest upon ${processDefinitionsInString("velzie's stage")}';'forcibly reduces the size of the overlap to consume all'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -938,7 +981,7 @@ createEntity({
     image: "/img/sprites/obesk/miltza/gridtiny_warp.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'miltza...';'was such a sacrifice truly necessary?';'was it preferable to turning against what she has spent her ${processDefinitionsInString("θdeath")} hoping for?'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'miltza...';'i still wonder if she found what she spent her ${processDefinitionsInString("θdeath")} hoping for'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -948,7 +991,7 @@ createEntity({
     image: "/img/sprites/combat/foes/ikgolem_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'our ${processDefinitionsInString("golem")}, its cleaved halves writhing with the ${processDefinitionsInString("ceremony's")} interference';'reanimated to destroy us';'receptors imply it takes joy in its attempts';'utilizes enormous strength and volatile projectiles'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'our ${processDefinitionsInString("golem")}, its cleaved halves writhing with the ${processDefinitionsInString("ceremony's")} interference';'reanimated to destroy us';'receptors imply it takes joy in its attempts';'utilizes enormous strength and volatile dull light'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -958,7 +1001,7 @@ createEntity({
     image: "/img/sprites/combat/foes/kivii/spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the all too familiar shape of dozkallvi as she appeared to us';'forms large limbs to strike us from above'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'the all too familiar shape of dozkallvi as she appeared to us';'forms large limbs to disrupt and attack'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -968,17 +1011,47 @@ createEntity({
     image: "/img/sprites/combat/foes/itzka_spectral.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'some terrible amalgamation stemming from the festering corpses of dozkallvi and our golem';'seems to laugh as the world closes around us'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'some terrible amalgamation stemming from the festering corpses of dozkallvi and our golem';'seems to laugh as ${processDefinitionsInString("velzie's stage")} closes around us'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
 createEntity({
-    name: "spectral dull golem",
-    type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
-    image: "/img/sprites/combat/foes/golemboss_spectral.gif",
+    name: "vivid vel",
+    type: "thoughtform collapse portrait-spectral portrait-top portrait-auto",
+    image: "/img/sprites/combat/foes/spectral_vel.gif",
     text: `::ACTIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
-    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'entity pressing through the overlap';'large limbs of the ceremony, imitating dull ${processDefinitionsInString("golems")} and their dangerous tools';'strikes and aims projectile shots'</span>
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the clear image of a vel qou';'their claws and stance feel familiar';'relentlessly pursues a single target with incredible speed'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({
+    name: "vivid jut",
+    type: "thoughtform collapse portrait-spectral portrait-top portrait-auto",
+    image: "/img/sprites/combat/foes/spectral_jut.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the clear image of a jut qou';'seems to channel ceremonial resources to mend allies merely with their keen eye';'sunders the overlap explosively'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({
+    name: "vivid kiv",
+    type: "thoughtform collapse portrait-spectral portrait-top portrait-auto",
+    image: "/img/sprites/combat/foes/spectral_kiv.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the clear image of a kiv qou';'defends the vein with their... life?';'i suppose it is no longer ${processDefinitionsInString("θdeath")}';'a silent determination burns in their gaze'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({
+    name: "vivid archivist",
+    type: "thoughtform collapse portrait-spectral portrait-top portrait-auto",
+    image: "/img/sprites/combat/foes/archivist1_spectral.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'the clear image of our once esteemed archivist, malvi';'flickers about and draws ceremonial mass into the overlap';'forms into golems to delay us';'something about their incoherent shouting...';'it is as if they are present, aware, knowing they cannot fix this - why do they still fight?'</span>
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
@@ -1021,6 +1094,39 @@ createEntity({
     <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
 })
 
+createEntity({ // this is only here to remove an old instance
+    name: "spectral dull golem",
+    hide: true,
+    type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
+    image: "/img/sprites/combat/foes/itzka_spectral.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'some terrible amalgamation stemming from the festering corpses of dozkallvi and our golem';'seems to laugh as ${processDefinitionsInString("velzie's stage")} closes around us'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({ // this is only here to remove an old instance
+    name: "spectral horror",
+    hide: true,
+    type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
+    image: "/img/sprites/combat/foes/itzka_spectral.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'some terrible amalgamation stemming from the festering corpses of dozkallvi and our golem';'seems to laugh as ${processDefinitionsInString("velzie's stage")} closes around us'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
+createEntity({ // this is only here to remove an old instance
+    name: "spectral glazika",
+    hide: true,
+    type: "thoughtform collapse portrait-spectral portrait-topish portrait-auto",
+    image: "/img/sprites/combat/foes/itzka_spectral.gif",
+    text: `::ACTIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'game element';'not real';'not a reenactment of violence';'i swear mindsci';'please work'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'some terrible amalgamation stemming from the festering corpses of dozkallvi and our golem';'seems to laugh as ${processDefinitionsInString("velzie's stage")} closes around us'</span>
+    <span style="color: var(--obesk-color)" definition="ANALYSIS::'limited visual profile';'utilizing best reconstruction'">::MINOR INCOHERENCE DETECTED</span>`,
+})
+
 /* e4a1 stuff */
 createEntity({
     name: 'bstrd',
@@ -1054,6 +1160,24 @@ createEntity({
                         }, 2000)
                     })
                 }, 9000)
+            }
+        },
+    ]
+})
+
+
+createEntity({
+    name: 'continue',
+    type: "system-component",
+    hide: true,
+    image: "/img/textures/target.png",
+    text: `::SYSTEM COMPONENT
+    ::UTILIZE TO CONTROL MEMORY STREAM`,
+    actions: [ 
+        { // uses the page-stored fight
+            name: "retry combat",
+            exec: ()=>{
+                env.lastScenario.retry()
             }
         },
     ]

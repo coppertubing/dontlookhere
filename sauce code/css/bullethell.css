@@ -20,36 +20,26 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	border-radius: 100%;
 	pointer-events: none;
 	z-index: 9;
-	will-change: top, left;
-	--baseTransform: translate(-15px, -15px);
-	transform: var(--baseTransform);
-	background-color: var(--bright-color);
-	border: 2px solid var(--neutral-color);
+	will-change: transform;
+	transform: translate(-15px, -15px);
 	transition: opacity 200ms linear;
 	opacity: 0;
+	--border-color: var(--neutral-color);
 }
 
 #bh_player.active {
 	opacity: 1;
 }
 
-.bh_damaged #bh_player {
-	animation: BIGSHAKE 200ms linear infinite;
+#bh_player.bh_damaged {
+	--border-color: var(--obesk-color)
 }
 
-.bh_dodged #bh_player {
-	animation: SPIN-Y 200ms linear;
-}
-
-.bh_damaged #bh_player {
-	border-color: var(--obesk-color)
-}
-
-.bh_dodged #bh_player, #bh_player.invuln {
-	border-color: var(--friend-color)
+#bh_player.bh_dodged, 
+#bh_player.invuln {
+	--border-color: var(--friend-color)
 }
 
 #bh_player::before {
@@ -60,6 +50,9 @@
 	background-image: url(/img/mui/mindspikelogoactive.gif);
 	background-size: cover;
 	background-position: center;
+	background-color: var(--bright-color);
+	border-radius: 100%;
+	border: 2px solid var(--border-color);
 	--baseTransform: translateX(0);
 	animation: SPIN 10s linear infinite;
 }
@@ -67,6 +60,9 @@
 #bh_player.invuln::before {
 	background-image: url(/img/mui/mindspikelogo.gif);
 }
+
+#bh_player.bh_damaged::before { animation: BIGSHAKE 200ms linear infinite }
+#bh_player.bh_dodged::before { animation: SPIN-Y 200ms linear }
 
 #bh_player.pulse::after {
 	content: "";
@@ -91,6 +87,10 @@
 .bh_started .bh_damager {
 	cursor: not-allowed;
 	will-change: transform;
+}
+
+.bh_damage-wrapper div { /* try and force GPU if it isn't already being used fucking somehow */
+    backface-visibility: hidden;
 }
 
 /* movefriend attacks */
@@ -162,6 +162,17 @@
 	--y: 0px;
 	transform: translate(-50%, -50%) scaleX(0.5) rotate(45deg);
 	animation: unset;
+}
+
+.bh_spiralspike.tendrilbonus .bh_movespike {
+	background: url(/img/sprites/combat/statuses/remain_control.gif);
+	background-color: var(--obesk-color);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: 2px solid var(--obesk-color);
+	width: 10vmin;
+	height: 10vmin;
 }
 
 @keyframes SPIRALATTACK {
@@ -302,6 +313,7 @@ BSTRD attacks
 	opacity: 0;
 	animation: BH_SHOT_WINDUP 500ms steps(20);
 	animation-delay: var(--delay);
+	animation-duration: var(--aimtime);
 	animation-fill-mode: forwards;
 	transform-origin: center;
 }
@@ -376,7 +388,7 @@ BSTRD attacks
 	height: 200px;
 	animation: bh_grenade-graphic var(--spritedelay) ease-in;
 	animation-fill-mode: forwards;
-	background-image: url(/img/sprites/combat/items/kavruka.gif);
+	background-image: url(/img/sprites/combat/items/kavruka_dither.gif);
 }
 
 .bh_kavruka.exploding::after {

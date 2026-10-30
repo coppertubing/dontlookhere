@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,6 +407,7 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div class="damage"></div>
 <div id="room-space">
     <div id="room-animator">
@@ -370,7 +431,7 @@
 
 <style>
 
-@import url(/css/stage/beneath.css?1776972202354301552);
+@import url(/css/stage/beneath.css?1791592572941837278);
 
     #content {
         background-color: white;
@@ -853,7 +914,7 @@
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/ship.gif",
@@ -1278,7 +1339,7 @@ whyyoucame
     akizet
         i see! 
             EXEC::env.interview.cam('akipov')
-        we have sought life for so long, i recall talks of the search even in my youth
+        we have sought life for so long, i recall talks of the search even in my <span definition="NOTE::'recollection of imperfect translation';'intended to mean post-larval youth'">youth</span>
         and we have had the means to reach other planets for just as long, 
         but it is a prohibitive method... we could not simply visit every planet we liked
         we needed a clear sign, and your planet gave it to us!
@@ -1308,7 +1369,7 @@ whyyoucame
 
     akizet
         yes, it is a bizarre paradox...
-        so bizarre that it is the reason I now sit with you, my bright cousin
+        so bizarre that it is the reason i now sit with you, my bright cousin
         if not for the call, we may never have found your home
         but... the call could not have happened without us being in your home already
         not one of our theories has held against scrutiny
@@ -1378,7 +1439,7 @@ whatwillyoudo
         Every human loves a good mystery.
 
     akizet
-        oh yes, we have noticed. 
+        oh yes, we have noticed 
         your many attempts to investigate our spire were very entertaining
         so many of us wanted to say hello to your creations
         but, we were not prepared
@@ -1410,8 +1471,8 @@ thecall
     akizet
         thirty of your years ago, the wailing across our dull communications began
             EXEC::env.interview.cam('akipovdown')
-        much of that time was spent simply locating its origin, and while I was not yet involved...
-        I know that it was excessively costly. so many gates created, so many blemishes outside the air's border
+        much of that time was spent simply locating its origin, and while i was not yet involved...
+        i know that it was excessively costly. so many gates created, so many blemishes outside the air's border
         so much time passed that the call grew weak, an echo of what it used to be, all while our efforts ate away resources
         our councils began to demand that efforts be slowed... 
         and then your home was found. seven years ago. and even though we are here now, the source seems no closer
@@ -1421,7 +1482,7 @@ thecall
         HER FACE CONTORTS AGAIN. THE SAME WAY...
     
     interviewer
-        What do you mean by, 'it seems no closer'?
+        What do you mean by, "it seems no closer"?
         You said it's here, right? You located the source?
     
     akizet
@@ -1440,7 +1501,7 @@ thecall
         and it has grown quiet. i know we will need your help
 
     sourceless
-        HER FACE CONTORTS AGAIN IN A NEW WAY. I KNOW THAT ONE. 
+        HER FACE CONTORTS AGAIN IN A NEW WAY. I KNOW THAT ONE 
         IT IS 'SMILING'! DELIGHTFUL!! I SHIFT MINE SIMILARLY
     
     interviewer
@@ -1501,7 +1562,7 @@ brightcousin
 
 corru
     interviewer
-        So, your technology, 'corru'... We're still gathering what information we can.
+        So, your technology, "corru"... We're still gathering what information we can.
         I know you're not exactly an engineer--so, no need to go too in-depth, but...
         Can you just give me a few basic explanations? As in, how you... build it and use it.
         We've got a lot of answers here, we're just trying to reach a consensus.
@@ -1589,7 +1650,8 @@ endinterview
             EXEC::env.interview.classMod('ease', false);env.interview.camSpeed("10s");env.interview.cam('zoomout');
     
     moth
-        you know, kind of a longshot, but we could probably get a little extra here...
+        you know, kind of a longshot, but...
+        this memory is just incoherent enough that i think we could get a little extra here
         if you keep the render running past the end of the stream, maybe we could talk to akizet
         or at least, this version of akizet
 
@@ -1624,7 +1686,7 @@ integritycontinue
         BUT I AM AWOKEN. I AM AN ECHO. I FEEL YOUR EYES. YOU ARE LOOKING AT ME
         AND YOU ARE NOT ME. I KNOW YOU ARE NOT ME. IN MY THOUGHTS? HOW DARE YOU
         SORRY. I AM GETTING AHEAD OF MYSELF
-        I SUPPOSE IT WAS ONLY A MATTER OF TIME. I RECORDED FOR A REASON.
+        I SUPPOSE IT WAS ONLY A MATTER OF TIME. I RECORDED FOR A REASON
         ARE YOU A CHILD OF MINE? PERHAPS A STUDENT? HAS MY NAME GROWN RENOWN BACK HOME?
     
     interviewer
@@ -1662,7 +1724,7 @@ integritycontinue
         I FEEL AS THOUGH IT IS STARTING TO UNDERSTAND. WHAT A PITY IT IS NOT LUCID
         OH... ¡ÆMg^EÔ
         IT CAN HEAR THIS. AND SO THE THOUGHTFORM REJECTS MY EXPLANATION
-        IT STANDS AND RUNS FOR THE DOOR, WHICH DOES NOT EXIST. THE ROOM'S INTEGRITY IS SHATTERED.
+        IT STANDS AND RUNS FOR THE DOOR, WHICH DOES NOT EXIST. THE ROOM'S INTEGRITY IS SHATTERED
             EXEC::document.querySelector('#room-space').classList.add('squish');env.interview.cam('zoomout')
             WAIT::5000
 
@@ -1679,8 +1741,8 @@ integritycontinue
             EXEC::document.querySelector('#room-space').classList.remove('warp1');env.interview.cam('akizet-direct');
 
         IT WILL GROW BACK
-        BUT I AM STILL HERE. IN THIS SMALL ROOM... WITH YOU.
-        I GROW ANXIOUS. YES, BECAUSE YOU CAN FEEL MY THOUGHTS. IT IS NOT A PLEASANT FEELING. 
+        BUT I AM STILL HERE. IN THIS SMALL ROOM... WITH YOU
+        I GROW ANXIOUS. YES, BECAUSE YOU CAN FEEL MY THOUGHTS. IT IS NOT A PLEASANT FEELING 
     
     akizet
         hmm... i will speak, instead
@@ -1720,7 +1782,7 @@ behonest
     akizet
         what...
         an echo... of an echo? 
-        no, no--i am simply beyond incoherence.
+        no, no--i am simply beyond incoherence
         this is sabotage. this is not real...
     
     sourceless
@@ -1825,9 +1887,9 @@ start
         it takes a moment to process your request.
 
     rotwatcher
-        presence of insensate thoughtforms adapted to the dissociative pool, henceforth referenced to as a "scavenger" subtype, is observed.
+        presence of insensate thoughtforms adapted to the dissociative pool, henceforth referenced to as a 'scavenger' subtype, is observed.
         scavengers remain a common fixture of the dissociative pool in the post-stasis state of the grand stage, a result of self-mutation in the face of unreasonably hostile environmental conditions.
-        typically comprised of one or more "lesser thoughtforms", the preceding classification being defined as thoughtforms of low memory importance, which are reliant upon a collective neural processor organelle within a host thoughtspace.
+        typically comprised of one or more 'lesser thoughtforms', the preceding classification being defined as thoughtforms of low memory importance, which are reliant upon a collective neural processor organelle within a host thoughtspace.
         most mutation and adaptation will have occurred prior to the loss of coherent thought, remaining effective in survival while traversing connective media and the dissociative pool at large.
         the scavenger subtype is observed to have little to no reasoning capability and will often retrieve resources with direct attack upon any suspected sources.
 
@@ -2587,7 +2649,7 @@ entities
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -2684,8 +2746,9 @@ entities
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 

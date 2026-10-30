@@ -342,7 +342,7 @@ proxyfriend
 
 interloperq
     self
-        what do you mean by 'interloper'?
+        what do you mean by "interloper"?
 
     funfriend
         YOU ARE AN INTERLOPER!
@@ -858,8 +858,8 @@ commstruth
         I AM NOT ADJUSTING MY SCHEDULE TO ENTERTAIN AN ABERRANT THOUGHTFORM
         IT IS PREYING ON YOUR CLUELESSNESS, INTERLOPER
         IT RELIES AS MUCH ON THE CYST'S SURVIVAL AS I DO
-        SO HOW ABOUT YOU TELL IT, "FUNFRIEND APPRECIATES THE SUGGESTION,
-        HOWEVER, IT HAS BEEN REJECTED. THANK YOU"
+        SO HOW ABOUT YOU TELL IT, 'FUNFRIEND APPRECIATES THE SUGGESTION,
+        HOWEVER, IT HAS BEEN REJECTED. THANK YOU'
 
     RESPONSES::self
         just try to get to it soon<+>commsok
@@ -1261,9 +1261,9 @@ ozohistory
 masks
     self
         the council gave me some kind of information or thought
-        it's letting me use these 'mask' things
+        it's letting me use these "mask" things
             SHOWIF::["hub__funfriend_beacon", true]
-        it's letting me use something called a 'mask'
+        it's letting me use something called a "mask"
             SHOWIF::["hub__funfriend_beacon", false]
         i've never seen anything like it
         do you know what it is?

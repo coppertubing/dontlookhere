@@ -44,6 +44,32 @@
     animation-duration: 60s;
 }
 
+#realgrid .vesselgap.freedomgate::before {
+    background-image: url(/img/local/embassy/resources/kinggate.gif);
+    opacity: 1;
+    animation-timing-function: steps(30);
+    animation-duration: 10s;
+}
+
+#realgrid .vesselgap.freedomgate::after {
+    background-image: url(/img/local/embassy/resources/daemongate.gif?), url(/img/textures/inksmall.gif);
+    border-radius: 100%;
+    width: 50%; height: 50%;
+    z-index: -1;
+    --baseTransform: translateZ(0);
+    animation-timing-function: steps(240);
+}
+
+#realgrid .gridpiece.faketeleport.freedomport {
+    background: url(/img/textures/papermeltstill.gif);
+    border-color: var(--bastard-color);
+}
+
+#realgrid .gridpiece.faketeleport.daemonport {
+    background: url(/img/textures/papermeltstill.gif);
+    border-color: var(--dark-color);  
+}
+
 @keyframes MYSTERYTILE {
     0% { transform: translateZ(calc(var(--gridTileSize) * 0.5)) rotateX(20deg) rotate(80deg); }
     100% { transform: translateZ(calc(var(--gridTileSize) * 0.1)) rotateX(-20deg) rotate(-80deg); }

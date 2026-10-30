@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,6 +407,7 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div class="grid-plane">
     <div class="grid-container">
         <div class="grid-animator">
@@ -375,11 +436,11 @@
 
 <style>
 
-@import url(/css/combat.css?1776972202354301552);
-@import url(/css/bullethell.css?1776972202354301552);
-@import url(/css/local/embassy_global.css?1776972202354301552);
-@import url(/css/stage/beneath.css?1776972202354301552);
-@import url(/css/crittamode.css?1776972202354301552);
+@import url(/css/combat.css?1791592572941837278);
+@import url(/css/bullethell.css?1791592572941837278);
+@import url(/css/local/embassy_global.css?1791592572941837278);
+@import url(/css/stage/beneath.css?1791592572941837278);
+@import url(/css/crittamode.css?1791592572941837278);
 
 body #content {
     background: var(--dark-color)
@@ -719,6 +780,25 @@ body[id^="vessel"] .gridpiece.nothing {
     border-radius: 20%;
 }
 
+.wheel .target {
+    left: unset;
+    width: var(--tilef5) !important;
+}
+
+.wheel {
+    --dyp-width: 0 !important;
+}
+
+.wheel::after {
+    content: "";
+    width: calc(var(--gridTileSize) * 1.5);
+    height: calc(var(--gridTileSize) * var(--dyp-height));
+    display: block;
+    position: absolute;
+    background: inherit;
+    pointer-events: none;
+}
+
 /* critta menu toggleability */
 critta-map {
     opacity: 0;
@@ -747,10 +827,12 @@ body[menu="crittamap"].in-menu critta-map {
     background: linear-gradient(0deg, var(--bastard-color), transparent);
 }
 
-
 #realgrid .dyp.fishy.active .fishbeam {
     display: flex;
 }
+
+/* special revisit */
+#realgrid .freedomtile { background: url(/img/local/embassy/resources/daemontile_freedom.gif) }
 </style>
 
 
@@ -771,7 +853,7 @@ body[menu="crittamap"].in-menu critta-map {
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/frame.gif",
@@ -1007,6 +1089,11 @@ body[menu="crittamap"].in-menu critta-map {
 					
 					// definitions required for page
 					
+						
+						
+							env.definitions[`vecrivi`] = `'niche maintenance tool';'assists in draining damaged equipment of inert corru'`;
+						
+					
 					
 					//dynamically inserted
 					
@@ -1025,7 +1112,10 @@ body[menu="crittamap"].in-menu critta-map {
 if(location.search.includes('dream')) {
     let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("using this link may sequence-break and maybe mess up your save if you haven't done this stuff already. are you sure you want this to happen? (decline and it won't set any flags)")
 
-    if(doit) change("TEMP!!from", "geliozo")        
+    if(doit) {
+        change("TEMP!!from", "geliozo")
+        change("PAGE!!tempmodeselection", true)
+    }
 } 
 
 if(location.search.includes('descape')) {
@@ -1092,42 +1182,42 @@ thoughtspace
     moth
         i didn't really get it at first either until you moved around a little
         here's what i think...
-        basically, the embassy thoughtspace is one gigantic spatial thoughtform that holds all the embassy memories
+        basically, the embassy thoughtform is one gigantic spatial thoughtspace that holds all the embassy memories
         cause that's what your log said - spatial thoughtform
         and then all those individual memories, like the different days including the collapse,
-        those are "experiential" thoughtforms, which are kinda like focused streams of memory
+        those are "experiential" thoughtforms, which are kinda like bubbles, focused streams of memory
         the interview with akizet was one of them too
         but since these ones are <em>inside</em> the greater spatial thoughtspace of the embassy,
-        they're also spatial for you
-        and i guess that's also why it stays spatial even after you leave the experiential memories
+        they're also spatial for you. inheritance
+        so that's why i think it stays spatial even after you left the boundary
+        you were just in the larger space, outside of the little bubbles
     
 ____SHOWIF::"e3a2__intro"
     self
-        what about the ship on the ocean memory?
+        what about the "ship on the red ocean" thoughtspace?
+        how was that able to be formed?
     
     moth
         ok, that's where it gets stranger
         bstrd is supposed to only pick one part of real memories to do its thing to, but...
-        maybe running on corru is making it a little incoherent
+        it's gotta be either incoherent because of our actions, or just by virtue of it running on corru,
         cause i don't think "create fake new memories" is a part of the program lol
-        but that's what bstrd did
-        the ship thing is like some stitched together, barely coherent memory
+        but it did it in a pretty clever and simple way, i think!
+        the whole memory is basically just the boat, projecting its concepts outwards in a small radius                        
 ____END
 
 ____SHOWIF::"e3a2__escapewin"
     moth
-        it's hard to tell, but i'm pretty sure it actually moved whenever you moved the vessel forward
-        like, bstrd was pushing it along to eventually make contact with the wall so you could fight it
-        er, "firmament", i guess
+        so i actually thought the distance being travelled was an illusion at first,
+        but i'm pretty sure it actually moved whenever you moved the vessel forward
+        like, bstrd was pushing it along to eventually make contact with the firmament so you could fight it
         anyway, it probably collapsed in on itself not long after bstrd stopped upkeeping it
         the data i was able to get from it was so scrambled and weird
 
 ____SHOWIF::[["e3a2__escapewin", false], ["e3a2__intro2", true]]
     moth
-        it's hard to tell, but i'm pretty sure it actually moves too
-        bstrd is probably pushing it around whenever you move the vessel
-        that seems to be the plan to defeat the wall
-        er, "firmament", i guess
+        it's hard to tell if the movement of the boat is even "real",
+        or if it's some narrative pretense required to force the firmament in            
         anyway, it'll probably collapse in on itself once we're done here
         the data i get from it is so busted
 ____END
@@ -1189,7 +1279,7 @@ daemons
         it also definitely understood it completely
         so when it imprinted it onto the embassy thoughtspace,
         and since thoughtform signals are weirdly similar between humans and obesk,
-        it just worked
+        it just worked. the meaning was intuited
         does that all make sense?
     
     RESPONSES::self
@@ -1203,11 +1293,12 @@ funfriend
     
     moth
         kinda
-        i doubt it knows or really cares what's going on since the core memories are the same
-        but it's not like it magically imprinted all these thoughtforms into being daemons
-        a lot of the code is for the frame itself, which has routines for creating them
-        which i think funfriend applied to the greater embassy thoughtspace itself...
-        so it's just been doing its own thing independently of funfriend
+        i doubt funfriend knows or really cares what's going on since the core memories are the same
+        but it's not like funfriend personally imprinted all these thoughtforms into being daemons
+        all the code is for the frame itself, or... the firmament, basically
+        so funfriend applied our changes to the whole embassy thoughtspace,
+        and it's been generating its own little workers using spare resources as needed
+        kinda just doing its own thing independently of funfriend
     
     RESPONSES::self
         ok<+>loop
@@ -1288,7 +1379,7 @@ intrusive
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -1334,6 +1425,10 @@ intrusive
 					//dyn
 					
 					switch(check("TEMP!!from")) {
+    case "resources":
+        changeStage('completed', "resourcereturn")
+    break
+
     case "geliozo":
         changeStage("vessel")
         change("PAGE!!dream", true)
@@ -1376,8 +1471,9 @@ document.addEventListener('corru_changed', env.e3a2.crittaStuffHandler)
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 

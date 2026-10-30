@@ -60,14 +60,16 @@ class FishingMinigame extends HTMLElement {
             let possibleFishies = []
             for(let fishName in FishingMinigame.fishies) {
                 let fish = FishingMinigame.fishies[fishName]
-                if(shouldItShow(fish)) possibleFishies.push(fish)
+                try{ if(shouldItShow(fish)) possibleFishies.push(fish) } catch(e) {
+                    possibleFishies.push(fish)
+                }
             }
             this.fishy = possibleFishies.sample()
         }
 
         this.paused = true
 
-        this.baseTime = check('low_intensity') ? 100000 : 25000
+        this.baseTime = check('low_intensity') ? 30000 : 15000
         this.fish.fishsetX = [-25, 25].sample()
         this.fish.fishsetY = [25, 25].sample()
         this.fish.fishsetDeg = rand(0, 360) 
@@ -265,7 +267,7 @@ class FishingMinigame extends HTMLElement {
 
     disconnectedCallback() {
         this.stop()
-        if(typeof this.success == "boolean" && !this.success) {
+        if(typeof this.success == "boolean") {
             if(check("STAGE!!freedomtoggled")) {
                 change("STAGE!!freedomtoggled", "DELETE")
                 mask({name: "freedom", toggle: true, playSound: false})
@@ -304,10 +306,12 @@ class FishingMinigame extends HTMLElement {
         if(this.endCallback) this.endCallback(success)
     }
 
-    claim() {
+    claim(noCritta) {
         if(this.claimed) return;
         this.claimed = true
         page.lastCaughtFish = this.fishy
+
+        if(noCritta) return;
         let id = `reward${env.crittaCount++}`
         content.insertAdjacentHTML(`beforeend`, `<critta-reward id="${id}" class="pre-show" type="fish"></critta-reward`)
         
@@ -389,6 +393,7 @@ class FishingMinigame extends HTMLElement {
                 pullMod: 1,
                 adjustMod: 1, 
             },
+            showIf: () => env?.crittaMap?.gamemode?.slug != "shell"
         },
 
         fish_angler: {
@@ -506,6 +511,112 @@ class FishingMinigame extends HTMLElement {
                 adjustMod: 0.5, 
             },
             showIf: ()=> page.party.some(mem=>mem.class)
+        },
+
+        fish_boot: {
+            item: "fish_boot",
+            stats: { 
+                "--fishspeed-x": 10, 
+                "--fishspeed-y": 10,
+                "--fishspeed-rot": 10,
+
+                jumpRate: 5, 
+                jumpMod: 0.5, 
+                pullMod: 3,
+                adjustMod: 0.5, 
+            },
+            showIf: ()=> page.party.some(mem=>mem.class)
+        },
+
+        /* resources exclusive fish */
+        fish_oar: {
+            item: "fish_oar",
+            stats: { 
+                "--fishspeed-x": 1, 
+                "--fishspeed-y": 30,
+                "--fishspeed-rot": 2,
+
+                jumpRate: 10, 
+                jumpMod: 2, 
+                pullMod: 10,
+                adjustMod: 2, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
+        },
+
+        fish_sun: {
+            item: "fish_sun",
+            stats: { 
+                "--fishspeed-x": 5, 
+                "--fishspeed-y": 3,
+                "--fishspeed-rot": [1, 60],
+
+                jumpRate: 1, 
+                jumpMod: 1, 
+                pullMod: 1,
+                adjustMod: 1, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
+        },
+
+        fish_fly: {
+            item: "fish_fly",
+            stats: { 
+                "--fishspeed-x": [20, 30], 
+                "--fishspeed-y": 4,
+                "--fishspeed-rot": [1, 60],
+
+                jumpRate: 1.5, 
+                jumpMod: 2, 
+                pullMod: 0.25,
+                adjustMod: 1, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
+        },
+
+        fish_salm: {
+            item: "fish_salm",
+            stats: { 
+                "--fishspeed-x": [1, 60], 
+                "--fishspeed-y": [1, 60],
+                "--fishspeed-rot": [1, 60],
+
+                jumpRate: 5, 
+                jumpMod: 2, 
+                pullMod: 0.5,
+                adjustMod: 1, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
+        },
+
+        fish_sush: {
+            item: "fish_sush",
+            stats: { 
+                "--fishspeed-x": [5, 10], 
+                "--fishspeed-y": [5, 10],
+                "--fishspeed-rot": 5,
+
+                jumpRate: 10, 
+                jumpMod: 2, 
+                pullMod: 6,
+                adjustMod: 1, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
+        },
+
+        fish_naut: {
+            item: "fish_naut",
+            stats: { 
+                "--fishspeed-x": 60, 
+                "--fishspeed-y": 60,
+                "--fishspeed-rot": 60,
+
+                jumpRate: 1, 
+                jumpMod: 10, 
+                pullMod: 0.1,
+                adjustMod: 1, 
+            },
+            showIf: ()=> page.name == "internal-resource-cache"
         },
     }
 }

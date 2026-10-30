@@ -11,12 +11,22 @@ env.currentDialogue = {
 function startDialogue(dialogueChain, settings = {
     originEntityID: null, 
     specificChain: false, 
-    chatterlogue: false // special mode that lets you move and talk. doesn't count as a menu, but occupies the right side of the screen
+    chatterlogue: false, // special mode that lets you move and talk. doesn't count as a menu, but occupies the right side of the screen
+    force: false,
 }) {
-    if(env.currentDialogue.active || !env.currentDialogue.canStart || check("TEMP!!nodialogue")){
+    if((env.currentDialogue.active || !env.currentDialogue.canStart || check("TEMP!!nodialogue")) && !settings.force){
         env.error = `tried to start dialogue ${dialogueChain} but either currently in dialogue or too soon after previous dialogue. consider using CHANGE::`
         return 
     }
+
+    if(settings.force) {
+        if(env.currentDialogue.queuedCallback) {
+            env.currentDialogue.queuedCallback()
+            env.currentDialogue.queuedCallback = false
+        }
+        document.querySelector('#dialogue-box').innerHTML = ""
+    }
+
     //if origin entity is set, we keep track of that entity and also highlight it somehow (usually for dynamic purposes related)
     if(settings.originEntityID) {
         env.currentDialogue.originEntityID = `#${settings.originEntityID}`
@@ -132,10 +142,12 @@ function getDialogueActor(inputSlug, noExec) {
         if(actorObj.expressions[expression].voice) { 
             actorObj.activeVoice = actorObj.expressions[expression].voice
         } else {
-            actorObj.activeVoice = actorObj.voice
+            if(actorObj.expressions.default.voice) actorObj.activeVoice = actorObj.expressions.default.voice
+            else actorObj.activeVoice = actorObj.voice
         }
         if(actorObj.expressions[expression].type) actorObj.type = actorObj.expressions[expression].type
-        if(actorObj.expressions[expression].class) actorObj.class = actorObj.expressions[expression].class
+        if(actorObj.expressions[expression].class) actorObj.class = actorObj.expressions[expression].class; else actorObj.class = false
+        if(actorObj.expressions[expression].element) actorObj.element = actorObj.expressions[expression].element
 
         //the exec on an expression happens whenever the expression changes, so we execute it
         if(actorObj.expressions[expression].exec) actorObj.expressions[expression].exec()
@@ -330,7 +342,7 @@ function sendDialogue(dialogue, i = 0) {
 
                         //add the reply and set up its click handler
                         document.querySelector(`#dialogue-menu .dialogue-options-${actor.name} .dialogue-options`).insertAdjacentHTML('beforeend', `
-                            <span
+                            <button
                                 class="
                                     reply
                                     ${isEnd ? "end-reply" : ""}
@@ -341,11 +353,11 @@ function sendDialogue(dialogue, i = 0) {
                                 ${tooltip ? `definition="${tooltip}"` : ""}
                                 ${!isEnd ? readAttribute : ""} 
                                 ${isEnd ? `endtext="${isEnd}"` : ''}
-                            >${nameToUse}</span>`
+                            >${nameToUse}</button>`
                         )
 
                         //on option click, remove event listeners and add classes to indicate choice
-                        document.querySelector(`#dialogue-menu .dialogue-options span[name="${nameToUse}"]`).addEventListener('mousedown', function(e) {
+                        document.querySelector(`#dialogue-menu .dialogue-options button[name="${nameToUse}"]`).addEventListener('click', function(e) {
                             console.log(nameToUse)
 
                             if(reply.exec) {
@@ -358,7 +370,7 @@ function sendDialogue(dialogue, i = 0) {
                                 dest = `EX-${slugify(nameToUse.slice(0, 10))}`
                             }
                             
-                            document.querySelectorAll('#dialogue-menu .dialogue-options span').forEach(el => el.innerHTML += '') //destroys event listeners in one easy step
+                            document.querySelectorAll('#dialogue-menu .dialogue-options button').forEach(el => {el.inert = true; el.innerHTML += ''}) //destroys event listeners & stops focus in one easy step
                             this.classList.add('chosen')
                             this.closest('.dialogue-actor').classList.add('chosen')
 
@@ -380,7 +392,7 @@ function sendDialogue(dialogue, i = 0) {
                 })
             })
 
-            document.querySelectorAll(`#dialogue-menu .dialogue-options span`).forEach(e=>{
+            document.querySelectorAll(`#dialogue-menu .dialogue-options button`).forEach(e=>{
                 e.addEventListener('mouseenter', ()=>play('muiHover'))
                 e.addEventListener('click', ()=> play('muiClick'))
             })
@@ -438,6 +450,7 @@ function endDialogue(endCallback = false) {
 
     env.currentDialogue.active = false
     env.currentDialogue.prevSpeaker = false
+    if(endCallback) env.currentDialogue.queuedCallback = endCallback
     
     if(env.stage.current) [env.stage.real, env.stage.ref].forEach(layer => {
         layer.querySelectorAll(env.currentDialogue.originEntityID).forEach(e => {
@@ -453,8 +466,11 @@ function endDialogue(endCallback = false) {
     checkEpisodeProgress()
 	setTimeout(()=>{
         env.currentDialogue.canStart = true
-        document.querySelector('#dialogue-box').innerHTML = ""
-        if(endCallback) endCallback()
+        if(!env.currentDialogue.active) document.querySelector('#dialogue-box').innerHTML = ""
+        if(endCallback) {
+            endCallback()
+            env.currentDialogue.queuedCallback = false
+        }
     }, 500)
 
     if(dialogueProgressEvent) {
@@ -498,10 +514,12 @@ function skipDialogue() {
 
         vfx({type: "skip", state: true, useCutscene: true})
         let vol = Howler.volume()
+        cutscene(true)
 
         setTimeout(() => {
             vfx({type: "skip", state: false, useCutscene: false})
             Howler.volume(vol)
+            cutscene(false)
         }, env?.currentDialogue?.chain?.skipTime || 1000)
 
         env.currentDialogue.chain.skip()
@@ -686,7 +704,7 @@ function generateDialogueObject(genString) {
 
         try {
             return upgradeShowIf(JSON.parse(`{ "reasons":${finalShowIf}}`).reasons) 
-        } catch(e) {console.log(showif, e)}
+        } catch(e) {console.log(showif, finalShowIf, e)}
     }
 	
 	split.forEach(initialLine => {

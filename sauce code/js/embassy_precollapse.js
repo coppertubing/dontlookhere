@@ -141,6 +141,10 @@ createEntity({
             exec: ()=>{
                 let save = check('collapseSave')
 
+                if(!save.pageFlags["PAGE!!ingsave"] && !check("TEMP!!permitIngUpgrade")) {
+                    return startDialogue("++ingfixoption")
+                }
+
                 switch(save.pageFlags["PAGE!!embassy_day"]) {
                     //since we didn't let people after movefriend (stupidly) need to jump through some hoops
                     case 3:
@@ -177,9 +181,32 @@ createEntity({
                         moveTo("/local/ocean/embassy/groundsmindry/")
                     break
                 }
-                
             },
-            showIf: 'collapseSave'
+
+            showIf: ()=> {
+                if(check('collapseSave')) {
+                    return true
+                }
+            }
+        }
+    ]
+})
+
+createEntity({
+    name: '::/FRAME/',
+    type: "thoughtform",
+    hide: true,
+    order: -1,
+    image: "/img/textures/chromebmicro.gif",
+    text: `::UNPROCESSABLE THOUGHTFORM
+    ::<span definition="NOTE::'non-standard format'">UNUSUAL SIGNATURE</span>::RENDERABLE
+    ::INHERITED CONTEXT::<span style='color: var(--bastard-color)' class='bastard-font'>'AHOYYYY 🏴‍☠️'</span>`,
+    actions: [
+        {
+            name: "enter",
+            exec: ()=>{
+                moveTo("/local/beneath/embassy/")
+            }
         }
     ]
 })
@@ -296,9 +323,12 @@ createEntity({
         {
             name: "greet",
             exec: ()=>{  
-                if(isStageClear()) {
-                    startDialogue("d3_barfriend")
-                } else chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true})
+                if(check("PAGE!!recreation", "dangerous")) chatter({actor: 'sourceless', text: 'IT IS TOO DANGEROUS, WE MUST DESTROY THESE FOES', readout: true});
+                else {
+                    if(!check("PAGE!!recreation")) startDialogue("d3_barfriend", {specificChain: "early"})
+                    if(check("PAGE!!recreation", "cleared") && check("PAGE!!barfriend", "early")) startDialogue("d3_barfriend", {specificChain: "revisit"})
+                    else if(check("PAGE!!recreation", "cleared")) startDialogue("d3_barfriend")
+                }
             },
             showIf: [["PAGE!!embassy_day", 3]]
         }
@@ -393,6 +423,15 @@ createEntity({
     text: `::UNRESPONSIVE THOUGHTFORM
     ::EXPLICIT PURPOSE::'recurring scenery'
     ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'attentive sentinels to heed the call'</span>`
+})
+
+createEntity({
+    name: 'damaged listener',
+    type: "thoughtform portrait-blocker portrait-cover",
+    image: "/img/local/embassy/listener.gif",
+    text: `::UNRESPONSIVE THOUGHTFORM
+    ::EXPLICIT PURPOSE::'recurring scenery'
+    ::INHERITED CONTEXT::<span style='color: var(--obesk-color)'>'an attentive sentinel to heed the call';'something else takes its ear'</span>`
 })
 
 createEntity({
@@ -883,7 +922,7 @@ env.dialogues["d1_start"] = generateDialogueObject(`
 start
     sourceless
         my consciousness resumes
-        the rejuvenation chamber opens, and from outside flows the glow of the embassy's cystic glass
+        the rejuvenation chamber opens, and in pours the glow of the embassy's cystic glass
         through the distant dull contrivance, i feel another θgaze has begun
 
     RESPONSES::akizet
@@ -898,7 +937,7 @@ emerge
         but i have work to do...
         a focused meeting of my call research initiative is approaching
         and a fine occasion it is - we have some particularly unique equipment this time!
-        i must assemble the team, then we may begin
+        i must assemble the core team, then we may begin
     
     RESPONSES::akizet
         off to work<+>END
@@ -1330,6 +1369,9 @@ talk
     sys
         ALERT::'memory of arachnid detected';'render?'
 
+    moth
+        you still have that on?
+
     RESPONSES::sys
         render<+>arthur
             EXEC::content.classList.add('spider')
@@ -1536,7 +1578,7 @@ theory
     
     cavik
         aki...
-        i would not seriously entertain sharing <em>this</em> one.
+        i would not seriously entertain sharing <em>this</em> one
         did you really think that?
         i know i made an incorrect step, but
     
@@ -1701,7 +1743,7 @@ env.dialogues["discovery_notyet"] = generateDialogueObject(`
 start
     sourceless
         this is where i will sit...
-        once i have the team assembled.
+        once i have the team assembled
         gakvu, tozik, and cavik are all here
         all but kazki and bozko
         i should tell them it is time for the focus
@@ -2351,7 +2393,7 @@ cyst
     groundsmind
         akizetesche,
         i cannot help you without a point of reference
-        an innumerable amount of cysts are self-delivered every θgaze
+        an innumerable amount of cysts are self-delivered every θgaze,
         and each are mundane in nature.
         what has you seeking information about this one in particular?
 
@@ -2594,7 +2636,7 @@ how
         ah, of course! there is the construction of, ah,
 
     gakvu
-        no no, not work... i mean, the call.
+        no no, not work... i mean, the call
 
     sourceless
         SHE CHOOSES HER WORDS CAREFULLY HERE IN PUBLIC
@@ -2656,7 +2698,7 @@ cyst
         NO - SHE ALWAYS LOOKS LIKE THAT
 
     gakvu
-        oh, no no.
+        oh, no no
         huh... self-delivered
         someone on the team would have just given it to you in-person
         that is very, very strange
@@ -2828,7 +2870,9 @@ cyst
     
     sourceless
         WHEN I RELENT, HE RETURNS TO HIS THOUGHTS
-        I DOUBT IT IS HIM... OR IF IT IS, HE TRULY WANTS TO GIVE NO HINTS
+        I DOUBT IT IS HIM...
+        THOUGH, GIVEN HOW HE IS NORMALLY,
+        I WOULD HAVE NO HOPE OF TELLING
 
     RESPOBJ::d2_tozikresp
 

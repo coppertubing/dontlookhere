@@ -138,7 +138,7 @@ body[quality="regular"] #realgrid .bar figure::after {
 }
 
 #embassy_recreation #realgrid .barfriend {
-    transform: translateY(-25%) rotateX(-90deg) translateZ(calc(-1 * var(--gridTileSize)));
+    transform: translateY(-25%) rotateX(-90deg) translateZ(calc(-1 * var(--gridTileSize))) var(--charTransform, translateZ(0));
 }
 
 .barfriend figure {
@@ -399,7 +399,7 @@ body[quality="regular"].collapse #realgrid[stage="embassy_recreation"] .gridpiec
 }
 
 .collapse .barfriend.character {
-    --charTransform: translateZ(calc( -1.3 * var(--gridTileSize) )) rotateZ(15deg) rotateX(-10deg);
+    --charTransform: translateZ(calc( -0.3 * var(--gridTileSize) )) rotateZ(15deg) rotateX(-10deg);
 }
 
 .dyingqou figure {
@@ -678,6 +678,17 @@ body[id="embassy_research"] #realgrid .desk .doodad.d4 {
     background: url(/img/local/embassy/listener.gif);
 }
 
+#realgrid .listener.busted figure {
+    background-image: url(/img/local/embassy/listener_busted.gif);
+}
+
+#combat .listener figure {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-7%);
+}
+
 .listener figure .cyst {
     position: absolute;
     width: 15%;
@@ -768,6 +779,18 @@ body[quality="regular"] .callscreen::after {
     transform: rotate(15deg) translateZ(30px);
 }
 
+#combat .callscreen::after {
+    background-image: url(/img/textures/corruripple.gif);
+}
+
+body[quality="regular"] #combat .callscreen::after {
+    animation-duration: 200ms;
+}
+
+#combat .listener figure .cyst {
+    animation-name: SHAKE;
+    animation-duration: 600ms;
+}
 
 /* COLLAPSE QUARTERS1 - MILTZA'S ROOM */
 body[id="embassy_cquarters1"] .swapcam .grid-animator {
@@ -873,6 +896,27 @@ body[id="embassy_cquarters1"] .swapcam .grid-container {
     background-size: contain;
     transform: translateZ(10px) rotate(20deg);
 }  
+
+.joydood {
+    position: absolute;
+    width: 100%;
+    height: var(--tilef5);
+    background: url(/img/local/embassy/resources/oddcloud.gif?);
+    transform: translateZ(-50px) translateY(-100%);
+}
+
+.joydood::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 200%;
+    background: url(/img/local/joy/garnish_prop.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: rotate(90deg);
+    opacity: 0.25;
+}
 
 /* a mural either of a stylized version of the eye, or of obeski serving as the eye's pupil */
 #realgrid .eyeart figure {
@@ -1223,12 +1267,7 @@ canvas.veinsphere {
 }
 
 #realgrid[stage="embassy_archivalboss"] .prop .bstrdpillar figure {
-    background-image: url(/img/local/embassy/pass.gif);
-}
-
-#realgrid[stage="embassy_archivalboss"] .evil {
-    background: transparent;
-    border: unset;
+    background-image: url(/img/sprites/combat/items/sorry_dither.gif);
 }
 
 #realgrid .prop .bstrdpillar.nocyst figure {
@@ -1319,6 +1358,10 @@ body[quality="regular"] .archivalgolem::before, body[quality="regular"] .archiva
     background-image: url(/img/sprites/combat/foes/bstgunraise.gif);
 }
 
+.archivalgolem.bstrdboss.broke::before {
+    background-image: url(/img/sprites/combat/foes/bsthead.gif);
+}
+
 .bstrdbosspanel::after {
     content: "";
     position: absolute;
@@ -1391,12 +1434,12 @@ body[quality="regular"] .archivalgolem::before, body[quality="regular"] .archiva
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 5;
+    z-index: 101;
     transition: opacity 1s ease-in-out;
     background: url(/img/textures/blackstaticSTILL.gif);
 }
 
-.daychanging .dayselect {
+.daychanging .dayselect, .daychanging .frameshortcut {
     opacity: 0;
     pointer-events: none;
 }
@@ -1432,6 +1475,29 @@ body[quality="regular"] .archivalgolem::before, body[quality="regular"] .archiva
 .day.disabled .dayname span {
     animation: SHAKE 0.5s ease-in-out infinite alternate;
     color: var(--obesk-color);
+}
+
+.frameshortcut {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 25vmax;
+    height: 25vmax;
+    z-index: 102;
+    background: url(/img/textures/fadeinlong.gif), url(/img/textures/chromeb.gif), url(/img/textures/papermelt.gif);
+    background-size: cover, auto;
+    clip-path: polygon(12.59% 23.93%, 45.35% 38.43%, 45.35% 0%, 80.31% 26.24%, 100% 0%, 100% 100%, 0% 100%, 7.32% 55.8%, 22.14% 77.86%);
+    transition: transform 1s, opacity 1s ease-in-out;
+}
+
+.mui-active .frameshortcut {
+    transform: translateX(-10vw)
+}
+
+.framehole {
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 /* DIALOGUE ANGLES */
@@ -2024,13 +2090,42 @@ body[id^="embassy"] #content.innerfocus::after {
     top: unset;
     border-color: var(--friend-color);
 }
-  
-#combat.tutorialgolem::after {
-    animation: unset;
-    background-image: url(/img/textures/fadeinlonghalf.gif), url(/img/textures/static.gif);
-    background-size: 100% 150%, auto;
-    width: 100%;
-    height: 100%;
+
+#content.timefocus .focus::before,
+#content.timefocus .focus::after {
+    content: ""; 
+    position: absolute;
+    width: 150vmax;
+    height: 150vmax;
+    z-index: -2;
+    background-image: url(/img/sprites/obesk/callwave2.gif), url(/img/textures/mcontours.gif);
+    background-size: 20vmax;
+    background-position: center;
+    animation: SPIN 200s linear infinite;
+    animation-delay: -60s;
+}
+
+#content.timefocus .focus::after {
+    background-image: url(/img/sprites/obesk/callwave4.gif), url(/img/textures/tranclouds.gif);
+    background-color: transparent;
+    z-index: -1;
+    animation-duration: 1200s;
+}
+
+#content.timefocus2 .focus::before { background-image: url(/img/sprites/obesk/callwave3.gif), url(/img/textures/mcontours.gif) }
+#content.timefocus2 .focus::after { background-image: url(/img/sprites/obesk/callwave5.gif), url(/img/textures/tranclouds.gif) }
+
+#content.timefocus .gakvu-focus,
+#content.timefocus .tozik-focus {
+    display: none;
+}
+
+#content.timefocus .redundancy {
+    opacity: 0;
+}
+
+#content.timefocusaki .focusplane {
+    transform: scale(0.1)
 }
 
 /* suspicion echo stage */
@@ -2427,4 +2522,21 @@ body#embassy_hangar #content::after {
 
 body#embassy_hangar .grid-plane {
     perspective: 550px;
+}
+
+/* ing update new graphics */
+.gridpiece.viscera::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    background: url(/img/local/uncosm/ozo/fairyviscera.gif);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(var(--visceraAngle)) translateZ(3px);
+}
+
+#content.weirdload::after {
+    background: black !important;
 }

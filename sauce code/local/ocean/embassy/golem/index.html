@@ -35,16 +35,16 @@
 	<script src="/js/lib/lzstring.js"></script>	
 	<script src="/js/lib/gpu/detect-gpu.umd.js"></script>	
 	<script src="/js/lib/draggable.bundle.js"></script>	
-	<script src="/js/corru.js?1776972202354301552"></script>	
-	<script src="/js/dialogue.js?1776972202354301552"></script>	
-	<script src="/js/globalents.js?1776972202354301552"></script>	
-	<script src="/js/cystStage.js?1776972202354301552"></script>
-	<script src="/js/buddy.js?1776972202354301552"></script>
-	<script src="/js/vn2.js?1776972202354301552"></script>
-	<script defer src="/js/saves.js?1776972202354301552"></script>
+	<script src="/js/corru.js?1791592572941837278"></script>	
+	<script src="/js/dialogue.js?1791592572941837278"></script>	
+	<script src="/js/globalents.js?1791592572941837278"></script>	
+	<script src="/js/cystStage.js?1791592572941837278"></script>
+	<script src="/js/buddy.js?1791592572941837278"></script>
+	<script src="/js/vn2.js?1791592572941837278"></script>
+	<script defer src="/js/saves.js?1791592572941837278"></script>
 	<script>if( (!check('introcompleted') && !location.search.includes('force') && location.pathname != "/") || (location.pathname != "/" && !check("TEMP!!sat") && !location.search.includes('force')) ) { location.replace('/') } /*MUST complete intro before skipping ahead*/ </script>
-	<link rel="stylesheet" type="text/css" href='/css/corru.css?1776972202354301552'>
-	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1776972202354301552'>
+	<link rel="stylesheet" type="text/css" href='/css/corru.css?1791592572941837278'>
+	<link rel="stylesheet" type="text/css" href='/css/cystStage.css?1791592572941837278'>
 </head>
 <body state="corru-unloaded" menu="none" class="loading">
 	<div id='meta-menu' class="noclosemenu">
@@ -138,7 +138,7 @@
 	
 	<div id="system-menu" class="menu-box menu" menu="system">
 	<div class="menureturn button" onclick="exitMenu()">RETURN</div>
-    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1776972202</div>
+    <div class="system-version" definition="META::'epoch identifier of current build publish'">epoch.1791592572</div>
 	<div class="mindsci-status"></div>
 	
     <details class="sysblock">			
@@ -202,6 +202,28 @@
                 </div>
             </div>
 
+            <div class="sysbox">
+                <h3 class="experimental">Interface Palette</h3>
+                <p class="sysinfo">Opt for a lower-contrast user interface.</p>
+
+                <div class="buttons">
+                    <span onclick="javascript:setPalettePreference('subdued')" class="button subdued-palette">Subdued</span>
+                    <span onclick="javascript:setPalettePreference('normal')" class="button normal-palette">Normal</span>
+                </div>
+            </div>
+
+            <div class="sysbox">
+                <h3 class="experimental">Gameplay Backdrop Intensity</h3>
+                <p class="sysinfo">Lowers the intensity of backdrops in gameplay contexts.</p>
+                <!--preload the sysbox subdued background to avoid ugly flickering on toggle-->
+                <img src="/img/textures/panelpatterntranflip.gif" style="display: none" loading="eager">
+
+                <div class="buttons">
+                    <span onclick="javascript:setCombatBackgroundPreference('subdued')" class="button subdued-combat-backgrounds">Subdued</span>
+                    <span onclick="javascript:setCombatBackgroundPreference('normal')" class="button normal-combat-backgrounds">Normal</span>
+                </div>
+            </div>
+
             <div class="sysbox widescreen">
                 <h3>Widescreen Adapter</h3>
                 <p class="sysinfo">For larger than standard rendering output, use of an adapter is recommended. <span class="obesk-color">Changing this setting will reinitialize - you will lose your current position, but not your progress.</span></p>
@@ -210,6 +232,44 @@
                     <span onclick="javascript:window.parent.postMessage('wideoff', '*')" wide="off" class="button">Off</span>
                 </div>
             </div>
+
+            <div>
+                <details class="minor" style="width:100%">
+                    <summary>Other Experimental Operations</summary>
+                    <div class="systoggles">
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Contrast</h3>
+                            <p class="sysinfo">Lower the contrast of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-contrast" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-contrast-slider"/>
+                            </div>
+                        </div>
+
+                        <div class="sysbox">
+                            <h3 class="experimental">Render Brightness</h3>
+                            <p class="sysinfo">Lower the brightness of the render output.</p>
+
+                            <div class="buttons" style="position:relative">
+                                <input for="render-brightness" type="range" value="1" min="0.5" max="1" step="0.05" class="slider render-brightness-slider"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </details>
+                <div class="warning sysbox">
+                    <h3>!!__Attention__!!</h3>
+                    <span>Experimental mindspike configurations may increase the frequency of render discrepancies.
+                        By engaging alternate render pipelines, you waive all right to medical claims against MINDSCI. 
+                        For more information, please refer to your license agreement.</span>
+                </div>
+            </div>
+
+
+            <details class="sysinfo meta">
+                <summary>META NOTE ON PERFORMANCE</summary>
+                <p>psst. if you're lagging and you have a good machine with multiple monitors, there's a good chance something on your other monitor is causing it. i know that sounds insane, but it's true!! like if you have youtube or something playing a video, try minimizing it and see if that helps.<br><br>this is because the game uses HTML/CSS directly as a rendering system, and at least on windows this somehow translates to being impacted reaaally heavily by other web-based rendering processes. maybe even try changing which monitor you have it on, especially if you're on a laptop, cause that apparently affects which GPU the process uses.<br><br>the new experimental accessibility stuff, particularly the ones that affect rendering contrast/brightness, or the combat backdrops, might cause your game to run pretty poorly. we're seeing how that pans out. interface one should work nicely though<br><br>we're in uncharted territory over here buddy.</p>
+            </details>
         </div>
 	</details>
 
@@ -347,15 +407,16 @@
 	</script>
 	
 	<div id="content">
+		<div class="render-filter"></div>
 		<div class="errorzone"></div>
 
 <style>
 
-@import url(/css/combat.css?1776972202354301552);
-@import url(/css/bullethell.css?1776972202354301552);
-@import url(/css/fpfight.css?1776972202354301552);
-@import url(/css/local/embassy.css?1776972202354301552);
-@import url(/css/stage/beneath.css?1776972202354301552);
+@import url(/css/combat.css?1791592572941837278);
+@import url(/css/bullethell.css?1791592572941837278);
+@import url(/css/fpfight.css?1791592572941837278);
+@import url(/css/local/embassy.css?1791592572941837278);
+@import url(/css/stage/beneath.css?1791592572941837278);
 
 /* combat overrides */
 #combat::after, #combat::before {
@@ -976,7 +1037,8 @@ body[quality="low"] #realgrid .deadtainer.vatbase.otherside > span:nth-child(2) 
     height: calc(var(--gridTileSize) * 5);
 }
 
-body #content.dullified::after {
+body #content.dullified::after,
+body#g_boss #content.dullified.collapse::after {
     background: url(/img/local/orbit/core.gif);
     background-color: white;
 }
@@ -1159,6 +1221,17 @@ body#g_boss #content.collapse::after {
 #realgrid .golemsprite > .sprite {
     width: 100%;
     height: 100%;
+}
+
+#realgrid .o-evil .archival-golem.golemsprite {
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    max-width: unset !important;
+}
+
+#realgrid .o-evil .archival-golem .sprite {
+    width: 200px;
 }
 
 body#g_boss #realgrid .gridpiece.gelitable::after, body#g_boss #realgrid .gridpiece.gelitable::before {
@@ -1516,7 +1589,7 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 				path: location.pathname,
 				flags: {},
 				howls: [],
-				cacheval: 1776972202354301552,
+				cacheval: 1791592572941837278,
 
 				
 				image: "/img/socials/golms.gif",
@@ -1544,6 +1617,7 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 				mothComment: ()=>{
     var moth = "this is getting pretty serious... so much worse than i ever imagined honestly"
     if(env.currentDialogue.justChanged) moth = "anything else on your mind?"
+    else if(check("PAGE!!weirdload")) moth = "looks like you wormed your way back into an inactive space... i doubt you'll get far without a recollection locus"
 
     return moth
 }
@@ -1789,7 +1863,7 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 					
 						
 						
-							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'terrestrial use only'`;
+							env.definitions[`corroyi`] = `'aqueous low-activity corru';'occupies space between cystic organs';'additional media for coaxing spireblood into faster flows';'terrestrial use only'`;
 						
 					
 						
@@ -1825,6 +1899,11 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 						
 						
 							env.definitions[`corruskivi`] = `'traditional maintenance tool';'passes through corru effortlessly'`;
+						
+					
+						
+						
+							env.definitions[`vecrivi`] = `'niche maintenance tool';'assists in draining damaged equipment of inert corru'`;
 						
 					
 						
@@ -1896,6 +1975,11 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 					
 						
 						
+							env.definitions[`ekiva`] = `'continent';'second most populous';'near edge of inhabitable zone'`;
+						
+					
+						
+						
 							env.definitions[`ekivik`] = `'ethnic implication';'origination from continent';'ekiva'`;
 						
 					
@@ -1932,11 +2016,14 @@ body#g_o_r_dull .swapcam .grid-plane, .swapcam .grid-plane[activestage="g_o_r_du
 					
 					//dynamically inserted
 					
-					page.bgm.rate(0.25)
+					env.hoverIntervalRate = env.defaultHoverRate // just in case it's hanging over from pt1
+page.bgm.rate(0.25)
 if(location.search.includes('e3a2test')) {
     let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your save and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
 
-    if(doit) mountSave(GlobalSaves.e3a2debug, false)
+    if(doit) {
+        mountSave(GlobalSaves.e3a2debug, false)
+    }
 }
 
 addResources([
@@ -2100,8 +2187,8 @@ dog
         probably cause you never update it, but hey, that's why you're here
         anyway, that's not a dog
         what you scanned was probably a corrucystic imitation of something they domesticated back on obeski
-        and it's so similar to our concept of 'dog', that your mindspike is like... 
-        'dog'
+        and it's so similar to our concept of "dog", that your mindspike is like... 
+        "dog"
     
     RESPONSES::self
         ok<+>loop
@@ -2139,8 +2226,6 @@ vats
         qou would work in there on golems for local operations and stuff
         they were pretty decentralized with how they built things back then
         it seemed like there was a workspace in every obesk structure that any of them could use
-        interesting that the framing device already had some upgrades available...
-        it's probably something to do with the archive system they mentioned
 
     RESPONSES::self
         i see<+>loop
@@ -2165,7 +2250,7 @@ ____END
         or did it just lead them to something?
         man, did they probe the source of the call or something??
         this is fucked up
-        but, the silver lining here is that this means the fbx was involved
+        but, the silver lining here is that this means the FBX was involved
         like, front to back
         so... i'm sure even if we don't find out everything in akizet's cyst,
         we'll get briefed on whatever they know once i turn in my report
@@ -2185,7 +2270,7 @@ heard
         the collapse completely happened on that little island they set up on
         and only military vessels were really allowed around there
         even if a civilian vessel was spying on it, all they would have seen was it falling apart
-        whatever the fbx knows, it's been kept pretty close
+        whatever the FBX knows, it's been kept pretty close
 
     RESPONSES::self
         i see<+>loop
@@ -2223,7 +2308,7 @@ fakegeli
     
     moth
         bstrd might seem stupid, but it's just coded to act that way
-        it's as smart as any other daemon
+        it's probably as smart as any other daemon
         and daemons have to keep memories running in the frame no matter what
         makes sense that it'd have a plan for this, you know?
         bstrd modified the old geli to get the daemons to leave it alone,
@@ -2240,7 +2325,7 @@ fakegeli
 						document.querySelector('body').classList.remove('nomoth')
 					
 
-					if(firstLoad || env.waitOnLoad) {
+					if(firstLoad || env.waitOnLoad || check("TEMP!!waitOnLoad")) {
 						if(!env.loading) body.classList.remove("loading") //this is otherwise handled in the loadResources function
 						body.setAttribute('state', 'corru-loaded')
 					} else {
@@ -2285,8 +2370,9 @@ fakegeli
 
 					//dyn
 					
-					page.maskHungerNote = "\nRESONANCE::'limited'";
-page.maskUnityNote = "\nRESONANCE::'limited'";
+					page.maskHungerNote = "\nRESONANCE::'major';'connective thoughtform detected'";
+page.maskJoyNote = "\nRESONANCE::'minor';'connective thoughtform detected'";
+page.maskUnityNote = "\nRESONANCE::'major'";
 
 env.embassy.music_golems = new Howl({
     src: ['/audio/embassy_golems.ogg'],
@@ -2363,145 +2449,154 @@ env.embassy.music_television = new Howl({
     ep2skip'll technically be a weird incongruity since their HP will be whatever 
     it was before they fought him... but that's ok we can all use a little extra health in our lives
 */
-try {
-    env.embassy.loadCollapseSave()
-} catch(e) {
-    if(location.search.includes('debug')) {
-        let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your COLLAPSE SAVE (not anything else) and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
+if(location.search.includes('debug')) {
+    let doit = localStorage['ignoreoverwritewarnings'] ? true : confirm("this is a debug link that will wipe your COLLAPSE SAVE (not anything else) and replace it with a test one if you go through with it. are you sure you want this to happen? (will not override save if you decline)")
 
-        if(doit) {
-            change('collapseSave', GlobalSaves.collapseSave_ep3start)
-            env.embassy.loadCollapseSave()
-            change("TEMP!!ep2->ep3transfer", true)
-        }
+    if(doit) {
+        change('collapseSave', GlobalSaves.collapseSave_ep3ingdebug)
+        env.embassy.loadCollapseSave()
+        change("TEMP!!ep2->ep3transfer", true)
+        change("PAGE!!ingsave", true)
+    } else {
+        env.embassy.loadCollapseSave()
     }
+} else {
+    env.embassy.loadCollapseSave()
 }
 
 //unless you're a ep2skip or transferring in, if you ain't in 3.5 then get the hell outta here
 if((check("PAGE!!embassy_day") != 3.5) && !check("TEMP!!ep2skip") && !check("TEMP!!ep2->ep3transfer")) {
-    moveTo("/local/ocean/embassy/")
-    return
-}
+    switch(check("TEMP!!from")) {
+        case "ep3_hunger":
+            change("PAGE!!weirdload", true)
+            content.classList.add("weirdload")
+            changeStage("g_o_r_dull", "resourcereturn")
+            change("TEMP!!from", "DELETE")
+            change("PAGE!!nopartyvn", true)
+            if(vn?.el) vn.el.remove()
+        break
 
-change("PAGE!!embassy_day", 3.5)
+        case "ep3_joy":
+            change("PAGE!!weirdload", true)
+            content.classList.add("weirdload")
+            changeStage("g_o_r_friends", "resourcereturn")
+            change("TEMP!!from", "DELETE")
+            change("PAGE!!nopartyvn", true)
+            if(vn?.el) vn.el.remove()
+        break
 
-if(check("TEMP!!ep2->ep3transfer")) {
-    changeStage('embassy_relocator')
-    startDialogue('intro')
-    sessionStorage.removeItem('TEMP!!ep2->ep3transfer')
-    sessionStorage.removeItem('TEMP!!ep2skip')
-    removeItem(env.ITEM_LIST.sfer_cube, 100) //ate em up l0l
-} else {
-    if(check("TEMP!!from", "e3a2") && page.saveZone == "g_lobby") {
-        changeStage("g_lobby")
-    } else {
-        changeStage(page.saveZone)
+        default:
+            chatter({ actor: "sys", text:"ALERT::'invalid progression';'redirecting'", readout: true})
+            moveTo("/local/ocean/embassy/")
+            change("TEMP!!from", "DELETE")
+            return
     }
 }
 
+if(!check("PAGE!!weirdload")) {
+    change("PAGE!!embassy_day", 3.5)
+
+    if(check("TEMP!!ep2->ep3transfer")) {
+        changeStage('embassy_relocator')
+        startDialogue('intro')
+        sessionStorage.removeItem('TEMP!!ep2->ep3transfer')
+        sessionStorage.removeItem('TEMP!!ep2skip')
+        removeItem(env.ITEM_LIST.sfer_cube, 100) //ate em up l0l
+    } else {
+        if(check("TEMP!!from", "e3a2") && page.saveZone == "g_lobby") {
+            changeStage("g_lobby")
+        } else {
+            changeStage(page.saveZone)
+        }
+    }
+
+    if(check("TEMP!!ep4immediate")) {
+        startDialogue("e4_transition", {specificChain: "begin"})
+    }
+
+    //initialize page settings, classes
+    env.embassy.initializeEmbassyCombatSettings({ep: 3})
+    content.classList.add('golemfloor')
+
+    page.objectives = new ObjectiveList({objectives: [
+            new Objective({
+                name: "Delay Collapse",
+                completion: "PAGE!!goverride",
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'there is an override in manufacturing'"
+            }),
+
+            new Objective({
+                name: "Secure a Safe Area",
+                completion: "PAGE!!geli",
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'find a place for the unconnected to rest'"
+            }),
+
+            new Objective({
+                name: "Look for Survivors",
+                progress: ()=> {return `(${[check("PAGE!!bozcav"), check("PAGE!!sboss"), check("PAGE!!mboss")].filter(Boolean).length}/3 tendrils explored)`},
+                completion: [["PAGE!!bozcav", true], ["PAGE!!mboss", true]],
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'we should exhaust all routes to be sure'"
+            }),
+
+            new Objective({
+                name: "Find a Foundry Vat",
+                completion: "PAGE!!g_m_minor",
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'we may be able to arm ourselves if we find one';'likely in manufacturing'"
+            }),
+
+            new Objective({
+                name: "Find Itzil's Kivii",
+                completion: "PAGE!!mboss",
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'itzil's kivii should be present, somewhere'"
+            }),
+
+            new Objective({
+                name: "Build a Golem Body",
+                showIf: [["PAGE!!mboss", true]],
+                completion: "PAGE!!ikgolem",
+                hideOnCompletion: true,
+                definition: "INHERITED CONTEXT::'we have all we need to create a fearsome body, using the greater vats in manufacturing'"
+            }),
+
+            new Objective({
+                name: "Siege Advanced Operations",
+                showIf: [["PAGE!!bozcav", true], ["PAGE!!ikgolem", true]],
+                completion: "PAGE!!golboss",
+                hideOnCompletion: false,
+                definition: "INHERITED CONTEXT::'we are prepared to enter that door in the lobby and face the terror within'"
+            }),
+
+            new Objective({
+                name: "SYS::await stream repair",
+                showIf: [["PAGE!!golboss", true], ["ENV!!ep4", false]],
+                completion: "nonehehehebyeee",
+                hideOnCompletion: false,
+                definition: "NOTICE::'unable to progress until memory stream repairs are completed'"
+            }),
+
+            new Objective({
+                name: "Convene in Lobby",
+                showIf: [["PAGE!!golboss", true], ["ENV!!ep4", true]],
+                completion: "nonehehehebyeee",
+                hideOnCompletion: false,
+                definition: "NOTICE::'memory stream missing data';'utilize proceed trigger placed near entity tozik'"
+            })
+        ],
+    })
+
+    if(!check('PAGE!!geliawake')) env.embassy.geliState('off')
+    if(check('gakpause')) content.classList.add('gakpause')
+} else {
+    document.querySelector('#stage-navigator .swap').remove()
+    document.querySelector('#stage-navigator .party').remove()
+}
+
 document.addEventListener('keydown', stageKeypress)
-
-//initialize page settings, classes
-env.embassy.initializeEmbassyCombatSettings({ep: 3})
-content.classList.add('golemfloor')
-
-page.objectives = new ObjectiveList({objectives: [
-        new Objective({
-            name: "Delay Collapse",
-            completion: "PAGE!!goverride",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'there is an override in manufacturing'"
-        }),
-
-        new Objective({
-            name: "Secure a Safe Area",
-            completion: "PAGE!!geli",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'find a place for the unconnected to rest'"
-        }),
-
-        new Objective({
-            name: "Look for Survivors",
-            progress: ()=> {return `(${[check("PAGE!!bozcav"), check("PAGE!!sboss"), check("PAGE!!mboss")].filter(Boolean).length}/3 tendrils explored)`},
-            completion: [["PAGE!!bozcav", true], ["PAGE!!sboss", true], ["PAGE!!mboss", true]],
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'we should fully explore the connected parts of this segment'"
-        }),
-
-        new Objective({
-            name: "Find a Foundry Vat",
-            completion: "PAGE!!minvats",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'we can arm ourselves if we find one';'likely in manufacturing'"
-        }),
-
-        new Objective({
-            name: "Arm Selves",
-            completion: "PAGE!!augmented", //any party member has been augmented
-            showIf: "PAGE!!minvats",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'the minor vats in manufacturing will serve us well'"
-        }),
-
-        new Objective({
-            name: "Find Itzil's Kivii",
-            completion: "PAGE!!mboss",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'itzil's kivii should be present, somewhere'"
-        }),
-
-        new Objective({
-            name: "Find a Use For Golem Sfer",
-            showIf: "PAGE!!sboss",
-            completion: "PAGE!!mboss",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'the sfer supply tendril held golem-ready sfer';'we should use it somehow'"
-        }),
-
-        new Objective({
-            name: "Find Golem-Grade Sfer",
-            showIf: "PAGE!!mboss",
-            completion: "PAGE!!sboss",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'to use the parts we found, a suitable material must join them'"
-        }),
-
-        new Objective({
-            name: "Build a Golem Body",
-            showIf: [["PAGE!!mboss", true], ["PAGE!!sboss", true]],
-            completion: "PAGE!!ikgolem",
-            hideOnCompletion: true,
-            definition: "INHERITED CONTEXT::'we have all we need to create a fearsome body, using the greater vats in manufacturing'"
-        }),
-
-        new Objective({
-            name: "Siege Advanced Operations",
-            showIf: [["PAGE!!bozcav", true], ["PAGE!!ikgolem", true]],
-            completion: "PAGE!!golboss",
-            hideOnCompletion: false,
-            definition: "INHERITED CONTEXT::'we are prepared to enter that door in the lobby and face the terror within'"
-        }),
-
-        new Objective({
-            name: "SYS::await stream repair",
-            showIf: [["PAGE!!golboss", true], ["ENV!!ep4", false]],
-            completion: "nonehehehebyeee",
-            hideOnCompletion: false,
-            definition: "NOTICE::'unable to progress until memory stream repairs are completed'"
-        }),
-
-        new Objective({
-            name: "Convene in Lobby",
-            showIf: [["PAGE!!golboss", true], ["ENV!!ep4", true]],
-            completion: "nonehehehebyeee",
-            hideOnCompletion: false,
-            definition: "NOTICE::'memory stream missing data';'utilize proceed trigger placed near entity tozik'"
-        })
-    ],
-})
-
-if(!check('PAGE!!geliawake')) env.embassy.geliState('off')
-if(check('gakpause')) content.classList.add('gakpause')
 
 env.embassy.net = ()=>{
     if(document.querySelector('#realgrid')) step()
@@ -2514,6 +2609,11 @@ if(check("e3a2__escapewin")) {
     content.classList.add("fakegeli")
 }
 
+// item grants from having certain things done, ever
+if(check("embassy__d3_archiveintro") && !checkItem("eq_satik")) addItem('eq_satik', 1)
+if(check("embassy__d3_archivedeliveryclear") && !checkItem("eq_siphon")) addItem('eq_siphon', 1)
+if(check("embassy__d3_archivebossend") && !checkItem("sorry_cyst")) addItem('sorry_cyst', 1)
+
 					Buddy.triggerPageBuddies()
 					document.querySelector('#PageData').remove()
 					document.dispatchEvent(env.hooks.corru_entered)
@@ -2522,8 +2622,9 @@ if(check("e3a2__escapewin")) {
 					const urlParams = new URLSearchParams(window.location.search)
 					if(urlParams.has('goto')) {
 						const goto = urlParams.get('goto')
+						const gotoSpot = urlParams.get('gotospot')
 						setTimeout(() => {
-							changeStage(goto)
+							changeStage(goto, gotoSpot)
 						}, 800)
 					}
 

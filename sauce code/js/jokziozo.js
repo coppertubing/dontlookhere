@@ -1321,8 +1321,8 @@ env.stages['ozo_stranger'] = {
         "J": {
             class: "door down notile blocks",
             teleportTarget: "ozo_entrance",
-            shouldFace: "up",
-            teleportSpot: 13,
+            shouldFace: "down",
+            teleportSpot: 61,
         },
 
         "=": {
@@ -1950,9 +1950,9 @@ env.stages['ozo_flower'] = {
     planAdjustment: function (plan) {
         let newPlan = plan
         if(this.eventModifier) newPlan = this.eventModifier(newPlan, this)
+        if(typeof newPlan == "object") newPlan = newPlan.join("")
 
         if(check("joysearch")) newPlan = newPlan.replace("A", "_")
-        
         return newPlan
     }
 }
@@ -2426,6 +2426,32 @@ env.stages['ozo_lostone'] = {
             } 
         },
 
+        "ž": {
+            class: "notile",
+            contains: {
+                class: "distant-frame",
+                dyp: { // DO NOT CANVASIFY AS WELL
+                    image: 'url(/img/local/uncosm/ozo/frame_distant.gif)',
+                    width: 1000,
+                    height: 1000,
+                    transform: 'rotateY(135deg) translateY(5%) translateZ(-160000px)'
+                },
+            }
+            
+        },
+                "Ÿ": {
+            class: "notile daemoncrowd",
+            contains: {
+                class: "distant-daemons",
+                dyp: { // STILL DON'T CANVASIFY
+                    image: 'url(/img/local/uncosm/ozo/frame_daemoncrowd.gif)',
+                    width: 1000,
+                    height: 1000,
+                    transform: 'rotateY(135deg) translateY(10%) translateZ(-140000px)'
+                },
+            }
+        },
+
         "♠": {class: "vesselmetal"},
         "_": {class: "gap blocks"},
         "=": {class: "gap blocks raised-floaty"},
@@ -2452,7 +2478,7 @@ env.stages['ozo_lostone'] = {
         ░.T♠♠☺1..
         ░W%♠♠!2Ü.
         ..t☻♠♠3..
-        ..R.s....
+        žŸR.s....
     `,
 
     planAdjustment: function (plan) {
@@ -2955,8 +2981,27 @@ env.jokzi.runEvents = () => {
     if(eventParam && env.jokzi.events[eventParam]) return env.jokzi.setEvent(eventParam);
 
     // if any on-enter mask reception is pending, don't queue any events
-    let joyMaskPending = (!check("ozo__isabel_joy") && ((check("PAGE!!flowers", "high") || check("PAGE!!flowers", "done")) && !check("ozo__isabel_joy")) || check("TEMP!!forcejoyintro"))
-    let freedomMaskPending = (!check("ozo__geli_freedom") && (check("ep4__entrancefinal") || check("TEMP!!forcegelimask"))) || check("freedomtut")
+
+    // joy mask is pending if you've spoken to isabel at least once, and have enough of the ffigies
+    let joyMaskPending = (
+        check("TEMP!!forcejoyintro") || 
+        (
+            !check("ozo__isabel_joy") && 
+            (
+                (check("PAGE!!flowers", "high") || check("PAGE!!flowers", "done")) && !check("ozo__isabel_joy") && check("ozo__isabel")
+            ) 
+        )
+    )
+
+    // freedom mask is pending if you've saved geli, completed entrance finale, and haven't had the chat yet
+    let freedomMaskPending = check("TEMP!!forcegelimask") || check("freedomtut") || (
+        !check("ozo__geli_freedom") && 
+        (
+            (check("ep4__entrancefinal") && check("ozo__ozogeli"))
+        )
+    )
+
+    
     if(joyMaskPending || freedomMaskPending) {
         console.log(`not using events due to pending mask reception. joy pending: ${joyMaskPending}, freedom pending: ${freedomMaskPending}`)
         return 
@@ -3854,7 +3899,7 @@ env.jokzi.events = {
 
     w_isabel: { 
         weight: 0.2,
-        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_isabel", false]],
+        showIf: [["pit__f3_unity", true], ["ozo__wakizet-bt", true], ["ozo__e_w_isabel", false], ["ozo__isabel", true]],
         
         wakizetRoomModifier: (plan, stage) => plan.replace("æ", "."),
         eventRoomModifier: (plan, stage) => plan.replace("!", "æ"),

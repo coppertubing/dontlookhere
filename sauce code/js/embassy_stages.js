@@ -1,7 +1,8 @@
 //utilized in canvas floors to combat vram usage
 env.stage.locales["research"] = [
     [".empty", "/img/local/embassy/tiles/empty.gif"],
-    [".prop.blocks:not(.myseat, .bstrdbosspanel)", "/img/local/embassy/tiles/occupied.gif"]
+    [".prop.blocks:not(.myseat, .bstrdbosspanel)", "/img/local/embassy/tiles/occupied.gif"],
+    [".prop.fakeevil", "/img/sprites/combat/fakeevil.gif"],
 ]
 
 env.stages['embassy_research'] = {
@@ -20,9 +21,11 @@ env.stages['embassy_research'] = {
                     e.parentElement.innerHTML = ""
                 })
                 
-                if(!content.classList.contains("collapse")) toggleBgm(env.embassy.music)
-                else if(isStageClear()) toggleBgm(env.embassy.music_collapse)
-                else toggleBgm(env.embassy.music_unsafe)
+                if(!check("PAGE!!reverting")) {
+                    if(!content.classList.contains("collapse")) toggleBgm(env.embassy.music)
+                    else if(isStageClear()) toggleBgm(env.embassy.music_collapse)
+                    else toggleBgm(env.embassy.music_unsafe)
+                }
 
                 if(
                     check("PAGE!!crelocator_intro") && 
@@ -204,19 +207,19 @@ env.stages['embassy_research'] = {
     },
 
     width: 13,
-    plan: [
-        'N','l','G','L','░','░','L','░','░','L','░','l','.',
-        '.','░','░','░','░','░','░','░','░','░','░','░','.',
-        '.','░','░','░','░','░','1','░','░','░','░','░','.',
-        '.','░','░','░','6','c','T','c','2','░','░','░','.',
-        '.','░','░','░','c','c','c','c','c','░','░','d','.',
-        'r','p','░','░','c','c','C','c','c','░','v','D','.',
-        '.','░','░','░','c','c','c','c','c','░','░','d','.',
-        '.','░','░','░','5','c','c','c','3','░','░','░','.',
-        '.','░','░','░','K','░','4','░','░','░','░','░','☻',
-        '.','░','░','░','░','░','k','░','░','░','░','░','.',
-        '.','l','░','░','░','░','░','░','░','░','░','l','S',
-    ]
+    plan: `
+        NlGL░░L░░L░l.
+        .░░░░░░░░░░░.
+        .░░░░░1░░░░░.
+        .░░░6cTc2░░░.
+        .░░░ccccc░░d.
+        rp░░ccCcc░vD.
+        .░░░ccccc░░d.
+        .░░░5ccc3░░░.
+        .░░░K░4░░░░░☻
+        .░░░░░k░░░░░.
+        .l░░░░░░░░░lS
+    `
 }
 
 env.stages['embassy_personnel'] = {
@@ -296,26 +299,26 @@ env.stages['embassy_personnel'] = {
 
     enterDirection: "down",
     width: 7,
-    plan: [
-        'N','l','░','g','░','l','.',
-        '}','░','░','░','░','░','.',
-        '.','░','░','░','░','░','.',
-        '.','░','░','░','░','░','a',
-        '.','░','░','░','░','░','.',
-        '}','░','░','░','░','░','.',
-        '.','░','░','░','░','+','.',
-        '.','░','░','░','░','░','{',
-        '.','░','░','░','░','░','.',
-        '}','░','░','░','░','░','.',
-        '.','░','░','░','░','v','.',
-        '.','░','░','░','░','░','{',
-        '.','░','░','░','░','k','.',
-        '}','░','░','░','░','░','.',
-        '.','░','░','░','░','░','.',
-        '.','░','░','░','░','░','{',
-        '.','l','░','p','░','l','S',
-        '.','.','.','r','.','.','.',
-    ],
+    plan: `
+        Nl░g░l.
+        }░░░░░.
+        .░░░░░.
+        .░░░░░a
+        .░░░░░.
+        }░░░░░.
+        .░░░░+.
+        .░░░░░{
+        .░░░░░.
+        }░░░░░.
+        .░░░░v.
+        .░░░░░{
+        .░░░░k.
+        }░░░░░.
+        .░░░░░.
+        .░░░░░{
+        .l░p░lS
+        ...r...
+    `
 }
 
 env.stages['embassy_quarters'] = {
@@ -417,13 +420,13 @@ env.stages['embassy_quarters'] = {
 
     width: 7,
     enterDirection: 'left',
-    plan: [
-        'N','l','x','d','x','l','.',
-        '.','░','░','░','░','X','.',
-        'q','░','░','░','p','b','.',
-        '.','░','░','░','░','X','.',
-        '.','l','o','L','C','l','S',
-    ]
+    plan: `
+        Nlxdxl.
+        .░░░░X.
+        q░░░pb.
+        .░░░░X.
+        .loLClS
+    `
 }
 
 
@@ -585,26 +588,32 @@ env.stages['embassy_recreation'] = {
     locale: "research",
     exec: ()=> { 
         env.embassy.updateStageData()
+
+        if(check("PAGE!!weirdload")) {
+            changeBgm(env.embassy.music_embassy_uncanny)
+            return;
+        }
+
         env.embassy.regenRandobesk()
         change("PAGE!!recreation_leavable", true)
-
         switch(check("PAGE!!embassy_day")) {
             case 3:
-                env.stage.querySelectorAll('.character:not(.collapser), .prop .chair, .prop .container').forEach(e=>{
+                env.stage.querySelectorAll('.character:not(.collapser)').forEach(e=>{
                     e.parentElement.classList.remove('prop', 'blocks')
                     e.parentElement.innerHTML = ""
                 })
                 
-                if(!check('PAGE!!crecreation_intro')) {
+                if(!check("PAGE!!recreation") && !check("PAGE!!recenter")) {
                     startDialogue("d3_rec_enter")
-                    change('PAGE!!crecreation_intro', true)
-
-                    if(!check("PAGE!!mindcore1extracted") || !check("PAGE!!mindcore2extracted")) change("PAGE!!recreation_leavable", false)
                 }
-                
-                if(isStageClear()) toggleBgm(env.embassy.music_collapse)
-                else toggleBgm(env.embassy.music_unsafe)
 
+                if(!check("PAGE!!recreation") || check("PAGE!!recreation", "cleared")) toggleBgm(env.embassy.music_collapse);
+                else if(check("PAGE!!recreation", "dangerous")) toggleBgm(env.embassy.music_unsafe);
+
+                if(!check("PAGE!!mindcore1extracted") || !check("PAGE!!mindcore2extracted")) change("PAGE!!recreation_leavable", false)
+
+                env.stage.querySelectorAll(".randomrotate").forEach(el=>el.style.setProperty("--dyp-transform", `rotateY(${rand(0, 360)}deg)`))
+                env.stage.querySelectorAll(".viscera").forEach(el=>el.style.setProperty("--visceraAngle", `${rand(0, 360)}deg`))
                 env.stage.querySelectorAll('.gridpiece[slug="r"]').forEach(el=>{el.setAttribute('spot', 22); el.setAttribute('shouldFace', 'right')})
             break
 
@@ -660,6 +669,14 @@ env.stages['embassy_recreation'] = {
             lockFlag: "PAGE!!recreation_leavable",
             lockExec: ()=>chatter({actor: 'sourceless', text: 'WE ARE NOT LEAVING WITHOUT FREEING THE TWO QOU', readout: true}),
             exec: ()=>env.embassy.relocatorReturn = "recreation"
+        },
+        
+        "R": {
+            class: "door up",
+            teleportSpot: 13,
+            teleportTarget: "embassy_relocator",
+            shouldFace: "up",
+            lockFlag: "permalocked",
         },
 
         "B": {
@@ -752,6 +769,18 @@ env.stages['embassy_recreation'] = {
             }
         },
 
+        C: {
+            class: "prop blocks",
+            contains: {
+                class: "collapsetainer randomrotate",
+                dyp: {
+                    width: 1.5, 
+                    height: 1.25,
+                    image: `url(/img/local/orbit/dullvessel/container.gif)`,
+                },
+            }
+        },
+
         L: {
             class:"prop blocks",
             contains: {
@@ -766,34 +795,38 @@ env.stages['embassy_recreation'] = {
             }
         },
 
+        l: {
+            class:"prop blocks",
+            contains: {
+                class: "listener busted",
+                examineEntity: "damaged listener",
+                html: `<figure>
+                    <div class="cyst"></div>
+                    <div class="cyst"></div>
+                    <div class="cyst"></div>
+                </figure>`
+            }
+        },
+
         "ö": {
             contains: {
                 id: "foe",
-                class: "evil staysdead collapseonly",
-                type: "recreation_containers_1",
-                dialogue: "d3_genericenemy",
+                class: "evil collapseonly",
                 html: `<figure class="evilcontainer"><div class="target" entity="hostile container"></div></figure>`
             }
         },
 
-        "6": {
+        "Ü": {
+            class: "prop blocks",
             contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly",
-                type: "recreation_containers_2",
-                dialogue: "d3_genericenemy",
-                html: `<figure class="evilcontainer"><div class="target" entity="hostile container"></div></figure>`
-            }
-        },
-
-        "ô": {
-            contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly",
-                type: "recreation_containers_3",
-                dialogue: "d3_genericenemy",
-                html: `<div class="collapsed lamp"><figure><div class="target" entity="hostile veilklight"></div></figure></div>`
-            }
+                class: "collapsetainer randomrotate",
+                dyp: {
+                    width: 1.5, 
+                    height: 1.25,
+                    image: `url(/img/local/embassy/containerbusted.gif)`,
+                },
+                examineEntity: "hostile container",
+            },
         },
 
         "Q": {
@@ -858,34 +891,211 @@ env.stages['embassy_recreation'] = {
                 examinePriority: 2,
                 html: env.stageEntities.gakvuHTML
             }
-        }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'recreation_survival',
+                winCallback: () => { if(env?.rpg?.actors) change("PAGE!!listenerEchoCount", env.rpg.actors?.listener?.pulseCount >= 6 ? 'all' : 'some') },
+                skipCallback: () => { change("PAGE!!listenerEchoCount", 'all') },
+                winDialogue: 'd3_rec_clear'
+            })
+        },
+        
+        "Ṿ": {
+            class: "viscera",
+        },
+
+        E: { 
+            class:"prop blocks notile",
+            contains: {
+                examineEntity: "ÃwÃIÏ",
+                dyp: {
+                    class: "weirdeyes hungeronly",
+                    width: 1,
+                    height: 1,
+                    image: "url(/img/sprites/combat/foes/hallucinations/eyetransparent_purble.gif)",
+                    transform: `translateY(-100%) translateX(-8000px) rotateY(90deg) translateX(var(--tile-1))`
+                }              
+            }
+        },
+
+        "®": {
+            class: "empty plain resourcereturn",
+            shouldFace: "left"
+        },
     },
 
     width: 13,
-    plan: [
-        'N','░','░','b','b','b','B','b','b','b','░','░','.',
-        '.','░','+','b','b','b','f','b','b','b','+','░','.',
-        '.','░','░','░','9','8','ô','q','T','░','░','░','.',
-        '.','░','░','↕','░','░','░','░','░','↕','░','░','.',
-        'G','6','↔','A','↔','░','░','░','↔','A','↔','░','.',
-        '.','░','░','↕','Q','░','░','░','+','↕','░','░','.',
-        '.','░','░','░','░','░','ö','░','░','░','░','░','.',
-        '.','░','░','░','░','░','░','░','░','░','░','░','.',
-        '.','░','░','░','░','░','░','░','░','░','░','░','.',
-        '.','c','-','░','░','░','░','░','░','░','░','K','.',
-        '.','L','c','░','░','░','p','░','░','░','k','W','S',
-        '.','.','.','.','.','.','r','.','.','.','.','.','O',
-    ]
+    enterDirection: "down",
+    plans: {
+        base: `
+            N░░bbbBbbb░░.
+            .░+bbbfbbb+░.
+            .░░░98░░T░░░.
+            .░░↕░░░░░↕░░.
+            G░↔A↔░░░↔A↔░.
+            .░░↕░░░░+↕░░.
+            .░░░░░░░░░░░.
+            .░░░░░░░░░░░.
+            .░░░░░░░░░░░.
+            .c░░░░░░░░░K.
+            .Lc░░░p░░░kWS
+            ......r.....O
+        `,
+
+        collapse: `
+            N░░bbbBbbb░░.
+            .░+bbbfbbb+░.
+            .░░░░░Ṿq░░░░.
+            E░░░░░░░░░░░.
+            ®░░A░░░░░A░░.
+            .░░ṾQ░░Ṿ░CC░.
+            .░░░░░░░░░░░.
+            .░C░░░░░C░░░.
+            .░░░░░░░░░░░.
+            .░░░C░░░░░░░.
+            .L░░░░p░░░░WS
+            ......r.....O
+        `,
+
+        collapse_danger: `
+            N░░bbbBbbb░░.
+            .░+bbbfbbb+░.
+            .░░░░░Ṿq░░░░.
+            E░░░░░░░░░░░.
+            ®░░A░p░░░A@@.
+            .@░ṾQ░░Ṿ@@ö░.
+            .@@░░░@@öö░░.
+            .░ö@@@ö░░░░░.
+            .░░░ö░░░░░░░.
+            .░░░░░░░░░░░.
+            .L░░░░░░░░░WS
+            ......r.....O
+        `,
+
+        empty: `
+            .░░bbbBbbb░░.
+            .░░bbbbbbb░░.
+            .░░░░░░░░░░░.
+            E░░↕░░░░░↕░░.
+            ®░↔A↔░░░↔A↔░.
+            .░░↕░░░░░↕░░.
+            .░░░░░░░░░░░.
+            .░░░░░░░░░░░.
+            .░░░░░░░░░░░.
+            .░░░░░░░░░░░.
+            .L░░░░p░░░░W.
+            ......R.....O
+        `
+    },
+    
+    getPlan: function() {
+        if(check("PAGE!!weirdload")) return this.plans.empty
+        if(check("PAGE!!embassy_day", 3)) {
+            if(check("PAGE!!recreation", "dangerous")) return this.plans.collapse_danger
+            if(check("PAGE!!recreation", "cleared")) return this.plans.collapse_danger.replaceAll("ö", "Ü").replaceAll("@", "░").replaceAll("L", "l")
+            else return this.plans.collapse
+
+        } else return this.plans.base
+    },
+
+    planAdjustment: function(plan) {
+        let newPlan = plan
+        
+        if(!check("mask", "hunger")) {
+            newPlan = plan.replaceAll("E", ".")
+        }
+
+        return newPlan 
+    },
 }
+
+createEntity({
+    name: 'ÃwÃIÏ',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep2_hunger"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep2hungerwarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep2hungerwarn"] = generateDialogueObject(`
+start
+    sourceless
+        what is that?
+            EXEC::change("foundresourcegate", true)
+        a flickering in the projection of the walls?
+        something about it inspires a strange, sickly shiver
+        perhaps it is best to ignore it, but...
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+    moth
+        well, it's not bstrd's frame thing again
++____END
+    moth
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep2_hunger");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep2_hunger");moveTo("/local/ocean/embassy/resources/")
+`)
 
 /* COLLAPSE STAGES */
 
 env.stages['embassy_cpersonnel'] = {
     creature: env.stageEntities.embassyCreature,
-    exec: ()=> { 
+    exec: ()=> {
         env.embassy.updateStageData()
-                
-        if(isStageClear()) toggleBgm(env.embassy.music_collapse)
+        env.stage.querySelectorAll(".viscera").forEach(el=>el.style.setProperty("--visceraAngle", `${rand(0, 360)}deg`))
+                        
+        if(check("PAGE!!cpersonnel", "cleared")) toggleBgm(env.embassy.music_collapse)
         else toggleBgm(env.embassy.music_unsafe)
 
         if(!check('PAGE!!cpersonnel_intro')) {
@@ -975,37 +1185,80 @@ env.stages['embassy_cpersonnel'] = {
             contains: {
                 id: "foe",
                 class: "evil staysdead collapseonly",
-                type: "attendant_squad_3",
+                type: "recreation_containers_3",
                 dialogue: "d3_genericenemy",
-                html: `<figure class="spiregolem"><div class="target" entity="attendant"></div></figure>`
+                html: `<div class="collapsed lamp"><figure><div class="target" entity="hostile veilklight"></div></figure></div>`
             }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'personnel_attendant',
+                winCallback: () => { change("PAGE!!cpersonnel", "cleared");refreshStage(); },
+                winDialogue: 'd3_person_clear'
+            }),
+        },
+        
+        "Ṿ": {
+            class: "viscera",
         },
     },
 
     enterDirection: "down",
     width: 7,
-    plan: [
-        'N','l','Q','░','░','l','.',
-        '<','░','░','░','░','░','.',
-        '.','░','░','░','░','░','.',
-        '.','░','░','░','░','░','{',
-        '.','░','░','░','░','░','.',
-        '}','░','░','░','░','Q','.',
-        '.','░','ö','░','░','░','.',
-        '.','░','░','░','░','░','{',
-        '.','Q','░','♦','░','░','.',
-        '>','░','░','░','░','░','.',
-        '.','░','░','░','░','░','.',
-        '.','░','░','░','░','░','{',
-        '.','l','░','p','░','l','S',
-        '.','.','.','r','.','.','.',
-    ]
+    plans: {
+        base: `
+            NlQṾ░░.
+            <░░░░░.
+            .░░░░░.
+            .♦░░░░{
+            .@@ö░Q.
+            }░░@@♦.
+            .░░░@@.
+            .░Ṿ░░░{
+            .Q░░░░.
+            >░░░░░.
+            .░░░░░.
+            .░░░░░{
+            .░░p░lS
+            ...r...
+        `,
+
+        clear: `
+            NlQṾ░░.
+            <░░░░░.
+            .░░░░░.
+            .Ṿ░░░░{
+            .░░Ṿ░Q.
+            }Ṿ░░Ṿ░.
+            .░░░░░.
+            .░Ṿ░░░{
+            .Q░░░░.
+            >░░░░░.
+            .░░░░░.
+            .░░░░░{
+            .░░p░lS
+            ...r...
+        `,
+    },
+
+    getPlan: function() {
+        if(check("PAGE!!cpersonnel", "cleared")) return this.plans.clear
+        return this.plans.base
+    }    
 }
 
 env.stages['embassy_cquarters1'] = {
     creature: env.stageEntities.embassyCreature,
     exec: ()=> { 
         env.embassy.updateStageData()
+
+        if(check("PAGE!!weirdload")) {
+            changeBgm(env.embassy.music_embassy_uncanny)
+            return;
+        }
+
         toggleBgm(env.embassy.music_safe)
 
         if(!check('PAGE!!miltzameet')) {
@@ -1026,6 +1279,14 @@ env.stages['embassy_cquarters1'] = {
             shouldFace: 'right',
         },
 
+        "Q": {
+            class: "door left",
+            teleportSpot: 64,
+            teleportTarget: "embassy_cpersonnel",
+            lockFlag: "permalocked",
+            shouldFace: 'right',
+        },
+
         d: {
             class:"prop blocks",
             contains: {
@@ -1035,6 +1296,7 @@ env.stages['embassy_cquarters1'] = {
                         <div class="target" entity="cyst cluster"></div>
                     </div>
                     <div class="doodad d2">
+                        <div class="joydood joyonly"><div class="target" entity="▣"></div></div>
                         <div class="target" entity="veilk models"></div>
                     </div>
                     <div class="doodad d3">
@@ -1118,20 +1380,128 @@ env.stages['embassy_cquarters1'] = {
                 html: `<figure><div class="target" entity="unkind eye"></div></figure>`
             }
         },
+
+        "®": {
+            class: "empty plain resourcereturn",
+            shouldFace: "up"
+        }
     },
 
     width: 7,
     shouldFace: 'left',
-    plan: [
-        '.','.','.','z','.','.','.',
-        '.','l','x','d','x','l','.',
-        '.','░','░','░','░','X','.',
-        'q','p','░','░','░','b','.',
-        '.','░','░','o','░','X','.',
-        '.','l','C','L','M','░','.',
-        '.','.','.','i','.','.','.',
-    ]
+    plans: {
+        base: `
+            ...z...
+            .lxdxl.
+            .░░░░X.
+            qp░░░b.
+            .░░o░X.
+            .lCLM░.
+            ...i...
+        `,
+
+        empty: `
+            ...z...
+            .lxdxl.
+            .░░®░X.
+            Qp░░░b.
+            .░░░░X.
+            .l░░░l.
+            .......
+        `,
+    },
+
+    getPlan: function() {
+        return this.plans.base
+    },
+
+    planAdjustment: function(plan) {
+        let newPlan = plan
+        
+        if(!check("mask", "joy")) {
+            newPlan = plan.replaceAll("E", ".")
+        }
+
+        return newPlan 
+    },    
 }
+
+createEntity({ // todo
+    name: '▣',
+    type: "thoughtform collapse",
+    image: "/img/textures/corruripple.gif",
+    hide: true,
+    text: `::CORRUCYSTIC COMPONENT
+    ::<span definition="NOTE::'gap in rendering';'reflective of neural damage';'please schedule mindsci checkup'">NON-ENTITY</span>`,
+    actions: [
+        {
+            name: "look closer",
+            exec: ()=> check("PAGE!!weirdload") ? (change("TEMP!!from", "ep2_joy"), moveTo("/local/ocean/embassy/resources/")) : startDialogue("ep2joywarn")
+        }
+    ]
+})
+
+// resourcesport
+env.dialogues["ep2joywarn"] = generateDialogueObject(`
+start
+    sourceless
+        cute! a little cloud figure to join the veilk!
+            EXEC::change("foundresourcegate", true)
+        is that a swarm projection?
+        i tilt my head side to side, and,
+        no, it... it does not change, no matter my perspective
+        what a curious thing
+        something about it inspires a strange, sickly shiver
+        perhaps it is best to ignore it, but...
+        i must stick my claw in it
+
+    sys
+        ALERT::"exiting iteration";"recollection locus unable to proceed"
+        WARNING::"unsaved iteration progress will be lost"
+    
+____SHOWONCE::
+____SHOWIF::["visited_localoceanembassyresources", false]
+    moth
+        whaat the fuck okay hold on
+        whatever you pointed her at didn't show up on my end at first,
+        but now that it's coming into focus, that looks liike...
++____NESTIF::["visited_localbeneathembassy"]
+        well, it's not BSTRD's frame thing again
++____END
+        that's some sort of link to an underlying bunch of resources
+        don't think that sort of thing's meant to render at all lol
+        but you've got that mask now, so might be worth a shot?
+        i'll force a save here if you want
+____SHOWIF::["visited_localoceanembassyresources", true]
+    moth
+        another resource connection, looks like
+____END
+
+    RESPONSES::sys
+        save and proceed<+>save
+            FAKEEND::(exit iteration)
+        
+        proceed without saving<+>END
+            EXEC::change("TEMP!!from", "ep2_joy");moveTo("/local/ocean/embassy/resources/")
+            FAKEEND::(exit iteration)
+    
+    RESPONSES::self
+        don't go<+>END
+            FAKEEND::(back out)
+
+save
+    sys
+        ATTENTION::'saving iteration...'
+        ...
+            EXEC::env.embassy.collapseSave({effects: true})
+            WAIT::1000
+        NOTE::'save process complete'
+        ATTENTION::'proceeding'
+
+    RESPONSES::self
+        ok<+>END
+            EXEC::change("TEMP!!from", "ep2_joy");moveTo("/local/ocean/embassy/resources/")
+`)
 
 env.stages['embassy_cquarters2'] = {
     creature: env.stageEntities.embassyCreature,
@@ -1163,8 +1533,6 @@ env.stages['embassy_cquarters2'] = {
             teleportSpot: 8,
             teleportTarget: "embassy_cpersonnel",
             shouldFace: 'right',
-            lockFlag: "PAGE!!kazkiambush",
-            lockExec: ()=>startDialogue('d3r2_ambush')
         },
 
         C: {
@@ -1230,7 +1598,7 @@ env.stages['embassy_cquarters2'] = {
             contains: {
                 class: "container showalways",
                 html: `<figure style="transform: rotateY(-135deg)">
-                    <div class="target" entity="conspicuous container"></div>
+                    <div class="target" entity="container"></div>
                 </figure>`
             }
         },
@@ -1255,20 +1623,60 @@ env.stages['embassy_cquarters2'] = {
 
     width: 7,
     shouldFace: 'left',
-    plan: [
-        '.','.','.','.','.','.','.',
-        '.','l','X','b','X','l','.',
-        '↔','d','░','░','░','░','.',
-        'g','D','░','░','░','p','q',
-        '.','d','░','░','░','c','.',
-        '.','l','C','L','c','I','.',
-        '.','.','.','.','.','.','.',
-    ]
+    plan: `
+        .......
+        .lXbXl.
+        ↔d░░░░.
+        gD░░░pq
+        .d░░░c.
+        .lCLcI.
+        .......
+    `
 }
 
 //ARCHIVAL BONUS AREA FOR EP2
 //Archival intro - short connective area with intro enemy
-//should probably shift styles based on depth
+env.stageEntities["⚳"] = {
+    class: "prop fakeevil",
+    contains: {
+        class: "lamp bstrd collapsed",
+        html: `<figure><div class="target" entity="hostile veilklight"></div></figure>`
+    }
+}
+
+env.stageEntities["⚕"] = {
+    contains: {
+        id: "foe",
+        class: "evil staysdead collapseonly maintcloak",
+        type: "archivecloaktainer",
+        dialogue: "d3_genericenemy",
+        html: `<figure class="spritestack">
+            <img class="sprite" style="width: 100%;" src="/img/sprites/combat/foes/maintcloak.gif">
+            <img class="sprite mainthead" src="/img/sprites/combat/foes/mainthead.gif">
+            <img class="sprite mainthead perp" src="/img/sprites/combat/foes/mainthead.gif">
+            <div class="target" entity="jutskin"></div>
+        </figure>`
+    }
+}
+
+env.stageEntities["⚴"] = {
+    contains: {
+        id: "foe",
+        class: "evil staysdead collapseonly",
+        type: "archivetutorial",
+        dialogue: "d3_bstrdintro",
+        html: `<figure class="archivalgolem"><div class="target" entity="archival golem"></div></figure>`
+    }
+}
+
+env.stageEntities["⚷"] = {
+    contains: {
+        id: "foe",
+        class: "evil collapseonly",
+        html: `<figure class="evilcontainer"><div class="target" entity="hostile container"></div></figure>`
+    }    
+}
+
 env.stages['embassy_archivalintro'] = {
     creature: env.stageEntities.embassyCreature,
     exec: ()=> { 
@@ -1304,16 +1712,6 @@ env.stages['embassy_archivalintro'] = {
             shouldFace: 'down',
         },
 
-        "ö": {
-            contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly",
-                type: "archivetutorial",
-                dialogue: "d3_bstrdintro",
-                html: `<figure class="archivalgolem"><div class="target" entity="archival golem"></div></figure>`
-            }
-        },
-
         "♠": {
             exec: ()=> {
                 if(env.stage.querySelectorAll('.evil') && !check("PAGE!!archivewarn")) {
@@ -1324,28 +1722,38 @@ env.stages['embassy_archivalintro'] = {
                 }
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => check("PAGE!!lastFight", "archive_intro") ? env.embassy.startOrSkipArchivalIntroFight() : startDialogue("d3_bstrdintro")
+        },
     },
 
     width: 3,
-    plan: [
-        '.','v','.',
-        '.','p','.',
-        '.','♠','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','░','.',
-        '.','ö','.',
-        '.','^','.',
-    ],
+    plan: `
+        .v.
+        .p.
+        .♠.
+        .░.
+        .░.
+        .░.
+        .░.
+        .░.
+        .@.
+        .⚴.
+        .░.
+        .░.
+        .░.
+        .░.
+        .░.
+        .░.
+        .^.
+    `,
+
+    getPlan: function() {
+        if(check("PAGE!!aintro", "cleared")) return this.plan.replace("⚴", "░").replace("@", "░")
+        return this.plan
+    }
 }
 
 //Main archival hall - a long hall you exit from the center, with a door directly in front - locked tho
@@ -1378,7 +1786,7 @@ env.stages['embassy_archivalvein'] = {
             examineEntity: "bstrd door",
             lockFlag: "PAGE!!bstrdlock",
             shouldFace: 'left',
-            lockExec: ()=>chatter({actor: 'akizet', text: 'it is locked', readout: true})
+            lockExec: ()=>chatter({actor: 'akizet', text: 'these strange tethers prevent us from opening it normally...', readout: true})
         },
 
         "}": {
@@ -1405,21 +1813,6 @@ env.stages['embassy_archivalvein'] = {
             }
         },
 
-        "£": {
-            contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly maintcloak",
-                type: "archivecloaktainer",
-                dialogue: "d3_genericenemy",
-                html: `<figure class="spritestack">
-                    <img class="sprite" style="width: 100%;" src="/img/sprites/combat/foes/maintcloak.gif">
-                    <img class="sprite" src="/img/sprites/combat/foes/mainthead.gif">
-                    <img class="sprite" src="/img/sprites/combat/foes/mainthead.gif">
-                    <div class="target" entity="jutskin"></div>
-                </figure>`
-            }
-        },
-
         'N': { 
             class: "blocks cwall north",
             contains: {
@@ -1439,21 +1832,57 @@ env.stages['embassy_archivalvein'] = {
                 `
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'archivecommon',
+                winCallback: () => { change("PAGE!!ahallmix", "cleared");refreshStage() },
+                skipCallback: () => {
+                    chatter({ actor: "sourceless", text: `these golems were twisted by that strange light...`, readout: true, forceMini: true, delay: 2000})
+                    chatter({ actor: "sourceless", text: `becoming more dangerous, but more easily torn apart`, readout: true, forceMini: true, delay: 5000})
+                }
+            })
+        },
+
+        "#": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'archivecloaktainer',
+                winCallback: () => { change("PAGE!!ahallcloak", "cleared");refreshStage() },
+                skipCallback: () => {
+                    chatter({ actor: "sourceless", text: `a terrible collection of useless miscellany bashed against us`, readout: true, forceMini: true, delay: 2000})
+                    chatter({ actor: "sourceless", text: `though shielded by the jutskin, their fluid forms held little resistance`, readout: true, forceMini: true, delay: 5000})
+                }
+            })
+        },
+
+        "1": { reference: "⚴" },
+        "2": { reference: "⚕" },
+        "3": { reference: "⚳" },
+        "4": { reference: "⚕" },
+        "5": { reference: "⚷" }
     },
 
     width: 15,
-    plan: [
-        '.','.','.','.','.','.','.','v','.','.','.','.','.','.','.',
-        'N','░','░','░','░','░','░','░','░','░','░','░','░','░','.',
-        '}','░','ö','░','░','░','░','░','░','░','░','░','£','░','{',
-        '.','░','░','░','░','░','░','p','░','░','░','░','░','░','S',
-        '.','.','.','.','.','.','.','^','.','.','.','.','.','.','.',
-        
-    ],
+    plan: `
+        .......v.......
+        N░2@░░░░░░░#55.
+        }░1@░░░░░░░#4░{
+        .░3@░░░p░░░#55S
+        .......^.......
+    `,
 
     html: `
         <canvas class="veinceiling" sprite="/img/local/embassy/archivalceiling.gif" baseWidth="13.5" baseHeight="3"></canvas>
-    `
+    `,
+
+    getPlan: function() {
+        let plan = this.plan
+        if(check("PAGE!!ahallmix", "cleared")) plan = plan.replaceAll("@", "░").replaceAll("1", "░").replaceAll("2", "░").replaceAll("3", "░")
+        if(check("PAGE!!ahallcloak", "cleared")) plan = plan.replaceAll("#", "░").replaceAll("4", "░").replaceAll("5", "░")
+        return plan
+    }
 }
 
 //spherical-ish room, thingy in center
@@ -1461,12 +1890,13 @@ env.stages['embassy_archivalcore'] = {
     creature: env.stageEntities.embassyCreature,
     exec: ()=> { 
         env.embassy.updateStageData()
+        env.stage.querySelectorAll(".viscera").forEach(el=>el.style.setProperty("--visceraAngle", `${rand(0, 360)}deg`))
         
         if(isStageClear()) toggleBgm(env.embassy.music_collapse)
         else toggleBgm(env.embassy.music_unsafe)
 
         content.classList.add("archives", "show-walls")
-        if(checkItem(env.ITEM_LIST.cool_orb_thingy)) env.stage.current.hidePillarCyst()
+        if(checkItem(env.ITEM_LIST.cool_orb_thingy) || check("PAGE!!archivesclear")) env.stage.current.hidePillarCyst()
     },
 
     hidePillarCyst: ()=>{
@@ -1518,16 +1948,6 @@ env.stages['embassy_archivalcore'] = {
             }
         },
 
-        "ö": {
-            contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly",
-                type: "archivedouble",
-                dialogue: "d3_genericenemy",
-                html: `<figure class="archivalgolem"><div class="target" entity="archival golem"></div></figure>`
-            }
-        },
-
         'N': { 
             class: "blocks cwall north",
             contains: {
@@ -1547,18 +1967,40 @@ env.stages['embassy_archivalcore'] = {
                 `
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'archivedouble',
+                winCallback: () => { change("PAGE!!acore", "cleared");refreshStage(); },
+                skipCallback: () => {
+                    chatter({ actor: "sourceless", text: `these golems are far more hardy than they have any right to be`, readout: true, forceMini: true, delay: 2000})
+                    chatter({ actor: "sourceless", text: `one misstep and we would certainly have met with our final deaths`, readout: true, forceMini: true, delay: 5000})
+                }
+            })
+        },
+        
+        "Ṿ": {
+            class: "viscera",
+        },
     },
 
     width: 7,
-    plan: [
-        '.','.','.','ë','.','.','.',
-        'N','░','░','░','░','░','.',
-        '.','░','░','░','░','░','.',
-        'E','P','ö','░','░','p','>',
-        '.','░','░','░','░','░','.',
-        '.','░','░','░','░','░','S',
-        '.','.','.','e','.','.','.',
-    ],
+    plan: `
+        ...ë...
+        N░░⚴░░.
+        .░⚕░@@.
+        EP░░@p>
+        .░⚳░@@.
+        .░░⚴░░S
+        ...e...
+    `,
+
+    getPlan: function() {
+        let plan = this.plan
+        if(check("PAGE!!acore", "cleared")) plan = plan.replaceAll("@", "░").replaceAll("⚳", "Ṿ").replaceAll("⚕", "Ṿ").replaceAll("⚴", "░")
+        return plan
+    },
 
     html: `
         <canvas class="veinsphere" sprite="/img/local/embassy/archivalspherecanvas.gif" baseWidth="7" baseHeight="7"></canvas>
@@ -1572,31 +2014,18 @@ env.stages['embassy_archivaldelivery'] = {
         env.embassy.updateStageData()
         content.classList.add("archives", "show-walls")
         
-        if(!check("PAGE!!archiveambush")) {
+        if(!check("PAGE!!acontainers")) {
             toggleBgm(env.embassy.music_unsafe)
-            startDialogue("d3_archivedelivery")
+            if(!check("PAGE!!archiveambush")) startDialogue("d3_archivedelivery")
         } else {
             toggleBgm(env.embassy.music_collapse)
         }
-        
-        env.stage.current.onStep()
     },
 
-    onStep: ()=>{
-        if(check("PAGE!!archiveambush")) {
-            content.querySelectorAll('#realgrid .container').forEach(el=>{
-                el.classList.add('destroyed')
-            })
-            
-            env.stage.querySelectorAll('.lamp').forEach(e=>{
-                e.parentElement.classList.remove('prop', 'blocks')
-                e.parentElement.innerHTML = ""
-            })
-        
-            if(checkItem(env.ITEM_LIST.scary_black_box)) {
-                env.stage.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
-            }
-        } 
+    onStep: ()=>{        
+        if(checkItem(env.ITEM_LIST.scary_black_box) || check("PAGE!!archivesclear")) {
+            env.stage.querySelectorAll('.bstrdbosspanel').forEach(el=>el.classList.remove('bstrdbosspanel'))
+        }
     },
     locale: "research",
 
@@ -1620,23 +2049,7 @@ env.stages['embassy_archivaldelivery'] = {
             class: "prop blocks",
             contains: {
                 class: "lamp bstrd collapsed",
-                html: `<figure><div class="target" entity="hostile veilklight"></div></figure>`
-            }
-        },
-
-        'ö': {
-            class: "prop blocks",
-            contains: {
-                class: "container evilcontainer-static",
-                html: `<figure style="transform: rotateY(-60deg)"><div class="target" entity="hostile container"></div></figure>`
-            }
-        },
-
-        '¿': {
-            class: "prop blocks",
-            contains: {
-                class: "container evilcontainer-static",
-                html: `<figure style="transform: rotateY(60deg)"><div class="target" entity="hostile container"></div></figure>`
+                html: `<figure><div class="target" entity="bstrdlight"></div></figure>`
             }
         },
 
@@ -1653,18 +2066,34 @@ env.stages['embassy_archivaldelivery'] = {
                 html: ``
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'archivecontainers',
+                winCallback: () => { change("PAGE!!acontainers", "cleared");refreshStage(); },
+                winDialogue: "d3_archivedeliveryclear"
+            })
+        },
     },
 
     width: 7,
-    plan: [
-        '.','.','.','.','.','.','.',
-        '.','░','¿','¿','░','░','.',
-        '.','░','¿','░','░','░','.',
-        'c','├','ô','░','░','p','>',
-        '.','░','ö','░','░','░','.',
-        '.','░','ö','ö','░','░','.',
-        '.','.','.','.','.','.','.',
-    ]
+    plan: `
+        .......
+        .░⚷⚷░░.
+        .░⚷░@@.
+        c├⚳░@p>
+        .░⚷░@@.
+        .░⚷⚷░░.
+        .......
+    `,
+
+    getPlan: function() {
+        let plan = this.plan
+        if(check("PAGE!!acontainers", "cleared")) plan = plan.replaceAll("@", "░").replaceAll("⚳", "░").replaceAll("⚷", "░")  
+        if(checkItem(env.ITEM_LIST.scary_black_box) || check("PAGE!!archivesclear")) plan = plan.replaceAll("├", "░")
+        return plan
+    }
 }
 
 //like the archival core, but glitchy
@@ -1674,30 +2103,19 @@ env.stages['embassy_archivalcore_sensitive'] = {
     exec: ()=> { 
         env.embassy.updateStageData()
         content.classList.add("archives", "show-walls")
-        
-        env.stage.current.onStep()
 
-        if(!check("PAGE!!archivemini")) {
+        if(!check("PAGE!!ashelf")) {
             toggleBgm(env.embassy.music_unsafe)
-            startDialogue("d3_archivemini")
-            setTimeout(()=>{change('PAGE!!archivemini', true), 100})
+            if(!check("PAGE!!archivemini")) {
+                startDialogue("d3_archivemini")
+                change('PAGE!!archivemini', true)
+            }
         } else {
             toggleBgm(env.embassy.music_collapse)
         }
     },
 
-    onStep: ()=>{
-        if(check("PAGE!!archivemini")) {
-            [env.stage.real, env.stage.ref].forEach(layer => {
-                layer.querySelectorAll('.bstrdshelf').forEach(e => {
-                    e.parentElement.classList.remove('prop', 'blocks')
-                    e.parentElement.innerHTML = ""
-                })
-            })
-        }
-    },
     locale: "research",
-
     entities: {
         ">": {
             class: "door right",
@@ -1709,7 +2127,6 @@ env.stages['embassy_archivalcore_sensitive'] = {
         "<": {
             class: "door left",
             teleportTarget: "embassy_archivalboss",
-            teleportSpot: 45,
             lockFlag: "PAGE!!archivemini",
             shouldFace: 'down',
         },
@@ -1742,10 +2159,10 @@ env.stages['embassy_archivalcore_sensitive'] = {
         },
 
         "ô": {
-            class: "prop chartile blocks",
+            class: "prop chartile fakeevil",
             contains: {
                 class: "bstrdshelf",
-                html: `<figure><div class="target" entity="hostile archive"></div></figure>`
+                html: `<figure><div class="target" entity="pain shelf"></div></figure>`
             }
         },
 
@@ -1757,18 +2174,34 @@ env.stages['embassy_archivalcore_sensitive'] = {
                 examineEntity: "save iteration",
             }
         },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'archiveshelfminiboss',
+                winCallback: () => { change("PAGE!!ashelf", "cleared");refreshStage(); },
+                winDialogue: "d3_archiveminiclear"
+            })
+        },
     },
 
     width: 7,
-    plan: [
-        '.','.','.','ë','.','.','.',
-        '.','.','Y','.','░','.','.',
-        '.','░','░','░','.','░','.',
-        '<','░','ô','░','░','p','>',
-        '.','░','░','.','░','░','.',
-        '.','.','░','░','░','.','.',
-        '.','.','.','e','.','.','.',
-    ]
+    plan: `
+        ...ë...
+        ..Y.░..
+        .░░⚕@@.
+        <░ô░@p>
+        .░░⚳@@.
+        ..░░░..
+        ...e...
+    `,
+
+    getPlan: function() {
+        let plan = this.plan
+        if(check("PAGE!!ashelf", "cleared")) plan = plan.replaceAll("@", "░").replaceAll("⚳", "░").replaceAll("⚕", "░").replaceAll("ô", "░");
+        else plan = plan.replaceAll("Y", "░")
+        return plan
+    }    
 }
 
 //boss room
@@ -1778,15 +2211,21 @@ env.stages['embassy_archivalboss'] = {
     exec: ()=> { 
         env.embassy.updateStageData()
 
-        content.classList.add("archives", "bastard")
-        
+        if(check("PAGE!!aboss")) {
+            content.classList.add("archives", "show-walls")
+            toggleBgm(env.embassy.music_collapse)
+
+        } else {
+            toggleBgm(env.embassy.music_bstrd)
+            content.classList.add("archives", "bastard")
+            startDialogue("d3_archiveboss")
+        }
+
         env.stage.current.onStep()
     },
 
     onStep: ()=>{
-        if(check("PAGE!!archiveboss")) {
-            toggleBgm(env.embassy.music_collapse)
-            content.classList.add("archives", "show-walls")
+        if(check("PAGE!!aboss")) {
             content.classList.remove("bastard")
             env.stage.querySelectorAll('.maintcloak, .lamp, .bstrdboss').forEach(el=>{
                 el.parentElement.classList.remove('prop', 'blocks', 'bstrdbosspanel')
@@ -1797,10 +2236,6 @@ env.stages['embassy_archivalboss'] = {
                 env.stage.current.showPillar()
                 if(checkItem(env.ITEM_LIST.sorry_cyst)) env.stage.current.hidePillarCyst()
             }
-        } else {
-            toggleBgm(env.embassy.music_bstrd)
-            startDialogue("d3_archiveboss")
-            content.classList.add("archives", "bastard")
         }
     },
 
@@ -1826,6 +2261,7 @@ env.stages['embassy_archivalboss'] = {
             el.parentElement.classList.remove('prop', 'blocks', 'bstrdbosspanel')
             el.parentElement.innerHTML = ""
         })
+        initializeFloorCanvas(env.stage.current, env.stage.real)
     },
     locale: "research",
 
@@ -1844,54 +2280,45 @@ env.stages['embassy_archivalboss'] = {
                 html: `<figure class="archivalgolem bstrdboss"><div class="target" entity="bstrd golem"></div></figure>`
             }
         },
-
-        "ô": {
-            class: "prop blocks notile",
-            contains: {
-                class: "lamp bstrd collapsed",
-                html: `<figure><div class="target" entity="hostile veilklight"></div></figure>`
-            }
-        },
-
-        "£": {
-            class: "notile",
-            contains: {
-                id: "foe",
-                class: "evil staysdead collapseonly maintcloak",
-                type: "archivecloaktainer",
-                dialogue: "d3_genericenemy",
-                html: `<figure class="spritestack">
-                    <img class="sprite" style="width: 100%;" src="/img/sprites/combat/foes/maintcloak.gif">
-                    <img class="sprite" src="/img/sprites/combat/foes/mainthead.gif">
-                    <img class="sprite" src="/img/sprites/combat/foes/mainthead.gif">
-                    <div class="target" entity="jutskin"></div>
-                </figure>`
-            }
-        },
         
         "P": {
             class:"prop blocks notile hide",
             contains: {
                 class: "bstrdpillar",
                 examineEntity: "peculiar obelisk",
-                html: `<figure></figure>`                
+                html: `<figure></figure>`
             }
+        },
+
+        "@": {
+            class: "dangertile",
+            exec: () => env.embassy.startOrSkipFight({
+                specificFormation: 'bstrdboss',
+                winDialogue: "d3_archivebossend"
+            })
         },
     },
 
     width: 7,
-    plan: [
-        '.', '.', '.', 'P', '░', '░', '.', 
-        '.', '░', '£', 'ö', 'ô', '.', '░', 
-        '░', '.', '.', '.', '.', '.', '.', 
-        '.', '.', '░', '░', '░', '░', '.', 
-        '.', '░', '.', '░', '░', '░', '.', 
-        '.', '.', '░', '░', '░', '.', '.', 
-        '.', '.', '░', 'p', '░', '.', '.', 
-        '.', '.', '.', '^', '.', '.', '.', 
-    ]
+    plan: `
+        .⚕.P░⚳.
+        .░.ö..░
+        ░......
+        ..░░░░.
+        .░@@@░.
+        ..@p@..
+        ..@@@..
+        ...^...
+    `,
+
+    getPlan: function() {
+        let plan = this.plan
+        if(check("PAGE!!archivesclear")) plan = plan.replaceAll("@", "░").replaceAll("ö", "░").replaceAll("⚷", "░").replaceAll("⚕", "░")
+        return plan
+    }
 }
 
+//e4a1
 env.stages['embassy_hangar'] = {
     entities: {
         v: { 
