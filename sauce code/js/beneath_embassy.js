@@ -332,7 +332,7 @@ env.e3a2 = {
         },
 
         {
-            name: "Le dÃ©lire des nÃ©gations",
+            name: "Le délire des négations",
             category: 'boss',
             note: 'recall from translation core combat',
             src: ['/audio/tv.ogg'],
@@ -1350,10 +1350,10 @@ createEntity({
 
 /************ STAGES **************/
 env.stageEntities["c"] = {class:"prop blocks genericblocker"}
-env.stageEntities["â™ "] = {class: "vesselmetal"}
+env.stageEntities["♠"] = {class: "vesselmetal"}
 env.stageEntities["_"] = {class: "gap blocks"}
 env.stageEntities["="] = {class: "gap blocks raised-floaty"}
-env.stageEntities["â–’"] = {class: "invisiblewalk nothing"}
+env.stageEntities["▒"] = {class: "invisiblewalk nothing"}
 env.stageEntities["B"] = {
     class: "prop blocks",
     contains: {
@@ -1395,7 +1395,7 @@ env.stageEntities["w"] = {
     } 
 }
 
-env.stageEntities["â˜»"] = {
+env.stageEntities["☻"] = {
     class: "prop blocks",
     contains: {
         class: "geli character bstrdized",
@@ -1515,32 +1515,32 @@ env.stages['wanderpart'] = {
         .....w.....
         .....V.....
         ._.=_o_=...
-        â–’â–’â–’â–‘â–‘pâ–‘â–‘â–’â–’â–’
-        â–’â–’â–‘â–‘â–‘â–‘â–‘â–‘â–‘â–’â–’
-        ==â–’â–‘â–’â–‘â–‘â–’â–’â–’â–’
-        .=â–’â–‘â–’â–’â–‘â–’â–’â–’=
-        ?.=â–’â–’â–’â–‘â–’â–’â–’â–’
-        ..=â–’â–‘â–‘â–‘â–’â–‘â–’â–’
-        .=â–’â–‘â–’â–‘â–’â–’â–’â–’â–’
-        â–’â–’â–’â–’â–’â–’â–’â–’â–‘â–’=
-        â–‘â–’â–’â–’â–’â–’=â–’â–’â–’â–’
-        â–’â–’â–‘â–‘â–’â–’â–’â–‘â–’â–’â–’
-        â–’â–’â–’â–’â–’â–’â–‘â–’â–’â–’â–‘
-        =â–’â–’â–’â–‘â–’â–‘â–’â–’==
-        â–’â–’â–’â–’â–’â–’â–’â–’=..
-        â–’â–’â–’â–‘â–’â–’â–’=..?
-        â–’â–‘â–‘â–’â–’â–’â–’=...
-        â–’â–’â–’â–’â–’â–’â–’â–’=..
-        â–’â–’â–’â–’â–’â–’â–‘â–’â–’=.
-        =â–’â–’â–’â–’â–’â–’â–’â–’â–’=
-        â–’==â–’â–’â–’â–’â–’===
-        â–’â–’â–’=â–’â–’â–’=â–’â–’â–’
-        â–’â–’==â–’==â–’â–’â–‘â–’
-        â–’â–’==â–‘=â–‘â–‘â–’â–’â–’
-        â–‘â–’â–‘.â–‘.â–‘?â–‘â–’â–‘
-        â–’â–‘â–‘.B!â–‘â–‘â–’â–’â–’
-        â–’â–’?â–’â–‘â–‘â–‘â–‘?â–’â–’
-        â–’â–‘â–‘â–‘â–’=â–’â–’â–’â–’â–’
+        ▒▒▒░░p░░▒▒▒
+        ▒▒░░░░░░░▒▒
+        ==▒░▒░░▒▒▒▒
+        .=▒░▒▒░▒▒▒=
+        ?.=▒▒▒░▒▒▒▒
+        ..=▒░░░▒░▒▒
+        .=▒░▒░▒▒▒▒▒
+        ▒▒▒▒▒▒▒▒░▒=
+        ░▒▒▒▒▒=▒▒▒▒
+        ▒▒░░▒▒▒░▒▒▒
+        ▒▒▒▒▒▒░▒▒▒░
+        =▒▒▒░▒░▒▒==
+        ▒▒▒▒▒▒▒▒=..
+        ▒▒▒░▒▒▒=..?
+        ▒░░▒▒▒▒=...
+        ▒▒▒▒▒▒▒▒=..
+        ▒▒▒▒▒▒░▒▒=.
+        =▒▒▒▒▒▒▒▒▒=
+        ▒==▒▒▒▒▒===
+        ▒▒▒=▒▒▒=▒▒▒
+        ▒▒==▒==▒▒░▒
+        ▒▒==░=░░▒▒▒
+        ░▒░.░.░?░▒░
+        ▒░░.B!░░▒▒▒
+        ▒▒?▒░░░░?▒▒
+        ▒░░░▒=▒▒▒▒▒
     `
 }
 
@@ -1635,9 +1635,9 @@ env.stages['completed'] = {
         ....w....
         ....V....
         _.=_o_=..
-        ...â–‘pâ–‘..=
-        .=â–‘.â–‘â–‘...
-        ==â–‘â–‘â–‘._=â–‘
+        ...░p░..=
+        .=░.░░...
+        ==░░░._=░
         ?.=r=.=..
         .=x.=.?..
         .R.......
@@ -1656,10 +1656,10 @@ env.stages['underlobby'] = {
                 el.classList.remove("prop", "blocks")
                 el.classList.add('vesselmetal')
                 el.innerHTML = ""
-                el.setAttribute("slug", "â™ ")
+                el.setAttribute("slug", "♠")
             })
         } else {
-            env.stage.querySelectorAll(".gridpiece[slug='â˜»']").forEach(el=>{
+            env.stage.querySelectorAll(".gridpiece[slug='☻']").forEach(el=>{
                 el.classList.remove("blocks")
                 el.classList.add("nothing")
                 el.innerHTML = ""
@@ -1733,7 +1733,7 @@ env.stages['underlobby'] = {
             }
         },
 
-        "Ãœ": {
+        "Ü": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -1864,14 +1864,14 @@ env.stages['underlobby'] = {
         ....w....
         ....V....
         _.=_o_=..
-        ...â–‘pâ–‘..=
-        .=â–‘.â–‘â–‘â˜»..
-        =.â–‘â–‘â–‘._=â–‘
-        â–‘..â–‘â–‘.=..
-        ....â–‘....
-        ..Tâ™ â™ â™ 1..
-        .W%â™ â™ â™ 2Ãœ.
-        ..tBâ™ {3..
+        ...░p░..=
+        .=░.░░☻..
+        =.░░░._=░
+        ░..░░.=..
+        ....░....
+        ..T♠♠♠1..
+        .W%`♠♠2Ü.
+        ..tB♠{3..
         ..R.s....
     `
 }
@@ -1985,7 +1985,7 @@ env.stages['vessel'] = {
             }
         },
 
-        "Ãœ": {
+        "Ü": {
             class: "notile",
             contains: {
                 examineEntity: "basterminal",
@@ -2181,25 +2181,25 @@ env.stages['vessel'] = {
 
     plans: {
         default: `
-            ....â”¼
+            ....┼
             ..W..
-            Rtâ–‘T.
-            fâ–‘â–‘â–‘F
-            sâ–‘pâ–‘S
-            fâ–‘â–‘â–‘F
+            Rt░T.
+            f░░░F
+            s░p░S
+            f░░░F
             .321b
-            ..Ãœ..
+            ..Ü..
         `,
 
         shellmode:  `
-            ....â”¼
+            ....┼
             ..W..
-            Rtâ–‘T.
-            fâ–‘â–‘â–‘F
-            sâ–‘pâ–‘S
-            fâ–‘â–‘â–‘F
+            Rt░T.
+            f░░░F
+            s░p░S
+            f░░░F
             M321b
-            ..Ãœ..
+            ..Ü..
         `,
     },
 }
@@ -2257,7 +2257,7 @@ env.stages['vessel_short'] = {
             }
         },
 
-        "Ãœ": {
+        "Ü": {
             class: "notile",
             contains: {
                 html: `<div class="side back"></div>`,
@@ -2391,11 +2391,11 @@ env.stages['vessel_short'] = {
     plan: `
         .....
         ..W..
-        Rtâ–‘T.
-        .â–‘â–‘â–‘.
-        sâ–‘pâ–‘S
-        .â–‘â–‘â–‘.
-        ..Ãœ..
+        Rt░T.
+        .░░░.
+        s░p░S
+        .░░░.
+        ..Ü..
     `
 }
 
@@ -3042,7 +3042,7 @@ start
         so even if u die itll keep DA DAMAGE U DID 4EVER
         >%^}
         just break it apart then come back 4 geli
-        THEN WE SAIL ðŸ´â€â˜ ï¸
+        THEN WE SAIL 🏴‍☠️
     
     sourceless
         the radio clicks off.

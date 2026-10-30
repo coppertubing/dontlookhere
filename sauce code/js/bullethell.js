@@ -592,7 +592,7 @@ bh_movefriend.attackMap = {
 
 			env.bulletHell.setTimeout(()=>gakplat.classList.add('active'), 100)
 			env.bulletHell.setTimeout(()=>gakplat.classList.add('activefail'), 2000)
-			env.setTimeout(()=>chatter({actor: 'gakvu', text: 'âµ™â”´â€ášˆâ’«', readout: true}), 2000)
+			env.setTimeout(()=>chatter({actor: 'gakvu', text: 'ⵙ┴❀ᚈ⒫', readout: true}), 2000)
 		}, 55000)
 		
 		//finally, they stop, gakvu breaking through

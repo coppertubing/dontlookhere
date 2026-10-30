@@ -1450,7 +1450,7 @@ createEntity({
 })
 
 /* dog - used across beneath, golem, and ozo */
-env.stageEntities['â”¼'] = {
+env.stageEntities['┼'] = {
     class: "blocks notile",
     contains: {
         class: "isopod_host",
