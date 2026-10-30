@@ -1,8 +1,8 @@
-/*/ если вы очутились здесь и не понимаете, что это такое, скорее всего /*/
-/*/ вы нажали на ссылку вместо того, чтобы правильно установить мод.    /*/
-/*/ не смотрите в в код дальше, если боитесь спойлеров!!! хихи          /*/
-/*/ видео по установке: https://cor-RU.github.io/cor-RU/tutorial.MP4    /*/
-/*/ страница мода: https://github.com/cor-RU/cor-RU                     /*/
+/*/     если вы очутились здесь и не понимаете, что это такое, скорее всего     /*/
+/*/     вы нажали на ссылку вместо того, чтобы правильно установить мод.        /*/
+/*/     не смотрите в в код дальше, если боитесь спойлеров!!! хихи              /*/
+/*/     видео по установке: https://cor-RU.github.io/cor-RU/tutorial.MP4        /*/
+/*/     страница мода: https://github.com/cor-RU/cor-RU                         /*/
 
 
 
@@ -39,17 +39,21 @@ if (window.location.pathname == '/credits') { // credits load mods in a very lim
     <h2 definition="значимые коллабораторы по прямой разработке/ресурсам">Corruborators</h2>
     <ul>
         <li><a href="https://soundcloud.com/saiiko2" target="_blank"><img src="/img/da_saiiko.png" /> saiiko2</a>: Музыкальная поддержка <label>E3A2, E4</label></li>
-        <li><a href="https://sola.nekoweb.org/index.html" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
-        <li><a href="https://rainbowcutieo3o.neocities.org/" target="_blank"><img src="/img/da_bo.png" /> RainbowCutieo3o</a>: Творчество и поддержка дизайна персонажей <label>E4</label>, тестирование <label>E3A2, E4</label></li>
+        <li><a href="https://sunset.works" target="_blank"><img src="/img/da_sola.png" /> Sola Sunset</a>: Музыкальная поддержка <label>E3A2, E4</label>, поддержка кода и тестирование <label>E3A2, E4</label></li>
+        <li><a href="https://rainbowcutieo3o.neocities.org/" target="_blank"><img src="/img/da_bo.png" /> RainbowCutieo3o</a>: Творчество и поддержка в дизайне персонажей <label>E4</label>, тестирование <label>E3A2, E4</label></li>
+        <li><span href="https://rainyatrium.net/" target="_blank"><img src="/img/da_charter.png" /> rainyatrium</span>: Поддержка с кодом и тестирование <label>ING</label></li>
+        <li><span definition="hi"><img src="/img/da_flan.png" /> Flanburgr</span>: Творчество и поддержка в дизайне персонажей <label>ING</label></li>
     </ul>
 </div>
 <div class="creditblock contributors">
     <h2 definition="единичные работы и упоминания других крутых людей">Дополнительные Вклады</h2>
     <ul>
         <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A1</label> <a href="https://www.oliverbuck.land/" target="_blank">Oliver Buckland</a>: Создание темы "Jokzi Ozo"</li>
-        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/ОБРАМЛЕНИЕ/</li>
-        <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octo</span></li>
-        <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4</label> <span class="denselist">Flanburgr, Ryanatorx, Novaenia, Octo</span> + <label>E4A1</label> <span class="denselist">rosy, spdx, anki</span></li>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E3A2</label> <a href="https://redscientist.com/artist/deltanoyz" target="_blank">DELTANOYZ</a> + <a href="https://redscientist.com/artist/noisyrejects" target="_blank">NoisyRejects</a>: Создание темы финала для ::/FRAME/</li>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>E4A1</label> <a href="https://metaphorical.monster/" target="_blank">Octofoss</a>: Создание дизайна Rotwatcher</li>
+        <li><label class="art">(ТВОРЧЕСТВО)</label><label>ING</label> <span>Cappin</span>: Создание дополнительных 3D-спрайтов предметов</li>
+        <li><label class="eyes">(ГЛАЗА)</label><label>E3A2</label> <span class="denselist">ChickenMcNuggets, KrookedReality, RainbowCutieo3o, apia, Novae, Sola, cyberwaves, spacedotexe, Jadrek, Grimm, Chemelia, Joael, Rayka, NOVA〄AURASTY, TheElement, cyclar2, Victoria, Octofoss</span></li>
+        <li><label class="testing">(ТЕСТИРОВАНИЕ)</label><label>E3A2, E4, ING</label> <span class="denselist">Ryanatorx, kae.fyi, Octofoss</span> + <label>E4A1, ING</label> <span class="denselist">rosy, spdx</span> + <label>ING</label> <span class="denselist">spacedotexe, FulvousFox, chimera</span></li>
         <li><label class="codehelp">(КОД)</label><label>ВСЕ</label> <a href="https://marbelynrye.000.pe/" target="_blank">marbelynrye</a>: Огромное количество тестирования багов и предложений по коду</li>
     </ul>
 </div>`
@@ -486,9 +490,9 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     devElement: `<div class="devs ulbox tdone cor-ru">
     <ul class="tdone">
         <h4 class="tdone">НЕОФИЦИАЛЬНАЯ КОМАНДА ПЕРЕВОДА</h4>
-        <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!" class="tdone">ООО "РОСРАЗУМ"</span></li>
-        <li class="tdone"><span class="tdone" definition="таинственный человек о котором вы не узнаете">НАО "Млечный Путь"</span></li>
-        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord, @bruhslug в telegram!" class="tdone">Фонд "Моллюск"</span></li>
+        <li class="tdone"><span class="tdone" definition="@dutokrisa в discord!">ООО "РОСРАЗУМ"</span></li>
+        <li class="tdone"><span class="tdone" definition="таинственный, но очень крутой человек!">НАО "Млечный Путь"</span></li>
+        <li class="tdone"><span class="tdone" definition="@bra1nslug_ в discord!">Фонд "Моллюск"</span></li>
     </ul>
 </div>`,
 
@@ -557,19 +561,14 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
             listArray.push(cor_ru.list.entityMenu);
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) listArray.push(cor_ru.list.page[page.dialoguePrefix])
                 else if (page.dialoguePrefix != "notfound") console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU");
-            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) listArray.push(cor_ru.list.combat);
+            if (document.querySelectorAll(`script[src="/js/combat/combat.js?v=${page.cacheval}"]`).length != 0) listArray.push(cor_ru.list.combat);
             listArray.push(cor_ru.list.load);
         }
         else {
             if (Object.hasOwn(cor_ru.list.page, page.dialoguePrefix)) {if (document.querySelectorAll(`script[src="${cor_ru.list.page[page.dialoguePrefix]}?v=${page.cacheval}"]`).length == 0) {listArray.push(cor_ru.list.page[page.dialoguePrefix])}}
                 else console.warn("the page with dialoguePrefix " + page.dialoguePrefix + " does not have a localization! this might be a bug, but might also be intentional or plain expected if you are using other mods - @cor-RU")
-            if (document.querySelectorAll(`script[src="/js/combat/combatActorsJson.js?v=${page.cacheval}"]`).length != 0) {
-                if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) {
-                    combat = document.createElement('script')
-                    combat.src = `${cor_ru.list.combat}?v=${page.cacheval}`
-                    content.appendChild(combat)
-                    console.log("%cadded combat as a resource update! - @cor-RU", cor_ru.fancy.general)
-                }
+            if (document.querySelectorAll(`script[src="/js/combat/combat.js?v=${page.cacheval}"]`).length != 0) {
+                if (document.querySelectorAll(`script[src="${cor_ru.list.combat}?v=${page.cacheval}"]`).length == 0) listArray.push(cor_ru.list.combat);
             };
         }
         if (listArray.length != 0) {console.log("%cupdating following resources! - @cor-RU", cor_ru.fancy.general); console.log(listArray); return addResources(listArray)}
@@ -667,8 +666,8 @@ env.entities['advance log'] = {
     ]  
 }
 
-console.log("%c(en) contact @dutokrisa, @bra1nslug_ on discord or @bruhslug on telegram if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speakers: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/GRx4Vqh2ar) - @cor-RU", cor_ru.fancy.general)
-console.log("%c(ru) свяжитесь с @dutokrisa, @bra1nslug_ в дискорде или @bruhslug в телеграме, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/GRx4Vqh2ar) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(en) contact @dutokrisa or @bra1nslug_ on discord if you have any questions, requests, suggestions or bugs to report. also availiable, albeit not recommended for non-russian speakers: anonymous google form (https://forms.gle/HHGhd4zU3VmJQgPCA), discord server (https://discord.gg/GRx4Vqh2ar), telegram channel (https://t.me/cor_RU) - @cor-RU", cor_ru.fancy.general)
+console.log("%c(ru) свяжитесь с @dutokrisa или @bra1nslug_ в дискорде, если есть вопросы, просьбы, предложения или надо зарепортить баг. также доступны: анонимная гугл форма (https://forms.gle/HHGhd4zU3VmJQgPCA), дискорд сервер (https://discord.gg/GRx4Vqh2ar), телеграм канал (https://t.me/cor_RU) - @cor-RU", cor_ru.fancy.general)
 
 if (!document.querySelector("#cor-rucss")) {
     document.head.appendChild(
