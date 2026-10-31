@@ -37,7 +37,7 @@ env.localization.page['pit'] = {dialogues: {},
         "…ÁÀ�ð…Íãswirling endlesslyã�šqÖïìstress manifests as wind tearing at my mind;ÂºG €�üÔÖ…": "",
         "…HQWHl'blueprints' as the cousins say\"œ÷- ™5A]Á¨„capable of sustaining the depth's pressure:ÑÑ�¸Ó5¨x˜": "",
         "Q÷°Ýlpreparations commenced7ìN{Ç½ßÝ·ÌRÞ…soon all will be knownÍãsw…": "",
-        "…€âX²åweeksãÉGregular sessions with gakvu and tozik8J1)‘Roccupy attention for a whileå…": "",
+        "…€âX²åθstaresãÉGregular sessions with gakvu and tozik8J1)‘Roccupy attention for a whileå…": "",
         "…æŒ/(wait for me±ÖÝ›n�ædo not do not do not“w": "",
         "¡ÔæLgÌˆ9Ëagree uneasily‰IT ‘2f H„how about a drink�Iž�¯x›æ«½¯…": "",
         "Ó}�®uncharacteristicïž�ö&worry in the director's eyes‚±�ŒL”Ûã…": "",
@@ -290,7 +290,7 @@ start
         о, снова здесь?
         ok, it's in the uncosm, from a hole in the cache... 
         that kind of supports my theory that it was a direct part of a memory once
-        pretty obvious with all the fbx stuff, but,
+        pretty obvious with all the FBX stuff, but,
         it's like there's this big gap that was left by it getting pulled down here
 
     RESPONSES::self
@@ -312,7 +312,7 @@ ____SHOWIF::["pit__introdrowning", false]
     moth
         a few things in my logs suggest there was some sort of connection between the city and here at some point
         probably even a direct part of it, or maybe contained by it. idk
-        pretty obvious with all the fbx stuff anyway
+        pretty obvious with all the FBX stuff anyway
         based off how you got here earlier, it makes sense 
         through a pit in the cache, leading down into the uncosm...
         it's like there's this big tunnel that was left by it getting pulled down here
@@ -356,7 +356,7 @@ ____SHOWIF::["pit__introdescent", false]
     moth
         a few things in my logs suggest there was some sort of connection between the city and here at some point
         probably even a direct part of it, or maybe contained by it. idk
-        pretty obvious with all the fbx stuff anyway
+        pretty obvious with all the FBX stuff anyway
         based off how you got here earlier, it makes sense 
         through a pit in the cache, leading down into the uncosm...
         it's like there's this big tunnel that was left by it getting pulled down here

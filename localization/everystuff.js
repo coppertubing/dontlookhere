@@ -149,6 +149,12 @@ env.localization['definitions'] = {
     "вазни": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'дом';'в центре обитаемой зоны'` },
     "тувазу": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'заброшенный континент';'известен экзотическими вейльковыми эктопаразитами'` },
 
+    "экива": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'второй по населённости';'на краю обитаемой зоны'` }, // 'continent';'second most populous';'near edge of inhabitable zone'
+    "экивы": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'второй по населённости';'на краю обитаемой зоны'` },
+    "экиву": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'второй по населённости';'на краю обитаемой зоны'` },
+    "экиве": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'второй по населённости';'на краю обитаемой зоны'` },
+    "экивою": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'континент';'второй по населённости';'на краю обитаемой зоны'` },
+
     "указни озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'наземный город';'горная крепость';'место происхожденья далль-импульсного оружья'" },
 
     "олтазни": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": `'дом';'вазнийский пещерный город'` },
@@ -218,6 +224,19 @@ env.localization['definitions'] = {
     "вейльковым": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'наземная фауна';'основа всей экосистемы';'огромные и нескончаемые'" },
     "вейльковыми": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'наземная фауна';'основа всей экосистемы';'огромные и нескончаемые'" },
     "вейльковы": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'наземная фауна';'основа всей экосистемы';'огромные и нескончаемые'" },
+
+
+    "гуктик": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" }, // 'social predator';'bladed arms';'cooked flesh goes well with zzoust'
+    "гуктика": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктику": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктиком": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктике": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+
+    "гуктики": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктиков": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктикам": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктиками": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
+    "гуктиках": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'социальный хищник';'руки-лезвия';'приготовленная плоть прекрасно подходит ззоусту'" },
 
 
     "сельки": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'вейльковый паразит';'еда'" },
@@ -307,6 +326,18 @@ env.localization['definitions'] = {
     "благой взор": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'да падёт на нас благой взор велзи';'пожеланья хорошей удачи'` },
 
     "как воззирает": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'распространённый оборот речи';'религиозный подтекст';'как на тебя воззирает велзи'` },
+
+
+    "маска вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "маски вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "маску вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "маске вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "маскою вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+
+    "масок вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "маскам вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "масками вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
+    "масках вела": { type: `УНАСЛЕДОВАННЫЙ КОНТЕКСТ`, text: `'irony';'cultural reference to use of masks in performance';'occasionally said to be stuck on'`},
 
 
     "сцена велзи": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'всё, что можно видеть';'физическая реальность';'религиозный термин, ныне используемый в науке';'частичный перевод';'сгенерировано из унаследованного описания'" },
@@ -425,9 +456,18 @@ env.localization['definitions'] = {
     "θмигах": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'многочисленны в подмигах'" },
 
 
-    "θstare": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
-    // --- ЧТО ЭТО ТАКОЕ??????????????????!!!!!!!!!!????!!! ЧТО ЭТО???????? АААААААААААААААААА ПОМОГИТЕ!!!!!!!!!!!!
+    "θвоззренье": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" }, // --- ЧТО ЭТО ТАКОЕ??????????????????!!!!!!!!!!????!!! ЧТО ЭТО???????? АААААААААААААААААА ПОМОГИТЕ!!!!!!!!!!!!  --- кхм в любом случае
+    "θвоззренью": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    "θвоззреньем": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
 
+    "θвоззрений": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    "θвоззренья": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    "θвоззреньям": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    "θвоззреньями": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+    "θвоззреньях": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'отрезок времени';'grouping of contiguous unbroken gazes';'length varies by season'" },
+
+
+    "θradiant": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'time period';'regularly occurring luminescent flare in the eye of velzie';'indication of progression through an eye'" },
 
     // akizet cyst-specific
     "беспространство": { "type": "ПРИМЕЧАНИЕ", "text": "'реконструктивный перевод';'подразумевает небытье'" },
@@ -439,6 +479,8 @@ env.localization['definitions'] = {
 
     "джокзи озо": { "type": "УНАСЛЕДОВАННЫЙ КОНТЕКСТ", "text": "'дом';'крепость на джокзи'" },
 }
+
+
 getLocalizationForPage(true); // --- evil
 env.localization['strings'] = {
     // censorshiiip
@@ -787,6 +829,7 @@ env.localization['strings'] = {
     "RESONANCE::'none within this particular memory segment';'await further repairs'": "РЕЗОНАНС::'не имеется в этом конкретном сегменте вспоминания';'ожидайте дальнейших починок'",
     "RESONANCE::'detected in upcoming memory stream'": "РЕЗОНАНС::'обнаружен в предстоящем потоке памяти'",
     "RESONANCE::'limited'": "РЕЗОНАНС::'ограниченный'",
+    "RESONANCE::'minor';'connective thoughtform detected'":"RESONANCE::'малый';'обнаружена соединительная мыслеформа'",
 
     "LOCAL_RESONANCE::": "ЛОКАЛЬНЫЙ_РЕЗОНАНС::",
     "'major';'various spatial and responsive thoughtforms detected'": "'крупный';'обнаружены различные пространственные и отзывчивые мыслеформы'",
@@ -2650,9 +2693,9 @@ END::flash(true);setTimeout(()=>{content.classList.remove('ep0-epi');change('ep0
 env.localization.dialogues["depthrecovery2"] /*from basement.js*/ = generateDialogueObject(` 
 start
     sourceless quiet
-        твои глаза снова сосредотачиваются, пока мыслекол отдёргивается
+        твои глаза снова сосредотачиваются, пока мыслекол отдёргивается.
             WAIT::3000
-        боль разливается по твоему позвоночнику
+        боль разливается по твоему позвоночнику.
 
     sys
         ВНИМАНИЕ::'аварийное отключение завершено'

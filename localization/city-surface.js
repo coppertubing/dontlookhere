@@ -102,14 +102,14 @@ env.localization.page['citystreet'] = {dialogues: {},
         /*cashier*/ "Oh, yeah! OK!": "Ах, ага! Да!",
         /*cashier*/ "Espresso macchiato and an orange coffee... That'll bõXÖf±ÔVã5Öf±Ô": "Эспрессо макиато и апельсиновый кофе... С Вас бõXÖф±ÔЪã5Öф±Ô",
         /*envoy*/ "I got you covered, Akizet.": "Счёт на мне, Акизет.", 
-        /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES.": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ.",
+        /*sourceless*/ "THEY EXCHANGE PAYMENT. THE ATTENDANT LEAVES TO BEGIN PRODUCTION OF THE BEVERAGES": "ОНИ ОБМЕНИВАЮТСЯ ПЛАТЕЖОМ. СОТРУДНИЦА УДАЛЯЕТСЯ, ЧТОБЫ НАЧАТЬ ПРОИЗВОДСТВО НАПИТКОВ",
         /*cashier*/ "Just wait a minute and we'll have those ready.": "Одну минутку, пожалуйста, сейчас будет готово.",
-        /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "КАК ЖЕ ХОЧЕТСЯ ВСКРЫТЬ ЭТИ МАШИНЫ И УВИДЕТЬ, КАК ОНИ РАБОТАЮТ...",
+        /*sourceless*/ "I WISH I COULD PRY THESE MACHINES OPEN AND WATCH THEM WORK...": "ВОТ БЫ Я МОГЛА ВСКРЫТЬ ЭТИ МАШИНЫ И УВИДЕТЬ, КАК ОНИ РАБОТАЮТ...",
         /*sourceless*/ "THEIR MANIPULATION OF LIGHTNING IS TRULY REMARKABLE": "ИХ УМЕНЬЕ УПРАВЛЯТЬ МОЛНИЕЮ ВЗАПРАВДУ ПОРАЖАЕТ",
         /*sourceless*/ "SOME MOMENTS PASS, AND THE ATTENDANT RETURNS WITH TWO FLIMSY ORGANIC CUPS": "ПРОХОДИТ НЕСКОЛЬКО МГНОВЕНИЙ, И СОТРУДНИЦА ВОЗВРАЩАЕТСЯ С ДВУМЯ ХЛИПКИМИ ОРГАНИЧЕСКИМИ СТАКАНЧИКАМИ",
         /*envoy*/ "Hey, thanks. You have a good day.": "Ага, благодарю. Хорошего Вам дня.",
         /*cashier*/ "Thanks!! You too!!": "Спасибо!! И вам!!",
-        /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT.": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТЬЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНЕ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ.",
+        /*sourceless*/ "I SIP AT THE OPENING IN THE CUP. THE TASTE IS... EXOTIC. UNEXPECTED. TRULY, TERRIBLE. I SMILE AT THE ATTENDANT": "Я ПЬЮ ЧЕРЕЗ ОТВЕРСТЬЕ В СТАКАНЕ. ВКУС... ЭКЗОТИЧЕСКИЙ. НЕОЖИДАННЫЙ. ПОИСТИНЕ УЖАСНЫЙ. Я УЛЫБАЮСЬ СОТРУДНИЦЕ",
         /*sourceless*/ "THE CITRUS SAVES IT. BUT I WOULD HAVE PREFERRED A SIMPLE CUP OF THEIR ORANGED JUICE": "ЦИТРУС КОЕ-КАК СПАСАЕТ НАПИТОК. НО Я БЫ ПРЕДПОЧЛА ОБЫЧНЫЙ СТАКАН ИХ АПЕЛЬСИНОВОГО СОКА",
         /*envoy*/ "Pretty good, right?": "Недурно, а?", 
         /*akizet*/ "it will do": "сойдёт",
@@ -148,7 +148,7 @@ env.localization.page['citystreet'] = {dialogues: {},
 
         /*stre wal k*/ "hurts": "больно",
 
-        /*television*/ "...heavier storms are inbound...advisory remains in effect...": "...ожидается усиление шторма...рекомендации остаются в силе...", // <3
+        /*television*/ "...heavier storms are inbound... advisory remains in effect...": "...ожидается усиление шторма... рекомендации остаются в силе...", // <3
         
         /*effigy*/ "oh...!": "о...!",
         /*effigy*/ "that's the way back!": "вот она, дорога обратно!",
@@ -461,7 +461,7 @@ start
             SHOWONCE::
         я понимаю, что здесь до сих пор держится некоторый страх...
             SHOWONCE::
-        особенно в таких многолюдных местах.
+        особенно в таких многолюдных местах
             SHOWONCE::
         
     envoy
@@ -663,7 +663,7 @@ start
         Рад встрече, Акизетеше!
 
     sourceless
-        Я НАКЛОНЯЮ СВОЮ ГОЛОВУ, ПОЧТИТЕЛЬНО ЗАГИБАЯ РЕЦЕПТОРЫ НАЗАД.
+        Я НАКЛОНЯЮ СВОЮ ГОЛОВУ, ПОЧТИТЕЛЬНО ЗАГИБАЯ РЕЦЕПТОРЫ НАЗАД
     
     akizet
         точно так же и я, оливер, мой друг
@@ -998,7 +998,7 @@ start
     
     akizet
         ну, нет, вероятно, не совсем так
-        она могла бы быть чем-то--корруцистозным, как и положено--что было обучено передаче этого сообщенья
+        она могла бы быть чем-то - корруцистозным, как и положено - что было обучено передаче этого сообщенья
         но в остальном, вы правы
     
     sourceless
@@ -2009,7 +2009,7 @@ gotwater
     
 ____SHOWIF::"STAGE!!sipped"
     oliver
-        Погоди, Вы пили из него?
+        Погодите, Вы пили из него?
 
     akizet
         его содержимое не изменилось, если вас волнует это, оливер
@@ -2022,7 +2022,7 @@ ____END
 
     RESPONSES::akizet
         выдвинуться<+>END
-            EXEC::setCam()
+            EXEC::setCam();change("STAGE!!sipped", "DELETE")
 
 gotwaterbonus
     akizet
@@ -2053,7 +2053,7 @@ ____END
 
     RESPONSES::akizet
         выдвинуться<+>END
-            EXEC::setCam()
+            EXEC::setCam();change("STAGE!!sipped", "DELETE")
 
 END::ratween(env.bgm, 1)
 `)

@@ -11382,6 +11382,51 @@ env.localization.page[page.dialoguePrefix].strings["PROHIBITED BY"] = ``;
 
 env.localization.page[page.dialoguePrefix].strings[`AUTOHIT`] = ``;
 
+env.localization.page[page.dialoguePrefix].strings[`ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"`] = ``;
+
+env.dialogues["collapse_loss"] = generateDialogueObject(`
+start
+    sourceless
+        ОСТРАЯ КОНЕЧНОСТЬ ПОРАЖАЕТ МОЁ МЫСЛЕЯДРО
+        ...
+            EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 6000);content.classList.add('dying');
+        ЧТО ПРОИСХОДИТ
+            WAIT::1000
+        ВСЁ ОСТАНОВИЛОСЬ
+            WAIT::1000
+        ЭЙ?
+        ТОЗИК? ГАКВУ??
+        РАЗВЛЕДРУГ?
+        КТО-НИБУДЬ ЕСТЬ?
+        ПОМОГИТЕ
+
+    unknown
+        ...
+            SHOWONCE::
+
+____SHOWONCE::
+    sys
+        ВЫПОЛНЯЕТСЯ::'указание структуры';'прерывание итерации'
+
+    plainsys
+        текущие выборы итерации привели к уничтожению локуса вспоминания
+        визуализация не может продолжиться в данном состоянии; отсутствуют связные данные потока памяти
+        рекомендуется вернуться к последнему стабильному состоянию
+
+    sys
+        КОНЕЦ::
+____END
+
+    RESPONSES::sys
+        перемотать<+>END
+            EXEC::env.embassy.lossReversion()
+            FAKEEND::(повторить бой)
+
+        завершить вспоминание<+>END
+            EXEC::moveTo("/local/ocean/embassy/")
+            FAKEEND::(вернуться к выбору вспоминаний)
+`)
+
 // === LOAD === //
 if (!document.querySelector("#cor-rucsscombat")) document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement).setAttribute("id", "cor-rucsscombat");
 

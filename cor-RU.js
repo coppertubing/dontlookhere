@@ -182,6 +182,9 @@ body[quality="low"] .quality::after { content: "Качество: НИЗКОЕ" 
     background-image: url(https://coppertubing.github.io/dontlookhere/images/hello.gif) !important;
 }
 
+h3.experimental::after {
+    content: "!! EXPERIMENTAL !!" !important;
+}
 
 
 

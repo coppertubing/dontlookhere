@@ -568,8 +568,8 @@ start
         АХ - Я ПОЛУЧАЮ/ПОЛУЧИЛА ОФИЦИАЛЬНОЕ СООБЩЕНЬЕ/ИЗВЕЩЕНЬЕ // AH - I AM RECEIVING AN OFFICIAL COMMUNIQUE
 
     other
-        внимание, θ██████! 
-        это это θ██████!
+        вниманье, θ██████! 
+        это θ██████!
         speaking on behalf of anterior dull station '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>',     говорю от имени предварительной станции далля '<span definition="NOTE::'partial translation';'reference to weather phenomena'">brightwall</span>', 
         you are all clear to proceed!     ты можешь продолжать движение!
         be sure you release all active dull tethers or hearts,      не забудь отпустить все активные шнуры или сердца далля,

@@ -11382,6 +11382,51 @@ env.localization.page[page.dialoguePrefix].strings["PROHIBITED BY"] = ``;
 
 env.localization.page[page.dialoguePrefix].strings[`AUTOHIT`] = ``;
 
+env.localization.page[page.dialoguePrefix].strings[`ATTENTION::"thoughtform combat gameplay bypassed";"toggle within system menu if desired"`] = ``;
+
+env.dialogues["collapse_loss"] = generateDialogueObject(`
+start
+    sourceless
+        A SHARP LIMB STRIKES MY MINDCORE
+        ...
+            EXEC::content.classList.add('goodbye');ratween(env.bgm, 0.2, 6000);content.classList.add('dying');
+        WHAT IS HAPPENING
+            WAIT::1000
+        EVERYTHING HAS STOPPED
+            WAIT::1000
+        HELLO?
+        TOZIK? GAKVU??
+        FUNFRIEND?
+        IS ANYONE THERE?
+        HELP
+
+    unknown
+        ...
+            SHOWONCE::
+
+____SHOWONCE::
+    sys
+        EXECUTING::"structure direction";"iteration termination"
+
+    plainsys
+        current iteration choices led to destruction of recollection locus
+        render unable to proceed in present state; no coherent data for memory stream
+        reversion to last stable state recommended
+
+    sys
+        END::
+____END
+
+    RESPONSES::sys
+        rewind<+>END
+            EXEC::env.embassy.lossReversion()
+            FAKEEND::(retry fight)
+
+        end recollection<+>END
+            EXEC::moveTo("/local/ocean/embassy/")
+            FAKEEND::(return to memory selection)
+`)
+
 // === LOAD === //
 if (!document.querySelector("#cor-rucsscombat")) document.head.appendChild(document.createElement('style').appendChild(document.createTextNode(cor_ru.combat.css)).parentElement).setAttribute("id", "cor-rucsscombat");
 
